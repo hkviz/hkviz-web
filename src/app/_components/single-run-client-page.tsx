@@ -1,5 +1,11 @@
+'use client';
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useQuery } from '@tanstack/react-query';
 import { Session } from 'next-auth';
+import { useEffect } from 'react';
+import { HKMap } from '~/lib/viz/charts/hk-map';
+import { useRecordingFileQuery } from '~/lib/viz/recording-files/use-recording-file';
 import { AppRouterOutput } from '~/server/api/types';
 
 interface Props {
@@ -8,6 +14,8 @@ interface Props {
 }
 
 export function SingleRunClientPage({ session, runData }: Props) {
+    const runFileQuery = useRecordingFileQuery({ runId: runData.id, downloadUrl: runData.signedDownloadFileUrl });
+
     return (
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
             <Card className="lg:max-w-[500px]">
@@ -17,8 +25,8 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 </CardHeader>
                 <CardContent></CardContent>
             </Card>
-            <Card className="grow">
-                <CardContent>abc</CardContent>
+            <Card className="flex grow flex-col overflow-hidden">
+                <HKMap className="grow" />
             </Card>
         </div>
     );
