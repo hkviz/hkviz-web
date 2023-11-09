@@ -6,6 +6,7 @@ import { cookies } from 'next/headers';
 import { TRPCReactProvider } from '~/trpc/react';
 import { MainNav } from './_components/main-nav';
 import { getServerAuthSession } from '~/server/auth';
+import ClientContext from './_components/context';
 
 const inter = Inter({
     subsets: ['latin'],
@@ -24,12 +25,14 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     return (
         <html lang="en">
             <body className={`dark font-sans ${inter.variable}`}>
-                <TRPCReactProvider cookies={cookies().toString()}>
-                    <div class="flex min-h-screen flex-col">
-                        <MainNav session={session} />
-                        {children}
-                    </div>
-                </TRPCReactProvider>
+                <ClientContext>
+                    <TRPCReactProvider cookies={cookies().toString()}>
+                        <div className="flex min-h-screen flex-col">
+                            <MainNav session={session} />
+                            {children}
+                        </div>
+                    </TRPCReactProvider>
+                </ClientContext>
             </body>
         </html>
     );

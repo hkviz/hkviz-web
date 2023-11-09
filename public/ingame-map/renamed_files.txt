@@ -1,0 +1,2 @@
+Fungus3_47.png -> Fungus3_48_bottom.png # duplicated file with wrong number inside game
+Ruins2_10b.png -> Ruins2_10.png # duplicated file name
