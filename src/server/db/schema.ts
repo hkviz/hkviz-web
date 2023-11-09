@@ -98,14 +98,16 @@ export const verificationTokens = mysqlTable(
 export const hkRuns = mysqlTable(
     'hkrun',
     {
-        // server generated
+        // server generated. Used for urls
         id: varchar('id', { length: 255 }).notNull().primaryKey(),
 
         // user generated
-        runId: varchar('runId', { length: 255 }).notNull(),
+        runFileId: varchar('runId', { length: 255 }).notNull(),
 
         userId: varchar('userId', { length: 255 }).notNull(),
-        fileId: varchar('fileId', { length: 255 }).notNull(),
+
+        // id used for key in r2 bucket
+        bucketFileId: varchar('fileId', { length: 255 }).notNull(),
 
         description: text('description'),
         createdAt: timestamp('created_at')
@@ -115,7 +117,7 @@ export const hkRuns = mysqlTable(
     },
     (run) => ({
         userIdIdx: index('userId_idx').on(run.userId),
-        runIdIdx: index('runId_idx').on(run.runId),
+        runIdIdx: index('runId_idx').on(run.runFileId),
     }),
 );
 

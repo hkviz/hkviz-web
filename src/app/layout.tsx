@@ -25,8 +25,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <html lang="en">
             <body className={`dark font-sans ${inter.variable}`}>
                 <TRPCReactProvider cookies={cookies().toString()}>
-                    <MainNav session={session} />
-                    {children}
+                    <div class="flex min-h-screen flex-col">
+                        <MainNav session={session} />
+                        {children}
+                    </div>
                 </TRPCReactProvider>
             </body>
         </html>

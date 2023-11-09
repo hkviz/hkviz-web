@@ -5,10 +5,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { api } from '~/trpc/react';
 
 export function UploadForm() {
+    const router = useRouter();
     const [file, setFile] = useState<File>();
     const [previousHollowKnightExperience, setPreviousHollowKnightExperience] = useState<
         'none' | 'unfinished' | 'finished' | 'finishedMany'
@@ -21,7 +23,7 @@ export function UploadForm() {
         }
     };
 
-    const createUploadUrlMutation = api.upload.createUploadUrl.useMutation({});
+    const createUploadUrlMutation = api.run.createUploadUrl.useMutation({});
     const uploadFileMutation = useMutation({
         mutationFn: async (options: { formData: FormData; signedUrl: string }) => {
             await fetch(options.signedUrl, {
@@ -41,12 +43,14 @@ export function UploadForm() {
 
         const formData = new FormData();
         formData.append('file', file);
-        const { signedUrl } = await createUploadUrlMutation.mutateAsync({
+        const { signedUrl, id } = await createUploadUrlMutation.mutateAsync({
             description: 'abc',
-            runId: '81f32aba-6111-4ad6-b108-99888527b7ec',
+            runFileId: '81f32aba-6111-4ad6-b108-99888527b7ec',
             previousHollowKnightExperience: previousHollowKnightExperience as never,
         });
         await uploadFileMutation.mutateAsync({ formData, signedUrl });
+        // todo call complete upload
+        router.push('/run/' + id);
     };
 
     return (
