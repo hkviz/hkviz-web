@@ -1,6 +1,6 @@
 import { getServerAuthSession } from '~/server/auth';
 import { AuthNeeded } from '../_components/auth-needed';
-import { MainContentWrapper } from '../_components/main-content-wrapper';
+import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { UploadForm } from '../_components/upload-form';
 
 export default async function Upload() {
@@ -12,11 +12,11 @@ export default async function Upload() {
     }
 
     return (
-        <MainContentWrapper>
+        <ContentCenterWrapper>
             <div className="container flex flex-col items-center justify-center gap-4">
                 {/* <h1 className="text-4xl font-extrabold tracking-tight">Upload a HollowKnight run</h1> */}
                 <UploadForm />
             </div>
-        </MainContentWrapper>
+        </ContentCenterWrapper>
     );
 }

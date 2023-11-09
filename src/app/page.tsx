@@ -2,14 +2,14 @@ import Link from 'next/link';
 
 import { CreatePost } from '~/app/_components/create-post';
 import { getServerAuthSession } from '~/server/auth';
-import { MainContentWrapper } from './_components/main-content-wrapper';
+import { ContentCenterWrapper } from './_components/content-wrapper';
 
 export default async function Home() {
     // const hello = await api.post.hello.query({ text: "from tRPC" });
     const session = await getServerAuthSession();
 
     return (
-        <MainContentWrapper>
+        <ContentCenterWrapper>
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
                 <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">HKViz</h1>
                 <div className="flex flex-col items-center gap-2">
@@ -32,7 +32,7 @@ export default async function Home() {
 
                 <CrudShowcase />
             </div>
-        </MainContentWrapper>
+        </ContentCenterWrapper>
     );
 }
 
