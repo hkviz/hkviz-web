@@ -3,14 +3,17 @@
 import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
 import { mapVisualExtends } from '../map-data/map-extends';
-import { roomData } from '../map-data/rooms';
+import { SCALE_FACTOR, roomData } from '../map-data/rooms';
 import { cn } from '@/lib/utils';
+import { PlayerPositionEvent, Recording } from '../recording-files/recording';
+import { playerPositionToMapPosition } from '../map-data/player-position';
 
 export interface HKMapProps {
     className?: string;
+    recording: Recording | null;
 }
 
-export function HKMap({ className }: HKMapProps) {
+export function HKMap({ className, recording }: HKMapProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const svg = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined>>();
     const rootG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
@@ -95,31 +98,30 @@ export function HKMap({ className }: HKMapProps) {
         };
     }, []);
 
-    // createEffect(() => {
-    //     const recording = recordingStore?.value.recording;
-    //     if (!recording) return;
+    useEffect(() => {
+        if (!recording) return;
 
-    //     const points: [number, number][] = recording.sceneEvents
-    //         .filter((event): event is PlayerPositionEvent => event instanceof PlayerPositionEvent)
-    //         .map((event) => {
-    //             const transformed = playerPositionToMapPosition(event.position, event.sceneEvent);
-    //             if (!transformed) {
-    //                 return undefined;
-    //             }
+        const points: [number, number][] = recording.sceneEvents
+            .filter((event): event is PlayerPositionEvent => event instanceof PlayerPositionEvent)
+            .map((event) => {
+                const transformed = playerPositionToMapPosition(event.position, event.sceneEvent);
+                if (!transformed) {
+                    return undefined;
+                }
 
-    //             return [transformed.x, transformed.y];
-    //         })
-    //         .filter((event): event is [number, number] => !!event);
-    //     const line = d3.line()(points);
+                return [transformed.x, transformed.y];
+            })
+            .filter((event): event is [number, number] => !!event);
+        const line = d3.line()(points);
 
-    //     console.log('ctx', recording);
-    //     rootG
-    //         .append('path')
-    //         .attr('d', line)
-    //         .attr('stroke-width', 0.05 * SCALE_FACTOR)
-    //         .attr('stroke', 'red')
-    //         .attr('fill', 'none');
-    // });
+        console.log('ctx', recording);
+        rootG
+            .current!.append('path')
+            .attr('d', line)
+            .attr('stroke-width', 0.05 * SCALE_FACTOR)
+            .attr('stroke', 'red')
+            .attr('fill', 'none');
+    }, [recording]);
 
     return <div className={cn('relative', className)} ref={containerRef} />;
 }
