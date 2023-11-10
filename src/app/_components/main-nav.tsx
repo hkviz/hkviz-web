@@ -8,7 +8,7 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { Session } from 'next-auth';
+import type { Session } from 'next-auth';
 import { CurrentUserDropdown } from './current-user-dropdown';
 
 export function MainNav({ session }: { session: Session | null }) {

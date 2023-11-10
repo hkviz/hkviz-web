@@ -3,11 +3,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { cn } from '@/lib/utils';
-import { Session } from 'next-auth';
+import { type Session } from 'next-auth';
 import { useState } from 'react';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFile } from '~/lib/viz/recording-files/use-recording-file';
-import { AppRouterOutput } from '~/server/api/types';
+import { type AppRouterOutput } from '~/server/api/types';
 
 interface Props {
     session: Session | null;
@@ -16,6 +16,7 @@ interface Props {
 
 export function SingleRunClientPage({ session, runData }: Props) {
     const [version, setVersion] = useState(1);
+    console.log(session?.user.id);
 
     const runFile = useRecordingFile({
         runId: runData.id,

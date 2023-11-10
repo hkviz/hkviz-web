@@ -1,13 +1,13 @@
-import { GetObjectCommand, ListBucketsCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
+import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
 import { env } from '~/env.mjs';
 import { r2 } from '~/lib/r2';
-import { v4 as uuidv4 } from 'uuid';
 
+import { raise } from '~/lib/utils';
 import { createTRPCRouter, protectedProcedure } from '~/server/api/trpc';
 import { hkRuns } from '~/server/db/schema';
-import { raise } from '~/lib/utils';
 
 export const runRouter = createTRPCRouter({
     getMetadataById: protectedProcedure.input(z.object({ id: z.string().uuid() })).query(async ({ ctx, input }) => {

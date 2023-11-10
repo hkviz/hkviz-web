@@ -1,7 +1,7 @@
 'use client';
 
 import { NavigationMenuContent, NavigationMenuItem, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
-import { Session } from 'next-auth';
+import type { Session } from 'next-auth';
 import Link from 'next/link';
 import { ListItem } from './nav-list-item';
 

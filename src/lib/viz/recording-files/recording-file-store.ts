@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import { Recording } from './recording';
+import type { Recording } from './recording';
 
 export type RunFile =
     | {

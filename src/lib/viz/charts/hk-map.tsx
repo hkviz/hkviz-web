@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { SCALE_FACTOR, roomData } from '../map-data/rooms';
 import { cn } from '@/lib/utils';
-import { PlayerPositionEvent, Recording } from '../recording-files/recording';
+import { PlayerPositionEvent, type Recording } from '../recording-files/recording';
 import { playerPositionToMapPosition } from '../map-data/player-position';
 
 export interface HKMapProps {
@@ -28,6 +28,7 @@ export function HKMap({ className, recording }: HKMapProps) {
             .attr('viewBox', mapVisualExtends.toD3ViewBox())
             .call(
                 d3.zoom<SVGSVGElement, unknown>().on('zoom', (event) => {
+                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
                     rootG.current!.attr('transform', event.transform);
                 }),
             );

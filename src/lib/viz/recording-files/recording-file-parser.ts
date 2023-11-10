@@ -1,6 +1,6 @@
 import { Vector2 } from '../types/vector2';
-import { EVENT_TYPE_PREFIXES, EventTypePrefix } from './event-type-prefixes';
-import { PlayerPositionEvent, Recording, RecordingEvent, SceneEvent } from './recording';
+import { EVENT_TYPE_PREFIXES, type EventTypePrefix } from './event-type-prefixes';
+import { PlayerPositionEvent, Recording, type RecordingEvent, SceneEvent } from './recording';
 
 function parseFloatAnyComma(value: string) {
     return parseFloat(value.replace(',', '.'));

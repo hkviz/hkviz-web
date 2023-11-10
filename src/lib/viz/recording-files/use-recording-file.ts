@@ -1,7 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
-import { useEffect, useState } from 'react';
-import { useRunFileStore } from './recording-file-store';
+import { useEffect } from 'react';
 import { parseRecordingFile } from './recording-file-parser';
+import { useRunFileStore } from './recording-file-store';
 
 // similar taken from https://stackoverflow.com/questions/47285198/fetch-api-download-progress-indicator
 function wrapResultWithProgress(
