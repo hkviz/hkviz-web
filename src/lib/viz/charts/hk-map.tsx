@@ -27,10 +27,23 @@ export function HKMap({ className, recording }: HKMapProps) {
             .attr('height', 1000)
             .attr('viewBox', mapVisualExtends.toD3ViewBox())
             .call(
-                d3.zoom<SVGSVGElement, unknown>().on('zoom', (event) => {
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
-                    rootG.current!.attr('transform', event.transform);
-                }),
+                d3
+                    .zoom<SVGSVGElement, unknown>()
+                    .scaleExtent([0.25, 10])
+                    .translateExtent([
+                        [
+                            mapVisualExtends.min.x - mapVisualExtends.size.x * 0.5,
+                            mapVisualExtends.min.y - mapVisualExtends.size.y * 0.5,
+                        ],
+                        [
+                            mapVisualExtends.max.x + mapVisualExtends.size.x * 0.5,
+                            mapVisualExtends.max.y + mapVisualExtends.size.y * 0.5,
+                        ],
+                    ])
+                    .on('zoom', (event) => {
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+                        rootG.current!.attr('transform', event.transform);
+                    }),
             );
 
         rootG.current = svg.current.append('g');
@@ -63,7 +76,7 @@ export function HKMap({ className, recording }: HKMapProps) {
             .attr('y', (r) => r.spritePosition.min.y)
             .attr('width', (r) => r.spritePosition.size.x)
             .attr('height', (r) => r.spritePosition.size.y)
-            .attr('preserveAspectRatio', 'none')
+            // .attr('preserveAspectRatio', 'none')
             .attr('class', 'svg-room');
 
         // actual rect which is masked by image. This allows us to have colorful rooms, while most images themselves are white
@@ -85,17 +98,20 @@ export function HKMap({ className, recording }: HKMapProps) {
 
     useEffect(() => {
         function containerSizeChanged() {
-            svg.current!.attr('width', containerRef.current!.offsetWidth).attr(
-                'height',
-                containerRef.current!.offsetHeight,
-            );
+            if (!containerRef.current || !svg.current) return;
+
+            svg.current
+                .attr('width', containerRef.current.offsetWidth)
+                .attr('height', containerRef.current.offsetHeight);
         }
         containerSizeChanged();
 
-        new ResizeObserver(containerSizeChanged).observe(containerRef.current!);
+        const resizeObserver = new ResizeObserver(containerSizeChanged);
+
+        resizeObserver.observe(containerRef.current!);
 
         return () => {
-            new ResizeObserver(containerSizeChanged).disconnect();
+            resizeObserver.disconnect();
         };
     }, []);
 
