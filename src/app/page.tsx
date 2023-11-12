@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 import { CreatePost } from '~/app/_components/create-post';
 import { getServerAuthSession } from '~/server/auth';
+import { ebGaramond } from '~/styles/fonts';
 import { ContentCenterWrapper } from './_components/content-wrapper';
 
 export default async function Home() {
@@ -11,7 +12,11 @@ export default async function Home() {
     return (
         <ContentCenterWrapper>
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-                <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">HKViz</h1>
+                <h1
+                    className={`title-text-glow text-5xl font-extrabold tracking-tight sm:text-[5rem] ${ebGaramond.className}`}
+                >
+                    HKViz
+                </h1>
                 <div className="flex flex-col items-center gap-2">
                     {/* <p className="text-2xl text-white">
             {hello ? hello.greeting : "Loading tRPC query..."}

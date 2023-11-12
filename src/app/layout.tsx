@@ -1,17 +1,12 @@
 import '~/styles/globals.css';
 
-import { Inter } from 'next/font/google';
 import { cookies } from 'next/headers';
 
 import { TRPCReactProvider } from '~/trpc/react';
 import { MainNav } from './_components/main-nav';
 import { getServerAuthSession } from '~/server/auth';
 import ClientContext from './_components/context';
-
-const inter = Inter({
-    subsets: ['latin'],
-    variable: '--font-sans',
-});
+import { inter } from '~/styles/fonts';
 
 export const metadata = {
     title: 'HKViz for Hollow Knight',
@@ -24,7 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
     return (
         <html lang="en">
-            <body className={`dark font-sans ${inter.variable}`}>
+            <body className={`dark font-sans ${inter.className}`}>
                 <ClientContext>
                     <TRPCReactProvider cookies={cookies().toString()}>
                         <div className="flex min-h-screen flex-col">
