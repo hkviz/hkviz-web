@@ -1,28 +1,40 @@
-# Create T3 App
+# HKViz web
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+> [!IMPORTANT]  
+> This site is still work in progress. It can not be used yet. A first release should follow late 2023 or early 2024.
 
-## What's next? How do I make an app with this?
+A site for visualizing player-behavior for Hollow Knight, like seeing the complete path one has taken in playthrough or seeing to which boss one has died the most.
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+The mod for recording player behavior is contained in the [hkviz-mod repository](https://github.com/hkviz/hkviz-mod).
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Checkout [hkviz.vercel.app](https://hkviz.vercel.app/) for more infos.
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+## I have Ideas/Feedback for visualizations
 
-## Learn More
+Feel free to open a issue on this repository or write @olivergrack on discord.
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+## How to use
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+Not at all at the moment. A first version should hopefully be released in the coming months.
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+## For developers
 
-## How do I deploy this?
+To set this project up locally:
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+-   First copy the .env.example file in the root directly, and fill it with connection information for
+    -   a mysql database
+    -   a r2 bucket.
+    -   auth providers (discord, ...)
+-   Start the project locally using `npm run dev`
+
+### Used inside this project
+
+This project has been created with [T3](https://create.t3.gg/). Which has some getting started infos for many of the following technologies.
+It contains
+
+-   [Next.js](https://nextjs.org)
+-   [NextAuth.js](https://next-auth.js.org)
+-   [Drizzle](https://orm.drizzle.team/)
+-   [Tailwind CSS](https://tailwindcss.com)
+-   [tRPC](https://trpc.io)
+-   [R2](https://www.cloudflare.com/developer-platform/r2/)
