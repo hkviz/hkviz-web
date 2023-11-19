@@ -124,3 +124,14 @@ export const hkRuns = mysqlTable(
 export const hkRunsRelations = relations(hkRuns, ({ one }) => ({
     user: one(users, { fields: [hkRuns.userId], references: [users.id] }),
 }));
+
+export const ingameSession = mysqlTable('ingameauth', {
+    // server generated, also to authenticate a user from the game. Does only permit uploads
+    id: varchar('id', { length: 255 }).notNull().primaryKey(),
+    name: varchar('name', { length: 255 }).notNull(),
+    userId: varchar('userId', { length: 255 }),
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
+});
