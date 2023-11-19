@@ -11,7 +11,6 @@ import { initTRPC, TRPCError } from '@trpc/server';
 import { NextApiRequest } from 'next';
 import { type NextRequest } from 'next/server';
 import superjson from 'superjson';
-import { OpenApiMeta } from 'trpc-openapi';
 import { ZodError } from 'zod';
 
 import { getServerAuthSession } from '~/server/auth';
@@ -55,7 +54,7 @@ export const createInnerTRPCContext = async (opts: CreateContextOptions) => {
  *
  * @see https://trpc.io/docs/context
  */
-export const createTRPCContext = async (opts: { req: NextRequest | NextApiRequest }) => {
+export const createTRPCContext = async (opts: { req: NextRequest }) => {
     // Fetch stuff that depends on the request
 
     return await createInnerTRPCContext({
@@ -71,21 +70,18 @@ export const createTRPCContext = async (opts: { req: NextRequest | NextApiReques
  * errors on the backend.
  */
 
-const t = initTRPC
-    .meta<OpenApiMeta>()
-    .context<typeof createTRPCContext>()
-    .create({
-        transformer: superjson,
-        errorFormatter({ shape, error }) {
-            return {
-                ...shape,
-                data: {
-                    ...shape.data,
-                    zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
-                },
-            };
-        },
-    });
+const t = initTRPC.context<typeof createTRPCContext>().create({
+    transformer: superjson,
+    errorFormatter({ shape, error }) {
+        return {
+            ...shape,
+            data: {
+                ...shape.data,
+                zodError: error.cause instanceof ZodError ? error.cause.flatten() : null,
+            },
+        };
+    },
+});
 
 /**
  * 3. ROUTER & PROCEDURE (THE IMPORTANT BIT)
@@ -115,7 +111,7 @@ const loggin = t.middleware(({ ctx, next, path, rawInput }) => {
  * guarantee that a user querying is authorized, but you can still access user session data if they
  * are logged in.
  */
-export const publicProcedure = t.procedure.use(loggin);
+export const publicProcedure = t.procedure; //.use(loggin);
 
 /** Reusable middleware that enforces users are logged in before running the procedure. */
 const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
@@ -138,4 +134,4 @@ const enforceUserIsAuthed = t.middleware(({ ctx, next }) => {
  *
  * @see https://trpc.io/docs/procedures
  */
-export const protectedProcedure = t.procedure.use(enforceUserIsAuthed).use(loggin);
+export const protectedProcedure = t.procedure.use(enforceUserIsAuthed); //.use(loggin);

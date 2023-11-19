@@ -135,3 +135,7 @@ export const ingameSession = mysqlTable('ingameauth', {
         .notNull(),
     updatedAt: timestamp('updatedAt').onUpdateNow(),
 });
+
+export const ingameSessionRelations = relations(ingameSession, ({ one }) => ({
+    user: one(users, { fields: [ingameSession.userId], references: [users.id] }),
+}));
