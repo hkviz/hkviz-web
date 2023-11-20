@@ -42,7 +42,7 @@ export const ingameSessionRouter = createTRPCRouter({
         }
     }),
 
-    getStatus: publicProcedure.input(z.object({ id: z.string().max(255) })).query(async ({ ctx, input }) => {
+    getStatus: publicProcedure.input(z.object({ id: z.string().uuid() })).query(async ({ ctx, input }) => {
         const session = await ctx.db.query.ingameSession.findFirst({
             where: (ingameSession, { eq }) => eq(ingameSession.id, input.id),
             columns: {
