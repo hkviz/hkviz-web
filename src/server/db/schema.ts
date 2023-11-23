@@ -125,17 +125,25 @@ export const hkRunsRelations = relations(hkRuns, ({ one }) => ({
     user: one(users, { fields: [hkRuns.userId], references: [users.id] }),
 }));
 
-export const ingameSession = mysqlTable('ingameauth', {
-    // server generated, also to authenticate a user from the game. Does only permit uploads
-    id: varchar('id', { length: 255 }).notNull().primaryKey(),
-    name: varchar('name', { length: 255 }).notNull(),
-    userId: varchar('userId', { length: 255 }),
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
-});
+export const ingameAuth = mysqlTable(
+    'ingameauth',
+    {
+        // server generated, to authenticate a user from the game. Does only permit uploads.
+        id: varchar('id', { length: 255 }).notNull().primaryKey(),
+        // just used for the allow url, since the id should not be inside the browser history
+        urlId: varchar('urlId', { length: 255 }),
+        name: varchar('name', { length: 255 }).notNull(),
+        userId: varchar('userId', { length: 255 }),
+        createdAt: timestamp('created_at')
+            .default(sql`CURRENT_TIMESTAMP`)
+            .notNull(),
+        updatedAt: timestamp('updatedAt').onUpdateNow(),
+    },
+    (session) => ({
+        urlIdIdx: index('urlId_idx').on(session.urlId),
+    }),
+);
 
-export const ingameSessionRelations = relations(ingameSession, ({ one }) => ({
-    user: one(users, { fields: [ingameSession.userId], references: [users.id] }),
+export const ingameAuthRelations = relations(ingameAuth, ({ one }) => ({
+    user: one(users, { fields: [ingameAuth.userId], references: [users.id] }),
 }));

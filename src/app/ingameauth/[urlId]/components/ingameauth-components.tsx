@@ -6,20 +6,20 @@ import { useCallback } from 'react';
 import { api } from '~/trpc/react';
 
 export function IngameAuthCard({
-    ingameSessionId,
+    ingameAuthId,
     deviceName,
     userName,
 }: {
-    ingameSessionId: string;
+    ingameAuthId: string;
     deviceName: string;
     userName: string;
 }) {
-    const allowMutation = api.ingameSession.allowLogin.useMutation({
+    const allowMutation = api.ingameAuth.allowLogin.useMutation({
         onError: (error) => {
             console.error('allowMutation', error);
         },
     });
-    const cancelMutation = api.ingameSession.cancelLogin.useMutation({
+    const cancelMutation = api.ingameAuth.cancelLogin.useMutation({
         onError: (error) => {
             console.error('cancelMutation', error);
         },
@@ -29,15 +29,15 @@ export function IngameAuthCard({
         allowMutation.reset();
         cancelMutation.reset();
 
-        await allowMutation.mutateAsync({ id: ingameSessionId });
-    }, [allowMutation, cancelMutation, ingameSessionId]);
+        await allowMutation.mutateAsync({ id: ingameAuthId });
+    }, [allowMutation, cancelMutation, ingameAuthId]);
 
     const handleCancel = useCallback(async () => {
         allowMutation.reset();
         cancelMutation.reset();
 
-        await cancelMutation.mutateAsync({ id: ingameSessionId });
-    }, [allowMutation, cancelMutation, ingameSessionId]);
+        await cancelMutation.mutateAsync({ id: ingameAuthId });
+    }, [allowMutation, cancelMutation, ingameAuthId]);
 
     const isMutating = !!allowMutation.isLoading || !!cancelMutation.isLoading;
 
@@ -46,7 +46,7 @@ export function IngameAuthCard({
             <Card className="max-w-[500px]">
                 <CardHeader>
                     <CardTitle>Login successful</CardTitle>
-                    <CardDescription>You may close this page now, and switch back to HollowKnight</CardDescription>
+                    <CardDescription>You may now close this page, and switch back to HollowKnight</CardDescription>
                 </CardHeader>
             </Card>
         );
