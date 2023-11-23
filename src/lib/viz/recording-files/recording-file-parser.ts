@@ -1,6 +1,8 @@
+import { assertNever, typeCheckNever } from '~/lib/utils';
 import { Vector2 } from '../types/vector2';
-import { EVENT_TYPE_PREFIXES, type EventTypePrefix } from './event-type-prefixes';
-import { PlayerPositionEvent, Recording, type RecordingEvent, SceneEvent } from './recording';
+import { EVENT_PREFIXES, PARTIAL_EVENT_PREFIXES, type EventPrefix, PartialEventPrefix } from './event-type-prefixes';
+import { PlayerPositionEvent, ParsedRecording, type RecordingEvent, SceneEvent } from './recording';
+import { type } from 'os';
 
 function parseFloatAnyComma(value: string) {
     return parseFloat(value.replace(',', '.'));
@@ -10,21 +12,77 @@ function parseVector2(x: string, y: string) {
     return new Vector2(parseFloatAnyComma(x), parseFloatAnyComma(y));
 }
 
-export function parseRecordingFile(recordingFileContent: string): Recording {
+export function parseRecordingFile(recordingFileContent: string): ParsedRecording {
     const lines = recordingFileContent.split('\n');
     const events: RecordingEvent[] = [];
+    let unknownEvents = 0;
+    let parsingErrors = 0;
 
     let lastSceneEvent: SceneEvent | undefined = undefined;
+    let previousPlayerPosition: Vector2 | undefined = undefined;
+    let previousTimestamp: number | undefined = undefined;
 
-    for (const line of lines) {
+    LINE_LOOP: for (const line of lines) {
         try {
-            console.log(line);
-            const [eventType, timestamp, ...args] = line.replace(/\r/gi, '').split(';');
+            // empty lines are skipped
+            if (!line) continue;
 
-            switch (eventType as EventTypePrefix) {
-                case EVENT_TYPE_PREFIXES.SCENE_CHANGE: {
+            const [prefix, ...args] = line.replace(/\r/gi, '').split(';');
+            if (prefix == null) throw new Error('No prefix found');
+            const [eventType, timestampStr] = prefix?.split(/[=\+]/);
+            if (eventType == null) throw new Error('No event type found');
+            // console.log(prefix, eventType, timestampStr);
+            // continue;
+
+            // ------ TIMESTAMPS ------
+            const isRelativeTimestamp = prefix.includes('+');
+
+            let timestamp: number;
+            if (timestampStr == null || timestampStr === '') {
+                if (previousTimestamp === undefined) {
+                    throw new Error('Relative timestamp found, but no previous timestamp found');
+                }
+                timestamp = previousTimestamp!;
+            } else if (isRelativeTimestamp) {
+                if (previousTimestamp == null) {
+                    throw new Error('Relative timestamp found, but no previous timestamp found');
+                }
+                timestamp = previousTimestamp + parseInt(timestampStr);
+            } else {
+                timestamp = parseInt(timestampStr);
+            }
+            previousTimestamp = timestamp;
+
+            // ------ EVENT TYPE ------
+            const didParse = true;
+            const partialEventType = eventType[0] as PartialEventPrefix;
+            switch (partialEventType) {
+                case PARTIAL_EVENT_PREFIXES.PLAYER_DATA_SHORTNAME: {
+                    // TODO
+                    continue LINE_LOOP;
+                }
+                case PARTIAL_EVENT_PREFIXES.PLAYER_DATA_LONGNAME: {
+                    // TODO
+                    continue LINE_LOOP;
+                }
+                case PARTIAL_EVENT_PREFIXES.HERO_CONTROLER_STATE_SHORTNAME: {
+                    // TODO
+                    continue LINE_LOOP;
+                }
+                case PARTIAL_EVENT_PREFIXES.HERO_CONTROLER_STATE_LONGNAME: {
+                    // TODO
+                    continue LINE_LOOP;
+                }
+                default: {
+                    typeCheckNever(partialEventType);
+                }
+            }
+
+            const eventTypePrefix = eventType as EventPrefix;
+            switch (eventTypePrefix) {
+                case EVENT_PREFIXES.SCENE_CHANGE: {
                     lastSceneEvent = new SceneEvent({
-                        timestamp: parseInt(timestamp!),
+                        timestamp,
                         sceneName: args[0]!,
                         originOffset: undefined,
                         sceneSize: undefined,
@@ -32,34 +90,90 @@ export function parseRecordingFile(recordingFileContent: string): Recording {
                     events.push(lastSceneEvent);
                     break;
                 }
-                case EVENT_TYPE_PREFIXES.ROOM_DIMENSIONS: {
+                case EVENT_PREFIXES.ROOM_DIMENSIONS: {
                     if (lastSceneEvent) {
                         lastSceneEvent.originOffset = parseVector2(args[0]!, args[1]!);
                         lastSceneEvent.sceneSize = parseVector2(args[2]!, args[3]!);
                     }
                     break;
                 }
-                case EVENT_TYPE_PREFIXES.PLAYER_POSITION: {
+                case EVENT_PREFIXES.PLAYER_POSITION: {
                     if (lastSceneEvent) {
+                        const position: Vector2 | undefined =
+                            args[0] === '=' ? previousPlayerPosition : parseVector2(args[0]!, args[1]!);
+                        if (!position) {
+                            throw new Error('Could not assign player position to player position event');
+                        }
+                        previousPlayerPosition = position;
                         events.push(
                             new PlayerPositionEvent({
-                                timestamp: parseInt(timestamp!),
-                                position: parseVector2(args[0]!, args[1]!),
+                                timestamp,
+                                position,
                                 sceneEvent: lastSceneEvent,
                             }),
                         );
                     }
                     break;
                 }
+                case EVENT_PREFIXES.HZVIZ_MOD_VERSION: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.HOLLOWKNIGHT_VERSION: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.RECORDING_FILE_VERSION: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.RECORDING_ID: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.SESSION_END: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.SPELL_FIREBALL: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.SPELL_UP: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.SPELL_DOWN: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.NAIL_ART_CYCLONE: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.NAIL_ART_D_SLASH: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.NAIL_ART_G_SLASH: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.SUPER_DASH: {
+                    // TODO
+                    break;
+                }
                 default: {
-                    console.log('Unexpected event type: ', eventType, ' line ignored.', line);
-                    // TODO record errors, as we should show them to the user
+                    typeCheckNever(eventTypePrefix);
+                    console.log(`Unexpected event type |${eventType}| ignoring line |${line}|`);
+                    unknownEvents++;
                 }
             }
         } catch (e) {
-            console.error(e);
+            console.error(`Error while parsing line: |${line}|`, e);
+            parsingErrors++;
         }
     }
 
-    return new Recording(events);
+    return new ParsedRecording(events, unknownEvents, parsingErrors);
 }

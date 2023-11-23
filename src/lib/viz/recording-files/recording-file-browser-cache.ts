@@ -2,8 +2,8 @@ import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 
 const CACHE_NAME = 'run-file-cache';
 
-export function fetchWithRunfileCache(fileId: string, signedUrl: string) {
-    const request = new Request(`https://run-file-cache.internal/${fileId}`);
+export function fetchWithRunfileCache(fileId: string, version: number, signedUrl: string) {
+    const request = new Request(`https://run-file-cache.internal/${fileId}/${version}`);
 
     function fetchFromServer(cache: Cache | null) {
         return fetch(signedUrl).then((response) => {

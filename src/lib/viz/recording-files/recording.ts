@@ -36,6 +36,10 @@ export class PlayerPositionEvent extends RecordingEventBase {
 
 export type RecordingEvent = SceneEvent | PlayerPositionEvent;
 
-export class Recording {
-    constructor(public readonly sceneEvents: RecordingEvent[]) {}
+export class ParsedRecording {
+    constructor(
+        public readonly events: RecordingEvent[],
+        public readonly unknownEvents: number,
+        public readonly parsingErrors: number,
+    ) {}
 }

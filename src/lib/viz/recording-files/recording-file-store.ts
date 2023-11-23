@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import type { Recording } from './recording';
+import type { ParsedRecording as ParsedRecording } from './recording';
 import { parseRecordingFile } from './recording-file-parser';
 import { fetchWithRunfileCache } from './recording-file-browser-cache';
 
@@ -34,15 +34,17 @@ export type RunFile =
     | {
           fileId: string;
           finishedLoading: false;
+          partNumber: number;
           fileVersion: number;
           loadingProgress: number | null;
       }
     | {
           fileId: string;
           finishedLoading: true;
+          partNumber: number;
           fileVersion: number;
           loadingProgress: 1;
-          recording: Recording;
+          recording: ParsedRecording;
       };
 
 export type RunId = string;
@@ -51,7 +53,13 @@ export type RunFileStoreValue = Record<RunId, Record<RunFileId, RunFile>>;
 
 export const useRunFileStore = create(
     combine({ runs: {} as RunFileStoreValue }, (set, get) => {
-        function setLoaded(action: { fileVersion: number; runId: string; fileId: string; recording: Recording }) {
+        function setLoaded(action: {
+            fileVersion: number;
+            runId: string;
+            fileId: string;
+            recording: ParsedRecording;
+            partNumber: number;
+        }) {
             set((state) => ({
                 runs: {
                     ...state.runs,
@@ -63,6 +71,7 @@ export const useRunFileStore = create(
                             loadingProgress: 1,
                             recording: action.recording,
                             fileVersion: action.fileVersion,
+                            partNumber: action.partNumber,
                         },
                     },
                 },
@@ -73,6 +82,7 @@ export const useRunFileStore = create(
             runId: string;
             fileId: string;
             progress: number | null;
+            partNumber: number;
         }) {
             set((state) => ({
                 runs: {
@@ -84,6 +94,7 @@ export const useRunFileStore = create(
                             finishedLoading: false,
                             loadingProgress: action.progress,
                             fileVersion: action.fileVersion,
+                            partNumber: action.partNumber,
                         },
                     },
                 },
@@ -93,28 +104,36 @@ export const useRunFileStore = create(
             runId,
             fileId,
             version: fileVersion,
+            partNumber,
             downloadUrl,
         }: {
             runId: string;
             fileId: string;
             version: number;
+            partNumber: number;
             downloadUrl: string;
         }) {
             const isNewerThenCurrent = (get().runs[runId]?.[fileId]?.fileVersion ?? -1) < fileVersion;
             if (!isNewerThenCurrent) return;
             console.log('true', fileVersion, useRunFileStore.getState().runs[fileId]?.fileVersion ?? -1);
-            setLoadingProgress({ fileVersion, runId, fileId, progress: 0 });
+            setLoadingProgress({ partNumber, fileVersion, runId, fileId, progress: 0 });
 
-            const response = await fetchWithRunfileCache(fileId, downloadUrl).then((it) =>
+            const response = await fetchWithRunfileCache(fileId, fileVersion, downloadUrl).then((it) =>
                 wrapResultWithProgress(it, ({ loaded, total }) => {
                     // console.log('progress', { loaded, total });
-                    setLoadingProgress({ fileVersion, runId, fileId, progress: total ? loaded / total : null });
+                    setLoadingProgress({
+                        partNumber,
+                        fileVersion,
+                        runId,
+                        fileId,
+                        progress: total ? loaded / total : null,
+                    });
                 }),
             );
             const data = await response.text();
             const isStillCurrent = (get().runs[runId]?.[fileId]?.fileVersion ?? -1) === fileVersion;
             if (!isStillCurrent) return;
-            setLoaded({ fileVersion, runId, fileId, recording: parseRecordingFile(data) });
+            setLoaded({ partNumber, fileVersion, runId, fileId, recording: parseRecordingFile(data) });
         }
 
         return { ensureLoaded };

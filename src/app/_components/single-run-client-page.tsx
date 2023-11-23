@@ -29,7 +29,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 <CardContent></CardContent>
             </Card>
             <Card className="relative flex grow flex-col overflow-hidden">
-                <HKMap className="grow" recording={null} />
+                <HKMap className="grow" runFiles={runFiles.finishedLoading ? runFiles.files : null} />
                 {/*runFiles?.finishedLoading ? runFiles.recording : null} />*/}
                 <div
                     className={cn(

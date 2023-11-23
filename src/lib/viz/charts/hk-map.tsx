@@ -5,15 +5,16 @@ import { useEffect, useRef } from 'react';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { SCALE_FACTOR, roomData } from '../map-data/rooms';
 import { cn } from '@/lib/utils';
-import { PlayerPositionEvent, type Recording } from '../recording-files/recording';
+import { PlayerPositionEvent, type ParsedRecording } from '../recording-files/recording';
 import { playerPositionToMapPosition } from '../map-data/player-position';
+import { RunFile as StoreRunFile } from '../recording-files/recording-file-store';
 
 export interface HKMapProps {
     className?: string;
-    recording: Recording | null;
+    runFiles: StoreRunFile[] | null;
 }
 
-export function HKMap({ className, recording }: HKMapProps) {
+export function HKMap({ className, runFiles }: HKMapProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const svg = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined>>();
     const rootG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
@@ -116,10 +117,16 @@ export function HKMap({ className, recording }: HKMapProps) {
     }, []);
 
     useEffect(() => {
-        if (!recording) return;
+        if (!runFiles) return;
 
-        const points: [number, number][] = recording.sceneEvents
-            .filter((event): event is PlayerPositionEvent => event instanceof PlayerPositionEvent)
+        const points: [number, number][] = runFiles
+            .flatMap((file) =>
+                'recording' in file
+                    ? file.recording.events.filter(
+                          (event): event is PlayerPositionEvent => event instanceof PlayerPositionEvent,
+                      )
+                    : [],
+            )
             .map((event) => {
                 const transformed = playerPositionToMapPosition(event.position, event.sceneEvent);
                 if (!transformed) {
@@ -131,14 +138,14 @@ export function HKMap({ className, recording }: HKMapProps) {
             .filter((event): event is [number, number] => !!event);
         const line = d3.line()(points);
 
-        console.log('ctx', recording);
+        console.log('ctx', runFiles);
         rootG
             .current!.append('path')
             .attr('d', line)
             .attr('stroke-width', 0.05 * SCALE_FACTOR)
             .attr('stroke', 'red')
             .attr('fill', 'none');
-    }, [recording]);
+    }, [runFiles]);
 
     return <div className={cn('relative', className)} ref={containerRef} />;
 }

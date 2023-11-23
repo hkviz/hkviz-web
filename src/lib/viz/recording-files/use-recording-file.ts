@@ -48,6 +48,7 @@ export function useRecordingFiles(runId: string, fileInfos: AppRouterOutput['run
                 fileId: fileInfo.id,
                 version: fileInfo.version,
                 downloadUrl: fileInfo.signedUrl,
+                partNumber: fileInfo.partNumber,
             });
         });
     }, [ensureLoaded, fileInfos, runId]);
@@ -55,9 +56,8 @@ export function useRecordingFiles(runId: string, fileInfos: AppRouterOutput['run
     const filesRecord = useRunFileStore((state) => state.runs[runId] ?? {});
 
     return useMemo(() => {
-        const files = Object.values(filesRecord);
+        const files = Object.values(filesRecord).sort((a, b) => a.partNumber - b.partNumber);
         const allThere = files.length === fileIds.length;
-        console.log({ files, fileIds, allThere });
         return {
             files: Object.values(filesRecord),
             loadingProgress: files.reduce((acc, it) => acc + (it.loadingProgress ?? 0), 0) / fileIds.length,
