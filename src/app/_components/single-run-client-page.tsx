@@ -37,7 +37,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         runFiles.finishedLoading ? 'invisible scale-125 opacity-0 transition' : '',
                     )}
                 >
-                    <Progress value={(runFiles?.loadingProgress ?? 0) * 100} className="max-w-[400px]" />
+                    <Progress value={(runFiles?.loadingProgress ?? 0) * 99 + 1} className="max-w-[400px]" />
                 </div>
             </Card>
         </div>

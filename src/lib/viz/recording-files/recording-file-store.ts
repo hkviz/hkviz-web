@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import type { Recording } from './recording';
 import { parseRecordingFile } from './recording-file-parser';
+import { fetchWithRunfileCache } from './recording-file-browser-cache';
 
 // similar taken from https://stackoverflow.com/questions/47285198/fetch-api-download-progress-indicator
 function wrapResultWithProgress(
@@ -104,7 +105,7 @@ export const useRunFileStore = create(
             console.log('true', fileVersion, useRunFileStore.getState().runs[fileId]?.fileVersion ?? -1);
             setLoadingProgress({ fileVersion, runId, fileId, progress: 0 });
 
-            const response = await fetch(downloadUrl).then((it) =>
+            const response = await fetchWithRunfileCache(fileId, downloadUrl).then((it) =>
                 wrapResultWithProgress(it, ({ loaded, total }) => {
                     // console.log('progress', { loaded, total });
                     setLoadingProgress({ fileVersion, runId, fileId, progress: total ? loaded / total : null });
