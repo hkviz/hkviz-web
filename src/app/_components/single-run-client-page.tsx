@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import { type Session } from 'next-auth';
 import { useState } from 'react';
 import { HKMap } from '~/lib/viz/charts/hk-map';
-import { useRecordingFile } from '~/lib/viz/recording-files/use-recording-file';
+import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-file';
 import { type AppRouterOutput } from '~/server/api/types';
 
 interface Props {
@@ -16,13 +16,8 @@ interface Props {
 
 export function SingleRunClientPage({ session, runData }: Props) {
     const [version, setVersion] = useState(1);
-    console.log(session?.user.id);
 
-    const runFile = useRecordingFile({
-        runId: runData.id,
-        downloadUrl: runData.signedDownloadFileUrl,
-        fileVersion: version, // TODO
-    });
+    const runFiles = useRecordingFiles(runData.id, runData.files);
 
     return (
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
@@ -34,14 +29,15 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 <CardContent></CardContent>
             </Card>
             <Card className="relative flex grow flex-col overflow-hidden">
-                <HKMap className="grow" recording={runFile?.finishedLoading ? runFile.recording : null} />
+                <HKMap className="grow" recording={null} />
+                {/*runFiles?.finishedLoading ? runFiles.recording : null} />*/}
                 <div
                     className={cn(
                         'absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 p-4',
-                        runFile?.finishedLoading ? 'invisible scale-125 opacity-0 transition' : '',
+                        runFiles.finishedLoading ? 'invisible scale-125 opacity-0 transition' : '',
                     )}
                 >
-                    <Progress value={(runFile?.loadingProgress ?? 0) * 100} className="max-w-[400px]" />
+                    <Progress value={(runFiles?.loadingProgress ?? 0) * 100} className="max-w-[400px]" />
                 </div>
             </Card>
         </div>

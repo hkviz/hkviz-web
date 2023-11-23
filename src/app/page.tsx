@@ -1,12 +1,10 @@
 import Link from 'next/link';
 
-import { CreatePost } from '~/app/_components/create-post';
 import { getServerAuthSession } from '~/server/auth';
 import { ebGaramond } from '~/styles/fonts';
 import { ContentCenterWrapper } from './_components/content-wrapper';
 
 export default async function Home() {
-    // const hello = await api.post.hello.query({ text: "from tRPC" });
     const session = await getServerAuthSession();
 
     return (
@@ -18,10 +16,6 @@ export default async function Home() {
                     HKViz
                 </h1>
                 <div className="flex flex-col items-center gap-2">
-                    {/* <p className="text-2xl text-white">
-            {hello ? hello.greeting : "Loading tRPC query..."}
-          </p> */}
-
                     <div className="flex flex-col items-center justify-center gap-4">
                         <p className="text-center text-2xl text-white">
                             {session && <span>Logged in as {session.user?.name}</span>}
@@ -34,28 +28,7 @@ export default async function Home() {
                         </Link>
                     </div>
                 </div>
-
-                <CrudShowcase />
             </div>
         </ContentCenterWrapper>
-    );
-}
-
-async function CrudShowcase() {
-    const session = await getServerAuthSession();
-    if (!session?.user) return null;
-
-    // const latestPost = await api.post.getLatest.query();
-
-    return (
-        <div className="w-full max-w-xs">
-            {/* {latestPost ? (
-        <p className="truncate">Your most recent post: {latestPost.name}</p>
-      ) : (
-        <p>You have no posts yet.</p>
-      )} */}
-
-            <CreatePost />
-        </div>
     );
 }

@@ -1,63 +1,67 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { parseRecordingFile } from './recording-file-parser';
 import { useRunFileStore } from './recording-file-store';
+import { AppRouterOutput } from '~/server/api/types';
 
-// similar taken from https://stackoverflow.com/questions/47285198/fetch-api-download-progress-indicator
-function wrapResultWithProgress(
-    response: Response,
-    onProgress: (update: { loaded: number; total: number | null }) => void,
-) {
-    const contentLength = response.headers.get('content-length');
-    const total = contentLength ? parseInt(contentLength, 10) : null;
-    let loaded = 0;
+// export function useRecordingFile({
+//     runId,
+//     fileVersion,
+//     downloadUrl,
+// }: {
+//     runId: string;
+//     downloadUrl: string;
+//     fileVersion: number;
+// }) {
+//     const setLoaded = useRunFileStore((it) => it.setLoaded);
+//     const setLoadingProgress = useRunFileStore((it) => it.setLoadingProgress);
 
-    return new Response(
-        new ReadableStream({
-            async start(controller) {
-                const reader = response.body!.getReader();
-                for (;;) {
-                    const { done, value } = await reader.read();
-                    if (done) break;
-                    loaded += value.byteLength;
-                    onProgress({ loaded, total });
-                    controller.enqueue(value);
-                }
-                controller.close();
-            },
-        }),
-    );
-}
+//     useEffect(() => {
+//         void (async function fetchStream() {
+//             const isNewestVersion = () => (useRunFileStore.getState().runFiles[runId]?.fileVersion ?? -1) < fileVersion;
+//             // if version is higher or no version in state
+//             if (!isNewestVersion()) return;
+//             console.log('true', fileVersion, useRunFileStore.getState().runFiles[runId]?.fileVersion ?? -1);
+//             setLoadingProgress({ fileVersion, runFileId: runId, progress: 0 });
 
-export function useRecordingFile({
-    runId,
-    fileVersion,
-    downloadUrl,
-}: {
-    runId: string;
-    downloadUrl: string;
-    fileVersion: number;
-}) {
-    const setLoaded = useRunFileStore((it) => it.setLoaded);
-    const setLoadingProgress = useRunFileStore((it) => it.setLoadingProgress);
+//             const response = await fetch(downloadUrl).then((it) =>
+//                 wrapResultWithProgress(it, ({ loaded, total }) => {
+//                     // console.log('progress', { loaded, total });
+//                     setLoadingProgress({ fileVersion, runFileId: runId, progress: total ? loaded / total : null });
+//                 }),
+//             );
+//             const data = await response.text();
+//             setLoaded({ fileVersion, runFileId: runId, recording: parseRecordingFile(data) });
+//         })();
+//     }, [runId, fileVersion, downloadUrl, setLoadingProgress, setLoaded]);
+
+//     return useRunFileStore((state) => state.runFiles[runId]);
+//}
+
+export function useRecordingFiles(runId: string, fileInfos: AppRouterOutput['run']['getMetadataById']['files']) {
+    const fileIds = useMemo(() => fileInfos.map((it) => it.id), [fileInfos]);
+    const ensureLoaded = useRunFileStore((it) => it.ensureLoaded);
 
     useEffect(() => {
-        void (async function fetchStream() {
-            const isNewestVersion = () => (useRunFileStore.getState().runs[runId]?.fileVersion ?? -1) < fileVersion;
-            // if version is higher or no version in state
-            if (!isNewestVersion()) return;
-            console.log('true', fileVersion, useRunFileStore.getState().runs[runId]?.fileVersion ?? -1);
-            setLoadingProgress({ fileVersion, runId, progress: 0 });
+        fileInfos.forEach((fileInfo) => {
+            void ensureLoaded({
+                runId: runId,
+                fileId: fileInfo.id,
+                version: fileInfo.version,
+                downloadUrl: fileInfo.signedUrl,
+            });
+        });
+    }, [ensureLoaded, fileInfos, runId]);
 
-            const response = await fetch(downloadUrl).then((it) =>
-                wrapResultWithProgress(it, ({ loaded, total }) => {
-                    // console.log('progress', { loaded, total });
-                    setLoadingProgress({ fileVersion, runId, progress: total ? loaded / total : null });
-                }),
-            );
-            const data = await response.text();
-            setLoaded({ fileVersion, runId, recording: parseRecordingFile(data) });
-        })();
-    }, [runId, fileVersion, downloadUrl, setLoadingProgress, setLoaded]);
+    const filesRecord = useRunFileStore((state) => state.runs[runId] ?? {});
 
-    return useRunFileStore((state) => state.runs[runId]);
+    return useMemo(() => {
+        const files = Object.values(filesRecord);
+        const allThere = files.length === fileIds.length;
+        console.log({ files, fileIds, allThere });
+        return {
+            files: Object.values(filesRecord),
+            loadingProgress: files.reduce((acc, it) => acc + (it.loadingProgress ?? 0), 0) / fileIds.length,
+            finishedLoading: allThere && files.every((it) => it.finishedLoading),
+        };
+    }, [fileIds, filesRecord]);
 }

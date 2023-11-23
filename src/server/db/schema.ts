@@ -1,6 +1,19 @@
 import { relations, sql } from 'drizzle-orm';
-import { bigint, index, int, mysqlTableCreator, primaryKey, text, timestamp, varchar } from 'drizzle-orm/mysql-core';
+import {
+    bigint,
+    boolean,
+    index,
+    int,
+    mysqlTableCreator,
+    primaryKey,
+    text,
+    timestamp,
+    unique,
+    varchar,
+} from 'drizzle-orm/mysql-core';
 import { type AdapterAccount } from 'next-auth/adapters';
+
+const UUID_LENGTH = 36;
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -8,24 +21,7 @@ import { type AdapterAccount } from 'next-auth/adapters';
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const mysqlTable = mysqlTableCreator((name) => `hkviz-web_${name}`);
-
-export const posts = mysqlTable(
-    'post',
-    {
-        id: bigint('id', { mode: 'number' }).primaryKey().autoincrement(),
-        name: varchar('name', { length: 256 }),
-        createdById: varchar('createdById', { length: 255 }).notNull(),
-        createdAt: timestamp('created_at')
-            .default(sql`CURRENT_TIMESTAMP`)
-            .notNull(),
-        updatedAt: timestamp('updatedAt').onUpdateNow(),
-    },
-    (example) => ({
-        createdByIdIdx: index('createdById_idx').on(example.createdById),
-        nameIndex: index('name_idx').on(example.name),
-    }),
-);
+export const mysqlTable = mysqlTableCreator((name) => `hkviz_${name}`);
 
 export const users = mysqlTable('user', {
     id: varchar('id', { length: 255 }).notNull().primaryKey(),
@@ -95,19 +91,19 @@ export const verificationTokens = mysqlTable(
     }),
 );
 
-export const hkRuns = mysqlTable(
-    'hkrun',
+export const runs = mysqlTable(
+    'run',
     {
         // server generated. Used for urls
         id: varchar('id', { length: 255 }).notNull().primaryKey(),
 
         // user generated
-        runFileId: varchar('runId', { length: 255 }).notNull(),
+        localId: varchar('run_id', { length: 255 }).notNull(),
 
-        userId: varchar('userId', { length: 255 }).notNull(),
+        userId: varchar('user_id', { length: 255 }).notNull(),
 
-        // id used for key in r2 bucket
-        bucketFileId: varchar('fileId', { length: 255 }).notNull(),
+        // // id used for key in r2 bucket
+        // bucketFileId: varchar('fileId', { length: 255 }).notNull(),
 
         description: text('description'),
         createdAt: timestamp('created_at')
@@ -117,12 +113,30 @@ export const hkRuns = mysqlTable(
     },
     (run) => ({
         userIdIdx: index('userId_idx').on(run.userId),
-        runIdIdx: index('runId_idx').on(run.runFileId),
+        uniqueLocalIdUserId: unique('uniqueLocalIdUserId').on(run.localId, run.userId),
     }),
 );
 
-export const hkRunsRelations = relations(hkRuns, ({ one }) => ({
-    user: one(users, { fields: [hkRuns.userId], references: [users.id] }),
+export const runFiles = mysqlTable('runfile', {
+    // this id is also used to find the file inside the r2 bucket
+    id: varchar('id', { length: UUID_LENGTH }).notNull().primaryKey(),
+    runId: varchar('run_id', { length: UUID_LENGTH }).notNull(),
+    partNumber: int('part_number').notNull(),
+    uploadFinished: boolean('upload_finished').notNull(),
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
+    version: int('version').notNull().default(0),
+});
+
+export const hkRunsRelations = relations(runs, ({ one, many }) => ({
+    user: one(users, { fields: [runs.userId], references: [users.id] }),
+    files: many(runFiles),
+}));
+
+export const hkRunFilesRelations = relations(runFiles, ({ one }) => ({
+    run: one(runs, { fields: [runFiles.runId], references: [runs.id] }),
 }));
 
 export const ingameAuth = mysqlTable(
@@ -130,10 +144,11 @@ export const ingameAuth = mysqlTable(
     {
         // server generated, to authenticate a user from the game. Does only permit uploads.
         id: varchar('id', { length: 255 }).notNull().primaryKey(),
-        // just used for the allow url, since the id should not be inside the browser history
-        urlId: varchar('urlId', { length: 255 }),
+        // just used for the login url, since the actual id should not be inside the browser history.
+        // this urlId is immediatly changed or deleted after the login url is visited, even before canceling or allowing.
+        urlId: varchar('url_id', { length: 255 }),
         name: varchar('name', { length: 255 }).notNull(),
-        userId: varchar('userId', { length: 255 }),
+        userId: varchar('user_id', { length: 255 }),
         createdAt: timestamp('created_at')
             .default(sql`CURRENT_TIMESTAMP`)
             .notNull(),

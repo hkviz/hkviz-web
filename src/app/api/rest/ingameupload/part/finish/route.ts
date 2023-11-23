@@ -5,5 +5,6 @@ export const POST = async (req: NextRequest) => {
     const body: unknown = await req.json();
     // will be parsed by zod, so ok to pass any
     // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-explicit-any
-    return Response.json(await (await apiFromServer()).ingameAuth.init(body as any));
+    await (await apiFromServer()).run.markUploadPartFinished(body as any);
+    return Response.json({});
 };

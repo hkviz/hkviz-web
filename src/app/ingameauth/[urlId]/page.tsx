@@ -4,10 +4,8 @@ import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';
 import { IngameAuthCard } from './components/ingameauth-components';
-import { api } from '~/trpc/server';
 
 export default async function IngameAuthPage({ params }: { params: { urlId: string } }) {
-    // const hello = await api.post.hello.query({ text: "from tRPC" });
     const session = await getServerAuthSession();
 
     const ingameAuth = await (await apiFromServer()).ingameAuth.getByUrlIdIfNew({ urlId: params.urlId });

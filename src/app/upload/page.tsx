@@ -4,7 +4,6 @@ import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { UploadForm } from '../_components/upload-form';
 
 export default async function Upload() {
-    // const hello = await api.post.hello.query({ text: "from tRPC" });
     const session = await getServerAuthSession();
 
     if (!session) {

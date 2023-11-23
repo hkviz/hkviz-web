@@ -6,10 +6,24 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/
 import { ingameAuth } from '~/server/db/schema';
 
 import { and, eq, gte, isNull } from 'drizzle-orm';
+import type { db } from '~/server/db';
 
 function isMax10MinutesOld() {
     const someMinutesAgo = new Date(Date.now() - 1000 * 60 * 10);
     return gte(ingameAuth.createdAt, someMinutesAgo);
+}
+
+export async function getUserIdFromIngameSession(db_: typeof db, id: string) {
+    return (
+        (
+            await db_.query.ingameAuth.findFirst({
+                where: (ingameAuth, { eq }) => eq(ingameAuth.id, id),
+                columns: {
+                    userId: true,
+                },
+            })
+        )?.userId ?? raise(new Error('Could not find session'))
+    );
 }
 
 export const ingameAuthRouter = createTRPCRouter({

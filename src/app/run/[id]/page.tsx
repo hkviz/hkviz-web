@@ -5,11 +5,8 @@ import { ContentWrapper } from '../../_components/content-wrapper';
 import { apiFromServer } from '~/trpc/from-server';
 
 export default async function SingleRunPage({ params }: { params: { id: string } }) {
-    // const hello = await api.post.hello.query({ text: "from tRPC" });
     const session = await getServerAuthSession();
     console.log('xxyxiaksik', { params });
-
-    // const runData = await api.run.getMetadataById.query({ id: params.id });
 
     const runData = await (await apiFromServer()).run.getMetadataById({ id: params.id });
 
