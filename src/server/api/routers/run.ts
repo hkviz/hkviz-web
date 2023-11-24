@@ -58,6 +58,7 @@ export const runRouter = createTRPCRouter({
                             partNumber: true,
                             uploadFinished: true,
                             version: true,
+                            createdAt: true,
                         },
                     },
                 },
@@ -65,6 +66,9 @@ export const runRouter = createTRPCRouter({
 
         return {
             ...metadata,
+            // TODO use metadata from recording file
+            startedAt: metadata.files[0]?.createdAt,
+            lastPlayedAt: metadata.files[metadata.files.length - 1]?.createdAt,
             files: await Promise.all(
                 metadata.files
                     .filter((it) => it.uploadFinished)

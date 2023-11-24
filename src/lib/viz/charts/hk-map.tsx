@@ -1,12 +1,12 @@
 'use client';
 
+import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
 import { mapVisualExtends } from '../map-data/map-extends';
-import { SCALE_FACTOR, roomData } from '../map-data/rooms';
-import { cn } from '@/lib/utils';
-import { PlayerPositionEvent, type ParsedRecording } from '../recording-files/recording';
 import { playerPositionToMapPosition } from '../map-data/player-position';
+import { SCALE_FACTOR, roomData } from '../map-data/rooms';
+import { PlayerPositionEvent } from '../recording-files/recording';
 import { RunFile as StoreRunFile } from '../recording-files/recording-file-store';
 
 export interface HKMapProps {
