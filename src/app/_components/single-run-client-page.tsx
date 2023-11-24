@@ -1,17 +1,17 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Label } from '@/components/ui/label';
 import { Progress } from '@/components/ui/progress';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { type Session } from 'next-auth';
 import { useState } from 'react';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-file';
 import { type AppRouterOutput } from '~/server/api/types';
-import { LocalDate, RelativeDate } from './client-date';
-import { Label } from '@/components/ui/label';
+import { RelativeDate } from './client-date';
 
 interface Props {
     session: Session | null;
@@ -58,7 +58,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         </Table>
                     </CardContent>
                 </Card>
-                <Card className="grow max-md:min-w-[300px]">
+                <Card className="grow max-md:min-w-[300pxF]">
                     <CardHeader>
                         <CardTitle>View</CardTitle>
                     </CardHeader>
