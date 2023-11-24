@@ -77,7 +77,7 @@ export function HKMap({ className, runFiles }: HKMapProps) {
             .attr('y', (r) => r.spritePosition.min.y)
             .attr('width', (r) => r.spritePosition.size.x)
             .attr('height', (r) => r.spritePosition.size.y)
-            // .attr('preserveAspectRatio', 'none')
+            .attr('preserveAspectRatio', 'none')
             .attr('class', 'svg-room');
 
         // actual rect which is masked by image. This allows us to have colorful rooms, while most images themselves are white

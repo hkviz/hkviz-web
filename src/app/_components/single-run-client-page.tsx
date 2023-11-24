@@ -92,7 +92,6 @@ export function SingleRunClientPage({ session, runData }: Props) {
             </div>
             <Card className="relative flex grow flex-col overflow-hidden">
                 <HKMap className="grow" runFiles={runFiles.finishedLoading ? runFiles.files : null} />
-                {/*runFiles?.finishedLoading ? runFiles.recording : null} />*/}
                 <div
                     className={cn(
                         'absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 p-4',
