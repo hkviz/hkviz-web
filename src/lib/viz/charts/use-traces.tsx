@@ -1,10 +1,7 @@
-import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
-import { Ref, RefObject, useEffect, useMemo, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
 import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
-import { mapVisualExtends } from '../map-data/map-extends';
-import { playerPositionToMapPosition } from '../map-data/player-position';
-import { SCALE_FACTOR, roomData } from '../map-data/rooms';
+import { SCALE_FACTOR } from '../map-data/rooms';
 import { PlayerPositionEvent } from '../recording-files/recording';
 
 interface Props {
@@ -26,9 +23,8 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
         const positionEvents = recording.events.filter((event): event is PlayerPositionEvent => {
             return (
                 event instanceof PlayerPositionEvent &&
-                event.previousPlayerPositionEvent != null &&
-                event.sceneEvent.originOffset != null &&
-                event.previousPlayerPositionEvent.sceneEvent.originOffset != null
+                event.mapPosition != null &&
+                event.previousPlayerPositionEventWithMapPosition?.mapPosition != null
             );
         });
         animatedTraceG.current!.selectAll('path').remove();
@@ -38,19 +34,18 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
             .data(positionEvents)
             .enter()
             .append('path')
-            .attr('d', (d) =>
-                d3.line()([
-                    playerPositionToMapPosition(
-                        d.previousPlayerPositionEvent!.position,
-                        d.previousPlayerPositionEvent!.sceneEvent,
-                    )!.toD3(),
-                    playerPositionToMapPosition(d.position, d.sceneEvent)!.toD3(),
-                ]),
-            )
+            .attr('d', (d) => {
+                return d3.line()([
+                    d.previousPlayerPositionEventWithMapPosition!.mapPosition!.toD3(),
+                    d.mapPosition!.toD3(),
+                ]);
+            })
             .attr('stroke-width', 0.05 * SCALE_FACTOR)
             // .attr('stroke-linecap', 'round')
-            .attr('stroke', 'red')
-            .attr('fill', 'none');
+            // .attr('stroke', 'red')
+            .attr('class', 'text-rose-600 stroke-current')
+            .attr('fill', 'none')
+            .attr('data-ms-into-game', (d) => d.msIntoGame);
     }, [recording, animatedTraceG]);
 
     useEffect(() => {
@@ -59,7 +54,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
             if (traceVisibility === 'all') return 1;
             if (traceVisibility === 'hide') return 0;
             if (msIntoGame > animationMsIntoGame) return 0;
-            if (msIntoGame <= animationMsIntoGame - traceAnimationLengthMs) return 0;
+            if (msIntoGame < animationMsIntoGame - traceAnimationLengthMs) return 0;
 
             const opacity = 1 - (animationMsIntoGame - msIntoGame) / traceAnimationLengthMs;
             return opacity;

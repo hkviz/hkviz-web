@@ -64,6 +64,9 @@ function createViewOptionsStore() {
                 function setAnimationMsIntoGame(animationMsIntoGame: number) {
                     setLimitedAnimationMsIntoGame(animationMsIntoGame);
                 }
+                function incrementAnimationMsIntoGame(increment: number) {
+                    setLimitedAnimationMsIntoGame(get().animationMsIntoGame + increment);
+                }
                 function setAnimationSpeedMultiplier(animationSpeedMultiplier: number) {
                     set({ animationSpeedMultiplier });
                 }
@@ -84,6 +87,7 @@ function createViewOptionsStore() {
                     setAnimationMsIntoGame,
                     setAnimationSpeedMultiplier,
                     setRecording,
+                    incrementAnimationMsIntoGame,
                 };
             },
         ),

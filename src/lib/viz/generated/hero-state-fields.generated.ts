@@ -334,4 +334,4 @@ export const heroStateFieldsGenerated = {
         notPartOfLog: true,
         onlyTruthLogged: false,
     },
-};
+} as const;

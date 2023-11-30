@@ -3,21 +3,14 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Slider } from '@/components/ui/slider';
-import {
-    DropdownMenu,
-    DropdownMenuTrigger,
-    DropdownMenuItem,
-    DropdownMenuContent,
-    DropdownMenuLabel,
-} from '@/components/ui/dropdown-menu';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useEffect } from 'react';
+import { MatSymbol } from '~/app/_components/mat-symbol';
 import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { MatSymbol } from '~/app/_components/mat-symbol';
 
 function zeroPad(num: number, places: number) {
     return String(num).padStart(places, '0');
@@ -52,6 +45,8 @@ function Duration({ ms, className }: { ms: number; className?: string }) {
     );
 }
 
+const intervalMs = 64; // 1000 / 30;
+
 export function AnimationOptions({
     useViewOptionsStore,
     recording,
@@ -64,6 +59,7 @@ export function AnimationOptions({
     const setIsPlaying = useViewOptionsStore((s) => s.setIsPlaying);
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
+    const incrementAnimationMsIntoGame = useViewOptionsStore((s) => s.incrementAnimationMsIntoGame);
     const animationSpeedMultiplier = useViewOptionsStore((s) => s.animationSpeedMultiplier);
     const setAnimationSpeedMultiplier = useViewOptionsStore((s) => s.setAnimationSpeedMultiplier);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
@@ -72,12 +68,11 @@ export function AnimationOptions({
         if (!isPlaying) return;
 
         const interval = setInterval(() => {
-            const nextMs = animationMsIntoGame + 100 * animationSpeedMultiplier;
-            setAnimationMsIntoGame(nextMs);
-        }, 100);
+            incrementAnimationMsIntoGame(intervalMs * animationSpeedMultiplier);
+        }, intervalMs);
 
         return () => clearInterval(interval);
-    }, [isPlaying, animationMsIntoGame, recording, setAnimationMsIntoGame, setIsPlaying, animationSpeedMultiplier]);
+    }, [isPlaying, animationSpeedMultiplier, incrementAnimationMsIntoGame]);
 
     return (
         <Card className="g-1 flex flex-row items-center justify-center">

@@ -12,7 +12,10 @@ import {
     RecordingFileVersionEvent,
     SceneEvent,
     type RecordingEvent,
+    HeroStateEvent,
 } from './recording';
+import { heroStateFields } from '../hero-state/hero-states';
+import { raise } from '~/lib/utils';
 
 function parseFloatAnyComma(value: string) {
     return parseFloat(value.replace(',', '.'));
@@ -66,6 +69,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
 
             // ------ EVENT TYPE ------
             const partialEventType = eventType[0] as PartialEventPrefix;
+            const eventTypeSuffix = () => eventType.slice(1);
             switch (partialEventType) {
                 case PARTIAL_EVENT_PREFIXES.PLAYER_DATA_SHORTNAME: {
                     // TODO
@@ -77,6 +81,15 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 }
                 case PARTIAL_EVENT_PREFIXES.HERO_CONTROLER_STATE_SHORTNAME: {
                     // TODO
+                    events.push(
+                        new HeroStateEvent({
+                            timestamp,
+                            field:
+                                heroStateFields.byShortCode[eventTypeSuffix()] ??
+                                raise(new Error('Unknown field short code' + eventTypeSuffix())),
+                            value: args[0] === '1',
+                        }),
+                    );
                     continue LINE_LOOP;
                 }
                 case PARTIAL_EVENT_PREFIXES.HERO_CONTROLER_STATE_LONGNAME: {

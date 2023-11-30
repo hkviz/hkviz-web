@@ -1,5 +1,5 @@
 import { raise } from '~/lib/utils';
-import { ParsedRecording, RecordingFileVersionEvent, type RecordingEvent } from './recording';
+import { ParsedRecording, RecordingFileVersionEvent, type RecordingEvent, HeroStateEvent } from './recording';
 
 export function combineRecordings(recordings: ParsedRecording[]): ParsedRecording {
     console.log({ recordings });
@@ -7,6 +7,8 @@ export function combineRecordings(recordings: ParsedRecording[]): ParsedRecordin
     let msIntoGame = 0;
     let lastTimestamp: number =
         recordings[0]?.events?.[0]?.timestamp ?? raise(new Error('No events found in first recording'));
+
+    let isPaused = true;
 
     for (const recording of recordings.sort((a, b) => a.partNumber! - b.partNumber!)) {
         for (const event of recording.events) {
@@ -16,8 +18,16 @@ export function combineRecordings(recordings: ParsedRecording[]): ParsedRecordin
                 // TODO add remaining event checks
                 console.log('time between sessions not counted', event.timestamp - lastTimestamp);
                 lastTimestamp = event.timestamp;
+                isPaused = false;
+            } else if (event instanceof HeroStateEvent && event.field.name === 'isPaused') {
+                isPaused = event.value;
+                if (!isPaused) {
+                    lastTimestamp = event.timestamp;
+                }
             } else {
-                msIntoGame += event.timestamp - lastTimestamp;
+                if (!isPaused) {
+                    msIntoGame += event.timestamp - lastTimestamp;
+                }
                 lastTimestamp = event.timestamp;
             }
 

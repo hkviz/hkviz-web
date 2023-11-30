@@ -1,6 +1,8 @@
 import { raise } from '~/lib/utils';
 import { type PlayerDataField } from '../player-data/player-data';
 import type { Vector2 } from '../types/vector2';
+import { HeroStateField } from '../hero-state/hero-states';
+import { playerPositionToMapPosition } from '../map-data/player-position';
 
 type RecordingEventBaseOptions = Pick<RecordingEventBase, 'timestamp'>;
 abstract class RecordingEventBase {
@@ -40,13 +42,21 @@ type PlayerPositionEventOptions = RecordingEventBaseOptions &
 export class PlayerPositionEvent extends RecordingEventBase {
     public position: Vector2;
     public sceneEvent: SceneEvent;
-    public previousPlayerPositionEvent: PlayerPositionEventOptions | null = null;
+    public previousPlayerPositionEvent: PlayerPositionEvent | null;
+
+    public mapPosition: Vector2 | null;
+    public previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null;
 
     constructor(options: PlayerPositionEventOptions) {
         super(options);
         this.position = options.position;
         this.sceneEvent = options.sceneEvent;
         this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
+
+        this.mapPosition = playerPositionToMapPosition(this.position, this.sceneEvent) ?? null;
+        this.previousPlayerPositionEventWithMapPosition = this.previousPlayerPositionEvent?.mapPosition
+            ? this.previousPlayerPositionEvent
+            : this.previousPlayerPositionEvent?.previousPlayerPositionEventWithMapPosition ?? null;
     }
 }
 
@@ -62,7 +72,24 @@ export class PlayerDataEvent extends RecordingEventBase {
     }
 }
 
-export type RecordingEvent = SceneEvent | PlayerPositionEvent | PlayerDataEvent | RecordingFileVersionEvent;
+type HeroStateEventOptions = RecordingEventBaseOptions & Pick<HeroStateEvent, 'field' | 'value'>;
+export class HeroStateEvent extends RecordingEventBase {
+    public field: HeroStateField;
+    public value: boolean;
+
+    constructor(options: HeroStateEventOptions) {
+        super(options);
+        this.field = options.field;
+        this.value = options.value;
+    }
+}
+
+export type RecordingEvent =
+    | SceneEvent
+    | PlayerPositionEvent
+    | PlayerDataEvent
+    | RecordingFileVersionEvent
+    | HeroStateEvent;
 
 export class ParsedRecording {
     constructor(

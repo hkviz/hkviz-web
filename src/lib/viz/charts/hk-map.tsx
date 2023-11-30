@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { roomData } from '../map-data/rooms';
@@ -125,5 +125,5 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     }, []);
 
     useMapTraces({ useViewOptionsStore, animatedTraceG });
-    return <div className={cn('relative', className)} ref={containerRef} />;
+    return useMemo(() => <div className={cn('relative', className)} ref={containerRef} />, [className, containerRef]);
 }
