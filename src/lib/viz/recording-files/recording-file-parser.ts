@@ -1,4 +1,4 @@
-import { assertNever, typeCheckNever } from '~/lib/utils';
+import { typeCheckNever } from '~/lib/utils';
 import { Vector2 } from '../types/vector2';
 import {
     EVENT_PREFIXES,
@@ -7,13 +7,12 @@ import {
     type PartialEventPrefix,
 } from './event-type-prefixes';
 import {
-    PlayerPositionEvent,
     ParsedRecording,
-    type RecordingEvent,
-    SceneEvent,
+    PlayerPositionEvent,
     RecordingFileVersionEvent,
+    SceneEvent,
+    type RecordingEvent,
 } from './recording';
-import { type } from 'os';
 
 function parseFloatAnyComma(value: string) {
     return parseFloat(value.replace(',', '.'));
