@@ -1,5 +1,3 @@
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-
 const CACHE_NAME = 'run-file-cache';
 
 export function fetchWithRunfileCache(fileId: string, version: number, signedUrl: string) {

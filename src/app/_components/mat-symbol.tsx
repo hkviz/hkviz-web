@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils';
-import { MaterialSymbol } from 'material-symbols';
-import { CSSProperties } from 'react';
+import { type MaterialSymbol } from 'material-symbols';
+import { type CSSProperties } from 'react';
 import { materialSymbols } from '~/styles/fonts';
 
 const style: CSSProperties = {

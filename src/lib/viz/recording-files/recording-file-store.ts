@@ -3,7 +3,7 @@ import { combine } from 'zustand/middleware';
 import type { ParsedRecording as ParsedRecording } from './recording';
 import { parseRecordingFile } from './recording-file-parser';
 import { fetchWithRunfileCache } from './recording-file-browser-cache';
-import { AppRouterOutput } from '~/server/api/types';
+import { type AppRouterOutput } from '~/server/api/types';
 import { combineRecordings } from './combine-recordings';
 
 // similar taken from https://stackoverflow.com/questions/47285198/fetch-api-download-progress-indicator

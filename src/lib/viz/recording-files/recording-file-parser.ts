@@ -1,6 +1,11 @@
 import { assertNever, typeCheckNever } from '~/lib/utils';
 import { Vector2 } from '../types/vector2';
-import { EVENT_PREFIXES, PARTIAL_EVENT_PREFIXES, type EventPrefix, PartialEventPrefix } from './event-type-prefixes';
+import {
+    EVENT_PREFIXES,
+    PARTIAL_EVENT_PREFIXES,
+    type EventPrefix,
+    type PartialEventPrefix,
+} from './event-type-prefixes';
 import {
     PlayerPositionEvent,
     ParsedRecording,
@@ -60,7 +65,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
             previousTimestamp = timestamp;
 
             // ------ EVENT TYPE ------
-            const didParse = true;
+            let didParse = true;
             const partialEventType = eventType[0] as PartialEventPrefix;
             switch (partialEventType) {
                 case PARTIAL_EVENT_PREFIXES.PLAYER_DATA_SHORTNAME: {
@@ -81,6 +86,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 }
                 default: {
                     typeCheckNever(partialEventType);
+                    didParse = false;
                 }
             }
 
@@ -175,9 +181,11 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     break;
                 }
                 default: {
-                    typeCheckNever(eventTypePrefix);
-                    console.log(`Unexpected event type |${eventType}| ignoring line |${line}|`);
-                    unknownEvents++;
+                    if (!didParse) {
+                        typeCheckNever(eventTypePrefix);
+                        console.log(`Unexpected event type |${eventType}| ignoring line |${line}|`);
+                        unknownEvents++;
+                    }
                 }
             }
         } catch (e) {

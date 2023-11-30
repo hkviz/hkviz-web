@@ -7,7 +7,7 @@ import { mapVisualExtends } from '../map-data/map-extends';
 import { playerPositionToMapPosition } from '../map-data/player-position';
 import { SCALE_FACTOR, roomData } from '../map-data/rooms';
 import { PlayerPositionEvent } from '../recording-files/recording';
-import { RunFile as StoreRunFile } from '../recording-files/recording-file-store';
+import { type RunFile as StoreRunFile } from '../recording-files/recording-file-store';
 
 export interface HKMapProps {
     className?: string;

@@ -1,5 +1,5 @@
 import { raise } from '~/lib/utils';
-import { PlayerDataField } from '../player-data/player-data';
+import { type PlayerDataField } from '../player-data/player-data';
 import type { Vector2 } from '../types/vector2';
 
 type RecordingEventBaseOptions = Pick<RecordingEventBase, 'timestamp'>;

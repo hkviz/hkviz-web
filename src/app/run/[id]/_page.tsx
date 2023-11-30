@@ -1,22 +1,18 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { Slider } from '@/components/ui/slider';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { PauseIcon, PlayIcon } from 'lucide-react';
 import { type Session } from 'next-auth';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files';
 import { type AppRouterOutput } from '~/server/api/types';
 import { RelativeDate } from '../../_components/client-date';
+import { AnimationOptions } from './_animation_options';
 import { useViewOptionsStoreRoot } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
-import { AnimationOptions } from './_animation_options';
 
 interface Props {
     session: Session | null;

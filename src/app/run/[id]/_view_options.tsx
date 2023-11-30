@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { MatSymbol } from '~/app/_components/mat-symbol';
-import { UseViewOptionsStore } from './_viewOptionsStore';
+import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const roomVisibility = useViewOptionsStore((s) => s.roomVisibility);

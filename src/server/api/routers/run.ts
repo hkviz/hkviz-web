@@ -6,7 +6,7 @@ import { and, eq } from 'drizzle-orm';
 import { raise } from '~/lib/utils';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
 import { TRPCError } from '@trpc/server';
-import { DB } from '~/server/db';
+import { type DB } from '~/server/db';
 import { runFiles, runs } from '~/server/db/schema';
 import { getUserIdFromIngameSession } from './ingameauth';
 

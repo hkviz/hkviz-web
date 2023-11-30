@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import { ParsedRecording } from '~/lib/viz/recording-files/recording';
+import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
 
 export type RoomVisibility = 'all' | 'visited' | 'mapped';
 export type TraceVisibility = 'all' | 'animated' | 'hide';

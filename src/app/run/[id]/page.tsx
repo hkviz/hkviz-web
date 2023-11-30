@@ -1,10 +1,9 @@
+import { TRPCError } from '@trpc/server';
+import { notFound } from 'next/navigation';
 import { SingleRunClientPage } from '~/app/run/[id]/_page';
 import { getServerAuthSession } from '~/server/auth';
-import { api } from '~/trpc/server';
-import { ContentWrapper } from '../../_components/content-wrapper';
 import { apiFromServer } from '~/trpc/from-server';
-import { notFound } from 'next/navigation';
-import { TRPCError } from '@trpc/server';
+import { ContentWrapper } from '../../_components/content-wrapper';
 
 export default async function SingleRunPage({ params }: { params: { id: string } }) {
     const session = await getServerAuthSession();

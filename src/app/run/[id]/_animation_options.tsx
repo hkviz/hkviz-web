@@ -2,15 +2,14 @@
 
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { PauseIcon, PlayIcon } from 'lucide-react';
-import { useEffect, useMemo } from 'react';
-import { ParsedRecording } from '~/lib/viz/recording-files/recording';
-import { UseViewOptionsStore } from './_viewOptionsStore';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Input } from '@/components/ui/input';
+import { useEffect } from 'react';
+import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
+import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 function zeroPad(num: number, places: number) {
     return String(num).padStart(places, '0');

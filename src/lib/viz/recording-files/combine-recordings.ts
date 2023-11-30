@@ -1,5 +1,5 @@
 import { raise } from '~/lib/utils';
-import { ParsedRecording, RecordingFileVersionEvent, type RecordingEvent, PlayerDataEvent } from './recording';
+import { ParsedRecording, RecordingFileVersionEvent, type RecordingEvent } from './recording';
 
 export function combineRecordings(recordings: ParsedRecording[]): ParsedRecording {
     console.log({ recordings });
