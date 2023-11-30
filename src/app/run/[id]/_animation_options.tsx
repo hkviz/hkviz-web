@@ -7,7 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Slider } from '@/components/ui/slider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { MatSymbol } from '~/app/_components/mat-symbol';
 import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
@@ -45,48 +45,34 @@ function Duration({ ms, className }: { ms: number; className?: string }) {
     );
 }
 
-const intervalMs = 64; // 1000 / 30;
+const intervalMs = 1000 / 60;
 
-export function AnimationOptions({
-    useViewOptionsStore,
-    recording,
-}: {
-    useViewOptionsStore: UseViewOptionsStore;
-    recording: ParsedRecording;
-}) {
+function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const isPlaying = useViewOptionsStore((s) => s.isPlaying);
     const togglePlaying = useViewOptionsStore((s) => s.toggleIsPlaying);
+    return (
+        <Tooltip>
+            <TooltipTrigger asChild>
+                <Button onClick={togglePlaying} variant="ghost">
+                    <MatSymbol icon={isPlaying ? 'pause' : 'play_arrow'} />
+                </Button>
+            </TooltipTrigger>
+            <TooltipContent>{isPlaying ? 'Pause' : 'Play'}</TooltipContent>
+        </Tooltip>
+    );
+}
+
+// this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
+// Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
+export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+    const isPlaying = useViewOptionsStore((s) => s.isPlaying);
     const setIsPlaying = useViewOptionsStore((s) => s.setIsPlaying);
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
-    const incrementAnimationMsIntoGame = useViewOptionsStore((s) => s.incrementAnimationMsIntoGame);
-    const animationSpeedMultiplier = useViewOptionsStore((s) => s.animationSpeedMultiplier);
-    const setAnimationSpeedMultiplier = useViewOptionsStore((s) => s.setAnimationSpeedMultiplier);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
-
-    useEffect(() => {
-        if (!isPlaying) return;
-
-        const interval = setInterval(() => {
-            incrementAnimationMsIntoGame(intervalMs * animationSpeedMultiplier);
-        }, intervalMs);
-
-        return () => clearInterval(interval);
-    }, [isPlaying, animationSpeedMultiplier, incrementAnimationMsIntoGame]);
-
     return (
-        <Card className="g-1 flex flex-row items-center justify-center">
-            <Tooltip>
-                <TooltipTrigger asChild>
-                    <Button onClick={togglePlaying} variant="ghost">
-                        <MatSymbol icon={isPlaying ? 'pause' : 'play_arrow'} />
-                    </Button>
-                </TooltipTrigger>
-                <TooltipContent>{isPlaying ? 'Pause' : 'Play'}</TooltipContent>
-            </Tooltip>
-
+        <>
             <Duration ms={animationMsIntoGame} className="pr-3" />
-
             <Slider
                 value={[animationMsIntoGame]}
                 min={timeFrame.min}
@@ -100,6 +86,36 @@ export function AnimationOptions({
                     setAnimationMsIntoGame(values[0]!);
                 }}
             />
+        </>
+    );
+}
+
+export function AnimationOptions({
+    useViewOptionsStore,
+}: {
+    useViewOptionsStore: UseViewOptionsStore;
+    recording: ParsedRecording;
+}) {
+    const isPlaying = useViewOptionsStore((s) => s.isPlaying);
+    const incrementAnimationMsIntoGame = useViewOptionsStore((s) => s.incrementAnimationMsIntoGame);
+    const animationSpeedMultiplier = useViewOptionsStore((s) => s.animationSpeedMultiplier);
+    const setAnimationSpeedMultiplier = useViewOptionsStore((s) => s.setAnimationSpeedMultiplier);
+
+    useEffect(() => {
+        if (!isPlaying) return;
+
+        const interval = setInterval(() => {
+            incrementAnimationMsIntoGame(intervalMs * animationSpeedMultiplier);
+        }, intervalMs);
+
+        return () => clearInterval(interval);
+    }, [isPlaying, animationSpeedMultiplier, incrementAnimationMsIntoGame]);
+
+    return (
+        <Card className="g-1 flex flex-row items-center justify-center">
+            <PlayButton useViewOptionsStore={useViewOptionsStore} />
+            <AnimationTimeLine useViewOptionsStore={useViewOptionsStore} />
+
             <div className="relative">
                 <Popover>
                     <PopoverTrigger asChild>

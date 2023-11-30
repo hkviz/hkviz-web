@@ -20,8 +20,6 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
 
     const animatedTraceG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
 
-    const allTraceG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
-
     useEffect(() => {
         svg.current = d3
             .select(containerRef.current)
@@ -62,7 +60,6 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             .attr('data-scene-name', (r) => r.sceneName);
 
         animatedTraceG.current = rootG.current.append('g').attr('data-group', 'traces-animated');
-        allTraceG.current = rootG.current.append('g').attr('data-group', 'traces-all');
 
         // mask for each rooms rect
         const roomMask = roomGs.append('svg:mask').attr('id', (r) => 'mask_' + r.spriteInfo.name);
