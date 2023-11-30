@@ -3,14 +3,14 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "build": "next build --debug",
+        "build": "npm run tsc && next build --debug",
         "db:push": "dotenv drizzle-kit push:mysql",
         "db:studio": "dotenv drizzle-kit studio",
         "dev": "next dev",
         "lint": "next lint",
         "lint:fix": "next lint --fix",
         "start": "next start",
-        "tsc": "tsc --noEmit"
+        "tsc": "tsc --noEmit --verbose"
     },
     "dependencies": {
         "@auth/drizzle-adapter": "^0.3.2",
