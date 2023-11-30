@@ -11,6 +11,7 @@ export const playerDataFields = {
     byFieldName: playerDataFieldsGenerated,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     byShortCode: Object.fromEntries(playerDataFieldsArray.map((it) => [it.shortCode, it])),
+    // this fancy types somehow do not build in vercel, but work locally. So no fancy types for now
     //  as any as {
     //     [Field in PlayerDataFieldShortCode]: PlayerDataFieldByShortCode<Field>;
     // },

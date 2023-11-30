@@ -35,15 +35,18 @@ export class SceneEvent extends RecordingEventBase {
     }
 }
 
-type PlayerPositionEventOptions = RecordingEventBaseOptions & Pick<PlayerPositionEvent, 'position' | 'sceneEvent'>;
+type PlayerPositionEventOptions = RecordingEventBaseOptions &
+    Pick<PlayerPositionEvent, 'position' | 'sceneEvent' | 'previousPlayerPositionEvent'>;
 export class PlayerPositionEvent extends RecordingEventBase {
     public position: Vector2;
     public sceneEvent: SceneEvent;
+    public previousPlayerPositionEvent: PlayerPositionEventOptions | null = null;
 
     constructor(options: PlayerPositionEventOptions) {
         super(options);
         this.position = options.position;
         this.sceneEvent = options.sceneEvent;
+        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
     }
 }
 

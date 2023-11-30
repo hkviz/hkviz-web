@@ -30,6 +30,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
 
     let lastSceneEvent: SceneEvent | undefined = undefined;
     let previousPlayerPosition: Vector2 | undefined = undefined;
+    let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
     let previousTimestamp: number | undefined = undefined;
 
     LINE_LOOP: for (const line of lines) {
@@ -64,7 +65,6 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
             previousTimestamp = timestamp;
 
             // ------ EVENT TYPE ------
-            let didParse = true;
             const partialEventType = eventType[0] as PartialEventPrefix;
             switch (partialEventType) {
                 case PARTIAL_EVENT_PREFIXES.PLAYER_DATA_SHORTNAME: {
@@ -85,7 +85,6 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 }
                 default: {
                     typeCheckNever(partialEventType);
-                    didParse = false;
                 }
             }
 
@@ -116,13 +115,13 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                             throw new Error('Could not assign player position to player position event');
                         }
                         previousPlayerPosition = position;
-                        events.push(
-                            new PlayerPositionEvent({
-                                timestamp,
-                                position,
-                                sceneEvent: lastSceneEvent,
-                            }),
-                        );
+                        previousPlayerPositionEvent = new PlayerPositionEvent({
+                            timestamp,
+                            position,
+                            sceneEvent: lastSceneEvent,
+                            previousPlayerPositionEvent: previousPlayerPositionEvent,
+                        });
+                        events.push(previousPlayerPositionEvent);
                     }
                     break;
                 }
@@ -180,11 +179,9 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     break;
                 }
                 default: {
-                    if (!didParse) {
-                        typeCheckNever(eventTypePrefix);
-                        console.log(`Unexpected event type |${eventType}| ignoring line |${line}|`);
-                        unknownEvents++;
-                    }
+                    typeCheckNever(eventTypePrefix);
+                    console.log(`Unexpected event type |${eventType}| ignoring line |${line}|`);
+                    unknownEvents++;
                 }
             }
         } catch (e) {

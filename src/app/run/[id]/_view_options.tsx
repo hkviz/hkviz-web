@@ -25,7 +25,7 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                         <TableRow>
                             <TableHead>
                                 <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
-                                    <MatSymbol className="mr-2" icon="widgets" />
+                                    <MatSymbol className="mr-2" icon="dashboard" />
                                     Visible rooms
                                 </Label>
                             </TableHead>

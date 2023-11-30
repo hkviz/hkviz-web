@@ -77,7 +77,11 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <TabsTrigger value="password">Game</TabsTrigger>
                     </TabsList>
                 </Tabs> */}
-                    <HKMap className="grow" runFiles={runFiles.finishedLoading ? runFiles.files : null} />
+                    <HKMap
+                        className="grow"
+                        runFiles={runFiles.finishedLoading ? runFiles.files : null}
+                        useViewOptionsStore={useViewOptionsStore}
+                    />
                     <div
                         className={cn(
                             'absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 p-4',

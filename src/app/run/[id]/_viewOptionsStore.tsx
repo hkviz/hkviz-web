@@ -14,9 +14,10 @@ function createViewOptionsStore() {
                 traceVisibility: 'animated' as TraceVisibility,
                 isPlaying: false as boolean,
                 animationMsIntoGame: 0,
-                animationSpeedMultiplier: 10,
+                animationSpeedMultiplier: 50,
                 recording: null as ParsedRecording | null,
                 timeFrame: { min: 0, max: 0 },
+                traceAnimationLengthMs: 1000 * 60 * 4,
             },
             (set, get) => {
                 function setRoomVisibility(roomVisibility: RoomVisibility) {
@@ -24,16 +25,32 @@ function createViewOptionsStore() {
                 }
                 function setTraceVisibility(traceVisibility: TraceVisibility) {
                     set({ traceVisibility });
+                    if (traceVisibility === 'hide' || traceVisibility === 'all') setIsPlaying(false);
                 }
                 function setIsPlaying(playing: boolean) {
+                    if (
+                        playing &&
+                        get().animationSpeedMultiplier > 0 &&
+                        get().animationMsIntoGame >= get().timeFrame.max
+                    ) {
+                        setAnimationMsIntoGame(get().timeFrame.min);
+                    }
+                    if (
+                        playing &&
+                        get().animationSpeedMultiplier < 0 &&
+                        get().animationMsIntoGame <= get().timeFrame.min
+                    ) {
+                        setAnimationMsIntoGame(get().timeFrame.max);
+                    }
+
                     set({ isPlaying: playing });
                 }
                 function togglePlaying() {
-                    set({ isPlaying: !get().isPlaying });
+                    setIsPlaying(!get().isPlaying);
                 }
                 function setLimitedAnimationMsIntoGame(animationMsIntoGame: number) {
                     const { timeFrame } = get();
-                    if (isNaN(animationMsIntoGame)) return;
+                    if (Number.isNaN(animationMsIntoGame) || typeof animationMsIntoGame != 'number') return;
 
                     if (animationMsIntoGame > timeFrame.max) {
                         animationMsIntoGame = timeFrame.max;

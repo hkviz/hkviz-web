@@ -4,15 +4,31 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuItem,
+    DropdownMenuContent,
+    DropdownMenuLabel,
+} from '@/components/ui/dropdown-menu';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { PauseIcon, PlayIcon } from 'lucide-react';
 import { useEffect } from 'react';
 import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { MatSymbol } from '~/app/_components/mat-symbol';
 
 function zeroPad(num: number, places: number) {
     return String(num).padStart(places, '0');
+}
+
+function Times({ className }: { className?: string }) {
+    return (
+        <span className={cn('text-sm opacity-50', className)} aria-label="times">
+            &times;
+        </span>
+    );
 }
 
 function Duration({ ms, className }: { ms: number; className?: string }) {
@@ -22,12 +38,17 @@ function Duration({ ms, className }: { ms: number; className?: string }) {
     const deciSeconds = Math.floor(Math.floor(ms % 1000) / 100);
 
     return (
-        <span className={cn('font-mono', className)}>
-            {zeroPad(hours, 2)}:{zeroPad(minutes, 2)}
-            <span className="opacity-40">
-                :{zeroPad(seconds, 2)}.{deciSeconds}
-            </span>
-        </span>
+        <Tooltip>
+            <TooltipTrigger>
+                <span className={cn('font-mono', className)}>
+                    {zeroPad(hours, 2)}:{zeroPad(minutes, 2)}
+                    <span className="opacity-40">
+                        :{zeroPad(seconds, 2)}.{deciSeconds}
+                    </span>
+                </span>
+            </TooltipTrigger>
+            <TooltipContent>hh:mm:ss.s</TooltipContent>
+        </Tooltip>
     );
 }
 
@@ -63,7 +84,7 @@ export function AnimationOptions({
             <Tooltip>
                 <TooltipTrigger asChild>
                     <Button onClick={togglePlaying} variant="ghost">
-                        {isPlaying ? <PauseIcon /> : <PlayIcon />}
+                        <MatSymbol icon={isPlaying ? 'pause' : 'play_arrow'} />
                     </Button>
                 </TooltipTrigger>
                 <TooltipContent>{isPlaying ? 'Pause' : 'Play'}</TooltipContent>
@@ -76,24 +97,66 @@ export function AnimationOptions({
                 min={timeFrame.min}
                 max={timeFrame.max}
                 step={100}
-                className="-my-4 mr-4 grow py-4"
-                onValueChange={(values) => setAnimationMsIntoGame(values[0]!)}
-            />
-            <Input
-                type="number"
-                placeholder="Playback speed"
-                value={animationSpeedMultiplier.toString()}
-                onChange={(v) => {
-                    try {
-                        const vv = Number.parseInt(v.target.value);
-                        console.log(vv);
-                        setAnimationSpeedMultiplier(vv);
-                    } catch (e) {
-                        // ignore
-                        console.log(e);
+                className="-my-4 grow py-4"
+                onValueChange={(values) => {
+                    if (isPlaying) {
+                        setIsPlaying(false);
                     }
+                    setAnimationMsIntoGame(values[0]!);
                 }}
             />
+            <div className="relative">
+                <Popover>
+                    <PopoverTrigger asChild>
+                        <Button variant="ghost">
+                            <Times />
+                            {Number.isNaN(animationSpeedMultiplier) ? 0 : animationSpeedMultiplier}
+                        </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-[10rem] p-0">
+                        <Button onClick={() => setAnimationSpeedMultiplier(100)} variant="ghost" className="w-full">
+                            <Times />
+                            <span>100</span>
+                        </Button>
+                        <Button onClick={() => setAnimationSpeedMultiplier(50)} variant="ghost" className="w-full">
+                            <Times />
+                            <span>50</span>
+                        </Button>
+                        <Button onClick={() => setAnimationSpeedMultiplier(25)} variant="ghost" className="w-full">
+                            <Times />
+                            <span>25</span>
+                        </Button>
+                        <Button onClick={() => setAnimationSpeedMultiplier(10)} variant="ghost" className="w-full">
+                            <Times />
+                            <span>10</span>
+                        </Button>
+                        <Button onClick={() => setAnimationSpeedMultiplier(1)} variant="ghost" className="w-full">
+                            <Times />
+                            <span>1</span>
+                        </Button>
+
+                        <div className="relative w-full">
+                            <Times className="absolute left-3 top-[50%] translate-y-[-50%]" />
+                            <Input
+                                type="number"
+                                placeholder="Playback speed"
+                                value={animationSpeedMultiplier.toString()}
+                                className="border-none pl-6 outline-none"
+                                onChange={(v) => {
+                                    try {
+                                        const vv = Number.parseInt(v.target.value);
+                                        console.log(vv);
+                                        setAnimationSpeedMultiplier(vv);
+                                    } catch (e) {
+                                        // ignore
+                                        console.log(e);
+                                    }
+                                }}
+                            />
+                        </div>
+                    </PopoverContent>
+                </Popover>
+            </div>
             {/* <Select
                 className="grow-0"
                 value={animationSpeedMultiplier.toString()}

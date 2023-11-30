@@ -9,4 +9,8 @@ export class Vector2 {
     public magnitude(): number {
         return Math.sqrt(this.x * this.x + this.y * this.y);
     }
+
+    public toD3(): [number, number] {
+        return [this.x, this.y];
+    }
 }
