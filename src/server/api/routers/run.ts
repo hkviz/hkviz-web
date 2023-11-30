@@ -1,13 +1,11 @@
-import { GetObjectCommand } from '@aws-sdk/client-s3';
-import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
-import { env } from '~/env.mjs';
-import { r2, r2FileExists, r2GetSignedDownloadUrl, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
+import { r2FileExists, r2GetSignedDownloadUrl, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
 
 import { and, eq } from 'drizzle-orm';
 import { raise } from '~/lib/utils';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
+import { TRPCError } from '@trpc/server';
 import { DB } from '~/server/db';
 import { runFiles, runs } from '~/server/db/schema';
 import { getUserIdFromIngameSession } from './ingameauth';
@@ -62,7 +60,13 @@ export const runRouter = createTRPCRouter({
                         },
                     },
                 },
-            })) ?? raise(new Error('Not found'));
+            })) ??
+            raise(
+                new TRPCError({
+                    code: 'NOT_FOUND',
+                    message: 'Run not found',
+                }),
+            );
 
         return {
             ...metadata,

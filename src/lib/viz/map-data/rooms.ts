@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { roomDataUnscaled } from './rooms-unscaled';
+import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
 

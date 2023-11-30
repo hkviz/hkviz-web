@@ -3,6 +3,8 @@ import { combine } from 'zustand/middleware';
 import type { ParsedRecording as ParsedRecording } from './recording';
 import { parseRecordingFile } from './recording-file-parser';
 import { fetchWithRunfileCache } from './recording-file-browser-cache';
+import { AppRouterOutput } from '~/server/api/types';
+import { combineRecordings } from './combine-recordings';
 
 // similar taken from https://stackoverflow.com/questions/47285198/fetch-api-download-progress-indicator
 function wrapResultWithProgress(
@@ -30,29 +32,39 @@ function wrapResultWithProgress(
     );
 }
 
-export type RunFile =
-    | {
-          fileId: string;
-          finishedLoading: false;
-          partNumber: number;
-          fileVersion: number;
-          loadingProgress: number | null;
-      }
-    | {
-          fileId: string;
-          finishedLoading: true;
-          partNumber: number;
-          fileVersion: number;
-          loadingProgress: 1;
-          recording: ParsedRecording;
-      };
+export type LoadedRunFile = {
+    fileId: string;
+    finishedLoading: true;
+    partNumber: number;
+    fileVersion: number;
+    loadingProgress: 1;
+    recording: ParsedRecording;
+};
+
+export type LoadingRunFile = {
+    fileId: string;
+    finishedLoading: false;
+    partNumber: number;
+    fileVersion: number;
+    loadingProgress: number | null;
+};
+
+export type RunFile = LoadingRunFile | LoadedRunFile;
+
+export type Run = {
+    runId: string;
+    nrOfFiles: number;
+} & ({ finishedLoading: false } | { finishedLoading: true; recording: ParsedRecording });
 
 export type RunId = string;
 export type RunFileId = string;
-export type RunFileStoreValue = Record<RunId, Record<RunFileId, RunFile>>;
+// contains parsed runs for each file
+export type FilesStoreValue = Record<RunId, Record<RunFileId, RunFile>>;
+// contains combined run from all files of run
+export type RunsStoreValue = Record<RunId, Run>;
 
 export const useRunFileStore = create(
-    combine({ runs: {} as RunFileStoreValue }, (set, get) => {
+    combine({ files: {} as FilesStoreValue, runs: {} as RunsStoreValue }, (set, get) => {
         function setLoaded(action: {
             fileVersion: number;
             runId: string;
@@ -61,10 +73,10 @@ export const useRunFileStore = create(
             partNumber: number;
         }) {
             set((state) => ({
-                runs: {
-                    ...state.runs,
+                files: {
+                    ...state.files,
                     [action.runId]: {
-                        ...(state.runs[action.runId] ?? {}),
+                        ...(state.files[action.runId] ?? {}),
                         [action.fileId]: {
                             fileId: action.fileId,
                             finishedLoading: true,
@@ -85,10 +97,10 @@ export const useRunFileStore = create(
             partNumber: number;
         }) {
             set((state) => ({
-                runs: {
-                    ...state.runs,
+                files: {
+                    ...state.files,
                     [action.runId]: {
-                        ...(state.runs[action.runId] ?? {}),
+                        ...(state.files[action.runId] ?? {}),
                         [action.fileId]: {
                             fileId: action.fileId,
                             finishedLoading: false,
@@ -113,10 +125,11 @@ export const useRunFileStore = create(
             partNumber: number;
             downloadUrl: string;
         }) {
-            const isNewerThenCurrent = (get().runs[runId]?.[fileId]?.fileVersion ?? -1) < fileVersion;
+            const isNewerThenCurrent = (get().files[runId]?.[fileId]?.fileVersion ?? -1) < fileVersion;
             if (!isNewerThenCurrent) return;
-            console.log('true', fileVersion, useRunFileStore.getState().runs[fileId]?.fileVersion ?? -1);
+            console.log('true', fileVersion, useRunFileStore.getState().files[fileId]?.fileVersion ?? -1);
             setLoadingProgress({ partNumber, fileVersion, runId, fileId, progress: 0 });
+            setRunNotLoaded(runId);
 
             const response = await fetchWithRunfileCache(fileId, fileVersion, downloadUrl).then((it) =>
                 wrapResultWithProgress(it, ({ loaded, total }) => {
@@ -131,11 +144,70 @@ export const useRunFileStore = create(
                 }),
             );
             const data = await response.text();
-            const isStillCurrent = (get().runs[runId]?.[fileId]?.fileVersion ?? -1) === fileVersion;
+            const isStillCurrent = (get().files[runId]?.[fileId]?.fileVersion ?? -1) === fileVersion;
             if (!isStillCurrent) return;
-            setLoaded({ partNumber, fileVersion, runId, fileId, recording: parseRecordingFile(data) });
+            const recording = parseRecordingFile(data, partNumber);
+            setLoaded({ partNumber, fileVersion, runId, fileId, recording });
+            combineIfAllFinished(runId);
         }
 
-        return { ensureLoaded };
+        function combineIfAllFinished(runId: string) {
+            const files = get().files[runId];
+            if (!files || get().runs[runId]?.finishedLoading) return;
+            const finishedFiles = Object.values(files).filter((it): it is LoadedRunFile => it.finishedLoading);
+            if (finishedFiles.length != get().runs[runId]?.nrOfFiles) return;
+            const recordings = finishedFiles.map((it) => it.recording);
+            const combinedRecording = combineRecordings(recordings);
+            set((state) => ({
+                runs: {
+                    ...state.runs,
+                    [runId]: {
+                        runId,
+                        nrOfFiles: recordings.length,
+                        finishedLoading: true,
+                        recording: combinedRecording,
+                    },
+                },
+            }));
+        }
+
+        function setRunNotLoaded(runId: string) {
+            const existing = get().runs[runId];
+            set((state) => ({
+                runs: {
+                    ...state.runs,
+                    [runId]: {
+                        runId,
+                        nrOfFiles: existing?.nrOfFiles ?? 0,
+                        finishedLoading: false,
+                    },
+                },
+            }));
+        }
+
+        async function ensureWholeRunLoaded(
+            runId: string,
+            fileInfos: AppRouterOutput['run']['getMetadataById']['files'],
+        ) {
+            const existing = get().runs[runId];
+            if (!existing || existing.nrOfFiles !== fileInfos.length) {
+                // if file version different, finished Loading will be set by loading individual files
+                set({ runs: { [runId]: { runId, nrOfFiles: fileInfos.length, finishedLoading: false } } });
+            }
+
+            await Promise.all(
+                fileInfos.map((fileInfo) => {
+                    return ensureLoaded({
+                        runId: runId,
+                        fileId: fileInfo.id,
+                        version: fileInfo.version,
+                        downloadUrl: fileInfo.signedUrl,
+                        partNumber: fileInfo.partNumber,
+                    });
+                }),
+            );
+        }
+
+        return { ensureLoaded, ensureWholeRunLoaded };
     }),
 );

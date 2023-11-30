@@ -8,7 +8,7 @@ export function playerPositionToMapPosition(playerPosition: Vector2, sceneEvent:
 
     const { playerPositionBounds } = mapRoom;
 
-    console.log(sceneEvent.sceneName, playerPositionBounds.min, playerPositionBounds.size, playerPosition);
+    // console.log(sceneEvent.sceneName, playerPositionBounds.min, playerPositionBounds.size, playerPosition);
 
     const scaledPlayerX = playerPosition.x + sceneEvent.originOffset.x;
     const scaledPlayerY = playerPosition.y + sceneEvent.originOffset.y;

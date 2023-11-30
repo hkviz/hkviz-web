@@ -1,7 +1,13 @@
 import { assertNever, typeCheckNever } from '~/lib/utils';
 import { Vector2 } from '../types/vector2';
 import { EVENT_PREFIXES, PARTIAL_EVENT_PREFIXES, type EventPrefix, PartialEventPrefix } from './event-type-prefixes';
-import { PlayerPositionEvent, ParsedRecording, type RecordingEvent, SceneEvent } from './recording';
+import {
+    PlayerPositionEvent,
+    ParsedRecording,
+    type RecordingEvent,
+    SceneEvent,
+    RecordingFileVersionEvent,
+} from './recording';
 import { type } from 'os';
 
 function parseFloatAnyComma(value: string) {
@@ -12,7 +18,7 @@ function parseVector2(x: string, y: string) {
     return new Vector2(parseFloatAnyComma(x), parseFloatAnyComma(y));
 }
 
-export function parseRecordingFile(recordingFileContent: string): ParsedRecording {
+export function parseRecordingFile(recordingFileContent: string, partNumber: number): ParsedRecording {
     const lines = recordingFileContent.split('\n');
     const events: RecordingEvent[] = [];
     let unknownEvents = 0;
@@ -124,7 +130,12 @@ export function parseRecordingFile(recordingFileContent: string): ParsedRecordin
                     break;
                 }
                 case EVENT_PREFIXES.RECORDING_FILE_VERSION: {
-                    // TODO
+                    events.push(
+                        new RecordingFileVersionEvent({
+                            timestamp,
+                            version: args[0]!,
+                        }),
+                    );
                     break;
                 }
                 case EVENT_PREFIXES.RECORDING_ID: {
@@ -175,5 +186,5 @@ export function parseRecordingFile(recordingFileContent: string): ParsedRecordin
         }
     }
 
-    return new ParsedRecording(events, unknownEvents, parsingErrors);
+    return new ParsedRecording(events, unknownEvents, parsingErrors, partNumber);
 }
