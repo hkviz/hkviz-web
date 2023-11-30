@@ -2,12 +2,11 @@
 
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
-import { playerPositionToMapPosition } from '../map-data/player-position';
-import { SCALE_FACTOR, roomData } from '../map-data/rooms';
-import { PlayerPositionEvent } from '../recording-files/recording';
+import { roomData } from '../map-data/rooms';
+import { useMapTraces } from './use-traces';
 
 export interface HKMapProps {
     className?: string;
@@ -20,25 +19,8 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     const rootG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
 
     const animatedTraceG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
-    const animatedTracePaths = useRef<d3.Selection<SVGPathElement, PlayerPositionEvent, SVGGElement, unknown>>();
 
     const allTraceG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
-
-    const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
-    const traceAnimationLengthMs = useViewOptionsStore((s) => s.traceAnimationLengthMs);
-    const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
-    const recording = useViewOptionsStore((s) => s.recording);
-
-    // const tracablePlayerPositionEvents = useMemo(() => {
-    //     return (
-    //         event instanceof PlayerPositionEvent &&
-    //         event.previousPlayerPositionEvent != null &&
-    //         event.msIntoGame >= animationMsIntoGame - traceAnimationLengthMs &&
-    //         event.msIntoGame <= animationMsIntoGame &&
-    //         event.sceneEvent.originOffset != null &&
-    //         event.previousPlayerPositionEvent.sceneEvent.originOffset != null
-    //     );
-    // }, [recording]);
 
     useEffect(() => {
         svg.current = d3
@@ -142,30 +124,6 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
         };
     }, []);
 
-    // useEffect(() => {
-    //     if (!recording) return;
-
-    //     const points: [number, number][] = recording.events
-    //         .map((event) => {
-    //             if (!(event instanceof PlayerPositionEvent)) return undefined;
-    //             const transformed = playerPositionToMapPosition(event.position, event.sceneEvent);
-    //             if (!transformed) {
-    //                 return undefined;
-    //             }
-
-    //             return [transformed.x, transformed.y];
-    //         })
-    //         .filter((event): event is [number, number] => !!event);
-    //     const line = d3.line()(points);
-
-    //     console.log('ctx', recording);
-    //     rootG
-    //         .current!.append('path')
-    //         .attr('d', line)
-    //         .attr('stroke-width', 0.05 * SCALE_FACTOR)
-    //         .attr('stroke', 'pink')
-    //         .attr('fill', 'none');
-    // }, [recording]);
-
+    useMapTraces({ useViewOptionsStore, animatedTraceG });
     return <div className={cn('relative', className)} ref={containerRef} />;
 }

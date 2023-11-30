@@ -1,13 +1,18 @@
-import { useEffect, useRef } from 'react';
+import { cn } from '@/lib/utils';
+import * as d3 from 'd3';
+import { Ref, RefObject, useEffect, useMemo, useRef } from 'react';
+import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { mapVisualExtends } from '../map-data/map-extends';
+import { playerPositionToMapPosition } from '../map-data/player-position';
+import { SCALE_FACTOR, roomData } from '../map-data/rooms';
 import { PlayerPositionEvent } from '../recording-files/recording';
-import type { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 
 interface Props {
     useViewOptionsStore: UseViewOptionsStore;
+    animatedTraceG: RefObject<d3.Selection<SVGGElement, unknown, null, undefined> | undefined>;
 }
 
-export function useMapTraces({ useViewOptionsStore }: Props) {
-    const animatedTraceG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
+export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
     const animatedTracePaths = useRef<d3.Selection<SVGPathElement, PlayerPositionEvent, SVGGElement, unknown>>();
 
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
@@ -43,10 +48,10 @@ export function useMapTraces({ useViewOptionsStore }: Props) {
                 ]),
             )
             .attr('stroke-width', 0.05 * SCALE_FACTOR)
-            .attr('stroke-linecap', 'round')
+            // .attr('stroke-linecap', 'round')
             .attr('stroke', 'red')
             .attr('fill', 'none');
-    }, [recording]);
+    }, [recording, animatedTraceG]);
 
     useEffect(() => {
         animatedTracePaths.current?.attr('stroke-opacity', (d) => {
