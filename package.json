@@ -10,7 +10,7 @@
         "lint": "next lint",
         "lint:fix": "next lint --fix",
         "start": "next start",
-        "tsc": "tsc --noEmit --verbose"
+        "tsc": "tsc --noEmit"
     },
     "dependencies": {
         "@auth/drizzle-adapter": "^0.3.2",
