@@ -18,6 +18,8 @@ interface Props {
     animatedTraceG: RefObject<d3.Selection<SVGGElement, unknown, null, undefined> | undefined>;
 }
 
+const SCALED_LINE_WIDTH = 0.05 * SCALE_FACTOR;
+
 export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
     const animatedTraceChunks = useRef<
         {
@@ -52,18 +54,25 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
                 .current!.append('g')
                 .attr('data-group', 'animated-trace-chunk')
                 .attr('data-chunk-index', i);
-            console.log(chunkEvents);
 
             const lines = chunkGroup
                 .selectAll('line')
                 .data(chunkEvents)
                 .enter()
                 .append('line')
-                .attr('x1', (d) => d.previousPlayerPositionEventWithMapPosition!.mapPosition!.x)
+                .attr('x1', (d) =>
+                    d.mapPosition!.equals(d.previousPlayerPositionEventWithMapPosition!.mapPosition!)
+                        ? d.mapPosition!.x - SCALED_LINE_WIDTH / 2
+                        : d.previousPlayerPositionEventWithMapPosition!.mapPosition!.x,
+                )
                 .attr('y1', (d) => d.previousPlayerPositionEventWithMapPosition!.mapPosition!.y)
-                .attr('x2', (d) => d.mapPosition!.x)
+                .attr('x2', (d) =>
+                    d.mapPosition!.equals(d.previousPlayerPositionEventWithMapPosition!.mapPosition!)
+                        ? d.mapPosition!.x + SCALED_LINE_WIDTH / 2
+                        : d.mapPosition!.x,
+                )
                 .attr('y2', (d) => d.mapPosition!.y)
-                .attr('stroke-width', 0.05 * SCALE_FACTOR)
+                .attr('stroke-width', SCALED_LINE_WIDTH)
                 // .attr('stroke-linecap', 'round')
                 // .attr('stroke', 'red')
                 .attr('class', 'text-rose-600 stroke-current')
@@ -87,7 +96,12 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
         const maxMsIntoGame = animationMsIntoGame;
 
         animatedTraceChunks.current?.forEach((chunk) => {
-            const hidden = chunk.minMsIntoGame > maxMsIntoGame || chunk.maxMsIntoGame < minMsIntoGame;
+            const hidden =
+                traceVisibility !== 'all' &&
+                (traceVisibility === 'hide' ||
+                    chunk.minMsIntoGame > maxMsIntoGame ||
+                    chunk.maxMsIntoGame < minMsIntoGame);
+
             if (hidden) {
                 chunk.group.attr('visibility', 'hidden');
             } else {
@@ -95,7 +109,6 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
                 chunk.lines.attr('stroke-opacity', (d) => {
                     const msIntoGame = d.msIntoGame;
                     if (traceVisibility === 'all') return 1;
-                    if (traceVisibility === 'hide') return 0;
                     if (msIntoGame > animationMsIntoGame) return 0;
                     if (msIntoGame < animationMsIntoGame - traceAnimationLengthMs) return 0;
 

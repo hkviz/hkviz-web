@@ -13,4 +13,8 @@ export class Vector2 {
     public toD3(): [number, number] {
         return [this.x, this.y];
     }
+
+    public equals(other: Vector2): boolean {
+        return this.x === other.x && this.y === other.y;
+    }
 }

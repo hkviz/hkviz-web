@@ -162,6 +162,49 @@ export const runRouter = createTRPCRouter({
                 throw new Error('File not found');
             }
         }),
+    getUsersRuns: publicProcedure.input(z.object({ userId: z.string().uuid() })).query(async ({ ctx, input }) => {
+        const runs = await ctx.db.query.runs.findMany({
+            where: (run, { eq }) => eq(run.userId, input.userId),
+            columns: {
+                id: true,
+                description: true,
+                createdAt: true,
+            },
+            with: {
+                user: {
+                    columns: {
+                        id: true,
+                        name: true,
+                    },
+                },
+                files: {
+                    columns: {
+                        createdAt: true,
+                    },
+                },
+            },
+        });
+
+        console.log(runs);
+
+        return runs
+            .map(({ files, ...run }) => ({
+                ...run,
+                startedAt: files[0]?.createdAt,
+                lastPlayedAt: files[files.length - 1]?.createdAt,
+            }))
+            .sort((a, b) => {
+                if (a.lastPlayedAt && b.lastPlayedAt) {
+                    return b.lastPlayedAt.getTime() - a.lastPlayedAt.getTime();
+                } else if (a.lastPlayedAt) {
+                    return -1;
+                } else if (b.lastPlayedAt) {
+                    return 1;
+                } else {
+                    return b.createdAt.getTime() - a.createdAt.getTime();
+                }
+            });
+    }),
 
     // TODO: remove
     // createUploadUrl: protectedProcedure
