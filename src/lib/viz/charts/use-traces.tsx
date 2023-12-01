@@ -16,11 +16,13 @@ function chunk<T>(arr: T[], chunkSize: number) {
 interface Props {
     useViewOptionsStore: UseViewOptionsStore;
     animatedTraceG: RefObject<d3.Selection<SVGGElement, unknown, null, undefined> | undefined>;
+    knightPinG: RefObject<d3.Selection<SVGGElement, unknown, null, undefined> | undefined>;
 }
 
 const SCALED_LINE_WIDTH = 0.05 * SCALE_FACTOR;
+const SCALED_KNIGHT_PIN_SIZE = 0.75 * SCALE_FACTOR;
 
-export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
+export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }: Props) {
     const animatedTraceChunks = useRef<
         {
             minMsIntoGame: number;
@@ -29,6 +31,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
             lines: d3.Selection<SVGLineElement, PlayerPositionEvent, SVGGElement, unknown>;
         }[]
     >();
+    const knightPin = useRef<d3.Selection<SVGImageElement, unknown, null, undefined> | undefined>();
 
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const traceAnimationLengthMs = useViewOptionsStore((s) => s.traceAnimationLengthMs);
@@ -92,8 +95,21 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
     }, [recording, animatedTraceG]);
 
     useEffect(() => {
+        knightPin.current = knightPinG
+            .current!.append('image')
+            .attr('xlink:href', '/ingame-sprites/Map_Knight_Pin_Compass.png')
+            .attr('x', 0)
+            .attr('y', 0)
+            .attr('width', SCALED_KNIGHT_PIN_SIZE)
+            .attr('height', SCALED_KNIGHT_PIN_SIZE)
+            .attr('preserveAspectRatio', 'none');
+    }, [knightPinG]);
+
+    useEffect(() => {
         const minMsIntoGame = animationMsIntoGame - traceAnimationLengthMs;
         const maxMsIntoGame = animationMsIntoGame;
+
+        let newestPositionEvent: PlayerPositionEvent | undefined;
 
         animatedTraceChunks.current?.forEach((chunk) => {
             const hidden =
@@ -112,9 +128,20 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG }: Props) {
                     if (msIntoGame > animationMsIntoGame) return 0;
                     if (msIntoGame < animationMsIntoGame - traceAnimationLengthMs) return 0;
 
+                    newestPositionEvent = d;
+
                     const opacity = 1 - (animationMsIntoGame - msIntoGame) / traceAnimationLengthMs;
                     return opacity;
                 });
+            }
+
+            if (newestPositionEvent) {
+                knightPin
+                    .current!.attr('x', newestPositionEvent.mapPosition!.x - 0.5 * SCALED_KNIGHT_PIN_SIZE)
+                    .attr('y', newestPositionEvent.mapPosition!.y - 0.5 * SCALED_KNIGHT_PIN_SIZE)
+                    .attr('visibility', 'visible');
+            } else {
+                knightPin.current?.attr('visibility', 'hidden');
             }
         });
     }, [recording, animationMsIntoGame, traceAnimationLengthMs, traceVisibility]);

@@ -19,6 +19,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     const rootG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
 
     const animatedTraceG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
+    const knightPinG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
 
     useEffect(() => {
         svg.current = d3
@@ -60,6 +61,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             .attr('data-scene-name', (r) => r.sceneName);
 
         animatedTraceG.current = rootG.current.append('g').attr('data-group', 'traces-animated');
+        knightPinG.current = rootG.current.append('g').attr('data-group', 'knight-pin-g');
 
         // mask for each rooms rect
         const roomMask = roomGs.append('svg:mask').attr('id', (r) => 'mask_' + r.spriteInfo.name);
@@ -121,6 +123,6 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
         };
     }, []);
 
-    useMapTraces({ useViewOptionsStore, animatedTraceG });
+    useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG });
     return useMemo(() => <div className={cn('relative', className)} ref={containerRef} />, [className, containerRef]);
 }
