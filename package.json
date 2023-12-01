@@ -10,7 +10,7 @@
         "dev": "run-p -l tsc:watch next:dev",
         "lint": "next lint",
         "lint:fix": "next lint --fix",
-        "lint:watch": "esw",
+        "lint:watch": "esw -w -c ./.eslintrc.cjs --ignore-path ./.eslintignore",
         "start": "next start",
         "tsc": "tsc --noEmit --incremental",
         "tsc:watch": "tsc --noEmit --incremental --watch"
