@@ -56,18 +56,22 @@ export default async function Home() {
                                             className="flex h-[unset] flex-col"
                                         >
                                             <Link href={`/run/${run.id}`}>
-                                                <span className="block w-full truncate">
-                                                    <span className="opacity-50">Last played: </span>
-                                                    <span className="font-semibold">
-                                                        <RelativeDate date={run.lastPlayedAt} />
+                                                {run.lastPlayedAt && (
+                                                    <span className="block w-full truncate">
+                                                        <span className="opacity-50">Last played: </span>
+                                                        <span className="font-semibold">
+                                                            <RelativeDate date={run.lastPlayedAt} />
+                                                        </span>
                                                     </span>
-                                                </span>
-                                                <span className="block w-full truncate">
-                                                    <span className="opacity-50"> Started: </span>
-                                                    <span className="font-semibold">
-                                                        <RelativeDate date={run.startedAt} />
+                                                )}
+                                                {run.startedAt && (
+                                                    <span className="block w-full truncate">
+                                                        <span className="opacity-50"> Started: </span>
+                                                        <span className="font-semibold">
+                                                            <RelativeDate date={run.startedAt} />
+                                                        </span>
                                                     </span>
-                                                </span>
+                                                )}
                                             </Link>
                                         </Button>
                                     </li>
