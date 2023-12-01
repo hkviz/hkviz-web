@@ -7,7 +7,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Slider } from '@/components/ui/slider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { MatSymbol } from '~/app/_components/mat-symbol';
 import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
@@ -65,8 +65,6 @@ function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptio
 // this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
 // Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
 export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const isPlaying = useViewOptionsStore((s) => s.isPlaying);
-    const setIsPlaying = useViewOptionsStore((s) => s.setIsPlaying);
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
@@ -80,9 +78,6 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
                 step={100}
                 className="-my-4 grow py-4"
                 onValueChange={(values) => {
-                    if (isPlaying) {
-                        setIsPlaying(false);
-                    }
                     setAnimationMsIntoGame(values[0]!);
                 }}
             />
