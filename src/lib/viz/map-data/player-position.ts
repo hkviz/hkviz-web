@@ -1,9 +1,9 @@
 import type { SceneEvent } from '../recording-files/recording';
 import { Vector2 } from '../types/vector2';
-import { roomDataBySceneName } from './rooms';
+import { mainRoomDataBySceneName } from './rooms';
 
 export function playerPositionToMapPosition(playerPosition: Vector2, sceneEvent: SceneEvent): Vector2 | undefined {
-    const mapRoom = roomDataBySceneName.get(sceneEvent.sceneName);
+    const mapRoom = mainRoomDataBySceneName.get(sceneEvent.sceneName);
     if (!mapRoom || !sceneEvent.originOffset || !sceneEvent.sceneSize) return undefined;
 
     const { playerPositionBounds } = mapRoom;
