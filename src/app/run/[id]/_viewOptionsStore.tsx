@@ -27,7 +27,7 @@ function createViewOptionsStore() {
                 viewNeverHappenedAggregations: false,
 
                 roomColorMode: 'area' as RoomColorMode,
-                roomColorVar1: 'demageTaken' as AggregationVariable,
+                roomColorVar1: 'damageTaken' as AggregationVariable,
             },
             (set, get) => {
                 function setRoomVisibility(roomVisibility: RoomVisibility) {
