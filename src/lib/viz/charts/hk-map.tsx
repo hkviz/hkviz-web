@@ -102,6 +102,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             .attr('class', 'svg-room')
             .attr('mask', (r) => 'url(#mask_' + r.spriteInfo.name + ')')
             .style('fill', (r) => r.color.formatHex())
+            .style('pointer-events', 'all')
             .on('mouseover', (event, r) => {
                 setSelectedRoomIfNotPinned(r.sceneName);
             })

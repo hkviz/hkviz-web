@@ -15,56 +15,49 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
     const setTraceVisibility = useViewOptionsStore((s) => s.setTraceVisibility);
 
     return (
-        <Card className="grow max-lg:basis-0 max-md:min-w-[300px]">
-            <CardHeader>
-                <CardTitle>View</CardTitle>
-            </CardHeader>
-            <CardContent className="px-0">
-                <Table className="w-full">
-                    <TableBody>
-                        <TableRow>
-                            <TableHead>
-                                <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
-                                    <MatSymbol className="mr-2" icon="dashboard" />
-                                    Visible rooms
-                                </Label>
-                            </TableHead>
-                            <TableCell>
-                                <Select value={roomVisibility} onValueChange={setRoomVisibility}>
-                                    <SelectTrigger id="visibleRoomSelectTrigger">
-                                        <SelectValue placeholder="Room visibility" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="all">All</SelectItem>
-                                        <SelectItem value="mapped">Mapped</SelectItem>
-                                        <SelectItem value="visited">Visited</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableHead>
-                                <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
-                                    <MatSymbol className="mr-2" icon="timeline" />
-                                    Traces
-                                </Label>
-                            </TableHead>
-                            <TableCell>
-                                <Select value={traceVisibility} onValueChange={setTraceVisibility}>
-                                    <SelectTrigger id="visibleRoomSelectTrigger">
-                                        <SelectValue placeholder="Trace visibility" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectItem value="all">All</SelectItem>
-                                        <SelectItem value="animated">Animated</SelectItem>
-                                        <SelectItem value="hide">Hidden</SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </CardContent>
-        </Card>
+        <Table className="w-full">
+            <TableBody>
+                <TableRow>
+                    <TableHead>
+                        <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
+                            <MatSymbol className="mr-2" icon="dashboard" />
+                            Visible rooms
+                        </Label>
+                    </TableHead>
+                    <TableCell>
+                        <Select value={roomVisibility} onValueChange={setRoomVisibility}>
+                            <SelectTrigger id="visibleRoomSelectTrigger">
+                                <SelectValue placeholder="Room visibility" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">All</SelectItem>
+                                <SelectItem value="mapped">Mapped</SelectItem>
+                                <SelectItem value="visited">Visited</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableHead>
+                        <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
+                            <MatSymbol className="mr-2" icon="timeline" />
+                            Traces
+                        </Label>
+                    </TableHead>
+                    <TableCell>
+                        <Select value={traceVisibility} onValueChange={setTraceVisibility}>
+                            <SelectTrigger id="visibleRoomSelectTrigger">
+                                <SelectValue placeholder="Trace visibility" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="all">All</SelectItem>
+                                <SelectItem value="animated">Animated</SelectItem>
+                                <SelectItem value="hide">Hidden</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </TableCell>
+                </TableRow>
+            </TableBody>
+        </Table>
     );
 }

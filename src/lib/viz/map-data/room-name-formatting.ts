@@ -3,6 +3,7 @@ const ancientBasinRooms = [
     'Abyss_03',
     'Abyss_04',
     'Abyss_05',
+    'Abyss_17',
     'Abyss_18',
     'Abyss_19',
     'Abyss_20',

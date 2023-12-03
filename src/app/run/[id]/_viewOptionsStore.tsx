@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
+import { type AggregatedRunData } from '~/lib/viz/recording-files/run-aggregation-store';
 
 export type RoomVisibility = 'all' | 'visited' | 'mapped';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
@@ -16,6 +17,7 @@ function createViewOptionsStore() {
                 animationMsIntoGame: 0,
                 animationSpeedMultiplier: 50,
                 recording: null as ParsedRecording | null,
+                aggregatedRunData: null as AggregatedRunData | null,
                 timeFrame: { min: 0, max: 0 },
                 traceAnimationLengthMs: 1000 * 60 * 4,
                 selectedRoom: null as string | null,
@@ -80,6 +82,9 @@ function createViewOptionsStore() {
                     set({ recording, timeFrame });
                     setLimitedAnimationMsIntoGame(get().animationMsIntoGame);
                 }
+                function setAggregatedRunData(aggregatedRunData: AggregatedRunData | null) {
+                    set({ aggregatedRunData });
+                }
                 function setSelectedRoom(selectedRoom: string | null) {
                     set({ selectedRoom });
                 }
@@ -107,6 +112,7 @@ function createViewOptionsStore() {
                     setAnimationMsIntoGame,
                     setAnimationSpeedMultiplier,
                     setRecording,
+                    setAggregatedRunData,
                     incrementAnimationMsIntoGame,
                     setSelectedRoom,
                     setSelectedRoomPinned,

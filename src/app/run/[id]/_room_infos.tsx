@@ -8,6 +8,10 @@ import { CSSProperties } from 'react';
 import { MatSymbol } from '~/app/_components/mat-symbol';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
+import Image from 'next/image';
+
+import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
+import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png';
 
 export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
@@ -15,6 +19,9 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
     const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
 
     const roomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
+
+    const aggregatedRunData = useViewOptionsStore((s) => s.aggregatedRunData);
+
     return (
         <Card
             className="grow overflow-auto bg-gradient-to-b from-transparent  to-transparent max-lg:basis-0 max-md:min-w-[300px]"
@@ -71,8 +78,29 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                     <Table className="w-full">
                         <TableBody>
                             <TableRow>
-                                <TableHead>Deaths</TableHead>
-                                <TableCell>Coming soon</TableCell>
+                                <TableHead className="flex flex-row items-center gap-2">
+                                    <Image className="w-8" src={shadeImg} alt="Knights shade symbol"></Image>
+                                    Deaths
+                                </TableHead>
+                                <TableCell className="pr-6 text-right">
+                                    {aggregatedRunData?.countPerScene?.[selectedRoom]?.deaths ?? 0}
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableHead className="flex flex-row items-center gap-2">
+                                    <Image className="w-8" src={focusImg} alt="Focus inventory symbol"></Image>
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <span>Focused</span>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            How often focusing has started, might not have been finished
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TableHead>
+                                <TableCell className="pr-6 text-right">
+                                    {aggregatedRunData?.countPerScene?.[selectedRoom]?.focusing ?? 0}
+                                </TableCell>
                             </TableRow>
                         </TableBody>
                     </Table>

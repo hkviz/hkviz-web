@@ -1,19 +1,20 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import { type Session } from 'next-auth';
 import { useEffect } from 'react';
 import { HKMap } from '~/lib/viz/charts/hk-map';
+import { useRunAggregationStore } from '~/lib/viz/recording-files/run-aggregation-store';
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files';
 import { type AppRouterOutput } from '~/server/api/types';
-import { RelativeDate } from '../../_components/date';
 import { AnimationOptions } from './_animation_options';
+import { RoomInfo } from './_room_infos';
 import { useViewOptionsStoreRoot } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
-import { RoomInfo } from './_room_infos';
+import { RunInfos } from './_run_infos';
 
 interface Props {
     session: Session | null;
@@ -22,53 +23,46 @@ interface Props {
 
 export function SingleRunClientPage({ session, runData }: Props) {
     const { combinedRun, ...runFiles } = useRecordingFiles(runData.id, runData.files);
-    const isFromUser = session?.user?.id === runData.user.id;
+    const aggregatedRunData = useRunAggregationStore((s) => s.aggregations[runData.id]);
 
     const useViewOptionsStore = useViewOptionsStoreRoot();
 
     const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
     const setRecording = useViewOptionsStore((s) => s.setRecording);
+    const setAggregatedRunData = useViewOptionsStore((s) => s.setAggregatedRunData);
     const combinedRecording = combinedRun?.finishedLoading ? combinedRun.recording : null;
 
     useEffect(() => {
         setRecording(combinedRecording);
     }, [combinedRecording, setRecording]);
 
+    useEffect(() => {
+        setAggregatedRunData(aggregatedRunData ?? null);
+    });
+
     return (
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
             <div className="flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:flex-col">
-                <Card className="max-lg:grow max-lg:basis-0 max-md:min-w-[300px]">
-                    <CardHeader>
-                        <CardTitle>Run info</CardTitle>
-                    </CardHeader>
+                <Card className="overflow-auto max-lg:grow max-lg:basis-0 max-md:min-w-[300px]">
                     <CardContent className="px-0">
-                        <Table className="w-full">
-                            <TableBody>
-                                <TableRow>
-                                    <TableHead>From</TableHead>
-                                    <TableCell>{isFromUser ? 'You' : runData.user.name}</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableHead>Started</TableHead>
-                                    <TableCell>
-                                        {runData.startedAt && <RelativeDate date={runData.startedAt} />}
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableHead>Last played</TableHead>
-                                    <TableCell>
-                                        {runData.lastPlayedAt && <RelativeDate date={runData.lastPlayedAt} />}
-                                    </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableHead>Visibility</TableHead>
-                                    <TableCell>Public</TableCell>
-                                </TableRow>
-                            </TableBody>
-                        </Table>
+                        <Tabs defaultValue="view-options" className="w-full">
+                            <TabsList className="w-full bg-transparent">
+                                <TabsTrigger value="run-info" className="data-[state=active]:bg-slate-800">
+                                    Run info
+                                </TabsTrigger>
+                                <TabsTrigger value="view-options" className="data-[state=active]:bg-slate-800">
+                                    View options
+                                </TabsTrigger>
+                            </TabsList>
+                            <TabsContent value="run-info">
+                                <RunInfos session={session} runData={runData} />
+                            </TabsContent>
+                            <TabsContent value="view-options">
+                                <ViewOptions useViewOptionsStore={useViewOptionsStore} />
+                            </TabsContent>
+                        </Tabs>
                     </CardContent>
                 </Card>
-                <ViewOptions useViewOptionsStore={useViewOptionsStore} />
                 <RoomInfo useViewOptionsStore={useViewOptionsStore} />
             </div>
             <div className="flex grow flex-col gap-2">
