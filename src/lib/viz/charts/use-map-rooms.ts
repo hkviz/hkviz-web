@@ -1,9 +1,11 @@
-import { type RefObject, useEffect, useId, useRef } from 'react';
+import { type RefObject, useEffect, useId, useRef, use, useMemo } from 'react';
 import { type RoomInfo } from '../map-data/rooms';
 import useEvent from 'react-use-event-hook';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import * as d3 from 'd3';
 import { useRoomColoring } from './use-room-coloring';
+import { playerDataFields } from '../player-data/player-data';
+import { assertNever } from '~/lib/utils';
 
 export function useMapRooms(
     {
@@ -25,17 +27,29 @@ export function useMapRooms(
     const onClickEvent = useEvent(onClick);
     const componentId = useId();
 
-    const aggregatedRunData = useViewOptionsStore((state) => state.aggregatedRunData);
-    const roomColors = useViewOptionsStore((state) => state.roomColorMode);
-    const roomColorVar1 = useViewOptionsStore((state) => state.roomColorVar1);
-    const roomColorVar1Values = aggregatedRunData?.countPerScene;
-    const roomColorVar1Max = aggregatedRunData?.maxOverScenes?.[roomColorVar1];
-
     const roomRects = useRef<d3.Selection<d3.BaseType, RoomInfo, SVGGElement, unknown> | undefined>(undefined);
 
     const mainEffectDependencies = [componentId, onClickEvent, onMouseOverEvent, roomDataEnter, ...dependencies];
 
     const roomColoring = useRoomColoring({ useViewOptionsStore, alwaysUseAreaAsColor });
+    const roomVisibility = useViewOptionsStore((state) => state.roomVisibility);
+    const animationMsIntoGame = useViewOptionsStore((state) => state.animationMsIntoGame);
+
+    const scenesVisitedEvents = useViewOptionsStore(
+        (state) => state.recording?.allPlayerDataEventsOfField?.(playerDataFields.byFieldName.scenesVisited) ?? [],
+    );
+
+    const visibleRooms = useMemo(() => {
+        if (roomVisibility === 'visited') {
+            return scenesVisitedEvents[scenesVisitedEvents.length - 1]?.value ?? [];
+        } else if (roomVisibility === 'visited-animated') {
+            return scenesVisitedEvents.findLast((it) => it.msIntoGame <= animationMsIntoGame)?.value ?? [];
+        } else if (roomVisibility === 'all') {
+            return 'all';
+        } else {
+            assertNever(roomVisibility);
+        }
+    }, [animationMsIntoGame, roomVisibility, scenesVisitedEvents]);
 
     useEffect(() => {
         if (!roomDataEnter.current) return;
@@ -75,9 +89,11 @@ export function useMapRooms(
             .attr('height', (r) => r.spritePosition.size.y)
             .attr('class', 'svg-room')
             .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
+            .attr('clip-path', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
 
             .style('fill', (r) => r.color.formatHex())
             .style('pointer-events', 'all')
+            .style('transition', 'opacity 0.1s ease-in-out')
             .on('mouseover', (event: PointerEvent, r) => {
                 onMouseOverEvent(event, r);
             })
@@ -86,6 +102,18 @@ export function useMapRooms(
             });
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, mainEffectDependencies);
+
+    useEffect(() => {
+        function isRoomVisible(r: RoomInfo) {
+            return visibleRooms === 'all' || visibleRooms.includes(r.gameObjectName);
+        }
+
+        roomRects.current
+            ?.style('opacity', (r) => (isRoomVisible(r) ? '100%' : '0%'))
+            ?.style('pointer-events', (r) => (isRoomVisible(r) ? 'all' : 'none'));
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [...mainEffectDependencies, visibleRooms]);
 
     useEffect(() => {
         roomRects.current?.style('fill', (r) => roomColoring.getRoomColor(r));

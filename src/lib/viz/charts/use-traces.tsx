@@ -138,7 +138,8 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
             if (newestPositionEvent) {
                 knightPin
                     .current!.attr('x', newestPositionEvent.mapPosition!.x - 0.5 * SCALED_KNIGHT_PIN_SIZE)
-                    .attr('y', newestPositionEvent.mapPosition!.y - 0.5 * SCALED_KNIGHT_PIN_SIZE)
+                    // slightly off center, since knight pin is visually a bit below center of the sprite
+                    .attr('y', newestPositionEvent.mapPosition!.y - 0.5 * SCALED_KNIGHT_PIN_SIZE - 0.1 * SCALE_FACTOR)
                     .attr('visibility', 'visible');
             } else {
                 knightPin.current?.attr('visibility', 'hidden');

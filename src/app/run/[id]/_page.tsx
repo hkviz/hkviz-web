@@ -28,6 +28,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
     const useViewOptionsStore = useViewOptionsStoreRoot();
 
     const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
+    const roomVisibility = useViewOptionsStore((s) => s.roomVisibility);
     const setRecording = useViewOptionsStore((s) => s.setRecording);
     const setAggregatedRunData = useViewOptionsStore((s) => s.setAggregatedRunData);
     const combinedRecording = combinedRun?.finishedLoading ? combinedRun.recording : null;
@@ -83,7 +84,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <Progress value={(runFiles?.loadingProgress ?? 0) * 99 + 1} className="max-w-[400px]" />
                     </div>
                 </Card>
-                {traceVisibility === 'animated' && combinedRecording && (
+                {(traceVisibility === 'animated' || roomVisibility === 'visited-animated') && combinedRecording && (
                     <AnimationOptions useViewOptionsStore={useViewOptionsStore} recording={combinedRecording} />
                 )}
             </div>

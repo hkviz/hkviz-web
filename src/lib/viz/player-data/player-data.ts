@@ -4,6 +4,12 @@ const playerDataFieldsArray = Object.values(playerDataFieldsGenerated);
 
 export type PlayerDataField = (typeof playerDataFieldsArray)[number];
 
+export type PlayerDataFieldValue<TField extends PlayerDataField> = TField['type'] extends 'Int32'
+    ? number
+    : TField['type'] extends 'List`1'
+    ? string[]
+    : string;
+
 // type PlayerDataFieldShortCode = PlayerDataField['shortCode'];
 // type PlayerDataFieldByShortCode<T extends PlayerDataFieldShortCode> = Extract<PlayerDataField, { shortCode: T }>;
 

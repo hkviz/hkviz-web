@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
+import { CombinedRecording } from '~/lib/viz/recording-files/recording';
 import { AggregationVariable, type AggregatedRunData } from '~/lib/viz/recording-files/run-aggregation-store';
 
-export type RoomVisibility = 'all' | 'visited' | 'mapped';
+export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
 export type RoomColorMode = 'area' | '1-var';
 
@@ -12,17 +12,19 @@ function createViewOptionsStore() {
     return create(
         combine(
             {
-                roomVisibility: 'mapped' as RoomVisibility,
+                roomVisibility: 'visited' as RoomVisibility,
                 traceVisibility: 'animated' as TraceVisibility,
                 isPlaying: false as boolean,
                 animationMsIntoGame: 0,
                 animationSpeedMultiplier: 50,
-                recording: null as ParsedRecording | null,
+                recording: null as CombinedRecording | null,
                 aggregatedRunData: null as AggregatedRunData | null,
                 timeFrame: { min: 0, max: 0 },
                 traceAnimationLengthMs: 1000 * 60 * 4,
                 selectedRoom: null as string | null,
                 selectedRoomPinned: false,
+
+                viewNeverHappenedAggregations: false,
 
                 roomColorMode: 'area' as RoomColorMode,
                 roomColorVar1: 'deaths' as AggregationVariable,
@@ -78,7 +80,7 @@ function createViewOptionsStore() {
                 function setAnimationSpeedMultiplier(animationSpeedMultiplier: number) {
                     set({ animationSpeedMultiplier });
                 }
-                function setRecording(recording: ParsedRecording | null) {
+                function setRecording(recording: CombinedRecording | null) {
                     const timeFrame = {
                         min: Math.floor((recording?.firstEvent().msIntoGame ?? 0) / 100) * 100,
                         max: Math.ceil((recording?.lastEvent().msIntoGame ?? 0) / 100) * 100,
@@ -113,6 +115,9 @@ function createViewOptionsStore() {
                 function setRoomColorVar1(roomColorVar1: AggregationVariable) {
                     set({ roomColorVar1 });
                 }
+                function setViewNeverHappenedAggregations(viewNeverHappenedAggregations: boolean) {
+                    set({ viewNeverHappenedAggregations });
+                }
 
                 return {
                     setRoomVisibility,
@@ -130,6 +135,7 @@ function createViewOptionsStore() {
                     togglePinnedRoom,
                     setRoomColors: setRoomColorMode,
                     setRoomColorVar1,
+                    setViewNeverHappenedAggregations,
                 };
             },
         ),

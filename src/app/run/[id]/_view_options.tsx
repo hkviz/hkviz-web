@@ -20,7 +20,7 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
     return (
         <Table className="w-full">
             <TableBody>
-                {/* <TableRow>
+                <TableRow>
                     <TableHead>
                         <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
                             <MatSymbol className="mr-2" icon="dashboard" />
@@ -33,13 +33,13 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                                 <SelectValue placeholder="Room visibility" />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="all">All</SelectItem>
-                                <SelectItem value="mapped">Mapped</SelectItem>
+                                <SelectItem value="all">All (Spoilers)</SelectItem>
+                                <SelectItem value="visited-animated">Animated</SelectItem>
                                 <SelectItem value="visited">Visited</SelectItem>
                             </SelectContent>
                         </Select>
                     </TableCell>
-                </TableRow> */}
+                </TableRow>
                 <TableRow>
                     <TableHead>
                         <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">

@@ -5,14 +5,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import Image from 'next/image';
-import { CSSProperties } from 'react';
+import { type CSSProperties } from 'react';
 import { MatSymbol } from '~/app/_components/mat-symbol';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 import { Toggle } from '@/components/ui/toggle';
-import { AggregationVariable, aggregationVariableInfos } from '~/lib/viz/recording-files/run-aggregation-store';
+import {
+    AggregationVariable,
+    aggregationVariableInfos,
+    aggregationVariables,
+} from '~/lib/viz/recording-files/run-aggregation-store';
 
 function AggregationVariableToggles({
     useViewOptionsStore,
@@ -62,11 +66,13 @@ function AggregationVariable({
     if (!selectedRoom) return null;
     return (
         <TableRow>
-            <TableHead className="flex flex-row items-center gap-2">
-                <Image className="w-8" src={variableInfo.image} alt="Focus inventory symbol"></Image>
+            <TableHead>
                 <Tooltip>
                     <TooltipTrigger>
-                        <span>{variableInfo.name}</span>
+                        <div className="flex flex-row items-center justify-center gap-2">
+                            <Image className="w-8" src={variableInfo.image} alt="Focus inventory symbol"></Image>
+                            <span>{variableInfo.name}</span>
+                        </div>
                     </TooltipTrigger>
                     <TooltipContent>{variableInfo.description}</TooltipContent>
                 </Tooltip>
@@ -74,6 +80,55 @@ function AggregationVariable({
             <TableCell className="w-1 pr-6 text-right">{aggregatedVariableValue}</TableCell>
             <AggregationVariableToggles useViewOptionsStore={useViewOptionsStore} variable={variable} />
         </TableRow>
+    );
+}
+
+function AggregationVariables({
+    useViewOptionsStore,
+}: React.PropsWithChildren<{
+    useViewOptionsStore: UseViewOptionsStore;
+}>) {
+    const aggregatedMaxs = useViewOptionsStore((s) => s.aggregatedRunData?.maxOverScenes);
+    const viewNeverHappenedAggregations = useViewOptionsStore((s) => s.viewNeverHappenedAggregations);
+    const setViewNeverHappenedAggregations = useViewOptionsStore((s) => s.setViewNeverHappenedAggregations);
+
+    const neverHappenedEvents = aggregationVariables.filter((variable) => !aggregatedMaxs?.[variable]);
+
+    return (
+        <>
+            {aggregationVariables
+                .filter((it) => viewNeverHappenedAggregations || !neverHappenedEvents.includes(it))
+                .map((variable) => (
+                    <AggregationVariable key={variable} useViewOptionsStore={useViewOptionsStore} variable={variable} />
+                ))}
+            {neverHappenedEvents.length !== 0 && (
+                <TableRow>
+                    <TableCell colSpan={3} className="text-center">
+                        {viewNeverHappenedAggregations ? (
+                            <p className="flex flex-col items-center">
+                                <Button
+                                    className="h-fit"
+                                    variant="outline"
+                                    onClick={() => setViewNeverHappenedAggregations(false)}
+                                >
+                                    Hide never occurred events
+                                </Button>
+                            </p>
+                        ) : (
+                            <p className="flex h-fit flex-col items-center">
+                                <Button
+                                    className="h-fit"
+                                    variant="outline"
+                                    onClick={() => setViewNeverHappenedAggregations(true)}
+                                >
+                                    Show never occurred events (Spoilers)
+                                </Button>
+                            </p>
+                        )}
+                    </TableCell>
+                </TableRow>
+            )}
+        </>
     );
 }
 
@@ -154,8 +209,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 <CardContent className="px-0">
                     <Table className="w-full">
                         <TableBody>
-                            <AggregationVariable useViewOptionsStore={useViewOptionsStore} variable="deaths" />
-                            <AggregationVariable useViewOptionsStore={useViewOptionsStore} variable="focusing" />
+                            <AggregationVariables useViewOptionsStore={useViewOptionsStore} />
                         </TableBody>
                     </Table>
                 </CardContent>

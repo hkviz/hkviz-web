@@ -14,6 +14,9 @@ import {
     type RecordingEvent,
     HeroStateEvent,
     PlayerDataEvent,
+    SpellFireballEvent,
+    SpellUpEvent,
+    SpellDownEvent,
 } from './recording';
 import { heroStateFields } from '../hero-state/hero-states';
 import { raise } from '~/lib/utils';
@@ -76,13 +79,25 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 case PARTIAL_EVENT_PREFIXES.PLAYER_DATA_SHORTNAME: {
                     const field = playerDataFields.byShortCode[eventTypeSuffix()];
                     if (!field) throw new Error('Unknown player data field short code' + eventTypeSuffix());
+
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    let value: any;
+                    if (field.type === 'Int32') {
+                        value = parseInt(args[0]!);
+                    } else if (field.type === 'List`1') {
+                        value = args[0]!.split(',');
+                    } else {
+                        value = args[0];
+                    }
                     // TODO
                     events.push(
                         new PlayerDataEvent({
                             timestamp,
                             field,
-                            value: args[0]!,
+                            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                            value,
                             previousPlayerPositionEvent: previousPlayerPositionEvent,
+                            previousPlayerDataEventOfField: null, // filled in combiner
                         }),
                     );
                 }
@@ -176,15 +191,30 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     break;
                 }
                 case EVENT_PREFIXES.SPELL_FIREBALL: {
-                    // TODO
+                    events.push(
+                        new SpellFireballEvent({
+                            timestamp,
+                            previousPlayerPositionEvent: previousPlayerPositionEvent,
+                        }),
+                    );
                     break;
                 }
                 case EVENT_PREFIXES.SPELL_UP: {
-                    // TODO
+                    events.push(
+                        new SpellUpEvent({
+                            timestamp,
+                            previousPlayerPositionEvent: previousPlayerPositionEvent,
+                        }),
+                    );
                     break;
                 }
                 case EVENT_PREFIXES.SPELL_DOWN: {
-                    // TODO
+                    events.push(
+                        new SpellDownEvent({
+                            timestamp,
+                            previousPlayerPositionEvent: previousPlayerPositionEvent,
+                        }),
+                    );
                     break;
                 }
                 case EVENT_PREFIXES.NAIL_ART_CYCLONE: {

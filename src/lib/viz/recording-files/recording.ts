@@ -1,5 +1,5 @@
 import { raise } from '~/lib/utils';
-import { type PlayerDataField } from '../player-data/player-data';
+import { PlayerDataFieldValue, type PlayerDataField } from '../player-data/player-data';
 import type { Vector2 } from '../types/vector2';
 import { HeroStateField } from '../hero-state/hero-states';
 import { playerPositionToMapPosition } from '../map-data/player-position';
@@ -60,19 +60,35 @@ export class PlayerPositionEvent extends RecordingEventBase {
     }
 }
 
-type PlayerDataEventOptions = RecordingEventBaseOptions &
-    Pick<PlayerDataEvent, 'field' | 'value' | 'previousPlayerPositionEvent'>;
-export class PlayerDataEvent extends RecordingEventBase {
-    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
-    public readonly field: PlayerDataField;
-    public readonly value: string;
+type PlayerDataEventOptions<TField extends PlayerDataField> = RecordingEventBaseOptions &
+    Pick<PlayerDataEvent<TField>, 'field' | 'value' | 'previousPlayerPositionEvent' | 'previousPlayerDataEventOfField'>;
+export class PlayerDataEvent<TField extends PlayerDataField> extends RecordingEventBase {
+    public previousPlayerPositionEvent: PlayerPositionEvent | null;
+    public previousPlayerDataEventOfField: PlayerDataEvent<TField> | null;
+    public field: TField;
+    public value: PlayerDataFieldValue<TField>;
 
-    constructor(options: PlayerDataEventOptions) {
+    constructor(options: PlayerDataEventOptions<TField>) {
         super(options);
         this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
         this.field = options.field;
         this.value = options.value;
+        this.previousPlayerDataEventOfField = options.previousPlayerDataEventOfField;
     }
+}
+
+export function isPlayerDataEventOfField<TField extends PlayerDataField>(
+    event: RecordingEvent,
+    field: TField,
+): event is PlayerDataEvent<TField> {
+    return event instanceof PlayerDataEvent && event.field === field;
+}
+
+export function isPlayerDataEventWithFieldType<FieldType extends PlayerDataField['type']>(
+    event: RecordingEvent,
+    type: FieldType,
+): event is PlayerDataEvent<Extract<PlayerDataField, { type: FieldType }>> {
+    return event instanceof PlayerDataEvent && event.field.type === type;
 }
 
 type HeroStateEventOptions = RecordingEventBaseOptions &
@@ -90,12 +106,45 @@ export class HeroStateEvent extends RecordingEventBase {
     }
 }
 
+type SpellFireballEventOptions = RecordingEventBaseOptions & Pick<SpellFireballEvent, 'previousPlayerPositionEvent'>;
+export class SpellFireballEvent extends RecordingEventBase {
+    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+
+    constructor(options: SpellFireballEventOptions) {
+        super(options);
+        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
+    }
+}
+
+type SpellUpEventOptions = RecordingEventBaseOptions & Pick<SpellUpEvent, 'previousPlayerPositionEvent'>;
+export class SpellUpEvent extends RecordingEventBase {
+    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+
+    constructor(options: SpellUpEventOptions) {
+        super(options);
+        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
+    }
+}
+
+type SpellDownEventOptions = RecordingEventBaseOptions & Pick<SpellDownEvent, 'previousPlayerPositionEvent'>;
+export class SpellDownEvent extends RecordingEventBase {
+    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+
+    constructor(options: SpellDownEventOptions) {
+        super(options);
+        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
+    }
+}
+
 export type RecordingEvent =
     | SceneEvent
     | PlayerPositionEvent
-    | PlayerDataEvent
+    | PlayerDataEvent<PlayerDataField>
     | RecordingFileVersionEvent
-    | HeroStateEvent;
+    | HeroStateEvent
+    | SpellFireballEvent
+    | SpellDownEvent
+    | SpellUpEvent;
 
 export class ParsedRecording {
     constructor(
@@ -113,5 +162,37 @@ export class ParsedRecording {
     }
     firstEvent() {
         return this.events[0] ?? raise(new Error(`Recording file ${this.partNumber} does not contain any events`));
+    }
+}
+
+export class CombinedRecording extends ParsedRecording {
+    public playerDataEventsPerField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>[]>();
+
+    constructor(
+        events: RecordingEvent[],
+        unknownEvents: number,
+        parsingErrors: number,
+        partNumber: number | null,
+        public readonly lastPlayerDataEventsByField: Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>,
+    ) {
+        super(events, unknownEvents, parsingErrors, partNumber);
+
+        for (const event of events) {
+            if (event instanceof PlayerDataEvent) {
+                const eventsOfField = this.playerDataEventsPerField.get(event.field) ?? [];
+                eventsOfField.push(event);
+                this.playerDataEventsPerField.set(event.field, eventsOfField);
+            }
+        }
+    }
+
+    lastPlayerDataEventOfField<TField extends PlayerDataField>(field: TField): PlayerDataEvent<TField> | null {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
+        return (this.lastPlayerDataEventsByField.get(field) as any) ?? null;
+    }
+
+    allPlayerDataEventsOfField<TField extends PlayerDataField>(field: TField): PlayerDataEvent<TField>[] {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
+        return (this.playerDataEventsPerField.get(field) as any) ?? [];
     }
 }

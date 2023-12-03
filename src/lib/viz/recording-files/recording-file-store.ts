@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import type { ParsedRecording as ParsedRecording } from './recording';
+import type { CombinedRecording, ParsedRecording as ParsedRecording } from './recording';
 import { parseRecordingFile } from './recording-file-parser';
 import { fetchWithRunfileCache } from './recording-file-browser-cache';
 import { type AppRouterOutput } from '~/server/api/types';
@@ -55,7 +55,7 @@ export type RunFile = LoadingRunFile | LoadedRunFile;
 export type Run = {
     runId: string;
     nrOfFiles: number;
-} & ({ finishedLoading: false } | { finishedLoading: true; recording: ParsedRecording });
+} & ({ finishedLoading: false } | { finishedLoading: true; recording: CombinedRecording });
 
 export type RunId = string;
 export type RunFileId = string;
