@@ -23,6 +23,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
 
     const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
     const togglePinnedRoom = useViewOptionsStore((s) => s.togglePinnedRoom);
+    const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
 
     useEffect(() => {
         svg.current = d3
@@ -104,8 +105,13 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             .on('mouseover', (event, r) => {
                 setSelectedRoomIfNotPinned(r.sceneName);
             })
-            .on('click', (event, r) => {
-                togglePinnedRoom(r.sceneName);
+            .on('click', (event: PointerEvent, r) => {
+                if (event.pointerType !== 'touch') {
+                    togglePinnedRoom(r.sceneName);
+                } else {
+                    setSelectedRoomPinned(false);
+                    setSelectedRoomIfNotPinned(r.sceneName);
+                }
             });
 
         return () => {
