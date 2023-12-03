@@ -28,6 +28,7 @@ export function useMapRooms(
     const componentId = useId();
 
     const roomRects = useRef<d3.Selection<d3.BaseType, RoomInfo, SVGGElement, unknown> | undefined>(undefined);
+    const roomImgs = useRef<d3.Selection<d3.BaseType, RoomInfo, SVGGElement, unknown> | undefined>(undefined);
 
     const mainEffectDependencies = [componentId, onClickEvent, onMouseOverEvent, roomDataEnter, ...dependencies];
 
@@ -53,7 +54,10 @@ export function useMapRooms(
 
     useEffect(() => {
         if (!roomDataEnter.current) return;
-        const roomGs = roomDataEnter.current.append('svg:g').attr('data-scene-name', (r) => r.sceneName);
+        const roomGs = roomDataEnter.current
+            .append('svg:g')
+            .attr('data-scene-name', (r) => r.sceneName)
+            .attr('data-game-object-name', (r) => r.gameObjectName);
 
         // mask for each rooms rect
         const roomMask = roomGs.append('svg:mask').attr('id', (r) => 'mask_' + componentId + '_' + r.spriteInfo.name);
@@ -68,9 +72,8 @@ export function useMapRooms(
             .attr('class', 'svg-room')
             .style('fill', 'black');
 
-        roomMask
+        roomImgs.current = roomMask
             .append('svg:image')
-            .attr('xlink:href', (r) => '/ingame-map/' + r.sprite + '.png')
             .attr('data-scene-name', (r) => r.sceneName)
             .attr('x', (r) => r.spritePosition.min.x)
             .attr('y', (r) => r.spritePosition.min.y)
@@ -92,8 +95,7 @@ export function useMapRooms(
             .attr('clip-path', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
 
             .style('fill', (r) => r.color.formatHex())
-            .style('pointer-events', 'all')
-            .style('transition', 'opacity 0.1s ease-in-out')
+            .style('transition', 'opacity 0.075s ease-in-out')
             .on('mouseover', (event: PointerEvent, r) => {
                 onMouseOverEvent(event, r);
             })
@@ -104,13 +106,24 @@ export function useMapRooms(
     }, mainEffectDependencies);
 
     useEffect(() => {
-        function isRoomVisible(r: RoomInfo) {
-            return visibleRooms === 'all' || visibleRooms.includes(r.gameObjectName);
+        function isRoomVisible(gameObjectName: string) {
+            return visibleRooms === 'all' || visibleRooms.includes(gameObjectName);
+        }
+        function getCorrectSprite(r: RoomInfo) {
+            if (!r.conditionalSprite || !isRoomVisible(r.conditionalSprite.dependsOnGameObject)) {
+                return r.sprite;
+            } else {
+                // needs more work to also have bounds of conditional sprites and use those instead.
+                // return r.conditionalSprite.sprite;
+                return r.sprite;
+            }
         }
 
         roomRects.current
-            ?.style('opacity', (r) => (isRoomVisible(r) ? '100%' : '0%'))
-            ?.style('pointer-events', (r) => (isRoomVisible(r) ? 'all' : 'none'));
+            ?.style('opacity', (r) => (isRoomVisible(r.gameObjectName) ? '100%' : '0%'))
+            ?.style('pointer-events', (r) => (isRoomVisible(r.gameObjectName) ? 'all' : 'none'));
+
+        roomImgs.current?.attr('xlink:href', (r) => '/ingame-map/' + getCorrectSprite(r) + '.png');
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...mainEffectDependencies, visibleRooms]);

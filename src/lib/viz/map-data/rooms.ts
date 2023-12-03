@@ -75,9 +75,13 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
             ? d3.color('#dfe2e4')!
             : d3.rgb(room.origColor.x * 255, room.origColor.y * 255, room.origColor.z * 255);
 
+    const conditionalSprite =
+        room.gameObjectName === 'Town' ? { sprite: 'Town_b', dependsOnGameObject: 'Mines_10' } : null;
+
     return {
         ...room,
         ...formatZoneAndRoomName(room.mapZone, room.sceneName),
+        conditionalSprite,
         visualBounds,
         playerPositionBounds,
         color,
