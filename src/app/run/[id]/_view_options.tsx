@@ -14,7 +14,7 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
     const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
     const setTraceVisibility = useViewOptionsStore((s) => s.setTraceVisibility);
 
-    const roomColors = useViewOptionsStore((s) => s.roomColors);
+    const roomColors = useViewOptionsStore((s) => s.roomColorMode);
     const setRoomColors = useViewOptionsStore((s) => s.setRoomColors);
 
     return (

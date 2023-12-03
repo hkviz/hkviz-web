@@ -7,13 +7,15 @@ import { RoomInfo } from '../map-data/rooms';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
 import { useMapRooms } from './use-map-rooms';
+import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 
 export interface HKMapProps {
     className?: string;
     roomInfos: RoomInfo[];
+    useViewOptionsStore: UseViewOptionsStore;
 }
 
-export function HKMapRoom({ className, roomInfos }: HKMapProps) {
+export function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const svg = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined>>();
     const roomDataEnter = useRef<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown>>();
@@ -47,7 +49,6 @@ export function HKMapRoom({ className, roomInfos }: HKMapProps) {
                     (spritePosition.size.y / containingBounds.size.y) * roomPositionWithin0To1.size.y,
                 ),
             );
-            console.log({ containingBounds, x, roomPositionWithin0To1 });
             return x;
         }
 
@@ -79,6 +80,8 @@ export function HKMapRoom({ className, roomInfos }: HKMapProps) {
     useMapRooms(
         {
             roomDataEnter,
+            useViewOptionsStore,
+            alwaysUseAreaAsColor: true,
         },
         [roomInfos],
     );

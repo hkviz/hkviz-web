@@ -9,6 +9,7 @@ import { RoomInfo, roomData } from '../map-data/rooms';
 import { useMapRooms } from './use-map-rooms';
 import { useMapTraces } from './use-traces';
 import useEvent from 'react-use-event-hook';
+import { MapLegend } from './legend';
 
 export interface HKMapProps {
     className?: string;
@@ -31,7 +32,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     useEffect(() => {
         svg.current = d3
             .select(containerRef.current)
-            .append('svg')
+            .insert('svg', ':first-child')
             .attr('class', 'absolute inset-0')
             .attr('width', 1000)
             .attr('height', 1000)
@@ -87,6 +88,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                     setSelectedRoomIfNotPinned(r.sceneName);
                 }
             },
+            useViewOptionsStore,
         },
         [],
     );
@@ -111,5 +113,9 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     }, []);
 
     useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG });
-    return useMemo(() => <div className={cn('relative', className)} ref={containerRef} />, [className, containerRef]);
+    return (
+        <div className={cn('relative', className)} ref={containerRef}>
+            <MapLegend useViewOptionsStore={useViewOptionsStore} />
+        </div>
+    );
 }

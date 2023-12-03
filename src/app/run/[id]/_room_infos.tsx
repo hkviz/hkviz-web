@@ -4,18 +4,15 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
+import Image from 'next/image';
 import { CSSProperties } from 'react';
 import { MatSymbol } from '~/app/_components/mat-symbol';
+import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
-import Image from 'next/image';
-import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 
-import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
-import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png';
 import { Toggle } from '@/components/ui/toggle';
-import { AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
+import { AggregationVariable, aggregationVariableInfos } from '~/lib/viz/recording-files/run-aggregation-store';
 
 function AggregationVariableToggles({
     useViewOptionsStore,
@@ -24,7 +21,7 @@ function AggregationVariableToggles({
     useViewOptionsStore: UseViewOptionsStore;
     variable: AggregationVariable;
 }) {
-    const roomColors = useViewOptionsStore((s) => s.roomColors);
+    const roomColors = useViewOptionsStore((s) => s.roomColorMode);
     const roomColorVar1 = useViewOptionsStore((s) => s.roomColorVar1);
     const setRoomColorVar1 = useViewOptionsStore((s) => s.setRoomColorVar1);
 
@@ -52,7 +49,6 @@ function AggregationVariableToggles({
 function AggregationVariable({
     useViewOptionsStore,
     variable,
-    children,
 }: React.PropsWithChildren<{
     useViewOptionsStore: UseViewOptionsStore;
     variable: AggregationVariable;
@@ -61,11 +57,20 @@ function AggregationVariable({
     const aggregatedVariableValue = useViewOptionsStore((s) =>
         selectedRoom ? s.aggregatedRunData?.countPerScene?.[selectedRoom]?.[variable] ?? 0 : 0,
     );
+    const variableInfo = aggregationVariableInfos[variable];
 
     if (!selectedRoom) return null;
     return (
         <TableRow>
-            <TableHead className="flex flex-row items-center gap-2">{children}</TableHead>
+            <TableHead className="flex flex-row items-center gap-2">
+                <Image className="w-8" src={variableInfo.image} alt="Focus inventory symbol"></Image>
+                <Tooltip>
+                    <TooltipTrigger>
+                        <span>{variableInfo.name}</span>
+                    </TooltipTrigger>
+                    <TooltipContent>{variableInfo.description}</TooltipContent>
+                </Tooltip>
+            </TableHead>
             <TableCell className="w-1 pr-6 text-right">{aggregatedVariableValue}</TableCell>
             <AggregationVariableToggles useViewOptionsStore={useViewOptionsStore} variable={variable} />
         </TableRow>
@@ -92,7 +97,13 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
             }
         >
             <CardHeader className="flex flex-row items-center">
-                {allRoomInfos && <HKMapRoom roomInfos={allRoomInfos} className="mr-4 h-14 w-14" />}
+                {allRoomInfos && (
+                    <HKMapRoom
+                        roomInfos={allRoomInfos}
+                        className="mr-4 h-14 w-14"
+                        useViewOptionsStore={useViewOptionsStore}
+                    />
+                )}
 
                 <div>
                     <CardTitle>Room info</CardTitle>
@@ -143,21 +154,8 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 <CardContent className="px-0">
                     <Table className="w-full">
                         <TableBody>
-                            <AggregationVariable useViewOptionsStore={useViewOptionsStore} variable="deaths">
-                                <Image className="w-8" src={shadeImg} alt="Knights shade symbol"></Image>
-                                Deaths
-                            </AggregationVariable>
-                            <AggregationVariable useViewOptionsStore={useViewOptionsStore} variable="focusing">
-                                <Image className="w-8" src={focusImg} alt="Focus inventory symbol"></Image>
-                                <Tooltip>
-                                    <TooltipTrigger>
-                                        <span>Focused</span>
-                                    </TooltipTrigger>
-                                    <TooltipContent>
-                                        How often focusing has started, might not have been finished
-                                    </TooltipContent>
-                                </Tooltip>
-                            </AggregationVariable>
+                            <AggregationVariable useViewOptionsStore={useViewOptionsStore} variable="deaths" />
+                            <AggregationVariable useViewOptionsStore={useViewOptionsStore} variable="focusing" />
                         </TableBody>
                     </Table>
                 </CardContent>

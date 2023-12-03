@@ -2,8 +2,24 @@ import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import { HeroStateEvent, type SceneEvent, type ParsedRecording } from './recording';
 
+import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
+import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png';
+
 type RunId = string;
 export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
+
+export const aggregationVariableInfos = {
+    deaths: {
+        name: 'Deaths',
+        description: 'Number of times the player died in this room',
+        image: shadeImg,
+    },
+    focusing: {
+        name: 'Focusing',
+        description: 'Number of times the player started to focus',
+        image: focusImg,
+    },
+};
 
 export type ValueAggregation = {
     deaths: number;

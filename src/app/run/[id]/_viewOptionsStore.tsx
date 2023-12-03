@@ -6,7 +6,7 @@ import { AggregationVariable, type AggregatedRunData } from '~/lib/viz/recording
 
 export type RoomVisibility = 'all' | 'visited' | 'mapped';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
-export type RoomColors = 'area' | '1-var';
+export type RoomColorMode = 'area' | '1-var';
 
 function createViewOptionsStore() {
     return create(
@@ -24,7 +24,7 @@ function createViewOptionsStore() {
                 selectedRoom: null as string | null,
                 selectedRoomPinned: false,
 
-                roomColors: 'area' as RoomColors,
+                roomColorMode: 'area' as RoomColorMode,
                 roomColorVar1: 'deaths' as AggregationVariable,
             },
             (set, get) => {
@@ -107,8 +107,8 @@ function createViewOptionsStore() {
                         setSelectedRoomPinned(true);
                     }
                 }
-                function setRoomColors(roomColors: RoomColors) {
-                    set({ roomColors });
+                function setRoomColorMode(roomColorMode: RoomColorMode) {
+                    set({ roomColorMode });
                 }
                 function setRoomColorVar1(roomColorVar1: AggregationVariable) {
                     set({ roomColorVar1 });
@@ -128,7 +128,7 @@ function createViewOptionsStore() {
                     setSelectedRoomPinned,
                     setSelectedRoomIfNotPinned,
                     togglePinnedRoom,
-                    setRoomColors,
+                    setRoomColors: setRoomColorMode,
                     setRoomColorVar1,
                 };
             },
