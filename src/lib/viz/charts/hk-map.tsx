@@ -2,12 +2,13 @@
 
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
-import { useEffect, useRef, useMemo, use, useId } from 'react';
+import { useEffect, useId, useMemo, useRef } from 'react';
 import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
-import { roomData } from '../map-data/rooms';
+import { RoomInfo, roomData } from '../map-data/rooms';
+import { useMapRooms } from './use-map-rooms';
 import { useMapTraces } from './use-traces';
-import { makeD3MapRoom } from './make-d3-map-room';
+import useEvent from 'react-use-event-hook';
 
 export interface HKMapProps {
     className?: string;
@@ -21,11 +22,11 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
 
     const animatedTraceG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
     const knightPinG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
+    const roomDataEnter = useRef<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown>>();
 
     const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
     const togglePinnedRoom = useViewOptionsStore((s) => s.togglePinnedRoom);
     const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
-    const componentId = useId();
 
     useEffect(() => {
         svg.current = d3
@@ -57,16 +58,25 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
 
         rootG.current = svg.current.append('g').attr('data-group', 'root');
 
-        const roomDataEnter = rootG.current
+        roomDataEnter.current = rootG.current
             .append('g')
             .attr('data-group', 'rooms')
             .selectAll('rect')
             .data(roomData)
             .enter();
 
-        makeD3MapRoom({
+        animatedTraceG.current = rootG.current.append('g').attr('data-group', 'traces-animated');
+        knightPinG.current = rootG.current.append('g').attr('data-group', 'knight-pin-g');
+
+        return () => {
+            svg.current?.remove();
+        };
+    }, []);
+
+    useMapRooms(
+        {
             roomDataEnter,
-            onMouseOver: (event, r) => {
+            onMouseOver: (event: PointerEvent, r) => {
                 setSelectedRoomIfNotPinned(r.sceneName);
             },
             onClick: (event, r) => {
@@ -77,16 +87,9 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                     setSelectedRoomIfNotPinned(r.sceneName);
                 }
             },
-            componentId,
-        });
-
-        animatedTraceG.current = rootG.current.append('g').attr('data-group', 'traces-animated');
-        knightPinG.current = rootG.current.append('g').attr('data-group', 'knight-pin-g');
-
-        return () => {
-            svg.current?.remove();
-        };
-    }, [togglePinnedRoom, setSelectedRoomIfNotPinned, componentId, setSelectedRoomPinned]);
+        },
+        [],
+    );
 
     useEffect(() => {
         function containerSizeChanged() {

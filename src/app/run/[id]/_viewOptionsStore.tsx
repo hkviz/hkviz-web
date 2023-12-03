@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
-import { type AggregatedRunData } from '~/lib/viz/recording-files/run-aggregation-store';
+import { AggregationVariable, type AggregatedRunData } from '~/lib/viz/recording-files/run-aggregation-store';
 
 export type RoomVisibility = 'all' | 'visited' | 'mapped';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
+export type RoomColors = 'area' | '1-var';
 
 function createViewOptionsStore() {
     return create(
@@ -22,6 +23,9 @@ function createViewOptionsStore() {
                 traceAnimationLengthMs: 1000 * 60 * 4,
                 selectedRoom: null as string | null,
                 selectedRoomPinned: false,
+
+                roomColors: 'area' as RoomColors,
+                roomColorVar1: 'deaths' as AggregationVariable,
             },
             (set, get) => {
                 function setRoomVisibility(roomVisibility: RoomVisibility) {
@@ -103,6 +107,12 @@ function createViewOptionsStore() {
                         setSelectedRoomPinned(true);
                     }
                 }
+                function setRoomColors(roomColors: RoomColors) {
+                    set({ roomColors });
+                }
+                function setRoomColorVar1(roomColorVar1: AggregationVariable) {
+                    set({ roomColorVar1 });
+                }
 
                 return {
                     setRoomVisibility,
@@ -118,6 +128,8 @@ function createViewOptionsStore() {
                     setSelectedRoomPinned,
                     setSelectedRoomIfNotPinned,
                     togglePinnedRoom,
+                    setRoomColors,
+                    setRoomColorVar1,
                 };
             },
         ),

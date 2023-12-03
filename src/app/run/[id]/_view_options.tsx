@@ -14,10 +14,13 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
     const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
     const setTraceVisibility = useViewOptionsStore((s) => s.setTraceVisibility);
 
+    const roomColors = useViewOptionsStore((s) => s.roomColors);
+    const setRoomColors = useViewOptionsStore((s) => s.setRoomColors);
+
     return (
         <Table className="w-full">
             <TableBody>
-                <TableRow>
+                {/* <TableRow>
                     <TableHead>
                         <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
                             <MatSymbol className="mr-2" icon="dashboard" />
@@ -36,7 +39,7 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                             </SelectContent>
                         </Select>
                     </TableCell>
-                </TableRow>
+                </TableRow> */}
                 <TableRow>
                     <TableHead>
                         <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
@@ -53,6 +56,25 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                                 <SelectItem value="all">All</SelectItem>
                                 <SelectItem value="animated">Animated</SelectItem>
                                 <SelectItem value="hide">Hidden</SelectItem>
+                            </SelectContent>
+                        </Select>
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableHead>
+                        <Label className="flex items-center" htmlFor="roomColorSelectTrigger">
+                            <MatSymbol className="mr-2" icon="palette" />
+                            Room colors
+                        </Label>
+                    </TableHead>
+                    <TableCell>
+                        <Select value={roomColors} onValueChange={setRoomColors}>
+                            <SelectTrigger id="roomColorSelectTrigger">
+                                <SelectValue placeholder="Room colors" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectItem value="area">Area</SelectItem>
+                                <SelectItem value="1-var">1 variable</SelectItem>
                             </SelectContent>
                         </Select>
                     </TableCell>

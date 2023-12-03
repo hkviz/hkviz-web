@@ -4,15 +4,73 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { CSSProperties } from 'react';
 import { MatSymbol } from '~/app/_components/mat-symbol';
 import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 import Image from 'next/image';
+import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 
 import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
 import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png';
-import { HKMapRoom } from '~/lib/viz/charts/room-icon';
+import { Toggle } from '@/components/ui/toggle';
+import { AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
+
+function AggregationVariableToggles({
+    useViewOptionsStore,
+    variable,
+}: {
+    useViewOptionsStore: UseViewOptionsStore;
+    variable: AggregationVariable;
+}) {
+    const roomColors = useViewOptionsStore((s) => s.roomColors);
+    const roomColorVar1 = useViewOptionsStore((s) => s.roomColorVar1);
+    const setRoomColorVar1 = useViewOptionsStore((s) => s.setRoomColorVar1);
+
+    const showVar1 = roomColors === '1-var';
+    const showAnyToggles = showVar1;
+
+    if (!showAnyToggles) return null;
+
+    return (
+        <TableCell className="w-1">
+            {showVar1 && (
+                <Toggle
+                    variant="outline"
+                    pressed={roomColorVar1 === variable}
+                    onPressedChange={() => setRoomColorVar1(variable)}
+                    className="data-[state=on]:bg-primary"
+                >
+                    <MatSymbol icon="palette" className="text-base" />
+                </Toggle>
+            )}
+        </TableCell>
+    );
+}
+
+function AggregationVariable({
+    useViewOptionsStore,
+    variable,
+    children,
+}: React.PropsWithChildren<{
+    useViewOptionsStore: UseViewOptionsStore;
+    variable: AggregationVariable;
+}>) {
+    const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
+    const aggregatedVariableValue = useViewOptionsStore((s) =>
+        selectedRoom ? s.aggregatedRunData?.countPerScene?.[selectedRoom]?.[variable] ?? 0 : 0,
+    );
+
+    if (!selectedRoom) return null;
+    return (
+        <TableRow>
+            <TableHead className="flex flex-row items-center gap-2">{children}</TableHead>
+            <TableCell className="w-1 pr-6 text-right">{aggregatedVariableValue}</TableCell>
+            <AggregationVariableToggles useViewOptionsStore={useViewOptionsStore} variable={variable} />
+        </TableRow>
+    );
+}
 
 export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
@@ -21,8 +79,6 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
 
     const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
     const allRoomInfos = selectedRoom ? allRoomDataBySceneName.get(selectedRoom) ?? null : null;
-
-    const aggregatedRunData = useViewOptionsStore((s) => s.aggregatedRunData);
 
     return (
         <Card
@@ -87,31 +143,21 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 <CardContent className="px-0">
                     <Table className="w-full">
                         <TableBody>
-                            <TableRow>
-                                <TableHead className="flex flex-row items-center gap-2">
-                                    <Image className="w-8" src={shadeImg} alt="Knights shade symbol"></Image>
-                                    Deaths
-                                </TableHead>
-                                <TableCell className="pr-6 text-right">
-                                    {aggregatedRunData?.countPerScene?.[selectedRoom]?.deaths ?? 0}
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableHead className="flex flex-row items-center gap-2">
-                                    <Image className="w-8" src={focusImg} alt="Focus inventory symbol"></Image>
-                                    <Tooltip>
-                                        <TooltipTrigger>
-                                            <span>Focused</span>
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            How often focusing has started, might not have been finished
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </TableHead>
-                                <TableCell className="pr-6 text-right">
-                                    {aggregatedRunData?.countPerScene?.[selectedRoom]?.focusing ?? 0}
-                                </TableCell>
-                            </TableRow>
+                            <AggregationVariable useViewOptionsStore={useViewOptionsStore} variable="deaths">
+                                <Image className="w-8" src={shadeImg} alt="Knights shade symbol"></Image>
+                                Deaths
+                            </AggregationVariable>
+                            <AggregationVariable useViewOptionsStore={useViewOptionsStore} variable="focusing">
+                                <Image className="w-8" src={focusImg} alt="Focus inventory symbol"></Image>
+                                <Tooltip>
+                                    <TooltipTrigger>
+                                        <span>Focused</span>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        How often focusing has started, might not have been finished
+                                    </TooltipContent>
+                                </Tooltip>
+                            </AggregationVariable>
                         </TableBody>
                     </Table>
                 </CardContent>

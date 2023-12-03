@@ -4,9 +4,9 @@ import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { useEffect, useId, useMemo, useRef } from 'react';
 import { RoomInfo } from '../map-data/rooms';
-import { makeD3MapRoom } from './make-d3-map-room';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
+import { useMapRooms } from './use-map-rooms';
 
 export interface HKMapProps {
     className?: string;
@@ -16,7 +16,7 @@ export interface HKMapProps {
 export function HKMapRoom({ className, roomInfos }: HKMapProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const svg = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined>>();
-    const componentId = useId();
+    const roomDataEnter = useRef<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown>>();
 
     useEffect(() => {
         const containingBounds = Bounds.fromContainingBounds(roomInfos.map((it) => it.spritePosition));
@@ -59,7 +59,7 @@ export function HKMapRoom({ className, roomInfos }: HKMapProps) {
             .attr('height', '100%')
             .attr('viewBox', [0, 0, 1, 1]);
 
-        const roomDataEnter = svg.current
+        roomDataEnter.current = svg.current
             .append('g')
             .attr('data-group', 'rooms')
             .selectAll('rect')
@@ -71,16 +71,17 @@ export function HKMapRoom({ className, roomInfos }: HKMapProps) {
             )
             .enter();
 
-        makeD3MapRoom({
-            roomDataEnter,
-            componentId,
-            preserveAspectRatio: 'none',
-        });
-
         return () => {
             svg.current?.remove();
         };
-    }, [componentId, roomInfos]);
+    }, [roomInfos]);
+
+    useMapRooms(
+        {
+            roomDataEnter,
+        },
+        [roomInfos],
+    );
 
     return useMemo(() => <div className={cn('relative', className)} ref={containerRef} />, [className, containerRef]);
 }

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import { HeroStateEvent, SceneEvent, type ParsedRecording } from './recording';
+import { HeroStateEvent, type SceneEvent, type ParsedRecording } from './recording';
 
 type RunId = string;
 export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
@@ -10,13 +10,15 @@ export type ValueAggregation = {
     focusing: number;
 };
 
+export type AggregationVariable = keyof ValueAggregation;
+
 type AggregationStoreValue = Record<RunId, AggregatedRunData>;
 
 function aggregateRecording(recording: ParsedRecording) {
     const countPerScene: Record<string, ValueAggregation> = {};
     const maxOverScenes: ValueAggregation = { deaths: 0, focusing: 0 };
 
-    function addToScene(sceneEvent: SceneEvent | undefined, key: keyof ValueAggregation, value: number) {
+    function addToScene(sceneEvent: SceneEvent | undefined, key: AggregationVariable, value: number) {
         if (!sceneEvent?.sceneName) return;
         const existing = countPerScene[sceneEvent.sceneName] ?? { deaths: 0, focusing: 0 };
         countPerScene[sceneEvent.sceneName] = {
