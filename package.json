@@ -3,7 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "build": "npm run tsc && next build --debug",
+        "build": "next build --debug",
         "db:push": "dotenv drizzle-kit push:mysql",
         "db:studio": "dotenv drizzle-kit studio",
         "next:dev": "next dev",

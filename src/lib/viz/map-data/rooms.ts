@@ -85,5 +85,3 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
 export const mainRoomDataBySceneName = new Map<string, RoomData>(
     roomData.filter((it) => it.isMainGameObject).map((room) => [room.sceneName, room]),
 );
-
-console.log([...d3.group(roomData, (d) => d.sceneName).entries()].filter((it) => it[1].length > 1).map((it) => it[1]));

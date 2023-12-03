@@ -2,7 +2,6 @@ import { raise } from '~/lib/utils';
 import { ParsedRecording, RecordingFileVersionEvent, type RecordingEvent, HeroStateEvent } from './recording';
 
 export function combineRecordings(recordings: ParsedRecording[]): ParsedRecording {
-    console.log({ recordings });
     const events: RecordingEvent[] = [];
     let msIntoGame = 0;
     let lastTimestamp: number =

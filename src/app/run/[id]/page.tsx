@@ -7,7 +7,6 @@ import { ContentWrapper } from '../../_components/content-wrapper';
 
 export default async function SingleRunPage({ params }: { params: { id: string } }) {
     const session = await getServerAuthSession();
-    console.log('xxyxiaksik', { params });
 
     try {
         const runData = await (await apiFromServer()).run.getMetadataById({ id: params.id });
