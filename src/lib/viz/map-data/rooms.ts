@@ -4,7 +4,12 @@ import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
 import { formatZoneAndRoomName } from './room-name-formatting';
 
-export const SCALE_FACTOR = 1;
+/**
+ * Everything on the ingame map is scaled up,
+ * from the unity units, since those are quite small
+ * and break the mouse over / click targets.
+ */
+export const SCALE_FACTOR = 10;
 
 export function scale(value: number) {
     return value * SCALE_FACTOR;
@@ -82,6 +87,12 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
     };
 });
 
+export type RoomInfo = (typeof roomData)[number];
+
 export const mainRoomDataBySceneName = new Map<string, RoomData>(
     roomData.filter((it) => it.isMainGameObject).map((room) => [room.sceneName, room]),
+);
+
+export const allRoomDataBySceneName = new Map<string, RoomData[]>(
+    [...d3.group(roomData, (d) => d.sceneName).entries()].map(([sceneName, rooms]) => [sceneName, rooms]),
 );

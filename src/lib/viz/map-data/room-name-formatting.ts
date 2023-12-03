@@ -76,7 +76,7 @@ export function formatZoneName(zoneName: string | undefined, roomName: string) {
             .replace('GODS_GLORY', 'Godhome')
             .replace('GREEN_PATH', 'Greenpath')
             // handled above .replace('-', 'Hive')
-            .replace('Cliffs', 'Howling Cliffs')
+            .replace('CLIFFS', 'Howling Cliffs')
             .replace('OUTSKIRTS', "Kingdom's Edge")
             .replace('ROYAL_GARDENS', "Queen's Gardens")
             .replace('RESTING_GROUNDS', 'Resting Grounds')

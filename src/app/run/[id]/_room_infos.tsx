@@ -6,19 +6,21 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/u
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { CSSProperties } from 'react';
 import { MatSymbol } from '~/app/_components/mat-symbol';
-import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
+import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 import Image from 'next/image';
 
 import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
 import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png';
+import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 
 export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
     const selectedRoomPinned = useViewOptionsStore((s) => s.selectedRoomPinned);
     const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
 
-    const roomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
+    const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
+    const allRoomInfos = selectedRoom ? allRoomDataBySceneName.get(selectedRoom) ?? null : null;
 
     const aggregatedRunData = useViewOptionsStore((s) => s.aggregatedRunData);
 
@@ -28,12 +30,14 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
             style={
                 {
                     '--tw-gradient-from':
-                        roomInfo?.color?.copy?.({ opacity: 0.1, s: 0.2 })?.toString() ?? 'transparent',
+                        mainRoomInfo?.color?.copy?.({ opacity: 0.1, s: 0.2 })?.toString() ?? 'transparent',
                     transition: '--tw-gradient-from .25s ease-in-out',
                 } as CSSProperties
             }
         >
-            <CardHeader className="flex flex-row items-center justify-between">
+            <CardHeader className="flex flex-row items-center">
+                {allRoomInfos && <HKMapRoom roomInfos={allRoomInfos} className="mr-4 h-14 w-14" />}
+
                 <div>
                     <CardTitle>Room info</CardTitle>
                     <CardDescription>
@@ -44,14 +48,18 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                             <div>
                                 <Tooltip>
                                     <TooltipTrigger>
-                                        <span>{roomInfo?.zoneNameFormatted ?? 'Unknown area'}</span>
+                                        <span className="text-left">
+                                            {mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}
+                                        </span>
                                     </TooltipTrigger>
                                     <TooltipContent>Area</TooltipContent>
                                 </Tooltip>
                                 {' - '}
                                 <Tooltip>
                                     <TooltipTrigger>
-                                        <span>{roomInfo?.roomNameFormattedZoneExclusive ?? selectedRoom}</span>
+                                        <span className="text-left">
+                                            {mainRoomInfo?.roomNameFormattedZoneExclusive ?? selectedRoom}
+                                        </span>
                                     </TooltipTrigger>
                                     <TooltipContent>Room</TooltipContent>
                                 </Tooltip>
@@ -59,6 +67,8 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                         )}
                     </CardDescription>
                 </div>
+
+                <div className="grow" />
 
                 {selectedRoomPinned && (
                     <Tooltip>
