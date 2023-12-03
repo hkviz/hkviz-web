@@ -6,7 +6,7 @@ import { ContentCenterWrapper } from './_components/content-wrapper';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { apiFromServer } from '~/trpc/from-server';
-import { RelativeDate } from './_components/client-date';
+import { RelativeDate } from './_components/date';
 
 export default async function Home() {
     const session = await getServerAuthSession();

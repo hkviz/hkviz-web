@@ -1,8 +1,8 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { formatDistance } from 'date-fns';
+import { format, formatDistance } from 'date-fns';
 
 function AbsoluteDate({ date }: { date: Date }) {
-    return <>{date.toISOString()}</>;
+    return <>{format(date, 'yyyy-mm-dd')}</>;
 }
 
 export function RelativeDate({ date }: { date: Date }) {

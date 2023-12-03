@@ -60,25 +60,31 @@ export class PlayerPositionEvent extends RecordingEventBase {
     }
 }
 
-type PlayerDataEventOptions = RecordingEventBaseOptions & Pick<PlayerDataEvent, 'field' | 'value'>;
+type PlayerDataEventOptions = RecordingEventBaseOptions &
+    Pick<PlayerDataEvent, 'field' | 'value' | 'previousPlayerPositionEvent'>;
 export class PlayerDataEvent extends RecordingEventBase {
-    public field: PlayerDataField;
-    public value: string;
+    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+    public readonly field: PlayerDataField;
+    public readonly value: string;
 
     constructor(options: PlayerDataEventOptions) {
         super(options);
+        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
         this.field = options.field;
         this.value = options.value;
     }
 }
 
-type HeroStateEventOptions = RecordingEventBaseOptions & Pick<HeroStateEvent, 'field' | 'value'>;
+type HeroStateEventOptions = RecordingEventBaseOptions &
+    Pick<HeroStateEvent, 'field' | 'value' | 'previousPlayerPositionEvent'>;
 export class HeroStateEvent extends RecordingEventBase {
-    public field: HeroStateField;
-    public value: boolean;
+    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+    public readonly field: HeroStateField;
+    public readonly value: boolean;
 
     constructor(options: HeroStateEventOptions) {
         super(options);
+        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
         this.field = options.field;
         this.value = options.value;
     }

@@ -9,10 +9,11 @@ import { useEffect } from 'react';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files';
 import { type AppRouterOutput } from '~/server/api/types';
-import { RelativeDate } from '../../_components/client-date';
+import { RelativeDate } from '../../_components/date';
 import { AnimationOptions } from './_animation_options';
 import { useViewOptionsStoreRoot } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
+import { RoomInfo } from './_room_infos';
 
 interface Props {
     session: Session | null;
@@ -68,6 +69,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     </CardContent>
                 </Card>
                 <ViewOptions useViewOptionsStore={useViewOptionsStore} />
+                <RoomInfo useViewOptionsStore={useViewOptionsStore} />
             </div>
             <div className="flex grow flex-col gap-2">
                 <Card className="relative flex grow flex-col overflow-hidden">

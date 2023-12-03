@@ -147,3 +147,17 @@
     user-select: none;
     font-size: 1.5rem;
 }
+
+@layer utilities {
+    @property --tw-gradient-from {
+        syntax: '<color>';
+        initial-value: transparent;
+        inherits: false;
+    }
+
+    @property --tw-gradient-to {
+        syntax: '<color>';
+        initial-value: transparent;
+        inherits: false;
+    }
+}

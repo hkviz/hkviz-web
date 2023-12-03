@@ -10,7 +10,10 @@ export type HeroStateField = (typeof heroStateFieldsArray)[number];
 export const heroStateFields = {
     byFieldName: heroStateFieldsGenerated,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    byShortCode: Object.fromEntries(heroStateFieldsArray.map((it) => [it.shortCode, it])),
+    byShortCode: Object.fromEntries(heroStateFieldsArray.map((it) => [it.shortCode, it])) as Record<
+        string,
+        HeroStateField
+    >,
     // this fancy types somehow do not build in vercel, but work locally. So no fancy types for now
     //  as any as {
     //     [Field in PlayerDataFieldShortCode]: PlayerDataFieldByShortCode<Field>;

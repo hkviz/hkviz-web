@@ -18,6 +18,8 @@ function createViewOptionsStore() {
                 recording: null as ParsedRecording | null,
                 timeFrame: { min: 0, max: 0 },
                 traceAnimationLengthMs: 1000 * 60 * 4,
+                selectedRoom: null as string | null,
+                selectedRoomPinned: false,
             },
             (set, get) => {
                 function setRoomVisibility(roomVisibility: RoomVisibility) {
@@ -78,6 +80,24 @@ function createViewOptionsStore() {
                     set({ recording, timeFrame });
                     setLimitedAnimationMsIntoGame(get().animationMsIntoGame);
                 }
+                function setSelectedRoom(selectedRoom: string | null) {
+                    set({ selectedRoom });
+                }
+                function setSelectedRoomPinned(selectedRoomPinned: boolean) {
+                    console.log(selectedRoomPinned);
+                    set({ selectedRoomPinned });
+                }
+                function setSelectedRoomIfNotPinned(selectedRoom: string | null) {
+                    if (!get().selectedRoomPinned) setSelectedRoom(selectedRoom);
+                }
+                function togglePinnedRoom(selectedRoom: string | null) {
+                    if (get().selectedRoomPinned && get().selectedRoom === selectedRoom) {
+                        setSelectedRoomPinned(false);
+                    } else {
+                        setSelectedRoom(selectedRoom);
+                        setSelectedRoomPinned(true);
+                    }
+                }
 
                 return {
                     setRoomVisibility,
@@ -88,6 +108,10 @@ function createViewOptionsStore() {
                     setAnimationSpeedMultiplier,
                     setRecording,
                     incrementAnimationMsIntoGame,
+                    setSelectedRoom,
+                    setSelectedRoomPinned,
+                    setSelectedRoomIfNotPinned,
+                    togglePinnedRoom,
                 };
             },
         ),

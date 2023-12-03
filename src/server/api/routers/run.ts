@@ -58,6 +58,8 @@ export const runRouter = createTRPCRouter({
                             version: true,
                             createdAt: true,
                         },
+                        orderBy: (files, { asc }) => [asc(files.partNumber)],
+                        where: (files, { eq }) => eq(files.uploadFinished, true),
                     },
                 },
             })) ??
@@ -74,13 +76,10 @@ export const runRouter = createTRPCRouter({
             startedAt: metadata.files[0]?.createdAt,
             lastPlayedAt: metadata.files[metadata.files.length - 1]?.createdAt,
             files: await Promise.all(
-                metadata.files
-                    .filter((it) => it.uploadFinished)
-                    .sort((a, b) => a.partNumber - b.partNumber)
-                    .map(async (file) => ({
-                        ...file,
-                        signedUrl: await r2GetSignedDownloadUrl(r2RunPartFileKey(file.id)),
-                    })),
+                metadata.files.map(async (file) => ({
+                    ...file,
+                    signedUrl: await r2GetSignedDownloadUrl(r2RunPartFileKey(file.id)),
+                })),
             ),
         };
     }),
@@ -181,6 +180,8 @@ export const runRouter = createTRPCRouter({
                     columns: {
                         createdAt: true,
                     },
+                    orderBy: (files, { asc }) => [asc(files.partNumber)],
+                    where: (files, { eq }) => eq(files.uploadFinished, true),
                 },
             },
         });

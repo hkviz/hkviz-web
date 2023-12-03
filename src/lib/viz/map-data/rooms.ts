@@ -2,6 +2,7 @@ import * as d3 from 'd3';
 import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
+import { formatZoneAndRoomName } from './room-name-formatting';
 
 export const SCALE_FACTOR = 1;
 
@@ -71,6 +72,7 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
 
     return {
         ...room,
+        ...formatZoneAndRoomName(room.mapZone, room.sceneName),
         visualBounds,
         playerPositionBounds,
         color,

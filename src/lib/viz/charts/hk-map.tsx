@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
-import { useEffect, useRef, useMemo } from 'react';
+import { useEffect, useRef, useMemo, use } from 'react';
 import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { roomData } from '../map-data/rooms';
@@ -20,6 +20,9 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
 
     const animatedTraceG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
     const knightPinG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
+
+    const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
+    const togglePinnedRoom = useViewOptionsStore((s) => s.togglePinnedRoom);
 
     useEffect(() => {
         svg.current = d3
@@ -97,12 +100,18 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             .attr('height', (r) => r.spritePosition.size.y)
             .attr('class', 'svg-room')
             .attr('mask', (r) => 'url(#mask_' + r.spriteInfo.name + ')')
-            .style('fill', (r) => r.color.formatHex());
+            .style('fill', (r) => r.color.formatHex())
+            .on('mouseover', (event, r) => {
+                setSelectedRoomIfNotPinned(r.sceneName);
+            })
+            .on('click', (event, r) => {
+                togglePinnedRoom(r.sceneName);
+            });
 
         return () => {
             svg.current?.remove();
         };
-    }, []);
+    }, [togglePinnedRoom, setSelectedRoomIfNotPinned]);
 
     useEffect(() => {
         function containerSizeChanged() {

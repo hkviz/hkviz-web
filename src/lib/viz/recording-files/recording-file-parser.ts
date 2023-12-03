@@ -13,9 +13,11 @@ import {
     SceneEvent,
     type RecordingEvent,
     HeroStateEvent,
+    PlayerDataEvent,
 } from './recording';
 import { heroStateFields } from '../hero-state/hero-states';
 import { raise } from '~/lib/utils';
+import { playerDataFields } from '../player-data/player-data';
 
 function parseFloatAnyComma(value: string) {
     return parseFloat(value.replace(',', '.'));
@@ -72,22 +74,32 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
             const eventTypeSuffix = () => eventType.slice(1);
             switch (partialEventType) {
                 case PARTIAL_EVENT_PREFIXES.PLAYER_DATA_SHORTNAME: {
+                    const field = playerDataFields.byShortCode[eventTypeSuffix()];
+                    if (!field) throw new Error('Unknown player data field short code' + eventTypeSuffix());
                     // TODO
-                    continue LINE_LOOP;
+                    events.push(
+                        new PlayerDataEvent({
+                            timestamp,
+                            field,
+                            value: args[0]!,
+                            previousPlayerPositionEvent: previousPlayerPositionEvent,
+                        }),
+                    );
                 }
                 case PARTIAL_EVENT_PREFIXES.PLAYER_DATA_LONGNAME: {
                     // TODO
                     continue LINE_LOOP;
                 }
-                case PARTIAL_EVENT_PREFIXES.HERO_CONTROLER_STATE_SHORTNAME: {
+                case PARTIAL_EVENT_PREFIXES.HERO_CONTROLLER_STATE_SHORTNAME: {
+                    const field = heroStateFields.byShortCode[eventTypeSuffix()];
+                    if (!field) throw new Error('Unknown hero controller field short code' + eventTypeSuffix());
                     // TODO
                     events.push(
                         new HeroStateEvent({
                             timestamp,
-                            field:
-                                heroStateFields.byShortCode[eventTypeSuffix()] ??
-                                raise(new Error('Unknown field short code' + eventTypeSuffix())),
+                            field,
                             value: args[0] === '1',
+                            previousPlayerPositionEvent: previousPlayerPositionEvent,
                         }),
                     );
                     continue LINE_LOOP;
