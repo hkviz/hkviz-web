@@ -21,7 +21,7 @@ export function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapPr
     const roomDataEnter = useRef<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown>>();
 
     useEffect(() => {
-        const containingBounds = Bounds.fromContainingBounds(roomInfos.map((it) => it.spritePosition));
+        const containingBounds = Bounds.fromContainingBounds(roomInfos.map((it) => it.spriteInfo.scaledPosition));
         const smallerRoomSizeProportion = containingBounds.size.minElement() / containingBounds.size.maxElement();
         const roomPositionWithin0To1 =
             containingBounds.size.x > containingBounds.size.y
@@ -67,7 +67,22 @@ export function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapPr
             .data(
                 roomInfos.map((it) => ({
                     ...it,
-                    spritePosition: relativeToRoomBounds(it.spritePosition),
+                    spriteInfo: {
+                        ...it.spriteInfo,
+                        scaledPosition: relativeToRoomBounds(it.spriteInfo.scaledPosition),
+                    },
+                    roughSpriteInfo: it.roughSpriteInfo
+                        ? {
+                              ...it.roughSpriteInfo,
+                              scaledPosition: relativeToRoomBounds(it.roughSpriteInfo.scaledPosition),
+                          }
+                        : null,
+                    conditionalSpriteInfo: it.conditionalSpriteInfo
+                        ? {
+                              ...it.conditionalSpriteInfo,
+                              scaledPosition: relativeToRoomBounds(it.conditionalSpriteInfo.scaledPosition),
+                          }
+                        : null,
                 })),
             )
             .enter();

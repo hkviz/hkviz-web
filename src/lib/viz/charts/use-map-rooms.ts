@@ -65,20 +65,12 @@ export function useMapRooms(
         roomMask
             .append('svg:rect')
             .attr('data-scene-name', (r) => r.sceneName)
-            .attr('x', (r) => r.spritePosition.min.x)
-            .attr('y', (r) => r.spritePosition.min.y)
-            .attr('width', (r) => r.spritePosition.size.x)
-            .attr('height', (r) => r.spritePosition.size.y)
             .attr('class', 'svg-room')
             .style('fill', 'black');
 
         roomImgs.current = roomMask
             .append('svg:image')
             .attr('data-scene-name', (r) => r.sceneName)
-            .attr('x', (r) => r.spritePosition.min.x)
-            .attr('y', (r) => r.spritePosition.min.y)
-            .attr('width', (r) => r.spritePosition.size.x)
-            .attr('height', (r) => r.spritePosition.size.y)
             .attr('preserveAspectRatio', 'none')
             .attr('class', 'svg-room');
 
@@ -86,10 +78,6 @@ export function useMapRooms(
         roomRects.current = roomGs
             .append('svg:rect')
             .attr('data-scene-name', (r) => r.sceneName)
-            .attr('x', (r) => r.spritePosition.min.x)
-            .attr('y', (r) => r.spritePosition.min.y)
-            .attr('width', (r) => r.spritePosition.size.x)
-            .attr('height', (r) => r.spritePosition.size.y)
             .attr('class', 'svg-room')
             .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
             .attr('clip-path', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
@@ -109,21 +97,30 @@ export function useMapRooms(
         function isRoomVisible(gameObjectName: string) {
             return visibleRooms === 'all' || visibleRooms.includes(gameObjectName);
         }
-        function getCorrectSprite(r: RoomInfo) {
-            if (!r.conditionalSprite || !isRoomVisible(r.conditionalSprite.dependsOnGameObject)) {
-                return r.sprite;
+
+        function getCorrectSpriteInfo(r: RoomInfo) {
+            if (!r.conditionalSpriteInfo || !isRoomVisible(r.conditionalSpriteInfo.conditionalOn)) {
+                return r.spriteInfo;
             } else {
                 // needs more work to also have bounds of conditional sprites and use those instead.
-                // return r.conditionalSprite.sprite;
-                return r.sprite;
+                return r.conditionalSpriteInfo;
             }
         }
 
         roomRects.current
             ?.style('opacity', (r) => (isRoomVisible(r.gameObjectName) ? '100%' : '0%'))
-            ?.style('pointer-events', (r) => (isRoomVisible(r.gameObjectName) ? 'all' : 'none'));
+            ?.style('pointer-events', (r) => (isRoomVisible(r.gameObjectName) ? 'all' : 'none'))
+            ?.attr('x', (r) => getCorrectSpriteInfo(r).scaledPosition.min.x)
+            ?.attr('y', (r) => getCorrectSpriteInfo(r).scaledPosition.min.y)
+            ?.attr('width', (r) => getCorrectSpriteInfo(r).scaledPosition.size.x)
+            ?.attr('height', (r) => getCorrectSpriteInfo(r).scaledPosition.size.y);
 
-        roomImgs.current?.attr('xlink:href', (r) => '/ingame-map/' + getCorrectSprite(r) + '.png');
+        roomImgs.current
+            ?.attr('xlink:href', (r) => '/ingame-map/' + getCorrectSpriteInfo(r).name + '.png')
+            ?.attr('x', (r) => getCorrectSpriteInfo(r).scaledPosition.min.x)
+            ?.attr('y', (r) => getCorrectSpriteInfo(r).scaledPosition.min.y)
+            ?.attr('width', (r) => getCorrectSpriteInfo(r).scaledPosition.size.x)
+            ?.attr('height', (r) => getCorrectSpriteInfo(r).scaledPosition.size.y);
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...mainEffectDependencies, visibleRooms]);

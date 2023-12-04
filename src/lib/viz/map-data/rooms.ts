@@ -3,6 +3,9 @@ import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
 import { formatZoneAndRoomName } from './room-name-formatting';
+import { roomDataConditionalByGameObjectName } from '../generated/map-rooms-conditionals.generated';
+
+// logPossibleConditionals();
 
 /**
  * Everything on the ingame map is scaled up,
@@ -67,6 +70,12 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
         return Bounds.fromMinSize(min, size);
     }
 
+    function spriteInfoWithScaledPosition<
+        T extends Exclude<typeof room.roughSpriteInfo | typeof room.spriteInfo, null | undefined>,
+    >(spriteInfo: T) {
+        return { ...spriteInfo, scaledPosition: roomPositionWithPadding(spriteInfo) };
+    }
+
     // extra handling of additional map mod:
     const color =
         room.mapZone === 'GODS_GLORY'
@@ -75,19 +84,18 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
             ? d3.color('#dfe2e4')!
             : d3.rgb(room.origColor.x * 255, room.origColor.y * 255, room.origColor.z * 255);
 
-    const conditionalSprite =
-        room.gameObjectName === 'Town' ? { sprite: 'Town_b', dependsOnGameObject: 'Mines_10' } : null;
+    const conditionalSpriteInfo = roomDataConditionalByGameObjectName(room.gameObjectName);
 
     return {
         ...room,
         ...formatZoneAndRoomName(room.mapZone, room.sceneName),
-        conditionalSprite,
+        conditionalSpriteInfo: conditionalSpriteInfo ? spriteInfoWithScaledPosition(conditionalSpriteInfo) : null,
+        spriteInfo: spriteInfoWithScaledPosition(room.spriteInfo),
+        roughSpriteInfo: room.roughSpriteInfo ? spriteInfoWithScaledPosition(room.roughSpriteInfo) : null,
         visualBounds,
         playerPositionBounds,
         color,
         isMainGameObject,
-        spritePosition: roomPositionWithPadding(room.spriteInfo),
-        roughSpritePosition: room.roughSpriteInfo ? roomPositionWithPadding(room.roughSpriteInfo) : null,
     };
 });
 
