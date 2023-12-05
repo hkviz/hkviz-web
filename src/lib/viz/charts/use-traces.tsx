@@ -48,7 +48,8 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
             return (
                 event instanceof PlayerPositionEvent &&
                 event.mapPosition != null &&
-                event.previousPlayerPositionEventWithMapPosition?.mapPosition != null
+                event.previousPlayerPositionEventWithMapPosition?.mapPosition != null &&
+                !event.previousPlayerPositionEventWithMapPosition.mapPosition.equals(event.mapPosition)
             );
         });
 
@@ -66,16 +67,20 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 .data(chunkEvents)
                 .enter()
                 .append('line')
-                .attr('x1', (d) =>
-                    d.mapPosition!.equals(d.previousPlayerPositionEventWithMapPosition!.mapPosition!)
-                        ? d.mapPosition!.x - SCALED_LINE_WIDTH / 2
-                        : d.previousPlayerPositionEventWithMapPosition!.mapPosition!.x,
+                .attr(
+                    'x1',
+                    (d) => d.previousPlayerPositionEventWithMapPosition!.mapPosition!.x,
+                    // d.mapPosition!.equals(d.previousPlayerPositionEventWithMapPosition!.mapPosition!)
+                    //     ? d.mapPosition!.x - SCALED_LINE_WIDTH / 2
+                    //     : d.previousPlayerPositionEventWithMapPosition!.mapPosition!.x,
                 )
                 .attr('y1', (d) => d.previousPlayerPositionEventWithMapPosition!.mapPosition!.y)
-                .attr('x2', (d) =>
-                    d.mapPosition!.equals(d.previousPlayerPositionEventWithMapPosition!.mapPosition!)
-                        ? d.mapPosition!.x + SCALED_LINE_WIDTH / 2
-                        : d.mapPosition!.x,
+                .attr(
+                    'x2',
+                    (d) => d.mapPosition!.x,
+                    // d.mapPosition!.equals(d.previousPlayerPositionEventWithMapPosition!.mapPosition!)
+                    //     ? d.mapPosition!.x + SCALED_LINE_WIDTH / 2
+                    //     : d.mapPosition!.x,
                 )
                 .attr('y2', (d) => d.mapPosition!.y)
                 .attr('stroke-width', SCALED_LINE_WIDTH)
