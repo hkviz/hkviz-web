@@ -1,5 +1,5 @@
 import { type RefObject, useEffect, useId, useRef, use, useMemo } from 'react';
-import { type RoomInfo } from '../map-data/rooms';
+import { RoomSpriteVariant, type RoomInfo } from '../map-data/rooms';
 import useEvent from 'react-use-event-hook';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import * as d3 from 'd3';
@@ -28,7 +28,10 @@ export function useMapRooms(
     const componentId = useId();
 
     const roomRects = useRef<d3.Selection<d3.BaseType, RoomInfo, SVGGElement, unknown> | undefined>(undefined);
-    const roomImgs = useRef<d3.Selection<d3.BaseType, RoomInfo, SVGGElement, unknown> | undefined>(undefined);
+    const roomImgs = useRef<
+        | d3.Selection<d3.BaseType, { sprite: RoomInfo['sprites'][number]; room: RoomInfo }, d3.BaseType, unknown>
+        | undefined
+    >(undefined);
 
     const mainEffectDependencies = [componentId, onClickEvent, onMouseOverEvent, roomDataEnter, ...dependencies];
 
@@ -69,10 +72,25 @@ export function useMapRooms(
             .style('fill', 'black');
 
         roomImgs.current = roomMask
+            .selectAll(null)
+            .data((room) =>
+                room.sprites.map((sprite) => ({
+                    room,
+                    sprite,
+                })),
+            )
+            .enter()
             .append('svg:image')
-            .attr('data-scene-name', (r) => r.sceneName)
+            .attr('data-scene-name', (d) => d.room.sceneName)
+            .attr('data-variant', (d) => d.sprite.variant)
             .attr('preserveAspectRatio', 'none')
-            .attr('class', 'svg-room');
+            .attr('class', 'svg-room')
+            .attr('x', (d) => d.sprite.scaledPosition.min.x)
+            .attr('y', (d) => d.sprite.scaledPosition.min.y)
+            .attr('width', (d) => d.sprite.scaledPosition.size.x)
+            .attr('height', (d) => d.sprite.scaledPosition.size.y)
+            .style('transition', 'opacity 0.1s')
+            .attr('xlink:href', (d) => '/ingame-map/' + d.sprite.name + '.png');
 
         // actual rect which is masked by image. This allows us to have colorful rooms, while most images themselves are white
         roomRects.current = roomGs
@@ -83,7 +101,11 @@ export function useMapRooms(
             .attr('clip-path', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
 
             .style('fill', (r) => r.color.formatHex())
-            .style('transition', 'opacity 0.075s ease-in-out')
+            .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
+            .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
+            .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
+            .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y)
+            .style('transition', 'fill 0.1s')
             .on('mouseover', (event: PointerEvent, r) => {
                 onMouseOverEvent(event, r);
             })
@@ -98,29 +120,21 @@ export function useMapRooms(
             return visibleRooms === 'all' || visibleRooms.includes(gameObjectName);
         }
 
-        function getCorrectSpriteInfo(r: RoomInfo) {
-            if (!r.conditionalSpriteInfo || !isRoomVisible(r.conditionalSpriteInfo.conditionalOn)) {
-                return r.spriteInfo;
+        function getVariant(r: RoomInfo): RoomSpriteVariant | 'hidden' {
+            const visible = isRoomVisible(r.gameObjectName);
+
+            if (!visible) {
+                return 'hidden';
+            } else if (r.spritesByVariant.conditional && isRoomVisible(r.spritesByVariant.conditional.conditionalOn)) {
+                return 'conditional';
             } else {
-                // needs more work to also have bounds of conditional sprites and use those instead.
-                return r.conditionalSpriteInfo;
+                return 'normal';
             }
         }
 
-        roomRects.current
-            ?.style('opacity', (r) => (isRoomVisible(r.gameObjectName) ? '100%' : '0%'))
-            ?.style('pointer-events', (r) => (isRoomVisible(r.gameObjectName) ? 'all' : 'none'))
-            ?.attr('x', (r) => getCorrectSpriteInfo(r).scaledPosition.min.x)
-            ?.attr('y', (r) => getCorrectSpriteInfo(r).scaledPosition.min.y)
-            ?.attr('width', (r) => getCorrectSpriteInfo(r).scaledPosition.size.x)
-            ?.attr('height', (r) => getCorrectSpriteInfo(r).scaledPosition.size.y);
+        roomImgs.current?.style('opacity', (d) => (getVariant(d.room) === d.sprite.variant ? '100%' : '0%'));
 
-        roomImgs.current
-            ?.attr('xlink:href', (r) => '/ingame-map/' + getCorrectSpriteInfo(r).name + '.png')
-            ?.attr('x', (r) => getCorrectSpriteInfo(r).scaledPosition.min.x)
-            ?.attr('y', (r) => getCorrectSpriteInfo(r).scaledPosition.min.y)
-            ?.attr('width', (r) => getCorrectSpriteInfo(r).scaledPosition.size.x)
-            ?.attr('height', (r) => getCorrectSpriteInfo(r).scaledPosition.size.y);
+        roomRects.current?.style('pointer-events', (r) => (getVariant(r) !== 'hidden' ? 'all' : 'none'));
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [...mainEffectDependencies, visibleRooms]);

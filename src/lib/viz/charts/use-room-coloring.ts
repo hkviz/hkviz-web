@@ -21,7 +21,7 @@ export function useRoomColoring({
             const ratio = var1Max ? value / var1Max : 0;
             // return d3.interpolateRdPu(1 - ratio);
             // return d3.interpolateCool(ratio);
-            return d3.color(d3.interpolateViridis(ratio))!.brighter(0.1).formatHex();
+            return d3.color(d3.interpolateViridis(ratio))!.brighter(1).formatHex();
         }
 
         return {

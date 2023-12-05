@@ -11,10 +11,7 @@ import { useEffect } from 'react';
 import { MatSymbol } from '~/app/_components/mat-symbol';
 import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
-
-function zeroPad(num: number, places: number) {
-    return String(num).padStart(places, '0');
-}
+import { zeroPad } from '~/lib/utils';
 
 function Times({ className }: { className?: string }) {
     return (
@@ -45,7 +42,7 @@ function Duration({ ms, className }: { ms: number; className?: string }) {
     );
 }
 
-const intervalMs = 1000 / 60;
+const intervalMs = 1000 / 30;
 
 function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const isPlaying = useViewOptionsStore((s) => s.isPlaying);

@@ -42,14 +42,14 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                 </TableRow>
                 <TableRow>
                     <TableHead>
-                        <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
+                        <Label className="flex items-center" htmlFor="traceVisibilitySelectTrigger">
                             <MatSymbol className="mr-2" icon="timeline" />
                             Traces
                         </Label>
                     </TableHead>
                     <TableCell>
                         <Select value={traceVisibility} onValueChange={setTraceVisibility}>
-                            <SelectTrigger id="visibleRoomSelectTrigger">
+                            <SelectTrigger id="traceVisibilitySelectTrigger">
                                 <SelectValue placeholder="Trace visibility" />
                             </SelectTrigger>
                             <SelectContent>

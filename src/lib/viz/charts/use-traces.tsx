@@ -38,6 +38,9 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
     const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
     const recording = useViewOptionsStore((s) => s.recording);
 
+    // always 0 when traceVisibility !== 'animated' since that avoids running the effect when animating, but traces are not animating
+    const animationMsIntoGameForTrace = traceVisibility === 'animated' ? animationMsIntoGame : 0;
+
     useEffect(() => {
         if (!recording) return;
 
@@ -106,8 +109,8 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
     }, [knightPinG]);
 
     useEffect(() => {
-        const minMsIntoGame = animationMsIntoGame - traceAnimationLengthMs;
-        const maxMsIntoGame = animationMsIntoGame;
+        const minMsIntoGame = animationMsIntoGameForTrace - traceAnimationLengthMs;
+        const maxMsIntoGame = animationMsIntoGameForTrace;
 
         let newestPositionEvent: PlayerPositionEvent | undefined;
 
@@ -125,12 +128,12 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 chunk.lines.attr('stroke-opacity', (d) => {
                     const msIntoGame = d.msIntoGame;
                     if (traceVisibility === 'all') return 1;
-                    if (msIntoGame > animationMsIntoGame) return 0;
-                    if (msIntoGame < animationMsIntoGame - traceAnimationLengthMs) return 0;
+                    if (msIntoGame > animationMsIntoGameForTrace) return 0;
+                    if (msIntoGame < animationMsIntoGameForTrace - traceAnimationLengthMs) return 0;
 
                     newestPositionEvent = d;
 
-                    const opacity = 1 - (animationMsIntoGame - msIntoGame) / traceAnimationLengthMs;
+                    const opacity = 1 - (animationMsIntoGameForTrace - msIntoGame) / traceAnimationLengthMs;
                     return opacity;
                 });
             }
@@ -145,7 +148,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 knightPin.current?.attr('visibility', 'hidden');
             }
         });
-    }, [recording, animationMsIntoGame, traceAnimationLengthMs, traceVisibility]);
+    }, [recording, animationMsIntoGameForTrace, traceAnimationLengthMs, traceVisibility]);
 
     // useEffect(() => {
     //     animatedTracePaths.current?.attr('stroke-opacity', (d) => {

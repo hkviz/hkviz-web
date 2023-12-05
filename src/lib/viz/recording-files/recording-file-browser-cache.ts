@@ -5,7 +5,7 @@ export function fetchWithRunfileCache(fileId: string, version: number, signedUrl
 
     function fetchFromServer(cache: Cache | null) {
         return fetch(signedUrl).then((response) => {
-            console.log(`Saving ${request.url} in cache`);
+            // console.log(`Saving ${request.url} in cache`);
             void cache?.put(request, response.clone());
             return response;
         });
@@ -16,10 +16,10 @@ export function fetchWithRunfileCache(fileId: string, version: number, signedUrl
     return window.caches.open(CACHE_NAME).then((cache) => {
         return cache.match(request).then((response) => {
             if (response) {
-                console.log(`${request.url} found in local cache`);
+                // console.log(`${request.url} found in local cache`);
                 return response;
             }
-            console.log(`No response for ${request.url} found in cache`);
+            // console.log(`No response for ${request.url} found in cache`);
 
             return fetchFromServer(cache);
         });

@@ -21,7 +21,7 @@ export function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapPr
     const roomDataEnter = useRef<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown>>();
 
     useEffect(() => {
-        const containingBounds = Bounds.fromContainingBounds(roomInfos.map((it) => it.spriteInfo.scaledPosition));
+        const containingBounds = Bounds.fromContainingBounds(roomInfos.map((it) => it.allSpritesScaledPositionBounds));
         const smallerRoomSizeProportion = containingBounds.size.minElement() / containingBounds.size.maxElement();
         const roomPositionWithin0To1 =
             containingBounds.size.x > containingBounds.size.y
@@ -65,25 +65,20 @@ export function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapPr
             .attr('data-group', 'rooms')
             .selectAll('rect')
             .data(
-                roomInfos.map((it) => ({
-                    ...it,
-                    spriteInfo: {
-                        ...it.spriteInfo,
-                        scaledPosition: relativeToRoomBounds(it.spriteInfo.scaledPosition),
-                    },
-                    roughSpriteInfo: it.roughSpriteInfo
-                        ? {
-                              ...it.roughSpriteInfo,
-                              scaledPosition: relativeToRoomBounds(it.roughSpriteInfo.scaledPosition),
-                          }
-                        : null,
-                    conditionalSpriteInfo: it.conditionalSpriteInfo
-                        ? {
-                              ...it.conditionalSpriteInfo,
-                              scaledPosition: relativeToRoomBounds(it.conditionalSpriteInfo.scaledPosition),
-                          }
-                        : null,
-                })),
+                roomInfos.map((it) => {
+                    const sprites = it.sprites.map((it) => ({
+                        ...it,
+                        scaledPosition: relativeToRoomBounds(it.scaledPosition),
+                    }));
+                    const spritesByVariant = Object.fromEntries(sprites.map((it) => [it.variant, it]));
+                    return {
+                        ...it,
+                        sprites,
+                        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+                        spritesByVariant: spritesByVariant as any,
+                        allSpritesScaledPositionBounds: roomPositionWithin0To1,
+                    };
+                }),
             )
             .enter();
 

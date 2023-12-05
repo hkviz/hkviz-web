@@ -47,6 +47,8 @@ const mainGameObjectNamePerSceneName = Object.fromEntries(
     }),
 );
 
+export type RoomSpriteVariant = 'rough' | 'normal' | 'conditional';
+
 export const roomData = roomDataUnscaled.rooms.map((room) => {
     const visualBounds = scaleBounds(room.visualBounds);
     const playerPositionBounds = scaleBounds(room.playerPositionBounds);
@@ -72,8 +74,8 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
 
     function spriteInfoWithScaledPosition<
         T extends Exclude<typeof room.roughSpriteInfo | typeof room.spriteInfo, null | undefined>,
-    >(spriteInfo: T) {
-        return { ...spriteInfo, scaledPosition: roomPositionWithPadding(spriteInfo) };
+    >(variant: RoomSpriteVariant, spriteInfo: T) {
+        return { ...spriteInfo, scaledPosition: roomPositionWithPadding(spriteInfo), variant };
     }
 
     // extra handling of additional map mod:
@@ -86,12 +88,20 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
 
     const conditionalSpriteInfo = roomDataConditionalByGameObjectName(room.gameObjectName);
 
+    const spritesByVariant = {
+        normal: spriteInfoWithScaledPosition('normal', room.spriteInfo),
+        conditional: conditionalSpriteInfo ? spriteInfoWithScaledPosition('conditional', conditionalSpriteInfo) : null,
+        rough: room.roughSpriteInfo ? spriteInfoWithScaledPosition('rough', room.roughSpriteInfo) : null,
+    };
+    const sprites = Object.values(spritesByVariant).filter((it): it is NonNullable<typeof it> => !!it);
+    const allSpritesScaledPositionBounds = Bounds.fromContainingBounds(sprites.map((it) => it.scaledPosition));
+
     return {
         ...room,
         ...formatZoneAndRoomName(room.mapZone, room.sceneName),
-        conditionalSpriteInfo: conditionalSpriteInfo ? spriteInfoWithScaledPosition(conditionalSpriteInfo) : null,
-        spriteInfo: spriteInfoWithScaledPosition(room.spriteInfo),
-        roughSpriteInfo: room.roughSpriteInfo ? spriteInfoWithScaledPosition(room.roughSpriteInfo) : null,
+        spritesByVariant,
+        sprites,
+        allSpritesScaledPositionBounds,
         visualBounds,
         playerPositionBounds,
         color,

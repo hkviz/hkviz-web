@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <body className={`dark font-sans ${inter.className}`}>
                 <ClientContext>
                     <TRPCReactProvider cookies={cookies().toString()}>
-                        <div className="flex min-h-screen flex-col">
+                        <div className="flex min-h-[100dvh] flex-col">
                             <MainNav session={session} />
                             {children}
                         </div>

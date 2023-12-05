@@ -45,7 +45,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
             <div className="flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:flex-col">
                 <Card className="overflow-auto max-lg:grow max-lg:basis-0 max-md:min-w-[300px]">
-                    <CardContent className="px-0">
+                    <CardContent className="px-0 pb-1">
                         <Tabs defaultValue="view-options" className="w-full">
                             <TabsList className="w-full bg-transparent">
                                 <TabsTrigger value="run-info" className="data-[state=active]:bg-slate-800">

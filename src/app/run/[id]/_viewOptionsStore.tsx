@@ -113,7 +113,11 @@ function createViewOptionsStore() {
                     set({ roomColorMode });
                 }
                 function setRoomColorVar1(roomColorVar1: AggregationVariable) {
-                    set({ roomColorVar1 });
+                    if (get().roomColorVar1 === roomColorVar1 && get().roomColorMode === '1-var') {
+                        set({ roomColorMode: 'area' });
+                    } else {
+                        set({ roomColorVar1, roomColorMode: '1-var' });
+                    }
                 }
                 function setViewNeverHappenedAggregations(viewNeverHappenedAggregations: boolean) {
                     set({ viewNeverHappenedAggregations });

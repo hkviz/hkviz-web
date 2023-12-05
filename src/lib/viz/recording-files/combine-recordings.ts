@@ -1,16 +1,18 @@
 import { raise } from '~/lib/utils';
-import { PlayerDataField } from '../player-data/player-data';
+import { type PlayerDataField } from '../player-data/player-data';
 import {
+    CombinedRecording,
     HeroStateEvent,
-    ParsedRecording,
+    type ParsedRecording,
     PlayerDataEvent,
     RecordingFileVersionEvent,
     isPlayerDataEventWithFieldType,
     type RecordingEvent,
-    CombinedRecording,
+    PlayerPositionEvent,
 } from './recording';
 
 export function combineRecordings(recordings: ParsedRecording[]): CombinedRecording {
+    console.log('combineRecordings');
     const events: RecordingEvent[] = [];
     let msIntoGame = 0;
     let lastTimestamp: number =
@@ -19,6 +21,8 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     let isPaused = true;
 
     const previousPlayerDataEventsByField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>();
+
+    let lastPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
 
     for (const recording of recordings.sort((a, b) => a.partNumber! - b.partNumber!)) {
         for (const event of recording.events) {
@@ -36,8 +40,34 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                     lastTimestamp = event.timestamp;
                 }
             } else {
+                if (event instanceof PlayerPositionEvent) {
+                    const playerPositionChanged =
+                        lastPositionEventWithChangedPosition?.position?.equals(event.position) !== true;
+                    if (playerPositionChanged) {
+                        lastPositionEventWithChangedPosition = event;
+                        // setting here early for checks below, will be overwritten later
+                        lastPositionEventWithChangedPosition.msIntoGame = msIntoGame;
+                    }
+                }
+
                 if (!isPaused) {
-                    msIntoGame += event.timestamp - lastTimestamp;
+                    const diff = event.timestamp - lastTimestamp;
+                    // starting with 10 seconds of no events, the time is not counted
+                    // this might happen, because sb closed their laptop / turned off their pc,
+                    // without closing HollowKnight, and when opening the laptop again, the recorder just continues.
+                    const previousMsIntoGame = msIntoGame;
+                    if (diff < 10 * 1000) {
+                        msIntoGame += event.timestamp - lastTimestamp;
+                    }
+
+                    const msSinceLastPositionChange =
+                        msIntoGame - (lastPositionEventWithChangedPosition?.msIntoGame ?? 0);
+                    // even when we have a position change, if it hasn't changed for 30 seconds, one probably has left
+                    // hollow knight open accidentally. So time is not counted.
+                    // TODO add option to UI to make this filtering optional.
+                    if (msSinceLastPositionChange > 30 * 1000) {
+                        msIntoGame = previousMsIntoGame;
+                    }
                 }
                 lastTimestamp = event.timestamp;
             }

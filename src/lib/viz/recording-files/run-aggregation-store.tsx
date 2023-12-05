@@ -2,20 +2,22 @@ import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import {
     HeroStateEvent,
-    type SceneEvent,
-    type ParsedRecording,
+    SceneEvent,
+    SpellDownEvent,
     SpellFireballEvent,
     SpellUpEvent,
-    SpellDownEvent,
-    PlayerDataEvent,
     isPlayerDataEventOfField,
+    type ParsedRecording,
 } from './recording';
 
-import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
-import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png';
+import { MaterialSymbol } from 'material-symbols';
+import { zeroPad } from '~/lib/utils';
+import coinImg from '../../../../public/ingame-sprites/HUD_coin_shop.png';
 import spellUpImg from '../../../../public/ingame-sprites/Inv_0024_spell_scream_01.png';
-import spellDownImg from '../../../../public/ingame-sprites/Inv_0026_spell_quake_01.png';
 import spellFireballImg from '../../../../public/ingame-sprites/Inv_0025_spell_fireball_01.png';
+import spellDownImg from '../../../../public/ingame-sprites/Inv_0026_spell_quake_01.png';
+import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png';
+import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
 import healthImg from '../../../../public/ingame-sprites/select_game_HUD_0001_health.png';
 import { playerDataFields } from '../player-data/player-data';
 
@@ -23,6 +25,18 @@ type RunId = string;
 export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
 
 export const aggregationVariableInfos = {
+    timeSpendMs: {
+        name: 'Time spent',
+        description: 'Total time spent (mm:ss)',
+        icon: 'timer',
+        format: (ms) => {
+            const minutes = Math.floor(ms / 1000 / 60);
+            const seconds = Math.floor((ms / 1000) % 60);
+            // const deciSeconds = Math.floor(Math.floor(ms % 1000) / 100);
+
+            return `${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}`; //.${deciSeconds}`;
+        },
+    },
     damageTaken: {
         name: 'Damage taken',
         description: 'Total damage taken in masks',
@@ -53,9 +67,30 @@ export const aggregationVariableInfos = {
         description: 'Number of times the player used a down spell',
         image: spellDownImg,
     },
-};
+    geoEarned: {
+        name: 'Geo earned',
+        description: 'Total geo earned',
+        image: coinImg,
+    },
+    geoSpent: {
+        name: 'Geo spent',
+        description: 'Total geo spent',
+        image: coinImg,
+    },
+} satisfies Record<
+    AggregationVariable,
+    { name: string; description: string; format?: (value: number) => string } & (
+        | { icon: MaterialSymbol }
+        | { image: typeof coinImg }
+    )
+>;
 
 export const aggregationVariables = Object.keys(aggregationVariableInfos) as AggregationVariable[];
+
+export function formatAggregatedVariableValue(variable: AggregationVariable, value: number) {
+    const varInfo = aggregationVariableInfos[variable];
+    return 'format' in varInfo ? varInfo.format(value) : value;
+}
 
 export type ValueAggregation = {
     deaths: number;
@@ -64,6 +99,9 @@ export type ValueAggregation = {
     spellUp: number;
     spellDown: number;
     damageTaken: number;
+    geoEarned: number;
+    geoSpent: number;
+    timeSpendMs: number;
 };
 
 const createEmptyAggregation = (): ValueAggregation => ({
@@ -73,6 +111,9 @@ const createEmptyAggregation = (): ValueAggregation => ({
     spellUp: 0,
     spellDown: 0,
     damageTaken: 0,
+    geoEarned: 0,
+    geoSpent: 0,
+    timeSpendMs: 0,
 });
 
 export type AggregationVariable = keyof ValueAggregation;
@@ -93,8 +134,17 @@ function aggregateRecording(recording: ParsedRecording) {
         maxOverScenes[key] = Math.max(maxOverScenes[key], existing[key] + value);
     }
 
+    let previousSceneEvent: SceneEvent | null = null;
+    let previousSceneEnteredAtMs = 0;
+
     for (const event of recording.events) {
-        if (event instanceof HeroStateEvent && event.field.name === 'dead') {
+        if (event instanceof SceneEvent) {
+            if (previousSceneEvent) {
+                addToScene(previousSceneEvent, 'timeSpendMs', event.msIntoGame - previousSceneEnteredAtMs);
+            }
+            previousSceneEvent = event;
+            previousSceneEnteredAtMs = event.msIntoGame;
+        } else if (event instanceof HeroStateEvent && event.field.name === 'dead' && event.value) {
             addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'deaths', 1);
         } else if (event instanceof HeroStateEvent && event.field.name === 'focusing') {
             addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'focusing', 1);
@@ -112,8 +162,32 @@ function aggregateRecording(recording: ParsedRecording) {
             if (diff < 0) {
                 addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'damageTaken', -diff);
             }
+        } else if (
+            isPlayerDataEventOfField(event, playerDataFields.byFieldName.joniHealthBlue) &&
+            event.previousPlayerDataEventOfField
+        ) {
+            const diff = event.value - event.previousPlayerDataEventOfField.value;
+            if (diff < 0) {
+                addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'damageTaken', -diff);
+            }
+        } else if (
+            isPlayerDataEventOfField(event, playerDataFields.byFieldName.geo) &&
+            event.previousPlayerDataEventOfField
+        ) {
+            // todo handle death changes in currency
+            const diff = event.value - event.previousPlayerDataEventOfField.value;
+            if (diff < 0) {
+                addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'geoSpent', -diff);
+            } else if (diff > 0) {
+                addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'geoEarned', diff);
+            }
         }
     }
+
+    if (previousSceneEvent) {
+        addToScene(previousSceneEvent, 'timeSpendMs', recording.lastEvent().msIntoGame - previousSceneEnteredAtMs);
+    }
+
     return { countPerScene, maxOverScenes };
 }
 

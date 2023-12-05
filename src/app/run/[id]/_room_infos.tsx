@@ -16,6 +16,7 @@ import {
     AggregationVariable,
     aggregationVariableInfos,
     aggregationVariables,
+    formatAggregatedVariableValue,
 } from '~/lib/viz/recording-files/run-aggregation-store';
 
 function AggregationVariableToggles({
@@ -29,19 +30,20 @@ function AggregationVariableToggles({
     const roomColorVar1 = useViewOptionsStore((s) => s.roomColorVar1);
     const setRoomColorVar1 = useViewOptionsStore((s) => s.setRoomColorVar1);
 
-    const showVar1 = roomColors === '1-var';
+    // const showVar1 = roomColors === '1-var';
+    const showVar1 = true;
     const showAnyToggles = showVar1;
 
     if (!showAnyToggles) return null;
 
     return (
-        <TableCell className="w-1">
+        <TableCell className="w-1 p-0 pr-1">
             {showVar1 && (
                 <Toggle
                     variant="outline"
-                    pressed={roomColorVar1 === variable}
+                    pressed={roomColorVar1 === variable && roomColors === '1-var'}
                     onPressedChange={() => setRoomColorVar1(variable)}
-                    className="data-[state=on]:bg-primary"
+                    className="rounded-full data-[state=on]:bg-primary"
                 >
                     <MatSymbol icon="palette" className="text-base" />
                 </Toggle>
@@ -66,18 +68,23 @@ function AggregationVariable({
     if (!selectedRoom) return null;
     return (
         <TableRow>
-            <TableHead>
+            <TableHead className="flex items-center p-1 pl-3">
                 <Tooltip>
                     <TooltipTrigger>
                         <div className="flex flex-row items-center justify-center gap-2">
-                            <Image className="w-8" src={variableInfo.image} alt="Focus inventory symbol"></Image>
+                            {'image' in variableInfo && (
+                                <Image className="w-6" src={variableInfo.image} alt="Focus inventory symbol"></Image>
+                            )}
+                            {'icon' in variableInfo && <MatSymbol className="w-6" icon={variableInfo.icon} />}
                             <span>{variableInfo.name}</span>
                         </div>
                     </TooltipTrigger>
                     <TooltipContent>{variableInfo.description}</TooltipContent>
                 </Tooltip>
             </TableHead>
-            <TableCell className="w-1 pr-6 text-right">{aggregatedVariableValue}</TableCell>
+            <TableCell className="w-1 p-1 pr-6 text-right">
+                {formatAggregatedVariableValue(variable, aggregatedVariableValue)}
+            </TableCell>
             <AggregationVariableToggles useViewOptionsStore={useViewOptionsStore} variable={variable} />
         </TableRow>
     );
@@ -142,7 +149,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
 
     return (
         <Card
-            className="grow overflow-auto bg-gradient-to-b from-transparent  to-transparent max-lg:basis-0 max-md:min-w-[300px]"
+            className="shrink grow basis-0 overflow-auto bg-gradient-to-b from-transparent  to-transparent max-lg:basis-0 max-md:min-w-[300px]"
             style={
                 {
                     '--tw-gradient-from':
@@ -151,7 +158,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 } as CSSProperties
             }
         >
-            <CardHeader className="flex flex-row items-center">
+            <CardHeader className="flex flex-row items-center p-4">
                 {allRoomInfos && (
                     <HKMapRoom
                         roomInfos={allRoomInfos}
@@ -161,7 +168,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 )}
 
                 <div>
-                    <CardTitle>Room info</CardTitle>
+                    <CardTitle>Room analytics</CardTitle>
                     <CardDescription>
                         {!selectedRoom && (
                             <span className="text-sm opacity-50">Hover or click a room to view analytics</span>
@@ -206,7 +213,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 )}
             </CardHeader>
             {selectedRoom && (
-                <CardContent className="px-0">
+                <CardContent className="px-0 pb-1">
                     <Table className="w-full">
                         <TableBody>
                             <AggregationVariables useViewOptionsStore={useViewOptionsStore} />

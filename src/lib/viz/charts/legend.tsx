@@ -3,7 +3,9 @@ import { useRoomColoring } from './use-room-coloring';
 import { Card } from '@/components/ui/card';
 import { useCallback, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import { aggregationVariableInfos } from '../recording-files/run-aggregation-store';
+import { aggregationVariableInfos, formatAggregatedVariableValue } from '../recording-files/run-aggregation-store';
+
+const LEGEND_PADDING = 30;
 
 export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const svg = useRef<SVGSVGElement>(null);
@@ -17,7 +19,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
 
     const tickX = useCallback(
         (d: number) => {
-            return (d / roomColoring.var1Max) * 200 + 10;
+            return (d / roomColoring.var1Max) * 200 + LEGEND_PADDING;
         },
         [roomColoring],
     );
@@ -27,7 +29,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
         d3.select(svg.current).selectAll('*').remove();
 
         // color-ramp
-        const data = d3.range(200).map((i) => (roomColoring.var1Max * i) / 200);
+        const data = d3.range(200).map((i) => Math.round((roomColoring.var1Max * i) / 200));
         d3.select(svg.current)
             .append('g')
             .attr('data-group', 'ramp')
@@ -38,7 +40,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
             .attr('fill', (d) => roomColoring.singleVarColormap(d))
             .attr('stroke', 'none')
             .attr('y', 40)
-            .attr('x', (d, i) => i + 10)
+            .attr('x', (d, i) => i + LEGEND_PADDING)
             .attr('width', 2)
             .attr('height', 20);
 
@@ -62,7 +64,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
             .style('text-anchor', 'middle')
             .attr('width', 2)
             .attr('height', 20)
-            .text((d) => d);
+            .text((d) => formatAggregatedVariableValue(roomColoring.var1, d));
 
         const triangle = d3.symbol().size(30).type(d3.symbolTriangle);
         d3.select(svg.current)
@@ -94,7 +96,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
             .style('text-anchor', 'middle')
             .attr('width', 2)
             .attr('height', 20)
-            .text((d) => d);
+            .text((d) => formatAggregatedVariableValue(roomColoring.var1, d));
 
         const triangle = d3.symbol().size(30).type(d3.symbolTriangle);
         currentRoomTickG
@@ -114,9 +116,9 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
     }, [selectedRoom, tickX, var1SelectedRoomValue]);
 
     return (
-        <Card className="absolute right-4 top-4 p-2 text-center" hidden={roomColoring.mode === 'area'}>
+        <Card className="absolute right-4 top-4 px-0 py-2 text-center" hidden={roomColoring.mode === 'area'}>
             {var1Info?.name ?? ''}
-            <svg className="w-32" viewBox="0 0 220 100" ref={svg} />
+            <svg className="w-36" viewBox={`0 0 ${200 + LEGEND_PADDING * 2} 100`} ref={svg} />
         </Card>
     );
 }

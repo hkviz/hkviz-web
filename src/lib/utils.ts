@@ -9,3 +9,7 @@ export function assertNever(x: never): never {
 export function typeCheckNever(_: never): void {
     return;
 }
+
+export function zeroPad(num: number, places: number) {
+    return String(num).padStart(places, '0');
+}
