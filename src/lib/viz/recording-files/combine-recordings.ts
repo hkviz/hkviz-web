@@ -45,28 +45,26 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                         lastPositionEventWithChangedPosition?.position?.equals(event.position) !== true;
                     if (playerPositionChanged) {
                         lastPositionEventWithChangedPosition = event;
-                        // setting here early for checks below, will be overwritten later
-                        lastPositionEventWithChangedPosition.msIntoGame = msIntoGame;
                     }
                 }
 
                 if (!isPaused) {
                     const diff = event.timestamp - lastTimestamp;
+                    const msSinceLastPositionChange =
+                        event.timestamp - (lastPositionEventWithChangedPosition?.timestamp ?? 0);
+
                     // starting with 10 seconds of no events, the time is not counted
                     // this might happen, because sb closed their laptop / turned off their pc,
                     // without closing HollowKnight, and when opening the laptop again, the recorder just continues.
-                    const previousMsIntoGame = msIntoGame;
-                    if (diff < 10 * 1000) {
-                        msIntoGame += event.timestamp - lastTimestamp;
-                    }
+                    const skipTimeDeltaBecauseOfNoEvents = diff > 10 * 1000;
 
-                    const msSinceLastPositionChange =
-                        msIntoGame - (lastPositionEventWithChangedPosition?.msIntoGame ?? 0);
                     // even when we have a position change, if it hasn't changed for 30 seconds, one probably has left
                     // hollow knight open accidentally. So time is not counted.
                     // TODO add option to UI to make this filtering optional.
-                    if (msSinceLastPositionChange > 30 * 1000) {
-                        msIntoGame = previousMsIntoGame;
+                    const skipTimeDeltaBecauseNoPositionChange = msSinceLastPositionChange > 30 * 1000;
+
+                    if (!skipTimeDeltaBecauseOfNoEvents && !skipTimeDeltaBecauseNoPositionChange) {
+                        msIntoGame += event.timestamp - lastTimestamp;
                     }
                 }
                 lastTimestamp = event.timestamp;

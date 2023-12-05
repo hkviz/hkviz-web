@@ -26,7 +26,10 @@ export async function r2FileExists(key: R2Key): Promise<boolean> {
             }),
         )
         .then(
-            () => true,
+            (headObject) => {
+                console.log(headObject);
+                return true;
+            },
             (err) => {
                 if (err instanceof Error && err.name === 'NotFound') {
                     return false;

@@ -148,6 +148,7 @@ export const useRunFileStore = create(
             const isStillCurrent = (get().files[runId]?.[fileId]?.fileVersion ?? -1) === fileVersion;
             if (!isStillCurrent) return;
             const recording = parseRecordingFile(data, partNumber);
+            console.log({ headers: response.headers });
             setLoaded({ partNumber, fileVersion, runId, fileId, recording });
             combineIfAllFinished(runId);
         }
