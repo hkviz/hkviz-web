@@ -19,11 +19,11 @@ export function MainNav({ session }: { session: Session | null }) {
                     <Link href="/" legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>HKViz</NavigationMenuLink>
                     </Link>
-                    {session && (
+                    {/* {session && (
                         <Link href="/upload" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>Upload run</NavigationMenuLink>
                         </Link>
-                    )}
+                    )} */}
                 </NavigationMenuList>
             </NavigationMenu>
             <div className="grow" />

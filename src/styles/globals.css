@@ -110,6 +110,8 @@
     }
 }
 
+/* end theme colors*/
+
 @layer base {
     * {
         @apply border-border;
