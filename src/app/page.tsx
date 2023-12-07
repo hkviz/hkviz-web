@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { getServerAuthSession } from '~/server/auth';
-import { ebGaramond } from '~/styles/fonts';
+import { cinzel, ebGaramond } from '~/styles/fonts';
 import { ContentCenterWrapper } from './_components/content-wrapper';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -17,7 +17,7 @@ export default async function Home() {
     return (
         <ContentCenterWrapper>
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-                <div className={`${ebGaramond.className} text-center`}>
+                <div className={`${cinzel.className} text-center`}>
                     <h1 className={`title-text-glow -mb-6 text-[5rem] font-semibold tracking-tight sm:text-[6rem]`}>
                         HKViz
                     </h1>
