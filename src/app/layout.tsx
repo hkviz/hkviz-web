@@ -2,11 +2,11 @@ import '~/styles/globals.css';
 
 import { cookies } from 'next/headers';
 
-import { TRPCReactProvider } from '~/trpc/react';
-import { MainNav } from './_components/main-nav';
 import { getServerAuthSession } from '~/server/auth';
+import { cinzel, notoSans } from '~/styles/fonts';
+import { TRPCReactProvider } from '~/trpc/react';
 import ClientContext from './_components/context';
-import { ebGaramond, inter } from '~/styles/fonts';
+import { MainNav } from './_components/main-nav';
 
 export const metadata = {
     title: 'HKViz for Hollow Knight',
@@ -19,7 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
 
     return (
         <html lang="en">
-            <body className={`dark font-sans ${inter.className} ${inter.variable} ${ebGaramond.variable}`}>
+            <body className={`dark font-sans ${notoSans.variable} ${cinzel.variable}`}>
                 <ClientContext>
                     <TRPCReactProvider cookies={cookies().toString()}>
                         <div className="flex min-h-[100dvh] flex-col">

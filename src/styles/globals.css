@@ -149,6 +149,7 @@
         font-feature-settings: liga;
         user-select: none;
         font-size: 1.5rem;
+        overflow: hidden;
     }
 }
 
