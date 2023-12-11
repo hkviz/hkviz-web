@@ -22,6 +22,7 @@ export default {
             fontFamily: {
                 sans: ['var(--font-sans)', ...fontFamily.sans],
                 serif: ['var(--font-serif)', ...fontFamily.serif],
+                serifDecorative: ['var(--font-serif-decorative)', ...fontFamily.serif],
             },
             colors: {
                 border: 'hsl(var(--border))',

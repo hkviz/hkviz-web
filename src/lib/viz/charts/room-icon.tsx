@@ -92,6 +92,7 @@ export function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapPr
             roomDataEnter,
             useViewOptionsStore,
             alwaysUseAreaAsColor: true,
+            highlightSelectedRoom: false,
         },
         [roomInfos],
     );

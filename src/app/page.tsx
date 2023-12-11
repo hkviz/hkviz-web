@@ -6,6 +6,7 @@ import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from './_components/content-wrapper';
 import { RelativeDate } from './_components/date';
+import { cinzelDecorative } from '~/styles/fonts';
 
 export default async function Home() {
     const session = await getServerAuthSession();
@@ -17,10 +18,10 @@ export default async function Home() {
         <ContentCenterWrapper>
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
                 <div className={`text-center font-serif`}>
-                    <h1 className={`title-text-glow -mb-6 text-[5rem] font-semibold tracking-tight sm:text-[6rem]`}>
-                        HKViz
+                    <h1 className={`title-text-glow -mb-6 text-[5rem] font-bold tracking-tight sm:text-[6rem]`}>
+                        HK<span className="font-serifDecorative">V</span>iz
                     </h1>
-                    <h2 className="title-text-glow text-2xl sm:text-3xl">Visualizations for HollowKnight</h2>
+                    <h2 className="title-text-glow text-2xl sm:text-3xl">Visual Analytics for HollowKnight</h2>
                 </div>
 
                 {userRuns.length === 0 && (

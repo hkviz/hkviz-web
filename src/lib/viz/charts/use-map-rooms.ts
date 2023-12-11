@@ -12,14 +12,18 @@ export function useMapRooms(
         roomDataEnter,
         onClick = () => undefined,
         onMouseOver = () => undefined,
+        onMouseOut = () => undefined,
         useViewOptionsStore,
         alwaysUseAreaAsColor = false,
+        highlightSelectedRoom = true,
     }: {
         roomDataEnter: RefObject<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown> | undefined>;
         onClick?: (event: PointerEvent, r: RoomInfo) => void;
         onMouseOver?: (event: PointerEvent, r: RoomInfo) => void;
+        onMouseOut?: (event: PointerEvent, r: RoomInfo) => void;
         useViewOptionsStore: UseViewOptionsStore;
         alwaysUseAreaAsColor?: boolean;
+        highlightSelectedRoom?: boolean;
     },
     dependencies: unknown[],
 ) {
@@ -28,6 +32,7 @@ export function useMapRooms(
     const componentId = useId();
 
     const roomRects = useRef<d3.Selection<d3.BaseType, RoomInfo, SVGGElement, unknown> | undefined>(undefined);
+    const roomOutlineRects = useRef<d3.Selection<d3.BaseType, RoomInfo, SVGGElement, unknown> | undefined>(undefined);
     const roomImgs = useRef<
         | d3.Selection<d3.BaseType, { sprite: RoomInfo['sprites'][number]; room: RoomInfo }, d3.BaseType, unknown>
         | undefined
@@ -38,6 +43,7 @@ export function useMapRooms(
     const roomColoring = useRoomColoring({ useViewOptionsStore, alwaysUseAreaAsColor });
     const roomVisibility = useViewOptionsStore((state) => state.roomVisibility);
     const animationMsIntoGame = useViewOptionsStore((state) => state.animationMsIntoGame);
+    const hoveredRoom = useViewOptionsStore((state) => state.hoveredRoom);
 
     const scenesVisitedEvents = useViewOptionsStore(
         (state) => state.recording?.allPlayerDataEventsOfField?.(playerDataFields.byFieldName.scenesVisited) ?? [],
@@ -92,6 +98,31 @@ export function useMapRooms(
             .style('transition', 'opacity 0.1s')
             .attr('xlink:href', (d) => '/ingame-map/' + d.sprite.name + '.png');
 
+        // masks just for outline. Are created by using the original mask itself, and increasing the contrast
+        // therefore effectively hiding semi transparent parts, aka the non-outline parts.
+        const outlineMaskGroup = roomGs
+            .append('svg:mask')
+            .attr('id', (r) => 'outline_mask_' + componentId + '_' + r.spriteInfo.name)
+            .append('svg:g')
+            .style('filter', 'contrast(3)');
+
+        outlineMaskGroup
+            .append('svg:rect')
+            .style('fill', 'black')
+            .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
+            .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
+            .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
+            .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y);
+
+        outlineMaskGroup
+            .append('svg:rect')
+            .style('fill', 'white')
+            .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
+            .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
+            .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
+            .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
+            .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y);
+
         // actual rect which is masked by image. This allows us to have colorful rooms, while most images themselves are white
         roomRects.current = roomGs
             .append('svg:rect')
@@ -109,9 +140,24 @@ export function useMapRooms(
             .on('mouseover', (event: PointerEvent, r) => {
                 onMouseOverEvent(event, r);
             })
+            .on('mouseout', (event: PointerEvent, r) => {
+                onMouseOut(event, r);
+            })
             .on('click', (event: PointerEvent, r) => {
                 onClickEvent(event, r);
             });
+
+        // outline
+        roomOutlineRects.current = roomGs
+            .append('svg:rect')
+            .attr('mask', (r) => 'url(#outline_mask_' + componentId + '_' + r.spriteInfo.name + ')')
+            .style('fill', 'white')
+            .style('pointer-events', 'none')
+            .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
+            .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
+            .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
+            .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y);
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, mainEffectDependencies);
 
@@ -141,9 +187,21 @@ export function useMapRooms(
 
     useEffect(() => {
         roomRects.current?.style('fill', (r) => roomColoring.getRoomColor(r));
+        roomOutlineRects.current?.style('visibility', (r) =>
+            hoveredRoom === r.sceneName && highlightSelectedRoom ? 'visible' : 'hidden',
+        );
+        // ?.on('mouseover', null)
+        // ?.on('mouseover', function (r) {
+        //     d3.select(this).style('fill', roomColoring.getRoomColor(r));
+        // })
+        // ?.on('mouseout', null)
+        // ?.on('mouseout', function (r) {
+        //     d3.select(this).style('fill', d3.color(roomColoring.getRoomColor(r)).b);
+        // });
     }, [
         // eslint-disable-next-line react-hooks/exhaustive-deps
         ...mainEffectDependencies,
         roomColoring,
+        hoveredRoom,
     ]);
 }

@@ -22,6 +22,7 @@ function createViewOptionsStore() {
                 timeFrame: { min: 0, max: 0 },
                 traceAnimationLengthMs: 1000 * 60 * 4,
                 selectedRoom: null as string | null,
+                hoveredRoom: null as string | null,
                 selectedRoomPinned: false,
 
                 viewNeverHappenedAggregations: false,
@@ -94,6 +95,12 @@ function createViewOptionsStore() {
                 function setSelectedRoom(selectedRoom: string | null) {
                     set({ selectedRoom });
                 }
+                function setHoveredRoom(hoveredRoom: string | null) {
+                    set({ hoveredRoom });
+                }
+                function unsetHoveredRoom(hoveredRoom: string | null) {
+                    if (get().hoveredRoom === hoveredRoom) setHoveredRoom(null);
+                }
                 function setSelectedRoomPinned(selectedRoomPinned: boolean) {
                     console.log(selectedRoomPinned);
                     set({ selectedRoomPinned });
@@ -140,6 +147,8 @@ function createViewOptionsStore() {
                     setRoomColors: setRoomColorMode,
                     setRoomColorVar1,
                     setViewNeverHappenedAggregations,
+                    setHoveredRoom,
+                    unsetHoveredRoom,
                 };
             },
         ),

@@ -1,4 +1,4 @@
-import { Noto_Sans, Cinzel } from 'next/font/google';
+import { Noto_Sans, Cinzel, Cinzel_Decorative } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const notoSans = Noto_Sans({
@@ -18,6 +18,13 @@ export const cinzel = Cinzel({
     subsets: ['latin'],
     variable: '--font-serif',
     display: 'swap',
+});
+
+export const cinzelDecorative = Cinzel_Decorative({
+    subsets: ['latin'],
+    variable: '--font-serif-decorative',
+    display: 'swap',
+    weight: ['700'],
 });
 
 export const materialSymbols = localFont({

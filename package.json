@@ -50,6 +50,7 @@
         "date-fns": "^2.30.0",
         "drizzle-orm": "^0.28.5",
         "eslint-watch": "^8.0.0",
+        "favicons": "^7.1.4",
         "lucide-react": "^0.294.0",
         "material-symbols": "^0.14.1",
         "next": "^14.0.3",

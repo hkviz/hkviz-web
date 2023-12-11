@@ -40,5 +40,5 @@ export function useRoomColoring({
             },
             singleVarColormap,
         };
-    }, [mode, var1, alwaysUseAreaAsColor, aggregatedRunData?.countPerScene, var1Max]);
+    }, [mode, var1, alwaysUseAreaAsColor, aggregatedRunData, var1Max]);
 }
