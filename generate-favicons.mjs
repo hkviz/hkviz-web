@@ -13,7 +13,7 @@ const configuration = {
     appShortName: 'HKViz',
     appDescription: 'Visual analytics for HollowKnight',
     background: '#06111d',
-    theme_color: '#6245bc94',
+    theme_color: '#030712',
 };
 
 // Below is the processing.
