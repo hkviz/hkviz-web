@@ -184,3 +184,26 @@
     border: 3px solid transparent;
     background-clip: content-box;
 }
+
+.app-region-drag {
+    -webkit-app-region: drag;
+    app-region: drag;
+}
+
+.app-region-no-drag {
+    -webkit-app-region: no-drag;
+    app-region: no-drag;
+}
+
+.main-nav {
+    width: env(titlebar-area-width, 100%);
+    height: max(env(titlebar-area-height, 56px), 40px);
+}
+.main-nav-inner {
+    position: fixed;
+    z-index: 1000;
+    left: env(titlebar-area-x, 0);
+    top: env(titlebar-area-y, 0);
+    width: env(titlebar-area-width, 100%);
+    height: max(env(titlebar-area-height, 56px), 40px);
+}

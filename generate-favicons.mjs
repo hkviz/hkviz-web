@@ -27,3 +27,25 @@ await fs.writeFile(path.join(dest, htmlBasename), response.html.join('\n'));
 
 await fs.rm('./public/favicon.ico');
 await fs.rename(path.join(dest, 'favicon.ico'), './public/favicon.ico');
+
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+const manifest = JSON.parse(await fs.readFile('./public/favicons/manifest.webmanifest', 'utf-8'));
+await fs.writeFile(
+    './public/manifest.json',
+    JSON.stringify(
+        {
+            ...manifest,
+            display_override: ['window-controls-overlay', 'minimal-ui'],
+        },
+        null,
+        4,
+    ),
+);
+await fs.rm('./public/favicons/manifest.webmanifest');
+const indexHtml = await fs.readFile('./public/favicons/index.html', 'utf-8');
+await fs.writeFile(
+    './public/favicons/index.html',
+    indexHtml
+        .replace('/favicons/manifest.webmanifest', '/manifest.json')
+        .replace('/favicons/favicon.ico', '/favicon.ico'),
+);

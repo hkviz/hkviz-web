@@ -5,7 +5,7 @@ export function FaviconsHead() {
             <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
             <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="48x48" href="/favicons/favicon-48x48.png" />
-            <link rel="manifest" href="/favicons/manifest.webmanifest" />
+            <link rel="manifest" href="/manifest.json" />
             <meta name="mobile-web-app-capable" content="yes" />
             <meta name="theme-color" content="#030712" />
             <meta name="application-name" content="HKViz" />

@@ -64,5 +64,9 @@
             "type": "image/png",
             "purpose": "any"
         }
+    ],
+    "display_override": [
+        "window-controls-overlay",
+        "minimal-ui"
     ]
 }
