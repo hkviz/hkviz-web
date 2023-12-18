@@ -46,7 +46,7 @@ export const authOptions: NextAuthOptions = {
     },
     adapter: DrizzleAdapter(db, mysqlTable),
     theme: {
-        logo: '/favicons/android-chrome-256x256.png',
+        logo: '/favicons/android-chrome-192x192.png',
         colorScheme: 'auto',
         brandColor: '#6d28d9',
     },

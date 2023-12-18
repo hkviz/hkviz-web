@@ -2,9 +2,9 @@ import favicons from 'favicons';
 import fs from 'fs/promises';
 import path from 'path';
 
-const src = './logo/logo.png'; // Icon source file path.
-const dest = './public/favicons'; // Output directory path.
-const htmlBasename = 'index.html'; // HTML file basename.
+const src = './logo/logo.svg';
+const dest = './public/favicons';
+const htmlBasename = 'index.html';
 
 /** @type {import('favicons').FaviconOptions} */
 const configuration = {
@@ -17,7 +17,7 @@ const configuration = {
 };
 
 // Below is the processing.
-const response = await favicons(src, configuration);
+const response = await favicons([src], configuration);
 await fs.mkdir(dest, { recursive: true });
 await Promise.all(
     response.images.map(async (image) => await fs.writeFile(path.join(dest, image.name), image.contents)),
