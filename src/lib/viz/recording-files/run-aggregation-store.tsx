@@ -10,7 +10,7 @@ import {
     type ParsedRecording,
 } from './recording';
 
-import { MaterialSymbol } from 'material-symbols';
+import { type MaterialSymbol } from 'material-symbols';
 import { zeroPad } from '~/lib/utils';
 import coinImg from '../../../../public/ingame-sprites/HUD_coin_shop.png';
 import spellUpImg from '../../../../public/ingame-sprites/Inv_0024_spell_scream_01.png';
@@ -33,16 +33,21 @@ function formatTime(ms: number) {
 }
 
 export const aggregationVariableInfos = {
-    timeSpendMs: {
-        name: 'Time spent',
-        description: 'Total time spent (mm:ss)',
+    visits: {
+        name: 'Visits',
+        description: 'Number this scene has been entered',
+        icon: 'tag',
+    },
+    firstVisitMs: {
+        name: 'First visited at',
+        description: 'Time of first visit (mm:ss)',
         icon: 'timer',
         format: formatTime,
     },
-    firstVisitMs: {
-        name: 'First visit',
-        description: 'Time of first visit (mm:ss)',
-        icon: 'timer',
+    timeSpendMs: {
+        name: 'Time spent',
+        description: 'Total time spent (mm:ss)',
+        icon: 'timelapse',
         format: formatTime,
     },
     damageTaken: {
@@ -65,15 +70,15 @@ export const aggregationVariableInfos = {
         description: 'Number of times the player used a fireball spell',
         image: spellFireballImg,
     },
-    spellUp: {
-        name: 'Howling Wraiths',
-        description: 'Number of times the player used an up spell',
-        image: spellUpImg,
-    },
     spellDown: {
         name: 'Desolate Dive',
         description: 'Number of times the player used a down spell',
         image: spellDownImg,
+    },
+    spellUp: {
+        name: 'Howling Wraiths',
+        description: 'Number of times the player used an up spell',
+        image: spellUpImg,
     },
     geoEarned: {
         name: 'Geo earned',
@@ -111,6 +116,7 @@ export type ValueAggregation = {
     geoSpent: number;
     timeSpendMs: number;
     firstVisitMs: number;
+    visits: number;
 };
 
 const createEmptyAggregation = (): ValueAggregation => ({
@@ -124,6 +130,7 @@ const createEmptyAggregation = (): ValueAggregation => ({
     geoSpent: 0,
     timeSpendMs: 0,
     firstVisitMs: 0,
+    visits: 0,
 });
 
 export type AggregationVariable = keyof ValueAggregation;
@@ -152,6 +159,10 @@ function aggregateRecording(recording: ParsedRecording) {
             if (previousSceneEvent) {
                 addToScene(previousSceneEvent, 'timeSpendMs', event.msIntoGame - previousSceneEnteredAtMs);
             }
+            if (!countPerScene[event.sceneName]?.firstVisitMs) {
+                addToScene(event, 'firstVisitMs', event.msIntoGame);
+            }
+            addToScene(event, 'visits', 1);
             previousSceneEvent = event;
             previousSceneEnteredAtMs = event.msIntoGame;
         } else if (event instanceof HeroStateEvent && event.field.name === 'dead' && event.value) {

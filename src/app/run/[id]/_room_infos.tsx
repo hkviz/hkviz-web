@@ -149,7 +149,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
 
     return (
         <Card
-            className="shrink grow basis-0 overflow-auto bg-gradient-to-b from-transparent  to-transparent max-lg:basis-0 max-md:min-w-[300px]"
+            className="flex shrink grow basis-0 flex-col bg-gradient-to-b from-transparent to-transparent max-lg:basis-0 max-md:min-w-[300px]"
             style={
                 {
                     '--tw-gradient-from':
@@ -213,7 +213,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 )}
             </CardHeader>
             {selectedRoom && (
-                <CardContent className="px-0 pb-1">
+                <CardContent className="shrink grow basis-0 overflow-auto px-0 pb-1">
                     <Table className="w-full">
                         <TableBody>
                             <AggregationVariables useViewOptionsStore={useViewOptionsStore} />

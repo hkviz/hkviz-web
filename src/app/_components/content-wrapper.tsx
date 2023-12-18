@@ -16,7 +16,7 @@ export function ContentWrapper({
         <div className="relative flex grow flex-col">
             <div
                 className={cn(
-                    'absolute inset-0 -z-10 bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-[#6245bc94] to-[#c3cdd8] bg-fixed dark:from-[#6245bc94] dark:to-[#06111d]',
+                    'absolute inset-0 -z-10 bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-[#6245bc94]/60 to-[#c3cdd8]/60 bg-fixed dark:from-[#6245bc94]/60 dark:to-[#06111d]/60',
                     backgroundClassName,
                 )}
             />
