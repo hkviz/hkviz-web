@@ -30,6 +30,13 @@ export const env = createEnv({
         R2_BUCKET_NAME: z.string(),
         R2_ACCOUNT_ID: z.string(),
         R2_ENDPOINT: z.string(),
+
+        // mails
+        EMAIL_SERVER_HOST: z.string(),
+        EMAIL_SERVER_PORT: z.coerce.number(),
+        EMAIL_SERVER_USER: z.string(),
+        EMAIL_SERVER_PASSWORD: z.string(),
+        EMAIL_FROM: z.string(),
     },
 
     /**
@@ -53,11 +60,19 @@ export const env = createEnv({
         DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
         DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
 
+        // r2
         R2_ACCESS_KEY_ID: process.env.R2_ACCESS_KEY_ID,
         R2_SECRET_ACCESS_KEY: process.env.R2_SECRET_ACCESS_KEY,
         R2_BUCKET_NAME: process.env.R2_BUCKET_NAME,
         R2_ACCOUNT_ID: process.env.R2_ACCOUNT_ID,
         R2_ENDPOINT: process.env.R2_ENDPOINT,
+
+        // mails
+        EMAIL_SERVER_HOST: process.env.EMAIL_SERVER_HOST,
+        EMAIL_SERVER_PORT: process.env.EMAIL_SERVER_PORT,
+        EMAIL_SERVER_USER: process.env.EMAIL_SERVER_USER,
+        EMAIL_SERVER_PASSWORD: process.env.EMAIL_SERVER_PASSWORD,
+        EMAIL_FROM: process.env.EMAIL_FROM,
     },
     /**
      * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
