@@ -1,6 +1,6 @@
 {
-	"editor.formatOnSave": true,
-	"notebook.formatOnSave.enabled": false,
-	"editor.formatOnType": true,
-	"prettier.configPath": "prettier.config.mjs"
+    "editor.formatOnSave": true,
+    "notebook.formatOnSave.enabled": false,
+    "editor.formatOnType": true,
+    "prettier.configPath": "prettier.config.mjs"
 }

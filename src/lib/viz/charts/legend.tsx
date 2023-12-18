@@ -7,6 +7,8 @@ import { aggregationVariableInfos, formatAggregatedVariableValue } from '../reco
 
 const LEGEND_PADDING = 30;
 
+const LEGEND_SVG_TEXT_CLASSES = 'text-black dark:text-white fill-current';
+
 export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const svg = useRef<SVGSVGElement>(null);
 
@@ -57,7 +59,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
             .data(steps)
             .enter()
             .append('text')
-            .attr('class', 'text-white fill-current')
+            .attr('class', LEGEND_SVG_TEXT_CLASSES)
             .attr('stroke', 'none')
             .attr('y', 20)
             .attr('x', tickX)
@@ -75,7 +77,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
             .enter()
             .append('path')
             .attr('d', triangle)
-            .attr('class', 'text-white fill-current')
+            .attr('class', LEGEND_SVG_TEXT_CLASSES)
             .attr('transform', (d) => `translate(${tickX(d)}, 30) rotate(180)`);
     }, [roomColoring, tickX]);
 
@@ -89,7 +91,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
             .data([var1SelectedRoomValue])
             .enter()
             .append('text')
-            .attr('class', 'text-white fill-current')
+            .attr('class', LEGEND_SVG_TEXT_CLASSES)
             .attr('stroke', 'none')
             .attr('y', 90)
             .attr('x', tickX)
@@ -107,7 +109,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
             .enter()
             .append('path')
             .attr('d', triangle)
-            .attr('class', 'text-white fill-current')
+            .attr('class', LEGEND_SVG_TEXT_CLASSES)
             .attr('transform', (d) => `translate(${tickX(d)}, 70)`);
 
         return () => {

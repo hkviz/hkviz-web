@@ -48,10 +48,16 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     <CardContent className="px-0 pb-1">
                         <Tabs defaultValue="view-options" className="w-full">
                             <TabsList className="w-full bg-transparent">
-                                <TabsTrigger value="run-info" className="data-[state=active]:bg-slate-800">
+                                <TabsTrigger
+                                    value="run-info"
+                                    className="data-[state=active]:bg-slate-300 dark:data-[state=active]:bg-slate-800"
+                                >
                                     Run info
                                 </TabsTrigger>
-                                <TabsTrigger value="view-options" className="data-[state=active]:bg-slate-800">
+                                <TabsTrigger
+                                    value="view-options"
+                                    className="data-[state=active]:bg-slate-300 dark:data-[state=active]:bg-slate-800"
+                                >
                                     View options
                                 </TabsTrigger>
                             </TabsList>
@@ -77,7 +83,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     <HKMap className="grow" useViewOptionsStore={useViewOptionsStore} />
                     <div
                         className={cn(
-                            'absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 p-4',
+                            'absolute inset-0 flex items-center justify-center bg-white bg-opacity-40 p-4 dark:bg-black',
                             runFiles.finishedLoading ? 'invisible scale-125 opacity-0 transition' : '',
                         )}
                     >

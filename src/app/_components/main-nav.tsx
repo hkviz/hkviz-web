@@ -10,11 +10,12 @@ import {
 } from '@/components/ui/navigation-menu';
 import type { Session } from 'next-auth';
 import { CurrentUserDropdown } from './current-user-dropdown';
+import { type Theme, ThemeSwitcher } from './theme-switcher';
 
-export function MainNav({ session }: { session: Session | null }) {
+export function MainNav({ session, theme }: { session: Session | null; theme: Theme }) {
     return (
         <div className="main-nav app-region-drag">
-            <div className="main-nav-inner flex items-center justify-center p-2">
+            <div className="main-nav-inner flex items-center justify-center bg-background p-2">
                 <NavigationMenu>
                     <NavigationMenuList className="app-region-no-drag">
                         <Link href="/" legacyBehavior passHref>
@@ -29,6 +30,7 @@ export function MainNav({ session }: { session: Session | null }) {
                 </NavigationMenu>
                 <div className="grow" />
                 <NavigationMenu className="navigation-menu-content-from-right app-region-no-drag">
+                    {/* <ThemeSwitcher theme={theme} /> */}
                     <NavigationMenuList>
                         {!session && (
                             <Link href="/api/auth/signin" legacyBehavior passHref>

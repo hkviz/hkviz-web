@@ -19,16 +19,22 @@ export const metadata: Metadata = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     const session = await getServerAuthSession();
 
+    const useDarkTheme = cookies().get('theme')?.value !== 'light';
+
     return (
         <html lang="en">
             <head>
                 <FaviconsHead />
             </head>
-            <body className={`dark font-sans ${notoSans.variable} ${cinzel.variable} ${cinzelDecorative.variable}`}>
+            <body
+                className={`${useDarkTheme ? 'dark' : ''} font-sans ${notoSans.variable} ${cinzel.variable} ${
+                    cinzelDecorative.variable
+                }`}
+            >
                 <ClientContext>
                     <TRPCReactProvider cookies={cookies().toString()}>
                         <div className="flex min-h-[100dvh] flex-col">
-                            <MainNav session={session} />
+                            <MainNav session={session} theme={useDarkTheme ? 'dark' : 'light'} />
                             {children}
                         </div>
                     </TRPCReactProvider>

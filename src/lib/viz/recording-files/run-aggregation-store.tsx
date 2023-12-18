@@ -24,18 +24,26 @@ import { playerDataFields } from '../player-data/player-data';
 type RunId = string;
 export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
 
+function formatTime(ms: number) {
+    const minutes = Math.floor(ms / 1000 / 60);
+    const seconds = Math.floor((ms / 1000) % 60);
+    // const deciSeconds = Math.floor(Math.floor(ms % 1000) / 100);
+
+    return `${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}`; //.${deciSeconds}`;
+}
+
 export const aggregationVariableInfos = {
     timeSpendMs: {
         name: 'Time spent',
         description: 'Total time spent (mm:ss)',
         icon: 'timer',
-        format: (ms) => {
-            const minutes = Math.floor(ms / 1000 / 60);
-            const seconds = Math.floor((ms / 1000) % 60);
-            // const deciSeconds = Math.floor(Math.floor(ms % 1000) / 100);
-
-            return `${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}`; //.${deciSeconds}`;
-        },
+        format: formatTime,
+    },
+    firstVisitMs: {
+        name: 'First visit',
+        description: 'Time of first visit (mm:ss)',
+        icon: 'timer',
+        format: formatTime,
     },
     damageTaken: {
         name: 'Damage taken',
@@ -102,6 +110,7 @@ export type ValueAggregation = {
     geoEarned: number;
     geoSpent: number;
     timeSpendMs: number;
+    firstVisitMs: number;
 };
 
 const createEmptyAggregation = (): ValueAggregation => ({
@@ -114,6 +123,7 @@ const createEmptyAggregation = (): ValueAggregation => ({
     geoEarned: 0,
     geoSpent: 0,
     timeSpendMs: 0,
+    firstVisitMs: 0,
 });
 
 export type AggregationVariable = keyof ValueAggregation;
