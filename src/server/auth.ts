@@ -45,6 +45,11 @@ export const authOptions: NextAuthOptions = {
         }),
     },
     adapter: DrizzleAdapter(db, mysqlTable),
+    theme: {
+        logo: '/favicons/android-chrome-256x256.png',
+        colorScheme: 'auto',
+        brandColor: '#6d28d9',
+    },
     providers: [
         GoogleProvider({
             clientId: env.GOOGLE_CLIENT_ID,
