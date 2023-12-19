@@ -15,7 +15,7 @@ export function RunInfos({ session, runData }: Props) {
             <TableBody>
                 <TableRow>
                     <TableHead>From</TableHead>
-                    <TableCell>{runData.user.name}</TableCell>
+                    <TableCell>{runData.user.name ?? 'Unnamed player'}</TableCell>
                 </TableRow>
                 <TableRow>
                     <TableHead>Started</TableHead>
