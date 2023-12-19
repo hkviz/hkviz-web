@@ -7,11 +7,11 @@ A site for visualizing player-behavior for Hollow Knight, like seeing the comple
 
 The mod for recording player behavior is contained in the [hkviz-mod repository](https://github.com/hkviz/hkviz-mod).
 
-Checkout [hkviz.vercel.app](https://hkviz.vercel.app/) for more infos.
+Visit [hkviz.olii.dev](https://hkviz.olii.dev/) for more infos.
 
 ## I have Ideas/Feedback for visualizations
 
-Feel free to open a issue on this repository or write @olivergrack on discord.
+Feel free to open a issue on this repository, write @olivergrack on discord or contact me via [hkviz@olii.dev](mailto:hkviz@olii.dev)
 
 ## How to use
 

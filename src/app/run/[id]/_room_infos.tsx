@@ -73,7 +73,12 @@ function AggregationVariable({
                     <TooltipTrigger>
                         <div className="flex flex-row items-center justify-center gap-2">
                             {'image' in variableInfo && (
-                                <Image className="w-6" src={variableInfo.image} alt="Focus inventory symbol"></Image>
+                                <Image
+                                    className="w-6"
+                                    src={variableInfo.image}
+                                    alt={'Aggregation Variable icon'}
+                                    aria-hidden={true}
+                                ></Image>
                             )}
                             {'icon' in variableInfo && <MatSymbol className="w-6" icon={variableInfo.icon} />}
                             <span>{variableInfo.name}</span>

@@ -14,9 +14,9 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
 
     const roomColoring = useRoomColoring({ useViewOptionsStore });
     const var1Info = aggregationVariableInfos[roomColoring.var1];
-    const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
-    const var1SelectedRoomValue = selectedRoom
-        ? roomColoring.aggregatedRunData?.countPerScene?.[selectedRoom]?.[roomColoring.var1] ?? 0
+    const hoveredRoom = useViewOptionsStore((s) => s.hoveredRoom);
+    const var1SelectedRoomValue = hoveredRoom
+        ? roomColoring.aggregatedRunData?.countPerScene?.[hoveredRoom]?.[roomColoring.var1] ?? 0
         : null;
 
     const tickX = useCallback(
@@ -115,7 +115,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
         return () => {
             currentRoomTickG.remove();
         };
-    }, [selectedRoom, tickX, var1SelectedRoomValue]);
+    }, [hoveredRoom, roomColoring.var1, tickX, var1SelectedRoomValue]);
 
     return (
         <Card className="absolute right-4 top-4 px-0 py-2 text-center" hidden={roomColoring.mode === 'area'}>
