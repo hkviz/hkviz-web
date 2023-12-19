@@ -129,7 +129,7 @@ export function useMapRooms(
             .attr('data-scene-name', (r) => r.sceneName)
             .attr('class', 'svg-room')
             .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
-            .attr('clip-path', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
+            // .attr('clip-path', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
 
             .style('fill', (r) => r.color.formatHex())
             .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
