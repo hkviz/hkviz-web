@@ -1,3 +1,4 @@
+import { cn } from '@/lib/utils';
 import type { MDXComponents } from 'mdx/types';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -6,8 +7,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     return {
         ...components,
-        h1: (props) => <h1 className={headerClasses} {...props} />,
-        h2: (props) => <h2 className={headerClasses} {...props} />,
-        h3: (props) => <h3 className={headerClasses} {...props} />,
+        h2: (props) => <h2 {...props} className={cn(headerClasses, props.className)} />,
+        h1: (props) => <h1 {...props} className={cn(headerClasses, props.className)} />,
+        h3: (props) => <h3 {...props} className={cn(headerClasses, props.className)} />,
+        h4: (props) => <h3 {...props} className={cn(headerClasses, props.className)} />,
+        h5: (props) => <h3 {...props} className={cn(headerClasses, props.className)} />,
+        h6: (props) => <h3 {...props} className={cn(headerClasses, props.className)} />,
     };
 }

@@ -14,24 +14,21 @@ const config = {
     pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 };
 
+/** @type {import("rehype-autolink-headings").Options} */
+const rehypeAutolinkOptions = {
+    behavior: 'prepend',
+    properties: {
+        ariaHidden: true,
+        tabIndex: -1,
+        className: 'hash-link text-zinc-600 hover:text-zinc-200 no-underline p-2 lg:ml-[calc(-1ch-1rem)]',
+    },
+};
+
 const configWithMdx = withMDX({
     extension: /\.mdx?$/,
     options: {
         remarkPlugins: [remarkToc],
-        rehypePlugins: [
-            rehypeSlug,
-            [
-                rehypeAutolinkHeadings,
-                {
-                    behaviour: 'append',
-                    properties: {
-                        ariaHidden: true,
-                        tabIndex: -1,
-                        className: 'hash-link',
-                    },
-                },
-            ],
-        ],
+        rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, rehypeAutolinkOptions]],
     },
 })(config);
 

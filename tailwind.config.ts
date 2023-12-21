@@ -9,6 +9,7 @@ export default {
         './app/**/*.{ts,tsx}',
         './src/**/*.{ts,tsx}',
         './@/components/**/*.{ts,tsx}',
+        './next.config.mjs',
     ],
     theme: {
         container: {

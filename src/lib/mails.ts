@@ -1,11 +1,11 @@
 import { createTransport } from 'nodemailer';
 import type Mail from 'nodemailer/lib/mailer';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { env } from '~/env.mjs';
 
-export const mailTransporter = createTransport({
+const transporterOptions: SMTPTransport.Options = {
     host: env.EMAIL_SERVER_HOST,
     port: env.EMAIL_SERVER_PORT,
-    secureConnection: false, // TLS requires secureConnection to be false
     auth: {
         user: env.EMAIL_SERVER_USER,
         pass: env.EMAIL_SERVER_PASSWORD,
@@ -13,7 +13,9 @@ export const mailTransporter = createTransport({
     tls: {
         ciphers: 'SSLv3',
     },
-});
+};
+
+export const mailTransporter = createTransport(transporterOptions);
 
 export function sendMailToSupport(options: Omit<Mail.Options, 'from' | 'to'>) {
     return mailTransporter.sendMail({

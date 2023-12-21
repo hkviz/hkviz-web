@@ -227,13 +227,5 @@
 
 .hash-link::before {
     content: '#';
-    margin-left: calc(-1ch + -1rem);
-    padding: 0.5rem;
     transition: color 0.2s ease-in-out;
-    text-decoration: none;
-    @apply text-zinc-600;
-}
-
-.hash-link:hover::before {
-    @apply text-zinc-200;
 }

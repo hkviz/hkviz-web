@@ -22,13 +22,13 @@ export function AccountDeletionForm(props: { removalRequestId: string }) {
                 <CardHeader>
                     <CardTitle>Account deletion requested</CardTitle>
                     <CardDescription>
-                        <p className="mb-2">
-                            Your account deletion has been requested. All your data will be deleted within 30 days.
-                        </p>
+                        <p>Your account deletion has been requested. All your data will be deleted within 30 days.</p>
+                    </CardDescription>
+                    <CardFooter className="flex justify-end">
                         <Button asChild>
                             <Link href="/api/auth/signout">Logout</Link>
                         </Button>
-                    </CardDescription>
+                    </CardFooter>
                 </CardHeader>
             </Card>
         );
