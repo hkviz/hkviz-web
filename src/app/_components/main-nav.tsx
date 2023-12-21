@@ -11,6 +11,7 @@ import {
 import type { Session } from 'next-auth';
 import { CurrentUserDropdown } from './current-user-dropdown';
 import { type Theme, ThemeSwitcher } from './theme-switcher';
+import { LoginLink } from './login-link';
 
 export function MainNav({ session, theme }: { session: Session | null; theme: Theme }) {
     return (
@@ -33,9 +34,9 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                     {/* <ThemeSwitcher theme={theme} /> */}
                     <NavigationMenuList>
                         {!session && (
-                            <Link href="/api/auth/signin" legacyBehavior passHref>
-                                <NavigationMenuLink className={navigationMenuTriggerStyle()}>Login</NavigationMenuLink>
-                            </Link>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                                <LoginLink />
+                            </NavigationMenuLink>
                         )}
                         {session && <CurrentUserDropdown session={session} />}
                     </NavigationMenuList>
