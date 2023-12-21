@@ -161,3 +161,13 @@ export const ingameAuth = mysqlTable(
 export const ingameAuthRelations = relations(ingameAuth, ({ one }) => ({
     user: one(users, { fields: [ingameAuth.userId], references: [users.id] }),
 }));
+
+export const accountDeletionRequest = mysqlTable('accountDeletionRequest', {
+    id: varchar('id', { length: 255 }).notNull().primaryKey(),
+    userId: varchar('user_id', { length: 255 }).notNull(),
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
+    formAccepted: boolean('form_accepted').notNull().default(false),
+});

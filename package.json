@@ -46,6 +46,7 @@
         "@trpc/server": "^10.37.1",
         "@types/dom-view-transitions": "^1.0.4",
         "@types/mdx": "^2.0.10",
+        "@types/nodemailer": "^6.4.14",
         "@types/uuid": "^9.0.7",
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.0.0",

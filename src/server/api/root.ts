@@ -1,6 +1,7 @@
 import { createTRPCRouter } from '~/server/api/trpc';
-import { runRouter } from './routers/run';
+import { accountRouter } from './routers/account';
 import { ingameAuthRouter } from './routers/ingameauth';
+import { runRouter } from './routers/run';
 
 /**
  * This is the primary router for your server.
@@ -10,4 +11,5 @@ import { ingameAuthRouter } from './routers/ingameauth';
 export const appRouter = createTRPCRouter({
     run: runRouter,
     ingameAuth: ingameAuthRouter,
+    account: accountRouter,
 });
