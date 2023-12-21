@@ -1,4 +1,5 @@
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
+import { isValid as isValidNonBlacklistedEmail } from 'mailchecker';
 import { getServerSession, type DefaultSession, type NextAuthOptions } from 'next-auth';
 import DiscordProvider from 'next-auth/providers/discord';
 import EmailProvider from 'next-auth/providers/email';
@@ -45,9 +46,9 @@ export const authOptions: NextAuthOptions = {
         }),
         // eslint-disable-next-line @typescript-eslint/require-await
         signIn: async ({ user }) => {
-            // if (user.emailVerified === null) {
-            //     return false;
-            // }
+            if (user.email && !isValidNonBlacklistedEmail(user.email)) {
+                return false;
+            }
             return true;
         },
     },
