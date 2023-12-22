@@ -4,11 +4,9 @@ import jkuLogo from '../../../public/jku/JKU_Logo.svg';
 import { DataCollectionStudyParticipationForm, FadeBackground } from './_components';
 import Link from 'next/link';
 
-<FadeBackground className="sticky top-[var(--main-nav-height)] z-10 h-fit pb-4">
-    <DataCollectionStudyParticipationForm className=" mx-auto mt-2" />
-</FadeBackground>
+<DataCollectionStudyParticipationForm className="mx-auto mb-5 mt-5" formPositionText="bellow" />
 
-<MdxInnerWrapper className="hide-hash-links">
+<MdxInnerWrapper>
 
 # Developing Effective Map-based Analytics for Video Games Research Study
 
@@ -64,6 +62,8 @@ By participating, you are agreeing to the following statements, and thus, provid
 -   We do not foresee any risk in participating in the study.
 
 </MdxInnerWrapper>
+
+<DataCollectionStudyParticipationForm className="mx-auto mb-[20rem] mt-8" formPositionText="above" />
 
 export default function MDXPage({ children }) {
     return <MdxOuterWrapper>{children}</MdxOuterWrapper>;

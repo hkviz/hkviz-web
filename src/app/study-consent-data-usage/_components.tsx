@@ -4,12 +4,23 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
 import { api } from '~/trpc/react';
+import { useConsentFormStore } from './_form_store';
 
-export function DataCollectionStudyParticipationForm({ className }: { className?: string }) {
-    const [participate, setParticipate] = useState(false);
-    const [keepDataAfterStudy, setKeepDataAfterStudy] = useState(false);
+export function DataCollectionStudyParticipationForm({
+    className,
+    formPositionText,
+}: {
+    className?: string;
+    formPositionText: string;
+}) {
+    const participate = useConsentFormStore((state) => state.participate);
+    const setParticipate = useConsentFormStore((state) => state.setParticipate);
+    const keepDataAfterStudy = useConsentFormStore((state) => state.keepDataAfterStudy);
+    const setKeepDataAfterStudy = useConsentFormStore((state) => state.setKeepDataAfterStudy);
+
+    const id = useId();
 
     const saveMutation = api.account.acceptAccountRemovalRequest.useMutation();
     const handleAccept = async () => {
@@ -54,12 +65,16 @@ export function DataCollectionStudyParticipationForm({ className }: { className?
                     <fieldset disabled={isMutating}>
                         <div className="grid w-full items-center gap-4">
                             <div className="flex items-center space-x-2">
-                                <Checkbox id="participate" checked={participate} onCheckedChange={setParticipate} />
+                                <Checkbox
+                                    id={id + 'participate'}
+                                    checked={participate}
+                                    onCheckedChange={setParticipate}
+                                />
                                 <label
-                                    htmlFor="participate"
+                                    htmlFor={id + 'participate'}
                                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
-                                    I want to participate and and agree to the Informed Consent Form bellow.
+                                    I want to participate and and agree to the Informed Consent Form {formPositionText}.
                                 </label>
                             </div>
 
@@ -68,14 +83,14 @@ export function DataCollectionStudyParticipationForm({ className }: { className?
                                 style={{ opacity: participate ? undefined : 0 }}
                             >
                                 <Checkbox
-                                    id="keep-account"
+                                    id={id + 'keep-account'}
                                     checked={keepDataAfterStudy || !participate}
                                     onCheckedChange={setKeepDataAfterStudy}
                                     disabled={!participate}
                                     tabIndex={participate ? undefined : -1}
                                 />
                                 <label
-                                    htmlFor="keep-account"
+                                    htmlFor={id + 'keep-account'}
                                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
                                     Keep my gameplay data after the study has been conduced, so I can continue to login
@@ -106,4 +121,10 @@ export function FadeBackground({ className, children }: React.PropsWithChildren<
             {children}
         </div>
     );
+}
+
+{
+    /* <FadeBackground className="sticky top-[var(--main-nav-height)] z-10 h-fit pb-4">
+    <DataCollectionStudyParticipationForm className=" mx-auto mt-2" />
+</FadeBackground> */
 }
