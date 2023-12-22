@@ -79,12 +79,13 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
     }
 
     // extra handling of additional map mod:
-    const color =
+    const color = d3.hsl(
         room.mapZone === 'GODS_GLORY'
             ? d3.color('#f8ecd7')!
             : room.mapZone === 'WHITE_PALACE'
             ? d3.color('#dfe2e4')!
-            : d3.rgb(room.origColor.x * 255, room.origColor.y * 255, room.origColor.z * 255);
+            : d3.rgb(room.origColor.x * 255, room.origColor.y * 255, room.origColor.z * 255),
+    );
 
     const conditionalSpriteInfo = roomDataConditionalByGameObjectName(room.gameObjectName);
 

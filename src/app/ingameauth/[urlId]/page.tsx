@@ -3,12 +3,14 @@ import { redirect } from 'next/navigation';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';
-import { IngameAuthCard } from './components/ingameauth-components';
+import { IngameAuthCard } from './_components';
+import { cookies } from 'next/headers';
 
 export default async function IngameAuthPage({ params }: { params: { urlId: string } }) {
     const session = await getServerAuthSession();
+    const urlId = params.urlId === 'cookie' ? cookies().get('ingameAuthUrlId')!.value : params.urlId;
 
-    const ingameAuth = await (await apiFromServer()).ingameAuth.getByUrlIdIfNew({ urlId: params.urlId });
+    const ingameAuth = await (await apiFromServer()).ingameAuth.getByUrlIdIfNew({ urlId });
 
     if (!ingameAuth || ingameAuth.user) {
         return (
@@ -31,8 +33,13 @@ export default async function IngameAuthPage({ params }: { params: { urlId: stri
     }
 
     if (!session) {
-        const newUrlId = await (await apiFromServer()).ingameAuth.changeUrlId({ id: ingameAuth.id });
-        redirect('/api/auth/signin?callbackUrl=/ingameauth/' + newUrlId);
+        redirect(`/ingameauth/${urlId}/login-redirect`);
+    }
+
+    const dataCollectionStudyParticipation = await (await apiFromServer()).studyParticipation.getStudyParticipation({});
+
+    if (!dataCollectionStudyParticipation) {
+        redirect(`/ingameauth/${urlId}/consent-redirect`);
     }
 
     // at this point nobody else should be able to use this token to access this page:

@@ -23,9 +23,9 @@ export function useRoomColoring({
         function roomColorFromArea(r: RoomInfo) {
             const colorFromGame = r.color;
             if (theme === 'light') {
-                return colorFromGame.darker(1).formatHex();
+                return colorFromGame.copy({ l: colorFromGame.l * 0.5, s: colorFromGame.s * 0.5 }).formatHsl();
             } else {
-                return colorFromGame.formatHex();
+                return colorFromGame.formatHsl();
             }
         }
 

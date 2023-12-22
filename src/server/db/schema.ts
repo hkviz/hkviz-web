@@ -68,8 +68,8 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
 
 export const dataCollectionStudyParticipations = mysqlTable('userDataCollectionResearchParticipation', {
     userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
-    researchParticipation: boolean('researchParticipation').notNull(),
     keepDataAfterStudyConducted: boolean('keepDataAfterStudyConducted').notNull(),
+    futureContactOk: boolean('futureContactOk').notNull(),
 });
 
 export const dataCollectionStudyParticipationRelations = relations(dataCollectionStudyParticipations, ({ one }) => ({

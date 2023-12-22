@@ -161,7 +161,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
             return 'transparent';
         }
         if (theme === 'light') {
-            return color.copy({ opacity: 0.3, s: 0.2 }).toString();
+            return color.copy({ opacity: 0.2, s: 0.2 }).toString();
         } else {
             return color.copy({ opacity: 0.1, s: 0.2 }).toString();
         }

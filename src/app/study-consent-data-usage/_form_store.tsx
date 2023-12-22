@@ -2,19 +2,19 @@ import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 
 export const useConsentFormStore = create(
-    combine({ futureParticipate: false, keepDataAfterStudy: false }, (set, get) => {
-        function setFutureParticipate(futureParticipate: boolean) {
+    combine({ futureContactOk: false, keepDataAfterStudyConducted: false }, (set, get) => {
+        function setFutureContactOk(futureContactOk: boolean) {
             set((state) => ({
                 ...state,
-                futureParticipate,
+                futureContactOk,
             }));
         }
-        function setKeepDataAfterStudy(keepDataAfterStudy: boolean) {
+        function setKeepDataAfterStudyConducted(keepDataAfterStudyConducted: boolean) {
             set((state) => ({
                 ...state,
-                keepDataAfterStudy,
+                keepDataAfterStudyConducted,
             }));
         }
-        return { setFutureParticipate, setKeepDataAfterStudy };
+        return { setFutureContactOk, setKeepDataAfterStudyConducted };
     }),
 );

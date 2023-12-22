@@ -17,6 +17,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
         // needed for some reason, otherwise there is a prop type error
         // eslint-disable-next-line jsx-a11y/alt-text
-        Image: (props) => <Image {...props} />,
+        Image: (props: React.ComponentProps<typeof Image>) => <Image {...props} />,
     };
 }
