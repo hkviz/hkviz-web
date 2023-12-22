@@ -83,7 +83,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     <HKMap className="grow" useViewOptionsStore={useViewOptionsStore} />
                     <div
                         className={cn(
-                            'absolute inset-0 flex items-center justify-center bg-white bg-opacity-40 p-4 dark:bg-black',
+                            'absolute inset-0 flex items-center justify-center bg-opacity-40 p-4',
                             runFiles.finishedLoading ? 'invisible scale-125 opacity-0 transition' : '',
                         )}
                     >

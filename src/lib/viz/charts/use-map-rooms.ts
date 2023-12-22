@@ -6,6 +6,7 @@ import * as d3 from 'd3';
 import { useRoomColoring } from './use-room-coloring';
 import { playerDataFields } from '../player-data/player-data';
 import { assertNever } from '~/lib/utils';
+import { useThemeStore } from '~/app/_components/theme-store';
 
 export function useMapRooms(
     {
@@ -44,6 +45,7 @@ export function useMapRooms(
     const roomVisibility = useViewOptionsStore((state) => state.roomVisibility);
     const animationMsIntoGame = useViewOptionsStore((state) => state.animationMsIntoGame);
     const hoveredRoom = useViewOptionsStore((state) => state.hoveredRoom);
+    const theme = useThemeStore((state) => state.theme);
 
     const scenesVisitedEvents = useViewOptionsStore(
         (state) => state.recording?.allPlayerDataEventsOfField?.(playerDataFields.byFieldName.scenesVisited) ?? [],
@@ -198,10 +200,10 @@ export function useMapRooms(
         // ?.on('mouseout', function (r) {
         //     d3.select(this).style('fill', d3.color(roomColoring.getRoomColor(r)).b);
         // });
-    }, [
+    }, [...mainEffectDependencies, roomColoring, hoveredRoom, highlightSelectedRoom]);
+
+    useEffect(() => {
+        roomOutlineRects.current?.style('fill', theme === 'light' ? 'black' : 'white');
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        ...mainEffectDependencies,
-        roomColoring,
-        hoveredRoom,
-    ]);
+    }, [...mainEffectDependencies, theme]);
 }

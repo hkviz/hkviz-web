@@ -50,7 +50,6 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
             if (prefix == null) throw new Error('No prefix found');
             const [eventType, timestampStr] = prefix?.split(/[=\+]/);
             if (eventType == null) throw new Error('No event type found');
-            // console.log(prefix, eventType, timestampStr);
             // continue;
 
             // ------ TIMESTAMPS ------

@@ -31,7 +31,7 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                 </NavigationMenu>
                 <div className="grow" />
                 <NavigationMenu className="navigation-menu-content-from-right app-region-no-drag">
-                    {/* <ThemeSwitcher theme={theme} /> */}
+                    <ThemeSwitcher theme={theme} />
                     <NavigationMenuList>
                         {!session && (
                             <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>

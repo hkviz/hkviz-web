@@ -148,7 +148,6 @@ export function AnimationOptions({
                                 onChange={(v) => {
                                     try {
                                         const vv = Number.parseInt(v.target.value);
-                                        console.log(vv);
                                         setAnimationSpeedMultiplier(vv);
                                     } catch (e) {
                                         // ignore

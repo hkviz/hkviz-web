@@ -121,7 +121,7 @@
     }
 }
 
-.navigation-menu-content-from-right > :nth-child(2) {
+.navigation-menu-content-from-right > :last-child {
     right: 0;
     left: unset;
 }

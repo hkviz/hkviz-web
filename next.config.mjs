@@ -20,7 +20,8 @@ const rehypeAutolinkOptions = {
     properties: {
         ariaHidden: true,
         tabIndex: -1,
-        className: 'hash-link text-zinc-600 hover:text-zinc-200 no-underline p-2 lg:ml-[calc(-1ch-1rem)]',
+        className:
+            'hash-link text-zinc-400 dark:text-zinc-600 hover:text-zinc-800 dark:hover:text-zinc-200 no-underline p-2 lg:ml-[calc(-1ch-1rem)]',
     },
 };
 

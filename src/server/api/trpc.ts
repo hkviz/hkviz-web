@@ -97,7 +97,7 @@ const t = initTRPC.context<typeof createTRPCContext>().create({
 export const createTRPCRouter = t.router;
 
 const loggin = t.middleware(({ ctx, next, path, rawInput }) => {
-    console.log('loggin', ctx, path, rawInput);
+    // console.log('loggin', ctx, path, rawInput);
     return next({
         ctx,
     });

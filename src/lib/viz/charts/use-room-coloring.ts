@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { assertNever } from '~/lib/utils';
 import { type RoomInfo } from '../map-data/rooms';
+import { useThemeStore } from '~/app/_components/theme-store';
 
 export function useRoomColoring({
     useViewOptionsStore,
@@ -16,12 +17,26 @@ export function useRoomColoring({
     const var1 = useViewOptionsStore((state) => state.roomColorVar1);
     const var1Max = aggregatedRunData?.maxOverScenes?.[var1] ?? 0;
 
+    const theme = useThemeStore((state) => state.theme);
+
     return useMemo(() => {
+        function roomColorFromArea(r: RoomInfo) {
+            const colorFromGame = r.color;
+            if (theme === 'light') {
+                return colorFromGame.darker(1).formatHex();
+            } else {
+                return colorFromGame.formatHex();
+            }
+        }
+
         function singleVarColormap(value: number) {
             const ratio = var1Max ? value / var1Max : 0;
-            // return d3.interpolateRdPu(1 - ratio);
-            // return d3.interpolateCool(ratio);
-            return d3.color(d3.interpolateViridis(ratio))!.brighter(1).formatHex();
+            const colorMapColor = d3.color(d3.interpolateViridis(ratio))!;
+            if (theme === 'light') {
+                return colorMapColor.darker(0.5).formatHex();
+            } else {
+                return colorMapColor.brighter(1).formatHex();
+            }
         }
 
         return {
@@ -31,7 +46,7 @@ export function useRoomColoring({
             aggregatedRunData,
             getRoomColor(r: RoomInfo) {
                 if (mode === 'area' || alwaysUseAreaAsColor) {
-                    return r.color.formatHex();
+                    return roomColorFromArea(r);
                 } else if (mode === '1-var') {
                     return singleVarColormap(aggregatedRunData?.countPerScene?.[r.sceneName]?.[var1] ?? 0);
                 } else {
@@ -40,5 +55,5 @@ export function useRoomColoring({
             },
             singleVarColormap,
         };
-    }, [mode, var1, alwaysUseAreaAsColor, aggregatedRunData, var1Max]);
+    }, [mode, var1, alwaysUseAreaAsColor, aggregatedRunData, var1Max, theme]);
 }

@@ -186,8 +186,6 @@ export const runRouter = createTRPCRouter({
             },
         });
 
-        console.log(runs);
-
         return runs
             .map(({ files, ...run }) => ({
                 ...run,

@@ -12,7 +12,6 @@ import {
 } from './recording';
 
 export function combineRecordings(recordings: ParsedRecording[]): CombinedRecording {
-    console.log('combineRecordings');
     const events: RecordingEvent[] = [];
     let msIntoGame = 0;
     let lastTimestamp: number =
@@ -31,7 +30,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 // time before the previous event and this event is not counted,
                 // since either the session just started again, or pause has been active, or a scene has been loaded
                 // TODO add remaining event checks
-                console.log('time between sessions not counted', event.timestamp - lastTimestamp);
+                // console.log('time between sessions not counted', event.timestamp - lastTimestamp);
                 lastTimestamp = event.timestamp;
                 isPaused = false;
             } else if (event instanceof HeroStateEvent && event.field.name === 'isPaused') {

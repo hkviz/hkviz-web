@@ -5,7 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import Image from 'next/image';
-import { type CSSProperties } from 'react';
+import { useMemo, type CSSProperties } from 'react';
 import { MatSymbol } from '~/app/_components/mat-symbol';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
@@ -18,6 +18,7 @@ import {
     aggregationVariables,
     formatAggregatedVariableValue,
 } from '~/lib/viz/recording-files/run-aggregation-store';
+import { useThemeStore } from '~/app/_components/theme-store';
 
 function AggregationVariableToggles({
     useViewOptionsStore,
@@ -152,13 +153,26 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
     const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
     const allRoomInfos = selectedRoom ? allRoomDataBySceneName.get(selectedRoom) ?? null : null;
 
+    const theme = useThemeStore((s) => s.theme);
+
+    const gradientColor = useMemo(() => {
+        const color = mainRoomInfo?.color;
+        if (!color) {
+            return 'transparent';
+        }
+        if (theme === 'light') {
+            return color.copy({ opacity: 0.3, s: 0.2 }).toString();
+        } else {
+            return color.copy({ opacity: 0.1, s: 0.2 }).toString();
+        }
+    }, [mainRoomInfo?.color, theme]);
+
     return (
         <Card
             className="flex shrink grow basis-0 flex-col bg-gradient-to-b from-transparent to-transparent max-lg:basis-0 max-md:min-w-[300px]"
             style={
                 {
-                    '--tw-gradient-from':
-                        mainRoomInfo?.color?.copy?.({ opacity: 0.1, s: 0.2 })?.toString() ?? 'transparent',
+                    '--tw-gradient-from': gradientColor,
                     transition: '--tw-gradient-from .25s ease-in-out',
                 } as CSSProperties
             }

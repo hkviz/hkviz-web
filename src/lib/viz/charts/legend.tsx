@@ -50,7 +50,6 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
         const steps = [
             ...new Set(d3.range(0, roomColoring.var1Max + 0.0001, roomColoring.var1Max / 3).map((d) => Math.round(d))),
         ].sort((a, b) => a - b);
-        console.log(steps);
 
         d3.select(svg.current)
             .append('g')

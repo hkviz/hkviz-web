@@ -15,8 +15,8 @@ export function DataCollectionStudyParticipationForm({
     className?: string;
     formPositionText: string;
 }) {
-    const participate = useConsentFormStore((state) => state.participate);
-    const setParticipate = useConsentFormStore((state) => state.setParticipate);
+    const futureParticipate = useConsentFormStore((state) => state.futureParticipate);
+    const setFutureParticipate = useConsentFormStore((state) => state.setFutureParticipate);
     const keepDataAfterStudy = useConsentFormStore((state) => state.keepDataAfterStudy);
     const setKeepDataAfterStudy = useConsentFormStore((state) => state.setKeepDataAfterStudy);
 
@@ -37,8 +37,8 @@ export function DataCollectionStudyParticipationForm({
                 <CardHeader>
                     <CardTitle>Your preference has been saved</CardTitle>
                     <CardDescription>
-                        <p>{participate && 'Thank you for participating in the study.'}</p>
-                        <p>{!participate && 'Your data will not be used as part of the study.'}</p>
+                        <p>{futureParticipate && 'Thank you for participating in the study.'}</p>
+                        <p>{!futureParticipate && 'Your data will not be used as part of the study.'}</p>
                     </CardDescription>
                 </CardHeader>
             </Card>
@@ -47,17 +47,15 @@ export function DataCollectionStudyParticipationForm({
 
     const isMutating = saveMutation.isLoading;
 
-    const buttonText = participate
-        ? keepDataAfterStudy
-            ? 'Participate'
-            : 'Participate and delete account after study'
-        : 'Do not participate';
+    const buttonText = keepDataAfterStudy ? 'Participate' : 'Participate and delete account after study';
     return (
         <Card className={cn('w-[600px] max-w-[calc(100vw-2rem)]', className)}>
             <CardHeader className="px-4 pb-1 pt-4">
-                <CardTitle className="m-0">Can we use your gameplay data as part of a research study?</CardTitle>
+                <CardTitle className="m-0">
+                    By using the HKViz mod, you are providing your gameplay data to our research
+                </CardTitle>
                 <CardDescription>
-                    All data will always be reported in anonymized form.
+                    and are agreeing to the informed consent form {formPositionText}
                     {!!saveMutation.error && <p className="text-red-600">Storing your participation choice failed</p>}
                 </CardDescription>
             </CardHeader>
@@ -67,35 +65,30 @@ export function DataCollectionStudyParticipationForm({
                         <div className="grid w-full items-center gap-4">
                             <div className="flex items-center space-x-2">
                                 <Checkbox
-                                    id={id + 'participate'}
-                                    checked={participate}
-                                    onCheckedChange={setParticipate}
-                                />
-                                <label
-                                    htmlFor={id + 'participate'}
-                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                >
-                                    I want to participate and and agree to the Informed Consent Form {formPositionText}.
-                                </label>
-                            </div>
-
-                            <div
-                                className="flex items-center space-x-2"
-                                style={{ opacity: participate ? undefined : 0 }}
-                            >
-                                <Checkbox
                                     id={id + 'keep-account'}
-                                    checked={keepDataAfterStudy || !participate}
+                                    checked={keepDataAfterStudy}
                                     onCheckedChange={setKeepDataAfterStudy}
-                                    disabled={!participate}
-                                    tabIndex={participate ? undefined : -1}
                                 />
                                 <label
                                     htmlFor={id + 'keep-account'}
                                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
                                     Keep my gameplay data and account after the study has been conduced, so I can
-                                    continue to login and view my visualized data.
+                                    continue to login and view my visualized gameplay.
+                                </label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <Checkbox
+                                    id={id + 'future-participate'}
+                                    checked={futureParticipate}
+                                    onCheckedChange={setFutureParticipate}
+                                />
+                                <label
+                                    htmlFor={id + 'future-participate'}
+                                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                >
+                                    I consent to being contacted about potentially taking part in a follow-up user study
+                                    evaluating the tool and its visualizations.
                                 </label>
                             </div>
                         </div>
@@ -106,7 +99,7 @@ export function DataCollectionStudyParticipationForm({
                 <Button
                     disabled={isMutating}
                     onClick={handleAccept}
-                    variant={participate && !keepDataAfterStudy ? 'destructive' : 'default'}
+                    variant={keepDataAfterStudy ? 'default' : 'destructive'}
                 >
                     {buttonText}
                 </Button>

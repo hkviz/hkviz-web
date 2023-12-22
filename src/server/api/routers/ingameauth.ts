@@ -91,7 +91,6 @@ export const ingameAuthRouter = createTRPCRouter({
             .delete(ingameAuth)
             .where(and(eq(ingameAuth.id, input.id), isNull(ingameAuth.userId), isMax10MinutesOld()));
 
-        console.log(result);
         if (result.rowsAffected !== 1) {
             throw new Error('Unexpected session state');
         }

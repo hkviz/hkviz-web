@@ -102,7 +102,6 @@ function createViewOptionsStore() {
                     if (get().hoveredRoom === hoveredRoom) setHoveredRoom(null);
                 }
                 function setSelectedRoomPinned(selectedRoomPinned: boolean) {
-                    console.log(selectedRoomPinned);
                     set({ selectedRoomPinned });
                 }
                 function setSelectedRoomIfNotPinned(selectedRoom: string | null) {
