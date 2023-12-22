@@ -8,6 +8,7 @@ export default {
         './components/**/*.{ts,tsx}',
         './app/**/*.{ts,tsx}',
         './src/**/*.{ts,tsx}',
+        './src/**/*.mdx',
         './@/components/**/*.{ts,tsx}',
         './next.config.mjs',
     ],

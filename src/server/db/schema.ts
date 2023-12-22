@@ -33,8 +33,12 @@ export const users = mysqlTable('user', {
     image: varchar('image', { length: 255 }),
 });
 
-export const usersRelations = relations(users, ({ many }) => ({
+export const usersRelations = relations(users, ({ many, one }) => ({
     accounts: many(accounts),
+    dataCollectionStudyParticipation: one(dataCollectionStudyParticipations, {
+        fields: [users.id],
+        references: [dataCollectionStudyParticipations.userId],
+    }),
 }));
 
 export const accounts = mysqlTable(
@@ -60,6 +64,16 @@ export const accounts = mysqlTable(
 
 export const accountsRelations = relations(accounts, ({ one }) => ({
     user: one(users, { fields: [accounts.userId], references: [users.id] }),
+}));
+
+export const dataCollectionStudyParticipations = mysqlTable('userDataCollectionResearchParticipation', {
+    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
+    researchParticipation: boolean('researchParticipation').notNull(),
+    keepDataAfterStudyConducted: boolean('keepDataAfterStudyConducted').notNull(),
+});
+
+export const dataCollectionStudyParticipationRelations = relations(dataCollectionStudyParticipations, ({ one }) => ({
+    user: one(users, { fields: [dataCollectionStudyParticipations.userId], references: [users.id] }),
 }));
 
 export const sessions = mysqlTable(

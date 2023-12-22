@@ -1,14 +1,14 @@
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-export function MailLinkUnstyled(props: { className?: string }) {
+export function MailLinkUnstyled({ className, mail = 'hkviz@olii.dev' }: { className?: string; mail?: string }) {
     return (
-        <a className={props.className} href="mailto:hkviz@olii.dev">
-            hkviz@olii.dev
+        <a className={className} href={`mailto:${mail}`}>
+            {mail}
         </a>
     );
 }
 
-export function MailLink() {
-    return <MailLinkUnstyled className={cn(buttonVariants({ variant: 'link' }), 'p-0')} />;
+export function MailLink({ className, mail }: { className?: string; mail?: string }) {
+    return <MailLinkUnstyled className={cn(buttonVariants({ variant: 'link' }), 'p-0', className)} mail={mail} />;
 }

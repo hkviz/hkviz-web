@@ -1,0 +1,70 @@
+import { MdxLayout, MdxInnerWrapper, MdxOuterWrapper } from '../_components/mdx-layout';
+import { MailLinkUnstyled } from '../_components/mail-link';
+import jkuLogo from '../../../public/jku/JKU_Logo.svg';
+import { DataCollectionStudyParticipationForm, FadeBackground } from './_components';
+import Link from 'next/link';
+
+<FadeBackground className="sticky top-[var(--main-nav-height)] z-10 h-fit pb-4">
+    <DataCollectionStudyParticipationForm className=" mx-auto mt-2" />
+</FadeBackground>
+
+<MdxInnerWrapper className="hide-hash-links">
+
+# Developing Effective Map-based Analytics for Video Games Research Study
+
+## My details
+
+I am Oliver Gstöttenbauer, a student in Artificial Intelligence at the Johannes Kepler University Linz, Austria.
+I am conducting this research project as part of my bachelor thesis.
+You can contact me at <MailLinkUnstyled /> or on Discord @olivergrack.
+
+<Image src={jkuLogo} alt="Johannes Kepler University Logo" className="mx-auto w-[15rem] max-w-full dark:invert" />
+
+## Goal of the research
+
+The aim of our research is to investigate data visualization techniques used in players metrics.
+Thus, we want to gather further information on how they are designed, interpreted, and used.
+We are interested in the following questions:
+
+-   How do players / game developers interpret our data visualizations? Which conclusions can be drawn?
+-   Which visualizations are helpful for players / game developers for which scenarios?
+-   Which visualizations are creating difficulties for players / game developers?
+-   How do players use data visualizations to improve their gameplay?
+-   How do players use data visualizations to compare their gameplay to others?
+-   What aspects of the game are most important to visualize for players / game developers?
+
+Your participation in this study will contribute to the advancement of knowledge on data visualization techniques in games, especially Metroidvania games.
+
+## Informed Consent Form: Please read carefully.
+
+In this study, you will provide us with your gameplay data by using the mod to collect and upload data.
+You have the opportunity to ask further questions before / after using the mod. The following information relates to the data collected by the mod.
+All the information that we collect about you is kept strictly confidential. Confidentiality will be respected subject to legal constraints and professional guidelines.
+Visualizations of your gameplay data may appear in academic publications and may be shown to participants of user study evaluating the visualization.
+
+Your gameplay data will be deleted at the end of the study unless you choose to keep your account for your personal use.
+
+Visualizations will be anonymised and you will not be identified while visualizations are shown to other study participants and in any ensuing reports or publications.
+
+Your personal data will be processed and kept only for so long as it is required to conduct this research i.e. until the end of July 2024.
+Your contact details have been and will only be used in order to contact you for the purpose of this study.
+
+Should you have an issue or question, please contact Oliver Gstöttenbauer (<MailLinkUnstyled />),
+Prof. XYZ (<MailLinkUnstyled mail="xyz@jku.at" />) or Dr. XYZ(<MailLinkUnstyled mail="xyz@jku.at" />).
+
+## Consent Form:
+
+By participating, you are agreeing to the following statements, and thus, provide your consent to participating in the study:
+
+-   I confirm that I have read and understood the information provided above and what is expected of me.
+    I had the opportunity to ask questions via the contact options above or in person, which have been answered to my satisfaction.
+-   I understand that I can withdraw from the study at any point, and will be able to withdraw my data up to two weeks after the study.
+-   I understand that any data gathered in this study will be stored securely in databases of our third party providers. The anonymised research data will be used by researchers associated with this project.
+-   I understand that I will not benefit financially from this study or from any possible outcome that may result in the future.
+-   We do not foresee any risk in participating in the study.
+
+</MdxInnerWrapper>
+
+export default function MDXPage({ children }) {
+    return <MdxOuterWrapper>{children}</MdxOuterWrapper>;
+}

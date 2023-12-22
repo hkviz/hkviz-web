@@ -27,7 +27,7 @@ const rehypeAutolinkOptions = {
 const configWithMdx = withMDX({
     extension: /\.mdx?$/,
     options: {
-        remarkPlugins: [remarkToc],
+        remarkPlugins: [remarkToc, remarkGfm],
         rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, rehypeAutolinkOptions]],
     },
 })(config);

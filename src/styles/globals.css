@@ -229,3 +229,11 @@
     content: '#';
     transition: color 0.2s ease-in-out;
 }
+
+:root {
+    --scroll-margin-top: calc(0.5rem + var(--main-nav-height, 0));
+}
+
+.hide-hash-links .hash-link {
+    display: none;
+}
