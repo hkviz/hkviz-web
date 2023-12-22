@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
-import React, { useId, useState } from 'react';
+import React, { useId } from 'react';
 import { api } from '~/trpc/react';
 import { useConsentFormStore } from './_form_store';
 
@@ -23,6 +23,7 @@ export function DataCollectionStudyParticipationForm({
     const id = useId();
 
     const saveMutation = api.account.acceptAccountRemovalRequest.useMutation();
+    // eslint-disable-next-line @typescript-eslint/require-await
     const handleAccept = async () => {
         saveMutation.reset();
         // await saveMutation.mutateAsync({
@@ -93,8 +94,8 @@ export function DataCollectionStudyParticipationForm({
                                     htmlFor={id + 'keep-account'}
                                     className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                 >
-                                    Keep my gameplay data after the study has been conduced, so I can continue to login
-                                    and view my visualized data.
+                                    Keep my gameplay data and account after the study has been conduced, so I can
+                                    continue to login and view my visualized data.
                                 </label>
                             </div>
                         </div>
