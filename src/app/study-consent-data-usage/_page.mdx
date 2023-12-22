@@ -1,11 +1,5 @@
-import { MdxLayout, MdxInnerWrapper, MdxOuterWrapper } from '../_components/mdx-layout';
 import { MailLinkUnstyled } from '../_components/mail-link';
 import jkuLogo from '../../../public/jku/JKU_Logo.svg';
-import { DataCollectionStudyParticipationForm } from './_server_components';
-
-<DataCollectionStudyParticipationForm className="mx-auto my-[10rem]" formPositionText="bellow" />
-
-<MdxInnerWrapper>
 
 # Developing Effective Map-based Analytics for Video Games Data Collection Study
 
@@ -54,11 +48,3 @@ By participating, you are agreeing to the following statements, and thus, provid
 -   I understand that I will not benefit financially from this study or from any possible outcome that may result in the future.
 -   I understand that my gameplay data will be used in anonymized form for academic publications and may be shown to participants of user study evaluating the visualization.
 -   We do not foresee any risk in participating in the study.
-
-</MdxInnerWrapper>
-
-<DataCollectionStudyParticipationForm className="mx-auto mb-[20rem] mt-[10rem]" formPositionText="above" />
-
-export default function MDXPage({ children }) {
-    return <MdxOuterWrapper>{children}</MdxOuterWrapper>;
-}
