@@ -6,7 +6,7 @@ import { AuthNeeded } from '../_components/auth-needed';
 import { MdxInnerWrapper, MdxOuterWrapper } from '../_components/mdx-layout';
 import MdxContent from './_page.mdx';
 
-export async function DataCollectionStudyParticipationForm({
+async function DataCollectionStudyParticipationForm({
     className,
     formPositionText,
 }: {
