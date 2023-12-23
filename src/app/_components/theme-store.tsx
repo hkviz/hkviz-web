@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import { createCookie } from '~/lib/cookies';
+import { getThemeColorByTheme } from '~/lib/theme';
 
 export type Theme = 'light' | 'dark';
 
@@ -33,6 +34,7 @@ export const useThemeStore = create(
             } else {
                 root.classList.remove('dark');
             }
+            document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getThemeColorByTheme(theme));
         }
         function toggleTheme() {
             setTheme(get().theme === 'dark' ? 'light' : 'dark');

@@ -1,4 +1,8 @@
-export function FaviconsHead() {
+import { getThemeColorByTheme } from '~/lib/theme';
+
+export function FaviconsHead({ theme }: { theme: 'light' | 'dark' }) {
+    const themeColor = getThemeColorByTheme(theme);
+
     return (
         <>
             <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -7,7 +11,7 @@ export function FaviconsHead() {
             <link rel="icon" type="image/png" sizes="48x48" href="/favicons/favicon-48x48.png" />
             <link rel="manifest" href="/manifest.json" />
             <meta name="mobile-web-app-capable" content="yes" />
-            <meta name="theme-color" content="#030712" />
+            <meta name="theme-color" content={themeColor} />
             <meta name="application-name" content="HKViz" />
             <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
             <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />

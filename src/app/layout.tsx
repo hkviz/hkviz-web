@@ -20,11 +20,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     const session = await getServerAuthSession();
 
     const isDarkTheme = cookies().get('theme')?.value !== 'light';
+    const theme = isDarkTheme ? 'dark' : 'light';
 
     return (
         <html lang="en">
             <head>
-                <FaviconsHead />
+                <FaviconsHead theme={theme} />
             </head>
             <body
                 className={`${isDarkTheme ? 'dark' : ''} font-sans ${notoSans.variable} ${cinzel.variable} ${
@@ -34,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <ClientContext>
                     <TRPCReactProvider cookies={cookies().toString()}>
                         <div className="flex min-h-[100dvh] flex-col">
-                            <MainNav session={session} theme={isDarkTheme ? 'dark' : 'light'} />
+                            <MainNav session={session} theme={theme} />
                             {children}
                         </div>
                     </TRPCReactProvider>
