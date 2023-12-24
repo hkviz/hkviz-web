@@ -14,7 +14,7 @@ export default async function SettingsPage() {
 
     return (
         <ContentCenterWrapper>
-            <div className="w-[600px]">
+            <div className="max-w-[600px]">
                 <h1 className="mb-4 pl-2 text-3xl font-semibold">Settings</h1>
                 <Card>
                     <div className="p-6">
