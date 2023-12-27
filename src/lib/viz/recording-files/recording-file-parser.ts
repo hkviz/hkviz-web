@@ -1,4 +1,4 @@
-import { typeCheckNever } from '~/lib/utils';
+import { raise, typeCheckNever } from '~/lib/utils';
 import { heroStateFields } from '../hero-state/hero-states';
 import { playerDataFields } from '../player-data/player-data';
 import { type RecordingFileVersion, isKnownRecordingFileVersion } from '../types/recording-file-version';
@@ -23,12 +23,24 @@ import {
     type RecordingEvent,
 } from './recording';
 
-function parseFloatAnyComma(value: string) {
+// Do not use for recording file version >= 1.0.0
+// any newer version will always log using . instead of ,
+function parseFloatAnyCommaVersion_v0(value: string) {
     return parseFloat(value.replace(',', '.'));
 }
 
-function parseVector2(x: string, y: string) {
-    return new Vector2(parseFloatAnyComma(x), parseFloatAnyComma(y));
+// Do not use for recording file version >= 1.0.0
+// any newer version will log vectors using 0.0,0.0 format instead of 0[.,]0;0[.,]0
+function parseVector2_v0(x: string, y: string) {
+    return new Vector2(parseFloatAnyCommaVersion_v0(x), parseFloatAnyCommaVersion_v0(y));
+}
+
+function parseVector2_v1(str: string, factor: number) {
+    const [x, y] = str.split(',');
+    return new Vector2(
+        parseFloat(x ?? raise(new Error('Could not parse vector no value for x'))) * factor,
+        parseFloat(y ?? raise(new Error('Could not parse vector no value for y'))) * factor,
+    );
 }
 
 export function parseRecordingFile(recordingFileContent: string, partNumber: number): ParsedRecording {
@@ -144,15 +156,19 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 }
                 case EVENT_PREFIXES.ROOM_DIMENSIONS: {
                     if (lastSceneEvent) {
-                        lastSceneEvent.originOffset = parseVector2(args[0]!, args[1]!);
-                        lastSceneEvent.sceneSize = parseVector2(args[2]!, args[3]!);
+                        lastSceneEvent.originOffset = parseVector2_v0(args[0]!, args[1]!);
+                        lastSceneEvent.sceneSize = parseVector2_v0(args[2]!, args[3]!);
                     }
                     break;
                 }
                 case EVENT_PREFIXES.ENTITY_POSITIONS: {
                     if (lastSceneEvent) {
                         const position: Vector2 | undefined =
-                            args[0] === '=' ? previousPlayerPosition : parseVector2(args[0]!, args[1]!);
+                            args[0] === '='
+                                ? previousPlayerPosition
+                                : currentRecordingFileVersion === '0.0.0'
+                                  ? parseVector2_v0(args[0]!, args[1]!)
+                                  : parseVector2_v1(args[0]!, 1 / 10);
                         if (!position) {
                             throw new Error('Could not assign player position to player position event');
                         }
@@ -181,6 +197,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     if (!isKnownRecordingFileVersion(version)) {
                         throw new Error(`Unknown recording file version ${version}`);
                     }
+                    currentRecordingFileVersion = version;
 
                     events.push(
                         new RecordingFileVersionEvent({
