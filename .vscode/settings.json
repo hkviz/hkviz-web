@@ -2,5 +2,8 @@
     "editor.formatOnSave": true,
     "notebook.formatOnSave.enabled": false,
     "editor.formatOnType": true,
-    "prettier.configPath": "prettier.config.mjs"
+    "prettier.configPath": "prettier.config.mjs",
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "eslint.enable": true,
+    "eslint.format.enable": true
 }
