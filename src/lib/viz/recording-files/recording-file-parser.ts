@@ -35,7 +35,7 @@ function parseVector2_v0(x: string, y: string) {
     return new Vector2(parseFloatAnyCommaVersion_v0(x), parseFloatAnyCommaVersion_v0(y));
 }
 
-function parseVector2_v1(str: string, factor: number) {
+function parseVector2_v1(str: string, factor = 1) {
     const [x, y] = str.split(',');
     return new Vector2(
         parseFloat(x ?? raise(new Error('Could not parse vector no value for x'))) * factor,
@@ -54,7 +54,9 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
     let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
     let previousTimestamp: number | undefined = undefined;
 
-    const currentRecordingFileVersion: RecordingFileVersion | undefined = undefined;
+    // defaults to 0.0.0 since in early version of the mod, the version was only
+    // written at the beginning of a session, not for each part
+    let currentRecordingFileVersion: RecordingFileVersion = '0.0.0';
 
     LINE_LOOP: for (const line of lines) {
         try {
@@ -156,8 +158,13 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 }
                 case EVENT_PREFIXES.ROOM_DIMENSIONS: {
                     if (lastSceneEvent) {
-                        lastSceneEvent.originOffset = parseVector2_v0(args[0]!, args[1]!);
-                        lastSceneEvent.sceneSize = parseVector2_v0(args[2]!, args[3]!);
+                        if (currentRecordingFileVersion === '0.0.0') {
+                            lastSceneEvent.originOffset = parseVector2_v0(args[0]!, args[1]!);
+                            lastSceneEvent.sceneSize = parseVector2_v0(args[2]!, args[3]!);
+                        } else {
+                            lastSceneEvent.originOffset = parseVector2_v1(args[0]!);
+                            lastSceneEvent.sceneSize = parseVector2_v1(args[1]!);
+                        }
                     }
                     break;
                 }
@@ -177,17 +184,20 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                             timestamp,
                             position,
                             sceneEvent: lastSceneEvent,
-                            previousPlayerPositionEvent: previousPlayerPositionEvent,
                         });
                         events.push(previousPlayerPositionEvent);
                     }
+                    break;
+                }
+                case EVENT_PREFIXES.DEPRECATED_HOLLOW_KNIGHT_VERSION: {
+                    // Not used. Correct version logged as part of player data
                     break;
                 }
                 case EVENT_PREFIXES.HZVIZ_MOD_VERSION: {
                     // TODO
                     break;
                 }
-                case EVENT_PREFIXES.HOLLOWKNIGHT_VERSION: {
+                case EVENT_PREFIXES.MODDING_INFO: {
                     // TODO
                     break;
                 }
@@ -198,6 +208,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                         throw new Error(`Unknown recording file version ${version}`);
                     }
                     currentRecordingFileVersion = version;
+                    console.log('changed version', currentRecordingFileVersion);
 
                     events.push(
                         new RecordingFileVersionEvent({
@@ -273,7 +284,10 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 }
             }
         } catch (e) {
-            console.error(`Error while parsing line: |${line}|`, e);
+            console.error(
+                `Error while parsing line: |${line}| using file version ${currentRecordingFileVersion} in part number ${partNumber}`,
+                e,
+            );
             parsingErrors++;
         }
     }

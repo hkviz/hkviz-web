@@ -38,26 +38,22 @@ export class SceneEvent extends RecordingEventBase {
     }
 }
 
-type PlayerPositionEventOptions = RecordingEventBaseOptions &
-    Pick<PlayerPositionEvent, 'position' | 'sceneEvent' | 'previousPlayerPositionEvent'>;
+type PlayerPositionEventOptions = RecordingEventBaseOptions & Pick<PlayerPositionEvent, 'position' | 'sceneEvent'>;
 export class PlayerPositionEvent extends RecordingEventBase {
     public position: Vector2;
     public sceneEvent: SceneEvent;
-    public previousPlayerPositionEvent: PlayerPositionEvent | null;
+    public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
 
     public mapPosition: Vector2 | null;
-    public previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null;
+    public previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
+    public mapDistanceToPrevious: number | null = null;
 
     constructor(options: PlayerPositionEventOptions) {
         super(options);
         this.position = options.position;
         this.sceneEvent = options.sceneEvent;
-        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
 
         this.mapPosition = playerPositionToMapPosition(this.position, this.sceneEvent) ?? null;
-        this.previousPlayerPositionEventWithMapPosition = this.previousPlayerPositionEvent?.mapPosition
-            ? this.previousPlayerPositionEvent
-            : this.previousPlayerPositionEvent?.previousPlayerPositionEventWithMapPosition ?? null;
     }
 }
 

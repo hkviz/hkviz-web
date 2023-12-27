@@ -15,8 +15,12 @@ export const EVENT_PREFIXES = {
     ROOM_DIMENSIONS: 'S',
     SCENE_CHANGE: 's',
     HZVIZ_MOD_VERSION: 'vizmodv',
-    HOLLOWKNIGHT_VERSION: 'hkv',
+    MODDING_INFO: 'mi',
     RECORDING_FILE_VERSION: 'rfv',
+
+    // not logged since 1.0.0 since correct version is logged as part of player data
+    // but still here to avoid unknown lines errors for old recordings
+    DEPRECATED_HOLLOW_KNIGHT_VERSION: 'hkv',
     RECORDING_ID: 'rid',
     SESSION_END: 'send',
 
@@ -24,9 +28,9 @@ export const EVENT_PREFIXES = {
     SPELL_UP: 'sup',
     SPELL_DOWN: 'sdn',
 
-    NAIL_ART_CYCLONE: 'nac',
-    NAIL_ART_D_SLASH: 'nad',
-    NAIL_ART_G_SLASH: 'nag',
+    NAIL_ART_CYCLONE: 'nc',
+    NAIL_ART_D_SLASH: 'nd',
+    NAIL_ART_G_SLASH: 'ng',
 
     SUPER_DASH: 'sd',
 

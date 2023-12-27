@@ -25,4 +25,7 @@ export class Vector2 {
     public minElement(): number {
         return Math.min(this.x, this.y);
     }
+    public distanceTo(other: Vector2): number {
+        return Math.sqrt((this.x - other.x) ** 2 + (this.y - other.y) ** 2);
+    }
 }

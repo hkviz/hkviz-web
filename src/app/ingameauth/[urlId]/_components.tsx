@@ -5,15 +5,7 @@ import { Card, CardContent, CardFooter, CardTitle, CardHeader, CardDescription }
 import { useCallback } from 'react';
 import { api } from '~/trpc/react';
 
-export function IngameAuthCard({
-    ingameAuthId,
-    deviceName,
-    userName,
-}: {
-    ingameAuthId: string;
-    deviceName: string;
-    userName: string;
-}) {
+export function IngameAuthCard({ ingameAuthId, userName }: { ingameAuthId: string; userName: string }) {
     const allowMutation = api.ingameAuth.allowLogin.useMutation({
         onError: (error) => {
             console.error('allowMutation', error);
@@ -65,8 +57,10 @@ export function IngameAuthCard({
     return (
         <Card className="max-w-[500px]">
             <CardHeader>
-                <CardTitle>Allow device {deviceName} to upload play data?</CardTitle>
-                <CardDescription>Data will be uploaded to the account {userName}</CardDescription>
+                <CardTitle>Allow this device to upload play data?</CardTitle>
+                <CardDescription>
+                    Data will be uploaded to {userName ? 'the account ' + userName : 'your account'}
+                </CardDescription>
             </CardHeader>
             <CardContent>
                 {!!allowMutation.error && <p className="text-red-600">Could not login</p>}

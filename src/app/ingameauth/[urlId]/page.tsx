@@ -49,7 +49,6 @@ export default async function IngameAuthPage({ params }: { params: { urlId: stri
         <ContentCenterWrapper>
             <IngameAuthCard
                 ingameAuthId={ingameAuth.id}
-                deviceName={ingameAuth.name}
                 userName={session.user.name ?? 'unnamed account'}
             />
         </ContentCenterWrapper>

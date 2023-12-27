@@ -21,7 +21,9 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 
     const previousPlayerDataEventsByField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>();
 
-    let lastPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
+    let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+    let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
+    let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
 
     for (const recording of recordings.sort((a, b) => a.partNumber! - b.partNumber!)) {
         for (const event of recording.events) {
@@ -41,16 +43,27 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
             } else {
                 if (event instanceof PlayerPositionEvent) {
                     const playerPositionChanged =
-                        lastPositionEventWithChangedPosition?.position?.equals(event.position) !== true;
+                        previousPositionEventWithChangedPosition?.position?.equals(event.position) !== true;
                     if (playerPositionChanged) {
-                        lastPositionEventWithChangedPosition = event;
+                        previousPositionEventWithChangedPosition = event;
                     }
+                    event.previousPlayerPositionEvent = previousPlayerPositionEvent;
+                    event.previousPlayerPositionEventWithMapPosition = previousPlayerPositionEventWithMapPosition;
+                    if (event.mapPosition != null && previousPlayerPositionEventWithMapPosition?.mapPosition != null) {
+                        event.mapDistanceToPrevious = previousPlayerPositionEventWithMapPosition.mapPosition.distanceTo(
+                            event.mapPosition,
+                        );
+                    }
+                    if (event.mapPosition != null) {
+                        previousPlayerPositionEventWithMapPosition = event;
+                    }
+                    previousPlayerPositionEvent = event;
                 }
 
                 if (!isPaused) {
                     const diff = event.timestamp - lastTimestamp;
                     const msSinceLastPositionChange =
-                        event.timestamp - (lastPositionEventWithChangedPosition?.timestamp ?? 0);
+                        event.timestamp - (previousPositionEventWithChangedPosition?.timestamp ?? 0);
 
                     // starting with 10 seconds of no events, the time is not counted
                     // this might happen, because sb closed their laptop / turned off their pc,

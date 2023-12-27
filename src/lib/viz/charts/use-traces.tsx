@@ -88,7 +88,10 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 // .attr('stroke', 'red')
                 .attr('class', 'text-rose-600 stroke-current')
                 .attr('fill', 'none')
-                .attr('data-ms-into-game', (d) => d.msIntoGame);
+                .attr('data-ms-into-game', (d) => d.msIntoGame)
+                .style('stroke-dasharray', (d) =>
+                    d.mapDistanceToPrevious != null && d.mapDistanceToPrevious > 0.5 * SCALE_FACTOR ? '1, 1' : 'none',
+                );
 
             return {
                 minMsIntoGame: chunkEvents[0]!.msIntoGame,
