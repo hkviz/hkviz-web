@@ -1,6 +1,6 @@
-import * as d3 from 'd3';
-import { RefObject, useEffect, useRef } from 'react';
-import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import type * as d3 from 'd3';
+import { type RefObject, useEffect, useRef } from 'react';
+import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { SCALE_FACTOR } from '../map-data/rooms';
 import { PlayerPositionEvent } from '../recording-files/recording';
 

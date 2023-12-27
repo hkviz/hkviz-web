@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import { CombinedRecording } from '~/lib/viz/recording-files/recording';
-import { AggregationVariable, type AggregatedRunData } from '~/lib/viz/recording-files/run-aggregation-store';
+import { type CombinedRecording } from '~/lib/viz/recording-files/recording';
+import { type AggregationVariable, type AggregatedRunData } from '~/lib/viz/recording-files/run-aggregation-store';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type TraceVisibility = 'all' | 'animated' | 'hide';

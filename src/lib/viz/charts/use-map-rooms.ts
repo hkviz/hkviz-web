@@ -1,8 +1,8 @@
 import { type RefObject, useEffect, useId, useRef, use, useMemo } from 'react';
-import { RoomSpriteVariant, type RoomInfo } from '../map-data/rooms';
+import { type RoomSpriteVariant, type RoomInfo } from '../map-data/rooms';
 import useEvent from 'react-use-event-hook';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
-import * as d3 from 'd3';
+import type * as d3 from 'd3';
 import { useRoomColoring } from './use-room-coloring';
 import { playerDataFields } from '../player-data/player-data';
 import { assertNever } from '~/lib/utils';

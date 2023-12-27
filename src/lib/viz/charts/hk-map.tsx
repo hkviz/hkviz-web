@@ -3,9 +3,9 @@
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { useEffect, useId, useMemo, useRef } from 'react';
-import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
-import { RoomInfo, roomData } from '../map-data/rooms';
+import { type RoomInfo, roomData } from '../map-data/rooms';
 import { useMapRooms } from './use-map-rooms';
 import { useMapTraces } from './use-traces';
 import useEvent from 'react-use-event-hook';

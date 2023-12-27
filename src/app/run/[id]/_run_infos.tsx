@@ -1,7 +1,7 @@
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { RelativeDate } from '../../_components/date';
 import { type Session } from 'next-auth';
-import { AppRouterOutput } from '~/server/api/types';
+import { type AppRouterOutput } from '~/server/api/types';
 
 interface Props {
     session: Session | null;

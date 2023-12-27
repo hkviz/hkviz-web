@@ -42,7 +42,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
     let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
     let previousTimestamp: number | undefined = undefined;
 
-    let currentRecordingFileVersion: RecordingFileVersion | undefined = undefined;
+    const currentRecordingFileVersion: RecordingFileVersion | undefined = undefined;
 
     LINE_LOOP: for (const line of lines) {
         try {

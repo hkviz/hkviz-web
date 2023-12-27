@@ -1,6 +1,6 @@
 import { createTransport } from 'nodemailer';
 import type Mail from 'nodemailer/lib/mailer';
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
+import type SMTPTransport from 'nodemailer/lib/smtp-transport';
 import { env } from '~/env.mjs';
 
 const transporterOptions: SMTPTransport.Options = {

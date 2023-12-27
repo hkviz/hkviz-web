@@ -3,11 +3,11 @@
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { useEffect, useId, useMemo, useRef } from 'react';
-import { RoomInfo } from '../map-data/rooms';
+import { type RoomInfo } from '../map-data/rooms';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
 import { useMapRooms } from './use-map-rooms';
-import { UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 
 export interface HKMapProps {
     className?: string;
