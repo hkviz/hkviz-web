@@ -1,8 +1,9 @@
 import { raise } from '~/lib/utils';
-import { PlayerDataFieldValue, type PlayerDataField } from '../player-data/player-data';
-import type { Vector2 } from '../types/vector2';
-import { HeroStateField } from '../hero-state/hero-states';
+import { type HeroStateField } from '../hero-state/hero-states';
 import { playerPositionToMapPosition } from '../map-data/player-position';
+import { type PlayerDataFieldValue, type PlayerDataField } from '../player-data/player-data';
+import { type RecordingFileVersion } from '../types/recording-file-version';
+import type { Vector2 } from '../types/vector2';
 
 type RecordingEventBaseOptions = Pick<RecordingEventBase, 'timestamp'>;
 abstract class RecordingEventBase {
@@ -15,7 +16,7 @@ abstract class RecordingEventBase {
 
 type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
 export class RecordingFileVersionEvent extends RecordingEventBase {
-    public version: string;
+    public version: RecordingFileVersion;
 
     constructor(options: RecordingFileVersionEventOptions) {
         super(options);

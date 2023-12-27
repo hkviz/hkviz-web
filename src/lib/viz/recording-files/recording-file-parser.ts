@@ -1,5 +1,9 @@
 import { typeCheckNever } from '~/lib/utils';
+import { heroStateFields } from '../hero-state/hero-states';
+import { playerDataFields } from '../player-data/player-data';
+import { type RecordingFileVersion, isKnownRecordingFileVersion } from '../types/recording-file-version';
 import { Vector2 } from '../types/vector2';
+
 import {
     EVENT_PREFIXES,
     PARTIAL_EVENT_PREFIXES,
@@ -7,20 +11,17 @@ import {
     type PartialEventPrefix,
 } from './event-type-prefixes';
 import {
+    HeroStateEvent,
     ParsedRecording,
+    PlayerDataEvent,
     PlayerPositionEvent,
     RecordingFileVersionEvent,
     SceneEvent,
-    type RecordingEvent,
-    HeroStateEvent,
-    PlayerDataEvent,
+    SpellDownEvent,
     SpellFireballEvent,
     SpellUpEvent,
-    SpellDownEvent,
+    type RecordingEvent,
 } from './recording';
-import { heroStateFields } from '../hero-state/hero-states';
-import { raise } from '~/lib/utils';
-import { playerDataFields } from '../player-data/player-data';
 
 function parseFloatAnyComma(value: string) {
     return parseFloat(value.replace(',', '.'));
@@ -40,6 +41,8 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
     let previousPlayerPosition: Vector2 | undefined = undefined;
     let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
     let previousTimestamp: number | undefined = undefined;
+
+    let currentRecordingFileVersion: RecordingFileVersion | undefined = undefined;
 
     LINE_LOOP: for (const line of lines) {
         try {
@@ -146,7 +149,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     }
                     break;
                 }
-                case EVENT_PREFIXES.PLAYER_POSITION: {
+                case EVENT_PREFIXES.ENTITY_POSITIONS: {
                     if (lastSceneEvent) {
                         const position: Vector2 | undefined =
                             args[0] === '=' ? previousPlayerPosition : parseVector2(args[0]!, args[1]!);
@@ -173,10 +176,16 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     break;
                 }
                 case EVENT_PREFIXES.RECORDING_FILE_VERSION: {
+                    const version = args[0]!;
+
+                    if (!isKnownRecordingFileVersion(version)) {
+                        throw new Error(`Unknown recording file version ${version}`);
+                    }
+
                     events.push(
                         new RecordingFileVersionEvent({
                             timestamp,
-                            version: args[0]!,
+                            version: version as RecordingFileVersion,
                         }),
                     );
                     break;
@@ -229,6 +238,14 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     break;
                 }
                 case EVENT_PREFIXES.SUPER_DASH: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.ENEMY_START: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.ENEMY_HEALTH: {
                     // TODO
                     break;
                 }

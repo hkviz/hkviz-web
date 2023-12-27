@@ -11,7 +11,7 @@ export type PartialEventPrefix = (typeof PARTIAL_EVENT_PREFIXES)[keyof typeof PA
 
 export const EVENT_PREFIXES = {
     // safe to have other prefixes with same start
-    PLAYER_POSITION: '', // no prefix = position
+    ENTITY_POSITIONS: '', // no prefix = positions
     ROOM_DIMENSIONS: 'S',
     SCENE_CHANGE: 's',
     HZVIZ_MOD_VERSION: 'vizmodv',
@@ -29,6 +29,9 @@ export const EVENT_PREFIXES = {
     NAIL_ART_G_SLASH: 'nag',
 
     SUPER_DASH: 'sd',
+
+    ENEMY_START: 'e',
+    ENEMY_HEALTH: 'E',
 } as const;
 
 export type EventPrefix = (typeof EVENT_PREFIXES)[keyof typeof EVENT_PREFIXES];
