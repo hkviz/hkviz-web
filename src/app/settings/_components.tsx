@@ -36,7 +36,7 @@ export function KeepAccountSettingsOption({
             <div>
                 <h3 className="text-lg font-semibold">Your account is set to be deleted once our study is conducted</h3>
             </div>
-            <Button className="shrink-0" variant="destructive" onClick={handleKeepClick}>
+            <Button className="shrink-0" variant="destructive" onClick={handleKeepClick} disabled={saveMutation.isLoading}>
                 Keep account
             </Button>
         </div>
