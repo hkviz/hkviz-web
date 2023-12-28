@@ -1,8 +1,11 @@
 import { relations, sql } from 'drizzle-orm';
 import {
+    bigint,
     boolean,
+    double,
     index,
     int,
+    mysqlEnum,
     mysqlTableCreator,
     primaryKey,
     text,
@@ -11,6 +14,7 @@ import {
     varchar,
 } from 'drizzle-orm/mysql-core';
 import { type AdapterAccount } from 'next-auth/adapters';
+import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 
 const UUID_LENGTH = 36;
 
@@ -141,6 +145,24 @@ export const runFiles = mysqlTable('runfile', {
         .notNull(),
     updatedAt: timestamp('updatedAt').onUpdateNow(),
     version: int('version').notNull().default(0),
+
+    // meta data, so it can easily be displayed in the UI without parsing recording files
+    hkVersion: varchar('hk_version', { length: 64 }),
+    playTime: double('play_time'),
+    maxHealth: int('max_health'),
+    mpReserveMax: int('mp_reserve_max'),
+    geo: int('geo'),
+    dreamOrbs: int('dream_orbs'),
+    permadeathMode: boolean('permadeath_mode'),
+    mapZone: mysqlEnum('map_zone', mapZoneSchema.options),
+    killedHollowKnight: boolean('killed_hollow_knight'),
+    killedFinalBoss: boolean('killed_final_boss'),
+    killedVoidIdol: boolean('killed_void_idol'),
+    completionPercentage: int('completion_percentage'),
+    unlockedCompletionRate: boolean('unlocked_completion_rate'),
+
+    startedAt: timestamp('started_at'),
+    endedAt: timestamp('ended_at'),
 });
 
 export const hkRunsRelations = relations(runs, ({ one, many }) => ({

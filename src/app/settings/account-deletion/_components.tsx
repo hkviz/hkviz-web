@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { api } from '~/trpc/react';
-import { MailLink } from '../_components/mail-link';
+import { MailLink } from '../../_components/mail-link';
 
 export function AccountDeletionForm(props: { removalRequestId: string }) {
     const acceptRemovalRequestMutation = api.account.acceptAccountRemovalRequest.useMutation();
@@ -19,9 +19,11 @@ export function AccountDeletionForm(props: { removalRequestId: string }) {
         return (
             <Card className="max-w-[calc(100%-2rem] w-[600px]">
                 <CardHeader>
-                    <CardTitle>Account deletion requested</CardTitle>
+                    <CardTitle>Account marked for deletion</CardTitle>
                     <CardDescription>
-                        <p>Your account deletion has been requested. All your data will be deleted within 30 days.</p>
+                        <p>
+                            All your data will be deleted within 30 days.
+                        </p>
                     </CardDescription>
                 </CardHeader>
                 <CardFooter className="flex justify-end">
@@ -40,7 +42,7 @@ export function AccountDeletionForm(props: { removalRequestId: string }) {
             <CardHeader>
                 <CardTitle>Delete your account</CardTitle>
                 <CardDescription>
-                    Request your account deletion. All your data associated with your account will be deleted within 30
+                    Mark your account for deletion. All your data associated with your account will be deleted within 30
                     days.
                     {!!acceptRemovalRequestMutation.error && (
                         <p className="text-red-600">
@@ -52,7 +54,7 @@ export function AccountDeletionForm(props: { removalRequestId: string }) {
             </CardHeader>
             <CardFooter className="flex justify-end">
                 <Button disabled={isMutating} onClick={handleAccept} variant="destructive">
-                    Request account deletion
+                    Delete account
                 </Button>
             </CardFooter>
         </Card>

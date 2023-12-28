@@ -31,6 +31,7 @@ const config = {
                 checksVoidReturn: { attributes: false },
             },
         ],
+        'prettier/prettier': 'warn',
     },
 };
 

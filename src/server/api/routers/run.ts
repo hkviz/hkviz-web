@@ -9,6 +9,23 @@ import { TRPCError } from '@trpc/server';
 import { type DB } from '~/server/db';
 import { runFiles, runs } from '~/server/db/schema';
 import { getUserIdFromIngameSession } from './ingameauth';
+import { mapZoneSchema } from '~/lib/viz/types/mapZone';
+
+const runFilesMetaFields = {
+    hkVersion: true,
+    playTime: true,
+    maxHealth: true,
+    mpReserveMax: true,
+    geo: true,
+    dreamOrbs: true,
+    permadeathMode: true,
+    mapZone: true,
+    killedHollowKnight: true,
+    killedFinalBoss: true,
+    killedVoidIdol: true,
+    completionPercentage: true,
+    unlockedCompletionRate: true,
+} as const;
 
 async function getOrCreateRunId(db: DB, localId: string, userId: string): Promise<string> {
     const existingRunId = (
@@ -89,6 +106,23 @@ export const runRouter = createTRPCRouter({
                 ingameAuthId: z.string().uuid(),
                 localRunId: z.string().uuid(),
                 partNumber: z.number().int().min(1),
+
+                hkVersion: z.string().max(64).nullable().optional(),
+                playTime: z.number().nullable().optional(),
+                maxHealth: z.number().int().nullable().optional(),
+                mpReserveMax: z.number().int().nullable().optional(),
+                geo: z.number().int().nullable().optional(),
+                dreamOrbs: z.number().int().nullable().optional(),
+                permadeathMode: z.boolean().nullable().optional(),
+                mapZone: mapZoneSchema.nullable().optional(),
+                killedHollowKnight: z.boolean().nullable().optional(),
+                killedFinalBoss: z.boolean().nullable().optional(),
+                killedVoidIdol: z.boolean().nullable().optional(),
+                completionPercentage: z.number().int().nullable().optional(),
+                unlockedCompletionRate: z.boolean().nullable().optional(),
+
+                firstUnixSeconds: z.number().nullable().optional(),
+                lastUnixSeconds: z.number().nullable().optional(),
             }),
         )
         .mutation(async ({ ctx, input }) => {
@@ -124,6 +158,24 @@ export const runRouter = createTRPCRouter({
                 partNumber: input.partNumber,
                 uploadFinished: false,
                 version: 0,
+
+                hkVersion: input.hkVersion,
+                playTime: input.playTime,
+                maxHealth: input.maxHealth,
+                mpReserveMax: input.mpReserveMax,
+                geo: input.geo,
+                dreamOrbs: input.dreamOrbs,
+                permadeathMode: input.permadeathMode,
+                mapZone: input.mapZone,
+
+                killedHollowKnight: input.killedHollowKnight,
+                killedFinalBoss: input.killedFinalBoss,
+                killedVoidIdol: input.killedVoidIdol,
+                completionPercentage: input.completionPercentage,
+                unlockedCompletionRate: input.unlockedCompletionRate,
+
+                startedAt: input.firstUnixSeconds ? new Date(input.firstUnixSeconds * 1000) : null,
+                endedAt: input.lastUnixSeconds ? new Date(input.lastUnixSeconds * 1000) : null,
             });
             return { fileId, runId, signedUploadUrl: await r2GetSignedUploadUrl(r2RunPartFileKey(fileId)) };
         }),
@@ -179,6 +231,9 @@ export const runRouter = createTRPCRouter({
                 files: {
                     columns: {
                         createdAt: true,
+                        startedAt: true,
+                        endedAt: true,
+                        ...runFilesMetaFields,
                     },
                     orderBy: (files, { asc }) => [asc(files.partNumber)],
                     where: (files, { eq }) => eq(files.uploadFinished, true),
@@ -189,8 +244,9 @@ export const runRouter = createTRPCRouter({
         return runs
             .map(({ files, ...run }) => ({
                 ...run,
-                startedAt: files[0]?.createdAt,
-                lastPlayedAt: files[files.length - 1]?.createdAt,
+                startedAt: files[0]?.startedAt ?? files[0]?.createdAt,
+                lastPlayedAt: files.at(-1)?.endedAt ?? files.at(-1)?.createdAt,
+                lastFile: files.at(-1),
             }))
             .sort((a, b) => {
                 if (a.lastPlayedAt && b.lastPlayedAt) {

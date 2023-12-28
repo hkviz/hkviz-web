@@ -5,8 +5,11 @@ function AbsoluteDate({ date }: { date: Date }) {
     return <>{format(date, 'yyyy-mm-dd')}</>;
 }
 
-export function RelativeDate({ date }: { date: Date }) {
+export function RelativeDate({ date, withTooltip = true }: { date: Date; withTooltip?: boolean }) {
     const relativeDate = formatDistance(date, new Date(), { addSuffix: true });
+
+    if (!withTooltip) return <>{relativeDate}</>;
+
     return (
         <Tooltip>
             <TooltipTrigger>

@@ -117,26 +117,17 @@ export function AnimationOptions({
                         </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-[10rem] p-0">
-                        <Button onClick={() => setAnimationSpeedMultiplier(100)} variant="ghost" className="w-full">
-                            <Times />
-                            <span>100</span>
-                        </Button>
-                        <Button onClick={() => setAnimationSpeedMultiplier(50)} variant="ghost" className="w-full">
-                            <Times />
-                            <span>50</span>
-                        </Button>
-                        <Button onClick={() => setAnimationSpeedMultiplier(25)} variant="ghost" className="w-full">
-                            <Times />
-                            <span>25</span>
-                        </Button>
-                        <Button onClick={() => setAnimationSpeedMultiplier(10)} variant="ghost" className="w-full">
-                            <Times />
-                            <span>10</span>
-                        </Button>
-                        <Button onClick={() => setAnimationSpeedMultiplier(1)} variant="ghost" className="w-full">
-                            <Times />
-                            <span>1</span>
-                        </Button>
+                        {[500, 250, 100, 50, 25, 10].map((it) => (
+                            <Button
+                                onClick={() => setAnimationSpeedMultiplier(it)}
+                                variant="ghost"
+                                className="w-full"
+                                key={it}
+                            >
+                                <Times />
+                                <span>{it}</span>
+                            </Button>
+                        ))}
 
                         <div className="relative w-full">
                             <Times className="absolute left-3 top-[50%] translate-y-[-50%]" />

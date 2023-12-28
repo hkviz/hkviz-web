@@ -9,6 +9,7 @@ import { TRPCReactProvider } from '~/trpc/react';
 import ClientContext from './_components/context';
 import { MainNav } from './_components/main-nav';
 import { FaviconsHead } from './_favicons-head';
+import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
     title: 'HKViz for Hollow Knight',
@@ -40,6 +41,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                         </div>
                     </TRPCReactProvider>
                 </ClientContext>
+                <Toaster />
             </body>
         </html>
     );
