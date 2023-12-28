@@ -8,6 +8,7 @@ import Image from 'next/image';
 import HealthFrame from '../../../public/ingame-sprites/hud/select_game_HUD_0002_health_frame.png';
 import HealthFrameStealsoul from '../../../public/ingame-sprites/hud/select_game_HUD_Steel_Soul.png';
 import OneHealth from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
+import OneHealthStealsoul from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
 import Coin from '../../../public/ingame-sprites/hud/HUD_coin_v020004.png';
 import Essence from '../../../public/ingame-sprites/inventory/dream_gate_inv_icon.png';
 import SmallSoulOrb from '../../../public/ingame-sprites/hud/select_game_HUD_0000_magic_orb.png';
@@ -28,9 +29,10 @@ export function RunCard({ run }: { run: Run }) {
     const lastFile = run.lastFile;
     const BgImage = getMapZoneHudBackground(lastFile?.mapZone);
 
-    const isStealsoul = lastFile?.permadeathMode ?? true;
+    const isStealsoul = lastFile?.permadeathMode ?? false;
 
     const soulOrbImgSrc = isStealsoul ? SmallSoulOrbStealSoul : SmallSoulOrb;
+    const healthImgSrc = isStealsoul ? OneHealthStealsoul : OneHealth;
 
     return (
         <Button
@@ -76,7 +78,7 @@ export function RunCard({ run }: { run: Run }) {
                     <div className="z-30 drop-shadow-sm">
                         <div className="relative mt-4 flex flex-row flex-wrap gap-1 sm:gap-2">
                             {[...Array(lastFile?.maxHealth ?? 5).keys()].map((i) => (
-                                <Image src={OneHealth} alt="Health" key={i} className="-mb-1 w-5 sm:w-6" />
+                                <Image src={healthImgSrc} alt="Health" key={i} className="-mb-1 w-5 sm:w-6" />
                             ))}
                         </div>
                         <div className="mt-1 flex w-full flex-row gap-2 font-serif text-2xl sm:mt-4">
