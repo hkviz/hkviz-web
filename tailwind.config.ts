@@ -81,7 +81,8 @@ export default {
                 'accordion-up': 'accordion-up 0.2s ease-out',
             },
             dropShadow: {
-                glow: ['0 0px 5px rgba(255,255, 255, 0.3)', '0 0px 10px rgba(255, 255,255, 0.15)'],
+                'glow-sm': ['0 0px 3px rgba(255,255, 255, 0.2)', '0 0px 6px rgba(255, 255,255, 0.05)'],
+                'glow-md': ['0 0px 5px rgba(255,255, 255, 0.3)', '0 0px 10px rgba(255, 255,255, 0.15)'],
             },
         },
     },

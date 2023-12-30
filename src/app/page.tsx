@@ -5,13 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from './_components/content-wrapper';
-import { RelativeDate } from './_components/date';
+import { GradientSeperator } from './_components/gradient-seperator';
 import { RunCard } from './_components/run-card';
-import { Separator } from '@/components/ui/separator';
-
-function GradientSeperator() {
-    return <Separator className="my-4 bg-transparent bg-gradient-to-r from-transparent via-current to-transparent" />;
-}
 
 export default async function Home() {
     const session = await getServerAuthSession();
@@ -50,7 +45,7 @@ export default async function Home() {
                 {userRuns.length > 0 && (
                     <div className="w-full max-w-[800px]">
                         <h1 className="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Your gameplays</h1>
-                        <ul className="flex flex-col gap-2 overflow-x-auto">
+                        <ul className="flex flex-col gap-2">
                             {userRuns.map((run) => (
                                 <li key={run.id}>
                                     <RunCard run={run} key={run.id} />

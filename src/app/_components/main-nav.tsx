@@ -22,6 +22,14 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                         <Link href="/" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>HKViz</NavigationMenuLink>
                         </Link>
+                        <Link href="/credits" legacyBehavior passHref>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>Credits</NavigationMenuLink>
+                        </Link>
+                        <Link href="/privacy-policy" legacyBehavior passHref>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                Privacy policy
+                            </NavigationMenuLink>
+                        </Link>
                         {/* {session && (
                         <Link href="/upload" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>Upload run</NavigationMenuLink>

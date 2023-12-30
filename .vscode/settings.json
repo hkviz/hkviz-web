@@ -5,5 +5,8 @@
     "prettier.configPath": "prettier.config.mjs",
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "eslint.enable": true,
-    "eslint.format.enable": true
+    "eslint.format.enable": true,
+    "[mdx]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }

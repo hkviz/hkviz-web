@@ -83,7 +83,7 @@ export function RunCard({ run }: { run: Run }) {
             variant="outline"
             asChild
             key={run.id}
-            className="group relative flex h-[unset] w-full flex-row items-start justify-between overflow-hidden bg-black text-white transition hover:bg-black"
+            className="hover:drop-shadow-glow-sm active:drop-shadow-none focus-visible:drop-shadow-glow-md group relative flex h-[unset] w-full flex-row items-start justify-between overflow-hidden bg-black text-white transition transition hover:bg-black hover:text-white"
         >
             <Link href={`/run/${run.id}`}>
                 <div className="relative z-30 h-[7rem] w-[7rem] shrink-0">
@@ -115,7 +115,7 @@ export function RunCard({ run }: { run: Run }) {
                         </div>
                         <div className="mt-1 flex w-full flex-row gap-2 font-serif text-2xl sm:mt-4">
                             <span>
-                                <Image src={Coin} alt="Geo icon" className="drop-shadow-glow inline-block w-7 p-1" />
+                                <Image src={Coin} alt="Geo icon" className="drop-shadow-glow-md inline-block w-7 p-1" />
                                 <span className="font-semibold">{lastFile?.geo ?? '?'}</span>
                             </span>
                             {lastFile?.dreamOrbs ? (
@@ -123,7 +123,7 @@ export function RunCard({ run }: { run: Run }) {
                                     <Image
                                         src={lastFile?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
                                         alt="Essence icon"
-                                        className="drop-shadow-glow -mb-3 -mt-4 inline-block w-9 p-1 brightness-110"
+                                        className="drop-shadow-glow-md -mb-3 -mt-4 inline-block w-9 p-1 brightness-110"
                                     />
                                     <span className="font-semibold">{lastFile.dreamOrbs}</span>
                                 </span>
