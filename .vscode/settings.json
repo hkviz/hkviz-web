@@ -1,6 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "notebook.formatOnSave.enabled": false,
     "editor.formatOnType": true,
     "prettier.configPath": "prettier.config.mjs",
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
@@ -8,5 +7,13 @@
     "eslint.format.enable": true,
     "[mdx]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    }
+    },
+    "eslint.codeActionsOnSave.rules": [
+        "@typescript-eslint/no-unused-vars",
+        "@typescript-eslint/consistent-type-imports",
+        "prettier/prettier",
+    ],
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "always"
+    },
 }

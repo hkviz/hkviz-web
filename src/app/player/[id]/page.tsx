@@ -1,12 +1,7 @@
-import Link from 'next/link';
-
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';
-import { GradientSeperator } from '../../_components/gradient-seperator';
 import { RunCard } from '../../_components/run-card';
-import { getServerAuthSession } from '~/server/auth';
 
 export default async function Home({ params }: { params: { id: string } }) {
     const session = await getServerAuthSession();
@@ -29,7 +24,8 @@ export default async function Home({ params }: { params: { id: string } }) {
                     {userRuns.length > 0 && (
                         <>
                             <h1 className="mb-4 pl-2 text-center font-serif text-3xl font-semibold">
-                                {userName}'s gameplays
+                                {userName}
+                                {"'"}s gameplays
                             </h1>
                             <ul className="flex flex-col gap-2">
                                 {userRuns.map((run) => (
