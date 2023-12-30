@@ -1,6 +1,5 @@
 import { relations, sql } from 'drizzle-orm';
 import {
-    bigint,
     boolean,
     double,
     index,
@@ -35,6 +34,10 @@ export const users = mysqlTable('user', {
         fsp: 3,
     }).default(sql`CURRENT_TIMESTAMP(3)`),
     image: varchar('image', { length: 255 }),
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
 });
 
 export const usersRelations = relations(users, ({ many, one }) => ({
@@ -59,6 +62,10 @@ export const accounts = mysqlTable(
         scope: varchar('scope', { length: 255 }),
         id_token: text('id_token'),
         session_state: varchar('session_state', { length: 255 }),
+        createdAt: timestamp('created_at')
+            .default(sql`CURRENT_TIMESTAMP`)
+            .notNull(),
+        updatedAt: timestamp('updatedAt').onUpdateNow(),
     },
     (account) => ({
         compoundKey: primaryKey(account.provider, account.providerAccountId),
@@ -74,6 +81,10 @@ export const dataCollectionStudyParticipations = mysqlTable('userDataCollectionR
     userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
     keepDataAfterStudyConducted: boolean('keepDataAfterStudyConducted').notNull(),
     futureContactOk: boolean('futureContactOk').notNull(),
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
 });
 
 export const dataCollectionStudyParticipationRelations = relations(dataCollectionStudyParticipations, ({ one }) => ({
