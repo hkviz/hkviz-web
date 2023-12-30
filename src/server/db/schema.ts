@@ -127,6 +127,7 @@ export const runs = mysqlTable(
             .default(sql`CURRENT_TIMESTAMP`)
             .notNull(),
         updatedAt: timestamp('updatedAt').onUpdateNow(),
+        visibility: mysqlEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),
     },
     (run) => ({
         userIdIdx: index('userId_idx').on(run.userId),

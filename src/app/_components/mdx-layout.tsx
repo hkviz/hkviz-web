@@ -15,5 +15,7 @@ export function MdxOuterWrapper({ children }: { children: React.ReactNode }) {
 }
 
 export function MdxInnerWrapper({ children, className }: { children: React.ReactNode; className?: string }) {
-    return <div className={cn('prose mx-auto max-w-[90ch] p-4 dark:prose-invert', className)}>{children}</div>;
+    return (
+        <div className={cn('prose mx-auto my-[4rem] max-w-[90ch] p-4 dark:prose-invert', className)}>{children}</div>
+    );
 }

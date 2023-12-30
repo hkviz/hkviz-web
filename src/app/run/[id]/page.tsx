@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { SingleRunClientPage } from '~/app/run/[id]/_page';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
-import { ContentWrapper } from '../../_components/content-wrapper';
+import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-wrapper';
 import { AuthNeeded } from '~/app/_components/auth-needed';
 
 export default async function SingleRunPage({ params }: { params: { id: string } }) {
@@ -24,6 +24,11 @@ export default async function SingleRunPage({ params }: { params: { id: string }
     } catch (e) {
         if (e instanceof TRPCError && e.code === 'NOT_FOUND') {
             notFound();
+        }
+        if (e instanceof TRPCError && e.code === 'FORBIDDEN') {
+            return (<ContentCenterWrapper>
+                This run is set to private and can only be viewed by its owner.
+            </ContentCenterWrapper>);
         }
         throw e;
     }

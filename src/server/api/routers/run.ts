@@ -61,6 +61,7 @@ export const runRouter = createTRPCRouter({
                 columns: {
                     id: true,
                     description: true,
+                    visibility: true,
                 },
                 with: {
                     user: {
@@ -88,6 +89,13 @@ export const runRouter = createTRPCRouter({
                     message: 'Run not found',
                 }),
             );
+        
+        if (metadata.visibility === 'private' && metadata.user.id !== ctx.session.user?.id) {
+            throw new TRPCError({
+                code: 'FORBIDDEN',
+                message: 'Run is private',
+            });
+        }
 
         return {
             ...metadata,
@@ -102,6 +110,24 @@ export const runRouter = createTRPCRouter({
             ),
         };
     }),
+    setRunVisibility: protectedProcedure
+        .input(
+            z.object({
+                id: z.string().uuid(),
+                visibility: z.enum(['public', 'unlisted', 'private']),
+            }),
+        )
+        .mutation(async ({ ctx, input }) => {
+            const userId = ctx.session.user?.id ?? raise(new Error('Not logged in'));
+            const result = await ctx.db
+                .update(runs)
+                .set({ visibility: input.visibility })
+                .where(and(eq(runs.id, input.id), eq(runs.userId, userId)));
+
+            if (result.rowsAffected !== 1) {
+                throw new Error('Run not found');
+            }
+        }),
     createUploadPartUrl: publicProcedure
         .input(
             z.object({
@@ -221,8 +247,17 @@ export const runRouter = createTRPCRouter({
             }
         }),
     getUsersRuns: publicProcedure.input(z.object({ userId: z.string().uuid() })).query(async ({ ctx, input }) => {
+        const sessionUserId = ctx.session?.user?.id;
+        const isOwnProfile = sessionUserId === input.userId;
         const runs = await ctx.db.query.runs.findMany({
-            where: (run, { eq }) => eq(run.userId, input.userId),
+            where: (run, { eq, and }) => {
+                const isUserIdFromParams = eq(run.userId, input.userId);
+                if (isOwnProfile) {
+                    return isUserIdFromParams;
+                } else {
+                    return and(isUserIdFromParams, eq(run.visibility, 'public'));
+                }
+            },
             columns: {
                 id: true,
                 description: true,
