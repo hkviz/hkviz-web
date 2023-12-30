@@ -267,7 +267,7 @@ export const playerDataFieldsGenerated = {
         name: 'hazardRespawnLocation',
         type: 'Vector3',
         shortCode: '12',
-        defaultValue: '0;0;0',
+        defaultValue: '0,0,0',
         notLogged: true,
     },
     hazardRespawnFacingRight: {
@@ -351,14 +351,14 @@ export const playerDataFieldsGenerated = {
         name: 'shadeMapPos',
         type: 'Vector3',
         shortCode: '1E',
-        defaultValue: '0;0;0',
+        defaultValue: '0,0,0',
         notLogged: false,
     },
     dreamgateMapPos: {
         name: 'dreamgateMapPos',
         type: 'Vector3',
         shortCode: '1F',
-        defaultValue: '0;0;0',
+        defaultValue: '0,0,0',
         notLogged: false,
     },
     geoPool: {

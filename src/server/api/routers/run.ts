@@ -25,6 +25,8 @@ const runFilesMetaFields = {
     killedVoidIdol: true,
     completionPercentage: true,
     unlockedCompletionRate: true,
+    dreamNailUpgraded: true,
+    lastScene: true,
 } as const;
 
 async function getOrCreateRunId(db: DB, localId: string, userId: string): Promise<string> {
@@ -120,6 +122,8 @@ export const runRouter = createTRPCRouter({
                 killedVoidIdol: z.boolean().nullable().optional(),
                 completionPercentage: z.number().int().nullable().optional(),
                 unlockedCompletionRate: z.boolean().nullable().optional(),
+                dreamNailUpgraded: z.boolean().nullable().optional(),
+                lastScene: z.string().max(255).nullable().optional(),
 
                 firstUnixSeconds: z.number().nullable().optional(),
                 lastUnixSeconds: z.number().nullable().optional(),
@@ -173,6 +177,8 @@ export const runRouter = createTRPCRouter({
                 killedVoidIdol: input.killedVoidIdol,
                 completionPercentage: input.completionPercentage,
                 unlockedCompletionRate: input.unlockedCompletionRate,
+                dreamNailUpgraded: input.dreamNailUpgraded,
+                lastScene: input.lastScene,
 
                 startedAt: input.firstUnixSeconds ? new Date(input.firstUnixSeconds * 1000) : null,
                 endedAt: input.lastUnixSeconds ? new Date(input.lastUnixSeconds * 1000) : null,
@@ -243,12 +249,23 @@ export const runRouter = createTRPCRouter({
         });
 
         return runs
-            .map(({ files, ...run }) => ({
-                ...run,
-                startedAt: files[0]?.startedAt ?? files[0]?.createdAt,
-                lastPlayedAt: files.at(-1)?.endedAt ?? files.at(-1)?.createdAt,
-                lastFile: files.at(-1),
-            }))
+            .map(({ files, ...run }) => {
+                const firstFile = files[0];
+                const lastFile = files.at(-1);
+                const isBrokenSteelSoul = lastFile?.lastScene === 'PermaDeath';
+                const isSteelSoul = (firstFile?.permadeathMode ?? false) || isBrokenSteelSoul;
+
+                const lastNonBrokenFile = isBrokenSteelSoul ? files.at(-2) ?? lastFile : lastFile;
+
+                return {
+                    ...run,
+                    startedAt: firstFile?.startedAt ?? firstFile?.createdAt,
+                    lastPlayedAt: lastFile?.endedAt ?? lastFile?.createdAt,
+                    lastNonBrokenFile,
+                    isSteelSoul,
+                    isBrokenSteelSoul,
+                };
+            })
             .sort((a, b) => {
                 if (a.lastPlayedAt && b.lastPlayedAt) {
                     return b.lastPlayedAt.getTime() - a.lastPlayedAt.getTime();

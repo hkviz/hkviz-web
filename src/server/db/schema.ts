@@ -161,6 +161,8 @@ export const runFiles = mysqlTable('runfile', {
     killedVoidIdol: boolean('killed_void_idol'),
     completionPercentage: int('completion_percentage'),
     unlockedCompletionRate: boolean('unlocked_completion_rate'),
+    dreamNailUpgraded: boolean('dream_nail_upgraded'),
+    lastScene: varchar('last_scene', { length: 255 }),
 
     startedAt: timestamp('started_at'),
     endedAt: timestamp('ended_at'),

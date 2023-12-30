@@ -5,15 +5,18 @@ import { RelativeDate } from './date';
 import { getMapZoneHudBackground } from './area-background';
 import Image from 'next/image';
 
-import HealthFrame from '../../../public/ingame-sprites/hud/select_game_HUD_0002_health_frame.png';
-import HealthFrameStealsoul from '../../../public/ingame-sprites/hud/select_game_HUD_Steel_Soul.png';
-import HealthFrameStealsoulSmall from '../../../public/ingame-sprites/hud/mode_select_Steel_Soul_HUD.png';
+import HealthFrameImg from '../../../public/ingame-sprites/hud/select_game_HUD_0002_health_frame.png';
+import HealthFrameSteelSoulImg from '../../../public/ingame-sprites/hud/select_game_HUD_Steel_Soul.png';
+import HealthFrameSteelSoulSmallImg from '../../../public/ingame-sprites/hud/mode_select_Steel_Soul_HUD.png';
+import HealthFrameSteelSoulBrokenImg from '../../../public/ingame-sprites/hud/break_hud.png';
 import OneHealth from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
-import OneHealthStealsoul from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
+import OneHealthSteelSoul from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
 import Coin from '../../../public/ingame-sprites/hud/HUD_coin_v020004.png';
-import Essence from '../../../public/ingame-sprites/inventory/dream_gate_inv_icon.png';
+import DreamNailImg from '../../../public/ingame-sprites/inventory/dream_nail_0003_1.png';
+import DreamNailAwokenImg from '../../../public/ingame-sprites/inventory/dream_nail_0000_4.png';
 import SmallSoulOrb from '../../../public/ingame-sprites/hud/select_game_HUD_0000_magic_orb.png';
-import SmallSoulOrbStealSoul from '../../../public/ingame-sprites/hud/select_game_HUD_0000_magic_orb_steel.png';
+import SmallSoulOrbSteelSoul from '../../../public/ingame-sprites/hud/select_game_HUD_0000_magic_orb_steel.png';
+
 type Run = AppRouterOutput['run']['getUsersRuns'][number];
 
 function Duration({ seconds }: { seconds: number }) {
@@ -26,14 +29,51 @@ function Duration({ seconds }: { seconds: number }) {
     return <>{duration.join(' ')}</>;
 }
 
+function HealthFrame({ isSteelSoul, isBrokenSteelSoul }: { isSteelSoul: boolean; isBrokenSteelSoul: boolean }) {
+    if (isBrokenSteelSoul) {
+        return (
+            <Image
+                src={HealthFrameSteelSoulBrokenImg}
+                alt="Broken Steel Soul game mode frame"
+                className="absolute left-[-2.5rem] top-[-2rem] z-20 h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
+            />
+        );
+    }
+    if (isSteelSoul) {
+        return (
+            <>
+                <Image
+                    src={HealthFrameSteelSoulImg}
+                    alt="Steel Soul game mode frame"
+                    className="absolute left-[-2.5rem] top-[-2rem] z-20 hidden h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90 sm:block"
+                />
+                <Image
+                    src={HealthFrameSteelSoulSmallImg}
+                    alt="Steel Soul game mode frame"
+                    className="absolute left-[-2.5rem] top-[-2rem] z-20 h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90 sm:hidden"
+                />
+            </>
+        );
+    }
+
+    return (
+        <Image
+            src={HealthFrameImg}
+            alt="Standard game mode frame"
+            className="absolute left-1 top-0 z-20 h-[6rem] w-auto max-w-none"
+        />
+    );
+}
+
 export function RunCard({ run }: { run: Run }) {
-    const lastFile = run.lastFile;
+    const lastFile = run.lastNonBrokenFile;
     const BgImage = getMapZoneHudBackground(lastFile?.mapZone);
 
-    const isStealsoul = lastFile?.permadeathMode ?? false;
+    const isSteelSoul = run.isSteelSoul;
+    const isBrokenSteelSoul = run.isBrokenSteelSoul;
 
-    const soulOrbImgSrc = isStealsoul ? SmallSoulOrbStealSoul : SmallSoulOrb;
-    const healthImgSrc = isStealsoul ? OneHealthStealsoul : OneHealth;
+    const soulOrbImgSrc = isSteelSoul ? SmallSoulOrbSteelSoul : SmallSoulOrb;
+    const healthImgSrc = isSteelSoul ? OneHealthSteelSoul : OneHealth;
 
     return (
         <Button
@@ -44,26 +84,7 @@ export function RunCard({ run }: { run: Run }) {
         >
             <Link href={`/run/${run.id}`}>
                 <div className="relative z-30 h-[7rem] w-[7rem] shrink-0">
-                    {isStealsoul ? (
-                        <>
-                            <Image
-                                src={HealthFrameStealsoul}
-                                alt="Steel Soul game mode frame"
-                                className="absolute left-[-2.5rem] top-[-2rem] z-20 hidden h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90 sm:block"
-                            />
-                            <Image
-                                src={HealthFrameStealsoulSmall}
-                                alt="Steel Soul game mode frame"
-                                className="absolute left-[-2.5rem] top-[-2rem] z-20 h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90 sm:hidden"
-                            />
-                        </>
-                    ) : (
-                        <Image
-                            src={HealthFrame}
-                            alt="Standard game mode frame"
-                            className="absolute left-1 top-0 z-20 h-[6rem] w-auto max-w-none"
-                        />
-                    )}
+                    <HealthFrame isSteelSoul={isSteelSoul} isBrokenSteelSoul={isBrokenSteelSoul} />
                     {(lastFile?.mpReserveMax ?? 100) >= 99 && (
                         <Image
                             src={soulOrbImgSrc}
@@ -96,7 +117,11 @@ export function RunCard({ run }: { run: Run }) {
                             </span>
                             {lastFile?.dreamOrbs ? (
                                 <span>
-                                    <Image src={Essence} alt="Essence icon" className="-mt-1 inline-block w-7 p-1" />
+                                    <Image
+                                        src={lastFile?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
+                                        alt="Essence icon"
+                                        className="-mb-3 -mt-4 inline-block w-9 p-1 brightness-110"
+                                    />
                                     <span className="font-semibold">{lastFile.dreamOrbs}</span>
                                 </span>
                             ) : undefined}
