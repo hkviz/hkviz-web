@@ -1,4 +1,4 @@
-import { GetObjectCommand, HeadObjectCommand, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
+import { GetObjectCommand, HeadObjectCommand, HeadObjectCommandOutput, PutObjectCommand, S3Client } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import { env } from '~/env.mjs';
 
@@ -17,7 +17,7 @@ export function r2RunPartFileKey(fileId: string): R2Key {
     return `runpart/${fileId}` as R2Key;
 }
 
-export async function r2FileExists(key: R2Key): Promise<boolean> {
+export async function r2FileHead(key: R2Key): Promise<HeadObjectCommandOutput | null> {
     return r2
         .send(
             new HeadObjectCommand({
@@ -27,12 +27,11 @@ export async function r2FileExists(key: R2Key): Promise<boolean> {
         )
         .then(
             (headObject) => {
-                console.log(headObject);
-                return true;
+                return headObject;
             },
             (err) => {
                 if (err instanceof Error && err.name === 'NotFound') {
-                    return false;
+                    return null;
                 }
                 throw err;
             },

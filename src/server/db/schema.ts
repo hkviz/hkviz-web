@@ -145,6 +145,7 @@ export const runFiles = mysqlTable('runfile', {
         .notNull(),
     updatedAt: timestamp('updatedAt').onUpdateNow(),
     version: int('version').notNull().default(0),
+    contentLength: int('content_length').notNull().default(0),
 
     // meta data, so it can easily be displayed in the UI without parsing recording files
     hkVersion: varchar('hk_version', { length: 64 }),

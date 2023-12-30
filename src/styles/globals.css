@@ -214,11 +214,14 @@
 }
 .main-nav-inner {
     position: fixed;
-    z-index: 1000;
-    left: env(titlebar-area-x, 0);
     top: env(titlebar-area-y, 0);
-    width: env(titlebar-area-width, 100%);
-    height: var(--main-nav-height);
+    width: 100%;
+    height: calc(var(--main-nav-height) + 10rem);
+    padding: .5rem;
+    padding-left: calc(0.5rem + env(titlebar-area-x, 0));
+    padding-right: calc(0.5rem + 100% - (env(titlebar-area-width, 100%) + env(titlebar-area-x, 0)));
+    padding-top: 10.5rem;
+    margin-top: -10rem;
 }
 
 .hash-link {

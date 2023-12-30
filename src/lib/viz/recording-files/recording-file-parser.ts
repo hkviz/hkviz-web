@@ -1,7 +1,7 @@
 import { raise, typeCheckNever } from '~/lib/utils';
 import { heroStateFields } from '../hero-state/hero-states';
 import { playerDataFields } from '../player-data/player-data';
-import { type RecordingFileVersion, isKnownRecordingFileVersion } from '../types/recording-file-version';
+import { type RecordingFileVersion, isKnownRecordingFileVersion, isVersion0xx } from '../types/recording-file-version';
 import { Vector2 } from '../types/vector2';
 
 import {
@@ -158,7 +158,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 }
                 case EVENT_PREFIXES.ROOM_DIMENSIONS: {
                     if (lastSceneEvent) {
-                        if (currentRecordingFileVersion === '0.0.0') {
+                        if (isVersion0xx(currentRecordingFileVersion)) {
                             lastSceneEvent.originOffset = parseVector2_v0(args[0]!, args[1]!);
                             lastSceneEvent.sceneSize = parseVector2_v0(args[2]!, args[3]!);
                         } else {
@@ -173,7 +173,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                         const position: Vector2 | undefined =
                             args[0] === '='
                                 ? previousPlayerPosition
-                                : currentRecordingFileVersion === '0.0.0'
+                                : isVersion0xx(currentRecordingFileVersion)
                                   ? parseVector2_v0(args[0]!, args[1]!)
                                   : parseVector2_v1(args[0]!, 1 / 10);
                         if (!position) {

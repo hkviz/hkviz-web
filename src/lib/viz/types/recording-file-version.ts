@@ -1,5 +1,11 @@
 export const recordingFileVersions = [
     /**
+     * (first version in mod list)
+     *
+     */
+    '1.1.0',
+
+    /**
      * (introduced before mod was published)
      * added logging of enemy health and creation
      * and changed format of position event
@@ -18,4 +24,12 @@ export type RecordingFileVersion = (typeof recordingFileVersions)[number];
 
 export function isKnownRecordingFileVersion(version: string): version is RecordingFileVersion {
     return recordingFileVersions.includes(version as RecordingFileVersion);
+}
+
+export function isVersion0xx(version: RecordingFileVersion): version is '0.0.0' {
+    return version === '0.0.0';
+}
+
+export function isVersion1xx(version: RecordingFileVersion): version is '1.0.0' | '1.1.0' {
+    return version === '1.0.0' || version === '1.1.0';
 }

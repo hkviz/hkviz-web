@@ -7,6 +7,7 @@ import Image from 'next/image';
 
 import HealthFrame from '../../../public/ingame-sprites/hud/select_game_HUD_0002_health_frame.png';
 import HealthFrameStealsoul from '../../../public/ingame-sprites/hud/select_game_HUD_Steel_Soul.png';
+import HealthFrameStealsoulSmall from '../../../public/ingame-sprites/hud/mode_select_Steel_Soul_HUD.png';
 import OneHealth from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
 import OneHealthStealsoul from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
 import Coin from '../../../public/ingame-sprites/hud/HUD_coin_v020004.png';
@@ -39,43 +40,50 @@ export function RunCard({ run }: { run: Run }) {
             variant="outline"
             asChild
             key={run.id}
-            className="group relative flex h-[unset] w-full flex-col items-start justify-between overflow-hidden bg-black text-white hover:bg-black hover:text-white sm:flex-row"
+            className="group relative flex h-[unset] w-full flex-row items-start justify-between overflow-hidden bg-black text-white transition hover:bg-black"
         >
             <Link href={`/run/${run.id}`}>
-                <div className="z-30 flex flex-row">
-                    <div className="relative h-[7rem] w-[7rem] shrink-0">
-                        {isStealsoul ? (
+                <div className="relative z-30 h-[7rem] w-[7rem] shrink-0">
+                    {isStealsoul ? (
+                        <>
                             <Image
                                 src={HealthFrameStealsoul}
                                 alt="Steel Soul game mode frame"
-                                className="absolute left-[-2.5rem] top-[-2rem] z-20 h-[10rem] w-auto max-w-none group-hover:brightness-75"
+                                className="absolute left-[-2.5rem] top-[-2rem] z-20 hidden h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90 sm:block"
                             />
-                        ) : (
                             <Image
-                                src={HealthFrame}
-                                alt="Standard game mode frame"
-                                className="absolute left-1 top-0 z-20 h-[6rem] w-auto max-w-none"
+                                src={HealthFrameStealsoulSmall}
+                                alt="Steel Soul game mode frame"
+                                className="absolute left-[-2.5rem] top-[-2rem] z-20 h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90 sm:hidden"
                             />
-                        )}
-                        {(lastFile?.mpReserveMax ?? 100) >= 99 && (
-                            <Image
-                                src={soulOrbImgSrc}
-                                alt="Soul orb"
-                                className="absolute bottom-[2rem] left-[-0.75rem] z-30"
-                            />
-                        )}
-                        {(lastFile?.mpReserveMax ?? 1000) >= 66 && (
-                            <Image
-                                src={soulOrbImgSrc}
-                                alt="Soul orb"
-                                className="absolute bottom-[0.75rem] left-[-0.25rem] z-30"
-                            />
-                        )}
-                        {(lastFile?.mpReserveMax ?? 100) >= 33 && (
-                            <Image src={soulOrbImgSrc} alt="Soul orb" className="absolute bottom-0 left-[1rem] z-30" />
-                        )}
-                    </div>
-                    <div className="z-30 drop-shadow-sm">
+                        </>
+                    ) : (
+                        <Image
+                            src={HealthFrame}
+                            alt="Standard game mode frame"
+                            className="absolute left-1 top-0 z-20 h-[6rem] w-auto max-w-none"
+                        />
+                    )}
+                    {(lastFile?.mpReserveMax ?? 100) >= 99 && (
+                        <Image
+                            src={soulOrbImgSrc}
+                            alt="Soul orb"
+                            className="absolute bottom-[2rem] left-[-0.75rem] z-30"
+                        />
+                    )}
+                    {(lastFile?.mpReserveMax ?? 1000) >= 66 && (
+                        <Image
+                            src={soulOrbImgSrc}
+                            alt="Soul orb"
+                            className="absolute bottom-[0.75rem] left-[-0.25rem] z-30"
+                        />
+                    )}
+                    {(lastFile?.mpReserveMax ?? 100) >= 33 && (
+                        <Image src={soulOrbImgSrc} alt="Soul orb" className="absolute bottom-0 left-[1rem] z-30" />
+                    )}
+                </div>
+                <div className="flex grow flex-col sm:flex-row">
+                    <div className="z-40 grow drop-shadow-sm">
                         <div className="relative mt-4 flex flex-row flex-wrap gap-1 sm:gap-2">
                             {[...Array(lastFile?.maxHealth ?? 5).keys()].map((i) => (
                                 <Image src={healthImgSrc} alt="Health" key={i} className="-mb-1 w-5 sm:w-6" />
@@ -94,35 +102,36 @@ export function RunCard({ run }: { run: Run }) {
                             ) : undefined}
                         </div>
                     </div>
-                </div>
-                <div className="z-30 flex flex-row flex-wrap justify-center gap-4 font-serif drop-shadow-sm sm:flex-col sm:justify-end sm:gap-2 sm:text-right">
-                    {lastFile?.playTime && (
-                        <span className="flex items-baseline gap-1 sm:flex-col sm:items-end sm:justify-end sm:gap-0 ">
-                            <span> Playtime: </span>
-                            <span className="text-lg font-bold">
-                                <Duration seconds={lastFile.playTime} />
-                            </span>
-                        </span>
-                    )}
-                    {/* {run.startedAt && (
-                                <span>
-                                    <span className="opacity-75"> Started: </span>
-                                    <span className="font-semibold">
-                                        <RelativeDate date={run.startedAt} withTooltip={false} />
-                                    </span>
+                    <div className="z-40 flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif drop-shadow-sm sm:flex-col sm:justify-end sm:gap-2 sm:text-right">
+                        {lastFile?.playTime && (
+                            <span className="flex items-baseline gap-1 sm:flex-col sm:items-end sm:justify-end sm:gap-0 ">
+                                <span> Playtime: </span>
+                                <span className="text-lg font-bold">
+                                    <Duration seconds={lastFile.playTime} />
                                 </span>
-                            )} */}
-                    {run.lastPlayedAt && (
-                        <span className="flex items-baseline gap-1 sm:flex-col sm:items-end sm:justify-end sm:gap-0">
-                            <span>Last played: </span>
-                            <span className="text-lg  font-bold">
-                                <RelativeDate date={run.lastPlayedAt} withTooltip={false} />
                             </span>
-                        </span>
-                    )}
+                        )}
+                        {/* {run.startedAt && (
+                            <span>
+                                <span className="opacity-75"> Started: </span>
+                                <span className="font-semibold">
+                                    <RelativeDate date={run.startedAt} withTooltip={false} />
+                                </span>
+                            </span>
+                        )} */}
+                        {run.lastPlayedAt && (
+                            <span className="flex items-baseline gap-1 sm:flex-col sm:items-end sm:justify-end sm:gap-0">
+                                <span>Last played: </span>
+                                <span className="text-lg  font-bold">
+                                    <RelativeDate date={run.lastPlayedAt} withTooltip={false} />
+                                </span>
+                            </span>
+                        )}
+                    </div>
                 </div>
+
                 <Image
-                    className="l-0 t-0 absolute z-10 h-full w-full bg-black object-cover opacity-90 group-hover:brightness-75"
+                    className="l-0 t-0 absolute z-10 h-full w-full bg-black object-cover opacity-90 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
                     src={BgImage}
                     alt="Area background image"
                 />

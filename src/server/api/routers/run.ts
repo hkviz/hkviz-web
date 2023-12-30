@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
-import { r2FileExists, r2GetSignedDownloadUrl, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
+import { r2FileHead, r2GetSignedDownloadUrl, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
 
 import { and, eq } from 'drizzle-orm';
 import { raise } from '~/lib/utils';
@@ -200,13 +200,14 @@ export const runRouter = createTRPCRouter({
                 },
             })) ?? raise(new Error('File not found or already marked as finished'));
 
-            if (!(await r2FileExists(r2RunPartFileKey(input.fileId)))) {
+            const head = await r2FileHead(r2RunPartFileKey(input.fileId));
+            if (!head) {
                 throw new Error('File not found in r2 bucket. Not marked as finished');
             }
 
             const result = await ctx.db
                 .update(runFiles)
-                .set({ uploadFinished: true, version: 1 })
+                .set({ uploadFinished: true, version: 1, contentLength: head.ContentLength })
                 .where(and(eq(runFiles.id, input.fileId), eq(runFiles.runId, runId)));
 
             if (result.rowsAffected !== 1) {
