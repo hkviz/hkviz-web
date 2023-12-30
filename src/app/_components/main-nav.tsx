@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/navigation-menu';
 import type { Session } from 'next-auth';
 import { CurrentUserDropdown } from './current-user-dropdown';
+import { HKVizText } from './hkviz-text';
 import { LoginLink } from './login-link';
 import { ThemeSwitcher, type Theme } from './theme-switcher';
 
@@ -20,7 +21,9 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                 <NavigationMenu>
                     <NavigationMenuList className="app-region-no-drag">
                         <Link href="/" legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>HKViz</NavigationMenuLink>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                <HKVizText />
+                            </NavigationMenuLink>
                         </Link>
                         <Link href="/getting-started" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
