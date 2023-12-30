@@ -26,6 +26,9 @@ function Duration({ seconds }: { seconds: number }) {
     const duration: string[] = [];
     if (hours > 0) duration.push(`${hours}h`);
     if (minutes > 0) duration.push(`${minutes}m`);
+
+    if (duration.length === 0) return <span>0m</span>;
+
     return <>{duration.join(' ')}</>;
 }
 
@@ -66,7 +69,7 @@ function HealthFrame({ isSteelSoul, isBrokenSteelSoul }: { isSteelSoul: boolean;
 }
 
 export function RunCard({ run }: { run: Run }) {
-    const lastFile = run.lastNonBrokenFile;
+    const lastFile = run.lastFile;
     const BgImage = getMapZoneHudBackground(lastFile?.mapZone);
 
     const isSteelSoul = run.isSteelSoul;

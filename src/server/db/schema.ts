@@ -154,7 +154,7 @@ export const runFiles = mysqlTable('runfile', {
     mpReserveMax: int('mp_reserve_max'),
     geo: int('geo'),
     dreamOrbs: int('dream_orbs'),
-    permadeathMode: boolean('permadeath_mode'),
+    permadeathMode: int('permadeath_mode'),
     mapZone: mysqlEnum('map_zone', mapZoneSchema.options),
     killedHollowKnight: boolean('killed_hollow_knight'),
     killedFinalBoss: boolean('killed_final_boss'),

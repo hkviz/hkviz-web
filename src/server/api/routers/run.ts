@@ -115,7 +115,7 @@ export const runRouter = createTRPCRouter({
                 mpReserveMax: z.number().int().nullable().optional(),
                 geo: z.number().int().nullable().optional(),
                 dreamOrbs: z.number().int().nullable().optional(),
-                permadeathMode: z.boolean().nullable().optional(),
+                permadeathMode: z.number().int().nullable().optional(),
                 mapZone: mapZoneSchema.nullable().optional(),
                 killedHollowKnight: z.boolean().nullable().optional(),
                 killedFinalBoss: z.boolean().nullable().optional(),
@@ -252,16 +252,14 @@ export const runRouter = createTRPCRouter({
             .map(({ files, ...run }) => {
                 const firstFile = files[0];
                 const lastFile = files.at(-1);
-                const isBrokenSteelSoul = lastFile?.lastScene === 'PermaDeath';
-                const isSteelSoul = (firstFile?.permadeathMode ?? false) || isBrokenSteelSoul;
-
-                const lastNonBrokenFile = isBrokenSteelSoul ? files.at(-2) ?? lastFile : lastFile;
+                const isBrokenSteelSoul = firstFile?.permadeathMode === 2 || lastFile?.lastScene === 'PermaDeath';
+                const isSteelSoul = (firstFile?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
 
                 return {
                     ...run,
                     startedAt: firstFile?.startedAt ?? firstFile?.createdAt,
                     lastPlayedAt: lastFile?.endedAt ?? lastFile?.createdAt,
-                    lastNonBrokenFile,
+                    lastFile,
                     isSteelSoul,
                     isBrokenSteelSoul,
                 };
