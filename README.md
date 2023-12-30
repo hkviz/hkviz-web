@@ -1,40 +1,31 @@
+<a style="text-align: center; display: block;" href="https://hkviz.olii.dev">
+<img src="./logo/logo.svg" alt="HKViz logo text" style="max-width: 150px; border-radius: 15px; box-shadow: 0 0 10px 0 rgba(255, 255, 255, .25);" />
+</a>
+
 # HKViz web
 
-> [!IMPORTANT]  
-> This site is still work in progress. It can not be used yet. A first release should follow late 2023 or early 2024.
-
-A site for visualizing player-behavior for Hollow Knight, like seeing the complete path one has taken in playthrough or seeing to which boss one has died the most.
+A site for visualizing player-behavior for [HollowKnight](https://www.hollowknight.com), like seeing the path one has taken in playthrough, to which boss one has died the most, where one has spent the most time, and more.
 
 The mod for recording player behavior is contained in the [hkviz-mod repository](https://github.com/hkviz/hkviz-mod).
 
-Visit [hkviz.olii.dev](https://hkviz.olii.dev/) for more infos.
+Visit [hkviz.olii.dev](https://hkviz.olii.dev/) to get started recording your own gameplay.
 
 ## I have Ideas/Feedback for visualizations
 
-Feel free to open a issue on this repository, write @olivergrack on discord or contact me via [hkviz@olii.dev](mailto:hkviz@olii.dev)
+Feel free to [open a issue](https://github.com/hkviz/hkviz-web/issues) on this repository, write @olivergrack on discord or contact me via [hkviz@olii.dev](mailto:hkviz@olii.dev).
 
 ## How to use
 
-Not at all at the moment. A first version should hopefully be released in the coming months.
+To get started recording your own gameplay analytics visit [hkviz.olii.dev](https://hkviz.olii.dev). 
+
+You can also view gameplays from other players, if they send you a link and have set their gameplay to 'public' or 'unlisted'.
 
 ## For developers
 
 To set this project up locally:
 
 -   First copy the .env.example file in the root directly, and fill it with connection information for
-    -   a mysql database
-    -   a r2 bucket.
-    -   auth providers (discord, ...)
+    -   a mysql database (where user accounts, and run metadata is stored)
+    -   a r2/s3 bucket (where analytics files are stored)
+    -   auth providers (discord, google, ...). Can be left empty if you are testing with the email login
 -   Start the project locally using `npm run dev`
-
-### Used inside this project
-
-This project has been created with [T3](https://create.t3.gg/). Which has some getting started infos for many of the following technologies.
-It contains
-
--   [Next.js](https://nextjs.org)
--   [NextAuth.js](https://next-auth.js.org)
--   [Drizzle](https://orm.drizzle.team/)
--   [Tailwind CSS](https://tailwindcss.com)
--   [tRPC](https://trpc.io)
--   [R2](https://www.cloudflare.com/developer-platform/r2/)
