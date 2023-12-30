@@ -1,9 +1,9 @@
-import { Noto_Sans, Cinzel, Cinzel_Decorative } from 'next/font/google';
+import { Cinzel, Cinzel_Decorative, Noto_Sans } from 'next/font/google';
 import localFont from 'next/font/local';
 
 export const notoSans = Noto_Sans({
     subsets: ['latin'],
-    weight: ['400', '700', '900'],
+    weight: ['400', '600', '700', '900'],
     variable: '--font-sans',
     display: 'swap',
 });

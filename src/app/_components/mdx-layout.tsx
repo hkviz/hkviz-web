@@ -11,7 +11,7 @@ export function MdxLayout({ children }: { children: React.ReactNode }) {
 }
 
 export function MdxOuterWrapper({ children }: { children: React.ReactNode }) {
-    return <ContentWrapper backgroundClassName="opacity-30">{children}</ContentWrapper>;
+    return <ContentWrapper backgroundClassName="dark:opacity-40 opacity-20">{children}</ContentWrapper>;
 }
 
 export function MdxInnerWrapper({ children, className }: { children: React.ReactNode; className?: string }) {

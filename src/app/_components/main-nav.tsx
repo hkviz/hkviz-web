@@ -10,8 +10,8 @@ import {
 } from '@/components/ui/navigation-menu';
 import type { Session } from 'next-auth';
 import { CurrentUserDropdown } from './current-user-dropdown';
-import { type Theme, ThemeSwitcher } from './theme-switcher';
 import { LoginLink } from './login-link';
+import { ThemeSwitcher, type Theme } from './theme-switcher';
 
 export function MainNav({ session, theme }: { session: Session | null; theme: Theme }) {
     return (
@@ -21,6 +21,11 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                     <NavigationMenuList className="app-region-no-drag">
                         <Link href="/" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>HKViz</NavigationMenuLink>
+                        </Link>
+                        <Link href="/getting-started" legacyBehavior passHref>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                Getting started
+                            </NavigationMenuLink>
                         </Link>
                         <Link href="/credits" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>Credits</NavigationMenuLink>

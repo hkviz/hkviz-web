@@ -3,9 +3,9 @@ import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { getServerAuthSession } from '~/server/auth';
+import { apiFromServer } from '~/trpc/from-server';
 import { AuthNeeded } from '../_components/auth-needed';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
-import { apiFromServer } from '~/trpc/from-server';
 import { KeepAccountSettingsOption } from './_components';
 
 export default async function SettingsPage() {
@@ -19,7 +19,7 @@ export default async function SettingsPage() {
     return (
         <ContentCenterWrapper>
             <div className="max-w-[600px]">
-                <h1 className="mb-4 pl-2 text-3xl font-semibold">Settings</h1>
+                <h1 className="mb-4 pl-2 font-serif text-3xl font-semibold">Settings</h1>
                 <Card>
                     <div className="p-6">
                         <KeepAccountSettingsOption studyParticipation={studyParticipation} />
@@ -40,9 +40,7 @@ export default async function SettingsPage() {
                         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                             <div>
                                 <h3 className="text-lg font-semibold">Account deletion</h3>
-                                <p className="text-sm text-gray-500">
-                                    Delete your account and your game play data.
-                                </p>
+                                <p className="text-sm text-gray-500">Delete your account and your game play data.</p>
                             </div>
                             <Button variant="destructive" asChild className="shrink-0">
                                 <Link href="/settings/account-deletion">Delete account</Link>

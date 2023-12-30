@@ -31,14 +31,23 @@ export function KeepAccountSettingsOption({
         });
     };
 
-    return !participation?.keepDataAfterStudyConducted ? (
+    if (!participation || participation.keepDataAfterStudyConducted) {
+        return undefined;
+    }
+
+    return (
         <div className="-m-4 mb-4 flex flex-col justify-between gap-4 rounded-md bg-red-300 p-4 dark:bg-red-500 dark:bg-opacity-30 sm:flex-row sm:items-center">
             <div>
                 <h3 className="text-lg font-semibold">Your account is set to be deleted once our study is conducted</h3>
             </div>
-            <Button className="shrink-0" variant="destructive" onClick={handleKeepClick} disabled={saveMutation.isLoading}>
+            <Button
+                className="shrink-0"
+                variant="destructive"
+                onClick={handleKeepClick}
+                disabled={saveMutation.isLoading}
+            >
                 Keep account
             </Button>
         </div>
-    ) : undefined;
+    );
 }
