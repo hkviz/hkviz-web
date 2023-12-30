@@ -112,7 +112,7 @@ export function RunCard({ run }: { run: Run }) {
                         </div>
                         <div className="mt-1 flex w-full flex-row gap-2 font-serif text-2xl sm:mt-4">
                             <span>
-                                <Image src={Coin} alt="Geo icon" className="inline-block w-7 p-1" />
+                                <Image src={Coin} alt="Geo icon" className="drop-shadow-glow inline-block w-7 p-1" />
                                 <span className="font-semibold">{lastFile?.geo ?? '?'}</span>
                             </span>
                             {lastFile?.dreamOrbs ? (
@@ -120,7 +120,7 @@ export function RunCard({ run }: { run: Run }) {
                                     <Image
                                         src={lastFile?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
                                         alt="Essence icon"
-                                        className="-mb-3 -mt-4 inline-block w-9 p-1 brightness-110"
+                                        className="drop-shadow-glow -mb-3 -mt-4 inline-block w-9 p-1 brightness-110"
                                     />
                                     <span className="font-semibold">{lastFile.dreamOrbs}</span>
                                 </span>

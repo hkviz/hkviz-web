@@ -80,6 +80,9 @@ export default {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
             },
+            dropShadow: {
+                glow: ['0 0px 5px rgba(255,255, 255, 0.3)', '0 0px 10px rgba(255, 255,255, 0.15)'],
+            },
         },
     },
     plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
