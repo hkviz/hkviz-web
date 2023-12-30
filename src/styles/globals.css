@@ -214,14 +214,13 @@
 }
 .main-nav-inner {
     position: fixed;
-    top: env(titlebar-area-y, 0);
+    top: calc(-10rem + env(titlebar-area-y, 0rem));
     width: 100%;
     height: calc(var(--main-nav-height) + 10rem);
     padding: .5rem;
-    padding-left: calc(0.5rem + env(titlebar-area-x, 0));
-    padding-right: calc(0.5rem + 100% - (env(titlebar-area-width, 100%) + env(titlebar-area-x, 0)));
+    padding-left: calc(0.5rem + env(titlebar-area-x, 0rem));
+    padding-right: calc(0.5rem + 100% - env(titlebar-area-width, 100%) - env(titlebar-area-x, 0rem));
     padding-top: 10.5rem;
-    margin-top: -10rem;
 }
 
 .hash-link {
@@ -234,7 +233,7 @@
 }
 
 :root {
-    --scroll-margin-top: calc(0.5rem + var(--main-nav-height, 0));
+    --scroll-margin-top: calc(0.5rem + var(--main-nav-height, 0rem));
 }
 
 .hide-hash-links .hash-link {

@@ -15,8 +15,8 @@ import { LoginLink } from './login-link';
 
 export function MainNav({ session, theme }: { session: Session | null; theme: Theme }) {
     return (
-        <div className="main-nav app-region-drag">
-            <div className="main-nav-inner z-[90] flex items-center justify-center bg-background">
+        <div className="main-nav">
+            <div className="main-nav-inner app-region-drag z-[90] flex items-center justify-center bg-background">
                 <NavigationMenu>
                     <NavigationMenuList className="app-region-no-drag">
                         <Link href="/" legacyBehavior passHref>
