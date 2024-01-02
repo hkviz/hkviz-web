@@ -1,15 +1,15 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
+import { CardContent, CardFooter } from '@/components/ui/card';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Check, ChevronDown } from 'lucide-react';
+import { Asterisk, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { type z } from 'zod';
@@ -25,12 +25,7 @@ export interface StudyDemographicClientFormProps {
 
 function RequiredStar() {
     return (
-        <Tooltip>
-            <TooltipTrigger>
-                <span className="pl-2 text-red-500">*</span>
-            </TooltipTrigger>
-            <TooltipContent>Required</TooltipContent>
-        </Tooltip>
+        <span><Asterisk className="h-[1.2rem] w-[1.2rem] pl-2 text-red-500 inline-block -mt-[0.5em]" /></span>
     );
 }
 
@@ -44,7 +39,6 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
     });
 
     const watchGender = form.watch('gender');
-    console.log(watchGender);
 
     function onSubmit(values: z.infer<typeof studyDemographicSchema>) {
         console.log(values);
@@ -54,171 +48,187 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
 
     return (
         <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-                <FormField
-                    control={form.control}
-                    name="previousHollowKnightExperience"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>
-                                How much experience do you have playing Hollow Knight?
-                                <RequiredStar />
-                            </FormLabel>
-                            <FormControl>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="Select your experience" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            {hkExperiences.map((it) => (
-                                                <SelectItem key={it.code} value={it.code}>
-                                                    {it.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-
-                <FormField
-                    control={form.control}
-                    name="gender"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>
-                                Which most closely describes your gender?
-                                <RequiredStar />
-                            </FormLabel>
-                            <FormControl>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="Select a gender" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            {genders.map((it) => (
-                                                <SelectItem key={it.code} value={it.code}>
-                                                    {it.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                {watchGender === 'not_listed' && (
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+                <CardContent className="space-y-4">
                     <FormField
                         control={form.control}
-                        name="genderCustom"
+                        name="previousHollowKnightExperience"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>My gender is</FormLabel>
+                                <FormLabel>
+                                    How much experience do you have playing Hollow Knight?
+                                    <RequiredStar />
+                                </FormLabel>
                                 <FormControl>
-                                    <Input className="w-full" placeholder="Enter a gender" {...field} />
+                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                        <SelectTrigger className="w-full">
+                                            <SelectValue placeholder="Select your experience" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                {hkExperiences.map((it) => (
+                                                    <SelectItem key={it.code} value={it.code}>
+                                                        {it.name}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                )}
 
-                <FormField
-                    control={form.control}
-                    name="ageRange"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>
-                                Whats your age range?
-                                <RequiredStar />
-                            </FormLabel>
-                            <FormControl>
-                                <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                    <SelectTrigger className="w-full">
-                                        <SelectValue placeholder="Select your age range" />
-                                    </SelectTrigger>
-                                    <SelectContent>
-                                        <SelectGroup>
-                                            {ageRanges.map((it) => (
-                                                <SelectItem key={it.code} value={it.code}>
-                                                    {it.name}
-                                                </SelectItem>
-                                            ))}
-                                        </SelectGroup>
-                                    </SelectContent>
-                                </Select>
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
+                    <FormField
+                        control={form.control}
+                        name="gender"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>
+                                    Which most closely describes your gender?
+                                    <RequiredStar />
+                                </FormLabel>
+                                <FormControl>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                        <SelectTrigger className="w-full">
+                                            <SelectValue placeholder="Select a gender" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                {genders.map((it) => (
+                                                    <SelectItem key={it.code} value={it.code}>
+                                                        {it.name}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    {watchGender === 'not_listed' && (
+                        <FormField
+                            control={form.control}
+                            name="genderCustom"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>My gender is</FormLabel>
+                                    <FormControl>
+                                        <Input className="w-full" placeholder="Enter a gender" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                     )}
-                />
 
-                <FormField
-                    control={form.control}
-                    name="country"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>
-                                In which country do you live?
-                                <RequiredStar />
-                            </FormLabel>
-                            <FormControl>
-                                <Popover open={countryOpen} onOpenChange={setCountryOpen}>
-                                    <PopoverTrigger asChild>
-                                        <FormControl>
-                                            <Button
-                                                variant="outline"
-                                                role="combobox"
-                                                className={cn('w-[200px] w-full justify-between hover:bg-transparent transition-none')}
-                                            >
-                                                {field.value
-                                                    ? countries.find((c) => c.code === field.value)?.name
-                                                    : 'Select a country'}
-                                                <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                            </Button>
-                                        </FormControl>
-                                    </PopoverTrigger>
-                                    <PopoverContent className="max-h-[min(50vh,20rem)] overflow-y-scroll p-0">
-                                        <Command>
-                                            <CommandInput placeholder="Search a country..." />
-                                            <CommandEmpty>No country found.</CommandEmpty>
-                                            <CommandGroup>
-                                                {countries.map((c) => (
-                                                    <CommandItem
-                                                        value={c.code + ' ' + c.name}
-                                                        key={c.code}
-                                                        onSelect={() => {
-                                                            form.setValue('country', c.code);
-                                                            setCountryOpen(false);
-                                                        }}
-                                                    >
-                                                        <Check
+                    <FormField
+                        control={form.control}
+                        name="ageRange"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>
+                                    Whats your age range?
+                                    <RequiredStar />
+                                </FormLabel>
+                                <FormControl>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                        <SelectTrigger className="w-full">
+                                            <SelectValue placeholder="Select your age range" />
+                                        </SelectTrigger>
+                                        <SelectContent>
+                                            <SelectGroup>
+                                                {ageRanges.map((it) => (
+                                                    <SelectItem key={it.code} value={it.code}>
+                                                        {it.name}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectGroup>
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+
+                    <FormField
+                        control={form.control}
+                        name="country"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>
+                                    In which country do you live?
+                                    <RequiredStar />
+                                </FormLabel>
+                                <FormControl>
+                                    <Popover open={countryOpen} onOpenChange={setCountryOpen}>
+                                        <PopoverTrigger asChild>
+                                            <FormControl>
+                                                <Button
+                                                    variant="outline"
+                                                    role="combobox"
+                                                    className={cn(
+                                                        'w-[200px] w-full justify-between transition-none hover:bg-transparent',
+                                                    )}
+                                                >
+                                                    {field.value
+                                                        ? countries.find((c) => c.code === field.value)?.name
+                                                        : 'Select a country'}
+                                                    <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                                </Button>
+                                            </FormControl>
+                                        </PopoverTrigger>
+                                        <PopoverContent className="max-h-[min(50vh,30rem)] overflow-y-scroll p-0">
+                                            <Command>
+                                                <CommandInput placeholder="Search a country..." />
+                                                <CommandEmpty>No country found.</CommandEmpty>
+                                                <CommandGroup>
+                                                    {countries.map((c) => {
+                                                        const Icon = 'icon' in c ? c.icon : undefined;
+
+                                                        return (
+                                                            <CommandItem
+                                                                value={c.code + ' ' + c.name}
+                                                                key={c.code}
+                                                                onSelect={() => {
+                                                                    form.setValue('country', c.code);
+                                                                    setCountryOpen(false);
+                                                                }}
+                                                            >
+                                                                {/* <Check
                                                             className={cn(
                                                                 'mr-2 h-4 w-4',
                                                                 c.code === field.value ? 'opacity-100' : 'opacity-0',
                                                             )}
-                                                        />
-                                                        {c.name}
-                                                    </CommandItem>
-                                                ))}
-                                            </CommandGroup>
-                                        </Command>
-                                    </PopoverContent>
-                                </Popover>
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
+                                                        /> */}
+                                                                {Icon && (
+                                                                    <Icon
+                                                                        className="mr-2 w-5 rounded-[2px]"
+                                                                        role="presentation"
+                                                                    />
+                                                                )}
+                                                                {c.name}
+                                                            </CommandItem>
+                                                        );
+                                                    })}
+                                                </CommandGroup>
+                                            </Command>
+                                        </PopoverContent>
+                                    </Popover>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                </CardContent>
 
-                <Button type="submit">Submit</Button>
+                <CardFooter className="flex justify-end">
+                    <Button type="submit">Continue</Button>
+                </CardFooter>
             </form>
         </Form>
     );
