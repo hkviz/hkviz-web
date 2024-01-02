@@ -9,10 +9,11 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Check, ChevronsUpDown } from 'lucide-react';
+import { Check, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { type z } from 'zod';
+import { ageRanges } from '~/lib/types/ageRange';
 import { countries, isCountryShortCode } from '~/lib/types/country';
 import { genders } from '~/lib/types/gender';
 import { hkExperiences } from '~/lib/types/hk-experience';
@@ -119,10 +120,7 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                         name="genderCustom"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>
-                                    My gender is
-                                    <RequiredStar />
-                                </FormLabel>
+                                <FormLabel>My gender is</FormLabel>
                                 <FormControl>
                                     <Input className="w-full" placeholder="Enter a gender" {...field} />
                                 </FormControl>
@@ -131,6 +129,36 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                         )}
                     />
                 )}
+
+                <FormField
+                    control={form.control}
+                    name="ageRange"
+                    render={({ field }) => (
+                        <FormItem>
+                            <FormLabel>
+                                Whats your age range?
+                                <RequiredStar />
+                            </FormLabel>
+                            <FormControl>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <SelectTrigger className="w-full">
+                                        <SelectValue placeholder="Select your age range" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                        <SelectGroup>
+                                            {ageRanges.map((it) => (
+                                                <SelectItem key={it.code} value={it.code}>
+                                                    {it.name}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectGroup>
+                                    </SelectContent>
+                                </Select>
+                            </FormControl>
+                            <FormMessage />
+                        </FormItem>
+                    )}
+                />
 
                 <FormField
                     control={form.control}
@@ -148,12 +176,12 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                                             <Button
                                                 variant="outline"
                                                 role="combobox"
-                                                className={cn('w-[200px] w-full justify-between')}
+                                                className={cn('w-[200px] w-full justify-between hover:bg-transparent transition-none')}
                                             >
                                                 {field.value
                                                     ? countries.find((c) => c.code === field.value)?.name
                                                     : 'Select a country'}
-                                                <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                                <ChevronDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                             </Button>
                                         </FormControl>
                                     </PopoverTrigger>
