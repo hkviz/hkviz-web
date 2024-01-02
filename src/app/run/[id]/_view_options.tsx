@@ -3,7 +3,7 @@
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
-import { MatSymbol } from '~/app/_components/mat-symbol';
+import { LayoutDashboard, Palette, Spline } from 'lucide-react';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
@@ -22,7 +22,7 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                 <TableRow>
                     <TableHead>
                         <Label className="flex items-center" htmlFor="visibleRoomSelectTrigger">
-                            <MatSymbol className="mr-2" icon="dashboard" />
+                            <LayoutDashboard className="mr-2 h-5 w-5" />
                             Visible rooms
                         </Label>
                     </TableHead>
@@ -42,7 +42,7 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                 <TableRow>
                     <TableHead>
                         <Label className="flex items-center" htmlFor="traceVisibilitySelectTrigger">
-                            <MatSymbol className="mr-2" icon="timeline" />
+                            <Spline className="mr-2 h-5 w-5" />
                             Traces
                         </Label>
                     </TableHead>
@@ -62,7 +62,7 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                 <TableRow>
                     <TableHead>
                         <Label className="flex items-center" htmlFor="roomColorSelectTrigger">
-                            <MatSymbol className="mr-2" icon="palette" />
+                            <Palette className="mr-2 w-5 h-5" />
                             Room colors
                         </Label>
                     </TableHead>

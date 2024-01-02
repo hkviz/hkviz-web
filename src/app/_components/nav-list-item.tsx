@@ -1,15 +1,14 @@
 import { NavigationMenuLink } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
-import { type MaterialSymbol } from 'material-symbols';
+import { type LucideIcon } from 'lucide-react';
 import React from 'react';
-import { MatSymbol } from './mat-symbol';
 
 type Props = React.ComponentPropsWithoutRef<'a'> & {
-    icon?: MaterialSymbol;
+    Icon?: LucideIcon;
 };
 
 export const ListItem = React.forwardRef<React.ElementRef<'a'>, Props>(
-    ({ className, title, children, icon, ...props }, ref) => {
+    ({ className, title, children, Icon, ...props }, ref) => {
         return (
             <li>
                 <NavigationMenuLink asChild>
@@ -21,7 +20,7 @@ export const ListItem = React.forwardRef<React.ElementRef<'a'>, Props>(
                         )}
                         {...props}
                     >
-                        {icon && <MatSymbol icon={icon} className="text-2xl font-light" />}
+                        {Icon && <Icon className="text-2xl font-light" />}
                         <div className="grow">
                             <div className="text-sm font-medium leading-none">{title}</div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>

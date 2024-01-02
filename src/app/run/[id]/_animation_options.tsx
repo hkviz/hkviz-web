@@ -7,11 +7,11 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Slider } from '@/components/ui/slider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import { Pause, Play } from 'lucide-react';
 import { useEffect } from 'react';
-import { MatSymbol } from '~/app/_components/mat-symbol';
+import { zeroPad } from '~/lib/utils';
 import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
-import { zeroPad } from '~/lib/utils';
 
 function Times({ className }: { className?: string }) {
     return (
@@ -51,7 +51,7 @@ function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptio
         <Tooltip>
             <TooltipTrigger asChild>
                 <Button onClick={togglePlaying} variant="ghost">
-                    <MatSymbol icon={isPlaying ? 'pause' : 'play_arrow'} />
+                    {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
                 </Button>
             </TooltipTrigger>
             <TooltipContent>{isPlaying ? 'Pause' : 'Play'}</TooltipContent>

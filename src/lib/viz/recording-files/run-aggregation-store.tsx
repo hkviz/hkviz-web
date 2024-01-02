@@ -10,7 +10,7 @@ import {
     type ParsedRecording,
 } from './recording';
 
-import { type MaterialSymbol } from 'material-symbols';
+import { Clock12, Clock2, Hash, LucideIcon } from 'lucide-react';
 import { zeroPad } from '~/lib/utils';
 import coinImg from '../../../../public/ingame-sprites/HUD_coin_shop.png';
 import spellUpImg from '../../../../public/ingame-sprites/Inv_0024_spell_scream_01.png';
@@ -41,18 +41,18 @@ export const aggregationVariableInfos = {
     visits: {
         name: 'Visits',
         description: 'Number this scene has been entered',
-        icon: 'tag',
+        Icon: Hash,
     },
     firstVisitMs: {
         name: 'First visited at',
         description: 'Time of first visit (mm:ss)',
-        icon: 'timer',
+        Icon: Clock12,
         format: formatTime,
     },
     timeSpendMs: {
         name: 'Time spent',
         description: 'Total time spent (mm:ss)',
-        icon: 'timelapse',
+        Icon: Clock2,
         format: formatTime,
     },
     damageTaken: {
@@ -98,7 +98,7 @@ export const aggregationVariableInfos = {
 } satisfies Record<
     AggregationVariable,
     { name: string; description: string; format?: (value: number) => string } & (
-        | { icon: MaterialSymbol }
+        | { Icon: LucideIcon }
         | { image: typeof coinImg }
     )
 >;

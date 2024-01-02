@@ -6,19 +6,19 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/u
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import Image from 'next/image';
 import { useMemo, type CSSProperties } from 'react';
-import { MatSymbol } from '~/app/_components/mat-symbol';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 import { Toggle } from '@/components/ui/toggle';
+import { Palette, PinOff } from 'lucide-react';
+import { useThemeStore } from '~/app/_components/theme-store';
 import {
     AggregationVariable,
     aggregationVariableInfos,
     aggregationVariables,
     formatAggregatedVariableValue,
 } from '~/lib/viz/recording-files/run-aggregation-store';
-import { useThemeStore } from '~/app/_components/theme-store';
 
 function AggregationVariableToggles({
     useViewOptionsStore,
@@ -46,7 +46,7 @@ function AggregationVariableToggles({
                     onPressedChange={() => setRoomColorVar1(variable)}
                     className="rounded-full data-[state=on]:bg-primary"
                 >
-                    <MatSymbol icon="palette" className="text-base" />
+                    <Palette className="h-4 w-4 text-base" />
                 </Toggle>
             )}
         </TableCell>
@@ -66,6 +66,8 @@ function AggregationVariable({
     );
     const variableInfo = aggregationVariableInfos[variable];
 
+    const Icon = 'Icon' in variableInfo ? variableInfo?.Icon : null;
+
     if (!selectedRoom) return null;
     return (
         <TableRow>
@@ -81,7 +83,7 @@ function AggregationVariable({
                                     aria-hidden={true}
                                 ></Image>
                             )}
-                            {'icon' in variableInfo && <MatSymbol className="w-6" icon={variableInfo.icon} />}
+                            {Icon && <Icon className="w-5 h-5" />}
                             <span>{variableInfo.name}</span>
                         </div>
                     </TooltipTrigger>
@@ -222,7 +224,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <Button variant="outline" size="icon" onClick={() => setSelectedRoomPinned(false)}>
-                                <MatSymbol icon="push_pin" />
+                                <PinOff className="h-5 w-5" />
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent>

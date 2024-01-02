@@ -2,9 +2,9 @@
 
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 import { NavigationMenuLink } from '@radix-ui/react-navigation-menu';
-import { MatSymbol } from './mat-symbol';
-import { useThemeStore } from './theme-store';
+import { Moon, Sun } from 'lucide-react';
 import { useMemo } from 'react';
+import { useThemeStore } from './theme-store';
 
 export type Theme = 'light' | 'dark';
 
@@ -17,7 +17,7 @@ export function ThemeSwitcher({ theme }: { theme: Theme }) {
     return (
         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
             <button onClick={toggleTheme}>
-                {_theme === 'light' ? <MatSymbol icon="dark_mode" /> : <MatSymbol icon="light_mode" />}
+                {_theme === 'light' ? <Moon /> : <Sun />}
             </button>
         </NavigationMenuLink>
     );
