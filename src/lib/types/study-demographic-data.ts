@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ageRangeSchema } from './ageRange';
+import { ageRangeSchema } from './age-range';
 import { countrySchema } from './country';
 import { genderSchema } from './gender';
 import { hkExperienceSchema } from './hk-experience';

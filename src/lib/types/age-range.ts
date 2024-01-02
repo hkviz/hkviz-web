@@ -11,7 +11,7 @@ export const ageRanges = [
     },
     {
         code: '18_24',
-        name: '12-24',
+        name: '18-24',
     },
     {
         code: '25_34',

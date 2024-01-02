@@ -13,7 +13,7 @@ import { Asterisk, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { type z } from 'zod';
-import { ageRanges } from '~/lib/types/ageRange';
+import { ageRanges } from '~/lib/types/age-range';
 import { countries, isCountryShortCode } from '~/lib/types/country';
 import { genders } from '~/lib/types/gender';
 import { hkExperiences } from '~/lib/types/hk-experience';
@@ -25,7 +25,9 @@ export interface StudyDemographicClientFormProps {
 
 function RequiredStar() {
     return (
-        <span><Asterisk className="h-[1.2rem] w-[1.2rem] pl-2 text-red-500 inline-block -mt-[0.5em]" /></span>
+        <span>
+            <Asterisk className="-mt-[0.5em] inline-block h-[1.2rem] w-[1.2rem] pl-2 text-red-500" />
+        </span>
     );
 }
 
@@ -161,7 +163,7 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                         render={({ field }) => (
                             <FormItem>
                                 <FormLabel>
-                                    In which country do you live?
+                                    Country of residence
                                     <RequiredStar />
                                 </FormLabel>
                                 <FormControl>
@@ -172,7 +174,7 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                                                     variant="outline"
                                                     role="combobox"
                                                     className={cn(
-                                                        'w-[200px] w-full justify-between transition-none hover:bg-transparent',
+                                                        'w-full justify-between transition-none hover:bg-transparent',
                                                     )}
                                                 >
                                                     {field.value
