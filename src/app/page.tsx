@@ -51,7 +51,7 @@ export default async function Home() {
                             <ul className="flex flex-col gap-2">
                                 {userRuns.map((run) => (
                                     <li key={run.id}>
-                                        <RunCard run={run} key={run.id} />
+                                        <RunCard run={run} key={run.id} showUser={false} />
                                     </li>
                                 ))}
                             </ul>

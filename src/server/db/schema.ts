@@ -28,6 +28,7 @@ export const mysqlTable = mysqlTableCreator((name) => `hkviz_${name}`);
 export const users = mysqlTable('user', {
     id: varchar('id', { length: 255 }).notNull().primaryKey(),
     name: varchar('name', { length: 255 }),
+    isResearcher: boolean('is_researcher').notNull().default(false),
     email: varchar('email', { length: 255 }).notNull(),
     emailVerified: timestamp('emailVerified', {
         mode: 'date',

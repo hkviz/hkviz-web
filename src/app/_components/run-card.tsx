@@ -1,21 +1,22 @@
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 import Link from 'next/link';
 import { type AppRouterOutput } from '~/server/api/types';
-import { RelativeDate } from './date';
 import { getMapZoneHudBackground } from './area-background';
-import Image from 'next/image';
+import { RelativeDate } from './date';
 
-import HealthFrameImg from '../../../public/ingame-sprites/hud/select_game_HUD_0002_health_frame.png';
-import HealthFrameSteelSoulImg from '../../../public/ingame-sprites/hud/select_game_HUD_Steel_Soul.png';
-import HealthFrameSteelSoulSmallImg from '../../../public/ingame-sprites/hud/mode_select_Steel_Soul_HUD.png';
-import HealthFrameSteelSoulBrokenImg from '../../../public/ingame-sprites/hud/break_hud.png';
-import OneHealth from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
-import OneHealthSteelSoul from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
+import React from 'react';
 import Coin from '../../../public/ingame-sprites/hud/HUD_coin_v020004.png';
-import DreamNailImg from '../../../public/ingame-sprites/inventory/dream_nail_0003_1.png';
-import DreamNailAwokenImg from '../../../public/ingame-sprites/inventory/dream_nail_0000_4.png';
+import HealthFrameSteelSoulBrokenImg from '../../../public/ingame-sprites/hud/break_hud.png';
+import HealthFrameSteelSoulSmallImg from '../../../public/ingame-sprites/hud/mode_select_Steel_Soul_HUD.png';
 import SmallSoulOrb from '../../../public/ingame-sprites/hud/select_game_HUD_0000_magic_orb.png';
 import SmallSoulOrbSteelSoul from '../../../public/ingame-sprites/hud/select_game_HUD_0000_magic_orb_steel.png';
+import OneHealth from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
+import OneHealthSteelSoul from '../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
+import HealthFrameImg from '../../../public/ingame-sprites/hud/select_game_HUD_0002_health_frame.png';
+import HealthFrameSteelSoulImg from '../../../public/ingame-sprites/hud/select_game_HUD_Steel_Soul.png';
+import DreamNailAwokenImg from '../../../public/ingame-sprites/inventory/dream_nail_0000_4.png';
+import DreamNailImg from '../../../public/ingame-sprites/inventory/dream_nail_0003_1.png';
 
 type Run = AppRouterOutput['run']['getUsersRuns'][number];
 
@@ -68,7 +69,16 @@ function HealthFrame({ isSteelSoul, isBrokenSteelSoul }: { isSteelSoul: boolean;
     );
 }
 
-export function RunCard({ run }: { run: Run }) {
+function RunCardEpicInfo({ title, children }: React.PropsWithChildren<{ title: React.ReactNode }>) {
+    return (
+        <span className="flex items-baseline gap-1 sm:max-md:flex-col sm:max-md:items-end sm:max-md:justify-end sm:max-md:gap-0 md:gap-1">
+            <span>{title}</span>
+            <span className="text-lg font-bold">{children}</span>
+        </span>
+    );
+}
+
+export function RunCard({ run, showUser = true }: { run: Run; showUser?: boolean }) {
     const lastFile = run.lastFile;
     const BgImage = getMapZoneHudBackground(lastFile?.mapZone);
 
@@ -83,7 +93,7 @@ export function RunCard({ run }: { run: Run }) {
             variant="outline"
             asChild
             key={run.id}
-            className="hover:drop-shadow-glow-sm active:drop-shadow-none focus-visible:drop-shadow-glow-md group relative flex h-[unset] w-full flex-row items-start justify-between overflow-hidden bg-black text-white transition transition hover:bg-black hover:text-white"
+            className="group relative flex h-[unset] w-full flex-row items-start justify-between overflow-hidden bg-black text-white transition transition hover:bg-black hover:text-white hover:drop-shadow-glow-sm focus-visible:drop-shadow-glow-md active:drop-shadow-none"
         >
             <Link href={`/run/${run.id}`}>
                 <div className="relative z-30 h-[7rem] w-[7rem] shrink-0">
@@ -115,7 +125,7 @@ export function RunCard({ run }: { run: Run }) {
                         </div>
                         <div className="mt-1 flex w-full flex-row gap-2 font-serif text-2xl sm:mt-4">
                             <span>
-                                <Image src={Coin} alt="Geo icon" className="drop-shadow-glow-md inline-block w-7 p-1" />
+                                <Image src={Coin} alt="Geo icon" className="inline-block w-7 p-1 drop-shadow-glow-md" />
                                 <span className="font-semibold">{lastFile?.geo ?? '?'}</span>
                             </span>
                             {lastFile?.dreamOrbs ? (
@@ -123,7 +133,7 @@ export function RunCard({ run }: { run: Run }) {
                                     <Image
                                         src={lastFile?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
                                         alt="Essence icon"
-                                        className="drop-shadow-glow-md -mb-3 -mt-4 inline-block w-9 p-1 brightness-110"
+                                        className="-mb-3 -mt-4 inline-block w-9 p-1 brightness-110 drop-shadow-glow-md"
                                     />
                                     <span className="font-semibold">{lastFile.dreamOrbs}</span>
                                 </span>
@@ -132,12 +142,9 @@ export function RunCard({ run }: { run: Run }) {
                     </div>
                     <div className="z-40 flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif drop-shadow-sm sm:flex-col sm:justify-end sm:gap-2 sm:text-right">
                         {lastFile?.playTime && (
-                            <span className="flex items-baseline gap-1 sm:flex-col sm:items-end sm:justify-end sm:gap-0 ">
-                                <span> Playtime: </span>
-                                <span className="text-lg font-bold">
-                                    <Duration seconds={lastFile.playTime} />
-                                </span>
-                            </span>
+                            <RunCardEpicInfo title="Playtime:">
+                                <Duration seconds={lastFile.playTime} />
+                            </RunCardEpicInfo>
                         )}
                         {/* {run.startedAt && (
                             <span>
@@ -148,13 +155,11 @@ export function RunCard({ run }: { run: Run }) {
                             </span>
                         )} */}
                         {run.lastPlayedAt && (
-                            <span className="flex items-baseline gap-1 sm:flex-col sm:items-end sm:justify-end sm:gap-0">
-                                <span>Last played: </span>
-                                <span className="text-lg  font-bold">
-                                    <RelativeDate date={run.lastPlayedAt} withTooltip={false} />
-                                </span>
-                            </span>
+                            <RunCardEpicInfo title="Last played:">
+                                <RelativeDate date={run.lastPlayedAt} withTooltip={false} />
+                            </RunCardEpicInfo>
                         )}
+                        {run.user?.name && showUser && <RunCardEpicInfo title="By:">{run.user?.name}</RunCardEpicInfo>}
                     </div>
                 </div>
 

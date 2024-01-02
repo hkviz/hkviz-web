@@ -2,14 +2,14 @@ import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
 import { r2FileHead, r2GetSignedDownloadUrl, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
 
-import { and, eq } from 'drizzle-orm';
-import { raise } from '~/lib/utils';
-import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
 import { TRPCError } from '@trpc/server';
-import { type DB } from '~/server/db';
-import { runFiles, runs } from '~/server/db/schema';
-import { getUserIdFromIngameSession } from './ingameauth';
+import { and, eq, sql } from 'drizzle-orm';
+import { raise } from '~/lib/utils';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
+import { createTRPCRouter, protectedProcedure, publicProcedure, type TRPCContext } from '~/server/api/trpc';
+import { type DB } from '~/server/db';
+import { runFiles, runs, users } from '~/server/db/schema';
+import { getUserIdFromIngameSession } from './ingameauth';
 
 const runFilesMetaFields = {
     hkVersion: true,
@@ -53,6 +53,30 @@ async function getOrCreateRunId(db: DB, localId: string, userId: string): Promis
     return newId;
 }
 
+async function assertIsResearcher(
+    ctx: TRPCContext,
+    makeError: () => Error = () =>
+        new TRPCError({
+            code: 'FORBIDDEN',
+            message: 'Forbidden',
+        }),
+) {
+    const userId = ctx.session?.user?.id ?? raise(new Error('Not logged in'));
+
+    const sqlStr = sql<string>;
+
+    const result = await ctx.db
+        .select({
+            count: sqlStr`COUNT(*)`,
+        })
+        .from(users)
+        .where(and(eq(users.id, userId), eq(users.isResearcher, true)));
+
+    if (result[0]?.count !== '1') {
+        throw makeError();
+    }
+}
+
 export const runRouter = createTRPCRouter({
     getMetadataById: protectedProcedure.input(z.object({ id: z.string().uuid() })).query(async ({ ctx, input }) => {
         const metadata =
@@ -89,17 +113,26 @@ export const runRouter = createTRPCRouter({
                     message: 'Run not found',
                 }),
             );
-        
+
+        let isResearchView = false;
         if (metadata.visibility === 'private' && metadata.user.id !== ctx.session.user?.id) {
-            throw new TRPCError({
-                code: 'FORBIDDEN',
-                message: 'Run is private',
-            });
+            await assertIsResearcher(
+                ctx,
+                () =>
+                    new TRPCError({
+                        code: 'FORBIDDEN',
+                        message: 'Run is private',
+                    }),
+            );
+            isResearchView = true;
         }
 
         return {
             ...metadata,
-            // TODO use metadata from recording file
+            user: {
+                id: isResearchView ? '' : metadata.user.id,
+                name: isResearchView ? 'Anonym' : metadata.user.name ?? 'Unnamed user',
+            },
             startedAt: metadata.files[0]?.createdAt,
             lastPlayedAt: metadata.files[metadata.files.length - 1]?.createdAt,
             files: await Promise.all(
@@ -246,71 +279,86 @@ export const runRouter = createTRPCRouter({
                 throw new Error('File not found');
             }
         }),
-    getUsersRuns: publicProcedure.input(z.object({ userId: z.string().uuid() })).query(async ({ ctx, input }) => {
-        const sessionUserId = ctx.session?.user?.id;
-        const isOwnProfile = sessionUserId === input.userId;
-        const runs = await ctx.db.query.runs.findMany({
-            where: (run, { eq, and }) => {
-                const isUserIdFromParams = eq(run.userId, input.userId);
-                if (isOwnProfile) {
-                    return isUserIdFromParams;
-                } else {
-                    return and(isUserIdFromParams, eq(run.visibility, 'public'));
-                }
-            },
-            columns: {
-                id: true,
-                description: true,
-                createdAt: true,
-            },
-            with: {
-                user: {
-                    columns: {
-                        id: true,
-                        name: true,
+    getUsersRuns: publicProcedure
+        .input(z.object({ userId: z.string().uuid().optional() }))
+        .query(async ({ ctx, input }) => {
+            const sessionUserId = ctx.session?.user?.id;
+            const isOwnProfile = sessionUserId === input.userId;
+
+            if (!input.userId) {
+                await assertIsResearcher(ctx);
+            }
+
+            const runs = await ctx.db.query.runs.findMany({
+                where: (run, { eq, and }) => {
+                    if (!input.userId) return undefined;
+
+                    const isUserIdFromParams = eq(run.userId, input.userId);
+                    if (isOwnProfile) {
+                        return isUserIdFromParams;
+                    } else {
+                        return and(isUserIdFromParams, eq(run.visibility, 'public'));
+                    }
+                },
+                columns: {
+                    id: true,
+                    description: true,
+                    createdAt: true,
+                    visibility: true,
+                },
+                with: {
+                    user: {
+                        columns: {
+                            id: true,
+                            name: true,
+                        },
+                    },
+                    files: {
+                        columns: {
+                            createdAt: true,
+                            startedAt: true,
+                            endedAt: true,
+                            ...runFilesMetaFields,
+                        },
+                        orderBy: (files, { asc }) => [asc(files.partNumber)],
+                        where: (files, { eq }) => eq(files.uploadFinished, true),
                     },
                 },
-                files: {
-                    columns: {
-                        createdAt: true,
-                        startedAt: true,
-                        endedAt: true,
-                        ...runFilesMetaFields,
-                    },
-                    orderBy: (files, { asc }) => [asc(files.partNumber)],
-                    where: (files, { eq }) => eq(files.uploadFinished, true),
-                },
-            },
-        });
-
-        return runs
-            .map(({ files, ...run }) => {
-                const firstFile = files[0];
-                const lastFile = files.at(-1);
-                const isBrokenSteelSoul = firstFile?.permadeathMode === 2 || lastFile?.lastScene === 'PermaDeath';
-                const isSteelSoul = (firstFile?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
-
-                return {
-                    ...run,
-                    startedAt: firstFile?.startedAt ?? firstFile?.createdAt,
-                    lastPlayedAt: lastFile?.endedAt ?? lastFile?.createdAt,
-                    lastFile,
-                    isSteelSoul,
-                    isBrokenSteelSoul,
-                };
-            })
-            .sort((a, b) => {
-                if (a.lastPlayedAt && b.lastPlayedAt) {
-                    return b.lastPlayedAt.getTime() - a.lastPlayedAt.getTime();
-                } else if (a.lastPlayedAt) {
-                    return -1;
-                } else if (b.lastPlayedAt) {
-                    return 1;
-                } else {
-                    return b.createdAt.getTime() - a.createdAt.getTime();
-                }
             });
-    }),
+
+            return runs
+                .map(({ files, ...run }) => {
+                    const firstFile = files[0];
+                    const lastFile = files.at(-1);
+                    const isBrokenSteelSoul = firstFile?.permadeathMode === 2 || lastFile?.lastScene === 'PermaDeath';
+                    const isSteelSoul = (firstFile?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
+                    const isResearchView = run.user.id !== sessionUserId && run.visibility === 'private';
+
+                    return {
+                        ...run,
+                        user: {
+                            id: isResearchView ? '' : run.user.id,
+                            name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed user',
+                        },
+                        startedAt: firstFile?.startedAt ?? firstFile?.createdAt,
+                        lastPlayedAt: lastFile?.endedAt ?? lastFile?.createdAt,
+                        lastFile,
+                        isSteelSoul,
+                        isBrokenSteelSoul,
+                    };
+                })
+                .sort((a, b) => {
+                    if (a.lastPlayedAt && b.lastPlayedAt) {
+                        return b.lastPlayedAt.getTime() - a.lastPlayedAt.getTime();
+                    } else if (a.lastPlayedAt) {
+                        return -1;
+                    } else if (b.lastPlayedAt) {
+                        return 1;
+                    } else {
+                        return b.createdAt.getTime() - a.createdAt.getTime();
+                    }
+                });
+        }),
 
     // TODO: remove
     // createUploadUrl: protectedProcedure

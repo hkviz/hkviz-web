@@ -1,5 +1,5 @@
 import type * as d3 from 'd3';
-import { type RefObject, useEffect, useRef } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { SCALE_FACTOR } from '../map-data/rooms';
 import { PlayerPositionEvent } from '../recording-files/recording';
@@ -90,7 +90,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 .attr('fill', 'none')
                 .attr('data-ms-into-game', (d) => d.msIntoGame)
                 .style('stroke-dasharray', (d) =>
-                    d.mapDistanceToPrevious != null && d.mapDistanceToPrevious > 0.5 * SCALE_FACTOR ? '1, 1' : 'none',
+                    d.mapDistanceToPrevious != null && d.mapDistanceToPrevious > 1 * SCALE_FACTOR ? '1, 1' : 'none',
                 );
 
             return {
