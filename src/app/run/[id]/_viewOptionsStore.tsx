@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import { type CombinedRecording } from '~/lib/viz/recording-files/recording';
-import { type AggregationVariable, type AggregatedRunData } from '~/lib/viz/recording-files/run-aggregation-store';
+import { type AggregatedRunData, type AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
@@ -16,7 +16,7 @@ function createViewOptionsStore() {
                 traceVisibility: 'animated' as TraceVisibility,
                 isPlaying: false as boolean,
                 animationMsIntoGame: 0,
-                animationSpeedMultiplier: 50,
+                animationSpeedMultiplier: 100,
                 recording: null as CombinedRecording | null,
                 aggregatedRunData: null as AggregatedRunData | null,
                 timeFrame: { min: 0, max: 0 },

@@ -12,9 +12,9 @@ import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files
 import { type AppRouterOutput } from '~/server/api/types';
 import { AnimationOptions } from './_animation_options';
 import { RoomInfo } from './_room_infos';
+import { RunInfos } from './_run_infos';
 import { useViewOptionsStoreRoot } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
-import { RunInfos } from './_run_infos';
 
 interface Props {
     session: Session | null;

@@ -183,15 +183,27 @@
     background-color: transparent;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 6px;
     border: 3px solid transparent;
     background-clip: content-box;
 }
 
+
 .dark ::-webkit-scrollbar-thumb,
 .dark::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+.dark::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.6);
 }
 
 .app-region-drag {
@@ -206,6 +218,7 @@
 
 :root {
     --main-nav-height: max(env(titlebar-area-height, 56px), 40px);
+    --footer-height: 2.5rem;
 }
 
 .main-nav {

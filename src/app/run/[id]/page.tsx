@@ -1,10 +1,10 @@
 import { TRPCError } from '@trpc/server';
 import { notFound } from 'next/navigation';
+import { AuthNeeded } from '~/app/_components/auth-needed';
 import { SingleRunClientPage } from '~/app/run/[id]/_page';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-wrapper';
-import { AuthNeeded } from '~/app/_components/auth-needed';
 
 export default async function SingleRunPage({ params }: { params: { id: string } }) {
     const session = await getServerAuthSession();
@@ -17,7 +17,7 @@ export default async function SingleRunPage({ params }: { params: { id: string }
         const runData = await (await apiFromServer()).run.getMetadataById({ id: params.id });
 
         return (
-            <ContentWrapper>
+            <ContentWrapper footerOutOfSight={true}>
                 <SingleRunClientPage runData={runData} session={session} />
             </ContentWrapper>
         );
@@ -26,9 +26,11 @@ export default async function SingleRunPage({ params }: { params: { id: string }
             notFound();
         }
         if (e instanceof TRPCError && e.code === 'FORBIDDEN') {
-            return (<ContentCenterWrapper>
-                This run is set to private and can only be viewed by its owner.
-            </ContentCenterWrapper>);
+            return (
+                <ContentCenterWrapper>
+                    This run is set to private and can only be viewed by its owner.
+                </ContentCenterWrapper>
+            );
         }
         throw e;
     }

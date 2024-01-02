@@ -1,11 +1,11 @@
-import { cn } from '@/lib/utils';
 import { NavigationMenuLink } from '@/components/ui/navigation-menu';
+import { cn } from '@/lib/utils';
+import { type MaterialSymbol } from 'material-symbols';
 import React from 'react';
 import { MatSymbol } from './mat-symbol';
-import { type MaterialSymbol } from 'material-symbols';
 
 type Props = React.ComponentPropsWithoutRef<'a'> & {
-    icon: MaterialSymbol;
+    icon?: MaterialSymbol;
 };
 
 export const ListItem = React.forwardRef<React.ElementRef<'a'>, Props>(
@@ -21,7 +21,7 @@ export const ListItem = React.forwardRef<React.ElementRef<'a'>, Props>(
                         )}
                         {...props}
                     >
-                        <MatSymbol icon={icon} className="text-2xl font-light" />
+                        {icon && <MatSymbol icon={icon} className="text-2xl font-light" />}
                         <div className="grow">
                             <div className="text-sm font-medium leading-none">{title}</div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">{children}</p>

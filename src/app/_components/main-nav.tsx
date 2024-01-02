@@ -25,19 +25,22 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                                 <HKVizText />
                             </NavigationMenuLink>
                         </Link>
-                        <Link href="/getting-started" legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                Getting started
-                            </NavigationMenuLink>
-                        </Link>
-                        <Link href="/credits" legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>Credits</NavigationMenuLink>
-                        </Link>
-                        <Link href="/privacy-policy" legacyBehavior passHref>
-                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                Privacy policy
-                            </NavigationMenuLink>
-                        </Link>
+                        {/* <NavigationMenuItem>
+                            <NavigationMenuTrigger chevronClassName="hidden">
+                                <MatSymbol icon="more_vert" />
+                            </NavigationMenuTrigger>
+                            <NavigationMenuContent>
+                                <ul className="grid w-[350px] gap-3 p-4">
+                                    <Link href="/settings" legacyBehavior passHref>
+                                        <ListItem title="Settings"></ListItem>
+                                    </Link>
+                                    <Link href="/api/auth/signout" legacyBehavior passHref>
+                                        <ListItem title="Logout" />
+                                    </Link>
+                                </ul>
+                            </NavigationMenuContent>
+                        </NavigationMenuItem> */}
+
                         {/* {session && (
                         <Link href="/upload" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>Upload run</NavigationMenuLink>
