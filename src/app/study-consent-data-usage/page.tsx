@@ -1,9 +1,9 @@
-import { apiFromServer } from '~/trpc/from-server';
-import { DataCollectionStudyParticipationClientForm } from './_client_components';
 import { cookies } from 'next/headers';
 import { getServerAuthSession } from '~/server/auth';
+import { apiFromServer } from '~/trpc/from-server';
 import { AuthNeeded } from '../_components/auth-needed';
 import { MdxInnerWrapper, MdxOuterWrapper } from '../_components/mdx-layout';
+import { DataCollectionStudyParticipationClientForm } from './_client_components';
 import MdxContent from './_page.mdx';
 
 async function DataCollectionStudyParticipationForm({
@@ -34,11 +34,17 @@ export default async function DataCollectionStudyParticipationPage() {
 
     return (
         <MdxOuterWrapper>
-            <DataCollectionStudyParticipationForm formPositionText="bellow" className="mx-auto my-[10rem]" />
+            <DataCollectionStudyParticipationForm
+                formPositionText="below"
+                className="my-[min(10rem,15vh)] mx-auto"
+            />
             <MdxInnerWrapper>
                 <MdxContent />
             </MdxInnerWrapper>
-            <DataCollectionStudyParticipationForm className="mx-auto mb-[20rem] mt-[10rem]" formPositionText="above" />
+            <DataCollectionStudyParticipationForm
+                className="mt-[min(10rem,15vh)] mx-auto mb-[20rem]"
+                formPositionText="above"
+            />
         </MdxOuterWrapper>
     );
 }
