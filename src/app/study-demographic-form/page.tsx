@@ -1,12 +1,14 @@
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { cookies, headers } from 'next/headers';
+import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { StudyDemographicClientForm } from './_components';
 
 export default async function DataCollectionStudyParticipationPage() {
     const api = await apiFromServer();
-    // const session = await getServerAuthSession();
+
+    const session = await getServerAuthSession();
 
     // if (!session) {
     //     return <AuthNeeded />;
@@ -17,7 +19,7 @@ export default async function DataCollectionStudyParticipationPage() {
     const countryShortCode = headers().get('X-Vercel-IP-Country');
     const hasIngameAuthCookie = cookies().get('ingameAuthUrlId') != null;
 
-    const demographics = await api.studyDemographics.getOwn({});
+    const demographics = session ? await api.studyDemographics.getOwn({}) : null;
 
     return (
         <ContentCenterWrapper>
