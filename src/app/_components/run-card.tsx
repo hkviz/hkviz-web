@@ -160,9 +160,7 @@ export function RunCard({ run, showUser = true }: { run: Run; showUser?: boolean
                             </RunCardEpicInfo>
                         )}
                         {lastFile?.unlockedCompletionRate && lastFile?.completionPercentage && (
-                            <RunCardEpicInfo title="Completion:">
-                                {lastFile.completionPercentage}%
-                            </RunCardEpicInfo>
+                            <RunCardEpicInfo title="Completion:">{lastFile.completionPercentage}%</RunCardEpicInfo>
                         )}
                         {run.user?.name && showUser && <RunCardEpicInfo title="By:">{run.user?.name}</RunCardEpicInfo>}
                     </div>

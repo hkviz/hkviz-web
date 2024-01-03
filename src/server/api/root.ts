@@ -2,6 +2,7 @@ import { createTRPCRouter } from '~/server/api/trpc';
 import { accountRouter } from './routers/account';
 import { ingameAuthRouter } from './routers/ingameauth';
 import { runRouter } from './routers/run';
+import { studyDemographicsRouter } from './routers/study-demographics';
 import { studyParticipationRouter } from './routers/study-participation';
 
 /**
@@ -14,4 +15,5 @@ export const appRouter = createTRPCRouter({
     ingameAuth: ingameAuthRouter,
     account: accountRouter,
     studyParticipation: studyParticipationRouter,
+    studyDemographics: studyDemographicsRouter,
 });

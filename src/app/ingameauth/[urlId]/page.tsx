@@ -1,16 +1,18 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';
 import { IngameAuthCard } from './_components';
-import { cookies } from 'next/headers';
 
 export default async function IngameAuthPage({ params }: { params: { urlId: string } }) {
     const session = await getServerAuthSession();
     const urlId = params.urlId === 'cookie' ? cookies().get('ingameAuthUrlId')!.value : params.urlId;
 
-    const ingameAuth = await (await apiFromServer()).ingameAuth.getByUrlIdIfNew({ urlId });
+    const api = await apiFromServer();
+
+    const ingameAuth = await api.ingameAuth.getByUrlIdIfNew({ urlId });
 
     if (!ingameAuth || ingameAuth.user) {
         return (
@@ -36,10 +38,16 @@ export default async function IngameAuthPage({ params }: { params: { urlId: stri
         redirect(`/ingameauth/${urlId}/login-redirect`);
     }
 
-    const dataCollectionStudyParticipation = await (await apiFromServer()).studyParticipation.getStudyParticipation({});
+    const dataCollectionStudyParticipation = await api.studyParticipation.getStudyParticipation({});
 
     if (!dataCollectionStudyParticipation) {
         redirect(`/ingameauth/${urlId}/consent-redirect`);
+    }
+
+    const userDemographics = await api.studyDemographics.getOwn({});
+
+    if (!userDemographics) {
+        redirect(`/ingameauth/${urlId}/demographics-redirect`);
     }
 
     // at this point nobody else should be able to use this token to access this page:
@@ -47,10 +55,7 @@ export default async function IngameAuthPage({ params }: { params: { urlId: stri
 
     return (
         <ContentCenterWrapper>
-            <IngameAuthCard
-                ingameAuthId={ingameAuth.id}
-                userName={session.user.name ?? 'unnamed account'}
-            />
+            <IngameAuthCard ingameAuthId={ingameAuth.id} userName={session.user.name ?? 'unnamed account'} />
         </ContentCenterWrapper>
     );
 }

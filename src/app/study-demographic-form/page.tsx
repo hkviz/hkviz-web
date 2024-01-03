@@ -1,9 +1,11 @@
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { headers } from 'next/headers';
+import { cookies, headers } from 'next/headers';
+import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { StudyDemographicClientForm } from './_components';
 
-export default function DataCollectionStudyParticipationPage() {
+export default async function DataCollectionStudyParticipationPage() {
+    const api = await apiFromServer();
     // const session = await getServerAuthSession();
 
     // if (!session) {
@@ -13,6 +15,9 @@ export default function DataCollectionStudyParticipationPage() {
     // const hasIngameAuthCookie = cookies().get('ingameAuthUrlId') != null;
 
     const countryShortCode = headers().get('X-Vercel-IP-Country');
+    const hasIngameAuthCookie = cookies().get('ingameAuthUrlId') != null;
+
+    const demographics = await api.studyDemographics.getOwn({});
 
     return (
         <ContentCenterWrapper>
@@ -24,7 +29,11 @@ export default function DataCollectionStudyParticipationPage() {
                         Your demographic data is deleted after the study is conducted.
                     </CardDescription>
                 </CardHeader>
-                <StudyDemographicClientForm requestCountryShortCode={countryShortCode ?? undefined} />
+                <StudyDemographicClientForm
+                    requestCountryShortCode={countryShortCode ?? undefined}
+                    hasIngameAuthCookie={hasIngameAuthCookie}
+                    hasPreviouslySubmitted={!!demographics}
+                />
             </Card>
         </ContentCenterWrapper>
     );

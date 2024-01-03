@@ -13,6 +13,10 @@ import {
     varchar,
 } from 'drizzle-orm/mysql-core';
 import { type AdapterAccount } from 'next-auth/adapters';
+import { ageRangeCodes } from '~/lib/types/age-range';
+import { countryCodes } from '~/lib/types/country';
+import { genderCodes } from '~/lib/types/gender';
+import { hkExperienceCodes } from '~/lib/types/hk-experience';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 
 const UUID_LENGTH = 36;
@@ -90,6 +94,25 @@ export const dataCollectionStudyParticipations = mysqlTable('userDataCollectionR
 
 export const dataCollectionStudyParticipationRelations = relations(dataCollectionStudyParticipations, ({ one }) => ({
     user: one(users, { fields: [dataCollectionStudyParticipations.userId], references: [users.id] }),
+}));
+
+export const userDemographics = mysqlTable('userDemographic', {
+    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
+
+    previousHollowKnightExperience: mysqlEnum('previous_hollow_knight_experience', hkExperienceCodes).notNull(),
+    ageRange: mysqlEnum('age_range', ageRangeCodes).notNull(),
+    gender: mysqlEnum('gender', genderCodes).notNull(),
+    genderCustom: varchar('gender_custom', { length: 124 }),
+    country: mysqlEnum('country', countryCodes).notNull(),
+
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
+});
+
+export const userDemographicsRelations = relations(userDemographics, ({ one }) => ({
+    user: one(users, { fields: [userDemographics.userId], references: [users.id] }),
 }));
 
 export const sessions = mysqlTable(
