@@ -17,6 +17,7 @@ import { ageRangeCodes } from '~/lib/types/age-range';
 import { countryCodes } from '~/lib/types/country';
 import { genderCodes } from '~/lib/types/gender';
 import { hkExperienceCodes } from '~/lib/types/old-hk-experience';
+import { tagCodes } from '~/lib/types/tags';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 
 const UUID_LENGTH = 36;
@@ -185,6 +186,12 @@ export const runs = mysqlTable(
     }),
 );
 
+export const runsRelations = relations(runs, ({ one, many }) => ({
+    user: one(users, { fields: [runs.userId], references: [users.id] }),
+    files: many(runFiles),
+    tags: many(runTags),
+}));
+
 export const runFiles = mysqlTable('runfile', {
     // this id is also used to find the file inside the r2 bucket
     id: varchar('id', { length: UUID_LENGTH }).notNull().primaryKey(),
@@ -219,13 +226,23 @@ export const runFiles = mysqlTable('runfile', {
     endedAt: timestamp('ended_at'),
 });
 
-export const hkRunsRelations = relations(runs, ({ one, many }) => ({
-    user: one(users, { fields: [runs.userId], references: [users.id] }),
-    files: many(runFiles),
+export const runFilesRelations = relations(runFiles, ({ one }) => ({
+    run: one(runs, { fields: [runFiles.runId], references: [runs.id] }),
 }));
 
-export const hkRunFilesRelations = relations(runFiles, ({ one }) => ({
-    run: one(runs, { fields: [runFiles.runId], references: [runs.id] }),
+export const runTags = mysqlTable(
+    'runTag',
+    {
+        runId: varchar('run_id', { length: UUID_LENGTH }).notNull(),
+        code: mysqlEnum('tag', tagCodes).notNull(),
+    },
+    (runTag) => ({
+        compoundKey: primaryKey(runTag.runId, runTag.code),
+    }),
+);
+
+export const runTagsRelations = relations(runTags, ({ one, many }) => ({
+    run: one(runs, { fields: [runTags.runId], references: [runs.id] }),
 }));
 
 export const ingameAuth = mysqlTable(

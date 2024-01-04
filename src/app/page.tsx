@@ -10,7 +10,7 @@ import { RunCard } from './_components/run-card';
 export default async function Home() {
     const session = await getServerAuthSession();
     const userRuns = session?.user?.id
-        ? await (await apiFromServer()).run.getUsersRuns({ userId: session.user.id })
+        ? await (await apiFromServer()).run.findRuns({ userId: session.user.id })
         : [];
 
     return (
@@ -51,7 +51,7 @@ export default async function Home() {
                             <ul className="flex flex-col gap-2">
                                 {userRuns.map((run) => (
                                     <li key={run.id}>
-                                        <RunCard run={run} key={run.id} showUser={false} />
+                                        <RunCard run={run} key={run.id} showUser={false} isOwnRun={true} />
                                     </li>
                                 ))}
                             </ul>

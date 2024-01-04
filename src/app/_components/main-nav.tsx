@@ -25,6 +25,11 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                                 <HKVizText />
                             </NavigationMenuLink>
                         </Link>
+                        <Link href="/run" legacyBehavior passHref>
+                            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                                Public gameplays
+                            </NavigationMenuLink>
+                        </Link>
                     </NavigationMenuList>
                 </NavigationMenu>
                 <div className="grow" />

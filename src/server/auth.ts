@@ -19,7 +19,6 @@ declare module 'next-auth' {
     interface Session extends DefaultSession {
         user: {
             id: string;
-            isResearcher: boolean;
             // ...other properties
             // role: UserRole;
         } & DefaultSession['user'];

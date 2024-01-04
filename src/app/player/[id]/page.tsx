@@ -5,7 +5,7 @@ import { RunCard } from '../../_components/run-card';
 
 export default async function Home({ params }: { params: { id: string } }) {
     const session = await getServerAuthSession();
-    const userRuns = await (await apiFromServer()).run.getUsersRuns({ userId: params.id });
+    const userRuns = await (await apiFromServer()).run.findRuns({ userId: params.id });
 
     const userName = userRuns[0]?.user?.name ?? 'Unnamed user';
     const isOwnProfile = session?.user?.id === params.id;

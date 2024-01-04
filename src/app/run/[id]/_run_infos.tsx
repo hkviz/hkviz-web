@@ -1,16 +1,17 @@
-import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
-import { RelativeDate } from '../../_components/date';
-import { type Session } from 'next-auth';
-import { type AppRouterOutput } from '~/server/api/types';
-import { type RunVisibility } from '~/lib/viz/types/run-visibility';
-import { assertNever } from '~/lib/utils';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useState } from 'react';
-import { Label } from '@/components/ui/label';
-import { api } from '~/trpc/react';
-import { useToast } from '@/components/ui/use-toast';
 import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
+import { useToast } from '@/components/ui/use-toast';
+import { type Session } from 'next-auth';
 import Link from 'next/link';
+import { useState } from 'react';
+import { RunTags } from '~/app/_components/run-tags';
+import { assertNever } from '~/lib/utils';
+import { type RunVisibility } from '~/lib/viz/types/run-visibility';
+import { type AppRouterOutput } from '~/server/api/types';
+import { api } from '~/trpc/react';
+import { RelativeDate } from '../../_components/date';
 
 interface Props {
     session: Session | null;
@@ -86,6 +87,16 @@ export function RunInfos({ session, runData }: Props) {
                                 </SelectContent>
                             </Select>
                         )}
+                    </TableCell>
+                </TableRow>
+                <TableRow>
+                    <TableHead>
+                        <Label className="flex items-center" htmlFor="visibleRunSelectTrigger">
+                            Tags
+                        </Label>
+                    </TableHead>
+                    <TableCell>
+                        <RunTags codes={runData.tags} runId={runData.id} isOwn={isFromUser} />
                     </TableCell>
                 </TableRow>
             </TableBody>

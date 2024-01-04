@@ -6,7 +6,7 @@ function AbsoluteDate({ date }: { date: Date }) {
 }
 
 export function RelativeDate({ date, withTooltip = true }: { date: Date; withTooltip?: boolean }) {
-    const relativeDate = formatDistance(date, new Date(), { addSuffix: true });
+    const relativeDate = formatDistance(date, new Date(), { addSuffix: true }).replace(/about /, '');
 
     if (!withTooltip) return <>{relativeDate}</>;
 
