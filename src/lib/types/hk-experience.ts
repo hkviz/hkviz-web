@@ -24,7 +24,9 @@ export function hkExperienceFinished(input: HkExerienceInput): boolean {
     return (
         input.playedBefore === false ||
         input.gotDreamnail === false ||
-        (input.didEndboss === false && input.enteredWhitePalace === false) ||
+        ((input.didEndboss === false || input.enteredWhitePalace === false) &&
+            input.didEndboss !== undefined &&
+            input.enteredWhitePalace !== undefined) ||
         input.got112Percent !== undefined
     );
 }
