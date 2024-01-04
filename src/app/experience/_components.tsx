@@ -30,7 +30,7 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
     const showDreamnail = values.playedBefore === true;
     const showEndboss = showDreamnail && values.gotDreamnail === true;
     const showWhitePalace = showEndboss; // showed simultaneously with endboss
-    const show112 = showWhitePalace && values.didEndboss && values.enteredWhitePalace;
+    const show112 = (showWhitePalace && values.didEndboss && values.enteredWhitePalace) ?? false;
 
     const showSubmit = hkExperienceFinished(values);
 
