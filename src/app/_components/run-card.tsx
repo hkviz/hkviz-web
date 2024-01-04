@@ -170,9 +170,15 @@ export function RunCard({
                             </span>
                         )}
                     </div>
-                    <div className="mt-1 sm:mt-4">
-                        <RunTags codes={run.tags} runId={run.id} isOwn={isOwnRun} />
-                    </div>
+                    {(isOwnRun || run.tags.length > 0) && <div className="mt-1 sm:mt-4">
+                        <RunTags
+                            codes={run.tags}
+                            runId={run.id}
+                            isOwn={isOwnRun}
+                            addButtonClassName="opacity-0 group-hover:opacity-100 transition-opacity"
+                            removeButtonClassName="opacity-0 group-hover:opacity-100 transition-opacity"
+                        />
+                    </div>}
                 </div>
                 <div className="flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif sm:flex-col sm:justify-center sm:gap-2 sm:text-right">
                     {lastFile?.playTime && (

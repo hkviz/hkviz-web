@@ -25,11 +25,13 @@ export function RunTag({
     runId,
     isOwn,
     onRemovedTag,
+    removeButtonClassName,
 }: {
     tag: Tag;
     runId: string;
     isOwn: boolean;
     onRemovedTag?: (tag: Tag) => void;
+    removeButtonClassName?: string;
 }) {
     const removeTagMutation = api.run.removeTag.useMutation();
 
@@ -50,7 +52,7 @@ export function RunTag({
             {isOwn && (
                 <Button
                     variant="ghost"
-                    className="relative -m-2 -mr-3 ml-2 h-8 w-8 rounded-full"
+                    className={cn('relative -m-2 -mr-3 ml-2 h-8 w-8 rounded-full', removeButtonClassName)}
                     size="icon"
                     onClick={removeTag}
                     disabled={removeTagMutation.isSuccess}
@@ -67,11 +69,15 @@ export function RunTags({
     runId,
     isOwn,
     className,
+    addButtonClassName,
+    removeButtonClassName,
 }: {
     codes: TagCode[];
     runId: string;
     isOwn: boolean;
     className?: string;
+    addButtonClassName?: string;
+    removeButtonClassName?: string;
 }) {
     const [codes, setCodes] = useState<TagCode[]>(initialCodes);
     const runTags = useMemo(() => codes.map(tagFromCode).sort((a, b) => a.order - b.order), [codes]);
@@ -90,14 +96,23 @@ export function RunTags({
     return (
         <div className={cn('flex flex-row flex-wrap gap-1 font-sans', className)}>
             <ul className="flex flex-row flex-wrap gap-1">
+                {runTags.length === 0 && !addTagMutation.isLoading && (
+                    <li className="z-[8] mr-2 text-white opacity-80">No tags</li>
+                )}
                 {runTags.map((tag) => (
                     <li key={tag.code} className="w-fit">
-                        <RunTag tag={tag} runId={runId} isOwn={isOwn} onRemovedTag={onRemovedTag} />
+                        <RunTag
+                            tag={tag}
+                            runId={runId}
+                            isOwn={isOwn}
+                            onRemovedTag={onRemovedTag}
+                            removeButtonClassName={removeButtonClassName}
+                        />
                     </li>
                 ))}
                 {addTagMutation.isLoading && (
                     <li>
-                        <Skeleton className="relative z-[8] h-6 w-[4rem]" />
+                        <Skeleton className="relative z-[8] h-6 w-[4rem] brightness-125" />
                     </li>
                 )}
                 {isOwn && (
@@ -108,7 +123,7 @@ export function RunTags({
                                     variant="outline"
                                     aria-label="Add tag"
                                     size="icon"
-                                    className="relative z-[8] h-8 w-8 rounded-full"
+                                    className={cn('relative z-[8] h-8 w-8 rounded-full', addButtonClassName)}
                                 >
                                     <Plus />
                                 </Button>

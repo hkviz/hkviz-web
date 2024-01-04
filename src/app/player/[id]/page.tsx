@@ -1,11 +1,18 @@
+import { findRuns } from '~/server/api/routers/runs-find';
 import { getServerAuthSession } from '~/server/auth';
-import { apiFromServer } from '~/trpc/from-server';
+import { db } from '~/server/db';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';
 import { RunCard } from '../../_components/run-card';
 
 export default async function Home({ params }: { params: { id: string } }) {
     const session = await getServerAuthSession();
-    const userRuns = await (await apiFromServer()).run.findRuns({ userId: params.id });
+    const userRuns = await findRuns({
+        db,
+        filter: {
+            visibility: ['public'],
+            userId: params.id,
+        },
+    });
 
     const userName = userRuns[0]?.user?.name ?? 'Unnamed user';
     const isOwnProfile = session?.user?.id === params.id;
@@ -30,7 +37,7 @@ export default async function Home({ params }: { params: { id: string } }) {
                             <ul className="flex flex-col gap-2">
                                 {userRuns.map((run) => (
                                     <li key={run.id}>
-                                        <RunCard run={run} key={run.id} showUser={false} />
+                                        <RunCard run={run} key={run.id} showUser={false} isOwnRun={isOwnProfile} />
                                     </li>
                                 ))}
                             </ul>

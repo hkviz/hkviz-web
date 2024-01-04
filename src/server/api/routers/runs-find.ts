@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { tagSchema } from '~/lib/types/tags';
 import { visibilitySchema } from '~/lib/types/visibility';
 import { type DB } from '~/server/db';
 
@@ -23,6 +24,7 @@ export const runFilesMetaFields = {
 export const runFilterSchema = z.object({
     userId: z.string().optional(),
     visibility: z.array(visibilitySchema).optional(),
+    tag: z.array(tagSchema).optional(),
 });
 
 export type RunFilter = z.infer<typeof runFilterSchema>;
