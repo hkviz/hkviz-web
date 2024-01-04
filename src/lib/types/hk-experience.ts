@@ -1,30 +1,48 @@
 import { z } from 'zod';
 
-export const hkExperiences = [
-    {
-        code: 'never-played',
-        name: 'I have never played HollowKnight before',
-    },
-    {
-        code: 'played-some',
-        name: 'I played before, but did not see the credits before (i.e. I did not finish the game)',
-    },
-    {
-        code: 'played-a-lot',
-        name: 'I played before, and saw the credits before (i.e. I finished the game), but I do not have 112% completion',
-    },
-    {
-        code: 'played-a-lot-112',
-        name: 'I played before, and saw the credits before (i.e. I finished the game), and I have 112% completion',
-    },
-] as const;
+export const hkExperienceSchema = z.object({
+    playedBefore: z.boolean(),
+    gotDreamnail: z.boolean(),
+    didEndboss: z.boolean(),
+    enteredWhitePalace: z.boolean(),
+    got112Percent: z.boolean(),
+});
 
-type CodesOf<T extends readonly { code: unknown }[]> = {
-    [I in keyof T]: T[I]['code'];
+export type HkExperience = z.infer<typeof hkExperienceSchema>;
+
+export type HkExerienceInput = { [key in keyof HkExperience]: HkExperience[key] | undefined };
+
+export const hkExperienceEmpty: HkExerienceInput = {
+    playedBefore: undefined,
+    gotDreamnail: undefined,
+    didEndboss: undefined,
+    enteredWhitePalace: undefined,
+    got112Percent: undefined,
 };
 
-type HKExperienceCodes = CodesOf<typeof hkExperiences>;
-export type HKExperienceCode = HKExperienceCodes[number];
-export const hkExperienceCodes = hkExperiences.map((it) => it.code) as unknown as HKExperienceCodes;
+export function hkExperienceFinished(input: HkExerienceInput): boolean {
+    return (
+        input.playedBefore === false ||
+        input.gotDreamnail === false ||
+        (input.didEndboss === false && input.enteredWhitePalace === false) ||
+        input.got112Percent !== undefined
+    );
+}
 
-export const hkExperienceSchema = z.enum(hkExperienceCodes);
+export function hkExperienceCleaned(input: HkExerienceInput): HkExperience {
+    const playedBefore = input.playedBefore ?? false;
+    const gotDreamnail = (playedBefore && input.gotDreamnail) ?? false;
+
+    const didEndboss = (gotDreamnail && input.didEndboss) ?? false;
+    const enteredWhitePalace = (gotDreamnail && input.enteredWhitePalace) ?? false;
+
+    const got112Percent = (didEndboss && enteredWhitePalace && input.got112Percent) ?? false;
+
+    return {
+        playedBefore,
+        gotDreamnail,
+        didEndboss,
+        enteredWhitePalace,
+        got112Percent,
+    };
+}

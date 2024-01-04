@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { ageRangeSchema } from './age-range';
 import { countrySchema } from './country';
 import { genderSchema } from './gender';
-import { hkExperienceSchema } from './hk-experience';
+import { hkExperienceSchema } from './old-hk-experience';
 
 export const studyDemographicSchema = z.object({
     previousHollowKnightExperience: hkExperienceSchema,

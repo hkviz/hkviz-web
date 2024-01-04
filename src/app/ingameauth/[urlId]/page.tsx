@@ -50,6 +50,12 @@ export default async function IngameAuthPage({ params }: { params: { urlId: stri
         redirect(`/ingameauth/${urlId}/demographics-redirect`);
     }
 
+    const hkExperience = await api.hkExperience.getOwn({});
+
+    if (!hkExperience) {
+        redirect(`/ingameauth/${urlId}/experience-redirect`);
+    }
+
     // at this point nobody else should be able to use this token to access this page:
     await (await apiFromServer()).ingameAuth.removeUrlId({ id: ingameAuth.id });
 

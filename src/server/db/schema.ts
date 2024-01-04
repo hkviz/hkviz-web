@@ -16,7 +16,7 @@ import { type AdapterAccount } from 'next-auth/adapters';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { countryCodes } from '~/lib/types/country';
 import { genderCodes } from '~/lib/types/gender';
-import { hkExperienceCodes } from '~/lib/types/hk-experience';
+import { hkExperienceCodes } from '~/lib/types/old-hk-experience';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 
 const UUID_LENGTH = 36;
@@ -104,6 +104,21 @@ export const userDemographics = mysqlTable('userDemographic', {
     gender: mysqlEnum('gender', genderCodes).notNull(),
     genderCustom: varchar('gender_custom', { length: 124 }),
     country: mysqlEnum('country', countryCodes).notNull(),
+
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
+});
+
+export const hkExperience = mysqlTable('hkExperience', {
+    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
+
+    playedBefore: boolean('played_before').notNull(),
+    gotDreamnail: boolean('got_dreamnail').notNull(),
+    didEndboss: boolean('did_enboss').notNull(),
+    enteredWhitePalace: boolean('entered_white_palace').notNull(),
+    got112Percent: boolean('got_112_percent').notNull(),
 
     createdAt: timestamp('created_at')
         .default(sql`CURRENT_TIMESTAMP`)

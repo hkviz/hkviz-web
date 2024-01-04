@@ -17,7 +17,6 @@ import { type z } from 'zod';
 import { ageRanges } from '~/lib/types/age-range';
 import { countries, isCountryShortCode } from '~/lib/types/country';
 import { genders } from '~/lib/types/gender';
-import { hkExperiences } from '~/lib/types/hk-experience';
 import { studyDemographicDefaultData, studyDemographicSchema } from '~/lib/types/study-demographic-data';
 import { api } from '~/trpc/react';
 
@@ -41,6 +40,7 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
         defaultValues: {
             ...studyDemographicDefaultData,
             country: isCountryShortCode(props.requestCountryShortCode) ? props.requestCountryShortCode : undefined,
+            previousHollowKnightExperience: 'never-played',
         },
     });
 
@@ -79,7 +79,7 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
             <form onSubmit={form.handleSubmit(onSubmit)}>
                 <fieldset disabled={saveMutation.isLoading}>
                     <CardContent className="space-y-4">
-                        <FormField
+                        {/* <FormField
                             control={form.control}
                             name="previousHollowKnightExperience"
                             render={({ field }) => (
@@ -107,7 +107,7 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                                     <FormMessage />
                                 </FormItem>
                             )}
-                        />
+                        /> */}
 
                         <FormField
                             control={form.control}
