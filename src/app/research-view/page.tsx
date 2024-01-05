@@ -1,6 +1,6 @@
 import { raise } from '~/lib/utils';
 import { assertIsResearcher } from '~/server/api/routers/lib/researcher';
-import { findRuns } from '~/server/api/routers/runs-find';
+import { findRuns } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
 import { AuthNeeded } from '../_components/auth-needed';

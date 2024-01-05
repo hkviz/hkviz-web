@@ -1,4 +1,4 @@
-import { findRuns } from '~/server/api/routers/runs-find';
+import { findRuns } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';

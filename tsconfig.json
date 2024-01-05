@@ -30,7 +30,7 @@
         "**/*.tsx",
         "**/*.cjs",
         "**/*.mjs",
-        ".next/types/**/*.ts",
+        // ".next/types/**/*.ts",
         "src/app/privacy-policy/page.mdx"
     ],
     "exclude": ["node_modules"]

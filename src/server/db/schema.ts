@@ -1,4 +1,4 @@
-import { relations, sql } from 'drizzle-orm';
+import { relations, sql, type HasDefault, type NotNull } from 'drizzle-orm';
 import {
     boolean,
     double,
@@ -11,13 +11,15 @@ import {
     timestamp,
     unique,
     varchar,
+    type MySqlBooleanBuilderInitial,
 } from 'drizzle-orm/mysql-core';
 import { type AdapterAccount } from 'next-auth/adapters';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { countryCodes } from '~/lib/types/country';
 import { genderCodes } from '~/lib/types/gender';
 import { hkExperienceCodes } from '~/lib/types/old-hk-experience';
-import { tagCodes } from '~/lib/types/tags';
+import { oldTagCodes } from '~/lib/types/old-tags';
+import { tags, type TagCode } from '~/lib/types/tags';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 
 const UUID_LENGTH = 36;
@@ -159,6 +161,12 @@ export const verificationTokens = mysqlTable(
     }),
 );
 
+const runTagColumns = Object.fromEntries(
+    tags.map((tag) => [`tag_${tag.code}`, boolean(`tag_${tag.code}`).notNull().default(false)]),
+) as {
+    [Code in TagCode as `tag_${Code}`]: HasDefault<NotNull<MySqlBooleanBuilderInitial<`tag_${Code}`>>>;
+};
+
 export const runs = mysqlTable(
     'run',
     {
@@ -179,6 +187,8 @@ export const runs = mysqlTable(
             .notNull(),
         updatedAt: timestamp('updatedAt').onUpdateNow(),
         visibility: mysqlEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),
+
+        ...runTagColumns,
     },
     (run) => ({
         userIdIdx: index('userId_idx').on(run.userId),
@@ -189,7 +199,6 @@ export const runs = mysqlTable(
 export const runsRelations = relations(runs, ({ one, many }) => ({
     user: one(users, { fields: [runs.userId], references: [users.id] }),
     files: many(runFiles),
-    tags: many(runTags),
 }));
 
 export const runFiles = mysqlTable('runfile', {
@@ -234,7 +243,7 @@ export const runTags = mysqlTable(
     'runTag',
     {
         runId: varchar('run_id', { length: UUID_LENGTH }).notNull(),
-        code: mysqlEnum('tag', tagCodes).notNull(),
+        code: mysqlEnum('tag', oldTagCodes).notNull(),
     },
     (runTag) => ({
         compoundKey: primaryKey(runTag.runId, runTag.code),

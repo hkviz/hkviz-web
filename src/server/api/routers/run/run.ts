@@ -4,33 +4,16 @@ import { r2FileHead, r2GetSignedDownloadUrl, r2GetSignedUploadUrl, r2RunPartFile
 
 import { TRPCError } from '@trpc/server';
 import { and, eq } from 'drizzle-orm';
-import { tagSchema } from '~/lib/types/tags';
+import { TagCode, tagSchema } from '~/lib/types/tags';
 import { raise } from '~/lib/utils';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
 import { type DB } from '~/server/db';
-import { runFiles, runTags, runs } from '~/server/db/schema';
-import { getUserIdFromIngameSession } from './ingameauth';
-import { assertIsResearcher } from './lib/researcher';
+import { runFiles, runs } from '~/server/db/schema';
+import { getUserIdFromIngameSession } from '../ingameauth';
+import { assertIsResearcher } from '../lib/researcher';
+import { runTagFieldsSelect } from './run-column-selects';
 import { findRuns, runFilterSchema } from './runs-find';
-
-const runFilesMetaFields = {
-    hkVersion: true,
-    playTime: true,
-    maxHealth: true,
-    mpReserveMax: true,
-    geo: true,
-    dreamOrbs: true,
-    permadeathMode: true,
-    mapZone: true,
-    killedHollowKnight: true,
-    killedFinalBoss: true,
-    killedVoidIdol: true,
-    completionPercentage: true,
-    unlockedCompletionRate: true,
-    dreamNailUpgraded: true,
-    lastScene: true,
-} as const;
 
 async function getOrCreateRunId(db: DB, localId: string, userId: string): Promise<string> {
     const existingRunId = (
@@ -65,6 +48,7 @@ export const runRouter = createTRPCRouter({
                     id: true,
                     description: true,
                     visibility: true,
+                    ...runTagFieldsSelect,
                 },
                 with: {
                     user: {
@@ -83,11 +67,6 @@ export const runRouter = createTRPCRouter({
                         },
                         orderBy: (files, { asc }) => [asc(files.partNumber)],
                         where: (files, { eq }) => eq(files.uploadFinished, true),
-                    },
-                    tags: {
-                        columns: {
-                            code: true,
-                        },
                     },
                 },
             })) ??
@@ -113,8 +92,12 @@ export const runRouter = createTRPCRouter({
         }
 
         return {
-            ...metadata,
-            tags: metadata.tags.map((tag) => tag.code),
+            id: metadata.id,
+            description: metadata.description,
+            visibility: metadata.visibility,
+            tags: Object.entries(metadata)
+                .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
+                .map((kv) => kv[0].slice(4)) as TagCode[],
             user: {
                 id: isResearchView ? '' : metadata.user.id,
                 name: isResearchView ? 'Anonym' : metadata.user.name ?? 'Unnamed user',
@@ -147,56 +130,25 @@ export const runRouter = createTRPCRouter({
                 throw new Error('Run not found');
             }
         }),
-    addTag: protectedProcedure
+    setTag: protectedProcedure
         .input(
             z.object({
                 id: z.string().uuid(),
                 code: tagSchema,
+                hasTag: z.boolean(),
             }),
         )
         .mutation(async ({ ctx, input }) => {
             const userId = ctx.session.user?.id ?? raise(new Error('Not logged in'));
 
-            const run = await ctx.db.query.runs.findFirst({
-                where: (run, { and, eq }) => and(eq(run.id, input.id), eq(run.userId, userId)),
-                columns: {
-                    id: true,
-                },
-            });
-            if (!run) {
-                throw new Error('Run not found');
-            }
-
-            const result = await ctx.db.insert(runTags).values({
-                runId: input.id,
-                code: input.code,
-            });
+            const result = await ctx.db
+                .update(runs)
+                .set({ [`tag_${input.code}`]: input.hasTag })
+                .where(and(eq(runs.id, input.id), eq(runs.userId, userId)));
 
             if (result.rowsAffected !== 1) {
                 throw new Error('Could not add tag');
             }
-        }),
-    removeTag: protectedProcedure
-        .input(
-            z.object({
-                id: z.string().uuid(),
-                code: tagSchema,
-            }),
-        )
-        .mutation(async ({ ctx, input }) => {
-            const userId = ctx.session.user?.id ?? raise(new Error('Not logged in'));
-
-            const run = await ctx.db.query.runs.findFirst({
-                where: (run, { and, eq }) => and(eq(run.id, input.id), eq(run.userId, userId)),
-                columns: {
-                    id: true,
-                },
-            });
-            if (!run) {
-                throw new Error('Run not found');
-            }
-
-            await ctx.db.delete(runTags).where(and(eq(runTags.runId, input.id), eq(runTags.code, input.code)));
         }),
     createUploadPartUrl: publicProcedure
         .input(

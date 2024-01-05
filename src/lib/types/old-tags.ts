@@ -1,5 +1,3 @@
-import { z } from 'zod';
-
 const lime = {
     className: 'bg-lime-600 dark:bg-lime-700 hover:bg-lime-900',
 };
@@ -32,9 +30,9 @@ const indigo = {
     className: 'bg-indigo-600 dark:bg-indigo-700 hover:bg-indigo-900',
 };
 
-export const tags = [
+export const oldTags = [
     {
-        code: 'first_playthrough',
+        code: 'first-playthrough',
         name: 'First Playthrough',
         order: 1,
         color: green,
@@ -52,7 +50,7 @@ export const tags = [
         color: fuchsia,
     },
     {
-        code: 'item_sync',
+        code: 'item-sync',
         name: 'ItemSync',
         order: 4,
         color: violet,
@@ -145,31 +143,11 @@ export const tags = [
     },
 ] as const;
 
-function tagsOfGroup(group: string | undefined) {
-    return tags.filter((it) => ('group' in it ? it.group : undefined) === group);
-}
-
-export const tagGroups = [
-    {
-        code: 'speedrun',
-        name: 'Speedrun',
-        tags: tagsOfGroup('speedrun'),
-    },
-] as const;
-
-export const ungroupedTags = tagsOfGroup(undefined);
-
 type CodesOf<T extends readonly { code: unknown }[]> = {
     [I in keyof T]: T[I]['code'];
 };
 
-type TagCodes = CodesOf<typeof tags>;
-export type Tag = (typeof tags)[number];
-export type TagCode = TagCodes[number];
-export const tagCodes = tags.map((it) => it.code) as unknown as TagCodes;
-
-export const tagSchema = z.enum(tagCodes);
-
-export function tagFromCode(code: TagCode): Tag {
-    return tags.find((it) => it.code === code)!;
-}
+type OldTagCodes = CodesOf<typeof oldTags>;
+export type OldTag = (typeof oldTags)[number];
+export type OldTagCode = OldTagCodes[number];
+export const oldTagCodes = oldTags.map((it) => it.code) as unknown as OldTagCodes;

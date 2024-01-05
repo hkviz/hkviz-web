@@ -33,10 +33,10 @@ export function RunTag({
     onRemovedTag?: (tag: Tag) => void;
     removeButtonClassName?: string;
 }) {
-    const removeTagMutation = api.run.removeTag.useMutation();
+    const setTagMutation = api.run.setTag.useMutation();
 
     async function removeTag() {
-        await removeTagMutation.mutateAsync({ id: runId, code: tag.code });
+        await setTagMutation.mutateAsync({ id: runId, code: tag.code, hasTag: false });
         onRemovedTag?.(tag);
     }
 
@@ -45,17 +45,17 @@ export function RunTag({
             className={cn(
                 'relative z-[8] overflow-hidden',
                 tag.color.className,
-                removeTagMutation.isLoading ? 'bg-zinc-700 hover:bg-zinc-700' : '',
+                setTagMutation.isLoading ? 'bg-zinc-700 hover:bg-zinc-700' : '',
             )}
         >
             <span className="font-bold">{tag.name}</span>
             {isOwn && (
                 <Button
                     variant="ghost"
-                    className={cn('relative -m-2 -mr-3 ml-2 h-8 w-8 rounded-full', removeButtonClassName)}
+                    className={cn('relative -m-2 -mr-3 ml-0 h-8 w-8 rounded-full', removeButtonClassName)}
                     size="icon"
                     onClick={removeTag}
-                    disabled={removeTagMutation.isSuccess}
+                    disabled={setTagMutation.isSuccess}
                 >
                     <X className="h-3 w-3" />
                 </Button>
@@ -82,10 +82,10 @@ export function RunTags({
     const [codes, setCodes] = useState<TagCode[]>(initialCodes);
     const runTags = useMemo(() => codes.map(tagFromCode).sort((a, b) => a.order - b.order), [codes]);
 
-    const addTagMutation = api.run.addTag.useMutation();
+    const setTagMutation = api.run.setTag.useMutation();
 
     async function addTag(tag: Tag) {
-        await addTagMutation.mutateAsync({ id: runId, code: tag.code });
+        await setTagMutation.mutateAsync({ id: runId, code: tag.code, hasTag: true });
         setCodes([...codes, tag.code]);
     }
 
@@ -96,7 +96,7 @@ export function RunTags({
     return (
         <div className={cn('flex flex-row flex-wrap gap-1 font-sans', className)}>
             <ul className="flex flex-row flex-wrap gap-1">
-                {runTags.length === 0 && !addTagMutation.isLoading && (
+                {runTags.length === 0 && !setTagMutation.isLoading && (
                     <li className="z-[8] mr-2 text-white opacity-80">No tags</li>
                 )}
                 {runTags.map((tag) => (
@@ -110,61 +110,82 @@ export function RunTags({
                         />
                     </li>
                 ))}
-                {addTagMutation.isLoading && (
+                {setTagMutation.isLoading && (
                     <li>
                         <Skeleton className="relative z-[8] h-6 w-[4rem] brightness-125" />
                     </li>
                 )}
                 {isOwn && (
                     <li>
-                        <DropdownMenu>
-                            <DropdownMenuTrigger asChild>
-                                <Button
-                                    variant="outline"
-                                    aria-label="Add tag"
-                                    size="icon"
-                                    className={cn('relative z-[8] h-8 w-8 rounded-full', addButtonClassName)}
-                                >
-                                    <Plus />
-                                </Button>
-                            </DropdownMenuTrigger>
-                            <DropdownMenuContent className="w-56">
-                                <DropdownMenuGroup>
-                                    {tagGroups.map((group) => (
-                                        <DropdownMenuSub key={group.code}>
-                                            <DropdownMenuSubTrigger>
-                                                <span>{group.name}</span>
-                                            </DropdownMenuSubTrigger>
-                                            <DropdownMenuPortal>
-                                                <DropdownMenuSubContent>
-                                                    {group.tags.map((tag) => (
-                                                        <DropdownMenuItem
-                                                            key={tag.code}
-                                                            onClick={() => addTag(tag)}
-                                                            disabled={codes.includes(tag.code)}
-                                                        >
-                                                            <Badge className={tag.color.className}>{tag.name}</Badge>
-                                                        </DropdownMenuItem>
-                                                    ))}
-                                                </DropdownMenuSubContent>
-                                            </DropdownMenuPortal>
-                                        </DropdownMenuSub>
-                                    ))}
-                                    {ungroupedTags.map((tag) => (
-                                        <DropdownMenuItem
-                                            key={tag.code}
-                                            onClick={() => addTag(tag)}
-                                            disabled={codes.includes(tag.code)}
-                                        >
-                                            <Badge className={tag.color.className}>{tag.name}</Badge>
-                                        </DropdownMenuItem>
-                                    ))}
-                                </DropdownMenuGroup>
-                            </DropdownMenuContent>
-                        </DropdownMenu>
+                        <TagDropdownMenu onClick={addTag}>
+                            <Button
+                                variant="outline"
+                                aria-label="Add tag"
+                                size="icon"
+                                className={cn('relative z-[8] h-8 w-8 rounded-full', addButtonClassName)}
+                            >
+                                <Plus />
+                            </Button>
+                        </TagDropdownMenu>
                     </li>
                 )}
             </ul>
         </div>
+    );
+}
+
+export type TagDropdownMenuProps = React.PropsWithChildren<{
+    isTagDisabled?: (tag: Tag) => boolean;
+} & ({
+    onClick: (tag: Tag|undefined) => void;
+    showAllOption: true;
+} | {
+    onClick: (tag: Tag) => void;
+    showAllOption?: false;
+})>;
+
+export function TagDropdownMenu({ onClick, isTagDisabled, children, showAllOption }: TagDropdownMenuProps) {
+    return (
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56">
+                <DropdownMenuGroup>
+                    {showAllOption && (
+                        <DropdownMenuItem onClick={() => onClick(undefined)}>
+                            All
+                        </DropdownMenuItem>
+                    )}
+                    {tagGroups.map((group) => (
+                        <DropdownMenuSub key={group.code}>
+                            <DropdownMenuSubTrigger>
+                                <span>{group.name}</span>
+                            </DropdownMenuSubTrigger>
+                            <DropdownMenuPortal>
+                                <DropdownMenuSubContent>
+                                    {group.tags.map((tag) => (
+                                        <DropdownMenuItem
+                                            key={tag.code}
+                                            onClick={() => onClick(tag)}
+                                            disabled={isTagDisabled?.(tag) ?? false}
+                                        >
+                                            <Badge className={tag.color.className}>{tag.name}</Badge>
+                                        </DropdownMenuItem>
+                                    ))}
+                                </DropdownMenuSubContent>
+                            </DropdownMenuPortal>
+                        </DropdownMenuSub>
+                    ))}
+                    {ungroupedTags.map((tag) => (
+                        <DropdownMenuItem
+                            key={tag.code}
+                            onClick={() => onClick(tag)}
+                            disabled={isTagDisabled?.(tag) ?? false}
+                        >
+                            <Badge className={tag.color.className}>{tag.name}</Badge>
+                        </DropdownMenuItem>
+                    ))}
+                </DropdownMenuGroup>
+            </DropdownMenuContent>
+        </DropdownMenu>
     );
 }
