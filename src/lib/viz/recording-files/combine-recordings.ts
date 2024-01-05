@@ -1,14 +1,15 @@
 import { raise } from '~/lib/utils';
-import { type PlayerDataField } from '../player-data/player-data';
+import { playerDataFields, type PlayerDataField } from '../player-data/player-data';
 import {
     CombinedRecording,
     HeroStateEvent,
-    type ParsedRecording,
     PlayerDataEvent,
-    RecordingFileVersionEvent,
-    isPlayerDataEventWithFieldType,
-    type RecordingEvent,
     PlayerPositionEvent,
+    RecordingFileVersionEvent,
+    SceneEvent,
+    isPlayerDataEventWithFieldType,
+    type ParsedRecording,
+    type RecordingEvent,
 } from './recording';
 
 export function combineRecordings(recordings: ParsedRecording[]): CombinedRecording {
@@ -20,10 +21,15 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     let isPaused = true;
 
     const previousPlayerDataEventsByField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>();
+    function getPreviousPlayerData<TField extends PlayerDataField>(field: TField) {
+        return previousPlayerDataEventsByField.get(field) as PlayerDataEvent<TField> | undefined;
+    }
 
     let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
     let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
     let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
+
+    const visitedScenesToCheckIfInPlayerData = [] as { sceneName: string; msIntoGame: number }[];
 
     for (const recording of recordings.sort((a, b) => a.partNumber! - b.partNumber!)) {
         for (const event of recording.events) {
@@ -35,6 +41,14 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 // console.log('time between sessions not counted', event.timestamp - lastTimestamp);
                 lastTimestamp = event.timestamp;
                 isPaused = false;
+            } else if (event instanceof SceneEvent) {
+                const visitedScenes = getPreviousPlayerData(playerDataFields.byFieldName.scenesVisited)?.value ?? [];
+
+                // if scene is not in player data, it might still be added in a few seconds or so, but if its not
+                // its added to the scenes below.
+                if (!visitedScenes.includes(event.sceneName)) {
+                    visitedScenesToCheckIfInPlayerData.push({ sceneName: event.sceneName, msIntoGame });
+                }
             } else if (event instanceof HeroStateEvent && event.field.name === 'isPaused') {
                 isPaused = event.value;
                 if (!isPaused) {
@@ -94,7 +108,34 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 }
             }
 
+            // adding scenes which the game did not record to the player data
+
             events.push(event);
+            addScenesWhichWhereNotAdded();
+        }
+    }
+    addScenesWhichWhereNotAdded(true);
+
+    function addScenesWhichWhereNotAdded(all = false) {
+        while (
+            visitedScenesToCheckIfInPlayerData.length > 0 &&
+            (all || visitedScenesToCheckIfInPlayerData[0]!.msIntoGame + 2000 < msIntoGame)
+        ) {
+            const { sceneName, msIntoGame } = visitedScenesToCheckIfInPlayerData.shift()!;
+            const previousScenesVisitedEvent = getPreviousPlayerData(playerDataFields.byFieldName.scenesVisited);
+            const previousValue = previousScenesVisitedEvent?.value ?? [];
+
+            const sceneEvent = new PlayerDataEvent<typeof playerDataFields.byFieldName.scenesVisited>({
+                timestamp: lastTimestamp,
+                value: [...previousValue, sceneName],
+                field: playerDataFields.byFieldName.scenesVisited,
+
+                previousPlayerPositionEvent: previousPlayerPositionEvent,
+                previousPlayerDataEventOfField: previousScenesVisitedEvent ?? null,
+            });
+            sceneEvent.msIntoGame = msIntoGame;
+            previousPlayerDataEventsByField.set(playerDataFields.byFieldName.scenesVisited, sceneEvent);
+            events.push(sceneEvent);
         }
     }
 
