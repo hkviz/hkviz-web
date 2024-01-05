@@ -1,12 +1,12 @@
-import { type RefObject, useEffect, useId, useRef, use, useMemo } from 'react';
-import { type RoomSpriteVariant, type RoomInfo } from '../map-data/rooms';
-import useEvent from 'react-use-event-hook';
-import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import type * as d3 from 'd3';
-import { useRoomColoring } from './use-room-coloring';
-import { playerDataFields } from '../player-data/player-data';
-import { assertNever } from '~/lib/utils';
+import { useEffect, useId, useMemo, useRef, type RefObject } from 'react';
+import useEvent from 'react-use-event-hook';
 import { useThemeStore } from '~/app/_components/theme-store';
+import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { assertNever } from '~/lib/utils';
+import { type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
+import { playerDataFields } from '../player-data/player-data';
+import { useRoomColoring } from './use-room-coloring';
 
 export function useMapRooms(
     {
@@ -17,6 +17,7 @@ export function useMapRooms(
         useViewOptionsStore,
         alwaysUseAreaAsColor = false,
         highlightSelectedRoom = true,
+        spritesWithoutSubSprites = true,
     }: {
         roomDataEnter: RefObject<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown> | undefined>;
         onClick?: (event: PointerEvent, r: RoomInfo) => void;
@@ -25,6 +26,7 @@ export function useMapRooms(
         useViewOptionsStore: UseViewOptionsStore;
         alwaysUseAreaAsColor?: boolean;
         highlightSelectedRoom?: boolean;
+        spritesWithoutSubSprites?: boolean;
     },
     dependencies: unknown[],
 ) {
@@ -39,7 +41,14 @@ export function useMapRooms(
         | undefined
     >(undefined);
 
-    const mainEffectDependencies = [componentId, onClickEvent, onMouseOverEvent, roomDataEnter, ...dependencies];
+    const mainEffectDependencies = [
+        componentId,
+        onClickEvent,
+        onMouseOverEvent,
+        roomDataEnter,
+        spritesWithoutSubSprites,
+        ...dependencies,
+    ];
 
     const roomColoring = useRoomColoring({ useViewOptionsStore, alwaysUseAreaAsColor });
     const roomVisibility = useViewOptionsStore((state) => state.roomVisibility);
@@ -71,7 +80,9 @@ export function useMapRooms(
             .attr('data-game-object-name', (r) => r.gameObjectName);
 
         // mask for each rooms rect
-        const roomMask = roomGs.append('svg:mask').attr('id', (r) => 'mask_' + componentId + '_' + r.spriteInfo.name);
+        const roomMask = roomGs
+            .append('svg:mask')
+            .attr('id', (r) => 'mask_' + componentId + '_' + r.spritesByVariant.normal.name);
 
         roomMask
             .append('svg:rect')
@@ -98,13 +109,15 @@ export function useMapRooms(
             .attr('width', (d) => d.sprite.scaledPosition.size.x)
             .attr('height', (d) => d.sprite.scaledPosition.size.y)
             .style('transition', 'opacity 0.1s')
-            .attr('xlink:href', (d) => '/ingame-map/' + d.sprite.name + '.png');
+            .attr('xlink:href', (d) =>
+                '/ingame-map/' + (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) + '.png',
+            );
 
         // masks just for outline. Are created by using the original mask itself, and increasing the contrast
         // therefore effectively hiding semi transparent parts, aka the non-outline parts.
         const outlineMaskGroup = roomGs
             .append('svg:mask')
-            .attr('id', (r) => 'outline_mask_' + componentId + '_' + r.spriteInfo.name)
+            .attr('id', (r) => 'outline_mask_' + componentId + '_' + r.spritesByVariant.normal.name)
             .append('svg:g')
             .style('filter', 'contrast(3)');
 
@@ -119,7 +132,7 @@ export function useMapRooms(
         outlineMaskGroup
             .append('svg:rect')
             .style('fill', 'white')
-            .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
+            .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spritesByVariant.normal.name + ')')
             .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
             .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
             .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
@@ -130,7 +143,7 @@ export function useMapRooms(
             .append('svg:rect')
             .attr('data-scene-name', (r) => r.sceneName)
             .attr('class', 'svg-room')
-            .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
+            .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spritesByVariant.normal.name + ')')
             // .attr('clip-path', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
 
             .style('fill', (r) => r.color.formatHex())
@@ -152,7 +165,7 @@ export function useMapRooms(
         // outline
         roomOutlineRects.current = roomGs
             .append('svg:rect')
-            .attr('mask', (r) => 'url(#outline_mask_' + componentId + '_' + r.spriteInfo.name + ')')
+            .attr('mask', (r) => 'url(#outline_mask_' + componentId + '_' + r.spritesByVariant.normal.name + ')')
             .style('fill', 'white')
             .style('pointer-events', 'none')
             .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
@@ -169,7 +182,7 @@ export function useMapRooms(
         }
 
         function getVariant(r: RoomInfo): RoomSpriteVariant | 'hidden' {
-            const visible = isRoomVisible(r.gameObjectName);
+            const visible = isRoomVisible(r.gameObjectNameNeededInVisited);
 
             if (!visible) {
                 return 'hidden';

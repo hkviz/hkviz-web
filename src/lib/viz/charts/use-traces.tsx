@@ -67,6 +67,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 .data(chunkEvents)
                 .enter()
                 .append('line')
+                .style('pointer-events', 'none')
                 .attr(
                     'x1',
                     (d) => d.previousPlayerPositionEventWithMapPosition!.mapPosition!.x,
@@ -112,7 +113,8 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
             .attr('y', 0)
             .attr('width', SCALED_KNIGHT_PIN_SIZE)
             .attr('height', SCALED_KNIGHT_PIN_SIZE)
-            .attr('preserveAspectRatio', 'none');
+            .attr('preserveAspectRatio', 'none')
+            .style('pointer-events', 'none');
     }, [knightPinG]);
 
     useEffect(() => {

@@ -1,9 +1,11 @@
 import * as d3 from 'd3';
+import { omit } from '~/lib/utils/omit';
+import { roomDataConditionalByGameObjectName } from '../generated/map-rooms-conditionals.generated';
 import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
+import { getSubSprites } from './room-doors';
 import { formatZoneAndRoomName } from './room-name-formatting';
-import { roomDataConditionalByGameObjectName } from '../generated/map-rooms-conditionals.generated';
 
 // logPossibleConditionals();
 
@@ -19,7 +21,8 @@ export function scale(value: number) {
 }
 
 export type RoomData = (typeof roomData)[number];
-export type SpriteInfo = RoomData['spriteInfo'];
+export type SpriteVariants = RoomData['spritesByVariant'];
+export type SpriteInfo = SpriteVariants['normal'] | SpriteVariants['rough'];
 
 export function scaleBounds(bounds: { min: { x: number; y: number }; max: { x: number; y: number } }): Bounds {
     const min = new Vector2(
@@ -49,7 +52,7 @@ const mainGameObjectNamePerSceneName = Object.fromEntries(
 
 export type RoomSpriteVariant = 'rough' | 'normal' | 'conditional';
 
-export const roomData = roomDataUnscaled.rooms.map((room) => {
+export const roomData = roomDataUnscaled.rooms.flatMap((room) => {
     const visualBounds = scaleBounds(room.visualBounds);
     const playerPositionBounds = scaleBounds(room.playerPositionBounds);
     const isMainGameObject = room.gameObjectName === mainGameObjectNamePerSceneName[room.sceneName];
@@ -75,7 +78,12 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
     function spriteInfoWithScaledPosition<
         T extends Exclude<typeof room.roughSpriteInfo | typeof room.spriteInfo, null | undefined>,
     >(variant: RoomSpriteVariant, spriteInfo: T) {
-        return { ...spriteInfo, scaledPosition: roomPositionWithPadding(spriteInfo), variant };
+        return {
+            ...spriteInfo,
+            nameWithoutSubSprites: null as null | string,
+            scaledPosition: roomPositionWithPadding(spriteInfo),
+            variant,
+        };
     }
 
     // extra handling of additional map mod:
@@ -97,8 +105,8 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
     const sprites = Object.values(spritesByVariant).filter((it): it is NonNullable<typeof it> => !!it);
     const allSpritesScaledPositionBounds = Bounds.fromContainingBounds(sprites.map((it) => it.scaledPosition));
 
-    return {
-        ...room,
+    const roomCorrected = {
+        ...omit(room, ['sprite', 'spriteInfo']),
         ...formatZoneAndRoomName(room.mapZone, room.sceneName),
         spritesByVariant,
         sprites,
@@ -107,7 +115,101 @@ export const roomData = roomDataUnscaled.rooms.map((room) => {
         playerPositionBounds,
         color,
         isMainGameObject,
+        gameObjectNameNeededInVisited: room.gameObjectName,
     };
+
+    const subSprites = getSubSprites(room.sceneName);
+    if (subSprites) {
+        const { normal, conditional, rough } = subSprites.parentSpriteWithoutSubSprites;
+        if (normal) {
+            roomCorrected.spritesByVariant.normal.nameWithoutSubSprites = normal;
+        }
+        if (conditional) {
+            roomCorrected.spritesByVariant.conditional!.nameWithoutSubSprites = conditional;
+        }
+        if (rough) {
+            roomCorrected.spritesByVariant.rough!.nameWithoutSubSprites = rough;
+        }
+    }
+    const subSpritesCorrected = (subSprites?.childSprites ?? []).map((childSprite) => {
+        function subSpriteInfoWithScaledPosition<TVariant extends RoomSpriteVariant>(
+            variant: TVariant,
+        ): (typeof roomCorrected.spritesByVariant)[TVariant] {
+            const parentSpriteInfo = spritesByVariant[variant as RoomSpriteVariant];
+            const childVariant = childSprite[variant];
+
+            if (!childVariant || !parentSpriteInfo) {
+                return null!;
+            }
+
+            const parentSpriteSizeWithoutPadding = new Vector2(
+                parentSpriteInfo.size.x - parentSpriteInfo.padding.x - parentSpriteInfo.padding.z,
+                parentSpriteInfo.size.y - parentSpriteInfo.padding.y - parentSpriteInfo.padding.w,
+            );
+
+            const subSpriteInfo = {
+                name: childVariant.name,
+                nameWithoutSubSprites: null as null | string,
+                variant,
+                size: childVariant.size,
+                padding: parentSpriteInfo.padding,
+                scaledPosition: Bounds.fromMinSize(
+                    new Vector2(
+                        parentSpriteInfo.scaledPosition.min.x +
+                            childVariant.offsetTop.x *
+                                (parentSpriteInfo.scaledPosition.size.x / parentSpriteSizeWithoutPadding.x),
+
+                        parentSpriteInfo.scaledPosition.min.y +
+                            childVariant.offsetTop.y *
+                                (parentSpriteInfo.scaledPosition.size.y / parentSpriteSizeWithoutPadding.y),
+                    ),
+                    new Vector2(
+                        childVariant.size.x *
+                            (parentSpriteInfo.scaledPosition.size.x / parentSpriteSizeWithoutPadding.x),
+                        childVariant.size.y *
+                            (parentSpriteInfo.scaledPosition.size.y / parentSpriteSizeWithoutPadding.y),
+                    ),
+                ),
+            } satisfies typeof parentSpriteInfo;
+
+            if ('conditionalOn' in parentSpriteInfo) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+                (subSpriteInfo as any).conditionalOn = parentSpriteInfo.conditionalOn;
+            }
+
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any
+            return subSpriteInfo as any;
+        }
+
+        const subSpritesByVariant = {
+            normal: subSpriteInfoWithScaledPosition('normal')!,
+            conditional: subSpriteInfoWithScaledPosition('conditional'),
+            rough: subSpriteInfoWithScaledPosition('rough'),
+        } as (typeof roomCorrected)['spritesByVariant'];
+
+        const subSprites = Object.values(subSpritesByVariant).filter((it): it is NonNullable<typeof it> => !!it);
+
+        const escapedSpriteName = childSprite.normal.name.replace(/\//g, '_');
+
+        const visualBounds = Bounds.fromContainingBounds(subSprites.map((it) => it.scaledPosition));
+        const playerPositionBounds = visualBounds;
+        const allSpritesScaledPositionBounds = visualBounds;
+
+        return {
+            ...roomCorrected,
+            ...formatZoneAndRoomName(room.mapZone, childSprite.sceneName),
+            sceneName: childSprite.sceneName,
+            gameObjectName: roomCorrected.gameObjectName + '_' + escapedSpriteName,
+            spritesByVariant: subSpritesByVariant,
+            sprites: subSprites,
+            gameObjectNameNeededInVisited: roomCorrected.gameObjectNameNeededInVisited,
+            visualBounds,
+            playerPositionBounds,
+            allSpritesScaledPositionBounds,
+        } satisfies typeof roomCorrected;
+    });
+
+    return [roomCorrected, ...subSpritesCorrected];
 });
 
 export type RoomInfo = (typeof roomData)[number];

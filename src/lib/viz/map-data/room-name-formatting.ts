@@ -10,12 +10,21 @@ const ancientBasinRooms = [
     'Abyss_21',
 ];
 
+const predefinedRoomNames = {
+    GG_Waterways: 'Royal Waterways Junk Pit',
+    GG_Pipeway: 'Royal Waterways Pipeway',
+    Room_shop: "Sly's Shop",
+    Room_Ouiji: "Jiji's Hut",
+    Room_Bretta: "Bretta's House",
+    Room_Town_Stag_Station: 'Stag Station',
+    Room_mapper: 'Map Shop',
+} as Record<string, string>;
+
 export function formatRoomName(zoneName: string | undefined, roomName: string) {
-    if (roomName === 'GG_Waterways') {
-        return 'Royal Waterways Junk Pit';
-    } else if (roomName === 'GG_Pipeway') {
-        return 'Royal Waterways Pipeway';
-    } else if (ancientBasinRooms.includes(roomName)) {
+    const predefinedName = predefinedRoomNames[roomName];
+    if (predefinedName) return predefinedName;
+
+    if (ancientBasinRooms.includes(roomName)) {
         return roomName.replace('Abyss_', 'Ancient Basin ');
     }
 
