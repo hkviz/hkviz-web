@@ -163,13 +163,42 @@ type CodesOf<T extends readonly { code: unknown }[]> = {
     [I in keyof T]: T[I]['code'];
 };
 
+type TagGroupCodes = CodesOf<typeof tagGroups>;
+export type TagGroup = (typeof tagGroups)[number];
+export type TagGroupCode = TagGroupCodes[number];
+export const tagGroupCodes = tagGroups.map((it) => it.code) as unknown as TagGroupCodes;
+export const tagGroupSchema = z.enum(tagGroupCodes);
+
 type TagCodes = CodesOf<typeof tags>;
 export type Tag = (typeof tags)[number];
 export type TagCode = TagCodes[number];
 export const tagCodes = tags.map((it) => it.code) as unknown as TagCodes;
-
 export const tagSchema = z.enum(tagCodes);
 
 export function tagFromCode(code: TagCode): Tag {
     return tags.find((it) => it.code === code)!;
+}
+
+export function tagGroupFromCode(code: TagGroupCode): TagGroup {
+    return tagGroups.find((it) => it.code === code)!;
+}
+
+export function isGroupCode(code: TagCode | TagGroupCode): code is TagGroupCode {
+    return tagGroupCodes.includes(code as TagGroupCode);
+}
+
+export function isTagCode(code: TagCode | TagGroupCode): code is TagCode {
+    return tagCodes.includes(code as TagCode);
+}
+
+export function tagOrGroupFromCode(code: TagCode | TagGroupCode): Tag | TagGroup {
+    return tagFromCode(code as TagCode) ?? tagGroupFromCode(code as TagGroupCode);
+}
+
+export function isTagGroup(tagOrGroup: Tag | TagGroup): tagOrGroup is TagGroup {
+    return 'tags' in tagOrGroup;
+}
+
+export function isTag(tagOrGroup: Tag | TagGroup): tagOrGroup is Tag {
+    return !isTagGroup(tagOrGroup);
 }

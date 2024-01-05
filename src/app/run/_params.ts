@@ -1,7 +1,7 @@
-import { z } from "zod";
-import { tagSchema } from "~/lib/types/tags";
+import { z } from 'zod';
+import { tagGroupSchema, tagSchema } from '~/lib/types/tags';
 
 export const runFilterParamsSchema = z.object({
-    tag: tagSchema.optional(),
+    tag: z.union([tagSchema, tagGroupSchema]).optional(),
 });
 export type RunFilterParams = z.infer<typeof runFilterParamsSchema>;

@@ -17,7 +17,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { Plus, X } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode } from '~/lib/types/tags';
+import { TagGroup, tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode } from '~/lib/types/tags';
 import { api } from '~/trpc/react';
 
 export function RunTag({
@@ -134,27 +134,28 @@ export function RunTags({
     );
 }
 
-export type TagDropdownMenuProps = React.PropsWithChildren<{
-    isTagDisabled?: (tag: Tag) => boolean;
-} & ({
-    onClick: (tag: Tag|undefined) => void;
-    showAllOption: true;
-} | {
-    onClick: (tag: Tag) => void;
-    showAllOption?: false;
-})>;
+export type TagDropdownMenuProps = React.PropsWithChildren<
+    {
+        isTagDisabled?: (tag: Tag) => boolean;
+    } & (
+        | {
+              onClick: (tag: TagGroup | Tag | undefined) => void;
+              showAllOptions: true;
+          }
+        | {
+              onClick: (tag: Tag) => void;
+              showAllOptions?: false;
+          }
+    )
+>;
 
-export function TagDropdownMenu({ onClick, isTagDisabled, children, showAllOption }: TagDropdownMenuProps) {
+export function TagDropdownMenu({ onClick, isTagDisabled, children, showAllOptions }: TagDropdownMenuProps) {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>{children}</DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
                 <DropdownMenuGroup>
-                    {showAllOption && (
-                        <DropdownMenuItem onClick={() => onClick(undefined)}>
-                            All
-                        </DropdownMenuItem>
-                    )}
+                    {showAllOptions && <DropdownMenuItem onClick={() => onClick(undefined)}>All</DropdownMenuItem>}
                     {tagGroups.map((group) => (
                         <DropdownMenuSub key={group.code}>
                             <DropdownMenuSubTrigger>
@@ -162,6 +163,7 @@ export function TagDropdownMenu({ onClick, isTagDisabled, children, showAllOptio
                             </DropdownMenuSubTrigger>
                             <DropdownMenuPortal>
                                 <DropdownMenuSubContent>
+                                    {showAllOptions && <DropdownMenuItem onClick={() => onClick(group)}>All {group.name}s</DropdownMenuItem>}
                                     {group.tags.map((tag) => (
                                         <DropdownMenuItem
                                             key={tag.code}

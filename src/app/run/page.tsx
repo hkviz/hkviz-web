@@ -1,4 +1,5 @@
-import { type RunFilter, findRuns } from '~/server/api/routers/run/runs-find';
+import { isTagCode, tagGroupFromCode } from '~/lib/types/tags';
+import { findRuns, type RunFilter } from '~/server/api/routers/run/runs-find';
 import { db } from '~/server/db';
 import { ContentWrapper } from '../_components/content-wrapper';
 import { RunCard } from '../_components/run-card';
@@ -12,7 +13,7 @@ export default async function Runs({ searchParams }: { searchParams: RunFilter }
         db,
         filter: {
             visibility: ['public'],
-            tag: filter.tag ? [filter.tag] : undefined,
+            tag: filter.tag ? isTagCode(filter.tag) ? [filter.tag] : tagGroupFromCode(filter.tag).tags.map(it => it.code) : undefined,
         },
     });
 

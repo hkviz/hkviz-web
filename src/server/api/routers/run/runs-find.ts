@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { type TagCode, tagSchema } from '~/lib/types/tags';
+import { tagSchema, type TagCode } from '~/lib/types/tags';
 import { visibilitySchema } from '~/lib/types/visibility';
 import { type DB } from '~/server/db';
 import { runFilesMetaFieldsSelect, runTagFieldsSelect } from './run-column-selects';
@@ -34,13 +34,18 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
     }
 
     const runs = await db.query.runs.findMany({
-        where: (run, { eq, and, inArray }) => {
+        where: (run, { eq, and, inArray, or }) => {
+            console.log(filter);
+            const tagFilter = filter.tag ? or(...filter.tag.map((tag) => eq(run[`tag_${tag}`], true))) : undefined;
+
             const conditions = [
                 filter.userId ? eq(run.userId, filter.userId) : undefined,
                 filter.visibility ? inArray(run.visibility, filter.visibility) : undefined,
+                tagFilter,
             ];
+
             const c = and(...conditions.filter((c) => c != null));
-            console.log(c);
+            // console.log(c);
             return c;
         },
         columns: {

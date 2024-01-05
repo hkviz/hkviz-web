@@ -1,10 +1,10 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import type { CombinedRecording, ParsedRecording as ParsedRecording } from './recording';
-import { parseRecordingFile } from './recording-file-parser';
-import { fetchWithRunfileCache } from './recording-file-browser-cache';
 import { type AppRouterOutput } from '~/server/api/types';
 import { combineRecordings } from './combine-recordings';
+import type { CombinedRecording, ParsedRecording } from './recording';
+import { fetchWithRunfileCache } from './recording-file-browser-cache';
+import { parseRecordingFile } from './recording-file-parser';
 import { useRunAggregationStore } from './run-aggregation-store';
 
 // similar taken from https://stackoverflow.com/questions/47285198/fetch-api-download-progress-indicator
@@ -146,7 +146,6 @@ export const useRunFileStore = create(
             const isStillCurrent = (get().files[runId]?.[fileId]?.fileVersion ?? -1) === fileVersion;
             if (!isStillCurrent) return;
             const recording = parseRecordingFile(data, partNumber);
-            // console.log({ headers: response.headers });
             setLoaded({ partNumber, fileVersion, runId, fileId, recording });
             combineIfAllFinished(runId);
         }

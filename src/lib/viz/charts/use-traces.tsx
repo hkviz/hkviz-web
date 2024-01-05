@@ -100,7 +100,6 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 lines,
             };
         });
-        console.log(animatedTraceChunks.current);
 
         animatedTraceG.current!.selectAll('path').remove();
     }, [recording, animatedTraceG]);
