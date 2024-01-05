@@ -87,6 +87,9 @@ export default {
             transitionProperty: {
                 'grid-rows': 'grid-template-rows',
             },
+            screens: {
+                hasHover: { raw: '(hover: hover)' },
+            },
         },
     },
     plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],

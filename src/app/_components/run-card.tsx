@@ -176,8 +176,8 @@ export function RunCard({
                                 codes={run.tags}
                                 runId={run.id}
                                 isOwn={isOwnRun}
-                                addButtonClassName="opacity-0 group-hover:opacity-100 transition-opacity"
-                                removeButtonClassName="opacity-0 group-hover:opacity-100 transition-opacity"
+                                addButtonClassName="hasHover:opacity-0 hasHover:group-hover:opacity-100 transition-opacity"
+                                removeButtonClassName="hasHover:opacity-0 hasHover:group-hover:opacity-100 transition-opacity"
                             />
                         </div>
                     )}
