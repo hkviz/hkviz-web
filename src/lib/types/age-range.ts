@@ -8,6 +8,8 @@ export const ageRanges = [
     {
         code: 'u18',
         name: 'under 18',
+        // TODO actually remove, or handle differently, as db enum change would require some work
+        removed: true,
     },
     {
         code: '18_24',

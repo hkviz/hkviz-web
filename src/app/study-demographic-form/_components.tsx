@@ -170,11 +170,13 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectGroup>
-                                                    {ageRanges.map((it) => (
-                                                        <SelectItem key={it.code} value={it.code}>
-                                                            {it.name}
-                                                        </SelectItem>
-                                                    ))}
+                                                    {ageRanges
+                                                        .filter((it) => !('removed' in it))
+                                                        .map((it) => (
+                                                            <SelectItem key={it.code} value={it.code}>
+                                                                {it.name}
+                                                            </SelectItem>
+                                                        ))}
                                                 </SelectGroup>
                                             </SelectContent>
                                         </Select>

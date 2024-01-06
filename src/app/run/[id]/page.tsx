@@ -1,6 +1,5 @@
 import { TRPCError } from '@trpc/server';
 import { notFound } from 'next/navigation';
-import { AuthNeeded } from '~/app/_components/auth-needed';
 import { SingleRunClientPage } from '~/app/run/[id]/_page';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
@@ -9,9 +8,9 @@ import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-
 export default async function SingleRunPage({ params }: { params: { id: string } }) {
     const session = await getServerAuthSession();
 
-    if (!session) {
-        return <AuthNeeded />;
-    }
+    // if (!session) {
+    //     return <AuthNeeded />;
+    // }
 
     try {
         const runData = await (await apiFromServer()).run.getMetadataById({ id: params.id });

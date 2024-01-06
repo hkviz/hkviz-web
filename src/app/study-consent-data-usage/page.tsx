@@ -34,12 +34,12 @@ export default async function DataCollectionStudyParticipationPage() {
 
     return (
         <MdxOuterWrapper>
-            <DataCollectionStudyParticipationForm formPositionText="below" className="mx-auto my-[min(10rem,15vh)]" />
+            <DataCollectionStudyParticipationForm formPositionText="below" className="mx-auto mt-[min(5rem,15vh)] mb-[min(3rem, 10vh)]" />
             <MdxInnerWrapper>
                 <MdxContent />
             </MdxInnerWrapper>
             <DataCollectionStudyParticipationForm
-                className="mx-auto mb-[20rem] mt-[min(10rem,15vh)]"
+                className="mx-auto mb-[20rem] mt-[min(5rem,15vh)]"
                 formPositionText="above"
             />
         </MdxOuterWrapper>

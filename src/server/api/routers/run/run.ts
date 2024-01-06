@@ -4,7 +4,7 @@ import { r2FileHead, r2GetSignedDownloadUrl, r2GetSignedUploadUrl, r2RunPartFile
 
 import { TRPCError } from '@trpc/server';
 import { and, eq } from 'drizzle-orm';
-import { TagCode, tagSchema } from '~/lib/types/tags';
+import { tagSchema, type TagCode } from '~/lib/types/tags';
 import { raise } from '~/lib/utils';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
@@ -40,7 +40,7 @@ async function getOrCreateRunId(db: DB, localId: string, userId: string): Promis
 }
 
 export const runRouter = createTRPCRouter({
-    getMetadataById: protectedProcedure.input(z.object({ id: z.string().uuid() })).query(async ({ ctx, input }) => {
+    getMetadataById: publicProcedure.input(z.object({ id: z.string().uuid() })).query(async ({ ctx, input }) => {
         const metadata =
             (await ctx.db.query.runs.findFirst({
                 where: (run, { eq, and }) => and(eq(run.id, input.id)),
@@ -78,10 +78,10 @@ export const runRouter = createTRPCRouter({
             );
 
         let isResearchView = false;
-        if (metadata.visibility === 'private' && metadata.user.id !== ctx.session.user?.id) {
+        if (metadata.visibility === 'private' && metadata.user.id !== ctx.session?.user?.id) {
             await assertIsResearcher({
                 db: ctx.db,
-                userId: ctx.session.user?.id ?? raise(new Error('Not logged in')),
+                userId: ctx.session?.user?.id ?? raise(new Error('Not logged in')),
                 makeError: () =>
                     new TRPCError({
                         code: 'FORBIDDEN',
