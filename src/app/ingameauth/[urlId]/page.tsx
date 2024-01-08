@@ -40,21 +40,27 @@ export default async function IngameAuthPage({ params }: { params: { urlId: stri
 
     const dataCollectionStudyParticipation = await api.studyParticipation.getStudyParticipation({});
 
+    console.log('1');
+
     if (!dataCollectionStudyParticipation) {
+        console.log('2');
         redirect(`/ingameauth/${urlId}/consent-redirect`);
     }
-
     const userDemographics = await api.studyDemographics.getOwn({});
 
-    if (!userDemographics) {
+    if (!userDemographics && !dataCollectionStudyParticipation.excludedSinceU18) {
+        console.log('3');
         redirect(`/ingameauth/${urlId}/demographics-redirect`);
     }
 
     const hkExperience = await api.hkExperience.getOwn({});
 
-    if (!hkExperience) {
+    if (!hkExperience && !dataCollectionStudyParticipation.excludedSinceU18) {
+        console.log('4');
         redirect(`/ingameauth/${urlId}/experience-redirect`);
     }
+
+    console.log('5');
 
     // at this point nobody else should be able to use this token to access this page:
     await (await apiFromServer()).ingameAuth.removeUrlId({ id: ingameAuth.id });

@@ -87,6 +87,7 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
 
 export const dataCollectionStudyParticipations = mysqlTable('userDataCollectionResearchParticipation', {
     userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
+    excludedSinceU18: boolean('exludedSinceU18').notNull().default(false),
     keepDataAfterStudyConducted: boolean('keepDataAfterStudyConducted').notNull(),
     futureContactOk: boolean('futureContactOk').notNull(),
     createdAt: timestamp('created_at')

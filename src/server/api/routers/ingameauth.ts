@@ -136,3 +136,4 @@ export const ingameAuthRouter = createTRPCRouter({
         return session;
     }),
 });
+export const dynamic = 'force-dynamic';

@@ -5,10 +5,15 @@ import { userDemographics } from '~/server/db/schema';
 
 export const studyDemographicsRouter = createTRPCRouter({
     save: protectedProcedure.input(studyDemographicSchema).mutation(async ({ ctx, input }) => {
-        await ctx.db.insert(userDemographics).values({
+        const result = await ctx.db.insert(userDemographics).values({
             userId: ctx.session.user.id,
             ...input,
+            previousHollowKnightExperience: 'never-played', // TODO: remove this since now tracked by different table
         });
+        if (result.rowsAffected !== 1) {
+            throw new Error('Could not save demographics');
+        }
+
         // .onDuplicateKeyUpdate({
         //     set: {
         //         keepDataAfterStudyConducted: input.keepDataAfterStudyConducted,

@@ -27,14 +27,18 @@ export default async function SettingsPage() {
                             <div>
                                 <h3 className="text-lg font-semibold">Data collection study informed consent</h3>
                                 <p className="text-sm text-gray-500">
-                                    {studyParticipation
-                                        ? 'Configure if we may contact you for a follow-up user study and what will happen to your data after the study is conducted.'
-                                        : 'Consent to the usage of your play data for our research project'}
+                                    {studyParticipation?.excludedSinceU18
+                                        ? 'Your gameplay data is not used for our research project because you are under 18 years old. You can still use HKViz to visualize your gameplays.'
+                                        : studyParticipation
+                                          ? 'Configure if we may contact you for a follow-up user study and what will happen to your data after the study is conducted.'
+                                          : 'Consent to the usage of your play data for our research project'}
                                 </p>
                             </div>
-                            <Button asChild className="shrink-0">
-                                <Link href="/study-consent-data-usage">View consent form</Link>
-                            </Button>
+                            {!studyParticipation?.excludedSinceU18 && (
+                                <Button asChild className="shrink-0">
+                                    <Link href="/study-consent-data-usage">View consent form</Link>
+                                </Button>
+                            )}
                         </div>
                         <Separator className="my-4" />
                         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">

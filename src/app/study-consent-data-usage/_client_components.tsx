@@ -5,9 +5,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
-import React, { useId, useMemo } from 'react';
+import React, { useId, useMemo, useState, type FormEvent } from 'react';
 import { type AppRouterOutput } from '~/server/api/types';
 import { api } from '~/trpc/react';
+import { HKVizText } from '../_components/hkviz-text';
 import { useConsentFormStore } from './_form_store';
 
 export function DataCollectionStudyParticipationClientForm({
@@ -27,6 +28,11 @@ export function DataCollectionStudyParticipationClientForm({
     const futureContactOk = useConsentFormStore((state) => state.futureContactOk);
     const keepDataAfterStudyConducted = useConsentFormStore((state) => state.keepDataAfterStudyConducted);
 
+    const over18 = useConsentFormStore((state) => state.over18);
+    const setOver18 = useConsentFormStore((state) => state.setOver18);
+
+    const [triedWithoutOver18, setTriedWithoutOver18] = useState(false);
+
     const id = useId();
     const router = useRouter();
 
@@ -36,18 +42,40 @@ export function DataCollectionStudyParticipationClientForm({
         if (savedStudyParticipation) {
             setFutureContactOk(savedStudyParticipation.futureContactOk);
             setKeepDataAfterStudyConducted(savedStudyParticipation.keepDataAfterStudyConducted);
+            setOver18(!savedStudyParticipation.excludedSinceU18);
         }
-    }, [setFutureContactOk, setKeepDataAfterStudyConducted, savedStudyParticipation]);
+    }, [savedStudyParticipation, setFutureContactOk, setKeepDataAfterStudyConducted, setOver18]);
 
-    const handleAccept = async () => {
+    const handleAccept = async (e: FormEvent) => {
+        e.preventDefault();
         saveMutation.reset();
+        if (!over18) {
+            setTriedWithoutOver18(true);
+            return;
+        }
         await saveMutation.mutateAsync({
             futureContactOk,
             keepDataAfterStudyConducted,
+            excludedSinceU18: false,
         });
         if (hasIngameAuthCookie) {
-            router.push('/ingameauth/cookie');
+            router.push('/ingameauth/cookie?from=consent');
         }
+    };
+
+    const handleUnder18 = async (e: FormEvent) => {
+        e.preventDefault();
+        setOver18(false);
+        saveMutation.reset();
+        await saveMutation.mutateAsync({
+            futureContactOk: false,
+            keepDataAfterStudyConducted: true,
+            excludedSinceU18: true,
+        });
+    };
+
+    const handleContinueAfterU18 = () => {
+        router.push('/ingameauth/cookie?from=consent');
     };
 
     const hasPreviouslyAccepted = !!savedStudyParticipation;
@@ -56,6 +84,45 @@ export function DataCollectionStudyParticipationClientForm({
 
     const buttonVerb = hasPreviouslyAccepted ? 'Save' : 'Participate';
     const buttonText = keepDataAfterStudyConducted ? buttonVerb : `${buttonVerb} and delete account after study`;
+
+    if (savedStudyParticipation?.excludedSinceU18) {
+        return (
+            <Card className={cn('w-[600px] max-w-[calc(100vw-2rem)]', className)}>
+                <CardHeader>
+                    <CardTitle>Thank you for your interest in participating in the study.</CardTitle>
+                    <CardDescription>
+                        You have previously stated that you are younger then 18, so none of your data will be used for
+                        the study.
+                        <br />
+                        You can however still use <HKVizText /> to visualize your runs.
+                    </CardDescription>
+                </CardHeader>
+            </Card>
+        );
+    }
+
+    if (saveMutation.isSuccess && !over18) {
+        return (
+            <Card className={cn('w-[600px] max-w-[calc(100vw-2rem)]', className)}>
+                <CardHeader>
+                    <CardTitle>Opted out of study</CardTitle>
+                    <CardDescription>
+                        Since you are not 18 yet, none of your data will be used for the study.
+                        <br />
+                        You can however still use <HKVizText /> to visualize your runs.
+                    </CardDescription>
+                </CardHeader>
+                {hasIngameAuthCookie && (
+                    <CardFooter className="flex justify-end">
+                        <Button onClick={handleContinueAfterU18} variant="default">
+                            Continue
+                        </Button>
+                    </CardFooter>
+                )}
+            </Card>
+        );
+    }
+
     return (
         <Card className={cn('w-[600px] max-w-[calc(100vw-2rem)]', className)}>
             <CardHeader>
@@ -76,7 +143,7 @@ export function DataCollectionStudyParticipationClientForm({
                     {saveMutation.isSuccess && (
                         <span role="alert" className="block text-green-600">
                             Successfully stored your preferences
-                            {hasIngameAuthCookie && 'you will be redirected to the login page now'}
+                            {hasIngameAuthCookie && ' you will be redirected to the login page now'}
                         </span>
                     )}
                 </CardDescription>
@@ -85,6 +152,22 @@ export function DataCollectionStudyParticipationClientForm({
                 <form>
                     <fieldset disabled={isMutating || (saveMutation.isSuccess && hasIngameAuthCookie)}>
                         <div className="grid w-full items-center gap-4">
+                            {!hasPreviouslyAccepted && (
+                                <div className="flex items-center space-x-2">
+                                    <Checkbox id={id + 'over-18'} checked={over18} onCheckedChange={setOver18} />
+                                    <label
+                                        htmlFor={id + 'over-18'}
+                                        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    >
+                                        I am at least 18 years old.
+                                    </label>
+                                </div>
+                            )}
+                            {triedWithoutOver18 && (
+                                <p className="text-sm text-red-500">
+                                    Please either check this box or click the {"'"}I am under 18{"'"} button below.
+                                </p>
+                            )}
                             <div className="flex items-center space-x-2">
                                 <Checkbox
                                     id={id + 'keep-account'}
@@ -117,7 +200,13 @@ export function DataCollectionStudyParticipationClientForm({
                     </fieldset>
                 </form>
             </CardContent>
-            <CardFooter className="flex justify-end">
+            <CardFooter className="flex justify-between">
+                {!hasPreviouslyAccepted && (
+                    <Button disabled={isMutating} onClick={handleUnder18} variant={'outline'}>
+                        I am under 18
+                    </Button>
+                )}
+                <div></div>
                 <Button
                     disabled={isMutating}
                     onClick={handleAccept}

@@ -8,6 +8,7 @@ export const studyParticipationRouter = createTRPCRouter({
             z.object({
                 keepDataAfterStudyConducted: z.boolean(),
                 futureContactOk: z.boolean(),
+                excludedSinceU18: z.boolean(),
             }),
         )
         .mutation(async ({ ctx, input }) => {
@@ -17,15 +18,16 @@ export const studyParticipationRouter = createTRPCRouter({
                     userId: ctx.session.user.id,
                     keepDataAfterStudyConducted: input.keepDataAfterStudyConducted,
                     futureContactOk: input.futureContactOk,
+                    excludedSinceU18: input.excludedSinceU18,
                 })
                 .onDuplicateKeyUpdate({
                     set: {
                         keepDataAfterStudyConducted: input.keepDataAfterStudyConducted,
                         futureContactOk: input.futureContactOk,
+                        excludedSinceU18: input.excludedSinceU18,
                     },
                 });
         }),
-
     getStudyParticipation: protectedProcedure.input(z.object({})).query(async ({ ctx }) => {
         return await ctx.db.query.dataCollectionStudyParticipations.findFirst({
             where: (dataCollectionStudyParticipations, { eq }) =>

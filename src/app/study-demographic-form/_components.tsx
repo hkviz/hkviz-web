@@ -11,7 +11,7 @@ import { cn } from '@/lib/utils';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Asterisk, ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, type BaseSyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { type z } from 'zod';
 import { ageRanges } from '~/lib/types/age-range';
@@ -40,24 +40,23 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
         defaultValues: {
             ...studyDemographicDefaultData,
             country: isCountryShortCode(props.requestCountryShortCode) ? props.requestCountryShortCode : undefined,
-            previousHollowKnightExperience: 'never-played',
         },
     });
 
+    const router = useRouter();
+    const saveMutation = api.studyDemographics.save.useMutation();
     const watchGender = form.watch('gender');
 
-    async function onSubmit(values: z.infer<typeof studyDemographicSchema>) {
+    async function onSubmit(values: z.infer<typeof studyDemographicSchema>, event: BaseSyntheticEvent | undefined) {
+        event?.preventDefault();
         saveMutation.reset();
         await saveMutation.mutateAsync(values);
         if (props.hasIngameAuthCookie) {
-            router.push('/ingameauth/cookie');
+            router.push('/ingameauth/cookie?from=demographic');
         }
     }
 
     const [countryOpen, setCountryOpen] = useState(false);
-
-    const router = useRouter();
-    const saveMutation = api.studyDemographics.save.useMutation();
 
     if (props.hasPreviouslySubmitted) {
         return <CardContent>You have already submitted the demographic form. Thank you for participating</CardContent>;

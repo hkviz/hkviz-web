@@ -1,9 +1,7 @@
 import { Cinzel, Cinzel_Decorative, Noto_Sans } from 'next/font/google';
-import localFont from 'next/font/local';
 
 export const notoSans = Noto_Sans({
     subsets: ['latin'],
-    weight: ['400', '600', '700', '900'],
     variable: '--font-sans',
     display: 'swap',
 });
@@ -27,7 +25,7 @@ export const cinzelDecorative = Cinzel_Decorative({
     weight: ['700'],
 });
 
-export const materialSymbols = localFont({
-    src: '../../node_modules/material-symbols/material-symbols-sharp.woff2',
-    display: 'block',
-});
+// export const materialSymbols = localFont({
+//     src: '../../node_modules/material-symbols/material-symbols-sharp.woff2',
+//     display: 'block',
+// });

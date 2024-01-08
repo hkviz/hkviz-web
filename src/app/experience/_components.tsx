@@ -45,7 +45,7 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
         await saveMutation.mutateAsync(parsedValues);
 
         if (props.hasIngameAuthCookie) {
-            router.push('/ingameauth/cookie');
+            router.push('/ingameauth/cookie?from=experience');
         }
     }
 

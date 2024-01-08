@@ -24,6 +24,7 @@ export function KeepAccountSettingsOption({
         await saveMutation.mutateAsync({
             futureContactOk: participationQueryResult.data!.futureContactOk,
             keepDataAfterStudyConducted: true,
+            excludedSinceU18: participationQueryResult.data!.excludedSinceU18,
         });
         await studyParticipationQuery.refetch();
         toast({
