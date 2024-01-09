@@ -34,8 +34,15 @@ export const EVENT_PREFIXES = {
 
     SUPER_DASH: 'sd',
 
+    DREAM_NAIL_SLASH: 'dn',
+    DREAM_NAIL_GATE_WARP: 'dnw',
+    DREAM_NAIL_SET_GATE: 'dns',
+
     ENEMY_START: 'e',
     ENEMY_HEALTH: 'E',
+
+    GAME_STATE: 'gs',
+    ACTIVE_INPUT_DEVICE: 'aid',
 } as const;
 
 export type EventPrefix = (typeof EVENT_PREFIXES)[keyof typeof EVENT_PREFIXES];

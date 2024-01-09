@@ -1,7 +1,7 @@
 import { raise, typeCheckNever } from '~/lib/utils';
 import { heroStateFields } from '../hero-state/hero-states';
 import { playerDataFields } from '../player-data/player-data';
-import { type RecordingFileVersion, isKnownRecordingFileVersion, isVersion0xx } from '../types/recording-file-version';
+import { isKnownRecordingFileVersion, isVersion0xx, type RecordingFileVersion } from '../types/recording-file-version';
 import { Vector2 } from '../types/vector2';
 
 import {
@@ -58,6 +58,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
     // written at the beginning of a session, not for each part
     let currentRecordingFileVersion: RecordingFileVersion = '0.0.0';
 
+    let i = 0;
     LINE_LOOP: for (const line of lines) {
         try {
             // empty lines are skipped
@@ -277,6 +278,26 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     // TODO
                     break;
                 }
+                case EVENT_PREFIXES.GAME_STATE: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.ACTIVE_INPUT_DEVICE: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.DREAM_NAIL_SLASH: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.DREAM_NAIL_GATE_WARP: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.DREAM_NAIL_SET_GATE: {
+                    // TODO
+                    break;
+                }
                 default: {
                     typeCheckNever(eventTypePrefix);
                     console.log(`Unexpected event type |${eventType}| ignoring line |${line}|`);
@@ -285,11 +306,12 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
             }
         } catch (e) {
             console.error(
-                `Error while parsing line: |${line}| using file version ${currentRecordingFileVersion} in part number ${partNumber}`,
+                `Error while parsing line ${i}: |${line}| using file version ${currentRecordingFileVersion} in part number ${partNumber}`,
                 e,
             );
             parsingErrors++;
         }
+        i++;
     }
 
     return new ParsedRecording(events, unknownEvents, parsingErrors, partNumber);

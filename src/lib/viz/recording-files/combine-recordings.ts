@@ -7,6 +7,7 @@ import {
     PlayerPositionEvent,
     RecordingFileVersionEvent,
     SceneEvent,
+    isPlayerDataEventOfField,
     isPlayerDataEventWithFieldType,
     type ParsedRecording,
     type RecordingEvent,
@@ -48,6 +49,9 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 // its added to the scenes below.
                 if (!visitedScenes.includes(event.sceneName)) {
                     visitedScenesToCheckIfInPlayerData.push({ sceneName: event.sceneName, msIntoGame });
+                    if (event.sceneName.startsWith('White')) {
+                        console.log('White Palace', { sceneName: event.sceneName, msIntoGame });
+                    }
                 }
             } else if (event instanceof HeroStateEvent && event.field.name === 'isPaused') {
                 isPaused = event.value;
@@ -105,6 +109,19 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                     event.value = event.value.flatMap((it) =>
                         it === '::' ? event.previousPlayerDataEventOfField?.value ?? [] : [it],
                     );
+                    if (isPlayerDataEventOfField(event, playerDataFields.byFieldName.scenesVisited)) {
+                        for (const it of event.previousPlayerDataEventOfField?.value ?? []) {
+                            // even if scenes are removed again from the player data (e.g. by loading an old save or modding),
+                            // we don't want to loose the scenes visited in the recording.
+                            if (!event.value.includes(it)) {
+                                event.value.push(it);
+                                console.log('scene not in visitedScenes anymore, added it again', {
+                                    sceneName: it,
+                                    msIntoGame,
+                                });
+                            }
+                        }
+                    }
                 }
             }
 
@@ -125,17 +142,21 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
             const previousScenesVisitedEvent = getPreviousPlayerData(playerDataFields.byFieldName.scenesVisited);
             const previousValue = previousScenesVisitedEvent?.value ?? [];
 
-            const sceneEvent = new PlayerDataEvent<typeof playerDataFields.byFieldName.scenesVisited>({
-                timestamp: lastTimestamp,
-                value: [...previousValue, sceneName],
-                field: playerDataFields.byFieldName.scenesVisited,
+            if (!previousValue.includes(sceneName)) {
+                console.log('write to playerdata', { sceneName, msIntoGame });
+                const visitedScenesEvent = new PlayerDataEvent<typeof playerDataFields.byFieldName.scenesVisited>({
+                    timestamp: lastTimestamp,
+                    value: [...previousValue, sceneName],
+                    field: playerDataFields.byFieldName.scenesVisited,
 
-                previousPlayerPositionEvent: previousPlayerPositionEvent,
-                previousPlayerDataEventOfField: previousScenesVisitedEvent ?? null,
-            });
-            sceneEvent.msIntoGame = msIntoGame;
-            previousPlayerDataEventsByField.set(playerDataFields.byFieldName.scenesVisited, sceneEvent);
-            events.push(sceneEvent);
+                    previousPlayerPositionEvent: previousPlayerPositionEvent,
+                    previousPlayerDataEventOfField: previousScenesVisitedEvent ?? null,
+                });
+                console.log(visitedScenesEvent);
+                visitedScenesEvent.msIntoGame = msIntoGame;
+                previousPlayerDataEventsByField.set(playerDataFields.byFieldName.scenesVisited, visitedScenesEvent);
+                events.push(visitedScenesEvent);
+            }
         }
     }
 
