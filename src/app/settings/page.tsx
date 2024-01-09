@@ -6,13 +6,15 @@ import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { AuthNeeded } from '../_components/auth-needed';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
-import { KeepAccountSettingsOption } from './_components';
+import { KeepAccountSettingsOption } from './_keep_account_option';
+import { UserNameSettingsOption } from './_username_option';
 
 export default async function SettingsPage() {
     const session = await getServerAuthSession();
     if (!session) {
         return <AuthNeeded />;
     }
+    const currentName = session.user?.name ?? '';
 
     const studyParticipation = await (await apiFromServer()).studyParticipation.getStudyParticipation({});
 
@@ -23,6 +25,8 @@ export default async function SettingsPage() {
                 <Card>
                     <div className="p-6">
                         <KeepAccountSettingsOption studyParticipation={studyParticipation} />
+                        <UserNameSettingsOption currentName={currentName} />
+                        <Separator className="my-4" />
                         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
                             <div>
                                 <h3 className="text-lg font-semibold">Data collection study informed consent</h3>

@@ -4,9 +4,34 @@ import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
 import { sendMailToSupport } from '~/lib/mails';
 import { createTRPCRouter, protectedProcedure } from '~/server/api/trpc';
-import { accountDeletionRequest } from '~/server/db/schema';
+import { accountDeletionRequest, users } from '~/server/db/schema';
 
 export const accountRouter = createTRPCRouter({
+    setUsername: protectedProcedure
+        .input(z.object({ username: z.string().max(64) }))
+        .mutation(async ({ ctx, input }) => {
+            const userId = ctx.session.user.id;
+
+            const current = await ctx.db.query.users.findFirst({
+                where: (users, { eq }) => eq(users.id, userId),
+                columns: {
+                    name: true,
+                    previousName: true,
+                },
+            });
+
+            const result = await ctx.db
+                .update(users)
+                .set({ name: input.username, previousName: current?.previousName ?? current?.name })
+                .where(eq(users.id, userId));
+
+            if (result.rowsAffected === 0) {
+                throw new TRPCError({
+                    code: 'INTERNAL_SERVER_ERROR',
+                    message: 'Could not set name',
+                });
+            }
+        }),
     initiateAccountRemovalRequest: protectedProcedure.mutation(async ({ ctx, input }) => {
         const userId = ctx.session.user.id;
         const id = uuidv4();
