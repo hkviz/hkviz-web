@@ -47,10 +47,22 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
     const router = useRouter();
     const saveMutation = api.studyDemographics.save.useMutation();
     const watchGenderSelfDisclose = form.watch('genderPreferToSelfDescribe');
+    const watchGenderPreferNotToDisclose = form.watch('genderPreferNotToDisclose');
 
     async function onSubmit(values: z.infer<typeof studyDemographicSchema>, event: BaseSyntheticEvent | undefined) {
         event?.preventDefault();
         saveMutation.reset();
+
+        if (values.genderPreferNotToDisclose) {
+            // other gender values are removed here, since they are not removed from the form state directly
+            // so values are remembered when switching between not disclose and disclose
+            values.genderWoman = false;
+            values.genderMan = false;
+            values.genderNonBinary = false;
+            values.genderPreferToSelfDescribe = false;
+            values.genderCustom = '';
+        }
+
         await saveMutation.mutateAsync(values);
         if (props.hasIngameAuthCookie) {
             router.push('/ingameauth/cookie?from=demographic');
@@ -109,18 +121,71 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                             )}
                         /> */}
 
-                        <div className="space-y-1">
-                            <FormField
-                                control={form.control}
-                                name="gender"
-                                render={() => (
-                                    <FormItem>
-                                        <FormLabel>What is your gender? <RequiredStar /></FormLabel>
-                                        <FormMessage />
-                                        <FormControl>
+                        <FormField
+                            control={form.control}
+                            name="gender"
+                            render={() => (
+                                <FormItem>
+                                    <FormLabel>
+                                        What is your gender? <RequiredStar />
+                                    </FormLabel>
+                                    <FormMessage />
+                                    <FormControl>
+                                        <div className="space-y-2">
                                             <FormField
                                                 control={form.control}
                                                 name="genderWoman"
+                                                render={({ field }) => (
+                                                    <FormItem className="flex flex-row items-center">
+                                                        <FormControl>
+                                                            <Checkbox
+                                                                checked={field.value && !watchGenderPreferNotToDisclose}
+                                                                onCheckedChange={field.onChange}
+                                                                disabled={watchGenderPreferNotToDisclose}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="pb-2 pl-2">woman</FormLabel>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={form.control}
+                                                name="genderMan"
+                                                render={({ field }) => (
+                                                    <FormItem className="flex flex-row items-center">
+                                                        <FormControl>
+                                                            <Checkbox
+                                                                checked={field.value && !watchGenderPreferNotToDisclose}
+                                                                onCheckedChange={field.onChange}
+                                                                disabled={watchGenderPreferNotToDisclose}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="pb-2 pl-2">man</FormLabel>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={form.control}
+                                                name="genderNonBinary"
+                                                render={({ field }) => (
+                                                    <FormItem className="flex flex-row items-center">
+                                                        <FormControl>
+                                                            <Checkbox
+                                                                checked={field.value && !watchGenderPreferNotToDisclose}
+                                                                onCheckedChange={field.onChange}
+                                                                disabled={watchGenderPreferNotToDisclose}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="pb-2 pl-2">non-binary</FormLabel>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <FormField
+                                                control={form.control}
+                                                name="genderPreferNotToDisclose"
                                                 render={({ field }) => (
                                                     <FormItem className="flex flex-row items-center">
                                                         <FormControl>
@@ -129,83 +194,59 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                                                                 onCheckedChange={field.onChange}
                                                             />
                                                         </FormControl>
-                                                        <FormLabel className="pb-2 pl-2">woman</FormLabel>
+                                                        <FormLabel className="pb-2 pl-2">
+                                                            prefer not to disclose
+                                                        </FormLabel>
                                                         <FormMessage />
                                                     </FormItem>
                                                 )}
                                             />
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="genderMan"
-                                render={({ field }) => (
-                                    <FormItem className="flex flex-row items-center">
-                                        <FormControl>
-                                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                                        </FormControl>
-                                        <FormLabel className="pb-2 pl-2">man</FormLabel>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="genderNonBinary"
-                                render={({ field }) => (
-                                    <FormItem className="flex flex-row items-center">
-                                        <FormControl>
-                                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                                        </FormControl>
-                                        <FormLabel className="pb-2 pl-2">non-binary</FormLabel>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="genderPreferNotToDisclose"
-                                render={({ field }) => (
-                                    <FormItem className="flex flex-row items-center">
-                                        <FormControl>
-                                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                                        </FormControl>
-                                        <FormLabel className="pb-2 pl-2">prefer not to disclose</FormLabel>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="genderPreferToSelfDescribe"
-                                render={({ field }) => (
-                                    <FormItem className="flex flex-row items-center">
-                                        <FormControl>
-                                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                                        </FormControl>
-                                        <FormLabel className="pb-2 pl-2">prefer to self-describe</FormLabel>
-                                        <FormMessage />
-                                    </FormItem>
-                                )}
-                            />
-                            <Expander expanded={watchGenderSelfDisclose}>
-                                <FormField
-                                    control={form.control}
-                                    name="genderCustom"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>My gender is</FormLabel>
-                                            <FormControl>
-                                                <Input className="w-full" placeholder="Enter a gender" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </Expander>
-                        </div>
+                                            <FormField
+                                                control={form.control}
+                                                name="genderPreferToSelfDescribe"
+                                                render={({ field }) => (
+                                                    <FormItem className="flex flex-row items-center">
+                                                        <FormControl>
+                                                            <Checkbox
+                                                                checked={field.value && !watchGenderPreferNotToDisclose}
+                                                                disabled={watchGenderPreferNotToDisclose}
+                                                                onCheckedChange={field.onChange}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="pb-2 pl-2">
+                                                            prefer to self-describe
+                                                        </FormLabel>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
+                                            <Expander
+                                                expanded={watchGenderSelfDisclose && !watchGenderPreferNotToDisclose}
+                                            >
+                                                <FormField
+                                                    control={form.control}
+                                                    name="genderCustom"
+                                                    render={({ field }) => (
+                                                        <FormItem>
+                                                            <FormLabel>My gender is</FormLabel>
+                                                            <FormControl>
+                                                                <Input
+                                                                    className="w-full"
+                                                                    placeholder="Enter a gender"
+                                                                    {...field}
+                                                                />
+                                                            </FormControl>
+                                                            <FormMessage />
+                                                        </FormItem>
+                                                    )}
+                                                />
+                                            </Expander>
+                                        </div>
+                                    </FormControl>
+                                </FormItem>
+                            )}
+                        />
+
                         <FormField
                             control={form.control}
                             name="ageRange"
