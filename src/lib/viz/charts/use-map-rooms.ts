@@ -4,6 +4,7 @@ import useEvent from 'react-use-event-hook';
 import { useThemeStore } from '~/app/_components/theme-store';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { assertNever } from '~/lib/utils';
+import { useDependableEffect, useDynamicDependencies } from '../depdendent-effect';
 import { type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
 import { playerDataFields } from '../player-data/player-data';
 import { useRoomColoring } from './use-room-coloring';
@@ -31,6 +32,7 @@ export function useMapRooms(
     dependencies: unknown[],
 ) {
     const onMouseOverEvent = useEvent(onMouseOver);
+    const onMouseOutEvent = useEvent(onMouseOut);
     const onClickEvent = useEvent(onClick);
     const componentId = useId();
 
@@ -41,14 +43,7 @@ export function useMapRooms(
         | undefined
     >(undefined);
 
-    const mainEffectDependencies = [
-        componentId,
-        onClickEvent,
-        onMouseOverEvent,
-        roomDataEnter,
-        spritesWithoutSubSprites,
-        ...dependencies,
-    ];
+    const paramDependenciesChanges = useDynamicDependencies(dependencies);
 
     const roomColoring = useRoomColoring({ useViewOptionsStore, alwaysUseAreaAsColor });
     const roomVisibility = useViewOptionsStore((state) => state.roomVisibility);
@@ -72,7 +67,7 @@ export function useMapRooms(
         }
     }, [animationMsIntoGame, roomVisibility, scenesVisitedEvents]);
 
-    useEffect(() => {
+    const mainEffectChanges = useDependableEffect(() => {
         if (!roomDataEnter.current) return;
         const roomGs = roomDataEnter.current
             .append('svg:g')
@@ -109,8 +104,12 @@ export function useMapRooms(
             .attr('width', (d) => d.sprite.scaledPosition.size.x)
             .attr('height', (d) => d.sprite.scaledPosition.size.y)
             .style('transition', 'opacity 0.1s')
-            .attr('xlink:href', (d) =>
-                '/ingame-map/' + (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) + '.png',
+            .attr(
+                'xlink:href',
+                (d) =>
+                    '/ingame-map/' +
+                    (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) +
+                    '.png',
             );
 
         // masks just for outline. Are created by using the original mask itself, and increasing the contrast
@@ -156,7 +155,7 @@ export function useMapRooms(
                 onMouseOverEvent(event, r);
             })
             .on('mouseout', (event: PointerEvent, r) => {
-                onMouseOut(event, r);
+                onMouseOutEvent(event, r);
             })
             .on('click', (event: PointerEvent, r) => {
                 onClickEvent(event, r);
@@ -172,9 +171,15 @@ export function useMapRooms(
             .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
             .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
             .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y);
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, mainEffectDependencies);
+    }, [
+        paramDependenciesChanges,
+        componentId,
+        onClickEvent,
+        onMouseOverEvent,
+        roomDataEnter,
+        spritesWithoutSubSprites,
+        onMouseOutEvent,
+    ]);
 
     useEffect(() => {
         function isRoomVisible(gameObjectName: string) {
@@ -196,9 +201,7 @@ export function useMapRooms(
         roomImgs.current?.style('opacity', (d) => (getVariant(d.room) === d.sprite.variant ? '100%' : '0%'));
 
         roomRects.current?.style('pointer-events', (r) => (getVariant(r) !== 'hidden' ? 'all' : 'none'));
-
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [...mainEffectDependencies, visibleRooms]);
+    }, [mainEffectChanges, visibleRooms]);
 
     useEffect(() => {
         roomRects.current?.style('fill', (r) => roomColoring.getRoomColor(r));
@@ -213,10 +216,9 @@ export function useMapRooms(
         // ?.on('mouseout', function (r) {
         //     d3.select(this).style('fill', d3.color(roomColoring.getRoomColor(r)).b);
         // });
-    }, [...mainEffectDependencies, roomColoring, hoveredRoom, highlightSelectedRoom]);
+    }, [mainEffectChanges, roomColoring, hoveredRoom, highlightSelectedRoom]);
 
     useEffect(() => {
         roomOutlineRects.current?.style('fill', theme === 'light' ? 'black' : 'white');
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [...mainEffectDependencies, theme]);
+    }, [mainEffectChanges, theme]);
 }

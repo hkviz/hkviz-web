@@ -59,6 +59,7 @@
         "drizzle-orm": "^0.28.5",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.1.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-watch": "^8.0.0",
         "favicons": "^7.1.4",
         "lucide-react": "^0.294.0",

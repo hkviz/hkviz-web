@@ -122,7 +122,7 @@ export function RunTags({
                                 variant="outline"
                                 aria-label="Add tag"
                                 size="icon"
-                                className={cn('relative z-[8] h-8 w-8 rounded-full', addButtonClassName)}
+                                className={cn('relative z-[8] h-8 w-8 rounded-full dark:text-white text-black', addButtonClassName)}
                             >
                                 <Plus />
                             </Button>

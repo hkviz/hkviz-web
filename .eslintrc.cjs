@@ -32,6 +32,12 @@ const config = {
             },
         ],
         'prettier/prettier': 'warn',
+        'react-hooks/exhaustive-deps': [
+            'warn',
+            {
+                additionalHooks: 'useDependableEffect',
+            },
+        ],
     },
 };
 

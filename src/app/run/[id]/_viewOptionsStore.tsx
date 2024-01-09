@@ -96,7 +96,9 @@ function createViewOptionsStore() {
                     set({ selectedRoom });
                 }
                 function setHoveredRoom(hoveredRoom: string | null) {
-                    set({ hoveredRoom });
+                    if (get().hoveredRoom !== hoveredRoom) {
+                        set({ hoveredRoom });
+                    }
                 }
                 function unsetHoveredRoom(hoveredRoom: string | null) {
                     if (get().hoveredRoom === hoveredRoom) setHoveredRoom(null);
