@@ -34,13 +34,19 @@ function Duration({ seconds }: { seconds: number }) {
     return <>{duration.join(' ')}</>;
 }
 
+const interactiveBrightnessClasses =
+    'group-focus-within:brightness-110 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90';
+
 function HealthFrame({ isSteelSoul, isBrokenSteelSoul }: { isSteelSoul: boolean; isBrokenSteelSoul: boolean }) {
     if (isBrokenSteelSoul) {
         return (
             <Image
                 src={HealthFrameSteelSoulBrokenImg}
                 alt="Broken Steel Soul game mode frame"
-                className="absolute left-[-2.5rem] top-[-2rem] z-[2] h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
+                className={cn(
+                    'absolute left-[-2.5rem] top-[-2rem] z-[2] h-[10rem] w-auto max-w-none',
+                    interactiveBrightnessClasses,
+                )}
             />
         );
     }
@@ -50,12 +56,18 @@ function HealthFrame({ isSteelSoul, isBrokenSteelSoul }: { isSteelSoul: boolean;
                 <Image
                     src={HealthFrameSteelSoulImg}
                     alt="Steel Soul game mode frame"
-                    className="absolute left-[-2.5rem] top-[-2rem] z-[2] hidden h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90 sm:block"
+                    className={cn(
+                        'roup-focus-visible:brightness-110 absolute left-[-2.5rem] top-[-2rem] z-[2] hidden h-[10rem] w-auto max-w-none sm:block',
+                        interactiveBrightnessClasses,
+                    )}
                 />
                 <Image
                     src={HealthFrameSteelSoulSmallImg}
                     alt="Steel Soul game mode frame"
-                    className="absolute left-[-2.5rem] top-[-2rem] z-[2] h-[10rem] w-auto max-w-none group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90 sm:hidden"
+                    className={cn(
+                        'absolute left-[-2.5rem] top-[-2rem] z-[2] h-[10rem] w-auto max-w-none sm:hidden',
+                        interactiveBrightnessClasses,
+                    )}
                 />
             </>
         );
@@ -79,7 +91,7 @@ function RunCardEpicInfo({
     const spans = (
         <span
             className={cn(
-                'z-[4] flex items-baseline gap-1 drop-shadow-sm sm:max-md:flex-col sm:max-md:items-end sm:max-md:justify-end sm:max-md:gap-0 md:gap-1',
+                'sm:max-md:flex-col sm:max-md:items-end sm:max-md:justify-end sm:max-md:gap-0 z-[4] flex items-baseline gap-1 drop-shadow-sm md:gap-1',
                 className,
             )}
         >
@@ -118,7 +130,7 @@ export function RunCard({
     return (
         <div
             key={run.id}
-            className="group relative flex h-[unset] w-full flex-row items-start justify-between overflow-hidden rounded-sm bg-black px-4 py-2 text-white transition hover:bg-black hover:text-white hover:drop-shadow-glow-sm focus-visible:drop-shadow-glow-md active:drop-shadow-none"
+            className="group relative flex h-[unset] w-full flex-row items-start justify-between overflow-hidden rounded-sm bg-black px-4 py-2 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none"
         >
             {/* https://css-tricks.com/nested-links/ */}
             <Link href={`/run/${run.id}`} className="absolute inset-0 z-[6] block"></Link>
@@ -176,8 +188,8 @@ export function RunCard({
                                 codes={run.tags}
                                 runId={run.id}
                                 isOwn={isOwnRun}
-                                addButtonClassName="hasHover:opacity-0 hasHover:group-hover:opacity-100 transition-opacity"
-                                removeButtonClassName="hasHover:opacity-0 hasHover:group-hover:opacity-100 transition-opacity"
+                                addButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                                removeButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
                             />
                         </div>
                     )}

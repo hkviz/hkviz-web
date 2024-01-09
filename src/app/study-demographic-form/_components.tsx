@@ -2,6 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { CardContent, CardFooter } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
@@ -16,9 +17,9 @@ import { useForm } from 'react-hook-form';
 import { type z } from 'zod';
 import { ageRanges } from '~/lib/types/age-range';
 import { countries, isCountryShortCode } from '~/lib/types/country';
-import { genders } from '~/lib/types/gender';
 import { studyDemographicDefaultData, studyDemographicSchema } from '~/lib/types/study-demographic-data';
 import { api } from '~/trpc/react';
+import { Expander } from '../_components/expander';
 
 export interface StudyDemographicClientFormProps {
     requestCountryShortCode: string | undefined;
@@ -45,7 +46,7 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
 
     const router = useRouter();
     const saveMutation = api.studyDemographics.save.useMutation();
-    const watchGender = form.watch('gender');
+    const watchGenderSelfDisclose = form.watch('genderPreferToSelfDescribe');
 
     async function onSubmit(values: z.infer<typeof studyDemographicSchema>, event: BaseSyntheticEvent | undefined) {
         event?.preventDefault();
@@ -108,51 +109,103 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                             )}
                         /> */}
 
-                        <FormField
-                            control={form.control}
-                            name="gender"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>
-                                        Which most closely describes your gender?
-                                        <RequiredStar />
-                                    </FormLabel>
-                                    <FormControl>
-                                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                                            <SelectTrigger className="w-full">
-                                                <SelectValue placeholder="Select a gender" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectGroup>
-                                                    {genders.map((it) => (
-                                                        <SelectItem key={it.code} value={it.code}>
-                                                            {it.name}
-                                                        </SelectItem>
-                                                    ))}
-                                                </SelectGroup>
-                                            </SelectContent>
-                                        </Select>
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                        {watchGender === 'not_listed' && (
+                        <div className="space-y-1">
                             <FormField
                                 control={form.control}
-                                name="genderCustom"
-                                render={({ field }) => (
+                                name="gender"
+                                render={() => (
                                     <FormItem>
-                                        <FormLabel>My gender is</FormLabel>
+                                        <FormLabel>What is your gender? <RequiredStar /></FormLabel>
+                                        <FormMessage />
                                         <FormControl>
-                                            <Input className="w-full" placeholder="Enter a gender" {...field} />
+                                            <FormField
+                                                control={form.control}
+                                                name="genderWoman"
+                                                render={({ field }) => (
+                                                    <FormItem className="flex flex-row items-center">
+                                                        <FormControl>
+                                                            <Checkbox
+                                                                checked={field.value}
+                                                                onCheckedChange={field.onChange}
+                                                            />
+                                                        </FormControl>
+                                                        <FormLabel className="pb-2 pl-2">woman</FormLabel>
+                                                        <FormMessage />
+                                                    </FormItem>
+                                                )}
+                                            />
                                         </FormControl>
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="genderMan"
+                                render={({ field }) => (
+                                    <FormItem className="flex flex-row items-center">
+                                        <FormControl>
+                                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                        </FormControl>
+                                        <FormLabel className="pb-2 pl-2">man</FormLabel>
                                         <FormMessage />
                                     </FormItem>
                                 )}
                             />
-                        )}
-
+                            <FormField
+                                control={form.control}
+                                name="genderNonBinary"
+                                render={({ field }) => (
+                                    <FormItem className="flex flex-row items-center">
+                                        <FormControl>
+                                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                        </FormControl>
+                                        <FormLabel className="pb-2 pl-2">non-binary</FormLabel>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="genderPreferNotToDisclose"
+                                render={({ field }) => (
+                                    <FormItem className="flex flex-row items-center">
+                                        <FormControl>
+                                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                        </FormControl>
+                                        <FormLabel className="pb-2 pl-2">prefer not to disclose</FormLabel>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="genderPreferToSelfDescribe"
+                                render={({ field }) => (
+                                    <FormItem className="flex flex-row items-center">
+                                        <FormControl>
+                                            <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                                        </FormControl>
+                                        <FormLabel className="pb-2 pl-2">prefer to self-describe</FormLabel>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <Expander expanded={watchGenderSelfDisclose}>
+                                <FormField
+                                    control={form.control}
+                                    name="genderCustom"
+                                    render={({ field }) => (
+                                        <FormItem>
+                                            <FormLabel>My gender is</FormLabel>
+                                            <FormControl>
+                                                <Input className="w-full" placeholder="Enter a gender" {...field} />
+                                            </FormControl>
+                                            <FormMessage />
+                                        </FormItem>
+                                    )}
+                                />
+                            </Expander>
+                        </div>
                         <FormField
                             control={form.control}
                             name="ageRange"

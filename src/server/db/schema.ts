@@ -16,9 +16,6 @@ import {
 import { type AdapterAccount } from 'next-auth/adapters';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { countryCodes } from '~/lib/types/country';
-import { genderCodes } from '~/lib/types/gender';
-import { hkExperienceCodes } from '~/lib/types/old-hk-experience';
-import { oldTagCodes } from '~/lib/types/old-tags';
 import { tags, type TagCode } from '~/lib/types/tags';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 
@@ -102,12 +99,15 @@ export const dataCollectionStudyParticipationRelations = relations(dataCollectio
 
 export const userDemographics = mysqlTable('userDemographic', {
     userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
-
-    previousHollowKnightExperience: mysqlEnum('previous_hollow_knight_experience', hkExperienceCodes).notNull(),
     ageRange: mysqlEnum('age_range', ageRangeCodes).notNull(),
-    gender: mysqlEnum('gender', genderCodes).notNull(),
-    genderCustom: varchar('gender_custom', { length: 124 }),
     country: mysqlEnum('country', countryCodes).notNull(),
+
+    genderWoman: boolean('gender_woman').notNull().default(false),
+    genderMan: boolean('gender_man').notNull().default(false),
+    genderNonBinary: boolean('gender_non_binary').notNull().default(false),
+    genderPreferNotToDisclose: boolean('gender_prefer_not_to_disclose').notNull().default(false),
+    genderPreferToSelfDescribe: boolean('gender_prefer_to_self_describe').notNull().default(false),
+    genderCustom: varchar('gender_custom', { length: 124 }),
 
     createdAt: timestamp('created_at')
         .default(sql`CURRENT_TIMESTAMP`)
@@ -238,21 +238,6 @@ export const runFiles = mysqlTable('runfile', {
 
 export const runFilesRelations = relations(runFiles, ({ one }) => ({
     run: one(runs, { fields: [runFiles.runId], references: [runs.id] }),
-}));
-
-export const runTags = mysqlTable(
-    'runTag',
-    {
-        runId: varchar('run_id', { length: UUID_LENGTH }).notNull(),
-        code: mysqlEnum('tag', oldTagCodes).notNull(),
-    },
-    (runTag) => ({
-        compoundKey: primaryKey(runTag.runId, runTag.code),
-    }),
-);
-
-export const runTagsRelations = relations(runTags, ({ one, many }) => ({
-    run: one(runs, { fields: [runTags.runId], references: [runs.id] }),
 }));
 
 export const ingameAuth = mysqlTable(

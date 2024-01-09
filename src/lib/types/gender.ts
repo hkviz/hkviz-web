@@ -43,6 +43,6 @@ type CodesOf<T extends readonly { code: unknown }[]> = {
 
 type GenderCodes = CodesOf<typeof genders>;
 export type GenderCode = GenderCodes[number];
-export const genderCodes = genders.map((it) => it.code) as unknown as GenderCodes;
+export const oldGenderCodes = genders.map((it) => it.code) as unknown as GenderCodes;
 
-export const genderSchema = z.enum(genderCodes);
+export const oldGenderSchema = z.enum(oldGenderCodes);
