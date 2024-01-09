@@ -1,4 +1,4 @@
-import { raise } from '~/lib/utils';
+import { raise } from '~/lib/utils/utils';
 import { assertIsResearcher } from '~/server/api/routers/lib/researcher';
 import { findRuns } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';

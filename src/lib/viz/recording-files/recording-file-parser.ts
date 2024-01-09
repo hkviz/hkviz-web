@@ -1,4 +1,4 @@
-import { raise, typeCheckNever } from '~/lib/utils';
+import { raise, typeCheckNever } from '~/lib/utils/utils';
 import { heroStateFields } from '../hero-state/hero-states';
 import { playerDataFields } from '../player-data/player-data';
 import { isKnownRecordingFileVersion, isVersion0xx, type RecordingFileVersion } from '../types/recording-file-version';

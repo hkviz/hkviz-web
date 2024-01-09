@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { v4 as uuidv4 } from 'uuid';
-import { raise } from '~/lib/utils';
+import { raise } from '~/lib/utils/utils';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
 import { ingameAuth } from '~/server/db/schema';
 

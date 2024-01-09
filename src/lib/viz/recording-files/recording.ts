@@ -1,16 +1,20 @@
-import { raise } from '~/lib/utils';
+import { raise } from '~/lib/utils/utils';
 import { type HeroStateField } from '../hero-state/hero-states';
 import { playerPositionToMapPosition } from '../map-data/player-position';
-import { type PlayerDataFieldValue, type PlayerDataField } from '../player-data/player-data';
+import { playerDataFields, type PlayerDataField, type PlayerDataFieldValue } from '../player-data/player-data';
 import { type RecordingFileVersion } from '../types/recording-file-version';
 import type { Vector2 } from '../types/vector2';
 
-type RecordingEventBaseOptions = Pick<RecordingEventBase, 'timestamp'>;
+type RecordingEventBaseOptions = Pick<RecordingEventBase, 'timestamp'> &
+    Partial<Pick<RecordingEventBase, 'msIntoGame'>>;
 abstract class RecordingEventBase {
     timestamp: number;
     msIntoGame = 0;
     constructor(options: RecordingEventBaseOptions) {
         this.timestamp = options.timestamp;
+        if (options.msIntoGame != null) {
+            this.msIntoGame = options.msIntoGame;
+        }
     }
 }
 
@@ -133,6 +137,26 @@ export class SpellDownEvent extends RecordingEventBase {
     }
 }
 
+/**
+ * Synthetic event / not actually recorded
+ * created by recording combiner whenever the timestamp changes if any of the values in it changed
+ */
+type FrameEndEventOptions = Omit<FrameEndEvent, never>;
+export class FrameEndEvent extends RecordingEventBase {
+    geo: number;
+    geoPool: number;
+
+    constructor(options: FrameEndEventOptions) {
+        super(options);
+        this.geo = options.geo;
+        this.geoPool = options.geoPool;
+    }
+}
+export const frameEndEventPlayerDataFields = new Set<PlayerDataField>([
+    playerDataFields.byFieldName.geo,
+    playerDataFields.byFieldName.geoPool,
+]);
+
 export type RecordingEvent =
     | SceneEvent
     | PlayerPositionEvent
@@ -141,7 +165,8 @@ export type RecordingEvent =
     | HeroStateEvent
     | SpellFireballEvent
     | SpellDownEvent
-    | SpellUpEvent;
+    | SpellUpEvent
+    | FrameEndEvent;
 
 export class ParsedRecording {
     constructor(

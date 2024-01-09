@@ -12,6 +12,7 @@ import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files
 import { type AppRouterOutput } from '~/server/api/types';
 import { AnimationOptions } from './_animation_options';
 import { RoomInfo } from './_room_infos';
+import { RunExtraCharts } from './_run_extra_charts';
 import { RunInfos } from './_run_infos';
 import { useViewOptionsStoreRoot } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
@@ -44,7 +45,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
     return (
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
             <div className="flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:flex-col">
-                <Card className="overflow-auto max-lg:grow max-lg:basis-0 max-md:min-w-[300px]">
+                <Card className="max-lg:grow max-lg:basis-0 max-md:min-w-[300px] overflow-auto">
                     <CardContent className="px-0 pb-1">
                         <Tabs defaultValue="view-options" className="w-full">
                             <TabsList className="w-full bg-transparent">
@@ -93,6 +94,9 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 {(traceVisibility === 'animated' || roomVisibility === 'visited-animated') && combinedRecording && (
                     <AnimationOptions useViewOptionsStore={useViewOptionsStore} recording={combinedRecording} />
                 )}
+            </div>
+            <div className="flex w-[500px] flex-col gap-2 overflow-auto lg:w-[500px]">
+                <RunExtraCharts useViewOptionsStore={useViewOptionsStore} />
             </div>
         </div>
     );

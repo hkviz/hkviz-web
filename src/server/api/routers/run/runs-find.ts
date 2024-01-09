@@ -35,7 +35,6 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
 
     const runs = await db.query.runs.findMany({
         where: (run, { eq, and, inArray, or }) => {
-            console.log(filter);
             const tagFilter = filter.tag ? or(...filter.tag.map((tag) => eq(run[`tag_${tag}`], true))) : undefined;
 
             const conditions = [
@@ -44,9 +43,7 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
                 tagFilter,
             ];
 
-            const c = and(...conditions.filter((c) => c != null));
-            // console.log(c);
-            return c;
+            return and(...conditions.filter((c) => c != null));
         },
         columns: {
             id: true,

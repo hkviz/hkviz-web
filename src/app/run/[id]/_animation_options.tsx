@@ -9,7 +9,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { cn } from '@/lib/utils';
 import { Pause, Play } from 'lucide-react';
 import { useEffect } from 'react';
-import { zeroPad } from '~/lib/utils';
+import { zeroPad } from '~/lib/utils/utils';
 import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 

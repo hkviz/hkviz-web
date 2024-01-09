@@ -195,7 +195,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                             <span className="text-sm opacity-50">Hover or click a room to view analytics</span>
                         )}
                         {selectedRoom && (
-                            <div>
+                            <>
                                 <Tooltip>
                                     <TooltipTrigger>
                                         <span className="text-left">
@@ -213,7 +213,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                                     </TooltipTrigger>
                                     <TooltipContent>Room</TooltipContent>
                                 </Tooltip>
-                            </div>
+                            </>
                         )}
                     </CardDescription>
                 </div>

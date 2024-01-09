@@ -5,7 +5,7 @@ import { r2FileHead, r2GetSignedDownloadUrl, r2GetSignedUploadUrl, r2RunPartFile
 import { TRPCError } from '@trpc/server';
 import { and, eq } from 'drizzle-orm';
 import { tagSchema, type TagCode } from '~/lib/types/tags';
-import { raise } from '~/lib/utils';
+import { raise } from '~/lib/utils/utils';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
 import { type DB } from '~/server/db';
