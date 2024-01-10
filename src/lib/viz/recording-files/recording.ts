@@ -189,6 +189,7 @@ export class ParsedRecording {
 
 export class CombinedRecording extends ParsedRecording {
     public playerDataEventsPerField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>[]>();
+    public frameEndEvents: FrameEndEvent[];
 
     constructor(
         events: RecordingEvent[],
@@ -206,6 +207,8 @@ export class CombinedRecording extends ParsedRecording {
                 this.playerDataEventsPerField.set(event.field, eventsOfField);
             }
         }
+
+        this.frameEndEvents = this.events.filter((it): it is FrameEndEvent => it instanceof FrameEndEvent);
     }
 
     lastPlayerDataEventOfField<TField extends PlayerDataField>(field: TField): PlayerDataEvent<TField> | null {

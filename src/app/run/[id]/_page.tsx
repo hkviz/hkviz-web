@@ -95,7 +95,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     <AnimationOptions useViewOptionsStore={useViewOptionsStore} recording={combinedRecording} />
                 )}
             </div>
-            <div className="flex w-[500px] flex-col gap-2 overflow-auto lg:w-[500px]">
+            <div className="flex w-[400px] flex-col gap-2 overflow-auto lg:w-[400px]">
                 <RunExtraCharts useViewOptionsStore={useViewOptionsStore} />
             </div>
         </div>

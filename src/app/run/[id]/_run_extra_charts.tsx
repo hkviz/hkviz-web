@@ -1,8 +1,13 @@
 import { Card } from '@/components/ui/card';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import * as d3 from 'd3';
-import { useEffect, useMemo, useRef } from 'react';
+import Image from 'next/image';
+import { useId, useMemo, useRef, useState } from 'react';
 import { formatTimeMs } from '~/lib/utils/time';
-import { FrameEndEvent } from '~/lib/viz/recording-files/recording';
+import { useDependableEffect } from '~/lib/viz/depdendent-effect';
+import { type FrameEndEvent } from '~/lib/viz/recording-files/recording';
+import coinImg from '../../../../public/ingame-sprites/HUD_coin_shop.png';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 export interface RunExtraChartsProps {
@@ -10,12 +15,7 @@ export interface RunExtraChartsProps {
 }
 
 export function RunExtraCharts({ useViewOptionsStore }: RunExtraChartsProps) {
-    return (
-        <Card>
-            Geo over time
-            <MoneyChart useViewOptionsStore={useViewOptionsStore} />
-        </Card>
-    );
+    return <MoneyChart useViewOptionsStore={useViewOptionsStore} />;
 }
 
 function downScale(data: FrameEndEvent[], maxTimeDelta = 10000) {
@@ -62,17 +62,56 @@ function downScale(data: FrameEndEvent[], maxTimeDelta = 10000) {
     return filtered;
 }
 
+const moneyChartVariables = [
+    {
+        key: 'geo',
+        name: 'Geo',
+        description: 'Geo the player has',
+        color: '#fbb4ae',
+        checkboxClassName: 'data-[state=checked]:bg-emerald-500 border-emerald-500 outline-emerald-500',
+        pathClassName: 'text-emerald-500 fill-current',
+        order: 1,
+    },
+    {
+        key: 'geoPool',
+        name: 'Shade geo',
+        description: 'The geo the players shade has, which can be earned back by defeating the shade.',
+        checkboxClassName: 'data-[state=checked]:bg-indigo-500 border-indigo-500 outline-indigo-500',
+        pathClassName: 'text-indigo-500 fill-current',
+        order: 2,
+    },
+] as const;
+
+const moneyChartVariableByKey = Object.fromEntries(moneyChartVariables.map((it) => [it.key, it]));
+
+type MoneyVariableKey = (typeof moneyChartVariables)[number]['key'];
+
 function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
     const svgRef = useRef<SVGSVGElement>(null);
 
     const recording = useViewOptionsStore((s) => s.recording);
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
+    const shownMsIntoGame = animationMsIntoGame;
+
+    const [selectedVars, setSelectedVars] = useState<MoneyVariableKey[]>(moneyChartVariables.map((it) => it.key));
+
+    function onVariableCheckedChange(key: MoneyVariableKey, checked: boolean) {
+        setSelectedVars((prev: MoneyVariableKey[]) => {
+            if (checked) {
+                return [...prev, key].sort(
+                    (a, b) => moneyChartVariableByKey[a]!.order - moneyChartVariableByKey[b]!.order,
+                );
+            } else {
+                return prev.filter((it) => it !== key);
+            }
+        });
+    }
+
+    const id = useId();
 
     const data = useMemo(() => {
         if (!recording) return [];
-        const togetherEvents = downScale(
-            recording.events.filter((it): it is FrameEndEvent => it instanceof FrameEndEvent),
-        );
+        const togetherEvents = downScale(recording.frameEndEvents);
 
         return togetherEvents.map((it) => {
             const msIntoGame = it.msIntoGame;
@@ -83,15 +122,23 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         });
     }, [recording]);
 
-    useEffect(() => {
-        if (!recording) return;
+    const currentEndOfGame = useMemo(() => {
+        if (!recording) return null;
+        return recording.frameEndEvents.findLast((it) => it.msIntoGame <= shownMsIntoGame);
+    }, [recording, shownMsIntoGame]);
+
+    const widthWithMargin = 400;
+    const heightWithMargin = 300;
+    const marginTop = 25;
+    const marginRight = 10;
+    const marginBottom = 35;
+    const marginLeft = 45;
+    const height = heightWithMargin - marginTop - marginBottom;
+    const width = widthWithMargin - marginLeft - marginRight;
+
+    const mainEffectChanges = useDependableEffect(() => {
+        if (!recording || selectedVars.length === 0) return;
         // Specify the chart’s dimensions.
-        const width = 400;
-        const height = 300;
-        const marginTop = 10;
-        const marginRight = 10;
-        const marginBottom = 20;
-        const marginLeft = 40;
 
         type Datum = (typeof data)[number];
         type Series = {
@@ -101,31 +148,18 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         }[] & { key: string; index: number };
 
         // Determine the series that need to be stacked.
-        const series = d3.stack().keys(['geo', 'geoPool'])(data) as any as Series[];
+        const series = d3.stack().keys(selectedVars)(data) as unknown as Series[];
 
         // Prepare the scales for positional and color encodings.
         const x = d3
             .scaleLinear()
             .domain([0, recording.events.at(-1)?.msIntoGame ?? 0] as [number, number])
-            .range([marginLeft, width - marginRight]);
+            .range([marginLeft, widthWithMargin - marginRight]);
 
         const y = d3
             .scaleLinear()
-            .domain([0, d3.max(data, (d) => d.total)] as [number, number])
-            .rangeRound([height - marginBottom, marginTop]);
-
-        function color(key: string) {
-            switch (key) {
-                case 'geo':
-                    return '#fbb4ae';
-                case 'geoPool':
-                    return '#b3cde3';
-                default:
-                    throw new Error(`Unknown key ${key}`);
-            }
-        }
-
-        console.log(series);
+            .domain([0, d3.max(series.at(-1)!, (d) => d[1])] as [number, number])
+            .rangeRound([heightWithMargin - marginBottom, marginTop]);
 
         // Construct an area shape.
         const area = d3
@@ -135,49 +169,114 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             .y1((d) => y(d[1]));
 
         // Create the SVG container.
-        const svg = d3
-            .select(svgRef.current!)
-            .attr('width', width)
-            .attr('height', height)
-            .attr('viewBox', [0, 0, width, height])
-            .attr('style', 'max-width: 100%; height: auto;');
+        const svg = d3.select(svgRef.current!);
+
+        svg.selectAll('*').remove();
 
         // Add the y-axis, remove the domain line, add grid lines and a label.
         svg.append('g')
             .attr('transform', `translate(${marginLeft},0)`)
-            .call(d3.axisLeft(y).ticks(height / 70))
+            .call(d3.axisLeft(y).ticks(heightWithMargin / 70))
             .call((g) => g.select('.domain').remove())
             .call((g) =>
                 g
                     .selectAll('.tick line')
                     .clone()
-                    .attr('x2', width - marginLeft - marginRight)
+                    .attr('x2', widthWithMargin - marginLeft - marginRight)
                     .attr('stroke-opacity', 0.1),
             );
+
+        svg.append('text')
+            .attr('x', marginLeft - 10)
+            .attr('y', 14)
+            .attr('text-anchor', 'end')
+            .attr('class', 'text-foreground fill-current text-xs')
+            .text('Geo');
+
+        // .style('transform', 'rotate(-90deg)')
+        // .style('transform-box', 'fill-box')
+        // .style('transform-origin', 'center');
 
         // Append a path for each series.
         svg.append('g')
             .selectAll()
             .data(series)
             .join('path')
-            .attr('fill', (d) => color(d.key))
+            .attr('class', (d) => moneyChartVariableByKey[d.key]?.pathClassName ?? '')
             .attr('d', (d) => area(d))
             .append('title')
             .text((d) => d.key);
 
         // Append the horizontal axis atop the area.
         svg.append('g')
-            .attr('transform', `translate(0,${height - marginBottom})`)
+            .attr('transform', `translate(0,${heightWithMargin - marginBottom})`)
             .call(
                 d3
                     .axisBottom(x)
                     .tickSizeOuter(0)
-                    .ticks(width / 70)
+                    .ticks(widthWithMargin / 70)
                     .tickFormat((d) => formatTimeMs(d.valueOf())),
             );
-    }, [data, recording]);
 
-    useEffect(() => {}, [recording, animationMsIntoGame]);
+        svg.append('text')
+            .attr('x', widthWithMargin / 2)
+            .attr('y', heightWithMargin - 2)
+            .attr('text-anchor', 'middle')
+            .attr('class', 'text-foreground fill-current text-xs')
+            .text('Time');
+    }, [
+        data,
+        recording,
+        selectedVars,
+        heightWithMargin,
+        widthWithMargin,
+        marginTop,
+        marginRight,
+        marginBottom,
+        marginLeft,
+    ]);
 
-    return <svg ref={svgRef}></svg>;
+    return (
+        <Card className="overflow-hidden">
+            <h3 className="pt-3 text-center">
+                <Image src={coinImg} alt="Geo" className="mr-2 inline-block w-6" />
+                Geo over time
+            </h3>
+            <svg
+                ref={svgRef}
+                width={widthWithMargin}
+                height={heightWithMargin}
+                viewBox={`0 0 ${widthWithMargin} ${heightWithMargin}`}
+                className="h-auto max-w-full"
+            ></svg>
+            <Table>
+                <TableBody>
+                    {moneyChartVariables.map((variable) => (
+                        <TableRow key={variable.key}>
+                            <TableCell>
+                                <div className="flex flex-row items-center gap-2">
+                                    <Checkbox
+                                        id={id + variable.key + '_checkbox'}
+                                        checked={selectedVars.includes(variable.key)}
+                                        onCheckedChange={(c) => onVariableCheckedChange(variable.key, c === true)}
+                                        className={variable.checkboxClassName}
+                                    />
+                                    <label
+                                        htmlFor={id + variable.key + '_checkbox'}
+                                        className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                    >
+                                        {variable.name}
+                                    </label>
+                                </div>
+                            </TableCell>
+                            <TableCell className="text-right">
+                                {currentEndOfGame?.[variable.key] ?? 0}
+                                <Image src={coinImg} alt="Geo" className="ml-2 inline-block w-4" />
+                            </TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
+        </Card>
+    );
 }
