@@ -141,20 +141,37 @@ export class SpellDownEvent extends RecordingEventBase {
  * Synthetic event / not actually recorded
  * created by recording combiner whenever the timestamp changes if any of the values in it changed
  */
-type FrameEndEventOptions = Omit<FrameEndEvent, never>;
+type FrameEndEventOptions = Omit<FrameEndEvent, 'trinketGeo'>;
 export class FrameEndEvent extends RecordingEventBase {
     geo: number;
+
     geoPool: number;
+    trinket1: number; // wanderers journal
+    trinket2: number; // hallownest seal
+    trinket3: number; // kings idol
+    trinket4: number; // arcane egg
+    trinketGeo: number;
 
     constructor(options: FrameEndEventOptions) {
         super(options);
         this.geo = options.geo;
         this.geoPool = options.geoPool;
+        this.trinket1 = options.trinket1;
+        this.trinket2 = options.trinket2;
+        this.trinket3 = options.trinket3;
+        this.trinket4 = options.trinket4;
+
+        // prices when sold to lemm: https://hollowknight.wiki/w/Lemm
+        this.trinketGeo = this.trinket1 * 200 + this.trinket2 * 450 + this.trinket3 * 800 + this.trinket4 * 1200;
     }
 }
 export const frameEndEventPlayerDataFields = new Set<PlayerDataField>([
     playerDataFields.byFieldName.geo,
     playerDataFields.byFieldName.geoPool,
+    playerDataFields.byFieldName.trinket1,
+    playerDataFields.byFieldName.trinket2,
+    playerDataFields.byFieldName.trinket3,
+    playerDataFields.byFieldName.trinket4,
 ]);
 
 export type RecordingEvent =

@@ -45,6 +45,10 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                     timestamp: lastTimestamp,
                     geo: getPreviousPlayerData(playerDataFields.byFieldName.geo)?.value ?? 0,
                     geoPool: getPreviousPlayerData(playerDataFields.byFieldName.geoPool)?.value ?? 0,
+                    trinket1: getPreviousPlayerData(playerDataFields.byFieldName.trinket1)?.value ?? 0,
+                    trinket2: getPreviousPlayerData(playerDataFields.byFieldName.trinket2)?.value ?? 0,
+                    trinket3: getPreviousPlayerData(playerDataFields.byFieldName.trinket3)?.value ?? 0,
+                    trinket4: getPreviousPlayerData(playerDataFields.byFieldName.trinket4)?.value ?? 0,
                     msIntoGame,
                 });
                 endFrameEvent.msIntoGame = msIntoGame;

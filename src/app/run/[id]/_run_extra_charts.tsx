@@ -71,15 +71,23 @@ const moneyChartVariables = [
         color: '#fbb4ae',
         checkboxClassName: 'data-[state=checked]:bg-emerald-500 border-emerald-500 outline-emerald-500',
         pathClassName: 'text-emerald-500 fill-current',
-        order: 1,
+        order: 3,
     },
     {
         key: 'geoPool',
-        name: 'Shade geo',
-        description: 'The geo the players shade has, which can be earned back by defeating the shade.',
+        name: 'Shade Geo',
+        description: 'The geo the shade has, which can be earned back by defeating the shade.',
         checkboxClassName: 'data-[state=checked]:bg-indigo-500 border-indigo-500 outline-indigo-500',
         pathClassName: 'text-indigo-500 fill-current',
         order: 2,
+    },
+    {
+        key: 'trinketGeo',
+        name: 'Relict Geo worth',
+        description: 'The geo which the relicts in the inventory are worth when sold to Lemm.',
+        checkboxClassName: 'data-[state=checked]:bg-rose-500 border-rose-500 outline-rose-500',
+        pathClassName: 'text-rose-500 fill-current',
+        order: 1,
     },
 ] as const;
 
@@ -94,7 +102,9 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const shownMsIntoGame = animationMsIntoGame;
 
-    const [selectedVars, setSelectedVars] = useState<MoneyVariableKey[]>(moneyChartVariables.map((it) => it.key));
+    const [selectedVars, setSelectedVars] = useState<MoneyVariableKey[]>(
+        moneyChartVariables.toSorted((a, b) => a.order - b.order).map((it) => it.key),
+    );
 
     function onVariableCheckedChange(key: MoneyVariableKey, checked: boolean) {
         setSelectedVars((prev: MoneyVariableKey[]) => {
@@ -118,8 +128,8 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             const msIntoGame = it.msIntoGame;
             const geo = it.geo;
             const geoPool = it.geoPool;
-            const total = geo + geoPool;
-            return { geo, geoPool, total, msIntoGame };
+            const trinketGeo = it.trinketGeo;
+            return { geo, geoPool, trinketGeo, msIntoGame };
         });
     }, [recording]);
 
@@ -152,10 +162,12 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         const series = d3.stack().keys(selectedVars)(data) as unknown as Series[];
 
         // Prepare the scales for positional and color encodings.
-        const x = d3
-            .scaleLinear()
-            .domain([0, recording.events.at(-1)?.msIntoGame ?? 0] as [number, number])
-            .range([0, width]);
+        function makeX(domain: readonly [number, number] = [0, recording!.events.at(-1)?.msIntoGame ?? 0]) {
+            return d3.scaleLinear().domain(domain).range([0, width]);
+        }
+
+        let x = makeX();
+        console.log('initial init x');
 
         const y = d3
             .scaleLinear()
@@ -167,25 +179,13 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             .area<Series[number]>()
             .x((d) => x(d.data?.msIntoGame ?? 0))
             .y0((d) => y(d[0]))
-            .y1((d) => y(d[1]));
+            .y1((d) => y(d[1]))
+            .curve(d3.curveStep);
 
         // Create the SVG container.
         const svg = d3.select(svgRef.current!);
 
         svg.selectAll('*').remove();
-
-        // Add the y-axis, remove the domain line, add grid lines and a label.
-        svg.append('g')
-            .attr('transform', `translate(${marginLeft},0)`)
-            .call(d3.axisLeft(y).ticks(heightWithMargin / 70))
-            .call((g) => g.select('.domain').remove())
-            .call((g) =>
-                g
-                    .selectAll('.tick line')
-                    .clone()
-                    .attr('x2', widthWithMargin - marginLeft - marginRight)
-                    .attr('stroke-opacity', 0.1),
-            );
 
         svg.append('text')
             .attr('x', marginLeft - 10)
@@ -231,16 +231,21 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         areaPaths.append('title').text((d) => d.key);
 
         // axis x
+        const xAxisCallee = d3
+            .axisBottom(x)
+            .tickSizeOuter(0)
+            .ticks(width / 70)
+            .tickFormat((d) => formatTimeMs(d.valueOf()));
+        const xAxis = rootG.append('g').attr('transform', `translate(0,${height})`).call(xAxisCallee);
+
+        // axis y
         rootG
             .append('g')
-            .attr('transform', `translate(0,${height})`)
-            .call(
-                d3
-                    .axisBottom(x)
-                    .tickSizeOuter(0)
-                    .ticks(widthWithMargin / 70)
-                    .tickFormat((d) => formatTimeMs(d.valueOf())),
-            );
+            .call(d3.axisLeft(y).ticks(height / 50))
+            .call((g) => g.select('.domain').remove())
+            .call((g) => g.selectAll('.tick line').clone().attr('x2', width).attr('stroke-opacity', 0.1));
+
+        let skipNextUpdate = false;
 
         // brush
         const brush = d3
@@ -252,19 +257,25 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             .on('end', (event: D3BrushEvent<unknown>) => {
                 const selection = (event.selection ?? null) as [number, number] | null;
 
-                if (lastSelection === selection) return;
+                if (skipNextUpdate) {
+                    skipNextUpdate = false;
+                    return;
+                }
 
                 if (selection == null) {
-                    x.domain([0, recording.events.at(-1)?.msIntoGame ?? 0]);
+                    console.log('null reset');
+                    x = makeX();
                 } else {
-                    brush.move(brushG, null);
                     // areasGs.transition().duration(1000).call(d3.axisBottom(x).ticks(5))
                     const invSelection = [x.invert(selection[0]), x.invert(selection[1])] as const;
-                    x.domain(invSelection);
+                    x = makeX(invSelection);
                 }
                 areaPaths.transition().duration(500).attr('d', area);
                 lastSelection = selection;
+                xAxis.transition().duration(500).call(xAxisCallee);
                 // todo animate axis
+                skipNextUpdate = true;
+                brush.move(brushG, null);
             });
         const brushG = rootG.append('g').attr('class', 'brush');
         brushG.call(brush);
