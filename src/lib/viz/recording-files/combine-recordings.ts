@@ -32,6 +32,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
     let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
     let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
+    let previousEndFrameEvent: FrameEndEvent | null = null;
 
     const visitedScenesToCheckIfInPlayerData = [] as { sceneName: string; msIntoGame: number }[];
 
@@ -51,7 +52,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                     trinket4: getPreviousPlayerData(playerDataFields.byFieldName.trinket4)?.value ?? 0,
                     msIntoGame,
                 });
-                endFrameEvent.msIntoGame = msIntoGame;
+                previousEndFrameEvent = endFrameEvent;
                 events.push(endFrameEvent);
                 createEndFrameEvent = false;
             }
@@ -153,6 +154,11 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
         }
     }
     addScenesWhichWhereNotAdded(true);
+    // there might not have been a end frame event for a bit at the end, so we duplicate the last one
+    // so graphs can depend on there being one at the end of the msIntoGame
+    if (previousEndFrameEvent) {
+        events.push(new FrameEndEvent({ ...previousEndFrameEvent, msIntoGame }));
+    }
 
     function addScenesWhichWhereNotAdded(all = false) {
         while (

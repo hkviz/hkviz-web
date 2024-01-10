@@ -8,9 +8,8 @@ import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import useEvent from 'react-use-event-hook';
 import { formatTimeMs } from '~/lib/utils/time';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
-import { type FrameEndEvent } from '~/lib/viz/recording-files/recording';
 import coinImg from '../../../../public/ingame-sprites/HUD_coin_shop.png';
-import { type UseViewOptionsStore } from './_viewOptionsStore';
+import { type UseViewOptionsStore } from '../_viewOptionsStore';
 
 export interface RunExtraChartsProps {
     useViewOptionsStore: UseViewOptionsStore;
@@ -20,15 +19,16 @@ export function RunExtraCharts({ useViewOptionsStore }: RunExtraChartsProps) {
     const id = useId();
     const extraChartsFollowAnimation = useViewOptionsStore((s) => s.extraChartsFollowAnimation);
     const setExtraChartsFollowAnimation = useViewOptionsStore((s) => s.setExtraChartsFollowAnimation);
+    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
 
     return (
-        <>
-            <Card>
-                <CardHeader>
-                    <CardTitle>Time based analytics</CardTitle>
-                </CardHeader>
+        <Card className="overflow-hidden">
+            <CardHeader>
+                <CardTitle>Time based analytics</CardTitle>
+            </CardHeader>
+            {isAnythingAnimating && (
                 <CardContent>
-                    <div>
+                    <div className="flex flex-row gap-2">
                         <Checkbox
                             id={id + 'follow_anim'}
                             checked={extraChartsFollowAnimation}
@@ -36,60 +36,17 @@ export function RunExtraCharts({ useViewOptionsStore }: RunExtraChartsProps) {
                         />
                         <label
                             htmlFor={id + 'follow_anim'}
-                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
                             Follow animation
                         </label>
                     </div>
                 </CardContent>
-            </Card>
+            )}
+            <hr />
             <MoneyChart useViewOptionsStore={useViewOptionsStore} />
-        </>
+        </Card>
     );
-}
-
-function downScale(data: FrameEndEvent[], maxTimeDelta = 10000) {
-    console.log('Original length', data.length);
-    const fields = ['geo', 'geoPool'] as const;
-
-    let previous: FrameEndEvent | undefined = undefined;
-    let current: FrameEndEvent | undefined = undefined;
-    let next: FrameEndEvent | undefined = data[0];
-
-    const filtered = [];
-    let lastIncluded: FrameEndEvent | undefined = undefined;
-
-    for (let i = 0; i < data.length; i++) {
-        previous = current;
-        current = next!;
-        next = i + 1 < data.length ? data[i + 1] : undefined;
-
-        if (!previous || !next) {
-            filtered.push(current);
-            lastIncluded = current;
-            continue;
-        }
-
-        const isExtrema = fields.some((field) => {
-            const previousValue = previous![field];
-            const currentValue = current![field];
-            const nextValue = next![field];
-
-            return (
-                (currentValue < previousValue && currentValue <= nextValue) ||
-                (currentValue <= previousValue && currentValue < nextValue) ||
-                (currentValue > previousValue && currentValue >= nextValue) ||
-                (currentValue >= previousValue && currentValue > nextValue)
-            );
-        });
-
-        if (current.msIntoGame - lastIncluded!.msIntoGame > maxTimeDelta || isExtrema) {
-            filtered.push(current);
-            lastIncluded = current;
-        }
-    }
-    console.log('filtered length', filtered.length);
-    return filtered;
 }
 
 const moneyChartVariables = [
@@ -130,9 +87,23 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const shownMsIntoGame = animationMsIntoGame;
 
-    const extraChartsTimeBounds = useViewOptionsStore((s) => s.extraChartsTimeBounds);
+    const _extraChartsTimeBounds = useViewOptionsStore((s) => s.extraChartsTimeBounds);
     const setExtraChartsTimeBounds = useViewOptionsStore((s) => s.setExtraChartsTimeBounds);
     const resetExtraChartsTimeBounds = useViewOptionsStore((s) => s.resetExtraChartsTimeBounds);
+    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
+
+    // timebounds debouncing, so we can use d3 animations
+    const transitionDuration = 250;
+    const [debouncedExtraChartsTimeBounds, setDebouncedExtraChartsTimeBounds] = useState(_extraChartsTimeBounds);
+    const [debouncedShownMsIntoGame, setDebouncedShownMsIntoGame] = useState(shownMsIntoGame);
+    useEffect(() => {
+        const id = setInterval(() => {
+            const s = useViewOptionsStore.getState();
+            setDebouncedExtraChartsTimeBounds(s.extraChartsTimeBounds);
+            setDebouncedShownMsIntoGame(s.animationMsIntoGame);
+        }, transitionDuration);
+        return () => clearInterval(id);
+    }, [useViewOptionsStore]);
 
     const [selectedVars, setSelectedVars] = useState<MoneyVariableKey[]>(
         moneyChartVariables.toSorted((a, b) => a.order - b.order).map((it) => it.key),
@@ -191,24 +162,28 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
 
     const x = useMemo(() => {
         console.log('new x');
-        return d3.scaleLinear().domain(extraChartsTimeBounds).range([0, width]);
-    }, [extraChartsTimeBounds, width]);
+        return d3.scaleLinear().domain(debouncedExtraChartsTimeBounds).range([0, width]);
+    }, [debouncedExtraChartsTimeBounds, width]);
 
     const y = useMemo(() => {
         return d3
             .scaleLinear()
             .domain([
                 0,
-                d3.max(series.at(-1)!, (d) =>
-                    // max only over the selected timeframe --> therefore y axis zooms too
-                    d.data.msIntoGame >= extraChartsTimeBounds[0] - 10000 &&
-                    d.data.msIntoGame <= extraChartsTimeBounds[1] + 10000
-                        ? d[1]
-                        : 0,
+                Math.max(
+                    100,
+                    series.at(-1)!.findLast((it) => it.data.msIntoGame < debouncedExtraChartsTimeBounds[0])?.[1] ?? 0,
+                    d3.max(series.at(-1)!, (d) =>
+                        // max only over the selected timeframe --> therefore y axis zooms too
+                        d.data.msIntoGame >= debouncedExtraChartsTimeBounds[0] - 10000 &&
+                        d.data.msIntoGame <= debouncedExtraChartsTimeBounds[1] + 10000
+                            ? d[1]
+                            : 0,
+                    ) ?? 0,
                 ),
             ] as [number, number])
             .rangeRound([height, 0]);
-    }, [extraChartsTimeBounds, series, height]);
+    }, [debouncedExtraChartsTimeBounds, series, height]);
 
     const skipNextUpdate = useRef(false);
     const onBrushEnd = useEvent((event: D3BrushEvent<unknown>) => {
@@ -223,7 +198,6 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             console.log('null reset');
             resetExtraChartsTimeBounds();
         } else {
-            // areasGs.transition().duration(1000).call(d3.axisBottom(x).ticks(5))
             const invSelection = [x.invert(selection[0]), x.invert(selection[1])] as const;
             setExtraChartsTimeBounds(invSelection);
         }
@@ -310,7 +284,7 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         animationLine.current = rootG
             .append('line')
             .attr('class', 'stroke-current text-foreground')
-            .attr('stroke-width', 1)
+            .attr('stroke-width', 2)
             .attr('stroke-dasharray', '3 3')
             .attr('x1', 0)
             .attr('x2', 0)
@@ -320,7 +294,7 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
 
     // update area
     useEffect(() => {
-        if (!areaPaths.current || !xAxis.current) return;
+        if (!areaPaths.current) return;
 
         // Construct an area shape.
         const area = d3
@@ -332,8 +306,8 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             .y1((d) => y(d[1]))
             .curve(d3.curveStep);
 
-        // areaPaths.current.transition().duration(500).attr('d', area);
-        areaPaths.current.attr('d', area);
+        areaPaths.current.transition().ease(d3.easeLinear).duration(transitionDuration).attr('d', area);
+        //areaPaths.current.attr('d', area);
 
         // areaPaths.current.attr('d', area);
     }, [mainEffectChanges, recording, width, x, y]);
@@ -350,8 +324,8 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         if (xAxis.current.selectAll('*').empty()) {
             xAxis.current.call(xAxisCallee);
         } else {
-            xAxis.current.transition().duration(500).call(xAxisCallee);
-            xAxis.current.call(xAxisCallee);
+            console.log('transition x axis');
+            xAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear).call(xAxisCallee);
         }
     }, [mainEffectChanges, width, x]);
 
@@ -359,7 +333,9 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
     useEffect(() => {
         if (!yAxis.current) return;
 
-        const base = yAxis.current.selectAll('*').empty() ? yAxis.current : yAxis.current.transition().duration(500);
+        const base = yAxis.current.selectAll('*').empty()
+            ? yAxis.current
+            : yAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear);
 
         base.call(d3.axisLeft(y).ticks(height / 50));
         // .call((g) => g.select('.domain').remove())
@@ -368,12 +344,27 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
 
     // update animation line
     useEffect(() => {
-        if (!animationLine.current) return;
-        animationLine.current.attr('x1', x(shownMsIntoGame)).attr('x2', x(shownMsIntoGame));
-    }, [mainEffectChanges, shownMsIntoGame, x]);
+        const line = animationLine.current;
+        if (!line) return;
+
+        const base =
+            line.attr('data-existed') === 'true'
+                ? line.transition().duration(transitionDuration).ease(d3.easeLinear)
+                : line;
+        base.attr('data-existed', 'true');
+        base.attr('x1', x(debouncedShownMsIntoGame));
+        base.attr('x2', x(debouncedShownMsIntoGame));
+    }, [mainEffectChanges, debouncedShownMsIntoGame, x, transitionDuration]);
+
+    // update animation line visibility
+    useEffect(() => {
+        const line = animationLine.current;
+        if (!line) return;
+        line.attr('visibility', isAnythingAnimating ? 'visible' : 'hidden');
+    }, [mainEffectChanges, isAnythingAnimating]);
 
     return (
-        <Card className="overflow-hidden">
+        <div className="overflow-hidden">
             <h3 className="pt-3 text-center">
                 <Image src={coinImg} alt="Geo" className="mr-2 inline-block w-6" />
                 Geo over time
@@ -413,6 +404,6 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
                     ))}
                 </TableBody>
             </Table>
-        </Card>
+        </div>
     );
 }

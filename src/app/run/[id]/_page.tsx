@@ -12,10 +12,10 @@ import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files
 import { type AppRouterOutput } from '~/server/api/types';
 import { AnimationOptions } from './_animation_options';
 import { RoomInfo } from './_room_infos';
-import { RunExtraCharts } from './_run_extra_charts';
 import { RunInfos } from './_run_infos';
 import { useViewOptionsStoreRoot } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
+import { RunExtraCharts } from './extra-charts/_run_extra_charts';
 
 interface Props {
     session: Session | null;
@@ -30,6 +30,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
 
     const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
     const roomVisibility = useViewOptionsStore((s) => s.roomVisibility);
+    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
     const setRecording = useViewOptionsStore((s) => s.setRecording);
     const setAggregatedRunData = useViewOptionsStore((s) => s.setAggregatedRunData);
     const combinedRecording = combinedRun?.finishedLoading ? combinedRun.recording : null;
@@ -91,7 +92,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <Progress value={(runFiles?.loadingProgress ?? 0) * 99 + 1} className="max-w-[400px]" />
                     </div>
                 </Card>
-                {(traceVisibility === 'animated' || roomVisibility === 'visited-animated') && combinedRecording && (
+                {isAnythingAnimating && combinedRecording && (
                     <AnimationOptions useViewOptionsStore={useViewOptionsStore} recording={combinedRecording} />
                 )}
             </div>

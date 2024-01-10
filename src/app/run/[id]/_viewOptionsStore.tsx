@@ -14,6 +14,7 @@ function createViewOptionsStore() {
             {
                 roomVisibility: 'visited' as RoomVisibility,
                 traceVisibility: 'animated' as TraceVisibility,
+                isAnythingAnimating: true as boolean,
                 isPlaying: false as boolean,
                 animationMsIntoGame: 0,
                 animationSpeedMultiplier: 100,
@@ -34,12 +35,34 @@ function createViewOptionsStore() {
                 extraChartsFollowAnimation: true,
             },
             (set, get) => {
+                function handleAnyAnimationVisiblityChanged() {
+                    const {
+                        traceVisibility,
+                        roomVisibility,
+                        isAnythingAnimating,
+                        isPlaying,
+                        extraChartsFollowAnimation,
+                    } = get();
+                    const newIsAnythingAnimating =
+                        traceVisibility === 'animated' || roomVisibility === 'visited-animated';
+                    if (newIsAnythingAnimating !== isAnythingAnimating) {
+                        set({ isAnythingAnimating: newIsAnythingAnimating });
+                    }
+                    if (!newIsAnythingAnimating && isPlaying) {
+                        setIsPlaying(false);
+                    }
+                    if (newIsAnythingAnimating != isAnythingAnimating && extraChartsFollowAnimation) {
+                        setDefaultExtraChartsTimeBoundsFromFollowAnimation();
+                    }
+                }
+
                 function setRoomVisibility(roomVisibility: RoomVisibility) {
                     set({ roomVisibility });
+                    handleAnyAnimationVisiblityChanged();
                 }
                 function setTraceVisibility(traceVisibility: TraceVisibility) {
                     set({ traceVisibility });
-                    if (traceVisibility === 'hide' || traceVisibility === 'all') setIsPlaying(false);
+                    handleAnyAnimationVisiblityChanged();
                 }
                 function setIsPlaying(playing: boolean) {
                     if (
@@ -75,23 +98,27 @@ function createViewOptionsStore() {
                         setIsPlaying(false);
                     }
 
-                    const previousTimeBounds = get().extraChartsTimeBounds;
                     if (get().extraChartsFollowAnimation) {
+                        const previousTimeBounds = get().extraChartsTimeBounds;
                         const diff = animationMsIntoGame - previousAnimationMsIntoGame;
 
                         const newBounds = [previousTimeBounds[0] + diff, previousTimeBounds[1] + diff] as [
                             number,
                             number,
                         ];
-                        if (newBounds[0] < timeFrame.min) {
-                            const diff = timeFrame.min - newBounds[0];
-                            newBounds[0] += diff;
-                            newBounds[1] += diff;
-                        }
-                        if (newBounds[1] > timeFrame.max) {
-                            const diff = timeFrame.max - newBounds[1];
-                            newBounds[0] += diff;
-                            newBounds[1] += diff;
+                        if (previousTimeBounds[1] - previousTimeBounds[0] >= timeFrame.max * 0.8) {
+                            // bounds are limited if the bounds make up a large part of the original chart.
+                            // otherwise it can go outside, so the line stays at the same position.
+                            if (newBounds[0] < timeFrame.min) {
+                                const diff = timeFrame.min - newBounds[0];
+                                newBounds[0] += diff;
+                                newBounds[1] += diff;
+                            }
+                            if (newBounds[1] > timeFrame.max) {
+                                const diff = timeFrame.max - newBounds[1];
+                                newBounds[0] += diff;
+                                newBounds[1] += diff;
+                            }
                         }
                         setExtraChartsTimeBounds(newBounds);
                     }
@@ -112,8 +139,9 @@ function createViewOptionsStore() {
                         min: Math.floor((recording?.firstEvent().msIntoGame ?? 0) / 100) * 100,
                         max: Math.ceil((recording?.lastEvent().msIntoGame ?? 0) / 100) * 100,
                     };
-                    const extraChartsTimeBounds = [timeFrame.min, timeFrame.max] as const;
+                    const extraChartsTimeBounds = [-4 * 60 * 1000, 1 * 60 * 1000] as const;
                     set({ recording, timeFrame, extraChartsTimeBounds });
+                    setDefaultExtraChartsTimeBoundsFromFollowAnimation();
                     setLimitedAnimationMsIntoGame(get().animationMsIntoGame);
                 }
                 function setAggregatedRunData(aggregatedRunData: AggregatedRunData | null) {
@@ -159,6 +187,8 @@ function createViewOptionsStore() {
                 }
 
                 function setExtraChartsTimeBounds(extraChartsTimeBounds: readonly [number, number]) {
+                    const previous = get().extraChartsTimeBounds;
+                    if (previous[0] === extraChartsTimeBounds[0] && previous[1] === extraChartsTimeBounds[1]) return;
                     set({ extraChartsTimeBounds });
                 }
 
@@ -166,8 +196,20 @@ function createViewOptionsStore() {
                     setExtraChartsTimeBounds([get().timeFrame.min, get().timeFrame.max]);
                 }
 
+                function setDefaultExtraChartsTimeBoundsFromFollowAnimation() {
+                    if (get().extraChartsFollowAnimation && get().isAnythingAnimating) {
+                        setExtraChartsTimeBounds([
+                            -17 * 60 * 1000 + get().animationMsIntoGame,
+                            3 * 60 * 1000 + get().animationMsIntoGame,
+                        ]);
+                    } else {
+                        setExtraChartsTimeBounds([get().timeFrame.min, get().timeFrame.max]);
+                    }
+                }
+
                 function setExtraChartsFollowAnimation(extraChartsFollowAnimation: boolean) {
                     set({ extraChartsFollowAnimation });
+                    setDefaultExtraChartsTimeBoundsFromFollowAnimation();
                 }
 
                 return {
