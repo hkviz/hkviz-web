@@ -1,19 +1,19 @@
 import { raise } from '~/lib/utils/utils';
 import { playerDataFields, type PlayerDataField } from '../player-data/player-data';
+import { FrameEndEvent, frameEndEventPlayerDataFields } from './events/frame-end-event';
+import { PlayerDataEvent } from './events/player-data-event';
 import {
     CombinedRecording,
-    FrameEndEvent,
     HeroStateEvent,
-    PlayerDataEvent,
     PlayerPositionEvent,
     RecordingFileVersionEvent,
     SceneEvent,
-    frameEndEventPlayerDataFields,
     isPlayerDataEventOfField,
     isPlayerDataEventWithFieldType,
     type ParsedRecording,
     type RecordingEvent,
 } from './recording';
+
 
 export function combineRecordings(recordings: ParsedRecording[]): CombinedRecording {
     const events: RecordingEvent[] = [];

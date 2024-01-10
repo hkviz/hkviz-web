@@ -5,21 +5,27 @@ import { type D3BrushEvent } from 'd3-brush';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import useEvent from 'react-use-event-hook';
 import { formatTimeMs } from '~/lib/utils/time';
+import useIsVisibleRef from '~/lib/utils/use-is-visible';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
-import { type FrameEndEvent } from '~/lib/viz/recording-files/recording';
+import { type FrameEndEvent } from '~/lib/viz/recording-files/events/frame-end-event';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
 import { downScale } from './down-scale';
 
 export type FrameEndVariableKey = keyof FrameEndEvent;
 
+export interface LineChartVariableClassNames {
+    checkbox: string;
+    path: string;
+}
+
 export interface LineChartVariableDescription {
     key: FrameEndVariableKey;
     name: string;
     description: string;
-    checkboxClassName: string;
-    pathClassName: string;
-    UnitIcon: React.FunctionComponent<{ className?: string }>;
+    classNames: LineChartVariableClassNames;
+    UnitIcon: React.FunctionComponent<{ className?: string; useViewOptionsStore: UseViewOptionsStore }>;
     order: number;
+    defaultHidden?: true;
 }
 
 export interface LineAreaChartProps {
@@ -27,9 +33,18 @@ export interface LineAreaChartProps {
     variables: LineChartVariableDescription[];
     yAxisLabel: string;
     header: React.ReactNode;
+    minimalMaximumY: number;
+    downScaleMaxTimeDelta: number;
 }
 
-export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, header }: LineAreaChartProps) {
+export function LineAreaChart({
+    useViewOptionsStore,
+    variables,
+    yAxisLabel,
+    header,
+    minimalMaximumY,
+    downScaleMaxTimeDelta,
+}: LineAreaChartProps) {
     const variablesPerKey = useMemo(() => {
         return Object.fromEntries(variables.map((it) => [it.key, it] as const));
     }, [variables]);
@@ -46,20 +61,26 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
     const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
 
     // timebounds debouncing, so we can use d3 animations
+    const isVisible = useIsVisibleRef(svgRef);
+    // console.log({isVisible, name: yAxisLabel})
     const transitionDuration = 250;
     const [debouncedExtraChartsTimeBounds, setDebouncedExtraChartsTimeBounds] = useState(_extraChartsTimeBounds);
     const [debouncedShownMsIntoGame, setDebouncedShownMsIntoGame] = useState(shownMsIntoGame);
     useEffect(() => {
         const id = setInterval(() => {
+            if (!isVisible.current) return;
             const s = useViewOptionsStore.getState();
             setDebouncedExtraChartsTimeBounds(s.extraChartsTimeBounds);
             setDebouncedShownMsIntoGame(s.animationMsIntoGame);
         }, transitionDuration);
         return () => clearInterval(id);
-    }, [useViewOptionsStore]);
+    }, [isVisible, useViewOptionsStore]);
 
     const [selectedVars, setSelectedVars] = useState<FrameEndVariableKey[]>(
-        variables.toSorted((a, b) => a.order - b.order).map((it) => it.key),
+        variables
+            .filter((it) => !it.defaultHidden)
+            .toSorted((a, b) => a.order - b.order)
+            .map((it) => it.key),
     );
 
     function onVariableCheckedChange(key: FrameEndVariableKey, checked: boolean) {
@@ -79,11 +100,12 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
         const togetherEvents = downScale(
             recording.frameEndEvents,
             variables.map((it) => it.key),
+            downScaleMaxTimeDelta,
         );
         return togetherEvents;
-    }, [recording, variables]);
+    }, [downScaleMaxTimeDelta, recording, variables]);
 
-    type Datum = (typeof data)[number];
+    type Datum = FrameEndEvent;
     type Series = {
         data: Datum;
         0: number;
@@ -106,12 +128,25 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
 
     // Determine the series that need to be stacked.
     const series = useMemo(
-        () => d3.stack<Datum>().keys(selectedVars)(data) as unknown as Series[],
-        [data, selectedVars],
+        () =>
+            d3.stack<Datum>().keys(selectedVars.length === 0 ? variables.map((it) => it.key) : selectedVars)(
+                data,
+            ) as unknown as Series[],
+        [data, selectedVars, variables],
     );
 
+    // useMemo(() => {
+    //     series.forEach((it) => {
+    //         it.forEach((it2) => {
+    //             it2[1] = it2[1] - it2[0];
+    //             it2[0] = 0;
+    //             return it2;
+    //         });
+    //         return it;
+    //     });
+    // }, [series]);
+
     const x = useMemo(() => {
-        console.log('new x');
         return d3.scaleLinear().domain(debouncedExtraChartsTimeBounds).range([0, width]);
     }, [debouncedExtraChartsTimeBounds, width]);
 
@@ -121,7 +156,7 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
             .domain([
                 0,
                 Math.max(
-                    100,
+                    minimalMaximumY,
                     series.at(-1)!.findLast((it) => it.data.msIntoGame < debouncedExtraChartsTimeBounds[0])?.[1] ?? 0,
                     d3.max(series.at(-1)!, (d) =>
                         // max only over the selected timeframe --> therefore y axis zooms too
@@ -145,7 +180,6 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
         }
 
         if (selection == null) {
-            console.log('null reset');
             resetExtraChartsTimeBounds();
         } else {
             const invSelection = [x.invert(selection[0]), x.invert(selection[1])] as const;
@@ -210,7 +244,7 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
             .selectAll()
             .data(series)
             .join('path')
-            .attr('class', (d) => variablesPerKey[d.key]?.pathClassName ?? '');
+            .attr('class', (d) => variablesPerKey[d.key]?.classNames?.path ?? '');
         areaPaths.current.append('title').text((d) => d.key);
 
         // axis x
@@ -274,7 +308,6 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
         if (xAxis.current.selectAll('*').empty()) {
             xAxis.current.call(xAxisCallee);
         } else {
-            console.log('transition x axis');
             xAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear).call(xAxisCallee);
         }
     }, [mainEffectChanges, width, x]);
@@ -325,7 +358,7 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
             ></svg>
             <Table>
                 <TableBody>
-                    {variables.map(({ key, name, UnitIcon: Unit, checkboxClassName }) => (
+                    {variables.map(({ key, name, UnitIcon: Unit, classNames }) => (
                         <TableRow key={key}>
                             <TableCell>
                                 <div className="flex flex-row items-center gap-2">
@@ -333,7 +366,7 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
                                         id={id + key + '_checkbox'}
                                         checked={selectedVars.includes(key)}
                                         onCheckedChange={(c) => onVariableCheckedChange(key, c === true)}
-                                        className={checkboxClassName}
+                                        className={classNames.checkbox}
                                     />
                                     <label
                                         htmlFor={id + key + '_checkbox'}
@@ -345,7 +378,12 @@ export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, head
                             </TableCell>
                             <TableCell className="text-right">
                                 {currentEndOfGame?.[key] ?? 0}
-                                <Unit className="ml-2" />
+                                <span className="ml-2">
+                                    <Unit
+                                        className="inline-block h-auto w-5"
+                                        useViewOptionsStore={useViewOptionsStore}
+                                    />
+                                </span>
                             </TableCell>
                         </TableRow>
                     ))}

@@ -1,4 +1,4 @@
-import { type FrameEndEvent } from '~/lib/viz/recording-files/recording';
+import { type FrameEndEvent } from '~/lib/viz/recording-files/events/frame-end-event';
 
 export function downScale(data: FrameEndEvent[], fields: (keyof FrameEndEvent)[], maxTimeDelta = 10000) {
     console.log('Original length', data.length);
@@ -21,20 +21,30 @@ export function downScale(data: FrameEndEvent[], fields: (keyof FrameEndEvent)[]
             continue;
         }
 
-        const isExtrema = fields.some((field) => {
-            const previousValue = previous![field];
-            const currentValue = current![field];
-            const nextValue = next![field];
+        let didAnyChange = false;
+        let isAnyExtrema = false;
 
-            return (
+        for (const field of fields) {
+            if (current[field] !== previous[field]) {
+                didAnyChange = true;
+            }
+
+            const previousValue = previous[field];
+            const currentValue = current[field];
+            const nextValue = next[field];
+
+            isAnyExtrema ||=
                 (currentValue < previousValue && currentValue <= nextValue) ||
                 (currentValue <= previousValue && currentValue < nextValue) ||
                 (currentValue > previousValue && currentValue >= nextValue) ||
-                (currentValue >= previousValue && currentValue > nextValue)
-            );
-        });
+                (currentValue >= previousValue && currentValue > nextValue);
 
-        if (current.msIntoGame - lastIncluded!.msIntoGame > maxTimeDelta || isExtrema) {
+            if (isAnyExtrema && didAnyChange) {
+                break;
+            }
+        }
+
+        if ((current.msIntoGame - lastIncluded!.msIntoGame > maxTimeDelta || isAnyExtrema) && didAnyChange) {
             filtered.push(current);
             lastIncluded = current;
         }

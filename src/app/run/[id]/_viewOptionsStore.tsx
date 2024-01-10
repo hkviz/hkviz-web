@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
+import { playerDataFields } from '~/lib/viz/player-data/player-data';
 import { type CombinedRecording } from '~/lib/viz/recording-files/recording';
 import { type AggregatedRunData, type AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
 
@@ -19,6 +20,7 @@ function createViewOptionsStore() {
                 animationMsIntoGame: 0,
                 animationSpeedMultiplier: 100,
                 recording: null as CombinedRecording | null,
+                isSteelSoul: false as boolean,
                 aggregatedRunData: null as AggregatedRunData | null,
                 timeFrame: { min: 0, max: 0 },
                 traceAnimationLengthMs: 1000 * 60 * 4,
@@ -140,7 +142,11 @@ function createViewOptionsStore() {
                         max: Math.ceil((recording?.lastEvent().msIntoGame ?? 0) / 100) * 100,
                     };
                     const extraChartsTimeBounds = [-4 * 60 * 1000, 1 * 60 * 1000] as const;
-                    set({ recording, timeFrame, extraChartsTimeBounds });
+                    const permaDeathValue = recording?.lastPlayerDataEventOfField(
+                        playerDataFields.byFieldName.permadeathMode,
+                    )?.value;
+                    const isSteelSoul = permaDeathValue === 1 || permaDeathValue === 2;
+                    set({ recording, timeFrame, extraChartsTimeBounds, isSteelSoul });
                     setDefaultExtraChartsTimeBoundsFromFollowAnimation();
                     setLimitedAnimationMsIntoGame(get().animationMsIntoGame);
                 }

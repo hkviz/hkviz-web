@@ -1,22 +1,12 @@
 import { raise } from '~/lib/utils/utils';
 import { type HeroStateField } from '../hero-state/hero-states';
 import { playerPositionToMapPosition } from '../map-data/player-position';
-import { playerDataFields, type PlayerDataField, type PlayerDataFieldValue } from '../player-data/player-data';
+import { type PlayerDataField } from '../player-data/player-data';
 import { type RecordingFileVersion } from '../types/recording-file-version';
 import type { Vector2 } from '../types/vector2';
-
-type RecordingEventBaseOptions = Pick<RecordingEventBase, 'timestamp'> &
-    Partial<Pick<RecordingEventBase, 'msIntoGame'>>;
-abstract class RecordingEventBase {
-    timestamp: number;
-    msIntoGame = 0;
-    constructor(options: RecordingEventBaseOptions) {
-        this.timestamp = options.timestamp;
-        if (options.msIntoGame != null) {
-            this.msIntoGame = options.msIntoGame;
-        }
-    }
-}
+import { FrameEndEvent } from './events/frame-end-event';
+import { PlayerDataEvent } from './events/player-data-event';
+import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
 
 type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
 export class RecordingFileVersionEvent extends RecordingEventBase {
@@ -58,23 +48,6 @@ export class PlayerPositionEvent extends RecordingEventBase {
         this.sceneEvent = options.sceneEvent;
 
         this.mapPosition = playerPositionToMapPosition(this.position, this.sceneEvent) ?? null;
-    }
-}
-
-type PlayerDataEventOptions<TField extends PlayerDataField> = RecordingEventBaseOptions &
-    Pick<PlayerDataEvent<TField>, 'field' | 'value' | 'previousPlayerPositionEvent' | 'previousPlayerDataEventOfField'>;
-export class PlayerDataEvent<TField extends PlayerDataField> extends RecordingEventBase {
-    public previousPlayerPositionEvent: PlayerPositionEvent | null;
-    public previousPlayerDataEventOfField: PlayerDataEvent<TField> | null;
-    public field: TField;
-    public value: PlayerDataFieldValue<TField>;
-
-    constructor(options: PlayerDataEventOptions<TField>) {
-        super(options);
-        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
-        this.field = options.field;
-        this.value = options.value;
-        this.previousPlayerDataEventOfField = options.previousPlayerDataEventOfField;
     }
 }
 
@@ -136,63 +109,6 @@ export class SpellDownEvent extends RecordingEventBase {
         this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
     }
 }
-
-/**
- * Synthetic event / not actually recorded
- * created by recording combiner whenever the timestamp changes if any of the values in it changed
- */
-type FrameEndEventOptions = RecordingEventBaseOptions & {
-    getPreviousPlayerData: <TField extends PlayerDataField>(field: TField) => PlayerDataEvent<TField> | undefined;
-};
-export class FrameEndEvent extends RecordingEventBase {
-    // geo
-    geo: number;
-    geoPool: number;
-    trinket1: number; // wanderers journal
-    trinket2: number; // hallownest seal
-    trinket3: number; // kings idol
-    trinket4: number; // arcane egg
-    trinketGeo: number;
-
-    // health
-    health: number;
-    maxHealth: number;
-    joniHealthBlue: number;
-
-    constructor(options: FrameEndEventOptions) {
-        super(options);
-
-        // geo
-        this.geo = options.getPreviousPlayerData(playerDataFields.byFieldName.geo)?.value ?? 0;
-        this.geoPool = options.getPreviousPlayerData(playerDataFields.byFieldName.geoPool)?.value ?? 0;
-        this.trinket1 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket1)?.value ?? 0;
-        this.trinket2 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket2)?.value ?? 0;
-        this.trinket3 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket3)?.value ?? 0;
-        this.trinket4 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket4)?.value ?? 0;
-
-        // health
-        this.health = options.getPreviousPlayerData(playerDataFields.byFieldName.health)?.value ?? 0;
-        this.maxHealth = options.getPreviousPlayerData(playerDataFields.byFieldName.maxHealth)?.value ?? 0;
-        this.joniHealthBlue = options.getPreviousPlayerData(playerDataFields.byFieldName.joniHealthBlue)?.value ?? 0;
-
-        // prices when sold to lemm: https://hollowknight.wiki/w/Lemm
-        this.trinketGeo = this.trinket1 * 200 + this.trinket2 * 450 + this.trinket3 * 800 + this.trinket4 * 1200;
-    }
-}
-export const frameEndEventPlayerDataFields = new Set<PlayerDataField>([
-    // geo
-    playerDataFields.byFieldName.geo,
-    playerDataFields.byFieldName.geoPool,
-    playerDataFields.byFieldName.trinket1,
-    playerDataFields.byFieldName.trinket2,
-    playerDataFields.byFieldName.trinket3,
-    playerDataFields.byFieldName.trinket4,
-
-    // health
-    playerDataFields.byFieldName.health,
-    playerDataFields.byFieldName.maxHealth,
-    playerDataFields.byFieldName.joniHealthBlue,
-]);
 
 export type RecordingEvent =
     | SceneEvent

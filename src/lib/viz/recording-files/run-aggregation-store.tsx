@@ -176,7 +176,7 @@ function aggregateRecording(recording: ParsedRecording) {
                 addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'damageTaken', -diff);
             }
         } else if (
-            isPlayerDataEventOfField(event, playerDataFields.byFieldName.joniHealthBlue) &&
+            isPlayerDataEventOfField(event, playerDataFields.byFieldName.healthBlue) &&
             event.previousPlayerDataEventOfField
         ) {
             const diff = event.value - event.previousPlayerDataEventOfField.value;

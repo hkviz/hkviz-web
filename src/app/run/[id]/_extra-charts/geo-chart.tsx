@@ -1,11 +1,11 @@
-import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import coinImg from '../../../../../public/ingame-sprites/HUD_coin_shop.png';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { lineAreaColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
 const Unit = ({ className }: { className?: string }) => (
-    <Image src={coinImg} className={cn('inline-block h-auto w-4', className)} alt="Geo" />
+    <Image src={coinImg} className={className} alt="Geo" />
 );
 
 const variables: LineChartVariableDescription[] = [
@@ -13,8 +13,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'geo',
         name: 'Geo',
         description: 'Geo the player has',
-        checkboxClassName: 'data-[state=checked]:bg-emerald-500 border-emerald-500 outline-emerald-500',
-        pathClassName: 'text-emerald-500 fill-current',
+        classNames: lineAreaColors.emerald,
         UnitIcon: Unit,
         order: 3,
     },
@@ -22,8 +21,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'geoPool',
         name: 'Shade Geo',
         description: 'The geo the shade has, which can be earned back by defeating the shade.',
-        checkboxClassName: 'data-[state=checked]:bg-indigo-500 border-indigo-500 outline-indigo-500',
-        pathClassName: 'text-indigo-500 fill-current',
+        classNames: lineAreaColors.indigo,
         UnitIcon: Unit,
         order: 2,
     },
@@ -31,8 +29,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'trinketGeo',
         name: 'Relict Geo worth',
         description: 'The geo which the relicts in the inventory are worth when sold to Lemm.',
-        checkboxClassName: 'data-[state=checked]:bg-rose-500 border-rose-500 outline-rose-500',
-        pathClassName: 'text-rose-500 fill-current',
+        classNames: lineAreaColors.rose,
         UnitIcon: Unit,
         order: 1,
     },
@@ -53,6 +50,8 @@ export function GeoChart({ useViewOptionsStore }: GeoChartProps) {
                 </>
             }
             yAxisLabel="Geo"
+            minimalMaximumY={100}
+            downScaleMaxTimeDelta={10000}
         />
     );
 }
