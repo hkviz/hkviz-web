@@ -1,10 +1,6 @@
 import { type FrameEndEvent } from '~/lib/viz/recording-files/recording';
 
-export function downScale(
-    data: FrameEndEvent[],
-    maxTimeDelta = 10000,
-    fields: (keyof FrameEndEvent)[] = ['geo', 'geoPool'],
-) {
+export function downScale(data: FrameEndEvent[], fields: (keyof FrameEndEvent)[], maxTimeDelta = 10000) {
     console.log('Original length', data.length);
 
     let previous: FrameEndEvent | undefined = undefined;

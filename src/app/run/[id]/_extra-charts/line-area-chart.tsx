@@ -1,86 +1,39 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import * as d3 from 'd3';
 import { type D3BrushEvent } from 'd3-brush';
-import Image from 'next/image';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import useEvent from 'react-use-event-hook';
 import { formatTimeMs } from '~/lib/utils/time';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
-import coinImg from '../../../../public/ingame-sprites/HUD_coin_shop.png';
+import { type FrameEndEvent } from '~/lib/viz/recording-files/recording';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { downScale } from './down-scale';
 
-export interface RunExtraChartsProps {
+export type FrameEndVariableKey = keyof FrameEndEvent;
+
+export interface LineChartVariableDescription {
+    key: FrameEndVariableKey;
+    name: string;
+    description: string;
+    checkboxClassName: string;
+    pathClassName: string;
+    UnitIcon: React.FunctionComponent<{ className?: string }>;
+    order: number;
+}
+
+export interface LineAreaChartProps {
     useViewOptionsStore: UseViewOptionsStore;
+    variables: LineChartVariableDescription[];
+    yAxisLabel: string;
+    header: React.ReactNode;
 }
 
-export function RunExtraCharts({ useViewOptionsStore }: RunExtraChartsProps) {
-    const id = useId();
-    const extraChartsFollowAnimation = useViewOptionsStore((s) => s.extraChartsFollowAnimation);
-    const setExtraChartsFollowAnimation = useViewOptionsStore((s) => s.setExtraChartsFollowAnimation);
-    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
+export function LineAreaChart({ useViewOptionsStore, variables, yAxisLabel, header }: LineAreaChartProps) {
+    const variablesPerKey = useMemo(() => {
+        return Object.fromEntries(variables.map((it) => [it.key, it] as const));
+    }, [variables]);
 
-    return (
-        <Card className="overflow-hidden">
-            <CardHeader>
-                <CardTitle>Time based analytics</CardTitle>
-            </CardHeader>
-            {isAnythingAnimating && (
-                <CardContent>
-                    <div className="flex flex-row gap-2">
-                        <Checkbox
-                            id={id + 'follow_anim'}
-                            checked={extraChartsFollowAnimation}
-                            onCheckedChange={setExtraChartsFollowAnimation}
-                        />
-                        <label
-                            htmlFor={id + 'follow_anim'}
-                            className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        >
-                            Follow animation
-                        </label>
-                    </div>
-                </CardContent>
-            )}
-            <hr />
-            <MoneyChart useViewOptionsStore={useViewOptionsStore} />
-        </Card>
-    );
-}
-
-const moneyChartVariables = [
-    {
-        key: 'geo',
-        name: 'Geo',
-        description: 'Geo the player has',
-        color: '#fbb4ae',
-        checkboxClassName: 'data-[state=checked]:bg-emerald-500 border-emerald-500 outline-emerald-500',
-        pathClassName: 'text-emerald-500 fill-current',
-        order: 3,
-    },
-    {
-        key: 'geoPool',
-        name: 'Shade Geo',
-        description: 'The geo the shade has, which can be earned back by defeating the shade.',
-        checkboxClassName: 'data-[state=checked]:bg-indigo-500 border-indigo-500 outline-indigo-500',
-        pathClassName: 'text-indigo-500 fill-current',
-        order: 2,
-    },
-    {
-        key: 'trinketGeo',
-        name: 'Relict Geo worth',
-        description: 'The geo which the relicts in the inventory are worth when sold to Lemm.',
-        checkboxClassName: 'data-[state=checked]:bg-rose-500 border-rose-500 outline-rose-500',
-        pathClassName: 'text-rose-500 fill-current',
-        order: 1,
-    },
-] as const;
-
-const moneyChartVariableByKey = Object.fromEntries(moneyChartVariables.map((it) => [it.key, it]));
-type MoneyVariableKey = (typeof moneyChartVariables)[number]['key'];
-
-function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
     const svgRef = useRef<SVGSVGElement>(null);
 
     const recording = useViewOptionsStore((s) => s.recording);
@@ -105,16 +58,14 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         return () => clearInterval(id);
     }, [useViewOptionsStore]);
 
-    const [selectedVars, setSelectedVars] = useState<MoneyVariableKey[]>(
-        moneyChartVariables.toSorted((a, b) => a.order - b.order).map((it) => it.key),
+    const [selectedVars, setSelectedVars] = useState<FrameEndVariableKey[]>(
+        variables.toSorted((a, b) => a.order - b.order).map((it) => it.key),
     );
 
-    function onVariableCheckedChange(key: MoneyVariableKey, checked: boolean) {
-        setSelectedVars((prev: MoneyVariableKey[]) => {
+    function onVariableCheckedChange(key: FrameEndVariableKey, checked: boolean) {
+        setSelectedVars((prev: FrameEndVariableKey[]) => {
             if (checked) {
-                return [...prev, key].sort(
-                    (a, b) => moneyChartVariableByKey[a]!.order - moneyChartVariableByKey[b]!.order,
-                );
+                return [...prev, key].sort((a, b) => variablesPerKey[a]!.order - variablesPerKey[b]!.order);
             } else {
                 return prev.filter((it) => it !== key);
             }
@@ -125,16 +76,12 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
 
     const data = useMemo(() => {
         if (!recording) return [];
-        const togetherEvents = downScale(recording.frameEndEvents);
-
-        return togetherEvents.map((it) => {
-            const msIntoGame = it.msIntoGame;
-            const geo = it.geo;
-            const geoPool = it.geoPool;
-            const trinketGeo = it.trinketGeo;
-            return { geo, geoPool, trinketGeo, msIntoGame };
-        });
-    }, [recording]);
+        const togetherEvents = downScale(
+            recording.frameEndEvents,
+            variables.map((it) => it.key),
+        );
+        return togetherEvents;
+    }, [recording, variables]);
 
     type Datum = (typeof data)[number];
     type Series = {
@@ -158,7 +105,10 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
     const width = widthWithMargin - marginLeft - marginRight;
 
     // Determine the series that need to be stacked.
-    const series = useMemo(() => d3.stack().keys(selectedVars)(data) as unknown as Series[], [data, selectedVars]);
+    const series = useMemo(
+        () => d3.stack<Datum>().keys(selectedVars)(data) as unknown as Series[],
+        [data, selectedVars],
+    );
 
     const x = useMemo(() => {
         console.log('new x');
@@ -227,7 +177,7 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             .attr('y', 14)
             .attr('text-anchor', 'end')
             .attr('class', 'text-foreground fill-current text-xs')
-            .text('Geo');
+            .text(yAxisLabel);
 
         // .style('transform', 'rotate(-90deg)')
         // .style('transform-box', 'fill-box')
@@ -260,7 +210,7 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             .selectAll()
             .data(series)
             .join('path')
-            .attr('class', (d) => moneyChartVariableByKey[d.key]?.pathClassName ?? '');
+            .attr('class', (d) => variablesPerKey[d.key]?.pathClassName ?? '');
         areaPaths.current.append('title').text((d) => d.key);
 
         // axis x
@@ -290,7 +240,7 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             .attr('x2', 0)
             .attr('y1', 0)
             .attr('y2', height);
-    }, [height, id, recording, width, onBrushEnd, series]);
+    }, [height, id, recording, width, onBrushEnd, series, yAxisLabel, variablesPerKey]);
 
     // update area
     useEffect(() => {
@@ -365,10 +315,7 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
 
     return (
         <div className="overflow-hidden">
-            <h3 className="pt-3 text-center">
-                <Image src={coinImg} alt="Geo" className="mr-2 inline-block w-6" />
-                Geo over time
-            </h3>
+            <h3 className="pt-3 text-center">{header}</h3>
             <svg
                 ref={svgRef}
                 width={widthWithMargin}
@@ -378,27 +325,27 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
             ></svg>
             <Table>
                 <TableBody>
-                    {moneyChartVariables.map((variable) => (
-                        <TableRow key={variable.key}>
+                    {variables.map(({ key, name, UnitIcon: Unit, checkboxClassName }) => (
+                        <TableRow key={key}>
                             <TableCell>
                                 <div className="flex flex-row items-center gap-2">
                                     <Checkbox
-                                        id={id + variable.key + '_checkbox'}
-                                        checked={selectedVars.includes(variable.key)}
-                                        onCheckedChange={(c) => onVariableCheckedChange(variable.key, c === true)}
-                                        className={variable.checkboxClassName}
+                                        id={id + key + '_checkbox'}
+                                        checked={selectedVars.includes(key)}
+                                        onCheckedChange={(c) => onVariableCheckedChange(key, c === true)}
+                                        className={checkboxClassName}
                                     />
                                     <label
-                                        htmlFor={id + variable.key + '_checkbox'}
+                                        htmlFor={id + key + '_checkbox'}
                                         className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                     >
-                                        {variable.name}
+                                        {name}
                                     </label>
                                 </div>
                             </TableCell>
                             <TableCell className="text-right">
-                                {currentEndOfGame?.[variable.key] ?? 0}
-                                <Image src={coinImg} alt="Geo" className="ml-2 inline-block w-4" />
+                                {currentEndOfGame?.[key] ?? 0}
+                                <Unit className="ml-2" />
                             </TableCell>
                         </TableRow>
                     ))}

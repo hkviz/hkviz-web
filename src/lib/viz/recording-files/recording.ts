@@ -141,10 +141,12 @@ export class SpellDownEvent extends RecordingEventBase {
  * Synthetic event / not actually recorded
  * created by recording combiner whenever the timestamp changes if any of the values in it changed
  */
-type FrameEndEventOptions = Omit<FrameEndEvent, 'trinketGeo'>;
+type FrameEndEventOptions = RecordingEventBaseOptions & {
+    getPreviousPlayerData: <TField extends PlayerDataField>(field: TField) => PlayerDataEvent<TField> | undefined;
+};
 export class FrameEndEvent extends RecordingEventBase {
+    // geo
     geo: number;
-
     geoPool: number;
     trinket1: number; // wanderers journal
     trinket2: number; // hallownest seal
@@ -152,26 +154,44 @@ export class FrameEndEvent extends RecordingEventBase {
     trinket4: number; // arcane egg
     trinketGeo: number;
 
+    // health
+    health: number;
+    maxHealth: number;
+    joniHealthBlue: number;
+
     constructor(options: FrameEndEventOptions) {
         super(options);
-        this.geo = options.geo;
-        this.geoPool = options.geoPool;
-        this.trinket1 = options.trinket1;
-        this.trinket2 = options.trinket2;
-        this.trinket3 = options.trinket3;
-        this.trinket4 = options.trinket4;
+
+        // geo
+        this.geo = options.getPreviousPlayerData(playerDataFields.byFieldName.geo)?.value ?? 0;
+        this.geoPool = options.getPreviousPlayerData(playerDataFields.byFieldName.geoPool)?.value ?? 0;
+        this.trinket1 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket1)?.value ?? 0;
+        this.trinket2 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket2)?.value ?? 0;
+        this.trinket3 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket3)?.value ?? 0;
+        this.trinket4 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket4)?.value ?? 0;
+
+        // health
+        this.health = options.getPreviousPlayerData(playerDataFields.byFieldName.health)?.value ?? 0;
+        this.maxHealth = options.getPreviousPlayerData(playerDataFields.byFieldName.maxHealth)?.value ?? 0;
+        this.joniHealthBlue = options.getPreviousPlayerData(playerDataFields.byFieldName.joniHealthBlue)?.value ?? 0;
 
         // prices when sold to lemm: https://hollowknight.wiki/w/Lemm
         this.trinketGeo = this.trinket1 * 200 + this.trinket2 * 450 + this.trinket3 * 800 + this.trinket4 * 1200;
     }
 }
 export const frameEndEventPlayerDataFields = new Set<PlayerDataField>([
+    // geo
     playerDataFields.byFieldName.geo,
     playerDataFields.byFieldName.geoPool,
     playerDataFields.byFieldName.trinket1,
     playerDataFields.byFieldName.trinket2,
     playerDataFields.byFieldName.trinket3,
     playerDataFields.byFieldName.trinket4,
+
+    // health
+    playerDataFields.byFieldName.health,
+    playerDataFields.byFieldName.maxHealth,
+    playerDataFields.byFieldName.joniHealthBlue,
 ]);
 
 export type RecordingEvent =

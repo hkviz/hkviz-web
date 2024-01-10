@@ -44,12 +44,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
             if (createEndFrameEvent && event.timestamp > lastTimestamp) {
                 const endFrameEvent = new FrameEndEvent({
                     timestamp: lastTimestamp,
-                    geo: getPreviousPlayerData(playerDataFields.byFieldName.geo)?.value ?? 0,
-                    geoPool: getPreviousPlayerData(playerDataFields.byFieldName.geoPool)?.value ?? 0,
-                    trinket1: getPreviousPlayerData(playerDataFields.byFieldName.trinket1)?.value ?? 0,
-                    trinket2: getPreviousPlayerData(playerDataFields.byFieldName.trinket2)?.value ?? 0,
-                    trinket3: getPreviousPlayerData(playerDataFields.byFieldName.trinket3)?.value ?? 0,
-                    trinket4: getPreviousPlayerData(playerDataFields.byFieldName.trinket4)?.value ?? 0,
+                    getPreviousPlayerData,
                     msIntoGame,
                 });
                 previousEndFrameEvent = endFrameEvent;
@@ -157,7 +152,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     // there might not have been a end frame event for a bit at the end, so we duplicate the last one
     // so graphs can depend on there being one at the end of the msIntoGame
     if (previousEndFrameEvent) {
-        events.push(new FrameEndEvent({ ...previousEndFrameEvent, msIntoGame }));
+        events.push(new FrameEndEvent({ timestamp: lastTimestamp, getPreviousPlayerData, msIntoGame }));
     }
 
     function addScenesWhichWhereNotAdded(all = false) {

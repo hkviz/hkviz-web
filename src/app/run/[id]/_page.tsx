@@ -11,11 +11,11 @@ import { useRunAggregationStore } from '~/lib/viz/recording-files/run-aggregatio
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files';
 import { type AppRouterOutput } from '~/server/api/types';
 import { AnimationOptions } from './_animation_options';
+import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { RoomInfo } from './_room_infos';
 import { RunInfos } from './_run_infos';
 import { useViewOptionsStoreRoot } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
-import { RunExtraCharts } from './extra-charts/_run_extra_charts';
 
 interface Props {
     session: Session | null;
