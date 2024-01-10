@@ -2,14 +2,13 @@
 
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
-import { useEffect, useId, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
-import { type RoomInfo, roomData } from '../map-data/rooms';
+import { roomData, type RoomInfo } from '../map-data/rooms';
+import { MapLegend } from './legend';
 import { useMapRooms } from './use-map-rooms';
 import { useMapTraces } from './use-traces';
-import useEvent from 'react-use-event-hook';
-import { MapLegend } from './legend';
 
 export interface HKMapProps {
     className?: string;

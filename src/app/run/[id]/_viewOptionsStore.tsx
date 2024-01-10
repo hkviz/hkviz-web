@@ -29,6 +29,9 @@ function createViewOptionsStore() {
 
                 roomColorMode: 'area' as RoomColorMode,
                 roomColorVar1: 'damageTaken' as AggregationVariable,
+
+                extraChartsTimeBounds: [0, 0] as readonly [number, number],
+                extraChartsFollowAnimation: true,
             },
             (set, get) => {
                 function setRoomVisibility(roomVisibility: RoomVisibility) {
@@ -60,6 +63,7 @@ function createViewOptionsStore() {
                     setIsPlaying(!get().isPlaying);
                 }
                 function setLimitedAnimationMsIntoGame(animationMsIntoGame: number) {
+                    const previousAnimationMsIntoGame = get().animationMsIntoGame;
                     const { timeFrame } = get();
                     if (Number.isNaN(animationMsIntoGame) || typeof animationMsIntoGame != 'number') return;
 
@@ -70,6 +74,28 @@ function createViewOptionsStore() {
                         animationMsIntoGame = timeFrame.min;
                         setIsPlaying(false);
                     }
+
+                    const previousTimeBounds = get().extraChartsTimeBounds;
+                    if (get().extraChartsFollowAnimation) {
+                        const diff = animationMsIntoGame - previousAnimationMsIntoGame;
+
+                        const newBounds = [previousTimeBounds[0] + diff, previousTimeBounds[1] + diff] as [
+                            number,
+                            number,
+                        ];
+                        if (newBounds[0] < timeFrame.min) {
+                            const diff = timeFrame.min - newBounds[0];
+                            newBounds[0] += diff;
+                            newBounds[1] += diff;
+                        }
+                        if (newBounds[1] > timeFrame.max) {
+                            const diff = timeFrame.max - newBounds[1];
+                            newBounds[0] += diff;
+                            newBounds[1] += diff;
+                        }
+                        setExtraChartsTimeBounds(newBounds);
+                    }
+
                     set({ animationMsIntoGame });
                 }
                 function setAnimationMsIntoGame(animationMsIntoGame: number) {
@@ -86,7 +112,8 @@ function createViewOptionsStore() {
                         min: Math.floor((recording?.firstEvent().msIntoGame ?? 0) / 100) * 100,
                         max: Math.ceil((recording?.lastEvent().msIntoGame ?? 0) / 100) * 100,
                     };
-                    set({ recording, timeFrame });
+                    const extraChartsTimeBounds = [timeFrame.min, timeFrame.max] as const;
+                    set({ recording, timeFrame, extraChartsTimeBounds });
                     setLimitedAnimationMsIntoGame(get().animationMsIntoGame);
                 }
                 function setAggregatedRunData(aggregatedRunData: AggregatedRunData | null) {
@@ -131,6 +158,18 @@ function createViewOptionsStore() {
                     set({ viewNeverHappenedAggregations });
                 }
 
+                function setExtraChartsTimeBounds(extraChartsTimeBounds: readonly [number, number]) {
+                    set({ extraChartsTimeBounds });
+                }
+
+                function resetExtraChartsTimeBounds() {
+                    setExtraChartsTimeBounds([get().timeFrame.min, get().timeFrame.max]);
+                }
+
+                function setExtraChartsFollowAnimation(extraChartsFollowAnimation: boolean) {
+                    set({ extraChartsFollowAnimation });
+                }
+
                 return {
                     setRoomVisibility,
                     setTraceVisibility,
@@ -150,6 +189,9 @@ function createViewOptionsStore() {
                     setViewNeverHappenedAggregations,
                     setHoveredRoom,
                     unsetHoveredRoom,
+                    setExtraChartsTimeBounds,
+                    resetExtraChartsTimeBounds,
+                    setExtraChartsFollowAnimation,
                 };
             },
         ),
