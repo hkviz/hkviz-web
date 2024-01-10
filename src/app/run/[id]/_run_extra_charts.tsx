@@ -2,6 +2,7 @@ import { Card } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import * as d3 from 'd3';
+import { type D3BrushEvent } from 'd3-brush';
 import Image from 'next/image';
 import { useId, useMemo, useRef, useState } from 'react';
 import { formatTimeMs } from '~/lib/utils/time';
@@ -154,12 +155,12 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         const x = d3
             .scaleLinear()
             .domain([0, recording.events.at(-1)?.msIntoGame ?? 0] as [number, number])
-            .range([marginLeft, widthWithMargin - marginRight]);
+            .range([0, width]);
 
         const y = d3
             .scaleLinear()
             .domain([0, d3.max(series.at(-1)!, (d) => d[1])] as [number, number])
-            .rangeRound([heightWithMargin - marginBottom, marginTop]);
+            .rangeRound([height, 0]);
 
         // Construct an area shape.
         const area = d3
@@ -197,19 +198,42 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         // .style('transform-box', 'fill-box')
         // .style('transform-origin', 'center');
 
-        // Append a path for each series.
-        svg.append('g')
+        // Append the horizontal axis atop the area.
+
+        svg.append('text')
+            .attr('x', widthWithMargin / 2)
+            .attr('y', heightWithMargin - 2)
+            .attr('text-anchor', 'middle')
+            .attr('class', 'text-foreground fill-current text-xs')
+            .text('Time');
+
+        let lastSelection: [number, number] | null = null;
+        // brush
+        const rootG = svg.append('g').attr('transform', 'translate(' + marginLeft + ',' + marginTop + ')');
+        rootG
+            .append('defs')
+            .append('svg:clipPath')
+            .attr('id', id + 'clip')
+            .append('svg:rect')
+            .attr('width', width)
+            .attr('height', height)
+            .attr('x', 0)
+            .attr('y', 0);
+
+        const areaPaths = rootG
+            .append('g')
+            .attr('clip-path', `url(#${id}clip)`)
             .selectAll()
             .data(series)
             .join('path')
             .attr('class', (d) => moneyChartVariableByKey[d.key]?.pathClassName ?? '')
-            .attr('d', (d) => area(d))
-            .append('title')
-            .text((d) => d.key);
+            .attr('d', area);
+        areaPaths.append('title').text((d) => d.key);
 
-        // Append the horizontal axis atop the area.
-        svg.append('g')
-            .attr('transform', `translate(0,${heightWithMargin - marginBottom})`)
+        // axis x
+        rootG
+            .append('g')
+            .attr('transform', `translate(0,${height})`)
             .call(
                 d3
                     .axisBottom(x)
@@ -218,12 +242,32 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
                     .tickFormat((d) => formatTimeMs(d.valueOf())),
             );
 
-        svg.append('text')
-            .attr('x', widthWithMargin / 2)
-            .attr('y', heightWithMargin - 2)
-            .attr('text-anchor', 'middle')
-            .attr('class', 'text-foreground fill-current text-xs')
-            .text('Time');
+        // brush
+        const brush = d3
+            .brushX()
+            .extent([
+                [0, 0],
+                [width, height],
+            ])
+            .on('end', (event: D3BrushEvent<unknown>) => {
+                const selection = (event.selection ?? null) as [number, number] | null;
+
+                if (lastSelection === selection) return;
+
+                if (selection == null) {
+                    x.domain([0, recording.events.at(-1)?.msIntoGame ?? 0]);
+                } else {
+                    brush.move(brushG, null);
+                    // areasGs.transition().duration(1000).call(d3.axisBottom(x).ticks(5))
+                    const invSelection = [x.invert(selection[0]), x.invert(selection[1])] as const;
+                    x.domain(invSelection);
+                }
+                areaPaths.transition().duration(500).attr('d', area);
+                lastSelection = selection;
+                // todo animate axis
+            });
+        const brushG = rootG.append('g').attr('class', 'brush');
+        brushG.call(brush);
     }, [
         data,
         recording,
@@ -234,6 +278,9 @@ function MoneyChart({ useViewOptionsStore }: RunExtraChartsProps) {
         marginRight,
         marginBottom,
         marginLeft,
+        width,
+        height,
+        id,
     ]);
 
     return (
