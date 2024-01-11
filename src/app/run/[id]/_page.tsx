@@ -46,7 +46,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
     return (
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
             <div className="flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:flex-col">
-                <Card className="max-lg:grow max-lg:basis-0 max-md:min-w-[300px] overflow-auto">
+                <Card className="max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto sm:min-w-min">
                     <CardContent className="px-0 pb-1">
                         <Tabs defaultValue="view-options" className="w-full">
                             <TabsList className="w-full bg-transparent">
@@ -82,7 +82,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <TabsTrigger value="password">Game</TabsTrigger>
                     </TabsList>
                 </Tabs> */}
-                    <HKMap className="grow" useViewOptionsStore={useViewOptionsStore} />
+                    <HKMap className="min-h-[50vh] grow" useViewOptionsStore={useViewOptionsStore} />
                     <div
                         className={cn(
                             'absolute inset-0 flex items-center justify-center bg-opacity-40 p-4',
@@ -96,10 +96,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     <AnimationOptions useViewOptionsStore={useViewOptionsStore} recording={combinedRecording} />
                 )}
             </div>
-            <RunExtraCharts
-                className="w-[400px] lg:w-[400px]"
-                useViewOptionsStore={useViewOptionsStore}
-            />
+            <RunExtraCharts className="w-full sm:w-[400px]" useViewOptionsStore={useViewOptionsStore} />
         </div>
     );
 }

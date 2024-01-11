@@ -389,7 +389,7 @@ export function LineAreaChart({
                 width={widthWithMargin}
                 height={heightWithMargin}
                 viewBox={`0 0 ${widthWithMargin} ${heightWithMargin}`}
-                className="h-auto max-w-full"
+                className="h-auto w-full"
             ></svg>
             <Table>
                 <TableBody>

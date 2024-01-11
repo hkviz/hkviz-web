@@ -171,7 +171,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
 
     return (
         <Card
-            className="flex shrink grow basis-0 flex-col bg-gradient-to-b from-transparent to-transparent max-lg:basis-0 max-md:min-w-[300px]"
+            className="flex shrink grow basis-0 flex-col bg-gradient-to-b from-transparent to-transparent max-lg:basis-0  min-w-[300px] sm:min-w-min"
             style={
                 {
                     '--tw-gradient-from': gradientColor,

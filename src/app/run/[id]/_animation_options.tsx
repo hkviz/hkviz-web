@@ -104,7 +104,7 @@ export function AnimationOptions({
     }, [isPlaying, animationSpeedMultiplier, incrementAnimationMsIntoGame]);
 
     return (
-        <Card className="g-1 flex flex-row items-center justify-center">
+        <Card className="g-1 bottom-0 flex flex-row items-center justify-center">
             <PlayButton useViewOptionsStore={useViewOptionsStore} />
             <AnimationTimeLine useViewOptionsStore={useViewOptionsStore} />
 
