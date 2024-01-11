@@ -17,7 +17,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { Plus, X } from 'lucide-react';
 import { useMemo, useState } from 'react';
-import { TagGroup, tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode } from '~/lib/types/tags';
+import { tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode, type TagGroup } from '~/lib/types/tags';
 import { api } from '~/trpc/react';
 
 export function RunTag({
@@ -94,13 +94,13 @@ export function RunTags({
     }
 
     return (
-        <div className={cn('flex flex-row flex-wrap gap-1 font-sans', className)}>
-            <ul className="flex flex-row flex-wrap gap-1">
+        <div className={cn('flex flex-row flex-wrap items-center gap-1 font-sans', className)}>
+            <ul className="flex flex-row flex-wrap items-center gap-1">
                 {runTags.length === 0 && !setTagMutation.isLoading && (
                     <li className="z-[8] mr-2 text-white opacity-80">No tags</li>
                 )}
                 {runTags.map((tag) => (
-                    <li key={tag.code} className="w-fit">
+                    <li key={tag.code} className="flex w-fit flex-row">
                         <RunTag
                             tag={tag}
                             runId={runId}
@@ -122,7 +122,10 @@ export function RunTags({
                                 variant="outline"
                                 aria-label="Add tag"
                                 size="icon"
-                                className={cn('relative z-[8] h-8 w-8 rounded-full dark:text-white text-black', addButtonClassName)}
+                                className={cn(
+                                    'relative z-[8] h-8 w-8 rounded-full text-black dark:text-white',
+                                    addButtonClassName,
+                                )}
                             >
                                 <Plus />
                             </Button>
@@ -163,7 +166,11 @@ export function TagDropdownMenu({ onClick, isTagDisabled, children, showAllOptio
                             </DropdownMenuSubTrigger>
                             <DropdownMenuPortal>
                                 <DropdownMenuSubContent>
-                                    {showAllOptions && <DropdownMenuItem onClick={() => onClick(group)}>All {group.name}s</DropdownMenuItem>}
+                                    {showAllOptions && (
+                                        <DropdownMenuItem onClick={() => onClick(group)}>
+                                            All {group.name}s
+                                        </DropdownMenuItem>
+                                    )}
                                     {group.tags.map((tag) => (
                                         <DropdownMenuItem
                                             key={tag.code}

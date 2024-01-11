@@ -1,17 +1,21 @@
+import { Globe, Lock, Unlock } from 'lucide-react';
 import { z } from 'zod';
 
 export const visibilities = [
     {
         code: 'public',
         name: 'Public',
+        Icon: Globe,
     },
     {
         code: 'unlisted',
         name: 'Unlisted',
+        Icon: Unlock,
     },
     {
         code: 'private',
         name: 'Private',
+        Icon: Lock,
     },
 ] as const;
 
@@ -24,3 +28,7 @@ export type VisibilityCode = VisibilityCodes[number];
 export const visibilityCodes = visibilities.map((it) => it.code) as unknown as VisibilityCodes;
 
 export const visibilitySchema = z.enum(visibilityCodes);
+
+export function visibilityByCode(code: VisibilityCode) {
+    return visibilities.find((it) => it.code === code)!;
+}

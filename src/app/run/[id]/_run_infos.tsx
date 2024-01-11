@@ -7,8 +7,7 @@ import { type Session } from 'next-auth';
 import Link from 'next/link';
 import { useState } from 'react';
 import { RunTags } from '~/app/_components/run-tags';
-import { assertNever } from '~/lib/utils/utils';
-import { type RunVisibility } from '~/lib/viz/types/run-visibility';
+import { visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { type AppRouterOutput } from '~/server/api/types';
 import { api } from '~/trpc/react';
 import { RelativeDate } from '../../_components/date';
@@ -18,32 +17,19 @@ interface Props {
     runData: AppRouterOutput['run']['getMetadataById'];
 }
 
-export function runVisibilityToDisplayName(visibility: RunVisibility) {
-    switch (visibility) {
-        case 'public':
-            return 'Public';
-        case 'unlisted':
-            return 'Unlisted';
-        case 'private':
-            return 'Private';
-        default:
-            assertNever(visibility);
-    }
-}
-
 export function RunInfos({ session, runData }: Props) {
     const isFromUser = session?.user?.id === runData.user.id;
-    const [visibility, setVisibility] = useState<RunVisibility>(runData.visibility);
+    const [visibility, setVisibility] = useState<VisibilityCode>(runData.visibility);
 
     const { toast } = useToast();
     const visibilityMutation = api.run.setVisibility.useMutation();
 
-    async function handleVisibilityChange(newVisibility: RunVisibility) {
+    async function handleVisibilityChange(newVisibility: VisibilityCode) {
         setVisibility(newVisibility);
         await visibilityMutation.mutateAsync({ id: runData.id, visibility: newVisibility });
 
         toast({
-            title: 'Successfully set run visibility to ' + runVisibilityToDisplayName(newVisibility),
+            title: 'Successfully set run visibility to ' + visibilityByCode(newVisibility).name,
         });
     }
 
@@ -74,7 +60,7 @@ export function RunInfos({ session, runData }: Props) {
                     </TableHead>
                     <TableCell>
                         {!isFromUser ? (
-                            <>{runVisibilityToDisplayName(runData.visibility)}</>
+                            <>{visibilityByCode(runData.visibility).name}</>
                         ) : (
                             <Select value={visibility} onValueChange={handleVisibilityChange}>
                                 <SelectTrigger id="visibleRunSelectTrigger">

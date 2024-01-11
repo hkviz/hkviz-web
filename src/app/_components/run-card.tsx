@@ -11,6 +11,7 @@ import {
     AlertDialogTitle,
     AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
+import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -21,10 +22,11 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
-import { Archive, ArchiveRestore, MoreHorizontal, Trash } from 'lucide-react';
+import { Archive, ArchiveRestore, ChevronDown, MoreHorizontal, Trash } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, type PropsWithChildren } from 'react';
+import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { type RunMetadata } from '~/server/api/routers/run/runs-find';
 import { api } from '~/trpc/react';
 import Coin from '../../../public/ingame-sprites/hud/HUD_coin_v020004.png';
@@ -187,13 +189,15 @@ export function RunCardDropdownMenu({
                             <li>
                                 <b className="text-bold">Delete can not be undone</b>, your data will be deleted
                                 completely. <br />
-                                Playing again on this profile while using the mod, will create a new gamplay without the previous data.
+                                Playing again on this profile while using the mod, will create a new gamplay without the
+                                previous data.
                             </li>
                             {!run.archived && (
                                 <li>
                                     <b className="text-bold">Archive</b> will hide this gameplay from your gameplays and
                                     other views, you can still view it inside your archive. <br />
-                                    Playing again on this profile while using the mod, will record the data into your archive.
+                                    Playing again on this profile while using the mod, will record the data into your
+                                    archive.
                                 </li>
                             )}
                         </ul>
@@ -224,6 +228,7 @@ export function RunCard({
 }) {
     const { toast } = useToast();
 
+    // deletion
     const deletionMutation = api.run.delete.useMutation({
         onSuccess: () => {
             toast({
@@ -261,6 +266,19 @@ export function RunCard({
         archiveMutation.mutate({ runId: run.id, archived: !run.archived });
     }
 
+    // set visibility
+    const [visibility, setVisibility] = useState<VisibilityCode>(run.visibility);
+    const visibilityMutation = api.run.setVisibility.useMutation();
+
+    async function handleVisibilityChange(newVisibility: VisibilityCode) {
+        setVisibility(newVisibility);
+        await visibilityMutation.mutateAsync({ id: run.id, visibility: newVisibility });
+
+        toast({
+            title: 'Successfully set run visibility to ' + visibilityByCode(newVisibility).name,
+        });
+    }
+
     const [isRemoved, setIsRemoved] = useState(false);
     const isLoading = deletionMutation.isLoading || archiveMutation.isLoading;
 
@@ -273,6 +291,8 @@ export function RunCard({
     const soulOrbImgSrc = isSteelSoul ? SmallSoulOrbSteelSoul : SmallSoulOrb;
     const healthImgSrc = isSteelSoul ? OneHealthSteelSoul : OneHealth;
 
+    const VisibilityIcon = visibilityByCode(visibility).Icon;
+
     return (
         <Expander expanded={!isRemoved}>
             <div
@@ -280,7 +300,7 @@ export function RunCard({
                 className={cn(
                     'group relative mb-2 flex h-[unset] w-full flex-row items-start justify-between overflow-hidden rounded-sm bg-black px-4 py-2 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none',
                     isRemoved ? 'scale-125 opacity-0' : '',
-                    isLoading ? 'grayscale-0' : '',
+                    isLoading ? 'grayscale' : '',
                 )}
             >
                 {/* https://css-tricks.com/nested-links/ */}
@@ -334,7 +354,30 @@ export function RunCard({
                             )}
                         </div>
                         {(isOwnRun || run.tags.length > 0) && (
-                            <div className="mt-1 sm:mt-4">
+                            <div className="mt-1 flex flex-row items-center gap-2 sm:mt-4">
+                                {isOwnRun && (
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger className="flex">
+                                            <Badge className="relative z-[8] z-[8] overflow-hidden" variant="secondary">
+                                                <VisibilityIcon className="h-4 w-4" />
+                                                <ChevronDown className="-mr-1 ml-1 h-3 w-3" />
+                                            </Badge>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="w-56">
+                                            <DropdownMenuGroup>
+                                                {visibilities.map(({ name, Icon, code }) => (
+                                                    <DropdownMenuItem
+                                                        key={code}
+                                                        onClick={() => handleVisibilityChange(code)}
+                                                    >
+                                                        <Icon className="mr-2 h-4 w-4" />
+                                                        <span>{name}</span>
+                                                    </DropdownMenuItem>
+                                                ))}
+                                            </DropdownMenuGroup>
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+                                )}
                                 <RunTags
                                     codes={run.tags}
                                     runId={run.id}
