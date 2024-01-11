@@ -10,8 +10,8 @@ import {
     type ParsedRecording,
 } from './recording';
 
-import { Clock12, Clock2, Hash, LucideIcon } from 'lucide-react';
-import { zeroPad } from '~/lib/utils';
+import { Clock12, Clock2, Hash, type LucideIcon } from 'lucide-react';
+import { formatTimeMs } from '~/lib/utils/time';
 import coinImg from '../../../../public/ingame-sprites/HUD_coin_shop.png';
 import spellUpImg from '../../../../public/ingame-sprites/Inv_0024_spell_scream_01.png';
 import spellFireballImg from '../../../../public/ingame-sprites/Inv_0025_spell_fireball_01.png';
@@ -24,19 +24,6 @@ import { playerDataFields } from '../player-data/player-data';
 type RunId = string;
 export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
 
-function formatTime(ms: number) {
-    const hours = Math.floor(ms / 1000 / 60 / 60);
-    const minutes = Math.floor((ms / 1000 / 60) % 60);
-    const seconds = Math.floor((ms / 1000) % 60);
-    // const deciSeconds = Math.floor(Math.floor(ms % 1000) / 100);
-
-    let str = `${zeroPad(minutes, 2)}:${zeroPad(seconds, 2)}`;
-    if (hours) {
-        str = `${hours}:${str}`;
-    }
-    return str;
-}
-
 export const aggregationVariableInfos = {
     visits: {
         name: 'Visits',
@@ -47,13 +34,13 @@ export const aggregationVariableInfos = {
         name: 'First visited at',
         description: 'Time of first visit (mm:ss)',
         Icon: Clock12,
-        format: formatTime,
+        format: formatTimeMs,
     },
     timeSpendMs: {
         name: 'Time spent',
         description: 'Total time spent (mm:ss)',
         Icon: Clock2,
-        format: formatTime,
+        format: formatTimeMs,
     },
     damageTaken: {
         name: 'Damage taken',
@@ -189,7 +176,7 @@ function aggregateRecording(recording: ParsedRecording) {
                 addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'damageTaken', -diff);
             }
         } else if (
-            isPlayerDataEventOfField(event, playerDataFields.byFieldName.joniHealthBlue) &&
+            isPlayerDataEventOfField(event, playerDataFields.byFieldName.healthBlue) &&
             event.previousPlayerDataEventOfField
         ) {
             const diff = event.value - event.previousPlayerDataEventOfField.value;

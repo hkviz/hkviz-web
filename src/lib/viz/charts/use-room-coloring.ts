@@ -1,9 +1,9 @@
 import * as d3 from 'd3';
 import { useMemo } from 'react';
-import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
-import { assertNever } from '~/lib/utils';
-import { type RoomInfo } from '../map-data/rooms';
 import { useThemeStore } from '~/app/_components/theme-store';
+import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { assertNever } from '~/lib/utils/utils';
+import { type RoomInfo } from '../map-data/rooms';
 
 export function useRoomColoring({
     useViewOptionsStore,

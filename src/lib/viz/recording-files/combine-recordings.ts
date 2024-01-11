@@ -1,9 +1,10 @@
-import { raise } from '~/lib/utils';
+import { raise } from '~/lib/utils/utils';
 import { playerDataFields, type PlayerDataField } from '../player-data/player-data';
+import { FrameEndEvent, frameEndEventPlayerDataFields } from './events/frame-end-event';
+import { PlayerDataEvent } from './events/player-data-event';
 import {
     CombinedRecording,
     HeroStateEvent,
-    PlayerDataEvent,
     PlayerPositionEvent,
     RecordingFileVersionEvent,
     SceneEvent,
@@ -12,6 +13,7 @@ import {
     type ParsedRecording,
     type RecordingEvent,
 } from './recording';
+
 
 export function combineRecordings(recordings: ParsedRecording[]): CombinedRecording {
     const events: RecordingEvent[] = [];
@@ -25,15 +27,31 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     function getPreviousPlayerData<TField extends PlayerDataField>(field: TField) {
         return previousPlayerDataEventsByField.get(field) as PlayerDataEvent<TField> | undefined;
     }
+    let createEndFrameEvent = false;
 
     let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
     let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
     let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
+    let previousEndFrameEvent: FrameEndEvent | null = null;
 
     const visitedScenesToCheckIfInPlayerData = [] as { sceneName: string; msIntoGame: number }[];
 
     for (const recording of recordings.sort((a, b) => a.partNumber! - b.partNumber!)) {
         for (const event of recording.events) {
+            // create together player data event if needed
+            // TODO might be good to exclude some fields here since they are updated very often and not needed
+            // for the visualizations
+            if (createEndFrameEvent && event.timestamp > lastTimestamp) {
+                const endFrameEvent = new FrameEndEvent({
+                    timestamp: lastTimestamp,
+                    getPreviousPlayerData,
+                    msIntoGame,
+                });
+                previousEndFrameEvent = endFrameEvent;
+                events.push(endFrameEvent);
+                createEndFrameEvent = false;
+            }
+
             // msIntoGame calculation
             if (event instanceof RecordingFileVersionEvent) {
                 // time before the previous event and this event is not counted,
@@ -49,9 +67,6 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 // its added to the scenes below.
                 if (!visitedScenes.includes(event.sceneName)) {
                     visitedScenesToCheckIfInPlayerData.push({ sceneName: event.sceneName, msIntoGame });
-                    if (event.sceneName.startsWith('White')) {
-                        console.log('White Palace', { sceneName: event.sceneName, msIntoGame });
-                    }
                 }
             } else if (event instanceof HeroStateEvent && event.field.name === 'isPaused') {
                 isPaused = event.value;
@@ -105,6 +120,10 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
             if (event instanceof PlayerDataEvent) {
                 event.previousPlayerDataEventOfField = previousPlayerDataEventsByField.get(event.field) ?? null;
                 previousPlayerDataEventsByField.set(event.field, event);
+                if (frameEndEventPlayerDataFields.has(event.field)) {
+                    createEndFrameEvent = true;
+                }
+
                 if (isPlayerDataEventWithFieldType(event, 'List`1')) {
                     event.value = event.value.flatMap((it) =>
                         it === '::' ? event.previousPlayerDataEventOfField?.value ?? [] : [it],
@@ -115,23 +134,26 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                             // we don't want to loose the scenes visited in the recording.
                             if (!event.value.includes(it)) {
                                 event.value.push(it);
-                                console.log('scene not in visitedScenes anymore, added it again', {
-                                    sceneName: it,
-                                    msIntoGame,
-                                });
+                                // console.log('scene not in visitedScenes anymore, added it again', {
+                                //     sceneName: it,
+                                //     msIntoGame,
+                                // });
                             }
                         }
                     }
                 }
             }
 
-            // adding scenes which the game did not record to the player data
-
             events.push(event);
             addScenesWhichWhereNotAdded();
         }
     }
     addScenesWhichWhereNotAdded(true);
+    // there might not have been a end frame event for a bit at the end, so we duplicate the last one
+    // so graphs can depend on there being one at the end of the msIntoGame
+    if (previousEndFrameEvent) {
+        events.push(new FrameEndEvent({ timestamp: lastTimestamp, getPreviousPlayerData, msIntoGame }));
+    }
 
     function addScenesWhichWhereNotAdded(all = false) {
         while (
@@ -143,7 +165,6 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
             const previousValue = previousScenesVisitedEvent?.value ?? [];
 
             if (!previousValue.includes(sceneName)) {
-                console.log('write to playerdata', { sceneName, msIntoGame });
                 const visitedScenesEvent = new PlayerDataEvent<typeof playerDataFields.byFieldName.scenesVisited>({
                     timestamp: lastTimestamp,
                     value: [...previousValue, sceneName],
@@ -152,9 +173,11 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                     previousPlayerPositionEvent: previousPlayerPositionEvent,
                     previousPlayerDataEventOfField: previousScenesVisitedEvent ?? null,
                 });
-                console.log(visitedScenesEvent);
                 visitedScenesEvent.msIntoGame = msIntoGame;
                 previousPlayerDataEventsByField.set(playerDataFields.byFieldName.scenesVisited, visitedScenesEvent);
+                if (frameEndEventPlayerDataFields.has(playerDataFields.byFieldName.scenesVisited)) {
+                    createEndFrameEvent = true;
+                }
                 events.push(visitedScenesEvent);
             }
         }

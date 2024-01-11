@@ -1,18 +1,12 @@
-import { raise } from '~/lib/utils';
+import { raise } from '~/lib/utils/utils';
 import { type HeroStateField } from '../hero-state/hero-states';
 import { playerPositionToMapPosition } from '../map-data/player-position';
-import { type PlayerDataFieldValue, type PlayerDataField } from '../player-data/player-data';
+import { type PlayerDataField } from '../player-data/player-data';
 import { type RecordingFileVersion } from '../types/recording-file-version';
 import type { Vector2 } from '../types/vector2';
-
-type RecordingEventBaseOptions = Pick<RecordingEventBase, 'timestamp'>;
-abstract class RecordingEventBase {
-    timestamp: number;
-    msIntoGame = 0;
-    constructor(options: RecordingEventBaseOptions) {
-        this.timestamp = options.timestamp;
-    }
-}
+import { FrameEndEvent } from './events/frame-end-event';
+import { PlayerDataEvent } from './events/player-data-event';
+import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
 
 type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
 export class RecordingFileVersionEvent extends RecordingEventBase {
@@ -54,23 +48,6 @@ export class PlayerPositionEvent extends RecordingEventBase {
         this.sceneEvent = options.sceneEvent;
 
         this.mapPosition = playerPositionToMapPosition(this.position, this.sceneEvent) ?? null;
-    }
-}
-
-type PlayerDataEventOptions<TField extends PlayerDataField> = RecordingEventBaseOptions &
-    Pick<PlayerDataEvent<TField>, 'field' | 'value' | 'previousPlayerPositionEvent' | 'previousPlayerDataEventOfField'>;
-export class PlayerDataEvent<TField extends PlayerDataField> extends RecordingEventBase {
-    public previousPlayerPositionEvent: PlayerPositionEvent | null;
-    public previousPlayerDataEventOfField: PlayerDataEvent<TField> | null;
-    public field: TField;
-    public value: PlayerDataFieldValue<TField>;
-
-    constructor(options: PlayerDataEventOptions<TField>) {
-        super(options);
-        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
-        this.field = options.field;
-        this.value = options.value;
-        this.previousPlayerDataEventOfField = options.previousPlayerDataEventOfField;
     }
 }
 
@@ -141,7 +118,8 @@ export type RecordingEvent =
     | HeroStateEvent
     | SpellFireballEvent
     | SpellDownEvent
-    | SpellUpEvent;
+    | SpellUpEvent
+    | FrameEndEvent;
 
 export class ParsedRecording {
     constructor(
@@ -164,6 +142,7 @@ export class ParsedRecording {
 
 export class CombinedRecording extends ParsedRecording {
     public playerDataEventsPerField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>[]>();
+    public frameEndEvents: FrameEndEvent[];
 
     constructor(
         events: RecordingEvent[],
@@ -181,6 +160,8 @@ export class CombinedRecording extends ParsedRecording {
                 this.playerDataEventsPerField.set(event.field, eventsOfField);
             }
         }
+
+        this.frameEndEvents = this.events.filter((it): it is FrameEndEvent => it instanceof FrameEndEvent);
     }
 
     lastPlayerDataEventOfField<TField extends PlayerDataField>(field: TField): PlayerDataEvent<TField> | null {

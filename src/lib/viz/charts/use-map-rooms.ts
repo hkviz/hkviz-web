@@ -3,7 +3,7 @@ import { useEffect, useId, useMemo, useRef, type RefObject } from 'react';
 import useEvent from 'react-use-event-hook';
 import { useThemeStore } from '~/app/_components/theme-store';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
-import { assertNever } from '~/lib/utils';
+import { assertNever } from '~/lib/utils/utils';
 import { useDependableEffect, useDynamicDependencies } from '../depdendent-effect';
 import { type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
 import { playerDataFields } from '../player-data/player-data';

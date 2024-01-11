@@ -1,4 +1,4 @@
-import { raise, typeCheckNever } from '~/lib/utils';
+import { raise, typeCheckNever } from '~/lib/utils/utils';
 import { heroStateFields } from '../hero-state/hero-states';
 import { playerDataFields } from '../player-data/player-data';
 import { isKnownRecordingFileVersion, isVersion0xx, type RecordingFileVersion } from '../types/recording-file-version';
@@ -10,10 +10,10 @@ import {
     type EventPrefix,
     type PartialEventPrefix,
 } from './event-type-prefixes';
+import { PlayerDataEvent } from './events/player-data-event';
 import {
     HeroStateEvent,
     ParsedRecording,
-    PlayerDataEvent,
     PlayerPositionEvent,
     RecordingFileVersionEvent,
     SceneEvent,
@@ -101,6 +101,8 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     let value: any;
                     if (field.type === 'Int32') {
                         value = parseInt(args[0]!);
+                    } else if (field.type === 'Boolean') {
+                        value = args[0] === '1';
                     } else if (field.type === 'List`1') {
                         value = args[0]!.split(',');
                     } else {

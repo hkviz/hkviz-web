@@ -11,6 +11,7 @@ import { useRunAggregationStore } from '~/lib/viz/recording-files/run-aggregatio
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files';
 import { type AppRouterOutput } from '~/server/api/types';
 import { AnimationOptions } from './_animation_options';
+import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { RoomInfo } from './_room_infos';
 import { RunInfos } from './_run_infos';
 import { useViewOptionsStoreRoot } from './_viewOptionsStore';
@@ -29,6 +30,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
 
     const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
     const roomVisibility = useViewOptionsStore((s) => s.roomVisibility);
+    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
     const setRecording = useViewOptionsStore((s) => s.setRecording);
     const setAggregatedRunData = useViewOptionsStore((s) => s.setAggregatedRunData);
     const combinedRecording = combinedRun?.finishedLoading ? combinedRun.recording : null;
@@ -44,7 +46,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
     return (
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
             <div className="flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:flex-col">
-                <Card className="overflow-auto max-lg:grow max-lg:basis-0 max-md:min-w-[300px]">
+                <Card className="max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto sm:min-w-min">
                     <CardContent className="px-0 pb-1">
                         <Tabs defaultValue="view-options" className="w-full">
                             <TabsList className="w-full bg-transparent">
@@ -80,7 +82,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <TabsTrigger value="password">Game</TabsTrigger>
                     </TabsList>
                 </Tabs> */}
-                    <HKMap className="grow" useViewOptionsStore={useViewOptionsStore} />
+                    <HKMap className="min-h-[50vh] grow" useViewOptionsStore={useViewOptionsStore} />
                     <div
                         className={cn(
                             'absolute inset-0 flex items-center justify-center bg-opacity-40 p-4',
@@ -90,10 +92,11 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <Progress value={(runFiles?.loadingProgress ?? 0) * 99 + 1} className="max-w-[400px]" />
                     </div>
                 </Card>
-                {(traceVisibility === 'animated' || roomVisibility === 'visited-animated') && combinedRecording && (
+                {isAnythingAnimating && combinedRecording && (
                     <AnimationOptions useViewOptionsStore={useViewOptionsStore} recording={combinedRecording} />
                 )}
             </div>
+            <RunExtraCharts className="w-full sm:w-[400px]" useViewOptionsStore={useViewOptionsStore} />
         </div>
     );
 }

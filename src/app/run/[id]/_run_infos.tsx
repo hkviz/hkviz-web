@@ -7,7 +7,7 @@ import { type Session } from 'next-auth';
 import Link from 'next/link';
 import { useState } from 'react';
 import { RunTags } from '~/app/_components/run-tags';
-import { assertNever } from '~/lib/utils';
+import { assertNever } from '~/lib/utils/utils';
 import { type RunVisibility } from '~/lib/viz/types/run-visibility';
 import { type AppRouterOutput } from '~/server/api/types';
 import { api } from '~/trpc/react';

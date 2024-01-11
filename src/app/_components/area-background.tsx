@@ -1,4 +1,4 @@
-import { assertNever } from '~/lib/utils';
+import { assertNever } from '~/lib/utils/utils';
 import { type MapZone } from '~/lib/viz/types/mapZone';
 
 /*

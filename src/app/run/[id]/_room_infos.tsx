@@ -171,7 +171,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
 
     return (
         <Card
-            className="flex shrink grow basis-0 flex-col bg-gradient-to-b from-transparent to-transparent max-lg:basis-0 max-md:min-w-[300px]"
+            className="flex shrink grow basis-0 flex-col bg-gradient-to-b from-transparent to-transparent max-lg:basis-0  min-w-[300px] sm:min-w-min"
             style={
                 {
                     '--tw-gradient-from': gradientColor,
@@ -195,7 +195,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                             <span className="text-sm opacity-50">Hover or click a room to view analytics</span>
                         )}
                         {selectedRoom && (
-                            <div>
+                            <>
                                 <Tooltip>
                                     <TooltipTrigger>
                                         <span className="text-left">
@@ -213,7 +213,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                                     </TooltipTrigger>
                                     <TooltipContent>Room</TooltipContent>
                                 </Tooltip>
-                            </div>
+                            </>
                         )}
                     </CardDescription>
                 </div>
