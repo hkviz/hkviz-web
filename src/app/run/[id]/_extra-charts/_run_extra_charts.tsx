@@ -41,7 +41,7 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
                 </CardContent>
             )}
             <hr />
-            <div className="grow overflow-y-auto sm:shrink sm:basis-0">
+            <div className="grow overflow-y-auto lg:shrink lg:basis-0">
                 <GeoChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />
                 <CompletionChart useViewOptionsStore={useViewOptionsStore} />

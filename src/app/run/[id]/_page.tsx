@@ -96,7 +96,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     <AnimationOptions useViewOptionsStore={useViewOptionsStore} recording={combinedRecording} />
                 )}
             </div>
-            <RunExtraCharts className="w-full sm:w-[400px]" useViewOptionsStore={useViewOptionsStore} />
+            <RunExtraCharts className="w-full lg:w-[400px]" useViewOptionsStore={useViewOptionsStore} />
         </div>
     );
 }
