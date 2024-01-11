@@ -1,7 +1,7 @@
 import { type FrameEndEvent } from '~/lib/viz/recording-files/events/frame-end-event';
 
 export function downScale(data: FrameEndEvent[], fields: (keyof FrameEndEvent)[], maxTimeDelta = 10000) {
-    console.log('Original length', data.length);
+    console.log('Original length', data.length, fields);
 
     let previous: FrameEndEvent | undefined = undefined;
     let current: FrameEndEvent | undefined = undefined;

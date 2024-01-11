@@ -59,6 +59,7 @@ export function LineAreaChart({
     const setExtraChartsTimeBounds = useViewOptionsStore((s) => s.setExtraChartsTimeBounds);
     const resetExtraChartsTimeBounds = useViewOptionsStore((s) => s.resetExtraChartsTimeBounds);
     const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
+    const timeFrame = useViewOptionsStore((s) => s.timeFrame);
 
     // timebounds debouncing, so we can use d3 animations
     const isVisible = useIsVisibleRef(svgRef);
@@ -150,25 +151,39 @@ export function LineAreaChart({
         return d3.scaleLinear().domain(debouncedExtraChartsTimeBounds).range([0, width]);
     }, [debouncedExtraChartsTimeBounds, width]);
 
+    const xNotAnimated = useMemo(() => {
+        return d3
+            .scaleLinear()
+            .domain([recording?.events?.[0]?.msIntoGame ?? 0, recording?.events?.at?.(-1)?.msIntoGame ?? 0])
+            .range([0, width]);
+    }, [recording, width]);
+
+    // const y = useMemo(() => {
+    //     return d3
+    //         .scaleLinear()
+    //         .domain([
+    //             0,
+    //             Math.max(
+    //                 minimalMaximumY,
+    //                 series.at(-1)!.findLast((it) => it.data.msIntoGame < debouncedExtraChartsTimeBounds[0])?.[1] ?? 0,
+    //                 d3.max(series.at(-1)!, (d) =>
+    //                     // max only over the selected timeframe --> therefore y axis zooms too
+    //                     d.data.msIntoGame >= debouncedExtraChartsTimeBounds[0] - 10000 &&
+    //                     d.data.msIntoGame <= debouncedExtraChartsTimeBounds[1] + 10000
+    //                         ? d[1]
+    //                         : 0,
+    //                 ) ?? 0,
+    //             ),
+    //         ] as [number, number])
+    //         .rangeRound([height, 0]);
+    // }, [debouncedExtraChartsTimeBounds, series, height, minimalMaximumY]);
+
     const y = useMemo(() => {
         return d3
             .scaleLinear()
-            .domain([
-                0,
-                Math.max(
-                    minimalMaximumY,
-                    series.at(-1)!.findLast((it) => it.data.msIntoGame < debouncedExtraChartsTimeBounds[0])?.[1] ?? 0,
-                    d3.max(series.at(-1)!, (d) =>
-                        // max only over the selected timeframe --> therefore y axis zooms too
-                        d.data.msIntoGame >= debouncedExtraChartsTimeBounds[0] - 10000 &&
-                        d.data.msIntoGame <= debouncedExtraChartsTimeBounds[1] + 10000
-                            ? d[1]
-                            : 0,
-                    ) ?? 0,
-                ),
-            ] as [number, number])
+            .domain([0, d3.max(series.at(-1)!, (d) => d[1]) ?? minimalMaximumY] as [number, number])
             .rangeRound([height, 0]);
-    }, [debouncedExtraChartsTimeBounds, series, height]);
+    }, [series, height, minimalMaximumY]);
 
     const skipNextUpdate = useRef(false);
     const onBrushEnd = useEvent((event: D3BrushEvent<unknown>) => {
@@ -284,7 +299,7 @@ export function LineAreaChart({
         const area = d3
             .area<Series[number]>()
             .x((d) => {
-                return x(d.data?.msIntoGame ?? 0);
+                return xNotAnimated(d.data?.msIntoGame ?? 0);
             })
             .y0((d) => y(d[0]))
             .y1((d) => y(d[1]))
@@ -294,7 +309,27 @@ export function LineAreaChart({
         //areaPaths.current.attr('d', area);
 
         // areaPaths.current.attr('d', area);
-    }, [mainEffectChanges, recording, width, x, y]);
+        // }, [mainEffectChanges, recording, width, x, y]);
+    }, [mainEffectChanges, recording, width, xNotAnimated, y]);
+
+    // update area movement
+    useEffect(() => {
+        const paths = areaPaths.current;
+        if (!paths) return;
+
+        const zeroX = x(0);
+        const maxX = x(timeFrame.max);
+
+        const scaleX = Math.round(((maxX - zeroX) / width) * 100) / 100;
+
+        const base =
+            paths.attr('data-existed') === 'true'
+                ? paths.transition().duration(transitionDuration).ease(d3.easeLinear)
+                : paths;
+            paths.attr('data-existed', 'true');
+
+        base.attr('transform', `translate(${zeroX} 0) scale(${scaleX} 1)`);
+    }, [mainEffectChanges, timeFrame.max, width, x]);
 
     // update x axis
     useEffect(() => {

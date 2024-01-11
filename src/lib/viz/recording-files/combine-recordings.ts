@@ -134,10 +134,10 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                             // we don't want to loose the scenes visited in the recording.
                             if (!event.value.includes(it)) {
                                 event.value.push(it);
-                                console.log('scene not in visitedScenes anymore, added it again', {
-                                    sceneName: it,
-                                    msIntoGame,
-                                });
+                                // console.log('scene not in visitedScenes anymore, added it again', {
+                                //     sceneName: it,
+                                //     msIntoGame,
+                                // });
                             }
                         }
                     }
