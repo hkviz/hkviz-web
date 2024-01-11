@@ -21,7 +21,7 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
     return (
         <Card className={cn('flex flex-col overflow-hidden', className)}>
             <CardHeader>
-                <CardTitle>Time based analytics</CardTitle>
+                <CardTitle>Time-based analytics</CardTitle>
             </CardHeader>
             {isAnythingAnimating && (
                 <CardContent>
@@ -41,7 +41,7 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
                 </CardContent>
             )}
             <hr />
-            <div className="sm:shrink grow sm:basis-0 overflow-y-auto">
+            <div className="grow overflow-y-auto sm:shrink sm:basis-0">
                 <GeoChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />
                 <CompletionChart useViewOptionsStore={useViewOptionsStore} />
