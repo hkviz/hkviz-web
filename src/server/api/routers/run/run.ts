@@ -8,36 +8,12 @@ import { tagSchema, type TagCode } from '~/lib/types/tags';
 import { raise } from '~/lib/utils/utils';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
-import { type DB } from '~/server/db';
 import { runFiles, runs } from '~/server/db/schema';
 import { getUserIdFromIngameSession } from '../ingameauth';
 import { assertIsResearcher } from '../lib/researcher';
+import { getOrCreateRunId } from './get-or-create-run-id';
 import { runTagFieldsSelect } from './run-column-selects';
-import { findRuns, runFilterSchema } from './runs-find';
-
-async function getOrCreateRunId(db: DB, localId: string, userId: string): Promise<string> {
-    const existingRunId = (
-        await db.query.runs.findFirst({
-            where: (run, { and, eq }) => and(eq(run.localId, localId), eq(run.userId, userId)),
-            columns: {
-                id: true,
-            },
-        })
-    )?.id;
-
-    if (existingRunId) {
-        return existingRunId;
-    }
-
-    const newId = uuidv4();
-    await db.insert(runs).values({
-        id: newId,
-        localId,
-        userId,
-    });
-
-    return newId;
-}
+import { deleteRunProcedure, setRunArchivedProcedure } from './run-deletion';
 
 export const runRouter = createTRPCRouter({
     getMetadataById: publicProcedure.input(z.object({ id: z.string().uuid() })).query(async ({ ctx, input }) => {
@@ -112,7 +88,9 @@ export const runRouter = createTRPCRouter({
             ),
         };
     }),
-    setRunVisibility: protectedProcedure
+    delete: deleteRunProcedure,
+    setArchived: setRunArchivedProcedure,
+    setVisibility: protectedProcedure
         .input(
             z.object({
                 id: z.string().uuid(),
@@ -268,20 +246,6 @@ export const runRouter = createTRPCRouter({
                 throw new Error('File not found');
             }
         }),
-    findRuns: publicProcedure.input(runFilterSchema).query(async ({ ctx, input }) => {
-        const sessionUserId = ctx.session?.user?.id;
-
-        return findRuns({
-            db: ctx.db,
-            currentUser: sessionUserId
-                ? {
-                      id: sessionUserId,
-                  }
-                : undefined,
-            filter: input,
-        });
-    }),
-
     // TODO: remove
     // createUploadUrl: protectedProcedure
     //     .input(

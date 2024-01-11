@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { findRuns } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
-import { apiFromServer } from '~/trpc/from-server';
+import { db } from '~/server/db';
 import { ContentCenterWrapper } from './_components/content-wrapper';
 import { GradientSeperator } from './_components/gradient-seperator';
 import { HKVizText } from './_components/hkviz-text';
@@ -9,8 +10,18 @@ import { RunCard } from './_components/run-card';
 
 export default async function Home() {
     const session = await getServerAuthSession();
-    const userRuns = session?.user?.id
-        ? await (await apiFromServer()).run.findRuns({ userId: session.user.id })
+    const userId = session?.user?.id;
+    const userRuns = userId
+        ? await findRuns({
+              db,
+              filter: {
+                  archived: [false],
+                  userId: userId,
+              },
+              currentUser: {
+                  id: userId,
+              },
+          })
         : [];
 
     return (
@@ -48,7 +59,7 @@ export default async function Home() {
                         <GradientSeperator />
                         <div className="w-full max-w-[800px]">
                             <h1 className="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Your gameplays</h1>
-                            <ul className="flex flex-col gap-2">
+                            <ul className="flex flex-col">
                                 {userRuns.map((run) => (
                                     <li key={run.id}>
                                         <RunCard run={run} key={run.id} showUser={false} isOwnRun={true} />

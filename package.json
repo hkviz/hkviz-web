@@ -7,13 +7,14 @@
         "db:push": "dotenv drizzle-kit push:mysql",
         "db:studio": "dotenv drizzle-kit studio",
         "next:dev": "next dev",
-        "dev": "run-p -l tsc:watch next:dev",
+        "dev-and-tsc": "run-p -l tsc:watch next:dev",
+        "dev": "npm run next:dev",
         "lint": "next lint",
         "lint:fix": "next lint --fix",
         "lint:watch": "esw -w -c ./.eslintrc.cjs --ignore-path ./.eslintignore",
         "start": "next start",
-        "tsc": "tsc --noEmit --incremental --pretty",
-        "tsc:watch": "tsc --noEmit --incremental --pretty --watch"
+        "tsc": "tsc --noEmit --incremental --pretty --watch",
+        "tsc:no-watch": "tsc --noEmit --incremental --pretty"
     },
     "dependencies": {
         "@auth/drizzle-adapter": "^0.3.2",
@@ -24,6 +25,7 @@
         "@mdx-js/react": "^3.0.0",
         "@next/mdx": "^14.0.4",
         "@planetscale/database": "^1.11.0",
+        "@radix-ui/react-alert-dialog": "^1.0.5",
         "@radix-ui/react-checkbox": "^1.0.4",
         "@radix-ui/react-dialog": "^1.0.5",
         "@radix-ui/react-dropdown-menu": "^2.0.6",

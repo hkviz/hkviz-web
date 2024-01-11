@@ -8,6 +8,7 @@ export const runFilterSchema = z.object({
     userId: z.string().optional().nullish(),
     visibility: z.array(visibilitySchema).optional().nullish(),
     tag: z.array(tagSchema).optional().nullish(),
+    archived: z.array(z.boolean()).optional().nullish(),
 });
 
 export type RunFilter = z.infer<typeof runFilterSchema>;
@@ -26,7 +27,12 @@ export interface FindRunsOptions {
 export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
     const isOwnProfile = !!filter.userId && currentUser?.id === filter.userId;
     const isPublicFilter =
-        filter.visibility != null && filter.visibility.length === 1 && filter.visibility.includes('public');
+        filter.visibility != null &&
+        filter.visibility.length === 1 &&
+        filter.visibility.includes('public') &&
+        filter.archived != null &&
+        filter.archived.length === 1 &&
+        filter.archived.includes(false);
     const isResearcher = currentUser?.isResearcher ?? false;
 
     if (!isOwnProfile && !isPublicFilter && !isResearcher) {
@@ -41,6 +47,8 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
                 filter.userId ? eq(run.userId, filter.userId) : undefined,
                 filter.visibility ? inArray(run.visibility, filter.visibility) : undefined,
                 tagFilter,
+                filter.archived ? inArray(run.archived, filter.archived) : undefined,
+                eq(run.deleted, false),
             ];
 
             return and(...conditions.filter((c) => c != null));
@@ -50,6 +58,7 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
             description: true,
             createdAt: true,
             visibility: true,
+            archived: true,
             ...runTagFieldsSelect,
         },
         with: {
@@ -73,7 +82,7 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
     });
 
     return runs
-        .map(({ files, id, description, createdAt, visibility, ...run }) => {
+        .map(({ files, id, description, createdAt, visibility, archived, ...run }) => {
             const firstFile = files[0];
             const lastFile = files.at(-1);
             const isBrokenSteelSoul = firstFile?.permadeathMode === 2 || lastFile?.lastScene === 'PermaDeath';
@@ -97,6 +106,7 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
                 lastFile,
                 isSteelSoul,
                 isBrokenSteelSoul,
+                archived,
             };
         })
         .sort((a, b) => {
@@ -111,3 +121,5 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
             }
         });
 }
+
+export type RunMetadata = Awaited<ReturnType<typeof findRuns>>[number];

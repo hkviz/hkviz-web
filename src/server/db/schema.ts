@@ -190,6 +190,14 @@ export const runs = mysqlTable(
         updatedAt: timestamp('updatedAt').onUpdateNow(),
         visibility: mysqlEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),
 
+        // generally when a run is deleted, it is actually deleted from the database.
+        // unless deleting a file from r2 failed, then it will be kept for manual cleanup.
+        deleted: boolean('deleted').notNull().default(false),
+
+        // will hide a run from the own gameplays and public list even when public.
+        // only viewable by owner via achieve page
+        archived: boolean('archived').notNull().default(false),
+
         ...runTagColumns,
     },
     (run) => ({
@@ -206,7 +214,8 @@ export const runsRelations = relations(runs, ({ one, many }) => ({
 export const runFiles = mysqlTable('runfile', {
     // this id is also used to find the file inside the r2 bucket
     id: varchar('id', { length: UUID_LENGTH }).notNull().primaryKey(),
-    runId: varchar('run_id', { length: UUID_LENGTH }).notNull(),
+    runId: varchar('run_id', { length: UUID_LENGTH })
+        .notNull(),
     partNumber: int('part_number').notNull(),
     uploadFinished: boolean('upload_finished').notNull(),
     createdAt: timestamp('created_at')

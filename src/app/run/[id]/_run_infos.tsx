@@ -36,7 +36,7 @@ export function RunInfos({ session, runData }: Props) {
     const [visibility, setVisibility] = useState<RunVisibility>(runData.visibility);
 
     const { toast } = useToast();
-    const visibilityMutation = api.run.setRunVisibility.useMutation();
+    const visibilityMutation = api.run.setVisibility.useMutation();
 
     async function handleVisibilityChange(newVisibility: RunVisibility) {
         setVisibility(newVisibility);

@@ -33,7 +33,7 @@ export default async function Home() {
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
                 <div className="w-full max-w-[800px]">
                     {runs.length > 0 && (
-                        <ul className="flex flex-col gap-2">
+                        <ul className="flex flex-col">
                             {runs.map((run) => (
                                 <li key={run.id}>
                                     <RunCard run={run} key={run.id} />

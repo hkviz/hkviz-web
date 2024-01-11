@@ -41,6 +41,9 @@ export const env = createEnv({
         EMAIL_SERVER_USER: z.string(),
         EMAIL_SERVER_PASSWORD: z.string(),
         EMAIL_FROM: z.string(),
+
+        // aggregation pipeline
+        FILE_DOWNLOAD_PATH: z.string(),
     },
 
     /**
@@ -83,6 +86,8 @@ export const env = createEnv({
         EMAIL_SERVER_USER: process.env.EMAIL_SERVER_USER,
         EMAIL_SERVER_PASSWORD: process.env.EMAIL_SERVER_PASSWORD,
         EMAIL_FROM: process.env.EMAIL_FROM,
+
+        FILE_DOWNLOAD_PATH: process.env.FILE_DOWNLOAD_PATH,
     },
     /**
      * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

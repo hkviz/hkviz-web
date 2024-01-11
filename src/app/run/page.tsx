@@ -13,7 +13,12 @@ export default async function Runs({ searchParams }: { searchParams: RunFilter }
         db,
         filter: {
             visibility: ['public'],
-            tag: filter.tag ? isTagCode(filter.tag) ? [filter.tag] : tagGroupFromCode(filter.tag).tags.map(it => it.code) : undefined,
+            tag: filter.tag
+                ? isTagCode(filter.tag)
+                    ? [filter.tag]
+                    : tagGroupFromCode(filter.tag).tags.map((it) => it.code)
+                : undefined,
+            archived: [false],
         },
     });
 
@@ -27,7 +32,7 @@ export default async function Runs({ searchParams }: { searchParams: RunFilter }
 
                     {runs.length === 0 && <p className="text-center">No gameplays found</p>}
                     {runs.length > 0 && (
-                        <ul className="flex flex-col gap-2">
+                        <ul className="flex flex-col">
                             {runs.map((run) => (
                                 <li key={run.id}>
                                     <RunCard run={run} key={run.id} showUser={true} />
