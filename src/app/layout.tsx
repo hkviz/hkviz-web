@@ -12,6 +12,9 @@ import { Footer } from './_components/footer';
 import { MainNav } from './_components/main-nav';
 import { FaviconsHead } from './_favicons-head';
 
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next";
+
 export const metadata: Metadata = {
     title: 'HKViz for Hollow Knight',
     description: 'Visual Analytics for HollowKnight',
@@ -44,6 +47,8 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                     </TRPCReactProvider>
                 </ClientContext>
                 <Toaster />
+                <Analytics />
+                <SpeedInsights />
             </body>
         </html>
     );
