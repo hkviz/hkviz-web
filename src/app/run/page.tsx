@@ -1,3 +1,4 @@
+import { type Metadata } from 'next';
 import { isTagCode, tagGroupFromCode } from '~/lib/types/tags';
 import { findRuns, type RunFilter } from '~/server/api/routers/run/runs-find';
 import { db } from '~/server/db';
@@ -5,6 +6,10 @@ import { ContentWrapper } from '../_components/content-wrapper';
 import { RunCard } from '../_components/run-card';
 import { RunFilters } from './_components';
 import { runFilterParamsSchema } from './_params';
+
+export const metadata: Metadata = {
+    title: 'Public gameplays - HKViz',
+};
 
 export default async function Runs({ searchParams }: { searchParams: RunFilter }) {
     const filter = runFilterParamsSchema.parse(searchParams);

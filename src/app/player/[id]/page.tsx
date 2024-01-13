@@ -1,9 +1,18 @@
+import { getPlayerMeta } from '~/server/api/routers/player/get-player-meta';
 import { findRuns } from '~/server/api/routers/run/runs-find';
 import { db } from '~/server/db';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';
 import { RunCard } from '../../_components/run-card';
 
-export default async function PublicPlayerPage({ params }: { params: { id: string } }) {
+interface Params {
+    id: string;
+}
+
+export async function generateMetadata({ params }: { params: Params }) {
+    return await getPlayerMeta(params.id);
+}
+
+export default async function PublicPlayerPage({ params }: { params: Params }) {
     const userRuns = await findRuns({
         db,
         filter: {

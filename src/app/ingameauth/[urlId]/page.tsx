@@ -1,10 +1,15 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { type Metadata } from 'next';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';
 import { IngameAuthCard } from './_components';
+
+export const metadata: Metadata = {
+    title: 'Login - HKViz',
+};
 
 export default async function IngameAuthPage({ params }: { params: { urlId: string } }) {
     const session = await getServerAuthSession();

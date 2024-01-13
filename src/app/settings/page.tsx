@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
+import { type Metadata } from 'next';
 import Link from 'next/link';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
@@ -8,6 +9,10 @@ import { AuthNeeded } from '../_components/auth-needed';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { KeepAccountSettingsOption } from './_keep_account_option';
 import { UserNameSettingsOption } from './_username_option';
+
+export const metadata: Metadata = {
+    title: 'Settings - HKViz',
+};
 
 export default async function SettingsPage() {
     const session = await getServerAuthSession();

@@ -1,11 +1,21 @@
 import { TRPCError } from '@trpc/server';
+import { type Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { SingleRunClientPage } from '~/app/run/[id]/_page';
+import { getRunMeta } from '~/server/api/routers/run/get-run-meta';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-wrapper';
 
-export default async function SingleRunPage({ params }: { params: { id: string } }) {
+interface Params {
+    id: string;
+}
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+    return getRunMeta(params.id);
+}
+
+export default async function SingleRunPage({ params }: { params: Params }) {
     const session = await getServerAuthSession();
 
     // if (!session) {

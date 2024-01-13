@@ -1,9 +1,14 @@
+import { type Metadata } from 'next';
 import { findRuns } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
 import { AuthNeeded } from '../_components/auth-needed';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { RunCard } from '../_components/run-card';
+
+export const metadata: Metadata = {
+    title: 'Archived gameplays - HKViz',
+};
 
 export default async function Archive() {
     const session = await getServerAuthSession();
