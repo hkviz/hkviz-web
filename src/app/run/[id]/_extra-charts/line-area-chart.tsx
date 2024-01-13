@@ -18,14 +18,26 @@ export interface LineChartVariableClassNames {
     path: string;
 }
 
-export interface LineChartVariableDescription {
+export type LineChartVariableDescription = {
     key: FrameEndVariableKey;
     name: string;
     description: string;
-    classNames: LineChartVariableClassNames;
     UnitIcon: React.FunctionComponent<{ className?: string; useViewOptionsStore: UseViewOptionsStore }>;
     order: number;
-    defaultHidden?: true;
+    classNames: LineChartVariableClassNames;
+} & (
+    | {
+          notShownInGraph: true;
+      }
+    | {
+          defaultHidden?: true;
+      }
+);
+
+export type LineChartShownVariableDescription = Exclude<LineChartVariableDescription, { notShownInGraph: true }>;
+
+function isShownInGraph(it: LineChartVariableDescription): it is LineChartShownVariableDescription {
+    return !('notShownInGraph' in it && it.notShownInGraph === true);
 }
 
 export interface LineAreaChartProps {
@@ -79,6 +91,7 @@ export function LineAreaChart({
 
     const [selectedVars, setSelectedVars] = useState<FrameEndVariableKey[]>(
         variables
+            .filter(isShownInGraph)
             .filter((it) => !it.defaultHidden)
             .toSorted((a, b) => a.order - b.order)
             .map((it) => it.key),
@@ -326,7 +339,7 @@ export function LineAreaChart({
             paths.attr('data-existed') === 'true'
                 ? paths.transition().duration(transitionDuration).ease(d3.easeLinear)
                 : paths;
-            paths.attr('data-existed', 'true');
+        paths.attr('data-existed', 'true');
 
         base.attr('transform', `translate(${zeroX} 0) scale(${scaleX} 1)`);
     }, [mainEffectChanges, timeFrame.max, width, x]);
@@ -389,39 +402,48 @@ export function LineAreaChart({
                 width={widthWithMargin}
                 height={heightWithMargin}
                 viewBox={`0 0 ${widthWithMargin} ${heightWithMargin}`}
-                className="h-auto w-full max-w-[550px] mx-auto"
+                className="mx-auto h-auto w-full max-w-[550px]"
             ></svg>
             <Table>
                 <TableBody>
-                    {variables.map(({ key, name, UnitIcon: Unit, classNames }) => (
-                        <TableRow key={key}>
-                            <TableCell>
-                                <div className="flex flex-row items-center gap-2">
-                                    <Checkbox
-                                        id={id + key + '_checkbox'}
-                                        checked={selectedVars.includes(key)}
-                                        onCheckedChange={(c) => onVariableCheckedChange(key, c === true)}
-                                        className={classNames.checkbox}
-                                    />
-                                    <label
-                                        htmlFor={id + key + '_checkbox'}
-                                        className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        {name}
-                                    </label>
-                                </div>
-                            </TableCell>
-                            <TableCell className="text-right">
-                                {currentEndOfGame?.[key] ?? 0}
-                                <span className="ml-2">
-                                    <Unit
-                                        className="inline-block h-auto w-5"
-                                        useViewOptionsStore={useViewOptionsStore}
-                                    />
-                                </span>
-                            </TableCell>
-                        </TableRow>
-                    ))}
+                    {variables.map((variable) => {
+                        const { key, name, classNames, UnitIcon } = variable;
+                        const isShowable = isShownInGraph(variable);
+
+                        return (
+                            <TableRow key={key}>
+                                <TableCell>
+                                    <div className="flex flex-row items-center gap-2">
+                                        {isShowable ? (
+                                            <Checkbox
+                                                id={id + key + '_checkbox'}
+                                                checked={selectedVars.includes(key)}
+                                                onCheckedChange={(c) => onVariableCheckedChange(key, c === true)}
+                                                className={classNames.checkbox}
+                                            />
+                                        ) : (
+                                            <span className="inline-block w-5"></span>
+                                        )}
+                                        <label
+                                            htmlFor={id + key + '_checkbox'}
+                                            className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                        >
+                                            {name}
+                                        </label>
+                                    </div>
+                                </TableCell>
+                                <TableCell className="text-right">
+                                    {currentEndOfGame?.[key] ?? 0}
+                                    <span className="ml-2">
+                                        <UnitIcon
+                                            className="inline-block h-auto w-5"
+                                            useViewOptionsStore={useViewOptionsStore}
+                                        />
+                                    </span>
+                                </TableCell>
+                            </TableRow>
+                        );
+                    })}
                 </TableBody>
             </Table>
         </div>

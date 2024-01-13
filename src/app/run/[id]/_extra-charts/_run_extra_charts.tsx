@@ -5,6 +5,7 @@ import { useId } from 'react';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
 import { CompletionChart } from './completion-chart';
 import { GeoChart } from './geo-chart';
+import { GrubChart } from './grub-chart';
 import { HealthChart } from './health-chart';
 
 export interface RunExtraChartsProps {
@@ -47,6 +48,8 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
                 <CompletionChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />
                 <HealthChart useViewOptionsStore={useViewOptionsStore} />
+                <hr />
+                <GrubChart useViewOptionsStore={useViewOptionsStore} />
             </div>
         </Card>
     );

@@ -4,9 +4,7 @@ import { type UseViewOptionsStore } from '../_viewOptionsStore';
 import { lineAreaColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
-const Unit = ({ className }: { className?: string }) => (
-    <Image src={coinImg} className={className} alt="Geo" />
-);
+const Unit = ({ className }: { className?: string }) => <Image src={coinImg} className={className} alt="Geo" />;
 
 const variables: LineChartVariableDescription[] = [
     {
@@ -32,6 +30,15 @@ const variables: LineChartVariableDescription[] = [
         classNames: lineAreaColors.rose,
         UnitIcon: Unit,
         order: 1,
+    },
+    {
+        key: 'geoTotal',
+        name: 'Total',
+        description: 'Total geo in relicts, shade and player inventory.',
+        classNames: lineAreaColors.rose,
+        UnitIcon: Unit,
+        order: 1,
+        notShownInGraph: true,
     },
 ];
 

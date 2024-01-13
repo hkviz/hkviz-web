@@ -1,4 +1,8 @@
-import { getDefaultValue as getDefaultPlayerDataValue, playerDataFields, type PlayerDataField } from '../../player-data/player-data';
+import {
+    getDefaultValue as getDefaultPlayerDataValue,
+    playerDataFields,
+    type PlayerDataField,
+} from '../../player-data/player-data';
 import { countGameCompletion } from '../ingame-percentage';
 import { type PlayerDataEvent } from './player-data-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
@@ -118,6 +122,10 @@ export const frameEndEventPlayerDataFieldsArray = [
     playerDataFields.byFieldName.royalCharmState,
 
     playerDataFields.byFieldName.completionPercentage,
+
+    // grubs
+    playerDataFields.byFieldName.grubsCollected,
+    playerDataFields.byFieldName.grubRewards,
 ] as const;
 export const frameEndEventPlayerDataFields = new Set<PlayerDataField>(frameEndEventPlayerDataFieldsArray);
 
@@ -139,6 +147,8 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
     completionPercentageEarlyCalc: number;
     healthLost: number;
     trinketGeo: number;
+    geoTotal: number;
+    grubsNoRewardCollected: number;
 
     constructor(options: FrameEndEventOptions) {
         super(options);
@@ -155,7 +165,10 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
         }
 
         this.trinketGeo = this.trinket1 * 200 + this.trinket2 * 450 + this.trinket3 * 800 + this.trinket4 * 2000;
+        this.geoTotal = this.geo + this.trinketGeo + this.geoPool;
         this.healthLost = this.maxHealth - this.health;
         this.completionPercentageEarlyCalc = countGameCompletion(this);
+
+        this.grubsNoRewardCollected = this.grubsCollected - this.grubRewards;
     }
 }
