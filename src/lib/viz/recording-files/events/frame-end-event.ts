@@ -1,9 +1,11 @@
+import { heroStateFields, type HeroStateField } from '../../hero-state/hero-states';
 import {
     getDefaultValue as getDefaultPlayerDataValue,
     playerDataFields,
     type PlayerDataField,
 } from '../../player-data/player-data';
 import { countGameCompletion } from '../ingame-percentage';
+import { type HeroStateEvent } from '../recording';
 import { type PlayerDataEvent } from './player-data-event';
 import { type PlayerPositionEvent } from './player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
@@ -132,10 +134,19 @@ export const frameEndEventPlayerDataFields = new Set<PlayerDataField>(frameEndEv
 
 type FrameEndEventPlayerDataField = (typeof frameEndEventPlayerDataFieldsArray)[number];
 
-type FrameEndPlayerDataBase = {
+export const frameEndHeroStateFieldsArray = [heroStateFields.byFieldName.dead] as const;
+
+export const frameEndEventHeroStateFields = new Set<HeroStateField>(frameEndHeroStateFieldsArray);
+
+type FrameEndEventHeroStateField = (typeof frameEndHeroStateFieldsArray)[number];
+
+type FrameEndBase = {
+    [TField in FrameEndEventHeroStateField as TField['name']]: boolean;
+} & {
     [TField in FrameEndEventPlayerDataField as TField['name']]: PlayerDataEvent<TField>['value'];
 } & RecordingEventBase;
-const FrameEndPlayerDataBase = RecordingEventBase as new (options: RecordingEventBaseOptions) => FrameEndPlayerDataBase;
+
+const FrameEndPlayerDataBase = RecordingEventBase as new (options: RecordingEventBaseOptions) => FrameEndBase;
 
 /**
  * Synthetic event / not actually recorded
@@ -143,6 +154,7 @@ const FrameEndPlayerDataBase = RecordingEventBase as new (options: RecordingEven
  */
 type FrameEndEventOptions = RecordingEventBaseOptions & {
     getPreviousPlayerData: <TField extends PlayerDataField>(field: TField) => PlayerDataEvent<TField> | undefined;
+    getPreviousHeroState: (field: HeroStateField) => HeroStateEvent | undefined;
 } & Pick<FrameEndEvent, 'previousFrameEndEvent' | 'previousPlayerPositionEvent'>;
 export class FrameEndEvent extends FrameEndPlayerDataBase {
     previousFrameEndEvent: FrameEndEvent | null = null;
@@ -166,6 +178,11 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
                 (this as any)[field.name] = getDefaultPlayerDataValue(field);
             }
+        }
+
+        for (const field of frameEndEventHeroStateFields) {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+            (this as any)[field.name] = options.getPreviousHeroState(field)?.value ?? false;
         }
 
         this.trinketGeo = this.trinket1 * 200 + this.trinket2 * 450 + this.trinket3 * 800 + this.trinket4 * 2000;

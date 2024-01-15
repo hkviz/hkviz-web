@@ -184,23 +184,29 @@ function aggregateRecording(recording: CombinedRecording) {
                 addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'damageTaken', -diff);
             }
         } else if (event instanceof FrameEndEvent && event.previousFrameEndEvent) {
-            console.log('fe', { event });
             // todo handle death changes in currency
             const poolDiff = event.geoPool - event.previousFrameEndEvent.geoPool;
-            const geoDiff = event.geo - event.previousFrameEndEvent.geo;
-            const diff = poolDiff + geoDiff;
+            let geoDiff = event.geo - event.previousFrameEndEvent.geo;
+            const dead = event.dead;
 
-            console.log({ poolDiff, geoDiff, diff });
+            console.log(event);
+            if (poolDiff != 0) {
+                if (dead) {
+                    geoDiff += event.geoPool;
+                } else {
+                    geoDiff -= poolDiff;
+                }
+            }
 
-            // const lostMoney = poolDiff < 0 && geoDiff < poolDiff;
-            // if (lostMoney) {
-            //     diff -= poolDiff;
+            // if (event.geoPool && event.geoPool != event.previousFrameEndEvent.geoPool) {
+            //     // died again
+            //     diff += event.previousFrameEndEvent.geoPool;
             // }
 
-            if (diff < 0) {
-                addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'geoSpent', -diff);
-            } else if (diff > 0) {
-                addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'geoEarned', diff);
+            if (geoDiff < 0) {
+                addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'geoSpent', -geoDiff);
+            } else if (geoDiff > 0) {
+                addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'geoEarned', geoDiff);
             }
         }
     }

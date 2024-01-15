@@ -1,7 +1,8 @@
 import { raise } from '~/lib/utils/utils';
+import { type HeroStateField } from '../hero-state/hero-states';
 import { playerDataFields, type PlayerDataField } from '../player-data/player-data';
 import { isVersionBefore1_4_0, type RecordingFileVersion } from '../types/recording-file-version';
-import { FrameEndEvent, frameEndEventPlayerDataFields } from './events/frame-end-event';
+import { FrameEndEvent, frameEndEventHeroStateFields, frameEndEventPlayerDataFields } from './events/frame-end-event';
 import { PlayerDataEvent } from './events/player-data-event';
 import { PlayerPositionEvent } from './events/player-position-event';
 import { SceneEvent } from './events/scene-event';
@@ -28,6 +29,12 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     function getPreviousPlayerData<TField extends PlayerDataField>(field: TField) {
         return previousPlayerDataEventsByField.get(field) as PlayerDataEvent<TField> | undefined;
     }
+
+    const previousHeroStateByField = new Map<HeroStateField, HeroStateEvent>();
+    function getPreviousHeroState(field: HeroStateField) {
+        return previousHeroStateByField.get(field);
+    }
+
     let createEndFrameEvent = false;
 
     let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
@@ -51,6 +58,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                     msIntoGame,
                     previousFrameEndEvent,
                     previousPlayerPositionEvent,
+                    getPreviousHeroState,
                 });
                 previousFrameEndEvent = endFrameEvent;
                 events.push(endFrameEvent);
@@ -131,14 +139,20 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                         }
                     }
                 }
-            } else if (event instanceof HeroStateEvent && event.field.name === 'isPaused') {
-                isPaused = event.value;
-                if (!isPaused) {
+            } else if (event instanceof HeroStateEvent) {
+                if (event.field.name === 'isPaused') {
+                    isPaused = event.value;
+                    if (!isPaused) {
+                        lastTimestamp = event.timestamp;
+                    }
+                } else if (event.field.name === 'transitioning') {
+                    isTransitioning = event.value;
                     lastTimestamp = event.timestamp;
                 }
-            } else if (event instanceof HeroStateEvent && event.field.name === 'transitioning') {
-                isTransitioning = event.value;
-                lastTimestamp = event.timestamp;
+                previousHeroStateByField.set(event.field, event);
+                if (frameEndEventHeroStateFields.has(event.field)) {
+                    createEndFrameEvent = true;
+                }
             } else {
                 if (event instanceof PlayerPositionEvent) {
                     if (isTransitioning) {
@@ -228,6 +242,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 msIntoGame,
                 previousFrameEndEvent,
                 previousPlayerPositionEvent,
+                getPreviousHeroState,
             }),
         );
     }
