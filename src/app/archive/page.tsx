@@ -8,6 +8,9 @@ import { RunCard } from '../_components/run-card';
 
 export const metadata: Metadata = {
     title: 'Archived gameplays - HKViz',
+    alternates: {
+        canonical: '/archive',
+    },
 };
 
 export default async function Archive() {

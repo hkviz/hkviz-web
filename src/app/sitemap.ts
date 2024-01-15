@@ -1,10 +1,7 @@
 import { type MetadataRoute } from 'next';
+import { hkVizUrl } from '~/lib/url';
 import { findRuns } from '~/server/api/routers/run/runs-find';
 import { db } from '~/server/db';
-
-function url(path = ''): string {
-    return `https://www.hkviz.org${path}`;
-}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const publicRuns = await findRuns({
@@ -16,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
 
     const publicRunsMap: MetadataRoute.Sitemap = publicRuns.map((run) => ({
-        url: url(`/run/${run.id}`),
+        url: hkVizUrl(`/run/${run.id}`),
         lastModified: new Date(),
         changeFrequency: 'daily',
         // todo calc priority by popularity rating from started runs?
@@ -24,7 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     }));
 
     const publicPlayerMap: MetadataRoute.Sitemap = [...new Set(publicRuns.map((run) => run.user.id))].map((id) => ({
-        url: url(`/player/${id}`),
+        url: hkVizUrl(`/player/${id}`),
         lastModified: new Date(),
         changeFrequency: 'daily',
         priority: 0.4,
@@ -32,31 +29,31 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     return [
         {
-            url: url(),
+            url: hkVizUrl(),
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 1,
         },
         {
-            url: url('/run'),
+            url: hkVizUrl('/run'),
             lastModified: new Date(),
             changeFrequency: 'daily',
             priority: 0.9,
         },
         {
-            url: url('/getting-started'),
+            url: hkVizUrl('/getting-started'),
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.9,
         },
         {
-            url: url('/credits'),
+            url: hkVizUrl('/credits'),
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.2,
         },
         {
-            url: url('/privacy-policy'),
+            url: hkVizUrl('/privacy-policy'),
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.05,

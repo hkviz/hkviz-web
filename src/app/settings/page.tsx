@@ -12,6 +12,9 @@ import { UserNameSettingsOption } from './_username_option';
 
 export const metadata: Metadata = {
     title: 'Settings - HKViz',
+    alternates: {
+        canonical: '/settings',
+    },
 };
 
 export default async function SettingsPage() {

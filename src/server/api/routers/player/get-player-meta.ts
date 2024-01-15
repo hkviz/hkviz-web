@@ -21,5 +21,8 @@ export async function getPlayerMeta(id: string): Promise<Metadata> {
     }
     return {
         title: `${data.name} - HKViz`,
+        alternates: {
+            canonical: `/player/${id}`,
+        },
     };
 }

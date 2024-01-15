@@ -4,6 +4,9 @@ import Mdx from './_page.mdx';
 
 export const metadata: Metadata = {
     title: 'Credits - HKViz',
+    alternates: {
+        canonical: '/credits',
+    },
 };
 
 export default function Credits() {

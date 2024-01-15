@@ -13,12 +13,16 @@ import { MainNav } from './_components/main-nav';
 import { FaviconsHead } from './_favicons-head';
 
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
     title: 'HKViz for Hollow Knight',
     description: 'Visual Analytics for HollowKnight',
     icons: [{ rel: 'icon', url: '/favicon.ico' }],
+    metadataBase: new URL('https://www.hkviz.org'),
+    openGraph: {
+        images: '/og-image.png',
+    },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

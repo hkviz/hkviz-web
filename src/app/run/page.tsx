@@ -9,6 +9,9 @@ import { runFilterParamsSchema } from './_params';
 
 export const metadata: Metadata = {
     title: 'Public gameplays - HKViz',
+    alternates: {
+        canonical: '/run',
+    },
 };
 
 export default async function Runs({ searchParams }: { searchParams: RunFilter }) {

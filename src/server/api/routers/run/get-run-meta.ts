@@ -52,5 +52,8 @@ export async function getRunMeta(id: string): Promise<Metadata> {
     const userTitle = data?.user?.name ? ` by ${data.user.name}` : '';
     return {
         title: `${tagTitle}${typeTitle}${userTitle} - HKViz`,
+        alternates: {
+            canonical: `/run/${id}`,
+        },
     };
 }

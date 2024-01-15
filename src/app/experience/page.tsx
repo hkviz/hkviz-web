@@ -9,6 +9,9 @@ import { HkExperienceClientForm } from './_components';
 
 export const metadata: Metadata = {
     title: 'Your previous HollowKnight experience - HKViz',
+    alternates: {
+        canonical: '/experience',
+    },
 };
 
 export default async function DataCollectionStudyParticipationPage() {
