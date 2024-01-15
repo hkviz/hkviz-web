@@ -161,12 +161,25 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 }
                 case EVENT_PREFIXES.ROOM_DIMENSIONS: {
                     if (lastSceneEvent) {
+                        let originOffset: Vector2;
+                        let sceneSize: Vector2;
+
                         if (isVersion0xx(currentRecordingFileVersion)) {
-                            lastSceneEvent.originOffset = parseVector2_v0(args[0]!, args[1]!);
-                            lastSceneEvent.sceneSize = parseVector2_v0(args[2]!, args[3]!);
+                            originOffset = parseVector2_v0(args[0]!, args[1]!);
+                            sceneSize = parseVector2_v0(args[2]!, args[3]!);
                         } else {
-                            lastSceneEvent.originOffset = parseVector2_v1(args[0]!);
-                            lastSceneEvent.sceneSize = parseVector2_v1(args[1]!);
+                            originOffset = parseVector2_v1(args[0]!);
+                            sceneSize = parseVector2_v1(args[1]!);
+                        }
+
+                        // for some reason in Abyss_10 (the scene right to the light house),
+                        // the origin offset is always first set to correct values, and then shortly after to zero
+                        if (
+                            (!lastSceneEvent.originOffset && !lastSceneEvent.sceneSize) ||
+                            (!originOffset.isZero() && !sceneSize.isZero())
+                        ) {
+                            lastSceneEvent.originOffset = originOffset;
+                            lastSceneEvent.sceneSize = sceneSize;
                         }
                     }
                     break;

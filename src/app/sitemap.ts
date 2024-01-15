@@ -3,7 +3,7 @@ import { findRuns } from '~/server/api/routers/run/runs-find';
 import { db } from '~/server/db';
 
 function url(path = ''): string {
-    return `https://hkviz.olii.dev${path}`;
+    return `https://www.hkviz.org${path}`;
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

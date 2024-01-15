@@ -28,4 +28,8 @@ export class Vector2 {
     public distanceTo(other: Vector2): number {
         return Math.sqrt((this.x - other.x) ** 2 + (this.y - other.y) ** 2);
     }
+
+    public isZero(): boolean {
+        return this.x === 0 && this.y === 0;
+    }
 }

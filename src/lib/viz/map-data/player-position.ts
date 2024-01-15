@@ -11,8 +11,8 @@ export function playerPositionToMapPosition(playerPosition: Vector2, sceneEvent:
     const scaledPlayerX = playerPosition.x + sceneEvent.originOffset.x;
     const scaledPlayerY = playerPosition.y + sceneEvent.originOffset.y;
 
-    const x = playerPositionBounds.min.x + (playerPositionBounds.size.x * scaledPlayerX) / sceneEvent.sceneSize.x;
-    const y = playerPositionBounds.max.y - (playerPositionBounds.size.y * scaledPlayerY) / sceneEvent.sceneSize.y;
+    const x = playerPositionBounds.min.x + playerPositionBounds.size.x * (scaledPlayerX / sceneEvent.sceneSize.x);
+    const y = playerPositionBounds.max.y - playerPositionBounds.size.y * (scaledPlayerY / sceneEvent.sceneSize.y);
 
     return new Vector2(x, y);
 }
