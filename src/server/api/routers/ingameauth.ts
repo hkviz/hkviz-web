@@ -27,20 +27,26 @@ export async function getUserIdFromIngameSession(db_: typeof db, id: string) {
 }
 
 export const ingameAuthRouter = createTRPCRouter({
-    init: publicProcedure.input(z.object({})).mutation(async ({ ctx, input }) => {
-        const id = uuidv4();
-        const urlId = uuidv4();
-        await ctx.db.insert(ingameAuth).values({
-            id,
-            urlId,
-            name: '',
-        });
+    init: publicProcedure
+        .input(
+            z.object({
+                modVersion: z.string().optional().nullable(),
+            }),
+        )
+        .mutation(async ({ ctx, input }) => {
+            const id = uuidv4();
+            const urlId = uuidv4();
+            await ctx.db.insert(ingameAuth).values({
+                id,
+                urlId,
+                name: '',
+            });
 
-        return {
-            id,
-            urlId,
-        };
-    }),
+            return {
+                id,
+                urlId,
+            };
+        }),
 
     logout: publicProcedure.input(z.object({ id: z.string().uuid() })).mutation(async ({ ctx, input }) => {
         const result = await ctx.db.delete(ingameAuth).where(and(eq(ingameAuth.id, input.id)));

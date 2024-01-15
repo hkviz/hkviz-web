@@ -38,7 +38,7 @@ export class PlayerPositionEvent extends RecordingEventBase {
     public sceneEvent: SceneEvent;
     public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
 
-    public mapPosition: Vector2 | null;
+    public mapPosition: Vector2 | null = null;
     public previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
     public mapDistanceToPrevious: number | null = null;
 
@@ -46,7 +46,9 @@ export class PlayerPositionEvent extends RecordingEventBase {
         super(options);
         this.position = options.position;
         this.sceneEvent = options.sceneEvent;
+    }
 
+    calcMapPosition() {
         this.mapPosition = playerPositionToMapPosition(this.position, this.sceneEvent) ?? null;
     }
 }

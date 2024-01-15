@@ -97,7 +97,7 @@ export const heroStateFieldsGenerated = {
     transitioning: {
         name: 'transitioning',
         shortCode: 'G',
-        notPartOfLog: true,
+        notPartOfLog: false,
         onlyTruthLogged: false,
     },
     attacking: {

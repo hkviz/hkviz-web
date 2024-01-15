@@ -41,6 +41,9 @@ export const EVENT_PREFIXES = {
     ENEMY_START: 'e',
     ENEMY_HEALTH: 'E',
 
+    TAKE_DAMAGE_CALLED: 'd',
+    TAKE_HEALTH_CALLED: 'h',
+
     GAME_STATE: 'gs',
     ACTIVE_INPUT_DEVICE: 'aid',
 } as const;

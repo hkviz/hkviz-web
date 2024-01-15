@@ -313,6 +313,14 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     // TODO
                     break;
                 }
+                case EVENT_PREFIXES.TAKE_DAMAGE_CALLED: {
+                    // TODO
+                    break;
+                }
+                case EVENT_PREFIXES.TAKE_HEALTH_CALLED: {
+                    // TODO
+                    break;
+                }
                 default: {
                     typeCheckNever(eventTypePrefix);
                     console.log(`Unexpected event type |${eventType}| ignoring line |${line}|`);
@@ -327,6 +335,15 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
             parsingErrors++;
         }
         i++;
+    }
+
+    for (const event of events) {
+        if (event instanceof PlayerPositionEvent) {
+            // map position is calculated after a whole file is parsed
+            // since the scene bounds might be set after the first position
+            // within a scene
+            event.calcMapPosition();
+        }
     }
 
     return new ParsedRecording(events, unknownEvents, parsingErrors, partNumber);
