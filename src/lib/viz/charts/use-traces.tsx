@@ -67,7 +67,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 .data(chunkEvents)
                 .enter()
                 .append('line')
-                // .style('pointer-events', 'none')
+                .style('pointer-events', 'none')
                 .attr(
                     'x1',
                     (d) => d.previousPlayerPositionEventWithMapPosition!.mapPosition!.x,
