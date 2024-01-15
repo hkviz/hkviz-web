@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import { type Metadata } from 'next';
 import Link from 'next/link';
 import { findRuns } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
@@ -7,6 +8,12 @@ import { ContentCenterWrapper } from './_components/content-wrapper';
 import { GradientSeperator } from './_components/gradient-seperator';
 import { HKVizText } from './_components/hkviz-text';
 import { RunCard } from './_components/run-card';
+
+const metadata: Metadata = {
+    alternates: {
+        canonical: '/',
+    },
+};
 
 export default async function Home() {
     const session = await getServerAuthSession();
