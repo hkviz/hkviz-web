@@ -1,4 +1,4 @@
-import type { SceneEvent } from '../recording-files/recording';
+import { type SceneEvent } from '../recording-files/events/scene-event';
 import { Vector2 } from '../types/vector2';
 import { mainRoomDataBySceneName } from './rooms';
 

@@ -1,5 +1,5 @@
 import { type PlayerDataField, type PlayerDataFieldValue } from '../../player-data/player-data';
-import { type PlayerPositionEvent } from '../recording';
+import { type PlayerPositionEvent } from './player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 
 export type PlayerDataEventOptions<TField extends PlayerDataField> = RecordingEventBaseOptions &

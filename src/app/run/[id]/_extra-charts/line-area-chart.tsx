@@ -7,11 +7,9 @@ import useEvent from 'react-use-event-hook';
 import { formatTimeMs } from '~/lib/utils/time';
 import useIsVisibleRef from '~/lib/utils/use-is-visible';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
-import { type FrameEndEvent } from '~/lib/viz/recording-files/events/frame-end-event';
+import { type FrameEndEvent, type FrameEndEventNumberKey } from '~/lib/viz/recording-files/events/frame-end-event';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
 import { downScale } from './down-scale';
-
-export type FrameEndVariableKey = keyof FrameEndEvent;
 
 export interface LineChartVariableClassNames {
     checkbox: string;
@@ -19,7 +17,7 @@ export interface LineChartVariableClassNames {
 }
 
 export type LineChartVariableDescription = {
-    key: FrameEndVariableKey;
+    key: FrameEndEventNumberKey;
     name: string;
     description: string;
     UnitIcon: React.FunctionComponent<{ className?: string; useViewOptionsStore: UseViewOptionsStore }>;
@@ -89,7 +87,7 @@ export function LineAreaChart({
         return () => clearInterval(id);
     }, [isVisible, useViewOptionsStore]);
 
-    const [selectedVars, setSelectedVars] = useState<FrameEndVariableKey[]>(
+    const [selectedVars, setSelectedVars] = useState<FrameEndEventNumberKey[]>(
         variables
             .filter(isShownInGraph)
             .filter((it) => !it.defaultHidden)
@@ -97,8 +95,8 @@ export function LineAreaChart({
             .map((it) => it.key),
     );
 
-    function onVariableCheckedChange(key: FrameEndVariableKey, checked: boolean) {
-        setSelectedVars((prev: FrameEndVariableKey[]) => {
+    function onVariableCheckedChange(key: FrameEndEventNumberKey, checked: boolean) {
+        setSelectedVars((prev: FrameEndEventNumberKey[]) => {
             if (checked) {
                 return [...prev, key].sort((a, b) => variablesPerKey[a]!.order - variablesPerKey[b]!.order);
             } else {

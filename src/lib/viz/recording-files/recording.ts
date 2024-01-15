@@ -1,12 +1,12 @@
 import { raise } from '~/lib/utils/utils';
 import { type HeroStateField } from '../hero-state/hero-states';
-import { playerPositionToMapPosition } from '../map-data/player-position';
 import { type PlayerDataField } from '../player-data/player-data';
 import { type RecordingFileVersion } from '../types/recording-file-version';
-import type { Vector2 } from '../types/vector2';
 import { FrameEndEvent } from './events/frame-end-event';
 import { PlayerDataEvent } from './events/player-data-event';
+import { type PlayerPositionEvent } from './events/player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
+import { type SceneEvent } from './events/scene-event';
 
 type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
 export class RecordingFileVersionEvent extends RecordingEventBase {
@@ -15,41 +15,6 @@ export class RecordingFileVersionEvent extends RecordingEventBase {
     constructor(options: RecordingFileVersionEventOptions) {
         super(options);
         this.version = options.version;
-    }
-}
-
-type SceneEventOptions = RecordingEventBaseOptions & Pick<SceneEvent, 'sceneName' | 'originOffset' | 'sceneSize'>;
-export class SceneEvent extends RecordingEventBase {
-    public sceneName: string;
-    public originOffset: Vector2 | undefined;
-    public sceneSize: Vector2 | undefined;
-
-    constructor(options: SceneEventOptions) {
-        super(options);
-        this.sceneName = options.sceneName;
-        this.originOffset = options.originOffset;
-        this.sceneSize = options.sceneSize;
-    }
-}
-
-type PlayerPositionEventOptions = RecordingEventBaseOptions & Pick<PlayerPositionEvent, 'position' | 'sceneEvent'>;
-export class PlayerPositionEvent extends RecordingEventBase {
-    public position: Vector2;
-    public sceneEvent: SceneEvent;
-    public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
-
-    public mapPosition: Vector2 | null = null;
-    public previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
-    public mapDistanceToPrevious: number | null = null;
-
-    constructor(options: PlayerPositionEventOptions) {
-        super(options);
-        this.position = options.position;
-        this.sceneEvent = options.sceneEvent;
-    }
-
-    calcMapPosition() {
-        this.mapPosition = playerPositionToMapPosition(this.position, this.sceneEvent) ?? null;
     }
 }
 

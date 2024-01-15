@@ -11,12 +11,12 @@ import {
     type PartialEventPrefix,
 } from './event-type-prefixes';
 import { PlayerDataEvent } from './events/player-data-event';
+import { PlayerPositionEvent } from './events/player-position-event';
+import { SceneEvent } from './events/scene-event';
 import {
     HeroStateEvent,
     ParsedRecording,
-    PlayerPositionEvent,
     RecordingFileVersionEvent,
-    SceneEvent,
     SpellDownEvent,
     SpellFireballEvent,
     SpellUpEvent,

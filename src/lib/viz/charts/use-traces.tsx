@@ -2,7 +2,7 @@ import type * as d3 from 'd3';
 import { useEffect, useRef, type RefObject } from 'react';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { SCALE_FACTOR } from '../map-data/rooms';
-import { PlayerPositionEvent } from '../recording-files/recording';
+import { PlayerPositionEvent } from '../recording-files/events/player-position-event';
 
 function chunk<T>(arr: T[], chunkSize: number) {
     const chunks: T[][] = [];
@@ -67,7 +67,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 .data(chunkEvents)
                 .enter()
                 .append('line')
-                .style('pointer-events', 'none')
+                // .style('pointer-events', 'none')
                 .attr(
                     'x1',
                     (d) => d.previousPlayerPositionEventWithMapPosition!.mapPosition!.x,

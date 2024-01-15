@@ -3,12 +3,12 @@ import { playerDataFields, type PlayerDataField } from '../player-data/player-da
 import { isVersionBefore1_4_0, type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent, frameEndEventPlayerDataFields } from './events/frame-end-event';
 import { PlayerDataEvent } from './events/player-data-event';
+import { PlayerPositionEvent } from './events/player-position-event';
+import { SceneEvent } from './events/scene-event';
 import {
     CombinedRecording,
     HeroStateEvent,
-    PlayerPositionEvent,
     RecordingFileVersionEvent,
-    SceneEvent,
     isPlayerDataEventOfField,
     isPlayerDataEventWithFieldType,
     type ParsedRecording,
@@ -33,7 +33,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
     let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
     let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
-    let previousEndFrameEvent: FrameEndEvent | null = null;
+    let previousFrameEndEvent: FrameEndEvent | null = null;
 
     let recordingFileVersion: RecordingFileVersion = '0.0.0';
 
@@ -45,12 +45,14 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
             // TODO might be good to exclude some fields here since they are updated very often and not needed
             // for the visualizations
             if (createEndFrameEvent && event.timestamp > lastTimestamp) {
-                const endFrameEvent = new FrameEndEvent({
+                const endFrameEvent: FrameEndEvent = new FrameEndEvent({
                     timestamp: lastTimestamp,
                     getPreviousPlayerData,
                     msIntoGame,
+                    previousFrameEndEvent,
+                    previousPlayerPositionEvent,
                 });
-                previousEndFrameEvent = endFrameEvent;
+                previousFrameEndEvent = endFrameEvent;
                 events.push(endFrameEvent);
                 createEndFrameEvent = false;
             }
@@ -218,8 +220,16 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     addScenesWhichWhereNotAdded(true);
     // there might not have been a end frame event for a bit at the end, so we duplicate the last one
     // so graphs can depend on there being one at the end of the msIntoGame
-    if (previousEndFrameEvent) {
-        events.push(new FrameEndEvent({ timestamp: lastTimestamp, getPreviousPlayerData, msIntoGame }));
+    if (previousFrameEndEvent) {
+        events.push(
+            new FrameEndEvent({
+                timestamp: lastTimestamp,
+                getPreviousPlayerData,
+                msIntoGame,
+                previousFrameEndEvent,
+                previousPlayerPositionEvent,
+            }),
+        );
     }
 
     function addScenesWhichWhereNotAdded(all = false) {

@@ -5,6 +5,7 @@ import {
 } from '../../player-data/player-data';
 import { countGameCompletion } from '../ingame-percentage';
 import { type PlayerDataEvent } from './player-data-event';
+import { type PlayerPositionEvent } from './player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 
 export const frameEndEventPlayerDataFieldsArray = [
@@ -142,8 +143,11 @@ const FrameEndPlayerDataBase = RecordingEventBase as new (options: RecordingEven
  */
 type FrameEndEventOptions = RecordingEventBaseOptions & {
     getPreviousPlayerData: <TField extends PlayerDataField>(field: TField) => PlayerDataEvent<TField> | undefined;
-};
+} & Pick<FrameEndEvent, 'previousFrameEndEvent' | 'previousPlayerPositionEvent'>;
 export class FrameEndEvent extends FrameEndPlayerDataBase {
+    previousFrameEndEvent: FrameEndEvent | null = null;
+    previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+
     completionPercentageEarlyCalc: number;
     healthLost: number;
     trinketGeo: number;
@@ -170,5 +174,13 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
         this.completionPercentageEarlyCalc = countGameCompletion(this);
 
         this.grubsNoRewardCollected = this.grubsCollected - this.grubRewards;
+
+        this.previousFrameEndEvent = options.previousFrameEndEvent;
+        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
     }
 }
+
+export type FrameEndEventNumberKeys = {
+    [TField in keyof FrameEndEvent as FrameEndEvent[TField] extends number ? TField : never]: number;
+};
+export type FrameEndEventNumberKey = keyof FrameEndEventNumberKeys;

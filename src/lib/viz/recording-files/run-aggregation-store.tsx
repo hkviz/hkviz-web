@@ -1,16 +1,6 @@
+import { Clock12, Clock2, Hash, type LucideIcon } from 'lucide-react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import {
-    HeroStateEvent,
-    SceneEvent,
-    SpellDownEvent,
-    SpellFireballEvent,
-    SpellUpEvent,
-    isPlayerDataEventOfField,
-    type ParsedRecording,
-} from './recording';
-
-import { Clock12, Clock2, Hash, type LucideIcon } from 'lucide-react';
 import { formatTimeMs } from '~/lib/utils/time';
 import coinImg from '../../../../public/ingame-sprites/HUD_coin_shop.png';
 import spellUpImg from '../../../../public/ingame-sprites/Inv_0024_spell_scream_01.png';
@@ -20,6 +10,16 @@ import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png'
 import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
 import healthImg from '../../../../public/ingame-sprites/select_game_HUD_0001_health.png';
 import { playerDataFields } from '../player-data/player-data';
+import { FrameEndEvent } from './events/frame-end-event';
+import { SceneEvent } from './events/scene-event';
+import {
+    HeroStateEvent,
+    SpellDownEvent,
+    SpellFireballEvent,
+    SpellUpEvent,
+    isPlayerDataEventOfField,
+    type CombinedRecording,
+} from './recording';
 
 type RunId = string;
 export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
@@ -129,7 +129,7 @@ export type AggregationVariable = keyof ValueAggregation;
 
 type AggregationStoreValue = Record<RunId, AggregatedRunData>;
 
-function aggregateRecording(recording: ParsedRecording) {
+function aggregateRecording(recording: CombinedRecording) {
     const countPerScene: Record<string, ValueAggregation> = {};
     const maxOverScenes: ValueAggregation = createEmptyAggregation();
 
@@ -183,12 +183,20 @@ function aggregateRecording(recording: ParsedRecording) {
             if (diff < 0) {
                 addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'damageTaken', -diff);
             }
-        } else if (
-            isPlayerDataEventOfField(event, playerDataFields.byFieldName.geo) &&
-            event.previousPlayerDataEventOfField
-        ) {
+        } else if (event instanceof FrameEndEvent && event.previousFrameEndEvent) {
+            console.log('fe', { event });
             // todo handle death changes in currency
-            const diff = event.value - event.previousPlayerDataEventOfField.value;
+            const poolDiff = event.geoPool - event.previousFrameEndEvent.geoPool;
+            const geoDiff = event.geo - event.previousFrameEndEvent.geo;
+            const diff = poolDiff + geoDiff;
+
+            console.log({ poolDiff, geoDiff, diff });
+
+            // const lostMoney = poolDiff < 0 && geoDiff < poolDiff;
+            // if (lostMoney) {
+            //     diff -= poolDiff;
+            // }
+
             if (diff < 0) {
                 addToScene(event.previousPlayerPositionEvent?.sceneEvent, 'geoSpent', -diff);
             } else if (diff > 0) {
@@ -206,7 +214,7 @@ function aggregateRecording(recording: ParsedRecording) {
 
 export const useRunAggregationStore = create(
     combine({ aggregations: {} as AggregationStoreValue }, (set, get) => {
-        function updateFromCombinedRecording(recording: ParsedRecording, runId: RunId) {
+        function updateFromCombinedRecording(recording: CombinedRecording, runId: RunId) {
             set((state) => ({
                 aggregations: {
                     ...state.aggregations,
