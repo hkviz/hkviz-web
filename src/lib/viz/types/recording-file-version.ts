@@ -43,3 +43,7 @@ export type RecordingFileVersion1xx = '1.0.0' | '1.1.0' | '1.4.0';
 export function isVersion1xx(version: RecordingFileVersion): version is RecordingFileVersion1xx {
     return version === '1.0.0' || version === '1.1.0' || version === '1.4.0';
 }
+
+export function isVersionBefore1_4_0(version: RecordingFileVersion): version is RecordingFileVersion0xx | '1.0.0' | '1.1.0' {
+    return isVersion0xx(version) || version === '1.0.0' || version === '1.1.0';
+}

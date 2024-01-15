@@ -1,5 +1,6 @@
 import { raise } from '~/lib/utils/utils';
 import { playerDataFields, type PlayerDataField } from '../player-data/player-data';
+import { isVersionBefore1_4_0, type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent, frameEndEventPlayerDataFields } from './events/frame-end-event';
 import { PlayerDataEvent } from './events/player-data-event';
 import {
@@ -14,7 +15,6 @@ import {
     type RecordingEvent,
 } from './recording';
 
-
 export function combineRecordings(recordings: ParsedRecording[]): CombinedRecording {
     const events: RecordingEvent[] = [];
     let msIntoGame = 0;
@@ -22,6 +22,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
         recordings[0]?.events?.[0]?.timestamp ?? raise(new Error('No events found in first recording'));
 
     let isPaused = true;
+    let isTransitioning = false;
 
     const previousPlayerDataEventsByField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>();
     function getPreviousPlayerData<TField extends PlayerDataField>(field: TField) {
@@ -33,6 +34,8 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
     let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
     let previousEndFrameEvent: FrameEndEvent | null = null;
+
+    let recordingFileVersion: RecordingFileVersion = '0.0.0';
 
     const visitedScenesToCheckIfInPlayerData = [] as { sceneName: string; msIntoGame: number }[];
 
@@ -60,6 +63,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 // console.log('time between sessions not counted', event.timestamp - lastTimestamp);
                 lastTimestamp = event.timestamp;
                 isPaused = false;
+                recordingFileVersion = event.version;
             } else if (event instanceof SceneEvent) {
                 const visitedScenes = getPreviousPlayerData(playerDataFields.byFieldName.scenesVisited)?.value ?? [];
 
@@ -68,13 +72,76 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 if (!visitedScenes.includes(event.sceneName)) {
                     visitedScenesToCheckIfInPlayerData.push({ sceneName: event.sceneName, msIntoGame });
                 }
+
+                // in version < 1.4.0 the mod did not record the transitioning bool
+                // therefore, here we try to detect player events which where transitioned to a new scene
+                // and remove them:
+                console.log('pos');
+                if (isVersionBefore1_4_0(recordingFileVersion) && previousPlayerPositionEvent) {
+                    const lastPlayerPositionEvent: PlayerPositionEvent = previousPlayerPositionEvent;
+                    const sceneEvent = lastPlayerPositionEvent.sceneEvent;
+                    const sceneOriginOffset = sceneEvent.originOffset;
+                    const sceneSize = sceneEvent.sceneSize;
+
+                    let currentPlayerPositionEvent: PlayerPositionEvent | null = lastPlayerPositionEvent;
+                    while (
+                        sceneOriginOffset &&
+                        sceneSize &&
+                        currentPlayerPositionEvent &&
+                        // max 6 seconds of removed events allowed
+                        Math.abs(lastPlayerPositionEvent.timestamp - currentPlayerPositionEvent.timestamp) < 20_000 &&
+                        currentPlayerPositionEvent.previousPlayerPositionEvent &&
+                        currentPlayerPositionEvent.sceneEvent ===
+                            currentPlayerPositionEvent.previousPlayerPositionEvent.sceneEvent &&
+                        // when transitioning upwards, y does not change
+                        (currentPlayerPositionEvent.position.x < sceneOriginOffset.x - 2 ||
+                            currentPlayerPositionEvent.position.x > sceneOriginOffset.x + sceneSize.x + 2 ||
+                            currentPlayerPositionEvent.position.y < sceneOriginOffset.y - 2 ||
+                            currentPlayerPositionEvent.position.y > sceneOriginOffset.y + sceneSize.y + 2)
+                    ) {
+                        console.log('transition player position event');
+                        events.splice(events.indexOf(currentPlayerPositionEvent), 1);
+                        currentPlayerPositionEvent = currentPlayerPositionEvent.previousPlayerPositionEvent;
+                    }
+                    // found first event with this x position (hopefully last position before transition)
+                    // now all other events which have a player position reference should instead
+                    // reference the new last one
+                    previousPlayerPositionEvent = currentPlayerPositionEvent;
+                    previousPlayerPositionEventWithMapPosition = currentPlayerPositionEvent?.mapPosition
+                        ? currentPlayerPositionEvent
+                        : currentPlayerPositionEvent?.previousPlayerPositionEventWithMapPosition ?? null;
+
+                    console.log({ previousPlayerPositionEvent, previousPlayerPositionEventWithMapPosition });
+                    if (currentPlayerPositionEvent) {
+                        const startIndex = events.indexOf(currentPlayerPositionEvent) + 1;
+                        for (let i = startIndex; i < events.length; i++) {
+                            const event = events[i];
+                            if (event && 'previousPlayerPositionEvent' in event) {
+                                event.previousPlayerPositionEvent = currentPlayerPositionEvent;
+                            }
+                            if (event && 'previousPlayerPositionEventWithMapPosition' in event) {
+                                event.previousPlayerPositionEventWithMapPosition =
+                                    previousPlayerPositionEventWithMapPosition;
+                            }
+                            if (event && 'mapDistanceToPrevious' in event) {
+                                // event.mapDistanceToPrevious = null;
+                            }
+                        }
+                    }
+                }
             } else if (event instanceof HeroStateEvent && event.field.name === 'isPaused') {
                 isPaused = event.value;
                 if (!isPaused) {
                     lastTimestamp = event.timestamp;
                 }
+            } else if (event instanceof HeroStateEvent && event.field.name === 'transitioning') {
+                isTransitioning = event.value;
+                lastTimestamp = event.timestamp;
             } else {
                 if (event instanceof PlayerPositionEvent) {
+                    if (isTransitioning) {
+                        continue;
+                    }
                     const playerPositionChanged =
                         previousPositionEventWithChangedPosition?.position?.equals(event.position) !== true;
                     if (playerPositionChanged) {

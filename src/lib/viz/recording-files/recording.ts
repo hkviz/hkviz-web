@@ -70,7 +70,7 @@ export function isPlayerDataEventWithFieldType<FieldType extends PlayerDataField
 type HeroStateEventOptions = RecordingEventBaseOptions &
     Pick<HeroStateEvent, 'field' | 'value' | 'previousPlayerPositionEvent'>;
 export class HeroStateEvent extends RecordingEventBase {
-    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+    public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
     public readonly field: HeroStateField;
     public readonly value: boolean;
 
@@ -84,7 +84,7 @@ export class HeroStateEvent extends RecordingEventBase {
 
 type SpellFireballEventOptions = RecordingEventBaseOptions & Pick<SpellFireballEvent, 'previousPlayerPositionEvent'>;
 export class SpellFireballEvent extends RecordingEventBase {
-    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+    public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
 
     constructor(options: SpellFireballEventOptions) {
         super(options);
@@ -94,7 +94,7 @@ export class SpellFireballEvent extends RecordingEventBase {
 
 type SpellUpEventOptions = RecordingEventBaseOptions & Pick<SpellUpEvent, 'previousPlayerPositionEvent'>;
 export class SpellUpEvent extends RecordingEventBase {
-    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+    public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
 
     constructor(options: SpellUpEventOptions) {
         super(options);
@@ -104,7 +104,7 @@ export class SpellUpEvent extends RecordingEventBase {
 
 type SpellDownEventOptions = RecordingEventBaseOptions & Pick<SpellDownEvent, 'previousPlayerPositionEvent'>;
 export class SpellDownEvent extends RecordingEventBase {
-    public readonly previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+    public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
 
     constructor(options: SpellDownEventOptions) {
         super(options);
