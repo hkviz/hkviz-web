@@ -1,6 +1,6 @@
 import '~/styles/globals.css';
 
-import { cookies } from 'next/headers';
+import { cookies, headers } from 'next/headers';
 
 import { Toaster } from '@/components/ui/toaster';
 import { type Metadata } from 'next';
@@ -14,6 +14,7 @@ import { FaviconsHead } from './_favicons-head';
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { permanentRedirect } from 'next/navigation';
 
 export const metadata: Metadata = {
     title: 'HKViz for Hollow Knight',
@@ -25,11 +26,26 @@ export const metadata: Metadata = {
     },
 };
 
+const oldUrls = [
+    // production
+    'https://hkviz.olii.dev',
+    // for local testing uncomment
+    // 'http://localhost:3000'
+];
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     const session = await getServerAuthSession();
 
     const isDarkTheme = cookies().get('theme')?.value !== 'light';
     const theme = isDarkTheme ? 'dark' : 'light';
+
+    // only redirects users which are not logged in for now, since otherwise the session is lost
+    const url = headers().get('x-url') ?? '';
+    for (const oldUrl of oldUrls) {
+        if (url.includes(oldUrl) && !session && !url.includes('o=o')) {
+            permanentRedirect(url.replace(oldUrl, 'https://www.hkviz.org'));
+        }
+    }
 
     return (
         <html lang="en">
