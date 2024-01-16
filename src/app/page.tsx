@@ -38,17 +38,15 @@ export default async function Home() {
                     <h1
                         className={`title-text-glow  -mb-6 font-serif text-[5rem] font-bold tracking-tight sm:text-[6rem]`}
                     >
-                        HK<span className="font-serifDecorative">V</span>iz
+                        <HKVizText />
                     </h1>
                     <h2 className="title-text-glow font-serif text-2xl sm:text-3xl">
                         Visual Analytics for HollowKnight
                     </h2>
-
                     <p className="pt-4">
                         With <HKVizText /> you can record gameplay analytics of your HollowKnight gameplays, and share
                         them with your others.
                     </p>
-
                     {userRuns.length == 0 && (
                         <div className="flex flex-row items-center justify-center pt-8 transition sm:gap-12">
                             <Button
