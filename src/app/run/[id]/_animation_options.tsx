@@ -10,7 +10,6 @@ import { cn } from '@/lib/utils';
 import { Pause, Play } from 'lucide-react';
 import { useEffect } from 'react';
 import { zeroPad } from '~/lib/utils/utils';
-import { type ParsedRecording } from '~/lib/viz/recording-files/recording';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 function Times({ className }: { className?: string }) {
@@ -47,10 +46,11 @@ const intervalMs = 1000 / 30;
 function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const isPlaying = useViewOptionsStore((s) => s.isPlaying);
     const togglePlaying = useViewOptionsStore((s) => s.toggleIsPlaying);
+    const isDisabled = useViewOptionsStore((s) => !s.recording);
     return (
         <Tooltip>
             <TooltipTrigger asChild>
-                <Button onClick={togglePlaying} variant="ghost">
+                <Button onClick={togglePlaying} variant="ghost" disabled={isDisabled}>
                     {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
                 </Button>
             </TooltipTrigger>
@@ -65,6 +65,7 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
+    const isDisabled = useViewOptionsStore((s) => !s.recording);
     return (
         <>
             <Duration ms={animationMsIntoGame} className="pr-3" />
@@ -74,6 +75,7 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
                 max={timeFrame.max}
                 step={100}
                 className="-my-4 grow py-4"
+                disabled={isDisabled}
                 onValueChange={(values) => {
                     setAnimationMsIntoGame(values[0]!);
                 }}
@@ -82,16 +84,12 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
     );
 }
 
-export function AnimationOptions({
-    useViewOptionsStore,
-}: {
-    useViewOptionsStore: UseViewOptionsStore;
-    recording: ParsedRecording;
-}) {
+export function AnimationOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const isPlaying = useViewOptionsStore((s) => s.isPlaying);
     const incrementAnimationMsIntoGame = useViewOptionsStore((s) => s.incrementAnimationMsIntoGame);
     const animationSpeedMultiplier = useViewOptionsStore((s) => s.animationSpeedMultiplier);
     const setAnimationSpeedMultiplier = useViewOptionsStore((s) => s.setAnimationSpeedMultiplier);
+    const isDisabled = useViewOptionsStore((s) => !s.recording);
 
     useEffect(() => {
         if (!isPlaying) return;
@@ -111,7 +109,7 @@ export function AnimationOptions({
             <div className="relative">
                 <Popover>
                     <PopoverTrigger asChild>
-                        <Button variant="ghost">
+                        <Button variant="ghost" disabled={isDisabled}>
                             <Times />
                             {Number.isNaN(animationSpeedMultiplier) ? 0 : animationSpeedMultiplier}
                         </Button>

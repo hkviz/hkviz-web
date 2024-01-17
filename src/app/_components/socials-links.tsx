@@ -29,8 +29,8 @@ export function DiscordDialogButton() {
                         </span>
                     </DialogTitle>
                     <DialogDescription>
-                        To open the <HKVizText /> channel you need to join the Hollow Knight Modding Discord Server
-                        first.
+                        The <HKVizText /> discord channel is part of the larger Hollow Knight Modding Discord Server.
+                        You need to join it first, to be able to access the <HKVizText /> channel.
                     </DialogDescription>
                     <DialogDescription>
                         The channel is located under <Badge variant="outline">Utility Mods</Badge>{' '}

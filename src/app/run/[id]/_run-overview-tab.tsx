@@ -3,8 +3,11 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/u
 import { cn } from '@/lib/utils';
 import { AreaChart, Play } from 'lucide-react';
 import { type Session } from 'next-auth';
+import { useMemo } from 'react';
 import { RelativeDate } from '~/app/_components/date';
+import { Expander } from '~/app/_components/expander';
 import { RunCard } from '~/app/_components/run-card';
+import { playerDataFields } from '~/lib/viz/player-data/player-data';
 import { type AppRouterOutput } from '~/server/api/types';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
@@ -53,6 +56,22 @@ export function RunOverviewTab({
         setExtraChartsFollowAnimation(false);
     }
 
+    const fiteredModVersions = useMemo(() => {
+        return recording?.allModVersions?.filter((mod) => mod.name === 'HKViz');
+    }, [recording?.allModVersions]);
+
+    const hollowKnightVersions = useMemo(() => {
+        return [
+            ...new Set(
+                recording
+                    ?.allPlayerDataEventsOfField(playerDataFields.byFieldName.version)
+                    ?.map((event) => event.value),
+            ),
+        ];
+    }, [recording]);
+
+    const isDisabled = !recording;
+
     return (
         <div
             className={cn(
@@ -72,39 +91,53 @@ export function RunOverviewTab({
                     <RunCard run={runData} isOwnRun={isOwnRun} />
                 </div>
                 <div className="grid max-w-[500px] grid-cols-2 gap-2">
-                    <Button onClick={viewAnimatedAnalytics}>
+                    <Button onClick={viewAnimatedAnalytics} disabled={isDisabled}>
                         <Play size={20} />
                         View animated analytics
                     </Button>
-                    <Button onClick={viewStaticAnalytics}>
+                    <Button onClick={viewStaticAnalytics} disabled={isDisabled}>
                         <AreaChart size={20} />
                         View static analytics
                     </Button>
                 </div>
                 <div>
-                    <Table>
-                        <TableBody>
-                            <TableRow>
-                                <TableHead>Gameplay started</TableHead>
-                                <TableCell>{runData.startedAt && <RelativeDate date={runData.startedAt} />}</TableCell>
-                            </TableRow>
-                        </TableBody>
-                    </Table>
-                </div>
-                {/* {recording && (
-                    <div>
+                    <Expander expanded={!!recording}>
                         <Table>
                             <TableBody>
-                                {recording.allModVersions.map((mod) => (
+                                <TableRow>
+                                    <TableHead>Gameplay started</TableHead>
+                                    <TableCell>
+                                        {runData.startedAt && <RelativeDate date={runData.startedAt} />}
+                                    </TableCell>
+                                </TableRow>
+                                {hollowKnightVersions && (
+                                    <TableRow>
+                                        <TableHead>Hollow Knight version</TableHead>
+                                        <TableCell>
+                                            {hollowKnightVersions.map((it) => (
+                                                <span className="block" key={it}>
+                                                    {it}
+                                                </span>
+                                            ))}
+                                        </TableCell>
+                                    </TableRow>
+                                )}
+                                {fiteredModVersions?.map((mod) => (
                                     <TableRow key={mod.name}>
-                                        <TableHead>{mod.name}</TableHead>
-                                        <TableCell>{mod.versions.join(', ')}</TableCell>
+                                        <TableHead>{mod.name} version</TableHead>
+                                        <TableCell>
+                                            {mod.versions.map((it) => (
+                                                <span className="block" key={it}>
+                                                    {it}
+                                                </span>
+                                            ))}
+                                        </TableCell>
                                     </TableRow>
                                 ))}
                             </TableBody>
                         </Table>
-                    </div>
-                )} */}
+                    </Expander>
+                </div>
             </div>
         </div>
     );

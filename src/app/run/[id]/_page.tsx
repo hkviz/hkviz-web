@@ -88,24 +88,22 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         className="col-start-1 col-end-1 row-start-1 row-end-1 min-h-[50vh]"
                         useViewOptionsStore={useViewOptionsStore}
                     />
-                    <div
-                        className={cn(
-                            'col-start-1 col-end-1 row-start-1 row-end-1 flex items-center justify-center bg-opacity-40 p-4',
-                            runFiles.finishedLoading ? 'invisible scale-125 opacity-0 transition' : '',
-                        )}
-                    >
-                        <Progress value={(runFiles?.loadingProgress ?? 0) * 99 + 1} className="max-w-[400px]" />
-                    </div>
                     <RunOverviewTab
                         className="col-start-1 col-end-1 row-start-1 row-end-1"
                         useViewOptionsStore={useViewOptionsStore}
                         runData={runData}
                         session={session}
                     />
+                    <div
+                        className={cn(
+                            'absolute left-0 right-0 top-10 flex h-12 w-full items-center justify-center',
+                            runFiles.finishedLoading ? 'invisible scale-125 opacity-0 transition' : '',
+                        )}
+                    >
+                        <Progress value={(runFiles?.loadingProgress ?? 0) * 99 + 1} className="max-w-[400px]" />
+                    </div>
                 </Card>
-                {isAnythingAnimating && combinedRecording && (
-                    <AnimationOptions useViewOptionsStore={useViewOptionsStore} recording={combinedRecording} />
-                )}
+                {isAnythingAnimating && <AnimationOptions useViewOptionsStore={useViewOptionsStore} />}
             </div>
             <RunExtraCharts className="w-full lg:w-[400px]" useViewOptionsStore={useViewOptionsStore} />
         </div>

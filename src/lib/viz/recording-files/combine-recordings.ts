@@ -49,23 +49,45 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 
     const allModVersions = new Map<string, Set<string>>();
 
+    const hasCreatedFirstEndFrameEvent = false;
+
     for (const recording of recordings.sort((a, b) => a.partNumber! - b.partNumber!)) {
         for (const event of recording.events) {
             // create together player data event if needed
             // TODO might be good to exclude some fields here since they are updated very often and not needed
             // for the visualizations
-            if (createEndFrameEvent && event.timestamp > lastTimestamp) {
-                const endFrameEvent: FrameEndEvent = new FrameEndEvent({
-                    timestamp: lastTimestamp,
-                    getPreviousPlayerData,
-                    msIntoGame,
-                    previousFrameEndEvent,
-                    previousPlayerPositionEvent,
-                    getPreviousHeroState,
-                });
-                previousFrameEndEvent = endFrameEvent;
-                events.push(endFrameEvent);
-                createEndFrameEvent = false;
+            if (event.timestamp > lastTimestamp) {
+                if (!hasCreatedFirstEndFrameEvent && recording.partNumber === 1) {
+                    Object.values(playerDataFields.byFieldName).forEach((field) => {
+                        if (!previousPlayerDataEventsByField.has(field)) {
+                            // if part number = 1 all non default player data fields should have been added
+                            // so we can add default values for the rest
+                            const event = new PlayerDataEvent<PlayerDataField>({
+                                field,
+                                timestamp: 0,
+                                value: field.defaultValue,
+                            } as any);
+                            events.push(event);
+                            previousPlayerDataEventsByField.set(field, event);
+                            if (frameEndEventPlayerDataFields.has(field)) {
+                                createEndFrameEvent = true;
+                            }
+                        }
+                    });
+                }
+                if (createEndFrameEvent) {
+                    const endFrameEvent: FrameEndEvent = new FrameEndEvent({
+                        timestamp: lastTimestamp,
+                        getPreviousPlayerData,
+                        msIntoGame,
+                        previousFrameEndEvent,
+                        previousPlayerPositionEvent,
+                        getPreviousHeroState,
+                    });
+                    previousFrameEndEvent = endFrameEvent;
+                    events.push(endFrameEvent);
+                    createEndFrameEvent = false;
+                }
             }
 
             // msIntoGame calculation
