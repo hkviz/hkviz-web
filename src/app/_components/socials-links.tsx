@@ -71,7 +71,7 @@ export function GithubButton() {
 export function MailButton() {
     return (
         <Button asChild variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-            <a href="mailto:mailto:hkviz@olii.dev">
+            <a href="mailto:hkviz@olii.dev">
                 <Mail />
             </a>
         </Button>

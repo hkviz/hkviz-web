@@ -23,6 +23,7 @@ export const metadata: Metadata = {
     metadataBase: new URL('https://www.hkviz.org'),
     openGraph: {
         images: '/og-image.png',
+        siteName: 'HKViz',
     },
 };
 

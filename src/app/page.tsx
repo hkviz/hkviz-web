@@ -45,7 +45,7 @@ export default async function Home() {
                     </h2>
                     <p className="pt-4">
                         With <HKVizText /> you can record gameplay analytics of your HollowKnight gameplays, and share
-                        them with your others.
+                        them with others.
                     </p>
                     {userRuns.length == 0 && (
                         <div className="flex flex-row items-center justify-center pt-8 transition sm:gap-12">
