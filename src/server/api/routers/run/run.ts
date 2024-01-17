@@ -8,11 +8,11 @@ import { tagSchema, type TagCode } from '~/lib/types/tags';
 import { raise } from '~/lib/utils/utils';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
-import { runFiles, runs } from '~/server/db/schema';
+import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
 import { getUserIdFromIngameSession } from '../ingameauth';
 import { assertIsResearcher } from '../lib/researcher';
 import { getOrCreateRunId } from './get-or-create-run-id';
-import { runTagFieldsSelect } from './run-column-selects';
+import { runGameStateMetaColumnsSelect, runTagFieldsSelect } from './run-column-selects';
 import { deleteRunProcedure, setRunArchivedProcedure } from './run-deletion';
 
 export const runRouter = createTRPCRouter({
@@ -224,13 +224,20 @@ export const runRouter = createTRPCRouter({
             const runId = await getOrCreateRunId(ctx.db, input.localRunId, userId);
 
             // first get to make sure file belongs to user and is not already marked as finished
-            (await ctx.db.query.runFiles.findFirst({
-                where: (runFiles, { and, eq }) =>
-                    and(eq(runFiles.id, input.fileId), eq(runFiles.runId, runId), eq(runFiles.uploadFinished, false)),
-                columns: {
-                    id: true,
-                },
-            })) ?? raise(new Error('File not found or already marked as finished'));
+            const file =
+                (await ctx.db.query.runFiles.findFirst({
+                    where: (runFiles, { and, eq }) =>
+                        and(
+                            eq(runFiles.id, input.fileId),
+                            eq(runFiles.runId, runId),
+                            eq(runFiles.uploadFinished, false),
+                        ),
+                    columns: {
+                        id: true,
+                        partNumber: true,
+                        ...runGameStateMetaColumnsSelect,
+                    },
+                })) ?? raise(new Error('File not found or already marked as finished'));
 
             const head = await r2FileHead(r2RunPartFileKey(input.fileId));
             if (!head) {
@@ -244,6 +251,46 @@ export const runRouter = createTRPCRouter({
 
             if (result.rowsAffected !== 1) {
                 throw new Error('File not found');
+            }
+
+            try {
+                const run =
+                    (await ctx.db.query.runs.findFirst({
+                        where: (run, { eq }) => eq(run.id, runId),
+                        columns: {
+                            id: true,
+                            startedAt: true,
+                            lastCompletedRunFilePartNumber: true,
+                        },
+                    })) ?? raise(new Error('Run not found'));
+
+                if ((run.lastCompletedRunFilePartNumber ?? -1) < file.partNumber) {
+                    await ctx.db
+                        .update(runs)
+                        .set({
+                            hkVersion: file.hkVersion,
+                            playTime: file.playTime,
+                            maxHealth: file.maxHealth,
+                            mpReserveMax: file.mpReserveMax,
+                            geo: file.geo,
+                            dreamOrbs: file.dreamOrbs,
+                            permadeathMode: file.permadeathMode,
+                            mapZone: file.mapZone,
+                            killedHollowKnight: file.killedHollowKnight,
+                            killedFinalBoss: file.killedFinalBoss,
+                            killedVoidIdol: file.killedVoidIdol,
+                            completionPercentage: file.completionPercentage,
+                            unlockedCompletionRate: file.unlockedCompletionRate,
+                            dreamNailUpgraded: file.dreamNailUpgraded,
+                            lastScene: file.lastScene,
+
+                            startedAt: run.startedAt ?? file.startedAt,
+                            endedAt: file.endedAt,
+                        } satisfies { [Col in RunGameStateMetaColumnName]: unknown })
+                        .where(eq(runs.id, runId));
+                }
+            } catch (ex) {
+                console.error('Could not update run meta from file', ex);
             }
         }),
     // TODO: remove

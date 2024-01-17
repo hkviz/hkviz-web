@@ -282,8 +282,8 @@ export function RunCard({
     const [isRemoved, setIsRemoved] = useState(false);
     const isLoading = deletionMutation.isLoading || archiveMutation.isLoading;
 
-    const lastFile = run.lastFile;
-    const BgImage = getMapZoneHudBackground(lastFile?.mapZone);
+    const gameState = run.gameState;
+    const BgImage = getMapZoneHudBackground(gameState?.mapZone);
 
     const isSteelSoul = run.isSteelSoul;
     const isBrokenSteelSoul = run.isBrokenSteelSoul;
@@ -307,49 +307,49 @@ export function RunCard({
                 <Link href={`/run/${run.id}`} className="absolute inset-0 z-[6] block"></Link>
                 <div className="relative z-[3] h-[7rem] w-[7rem] shrink-0">
                     <HealthFrame isSteelSoul={isSteelSoul} isBrokenSteelSoul={isBrokenSteelSoul} />
-                    {(lastFile?.mpReserveMax ?? 100) >= 99 && (
+                    {(gameState?.mpReserveMax ?? 100) >= 99 && (
                         <Image
                             src={soulOrbImgSrc}
                             alt="Soul orb"
                             className="absolute bottom-[2rem] left-[-0.75rem] z-[3]"
                         />
                     )}
-                    {(lastFile?.mpReserveMax ?? 1000) >= 66 && (
+                    {(gameState?.mpReserveMax ?? 1000) >= 66 && (
                         <Image
                             src={soulOrbImgSrc}
                             alt="Soul orb"
                             className="absolute bottom-[0.75rem] left-[-0.25rem] z-[3]"
                         />
                     )}
-                    {(lastFile?.mpReserveMax ?? 100) >= 33 && (
+                    {(gameState?.mpReserveMax ?? 100) >= 33 && (
                         <Image src={soulOrbImgSrc} alt="Soul orb" className="absolute bottom-0 left-[1rem] z-[3]" />
                     )}
                 </div>
                 <div className="flex grow flex-col sm:flex-row">
                     <div className="shrink grow basis-[50%]">
                         <div className="relative z-[4] mt-4 flex flex-row flex-wrap gap-1 drop-shadow-sm sm:gap-2">
-                            {[...Array(lastFile?.maxHealth ?? 5).keys()].map((i) => (
+                            {[...Array(gameState?.maxHealth ?? 5).keys()].map((i) => (
                                 <Image src={healthImgSrc} alt="Health" key={i} className="-mb-1 w-5 sm:w-6" />
                             ))}
                         </div>
                         <div className="relative z-[4] mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-sm sm:mt-4">
                             <span>
                                 <Image src={Coin} alt="Geo icon" className="inline-block w-7 p-1 drop-shadow-glow-md" />
-                                <span className="font-semibold">{lastFile?.geo ?? '?'}</span>
+                                <span className="font-semibold">{gameState?.geo ?? '?'}</span>
                             </span>
-                            {lastFile?.dreamOrbs ? (
+                            {gameState?.dreamOrbs ? (
                                 <span>
                                     <Image
-                                        src={lastFile?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
+                                        src={gameState?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
                                         alt="Essence icon"
                                         className="-mb-3 -mt-4 inline-block w-9 p-1 brightness-110 drop-shadow-glow-md"
                                     />
-                                    <span className="font-semibold">{lastFile.dreamOrbs}</span>
+                                    <span className="font-semibold">{gameState.dreamOrbs}</span>
                                 </span>
                             ) : undefined}
-                            {displayPercentage(lastFile) && (
+                            {displayPercentage(gameState) && (
                                 <span className="ml-4">
-                                    <span className="font-semibold">{lastFile.completionPercentage}</span>%
+                                    <span className="font-semibold">{gameState.completionPercentage}</span>%
                                 </span>
                             )}
                         </div>
@@ -389,9 +389,9 @@ export function RunCard({
                         )}
                     </div>
                     <div className="flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif sm:flex-col sm:justify-center sm:gap-2 sm:text-right">
-                        {lastFile?.playTime && (
+                        {gameState?.playTime && (
                             <RunCardEpicInfo title="Playtime:">
-                                <Duration seconds={lastFile.playTime} />
+                                <Duration seconds={gameState.playTime} />
                             </RunCardEpicInfo>
                         )}
                         {run.lastPlayedAt && (
@@ -427,15 +427,15 @@ export function RunCard({
 }
 
 function displayPercentage(
-    file: RunMetadata['lastFile'],
-): file is RunMetadata['lastFile'] & { completionPercentage: number } {
-    if (!file) return false;
+    gameState: RunMetadata['gameState'],
+): gameState is RunMetadata['gameState'] & { completionPercentage: number } {
+    if (!gameState) return false;
 
     return (
-        (!!file.killedHollowKnight ||
-            !!file.killedVoidIdol ||
-            !!file.killedFinalBoss ||
-            !!file.unlockedCompletionRate) &&
-        !!file.completionPercentage
+        (!!gameState.killedHollowKnight ||
+            !!gameState.killedVoidIdol ||
+            !!gameState.killedFinalBoss ||
+            !!gameState.unlockedCompletionRate) &&
+        !!gameState.completionPercentage
     );
 }

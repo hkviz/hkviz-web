@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { tagSchema, type TagCode } from '~/lib/types/tags';
 import { visibilitySchema } from '~/lib/types/visibility';
 import { type DB } from '~/server/db';
-import { runFilesMetaFieldsSelect, runTagFieldsSelect } from './run-column-selects';
+import { getGameStateMeta, runFilesMetaFieldsSelect, runTagFieldsSelect } from './run-column-selects';
 
 export const runFilterSchema = z.object({
     userId: z.string().optional().nullish(),
@@ -57,9 +57,11 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
             id: true,
             description: true,
             createdAt: true,
+            updatedAt: true,
             visibility: true,
             archived: true,
             ...runTagFieldsSelect,
+            ...runFilesMetaFieldsSelect,
         },
         with: {
             user: {
@@ -68,25 +70,14 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
                     name: true,
                 },
             },
-            files: {
-                columns: {
-                    createdAt: true,
-                    startedAt: true,
-                    endedAt: true,
-                    ...runFilesMetaFieldsSelect,
-                },
-                orderBy: (files, { asc }) => [asc(files.partNumber)],
-                where: (files, { eq }) => eq(files.uploadFinished, true),
-            },
         },
     });
 
     return runs
-        .map(({ files, id, description, createdAt, visibility, archived, ...run }) => {
-            const firstFile = files[0];
-            const lastFile = files.at(-1);
-            const isBrokenSteelSoul = firstFile?.permadeathMode === 2 || lastFile?.lastScene === 'PermaDeath';
-            const isSteelSoul = (firstFile?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
+        .map(({ id, description, createdAt, updatedAt, visibility, archived, ...run }) => {
+            const gameState = getGameStateMeta(run);
+            const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
+            const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
             const isResearchView = run.user.id !== currentUser?.id && visibility === 'private';
 
             return {
@@ -101,12 +92,12 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
                     id: isResearchView ? '' : run.user.id,
                     name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed user',
                 },
-                startedAt: firstFile?.startedAt ?? firstFile?.createdAt,
-                lastPlayedAt: lastFile?.endedAt ?? lastFile?.createdAt,
-                lastFile,
+                startedAt: gameState?.startedAt ?? createdAt,
+                lastPlayedAt: gameState?.endedAt ?? updatedAt,
                 isSteelSoul,
                 isBrokenSteelSoul,
                 archived,
+                gameState,
             };
         })
         .sort((a, b) => {

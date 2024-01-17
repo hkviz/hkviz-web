@@ -169,6 +169,30 @@ const runTagColumns = Object.fromEntries(
     [Code in TagCode as `tag_${Code}`]: HasDefault<NotNull<MySqlBooleanBuilderInitial<`tag_${Code}`>>>;
 };
 
+// meta data, so it can easily be displayed in the UI without parsing recording files
+const runGameStateMetaColumns = {
+    hkVersion: varchar('hk_version', { length: 64 }),
+    playTime: double('play_time'),
+    maxHealth: int('max_health'),
+    mpReserveMax: int('mp_reserve_max'),
+    geo: int('geo'),
+    dreamOrbs: int('dream_orbs'),
+    permadeathMode: int('permadeath_mode'),
+    mapZone: mysqlEnum('map_zone', mapZoneSchema.options),
+    killedHollowKnight: boolean('killed_hollow_knight'),
+    killedFinalBoss: boolean('killed_final_boss'),
+    killedVoidIdol: boolean('killed_void_idol'),
+    completionPercentage: int('completion_percentage'),
+    unlockedCompletionRate: boolean('unlocked_completion_rate'),
+    dreamNailUpgraded: boolean('dream_nail_upgraded'),
+    lastScene: varchar('last_scene', { length: 255 }),
+
+    startedAt: timestamp('started_at'),
+    endedAt: timestamp('ended_at'),
+} as const;
+
+export type RunGameStateMetaColumnName = keyof typeof runGameStateMetaColumns;
+
 export const runs = mysqlTable(
     'run',
     {
@@ -198,7 +222,11 @@ export const runs = mysqlTable(
         // only viewable by owner via achieve page
         archived: boolean('archived').notNull().default(false),
 
+        lastCompletedRunFilePartNumber: int('last_completed_run_file_part_number'),
+
         ...runTagColumns,
+
+        ...runGameStateMetaColumns,
     },
     (run) => ({
         userIdIdx: index('userId_idx').on(run.userId),
@@ -214,8 +242,7 @@ export const runsRelations = relations(runs, ({ one, many }) => ({
 export const runFiles = mysqlTable('runfile', {
     // this id is also used to find the file inside the r2 bucket
     id: varchar('id', { length: UUID_LENGTH }).notNull().primaryKey(),
-    runId: varchar('run_id', { length: UUID_LENGTH })
-        .notNull(),
+    runId: varchar('run_id', { length: UUID_LENGTH }).notNull(),
     partNumber: int('part_number').notNull(),
     uploadFinished: boolean('upload_finished').notNull(),
     createdAt: timestamp('created_at')
@@ -224,26 +251,7 @@ export const runFiles = mysqlTable('runfile', {
     updatedAt: timestamp('updatedAt').onUpdateNow(),
     version: int('version').notNull().default(0),
     contentLength: int('content_length').notNull().default(0),
-
-    // meta data, so it can easily be displayed in the UI without parsing recording files
-    hkVersion: varchar('hk_version', { length: 64 }),
-    playTime: double('play_time'),
-    maxHealth: int('max_health'),
-    mpReserveMax: int('mp_reserve_max'),
-    geo: int('geo'),
-    dreamOrbs: int('dream_orbs'),
-    permadeathMode: int('permadeath_mode'),
-    mapZone: mysqlEnum('map_zone', mapZoneSchema.options),
-    killedHollowKnight: boolean('killed_hollow_knight'),
-    killedFinalBoss: boolean('killed_final_boss'),
-    killedVoidIdol: boolean('killed_void_idol'),
-    completionPercentage: int('completion_percentage'),
-    unlockedCompletionRate: boolean('unlocked_completion_rate'),
-    dreamNailUpgraded: boolean('dream_nail_upgraded'),
-    lastScene: varchar('last_scene', { length: 255 }),
-
-    startedAt: timestamp('started_at'),
-    endedAt: timestamp('ended_at'),
+    ...runGameStateMetaColumns,
 });
 
 export const runFilesRelations = relations(runFiles, ({ one }) => ({
