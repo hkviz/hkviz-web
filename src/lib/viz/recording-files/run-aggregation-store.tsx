@@ -189,7 +189,6 @@ function aggregateRecording(recording: CombinedRecording) {
             let geoDiff = event.geo - event.previousFrameEndEvent.geo;
             const dead = event.dead;
 
-            console.log(event);
             if (poolDiff != 0) {
                 if (dead) {
                     geoDiff += event.geoPool;

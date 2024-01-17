@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
-import { r2FileHead, r2GetSignedDownloadUrl, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
+import { r2FileHead, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
 
 import { TRPCError } from '@trpc/server';
 import { and, eq } from 'drizzle-orm';
-import { tagSchema, type TagCode } from '~/lib/types/tags';
+import { tagSchema } from '~/lib/types/tags';
 import { raise } from '~/lib/utils/utils';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
@@ -12,40 +12,24 @@ import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/sch
 import { getUserIdFromIngameSession } from '../ingameauth';
 import { assertIsResearcher } from '../lib/researcher';
 import { getOrCreateRunId } from './get-or-create-run-id';
-import { runGameStateMetaColumnsSelect, runTagFieldsSelect } from './run-column-selects';
+import { runGameStateMetaColumnsSelect } from './run-column-selects';
 import { deleteRunProcedure, setRunArchivedProcedure } from './run-deletion';
+import { findRuns } from './runs-find';
 
 export const runRouter = createTRPCRouter({
     getMetadataById: publicProcedure.input(z.object({ id: z.string().uuid() })).query(async ({ ctx, input }) => {
+        const sessionUserId = ctx.session?.user?.id;
+
         const metadata =
-            (await ctx.db.query.runs.findFirst({
-                where: (run, { eq, and }) => and(eq(run.id, input.id)),
-                columns: {
-                    id: true,
-                    description: true,
-                    visibility: true,
-                    ...runTagFieldsSelect,
-                },
-                with: {
-                    user: {
-                        columns: {
-                            id: true,
-                            name: true,
-                        },
-                    },
-                    files: {
-                        columns: {
-                            id: true,
-                            partNumber: true,
-                            uploadFinished: true,
-                            version: true,
-                            createdAt: true,
-                        },
-                        orderBy: (files, { asc }) => [asc(files.partNumber)],
-                        where: (files, { eq }) => eq(files.uploadFinished, true),
-                    },
-                },
-            })) ??
+            (
+                await findRuns({
+                    db: ctx.db,
+                    filter: { id: [input.id] },
+                    includeFiles: true,
+                    skipVisibilityCheck: true,
+                    currentUser: sessionUserId ? { id: sessionUserId } : undefined,
+                })
+            )[0] ??
             raise(
                 new TRPCError({
                     code: 'NOT_FOUND',
@@ -53,7 +37,6 @@ export const runRouter = createTRPCRouter({
                 }),
             );
 
-        let isResearchView = false;
         if (metadata.visibility === 'private' && metadata.user.id !== ctx.session?.user?.id) {
             await assertIsResearcher({
                 db: ctx.db,
@@ -64,28 +47,11 @@ export const runRouter = createTRPCRouter({
                         message: 'Run is private',
                     }),
             });
-            isResearchView = true;
         }
 
         return {
-            id: metadata.id,
-            description: metadata.description,
-            visibility: metadata.visibility,
-            tags: Object.entries(metadata)
-                .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
-                .map((kv) => kv[0].slice(4)) as TagCode[],
-            user: {
-                id: isResearchView ? '' : metadata.user.id,
-                name: isResearchView ? 'Anonym' : metadata.user.name ?? 'Unnamed user',
-            },
-            startedAt: metadata.files[0]?.createdAt,
-            lastPlayedAt: metadata.files[metadata.files.length - 1]?.createdAt,
-            files: await Promise.all(
-                metadata.files.map(async (file) => ({
-                    ...file,
-                    signedUrl: await r2GetSignedDownloadUrl(r2RunPartFileKey(file.id)),
-                })),
-            ),
+            ...metadata,
+            files: metadata.files!,
         };
     }),
     delete: deleteRunProcedure,

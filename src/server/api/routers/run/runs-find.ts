@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { r2GetSignedDownloadUrl, r2RunPartFileKey } from '~/lib/r2';
 import { tagSchema, type TagCode } from '~/lib/types/tags';
 import { visibilitySchema } from '~/lib/types/visibility';
 import { type DB } from '~/server/db';
@@ -9,6 +10,7 @@ export const runFilterSchema = z.object({
     visibility: z.array(visibilitySchema).optional().nullish(),
     tag: z.array(tagSchema).optional().nullish(),
     archived: z.array(z.boolean()).optional().nullish(),
+    id: z.array(z.string()).optional().nullish(),
 });
 
 export type RunFilter = z.infer<typeof runFilterSchema>;
@@ -20,11 +22,23 @@ interface CurrentUserFilterInfo {
 
 export interface FindRunsOptions {
     db: DB;
+    /**
+     * defaults to not logged in
+     */
     currentUser?: CurrentUserFilterInfo;
     filter: RunFilter;
+    /**
+     * defaults to false
+     */
+    includeFiles?: boolean;
+    /**
+     * defaults to false only used in endpoint which gets a single run by id,
+     * which does its own permission checks after loading.
+     */
+    skipVisibilityCheck?: boolean;
 }
 
-export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
+export async function findRuns({ db, currentUser, filter, includeFiles, skipVisibilityCheck }: FindRunsOptions) {
     const isOwnProfile = !!filter.userId && currentUser?.id === filter.userId;
     const isPublicFilter =
         filter.visibility != null &&
@@ -32,10 +46,11 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
         filter.visibility.includes('public') &&
         filter.archived != null &&
         filter.archived.length === 1 &&
-        filter.archived.includes(false);
+        filter.archived.includes(false) &&
+        filter.id == null; // id filter is not allowed for public filter
     const isResearcher = currentUser?.isResearcher ?? false;
 
-    if (!isOwnProfile && !isPublicFilter && !isResearcher) {
+    if (!isOwnProfile && !isPublicFilter && !isResearcher && !skipVisibilityCheck) {
         throw new Error('Filter not allowed. Since it could result in non public runs of other users being returned.');
     }
 
@@ -49,6 +64,7 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
                 tagFilter,
                 filter.archived ? inArray(run.archived, filter.archived) : undefined,
                 eq(run.deleted, false),
+                filter.id ? inArray(run.id, filter.id) : undefined,
             ];
 
             return and(...conditions.filter((c) => c != null));
@@ -70,47 +86,72 @@ export async function findRuns({ db, currentUser, filter }: FindRunsOptions) {
                     name: true,
                 },
             },
+            files: !includeFiles
+                ? undefined
+                : {
+                      columns: {
+                          id: true,
+                          partNumber: true,
+                          uploadFinished: true,
+                          version: true,
+                          createdAt: true,
+                      },
+                      orderBy: (files, { asc }) => [asc(files.partNumber)],
+                      where: (files, { eq }) => eq(files.uploadFinished, true),
+                  },
         },
     });
 
-    return runs
-        .map(({ id, description, createdAt, updatedAt, visibility, archived, ...run }) => {
-            const gameState = getGameStateMeta(run);
-            const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
-            const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
-            const isResearchView = run.user.id !== currentUser?.id && visibility === 'private';
+    return (
+        await Promise.all(
+            runs.map(async ({ files, id, description, createdAt, updatedAt, visibility, archived, ...run }) => {
+                const gameState = getGameStateMeta(run);
+                const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
+                const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
+                const isResearchView = false; //run.user.id !== currentUser?.id && visibility === 'private';
 
-            return {
-                id,
-                description,
-                createdAt,
-                visibility,
-                tags: Object.entries(run)
-                    .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
-                    .map((kv) => kv[0].slice(4)) as TagCode[],
-                user: {
-                    id: isResearchView ? '' : run.user.id,
-                    name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed user',
-                },
-                startedAt: gameState?.startedAt ?? createdAt,
-                lastPlayedAt: gameState?.endedAt ?? updatedAt,
-                isSteelSoul,
-                isBrokenSteelSoul,
-                archived,
-                gameState,
-            };
-        })
-        .sort((a, b) => {
-            if (a.lastPlayedAt && b.lastPlayedAt) {
-                return b.lastPlayedAt.getTime() - a.lastPlayedAt.getTime();
-            } else if (a.lastPlayedAt) {
-                return -1;
-            } else if (b.lastPlayedAt) {
-                return 1;
-            } else {
-                return b.createdAt.getTime() - a.createdAt.getTime();
-            }
-        });
+                const mappedFiles = !includeFiles
+                    ? undefined
+                    : await Promise.all(
+                          files.map(async (file) => ({
+                              ...file,
+                              signedUrl: await r2GetSignedDownloadUrl(r2RunPartFileKey(file.id)),
+                          })),
+                      );
+
+                return {
+                    id,
+                    description,
+                    createdAt,
+                    visibility,
+                    tags: Object.entries(run)
+                        .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
+                        .map((kv) => kv[0].slice(4)) as TagCode[],
+                    user: {
+                        id: isResearchView ? '' : run.user.id,
+                        name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed user',
+                    },
+                    startedAt: gameState?.startedAt ?? createdAt,
+                    lastPlayedAt: gameState?.endedAt ?? updatedAt,
+                    isSteelSoul,
+                    isBrokenSteelSoul,
+                    archived,
+                    gameState,
+                    files: mappedFiles,
+                };
+            }),
+        )
+    ).sort((a, b) => {
+        if (a.lastPlayedAt && b.lastPlayedAt) {
+            return b.lastPlayedAt.getTime() - a.lastPlayedAt.getTime();
+        } else if (a.lastPlayedAt) {
+            return -1;
+        } else if (b.lastPlayedAt) {
+            return 1;
+        } else {
+            return b.createdAt.getTime() - a.createdAt.getTime();
+        }
+    });
 }
 
 export type RunMetadata = Awaited<ReturnType<typeof findRuns>>[number];

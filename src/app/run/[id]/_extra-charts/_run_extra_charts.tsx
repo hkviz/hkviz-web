@@ -21,8 +21,8 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
 
     return (
         <Card className={cn('flex flex-col overflow-hidden', className)}>
-            <CardHeader>
-                <CardTitle>Time-based analytics</CardTitle>
+            <CardHeader className="px-4 pb-3 pt-2">
+                <CardTitle className="text-lg">Time-based analytics</CardTitle>
             </CardHeader>
             {isAnythingAnimating && (
                 <CardContent>

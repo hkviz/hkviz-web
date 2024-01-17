@@ -3,6 +3,7 @@ import { type HeroStateField } from '../hero-state/hero-states';
 import { playerDataFields, type PlayerDataField } from '../player-data/player-data';
 import { isVersionBefore1_4_0, type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent, frameEndEventHeroStateFields, frameEndEventPlayerDataFields } from './events/frame-end-event';
+import { ModdingInfoEvent } from './events/modding-info-event';
 import { PlayerDataEvent } from './events/player-data-event';
 import { PlayerPositionEvent } from './events/player-position-event';
 import { SceneEvent } from './events/scene-event';
@@ -46,6 +47,8 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 
     const visitedScenesToCheckIfInPlayerData = [] as { sceneName: string; msIntoGame: number }[];
 
+    const allModVersions = new Map<string, Set<string>>();
+
     for (const recording of recordings.sort((a, b) => a.partNumber! - b.partNumber!)) {
         for (const event of recording.events) {
             // create together player data event if needed
@@ -74,6 +77,12 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 lastTimestamp = event.timestamp;
                 isPaused = false;
                 recordingFileVersion = event.version;
+            } else if (event instanceof ModdingInfoEvent) {
+                for (const mod of event.mods) {
+                    const versions = allModVersions.get(mod.name) ?? new Set();
+                    mod.versions.forEach((v) => versions.add(v));
+                    allModVersions.set(mod.name, versions);
+                }
             } else if (event instanceof SceneEvent) {
                 const visitedScenes = getPreviousPlayerData(playerDataFields.byFieldName.scenesVisited)?.value ?? [];
 
@@ -86,7 +95,6 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 // in version < 1.4.0 the mod did not record the transitioning bool
                 // therefore, here we try to detect player events which where transitioned to a new scene
                 // and remove them:
-                console.log('pos');
                 if (isVersionBefore1_4_0(recordingFileVersion) && previousPlayerPositionEvent) {
                     const lastPlayerPositionEvent: PlayerPositionEvent = previousPlayerPositionEvent;
                     const sceneEvent = lastPlayerPositionEvent.sceneEvent;
@@ -109,7 +117,6 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                             currentPlayerPositionEvent.position.y < sceneOriginOffset.y - 2 ||
                             currentPlayerPositionEvent.position.y > sceneOriginOffset.y + sceneSize.y + 2)
                     ) {
-                        console.log('transition player position event');
                         events.splice(events.indexOf(currentPlayerPositionEvent), 1);
                         currentPlayerPositionEvent = currentPlayerPositionEvent.previousPlayerPositionEvent;
                     }
@@ -121,7 +128,6 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                         ? currentPlayerPositionEvent
                         : currentPlayerPositionEvent?.previousPlayerPositionEventWithMapPosition ?? null;
 
-                    console.log({ previousPlayerPositionEvent, previousPlayerPositionEventWithMapPosition });
                     if (currentPlayerPositionEvent) {
                         const startIndex = events.indexOf(currentPlayerPositionEvent) + 1;
                         for (let i = startIndex; i < events.length; i++) {
@@ -283,5 +289,6 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
         recordings.reduce((sum, recording) => sum + recording.parsingErrors, 0),
         null,
         previousPlayerDataEventsByField,
+        [...allModVersions.entries()].map(([name, versions]) => ({ name, versions: [...versions.values()].sort() })),
     );
 }

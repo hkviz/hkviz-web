@@ -83,7 +83,7 @@ function AggregationVariable({
                                     aria-hidden={true}
                                 ></Image>
                             )}
-                            {Icon && <Icon className="w-5 h-5" />}
+                            {Icon && <Icon className="h-5 w-5" />}
                             <span>{variableInfo.name}</span>
                         </div>
                     </TooltipTrigger>
@@ -171,7 +171,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
 
     return (
         <Card
-            className="flex shrink grow basis-0 flex-col bg-gradient-to-b from-transparent to-transparent max-lg:basis-0  min-w-[300px] sm:min-w-min"
+            className="max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col bg-gradient-to-b from-transparent  to-transparent sm:min-w-min"
             style={
                 {
                     '--tw-gradient-from': gradientColor,
@@ -179,7 +179,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 } as CSSProperties
             }
         >
-            <CardHeader className="flex flex-row items-center p-4">
+            <CardHeader className="flex flex-row items-center p-4 pt-2">
                 {allRoomInfos && (
                     <HKMapRoom
                         roomInfos={allRoomInfos}
@@ -189,7 +189,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 )}
 
                 <div>
-                    <CardTitle>Room analytics</CardTitle>
+                    <CardTitle className="text-lg">Room analytics</CardTitle>
                     <CardDescription>
                         {!selectedRoom && (
                             <span className="text-sm opacity-50">Hover or click a room to view analytics</span>

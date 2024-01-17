@@ -28,6 +28,7 @@ import Link from 'next/link';
 import { useState, type PropsWithChildren } from 'react';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { type RunMetadata } from '~/server/api/routers/run/runs-find';
+import { RunFullData } from '~/server/api/types';
 import { api } from '~/trpc/react';
 import Coin from '../../../public/ingame-sprites/hud/HUD_coin_v020004.png';
 import HealthFrameSteelSoulBrokenImg from '../../../public/ingame-sprites/hud/break_hud.png';
@@ -221,10 +222,12 @@ export function RunCard({
     run,
     showUser = true,
     isOwnRun = false,
+    className,
 }: {
-    run: RunMetadata;
+    run: RunMetadata | RunFullData;
     showUser?: boolean;
-    isOwnRun?: boolean;
+        isOwnRun?: boolean;
+        className?: string;
 }) {
     const { toast } = useToast();
 

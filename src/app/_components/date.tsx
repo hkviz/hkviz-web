@@ -2,7 +2,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { format, formatDistance } from 'date-fns';
 
 function AbsoluteDate({ date }: { date: Date }) {
-    return <>{format(date, 'yyyy-mm-dd')}</>;
+    return <>{format(date, 'yyyy-M-d')}</>;
 }
 
 export function RelativeDate({ date, withTooltip = true }: { date: Date; withTooltip?: boolean }) {

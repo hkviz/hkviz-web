@@ -10,6 +10,7 @@ import {
     type EventPrefix,
     type PartialEventPrefix,
 } from './event-type-prefixes';
+import { ModdingInfoEvent, type ModInfo } from './events/modding-info-event';
 import { PlayerDataEvent } from './events/player-data-event';
 import { PlayerPositionEvent } from './events/player-position-event';
 import { SceneEvent } from './events/scene-event';
@@ -214,7 +215,21 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                     break;
                 }
                 case EVENT_PREFIXES.MODDING_INFO: {
-                    // TODO
+                    const mods: ModInfo[] = args
+                        .filter((it) => it)
+                        .map((it) => {
+                            const split = it.split(':');
+                            return {
+                                name: split[0] ?? 'Unnamed mod',
+                                versions: [split[1] ?? 'Unknown version'],
+                            };
+                        });
+                    events.push(
+                        new ModdingInfoEvent({
+                            timestamp,
+                            mods,
+                        }),
+                    );
                     break;
                 }
                 case EVENT_PREFIXES.RECORDING_FILE_VERSION: {

@@ -8,6 +8,7 @@ import { type AggregatedRunData, type AggregationVariable } from '~/lib/viz/reco
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
 export type RoomColorMode = 'area' | '1-var';
+export type MainCardTab = 'overview' | 'map';
 
 function createViewOptionsStore() {
     return create(
@@ -31,10 +32,11 @@ function createViewOptionsStore() {
                 viewNeverHappenedAggregations: false,
 
                 roomColorMode: 'area' as RoomColorMode,
-                roomColorVar1: 'damageTaken' as AggregationVariable,
+                roomColorVar1: 'firstVisitMs' as AggregationVariable,
 
                 extraChartsTimeBounds: [0, 0] as readonly [number, number],
                 extraChartsFollowAnimation: true,
+                mainCardTab: 'overview' as MainCardTab,
             },
             (set, get) => {
                 function handleAnyAnimationVisiblityChanged() {
@@ -52,6 +54,7 @@ function createViewOptionsStore() {
                     }
                     if (!newIsAnythingAnimating && isPlaying) {
                         setIsPlaying(false);
+                        setAnimationMsIntoGame(get().timeFrame.max);
                     }
                     if (newIsAnythingAnimating != isAnythingAnimating && extraChartsFollowAnimation) {
                         setDefaultExtraChartsTimeBoundsFromFollowAnimation();
@@ -80,6 +83,10 @@ function createViewOptionsStore() {
                         get().animationMsIntoGame <= get().timeFrame.min
                     ) {
                         setAnimationMsIntoGame(get().timeFrame.max);
+                    }
+
+                    if (playing && get().mainCardTab === 'overview') {
+                        setMainCardTab('map');
                     }
 
                     set({ isPlaying: playing });
@@ -148,7 +155,7 @@ function createViewOptionsStore() {
                     const isSteelSoul = permaDeathValue === 1 || permaDeathValue === 2;
                     set({ recording, timeFrame, extraChartsTimeBounds, isSteelSoul });
                     setDefaultExtraChartsTimeBoundsFromFollowAnimation();
-                    setLimitedAnimationMsIntoGame(get().animationMsIntoGame);
+                    setAnimationMsIntoGame(timeFrame.max);
                 }
                 function setAggregatedRunData(aggregatedRunData: AggregatedRunData | null) {
                     set({ aggregatedRunData });
@@ -218,6 +225,10 @@ function createViewOptionsStore() {
                     setDefaultExtraChartsTimeBoundsFromFollowAnimation();
                 }
 
+                function setMainCardTab(mainCardTab: MainCardTab) {
+                    set({ mainCardTab });
+                }
+
                 return {
                     setRoomVisibility,
                     setTraceVisibility,
@@ -240,6 +251,7 @@ function createViewOptionsStore() {
                     setExtraChartsTimeBounds,
                     resetExtraChartsTimeBounds,
                     setExtraChartsFollowAnimation,
+                    setMainCardTab,
                 };
             },
         ),

@@ -3,6 +3,7 @@ import { type HeroStateField } from '../hero-state/hero-states';
 import { type PlayerDataField } from '../player-data/player-data';
 import { type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent } from './events/frame-end-event';
+import { type ModInfo, type ModdingInfoEvent } from './events/modding-info-event';
 import { PlayerDataEvent } from './events/player-data-event';
 import { type PlayerPositionEvent } from './events/player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
@@ -86,7 +87,8 @@ export type RecordingEvent =
     | SpellFireballEvent
     | SpellDownEvent
     | SpellUpEvent
-    | FrameEndEvent;
+    | FrameEndEvent
+    | ModdingInfoEvent;
 
 export class ParsedRecording {
     constructor(
@@ -117,6 +119,7 @@ export class CombinedRecording extends ParsedRecording {
         parsingErrors: number,
         partNumber: number | null,
         public readonly lastPlayerDataEventsByField: Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>,
+        public readonly allModVersions: ModInfo[],
     ) {
         super(events, unknownEvents, parsingErrors, partNumber);
 
