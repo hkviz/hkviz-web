@@ -348,6 +348,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 `Error while parsing line ${i}: |${line}| using file version ${currentRecordingFileVersion} in part number ${partNumber}`,
                 e,
             );
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
             ((window as any).errorLines = (window as any).errorLines ?? []).push(line);
             parsingErrors++;
         }

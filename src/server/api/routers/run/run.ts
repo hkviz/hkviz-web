@@ -225,8 +225,8 @@ export const runRouter = createTRPCRouter({
                         where: (run, { eq }) => eq(run.id, runId),
                         columns: {
                             id: true,
-                            startedAt: true,
                             lastCompletedRunFilePartNumber: true,
+                            ...runGameStateMetaColumnsSelect,
                         },
                     })) ?? raise(new Error('Run not found'));
 
@@ -234,24 +234,24 @@ export const runRouter = createTRPCRouter({
                     await ctx.db
                         .update(runs)
                         .set({
-                            hkVersion: file.hkVersion,
-                            playTime: file.playTime,
-                            maxHealth: file.maxHealth,
-                            mpReserveMax: file.mpReserveMax,
-                            geo: file.geo,
-                            dreamOrbs: file.dreamOrbs,
-                            permadeathMode: file.permadeathMode,
-                            mapZone: file.mapZone,
-                            killedHollowKnight: file.killedHollowKnight,
-                            killedFinalBoss: file.killedFinalBoss,
-                            killedVoidIdol: file.killedVoidIdol,
-                            completionPercentage: file.completionPercentage,
-                            unlockedCompletionRate: file.unlockedCompletionRate,
-                            dreamNailUpgraded: file.dreamNailUpgraded,
-                            lastScene: file.lastScene,
+                            hkVersion: file.hkVersion ?? run.hkVersion,
+                            playTime: file.playTime ?? run.playTime,
+                            maxHealth: file.maxHealth ?? run.maxHealth,
+                            mpReserveMax: file.mpReserveMax ?? run.mpReserveMax,
+                            geo: file.geo ?? run.geo,
+                            dreamOrbs: file.dreamOrbs ?? run.dreamOrbs,
+                            permadeathMode: file.permadeathMode ?? run.permadeathMode,
+                            mapZone: file.mapZone ?? run.mapZone,
+                            killedHollowKnight: file.killedHollowKnight ?? run.killedHollowKnight,
+                            killedFinalBoss: file.killedFinalBoss ?? run.killedFinalBoss,
+                            killedVoidIdol: file.killedVoidIdol ?? run.killedVoidIdol,
+                            completionPercentage: file.completionPercentage ?? run.completionPercentage,
+                            unlockedCompletionRate: file.unlockedCompletionRate ?? run.unlockedCompletionRate,
+                            dreamNailUpgraded: file.dreamNailUpgraded ?? run.dreamNailUpgraded,
+                            lastScene: file.lastScene ?? run.lastScene,
 
                             startedAt: run.startedAt ?? file.startedAt,
-                            endedAt: file.endedAt,
+                            endedAt: file.endedAt ?? run.endedAt,
                         } satisfies { [Col in RunGameStateMetaColumnName]: unknown })
                         .where(eq(runs.id, runId));
                 }

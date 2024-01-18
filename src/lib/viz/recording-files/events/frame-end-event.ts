@@ -169,6 +169,9 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
     constructor(options: FrameEndEventOptions) {
         super(options);
 
+        this.previousFrameEndEvent = options.previousFrameEndEvent;
+        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
+
         for (const field of frameEndEventPlayerDataFields) {
             const previousPlayerDataEvent = options.getPreviousPlayerData(field);
             if (previousPlayerDataEvent) {
@@ -188,12 +191,10 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
         this.trinketGeo = this.trinket1 * 200 + this.trinket2 * 450 + this.trinket3 * 800 + this.trinket4 * 2000;
         this.geoTotal = this.geo + this.trinketGeo + this.geoPool;
         this.healthLost = this.maxHealth - this.health;
-        this.completionPercentageEarlyCalc = countGameCompletion(this);
 
         this.grubsNoRewardCollected = this.grubsCollected - this.grubRewards;
 
-        this.previousFrameEndEvent = options.previousFrameEndEvent;
-        this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
+        this.completionPercentageEarlyCalc = countGameCompletion(this);
     }
 }
 

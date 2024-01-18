@@ -1,6 +1,6 @@
 import { raise } from '~/lib/utils/utils';
 import { type HeroStateField } from '../hero-state/hero-states';
-import { playerDataFields, type PlayerDataField } from '../player-data/player-data';
+import { getDefaultValue, playerDataFields, type PlayerDataField } from '../player-data/player-data';
 import { isVersionBefore1_4_0, type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent, frameEndEventHeroStateFields, frameEndEventPlayerDataFields } from './events/frame-end-event';
 import { ModdingInfoEvent } from './events/modding-info-event';
@@ -65,7 +65,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                             const event = new PlayerDataEvent<PlayerDataField>({
                                 field,
                                 timestamp: 0,
-                                value: field.defaultValue,
+                                value: getDefaultValue(field),
                             } as any);
                             events.push(event);
                             previousPlayerDataEventsByField.set(field, event);
