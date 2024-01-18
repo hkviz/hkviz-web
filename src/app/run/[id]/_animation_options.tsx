@@ -64,6 +64,8 @@ function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptio
 export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
+    const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
+    const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const isDisabled = useViewOptionsStore((s) => !s.recording);
     return (
@@ -78,6 +80,9 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
                 disabled={isDisabled}
                 onValueChange={(values) => {
                     setAnimationMsIntoGame(values[0]!);
+                    if (mainCardTab === 'overview') {
+                        setMainCardTab('map');
+                    }
                 }}
             />
         </>

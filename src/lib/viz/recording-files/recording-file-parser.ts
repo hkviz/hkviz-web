@@ -60,10 +60,11 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
     let currentRecordingFileVersion: RecordingFileVersion = '0.0.0';
 
     let i = 0;
-    LINE_LOOP: for (const line of lines) {
+    LINE_LOOP: for (let line of lines) {
         try {
             // empty lines are skipped
-            if (!line) continue;
+            if (line == null || line === '' || line === '\r') continue LINE_LOOP;
+            if (line.at(-1) == '\r') line = line.slice(0, -1);
 
             const [prefix, ...args] = line.replace(/\r/gi, '').split(';');
             if (prefix == null) throw new Error('No prefix found');
@@ -347,6 +348,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
                 `Error while parsing line ${i}: |${line}| using file version ${currentRecordingFileVersion} in part number ${partNumber}`,
                 e,
             );
+            ((window as any).errorLines = (window as any).errorLines ?? []).push(line);
             parsingErrors++;
         }
         i++;

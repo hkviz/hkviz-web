@@ -131,7 +131,12 @@ export const useRunFileStore = create(
             setLoadingProgress({ partNumber, fileVersion, runId, fileId, progress: 0 });
             setRunNotLoaded(runId);
 
-            const response = await fetchWithRunfileCache(fileId, fileVersion, downloadUrl).then((it) =>
+            const loader = () => fetchWithRunfileCache(fileId, fileVersion, downloadUrl);
+
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+            (window as any)['fileLoader_' + partNumber] = loader;
+
+            const response = await loader().then((it) =>
                 wrapResultWithProgress(it, ({ loaded, total }) => {
                     setLoadingProgress({
                         partNumber,
@@ -189,6 +194,10 @@ export const useRunFileStore = create(
             runId: string,
             fileInfos: AppRouterOutput['run']['getMetadataById']['files'],
         ) {
+            console.log(
+                'file infos',
+                fileInfos.map((it) => ({ id: it.id, version: it.version })),
+            );
             const existing = get().runs[runId];
             if (!existing || existing.nrOfFiles !== fileInfos.length) {
                 // if file version different, finished Loading will be set by loading individual files
