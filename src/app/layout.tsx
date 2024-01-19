@@ -34,6 +34,15 @@ const oldUrls = [
     // 'http://localhost:3000'
 ];
 
+const jsonLd = {
+    __html: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        url: 'https://www.hkviz.org',
+        name: 'HKViz',
+    }),
+};
+
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     const session = await getServerAuthSession();
 
@@ -51,6 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     return (
         <html lang="en">
             <head>
+                <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd} />
                 <FaviconsHead theme={theme} />
             </head>
             <body

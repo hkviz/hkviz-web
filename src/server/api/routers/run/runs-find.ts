@@ -108,7 +108,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
                 const gameState = getGameStateMeta(run);
                 const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
                 const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
-                const isResearchView = false; //run.user.id !== currentUser?.id && visibility === 'private';
+                const isResearchView = run.user.id !== currentUser?.id && visibility === 'private';
 
                 const mappedFiles = !includeFiles
                     ? undefined
