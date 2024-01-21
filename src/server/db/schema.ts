@@ -239,20 +239,27 @@ export const runsRelations = relations(runs, ({ one, many }) => ({
     files: many(runFiles),
 }));
 
-export const runFiles = mysqlTable('runfile', {
-    // this id is also used to find the file inside the r2 bucket
-    id: varchar('id', { length: UUID_LENGTH }).notNull().primaryKey(),
-    runId: varchar('run_id', { length: UUID_LENGTH }).notNull(),
-    partNumber: int('part_number').notNull(),
-    uploadFinished: boolean('upload_finished').notNull(),
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
-    version: int('version').notNull().default(0),
-    contentLength: int('content_length').notNull().default(0),
-    ...runGameStateMetaColumns,
-});
+export const runFiles = mysqlTable(
+    'runfile',
+    {
+        // this id is also used to find the file inside the r2 bucket
+        id: varchar('id', { length: UUID_LENGTH }).notNull().primaryKey(),
+        runId: varchar('run_id', { length: UUID_LENGTH }).notNull(),
+        partNumber: int('part_number').notNull(),
+        uploadFinished: boolean('upload_finished').notNull(),
+        createdAt: timestamp('created_at')
+            .default(sql`CURRENT_TIMESTAMP`)
+            .notNull(),
+        updatedAt: timestamp('updatedAt').onUpdateNow(),
+        version: int('version').notNull().default(0),
+        contentLength: int('content_length').notNull().default(0),
+        ...runGameStateMetaColumns,
+    },
+    (runFile) => ({
+        runIdIdx: index('runId_idx').on(runFile.runId),
+        runIdPartNumberIdx: index('runIdPartNumber_idx').on(runFile.runId, runFile.partNumber),
+    }),
+);
 
 export const runFilesRelations = relations(runFiles, ({ one }) => ({
     run: one(runs, { fields: [runFiles.runId], references: [runs.id] }),
@@ -273,8 +280,8 @@ export const ingameAuth = mysqlTable(
             .notNull(),
         updatedAt: timestamp('updatedAt').onUpdateNow(),
     },
-    (session) => ({
-        urlIdIdx: index('urlId_idx').on(session.urlId),
+    (ingameAuth) => ({
+        urlIdIdx: index('urlId_idx').on(ingameAuth.urlId),
     }),
 );
 
