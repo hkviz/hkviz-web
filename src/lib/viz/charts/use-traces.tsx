@@ -147,7 +147,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 });
             }
 
-            if (newestPositionEvent) {
+            if (newestPositionEvent && newestPositionEvent.msIntoGame + 15000 >= animationMsIntoGameForTrace) {
                 knightPin
                     .current!.attr('x', newestPositionEvent.mapPosition!.x - 0.5 * SCALED_KNIGHT_PIN_SIZE)
                     // slightly off center, since knight pin is visually a bit below center of the sprite
