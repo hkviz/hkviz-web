@@ -18,6 +18,10 @@ const predefinedRoomNames = {
     Room_Bretta: "Bretta's House",
     Room_Town_Stag_Station: 'Stag Station',
     Room_mapper: 'Map Shop',
+
+    Abyss_06_Core: 'Core',
+    Abyss_15: 'Birthplace',
+    Abyss_08: 'Lifeblood Chamber',
 } as Record<string, string>;
 
 export function formatRoomName(zoneName: string | undefined, roomName: string) {

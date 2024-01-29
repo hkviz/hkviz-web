@@ -111,6 +111,14 @@ export function useMapRooms(
                     (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) +
                     '.png',
             );
+            // .style('filter', 'invert(1)')
+            // .attr(
+            //     'xlink:href',
+            //     (d) =>
+            //         '/ingame-map-svg-unopt/' +
+            //         (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) +
+            //         '_bg.svg',
+            // );
 
         // masks just for outline. Are created by using the original mask itself, and increasing the contrast
         // therefore effectively hiding semi transparent parts, aka the non-outline parts.

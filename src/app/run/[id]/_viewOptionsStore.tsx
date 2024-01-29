@@ -178,6 +178,7 @@ function createViewOptionsStore() {
                     if (!get().selectedRoomPinned) setSelectedRoom(selectedRoom);
                 }
                 function togglePinnedRoom(selectedRoom: string | null) {
+                    console.log('selectedRoom', selectedRoom);
                     if (get().selectedRoomPinned && get().selectedRoom === selectedRoom) {
                         setSelectedRoomPinned(false);
                     } else {

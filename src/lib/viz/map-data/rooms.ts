@@ -4,8 +4,11 @@ import { roomDataConditionalByGameObjectName } from '../generated/map-rooms-cond
 import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
-import { getSubSprites } from './room-doors';
+import { customRoomData } from './room-custom';
 import { formatZoneAndRoomName } from './room-name-formatting';
+import { getSubSprites } from './room-sub-sprites';
+
+const roomDataUnscaledWithCustom = [...roomDataUnscaled.rooms, ...customRoomData];
 
 // logPossibleConditionals();
 
@@ -42,7 +45,7 @@ export function scaleBounds(bounds: { min: { x: number; y: number }; max: { x: n
 // In the game this will always be the one with the shortest name, since additional sprites for a room
 // contain a suffix like Crossroads_04 and Crossroads_04_b
 const mainGameObjectNamePerSceneName = Object.fromEntries(
-    [...d3.group(roomDataUnscaled.rooms, (d) => d.sceneName).entries()].map(([sceneName, roomGroup]) => {
+    [...d3.group(roomDataUnscaledWithCustom, (d) => d.sceneName).entries()].map(([sceneName, roomGroup]) => {
         return [
             sceneName,
             roomGroup.sort((a, b) => a.gameObjectName.length - b.gameObjectName.length)[0]!.gameObjectName,
@@ -52,7 +55,7 @@ const mainGameObjectNamePerSceneName = Object.fromEntries(
 
 export type RoomSpriteVariant = 'rough' | 'normal' | 'conditional';
 
-export const roomData = roomDataUnscaled.rooms.flatMap((room) => {
+export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
     const visualBounds = scaleBounds(room.visualBounds);
     const playerPositionBounds = scaleBounds(room.playerPositionBounds);
     const isMainGameObject = room.gameObjectName === mainGameObjectNamePerSceneName[room.sceneName];
