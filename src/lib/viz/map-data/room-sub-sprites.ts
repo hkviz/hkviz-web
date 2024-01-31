@@ -83,6 +83,92 @@ export const subSprites = {
             },
         ],
     },
+    Crossroads_06: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Crossroads_06',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Crossroads_06_Entrance',
+                    size: { x: 50, y: 41 },
+                    offsetTop: { x: 16, y: 13 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Crossroads_ShamanTemple',
+            },
+        ],
+    },
+    Fungus3_44: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Fungus3_44',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Fungus3_44_Entrance',
+                    size: { x: 53, y: 33 },
+                    offsetTop: { x: 9, y: 3 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_Fungus_Shaman',
+            },
+        ],
+    },
+    Crossroads_04: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Crossroads_04',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Crossroads_04_Entrance',
+                    size: { x: 38, y: 32 },
+                    offsetTop: { x: 201, y: 21 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_Charm_Shop',
+            },
+        ],
+    },
+    Crossroads_04_b: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Crossroads_04_b',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Crossroads_04_b_Sly',
+                    size: { x: 31, y: 26 },
+                    offsetTop: { x: 61, y: 21 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_ruinhouse',
+            },
+            {
+                normal: {
+                    name: 'edited/Crossroads_04_b_MenderBug',
+                    size: { x: 35, y: 26 },
+                    offsetTop: { x: 8, y: 21 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_Mender_House',
+            },
+        ],
+    },
 };
 
 type SubSprites = typeof subSprites;

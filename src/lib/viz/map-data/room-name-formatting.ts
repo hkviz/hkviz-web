@@ -22,9 +22,16 @@ const predefinedRoomNames = {
     // Crossroads
     Crossroads_49: 'Elevator', // from crossroads
     Crossroads_47: 'Stag Station',
+    Crossroads_ShamanTemple: 'Ancestral Mound',
+    Room_ruinhouse: "Sly's Hideout",
+    Room_Mender_House: "Menderbug's house",
+    Room_Charm_Shop: "Salubra's Shop",
 
     // Greenpath
     Fungus1_16_alt: 'Stag Station',
+
+    // Fog canyon
+    Room_Fungus_Shaman: 'Overgrown Mound',
 
     // Fungal wastes
     Fungus2_01: 'Queen Station Hub',

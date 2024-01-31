@@ -121,7 +121,7 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
         gameObjectNameNeededInVisited: room.gameObjectName,
     };
 
-    const subSprites = getSubSprites(room.sceneName);
+    const subSprites = getSubSprites(room.spriteInfo.name);
     if (subSprites) {
         const { normal, conditional, rough } = subSprites.parentSpriteWithoutSubSprites;
         if (normal) {
@@ -206,6 +206,7 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
             spritesByVariant: subSpritesByVariant,
             sprites: subSprites,
             gameObjectNameNeededInVisited: roomCorrected.gameObjectNameNeededInVisited,
+            isMainGameObject: true,
             visualBounds,
             playerPositionBounds,
             allSpritesScaledPositionBounds,
@@ -224,3 +225,5 @@ export const mainRoomDataBySceneName = new Map<string, RoomData>(
 export const allRoomDataBySceneName = new Map<string, RoomData[]>(
     [...d3.group(roomData, (d) => d.sceneName).entries()].map(([sceneName, rooms]) => [sceneName, rooms]),
 );
+
+console.log(roomData);
