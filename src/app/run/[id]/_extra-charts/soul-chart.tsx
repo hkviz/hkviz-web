@@ -50,7 +50,7 @@ export function SoulChart({ useViewOptionsStore }: SoulChartProps) {
                     Soul over time
                 </>
             }
-            yAxisLabel="Masks"
+            yAxisLabel="Soul"
             minimalMaximumY={99}
             downScaleMaxTimeDelta={100}
         />
