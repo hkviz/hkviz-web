@@ -19,3 +19,7 @@ export function formatTimeMs(ms: number): string {
     }
     return str;
 }
+
+if (typeof window !== 'undefined') {
+    (window as any).formatTimeMs = formatTimeMs;
+}

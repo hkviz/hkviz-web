@@ -1,3 +1,5 @@
+import { roomGroupName } from './room-groups';
+
 // use for aggregation and for display:
 export const roomGroups = {
     groupBretta: ['Room_Bretta_Basement', 'Room_Bretta'], // Dream_Mighty_Zote
@@ -65,7 +67,7 @@ export const subSprites = {
                     size: { x: 20, y: 22 },
                     offsetTop: { x: 246, y: 131 },
                 },
-                sceneName: 'Room_Bretta',
+                sceneName: 'group_bretta',
             },
             {
                 normal: {
@@ -166,6 +168,82 @@ export const subSprites = {
                 rough: null,
                 conditional: null,
                 sceneName: 'Room_Mender_House',
+            },
+        ],
+    },
+    RestingGrounds_05: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/RestingGrounds_05',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/RestingGrounds_05_Entrance',
+                    size: { x: 36, y: 29 },
+                    offsetTop: { x: 0, y: 7 },
+                },
+                rough: null, // if needed in the future also create rough version
+                conditional: null,
+                sceneName: 'RestingGrounds_07',
+            },
+        ],
+    },
+    Ruins1_04: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Ruins1_04',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Ruins1_04_Entrance',
+                    size: { x: 42, y: 61 },
+                    offsetTop: { x: 24, y: 9 },
+                },
+                rough: null, // if needed in the future also create rough version
+                conditional: null,
+                sceneName: 'Room_nailsmith',
+            },
+        ],
+    },
+    Crossroads_02: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Crossroads_02',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Crossroads_02_Entrance',
+                    size: { x: 64, y: 39 },
+                    offsetTop: { x: 38, y: 9 },
+                },
+                rough: null, // if needed in the future also create rough version
+                conditional: null,
+                sceneName: roomGroupName('group_blackEggTemple'),
+            },
+        ],
+    },
+    Fungus3_47: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Fungus3_47',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Fungus3_47_Entrance',
+                    size: { x: 69, y: 42 },
+                    offsetTop: { x: 42, y: 9 },
+                },
+                rough: null, // if needed in the future also create rough version
+                conditional: null,
+                sceneName: roomGroupName('group_Fungus3_archive'),
             },
         ],
     },

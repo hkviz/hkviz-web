@@ -5,6 +5,7 @@ import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
 import { customRoomData } from './room-custom';
+import { roomGroupByName } from './room-groups';
 import { formatZoneAndRoomName } from './room-name-formatting';
 import { getSubSprites } from './room-sub-sprites';
 
@@ -219,11 +220,21 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 export type RoomInfo = (typeof roomData)[number];
 
 export const mainRoomDataBySceneName = new Map<string, RoomData>(
-    roomData.filter((it) => it.isMainGameObject).map((room) => [room.sceneName, room]),
+    roomData
+        .filter((it) => it.isMainGameObject)
+        .flatMap((room) => {
+            const self = [room.sceneName, room] as const;
+            const groupChildren = roomGroupByName.get(room.sceneName as never)?.sceneNames ?? [];
+            return [self, ...groupChildren.map((scene) => [scene, room] as const)];
+        }),
 );
 
 export const allRoomDataBySceneName = new Map<string, RoomData[]>(
-    [...d3.group(roomData, (d) => d.sceneName).entries()].map(([sceneName, rooms]) => [sceneName, rooms]),
+    [...d3.group(roomData, (d) => d.sceneName).entries()].flatMap(([sceneName, rooms]) => {
+        const self = [sceneName, rooms] as const;
+        const groupChildren = roomGroupByName.get(sceneName as never)?.sceneNames ?? [];
+        return [self, ...groupChildren.map((scene) => [scene, rooms] as const)];
+    }),
 );
 
-console.log(roomData);
+console.log(allRoomDataBySceneName);

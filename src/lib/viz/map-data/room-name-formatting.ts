@@ -15,23 +15,26 @@ const predefinedRoomNames = {
     Town: 'Town',
     Room_shop: "Sly's Shop",
     Room_Ouiji: "Jiji's Hut",
-    Room_Bretta: "Bretta's House",
+    Room_Bretta: "Bretta's House Ground Floor",
     Room_Town_Stag_Station: 'Stag Station',
     Room_mapper: 'Map Shop',
+    group_bretta: "Bretta's House",
 
     // Crossroads
-    Crossroads_49: 'Elevator', // from crossroads
+    Crossroads_49: 'Elevator',
     Crossroads_47: 'Stag Station',
     Crossroads_ShamanTemple: 'Ancestral Mound',
     Room_ruinhouse: "Sly's Hideout",
     Room_Mender_House: "Menderbug's house",
     Room_Charm_Shop: "Salubra's Shop",
+    group_blackEggTemple: 'Black Egg Temple',
 
     // Greenpath
     Fungus1_16_alt: 'Stag Station',
 
     // Fog canyon
     Room_Fungus_Shaman: 'Overgrown Mound',
+    group_Fungus3_archive: "Teacher's Archives",
 
     // Fungal wastes
     Fungus2_01: 'Queen Station Hub',
@@ -52,6 +55,7 @@ const predefinedRoomNames = {
     Ruins1_28: 'Storerooms Upper',
     Ruins1_17: 'Storerooms Lower',
     Crossroads_49b: 'Storerooms Elevator',
+    Room_nailsmith: "Nailsmith's Forge",
 
     // Waterways
     Waterways_13: "Isma's Grove",
@@ -65,6 +69,8 @@ const predefinedRoomNames = {
     // Resting grounds
     RestingGrounds_09: 'Stag Station',
     Abyss_22: 'Hidden Station',
+    RestingGrounds_08: "Spirits' Glade",
+    RestingGrounds_07: "Seer's Room",
 
     // Deepnest
     Deepnest_09: 'Stag Station',

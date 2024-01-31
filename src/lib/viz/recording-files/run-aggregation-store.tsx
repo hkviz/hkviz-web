@@ -9,6 +9,7 @@ import spellDownImg from '../../../../public/ingame-sprites/Inv_0026_spell_quake
 import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png';
 import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
 import healthImg from '../../../../public/ingame-sprites/select_game_HUD_0001_health.png';
+import { roomGroupNamesBySceneName } from '../map-data/room-groups';
 import { playerDataFields } from '../player-data/player-data';
 import { FrameEndEvent } from './events/frame-end-event';
 import { SceneEvent } from './events/scene-event';
@@ -135,12 +136,15 @@ function aggregateRecording(recording: CombinedRecording) {
 
     function addToScene(sceneEvent: SceneEvent | undefined, key: AggregationVariable, value: number) {
         if (!sceneEvent?.sceneName) return;
-        const existing = countPerScene[sceneEvent.sceneName] ?? createEmptyAggregation();
-        countPerScene[sceneEvent.sceneName] = {
-            ...existing,
-            [key]: existing[key] + value,
-        };
-        maxOverScenes[key] = Math.max(maxOverScenes[key], existing[key] + value);
+        const groups = roomGroupNamesBySceneName.get(sceneEvent.sceneName) ?? [];
+        [sceneEvent.sceneName, ...groups].forEach((sceneOrGroupName) => {
+            const existing = countPerScene[sceneOrGroupName] ?? createEmptyAggregation();
+            countPerScene[sceneOrGroupName] = {
+                ...existing,
+                [key]: existing[key] + value,
+            };
+            maxOverScenes[key] = Math.max(maxOverScenes[key], existing[key] + value);
+        });
     }
 
     let previousSceneEvent: SceneEvent | null = null;
