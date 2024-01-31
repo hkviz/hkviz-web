@@ -11,17 +11,59 @@ const ancientBasinRooms = [
 ];
 
 const predefinedRoomNames = {
-    GG_Waterways: 'Royal Waterways Junk Pit',
-    GG_Pipeway: 'Royal Waterways Pipeway',
+    // Dirtmouth
+    Town: 'Town',
     Room_shop: "Sly's Shop",
     Room_Ouiji: "Jiji's Hut",
     Room_Bretta: "Bretta's House",
     Room_Town_Stag_Station: 'Stag Station',
     Room_mapper: 'Map Shop',
 
+    // Crossroads
+    Crossroads_49: 'Elevator', // from crossroads
+    Crossroads_47: 'Stag Station',
+
+    // Greenpath
+    Fungus1_16_alt: 'Stag Station',
+
+    // Fungal wastes
+    Fungus2_01: 'Queen Station Hub',
+    Fungus2_02: 'Queen Station Stag',
+    Fungus2_34: 'Queen Station Willoh',
+
+    // City of tears
+    Ruins2_10b: 'East elevator', // from city of tears
+    Ruins2_10: 'Elevator', // from resting grounds
+    Ruins_Elevator: 'Bathhouse Elevator',
+    Ruins2_06: 'Kings Station Hub',
+    Ruins2_08: 'Kings Station Stag',
+    Ruins2_07: 'Kings Station Broken Stag',
+    Ruins2_11_b: 'Tower of Love Lower',
+    Ruins2_11: 'Tower of Love Upper',
+
+    Ruins1_29: 'Storerooms Stag',
+    Ruins1_28: 'Storerooms Upper',
+    Ruins1_17: 'Storerooms Lower',
+    Crossroads_49b: 'Storerooms Elevator',
+
+    // Waterways
+    Waterways_13: "Isma's Grove",
+    GG_Waterways: 'Junk Pit',
+    GG_Pipeway: 'Pipeway',
+
     Abyss_06_Core: 'Core',
     Abyss_15: 'Birthplace',
     Abyss_08: 'Lifeblood Chamber',
+
+    // Resting grounds
+    RestingGrounds_09: 'Stag Station',
+    Abyss_22: 'Hidden Station',
+
+    // Deepnest
+    Deepnest_09: 'Stag Station',
+
+    // Queens garden
+    Fungus3_40: 'Stag Station',
 } as Record<string, string>;
 
 export function formatRoomName(zoneName: string | undefined, roomName: string) {

@@ -189,31 +189,30 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 )}
 
                 <div>
-                    <CardTitle className="text-lg">Room analytics</CardTitle>
+                    <CardTitle className="text-base">
+                        {!selectedRoom && <>Room analytics</>}
+                        {selectedRoom && (
+                            <Tooltip>
+                                <TooltipTrigger className="text-left">
+                                    {mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}
+                                </TooltipTrigger>
+                                <TooltipContent>Area</TooltipContent>
+                            </Tooltip>
+                        )}
+                    </CardTitle>
                     <CardDescription>
                         {!selectedRoom && (
                             <span className="text-sm opacity-50">Hover or click a room to view analytics</span>
                         )}
                         {selectedRoom && (
-                            <>
-                                <Tooltip>
-                                    <TooltipTrigger>
-                                        <span className="text-left">
-                                            {mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}
-                                        </span>
-                                    </TooltipTrigger>
-                                    <TooltipContent>Area</TooltipContent>
-                                </Tooltip>
-                                {' - '}
-                                <Tooltip>
-                                    <TooltipTrigger>
-                                        <span className="text-left">
-                                            {mainRoomInfo?.roomNameFormattedZoneExclusive ?? selectedRoom}
-                                        </span>
-                                    </TooltipTrigger>
-                                    <TooltipContent>Room</TooltipContent>
-                                </Tooltip>
-                            </>
+                            <Tooltip>
+                                <TooltipTrigger className="text-left">
+                                    {mainRoomInfo?.roomNameFormattedZoneExclusive ?? selectedRoom}
+                                    {/* <br />
+                                    {selectedRoom} */}
+                                </TooltipTrigger>
+                                <TooltipContent>Room</TooltipContent>
+                            </Tooltip>
                         )}
                     </CardDescription>
                 </div>

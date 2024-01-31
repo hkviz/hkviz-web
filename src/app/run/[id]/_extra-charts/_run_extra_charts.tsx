@@ -7,6 +7,7 @@ import { CompletionChart } from './completion-chart';
 import { GeoChart } from './geo-chart';
 import { GrubChart } from './grub-chart';
 import { HealthChart } from './health-chart';
+import { SoulChart } from './soul-chart';
 
 export interface RunExtraChartsProps {
     useViewOptionsStore: UseViewOptionsStore;
@@ -46,6 +47,8 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
                 <GeoChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />
                 <HealthChart useViewOptionsStore={useViewOptionsStore} />
+                <hr />
+                <SoulChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />
                 <CompletionChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />

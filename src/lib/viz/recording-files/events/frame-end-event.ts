@@ -24,6 +24,10 @@ export const frameEndEventPlayerDataFieldsArray = [
     playerDataFields.byFieldName.maxHealth,
     playerDataFields.byFieldName.healthBlue,
 
+    // soul
+    playerDataFields.byFieldName.MPCharge,
+    playerDataFields.byFieldName.MPReserve,
+
     // percentage
     playerDataFields.byFieldName.killedFalseKnight,
     playerDataFields.byFieldName.hornet1Defeated,
@@ -165,6 +169,7 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
     trinketGeo: number;
     geoTotal: number;
     grubsNoRewardCollected: number;
+    MPTotal: number;
 
     constructor(options: FrameEndEventOptions) {
         super(options);
@@ -193,6 +198,8 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
         this.healthLost = this.maxHealth - this.health;
 
         this.grubsNoRewardCollected = this.grubsCollected - this.grubRewards;
+
+        this.MPTotal = this.MPCharge + this.MPReserve;
 
         this.completionPercentageEarlyCalc = countGameCompletion(this);
     }
