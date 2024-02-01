@@ -203,7 +203,7 @@ export const subSprites = {
                     size: { x: 42, y: 61 },
                     offsetTop: { x: 24, y: 9 },
                 },
-                rough: null, // if needed in the future also create rough version
+                rough: null,
                 conditional: null,
                 sceneName: 'Room_nailsmith',
             },
@@ -222,7 +222,7 @@ export const subSprites = {
                     size: { x: 64, y: 39 },
                     offsetTop: { x: 38, y: 9 },
                 },
-                rough: null, // if needed in the future also create rough version
+                rough: null,
                 conditional: null,
                 sceneName: roomGroupName('group_blackEggTemple'),
             },
@@ -241,9 +241,47 @@ export const subSprites = {
                     size: { x: 69, y: 42 },
                     offsetTop: { x: 42, y: 9 },
                 },
-                rough: null, // if needed in the future also create rough version
+                rough: null,
                 conditional: null,
                 sceneName: roomGroupName('group_Fungus3_archive'),
+            },
+        ],
+    },
+    Fungus1_18: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Fungus1_18',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Fungus1_18_Entrance',
+                    size: { x: 42, y: 36 },
+                    offsetTop: { x: 154, y: 0 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: roomGroupName('group_stone_sanctuary'),
+            },
+        ],
+    },
+    Fungus1_15: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Fungus1_15',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Fungus1_15_Entrance',
+                    size: { x: 75, y: 38 },
+                    offsetTop: { x: 14, y: 15 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_nailmaster_02',
             },
         ],
     },

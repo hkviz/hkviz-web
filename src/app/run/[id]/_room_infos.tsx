@@ -208,8 +208,8 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                             <Tooltip>
                                 <TooltipTrigger className="text-left">
                                     {mainRoomInfo?.roomNameFormattedZoneExclusive ?? selectedRoom}
-                                    <br />
-                                    {selectedRoom}
+                                    {/* <br />
+                                    {selectedRoom} */}
                                 </TooltipTrigger>
                                 <TooltipContent>Room</TooltipContent>
                             </Tooltip>

@@ -31,6 +31,9 @@ const predefinedRoomNames = {
 
     // Greenpath
     Fungus1_16_alt: 'Stag Station',
+    group_stone_sanctuary: 'Stone Sanctuary',
+    Fungus1_35: 'Stone Sanctuary Main Room',
+    Fungus1_36: 'Stone Sanctuary Right Room',
 
     // Fog canyon
     Room_Fungus_Shaman: 'Overgrown Mound',
@@ -77,6 +80,11 @@ const predefinedRoomNames = {
 
     // Queens garden
     Fungus3_40: 'Stag Station',
+
+    // Kingdoms edge
+    Room_Colosseum_Bronze: 'Trial of the Warrior',
+    Room_Colosseum_Silver: 'Trial of the Conqueror',
+    Room_Colosseum_Gold: 'Trial of the Fool',
 } as Record<string, string>;
 
 export function formatRoomName(zoneName: string | undefined, roomName: string) {
