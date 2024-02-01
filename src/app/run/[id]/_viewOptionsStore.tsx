@@ -161,7 +161,9 @@ function createViewOptionsStore() {
                     set({ aggregatedRunData });
                 }
                 function setSelectedRoom(selectedRoom: string | null) {
-                    set({ selectedRoom });
+                    if (get().selectedRoom !== selectedRoom) {
+                        set({ selectedRoom });
+                    }
                 }
                 function setHoveredRoom(hoveredRoom: string | null) {
                     if (get().hoveredRoom !== hoveredRoom) {

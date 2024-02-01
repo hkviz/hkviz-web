@@ -111,14 +111,14 @@ export function useMapRooms(
                     (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) +
                     '.png',
             );
-            // .style('filter', 'invert(1)')
-            // .attr(
-            //     'xlink:href',
-            //     (d) =>
-            //         '/ingame-map-svg-unopt/' +
-            //         (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) +
-            //         '_bg.svg',
-            // );
+        // .style('filter', 'invert(1)')
+        // .attr(
+        //     'xlink:href',
+        //     (d) =>
+        //         '/ingame-map-svg-unopt/' +
+        //         (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) +
+        //         '_bg.svg',
+        // );
 
         // masks just for outline. Are created by using the original mask itself, and increasing the contrast
         // therefore effectively hiding semi transparent parts, aka the non-outline parts.
@@ -160,10 +160,14 @@ export function useMapRooms(
             .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y)
             .style('transition', 'fill 0.1s')
             .on('mouseover', (event: PointerEvent, r) => {
-                onMouseOverEvent(event, r);
+                if (event.buttons === 0) { // when holding down (because of drag) don't change hovered room
+                    onMouseOverEvent(event, r);
+                }
             })
             .on('mouseout', (event: PointerEvent, r) => {
-                onMouseOutEvent(event, r);
+                if (event.buttons === 0) { // when holding down (because of drag) don't change hovered room
+                    onMouseOutEvent(event, r);
+                }
             })
             .on('click', (event: PointerEvent, r) => {
                 onClickEvent(event, r);
