@@ -20,6 +20,9 @@ import { tags, type TagCode } from '~/lib/types/tags';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 
 const UUID_LENGTH = 36;
+function varcharUuid(name: string) {
+    return varchar(name, { length: UUID_LENGTH });
+}
 
 /**
  * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
@@ -200,6 +203,9 @@ export const runs = mysqlTable(
         id: varchar('id', { length: 255 }).notNull().primaryKey(),
 
         // user generated
+        /**
+         * @deprecated use run local id instead
+         */
         localId: varchar('run_id', { length: 255 }).notNull(),
 
         userId: varchar('user_id', { length: 255 }).notNull(),
@@ -239,12 +245,35 @@ export const runsRelations = relations(runs, ({ one, many }) => ({
     files: many(runFiles),
 }));
 
+/**
+ * Since a gameplay could have multiple local ids, when it is played over multiple devices
+ * and the id is not synced (which it isn't atm).
+ */
+export const runLocalIds = mysqlTable(
+    'run_local_id',
+    {
+        localId: varcharUuid('local_id').notNull(),
+        userId: varcharUuid('user_id').notNull(),
+        runId: varcharUuid('run_id').notNull(),
+    },
+    (runLocalId) => ({
+        compoundKey: primaryKey(runLocalId.userId, runLocalId.localId),
+    }),
+);
+
+export const runLocalIdRelations = relations(runLocalIds, ({ one, many }) => ({
+    user: one(users, { fields: [runLocalIds.userId], references: [users.id] }),
+    run: one(runs, { fields: [runLocalIds.runId], references: [runs.id] }),
+}));
+
 export const runFiles = mysqlTable(
     'runfile',
     {
         // this id is also used to find the file inside the r2 bucket
-        id: varchar('id', { length: UUID_LENGTH }).notNull().primaryKey(),
-        runId: varchar('run_id', { length: UUID_LENGTH }).notNull(),
+        id: varcharUuid('id').notNull().primaryKey(),
+        runId: varcharUuid('run_id').notNull(),
+        // TODO make non-nullable after deploy
+        localId: varcharUuid('local_id'),
         partNumber: int('part_number').notNull(),
         uploadFinished: boolean('upload_finished').notNull(),
         createdAt: timestamp('created_at')

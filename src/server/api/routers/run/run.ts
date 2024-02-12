@@ -128,7 +128,11 @@ export const runRouter = createTRPCRouter({
             // if there is already a row for that part we can use it
             const existingFile = await ctx.db.query.runFiles.findFirst({
                 where: (runFiles, { and, eq }) =>
-                    and(eq(runFiles.runId, runId), eq(runFiles.partNumber, input.partNumber)),
+                    and(
+                        eq(runFiles.runId, runId),
+                        eq(runFiles.partNumber, input.partNumber),
+                        eq(runFiles.localId, input.localRunId),
+                    ),
                 columns: {
                     id: true,
                     uploadFinished: true,
@@ -151,6 +155,7 @@ export const runRouter = createTRPCRouter({
             await ctx.db.insert(runFiles).values({
                 id: fileId,
                 runId,
+                localId: input.localRunId,
                 partNumber: input.partNumber,
                 uploadFinished: false,
                 version: 0,

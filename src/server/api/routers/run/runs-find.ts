@@ -96,7 +96,11 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
                           version: true,
                           createdAt: true,
                       },
-                      orderBy: (files, { asc }) => [asc(files.partNumber)],
+                      // should pretty much always sort by playTime, if it does not exist in the meta data
+                      // it uses the partNumber, which breaks when a run has multiple local ids.
+                      // Could in theory be hacked, and one could sort the events by timestamp afterwards,
+                      // but probably should be fine.
+                      orderBy: (files, { asc }) => [asc(files.playTime), asc(files.partNumber)],
                       where: (files, { eq }) => eq(files.uploadFinished, true),
                   },
         },
