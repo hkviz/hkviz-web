@@ -31,7 +31,6 @@ const config = {
                 checksVoidReturn: { attributes: false },
             },
         ],
-        'prettier/prettier': 'warn',
         'react-hooks/exhaustive-deps': [
             'warn',
             {
