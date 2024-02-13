@@ -71,6 +71,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
         },
         columns: {
             id: true,
+            title: true,
             description: true,
             createdAt: true,
             updatedAt: true,
@@ -108,7 +109,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
 
     return (
         await Promise.all(
-            runs.map(async ({ files, id, description, createdAt, updatedAt, visibility, archived, ...run }) => {
+            runs.map(async ({ files, id, title, description, createdAt, updatedAt, visibility, archived, ...run }) => {
                 const gameState = getGameStateMeta(run);
                 const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
                 const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
@@ -125,6 +126,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
 
                 return {
                     id,
+                    title,
                     description,
                     createdAt,
                     visibility,

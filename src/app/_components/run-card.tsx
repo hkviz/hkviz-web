@@ -20,12 +20,14 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
 import { Archive, ArchiveRestore, ChevronDown, MoreHorizontal, Trash } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, type PropsWithChildren } from 'react';
+import { FormEventHandler, useCallback, useRef, useState, type PropsWithChildren } from 'react';
+import { MAX_RUN_TITLE_LENGTH, cleanupTitle as cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { type RunMetadata } from '~/server/api/routers/run/runs-find';
 import { RunFullData } from '~/server/api/types';
@@ -116,11 +118,11 @@ function RunCardEpicInfo({
     const spans = (
         <span
             className={cn(
-                'sm:max-md:flex-col sm:max-md:items-end sm:max-md:justify-end sm:max-md:gap-0 z-[4] flex items-baseline gap-1 drop-shadow-sm md:gap-1',
+                'sm:max-md:items-end sm:max-md:justify-end sm:max-md:gap-0 z-[4] flex flex-col items-end drop-shadow-sm',
                 className,
             )}
         >
-            <span>{title}</span>
+            <span className="-mb-1 text-xs">{title}</span>
             <span className="text-lg font-bold">{children}</span>
         </span>
     );
@@ -218,6 +220,37 @@ export function RunCardDropdownMenu({
     );
 }
 
+function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const handleTitleChange: FormEventHandler<HTMLTextAreaElement> = useCallback((e) => {
+        e.currentTarget.value = cleanupRunTitle(e.currentTarget.value, true);
+        e.currentTarget.style.height = 'auto';
+        e.currentTarget.style.height = e.currentTarget.scrollHeight + 'px';
+    }, []);
+
+    if (isOwnRun) {
+        return (
+            <Textarea
+                ref={textareaRef}
+                placeholder="Add title"
+                rows={1}
+                defaultValue={run.title ?? ''}
+                onInput={handleTitleChange}
+                maxLength={MAX_RUN_TITLE_LENGTH}
+                className="max-w-auto relative z-[8] inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm"
+            />
+        );
+    } else if (run.title) {
+        return (
+            <h2 className="color-white relative z-[8] inline font-serif text-xl font-bold drop-shadow-sm">
+                {run.title}
+            </h2>
+        );
+    } else {
+        return undefined;
+    }
+}
+
 export function RunCard({
     run,
     showUser = true,
@@ -226,8 +259,8 @@ export function RunCard({
 }: {
     run: RunMetadata | RunFullData;
     showUser?: boolean;
-        isOwnRun?: boolean;
-        className?: string;
+    isOwnRun?: boolean;
+    className?: string;
 }) {
     const { toast } = useToast();
 
@@ -356,40 +389,43 @@ export function RunCard({
                                 </span>
                             )}
                         </div>
-                        {(isOwnRun || run.tags.length > 0) && (
-                            <div className="mt-1 flex flex-row items-center gap-2 sm:mt-4">
-                                {isOwnRun && (
-                                    <DropdownMenu>
-                                        <DropdownMenuTrigger className="flex">
-                                            <Badge className="relative z-[8] z-[8] overflow-hidden" variant="secondary">
-                                                <VisibilityIcon className="h-4 w-4" />
-                                                <ChevronDown className="-mr-1 ml-1 h-3 w-3" />
-                                            </Badge>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent className="w-56">
-                                            <DropdownMenuGroup>
-                                                {visibilities.map(({ name, Icon, code }) => (
-                                                    <DropdownMenuItem
-                                                        key={code}
-                                                        onClick={() => handleVisibilityChange(code)}
-                                                    >
-                                                        <Icon className="mr-2 h-4 w-4" />
-                                                        <span>{name}</span>
-                                                    </DropdownMenuItem>
-                                                ))}
-                                            </DropdownMenuGroup>
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
-                                )}
-                                <RunTags
-                                    codes={run.tags}
-                                    runId={run.id}
-                                    isOwn={isOwnRun}
-                                    addButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
-                                    removeButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
-                                />
-                            </div>
-                        )}
+                        <div>
+                            <RunTitle run={run} isOwnRun={isOwnRun} />
+                            {(isOwnRun || run.tags.length > 0) && (
+                                <>
+                                    {isOwnRun && (
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger className="inline-flex">
+                                                <Badge className="relative z-[8] overflow-hidden" variant="secondary">
+                                                    <VisibilityIcon className="h-4 w-4" />
+                                                    <ChevronDown className="-mr-1 ml-1 h-3 w-3" />
+                                                </Badge>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent className="w-56">
+                                                <DropdownMenuGroup>
+                                                    {visibilities.map(({ name, Icon, code }) => (
+                                                        <DropdownMenuItem
+                                                            key={code}
+                                                            onClick={() => handleVisibilityChange(code)}
+                                                        >
+                                                            <Icon className="mr-2 h-4 w-4" />
+                                                            <span>{name}</span>
+                                                        </DropdownMenuItem>
+                                                    ))}
+                                                </DropdownMenuGroup>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    )}
+                                    <RunTags
+                                        codes={run.tags}
+                                        runId={run.id}
+                                        isOwn={isOwnRun}
+                                        addButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                                        removeButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                                    />
+                                </>
+                            )}
+                        </div>
                     </div>
                     <div className="flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif sm:flex-col sm:justify-center sm:gap-2 sm:text-right">
                         {gameState?.playTime && (
@@ -409,7 +445,6 @@ export function RunCard({
                         )}
                     </div>
                 </div>
-
                 {isOwnRun && (
                     <RunCardDropdownMenu
                         run={run}
@@ -417,9 +452,8 @@ export function RunCard({
                         handleArchiveToggle={handleArchiveToggle}
                     />
                 )}
-
                 <Image
-                    className="l-0 t-0 absolute z-[1] h-full w-full bg-black object-cover opacity-90 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
+                    className="l-0 t-0 absolute z-[1] h-full w-full bg-black object-cover opacity-80 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
                     src={BgImage}
                     alt="Area background image"
                 />
