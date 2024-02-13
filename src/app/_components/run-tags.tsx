@@ -93,11 +93,27 @@ export function RunTags({
         setCodes(codes.filter((code) => code !== tag.code));
     }
 
+    const hasNoTags = runTags.length === 0 && !setTagMutation.isLoading;
+
     return (
-        <div className={cn('flex flex-row flex-wrap items-center gap-1 font-sans', className)}>
-            <ul className="flex flex-row flex-wrap items-center gap-1">
-                {runTags.length === 0 && !setTagMutation.isLoading && (
-                    <li className="z-[8] mr-2 text-white opacity-80">No tags</li>
+        <div className={cn('items-[start] flex flex-row flex-wrap gap-1 font-sans', className)}>
+            <ul className="flex flex-row flex-wrap-reverse items-end justify-end gap-1">
+                {isOwn && (
+                    <li>
+                        <TagDropdownMenu onClick={addTag}>
+                            <Button
+                                variant="outline"
+                                size="sm"
+                                className={cn(
+                                    'relative z-[8] h-auto rounded-full px-2 py-1 text-xs text-black dark:text-white',
+                                    addButtonClassName,
+                                )}
+                            >
+                                <Plus className="h-4 w-4" />
+                                Add Tag
+                            </Button>
+                        </TagDropdownMenu>
+                    </li>
                 )}
                 {runTags.map((tag) => (
                     <li key={tag.code} className="flex w-fit flex-row">
@@ -113,23 +129,6 @@ export function RunTags({
                 {setTagMutation.isLoading && (
                     <li>
                         <Skeleton className="relative z-[8] h-6 w-[4rem] brightness-125" />
-                    </li>
-                )}
-                {isOwn && (
-                    <li>
-                        <TagDropdownMenu onClick={addTag}>
-                            <Button
-                                variant="outline"
-                                aria-label="Add tag"
-                                size="icon"
-                                className={cn(
-                                    'relative z-[8] h-8 w-8 rounded-full text-black dark:text-white',
-                                    addButtonClassName,
-                                )}
-                            >
-                                <Plus />
-                            </Button>
-                        </TagDropdownMenu>
                     </li>
                 )}
             </ul>
