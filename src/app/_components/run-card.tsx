@@ -26,7 +26,7 @@ import { cn } from '@/lib/utils';
 import { Archive, ArchiveRestore, ChevronDown, MoreHorizontal, Trash } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FormEventHandler, useCallback, useRef, useState, type PropsWithChildren } from 'react';
+import { FormEventHandler, useCallback, useEffect, useRef, useState, type PropsWithChildren } from 'react';
 import { MAX_RUN_TITLE_LENGTH, cleanupTitle as cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { type RunMetadata } from '~/server/api/routers/run/runs-find';
@@ -116,12 +116,7 @@ function RunCardEpicInfo({
     href,
 }: PropsWithChildren<{ title: React.ReactNode; className?: string; href?: string }>) {
     const spans = (
-        <span
-            className={cn(
-                'sm:max-md:items-end sm:max-md:justify-end z-[4] flex flex-row items-baseline gap-1 drop-shadow-sm',
-                className,
-            )}
-        >
+        <span className={cn('z-[4] flex flex-row items-baseline gap-1 drop-shadow-sm', className)}>
             <span className="text-xs md:text-sm">{title}</span>
             <span className="text-sm font-bold md:text-base">{children}</span>
         </span>
@@ -222,11 +217,32 @@ export function RunCardDropdownMenu({
 
 function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
     const textareaRef = useRef<HTMLTextAreaElement>(null);
-    const handleTitleChange: FormEventHandler<HTMLTextAreaElement> = useCallback((e) => {
-        e.currentTarget.value = cleanupRunTitle(e.currentTarget.value, true);
-        e.currentTarget.style.height = 'auto';
-        e.currentTarget.style.height = e.currentTarget.scrollHeight + 'px';
+
+    const updateInputSize = useCallback(() => {
+        if (textareaRef.current) {
+            textareaRef.current.style.height = 'auto';
+            textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+        }
     }, []);
+
+    const handleTitleChange: FormEventHandler<HTMLTextAreaElement> = useCallback(
+        (e) => {
+            e.currentTarget.value = cleanupRunTitle(e.currentTarget.value, true);
+            updateInputSize();
+        },
+        [updateInputSize],
+    );
+
+    useEffect(() => {
+        if (!textareaRef.current) return;
+        const resizeObserver = new ResizeObserver(updateInputSize);
+
+        resizeObserver.observe(textareaRef.current);
+
+        return () => {
+            resizeObserver.disconnect();
+        };
+    }, [updateInputSize]);
 
     if (isOwnRun) {
         return (
@@ -237,7 +253,7 @@ function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
                 defaultValue={run.title ?? ''}
                 onInput={handleTitleChange}
                 maxLength={MAX_RUN_TITLE_LENGTH}
-                className="max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm md:text-2xl"
+                className="max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm focus:bg-background md:text-2xl"
             />
         );
     } else if (run.title) {
@@ -342,28 +358,64 @@ export function RunCard({
                 {/* https://css-tricks.com/nested-links/ */}
                 <Link href={`/run/${run.id}`} className="absolute inset-0 z-[6] block"></Link>
                 <div className="flex grow flex-col">
+                    <div className="-mb-4 flex flex-row items-start justify-end gap-1 sm:-mb-7">
+                        <RunTags
+                            codes={run.tags}
+                            runId={run.id}
+                            isOwn={isOwnRun}
+                            addButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                            removeButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                        />
+                        {(isOwnRun || run.tags.length > 0) && (
+                            <>
+                                {isOwnRun && (
+                                    <DropdownMenu>
+                                        <DropdownMenuTrigger className="inline-flex">
+                                            <Badge className="relative z-[8] overflow-hidden" variant="secondary">
+                                                <VisibilityIcon className="h-4 w-4" />
+                                                <ChevronDown className="-mr-1 ml-1 h-3 w-3" />
+                                            </Badge>
+                                        </DropdownMenuTrigger>
+                                        <DropdownMenuContent className="w-56">
+                                            <DropdownMenuGroup>
+                                                {visibilities.map(({ name, Icon, code }) => (
+                                                    <DropdownMenuItem
+                                                        key={code}
+                                                        onClick={() => handleVisibilityChange(code)}
+                                                    >
+                                                        <Icon className="mr-2 h-4 w-4" />
+                                                        <span>{name}</span>
+                                                    </DropdownMenuItem>
+                                                ))}
+                                            </DropdownMenuGroup>
+                                        </DropdownMenuContent>
+                                    </DropdownMenu>
+                                )}
+                            </>
+                        )}
+                    </div>
                     <div className="flex flex-grow flex-row">
-                        <div className="relative z-[3] h-[7rem] w-[7rem] shrink-0">
+                        <div className="relative z-[3] -mb-5 h-[7rem] w-[4rem] shrink-0 origin-top-left scale-75 sm:mb-0 sm:w-[6.5rem] sm:scale-100">
                             <HealthFrame isSteelSoul={isSteelSoul} isBrokenSteelSoul={isBrokenSteelSoul} />
                             {(gameState?.mpReserveMax ?? 100) >= 99 && (
                                 <Image
                                     src={soulOrbImgSrc}
                                     alt="Soul orb"
-                                    className="absolute bottom-[2rem] left-[-0.75rem] z-[3]"
+                                    className="absolute bottom-[2.75rem] left-[-0.85rem] z-[3] scale-90"
                                 />
                             )}
                             {(gameState?.mpReserveMax ?? 100) >= 66 && (
                                 <Image
                                     src={soulOrbImgSrc}
                                     alt="Soul orb"
-                                    className="absolute bottom-[0.75rem] left-[-0.25rem] z-[3]"
+                                    className="absolute bottom-[1.6rem] left-[-0.4rem] z-[3] scale-95"
                                 />
                             )}
                             {(gameState?.mpReserveMax ?? 100) >= 33 && (
                                 <Image
                                     src={soulOrbImgSrc}
                                     alt="Soul orb"
-                                    className="absolute bottom-0 left-[1rem] z-[3]"
+                                    className="absolute bottom-[0.65rem] left-[0.5rem] z-[3]"
                                 />
                             )}
                         </div>
@@ -373,71 +425,37 @@ export function RunCard({
                                     <Image src={healthImgSrc} alt="Health" key={i} className="-mb-1 w-5 sm:w-6" />
                                 ))}
                             </div>
-                            <div className="relative z-[4] mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-sm sm:mt-4">
+                            <div className="relative z-[4] mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-sm sm:mt-3">
                                 <span>
                                     <Image
                                         src={Coin}
                                         alt="Geo icon"
                                         className="inline-block w-7 p-1 drop-shadow-glow-md"
                                     />
-                                    <span className="font-semibold">{gameState?.geo ?? '?'}</span>
+                                    <span className="text-xl font-semibold sm:text-2xl">{gameState?.geo ?? '?'}</span>
                                 </span>
                                 {gameState?.dreamOrbs ? (
                                     <span>
                                         <Image
                                             src={gameState?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
                                             alt="Essence icon"
-                                            className="-mb-3 -mt-4 inline-block w-9 p-1 brightness-110 drop-shadow-glow-md"
+                                            className="-mb-3 -mt-4 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
                                         />
-                                        <span className="font-semibold">{gameState.dreamOrbs}</span>
+                                        <span className="text-xl font-semibold sm:text-2xl">{gameState.dreamOrbs}</span>
                                     </span>
                                 ) : undefined}
                                 {displayPercentage(gameState) && (
                                     <span className="ml-4">
-                                        <span className="font-semibold">{gameState.completionPercentage}</span>%
+                                        <span className="text-xl font-semibold sm:text-2xl">
+                                            {gameState.completionPercentage}
+                                        </span>
+                                        %
                                     </span>
                                 )}
                             </div>
                         </div>
-
-                        <div className="flex max-w-[40%] flex-row items-start gap-1 self-start">
-                            <RunTags
-                                codes={run.tags}
-                                runId={run.id}
-                                isOwn={isOwnRun}
-                                addButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
-                                removeButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
-                            />
-                            {(isOwnRun || run.tags.length > 0) && (
-                                <>
-                                    {isOwnRun && (
-                                        <DropdownMenu>
-                                            <DropdownMenuTrigger className="inline-flex">
-                                                <Badge className="relative z-[8] overflow-hidden" variant="secondary">
-                                                    <VisibilityIcon className="h-4 w-4" />
-                                                    <ChevronDown className="-mr-1 ml-1 h-3 w-3" />
-                                                </Badge>
-                                            </DropdownMenuTrigger>
-                                            <DropdownMenuContent className="w-56">
-                                                <DropdownMenuGroup>
-                                                    {visibilities.map(({ name, Icon, code }) => (
-                                                        <DropdownMenuItem
-                                                            key={code}
-                                                            onClick={() => handleVisibilityChange(code)}
-                                                        >
-                                                            <Icon className="mr-2 h-4 w-4" />
-                                                            <span>{name}</span>
-                                                        </DropdownMenuItem>
-                                                    ))}
-                                                </DropdownMenuGroup>
-                                            </DropdownMenuContent>
-                                        </DropdownMenu>
-                                    )}
-                                </>
-                            )}
-                        </div>
                     </div>
-                    <div>
+                    <div className="-mt-3">
                         <RunTitle run={run} isOwnRun={isOwnRun} />
                         <div className="flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif">
                             {run.user?.name && showUser && (
