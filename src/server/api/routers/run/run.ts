@@ -4,6 +4,7 @@ import { r2FileHead, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
 
 import { TRPCError } from '@trpc/server';
 import { and, eq } from 'drizzle-orm';
+import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { tagSchema } from '~/lib/types/tags';
 import { raise } from '~/lib/utils/utils';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
@@ -92,6 +93,25 @@ export const runRouter = createTRPCRouter({
 
             if (result.rowsAffected !== 1) {
                 throw new Error('Could not add tag');
+            }
+        }),
+    setTitle: protectedProcedure
+        .input(
+            z.object({
+                id: z.string().uuid(),
+                title: z.string().max(MAX_RUN_TITLE_LENGTH),
+            }),
+        )
+        .mutation(async ({ ctx, input }) => {
+            const userId = ctx.session.user?.id ?? raise(new Error('Not logged in'));
+
+            const result = await ctx.db
+                .update(runs)
+                .set({ title: input.title })
+                .where(and(eq(runs.id, input.id), eq(runs.userId, userId)));
+
+            if (result.rowsAffected !== 1) {
+                throw new Error('Could not update title');
             }
         }),
     createUploadPartUrl: publicProcedure

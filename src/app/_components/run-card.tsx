@@ -216,6 +216,22 @@ export function RunCardDropdownMenu({
 }
 
 function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
+    const { toast } = useToast();
+
+    const setTitleMutation = api.run.setTitle.useMutation({
+        onSuccess: () => {
+            toast({
+                title: 'Successfully updated title',
+            });
+        },
+        onError: (err) => {
+            toast({
+                title: 'Failed to update title',
+                description: `${err.data?.code}: ${err?.message}`,
+            });
+        },
+    });
+
     const textareaRef = useRef<HTMLTextAreaElement>(null);
 
     const updateInputSize = useCallback(() => {
@@ -232,6 +248,15 @@ function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
         },
         [updateInputSize],
     );
+
+    const handleInputBlur = useCallback(() => {
+        if (!textareaRef.current) return;
+
+        const title = cleanupRunTitle(textareaRef.current.value);
+        if (run.title === title) return;
+        run.title = title;
+        setTitleMutation.mutate({ id: run.id, title });
+    }, [run, setTitleMutation]);
 
     useEffect(() => {
         if (!textareaRef.current) return;
@@ -252,6 +277,7 @@ function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
                 rows={1}
                 defaultValue={run.title ?? ''}
                 onInput={handleTitleChange}
+                onBlur={handleInputBlur}
                 maxLength={MAX_RUN_TITLE_LENGTH}
                 className="max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm focus:bg-background md:text-2xl"
             />
