@@ -20,12 +20,14 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
 import { Archive, ArchiveRestore, ChevronDown, MoreHorizontal, Trash } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, type PropsWithChildren } from 'react';
+import { FormEventHandler, useCallback, useEffect, useRef, useState, type PropsWithChildren } from 'react';
+import { MAX_RUN_TITLE_LENGTH, cleanupTitle as cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { type RunMetadata } from '~/server/api/routers/run/runs-find';
 import { RunFullData } from '~/server/api/types';
@@ -114,14 +116,9 @@ function RunCardEpicInfo({
     href,
 }: PropsWithChildren<{ title: React.ReactNode; className?: string; href?: string }>) {
     const spans = (
-        <span
-            className={cn(
-                'sm:max-md:flex-col sm:max-md:items-end sm:max-md:justify-end sm:max-md:gap-0 z-[4] flex items-baseline gap-1 drop-shadow-sm md:gap-1',
-                className,
-            )}
-        >
-            <span>{title}</span>
-            <span className="text-lg font-bold">{children}</span>
+        <span className={cn('z-[4] flex flex-row items-baseline gap-1 drop-shadow-sm', className)}>
+            <span className="text-xs md:text-sm">{title}</span>
+            <span className="text-sm font-bold md:text-base">{children}</span>
         </span>
     );
 
@@ -218,6 +215,84 @@ export function RunCardDropdownMenu({
     );
 }
 
+function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
+    const { toast } = useToast();
+
+    const setTitleMutation = api.run.setTitle.useMutation({
+        onSuccess: () => {
+            toast({
+                title: 'Successfully updated title',
+            });
+        },
+        onError: (err) => {
+            toast({
+                title: 'Failed to update title',
+                description: `${err.data?.code}: ${err?.message}`,
+            });
+        },
+    });
+
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+    const updateInputSize = useCallback(() => {
+        if (textareaRef.current) {
+            textareaRef.current.style.height = 'auto';
+            textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
+        }
+    }, []);
+
+    const handleTitleChange: FormEventHandler<HTMLTextAreaElement> = useCallback(
+        (e) => {
+            e.currentTarget.value = cleanupRunTitle(e.currentTarget.value, true);
+            updateInputSize();
+        },
+        [updateInputSize],
+    );
+
+    const handleInputBlur = useCallback(() => {
+        if (!textareaRef.current) return;
+
+        const title = cleanupRunTitle(textareaRef.current.value);
+        if (run.title === title) return;
+        run.title = title;
+        setTitleMutation.mutate({ id: run.id, title });
+    }, [run, setTitleMutation]);
+
+    useEffect(() => {
+        if (!textareaRef.current) return;
+        const resizeObserver = new ResizeObserver(updateInputSize);
+
+        resizeObserver.observe(textareaRef.current);
+
+        return () => {
+            resizeObserver.disconnect();
+        };
+    }, [updateInputSize]);
+
+    if (isOwnRun) {
+        return (
+            <Textarea
+                ref={textareaRef}
+                placeholder="Add title"
+                rows={1}
+                defaultValue={run.title ?? ''}
+                onInput={handleTitleChange}
+                onBlur={handleInputBlur}
+                maxLength={MAX_RUN_TITLE_LENGTH}
+                className="max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm focus:bg-background md:text-2xl"
+            />
+        );
+    } else if (run.title) {
+        return (
+            <h2 className="color-white relative z-[8] inline font-serif text-xl font-bold drop-shadow-sm md:text-2xl">
+                {run.title}
+            </h2>
+        );
+    } else {
+        return undefined;
+    }
+}
+
 export function RunCard({
     run,
     showUser = true,
@@ -226,8 +301,8 @@ export function RunCard({
 }: {
     run: RunMetadata | RunFullData;
     showUser?: boolean;
-        isOwnRun?: boolean;
-        className?: string;
+    isOwnRun?: boolean;
+    className?: string;
 }) {
     const { toast } = useToast();
 
@@ -301,67 +376,28 @@ export function RunCard({
             <div
                 key={run.id}
                 className={cn(
-                    'group relative mb-2 flex h-[unset] w-full flex-row items-start justify-between overflow-hidden rounded-sm bg-black px-4 py-2 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none',
+                    'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-[1.25rem] bg-black py-2 pl-4 pr-3 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
                     isRemoved ? 'scale-125 opacity-0' : '',
                     isLoading ? 'grayscale' : '',
                 )}
             >
                 {/* https://css-tricks.com/nested-links/ */}
                 <Link href={`/run/${run.id}`} className="absolute inset-0 z-[6] block"></Link>
-                <div className="relative z-[3] h-[7rem] w-[7rem] shrink-0">
-                    <HealthFrame isSteelSoul={isSteelSoul} isBrokenSteelSoul={isBrokenSteelSoul} />
-                    {(gameState?.mpReserveMax ?? 100) >= 99 && (
-                        <Image
-                            src={soulOrbImgSrc}
-                            alt="Soul orb"
-                            className="absolute bottom-[2rem] left-[-0.75rem] z-[3]"
+                <div className="flex grow flex-col">
+                    <div className="-mb-4 flex flex-row items-start justify-end gap-1 sm:-mb-7">
+                        <RunTags
+                            codes={run.tags}
+                            runId={run.id}
+                            isOwn={isOwnRun}
+                            addButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                            removeButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
                         />
-                    )}
-                    {(gameState?.mpReserveMax ?? 1000) >= 66 && (
-                        <Image
-                            src={soulOrbImgSrc}
-                            alt="Soul orb"
-                            className="absolute bottom-[0.75rem] left-[-0.25rem] z-[3]"
-                        />
-                    )}
-                    {(gameState?.mpReserveMax ?? 100) >= 33 && (
-                        <Image src={soulOrbImgSrc} alt="Soul orb" className="absolute bottom-0 left-[1rem] z-[3]" />
-                    )}
-                </div>
-                <div className="flex grow flex-col sm:flex-row">
-                    <div className="shrink grow basis-[50%]">
-                        <div className="relative z-[4] mt-4 flex flex-row flex-wrap gap-1 drop-shadow-sm sm:gap-2">
-                            {[...Array(gameState?.maxHealth ?? 5).keys()].map((i) => (
-                                <Image src={healthImgSrc} alt="Health" key={i} className="-mb-1 w-5 sm:w-6" />
-                            ))}
-                        </div>
-                        <div className="relative z-[4] mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-sm sm:mt-4">
-                            <span>
-                                <Image src={Coin} alt="Geo icon" className="inline-block w-7 p-1 drop-shadow-glow-md" />
-                                <span className="font-semibold">{gameState?.geo ?? '?'}</span>
-                            </span>
-                            {gameState?.dreamOrbs ? (
-                                <span>
-                                    <Image
-                                        src={gameState?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
-                                        alt="Essence icon"
-                                        className="-mb-3 -mt-4 inline-block w-9 p-1 brightness-110 drop-shadow-glow-md"
-                                    />
-                                    <span className="font-semibold">{gameState.dreamOrbs}</span>
-                                </span>
-                            ) : undefined}
-                            {displayPercentage(gameState) && (
-                                <span className="ml-4">
-                                    <span className="font-semibold">{gameState.completionPercentage}</span>%
-                                </span>
-                            )}
-                        </div>
                         {(isOwnRun || run.tags.length > 0) && (
-                            <div className="mt-1 flex flex-row items-center gap-2 sm:mt-4">
+                            <>
                                 {isOwnRun && (
                                     <DropdownMenu>
-                                        <DropdownMenuTrigger className="flex">
-                                            <Badge className="relative z-[8] z-[8] overflow-hidden" variant="secondary">
+                                        <DropdownMenuTrigger className="inline-flex">
+                                            <Badge className="relative z-[8] overflow-hidden" variant="secondary">
                                                 <VisibilityIcon className="h-4 w-4" />
                                                 <ChevronDown className="-mr-1 ml-1 h-3 w-3" />
                                             </Badge>
@@ -381,35 +417,93 @@ export function RunCard({
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                 )}
-                                <RunTags
-                                    codes={run.tags}
-                                    runId={run.id}
-                                    isOwn={isOwnRun}
-                                    addButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
-                                    removeButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
-                                />
-                            </div>
+                            </>
                         )}
                     </div>
-                    <div className="flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif sm:flex-col sm:justify-center sm:gap-2 sm:text-right">
-                        {gameState?.playTime && (
-                            <RunCardEpicInfo title="Playtime:">
-                                <Duration seconds={gameState.playTime} />
-                            </RunCardEpicInfo>
-                        )}
-                        {run.lastPlayedAt && (
-                            <RunCardEpicInfo title="Last played:">
-                                <RelativeDate date={run.lastPlayedAt} withTooltip={false} />
-                            </RunCardEpicInfo>
-                        )}
-                        {run.user?.name && showUser && (
-                            <RunCardEpicInfo title="By:" href={`/player/${run.user.id}`}>
-                                {run.user.name}
-                            </RunCardEpicInfo>
-                        )}
+                    <div className="flex flex-grow flex-row">
+                        <div className="relative z-[3] -mb-5 h-[7rem] w-[4rem] shrink-0 origin-top-left scale-75 sm:mb-0 sm:w-[6.5rem] sm:scale-100">
+                            <HealthFrame isSteelSoul={isSteelSoul} isBrokenSteelSoul={isBrokenSteelSoul} />
+                            {(gameState?.mpReserveMax ?? 100) >= 99 && (
+                                <Image
+                                    src={soulOrbImgSrc}
+                                    alt="Soul orb"
+                                    className="absolute bottom-[2.75rem] left-[-0.85rem] z-[3] scale-90"
+                                />
+                            )}
+                            {(gameState?.mpReserveMax ?? 100) >= 66 && (
+                                <Image
+                                    src={soulOrbImgSrc}
+                                    alt="Soul orb"
+                                    className="absolute bottom-[1.6rem] left-[-0.4rem] z-[3] scale-95"
+                                />
+                            )}
+                            {(gameState?.mpReserveMax ?? 100) >= 33 && (
+                                <Image
+                                    src={soulOrbImgSrc}
+                                    alt="Soul orb"
+                                    className="absolute bottom-[0.65rem] left-[0.5rem] z-[3]"
+                                />
+                            )}
+                        </div>
+                        <div className="flex grow flex-col">
+                            <div className="relative z-[4] mt-4 flex flex-row flex-wrap gap-1 drop-shadow-sm sm:gap-2">
+                                {[...Array(gameState?.maxHealth ?? 5).keys()].map((i) => (
+                                    <Image src={healthImgSrc} alt="Health" key={i} className="-mb-1 w-5 sm:w-6" />
+                                ))}
+                            </div>
+                            <div className="relative z-[4] mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-sm sm:mt-3">
+                                <span>
+                                    <Image
+                                        src={Coin}
+                                        alt="Geo icon"
+                                        className="inline-block w-7 p-1 drop-shadow-glow-md"
+                                    />
+                                    <span className="text-xl font-semibold sm:text-2xl">{gameState?.geo ?? '?'}</span>
+                                </span>
+                                {gameState?.dreamOrbs ? (
+                                    <span>
+                                        <Image
+                                            src={gameState?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
+                                            alt="Essence icon"
+                                            className="-mb-3 -mt-4 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
+                                        />
+                                        <span className="text-xl font-semibold sm:text-2xl">{gameState.dreamOrbs}</span>
+                                    </span>
+                                ) : undefined}
+                                {displayPercentage(gameState) && (
+                                    <span className="ml-4">
+                                        <span className="text-xl font-semibold sm:text-2xl">
+                                            {gameState.completionPercentage}
+                                        </span>
+                                        %
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                    <div className="-mt-3">
+                        <RunTitle run={run} isOwnRun={isOwnRun} />
+                        <div className="flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif">
+                            {run.user?.name && showUser && (
+                                <RunCardEpicInfo title="By:" href={`/player/${run.user.id}`}>
+                                    {run.user.name}
+                                </RunCardEpicInfo>
+                            )}
+                            {gameState?.playTime && (
+                                <RunCardEpicInfo title="Playtime:">
+                                    <Duration seconds={gameState.playTime} />
+                                </RunCardEpicInfo>
+                            )}
+                            {run.lastPlayedAt && (
+                                <RunCardEpicInfo title="Last played:">
+                                    <RelativeDate date={run.lastPlayedAt} withTooltip={false} />
+                                </RunCardEpicInfo>
+                            )}
+                        </div>
                     </div>
                 </div>
 
+                {/* Dropdown */}
                 {isOwnRun && (
                     <RunCardDropdownMenu
                         run={run}
@@ -418,8 +512,9 @@ export function RunCard({
                     />
                 )}
 
+                {/* Background */}
                 <Image
-                    className="l-0 t-0 absolute z-[1] h-full w-full bg-black object-cover opacity-90 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
+                    className="l-0 t-0 absolute z-[1] h-full w-full bg-black object-cover opacity-70 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
                     src={BgImage}
                     alt="Area background image"
                 />

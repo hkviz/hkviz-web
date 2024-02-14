@@ -39,7 +39,11 @@ export function DiscordDialogButton() {
                 </DialogHeader>
                 <div className="flex flex-col justify-center gap-2 p-4 pt-2 align-baseline">
                     <Button asChild className="w-full">
-                        <a href="https://discord.com/invite/hkmodding" target="_blank" rel="noreferrer">
+                        <a
+                            href="https://discord.gg/hollow-knight-modding-879125729936298015"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
                             Join the Modding Discord Server
                         </a>
                     </Button>

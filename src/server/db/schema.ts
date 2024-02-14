@@ -16,6 +16,7 @@ import {
 import { type AdapterAccount } from 'next-auth/adapters';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { countryCodes } from '~/lib/types/country';
+import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { tags, type TagCode } from '~/lib/types/tags';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 
@@ -213,6 +214,7 @@ export const runs = mysqlTable(
         // // id used for key in r2 bucket
         // bucketFileId: varchar('fileId', { length: 255 }).notNull(),
 
+        title: varchar('title', { length: MAX_RUN_TITLE_LENGTH }),
         description: text('description'),
         createdAt: timestamp('created_at')
             .default(sql`CURRENT_TIMESTAMP`)
