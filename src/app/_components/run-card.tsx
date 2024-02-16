@@ -1,18 +1,6 @@
 'use client';
 
-import {
-    AlertDialog,
-    AlertDialogAction,
-    AlertDialogCancel,
-    AlertDialogContent,
-    AlertDialogDescription,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogTitle,
-    AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -23,7 +11,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
-import { Archive, ArchiveRestore, ChevronDown, MoreHorizontal, Trash } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FormEventHandler, useCallback, useEffect, useRef, useState, type PropsWithChildren } from 'react';
@@ -46,6 +34,7 @@ import DreamNailImg from '../../../public/ingame-sprites/inventory/dream_nail_00
 import { getMapZoneHudBackground } from './area-background';
 import { RelativeDate } from './date';
 import { Expander } from './expander';
+import { RunCardDropdownMenu } from './run-card-dropdown';
 import { RunTags } from './run-tags';
 
 function Duration({ seconds }: { seconds: number }) {
@@ -131,90 +120,6 @@ function RunCardEpicInfo({
     );
 }
 
-export function RunCardDropdownMenu({
-    run,
-    handleArchiveToggle,
-    handleDelete,
-}: {
-    run: RunMetadata;
-    handleArchiveToggle: () => void;
-    handleDelete: () => void;
-}) {
-    // weirdly structured alert outside of dropdown bc of:
-    // https://stackoverflow.com/questions/77185827/shadcn-dialog-inside-of-dropdown-closes-automatically
-    return (
-        <AlertDialog>
-            <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                    <Button
-                        variant="ghost"
-                        size="icon"
-                        className="absolute bottom-1 right-1 z-[7] flex h-6 items-center rounded-sm"
-                    >
-                        <MoreHorizontal className="h-6 w-6" />
-                    </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="-top-2 w-56" side="top" align="end" alignOffset={-10}>
-                    <DropdownMenuGroup>
-                        <AlertDialogTrigger asChild>
-                            <DropdownMenuItem>
-                                <Trash className="mr-2 h-4 w-4" />
-                                <span>Delete</span>
-                            </DropdownMenuItem>
-                        </AlertDialogTrigger>
-                        {run.archived && (
-                            <DropdownMenuItem onClick={handleArchiveToggle}>
-                                <ArchiveRestore className="mr-2 h-4 w-4" />
-                                <span>Unarchive</span>
-                            </DropdownMenuItem>
-                        )}
-                        {!run.archived && (
-                            <DropdownMenuItem onClick={handleArchiveToggle}>
-                                <Archive className="mr-2 h-4 w-4" />
-                                <span>Archive</span>
-                            </DropdownMenuItem>
-                        )}
-                    </DropdownMenuGroup>
-                </DropdownMenuContent>
-            </DropdownMenu>
-            <AlertDialogContent>
-                <AlertDialogHeader>
-                    <AlertDialogTitle>
-                        {run.archived ? 'Delete this run completely?' : 'Delete or Archive this gameplay?'}
-                    </AlertDialogTitle>
-                    <AlertDialogDescription>
-                        <ul className="list-disc pl-5">
-                            <li>
-                                <b className="text-bold">Delete can not be undone</b>, your data will be deleted
-                                completely. <br />
-                                Playing again on this profile while using the mod, will create a new gamplay without the
-                                previous data.
-                            </li>
-                            {!run.archived && (
-                                <li>
-                                    <b className="text-bold">Archive</b> will hide this gameplay from your gameplays and
-                                    other views, you can still view it inside your archive. <br />
-                                    Playing again on this profile while using the mod, will record the data into your
-                                    archive.
-                                </li>
-                            )}
-                        </ul>
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    {!run.archived && (
-                        <AlertDialogAction onClick={handleArchiveToggle}>
-                            {run.archived ? 'Unarchive' : 'Archive'}
-                        </AlertDialogAction>
-                    )}
-                    <AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
-    );
-}
-
 function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
     const { toast } = useToast();
 
@@ -236,10 +141,17 @@ function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
 
     const updateInputSize = useCallback(() => {
         if (textareaRef.current) {
+            textareaRef.current.style.width = `min(${Math.max(textareaRef.current.value.length * 1.5 + 5, 10)}ch, 100%)`;
             textareaRef.current.style.height = 'auto';
             textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
         }
     }, []);
+
+    useEffect(() => {
+        if (!textareaRef.current) return;
+        textareaRef.current.value = run.title ?? '';
+        updateInputSize();
+    }, [run.title, updateInputSize]);
 
     const handleTitleChange: FormEventHandler<HTMLTextAreaElement> = useCallback(
         (e) => {
@@ -279,12 +191,14 @@ function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
                 onInput={handleTitleChange}
                 onBlur={handleInputBlur}
                 maxLength={MAX_RUN_TITLE_LENGTH}
-                className="max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm focus:bg-background md:text-2xl"
+                className={
+                    'max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm focus:bg-background focus:text-foreground md:text-2xl'
+                }
             />
         );
     } else if (run.title) {
         return (
-            <h2 className="color-white relative z-[8] inline font-serif text-xl font-bold drop-shadow-sm md:text-2xl">
+            <h2 className="color-white relative z-[8] font-serif text-xl font-bold drop-shadow-sm md:text-2xl">
                 {run.title}
             </h2>
         );
@@ -298,11 +212,15 @@ export function RunCard({
     showUser = true,
     isOwnRun = false,
     className,
+    onClick,
+    onCombineClicked,
 }: {
     run: RunMetadata | RunFullData;
     showUser?: boolean;
     isOwnRun?: boolean;
     className?: string;
+    onClick?: (runId: string) => void;
+    onCombineClicked?: (runId: string) => void;
 }) {
     const { toast } = useToast();
 
@@ -348,6 +266,10 @@ export function RunCard({
     const [visibility, setVisibility] = useState<VisibilityCode>(run.visibility);
     const visibilityMutation = api.run.setVisibility.useMutation();
 
+    useEffect(() => {
+        setVisibility(run.visibility);
+    }, [run.visibility]);
+
     async function handleVisibilityChange(newVisibility: VisibilityCode) {
         setVisibility(newVisibility);
         await visibilityMutation.mutateAsync({ id: run.id, visibility: newVisibility });
@@ -382,7 +304,12 @@ export function RunCard({
                 )}
             >
                 {/* https://css-tricks.com/nested-links/ */}
-                <Link href={`/run/${run.id}`} className="absolute inset-0 z-[6] block"></Link>
+
+                {onClick ? (
+                    <button onClick={() => onClick(run.id)} className="absolute inset-0 z-[6] block"></button>
+                ) : (
+                    <Link href={`/run/${run.id}`} className="absolute inset-0 z-[6] block"></Link>
+                )}
                 <div className="flex grow flex-col">
                     <div className="-mb-4 flex flex-row items-start justify-end gap-1 sm:-mb-7">
                         <RunTags
@@ -504,11 +431,12 @@ export function RunCard({
                 </div>
 
                 {/* Dropdown */}
-                {isOwnRun && (
+                {isOwnRun && onCombineClicked && (
                     <RunCardDropdownMenu
                         run={run}
                         handleDelete={handleDelete}
                         handleArchiveToggle={handleArchiveToggle}
+                        onCombineClicked={onCombineClicked}
                     />
                 )}
 

@@ -14,6 +14,7 @@ import { getUserIdFromIngameSession } from '../ingameauth';
 import { assertIsResearcher } from '../lib/researcher';
 import { getOrCreateRunId } from './get-or-create-run-id';
 import { runGameStateMetaColumnsSelect } from './run-column-selects';
+import { combineRunsProcedure, uncombineRunProcedure } from './run-combine';
 import { deleteRunProcedure, setRunArchivedProcedure } from './run-deletion';
 import { findRuns } from './runs-find';
 
@@ -284,47 +285,6 @@ export const runRouter = createTRPCRouter({
                 console.error('Could not update run meta from file', ex);
             }
         }),
-    // TODO: remove
-    // createUploadUrl: protectedProcedure
-    //     .input(
-    //         z.object({
-    //             runFileId: z.string().uuid(),
-    //             description: z.string().max(200),
-    //             previousHollowKnightExperience: z.enum(['none', 'unfinished', 'finished', 'finishedMany']),
-    //         }),
-    //     )
-    //     .mutation(async ({ ctx, input }) => {
-    //         if (!ctx.session.user) {
-    //             throw new Error('Not logged in');
-    //         }
-    //         const id = uuidv4();
-    //         const bucketFileId = uuidv4();
-    //         const userId = ctx.session.user.id;
-    //         const { runFileId } = input;
-
-    //         await ctx.db.insert(runs).values({
-    //             id,
-    //             bucketFileId,
-    //             userId,
-    //             runFileId,
-    //         });
-
-    //         // try {
-    //         //     console.log(await r2.send(new ListBucketsCommand('')));
-    //         // } catch (e) {
-    //         //     console.error(e);
-    //         // }
-
-    //         const signedUrl = await getSignedUrl(
-    //             r2,
-    //             new PutObjectCommand({
-    //                 Bucket: env.R2_BUCKET_NAME,
-    //                 // ContentLength: 100 * 1024 * 1024,
-    //                 Key: `hkrun_${bucketFileId}`,
-    //             }),
-    //             { expiresIn: 60 },
-    //         );
-
-    //         return { signedUrl, id };
-    //     }),
+    combine: combineRunsProcedure,
+    uncombine: uncombineRunProcedure,
 });

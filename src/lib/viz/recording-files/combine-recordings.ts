@@ -51,13 +51,13 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 
     const hasCreatedFirstEndFrameEvent = false;
 
-    for (const recording of recordings.sort((a, b) => a.partNumber! - b.partNumber!)) {
+    for (const recording of recordings.sort((a, b) => a.combinedPartNumber! - b.combinedPartNumber!)) {
         for (const event of recording.events) {
             // create together player data event if needed
             // TODO might be good to exclude some fields here since they are updated very often and not needed
             // for the visualizations
             if (event.timestamp > lastTimestamp) {
-                if (!hasCreatedFirstEndFrameEvent && recording.partNumber === 1) {
+                if (!hasCreatedFirstEndFrameEvent && recording.combinedPartNumber === 1) {
                     Object.values(playerDataFields.byFieldName).forEach((field) => {
                         if (!previousPlayerDataEventsByField.has(field)) {
                             // if part number = 1 all non default player data fields should have been added
@@ -309,7 +309,6 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
         events,
         recordings.reduce((sum, recording) => sum + recording.unknownEvents, 0),
         recordings.reduce((sum, recording) => sum + recording.parsingErrors, 0),
-        null,
         previousPlayerDataEventsByField,
         [...allModVersions.entries()].map(([name, versions]) => ({ name, versions: [...versions.values()].sort() })),
     );

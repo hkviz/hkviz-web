@@ -36,7 +36,7 @@ function wrapResultWithProgress(
 export type LoadedRunFile = {
     fileId: string;
     finishedLoading: true;
-    partNumber: number;
+    combinedPartNumber: number;
     fileVersion: number;
     loadingProgress: 1;
     recording: ParsedRecording;
@@ -45,7 +45,7 @@ export type LoadedRunFile = {
 export type LoadingRunFile = {
     fileId: string;
     finishedLoading: false;
-    partNumber: number;
+    combinedPartNumber: number;
     fileVersion: number;
     loadingProgress: number | null;
 };
@@ -71,7 +71,7 @@ export const useRunFileStore = create(
             runId: string;
             fileId: string;
             recording: ParsedRecording;
-            partNumber: number;
+            combinedPartNumber: number;
         }) {
             set((state) => ({
                 files: {
@@ -84,7 +84,7 @@ export const useRunFileStore = create(
                             loadingProgress: 1,
                             recording: action.recording,
                             fileVersion: action.fileVersion,
-                            partNumber: action.partNumber,
+                            combinedPartNumber: action.combinedPartNumber,
                         },
                     },
                 },
@@ -95,7 +95,7 @@ export const useRunFileStore = create(
             runId: string;
             fileId: string;
             progress: number | null;
-            partNumber: number;
+            combinedPartNumber: number;
         }) {
             set((state) => ({
                 files: {
@@ -107,7 +107,7 @@ export const useRunFileStore = create(
                             finishedLoading: false,
                             loadingProgress: action.progress,
                             fileVersion: action.fileVersion,
-                            partNumber: action.partNumber,
+                            combinedPartNumber: action.combinedPartNumber,
                         },
                     },
                 },
@@ -117,29 +117,29 @@ export const useRunFileStore = create(
             runId,
             fileId,
             version: fileVersion,
-            partNumber,
+            combinedPartNumber,
             downloadUrl,
         }: {
             runId: string;
             fileId: string;
             version: number;
-            partNumber: number;
+            combinedPartNumber: number;
             downloadUrl: string;
         }) {
             const isNewerThenCurrent = (get().files[runId]?.[fileId]?.fileVersion ?? -1) < fileVersion;
             if (!isNewerThenCurrent) return;
-            setLoadingProgress({ partNumber, fileVersion, runId, fileId, progress: 0 });
+            setLoadingProgress({ combinedPartNumber: combinedPartNumber, fileVersion, runId, fileId, progress: 0 });
             setRunNotLoaded(runId);
 
             const loader = () => fetchWithRunfileCache(fileId, fileVersion, downloadUrl);
 
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            (window as any)['fileLoader_' + partNumber] = loader;
+            (window as any)['fileLoader_' + combinedPartNumber] = loader;
 
             const response = await loader().then((it) =>
                 wrapResultWithProgress(it, ({ loaded, total }) => {
                     setLoadingProgress({
-                        partNumber,
+                        combinedPartNumber: combinedPartNumber,
                         fileVersion,
                         runId,
                         fileId,
@@ -150,8 +150,8 @@ export const useRunFileStore = create(
             const data = await response.text();
             const isStillCurrent = (get().files[runId]?.[fileId]?.fileVersion ?? -1) === fileVersion;
             if (!isStillCurrent) return;
-            const recording = parseRecordingFile(data, partNumber);
-            setLoaded({ partNumber, fileVersion, runId, fileId, recording });
+            const recording = parseRecordingFile(data, combinedPartNumber);
+            setLoaded({ combinedPartNumber: combinedPartNumber, fileVersion, runId, fileId, recording });
             combineIfAllFinished(runId);
         }
 
@@ -211,7 +211,7 @@ export const useRunFileStore = create(
                         fileId: fileInfo.id,
                         version: fileInfo.version,
                         downloadUrl: fileInfo.signedUrl,
-                        partNumber: fileInfo.partNumber,
+                        combinedPartNumber: fileInfo.combinedPartNumber,
                     });
                 }),
             );

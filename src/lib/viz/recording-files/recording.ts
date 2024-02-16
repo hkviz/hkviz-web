@@ -95,17 +95,19 @@ export class ParsedRecording {
         public readonly events: RecordingEvent[],
         public readonly unknownEvents: number,
         public readonly parsingErrors: number,
-        public readonly partNumber: number | null,
+        public readonly combinedPartNumber: number | null,
     ) {}
 
     lastEvent() {
         return (
             this.events[this.events.length - 1] ??
-            raise(new Error(`Recording file ${this.partNumber} does not contain any events`))
+            raise(new Error(`Recording file ${this.combinedPartNumber} does not contain any events`))
         );
     }
     firstEvent() {
-        return this.events[0] ?? raise(new Error(`Recording file ${this.partNumber} does not contain any events`));
+        return (
+            this.events[0] ?? raise(new Error(`Recording file ${this.combinedPartNumber} does not contain any events`))
+        );
     }
 }
 
@@ -117,11 +119,10 @@ export class CombinedRecording extends ParsedRecording {
         events: RecordingEvent[],
         unknownEvents: number,
         parsingErrors: number,
-        partNumber: number | null,
         public readonly lastPlayerDataEventsByField: Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>,
         public readonly allModVersions: ModInfo[],
     ) {
-        super(events, unknownEvents, parsingErrors, partNumber);
+        super(events, unknownEvents, parsingErrors, null);
 
         for (const event of events) {
             if (event instanceof PlayerDataEvent) {

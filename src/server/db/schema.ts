@@ -203,6 +203,9 @@ export const runs = mysqlTable(
         // server generated. Used for urls
         id: varchar('id', { length: 255 }).notNull().primaryKey(),
 
+        combinedIntoRunId: varcharUuid('combined_into_run_id'),
+        isCombinedRun: boolean('is_combined_run').notNull().default(false),
+
         // user generated
         /**
          * @deprecated use run local id instead
@@ -257,6 +260,7 @@ export const runLocalIds = mysqlTable(
         localId: varcharUuid('local_id').notNull(),
         userId: varcharUuid('user_id').notNull(),
         runId: varcharUuid('run_id').notNull(),
+        originalRunId: varcharUuid('original_run_id'),
     },
     (runLocalId) => ({
         compoundKey: primaryKey(runLocalId.userId, runLocalId.localId),
