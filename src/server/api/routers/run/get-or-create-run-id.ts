@@ -28,6 +28,7 @@ export async function getOrCreateRunId(db: DB, localId: string, userId: string):
         runId: newId,
         localId,
         userId,
+        originalRunId: newId,
     });
 
     return newId;

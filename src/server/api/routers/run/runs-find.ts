@@ -1,3 +1,4 @@
+import { isNull } from 'drizzle-orm';
 import { z } from 'zod';
 import { r2GetSignedDownloadUrl, r2RunPartFileKey } from '~/lib/r2';
 import { tagSchema, type TagCode } from '~/lib/types/tags';
@@ -65,6 +66,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
                 filter.archived ? inArray(run.archived, filter.archived) : undefined,
                 eq(run.deleted, false),
                 filter.id ? inArray(run.id, filter.id) : undefined,
+                isNull(run.combinedIntoRunId),
             ];
 
             return and(...conditions.filter((c) => c != null));
@@ -77,6 +79,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
             updatedAt: true,
             visibility: true,
             archived: true,
+            isCombinedRun: true,
             ...runTagFieldsSelect,
             ...runFilesMetaFieldsSelect,
         },
@@ -109,43 +112,58 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
 
     return (
         await Promise.all(
-            runs.map(async ({ files, id, title, description, createdAt, updatedAt, visibility, archived, ...run }) => {
-                const gameState = getGameStateMeta(run);
-                const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
-                const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
-                const isResearchView = run.user.id !== currentUser?.id && visibility === 'private';
-
-                const mappedFiles = !includeFiles
-                    ? undefined
-                    : await Promise.all(
-                          files.map(async (file) => ({
-                              ...file,
-                              signedUrl: await r2GetSignedDownloadUrl(r2RunPartFileKey(file.id)),
-                          })),
-                      );
-
-                return {
+            runs.map(
+                async ({
+                    files,
                     id,
                     title,
                     description,
                     createdAt,
+                    updatedAt,
                     visibility,
-                    tags: Object.entries(run)
-                        .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
-                        .map((kv) => kv[0].slice(4)) as TagCode[],
-                    user: {
-                        id: isResearchView ? '' : run.user.id,
-                        name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed user',
-                    },
-                    startedAt: gameState?.startedAt ?? createdAt,
-                    lastPlayedAt: gameState?.endedAt ?? updatedAt,
-                    isSteelSoul,
-                    isBrokenSteelSoul,
                     archived,
-                    gameState,
-                    files: mappedFiles,
-                };
-            }),
+                    isCombinedRun,
+                    ...run
+                }) => {
+                    const gameState = getGameStateMeta(run);
+                    const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
+                    const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
+                    const isResearchView = run.user.id !== currentUser?.id && visibility === 'private';
+
+                    const mappedFiles = !includeFiles
+                        ? undefined
+                        : await Promise.all(
+                              files.map(async (file, index) => ({
+                                  ...file,
+                                  signedUrl: await r2GetSignedDownloadUrl(r2RunPartFileKey(file.id)),
+                                  combinedPartNumber: index + 1,
+                              })),
+                          );
+
+                    return {
+                        id,
+                        title,
+                        description,
+                        createdAt,
+                        visibility,
+                        tags: Object.entries(run)
+                            .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
+                            .map((kv) => kv[0].slice(4)) as TagCode[],
+                        user: {
+                            id: isResearchView ? '' : run.user.id,
+                            name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed user',
+                        },
+                        startedAt: gameState?.startedAt ?? createdAt,
+                        lastPlayedAt: gameState?.endedAt ?? updatedAt,
+                        isSteelSoul,
+                        isBrokenSteelSoul,
+                        archived,
+                        isCombinedRun,
+                        gameState,
+                        files: mappedFiles,
+                    };
+                },
+            ),
         )
     ).sort((a, b) => {
         if (a.lastPlayedAt && b.lastPlayedAt) {
@@ -161,3 +179,14 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
 }
 
 export type RunMetadata = Awaited<ReturnType<typeof findRuns>>[number];
+
+export async function findNewRunId(db: DB, runId: string) {
+    return (
+        await db.query.runs.findFirst({
+            where: (run, { eq }) => eq(run.id, runId),
+            columns: {
+                combinedIntoRunId: true,
+            },
+        })
+    )?.combinedIntoRunId;
+}

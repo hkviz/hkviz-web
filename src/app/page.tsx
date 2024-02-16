@@ -7,7 +7,7 @@ import { db } from '~/server/db';
 import { ContentCenterWrapper } from './_components/content-wrapper';
 import { GradientSeperator } from './_components/gradient-seperator';
 import { HKVizText } from './_components/hkviz-text';
-import { RunCard } from './_components/run-card';
+import { OwnRuns } from './_page_own_runs';
 
 export const metadata: Metadata = {
     alternates: {
@@ -62,16 +62,7 @@ export default async function Home() {
                 {userRuns.length > 0 && (
                     <>
                         <GradientSeperator />
-                        <div className="w-full max-w-[800px]">
-                            <h1 className="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Your gameplays</h1>
-                            <ul className="flex flex-col">
-                                {userRuns.map((run) => (
-                                    <li key={run.id}>
-                                        <RunCard run={run} key={run.id} showUser={false} isOwnRun={true} />
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                        <OwnRuns runs={userRuns} />
                     </>
                 )}
             </div>

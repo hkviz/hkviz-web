@@ -14,7 +14,7 @@ export function useRecordingFiles(runId: string, fileInfos: AppRouterOutput['run
     const combinedRun = useRunFileStore((state) => state.runs[runId]);
 
     return useMemo(() => {
-        const files = Object.values(filesRecord).sort((a, b) => a.partNumber - b.partNumber);
+        const files = Object.values(filesRecord).sort((a, b) => a.combinedPartNumber - b.combinedPartNumber);
         const allThere = files.length === fileIds.length;
         return {
             files: Object.values(filesRecord),

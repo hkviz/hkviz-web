@@ -16,7 +16,7 @@ import {
 import { Skeleton } from '@/components/ui/skeleton';
 import { cn } from '@/lib/utils';
 import { Plus, X } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode, type TagGroup } from '~/lib/types/tags';
 import { api } from '~/trpc/react';
 
@@ -81,6 +81,10 @@ export function RunTags({
 }) {
     const [codes, setCodes] = useState<TagCode[]>(initialCodes);
     const runTags = useMemo(() => codes.map(tagFromCode).sort((a, b) => a.order - b.order), [codes]);
+
+    useEffect(() => {
+        setCodes(initialCodes);
+    }, [initialCodes]);
 
     const setTagMutation = api.run.setTag.useMutation();
 

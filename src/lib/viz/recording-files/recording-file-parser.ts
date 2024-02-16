@@ -44,7 +44,7 @@ function parseVector2_v1(str: string, factor = 1) {
     );
 }
 
-export function parseRecordingFile(recordingFileContent: string, partNumber: number): ParsedRecording {
+export function parseRecordingFile(recordingFileContent: string, combinedPartNumber: number): ParsedRecording {
     const lines = recordingFileContent.split('\n');
     const events: RecordingEvent[] = [];
     let unknownEvents = 0;
@@ -345,7 +345,7 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
             }
         } catch (e) {
             console.error(
-                `Error while parsing line ${i}: |${line}| using file version ${currentRecordingFileVersion} in part number ${partNumber}`,
+                `Error while parsing line ${i}: |${line}| using file version ${currentRecordingFileVersion} in part number ${combinedPartNumber}`,
                 e,
             );
             // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
@@ -364,5 +364,5 @@ export function parseRecordingFile(recordingFileContent: string, partNumber: num
         }
     }
 
-    return new ParsedRecording(events, unknownEvents, parsingErrors, partNumber);
+    return new ParsedRecording(events, unknownEvents, parsingErrors, combinedPartNumber);
 }

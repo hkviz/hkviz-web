@@ -1,9 +1,11 @@
 import { TRPCError } from '@trpc/server';
 import { type Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { SingleRunClientPage } from '~/app/run/[id]/_page';
 import { getRunMeta } from '~/server/api/routers/run/get-run-meta';
+import { findNewRunId } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
+import { db } from '~/server/db';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-wrapper';
 
@@ -32,6 +34,11 @@ export default async function SingleRunPage({ params }: { params: Params }) {
         );
     } catch (e) {
         if (e instanceof TRPCError && e.code === 'NOT_FOUND') {
+            const newId = await findNewRunId(db, params.id);
+            if (newId) {
+                redirect(`/run/${newId}`);
+            }
+
             notFound();
         }
         if (e instanceof TRPCError && e.code === 'FORBIDDEN') {
