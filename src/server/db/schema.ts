@@ -9,7 +9,6 @@ import {
     primaryKey,
     text,
     timestamp,
-    unique,
     varchar,
     type MySqlBooleanBuilderInitial,
 } from 'drizzle-orm/mysql-core';
@@ -202,28 +201,18 @@ export const runs = mysqlTable(
     {
         // server generated. Used for urls
         id: varchar('id', { length: 255 }).notNull().primaryKey(),
+        userId: varchar('user_id', { length: 255 }).notNull(),
+        title: varchar('title', { length: MAX_RUN_TITLE_LENGTH }),
+        description: text('description'),
+        visibility: mysqlEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),
 
         combinedIntoRunId: varcharUuid('combined_into_run_id'),
         isCombinedRun: boolean('is_combined_run').notNull().default(false),
 
-        // user generated
-        /**
-         * @deprecated use run local id instead
-         */
-        localId: varchar('run_id', { length: 255 }).notNull(),
-
-        userId: varchar('user_id', { length: 255 }).notNull(),
-
-        // // id used for key in r2 bucket
-        // bucketFileId: varchar('fileId', { length: 255 }).notNull(),
-
-        title: varchar('title', { length: MAX_RUN_TITLE_LENGTH }),
-        description: text('description'),
         createdAt: timestamp('created_at')
             .default(sql`CURRENT_TIMESTAMP`)
             .notNull(),
         updatedAt: timestamp('updatedAt').onUpdateNow(),
-        visibility: mysqlEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),
 
         // generally when a run is deleted, it is actually deleted from the database.
         // unless deleting a file from r2 failed, then it will be kept for manual cleanup.
@@ -233,16 +222,12 @@ export const runs = mysqlTable(
         // only viewable by owner via achieve page
         archived: boolean('archived').notNull().default(false),
 
-        // TODO remove deprecated
-        lastCompletedRunFilePartNumber: int('last_completed_run_file_part_number'),
-
         ...runTagColumns,
 
         ...runGameStateMetaColumns,
     },
     (run) => ({
         userIdIdx: index('userId_idx').on(run.userId),
-        uniqueLocalIdUserId: unique('uniqueLocalIdUserId').on(run.localId, run.userId),
     }),
 );
 

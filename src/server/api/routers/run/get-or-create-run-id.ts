@@ -20,8 +20,6 @@ export async function getOrCreateRunId(db: DB, localId: string, userId: string):
     const newId = uuidv4();
     await db.insert(runs).values({
         id: newId,
-        // TODO remove localId from here. its deprecated
-        localId,
         userId,
     });
     await db.insert(runLocalIds).values({

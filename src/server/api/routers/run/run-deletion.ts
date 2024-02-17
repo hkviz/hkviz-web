@@ -1,10 +1,9 @@
 import { TRPCError } from '@trpc/server';
-import { and, eq, inArray, sql } from 'drizzle-orm';
-import { v4 as uuidv4 } from 'uuid';
+import { and, eq, inArray } from 'drizzle-orm';
 import { z } from 'zod';
 import { sendMailToSupport } from '~/lib/mails';
 import { r2DeleteFile, r2RunPartFileKey } from '~/lib/r2';
-import { runFiles, runs } from '~/server/db/schema';
+import { runFiles, runLocalIds, runs } from '~/server/db/schema';
 import { protectedProcedure } from '../../trpc';
 
 export const deleteRunProcedure = protectedProcedure
@@ -12,19 +11,18 @@ export const deleteRunProcedure = protectedProcedure
     .mutation(async ({ ctx, input }) => {
         const userId = ctx.session.user.id;
 
-        const deletionId = uuidv4();
-
         // first set deleted flag for run, so even if it fails, the run can be deleted later
         const result = await ctx.db
             .update(runs)
-            // the local id is changed, since when deletion fails, the run would persist
-            // and the local id would be found when uploading to the run again
-            // instead, by changing it, a new run is created if there are new parts.
-            .set({ deleted: true, localId: sql`CONCAT(${deletionId}, ${runs.localId})` })
+            .set({ deleted: true })
             .where(and(eq(runs.id, input.runId), eq(runs.userId, userId)));
 
         if (result.rowsAffected === 0)
             throw new TRPCError({ code: 'NOT_FOUND', message: 'Run not found while setting deleted' });
+
+        // localIds are removed immediately, so they can be used for further uploads
+        // uploads with the same local id will create a new run
+        await ctx.db.delete(runLocalIds).where(eq(runLocalIds.runId, input.runId));
 
         try {
             const files = await ctx.db.query.runFiles.findMany({
