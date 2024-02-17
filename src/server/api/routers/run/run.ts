@@ -251,12 +251,11 @@ export const runRouter = createTRPCRouter({
                         where: (run, { eq }) => eq(run.id, runId),
                         columns: {
                             id: true,
-                            lastCompletedRunFilePartNumber: true,
                             ...runGameStateMetaColumnsSelect,
                         },
                     })) ?? raise(new Error('Run not found'));
 
-                if ((run.lastCompletedRunFilePartNumber ?? -1) < file.partNumber) {
+                if ((run.playTime ?? -1) < (file.playTime ?? 0)) {
                     await ctx.db
                         .update(runs)
                         .set({

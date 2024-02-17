@@ -128,7 +128,7 @@ export const useRunFileStore = create(
         }) {
             const isNewerThenCurrent = (get().files[runId]?.[fileId]?.fileVersion ?? -1) < fileVersion;
             if (!isNewerThenCurrent) return;
-            setLoadingProgress({ combinedPartNumber: combinedPartNumber, fileVersion, runId, fileId, progress: 0 });
+            setLoadingProgress({ combinedPartNumber, fileVersion, runId, fileId, progress: 0 });
             setRunNotLoaded(runId);
 
             const loader = () => fetchWithRunfileCache(fileId, fileVersion, downloadUrl);
@@ -139,7 +139,7 @@ export const useRunFileStore = create(
             const response = await loader().then((it) =>
                 wrapResultWithProgress(it, ({ loaded, total }) => {
                     setLoadingProgress({
-                        combinedPartNumber: combinedPartNumber,
+                        combinedPartNumber,
                         fileVersion,
                         runId,
                         fileId,
@@ -151,7 +151,7 @@ export const useRunFileStore = create(
             const isStillCurrent = (get().files[runId]?.[fileId]?.fileVersion ?? -1) === fileVersion;
             if (!isStillCurrent) return;
             const recording = parseRecordingFile(data, combinedPartNumber);
-            setLoaded({ combinedPartNumber: combinedPartNumber, fileVersion, runId, fileId, recording });
+            setLoaded({ combinedPartNumber, fileVersion, runId, fileId, recording });
             combineIfAllFinished(runId);
         }
 

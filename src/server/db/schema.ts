@@ -233,6 +233,7 @@ export const runs = mysqlTable(
         // only viewable by owner via achieve page
         archived: boolean('archived').notNull().default(false),
 
+        // TODO remove deprecated
         lastCompletedRunFilePartNumber: int('last_completed_run_file_part_number'),
 
         ...runTagColumns,
