@@ -3,6 +3,10 @@ import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import { playerDataFields } from '~/lib/viz/player-data/player-data';
 import { type CombinedRecording } from '~/lib/viz/recording-files/recording';
+import {
+    RecordingSplitGroup,
+    RecordingSplitGroups as recordingSplitGroups,
+} from '~/lib/viz/recording-files/recording-splits';
 import { type AggregatedRunData, type AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
@@ -37,6 +41,8 @@ function createViewOptionsStore() {
                 extraChartsTimeBounds: [0, 0] as readonly [number, number],
                 extraChartsFollowAnimation: true,
                 mainCardTab: 'overview' as MainCardTab,
+
+                visibleSplitGroups: recordingSplitGroups.map((it) => it.name),
             },
             (set, get) => {
                 function handleAnyAnimationVisiblityChanged() {
@@ -232,6 +238,10 @@ function createViewOptionsStore() {
                     set({ mainCardTab });
                 }
 
+                function setVisibleSplitGroups(visibleSplitGroups: RecordingSplitGroup[]) {
+                    set({ visibleSplitGroups });
+                }
+
                 return {
                     setRoomVisibility,
                     setTraceVisibility,
@@ -255,6 +265,7 @@ function createViewOptionsStore() {
                     resetExtraChartsTimeBounds,
                     setExtraChartsFollowAnimation,
                     setMainCardTab,
+                    setVisibleSplitGroups,
                 };
             },
         ),

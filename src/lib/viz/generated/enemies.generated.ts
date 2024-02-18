@@ -854,4 +854,4 @@ export const enemiesGenerated = {
         shortCode: '4R',
         neededForJournal: 1,
     },
-};
+} as const;

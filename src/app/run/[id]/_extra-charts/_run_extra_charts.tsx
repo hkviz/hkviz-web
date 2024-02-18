@@ -1,6 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { CardContent } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-import { cn } from '@/lib/utils';
 import { useId } from 'react';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
 import { CompletionChart } from './completion-chart';
@@ -21,10 +20,7 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
     const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
 
     return (
-        <Card className={cn('flex flex-col overflow-hidden', className)}>
-            <CardHeader className="px-4 pb-3 pt-2">
-                <CardTitle className="text-lg">Time-based analytics</CardTitle>
-            </CardHeader>
+        <>
             {isAnythingAnimating && (
                 <CardContent>
                     <div className="flex flex-row gap-2">
@@ -54,6 +50,6 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
                 <hr />
                 <GrubChart useViewOptionsStore={useViewOptionsStore} />
             </div>
-        </Card>
+        </>
     );
 }
