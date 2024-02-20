@@ -117,7 +117,7 @@ export const virtualCharms: VirtualCharm[] = [
         id: 'charm_vanilla_fragileHeart',
         name: 'Fragile Heart',
         playerDataId: '23',
-        spriteName: '_0002_charm_glass_heal_broken',
+        spriteName: '_0002_charm_glass_heal',
         hasCharm: (frameEndEvent) =>
             !frameEndEvent.brokenCharm_23 && !frameEndEvent.fragileHealth_unbreakable && frameEndEvent.gotCharm_23,
     }),
