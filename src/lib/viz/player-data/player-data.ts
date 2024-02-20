@@ -73,10 +73,10 @@ export function getEnemyNameFromDefeatedField(field: PlayerDataDefeatedField) {
     return field.name.slice(0, -'Defeated'.length);
 }
 // gotCharm
-export type PlayerDataGotCharmField = Extract<PlayerDataField, { name: `gotCharm_${number}` }>;
+export type PlayerDataGotCharmField = Extract<PlayerDataField, { name: `gotCharm_${string}` }>;
 export function isPlayerDataGotCharmField(field: PlayerDataField): field is PlayerDataGotCharmField {
     return field.name.startsWith('gotCharm_');
 }
 export function getCharmIdFromGotCharmField(field: PlayerDataGotCharmField) {
-    return parseInt(field.name.slice('gotCharm_'.length));
+    return field.name.slice('gotCharm_'.length);
 }

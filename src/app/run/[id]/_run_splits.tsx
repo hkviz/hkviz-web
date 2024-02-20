@@ -86,11 +86,12 @@ export function RunSplits({ useViewOptionsStore }: Props) {
 
     const nextSplitIndex = useMemo(
         () =>
-            splits?.findIndex(
+            filteredSplits?.findIndex(
                 (split, index) =>
-                    split.msIntoGame >= animationMsIntoGame && splits[index + 1]?.msIntoGame !== split.msIntoGame,
+                    split.msIntoGame >= animationMsIntoGame &&
+                    filteredSplits[index + 1]?.msIntoGame !== split.msIntoGame,
             ),
-        [animationMsIntoGame, splits],
+        [animationMsIntoGame, filteredSplits],
     );
 
     const splitRefs = useRef<(HTMLTableRowElement | null)[]>([]);
@@ -122,20 +123,20 @@ export function RunSplits({ useViewOptionsStore }: Props) {
         () => (
             <>
                 <div>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 p-4">
                         {RecordingSplitGroups.map((group) => {
                             const checked = visibleSplitGroups.includes(group.name);
                             return (
                                 <div className="flex flex-row gap-2" key={group.name}>
                                     <Checkbox
-                                        id={id + 'follow_anim'}
+                                        id={id + '_run_split_option_' + group.name}
                                         checked={checked}
                                         onCheckedChange={(checked) =>
                                             setVisibleSplitGroupChecked(group.name, checked as boolean)
                                         }
                                     />
                                     <label
-                                        htmlFor={id + 'follow_anim'}
+                                        htmlFor={id + '_run_split_option_' + group.name}
                                         className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                     >
                                         {group.displayName}

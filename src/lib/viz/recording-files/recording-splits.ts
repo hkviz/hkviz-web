@@ -1,5 +1,6 @@
 import { assertNever } from '~/lib/utils/utils';
-import { enemiesJournalLang } from '../generated/enemies-journal-lang.generated';
+import { charms, virtualCharms } from '../charms';
+import { enemiesJournalLang } from '../generated/lang-enemies-journal.generated';
 import { enemies, isEnemyBoss, playerDataNameToDefeatedName, type EnemyInfo } from '../player-data/enemies';
 import {
     getCharmIdFromGotCharmField,
@@ -132,18 +133,39 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
             }
         } else if (isPlayerDataGotCharmField(field)) {
             const charmId = getCharmIdFromGotCharmField(field);
+            const charm = charms.byId[charmId];
+            const charmName = charm?.name ?? `Charm ${charmId}`;
+
             recording.allPlayerDataEventsOfField(field).forEach((event) => {
                 if (event.value && !event.previousPlayerDataEventOfField?.value) {
                     splits.push({
                         msIntoGame: event.msIntoGame,
-                        title: `Got Charm ${charmId}`,
-                        tooltip: `Got charm ${charmId}`,
-                        imageUrl: undefined,
+                        title: `Got ${charmName}`,
+                        tooltip: `Got ${charmName}`,
+                        imageUrl: charm ? `/ingame-sprites/charms/${charm.spriteName}.png` : undefined,
                         group: 'charmCollection',
                         debugInfo: undefined,
                     });
                 }
             });
+        }
+    }
+
+    for (const frameEndEvent of recording.frameEndEvents) {
+        for (const virtualCharm of virtualCharms) {
+            if (
+                virtualCharm.hasCharm(frameEndEvent) &&
+                (!frameEndEvent.previousFrameEndEvent || virtualCharm.hasCharm(frameEndEvent.previousFrameEndEvent))
+            ) {
+                splits.push({
+                    msIntoGame: frameEndEvent.msIntoGame,
+                    title: `${virtualCharm.name}`,
+                    tooltip: `Got ${virtualCharm.name}`,
+                    imageUrl: '/charms/' + virtualCharm.spriteName,
+                    group: 'charmCollection',
+                    debugInfo: undefined,
+                });
+            }
         }
     }
 
