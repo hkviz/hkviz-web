@@ -10,6 +10,7 @@ export async function getRunMeta(id: string): Promise<Metadata> {
         columns: {
             visibility: true,
             archived: true,
+            title: true,
             ...runTagFieldsSelect,
         },
         with: {
@@ -47,11 +48,12 @@ export async function getRunMeta(id: string): Promise<Metadata> {
     const speedRunTags = tagGroupFromCode('speedrun').tags;
     const isSpeedrun = tags.some((tag) => speedRunTags.includes(tag));
 
+    const titleTitle = data?.title ? data.title + ' - ' : '';
     const tagTitle = tagNames.length === 0 ? '' : tagNames.join(', ') + ' ';
     const typeTitle = isSpeedrun ? 'Speedrun' : 'Gameplay';
     const userTitle = data?.user?.name ? ` by ${data.user.name}` : '';
     return {
-        title: `${tagTitle}${typeTitle}${userTitle} - HKViz`,
+        title: `${titleTitle}${tagTitle}${typeTitle}${userTitle} - HKViz`,
         alternates: {
             canonical: `/run/${id}`,
         },

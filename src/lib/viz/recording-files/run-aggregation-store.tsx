@@ -7,7 +7,7 @@ import spellUpImg from '../../../../public/ingame-sprites/Inv_0024_spell_scream_
 import spellFireballImg from '../../../../public/ingame-sprites/Inv_0025_spell_fireball_01.png';
 import spellDownImg from '../../../../public/ingame-sprites/Inv_0026_spell_quake_01.png';
 import focusImg from '../../../../public/ingame-sprites/Inv_0029_spell_core.png';
-import shadeImg from '../../../../public/ingame-sprites/bestiary_hollow-shade_s.png';
+import shadeImg from '../../../../public/ingame-sprites/bestiary/bestiary_hollow-shade_s.png';
 import healthImg from '../../../../public/ingame-sprites/select_game_HUD_0001_health.png';
 import { roomGroupNamesBySceneName } from '../map-data/room-groups';
 import { playerDataFields } from '../player-data/player-data';

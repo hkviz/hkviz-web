@@ -8,6 +8,7 @@ import { PlayerDataEvent } from './events/player-data-event';
 import { type PlayerPositionEvent } from './events/player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
 import { type SceneEvent } from './events/scene-event';
+import { RecordingSplit, createRecordingSplits } from './recording-splits';
 
 type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
 export class RecordingFileVersionEvent extends RecordingEventBase {
@@ -114,6 +115,7 @@ export class ParsedRecording {
 export class CombinedRecording extends ParsedRecording {
     public playerDataEventsPerField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>[]>();
     public frameEndEvents: FrameEndEvent[];
+    public splits: RecordingSplit[];
 
     constructor(
         events: RecordingEvent[],
@@ -133,6 +135,7 @@ export class CombinedRecording extends ParsedRecording {
         }
 
         this.frameEndEvents = this.events.filter((it): it is FrameEndEvent => it instanceof FrameEndEvent);
+        this.splits = createRecordingSplits(this);
     }
 
     lastPlayerDataEventOfField<TField extends PlayerDataField>(field: TField): PlayerDataEvent<TField> | null {

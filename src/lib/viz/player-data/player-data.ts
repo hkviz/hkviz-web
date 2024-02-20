@@ -54,3 +54,29 @@ export function parsePlayerDataFieldValue<TField extends PlayerDataField>(
 export function getDefaultValue<TField extends PlayerDataField>(field: TField): PlayerDataFieldValue<TField> {
     return parsePlayerDataFieldValue(field, field.defaultValue);
 }
+
+// SUBSETS OF PLAYER DATA FIELDS
+// kill
+export type PlayerDataKilledField = Extract<PlayerDataField, { name: `killed${string}` }>;
+export function isPlayerDataKilledField(field: PlayerDataField): field is PlayerDataKilledField {
+    return field.name.startsWith('killed');
+}
+export function getEnemyNameFromKilledField(field: PlayerDataKilledField) {
+    return field.name.slice('killed'.length);
+}
+// defeat
+export type PlayerDataDefeatedField = Extract<PlayerDataField, { name: `${string}Defeated` }>;
+export function isPlayerDataDefeatedField(field: PlayerDataField): field is PlayerDataDefeatedField {
+    return field.name.endsWith('Defeated');
+}
+export function getEnemyNameFromDefeatedField(field: PlayerDataDefeatedField) {
+    return field.name.slice(0, -'Defeated'.length);
+}
+// gotCharm
+export type PlayerDataGotCharmField = Extract<PlayerDataField, { name: `gotCharm_${string}` }>;
+export function isPlayerDataGotCharmField(field: PlayerDataField): field is PlayerDataGotCharmField {
+    return field.name.startsWith('gotCharm_');
+}
+export function getCharmIdFromGotCharmField(field: PlayerDataGotCharmField) {
+    return field.name.slice('gotCharm_'.length);
+}

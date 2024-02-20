@@ -128,6 +128,14 @@ export const frameEndEventPlayerDataFieldsArray = [
     playerDataFields.byFieldName.gotCharm_40,
     playerDataFields.byFieldName.royalCharmState,
 
+    playerDataFields.byFieldName.fragileHealth_unbreakable,
+    playerDataFields.byFieldName.fragileStrength_unbreakable,
+    playerDataFields.byFieldName.fragileGreed_unbreakable,
+    playerDataFields.byFieldName.brokenCharm_23,
+    playerDataFields.byFieldName.brokenCharm_24,
+    playerDataFields.byFieldName.brokenCharm_25,
+    playerDataFields.byFieldName.grimmChildLevel,
+
     playerDataFields.byFieldName.completionPercentage,
 
     // grubs

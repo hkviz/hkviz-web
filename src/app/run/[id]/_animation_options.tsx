@@ -9,7 +9,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { cn } from '@/lib/utils';
 import { Pause, Play } from 'lucide-react';
 import { useEffect } from 'react';
-import { zeroPad } from '~/lib/utils/utils';
+import { Duration } from './_duration';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 function Times({ className }: { className?: string }) {
@@ -17,27 +17,6 @@ function Times({ className }: { className?: string }) {
         <span className={cn('text-sm opacity-50', className)} aria-label="times">
             &times;
         </span>
-    );
-}
-
-function Duration({ ms, className }: { ms: number; className?: string }) {
-    const hours = Math.floor(ms / 1000 / 60 / 60);
-    const minutes = Math.floor((ms / 1000 / 60) % 60);
-    const seconds = Math.floor((ms / 1000) % 60);
-    const deciSeconds = Math.floor(Math.floor(ms % 1000) / 100);
-
-    return (
-        <Tooltip>
-            <TooltipTrigger>
-                <span className={cn('font-mono', className)}>
-                    {zeroPad(hours, 2)}:{zeroPad(minutes, 2)}
-                    <span className="opacity-40">
-                        :{zeroPad(seconds, 2)}.{deciSeconds}
-                    </span>
-                </span>
-            </TooltipTrigger>
-            <TooltipContent>hh:mm:ss.s</TooltipContent>
-        </Tooltip>
     );
 }
 

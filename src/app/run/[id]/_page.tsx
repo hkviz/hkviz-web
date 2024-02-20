@@ -1,8 +1,9 @@
 'use client';
 
+import { TabsListTransparent, TabsTriggerTransparent } from '@/additions/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
 import { type Session } from 'next-auth';
 import { useEffect } from 'react';
@@ -14,7 +15,8 @@ import { AnimationOptions } from './_animation_options';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { RoomInfo } from './_room_infos';
 import { RunOverviewTab } from './_run-overview-tab';
-import { useViewOptionsStoreRoot, type MainCardTab } from './_viewOptionsStore';
+import { RunSplits } from './_run_splits';
+import { UseViewOptionsStore, useViewOptionsStoreRoot, type MainCardTab } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
 
 interface Props {
@@ -62,20 +64,10 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         className="absolute left-0 right-0 top-0 z-10"
                         onValueChange={(tab: string) => setMainCardTab(tab as MainCardTab)}
                     >
-                        <TabsList className="w-full bg-transparent">
-                            <TabsTrigger
-                                value="overview"
-                                className="data-[state=active]:bg-slate-300 dark:data-[state=active]:bg-slate-800"
-                            >
-                                Overview
-                            </TabsTrigger>
-                            <TabsTrigger
-                                value="map"
-                                className="data-[state=active]:bg-slate-300 dark:data-[state=active]:bg-slate-800"
-                            >
-                                Map
-                            </TabsTrigger>
-                        </TabsList>
+                        <TabsListTransparent className="w-full">
+                            <TabsTriggerTransparent value="overview">Overview</TabsTriggerTransparent>
+                            <TabsTriggerTransparent value="map">Map</TabsTriggerTransparent>
+                        </TabsListTransparent>
                     </Tabs>
 
                     {/* <Tabs defaultValue="animate" className="w-[400px]">
@@ -105,7 +97,27 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 </Card>
                 {isAnythingAnimating && <AnimationOptions useViewOptionsStore={useViewOptionsStore} />}
             </div>
-            <RunExtraCharts className="w-full lg:w-[400px]" useViewOptionsStore={useViewOptionsStore} />
+
+            <RightCard useViewOptionsStore={useViewOptionsStore} />
         </div>
+    );
+}
+
+function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+    return (
+        <Card className="flex w-full flex-col overflow-hidden lg:w-[400px]">
+            <Tabs defaultValue="splits" className="flex grow flex-col">
+                <TabsListTransparent className="flex flex-row justify-center">
+                    <TabsTriggerTransparent value="splits">Splits</TabsTriggerTransparent>
+                    <TabsTriggerTransparent value="extra-charts">Time charts</TabsTriggerTransparent>
+                </TabsListTransparent>
+                <TabsContent value="splits" className="hidden shrink grow flex-col data-[state='active']:flex">
+                    <RunSplits useViewOptionsStore={useViewOptionsStore} />
+                </TabsContent>
+                <TabsContent value="extra-charts" className="hidden shrink grow flex-col data-[state='active']:flex">
+                    <RunExtraCharts useViewOptionsStore={useViewOptionsStore} />
+                </TabsContent>
+            </Tabs>
+        </Card>
     );
 }
