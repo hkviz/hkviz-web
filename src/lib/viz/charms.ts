@@ -29,7 +29,8 @@ type GetCharmId<T> = T extends `gotCharm_${infer N}` ? N : never;
 type CharmPlayerDataId = GetCharmId<keyof FrameEndEvent>;
 
 function defaultHasCharm(charmId: CharmPlayerDataId): (frameEndEvent: FrameEndEvent) => boolean {
-    return (frameEndEvent) => frameEndEvent[`gotCharm_${charmId}`] === true;
+    const key = `gotCharm_${charmId}` as const;
+    return (frameEndEvent) => !!frameEndEvent[key];
 }
 
 function defaultSpriteName(charmId: CharmPlayerDataId): string {

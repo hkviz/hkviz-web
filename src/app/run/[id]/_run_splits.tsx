@@ -2,11 +2,10 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import Image from 'next/image';
 import { forwardRef, memo, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
 import { assertNever } from '~/lib/utils/utils';
 import {
-    RecordingSplitGroups,
+    recordingSplitGroups,
     type RecordingSplit,
     type RecordingSplitGroup,
 } from '~/lib/viz/recording-files/recording-splits';
@@ -28,7 +27,15 @@ const RunSplitRow = memo(
     ) {
         let icon: ReactNode | undefined = undefined;
         if (split.imageUrl) {
-            icon = <Image src={split.imageUrl} className="mr-2 h-6 w-6" width={84} height={96} alt="" />;
+            // icon = <Image src={split.imageUrl} className="mr-2 h-6 w-6" width={84} height={96} alt="" />;
+            icon = (
+                <div
+                    className="mr-2 h-7 w-7 bg-contain bg-center bg-no-repeat"
+                    style={{
+                        backgroundImage: `url(${split.imageUrl})`,
+                    }}
+                />
+            );
         }
 
         function handleClick() {
@@ -124,7 +131,7 @@ export function RunSplits({ useViewOptionsStore }: Props) {
             <>
                 <div>
                     <div className="flex flex-wrap gap-2 p-4">
-                        {RecordingSplitGroups.map((group) => {
+                        {recordingSplitGroups.map((group) => {
                             const checked = visibleSplitGroups.includes(group.name);
                             return (
                                 <div className="flex flex-row gap-2" key={group.name}>

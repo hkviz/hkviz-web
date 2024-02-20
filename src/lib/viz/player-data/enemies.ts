@@ -17,7 +17,7 @@ export const playerDataNameToDefeatedName: Record<
     lurien: { dreamer: 'Lurien', achievementSprite: 'Achievement_icon__0000_watcher' },
     hegemol: { dreamer: 'Herrah', achievementSprite: 'Achievement_icon__0002_beast' },
     monomon: { dreamer: 'Monomon', achievementSprite: 'Achievement_icon__0001_teacher' },
-    zote: { enemy: 'Zote' },
+    zote: undefined, // covered below { enemy: 'Zote' },
     falseKnight: undefined,
     falseKnightDream: undefined,
     mawlek: undefined,
@@ -85,6 +85,8 @@ const isBossOverrides: Partial<Record<EnemyName, boolean>> = {
     Worm: false, // Goam
     BigCentipede: false, // Garpede
     AbyssTendril: false, // Void Tendrils
+    LazyFlyer: false, // Aluba
+    BindingSeal: false,
 };
 
 export function isEnemyBoss(enemy: EnemyInfo): boolean {

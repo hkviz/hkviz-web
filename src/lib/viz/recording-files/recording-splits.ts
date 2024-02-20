@@ -1,34 +1,35 @@
 import { assertNever } from '~/lib/utils/utils';
-import { charms, virtualCharms } from '../charms';
+import { virtualCharms } from '../charms';
 import { enemiesJournalLang } from '../generated/lang-enemies-journal.generated';
 import { enemies, isEnemyBoss, playerDataNameToDefeatedName, type EnemyInfo } from '../player-data/enemies';
 import {
-    getCharmIdFromGotCharmField,
     getEnemyNameFromDefeatedField,
     getEnemyNameFromKilledField,
     isPlayerDataDefeatedField,
-    isPlayerDataGotCharmField,
     isPlayerDataKilledField,
     playerDataFields,
 } from '../player-data/player-data';
 import { type CombinedRecording } from './recording';
 
-export const RecordingSplitGroups = [
+export const recordingSplitGroups = [
     {
         name: 'boss',
         displayName: 'Bosses',
+        defaultShown: true,
     },
     {
         name: 'dreamer',
         displayName: 'Dreamers',
+        defaultShown: true,
     },
     {
         name: 'charmCollection',
         displayName: 'Charm pick ups',
+        defaultShown: false,
     },
 ] as const;
 
-export type RecordingSplitGroup = (typeof RecordingSplitGroups)[number]['name'];
+export type RecordingSplitGroup = (typeof recordingSplitGroups)[number]['name'];
 
 export interface RecordingSplit {
     msIntoGame: number;
@@ -131,37 +132,20 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                     }
                 });
             }
-        } else if (isPlayerDataGotCharmField(field)) {
-            const charmId = getCharmIdFromGotCharmField(field);
-            const charm = charms.byId[charmId];
-            const charmName = charm?.name ?? `Charm ${charmId}`;
-
-            recording.allPlayerDataEventsOfField(field).forEach((event) => {
-                if (event.value && !event.previousPlayerDataEventOfField?.value) {
-                    splits.push({
-                        msIntoGame: event.msIntoGame,
-                        title: `Got ${charmName}`,
-                        tooltip: `Got ${charmName}`,
-                        imageUrl: charm ? `/ingame-sprites/charms/${charm.spriteName}.png` : undefined,
-                        group: 'charmCollection',
-                        debugInfo: undefined,
-                    });
-                }
-            });
         }
     }
 
-    for (const frameEndEvent of recording.frameEndEvents) {
-        for (const virtualCharm of virtualCharms) {
+    for (const virtualCharm of virtualCharms) {
+        for (const frameEndEvent of recording.frameEndEvents) {
             if (
                 virtualCharm.hasCharm(frameEndEvent) &&
-                (!frameEndEvent.previousFrameEndEvent || virtualCharm.hasCharm(frameEndEvent.previousFrameEndEvent))
+                (!frameEndEvent.previousFrameEndEvent || !virtualCharm.hasCharm(frameEndEvent.previousFrameEndEvent))
             ) {
                 splits.push({
                     msIntoGame: frameEndEvent.msIntoGame,
                     title: `${virtualCharm.name}`,
                     tooltip: `Got ${virtualCharm.name}`,
-                    imageUrl: '/charms/' + virtualCharm.spriteName,
+                    imageUrl: `/ingame-sprites/charms/${virtualCharm.spriteName}.png`,
                     group: 'charmCollection',
                     debugInfo: undefined,
                 });
