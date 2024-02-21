@@ -1,7 +1,14 @@
+import { tailwindChartColors } from '~/app/run/[id]/_extra-charts/colors';
 import { assertNever } from '~/lib/utils/utils';
 import { virtualCharms } from '../charms';
 import { enemiesJournalLang } from '../generated/lang-enemies-journal.generated';
-import { enemies, isEnemyBoss, playerDataNameToDefeatedName, type EnemyInfo } from '../player-data/enemies';
+import {
+    enemies,
+    greyPrinceNames,
+    isEnemyBoss,
+    playerDataNameToDefeatedName,
+    type EnemyInfo,
+} from '../player-data/enemies';
 import {
     getEnemyNameFromDefeatedField,
     getEnemyNameFromKilledField,
@@ -15,21 +22,28 @@ export const recordingSplitGroups = [
     {
         name: 'boss',
         displayName: 'Bosses',
+        color: tailwindChartColors.rose,
         defaultShown: true,
     },
     {
         name: 'dreamer',
         displayName: 'Dreamers',
+        color: tailwindChartColors.sky,
         defaultShown: true,
     },
     {
         name: 'charmCollection',
         displayName: 'Charm pick ups',
+        color: tailwindChartColors.amberLight,
         defaultShown: false,
     },
 ] as const;
 
-export type RecordingSplitGroup = (typeof recordingSplitGroups)[number]['name'];
+export const recordingSplitGroupsByName = Object.fromEntries(
+    recordingSplitGroups.map((group) => [group.name, group]),
+) as Record<(typeof recordingSplitGroups)[number]['name'], (typeof recordingSplitGroups)[number]>;
+
+export type RecordingSplitGroup = (typeof recordingSplitGroups)[number];
 
 export interface RecordingSplit {
     msIntoGame: number;
@@ -53,7 +67,7 @@ function createRecordingSplitFromEnemy(
         title: enemyNameDisplay, // + '(' + enemyInfo?.neededForJournal + ')',
         tooltip: `Defeated ${enemyNameDisplay}`,
         imageUrl: enemyInfo?.portraitName ? `/ingame-sprites/bestiary/${enemyInfo.portraitName}.png` : undefined,
-        group: 'boss',
+        group: recordingSplitGroupsByName.boss,
         debugInfo: enemyInfo,
     };
 }
@@ -115,7 +129,7 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                         title: defeatMapping.dreamer,
                         tooltip: defeatMapping.dreamer + "'s Seal broken",
                         imageUrl: `/ingame-sprites/achievement/${defeatMapping.achievementSprite}.png`,
-                        group: 'dreamer',
+                        group: recordingSplitGroupsByName.dreamer,
                         debugInfo: defeatMapping,
                     });
                 } else {
@@ -132,6 +146,16 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                     }
                 });
             }
+        } else if (field === playerDataFields.byFieldName.greyPrinceDefeats) {
+            const enemyInfo = enemies.byPlayerDataName.GreyPrince;
+            recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                if (event.value >= 1 && event.previousPlayerDataEventOfField?.value !== event.value) {
+                    const enemyName =
+                        greyPrinceNames.at(event.value >= greyPrinceNames.length ? -1 : event.value - 1) ??
+                        greyPrinceNames[0]!;
+                    splits.push(createRecordingSplitFromEnemy(event.msIntoGame, enemyName, enemyInfo, enemyName));
+                }
+            });
         }
     }
 
@@ -146,7 +170,7 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                     title: `${virtualCharm.name}`,
                     tooltip: `Got ${virtualCharm.name}`,
                     imageUrl: `/ingame-sprites/charms/${virtualCharm.spriteName}.png`,
-                    group: 'charmCollection',
+                    group: recordingSplitGroupsByName.charmCollection,
                     debugInfo: undefined,
                 });
             }

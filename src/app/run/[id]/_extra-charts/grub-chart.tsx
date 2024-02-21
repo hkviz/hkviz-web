@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import grubImage from '../../../../../public/ingame-sprites/pin/pin_grub_location.png';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
-import { lineAreaColors } from './colors';
+import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
 const Unit = ({ className }: { className?: string }) => <Image src={grubImage} className={className} alt="Geo" />;
@@ -11,7 +11,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'grubsNoRewardCollected',
         name: 'Grubs collected, reward not collected',
         description: 'Grubs collected, reward not collected',
-        classNames: lineAreaColors.amberLight,
+        classNames: tailwindChartColors.amberLight,
         UnitIcon: Unit,
         order: 2,
     },
@@ -19,7 +19,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'grubRewards',
         name: 'Grubs collected, reward collected',
         description: 'Grubs collected, reward collected',
-        classNames: lineAreaColors.green,
+        classNames: tailwindChartColors.green,
         UnitIcon: Unit,
         order: 1,
     },
@@ -27,7 +27,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'grubsCollected',
         name: 'Total',
         description: 'Total number of grubs collected',
-        classNames: lineAreaColors.green,
+        classNames: tailwindChartColors.green,
         UnitIcon: Unit,
         order: 1,
         notShownInGraph: true,

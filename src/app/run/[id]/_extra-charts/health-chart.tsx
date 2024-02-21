@@ -5,7 +5,7 @@ import emptyMaskImg from '../../../../../public/ingame-sprites/hud/edited/emptyM
 import maskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
 import steelMaskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
-import { lineAreaColors } from './colors';
+import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
 function MaskUnit({
@@ -31,7 +31,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'health',
         name: 'Masks',
         description: 'The players health',
-        classNames: lineAreaColors.slate,
+        classNames: tailwindChartColors.slate,
         UnitIcon: MaskUnit,
         order: 1,
     },
@@ -39,7 +39,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'healthBlue',
         name: 'Lifeblood masks',
         description: 'The players additional health from lifeblood masks',
-        classNames: lineAreaColors.sky,
+        classNames: tailwindChartColors.sky,
         UnitIcon: LifebloodUnit,
         order: 2,
     },
@@ -47,7 +47,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'healthLost',
         name: 'Empty masks',
         description: 'The currently empty masks, which can be healed back up',
-        classNames: lineAreaColors.light,
+        classNames: tailwindChartColors.light,
         UnitIcon: EmptyMaskUnit,
         order: 3,
         defaultHidden: true,

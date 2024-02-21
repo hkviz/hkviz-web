@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import coinImg from '../../../../../public/ingame-sprites/HUD_coin_shop.png';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
-import { lineAreaColors } from './colors';
+import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
 const Unit = ({ className }: { className?: string }) => <Image src={coinImg} className={className} alt="Geo" />;
@@ -11,7 +11,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'geo',
         name: 'Geo',
         description: 'Geo the player has',
-        classNames: lineAreaColors.emerald,
+        classNames: tailwindChartColors.emerald,
         UnitIcon: Unit,
         order: 3,
     },
@@ -19,7 +19,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'geoPool',
         name: 'Shade Geo',
         description: 'The geo the shade has, which can be earned back by defeating the shade.',
-        classNames: lineAreaColors.indigo,
+        classNames: tailwindChartColors.indigo,
         UnitIcon: Unit,
         order: 2,
     },
@@ -27,7 +27,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'trinketGeo',
         name: 'Relict Geo worth',
         description: 'The geo which the relicts in the inventory are worth when sold to Lemm.',
-        classNames: lineAreaColors.rose,
+        classNames: tailwindChartColors.rose,
         UnitIcon: Unit,
         order: 1,
     },
@@ -35,7 +35,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'geoTotal',
         name: 'Total',
         description: 'Total geo in relicts, shade and player inventory.',
-        classNames: lineAreaColors.rose,
+        classNames: tailwindChartColors.rose,
         UnitIcon: Unit,
         order: 1,
         notShownInGraph: true,

@@ -171,13 +171,13 @@ export const virtualCharms: VirtualCharm[] = [
         id: 'charm_vanilla_unbreakableGreed',
         name: 'Unbreakable Greed',
         playerDataId: '24',
-        hasCharm: (frameEndEvent) => frameEndEvent.fragileHealth_unbreakable && frameEndEvent.gotCharm_23,
+        hasCharm: (frameEndEvent) => frameEndEvent.fragileGreed_unbreakable && frameEndEvent.gotCharm_24,
     }),
     makeVirtualCharm({
         id: 'charm_vanilla_unbreakableStrength',
         name: 'Unbreakable Strength',
         playerDataId: '25',
-        hasCharm: (frameEndEvent) => frameEndEvent.fragileHealth_unbreakable && frameEndEvent.gotCharm_23,
+        hasCharm: (frameEndEvent) => frameEndEvent.fragileStrength_unbreakable && frameEndEvent.gotCharm_25,
     }),
     makeVirtualCharm({
         id: 'charm_vanilla_spellTwister',

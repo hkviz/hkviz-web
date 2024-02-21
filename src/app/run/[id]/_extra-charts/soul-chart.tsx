@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import vesselImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0000_magic_orb.png';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
-import { lineAreaColors } from './colors';
+import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
 function Unit({ className }: { className?: string }) {
@@ -13,7 +13,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'MPCharge',
         name: 'Soul',
         description: 'How much soul is in the soul meter (from 0 to 99)',
-        classNames: lineAreaColors.slate,
+        classNames: tailwindChartColors.slate,
         UnitIcon: Unit,
         order: 1,
     },
@@ -21,7 +21,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'MPReserve',
         name: 'Soul reserve',
         description: 'Soul inside the soul vessels (up to 33 per vessel)',
-        classNames: lineAreaColors.indigo,
+        classNames: tailwindChartColors.indigo,
         UnitIcon: Unit,
         order: 2,
     },
@@ -29,7 +29,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'MPTotal',
         name: 'Total',
         description: 'Total soul',
-        classNames: lineAreaColors.slate,
+        classNames: tailwindChartColors.slate,
         UnitIcon: Unit,
         order: 3,
         notShownInGraph: true,

@@ -1,5 +1,5 @@
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
-import { lineAreaColors } from './colors';
+import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
 function Unit({ className }: { className?: string }) {
@@ -10,7 +10,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'completionPercentageEarlyCalc',
         name: 'Game completion',
         description: 'Percentage of the game completed',
-        classNames: lineAreaColors.rose,
+        classNames: tailwindChartColors.rose,
         UnitIcon: Unit,
         order: 1,
     },

@@ -1,6 +1,27 @@
 import { enemiesJournalGenerated } from '../generated/enemies-journal.generated';
 import { enemiesGenerated } from '../generated/enemies.generated';
 
+export const greyPrinceNames = [
+    // https://hollowknight.wiki/w/Grey_Prince_Zote
+    'Terrifying, Beautiful, Powerful, Grey Prince Zote',
+    'Gorgeous, Passionate,',
+    'Diligent, Overwhelming,',
+    'Vigorous,',
+    'Enchanting,',
+    'Mysterious,',
+    'Sensual,',
+    'Fearless,',
+    'Invincible,',
+];
+
+for (let i = 1; i <= 10; i++) {
+    greyPrinceNames[i] = greyPrinceNames[i] + ' ' + greyPrinceNames[i - 1];
+}
+
+for (let i = 0; i < greyPrinceNames.length; i++) {
+    greyPrinceNames[i] = greyPrinceNames[i] + ` (Level ${i + 1})`;
+}
+
 type EnemyName = keyof typeof enemiesGenerated;
 
 // fields in playerData {name}Defeated: boolean
@@ -32,7 +53,7 @@ export const playerDataNameToDefeatedName: Record<
     mageLordDream: { enemy: 'MageLord', overrideName: 'Soul Tyrant' },
     infectedKnightDream: { enemy: 'FalseKnight', overrideName: 'Failed Champion' },
     whiteDefender: { enemy: 'DungDefender', overrideName: 'White Defender' },
-    greyPrince: { enemy: 'Zote', overrideName: 'Grey Prince Zote' },
+    //greyPrince: { enemy: 'Zote', overrideName: 'Grey Prince Zote' },
     // dream warriors
     aladarSlug: undefined,
     xero: undefined,
@@ -87,6 +108,12 @@ const isBossOverrides: Partial<Record<EnemyName, boolean>> = {
     AbyssTendril: false, // Void Tendrils
     LazyFlyer: false, // Aluba
     BindingSeal: false,
+
+    ZotelingBuzzer: false, // Winged Zoteling
+    GreyPrince: false,
+    Zote: false,
+    ZotelingHopper: false,
+    ZotelingBalloon: false,
 };
 
 export function isEnemyBoss(enemy: EnemyInfo): boolean {

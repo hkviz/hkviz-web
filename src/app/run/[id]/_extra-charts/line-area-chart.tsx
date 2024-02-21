@@ -9,12 +9,8 @@ import useIsVisibleRef from '~/lib/utils/use-is-visible';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '~/lib/viz/recording-files/events/frame-end-event';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { LineChartVariableClassNames } from './colors';
 import { downScale } from './down-scale';
-
-export interface LineChartVariableClassNames {
-    checkbox: string;
-    path: string;
-}
 
 export type LineChartVariableDescription = {
     key: FrameEndEventNumberKey;

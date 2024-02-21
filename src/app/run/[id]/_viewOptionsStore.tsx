@@ -39,7 +39,7 @@ function createViewOptionsStore() {
                 extraChartsFollowAnimation: true,
                 mainCardTab: 'overview' as MainCardTab,
 
-                visibleSplitGroups: recordingSplitGroups.filter((it) => it.defaultShown).map((it) => it.name),
+                visibleSplitGroups: recordingSplitGroups.filter((it) => it.defaultShown),
             },
             (set, get) => {
                 function handleAnyAnimationVisiblityChanged() {

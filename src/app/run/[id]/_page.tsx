@@ -1,6 +1,6 @@
 'use client';
 
-import { TabsListTransparent, TabsTriggerTransparent } from '@/additions/tabs';
+import { TabsListTransparent, TabsTriggerTransparent } from '@/components/additions/tabs';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
@@ -50,7 +50,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 <Card className="max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto sm:min-w-min">
                     <CardContent className="px-0 pb-1">
                         <CardHeader className="px-4 py-2">
-                            <CardTitle className="text-lg">View options</CardTitle>
+                            <CardTitle className="text-lg">Map options</CardTitle>
                         </CardHeader>
                         <ViewOptions useViewOptionsStore={useViewOptionsStore} />
                     </CardContent>

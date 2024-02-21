@@ -30,7 +30,7 @@ const RunSplitRow = memo(
             // icon = <Image src={split.imageUrl} className="mr-2 h-6 w-6" width={84} height={96} alt="" />;
             icon = (
                 <div
-                    className="mr-2 h-7 w-7 bg-contain bg-center bg-no-repeat"
+                    className="mr-2 h-7 w-7 shrink-0 bg-contain bg-center bg-no-repeat"
                     style={{
                         backgroundImage: `url(${split.imageUrl})`,
                     }}
@@ -43,9 +43,18 @@ const RunSplitRow = memo(
             setAnimationMsIntoGame(split.msIntoGame);
         }
 
+        // const activeStateClasses =
+        //     activeState === 'past'
+        //         ? 'bg-green-200 dark:bg-green-900'
+        //         : activeState === 'next'
+        //           ? 'bg-blue-300 dark:bg-blue-800'
+        //           : activeState === 'future'
+        //             ? ''
+        //             : assertNever(activeState);
+
         const activeStateClasses =
             activeState === 'past'
-                ? 'bg-green-200 dark:bg-green-900'
+                ? 'bg-gradient-to-r from-green-300/10 to-green-500/20 dark:from-green-500/10 dark:to-green-500/15'
                 : activeState === 'next'
                   ? 'bg-blue-300 dark:bg-blue-800'
                   : activeState === 'future'
@@ -57,7 +66,10 @@ const RunSplitRow = memo(
                 <TableCell className={cn('p-0', activeStateClasses)}>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <button onClick={handleClick} className="flex w-full flex-row gap-2 p-4">
+                            <button onClick={handleClick} className="relative flex w-full flex-row gap-2 p-4">
+                                <div
+                                    className={cn('absolute bottom-0 left-0 top-0 w-1', split.group.color.background)}
+                                ></div>
                                 {icon}
                                 <span className="grow text-left">{split.title}</span>
                                 <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
@@ -101,6 +113,7 @@ export function RunSplits({ useViewOptionsStore }: Props) {
         [animationMsIntoGame, filteredSplits],
     );
 
+    const scrollDivRef = useRef<HTMLDivElement | null>(null);
     const splitRefs = useRef<(HTMLTableRowElement | null)[]>([]);
     useEffect(() => {
         splitRefs.current = splitRefs.current.slice(0, filteredSplits.length);
@@ -110,11 +123,21 @@ export function RunSplits({ useViewOptionsStore }: Props) {
         const scrollToIndex =
             nextSplitIndex === -1 || nextSplitIndex === undefined ? filteredSplits.length - 1 : nextSplitIndex;
         if (scrollToIndex >= 0 && scrollToIndex < filteredSplits.length) {
-            splitRefs.current[scrollToIndex]?.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-                inline: 'start',
-            });
+            // splitRefs.current[scrollToIndex]?.scrollIntoView({
+            //     behavior: 'smooth',
+            //     block: 'nearest',
+            //     inline: 'start',
+            // });
+
+            const tr = splitRefs.current[scrollToIndex];
+            const scrollDiv = scrollDivRef.current;
+            if (!tr || !scrollDiv) return;
+            const maxOk = tr.offsetTop;
+            const minOk = tr.offsetTop - scrollDiv.clientHeight + tr.clientHeight;
+            // (tr.parentNode! as any).scrollTop = tr.offsetTop;
+            if (scrollDiv.scrollTop < minOk || scrollDiv.scrollTop > maxOk) {
+                scrollDiv.scrollTo({ top: minOk, behavior: 'smooth' });
+            }
         }
     }, [nextSplitIndex, filteredSplits.length]);
 
@@ -132,15 +155,16 @@ export function RunSplits({ useViewOptionsStore }: Props) {
                 <div>
                     <div className="flex flex-wrap gap-2 p-4">
                         {recordingSplitGroups.map((group) => {
-                            const checked = visibleSplitGroups.includes(group.name);
+                            const checked = visibleSplitGroups.includes(group);
                             return (
                                 <div className="flex flex-row gap-2" key={group.name}>
                                     <Checkbox
                                         id={id + '_run_split_option_' + group.name}
                                         checked={checked}
                                         onCheckedChange={(checked) =>
-                                            setVisibleSplitGroupChecked(group.name, checked as boolean)
+                                            setVisibleSplitGroupChecked(group, checked as boolean)
                                         }
+                                        className={group.color.checkbox}
                                     />
                                     <label
                                         htmlFor={id + '_run_split_option_' + group.name}
@@ -154,7 +178,7 @@ export function RunSplits({ useViewOptionsStore }: Props) {
                     </div>
                 </div>
                 <hr />
-                <div className="grow overflow-y-auto lg:shrink lg:basis-0">
+                <div className="grow overflow-y-auto lg:shrink lg:basis-0" ref={scrollDivRef}>
                     <Table className="w-full">
                         <TableBody>
                             {filteredSplits?.map((split, index) => {
