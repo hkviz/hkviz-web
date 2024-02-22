@@ -1,14 +1,8 @@
+import { parseHtmlEntities } from '../utils/html';
 import { raise } from '../utils/utils';
 import { charmsGenerated } from './generated/charms.generated';
 import { uiLangGenerated } from './generated/lang-ui.generated';
-import { FrameEndEvent } from './recording-files/events/frame-end-event';
-
-function parseHtmlEntities(str: string): string {
-    return str.replace(/&#([0-9]{1,3});/gi, function (match, numStr) {
-        const num = parseInt(numStr, 10); // read num as normal number
-        return String.fromCharCode(num);
-    });
-}
+import { type FrameEndEvent } from './recording-files/events/frame-end-event';
 
 const charmsArray = charmsGenerated.map((charm) => {
     const name = (uiLangGenerated as any)['CHARM_NAME_' + charm.charmId];

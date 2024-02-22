@@ -1,4 +1,5 @@
 import { tailwindChartColors } from '~/app/run/[id]/_extra-charts/colors';
+import { parseHtmlEntities } from '~/lib/utils/html';
 import { assertNever } from '~/lib/utils/utils';
 import { virtualCharms } from '../charms';
 import { enemiesJournalLang } from '../generated/lang-enemies-journal.generated';
@@ -75,7 +76,8 @@ function createRecordingSplitFromEnemy(
     overrideName?: string | undefined,
 ): RecordingSplit {
     const enemyNameDisplay =
-        overrideName ?? (enemyInfo?.nameConvo ? enemiesJournalLang[enemyInfo.nameConvo] ?? enemyName : enemyName);
+        overrideName ??
+        (enemyInfo?.nameConvo ? parseHtmlEntities(enemiesJournalLang[enemyInfo.nameConvo]) ?? enemyName : enemyName);
     return {
         msIntoGame,
         title: enemyNameDisplay, // + '(' + enemyInfo?.neededForJournal + ')',
