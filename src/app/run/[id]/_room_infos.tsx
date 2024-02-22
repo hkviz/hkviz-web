@@ -13,6 +13,8 @@ import { type UseViewOptionsStore } from './_viewOptionsStore';
 import { Toggle } from '@/components/ui/toggle';
 import { Palette, PinOff } from 'lucide-react';
 import { useThemeStore } from '~/app/_components/theme-store';
+import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
+import { formatZoneAndRoomName } from '~/lib/viz/map-data/room-name-formatting';
 import {
     AggregationVariable,
     aggregationVariableInfos,
@@ -151,6 +153,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
     const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
     const selectedRoomPinned = useViewOptionsStore((s) => s.selectedRoomPinned);
     const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
+    const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
 
     const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
     const allRoomInfos = selectedRoom ? allRoomDataBySceneName.get(selectedRoom) ?? null : null;
@@ -169,9 +172,18 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
         }
     }, [mainRoomInfo?.color, theme]);
 
+    const relatedRooms = useMemo(() => {
+        if (!selectedRoom || !mainRoomInfo?.mapZone) return [];
+        return getRelatedVirtualRoomNames(mainRoomInfo.mapZone, selectedRoom);
+    }, [mainRoomInfo?.mapZone, selectedRoom]);
+
+    const roomNameFormatted = useMemo(() => {
+        return formatZoneAndRoomName(mainRoomInfo?.mapZone, selectedRoom ?? '');
+    }, [mainRoomInfo?.mapZone, selectedRoom]);
+
     return (
         <Card
-            className="max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col bg-gradient-to-b from-transparent  to-transparent sm:min-w-min"
+            className="max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col bg-gradient-to-b from-transparent  to-transparent"
             style={
                 {
                     '--tw-gradient-from': gradientColor,
@@ -234,6 +246,21 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
             </CardHeader>
             {selectedRoom && (
                 <CardContent className="shrink grow basis-0 overflow-auto px-0 pb-1">
+                    {relatedRooms.length !== 0 && (
+                        <div className="flex flex-row gap-1 overflow-x-auto overflow-y-hidden p-1">
+                            {relatedRooms.map((room) => (
+                                <Button
+                                    key={room.name}
+                                    size="sm"
+                                    variant={room.name === selectedRoom ? 'secondary' : 'outline'}
+                                    onClick={() => setSelectedRoom(room.name)}
+                                    className="shrink-0"
+                                >
+                                    {room.displayName}
+                                </Button>
+                            ))}
+                        </div>
+                    )}
                     <Table className="w-full">
                         <TableBody>
                             <AggregationVariables useViewOptionsStore={useViewOptionsStore} />

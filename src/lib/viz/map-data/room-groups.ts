@@ -1,3 +1,5 @@
+import { formatZoneAndRoomName } from './room-name-formatting';
+
 type RoomGroup = {
     readonly name: `group_${string}`;
     readonly sceneNames: readonly string[];
@@ -6,7 +8,7 @@ type RoomGroup = {
 export const roomGroups = [
     {
         name: 'group_bretta',
-        sceneNames: ['Room_Bretta_Basement', 'Room_Bretta'], // Dream_Mighty_Zote
+        sceneNames: ['Room_Bretta', 'Room_Bretta_Basement', 'Dream_Mighty_Zote'],
     },
     {
         name: 'group_blackEggTemple',
@@ -44,3 +46,32 @@ export function roomGroupName(name: RoomGroupName): RoomGroupName {
 }
 
 export const roomGroupByName = new Map(roomGroups.map((group) => [group.name, group] as const));
+
+export interface RelatedVirtualRoom {
+    name: string;
+    displayName: string;
+}
+
+export function getRelatedVirtualRoomNames(zoneName: string, virtualRoomName: string): RelatedVirtualRoom[] {
+    if (!virtualRoomName || !zoneName) return [];
+
+    const groups = virtualRoomName.startsWith('group_')
+        ? roomGroups.filter((group) => group.name === virtualRoomName)
+        : roomGroups.filter((group) => group.sceneNames.includes(virtualRoomName as never));
+
+    return groups.flatMap((group) => {
+        const allDisplayName = formatZoneAndRoomName(zoneName, group.name).roomNameFormattedZoneExclusive;
+        return [
+            {
+                name: group.name,
+                displayName: groups.length === 1 ? 'All' : allDisplayName,
+            },
+            ...group.sceneNames.map((sceneName) => ({
+                name: sceneName,
+                displayName: formatZoneAndRoomName(zoneName, sceneName)
+                    .roomNameFormattedZoneExclusive.replace(allDisplayName + ' - ', '')
+                    .replace(allDisplayName + ' ', ''),
+            })),
+        ];
+    });
+}

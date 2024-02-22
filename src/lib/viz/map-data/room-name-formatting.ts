@@ -15,10 +15,12 @@ const predefinedRoomNames = {
     Town: 'Town',
     Room_shop: "Sly's Shop",
     Room_Ouiji: "Jiji's Hut",
-    Room_Bretta: "Bretta's House Ground Floor",
     Room_Town_Stag_Station: 'Stag Station',
     Room_mapper: 'Map Shop',
     group_bretta: "Bretta's House",
+    Room_Bretta_Basement: "Bretta's House Basement",
+    Room_Bretta: "Bretta's House Ground Floor",
+    Dream_Mighty_Zote: 'Prince Zote Dream',
 
     // Crossroads
     Crossroads_49: 'Elevator',
@@ -28,16 +30,23 @@ const predefinedRoomNames = {
     Room_Mender_House: "Menderbug's house",
     Room_Charm_Shop: "Salubra's Shop",
     group_blackEggTemple: 'Black Egg Temple',
+    Room_temple: 'Black Egg Temple - Entrance',
+    Room_Final_Boss_Atrium: 'Black Egg Temple - Atrium',
+    Room_Final_Boss_Core: 'Black Egg Temple - Hollow Knight',
+    Dream_Final_Boss: 'Black Egg Temple - Radiance',
 
     // Greenpath
     Fungus1_16_alt: 'Stag Station',
     group_stone_sanctuary: 'Stone Sanctuary',
-    Fungus1_35: 'Stone Sanctuary Main Room',
+    Fungus1_35: 'Stone Sanctuary No Eyes',
     Fungus1_36: 'Stone Sanctuary Right Room',
 
     // Fog canyon
     Room_Fungus_Shaman: 'Overgrown Mound',
     group_Fungus3_archive: "Teacher's Archives",
+    Fungus3_archive: "Teacher's Archives Entrance",
+    Fungus3_archive_02: "Teacher's Archives Middle Room",
+    Fungus3_archive_02_boss: "Teacher's Archives Uumuu",
 
     // Fungal wastes
     Fungus2_01: 'Queen Station Hub',
