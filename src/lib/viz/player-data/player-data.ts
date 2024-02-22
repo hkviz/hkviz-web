@@ -56,6 +56,17 @@ export function getDefaultValue<TField extends PlayerDataField>(field: TField): 
 }
 
 // SUBSETS OF PLAYER DATA FIELDS
+// bool
+export type PlayerDataBoolField = Extract<PlayerDataField, { type: 'Boolean' }>;
+export function isPlayerDataBoolField(field: PlayerDataField): field is PlayerDataBoolField {
+    return field.type === 'Boolean';
+}
+// int
+export type PlayerDataIntField = Extract<PlayerDataField, { type: 'Int32' }>;
+export function isPlayerDataIntField(field: PlayerDataField): field is PlayerDataIntField {
+    return field.type === 'Int32';
+}
+
 // kill
 export type PlayerDataKilledField = Extract<PlayerDataField, { name: `killed${string}` }>;
 export function isPlayerDataKilledField(field: PlayerDataField): field is PlayerDataKilledField {

@@ -2,6 +2,7 @@ import { tailwindChartColors } from '~/app/run/[id]/_extra-charts/colors';
 import { assertNever } from '~/lib/utils/utils';
 import { virtualCharms } from '../charms';
 import { enemiesJournalLang } from '../generated/lang-enemies-journal.generated';
+import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../player-data/abilities';
 import {
     enemies,
     greyPrinceNames,
@@ -12,6 +13,7 @@ import {
 import {
     getEnemyNameFromDefeatedField,
     getEnemyNameFromKilledField,
+    isPlayerDataBoolField,
     isPlayerDataDefeatedField,
     isPlayerDataKilledField,
     playerDataFields,
@@ -20,16 +22,28 @@ import { type CombinedRecording } from './recording';
 
 export const recordingSplitGroups = [
     {
+        name: 'dreamer',
+        displayName: 'Dreamers',
+        color: tailwindChartColors.sky,
+        defaultShown: true,
+    },
+    {
         name: 'boss',
         displayName: 'Bosses',
         color: tailwindChartColors.rose,
         defaultShown: true,
     },
     {
-        name: 'dreamer',
-        displayName: 'Dreamers',
-        color: tailwindChartColors.sky,
+        name: 'abilities',
+        displayName: 'Abilities',
+        color: tailwindChartColors.green,
         defaultShown: true,
+    },
+    {
+        name: 'items',
+        displayName: 'Items',
+        color: tailwindChartColors.indigo,
+        defaultShown: false,
     },
     {
         name: 'charmCollection',
@@ -154,6 +168,34 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                         greyPrinceNames.at(event.value >= greyPrinceNames.length ? -1 : event.value - 1) ??
                         greyPrinceNames[0]!;
                     splits.push(createRecordingSplitFromEnemy(event.msIntoGame, enemyName, enemyInfo, enemyName));
+                }
+            });
+        } else if (isPlayerDataAbilityOrItemField(field)) {
+            const abilityOrItem = abilitiesAndItems[field.name];
+            if (!abilityOrItem) continue;
+            recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                const boolCondition =
+                    isPlayerDataBoolField(event.field) && event.value && !event.previousPlayerDataEventOfField?.value;
+                const intCondition =
+                    event.field.type === 'Int32' &&
+                    (event.value as any as number) > 0 &&
+                    event.previousPlayerDataEventOfField &&
+                    event.previousPlayerDataEventOfField.value < event.value;
+
+                if (boolCondition || intCondition) {
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: abilityOrItem.name,
+                        tooltip: `Got ${abilityOrItem.name}`,
+                        imageUrl: `/ingame-sprites/inventory/${abilityOrItem.spriteName}.png`,
+                        group:
+                            abilityOrItem.type === 'item'
+                                ? recordingSplitGroupsByName.items
+                                : abilityOrItem.type === 'ability'
+                                  ? recordingSplitGroupsByName.abilities
+                                  : assertNever(abilityOrItem.type),
+                        debugInfo: event,
+                    });
                 }
             });
         }

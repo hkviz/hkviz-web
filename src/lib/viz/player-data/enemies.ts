@@ -52,8 +52,8 @@ export const playerDataNameToDefeatedName: Record<
     // dream bosses (some missing?)
     mageLordDream: { enemy: 'MageLord', overrideName: 'Soul Tyrant' },
     infectedKnightDream: { enemy: 'FalseKnight', overrideName: 'Failed Champion' },
-    whiteDefender: { enemy: 'DungDefender', overrideName: 'White Defender' },
-    //greyPrince: { enemy: 'Zote', overrideName: 'Grey Prince Zote' },
+    whiteDefender: undefined, // { enemy: 'DungDefender', overrideName: 'White Defender' },
+    greyPrince: undefined, // { enemy: 'Zote', overrideName: 'Grey Prince Zote' },
     // dream warriors
     aladarSlug: undefined,
     xero: undefined,
