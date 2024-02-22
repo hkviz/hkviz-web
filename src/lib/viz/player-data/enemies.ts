@@ -14,7 +14,7 @@ export const greyPrinceNames = [
     'Invincible,',
 ];
 
-for (let i = 1; i <= greyPrinceNames.length; i++) {
+for (let i = 1; i < greyPrinceNames.length; i++) {
     greyPrinceNames[i] = greyPrinceNames[i] + ' ' + greyPrinceNames[i - 1];
 }
 
