@@ -10,8 +10,10 @@ import spellDownImg from '../../../../public/ingame-sprites/inventory/Inv_0026_s
 import focusImg from '../../../../public/ingame-sprites/inventory/Inv_0029_spell_core.png';
 import healthImg from '../../../../public/ingame-sprites/select_game_HUD_0001_health.png';
 import { roomGroupNamesBySceneName } from '../map-data/room-groups';
+import { BossSequenceData } from '../player-data/boss-sequence';
 import { playerDataFields } from '../player-data/player-data';
 import { FrameEndEvent } from './events/frame-end-event';
+import { PlayerDataEvent } from './events/player-data-event';
 import { SceneEvent } from './events/scene-event';
 import {
     HeroStateEvent,
@@ -149,26 +151,62 @@ function aggregateRecording(recording: CombinedRecording) {
     let currentVirtualScenes: string[] = [];
     let previousSceneEnteredAtMs = 0;
 
+    let currentBossSequence: BossSequenceData | null = null;
+
+    let x: any[] = [];
+
+    function currentVirtualScenesChanged({
+        event,
+        previousSceneEvent,
+    }: {
+        event: SceneEvent | PlayerDataEvent<typeof playerDataFields.byFieldName.currentBossSequence>;
+        previousSceneEvent: SceneEvent | null;
+    }) {
+        const groups = currentSceneEvent ? roomGroupNamesBySceneName.get(currentSceneEvent.sceneName) ?? [] : [];
+        const previousVirtualScenes = currentVirtualScenes;
+        currentVirtualScenes = [
+            ...(currentSceneEvent ? [currentSceneEvent.sceneName] : []),
+            ...groups.map((it) => it),
+        ].flatMap((it) => {
+            if (currentBossSequence) {
+                return [it, `boss_seq:${currentBossSequence.name}`, `boss_seq:${currentBossSequence.name}:${it}`];
+            } else {
+                return [it];
+            }
+        });
+        if (previousSceneEvent) {
+            addToScenes(previousVirtualScenes, 'timeSpendMs', event.msIntoGame - previousSceneEnteredAtMs);
+        }
+        previousSceneEnteredAtMs = event.msIntoGame;
+
+        for (const virtualScene of currentVirtualScenes) {
+            const virtualSceneAsArr = [virtualScene];
+            if (!countPerScene[virtualScene]?.firstVisitMs) {
+                addToScenes(virtualSceneAsArr, 'firstVisitMs', event.msIntoGame);
+            }
+            if (!previousVirtualScenes.includes(virtualScene)) {
+                // only counts visit when not already in virtual scene before
+                addToScenes(virtualSceneAsArr, 'visits', 1);
+            }
+        }
+    }
+
     for (const event of recording.events) {
         if (event instanceof SceneEvent) {
-            const groups = roomGroupNamesBySceneName.get(event.sceneName) ?? [];
-            const newVirtualScenes = [event.sceneName, ...groups.map((it) => it)];
-            if (currentSceneEvent) {
-                addToScenes(currentVirtualScenes, 'timeSpendMs', event.msIntoGame - previousSceneEnteredAtMs);
-            }
-            for (const virtualScene of newVirtualScenes) {
-                const virtualSceneAsArr = [virtualScene];
-                if (!countPerScene[virtualScene]?.firstVisitMs) {
-                    addToScenes(virtualSceneAsArr, 'firstVisitMs', event.msIntoGame);
-                }
-                if (!currentVirtualScenes.includes(virtualScene)) {
-                    // only counts visit when not already in virtual scene before
-                    addToScenes(virtualSceneAsArr, 'visits', 1);
-                }
-            }
+            x.push(['scene ', event.sceneName]);
+            const previousSceneEvent = currentSceneEvent;
             currentSceneEvent = event;
-            currentVirtualScenes = newVirtualScenes;
-            previousSceneEnteredAtMs = event.msIntoGame;
+            currentVirtualScenesChanged({
+                event,
+                previousSceneEvent,
+            });
+        } else if (isPlayerDataEventOfField(event, playerDataFields.byFieldName.currentBossSequence)) {
+            x.push(['bossSeq ', event.value]);
+            currentBossSequence = event.value;
+            currentVirtualScenesChanged({
+                event,
+                previousSceneEvent: currentSceneEvent,
+            });
         } else if (event instanceof HeroStateEvent && event.field.name === 'dead' && event.value) {
             addToScenes(currentVirtualScenes, 'deaths', 1);
         } else if (event instanceof HeroStateEvent && event.field.name === 'focusing') {
@@ -225,6 +263,8 @@ function aggregateRecording(recording: CombinedRecording) {
     if (currentSceneEvent) {
         addToScenes(currentVirtualScenes, 'timeSpendMs', recording.lastEvent().msIntoGame - previousSceneEnteredAtMs);
     }
+
+    console.log('x', x);
 
     return { countPerScene, maxOverScenes };
 }

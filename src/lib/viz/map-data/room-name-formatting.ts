@@ -73,6 +73,10 @@ const predefinedRoomNames = {
     Crossroads_49b: 'Storerooms Elevator',
     Room_nailsmith: "Nailsmith's Forge",
 
+    Ruins_House_03: "Emilitia's House",
+    Ruins_House_02: 'Gorgeous Husk House',
+    Ruins_House_01: 'Grub House',
+
     // Waterways
     Waterways_13: "Isma's Grove",
     GG_Waterways: 'Junk Pit',

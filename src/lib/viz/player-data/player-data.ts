@@ -1,5 +1,6 @@
 import { playerDataFieldsGenerated } from '../generated/player-data-fields.generated';
 import { type BossSequenceDoorCompletion, type BossStatueCompletion } from './boss-completion';
+import { BossSequenceData } from './boss-sequence';
 
 const playerDataFieldsArray = Object.values(playerDataFieldsGenerated);
 
@@ -12,7 +13,8 @@ export type PlayerDataFieldValue<TField extends PlayerDataField> =
     TField['type'] extends 'List`1' ? string[] :
     TField['type'] extends 'Completion' ?
     // TODO possibly the player data should be extracted with full class paths
-        TField['name'] extends `bossDoorStateTier${number}` ? BossSequenceDoorCompletion : BossStatueCompletion
+    TField['name'] extends `bossDoorStateTier${number}` ? BossSequenceDoorCompletion : BossStatueCompletion :
+    TField['type'] extends 'BossSequenceData' ? BossSequenceData|null
     : string;
 // prettier-ignore-end
 

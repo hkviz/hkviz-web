@@ -1,7 +1,7 @@
 import { formatZoneAndRoomName } from './room-name-formatting';
 
 type RoomGroup = {
-    readonly name: `group_${string}`;
+    readonly name: `group_${string}` | `boss_seq:${string}`;
     readonly sceneNames: readonly string[];
 };
 
@@ -25,6 +25,26 @@ export const roomGroups = [
     {
         name: 'group_beasts_den',
         sceneNames: ['Deepnest_Spider_Town', 'Dream_Guardian_Hegemol'],
+    },
+
+    // pantheons
+    {
+        name: 'boss_seq:Boss Sequence Tier 1',
+        sceneNames: [
+            'GG_Boss_Door_Entrance',
+            'GG_Vengefly',
+            'GG_Gruz_Mother',
+            'GG_False_Knight',
+            'GG_Mega_Moss_Charger',
+            'GG_Hornet_1',
+            'GG_Spa',
+            'GG_Ghost_Gorb',
+            'GG_Dung_Defender',
+            'GG_Mage_Knight',
+            'GG_Brooding_Mawlek',
+            'GG_Engine',
+            'GG_Nailmasters',
+        ].map((it) => `boss_seq:Boss Sequence Tier 1:${it}`),
     },
 ] as const satisfies readonly RoomGroup[];
 

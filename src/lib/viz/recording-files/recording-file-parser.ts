@@ -4,6 +4,7 @@ import { playerDataFields } from '../player-data/player-data';
 import { isKnownRecordingFileVersion, isVersion0xx, type RecordingFileVersion } from '../types/recording-file-version';
 import { Vector2 } from '../types/vector2';
 
+import { BossSequenceData } from '../player-data/boss-sequence';
 import {
     EVENT_PREFIXES,
     PARTIAL_EVENT_PREFIXES,
@@ -107,6 +108,12 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                         value = args[0] === '1';
                     } else if (field.type === 'List`1') {
                         value = args[0]!.split(',');
+                    } else if (field.type === 'BossSequenceData') {
+                        if (args[0] === 'null') {
+                            value = null;
+                        } else {
+                            value = new BossSequenceData(parseInt(args[0]!), args[1]!);
+                        }
                     } else {
                         value = args[0];
                     }

@@ -11,6 +11,21 @@ import { getSubSprites } from './room-sub-sprites';
 
 const roomDataUnscaledWithCustom = [...roomDataUnscaled.rooms, ...customRoomData];
 
+// some order changes, so hover works better:
+const resortings = [
+    {
+        move: 'Waterways_07',
+        after: 'Waterways_14',
+    },
+];
+
+resortings.forEach((resort) => {
+    const moveIndex = roomDataUnscaledWithCustom.findIndex((it) => it.sceneName === resort.move);
+    const afterIndex = roomDataUnscaledWithCustom.findIndex((it) => it.sceneName === resort.after);
+    const move = roomDataUnscaledWithCustom.splice(moveIndex, 1)[0]!;
+    roomDataUnscaledWithCustom.splice(afterIndex + 1, 0, move);
+});
+
 // logPossibleConditionals();
 
 /**

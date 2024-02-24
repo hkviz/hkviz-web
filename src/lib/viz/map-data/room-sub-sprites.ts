@@ -409,6 +409,74 @@ export const subSprites = {
             },
         ],
     },
+    Ruins2_04: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Ruins2_04',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Ruins2_04_Grub',
+                    size: { x: 19, y: 21 },
+                    offsetTop: { x: 188, y: 98 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Ruins_House_01',
+            },
+            {
+                normal: {
+                    name: 'edited/Ruins2_04_Bathhouse',
+                    size: { x: 22, y: 33 },
+                    offsetTop: { x: 87, y: 71 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Ruins_Elevator',
+            },
+            {
+                normal: {
+                    name: 'edited/Ruins2_04_Gorgeous_Husk',
+                    size: { x: 18, y: 33 },
+                    offsetTop: { x: 114, y: 71 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Ruins_House_02',
+            },
+            {
+                normal: {
+                    name: 'edited/Ruins2_04_Emilitia',
+                    size: { x: 20, y: 22 },
+                    offsetTop: { x: 132, y: 130 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Ruins_House_03',
+            },
+        ],
+    },
+    Waterways_07: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Waterways_07',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Waterways_07_Door',
+                    size: { x: 15, y: 24 },
+                    offsetTop: { x: 138, y: 12 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Ruins_House_03',
+            },
+        ],
+    },
 };
 
 type SubSprites = typeof subSprites;
