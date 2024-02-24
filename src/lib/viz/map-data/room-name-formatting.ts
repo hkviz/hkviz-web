@@ -40,6 +40,10 @@ const predefinedRoomNames = {
     group_stone_sanctuary: 'Stone Sanctuary',
     Fungus1_35: 'Stone Sanctuary No Eyes',
     Fungus1_36: 'Stone Sanctuary Right Room',
+    Room_nailmaster_02: 'Nailmaster Sheo',
+
+    // Cliffs
+    Room_nailmaster: 'Nailmaster Mato',
 
     // Fog canyon
     Room_Fungus_Shaman: 'Overgrown Mound',
@@ -83,9 +87,15 @@ const predefinedRoomNames = {
     Abyss_22: 'Hidden Station',
     RestingGrounds_08: "Spirits' Glade",
     RestingGrounds_07: "Seer's Room",
+    Room_Mansion: "Grey Mourner's House",
 
     // Deepnest
     Deepnest_09: 'Stag Station',
+    group_beasts_den: "Beast's Den",
+    Deepnest_Spider_Town: "Beast's Den Non Dream",
+    Dream_Guardian_Hegemol: "Beast's Den Herrah's Dream",
+    Room_spider_small: 'Small Weaver Room',
+    // TODO 'Weaver's Den',
 
     // Queens garden
     Fungus3_40: 'Stag Station',
@@ -94,6 +104,10 @@ const predefinedRoomNames = {
     Room_Colosseum_Bronze: 'Trial of the Warrior',
     Room_Colosseum_Silver: 'Trial of the Conqueror',
     Room_Colosseum_Gold: 'Trial of the Fool',
+    Room_nailmaster_03: 'Nailmaster Oro',
+
+    // Crystal Peak
+    Mines_35: 'Crystallised Mound',
 } as Record<string, string>;
 
 export function formatRoomName(zoneName: string | undefined, roomName: string) {

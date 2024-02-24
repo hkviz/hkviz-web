@@ -22,6 +22,10 @@ export const roomGroups = [
         name: 'group_stone_sanctuary',
         sceneNames: ['Fungus1_35', 'Fungus1_36'],
     },
+    {
+        name: 'group_beasts_den',
+        sceneNames: ['Deepnest_Spider_Town', 'Dream_Guardian_Hegemol'],
+    },
 ] as const satisfies readonly RoomGroup[];
 
 export const roomGroupNamesBySceneName = roomGroups

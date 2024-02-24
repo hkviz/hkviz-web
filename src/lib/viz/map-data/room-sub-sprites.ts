@@ -285,6 +285,130 @@ export const subSprites = {
             },
         ],
     },
+    Cliffs_02: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Cliffs_02',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Cliffs_02_Nailmaster',
+                    size: { x: 51, y: 35 },
+                    offsetTop: { x: 188, y: 107 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_nailmaster',
+            },
+        ],
+    },
+    Deepnest_East_06: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Deepnest_East_06',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Deepnest_East_06_Nailmaster',
+                    size: { x: 62, y: 41 },
+                    offsetTop: { x: 478, y: 17 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_nailmaster_03',
+            },
+        ],
+    },
+    Abyss_09: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Abyss_09',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Abyss_09_Lighthouse',
+                    size: { x: 75, y: 42 },
+                    offsetTop: { x: 113, y: 23 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Abyss_Lighthouse_room',
+            },
+        ],
+    },
+    Deepnest_10: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Deepnest_10',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Deepnest_10_Herrah',
+                    size: { x: 58, y: 66 },
+                    offsetTop: { x: 45, y: 41 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'group_beasts_den',
+            },
+            {
+                normal: {
+                    name: 'edited/Deepnest_10_Tiny_Room',
+                    size: { x: 49, y: 59 },
+                    offsetTop: { x: 27, y: 89 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_spider_small',
+            },
+        ],
+    },
+    RestingGrounds_12: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/RestingGrounds_12',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/RestingGrounds_12_Grey_Mourner',
+                    size: { x: 47, y: 40 },
+                    offsetTop: { x: 89, y: 15 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_Mansion',
+            },
+        ],
+    },
+    Mines_28_b: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Mines_28_b',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Mines_28_b_Mound',
+                    size: { x: 63, y: 34 },
+                    offsetTop: { x: 46, y: 13 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Mines_35',
+            },
+        ],
+    },
 };
 
 type SubSprites = typeof subSprites;
