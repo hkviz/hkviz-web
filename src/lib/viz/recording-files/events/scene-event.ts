@@ -1,3 +1,4 @@
+import { BossSequenceData } from '../../player-data/boss-sequence';
 import { type Vector2 } from '../../types/vector2';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 
@@ -6,6 +7,7 @@ export class SceneEvent extends RecordingEventBase {
     public sceneName: string;
     public originOffset: Vector2 | undefined;
     public sceneSize: Vector2 | undefined;
+    public currentBossSequence: BossSequenceData | null = null;
 
     constructor(options: SceneEventOptions) {
         super(options);

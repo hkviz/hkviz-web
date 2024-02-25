@@ -47,6 +47,15 @@ export function parsePlayerDataFieldValue<TField extends PlayerDataField>(
     } else if (field.type === 'List`1') {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return value.split(',') as any;
+    } else if (field.type === 'BossSequenceData') {
+        const args = value.split(';');
+        if (args[0] === 'null') {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+            return null as any;
+        } else {
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+            return new BossSequenceData(parseInt(args[0]!), args[1]!) as any;
+        }
     } else {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return value as any;

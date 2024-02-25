@@ -10,7 +10,6 @@ import spellDownImg from '../../../../public/ingame-sprites/inventory/Inv_0026_s
 import focusImg from '../../../../public/ingame-sprites/inventory/Inv_0029_spell_core.png';
 import healthImg from '../../../../public/ingame-sprites/select_game_HUD_0001_health.png';
 import { roomGroupNamesBySceneName } from '../map-data/room-groups';
-import { BossSequenceData } from '../player-data/boss-sequence';
 import { playerDataFields } from '../player-data/player-data';
 import { FrameEndEvent } from './events/frame-end-event';
 import { PlayerDataEvent } from './events/player-data-event';
@@ -151,9 +150,7 @@ function aggregateRecording(recording: CombinedRecording) {
     let currentVirtualScenes: string[] = [];
     let previousSceneEnteredAtMs = 0;
 
-    let currentBossSequence: BossSequenceData | null = null;
-
-    let x: any[] = [];
+    const x = [] as any[];
 
     function currentVirtualScenesChanged({
         event,
@@ -168,12 +165,17 @@ function aggregateRecording(recording: CombinedRecording) {
             ...(currentSceneEvent ? [currentSceneEvent.sceneName] : []),
             ...groups.map((it) => it),
         ].flatMap((it) => {
-            if (currentBossSequence) {
-                return [it, `boss_seq:${currentBossSequence.name}`, `boss_seq:${currentBossSequence.name}:${it}`];
+            if (currentSceneEvent?.currentBossSequence) {
+                return [
+                    it,
+                    `group_boss_seq:${currentSceneEvent.currentBossSequence.name}`,
+                    `boss_seq:${currentSceneEvent.currentBossSequence.name}:${it}`,
+                ];
             } else {
                 return [it];
             }
         });
+        x.push(formatTimeMs(event.msIntoGame) + ' ' + currentVirtualScenes.join(','));
         if (previousSceneEvent) {
             addToScenes(previousVirtualScenes, 'timeSpendMs', event.msIntoGame - previousSceneEnteredAtMs);
         }
@@ -193,22 +195,15 @@ function aggregateRecording(recording: CombinedRecording) {
 
     for (const event of recording.events) {
         if (event instanceof SceneEvent) {
-            x.push(['scene ', event.sceneName]);
             const previousSceneEvent = currentSceneEvent;
             currentSceneEvent = event;
             currentVirtualScenesChanged({
                 event,
                 previousSceneEvent,
             });
-        } else if (isPlayerDataEventOfField(event, playerDataFields.byFieldName.currentBossSequence)) {
-            x.push(['bossSeq ', event.value]);
-            currentBossSequence = event.value;
-            currentVirtualScenesChanged({
-                event,
-                previousSceneEvent: currentSceneEvent,
-            });
         } else if (event instanceof HeroStateEvent && event.field.name === 'dead' && event.value) {
-            addToScenes(currentVirtualScenes, 'deaths', 1);
+            // counted in frame end event, since deaths in pantheons (and probably dreams) don't trigger heroState dead
+            // addToScenes(currentVirtualScenes, 'deaths', 1);
         } else if (event instanceof HeroStateEvent && event.field.name === 'focusing') {
             addToScenes(currentVirtualScenes, 'focusing', 1);
         } else if (event instanceof SpellFireballEvent) {
@@ -234,6 +229,13 @@ function aggregateRecording(recording: CombinedRecording) {
                 addToScenes(currentVirtualScenes, 'damageTaken', -diff);
             }
         } else if (event instanceof FrameEndEvent && event.previousFrameEndEvent) {
+            if (
+                event.healthTotal === 0 &&
+                event.previousFrameEndEvent &&
+                event.previousFrameEndEvent.healthTotal !== 0
+            ) {
+                addToScenes(currentVirtualScenes, 'deaths', 1);
+            }
             // todo handle death changes in currency
             const poolDiff = event.geoPool - event.previousFrameEndEvent.geoPool;
             let geoDiff = event.geo - event.previousFrameEndEvent.geo;
@@ -264,7 +266,8 @@ function aggregateRecording(recording: CombinedRecording) {
         addToScenes(currentVirtualScenes, 'timeSpendMs', recording.lastEvent().msIntoGame - previousSceneEnteredAtMs);
     }
 
-    console.log('x', x);
+    console.log({ countPerScene, maxOverScenes });
+    console.log(x);
 
     return { countPerScene, maxOverScenes };
 }

@@ -17,6 +17,10 @@ import {
     type RecordingEvent,
 } from './recording';
 
+function isPantheonRoom(sceneName: string) {
+    return sceneName.startsWith('GG_') && !sceneName.startsWith('GG_Atrium');
+}
+
 export function combineRecordings(recordings: ParsedRecording[]): CombinedRecording {
     const events: RecordingEvent[] = [];
     let msIntoGame = 0;
@@ -106,6 +110,34 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                     allModVersions.set(mod.name, versions);
                 }
             } else if (event instanceof SceneEvent) {
+                const previousCurrentBossSequenceEvent = getPreviousPlayerData(
+                    playerDataFields.byFieldName.currentBossSequence,
+                );
+                if (previousCurrentBossSequenceEvent?.value && !isPantheonRoom(event.sceneName)) {
+                    // pantheon stopped, but game does not change player data to reflect that
+                    // so a event is faked here
+
+                    const currentBossSequenceEvent = new PlayerDataEvent<
+                        typeof playerDataFields.byFieldName.currentBossSequence
+                    >({
+                        timestamp: lastTimestamp,
+                        value: null,
+                        field: playerDataFields.byFieldName.currentBossSequence,
+                        previousPlayerPositionEvent: previousPlayerPositionEvent,
+                        previousPlayerDataEventOfField: previousCurrentBossSequenceEvent ?? null,
+                    });
+                    currentBossSequenceEvent.msIntoGame = msIntoGame;
+                    previousPlayerDataEventsByField.set(
+                        playerDataFields.byFieldName.currentBossSequence,
+                        currentBossSequenceEvent,
+                    );
+                    events.push(currentBossSequenceEvent);
+                }
+
+                const currentBossSequence =
+                    getPreviousPlayerData(playerDataFields.byFieldName.currentBossSequence)?.value ?? null;
+                event.currentBossSequence = currentBossSequence;
+
                 const visitedScenes = getPreviousPlayerData(playerDataFields.byFieldName.scenesVisited)?.value ?? [];
 
                 // if scene is not in player data, it might still be added in a few seconds or so, but if its not
@@ -233,6 +265,13 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 previousPlayerDataEventsByField.set(event.field, event);
                 if (frameEndEventPlayerDataFields.has(event.field)) {
                     createEndFrameEvent = true;
+                }
+
+                if (isPlayerDataEventOfField(event, playerDataFields.byFieldName.currentBossSequence)) {
+                    const sceneEvent = previousPlayerPositionEvent?.sceneEvent;
+                    if (sceneEvent && isPantheonRoom(sceneEvent.sceneName)) {
+                        sceneEvent.currentBossSequence = event.value;
+                    }
                 }
 
                 if (isPlayerDataEventWithFieldType(event, 'List`1')) {

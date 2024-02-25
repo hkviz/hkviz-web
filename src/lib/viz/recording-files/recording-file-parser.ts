@@ -1,10 +1,9 @@
 import { raise, typeCheckNever } from '~/lib/utils/utils';
 import { heroStateFields } from '../hero-state/hero-states';
-import { playerDataFields } from '../player-data/player-data';
+import { parsePlayerDataFieldValue, playerDataFields } from '../player-data/player-data';
 import { isKnownRecordingFileVersion, isVersion0xx, type RecordingFileVersion } from '../types/recording-file-version';
 import { Vector2 } from '../types/vector2';
 
-import { BossSequenceData } from '../player-data/boss-sequence';
 import {
     EVENT_PREFIXES,
     PARTIAL_EVENT_PREFIXES,
@@ -101,22 +100,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                     if (!field) throw new Error('Unknown player data field short code' + eventTypeSuffix());
 
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    let value: any;
-                    if (field.type === 'Int32') {
-                        value = parseInt(args[0]!);
-                    } else if (field.type === 'Boolean') {
-                        value = args[0] === '1';
-                    } else if (field.type === 'List`1') {
-                        value = args[0]!.split(',');
-                    } else if (field.type === 'BossSequenceData') {
-                        if (args[0] === 'null') {
-                            value = null;
-                        } else {
-                            value = new BossSequenceData(parseInt(args[0]!), args[1]!);
-                        }
-                    } else {
-                        value = args[0];
-                    }
+                    const value = parsePlayerDataFieldValue(field, args.length === 1 ? args[0]! : args.join(';'));
                     // TODO
                     events.push(
                         new PlayerDataEvent({

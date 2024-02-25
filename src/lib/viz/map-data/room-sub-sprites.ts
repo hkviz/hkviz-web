@@ -477,6 +477,74 @@ export const subSprites = {
             },
         ],
     },
+    GG_Atrium: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/GG_Atrium',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/GG_Atrium_P1',
+                    size: { x: 27, y: 30 },
+                    offsetTop: { x: 315, y: 172 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'group_boss_seq:Boss Sequence Tier 1',
+            },
+            {
+                normal: {
+                    name: 'edited/GG_Atrium_P2',
+                    size: { x: 28, y: 30 },
+                    offsetTop: { x: 349, y: 172 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'group_boss_seq:Boss Sequence Tier 2',
+            },
+            {
+                normal: {
+                    name: 'edited/GG_Atrium_P3',
+                    size: { x: 28, y: 30 },
+                    offsetTop: { x: 386, y: 172 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'group_boss_seq:Boss Sequence Tier 3',
+            },
+            {
+                normal: {
+                    name: 'edited/GG_Atrium_P4',
+                    size: { x: 28, y: 30 },
+                    offsetTop: { x: 475, y: 172 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'group_boss_seq:Boss Sequence Tier 4',
+            },
+        ],
+    },
+    GG_Atrium_Roof: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/GG_Atrium_Roof',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/GG_Atrium_Roof_P5',
+                    size: { x: 47, y: 53 },
+                    offsetTop: { x: 200, y: 38 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'group_boss_seq:Boss Sequence Tier 5',
+            },
+        ],
+    },
 };
 
 type SubSprites = typeof subSprites;

@@ -179,6 +179,8 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
     grubsNoRewardCollected: number;
     MPTotal: number;
 
+    healthTotal: number;
+
     constructor(options: FrameEndEventOptions) {
         super(options);
 
@@ -210,6 +212,8 @@ export class FrameEndEvent extends FrameEndPlayerDataBase {
         this.MPTotal = this.MPCharge + this.MPReserve;
 
         this.completionPercentageEarlyCalc = countGameCompletion(this);
+
+        this.healthTotal = this.health + this.healthBlue;
     }
 }
 

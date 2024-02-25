@@ -123,6 +123,14 @@ export function formatRoomName(zoneName: string | undefined, roomName: string) {
     }
 
     let formattedRoomName = roomName
+        // Pantheons
+        .replace(/(group_)?boss_seq:Boss Sequence Tier 1(\:GG)?/g, 'Pantheon of the Master ')
+        .replace(/(group_)?boss_seq:Boss Sequence Tier 2(\:GG)?/g, 'Pantheon of the Artist ')
+        .replace(/(group_)?boss_seq:Boss Sequence Tier 3(\:GG)?/g, 'Pantheon of the Sage ')
+        .replace(/(group_)?boss_seq:Boss Sequence Tier 4(\:GG)?/g, 'Pantheon of the Knight ')
+        .replace(/(group_)?boss_seq:Boss Sequence Tier 5(\:GG)?/g, 'Pantheon of the Hallownest ')
+
+        // Area names
         .replace('Abyss', 'The Abyss')
         // handled above .replace('-', 'Ancient Basin')
         .replace('Ruins', 'City of Tears') // Ruins1 and Ruins2 are both City of Tears
