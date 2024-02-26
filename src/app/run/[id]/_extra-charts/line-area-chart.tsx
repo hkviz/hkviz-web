@@ -67,6 +67,7 @@ export function LineAreaChart({
     const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const setHoveredMsIntoGame = useViewOptionsStore((s) => s.setHoveredMsIntoGame);
+    const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
 
     // timebounds debouncing, so we can use d3 animations
@@ -287,6 +288,9 @@ export function LineAreaChart({
                     (state.extraChartsTimeBounds[1] - state.extraChartsTimeBounds[0]) * (x / rect.width),
             );
         }
+        function sceneFromMs(ms: number) {
+            return recording?.sceneEvents.findLast((it) => it.msIntoGame <= ms)?.sceneName;
+        }
 
         // brush
         brush.current = d3
@@ -302,9 +306,14 @@ export function LineAreaChart({
             .on('mousemove', (e) => {
                 const ms = mouseToMsIntoGame(e);
                 setHoveredMsIntoGame(ms);
+                const scene = sceneFromMs(ms);
+                if (scene) {
+                    setHoveredRoom(scene);
+                }
             })
             .on('mouseleave', () => {
                 setHoveredMsIntoGame(null);
+                setHoveredRoom(null);
             });
         // .on('click', (e) => {
         //     const ms = mouseToMsIntoGame(e);
