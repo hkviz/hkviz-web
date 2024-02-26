@@ -14,7 +14,6 @@ import { Toggle } from '@/components/ui/toggle';
 import { Palette, PinOff } from 'lucide-react';
 import { useThemeStore } from '~/app/_components/theme-store';
 import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
-import { formatZoneAndRoomName } from '~/lib/viz/map-data/room-name-formatting';
 import {
     AggregationVariable,
     aggregationVariableInfos,
@@ -175,10 +174,6 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
     const relatedRooms = useMemo(() => {
         if (!selectedRoom || !mainRoomInfo?.mapZone) return [];
         return getRelatedVirtualRoomNames(mainRoomInfo.mapZone, selectedRoom);
-    }, [mainRoomInfo?.mapZone, selectedRoom]);
-
-    const roomNameFormatted = useMemo(() => {
-        return formatZoneAndRoomName(mainRoomInfo?.mapZone, selectedRoom ?? '');
     }, [mainRoomInfo?.mapZone, selectedRoom]);
 
     return (

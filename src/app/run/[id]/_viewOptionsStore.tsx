@@ -239,6 +239,10 @@ function createViewOptionsStore() {
                     set({ visibleSplitGroups });
                 }
 
+                function getHoveredOrSelectedRoom() {
+                    return get().hoveredRoom ?? get().selectedRoom;
+                }
+
                 return {
                     setRoomVisibility,
                     setTraceVisibility,
@@ -263,6 +267,7 @@ function createViewOptionsStore() {
                     setExtraChartsFollowAnimation,
                     setMainCardTab,
                     setVisibleSplitGroups,
+                    getHoveredOrSelectedRoom,
                 };
             },
         ),

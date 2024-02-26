@@ -160,12 +160,14 @@ export function useMapRooms(
             .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y)
             .style('transition', 'fill 0.1s')
             .on('mouseover', (event: PointerEvent, r) => {
-                if (event.buttons === 0) { // when holding down (because of drag) don't change hovered room
+                if (event.buttons === 0) {
+                    // when holding down (because of drag) don't change hovered room
                     onMouseOverEvent(event, r);
                 }
             })
             .on('mouseout', (event: PointerEvent, r) => {
-                if (event.buttons === 0) { // when holding down (because of drag) don't change hovered room
+                if (event.buttons === 0) {
+                    // when holding down (because of drag) don't change hovered room
                     onMouseOutEvent(event, r);
                 }
             })

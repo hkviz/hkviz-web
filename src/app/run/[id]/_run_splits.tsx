@@ -1,6 +1,5 @@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { forwardRef, memo, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
 import { assertNever } from '~/lib/utils/utils';
@@ -16,15 +15,18 @@ type RowActiveState = 'past' | 'next' | 'future';
 
 interface RowProps {
     split: RecordingSplit;
-    setAnimationMsIntoGame: (ms: number) => void;
     activeState: RowActiveState;
+    useViewOptionsStore: UseViewOptionsStore;
 }
 
 const RunSplitRow = memo(
     forwardRef<HTMLTableRowElement, RowProps>(function RunSplitRow(
-        { split, setAnimationMsIntoGame, activeState }: RowProps,
+        { split, activeState, useViewOptionsStore }: RowProps,
         ref: any,
     ) {
+        const setAnimationMsIntoGame = useViewOptionsStore((state) => state.setAnimationMsIntoGame);
+        const setHoveredRoom = useViewOptionsStore((state) => state.setHoveredRoom);
+        const unsetHoveredRoom = useViewOptionsStore((state) => state.unsetHoveredRoom);
         let icon: ReactNode | undefined = undefined;
         if (split.imageUrl) {
             // icon = <Image src={split.imageUrl} className="mr-2 h-6 w-6" width={84} height={96} alt="" />;
@@ -41,6 +43,18 @@ const RunSplitRow = memo(
         function handleClick() {
             console.log('split clicked', split);
             setAnimationMsIntoGame(split.msIntoGame);
+        }
+        function handleMouseEnter() {
+            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.sceneName;
+            if (sceneName) {
+                setHoveredRoom(sceneName);
+            }
+        }
+        function handleMouseLeave() {
+            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.sceneName;
+            if (sceneName) {
+                unsetHoveredRoom(sceneName);
+            }
         }
 
         // const activeStateClasses =
@@ -64,19 +78,22 @@ const RunSplitRow = memo(
         return (
             <TableRow ref={ref}>
                 <TableCell className={cn('p-0', activeStateClasses)}>
-                    <Tooltip>
-                        <TooltipTrigger asChild>
-                            <button onClick={handleClick} className="relative flex w-full flex-row gap-2 p-4">
-                                <div
-                                    className={cn('absolute bottom-0 left-0 top-0 w-1', split.group.color.background)}
-                                ></div>
-                                {icon}
-                                <span className="grow text-left">{split.title}</span>
-                                <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
-                            </button>
-                        </TooltipTrigger>
+                    {/* <Tooltip>
+                        <TooltipTrigger asChild> */}
+                    <button
+                        onClick={handleClick}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        className="relative flex w-full flex-row gap-2 p-4"
+                    >
+                        <div className={cn('absolute bottom-0 left-0 top-0 w-1', split.group.color.background)}></div>
+                        {icon}
+                        <span className="grow text-left">{split.title}</span>
+                        <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
+                    </button>
+                    {/* </TooltipTrigger>
                         <TooltipContent>{split.tooltip}</TooltipContent>
-                    </Tooltip>
+                    </Tooltip> */}
                 </TableCell>
             </TableRow>
         );
@@ -93,7 +110,6 @@ export function RunSplits({ useViewOptionsStore }: Props) {
     const id = useId();
     const recording = useViewOptionsStore((state) => state.recording);
     const animationMsIntoGame = useViewOptionsStore((state) => state.animationMsIntoGame);
-    const setAnimationMsIntoGame = useViewOptionsStore((state) => state.setAnimationMsIntoGame);
     const setVisibleSplitGroups = useViewOptionsStore((state) => state.setVisibleSplitGroups);
     const visibleSplitGroups = useViewOptionsStore((state) => state.visibleSplitGroups);
     const splits = recording?.splits ?? EMPTY_ARRAY;
@@ -194,9 +210,9 @@ export function RunSplits({ useViewOptionsStore }: Props) {
                                     <RunSplitRow
                                         key={index}
                                         split={split}
-                                        setAnimationMsIntoGame={setAnimationMsIntoGame}
                                         activeState={activeState}
                                         ref={(el) => (splitRefs.current[index] = el)}
+                                        useViewOptionsStore={useViewOptionsStore}
                                     />
                                 );
                             })}
@@ -205,6 +221,6 @@ export function RunSplits({ useViewOptionsStore }: Props) {
                 </div>
             </>
         ),
-        [filteredSplits, visibleSplitGroups, id, setVisibleSplitGroupChecked, nextSplitIndex, setAnimationMsIntoGame],
+        [filteredSplits, visibleSplitGroups, id, setVisibleSplitGroupChecked, nextSplitIndex, useViewOptionsStore],
     );
 }

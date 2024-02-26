@@ -19,6 +19,7 @@ import {
     isPlayerDataKilledField,
     playerDataFields,
 } from '../player-data/player-data';
+import { PlayerPositionEvent } from './events/player-position-event';
 import { type CombinedRecording } from './recording';
 
 export const recordingSplitGroups = [
@@ -67,12 +68,14 @@ export interface RecordingSplit {
     imageUrl: string | undefined;
     group: RecordingSplitGroup;
     debugInfo: unknown;
+    previousPlayerPositionEvent: PlayerPositionEvent | null;
 }
 
 function createRecordingSplitFromEnemy(
     msIntoGame: number,
     enemyName: string,
     enemyInfo: EnemyInfo | undefined,
+    previousPlayerPositionEvent: PlayerPositionEvent | null,
     overrideName?: string | undefined,
 ): RecordingSplit {
     const enemyNameDisplay =
@@ -85,6 +88,7 @@ function createRecordingSplitFromEnemy(
         imageUrl: enemyInfo?.portraitName ? `/ingame-sprites/bestiary/${enemyInfo.portraitName}.png` : undefined,
         group: recordingSplitGroupsByName.boss,
         debugInfo: enemyInfo,
+        previousPlayerPositionEvent,
     };
 }
 
@@ -136,6 +140,7 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                             event.msIntoGame,
                             enemyDefeatName,
                             enemyInfo,
+                            event.previousPlayerPositionEvent,
                             defeatMapping.overrideName,
                         ),
                     );
@@ -147,6 +152,7 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                         imageUrl: `/ingame-sprites/achievement/${defeatMapping.achievementSprite}.png`,
                         group: recordingSplitGroupsByName.dreamer,
                         debugInfo: defeatMapping,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
                     });
                 } else {
                     assertNever(defeatMapping);
@@ -158,7 +164,14 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
             if (enemyInfo && isEnemyBoss(enemyInfo)) {
                 recording.allPlayerDataEventsOfField(field).forEach((event) => {
                     if (event.value && !event.previousPlayerDataEventOfField?.value) {
-                        splits.push(createRecordingSplitFromEnemy(event.msIntoGame, enemyName, enemyInfo));
+                        splits.push(
+                            createRecordingSplitFromEnemy(
+                                event.msIntoGame,
+                                enemyName,
+                                enemyInfo,
+                                event.previousPlayerPositionEvent,
+                            ),
+                        );
                     }
                 });
             }
@@ -169,7 +182,15 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                     const enemyName =
                         greyPrinceNames.at(event.value >= greyPrinceNames.length ? -1 : event.value - 1) ??
                         greyPrinceNames[0]!;
-                    splits.push(createRecordingSplitFromEnemy(event.msIntoGame, enemyName, enemyInfo, enemyName));
+                    splits.push(
+                        createRecordingSplitFromEnemy(
+                            event.msIntoGame,
+                            enemyName,
+                            enemyInfo,
+                            event.previousPlayerPositionEvent,
+                            enemyName,
+                        ),
+                    );
                 }
             });
         } else if (isPlayerDataAbilityOrItemField(field)) {
@@ -197,6 +218,7 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                                   ? recordingSplitGroupsByName.abilities
                                   : assertNever(abilityOrItem.type),
                         debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
                     });
                 }
             });
@@ -216,6 +238,7 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                     imageUrl: `/ingame-sprites/charms/${virtualCharm.spriteName}.png`,
                     group: recordingSplitGroupsByName.charmCollection,
                     debugInfo: undefined,
+                    previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
                 });
             }
         }

@@ -7,7 +7,7 @@ import { type ModInfo, type ModdingInfoEvent } from './events/modding-info-event
 import { PlayerDataEvent } from './events/player-data-event';
 import { type PlayerPositionEvent } from './events/player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
-import { type SceneEvent } from './events/scene-event';
+import { SceneEvent } from './events/scene-event';
 import { RecordingSplit, createRecordingSplits } from './recording-splits';
 
 type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
@@ -114,7 +114,8 @@ export class ParsedRecording {
 
 export class CombinedRecording extends ParsedRecording {
     public playerDataEventsPerField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>[]>();
-    public frameEndEvents: FrameEndEvent[];
+    public frameEndEvents: FrameEndEvent[] = [];
+    public sceneEvents: SceneEvent[] = [];
     public splits: RecordingSplit[];
 
     constructor(
@@ -131,10 +132,12 @@ export class CombinedRecording extends ParsedRecording {
                 const eventsOfField = this.playerDataEventsPerField.get(event.field) ?? [];
                 eventsOfField.push(event);
                 this.playerDataEventsPerField.set(event.field, eventsOfField);
+            } else if (event instanceof SceneEvent) {
+                this.sceneEvents.push(event);
+            } else if (event instanceof FrameEndEvent) {
+                this.frameEndEvents.push(event);
             }
         }
-
-        this.frameEndEvents = this.events.filter((it): it is FrameEndEvent => it instanceof FrameEndEvent);
         this.splits = createRecordingSplits(this);
     }
 
