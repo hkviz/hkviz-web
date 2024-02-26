@@ -1,3 +1,4 @@
+import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
@@ -10,11 +11,19 @@ export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
 export type RoomColorMode = 'area' | '1-var';
 export type MainCardTab = 'overview' | 'map';
+export type DisplayVersion = 'v1' | 'vnext';
 
-function createViewOptionsStore() {
+export function displayVersion(value: string | null): DisplayVersion {
+    if (value === '1') return 'v1';
+    return 'vnext';
+}
+
+function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
+    console.log(searchParams.get('v'), searchParams);
     return create(
         combine(
             {
+                displayVersion: displayVersion(searchParams.get('v')),
                 roomVisibility: 'visited' as RoomVisibility,
                 traceVisibility: 'animated' as TraceVisibility,
                 isAnythingAnimating: true as boolean,
@@ -251,7 +260,12 @@ function createViewOptionsStore() {
                     return get().hoveredRoom ?? get().selectedRoom;
                 }
 
+                function isV1() {
+                    return get().displayVersion === 'v1';
+                }
+
                 return {
+                    isV1,
                     setRoomVisibility,
                     setTraceVisibility,
                     setIsPlaying,
@@ -287,6 +301,7 @@ function createViewOptionsStore() {
 export type UseViewOptionsStore = ReturnType<typeof createViewOptionsStore>;
 
 export function useViewOptionsStoreRoot() {
-    const [useStore] = useState(() => createViewOptionsStore());
+    const searchParams = useSearchParams();
+    const [useStore] = useState(() => createViewOptionsStore(searchParams));
     return useStore;
 }

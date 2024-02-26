@@ -149,6 +149,7 @@ function AggregationVariables({
 }
 
 export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+    const isV1 = useViewOptionsStore((s) => s.isV1());
     const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
     const selectedRoomPinned = useViewOptionsStore((s) => s.selectedRoomPinned);
     const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
@@ -176,6 +177,13 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
         return getRelatedVirtualRoomNames(mainRoomInfo.mapZone, selectedRoom);
     }, [mainRoomInfo?.mapZone, selectedRoom]);
 
+    const areaWithTooltip = (
+        <Tooltip>
+            <TooltipTrigger className="text-left">{mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}</TooltipTrigger>
+            <TooltipContent>Area</TooltipContent>
+        </Tooltip>
+    );
+
     return (
         <Card
             className="max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col bg-gradient-to-b from-transparent  to-transparent"
@@ -196,30 +204,25 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                 )}
 
                 <div>
-                    <CardTitle className="text-base">
-                        {!selectedRoom && <>Room analytics</>}
-                        {selectedRoom && (
-                            <Tooltip>
-                                <TooltipTrigger className="text-left">
-                                    {mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}
-                                </TooltipTrigger>
-                                <TooltipContent>Area</TooltipContent>
-                            </Tooltip>
-                        )}
+                    <CardTitle className="text-lg">
+                        {!selectedRoom || isV1 ? <>Room analytics</> : areaWithTooltip}
                     </CardTitle>
                     <CardDescription>
                         {!selectedRoom && (
                             <span className="text-sm opacity-50">Hover or click a room to view analytics</span>
                         )}
                         {selectedRoom && (
-                            <Tooltip>
-                                <TooltipTrigger className="text-left">
-                                    {mainRoomInfo?.roomNameFormattedZoneExclusive ?? selectedRoom}
-                                    {/* <br />
+                            <>
+                                {isV1 && <>{areaWithTooltip} - </>}
+                                <Tooltip>
+                                    <TooltipTrigger className="text-left">
+                                        {mainRoomInfo?.roomNameFormattedZoneExclusive ?? selectedRoom}
+                                        {/* <br />
                                     {selectedRoom} */}
-                                </TooltipTrigger>
-                                <TooltipContent>Room</TooltipContent>
-                            </Tooltip>
+                                    </TooltipTrigger>
+                                    <TooltipContent>Room</TooltipContent>
+                                </Tooltip>
+                            </>
                         )}
                     </CardDescription>
                 </div>
@@ -233,9 +236,9 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                                 variant="outline"
                                 size="icon"
                                 onClick={() => setSelectedRoomPinned(false)}
-                                className="h-8 w-8"
+                                className={isV1 ? '' : 'h-8 w-8'}
                             >
-                                <PinOff className="h-4 w-4" />
+                                <PinOff className={isV1 ? 'h-6 w-6' : 'h-4 w-4'} />
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent>
@@ -244,28 +247,31 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                         </TooltipContent>
                     </Tooltip>
                 ) : (
-                    <Tooltip>
-                        <TooltipTrigger asChild>
-                            <Button
-                                variant="outline"
-                                size="icon"
-                                onClick={() => setSelectedRoomPinned(true)}
-                                className="h-8 w-8"
-                            >
-                                <Pin className="h-4 w-4" />
-                            </Button>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                            Pin room. Will not change the selected room when you hover over the map and other charts.
-                            <br />
-                            You can also click a room on the map to pin/unpin it.
-                        </TooltipContent>
-                    </Tooltip>
+                    !isV1 && (
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Button
+                                    variant="outline"
+                                    size="icon"
+                                    onClick={() => setSelectedRoomPinned(true)}
+                                    className="h-8 w-8"
+                                >
+                                    <Pin className="h-4 w-4" />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                Pin room. Will not change the selected room when you hover over the map and other
+                                charts.
+                                <br />
+                                You can also click a room on the map to pin/unpin it.
+                            </TooltipContent>
+                        </Tooltip>
+                    )
                 )}
             </CardHeader>
             {selectedRoom && (
                 <CardContent className="shrink grow basis-0 overflow-auto px-0 pb-1">
-                    {relatedRooms.length !== 0 && (
+                    {!isV1 && relatedRooms.length !== 0 && (
                         <div className="flex flex-row gap-1 overflow-x-auto overflow-y-hidden p-1">
                             {relatedRooms.map((room) => (
                                 <Button

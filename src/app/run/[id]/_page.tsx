@@ -16,7 +16,7 @@ import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { RoomInfo } from './_room_infos';
 import { RunOverviewTab } from './_run-overview-tab';
 import { RunSplits } from './_run_splits';
-import { UseViewOptionsStore, useViewOptionsStoreRoot, type MainCardTab } from './_viewOptionsStore';
+import { useViewOptionsStoreRoot, type MainCardTab, type UseViewOptionsStore } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
 
 interface Props {
@@ -35,6 +35,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
     const combinedRecording = combinedRun?.finishedLoading ? combinedRun.recording : null;
     const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
     const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
+    const isV1 = useViewOptionsStore((s) => s.isV1());
 
     useEffect(() => {
         setRecording(combinedRecording);
@@ -50,7 +51,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 <Card className="max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto sm:min-w-min">
                     <CardContent className="px-0 pb-1">
                         <CardHeader className="px-4 py-2">
-                            <CardTitle className="text-lg">Map options</CardTitle>
+                            <CardTitle className="text-lg">{isV1 ? 'View options' : 'Map options'}</CardTitle>
                         </CardHeader>
                         <ViewOptions useViewOptionsStore={useViewOptionsStore} />
                     </CardContent>
@@ -104,13 +105,21 @@ export function SingleRunClientPage({ session, runData }: Props) {
 }
 
 function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+    const isV1 = useViewOptionsStore((s) => s.isV1());
     return (
         <Card className="flex w-full flex-col overflow-hidden lg:w-[400px]">
-            <Tabs defaultValue="splits" className="flex grow flex-col">
-                <TabsListTransparent className="flex flex-row justify-center">
-                    <TabsTriggerTransparent value="splits">Splits</TabsTriggerTransparent>
-                    <TabsTriggerTransparent value="extra-charts">Time charts</TabsTriggerTransparent>
-                </TabsListTransparent>
+            {isV1 && (
+                <CardHeader className="px-4 pb-3 pt-2">
+                    <CardTitle className="text-lg">Time-based analytics</CardTitle>
+                </CardHeader>
+            )}
+            <Tabs defaultValue={isV1 ? 'extra-charts' : 'splits'} className="flex grow flex-col">
+                {!isV1 && (
+                    <TabsListTransparent className="flex flex-row justify-center">
+                        <TabsTriggerTransparent value="splits">Splits</TabsTriggerTransparent>
+                        <TabsTriggerTransparent value="extra-charts">Time charts</TabsTriggerTransparent>
+                    </TabsListTransparent>
+                )}
                 <TabsContent value="splits" className="hidden shrink grow flex-col data-[state='active']:flex">
                     <RunSplits useViewOptionsStore={useViewOptionsStore} />
                 </TabsContent>

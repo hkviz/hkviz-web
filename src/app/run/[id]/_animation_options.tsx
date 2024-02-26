@@ -55,10 +55,11 @@ const AnimationTimeLineColorCodes = memo(function AnimationTimeLineColorCodes({
     const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
     const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
-    const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
+    const hoveredOrSelectedRoom = useViewOptionsStore((s) => s.getHoveredOrSelectedRoom());
     const hoveredOrSelectedZone = useMemo(
-        () => (selectedRoom ? mainRoomDataBySceneName.get(selectedRoom)?.zoneNameFormatted : undefined),
-        [selectedRoom],
+        () =>
+            hoveredOrSelectedRoom ? mainRoomDataBySceneName.get(hoveredOrSelectedRoom)?.zoneNameFormatted : undefined,
+        [hoveredOrSelectedRoom],
     );
 
     const sceneEvents = recording?.sceneEvents ?? EMPTY_ARRAY;
@@ -107,13 +108,13 @@ const AnimationTimeLineColorCodes = memo(function AnimationTimeLineColorCodes({
             //     d.sceneName === selectedRoom ? '1' : d.mainRoomData?.zoneNameFormatted === selectedArea ? '0.75' : '0.5',
             // )
             .attr('y', (d) =>
-                d.sceneName === selectedRoom
+                d.sceneName === hoveredOrSelectedRoom
                     ? 0
                     : d.mainRoomData?.zoneNameFormatted === hoveredOrSelectedZone
                       ? 3333
                       : 6666,
             );
-    }, [selectedRoom, mainSvgEffect, hoveredOrSelectedZone]);
+    }, [hoveredOrSelectedRoom, mainSvgEffect, hoveredOrSelectedZone]);
 
     useEffect(() => {
         function containerSizeChanged() {
@@ -138,7 +139,6 @@ const AnimationTimeLineColorCodes = memo(function AnimationTimeLineColorCodes({
         if (!parentDivRef.current) return undefined;
         // e = Mouse click event.
         const rect = parentDivRef.current.getBoundingClientRect();
-        console.log({ t: e.clientX, rect });
         const x = e.clientX - rect.left;
         const ms = timeFrameMs.max * (x / rect.width);
         return sceneChanges.findLast((it) => it.startMs <= ms);
@@ -186,6 +186,7 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
     const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const isDisabled = useViewOptionsStore((s) => !s.recording);
+    const isV1 = useViewOptionsStore((s) => s.isV1());
 
     return (
         <>
@@ -205,13 +206,13 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
                         }
                     }}
                 />
-                {hoveredMsIntoGame != null && (
+                {!isV1 && hoveredMsIntoGame != null && (
                     <div
                         className="absolute bottom-0 top-0 w-[1px] bg-foreground"
                         style={{ left: (100 * hoveredMsIntoGame) / timeFrame.max + '%' }}
                     ></div>
                 )}
-                <AnimationTimeLineColorCodes useViewOptionsStore={useViewOptionsStore} />
+                {!isV1 && <AnimationTimeLineColorCodes useViewOptionsStore={useViewOptionsStore} />}
             </div>
         </>
     );

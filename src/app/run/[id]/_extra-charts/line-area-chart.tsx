@@ -61,6 +61,7 @@ export function LineAreaChart({
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const shownMsIntoGame = animationMsIntoGame;
 
+    const isV1 = useViewOptionsStore((s) => s.isV1());
     const _extraChartsTimeBounds = useViewOptionsStore((s) => s.extraChartsTimeBounds);
     const setExtraChartsTimeBounds = useViewOptionsStore((s) => s.setExtraChartsTimeBounds);
     const resetExtraChartsTimeBounds = useViewOptionsStore((s) => s.resetExtraChartsTimeBounds);
@@ -281,7 +282,6 @@ export function LineAreaChart({
         function mouseToMsIntoGame(e: MouseEvent) {
             const state = useViewOptionsStore.getState();
             const rect = brushG.current!.node()!.getBoundingClientRect();
-            console.log({ t: e.clientX, rect });
             const x = e.clientX - rect.left;
             return Math.round(
                 state.extraChartsTimeBounds[0] +
@@ -299,11 +299,13 @@ export function LineAreaChart({
                 [0, 0],
                 [width, height],
             ])
+            .filter((e) => !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey)
             .on('end', onBrushEnd);
         brushG.current = rootG
             .append('g')
             .attr('class', 'brush')
             .on('mousemove', (e) => {
+                if (isV1) return;
                 const ms = mouseToMsIntoGame(e);
                 setHoveredMsIntoGame(ms);
                 const scene = sceneFromMs(ms);
@@ -312,13 +314,17 @@ export function LineAreaChart({
                 }
             })
             .on('mouseleave', () => {
+                if (isV1) return;
                 setHoveredMsIntoGame(null);
                 setHoveredRoom(null);
+            })
+            .on('click', (e) => {
+                if (isV1) return;
+                if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
+                    const ms = mouseToMsIntoGame(e);
+                    setAnimationMsIntoGame(ms);
+                }
             });
-        // .on('click', (e) => {
-        //     const ms = mouseToMsIntoGame(e);
-        //     setAnimationMsIntoGame(ms);
-        // });
         brushG.current.call(brush.current);
 
         // animationLine
@@ -343,6 +349,7 @@ export function LineAreaChart({
         useViewOptionsStore,
         setHoveredMsIntoGame,
         setAnimationMsIntoGame,
+        setHoveredRoom,
     ]);
 
     // update area
