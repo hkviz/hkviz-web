@@ -15,4 +15,10 @@ export class SceneEvent extends RecordingEventBase {
         this.originOffset = options.originOffset;
         this.sceneSize = options.sceneSize;
     }
+
+    getMainVirtualSceneName(): string {
+        return this.currentBossSequence
+            ? `boss_seq:${this.currentBossSequence.name}:${this.sceneName}`
+            : this.sceneName;
+    }
 }

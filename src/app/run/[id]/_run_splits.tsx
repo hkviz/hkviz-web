@@ -27,6 +27,9 @@ const RunSplitRow = memo(
         const setAnimationMsIntoGame = useViewOptionsStore((state) => state.setAnimationMsIntoGame);
         const setHoveredRoom = useViewOptionsStore((state) => state.setHoveredRoom);
         const unsetHoveredRoom = useViewOptionsStore((state) => state.unsetHoveredRoom);
+        const setHoveredMsIntoGame = useViewOptionsStore((state) => state.setHoveredMsIntoGame);
+        const unsetHoveredMsIntoGame = useViewOptionsStore((state) => state.unsetHoveredMsIntoGame);
+        const setSelectedRoom = useViewOptionsStore((state) => state.setSelectedRoom);
         let icon: ReactNode | undefined = undefined;
         if (split.imageUrl) {
             // icon = <Image src={split.imageUrl} className="mr-2 h-6 w-6" width={84} height={96} alt="" />;
@@ -43,18 +46,25 @@ const RunSplitRow = memo(
         function handleClick() {
             console.log('split clicked', split);
             setAnimationMsIntoGame(split.msIntoGame);
+
+            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+            if (sceneName) {
+                setSelectedRoom(sceneName);
+            }
         }
         function handleMouseEnter() {
-            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.sceneName;
+            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {
                 setHoveredRoom(sceneName);
             }
+            setHoveredMsIntoGame(split.msIntoGame);
         }
         function handleMouseLeave() {
-            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.sceneName;
+            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {
                 unsetHoveredRoom(sceneName);
             }
+            unsetHoveredMsIntoGame(split.msIntoGame);
         }
 
         // const activeStateClasses =

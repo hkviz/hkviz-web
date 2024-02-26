@@ -66,6 +66,8 @@ export function LineAreaChart({
     const resetExtraChartsTimeBounds = useViewOptionsStore((s) => s.resetExtraChartsTimeBounds);
     const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
+    const setHoveredMsIntoGame = useViewOptionsStore((s) => s.setHoveredMsIntoGame);
+    const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
 
     // timebounds debouncing, so we can use d3 animations
     const isVisible = useIsVisibleRef(svgRef);
@@ -275,6 +277,17 @@ export function LineAreaChart({
         // axis y
         yAxis.current = rootG.append('g');
 
+        function mouseToMsIntoGame(e: MouseEvent) {
+            const state = useViewOptionsStore.getState();
+            const rect = brushG.current!.node()!.getBoundingClientRect();
+            console.log({ t: e.clientX, rect });
+            const x = e.clientX - rect.left;
+            return Math.round(
+                state.extraChartsTimeBounds[0] +
+                    (state.extraChartsTimeBounds[1] - state.extraChartsTimeBounds[0]) * (x / rect.width),
+            );
+        }
+
         // brush
         brush.current = d3
             .brushX()
@@ -283,7 +296,20 @@ export function LineAreaChart({
                 [width, height],
             ])
             .on('end', onBrushEnd);
-        brushG.current = rootG.append('g').attr('class', 'brush');
+        brushG.current = rootG
+            .append('g')
+            .attr('class', 'brush')
+            .on('mousemove', (e) => {
+                const ms = mouseToMsIntoGame(e);
+                setHoveredMsIntoGame(ms);
+            })
+            .on('mouseleave', () => {
+                setHoveredMsIntoGame(null);
+            });
+        // .on('click', (e) => {
+        //     const ms = mouseToMsIntoGame(e);
+        //     setAnimationMsIntoGame(ms);
+        // });
         brushG.current.call(brush.current);
 
         // animationLine
@@ -296,7 +322,19 @@ export function LineAreaChart({
             .attr('x2', 0)
             .attr('y1', 0)
             .attr('y2', height);
-    }, [height, id, recording, width, onBrushEnd, series, yAxisLabel, variablesPerKey]);
+    }, [
+        height,
+        id,
+        recording,
+        width,
+        onBrushEnd,
+        series,
+        yAxisLabel,
+        variablesPerKey,
+        useViewOptionsStore,
+        setHoveredMsIntoGame,
+        setAnimationMsIntoGame,
+    ]);
 
     // update area
     useEffect(() => {

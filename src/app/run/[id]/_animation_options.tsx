@@ -55,20 +55,17 @@ const AnimationTimeLineColorCodes = memo(function AnimationTimeLineColorCodes({
     const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
     const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
-    const hoveredOrSelectedRoom = useViewOptionsStore((s) => s.getHoveredOrSelectedRoom());
+    const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
     const hoveredOrSelectedZone = useMemo(
-        () =>
-            hoveredOrSelectedRoom ? mainRoomDataBySceneName.get(hoveredOrSelectedRoom)?.zoneNameFormatted : undefined,
-        [hoveredOrSelectedRoom],
+        () => (selectedRoom ? mainRoomDataBySceneName.get(selectedRoom)?.zoneNameFormatted : undefined),
+        [selectedRoom],
     );
 
     const sceneEvents = recording?.sceneEvents ?? EMPTY_ARRAY;
 
     const sceneChanges = useMemo(() => {
         const sceneChanges = sceneEvents.map((it) => ({
-            sceneName: it.currentBossSequence
-                ? `boss_seq:${it.currentBossSequence.name}:${it.sceneName}`
-                : it.sceneName,
+            sceneName: it.getMainVirtualSceneName(),
             startMs: it.msIntoGame,
             mainRoomData: mainRoomDataBySceneName.get(it.sceneName),
             durationMs: 0,
@@ -110,13 +107,13 @@ const AnimationTimeLineColorCodes = memo(function AnimationTimeLineColorCodes({
             //     d.sceneName === selectedRoom ? '1' : d.mainRoomData?.zoneNameFormatted === selectedArea ? '0.75' : '0.5',
             // )
             .attr('y', (d) =>
-                d.sceneName === hoveredOrSelectedRoom
+                d.sceneName === selectedRoom
                     ? 0
                     : d.mainRoomData?.zoneNameFormatted === hoveredOrSelectedZone
                       ? 3333
                       : 6666,
             );
-    }, [hoveredOrSelectedRoom, mainSvgEffect, hoveredOrSelectedZone]);
+    }, [selectedRoom, mainSvgEffect, hoveredOrSelectedZone]);
 
     useEffect(() => {
         function containerSizeChanged() {
@@ -183,6 +180,7 @@ const AnimationTimeLineColorCodes = memo(function AnimationTimeLineColorCodes({
 // Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
 export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
+    const hoveredMsIntoGame = useViewOptionsStore((s) => s.hoveredMsIntoGame);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
     const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
     const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
@@ -207,6 +205,12 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
                         }
                     }}
                 />
+                {hoveredMsIntoGame != null && (
+                    <div
+                        className="absolute bottom-0 top-0 w-[1px] bg-foreground"
+                        style={{ left: (100 * hoveredMsIntoGame) / timeFrame.max + '%' }}
+                    ></div>
+                )}
                 <AnimationTimeLineColorCodes useViewOptionsStore={useViewOptionsStore} />
             </div>
         </>

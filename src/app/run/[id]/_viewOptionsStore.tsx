@@ -30,6 +30,8 @@ function createViewOptionsStore() {
                 hoveredRoom: null as string | null,
                 selectedRoomPinned: false,
 
+                hoveredMsIntoGame: null as number | null,
+
                 viewNeverHappenedAggregations: false,
 
                 roomColorMode: 'area' as RoomColorMode,
@@ -176,6 +178,12 @@ function createViewOptionsStore() {
                 function unsetHoveredRoom(hoveredRoom: string | null) {
                     if (get().hoveredRoom === hoveredRoom) setHoveredRoom(null);
                 }
+                function setHoveredMsIntoGame(hoveredMsIntoGame: number | null) {
+                    set({ hoveredMsIntoGame });
+                }
+                function unsetHoveredMsIntoGame(hoveredMsIntoGame: number | null) {
+                    if (get().hoveredMsIntoGame === hoveredMsIntoGame) setHoveredMsIntoGame(null);
+                }
                 function setSelectedRoomPinned(selectedRoomPinned: boolean) {
                     set({ selectedRoomPinned });
                 }
@@ -262,6 +270,8 @@ function createViewOptionsStore() {
                     setViewNeverHappenedAggregations,
                     setHoveredRoom,
                     unsetHoveredRoom,
+                    setHoveredMsIntoGame,
+                    unsetHoveredMsIntoGame,
                     setExtraChartsTimeBounds,
                     resetExtraChartsTimeBounds,
                     setExtraChartsFollowAnimation,

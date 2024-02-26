@@ -11,7 +11,7 @@ import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-d
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 import { Toggle } from '@/components/ui/toggle';
-import { Palette, PinOff } from 'lucide-react';
+import { Palette, Pin, PinOff } from 'lucide-react';
 import { useThemeStore } from '~/app/_components/theme-store';
 import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
 import {
@@ -226,15 +226,39 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
 
                 <div className="grow" />
 
-                {selectedRoomPinned && (
+                {selectedRoomPinned ? (
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <Button variant="outline" size="icon" onClick={() => setSelectedRoomPinned(false)}>
-                                <PinOff className="h-5 w-5" />
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={() => setSelectedRoomPinned(false)}
+                                className="h-8 w-8"
+                            >
+                                <PinOff className="h-4 w-4" />
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent>
-                            Remove pin. Will automatically select the room when you hover over it.
+                            Remove pin. Will automatically select the room when you hover over it. <br />
+                            You can also click a room on the map to pin/unpin it.
+                        </TooltipContent>
+                    </Tooltip>
+                ) : (
+                    <Tooltip>
+                        <TooltipTrigger asChild>
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={() => setSelectedRoomPinned(true)}
+                                className="h-8 w-8"
+                            >
+                                <Pin className="h-4 w-4" />
+                            </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                            Pin room. Will not change the selected room when you hover over the map and other charts.
+                            <br />
+                            You can also click a room on the map to pin/unpin it.
                         </TooltipContent>
                     </Tooltip>
                 )}
