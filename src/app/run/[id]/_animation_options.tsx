@@ -51,11 +51,10 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
     const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
     const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
-    const hoveredOrSelectedRoom = useViewOptionsStore((s) => s.getHoveredOrSelectedRoom());
-    const hoveredOrSelectedZone = useMemo(
-        () =>
-            hoveredOrSelectedRoom ? mainRoomDataBySceneName.get(hoveredOrSelectedRoom)?.zoneNameFormatted : undefined,
-        [hoveredOrSelectedRoom],
+    const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
+    const selectedZone = useMemo(
+        () => (selectedRoom ? mainRoomDataBySceneName.get(selectedRoom)?.zoneNameFormatted : undefined),
+        [selectedRoom],
     );
 
     const sceneEvents = recording?.sceneEvents ?? EMPTY_ARRAY;
@@ -104,13 +103,9 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
             //     d.sceneName === selectedRoom ? '1' : d.mainRoomData?.zoneNameFormatted === selectedArea ? '0.75' : '0.5',
             // )
             .attr('y', (d) =>
-                d.sceneName === hoveredOrSelectedRoom
-                    ? 0
-                    : d.mainRoomData?.zoneNameFormatted === hoveredOrSelectedZone
-                      ? 3333
-                      : 6666,
+                d.sceneName === selectedRoom ? 0 : d.mainRoomData?.zoneNameFormatted === selectedZone ? 3333 : 6666,
             );
-    }, [hoveredOrSelectedRoom, mainSvgEffect, hoveredOrSelectedZone]);
+    }, [selectedRoom, mainSvgEffect, selectedZone]);
 
     useEffect(() => {
         function containerSizeChanged() {
@@ -151,6 +146,8 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
         if (!sceneChange) return;
         setAnimationMsIntoGame(sceneChange.startMs);
         setSelectedRoom(sceneChange.sceneName);
+
+        // togglePinnedRoom(sceneChange.sceneName, true);
     }
     function handleMouseLeave() {
         setHoveredRoom(null);

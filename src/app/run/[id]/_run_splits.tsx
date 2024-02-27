@@ -49,12 +49,14 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
             const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {
                 useViewOptionsStore.getState().setSelectedRoom(sceneName);
+                // useViewOptionsStore.getState().togglePinnedRoom(sceneName, true);
             }
         }
         function handleMouseEnter() {
             const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {
                 useViewOptionsStore.getState().setHoveredRoom(sceneName);
+                useViewOptionsStore.getState().setSelectedRoomIfNotPinned(sceneName);
             }
             useViewOptionsStore.getState().setHoveredMsIntoGame(split.msIntoGame);
         }

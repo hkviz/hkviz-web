@@ -268,10 +268,16 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     function setSelectedRoomIfNotPinned(selectedRoom: string | null) {
                         if (!get().selectedRoomPinned) setSelectedRoom(selectedRoom);
                     }
-                    function togglePinnedRoom(selectedRoom: string | null) {
+                    function togglePinnedRoom(selectedRoom: string | null, firstClickUnpinned = false) {
                         console.log('selectedRoom', selectedRoom);
                         if (get().selectedRoomPinned && get().selectedRoom === selectedRoom) {
                             setSelectedRoomPinned(false);
+                        } else if (
+                            firstClickUnpinned &&
+                            get().selectedRoom !== selectedRoom &&
+                            !get().selectedRoomPinned
+                        ) {
+                            setSelectedRoom(selectedRoom);
                         } else {
                             setSelectedRoom(selectedRoom);
                             setSelectedRoomPinned(true);
