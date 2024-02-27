@@ -416,7 +416,7 @@ export function RunCard({
                                     {run.user.name}
                                 </RunCardEpicInfo>
                             )}
-                            {gameState?.playTime && (
+                            {!!gameState?.playTime && (
                                 <RunCardEpicInfo title="Playtime:">
                                     <Duration seconds={gameState.playTime} />
                                 </RunCardEpicInfo>

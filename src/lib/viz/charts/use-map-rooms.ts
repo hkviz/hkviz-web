@@ -1,13 +1,13 @@
 import type * as d3 from 'd3';
-import { useEffect, useId, useMemo, useRef, type RefObject } from 'react';
+import { useEffect, useId, useRef, type RefObject } from 'react';
 import useEvent from 'react-use-event-hook';
 import { useThemeStore } from '~/app/_components/theme-store';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
-import { assertNever } from '~/lib/utils/utils';
 import { useDependableEffect, useDynamicDependencies } from '../depdendent-effect';
 import { type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
-import { playerDataFields } from '../player-data/player-data';
 import { useRoomColoring } from './use-room-coloring';
+
+const EMPTY_ARRAY = [] as const;
 
 export function useMapRooms(
     {
@@ -46,26 +46,21 @@ export function useMapRooms(
     const paramDependenciesChanges = useDynamicDependencies(dependencies);
 
     const roomColoring = useRoomColoring({ useViewOptionsStore, alwaysUseAreaAsColor });
-    const roomVisibility = useViewOptionsStore((state) => state.roomVisibility);
-    const animationMsIntoGame = useViewOptionsStore((state) => state.animationMsIntoGame);
+    const visibleRooms = useViewOptionsStore((state) => state.roomsVisible);
     const hoveredRoom = useViewOptionsStore((state) => state.hoveredRoom);
     const theme = useThemeStore((state) => state.theme);
 
-    const scenesVisitedEvents = useViewOptionsStore(
-        (state) => state.recording?.allPlayerDataEventsOfField?.(playerDataFields.byFieldName.scenesVisited) ?? [],
-    );
-
-    const visibleRooms = useMemo(() => {
-        if (roomVisibility === 'visited') {
-            return scenesVisitedEvents[scenesVisitedEvents.length - 1]?.value ?? [];
-        } else if (roomVisibility === 'visited-animated') {
-            return scenesVisitedEvents.findLast((it) => it.msIntoGame <= animationMsIntoGame)?.value ?? [];
-        } else if (roomVisibility === 'all') {
-            return 'all';
-        } else {
-            assertNever(roomVisibility);
-        }
-    }, [animationMsIntoGame, roomVisibility, scenesVisitedEvents]);
+    // const visibleRooms = useMemo(() => {
+    //     if (roomVisibility === 'visited') {
+    //         return scenesVisitedEvents[scenesVisitedEvents.length - 1]?.value ?? [];
+    //     } else if (roomVisibility === 'visited-animated') {
+    //         return scenesVisitedEvents.findLast((it) => it.msIntoGame <= animationMsIntoGame)?.value ?? [];
+    //     } else if (roomVisibility === 'all') {
+    //         return 'all';
+    //     } else {
+    //         assertNever(roomVisibility);
+    //     }
+    // }, [animationMsIntoGame, roomVisibility, scenesVisitedEvents]);
 
     const mainEffectChanges = useDependableEffect(() => {
         if (!roomDataEnter.current) return;

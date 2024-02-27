@@ -155,8 +155,11 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
     const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
     const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
 
-    const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
-    const allRoomInfos = selectedRoom ? allRoomDataBySceneName.get(selectedRoom) ?? null : null;
+    const [mainRoomInfo, allRoomInfos] = useMemo(() => {
+        const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
+        const allRoomInfos = selectedRoom ? allRoomDataBySceneName.get(selectedRoom) ?? null : null;
+        return [mainRoomInfo, allRoomInfos];
+    }, [selectedRoom]);
 
     const theme = useThemeStore((s) => s.theme);
 

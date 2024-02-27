@@ -100,7 +100,7 @@ export function RunTags({
     const hasNoTags = runTags.length === 0 && !setTagMutation.isLoading;
 
     return (
-        <div className={cn('items-[start] flex flex-row flex-wrap gap-1 font-sans', className)}>
+        <div className={cn('items-[start] flex min-h-6 flex-row flex-wrap gap-1 font-sans', className)}>
             <ul className="flex flex-row flex-wrap-reverse items-end justify-end gap-1">
                 {isOwn && (
                     <li>

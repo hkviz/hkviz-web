@@ -2,6 +2,7 @@ import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
+import { assertNever } from '~/lib/utils/utils';
 import { playerDataFields } from '~/lib/viz/player-data/player-data';
 import { type CombinedRecording } from '~/lib/viz/recording-files/recording';
 import { RecordingSplitGroup, recordingSplitGroups } from '~/lib/viz/recording-files/recording-splits';
@@ -18,6 +19,8 @@ export function displayVersion(value: string | null): DisplayVersion {
     return 'vnext';
 }
 
+const EMPTY_ARRAY = [] as const;
+
 function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
     console.log(searchParams.get('v'), searchParams);
     return create(
@@ -25,6 +28,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
             {
                 displayVersion: displayVersion(searchParams.get('v')),
                 roomVisibility: 'visited' as RoomVisibility,
+                roomsVisible: EMPTY_ARRAY as readonly string[] | 'all',
                 traceVisibility: 'animated' as TraceVisibility,
                 isAnythingAnimating: true as boolean,
                 isPlaying: false as boolean,
@@ -75,9 +79,32 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     }
                 }
 
+                function recalcVisibleRooms() {
+                    const { roomVisibility, recording, animationMsIntoGame } = get();
+                    if (roomVisibility === 'visited-animated') {
+                        set({
+                            roomsVisible:
+                                recording
+                                    ?.allPlayerDataEventsOfField(playerDataFields.byFieldName.scenesVisited)
+                                    .findLast((it) => it.msIntoGame <= animationMsIntoGame)?.value ?? EMPTY_ARRAY,
+                        });
+                    } else if (roomVisibility === 'visited') {
+                        set({
+                            roomsVisible:
+                                recording?.lastPlayerDataEventOfField(playerDataFields.byFieldName.scenesVisited)
+                                    ?.value ?? EMPTY_ARRAY,
+                        });
+                    } else if (roomVisibility === 'all') {
+                        set({ roomsVisible: 'all' });
+                    } else {
+                        assertNever(roomVisibility);
+                    }
+                }
+
                 function setRoomVisibility(roomVisibility: RoomVisibility) {
                     set({ roomVisibility });
                     handleAnyAnimationVisiblityChanged();
+                    recalcVisibleRooms();
                 }
                 function setTraceVisibility(traceVisibility: TraceVisibility) {
                     set({ traceVisibility });
@@ -146,6 +173,10 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         setExtraChartsTimeBounds(newBounds);
                     }
 
+                    if (get().roomVisibility === 'visited-animated') {
+                        recalcVisibleRooms();
+                    }
+
                     set({ animationMsIntoGame });
                 }
                 function setAnimationMsIntoGame(animationMsIntoGame: number) {
@@ -170,6 +201,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     set({ recording, timeFrame, extraChartsTimeBounds, isSteelSoul });
                     setDefaultExtraChartsTimeBoundsFromFollowAnimation();
                     setAnimationMsIntoGame(timeFrame.max);
+                    recalcVisibleRooms();
                 }
                 function setAggregatedRunData(aggregatedRunData: AggregatedRunData | null) {
                     set({ aggregatedRunData });

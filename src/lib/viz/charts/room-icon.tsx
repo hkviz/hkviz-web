@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
-import { useEffect, useMemo, useRef } from 'react';
+import { memo, useEffect, useMemo, useRef } from 'react';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { type RoomInfo } from '../map-data/rooms';
 import { Bounds } from '../types/bounds';
@@ -15,7 +15,7 @@ export interface HKMapProps {
     useViewOptionsStore: UseViewOptionsStore;
 }
 
-export function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapProps) {
+export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const svg = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined>>();
     const roomDataEnter = useRef<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown>>();
@@ -99,4 +99,4 @@ export function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapPr
     );
 
     return useMemo(() => <div className={cn('relative', className)} ref={containerRef} />, [className, containerRef]);
-}
+});
