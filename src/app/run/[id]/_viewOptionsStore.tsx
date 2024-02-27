@@ -87,45 +87,53 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     }
 
                     function recalcNextSplit() {
-                        const { filteredSplits, animationMsIntoGame, nextSplitIndex: oldNextSplitIndex } = get();
-                        const nextSplitIndex = filteredSplits?.findIndex(
-                            (split, index) =>
-                                split.msIntoGame >= animationMsIntoGame &&
-                                filteredSplits[index + 1]?.msIntoGame !== split.msIntoGame,
-                        );
-                        if (nextSplitIndex !== oldNextSplitIndex) {
-                            set({ nextSplitIndex });
-                        }
+                        set((state) => {
+                            console.log('recalcNextSplit');
+                            const { filteredSplits, animationMsIntoGame, nextSplitIndex: oldNextSplitIndex } = state;
+                            const nextSplitIndex = filteredSplits?.findIndex(
+                                (split, index) =>
+                                    split.msIntoGame >= animationMsIntoGame &&
+                                    filteredSplits[index + 1]?.msIntoGame !== split.msIntoGame,
+                            );
+
+                            return { nextSplitIndex };
+                        });
                     }
 
                     function refilterSplitGroups() {
-                        const { recording, visibleSplitGroups } = get();
-                        const filteredSplits =
-                            recording?.splits?.filter((it) => visibleSplitGroups.includes(it.group)) ?? EMPTY_ARRAY;
-                        set({ filteredSplits });
+                        set((state) => {
+                            const { recording, visibleSplitGroups } = state;
+                            const filteredSplits =
+                                recording?.splits?.filter((it) => visibleSplitGroups.includes(it.group)) ?? EMPTY_ARRAY;
+                            return { filteredSplits };
+                        });
                         recalcNextSplit();
                     }
 
                     function recalcVisibleRooms() {
-                        const { roomVisibility, recording, animationMsIntoGame } = get();
-                        if (roomVisibility === 'visited-animated') {
-                            set({
-                                roomsVisible:
-                                    recording
-                                        ?.allPlayerDataEventsOfField(playerDataFields.byFieldName.scenesVisited)
-                                        .findLast((it) => it.msIntoGame <= animationMsIntoGame)?.value ?? EMPTY_ARRAY,
-                            });
-                        } else if (roomVisibility === 'visited') {
-                            set({
-                                roomsVisible:
-                                    recording?.lastPlayerDataEventOfField(playerDataFields.byFieldName.scenesVisited)
-                                        ?.value ?? EMPTY_ARRAY,
-                            });
-                        } else if (roomVisibility === 'all') {
-                            set({ roomsVisible: 'all' });
-                        } else {
-                            assertNever(roomVisibility);
-                        }
+                        set((state) => {
+                            const { roomVisibility, recording, animationMsIntoGame } = state;
+                            if (roomVisibility === 'visited-animated') {
+                                return {
+                                    roomsVisible:
+                                        recording
+                                            ?.allPlayerDataEventsOfField(playerDataFields.byFieldName.scenesVisited)
+                                            .findLast((it) => it.msIntoGame <= animationMsIntoGame)?.value ??
+                                        EMPTY_ARRAY,
+                                };
+                            } else if (roomVisibility === 'visited') {
+                                return {
+                                    roomsVisible:
+                                        recording?.lastPlayerDataEventOfField(
+                                            playerDataFields.byFieldName.scenesVisited,
+                                        )?.value ?? EMPTY_ARRAY,
+                                };
+                            } else if (roomVisibility === 'all') {
+                                return { roomsVisible: 'all' };
+                            } else {
+                                assertNever(roomVisibility);
+                            }
+                        });
                     }
 
                     function setRoomVisibility(roomVisibility: RoomVisibility) {
@@ -200,12 +208,12 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                             setExtraChartsTimeBounds(newBounds);
                         }
 
+                        set({ animationMsIntoGame });
+
                         if (get().roomVisibility === 'visited-animated') {
                             recalcVisibleRooms();
                         }
                         recalcNextSplit();
-
-                        set({ animationMsIntoGame });
                     }
                     function setAnimationMsIntoGame(animationMsIntoGame: number) {
                         setLimitedAnimationMsIntoGame(animationMsIntoGame);
@@ -316,6 +324,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
 
                     function setVisibleSplitGroups(visibleSplitGroups: RecordingSplitGroup[]) {
                         set({ visibleSplitGroups });
+                        refilterSplitGroups();
                     }
 
                     function getHoveredOrSelectedRoom() {

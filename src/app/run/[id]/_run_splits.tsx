@@ -1,7 +1,7 @@
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
-import { forwardRef, memo, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
+import { forwardRef, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
 import { assertNever } from '~/lib/utils/utils';
 import {
     recordingSplitGroups,
@@ -19,90 +19,87 @@ interface RowProps {
     useViewOptionsStore: UseViewOptionsStore;
 }
 
-const RunSplitRow = memo(
-    forwardRef<HTMLTableRowElement, RowProps>(function RunSplitRow(
-        { split, activeState, useViewOptionsStore }: RowProps,
-        ref: any,
-    ) {
-        // const activeStateClasses =
-        //     activeState === 'past'
-        //         ? 'bg-green-200 dark:bg-green-900'
-        //         : activeState === 'next'
-        //           ? 'bg-blue-300 dark:bg-blue-800'
-        //           : activeState === 'future'
-        //             ? ''
-        //             : assertNever(activeState);
+const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitRow(
+    { split, activeState, useViewOptionsStore }: RowProps,
+    ref: any,
+) {
+    // const activeStateClasses =
+    //     activeState === 'past'
+    //         ? 'bg-green-200 dark:bg-green-900'
+    //         : activeState === 'next'
+    //           ? 'bg-blue-300 dark:bg-blue-800'
+    //           : activeState === 'future'
+    //             ? ''
+    //             : assertNever(activeState);
 
-        const activeStateClasses =
-            activeState === 'past'
-                ? 'bg-gradient-to-r from-green-300/10 to-green-500/20 dark:from-green-500/10 dark:to-green-500/15'
-                : activeState === 'next'
-                  ? 'bg-blue-300 dark:bg-blue-800'
-                  : activeState === 'future'
-                    ? ''
-                    : assertNever(activeState);
+    const activeStateClasses =
+        activeState === 'past'
+            ? 'bg-gradient-to-r from-green-300/10 to-green-500/20 dark:from-green-500/10 dark:to-green-500/15'
+            : activeState === 'next'
+              ? 'bg-blue-300 dark:bg-blue-800'
+              : activeState === 'future'
+                ? ''
+                : assertNever(activeState);
 
-        const button = useMemo(() => {
-            function handleClick() {
-                console.log('split clicked', split);
-                useViewOptionsStore.getState().setAnimationMsIntoGame(split.msIntoGame);
+    const button = useMemo(() => {
+        function handleClick() {
+            console.log('split clicked', split);
+            useViewOptionsStore.getState().setAnimationMsIntoGame(split.msIntoGame);
 
-                const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-                if (sceneName) {
-                    useViewOptionsStore.getState().setSelectedRoom(sceneName);
-                }
+            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+            if (sceneName) {
+                useViewOptionsStore.getState().setSelectedRoom(sceneName);
             }
-            function handleMouseEnter() {
-                const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-                if (sceneName) {
-                    useViewOptionsStore.getState().setHoveredRoom(sceneName);
-                }
-                useViewOptionsStore.getState().setHoveredMsIntoGame(split.msIntoGame);
+        }
+        function handleMouseEnter() {
+            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+            if (sceneName) {
+                useViewOptionsStore.getState().setHoveredRoom(sceneName);
             }
-            function handleMouseLeave() {
-                const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-                if (sceneName) {
-                    useViewOptionsStore.getState().unsetHoveredRoom(sceneName);
-                }
-                useViewOptionsStore.getState().unsetHoveredMsIntoGame(split.msIntoGame);
+            useViewOptionsStore.getState().setHoveredMsIntoGame(split.msIntoGame);
+        }
+        function handleMouseLeave() {
+            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+            if (sceneName) {
+                useViewOptionsStore.getState().unsetHoveredRoom(sceneName);
             }
+            useViewOptionsStore.getState().unsetHoveredMsIntoGame(split.msIntoGame);
+        }
 
-            let icon: ReactNode | undefined = undefined;
-            if (split.imageUrl) {
-                // icon = <Image src={split.imageUrl} className="mr-2 h-6 w-6" width={84} height={96} alt="" />;
-                icon = (
-                    <div
-                        className="mr-2 h-7 w-7 shrink-0 bg-contain bg-center bg-no-repeat"
-                        style={{
-                            backgroundImage: `url(${split.imageUrl})`,
-                        }}
-                    />
-                );
-            }
-
-            return (
-                <button
-                    onClick={handleClick}
-                    onMouseEnter={handleMouseEnter}
-                    onMouseLeave={handleMouseLeave}
-                    className="relative flex w-full flex-row gap-2 p-4"
-                >
-                    <div className={cn('absolute bottom-0 left-0 top-0 w-1', split.group.color.background)}></div>
-                    {icon}
-                    <span className="grow text-left">{split.title}</span>
-                    <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
-                </button>
+        let icon: ReactNode | undefined = undefined;
+        if (split.imageUrl) {
+            // icon = <Image src={split.imageUrl} className="mr-2 h-6 w-6" width={84} height={96} alt="" />;
+            icon = (
+                <div
+                    className="mr-2 h-7 w-7 shrink-0 bg-contain bg-center bg-no-repeat"
+                    style={{
+                        backgroundImage: `url(${split.imageUrl})`,
+                    }}
+                />
             );
-        }, [split, useViewOptionsStore]);
+        }
 
         return (
-            <TableRow ref={ref}>
-                <TableCell className={cn('p-0', activeStateClasses)}>{button}</TableCell>
-            </TableRow>
+            <button
+                onClick={handleClick}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="relative flex w-full flex-row gap-2 p-4"
+            >
+                <div className={cn('absolute bottom-0 left-0 top-0 w-1', split.group.color.background)}></div>
+                {icon}
+                <span className="grow text-left">{split.title}</span>
+                <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
+            </button>
         );
-    }),
-);
+    }, [split, useViewOptionsStore]);
 
+    return (
+        <TableRow ref={ref}>
+            <TableCell className={cn('p-0', activeStateClasses)}>{button}</TableCell>
+        </TableRow>
+    );
+});
 interface Props {
     useViewOptionsStore: UseViewOptionsStore;
 }
