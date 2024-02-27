@@ -40,11 +40,11 @@ export function DiscordDialogButton() {
                 <div className="flex flex-col justify-center gap-2 p-4 pt-2 align-baseline">
                     <Button asChild className="w-full">
                         <a
-                            href="https://discord.gg/hollow-knight-modding-879125729936298015"
+                            href="https://discord.com/servers/hollow-knight-modding-879125729936298015"
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Join the Modding Discord Server
+                            1. Join the Modding Discord Server
                         </a>
                     </Button>
                     <Button asChild className="flex w-full flex-row items-baseline gap-1">
@@ -53,7 +53,7 @@ export function DiscordDialogButton() {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            Open <HKVizText /> channel
+                            2. Open <HKVizText /> channel
                         </a>
                     </Button>
                 </div>
