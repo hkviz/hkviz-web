@@ -9,7 +9,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { Pause, Play } from 'lucide-react';
-import { memo, useEffect, useMemo, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { Duration } from './_duration';
@@ -43,11 +43,7 @@ function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptio
 
 const EMPTY_ARRAY = [] as const;
 
-const AnimationTimeLineColorCodes = memo(function AnimationTimeLineColorCodes({
-    useViewOptionsStore,
-}: {
-    useViewOptionsStore: UseViewOptionsStore;
-}) {
+function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const timeFrameMs = useViewOptionsStore((s) => s.timeFrame);
     const recording = useViewOptionsStore((s) => s.recording);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
@@ -174,38 +170,51 @@ const AnimationTimeLineColorCodes = memo(function AnimationTimeLineColorCodes({
             <svg ref={svgRef} className="absolute inset-0" preserveAspectRatio="none" />
         </div>
     );
-});
+}
 
-// this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
-// Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
-export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
-    const hoveredMsIntoGame = useViewOptionsStore((s) => s.hoveredMsIntoGame);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
     const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
     const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const isDisabled = useViewOptionsStore((s) => !s.recording);
+
+    return (
+        <Slider
+            value={[animationMsIntoGame]}
+            min={timeFrame.min}
+            max={timeFrame.max}
+            step={100}
+            className="-my-4 grow py-4"
+            disabled={isDisabled}
+            onValueChange={(values) => {
+                setAnimationMsIntoGame(values[0]!);
+                if (mainCardTab === 'overview') {
+                    setMainCardTab('map');
+                }
+            }}
+        />
+    );
+}
+
+function AnimationTimeLineDuration({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+    const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
+    return <Duration ms={animationMsIntoGame} className="pr-3" withTooltip={false} />;
+}
+
+// this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
+// Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
+export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+    const hoveredMsIntoGame = useViewOptionsStore((s) => s.hoveredMsIntoGame);
+    const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const isV1 = useViewOptionsStore((s) => s.isV1());
 
     return (
         <>
-            <Duration ms={animationMsIntoGame} className="pr-3" />
+            <AnimationTimeLineDuration useViewOptionsStore={useViewOptionsStore} />
             <div className="relative flex w-full shrink grow flex-col gap-2">
-                <Slider
-                    value={[animationMsIntoGame]}
-                    min={timeFrame.min}
-                    max={timeFrame.max}
-                    step={100}
-                    className="-my-4 grow py-4"
-                    disabled={isDisabled}
-                    onValueChange={(values) => {
-                        setAnimationMsIntoGame(values[0]!);
-                        if (mainCardTab === 'overview') {
-                            setMainCardTab('map');
-                        }
-                    }}
-                />
+                <AnimationTimeLineSlider useViewOptionsStore={useViewOptionsStore} />
                 {!isV1 && hoveredMsIntoGame != null && (
                     <div
                         className="absolute bottom-0 top-0 w-[1px] bg-foreground"

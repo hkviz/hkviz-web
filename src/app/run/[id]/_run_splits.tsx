@@ -24,49 +24,6 @@ const RunSplitRow = memo(
         { split, activeState, useViewOptionsStore }: RowProps,
         ref: any,
     ) {
-        const setAnimationMsIntoGame = useViewOptionsStore((state) => state.setAnimationMsIntoGame);
-        const setHoveredRoom = useViewOptionsStore((state) => state.setHoveredRoom);
-        const unsetHoveredRoom = useViewOptionsStore((state) => state.unsetHoveredRoom);
-        const setHoveredMsIntoGame = useViewOptionsStore((state) => state.setHoveredMsIntoGame);
-        const unsetHoveredMsIntoGame = useViewOptionsStore((state) => state.unsetHoveredMsIntoGame);
-        const setSelectedRoom = useViewOptionsStore((state) => state.setSelectedRoom);
-        let icon: ReactNode | undefined = undefined;
-        if (split.imageUrl) {
-            // icon = <Image src={split.imageUrl} className="mr-2 h-6 w-6" width={84} height={96} alt="" />;
-            icon = (
-                <div
-                    className="mr-2 h-7 w-7 shrink-0 bg-contain bg-center bg-no-repeat"
-                    style={{
-                        backgroundImage: `url(${split.imageUrl})`,
-                    }}
-                />
-            );
-        }
-
-        function handleClick() {
-            console.log('split clicked', split);
-            setAnimationMsIntoGame(split.msIntoGame);
-
-            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-            if (sceneName) {
-                setSelectedRoom(sceneName);
-            }
-        }
-        function handleMouseEnter() {
-            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-            if (sceneName) {
-                setHoveredRoom(sceneName);
-            }
-            setHoveredMsIntoGame(split.msIntoGame);
-        }
-        function handleMouseLeave() {
-            const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-            if (sceneName) {
-                unsetHoveredRoom(sceneName);
-            }
-            unsetHoveredMsIntoGame(split.msIntoGame);
-        }
-
         // const activeStateClasses =
         //     activeState === 'past'
         //         ? 'bg-green-200 dark:bg-green-900'
@@ -85,26 +42,62 @@ const RunSplitRow = memo(
                     ? ''
                     : assertNever(activeState);
 
+        const button = useMemo(() => {
+            function handleClick() {
+                console.log('split clicked', split);
+                useViewOptionsStore.getState().setAnimationMsIntoGame(split.msIntoGame);
+
+                const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+                if (sceneName) {
+                    useViewOptionsStore.getState().setSelectedRoom(sceneName);
+                }
+            }
+            function handleMouseEnter() {
+                const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+                if (sceneName) {
+                    useViewOptionsStore.getState().setHoveredRoom(sceneName);
+                }
+                useViewOptionsStore.getState().setHoveredMsIntoGame(split.msIntoGame);
+            }
+            function handleMouseLeave() {
+                const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+                if (sceneName) {
+                    useViewOptionsStore.getState().unsetHoveredRoom(sceneName);
+                }
+                useViewOptionsStore.getState().unsetHoveredMsIntoGame(split.msIntoGame);
+            }
+
+            let icon: ReactNode | undefined = undefined;
+            if (split.imageUrl) {
+                // icon = <Image src={split.imageUrl} className="mr-2 h-6 w-6" width={84} height={96} alt="" />;
+                icon = (
+                    <div
+                        className="mr-2 h-7 w-7 shrink-0 bg-contain bg-center bg-no-repeat"
+                        style={{
+                            backgroundImage: `url(${split.imageUrl})`,
+                        }}
+                    />
+                );
+            }
+
+            return (
+                <button
+                    onClick={handleClick}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                    className="relative flex w-full flex-row gap-2 p-4"
+                >
+                    <div className={cn('absolute bottom-0 left-0 top-0 w-1', split.group.color.background)}></div>
+                    {icon}
+                    <span className="grow text-left">{split.title}</span>
+                    <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
+                </button>
+            );
+        }, [split, useViewOptionsStore]);
+
         return (
             <TableRow ref={ref}>
-                <TableCell className={cn('p-0', activeStateClasses)}>
-                    {/* <Tooltip>
-                        <TooltipTrigger asChild> */}
-                    <button
-                        onClick={handleClick}
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        className="relative flex w-full flex-row gap-2 p-4"
-                    >
-                        <div className={cn('absolute bottom-0 left-0 top-0 w-1', split.group.color.background)}></div>
-                        {icon}
-                        <span className="grow text-left">{split.title}</span>
-                        <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
-                    </button>
-                    {/* </TooltipTrigger>
-                        <TooltipContent>{split.tooltip}</TooltipContent>
-                    </Tooltip> */}
-                </TableCell>
+                <TableCell className={cn('p-0', activeStateClasses)}>{button}</TableCell>
             </TableRow>
         );
     }),
@@ -114,30 +107,9 @@ interface Props {
     useViewOptionsStore: UseViewOptionsStore;
 }
 
-const EMPTY_ARRAY = [] as const;
-
-export function RunSplits({ useViewOptionsStore }: Props) {
-    const id = useId();
-    const recording = useViewOptionsStore((state) => state.recording);
-    const animationMsIntoGame = useViewOptionsStore((state) => state.animationMsIntoGame);
-    const setVisibleSplitGroups = useViewOptionsStore((state) => state.setVisibleSplitGroups);
-    const visibleSplitGroups = useViewOptionsStore((state) => state.visibleSplitGroups);
-    const splits = recording?.splits ?? EMPTY_ARRAY;
-
-    const filteredSplits = useMemo(
-        () => splits.filter((split) => visibleSplitGroups.includes(split.group)),
-        [splits, visibleSplitGroups],
-    );
-
-    const nextSplitIndex = useMemo(
-        () =>
-            filteredSplits?.findIndex(
-                (split, index) =>
-                    split.msIntoGame >= animationMsIntoGame &&
-                    filteredSplits[index + 1]?.msIntoGame !== split.msIntoGame,
-            ),
-        [animationMsIntoGame, filteredSplits],
-    );
+function RunSplitsRows({ useViewOptionsStore }: Props) {
+    const filteredSplits = useViewOptionsStore((state) => state.filteredSplits);
+    const nextSplitIndex = useViewOptionsStore((state) => state.nextSplitIndex);
 
     const scrollDivRef = useRef<HTMLDivElement | null>(null);
     const splitRefs = useRef<(HTMLTableRowElement | null)[]>([]);
@@ -167,6 +139,40 @@ export function RunSplits({ useViewOptionsStore }: Props) {
         }
     }, [nextSplitIndex, filteredSplits.length]);
 
+    return (
+        <div className="grow overflow-y-auto lg:shrink lg:basis-0" ref={scrollDivRef}>
+            <Table className="w-full">
+                <TableBody>
+                    {filteredSplits?.map((split, index) => {
+                        const activeState =
+                            nextSplitIndex === -1 || nextSplitIndex === undefined
+                                ? 'past'
+                                : nextSplitIndex === index
+                                  ? 'next'
+                                  : index < nextSplitIndex
+                                    ? 'past'
+                                    : 'future';
+                        return (
+                            <RunSplitRow
+                                key={index}
+                                split={split}
+                                activeState={activeState}
+                                ref={(el) => (splitRefs.current[index] = el)}
+                                useViewOptionsStore={useViewOptionsStore}
+                            />
+                        );
+                    })}
+                </TableBody>
+            </Table>
+        </div>
+    );
+}
+
+export function RunSplits({ useViewOptionsStore }: Props) {
+    const id = useId();
+    const setVisibleSplitGroups = useViewOptionsStore((state) => state.setVisibleSplitGroups);
+    const visibleSplitGroups = useViewOptionsStore((state) => state.visibleSplitGroups);
+
     const setVisibleSplitGroupChecked = useCallback(
         (group: RecordingSplitGroup, checked: boolean) => {
             const currentGroup = useViewOptionsStore.getState().visibleSplitGroups;
@@ -175,62 +181,35 @@ export function RunSplits({ useViewOptionsStore }: Props) {
         [setVisibleSplitGroups, useViewOptionsStore],
     );
 
-    return useMemo(
-        () => (
-            <>
-                <div>
-                    <div className="flex flex-wrap gap-2 p-4">
-                        {recordingSplitGroups.map((group) => {
-                            const checked = visibleSplitGroups.includes(group);
-                            return (
-                                <div className="flex flex-row gap-2" key={group.name}>
-                                    <Checkbox
-                                        id={id + '_run_split_option_' + group.name}
-                                        checked={checked}
-                                        onCheckedChange={(checked) =>
-                                            setVisibleSplitGroupChecked(group, checked as boolean)
-                                        }
-                                        className={group.color.checkbox}
-                                    />
-                                    <label
-                                        htmlFor={id + '_run_split_option_' + group.name}
-                                        className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                    >
-                                        {group.displayName}
-                                    </label>
-                                </div>
-                            );
-                        })}
-                    </div>
+    return (
+        <>
+            <div>
+                <div className="flex flex-wrap gap-2 p-4">
+                    {recordingSplitGroups.map((group) => {
+                        const checked = visibleSplitGroups.includes(group);
+                        return (
+                            <div className="flex flex-row gap-2" key={group.name}>
+                                <Checkbox
+                                    id={id + '_run_split_option_' + group.name}
+                                    checked={checked}
+                                    onCheckedChange={(checked) =>
+                                        setVisibleSplitGroupChecked(group, checked as boolean)
+                                    }
+                                    className={group.color.checkbox}
+                                />
+                                <label
+                                    htmlFor={id + '_run_split_option_' + group.name}
+                                    className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                >
+                                    {group.displayName}
+                                </label>
+                            </div>
+                        );
+                    })}
                 </div>
-                <hr />
-                <div className="grow overflow-y-auto lg:shrink lg:basis-0" ref={scrollDivRef}>
-                    <Table className="w-full">
-                        <TableBody>
-                            {filteredSplits?.map((split, index) => {
-                                const activeState =
-                                    nextSplitIndex === -1 || nextSplitIndex === undefined
-                                        ? 'past'
-                                        : nextSplitIndex === index
-                                          ? 'next'
-                                          : index < nextSplitIndex
-                                            ? 'past'
-                                            : 'future';
-                                return (
-                                    <RunSplitRow
-                                        key={index}
-                                        split={split}
-                                        activeState={activeState}
-                                        ref={(el) => (splitRefs.current[index] = el)}
-                                        useViewOptionsStore={useViewOptionsStore}
-                                    />
-                                );
-                            })}
-                        </TableBody>
-                    </Table>
-                </div>
-            </>
-        ),
-        [filteredSplits, visibleSplitGroups, id, setVisibleSplitGroupChecked, nextSplitIndex, useViewOptionsStore],
+            </div>
+            <hr />
+            <RunSplitsRows useViewOptionsStore={useViewOptionsStore} />
+        </>
     );
 }
