@@ -1,5 +1,10 @@
 export const recordingFileVersions = [
     /**
+     * No file changes
+     */
+    '1.5.1',
+
+    /**
      * Changes in format:
      * - writes mod info as name:version:enabled_errorenum instead of name:[version or error] gotten from the mod loader display string.
      * - also fixes that mods are not written when to many are installed.
@@ -53,9 +58,11 @@ export function isVersion0xx(version: RecordingFileVersion): version is Recordin
     return version === '0.0.0';
 }
 
-export type RecordingFileVersion1xx = '1.0.0' | '1.1.0' | '1.4.0' | '1.5.0';
+export type RecordingFileVersion1xx = '1.0.0' | '1.1.0' | '1.4.0' | '1.5.0' | '1.5.1';
 export function isVersion1xx(version: RecordingFileVersion): version is RecordingFileVersion1xx {
-    return version === '1.0.0' || version === '1.1.0' || version === '1.4.0' || version === '1.5.0';
+    return (
+        version === '1.0.0' || version === '1.1.0' || version === '1.4.0' || version === '1.5.0' || version === '1.5.1'
+    );
 }
 
 export function isVersionBefore1_4_0(

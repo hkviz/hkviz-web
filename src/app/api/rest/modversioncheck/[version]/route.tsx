@@ -13,6 +13,7 @@ function getVersionCheckResult(version: string): ModVersionCheckResponse {
 
     console.log(version);
     switch (versionTyped) {
+        case '1.5.1.0':
         case '1.5.0.0':
             return {
                 message: '',
