@@ -34,6 +34,6 @@ export class Bounds {
     }
 
     public toD3ViewBox(): [number, number, number, number] {
-        return [this.min.x, this.min.y, this.max.x, this.max.y];
+        return [this.min.x, this.min.y, this.size.x, this.size.y];
     }
 }

@@ -90,6 +90,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             .attr('width', 1000)
             .attr('height', 1000)
             .attr('viewBox', mapVisualExtends.toD3ViewBox())
+            .attr('preserveAspectRatio', 'xMidYMid meet')
             .call(zoom.current);
 
         rootG.current = svg.current.append('g').attr('data-group', 'root');
