@@ -96,16 +96,18 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
             .attr('x', (d) => d.startMs / 1000)
             .attr('width', (d) => d.durationMs / 1000)
             .attr('height', 10000)
-            .attr('fill', (d) => {
-                const roomColor = d.mainRoomData?.color;
-                if (!roomColor) return theme === 'dark' ? 'white' : 'black';
-
-                return theme === 'dark'
-                    ? darkenRoomColorForDarkTheme(roomColor).formatHex()
-                    : darkenRoomColorForLightTheme(roomColor).formatHex();
-            })
             .attr('data-scene-name', (d) => d.sceneName);
-    }, [sceneChanges, theme, timeFrame.max]);
+    }, [sceneChanges, timeFrame.max]);
+
+    useEffect(() => {
+        if (!rectsRef.current) return;
+        rectsRef.current.attr('fill', (d) => {
+            const roomColor = d.mainRoomData?.color;
+            if (!roomColor) return theme === 'dark' ? 'white' : 'black';
+
+            return theme === 'dark' ? darkenRoomColorForDarkTheme(roomColor) : darkenRoomColorForLightTheme(roomColor);
+        });
+    }, [theme, mainSvgEffect]);
 
     useEffect(() => {
         if (!rectsRef.current) return;

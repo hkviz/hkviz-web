@@ -1,17 +1,36 @@
 import * as d3 from 'd3';
+import memoize from 'micro-memoize';
 import { useMemo } from 'react';
 import { useThemeStore } from '~/app/_components/theme-store';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { assertNever } from '~/lib/utils/utils';
 import { type RoomInfo } from '../map-data/rooms';
 
-export function darkenRoomColorForLightTheme(color: d3.HSLColor): d3.HSLColor {
-    return color.copy({ l: color.l * 0.5, s: color.s * 0.5 });
+function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
+    return a.h === b.h && a.s === b.s && a.l === b.l;
 }
 
-export function darkenRoomColorForDarkTheme(color: d3.HSLColor): d3.HSLColor {
-    return color.copy({ l: color.l * 0.7, s: color.s * 0.6 });
-}
+export const darkenRoomColorForLightTheme = memoize(
+    function darkenRoomColorForLightTheme(color: d3.HSLColor): string {
+        return color.copy({ l: color.l * 0.5, s: color.s * 0.5 }).formatHsl();
+    },
+    {
+        isEqual: hslEquals,
+        maxSize: 1000,
+    },
+);
+
+export const darkenRoomColorForDarkTheme = memoize(
+    function darkenRoomColorForDarkTheme(color: d3.HSLColor): string {
+        return color.copy({ l: color.l * 0.8, s: color.s * 0.75 }).formatHsl();
+    },
+    {
+        isEqual: hslEquals,
+        maxSize: 1000,
+    },
+);
+
+console.log({ darkenRoomColorForLightTheme, darkenRoomColorForDarkTheme });
 
 export function useRoomColoring({
     useViewOptionsStore,
@@ -31,7 +50,7 @@ export function useRoomColoring({
         function roomColorFromArea(r: RoomInfo) {
             const colorFromGame = r.color;
             if (theme === 'light') {
-                return darkenRoomColorForLightTheme(colorFromGame).formatHsl();
+                return darkenRoomColorForLightTheme(colorFromGame);
             } else {
                 return colorFromGame.formatHsl();
             }

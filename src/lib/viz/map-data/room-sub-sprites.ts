@@ -545,6 +545,25 @@ export const subSprites = {
             },
         ],
     },
+    Fungus1_26: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Fungus1_26',
+            rough: null,
+            conditional: null,
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/Fungus1_26_Shrine',
+                    size: { x: 43, y: 62 },
+                    offsetTop: { x: 112, y: 14 },
+                },
+                rough: null,
+                conditional: null,
+                sceneName: 'Room_Slug_Shrine',
+            },
+        ],
+    },
 };
 
 type SubSprites = typeof subSprites;

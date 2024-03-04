@@ -1,5 +1,5 @@
 import { raise, typeCheckNever } from '~/lib/utils/utils';
-import { heroStateFields } from '../hero-state/hero-states';
+import { heroStateFields, heroStatesSkipParsing } from '../hero-state/hero-states';
 import { parsePlayerDataFieldValue, playerDataFields } from '../player-data/player-data';
 import { isKnownRecordingFileVersion, isVersion0xx, type RecordingFileVersion } from '../types/recording-file-version';
 import { Vector2 } from '../types/vector2';
@@ -120,7 +120,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                 case PARTIAL_EVENT_PREFIXES.HERO_CONTROLLER_STATE_SHORTNAME: {
                     const field = heroStateFields.byShortCode[eventTypeSuffix()];
                     if (!field) throw new Error('Unknown hero controller field short code' + eventTypeSuffix());
-                    // TODO
+                    if (heroStatesSkipParsing.has(field)) continue LINE_LOOP;
                     events.push(
                         new HeroStateEvent({
                             timestamp,

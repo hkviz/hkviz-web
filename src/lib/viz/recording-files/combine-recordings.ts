@@ -342,7 +342,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
         }
     }
 
-    (window as any).hkvizEvents = events;
+    (window as any).hkvizEvents = () => events;
 
     return new CombinedRecording(
         events,
