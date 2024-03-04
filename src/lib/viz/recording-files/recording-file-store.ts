@@ -133,8 +133,11 @@ export const useRunFileStore = create(
 
             const loader = () => fetchWithRunfileCache(fileId, fileVersion, downloadUrl);
 
+            // uncomment to get file content from console. useful for debugging
+            // very bad for performance, since context needs to be kept in memory.
+
             // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-            (window as any)['fileLoader_' + combinedPartNumber] = loader;
+            // (window as any)['fileLoader_' + combinedPartNumber] = loader;
 
             const response = await loader().then((it) =>
                 wrapResultWithProgress(it, ({ loaded, total }) => {

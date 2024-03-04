@@ -9,7 +9,7 @@ import { countGameCompletion } from '../ingame-percentage';
 import { type HeroStateEvent } from '../recording';
 import { type PlayerDataEvent } from './player-data-event';
 import { type PlayerPositionEvent } from './player-position-event';
-import { RecordingEventBase } from './recording-event-base';
+import { RecordingEventBase, RecordingEventBaseOptions } from './recording-event-base';
 
 export const frameEndEventPlayerDataFieldsArray = [
     // geo
