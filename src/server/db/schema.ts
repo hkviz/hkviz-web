@@ -32,22 +32,28 @@ function varcharUuid(name: string) {
  */
 export const mysqlTable = mysqlTableCreator((name) => `hkviz_${name}`);
 
-export const users = mysqlTable('user', {
-    id: varchar('id', { length: 255 }).notNull().primaryKey(),
-    name: varchar('name', { length: 255 }),
-    previousName: varchar('previous_name', { length: 255 }),
-    isResearcher: boolean('is_researcher').notNull().default(false),
-    email: varchar('email', { length: 255 }).notNull(),
-    emailVerified: timestamp('emailVerified', {
-        mode: 'date',
-        fsp: 3,
-    }).default(sql`CURRENT_TIMESTAMP(3)`),
-    image: varchar('image', { length: 255 }),
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
-});
+export const users = mysqlTable(
+    'user',
+    {
+        id: varchar('id', { length: 255 }).notNull().primaryKey(),
+        name: varchar('name', { length: 255 }),
+        previousName: varchar('previous_name', { length: 255 }),
+        isResearcher: boolean('is_researcher').notNull().default(false),
+        email: varchar('email', { length: 255 }).notNull(),
+        emailVerified: timestamp('emailVerified', {
+            mode: 'date',
+            fsp: 3,
+        }).default(sql`CURRENT_TIMESTAMP(3)`),
+        image: varchar('image', { length: 255 }),
+        createdAt: timestamp('created_at')
+            .default(sql`CURRENT_TIMESTAMP`)
+            .notNull(),
+        updatedAt: timestamp('updatedAt').onUpdateNow(),
+    },
+    (user) => ({
+        emailIdx: index('email_idx').on(user.email),
+    }),
+);
 
 export const usersRelations = relations(users, ({ many, one }) => ({
     accounts: many(accounts),
@@ -227,7 +233,15 @@ export const runs = mysqlTable(
         ...runGameStateMetaColumns,
     },
     (run) => ({
-        userIdIdx: index('userId_idx').on(run.userId),
+        userIdVisibilityDeletedArchivedCombinedIntoRunIdIdx: index(
+            'userIdVisibilityDeletedArchivedCombinedIntoRunId_idx',
+        ).on(run.userId, run.visibility, run.deleted, run.archived, run.combinedIntoRunId),
+        visibilityDeletedArchivedCombinedIntoRunIdIdx: index('visibilityDeletedArchivedCombinedIntoRunId_idx').on(
+            run.visibility,
+            run.deleted,
+            run.archived,
+            run.combinedIntoRunId,
+        ),
     }),
 );
 
@@ -277,7 +291,6 @@ export const runFiles = mysqlTable(
         ...runGameStateMetaColumns,
     },
     (runFile) => ({
-        runIdIdx: index('runId_idx').on(runFile.runId),
         runIdPartNumberIdx: index('runIdPartNumber_idx').on(runFile.runId, runFile.partNumber),
     }),
 );
