@@ -5,6 +5,14 @@ import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { assertNever } from '~/lib/utils/utils';
 import { type RoomInfo } from '../map-data/rooms';
 
+export function darkenRoomColorForLightTheme(color: d3.HSLColor): d3.HSLColor {
+    return color.copy({ l: color.l * 0.5, s: color.s * 0.5 });
+}
+
+export function darkenRoomColorForDarkTheme(color: d3.HSLColor): d3.HSLColor {
+    return color.copy({ l: color.l * 0.7, s: color.s * 0.6 });
+}
+
 export function useRoomColoring({
     useViewOptionsStore,
     alwaysUseAreaAsColor = false,
@@ -23,7 +31,7 @@ export function useRoomColoring({
         function roomColorFromArea(r: RoomInfo) {
             const colorFromGame = r.color;
             if (theme === 'light') {
-                return colorFromGame.copy({ l: colorFromGame.l * 0.5, s: colorFromGame.s * 0.5 }).formatHsl();
+                return darkenRoomColorForLightTheme(colorFromGame).formatHsl();
             } else {
                 return colorFromGame.formatHsl();
             }

@@ -10,6 +10,8 @@ import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { Pause, Play } from 'lucide-react';
 import { useEffect, useMemo, useRef } from 'react';
+import { useThemeStore } from '~/app/_components/theme-store';
+import { darkenRoomColorForDarkTheme, darkenRoomColorForLightTheme } from '~/lib/viz/charts/use-room-coloring';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { Duration } from './_duration';
@@ -44,6 +46,8 @@ function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptio
 const EMPTY_ARRAY = [] as const;
 
 function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+    const theme = useThemeStore((state) => state.theme);
+
     const timeFrameMs = useViewOptionsStore((s) => s.timeFrame);
     const recording = useViewOptionsStore((s) => s.recording);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
@@ -92,9 +96,16 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
             .attr('x', (d) => d.startMs / 1000)
             .attr('width', (d) => d.durationMs / 1000)
             .attr('height', 10000)
-            .attr('fill', (d) => d.mainRoomData?.color?.formatHex() ?? 'white')
+            .attr('fill', (d) => {
+                const roomColor = d.mainRoomData?.color;
+                if (!roomColor) return theme === 'dark' ? 'white' : 'black';
+
+                return theme === 'dark'
+                    ? darkenRoomColorForDarkTheme(roomColor).formatHex()
+                    : darkenRoomColorForLightTheme(roomColor).formatHex();
+            })
             .attr('data-scene-name', (d) => d.sceneName);
-    }, [sceneChanges, timeFrame.max]);
+    }, [sceneChanges, theme, timeFrame.max]);
 
     useEffect(() => {
         if (!rectsRef.current) return;
