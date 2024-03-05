@@ -29,7 +29,7 @@ export function RunOverviewTab({
     const setIsPlaying = useViewOptionsStore((s) => s.setIsPlaying);
     const setRoomVisibility = useViewOptionsStore((s) => s.setRoomVisibility);
     const setTraceVisibility = useViewOptionsStore((s) => s.setTraceVisibility);
-    const setRoomColorVar1 = useViewOptionsStore((s) => s.setRoomColorVar1);
+    const cycleRoomColorVar1 = useViewOptionsStore((s) => s.cycleRoomColorVar1);
     const setRoomColors = useViewOptionsStore((s) => s.setRoomColors);
     const setExtraChartsFollowAnimation = useViewOptionsStore((s) => s.setExtraChartsFollowAnimation);
     const recording = useViewOptionsStore((s) => s.recording);
@@ -51,7 +51,7 @@ export function RunOverviewTab({
         setRoomVisibility('visited');
         setRoomColors('1-var');
         if (useViewOptionsStore.getState().roomColorVar1 !== 'firstVisitMs') {
-            setRoomColorVar1('firstVisitMs');
+            cycleRoomColorVar1('firstVisitMs');
         }
         setExtraChartsFollowAnimation(false);
     }

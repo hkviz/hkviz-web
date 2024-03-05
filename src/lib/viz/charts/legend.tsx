@@ -1,9 +1,10 @@
-import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
-import { useRoomColoring } from './use-room-coloring';
 import { Card } from '@/components/ui/card';
-import { useCallback, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import { useCallback, useEffect, useRef } from 'react';
+import { RoomColorCurveSelect } from '~/app/run/[id]/_room-color-curve-menu';
+import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { aggregationVariableInfos, formatAggregatedVariableValue } from '../recording-files/run-aggregation-store';
+import { useRoomColoring } from './use-room-coloring';
 
 const LEGEND_PADDING = 30;
 
@@ -12,6 +13,7 @@ const LEGEND_SVG_TEXT_CLASSES = 'text-black dark:text-white fill-current';
 export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const svg = useRef<SVGSVGElement>(null);
 
+    const isV1 = useViewOptionsStore((s) => s.isV1());
     const roomColoring = useRoomColoring({ useViewOptionsStore });
     const var1Info = aggregationVariableInfos[roomColoring.var1];
     const hoveredRoom = useViewOptionsStore((s) => s.hoveredRoom);
@@ -118,8 +120,15 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
 
     return (
         <Card className="absolute right-4 top-4 px-0 py-2 text-center" hidden={roomColoring.mode === 'area'}>
-            {var1Info?.name ?? ''}
-            <svg className="w-36" viewBox={`0 0 ${200 + LEGEND_PADDING * 2} 100`} ref={svg} />
+            <div className="flex flex-col items-center justify-center gap-1">
+                <div className="flex flex-row items-center justify-center gap-1 px-2">
+                    <div className="text-sm">{var1Info?.name ?? ''} </div>
+                    {!isV1 && (
+                        <RoomColorCurveSelect useViewOptionsStore={useViewOptionsStore} variable={roomColoring.var1} />
+                    )}
+                </div>
+                <svg className="w-36" viewBox={`0 0 ${200 + LEGEND_PADDING * 2} 100`} ref={svg} />
+            </div>
         </Card>
     );
 }

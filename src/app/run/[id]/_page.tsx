@@ -62,10 +62,10 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 <Card className="relative grid grow grid-cols-1 grid-rows-1 overflow-hidden">
                     <Tabs
                         value={mainCardTab}
-                        className="absolute left-0 right-0 top-0 z-10"
+                        className="absolute left-0 right-0 top-0 z-10 mx-auto w-fit"
                         onValueChange={(tab: string) => setMainCardTab(tab as MainCardTab)}
                     >
-                        <TabsListTransparent className="w-full">
+                        <TabsListTransparent>
                             <TabsTriggerTransparent value="overview">Overview</TabsTriggerTransparent>
                             <TabsTriggerTransparent value="map">Map</TabsTriggerTransparent>
                         </TabsListTransparent>

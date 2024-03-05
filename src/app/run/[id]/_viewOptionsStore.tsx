@@ -6,11 +6,12 @@ import { assertNever } from '~/lib/utils/utils';
 import { playerDataFields } from '~/lib/viz/player-data/player-data';
 import { type CombinedRecording } from '~/lib/viz/recording-files/recording';
 import {
-    RecordingSplit,
     recordingSplitGroups,
+    type RecordingSplit,
     type RecordingSplitGroup,
 } from '~/lib/viz/recording-files/recording-splits';
 import { type AggregatedRunData, type AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
+import { RoomColorCurve, RoomColorCurveExponential, RoomColorCurveLinear } from './_room-color-curve';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
@@ -54,6 +55,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
 
                     roomColorMode: 'area' as RoomColorMode,
                     roomColorVar1: 'firstVisitMs' as AggregationVariable,
+                    roomColorVar1Curve: RoomColorCurveLinear as RoomColorCurve,
 
                     extraChartsTimeBounds: [0, 0] as readonly [number, number],
                     extraChartsFollowAnimation: true,
@@ -285,12 +287,31 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     function setRoomColorMode(roomColorMode: RoomColorMode) {
                         set({ roomColorMode });
                     }
-                    function setRoomColorVar1(roomColorVar1: AggregationVariable) {
-                        if (get().roomColorVar1 === roomColorVar1 && get().roomColorMode === '1-var') {
-                            set({ roomColorMode: 'area' });
+                    function cycleRoomColorVar1(roomColorVar1: AggregationVariable) {
+                        const { roomColorVar1: currentRoomColorVar1, roomColorMode, roomColorVar1Curve } = get();
+
+                        if (currentRoomColorVar1 === roomColorVar1 && roomColorMode === '1-var') {
+                            if (roomColorVar1Curve.type === 'linear' && !isV1()) {
+                                set({ roomColorVar1Curve: RoomColorCurveExponential.EXPONENT_2 });
+                            } else {
+                                set({ roomColorMode: 'area' });
+                            }
                         } else {
-                            set({ roomColorVar1, roomColorMode: '1-var' });
+                            set({
+                                roomColorVar1,
+                                roomColorMode: '1-var',
+                                roomColorVar1Curve: RoomColorCurveLinear,
+                            });
                         }
+                    }
+                    function setRoomColorVar1(roomColorVar1: AggregationVariable) {
+                        set({ roomColorVar1 });
+                        if (get().roomColorMode === 'area') {
+                            set({ roomColorMode: '1-var' });
+                        }
+                    }
+                    function setRoomColorVar1Curve(roomColorVar1Curve: RoomColorCurve) {
+                        set({ roomColorVar1Curve });
                     }
                     function setViewNeverHappenedAggregations(viewNeverHappenedAggregations: boolean) {
                         set({ viewNeverHappenedAggregations });
@@ -356,7 +377,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         setSelectedRoomIfNotPinned,
                         togglePinnedRoom,
                         setRoomColors: setRoomColorMode,
-                        setRoomColorVar1,
+                        cycleRoomColorVar1,
                         setViewNeverHappenedAggregations,
                         setHoveredRoom,
                         unsetHoveredRoom,
@@ -368,6 +389,8 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         setMainCardTab,
                         setVisibleSplitGroups,
                         getHoveredOrSelectedRoom,
+                        setRoomColorVar1,
+                        setRoomColorVar1Curve,
                     };
                 },
             ),

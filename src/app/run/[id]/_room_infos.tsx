@@ -10,9 +10,11 @@ import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
+import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@/components/ui/context-menu';
 import { Toggle } from '@/components/ui/toggle';
 import { Palette, Pin, PinOff } from 'lucide-react';
 import { useThemeStore } from '~/app/_components/theme-store';
+import { assertNever } from '~/lib/utils/utils';
 import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
 import {
     AggregationVariable,
@@ -20,6 +22,7 @@ import {
     aggregationVariables,
     formatAggregatedVariableValue,
 } from '~/lib/viz/recording-files/run-aggregation-store';
+import { RoomColorCurveContextMenuItems } from './_room-color-curve-menu';
 
 function AggregationVariableToggles({
     useViewOptionsStore,
@@ -30,7 +33,11 @@ function AggregationVariableToggles({
 }) {
     const roomColors = useViewOptionsStore((s) => s.roomColorMode);
     const roomColorVar1 = useViewOptionsStore((s) => s.roomColorVar1);
-    const setRoomColorVar1 = useViewOptionsStore((s) => s.setRoomColorVar1);
+    const roomColorVar1Curve = useViewOptionsStore((s) => s.roomColorVar1Curve);
+    const cycleRoomColorVar1 = useViewOptionsStore((s) => s.cycleRoomColorVar1);
+    const isV1 = useViewOptionsStore((s) => s.isV1());
+
+    const isActive = roomColors === '1-var' && roomColorVar1 === variable;
 
     // const showVar1 = roomColors === '1-var';
     const showVar1 = true;
@@ -41,14 +48,37 @@ function AggregationVariableToggles({
     return (
         <TableCell className="w-1 p-0 pr-1">
             {showVar1 && (
-                <Toggle
-                    variant="outline"
-                    pressed={roomColorVar1 === variable && roomColors === '1-var'}
-                    onPressedChange={() => setRoomColorVar1(variable)}
-                    className="rounded-full data-[state=on]:bg-primary"
-                >
-                    <Palette className="h-4 w-4 text-base" />
-                </Toggle>
+                <ContextMenu>
+                    <ContextMenuTrigger>
+                        <Toggle
+                            variant="outline"
+                            pressed={roomColorVar1 === variable && roomColors === '1-var'}
+                            onPressedChange={() => cycleRoomColorVar1(variable)}
+                            className={
+                                'relative h-10 w-10 rounded-full data-[state=on]:text-white ' +
+                                (roomColorVar1Curve.type === 'linear'
+                                    ? 'data-[state=on]:bg-primary'
+                                    : roomColorVar1Curve.type === 'log'
+                                      ? 'data-[state=on]:bg-blue-600'
+                                      : roomColorVar1Curve.type === 'exponential'
+                                        ? 'data-[state=on]:bg-green-600'
+                                        : assertNever(roomColorVar1Curve))
+                            }
+                        >
+                            <span className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
+                                {(!isActive || isV1) && <Palette className="h-4 w-4 text-base" />}
+                                {isActive && !isV1 && roomColorVar1Curve.type === 'linear' && (
+                                    <span className="text-[.7rem]">linear</span>
+                                )}
+                                {isActive && !isV1 && roomColorVar1Curve.type === 'log' && <span>log</span>}
+                                {isActive && !isV1 && roomColorVar1Curve.type === 'exponential' && <span>exp</span>}
+                            </span>
+                        </Toggle>
+                    </ContextMenuTrigger>
+                    <ContextMenuContent>
+                        <RoomColorCurveContextMenuItems useViewOptionsStore={useViewOptionsStore} variable={variable} />
+                    </ContextMenuContent>
+                </ContextMenu>
             )}
         </TableCell>
     );

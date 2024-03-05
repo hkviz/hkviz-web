@@ -42,6 +42,7 @@ export function useRoomColoring({
     const aggregatedRunData = useViewOptionsStore((state) => state.aggregatedRunData);
     const mode = useViewOptionsStore((state) => state.roomColorMode);
     const var1 = useViewOptionsStore((state) => state.roomColorVar1);
+    const var1Curve = useViewOptionsStore((state) => state.roomColorVar1Curve);
     const var1Max = aggregatedRunData?.maxOverScenes?.[var1] ?? 0;
 
     const theme = useThemeStore((state) => state.theme);
@@ -57,7 +58,7 @@ export function useRoomColoring({
         }
 
         function singleVarColormap(value: number) {
-            const ratio = var1Max ? value / var1Max : 0;
+            const ratio = var1Curve.transformTo01(value, var1Max);
             const colorMapColor = d3.color(d3.interpolateViridis(ratio))!;
             if (theme === 'light') {
                 return colorMapColor.darker(0.5).formatHex();
@@ -70,6 +71,7 @@ export function useRoomColoring({
             mode,
             var1,
             var1Max,
+            var1Curve,
             aggregatedRunData,
             getRoomColor(r: RoomInfo) {
                 if (mode === 'area' || alwaysUseAreaAsColor) {
@@ -82,5 +84,5 @@ export function useRoomColoring({
             },
             singleVarColormap,
         };
-    }, [mode, var1, alwaysUseAreaAsColor, aggregatedRunData, var1Max, theme]);
+    }, [mode, var1, var1Max, aggregatedRunData, theme, var1Curve, alwaysUseAreaAsColor]);
 }
