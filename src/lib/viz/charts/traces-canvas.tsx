@@ -87,7 +87,9 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         const maxMsIntoGame = storeValue.animationMsIntoGame;
 
         const firstIndex =
-            storeValue.traceVisibility === 'animated'
+            storeValue.traceVisibility === 'animated' &&
+            positionEvents.length > 0 &&
+            minMsIntoGame > positionEvents[0]!.msIntoGame
                 ? binarySearchLastIndexBefore(positionEvents, minMsIntoGame, (v) => v.msIntoGame)
                 : 0;
 
