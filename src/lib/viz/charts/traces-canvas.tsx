@@ -39,17 +39,32 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
 
     const draw = useEvent(() => {
         if (!canvas.current) return;
-        const xScale = (zoomPosition.current.scale * canvas.current.width) / mapVisualExtends.size.x;
 
-        const yScale = (zoomPosition.current.scale * canvas.current.height) / mapVisualExtends.size.y;
+        const boundsAspectRatio = mapVisualExtends.size.x / mapVisualExtends.size.y;
+        const canvasAspectRatio = canvas.current.width / canvas.current.height;
 
-        const xOffset = -mapVisualExtends.min.x + zoomPosition.current.offsetX;
-        const yOffset = -mapVisualExtends.min.y + zoomPosition.current.offsetY;
+        const mapDistanceToPixels =
+            boundsAspectRatio > canvasAspectRatio
+                ? canvas.current.width / mapVisualExtends.size.x
+                : canvas.current.height / mapVisualExtends.size.y;
+
+        const scaler = zoomPosition.current.scale * mapDistanceToPixels;
+
+        // const xCenter =
+
+        const xOffset =
+            canvas.current.width / 2 -
+            mapVisualExtends.center.x * mapDistanceToPixels +
+            zoomPosition.current.offsetX * mapDistanceToPixels;
+        const yOffset =
+            canvas.current.height / 2 -
+            mapVisualExtends.center.y * mapDistanceToPixels +
+            zoomPosition.current.offsetY * mapDistanceToPixels;
         function x(v: number) {
-            return v * xScale + xOffset;
+            return v * scaler + xOffset;
         }
         function y(v: number) {
-            return v * yScale + yOffset;
+            return v * scaler + yOffset;
         }
 
         const ctx = canvas.current.getContext('2d');

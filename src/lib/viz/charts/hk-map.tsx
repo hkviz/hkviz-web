@@ -98,6 +98,15 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
 
         rootG.current = svg.current.append('g').attr('data-group', 'root');
 
+        rootG.current
+            .append('rect')
+            .attr('width', '100%')
+            .attr('height', '100%')
+            .attr('fill', 'yellow')
+            .attr('fill-opacity', 0.2)
+            .attr('x', mapVisualExtends.min.x)
+            .attr('y', mapVisualExtends.min.y);
+
         roomDataEnter.current = rootG.current
             .append('g')
             .attr('data-group', 'rooms')
