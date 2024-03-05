@@ -53,6 +53,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
     const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
     const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
+    const setHoveredMsIntoGame = useViewOptionsStore((s) => s.setHoveredMsIntoGame);
     const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
@@ -153,6 +154,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
         if (!sceneChange) return;
         setSelectedRoomIfNotPinned(sceneChange.sceneName);
         setHoveredRoom(sceneChange.sceneName);
+        setHoveredMsIntoGame(sceneChange.startMs);
     }
     function handleClick(e: React.MouseEvent) {
         const sceneChange = getSceneChangeFromMouseEvent(e);
@@ -164,6 +166,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
     }
     function handleMouseLeave() {
         setHoveredRoom(null);
+        setHoveredMsIntoGame(null);
     }
 
     return (

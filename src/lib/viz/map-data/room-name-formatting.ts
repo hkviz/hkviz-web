@@ -41,6 +41,8 @@ const predefinedRoomNames = {
     Fungus1_35: 'Stone Sanctuary No Eyes',
     Fungus1_36: 'Stone Sanctuary Right Room',
     Room_nailmaster_02: 'Nailmaster Sheo',
+    Fungus1_26: 'Lake of Unn',
+    Room_Slug_Shrine: 'Lake of Unn Shrine',
 
     // Cliffs
     Room_nailmaster: 'Nailmaster Mato',
