@@ -8,6 +8,7 @@ import { mapVisualExtends } from '../map-data/map-extends';
 import { mainRoomDataBySceneName, roomData, type RoomInfo } from '../map-data/rooms';
 import { Bounds } from '../types/bounds';
 import { MapLegend } from './legend';
+import { HKMapTraces } from './traces-canvas';
 import { useMapRooms } from './use-map-rooms';
 import { useMapTraces } from './use-traces';
 
@@ -53,6 +54,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     const rootG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
 
     const zoom = useRef<d3.ZoomBehavior<SVGSVGElement, unknown>>();
+    const tracesZoomHandler = useRef<(event: any) => void>();
 
     const animatedTraceG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
     const knightPinG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
@@ -82,6 +84,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             .on('zoom', (event) => {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
                 rootG.current!.attr('transform', event.transform);
+                tracesZoomHandler.current?.(event);
             });
         svg.current = d3
             .select(containerRef.current)
@@ -157,6 +160,11 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
         <div className={cn('relative', className)} ref={containerRef}>
             {false && <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />}
             <MapLegend useViewOptionsStore={useViewOptionsStore} />
+            <HKMapTraces
+                useViewOptionsStore={useViewOptionsStore}
+                containerRef={containerRef}
+                zoomHandler={tracesZoomHandler}
+            />
         </div>
     );
 }

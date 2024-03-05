@@ -23,6 +23,7 @@ const SCALED_LINE_WIDTH = 0.05 * SCALE_FACTOR;
 const SCALED_KNIGHT_PIN_SIZE = 0.75 * SCALE_FACTOR;
 
 export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }: Props) {
+    // return;
     const animatedTraceChunks = useRef<
         {
             minMsIntoGame: number;
