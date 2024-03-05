@@ -37,7 +37,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
     const traceAnimationLengthMs = useViewOptionsStore((s) => s.traceAnimationLengthMs);
     const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
     const recording = useViewOptionsStore((s) => s.recording);
-    const displayVersion = useViewOptionsStore((s) => s.displayVersion);
+    const isV1 = useViewOptionsStore((s) => s.isV1());
 
     // always 0 when traceVisibility !== 'animated' since that avoids running the effect when animating, but traces are not animating
     const animationMsIntoGameForTrace = traceVisibility === 'animated' ? animationMsIntoGame : 0;
@@ -45,17 +45,16 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
     useEffect(() => {
         if (!recording) return;
 
-        const positionEvents =
-            displayVersion === 'v1'
-                ? recording.events.filter((event): event is PlayerPositionEvent => {
-                      return (
-                          event instanceof PlayerPositionEvent &&
-                          event.mapPosition != null &&
-                          event.previousPlayerPositionEventWithMapPosition?.mapPosition != null &&
-                          !event.previousPlayerPositionEventWithMapPosition.mapPosition.equals(event.mapPosition)
-                      );
-                  })
-                : [];
+        const positionEvents = isV1
+            ? recording.events.filter((event): event is PlayerPositionEvent => {
+                  return (
+                      event instanceof PlayerPositionEvent &&
+                      event.mapPosition != null &&
+                      event.previousPlayerPositionEventWithMapPosition?.mapPosition != null &&
+                      !event.previousPlayerPositionEventWithMapPosition.mapPosition.equals(event.mapPosition)
+                  );
+              })
+            : [];
 
         const positionEventChunks = chunk(positionEvents, 100);
         animatedTraceChunks.current?.forEach((chunk) => chunk.group.remove());
@@ -107,7 +106,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
         });
 
         animatedTraceG.current!.selectAll('path').remove();
-    }, [recording, animatedTraceG, displayVersion]);
+    }, [recording, animatedTraceG, isV1]);
 
     useEffect(() => {
         knightPin.current = knightPinG

@@ -96,7 +96,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <Progress value={(runFiles?.loadingProgress ?? 0) * 99 + 1} className="max-w-[400px]" />
                     </div>
                 </Card>
-                {isAnythingAnimating && <AnimationOptions useViewOptionsStore={useViewOptionsStore} />}
+                {(isAnythingAnimating || !isV1) && <AnimationOptions useViewOptionsStore={useViewOptionsStore} />}
             </div>
 
             <RightCard useViewOptionsStore={useViewOptionsStore} />

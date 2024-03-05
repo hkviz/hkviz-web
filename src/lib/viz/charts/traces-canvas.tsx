@@ -32,7 +32,7 @@ function binarySearchLastIndexBefore<T>(arr: readonly T[], value: number, getVal
 }
 
 export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: HKMapTracesProps) {
-    const displayVersion = useViewOptionsStore((s) => s.displayVersion);
+    const isV1 = useViewOptionsStore((s) => s.isV1());
     const zoomPosition = useRef({ offsetX: 0, offsetY: 0, scale: 1 });
     const recording = useViewOptionsStore((s) => s.recording);
     const knightPinImage = useRef<HTMLImageElement>(null);
@@ -53,7 +53,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
     const canvas = useRef<HTMLCanvasElement>(null);
 
     const draw = useEvent(() => {
-        if (!canvas.current || displayVersion === 'v1') return;
+        if (!canvas.current || isV1) return;
 
         // scaling
         const boundsAspectRatio = mapVisualExtends.size.x / mapVisualExtends.size.y;
