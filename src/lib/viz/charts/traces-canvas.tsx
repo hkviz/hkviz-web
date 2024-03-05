@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, type MutableRefObject, type RefObject } from 'react';
 import useEvent from 'react-use-event-hook';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { assertNever } from '~/lib/utils/utils';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { PlayerPositionEvent } from '../recording-files/events/player-position-event';
 
@@ -12,6 +13,21 @@ export interface HKMapTracesProps {
 
 const EMPTY_ARRAY = [] as const;
 
+function binarySearchLastIndexBefore<T>(arr: readonly T[], value: number, getValue: (v: T) => number): number {
+    let low = 0;
+    let high = arr.length - 1;
+    while (low <= high) {
+        const mid = (low + high) >>> 1;
+        const midValue = getValue(arr[mid]!);
+        if (midValue <= value) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+    return high;
+}
+
 export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: HKMapTracesProps) {
     const zoomPosition = useRef({ offsetX: 0, offsetY: 0, scale: 1 });
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
@@ -22,7 +38,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
     // always 0 when traceVisibility !== 'animated' since that avoids running the effect when animating, but traces are not animating
     const animationMsIntoGameForTrace = traceVisibility === 'animated' ? animationMsIntoGame : 0;
 
-    const positionEvents = useMemo(() => {
+    const positionEvents: readonly PlayerPositionEvent[] = useMemo(() => {
         if (!recording) return EMPTY_ARRAY;
 
         return recording.events.filter((event): event is PlayerPositionEvent => {
@@ -40,6 +56,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
     const draw = useEvent(() => {
         if (!canvas.current) return;
 
+        // scaling
         const boundsAspectRatio = mapVisualExtends.size.x / mapVisualExtends.size.y;
         const canvasAspectRatio = canvas.current.width / canvas.current.height;
 
@@ -49,8 +66,6 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
                 : canvas.current.height / mapVisualExtends.size.y;
 
         const scaler = zoomPosition.current.scale * mapDistanceToPixels;
-
-        // const xCenter =
 
         const xOffset =
             canvas.current.width / 2 -
@@ -67,20 +82,55 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
             return v * scaler + yOffset;
         }
 
+        // animation
+        const storeValue = useViewOptionsStore.getState();
+        const minMsIntoGame = storeValue.animationMsIntoGame - storeValue.traceAnimationLengthMs;
+        const maxMsIntoGame = storeValue.animationMsIntoGame;
+
+        const firstIndex =
+            storeValue.traceVisibility === 'animated'
+                ? binarySearchLastIndexBefore(positionEvents, minMsIntoGame, (v) => v.msIntoGame)
+                : 0;
+
         const ctx = canvas.current.getContext('2d');
         if (!ctx) return;
 
         ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
 
-        ctx.fillStyle = 'red';
-        ctx.strokeStyle = 'red';
+        if (traceVisibility === 'hide' || firstIndex === -1) return;
 
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        for (const event of positionEvents) {
-            ctx.lineTo(x(event.mapPosition!.x), y(event.mapPosition!.y));
+        ctx.fillStyle = 'transparent';
+        // using sqrt so the line becomes thicker when zooming in, but not at the same speed
+        // as everything else grows.
+        const baseLineWidth =
+            mapDistanceToPixels * Math.min(zoomPosition.current.scale ** 0.5, zoomPosition.current.scale);
+        ctx.lineWidth = baseLineWidth;
+
+        let i = firstIndex;
+        let event = positionEvents[i];
+        let previousEvent = null;
+        if (!event) return;
+        ctx.strokeStyle = `rgb(225 29 72/1)`; // tailwind rose-600
+
+        while (event && event.msIntoGame <= maxMsIntoGame) {
+            if (previousEvent) {
+                const opacity =
+                    traceVisibility === 'animated'
+                        ? 1 - (maxMsIntoGame - event.msIntoGame) / traceAnimationLengthMs
+                        : 1;
+
+                ctx.globalAlpha = opacity ** 0.5; // fade out slower
+                ctx.beginPath();
+                ctx.moveTo(x(previousEvent.mapPosition!.x), y(previousEvent.mapPosition!.y));
+                ctx.lineTo(x(event.mapPosition!.x), y(event.mapPosition!.y));
+                ctx.stroke();
+                ctx.closePath();
+            }
+
+            i++;
+            previousEvent = event;
+            event = positionEvents[i];
         }
-        ctx.stroke();
     });
 
     useEffect(() => {
@@ -116,6 +166,28 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
             draw();
         };
     }, [draw, zoomHandler]);
+
+    useEffect(() => {
+        return useViewOptionsStore.subscribe(
+            (s) => {
+                switch (s.traceVisibility) {
+                    // different for hide and all, so rendering still triggers when changing visibility
+                    case 'hide':
+                        return -2;
+                    case 'all':
+                        return -1;
+                    case 'animated':
+                        return s.animationMsIntoGame;
+                    default:
+                        assertNever(s.traceVisibility);
+                }
+            },
+            () => {
+                draw();
+            },
+            { fireImmediately: true },
+        );
+    }, [draw, useViewOptionsStore]);
 
     return <canvas ref={canvas} className="pointer-events-none absolute inset-0" />;
 }
