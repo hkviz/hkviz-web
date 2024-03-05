@@ -160,12 +160,12 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
 
             canvasSizeInUnits.current.width = containerRef.current.offsetWidth;
             canvasSizeInUnits.current.height = containerRef.current.offsetHeight;
+            canvasSizeInUnits.current.pixelRatio = window.devicePixelRatio;
 
-            canvas.current.pixelRatio = window.devicePixelRatio;
-            canvas.current.width = containerRef.current.offsetWidth * canvas.current.pixelRatio;
-            canvas.current.height = containerRef.current.offsetHeight * canvas.current.pixelRatio;
+            canvas.current.width = containerRef.current.offsetWidth * canvasSizeInUnits.current.pixelRatio;
+            canvas.current.height = containerRef.current.offsetHeight * canvasSizeInUnits.current.pixelRatio;
             const ctx = canvas.current.getContext('2d')!;
-            ctx.scale(canvas.current.pixelRatio, canvas.current.pixelRatio);
+            ctx.scale(canvasSizeInUnits.current.pixelRatio, canvasSizeInUnits.current.pixelRatio);
 
             // canvas.current
             //     .attr('width', containerRef.current.offsetWidth)
