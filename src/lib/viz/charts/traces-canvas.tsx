@@ -209,7 +209,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
 
     return (
         <>
-            <Image src={knightPinSrc} alt="knight pin" className="hidden" ref={knightPinImage} />
+            <Image src={knightPinSrc} alt="knight pin" className="hidden" ref={knightPinImage} loading="eager" />
             <canvas ref={canvas} className="pointer-events-none absolute inset-0" />
         </>
     );
