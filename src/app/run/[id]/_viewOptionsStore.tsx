@@ -88,7 +88,6 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
 
                     function recalcNextSplit() {
                         set((state) => {
-                            console.log('recalcNextSplit');
                             const { filteredSplits, animationMsIntoGame, nextSplitIndex: oldNextSplitIndex } = state;
                             const nextSplitIndex = filteredSplits?.findIndex(
                                 (split, index) =>

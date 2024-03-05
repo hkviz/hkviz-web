@@ -26,6 +26,7 @@ function Times({ className }: { className?: string }) {
 }
 
 const intervalMs = 1000 / 30;
+// const intervalMs = 1000 / 60;
 
 function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const isPlaying = useViewOptionsStore((s) => s.isPlaying);
