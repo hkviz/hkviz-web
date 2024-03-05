@@ -34,6 +34,7 @@ function binarySearchLastIndexBefore<T>(arr: readonly T[], value: number, getVal
 export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: HKMapTracesProps) {
     const isV1 = useViewOptionsStore((s) => s.isV1());
     const zoomPosition = useRef({ offsetX: 0, offsetY: 0, scale: 1 });
+    const canvasSizeInUnits = useRef({ width: 0, height: 0, pixelRatio: 1 });
     const recording = useViewOptionsStore((s) => s.recording);
     const knightPinImage = useRef<HTMLImageElement>(null);
 
@@ -57,23 +58,23 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
 
         // scaling
         const boundsAspectRatio = mapVisualExtends.size.x / mapVisualExtends.size.y;
-        const canvasAspectRatio = canvas.current.width / canvas.current.height;
+        const canvasAspectRatio = canvasSizeInUnits.current.width / canvasSizeInUnits.current.height;
 
-        const mapDistanceToPixels =
+        const mapDistanceToCanvasUnits =
             boundsAspectRatio > canvasAspectRatio
-                ? canvas.current.width / mapVisualExtends.size.x
-                : canvas.current.height / mapVisualExtends.size.y;
+                ? canvasSizeInUnits.current.width / mapVisualExtends.size.x
+                : canvasSizeInUnits.current.height / mapVisualExtends.size.y;
 
-        const scaler = zoomPosition.current.scale * mapDistanceToPixels;
+        const scaler = zoomPosition.current.scale * mapDistanceToCanvasUnits;
 
         const xOffset =
-            canvas.current.width / 2 -
-            mapVisualExtends.center.x * mapDistanceToPixels +
-            zoomPosition.current.offsetX * mapDistanceToPixels;
+            canvasSizeInUnits.current.width / 2 -
+            mapVisualExtends.center.x * mapDistanceToCanvasUnits +
+            zoomPosition.current.offsetX * mapDistanceToCanvasUnits;
         const yOffset =
-            canvas.current.height / 2 -
-            mapVisualExtends.center.y * mapDistanceToPixels +
-            zoomPosition.current.offsetY * mapDistanceToPixels;
+            canvasSizeInUnits.current.height / 2 -
+            mapVisualExtends.center.y * mapDistanceToCanvasUnits +
+            zoomPosition.current.offsetY * mapDistanceToCanvasUnits;
         function x(v: number) {
             return v * scaler + xOffset;
         }
@@ -96,14 +97,14 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         const ctx = canvas.current.getContext('2d');
         if (!ctx) return;
 
-        ctx.clearRect(0, 0, canvas.current.width, canvas.current.height);
+        ctx.clearRect(0, 0, canvasSizeInUnits.current.width, canvasSizeInUnits.current.height);
 
         if (storeValue.traceVisibility === 'hide' || firstIndex === -1) return;
 
         ctx.fillStyle = 'transparent';
         // using sqrt so the line becomes thicker when zooming in, but not at the same speed
         // as everything else grows.
-        const baseLineWidth = mapDistanceToPixels * zoomPosition.current.scale ** 0.5;
+        const baseLineWidth = mapDistanceToCanvasUnits * zoomPosition.current.scale ** 0.5;
 
         let i = firstIndex;
         let event = positionEvents[i];
@@ -157,8 +158,14 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         function containerSizeChanged() {
             if (!canvas.current || !containerRef.current) return;
 
-            canvas.current.width = containerRef.current.offsetWidth;
-            canvas.current.height = containerRef.current.offsetHeight;
+            canvasSizeInUnits.current.width = containerRef.current.offsetWidth;
+            canvasSizeInUnits.current.height = containerRef.current.offsetHeight;
+
+            canvas.current.pixelRatio = window.devicePixelRatio;
+            canvas.current.width = containerRef.current.offsetWidth * canvas.current.pixelRatio;
+            canvas.current.height = containerRef.current.offsetHeight * canvas.current.pixelRatio;
+            const ctx = canvas.current.getContext('2d')!;
+            ctx.scale(canvas.current.pixelRatio, canvas.current.pixelRatio);
 
             // canvas.current
             //     .attr('width', containerRef.current.offsetWidth)
@@ -212,7 +219,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
     return (
         <>
             <Image src={knightPinSrc} alt="knight pin" className="hidden" ref={knightPinImage} loading="eager" />
-            <canvas ref={canvas} className="pointer-events-none absolute inset-0" />
+            <canvas ref={canvas} className="pointer-events-none absolute inset-0 h-full w-full" />
         </>
     );
 }
