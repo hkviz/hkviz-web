@@ -12,13 +12,17 @@ import { SiDiscord, SiGithub } from '@icons-pack/react-simple-icons';
 import { ChevronRight, Mail } from 'lucide-react';
 import { HKVizText } from './hkviz-text';
 
-export function DiscordDialogButton() {
+export const HOLLOW_KNIGHT_MODDING_DISCORD_URL = 'https://discord.com/servers/hollow-knight-modding-879125729936298015';
+
+export function DiscordDialogButton({ children }: { children: React.ReactNode }) {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-                    <SiDiscord />
-                </Button>
+                {children ?? (
+                    <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
+                        <SiDiscord />
+                    </Button>
+                )}
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
@@ -39,11 +43,7 @@ export function DiscordDialogButton() {
                 </DialogHeader>
                 <div className="flex flex-col justify-center gap-2 p-4 pt-2 align-baseline">
                     <Button asChild className="w-full">
-                        <a
-                            href="https://discord.com/servers/hollow-knight-modding-879125729936298015"
-                            target="_blank"
-                            rel="noreferrer"
-                        >
+                        <a href={HOLLOW_KNIGHT_MODDING_DISCORD_URL} target="_blank" rel="noreferrer">
                             1. Join the Modding Discord Server
                         </a>
                     </Button>

@@ -166,7 +166,7 @@
 
 :root {
     --main-nav-height: max(env(titlebar-area-height, 56px), 40px);
-    --footer-height: 92px;
+    --footer-height: 113px;
 }
 
 .main-nav {

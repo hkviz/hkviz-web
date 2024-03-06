@@ -242,10 +242,17 @@ function aggregateRecording(recording: CombinedRecording) {
             const dead = event.dead;
 
             if (poolDiff != 0) {
+                console.log({
+                    poolDiff,
+                    geoDiff,
+                    dead,
+                    formatTimeMs: formatTimeMs(event.msIntoGame),
+                    currentVirtualScenes: currentVirtualScenes.join(','),
+                });
                 if (dead) {
                     geoDiff += event.geoPool;
                 } else {
-                    geoDiff -= poolDiff;
+                    geoDiff += poolDiff;
                 }
             }
 

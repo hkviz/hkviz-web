@@ -1,13 +1,15 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { DiscordDialogButton, GithubButton, MailButton } from './socials-links';
+import { HKVizText } from './hkviz-text';
 
 export function Footer() {
     return (
         <footer className="flex min-h-[var(--footer-height)] w-full flex-col items-center justify-center bg-background">
             <div className="grid w-full max-w-[900px] grid-cols-1 p-4 sm:grid-cols-[1fr_2fr_1fr]">
                 <div className="text-balance text-center text-sm text-foreground opacity-80 sm:text-left">
-                    Hollow Knight and all related indicia are trademarks of{' '}
+                    <HKVizText /> is not affiliated with Team Cherry. Hollow Knight and all related indicia are
+                    trademarks of{' '}
                     <a className="hover:underline" href="https://teamcherry.com.au" target="_blank" rel="noreferrer">
                         Team Cherry
                     </a>{' '}

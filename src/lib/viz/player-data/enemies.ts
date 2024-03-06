@@ -40,7 +40,7 @@ export const playerDataNameToDefeatedName: Record<
     monomon: { dreamer: 'Monomon', achievementSprite: 'Achievement_icon__0001_teacher' },
     zote: undefined, // covered below { enemy: 'Zote' },
     falseKnight: undefined,
-    falseKnightDream: undefined,
+    falseKnightDream: { enemy: 'FalseKnight', overrideName: 'Failed Champion' },
     mawlek: undefined,
     giantBuzzer: undefined,
     giantFly: undefined,
@@ -51,7 +51,7 @@ export const playerDataNameToDefeatedName: Record<
     hornetOutskirts: { enemy: 'Hornet', overrideName: 'Hornet Sentinel' },
     // dream bosses (some missing?)
     mageLordDream: { enemy: 'MageLord', overrideName: 'Soul Tyrant' },
-    infectedKnightDream: { enemy: 'FalseKnight', overrideName: 'Failed Champion' },
+    infectedKnightDream: { enemy: 'InfectedKnight', overrideName: 'Lost Kin' },
     whiteDefender: undefined, // { enemy: 'DungDefender', overrideName: 'White Defender' },
     greyPrince: undefined, // { enemy: 'Zote', overrideName: 'Grey Prince Zote' },
     // dream warriors

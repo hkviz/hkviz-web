@@ -43,17 +43,18 @@ export default async function Home() {
                     <h2 className="title-text-glow font-serif text-2xl sm:text-3xl">
                         Visual Analytics for HollowKnight
                     </h2>
-                    <p className="pt-4">
+                    <p className="text-pretty pt-4">
                         With <HKVizText /> you can record gameplay analytics of your HollowKnight gameplays, and share
                         them with others.
                     </p>
+
                     {userRuns.length == 0 && (
-                        <div className="flex flex-row items-center justify-center pt-8 transition sm:gap-12">
+                        <div className="flex flex-row items-center justify-center py-8 transition sm:gap-12">
                             <Button
                                 asChild
                                 className="rounded-3xl p-8 text-2xl font-semibold shadow-md hover:shadow-lg"
                             >
-                                <Link href="/getting-started">Getting started</Link>
+                                <Link href="/getting-started">Record gameplay analytics</Link>
                             </Button>
                         </div>
                     )}
@@ -65,6 +66,21 @@ export default async function Home() {
                         <OwnRuns runs={userRuns} />
                     </>
                 )}
+
+                <GradientSeperator />
+                <div className={`max-w-[70ch] text-center`}>
+                    <p className="text-pretty">
+                        <HKVizText /> is developed to allow research on visual analytics and data visualization in
+                        Metroidvania games and is not affiliated with{' '}
+                        <a href="https://www.teamcherry.com.au/" target="_blank" className="hover:underline">
+                            Team Cherry
+                        </a>{' '}
+                        the creators of{' '}
+                        <a href="https://www.hollowknight.com/" target="_blank" className="hover:underline">
+                            Hollow Knight
+                        </a>
+                    </p>
+                </div>
             </div>
         </ContentCenterWrapper>
     );
