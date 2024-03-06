@@ -57,7 +57,7 @@ export function RunOverviewTab({
     }
 
     const fiteredModVersions = useMemo(() => {
-        return recording?.allModVersions?.filter((mod) => mod.name === 'HKViz');
+        return recording?.allModVersions?.filter(() => false); // (mod) => mod.name === 'HKViz');
     }, [recording?.allModVersions]);
 
     const hollowKnightVersions = useMemo(() => {
@@ -122,6 +122,16 @@ export function RunOverviewTab({
                                         </TableCell>
                                     </TableRow>
                                 )}
+                                <TableRow>
+                                    <TableHead>HKViz mod version</TableHead>
+                                    <TableCell>
+                                        {recording?.allHkVizModVersions.map((it) => (
+                                            <span className="block" key={it}>
+                                                {it}
+                                            </span>
+                                        ))}
+                                    </TableCell>
+                                </TableRow>
                                 {fiteredModVersions?.map((mod) => (
                                     <TableRow key={mod.name}>
                                         <TableHead>{mod.name} version</TableHead>

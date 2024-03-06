@@ -10,6 +10,7 @@ import {
     type EventPrefix,
     type PartialEventPrefix,
 } from './event-type-prefixes';
+import { HKVizModVersionEvent } from './events/hkviz-mod-version-event';
 import { ModdingInfoEvent, type ModInfo } from './events/modding-info-event';
 import { PlayerDataEvent } from './events/player-data-event';
 import { PlayerPositionEvent } from './events/player-position-event';
@@ -203,7 +204,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                     break;
                 }
                 case EVENT_PREFIXES.HZVIZ_MOD_VERSION: {
-                    // TODO
+                    events.push(new HKVizModVersionEvent({ timestamp, version: args[0] }));
                     break;
                 }
                 case EVENT_PREFIXES.MODDING_INFO: {

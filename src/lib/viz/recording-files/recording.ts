@@ -3,6 +3,7 @@ import { type HeroStateField } from '../hero-state/hero-states';
 import { type PlayerDataField } from '../player-data/player-data';
 import { type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent } from './events/frame-end-event';
+import { HKVizModVersionEvent } from './events/hkviz-mod-version-event';
 import { type ModInfo, type ModdingInfoEvent } from './events/modding-info-event';
 import { PlayerDataEvent } from './events/player-data-event';
 import { type PlayerPositionEvent } from './events/player-position-event';
@@ -89,7 +90,8 @@ export type RecordingEvent =
     | SpellDownEvent
     | SpellUpEvent
     | FrameEndEvent
-    | ModdingInfoEvent;
+    | ModdingInfoEvent
+    | HKVizModVersionEvent;
 
 export class ParsedRecording {
     constructor(
@@ -124,6 +126,7 @@ export class CombinedRecording extends ParsedRecording {
         parsingErrors: number,
         public readonly lastPlayerDataEventsByField: Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>,
         public readonly allModVersions: ModInfo[],
+        public readonly allHkVizModVersions: string[],
     ) {
         super(events, unknownEvents, parsingErrors, null);
 

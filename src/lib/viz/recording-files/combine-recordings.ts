@@ -3,6 +3,7 @@ import { type HeroStateField } from '../hero-state/hero-states';
 import { getDefaultValue, playerDataFields, type PlayerDataField } from '../player-data/player-data';
 import { isVersionBefore1_4_0, type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent, frameEndEventHeroStateFields, frameEndEventPlayerDataFields } from './events/frame-end-event';
+import { HKVizModVersionEvent } from './events/hkviz-mod-version-event';
 import { ModdingInfoEvent } from './events/modding-info-event';
 import { PlayerDataEvent } from './events/player-data-event';
 import { PlayerPositionEvent } from './events/player-position-event';
@@ -52,6 +53,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     const visitedScenesToCheckIfInPlayerData = [] as { sceneName: string; msIntoGame: number }[];
 
     const allModVersions = new Map<string, Set<string>>();
+    const allHkVizModVersions = new Set<string>();
 
     const hasCreatedFirstEndFrameEvent = false;
 
@@ -109,6 +111,8 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                     mod.versions.forEach((v) => versions.add(v));
                     allModVersions.set(mod.name, versions);
                 }
+            } else if (event instanceof HKVizModVersionEvent) {
+                allHkVizModVersions.add(event.version);
             } else if (event instanceof SceneEvent) {
                 const previousCurrentBossSequenceEvent = getPreviousPlayerData(
                     playerDataFields.byFieldName.currentBossSequence,
@@ -350,5 +354,6 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
         recordings.reduce((sum, recording) => sum + recording.parsingErrors, 0),
         previousPlayerDataEventsByField,
         [...allModVersions.entries()].map(([name, versions]) => ({ name, versions: [...versions.values()].sort() })),
+        [...allHkVizModVersions].sort(),
     );
 }
