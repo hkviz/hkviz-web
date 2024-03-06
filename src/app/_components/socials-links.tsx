@@ -14,7 +14,7 @@ import { HKVizText } from './hkviz-text';
 
 export const HOLLOW_KNIGHT_MODDING_DISCORD_URL = 'https://discord.com/servers/hollow-knight-modding-879125729936298015';
 
-export function DiscordDialogButton({ children }: { children: React.ReactNode }) {
+export function DiscordDialogButton({ children }: { children?: React.ReactNode }) {
     return (
         <Dialog>
             <DialogTrigger asChild>

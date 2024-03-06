@@ -204,7 +204,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                     break;
                 }
                 case EVENT_PREFIXES.HZVIZ_MOD_VERSION: {
-                    events.push(new HKVizModVersionEvent({ timestamp, version: args[0] }));
+                    events.push(new HKVizModVersionEvent({ timestamp, version: args[0] ?? 'Unknown version' }));
                     break;
                 }
                 case EVENT_PREFIXES.MODDING_INFO: {
