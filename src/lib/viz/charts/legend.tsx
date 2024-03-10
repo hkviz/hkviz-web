@@ -119,7 +119,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
     }, [hoveredRoom, roomColoring.var1, tickX, var1SelectedRoomValue]);
 
     return (
-        <Card className="absolute right-4 top-4 px-0 py-2 text-center" hidden={roomColoring.mode === 'area'}>
+        <Card className="text-center" hidden={roomColoring.mode === 'area'}>
             <div className="flex flex-col items-center justify-center gap-1">
                 <div className="flex flex-row items-center justify-center gap-1 px-2">
                     <div className="text-sm">{var1Info?.name ?? ''} </div>

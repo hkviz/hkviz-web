@@ -36,6 +36,7 @@ function makeCustomRoom({ nextToRoom, size, scale }: MakeCustomRoomOptions) {
             | 'gameObjectName'
             | 'mapZone'
             | 'roughSpriteInfo'
+            | 'texts'
         > &
             Partial<CustomRoomInfo>,
     ): CustomRoomInfo {
@@ -111,6 +112,7 @@ function makeCustomRoom({ nextToRoom, size, scale }: MakeCustomRoomOptions) {
 
             origColor: options.origColor ?? nextToRoom.origColor,
             mapZone: options.mapZone ?? nextToRoom.mapZone,
+            texts: options.texts ?? [],
         } as CustomRoomInfo;
     };
 }
@@ -125,7 +127,7 @@ const abysee15 = makeCustomRoom({
     size: { x: 403.0, y: 282.0 },
     scale: 1 / 90,
 })(({ nextToRoom, makeSpriteInfo, makeBounds }) => {
-    const visualBounds = makeBounds({ alignLeft: 0.4, below: 0 });
+    const visualBounds = makeBounds({ alignLeft: 0.4, below: 0.3 });
     const playerPositionBounds = {
         max: {
             ...visualBounds.max,

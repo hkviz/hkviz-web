@@ -8,6 +8,7 @@ import { mapVisualExtends } from '../map-data/map-extends';
 import { mainRoomDataBySceneName, roomData, type RoomInfo } from '../map-data/rooms';
 import { Bounds } from '../types/bounds';
 import { MapLegend } from './legend';
+import { MapOverlayOptions } from './map-overlay-options';
 import { HKMapTraces } from './traces-canvas';
 import { useMapRooms } from './use-map-rooms';
 import { useMapTraces } from './use-traces';
@@ -52,6 +53,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const svg = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined>>();
     const rootG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
+    const areaNameGs = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
 
     const zoom = useRef<d3.ZoomBehavior<SVGSVGElement, unknown>>();
     const tracesZoomHandler = useRef<(event: any) => void>();
@@ -66,6 +68,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
 
     const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
     const unsetHoveredRoom = useViewOptionsStore((s) => s.unsetHoveredRoom);
+    const isV1 = useViewOptionsStore((s) => s.isV1());
 
     useEffect(() => {
         zoom.current = d3
@@ -115,6 +118,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             .enter();
 
         animatedTraceG.current = rootG.current.append('g').attr('data-group', 'traces-animated');
+        areaNameGs.current = rootG.current.append('g').attr('data-group', 'area-names');
         knightPinG.current = rootG.current.append('g').attr('data-group', 'knight-pin-g');
 
         return () => {
@@ -125,6 +129,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     useMapRooms(
         {
             roomDataEnter,
+            areaNameGs,
             onMouseOver: (event: PointerEvent, r) => {
                 setSelectedRoomIfNotPinned(r.sceneName);
                 setHoveredRoom(r.sceneName);
@@ -141,6 +146,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                 }
             },
             useViewOptionsStore,
+            renderAreaNames: !isV1,
         },
         [],
     );
@@ -168,7 +174,14 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     return (
         <div className={cn('relative', className)} ref={containerRef}>
             {false && <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />}
-            <MapLegend useViewOptionsStore={useViewOptionsStore} />
+            <div className="absolute right-4 top-4 px-0 py-2">
+                <MapLegend useViewOptionsStore={useViewOptionsStore} />
+            </div>
+            {!isV1 && (
+                <div className="absolute bottom-4 right-4 px-0 py-2">
+                    <MapOverlayOptions useViewOptionsStore={useViewOptionsStore} />
+                </div>
+            )}
             <HKMapTraces
                 useViewOptionsStore={useViewOptionsStore}
                 containerRef={containerRef}

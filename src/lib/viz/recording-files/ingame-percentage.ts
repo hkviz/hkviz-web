@@ -1,5 +1,5 @@
 // this file is not licensed under the project license
-// it is largely taken from a decompiled HollowKnight code file
+// it is largely taken from a decompiled Hollow Knight code file
 
 import { BossSequenceDoorCompletion } from '../player-data/boss-completion';
 import { type FrameEndEvent } from './events/frame-end-event';

@@ -1,7 +1,7 @@
 {
     "name": "HKViz",
     "short_name": "HKViz",
-    "description": "Visual analytics for HollowKnight",
+    "description": "Visual analytics for Hollow Knight",
     "dir": "auto",
     "lang": "en-US",
     "display": "standalone",
@@ -65,8 +65,5 @@
             "purpose": "any"
         }
     ],
-    "display_override": [
-        "window-controls-overlay",
-        "minimal-ui"
-    ]
+    "display_override": ["window-controls-overlay", "minimal-ui"]
 }

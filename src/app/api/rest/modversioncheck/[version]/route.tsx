@@ -9,7 +9,7 @@ interface ModVersionCheckResponse {
 
 function getVersionCheckResult(version: string): ModVersionCheckResponse {
     const versionTyped = version as HKVizModVersion;
-    const toUpdate = 'To update, close HollowKnight and open a mod manager like Lumafly or Scarab.';
+    const toUpdate = 'To update, close Hollow Knight and open a mod manager like Lumafly or Scarab.';
 
     console.log(version);
     switch (versionTyped) {

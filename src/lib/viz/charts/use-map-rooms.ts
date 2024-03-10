@@ -1,17 +1,21 @@
 import type * as d3 from 'd3';
+import memoize from 'micro-memoize';
 import { useEffect, useId, useRef, type RefObject } from 'react';
 import useEvent from 'react-use-event-hook';
 import { useThemeStore } from '~/app/_components/theme-store';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { ebGaramond } from '~/styles/fonts';
 import { useDependableEffect, useDynamicDependencies } from '../depdendent-effect';
-import { type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
+import { hkLangString } from '../lang';
+import { areaNames, type AreaNameTextData } from '../map-data/area-names';
+import { allRoomDataBySceneName, type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
+import { SCALE_FACTOR } from '../map-data/scaling';
 import { useRoomColoring } from './use-room-coloring';
-
-const EMPTY_ARRAY = [] as const;
 
 export function useMapRooms(
     {
         roomDataEnter,
+        areaNameGs,
         onClick = () => undefined,
         onMouseOver = () => undefined,
         onMouseOut = () => undefined,
@@ -19,8 +23,10 @@ export function useMapRooms(
         alwaysUseAreaAsColor = false,
         highlightSelectedRoom = true,
         spritesWithoutSubSprites = true,
+        renderAreaNames = false,
     }: {
         roomDataEnter: RefObject<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown> | undefined>;
+        areaNameGs?: RefObject<d3.Selection<SVGGElement, unknown, null, undefined> | undefined>;
         onClick?: (event: PointerEvent, r: RoomInfo) => void;
         onMouseOver?: (event: PointerEvent, r: RoomInfo) => void;
         onMouseOut?: (event: PointerEvent, r: RoomInfo) => void;
@@ -28,6 +34,7 @@ export function useMapRooms(
         alwaysUseAreaAsColor?: boolean;
         highlightSelectedRoom?: boolean;
         spritesWithoutSubSprites?: boolean;
+        renderAreaNames?: boolean;
     },
     dependencies: unknown[],
 ) {
@@ -42,6 +49,12 @@ export function useMapRooms(
         | d3.Selection<d3.BaseType, { sprite: RoomInfo['sprites'][number]; room: RoomInfo }, d3.BaseType, unknown>
         | undefined
     >(undefined);
+    const areaNameTexts = useRef<d3.Selection<d3.BaseType, AreaNameTextData, d3.BaseType, unknown> | undefined>(
+        undefined,
+    );
+    const subAreaNamesTexts = useRef<
+        d3.Selection<d3.BaseType, { text: RoomInfo['texts'][number]; room: RoomInfo }, d3.BaseType, unknown> | undefined
+    >(undefined);
 
     const paramDependenciesChanges = useDynamicDependencies(dependencies);
 
@@ -49,6 +62,8 @@ export function useMapRooms(
     const visibleRooms = useViewOptionsStore((state) => state.roomsVisible);
     const hoveredRoom = useViewOptionsStore((state) => state.hoveredRoom);
     const theme = useThemeStore((state) => state.theme);
+    const showAreaNames = useViewOptionsStore((s) => s.showAreaNames);
+    const showSubAreaNames = useViewOptionsStore((s) => s.showSubAreaNames);
 
     // const visibleRooms = useMemo(() => {
     //     if (roomVisibility === 'visited') {
@@ -180,6 +195,48 @@ export function useMapRooms(
             .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
             .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
             .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y);
+
+        const roomTextGs = roomDataEnter.current
+            .append('svg:g')
+            .attr('data-scene-name', (r) => r.sceneName)
+            .attr('data-game-object-name', (r) => r.gameObjectName);
+        subAreaNamesTexts.current = roomTextGs
+            .selectAll(null)
+            .data((room) =>
+                room.texts
+                    .map((text) => ({
+                        room,
+                        text,
+                    }))
+                    .filter((it) => !it.text.objectPath.includes('Next Area')),
+            )
+            .enter()
+            .append('svg:text')
+            .attr('data-scene-name', (d) => d.room.sceneName)
+            .attr('x', (d) => d.text.bounds.center.x)
+            .attr('y', (d) => d.text.bounds.center.y)
+            .attr('text-anchor', 'middle')
+            .attr('dominant-baseline', 'central')
+            .style('font-size', (d) => `${d.text.fontSize * 0.075 * SCALE_FACTOR}px`)
+            .attr('class', `drop-shadow-md pointer-events-none area-name-shadow ${ebGaramond.className}`)
+            .text((d) => hkLangString(d.text.sheetName as any, d.text.convoName) ?? d.text.convoName)
+            .style('transition', 'opacity 0.1s');
+
+        if (areaNameGs?.current) {
+            areaNameTexts.current = areaNameGs?.current
+                .selectAll(null)
+                .data(areaNames)
+                .enter()
+                .append('svg:text')
+                .attr('x', (d) => d.bounds.center.x)
+                .attr('y', (d) => d.bounds.center.y)
+                .attr('text-anchor', 'middle')
+                .attr('dominant-baseline', 'central')
+                .style('font-size', (d) => `${d.fontSize * 0.125 * SCALE_FACTOR}px`)
+                .attr('class', `font-serif drop-shadow-md pointer-events-none area-name-shadow`)
+                .text((d) => hkLangString(d.sheetName as any, d.convoName) ?? d.convoName)
+                .style('transition', 'opacity 0.1s');
+        }
     }, [
         paramDependenciesChanges,
         componentId,
@@ -188,12 +245,34 @@ export function useMapRooms(
         roomDataEnter,
         spritesWithoutSubSprites,
         onMouseOutEvent,
+        areaNameGs,
     ]);
+
+    useEffect(() => {
+        if (areaNameTexts.current) {
+            areaNameTexts.current.style('fill', (d) =>
+                roomColoring.mode === 'area' ? d.color.formatHex() : 'rgba(255,255,255,0.8)',
+            );
+        }
+        if (subAreaNamesTexts.current) {
+            subAreaNamesTexts.current.style('fill', (d) =>
+                roomColoring.mode === 'area' ? d.room.color.formatHex() : 'rgba(255,255,255,0.8)',
+            );
+        }
+    }, [roomColoring]);
 
     useEffect(() => {
         function isRoomVisible(gameObjectName: string) {
             return visibleRooms === 'all' || visibleRooms.includes(gameObjectName);
         }
+        const isZoneVisible = memoize(
+            (zoneName: string) =>
+                visibleRooms === 'all' ||
+                visibleRooms.some((it) => allRoomDataBySceneName.get(it)?.some((it) => it.mapZone === zoneName)),
+            {
+                maxSize: 100,
+            },
+        );
 
         function getVariant(r: RoomInfo): RoomSpriteVariant | 'hidden' {
             const visible = isRoomVisible(r.gameObjectNameNeededInVisited);
@@ -208,9 +287,15 @@ export function useMapRooms(
         }
 
         roomImgs.current?.style('opacity', (d) => (getVariant(d.room) === d.sprite.variant ? '100%' : '0%'));
+        subAreaNamesTexts.current?.style('opacity', (d) =>
+            showSubAreaNames && isRoomVisible(d.room.gameObjectNameNeededInVisited) && renderAreaNames ? '100%' : '0%',
+        );
+        areaNameTexts.current?.style('opacity', (d) =>
+            showAreaNames && isZoneVisible(d.convoName) && renderAreaNames ? '100%' : '0%',
+        );
 
         roomRects.current?.style('pointer-events', (r) => (getVariant(r) !== 'hidden' ? 'all' : 'none'));
-    }, [mainEffectChanges, visibleRooms]);
+    }, [mainEffectChanges, visibleRooms, renderAreaNames, showAreaNames, showSubAreaNames]);
 
     useEffect(() => {
         roomRects.current?.style('fill', (r) => roomColoring.getRoomColor(r));

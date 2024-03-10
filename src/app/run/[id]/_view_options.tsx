@@ -7,6 +7,8 @@ import { LayoutDashboard, Palette, Spline } from 'lucide-react';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+    const isV1 = useViewOptionsStore((s) => s.isV1());
+
     const roomVisibility = useViewOptionsStore((s) => s.roomVisibility);
     const setRoomVisibility = useViewOptionsStore((s) => s.setRoomVisibility);
 
@@ -26,7 +28,7 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                             Visible rooms
                         </Label>
                     </TableHead>
-                    <TableCell>
+                    <TableCell className={isV1 ? '' : 'p-2'}>
                         <Select value={roomVisibility} onValueChange={setRoomVisibility}>
                             <SelectTrigger id="visibleRoomSelectTrigger">
                                 <SelectValue placeholder="Room visibility" />
@@ -46,7 +48,7 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                             Traces
                         </Label>
                     </TableHead>
-                    <TableCell>
+                    <TableCell className={isV1 ? '' : 'p-2'}>
                         <Select value={traceVisibility} onValueChange={setTraceVisibility}>
                             <SelectTrigger id="traceVisibilitySelectTrigger">
                                 <SelectValue placeholder="Trace visibility" />
@@ -62,11 +64,11 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                 <TableRow>
                     <TableHead>
                         <Label className="flex items-center" htmlFor="roomColorSelectTrigger">
-                            <Palette className="mr-2 w-5 h-5" />
+                            <Palette className="mr-2 h-5 w-5" />
                             Room colors
                         </Label>
                     </TableHead>
-                    <TableCell>
+                    <TableCell className={isV1 ? '' : 'p-2'}>
                         <Select value={roomColors} onValueChange={setRoomColors}>
                             <SelectTrigger id="roomColorSelectTrigger">
                                 <SelectValue placeholder="Room colors" />

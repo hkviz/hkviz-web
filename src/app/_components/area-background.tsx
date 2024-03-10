@@ -2,7 +2,7 @@ import { assertNever } from '~/lib/utils/utils';
 import { type MapZone } from '~/lib/viz/types/mapZone';
 
 /*
-Matches can be extracted using c# repl using Explorer Mod for HollowKnight. Using the following script:
+Matches can be extracted using c# repl using Explorer Mod for Hollow Knight. Using the following script:
 
     var x = GameObject.Find("SaveSlots").GetComponent<SaveSlotBackgrounds>().areaBackgrounds;
 

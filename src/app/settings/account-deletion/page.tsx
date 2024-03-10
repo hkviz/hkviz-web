@@ -16,7 +16,7 @@ export default async function Upload() {
     return (
         <ContentCenterWrapper>
             <div className="container flex flex-col items-center justify-center gap-4">
-                {/* <h1 className="text-4xl font-extrabold tracking-tight">Upload a HollowKnight run</h1> */}
+                {/* <h1 className="text-4xl font-extrabold tracking-tight">Upload a Hollow Knight run</h1> */}
                 <AccountDeletionForm removalRequestId={removalRequestId} />
             </div>
         </ContentCenterWrapper>

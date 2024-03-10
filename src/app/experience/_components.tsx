@@ -70,7 +70,7 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
                 <CardContent>
                     <div>
                         <Label className="w-full" htmlFor="playedBefore">
-                            Did you play HollowKnight before?
+                            Did you play Hollow Knight before?
                         </Label>
                         <ToggleGroup
                             type="single"

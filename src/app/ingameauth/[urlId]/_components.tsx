@@ -1,7 +1,7 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardFooter, CardTitle, CardHeader, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { useCallback } from 'react';
 import { api } from '~/trpc/react';
 
@@ -38,7 +38,7 @@ export function IngameAuthCard({ ingameAuthId, userName }: { ingameAuthId: strin
             <Card className="max-w-[500px]">
                 <CardHeader>
                     <CardTitle>Login successful</CardTitle>
-                    <CardDescription>You may now close this page, and switch back to HollowKnight</CardDescription>
+                    <CardDescription>You may now close this page, and switch back to Hollow Knight</CardDescription>
                 </CardHeader>
             </Card>
         );

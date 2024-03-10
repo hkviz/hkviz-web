@@ -64,6 +64,9 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     visibleSplitGroups: recordingSplitGroups.filter((it) => it.defaultShown),
                     filteredSplits: EMPTY_ARRAY as readonly RecordingSplit[],
                     nextSplitIndex: -1,
+
+                    showAreaNames: true,
+                    showSubAreaNames: true,
                 },
                 (set, get) => {
                     function handleAnyAnimationVisiblityChanged() {
@@ -361,6 +364,14 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         return get().displayVersion === 'v1';
                     }
 
+                    function setShowAreaNames(showAreaNames: boolean) {
+                        set({ showAreaNames });
+                    }
+
+                    function setShowSubAreaNames(showSubAreaNames: boolean) {
+                        set({ showSubAreaNames });
+                    }
+
                     return {
                         isV1,
                         setRoomVisibility,
@@ -391,6 +402,8 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         getHoveredOrSelectedRoom,
                         setRoomColorVar1,
                         setRoomColorVar1Curve,
+                        setShowAreaNames,
+                        setShowSubAreaNames,
                     };
                 },
             ),

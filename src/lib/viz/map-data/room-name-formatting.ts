@@ -62,7 +62,8 @@ const predefinedRoomNames = {
     // City of tears
     Ruins2_10b: 'East elevator', // from city of tears
     Ruins2_10: 'Elevator', // from resting grounds
-    Ruins_Elevator: 'Bathhouse Elevator',
+    Ruins_Elevator: 'Pleasure House Elevator',
+    Ruins_Bathhouse: 'Pleasure House',
     Ruins2_06: 'Kings Station Hub',
     Ruins2_08: 'Kings Station Stag',
     Ruins2_07: 'Kings Station Broken Stag',

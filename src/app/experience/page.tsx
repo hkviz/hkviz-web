@@ -8,7 +8,7 @@ import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { HkExperienceClientForm } from './_components';
 
 export const metadata: Metadata = {
-    title: 'Your previous HollowKnight experience - HKViz',
+    title: 'Your previous Hollow Knight experience - HKViz',
     alternates: {
         canonical: '/experience',
     },
@@ -30,7 +30,7 @@ export default async function DataCollectionStudyParticipationPage() {
         <ContentCenterWrapper>
             <Card className="w-full max-w-[70ch]">
                 <CardHeader>
-                    <CardTitle>How much HollowKnight did you play before?</CardTitle>
+                    <CardTitle>How much Hollow Knight did you play before?</CardTitle>
                     <CardDescription>
                         This helps us better understand how the previous experience influences the study results.
                     </CardDescription>

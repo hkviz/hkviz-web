@@ -1,7 +1,7 @@
 import { parseHtmlEntities } from '../utils/html';
 import { raise } from '../utils/utils';
 import { charmsGenerated } from './generated/charms.generated';
-import { uiLangGenerated } from './generated/lang-ui.generated';
+import { uiLangGenerated } from './generated/lang/ui.generated';
 import { type FrameEndEvent } from './recording-files/events/frame-end-event';
 
 const charmsArray = charmsGenerated.map((charm) => {

@@ -41,10 +41,10 @@ export default async function Home() {
                         <HKVizText />
                     </h1>
                     <h2 className="title-text-glow font-serif text-2xl sm:text-3xl">
-                        Visual Analytics for HollowKnight
+                        Visual Analytics for Hollow Knight
                     </h2>
                     <p className="text-pretty pt-4">
-                        With <HKVizText /> you can record gameplay analytics of your HollowKnight gameplays, and share
+                        With <HKVizText /> you can record gameplay analytics of your Hollow Knight gameplays, and share
                         them with others.
                     </p>
 

@@ -2,7 +2,7 @@ import { tailwindChartColors } from '~/app/run/[id]/_extra-charts/colors';
 import { parseHtmlEntities } from '~/lib/utils/html';
 import { assertNever } from '~/lib/utils/utils';
 import { virtualCharms } from '../charms';
-import { enemiesJournalLang } from '../generated/lang-enemies-journal.generated';
+import { enemiesJournalLang } from '../generated/lang/enemies-journal.generated';
 import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../player-data/abilities';
 import {
     enemies,
@@ -19,7 +19,7 @@ import {
     isPlayerDataKilledField,
     playerDataFields,
 } from '../player-data/player-data';
-import { PlayerPositionEvent } from './events/player-position-event';
+import { type PlayerPositionEvent } from './events/player-position-event';
 import { type CombinedRecording } from './recording';
 
 export const recordingSplitGroups = [

@@ -4,10 +4,12 @@ import { roomDataConditionalByGameObjectName } from '../generated/map-rooms-cond
 import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
+import { prepareTextExportData } from './area-names';
 import { customRoomData } from './room-custom';
 import { roomGroupByName } from './room-groups';
 import { formatZoneAndRoomName } from './room-name-formatting';
 import { getSubSprites } from './room-sub-sprites';
+import { scaleBounds } from './scaling';
 
 const roomDataUnscaledWithCustom = [...roomDataUnscaled.rooms, ...customRoomData];
 
@@ -28,34 +30,9 @@ resortings.forEach((resort) => {
 
 // logPossibleConditionals();
 
-/**
- * Everything on the ingame map is scaled up,
- * from the unity units, since those are quite small
- * and break the mouse over / click targets.
- */
-export const SCALE_FACTOR = 10;
-
-export function scale(value: number) {
-    return value * SCALE_FACTOR;
-}
-
 export type RoomData = (typeof roomData)[number];
 export type SpriteVariants = RoomData['spritesByVariant'];
 export type SpriteInfo = SpriteVariants['normal'] | SpriteVariants['rough'];
-
-export function scaleBounds(bounds: { min: { x: number; y: number }; max: { x: number; y: number } }): Bounds {
-    const min = new Vector2(
-        scale(bounds.min.x),
-        scale(-bounds.max.y), // since y is inverted between svg and unity
-    );
-
-    const max = new Vector2(
-        scale(bounds.max.x),
-        scale(-bounds.min.y), // since y is inverted between svg and unity
-    );
-
-    return Bounds.fromMinMax(min, max);
-}
 
 // some rooms have multiple game objects, we need the 'main' one, which is used to determine how to map onto the map.
 // In the game this will always be the one with the shortest name, since additional sprites for a room
@@ -124,6 +101,8 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
     const sprites = Object.values(spritesByVariant).filter((it): it is NonNullable<typeof it> => !!it);
     const allSpritesScaledPositionBounds = Bounds.fromContainingBounds(sprites.map((it) => it.scaledPosition));
 
+    const texts = room.texts.map((text) => prepareTextExportData(text));
+
     const roomCorrected = {
         ...omit(room, ['sprite', 'spriteInfo']),
         ...formatZoneAndRoomName(room.mapZone, room.sceneName),
@@ -135,6 +114,7 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
         color,
         isMainGameObject,
         gameObjectNameNeededInVisited: room.gameObjectName,
+        texts,
     };
 
     const subSprites = getSubSprites(room.spriteInfo.name);

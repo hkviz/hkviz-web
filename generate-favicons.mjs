@@ -11,7 +11,7 @@ const configuration = {
     path: '/favicons',
     appName: 'HKViz',
     appShortName: 'HKViz',
-    appDescription: 'Visual analytics for HollowKnight',
+    appDescription: 'Visual analytics for Hollow Knight',
     background: '#06111d',
     theme_color: '#030712',
 };

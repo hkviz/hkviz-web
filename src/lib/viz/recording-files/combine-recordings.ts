@@ -247,7 +247,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 
                     // starting with 10 seconds of no events, the time is not counted
                     // this might happen, because sb closed their laptop / turned off their pc,
-                    // without closing HollowKnight, and when opening the laptop again, the recorder just continues.
+                    // without closing Hollow Knight, and when opening the laptop again, the recorder just continues.
                     const skipTimeDeltaBecauseOfNoEvents = diff > 10 * 1000;
 
                     // even when we have a position change, if it hasn't changed for 30 seconds, one probably has left

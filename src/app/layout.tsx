@@ -5,7 +5,7 @@ import { cookies, headers } from 'next/headers';
 import { Toaster } from '@/components/ui/toaster';
 import { type Metadata } from 'next';
 import { getServerAuthSession } from '~/server/auth';
-import { cinzel, cinzelDecorative, notoSans } from '~/styles/fonts';
+import { cinzel, cinzelDecorative, ebGaramond, notoSans } from '~/styles/fonts';
 import { TRPCReactProvider } from '~/trpc/react';
 import ClientContext from './_components/context';
 import { Footer } from './_components/footer';
@@ -18,7 +18,7 @@ import { permanentRedirect } from 'next/navigation';
 
 export const metadata: Metadata = {
     title: 'HKViz for Hollow Knight',
-    description: 'Visual Analytics for HollowKnight',
+    description: 'Visual Analytics for Hollow Knight',
     icons: [{ rel: 'icon', url: '/favicon.ico' }],
     metadataBase: new URL('https://www.hkviz.org'),
     openGraph: {
@@ -66,7 +66,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <body
                 className={`${isDarkTheme ? 'dark' : ''} font-sans ${notoSans.variable} ${cinzel.variable} ${
                     cinzelDecorative.variable
-                }`}
+                } ${ebGaramond.variable}`}
             >
                 <ClientContext>
                     <TRPCReactProvider cookies={cookies().toString()}>

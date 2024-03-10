@@ -2,6 +2,7 @@
 // converted to js by replacing:
 //   <entry name="([^"]+)">([^<]*)</entry>
 // with: $1: "$2",
+// \' with \'
 
 export const enemiesJournalLang = {
     DESC_BLOB_FLYER: 'Fat, slow, flying bug. Frequently discharges the acidic liquid stored in its round body.',

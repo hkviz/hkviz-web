@@ -1,13 +1,4 @@
 'use client';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useMutation } from '@tanstack/react-query';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { api } from '~/trpc/react';
 
 export function UploadForm() {
     // TODO bring back
@@ -53,7 +44,7 @@ export function UploadForm() {
     // return (
     //     <Card className="w-[600px] max-w-[calc(100%-2rem)]">
     //         <CardHeader>
-    //             <CardTitle>Upload a HollowKnight run</CardTitle>
+    //             <CardTitle>Upload a Hollow Knight run</CardTitle>
     //             <CardDescription>
     //                 Upload your run to visualize it
     //                 {!!createUploadUrlMutation.error && (
@@ -73,19 +64,19 @@ export function UploadForm() {
     //                             <Input id="run-file" type="file" accept=".hkrun" onChange={handleFileChange} />
     //                         </div>
     //                         <div className="flex flex-col space-y-1.5">
-    //                             <Label htmlFor="framework">How much HollowKnight did you play before this run?</Label>
+    //                             <Label htmlFor="framework">How much Hollow Knight did you play before this run?</Label>
     //                             <Select onValueChange={(e) => setPreviousHollowKnightExperience(e as never)}>
     //                                 <SelectTrigger id="played before">
-    //                                     <SelectValue placeholder="Previous HollowKnight experience" />
+    //                                     <SelectValue placeholder="Previous Hollow Knight experience" />
     //                                 </SelectTrigger>
     //                                 <SelectContent position="popper">
-    //                                     <SelectItem value="none">This is my first time playing HollowKnight</SelectItem>
+    //                                     <SelectItem value="none">This is my first time playing Hollow Knight</SelectItem>
     //                                     <SelectItem value="unfinished">
     //                                         I have never finished the game but I have played it
     //                                     </SelectItem>
     //                                     <SelectItem value="finished">I have finished the game once</SelectItem>
     //                                     <SelectItem value="finishedMany">
-    //                                         I played through HollowKnight a few times
+    //                                         I played through Hollow Knight a few times
     //                                     </SelectItem>
     //                                 </SelectContent>
     //                             </Select>

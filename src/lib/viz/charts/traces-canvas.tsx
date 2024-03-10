@@ -5,7 +5,7 @@ import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { assertNever } from '~/lib/utils/utils';
 import knightPinSrc from '../../../../public/ingame-sprites/Map_Knight_Pin_Compass.png';
 import { mapVisualExtends } from '../map-data/map-extends';
-import { SCALE_FACTOR } from '../map-data/rooms';
+import { scale } from '../map-data/scaling';
 import { PlayerPositionEvent } from '../recording-files/events/player-position-event';
 
 export interface HKMapTracesProps {
@@ -122,7 +122,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
 
                 ctx.globalAlpha = opacity ** 0.5; // fade out slower
                 ctx.beginPath();
-                const isJump = (event.mapDistanceToPrevious ?? 0) > 1 * SCALE_FACTOR;
+                const isJump = (event.mapDistanceToPrevious ?? 0) > scale(1);
                 ctx.setLineDash(isJump ? dashArray : EMPTY_ARRAY);
                 ctx.lineWidth = isJump ? baseLineWidth / 2 : baseLineWidth;
 

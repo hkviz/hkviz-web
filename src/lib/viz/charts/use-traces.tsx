@@ -1,7 +1,7 @@
 import type * as d3 from 'd3';
 import { useEffect, useRef, type RefObject } from 'react';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
-import { SCALE_FACTOR } from '../map-data/rooms';
+import { SCALE_FACTOR, scale } from '../map-data/scaling';
 import { PlayerPositionEvent } from '../recording-files/events/player-position-event';
 
 function chunk<T>(arr: T[], chunkSize: number) {
@@ -19,8 +19,8 @@ interface Props {
     knightPinG: RefObject<d3.Selection<SVGGElement, unknown, null, undefined> | undefined>;
 }
 
-const SCALED_LINE_WIDTH = 0.05 * SCALE_FACTOR;
-const SCALED_KNIGHT_PIN_SIZE = 0.75 * SCALE_FACTOR;
+const SCALED_LINE_WIDTH = scale(0.05);
+const SCALED_KNIGHT_PIN_SIZE = scale(0.75);
 
 export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }: Props) {
     const animatedTraceChunks = useRef<
@@ -155,7 +155,7 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
                 knightPin
                     .current!.attr('x', newestPositionEvent.mapPosition!.x - 0.5 * SCALED_KNIGHT_PIN_SIZE)
                     // slightly off center, since knight pin is visually a bit below center of the sprite
-                    .attr('y', newestPositionEvent.mapPosition!.y - 0.5 * SCALED_KNIGHT_PIN_SIZE - 0.1 * SCALE_FACTOR)
+                    .attr('y', newestPositionEvent.mapPosition!.y - 0.5 * SCALED_KNIGHT_PIN_SIZE - scale(0.1))
                     .attr('visibility', 'visible');
             } else {
                 knightPin.current?.attr('visibility', 'hidden');
