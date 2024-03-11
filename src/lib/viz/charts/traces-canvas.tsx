@@ -216,6 +216,10 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         );
     }, [draw, useViewOptionsStore]);
 
+    useEffect(() => {
+        draw();
+    }, [draw, positionEvents]);
+
     return (
         <>
             <Image src={knightPinSrc} alt="knight pin" className="hidden" ref={knightPinImage} loading="eager" />

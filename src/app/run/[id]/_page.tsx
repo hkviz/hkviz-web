@@ -47,7 +47,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
 
     return (
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
-            <div className="flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:flex-col">
+            <div className="flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:shrink-0 lg:flex-col">
                 <Card className="max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto sm:min-w-min">
                     <CardContent className="px-0 pb-1">
                         <CardHeader className="px-4 py-2">

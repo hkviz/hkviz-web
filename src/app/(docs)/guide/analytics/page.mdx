@@ -1,0 +1,47 @@
+import Link from 'next/link';
+import { HKVizText } from '../../../_components/hkviz-text';
+import { MailLinkUnstyled } from '../../../_components/mail-link';
+import { MdxInnerWrapper } from '../../../_components/mdx-layout';
+import { SpoilerWarningEarlyGame } from '../../_spoiler_warning';
+import { OverviewScreenshot } from './_screenshots';
+
+export const metadata = {
+    title: 'Analytics guide - HKViz',
+    alternates: {
+        canonical: '/guides/visualizations',
+    },
+};
+
+# How to analyze a gameplay with the <HKVizText /> visualizations
+
+Here you learn how to use the different parts of the <HKVizText /> gameplay analytics page.
+
+If you want to learn how to record the analytics while playing <a href="https://hollowknight.com">Hollow Knight</a>
+checkout the <Link href="/guide/install">mod install guide</Link>
+
+<SpoilerWarningEarlyGame />
+
+## Overview
+
+<OverviewScreenshot />
+
+## Map
+
+The map forms the center of the analytics page. It displays (parts of) the game map. By default, the area names are shown, these can be toggled at the bottom right of the map.
+Using the <a href="#timeline">animation timeline</a> you can see the player's movement throughout the gameplay on the map.
+
+Further
+
+### Map options
+
+## Timeline
+
+## Room analytics
+
+## Splits
+
+## Time charts
+
+export default function MDXPage({ children }) {
+    return <MdxInnerWrapper>{children}</MdxInnerWrapper>;
+}
