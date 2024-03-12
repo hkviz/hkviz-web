@@ -2,8 +2,18 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import { HKVizText } from '~/app/_components/hkviz-text';
-import OverviewDarkSrc from './screenshots/overview_dark.png';
-import OverviewLightSrc from './screenshots/overview_light.png';
+
+import overviewDarkSrc from './screenshots/overview_dark.png';
+import overviewLightSrc from './screenshots/overview_light.png';
+
+import tracesAllDarkSrc from './screenshots/traces_all_dark.png';
+import tracesAllLightSrc from './screenshots/traces_all_light.png';
+
+import tracesAnimatedDarkSrc from './screenshots/traces_animated_dark.png';
+import tracesAnimatedLightSrc from './screenshots/traces_animated_light.png';
+
+import tracesNoneDarkSrc from './screenshots/traces_none_dark.png';
+import tracesNoneLightSrc from './screenshots/traces_none_light.png';
 
 type ThemedImageProps = {
     srcLight: React.ComponentProps<typeof Image>['src'];
@@ -21,11 +31,11 @@ function ThemedImage({ srcLight, srcDark, className, alt }: ThemedImageProps) {
     );
 }
 
-function ImageContainer({ children, caption }: { children: React.ReactNode; caption: React.ReactNode }) {
+function ImageContainer({ children, caption }: { children: React.ReactNode; caption?: React.ReactNode }) {
     return (
         <div>
             <div className="group relative overflow-hidden rounded-md">{children}</div>
-            <ImageCaption>{caption}</ImageCaption>
+            {caption && <ImageCaption>{caption}</ImageCaption>}
         </div>
     );
 }
@@ -58,8 +68,8 @@ export function OverviewScreenshot() {
             }
         >
             <ThemedImage
-                srcLight={OverviewLightSrc}
-                srcDark={OverviewDarkSrc}
+                srcLight={overviewLightSrc}
+                srcDark={overviewDarkSrc}
                 className="m-0"
                 alt="HKViz gameplay analytics page"
             />
@@ -81,6 +91,45 @@ export function OverviewScreenshot() {
             {/* <ImageArea className="left-[82%] top-[9%] h-[8%] w-[10%]" href="#time-charts">
                 Time charts
             </ImageArea> */}
+        </ImageContainer>
+    );
+}
+
+export function TracesAllScreenshot() {
+    return (
+        <ImageContainer>
+            <ThemedImage
+                srcLight={tracesAllLightSrc}
+                srcDark={tracesAllDarkSrc}
+                className="m-0"
+                alt="Traces on game map showing all player movement within a gameplay in the Forgotten Crossroads area"
+            />
+        </ImageContainer>
+    );
+}
+
+export function TracesAnimatedScreenshot() {
+    return (
+        <ImageContainer>
+            <ThemedImage
+                srcLight={tracesAnimatedLightSrc}
+                srcDark={tracesAnimatedDarkSrc}
+                className="m-0"
+                alt="Traces on game map showing player movement of 4 minutes. The traces fade out, for positions further in the past in the Forgotten Crossroads area"
+            />
+        </ImageContainer>
+    );
+}
+
+export function TracesNoneScreenshot() {
+    return (
+        <ImageContainer>
+            <ThemedImage
+                srcLight={tracesNoneLightSrc}
+                srcDark={tracesNoneDarkSrc}
+                className="m-0"
+                alt="A game map showing rooms of Forgotten Crossroads with no traces on top, displaying player movement."
+            />
         </ImageContainer>
     );
 }

@@ -11,7 +11,7 @@ function getVersionCheckResult(version: string): ModVersionCheckResponse {
     const versionTyped = version as HKVizModVersion;
     const toUpdate = 'To update, close Hollow Knight and open a mod manager like Lumafly or Scarab.';
 
-    console.log(version);
+    // console.log(version);
     switch (versionTyped) {
         case '1.5.1.0':
         case '1.5.0.0':

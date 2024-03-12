@@ -3,7 +3,14 @@ import { HKVizText } from '../../../_components/hkviz-text';
 import { MailLinkUnstyled } from '../../../_components/mail-link';
 import { MdxInnerWrapper } from '../../../_components/mdx-layout';
 import { SpoilerWarningEarlyGame } from '../../_spoiler_warning';
-import { OverviewScreenshot } from './_screenshots';
+import {
+    OverviewScreenshot,
+    TracesAnimatedScreenshot,
+    TracesAllScreenshot,
+    TracesNoneScreenshot,
+} from './_screenshots';
+import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
+import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
 
 export const metadata = {
     title: 'Analytics guide - HKViz',
@@ -27,12 +34,62 @@ checkout the <Link href="/guide/install">mod install guide</Link>
 
 ## Map
 
-The map forms the center of the analytics page. It displays (parts of) the game map. By default, the area names are shown, these can be toggled at the bottom right of the map.
-Using the <a href="#timeline">animation timeline</a> you can see the player's movement throughout the gameplay on the map.
+The map forms the center of the analytics page. It displays the game map.
 
-Further
+The map is able to display player movement as traces, show which rooms are visited and allows displaying other information by recoloring the map itself.
 
 ### Map options
+
+#### Room visibility
+
+The room visibility option within the map options controlls which rooms are shown on the map.
+You can choose between three options:
+
+<ReflowRow>
+    <ReflowCell>
+        <ReflowCellHeader>Animated</ReflowCellHeader>
+        <RoomVisibilityAnimatedVideo />
+        Rooms appear once they are visited in the gameplay, based on the time selected in the timeline. 
+        
+        Great to see the progression of the gameplay.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>Visited</ReflowCellHeader>
+        <RoomVisibilityVisitedVideo />
+        All rooms visited at any time in the gameplay are shown. Not impacted by the timeline. 
+        
+        Useful to <a href="#todo">analyze variables by recoloring the map</a>.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>All</ReflowCellHeader>
+        <RoomVisibilityAllVideo />
+        Even rooms not visitied in the gameplay at all are shown. 
+        
+        This can allow to find unvisited rooms, which have been missed in a gameplay.
+    </ReflowCell>
+
+</ReflowRow>
+
+#### Player movement and traces
+
+<ReflowRow>
+    <ReflowCell>
+        <ReflowCellHeader>Animated</ReflowCellHeader>
+        <TracesAnimatedScreenshot />
+        Shows the last 4 minutes of player's movement as a trace. Positions further in the past are faded out.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>All</ReflowCellHeader>
+        <TracesAllScreenshot />
+        Shows the player's movement of the complete gameplay at once.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>Hidden</ReflowCellHeader>
+        <TracesNoneScreenshot />
+        Hides the trace. This can be useful, if you want to <a href="#todo">look at a variable on the map</a>, without the trace covering it.
+    </ReflowCell>
+
+</ReflowRow>
 
 ## Timeline
 

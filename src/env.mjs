@@ -34,6 +34,7 @@ export const env = createEnv({
         R2_BUCKET_NAME: z.string(),
         R2_ACCOUNT_ID: z.string(),
         R2_ENDPOINT: z.string(),
+        R2_PUBLIC_BUCKET_URL: z.string(),
 
         // mails
         EMAIL_SERVER_HOST: z.string(),
@@ -79,6 +80,7 @@ export const env = createEnv({
         R2_BUCKET_NAME: process.env.R2_BUCKET_NAME,
         R2_ACCOUNT_ID: process.env.R2_ACCOUNT_ID,
         R2_ENDPOINT: process.env.R2_ENDPOINT,
+        R2_PUBLIC_BUCKET_URL: process.env.R2_PUBLIC_BUCKET_URL,
 
         // mails
         EMAIL_SERVER_HOST: process.env.EMAIL_SERVER_HOST,

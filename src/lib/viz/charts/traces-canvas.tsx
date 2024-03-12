@@ -113,7 +113,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         ctx.strokeStyle = `rgb(225 29 72/1)`; // tailwind rose-600
         const dashArray = [baseLineWidth * 1, baseLineWidth * 2];
 
-        while (event && event.msIntoGame <= maxMsIntoGame) {
+        while (event && (storeValue.traceVisibility === 'all' || event.msIntoGame <= maxMsIntoGame)) {
             if (previousEvent) {
                 const opacity =
                     storeValue.traceVisibility === 'animated'

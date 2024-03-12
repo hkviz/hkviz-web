@@ -11,7 +11,7 @@ import {
     type RecordingSplitGroup,
 } from '~/lib/viz/recording-files/recording-splits';
 import { type AggregatedRunData, type AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
-import { RoomColorCurve, RoomColorCurveExponential, RoomColorCurveLinear } from './_room-color-curve';
+import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from './_room-color-curve';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
@@ -27,7 +27,7 @@ export function displayVersion(value: string | null): DisplayVersion {
 const EMPTY_ARRAY = [] as const;
 
 function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
-    console.log(searchParams.get('v'), searchParams);
+    // console.log(searchParams.get('v'), searchParams);
     return create(
         subscribeWithSelector(
             combine(
