@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { DiscordDialogButton, GithubButton, MailButton } from './socials-links';
 import { HKVizText } from './hkviz-text';
+import { DiscordDialogButton, GithubButton, MailButton } from './socials-links';
 
 export function Footer() {
     return (
@@ -17,7 +17,7 @@ export function Footer() {
                 </div>
                 <div className="flex w-full flex-row flex-wrap items-center justify-center">
                     <Button asChild variant="link" className="text-foreground opacity-80">
-                        <Link href="/getting-started">Getting started</Link>
+                        <Link href="/guide/install">Getting started</Link>
                     </Button>
                     <Button asChild variant="link" className="text-foreground opacity-80">
                         <Link href="/credits">Credits</Link>

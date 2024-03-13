@@ -25,6 +25,10 @@ export function r2RunPartFileKey(fileId: string): R2Key {
     return `runpart/${fileId}` as R2Key;
 }
 
+export function r2VideoFileKey(fileId: string): R2Key {
+    return `video/${fileId}` as R2Key;
+}
+
 export async function r2FileHead(key: R2Key): Promise<HeadObjectCommandOutput | null> {
     return r2
         .send(
@@ -88,4 +92,8 @@ export async function r2DownloadToFile(key: R2Key, location: string) {
 
     if (!Body) throw new Error('No body');
     await fs.writeFile(location, Body.transformToWebStream() as any);
+}
+
+export function r2GetPublicContentUrl(key: R2Key) {
+    return `${env.R2_PUBLIC_BUCKET_URL}${key}`;
 }

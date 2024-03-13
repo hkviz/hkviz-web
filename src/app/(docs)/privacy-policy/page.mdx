@@ -1,5 +1,5 @@
-import { MailLinkUnstyled } from '../_components/mail-link';
-import { MdxLayout } from '../_components/mdx-layout';
+import { MailLinkUnstyled } from '../../_components/mail-link';
+import { MdxInnerWrapper } from '../../_components/mdx-layout';
 
 export const metadata = {
     title: 'Privacy policy - HKViz',
@@ -153,5 +153,5 @@ Email us at: <MailLinkUnstyled />
 Should you wish to report a complaint or if you feel that we have not addressed your concern in a satisfactory manner, you may contact the Austrian Data Protection Authority (Datenschutzbehörde) at [www.dsb.gv.at](https://www.dsb.gv.at/).
 
 export default function MDXPage({ children }) {
-    return <MdxLayout>{children}</MdxLayout>;
+    return <MdxInnerWrapper>{children}</MdxInnerWrapper>;
 }

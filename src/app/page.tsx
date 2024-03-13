@@ -54,7 +54,7 @@ export default async function Home() {
                                 asChild
                                 className="rounded-3xl p-8 text-2xl font-semibold shadow-md hover:shadow-lg"
                             >
-                                <Link href="/getting-started">Record gameplay analytics</Link>
+                                <Link href="/guide/install">Record gameplay analytics</Link>
                             </Button>
                         </div>
                     )}

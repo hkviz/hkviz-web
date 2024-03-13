@@ -10,7 +10,7 @@ import { hkLangString } from '../lang';
 import { areaNames, type AreaNameTextData } from '../map-data/area-names';
 import { allRoomDataBySceneName, type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
 import { SCALE_FACTOR } from '../map-data/scaling';
-import { useRoomColoring } from './use-room-coloring';
+import { darkenRoomColorForLightTheme, useRoomColoring } from './use-room-coloring';
 
 export function useMapRooms(
     {
@@ -233,7 +233,7 @@ export function useMapRooms(
                 .attr('text-anchor', 'middle')
                 .attr('dominant-baseline', 'central')
                 .style('font-size', (d) => `${d.fontSize * 0.125 * SCALE_FACTOR}px`)
-                .attr('class', `font-serif drop-shadow-md pointer-events-none area-name-shadow`)
+                .attr('class', `font-serif pointer-events-none area-name-shadow`)
                 .text((d) => hkLangString(d.sheetName as any, d.convoName) ?? d.convoName)
                 .style('transition', 'opacity 0.1s');
         }
@@ -250,16 +250,26 @@ export function useMapRooms(
 
     useEffect(() => {
         if (areaNameTexts.current) {
-            areaNameTexts.current.style('fill', (d) =>
-                roomColoring.mode === 'area' ? d.color.formatHex() : 'rgba(255,255,255,0.8)',
-            );
+            areaNameTexts.current.style('fill', (d) => {
+                if (theme === 'light') {
+                    return roomColoring.mode === 'area' ? darkenRoomColorForLightTheme(d.color) : 'rgba(0,0,0,0.8)';
+                } else {
+                    return roomColoring.mode === 'area' ? d.color.formatHex() : 'rgba(255,255,255,0.8)';
+                }
+            });
         }
         if (subAreaNamesTexts.current) {
-            subAreaNamesTexts.current.style('fill', (d) =>
-                roomColoring.mode === 'area' ? d.room.color.formatHex() : 'rgba(255,255,255,0.8)',
-            );
+            subAreaNamesTexts.current.style('fill', (d) => {
+                if (theme === 'light') {
+                    return roomColoring.mode === 'area'
+                        ? darkenRoomColorForLightTheme(d.room.color)
+                        : 'rgba(0,0,0,0.8)';
+                } else {
+                    return roomColoring.mode === 'area' ? d.room.color.formatHex() : 'rgba(255,255,255,0.8)';
+                }
+            });
         }
-    }, [roomColoring]);
+    }, [roomColoring, theme]);
 
     useEffect(() => {
         function isRoomVisible(gameObjectName: string) {
