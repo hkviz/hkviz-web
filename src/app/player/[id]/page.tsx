@@ -22,7 +22,7 @@ export default async function PublicPlayerPage({ params }: { params: Params }) {
         },
     });
 
-    const userName = userRuns[0]?.user?.name ?? 'Unnamed user';
+    const userName = userRuns[0]?.user?.name ?? 'Unnamed player';
 
     return (
         <ContentCenterWrapper>

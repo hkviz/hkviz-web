@@ -151,7 +151,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
                             .map((kv) => kv[0].slice(4)) as TagCode[],
                         user: {
                             id: isResearchView ? '' : run.user.id,
-                            name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed user',
+                            name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed player',
                         },
                         startedAt: gameState?.startedAt ?? createdAt,
                         lastPlayedAt: gameState?.endedAt ?? updatedAt,

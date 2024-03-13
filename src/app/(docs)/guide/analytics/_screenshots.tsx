@@ -32,6 +32,18 @@ import colorModeExpDarkTableSrc from './screenshots/room_colors_exp3_dark_table.
 import colorModeExpLightSrc from './screenshots/room_colors_exp3_light.png';
 import colorModeExpLightTableSrc from './screenshots/room_colors_exp3_light_table.png';
 
+import godhomeDarkSrc from './screenshots/godhome_dark.png';
+import godhomeLightSrc from './screenshots/godhome_light.png';
+
+import colosseumDarkSrc from './screenshots/colluseum_dark.png';
+import colosseumLightSrc from './screenshots/colluseum_light.png';
+
+import timelineDarkSrc from './screenshots/timeline_dark.png';
+import timelineLightSrc from './screenshots/timeline_light.png';
+
+import splitsDarkSrc from './screenshots/splits_dark.png';
+import splitsLightSrc from './screenshots/splits_light.png';
+
 export function OverviewScreenshot() {
     return (
         <ImageContainer
@@ -82,7 +94,7 @@ export function OverviewScreenshot() {
 
 export function TracesAllScreenshot() {
     return (
-        <ImageContainer>
+        <ImageContainer className="max-w-80">
             <ThemedImage
                 srcLight={tracesAllLightSrc}
                 srcDark={tracesAllDarkSrc}
@@ -95,7 +107,7 @@ export function TracesAllScreenshot() {
 
 export function TracesAnimatedScreenshot() {
     return (
-        <ImageContainer>
+        <ImageContainer className="max-w-80">
             <ThemedImage
                 srcLight={tracesAnimatedLightSrc}
                 srcDark={tracesAnimatedDarkSrc}
@@ -108,7 +120,7 @@ export function TracesAnimatedScreenshot() {
 
 export function TracesNoneScreenshot() {
     return (
-        <ImageContainer>
+        <ImageContainer className="max-w-80">
             <ThemedImage
                 srcLight={tracesNoneLightSrc}
                 srcDark={tracesNoneDarkSrc}
@@ -141,7 +153,7 @@ export function RoomAnalyticsScreenshot() {
 
 export function ColorModeAreaScreenshot() {
     return (
-        <ImageContainer>
+        <ImageContainer className="max-w-80">
             <ThemedImage
                 srcLight={colorModeAreaLightSrc}
                 srcDark={colorModeAreaDarkSrc}
@@ -154,7 +166,7 @@ export function ColorModeAreaScreenshot() {
 
 export function ColorModeAreaTableScreenshot() {
     return (
-        <ImageContainer className="mb-2">
+        <ImageContainer className="mb-2 max-w-80">
             <ThemedImage
                 srcLight={colorModeAreaLightTableSrc}
                 srcDark={colorModeAreaDarkTableSrc}
@@ -167,7 +179,7 @@ export function ColorModeAreaTableScreenshot() {
 
 export function ColorModeLinearScreenshot() {
     return (
-        <ImageContainer>
+        <ImageContainer className="max-w-80">
             <ThemedImage
                 srcLight={colorModeLinearLightSrc}
                 srcDark={colorModeLinearDarkSrc}
@@ -180,7 +192,7 @@ export function ColorModeLinearScreenshot() {
 
 export function ColorModeLinearTableScreenshot() {
     return (
-        <ImageContainer className="mb-2">
+        <ImageContainer className="mb-2 max-w-80">
             <ThemedImage
                 srcLight={colorModeLinearLightTableSrc}
                 srcDark={colorModeLinearDarkTableSrc}
@@ -193,7 +205,7 @@ export function ColorModeLinearTableScreenshot() {
 
 export function ColorModeExpScreenshot() {
     return (
-        <ImageContainer>
+        <ImageContainer className="max-w-80">
             <ThemedImage
                 srcLight={colorModeExpLightSrc}
                 srcDark={colorModeExpDarkSrc}
@@ -206,12 +218,64 @@ export function ColorModeExpScreenshot() {
 
 export function ColorModeExpTableScreenshot() {
     return (
-        <ImageContainer className="mb-2">
+        <ImageContainer className="mb-2 max-w-80">
             <ThemedImage
                 srcLight={colorModeExpLightTableSrc}
                 srcDark={colorModeExpDarkTableSrc}
                 className="m-0"
                 alt="Variable table row showing exponential color scale selected"
+            />
+        </ImageContainer>
+    );
+}
+
+export function GodhomeScreenshot() {
+    return (
+        <ImageContainer caption="Godhome pantheons displayed on the map" className="max-w-80">
+            <ThemedImage
+                srcLight={godhomeLightSrc}
+                srcDark={godhomeDarkSrc}
+                className="m-0"
+                alt="A map showing the Godhome area of the game, with colored pantheon doors."
+            />
+        </ImageContainer>
+    );
+}
+
+export function ColosseumScreenshot() {
+    return (
+        <ImageContainer caption="Colosseum trials displayed on the map" className="max-w-80">
+            <ThemedImage
+                srcLight={colosseumLightSrc}
+                srcDark={colosseumDarkSrc}
+                className="m-0"
+                alt="A map showing the trials in the pantheons as separate signs on the game map"
+            />
+        </ImageContainer>
+    );
+}
+
+export function TimelineScreenshot() {
+    return (
+        <ImageContainer caption={<>Timeline</>} className="max-w-80">
+            <ThemedImage
+                srcLight={timelineLightSrc}
+                srcDark={timelineDarkSrc}
+                className="m-0"
+                alt="a timeline similar to one on a video player"
+            />
+        </ImageContainer>
+    );
+}
+
+export function SplitsScreenshot() {
+    return (
+        <ImageContainer caption={<>Splits</>} className="max-w-48 md:float-right md:ml-4">
+            <ThemedImage
+                srcLight={splitsLightSrc}
+                srcDark={splitsDarkSrc}
+                className="m-0"
+                alt="Splits view, showing charm pickups, item pickups, boss defeats"
             />
         </ImageContainer>
     );

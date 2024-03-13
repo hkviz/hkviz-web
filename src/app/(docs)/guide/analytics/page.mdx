@@ -15,10 +15,16 @@ import {
     ColorModeLinearTableScreenshot,
     ColorModeExpScreenshot,
     ColorModeExpTableScreenshot,
+    ColosseumScreenshot,
+    GodhomeScreenshot,
+    TimelineScreenshot,
+    SplitsScreenshot,
 } from './_screenshots';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
 import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
 import { Mouse, Palette, Spline, LayoutDashboard, Pin } from 'lucide-react';
+import { SpoilerWrapper } from './_spoiler-wrapper';
+import { SplitsList } from './_splits-list';
 
 export const metadata = {
     title: 'Analytics guide - HKViz',
@@ -30,6 +36,7 @@ export const metadata = {
 # How to analyze a gameplay with the <HKVizText /> visualizations
 
 Here you learn how to use the different parts of the <HKVizText /> gameplay analytics page.
+It is accessible by clicking on one of your gameplays on the <Link href="/">start page</Link> or by viewing a gameplay from the <Link href="/run">public gameplays page</Link>.
 
 If you want to learn how to record the analytics while playing <a href="https://hollowknight.com">Hollow Knight</a>
 checkout the <Link href="/guide/install">mod install guide</Link>
@@ -106,7 +113,7 @@ You can choose between three options:
 <RoomAnalyticsScreenshot />
 
 By hovering over a room on the map, you can see the values of the variables for that room. Such as the time spent in the
-room, the number of deaths.
+room and the number of deaths. Additionally selected room and area is highlighted below the <a href="#timeline">timeline</a>.
 
 To stop the shown room from changing, you can pin it with the <Pin className="w-4 h-4 inline-block" aria-label="Pin" />-button in the room analytics panel or by clicking a room on the map.
 
@@ -141,17 +148,58 @@ A single click will use a linear color scale, a second click will switch to an e
 
 Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button.
 
+### Colluseum, Pantehons and other special rooms
+
+<SpoilerWrapper title="Show late game spoilers">
+    The ingame map has been extended to include some areas not displayed on the map in the game.
+    Some buildings and doors are displayed at a single spot on the map, but some still contain information about each
+    room inside.
+
+    **The Colosseum of Fools**:
+
+    The Colosseum displays a sign for each trial, allowing to see room analytics for each trial.
+    Such as how often one has died in each trial.
+
+    <ColosseumScreenshot />
+
+
+    **Godhome**:
+
+    The Godhome displays a information for each pantheon at its door.
+    By selecting a pantehon, one can also select a boss, to look just at the room analytics for that fight.
+
+     <GodhomeScreenshot />
+
+     Similarly buildings like the Black Egg Temple and Bretta's House are displayed at a single spot on the map, but contain information about each room inside.
+
+</SpoilerWrapper>
+
 ## Splits
 
-Coming soon
+<SplitsScreenshot />
+
+The splits view provides a quick overview of what happened in a gameplay.
+It shows the times of events of the following types:
+
+<SplitsList />
+
+By toggling the checkboxes corresponding to the event types, the splits can be filtered to only show the events of interest.
+
+Hovering over a split will highlight the room of the event on the <a href="#map">map</a>, and display a marker on the <a href="#timeline">timeline</a>.
 
 ## Time charts
 
-Coming soon
+Hovering over a chart will show a marker on the <a href="#timeline">timeline</a>, the current room of the hovered time is highlighted on the <a href="#map">map</a>.
 
 ## Timeline
 
-Coming soon
+The timeline allows scrolling through a gameplay, to see the player location and room visibility at different points in time.
+On the right of the timeline the speed of the animation can be adjusted.
+
+<TimelineScreenshot />
+
+At the bottom of the timeline, the color of visitied rooms is displayed. By <a href="#map-coloring-by-variables">selecting a room on the map</a>, the color codes of the selected room and area are enlarged.
+This can make it easier to find the time a specific area was visited.
 
 export default function MDXPage({ children }) {
     return <MdxInnerWrapper>{children}</MdxInnerWrapper>;

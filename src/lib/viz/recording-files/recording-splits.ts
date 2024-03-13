@@ -26,32 +26,37 @@ export const recordingSplitGroups = [
     {
         name: 'dreamer',
         displayName: 'Dreamers',
+        description: 'Dreamer seals broken',
         color: tailwindChartColors.sky,
         defaultShown: true,
     },
     {
         name: 'boss',
         displayName: 'Bosses',
+        description: 'Defeated bosses',
         color: tailwindChartColors.rose,
         defaultShown: true,
     },
     {
         name: 'abilities',
         displayName: 'Abilities',
+        description: 'Obtained abilities',
         color: tailwindChartColors.green,
         defaultShown: true,
     },
     {
         name: 'items',
         displayName: 'Items',
+        description: 'Collected items',
         color: tailwindChartColors.indigo,
-        defaultShown: false,
+        defaultShown: true,
     },
     {
         name: 'charmCollection',
         displayName: 'Charm pick ups',
+        description: 'Collected charms and charm upgrades',
         color: tailwindChartColors.amberLight,
-        defaultShown: false,
+        defaultShown: true,
     },
 ] as const;
 
