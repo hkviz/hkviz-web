@@ -8,9 +8,17 @@ import {
     TracesAnimatedScreenshot,
     TracesAllScreenshot,
     TracesNoneScreenshot,
+    RoomAnalyticsScreenshot,
+    ColorModeAreaScreenshot,
+    ColorModeAreaTableScreenshot,
+    ColorModeLinearScreenshot,
+    ColorModeLinearTableScreenshot,
+    ColorModeExpScreenshot,
+    ColorModeExpTableScreenshot,
 } from './_screenshots';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
 import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
+import { Mouse, Palette, Spline, LayoutDashboard, Pin } from 'lucide-react';
 
 export const metadata = {
     title: 'Analytics guide - HKViz',
@@ -30,7 +38,11 @@ checkout the <Link href="/guide/install">mod install guide</Link>
 
 ## Overview
 
+<Mouse className="inline-block h-4 w-4" /> Click on the section you want to know more about:
+
 <OverviewScreenshot />
+
+## Contents
 
 ## Map
 
@@ -38,39 +50,7 @@ The map forms the center of the analytics page. It displays the game map.
 
 The map is able to display player movement as traces, show which rooms are visited and allows displaying other information by recoloring the map itself.
 
-### Map options
-
-#### Room visibility
-
-The room visibility option within the map options controlls which rooms are shown on the map.
-You can choose between three options:
-
-<ReflowRow>
-    <ReflowCell>
-        <ReflowCellHeader>Animated</ReflowCellHeader>
-        <RoomVisibilityAnimatedVideo />
-        Rooms appear once they are visited in the gameplay, based on the time selected in the timeline. 
-        
-        Great to see the progression of the gameplay.
-    </ReflowCell>
-    <ReflowCell>
-        <ReflowCellHeader>Visited</ReflowCellHeader>
-        <RoomVisibilityVisitedVideo />
-        All rooms visited at any time in the gameplay are shown. Not impacted by the timeline. 
-        
-        Useful to <a href="#todo">analyze variables by recoloring the map</a>.
-    </ReflowCell>
-    <ReflowCell>
-        <ReflowCellHeader>All</ReflowCellHeader>
-        <RoomVisibilityAllVideo />
-        Even rooms not visitied in the gameplay at all are shown. 
-        
-        This can allow to find unvisited rooms, which have been missed in a gameplay.
-    </ReflowCell>
-
-</ReflowRow>
-
-#### Player movement and traces
+### <Spline className="w-4 h-4 mr-2 inline-block"/>Player movement and traces
 
 <ReflowRow>
     <ReflowCell>
@@ -86,18 +66,92 @@ You can choose between three options:
     <ReflowCell>
         <ReflowCellHeader>Hidden</ReflowCellHeader>
         <TracesNoneScreenshot />
-        Hides the trace. This can be useful, if you want to <a href="#todo">look at a variable on the map</a>, without the trace covering it.
+        Hides the trace. This can be useful, if you want to <a href="#map-coloring-by-variables">look at a variable on the map</a>, without the trace covering it.
     </ReflowCell>
 
 </ReflowRow>
 
-## Timeline
+### <LayoutDashboard className="w-4 h-4 mr-2 inline-block"/>Room visibility
 
-## Room analytics
+The room visibility option within the map options controlls which rooms are shown on the map.
+You can choose between three options:
+
+<ReflowRow>
+    <ReflowCell>
+        <ReflowCellHeader>Animated</ReflowCellHeader>
+        <RoomVisibilityAnimatedVideo />
+        Rooms appear once they are visited in the gameplay, based on the time selected in the <a href="#timeline">timeline</a>. 
+        
+        Great to see the progression of the gameplay.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>Visited</ReflowCellHeader>
+        <RoomVisibilityVisitedVideo />
+        All rooms visited at any time in the gameplay are shown. Not impacted by the <a href="#timeline">timeline</a>. 
+        
+        Useful to <a href="#map-coloring-by-variables">analyze variables by recoloring the map</a>.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>All</ReflowCellHeader>
+        <RoomVisibilityAllVideo />
+        Even rooms not visitied in the gameplay at all are shown. 
+        
+        This can allow to find unvisited rooms, which have been missed in a gameplay.
+    </ReflowCell>
+
+</ReflowRow>
+
+### <Palette className="w-5 h-5 mr-2 inline-block"/>Map coloring by variables
+
+<RoomAnalyticsScreenshot />
+
+By hovering over a room on the map, you can see the values of the variables for that room. Such as the time spent in the
+room, the number of deaths.
+
+To stop the shown room from changing, you can pin it with the <Pin className="w-4 h-4 inline-block" aria-label="Pin" />-button in the room analytics panel or by clicking a room on the map.
+
+By clicking on the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button, you can choose a variable to color the map by.
+A single click will use a linear color scale, a second click will switch to an exponential color scale.
+
+<ReflowRow>
+    <ReflowCell>
+        <ReflowCellHeader>Linear color scale</ReflowCellHeader>
+        <ColorModeLinearTableScreenshot />
+        <ColorModeLinearScreenshot />
+        The first click on the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button will color the map by the selected variable using a linear color scale.
+        This works best for variables like time spent in a room (where the values are distributed evenly).
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>Exponential color scale</ReflowCellHeader>
+        <ColorModeExpTableScreenshot />
+        <ColorModeExpScreenshot />
+        A second click on the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button will switch to an exponential color scale.
+
+        For many variables, there will be a small number of rooms with a high value and a large number of rooms with a low values.
+        Using an exponential color scale will make the differences in the low values more visible.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>Area color</ReflowCellHeader>
+        <ColorModeAreaTableScreenshot />
+        <ColorModeAreaScreenshot />
+        Clicking the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button a third time will switch back to color the map by the colors used in the game.
+    </ReflowCell>
+
+</ReflowRow>
+
+Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button.
 
 ## Splits
 
+Coming soon
+
 ## Time charts
+
+Coming soon
+
+## Timeline
+
+Coming soon
 
 export default function MDXPage({ children }) {
     return <MdxInnerWrapper>{children}</MdxInnerWrapper>;
