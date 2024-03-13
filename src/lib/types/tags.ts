@@ -32,30 +32,41 @@ const indigo = {
     className: 'bg-indigo-600 dark:bg-indigo-700 hover:bg-indigo-900',
 };
 
+let _currentNextOrder = 1;
+function nextOrder() {
+    return _currentNextOrder++;
+}
+
 export const tags = [
     {
         code: 'first_playthrough',
         name: 'First Playthrough',
-        order: 1,
+        order: nextOrder(),
         color: green,
     },
     {
         code: 'casual',
         name: 'Casual',
-        order: 2,
+        order: nextOrder(),
         color: lime,
     },
     {
         code: 'randomizer',
         name: 'Randomizer',
-        order: 3,
+        order: nextOrder(),
         color: fuchsia,
     },
     {
         code: 'item_sync',
         name: 'ItemSync',
-        order: 4,
+        order: nextOrder(),
         color: violet,
+    },
+    {
+        code: 'tas',
+        name: 'TAS',
+        order: nextOrder(),
+        color: indigo,
     },
 
     // from https://hollow-knight-speedrunning.fandom.com/wiki/Speedrun_categories
@@ -63,14 +74,14 @@ export const tags = [
         code: 'speedrun_any',
         name: 'Any%',
         group: 'speedrun',
-        order: 5,
+        order: nextOrder(),
         color: red,
     },
     {
         code: 'speedrun_112',
         name: '112% All Pantheon Bosses',
         group: 'speedrun',
-        order: 6,
+        order: nextOrder(),
         color: red,
     },
     {
@@ -84,63 +95,70 @@ export const tags = [
         code: 'speedrun_106',
         name: '106% True Ending',
         group: 'speedrun',
-        order: 8,
+        order: nextOrder(),
         color: red,
     },
     {
         code: 'speedrun_godhome',
         name: 'Godhome Ending',
         group: 'speedrun',
-        order: 9,
+        order: nextOrder(),
         color: red,
     },
     {
         code: 'speedrun_low',
         name: 'Low%',
         group: 'speedrun',
-        order: 10,
+        order: nextOrder(),
         color: amber,
     },
     {
         code: 'speedrun_low_true',
         name: 'Low% True Ending',
         group: 'speedrun',
-        order: 11,
+        order: nextOrder(),
         color: amber,
     },
     {
         code: 'speedrun_low_godhome',
         name: 'Low% Godhome Ending',
         group: 'speedrun',
-        order: 12,
+        order: nextOrder(),
         color: amber,
     },
     {
         code: 'speedrun_all_skills',
         name: 'All Skills',
         group: 'speedrun',
-        order: 13,
+        order: nextOrder(),
+        color: orange,
+    },
+    {
+        code: 'speedrun_grub',
+        name: 'Grub%',
+        group: 'speedrun',
+        order: nextOrder(),
         color: orange,
     },
     {
         code: 'speedrun_great_hopper',
         name: 'Great Hopper%',
         group: 'speedrun',
-        order: 14,
+        order: nextOrder(),
         color: orange,
     },
     {
         code: 'speedrun_eat_me_too',
         name: 'Eat Me Too%',
         group: 'speedrun',
-        order: 15,
+        order: nextOrder(),
         color: orange,
     },
     {
         code: 'speedrun_other',
         name: 'Other',
         group: 'speedrun',
-        order: 16,
+        order: nextOrder(),
         color: orange,
     },
 ] as const;
