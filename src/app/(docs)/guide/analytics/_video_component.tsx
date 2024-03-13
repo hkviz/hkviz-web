@@ -52,6 +52,7 @@ export function Video({
                 loop={true}
                 autoPlay={true}
                 muted={true}
+                playsInline={true}
                 className={cn(sharedClassName + 'block dark:hidden', className)}
                 ref={lightVideoRef}
                 onPlay={updateIsPlaying}
@@ -67,6 +68,7 @@ export function Video({
                 loop={true}
                 autoPlay={true}
                 muted={true}
+                playsInline={true}
                 className={cn(sharedClassName + 'left-2 top-[-1px] hidden dark:block', className)}
                 ref={darkVideoRef}
                 onPlay={updateIsPlaying}
