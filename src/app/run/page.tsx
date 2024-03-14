@@ -1,5 +1,4 @@
-import { type Metadata } from 'next';
-import { isTagCode, tagGroupFromCode } from '~/lib/types/tags';
+import { isTagCode, tagGroupFromCode, tagOrGroupFromCode } from '~/lib/types/tags';
 import { findRuns, type RunFilter } from '~/server/api/routers/run/runs-find';
 import { db } from '~/server/db';
 import { ContentWrapper } from '../_components/content-wrapper';
@@ -7,12 +6,19 @@ import { RunCard } from '../_components/run-card';
 import { RunFilters } from './_components';
 import { runFilterParamsSchema } from './_params';
 
-export const metadata: Metadata = {
-    title: 'Public gameplays - HKViz',
-    alternates: {
-        canonical: '/run',
-    },
-};
+export function generateMetadata({ searchParams }: { searchParams: RunFilter }) {
+    const filter = runFilterParamsSchema.parse(searchParams);
+    const tagOrGroup = filter.tag ? tagOrGroupFromCode(filter.tag) : undefined;
+
+    const title = tagOrGroup ? `${tagOrGroup.name} - Public gameplays - HKViz` : 'Public gameplays - HKViz';
+
+    return {
+        title,
+        alternates: {
+            canonical: '/run',
+        },
+    };
+}
 
 export default async function Runs({ searchParams }: { searchParams: RunFilter }) {
     const filter = runFilterParamsSchema.parse(searchParams);
