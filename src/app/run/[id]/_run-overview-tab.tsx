@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
-import { AreaChart, Play } from 'lucide-react';
+import { AreaChart, HelpCircle, Play } from 'lucide-react';
 import { type Session } from 'next-auth';
 import { useMemo } from 'react';
 import { RelativeDate } from '~/app/_components/date';
@@ -90,15 +90,25 @@ export function RunOverviewTab({
                 <div className="w-full">
                     <RunCard run={runData} isOwnRun={isOwnRun} />
                 </div>
-                <div className="grid max-w-[500px] grid-cols-2 gap-2">
-                    <Button onClick={viewAnimatedAnalytics} disabled={isDisabled}>
-                        <Play size={20} />
-                        View animated analytics
-                    </Button>
-                    <Button onClick={viewStaticAnalytics} disabled={isDisabled}>
-                        <AreaChart size={20} />
-                        View static analytics
-                    </Button>
+                <div className="flex flex-col items-center justify-center gap-2">
+                    <div className="grid max-w-[500px] grid-cols-2 gap-2">
+                        <Button onClick={viewAnimatedAnalytics} disabled={isDisabled}>
+                            <Play className="mr-2 h-5 w-5" />
+                            <span className="grow">View player movement</span>
+                        </Button>
+                        <Button onClick={viewStaticAnalytics} disabled={isDisabled}>
+                            <AreaChart size={20} className="mr-2 h-5 w-5" />
+                            View room based analytics
+                        </Button>
+                    </div>
+                    <div className="">
+                        <Button variant="secondary" asChild>
+                            <a href="/guide/analytics" target="_blank">
+                                <HelpCircle size={20} className="mr-2 h-5 w-5" />
+                                View how to guide
+                            </a>
+                        </Button>
+                    </div>
                 </div>
                 <div>
                     <Expander expanded={!!recording}>

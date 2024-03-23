@@ -4,7 +4,6 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { LayoutDashboard, Palette, Spline } from 'lucide-react';
-import { HelpButton, analyticsGuideUrl } from './_help_button';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
@@ -41,11 +40,11 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                             </SelectContent>
                         </Select>
                     </TableCell>
-                    {!isV1 && (
+                    {/* {!isV1 && (
                         <TableCell className="p-0 pr-1">
                             <HelpButton href={analyticsGuideUrl('room-visibility')} />
                         </TableCell>
-                    )}
+                    )} */}
                 </TableRow>
                 <TableRow>
                     <TableHead>
@@ -66,11 +65,11 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                             </SelectContent>
                         </Select>
                     </TableCell>
-                    {!isV1 && (
+                    {/* {!isV1 && (
                         <TableCell className="p-0 pr-1">
                             <HelpButton href={analyticsGuideUrl('player-movement-and-traces')} />
                         </TableCell>
-                    )}
+                    )} */}
                 </TableRow>
                 <TableRow>
                     <TableHead>
@@ -90,11 +89,11 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                             </SelectContent>
                         </Select>
                     </TableCell>
-                    {!isV1 && (
+                    {/* {!isV1 && (
                         <TableCell className="p-0 pr-1">
                             <HelpButton href={analyticsGuideUrl('map-coloring-by-variables')} />
                         </TableCell>
-                    )}
+                    )} */}
                 </TableRow>
             </TableBody>
         </Table>
