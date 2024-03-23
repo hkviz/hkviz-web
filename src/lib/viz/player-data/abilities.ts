@@ -85,8 +85,8 @@ export const abilitiesAndItems: Record<
     hasJournal: { name: "Hunter's Journal", spriteName: 'Journal_Prompt', type: 'item' },
     hasHuntersMark: { name: "Hunter's Mark", spriteName: 'bestiary_hunter_mark_f', type: 'item' },
 
-    hasXunFlower: { name: 'Delicate Flower', spriteName: 'White_Flower_Full', type: 'item' },
-    xunFlowerBroken: { name: 'Ruined Flower', spriteName: 'White_Flower_Half', type: 'item' },
+    hasXunFlower: undefined, // { name: 'Delicate Flower', spriteName: 'White_Flower_Full', type: 'item' },
+    xunFlowerBroken: undefined, //{ name: 'Ruined Flower', spriteName: 'White_Flower_Half', type: 'item' },
     hasGodfinder: { name: 'Godtuner', spriteName: 'GG_IU_Godfinder0009_complete', type: 'item' },
     salubraBlessing: { name: "Salubra's Blessing", spriteName: 'shop_blessing', type: 'item' },
     hasCharm: undefined,

@@ -142,6 +142,10 @@ export const frameEndEventPlayerDataFieldsArray = [
     // grubs
     playerDataFields.byFieldName.grubsCollected,
     playerDataFields.byFieldName.grubRewards,
+
+    // flower
+    playerDataFields.byFieldName.hasXunFlower,
+    playerDataFields.byFieldName.xunFlowerBroken,
 ] as const;
 export const frameEndEventPlayerDataFields = new Set<PlayerDataField>(frameEndEventPlayerDataFieldsArray);
 
@@ -308,6 +312,9 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
     bossDoorStateTier3: BossSequenceDoorCompletion;
     bossDoorStateTier4: BossSequenceDoorCompletion;
     hasGodfinder: boolean;
+
+    hasXunFlower: boolean;
+    xunFlowerBroken: boolean;
 
     // computed properties
     previousFrameEndEvent: FrameEndEvent | null = null;
@@ -952,6 +959,15 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
         this.grubRewards = previousgrubRewards
             ? previousgrubRewards.value
             : getDefaultPlayerDataValue(playerDataFields.byFieldName.grubRewards);
+
+        const previousHasXunFlower = options.getPreviousPlayerData(playerDataFields.byFieldName.hasXunFlower);
+        this.hasXunFlower = previousHasXunFlower
+            ? previousHasXunFlower.value
+            : getDefaultPlayerDataValue(playerDataFields.byFieldName.hasXunFlower);
+        const previousXunFlowerBroken = options.getPreviousPlayerData(playerDataFields.byFieldName.xunFlowerBroken);
+        this.xunFlowerBroken = previousXunFlowerBroken
+            ? previousXunFlowerBroken.value
+            : getDefaultPlayerDataValue(playerDataFields.byFieldName.xunFlowerBroken);
 
         this.dead = options.getPreviousHeroState(heroStateFields.byFieldName.dead)?.value ?? false;
 

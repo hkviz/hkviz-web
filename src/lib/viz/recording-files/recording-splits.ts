@@ -249,5 +249,37 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
         }
     }
 
+    let hadFlowerLastFrame = false;
+    let hadBrokenFlowerLastFrame = false;
+    for (const frameEndEvent of recording.frameEndEvents) {
+        const xunFlowerBrokenThisFrame = frameEndEvent.xunFlowerBroken;
+        const hasFlowerThisFrame = frameEndEvent.hasXunFlower && !xunFlowerBrokenThisFrame;
+
+        if (!hadFlowerLastFrame && hasFlowerThisFrame) {
+            splits.push({
+                msIntoGame: frameEndEvent.msIntoGame,
+                title: 'Delicate Flower',
+                tooltip: 'Got Delicate Flower',
+                imageUrl: '/ingame-sprites/inventory/White_Flower_Full.png',
+                group: recordingSplitGroupsByName.items,
+                debugInfo: undefined,
+                previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
+            });
+        }
+        if (!hadBrokenFlowerLastFrame && xunFlowerBrokenThisFrame) {
+            splits.push({
+                msIntoGame: frameEndEvent.msIntoGame,
+                title: 'Ruined Flower',
+                tooltip: 'Broke Delicate Flower',
+                imageUrl: '/ingame-sprites/inventory/White_Flower_Half.png',
+                group: recordingSplitGroupsByName.items,
+                debugInfo: undefined,
+                previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
+            });
+        }
+        hadFlowerLastFrame = hasFlowerThisFrame;
+        hadBrokenFlowerLastFrame = xunFlowerBrokenThisFrame;
+    }
+
     return splits.sort((a, b) => a.msIntoGame - b.msIntoGame);
 }
