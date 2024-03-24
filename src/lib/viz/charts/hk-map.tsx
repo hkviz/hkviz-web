@@ -2,47 +2,17 @@
 
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
-import { useEffect, useMemo, useRef, type MutableRefObject } from 'react';
+import { useEffect, useRef } from 'react';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
-import { mainRoomDataBySceneName, roomData, type RoomInfo } from '../map-data/rooms';
-import { Bounds } from '../types/bounds';
+import { roomData, type RoomInfo } from '../map-data/rooms';
+import { HKMapZoom } from './hk-map-zoom';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
+import { appendOutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 import { useMapRooms } from './use-map-rooms';
 import { useMapTraces } from './use-traces';
-
-function HKMapZoom({
-    useViewOptionsStore,
-    zoom,
-    svg,
-}: {
-    useViewOptionsStore: UseViewOptionsStore;
-    zoom: MutableRefObject<d3.ZoomBehavior<SVGSVGElement, unknown> | undefined>;
-    svg: MutableRefObject<d3.Selection<SVGSVGElement, unknown, null, undefined> | undefined>;
-}) {
-    const animatedMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
-    const recording = useViewOptionsStore((s) => s.recording);
-    const zoneName = useMemo(() => {
-        const sceneName = recording?.sceneEvents.findLast((e) => e.msIntoGame <= animatedMsIntoGame)?.sceneName;
-        if (!sceneName) return null;
-        const roomData = mainRoomDataBySceneName.get(sceneName);
-        return roomData?.zoneNameFormatted ?? null;
-    }, [animatedMsIntoGame, recording]);
-
-    useEffect(() => {
-        if (!svg.current || !zoom.current) return;
-        const rooms = roomData.filter((r) => r.zoneNameFormatted === zoneName);
-        const bounds = Bounds.fromContainingBounds(rooms.map((r) => r.visualBounds));
-        svg.current.call(
-            zoom.current.transform.bind(zoom.current),
-            d3.zoomIdentity.translate(-bounds.center.x, -bounds.center.y),
-        );
-    }, [svg, zoneName, zoom]);
-
-    return <></>;
-}
 
 export interface HKMapProps {
     className?: string;
@@ -70,6 +40,8 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     const unsetHoveredRoom = useViewOptionsStore((s) => s.unsetHoveredRoom);
     const isV1 = useViewOptionsStore((s) => s.isV1());
 
+    const setZoomFollowZone = useViewOptionsStore((s) => s.setZoomFollowZone);
+
     useEffect(() => {
         zoom.current = d3
             .zoom<SVGSVGElement, unknown>()
@@ -85,6 +57,10 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                 ],
             ])
             .on('zoom', (event) => {
+                if (event.sourceEvent instanceof MouseEvent) {
+                    setZoomFollowZone(false);
+                }
+
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
                 rootG.current!.attr('transform', event.transform);
                 tracesZoomHandler.current?.(event);
@@ -98,6 +74,9 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             .attr('viewBox', mapVisualExtends.toD3ViewBox())
             .attr('preserveAspectRatio', 'xMidYMid meet')
             .call(zoom.current);
+
+        const defs = svg.current.append('defs');
+        appendOutlineFilter(defs);
 
         rootG.current = svg.current.append('g').attr('data-group', 'root');
 
@@ -124,7 +103,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
         return () => {
             svg.current?.remove();
         };
-    }, []);
+    }, [setZoomFollowZone]);
 
     useMapRooms(
         {
@@ -173,20 +152,20 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG });
     return (
         <div className={cn('relative', className)} ref={containerRef}>
-            {false && <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />}
+            <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />
             <div className="absolute right-4 top-4 px-0 py-2">
                 <MapLegend useViewOptionsStore={useViewOptionsStore} />
             </div>
-            {!isV1 && (
-                <div className="absolute bottom-4 right-4 px-0 py-2">
-                    <MapOverlayOptions useViewOptionsStore={useViewOptionsStore} />
-                </div>
-            )}
             <HKMapTraces
                 useViewOptionsStore={useViewOptionsStore}
                 containerRef={containerRef}
                 zoomHandler={tracesZoomHandler}
             />
+            {!isV1 && (
+                <div className="absolute bottom-4 right-4 px-0 py-2">
+                    <MapOverlayOptions useViewOptionsStore={useViewOptionsStore} />
+                </div>
+            )}
         </div>
     );
 }

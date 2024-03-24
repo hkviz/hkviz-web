@@ -67,6 +67,10 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
 
                     showAreaNames: true,
                     showSubAreaNames: true,
+
+                    zoomFollowZone: true,
+                    zoomFollowTransition: true,
+                    zoomFollowTempDisabled: false,
                 },
                 (set, get) => {
                     function handleAnyAnimationVisiblityChanged() {
@@ -372,6 +376,20 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         set({ showSubAreaNames });
                     }
 
+                    function setZoomFollowZone(zoomFollowZone: boolean) {
+                        set({ zoomFollowZone });
+                    }
+                    function setZoomFollowTransition(zoomFollowTransition: boolean) {
+                        set({ zoomFollowTransition });
+                    }
+                    function setZoomFollowTempDisabled(zoomFollowTempDisabled: boolean) {
+                        set({ zoomFollowTempDisabled });
+                    }
+
+                    function zoomFollowTransitionIsEnabled() {
+                        return get().zoomFollowZone && get().zoomFollowTransition && !get().zoomFollowTempDisabled;
+                    }
+
                     return {
                         isV1,
                         setRoomVisibility,
@@ -404,6 +422,10 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         setRoomColorVar1Curve,
                         setShowAreaNames,
                         setShowSubAreaNames,
+                        setZoomFollowZone,
+                        setZoomFollowTransition,
+                        setZoomFollowTempDisabled,
+                        zoomFollowTransitionIsEnabled,
                     };
                 },
             ),

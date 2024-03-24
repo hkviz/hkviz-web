@@ -59,19 +59,24 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
     const selectedZone = useMemo(
-        () => (selectedRoom ? mainRoomDataBySceneName.get(selectedRoom)?.zoneNameFormatted : undefined),
+        () =>
+            (selectedRoom ? mainRoomDataBySceneName.get(selectedRoom)?.zoneNameFormatted : undefined) ??
+            'No zone selected',
         [selectedRoom],
     );
 
     const sceneEvents = recording?.sceneEvents ?? EMPTY_ARRAY;
 
     const sceneChanges = useMemo(() => {
-        const sceneChanges = sceneEvents.map((it) => ({
-            sceneName: it.getMainVirtualSceneName(),
-            startMs: it.msIntoGame,
-            mainRoomData: mainRoomDataBySceneName.get(it.sceneName),
-            durationMs: 0,
-        }));
+        const sceneChanges = sceneEvents.map((it) => {
+            const mainVirtualScene = it.getMainVirtualSceneName();
+            return {
+                mainVirtualScene,
+                startMs: it.msIntoGame,
+                mainRoomData: mainRoomDataBySceneName.get(mainVirtualScene),
+                durationMs: 0,
+            };
+        });
         for (let i = 0; i < sceneChanges.length - 1; i++) {
             sceneChanges[i]!.durationMs = (sceneChanges[i + 1]?.startMs ?? timeFrameMs.max) - sceneChanges[i]!.startMs;
         }
@@ -98,7 +103,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
             .attr('x', (d) => d.startMs / 1000)
             .attr('width', (d) => d.durationMs / 1000)
             .attr('height', 10000)
-            .attr('data-scene-name', (d) => d.sceneName);
+            .attr('data-scene-name', (d) => d.mainVirtualScene);
     }, [sceneChanges, timeFrame.max]);
 
     useEffect(() => {
@@ -118,7 +123,11 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
             //     d.sceneName === selectedRoom ? '1' : d.mainRoomData?.zoneNameFormatted === selectedArea ? '0.75' : '0.5',
             // )
             .attr('y', (d) =>
-                d.sceneName === selectedRoom ? 0 : d.mainRoomData?.zoneNameFormatted === selectedZone ? 3333 : 6666,
+                d.mainVirtualScene === selectedRoom
+                    ? 0
+                    : d.mainRoomData?.zoneNameFormatted === selectedZone
+                      ? 3333
+                      : 6666,
             );
     }, [selectedRoom, mainSvgEffect, selectedZone]);
 
@@ -153,15 +162,16 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
     function handleMouseMove(e: React.MouseEvent) {
         const sceneChange = getSceneChangeFromMouseEvent(e);
         if (!sceneChange) return;
-        setSelectedRoomIfNotPinned(sceneChange.sceneName);
-        setHoveredRoom(sceneChange.sceneName);
+        setSelectedRoomIfNotPinned(sceneChange.mainVirtualScene);
+        setHoveredRoom(sceneChange.mainVirtualScene);
         setHoveredMsIntoGame(sceneChange.startMs);
     }
     function handleClick(e: React.MouseEvent) {
         const sceneChange = getSceneChangeFromMouseEvent(e);
+        console.log(sceneChange);
         if (!sceneChange) return;
         setAnimationMsIntoGame(sceneChange.startMs);
-        setSelectedRoom(sceneChange.sceneName);
+        setSelectedRoom(sceneChange.mainVirtualScene);
 
         // togglePinnedRoom(sceneChange.sceneName, true);
     }

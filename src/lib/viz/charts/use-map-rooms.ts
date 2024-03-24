@@ -79,22 +79,6 @@ export function useMapRooms(
 
     const mainEffectChanges = useDependableEffect(() => {
         if (!roomDataEnter.current) return;
-
-        const filter = roomDataEnter.current.append('defs').append('filter').attr('id', 'hover_mask_filter');
-
-        filter
-            .append('feComponentTransfer')
-            .append('feFuncA')
-            .attr('type', 'table')
-            .attr(
-                'tableValues',
-                `0 0
-                0.005 0
-                0.015 1
-                1 1
-                `,
-            );
-
         const roomGs = roomDataEnter.current
             .append('svg:g')
             .attr('data-scene-name', (r) => r.sceneName)

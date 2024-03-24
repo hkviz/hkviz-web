@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import { omit } from '~/lib/utils/omit';
 import { roomDataConditionalByGameObjectName } from '../generated/map-rooms-conditionals.generated';
+import { roomDataUnscaledFinishedGame } from '../generated/map-rooms-finished.generated';
 import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
@@ -51,9 +52,14 @@ const mainGameObjectNamePerSceneName = Object.fromEntries(
 
 export type RoomSpriteVariant = 'rough' | 'normal' | 'conditional';
 
+const finishedUnprocessedRoomsByGameObjectName = new Map(
+    roomDataUnscaledFinishedGame.rooms.map((room) => [room.gameObjectName, room] as const),
+);
+
 export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
+    const finishedRoom = finishedUnprocessedRoomsByGameObjectName.get(room.gameObjectName);
     const visualBounds = scaleBounds(room.visualBounds);
-    const playerPositionBounds = scaleBounds(room.playerPositionBounds);
+    const playerPositionBounds = scaleBounds(finishedRoom?.playerPositionBounds ?? room.playerPositionBounds);
     const isMainGameObject = room.gameObjectName === mainGameObjectNamePerSceneName[room.sceneName];
 
     function roomPositionWithPadding(
@@ -239,3 +245,5 @@ export const allRoomDataBySceneName = new Map<string, RoomData[]>(
         return [self, ...groupChildren.map((scene) => [scene, rooms] as const)];
     }),
 );
+
+(window as any).mainRoomDataBySceneName = mainRoomDataBySceneName;
