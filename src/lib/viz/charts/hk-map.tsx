@@ -57,7 +57,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                 ],
             ])
             .on('zoom', (event) => {
-                if (event.sourceEvent instanceof MouseEvent) {
+                if (event.sourceEvent) {
                     setZoomFollowZone(false);
                 }
 
