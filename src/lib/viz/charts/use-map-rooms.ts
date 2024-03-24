@@ -79,6 +79,15 @@ export function useMapRooms(
 
     const mainEffectChanges = useDependableEffect(() => {
         if (!roomDataEnter.current) return;
+
+        const filter = roomDataEnter.current.append('defs').append('filter').attr('id', 'hover_mask_filter');
+
+        filter
+            .append('feComponentTransfer')
+            .append('feFuncA')
+            .attr('type', 'table')
+            .attr('tableValues', '0 0 0.025 0 1 0.4 1 1');
+
         const roomGs = roomDataEnter.current
             .append('svg:g')
             .attr('data-scene-name', (r) => r.sceneName)
@@ -121,39 +130,6 @@ export function useMapRooms(
                     (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) +
                     '.png',
             );
-        // .style('filter', 'invert(1)')
-        // .attr(
-        //     'xlink:href',
-        //     (d) =>
-        //         '/ingame-map-svg-unopt/' +
-        //         (spritesWithoutSubSprites ? d.sprite.nameWithoutSubSprites ?? d.sprite.name : d.sprite.name) +
-        //         '_bg.svg',
-        // );
-
-        // masks just for outline. Are created by using the original mask itself, and increasing the contrast
-        // therefore effectively hiding semi transparent parts, aka the non-outline parts.
-        const outlineMaskGroup = roomGs
-            .append('svg:mask')
-            .attr('id', (r, i) => 'outline_mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name)
-            .append('svg:g')
-            .style('filter', 'contrast(3)');
-
-        outlineMaskGroup
-            .append('svg:rect')
-            .style('fill', 'black')
-            .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
-            .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
-            .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
-            .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y);
-
-        outlineMaskGroup
-            .append('svg:rect')
-            .style('fill', 'white')
-            .attr('mask', (r, i) => 'url(#mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name + ')')
-            .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
-            .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
-            .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
-            .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y);
 
         // actual rect which is masked by image. This allows us to have colorful rooms, while most images themselves are white
         roomRects.current = roomGs
@@ -186,12 +162,11 @@ export function useMapRooms(
             });
 
         // outline
-        roomOutlineRects.current = roomGs
+        roomOutlineRects.current = roomGs.append('svg:g').attr('filter', 'url(#hover_mask_filter)');
+
+        roomOutlineRects.current
             .append('svg:rect')
-            .attr(
-                'mask',
-                (r, i) => 'url(#outline_mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name + ')',
-            )
+            .attr('mask', (r, i) => 'url(#mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name + ')')
             .style('fill', 'white')
             .style('pointer-events', 'none')
             .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
