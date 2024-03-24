@@ -86,7 +86,14 @@ export function useMapRooms(
             .append('feComponentTransfer')
             .append('feFuncA')
             .attr('type', 'table')
-            .attr('tableValues', '0 0 0.025 0 1 0.4 1 1');
+            .attr(
+                'tableValues',
+                `0 0
+                0.005 0
+                0.015 1
+                1 1
+                `,
+            );
 
         const roomGs = roomDataEnter.current
             .append('svg:g')

@@ -239,5 +239,3 @@ export const allRoomDataBySceneName = new Map<string, RoomData[]>(
         return [self, ...groupChildren.map((scene) => [scene, rooms] as const)];
     }),
 );
-
-(window as any).roomData = roomData;
