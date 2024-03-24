@@ -174,7 +174,7 @@ export function useMapRooms(
         roomOutlineRects.current
             .append('svg:rect')
             .attr('mask', (r, i) => 'url(#mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name + ')')
-            .style('fill', 'white')
+            .attr('class', 'fill-current text-black dark:text-white')
             .style('pointer-events', 'none')
             .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
             .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
