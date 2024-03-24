@@ -5,13 +5,16 @@ import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
 import { prepareTextExportData } from './area-names';
-import { customRoomData } from './room-custom';
+import { customRoomData, type CustomRoomInfo, type UnprocessedRoomInfo } from './room-custom';
 import { roomGroupByName } from './room-groups';
 import { formatZoneAndRoomName } from './room-name-formatting';
 import { getSubSprites } from './room-sub-sprites';
 import { scaleBounds } from './scaling';
 
-const roomDataUnscaledWithCustom = [...roomDataUnscaled.rooms, ...customRoomData];
+const roomDataUnscaledWithCustom: Array<UnprocessedRoomInfo | CustomRoomInfo> = [
+    ...roomDataUnscaled.rooms,
+    ...customRoomData,
+];
 
 // some order changes, so hover works better:
 const resortings = [
@@ -79,6 +82,7 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
             nameWithoutSubSprites: null as null | string,
             scaledPosition: roomPositionWithPadding(spriteInfo),
             variant,
+            alwaysHidden: false,
         };
     }
 
@@ -113,7 +117,10 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
         playerPositionBounds,
         color,
         isMainGameObject,
-        gameObjectNameNeededInVisited: room.gameObjectName,
+        gameObjectNameNeededInVisited:
+            'gameObjectNameNeededInVisited' in room && room.gameObjectNameNeededInVisited
+                ? room.gameObjectNameNeededInVisited
+                : room.gameObjectName,
         texts,
     };
 
@@ -169,6 +176,7 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
                             (parentSpriteInfo.scaledPosition.size.y / parentSpriteSizeWithoutPadding.y),
                     ),
                 ),
+                alwaysHidden: 'alwaysHidden' in childVariant ? (childVariant.alwaysHidden as boolean) : false,
             } satisfies typeof parentSpriteInfo;
 
             if ('conditionalOn' in parentSpriteInfo) {
@@ -231,3 +239,5 @@ export const allRoomDataBySceneName = new Map<string, RoomData[]>(
         return [self, ...groupChildren.map((scene) => [scene, rooms] as const)];
     }),
 );
+
+(window as any).roomData = roomData;

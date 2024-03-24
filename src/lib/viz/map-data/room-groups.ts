@@ -26,6 +26,10 @@ export const roomGroups = [
         name: 'group_beasts_den',
         sceneNames: ['Deepnest_Spider_Town', 'Dream_Guardian_Hegemol'],
     },
+    {
+        name: 'group_grimm',
+        sceneNames: ['Grimm_Main_Tent', 'Grimm_Nightmare'],
+    },
 
     // pantheons
     {

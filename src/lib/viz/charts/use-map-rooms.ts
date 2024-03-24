@@ -87,7 +87,7 @@ export function useMapRooms(
         // mask for each rooms rect
         const roomMask = roomGs
             .append('svg:mask')
-            .attr('id', (r) => 'mask_' + componentId + '_' + r.spritesByVariant.normal.name);
+            .attr('id', (r, i) => 'mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name);
 
         roomMask
             .append('svg:rect')
@@ -134,7 +134,7 @@ export function useMapRooms(
         // therefore effectively hiding semi transparent parts, aka the non-outline parts.
         const outlineMaskGroup = roomGs
             .append('svg:mask')
-            .attr('id', (r) => 'outline_mask_' + componentId + '_' + r.spritesByVariant.normal.name)
+            .attr('id', (r, i) => 'outline_mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name)
             .append('svg:g')
             .style('filter', 'contrast(3)');
 
@@ -149,7 +149,7 @@ export function useMapRooms(
         outlineMaskGroup
             .append('svg:rect')
             .style('fill', 'white')
-            .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spritesByVariant.normal.name + ')')
+            .attr('mask', (r, i) => 'url(#mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name + ')')
             .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
             .attr('y', (r) => r.allSpritesScaledPositionBounds.min.y)
             .attr('width', (r) => r.allSpritesScaledPositionBounds.size.x)
@@ -160,7 +160,7 @@ export function useMapRooms(
             .append('svg:rect')
             .attr('data-scene-name', (r) => r.sceneName)
             .attr('class', 'svg-room')
-            .attr('mask', (r) => 'url(#mask_' + componentId + '_' + r.spritesByVariant.normal.name + ')')
+            .attr('mask', (r, i) => 'url(#mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name + ')')
             // .attr('clip-path', (r) => 'url(#mask_' + componentId + '_' + r.spriteInfo.name + ')')
 
             .style('fill', (r) => r.color.formatHex())
@@ -188,7 +188,10 @@ export function useMapRooms(
         // outline
         roomOutlineRects.current = roomGs
             .append('svg:rect')
-            .attr('mask', (r) => 'url(#outline_mask_' + componentId + '_' + r.spritesByVariant.normal.name + ')')
+            .attr(
+                'mask',
+                (r, i) => 'url(#outline_mask_' + componentId + '_' + i + '_' + r.spritesByVariant.normal.name + ')',
+            )
             .style('fill', 'white')
             .style('pointer-events', 'none')
             .attr('x', (r) => r.allSpritesScaledPositionBounds.min.x)
@@ -197,6 +200,7 @@ export function useMapRooms(
             .attr('height', (r) => r.allSpritesScaledPositionBounds.size.y);
 
         const roomTextGs = roomDataEnter.current
+            .filter((d) => d.texts.length > 0)
             .append('svg:g')
             .attr('data-scene-name', (r) => r.sceneName)
             .attr('data-game-object-name', (r) => r.gameObjectName);
@@ -275,6 +279,9 @@ export function useMapRooms(
         function isRoomVisible(gameObjectName: string) {
             return visibleRooms === 'all' || visibleRooms.includes(gameObjectName);
         }
+        function isAnyRoomVisible(gameObjectNames: string[]) {
+            return gameObjectNames && gameObjectNames.some(isRoomVisible);
+        }
         const isZoneVisible = memoize(
             (zoneName: string) =>
                 visibleRooms === 'all' ||
@@ -289,10 +296,18 @@ export function useMapRooms(
 
             if (!visible) {
                 return 'hidden';
-            } else if (r.spritesByVariant.conditional && isRoomVisible(r.spritesByVariant.conditional.conditionalOn)) {
-                return 'conditional';
+            }
+
+            let variant: RoomSpriteVariant;
+            if (r.spritesByVariant.conditional && isAnyRoomVisible(r.spritesByVariant.conditional.conditionalOn)) {
+                variant = 'conditional';
             } else {
-                return 'normal';
+                variant = 'normal';
+            }
+            if (r.spritesByVariant[variant]?.alwaysHidden) {
+                return 'hidden';
+            } else {
+                return variant;
             }
         }
 

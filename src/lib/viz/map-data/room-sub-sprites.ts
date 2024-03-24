@@ -564,6 +564,45 @@ export const subSprites = {
             },
         ],
     },
+    ['edited/Town_grimm_no_tent']: {
+        parentSpriteWithoutSubSprites: {
+            normal: 'edited/Town_grimm_no_tent',
+            rough: null,
+            conditional: 'edited/Town_grimm_background',
+        },
+        childSprites: [
+            {
+                normal: {
+                    name: 'edited/black_pixel',
+                    size: { x: 58, y: 48 },
+                    offsetTop: { x: 36, y: 26 },
+                    alwaysHidden: true,
+                },
+                rough: null,
+                conditional: {
+                    name: 'edited/Town_grimm_tent_large',
+                    size: { x: 58, y: 48 },
+                    offsetTop: { x: 36, y: 26 },
+                },
+                sceneName: 'group_grimm',
+            },
+            {
+                normal: {
+                    name: 'edited/black_pixel',
+                    size: { x: 41, y: 32 },
+                    offsetTop: { x: 9, y: 43 },
+                    alwaysHidden: true,
+                },
+                rough: null,
+                conditional: {
+                    name: 'edited/Town_grimm_tent_small',
+                    size: { x: 41, y: 32 },
+                    offsetTop: { x: 9, y: 43 },
+                },
+                sceneName: 'Grimm_Divine',
+            },
+        ],
+    },
 };
 
 type SubSprites = typeof subSprites;

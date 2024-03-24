@@ -22,6 +22,9 @@ const predefinedRoomNames = {
     Room_Bretta: "Bretta's House Ground Floor",
     Dream_Mighty_Zote: 'Prince Zote Dream',
 
+    group_grimm: "Grimm's Tent",
+    Grimm_Divine: "Divine's Tent",
+
     // Crossroads
     Crossroads_49: 'Elevator',
     Crossroads_47: 'Stag Station',

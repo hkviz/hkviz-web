@@ -1,9 +1,11 @@
 import { assertNever } from '~/lib/utils/utils';
 import { roomDataUnscaled } from '../generated/map-rooms.generated';
 
-type UnprocessedRoomInfo = (typeof roomDataUnscaled)['rooms'][number];
+export type UnprocessedRoomInfo = (typeof roomDataUnscaled)['rooms'][number];
 
-type CustomRoomInfo = UnprocessedRoomInfo;
+export type CustomRoomInfo = UnprocessedRoomInfo & {
+    gameObjectNameNeededInVisited?: string;
+};
 
 interface MakeCustomRoomOptions {
     nextToRoom: UnprocessedRoomInfo;
@@ -189,4 +191,23 @@ const colosseumGold = makeCustomRoom({ nextToRoom: colosseumSilver, size: { x: 6
     };
 });
 
-export const customRoomData: CustomRoomInfo[] = [abysee15, colosseumBronze, colosseumSilver, colosseumGold];
+const dirthmouth = unscaledRoomByGameObjectName('Town')!;
+console.log({ dirthmouth });
+const GRIMM_SCALE =
+    (dirthmouth.playerPositionBounds.max.x - dirthmouth.playerPositionBounds.min.x) /
+    (dirthmouth.spriteInfo.size.x + dirthmouth.spriteInfo.padding.x + dirthmouth.spriteInfo.padding.z);
+const grimmTent = makeCustomRoom({ nextToRoom: dirthmouth, size: { x: 102.0, y: 89.0 }, scale: GRIMM_SCALE })(({
+    makeSpriteInfo,
+    makeBounds,
+}) => {
+    const visualBounds = makeBounds({ alignLeft: 52 * GRIMM_SCALE, alignBottom: 40 * GRIMM_SCALE });
+    return {
+        sceneName: 'Town',
+        spriteInfo: makeSpriteInfo({ name: 'edited/Town_grimm_no_tent' }),
+        visualBounds,
+        gameObjectName: 'Town_grimm',
+        gameObjectNameNeededInVisited: 'Town',
+    };
+});
+
+export const customRoomData: CustomRoomInfo[] = [abysee15, colosseumBronze, colosseumSilver, colosseumGold, grimmTent];
