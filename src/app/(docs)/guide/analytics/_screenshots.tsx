@@ -270,7 +270,7 @@ export function TimelineScreenshot() {
 
 export function SplitsScreenshot() {
     return (
-        <ImageContainer caption={<>Splits</>} className="max-w-48 md:float-right md:ml-4">
+        <ImageContainer caption={<>Splits view</>} className="max-w-48 md:float-right md:ml-4">
             <ThemedImage
                 srcLight={splitsLightSrc}
                 srcDark={splitsDarkSrc}

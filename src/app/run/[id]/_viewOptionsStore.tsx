@@ -33,7 +33,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
             combine(
                 {
                     displayVersion: displayVersion(searchParams.get('v')),
-                    roomVisibility: 'visited' as RoomVisibility,
+                    roomVisibility: 'visited-animated' as RoomVisibility,
                     roomsVisible: EMPTY_ARRAY as readonly string[] | 'all',
                     traceVisibility: 'animated' as TraceVisibility,
                     isAnythingAnimating: true as boolean,
