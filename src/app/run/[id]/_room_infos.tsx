@@ -35,6 +35,7 @@ function AggregationVariableToggles({
     const roomColorVar1 = useViewOptionsStore((s) => s.roomColorVar1);
     const roomColorVar1Curve = useViewOptionsStore((s) => s.roomColorVar1Curve);
     const cycleRoomColorVar1 = useViewOptionsStore((s) => s.cycleRoomColorVar1);
+    const showMapIfOverview = useViewOptionsStore((s) => s.showMapIfOverview);
     const isV1 = useViewOptionsStore((s) => s.isV1());
 
     const isActive = roomColors === '1-var' && roomColorVar1 === variable;
@@ -53,7 +54,10 @@ function AggregationVariableToggles({
                         <Toggle
                             variant="outline"
                             pressed={roomColorVar1 === variable && roomColors === '1-var'}
-                            onPressedChange={() => cycleRoomColorVar1(variable)}
+                            onPressedChange={() => {
+                                cycleRoomColorVar1(variable);
+                                showMapIfOverview();
+                            }}
                             className={
                                 'relative h-10 w-10 rounded-full data-[state=on]:text-white ' +
                                 (roomColorVar1Curve.type === 'linear'

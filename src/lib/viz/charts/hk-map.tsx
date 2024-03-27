@@ -40,7 +40,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     const unsetHoveredRoom = useViewOptionsStore((s) => s.unsetHoveredRoom);
     const isV1 = useViewOptionsStore((s) => s.isV1());
 
-    const setZoomFollowZone = useViewOptionsStore((s) => s.setZoomFollowZone);
+    const setZoomFollowEnabled = useViewOptionsStore((s) => s.setZoomFollowEnabled);
 
     useEffect(() => {
         zoom.current = d3
@@ -58,7 +58,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             ])
             .on('zoom', (event) => {
                 if (event.sourceEvent) {
-                    setZoomFollowZone(false);
+                    setZoomFollowEnabled(false);
                 }
 
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
@@ -103,7 +103,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
         return () => {
             svg.current?.remove();
         };
-    }, [setZoomFollowZone]);
+    }, [setZoomFollowEnabled]);
 
     useMapRooms(
         {

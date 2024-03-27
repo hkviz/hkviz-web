@@ -6,7 +6,7 @@ import { FrameEndEvent } from './events/frame-end-event';
 import { HKVizModVersionEvent } from './events/hkviz-mod-version-event';
 import { type ModInfo, type ModdingInfoEvent } from './events/modding-info-event';
 import { PlayerDataEvent } from './events/player-data-event';
-import { type PlayerPositionEvent } from './events/player-position-event';
+import { PlayerPositionEvent } from './events/player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
 import { SceneEvent } from './events/scene-event';
 import { RecordingSplit, createRecordingSplits } from './recording-splits';
@@ -119,6 +119,7 @@ export class CombinedRecording extends ParsedRecording {
     public frameEndEvents: FrameEndEvent[] = [];
     public sceneEvents: SceneEvent[] = [];
     public splits: RecordingSplit[];
+    public playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
 
     constructor(
         events: RecordingEvent[],
@@ -139,6 +140,14 @@ export class CombinedRecording extends ParsedRecording {
                 this.sceneEvents.push(event);
             } else if (event instanceof FrameEndEvent) {
                 this.frameEndEvents.push(event);
+            } else if (event instanceof PlayerPositionEvent) {
+                if (
+                    event.mapPosition != null &&
+                    event.previousPlayerPositionEventWithMapPosition?.mapPosition != null &&
+                    !event.previousPlayerPositionEventWithMapPosition.mapPosition.equals(event.mapPosition)
+                ) {
+                    this.playerPositionEventsWithTracePosition.push(event);
+                }
             }
         }
         this.splits = createRecordingSplits(this);

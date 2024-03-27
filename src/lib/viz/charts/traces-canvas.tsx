@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useEffect, useMemo, useRef, type MutableRefObject, type RefObject } from 'react';
+import { useEffect, useRef, type MutableRefObject, type RefObject } from 'react';
 import useEvent from 'react-use-event-hook';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { assertNever } from '~/lib/utils/utils';
@@ -16,7 +16,7 @@ export interface HKMapTracesProps {
 
 const EMPTY_ARRAY = [] as const;
 
-function binarySearchLastIndexBefore<T>(arr: readonly T[], value: number, getValue: (v: T) => number): number {
+export function binarySearchLastIndexBefore<T>(arr: readonly T[], value: number, getValue: (v: T) => number): number {
     let low = 0;
     let high = arr.length - 1;
     while (low <= high) {
@@ -38,18 +38,8 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
     const recording = useViewOptionsStore((s) => s.recording);
     const knightPinImage = useRef<HTMLImageElement>(null);
 
-    const positionEvents: readonly PlayerPositionEvent[] = useMemo(() => {
-        if (!recording) return EMPTY_ARRAY;
-
-        return recording.events.filter((event): event is PlayerPositionEvent => {
-            return (
-                event instanceof PlayerPositionEvent &&
-                event.mapPosition != null &&
-                event.previousPlayerPositionEventWithMapPosition?.mapPosition != null &&
-                !event.previousPlayerPositionEventWithMapPosition.mapPosition.equals(event.mapPosition)
-            );
-        });
-    }, [recording]);
+    const positionEvents: readonly PlayerPositionEvent[] =
+        recording?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
 
     const canvas = useRef<HTMLCanvasElement>(null);
 

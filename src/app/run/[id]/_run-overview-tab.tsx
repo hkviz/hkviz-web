@@ -32,6 +32,8 @@ export function RunOverviewTab({
     const cycleRoomColorVar1 = useViewOptionsStore((s) => s.cycleRoomColorVar1);
     const setRoomColors = useViewOptionsStore((s) => s.setRoomColors);
     const setExtraChartsFollowAnimation = useViewOptionsStore((s) => s.setExtraChartsFollowAnimation);
+    const setZoomFollowEnabled = useViewOptionsStore((s) => s.setZoomFollowEnabled);
+    const setZoomFollowTarget = useViewOptionsStore((s) => s.setZoomFollowTarget);
     const recording = useViewOptionsStore((s) => s.recording);
 
     const isOpen = mainCardTab === 'overview';
@@ -43,6 +45,8 @@ export function RunOverviewTab({
         setTraceVisibility('animated');
         setRoomColors('area');
         setExtraChartsFollowAnimation(true);
+        setZoomFollowEnabled(true);
+        setZoomFollowTarget('current-zone');
     }
 
     function viewStaticAnalytics() {
@@ -54,6 +58,8 @@ export function RunOverviewTab({
             cycleRoomColorVar1('firstVisitMs');
         }
         setExtraChartsFollowAnimation(false);
+        setZoomFollowEnabled(true);
+        setZoomFollowTarget('visible-rooms');
     }
 
     const fiteredModVersions = useMemo(() => {

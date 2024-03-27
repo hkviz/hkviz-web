@@ -33,6 +33,12 @@ export class Bounds {
         return Bounds.fromMinMax(min, max);
     }
 
+    public static fromContainingPoints(points: Vector2[]): Bounds {
+        const min = new Vector2(Math.min(...points.map((p) => p.x)), Math.min(...points.map((p) => p.y)));
+        const max = new Vector2(Math.max(...points.map((p) => p.x)), Math.max(...points.map((p) => p.y)));
+        return Bounds.fromMinMax(min, max);
+    }
+
     public toD3ViewBox(): [number, number, number, number] {
         return [this.min.x, this.min.y, this.size.x, this.size.y];
     }

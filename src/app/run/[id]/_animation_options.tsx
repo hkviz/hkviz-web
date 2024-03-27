@@ -58,6 +58,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
     const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
+    const showMapIfOverview = useViewOptionsStore((s) => s.showMapIfOverview);
     const selectedZone = useMemo(
         () =>
             (selectedRoom ? mainRoomDataBySceneName.get(selectedRoom)?.zoneNameFormatted : undefined) ??
@@ -172,6 +173,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
         if (!sceneChange) return;
         setAnimationMsIntoGame(sceneChange.startMs);
         setSelectedRoom(sceneChange.mainVirtualScene);
+        showMapIfOverview();
 
         // togglePinnedRoom(sceneChange.sceneName, true);
     }
@@ -203,6 +205,7 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
     const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const isDisabled = useViewOptionsStore((s) => !s.recording);
+    const showMapIfOverview = useViewOptionsStore((s) => s.showMapIfOverview);
 
     return (
         <Slider
@@ -214,9 +217,7 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
             disabled={isDisabled}
             onValueChange={(values) => {
                 setAnimationMsIntoGame(values[0]!);
-                if (mainCardTab === 'overview') {
-                    setMainCardTab('map');
-                }
+                showMapIfOverview();
             }}
         />
     );

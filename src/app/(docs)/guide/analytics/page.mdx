@@ -1,30 +1,30 @@
+import { LayoutDashboard, Mouse, Palette, Pin, Spline } from 'lucide-react';
 import Link from 'next/link';
 import { HKVizText } from '../../../_components/hkviz-text';
 import { MailLinkUnstyled } from '../../../_components/mail-link';
 import { MdxInnerWrapper } from '../../../_components/mdx-layout';
 import { SpoilerWarningEarlyGame } from '../../_spoiler_warning';
 import {
-    OverviewScreenshot,
-    TracesAnimatedScreenshot,
-    TracesAllScreenshot,
-    TracesNoneScreenshot,
-    RoomAnalyticsScreenshot,
     ColorModeAreaScreenshot,
     ColorModeAreaTableScreenshot,
-    ColorModeLinearScreenshot,
-    ColorModeLinearTableScreenshot,
     ColorModeExpScreenshot,
     ColorModeExpTableScreenshot,
+    ColorModeLinearScreenshot,
+    ColorModeLinearTableScreenshot,
     ColosseumScreenshot,
     GodhomeScreenshot,
-    TimelineScreenshot,
+    OverviewScreenshot,
+    RoomAnalyticsScreenshot,
     SplitsScreenshot,
+    TimelineScreenshot,
+    TracesAllScreenshot,
+    TracesAnimatedScreenshot,
+    TracesNoneScreenshot,
 } from './_screenshots';
+import { SplitsList } from './_splits-list';
+import { SpoilerWrapper } from './_spoiler-wrapper';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
 import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
-import { Mouse, Palette, Spline, LayoutDashboard, Pin } from 'lucide-react';
-import { SpoilerWrapper } from './_spoiler-wrapper';
-import { SplitsList } from './_splits-list';
 
 export const metadata = {
     title: 'Analytics guide - HKViz',
@@ -169,7 +169,8 @@ Additional color scales are available from the dropdown menu displayed at the to
 
      <GodhomeScreenshot />
 
-     Similarly buildings like the Black Egg Temple and Bretta's house display the total of the rooms inside when using , but contain information about each room inside.
+     Similarly buildings like the Black Egg Temple and Bretta's house display the total of the rooms inside when using <a href="#map-coloring-by-variables">the map coloring feature</a>,
+     but allow viewing analytics for each room individually too.
 
 </SpoilerWrapper>
 

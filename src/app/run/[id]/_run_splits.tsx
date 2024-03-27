@@ -45,6 +45,7 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
         function handleClick() {
             console.log('split clicked', split);
             useViewOptionsStore.getState().setAnimationMsIntoGame(split.msIntoGame);
+            useViewOptionsStore.getState().showMapIfOverview();
 
             const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {

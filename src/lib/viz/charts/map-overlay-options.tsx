@@ -1,9 +1,10 @@
 import { Card } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { Fullscreen, Text } from 'lucide-react';
 import { useId } from 'react';
-import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { ZoomFollowTarget, type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 
 export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const id = useId();
@@ -12,8 +13,10 @@ export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore
     const setShowAreaNames = useViewOptionsStore((s) => s.setShowAreaNames);
     const setShowSubAreaNames = useViewOptionsStore((s) => s.setShowSubAreaNames);
 
-    const zoomFollowZone = useViewOptionsStore((s) => s.zoomFollowZone);
-    const setZoomFollowZone = useViewOptionsStore((s) => s.setZoomFollowZone);
+    const zoomFollowTarget = useViewOptionsStore((s) => s.zoomFollowTarget);
+    const setZoomFollowTarget = useViewOptionsStore((s) => s.setZoomFollowTarget);
+    const zoomFollowEnabled = useViewOptionsStore((s) => s.zoomFollowEnabled);
+    const setZoomFollowEnabled = useViewOptionsStore((s) => s.setZoomFollowEnabled);
     const zoomFollowTransition = useViewOptionsStore((s) => s.zoomFollowTransition);
     const setZoomFollowTransition = useViewOptionsStore((s) => s.setZoomFollowTransition);
 
@@ -57,14 +60,35 @@ export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore
             <div className="flex flex-col gap-1">
                 <h3 className="flex flex-row items-center gap-1 text-base font-semibold">
                     <Fullscreen className="h-4 w-4" />
-                    Auto zoom to area
+                    Auto zoom to
+                    <Select
+                        value={zoomFollowTarget}
+                        onValueChange={(v) => {
+                            setZoomFollowEnabled(true);
+                            setZoomFollowTarget(v as ZoomFollowTarget);
+                        }}
+                    >
+                        <SelectTrigger className="h-8 w-fit py-1 pl-2 pr-1 text-[0.7rem]">
+                            <SelectValue placeholder="Select a fruit" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectGroup>
+                                <SelectItem value={'current-zone' satisfies ZoomFollowTarget}>Current area</SelectItem>
+                                <SelectItem value={'visible-rooms' satisfies ZoomFollowTarget}>Visible map</SelectItem>
+                                {/* <SelectItem value={'player-movement' satisfies ZoomFollowTarget}>Player</SelectItem> */}
+                                {/* <SelectItem value={'recent-scenes' satisfies ZoomFollowTarget}>
+                                    Recent scenes
+                                </SelectItem> */}
+                            </SelectGroup>
+                        </SelectContent>
+                    </Select>
                 </h3>
                 <div className="flex flex-row gap-2">
                     <div className="flex flex-row items-center gap-2">
                         <Checkbox
                             id={id + 'zoom_follow_zone'}
-                            checked={zoomFollowZone}
-                            onCheckedChange={setZoomFollowZone}
+                            checked={zoomFollowEnabled}
+                            onCheckedChange={setZoomFollowEnabled}
                         />
                         <label
                             htmlFor={id + 'zoom_follow_zone'}
@@ -78,7 +102,7 @@ export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore
                             id={id + 'zoom_follow_transition'}
                             checked={zoomFollowTransition}
                             onCheckedChange={setZoomFollowTransition}
-                            disabled={!zoomFollowZone}
+                            disabled={!zoomFollowEnabled}
                         />
                         <label
                             htmlFor={id + 'zoom_follow_transition'}

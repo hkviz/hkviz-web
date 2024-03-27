@@ -18,6 +18,7 @@ export type TraceVisibility = 'all' | 'animated' | 'hide';
 export type RoomColorMode = 'area' | '1-var';
 export type MainCardTab = 'overview' | 'map';
 export type DisplayVersion = 'v1' | 'vnext';
+export type ZoomFollowTarget = 'current-zone' | 'visible-rooms' | 'player-movement' | 'recent-scenes';
 
 export function displayVersion(value: string | null): DisplayVersion {
     if (value === '1') return 'v1';
@@ -68,7 +69,8 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     showAreaNames: true,
                     showSubAreaNames: true,
 
-                    zoomFollowZone: true,
+                    zoomFollowTarget: 'current-zone' as ZoomFollowTarget,
+                    zoomFollowEnabled: true,
                     zoomFollowTransition: true,
                     zoomFollowTempDisabled: false,
                 },
@@ -375,9 +377,11 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     function setShowSubAreaNames(showSubAreaNames: boolean) {
                         set({ showSubAreaNames });
                     }
-
-                    function setZoomFollowZone(zoomFollowZone: boolean) {
-                        set({ zoomFollowZone });
+                    function setZoomFollowTarget(zoomFollowTarget: ZoomFollowTarget) {
+                        set({ zoomFollowTarget });
+                    }
+                    function setZoomFollowEnabled(zoomFollowEnabled: boolean) {
+                        set({ zoomFollowEnabled });
                     }
                     function setZoomFollowTransition(zoomFollowTransition: boolean) {
                         set({ zoomFollowTransition });
@@ -387,7 +391,23 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     }
 
                     function zoomFollowTransitionIsEnabled() {
-                        return get().zoomFollowZone && get().zoomFollowTransition && !get().zoomFollowTempDisabled;
+                        return get().zoomFollowEnabled && get().zoomFollowTransition && !get().zoomFollowTempDisabled;
+                    }
+
+                    function getZoomFollowTransitionSpeed() {
+                        const { isPlaying, zoomFollowTarget } = get();
+
+                        if (isPlaying && zoomFollowTarget === 'recent-scenes') {
+                            return 1000 / 10;
+                        } else {
+                            return 250;
+                        }
+                    }
+
+                    function showMapIfOverview() {
+                        if (get().mainCardTab === 'overview') {
+                            setMainCardTab('map');
+                        }
                     }
 
                     return {
@@ -422,10 +442,13 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         setRoomColorVar1Curve,
                         setShowAreaNames,
                         setShowSubAreaNames,
-                        setZoomFollowZone,
                         setZoomFollowTransition,
                         setZoomFollowTempDisabled,
                         zoomFollowTransitionIsEnabled,
+                        showMapIfOverview,
+                        setZoomFollowTarget,
+                        setZoomFollowEnabled,
+                        getZoomFollowTransitionSpeed,
                     };
                 },
             ),
