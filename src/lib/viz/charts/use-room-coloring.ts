@@ -12,7 +12,7 @@ function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
 
 export const darkenRoomColorForLightTheme = memoize(
     function darkenRoomColorForLightTheme(color: d3.HSLColor): string {
-        return color.copy({ l: color.l * 0.5, s: color.s * 0.5 }).formatHsl();
+        return color.copy({ l: color.l * 0.5, s: color.s * 0.8 }).formatHsl();
     },
     {
         isEqual: hslEquals,
@@ -59,10 +59,11 @@ export function useRoomColoring({
 
         function singleVarColormap(value: number) {
             const ratio = var1Curve.transformTo01(value, var1Max);
-            const colorMapColor = d3.color(d3.interpolateViridis(ratio))!;
             if (theme === 'light') {
-                return colorMapColor.darker(0.5).formatHex();
+                const colorMapColor = d3.color(d3.interpolateCool(ratio))!;
+                return colorMapColor.formatHex();
             } else {
+                const colorMapColor = d3.color(d3.interpolateViridis(ratio))!;
                 return colorMapColor.brighter(1).formatHex();
             }
         }

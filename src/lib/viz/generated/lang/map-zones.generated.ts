@@ -53,4 +53,8 @@ export const langMapZones = {
     WYRMSKIN: 'Cast-Off\nShell',
     FOG_CANYON: 'Fog Canyon',
     NONE: '',
+
+    // Manually added
+    PathOfPainArea: 'Path of Pain',
+    WorkshopArea: 'Workshop',
 } as Record<string, string>;

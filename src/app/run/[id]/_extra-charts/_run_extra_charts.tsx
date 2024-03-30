@@ -1,8 +1,8 @@
-import { CardContent } from '@/components/ui/card';
+import { cardHeaderSmallClasses, cardTitleSmallClasses } from '@/components/additions/cards';
+import { CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-import { CommandShortcut } from '@/components/ui/command';
-import { Table, TableCell, TableRow } from '@/components/ui/table';
-import { useId } from 'react';
+import { cn } from '@/lib/utils';
+import { useId, type ReactNode } from 'react';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
 import { CompletionChart } from './completion-chart';
 import { GeoChart } from './geo-chart';
@@ -12,10 +12,10 @@ import { SoulChart } from './soul-chart';
 
 export interface RunExtraChartsProps {
     useViewOptionsStore: UseViewOptionsStore;
-    className?: string;
+    resizeOptions: ReactNode;
 }
 
-export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChartsProps) {
+export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraChartsProps) {
     const isV1 = useViewOptionsStore((s) => s.isV1());
 
     const id = useId();
@@ -25,9 +25,15 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
 
     const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
     return (
-        <>
-            {isAnythingAnimating && (
-                <CardContent className={'flex flex-row gap-2' + (isV1 ? '' : ' p-4')}>
+        <div className="flex h-full flex-col">
+            <CardHeader className={cardHeaderSmallClasses}>
+                <CardTitle className={cn(cardTitleSmallClasses, 'flex w-full flex-row justify-between')}>
+                    Time-based charts
+                    {resizeOptions}
+                </CardTitle>
+            </CardHeader>
+            {(!isV1 || isAnythingAnimating) && (
+                <div className="flex flex-row gap-2 px-4 pb-2">
                     <Checkbox
                         id={id + 'follow_anim'}
                         checked={extraChartsFollowAnimation}
@@ -39,53 +45,55 @@ export function RunExtraCharts({ useViewOptionsStore, className }: RunExtraChart
                     >
                         Follow animation
                     </label>
-                </CardContent>
+                </div>
             )}
             <hr />
-            <div className="grow overflow-y-auto lg:shrink lg:basis-0">
-                {!isV1 && (
-                    <>
-                        <Table className="pb-2">
-                            <TableRow>
-                                <TableCell className="p-1 pl-4">
-                                    {isMac ? (
-                                        <CommandShortcut>⌘ + Click</CommandShortcut>
-                                    ) : (
-                                        <CommandShortcut>Ctrl + Click</CommandShortcut>
-                                    )}
-                                </TableCell>
-                                <TableCell className="p-1">select time on map.</TableCell>
-                            </TableRow>
-                            <TableRow className="pb-2">
-                                <TableCell className="p-1 pl-4">
-                                    <CommandShortcut>Drag</CommandShortcut>
-                                </TableCell>
-                                <TableCell className="p-1">zoom into graph.</TableCell>
-                            </TableRow>
-                            <TableRow className="pb-2">
-                                <TableCell className="p-1 pl-4">
-                                    <CommandShortcut>Click</CommandShortcut>
-                                </TableCell>
-                                <TableCell className="p-1">zoom out of graph.</TableCell>
-                            </TableRow>
-                        </Table>
-                        <hr />
-                    </>
-                )}
-                <GeoChart useViewOptionsStore={useViewOptionsStore} />
-                <hr />
-                <HealthChart useViewOptionsStore={useViewOptionsStore} />
-                <hr />
-                {!isV1 && (
-                    <>
-                        <SoulChart useViewOptionsStore={useViewOptionsStore} />
-                        <hr />
-                    </>
-                )}
-                <CompletionChart useViewOptionsStore={useViewOptionsStore} />
-                <hr />
-                <GrubChart useViewOptionsStore={useViewOptionsStore} />
+            <div className="shrink grow overflow-y-auto">
+                <div className="grow overflow-y-auto lg:shrink lg:basis-0">
+                    {!isV1 && (
+                        <>
+                            {/* <Table className="pb-2">
+                                <TableRow>
+                                    <TableCell className="p-1 pl-4">
+                                        {isMac ? (
+                                            <CommandShortcut>⌘ + Click</CommandShortcut>
+                                        ) : (
+                                            <CommandShortcut>Ctrl + Click</CommandShortcut>
+                                        )}
+                                    </TableCell>
+                                    <TableCell className="p-1">select time on map.</TableCell>
+                                </TableRow>
+                                <TableRow className="pb-2">
+                                    <TableCell className="p-1 pl-4">
+                                        <CommandShortcut>Drag</CommandShortcut>
+                                    </TableCell>
+                                    <TableCell className="p-1">zoom into graph.</TableCell>
+                                </TableRow>
+                                <TableRow className="pb-2">
+                                    <TableCell className="p-1 pl-4">
+                                        <CommandShortcut>Click</CommandShortcut>
+                                    </TableCell>
+                                    <TableCell className="p-1">zoom out of graph.</TableCell>
+                                </TableRow>
+                            </Table> */}
+                            <hr />
+                        </>
+                    )}
+                    <GeoChart useViewOptionsStore={useViewOptionsStore} />
+                    <hr />
+                    <HealthChart useViewOptionsStore={useViewOptionsStore} />
+                    <hr />
+                    {!isV1 && (
+                        <>
+                            <SoulChart useViewOptionsStore={useViewOptionsStore} />
+                            <hr />
+                        </>
+                    )}
+                    <CompletionChart useViewOptionsStore={useViewOptionsStore} />
+                    <hr />
+                    <GrubChart useViewOptionsStore={useViewOptionsStore} />
+                </div>
             </div>
-        </>
+        </div>
     );
 }

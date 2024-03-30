@@ -73,7 +73,7 @@ export function HKMapZoom({
             if (!svg.current || !zoom.current) return;
             const scale = Math.min(
                 3.5, // is already zoomed in quite a bit, beyond that might be distracting in an animation
-                Math.min(mapVisualExtends.size.x / bounds.size.x, mapVisualExtends.size.y / bounds.size.y) * 0.9,
+                Math.min(mapVisualExtends.size.x / bounds.size.x, mapVisualExtends.size.y / bounds.size.y) * 0.8,
             );
 
             svg.current.interrupt();

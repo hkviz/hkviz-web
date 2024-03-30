@@ -1,3 +1,5 @@
+import { cardHeaderSmallClasses, cardTitleSmallClasses } from '@/components/additions/cards';
+import { CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
@@ -87,7 +89,7 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
                 onClick={handleClick}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className="relative flex w-full flex-row gap-2 p-4"
+                className="relative flex w-full flex-row gap-2 p-3 pl-4"
             >
                 <div className={cn('absolute bottom-0 left-0 top-0 w-1', split.group.color.background)}></div>
                 {icon}
@@ -103,11 +105,11 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
         </TableRow>
     );
 });
-interface Props {
+interface RunSplitsRowsProps {
     useViewOptionsStore: UseViewOptionsStore;
 }
 
-function RunSplitsRows({ useViewOptionsStore }: Props) {
+function RunSplitsRows({ useViewOptionsStore }: RunSplitsRowsProps) {
     const filteredSplits = useViewOptionsStore((state) => state.filteredSplits);
     const nextSplitIndex = useViewOptionsStore((state) => state.nextSplitIndex);
 
@@ -168,7 +170,12 @@ function RunSplitsRows({ useViewOptionsStore }: Props) {
     );
 }
 
-export function RunSplits({ useViewOptionsStore }: Props) {
+interface RunSplitsProps {
+    useViewOptionsStore: UseViewOptionsStore;
+    resizeOptions: ReactNode;
+}
+
+export function RunSplits({ useViewOptionsStore, resizeOptions }: RunSplitsProps) {
     const id = useId();
     const setVisibleSplitGroups = useViewOptionsStore((state) => state.setVisibleSplitGroups);
     const visibleSplitGroups = useViewOptionsStore((state) => state.visibleSplitGroups);
@@ -182,34 +189,36 @@ export function RunSplits({ useViewOptionsStore }: Props) {
     );
 
     return (
-        <>
-            <div>
-                <div className="flex flex-wrap gap-2 p-4">
-                    {recordingSplitGroups.map((group) => {
-                        const checked = visibleSplitGroups.includes(group);
-                        return (
-                            <div className="flex flex-row gap-2" key={group.name}>
-                                <Checkbox
-                                    id={id + '_run_split_option_' + group.name}
-                                    checked={checked}
-                                    onCheckedChange={(checked) =>
-                                        setVisibleSplitGroupChecked(group, checked as boolean)
-                                    }
-                                    className={group.color.checkbox}
-                                />
-                                <label
-                                    htmlFor={id + '_run_split_option_' + group.name}
-                                    className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                >
-                                    {group.displayName}
-                                </label>
-                            </div>
-                        );
-                    })}
-                </div>
+        <div className="flex h-full flex-col">
+            <CardHeader className={cardHeaderSmallClasses}>
+                <CardTitle className={cn(cardTitleSmallClasses, 'flex w-full flex-row justify-between')}>
+                    Splits
+                    {resizeOptions}
+                </CardTitle>
+            </CardHeader>
+            <div className="flex flex-wrap gap-1 p-3 pt-0">
+                {recordingSplitGroups.map((group) => {
+                    const checked = visibleSplitGroups.includes(group);
+                    return (
+                        <div className="flex flex-row gap-2" key={group.name}>
+                            <Checkbox
+                                id={id + '_run_split_option_' + group.name}
+                                checked={checked}
+                                onCheckedChange={(checked) => setVisibleSplitGroupChecked(group, checked as boolean)}
+                                className={group.color.checkbox}
+                            />
+                            <label
+                                htmlFor={id + '_run_split_option_' + group.name}
+                                className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                            >
+                                {group.displayName}
+                            </label>
+                        </div>
+                    );
+                })}
             </div>
             <hr />
             <RunSplitsRows useViewOptionsStore={useViewOptionsStore} />
-        </>
+        </div>
     );
 }

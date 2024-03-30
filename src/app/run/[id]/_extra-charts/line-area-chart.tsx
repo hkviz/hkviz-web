@@ -460,7 +460,7 @@ export function LineAreaChart({
 
                         return (
                             <TableRow key={key}>
-                                <TableCell>
+                                <TableCell className={isV1 ? '' : 'p-2 pl-3'}>
                                     <div className="flex flex-row items-center gap-2">
                                         {isShowable ? (
                                             <Checkbox
@@ -480,7 +480,7 @@ export function LineAreaChart({
                                         </label>
                                     </div>
                                 </TableCell>
-                                <TableCell className="text-right">
+                                <TableCell className={isV1 ? '' : 'p-2 text-right'}>
                                     {currentEndOfGame?.[key] ?? 0}
                                     <span className="ml-2">
                                         <UnitIcon
