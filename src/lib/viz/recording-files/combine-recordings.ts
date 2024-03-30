@@ -222,6 +222,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                     if (isTransitioning) {
                         continue;
                     }
+                    event.calcMapPosition();
                     const playerPositionChanged =
                         previousPositionEventWithChangedPosition?.position?.equals(event.position) !== true;
                     if (playerPositionChanged) {

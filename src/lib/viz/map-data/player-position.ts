@@ -3,7 +3,7 @@ import { Vector2 } from '../types/vector2';
 import { mainRoomDataBySceneName } from './rooms';
 
 export function playerPositionToMapPosition(playerPosition: Vector2, sceneEvent: SceneEvent): Vector2 | undefined {
-    const mapRoom = mainRoomDataBySceneName.get(sceneEvent.sceneName);
+    const mapRoom = mainRoomDataBySceneName.get(sceneEvent.getMainVirtualSceneName());
     if (!mapRoom || !sceneEvent.originOffset || !sceneEvent.sceneSize) return undefined;
 
     const { playerPositionBounds } = mapRoom;

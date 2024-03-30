@@ -443,8 +443,8 @@ export function LineAreaChart({
     }, [mainEffectChanges, isAnythingAnimating]);
 
     return (
-        <div className="overflow-hidden">
-            <h3 className="pt-3 text-center">{header}</h3>
+        <div className="snap-start snap-always overflow-hidden">
+            <h3 className="-mb-3 pt-2 text-center">{header}</h3>
             <svg
                 ref={svgRef}
                 width={widthWithMargin}

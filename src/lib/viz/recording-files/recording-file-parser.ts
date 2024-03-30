@@ -347,14 +347,5 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
         i++;
     }
 
-    for (const event of events) {
-        if (event instanceof PlayerPositionEvent) {
-            // map position is calculated after a whole file is parsed
-            // since the scene bounds might be set after the first position
-            // within a scene
-            event.calcMapPosition();
-        }
-    }
-
     return new ParsedRecording(events, unknownEvents, parsingErrors, combinedPartNumber);
 }

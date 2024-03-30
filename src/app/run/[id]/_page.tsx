@@ -166,6 +166,8 @@ function ResizeButtons({
     );
 }
 
+const DEFAULT_EXTRA_CHARTS_SIZE = 63;
+
 function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const isV1 = useViewOptionsStore((s) => s.isV1());
 
@@ -182,7 +184,7 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
     }
 
     function both() {
-        extraChartsPanelRef.current?.resize(55);
+        extraChartsPanelRef.current?.resize(DEFAULT_EXTRA_CHARTS_SIZE);
     }
 
     const onLayout: PanelGroupOnLayout = (sizes) => {
@@ -224,7 +226,7 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
             onLayout={onLayout}
         >
             <ResizablePanel
-                defaultSize={55}
+                defaultSize={DEFAULT_EXTRA_CHARTS_SIZE}
                 collapsible
                 minSize={30}
                 className={cn(cardClasses, 'min-h-[44px]')}
@@ -236,7 +238,7 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
                 <>
                     <ResizableHandle withHandle className="bg-transparent p-1" />
                     <ResizablePanel
-                        defaultSize={45}
+                        defaultSize={100 - DEFAULT_EXTRA_CHARTS_SIZE}
                         collapsible
                         minSize={30}
                         className={cn(cardClasses, 'min-h-[44px]')}

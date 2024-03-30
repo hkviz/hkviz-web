@@ -1,6 +1,8 @@
 import { cardHeaderSmallClasses, cardTitleSmallClasses } from '@/components/additions/cards';
 import { CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import { CommandShortcut } from '@/components/ui/command';
+import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { useId, type ReactNode } from 'react';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
@@ -25,7 +27,7 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
 
     const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
     return (
-        <div className="flex h-full flex-col">
+        <div className="flex h-full snap-start flex-col">
             <CardHeader className={cardHeaderSmallClasses}>
                 <CardTitle className={cn(cardTitleSmallClasses, 'flex w-full flex-row justify-between')}>
                     Time-based charts
@@ -48,11 +50,11 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                 </div>
             )}
             <hr />
-            <div className="shrink grow overflow-y-auto">
-                <div className="grow overflow-y-auto lg:shrink lg:basis-0">
-                    {!isV1 && (
-                        <>
-                            {/* <Table className="pb-2">
+            <div className="shrink grow snap-y snap-proximity overflow-y-auto lg:shrink lg:basis-0">
+                {!isV1 && (
+                    <>
+                        <Table className="pb-2">
+                            <TableBody>
                                 <TableRow>
                                     <TableCell className="p-1 pl-4">
                                         {isMac ? (
@@ -75,24 +77,24 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                                     </TableCell>
                                     <TableCell className="p-1">zoom out of graph.</TableCell>
                                 </TableRow>
-                            </Table> */}
-                            <hr />
-                        </>
-                    )}
-                    <GeoChart useViewOptionsStore={useViewOptionsStore} />
-                    <hr />
-                    <HealthChart useViewOptionsStore={useViewOptionsStore} />
-                    <hr />
-                    {!isV1 && (
-                        <>
-                            <SoulChart useViewOptionsStore={useViewOptionsStore} />
-                            <hr />
-                        </>
-                    )}
-                    <CompletionChart useViewOptionsStore={useViewOptionsStore} />
-                    <hr />
-                    <GrubChart useViewOptionsStore={useViewOptionsStore} />
-                </div>
+                            </TableBody>
+                        </Table>
+                        <hr />
+                    </>
+                )}
+                <GeoChart useViewOptionsStore={useViewOptionsStore} />
+                <hr />
+                <HealthChart useViewOptionsStore={useViewOptionsStore} />
+                <hr />
+                {!isV1 && (
+                    <>
+                        <SoulChart useViewOptionsStore={useViewOptionsStore} />
+                        <hr />
+                    </>
+                )}
+                <CompletionChart useViewOptionsStore={useViewOptionsStore} />
+                <hr />
+                <GrubChart useViewOptionsStore={useViewOptionsStore} />
             </div>
         </div>
     );

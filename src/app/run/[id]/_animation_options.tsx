@@ -201,8 +201,8 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
 function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
-    const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
-    const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
+    // const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
+    // const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const isDisabled = useViewOptionsStore((s) => !s.recording);
     const showMapIfOverview = useViewOptionsStore((s) => s.showMapIfOverview);
@@ -213,7 +213,7 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
             min={timeFrame.min}
             max={timeFrame.max}
             step={100}
-            className="-mx-2.5 -my-4 grow py-4"
+            className="-my-4 grow py-4"
             disabled={isDisabled}
             onValueChange={(values) => {
                 setAnimationMsIntoGame(values[0]!);
@@ -239,7 +239,9 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
         <>
             <AnimationTimeLineDuration useViewOptionsStore={useViewOptionsStore} />
             <div className="relative flex w-full shrink grow flex-col gap-2">
-                <AnimationTimeLineSlider useViewOptionsStore={useViewOptionsStore} />
+                <div className="-mx-2">
+                    <AnimationTimeLineSlider useViewOptionsStore={useViewOptionsStore} />
+                </div>
                 {!isV1 && hoveredMsIntoGame != null && (
                     <div
                         className="absolute bottom-0 top-0 w-[1px] bg-foreground"
