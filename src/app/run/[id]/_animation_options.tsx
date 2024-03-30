@@ -213,7 +213,7 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
             min={timeFrame.min}
             max={timeFrame.max}
             step={100}
-            className="-my-4 grow py-4"
+            className="-mx-2.5 -my-4 grow py-4"
             disabled={isDisabled}
             onValueChange={(values) => {
                 setAnimationMsIntoGame(values[0]!);

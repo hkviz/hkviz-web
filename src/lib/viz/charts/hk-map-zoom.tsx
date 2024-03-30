@@ -1,11 +1,14 @@
 'use client';
 
 import * as d3 from 'd3';
-import { useCallback, useEffect, useMemo, type MutableRefObject } from 'react';
+import { useCallback, useEffect, useMemo, useRef, type MutableRefObject } from 'react';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { mainRoomDataBySceneName, roomData } from '../map-data/rooms';
+import { ZoomZone } from '../map-data/zoom-zone';
 import { Bounds } from '../types/bounds';
+
+const EMPTY_ARRAY = [] as const;
 
 export function HKMapZoom({
     useViewOptionsStore,
@@ -26,12 +29,13 @@ export function HKMapZoom({
     const positionEvents = recording?.playerPositionEventsWithTracePosition;
     const sceneEvents = recording?.sceneEvents;
 
-    const zoneName = useMemo(() => {
+    const previousZoomZone = useRef<ZoomZone | null>(null);
+    const zoomZones = useMemo(() => {
         if (!zoomFollowEnabled || zoomFollowTarget !== 'current-zone') return null;
         const sceneName = recording?.sceneEvents.findLast((e) => e.msIntoGame <= animatedMsIntoGame)?.sceneName;
         if (!sceneName) return null;
         const roomData = mainRoomDataBySceneName.get(sceneName);
-        return roomData?.zoneNameFormatted ?? null;
+        return roomData?.zoomZones ?? EMPTY_ARRAY;
     }, [animatedMsIntoGame, recording?.sceneEvents, zoomFollowEnabled, zoomFollowTarget]);
 
     const visibleRoomsExtends = useMemo(() => {
@@ -90,12 +94,20 @@ export function HKMapZoom({
     );
 
     useEffect(() => {
-        if (!zoneName) return;
-        const rooms = roomData.filter((r) => r.zoneNameFormatted === zoneName);
+        if (!zoomZones) {
+            previousZoomZone.current = null;
+            return;
+        }
+        const newZone = zoomZones.includes(previousZoomZone.current!) ? previousZoomZone.current : zoomZones[0] ?? null;
+        if (previousZoomZone.current === newZone) return;
+        previousZoomZone.current = newZone;
+        if (newZone === null) return;
+
+        const rooms = roomData.filter((r) => r.zoomZones.includes(newZone as ZoomZone));
         if (rooms.length === 0) return;
         const bounds = Bounds.fromContainingBounds(rooms.map((r) => r.visualBounds));
         zoomToBounds(bounds);
-    }, [zoneName, zoomToBounds]);
+    }, [zoomZones, zoomToBounds]);
 
     useEffect(() => {
         if (!visibleRoomsExtends) return;

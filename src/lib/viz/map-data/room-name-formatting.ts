@@ -178,31 +178,55 @@ export function formatZoneName(zoneName: string | undefined, roomName: string) {
     }
 
     if (!zoneName) return 'Unknown area';
-    return (
-        zoneName
-            .replace('ABYSS', 'The Abyss')
-            // handled above .replace('-', 'Ancient Basin')
-            .replace('CITY', 'City of Tears')
-            // TODO maybe later .replace('-', 'Colosseum of Fools')
-            .replace('MINES', 'Crystal Peak')
-            .replace('DEEPNEST', 'Deepnest')
-            .replace('TOWN', 'Dirtmouth')
-            .replace('FOG_CANYON', 'Fog Canyon')
-            .replace('CROSSROADS', 'Forgotten Crossroads')
-            .replace('WASTES', 'Fungal Wastes')
-            .replace('GODS_GLORY', 'Godhome')
-            .replace('GREEN_PATH', 'Greenpath')
-            // handled above .replace('-', 'Hive')
-            .replace('CLIFFS', 'Howling Cliffs')
-            .replace('OUTSKIRTS', "Kingdom's Edge")
-            .replace('ROYAL_GARDENS', "Queen's Gardens")
-            .replace('RESTING_GROUNDS', 'Resting Grounds')
-            .replace('WATERWAYS', 'Royal Waterways')
-            .replace('WHITE_PALACE', 'White Palace')
-    );
-}
 
-export function formatZoneAndRoomName(zoneName: string | undefined, roomName: string) {
+    switch (zoneName) {
+        case 'ABYSS':
+            return 'The Abyss';
+        case 'CITY':
+            return 'City of Tears';
+        case 'MINES':
+            return 'Crystal Peak';
+        case 'DEEPNEST':
+            return 'Deepnest';
+        case 'TOWN':
+            return 'Dirtmouth';
+        case 'FOG_CANYON':
+            return 'Fog Canyon';
+        case 'CROSSROADS':
+            return 'Forgotten Crossroads';
+        case 'WASTES':
+            return 'Fungal Wastes';
+        case 'GODS_GLORY':
+            return 'Godhome';
+        case 'GREEN_PATH':
+            return 'Greenpath';
+        // handled above: case 'HIVE': return 'Hive';
+        case 'CLIFFS':
+            return 'Howling Cliffs';
+        case 'OUTSKIRTS':
+            return "Kingdom's Edge";
+        case 'ROYAL_GARDENS':
+            return "Queen's Gardens";
+        case 'RESTING_GROUNDS':
+            return 'Resting Grounds';
+        case 'WATERWAYS':
+            return 'Royal Waterways';
+        case 'WHITE_PALACE':
+            return 'White Palace';
+        default:
+            return zoneName as never;
+    }
+}
+export type ZoneNameFormatted = ReturnType<typeof formatZoneName>;
+
+export function formatZoneAndRoomName(
+    zoneName: string | undefined,
+    roomName: string,
+): {
+    zoneNameFormatted: ZoneNameFormatted;
+    roomNameFormatted: string;
+    roomNameFormattedZoneExclusive: string;
+} {
     const zoneNameFormatted = formatZoneName(zoneName, roomName);
     const roomNameFormatted = formatRoomName(zoneName, roomName);
 

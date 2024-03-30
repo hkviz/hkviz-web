@@ -1,4 +1,4 @@
-import { BossSequenceData } from '../../player-data/boss-sequence';
+import { type BossSequenceData } from '../../player-data/boss-sequence';
 import { type Vector2 } from '../../types/vector2';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 

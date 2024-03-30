@@ -11,6 +11,7 @@ import { roomGroupByName } from './room-groups';
 import { formatZoneAndRoomName } from './room-name-formatting';
 import { getSubSprites } from './room-sub-sprites';
 import { scaleBounds } from './scaling';
+import { getZoomZones } from './zoom-zone';
 
 const roomDataUnscaledWithCustom: Array<UnprocessedRoomInfo | CustomRoomInfo> = [
     ...roomDataUnscaled.rooms,
@@ -113,9 +114,13 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 
     const texts = room.texts.map((text) => prepareTextExportData(text));
 
+    const names = formatZoneAndRoomName(room.mapZone, room.sceneName);
+    const zoomZones = getZoomZones(room.sceneName, names.zoneNameFormatted);
+
     const roomCorrected = {
         ...omit(room, ['sprite', 'spriteInfo']),
-        ...formatZoneAndRoomName(room.mapZone, room.sceneName),
+        ...names,
+        zoomZones,
         spritesByVariant,
         sprites,
         allSpritesScaledPositionBounds,
