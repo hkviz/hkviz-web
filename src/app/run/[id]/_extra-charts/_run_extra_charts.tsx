@@ -27,7 +27,7 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
 
     const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
     return (
-        <div className="flex h-full max-h-full snap-start flex-col">
+        <div className="flex h-full snap-start flex-col">
             <CardHeader className={cardHeaderSmallClasses}>
                 <CardTitle className={cn(cardTitleSmallClasses, 'flex w-full flex-row justify-between')}>
                     Time-based charts
@@ -50,7 +50,7 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                 </div>
             )}
             <hr />
-            <div className="shrink grow basis-0 overflow-y-scroll lg:snap-y lg:snap-proximity">
+            <div className="shrink grow snap-y snap-proximity overflow-y-auto lg:shrink lg:basis-0">
                 {!isV1 && (
                     <div className="snap-start snap-always">
                         <Table className="pb-2">

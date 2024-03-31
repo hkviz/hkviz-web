@@ -142,7 +142,7 @@ function RunSplitsRows({ useViewOptionsStore }: RunSplitsRowsProps) {
     }, [nextSplitIndex, filteredSplits.length]);
 
     return (
-        <div className="shrink grow basis-0 overflow-y-scroll" ref={scrollDivRef}>
+        <div className="grow overflow-y-auto lg:shrink lg:basis-0" ref={scrollDivRef}>
             <Table className="w-full">
                 <TableBody>
                     {filteredSplits?.map((split, index) => {
@@ -189,7 +189,7 @@ export function RunSplits({ useViewOptionsStore, resizeOptions }: RunSplitsProps
     );
 
     return (
-        <div className="flex h-full max-h-full flex-col">
+        <div className="flex h-full flex-col">
             <CardHeader className={cardHeaderSmallClasses}>
                 <CardTitle className={cn(cardTitleSmallClasses, 'flex w-full flex-row justify-between')}>
                     Splits
