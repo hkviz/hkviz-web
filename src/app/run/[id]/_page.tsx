@@ -222,7 +222,7 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
     return (
         <ResizablePanelGroup
             direction="vertical"
-            className="h-unset-important min-h-[calc(100vh-var(--main-nav-height))] lg:min-h-[35rem] lg:max-w-[380px]"
+            className="h-unset-important min-h-[calc(100vh-var(--main-nav-height))] lg:min-h-[35rem] lg:max-w-[350px]"
             onLayout={onLayout}
         >
             <ResizablePanel

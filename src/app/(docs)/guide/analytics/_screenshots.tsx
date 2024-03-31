@@ -63,29 +63,32 @@ export function OverviewScreenshot() {
                 {/* <ImageArea positionClassName="left-[1%] top-[9%] h-[32%] w-[28%]" href="#map-options">
                     Map options
                 </ImageArea> */}
-                <ImageArea positionClassName="left-[1%] top-[16%] h-[8%] w-[28%]" href="#room-visibility">
+                <ImageArea positionClassName="left-[1%] top-[13.5%] h-[6.5%] w-[28%]" href="#room-visibility">
                     Room visibility
                 </ImageArea>
-                <ImageArea positionClassName="left-[1%] top-[24.5%] h-[8%] w-[28%]" href="#player-movement-and-traces">
+                <ImageArea
+                    positionClassName="left-[1%] top-[20.25%] h-[6.5%] w-[28%]"
+                    href="#player-movement-and-traces"
+                >
                     Traces
                 </ImageArea>
-                <ImageArea positionClassName="left-[1%] top-[33%] h-[8%] w-[28%]" href="#map-coloring-by-variables">
+                <ImageArea positionClassName="left-[1%] top-[27%] h-[6.5%] w-[28%]" href="#map-coloring-by-variables">
                     Room colors
                 </ImageArea>
-                <ImageArea positionClassName="left-[1%] top-[42%] h-[57%] w-[28%]" href="#map-coloring-by-variables">
+                <ImageArea positionClassName="left-[1%] top-[36%] h-[63%] w-[28%]" href="#map-coloring-by-variables">
                     Room analytics
                 </ImageArea>
-                <ImageArea positionClassName="left-[30%] top-[9%] h-[83%] w-[38%]" href="#map">
+                <ImageArea positionClassName="left-[30%] top-[8%] h-[85%] w-[35.25%]" href="#map">
                     Map
                 </ImageArea>
-                <ImageArea positionClassName="left-[30%] top-[93%] h-[6%] w-[38%]" href="#timeline">
+                <ImageArea positionClassName="left-[30%] top-[93.5%] h-[5.5%] w-[35.25%]" href="#timeline">
                     Timeline
                 </ImageArea>
-                <ImageArea positionClassName="left-[68.5%] top-[9%] h-[90%] w-[31%]" href="#splits">
-                    Splits
-                </ImageArea>
-                <ImageArea positionClassName="left-[82%] top-[9%] h-[8%] w-[10%]" href="#time-charts">
+                <ImageArea positionClassName="left-[66%] top-[8%] h-[57%] w-[33%]" href="#time-charts">
                     Time charts
+                </ImageArea>
+                <ImageArea positionClassName="left-[66%] top-[65.75%] h-[33%] w-[33%]" href="#splits">
+                    Splits
                 </ImageArea>
             </ImageAreaShadow>
         </ImageContainer>
