@@ -52,7 +52,7 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
             <hr />
             <div className="shrink grow snap-y snap-proximity overflow-y-auto lg:shrink lg:basis-0">
                 {!isV1 && (
-                    <>
+                    <div className="snap-start snap-always">
                         <Table className="pb-2">
                             <TableBody>
                                 <TableRow>
@@ -80,7 +80,7 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                             </TableBody>
                         </Table>
                         <hr />
-                    </>
+                    </div>
                 )}
                 <GeoChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />
