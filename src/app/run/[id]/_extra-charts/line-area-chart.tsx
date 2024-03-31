@@ -480,7 +480,7 @@ export function LineAreaChart({
                                         </label>
                                     </div>
                                 </TableCell>
-                                <TableCell className={isV1 ? '' : 'p-2 text-right'}>
+                                <TableCell className={isV1 ? '' : 'text-nowrap p-2 text-right'}>
                                     {currentEndOfGame?.[key] ?? 0}
                                     <span className="ml-2">
                                         <UnitIcon
