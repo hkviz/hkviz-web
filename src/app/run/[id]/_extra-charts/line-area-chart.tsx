@@ -169,6 +169,32 @@ export function LineAreaChart({
             .range([0, width]);
     }, [recording, width]);
 
+    const maxYOverAllTime = useMemo(() => {
+        return Math.max(d3.max(series.at(-1)!, (d) => d[1]) ?? minimalMaximumY, minimalMaximumY);
+    }, [minimalMaximumY, series]);
+
+    const maxYInSelection = useMemo(() => {
+        if (isV1) return maxYOverAllTime;
+        const s = series.at(-1)!;
+        const minMsIntoGame = debouncedExtraChartsTimeBounds[0];
+        const maxMsIntoGame = debouncedExtraChartsTimeBounds[1];
+        const max =
+            d3.max(s, (d, i) => {
+                const dMsIntoGame = d.data.msIntoGame;
+                const dNextMsIntoGame = s[i + 1]?.data.msIntoGame ?? dMsIntoGame;
+                function isInRange(msIntoGame: number | null) {
+                    if (msIntoGame == null) return false;
+                    return msIntoGame >= minMsIntoGame && msIntoGame <= maxMsIntoGame;
+                }
+                const isInRangeOrClose =
+                    isInRange(dMsIntoGame) ||
+                    (dMsIntoGame < minMsIntoGame && (dNextMsIntoGame > maxMsIntoGame || i === s.length - 1));
+
+                return isInRangeOrClose ? d[1] : 0;
+            }) ?? 0;
+        return Math.max(max, minimalMaximumY);
+    }, [debouncedExtraChartsTimeBounds, isV1, maxYOverAllTime, minimalMaximumY, series]);
+
     // const y = useMemo(() => {
     //     return d3
     //         .scaleLinear()
@@ -192,9 +218,16 @@ export function LineAreaChart({
     const y = useMemo(() => {
         return d3
             .scaleLinear()
-            .domain([0, d3.max(series.at(-1)!, (d) => d[1]) ?? minimalMaximumY] as [number, number])
+            .domain([0, maxYOverAllTime] as [number, number])
             .rangeRound([height, 0]);
-    }, [series, height, minimalMaximumY]);
+    }, [maxYOverAllTime, height]);
+
+    const yInSelection = useMemo(() => {
+        return d3
+            .scaleLinear()
+            .domain([0, maxYInSelection] as [number, number])
+            .rangeRound([height, 0]);
+    }, [maxYInSelection, height]);
 
     const skipNextUpdate = useRef(false);
     const onBrushEnd = useEvent((event: D3BrushEvent<unknown>) => {
@@ -270,6 +303,7 @@ export function LineAreaChart({
             .selectAll()
             .data(series)
             .join('path')
+            .attr('transform-origin', '0 80%')
             .attr('class', (d) => variablesPerKey[d.key]?.classNames?.path ?? '');
         areaPaths.current.append('title').text((d) => d.key);
 
@@ -350,6 +384,7 @@ export function LineAreaChart({
         setHoveredMsIntoGame,
         setAnimationMsIntoGame,
         setHoveredRoom,
+        isV1,
     ]);
 
     // update area
@@ -383,14 +418,16 @@ export function LineAreaChart({
 
         const scaleX = Math.round(((maxX - zeroX) / width) * 100) / 100;
 
+        const scaleY = Math.round((maxYOverAllTime / maxYInSelection) * 100) / 100;
+
         const base =
             paths.attr('data-existed') === 'true'
                 ? paths.transition().duration(transitionDuration).ease(d3.easeLinear)
                 : paths;
         paths.attr('data-existed', 'true');
 
-        base.attr('transform', `translate(${zeroX} 0) scale(${scaleX} 1)`);
-    }, [mainEffectChanges, timeFrame.max, width, x]);
+        base.attr('transform', `translate(${zeroX} 0) scale(${scaleX} ${scaleY})`);
+    }, [mainEffectChanges, maxYInSelection, maxYOverAllTime, timeFrame.max, width, x]);
 
     // update x axis
     useEffect(() => {
@@ -416,10 +453,10 @@ export function LineAreaChart({
             ? yAxis.current
             : yAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear);
 
-        base.call(d3.axisLeft(y).ticks(height / 50));
+        base.call(d3.axisLeft(yInSelection).ticks(height / 50));
         // .call((g) => g.select('.domain').remove())
         // .call((g) => g.selectAll('.tick line').clone().attr('x2', width).attr('stroke-opacity', 0.1));
-    }, [mainEffectChanges, height, y]);
+    }, [mainEffectChanges, height, yInSelection]);
 
     // update animation line
     useEffect(() => {
