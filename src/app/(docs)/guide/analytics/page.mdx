@@ -1,10 +1,13 @@
 import { LayoutDashboard, Mouse, Palette, Pin, Spline } from 'lucide-react';
 import Link from 'next/link';
+import { ExternalLinkMdx } from '../../../_components/external-link';
 import { HKVizText } from '../../../_components/hkviz-text';
 import { MailLinkUnstyled } from '../../../_components/mail-link';
 import { MdxInnerWrapper } from '../../../_components/mdx-layout';
 import { SpoilerWarningEarlyGame } from '../../_spoiler_warning';
+import { LinkableParagraph } from './_linkable_paragraph';
 import {
+    BuildingsColormapScreenshot,
     ColorModeAreaScreenshot,
     ColorModeAreaTableScreenshot,
     ColorModeExpScreenshot,
@@ -16,19 +19,16 @@ import {
     OverviewScreenshot,
     RoomAnalyticsScreenshot,
     SplitsScreenshot,
+    SubroomsScreenshot,
     TimelineScreenshot,
     TracesAllScreenshot,
     TracesAnimatedScreenshot,
     TracesNoneScreenshot,
-    BuildingsColormapScreenshot,
-    SubroomsScreenshot,
 } from './_screenshots';
 import { SplitsList } from './_splits-list';
 import { SpoilerWrapper } from './_spoiler-wrapper';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
 import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
-import { LinkableParagraph } from './_linkable_paragraph';
-import { PinParagraph } from './_paragraphs';
 
 export const metadata = {
     title: 'Analytics guide - HKViz',
@@ -42,7 +42,7 @@ export const metadata = {
 Here you learn how to use the different parts of the <HKVizText /> gameplay analytics page.
 It is accessible by clicking on one of your gameplays on the <Link href="/">start page</Link> or by viewing a gameplay from the <Link href="/run">public gameplays page</Link>.
 
-If you want to learn how to record the analytics while playing <a href="https://hollowknight.com">Hollow Knight</a>
+If you want to learn how to record the analytics while playing {<ExternalLinkMdx href="https://hollowknight.com">Hollow Knight</ExternalLinkMdx>}
 checkout the <Link href="/guide/install">mod install guide</Link>
 
 <SpoilerWarningEarlyGame />
@@ -57,7 +57,7 @@ checkout the <Link href="/guide/install">mod install guide</Link>
 
 ## Map
 
-The map forms the center of the analytics page. It displays the game map.
+The map forms the center of the analytics page. It is very similar to the in-game map, but with some modifications.
 
 The map is able to display player movement as traces, show which rooms are visited and allows displaying other information by recoloring the map itself.
 
@@ -119,7 +119,11 @@ You can choose between three options:
 By hovering over a room on the map, you can see the values of the variables for that room. Such as the time spent in the
 room and the number of deaths. Additionally the selected room and area is highlighted in the <a href="#timeline">timeline</a>.
 
-<PinParagraph />
+{<LinkableParagraph id="room-pin">
+To stop the shown room from changing by hovering over them, you can pin it with the <Pin className="inline-block h-4 w-4" aria-label="Pin" />-button in the room analytics panel or by clicking a room on the
+map.
+
+</LinkableParagraph>}
 
 By clicking on the <Palette className="inline-block h-4 w-4" aria-label="Color" />
 -button, you can choose a variable to color the map by. A single click will use a linear color scale, a second click will
@@ -153,7 +157,10 @@ switch to an exponential color scale.
 
 Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button.
 
-### Buildings and multi-room buildings
+### Special rooms
+
+The map in <HKVizText /> has a few modifications compared to the in-game map, to allow to analyze the gameplay in more areas.
+Like added maps for Godhome, White Palace and Birthplace. Additionally a few other modifications have been made:
 
 #### Buildings
 
@@ -162,7 +169,7 @@ Additional color scales are available from the dropdown menu displayed at the to
 Some parts of the Hollow Knight world are not represented on the Map directly, but are just hinted at by a building or door.
 For <HKVizText /> these have been cut out from the game sprites, to allow seeing analytics for these buildings inidividually.
 
-Inside the Hollow Knight map, the player location is not displayed when inside on of these buildings.
+In the game, the player location is not displayed when inside on of these buildings.
 In <HKVizText /> the player movement is displayed ontop of the buildings.
 
 #### Multi-room buildings
@@ -174,29 +181,61 @@ Some buildings contain multiple rooms, on the analytics are displayed for all ro
 
 By clicking on the building on the map, the analytics for each room inside can be displayed individually by using the buttons displayed for each room inside the building.
 
-### Colluseum, Pantehons and other special rooms
+<SpoilerWrapper title="Spoilers: show list of all multi-room buildings">
+    Other examples for multi-room buildings on the map are:
+    <li>
+        {
+            <ExternalLinkMdx
+                href="https://hollowknight.wiki/w/Forgotten_Crossroads#Sub-Area:_Temple_Of_The_Black_Egg"
+                target="_blank"
+            >
+                Black Egg Temple
+            </ExternalLinkMdx>
+        }
+    </li>
+    <li>
+        {
+            <ExternalLinkMdx href="https://hollowknight.wiki/w/Deepnest#Sub-area:_Beast's_Den" target="_blank">
+                Beasts Den
+            </ExternalLinkMdx>
+        }
+    </li>
+    <li>
+        {
+            <ExternalLinkMdx href="https://hollowknight.wiki/w/Greenpath#Sub-area:_Stone_Sanctuary" target="_blank">
+                Stone sancturary
+            </ExternalLinkMdx>
+        }
+    </li>
+    <li>
+        {
+            <ExternalLinkMdx href="https://hollowknight.wiki/w/Dirtmouth#The_Grimm_Troupe's_Tents" target="_blank">
+                Grimms tent
+            </ExternalLinkMdx>
+        }
+    </li>
+    {
+        <li>
+            The pantehons described in the <a href="#godhome">Godhome</a> section.
+        </li>
+    }
+</SpoilerWrapper>
 
-<SpoilerWrapper title="Show late game spoilers">
-    The ingame map has been extended to include some areas not displayed on the map in the game.
-    Some buildings and doors are displayed at a single spot on the map, but some still contain information about each
-    room inside.
+#### Colluseum
 
-    **The Colosseum of Fools**:
+<SpoilerWrapper title="Show colosseum spoilers">
+Unlike on the ingame map, each trial of the colosseum has its own sign on the map. Allowing to see room analytics, such as how often one has died in each of them.
+<ColosseumScreenshot />
 
-    Unlike on the ingame map, each trial of the colosseum has its own sign on the map. Allowing to see room analytics, such as how often one has died in each of them.
-    <ColosseumScreenshot />
+</SpoilerWrapper>
 
+#### Godhome
 
-    **Godhome**:
-
-    The Godhome displays a information for each pantheon / boss rush at its door.
-    By clicking on one of the doors on the map, one sees the overal analytics of the selected pantehon.
-    Analytics can also be displayed for each boss individually, by clicking on one of the bosses above the analytics.
-
-     <GodhomeScreenshot />
-
-     Similarly buildings like the Black Egg Temple and Bretta's house display the total of the rooms inside when using <a href="#map-coloring-by-variables">the map coloring feature</a>,
-     but allow viewing analytics for each room individually too.
+<SpoilerWrapper title="Show spoilers for Godhome">
+The Godhome displays a information for each pantheon / boss rush at its door, similar to <a href="#multi-room-buildings">multi-room buildings</a>.
+By clicking on one of the doors on the map, one sees the overal analytics of the selected pantehon.
+Analytics can also be displayed for each boss individually, by clicking on one of the bosses above the analytics.
+<GodhomeScreenshot />
 
 </SpoilerWrapper>
 
@@ -213,9 +252,9 @@ By toggling the checkboxes corresponding to the event types, the splits can be f
 
 Hovering over a split will highlight the room of the event on the <a href="#map">map</a>, and display a marker on the <a href="#timeline">timeline</a>.
 
-## Time charts
+## Time-based charts
 
-The time charts show some variables over time, such as the completion percentage, geo, number of collected grubs.
+The time-based charts show some variables over time, such as the completion percentage, geo, number of collected grubs.
 
 Hovering over a chart will show a marker on the <a href="#timeline">timeline</a>, the current room of the hovered time is highlighted on the <a href="#map">map</a>.
 
@@ -223,6 +262,8 @@ Hovering over a chart will show a marker on the <a href="#timeline">timeline</a>
 
 The timeline allows scrolling through a gameplay, to see the player location and room visibility at different points in time.
 On the right of the timeline the speed of the animation can be adjusted.
+
+TODO list:
 
 <TimelineScreenshot />
 

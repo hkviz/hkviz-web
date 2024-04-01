@@ -98,6 +98,7 @@ const predefinedRoomNames = {
     RestingGrounds_08: "Spirits' Glade",
     RestingGrounds_07: "Seer's Room",
     Room_Mansion: "Grey Mourner's House",
+    Crossroads_50: 'Blue Lake',
 
     // Deepnest
     Deepnest_09: 'Stag Station',

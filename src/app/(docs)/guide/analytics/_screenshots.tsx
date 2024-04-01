@@ -96,7 +96,7 @@ export function OverviewScreenshot() {
                 <ImageArea positionClassName="left-[30%] top-[93.5%] h-[5.5%] w-[35.25%]" href="#timeline">
                     Timeline
                 </ImageArea>
-                <ImageArea positionClassName="left-[66%] top-[8%] h-[57%] w-[33%]" href="#time-charts">
+                <ImageArea positionClassName="left-[66%] top-[8%] h-[57%] w-[33%]" href="#time-based-charts">
                     Time charts
                 </ImageArea>
                 <ImageArea positionClassName="left-[66%] top-[65.75%] h-[33%] w-[33%]" href="#splits">
@@ -299,14 +299,14 @@ export function SplitsScreenshot() {
 export function BuildingsColormapScreenshot() {
     return (
         <ImageContainer
-            caption={<>A map of dirthmouth displaying the geo spend in each building</>}
-            className="max-w-48 md:float-left md:mr-4"
+            caption={<>A map of dirtmouth displaying the geo spend in each building</>}
+            className="max-w-48 md:float-right md:mr-4"
         >
             <ThemedImage
                 srcLight={buildingsColormapLightSrc}
                 srcDark={buildingsColormapDarkSrc}
                 className="m-0"
-                alt="A view of dirthmouth displaying the geo spend in each building by usage a colormap"
+                alt="A view of dirtmouth displaying the geo spend in each building by usage a colormap"
             />
         </ImageContainer>
     );

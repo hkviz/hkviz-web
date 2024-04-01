@@ -111,7 +111,7 @@ export function RunOverviewTab({
                         <Button variant="secondary" asChild>
                             <a href="/guide/analytics" target="_blank">
                                 <HelpCircle size={20} className="mr-2 h-5 w-5" />
-                                View how to guide
+                                View analytics guide
                             </a>
                         </Button>
                     </div>

@@ -11,7 +11,9 @@ export function SpoilerWrapper({ children, title }: { children: React.ReactNode;
             <Expander expanded={!isOpen}>
                 <Button onClick={() => setIsOpen(true)}>{title}</Button>
             </Expander>
-            <Expander expanded={isOpen}>{children}</Expander>
+            <Expander expanded={isOpen}>
+                <div className="-mb-5 -mt-5">{children}</div>
+            </Expander>
         </>
     );
 }

@@ -191,12 +191,11 @@ const colosseumGold = makeCustomRoom({ nextToRoom: colosseumSilver, size: { x: 6
     };
 });
 
-const dirthmouth = unscaledRoomByGameObjectName('Town')!;
-console.log({ dirthmouth });
+const dirtmouth = unscaledRoomByGameObjectName('Town')!;
 const GRIMM_SCALE =
-    (dirthmouth.playerPositionBounds.max.x - dirthmouth.playerPositionBounds.min.x) /
-    (dirthmouth.spriteInfo.size.x + dirthmouth.spriteInfo.padding.x + dirthmouth.spriteInfo.padding.z);
-const grimmTent = makeCustomRoom({ nextToRoom: dirthmouth, size: { x: 102.0, y: 89.0 }, scale: GRIMM_SCALE })(({
+    (dirtmouth.playerPositionBounds.max.x - dirtmouth.playerPositionBounds.min.x) /
+    (dirtmouth.spriteInfo.size.x + dirtmouth.spriteInfo.padding.x + dirtmouth.spriteInfo.padding.z);
+const grimmTent = makeCustomRoom({ nextToRoom: dirtmouth, size: { x: 102.0, y: 89.0 }, scale: GRIMM_SCALE })(({
     makeSpriteInfo,
     makeBounds,
 }) => {
