@@ -314,7 +314,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                                 <Button
                                     key={room.name}
                                     size="sm"
-                                    variant={room.name === selectedRoom ? 'secondary' : 'outline'}
+                                    variant={room.name === selectedRoom ? undefined : 'outline'}
                                     onClick={() => setSelectedRoom(room.name)}
                                     className="shrink-0"
                                 >

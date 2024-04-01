@@ -17,7 +17,7 @@ export function ThemeSwitcher({ theme }: { theme: Theme }) {
     return (
         <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
             <button onClick={toggleTheme}>
-                {_theme === 'light' ? <Moon /> : <Sun />}
+                {_theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
             </button>
         </NavigationMenuLink>
     );

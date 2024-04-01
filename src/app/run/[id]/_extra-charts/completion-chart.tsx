@@ -39,7 +39,7 @@ export function CompletionChart({ useViewOptionsStore }: CompletionChartProps) {
                 </>
             }
             yAxisLabel="%"
-            minimalMaximumY={100}
+            minimalMaximumY={10}
             downScaleMaxTimeDelta={100}
         />
     );

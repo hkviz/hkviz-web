@@ -44,6 +44,12 @@ import timelineLightSrc from './screenshots/timeline_light.png';
 import splitsDarkSrc from './screenshots/splits_dark.png';
 import splitsLightSrc from './screenshots/splits_light.png';
 
+import buildingsColormapDarkSrc from './screenshots/buildings_colormap_dark.png';
+import buildingsColormapLightSrc from './screenshots/buildings_colormap_light.png';
+
+import subroomsDarkSrc from './screenshots/subrooms_dark.png';
+import subroomsLightSrc from './screenshots/subrooms_light.png';
+
 export function OverviewScreenshot() {
     return (
         <ImageContainer
@@ -77,6 +83,12 @@ export function OverviewScreenshot() {
                 </ImageArea>
                 <ImageArea positionClassName="left-[1%] top-[36%] h-[63%] w-[28%]" href="#map-coloring-by-variables">
                     Room analytics
+                </ImageArea>
+                <ImageArea positionClassName="left-[1.5%] top-[45.5%] h-[6.5%] w-[27%]" href="#multi-room-buildings">
+                    Multi-room buildings
+                </ImageArea>
+                <ImageArea positionClassName="left-[23.75%] top-[37.75%] h-[6%] aspect-square" href="#room-pin">
+                    Room pinning
                 </ImageArea>
                 <ImageArea positionClassName="left-[30%] top-[8%] h-[85%] w-[35.25%]" href="#map">
                     Map
@@ -279,6 +291,38 @@ export function SplitsScreenshot() {
                 srcDark={splitsDarkSrc}
                 className="m-0"
                 alt="Splits view, showing charm pickups, item pickups, boss defeats"
+            />
+        </ImageContainer>
+    );
+}
+
+export function BuildingsColormapScreenshot() {
+    return (
+        <ImageContainer
+            caption={<>A map of dirthmouth displaying the geo spend in each building</>}
+            className="max-w-48 md:float-left md:mr-4"
+        >
+            <ThemedImage
+                srcLight={buildingsColormapLightSrc}
+                srcDark={buildingsColormapDarkSrc}
+                className="m-0"
+                alt="A view of dirthmouth displaying the geo spend in each building by usage a colormap"
+            />
+        </ImageContainer>
+    );
+}
+
+export function SubroomsScreenshot() {
+    return (
+        <ImageContainer
+            caption={<>Room analytics showing a building with multiple rooms</>}
+            className="max-w-48 md:float-right md:ml-4"
+        >
+            <ThemedImage
+                srcLight={subroomsLightSrc}
+                srcDark={subroomsDarkSrc}
+                className="m-0"
+                alt="Room analytics showing a building with multiple rooms"
             />
         </ImageContainer>
     );

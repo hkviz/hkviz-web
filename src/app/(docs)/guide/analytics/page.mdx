@@ -20,11 +20,15 @@ import {
     TracesAllScreenshot,
     TracesAnimatedScreenshot,
     TracesNoneScreenshot,
+    BuildingsColormapScreenshot,
+    SubroomsScreenshot,
 } from './_screenshots';
 import { SplitsList } from './_splits-list';
 import { SpoilerWrapper } from './_spoiler-wrapper';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
 import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
+import { LinkableParagraph } from './_linkable_paragraph';
+import { PinParagraph } from './_paragraphs';
 
 export const metadata = {
     title: 'Analytics guide - HKViz',
@@ -113,12 +117,13 @@ You can choose between three options:
 <RoomAnalyticsScreenshot />
 
 By hovering over a room on the map, you can see the values of the variables for that room. Such as the time spent in the
-room and the number of deaths. Additionally selected room and area is highlighted below the <a href="#timeline">timeline</a>.
+room and the number of deaths. Additionally the selected room and area is highlighted in the <a href="#timeline">timeline</a>.
 
-To stop the shown room from changing, you can pin it with the <Pin className="w-4 h-4 inline-block" aria-label="Pin" />-button in the room analytics panel or by clicking a room on the map.
+<PinParagraph />
 
-By clicking on the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button, you can choose a variable to color the map by.
-A single click will use a linear color scale, a second click will switch to an exponential color scale.
+By clicking on the <Palette className="inline-block h-4 w-4" aria-label="Color" />
+-button, you can choose a variable to color the map by. A single click will use a linear color scale, a second click will
+switch to an exponential color scale.
 
 <ReflowRow>
     <ReflowCell>
@@ -147,6 +152,27 @@ A single click will use a linear color scale, a second click will switch to an e
 </ReflowRow>
 
 Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button.
+
+### Buildings and multi-room buildings
+
+#### Buildings
+
+<BuildingsColormapScreenshot />
+
+Some parts of the Hollow Knight world are not represented on the Map directly, but are just hinted at by a building or door.
+For <HKVizText /> these have been cut out from the game sprites, to allow seeing analytics for these buildings inidividually.
+
+Inside the Hollow Knight map, the player location is not displayed when inside on of these buildings.
+In <HKVizText /> the player movement is displayed ontop of the buildings.
+
+#### Multi-room buildings
+
+<SubroomsScreenshot />
+
+Some buildings contain multiple rooms, on the analytics are displayed for all rooms inside the building together.
+(e.g. the number of deaths in the building is the sum over all rooms and the 'first visited at' map is the time the first room of the building has been visited).
+
+By clicking on the building on the map, the analytics for each room inside can be displayed individually by using the buttons displayed for each room inside the building.
 
 ### Colluseum, Pantehons and other special rooms
 

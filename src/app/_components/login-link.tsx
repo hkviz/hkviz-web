@@ -5,10 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { type ComponentProps } from 'react';
 
+export function useLoginUrl() {
+    return '/api/auth/signin?callbackUrl=' + usePathname();
+}
+
 export function LoginLink(props: Omit<ComponentProps<typeof Link>, 'href'>) {
-    const pathName = usePathname();
+    const loginUrl = useLoginUrl();
     return (
-        <Link {...props} href={'/api/auth/signin?callbackUrl=' + pathName}>
+        <Link {...props} href={loginUrl}>
             Login
         </Link>
     );

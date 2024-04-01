@@ -3,33 +3,61 @@
 import { NavigationMenuContent, NavigationMenuItem, NavigationMenuTrigger } from '@/components/ui/navigation-menu';
 import { Archive, LogOut, Settings } from 'lucide-react';
 import type { Session } from 'next-auth';
-import Link from 'next/link';
-import { ListItem } from './nav-list-item';
+import { memo } from 'react';
+import { MenuEntryInHamburger, MenuEntryListItem, type MenuEntry } from './main-nav-item';
 
-export function CurrentUserDropdown({ session }: { session: Session }) {
+function userDropdownMenuEntries(session: Session): MenuEntry[] {
+    return [
+        {
+            href: '/settings',
+            title: 'Settings',
+            description: 'Manage your account settings and study consent',
+            icon: Settings,
+        },
+        {
+            href: '/archive',
+            title: 'Archived gameplays',
+            description: 'Unarchive and view your archived gameplays',
+            icon: Archive,
+        },
+        {
+            href: '/api/auth/signout',
+            title: 'Logout',
+            description: `Logout of ${session.user.name ?? 'your'} account`,
+            icon: LogOut,
+        },
+    ];
+}
+
+export const CurrentUserDropdown = memo(function CurrentUserDropdown({
+    session,
+    className,
+}: {
+    session: Session;
+    className: string;
+}) {
+    const menuEntries = userDropdownMenuEntries(session);
     return (
         <NavigationMenuItem>
-            <NavigationMenuTrigger>{session.user.name ?? 'Logged in'}</NavigationMenuTrigger>
+            <NavigationMenuTrigger className={className}>{session.user.name ?? 'Logged in'}</NavigationMenuTrigger>
             <NavigationMenuContent>
                 <ul className="grid w-[350px] gap-3 p-4">
-                    {/*md:w-[500px] md:grid-cols-2 lg:w-[600px]*/}
-                    <Link href="/settings" legacyBehavior passHref>
-                        <ListItem title="Settings" Icon={Settings}>
-                            Manage your account settings and study consent
-                        </ListItem>
-                    </Link>
-                    <Link href="/archive" legacyBehavior passHref>
-                        <ListItem title="Archived gameplays" Icon={Archive}>
-                            Unarchive and view your archived gameplays
-                        </ListItem>
-                    </Link>
-                    <Link href="/api/auth/signout" legacyBehavior passHref>
-                        <ListItem title="Logout" Icon={LogOut}>
-                            Logout of {session.user.name ? session.user.name + "'s" : 'your'} account
-                        </ListItem>
-                    </Link>
+                    {menuEntries.map((menuEntry) => (
+                        <MenuEntryListItem key={menuEntry.href} {...menuEntry} />
+                    ))}
                 </ul>
             </NavigationMenuContent>
         </NavigationMenuItem>
     );
-}
+});
+
+export const CurrentUserHamburgerItems = memo(function CurrentUserHamburgerItems({ session }: { session: Session }) {
+    const menuEntries = userDropdownMenuEntries(session);
+    return (
+        <>
+            {menuEntries.map((menuEntry) => (
+                <MenuEntryInHamburger key={menuEntry.href} {...menuEntry} />
+            ))}
+        </>
+    );
+});

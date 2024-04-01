@@ -19,12 +19,12 @@ export default function GuideLayout({ children }: { children: React.ReactNode })
                 <div className="h-fit p-3 lg:sticky lg:top-[var(--main-nav-height)]">
                     <Card className="h-fit p-3">
                         <SubMenuSectionTitle>
-                            Guides for <HKVizText />
+                            How to{"'"}s for <HKVizText />
                         </SubMenuSectionTitle>
                         <SubMenuList>
                             <SubMenuLink href="/guide/install">
                                 <Download className="h-4 pr-2" />
-                                How to install the mod
+                                How to record gameplay analytics
                             </SubMenuLink>
                             <SubMenuLink href="/guide/analytics">
                                 <Map className="h-4 pr-2" />

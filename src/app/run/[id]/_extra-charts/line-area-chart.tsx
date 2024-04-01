@@ -192,7 +192,7 @@ export function LineAreaChart({
 
                 return isInRangeOrClose ? d[1] : 0;
             }) ?? 0;
-        return Math.max(max, minimalMaximumY);
+        return Math.max(max * 1.05, minimalMaximumY);
     }, [debouncedExtraChartsTimeBounds, isV1, maxYOverAllTime, minimalMaximumY, series]);
 
     // const y = useMemo(() => {

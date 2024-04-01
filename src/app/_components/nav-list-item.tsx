@@ -1,10 +1,11 @@
 import { NavigationMenuLink } from '@/components/ui/navigation-menu';
 import { cn } from '@/lib/utils';
 import { type LucideIcon } from 'lucide-react';
-import React from 'react';
+import React, { type ReactNode } from 'react';
 
-type Props = React.ComponentPropsWithoutRef<'a'> & {
+type Props = Omit<React.ComponentPropsWithoutRef<'a'>, 'title'> & {
     Icon?: LucideIcon;
+    title: ReactNode;
 };
 
 export const ListItem = React.forwardRef<React.ElementRef<'a'>, Props>(

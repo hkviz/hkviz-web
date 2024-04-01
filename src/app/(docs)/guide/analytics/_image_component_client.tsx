@@ -53,7 +53,7 @@ export function ImageArea({
     return (
         <Button
             className={cn(
-                'absolute z-20 rounded-sm border-2 border-dashed border-black bg-transparent p-0 text-transparent no-underline opacity-30 drop-shadow-glow-md transition duration-200 ease-in-out hover:bg-transparent hover:bg-opacity-0 group-hover:opacity-100 dark:border-white',
+                'absolute z-20 min-h-0 min-w-0 rounded-sm border-2 border-dashed border-black bg-transparent p-0 text-transparent no-underline opacity-30 drop-shadow-glow-md transition duration-200 ease-in-out hover:bg-transparent hover:bg-opacity-0 group-hover:opacity-100 dark:border-white',
                 // 'absolute z-20 rounded-sm border-2 border-red-600 bg-transparent p-0 text-transparent no-underline drop-shadow-glow-md transition duration-200 ease-in-out hover:bg-transparent hover:bg-opacity-0 group-hover:text-red-600 group-hover:opacity-100 dark:border-red-600 dark:drop-shadow-2xl dark:group-hover:text-red-600',
                 positionClassName,
             )}
