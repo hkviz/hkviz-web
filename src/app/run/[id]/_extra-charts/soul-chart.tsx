@@ -13,7 +13,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'MPCharge',
         name: 'Soul',
-        description: 'How much soul is in the soul meter (from 0 to 99)',
+        description: 'How much soul is in the soul meter (from 0 to 99). Healing and spells use 33 soul per use.',
         color: tailwindChartColors.slate,
         UnitIcon: Unit,
         order: 1,
@@ -21,7 +21,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'MPReserve',
         name: 'Soul reserve',
-        description: 'Soul inside the soul vessels (up to 33 per vessel)',
+        description: 'Soul inside the soul vessels (up to 33 per vessel).',
         color: tailwindChartColors.indigo,
         UnitIcon: Unit,
         order: 2,
@@ -29,7 +29,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'MPTotal',
         name: 'Total',
-        description: 'Total soul',
+        description: 'Total soul in soul meter and reserve.',
         color: tailwindChartColors.slate,
         UnitIcon: Unit,
         order: 3,

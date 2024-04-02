@@ -31,7 +31,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'health',
         name: 'Masks',
-        description: 'The players health',
+        description: 'The players health.',
         color: tailwindChartColors.slate,
         UnitIcon: MaskUnit,
         order: 1,
@@ -39,7 +39,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'healthBlue',
         name: 'Lifeblood masks',
-        description: 'The players additional health from lifeblood masks',
+        description: 'The players additional health from lifeblood masks.',
         color: tailwindChartColors.sky,
         UnitIcon: LifebloodUnit,
         order: 2,
@@ -47,7 +47,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'healthLost',
         name: 'Empty masks',
-        description: 'The currently empty masks, which can be healed back up',
+        description: 'The currently empty masks, which can be healed back up.',
         color: tailwindChartColors.light,
         UnitIcon: EmptyMaskUnit,
         order: 3,

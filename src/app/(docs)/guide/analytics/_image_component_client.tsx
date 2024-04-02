@@ -7,6 +7,7 @@ import { createContext, useContext, useId, useMemo, useState } from 'react';
 export const ImageAreaShadowContext = createContext<{
     set?: (positionClassName: string) => void;
     unset?: (positionClassName: string) => void;
+    isCurrent?: (positionClassName: string) => boolean;
 }>({});
 
 export function ImageAreaShadow({ children }: { children: React.ReactNode }) {
@@ -15,8 +16,14 @@ export function ImageAreaShadow({ children }: { children: React.ReactNode }) {
     function unsetPositionClassName(className: string) {
         setPositionClassName((value) => (value === className ? null : value));
     }
-
-    const contextValue = useMemo(() => ({ set: setPositionClassName, unset: unsetPositionClassName }), []);
+    const contextValue = useMemo(
+        () => ({
+            set: setPositionClassName,
+            unset: unsetPositionClassName,
+            isCurrent: (className: string) => positionClassName === className,
+        }),
+        [positionClassName],
+    );
 
     return (
         <ImageAreaShadowContext.Provider value={contextValue}>
@@ -44,6 +51,8 @@ export function ImageArea({
 }) {
     const context = useContext(ImageAreaShadowContext);
     const id = useId();
+
+    const isCurrent = context.isCurrent?.(positionClassName) ?? false;
 
     function handleHover() {
         context.set?.(positionClassName);
@@ -73,7 +82,10 @@ export function ImageArea({
             </Button>
             <span
                 id={'tooltip' + id}
-                className="pointer-events-none absolute left-[50%] top-[-0.25rem] z-20 w-max translate-x-[-50%] translate-y-[-100%] scale-75 rounded-md border bg-popover px-3 py-2 text-center text-sm text-popover-foreground  opacity-0 shadow-md transition peer-hover:scale-100 peer-hover:opacity-100"
+                className={
+                    'pointer-events-none absolute left-[50%] top-[.15rem] z-20 w-max translate-x-[-50%] rounded-md border bg-popover px-3 py-2 text-center text-sm text-popover-foreground shadow-md transition ' +
+                    (isCurrent ? 'scale-100 opacity-100' : 'scale-90 opacity-0')
+                }
             >
                 {children}
             </span>

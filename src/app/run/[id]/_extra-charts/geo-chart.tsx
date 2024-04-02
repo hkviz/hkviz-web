@@ -10,7 +10,7 @@ const Unit = ({ className }: { className?: string }) => <Image src={coinImg} cla
 const variables: LineChartVariableDescription[] = [
     {
         key: 'geo',
-        name: 'Geo',
+        name: 'Inventory Geo',
         description: 'Geo the player has. When dying in Hollow Knight, it will be transferred to the shade.',
         color: tailwindChartColors.emerald,
         UnitIcon: Unit,

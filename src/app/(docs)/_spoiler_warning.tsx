@@ -11,8 +11,9 @@ export function SpoilerWarningEarlyGame() {
             <div>
                 <AlertTitle>Early game spoiler warning!</AlertTitle>
                 <AlertDescription>
-                    To avoid spoilers, just <Link href="/guide/install">install the mod</Link>, and look at the
-                    analytics and this page later.
+                    If you would like to avoid spoilers, and use this mod to collect stats for your first playthrough,
+                    you can follow the <Link href="/guide/install">install guide</Link>, and look at the stats and this
+                    guide later.
                 </AlertDescription>
             </div>
         </Alert>

@@ -14,7 +14,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'completionPercentageEarlyCalc',
         name: 'Game completion',
-        description: 'Percentage of the game completed',
+        description: 'Percentage of the game completed.',
         color: tailwindChartColors.rose,
         UnitIcon: Unit,
         order: 1,

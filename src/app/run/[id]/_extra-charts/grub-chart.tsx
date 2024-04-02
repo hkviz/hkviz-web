@@ -11,7 +11,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'grubsNoRewardCollected',
         name: 'Grubs collected, reward not collected',
-        description: 'Grubs collected, reward not collected',
+        description: 'Grubs collected, reward not collected.',
         color: tailwindChartColors.amberLight,
         UnitIcon: Unit,
         order: 2,
@@ -19,7 +19,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'grubRewards',
         name: 'Grubs collected, reward collected',
-        description: 'Grubs collected, reward collected',
+        description: 'Grubs collected, reward collected.',
         color: tailwindChartColors.green,
         UnitIcon: Unit,
         order: 1,
@@ -27,7 +27,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'grubsCollected',
         name: 'Total',
-        description: 'Total number of grubs collected',
+        description: 'Total number of grubs collected.',
         color: tailwindChartColors.slate,
         UnitIcon: Unit,
         order: 1,

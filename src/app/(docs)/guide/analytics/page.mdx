@@ -51,13 +51,13 @@ export const metadata = {
 
 # How to analyze a gameplay with the <HKVizText /> visualizations
 
+<SpoilerWarningEarlyGame />
+
 Here you learn how to use the different parts of the <HKVizText /> gameplay analytics page.
 It is accessible by clicking on one of your gameplays on the <Link href="/">start page</Link> or by viewing a gameplay from the <Link href="/run">public gameplays page</Link>.
 
 If you want to learn how to record the analytics while playing {<ExternalLinkMdx href="https://hollowknight.com">Hollow Knight</ExternalLinkMdx>}
 checkout the <Link href="/guide/install">mod install guide</Link>
-
-<SpoilerWarningEarlyGame />
 
 ## Overview
 
@@ -96,7 +96,7 @@ The map is able to display player movement as traces, show which rooms are visit
 
 ### <LayoutDashboard className="w-4 h-4 mr-2 inline-block"/>Room visibility
 
-The room visibility option within the map options controlls which rooms are shown on the map.
+The room visibility option within the map options controls which rooms are shown on the map.
 You can choose between three options:
 
 <ReflowRow>
@@ -215,14 +215,14 @@ By clicking on the building on the map, the analytics for each room inside can b
     <li>
         {
             <ExternalLinkMdx href="https://hollowknight.wiki/w/Greenpath#Sub-area:_Stone_Sanctuary" target="_blank">
-                Stone sancturary
+                Stone Sancturary
             </ExternalLinkMdx>
         }
     </li>
     <li>
         {
             <ExternalLinkMdx href="https://hollowknight.wiki/w/Dirtmouth#The_Grimm_Troupe's_Tents" target="_blank">
-                Grimms tent
+                Grimms Tent
             </ExternalLinkMdx>
         }
     </li>
@@ -244,9 +244,9 @@ Unlike on the ingame map, each trial of the colosseum has its own sign on the ma
 #### Godhome
 
 <SpoilerWrapper title="Show spoilers for Godhome">
-The Godhome displays a information for each pantheon / boss rush at its door, similar to <a href="#multi-room-buildings">multi-room buildings</a>.
+The Godhome displays information for each pantheon / boss rush at its door.
 By clicking on one of the doors on the map, one sees the overal analytics of the selected pantehon.
-Analytics can also be displayed for each boss individually, by clicking on one of the bosses above the analytics.
+Analytics can also be displayed for each boss individually, by clicking on one of the bosses above the analytics, similar to other <a href="#multi-room-buildings">multi-room buildings</a>.
 <GodhomeScreenshot />
 
 </SpoilerWrapper>
@@ -284,13 +284,22 @@ additionally the room the player is in is highlighted on the map while hovering 
 ### <GeoChartDocIcon />Geo chart
 
 <GeoChartScreenshot />
+
+The Geo chart shows geo over time. By default it shows the geo that the player has at the moment, and the potential geo the player can gain by defeating the shade and by selling relicts.
+
 <GeoChartDocVars />
+
+Hint: You can find out when money has been lost by failing to defeat the shade, by finding the spots where the 'Shade Geo' decreases without the 'Inventory Geo' increasing.
 
 <FloatClear />
 
 ### <HealthChartDocIcon />Health chart
 
 <HealthChartScreenshot />
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Knight#Health">health</ExternalLinkMdx> chart shows the masks over time.
+Since health does change very frequently, this chart is most useful when zooming in closely.
+
 <HealthChartDocVars />
 
 <FloatClear />
@@ -298,6 +307,10 @@ additionally the room the player is in is highlighted on the map while hovering 
 ### <SoulChartDocIcon />Soul chart
 
 <SoulChartScreenshot />
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">soul</ExternalLinkMdx> chart shows soul over time.
+Since just like health, soul does change very frequently, this chart is most useful when zooming in closely.
+
 <SoulChartDocVars />
 
 <FloatClear />
@@ -305,6 +318,9 @@ additionally the room the player is in is highlighted on the map while hovering 
 ### <CompletionChartDocIcon />Completion chart
 
 <CompletionChartScreenshot />
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Completion_(Hollow_Knight)">completion</ExternalLinkMdx> chart shows the completion percentage over time.
+
 <CompletionChartDocVars />
 
 <FloatClear />
@@ -312,6 +328,9 @@ additionally the room the player is in is highlighted on the map while hovering 
 ### <GrubsChartDocIcon />Grubs chart
 
 <GrubsChartScreenshot />
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Grub">Grub</ExternalLinkMdx> chart shows the number of grubs collected over time, and for how many grubs the reward has been collected.
+
 <GrubsChartDocVars />
 
 <FloatClear />
