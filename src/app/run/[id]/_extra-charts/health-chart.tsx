@@ -5,6 +5,7 @@ import emptyMaskImg from '../../../../../public/ingame-sprites/hud/edited/emptyM
 import maskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
 import steelMaskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
@@ -13,9 +14,9 @@ function MaskUnit({
     useViewOptionsStore,
 }: {
     className?: string;
-    useViewOptionsStore: UseViewOptionsStore;
+    useViewOptionsStore?: UseViewOptionsStore;
 }) {
-    const isSteelSoul = useViewOptionsStore((s) => s.isSteelSoul);
+    const isSteelSoul = useViewOptionsStore?.((s) => s.isSteelSoul);
     return <Image src={isSteelSoul ? steelMaskImg : maskImg} className={className} alt="Mask" />;
 }
 
@@ -31,7 +32,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'health',
         name: 'Masks',
         description: 'The players health',
-        classNames: tailwindChartColors.slate,
+        color: tailwindChartColors.slate,
         UnitIcon: MaskUnit,
         order: 1,
     },
@@ -39,7 +40,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'healthBlue',
         name: 'Lifeblood masks',
         description: 'The players additional health from lifeblood masks',
-        classNames: tailwindChartColors.sky,
+        color: tailwindChartColors.sky,
         UnitIcon: LifebloodUnit,
         order: 2,
     },
@@ -47,7 +48,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'healthLost',
         name: 'Empty masks',
         description: 'The currently empty masks, which can be healed back up',
-        classNames: tailwindChartColors.light,
+        color: tailwindChartColors.light,
         UnitIcon: EmptyMaskUnit,
         order: 3,
         defaultHidden: true,
@@ -73,4 +74,12 @@ export function HealthChart({ useViewOptionsStore }: HealthChartProps) {
             downScaleMaxTimeDelta={100}
         />
     );
+}
+
+export function HealthChartDocVars() {
+    return <ChartDocVars variables={variables} />;
+}
+
+export function HealthChartDocIcon() {
+    return <ChartDocTitleIcon unit={MaskUnit} />;
 }

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import coinImg from '../../../../../public/ingame-sprites/HUD_coin_shop.png';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
@@ -10,8 +11,8 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'geo',
         name: 'Geo',
-        description: 'Geo the player has',
-        classNames: tailwindChartColors.emerald,
+        description: 'Geo the player has. When dying in Hollow Knight, it will be transferred to the shade.',
+        color: tailwindChartColors.emerald,
         UnitIcon: Unit,
         order: 3,
     },
@@ -19,23 +20,24 @@ const variables: LineChartVariableDescription[] = [
         key: 'geoPool',
         name: 'Shade Geo',
         description: 'The geo the shade has, which can be earned back by defeating the shade.',
-        classNames: tailwindChartColors.indigo,
+        color: tailwindChartColors.indigo,
         UnitIcon: Unit,
         order: 2,
     },
     {
         key: 'trinketGeo',
         name: 'Relict Geo worth',
-        description: 'The geo which the relicts in the inventory are worth when sold to Lemm.',
-        classNames: tailwindChartColors.rose,
+        description: 'The geo worth of all relicts in the inventory when sold to Lemm.',
+        color: tailwindChartColors.rose,
         UnitIcon: Unit,
         order: 1,
     },
     {
         key: 'geoTotal',
         name: 'Total',
-        description: 'Total geo in relicts, shade and player inventory.',
-        classNames: tailwindChartColors.rose,
+        description:
+            'The total of the variables above. I.e. Geo the player would have if the shade is defeated and all relicts are sold.',
+        color: tailwindChartColors.slate,
         UnitIcon: Unit,
         order: 1,
         notShownInGraph: true,
@@ -62,4 +64,12 @@ export function GeoChart({ useViewOptionsStore }: GeoChartProps) {
             renderScale={100}
         />
     );
+}
+
+export function GeoChartDocVars() {
+    return <ChartDocVars variables={variables} />;
+}
+
+export function GeoChartDocIcon() {
+    return <ChartDocTitleIcon unit={Unit} />;
 }

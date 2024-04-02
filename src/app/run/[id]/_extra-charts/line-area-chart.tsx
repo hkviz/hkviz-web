@@ -1,3 +1,5 @@
+'use client';
+
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import * as d3 from 'd3';
@@ -9,16 +11,16 @@ import useIsVisibleRef from '~/lib/utils/use-is-visible';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '~/lib/viz/recording-files/events/frame-end-event';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
-import { type LineChartVariableClassNames } from './colors';
+import { type ColorClasses } from './colors';
 import { downScale } from './down-scale';
 
 export type LineChartVariableDescription = {
     key: FrameEndEventNumberKey;
     name: string;
     description: string;
-    UnitIcon: React.FunctionComponent<{ className?: string; useViewOptionsStore: UseViewOptionsStore }>;
+    UnitIcon: React.FunctionComponent<{ className?: string; useViewOptionsStore?: UseViewOptionsStore }>;
     order: number;
-    classNames: LineChartVariableClassNames;
+    color: ColorClasses;
 } & (
     | {
           notShownInGraph: true;
@@ -271,8 +273,8 @@ export function LineAreaChart({
             .attr('x', marginLeft - 10 * renderScale)
             .attr('y', 14 * renderScale)
             .attr('text-anchor', 'end')
-            .attr('class', 'text-foreground fill-current text-xs')
-            .style('font-size', renderScale * 10)
+            .attr('class', 'text-foreground fill-current')
+            .attr('font-size', 10 * renderScale)
             .text(yAxisLabel);
 
         // .style('transform', 'rotate(-90deg)')
@@ -285,7 +287,8 @@ export function LineAreaChart({
             .attr('x', widthWithMargin / 2)
             .attr('y', heightWithMargin - 2 * renderScale)
             .attr('text-anchor', 'middle')
-            .attr('class', 'text-foreground fill-current text-xs')
+            .attr('class', 'text-foreground fill-current')
+            .attr('font-size', 10 * renderScale)
             .text('Time');
 
         // brush
@@ -307,7 +310,7 @@ export function LineAreaChart({
             .data(series)
             .join('path')
             .attr('transform-origin', '0 80%')
-            .attr('class', (d) => variablesPerKey[d.key]?.classNames?.path ?? '');
+            .attr('class', (d) => variablesPerKey[d.key]?.color?.path ?? '');
         areaPaths.current.append('title').text((d) => d.key);
 
         // axis x
@@ -440,7 +443,7 @@ export function LineAreaChart({
     // update x axis
     useEffect(() => {
         if (!xAxis.current) return;
-        xAxis.current.style('font-size', renderScale * 10).style('stroke-width', renderScale);
+        xAxis.current.attr('font-size', renderScale * 9).style('stroke-width', renderScale);
         const base = xAxis.current.selectAll('*').empty()
             ? xAxis.current
             : xAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear);
@@ -461,7 +464,7 @@ export function LineAreaChart({
     useEffect(() => {
         if (!yAxis.current) return;
 
-        yAxis.current.style('font-size', renderScale * 10).style('stroke-width', renderScale);
+        yAxis.current.attr('font-size', renderScale * 9).style('stroke-width', renderScale);
 
         const base = yAxis.current.selectAll('*').empty()
             ? yAxis.current
@@ -514,7 +517,7 @@ export function LineAreaChart({
             <Table>
                 <TableBody>
                     {variables.map((variable) => {
-                        const { key, name, classNames, UnitIcon } = variable;
+                        const { key, name, color: classNames, UnitIcon } = variable;
                         const isShowable = isShownInGraph(variable);
 
                         return (

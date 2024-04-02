@@ -11,8 +11,8 @@ export type ThemedImageProps = {
 export function ThemedImage({ srcLight, srcDark, className, alt }: ThemedImageProps) {
     return (
         <>
-            <Image alt={alt} src={srcLight} className={cn('block dark:hidden', className)} />
-            <Image alt={alt} src={srcDark} className={cn('hidden dark:block', className)} />
+            <Image alt={alt} src={srcLight} className={cn('block rounded-md dark:hidden', className)} />
+            <Image alt={alt} src={srcDark} className={cn('hidden rounded-md dark:block', className)} />
         </>
     );
 }
@@ -28,7 +28,7 @@ export function ImageContainer({
 }) {
     return (
         <div className={cn('mx-auto w-fit', className)}>
-            <div className="group relative overflow-hidden rounded-md">{children}</div>
+            <div className="group relative">{children}</div>
             {caption && <ImageCaption>{caption}</ImageCaption>}
         </div>
     );

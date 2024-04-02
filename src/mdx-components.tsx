@@ -12,7 +12,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     return {
         ...components,
-        h2: (props) => <h2 {...props} className={cn(largeHeaderClasses, props.className)} />,
+        h2: (props) => <h2 {...props} className={cn(largeHeaderClasses, props.className, 'mb-[.5em] text-4xl')} />,
         h1: (props) => <h1 {...props} className={cn(largeHeaderClasses, props.className)} />,
         h3: (props) => <h3 {...props} className={cn(largeHeaderClasses, props.className)} />,
         h4: (props) => <h3 {...props} className={cn(smallHeaderClasses, props.className)} />,

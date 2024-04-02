@@ -1,16 +1,21 @@
+import { BadgePercent } from 'lucide-react';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
 function Unit({ className }: { className?: string }) {
-    return <span className={className}>%</span>;
+    return <BadgePercent className={className} />;
 }
+// function Unit({ className }: { className?: string }) {
+//     return <span className={className}>%</span>;
+// }
 const variables: LineChartVariableDescription[] = [
     {
         key: 'completionPercentageEarlyCalc',
         name: 'Game completion',
         description: 'Percentage of the game completed',
-        classNames: tailwindChartColors.rose,
+        color: tailwindChartColors.rose,
         UnitIcon: Unit,
         order: 1,
     },
@@ -43,4 +48,12 @@ export function CompletionChart({ useViewOptionsStore }: CompletionChartProps) {
             downScaleMaxTimeDelta={100}
         />
     );
+}
+
+export function CompletionChartDocVars() {
+    return <ChartDocVars variables={variables} />;
+}
+
+export function CompletionChartDocIcon() {
+    return <ChartDocTitleIcon unit={Unit} />;
 }

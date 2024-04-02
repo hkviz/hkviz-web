@@ -50,6 +50,21 @@ import buildingsColormapLightSrc from './screenshots/buildings_colormap_light.pn
 import subroomsDarkSrc from './screenshots/subrooms_dark.png';
 import subroomsLightSrc from './screenshots/subrooms_light.png';
 
+import extraChartGeoDarkSrc from './screenshots/extra_chart_geo_dark.png';
+import extraChartGeoLightSrc from './screenshots/extra_chart_geo_light.png';
+
+import extraChartHealthDarkSrc from './screenshots/extra_chart_health_dark.png';
+import extraChartHealthLightSrc from './screenshots/extra_chart_health_light.png';
+
+import extraChartSoulDarkSrc from './screenshots/extra_chart_soul_dark.png';
+import extraChartSoulLightSrc from './screenshots/extra_chart_soul_light.png';
+
+import extraChartCompletionDarkSrc from './screenshots/extra_chart_completion_dark.png';
+import extraChartCompletionLightSrc from './screenshots/extra_chart_completion_light.png';
+
+import extraChartGrubsDarkSrc from './screenshots/extra_chart_grubs_dark.png';
+import extraChartGrubsLightSrc from './screenshots/extra_chart_grubs_light.png';
+
 export function OverviewScreenshot() {
     return (
         <ImageContainer
@@ -323,6 +338,71 @@ export function SubroomsScreenshot() {
                 srcDark={subroomsDarkSrc}
                 className="m-0"
                 alt="Room analytics showing a building with multiple rooms"
+            />
+        </ImageContainer>
+    );
+}
+
+export function GeoChartScreenshot() {
+    return (
+        <ImageContainer caption={<>Geo chart</>} className="max-w-60 md:float-right md:ml-4">
+            <ThemedImage
+                srcLight={extraChartGeoLightSrc}
+                srcDark={extraChartGeoDarkSrc}
+                className="m-0"
+                alt="Geo chart"
+            />
+        </ImageContainer>
+    );
+}
+
+export function HealthChartScreenshot() {
+    return (
+        <ImageContainer caption={<>Health chart</>} className="max-w-60 md:float-right md:ml-4">
+            <ThemedImage
+                srcLight={extraChartHealthLightSrc}
+                srcDark={extraChartHealthDarkSrc}
+                className="m-0"
+                alt="Health chart"
+            />
+        </ImageContainer>
+    );
+}
+
+export function SoulChartScreenshot() {
+    return (
+        <ImageContainer caption={<>Soul chart</>} className="max-w-60 md:float-right md:ml-4">
+            <ThemedImage
+                srcLight={extraChartSoulLightSrc}
+                srcDark={extraChartSoulDarkSrc}
+                className="m-0"
+                alt="Soul chart"
+            />
+        </ImageContainer>
+    );
+}
+
+export function CompletionChartScreenshot() {
+    return (
+        <ImageContainer caption={<>Completion chart</>} className="max-w-60 md:float-right md:ml-4">
+            <ThemedImage
+                srcLight={extraChartCompletionLightSrc}
+                srcDark={extraChartCompletionDarkSrc}
+                className="m-0"
+                alt="Completion chart"
+            />
+        </ImageContainer>
+    );
+}
+
+export function GrubsChartScreenshot() {
+    return (
+        <ImageContainer caption={<>Grubs chart</>} className="max-w-60 md:float-right md:ml-4">
+            <ThemedImage
+                srcLight={extraChartGrubsLightSrc}
+                srcDark={extraChartGrubsDarkSrc}
+                className="m-0"
+                alt="Grubs chart"
             />
         </ImageContainer>
     );

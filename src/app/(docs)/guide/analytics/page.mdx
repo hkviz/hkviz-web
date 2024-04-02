@@ -1,6 +1,7 @@
-import { LayoutDashboard, Mouse, Palette, Pin, Spline } from 'lucide-react';
+import { LayoutDashboard, Mouse, Palette, Pin, Spline, Tent } from 'lucide-react';
 import Link from 'next/link';
 import { ExternalLinkMdx } from '../../../_components/external-link';
+import { FloatClear } from '../../../_components/float';
 import { HKVizText } from '../../../_components/hkviz-text';
 import { MailLinkUnstyled } from '../../../_components/mail-link';
 import { MdxInnerWrapper } from '../../../_components/mdx-layout';
@@ -15,9 +16,14 @@ import {
     ColorModeLinearScreenshot,
     ColorModeLinearTableScreenshot,
     ColosseumScreenshot,
+    CompletionChartScreenshot,
+    GeoChartScreenshot,
     GodhomeScreenshot,
+    GrubsChartScreenshot,
+    HealthChartScreenshot,
     OverviewScreenshot,
     RoomAnalyticsScreenshot,
+    SoulChartScreenshot,
     SplitsScreenshot,
     SubroomsScreenshot,
     TimelineScreenshot,
@@ -29,6 +35,12 @@ import { SplitsList } from './_splits-list';
 import { SpoilerWrapper } from './_spoiler-wrapper';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
 import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
+
+import { CompletionChartDocIcon, CompletionChartDocVars } from '../../../run/[id]/_extra-charts/completion-chart';
+import { GeoChartDocIcon, GeoChartDocVars } from '../../../run/[id]/_extra-charts/geo-chart';
+import { GrubsChartDocIcon, GrubsChartDocVars } from '../../../run/[id]/_extra-charts/grub-chart';
+import { HealthChartDocIcon, HealthChartDocVars } from '../../../run/[id]/_extra-charts/health-chart';
+import { SoulChartDocIcon, SoulChartDocVars } from '../../../run/[id]/_extra-charts/soul-chart';
 
 export const metadata = {
     title: 'Analytics guide - HKViz',
@@ -157,7 +169,7 @@ switch to an exponential color scale.
 
 Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button.
 
-### Special rooms
+### <Tent className="w-5 h-5 mr-2 inline-block" />Special rooms
 
 The map in <HKVizText /> has a few modifications compared to the in-game map, to allow to analyze the gameplay in more areas.
 Like added maps for Godhome, White Palace and Birthplace. Additionally a few other modifications have been made:
@@ -221,7 +233,7 @@ By clicking on the building on the map, the analytics for each room inside can b
     }
 </SpoilerWrapper>
 
-#### Colluseum
+#### Colosseum
 
 <SpoilerWrapper title="Show colosseum spoilers">
 Unlike on the ingame map, each trial of the colosseum has its own sign on the map. Allowing to see room analytics, such as how often one has died in each of them.
@@ -256,14 +268,57 @@ Hovering over a split will highlight the room of the event on the <a href="#map"
 
 The time-based charts show some variables over time, such as the completion percentage, geo, number of collected grubs.
 
-Hovering over a chart will show a marker on the <a href="#timeline">timeline</a>, the current room of the hovered time is highlighted on the <a href="#map">map</a>.
+Hovering over a chart will show a marker on the <a href="#timeline">timeline</a> to highlight the hovered timepoint,
+additionally the room the player is in is highlighted on the map while hovering <a href="#map">map</a>.
 
+**Shortcuts in time-based charts**
+
+| Shortcut                | Action                                                  |
+| ----------------------- | ------------------------------------------------------- |
+| Ctrl + Click            | Move the timeline to the timepoint hovered on the chart |
+| Drag from left to right | zoom into the selected timespan                         |
+| Click                   | Zoom out                                                |
+
+<FloatClear />
+
+### <GeoChartDocIcon />Geo chart
+
+<GeoChartScreenshot />
+<GeoChartDocVars />
+
+<FloatClear />
+
+### <HealthChartDocIcon />Health chart
+
+<HealthChartScreenshot />
+<HealthChartDocVars />
+
+<FloatClear />
+
+### <SoulChartDocIcon />Soul chart
+
+<SoulChartScreenshot />
+<SoulChartDocVars />
+
+<FloatClear />
+
+### <CompletionChartDocIcon />Completion chart
+
+<CompletionChartScreenshot />
+<CompletionChartDocVars />
+
+<FloatClear />
+
+### <GrubsChartDocIcon />Grubs chart
+
+<GrubsChartScreenshot />
+<GrubsChartDocVars />
+
+<FloatClear />
 ## Timeline
 
 The timeline allows scrolling through a gameplay, to see the player location and room visibility at different points in time.
 On the right of the timeline the speed of the animation can be adjusted.
-
-TODO list:
 
 <TimelineScreenshot />
 

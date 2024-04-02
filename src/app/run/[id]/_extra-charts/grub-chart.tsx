@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import grubImage from '../../../../../public/ingame-sprites/pin/pin_grub_location.png';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
@@ -11,7 +12,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'grubsNoRewardCollected',
         name: 'Grubs collected, reward not collected',
         description: 'Grubs collected, reward not collected',
-        classNames: tailwindChartColors.amberLight,
+        color: tailwindChartColors.amberLight,
         UnitIcon: Unit,
         order: 2,
     },
@@ -19,7 +20,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'grubRewards',
         name: 'Grubs collected, reward collected',
         description: 'Grubs collected, reward collected',
-        classNames: tailwindChartColors.green,
+        color: tailwindChartColors.green,
         UnitIcon: Unit,
         order: 1,
     },
@@ -27,7 +28,7 @@ const variables: LineChartVariableDescription[] = [
         key: 'grubsCollected',
         name: 'Total',
         description: 'Total number of grubs collected',
-        classNames: tailwindChartColors.green,
+        color: tailwindChartColors.slate,
         UnitIcon: Unit,
         order: 1,
         notShownInGraph: true,
@@ -53,4 +54,12 @@ export function GrubChart({ useViewOptionsStore }: GrubChartProps) {
             downScaleMaxTimeDelta={100}
         />
     );
+}
+
+export function GrubsChartDocVars() {
+    return <ChartDocVars variables={variables} />;
+}
+
+export function GrubsChartDocIcon() {
+    return <ChartDocTitleIcon unit={Unit} />;
 }
