@@ -59,6 +59,7 @@ export function GeoChart({ useViewOptionsStore }: GeoChartProps) {
             yAxisLabel="Geo"
             minimalMaximumY={100}
             downScaleMaxTimeDelta={10000}
+            renderScale={100}
         />
     );
 }

@@ -9,7 +9,7 @@ import useIsVisibleRef from '~/lib/utils/use-is-visible';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '~/lib/viz/recording-files/events/frame-end-event';
 import { type UseViewOptionsStore } from '../_viewOptionsStore';
-import { LineChartVariableClassNames } from './colors';
+import { type LineChartVariableClassNames } from './colors';
 import { downScale } from './down-scale';
 
 export type LineChartVariableDescription = {
@@ -41,6 +41,7 @@ export interface LineAreaChartProps {
     header: React.ReactNode;
     minimalMaximumY: number;
     downScaleMaxTimeDelta: number;
+    renderScale?: number;
 }
 
 export function LineAreaChart({
@@ -50,6 +51,7 @@ export function LineAreaChart({
     header,
     minimalMaximumY,
     downScaleMaxTimeDelta,
+    renderScale = 10,
 }: LineAreaChartProps) {
     const variablesPerKey = useMemo(() => {
         return Object.fromEntries(variables.map((it) => [it.key, it] as const));
@@ -129,12 +131,12 @@ export function LineAreaChart({
         return recording.frameEndEvents.findLast((it) => it.msIntoGame <= shownMsIntoGame);
     }, [recording, shownMsIntoGame]);
 
-    const widthWithMargin = 400;
-    const heightWithMargin = 300;
-    const marginTop = 25;
-    const marginRight = 10;
-    const marginBottom = 35;
-    const marginLeft = 45;
+    const widthWithMargin = 400 * renderScale;
+    const heightWithMargin = 300 * renderScale;
+    const marginTop = 25 * renderScale;
+    const marginRight = 10 * renderScale;
+    const marginBottom = 35 * renderScale;
+    const marginLeft = 45 * renderScale;
     const height = heightWithMargin - marginTop - marginBottom;
     const width = widthWithMargin - marginLeft - marginRight;
 
@@ -266,10 +268,11 @@ export function LineAreaChart({
         svg.selectAll('*').remove();
 
         svg.append('text')
-            .attr('x', marginLeft - 10)
-            .attr('y', 14)
+            .attr('x', marginLeft - 10 * renderScale)
+            .attr('y', 14 * renderScale)
             .attr('text-anchor', 'end')
             .attr('class', 'text-foreground fill-current text-xs')
+            .style('font-size', renderScale * 10)
             .text(yAxisLabel);
 
         // .style('transform', 'rotate(-90deg)')
@@ -280,7 +283,7 @@ export function LineAreaChart({
 
         svg.append('text')
             .attr('x', widthWithMargin / 2)
-            .attr('y', heightWithMargin - 2)
+            .attr('y', heightWithMargin - 2 * renderScale)
             .attr('text-anchor', 'middle')
             .attr('class', 'text-foreground fill-current text-xs')
             .text('Time');
@@ -365,8 +368,8 @@ export function LineAreaChart({
         animationLine.current = rootG
             .append('line')
             .attr('class', 'stroke-current text-foreground')
-            .attr('stroke-width', 2)
-            .attr('stroke-dasharray', '3 3')
+            .attr('stroke-width', 2 * renderScale)
+            .attr('stroke-dasharray', `${renderScale * 3} ${renderScale * 3}`)
             .attr('x1', 0)
             .attr('x2', 0)
             .attr('y1', 0)
@@ -385,6 +388,11 @@ export function LineAreaChart({
         setAnimationMsIntoGame,
         setHoveredRoom,
         isV1,
+        marginLeft,
+        widthWithMargin,
+        heightWithMargin,
+        marginTop,
+        renderScale,
     ]);
 
     // update area
@@ -399,7 +407,7 @@ export function LineAreaChart({
             })
             .y0((d) => y(d[0]))
             .y1((d) => y(d[1]))
-            .curve(d3.curveStep);
+            .curve(d3.curveStepAfter);
 
         areaPaths.current.transition().ease(d3.easeLinear).duration(transitionDuration).attr('d', area);
         //areaPaths.current.attr('d', area);
@@ -432,31 +440,45 @@ export function LineAreaChart({
     // update x axis
     useEffect(() => {
         if (!xAxis.current) return;
-        const xAxisCallee = d3
-            .axisBottom(x)
-            .tickSizeOuter(0)
-            .ticks(width / 70)
-            .tickFormat((d) => formatTimeMs(d.valueOf()));
-
-        if (xAxis.current.selectAll('*').empty()) {
-            xAxis.current.call(xAxisCallee);
-        } else {
-            xAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear).call(xAxisCallee);
-        }
-    }, [mainEffectChanges, width, x]);
+        xAxis.current.style('font-size', renderScale * 10).style('stroke-width', renderScale);
+        const base = xAxis.current.selectAll('*').empty()
+            ? xAxis.current
+            : xAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear);
+        base.call(
+            d3
+                .axisBottom(x)
+                .tickSizeOuter(0)
+                .ticks(6)
+                .tickSize(6 * renderScale)
+                .tickSizeInner(6 * renderScale)
+                .tickSizeOuter(6 * renderScale)
+                .tickPadding(3 * renderScale)
+                .tickFormat((d) => formatTimeMs(d.valueOf())),
+        );
+    }, [mainEffectChanges, renderScale, width, x]);
 
     // update y axis
     useEffect(() => {
         if (!yAxis.current) return;
 
+        yAxis.current.style('font-size', renderScale * 10).style('stroke-width', renderScale);
+
         const base = yAxis.current.selectAll('*').empty()
             ? yAxis.current
             : yAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear);
 
-        base.call(d3.axisLeft(yInSelection).ticks(height / 50));
+        base.call(
+            d3
+                .axisLeft(yInSelection)
+                .ticks(6)
+                .tickSize(6 * renderScale)
+                .tickSizeInner(6 * renderScale)
+                .tickSizeOuter(6 * renderScale)
+                .tickPadding(3 * renderScale),
+        );
         // .call((g) => g.select('.domain').remove())
         // .call((g) => g.selectAll('.tick line').clone().attr('x2', width).attr('stroke-opacity', 0.1));
-    }, [mainEffectChanges, height, yInSelection]);
+    }, [mainEffectChanges, height, yInSelection, renderScale]);
 
     // update animation line
     useEffect(() => {
