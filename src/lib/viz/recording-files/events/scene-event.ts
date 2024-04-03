@@ -8,6 +8,7 @@ export class SceneEvent extends RecordingEventBase {
     public originOffset: Vector2 | undefined;
     public sceneSize: Vector2 | undefined;
     public currentBossSequence: BossSequenceData | null = null;
+    public previousSceneEvent: SceneEvent | null = null;
 
     constructor(options: SceneEventOptions) {
         super(options);

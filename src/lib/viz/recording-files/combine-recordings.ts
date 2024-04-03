@@ -47,6 +47,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
     let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
     let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
     let previousFrameEndEvent: FrameEndEvent | null = null;
+    let previousSceneEvent: SceneEvent | null = null;
 
     let recordingFileVersion: RecordingFileVersion = '0.0.0';
 
@@ -114,6 +115,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
             } else if (event instanceof HKVizModVersionEvent) {
                 allHkVizModVersions.add(event.version);
             } else if (event instanceof SceneEvent) {
+                event.previousSceneEvent = previousSceneEvent;
                 const previousCurrentBossSequenceEvent = getPreviousPlayerData(
                     playerDataFields.byFieldName.currentBossSequence,
                 );
@@ -203,6 +205,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                         }
                     }
                 }
+                previousSceneEvent = event;
             } else if (event instanceof HeroStateEvent) {
                 if (event.field.name === 'isPaused') {
                     isPaused = event.value;

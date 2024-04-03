@@ -32,10 +32,16 @@ export function HKMapZoom({
     const previousZoomZone = useRef<ZoomZone | null>(null);
     const zoomZones = useMemo(() => {
         if (!zoomFollowEnabled || zoomFollowTarget !== 'current-zone') return null;
-        const sceneName = recording?.sceneEvents.findLast((e) => e.msIntoGame <= animatedMsIntoGame)?.sceneName;
-        if (!sceneName) return null;
-        const roomData = mainRoomDataBySceneName.get(sceneName);
-        return roomData?.zoomZones ?? EMPTY_ARRAY;
+        let zoomZones = null;
+        let sceneEvent = recording?.sceneEvents.findLast((e) => e.msIntoGame <= animatedMsIntoGame) ?? null;
+        while (sceneEvent && !zoomZones) {
+            const sceneName = sceneEvent.sceneName;
+            const roomData = mainRoomDataBySceneName.get(sceneName);
+            zoomZones = roomData?.zoomZones ?? null;
+            sceneEvent = sceneEvent.previousSceneEvent;
+        }
+
+        return zoomZones ?? EMPTY_ARRAY;
     }, [animatedMsIntoGame, recording?.sceneEvents, zoomFollowEnabled, zoomFollowTarget]);
 
     const visibleRoomsExtends = useMemo(() => {
