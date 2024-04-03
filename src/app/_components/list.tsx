@@ -9,7 +9,7 @@ export function Li({ children, color }: { children: React.ReactNode; color: Colo
     return (
         <li
             className={
-                'list-none pl-6 before:-ml-6 before:mr-3.5 before:inline-block before:h-2.5 before:w-2.5 before:rounded-full before:content-[""] ' +
+                'ml-6 list-none border-b py-1 before:-ml-6 before:mr-3.5 before:inline-block before:h-2.5 before:w-2.5 before:rounded-full before:content-[""] last:border-b-0 ' +
                 color.beforeBackground
             }
         >

@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import Image from 'next/image';
 import { useMemo, type CSSProperties } from 'react';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
@@ -13,6 +12,7 @@ import { type UseViewOptionsStore } from './_viewOptionsStore';
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@/components/ui/context-menu';
 import { Toggle } from '@/components/ui/toggle';
 import { Palette, Pin, PinOff } from 'lucide-react';
+import { AggregationVariableIcon } from '~/app/_components/aggregation_variable_icon';
 import { useThemeStore } from '~/app/_components/theme-store';
 import { assertNever } from '~/lib/utils/utils';
 import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
@@ -101,8 +101,6 @@ function AggregationVariable({
     );
     const variableInfo = aggregationVariableInfos[variable];
 
-    const Icon = 'Icon' in variableInfo ? variableInfo?.Icon : null;
-
     if (!selectedRoom) return null;
     return (
         <TableRow>
@@ -110,15 +108,7 @@ function AggregationVariable({
                 <Tooltip>
                     <TooltipTrigger>
                         <div className="flex flex-row items-center justify-center gap-2">
-                            {'image' in variableInfo && (
-                                <Image
-                                    className="w-6"
-                                    src={variableInfo.image}
-                                    alt={'Aggregation Variable icon'}
-                                    aria-hidden={true}
-                                ></Image>
-                            )}
-                            {Icon && <Icon className="h-5 w-5" />}
+                            <AggregationVariableIcon variable={variableInfo} />
                             <span>{variableInfo.name}</span>
                         </div>
                     </TooltipTrigger>

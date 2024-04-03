@@ -12,7 +12,7 @@ import healthImg from '../../../../public/ingame-sprites/select_game_HUD_0001_he
 import { roomGroupNamesBySceneName } from '../map-data/room-groups';
 import { playerDataFields } from '../player-data/player-data';
 import { FrameEndEvent } from './events/frame-end-event';
-import { PlayerDataEvent } from './events/player-data-event';
+import { type PlayerDataEvent } from './events/player-data-event';
 import { SceneEvent } from './events/scene-event';
 import {
     HeroStateEvent,
@@ -29,18 +29,18 @@ export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
 export const aggregationVariableInfos = {
     visits: {
         name: 'Visits',
-        description: 'Number this scene has been entered',
+        description: 'Number of times this scene has been entered',
         Icon: Hash,
     },
     firstVisitMs: {
         name: 'First visited at',
-        description: 'Time of first visit (mm:ss)',
+        description: 'Time of first visit',
         Icon: Clock12,
         format: formatTimeMs,
     },
     timeSpendMs: {
         name: 'Time spent',
-        description: 'Total time spent (mm:ss)',
+        description: 'Total time spent',
         Icon: Clock2,
         format: formatTimeMs,
     },
@@ -51,37 +51,37 @@ export const aggregationVariableInfos = {
     },
     deaths: {
         name: 'Deaths',
-        description: 'Number of times the player died in this room',
+        description: 'Number of times the player died in this room.',
         image: shadeImg,
     },
     focusing: {
         name: 'Focusing',
-        description: 'Number of times the player started to focus',
+        description: 'Number of times the player started to focus.',
         image: focusImg,
     },
     spellFireball: {
         name: 'Vengeful Spirit',
-        description: 'Number of times the player used a fireball spell',
+        description: 'Number of times the player used a fireball spell.',
         image: spellFireballImg,
     },
     spellDown: {
         name: 'Desolate Dive',
-        description: 'Number of times the player used a down spell',
+        description: 'Number of times the player used a downwards spell.',
         image: spellDownImg,
     },
     spellUp: {
         name: 'Howling Wraiths',
-        description: 'Number of times the player used an up spell',
+        description: 'Number of times the player used an upwards spell.',
         image: spellUpImg,
     },
     geoEarned: {
         name: 'Geo earned',
-        description: 'Total geo earned',
+        description: 'Total Geo earned. This does not include geo earned by defeating the shade.',
         image: coinImg,
     },
     geoSpent: {
         name: 'Geo spent',
-        description: 'Total geo spent',
+        description: 'Total Geo spent. This does not include Geo lost by dying and not defeating the shade.',
         image: coinImg,
     },
 } satisfies Record<

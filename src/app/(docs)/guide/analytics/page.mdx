@@ -6,7 +6,7 @@ import { HKVizText } from '../../../_components/hkviz-text';
 import { MailLinkUnstyled } from '../../../_components/mail-link';
 import { MdxInnerWrapper } from '../../../_components/mdx-layout';
 import { SpoilerWarningEarlyGame } from '../../_spoiler_warning';
-import { LinkableParagraph } from './_linkable_paragraph';
+import { LinkableSpan } from './_linkable_paragraph';
 import {
     BuildingsColormapScreenshot,
     ColorModeAreaScreenshot,
@@ -41,6 +41,8 @@ import { GeoChartDocIcon, GeoChartDocVars } from '../../../run/[id]/_extra-chart
 import { GrubsChartDocIcon, GrubsChartDocVars } from '../../../run/[id]/_extra-charts/grub-chart';
 import { HealthChartDocIcon, HealthChartDocVars } from '../../../run/[id]/_extra-charts/health-chart';
 import { SoulChartDocIcon, SoulChartDocVars } from '../../../run/[id]/_extra-charts/soul-chart';
+
+import { AggregationVariableDoc } from './_aggregation-variable-doc';
 
 export const metadata = {
     title: 'Analytics guide - HKViz',
@@ -128,18 +130,34 @@ You can choose between three options:
 
 <RoomAnalyticsScreenshot />
 
-By hovering over a room on the map, you can see the values of the variables for that room. Such as the time spent in the
-room and the number of deaths. Additionally the selected room and area is highlighted in the <a href="#timeline">timeline</a>.
+Ever wondered how to easily spot the most interesting or challenging parts of your game? Coloring the map based on different game stats can help!
 
-{<LinkableParagraph id="room-pin">
-To stop the shown room from changing by hovering over them, you can pin it with the <Pin className="inline-block h-4 w-4" aria-label="Pin" />-button in the room analytics panel or by clicking a room on the
-map.
+**How it works:**
 
-</LinkableParagraph>}
+1.  **Select a room** by hovering over it on the map. The hovered room will be displayed in the room analytics. Showing stats for the selected routeModule.
 
-By clicking on the <Palette className="inline-block h-4 w-4" aria-label="Color" />
--button, you can choose a variable to color the map by. A single click will use a linear color scale, a second click will
-switch to an exponential color scale.
+    Hint: your selected room is not only shown in the room analytics panel, but also highlighted in the <a href="#timeline">timeline</a>.
+
+2.  {<LinkableSpan id="room-pin">
+
+    <b>Pin a room:</b> To stop the shown room from changing by hovering over them, you can pin it with the
+
+    {' '}
+
+    <Pin className="inline-block h-4 w-4" aria-label="Pin" />
+    -button in the room analytics panel or by clicking a room on the map.
+
+    </LinkableSpan>}
+
+3.  **Select a variable for coloring**:
+    Click the <Palette className="inline-block h-4 w-4" aria-label="Color" />
+    -button in the room's info panel. This lets you pick which stat to use for coloring.
+
+4.  **Color scales**:
+    By clicking the <Palette className="inline-block h-4 w-4" aria-label="Color" />
+    -button a few times you can select a color scale.
+
+#### Color scales:
 
 <ReflowRow>
     <ReflowCell>
@@ -168,6 +186,10 @@ switch to an exponential color scale.
 </ReflowRow>
 
 Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button.
+
+#### Availible stats:
+
+<AggregationVariableDoc />
 
 ### <Tent className="w-5 h-5 mr-2 inline-block" />Special rooms
 
