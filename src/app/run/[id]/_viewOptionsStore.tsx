@@ -333,6 +333,20 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         set({ extraChartsTimeBounds });
                     }
 
+                    function setExtraChartsTimeBoundsStopFollowIfOutside(
+                        extraChartsTimeBounds: readonly [number, number],
+                    ) {
+                        setExtraChartsTimeBounds(extraChartsTimeBounds);
+                        const { extraChartsFollowAnimation, animationMsIntoGame } = get();
+                        if (
+                            extraChartsFollowAnimation &&
+                            (animationMsIntoGame < extraChartsTimeBounds[0] ||
+                                animationMsIntoGame > extraChartsTimeBounds[1])
+                        ) {
+                            set({ extraChartsFollowAnimation: false });
+                        }
+                    }
+
                     function resetExtraChartsTimeBounds() {
                         setExtraChartsTimeBounds([get().timeFrame.min, get().timeFrame.max]);
                     }
@@ -449,6 +463,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         setZoomFollowTarget,
                         setZoomFollowEnabled,
                         getZoomFollowTransitionSpeed,
+                        setExtraChartsTimeBoundsStopFollowIfOutside,
                     };
                 },
             ),

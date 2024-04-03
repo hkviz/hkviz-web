@@ -67,7 +67,9 @@ export function LineAreaChart({
 
     const isV1 = useViewOptionsStore((s) => s.isV1());
     const _extraChartsTimeBounds = useViewOptionsStore((s) => s.extraChartsTimeBounds);
-    const setExtraChartsTimeBounds = useViewOptionsStore((s) => s.setExtraChartsTimeBounds);
+    const setExtraChartsTimeBoundsStopFollowIfOutside = useViewOptionsStore(
+        (s) => s.setExtraChartsTimeBoundsStopFollowIfOutside,
+    );
     const resetExtraChartsTimeBounds = useViewOptionsStore((s) => s.resetExtraChartsTimeBounds);
     const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
@@ -246,7 +248,7 @@ export function LineAreaChart({
             resetExtraChartsTimeBounds();
         } else {
             const invSelection = [x.invert(selection[0]), x.invert(selection[1])] as const;
-            setExtraChartsTimeBounds(invSelection);
+            setExtraChartsTimeBoundsStopFollowIfOutside(invSelection);
         }
         // todo animate axis
         skipNextUpdate.current = true;

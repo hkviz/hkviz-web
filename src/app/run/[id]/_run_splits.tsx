@@ -200,7 +200,7 @@ export function RunSplits({ useViewOptionsStore, resizeOptions }: RunSplitsProps
                 {recordingSplitGroups.map((group) => {
                     const checked = visibleSplitGroups.includes(group);
                     return (
-                        <div className="flex flex-row gap-2" key={group.name}>
+                        <div className="flex flex-row" key={group.name}>
                             <Checkbox
                                 id={id + '_run_split_option_' + group.name}
                                 checked={checked}
@@ -209,7 +209,7 @@ export function RunSplits({ useViewOptionsStore, resizeOptions }: RunSplitsProps
                             />
                             <label
                                 htmlFor={id + '_run_split_option_' + group.name}
-                                className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                className="grow pl-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                             >
                                 {group.displayName}
                             </label>

@@ -230,6 +230,7 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
         }
     }
 
+    // ----- CHARMS -----
     for (const virtualCharm of virtualCharms) {
         for (const frameEndEvent of recording.frameEndEvents) {
             if (
@@ -249,6 +250,7 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
         }
     }
 
+    // ----- FLOWER -----
     let hadFlowerLastFrame = false;
     let hadBrokenFlowerLastFrame = false;
     for (const frameEndEvent of recording.frameEndEvents) {
@@ -279,6 +281,79 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
         }
         hadFlowerLastFrame = hasFlowerThisFrame;
         hadBrokenFlowerLastFrame = xunFlowerBrokenThisFrame;
+    }
+
+    // Spell levels
+    for (const frameEndEvent of recording.frameEndEvents) {
+        // fireball
+        if (frameEndEvent.fireballLevel === 1 && frameEndEvent.previousFrameEndEvent?.fireballLevel !== 1) {
+            splits.push({
+                msIntoGame: frameEndEvent.msIntoGame,
+                title: 'Vengeful Spirit',
+                tooltip: 'Got Vengeful Spirit',
+                imageUrl: '/ingame-sprites/inventory/Inv_0025_spell_fireball_01.png',
+                group: recordingSplitGroupsByName.abilities,
+                debugInfo: undefined,
+                previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
+            });
+        }
+        if (frameEndEvent.fireballLevel === 2 && frameEndEvent.previousFrameEndEvent?.fireballLevel !== 2) {
+            splits.push({
+                msIntoGame: frameEndEvent.msIntoGame,
+                title: 'Shade Soul',
+                tooltip: 'Got Shade Soul (upgrade for Vengeful Spirit)',
+                imageUrl: '/ingame-sprites/inventory/Inv_0025_spell_fireball_01_level2.png',
+                group: recordingSplitGroupsByName.abilities,
+                debugInfo: undefined,
+                previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
+            });
+        }
+        // up spell
+        if (frameEndEvent.screamLevel === 1 && frameEndEvent.previousFrameEndEvent?.screamLevel !== 1) {
+            splits.push({
+                msIntoGame: frameEndEvent.msIntoGame,
+                title: 'Howling Wraiths',
+                tooltip: 'Got Howling Wraiths',
+                imageUrl: '/ingame-sprites/inventory/Inv_0024_spell_scream_01.png',
+                group: recordingSplitGroupsByName.abilities,
+                debugInfo: undefined,
+                previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
+            });
+        }
+        if (frameEndEvent.screamLevel === 2 && frameEndEvent.previousFrameEndEvent?.screamLevel !== 2) {
+            splits.push({
+                msIntoGame: frameEndEvent.msIntoGame,
+                title: 'Abyss Shriek',
+                tooltip: 'Got Abyss Shriek (upgrade for Howling Wraiths)',
+                imageUrl: '/ingame-sprites/inventory/Inv_0024_spell_scream_01_level2.png',
+                group: recordingSplitGroupsByName.abilities,
+                debugInfo: undefined,
+                previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
+            });
+        }
+        // down spell
+        if (frameEndEvent.quakeLevel === 1 && frameEndEvent.previousFrameEndEvent?.quakeLevel !== 1) {
+            splits.push({
+                msIntoGame: frameEndEvent.msIntoGame,
+                title: 'Desolate Dive',
+                tooltip: 'Got Howling Wraiths',
+                imageUrl: '/ingame-sprites/inventory/Inv_0026_spell_quake_01.png',
+                group: recordingSplitGroupsByName.abilities,
+                debugInfo: undefined,
+                previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
+            });
+        }
+        if (frameEndEvent.quakeLevel === 2 && frameEndEvent.previousFrameEndEvent?.quakeLevel !== 2) {
+            splits.push({
+                msIntoGame: frameEndEvent.msIntoGame,
+                title: 'Descending Dark',
+                tooltip: 'Got Descending Dark (upgrade for Desolate Dive)',
+                imageUrl: '/ingame-sprites/inventory/Inv_0026_spell_quake_01_level2.png',
+                group: recordingSplitGroupsByName.abilities,
+                debugInfo: undefined,
+                previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
+            });
+        }
     }
 
     return splits.sort((a, b) => a.msIntoGame - b.msIntoGame);
