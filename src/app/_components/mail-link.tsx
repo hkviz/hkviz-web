@@ -1,7 +1,7 @@
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-export function MailLinkUnstyled({ className, mail = 'hkviz@olii.dev' }: { className?: string; mail?: string }) {
+export function MailLinkUnstyled({ className, mail = 'support@hkviz.org' }: { className?: string; mail?: string }) {
     return (
         <a className={className} href={`mailto:${mail}`}>
             {mail}

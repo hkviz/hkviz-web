@@ -14,7 +14,7 @@ Visit [hkviz.org](https://www.hkviz.org/) to get started recording your own game
 
 ## I have Ideas/Feedback for visualizations
 
-Feel free to [open a issue](https://github.com/hkviz/hkviz-web/issues) on this repository, write @olivergrack on discord or contact me via [hkviz@olii.dev](mailto:hkviz@olii.dev).
+Feel free to [open a issue](https://github.com/hkviz/hkviz-web/issues) on this repository, write @olivergrack on discord or contact me via [support@hkviz.org](mailto:support@hkviz.org).
 
 ## How to use
 
