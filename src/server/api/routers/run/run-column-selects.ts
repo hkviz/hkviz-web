@@ -2,8 +2,8 @@ import { type InferSelectModel } from 'drizzle-orm';
 import { tags, type TagCode } from '~/lib/types/tags';
 import { type RunGameStateMetaColumnName, type runFiles, type runs } from '~/server/db/schema';
 
-type RunFileColumnSelect = Partial<{ [Col in keyof (typeof runFiles)['$columns']]: true }>;
-type RunColumnSelect = Partial<{ [Col in keyof (typeof runs)['$columns']]: true }>;
+type RunFileColumnSelect = Partial<{ [Col in keyof typeof runFiles]: true }>;
+type RunColumnSelect = Partial<{ [Col in keyof typeof runs]: true }>;
 
 export const runFilesMetaFieldsSelect = {
     hkVersion: true,

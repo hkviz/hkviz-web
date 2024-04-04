@@ -20,7 +20,8 @@ export const studyParticipationRouter = createTRPCRouter({
                     futureContactOk: input.futureContactOk,
                     excludedSinceU18: input.excludedSinceU18,
                 })
-                .onDuplicateKeyUpdate({
+                .onConflictDoUpdate({
+                    target: dataCollectionStudyParticipations.userId,
                     set: {
                         keepDataAfterStudyConducted: input.keepDataAfterStudyConducted,
                         futureContactOk: input.futureContactOk,

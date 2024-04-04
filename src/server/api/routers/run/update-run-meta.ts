@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import { type MySqlUpdateSetSource } from 'drizzle-orm/mysql-core';
+import { type SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core';
 import { type DB } from '~/server/db';
 import { runs } from '~/server/db/schema';
 import { runGameStateMetaColumnsSelect } from './run-column-selects';
@@ -16,7 +16,7 @@ export async function updateRunMetaByFiles(db: DB, runId: string) {
     const startTimes = files.map((it) => it.startedAt?.getTime()).filter((it): it is number => !!it);
     const startedAt = startTimes.length > 0 ? new Date(Math.min(...startTimes)) : undefined;
 
-    const updateSet: MySqlUpdateSetSource<typeof runs> = {
+    const updateSet: SQLiteUpdateSetSource<typeof runs> = {
         startedAt,
     };
 

@@ -1,27 +1,42 @@
 import { relations, sql, type HasDefault, type NotNull } from 'drizzle-orm';
 import {
-    boolean,
-    double,
     index,
     int,
-    mysqlEnum,
-    mysqlTableCreator,
     primaryKey,
+    real,
+    sqliteTableCreator,
     text,
-    timestamp,
-    varchar,
-    type MySqlBooleanBuilderInitial,
-} from 'drizzle-orm/mysql-core';
+    type SQLiteBooleanBuilderInitial,
+    type SQLiteTimestampBuilderInitial,
+} from 'drizzle-orm/sqlite-core';
 import { type AdapterAccount } from 'next-auth/adapters';
-import { ageRangeCodes } from '~/lib/types/age-range';
-import { countryCodes } from '~/lib/types/country';
+import { type AgeRange } from '~/lib/types/age-range';
+import { type CountryCode } from '~/lib/types/country';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { tags, type TagCode } from '~/lib/types/tags';
-import { mapZoneSchema } from '~/lib/viz/types/mapZone';
+import { type VisibilityCode } from '~/lib/types/visibility';
+import { type MapZone } from '~/lib/viz/types/mapZone';
 
 const UUID_LENGTH = 36;
-function varcharUuid(name: string) {
-    return varchar(name, { length: UUID_LENGTH });
+function textUuid<const TName extends string>(name: TName) {
+    return text(name, { length: UUID_LENGTH });
+}
+
+function timestampColumn<const TName extends string>(name: TName) {
+    return int(name, { mode: 'timestamp' });
+}
+
+function createdAtColumn(): HasDefault<NotNull<SQLiteTimestampBuilderInitial<'created_at'>>> {
+    return timestampColumn('created_at')
+        .notNull()
+        .default(sql`CURRENT_TIMESTAMP`);
+}
+
+function updatedAtColumn(): HasDefault<NotNull<SQLiteTimestampBuilderInitial<'updated_at'>>> {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    return timestampColumn('updated_at')
+        .notNull()
+        .$onUpdate(() => new Date());
 }
 
 /**
@@ -30,25 +45,20 @@ function varcharUuid(name: string) {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const mysqlTable = mysqlTableCreator((name) => `hkviz_${name}`);
+export const sqliteTable = sqliteTableCreator((name) => `hkviz_${name}`);
 
-export const users = mysqlTable(
+export const users = sqliteTable(
     'user',
     {
-        id: varchar('id', { length: 255 }).notNull().primaryKey(),
-        name: varchar('name', { length: 255 }),
-        previousName: varchar('previous_name', { length: 255 }),
-        isResearcher: boolean('is_researcher').notNull().default(false),
-        email: varchar('email', { length: 255 }).notNull(),
-        emailVerified: timestamp('emailVerified', {
-            mode: 'date',
-            fsp: 3,
-        }).default(sql`CURRENT_TIMESTAMP(3)`),
-        image: varchar('image', { length: 255 }),
-        createdAt: timestamp('created_at')
-            .default(sql`CURRENT_TIMESTAMP`)
-            .notNull(),
-        updatedAt: timestamp('updatedAt').onUpdateNow(),
+        id: text('id', { length: 255 }).notNull().primaryKey(),
+        name: text('name', { length: 255 }),
+        previousName: text('previous_name', { length: 255 }),
+        isResearcher: int('is_researcher', { mode: 'boolean' }).notNull().default(false),
+        email: text('email', { length: 255 }).notNull(),
+        emailVerified: timestampColumn('emailVerified').default(sql`CURRENT_TIMESTAMP`),
+        image: text('image', { length: 255 }),
+        createdAt: createdAtColumn(),
+        updatedAt: updatedAtColumn(),
     },
     (user) => ({
         emailIdx: index('email_idx').on(user.email),
@@ -63,24 +73,22 @@ export const usersRelations = relations(users, ({ many, one }) => ({
     }),
 }));
 
-export const accounts = mysqlTable(
+export const accounts = sqliteTable(
     'account',
     {
-        userId: varchar('userId', { length: 255 }).notNull(),
-        type: varchar('type', { length: 255 }).$type<AdapterAccount['type']>().notNull(),
-        provider: varchar('provider', { length: 255 }).notNull(),
-        providerAccountId: varchar('providerAccountId', { length: 255 }).notNull(),
+        userId: text('userId', { length: 255 }).notNull(),
+        type: text('type', { length: 255 }).$type<AdapterAccount['type']>().notNull(),
+        provider: text('provider', { length: 255 }).notNull(),
+        providerAccountId: text('providerAccountId', { length: 255 }).notNull(),
         refresh_token: text('refresh_token'),
         access_token: text('access_token'),
         expires_at: int('expires_at'),
-        token_type: varchar('token_type', { length: 255 }),
-        scope: varchar('scope', { length: 255 }),
+        token_type: text('token_type', { length: 255 }),
+        scope: text('scope', { length: 255 }),
         id_token: text('id_token'),
-        session_state: varchar('session_state', { length: 255 }),
-        createdAt: timestamp('created_at')
-            .default(sql`CURRENT_TIMESTAMP`)
-            .notNull(),
-        updatedAt: timestamp('updatedAt').onUpdateNow(),
+        session_state: text('session_state', { length: 255 }),
+        createdAt: createdAtColumn(),
+        updatedAt: updatedAtColumn(),
     },
     (account) => ({
         compoundKey: primaryKey(account.provider, account.providerAccountId),
@@ -92,64 +100,58 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
     user: one(users, { fields: [accounts.userId], references: [users.id] }),
 }));
 
-export const dataCollectionStudyParticipations = mysqlTable('userDataCollectionResearchParticipation', {
-    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
-    excludedSinceU18: boolean('exludedSinceU18').notNull().default(false),
-    keepDataAfterStudyConducted: boolean('keepDataAfterStudyConducted').notNull(),
-    futureContactOk: boolean('futureContactOk').notNull(),
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
+export const dataCollectionStudyParticipations = sqliteTable('userDataCollectionResearchParticipation', {
+    userId: text('userId', { length: 255 }).notNull().primaryKey(),
+    excludedSinceU18: int('exludedSinceU18', { mode: 'boolean' }).notNull().default(false),
+    keepDataAfterStudyConducted: int('keepDataAfterStudyConducted', { mode: 'boolean' }).notNull(),
+    futureContactOk: int('futureContactOk', { mode: 'boolean' }).notNull(),
+    createdAt: createdAtColumn(),
+    updatedAt: updatedAtColumn(),
 });
 
 export const dataCollectionStudyParticipationRelations = relations(dataCollectionStudyParticipations, ({ one }) => ({
     user: one(users, { fields: [dataCollectionStudyParticipations.userId], references: [users.id] }),
 }));
 
-export const userDemographics = mysqlTable('userDemographic', {
-    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
-    ageRange: mysqlEnum('age_range', ageRangeCodes).notNull(),
-    country: mysqlEnum('country', countryCodes).notNull(),
+export const userDemographics = sqliteTable('userDemographic', {
+    userId: text('userId', { length: 255 }).notNull().primaryKey(),
+    ageRange: text('age_range', { length: 64 }).$type<AgeRange>().notNull(),
+    country: text('country', { length: 2 }).$type<CountryCode>().notNull(),
 
-    genderWoman: boolean('gender_woman').notNull().default(false),
-    genderMan: boolean('gender_man').notNull().default(false),
-    genderNonBinary: boolean('gender_non_binary').notNull().default(false),
-    genderPreferNotToDisclose: boolean('gender_prefer_not_to_disclose').notNull().default(false),
-    genderPreferToSelfDescribe: boolean('gender_prefer_to_self_describe').notNull().default(false),
-    genderCustom: varchar('gender_custom', { length: 124 }),
+    genderWoman: int('gender_woman', { mode: 'boolean' }).notNull().default(false),
+    genderMan: int('gender_man', { mode: 'boolean' }).notNull().default(false),
+    genderNonBinary: int('gender_non_binary', { mode: 'boolean' }).notNull().default(false),
+    genderPreferNotToDisclose: int('gender_prefer_not_to_disclose', { mode: 'boolean' }).notNull().default(false),
+    genderPreferToSelfDescribe: int('gender_prefer_to_self_describe', { mode: 'boolean' }).notNull().default(false),
+    genderCustom: text('gender_custom', { length: 124 }),
 
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
+    createdAt: createdAtColumn(),
+    updatedAt: updatedAtColumn(),
 });
 
-export const hkExperience = mysqlTable('hkExperience', {
-    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
+export const hkExperience = sqliteTable('hkExperience', {
+    userId: text('userId', { length: 255 }).notNull().primaryKey(),
 
-    playedBefore: boolean('played_before').notNull(),
-    gotDreamnail: boolean('got_dreamnail').notNull(),
-    didEndboss: boolean('did_enboss').notNull(),
-    enteredWhitePalace: boolean('entered_white_palace').notNull(),
-    got112Percent: boolean('got_112_percent').notNull(),
+    playedBefore: int('played_before', { mode: 'boolean' }).notNull(),
+    gotDreamnail: int('got_dreamnail', { mode: 'boolean' }).notNull(),
+    didEndboss: int('did_enboss', { mode: 'boolean' }).notNull(),
+    enteredWhitePalace: int('entered_white_palace', { mode: 'boolean' }).notNull(),
+    got112Percent: int('got_112_percent', { mode: 'boolean' }).notNull(),
 
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
+    createdAt: createdAtColumn(),
+    updatedAt: updatedAtColumn(),
 });
 
 export const userDemographicsRelations = relations(userDemographics, ({ one }) => ({
     user: one(users, { fields: [userDemographics.userId], references: [users.id] }),
 }));
 
-export const sessions = mysqlTable(
+export const sessions = sqliteTable(
     'session',
     {
-        sessionToken: varchar('sessionToken', { length: 255 }).notNull().primaryKey(),
-        userId: varchar('userId', { length: 255 }).notNull(),
-        expires: timestamp('expires', { mode: 'date' }).notNull(),
+        sessionToken: text('sessionToken', { length: 255 }).notNull().primaryKey(),
+        userId: text('userId', { length: 255 }).notNull(),
+        expires: timestampColumn('expires').notNull(),
     },
     (session) => ({
         userIdIdx: index('userId_idx').on(session.userId),
@@ -160,12 +162,12 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
     user: one(users, { fields: [sessions.userId], references: [users.id] }),
 }));
 
-export const verificationTokens = mysqlTable(
+export const verificationTokens = sqliteTable(
     'verificationToken',
     {
-        identifier: varchar('identifier', { length: 255 }).notNull(),
-        token: varchar('token', { length: 255 }).notNull(),
-        expires: timestamp('expires', { mode: 'date' }).notNull(),
+        identifier: text('identifier', { length: 255 }).notNull(),
+        token: text('token', { length: 255 }).notNull(),
+        expires: timestampColumn('expires').notNull(),
     },
     (vt) => ({
         compoundKey: primaryKey(vt.identifier, vt.token),
@@ -173,60 +175,58 @@ export const verificationTokens = mysqlTable(
 );
 
 const runTagColumns = Object.fromEntries(
-    tags.map((tag) => [`tag_${tag.code}`, boolean(`tag_${tag.code}`).notNull().default(false)]),
+    tags.map((tag) => [`tag_${tag.code}`, int(`tag_${tag.code}`, { mode: 'boolean' }).notNull().default(false)]),
 ) as {
-    [Code in TagCode as `tag_${Code}`]: HasDefault<NotNull<MySqlBooleanBuilderInitial<`tag_${Code}`>>>;
+    [Code in TagCode as `tag_${Code}`]: HasDefault<NotNull<SQLiteBooleanBuilderInitial<`tag_${Code}`>>>;
 };
 
 // meta data, so it can easily be displayed in the UI without parsing recording files
 const runGameStateMetaColumns = {
-    hkVersion: varchar('hk_version', { length: 64 }),
-    playTime: double('play_time'),
+    hkVersion: text('hk_version', { length: 64 }),
+    playTime: real('play_time'),
     maxHealth: int('max_health'),
     mpReserveMax: int('mp_reserve_max'),
     geo: int('geo'),
     dreamOrbs: int('dream_orbs'),
     permadeathMode: int('permadeath_mode'),
-    mapZone: mysqlEnum('map_zone', mapZoneSchema.options),
-    killedHollowKnight: boolean('killed_hollow_knight'),
-    killedFinalBoss: boolean('killed_final_boss'),
-    killedVoidIdol: boolean('killed_void_idol'),
+    mapZone: text('map_zone', { length: 255 }).$type<MapZone>(),
+    killedHollowKnight: int('killed_hollow_knight', { mode: 'boolean' }),
+    killedFinalBoss: int('killed_final_boss', { mode: 'boolean' }),
+    killedVoidIdol: int('killed_void_idol', { mode: 'boolean' }),
     completionPercentage: int('completion_percentage'),
-    unlockedCompletionRate: boolean('unlocked_completion_rate'),
-    dreamNailUpgraded: boolean('dream_nail_upgraded'),
-    lastScene: varchar('last_scene', { length: 255 }),
+    unlockedCompletionRate: int('unlocked_completion_rate', { mode: 'boolean' }),
+    dreamNailUpgraded: int('dream_nail_upgraded', { mode: 'boolean' }),
+    lastScene: text('last_scene', { length: 255 }),
 
-    startedAt: timestamp('started_at'),
-    endedAt: timestamp('ended_at'),
+    startedAt: timestampColumn('started_at'),
+    endedAt: timestampColumn('ended_at'),
 } as const;
 
 export type RunGameStateMetaColumnName = keyof typeof runGameStateMetaColumns;
 
-export const runs = mysqlTable(
+export const runs = sqliteTable(
     'run',
     {
         // server generated. Used for urls
-        id: varchar('id', { length: 255 }).notNull().primaryKey(),
-        userId: varchar('user_id', { length: 255 }).notNull(),
-        title: varchar('title', { length: MAX_RUN_TITLE_LENGTH }),
+        id: text('id', { length: 255 }).notNull().primaryKey(),
+        userId: text('user_id', { length: 255 }).notNull(),
+        title: text('title', { length: MAX_RUN_TITLE_LENGTH }),
         description: text('description'),
-        visibility: mysqlEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),
+        visibility: text('visibility', { length: 64 }).$type<VisibilityCode>().notNull().default('private'),
 
-        combinedIntoRunId: varcharUuid('combined_into_run_id'),
-        isCombinedRun: boolean('is_combined_run').notNull().default(false),
+        combinedIntoRunId: textUuid('combined_into_run_id'),
+        isCombinedRun: int('is_combined_run', { mode: 'boolean' }).notNull().default(false),
 
-        createdAt: timestamp('created_at')
-            .default(sql`CURRENT_TIMESTAMP`)
-            .notNull(),
-        updatedAt: timestamp('updatedAt').onUpdateNow(),
+        createdAt: createdAtColumn(),
+        updatedAt: updatedAtColumn(),
 
         // generally when a run is deleted, it is actually deleted from the database.
         // unless deleting a file from r2 failed, then it will be kept for manual cleanup.
-        deleted: boolean('deleted').notNull().default(false),
+        deleted: int('deleted', { mode: 'boolean' }).notNull().default(false),
 
         // will hide a run from the own gameplays and public list even when public.
         // only viewable by owner via achieve page
-        archived: boolean('archived').notNull().default(false),
+        archived: int('archived', { mode: 'boolean' }).notNull().default(false),
 
         ...runTagColumns,
 
@@ -254,13 +254,13 @@ export const runsRelations = relations(runs, ({ one, many }) => ({
  * Since a gameplay could have multiple local ids, when it is played over multiple devices
  * and the id is not synced (which it isn't atm).
  */
-export const runLocalIds = mysqlTable(
+export const runLocalIds = sqliteTable(
     'run_local_id',
     {
-        localId: varcharUuid('local_id').notNull(),
-        userId: varcharUuid('user_id').notNull(),
-        runId: varcharUuid('run_id').notNull(),
-        originalRunId: varcharUuid('original_run_id'),
+        localId: textUuid('local_id').notNull(),
+        userId: textUuid('user_id').notNull(),
+        runId: textUuid('run_id').notNull(),
+        originalRunId: textUuid('original_run_id'),
     },
     (runLocalId) => ({
         compoundKey: primaryKey(runLocalId.userId, runLocalId.localId),
@@ -272,20 +272,18 @@ export const runLocalIdRelations = relations(runLocalIds, ({ one, many }) => ({
     run: one(runs, { fields: [runLocalIds.runId], references: [runs.id] }),
 }));
 
-export const runFiles = mysqlTable(
+export const runFiles = sqliteTable(
     'runfile',
     {
         // this id is also used to find the file inside the r2 bucket
-        id: varcharUuid('id').notNull().primaryKey(),
-        runId: varcharUuid('run_id').notNull(),
+        id: textUuid('id').notNull().primaryKey(),
+        runId: textUuid('run_id').notNull(),
         // TODO make non-nullable after deploy
-        localId: varcharUuid('local_id'),
+        localId: textUuid('local_id'),
         partNumber: int('part_number').notNull(),
-        uploadFinished: boolean('upload_finished').notNull(),
-        createdAt: timestamp('created_at')
-            .default(sql`CURRENT_TIMESTAMP`)
-            .notNull(),
-        updatedAt: timestamp('updatedAt').onUpdateNow(),
+        uploadFinished: int('upload_finished', { mode: 'boolean' }).notNull(),
+        createdAt: createdAtColumn(),
+        updatedAt: updatedAtColumn(),
         version: int('version').notNull().default(0),
         contentLength: int('content_length').notNull().default(0),
         ...runGameStateMetaColumns,
@@ -299,20 +297,18 @@ export const runFilesRelations = relations(runFiles, ({ one }) => ({
     run: one(runs, { fields: [runFiles.runId], references: [runs.id] }),
 }));
 
-export const ingameAuth = mysqlTable(
+export const ingameAuth = sqliteTable(
     'ingameauth',
     {
         // server generated, to authenticate a user from the game. Does only permit uploads.
-        id: varchar('id', { length: 255 }).notNull().primaryKey(),
+        id: text('id', { length: 255 }).notNull().primaryKey(),
         // just used for the login url, since the actual id should not be inside the browser history.
         // this urlId is immediatly changed or deleted after the login url is visited, even before canceling or allowing.
-        urlId: varchar('url_id', { length: 255 }),
-        name: varchar('name', { length: 255 }).notNull(),
-        userId: varchar('user_id', { length: 255 }),
-        createdAt: timestamp('created_at')
-            .default(sql`CURRENT_TIMESTAMP`)
-            .notNull(),
-        updatedAt: timestamp('updatedAt').onUpdateNow(),
+        urlId: text('url_id', { length: 255 }),
+        name: text('name', { length: 255 }).notNull(),
+        userId: text('user_id', { length: 255 }),
+        createdAt: createdAtColumn(),
+        updatedAt: updatedAtColumn(),
     },
     (ingameAuth) => ({
         urlIdIdx: index('urlId_idx').on(ingameAuth.urlId),
@@ -323,12 +319,10 @@ export const ingameAuthRelations = relations(ingameAuth, ({ one }) => ({
     user: one(users, { fields: [ingameAuth.userId], references: [users.id] }),
 }));
 
-export const accountDeletionRequest = mysqlTable('accountDeletionRequest', {
-    id: varchar('id', { length: 255 }).notNull().primaryKey(),
-    userId: varchar('user_id', { length: 255 }).notNull(),
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
-    formAccepted: boolean('form_accepted').notNull().default(false),
+export const accountDeletionRequest = sqliteTable('accountDeletionRequest', {
+    id: text('id', { length: 255 }).notNull().primaryKey(),
+    userId: text('user_id', { length: 255 }).notNull(),
+    createdAt: createdAtColumn(),
+    updatedAt: updatedAtColumn(),
+    formAccepted: int('form_accepted', { mode: 'boolean' }).notNull().default(false),
 });

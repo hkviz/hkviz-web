@@ -1,9 +1,9 @@
 import { TRPCError } from '@trpc/server';
 import { eq, inArray, or, sql } from 'drizzle-orm';
-import { MySqlUpdateSetSource } from 'drizzle-orm/mysql-core';
+import { type SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core';
 import { z } from 'zod';
 import { sendMailToSupport } from '~/lib/mails';
-import { VisibilityCode } from '~/lib/types/visibility';
+import { type VisibilityCode } from '~/lib/types/visibility';
 import { raise } from '~/lib/utils/utils';
 import { runFiles, runLocalIds, runs } from '~/server/db/schema';
 import { protectedProcedure } from '../../trpc';
@@ -39,7 +39,7 @@ export const combineRunsProcedure = protectedProcedure
             const runIdsWithoutChosen = input.runIds.filter((it) => it !== chosenId);
 
             // if a tag exists for any of the combined runs it will be added to the combined run
-            const runTagUpdate: MySqlUpdateSetSource<typeof runs> = {};
+            const runTagUpdate: SQLiteUpdateSetSource<typeof runs> = {};
             for (const run of foundRuns) {
                 for (const tag of Object.keys(runTagFieldsSelect) as (keyof typeof runTagFieldsSelect)[]) {
                     if (run[tag]) {
