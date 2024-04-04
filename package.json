@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "build": "next build --debug",
-        "db:push": "dotenv drizzle-kit push:mysql",
+        "db:push": "dotenv drizzle-kit push:sqlite",
         "db:studio": "dotenv drizzle-kit studio",
         "next:dev": "next dev",
         "next:dev-turbo": "next dev --turbo",

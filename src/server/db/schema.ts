@@ -1,4 +1,4 @@
-import { relations, sql, type HasDefault, type NotNull } from 'drizzle-orm';
+import { relations, type HasDefault, type NotNull } from 'drizzle-orm';
 import {
     index,
     int,
@@ -29,14 +29,12 @@ function timestampColumn<const TName extends string>(name: TName) {
 function createdAtColumn(): HasDefault<NotNull<SQLiteTimestampBuilderInitial<'created_at'>>> {
     return timestampColumn('created_at')
         .notNull()
-        .default(sql`CURRENT_TIMESTAMP`);
+        .$default(() => new Date());
 }
 
-function updatedAtColumn(): HasDefault<NotNull<SQLiteTimestampBuilderInitial<'updated_at'>>> {
+function updatedAtColumn(): HasDefault<SQLiteTimestampBuilderInitial<'updated_at'>> {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    return timestampColumn('updated_at')
-        .notNull()
-        .$onUpdate(() => new Date());
+    return timestampColumn('updated_at').$onUpdate(() => new Date());
 }
 
 /**
@@ -45,9 +43,9 @@ function updatedAtColumn(): HasDefault<NotNull<SQLiteTimestampBuilderInitial<'up
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const sqliteTable = sqliteTableCreator((name) => `hkviz_${name}`);
+export const createTable = sqliteTableCreator((name) => `hkviz_${name}`);
 
-export const users = sqliteTable(
+export const users = createTable(
     'user',
     {
         id: text('id', { length: 255 }).notNull().primaryKey(),
@@ -55,7 +53,7 @@ export const users = sqliteTable(
         previousName: text('previous_name', { length: 255 }),
         isResearcher: int('is_researcher', { mode: 'boolean' }).notNull().default(false),
         email: text('email', { length: 255 }).notNull(),
-        emailVerified: timestampColumn('emailVerified').default(sql`CURRENT_TIMESTAMP`),
+        emailVerified: timestampColumn('email_verified'),
         image: text('image', { length: 255 }),
         createdAt: createdAtColumn(),
         updatedAt: updatedAtColumn(),
@@ -73,13 +71,13 @@ export const usersRelations = relations(users, ({ many, one }) => ({
     }),
 }));
 
-export const accounts = sqliteTable(
+export const accounts = createTable(
     'account',
     {
-        userId: text('userId', { length: 255 }).notNull(),
+        userId: text('user_id', { length: 255 }).notNull(),
         type: text('type', { length: 255 }).$type<AdapterAccount['type']>().notNull(),
         provider: text('provider', { length: 255 }).notNull(),
-        providerAccountId: text('providerAccountId', { length: 255 }).notNull(),
+        providerAccountId: text('provider_account_id', { length: 255 }).notNull(),
         refresh_token: text('refresh_token'),
         access_token: text('access_token'),
         expires_at: int('expires_at'),
@@ -91,8 +89,8 @@ export const accounts = sqliteTable(
         updatedAt: updatedAtColumn(),
     },
     (account) => ({
-        compoundKey: primaryKey(account.provider, account.providerAccountId),
-        userIdIdx: index('userId_idx').on(account.userId),
+        compoundKey: primaryKey({ columns: [account.provider, account.providerAccountId] }),
+        userIdIdx: index('accounts_userId_idx').on(account.userId),
     }),
 );
 
@@ -100,11 +98,11 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
     user: one(users, { fields: [accounts.userId], references: [users.id] }),
 }));
 
-export const dataCollectionStudyParticipations = sqliteTable('userDataCollectionResearchParticipation', {
+export const dataCollectionStudyParticipations = createTable('userDataCollectionResearchParticipation', {
     userId: text('userId', { length: 255 }).notNull().primaryKey(),
-    excludedSinceU18: int('exludedSinceU18', { mode: 'boolean' }).notNull().default(false),
-    keepDataAfterStudyConducted: int('keepDataAfterStudyConducted', { mode: 'boolean' }).notNull(),
-    futureContactOk: int('futureContactOk', { mode: 'boolean' }).notNull(),
+    excludedSinceU18: int('exluded_since_u18', { mode: 'boolean' }).notNull().default(false),
+    keepDataAfterStudyConducted: int('keep_data_after_study_conducted', { mode: 'boolean' }).notNull(),
+    futureContactOk: int('future_contact_ok', { mode: 'boolean' }).notNull(),
     createdAt: createdAtColumn(),
     updatedAt: updatedAtColumn(),
 });
@@ -113,8 +111,8 @@ export const dataCollectionStudyParticipationRelations = relations(dataCollectio
     user: one(users, { fields: [dataCollectionStudyParticipations.userId], references: [users.id] }),
 }));
 
-export const userDemographics = sqliteTable('userDemographic', {
-    userId: text('userId', { length: 255 }).notNull().primaryKey(),
+export const userDemographics = createTable('userDemographic', {
+    userId: text('user_id', { length: 255 }).notNull().primaryKey(),
     ageRange: text('age_range', { length: 64 }).$type<AgeRange>().notNull(),
     country: text('country', { length: 2 }).$type<CountryCode>().notNull(),
 
@@ -129,7 +127,7 @@ export const userDemographics = sqliteTable('userDemographic', {
     updatedAt: updatedAtColumn(),
 });
 
-export const hkExperience = sqliteTable('hkExperience', {
+export const hkExperience = createTable('hkExperience', {
     userId: text('userId', { length: 255 }).notNull().primaryKey(),
 
     playedBefore: int('played_before', { mode: 'boolean' }).notNull(),
@@ -146,15 +144,15 @@ export const userDemographicsRelations = relations(userDemographics, ({ one }) =
     user: one(users, { fields: [userDemographics.userId], references: [users.id] }),
 }));
 
-export const sessions = sqliteTable(
+export const sessions = createTable(
     'session',
     {
-        sessionToken: text('sessionToken', { length: 255 }).notNull().primaryKey(),
-        userId: text('userId', { length: 255 }).notNull(),
+        sessionToken: text('session_token', { length: 255 }).notNull().primaryKey(),
+        userId: text('user_id', { length: 255 }).notNull(),
         expires: timestampColumn('expires').notNull(),
     },
     (session) => ({
-        userIdIdx: index('userId_idx').on(session.userId),
+        userIdIdx: index('sessions_userId_idx').on(session.userId),
     }),
 );
 
@@ -162,7 +160,7 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
     user: one(users, { fields: [sessions.userId], references: [users.id] }),
 }));
 
-export const verificationTokens = sqliteTable(
+export const verificationTokens = createTable(
     'verificationToken',
     {
         identifier: text('identifier', { length: 255 }).notNull(),
@@ -170,7 +168,7 @@ export const verificationTokens = sqliteTable(
         expires: timestampColumn('expires').notNull(),
     },
     (vt) => ({
-        compoundKey: primaryKey(vt.identifier, vt.token),
+        compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
     }),
 );
 
@@ -204,7 +202,7 @@ const runGameStateMetaColumns = {
 
 export type RunGameStateMetaColumnName = keyof typeof runGameStateMetaColumns;
 
-export const runs = sqliteTable(
+export const runs = createTable(
     'run',
     {
         // server generated. Used for urls
@@ -254,7 +252,7 @@ export const runsRelations = relations(runs, ({ one, many }) => ({
  * Since a gameplay could have multiple local ids, when it is played over multiple devices
  * and the id is not synced (which it isn't atm).
  */
-export const runLocalIds = sqliteTable(
+export const runLocalIds = createTable(
     'run_local_id',
     {
         localId: textUuid('local_id').notNull(),
@@ -263,7 +261,7 @@ export const runLocalIds = sqliteTable(
         originalRunId: textUuid('original_run_id'),
     },
     (runLocalId) => ({
-        compoundKey: primaryKey(runLocalId.userId, runLocalId.localId),
+        compoundKey: primaryKey({ columns: [runLocalId.userId, runLocalId.localId] }),
     }),
 );
 
@@ -272,7 +270,7 @@ export const runLocalIdRelations = relations(runLocalIds, ({ one, many }) => ({
     run: one(runs, { fields: [runLocalIds.runId], references: [runs.id] }),
 }));
 
-export const runFiles = sqliteTable(
+export const runFiles = createTable(
     'runfile',
     {
         // this id is also used to find the file inside the r2 bucket
@@ -297,7 +295,7 @@ export const runFilesRelations = relations(runFiles, ({ one }) => ({
     run: one(runs, { fields: [runFiles.runId], references: [runs.id] }),
 }));
 
-export const ingameAuth = sqliteTable(
+export const ingameAuth = createTable(
     'ingameauth',
     {
         // server generated, to authenticate a user from the game. Does only permit uploads.
@@ -319,7 +317,7 @@ export const ingameAuthRelations = relations(ingameAuth, ({ one }) => ({
     user: one(users, { fields: [ingameAuth.userId], references: [users.id] }),
 }));
 
-export const accountDeletionRequest = sqliteTable('accountDeletionRequest', {
+export const accountDeletionRequest = createTable('accountDeletionRequest', {
     id: text('id', { length: 255 }).notNull().primaryKey(),
     userId: text('user_id', { length: 255 }).notNull(),
     createdAt: createdAtColumn(),
