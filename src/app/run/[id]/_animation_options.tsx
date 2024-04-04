@@ -78,7 +78,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
                 durationMs: 0,
             };
         });
-        for (let i = 0; i < sceneChanges.length - 1; i++) {
+        for (let i = 0; i < sceneChanges.length; i++) {
             sceneChanges[i]!.durationMs = (sceneChanges[i + 1]?.startMs ?? timeFrameMs.max) - sceneChanges[i]!.startMs;
         }
         return sceneChanges;
