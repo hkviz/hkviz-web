@@ -24,6 +24,7 @@ const extraZoomZones: Record<string, ZoomZone[]> = {
     Fungus2_34: ['Fog Canyon'], // Queens Station
     Abyss_01: ['City of Tears'], // Long room between city and abyss located in royal waterways
     Fungus2_25: ['Fungal Wastes'], // Mantis Village entrance to deep nest
+    Mines_01: ['Forgotten Crossroads'], // Crystal Peak entrance from dirtmouth
     Mines_10: ['Forgotten Crossroads'], // Crystal Peak entrance from dirtmouth
     Mines_16: ['Forgotten Crossroads'], // Crystal Peak entrance from dirtmouth
     Fungus1_11: ['Fog Canyon'], // Greenpath room path to bench

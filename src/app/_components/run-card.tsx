@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { type FormEventHandler, useCallback, useEffect, useRef, useState, type PropsWithChildren } from 'react';
+import { useCallback, useEffect, useRef, useState, type FormEventHandler, type PropsWithChildren } from 'react';
 import { MAX_RUN_TITLE_LENGTH, cleanupTitle as cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
@@ -319,32 +319,25 @@ export function RunCard({
                             addButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
                             removeButtonClassName="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
                         />
-                        {(isOwnRun || run.tags.length > 0) && (
-                            <>
-                                {isOwnRun && (
-                                    <DropdownMenu>
-                                        <DropdownMenuTrigger className="inline-flex">
-                                            <Badge className="relative z-[8] overflow-hidden" variant="secondary">
-                                                <VisibilityIcon className="h-4 w-4" />
-                                                <ChevronDown className="-mr-1 ml-1 h-3 w-3" />
-                                            </Badge>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent className="w-56">
-                                            <DropdownMenuGroup>
-                                                {visibilities.map(({ name, Icon, code }) => (
-                                                    <DropdownMenuItem
-                                                        key={code}
-                                                        onClick={() => handleVisibilityChange(code)}
-                                                    >
-                                                        <Icon className="mr-2 h-4 w-4" />
-                                                        <span>{name}</span>
-                                                    </DropdownMenuItem>
-                                                ))}
-                                            </DropdownMenuGroup>
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
-                                )}
-                            </>
+                        {isOwnRun && (
+                            <DropdownMenu>
+                                <DropdownMenuTrigger className="inline-flex">
+                                    <Badge className="relative z-[8] overflow-hidden" variant="secondary">
+                                        <VisibilityIcon className="h-4 w-4" />
+                                        <ChevronDown className="-mr-1 ml-1 h-3 w-3" />
+                                    </Badge>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="w-56">
+                                    <DropdownMenuGroup>
+                                        {visibilities.map(({ name, Icon, code }) => (
+                                            <DropdownMenuItem key={code} onClick={() => handleVisibilityChange(code)}>
+                                                <Icon className="mr-2 h-4 w-4" />
+                                                <span>{name}</span>
+                                            </DropdownMenuItem>
+                                        ))}
+                                    </DropdownMenuGroup>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                         )}
                     </div>
                     <div className="flex flex-grow flex-row">
@@ -431,7 +424,7 @@ export function RunCard({
                 </div>
 
                 {/* Dropdown */}
-                {isOwnRun && onCombineClicked && (
+                {isOwnRun && (
                     <RunCardDropdownMenu
                         run={run}
                         handleDelete={handleDelete}

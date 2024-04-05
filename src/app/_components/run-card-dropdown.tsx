@@ -36,7 +36,7 @@ export function RunCardDropdownMenu({
     run: RunMetadata;
     handleArchiveToggle: () => void;
     handleDelete: () => void;
-    onCombineClicked: (runId: string) => void;
+    onCombineClicked: null | ((runId: string) => void);
 }) {
     const { toast } = useToast();
     const router = useRouter();
@@ -90,21 +90,25 @@ export function RunCardDropdownMenu({
                                         </DropdownMenuItem>
                                     </TooltipTrigger>
                                     <TooltipContent>
-                                        Use to split the gameplay into multiple gameplays, if it was wrongly combined.
+                                        Use to split the gameplay into its original parts, after it was wrongly
+                                        combined.
                                     </TooltipContent>
                                 </Tooltip>
                             )}
-                            <Tooltip>
-                                <TooltipTrigger asChild>
-                                    <DropdownMenuItem onClick={() => onCombineClicked(run.id)}>
-                                        <Merge className="mr-2 h-4 w-4" />
-                                        <span>Combine</span>
-                                    </DropdownMenuItem>
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                    Use combine to merge a single gameplay, which has wrongly been created as multiple.
-                                </TooltipContent>
-                            </Tooltip>
+                            {onCombineClicked && (
+                                <Tooltip>
+                                    <TooltipTrigger asChild>
+                                        <DropdownMenuItem onClick={() => onCombineClicked(run.id)}>
+                                            <Merge className="mr-2 h-4 w-4" />
+                                            <span>Combine</span>
+                                        </DropdownMenuItem>
+                                    </TooltipTrigger>
+                                    <TooltipContent>
+                                        Use combine to merge a single gameplay, which has wrongly been created as
+                                        multiple.
+                                    </TooltipContent>
+                                </Tooltip>
+                            )}
                             <DropdownMenuSeparator />
                         </>
                     )}
