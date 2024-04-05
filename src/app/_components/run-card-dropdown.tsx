@@ -36,7 +36,7 @@ export function RunCardDropdownMenu({
     run: RunMetadata;
     handleArchiveToggle: () => void;
     handleDelete: () => void;
-    onCombineClicked: null | ((runId: string) => void);
+    onCombineClicked: undefined | null | ((runId: string) => void);
 }) {
     const { toast } = useToast();
     const router = useRouter();
