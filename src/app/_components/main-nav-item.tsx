@@ -27,7 +27,7 @@ export const linksLeft: MenuEntry[] = [
             if (pathname.startsWith('/guide')) {
                 return pathname;
             }
-            if (pathname.startsWith('/run')) {
+            if (pathname.startsWith('/run/')) {
                 return '/guide/analytics';
             }
             return '/guide/install';

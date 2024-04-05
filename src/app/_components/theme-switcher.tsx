@@ -1,6 +1,7 @@
 'use client';
 
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { NavigationMenuLink } from '@radix-ui/react-navigation-menu';
 import { Moon, Sun } from 'lucide-react';
 import { useMemo } from 'react';
@@ -15,10 +16,15 @@ export function ThemeSwitcher({ theme }: { theme: Theme }) {
     const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
     return (
-        <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
-            <button onClick={toggleTheme}>
-                {_theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
-            </button>
-        </NavigationMenuLink>
+        <Tooltip>
+            <TooltipTrigger asChild>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()} asChild>
+                    <button onClick={toggleTheme}>
+                        {_theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+                    </button>
+                </NavigationMenuLink>
+            </TooltipTrigger>
+            <TooltipContent>{_theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}</TooltipContent>
+        </Tooltip>
     );
 }

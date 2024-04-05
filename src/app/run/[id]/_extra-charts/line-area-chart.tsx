@@ -507,7 +507,7 @@ export function LineAreaChart({
     }, [mainEffectChanges, isAnythingAnimating]);
 
     return (
-        <div className="snap-start snap-always overflow-hidden">
+        <div className="snap-start snap-normal overflow-hidden">
             <h3 className="-mb-3 pt-2 text-center">{header}</h3>
             <svg
                 ref={svgRef}
