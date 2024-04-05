@@ -1,7 +1,4 @@
-'use client';
-
-import { RedirectType, redirect } from 'next/navigation';
-import { useEffect } from 'react';
+import { ClientRedirect } from './_redirect';
 
 export const metadata = {
     title: 'Install guide - HKViz',
@@ -11,8 +8,5 @@ export const metadata = {
 };
 
 export default function Page() {
-    useEffect(() => {
-        redirect('/guide/install' + location.hash, RedirectType.replace);
-    }, []);
-    return <div></div>;
+    return <ClientRedirect />;
 }
