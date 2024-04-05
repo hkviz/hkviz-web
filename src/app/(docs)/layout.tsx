@@ -2,8 +2,8 @@ import { Card } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { Cookie, Download, Map, UsersRound } from 'lucide-react';
 import { HKVizText } from '../_components/hkviz-text';
+import { SubMenuLink } from '../_components/main-nav-item';
 import { MdxOuterWrapper } from '../_components/mdx-layout';
-import { SubMenuLink } from './_menu_link';
 
 function SubMenuSectionTitle({ children }: { children: React.ReactNode }) {
     return <h3 className="font-serif text-xl font-bold">{children}</h3>;

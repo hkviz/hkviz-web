@@ -28,7 +28,9 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                     <NavigationMenuList className="app-region-no-drag">
                         <Link href="/" legacyBehavior passHref>
                             <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                                <HKVizText />
+                                <span className="text-lg">
+                                    <HKVizText />
+                                </span>
                             </NavigationMenuLink>
                         </Link>
                         {linksLeft.map((menuEntry) => (
