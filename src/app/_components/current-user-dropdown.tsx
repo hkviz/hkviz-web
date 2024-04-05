@@ -9,18 +9,21 @@ import { MenuEntryInHamburger, MenuEntryListItem, type MenuEntry } from './main-
 function userDropdownMenuEntries(session: Session): MenuEntry[] {
     return [
         {
+            key: 'settings',
             href: '/settings',
             title: 'Settings',
             description: 'Manage your account settings and study consent',
             icon: Settings,
         },
         {
+            key: 'archive',
             href: '/archive',
             title: 'Archived gameplays',
             description: 'Unarchive and view your archived gameplays',
             icon: Archive,
         },
         {
+            key: 'logout',
             href: '/api/auth/signout',
             title: 'Logout',
             description: `Logout of ${session.user.name ?? 'your'} account`,
@@ -43,7 +46,7 @@ export const CurrentUserDropdown = memo(function CurrentUserDropdown({
             <NavigationMenuContent>
                 <ul className="grid w-[350px] gap-3 p-4">
                     {menuEntries.map((menuEntry) => (
-                        <MenuEntryListItem key={menuEntry.href} {...menuEntry} />
+                        <MenuEntryListItem key={menuEntry.key} menuEntry={menuEntry} />
                     ))}
                 </ul>
             </NavigationMenuContent>
@@ -56,7 +59,7 @@ export const CurrentUserHamburgerItems = memo(function CurrentUserHamburgerItems
     return (
         <>
             {menuEntries.map((menuEntry) => (
-                <MenuEntryInHamburger key={menuEntry.href} {...menuEntry} />
+                <MenuEntryInHamburger key={menuEntry.key} menuEntry={menuEntry} />
             ))}
         </>
     );

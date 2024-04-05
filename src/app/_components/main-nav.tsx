@@ -34,7 +34,7 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                             </NavigationMenuLink>
                         </Link>
                         {linksLeft.map((menuEntry) => (
-                            <MenuEntryOutsideHamburger key={menuEntry.href} {...menuEntry} />
+                            <MenuEntryOutsideHamburger key={menuEntry.key} menuEntry={menuEntry} />
                         ))}
                     </NavigationMenuList>
                 </NavigationMenu>
@@ -51,25 +51,34 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                     </NavigationMenuList>
                     <Sheet>
                         <SheetTrigger asChild>
-                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), ' md:hidden')}>
-                                <Menu className="h-5 w-5" />
+                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), ' md:hidden')} asChild>
+                                <button>
+                                    <Menu className="h-5 w-5" />
+                                </button>
                             </NavigationMenuLink>
                         </SheetTrigger>
                         <SheetContent className="overflow-y-auto">
                             <div className="flex flex-col gap-2 pt-4">
                                 <MenuEntryInHamburger
-                                    title={
-                                        <span className="text-lg">
-                                            <HKVizText />
-                                        </span>
-                                    }
-                                    href="/"
+                                    menuEntry={{
+                                        key: 'home',
+                                        href: '/',
+                                        title: (
+                                            <span className="text-lg">
+                                                <HKVizText />
+                                            </span>
+                                        ),
+                                    }}
                                 />
                                 {linksLeft.map((menuEntry) => (
-                                    <MenuEntryInHamburger key={menuEntry.href} {...menuEntry} />
+                                    <MenuEntryInHamburger key={menuEntry.key} menuEntry={menuEntry} />
                                 ))}
                                 {session && <CurrentUserHamburgerItems session={session} />}
-                                {!session && <MenuEntryInHamburger href={loginUrl} title="Login" icon={LogIn} />}
+                                {!session && (
+                                    <MenuEntryInHamburger
+                                        menuEntry={{ key: 'login', href: loginUrl, title: 'Login', icon: LogIn }}
+                                    />
+                                )}
                             </div>
                         </SheetContent>
                     </Sheet>

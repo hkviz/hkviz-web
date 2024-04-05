@@ -11,6 +11,7 @@ import { type ReactNode } from 'react';
 import { ListItem } from './nav-list-item';
 
 export interface MenuEntry {
+    key: string;
     href: string | (({ pathname }: { pathname: string }) => string);
     title: ReactNode;
     description?: string;
@@ -19,8 +20,9 @@ export interface MenuEntry {
 }
 
 export const linksLeft: MenuEntry[] = [
-    { href: '/run', title: 'Public gameplays', icon: Globe },
+    { key: 'public-runs', href: '/run', title: 'Public gameplays', icon: Globe },
     {
+        key: 'guides',
         href: ({ pathname }) => {
             if (pathname.startsWith('/guide')) {
                 return pathname;
@@ -46,52 +48,61 @@ function useMenuEntryHref(menuEntry: Pick<MenuEntry, 'href'>): string {
     return typeof menuEntry.href === 'function' ? menuEntry.href({ pathname }) : menuEntry.href;
 }
 
-const menuActiveStyle = 'bg-primary bg-opacity-50 hover:bg-primary focus:bg-primary';
+const menuActiveClasses =
+    'bg-primary bg-opacity-50 hover:bg-primary text-primary-foreground focus:bg-primary hover:text-primary-foreground focus:text-primary-foreground';
 
-export function MenuEntryOutsideHamburger({ href, title: text, icon: Icon, isActive }: MenuEntry) {
-    const currentIsActive = useIsMenuEntryActive({ isActive, href });
-    const currentHref = useMenuEntryHref({ href });
+export function MenuEntryOutsideHamburger({ menuEntry }: { menuEntry: MenuEntry }) {
+    const currentIsActive = useIsMenuEntryActive(menuEntry);
+    const currentHref = useMenuEntryHref(menuEntry);
+    const Icon = menuEntry.icon;
     return (
         <Link key={currentHref} href={currentHref} legacyBehavior passHref>
             <NavigationMenuLink
                 className={cn(
                     navigationMenuTriggerStyle(),
                     'hidden md:flex ',
-                    currentIsActive ? menuActiveStyle : undefined,
+                    currentIsActive ? menuActiveClasses : undefined,
                 )}
             >
                 {Icon && <Icon className="mr-1 h-4 w-4" />}
-                {text}
+                {menuEntry.title}
             </NavigationMenuLink>
         </Link>
     );
 }
 
-export function MenuEntryInHamburger({ href, title: text, icon: Icon, isActive }: MenuEntry) {
-    const currentIsActive = useIsMenuEntryActive({ isActive, href });
+export function MenuEntryInHamburger({ menuEntry }: { menuEntry: MenuEntry }) {
+    const currentIsActive = useIsMenuEntryActive(menuEntry);
+    const currentHref = useMenuEntryHref(menuEntry);
+    const Icon = menuEntry.icon;
     return (
         <Button
-            key={href}
+            key={currentHref}
             variant="ghost"
             asChild
-            className={cn('justify-start px-4 py-6', currentIsActive ? menuActiveStyle : undefined)}
+            className={cn('justify-start px-4 py-6', currentIsActive ? menuActiveClasses : undefined)}
         >
             <SheetClose asChild>
-                <Link href={href}>
+                <Link href={currentHref}>
                     {Icon && <Icon className="mr-2 h-5 w-5" />}
-                    {text}
+                    {menuEntry.title}
                 </Link>
             </SheetClose>
         </Button>
     );
 }
 
-export function MenuEntryListItem({ href, title, description, icon: Icon, isActive }: MenuEntry) {
-    const currentIsActive = useIsMenuEntryActive({ isActive, href });
+export function MenuEntryListItem({ menuEntry }: { menuEntry: MenuEntry }) {
+    const currentIsActive = useIsMenuEntryActive(menuEntry);
+    const currentHref = useMenuEntryHref(menuEntry);
     return (
-        <Link href={href} legacyBehavior passHref>
-            <ListItem title={title} Icon={Icon} className={currentIsActive ? menuActiveStyle : undefined}>
-                {description}
+        <Link href={currentHref} legacyBehavior passHref>
+            <ListItem
+                title={menuEntry.title}
+                Icon={menuEntry.icon}
+                className={currentIsActive ? menuActiveClasses : undefined}
+            >
+                {menuEntry.description}
             </ListItem>
         </Link>
     );
@@ -101,7 +112,7 @@ export function SubMenuLink({ children, href }: { children: React.ReactNode; hre
     const pathname = usePathname();
     return (
         <li>
-            <Button variant="ghost" className={pathname === href ? menuActiveStyle : ''} asChild>
+            <Button variant="ghost" className={pathname === href ? menuActiveClasses : ''} asChild>
                 <Link href={href}>{children}</Link>
             </Button>
         </li>
