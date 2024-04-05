@@ -180,7 +180,7 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
     }
 
     const onLayout: PanelGroupOnLayout = (sizes) => {
-        const [extraChartsSize, splitsSize] = sizes as [number, number];
+        const [splitsSize, extraChartsSize] = sizes as [number, number];
         console.log({ extraChartsSize, splitsSize });
         if (extraChartsSize < 10) {
             setLayoutState('only-splits');
@@ -217,18 +217,8 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
             className="h-unset-important min-h-[calc(100vh-var(--main-nav-height))] lg:min-h-[35rem] lg:max-w-[350px]"
             onLayout={onLayout}
         >
-            <ResizablePanel
-                defaultSize={DEFAULT_EXTRA_CHARTS_SIZE}
-                collapsible
-                minSize={30}
-                className={cn(cardClasses, 'min-h-[44px]')}
-                ref={extraChartsPanelRef}
-            >
-                <RunExtraCharts useViewOptionsStore={useViewOptionsStore} resizeOptions={runExtraChartsResizeOptions} />
-            </ResizablePanel>
             {!isV1 && (
                 <>
-                    <ResizableHandle withHandle className="bg-transparent p-1" />
                     <ResizablePanel
                         defaultSize={100 - DEFAULT_EXTRA_CHARTS_SIZE}
                         collapsible
@@ -238,8 +228,18 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
                     >
                         <RunSplits useViewOptionsStore={useViewOptionsStore} resizeOptions={splitsResizeOptions} />
                     </ResizablePanel>
+                    <ResizableHandle withHandle className="bg-transparent p-1" />
                 </>
             )}
+            <ResizablePanel
+                defaultSize={DEFAULT_EXTRA_CHARTS_SIZE}
+                collapsible
+                minSize={30}
+                className={cn(cardClasses, 'min-h-[44px]')}
+                ref={extraChartsPanelRef}
+            >
+                <RunExtraCharts useViewOptionsStore={useViewOptionsStore} resizeOptions={runExtraChartsResizeOptions} />
+            </ResizablePanel>
         </ResizablePanelGroup>
     );
 

@@ -32,7 +32,7 @@ export const recordingSplitGroups = [
     },
     {
         name: 'boss',
-        displayName: 'Bosses',
+        displayName: 'Bosses defeats',
         description: 'Defeated bosses. Not including bosses which are fought again in Godhome.',
         color: tailwindChartColors.rose,
         defaultShown: true,
