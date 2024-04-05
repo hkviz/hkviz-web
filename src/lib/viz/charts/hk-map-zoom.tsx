@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, type MutableRefObject } from '
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { mainRoomDataBySceneName, roomData } from '../map-data/rooms';
-import { ZoomZone } from '../map-data/zoom-zone';
+import { type ZoomZone } from '../map-data/zoom-zone';
 import { Bounds } from '../types/bounds';
 
 const EMPTY_ARRAY = [] as const;

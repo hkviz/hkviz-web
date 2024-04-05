@@ -267,7 +267,7 @@ export const runLocalIds = mysqlTable(
     }),
 );
 
-export const runLocalIdRelations = relations(runLocalIds, ({ one, many }) => ({
+export const runLocalIdRelations = relations(runLocalIds, ({ one }) => ({
     user: one(users, { fields: [runLocalIds.userId], references: [users.id] }),
     run: one(runs, { fields: [runLocalIds.runId], references: [runs.id] }),
 }));

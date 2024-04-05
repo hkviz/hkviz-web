@@ -1,6 +1,5 @@
+import { findPlayerPublicRuns } from '~/server/api/routers/player/find-player-runs';
 import { getPlayerMeta } from '~/server/api/routers/player/get-player-meta';
-import { findRuns } from '~/server/api/routers/run/runs-find';
-import { db } from '~/server/db';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';
 import { RunCard } from '../../_components/run-card';
 
@@ -13,15 +12,7 @@ export async function generateMetadata({ params }: { params: Params }) {
 }
 
 export default async function PublicPlayerPage({ params }: { params: Params }) {
-    const userRuns = await findRuns({
-        db,
-        filter: {
-            visibility: ['public'],
-            userId: params.id,
-            archived: [false],
-        },
-    });
-
+    const userRuns = await findPlayerPublicRuns(params.id);
     const userName = userRuns[0]?.user?.name ?? 'Unnamed player';
 
     return (

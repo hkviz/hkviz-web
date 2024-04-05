@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 import { useMemo } from 'react';
-import { TagGroup, isTag, tagOrGroupFromCode, type Tag } from '~/lib/types/tags';
+import { type TagGroup, isTag, tagOrGroupFromCode, type Tag } from '~/lib/types/tags';
 import { TagDropdownMenu } from '../_components/run-tags';
 import { type RunFilterParams } from './_params';
 

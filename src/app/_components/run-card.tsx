@@ -14,11 +14,11 @@ import { cn } from '@/lib/utils';
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FormEventHandler, useCallback, useEffect, useRef, useState, type PropsWithChildren } from 'react';
+import { type FormEventHandler, useCallback, useEffect, useRef, useState, type PropsWithChildren } from 'react';
 import { MAX_RUN_TITLE_LENGTH, cleanupTitle as cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
+import { type GetRunResult } from '~/server/api/routers/run/run-get';
 import { type RunMetadata } from '~/server/api/routers/run/runs-find';
-import { RunFullData } from '~/server/api/types';
 import { api } from '~/trpc/react';
 import Coin from '../../../public/ingame-sprites/hud/HUD_coin_v020004.png';
 import HealthFrameSteelSoulBrokenImg from '../../../public/ingame-sprites/hud/break_hud.png';
@@ -215,7 +215,7 @@ export function RunCard({
     onClick,
     onCombineClicked,
 }: {
-    run: RunMetadata | RunFullData;
+    run: RunMetadata | GetRunResult;
     showUser?: boolean;
     isOwnRun?: boolean;
     className?: string;

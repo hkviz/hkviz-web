@@ -3,13 +3,13 @@ import { type HeroStateField } from '../hero-state/hero-states';
 import { type PlayerDataField } from '../player-data/player-data';
 import { type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent } from './events/frame-end-event';
-import { HKVizModVersionEvent } from './events/hkviz-mod-version-event';
+import { type HKVizModVersionEvent } from './events/hkviz-mod-version-event';
 import { type ModInfo, type ModdingInfoEvent } from './events/modding-info-event';
 import { PlayerDataEvent } from './events/player-data-event';
 import { PlayerPositionEvent } from './events/player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
 import { SceneEvent } from './events/scene-event';
-import { RecordingSplit, createRecordingSplits } from './recording-splits';
+import { type RecordingSplit, createRecordingSplits } from './recording-splits';
 
 type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
 export class RecordingFileVersionEvent extends RecordingEventBase {

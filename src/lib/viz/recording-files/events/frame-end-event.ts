@@ -1,5 +1,5 @@
 import { heroStateFields, type HeroStateField } from '../../hero-state/hero-states';
-import { BossSequenceDoorCompletion } from '../../player-data/boss-completion';
+import { type BossSequenceDoorCompletion } from '../../player-data/boss-completion';
 import {
     getDefaultValue as getDefaultPlayerDataValue,
     playerDataFields,
@@ -9,7 +9,7 @@ import { countGameCompletion } from '../ingame-percentage';
 import { type HeroStateEvent } from '../recording';
 import { type PlayerDataEvent } from './player-data-event';
 import { type PlayerPositionEvent } from './player-position-event';
-import { RecordingEventBase, RecordingEventBaseOptions } from './recording-event-base';
+import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 
 export const frameEndEventPlayerDataFieldsArray = [
     // geo

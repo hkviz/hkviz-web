@@ -26,9 +26,10 @@ export async function assertIsResearcher({
         }),
 }: {
     db: DB;
-    userId: string;
+    userId: string | null;
     makeError?: () => Error;
 }) {
+    if (!userId) throw makeError();
     if (!(await isResearcher({ db, userId }))) {
         throw makeError();
     }

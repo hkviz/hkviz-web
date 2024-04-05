@@ -32,7 +32,7 @@ export const accountRouter = createTRPCRouter({
                 });
             }
         }),
-    initiateAccountRemovalRequest: protectedProcedure.mutation(async ({ ctx, input }) => {
+    initiateAccountRemovalRequest: protectedProcedure.mutation(async ({ ctx }) => {
         const userId = ctx.session.user.id;
         const id = uuidv4();
 

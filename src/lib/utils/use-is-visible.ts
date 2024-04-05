@@ -1,4 +1,4 @@
-import { HTMLSVGElement } from 'country-flag-icons/react/3x2';
+import { type HTMLSVGElement } from 'country-flag-icons/react/3x2';
 import { useEffect, useRef, type RefObject } from 'react';
 
 const OPTIONS = {

@@ -13,11 +13,11 @@ import { TooltipTrigger } from '@radix-ui/react-tooltip';
 import { Maximize, Minus, Rows } from 'lucide-react';
 import { type Session } from 'next-auth';
 import { useEffect, useRef, useState } from 'react';
-import { PanelGroupOnLayout, type ImperativePanelHandle } from 'react-resizable-panels';
+import { type ImperativePanelHandle, type PanelGroupOnLayout } from 'react-resizable-panels';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRunAggregationStore } from '~/lib/viz/recording-files/run-aggregation-store';
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files';
-import { type AppRouterOutput } from '~/server/api/types';
+import { type GetRunResult } from '~/server/api/routers/run/run-get';
 import { AnimationOptions } from './_animation_options';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { RoomInfo } from './_room_infos';
@@ -28,7 +28,7 @@ import { ViewOptions } from './_view_options';
 
 interface Props {
     session: Session | null;
-    runData: AppRouterOutput['run']['getMetadataById'];
+    runData: GetRunResult;
 }
 
 export function SingleRunClientPage({ session, runData }: Props) {
@@ -107,14 +107,6 @@ export function SingleRunClientPage({ session, runData }: Props) {
             </div>
 
             <RightCard useViewOptionsStore={useViewOptionsStore} />
-        </div>
-    );
-}
-
-function ResizablePanelScrollableContent({ children }: { children: React.ReactNode }) {
-    return (
-        <div className="h-full max-h-full w-full max-w-full flex-grow overflow-y-auto">
-            <div className="flex-grow">{children}</div>
         </div>
     );
 }

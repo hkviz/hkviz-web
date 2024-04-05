@@ -8,7 +8,7 @@ import { RelativeDate } from '~/app/_components/date';
 import { Expander } from '~/app/_components/expander';
 import { RunCard } from '~/app/_components/run-card';
 import { playerDataFields } from '~/lib/viz/player-data/player-data';
-import { type AppRouterOutput } from '~/server/api/types';
+import { type GetRunResult } from '~/server/api/routers/run/run-get';
 import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 export function RunOverviewTab({
@@ -18,7 +18,7 @@ export function RunOverviewTab({
     className,
 }: {
     useViewOptionsStore: UseViewOptionsStore;
-    runData: AppRouterOutput['run']['getMetadataById'];
+    runData: GetRunResult;
     session: Session | null;
     className?: string;
 }) {

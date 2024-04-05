@@ -6,7 +6,7 @@ import { assertNever } from '~/lib/utils/utils';
 import knightPinSrc from '../../../../public/ingame-sprites/Map_Knight_Pin_Compass.png';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { scale } from '../map-data/scaling';
-import { PlayerPositionEvent } from '../recording-files/events/player-position-event';
+import { type PlayerPositionEvent } from '../recording-files/events/player-position-event';
 
 export interface HKMapTracesProps {
     useViewOptionsStore: UseViewOptionsStore;

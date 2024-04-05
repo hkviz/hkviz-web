@@ -3,10 +3,10 @@ import { type Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { SingleRunClientPage } from '~/app/run/[id]/_page';
 import { getRunMeta } from '~/server/api/routers/run/get-run-meta';
+import { getRun } from '~/server/api/routers/run/run-get';
 import { findNewRunId } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
-import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-wrapper';
 
 interface Params {
@@ -14,18 +14,15 @@ interface Params {
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-    return getRunMeta(params.id);
+    const session = await getServerAuthSession();
+    return getRunMeta(params.id, session?.user?.id ?? null);
 }
 
 export default async function SingleRunPage({ params }: { params: Params }) {
     const session = await getServerAuthSession();
 
-    // if (!session) {
-    //     return <AuthNeeded />;
-    // }
-
     try {
-        const runData = await (await apiFromServer()).run.getMetadataById({ id: params.id });
+        const runData = await getRun(params.id, session?.user?.id ?? null);
 
         return (
             <ContentWrapper footerOutOfSight={true}>

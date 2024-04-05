@@ -30,8 +30,6 @@ export const darkenRoomColorForDarkTheme = memoize(
     },
 );
 
-console.log({ darkenRoomColorForLightTheme, darkenRoomColorForDarkTheme });
-
 export function useRoomColoring({
     useViewOptionsStore,
     alwaysUseAreaAsColor = false,

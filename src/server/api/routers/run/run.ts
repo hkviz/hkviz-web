@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
 import { r2FileHead, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
 
-import { TRPCError } from '@trpc/server';
 import { and, eq } from 'drizzle-orm';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { tagSchema } from '~/lib/types/tags';
@@ -11,51 +10,12 @@ import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
 import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
 import { getUserIdFromIngameSession } from '../ingameauth';
-import { assertIsResearcher } from '../lib/researcher';
 import { getOrCreateRunId } from './get-or-create-run-id';
 import { runGameStateMetaColumnsSelect } from './run-column-selects';
 import { combineRunsProcedure, uncombineRunProcedure } from './run-combine';
 import { deleteRunProcedure, setRunArchivedProcedure } from './run-deletion';
-import { findRuns } from './runs-find';
 
 export const runRouter = createTRPCRouter({
-    getMetadataById: publicProcedure.input(z.object({ id: z.string().uuid() })).query(async ({ ctx, input }) => {
-        const sessionUserId = ctx.session?.user?.id;
-
-        const metadata =
-            (
-                await findRuns({
-                    db: ctx.db,
-                    filter: { id: [input.id] },
-                    includeFiles: true,
-                    skipVisibilityCheck: true,
-                    currentUser: sessionUserId ? { id: sessionUserId } : undefined,
-                })
-            )[0] ??
-            raise(
-                new TRPCError({
-                    code: 'NOT_FOUND',
-                    message: 'Run not found',
-                }),
-            );
-
-        if (metadata.visibility === 'private' && metadata.user.id !== ctx.session?.user?.id) {
-            await assertIsResearcher({
-                db: ctx.db,
-                userId: ctx.session?.user?.id ?? raise(new Error('Not logged in')),
-                makeError: () =>
-                    new TRPCError({
-                        code: 'FORBIDDEN',
-                        message: 'Run is private',
-                    }),
-            });
-        }
-
-        return {
-            ...metadata,
-            files: metadata.files!,
-        };
-    }),
     delete: deleteRunProcedure,
     setArchived: setRunArchivedProcedure,
     setVisibility: protectedProcedure

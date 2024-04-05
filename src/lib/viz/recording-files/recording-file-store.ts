@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import { type AppRouterOutput } from '~/server/api/types';
+import { type GetRunResult } from '~/server/api/routers/run/run-get';
 import { combineRecordings } from './combine-recordings';
 import type { CombinedRecording, ParsedRecording } from './recording';
 import { fetchWithRunfileCache } from './recording-file-browser-cache';
@@ -193,10 +193,7 @@ export const useRunFileStore = create(
             }));
         }
 
-        async function ensureWholeRunLoaded(
-            runId: string,
-            fileInfos: AppRouterOutput['run']['getMetadataById']['files'],
-        ) {
+        async function ensureWholeRunLoaded(runId: string, fileInfos: GetRunResult['files']) {
             console.log(
                 'file infos',
                 fileInfos.map((it) => ({ id: it.id, version: it.version })),

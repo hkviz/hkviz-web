@@ -1,9 +1,9 @@
 import { TRPCError } from '@trpc/server';
 import { eq, inArray, or, sql } from 'drizzle-orm';
-import { MySqlUpdateSetSource } from 'drizzle-orm/mysql-core';
+import { type MySqlUpdateSetSource } from 'drizzle-orm/mysql-core';
 import { z } from 'zod';
 import { sendMailToSupport } from '~/lib/mails';
-import { VisibilityCode } from '~/lib/types/visibility';
+import { type VisibilityCode } from '~/lib/types/visibility';
 import { raise } from '~/lib/utils/utils';
 import { runFiles, runLocalIds, runs } from '~/server/db/schema';
 import { protectedProcedure } from '../../trpc';

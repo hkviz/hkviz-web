@@ -4,6 +4,7 @@ import { getServerSession, type DefaultSession, type NextAuthOptions } from 'nex
 import DiscordProvider from 'next-auth/providers/discord';
 import EmailProvider from 'next-auth/providers/email';
 import GoogleProvider from 'next-auth/providers/google';
+import { cache } from 'react';
 
 import { env } from '~/env.mjs';
 import { db } from '~/server/db';
@@ -86,4 +87,6 @@ export const authOptions: NextAuthOptions = {
  *
  * @see https://next-auth.js.org/configuration/nextjs
  */
-export const getServerAuthSession = () => getServerSession(authOptions);
+export const getServerAuthSession = cache(() => {
+    return getServerSession(authOptions);
+});

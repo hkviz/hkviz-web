@@ -1,8 +1,8 @@
 import { useEffect, useMemo } from 'react';
-import { type AppRouterOutput } from '~/server/api/types';
+import { type GetRunResult } from '~/server/api/routers/run/run-get';
 import { useRunFileStore } from './recording-file-store';
 
-export function useRecordingFiles(runId: string, fileInfos: AppRouterOutput['run']['getMetadataById']['files']) {
+export function useRecordingFiles(runId: string, fileInfos: GetRunResult['files']) {
     const fileIds = useMemo(() => fileInfos.map((it) => it.id), [fileInfos]);
     const ensureWholeRunLoaded = useRunFileStore((it) => it.ensureWholeRunLoaded);
 
