@@ -50,7 +50,8 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                 </div>
             )}
             <hr />
-            <div className="shrink grow snap-y snap-proximity overflow-y-auto lg:shrink lg:basis-0">
+            {/* snap-proximity */}
+            <div className="shrink grow snap-y snap-mandatory overflow-y-auto lg:shrink lg:basis-0">
                 {!isV1 && (
                     <div className="snap-start snap-normal">
                         <Table className="pb-2">
@@ -95,6 +96,7 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                 <CompletionChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />
                 <GrubChart useViewOptionsStore={useViewOptionsStore} />
+                <div className="snap-start snap-normal" />
             </div>
         </div>
     );
