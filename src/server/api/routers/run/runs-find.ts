@@ -171,9 +171,11 @@ export async function findRuns({
                         description,
                         createdAt,
                         visibility,
-                        tags: Object.entries(run)
-                            .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
-                            .map((kv) => kv[0].slice(4)) as TagCode[],
+                        tags: isAnonymAccess
+                            ? []
+                            : (Object.entries(run)
+                                  .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
+                                  .map((kv) => kv[0].slice(4)) as TagCode[]),
                         user: {
                             id: isResearchView ? '' : run.user.id,
                             name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed player',

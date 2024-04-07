@@ -41,6 +41,7 @@ const extraZoomZones: Record<string, ZoomZone[]> = {
     Fungus3_26: [zoomZone('Forgotten Crossroads')], // flower quest common entrance to fog canyon from crossroads
     Deepnest_01: [zoomZone('Deepnest')], // room in fungus
     Fungus1_28: [zoomZone('Greenpath')], // hive entrance from greenpath
+    Waterways_14: [zoomZone("Kingdom's Edge")], // path at top of waterways to edge
 };
 
 export function getZoomZones(sceneName: string, zoneNameFormatted: ZoneNameFormatted): readonly ZoomZone[] {
