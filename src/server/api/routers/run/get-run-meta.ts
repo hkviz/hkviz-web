@@ -1,15 +1,13 @@
 import { TRPCError } from '@trpc/server';
 import { type Metadata } from 'next';
-import { tagFromCode, tagGroupFromCode, type TagCode } from '~/lib/types/tags';
+import { tagFromCode, tagGroupFromCode } from '~/lib/types/tags';
 import { getRun } from './run-get';
 
 export async function getRunMeta(id: string, sessionUserId: string | null): Promise<Metadata> {
     try {
         const data = await getRun(id, sessionUserId);
 
-        const tagCodes = Object.entries(data)
-            .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
-            .map((kv) => kv[0].slice(4)) as TagCode[];
+        const tagCodes = data.tags;
 
         const tags = tagCodes.map((code) => tagFromCode(code));
         const tagNames = tags.map((tag) => tag.name);

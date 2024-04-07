@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Separator } from '@/components/ui/separator';
 import { Fullscreen, Text } from 'lucide-react';
 import { useId } from 'react';
-import { type ZoomFollowTarget, type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { type UseViewOptionsStore, type ZoomFollowTarget } from '~/app/run/[id]/_viewOptionsStore';
 
 export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const id = useId();
@@ -108,7 +108,7 @@ export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore
                             htmlFor={id + 'zoom_follow_transition'}
                             className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                         >
-                            Animated
+                            Smooth
                         </label>
                     </div>
                 </div>

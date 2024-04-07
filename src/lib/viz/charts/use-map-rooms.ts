@@ -1,6 +1,6 @@
 import type * as d3 from 'd3';
 import memoize from 'micro-memoize';
-import { useEffect, useId, useRef, type RefObject } from 'react';
+import { useEffect, useId, useMemo, useRef, type RefObject } from 'react';
 import useEvent from 'react-use-event-hook';
 import { useThemeStore } from '~/app/_components/theme-store';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
@@ -8,7 +8,12 @@ import { ebGaramond } from '~/styles/fonts';
 import { useDependableEffect, useDynamicDependencies } from '../depdendent-effect';
 import { hkLangString } from '../lang';
 import { areaNames, type AreaNameTextData } from '../map-data/area-names';
-import { allRoomDataBySceneName, type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
+import {
+    allRoomDataBySceneName,
+    mainRoomDataBySceneName,
+    type RoomInfo,
+    type RoomSpriteVariant,
+} from '../map-data/rooms';
 import { SCALE_FACTOR } from '../map-data/scaling';
 import { darkenRoomColorForLightTheme, useRoomColoring } from './use-room-coloring';
 
@@ -61,6 +66,10 @@ export function useMapRooms(
     const roomColoring = useRoomColoring({ useViewOptionsStore, alwaysUseAreaAsColor });
     const visibleRooms = useViewOptionsStore((state) => state.roomsVisible);
     const hoveredRoom = useViewOptionsStore((state) => state.hoveredRoom);
+    const hoveredMainRoom = useMemo(
+        () => (hoveredRoom ? mainRoomDataBySceneName.get(hoveredRoom)?.sceneName : undefined),
+        [hoveredRoom],
+    );
     const theme = useThemeStore((state) => state.theme);
     const showAreaNames = useViewOptionsStore((s) => s.showAreaNames);
     const showSubAreaNames = useViewOptionsStore((s) => s.showSubAreaNames);
@@ -291,7 +300,9 @@ export function useMapRooms(
     useEffect(() => {
         roomRects.current?.style('fill', (r) => roomColoring.getRoomColor(r));
         roomOutlineRects.current?.style('visibility', (r) =>
-            hoveredRoom === r.sceneName && highlightSelectedRoom ? 'visible' : 'hidden',
+            (hoveredRoom === r.sceneName || hoveredMainRoom == r.sceneName) && highlightSelectedRoom
+                ? 'visible'
+                : 'hidden',
         );
         // ?.on('mouseover', null)
         // ?.on('mouseover', function (r) {
@@ -301,7 +312,7 @@ export function useMapRooms(
         // ?.on('mouseout', function (r) {
         //     d3.select(this).style('fill', d3.color(roomColoring.getRoomColor(r)).b);
         // });
-    }, [mainEffectChanges, roomColoring, hoveredRoom, highlightSelectedRoom]);
+    }, [mainEffectChanges, roomColoring, hoveredRoom, highlightSelectedRoom, hoveredMainRoom]);
 
     useEffect(() => {
         roomOutlineRects.current?.style('fill', theme === 'light' ? 'black' : 'white');

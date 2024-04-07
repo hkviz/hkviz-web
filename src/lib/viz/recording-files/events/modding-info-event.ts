@@ -3,6 +3,8 @@ import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-
 export interface ModInfo {
     name: string;
     versions: string[];
+    enabled?: boolean;
+    errorCode?: string;
 }
 
 export type ModdingInfoEventOptions = RecordingEventBaseOptions & Pick<ModdingInfoEvent, 'mods'>;

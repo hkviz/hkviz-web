@@ -29,7 +29,7 @@ export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
 export const aggregationVariableInfos = {
     visits: {
         name: 'Visits',
-        description: 'Number of times this scene has been entered',
+        description: 'Number of times this scene has been entered.',
         Icon: Hash,
     },
     firstVisitMs: {
@@ -40,7 +40,7 @@ export const aggregationVariableInfos = {
     },
     timeSpendMs: {
         name: 'Time spent',
-        description: 'Total time spent',
+        description: 'Total time spent in a scene of all visits combined.',
         Icon: Clock2,
         format: formatTimeMs,
     },
@@ -51,7 +51,7 @@ export const aggregationVariableInfos = {
     },
     deaths: {
         name: 'Deaths',
-        description: 'Number of times the player died in this room.',
+        description: 'Number of times the player died in a scene.',
         image: shadeImg,
     },
     focusing: {
@@ -76,12 +76,12 @@ export const aggregationVariableInfos = {
     },
     geoEarned: {
         name: 'Geo earned',
-        description: 'Total Geo earned. This does not include geo earned by defeating the shade.',
+        description: 'Does not include geo earned by defeating the shade.',
         image: coinImg,
     },
     geoSpent: {
         name: 'Geo spent',
-        description: 'Total Geo spent. This does not include Geo lost by dying and not defeating the shade.',
+        description: 'Does not include Geo lost by dying and not defeating the shade.',
         image: coinImg,
     },
 } satisfies Record<

@@ -41,7 +41,7 @@ export default async function SingleRunPage({ params }: { params: Params }) {
         if (e instanceof TRPCError && e.code === 'FORBIDDEN') {
             return (
                 <ContentCenterWrapper>
-                    This run is set to private and can only be viewed by its owner.
+                    This gameplay is set to private and can only be viewed by its owner.
                 </ContentCenterWrapper>
             );
         }

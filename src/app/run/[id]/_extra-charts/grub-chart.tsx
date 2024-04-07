@@ -10,16 +10,18 @@ const Unit = ({ className }: { className?: string }) => <Image src={grubImage} c
 const variables: LineChartVariableDescription[] = [
     {
         key: 'grubsNoRewardCollected',
-        name: 'Grubs collected, reward not collected',
-        description: 'Grubs collected, reward not collected.',
+        name: 'Grubs freed, reward not collected',
+        description:
+            'These grubs have already been freed from their glass jars, going to the grub father will reward you for freeing them.',
         color: tailwindChartColors.amberLight,
         UnitIcon: Unit,
         order: 2,
     },
     {
         key: 'grubRewards',
-        name: 'Grubs collected, reward collected',
-        description: 'Grubs collected, reward collected.',
+        name: 'Grubs freed, reward collected',
+        description:
+            'These grubs have already been freed from their glass jars and the reward from grub father has been collected as well.',
         color: tailwindChartColors.green,
         UnitIcon: Unit,
         order: 1,
@@ -27,7 +29,7 @@ const variables: LineChartVariableDescription[] = [
     {
         key: 'grubsCollected',
         name: 'Total',
-        description: 'Total number of grubs collected.',
+        description: 'Total number of grubs freed from their glass jars.',
         color: tailwindChartColors.slate,
         UnitIcon: Unit,
         order: 1,

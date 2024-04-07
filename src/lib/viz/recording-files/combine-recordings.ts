@@ -108,9 +108,11 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
                 recordingFileVersion = event.version;
             } else if (event instanceof ModdingInfoEvent) {
                 for (const mod of event.mods) {
-                    const versions = allModVersions.get(mod.name) ?? new Set();
-                    mod.versions.forEach((v) => versions.add(v));
-                    allModVersions.set(mod.name, versions);
+                    if (mod.enabled !== false) {
+                        const versions = allModVersions.get(mod.name) ?? new Set();
+                        mod.versions.forEach((v) => versions.add(v));
+                        allModVersions.set(mod.name, versions);
+                    }
                 }
             } else if (event instanceof HKVizModVersionEvent) {
                 allHkVizModVersions.add(event.version);

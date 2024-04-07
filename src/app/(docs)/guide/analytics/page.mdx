@@ -35,6 +35,7 @@ import { SplitsList } from './_splits-list';
 import { SpoilerWrapper } from './_spoiler-wrapper';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
 import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
+import { TOCStealer } from '../../_content_sidebar';
 
 import { CompletionChartDocIcon, CompletionChartDocVars } from '../../../run/[id]/_extra-charts/completion-chart';
 import { GeoChartDocIcon, GeoChartDocVars } from '../../../run/[id]/_extra-charts/geo-chart';
@@ -66,6 +67,8 @@ checkout the <Link href="/guide/install">mod install guide</Link>
 <Mouse className="inline-block h-4 w-4" /> Click on the section you want to know more about:
 
 <OverviewScreenshot />
+
+<TOCStealer />
 
 ## Contents
 
@@ -210,8 +213,8 @@ In <HKVizText /> the player movement is displayed ontop of the buildings.
 
 <SubroomsScreenshot />
 
-Some buildings contain multiple rooms, on the analytics are displayed for all rooms inside the building together.
-(e.g. the number of deaths in the building is the sum over all rooms and the 'first visited at' map is the time the first room of the building has been visited).
+Some buildings contain multiple rooms, on the map the analytics are displayed for all rooms inside the building together.
+(e.g. the number of deaths in the building is the sum over all rooms and the 'first visited at' is the earliest time any room of the building has been visited).
 
 By clicking on the building on the map, the analytics for each room inside can be displayed individually by using the buttons displayed for each room inside the building.
 
@@ -259,19 +262,24 @@ By clicking on the building on the map, the analytics for each room inside can b
 
 <SpoilerWrapper title="Show colosseum spoilers">
 Unlike on the ingame map, each trial of the colosseum has its own sign on the map. Allowing to see room analytics, such as how often one has died in each of them.
+
 <ColosseumScreenshot />
 
 </SpoilerWrapper>
+<FloatClear />
 
 #### Godhome
 
 <SpoilerWrapper title="Show spoilers for Godhome">
-The Godhome displays information for each pantheon / boss rush at its door.
-By clicking on one of the doors on the map, one sees the overal analytics of the selected pantehon.
+On the map information for each pantheon / boss rush is displayed at its entrance.
+
+By clicking on one of the doors, one sees the overal analytics of the selected pantehon.
 Analytics can also be displayed for each boss individually, by clicking on one of the bosses above the analytics, similar to other <a href="#multi-room-buildings">multi-room buildings</a>.
+
 <GodhomeScreenshot />
 
 </SpoilerWrapper>
+<FloatClear />
 
 ## Splits
 
@@ -331,7 +339,13 @@ Since health does change very frequently, this chart is most useful when zooming
 <SoulChartScreenshot />
 
 The <ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">soul</ExternalLinkMdx> chart shows soul over time.
-Since just like health, soul does change very frequently, this chart is most useful when zooming in closely.
+Soul is used for spells and healing, and is gained by:
+
+-   hitting enemies with the nail
+-   dreamnailing enemies or npcs
+-   {<ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">and some other sources</ExternalLinkMdx>}
+
+Since soul does change very frequently, this chart is most useful when zooming in closely.
 
 <SoulChartDocVars />
 

@@ -89,6 +89,7 @@ export function RunTags({
     const setTagMutation = api.run.setTag.useMutation();
 
     async function addTag(tag: Tag) {
+        if (codes.includes(tag.code)) return;
         await setTagMutation.mutateAsync({ id: runId, code: tag.code, hasTag: true });
         setCodes([...codes, tag.code]);
     }

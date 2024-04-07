@@ -215,3 +215,13 @@
     /* used to overwrite resizable height inside flex layout */
     height: unset !important;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion) {
+    html {
+        scroll-behavior: auto;
+    }
+}

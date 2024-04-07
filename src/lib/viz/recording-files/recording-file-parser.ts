@@ -212,10 +212,13 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                         .filter((it) => it)
                         .map((it) => {
                             const split = it.split(':');
-                            return {
+                            const base = {
                                 name: split[0] ?? 'Unnamed mod',
                                 versions: [split[1] ?? 'Unknown version'],
                             };
+                            return split.length === 2
+                                ? base
+                                : { ...base, enabled: split[2]?.[0] === '1', errorCode: split[2]?.[1] };
                         });
                     events.push(
                         new ModdingInfoEvent({
