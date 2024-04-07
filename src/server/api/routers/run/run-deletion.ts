@@ -15,10 +15,17 @@ export const deleteRunProcedure = protectedProcedure
         const result = await ctx.db
             .update(runs)
             .set({ deleted: true })
-            .where(and(eq(runs.id, input.runId), eq(runs.userId, userId)));
+            .where(and(eq(runs.id, input.runId), eq(runs.userId, userId), eq(runs.preventDeletion, false)));
 
-        if (result.rowsAffected === 0)
+        if (result.rowsAffected === 0) {
+            console.error(`Error while deleting run, not found. For user ${userId} and run ${input.runId}`);
+            await sendMailToSupport({
+                subject: 'Run deletion failed. Not found.',
+                text: `Run deletion failed for user ${userId} and run ${input.runId}.`,
+                html: `Please retry deletion manually`,
+            });
             throw new TRPCError({ code: 'NOT_FOUND', message: 'Run not found while setting deleted' });
+        }
 
         // localIds are removed immediately, so they can be used for further uploads
         // uploads with the same local id will create a new run

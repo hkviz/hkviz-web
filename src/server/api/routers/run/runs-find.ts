@@ -38,9 +38,21 @@ export interface FindRunsOptions {
      * which does its own permission checks after loading.
      */
     skipVisibilityCheck?: boolean;
+
+    /**
+     * is anonym access
+     */
+    isAnonymAccess?: boolean;
 }
 
-export async function findRuns({ db, currentUser, filter, includeFiles, skipVisibilityCheck }: FindRunsOptions) {
+export async function findRuns({
+    db,
+    currentUser,
+    filter,
+    includeFiles,
+    skipVisibilityCheck,
+    isAnonymAccess,
+}: FindRunsOptions) {
     const isOwnProfile = !!filter.userId && currentUser?.id === filter.userId;
     const isPublicFilter =
         filter.visibility != null &&
@@ -82,6 +94,8 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
             visibility: true,
             archived: true,
             isCombinedRun: true,
+            anonymAccessGameplayCutOffAt: true,
+            anonymAccessTitle: true,
             ...runTagFieldsSelect,
             ...runFilesMetaFieldsSelect,
         },
@@ -119,6 +133,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
                     files,
                     id,
                     title,
+                    anonymAccessTitle,
                     description,
                     createdAt,
                     updatedAt,
@@ -142,9 +157,17 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
                               })),
                           );
 
+                    const filteredFiles = !isAnonymAccess
+                        ? mappedFiles
+                        : mappedFiles?.filter(
+                              (it) =>
+                                  run.anonymAccessGameplayCutOffAt === null ||
+                                  it.createdAt <= run.anonymAccessGameplayCutOffAt,
+                          );
+
                     return {
                         id,
-                        title,
+                        title: isAnonymAccess ? anonymAccessTitle ?? title : title,
                         description,
                         createdAt,
                         visibility,
@@ -162,7 +185,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
                         archived,
                         isCombinedRun,
                         gameState,
-                        files: mappedFiles,
+                        files: filteredFiles,
                     };
                 },
             ),

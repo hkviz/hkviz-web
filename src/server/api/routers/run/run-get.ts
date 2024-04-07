@@ -18,6 +18,7 @@ export const getRun = cache(async (id: string, sessionUserId: string | null) => 
                 includeFiles: true,
                 skipVisibilityCheck: true,
                 currentUser: sessionUserId ? { id: sessionUserId } : undefined,
+                isAnonymAccess: isAnonymAccessKey,
             })
         )[0] ??
         raise(

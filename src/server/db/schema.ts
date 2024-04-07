@@ -216,6 +216,9 @@ export const runs = mysqlTable(
         isCombinedRun: boolean('is_combined_run').notNull().default(false),
 
         anonymAccessKey: varcharUuid('anonymAccessKey'),
+        anonymAccessTitle: varchar('anonymAccessTitle', { length: MAX_RUN_TITLE_LENGTH }),
+        anonymAccessGameplayCutOffAt: timestamp('anonymAccessGameplayCutOffAt'),
+        preventDeletion: boolean('prevent_deletion').notNull().default(false),
 
         createdAt: timestamp('created_at')
             .default(sql`CURRENT_TIMESTAMP`)
