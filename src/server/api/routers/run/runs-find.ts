@@ -12,6 +12,7 @@ export const runFilterSchema = z.object({
     tag: z.array(tagSchema).optional().nullish(),
     archived: z.array(z.boolean()).optional().nullish(),
     id: z.array(z.string()).optional().nullish(),
+    anonymAccessKey: z.string().optional().nullish(),
 });
 
 export type RunFilter = z.infer<typeof runFilterSchema>;
@@ -66,6 +67,7 @@ export async function findRuns({ db, currentUser, filter, includeFiles, skipVisi
                 filter.archived ? inArray(run.archived, filter.archived) : undefined,
                 eq(run.deleted, false),
                 filter.id ? inArray(run.id, filter.id) : undefined,
+                filter.anonymAccessKey ? eq(run.anonymAccessKey, filter.anonymAccessKey) : undefined,
                 isNull(run.combinedIntoRunId),
             ];
 

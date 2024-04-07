@@ -215,6 +215,8 @@ export const runs = mysqlTable(
         combinedIntoRunId: varcharUuid('combined_into_run_id'),
         isCombinedRun: boolean('is_combined_run').notNull().default(false),
 
+        anonymAccessKey: varcharUuid('anonymAccessKey'),
+
         createdAt: timestamp('created_at')
             .default(sql`CURRENT_TIMESTAMP`)
             .notNull(),

@@ -3,14 +3,18 @@ import { cache } from 'react';
 import { raise } from '~/lib/utils/utils';
 import { db } from '~/server/db';
 import { assertIsResearcher } from '../lib/researcher';
-import { findRuns } from './runs-find';
+import { findRuns, type RunFilter } from './runs-find';
 
 export const getRun = cache(async (id: string, sessionUserId: string | null) => {
+    console.log(id);
+    const isAnonymAccessKey = id.startsWith('a-');
+    const filter: RunFilter = isAnonymAccessKey ? { anonymAccessKey: id.slice(2) } : { id: [id] };
+
     const metadata =
         (
             await findRuns({
                 db,
-                filter: { id: [id] },
+                filter: filter,
                 includeFiles: true,
                 skipVisibilityCheck: true,
                 currentUser: sessionUserId ? { id: sessionUserId } : undefined,
@@ -23,7 +27,7 @@ export const getRun = cache(async (id: string, sessionUserId: string | null) => 
             }),
         );
 
-    if (metadata.visibility === 'private' && metadata.user.id !== sessionUserId) {
+    if (!isAnonymAccessKey && metadata.visibility === 'private' && metadata.user.id !== sessionUserId) {
         await assertIsResearcher({
             db: db,
             userId: sessionUserId,
@@ -37,6 +41,7 @@ export const getRun = cache(async (id: string, sessionUserId: string | null) => 
 
     return {
         ...metadata,
+        user: isAnonymAccessKey ? { id: '', name: 'Anonym' } : metadata.user,
         files: metadata.files!,
     };
 });
