@@ -12,6 +12,7 @@ import {
     type EnemyInfo,
 } from '../player-data/enemies';
 import {
+    getDefaultValue,
     getEnemyNameFromDefeatedField,
     getEnemyNameFromKilledField,
     isPlayerDataBoolField,
@@ -224,6 +225,74 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                                   : assertNever(abilityOrItem.type),
                         debugInfo: event,
                         previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                }
+            });
+        } else if (field === playerDataFields.byFieldName.charmSlots) {
+            recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                if (
+                    event.value > getDefaultValue(playerDataFields.byFieldName.charmSlots) &&
+                    event.previousPlayerDataEventOfField?.value !== event.value
+                ) {
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: `Charm Notch (nr ${event.value})`,
+                        tooltip: `Got ${event.value} Charm Notches`,
+                        imageUrl: '/ingame-sprites/inventory/Inv_0027_spell_slot.png',
+                        group: recordingSplitGroupsByName.charmCollection,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                }
+            });
+        } else {
+            [
+                { field: playerDataFields.byFieldName.mapAbyss, title: 'Abyss Map' },
+                {
+                    field: playerDataFields.byFieldName.mapCity,
+                    title: 'City of Tears Map',
+                },
+                { field: playerDataFields.byFieldName.mapCliffs, title: 'Howling Cliffs Map' },
+                {
+                    field: playerDataFields.byFieldName.mapCrossroads,
+                    title: 'Forgotten Crossroads Map',
+                },
+                { field: playerDataFields.byFieldName.mapDeepnest, title: 'Deepnest Map' },
+                {
+                    field: playerDataFields.byFieldName.mapFogCanyon,
+                    title: 'Fog Canyon Map',
+                },
+                { field: playerDataFields.byFieldName.mapGreenpath, title: 'Greenpath Map' },
+                {
+                    field: playerDataFields.byFieldName.mapMines,
+                    title: 'Crystal Peak Map',
+                },
+                { field: playerDataFields.byFieldName.mapOutskirts, title: "Kingdom's Edge Map" },
+                {
+                    field: playerDataFields.byFieldName.mapRestingGrounds,
+                    title: 'Resting Grounds Map',
+                },
+                { field: playerDataFields.byFieldName.mapRoyalGardens, title: "Queen's Gardens Map" },
+
+                {
+                    field: playerDataFields.byFieldName.mapFungalWastes,
+                    title: 'Fungal Wastes Map',
+                },
+                { field: playerDataFields.byFieldName.mapWaterways, title: 'Royal Waterways Map' },
+            ].map((map) => {
+                if (field === map.field) {
+                    recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                        if (event.value && !event.previousPlayerDataEventOfField?.value) {
+                            splits.push({
+                                msIntoGame: event.msIntoGame,
+                                title: map.title,
+                                tooltip: 'Got ' + map.title,
+                                imageUrl: '/ingame-sprites/inventory/inv_item__0008_jar_col_map.png',
+                                group: recordingSplitGroupsByName.items,
+                                debugInfo: event,
+                                previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                            });
+                        }
                     });
                 }
             });

@@ -414,7 +414,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         if (isPlaying && zoomFollowTarget === 'recent-scenes') {
                             return 1000 / 10;
                         } else {
-                            return 250;
+                            return 100;
                         }
                     }
 

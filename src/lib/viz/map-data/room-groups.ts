@@ -30,6 +30,10 @@ export const roomGroups = [
         name: 'group_grimm',
         sceneNames: ['Grimm_Main_Tent', 'Grimm_Nightmare'],
     },
+    {
+        name: 'group_Sly_House',
+        sceneNames: ['Room_shop', 'Room_Sly_Storeroom'],
+    },
 
     // pantheons
     {

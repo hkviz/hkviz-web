@@ -39,7 +39,7 @@ export const subSprites = {
                     size: { x: 34, y: 26 },
                     offsetTop: { x: 164, y: 127 },
                 },
-                sceneName: 'Room_shop',
+                sceneName: 'group_Sly_House',
             },
             {
                 normal: {

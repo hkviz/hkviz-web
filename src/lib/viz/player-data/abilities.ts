@@ -80,7 +80,7 @@ export const abilitiesAndItems: Record<
     // exploration and quest
     hasTramPass: { name: 'Tram Pass', spriteName: 'inv_item__0001_tram_pass', type: 'item' },
     hasLantern: { name: 'Lumafly Lantern', spriteName: 'Lumafly_Lantern0000', type: 'item' },
-    hasMap: { name: 'Map', spriteName: 'inv_item__0008_jar_col_map', type: 'item' },
+    // hasMap: { name: 'Map', spriteName: 'inv_item__0008_jar_col_map', type: 'item' },
     hasQuill: { name: 'Quill', spriteName: 'inv_item_map_quill_combined', type: 'item' },
     hasJournal: { name: "Hunter's Journal", spriteName: 'Journal_Prompt', type: 'item' },
     hasHuntersMark: { name: "Hunter's Mark", spriteName: 'bestiary_hunter_mark_f', type: 'item' },

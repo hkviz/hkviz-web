@@ -13,7 +13,9 @@ const ancientBasinRooms = [
 const predefinedRoomNames = {
     // Dirtmouth
     Town: 'Town',
-    Room_shop: "Sly's Shop",
+    Room_shop: "Sly's Shop Entrance",
+    Room_Sly_Storeroom: "Sly's Storeroom",
+    group_Sly_House: "Sly's Shop",
     Room_Ouiji: "Jiji's Hut",
     Room_Town_Stag_Station: 'Stag Station',
     Room_mapper: 'Map Shop',

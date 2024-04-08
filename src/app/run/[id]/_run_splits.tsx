@@ -5,6 +5,8 @@ import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { forwardRef, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
 import { assertNever } from '~/lib/utils/utils';
+import { darkenRoomColorForLightTheme } from '~/lib/viz/charts/use-room-coloring';
+import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import {
     recordingSplitGroups,
     type RecordingSplit,
@@ -84,16 +86,35 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
             );
         }
 
+        const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+        const scene = sceneName ? mainRoomDataBySceneName.get(sceneName) ?? null : null;
+        const displaySceneName = scene
+            ? scene.zoneNameFormatted // + ' - ' + scene.roomNameFormattedZoneExclusive
+            : sceneName;
+
+        const color = scene ? darkenRoomColorForLightTheme(scene.color) : undefined;
+
         return (
             <button
                 onClick={handleClick}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className="relative flex w-full flex-row gap-2 p-3 pl-4"
+                className="relative flex w-full flex-row items-center gap-2 p-3 pl-4"
             >
                 <div className={cn('absolute bottom-0 left-0 top-0 w-1', split.group.color.background)}></div>
                 {icon}
-                <span className="grow text-left">{split.title}</span>
+                <p className="flex grow flex-col items-start justify-center text-left">
+                    <span>{split.title}</span>
+                    {/* <span
+                        className="-mb-1 mt-1 rounded-lg bg-slate-400 px-1 py-0.5 text-[.5rem] font-bold leading-none text-black"
+                        style={{ backgroundColor: scene?.color?.formatHex() }}
+                    >
+                        {displaySceneName}
+                    </span> */}
+                    {/* <span className="-mb-1 rounded-lg py-0.5 text-[.6rem] font-bold leading-none" style={{ color }}>
+                        {displaySceneName}
+                    </span> */}
+                </p>
                 <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
             </button>
         );
