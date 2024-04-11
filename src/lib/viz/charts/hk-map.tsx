@@ -152,7 +152,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG });
     return (
         <div className={cn('relative', className)} ref={containerRef}>
-            <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />
+            {!isV1 && <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />}
             <div className="absolute right-4 top-4 px-0 py-2">
                 <MapLegend useViewOptionsStore={useViewOptionsStore} />
             </div>

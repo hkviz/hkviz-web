@@ -222,7 +222,7 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
                     <ResizablePanel
                         defaultSize={100 - DEFAULT_EXTRA_CHARTS_SIZE}
                         collapsible
-                        minSize={30}
+                        minSize={18}
                         className={cn(cardClasses, 'min-h-[44px]')}
                         ref={splitsPanelRef}
                     >

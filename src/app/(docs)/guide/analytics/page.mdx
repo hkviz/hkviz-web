@@ -5,6 +5,7 @@ import { FloatClear } from '../../../_components/float';
 import { HKVizText } from '../../../_components/hkviz-text';
 import { MailLinkUnstyled } from '../../../_components/mail-link';
 import { MdxInnerWrapper } from '../../../_components/mdx-layout';
+import { TOCStealer } from '../../_content_sidebar';
 import { SpoilerWarningEarlyGame } from '../../_spoiler_warning';
 import { LinkableSpan } from './_linkable_paragraph';
 import {
@@ -35,7 +36,6 @@ import { SplitsList } from './_splits-list';
 import { SpoilerWrapper } from './_spoiler-wrapper';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
 import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
-import { TOCStealer } from '../../_content_sidebar';
 
 import { CompletionChartDocIcon, CompletionChartDocVars } from '../../../run/[id]/_extra-charts/completion-chart';
 import { GeoChartDocIcon, GeoChartDocVars } from '../../../run/[id]/_extra-charts/geo-chart';
@@ -168,7 +168,7 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
         <ColorModeLinearTableScreenshot />
         <ColorModeLinearScreenshot />
         The first click on the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button will color the map by the selected variable using a linear color scale.
-        This works best for variables like time spent in a room (where the values are distributed evenly).
+        This works best for variables like the first visiting time since the values are likely distributed relatively evenly.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>Exponential color scale</ReflowCellHeader>
@@ -178,12 +178,13 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
 
         For many variables, there will be a small number of rooms with a high value and a large number of rooms with a low values.
         Using an exponential color scale will make the differences in the low values more visible.
+        Especially useful for geo spent, since there are a small number of shops where a lot of geo can be spent.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>Area color</ReflowCellHeader>
         <ColorModeAreaTableScreenshot />
         <ColorModeAreaScreenshot />
-        Clicking the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button a third time will switch back to color the map by the colors used in the game.
+        Clicking the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button a third time will switch back to color the map by the area the room is in, i.e. how the map is colored in the game.
     </ReflowCell>
 
 </ReflowRow>

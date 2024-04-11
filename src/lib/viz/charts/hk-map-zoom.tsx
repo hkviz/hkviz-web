@@ -30,19 +30,51 @@ export function HKMapZoom({
     const sceneEvents = recording?.sceneEvents;
 
     const previousZoomZone = useRef<ZoomZone | null>(null);
-    const zoomZones = useMemo(() => {
-        if (!zoomFollowEnabled || zoomFollowTarget !== 'current-zone') return null;
-        let zoomZones = null;
-        let sceneEvent = recording?.sceneEvents.findLast((e) => e.msIntoGame <= animatedMsIntoGame) ?? null;
-        while (sceneEvent && !zoomZones) {
-            const sceneName = sceneEvent.sceneName;
-            const roomData = mainRoomDataBySceneName.get(sceneName);
-            zoomZones = roomData?.zoomZones ?? null;
-            sceneEvent = sceneEvent.previousSceneEvent;
-        }
+    const zoomZone = useMemo(() => {
+        if (!sceneEvents || !zoomFollowEnabled || zoomFollowTarget !== 'current-zone') return null;
 
-        return zoomZones ?? EMPTY_ARRAY;
-    }, [animatedMsIntoGame, recording?.sceneEvents, zoomFollowEnabled, zoomFollowTarget]);
+        const sceneEventIndex =
+            sceneEvents?.findLastIndex(
+                (e) => e.msIntoGame <= animatedMsIntoGame && mainRoomDataBySceneName.get(e.sceneName)?.zoomZones,
+            ) ?? -1;
+        if (sceneEventIndex === -1) return null;
+        const sceneEvent = sceneEvents[sceneEventIndex]!;
+        const currentPossibleZoomZones = mainRoomDataBySceneName.get(sceneEvent.sceneName)!.zoomZones;
+        const currentPossiblePrimaryZoomZone = currentPossibleZoomZones[0]!;
+
+        let zoomZone: ZoomZone | null = null;
+
+        if (currentPossiblePrimaryZoomZone === previousZoomZone.current) {
+            // primary zoom zone is previous, therefore keep primary.
+            zoomZone = currentPossiblePrimaryZoomZone;
+        } else if (!previousZoomZone.current || !currentPossibleZoomZones.includes(previousZoomZone.current)) {
+            // previous zoom zone not possible anymore, zoom not preventable (theoretically one could choose a different zone, to potentially optimize further here).
+            zoomZone = currentPossiblePrimaryZoomZone;
+        } else {
+            // here keeping the previous zoom zone is possible, but might not be a good idea, if a zoom is necessary soon anyways.
+            let zoomEarly = false;
+            for (let i = sceneEventIndex + 1; i < sceneEvents.length; i++) {
+                const nextSceneEvent = sceneEvents[i]!;
+                const nextPossibleZoomZones = mainRoomDataBySceneName.get(nextSceneEvent.sceneName)?.zoomZones;
+                if (!nextPossibleZoomZones) {
+                    // scene event will use previous zoom zone, which was checked in a previous loop iteration
+                    continue;
+                }
+                if (!nextPossibleZoomZones.includes(currentPossiblePrimaryZoomZone)) {
+                    // zoom to primary not necessary, since reached a scene where primary not possible, before previous not possible.
+                    break;
+                }
+                if (!nextPossibleZoomZones.includes(previousZoomZone.current)) {
+                    zoomEarly = true;
+                    break;
+                }
+            }
+            zoomZone = zoomEarly ? currentPossiblePrimaryZoomZone : previousZoomZone.current;
+        }
+        previousZoomZone.current = zoomZone;
+
+        return zoomZone;
+    }, [animatedMsIntoGame, sceneEvents, zoomFollowEnabled, zoomFollowTarget]);
 
     const visibleRoomsExtends = useMemo(() => {
         if (!zoomFollowEnabled || zoomFollowTarget !== 'visible-rooms') return null;
@@ -83,7 +115,7 @@ export function HKMapZoom({
             if (!svg.current || !zoom.current) return;
             const scale = Math.min(
                 3.5, // is already zoomed in quite a bit, beyond that might be distracting in an animation
-                Math.min(mapVisualExtends.size.x / bounds.size.x, mapVisualExtends.size.y / bounds.size.y) * 0.8,
+                Math.min(mapVisualExtends.size.x / bounds.size.x, mapVisualExtends.size.y / bounds.size.y) * 0.85,
             );
 
             svg.current.interrupt();
@@ -100,20 +132,15 @@ export function HKMapZoom({
     );
 
     useEffect(() => {
-        if (!zoomZones) {
-            previousZoomZone.current = null;
+        if (!zoomZone) {
             return;
         }
-        const newZone = zoomZones.includes(previousZoomZone.current!) ? previousZoomZone.current : zoomZones[0] ?? null;
-        if (previousZoomZone.current === newZone) return;
-        previousZoomZone.current = newZone;
-        if (newZone === null) return;
 
-        const rooms = roomData.filter((r) => r.zoomZones.includes(newZone as ZoomZone));
+        const rooms = roomData.filter((r) => r.zoomZones.includes(zoomZone));
         if (rooms.length === 0) return;
         const bounds = Bounds.fromContainingBounds(rooms.map((r) => r.visualBounds));
         zoomToBounds(bounds);
-    }, [zoomZones, zoomToBounds]);
+    }, [zoomZone, zoomToBounds]);
 
     useEffect(() => {
         if (!visibleRoomsExtends) return;
