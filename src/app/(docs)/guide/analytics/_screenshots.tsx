@@ -111,11 +111,11 @@ export function OverviewScreenshot() {
                 <ImageArea positionClassName="left-[30%] top-[93.5%] h-[5.5%] w-[35.25%]" href="#timeline">
                     Timeline
                 </ImageArea>
-                <ImageArea positionClassName="left-[66%] top-[8%] h-[57%] w-[33%]" href="#time-based-charts">
-                    Time charts
-                </ImageArea>
-                <ImageArea positionClassName="left-[66%] top-[65.75%] h-[33%] w-[33%]" href="#splits">
+                <ImageArea positionClassName="left-[66%] top-[8%] h-[32%] w-[33%]" href="#splits">
                     Splits
+                </ImageArea>
+                <ImageArea positionClassName="left-[66%] top-[41.25%] h-[57.75%] w-[33%]" href="#time-based-charts">
+                    Time charts
                 </ImageArea>
             </ImageAreaShadow>
         </ImageContainer>
