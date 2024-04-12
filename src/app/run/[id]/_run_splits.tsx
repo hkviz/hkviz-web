@@ -36,6 +36,9 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
     //             ? ''
     //             : assertNever(activeState);
 
+    const activeStateRef = useRef(activeState);
+    activeStateRef.current = activeState;
+
     const activeStateClasses =
         activeState === 'past'
             ? 'bg-gradient-to-r from-green-300/10 to-green-500/20 dark:from-green-500/10 dark:to-green-500/15'
@@ -45,16 +48,35 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
                 ? ''
                 : assertNever(activeState);
 
+    const hasClicked = useRef({
+        hasClicked: false,
+        timeout: null as any,
+    });
+
     const button = useMemo(() => {
         function handleClick() {
             console.log('split clicked', split);
             useViewOptionsStore.getState().setAnimationMsIntoGame(split.msIntoGame);
             useViewOptionsStore.getState().showMapIfOverview();
 
+            function markClicked() {
+                clearTimeout(hasClicked.current.timeout);
+                hasClicked.current.hasClicked = true;
+                hasClicked.current.timeout = setTimeout(() => {
+                    hasClicked.current.hasClicked = false;
+                }, 1000);
+            }
+
             const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {
-                useViewOptionsStore.getState().setSelectedRoom(sceneName);
-                // useViewOptionsStore.getState().togglePinnedRoom(sceneName, true);
+                if (activeStateRef.current !== 'next') {
+                    useViewOptionsStore.getState().setSelectedRoom(sceneName);
+                    hasClicked.current.hasClicked = true;
+                    markClicked();
+                } else {
+                    useViewOptionsStore.getState().togglePinnedRoom(sceneName);
+                    markClicked();
+                }
             }
         }
         function handleMouseEnter() {
@@ -118,7 +140,7 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
                 <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
             </button>
         );
-    }, [split, useViewOptionsStore]);
+    }, [split, useViewOptionsStore, activeStateRef]);
 
     return (
         <TableRow ref={ref}>

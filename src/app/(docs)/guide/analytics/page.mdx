@@ -141,14 +141,15 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
 
     Hint: your selected room is not only shown in the room analytics panel, but also highlighted in the <a href="#timeline">timeline</a>.
 
-2.  {<LinkableSpan id="room-pin">
+2.  {<LinkableSpan id="room-pin" initialScrollMargin={360}>
 
     <b>Pin a room:</b> To stop the shown room from changing by hovering over them, you can pin it with the
 
     {' '}
 
     <Pin className="inline-block h-4 w-4" aria-label="Pin" />
-    -button in the room analytics panel or by clicking a room on the map.
+    -button in the room analytics panel or by clicking a room on the map. Rooms can also be pinned by clicking on the color
+    code at the bottom of the <a href="#timeline">timeline</a> or by double clicking on a <a href="#splits">split</a>.
 
     </LinkableSpan>}
 
@@ -293,7 +294,13 @@ It shows the times of events of the following types:
 
 By toggling the checkboxes corresponding to the event types, the splits can be filtered to only show the events of interest.
 
-Hovering over a split will highlight the room of the event on the <a href="#map">map</a>, and display a marker on the <a href="#timeline">timeline</a>.
+**Splits actions**
+
+| Shortcut     | Action                                                                                                                                   |
+| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| Hover        | Shows a marker for the split on the <a href="#timeline">timeline</a> and highlights the room of the split on the <a href="#map">map</a>. |
+| Click        | Jump to the timepoint of a split and change the selected room of the room analytics panel to the room of the split                       |
+| Double click | <a href="#room-pin"><Pin className="w-4 h-4 inline-block" /> Pin the room</a> of a split                                                 |
 
 ## Time-based charts
 
@@ -302,7 +309,7 @@ The time-based charts show some variables over time, such as the completion perc
 Hovering over a chart will show a marker on the <a href="#timeline">timeline</a> to highlight the hovered timepoint,
 additionally the room the player is in is highlighted on the map while hovering <a href="#map">map</a>.
 
-**Shortcuts in time-based charts**
+**Time-based chart actions**
 
 | Shortcut                | Action                                                  |
 | ----------------------- | ------------------------------------------------------- |
@@ -381,11 +388,19 @@ On the right of the timeline the speed of the animation can be adjusted.
 At the bottom of the timeline, the color of visitied rooms is displayed. By <a href="#map-coloring-by-variables">selecting a room on the map</a>, the color codes of the selected room and area are enlarged.
 This can make it easier to find the time a specific area was visited.
 
-**Shortcuts in time-based charts**
+**Timeline slider shortcuts**
 
 | Shortcut     | Action                                                                                                              |
 | ------------ | ------------------------------------------------------------------------------------------------------------------- |
 | Shift + Drag | More precisely drag on the timeline.The slider moves 10 times slower, making it easier to find a certain timestamp. |
+
+**Timeline color code shortcuts**
+
+| Shortcut     | Action                                                                                                  |
+| ------------ | ------------------------------------------------------------------------------------------------------- |
+| Click        | Jump to the timepoint of the color code                                                                 |
+| Hover        | Change selected room, if not pinned                                                                     |
+| Double Click | Toggle if the selected <a href="#room-pin">room is pinned. <Pin className="w-4 h-4 inline-block" /></a> |
 
 export default function MDXPage({ children }) {
     return <MdxInnerWrapper>{children}</MdxInnerWrapper>;

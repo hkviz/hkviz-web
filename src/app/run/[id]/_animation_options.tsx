@@ -54,6 +54,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
     const recording = useViewOptionsStore((s) => s.recording);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
     const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
+    const togglePinnedRoom = useViewOptionsStore((s) => s.togglePinnedRoom);
     const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
     const setHoveredMsIntoGame = useViewOptionsStore((s) => s.setHoveredMsIntoGame);
     const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
@@ -173,7 +174,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
         console.log(sceneChange);
         if (!sceneChange) return;
         setAnimationMsIntoGame(sceneChange.startMs);
-        setSelectedRoom(sceneChange.mainVirtualScene);
+        togglePinnedRoom(sceneChange.mainVirtualScene, true);
         showMapIfOverview();
 
         // togglePinnedRoom(sceneChange.sceneName, true);
