@@ -54,11 +54,11 @@ export function useMapRooms(
         | d3.Selection<d3.BaseType, { sprite: RoomInfo['sprites'][number]; room: RoomInfo }, d3.BaseType, unknown>
         | undefined
     >(undefined);
-    const areaNameTexts = useRef<d3.Selection<d3.BaseType, AreaNameTextData, d3.BaseType, unknown> | undefined>(
-        undefined,
-    );
+    const areaNameTexts = useRef<
+        d3.Selection<d3.BaseType, { text: AreaNameTextData }, d3.BaseType, unknown> | undefined
+    >(undefined);
     const subAreaNamesTexts = useRef<
-        d3.Selection<d3.BaseType, { text: RoomInfo['texts'][number]; room: RoomInfo }, d3.BaseType, unknown> | undefined
+        d3.Selection<d3.BaseType, { text: AreaNameTextData; room: RoomInfo }, d3.BaseType, unknown> | undefined
     >(undefined);
 
     const paramDependenciesChanges = useDynamicDependencies(dependencies);
@@ -179,42 +179,52 @@ export function useMapRooms(
             .append('svg:g')
             .attr('data-scene-name', (r) => r.sceneName)
             .attr('data-game-object-name', (r) => r.gameObjectName);
-        subAreaNamesTexts.current = roomTextGs
-            .selectAll(null)
-            .data((room) =>
-                room.texts
-                    .map((text) => ({
-                        room,
-                        text,
-                    }))
-                    .filter((it) => !it.text.objectPath.includes('Next Area')),
-            )
-            .enter()
-            .append('svg:text')
-            .attr('data-scene-name', (d) => d.room.sceneName)
-            .attr('x', (d) => d.text.bounds.center.x)
-            .attr('y', (d) => d.text.bounds.center.y)
-            .attr('text-anchor', 'middle')
-            .attr('dominant-baseline', 'central')
-            .style('font-size', (d) => `${d.text.fontSize * 0.075 * SCALE_FACTOR}px`)
-            .attr('class', `drop-shadow-md pointer-events-none area-name-shadow ${ebGaramond.className}`)
-            .text((d) => hkLangString(d.text.sheetName as any, d.text.convoName) ?? d.text.convoName)
-            .style('transition', 'opacity 0.1s');
 
-        if (areaNameGs?.current) {
-            areaNameTexts.current = areaNameGs?.current
-                .selectAll(null)
-                .data(areaNames)
-                .enter()
-                .append('svg:text')
-                .attr('x', (d) => d.bounds.center.x)
-                .attr('y', (d) => d.bounds.center.y)
+        function prepareText<T extends { text: AreaNameTextData }>(text: d3.Selection<d3.BaseType, T, any, any>) {
+            return text
+                .text((d) => hkLangString(d.text.sheetName as any, d.text.convoName) ?? d.text.convoName)
+                .attr(
+                    'class',
+                    (d) =>
+                        `drop-shadow-md pointer-events-none area-name-shadow ` +
+                        (d.text.type === 'area' ? 'font-serif' : ebGaramond.className),
+                )
                 .attr('text-anchor', 'middle')
                 .attr('dominant-baseline', 'central')
-                .style('font-size', (d) => `${d.fontSize * 0.125 * SCALE_FACTOR}px`)
-                .attr('class', `font-serif pointer-events-none area-name-shadow`)
-                .text((d) => hkLangString(d.sheetName as any, d.convoName) ?? d.convoName)
+                .attr('x', (d) => d.text.bounds.center.x)
+                .attr('y', (d) => d.text.bounds.center.y)
+                .style('font-size', (d) =>
+                    d.text.type === 'area'
+                        ? `${d.text.fontSize * 0.125 * SCALE_FACTOR}px`
+                        : `${d.text.fontSize * 0.075 * SCALE_FACTOR}px`,
+                )
                 .style('transition', 'opacity 0.1s');
+        }
+
+        subAreaNamesTexts.current = prepareText(
+            roomTextGs
+                .selectAll(null)
+                .data((room) =>
+                    room.texts
+                        .map((text) => ({
+                            room,
+                            text,
+                        }))
+                        .filter((it) => !it.text.objectPath.includes('Next Area')),
+                )
+                .enter()
+                .append('svg:text')
+                .attr('data-scene-name', (d) => d.room.sceneName),
+        );
+
+        if (areaNameGs?.current) {
+            areaNameTexts.current = prepareText(
+                areaNameGs.current
+                    .selectAll(null)
+                    .data(areaNames.map((text) => ({ text })))
+                    .enter()
+                    .append('svg:text'),
+            );
         }
     }, [
         paramDependenciesChanges,
@@ -231,9 +241,11 @@ export function useMapRooms(
         if (areaNameTexts.current) {
             areaNameTexts.current.style('fill', (d) => {
                 if (theme === 'light') {
-                    return roomColoring.mode === 'area' ? darkenRoomColorForLightTheme(d.color) : 'rgba(0,0,0,0.8)';
+                    return roomColoring.mode === 'area'
+                        ? darkenRoomColorForLightTheme(d.text.color)
+                        : 'rgba(0,0,0,0.8)';
                 } else {
-                    return roomColoring.mode === 'area' ? d.color.formatHex() : 'rgba(255,255,255,0.8)';
+                    return roomColoring.mode === 'area' ? d.text.color.formatHex() : 'rgba(255,255,255,0.8)';
                 }
             });
         }
@@ -286,12 +298,18 @@ export function useMapRooms(
             }
         }
 
+        function isTextTypeShowing(text: AreaNameTextData) {
+            return text.type === 'area' ? showAreaNames : showSubAreaNames;
+        }
+
         roomImgs.current?.style('opacity', (d) => (getVariant(d.room) === d.sprite.variant ? '100%' : '0%'));
         subAreaNamesTexts.current?.style('opacity', (d) =>
-            showSubAreaNames && isRoomVisible(d.room.gameObjectNameNeededInVisited) && renderAreaNames ? '100%' : '0%',
+            isTextTypeShowing(d.text) && isRoomVisible(d.room.gameObjectNameNeededInVisited) && renderAreaNames
+                ? '100%'
+                : '0%',
         );
         areaNameTexts.current?.style('opacity', (d) =>
-            showAreaNames && isZoneVisible(d.convoName) && renderAreaNames ? '100%' : '0%',
+            isTextTypeShowing(d.text) && isZoneVisible(d.text.convoName) && renderAreaNames ? '100%' : '0%',
         );
 
         roomRects.current?.style('pointer-events', (r) => (getVariant(r) !== 'hidden' ? 'all' : 'none'));

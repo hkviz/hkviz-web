@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { create } from 'zustand';
 import { combine, subscribeWithSelector } from 'zustand/middleware';
 import { assertNever } from '~/lib/utils/utils';
+import { allRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { playerDataFields } from '~/lib/viz/player-data/player-data';
 import { type CombinedRecording } from '~/lib/viz/recording-files/recording';
 import {
@@ -256,6 +257,9 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     function setSelectedRoom(selectedRoom: string | null) {
                         if (get().selectedRoom !== selectedRoom) {
                             set({ selectedRoom });
+                            if (selectedRoom) {
+                                console.log('selected room data', allRoomDataBySceneName.get(selectedRoom));
+                            }
                         }
                     }
                     function setHoveredRoom(hoveredRoom: string | null) {

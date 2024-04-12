@@ -3,6 +3,11 @@ import { roomDataUnscaled } from '../generated/map-rooms.generated';
 import { scaleBounds, scaleVector2 } from './scaling';
 
 type TextExportData = (typeof roomDataUnscaled)['areaNames'][number];
+type TextType = 'area' | 'sub-area';
+
+function areaTypeFromObjectPath(path: string): TextType {
+    return path.includes('Sub') ? 'sub-area' : 'area';
+}
 
 export function prepareTextExportData(text: TextExportData) {
     return {
@@ -11,6 +16,7 @@ export function prepareTextExportData(text: TextExportData) {
         bounds: scaleBounds(text.bounds),
         color: d3.hsl(d3.rgb(text.origColor.x * 255, text.origColor.y * 255, text.origColor.z * 255)),
         isSubArea: text.objectPath.includes('Sub'),
+        type: areaTypeFromObjectPath(text.objectPath),
     };
 }
 
