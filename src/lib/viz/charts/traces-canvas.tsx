@@ -112,7 +112,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
 
                 ctx.globalAlpha = opacity ** 0.5; // fade out slower
                 ctx.beginPath();
-                const isJump = (event.mapDistanceToPrevious ?? 0) > scale(1);
+                const isJump = (event.mapDistanceToPrevious ?? 0) > scale(1.5);
                 ctx.setLineDash(isJump ? dashArray : EMPTY_ARRAY);
                 ctx.lineWidth = isJump ? baseLineWidth / 2 : baseLineWidth;
 

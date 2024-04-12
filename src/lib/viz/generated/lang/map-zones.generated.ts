@@ -57,4 +57,5 @@ export const langMapZones = {
     // Manually added
     PathOfPainArea: 'Path of Pain',
     WorkshopArea: 'Workshop',
+    Birthplace: 'Birthplace',
 } as Record<string, string>;

@@ -128,8 +128,10 @@ const abysee15 = makeCustomRoom({
     nextToRoom: unscaledRoomByGameObjectName('Abyss_06_Core')!,
     size: { x: 403.0, y: 282.0 },
     scale: 1 / 90,
-})(({ nextToRoom, makeSpriteInfo, makeBounds }) => {
-    const visualBounds = makeBounds({ alignLeft: 0.4, below: 0.3 });
+})(({ nextToRoom, makeSpriteInfo, makeBounds, scale }) => {
+    const nextToRoomB = unscaledRoomByGameObjectName('Abyss_06_Core_b')!;
+
+    const visualBounds = makeBounds({ alignLeft: 0.4, below: 0.6 });
     const playerPositionBounds = {
         max: {
             ...visualBounds.max,
@@ -141,6 +143,7 @@ const abysee15 = makeCustomRoom({
         },
     };
 
+    const abyseeText = nextToRoomB.texts[0]!;
     return {
         sceneName: 'Abyss_15',
         spriteInfo: makeSpriteInfo({ name: 'custom/Abyss_15' }),
@@ -152,6 +155,30 @@ const abysee15 = makeCustomRoom({
         },
         visualBounds,
         playerPositionBounds,
+        texts: [
+            {
+                ...abyseeText,
+                convoName: 'Birthplace',
+                bounds: {
+                    min: {
+                        x: abyseeText.bounds.min.x + 3,
+                        y: abyseeText.bounds.min.y - 3.5,
+                        z: abyseeText.bounds.min.z,
+                    },
+                    max: {
+                        x: abyseeText.bounds.max.x + 3,
+                        y: abyseeText.bounds.max.y - 3.5,
+                        z: abyseeText.bounds.max.z,
+                    },
+                },
+                origColor: {
+                    x: abyseeText.origColor.x * 0.8,
+                    y: abyseeText.origColor.y * 0.8,
+                    z: abyseeText.origColor.z * 0.8,
+                    w: 1.0,
+                },
+            },
+        ],
     };
 });
 

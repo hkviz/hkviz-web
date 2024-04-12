@@ -1,3 +1,8 @@
+export interface Vector2Like {
+    x: number;
+    y: number;
+}
+
 export class Vector2 {
     public constructor(
         public x: number,
@@ -31,5 +36,9 @@ export class Vector2 {
 
     public isZero(): boolean {
         return this.x === 0 && this.y === 0;
+    }
+
+    public add(other: Partial<Vector2Like>): Vector2 {
+        return new Vector2(this.x + (other.x ?? 0), this.y + (other.y ?? 0));
     }
 }
