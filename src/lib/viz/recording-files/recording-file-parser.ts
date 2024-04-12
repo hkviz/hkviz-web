@@ -235,7 +235,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                         throw new Error(`Unknown recording file version ${version}`);
                     }
                     currentRecordingFileVersion = version;
-                    console.log('changed version', currentRecordingFileVersion);
+                    // console.log('changed version', currentRecordingFileVersion);
 
                     events.push(
                         new RecordingFileVersionEvent({

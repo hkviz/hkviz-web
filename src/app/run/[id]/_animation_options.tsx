@@ -11,6 +11,7 @@ import * as d3 from 'd3';
 import { Pause, Play } from 'lucide-react';
 import { useEffect, useMemo, useRef } from 'react';
 import { useThemeStore } from '~/app/_components/theme-store';
+import { binarySearchLastIndexBefore } from '~/lib/viz/charts/traces-canvas';
 import { darkenRoomColorForDarkTheme, darkenRoomColorForLightTheme } from '~/lib/viz/charts/use-room-coloring';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
@@ -207,6 +208,36 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
     const isDisabled = useViewOptionsStore((s) => !s.recording);
     const showMapIfOverview = useViewOptionsStore((s) => s.showMapIfOverview);
 
+    const isShiftPressedRef = useRef(false);
+
+    const dragRef = useRef({
+        isDragging: false,
+        startedAtMsIntoGame: null as null | number,
+        previousDiff: 0,
+    });
+    useEffect(() => {
+        function handleKeyDown(e: KeyboardEvent) {
+            if (e.key === 'Shift') {
+                if (isShiftPressedRef.current) return;
+                isShiftPressedRef.current = true;
+            }
+        }
+        function handleKeyUp(e: KeyboardEvent) {
+            if (e.key === 'Shift') {
+                if (!isShiftPressedRef.current) return;
+                isShiftPressedRef.current = false;
+            }
+        }
+
+        window.addEventListener('keydown', handleKeyDown);
+        window.addEventListener('keyup', handleKeyUp);
+
+        return () => {
+            window.removeEventListener('keydown', handleKeyDown);
+            window.removeEventListener('keyup', handleKeyUp);
+        };
+    });
+
     return (
         <Slider
             value={[animationMsIntoGame]}
@@ -216,8 +247,43 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
             className="-my-4 grow py-4"
             disabled={isDisabled}
             onValueChange={(values) => {
-                setAnimationMsIntoGame(values[0]!);
+                const storeState = useViewOptionsStore.getState();
+
+                const isV1 = storeState.isV1();
+                if (!dragRef.current.isDragging) {
+                    dragRef.current.isDragging = true;
+                    dragRef.current.startedAtMsIntoGame = storeState.animationMsIntoGame;
+                    dragRef.current.previousDiff = 0;
+                }
+                const value = values[0]!;
+                const diff = value - dragRef.current.startedAtMsIntoGame!;
+                const newDiff = diff - dragRef.current.previousDiff;
+
+                const scale = isShiftPressedRef.current && !isV1 ? 10 : 1;
+
+                const newMsIntoGame = storeState.animationMsIntoGame + newDiff / scale;
+                setAnimationMsIntoGame(newMsIntoGame);
                 showMapIfOverview();
+                console.log('onValueChange', { value, diff });
+                dragRef.current.previousDiff = diff;
+
+                if (!isV1 && !storeState.selectedRoomPinned) {
+                    const sceneIndex = binarySearchLastIndexBefore(
+                        storeState.recording?.sceneEvents ?? [],
+                        newMsIntoGame,
+                        (it) => it.msIntoGame,
+                    );
+                    const sceneEvent = sceneIndex >= 0 ? storeState.recording?.sceneEvents[sceneIndex] : undefined;
+                    if (sceneEvent) {
+                        storeState.setSelectedRoomIfNotPinned(sceneEvent.getMainVirtualSceneName());
+                    }
+                }
+            }}
+            onValueCommit={(values) => {
+                dragRef.current.isDragging = false;
+                dragRef.current.startedAtMsIntoGame = null;
+                dragRef.current.previousDiff = 0;
+                console.log('onValueCommit', values);
             }}
         />
     );
