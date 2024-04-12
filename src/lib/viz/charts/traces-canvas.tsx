@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useEffect, useRef, type MutableRefObject, type RefObject } from 'react';
 import useEvent from 'react-use-event-hook';
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { binarySearchLastIndexBefore } from '~/lib/utils/binary-search';
 import { assertNever } from '~/lib/utils/utils';
 import knightPinSrc from '../../../../public/ingame-sprites/Map_Knight_Pin_Compass.png';
 import { mapVisualExtends } from '../map-data/map-extends';
@@ -15,21 +16,6 @@ export interface HKMapTracesProps {
 }
 
 const EMPTY_ARRAY = [] as const;
-
-export function binarySearchLastIndexBefore<T>(arr: readonly T[], value: number, getValue: (v: T) => number): number {
-    let low = 0;
-    let high = arr.length - 1;
-    while (low <= high) {
-        const mid = (low + high) >>> 1;
-        const midValue = getValue(arr[mid]!);
-        if (midValue <= value) {
-            low = mid + 1;
-        } else {
-            high = mid - 1;
-        }
-    }
-    return high;
-}
 
 export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: HKMapTracesProps) {
     const isV1 = useViewOptionsStore((s) => s.isV1());

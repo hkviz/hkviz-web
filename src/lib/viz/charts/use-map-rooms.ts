@@ -29,6 +29,7 @@ export function useMapRooms(
         highlightSelectedRoom = true,
         spritesWithoutSubSprites = true,
         renderAreaNames = false,
+        alwaysShowMainRoom = false,
     }: {
         roomDataEnter: RefObject<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown> | undefined>;
         areaNameGs?: RefObject<d3.Selection<SVGGElement, unknown, null, undefined> | undefined>;
@@ -40,6 +41,7 @@ export function useMapRooms(
         highlightSelectedRoom?: boolean;
         spritesWithoutSubSprites?: boolean;
         renderAreaNames?: boolean;
+        alwaysShowMainRoom?: boolean;
     },
     dependencies: unknown[],
 ) {
@@ -281,7 +283,7 @@ export function useMapRooms(
         function getVariant(r: RoomInfo): RoomSpriteVariant | 'hidden' {
             const visible = isRoomVisible(r.gameObjectNameNeededInVisited);
 
-            if (!visible) {
+            if (!visible && (!alwaysShowMainRoom || !r.isMainGameObject)) {
                 return 'hidden';
             }
 

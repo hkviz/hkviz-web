@@ -11,7 +11,6 @@ import * as d3 from 'd3';
 import { Pause, Play } from 'lucide-react';
 import { useEffect, useMemo, useRef } from 'react';
 import { useThemeStore } from '~/app/_components/theme-store';
-import { binarySearchLastIndexBefore } from '~/lib/viz/charts/traces-canvas';
 import { darkenRoomColorForDarkTheme, darkenRoomColorForLightTheme } from '~/lib/viz/charts/use-room-coloring';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
@@ -269,12 +268,7 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
                 dragRef.current.previousDiff = diff;
 
                 if (!isV1 && !storeState.selectedRoomPinned) {
-                    const sceneIndex = binarySearchLastIndexBefore(
-                        storeState.recording?.sceneEvents ?? [],
-                        newMsIntoGame,
-                        (it) => it.msIntoGame,
-                    );
-                    const sceneEvent = sceneIndex >= 0 ? storeState.recording?.sceneEvents[sceneIndex] : undefined;
+                    const sceneEvent = storeState.recording?.sceneEventFromMs(newMsIntoGame);
                     if (sceneEvent) {
                         storeState.setSelectedRoomIfNotPinned(sceneEvent.getMainVirtualSceneName());
                     }

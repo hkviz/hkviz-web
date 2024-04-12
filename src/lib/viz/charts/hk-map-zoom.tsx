@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, type MutableRefObject } from '
 import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { mainRoomDataBySceneName, roomData } from '../map-data/rooms';
-import { type ZoomZone } from '../map-data/zoom-zone';
+import { gameObjectNamesIgnoredInZoomZone, type ZoomZone } from '../map-data/zoom-zone';
 import { Bounds } from '../types/bounds';
 
 const EMPTY_ARRAY = [] as const;
@@ -136,7 +136,9 @@ export function HKMapZoom({
             return;
         }
 
-        const rooms = roomData.filter((r) => r.zoomZones.includes(zoomZone));
+        const rooms = roomData.filter(
+            (r) => r.zoomZones.includes(zoomZone) && !gameObjectNamesIgnoredInZoomZone.has(r.gameObjectName),
+        );
         if (rooms.length === 0) return;
         const bounds = Bounds.fromContainingBounds(rooms.map((r) => r.visualBounds));
         zoomToBounds(bounds);

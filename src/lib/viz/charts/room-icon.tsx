@@ -94,6 +94,7 @@ export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos, useView
             alwaysUseAreaAsColor: true,
             highlightSelectedRoom: false,
             spritesWithoutSubSprites: false,
+            alwaysShowMainRoom: true,
         },
         [roomInfos],
     );

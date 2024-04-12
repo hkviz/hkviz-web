@@ -75,6 +75,8 @@ export function LineAreaChart({
     const timeFrame = useViewOptionsStore((s) => s.timeFrame);
     const setHoveredMsIntoGame = useViewOptionsStore((s) => s.setHoveredMsIntoGame);
     const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
+    const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
+    const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
 
     // timebounds debouncing, so we can use d3 animations
@@ -331,7 +333,8 @@ export function LineAreaChart({
             );
         }
         function sceneFromMs(ms: number) {
-            return recording?.sceneEvents.findLast((it) => it.msIntoGame <= ms)?.sceneName;
+            if (!recording) return null;
+            return recording.sceneEventFromMs(ms);
         }
 
         // brush
@@ -350,9 +353,10 @@ export function LineAreaChart({
                 if (isV1) return;
                 const ms = mouseToMsIntoGame(e);
                 setHoveredMsIntoGame(ms);
-                const scene = sceneFromMs(ms);
+                const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
                 if (scene) {
                     setHoveredRoom(scene);
+                    setSelectedRoomIfNotPinned(scene);
                 }
             })
             .on('mouseleave', () => {
@@ -365,6 +369,10 @@ export function LineAreaChart({
                 if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
                     const ms = mouseToMsIntoGame(e);
                     setAnimationMsIntoGame(ms);
+                    const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
+                    if (scene) {
+                        setSelectedRoom(scene);
+                    }
                 }
             });
         brushG.current.call(brush.current);

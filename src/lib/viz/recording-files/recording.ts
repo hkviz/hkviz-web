@@ -1,3 +1,4 @@
+import { binarySearchLastIndexBefore } from '~/lib/utils/binary-search';
 import { raise } from '~/lib/utils/utils';
 import { type HeroStateField } from '../hero-state/hero-states';
 import { type PlayerDataField } from '../player-data/player-data';
@@ -9,7 +10,7 @@ import { PlayerDataEvent } from './events/player-data-event';
 import { PlayerPositionEvent } from './events/player-position-event';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
 import { SceneEvent } from './events/scene-event';
-import { type RecordingSplit, createRecordingSplits } from './recording-splits';
+import { createRecordingSplits, type RecordingSplit } from './recording-splits';
 
 type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
 export class RecordingFileVersionEvent extends RecordingEventBase {
@@ -161,5 +162,14 @@ export class CombinedRecording extends ParsedRecording {
     allPlayerDataEventsOfField<TField extends PlayerDataField>(field: TField): PlayerDataEvent<TField>[] {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
         return (this.playerDataEventsPerField.get(field) as any) ?? [];
+    }
+
+    sceneEventIndexFromMs(ms: number): number {
+        return binarySearchLastIndexBefore(this.sceneEvents, ms, (it) => it.msIntoGame);
+    }
+
+    sceneEventFromMs(ms: number): SceneEvent | null {
+        const index = this.sceneEventIndexFromMs(ms);
+        return this.sceneEvents[index] ?? null;
     }
 }

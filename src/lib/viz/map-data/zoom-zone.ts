@@ -49,6 +49,8 @@ const extraZoomZones: Record<string, ZoomZone[]> = {
     Crossroads_52: [zoomZone('Fungal Wastes')],
 };
 
+export const gameObjectNamesIgnoredInZoomZone = new Set(['Abyss_03_b']);
+
 export function getZoomZones(sceneName: string, zoneNameFormatted: ZoneNameFormatted): readonly ZoomZone[] {
     const mainZoomZone = zoomZone(zoneNameFormatted);
     const extraZoomZonesForScene = extraZoomZones[sceneName] ?? [];
