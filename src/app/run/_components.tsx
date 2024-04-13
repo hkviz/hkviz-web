@@ -6,14 +6,17 @@ import { Card } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 import { useMemo } from 'react';
-import { type TagGroup, isTag, tagOrGroupFromCode, type Tag } from '~/lib/types/tags';
+import { isTag, tagOrGroupFromCode, type Tag, type TagGroup } from '~/lib/types/tags';
 import { TagDropdownMenu } from '../_components/run-tags';
 import { type RunFilterParams } from './_params';
 
 export function RunFilters({ searchParams, className }: { searchParams: RunFilterParams; className?: string }) {
     const pathname = usePathname();
     const router = useRouter();
-    const tagOrGroup = useMemo(() => (searchParams.tag ? tagOrGroupFromCode(searchParams.tag) : undefined), [searchParams.tag]);
+    const tagOrGroup = useMemo(
+        () => (searchParams.tag ? tagOrGroupFromCode(searchParams.tag) : undefined),
+        [searchParams.tag],
+    );
 
     function setTagFilter(tagOrGroup: TagGroup | Tag | undefined) {
         const current = new URLSearchParams(Array.from(Object.entries(searchParams))); // -> has to use this form
@@ -28,7 +31,7 @@ export function RunFilters({ searchParams, className }: { searchParams: RunFilte
             // tag
             current.set('tag', tagOrGroup.code);
         }
-    
+
         const search = current.toString();
         const query = search ? `?${search}` : '';
 
@@ -40,7 +43,17 @@ export function RunFilters({ searchParams, className }: { searchParams: RunFilte
             <TagDropdownMenu onClick={setTagFilter} showAllOptions={true}>
                 <Button variant="outline">
                     <span className="mr-2">Tag:</span>{' '}
-                    {tagOrGroup ? isTag(tagOrGroup) ? <Badge className={isTag(tagOrGroup) ?  tagOrGroup.color.className : undefined}>{tagOrGroup.name}</Badge> : `All ${tagOrGroup.name}s` : 'All'}
+                    {tagOrGroup ? (
+                        isTag(tagOrGroup) ? (
+                            <Badge className={isTag(tagOrGroup) ? tagOrGroup.color.className : undefined}>
+                                {tagOrGroup.name}
+                            </Badge>
+                        ) : (
+                            `All ${tagOrGroup.name}s`
+                        )
+                    ) : (
+                        'All'
+                    )}
                 </Button>
             </TagDropdownMenu>
         </Card>

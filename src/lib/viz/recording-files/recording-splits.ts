@@ -331,6 +331,87 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                     });
                 }
             });
+        } else if (field === playerDataFields.byFieldName.heartPieces) {
+            recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                if (
+                    event.value > 0 &&
+                    event.previousPlayerDataEventOfField &&
+                    event.value != event.previousPlayerDataEventOfField.value
+                ) {
+                    // 0 filtered out, since the game sets the masks to 1,2,3 and once getting the 4th mask
+                    // the value will quickly change to 4 and then set to 0 (if not the last mask shard).
+
+                    let image: string;
+
+                    switch (event.value) {
+                        case 1:
+                            image = 'HP_UI_010007';
+                            break;
+                        case 2:
+                            image = 'HP_UI_020007';
+                            break;
+                        case 3:
+                            image = 'HP_UI_030007';
+                            break;
+                        case 4:
+                            image = 'HP_UI_040004';
+                            break;
+                        default:
+                            // should never happen in a unmodded game
+                            image = 'HP_UI_010007';
+                            break;
+                    }
+
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: `Mask Shard (${event.value}/4)`,
+                        tooltip: `Got a Mask Shard (${event.value}/4)`,
+                        imageUrl: `/ingame-sprites/inventory/${image}.png`,
+                        group: recordingSplitGroupsByName.items,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                }
+            });
+        } else if (field === playerDataFields.byFieldName.vesselFragments) {
+            recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                if (
+                    event.value > 0 &&
+                    event.previousPlayerDataEventOfField &&
+                    event.value != event.previousPlayerDataEventOfField.value
+                ) {
+                    // 0 filtered out, since the game sets the masks to 1,2,3 and once getting the 4th mask
+                    // the value will quickly change to 4 and then set to 0 (if not the last mask shard).
+
+                    let image: string;
+
+                    switch (event.value) {
+                        case 1:
+                            image = 'Inventory_soul_vessel_level_01';
+                            break;
+                        case 2:
+                            image = 'Inventory_soul_vessel';
+                            break;
+                        case 3:
+                            image = 'Inventory_soul_vessel_full';
+                            break;
+                        default:
+                            // should never happen in a unmodded game
+                            image = 'Inventory_soul_vessel_level_01';
+                            break;
+                    }
+
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: `Vessel Fragment (${event.value}/3)`,
+                        tooltip: `Got a Vessel Fragment (${event.value}/3)`,
+                        imageUrl: `/ingame-sprites/inventory/${image}.png`,
+                        group: recordingSplitGroupsByName.items,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                }
+            });
         } else {
             [
                 { field: playerDataFields.byFieldName.mapAbyss, title: 'Abyss Map' },
