@@ -28,6 +28,14 @@ const resortings = [
         move: 'Fungus3_48_top',
         after: 'Fungus3_48',
     },
+    {
+        move: 'White_Palace_19',
+        after: 'White_Palace_20',
+    },
+    {
+        move: 'White_Palace_17',
+        after: 'White_Palace_19',
+    },
 ];
 
 resortings.forEach((resort) => {

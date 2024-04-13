@@ -117,6 +117,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                 unsetHoveredRoom(r.sceneName);
             },
             onClick: (event, r) => {
+                console.log('clicked room', r);
                 if (event.pointerType !== 'touch') {
                     togglePinnedRoom(r.sceneName);
                 } else {
