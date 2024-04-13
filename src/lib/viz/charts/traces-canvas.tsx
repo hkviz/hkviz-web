@@ -116,7 +116,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         if (
             storeValue.traceVisibility === 'animated' &&
             previousEvent &&
-            previousEvent.msIntoGame + 15000 >= maxMsIntoGame
+            previousEvent.msIntoGame + 30000 >= maxMsIntoGame // 15000
         ) {
             const knightPin = knightPinImage.current!;
             const knightPinSize = baseLineWidth * 15;

@@ -112,6 +112,7 @@ const predefinedRoomNames = {
 
     // Queens garden
     Fungus3_40: 'Stag Station',
+    Room_Queen: "White Lady's Chamber",
 
     // Kingdoms edge
     Room_Colosseum_Bronze: 'Trial of the Warrior',
