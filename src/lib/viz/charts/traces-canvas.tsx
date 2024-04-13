@@ -5,9 +5,12 @@ import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
 import { binarySearchLastIndexBefore } from '~/lib/utils/binary-search';
 import { assertNever } from '~/lib/utils/utils';
 import knightPinSrc from '../../../../public/ingame-sprites/Map_Knight_Pin_Compass.png';
+import shadePinSrc from '../../../../public/ingame-sprites/pin/Shade_Pin.png';
 import { mapVisualExtends } from '../map-data/map-extends';
+import { playerPositionToMapPosition } from '../map-data/player-position';
 import { scale } from '../map-data/scaling';
 import { type PlayerPositionEvent } from '../recording-files/events/player-position-event';
+import { Vector2 } from '../types/vector2';
 
 export interface HKMapTracesProps {
     useViewOptionsStore: UseViewOptionsStore;
@@ -23,6 +26,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
     const canvasSizeInUnits = useRef({ width: 0, height: 0, pixelRatio: 1 });
     const recording = useViewOptionsStore((s) => s.recording);
     const knightPinImage = useRef<HTMLImageElement>(null);
+    const shadePinImage = useRef<HTMLImageElement>(null);
 
     const positionEvents: readonly PlayerPositionEvent[] =
         recording?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
@@ -113,6 +117,32 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
             event = positionEvents[i];
         }
 
+        // shade pin
+        const frameEvent = recording?.frameEndEventFromMs(storeValue.animationMsIntoGame);
+        if (storeValue.traceVisibility === 'animated' && recording && frameEvent && frameEvent.shadeScene != 'None') {
+            const mapPosition = playerPositionToMapPosition(
+                new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),
+                recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene)!,
+            );
+            if (mapPosition) {
+                const shadePin = shadePinImage.current!;
+                const shadePinSize = baseLineWidth * 12;
+                ctx.shadowColor = 'rgba(255,255,255,0.6)';
+                ctx.shadowOffsetX = 0;
+                ctx.shadowOffsetY = 0;
+                ctx.shadowBlur = baseLineWidth * 4;
+                ctx.drawImage(
+                    shadePin,
+                    x(mapPosition.x) - 0.5 * shadePinSize,
+                    y(mapPosition.y) - 0.5 * shadePinSize,
+                    shadePinSize,
+                    shadePinSize,
+                );
+                ctx.shadowBlur = 0;
+            }
+        }
+
+        // knight pin
         if (
             storeValue.traceVisibility === 'animated' &&
             previousEvent &&
@@ -199,6 +229,7 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
     return (
         <>
             <Image src={knightPinSrc} alt="knight pin" className="hidden" ref={knightPinImage} loading="eager" />
+            <Image src={shadePinSrc} alt="shade pin" className="hidden" ref={shadePinImage} loading="eager" />
             <canvas ref={canvas} className="pointer-events-none absolute inset-0 h-full w-full" />
         </>
     );

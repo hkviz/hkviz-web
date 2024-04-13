@@ -146,6 +146,11 @@ export const frameEndEventPlayerDataFieldsArray = [
     // flower
     playerDataFields.byFieldName.hasXunFlower,
     playerDataFields.byFieldName.xunFlowerBroken,
+
+    // shade
+    playerDataFields.byFieldName.shadeScene,
+    playerDataFields.byFieldName.shadePositionX,
+    playerDataFields.byFieldName.shadePositionY,
 ] as const;
 export const frameEndEventPlayerDataFields = new Set<PlayerDataField>(frameEndEventPlayerDataFieldsArray);
 
@@ -306,7 +311,7 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
     hornetOutskirtsDefeated: boolean;
     grimmChildLevel: number;
     destroyedNightmareLantern: boolean;
-    completionPercentage: string;
+    completionPercentage: number;
     bossDoorStateTier1: BossSequenceDoorCompletion;
     bossDoorStateTier2: BossSequenceDoorCompletion;
     bossDoorStateTier3: BossSequenceDoorCompletion;
@@ -328,6 +333,11 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
     MPTotal: number;
 
     healthTotal: number;
+
+    // shade
+    shadeScene: string;
+    shadePositionX: number;
+    shadePositionY: number;
 
     constructor(options: FrameEndEventOptions) {
         super(options);
@@ -970,6 +980,20 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
             : getDefaultPlayerDataValue(playerDataFields.byFieldName.xunFlowerBroken);
 
         this.dead = options.getPreviousHeroState(heroStateFields.byFieldName.dead)?.value ?? false;
+
+        const previousShadeScene = options.getPreviousPlayerData(playerDataFields.byFieldName.shadeScene);
+        this.shadeScene = previousShadeScene
+            ? previousShadeScene.value
+            : getDefaultPlayerDataValue(playerDataFields.byFieldName.shadeScene);
+
+        const previousShadePositionX = options.getPreviousPlayerData(playerDataFields.byFieldName.shadePositionX);
+        this.shadePositionX = previousShadePositionX
+            ? previousShadePositionX.value
+            : getDefaultPlayerDataValue(playerDataFields.byFieldName.shadePositionX);
+        const previousShadePositionY = options.getPreviousPlayerData(playerDataFields.byFieldName.shadePositionY);
+        this.shadePositionY = previousShadePositionY
+            ? previousShadePositionY.value
+            : getDefaultPlayerDataValue(playerDataFields.byFieldName.shadePositionY);
 
         // end auto generated from code above
 

@@ -172,4 +172,12 @@ export class CombinedRecording extends ParsedRecording {
         const index = this.sceneEventIndexFromMs(ms);
         return this.sceneEvents[index] ?? null;
     }
+
+    frameEndEventIndexFromMs(ms: number): number {
+        return binarySearchLastIndexBefore(this.frameEndEvents, ms, (it) => it.msIntoGame);
+    }
+    frameEndEventFromMs(ms: number): FrameEndEvent | null {
+        const index = this.frameEndEventIndexFromMs(ms);
+        return this.frameEndEvents[index] ?? null;
+    }
 }

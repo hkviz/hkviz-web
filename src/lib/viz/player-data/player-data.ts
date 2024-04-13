@@ -10,6 +10,7 @@ export type PlayerDataField = (typeof playerDataFieldsArray)[number];
 export type PlayerDataFieldValue<TField extends PlayerDataField> =
     TField['type'] extends 'Boolean' ? boolean :
     TField['type'] extends 'Int32' ? number :
+    TField['type'] extends 'Single' ? number :
     TField['type'] extends 'List`1' ? string[] :
     TField['type'] extends 'Completion' ?
     // TODO possibly the player data should be extracted with full class paths
@@ -41,6 +42,9 @@ export function parsePlayerDataFieldValue<TField extends PlayerDataField>(
     if (field.type === 'Int32') {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return parseInt(value) as any;
+    } else if (field.type === 'Single') {
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return parseFloat(value) as any;
     } else if (field.type === 'Boolean') {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return (value === '1') as any;
