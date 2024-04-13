@@ -150,6 +150,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                         originOffset: undefined,
                         sceneSize: undefined,
                     });
+                    previousPlayerPosition = undefined;
                     events.push(lastSceneEvent);
                     break;
                 }

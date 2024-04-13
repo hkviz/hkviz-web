@@ -47,9 +47,14 @@ const extraZoomZones: Record<string, ZoomZone[]> = {
 
     Crossroads_18: [zoomZone('Fungal Wastes')],
     Crossroads_52: [zoomZone('Fungal Wastes')],
+
+    Fungus3_22: [zoomZone('Greenpath')],
+    Fungus1_13: [zoomZone("Queen's Gardens")],
 };
 
-export const gameObjectNamesIgnoredInZoomZone = new Set(['Abyss_03_b']);
+export const gameObjectNamesIgnoredInZoomZone = new Set([
+    'Abyss_03_b', // tram passage, visual just on map, but can not be entered. Therefore no need to zoom to it.
+]);
 
 export function getZoomZones(sceneName: string, zoneNameFormatted: ZoneNameFormatted): readonly ZoomZone[] {
     const mainZoomZone = zoomZone(zoneNameFormatted);

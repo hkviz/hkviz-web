@@ -245,6 +245,92 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
                     });
                 }
             });
+        } else if (field === playerDataFields.byFieldName.hasDreamNail) {
+            recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                if (event.value && !event.previousPlayerDataEventOfField?.value) {
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: 'Dream Nail',
+                        tooltip: 'Got the Dream Nail',
+                        imageUrl: '/ingame-sprites/inventory/dream_nail_0003_1.png',
+                        group: recordingSplitGroupsByName.abilities,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                }
+            });
+        } else if (field === playerDataFields.byFieldName.hasDreamGate) {
+            recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                if (event.value && !event.previousPlayerDataEventOfField?.value) {
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: 'Dream Gate',
+                        tooltip: 'Got the Dream Gate',
+                        imageUrl: '/ingame-sprites/inventory/dream_gate_inv_icon.png',
+                        group: recordingSplitGroupsByName.abilities,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                }
+            });
+        } else if (field === playerDataFields.byFieldName.dreamNailUpgraded) {
+            recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                if (event.value && !event.previousPlayerDataEventOfField?.value) {
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: 'Awoken Dream Nail',
+                        tooltip: 'Awoke the the Dream Nail',
+                        imageUrl: '/ingame-sprites/inventory/dream_nail_0000_4.png',
+                        group: recordingSplitGroupsByName.abilities,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                }
+            });
+        } else if (field === playerDataFields.byFieldName.nailSmithUpgrades) {
+            recording.allPlayerDataEventsOfField(field).forEach((event) => {
+                if (event.value === 1 && event.previousPlayerDataEventOfField?.value !== 1) {
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: `Sharpened Nail`,
+                        tooltip: `Upgraded Nail first time`,
+                        imageUrl: '/ingame-sprites/inventory/nail_upgrade_0002_sharpened_nail.png',
+                        group: recordingSplitGroupsByName.items,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                } else if (event.value === 2 && event.previousPlayerDataEventOfField?.value !== 2) {
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: `Channelled Nail`,
+                        tooltip: `Upgraded Nail second time`,
+                        imageUrl: '/ingame-sprites/inventory/nail_upgrade_0002_channel-nail.png',
+                        group: recordingSplitGroupsByName.items,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                } else if (event.value === 3 && event.previousPlayerDataEventOfField?.value !== 3) {
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: `Coiled Nail`,
+                        tooltip: `Upgraded Nail third time`,
+                        imageUrl: '/ingame-sprites/inventory/nail_upgrade_03_coil_nail.png',
+                        group: recordingSplitGroupsByName.items,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                } else if (event.value === 4 && event.previousPlayerDataEventOfField?.value !== 4) {
+                    splits.push({
+                        msIntoGame: event.msIntoGame,
+                        title: `Pure Nail`,
+                        tooltip: `Upgraded Nail forth time`,
+                        imageUrl: '/ingame-sprites/inventory/nail_upgrade_0000_pure-nail.png',
+                        group: recordingSplitGroupsByName.items,
+                        debugInfo: event,
+                        previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+                    });
+                }
+            });
         } else {
             [
                 { field: playerDataFields.byFieldName.mapAbyss, title: 'Abyss Map' },
