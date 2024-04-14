@@ -2,7 +2,7 @@ import { Card } from '@/components/ui/card';
 import * as d3 from 'd3';
 import { useCallback, useEffect, useRef } from 'react';
 import { RoomColorCurveSelect } from '~/app/run/[id]/_room-color-curve-menu';
-import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
 import { aggregationVariableInfos, formatAggregatedVariableValue } from '../recording-files/run-aggregation-store';
 import { useRoomColoring } from './use-room-coloring';
 

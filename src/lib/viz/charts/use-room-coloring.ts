@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import memoize from 'micro-memoize';
 import { useMemo } from 'react';
 import { useThemeStore } from '~/app/_components/theme-store';
-import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
 import { assertNever } from '~/lib/utils/utils';
 import { type RoomInfo } from '../map-data/rooms';
 

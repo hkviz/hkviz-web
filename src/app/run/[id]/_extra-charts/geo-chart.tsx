@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import coinImg from '../../../../../public/ingame-sprites/HUD_coin_shop.png';
-import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { type UseViewOptionsStore } from '../../../../lib/client-stage/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';

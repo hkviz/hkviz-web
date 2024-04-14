@@ -12,8 +12,8 @@ import {
     type RecordingSplit,
     type RecordingSplitGroup,
 } from '~/lib/viz/recording-files/recording-splits';
+import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
 import { Duration } from './_duration';
-import { type UseViewOptionsStore } from './_viewOptionsStore';
 
 type RowActiveState = 'past' | 'next' | 'future';
 

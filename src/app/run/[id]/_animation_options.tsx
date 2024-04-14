@@ -11,11 +11,12 @@ import * as d3 from 'd3';
 import { Pause, Play } from 'lucide-react';
 import { useEffect, useMemo, useRef } from 'react';
 import { useThemeStore } from '~/app/_components/theme-store';
+import { msIntoGame } from '~/lib/client-stage/gameplay-state';
 import { darkenRoomColorForDarkTheme, darkenRoomColorForLightTheme } from '~/lib/viz/charts/use-room-coloring';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
-import { Duration } from './_duration';
-import { type UseViewOptionsStore } from './_viewOptionsStore';
+import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
+import { DurationSignal } from './_duration';
 
 function Times({ className }: { className?: string }) {
     return (
@@ -284,9 +285,8 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
     );
 }
 
-function AnimationTimeLineDuration({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
-    return <Duration ms={animationMsIntoGame} className="pr-3" withTooltip={false} />;
+function AnimationTimeLineDuration() {
+    return <DurationSignal ms={msIntoGame} className="pr-3" />;
 }
 
 // this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
@@ -298,7 +298,7 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
 
     return (
         <>
-            <AnimationTimeLineDuration useViewOptionsStore={useViewOptionsStore} />
+            <AnimationTimeLineDuration />
             <div className="relative flex w-full shrink grow flex-col gap-2">
                 <div className="-mx-2">
                     <AnimationTimeLineSlider useViewOptionsStore={useViewOptionsStore} />

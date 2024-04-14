@@ -5,7 +5,7 @@ import { CommandShortcut } from '@/components/ui/command';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { useId, type ReactNode } from 'react';
-import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { type UseViewOptionsStore } from '../../../../lib/client-stage/view-options-store';
 import { CompletionChart } from './completion-chart';
 import { GeoChart } from './geo-chart';
 import { GrubChart } from './grub-chart';

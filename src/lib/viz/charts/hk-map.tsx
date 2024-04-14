@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
-import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { roomData, type RoomInfo } from '../map-data/rooms';
 import { HKMapZoom } from './hk-map-zoom';

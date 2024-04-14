@@ -18,12 +18,16 @@ import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRunAggregationStore } from '~/lib/viz/recording-files/run-aggregation-store';
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
+import {
+    useViewOptionsStoreRoot,
+    type MainCardTab,
+    type UseViewOptionsStore,
+} from '../../../lib/client-stage/view-options-store';
 import { AnimationOptions } from './_animation_options';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { RoomInfo } from './_room_infos';
 import { RunOverviewTab } from './_run-overview-tab';
 import { RunSplits } from './_run_splits';
-import { useViewOptionsStoreRoot, type MainCardTab, type UseViewOptionsStore } from './_viewOptionsStore';
 import { ViewOptions } from './_view_options';
 
 interface Props {

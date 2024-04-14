@@ -1,5 +1,5 @@
 import { BadgePercent } from 'lucide-react';
-import { type UseViewOptionsStore } from '../_viewOptionsStore';
+import { type UseViewOptionsStore } from '../../../../lib/client-stage/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';

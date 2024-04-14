@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import { Separator } from '@/components/ui/separator';
 import { Fullscreen, Text } from 'lucide-react';
 import { useId } from 'react';
-import { type UseViewOptionsStore, type ZoomFollowTarget } from '~/app/run/[id]/_viewOptionsStore';
+import { type UseViewOptionsStore, type ZoomFollowTarget } from '~/lib/client-stage/view-options-store';
 
 export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const id = useId();

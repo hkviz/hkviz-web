@@ -3,7 +3,7 @@
 import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { memo, useEffect, useMemo, useRef } from 'react';
-import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
 import { type RoomInfo } from '../map-data/rooms';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';

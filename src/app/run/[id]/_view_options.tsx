@@ -4,7 +4,7 @@ import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { LayoutDashboard, Palette, Spline } from 'lucide-react';
-import { type UseViewOptionsStore } from './_viewOptionsStore';
+import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
 
 export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
     const isV1 = useViewOptionsStore((s) => s.isV1());

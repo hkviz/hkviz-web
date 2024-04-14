@@ -3,7 +3,7 @@ import memoize from 'micro-memoize';
 import { useEffect, useId, useMemo, useRef, type RefObject } from 'react';
 import useEvent from 'react-use-event-hook';
 import { useThemeStore } from '~/app/_components/theme-store';
-import { type UseViewOptionsStore } from '~/app/run/[id]/_viewOptionsStore';
+import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
 import { ebGaramond } from '~/styles/fonts';
 import { useDependableEffect, useDynamicDependencies } from '../depdendent-effect';
 import { hkLangString } from '../lang';

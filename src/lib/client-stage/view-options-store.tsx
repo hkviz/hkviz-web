@@ -12,7 +12,12 @@ import {
     type RecordingSplitGroup,
 } from '~/lib/viz/recording-files/recording-splits';
 import { type AggregatedRunData, type AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
-import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from './_room-color-curve';
+import {
+    RoomColorCurveExponential,
+    RoomColorCurveLinear,
+    type RoomColorCurve,
+} from '../../app/run/[id]/_room-color-curve';
+import { msIntoGame } from './gameplay-state';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
@@ -220,6 +225,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         }
 
                         set({ animationMsIntoGame });
+                        msIntoGame.value = animationMsIntoGame;
 
                         if (get().roomVisibility === 'visited-animated') {
                             recalcVisibleRooms();

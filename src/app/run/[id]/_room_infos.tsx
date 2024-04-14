@@ -7,7 +7,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { useMemo, type CSSProperties } from 'react';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
-import { type UseViewOptionsStore } from './_viewOptionsStore';
+import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
 
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@/components/ui/context-menu';
 import { Toggle } from '@/components/ui/toggle';
