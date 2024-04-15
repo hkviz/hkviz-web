@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { Pause, Play } from 'lucide-react';
 import { useEffect, useMemo, useRef } from 'react';
-import { msIntoGame } from '~/lib/client-stage/gameplay-state';
+import { animationStore } from '~/lib/client-stage/animation-store';
 import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '~/lib/client-stage/room-coloring-store';
 import { useThemeStore } from '~/lib/client-stage/theme-store';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
@@ -286,7 +286,7 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
 }
 
 function AnimationTimeLineDuration() {
-    return <DurationSignal ms={msIntoGame} className="pr-3" />;
+    return <DurationSignal ms={animationStore.msIntoGame} className="pr-3" />;
 }
 
 // this is in an extra components, so the parent does not need to depend on animationMsIntoGame.

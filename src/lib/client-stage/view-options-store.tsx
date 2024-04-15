@@ -18,7 +18,8 @@ import {
     type RoomColorCurve,
 } from '../../app/run/[id]/_room-color-curve';
 import { aggregationStore } from './aggregation-store';
-import { msIntoGame, recording as recordingSignal } from './gameplay-state';
+import { animationStore } from './animation-store';
+import { gameplayStore } from './gameplay-store';
 import { roomColoringStore, type RoomColorMode } from './room-coloring-store';
 import { roomDisplayStore, type RoomVisibility } from './room-display-store';
 
@@ -227,7 +228,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         }
 
                         set({ animationMsIntoGame });
-                        msIntoGame.value = animationMsIntoGame;
+                        animationStore.msIntoGame.value = animationMsIntoGame;
 
                         if (get().roomVisibility === 'visited-animated') {
                             recalcVisibleRooms();
@@ -259,7 +260,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         recalcVisibleRooms();
                         refilterSplitGroups();
 
-                        recordingSignal.value = recording;
+                        gameplayStore.recording.value = recording;
                     }
                     function setAggregatedRunData(aggregatedRunData: AggregatedRunData | null) {
                         set({ aggregatedRunData });

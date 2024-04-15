@@ -1,14 +1,13 @@
-import { computed, effect, signal } from '@preact/signals-react';
-import { type CombinedRecording } from '../viz/recording-files/recording';
+import { computed, signal } from '@preact/signals-react';
+import { gameplayStore } from './gameplay-store';
 
 export const msIntoGame = signal(0);
-export const recording = signal<CombinedRecording | null>(null);
 
 export const currentSceneEventIndex = computed(() => {
-    return recording.value?.sceneEventIndexFromMs(msIntoGame.value) ?? null;
+    return gameplayStore.recording.value?.sceneEventIndexFromMs(msIntoGame.value) ?? null;
 });
 export const currentSceneEvent = computed(() => {
-    const r = recording.value;
+    const r = gameplayStore.recording.value;
     if (!r) return null;
     const index = currentSceneEventIndex.value;
     if (index === null) return null;
@@ -17,10 +16,10 @@ export const currentSceneEvent = computed(() => {
 });
 
 export const currentFrameEndEventIndex = computed(() => {
-    return recording.value?.frameEndEventIndexFromMs(msIntoGame.value) ?? null;
+    return gameplayStore.recording.value?.frameEndEventIndexFromMs(msIntoGame.value) ?? null;
 });
 export const currentFrameEndEvent = computed(() => {
-    const r = recording.value;
+    const r = gameplayStore.recording.value;
     if (!r) return null;
     const index = currentFrameEndEventIndex.value;
     if (index === null) return null;
@@ -28,6 +27,10 @@ export const currentFrameEndEvent = computed(() => {
     return r.frameEndEventFromMs(index) ?? null;
 });
 
-effect(() => {
-    console.log(currentSceneEvent.value);
-});
+export const animationStore = {
+    msIntoGame,
+    currentSceneEventIndex,
+    currentSceneEvent,
+    currentFrameEndEventIndex,
+    currentFrameEndEvent,
+};

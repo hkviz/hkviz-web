@@ -2,20 +2,21 @@ import { computed, type ReadonlySignal } from '@preact/signals-react';
 import { binarySearchLastIndexBefore } from '../utils/binary-search';
 import { getDefaultValue, playerDataFields, type PlayerDataFieldValue } from '../viz/player-data/player-data';
 import { type PlayerDataEvent } from '../viz/recording-files/events/player-data-event';
-import { msIntoGame, recording } from './gameplay-state';
+import { animationStore } from './animation-store';
+import { gameplayStore } from './gameplay-store';
 
-export const currentPlayerDataEvents = Object.fromEntries(
+const currentEvents = Object.fromEntries(
     Object.entries(playerDataFields.byFieldName).map(([fieldName, field]) => {
         return [
             fieldName,
             computed(() => {
-                const r = recording.value;
+                const r = gameplayStore.recording.value;
                 if (!r) return null;
 
                 const events = r.playerDataEventsPerField.get(field);
                 if (!events || events.length === 0) return null;
 
-                const index = binarySearchLastIndexBefore(events, msIntoGame.value, (e) => e.msIntoGame);
+                const index = binarySearchLastIndexBefore(events, animationStore.msIntoGame.value, (e) => e.msIntoGame);
                 if (index === -1) return null;
                 return events[index] ?? null;
             }),
@@ -27,8 +28,8 @@ export const currentPlayerDataEvents = Object.fromEntries(
     >;
 };
 
-export const currentPlayerDataValue = Object.fromEntries(
-    Object.entries(currentPlayerDataEvents).map(([fieldName, event]) => {
+const currentValues = Object.fromEntries(
+    Object.entries(currentEvents).map(([fieldName, event]) => {
         return [
             fieldName,
             computed(() => {
@@ -43,4 +44,9 @@ export const currentPlayerDataValue = Object.fromEntries(
     [fieldName in keyof typeof playerDataFields.byFieldName]: ReadonlySignal<
         PlayerDataFieldValue<(typeof playerDataFields)['byFieldName'][fieldName]>
     >;
+};
+
+export const playerDataAnimationStore = {
+    currentEvents,
+    currentValues,
 };
