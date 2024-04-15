@@ -1,13 +1,12 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import * as d3 from 'd3';
-import { memo, useEffect, useMemo, useRef } from 'react';
+import { memo, useMemo } from 'react';
 import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
 import { type RoomInfo } from '../map-data/rooms';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
-import { useMapRooms } from './use-map-rooms';
+import { HkMapRooms } from './hk-map-rooms';
 
 export interface HKMapProps {
     className?: string;
@@ -16,11 +15,7 @@ export interface HKMapProps {
 }
 
 export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapProps) {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const svg = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined>>();
-    const roomDataEnter = useRef<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown>>();
-
-    useEffect(() => {
+    const roomInfosOfRoom = useMemo(() => {
         const containingBounds = Bounds.fromContainingBounds(roomInfos.map((it) => it.allSpritesScaledPositionBounds));
         const smallerRoomSizeProportion = containingBounds.size.minElement() / containingBounds.size.maxElement();
         const roomPositionWithin0To1 =
@@ -52,52 +47,34 @@ export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos, useView
             return x;
         }
 
-        svg.current = d3
-            .select(containerRef.current)
-            .append('svg')
-            .attr('class', 'absolute inset-0')
-            .attr('width', '100%')
-            .attr('height', '100%')
-            .attr('viewBox', [0, 0, 1, 1]);
-
-        roomDataEnter.current = svg.current
-            .append('g')
-            .attr('data-group', 'rooms')
-            .selectAll('rect')
-            .data(
-                roomInfos.map((it) => {
-                    const sprites = it.sprites.map((it) => ({
-                        ...it,
-                        scaledPosition: relativeToRoomBounds(it.scaledPosition),
-                    }));
-                    const spritesByVariant = Object.fromEntries(sprites.map((it) => [it.variant, it]));
-                    return {
-                        ...it,
-                        sprites,
-                        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
-                        spritesByVariant: spritesByVariant as any,
-                        allSpritesScaledPositionBounds: roomPositionWithin0To1,
-                    };
-                }),
-            )
-            .enter();
-
-        return () => {
-            svg.current?.remove();
-        };
+        return roomInfos.map((it) => {
+            const sprites = it.sprites.map((it) => ({
+                ...it,
+                scaledPosition: relativeToRoomBounds(it.scaledPosition),
+            }));
+            const spritesByVariant = Object.fromEntries(sprites.map((it) => [it.variant, it]));
+            return {
+                ...it,
+                sprites,
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+                spritesByVariant: spritesByVariant as any,
+                allSpritesScaledPositionBounds: roomPositionWithin0To1,
+            };
+        });
     }, [roomInfos]);
 
-    useMapRooms(
-        {
-            roomDataEnter,
-            useViewOptionsStore,
-            alwaysUseAreaAsColor: true,
-            highlightSelectedRoom: false,
-            spritesWithoutSubSprites: false,
-            alwaysShowMainRoom: true,
-        },
-        [roomInfos],
+    return (
+        <div className={cn('relative', className)}>
+            <svg className="absolute inset-0" width="100%" height="100%" viewBox="0 0 1 1">
+                <HkMapRooms
+                    rooms={roomInfosOfRoom}
+                    useViewOptionsStore={useViewOptionsStore}
+                    alwaysShowMainRoom={true}
+                    alwaysUseAreaAsColor={true}
+                    highlightSelectedRoom={false}
+                    spritesWithoutSubSprites={false}
+                />
+            </svg>
+        </div>
     );
-
-    return useMemo(() => <div className={cn('relative', className)} ref={containerRef} />, [className, containerRef]);
 });

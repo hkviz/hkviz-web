@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { NavigationMenuLink } from '@radix-ui/react-navigation-menu';
 import { Moon, Sun } from 'lucide-react';
 import { useMemo } from 'react';
-import { useThemeStore } from './theme-store';
+import { useThemeStore } from '../../lib/client-stage/theme-store';
 
 export type Theme = 'light' | 'dark';
 

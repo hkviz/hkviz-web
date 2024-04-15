@@ -17,15 +17,10 @@ import {
     RoomColorCurveLinear,
     type RoomColorCurve,
 } from '../../app/run/[id]/_room-color-curve';
+import { aggregationStore } from './aggregation-store';
 import { msIntoGame, recording as recordingSignal } from './gameplay-state';
-import {
-    hoveredSceneName as hoveredRoomSignal,
-    roomColorMode as roomColorModeSignal,
-    roomVisibility as roomVisibilitySignal,
-    selectedSceneName as selectedRoomSignal,
-    type RoomColorMode,
-    type RoomVisibility,
-} from './room-display-state';
+import { roomColoringStore, type RoomColorMode } from './room-coloring-store';
+import { roomDisplayStore, type RoomVisibility } from './room-display-store';
 
 export type TraceVisibility = 'all' | 'animated' | 'hide';
 export type MainCardTab = 'overview' | 'map';
@@ -162,7 +157,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         set({ roomVisibility });
                         handleAnyAnimationVisiblityChanged();
                         recalcVisibleRooms();
-                        roomVisibilitySignal.value = roomVisibility;
+                        roomDisplayStore.roomVisibility.value = roomVisibility;
                     }
                     function setTraceVisibility(traceVisibility: TraceVisibility) {
                         set({ traceVisibility });
@@ -268,11 +263,12 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     }
                     function setAggregatedRunData(aggregatedRunData: AggregatedRunData | null) {
                         set({ aggregatedRunData });
+                        aggregationStore.data.value = aggregatedRunData;
                     }
                     function setSelectedRoom(selectedRoom: string | null) {
                         if (get().selectedRoom !== selectedRoom) {
                             set({ selectedRoom });
-                            selectedRoomSignal.value = selectedRoom;
+                            roomDisplayStore.selectedSceneName.value = selectedRoom;
                             if (selectedRoom) {
                                 console.log('selected room data', allRoomDataBySceneName.get(selectedRoom));
                             }
@@ -281,7 +277,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     function setHoveredRoom(hoveredRoom: string | null) {
                         if (get().hoveredRoom !== hoveredRoom) {
                             set({ hoveredRoom });
-                            hoveredRoomSignal.value = hoveredRoom;
+                            roomDisplayStore.hoveredSceneName.value = hoveredRoom;
                         }
                     }
                     function unsetHoveredRoom(hoveredRoom: string | null) {
@@ -316,7 +312,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     }
                     function setRoomColorMode(roomColorMode: RoomColorMode) {
                         set({ roomColorMode });
-                        roomColorModeSignal.value = roomColorMode;
+                        roomColoringStore.mode.value = roomColorMode;
                     }
                     function cycleRoomColorVar1(roomColorVar1: AggregationVariable) {
                         const { roomColorVar1: currentRoomColorVar1, roomColorMode, roomColorVar1Curve } = get();
@@ -324,6 +320,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         if (currentRoomColorVar1 === roomColorVar1 && roomColorMode === '1-var') {
                             if (roomColorVar1Curve.type === 'linear' && !isV1()) {
                                 set({ roomColorVar1Curve: RoomColorCurveExponential.EXPONENT_2 });
+                                roomColoringStore.var1Curve.value = RoomColorCurveExponential.EXPONENT_2;
                             } else {
                                 setRoomColorMode('area');
                             }
@@ -332,17 +329,21 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                                 roomColorVar1,
                                 roomColorVar1Curve: RoomColorCurveLinear,
                             });
+                            roomColoringStore.var1.value = roomColorVar1;
+                            roomColoringStore.var1Curve.value = RoomColorCurveLinear;
                             setRoomColorMode('1-var');
                         }
                     }
                     function setRoomColorVar1(roomColorVar1: AggregationVariable) {
                         set({ roomColorVar1 });
+                        roomColoringStore.var1.value = roomColorVar1;
                         if (get().roomColorMode === 'area') {
                             setRoomColorMode('1-var');
                         }
                     }
                     function setRoomColorVar1Curve(roomColorVar1Curve: RoomColorCurve) {
                         set({ roomColorVar1Curve });
+                        roomColoringStore.var1Curve.value = roomColorVar1Curve;
                     }
                     function setViewNeverHappenedAggregations(viewNeverHappenedAggregations: boolean) {
                         set({ viewNeverHappenedAggregations });
@@ -408,10 +409,12 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
 
                     function setShowAreaNames(showAreaNames: boolean) {
                         set({ showAreaNames });
+                        roomDisplayStore.showAreaNames.value = showAreaNames;
                     }
 
                     function setShowSubAreaNames(showSubAreaNames: boolean) {
                         set({ showSubAreaNames });
+                        roomDisplayStore.showSubAreaNames.value = showSubAreaNames;
                     }
                     function setZoomFollowTarget(zoomFollowTarget: ZoomFollowTarget) {
                         set({ zoomFollowTarget });

@@ -18,7 +18,7 @@ function getThemeFromCookies(): Theme | undefined {
         : 'dark';
 }
 
-export const currentTheme = signal<Theme>(getThemeFromCookies() ?? 'light');
+const currentTheme = signal<Theme>(getThemeFromCookies() ?? 'light');
 
 export const useThemeStore = create(
     combine({ theme: getThemeFromCookies() }, (set, get) => {
@@ -38,6 +38,7 @@ export const useThemeStore = create(
                 root.classList.remove('dark');
             }
             document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getThemeColorByTheme(theme));
+            currentTheme.value = theme;
         }
         function toggleTheme() {
             setTheme(get().theme === 'dark' ? 'light' : 'dark');
@@ -45,3 +46,7 @@ export const useThemeStore = create(
         return { setTheme, toggleTheme, setThemeNoApply };
     }),
 );
+
+export const themeStore = {
+    currentTheme,
+};

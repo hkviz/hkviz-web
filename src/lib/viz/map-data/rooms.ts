@@ -265,3 +265,7 @@ export const allRoomDataBySceneName = new Map<string, RoomData[]>(
         return [self, ...groupChildren.map((scene) => [scene, rooms] as const)];
     }),
 );
+
+export const roomDataByGameObjectName = new Map<string, RoomData>(
+    roomData.map((room) => [room.gameObjectName, room] as const),
+);

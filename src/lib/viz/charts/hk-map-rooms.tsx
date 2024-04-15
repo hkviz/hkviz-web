@@ -1,10 +1,11 @@
-import { useSignals } from '@preact/signals-react/runtime';
-import { useEffect, useId, useState } from 'react';
+import { useSignalEffect } from '@preact/signals-react/runtime';
+import { useEffect, useId, useRef, useState } from 'react';
 import useEvent from 'react-use-event-hook';
-import { currentTheme } from '~/app/_components/theme-store';
-import { roomDisplayStatesByGameObjectName } from '~/lib/client-stage/room-display-state';
+import { roomColoringStore } from '~/lib/client-stage/room-coloring-store';
+import { roomDisplayStore } from '~/lib/client-stage/room-display-store';
+import { themeStore } from '~/lib/client-stage/theme-store';
 import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
-import { type RoomInfo } from '../map-data/rooms';
+import { type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
 
 function HkMapRoom({
     room,
@@ -14,6 +15,7 @@ function HkMapRoom({
     onMouseOut,
     highlightSelectedRoom,
     alwaysShowMainRoom,
+    alwaysUseAreaAsColor,
 }: {
     room: RoomInfo;
     spritesWithoutSubSprites: boolean;
@@ -22,16 +24,51 @@ function HkMapRoom({
     onMouseOut: (event: React.MouseEvent, r: RoomInfo) => void;
     highlightSelectedRoom: boolean;
     alwaysShowMainRoom: boolean;
+    alwaysUseAreaAsColor: boolean;
 }) {
-    useSignals();
-
-    const states = roomDisplayStatesByGameObjectName.get(room.gameObjectName)!;
-    const isVisible = (room.isMainGameObject && alwaysShowMainRoom) || states.isVisible.value;
-    const isHighlighted = highlightSelectedRoom && states.isHovered.value;
-    const variant = states.variant.value;
+    const states = roomDisplayStore.statesByGameObjectName.get(room.gameObjectName)!;
 
     const id = useId();
     const maskId = `mask_${id}_${room.gameObjectName}`;
+
+    const outlineG = useRef<SVGGElement | null>(null);
+    const rootRect = useRef<SVGRectElement | null>(null);
+    const imageRefPerVariant = useRef(
+        new Map<RoomSpriteVariant, SVGImageElement | null>(room.sprites.map((sprite) => [sprite.variant, null])),
+    );
+
+    useSignalEffect(() => {
+        // update variant opacity
+        const variant = states.variant.value;
+        imageRefPerVariant.current.forEach((element, v) => {
+            if (element) {
+                element.style.opacity = variant === v ? '100%' : '0%';
+            }
+        });
+
+        // update root pointer events
+        const isVisible = (room.isMainGameObject && alwaysShowMainRoom) || states.isVisible.value;
+        const pointerEvents = isVisible ? 'all' : 'none';
+        rootRect.current!.style.pointerEvents = pointerEvents;
+    });
+
+    // update hover outline visibility
+    useSignalEffect(() => {
+        const isHighlighted = highlightSelectedRoom && states.isHovered.value;
+        outlineG.current!.style.visibility = isHighlighted ? 'visible' : 'hidden';
+    });
+
+    // update hover outline color
+    useSignalEffect(() => {
+        const color = themeStore.currentTheme.value === 'dark' ? 'white' : 'black';
+        outlineG.current!.style.fill = color;
+    });
+
+    useSignalEffect(() => {
+        rootRect.current!.style.fill = alwaysUseAreaAsColor
+            ? roomColoringStore.areaColorByGameObjectName.value.get(room.gameObjectName)!
+            : roomColoringStore.selectedModeColorByGameObjectName.value.get(room.gameObjectName)!;
+    });
 
     return (
         <g data-scene-name={room.sceneName} data-game-object-name={room.gameObjectName}>
@@ -40,7 +77,7 @@ function HkMapRoom({
                 {room.sprites.map((sprite) => (
                     <image
                         key={sprite.variant}
-                        data-scene-name="Deepnest_10"
+                        ref={(element) => imageRefPerVariant.current.set(sprite.variant, element)}
                         data-variant={sprite.variant}
                         preserveAspectRatio="none"
                         x={sprite.scaledPosition.min.x}
@@ -54,21 +91,19 @@ function HkMapRoom({
                         }
                         style={{
                             transition: 'opacity 0.1s ease 0s',
-                            opacity: variant === sprite.variant ? '100%' : '0%',
                         }}
                     ></image>
                 ))}
             </mask>
             <rect
+                ref={rootRect}
                 mask={`url(#${maskId})`}
                 x={room.allSpritesScaledPositionBounds.min.x}
                 y={room.allSpritesScaledPositionBounds.min.y}
                 width={room.allSpritesScaledPositionBounds.size.x}
                 height={room.allSpritesScaledPositionBounds.size.y}
                 style={{
-                    fill: room.color.formatHex(),
                     transition: 'fill 0.1s ease 0s',
-                    pointerEvents: isVisible ? 'all' : 'none',
                 }}
                 onMouseOver={(event) => {
                     if (event.buttons === 0) {
@@ -84,13 +119,7 @@ function HkMapRoom({
                 }}
                 onClick={(event) => onClick(event, room)}
             />
-            <g
-                filter="url(#hover_mask_filter)"
-                style={{
-                    fill: currentTheme.value === 'dark' ? 'white' : 'black',
-                    visibility: isHighlighted ? 'visible' : 'hidden',
-                }}
-            >
+            <g ref={outlineG} filter="url(#hover_mask_filter)">
                 <rect
                     mask={`url(#${maskId})`}
                     x={room.allSpritesScaledPositionBounds.min.x}
@@ -127,17 +156,9 @@ export function HkMapRooms({
     renderAreaNames?: boolean;
     alwaysShowMainRoom?: boolean;
 }) {
-    const id = useId();
     const onMouseOverEvent = useEvent(onMouseOver);
     const onMouseOutEvent = useEvent(onMouseOut);
     const onClickEvent = useEvent(onClick);
-
-    // const roomColoring = useRoomColoring({ useViewOptionsStore, alwaysUseAreaAsColor });
-    // const visibleRooms = useViewOptionsStore((state) => state.roomsVisible);
-
-    // const theme = useThemeStore((state) => state.theme);
-    // const showAreaNames = useViewOptionsStore((s) => s.showAreaNames);
-    // const showSubAreaNames = useViewOptionsStore((s) => s.showSubAreaNames);
 
     const [show, setShow] = useState(false);
 
@@ -159,6 +180,7 @@ export function HkMapRooms({
                     onMouseOut={onMouseOutEvent}
                     highlightSelectedRoom={highlightSelectedRoom}
                     alwaysShowMainRoom={alwaysShowMainRoom}
+                    alwaysUseAreaAsColor={alwaysUseAreaAsColor}
                 />
             ))}
         </g>

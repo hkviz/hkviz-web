@@ -13,7 +13,7 @@ import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@/component
 import { Toggle } from '@/components/ui/toggle';
 import { Palette, Pin, PinOff } from 'lucide-react';
 import { AggregationVariableIcon } from '~/app/_components/aggregation_variable_icon';
-import { useThemeStore } from '~/app/_components/theme-store';
+import { useThemeStore } from '~/lib/client-stage/theme-store';
 import { assertNever } from '~/lib/utils/utils';
 import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
 import {

@@ -7,12 +7,12 @@ import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store'
 import { mapVisualExtends } from '../map-data/map-extends';
 import { roomData, type RoomInfo } from '../map-data/rooms';
 import { HkMapRooms } from './hk-map-rooms';
+import { HkMapTexts } from './hk-map-texts';
 import { HKMapZoom } from './hk-map-zoom';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
 import { appendOutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
-import { useMapRooms } from './use-map-rooms';
 import { useMapTraces } from './use-traces';
 
 export interface HKMapProps {
@@ -107,34 +107,6 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
         };
     }, [setZoomFollowEnabled]);
 
-    if (false) {
-        useMapRooms(
-            {
-                roomDataEnter,
-                areaNameGs,
-                onMouseOver: (event: PointerEvent, r) => {
-                    setSelectedRoomIfNotPinned(r.sceneName);
-                    setHoveredRoom(r.sceneName);
-                },
-                onMouseOut: (event: PointerEvent, r) => {
-                    unsetHoveredRoom(r.sceneName);
-                },
-                onClick: (event, r) => {
-                    console.log('clicked room', r);
-                    if (event.pointerType !== 'touch') {
-                        togglePinnedRoom(r.sceneName);
-                    } else {
-                        setSelectedRoomPinned(false);
-                        setSelectedRoomIfNotPinned(r.sceneName);
-                    }
-                },
-                useViewOptionsStore,
-                renderAreaNames: !isV1,
-            },
-            [],
-        );
-    }
-
     useEffect(() => {
         function containerSizeChanged() {
             if (!containerRef.current || !svg.current) return;
@@ -183,6 +155,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                         useViewOptionsStore={useViewOptionsStore}
                         renderAreaNames={!isV1}
                     />
+                    <HkMapTexts />
                 </g>
             </svg>
             {!isV1 && <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />}
