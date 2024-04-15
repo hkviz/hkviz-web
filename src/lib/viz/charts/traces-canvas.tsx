@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useEffect, useRef, type MutableRefObject, type RefObject } from 'react';
 import useEvent from 'react-use-event-hook';
-import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
 import { binarySearchLastIndexBefore } from '~/lib/utils/binary-search';
 import { assertNever } from '~/lib/utils/utils';
 import knightPinSrc from '../../../../public/ingame-sprites/Map_Knight_Pin_Compass.png';

@@ -188,7 +188,8 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                                   ? parseVector2_v0(args[0]!, args[1]!)
                                   : parseVector2_v1(args[0]!, 1 / 10);
                         if (!position) {
-                            throw new Error('Could not assign player position to player position event');
+                            continue;
+                            // throw new Error('Could not assign player position to player position event');
                         }
                         previousPlayerPosition = position;
                         previousPlayerPositionEvent = new PlayerPositionEvent({

@@ -10,12 +10,12 @@ import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { Pause, Play } from 'lucide-react';
 import { useEffect, useMemo, useRef } from 'react';
-import { useThemeStore } from '~/app/_components/theme-store';
-import { msIntoGame } from '~/lib/client-stage/gameplay-state';
-import { darkenRoomColorForDarkTheme, darkenRoomColorForLightTheme } from '~/lib/viz/charts/use-room-coloring';
+import { animationStore } from '~/lib/stores/animation-store';
+import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '~/lib/stores/room-coloring-store';
+import { useThemeStore } from '~/lib/stores/theme-store';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
-import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 import { DurationSignal } from './_duration';
 
 function Times({ className }: { className?: string }) {
@@ -115,7 +115,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
             const roomColor = d.mainRoomData?.color;
             if (!roomColor) return theme === 'dark' ? 'white' : 'black';
 
-            return theme === 'dark' ? darkenRoomColorForDarkTheme(roomColor) : darkenRoomColorForLightTheme(roomColor);
+            return theme === 'dark' ? changeRoomColorForDarkTheme(roomColor) : changeRoomColorForLightTheme(roomColor);
         });
     }, [theme, mainSvgEffect]);
 
@@ -286,7 +286,7 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
 }
 
 function AnimationTimeLineDuration() {
-    return <DurationSignal ms={msIntoGame} className="pr-3" />;
+    return <DurationSignal ms={animationStore.msIntoGame} className="pr-3" />;
 }
 
 // this is in an extra components, so the parent does not need to depend on animationMsIntoGame.

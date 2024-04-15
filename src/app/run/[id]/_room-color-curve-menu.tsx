@@ -1,7 +1,7 @@
 import { ContextMenuItem } from '@/components/ui/context-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { type AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
-import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 import { roomColorCurves } from './_room-color-curve';
 
 export function RoomColorCurveContextMenuItems({

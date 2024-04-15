@@ -229,7 +229,10 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
             ...roomCorrected,
             ...formatZoneAndRoomName(room.mapZone, childSprite.sceneName),
             sceneName: childSprite.sceneName,
-            gameObjectName: roomCorrected.gameObjectName + '_' + escapedSpriteName,
+            gameObjectName:
+                roomCorrected.gameObjectName +
+                '_' +
+                ('gameObjectName' in childSprite ? (childSprite.gameObjectName as string) : escapedSpriteName),
             spritesByVariant: subSpritesByVariant,
             sprites: subSprites,
             gameObjectNameNeededInVisited: roomCorrected.gameObjectNameNeededInVisited,
@@ -261,4 +264,8 @@ export const allRoomDataBySceneName = new Map<string, RoomData[]>(
         const groupChildren = roomGroupByName.get(sceneName as never)?.sceneNames ?? [];
         return [self, ...groupChildren.map((scene) => [scene, rooms] as const)];
     }),
+);
+
+export const roomDataByGameObjectName = new Map<string, RoomData>(
+    roomData.map((room) => [room.gameObjectName, room] as const),
 );

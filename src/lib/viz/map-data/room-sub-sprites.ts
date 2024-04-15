@@ -585,6 +585,7 @@ export const subSprites = {
                     offsetTop: { x: 36, y: 26 },
                 },
                 sceneName: 'group_grimm',
+                gameObjectName: 'group_grimm',
             },
             {
                 normal: {
@@ -600,6 +601,7 @@ export const subSprites = {
                     offsetTop: { x: 9, y: 43 },
                 },
                 sceneName: 'Grimm_Divine',
+                gameObjectName: 'Grimm_Divine',
             },
         ],
     },

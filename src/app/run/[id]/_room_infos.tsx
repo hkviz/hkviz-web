@@ -7,13 +7,13 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { useMemo, type CSSProperties } from 'react';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
-import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@/components/ui/context-menu';
 import { Toggle } from '@/components/ui/toggle';
 import { Palette, Pin, PinOff } from 'lucide-react';
 import { AggregationVariableIcon } from '~/app/_components/aggregation_variable_icon';
-import { useThemeStore } from '~/app/_components/theme-store';
+import { useThemeStore } from '~/lib/stores/theme-store';
 import { assertNever } from '~/lib/utils/utils';
 import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
 import {

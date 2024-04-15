@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import vesselImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0000_magic_orb.png';
-import { type UseViewOptionsStore } from '../../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';

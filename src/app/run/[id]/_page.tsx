@@ -22,7 +22,7 @@ import {
     useViewOptionsStoreRoot,
     type MainCardTab,
     type UseViewOptionsStore,
-} from '../../../lib/client-stage/view-options-store';
+} from '../../../lib/stores/view-options-store';
 import { AnimationOptions } from './_animation_options';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { RoomInfo } from './_room_infos';
@@ -35,18 +35,19 @@ interface Props {
     runData: GetRunResult;
 }
 
-export function SingleRunClientPage({ session, runData }: Props) {
-    const { combinedRun, ...runFiles } = useRecordingFiles(runData.id, runData.files);
-    const aggregatedRunData = useRunAggregationStore((s) => s.aggregations[runData.id]);
-
-    const useViewOptionsStore = useViewOptionsStoreRoot();
-    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
+function RunClientLoader({
+    runData,
+    useViewOptionsStore,
+}: {
+    runData: GetRunResult;
+    useViewOptionsStore: UseViewOptionsStore;
+}) {
     const setRecording = useViewOptionsStore((s) => s.setRecording);
     const setAggregatedRunData = useViewOptionsStore((s) => s.setAggregatedRunData);
+
+    const { combinedRun, ...runFiles } = useRecordingFiles(runData.id, runData.files);
+    const aggregatedRunData = useRunAggregationStore((s) => s.aggregations[runData.id]);
     const combinedRecording = combinedRun?.finishedLoading ? combinedRun.recording : null;
-    const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
-    const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
-    const isV1 = useViewOptionsStore((s) => s.isV1());
 
     useEffect(() => {
         setRecording(combinedRecording);
@@ -54,7 +55,26 @@ export function SingleRunClientPage({ session, runData }: Props) {
 
     useEffect(() => {
         setAggregatedRunData(aggregatedRunData ?? null);
-    });
+    }, [aggregatedRunData, setAggregatedRunData]);
+
+    return (
+        <div
+            className={cn(
+                'absolute left-0 right-0 top-10 flex h-12 w-full items-center justify-center',
+                runFiles.finishedLoading ? 'invisible scale-125 opacity-0 transition' : '',
+            )}
+        >
+            <Progress value={(runFiles?.loadingProgress ?? 0) * 99 + 1} className="max-w-[400px]" />
+        </div>
+    );
+}
+
+export function SingleRunClientPage({ session, runData }: Props) {
+    const useViewOptionsStore = useViewOptionsStoreRoot();
+    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
+    const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
+    const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
+    const isV1 = useViewOptionsStore((s) => s.isV1());
 
     return (
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
@@ -98,14 +118,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         runData={runData}
                         session={session}
                     />
-                    <div
-                        className={cn(
-                            'absolute left-0 right-0 top-10 flex h-12 w-full items-center justify-center',
-                            runFiles.finishedLoading ? 'invisible scale-125 opacity-0 transition' : '',
-                        )}
-                    >
-                        <Progress value={(runFiles?.loadingProgress ?? 0) * 99 + 1} className="max-w-[400px]" />
-                    </div>
+                    <RunClientLoader runData={runData} useViewOptionsStore={useViewOptionsStore} />
                 </Card>
                 {(isAnythingAnimating || !isV1) && <AnimationOptions useViewOptionsStore={useViewOptionsStore} />}
             </div>

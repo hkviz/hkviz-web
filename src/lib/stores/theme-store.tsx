@@ -1,3 +1,4 @@
+import { signal } from '@preact/signals-react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import { createCookie } from '~/lib/cookies';
@@ -17,6 +18,8 @@ function getThemeFromCookies(): Theme | undefined {
         : 'dark';
 }
 
+const currentTheme = signal<Theme>(getThemeFromCookies() ?? 'light');
+
 export const useThemeStore = create(
     combine({ theme: getThemeFromCookies() }, (set, get) => {
         function setThemeNoApply(theme: Theme) {
@@ -35,6 +38,7 @@ export const useThemeStore = create(
                 root.classList.remove('dark');
             }
             document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getThemeColorByTheme(theme));
+            currentTheme.value = theme;
         }
         function toggleTheme() {
             setTheme(get().theme === 'dark' ? 'light' : 'dark');
@@ -42,3 +46,7 @@ export const useThemeStore = create(
         return { setTheme, toggleTheme, setThemeNoApply };
     }),
 );
+
+export const themeStore = {
+    currentTheme,
+};

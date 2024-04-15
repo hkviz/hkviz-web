@@ -15,7 +15,7 @@ export function prepareTextExportData(text: TextExportData) {
         position: null, //scaleVector2(text.position),
         bounds: scaleBounds(text.bounds),
         color: d3.hsl(d3.rgb(text.origColor.x * 255, text.origColor.y * 255, text.origColor.z * 255)),
-        isSubArea: text.objectPath.includes('Sub'),
+        isSubArea: text.objectPath.includes('Sub') || text.convoName === 'HIVE',
         type: areaTypeFromObjectPath(text.objectPath),
     };
 }

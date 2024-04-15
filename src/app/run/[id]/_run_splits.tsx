@@ -4,15 +4,15 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { forwardRef, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
+import { changeRoomColorForLightTheme } from '~/lib/stores/room-coloring-store';
 import { assertNever } from '~/lib/utils/utils';
-import { darkenRoomColorForLightTheme } from '~/lib/viz/charts/use-room-coloring';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import {
     recordingSplitGroups,
     type RecordingSplit,
     type RecordingSplitGroup,
 } from '~/lib/viz/recording-files/recording-splits';
-import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 import { Duration } from './_duration';
 
 type RowActiveState = 'past' | 'next' | 'future';
@@ -114,7 +114,7 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
             ? scene.zoneNameFormatted // + ' - ' + scene.roomNameFormattedZoneExclusive
             : sceneName;
 
-        const color = scene ? darkenRoomColorForLightTheme(scene.color) : undefined;
+        const color = scene ? changeRoomColorForLightTheme(scene.color) : undefined;
 
         return (
             <button

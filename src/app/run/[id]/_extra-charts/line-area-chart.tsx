@@ -10,7 +10,7 @@ import { formatTimeMs } from '~/lib/utils/time';
 import useIsVisibleRef from '~/lib/utils/use-is-visible';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '~/lib/viz/recording-files/events/frame-end-event';
-import { type UseViewOptionsStore } from '../../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { type ColorClasses } from './colors';
 import { downScale } from './down-scale';
 
@@ -406,6 +406,8 @@ export function LineAreaChart({
         heightWithMargin,
         marginTop,
         renderScale,
+        setSelectedRoomIfNotPinned,
+        setSelectedRoom,
     ]);
 
     // update area

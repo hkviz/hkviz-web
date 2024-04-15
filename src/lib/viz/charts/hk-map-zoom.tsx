@@ -2,7 +2,7 @@
 
 import * as d3 from 'd3';
 import { useCallback, useEffect, useMemo, useRef, type MutableRefObject } from 'react';
-import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { mainRoomDataBySceneName, roomData } from '../map-data/rooms';
 import { gameObjectNamesIgnoredInZoomZone, type ZoomZone } from '../map-data/zoom-zone';
