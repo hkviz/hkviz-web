@@ -1,10 +1,10 @@
 import { useSignalEffect } from '@preact/signals-react/runtime';
 import { useEffect, useId, useRef, useState } from 'react';
 import useEvent from 'react-use-event-hook';
-import { roomColoringStore } from '~/lib/client-stage/room-coloring-store';
-import { roomDisplayStore } from '~/lib/client-stage/room-display-store';
-import { themeStore } from '~/lib/client-stage/theme-store';
-import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
+import { roomColoringStore } from '~/lib/stores/room-coloring-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { themeStore } from '~/lib/stores/theme-store';
+import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
 import { type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
 
 function HkMapRoom({
@@ -185,123 +185,4 @@ export function HkMapRooms({
             ))}
         </g>
     );
-
-    //     const roomTextGs = roomDataEnter.current
-    //         .filter((d) => d.texts.length > 0)
-    //         .append('svg:g')
-    //         .attr('data-scene-name', (r) => r.sceneName)
-    //         .attr('data-game-object-name', (r) => r.gameObjectName);
-
-    //     function prepareText<T extends { text: AreaNameTextData }>(text: d3.Selection<d3.BaseType, T, any, any>) {
-    //         return text
-    //             .text((d) => hkLangString(d.text.sheetName as any, d.text.convoName) ?? d.text.convoName)
-    //             .attr(
-    //                 'class',
-    //                 (d) =>
-    //                     `drop-shadow-md pointer-events-none area-name-shadow ` +
-    //                     (d.text.type === 'area' ? 'font-serif' : ebGaramond.className),
-    //             )
-    //             .attr('text-anchor', 'middle')
-    //             .attr('dominant-baseline', 'central')
-    //             .attr('x', (d) => d.text.bounds.center.x)
-    //             .attr('y', (d) => d.text.bounds.center.y)
-    //             .style('font-size', (d) =>
-    //                 d.text.type === 'area'
-    //                     ? `${d.text.fontSize * 0.125 * SCALE_FACTOR}px`
-    //                     : `${d.text.fontSize * 0.075 * SCALE_FACTOR}px`,
-    //             )
-    //             .style('transition', 'opacity 0.1s');
-    //     }
-
-    //     subAreaNamesTexts.current = prepareText(
-    //         roomTextGs
-    //             .selectAll(null)
-    //             .data((room) =>
-    //                 room.texts
-    //                     .map((text) => ({
-    //                         room,
-    //                         text,
-    //                     }))
-    //                     .filter((it) => !it.text.objectPath.includes('Next Area')),
-    //             )
-    //             .enter()
-    //             .append('svg:text')
-    //             .attr('data-scene-name', (d) => d.room.sceneName),
-    //     );
-
-    //     if (areaNameGs?.current) {
-    //         areaNameTexts.current = prepareText(
-    //             areaNameGs.current
-    //                 .selectAll(null)
-    //                 .data(areaNames.map((text) => ({ text })))
-    //                 .enter()
-    //                 .append('svg:text'),
-    //         );
-    //     }
-    // }, [
-    //     paramDependenciesChanges,
-    //     id,
-    //     onClickEvent,
-    //     onMouseOverEvent,
-    //     roomDataEnter,
-    //     spritesWithoutSubSprites,
-    //     onMouseOutEvent,
-    //     areaNameGs,
-    // ]);
-
-    // useEffect(() => {
-    //     if (areaNameTexts.current) {
-    //         areaNameTexts.current.style('fill', (d) => {
-    //             if (theme === 'light') {
-    //                 return roomColoring.mode === 'area'
-    //                     ? darkenRoomColorForLightTheme(d.text.color)
-    //                     : 'rgba(0,0,0,0.8)';
-    //             } else {
-    //                 return roomColoring.mode === 'area' ? d.text.color.formatHex() : 'rgba(255,255,255,0.8)';
-    //             }
-    //         });
-    //     }
-    //     if (subAreaNamesTexts.current) {
-    //         subAreaNamesTexts.current.style('fill', (d) => {
-    //             if (theme === 'light') {
-    //                 return roomColoring.mode === 'area'
-    //                     ? darkenRoomColorForLightTheme(d.room.color)
-    //                     : 'rgba(0,0,0,0.8)';
-    //             } else {
-    //                 return roomColoring.mode === 'area' ? d.room.color.formatHex() : 'rgba(255,255,255,0.8)';
-    //             }
-    //         });
-    //     }
-    // }, [roomColoring, theme]);
-
-    // useEffect(() => {
-    //     const isZoneVisible = memoize(
-    //         (zoneName: string) =>
-    //             visibleRooms === 'all' ||
-    //             visibleRooms.some((it) => allRoomDataBySceneName.get(it)?.some((it) => it.mapZone === zoneName)),
-    //         {
-    //             maxSize: 100,
-    //         },
-    //     );
-
-    //     function isTextTypeShowing(text: AreaNameTextData) {
-    //         return text.type === 'area' ? showAreaNames : showSubAreaNames;
-    //     }
-
-    //     roomImgs.current?.style('opacity', (d) => (getVariant(d.room) === d.sprite.variant ? '100%' : '0%'));
-    //     subAreaNamesTexts.current?.style('opacity', (d) =>
-    //         isTextTypeShowing(d.text) && isRoomVisible(d.room.gameObjectNameNeededInVisited) && renderAreaNames
-    //             ? '100%'
-    //             : '0%',
-    //     );
-    //     areaNameTexts.current?.style('opacity', (d) =>
-    //         isTextTypeShowing(d.text) && isZoneVisible(d.text.convoName) && renderAreaNames ? '100%' : '0%',
-    //     );
-
-    //     roomRects.current?.style('pointer-events', (r) => (getVariant(r) !== 'hidden' ? 'all' : 'none'));
-    // }, [mainEffectChanges, visibleRooms, renderAreaNames, showAreaNames, showSubAreaNames]);
-
-    // useEffect(() => {
-    //     roomOutlineRects.current?.style('fill', theme === 'light' ? 'black' : 'white');
-    // }, [mainEffectChanges, theme]);
 }

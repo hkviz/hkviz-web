@@ -10,12 +10,12 @@ import { cn } from '@/lib/utils';
 import * as d3 from 'd3';
 import { Pause, Play } from 'lucide-react';
 import { useEffect, useMemo, useRef } from 'react';
-import { animationStore } from '~/lib/client-stage/animation-store';
-import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '~/lib/client-stage/room-coloring-store';
-import { useThemeStore } from '~/lib/client-stage/theme-store';
+import { animationStore } from '~/lib/stores/animation-store';
+import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '~/lib/stores/room-coloring-store';
+import { useThemeStore } from '~/lib/stores/theme-store';
 import { useDependableEffect } from '~/lib/viz/depdendent-effect';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
-import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 import { DurationSignal } from './_duration';
 
 function Times({ className }: { className?: string }) {

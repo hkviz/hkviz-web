@@ -3,10 +3,10 @@ import { useSignals } from '@preact/signals-react/runtime';
 import * as d3 from 'd3';
 import { useCallback, useEffect, useRef } from 'react';
 import { RoomColorCurveSelect } from '~/app/run/[id]/_room-color-curve-menu';
-import { aggregationStore } from '~/lib/client-stage/aggregation-store';
-import { roomColoringStore } from '~/lib/client-stage/room-coloring-store';
-import { roomDisplayStore } from '~/lib/client-stage/room-display-store';
-import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
+import { aggregationStore } from '~/lib/stores/aggregation-store';
+import { roomColoringStore } from '~/lib/stores/room-coloring-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
 import { aggregationVariableInfos, formatAggregatedVariableValue } from '../recording-files/run-aggregation-store';
 
 const LEGEND_PADDING = 30;

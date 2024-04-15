@@ -1,6 +1,6 @@
 import type * as d3 from 'd3';
 import { useEffect, useRef, type RefObject } from 'react';
-import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
 import { SCALE_FACTOR, scale } from '../map-data/scaling';
 import { PlayerPositionEvent } from '../recording-files/events/player-position-event';
 

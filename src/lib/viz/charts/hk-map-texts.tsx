@@ -1,8 +1,8 @@
 import { useSignalEffect } from '@preact/signals-react';
 import { useMemo, useRef } from 'react';
-import { changeRoomColorForLightTheme, roomColoringStore } from '~/lib/client-stage/room-coloring-store';
-import { roomDisplayStore } from '~/lib/client-stage/room-display-store';
-import { themeStore } from '~/lib/client-stage/theme-store';
+import { changeRoomColorForLightTheme, roomColoringStore } from '~/lib/stores/room-coloring-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { themeStore } from '~/lib/stores/theme-store';
 import { ebGaramond } from '~/styles/fonts';
 import { hkLangString } from '../lang';
 import { areaNames, type AreaNameTextData } from '../map-data/area-names';

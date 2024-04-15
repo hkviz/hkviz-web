@@ -4,7 +4,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { forwardRef, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
-import { changeRoomColorForLightTheme } from '~/lib/client-stage/room-coloring-store';
+import { changeRoomColorForLightTheme } from '~/lib/stores/room-coloring-store';
 import { assertNever } from '~/lib/utils/utils';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import {
@@ -12,7 +12,7 @@ import {
     type RecordingSplit,
     type RecordingSplitGroup,
 } from '~/lib/viz/recording-files/recording-splits';
-import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 import { Duration } from './_duration';
 
 type RowActiveState = 'past' | 'next' | 'future';

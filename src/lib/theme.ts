@@ -1,4 +1,4 @@
-import { type Theme } from '~/lib/client-stage/theme-store';
+import { type Theme } from '~/lib/stores/theme-store';
 
 export function getThemeColorByTheme(theme: Theme) {
     return theme === 'light' ? '#ffffff' : '#030712';

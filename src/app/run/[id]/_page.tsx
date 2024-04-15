@@ -22,7 +22,7 @@ import {
     useViewOptionsStoreRoot,
     type MainCardTab,
     type UseViewOptionsStore,
-} from '../../../lib/client-stage/view-options-store';
+} from '../../../lib/stores/view-options-store';
 import { AnimationOptions } from './_animation_options';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { RoomInfo } from './_room_infos';

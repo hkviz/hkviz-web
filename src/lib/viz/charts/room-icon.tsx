@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { memo, useMemo } from 'react';
-import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
 import { type RoomInfo } from '../map-data/rooms';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';

@@ -2,7 +2,7 @@ import { computed, signal } from '@preact/signals-react';
 import * as d3 from 'd3';
 import memoize from 'micro-memoize';
 import { RoomColorCurveLinear, type RoomColorCurve } from '~/app/run/[id]/_room-color-curve';
-import { themeStore } from '~/lib/client-stage/theme-store';
+import { themeStore } from '~/lib/stores/theme-store';
 import { roomData } from '../viz/map-data/rooms';
 import { type AggregationVariable } from '../viz/recording-files/run-aggregation-store';
 import { aggregationStore } from './aggregation-store';

@@ -9,7 +9,7 @@ import { Expander } from '~/app/_components/expander';
 import { RunCard } from '~/app/_components/run-card';
 import { playerDataFields } from '~/lib/viz/player-data/player-data';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
-import { type UseViewOptionsStore } from '../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 
 export function RunOverviewTab({
     useViewOptionsStore,

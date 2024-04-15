@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import grubImage from '../../../../../public/ingame-sprites/pin/pin_grub_location.png';
-import { type UseViewOptionsStore } from '../../../../lib/client-stage/view-options-store';
+import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
