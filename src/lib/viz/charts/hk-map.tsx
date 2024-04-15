@@ -146,16 +146,14 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                         onClick={(event, r) => {
                             console.log('clicked room', r);
                             // if (event.pointerType !== 'touch') {
-                            //     togglePinnedRoom(r.sceneName);
+                            togglePinnedRoom(r.sceneName);
                             // } else {
-                            setSelectedRoomPinned(false);
-                            setSelectedRoomIfNotPinned(r.sceneName);
+                            // setSelectedRoomPinned(false);
+                            // setSelectedRoomIfNotPinned(r.sceneName);
                             // }
                         }}
-                        useViewOptionsStore={useViewOptionsStore}
-                        renderAreaNames={!isV1}
                     />
-                    <HkMapTexts />
+                    {!isV1 && <HkMapTexts />}
                 </g>
             </svg>
             {!isV1 && <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />}

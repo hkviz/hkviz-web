@@ -145,6 +145,7 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
                 ? room.gameObjectNameNeededInVisited
                 : room.gameObjectName,
         texts,
+        subSpriteOfGameObjectName: null as null | string,
     };
 
     const subSprites = getSubSprites(room.spriteInfo.name);
@@ -240,6 +241,7 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
             visualBounds,
             playerPositionBounds,
             allSpritesScaledPositionBounds,
+            subSpriteOfGameObjectName: roomCorrected.gameObjectName,
         } satisfies typeof roomCorrected;
     });
 
@@ -247,6 +249,10 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 });
 
 export type RoomInfo = (typeof roomData)[number];
+
+export const roomDataByGameObjectName = new Map<string, RoomData>(
+    roomData.map((room) => [room.gameObjectName, room] as const),
+);
 
 export const mainRoomDataBySceneName = new Map<string, RoomData>(
     roomData
@@ -266,6 +272,24 @@ export const allRoomDataBySceneName = new Map<string, RoomData[]>(
     }),
 );
 
-export const roomDataByGameObjectName = new Map<string, RoomData>(
-    roomData.map((room) => [room.gameObjectName, room] as const),
-);
+export const allRoomDataIncludingSubspritesBySceneName = (() => {
+    const map = new Map<string, RoomData[]>();
+    function add(room: RoomData, sceneName: string) {
+        let arr = map.get(sceneName);
+        if (!arr) {
+            arr = [];
+            map.set(sceneName, arr);
+        }
+        arr.push(room);
+    }
+
+    roomData.forEach((room) => {
+        add(room, room.sceneName);
+        if (room.subSpriteOfGameObjectName) {
+            const other = roomDataByGameObjectName.get(room.subSpriteOfGameObjectName)!;
+            add(room, other.sceneName);
+        }
+    });
+
+    return map;
+})();

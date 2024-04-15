@@ -4,12 +4,10 @@ import useEvent from 'react-use-event-hook';
 import { roomColoringStore } from '~/lib/stores/room-coloring-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
 import { themeStore } from '~/lib/stores/theme-store';
-import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
 import { type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
 
 function HkMapRoom({
     room,
-    spritesWithoutSubSprites,
     onClick,
     onMouseOver,
     onMouseOut,
@@ -18,7 +16,6 @@ function HkMapRoom({
     alwaysUseAreaAsColor,
 }: {
     room: RoomInfo;
-    spritesWithoutSubSprites: boolean;
     onClick: (event: React.MouseEvent, r: RoomInfo) => void;
     onMouseOver: (event: React.MouseEvent, r: RoomInfo) => void;
     onMouseOut: (event: React.MouseEvent, r: RoomInfo) => void;
@@ -84,11 +81,7 @@ function HkMapRoom({
                         y={sprite.scaledPosition.min.y}
                         width={sprite.scaledPosition.size.x}
                         height={sprite.scaledPosition.size.y}
-                        xlinkHref={
-                            '/ingame-map/' +
-                            (spritesWithoutSubSprites ? sprite.nameWithoutSubSprites ?? sprite.name : sprite.name) +
-                            '.png'
-                        }
+                        xlinkHref={'/ingame-map/' + (sprite.nameWithoutSubSprites ?? sprite.name) + '.png'}
                         style={{
                             transition: 'opacity 0.1s ease 0s',
                         }}
@@ -138,22 +131,16 @@ export function HkMapRooms({
     onClick = () => undefined,
     onMouseOver = () => undefined,
     onMouseOut = () => undefined,
-    useViewOptionsStore,
     alwaysUseAreaAsColor = false,
     highlightSelectedRoom = true,
-    spritesWithoutSubSprites = true,
-    renderAreaNames = false,
     alwaysShowMainRoom = false,
 }: {
     rooms: RoomInfo[];
     onClick?: (event: React.MouseEvent, r: RoomInfo) => void;
     onMouseOver?: (event: React.MouseEvent, r: RoomInfo) => void;
     onMouseOut?: (event: React.MouseEvent, r: RoomInfo) => void;
-    useViewOptionsStore: UseViewOptionsStore;
     alwaysUseAreaAsColor?: boolean;
     highlightSelectedRoom?: boolean;
-    spritesWithoutSubSprites?: boolean;
-    renderAreaNames?: boolean;
     alwaysShowMainRoom?: boolean;
 }) {
     const onMouseOverEvent = useEvent(onMouseOver);
@@ -174,7 +161,6 @@ export function HkMapRooms({
                 <HkMapRoom
                     key={room.gameObjectName}
                     room={room}
-                    spritesWithoutSubSprites={spritesWithoutSubSprites}
                     onClick={onClickEvent}
                     onMouseOver={onMouseOverEvent}
                     onMouseOut={onMouseOutEvent}

@@ -68,11 +68,9 @@ export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos, useView
             <svg className="absolute inset-0" width="100%" height="100%" viewBox="0 0 1 1">
                 <HkMapRooms
                     rooms={roomInfosOfRoom}
-                    useViewOptionsStore={useViewOptionsStore}
                     alwaysShowMainRoom={true}
                     alwaysUseAreaAsColor={true}
                     highlightSelectedRoom={false}
-                    spritesWithoutSubSprites={false}
                 />
             </svg>
         </div>

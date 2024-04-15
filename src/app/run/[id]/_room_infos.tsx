@@ -6,7 +6,11 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/u
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useMemo, type CSSProperties } from 'react';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
-import { allRoomDataBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
+import {
+    allRoomDataBySceneName,
+    allRoomDataIncludingSubspritesBySceneName,
+    mainRoomDataBySceneName,
+} from '~/lib/viz/map-data/rooms';
 import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@/components/ui/context-menu';
@@ -179,10 +183,13 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
     const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
     const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
 
-    const [mainRoomInfo, allRoomInfos] = useMemo(() => {
+    const [mainRoomInfo, allRoomInfos, allRoomInfosIncludingSubsprites] = useMemo(() => {
         const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
         const allRoomInfos = selectedRoom ? allRoomDataBySceneName.get(selectedRoom) ?? null : null;
-        return [mainRoomInfo, allRoomInfos];
+        const allRoomInfosIncludingSubsprites = selectedRoom
+            ? allRoomDataIncludingSubspritesBySceneName.get(selectedRoom) ?? null
+            : null;
+        return [mainRoomInfo, allRoomInfos, allRoomInfosIncludingSubsprites];
     }, [selectedRoom]);
 
     const theme = useThemeStore((s) => s.theme);
@@ -222,9 +229,9 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
             }
         >
             <CardHeader className="flex flex-row items-center p-4 pt-2">
-                {allRoomInfos && (
+                {allRoomInfosIncludingSubsprites && (
                     <HKMapRoom
-                        roomInfos={allRoomInfos}
+                        roomInfos={allRoomInfosIncludingSubsprites}
                         className="mr-4 h-14 w-14"
                         useViewOptionsStore={useViewOptionsStore}
                     />
