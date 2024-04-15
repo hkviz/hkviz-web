@@ -229,7 +229,10 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
             ...roomCorrected,
             ...formatZoneAndRoomName(room.mapZone, childSprite.sceneName),
             sceneName: childSprite.sceneName,
-            gameObjectName: roomCorrected.gameObjectName + '_' + escapedSpriteName,
+            gameObjectName:
+                roomCorrected.gameObjectName +
+                '_' +
+                ('gameObjectName' in childSprite ? (childSprite.gameObjectName as string) : escapedSpriteName),
             spritesByVariant: subSpritesByVariant,
             sprites: subSprites,
             gameObjectNameNeededInVisited: roomCorrected.gameObjectNameNeededInVisited,

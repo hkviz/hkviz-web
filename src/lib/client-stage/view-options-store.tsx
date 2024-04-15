@@ -17,11 +17,17 @@ import {
     RoomColorCurveLinear,
     type RoomColorCurve,
 } from '../../app/run/[id]/_room-color-curve';
-import { msIntoGame } from './gameplay-state';
+import { msIntoGame, recording as recordingSignal } from './gameplay-state';
+import {
+    hoveredSceneName as hoveredRoomSignal,
+    roomColorMode as roomColorModeSignal,
+    roomVisibility as roomVisibilitySignal,
+    selectedSceneName as selectedRoomSignal,
+    type RoomColorMode,
+    type RoomVisibility,
+} from './room-display-state';
 
-export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type TraceVisibility = 'all' | 'animated' | 'hide';
-export type RoomColorMode = 'area' | '1-var';
 export type MainCardTab = 'overview' | 'map';
 export type DisplayVersion = 'v1' | 'vnext';
 export type ZoomFollowTarget = 'current-zone' | 'visible-rooms' | 'player-movement' | 'recent-scenes';
@@ -156,6 +162,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         set({ roomVisibility });
                         handleAnyAnimationVisiblityChanged();
                         recalcVisibleRooms();
+                        roomVisibilitySignal.value = roomVisibility;
                     }
                     function setTraceVisibility(traceVisibility: TraceVisibility) {
                         set({ traceVisibility });
@@ -256,6 +263,8 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         setAnimationMsIntoGame(timeFrame.max);
                         recalcVisibleRooms();
                         refilterSplitGroups();
+
+                        recordingSignal.value = recording;
                     }
                     function setAggregatedRunData(aggregatedRunData: AggregatedRunData | null) {
                         set({ aggregatedRunData });
@@ -263,6 +272,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     function setSelectedRoom(selectedRoom: string | null) {
                         if (get().selectedRoom !== selectedRoom) {
                             set({ selectedRoom });
+                            selectedRoomSignal.value = selectedRoom;
                             if (selectedRoom) {
                                 console.log('selected room data', allRoomDataBySceneName.get(selectedRoom));
                             }
@@ -271,6 +281,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     function setHoveredRoom(hoveredRoom: string | null) {
                         if (get().hoveredRoom !== hoveredRoom) {
                             set({ hoveredRoom });
+                            hoveredRoomSignal.value = hoveredRoom;
                         }
                     }
                     function unsetHoveredRoom(hoveredRoom: string | null) {
@@ -305,6 +316,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                     }
                     function setRoomColorMode(roomColorMode: RoomColorMode) {
                         set({ roomColorMode });
+                        roomColorModeSignal.value = roomColorMode;
                     }
                     function cycleRoomColorVar1(roomColorVar1: AggregationVariable) {
                         const { roomColorVar1: currentRoomColorVar1, roomColorMode, roomColorVar1Curve } = get();
@@ -313,20 +325,20 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                             if (roomColorVar1Curve.type === 'linear' && !isV1()) {
                                 set({ roomColorVar1Curve: RoomColorCurveExponential.EXPONENT_2 });
                             } else {
-                                set({ roomColorMode: 'area' });
+                                setRoomColorMode('area');
                             }
                         } else {
                             set({
                                 roomColorVar1,
-                                roomColorMode: '1-var',
                                 roomColorVar1Curve: RoomColorCurveLinear,
                             });
+                            setRoomColorMode('1-var');
                         }
                     }
                     function setRoomColorVar1(roomColorVar1: AggregationVariable) {
                         set({ roomColorVar1 });
                         if (get().roomColorMode === 'area') {
-                            set({ roomColorMode: '1-var' });
+                            setRoomColorMode('1-var');
                         }
                     }
                     function setRoomColorVar1Curve(roomColorVar1Curve: RoomColorCurve) {

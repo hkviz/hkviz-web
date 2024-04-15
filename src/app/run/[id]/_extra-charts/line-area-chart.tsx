@@ -406,6 +406,8 @@ export function LineAreaChart({
         heightWithMargin,
         marginTop,
         renderScale,
+        setSelectedRoomIfNotPinned,
+        setSelectedRoom,
     ]);
 
     // update area

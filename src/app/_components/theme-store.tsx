@@ -1,3 +1,4 @@
+import { signal } from '@preact/signals-react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
 import { createCookie } from '~/lib/cookies';
@@ -16,6 +17,8 @@ function getThemeFromCookies(): Theme | undefined {
         ? 'light'
         : 'dark';
 }
+
+export const currentTheme = signal<Theme>(getThemeFromCookies() ?? 'light');
 
 export const useThemeStore = create(
     combine({ theme: getThemeFromCookies() }, (set, get) => {

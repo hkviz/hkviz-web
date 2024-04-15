@@ -1,6 +1,6 @@
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { ReadonlySignal, useComputed } from '@preact/signals-react';
+import { useComputed, type ReadonlySignal } from '@preact/signals-react';
 import { zeroPad } from '~/lib/utils/utils';
 
 export function Duration({

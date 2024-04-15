@@ -6,6 +6,7 @@ import { useEffect, useRef } from 'react';
 import { type UseViewOptionsStore } from '~/lib/client-stage/view-options-store';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { roomData, type RoomInfo } from '../map-data/rooms';
+import { HkMapRooms } from './hk-map-rooms';
 import { HKMapZoom } from './hk-map-zoom';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
@@ -21,7 +22,9 @@ export interface HKMapProps {
 
 export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     const containerRef = useRef<HTMLDivElement>(null);
+    const svgRef = useRef<SVGSVGElement>(null);
     const svg = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined>>();
+    const rootGRef = useRef<SVGGElement | null>(null);
     const rootG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
     const areaNameGs = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
 
@@ -66,9 +69,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                 tracesZoomHandler.current?.(event);
             });
         svg.current = d3
-            .select(containerRef.current)
-            .insert('svg', ':first-child')
-            .attr('class', 'absolute inset-0')
+            .select(svgRef.current!)
             .attr('width', 1000)
             .attr('height', 1000)
             .attr('viewBox', mapVisualExtends.toD3ViewBox())
@@ -78,7 +79,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
         const defs = svg.current.append('defs');
         appendOutlineFilter(defs);
 
-        rootG.current = svg.current.append('g').attr('data-group', 'root');
+        rootG.current = d3.select(rootGRef.current!);
 
         // rootG.current
         //     .append('rect')
@@ -101,35 +102,38 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
         knightPinG.current = rootG.current.append('g').attr('data-group', 'knight-pin-g');
 
         return () => {
-            svg.current?.remove();
+            // svg.current?.remove();
+            // svg.current?.selectChildren().remove();
         };
     }, [setZoomFollowEnabled]);
 
-    useMapRooms(
-        {
-            roomDataEnter,
-            areaNameGs,
-            onMouseOver: (event: PointerEvent, r) => {
-                setSelectedRoomIfNotPinned(r.sceneName);
-                setHoveredRoom(r.sceneName);
-            },
-            onMouseOut: (event: PointerEvent, r) => {
-                unsetHoveredRoom(r.sceneName);
-            },
-            onClick: (event, r) => {
-                console.log('clicked room', r);
-                if (event.pointerType !== 'touch') {
-                    togglePinnedRoom(r.sceneName);
-                } else {
-                    setSelectedRoomPinned(false);
+    if (false) {
+        useMapRooms(
+            {
+                roomDataEnter,
+                areaNameGs,
+                onMouseOver: (event: PointerEvent, r) => {
                     setSelectedRoomIfNotPinned(r.sceneName);
-                }
+                    setHoveredRoom(r.sceneName);
+                },
+                onMouseOut: (event: PointerEvent, r) => {
+                    unsetHoveredRoom(r.sceneName);
+                },
+                onClick: (event, r) => {
+                    console.log('clicked room', r);
+                    if (event.pointerType !== 'touch') {
+                        togglePinnedRoom(r.sceneName);
+                    } else {
+                        setSelectedRoomPinned(false);
+                        setSelectedRoomIfNotPinned(r.sceneName);
+                    }
+                },
+                useViewOptionsStore,
+                renderAreaNames: !isV1,
             },
-            useViewOptionsStore,
-            renderAreaNames: !isV1,
-        },
-        [],
-    );
+            [],
+        );
+    }
 
     useEffect(() => {
         function containerSizeChanged() {
@@ -150,9 +154,37 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
         };
     }, []);
 
-    useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG });
+    if (isV1) {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG });
+    }
     return (
         <div className={cn('relative', className)} ref={containerRef}>
+            <svg className="absolute inset-0" ref={svgRef}>
+                <g data-group="root" ref={rootGRef}>
+                    <HkMapRooms
+                        rooms={roomData}
+                        onMouseOver={(event, r) => {
+                            setSelectedRoomIfNotPinned(r.sceneName);
+                            setHoveredRoom(r.sceneName);
+                        }}
+                        onMouseOut={(event, r) => {
+                            unsetHoveredRoom(r.sceneName);
+                        }}
+                        onClick={(event, r) => {
+                            console.log('clicked room', r);
+                            // if (event.pointerType !== 'touch') {
+                            //     togglePinnedRoom(r.sceneName);
+                            // } else {
+                            setSelectedRoomPinned(false);
+                            setSelectedRoomIfNotPinned(r.sceneName);
+                            // }
+                        }}
+                        useViewOptionsStore={useViewOptionsStore}
+                        renderAreaNames={!isV1}
+                    />
+                </g>
+            </svg>
             {!isV1 && <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />}
             <div className="absolute right-4 top-4 px-0 py-2">
                 <MapLegend useViewOptionsStore={useViewOptionsStore} />
