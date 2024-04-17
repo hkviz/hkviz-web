@@ -7,13 +7,15 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Slider } from '@/components/ui/slider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import * as d3 from 'd3';
+import { useComputed, useSignal, useSignalEffect } from '@preact/signals-react';
 import { Pause, Play } from 'lucide-react';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { animationStore } from '~/lib/stores/animation-store';
+import { gameplayStore } from '~/lib/stores/gameplay-store';
 import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '~/lib/stores/room-coloring-store';
-import { useThemeStore } from '~/lib/stores/theme-store';
-import { useDependableEffect } from '~/lib/viz/depdendent-effect';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { themeStore } from '~/lib/stores/theme-store';
+import { useAutoSizeCanvas } from '~/lib/utils/canvas';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 import { DurationSignal } from './_duration';
@@ -48,118 +50,88 @@ function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptio
 const EMPTY_ARRAY = [] as const;
 
 function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const theme = useThemeStore((state) => state.theme);
-
     const timeFrameMs = useViewOptionsStore((s) => s.timeFrame);
-    const recording = useViewOptionsStore((s) => s.recording);
     const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
-    const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
     const togglePinnedRoom = useViewOptionsStore((s) => s.togglePinnedRoom);
     const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
     const setHoveredMsIntoGame = useViewOptionsStore((s) => s.setHoveredMsIntoGame);
     const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
-    const timeFrame = useViewOptionsStore((s) => s.timeFrame);
-    const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
     const showMapIfOverview = useViewOptionsStore((s) => s.showMapIfOverview);
-    const selectedZone = useMemo(
-        () =>
-            (selectedRoom ? mainRoomDataBySceneName.get(selectedRoom)?.zoneNameFormatted : undefined) ??
-            'No zone selected',
-        [selectedRoom],
-    );
 
-    const sceneEvents = recording?.sceneEvents ?? EMPTY_ARRAY;
-
-    const sceneChanges = useMemo(() => {
+    const sceneChanges = useComputed(() => {
+        const sceneEvents = gameplayStore.recording.value?.sceneEvents ?? EMPTY_ARRAY;
+        const timeframe = gameplayStore.timeframe.value;
+        const theme = themeStore.currentTheme.value;
         const sceneChanges = sceneEvents.map((it) => {
             const mainVirtualScene = it.getMainVirtualSceneName();
+            const mainRoomData = mainRoomDataBySceneName.get(mainVirtualScene);
+
+            const roomColor = mainRoomData?.color;
+            let color: string;
+            if (!roomColor) {
+                color = theme === 'dark' ? 'white' : 'black';
+            } else {
+                color =
+                    theme === 'dark' ? changeRoomColorForDarkTheme(roomColor) : changeRoomColorForLightTheme(roomColor);
+            }
+
             return {
                 mainVirtualScene,
                 startMs: it.msIntoGame,
-                mainRoomData: mainRoomDataBySceneName.get(mainVirtualScene),
+                mainRoomData,
+                color,
                 durationMs: 0,
             };
         });
         for (let i = 0; i < sceneChanges.length; i++) {
-            sceneChanges[i]!.durationMs = (sceneChanges[i + 1]?.startMs ?? timeFrameMs.max) - sceneChanges[i]!.startMs;
+            sceneChanges[i]!.durationMs = (sceneChanges[i + 1]?.startMs ?? timeframe.max) - sceneChanges[i]!.startMs;
         }
         return sceneChanges;
-    }, [sceneEvents, timeFrameMs.max]);
+    });
 
-    const parentDivRef = useRef<HTMLDivElement>(null);
-    const svgRef = useRef<SVGSVGElement>(null);
-    const rectsRef = useRef<d3.Selection<SVGRectElement, (typeof sceneChanges)[number], SVGSVGElement, unknown>>();
+    const canvas = useSignal<HTMLCanvasElement | null>(null);
+    const container = useSignal<HTMLDivElement | null>(null);
 
-    const mainSvgEffect = useDependableEffect(() => {
-        if (!svgRef.current) return;
+    const autoSizeCanvas = useAutoSizeCanvas(container, canvas);
 
-        const svg = d3.select(svgRef.current);
+    useSignalEffect(() => {
+        const _sceneChanges = sceneChanges.value;
+        const _c = autoSizeCanvas.value;
+        const timeframe = gameplayStore.timeframe.value;
+        const selectedScene = roomDisplayStore.selectedSceneName.value;
+        const selectedZone = roomDisplayStore.selectedRoomZoneFormatted.value;
 
-        svg.attr('viewBox', `0 0 ${timeFrame.max / 1000} 10000`);
+        if (!_c || !_sceneChanges) return;
+        const ctx = _c.canvas?.getContext('2d');
+        if (!ctx) return;
 
-        svg.selectAll('*').remove();
-        rectsRef.current = svg
-            .selectAll('rect')
-            .data(sceneChanges)
-            .enter()
-            .append('rect')
-            .attr('x', (d) => d.startMs / 1000)
-            .attr('width', (d) => d.durationMs / 1000)
-            .attr('height', 10000)
-            .attr('data-scene-name', (d) => d.mainVirtualScene);
-    }, [sceneChanges, timeFrame.max]);
+        ctx.clearRect(0, 0, _c.widthInUnits, _c.heightInUnits);
 
-    useEffect(() => {
-        if (!rectsRef.current) return;
-        rectsRef.current.attr('fill', (d) => {
-            const roomColor = d.mainRoomData?.color;
-            if (!roomColor) return theme === 'dark' ? 'white' : 'black';
+        for (const sceneChange of _sceneChanges) {
+            const height =
+                sceneChange.mainVirtualScene === selectedScene
+                    ? 1
+                    : sceneChange.mainRoomData?.zoneNameFormatted === selectedZone
+                      ? 0.666
+                      : 0.333;
 
-            return theme === 'dark' ? changeRoomColorForDarkTheme(roomColor) : changeRoomColorForLightTheme(roomColor);
-        });
-    }, [theme, mainSvgEffect]);
-
-    useEffect(() => {
-        if (!rectsRef.current) return;
-        rectsRef.current
-            // .style('opacity', (d) =>
-            //     d.sceneName === selectedRoom ? '1' : d.mainRoomData?.zoneNameFormatted === selectedArea ? '0.75' : '0.5',
-            // )
-            .attr('y', (d) =>
-                d.mainVirtualScene === selectedRoom
-                    ? 0
-                    : d.mainRoomData?.zoneNameFormatted === selectedZone
-                      ? 3333
-                      : 6666,
+            ctx.fillStyle = sceneChange.color;
+            ctx.fillRect(
+                (_c.widthInUnits * sceneChange.startMs) / timeframe.max,
+                _c.heightInUnits * (1 - height),
+                (_c.widthInUnits * sceneChange.durationMs) / timeframe.max,
+                _c.heightInUnits * height,
             );
-    }, [selectedRoom, mainSvgEffect, selectedZone]);
-
-    useEffect(() => {
-        function containerSizeChanged() {
-            if (!parentDivRef.current || !parentDivRef.current) return;
-
-            d3.select(svgRef.current)
-                .attr('width', parentDivRef.current.offsetWidth)
-                .attr('height', parentDivRef.current.offsetHeight);
         }
-        containerSizeChanged();
-
-        const resizeObserver = new ResizeObserver(containerSizeChanged);
-
-        resizeObserver.observe(parentDivRef.current!);
-
-        return () => {
-            resizeObserver.disconnect();
-        };
-    }, []);
+    });
 
     function getSceneChangeFromMouseEvent(e: React.MouseEvent) {
-        if (!parentDivRef.current) return undefined;
-        // e = Mouse click event.
-        const rect = parentDivRef.current.getBoundingClientRect();
+        const _sceneChanges = sceneChanges.value;
+        if (!container.value) return undefined;
+        const rect = container.value.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const ms = timeFrameMs.max * (x / rect.width);
-        return sceneChanges.findLast((it) => it.startMs <= ms);
+        return _sceneChanges.findLast((it) => it.startMs <= ms);
     }
 
     function handleMouseMove(e: React.MouseEvent) {
@@ -176,8 +148,6 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
         setAnimationMsIntoGame(sceneChange.startMs);
         togglePinnedRoom(sceneChange.mainVirtualScene, true);
         showMapIfOverview();
-
-        // togglePinnedRoom(sceneChange.sceneName, true);
     }
     function handleMouseLeave() {
         setHoveredRoom(null);
@@ -187,7 +157,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
     return (
         <div
             className="absolute -bottom-4 left-0 h-3 w-full"
-            ref={parentDivRef}
+            ref={(el) => (container.value = el)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}
@@ -195,7 +165,7 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
             <span className="absolute -left-3 top-[50%] translate-x-[-100%] translate-y-[-35%] text-[0.6rem]">
                 Area
             </span>
-            <svg ref={svgRef} className="absolute inset-0" preserveAspectRatio="none" />
+            <canvas ref={(el) => (canvas.value = el)} className="absolute inset-0 h-full w-full" />
         </div>
     );
 }

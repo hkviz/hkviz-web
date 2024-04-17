@@ -16,6 +16,14 @@ const roomVisibility = signal<RoomVisibility>('visited-animated');
 const selectedSceneName = signal<string | null>(null);
 const hoveredSceneName = signal<string | null>(null);
 
+const selectedRoomZoneFormatted = computed(() => {
+    const selected = selectedSceneName.value;
+    if (!selected) return null;
+    const room = mainRoomDataBySceneName.get(selected);
+    if (!room) return null;
+    return room.zoneNameFormatted;
+});
+
 const showAreaNames = signal(true);
 const showSubAreaNames = signal(true);
 
@@ -110,6 +118,7 @@ export const roomDisplayStore = {
     statesByGameObjectName,
     roomVisibility,
     selectedSceneName,
+    selectedRoomZoneFormatted,
     hoveredSceneName,
     zoneVisible,
     showAreaNames,
