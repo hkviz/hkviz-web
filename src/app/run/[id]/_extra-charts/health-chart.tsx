@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { gameplayStore } from '~/lib/stores/gameplay-store';
 import blueMaskImg from '../../../../../public/ingame-sprites/hud/edited/blueMask.png';
 import emptyMaskImg from '../../../../../public/ingame-sprites/hud/edited/emptyMask.png';
 import maskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
@@ -9,14 +10,8 @@ import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
-function MaskUnit({
-    className,
-    useViewOptionsStore,
-}: {
-    className?: string;
-    useViewOptionsStore?: UseViewOptionsStore;
-}) {
-    const isSteelSoul = useViewOptionsStore?.((s) => s.isSteelSoul);
+function MaskUnit({ className }: { className?: string }) {
+    const isSteelSoul = gameplayStore.isSteelSoul.value;
     return <Image src={isSteelSoul ? steelMaskImg : maskImg} className={className} alt="Mask" />;
 }
 
@@ -65,7 +60,7 @@ export function HealthChart({ useViewOptionsStore }: HealthChartProps) {
             variables={variables}
             header={
                 <>
-                    <MaskUnit className="mr-1 inline-block w-6" useViewOptionsStore={useViewOptionsStore} />
+                    <MaskUnit className="mr-1 inline-block w-6" />
                     Health
                 </>
             }
