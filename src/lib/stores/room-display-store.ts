@@ -7,7 +7,7 @@ import {
     type RoomSpriteVariant,
 } from '../viz/map-data/rooms';
 import { playerDataFields } from '../viz/player-data/player-data';
-import { recording } from './gameplay-store';
+import { gameplayStore } from './gameplay-store';
 import { playerDataAnimationStore } from './player-data-animation-store';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
@@ -30,7 +30,8 @@ const roomsVisible: ReadonlySignal<ReadonlySet<string> | 'all'> = computed(() =>
             return 'all' as const;
         case 'visited':
             return new Set(
-                recording.value?.lastPlayerDataEventOfField(playerDataFields.byFieldName.scenesVisited)?.value ?? [],
+                gameplayStore.recording.value?.lastPlayerDataEventOfField(playerDataFields.byFieldName.scenesVisited)
+                    ?.value ?? [],
             );
         case 'visited-animated':
             return new Set(playerDataAnimationStore.currentValues.scenesVisited.value ?? []);

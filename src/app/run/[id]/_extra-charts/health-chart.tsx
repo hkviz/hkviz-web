@@ -66,7 +66,7 @@ export function HealthChart({ useViewOptionsStore }: HealthChartProps) {
             header={
                 <>
                     <MaskUnit className="mr-1 inline-block w-6" useViewOptionsStore={useViewOptionsStore} />
-                    Health over time
+                    Health
                 </>
             }
             yAxisLabel="Masks"

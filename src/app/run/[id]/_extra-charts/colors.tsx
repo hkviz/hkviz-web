@@ -49,6 +49,13 @@ export const tailwindChartColors = {
         beforeBackground: 'before:bg-rose-500',
         li: 'marker:text-rose-500',
     },
+    orange: {
+        checkbox: 'data-[state=checked]:bg-orange-400 border-orange-400 outline-orange-400',
+        path: 'text-orange-400 fill-current',
+        background: 'bg-orange-400',
+        beforeBackground: 'before:bg-orange-400',
+        li: 'marker:text-orange-400',
+    },
     sky: {
         checkbox: 'data-[state=checked]:bg-sky-500 border-sky-500 outline-sky-500',
         path: 'text-sky-500 fill-current',

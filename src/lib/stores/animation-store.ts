@@ -12,7 +12,7 @@ export const currentSceneEvent = computed(() => {
     const index = currentSceneEventIndex.value;
     if (index === null) return null;
 
-    return r.sceneEventFromMs(index) ?? null;
+    return r.sceneEvents[index] ?? null;
 });
 
 export const currentFrameEndEventIndex = computed(() => {
@@ -24,7 +24,7 @@ export const currentFrameEndEvent = computed(() => {
     const index = currentFrameEndEventIndex.value;
     if (index === null) return null;
 
-    return r.frameEndEventFromMs(index) ?? null;
+    return r.frameEndEvents[index] ?? null;
 });
 
 export const animationStore = {

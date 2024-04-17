@@ -72,6 +72,7 @@ export const frameEndEventPlayerDataFieldsArray = [
     playerDataFields.byFieldName.hegemolDefeated,
     playerDataFields.byFieldName.monomonDefeated,
     playerDataFields.byFieldName.hasDreamNail,
+    playerDataFields.byFieldName.dreamOrbs,
     playerDataFields.byFieldName.dreamNailUpgraded,
     playerDataFields.byFieldName.mothDeparted,
     playerDataFields.byFieldName.nailSmithUpgrades,
@@ -217,6 +218,7 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
     hasUpwardSlash: boolean;
     hasDreamNail: boolean;
     dreamNailUpgraded: boolean;
+    dreamOrbs: number;
     hasDash: boolean;
     hasWalljump: boolean;
     hasSuperDash: boolean;
@@ -634,6 +636,11 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
         this.dreamNailUpgraded = previousdreamNailUpgraded
             ? previousdreamNailUpgraded.value
             : getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamNailUpgraded);
+
+        const previousdreamOrbs = options.getPreviousPlayerData(playerDataFields.byFieldName.dreamOrbs);
+        this.dreamOrbs = previousdreamOrbs
+            ? previousdreamOrbs.value
+            : getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamOrbs);
 
         const previousmothDeparted = options.getPreviousPlayerData(playerDataFields.byFieldName.mothDeparted);
         this.mothDeparted = previousmothDeparted

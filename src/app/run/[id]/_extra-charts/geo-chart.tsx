@@ -55,7 +55,7 @@ export function GeoChart({ useViewOptionsStore }: GeoChartProps) {
             header={
                 <>
                     <Unit className="mr-1 inline-block w-6" />
-                    Geo over time
+                    Geo
                 </>
             }
             yAxisLabel="Geo"

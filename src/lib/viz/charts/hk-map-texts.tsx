@@ -51,8 +51,8 @@ function HkMapText({
                 'area-name-shadow pointer-events-none drop-shadow-md ' +
                 (textData.type === 'area' ? 'font-serif' : ebGaramond.className)
             }
-            text-anchor="middle"
-            dominant-baseline="central"
+            textAnchor="middle"
+            dominantBaseline="central"
             x={textData.bounds.center.x}
             y={textData.bounds.center.y}
             style={{ fontSize: 3.25, transition: 'opacity 0.1s ease 0s', fill: 'rgb(181, 220, 251)' }}

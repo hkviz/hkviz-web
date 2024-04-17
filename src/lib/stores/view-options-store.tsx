@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { create } from 'zustand';
 import { combine, subscribeWithSelector } from 'zustand/middleware';
 import { assertNever } from '~/lib/utils/utils';
-import { allRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import { playerDataFields } from '~/lib/viz/player-data/player-data';
 import { type CombinedRecording } from '~/lib/viz/recording-files/recording';
 import {
@@ -19,6 +18,7 @@ import {
 } from '../../app/run/[id]/_room-color-curve';
 import { aggregationStore } from './aggregation-store';
 import { animationStore } from './animation-store';
+import { extraChartStore } from './extra-chart-store';
 import { gameplayStore } from './gameplay-store';
 import { roomColoringStore, type RoomColorMode } from './room-coloring-store';
 import { roomDisplayStore, type RoomVisibility } from './room-display-store';
@@ -270,9 +270,9 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         if (get().selectedRoom !== selectedRoom) {
                             set({ selectedRoom });
                             roomDisplayStore.selectedSceneName.value = selectedRoom;
-                            if (selectedRoom) {
-                                console.log('selected room data', allRoomDataBySceneName.get(selectedRoom));
-                            }
+                            // if (selectedRoom) {
+                            //     console.log('selected room data', allRoomDataBySceneName.get(selectedRoom));
+                            // }
                         }
                     }
                     function setHoveredRoom(hoveredRoom: string | null) {
@@ -355,6 +355,7 @@ function createViewOptionsStore(searchParams: ReadonlyURLSearchParams) {
                         if (previous[0] === extraChartsTimeBounds[0] && previous[1] === extraChartsTimeBounds[1])
                             return;
                         set({ extraChartsTimeBounds });
+                        extraChartStore.timeBounds.value = extraChartsTimeBounds;
                     }
 
                     function setExtraChartsTimeBoundsStopFollowIfOutside(

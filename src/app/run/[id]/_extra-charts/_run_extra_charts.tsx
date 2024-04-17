@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { useId, type ReactNode } from 'react';
 import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { CompletionChart } from './completion-chart';
+import { EssenceChart } from './essence_chart';
 import { GeoChart } from './geo-chart';
 import { GrubChart } from './grub-chart';
 import { HealthChart } from './health-chart';
@@ -85,6 +86,16 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                 )}
                 <GeoChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />
+                {!isV1 && (
+                    <>
+                        <EssenceChart useViewOptionsStore={useViewOptionsStore} />
+                        <hr />
+                        <GrubChart useViewOptionsStore={useViewOptionsStore} />
+                        <hr />
+                        <CompletionChart useViewOptionsStore={useViewOptionsStore} />
+                        <hr />
+                    </>
+                )}
                 <HealthChart useViewOptionsStore={useViewOptionsStore} />
                 <hr />
                 {!isV1 && (
@@ -93,9 +104,13 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                         <hr />
                     </>
                 )}
-                <CompletionChart useViewOptionsStore={useViewOptionsStore} />
-                <hr />
-                <GrubChart useViewOptionsStore={useViewOptionsStore} />
+                {isV1 && (
+                    <>
+                        <CompletionChart useViewOptionsStore={useViewOptionsStore} />
+                        <hr />
+                        <GrubChart useViewOptionsStore={useViewOptionsStore} />
+                    </>
+                )}
                 <div className="snap-start snap-normal" />
             </div>
         </div>

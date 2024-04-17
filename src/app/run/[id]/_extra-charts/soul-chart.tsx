@@ -48,7 +48,7 @@ export function SoulChart({ useViewOptionsStore }: SoulChartProps) {
             header={
                 <>
                     <Unit className="mr-1 inline-block w-6" />
-                    Soul over time
+                    Soul
                 </>
             }
             yAxisLabel="Soul"
