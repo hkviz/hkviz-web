@@ -9,7 +9,7 @@ const OPTIONS = {
 export function useIsVisibleSignal(elementRef: ReadonlySignal<SVGElement | HTMLElement | null>) {
     const isVisible = useSignal(false);
 
-    useSignalEffect(() => {
+    useSignalEffect(function isVisibleEffect() {
         const element = elementRef.value;
         if (element) {
             const observer = new IntersectionObserver((entries, observer) => {

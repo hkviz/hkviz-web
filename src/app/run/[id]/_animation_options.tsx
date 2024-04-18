@@ -53,7 +53,7 @@ function AnimationTimeLineColorCodes() {
     useSignals();
     const timeFrameMs = gameplayStore.timeFrame.value;
 
-    const sceneChanges = useComputed(() => {
+    const sceneChanges = useComputed(function timelineColorCodesSceneChangesComputed() {
         const sceneEvents = gameplayStore.recording.value?.sceneEvents ?? EMPTY_ARRAY;
         const timeframe = gameplayStore.timeFrame.value;
         const theme = themeStore.currentTheme.value;
@@ -89,7 +89,7 @@ function AnimationTimeLineColorCodes() {
 
     const autoSizeCanvas = useAutoSizeCanvas(container, canvas);
 
-    useSignalEffect(() => {
+    useSignalEffect(function drawTimelineColorCodesEffect() {
         const _sceneChanges = sceneChanges.value;
         const _c = autoSizeCanvas.value;
         const timeframe = gameplayStore.timeFrame.value;

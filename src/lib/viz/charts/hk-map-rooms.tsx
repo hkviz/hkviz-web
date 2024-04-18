@@ -34,7 +34,7 @@ function HkMapRoom({
         new Map<RoomSpriteVariant, SVGImageElement | null>(room.sprites.map((sprite) => [sprite.variant, null])),
     );
 
-    useSignalEffect(() => {
+    useSignalEffect(function hkMapRoomOpacityEffect() {
         // update variant opacity
         const variant = states.variant.value;
         imageRefPerVariant.current.forEach((element, v) => {
@@ -50,18 +50,18 @@ function HkMapRoom({
     });
 
     // update hover outline visibility
-    useSignalEffect(() => {
+    useSignalEffect(function hkMapRoomOutlineOpacityEffect() {
         const isHighlighted = highlightSelectedRoom && states.isHovered.value;
         outlineG.current!.style.visibility = isHighlighted ? 'visible' : 'hidden';
     });
 
     // update hover outline color
-    useSignalEffect(() => {
+    useSignalEffect(function hkMapRoomOutlineColorEffect() {
         const color = themeStore.currentTheme.value === 'dark' ? 'white' : 'black';
         outlineG.current!.style.fill = color;
     });
 
-    useSignalEffect(() => {
+    useSignalEffect(function hkMapRoomColorEffect() {
         rootRect.current!.style.fill = alwaysUseAreaAsColor
             ? roomColoringStore.areaColorByGameObjectName.value.get(room.gameObjectName)!
             : roomColoringStore.selectedModeColorByGameObjectName.value.get(room.gameObjectName)!;

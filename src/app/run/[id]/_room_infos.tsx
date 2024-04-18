@@ -92,12 +92,12 @@ function AggregationVariableRow({
 }>) {
     useSignals();
     const selectedRoom = roomDisplayStore.selectedSceneName.value;
-    const aggregatedVariableValue = useComputed(() => {
+    const aggregatedVariableValue = useComputed(function aggregatedVariableComputed() {
         const sceneName = roomDisplayStore.selectedSceneName.value;
         const aggregations = aggregationStore.data.value;
         return sceneName ? aggregations?.countPerScene?.[sceneName]?.[variable] ?? 0 : 0;
     });
-    const formatted = useComputed(() => {
+    const formatted = useComputed(function formatAggregatedVariableValueComputed() {
         return formatAggregatedVariableValue(variable, aggregatedVariableValue.value);
     });
     const variableInfo = aggregationVariableInfos[variable];

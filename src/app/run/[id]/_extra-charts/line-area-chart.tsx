@@ -143,7 +143,6 @@ export const LineAreaChart = memo(function LineAreaChart({
     });
 
     const x = useComputed(() => {
-        console.log('recalc x of line area', debouncedTimeBounds.value);
         return d3.scaleLinear().domain(debouncedTimeBounds.value).range([0, width]);
     });
 
@@ -400,7 +399,6 @@ export const LineAreaChart = memo(function LineAreaChart({
 
     // update x axis
     useSignalEffect(function lineAreaChartUpdateXAxisEffect() {
-        console.log('x axis effect');
         const { xAxis } = svgParts.value;
         if (!isFilledD3Selection(xAxis)) return;
         const _x = x.value;

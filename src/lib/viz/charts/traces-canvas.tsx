@@ -33,7 +33,7 @@ export function HKMapTraces({ zoomHandler }: HKMapTracesProps) {
     const knightPinImage = useSignal<HTMLImageElement | null>(null);
     const shadePinImage = useSignal<HTMLImageElement | null>(null);
 
-    useSignalEffect(() => {
+    useSignalEffect(function tracesCanvasEffect() {
         const _canvas = autoSizeCanvas.value;
         if (!_canvas.canvas || isV1) return;
 
@@ -161,7 +161,7 @@ export function HKMapTraces({ zoomHandler }: HKMapTracesProps) {
         }
     });
 
-    useSignalEffect(() => {
+    useSignalEffect(function tracesZoomEffect() {
         zoomHandler.current = (event) => {
             zoomPosition.value = {
                 offsetX: event.transform.x,

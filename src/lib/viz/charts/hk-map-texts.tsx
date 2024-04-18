@@ -18,7 +18,7 @@ function HkMapText({
     const textRef = useRef<SVGTextElement>(null);
 
     // color
-    useSignalEffect(() => {
+    useSignalEffect(function hkMapTextColorEffect() {
         const colorMode = roomColoringStore.colorMode.value;
         const theme = themeStore.currentTheme.value;
 
@@ -32,7 +32,7 @@ function HkMapText({
     });
 
     // opacity
-    useSignalEffect(() => {
+    useSignalEffect(function hkMapTextOpacityEffect() {
         const typeVisible =
             textData.type === 'area' ? roomDisplayStore.showAreaNames.value : roomDisplayStore.showSubAreaNames.value;
 

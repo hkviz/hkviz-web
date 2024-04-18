@@ -3,7 +3,7 @@ import { viewportStore } from '../stores/viewport-store';
 
 export function useElementSize<T extends HTMLElement>(element: ReadonlySignal<T | null>) {
     const size = useSignal({ width: element.value?.offsetWidth ?? 0, height: element.value?.offsetHeight ?? 0 });
-    useSignalEffect(() => {
+    useSignalEffect(function elementSizeEffect() {
         const _element = element.value;
         if (!_element) return;
 
@@ -27,7 +27,7 @@ export function useAutoSizeCanvas(
 ) {
     const containerSize = useElementSize(container);
 
-    return useComputed(() => {
+    return useComputed(function autoSizeCanvasResizingComputed() {
         const _canvas = canvas.value;
         const _containerSize = containerSize.value;
 
