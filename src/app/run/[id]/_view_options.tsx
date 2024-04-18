@@ -3,20 +3,20 @@
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
+import { useSignals } from '@preact/signals-react/runtime';
 import { LayoutDashboard, Palette, Spline } from 'lucide-react';
-import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
+import { roomColoringStore } from '~/lib/stores/room-coloring-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { traceStore } from '~/lib/stores/trace-store';
+import { uiStore } from '~/lib/stores/ui-store';
 
-export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const isV1 = useViewOptionsStore((s) => s.isV1());
+export function ViewOptions() {
+    useSignals();
+    const isV1 = uiStore.isV1.value;
 
-    const roomVisibility = useViewOptionsStore((s) => s.roomVisibility);
-    const setRoomVisibility = useViewOptionsStore((s) => s.setRoomVisibility);
-
-    const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
-    const setTraceVisibility = useViewOptionsStore((s) => s.setTraceVisibility);
-
-    const roomColors = useViewOptionsStore((s) => s.roomColorMode);
-    const setRoomColors = useViewOptionsStore((s) => s.setRoomColors);
+    const roomVisibility = roomDisplayStore.roomVisibility.value;
+    const traceVisibility = traceStore.visibility.value;
+    const roomColorMode = roomColoringStore.colorMode.value;
 
     return (
         <Table className="w-full">
@@ -29,7 +29,12 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                         </Label>
                     </TableHead>
                     <TableCell className={isV1 ? '' : 'p-1'}>
-                        <Select value={roomVisibility} onValueChange={setRoomVisibility}>
+                        <Select
+                            value={roomVisibility}
+                            onValueChange={(v) => {
+                                roomDisplayStore.roomVisibility.value = v as any;
+                            }}
+                        >
                             <SelectTrigger id="visibleRoomSelectTrigger">
                                 <SelectValue placeholder="Room visibility" />
                             </SelectTrigger>
@@ -54,7 +59,12 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                         </Label>
                     </TableHead>
                     <TableCell className={isV1 ? '' : 'px-1 py-2'}>
-                        <Select value={traceVisibility} onValueChange={setTraceVisibility}>
+                        <Select
+                            value={traceVisibility}
+                            onValueChange={(v) => {
+                                traceStore.visibility.value = v as any;
+                            }}
+                        >
                             <SelectTrigger id="traceVisibilitySelectTrigger">
                                 <SelectValue placeholder="Trace visibility" />
                             </SelectTrigger>
@@ -79,7 +89,12 @@ export function ViewOptions({ useViewOptionsStore }: { useViewOptionsStore: UseV
                         </Label>
                     </TableHead>
                     <TableCell className={isV1 ? '' : 'p-2'}>
-                        <Select value={roomColors} onValueChange={setRoomColors}>
+                        <Select
+                            value={roomColorMode}
+                            onValueChange={(m) => {
+                                roomColoringStore.setRoomColorMode(m as any);
+                            }}
+                        >
                             <SelectTrigger id="roomColorSelectTrigger">
                                 <SelectValue placeholder="Room colors" />
                             </SelectTrigger>

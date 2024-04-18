@@ -2,23 +2,21 @@ import { Card } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
+import { useSignals } from '@preact/signals-react/runtime';
 import { Fullscreen, Text } from 'lucide-react';
 import { useId } from 'react';
-import { type UseViewOptionsStore, type ZoomFollowTarget } from '~/lib/stores/view-options-store';
+import { ZoomFollowTarget, mapZoomStore } from '~/lib/stores/map-zoom-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
 
-export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+export function MapOverlayOptions() {
+    useSignals();
     const id = useId();
-    const showAreaNames = useViewOptionsStore((s) => s.showAreaNames);
-    const showSubAreaNames = useViewOptionsStore((s) => s.showSubAreaNames);
-    const setShowAreaNames = useViewOptionsStore((s) => s.setShowAreaNames);
-    const setShowSubAreaNames = useViewOptionsStore((s) => s.setShowSubAreaNames);
+    const showAreaNames = roomDisplayStore.showAreaNames.value;
+    const showSubAreaNames = roomDisplayStore.showSubAreaNames.value;
 
-    const zoomFollowTarget = useViewOptionsStore((s) => s.zoomFollowTarget);
-    const setZoomFollowTarget = useViewOptionsStore((s) => s.setZoomFollowTarget);
-    const zoomFollowEnabled = useViewOptionsStore((s) => s.zoomFollowEnabled);
-    const setZoomFollowEnabled = useViewOptionsStore((s) => s.setZoomFollowEnabled);
-    const zoomFollowTransition = useViewOptionsStore((s) => s.zoomFollowTransition);
-    const setZoomFollowTransition = useViewOptionsStore((s) => s.setZoomFollowTransition);
+    const zoomFollowTarget = mapZoomStore.target.value;
+    const zoomFollowEnabled = mapZoomStore.enabled.value;
+    const zoomFollowTransition = mapZoomStore.transition.value;
 
     return (
         <Card className="flex flex-col gap-2 p-3">
@@ -32,7 +30,7 @@ export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore
                         <Checkbox
                             id={id + 'show_area_names'}
                             checked={showAreaNames}
-                            onCheckedChange={setShowAreaNames}
+                            onCheckedChange={(c) => (roomDisplayStore.showAreaNames.value = c === true)}
                         />
                         <label
                             htmlFor={id + 'show_area_names'}
@@ -45,7 +43,7 @@ export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore
                         <Checkbox
                             id={id + 'show_sub_area_names'}
                             checked={showSubAreaNames}
-                            onCheckedChange={setShowSubAreaNames}
+                            onCheckedChange={(c) => (roomDisplayStore.showSubAreaNames.value = c === true)}
                         />
                         <label
                             htmlFor={id + 'show_sub_area_names'}
@@ -64,8 +62,8 @@ export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore
                     <Select
                         value={zoomFollowTarget}
                         onValueChange={(v) => {
-                            setZoomFollowEnabled(true);
-                            setZoomFollowTarget(v as ZoomFollowTarget);
+                            mapZoomStore.enabled.value = true;
+                            mapZoomStore.target.value = v as ZoomFollowTarget;
                         }}
                     >
                         <SelectTrigger className="h-8 w-fit py-1 pl-2 pr-1 text-[0.7rem]">
@@ -88,7 +86,9 @@ export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore
                         <Checkbox
                             id={id + 'zoom_follow_zone'}
                             checked={zoomFollowEnabled}
-                            onCheckedChange={setZoomFollowEnabled}
+                            onCheckedChange={(c) => {
+                                mapZoomStore.enabled.value = c === true;
+                            }}
                         />
                         <label
                             htmlFor={id + 'zoom_follow_zone'}
@@ -101,7 +101,9 @@ export function MapOverlayOptions({ useViewOptionsStore }: { useViewOptionsStore
                         <Checkbox
                             id={id + 'zoom_follow_transition'}
                             checked={zoomFollowTransition}
-                            onCheckedChange={setZoomFollowTransition}
+                            onCheckedChange={(c) => {
+                                mapZoomStore.transition.value = c === true;
+                            }}
                             disabled={!zoomFollowEnabled}
                         />
                         <label

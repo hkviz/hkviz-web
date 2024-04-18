@@ -1,8 +1,5 @@
 import Image from 'next/image';
-import {
-    type AggregationVariable,
-    type aggregationVariableInfos,
-} from '~/lib/viz/recording-files/run-aggregation-store';
+import { type AggregationVariable, type aggregationVariableInfos } from '~/lib/stores/aggregation-store';
 
 export function AggregationVariableIcon({
     variable,

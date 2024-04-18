@@ -1,60 +1,61 @@
+import { useSignal, useSignalEffect } from '@preact/signals-react';
+import { useSignals } from '@preact/signals-react/runtime';
 import Image from 'next/image';
-import { useEffect, useRef, type MutableRefObject, type RefObject } from 'react';
-import useEvent from 'react-use-event-hook';
-import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
+import { type MutableRefObject, type RefObject } from 'react';
+import { animationStore } from '~/lib/stores/animation-store';
+import { gameplayStore } from '~/lib/stores/gameplay-store';
+import { traceStore } from '~/lib/stores/trace-store';
+import { uiStore } from '~/lib/stores/ui-store';
 import { binarySearchLastIndexBefore } from '~/lib/utils/binary-search';
-import { assertNever } from '~/lib/utils/utils';
+import { useAutoSizeCanvas } from '~/lib/utils/canvas';
+import { signalRef } from '~/lib/utils/signal-ref';
 import knightPinSrc from '../../../../public/ingame-sprites/Map_Knight_Pin_Compass.png';
 import shadePinSrc from '../../../../public/ingame-sprites/pin/Shade_Pin.png';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { playerPositionToMapPosition } from '../map-data/player-position';
 import { scale } from '../map-data/scaling';
-import { type PlayerPositionEvent } from '../recording-files/events/player-position-event';
 import { Vector2 } from '../types/vector2';
 
 export interface HKMapTracesProps {
-    useViewOptionsStore: UseViewOptionsStore;
     containerRef: RefObject<HTMLDivElement>;
     zoomHandler: MutableRefObject<((event: any) => void) | undefined>;
 }
 
 const EMPTY_ARRAY = [] as const;
 
-export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: HKMapTracesProps) {
-    const isV1 = useViewOptionsStore((s) => s.isV1());
-    const zoomPosition = useRef({ offsetX: 0, offsetY: 0, scale: 1 });
-    const canvasSizeInUnits = useRef({ width: 0, height: 0, pixelRatio: 1 });
-    const recording = useViewOptionsStore((s) => s.recording);
-    const knightPinImage = useRef<HTMLImageElement>(null);
-    const shadePinImage = useRef<HTMLImageElement>(null);
+export function HKMapTraces({ zoomHandler }: HKMapTracesProps) {
+    useSignals();
+    const isV1 = uiStore.isV1.value;
+    const container = useSignal<HTMLDivElement | null>(null);
+    const canvas = useSignal<HTMLCanvasElement | null>(null);
+    const autoSizeCanvas = useAutoSizeCanvas(container, canvas);
+    const zoomPosition = useSignal({ offsetX: 0, offsetY: 0, scale: 1 });
+    const knightPinImage = useSignal<HTMLImageElement | null>(null);
+    const shadePinImage = useSignal<HTMLImageElement | null>(null);
 
-    const positionEvents: readonly PlayerPositionEvent[] =
-        recording?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
-
-    const canvas = useRef<HTMLCanvasElement>(null);
-
-    const draw = useEvent(() => {
-        if (!canvas.current || isV1) return;
+    useSignalEffect(() => {
+        const _canvas = autoSizeCanvas.value;
+        if (!_canvas.canvas || isV1) return;
 
         // scaling
         const boundsAspectRatio = mapVisualExtends.size.x / mapVisualExtends.size.y;
-        const canvasAspectRatio = canvasSizeInUnits.current.width / canvasSizeInUnits.current.height;
+        const canvasAspectRatio = _canvas.widthInUnits / _canvas.heightInUnits;
 
         const mapDistanceToCanvasUnits =
             boundsAspectRatio > canvasAspectRatio
-                ? canvasSizeInUnits.current.width / mapVisualExtends.size.x
-                : canvasSizeInUnits.current.height / mapVisualExtends.size.y;
+                ? _canvas.widthInUnits / mapVisualExtends.size.x
+                : _canvas.heightInUnits / mapVisualExtends.size.y;
 
-        const scaler = zoomPosition.current.scale * mapDistanceToCanvasUnits;
+        const scaler = zoomPosition.value.scale * mapDistanceToCanvasUnits;
 
         const xOffset =
-            canvasSizeInUnits.current.width / 2 -
+            _canvas.widthInUnits / 2 -
             mapVisualExtends.center.x * mapDistanceToCanvasUnits +
-            zoomPosition.current.offsetX * mapDistanceToCanvasUnits;
+            zoomPosition.value.offsetX * mapDistanceToCanvasUnits;
         const yOffset =
-            canvasSizeInUnits.current.height / 2 -
+            _canvas.heightInUnits / 2 -
             mapVisualExtends.center.y * mapDistanceToCanvasUnits +
-            zoomPosition.current.offsetY * mapDistanceToCanvasUnits;
+            zoomPosition.value.offsetY * mapDistanceToCanvasUnits;
         function x(v: number) {
             return v * scaler + xOffset;
         }
@@ -63,28 +64,29 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         }
 
         // animation
-        const storeValue = useViewOptionsStore.getState();
-        const minMsIntoGame = storeValue.animationMsIntoGame - storeValue.traceAnimationLengthMs;
-        const maxMsIntoGame = storeValue.animationMsIntoGame;
+        const minMsIntoGame = animationStore.msIntoGame.value - traceStore.lengthMs.value;
+        const maxMsIntoGame = animationStore.msIntoGame.value;
+
+        const positionEvents = gameplayStore.recording.value?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
+
+        const visibility = traceStore.visibility.value;
 
         const firstIndex =
-            storeValue.traceVisibility === 'animated' &&
-            positionEvents.length > 0 &&
-            minMsIntoGame > positionEvents[0]!.msIntoGame
+            visibility === 'animated' && positionEvents.length > 0 && minMsIntoGame > positionEvents[0]!.msIntoGame
                 ? binarySearchLastIndexBefore(positionEvents, minMsIntoGame, (v) => v.msIntoGame)
                 : 0;
 
-        const ctx = canvas.current.getContext('2d');
+        const ctx = _canvas.canvas.getContext('2d');
         if (!ctx) return;
 
-        ctx.clearRect(0, 0, canvasSizeInUnits.current.width, canvasSizeInUnits.current.height);
+        ctx.clearRect(0, 0, _canvas.widthInUnits, _canvas.heightInUnits);
 
-        if (storeValue.traceVisibility === 'hide' || firstIndex === -1) return;
+        if (visibility === 'hide' || firstIndex === -1) return;
 
         ctx.fillStyle = 'transparent';
         // using sqrt so the line becomes thicker when zooming in, but not at the same speed
         // as everything else grows.
-        const baseLineWidth = mapDistanceToCanvasUnits * zoomPosition.current.scale ** 0.5;
+        const baseLineWidth = mapDistanceToCanvasUnits * zoomPosition.value.scale ** 0.5;
 
         let i = firstIndex;
         let event = positionEvents[i];
@@ -93,12 +95,10 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         ctx.strokeStyle = `rgb(225 29 72/1)`; // tailwind rose-600
         const dashArray = [baseLineWidth * 1, baseLineWidth * 2];
 
-        while (event && (storeValue.traceVisibility === 'all' || event.msIntoGame <= maxMsIntoGame)) {
+        while (event && (visibility === 'all' || event.msIntoGame <= maxMsIntoGame)) {
             if (previousEvent) {
                 const opacity =
-                    storeValue.traceVisibility === 'animated'
-                        ? 1 - (maxMsIntoGame - event.msIntoGame) / storeValue.traceAnimationLengthMs
-                        : 1;
+                    visibility === 'animated' ? 1 - (maxMsIntoGame - event.msIntoGame) / traceStore.lengthMs.value : 1;
 
                 ctx.globalAlpha = opacity ** 0.5; // fade out slower
                 ctx.beginPath();
@@ -118,14 +118,15 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         }
 
         // shade pin
-        const frameEvent = recording?.frameEndEventFromMs(storeValue.animationMsIntoGame);
-        if (storeValue.traceVisibility === 'animated' && recording && frameEvent && frameEvent.shadeScene != 'None') {
+        const frameEvent = animationStore.currentFrameEndEvent.value;
+        const recording = gameplayStore.recording.value;
+        if (traceStore.visibility.value === 'animated' && recording && frameEvent && frameEvent.shadeScene != 'None') {
             const mapPosition = playerPositionToMapPosition(
                 new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),
                 recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene)!,
             );
             if (mapPosition) {
-                const shadePin = shadePinImage.current!;
+                const shadePin = shadePinImage.value!;
                 const shadePinSize = baseLineWidth * 12;
                 ctx.shadowColor = 'rgba(255,255,255,0.6)';
                 ctx.shadowOffsetX = 0;
@@ -144,11 +145,11 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
 
         // knight pin
         if (
-            storeValue.traceVisibility === 'animated' &&
+            visibility === 'animated' &&
             previousEvent &&
             previousEvent.msIntoGame + 30000 >= maxMsIntoGame // 15000
         ) {
-            const knightPin = knightPinImage.current!;
+            const knightPin = knightPinImage.value!;
             const knightPinSize = baseLineWidth * 15;
             ctx.drawImage(
                 knightPin,
@@ -160,77 +161,33 @@ export function HKMapTraces({ useViewOptionsStore, containerRef, zoomHandler }: 
         }
     });
 
-    useEffect(() => {
-        function containerSizeChanged() {
-            if (!canvas.current || !containerRef.current) return;
-
-            canvasSizeInUnits.current.width = containerRef.current.offsetWidth;
-            canvasSizeInUnits.current.height = containerRef.current.offsetHeight;
-            canvasSizeInUnits.current.pixelRatio = window.devicePixelRatio;
-
-            canvas.current.width = containerRef.current.offsetWidth * canvasSizeInUnits.current.pixelRatio;
-            canvas.current.height = containerRef.current.offsetHeight * canvasSizeInUnits.current.pixelRatio;
-            const ctx = canvas.current.getContext('2d')!;
-            ctx.scale(canvasSizeInUnits.current.pixelRatio, canvasSizeInUnits.current.pixelRatio);
-
-            // canvas.current
-            //     .attr('width', containerRef.current.offsetWidth)
-            //     .attr('height', containerRef.current.offsetHeight);
-            draw();
-        }
-        containerSizeChanged();
-
-        const resizeObserver = new ResizeObserver(containerSizeChanged);
-
-        resizeObserver.observe(containerRef.current!);
-
-        return () => {
-            resizeObserver.disconnect();
-        };
-    }, [containerRef, draw]);
-
-    useEffect(() => {
+    useSignalEffect(() => {
         zoomHandler.current = (event) => {
-            zoomPosition.current = {
+            zoomPosition.value = {
                 offsetX: event.transform.x,
                 offsetY: event.transform.y,
                 scale: event.transform.k,
             };
-            draw();
         };
-    }, [draw, zoomHandler]);
-
-    useEffect(() => {
-        return useViewOptionsStore.subscribe(
-            (s) => {
-                switch (s.traceVisibility) {
-                    // different for hide and all, so rendering still triggers when changing visibility
-                    case 'hide':
-                        return -2;
-                    case 'all':
-                        return -1;
-                    case 'animated':
-                        return s.animationMsIntoGame;
-                    default:
-                        assertNever(s.traceVisibility);
-                }
-            },
-            () => {
-                draw();
-            },
-            { fireImmediately: true },
-        );
-    }, [draw, useViewOptionsStore]);
-
-    useEffect(() => {
-        draw();
-    }, [draw, positionEvents]);
+    });
 
     return (
-        <>
-            <Image src={knightPinSrc} alt="knight pin" className="hidden" ref={knightPinImage} loading="eager" />
-            <Image src={shadePinSrc} alt="shade pin" className="hidden" ref={shadePinImage} loading="eager" />
-            <canvas ref={canvas} className="pointer-events-none absolute inset-0 h-full w-full" />
-        </>
+        <div className="pointer-events-none absolute inset-0" ref={signalRef(container)}>
+            <Image
+                src={knightPinSrc}
+                alt="knight pin"
+                className="hidden"
+                ref={signalRef(knightPinImage)}
+                loading="eager"
+            />
+            <Image
+                src={shadePinSrc}
+                alt="shade pin"
+                className="hidden"
+                ref={signalRef(shadePinImage)}
+                loading="eager"
+            />
+            <canvas ref={signalRef(canvas)} className="pointer-events-none absolute inset-0 h-full w-full" />
+        </div>
     );
 }

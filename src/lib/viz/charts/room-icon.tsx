@@ -2,7 +2,6 @@
 
 import { cn } from '@/lib/utils';
 import { memo, useMemo } from 'react';
-import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
 import { type RoomInfo } from '../map-data/rooms';
 import { Bounds } from '../types/bounds';
 import { Vector2 } from '../types/vector2';
@@ -11,10 +10,9 @@ import { HkMapRooms } from './hk-map-rooms';
 export interface HKMapProps {
     className?: string;
     roomInfos: RoomInfo[];
-    useViewOptionsStore: UseViewOptionsStore;
 }
 
-export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos, useViewOptionsStore }: HKMapProps) {
+export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos }: HKMapProps) {
     const roomInfosOfRoom = useMemo(() => {
         const containingBounds = Bounds.fromContainingBounds(roomInfos.map((it) => it.allSpritesScaledPositionBounds));
         const smallerRoomSizeProportion = containingBounds.size.minElement() / containingBounds.size.maxElement();

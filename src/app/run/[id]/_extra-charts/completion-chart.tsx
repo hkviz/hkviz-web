@@ -1,5 +1,4 @@
 import { BadgePercent } from 'lucide-react';
-import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
@@ -29,13 +28,9 @@ const variables: LineChartVariableDescription[] = [
     // },
 ];
 
-export interface CompletionChartProps {
-    useViewOptionsStore: UseViewOptionsStore;
-}
-export function CompletionChart({ useViewOptionsStore }: CompletionChartProps) {
+export function CompletionChart() {
     return (
         <LineAreaChart
-            useViewOptionsStore={useViewOptionsStore}
             variables={variables}
             header={
                 <>

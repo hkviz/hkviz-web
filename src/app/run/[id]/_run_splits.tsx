@@ -3,8 +3,14 @@ import { CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
+import { useSignals } from '@preact/signals-react/runtime';
 import { forwardRef, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
+import { animationStore } from '~/lib/stores/animation-store';
+import { hoverMsStore } from '~/lib/stores/hover-ms-store';
 import { changeRoomColorForLightTheme } from '~/lib/stores/room-coloring-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { splitsStore } from '~/lib/stores/splits-store';
+import { uiStore } from '~/lib/stores/ui-store';
 import { assertNever } from '~/lib/utils/utils';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import {
@@ -12,7 +18,6 @@ import {
     type RecordingSplit,
     type RecordingSplitGroup,
 } from '~/lib/viz/recording-files/recording-splits';
-import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 import { Duration } from './_duration';
 
 type RowActiveState = 'past' | 'next' | 'future';
@@ -20,11 +25,10 @@ type RowActiveState = 'past' | 'next' | 'future';
 interface RowProps {
     split: RecordingSplit;
     activeState: RowActiveState;
-    useViewOptionsStore: UseViewOptionsStore;
 }
 
 const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitRow(
-    { split, activeState, useViewOptionsStore }: RowProps,
+    { split, activeState }: RowProps,
     ref: any,
 ) {
     // const activeStateClasses =
@@ -56,8 +60,8 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
     const button = useMemo(() => {
         function handleClick() {
             console.log('split clicked', split);
-            useViewOptionsStore.getState().setAnimationMsIntoGame(split.msIntoGame);
-            useViewOptionsStore.getState().showMapIfOverview();
+            animationStore.setMsIntoGame(split.msIntoGame);
+            uiStore.showMapIfOverview();
 
             function markClicked() {
                 clearTimeout(hasClicked.current.timeout);
@@ -70,11 +74,11 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
             const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {
                 if (activeStateRef.current !== 'next') {
-                    useViewOptionsStore.getState().setSelectedRoom(sceneName);
+                    roomDisplayStore.setSelectedRoom(sceneName);
                     hasClicked.current.hasClicked = true;
                     markClicked();
                 } else {
-                    useViewOptionsStore.getState().togglePinnedRoom(sceneName);
+                    roomDisplayStore.togglePinnedRoom(sceneName);
                     markClicked();
                 }
             }
@@ -82,17 +86,17 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
         function handleMouseEnter() {
             const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {
-                useViewOptionsStore.getState().setHoveredRoom(sceneName);
-                useViewOptionsStore.getState().setSelectedRoomIfNotPinned(sceneName);
+                roomDisplayStore.setHoveredRoom(sceneName);
+                roomDisplayStore.setSelectedRoomIfNotPinned(sceneName);
             }
-            useViewOptionsStore.getState().setHoveredMsIntoGame(split.msIntoGame);
+            hoverMsStore.setHoveredMsIntoGame(split.msIntoGame);
         }
         function handleMouseLeave() {
             const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {
-                useViewOptionsStore.getState().unsetHoveredRoom(sceneName);
+                roomDisplayStore.unsetHoveredRoom(sceneName);
             }
-            useViewOptionsStore.getState().unsetHoveredMsIntoGame(split.msIntoGame);
+            hoverMsStore.unsetHoveredMsIntoGame(split.msIntoGame);
         }
 
         let icon: ReactNode | undefined = undefined;
@@ -140,7 +144,7 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
                 <Duration ms={split.msIntoGame} className="pr-3" withTooltip={false} />
             </button>
         );
-    }, [split, useViewOptionsStore, activeStateRef]);
+    }, [split, activeStateRef]);
 
     return (
         <TableRow ref={ref}>
@@ -148,13 +152,11 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
         </TableRow>
     );
 });
-interface RunSplitsRowsProps {
-    useViewOptionsStore: UseViewOptionsStore;
-}
 
-function RunSplitsRows({ useViewOptionsStore }: RunSplitsRowsProps) {
-    const filteredSplits = useViewOptionsStore((state) => state.filteredSplits);
-    const nextSplitIndex = useViewOptionsStore((state) => state.nextSplitIndex);
+function RunSplitsRows() {
+    useSignals();
+    const filteredSplits = splitsStore.filteredSplits.value;
+    const nextSplitIndex = splitsStore.nextSplitIndex.value;
 
     const scrollDivRef = useRef<HTMLDivElement | null>(null);
     const splitRefs = useRef<(HTMLTableRowElement | null)[]>([]);
@@ -203,7 +205,6 @@ function RunSplitsRows({ useViewOptionsStore }: RunSplitsRowsProps) {
                                 split={split}
                                 activeState={activeState}
                                 ref={(el) => (splitRefs.current[index] = el)}
-                                useViewOptionsStore={useViewOptionsStore}
                             />
                         );
                     })}
@@ -214,22 +215,20 @@ function RunSplitsRows({ useViewOptionsStore }: RunSplitsRowsProps) {
 }
 
 interface RunSplitsProps {
-    useViewOptionsStore: UseViewOptionsStore;
     resizeOptions: ReactNode;
 }
 
-export function RunSplits({ useViewOptionsStore, resizeOptions }: RunSplitsProps) {
+export function RunSplits({ resizeOptions }: RunSplitsProps) {
+    useSignals();
     const id = useId();
-    const setVisibleSplitGroups = useViewOptionsStore((state) => state.setVisibleSplitGroups);
-    const visibleSplitGroups = useViewOptionsStore((state) => state.visibleSplitGroups);
+    const visibleSplitGroups = splitsStore.visibleSplitGroups.value;
 
-    const setVisibleSplitGroupChecked = useCallback(
-        (group: RecordingSplitGroup, checked: boolean) => {
-            const currentGroup = useViewOptionsStore.getState().visibleSplitGroups;
-            setVisibleSplitGroups(checked ? [...currentGroup, group] : currentGroup.filter((g) => g !== group));
-        },
-        [setVisibleSplitGroups, useViewOptionsStore],
-    );
+    const setVisibleSplitGroupChecked = useCallback((group: RecordingSplitGroup, checked: boolean) => {
+        const currentGroup = splitsStore.visibleSplitGroups.value;
+        splitsStore.visibleSplitGroups.value = checked
+            ? [...currentGroup, group]
+            : currentGroup.filter((g) => g !== group);
+    }, []);
 
     return (
         <div className="flex h-full flex-col">
@@ -261,7 +260,7 @@ export function RunSplits({ useViewOptionsStore, resizeOptions }: RunSplitsProps
                 })}
             </div>
             <hr />
-            <RunSplitsRows useViewOptionsStore={useViewOptionsStore} />
+            <RunSplitsRows />
         </div>
     );
 }

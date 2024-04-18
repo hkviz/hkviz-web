@@ -6,41 +6,34 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/u
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useMemo, type CSSProperties } from 'react';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
-import {
-    allRoomDataBySceneName,
-    allRoomDataIncludingSubspritesBySceneName,
-    mainRoomDataBySceneName,
-} from '~/lib/viz/map-data/rooms';
-import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
+import { allRoomDataIncludingSubspritesBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@/components/ui/context-menu';
 import { Toggle } from '@/components/ui/toggle';
+import { useComputed, useSignals } from '@preact/signals-react/runtime';
 import { Palette, Pin, PinOff } from 'lucide-react';
 import { AggregationVariableIcon } from '~/app/_components/aggregation_variable_icon';
-import { useThemeStore } from '~/lib/stores/theme-store';
-import { assertNever } from '~/lib/utils/utils';
-import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
 import {
-    AggregationVariable,
+    aggregationStore,
     aggregationVariableInfos,
     aggregationVariables,
     formatAggregatedVariableValue,
-} from '~/lib/viz/recording-files/run-aggregation-store';
+    type AggregationVariable,
+} from '~/lib/stores/aggregation-store';
+import { roomColoringStore } from '~/lib/stores/room-coloring-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { useThemeStore } from '~/lib/stores/theme-store';
+import { uiStore } from '~/lib/stores/ui-store';
+import { assertNever } from '~/lib/utils/utils';
+import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
 import { RoomColorCurveContextMenuItems } from './_room-color-curve-menu';
 
-function AggregationVariableToggles({
-    useViewOptionsStore,
-    variable,
-}: {
-    useViewOptionsStore: UseViewOptionsStore;
-    variable: AggregationVariable;
-}) {
-    const roomColors = useViewOptionsStore((s) => s.roomColorMode);
-    const roomColorVar1 = useViewOptionsStore((s) => s.roomColorVar1);
-    const roomColorVar1Curve = useViewOptionsStore((s) => s.roomColorVar1Curve);
-    const cycleRoomColorVar1 = useViewOptionsStore((s) => s.cycleRoomColorVar1);
-    const showMapIfOverview = useViewOptionsStore((s) => s.showMapIfOverview);
-    const isV1 = useViewOptionsStore((s) => s.isV1());
+function AggregationVariableToggles({ variable }: { variable: AggregationVariable }) {
+    useSignals();
+    const roomColors = roomColoringStore.colorMode.value;
+    const roomColorVar1 = roomColoringStore.var1.value;
+    const roomColorVar1Curve = roomColoringStore.var1Curve.value;
+    const isV1 = uiStore.isV1.value;
 
     const isActive = roomColors === '1-var' && roomColorVar1 === variable;
 
@@ -59,8 +52,8 @@ function AggregationVariableToggles({
                             variant="outline"
                             pressed={roomColorVar1 === variable && roomColors === '1-var'}
                             onPressedChange={() => {
-                                cycleRoomColorVar1(variable);
-                                showMapIfOverview();
+                                roomColoringStore.cycleRoomColorVar1(variable);
+                                uiStore.showMapIfOverview();
                             }}
                             className={
                                 'relative h-10 w-10 rounded-full data-[state=on]:text-white ' +
@@ -84,7 +77,7 @@ function AggregationVariableToggles({
                         </Toggle>
                     </ContextMenuTrigger>
                     <ContextMenuContent>
-                        <RoomColorCurveContextMenuItems useViewOptionsStore={useViewOptionsStore} variable={variable} />
+                        <RoomColorCurveContextMenuItems variable={variable} />
                     </ContextMenuContent>
                 </ContextMenu>
             )}
@@ -92,17 +85,21 @@ function AggregationVariableToggles({
     );
 }
 
-function AggregationVariable({
-    useViewOptionsStore,
+function AggregationVariableRow({
     variable,
 }: React.PropsWithChildren<{
-    useViewOptionsStore: UseViewOptionsStore;
     variable: AggregationVariable;
 }>) {
-    const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
-    const aggregatedVariableValue = useViewOptionsStore((s) =>
-        selectedRoom ? s.aggregatedRunData?.countPerScene?.[selectedRoom]?.[variable] ?? 0 : 0,
-    );
+    useSignals();
+    const selectedRoom = roomDisplayStore.selectedSceneName.value;
+    const aggregatedVariableValue = useComputed(() => {
+        const sceneName = roomDisplayStore.selectedSceneName.value;
+        const aggregations = aggregationStore.data.value;
+        return sceneName ? aggregations?.countPerScene?.[sceneName]?.[variable] ?? 0 : 0;
+    });
+    const formatted = useComputed(() => {
+        return formatAggregatedVariableValue(variable, aggregatedVariableValue.value);
+    });
     const variableInfo = aggregationVariableInfos[variable];
 
     if (!selectedRoom) return null;
@@ -119,22 +116,16 @@ function AggregationVariable({
                     <TooltipContent>{variableInfo.description}</TooltipContent>
                 </Tooltip>
             </TableHead>
-            <TableCell className="w-1 p-1 pr-6 text-right">
-                {formatAggregatedVariableValue(variable, aggregatedVariableValue)}
-            </TableCell>
-            <AggregationVariableToggles useViewOptionsStore={useViewOptionsStore} variable={variable} />
+            <TableCell className="w-1 p-1 pr-6 text-right">{formatted}</TableCell>
+            <AggregationVariableToggles variable={variable} />
         </TableRow>
     );
 }
 
-function AggregationVariables({
-    useViewOptionsStore,
-}: React.PropsWithChildren<{
-    useViewOptionsStore: UseViewOptionsStore;
-}>) {
-    const aggregatedMaxs = useViewOptionsStore((s) => s.aggregatedRunData?.maxOverScenes);
-    const viewNeverHappenedAggregations = useViewOptionsStore((s) => s.viewNeverHappenedAggregations);
-    const setViewNeverHappenedAggregations = useViewOptionsStore((s) => s.setViewNeverHappenedAggregations);
+function AggregationVariables() {
+    useSignals();
+    const aggregatedMaxs = aggregationStore.data.value?.maxOverScenes;
+    const viewNeverHappenedAggregations = aggregationStore.viewNeverHappenedAggregations.value;
 
     const neverHappenedEvents = aggregationVariables.filter((variable) => !aggregatedMaxs?.[variable]);
 
@@ -143,7 +134,7 @@ function AggregationVariables({
             {aggregationVariables
                 .filter((it) => viewNeverHappenedAggregations || !neverHappenedEvents.includes(it))
                 .map((variable) => (
-                    <AggregationVariable key={variable} useViewOptionsStore={useViewOptionsStore} variable={variable} />
+                    <AggregationVariableRow key={variable} variable={variable} />
                 ))}
             {neverHappenedEvents.length !== 0 && (
                 <TableRow>
@@ -153,7 +144,9 @@ function AggregationVariables({
                                 <Button
                                     className="h-fit"
                                     variant="outline"
-                                    onClick={() => setViewNeverHappenedAggregations(false)}
+                                    onClick={() => {
+                                        aggregationStore.viewNeverHappenedAggregations.value = false;
+                                    }}
                                 >
                                     Hide never occurred events
                                 </Button>
@@ -163,7 +156,9 @@ function AggregationVariables({
                                 <Button
                                     className="h-fit"
                                     variant="outline"
-                                    onClick={() => setViewNeverHappenedAggregations(true)}
+                                    onClick={() => {
+                                        aggregationStore.viewNeverHappenedAggregations.value = true;
+                                    }}
                                 >
                                     Show never occurred events (Spoilers)
                                 </Button>
@@ -176,20 +171,18 @@ function AggregationVariables({
     );
 }
 
-export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const isV1 = useViewOptionsStore((s) => s.isV1());
-    const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
-    const selectedRoomPinned = useViewOptionsStore((s) => s.selectedRoomPinned);
-    const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
-    const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
+export function RoomInfo() {
+    useSignals();
+    const isV1 = uiStore.isV1.value;
+    const selectedRoom = roomDisplayStore.selectedSceneName.value;
+    const selectedRoomPinned = roomDisplayStore.selectedScenePinned.value;
 
-    const [mainRoomInfo, allRoomInfos, allRoomInfosIncludingSubsprites] = useMemo(() => {
+    const [mainRoomInfo, allRoomInfosIncludingSubsprites] = useMemo(() => {
         const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
-        const allRoomInfos = selectedRoom ? allRoomDataBySceneName.get(selectedRoom) ?? null : null;
         const allRoomInfosIncludingSubsprites = selectedRoom
             ? allRoomDataIncludingSubspritesBySceneName.get(selectedRoom) ?? null
             : null;
-        return [mainRoomInfo, allRoomInfos, allRoomInfosIncludingSubsprites];
+        return [mainRoomInfo, allRoomInfosIncludingSubsprites];
     }, [selectedRoom]);
 
     const theme = useThemeStore((s) => s.theme);
@@ -230,11 +223,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
         >
             <CardHeader className="flex flex-row items-center p-4 pt-2">
                 {allRoomInfosIncludingSubsprites && (
-                    <HKMapRoom
-                        roomInfos={allRoomInfosIncludingSubsprites}
-                        className="mr-4 h-14 w-14"
-                        useViewOptionsStore={useViewOptionsStore}
-                    />
+                    <HKMapRoom roomInfos={allRoomInfosIncludingSubsprites} className="mr-4 h-14 w-14" />
                 )}
 
                 <div>
@@ -269,7 +258,9 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                             <Button
                                 variant="outline"
                                 size="icon"
-                                onClick={() => setSelectedRoomPinned(false)}
+                                onClick={() => {
+                                    roomDisplayStore.selectedScenePinned.value = false;
+                                }}
                                 className={isV1 ? '' : 'h-8 w-8'}
                             >
                                 <PinOff className={isV1 ? 'h-6 w-6' : 'h-4 w-4'} />
@@ -287,7 +278,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                                 <Button
                                     variant="outline"
                                     size="icon"
-                                    onClick={() => setSelectedRoomPinned(true)}
+                                    onClick={() => (roomDisplayStore.selectedScenePinned.value = true)}
                                     className="h-8 w-8"
                                 >
                                     <Pin className="h-4 w-4" />
@@ -312,7 +303,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                                     key={room.name}
                                     size="sm"
                                     variant={room.name === selectedRoom ? undefined : 'outline'}
-                                    onClick={() => setSelectedRoom(room.name)}
+                                    onClick={() => roomDisplayStore.setSelectedRoom(room.name)}
                                     className="shrink-0"
                                 >
                                     {room.displayName}
@@ -322,7 +313,7 @@ export function RoomInfo({ useViewOptionsStore }: { useViewOptionsStore: UseView
                     )}
                     <Table className="w-full">
                         <TableBody>
-                            <AggregationVariables useViewOptionsStore={useViewOptionsStore} />
+                            <AggregationVariables />
                         </TableBody>
                     </Table>
                 </CardContent>

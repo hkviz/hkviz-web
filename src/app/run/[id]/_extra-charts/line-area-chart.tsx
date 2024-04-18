@@ -2,7 +2,7 @@
 
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
-import { ReadonlySignal } from '@preact/signals-react';
+import { type ReadonlySignal } from '@preact/signals-react';
 import { useComputed, useSignal, useSignalEffect, useSignals } from '@preact/signals-react/runtime';
 import * as d3 from 'd3';
 import { type D3BrushEvent } from 'd3-brush';
@@ -11,11 +11,14 @@ import useEvent from 'react-use-event-hook';
 import { animationStore } from '~/lib/stores/animation-store';
 import { extraChartStore } from '~/lib/stores/extra-chart-store';
 import { gameplayStore } from '~/lib/stores/gameplay-store';
-import { isFilledD3Selection } from '~/lib/utils/d3';
+import { hoverMsStore } from '~/lib/stores/hover-ms-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { uiStore } from '~/lib/stores/ui-store';
+import { d3Ticks, isFilledD3Selection } from '~/lib/utils/d3';
+import { signalRef } from '~/lib/utils/signal-ref';
 import { formatTimeMs } from '~/lib/utils/time';
 import { useIsVisibleSignal } from '~/lib/utils/use-is-visible';
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '~/lib/viz/recording-files/events/frame-end-event';
-import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { type ColorClasses } from './colors';
 import { downScale } from './down-scale';
 
@@ -42,7 +45,6 @@ function isShownInGraph(it: LineChartVariableDescription): it is LineChartShownV
 }
 
 export interface LineAreaChartProps {
-    useViewOptionsStore: UseViewOptionsStore;
     variables: LineChartVariableDescription[];
     yAxisLabel: string;
     header: React.ReactNode;
@@ -52,7 +54,6 @@ export interface LineAreaChartProps {
 }
 
 export const LineAreaChart = memo(function LineAreaChart({
-    useViewOptionsStore,
     variables,
     yAxisLabel,
     header,
@@ -60,36 +61,28 @@ export const LineAreaChart = memo(function LineAreaChart({
     downScaleMaxTimeDelta,
     renderScale = 10,
 }: LineAreaChartProps) {
+    useSignals();
     const variablesPerKey = useMemo(() => {
         return Object.fromEntries(variables.map((it) => [it.key, it] as const));
     }, [variables]);
 
     const svgSignal = useSignal<SVGSVGElement | null>(null);
 
-    const isV1 = useViewOptionsStore((s) => s.isV1());
-    const setExtraChartsTimeBoundsStopFollowIfOutside = useViewOptionsStore(
-        (s) => s.setExtraChartsTimeBoundsStopFollowIfOutside,
-    );
-    const resetExtraChartsTimeBounds = useViewOptionsStore((s) => s.resetExtraChartsTimeBounds);
-    const setHoveredMsIntoGame = useViewOptionsStore((s) => s.setHoveredMsIntoGame);
-    const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
-    const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
-    const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
-    const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
+    const isV1 = uiStore.isV1.value;
 
     const isVisible = useIsVisibleSignal(svgSignal);
 
     const previousTimeBounds = useSignal([0, 0] as readonly [number, number]);
     const debouncedTimeBounds = useComputed<readonly [number, number]>(() => {
-        if (!isVisible.value) return previousTimeBounds.value;
-        const bounds = extraChartStore.timeBounds.value;
+        if (!isVisible.value) return previousTimeBounds.peek();
+        const bounds = extraChartStore.debouncedTimeBounds.value;
         previousTimeBounds.value = bounds;
         return bounds;
     });
     const previousMsIntoGame = useSignal(0);
     const debouncedMsIntoGame = useComputed<number>(() => {
-        if (!isVisible.value) return previousMsIntoGame.value;
-        const ms = animationStore.msIntoGame.value;
+        if (!isVisible.value) return previousMsIntoGame.peek();
+        const ms = extraChartStore.debouncedMsIntoGame.value;
         previousMsIntoGame.value = ms;
         return ms;
     });
@@ -150,13 +143,14 @@ export const LineAreaChart = memo(function LineAreaChart({
     });
 
     const x = useComputed(() => {
+        console.log('recalc x of line area', debouncedTimeBounds.value);
         return d3.scaleLinear().domain(debouncedTimeBounds.value).range([0, width]);
     });
 
     const xNotAnimated = useComputed(() => {
         return d3
             .scaleLinear()
-            .domain([gameplayStore.timeframe.value.min, gameplayStore.timeframe.value.max])
+            .domain([gameplayStore.timeFrame.value.min, gameplayStore.timeFrame.value.max])
             .range([0, width]);
     });
 
@@ -213,10 +207,10 @@ export const LineAreaChart = memo(function LineAreaChart({
         }
 
         if (selection == null) {
-            resetExtraChartsTimeBounds();
+            extraChartStore.resetTimeBounds();
         } else {
             const invSelection = [x.value.invert(selection[0]), x.value.invert(selection[1])] as const;
-            setExtraChartsTimeBoundsStopFollowIfOutside(invSelection);
+            extraChartStore.setTimeBoundsStopFollowIfOutside(invSelection);
         }
         // todo animate axis
         skipNextUpdate.current = true;
@@ -224,7 +218,6 @@ export const LineAreaChart = memo(function LineAreaChart({
     });
 
     const svgParts = useComputed(function lineAreaChartMainSetup() {
-        console.log('main effect');
         const _recording = gameplayStore.recording.value;
         if (!_recording) {
             return {
@@ -313,26 +306,26 @@ export const LineAreaChart = memo(function LineAreaChart({
             .on('mousemove', (e) => {
                 if (isV1) return;
                 const ms = mouseToMsIntoGame(e);
-                setHoveredMsIntoGame(ms);
+                hoverMsStore.setHoveredMsIntoGame(ms);
                 const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
                 if (scene) {
-                    setHoveredRoom(scene);
-                    setSelectedRoomIfNotPinned(scene);
+                    roomDisplayStore.setHoveredRoom(scene);
+                    roomDisplayStore.setSelectedRoomIfNotPinned(scene);
                 }
             })
             .on('mouseleave', () => {
                 if (isV1) return;
-                setHoveredMsIntoGame(null);
-                setHoveredRoom(null);
+                hoverMsStore.setHoveredMsIntoGame(null);
+                roomDisplayStore.setHoveredRoom(null);
             })
             .on('click', (e) => {
                 if (isV1) return;
                 if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
                     const ms = mouseToMsIntoGame(e);
-                    setAnimationMsIntoGame(ms);
+                    animationStore.setMsIntoGame(ms);
                     const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
                     if (scene) {
-                        setSelectedRoom(scene);
+                        roomDisplayStore.setSelectedRoom(scene);
                     }
                 }
             });
@@ -390,7 +383,7 @@ export const LineAreaChart = memo(function LineAreaChart({
         const _x = x.value;
 
         const zeroX = _x(0);
-        const maxX = _x(gameplayStore.timeframe.value.max);
+        const maxX = _x(gameplayStore.timeFrame.value.max);
 
         const scaleX = Math.round(((maxX - zeroX) / width) * 100) / 100;
 
@@ -407,6 +400,7 @@ export const LineAreaChart = memo(function LineAreaChart({
 
     // update x axis
     useSignalEffect(function lineAreaChartUpdateXAxisEffect() {
+        console.log('x axis effect');
         const { xAxis } = svgParts.value;
         if (!isFilledD3Selection(xAxis)) return;
         const _x = x.value;
@@ -414,17 +408,21 @@ export const LineAreaChart = memo(function LineAreaChart({
         const base = xAxis.selectAll('*').empty()
             ? xAxis
             : xAxis.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear);
-        base.call(
-            d3
-                .axisBottom(_x)
-                .tickSizeOuter(0)
-                .ticks(6)
-                .tickSize(6 * renderScale)
-                .tickSizeInner(6 * renderScale)
-                .tickSizeOuter(6 * renderScale)
-                .tickPadding(3 * renderScale)
-                .tickFormat((d) => formatTimeMs(d.valueOf())),
-        );
+        d3Ticks(
+            base.call(
+                d3
+                    .axisBottom(_x)
+                    .tickSizeOuter(0)
+                    .ticks(6)
+                    .tickSize(6 * renderScale)
+                    .tickSizeInner(6 * renderScale)
+                    .tickSizeOuter(6 * renderScale)
+                    .tickPadding(3 * renderScale)
+                    .tickFormat((d) => formatTimeMs(d.valueOf())),
+            ),
+        )
+            .attr('font-size', renderScale * 9)
+            .style('stroke-width', renderScale);
     });
 
     // update y axis
@@ -438,15 +436,19 @@ export const LineAreaChart = memo(function LineAreaChart({
             ? yAxis
             : yAxis.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear);
 
-        base.call(
-            d3
-                .axisLeft(yInSelection.value)
-                .ticks(6)
-                .tickSize(6 * renderScale)
-                .tickSizeInner(6 * renderScale)
-                .tickSizeOuter(6 * renderScale)
-                .tickPadding(3 * renderScale),
-        );
+        d3Ticks(
+            base.call(
+                d3
+                    .axisLeft(yInSelection.value)
+                    .ticks(6)
+                    .tickSize(6 * renderScale)
+                    .tickSizeInner(6 * renderScale)
+                    .tickSizeOuter(6 * renderScale)
+                    .tickPadding(3 * renderScale),
+            ),
+        )
+            .attr('font-size', renderScale * 9)
+            .style('stroke-width', renderScale);
         // .call((g) => g.select('.domain').remove())
         // .call((g) => g.selectAll('.tick line').clone().attr('x2', width).attr('stroke-opacity', 0.1));
     });
@@ -470,11 +472,7 @@ export const LineAreaChart = memo(function LineAreaChart({
         <div className="snap-start snap-normal overflow-hidden">
             <h3 className="-mb-3 pt-2 text-center">{header}</h3>
             <svg
-                ref={(element) => {
-                    if (element !== svgSignal.value) {
-                        svgSignal.value = element;
-                    }
-                }}
+                ref={signalRef(svgSignal)}
                 width={widthWithMargin}
                 height={heightWithMargin}
                 viewBox={`0 0 ${widthWithMargin} ${heightWithMargin}`}

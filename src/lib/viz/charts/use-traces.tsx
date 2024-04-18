@@ -1,6 +1,10 @@
+import { useSignals } from '@preact/signals-react/runtime';
 import type * as d3 from 'd3';
 import { useEffect, useRef, type RefObject } from 'react';
-import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
+import { animationStore } from '~/lib/stores/animation-store';
+import { gameplayStore } from '~/lib/stores/gameplay-store';
+import { traceStore } from '~/lib/stores/trace-store';
+import { uiStore } from '~/lib/stores/ui-store';
 import { SCALE_FACTOR, scale } from '../map-data/scaling';
 import { PlayerPositionEvent } from '../recording-files/events/player-position-event';
 
@@ -14,7 +18,6 @@ function chunk<T>(arr: T[], chunkSize: number) {
 }
 
 interface Props {
-    useViewOptionsStore: UseViewOptionsStore;
     animatedTraceG: RefObject<d3.Selection<SVGGElement, unknown, null, undefined> | undefined>;
     knightPinG: RefObject<d3.Selection<SVGGElement, unknown, null, undefined> | undefined>;
 }
@@ -22,7 +25,8 @@ interface Props {
 const SCALED_LINE_WIDTH = scale(0.05);
 const SCALED_KNIGHT_PIN_SIZE = scale(0.75);
 
-export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }: Props) {
+export function useMapTraces({ animatedTraceG, knightPinG }: Props) {
+    useSignals();
     const animatedTraceChunks = useRef<
         {
             minMsIntoGame: number;
@@ -33,11 +37,11 @@ export function useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG }
     >();
     const knightPin = useRef<d3.Selection<SVGImageElement, unknown, null, undefined> | undefined>();
 
-    const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
-    const traceAnimationLengthMs = useViewOptionsStore((s) => s.traceAnimationLengthMs);
-    const traceVisibility = useViewOptionsStore((s) => s.traceVisibility);
-    const recording = useViewOptionsStore((s) => s.recording);
-    const isV1 = useViewOptionsStore((s) => s.isV1());
+    const animationMsIntoGame = animationStore.msIntoGame.value;
+    const traceAnimationLengthMs = traceStore.lengthMs.value;
+    const traceVisibility = traceStore.visibility.value;
+    const recording = gameplayStore.recording.value;
+    const isV1 = uiStore.isV1.value;
 
     // always 0 when traceVisibility !== 'animated' since that avoids running the effect when animating, but traces are not animating
     const animationMsIntoGameForTrace = traceVisibility === 'animated' ? animationMsIntoGame : 0;

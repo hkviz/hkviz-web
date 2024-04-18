@@ -1,7 +1,6 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import DreamNailImg from '../../../../../public/ingame-sprites/inventory/dream_nail_0003_1.png';
-import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
@@ -23,13 +22,9 @@ const variables: LineChartVariableDescription[] = [
     },
 ];
 
-export interface EssenceChartProps {
-    useViewOptionsStore: UseViewOptionsStore;
-}
-export function EssenceChart({ useViewOptionsStore }: EssenceChartProps) {
+export function EssenceChart() {
     return (
         <LineAreaChart
-            useViewOptionsStore={useViewOptionsStore}
             variables={variables}
             header={
                 <>

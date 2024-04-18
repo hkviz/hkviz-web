@@ -15,6 +15,20 @@ export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 const roomVisibility = signal<RoomVisibility>('visited-animated');
 const selectedSceneName = signal<string | null>(null);
 const hoveredSceneName = signal<string | null>(null);
+const selectedScenePinned = signal(false);
+
+const showAreaNames = signal(true);
+const showSubAreaNames = signal(true);
+
+function reset() {
+    roomVisibility.value = 'visited-animated';
+    selectedSceneName.value = null;
+    hoveredSceneName.value = null;
+    selectedScenePinned.value = false;
+
+    showAreaNames.value = true;
+    showSubAreaNames.value = true;
+}
 
 const selectedRoomZoneFormatted = computed(() => {
     const selected = selectedSceneName.value;
@@ -23,9 +37,6 @@ const selectedRoomZoneFormatted = computed(() => {
     if (!room) return null;
     return room.zoneNameFormatted;
 });
-
-const showAreaNames = signal(true);
-const showSubAreaNames = signal(true);
 
 const hoveredMainRoom = computed(() => {
     const hovered = hoveredSceneName.value;
@@ -112,7 +123,30 @@ const zoneVisible = new Map(
     }),
 );
 
-console.log(zoneVisible);
+function setSelectedRoom(name: string | null) {
+    selectedSceneName.value = name;
+}
+function setHoveredRoom(name: string | null) {
+    roomDisplayStore.hoveredSceneName.value = name;
+}
+function unsetHoveredRoom(name: string | null) {
+    if (hoveredSceneName.value === name) setHoveredRoom(null);
+}
+function setSelectedRoomIfNotPinned(selectedRoom: string | null) {
+    if (selectedScenePinned.value) return;
+    setSelectedRoom(selectedRoom);
+}
+function togglePinnedRoom(selectedRoom: string | null, firstClickUnpinned = false) {
+    console.log('selectedRoom', selectedRoom);
+    if (selectedScenePinned.value && selectedSceneName.value === selectedRoom) {
+        selectedScenePinned.value = false;
+    } else if (firstClickUnpinned && selectedSceneName.value !== selectedRoom && !selectedScenePinned.value) {
+        setSelectedRoom(selectedRoom);
+    } else {
+        setSelectedRoom(selectedRoom);
+        selectedScenePinned.value = true;
+    }
+}
 
 export const roomDisplayStore = {
     statesByGameObjectName,
@@ -123,4 +157,12 @@ export const roomDisplayStore = {
     zoneVisible,
     showAreaNames,
     showSubAreaNames,
+    roomsVisible,
+    selectedScenePinned,
+    setSelectedRoom,
+    setHoveredRoom,
+    unsetHoveredRoom,
+    setSelectedRoomIfNotPinned,
+    togglePinnedRoom,
+    reset,
 };

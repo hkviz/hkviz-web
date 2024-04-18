@@ -6,7 +6,7 @@ import { assertIsResearcher } from '../lib/researcher';
 import { findRuns, type RunFilter } from './runs-find';
 
 export const getRun = cache(async (id: string, sessionUserId: string | null) => {
-    console.log(id);
+    // console.log(id);
     const isAnonymAccessKey = id.startsWith('a-');
     const filter: RunFilter = isAnonymAccessKey ? { anonymAccessKey: id.slice(2) } : { id: [id] };
 

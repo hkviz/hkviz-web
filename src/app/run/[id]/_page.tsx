@@ -9,20 +9,17 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 import { Tabs } from '@/components/ui/tabs';
 import { Tooltip, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import { useSignals } from '@preact/signals-react/runtime';
 import { TooltipTrigger } from '@radix-ui/react-tooltip';
 import { Maximize, Minus, Rows } from 'lucide-react';
 import { type Session } from 'next-auth';
 import { useEffect, useRef, useState } from 'react';
 import { type ImperativePanelHandle, type PanelGroupOnLayout } from 'react-resizable-panels';
+import { storeInitializer, useStoreInitializer } from '~/lib/stores/store-initializer';
+import { MainCardTab, uiStore } from '~/lib/stores/ui-store';
 import { HKMap } from '~/lib/viz/charts/hk-map';
-import { useRunAggregationStore } from '~/lib/viz/recording-files/run-aggregation-store';
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
-import {
-    useViewOptionsStoreRoot,
-    type MainCardTab,
-    type UseViewOptionsStore,
-} from '../../../lib/stores/view-options-store';
 import { AnimationOptions } from './_animation_options';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { RoomInfo } from './_room_infos';
@@ -35,27 +32,13 @@ interface Props {
     runData: GetRunResult;
 }
 
-function RunClientLoader({
-    runData,
-    useViewOptionsStore,
-}: {
-    runData: GetRunResult;
-    useViewOptionsStore: UseViewOptionsStore;
-}) {
-    const setRecording = useViewOptionsStore((s) => s.setRecording);
-    const setAggregatedRunData = useViewOptionsStore((s) => s.setAggregatedRunData);
-
+function RunClientLoader({ runData }: { runData: GetRunResult }) {
     const { combinedRun, ...runFiles } = useRecordingFiles(runData.id, runData.files);
-    const aggregatedRunData = useRunAggregationStore((s) => s.aggregations[runData.id]);
     const combinedRecording = combinedRun?.finishedLoading ? combinedRun.recording : null;
 
     useEffect(() => {
-        setRecording(combinedRecording);
-    }, [combinedRecording, setRecording]);
-
-    useEffect(() => {
-        setAggregatedRunData(aggregatedRunData ?? null);
-    }, [aggregatedRunData, setAggregatedRunData]);
+        storeInitializer.initializeFromRecording(combinedRecording);
+    }, [combinedRecording]);
 
     return (
         <div
@@ -70,11 +53,10 @@ function RunClientLoader({
 }
 
 export function SingleRunClientPage({ session, runData }: Props) {
-    const useViewOptionsStore = useViewOptionsStoreRoot();
-    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
-    const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
-    const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
-    const isV1 = useViewOptionsStore((s) => s.isV1());
+    useStoreInitializer();
+    useSignals();
+    const isV1 = uiStore.isV1.value;
+    const mainCardTab = uiStore.mainCardTab.value;
 
     return (
         <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
@@ -84,17 +66,19 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <CardTitle className={cardTitleSmallClasses}>{isV1 ? 'View options' : 'Map options'}</CardTitle>
                     </CardHeader>
                     <CardContent className="px-0 pb-1">
-                        <ViewOptions useViewOptionsStore={useViewOptionsStore} />
+                        <ViewOptions />
                     </CardContent>
                 </Card>
-                <RoomInfo useViewOptionsStore={useViewOptionsStore} />
+                <RoomInfo />
             </div>
             <div className="flex grow flex-col gap-2">
                 <Card className="relative grid grow grid-cols-1 grid-rows-1 overflow-hidden">
                     <Tabs
                         value={mainCardTab}
                         className="absolute left-0 right-0 top-0 z-10 mx-auto w-fit"
-                        onValueChange={(tab: string) => setMainCardTab(tab as MainCardTab)}
+                        onValueChange={(tab: string) => {
+                            uiStore.mainCardTab.value = tab as MainCardTab;
+                        }}
                     >
                         <TabsListTransparent>
                             <TabsTriggerTransparent value="overview">Overview</TabsTriggerTransparent>
@@ -108,22 +92,18 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <TabsTrigger value="password">Game</TabsTrigger>
                     </TabsList>
                 </Tabs> */}
-                    <HKMap
-                        className="col-start-1 col-end-1 row-start-1 row-end-1 min-h-[50vh]"
-                        useViewOptionsStore={useViewOptionsStore}
-                    />
+                    <HKMap className="col-start-1 col-end-1 row-start-1 row-end-1 min-h-[50vh]" />
                     <RunOverviewTab
                         className="col-start-1 col-end-1 row-start-1 row-end-1"
-                        useViewOptionsStore={useViewOptionsStore}
                         runData={runData}
                         session={session}
                     />
-                    <RunClientLoader runData={runData} useViewOptionsStore={useViewOptionsStore} />
+                    <RunClientLoader runData={runData} />
                 </Card>
-                {(isAnythingAnimating || !isV1) && <AnimationOptions useViewOptionsStore={useViewOptionsStore} />}
+                <AnimationOptions />
             </div>
 
-            <RightCard useViewOptionsStore={useViewOptionsStore} />
+            <RightCard />
         </div>
     );
 }
@@ -177,8 +157,9 @@ function ResizeButtons({
 
 const DEFAULT_EXTRA_CHARTS_SIZE = 63;
 
-function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const isV1 = useViewOptionsStore((s) => s.isV1());
+function RightCard() {
+    useSignals();
+    const isV1 = uiStore.isV1.value;
 
     const [layoutState, setLayoutState] = useState<'only-extra-charts' | 'only-splits' | 'both'>('both');
     const extraChartsPanelRef = useRef<ImperativePanelHandle>(null);
@@ -243,7 +224,7 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
                         className={cn(cardClasses, 'min-h-[44px]')}
                         ref={splitsPanelRef}
                     >
-                        <RunSplits useViewOptionsStore={useViewOptionsStore} resizeOptions={splitsResizeOptions} />
+                        <RunSplits resizeOptions={splitsResizeOptions} />
                     </ResizablePanel>
                     <ResizableHandle withHandle className="bg-transparent p-1" />
                 </>
@@ -255,12 +236,11 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
                 className={cn(cardClasses, 'min-h-[44px]')}
                 ref={extraChartsPanelRef}
             >
-                <RunExtraCharts useViewOptionsStore={useViewOptionsStore} resizeOptions={runExtraChartsResizeOptions} />
+                <RunExtraCharts resizeOptions={runExtraChartsResizeOptions} />
             </ResizablePanel>
         </ResizablePanelGroup>
     );
 
-    // const isV1 = useViewOptionsStore((s) => s.isV1());
     // return (
     //     <Card className="flex w-full flex-col overflow-hidden lg:w-[400px]">
     //         {isV1 && (
@@ -276,10 +256,10 @@ function RightCard({ useViewOptionsStore }: { useViewOptionsStore: UseViewOption
     //                 </TabsListTransparent>
     //             )}
     //             <TabsContent value="splits" className="hidden shrink grow flex-col data-[state='active']:flex">
-    //                 <RunSplits useViewOptionsStore={useViewOptionsStore} />
+    //                 <RunSplits  />
     //             </TabsContent>
     //             <TabsContent value="extra-charts" className="hidden shrink grow flex-col data-[state='active']:flex">
-    //                 <RunExtraCharts useViewOptionsStore={useViewOptionsStore} />
+    //                 <RunExtraCharts  />
     //             </TabsContent>
     //         </Tabs>
     //     </Card>

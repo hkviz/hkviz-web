@@ -19,7 +19,7 @@ function HkMapText({
 
     // color
     useSignalEffect(() => {
-        const colorMode = roomColoringStore.mode.value;
+        const colorMode = roomColoringStore.colorMode.value;
         const theme = themeStore.currentTheme.value;
 
         let fill: string;
@@ -40,7 +40,7 @@ function HkMapText({
             typeVisible &&
             ('gameObjectName' in visibleBy
                 ? roomDisplayStore.statesByGameObjectName.get(visibleBy.gameObjectName)!.isVisible.value
-                : (console.log(visibleBy.zoneName), roomDisplayStore.zoneVisible.get(visibleBy.zoneName)!.value));
+                : roomDisplayStore.zoneVisible.get(visibleBy.zoneName)!.value);
         textRef.current!.style.opacity = visible ? '1' : '0';
     });
 

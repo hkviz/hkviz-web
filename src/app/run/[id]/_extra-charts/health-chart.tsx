@@ -5,7 +5,6 @@ import blueMaskImg from '../../../../../public/ingame-sprites/hud/edited/blueMas
 import emptyMaskImg from '../../../../../public/ingame-sprites/hud/edited/emptyMask.png';
 import maskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
 import steelMaskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
-import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
@@ -50,13 +49,9 @@ const variables: LineChartVariableDescription[] = [
     },
 ];
 
-export interface HealthChartProps {
-    useViewOptionsStore: UseViewOptionsStore;
-}
-export function HealthChart({ useViewOptionsStore }: HealthChartProps) {
+export function HealthChart() {
     return (
         <LineAreaChart
-            useViewOptionsStore={useViewOptionsStore}
             variables={variables}
             header={
                 <>

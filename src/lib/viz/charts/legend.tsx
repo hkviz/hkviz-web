@@ -6,20 +6,20 @@ import { RoomColorCurveSelect } from '~/app/run/[id]/_room-color-curve-menu';
 import { aggregationStore } from '~/lib/stores/aggregation-store';
 import { roomColoringStore } from '~/lib/stores/room-coloring-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
-import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
-import { aggregationVariableInfos, formatAggregatedVariableValue } from '../recording-files/run-aggregation-store';
+import { uiStore } from '~/lib/stores/ui-store';
+import { aggregationVariableInfos, formatAggregatedVariableValue } from '../../stores/aggregation-store';
 
 const LEGEND_PADDING = 30;
 
 const LEGEND_SVG_TEXT_CLASSES = 'text-black dark:text-white fill-current';
 
-export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
+export function MapLegend() {
     useSignals();
     const svg = useRef<SVGSVGElement>(null);
 
-    const isV1 = useViewOptionsStore((s) => s.isV1());
+    const isV1 = uiStore.isV1.value;
     const var1 = roomColoringStore.var1.value;
-    const mode = roomColoringStore.mode.value;
+    const mode = roomColoringStore.colorMode.value;
     const var1Info = aggregationVariableInfos[var1];
     const hoveredRoom = roomDisplayStore.hoveredSceneName.value;
     const var1SelectedRoomValue = hoveredRoom
@@ -130,7 +130,7 @@ export function MapLegend({ useViewOptionsStore }: { useViewOptionsStore: UseVie
             <div className="flex flex-col items-center justify-center gap-1">
                 <div className="flex flex-row items-center justify-center gap-1 px-2">
                     <div className="text-sm">{var1Info?.name ?? ''} </div>
-                    {!isV1 && <RoomColorCurveSelect useViewOptionsStore={useViewOptionsStore} variable={var1} />}
+                    {!isV1 && <RoomColorCurveSelect variable={var1} />}
                 </div>
                 <svg className="w-36" viewBox={`0 0 ${200 + LEGEND_PADDING * 2} 100`} ref={svg} />
             </div>

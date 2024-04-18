@@ -1,5 +1,5 @@
 import { useComputed, useSignal, useSignalEffect, type ReadonlySignal } from '@preact/signals-react';
-import { zoomStore } from '../stores/zoom-store';
+import { viewportStore } from '../stores/viewport-store';
 
 export function useElementSize<T extends HTMLElement>(element: ReadonlySignal<T | null>) {
     const size = useSignal({ width: element.value?.offsetWidth ?? 0, height: element.value?.offsetHeight ?? 0 });
@@ -33,7 +33,7 @@ export function useAutoSizeCanvas(
 
         if (!_canvas || !_containerSize) return { widthInUnits: 0, heightInUnits: 0, pixelRatio: 1, canvas: null };
 
-        const zoomLevel = repaintOnZoom ? zoomStore.visualViewportScale.value : 1;
+        const zoomLevel = repaintOnZoom ? viewportStore.visualViewportScale.value : 1;
 
         const ratio = window.devicePixelRatio * zoomLevel;
 

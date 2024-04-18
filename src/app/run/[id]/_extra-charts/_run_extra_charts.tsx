@@ -4,8 +4,10 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { CommandShortcut } from '@/components/ui/command';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
+import { useSignals } from '@preact/signals-react/runtime';
 import { useId, type ReactNode } from 'react';
-import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
+import { extraChartStore } from '~/lib/stores/extra-chart-store';
+import { uiStore } from '~/lib/stores/ui-store';
 import { CompletionChart } from './completion-chart';
 import { EssenceChart } from './essence_chart';
 import { GeoChart } from './geo-chart';
@@ -13,18 +15,36 @@ import { GrubChart } from './grub-chart';
 import { HealthChart } from './health-chart';
 import { SoulChart } from './soul-chart';
 
+function RunExtraChartsFollowCheckbox() {
+    useSignals();
+    const id = useId();
+    const extraChartsFollowAnimation = extraChartStore.followsAnimation.value;
+    return (
+        <div className="flex flex-row gap-2 px-4 pb-2">
+            <Checkbox
+                id={id + 'follow_anim'}
+                checked={extraChartsFollowAnimation}
+                onCheckedChange={(c) => extraChartStore.setFollowsAnimationAutoBounds(c === true)}
+            />
+            <label
+                htmlFor={id + 'follow_anim'}
+                className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            >
+                Follow animation
+            </label>
+        </div>
+    );
+}
+
 export interface RunExtraChartsProps {
-    useViewOptionsStore: UseViewOptionsStore;
     resizeOptions: ReactNode;
 }
 
-export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraChartsProps) {
-    const isV1 = useViewOptionsStore((s) => s.isV1());
+export function RunExtraCharts({ resizeOptions }: RunExtraChartsProps) {
+    useSignals();
+    const isV1 = uiStore.isV1.value;
 
     const id = useId();
-    const extraChartsFollowAnimation = useViewOptionsStore((s) => s.extraChartsFollowAnimation);
-    const setExtraChartsFollowAnimation = useViewOptionsStore((s) => s.setExtraChartsFollowAnimation);
-    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
 
     const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
     return (
@@ -35,21 +55,8 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                     {resizeOptions}
                 </CardTitle>
             </CardHeader>
-            {(!isV1 || isAnythingAnimating) && (
-                <div className="flex flex-row gap-2 px-4 pb-2">
-                    <Checkbox
-                        id={id + 'follow_anim'}
-                        checked={extraChartsFollowAnimation}
-                        onCheckedChange={setExtraChartsFollowAnimation}
-                    />
-                    <label
-                        htmlFor={id + 'follow_anim'}
-                        className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                        Follow animation
-                    </label>
-                </div>
-            )}
+
+            <RunExtraChartsFollowCheckbox />
             <hr />
             {/* snap-proximity */}
             <div className="shrink grow snap-y snap-mandatory overflow-y-auto lg:shrink lg:basis-0">
@@ -84,31 +91,31 @@ export function RunExtraCharts({ useViewOptionsStore, resizeOptions }: RunExtraC
                         <hr />
                     </div>
                 )}
-                <GeoChart useViewOptionsStore={useViewOptionsStore} />
+                <GeoChart />
                 <hr />
                 {!isV1 && (
                     <>
-                        <EssenceChart useViewOptionsStore={useViewOptionsStore} />
+                        <EssenceChart />
                         <hr />
-                        <GrubChart useViewOptionsStore={useViewOptionsStore} />
+                        <GrubChart />
                         <hr />
-                        <CompletionChart useViewOptionsStore={useViewOptionsStore} />
+                        <CompletionChart />
                         <hr />
                     </>
                 )}
-                <HealthChart useViewOptionsStore={useViewOptionsStore} />
+                <HealthChart />
                 <hr />
                 {!isV1 && (
                     <>
-                        <SoulChart useViewOptionsStore={useViewOptionsStore} />
+                        <SoulChart />
                         <hr />
                     </>
                 )}
                 {isV1 && (
                     <>
-                        <CompletionChart useViewOptionsStore={useViewOptionsStore} />
+                        <CompletionChart />
                         <hr />
-                        <GrubChart useViewOptionsStore={useViewOptionsStore} />
+                        <GrubChart />
                     </>
                 )}
                 <div className="snap-start snap-normal" />

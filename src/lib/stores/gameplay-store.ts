@@ -3,6 +3,11 @@ import { playerDataFields } from '../viz/player-data/player-data';
 import { type CombinedRecording } from '../viz/recording-files/recording';
 
 const recording = signal<CombinedRecording | null>(null);
+
+function reset() {
+    recording.value = null;
+}
+
 const timeframe = computed(() => {
     const r = recording.value;
     if (!r || r.events.length === 0) return { min: 0, max: 0 } as const;
@@ -19,6 +24,7 @@ const isSteelSoul = computed(() => {
 
 export const gameplayStore = {
     recording,
-    timeframe,
+    timeFrame: timeframe,
     isSteelSoul,
+    reset,
 };
