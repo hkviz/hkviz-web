@@ -1,8 +1,13 @@
 'use client';
 
+import { useSignals } from '@preact/signals-react/runtime';
 import * as d3 from 'd3';
 import { useCallback, useEffect, useMemo, useRef, type MutableRefObject } from 'react';
-import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
+import { animationStore } from '~/lib/stores/animation-store';
+import { gameplayStore } from '~/lib/stores/gameplay-store';
+import { mapZoomStore } from '~/lib/stores/map-zoom-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { traceStore } from '~/lib/stores/trace-store';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { mainRoomDataBySceneName, roomData } from '../map-data/rooms';
 import { gameObjectNamesIgnoredInZoomZone, type ZoomZone } from '../map-data/zoom-zone';
@@ -11,20 +16,19 @@ import { Bounds } from '../types/bounds';
 const EMPTY_ARRAY = [] as const;
 
 export function HKMapZoom({
-    useViewOptionsStore,
     zoom,
     svg,
 }: {
-    useViewOptionsStore: UseViewOptionsStore;
     zoom: MutableRefObject<d3.ZoomBehavior<SVGSVGElement, unknown> | undefined>;
     svg: MutableRefObject<d3.Selection<SVGSVGElement, unknown, null, undefined> | undefined>;
 }) {
-    const animatedMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
-    const traceAnimationLengthMs = useViewOptionsStore((s) => s.traceAnimationLengthMs);
-    const recording = useViewOptionsStore((s) => s.recording);
-    const zoomFollowEnabled = useViewOptionsStore((s) => s.zoomFollowEnabled);
-    const zoomFollowTarget = useViewOptionsStore((s) => s.zoomFollowTarget);
-    const roomsVisible = useViewOptionsStore((s) => s.roomsVisible);
+    useSignals();
+    const animatedMsIntoGame = animationStore.msIntoGame.value;
+    const traceAnimationLengthMs = traceStore.lengthMs.value;
+    const recording = gameplayStore.recording.value;
+    const zoomFollowEnabled = mapZoomStore.enabled.value;
+    const zoomFollowTarget = mapZoomStore.target.value;
+    const roomsVisible = roomDisplayStore.roomsVisible.value;
 
     const positionEvents = recording?.playerPositionEventsWithTracePosition;
     const sceneEvents = recording?.sceneEvents;
@@ -78,7 +82,7 @@ export function HKMapZoom({
 
     const visibleRoomsExtends = useMemo(() => {
         if (!zoomFollowEnabled || zoomFollowTarget !== 'visible-rooms') return null;
-        const visibleRooms = roomData.filter((r) => roomsVisible === 'all' || roomsVisible.includes(r.gameObjectName));
+        const visibleRooms = roomData.filter((r) => roomsVisible === 'all' || roomsVisible.has(r.gameObjectName));
 
         return Bounds.fromContainingBounds(visibleRooms.map((r) => r.visualBounds));
     }, [roomsVisible, zoomFollowEnabled, zoomFollowTarget]);
@@ -119,8 +123,8 @@ export function HKMapZoom({
             );
 
             svg.current.interrupt();
-            const zoomBase = useViewOptionsStore.getState().zoomFollowTransitionIsEnabled()
-                ? svg.current.transition().duration(useViewOptionsStore.getState().getZoomFollowTransitionSpeed())
+            const zoomBase = mapZoomStore.transition.value
+                ? svg.current.transition().duration(mapZoomStore.transitionSpeed.value)
                 : svg.current;
 
             zoomBase.call(
@@ -128,7 +132,7 @@ export function HKMapZoom({
                 d3.zoomIdentity.scale(scale).translate(-bounds.center.x, -bounds.center.y),
             );
         },
-        [svg, useViewOptionsStore, zoom],
+        [svg, zoom],
     );
 
     useEffect(() => {

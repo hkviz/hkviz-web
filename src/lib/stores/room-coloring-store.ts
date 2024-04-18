@@ -1,11 +1,12 @@
-import { computed, signal } from '@preact/signals-react';
+import { batch, computed, signal } from '@preact/signals-react';
 import * as d3 from 'd3';
 import memoize from 'micro-memoize';
-import { RoomColorCurveLinear, type RoomColorCurve } from '~/app/run/[id]/_room-color-curve';
+import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '~/app/run/[id]/_room-color-curve';
 import { themeStore } from '~/lib/stores/theme-store';
+import { asReadonlySignal } from '../utils/signals';
 import { roomData } from '../viz/map-data/rooms';
-import { type AggregationVariable } from '../viz/recording-files/run-aggregation-store';
-import { aggregationStore } from './aggregation-store';
+import { aggregationStore, type AggregationVariable } from './aggregation-store';
+import { uiStore } from './ui-store';
 
 function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
     return a.h === b.h && a.s === b.s && a.l === b.l;
@@ -32,9 +33,15 @@ export const changeRoomColorForDarkTheme = memoize(
 );
 
 export type RoomColorMode = 'area' | '1-var';
-const mode = signal<RoomColorMode>('area');
+const colorMode = signal<RoomColorMode>('area');
 const var1 = signal<AggregationVariable>('firstVisitMs');
 const var1Curve = signal<RoomColorCurve>(RoomColorCurveLinear);
+
+function reset() {
+    colorMode.value = 'area';
+    var1.value = 'firstVisitMs';
+    var1Curve.value = RoomColorCurveLinear;
+}
 
 const var1Max = computed(() => {
     const aggregatedRunData = aggregationStore.data.value;
@@ -86,17 +93,52 @@ const singleVarColorByGameObjectName = computed(() => {
 });
 
 const selectedModeColorByGameObjectName = computed(() => {
-    return mode.value === 'area' ? areaColorByGameObjectName.value : singleVarColorByGameObjectName.value;
+    return colorMode.value === 'area' ? areaColorByGameObjectName.value : singleVarColorByGameObjectName.value;
 });
 
+function setRoomColorMode(roomColorMode: RoomColorMode) {
+    colorMode.value = roomColorMode;
+}
+function cycleRoomColorVar1(roomColorVar1: AggregationVariable) {
+    batch(() => {
+        if (var1.value === roomColorVar1 && colorMode.value === '1-var') {
+            if (var1Curve.value.type === 'linear' && !uiStore.isV1.value) {
+                var1Curve.value = RoomColorCurveExponential.EXPONENT_2;
+            } else {
+                setRoomColorMode('area');
+            }
+        } else {
+            var1.value = roomColorVar1;
+            var1Curve.value = RoomColorCurveLinear;
+            setRoomColorMode('1-var');
+        }
+    });
+}
+function setRoomColorVar1(roomColorVar1: AggregationVariable) {
+    var1.value = roomColorVar1;
+    if (colorMode.value === 'area') {
+        setRoomColorMode('1-var');
+    }
+}
+function setRoomColorVar1Curve(roomColorVar1Curve: RoomColorCurve) {
+    var1Curve.value = roomColorVar1Curve;
+}
+
 export const roomColoringStore = {
-    mode,
-    var1,
-    var1Curve,
-    var1Max,
+    colorMode: asReadonlySignal(colorMode),
+    var1: asReadonlySignal(var1),
+    var1Curve: asReadonlySignal(var1Curve),
+    var1Max: asReadonlySignal(var1Max),
 
     areaColorByGameObjectName,
     singleVarColorMap,
     singleVarColorByGameObjectName,
     selectedModeColorByGameObjectName,
+
+    setRoomColorMode,
+    cycleRoomColorVar1,
+    setRoomColorVar1,
+    setRoomColorVar1Curve,
+
+    reset,
 };

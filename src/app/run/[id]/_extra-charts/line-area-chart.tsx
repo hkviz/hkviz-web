@@ -2,15 +2,23 @@
 
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { type ReadonlySignal } from '@preact/signals-react';
+import { useComputed, useSignal, useSignalEffect, useSignals } from '@preact/signals-react/runtime';
 import * as d3 from 'd3';
 import { type D3BrushEvent } from 'd3-brush';
-import { useEffect, useId, useMemo, useRef, useState } from 'react';
+import { memo, useId, useMemo, useRef } from 'react';
 import useEvent from 'react-use-event-hook';
+import { animationStore } from '~/lib/stores/animation-store';
+import { extraChartStore } from '~/lib/stores/extra-chart-store';
+import { gameplayStore } from '~/lib/stores/gameplay-store';
+import { hoverMsStore } from '~/lib/stores/hover-ms-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { uiStore } from '~/lib/stores/ui-store';
+import { d3Ticks, isFilledD3Selection } from '~/lib/utils/d3';
+import { signalRef } from '~/lib/utils/signal-ref';
 import { formatTimeMs } from '~/lib/utils/time';
-import useIsVisibleRef from '~/lib/utils/use-is-visible';
-import { useDependableEffect } from '~/lib/viz/depdendent-effect';
+import { useIsVisibleSignal } from '~/lib/utils/use-is-visible';
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '~/lib/viz/recording-files/events/frame-end-event';
-import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { type ColorClasses } from './colors';
 import { downScale } from './down-scale';
 
@@ -18,7 +26,7 @@ export type LineChartVariableDescription = {
     key: FrameEndEventNumberKey;
     name: string;
     description: string;
-    UnitIcon: React.FunctionComponent<{ className?: string; useViewOptionsStore?: UseViewOptionsStore }>;
+    UnitIcon: React.FunctionComponent<{ className?: string }>;
     order: number;
     color: ColorClasses;
 } & (
@@ -37,7 +45,6 @@ function isShownInGraph(it: LineChartVariableDescription): it is LineChartShownV
 }
 
 export interface LineAreaChartProps {
-    useViewOptionsStore: UseViewOptionsStore;
     variables: LineChartVariableDescription[];
     yAxisLabel: string;
     header: React.ReactNode;
@@ -46,8 +53,7 @@ export interface LineAreaChartProps {
     renderScale?: number;
 }
 
-export function LineAreaChart({
-    useViewOptionsStore,
+export const LineAreaChart = memo(function LineAreaChart({
     variables,
     yAxisLabel,
     header,
@@ -55,47 +61,33 @@ export function LineAreaChart({
     downScaleMaxTimeDelta,
     renderScale = 10,
 }: LineAreaChartProps) {
+    useSignals();
     const variablesPerKey = useMemo(() => {
         return Object.fromEntries(variables.map((it) => [it.key, it] as const));
     }, [variables]);
 
-    const svgRef = useRef<SVGSVGElement>(null);
+    const svgSignal = useSignal<SVGSVGElement | null>(null);
 
-    const recording = useViewOptionsStore((s) => s.recording);
-    const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
-    const shownMsIntoGame = animationMsIntoGame;
+    const isV1 = uiStore.isV1.value;
 
-    const isV1 = useViewOptionsStore((s) => s.isV1());
-    const _extraChartsTimeBounds = useViewOptionsStore((s) => s.extraChartsTimeBounds);
-    const setExtraChartsTimeBoundsStopFollowIfOutside = useViewOptionsStore(
-        (s) => s.setExtraChartsTimeBoundsStopFollowIfOutside,
-    );
-    const resetExtraChartsTimeBounds = useViewOptionsStore((s) => s.resetExtraChartsTimeBounds);
-    const isAnythingAnimating = useViewOptionsStore((s) => s.isAnythingAnimating);
-    const timeFrame = useViewOptionsStore((s) => s.timeFrame);
-    const setHoveredMsIntoGame = useViewOptionsStore((s) => s.setHoveredMsIntoGame);
-    const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
-    const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
-    const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
-    const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
+    const isVisible = useIsVisibleSignal(svgSignal);
 
-    // timebounds debouncing, so we can use d3 animations
-    const isVisible = useIsVisibleRef(svgRef);
-    // console.log({isVisible, name: yAxisLabel})
-    const transitionDuration = 250;
-    const [debouncedExtraChartsTimeBounds, setDebouncedExtraChartsTimeBounds] = useState(_extraChartsTimeBounds);
-    const [debouncedShownMsIntoGame, setDebouncedShownMsIntoGame] = useState(shownMsIntoGame);
-    useEffect(() => {
-        const id = setInterval(() => {
-            if (!isVisible.current) return;
-            const s = useViewOptionsStore.getState();
-            setDebouncedExtraChartsTimeBounds(s.extraChartsTimeBounds);
-            setDebouncedShownMsIntoGame(s.animationMsIntoGame);
-        }, transitionDuration);
-        return () => clearInterval(id);
-    }, [isVisible, useViewOptionsStore]);
+    const previousTimeBounds = useSignal([0, 0] as readonly [number, number]);
+    const debouncedTimeBounds = useComputed<readonly [number, number]>(() => {
+        if (!isVisible.value) return previousTimeBounds.peek();
+        const bounds = extraChartStore.debouncedTimeBounds.value;
+        previousTimeBounds.value = bounds;
+        return bounds;
+    });
+    const previousMsIntoGame = useSignal(0);
+    const debouncedMsIntoGame = useComputed<number>(() => {
+        if (!isVisible.value) return previousMsIntoGame.peek();
+        const ms = extraChartStore.debouncedMsIntoGame.value;
+        previousMsIntoGame.value = ms;
+        return ms;
+    });
 
-    const [selectedVars, setSelectedVars] = useState<FrameEndEventNumberKey[]>(
+    const selectedVars = useSignal<FrameEndEventNumberKey[]>(
         variables
             .filter(isShownInGraph)
             .filter((it) => !it.defaultHidden)
@@ -104,18 +96,18 @@ export function LineAreaChart({
     );
 
     function onVariableCheckedChange(key: FrameEndEventNumberKey, checked: boolean) {
-        setSelectedVars((prev: FrameEndEventNumberKey[]) => {
-            if (checked) {
-                return [...prev, key].sort((a, b) => variablesPerKey[a]!.order - variablesPerKey[b]!.order);
-            } else {
-                return prev.filter((it) => it !== key);
-            }
-        });
+        const prev = selectedVars.value;
+        if (checked) {
+            selectedVars.value = [...prev, key].sort((a, b) => variablesPerKey[a]!.order - variablesPerKey[b]!.order);
+        } else {
+            selectedVars.value = prev.filter((it) => it !== key);
+        }
     }
 
     const id = useId();
 
-    const data = useMemo(() => {
+    const data = useComputed(() => {
+        const recording = gameplayStore.recording.value;
         if (!recording) return [];
         const togetherEvents = downScale(
             recording.frameEndEvents,
@@ -123,7 +115,7 @@ export function LineAreaChart({
             downScaleMaxTimeDelta,
         );
         return togetherEvents;
-    }, [downScaleMaxTimeDelta, recording, variables]);
+    });
 
     type Datum = FrameEndEvent;
     type Series = {
@@ -131,11 +123,6 @@ export function LineAreaChart({
         0: number;
         1: number;
     }[] & { key: string; index: number };
-
-    const currentEndOfGame = useMemo(() => {
-        if (!recording) return null;
-        return recording.frameEndEvents.findLast((it) => it.msIntoGame <= shownMsIntoGame);
-    }, [recording, shownMsIntoGame]);
 
     const widthWithMargin = 400 * renderScale;
     const heightWithMargin = 300 * renderScale;
@@ -147,45 +134,37 @@ export function LineAreaChart({
     const width = widthWithMargin - marginLeft - marginRight;
 
     // Determine the series that need to be stacked.
-    const series = useMemo(
-        () =>
-            d3.stack<Datum>().keys(selectedVars.length === 0 ? variables.map((it) => it.key) : selectedVars)(
-                data,
-            ) as unknown as Series[],
-        [data, selectedVars, variables],
-    );
+    const series = useComputed(() => {
+        const _data = data.value;
+        const _selectedVars = selectedVars.value;
+        return d3.stack<Datum>().keys(_selectedVars.length === 0 ? variables.map((it) => it.key) : _selectedVars)(
+            _data,
+        ) as unknown as Series[];
+    });
 
-    // useMemo(() => {
-    //     series.forEach((it) => {
-    //         it.forEach((it2) => {
-    //             it2[1] = it2[1] - it2[0];
-    //             it2[0] = 0;
-    //             return it2;
-    //         });
-    //         return it;
-    //     });
-    // }, [series]);
+    const x = useComputed(() => {
+        return d3.scaleLinear().domain(debouncedTimeBounds.value).range([0, width]);
+    });
 
-    const x = useMemo(() => {
-        return d3.scaleLinear().domain(debouncedExtraChartsTimeBounds).range([0, width]);
-    }, [debouncedExtraChartsTimeBounds, width]);
-
-    const xNotAnimated = useMemo(() => {
+    const xNotAnimated = useComputed(() => {
         return d3
             .scaleLinear()
-            .domain([recording?.events?.[0]?.msIntoGame ?? 0, recording?.events?.at?.(-1)?.msIntoGame ?? 0])
+            .domain([gameplayStore.timeFrame.value.min, gameplayStore.timeFrame.value.max])
             .range([0, width]);
-    }, [recording, width]);
+    });
 
-    const maxYOverAllTime = useMemo(() => {
-        return Math.max(d3.max(series.at(-1)!, (d) => d[1]) ?? minimalMaximumY, minimalMaximumY);
-    }, [minimalMaximumY, series]);
+    const maxYOverAllTime = useComputed(() => {
+        return Math.max(d3.max(series.value.at(-1)!, (d) => d[1]) ?? minimalMaximumY, minimalMaximumY);
+    });
 
-    const maxYInSelection = useMemo(() => {
-        if (isV1) return maxYOverAllTime;
-        const s = series.at(-1)!;
-        const minMsIntoGame = debouncedExtraChartsTimeBounds[0];
-        const maxMsIntoGame = debouncedExtraChartsTimeBounds[1];
+    // todo sub to series
+    const maxYInSelection = useComputed(() => {
+        if (isV1) return maxYOverAllTime.value;
+        const _series = series.value;
+        const _debouncedTimeBounds = debouncedTimeBounds.value;
+        const s = _series.at(-1)!;
+        const minMsIntoGame = _debouncedTimeBounds[0];
+        const maxMsIntoGame = _debouncedTimeBounds[1];
         const max =
             d3.max(s, (d, i) => {
                 const dMsIntoGame = d.data.msIntoGame;
@@ -201,41 +180,21 @@ export function LineAreaChart({
                 return isInRangeOrClose ? d[1] : 0;
             }) ?? 0;
         return Math.max(max * 1.05, minimalMaximumY);
-    }, [debouncedExtraChartsTimeBounds, isV1, maxYOverAllTime, minimalMaximumY, series]);
+    });
 
-    // const y = useMemo(() => {
-    //     return d3
-    //         .scaleLinear()
-    //         .domain([
-    //             0,
-    //             Math.max(
-    //                 minimalMaximumY,
-    //                 series.at(-1)!.findLast((it) => it.data.msIntoGame < debouncedExtraChartsTimeBounds[0])?.[1] ?? 0,
-    //                 d3.max(series.at(-1)!, (d) =>
-    //                     // max only over the selected timeframe --> therefore y axis zooms too
-    //                     d.data.msIntoGame >= debouncedExtraChartsTimeBounds[0] - 10000 &&
-    //                     d.data.msIntoGame <= debouncedExtraChartsTimeBounds[1] + 10000
-    //                         ? d[1]
-    //                         : 0,
-    //                 ) ?? 0,
-    //             ),
-    //         ] as [number, number])
-    //         .rangeRound([height, 0]);
-    // }, [debouncedExtraChartsTimeBounds, series, height, minimalMaximumY]);
-
-    const y = useMemo(() => {
+    const y = useComputed(() => {
         return d3
             .scaleLinear()
-            .domain([0, maxYOverAllTime] as [number, number])
+            .domain([0, maxYOverAllTime.value] as [number, number])
             .rangeRound([height, 0]);
-    }, [maxYOverAllTime, height]);
+    });
 
-    const yInSelection = useMemo(() => {
+    const yInSelection = useComputed(() => {
         return d3
             .scaleLinear()
-            .domain([0, maxYInSelection] as [number, number])
+            .domain([0, maxYInSelection.value] as [number, number])
             .rangeRound([height, 0]);
-    }, [maxYInSelection, height]);
+    });
 
     const skipNextUpdate = useRef(false);
     const onBrushEnd = useEvent((event: D3BrushEvent<unknown>) => {
@@ -247,29 +206,29 @@ export function LineAreaChart({
         }
 
         if (selection == null) {
-            resetExtraChartsTimeBounds();
+            extraChartStore.resetTimeBounds();
         } else {
-            const invSelection = [x.invert(selection[0]), x.invert(selection[1])] as const;
-            setExtraChartsTimeBoundsStopFollowIfOutside(invSelection);
+            const invSelection = [x.value.invert(selection[0]), x.value.invert(selection[1])] as const;
+            extraChartStore.setTimeBoundsStopFollowIfOutside(invSelection);
         }
         // todo animate axis
         skipNextUpdate.current = true;
-        brush.current!.move(brushG.current!, null);
+        svgParts.value.brush!.move(svgParts.value.brushG!, null);
     });
 
-    const areaPaths = useRef<d3.Selection<SVGPathElement | null, Series, SVGGElement, unknown>>();
-    const xAxis = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
-    const yAxis = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
-    const brush = useRef<d3.BrushBehavior<unknown>>();
-    const brushG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
-    const animationLine = useRef<d3.Selection<SVGLineElement, unknown, null, undefined>>();
-
-    const mainEffectChanges = useDependableEffect(() => {
-        if (!recording) return;
-        // Specify the chart’s dimensions.
-
-        // Create the SVG container.
-        const svg = d3.select(svgRef.current!);
+    const svgParts = useComputed(function lineAreaChartMainSetup() {
+        const _recording = gameplayStore.recording.value;
+        if (!_recording) {
+            return {
+                areaPaths: null,
+                xAxis: null,
+                yAxis: null,
+                brush: null,
+                brushG: null,
+                animationLine: null,
+            };
+        }
+        const svg = d3.select(svgSignal.value);
 
         svg.selectAll('*').remove();
 
@@ -281,12 +240,7 @@ export function LineAreaChart({
             .attr('font-size', 10 * renderScale)
             .text(yAxisLabel);
 
-        // .style('transform', 'rotate(-90deg)')
-        // .style('transform-box', 'fill-box')
-        // .style('transform-origin', 'center');
-
         // Append the horizontal axis atop the area.
-
         svg.append('text')
             .attr('x', widthWithMargin / 2)
             .attr('y', heightWithMargin - 2 * renderScale)
@@ -307,38 +261,37 @@ export function LineAreaChart({
             .attr('x', 0)
             .attr('y', 0);
 
-        areaPaths.current = rootG
+        const areaPaths = rootG
             .append('g')
             .attr('clip-path', `url(#${id}clip)`)
             .selectAll()
-            .data(series)
+            .data(series.value)
             .join('path')
             .attr('transform-origin', '0 80%')
             .attr('class', (d) => variablesPerKey[d.key]?.color?.path ?? '');
-        areaPaths.current.append('title').text((d) => d.key);
+        areaPaths.append('title').text((d) => d.key);
 
         // axis x
-        xAxis.current = rootG.append('g').attr('transform', `translate(0,${height})`);
+        const xAxis = rootG.append('g').attr('transform', `translate(0,${height})`);
 
         // axis y
-        yAxis.current = rootG.append('g');
+        const yAxis = rootG.append('g');
 
         function mouseToMsIntoGame(e: MouseEvent) {
-            const state = useViewOptionsStore.getState();
-            const rect = brushG.current!.node()!.getBoundingClientRect();
+            const extraChartsTimeBounds = extraChartStore.timeBounds.peek();
+            const rect = brushG.node()!.getBoundingClientRect();
             const x = e.clientX - rect.left;
             return Math.round(
-                state.extraChartsTimeBounds[0] +
-                    (state.extraChartsTimeBounds[1] - state.extraChartsTimeBounds[0]) * (x / rect.width),
+                extraChartsTimeBounds[0] + (extraChartsTimeBounds[1] - extraChartsTimeBounds[0]) * (x / rect.width),
             );
         }
         function sceneFromMs(ms: number) {
-            if (!recording) return null;
-            return recording.sceneEventFromMs(ms);
+            if (!_recording) return null;
+            return _recording.sceneEventFromMs(ms);
         }
 
         // brush
-        brush.current = d3
+        const brush = d3
             .brushX()
             .extent([
                 [0, 0],
@@ -346,39 +299,39 @@ export function LineAreaChart({
             ])
             .filter((e) => !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey)
             .on('end', onBrushEnd);
-        brushG.current = rootG
+        const brushG = rootG
             .append('g')
             .attr('class', 'brush')
             .on('mousemove', (e) => {
                 if (isV1) return;
                 const ms = mouseToMsIntoGame(e);
-                setHoveredMsIntoGame(ms);
+                hoverMsStore.setHoveredMsIntoGame(ms);
                 const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
                 if (scene) {
-                    setHoveredRoom(scene);
-                    setSelectedRoomIfNotPinned(scene);
+                    roomDisplayStore.setHoveredRoom(scene);
+                    roomDisplayStore.setSelectedRoomIfNotPinned(scene);
                 }
             })
             .on('mouseleave', () => {
                 if (isV1) return;
-                setHoveredMsIntoGame(null);
-                setHoveredRoom(null);
+                hoverMsStore.setHoveredMsIntoGame(null);
+                roomDisplayStore.setHoveredRoom(null);
             })
             .on('click', (e) => {
                 if (isV1) return;
                 if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
                     const ms = mouseToMsIntoGame(e);
-                    setAnimationMsIntoGame(ms);
+                    animationStore.setMsIntoGame(ms);
                     const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
                     if (scene) {
-                        setSelectedRoom(scene);
+                        roomDisplayStore.setSelectedRoom(scene);
                     }
                 }
             });
-        brushG.current.call(brush.current);
+        brushG.call(brush);
 
         // animationLine
-        animationLine.current = rootG
+        const animationLine = rootG
             .append('line')
             .attr('class', 'stroke-current text-foreground')
             .attr('stroke-width', 2 * renderScale)
@@ -387,140 +340,137 @@ export function LineAreaChart({
             .attr('x2', 0)
             .attr('y1', 0)
             .attr('y2', height);
-    }, [
-        height,
-        id,
-        recording,
-        width,
-        onBrushEnd,
-        series,
-        yAxisLabel,
-        variablesPerKey,
-        useViewOptionsStore,
-        setHoveredMsIntoGame,
-        setAnimationMsIntoGame,
-        setHoveredRoom,
-        isV1,
-        marginLeft,
-        widthWithMargin,
-        heightWithMargin,
-        marginTop,
-        renderScale,
-        setSelectedRoomIfNotPinned,
-        setSelectedRoom,
-    ]);
+
+        return {
+            areaPaths,
+            xAxis,
+            yAxis,
+            brush,
+            brushG,
+            animationLine,
+        };
+    });
 
     // update area
-    useEffect(() => {
-        if (!areaPaths.current) return;
+    useSignalEffect(function lineAreaChartUpdateAreaEffect() {
+        const { areaPaths } = svgParts.value;
+        if (!isFilledD3Selection(areaPaths)) return;
+        const _y = y.value;
 
         // Construct an area shape.
         const area = d3
             .area<Series[number]>()
             .x((d) => {
-                return xNotAnimated(d.data?.msIntoGame ?? 0);
+                return xNotAnimated.value(d.data?.msIntoGame ?? 0);
             })
-            .y0((d) => y(d[0]))
-            .y1((d) => y(d[1]))
+            .y0((d) => _y(d[0]))
+            .y1((d) => _y(d[1]))
             .curve(d3.curveStepAfter);
 
-        areaPaths.current.transition().ease(d3.easeLinear).duration(transitionDuration).attr('d', area);
+        // areaPaths.value.transition().ease(d3.easeLinear).duration(extraChartStore.transitionDuration).attr('d', area);
+        areaPaths.attr('d', area);
         //areaPaths.current.attr('d', area);
 
         // areaPaths.current.attr('d', area);
         // }, [mainEffectChanges, recording, width, x, y]);
-    }, [mainEffectChanges, recording, width, xNotAnimated, y]);
+    });
 
     // update area movement
-    useEffect(() => {
-        const paths = areaPaths.current;
-        if (!paths) return;
+    useSignalEffect(function lineAreaChartMoveAreaEffect() {
+        const { areaPaths } = svgParts.value;
+        if (!isFilledD3Selection(areaPaths)) return;
+        const _x = x.value;
 
-        const zeroX = x(0);
-        const maxX = x(timeFrame.max);
+        const zeroX = _x(0);
+        const maxX = _x(gameplayStore.timeFrame.value.max);
 
         const scaleX = Math.round(((maxX - zeroX) / width) * 100) / 100;
 
-        const scaleY = Math.round((maxYOverAllTime / maxYInSelection) * 100) / 100;
+        const scaleY = Math.round((maxYOverAllTime.value / maxYInSelection.value) * 100) / 100;
 
         const base =
-            paths.attr('data-existed') === 'true'
-                ? paths.transition().duration(transitionDuration).ease(d3.easeLinear)
-                : paths;
-        paths.attr('data-existed', 'true');
+            areaPaths.attr('data-existed') === 'true'
+                ? areaPaths.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear)
+                : areaPaths;
+        areaPaths.attr('data-existed', 'true');
 
         base.attr('transform', `translate(${zeroX} 0) scale(${scaleX} ${scaleY})`);
-    }, [mainEffectChanges, maxYInSelection, maxYOverAllTime, timeFrame.max, width, x]);
+    });
 
     // update x axis
-    useEffect(() => {
-        if (!xAxis.current) return;
-        xAxis.current.attr('font-size', renderScale * 9).style('stroke-width', renderScale);
-        const base = xAxis.current.selectAll('*').empty()
-            ? xAxis.current
-            : xAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear);
-        base.call(
-            d3
-                .axisBottom(x)
-                .tickSizeOuter(0)
-                .ticks(6)
-                .tickSize(6 * renderScale)
-                .tickSizeInner(6 * renderScale)
-                .tickSizeOuter(6 * renderScale)
-                .tickPadding(3 * renderScale)
-                .tickFormat((d) => formatTimeMs(d.valueOf())),
-        );
-    }, [mainEffectChanges, renderScale, width, x]);
+    useSignalEffect(function lineAreaChartUpdateXAxisEffect() {
+        const { xAxis } = svgParts.value;
+        if (!isFilledD3Selection(xAxis)) return;
+        const _x = x.value;
+        xAxis.attr('font-size', renderScale * 9).style('stroke-width', renderScale);
+        const base = xAxis.selectAll('*').empty()
+            ? xAxis
+            : xAxis.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear);
+        d3Ticks(
+            base.call(
+                d3
+                    .axisBottom(_x)
+                    .tickSizeOuter(0)
+                    .ticks(6)
+                    .tickSize(6 * renderScale)
+                    .tickSizeInner(6 * renderScale)
+                    .tickSizeOuter(6 * renderScale)
+                    .tickPadding(3 * renderScale)
+                    .tickFormat((d) => formatTimeMs(d.valueOf())),
+            ),
+        )
+            .attr('font-size', renderScale * 9)
+            .style('stroke-width', renderScale);
+    });
 
     // update y axis
-    useEffect(() => {
-        if (!yAxis.current) return;
+    useSignalEffect(function lineAreaChartUpdateYAxisEffect() {
+        const { yAxis } = svgParts.value;
+        if (!isFilledD3Selection(yAxis)) return;
 
-        yAxis.current.attr('font-size', renderScale * 9).style('stroke-width', renderScale);
+        yAxis.attr('font-size', renderScale * 9).style('stroke-width', renderScale);
 
-        const base = yAxis.current.selectAll('*').empty()
-            ? yAxis.current
-            : yAxis.current.transition().duration(transitionDuration).ease(d3.easeLinear);
+        const base = yAxis.selectAll('*').empty()
+            ? yAxis
+            : yAxis.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear);
 
-        base.call(
-            d3
-                .axisLeft(yInSelection)
-                .ticks(6)
-                .tickSize(6 * renderScale)
-                .tickSizeInner(6 * renderScale)
-                .tickSizeOuter(6 * renderScale)
-                .tickPadding(3 * renderScale),
-        );
+        d3Ticks(
+            base.call(
+                d3
+                    .axisLeft(yInSelection.value)
+                    .ticks(6)
+                    .tickSize(6 * renderScale)
+                    .tickSizeInner(6 * renderScale)
+                    .tickSizeOuter(6 * renderScale)
+                    .tickPadding(3 * renderScale),
+            ),
+        )
+            .attr('font-size', renderScale * 9)
+            .style('stroke-width', renderScale);
         // .call((g) => g.select('.domain').remove())
         // .call((g) => g.selectAll('.tick line').clone().attr('x2', width).attr('stroke-opacity', 0.1));
-    }, [mainEffectChanges, height, yInSelection, renderScale]);
+    });
 
     // update animation line
-    useEffect(() => {
-        const line = animationLine.current;
-        if (!line) return;
+    useSignalEffect(function lineAreaChartUpdateAnimationLineEffect() {
+        const { animationLine } = svgParts.value;
+        if (!isFilledD3Selection(animationLine)) return;
+        const _x = x.value;
 
         const base =
-            line.attr('data-existed') === 'true'
-                ? line.transition().duration(transitionDuration).ease(d3.easeLinear)
-                : line;
+            animationLine.attr('data-existed') === 'true'
+                ? animationLine.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear)
+                : animationLine;
         base.attr('data-existed', 'true');
-        base.attr('x1', x(debouncedShownMsIntoGame));
-        base.attr('x2', x(debouncedShownMsIntoGame));
-    }, [mainEffectChanges, debouncedShownMsIntoGame, x, transitionDuration]);
-
-    // update animation line visibility
-    useEffect(() => {
-        const line = animationLine.current;
-        if (!line) return;
-        line.attr('visibility', isAnythingAnimating ? 'visible' : 'hidden');
-    }, [mainEffectChanges, isAnythingAnimating]);
+        base.attr('x1', _x(debouncedMsIntoGame.value));
+        base.attr('x2', _x(debouncedMsIntoGame.value));
+    });
 
     return (
         <div className="snap-start snap-normal overflow-hidden">
             <h3 className="-mb-3 pt-2 text-center">{header}</h3>
             <svg
-                ref={svgRef}
+                ref={signalRef(svgSignal)}
                 width={widthWithMargin}
                 height={heightWithMargin}
                 viewBox={`0 0 ${widthWithMargin} ${heightWithMargin}`}
@@ -528,46 +478,72 @@ export function LineAreaChart({
             ></svg>
             <Table>
                 <TableBody>
-                    {variables.map((variable) => {
-                        const { key, name, color: classNames, UnitIcon } = variable;
-                        const isShowable = isShownInGraph(variable);
-
-                        return (
-                            <TableRow key={key}>
-                                <TableCell className={isV1 ? '' : 'p-2 pl-3'}>
-                                    <div className="flex flex-row items-center gap-2">
-                                        {isShowable ? (
-                                            <Checkbox
-                                                id={id + key + '_checkbox'}
-                                                checked={selectedVars.includes(key)}
-                                                onCheckedChange={(c) => onVariableCheckedChange(key, c === true)}
-                                                className={classNames.checkbox}
-                                            />
-                                        ) : (
-                                            <span className="inline-block w-5"></span>
-                                        )}
-                                        <label
-                                            htmlFor={id + key + '_checkbox'}
-                                            className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                                        >
-                                            {name}
-                                        </label>
-                                    </div>
-                                </TableCell>
-                                <TableCell className={isV1 ? '' : 'text-nowrap p-2 text-right'}>
-                                    {currentEndOfGame?.[key] ?? 0}
-                                    <span className="ml-2">
-                                        <UnitIcon
-                                            className="inline-block h-auto w-5"
-                                            useViewOptionsStore={useViewOptionsStore}
-                                        />
-                                    </span>
-                                </TableCell>
-                            </TableRow>
-                        );
-                    })}
+                    {variables.map((variable) => (
+                        <LineAreaChartVarRow
+                            key={variable.key}
+                            variable={variable}
+                            isV1={isV1}
+                            selectedVars={selectedVars}
+                            onCheckedChange={(c) => onVariableCheckedChange(variable.key, c === true)}
+                        />
+                    ))}
                 </TableBody>
             </Table>
         </div>
+    );
+});
+
+function LineAreaChartVarRow({
+    variable,
+    isV1,
+    onCheckedChange,
+    selectedVars,
+}: {
+    variable: LineChartVariableDescription;
+    isV1: boolean;
+    selectedVars: ReadonlySignal<FrameEndEventNumberKey[]>;
+    onCheckedChange: (checked: boolean) => void;
+}) {
+    useSignals();
+    const id = useId();
+
+    const { key, name, color: classNames, UnitIcon } = variable;
+    const isShowable = isShownInGraph(variable);
+
+    const value = useComputed(() => {
+        return animationStore.currentFrameEndEvent.value?.[key] ?? 0;
+    });
+
+    const checked = useComputed(() => selectedVars.value.includes(key));
+
+    return (
+        <TableRow>
+            <TableCell className={isV1 ? '' : 'p-2 pl-3'}>
+                <div className="flex flex-row items-center gap-2">
+                    {isShowable ? (
+                        <Checkbox
+                            id={id + key + '_checkbox'}
+                            checked={checked.value}
+                            onCheckedChange={onCheckedChange}
+                            className={classNames.checkbox}
+                        />
+                    ) : (
+                        <span className="inline-block w-5"></span>
+                    )}
+                    <label
+                        htmlFor={id + key + '_checkbox'}
+                        className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                    >
+                        {name}
+                    </label>
+                </div>
+            </TableCell>
+            <TableCell className={isV1 ? '' : 'text-nowrap p-2 text-right'}>
+                <>{value}</>
+                <span className="ml-2">
+                    <UnitIcon className="inline-block h-auto w-5" />
+                </span>
+            </TableCell>
+        </TableRow>
     );
 }

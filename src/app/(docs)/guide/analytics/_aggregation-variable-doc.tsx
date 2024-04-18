@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { AggregationVariableIcon } from '~/app/_components/aggregation_variable_icon';
-import { aggregationVariableInfos } from '~/lib/viz/recording-files/run-aggregation-store';
+import { aggregationVariableInfos } from '~/lib/stores/aggregation-store';
 
 export function AggregationVariableDoc() {
     return (

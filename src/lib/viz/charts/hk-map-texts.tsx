@@ -18,8 +18,8 @@ function HkMapText({
     const textRef = useRef<SVGTextElement>(null);
 
     // color
-    useSignalEffect(() => {
-        const colorMode = roomColoringStore.mode.value;
+    useSignalEffect(function hkMapTextColorEffect() {
+        const colorMode = roomColoringStore.colorMode.value;
         const theme = themeStore.currentTheme.value;
 
         let fill: string;
@@ -32,7 +32,7 @@ function HkMapText({
     });
 
     // opacity
-    useSignalEffect(() => {
+    useSignalEffect(function hkMapTextOpacityEffect() {
         const typeVisible =
             textData.type === 'area' ? roomDisplayStore.showAreaNames.value : roomDisplayStore.showSubAreaNames.value;
 
@@ -40,7 +40,7 @@ function HkMapText({
             typeVisible &&
             ('gameObjectName' in visibleBy
                 ? roomDisplayStore.statesByGameObjectName.get(visibleBy.gameObjectName)!.isVisible.value
-                : (console.log(visibleBy.zoneName), roomDisplayStore.zoneVisible.get(visibleBy.zoneName)!.value));
+                : roomDisplayStore.zoneVisible.get(visibleBy.zoneName)!.value);
         textRef.current!.style.opacity = visible ? '1' : '0';
     });
 
@@ -51,8 +51,8 @@ function HkMapText({
                 'area-name-shadow pointer-events-none drop-shadow-md ' +
                 (textData.type === 'area' ? 'font-serif' : ebGaramond.className)
             }
-            text-anchor="middle"
-            dominant-baseline="central"
+            textAnchor="middle"
+            dominantBaseline="central"
             x={textData.bounds.center.x}
             y={textData.bounds.center.y}
             style={{ fontSize: 3.25, transition: 'opacity 0.1s ease 0s', fill: 'rgb(181, 220, 251)' }}

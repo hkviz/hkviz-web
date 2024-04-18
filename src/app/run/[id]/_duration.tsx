@@ -47,14 +47,14 @@ export function DurationSignal({
     className?: string;
     withTooltip?: boolean;
 }) {
-    const part1 = useComputed(() => {
+    const part1 = useComputed(function durationSignal1Computed() {
         const msValue = ms.value;
         const hours = Math.floor(msValue / 1000 / 60 / 60);
         const minutes = Math.floor((msValue / 1000 / 60) % 60);
 
         return `${zeroPad(hours, 2)}:${zeroPad(minutes, 2)}`;
     });
-    const part2 = useComputed(() => {
+    const part2 = useComputed(function durationSignal2Computed() {
         const msValue = ms.value;
         const seconds = Math.floor((msValue / 1000) % 60);
         const deciSeconds = Math.floor(Math.floor(msValue % 1000) / 100);

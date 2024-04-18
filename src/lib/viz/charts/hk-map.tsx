@@ -1,9 +1,12 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { useSignals } from '@preact/signals-react/runtime';
 import * as d3 from 'd3';
 import { useEffect, useRef } from 'react';
-import { type UseViewOptionsStore } from '~/lib/stores/view-options-store';
+import { mapZoomStore } from '~/lib/stores/map-zoom-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { uiStore } from '~/lib/stores/ui-store';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { roomData, type RoomInfo } from '../map-data/rooms';
 import { HkMapRooms } from './hk-map-rooms';
@@ -17,10 +20,10 @@ import { useMapTraces } from './use-traces';
 
 export interface HKMapProps {
     className?: string;
-    useViewOptionsStore: UseViewOptionsStore;
 }
 
-export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
+export function HKMap({ className }: HKMapProps) {
+    useSignals();
     const containerRef = useRef<HTMLDivElement>(null);
     const svgRef = useRef<SVGSVGElement>(null);
     const svg = useRef<d3.Selection<SVGSVGElement, unknown, null, undefined>>();
@@ -35,15 +38,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
     const knightPinG = useRef<d3.Selection<SVGGElement, unknown, null, undefined>>();
     const roomDataEnter = useRef<d3.Selection<d3.EnterElement, RoomInfo, SVGGElement, unknown>>();
 
-    const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
-    const togglePinnedRoom = useViewOptionsStore((s) => s.togglePinnedRoom);
-    const setSelectedRoomPinned = useViewOptionsStore((s) => s.setSelectedRoomPinned);
-
-    const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
-    const unsetHoveredRoom = useViewOptionsStore((s) => s.unsetHoveredRoom);
-    const isV1 = useViewOptionsStore((s) => s.isV1());
-
-    const setZoomFollowEnabled = useViewOptionsStore((s) => s.setZoomFollowEnabled);
+    const isV1 = uiStore.isV1.value;
 
     useEffect(() => {
         zoom.current = d3
@@ -61,7 +56,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             ])
             .on('zoom', (event) => {
                 if (event.sourceEvent) {
-                    setZoomFollowEnabled(false);
+                    mapZoomStore.enabled.value = false;
                 }
 
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
@@ -105,7 +100,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
             // svg.current?.remove();
             // svg.current?.selectChildren().remove();
         };
-    }, [setZoomFollowEnabled]);
+    }, []);
 
     useEffect(() => {
         function containerSizeChanged() {
@@ -128,7 +123,7 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
 
     if (isV1) {
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        useMapTraces({ useViewOptionsStore, animatedTraceG, knightPinG });
+        useMapTraces({ animatedTraceG, knightPinG });
     }
     return (
         <div className={cn('relative', className)} ref={containerRef}>
@@ -137,16 +132,16 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                     <HkMapRooms
                         rooms={roomData}
                         onMouseOver={(event, r) => {
-                            setSelectedRoomIfNotPinned(r.sceneName);
-                            setHoveredRoom(r.sceneName);
+                            roomDisplayStore.setSelectedRoomIfNotPinned(r.sceneName);
+                            roomDisplayStore.setHoveredRoom(r.sceneName);
                         }}
                         onMouseOut={(event, r) => {
-                            unsetHoveredRoom(r.sceneName);
+                            roomDisplayStore.unsetHoveredRoom(r.sceneName);
                         }}
                         onClick={(event, r) => {
                             console.log('clicked room', r);
                             // if (event.pointerType !== 'touch') {
-                            togglePinnedRoom(r.sceneName);
+                            roomDisplayStore.togglePinnedRoom(r.sceneName);
                             // } else {
                             // setSelectedRoomPinned(false);
                             // setSelectedRoomIfNotPinned(r.sceneName);
@@ -156,18 +151,14 @@ export function HKMap({ className, useViewOptionsStore }: HKMapProps) {
                     {!isV1 && <HkMapTexts />}
                 </g>
             </svg>
-            {!isV1 && <HKMapZoom useViewOptionsStore={useViewOptionsStore} svg={svg} zoom={zoom} />}
+            {!isV1 && <HKMapZoom svg={svg} zoom={zoom} />}
             <div className="absolute right-4 top-4 px-0 py-2">
-                <MapLegend useViewOptionsStore={useViewOptionsStore} />
+                <MapLegend />
             </div>
-            <HKMapTraces
-                useViewOptionsStore={useViewOptionsStore}
-                containerRef={containerRef}
-                zoomHandler={tracesZoomHandler}
-            />
+            <HKMapTraces containerRef={containerRef} zoomHandler={tracesZoomHandler} />
             {!isV1 && (
                 <div className="absolute bottom-4 right-4 px-0 py-2">
-                    <MapOverlayOptions useViewOptionsStore={useViewOptionsStore} />
+                    <MapOverlayOptions />
                 </div>
             )}
         </div>

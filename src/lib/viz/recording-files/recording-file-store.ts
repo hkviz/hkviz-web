@@ -5,7 +5,6 @@ import { combineRecordings } from './combine-recordings';
 import type { CombinedRecording, ParsedRecording } from './recording';
 import { fetchWithRunfileCache } from './recording-file-browser-cache';
 import { parseRecordingFile } from './recording-file-parser';
-import { useRunAggregationStore } from './run-aggregation-store';
 
 // similar taken from https://stackoverflow.com/questions/47285198/fetch-api-download-progress-indicator
 function wrapResultWithProgress(
@@ -176,7 +175,6 @@ export const useRunFileStore = create(
                     },
                 },
             }));
-            useRunAggregationStore.getState().updateFromCombinedRecording(combinedRecording, runId);
         }
 
         function setRunNotLoaded(runId: string) {

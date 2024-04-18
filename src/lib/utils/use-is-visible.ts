@@ -1,5 +1,4 @@
-import { type HTMLSVGElement } from 'country-flag-icons/react/3x2';
-import { useEffect, useRef, type RefObject } from 'react';
+import { useSignal, useSignalEffect, type ReadonlySignal } from '@preact/signals-react';
 
 const OPTIONS = {
     root: null,
@@ -7,21 +6,21 @@ const OPTIONS = {
     threshold: 0,
 };
 
-function useIsVisibleRef(elementRef: RefObject<HTMLSVGElement> | RefObject<HTMLElement> | RefObject<HTMLDivElement> | RefObject<SVGSVGElement>) {
-    const isVisible = useRef(false);
+export function useIsVisibleSignal(elementRef: ReadonlySignal<SVGElement | HTMLElement | null>) {
+    const isVisible = useSignal(false);
 
-    useEffect(() => {
-        const element = elementRef.current;
+    useSignalEffect(function isVisibleEffect() {
+        const element = elementRef.value;
         if (element) {
             const observer = new IntersectionObserver((entries, observer) => {
-                isVisible.current = entries.some((entry) => entry.isIntersecting);
+                isVisible.value = entries.some((entry) => entry.isIntersecting);
             }, OPTIONS);
             observer.observe(element);
             return () => observer.unobserve(element);
+        } else {
+            isVisible.value = false;
         }
-    }, [elementRef]);
+    });
 
     return isVisible;
 }
-
-export default useIsVisibleRef;

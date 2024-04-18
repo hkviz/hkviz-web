@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import coinImg from '../../../../../public/ingame-sprites/HUD_coin_shop.png';
-import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
@@ -44,18 +43,14 @@ const variables: LineChartVariableDescription[] = [
     },
 ];
 
-export interface GeoChartProps {
-    useViewOptionsStore: UseViewOptionsStore;
-}
-export function GeoChart({ useViewOptionsStore }: GeoChartProps) {
+export function GeoChart() {
     return (
         <LineAreaChart
-            useViewOptionsStore={useViewOptionsStore}
             variables={variables}
             header={
                 <>
                     <Unit className="mr-1 inline-block w-6" />
-                    Geo over time
+                    Geo
                 </>
             }
             yAxisLabel="Geo"

@@ -1,22 +1,16 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
+import { gameplayStore } from '~/lib/stores/gameplay-store';
 import blueMaskImg from '../../../../../public/ingame-sprites/hud/edited/blueMask.png';
 import emptyMaskImg from '../../../../../public/ingame-sprites/hud/edited/emptyMask.png';
 import maskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
 import steelMaskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
-import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
-function MaskUnit({
-    className,
-    useViewOptionsStore,
-}: {
-    className?: string;
-    useViewOptionsStore?: UseViewOptionsStore;
-}) {
-    const isSteelSoul = useViewOptionsStore?.((s) => s.isSteelSoul);
+function MaskUnit({ className }: { className?: string }) {
+    const isSteelSoul = gameplayStore.isSteelSoul.value;
     return <Image src={isSteelSoul ? steelMaskImg : maskImg} className={className} alt="Mask" />;
 }
 
@@ -55,18 +49,14 @@ const variables: LineChartVariableDescription[] = [
     },
 ];
 
-export interface HealthChartProps {
-    useViewOptionsStore: UseViewOptionsStore;
-}
-export function HealthChart({ useViewOptionsStore }: HealthChartProps) {
+export function HealthChart() {
     return (
         <LineAreaChart
-            useViewOptionsStore={useViewOptionsStore}
             variables={variables}
             header={
                 <>
-                    <MaskUnit className="mr-1 inline-block w-6" useViewOptionsStore={useViewOptionsStore} />
-                    Health over time
+                    <MaskUnit className="mr-1 inline-block w-6" />
+                    Health
                 </>
             }
             yAxisLabel="Masks"

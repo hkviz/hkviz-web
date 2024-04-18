@@ -7,15 +7,20 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Slider } from '@/components/ui/slider';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import * as d3 from 'd3';
+import { useComputed, useSignal, useSignalEffect } from '@preact/signals-react';
+import { useSignals } from '@preact/signals-react/runtime';
 import { Pause, Play } from 'lucide-react';
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { animationStore } from '~/lib/stores/animation-store';
+import { gameplayStore } from '~/lib/stores/gameplay-store';
+import { hoverMsStore } from '~/lib/stores/hover-ms-store';
 import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '~/lib/stores/room-coloring-store';
-import { useThemeStore } from '~/lib/stores/theme-store';
-import { useDependableEffect } from '~/lib/viz/depdendent-effect';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { themeStore } from '~/lib/stores/theme-store';
+import { uiStore } from '~/lib/stores/ui-store';
+import { useAutoSizeCanvas } from '~/lib/utils/canvas';
+import { signalRef } from '~/lib/utils/signal-ref';
 import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
-import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 import { DurationSignal } from './_duration';
 
 function Times({ className }: { className?: string }) {
@@ -26,17 +31,14 @@ function Times({ className }: { className?: string }) {
     );
 }
 
-const intervalMs = 1000 / 30;
-// const intervalMs = 1000 / 60;
-
-function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const isPlaying = useViewOptionsStore((s) => s.isPlaying);
-    const togglePlaying = useViewOptionsStore((s) => s.toggleIsPlaying);
-    const isDisabled = useViewOptionsStore((s) => !s.recording);
+function PlayButton() {
+    useSignals();
+    const isPlaying = animationStore.isPlaying.value;
+    const isDisabled = !gameplayStore.recording.value;
     return (
         <Tooltip>
             <TooltipTrigger asChild>
-                <Button onClick={togglePlaying} variant="ghost" disabled={isDisabled}>
+                <Button onClick={animationStore.togglePlaying} variant="ghost" disabled={isDisabled}>
                     {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
                 </Button>
             </TooltipTrigger>
@@ -47,147 +49,110 @@ function PlayButton({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptio
 
 const EMPTY_ARRAY = [] as const;
 
-function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const theme = useThemeStore((state) => state.theme);
+function AnimationTimeLineColorCodes() {
+    useSignals();
+    const timeFrameMs = gameplayStore.timeFrame.value;
 
-    const timeFrameMs = useViewOptionsStore((s) => s.timeFrame);
-    const recording = useViewOptionsStore((s) => s.recording);
-    const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
-    const setSelectedRoom = useViewOptionsStore((s) => s.setSelectedRoom);
-    const togglePinnedRoom = useViewOptionsStore((s) => s.togglePinnedRoom);
-    const setHoveredRoom = useViewOptionsStore((s) => s.setHoveredRoom);
-    const setHoveredMsIntoGame = useViewOptionsStore((s) => s.setHoveredMsIntoGame);
-    const setSelectedRoomIfNotPinned = useViewOptionsStore((s) => s.setSelectedRoomIfNotPinned);
-    const timeFrame = useViewOptionsStore((s) => s.timeFrame);
-    const selectedRoom = useViewOptionsStore((s) => s.selectedRoom);
-    const showMapIfOverview = useViewOptionsStore((s) => s.showMapIfOverview);
-    const selectedZone = useMemo(
-        () =>
-            (selectedRoom ? mainRoomDataBySceneName.get(selectedRoom)?.zoneNameFormatted : undefined) ??
-            'No zone selected',
-        [selectedRoom],
-    );
-
-    const sceneEvents = recording?.sceneEvents ?? EMPTY_ARRAY;
-
-    const sceneChanges = useMemo(() => {
+    const sceneChanges = useComputed(function timelineColorCodesSceneChangesComputed() {
+        const sceneEvents = gameplayStore.recording.value?.sceneEvents ?? EMPTY_ARRAY;
+        const timeframe = gameplayStore.timeFrame.value;
+        const theme = themeStore.currentTheme.value;
         const sceneChanges = sceneEvents.map((it) => {
             const mainVirtualScene = it.getMainVirtualSceneName();
+            const mainRoomData = mainRoomDataBySceneName.get(mainVirtualScene);
+
+            const roomColor = mainRoomData?.color;
+            let color: string;
+            if (!roomColor) {
+                color = theme === 'dark' ? 'white' : 'black';
+            } else {
+                color =
+                    theme === 'dark' ? changeRoomColorForDarkTheme(roomColor) : changeRoomColorForLightTheme(roomColor);
+            }
+
             return {
                 mainVirtualScene,
                 startMs: it.msIntoGame,
-                mainRoomData: mainRoomDataBySceneName.get(mainVirtualScene),
+                mainRoomData,
+                color,
                 durationMs: 0,
             };
         });
         for (let i = 0; i < sceneChanges.length; i++) {
-            sceneChanges[i]!.durationMs = (sceneChanges[i + 1]?.startMs ?? timeFrameMs.max) - sceneChanges[i]!.startMs;
+            sceneChanges[i]!.durationMs = (sceneChanges[i + 1]?.startMs ?? timeframe.max) - sceneChanges[i]!.startMs;
         }
         return sceneChanges;
-    }, [sceneEvents, timeFrameMs.max]);
+    });
 
-    const parentDivRef = useRef<HTMLDivElement>(null);
-    const svgRef = useRef<SVGSVGElement>(null);
-    const rectsRef = useRef<d3.Selection<SVGRectElement, (typeof sceneChanges)[number], SVGSVGElement, unknown>>();
+    const canvas = useSignal<HTMLCanvasElement | null>(null);
+    const container = useSignal<HTMLDivElement | null>(null);
 
-    const mainSvgEffect = useDependableEffect(() => {
-        if (!svgRef.current) return;
+    const autoSizeCanvas = useAutoSizeCanvas(container, canvas);
 
-        const svg = d3.select(svgRef.current);
+    useSignalEffect(function drawTimelineColorCodesEffect() {
+        const _sceneChanges = sceneChanges.value;
+        const _c = autoSizeCanvas.value;
+        const timeframe = gameplayStore.timeFrame.value;
+        const selectedScene = roomDisplayStore.selectedSceneName.value;
+        const selectedZone = roomDisplayStore.selectedRoomZoneFormatted.value;
 
-        svg.attr('viewBox', `0 0 ${timeFrame.max / 1000} 10000`);
+        if (!_c || !_sceneChanges) return;
+        const ctx = _c.canvas?.getContext('2d');
+        if (!ctx) return;
 
-        svg.selectAll('*').remove();
-        rectsRef.current = svg
-            .selectAll('rect')
-            .data(sceneChanges)
-            .enter()
-            .append('rect')
-            .attr('x', (d) => d.startMs / 1000)
-            .attr('width', (d) => d.durationMs / 1000)
-            .attr('height', 10000)
-            .attr('data-scene-name', (d) => d.mainVirtualScene);
-    }, [sceneChanges, timeFrame.max]);
+        ctx.clearRect(0, 0, _c.widthInUnits, _c.heightInUnits);
 
-    useEffect(() => {
-        if (!rectsRef.current) return;
-        rectsRef.current.attr('fill', (d) => {
-            const roomColor = d.mainRoomData?.color;
-            if (!roomColor) return theme === 'dark' ? 'white' : 'black';
+        for (const sceneChange of _sceneChanges) {
+            const height =
+                sceneChange.mainVirtualScene === selectedScene
+                    ? 1
+                    : sceneChange.mainRoomData?.zoneNameFormatted === selectedZone
+                      ? 0.666
+                      : 0.333;
 
-            return theme === 'dark' ? changeRoomColorForDarkTheme(roomColor) : changeRoomColorForLightTheme(roomColor);
-        });
-    }, [theme, mainSvgEffect]);
-
-    useEffect(() => {
-        if (!rectsRef.current) return;
-        rectsRef.current
-            // .style('opacity', (d) =>
-            //     d.sceneName === selectedRoom ? '1' : d.mainRoomData?.zoneNameFormatted === selectedArea ? '0.75' : '0.5',
-            // )
-            .attr('y', (d) =>
-                d.mainVirtualScene === selectedRoom
-                    ? 0
-                    : d.mainRoomData?.zoneNameFormatted === selectedZone
-                      ? 3333
-                      : 6666,
+            ctx.fillStyle = sceneChange.color;
+            ctx.fillRect(
+                (_c.widthInUnits * sceneChange.startMs) / timeframe.max,
+                _c.heightInUnits * (1 - height),
+                (_c.widthInUnits * sceneChange.durationMs) / timeframe.max,
+                _c.heightInUnits * height,
             );
-    }, [selectedRoom, mainSvgEffect, selectedZone]);
-
-    useEffect(() => {
-        function containerSizeChanged() {
-            if (!parentDivRef.current || !parentDivRef.current) return;
-
-            d3.select(svgRef.current)
-                .attr('width', parentDivRef.current.offsetWidth)
-                .attr('height', parentDivRef.current.offsetHeight);
         }
-        containerSizeChanged();
-
-        const resizeObserver = new ResizeObserver(containerSizeChanged);
-
-        resizeObserver.observe(parentDivRef.current!);
-
-        return () => {
-            resizeObserver.disconnect();
-        };
-    }, []);
+    });
 
     function getSceneChangeFromMouseEvent(e: React.MouseEvent) {
-        if (!parentDivRef.current) return undefined;
-        // e = Mouse click event.
-        const rect = parentDivRef.current.getBoundingClientRect();
+        const _sceneChanges = sceneChanges.value;
+        if (!container.value) return undefined;
+        const rect = container.value.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const ms = timeFrameMs.max * (x / rect.width);
-        return sceneChanges.findLast((it) => it.startMs <= ms);
+        return _sceneChanges.findLast((it) => it.startMs <= ms);
     }
 
     function handleMouseMove(e: React.MouseEvent) {
         const sceneChange = getSceneChangeFromMouseEvent(e);
         if (!sceneChange) return;
-        setSelectedRoomIfNotPinned(sceneChange.mainVirtualScene);
-        setHoveredRoom(sceneChange.mainVirtualScene);
-        setHoveredMsIntoGame(sceneChange.startMs);
+        roomDisplayStore.setSelectedRoomIfNotPinned(sceneChange.mainVirtualScene);
+        roomDisplayStore.setHoveredRoom(sceneChange.mainVirtualScene);
+        hoverMsStore.setHoveredMsIntoGame(sceneChange.startMs);
     }
     function handleClick(e: React.MouseEvent) {
         const sceneChange = getSceneChangeFromMouseEvent(e);
         console.log(sceneChange);
         if (!sceneChange) return;
-        setAnimationMsIntoGame(sceneChange.startMs);
-        togglePinnedRoom(sceneChange.mainVirtualScene, true);
-        showMapIfOverview();
-
-        // togglePinnedRoom(sceneChange.sceneName, true);
+        animationStore.setMsIntoGame(sceneChange.startMs);
+        roomDisplayStore.togglePinnedRoom(sceneChange.mainVirtualScene, true);
+        uiStore.showMapIfOverview();
     }
     function handleMouseLeave() {
-        setHoveredRoom(null);
-        setHoveredMsIntoGame(null);
+        roomDisplayStore.setHoveredRoom(null);
+        hoverMsStore.setHoveredMsIntoGame(null);
     }
 
     return (
         <div
             className="absolute -bottom-4 left-0 h-3 w-full"
-            ref={parentDivRef}
+            ref={signalRef(container)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}
@@ -195,19 +160,16 @@ function AnimationTimeLineColorCodes({ useViewOptionsStore }: { useViewOptionsSt
             <span className="absolute -left-3 top-[50%] translate-x-[-100%] translate-y-[-35%] text-[0.6rem]">
                 Area
             </span>
-            <svg ref={svgRef} className="absolute inset-0" preserveAspectRatio="none" />
+            <canvas ref={signalRef(canvas)} className="absolute inset-0 h-full w-full" />
         </div>
     );
 }
 
-function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const animationMsIntoGame = useViewOptionsStore((s) => s.animationMsIntoGame);
-    const setAnimationMsIntoGame = useViewOptionsStore((s) => s.setAnimationMsIntoGame);
-    // const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
-    // const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
-    const timeFrame = useViewOptionsStore((s) => s.timeFrame);
-    const isDisabled = useViewOptionsStore((s) => !s.recording);
-    const showMapIfOverview = useViewOptionsStore((s) => s.showMapIfOverview);
+function AnimationTimeLineSlider() {
+    useSignals();
+    const animationMsIntoGame = animationStore.msIntoGame.value;
+    const timeFrame = gameplayStore.timeFrame.value;
+    const isDisabled = !gameplayStore.recording.value;
 
     const isShiftPressedRef = useRef(false);
 
@@ -248,12 +210,10 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
             className="-my-4 grow py-4"
             disabled={isDisabled}
             onValueChange={(values) => {
-                const storeState = useViewOptionsStore.getState();
-
-                const isV1 = storeState.isV1();
+                const isV1 = uiStore.isV1.value;
                 if (!dragRef.current.isDragging) {
                     dragRef.current.isDragging = true;
-                    dragRef.current.startedAtMsIntoGame = storeState.animationMsIntoGame;
+                    dragRef.current.startedAtMsIntoGame = animationStore.msIntoGame.value;
                     dragRef.current.previousDiff = 0;
                 }
                 const value = values[0]!;
@@ -262,24 +222,22 @@ function AnimationTimeLineSlider({ useViewOptionsStore }: { useViewOptionsStore:
 
                 const scale = isShiftPressedRef.current && !isV1 ? 10 : 1;
 
-                const newMsIntoGame = storeState.animationMsIntoGame + newDiff / scale;
-                setAnimationMsIntoGame(newMsIntoGame);
-                showMapIfOverview();
-                console.log('onValueChange', { value, diff });
+                const newMsIntoGame = animationStore.msIntoGame.value + newDiff / scale;
+                animationStore.setMsIntoGame(newMsIntoGame);
+                uiStore.showMapIfOverview();
                 dragRef.current.previousDiff = diff;
 
-                if (!isV1 && !storeState.selectedRoomPinned) {
-                    const sceneEvent = storeState.recording?.sceneEventFromMs(newMsIntoGame);
+                if (!isV1 && !roomDisplayStore.selectedScenePinned.value) {
+                    const sceneEvent = gameplayStore.recording.value?.sceneEventFromMs(newMsIntoGame);
                     if (sceneEvent) {
-                        storeState.setSelectedRoomIfNotPinned(sceneEvent.getMainVirtualSceneName());
+                        roomDisplayStore.setSelectedRoomIfNotPinned(sceneEvent.getMainVirtualSceneName());
                     }
                 }
             }}
-            onValueCommit={(values) => {
+            onValueCommit={() => {
                 dragRef.current.isDragging = false;
                 dragRef.current.startedAtMsIntoGame = null;
                 dragRef.current.previousDiff = 0;
-                console.log('onValueCommit', values);
             }}
         />
     );
@@ -291,17 +249,18 @@ function AnimationTimeLineDuration() {
 
 // this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
 // Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
-export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const hoveredMsIntoGame = useViewOptionsStore((s) => s.hoveredMsIntoGame);
-    const timeFrame = useViewOptionsStore((s) => s.timeFrame);
-    const isV1 = useViewOptionsStore((s) => s.isV1());
+export function AnimationTimeLine() {
+    useSignals();
+    const hoveredMsIntoGame = hoverMsStore.hoveredMsIntoGame.value;
+    const timeFrame = gameplayStore.timeFrame.value;
+    const isV1 = uiStore.isV1.value;
 
     return (
         <>
             <AnimationTimeLineDuration />
             <div className="relative flex w-full shrink grow flex-col gap-2">
                 <div className="-mx-2">
-                    <AnimationTimeLineSlider useViewOptionsStore={useViewOptionsStore} />
+                    <AnimationTimeLineSlider />
                 </div>
                 {!isV1 && hoveredMsIntoGame != null && (
                     <div
@@ -309,33 +268,21 @@ export function AnimationTimeLine({ useViewOptionsStore }: { useViewOptionsStore
                         style={{ left: (100 * hoveredMsIntoGame) / timeFrame.max + '%' }}
                     ></div>
                 )}
-                {!isV1 && <AnimationTimeLineColorCodes useViewOptionsStore={useViewOptionsStore} />}
+                {!isV1 && <AnimationTimeLineColorCodes />}
             </div>
         </>
     );
 }
 
-export function AnimationOptions({ useViewOptionsStore }: { useViewOptionsStore: UseViewOptionsStore }) {
-    const isPlaying = useViewOptionsStore((s) => s.isPlaying);
-    const incrementAnimationMsIntoGame = useViewOptionsStore((s) => s.incrementAnimationMsIntoGame);
-    const animationSpeedMultiplier = useViewOptionsStore((s) => s.animationSpeedMultiplier);
-    const setAnimationSpeedMultiplier = useViewOptionsStore((s) => s.setAnimationSpeedMultiplier);
-    const isDisabled = useViewOptionsStore((s) => !s.recording);
-
-    useEffect(() => {
-        if (!isPlaying) return;
-
-        const interval = setInterval(() => {
-            incrementAnimationMsIntoGame(intervalMs * animationSpeedMultiplier);
-        }, intervalMs);
-
-        return () => clearInterval(interval);
-    }, [isPlaying, animationSpeedMultiplier, incrementAnimationMsIntoGame]);
+export function AnimationOptions() {
+    useSignals();
+    const animationSpeedMultiplier = animationStore.speedMultiplier.value;
+    const isDisabled = !gameplayStore.recording.value;
 
     return (
         <Card className="g-1 bottom-0 flex flex-row items-center justify-center">
-            <PlayButton useViewOptionsStore={useViewOptionsStore} />
-            <AnimationTimeLine useViewOptionsStore={useViewOptionsStore} />
+            <PlayButton />
+            <AnimationTimeLine />
 
             <div className="relative">
                 <Popover>
@@ -348,7 +295,7 @@ export function AnimationOptions({ useViewOptionsStore }: { useViewOptionsStore:
                     <PopoverContent className="w-[10rem] p-0">
                         {[500, 250, 100, 50, 25, 10].map((it) => (
                             <Button
-                                onClick={() => setAnimationSpeedMultiplier(it)}
+                                onClick={() => (animationStore.speedMultiplier.value = it)}
                                 variant="ghost"
                                 className="w-full"
                                 key={it}
@@ -368,7 +315,7 @@ export function AnimationOptions({ useViewOptionsStore }: { useViewOptionsStore:
                                 onChange={(v) => {
                                     try {
                                         const vv = Number.parseInt(v.target.value);
-                                        setAnimationSpeedMultiplier(vv);
+                                        animationStore.speedMultiplier.value = vv;
                                     } catch (e) {
                                         // ignore
                                         console.log(e);

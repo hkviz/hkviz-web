@@ -1,27 +1,19 @@
 import { ContextMenuItem } from '@/components/ui/context-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { type AggregationVariable } from '~/lib/viz/recording-files/run-aggregation-store';
-import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
+import { useSignals } from '@preact/signals-react/runtime';
+import { type AggregationVariable } from '~/lib/stores/aggregation-store';
+import { roomColoringStore } from '~/lib/stores/room-coloring-store';
 import { roomColorCurves } from './_room-color-curve';
 
-export function RoomColorCurveContextMenuItems({
-    useViewOptionsStore,
-    variable,
-}: {
-    useViewOptionsStore: UseViewOptionsStore;
-    variable: AggregationVariable;
-}) {
-    const setRoomColorVar1 = useViewOptionsStore((s) => s.setRoomColorVar1);
-    const setRoomColorVar1Curve = useViewOptionsStore((s) => s.setRoomColorVar1Curve);
-
+export function RoomColorCurveContextMenuItems({ variable }: { variable: AggregationVariable }) {
     return (
         <>
             {roomColorCurves.map((curve) => (
                 <ContextMenuItem
                     key={curve.name}
                     onClick={() => {
-                        setRoomColorVar1(variable);
-                        setRoomColorVar1Curve(curve);
+                        roomColoringStore.setRoomColorVar1(variable);
+                        roomColoringStore.setRoomColorVar1Curve(curve);
                     }}
                 >
                     {curve.name}
@@ -31,20 +23,13 @@ export function RoomColorCurveContextMenuItems({
     );
 }
 
-export function RoomColorCurveSelect({
-    useViewOptionsStore,
-    variable,
-}: {
-    useViewOptionsStore: UseViewOptionsStore;
-    variable: AggregationVariable;
-}) {
-    const roomColorVar1Curve = useViewOptionsStore((s) => s.roomColorVar1Curve);
-    const setRoomColorVar1 = useViewOptionsStore((s) => s.setRoomColorVar1);
-    const setRoomColorVar1Curve = useViewOptionsStore((s) => s.setRoomColorVar1Curve);
+export function RoomColorCurveSelect({ variable }: { variable: AggregationVariable }) {
+    useSignals();
+    const roomColorVar1Curve = roomColoringStore.var1Curve.value;
 
     function handleValueChange(value: string): void {
-        setRoomColorVar1(variable);
-        setRoomColorVar1Curve(roomColorCurves.find((curve) => curve.name === value)!);
+        roomColoringStore.setRoomColorVar1(variable);
+        roomColoringStore.setRoomColorVar1Curve(roomColorCurves.find((curve) => curve.name === value)!);
     }
 
     return (

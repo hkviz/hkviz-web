@@ -1,65 +1,63 @@
 import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
+import { useSignals } from '@preact/signals-react/runtime';
 import { AreaChart, HelpCircle, Play } from 'lucide-react';
 import { type Session } from 'next-auth';
 import { useMemo } from 'react';
 import { RelativeDate } from '~/app/_components/date';
 import { Expander } from '~/app/_components/expander';
 import { RunCard } from '~/app/_components/run-card';
+import { animationStore } from '~/lib/stores/animation-store';
+import { extraChartStore } from '~/lib/stores/extra-chart-store';
+import { gameplayStore } from '~/lib/stores/gameplay-store';
+import { mapZoomStore } from '~/lib/stores/map-zoom-store';
+import { roomColoringStore } from '~/lib/stores/room-coloring-store';
+import { roomDisplayStore } from '~/lib/stores/room-display-store';
+import { traceStore } from '~/lib/stores/trace-store';
+import { uiStore } from '~/lib/stores/ui-store';
 import { playerDataFields } from '~/lib/viz/player-data/player-data';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
-import { type UseViewOptionsStore } from '../../../lib/stores/view-options-store';
 
 export function RunOverviewTab({
-    useViewOptionsStore,
     runData,
     session,
     className,
 }: {
-    useViewOptionsStore: UseViewOptionsStore;
     runData: GetRunResult;
     session: Session | null;
     className?: string;
 }) {
+    useSignals();
     const isOwnRun = session?.user?.id === runData.user.id;
 
-    const mainCardTab = useViewOptionsStore((s) => s.mainCardTab);
-    const setMainCardTab = useViewOptionsStore((s) => s.setMainCardTab);
-    const setIsPlaying = useViewOptionsStore((s) => s.setIsPlaying);
-    const setRoomVisibility = useViewOptionsStore((s) => s.setRoomVisibility);
-    const setTraceVisibility = useViewOptionsStore((s) => s.setTraceVisibility);
-    const cycleRoomColorVar1 = useViewOptionsStore((s) => s.cycleRoomColorVar1);
-    const setRoomColors = useViewOptionsStore((s) => s.setRoomColors);
-    const setExtraChartsFollowAnimation = useViewOptionsStore((s) => s.setExtraChartsFollowAnimation);
-    const setZoomFollowEnabled = useViewOptionsStore((s) => s.setZoomFollowEnabled);
-    const setZoomFollowTarget = useViewOptionsStore((s) => s.setZoomFollowTarget);
-    const recording = useViewOptionsStore((s) => s.recording);
+    const mainCardTab = uiStore.mainCardTab.value;
+    const recording = gameplayStore.recording.value;
 
     const isOpen = mainCardTab === 'overview';
 
     function viewAnimatedAnalytics() {
-        setMainCardTab('map');
-        setIsPlaying(true);
-        setRoomVisibility('visited-animated');
-        setTraceVisibility('animated');
-        setRoomColors('area');
-        setExtraChartsFollowAnimation(true);
-        setZoomFollowEnabled(true);
-        setZoomFollowTarget('current-zone');
+        uiStore.mainCardTab.value = 'map';
+        animationStore.setIsPlaying(true);
+        roomDisplayStore.roomVisibility.value = 'visited-animated';
+        traceStore.visibility.value = 'animated';
+        roomColoringStore.setRoomColorMode('area');
+        extraChartStore.setFollowsAnimationAutoBounds(true);
+        mapZoomStore.enabled.value = true;
+        mapZoomStore.target.value = 'current-zone';
     }
 
     function viewStaticAnalytics() {
-        setMainCardTab('map');
-        setIsPlaying(false);
-        setRoomVisibility('visited');
-        setRoomColors('1-var');
-        if (useViewOptionsStore.getState().roomColorVar1 !== 'firstVisitMs') {
-            cycleRoomColorVar1('firstVisitMs');
+        uiStore.mainCardTab.value = 'map';
+        animationStore.setIsPlaying(false);
+        roomDisplayStore.roomVisibility.value = 'visited';
+        roomColoringStore.setRoomColorMode('1-var');
+        if (roomColoringStore.var1.value !== 'firstVisitMs') {
+            roomColoringStore.cycleRoomColorVar1('firstVisitMs');
         }
-        setExtraChartsFollowAnimation(false);
-        setZoomFollowEnabled(true);
-        setZoomFollowTarget('visible-rooms');
+        extraChartStore.setFollowsAnimationAutoBounds(false);
+        mapZoomStore.enabled.value = true;
+        mapZoomStore.target.value = 'visible-rooms';
     }
 
     const fiteredModVersions = useMemo(() => {

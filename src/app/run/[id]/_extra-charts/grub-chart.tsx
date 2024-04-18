@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import grubImage from '../../../../../public/ingame-sprites/pin/pin_grub_location.png';
-import { type UseViewOptionsStore } from '../../../../lib/stores/view-options-store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from './colors';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
@@ -37,13 +36,9 @@ const variables: LineChartVariableDescription[] = [
     },
 ];
 
-export interface GrubChartProps {
-    useViewOptionsStore: UseViewOptionsStore;
-}
-export function GrubChart({ useViewOptionsStore }: GrubChartProps) {
+export function GrubChart() {
     return (
         <LineAreaChart
-            useViewOptionsStore={useViewOptionsStore}
             variables={variables}
             header={
                 <>

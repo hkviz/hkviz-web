@@ -18,7 +18,6 @@ export function LinkableSpan({
 
     useEffect(() => {
         function calcScrollMargin() {
-            console.log('calc scroll margin');
             // searches for a tag which is a heading in its parent, and parents parent
             let previousHeading: Element | null = ref.current;
             while (previousHeading && !['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(previousHeading.tagName)) {
