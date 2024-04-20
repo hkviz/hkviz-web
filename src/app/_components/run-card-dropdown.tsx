@@ -73,7 +73,7 @@ export function RunCardDropdownMenu({
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="absolute bottom-1 right-1 z-[7] flex h-6 items-center rounded-sm"
+                        className="absolute bottom-1 right-[2.5rem] z-[7] flex h-6 items-center rounded-sm"
                     >
                         <MoreHorizontal className="h-6 w-6" />
                     </Button>

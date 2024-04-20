@@ -4,6 +4,7 @@ import {
     double,
     index,
     int,
+    json,
     mysqlEnum,
     mysqlTableCreator,
     primaryKey,
@@ -17,6 +18,7 @@ import { type AdapterAccount } from 'next-auth/adapters';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { countryCodes } from '~/lib/types/country';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
+import { runInteractionTypes } from '~/lib/types/run-interaction';
 import { tags, type TagCode } from '~/lib/types/tags';
 import { mapZoneSchema } from '~/lib/viz/types/mapZone';
 
@@ -184,6 +186,8 @@ export const runs = table(
         // only viewable by owner via achieve page
         archived: boolean('archived').notNull().default(false),
 
+        likeCount: int('like_count').notNull().default(0),
+
         ...runTagColumns,
 
         ...runGameStateMetaColumns,
@@ -204,6 +208,7 @@ export const runs = table(
 export const runsRelations = relations(runs, ({ one, many }) => ({
     user: one(users, { fields: [runs.userId], references: [users.id] }),
     files: many(runFiles),
+    interactions: many(runInteraction),
 }));
 
 /**
@@ -234,7 +239,6 @@ export const runFiles = table(
         // this id is also used to find the file inside the r2 bucket
         id: varcharUuid('id').notNull().primaryKey(),
         runId: varcharUuid('run_id').notNull(),
-        // TODO make non-nullable after deploy
         localId: varcharUuid('local_id'),
         partNumber: int('part_number').notNull(),
         uploadFinished: boolean('upload_finished').notNull(),
@@ -253,6 +257,30 @@ export const runFiles = table(
 
 export const runFilesRelations = relations(runFiles, ({ one }) => ({
     run: one(runs, { fields: [runFiles.runId], references: [runs.id] }),
+}));
+
+export const runInteraction = table(
+    'runInteraction',
+    {
+        id: serial('id').primaryKey(),
+        runId: varcharUuid('run_id').notNull(),
+
+        userId: varcharUuid('user_id').notNull(),
+        type: mysqlEnum('type', runInteractionTypes).notNull(),
+        createdAt: timestamp('created_at')
+            .default(sql`CURRENT_TIMESTAMP`)
+            .notNull(),
+        updatedAt: timestamp('updatedAt').onUpdateNow(),
+        originalRunIds: json('original_run_ids').$type<string[]>().notNull(),
+    },
+    (runInteraction) => ({
+        runIdTypeUserIdIdx: index('runIdType_idx').on(runInteraction.runId, runInteraction.type, runInteraction.userId),
+    }),
+);
+
+export const runInteractionRelations = relations(runInteraction, ({ one }) => ({
+    run: one(runs, { fields: [runInteraction.runId], references: [runs.id] }),
+    user: one(users, { fields: [runInteraction.userId], references: [users.id] }),
 }));
 
 export const ingameAuth = table(

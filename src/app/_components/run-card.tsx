@@ -1,6 +1,7 @@
 'use client';
 
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -11,7 +12,7 @@ import {
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
 import { cn } from '@/lib/utils';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState, type FormEventHandler, type PropsWithChildren } from 'react';
@@ -433,6 +434,8 @@ export function RunCard({
                     />
                 )}
 
+                {run.currentUserState && <RunCardLikeButton run={run} />}
+
                 {/* Background */}
                 <Image
                     className="l-0 t-0 absolute z-[1] h-full w-full bg-black object-cover opacity-70 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
@@ -445,6 +448,53 @@ export function RunCard({
     );
 }
 
+function RunCardLikeButton({ run }: { run: RunMetadata }) {
+    const [hasLiked, setHasLiked] = useState(run.currentUserState!.hasLiked);
+    const { toast } = useToast();
+    const likeMutation = api.runInteraction.like.useMutation({
+        onMutate: () => {
+            setHasLiked(true);
+        },
+        onError: (err) => {
+            toast({
+                title: 'Failed to like',
+                description: `${err.data?.code}: ${err?.message}`,
+            });
+            setHasLiked(false);
+        },
+    });
+    const unlikeMutation = api.runInteraction.unlike.useMutation({
+        onMutate: () => {
+            setHasLiked(false);
+        },
+        onError: (err) => {
+            toast({
+                title: 'Failed to remove like',
+                description: `${err.data?.code}: ${err?.message}`,
+            });
+            setHasLiked(true);
+        },
+    });
+
+    function handleClick() {
+        if (hasLiked) {
+            unlikeMutation.mutate({ runId: run.id });
+        } else {
+            likeMutation.mutate({ runId: run.id });
+        }
+    }
+
+    return (
+        <Button
+            size="icon"
+            variant="ghost"
+            onClick={handleClick}
+            className="absolute bottom-0 right-0 z-[7] rounded-full"
+        >
+            {hasLiked ? <Star className="h-4 w-4 fill-current" /> : <Star className="h-4 w-4" />}
+        </Button>
+    );
+}
 function displayPercentage(
     gameState: RunMetadata['gameState'],
 ): gameState is RunMetadata['gameState'] & { completionPercentage: number } {

@@ -2,6 +2,7 @@ import { createTRPCRouter } from '~/server/api/trpc';
 import { accountRouter } from './routers/account';
 import { hkExperienceRouter } from './routers/hk-experience';
 import { ingameAuthRouter } from './routers/ingameauth';
+import { runInteractionRouter } from './routers/run-interaction/run-interaction';
 import { runRouter } from './routers/run/run';
 import { studyDemographicsRouter } from './routers/study-demographics';
 import { studyParticipationRouter } from './routers/study-participation';
@@ -15,6 +16,7 @@ import { userStudyInformedConsentRouter } from './routers/study/user-study-infor
  */
 export const appRouter = createTRPCRouter({
     run: runRouter,
+    runInteraction: runInteractionRouter,
     ingameAuth: ingameAuthRouter,
     account: accountRouter,
     studyParticipation: studyParticipationRouter,

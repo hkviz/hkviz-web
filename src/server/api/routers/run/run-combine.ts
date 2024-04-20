@@ -7,6 +7,7 @@ import { type VisibilityCode } from '~/lib/types/visibility';
 import { raise } from '~/lib/utils/utils';
 import { runFiles, runLocalIds, runs } from '~/server/db/schema';
 import { protectedProcedure } from '../../trpc';
+import { runInteractionCombine, runInteractionUncombine } from '../run-interaction/run-interaction-combine';
 import { runTagFieldsSelect } from './run-column-selects';
 import { updateRunMetaByFiles } from './update-run-meta';
 
@@ -96,10 +97,12 @@ export const combineRunsProcedure = protectedProcedure
                     .update(runs)
                     .set({ isCombinedRun: true, visibility, title, ...runTagUpdate })
                     .where(eq(runs.id, chosenId));
-            });
 
-            // update run meta
-            await updateRunMetaByFiles(ctx.db, firstRun.id);
+                // update run meta
+                await updateRunMetaByFiles(db, firstRun.id);
+
+                await runInteractionCombine(db, chosenId, runIdsWithoutChosen);
+            });
         } catch (e) {
             console.error(`Error while combining runs. For user ${userId} and run ${input.runIds.join(', ')}`, e);
             await sendMailToSupport({
@@ -151,17 +154,19 @@ export const uncombineRunProcedure = protectedProcedure
             await db
                 .update(runFiles)
                 .set({
-                    runId: sql`(${ctx.db
+                    runId: sql`(${db
                         .select({ runId: runLocalIds.originalRunId })
                         .from(runLocalIds)
                         .where(eq(runLocalIds.localId, runFiles.localId))
                         .getSQL()})`,
                 })
                 .where(eq(runFiles.runId, input.runId));
-        });
 
-        // update run meta
-        for (const run of affectedRuns) {
-            await updateRunMetaByFiles(ctx.db, run.id);
-        }
+            // update run meta
+            for (const run of affectedRuns) {
+                await updateRunMetaByFiles(db, run.id);
+            }
+
+            await runInteractionUncombine(db, input.runId);
+        });
     });

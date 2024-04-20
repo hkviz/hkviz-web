@@ -1,5 +1,6 @@
 import { isTagCode, tagGroupFromCode, tagOrGroupFromCode } from '~/lib/types/tags';
 import { findRuns, type RunFilter } from '~/server/api/routers/run/runs-find';
+import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
 import { ContentWrapper } from '../_components/content-wrapper';
 import { RunCard } from '../_components/run-card';
@@ -23,6 +24,7 @@ export function generateMetadata({ searchParams }: { searchParams: RunFilter }) 
 export default async function Runs({ searchParams }: { searchParams: RunFilter }) {
     const filter = runFilterParamsSchema.parse(searchParams);
 
+    const session = await getServerAuthSession();
     const runs = await findRuns({
         db,
         filter: {
@@ -32,8 +34,10 @@ export default async function Runs({ searchParams }: { searchParams: RunFilter }
                     ? [filter.tag]
                     : tagGroupFromCode(filter.tag).tags.map((it) => it.code)
                 : undefined,
+            sort: filter.sort ?? 'favorites',
             archived: [false],
         },
+        currentUser: session?.user,
     });
 
     return (
