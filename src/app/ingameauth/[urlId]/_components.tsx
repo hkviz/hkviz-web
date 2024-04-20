@@ -38,7 +38,7 @@ export function IngameAuthCard({ ingameAuthId, userName }: { ingameAuthId: strin
             <Card className="max-w-[500px]">
                 <CardHeader>
                     <CardTitle>Login successful</CardTitle>
-                    <CardDescription>You may now close this page, and switch back to Hollow Knight</CardDescription>
+                    <CardDescription>You can switch back to Hollow Knight now</CardDescription>
                 </CardHeader>
             </Card>
         );
@@ -48,7 +48,7 @@ export function IngameAuthCard({ ingameAuthId, userName }: { ingameAuthId: strin
             <Card className="max-w-[500px]">
                 <CardHeader>
                     <CardTitle>Login canceled</CardTitle>
-                    <CardDescription>You may close this page now</CardDescription>
+                    <CardDescription>You can close this page now</CardDescription>
                 </CardHeader>
             </Card>
         );
