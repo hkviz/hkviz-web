@@ -3,11 +3,11 @@
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/components/ui/use-toast';
-import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import { useCallback, useId, useState } from 'react';
 import type { findRuns } from '~/server/api/routers/run/runs-find';
 import { api } from '~/trpc/react';
+import { BottomInteractionRow, BottomInteractionRowText } from './_components/bottom_interaction';
 import { RunCard } from './_components/run-card';
 
 interface OwnRunsPageProps {
@@ -106,30 +106,23 @@ export function OwnRuns({ runs }: OwnRunsPageProps) {
                     })}
                 </ul>
             </div>
-            <div
-                className={cn(
-                    'fixed bottom-0 left-0 right-0 z-10 -mx-4 bg-background p-3 drop-shadow-glow-sm transition-all',
-                    inCombineMode ? 'visible opacity-100' : 'invisible translate-y-10 opacity-0',
-                )}
-            >
-                <div className="mx-auto flex max-w-[800px] flex-row items-center gap-2 ">
-                    <span className="grow">
-                        {selectedRunIds.length > 1
-                            ? `${selectedRunIds.length} gameplays selected`
-                            : 'Select gameplays to combine into one'}
-                    </span>
-                    <Button onClick={cancelCombine} variant="ghost" disabled={combineRunMutation.isLoading}>
-                        Cancel
-                    </Button>
-                    <Button
-                        onClick={combine}
-                        variant="default"
-                        disabled={selectedRunIds.length < 2 || combineRunMutation.isLoading}
-                    >
-                        Combine
-                    </Button>
-                </div>
-            </div>
+            <BottomInteractionRow isVisible={inCombineMode} mode="fixed">
+                <BottomInteractionRowText>
+                    {selectedRunIds.length > 1
+                        ? `${selectedRunIds.length} gameplays selected`
+                        : 'Select gameplays to combine into one'}
+                </BottomInteractionRowText>
+                <Button onClick={cancelCombine} variant="ghost" disabled={combineRunMutation.isLoading}>
+                    Cancel
+                </Button>
+                <Button
+                    onClick={combine}
+                    variant="default"
+                    disabled={selectedRunIds.length < 2 || combineRunMutation.isLoading}
+                >
+                    Combine
+                </Button>
+            </BottomInteractionRow>
         </div>
     );
 }

@@ -15,6 +15,7 @@ import { FaviconsHead } from './_favicons-head';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { permanentRedirect } from 'next/navigation';
+import { COOKIE_NAME_THEME } from '~/lib/cookie-names';
 
 export const metadata: Metadata = {
     title: 'HKViz for Hollow Knight',
@@ -46,7 +47,7 @@ const jsonLd = {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
     const session = await getServerAuthSession();
 
-    const isDarkTheme = cookies().get('theme')?.value !== 'light';
+    const isDarkTheme = cookies().get(COOKIE_NAME_THEME)?.value !== 'light';
     const theme = isDarkTheme ? 'dark' : 'light';
 
     // only redirects users which are not logged in for now, since otherwise the session is lost

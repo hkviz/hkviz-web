@@ -15,6 +15,8 @@ import { useRouter } from 'next/navigation';
 import { useState, type BaseSyntheticEvent } from 'react';
 import { useForm } from 'react-hook-form';
 import { type z } from 'zod';
+import { routerRedirectToFlow } from '~/lib/navigation-flow/redirect';
+import { type NavigationFlow } from '~/lib/navigation-flow/type';
 import { ageRanges } from '~/lib/types/age-range';
 import { countries, isCountryShortCode } from '~/lib/types/country';
 import { studyDemographicDefaultData, studyDemographicSchema } from '~/lib/types/study-demographic-data';
@@ -23,7 +25,7 @@ import { Expander } from '../_components/expander';
 
 export interface StudyDemographicClientFormProps {
     requestCountryShortCode: string | undefined;
-    hasIngameAuthCookie: boolean;
+    navigationFlow: NavigationFlow | null;
     hasPreviouslySubmitted: boolean;
 }
 
@@ -64,8 +66,9 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
         }
 
         await saveMutation.mutateAsync(values);
-        if (props.hasIngameAuthCookie) {
-            router.push('/ingameauth/cookie?from=demographic');
+
+        if (props.navigationFlow) {
+            routerRedirectToFlow({ router, flow: props.navigationFlow, urlPostfix: '?from=demographic' });
         }
     }
 
@@ -75,13 +78,11 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
         return <CardContent>You have already submitted the demographic form. Thank you for participating</CardContent>;
     }
 
-    if (saveMutation.isSuccess) {
+    if (saveMutation.isSuccess && !props.navigationFlow) {
         return (
             <CardContent>
                 <span className="block">Your demographic data has been saved. Thanks for participating!</span>
-                {props.hasIngameAuthCookie && (
-                    <span className="block text-green-600">You will be redirected to the login page now</span>
-                )}
+                {props.navigationFlow && <span className="block text-green-600">You will be redirected</span>}
             </CardContent>
         );
     }
@@ -89,7 +90,7 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
     return (
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>
-                <fieldset disabled={saveMutation.isLoading}>
+                <fieldset disabled={saveMutation.isLoading || (saveMutation.isSuccess && !!props.navigationFlow)}>
                     <CardContent className="space-y-4">
                         {/* <FormField
                             control={form.control}

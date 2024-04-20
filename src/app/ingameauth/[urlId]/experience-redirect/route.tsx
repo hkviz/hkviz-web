@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { type NextRequest } from 'next/server';
+import { COOKIE_NAME_INGAME_AUTH_URL_ID } from '~/lib/cookie-names';
 import { apiFromServer } from '~/trpc/from-server';
 
 export const GET = async (req: NextRequest, { params: { urlId } }: { params: { urlId: string } }) => {
@@ -11,7 +12,7 @@ export const GET = async (req: NextRequest, { params: { urlId } }: { params: { u
     }
 
     const newUrlId = await (await apiFromServer()).ingameAuth.changeUrlId({ id: ingameAuth.id });
-    cookies().set('ingameAuthUrlId', newUrlId);
+    cookies().set(COOKIE_NAME_INGAME_AUTH_URL_ID, newUrlId);
 
     redirect('/experience');
 };

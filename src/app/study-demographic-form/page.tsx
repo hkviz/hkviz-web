@@ -1,5 +1,6 @@
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { cookies, headers } from 'next/headers';
+import { headers } from 'next/headers';
+import { getNavigationFlowFromCookies } from '~/lib/navigation-flow/from-cookies';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
@@ -14,12 +15,12 @@ export default async function DataCollectionStudyParticipationPage() {
     //     return <AuthNeeded />;
     // }
     // // const studyParticipation = await (await apiFromServer()).studyParticipation.getStudyParticipation({});
-    // const hasIngameAuthCookie = cookies().get('ingameAuthUrlId') != null;
+    // const hasIngameAuthCookie = cookies().get(COOKIE_NAME_INGAME_AUTH_URL_ID) != null;
 
     const countryShortCode = headers().get('X-Vercel-IP-Country');
-    const hasIngameAuthCookie = cookies().get('ingameAuthUrlId') != null;
+    const navigationFlow = getNavigationFlowFromCookies();
 
-    const demographics = session ? await api.studyDemographics.getOwn({}) : null;
+    const demographics = await api.studyDemographics.getFromLoggedInUserOrParticipantId();
 
     return (
         <ContentCenterWrapper>
@@ -33,7 +34,7 @@ export default async function DataCollectionStudyParticipationPage() {
                 </CardHeader>
                 <StudyDemographicClientForm
                     requestCountryShortCode={countryShortCode ?? undefined}
-                    hasIngameAuthCookie={hasIngameAuthCookie}
+                    navigationFlow={navigationFlow}
                     hasPreviouslySubmitted={!!demographics}
                 />
             </Card>

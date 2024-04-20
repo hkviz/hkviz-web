@@ -1,4 +1,4 @@
-import { cookies } from 'next/headers';
+import { getNavigationFlowFromCookies } from '~/lib/navigation-flow/from-cookies';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { AuthNeeded } from '../_components/auth-needed';
@@ -14,13 +14,13 @@ async function DataCollectionStudyParticipationForm({
     formPositionText: string;
 }) {
     const studyParticipation = await (await apiFromServer()).studyParticipation.getStudyParticipation({});
-    const hasIngameAuthCookie = cookies().get('ingameAuthUrlId') != null;
+    const navigationFlow = getNavigationFlowFromCookies();
     return (
         <DataCollectionStudyParticipationClientForm
             savedStudyParticipation={studyParticipation}
             formPositionText={formPositionText}
             className={className}
-            hasIngameAuthCookie={hasIngameAuthCookie}
+            navigationFlow={navigationFlow}
         />
     );
 }
@@ -34,7 +34,10 @@ export default async function DataCollectionStudyParticipationPage() {
 
     return (
         <MdxOuterWrapper>
-            <DataCollectionStudyParticipationForm formPositionText="below" className="mx-auto mt-[min(5rem,15vh)] mb-[min(3rem, 10vh)]" />
+            <DataCollectionStudyParticipationForm
+                formPositionText="below"
+                className="mb-[min(3rem, 10vh)] mx-auto mt-[min(5rem,15vh)]"
+            />
             <MdxInnerWrapper>
                 <MdxContent />
             </MdxInnerWrapper>

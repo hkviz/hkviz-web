@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/manual_migrations/2025_04_19__user_study_id_changes.sql" dialect="GenericSQL" />
+    <file url="PROJECT" dialect="MySQL" />
+  </component>
+</project>

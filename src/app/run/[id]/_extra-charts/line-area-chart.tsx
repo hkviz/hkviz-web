@@ -137,9 +137,14 @@ export const LineAreaChart = memo(function LineAreaChart({
     const series = useComputed(() => {
         const _data = data.value;
         const _selectedVars = selectedVars.value;
-        return d3.stack<Datum>().keys(_selectedVars.length === 0 ? variables.map((it) => it.key) : _selectedVars)(
-            _data,
-        ) as unknown as Series[];
+        return d3.stack<Datum>().keys(
+            _selectedVars.length === 0
+                ? variables
+                      .filter(isShownInGraph)
+                      .toSorted((a, b) => a.order - b.order)
+                      .map((it) => it.key)
+                : _selectedVars,
+        )(_data) as unknown as Series[];
     });
 
     const x = useComputed(() => {

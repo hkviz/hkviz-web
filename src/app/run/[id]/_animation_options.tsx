@@ -103,17 +103,17 @@ function AnimationTimeLineColorCodes() {
         ctx.clearRect(0, 0, _c.widthInUnits, _c.heightInUnits);
 
         for (const sceneChange of _sceneChanges) {
-            const height =
-                sceneChange.mainVirtualScene === selectedScene
-                    ? 1
-                    : sceneChange.mainRoomData?.zoneNameFormatted === selectedZone
-                      ? 0.666
-                      : 0.333;
+            const isSelectedScene = sceneChange.mainVirtualScene === selectedScene;
+            const isSelectedZone = sceneChange.mainRoomData?.zoneNameFormatted === selectedZone;
+
+            const height = isSelectedScene ? 1 : isSelectedZone ? 0.666 : 0.333;
+
+            const position = 1 - height;
 
             ctx.fillStyle = sceneChange.color;
             ctx.fillRect(
                 (_c.widthInUnits * sceneChange.startMs) / timeframe.max,
-                _c.heightInUnits * (1 - height),
+                _c.heightInUnits * position,
                 (_c.widthInUnits * sceneChange.durationMs) / timeframe.max,
                 _c.heightInUnits * height,
             );

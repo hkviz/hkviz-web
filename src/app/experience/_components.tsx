@@ -6,12 +6,14 @@ import { Label } from '@/components/ui/label';
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { routerRedirectToFlow } from '~/lib/navigation-flow/redirect';
+import { type NavigationFlow } from '~/lib/navigation-flow/type';
 import { hkExperienceCleaned, hkExperienceEmpty, hkExperienceFinished } from '~/lib/types/hk-experience';
 import { api } from '~/trpc/react';
 import { Expander } from '../_components/expander';
 
 export interface HKExperienceFormProps {
-    hasIngameAuthCookie: boolean;
+    navigationFlow: NavigationFlow | null;
     hasPreviouslySubmitted: boolean;
 }
 
@@ -44,8 +46,8 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
         const parsedValues = hkExperienceCleaned(values);
         await saveMutation.mutateAsync(parsedValues);
 
-        if (props.hasIngameAuthCookie) {
-            router.push('/ingameauth/cookie?from=experience');
+        if (props.navigationFlow) {
+            routerRedirectToFlow({ router, flow: props.navigationFlow, urlPostfix: '?from=experience' });
         }
     }
 
@@ -53,20 +55,18 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
         return <CardContent>You have already submitted your experience. Thank you for participating</CardContent>;
     }
 
-    if (saveMutation.isSuccess) {
+    if (saveMutation.isSuccess && !props.navigationFlow) {
         return (
             <CardContent>
                 <span className="block">Your Experience has been saved. Thanks for participating!</span>
-                {props.hasIngameAuthCookie && (
-                    <span className="block text-green-600">You will be redirected to the login page now</span>
-                )}
+                {props.navigationFlow && <span className="block text-green-600">You will be redirected</span>}
             </CardContent>
         );
     }
 
     return (
         <form onSubmit={onSubmit}>
-            <fieldset disabled={saveMutation.isLoading}>
+            <fieldset disabled={saveMutation.isLoading || (saveMutation.isSuccess && !!props.navigationFlow)}>
                 <CardContent>
                     <div>
                         <Label className="w-full" htmlFor="playedBefore">

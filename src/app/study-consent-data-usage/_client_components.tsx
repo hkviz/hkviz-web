@@ -6,6 +6,8 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import React, { useId, useMemo, useState, type FormEvent } from 'react';
+import { routerRedirectToFlow } from '~/lib/navigation-flow/redirect';
+import { NavigationFlow } from '~/lib/navigation-flow/type';
 import { type AppRouterOutput } from '~/server/api/types';
 import { api } from '~/trpc/react';
 import { HKVizText } from '../_components/hkviz-text';
@@ -15,12 +17,12 @@ export function DataCollectionStudyParticipationClientForm({
     className,
     formPositionText,
     savedStudyParticipation,
-    hasIngameAuthCookie,
+    navigationFlow,
 }: {
     className?: string;
     formPositionText: string;
     savedStudyParticipation: AppRouterOutput['studyParticipation']['getStudyParticipation'];
-    hasIngameAuthCookie: boolean;
+    navigationFlow: NavigationFlow | null;
 }) {
     const setFutureContactOk = useConsentFormStore((state) => state.setFutureContactOk);
     const setKeepDataAfterStudyConducted = useConsentFormStore((state) => state.setKeepDataAfterStudyConducted);
@@ -58,8 +60,8 @@ export function DataCollectionStudyParticipationClientForm({
             keepDataAfterStudyConducted,
             excludedSinceU18: false,
         });
-        if (hasIngameAuthCookie) {
-            router.push('/ingameauth/cookie?from=consent');
+        if (navigationFlow) {
+            routerRedirectToFlow({ router, flow: navigationFlow, urlPostfix: '?from=consent' });
         }
     };
 
@@ -112,7 +114,7 @@ export function DataCollectionStudyParticipationClientForm({
                         You can however still use <HKVizText /> to visualize your runs.
                     </CardDescription>
                 </CardHeader>
-                {hasIngameAuthCookie && (
+                {navigationFlow && (
                     <CardFooter className="flex justify-end">
                         <Button onClick={handleContinueAfterU18} variant="default">
                             Continue
@@ -127,9 +129,13 @@ export function DataCollectionStudyParticipationClientForm({
         <Card className={cn('w-[600px] max-w-[calc(100vw-2rem)]', className)}>
             <CardHeader>
                 <CardTitle>
-                    {hasPreviouslyAccepted
-                        ? 'Thank you for participating in the study.'
-                        : `By using the HKViz mod, you agree to the informed consent form ${formPositionText}`}
+                    {hasPreviouslyAccepted ? (
+                        <>Thank you for participating in the study.</>
+                    ) : (
+                        <>
+                            By using the <HKVizText /> mod, you agree to the informed consent form {formPositionText}
+                        </>
+                    )}
                 </CardTitle>
                 <CardDescription>
                     {hasPreviouslyAccepted
@@ -143,14 +149,14 @@ export function DataCollectionStudyParticipationClientForm({
                     {saveMutation.isSuccess && (
                         <span role="alert" className="block text-green-600">
                             Successfully stored your preferences
-                            {hasIngameAuthCookie && ' you will be redirected to the login page now'}
+                            {navigationFlow && ' you will be redirected to the login page now'}
                         </span>
                     )}
                 </CardDescription>
             </CardHeader>
             <CardContent>
                 <form>
-                    <fieldset disabled={isMutating || (saveMutation.isSuccess && hasIngameAuthCookie)}>
+                    <fieldset disabled={isMutating || (saveMutation.isSuccess && !!navigationFlow)}>
                         <div className="grid w-full items-center gap-4">
                             {!hasPreviouslyAccepted && (
                                 <div className="flex items-center space-x-2">

@@ -1,4 +1,4 @@
-export function createCookie(name: string, value: string, days: number) {
+export function createCookieFromClient(name: string, value: string, days: number) {
     let expires: string;
     if (days) {
         const date = new Date();
@@ -10,7 +10,7 @@ export function createCookie(name: string, value: string, days: number) {
     document.cookie = name + '=' + value + expires + '; path=/';
 }
 
-export function readCookie(name: string) {
+export function readCookieFromClient(name: string) {
     const nameEQ = name + '=';
     const ca = document.cookie.split(';');
     for (let c of ca) {
@@ -25,5 +25,5 @@ export function readCookie(name: string) {
 }
 
 export function eraseCookie(name: string) {
-    createCookie(name, '', -1);
+    createCookieFromClient(name, '', -1);
 }

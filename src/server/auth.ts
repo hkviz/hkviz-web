@@ -8,7 +8,7 @@ import { cache } from 'react';
 
 import { env } from '~/env.mjs';
 import { db } from '~/server/db';
-import { mysqlTable } from '~/server/db/schema';
+import { table } from '~/server/db/schema';
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -53,7 +53,7 @@ export const authOptions: NextAuthOptions = {
             return true;
         },
     },
-    adapter: DrizzleAdapter(db, mysqlTable),
+    adapter: DrizzleAdapter(db, table),
     theme: {
         logo: '/favicons/android-chrome-192x192.png',
         colorScheme: 'dark',

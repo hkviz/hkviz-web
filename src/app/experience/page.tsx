@@ -1,6 +1,6 @@
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { type Metadata } from 'next';
-import { cookies } from 'next/headers';
+import { getNavigationFlowFromCookies } from '~/lib/navigation-flow/from-cookies';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { AuthNeeded } from '../_components/auth-needed';
@@ -22,9 +22,9 @@ export default async function DataCollectionStudyParticipationPage() {
     if (!session) {
         return <AuthNeeded />;
     }
-    const hasIngameAuthCookie = cookies().get('ingameAuthUrlId') != null;
+    const navigationFlow = getNavigationFlowFromCookies();
 
-    const hkExperience = session ? await api.hkExperience.getOwn({}) : null;
+    const hkExperience = session ? await api.hkExperience.getFromLoggedInUser({}) : null;
 
     return (
         <ContentCenterWrapper>
@@ -35,10 +35,7 @@ export default async function DataCollectionStudyParticipationPage() {
                         This helps us better understand how the previous experience influences the study results.
                     </CardDescription>
                 </CardHeader>
-                <HkExperienceClientForm
-                    hasIngameAuthCookie={hasIngameAuthCookie}
-                    hasPreviouslySubmitted={!!hkExperience}
-                />
+                <HkExperienceClientForm navigationFlow={navigationFlow} hasPreviouslySubmitted={!!hkExperience} />
             </Card>
         </ContentCenterWrapper>
     );

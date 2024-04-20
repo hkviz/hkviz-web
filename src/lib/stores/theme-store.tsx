@@ -1,8 +1,9 @@
 import { signal } from '@preact/signals-react';
 import { create } from 'zustand';
 import { combine } from 'zustand/middleware';
-import { createCookie } from '~/lib/cookies';
+import { createCookieFromClient } from '~/lib/client-cookies';
 import { getThemeColorByTheme } from '~/lib/theme';
+import { COOKIE_NAME_THEME } from '../cookie-names';
 
 export type Theme = 'light' | 'dark';
 
@@ -30,7 +31,7 @@ export const useThemeStore = create(
         }
         function setTheme(theme: Theme) {
             setThemeNoApply(theme);
-            createCookie('theme', theme, 365 * 5);
+            createCookieFromClient(COOKIE_NAME_THEME, theme, 365 * 5);
             const root = document.getElementsByTagName('body')[0]!;
             if (theme === 'dark') {
                 root.classList.add('dark');

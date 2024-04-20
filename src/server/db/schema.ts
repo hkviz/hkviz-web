@@ -7,6 +7,7 @@ import {
     mysqlEnum,
     mysqlTableCreator,
     primaryKey,
+    serial,
     text,
     timestamp,
     varchar,
@@ -30,12 +31,14 @@ function varcharUuid(name: string) {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const mysqlTable = mysqlTableCreator((name) => `hkviz_${name}`);
+export const table = mysqlTableCreator((name) => `hkviz_${name}`);
 
-export const users = mysqlTable(
+export const users = table(
     'user',
     {
         id: varchar('id', { length: 255 }).notNull().primaryKey(),
+        // intentionally optional. Since study participants don't need a user account.
+        participantId: varcharUuid('participant_id'),
         name: varchar('name', { length: 255 }),
         previousName: varchar('previous_name', { length: 255 }),
         isResearcher: boolean('is_researcher').notNull().default(false),
@@ -63,7 +66,7 @@ export const usersRelations = relations(users, ({ many, one }) => ({
     }),
 }));
 
-export const accounts = mysqlTable(
+export const accounts = table(
     'account',
     {
         userId: varchar('userId', { length: 255 }).notNull(),
@@ -92,59 +95,7 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
     user: one(users, { fields: [accounts.userId], references: [users.id] }),
 }));
 
-export const dataCollectionStudyParticipations = mysqlTable('userDataCollectionResearchParticipation', {
-    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
-    excludedSinceU18: boolean('exludedSinceU18').notNull().default(false),
-    keepDataAfterStudyConducted: boolean('keepDataAfterStudyConducted').notNull(),
-    futureContactOk: boolean('futureContactOk').notNull(),
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
-});
-
-export const dataCollectionStudyParticipationRelations = relations(dataCollectionStudyParticipations, ({ one }) => ({
-    user: one(users, { fields: [dataCollectionStudyParticipations.userId], references: [users.id] }),
-}));
-
-export const userDemographics = mysqlTable('userDemographic', {
-    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
-    ageRange: mysqlEnum('age_range', ageRangeCodes).notNull(),
-    country: mysqlEnum('country', countryCodes).notNull(),
-
-    genderWoman: boolean('gender_woman').notNull().default(false),
-    genderMan: boolean('gender_man').notNull().default(false),
-    genderNonBinary: boolean('gender_non_binary').notNull().default(false),
-    genderPreferNotToDisclose: boolean('gender_prefer_not_to_disclose').notNull().default(false),
-    genderPreferToSelfDescribe: boolean('gender_prefer_to_self_describe').notNull().default(false),
-    genderCustom: varchar('gender_custom', { length: 124 }),
-
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
-});
-
-export const hkExperience = mysqlTable('hkExperience', {
-    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
-
-    playedBefore: boolean('played_before').notNull(),
-    gotDreamnail: boolean('got_dreamnail').notNull(),
-    didEndboss: boolean('did_enboss').notNull(),
-    enteredWhitePalace: boolean('entered_white_palace').notNull(),
-    got112Percent: boolean('got_112_percent').notNull(),
-
-    createdAt: timestamp('created_at')
-        .default(sql`CURRENT_TIMESTAMP`)
-        .notNull(),
-    updatedAt: timestamp('updatedAt').onUpdateNow(),
-});
-
-export const userDemographicsRelations = relations(userDemographics, ({ one }) => ({
-    user: one(users, { fields: [userDemographics.userId], references: [users.id] }),
-}));
-
-export const sessions = mysqlTable(
+export const sessions = table(
     'session',
     {
         sessionToken: varchar('sessionToken', { length: 255 }).notNull().primaryKey(),
@@ -160,7 +111,7 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
     user: one(users, { fields: [sessions.userId], references: [users.id] }),
 }));
 
-export const verificationTokens = mysqlTable(
+export const verificationTokens = table(
     'verificationToken',
     {
         identifier: varchar('identifier', { length: 255 }).notNull(),
@@ -202,7 +153,7 @@ const runGameStateMetaColumns = {
 
 export type RunGameStateMetaColumnName = keyof typeof runGameStateMetaColumns;
 
-export const runs = mysqlTable(
+export const runs = table(
     'run',
     {
         // server generated. Used for urls
@@ -259,7 +210,7 @@ export const runsRelations = relations(runs, ({ one, many }) => ({
  * Since a gameplay could have multiple local ids, when it is played over multiple devices
  * and the id is not synced (which it isn't atm).
  */
-export const runLocalIds = mysqlTable(
+export const runLocalIds = table(
     'run_local_id',
     {
         localId: varcharUuid('local_id').notNull(),
@@ -277,7 +228,7 @@ export const runLocalIdRelations = relations(runLocalIds, ({ one }) => ({
     run: one(runs, { fields: [runLocalIds.runId], references: [runs.id] }),
 }));
 
-export const runFiles = mysqlTable(
+export const runFiles = table(
     'runfile',
     {
         // this id is also used to find the file inside the r2 bucket
@@ -304,7 +255,7 @@ export const runFilesRelations = relations(runFiles, ({ one }) => ({
     run: one(runs, { fields: [runFiles.runId], references: [runs.id] }),
 }));
 
-export const ingameAuth = mysqlTable(
+export const ingameAuth = table(
     'ingameauth',
     {
         // server generated, to authenticate a user from the game. Does only permit uploads.
@@ -328,7 +279,7 @@ export const ingameAuthRelations = relations(ingameAuth, ({ one }) => ({
     user: one(users, { fields: [ingameAuth.userId], references: [users.id] }),
 }));
 
-export const accountDeletionRequest = mysqlTable('accountDeletionRequest', {
+export const accountDeletionRequest = table('accountDeletionRequest', {
     id: varchar('id', { length: 255 }).notNull().primaryKey(),
     userId: varchar('user_id', { length: 255 }).notNull(),
     createdAt: timestamp('created_at')
@@ -337,3 +288,109 @@ export const accountDeletionRequest = mysqlTable('accountDeletionRequest', {
     updatedAt: timestamp('updatedAt').onUpdateNow(),
     formAccepted: boolean('form_accepted').notNull().default(false),
 });
+
+// data collection study:
+export const dataCollectionStudyParticipations = table('userDataCollectionResearchParticipation', {
+    userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
+    excludedSinceU18: boolean('exludedSinceU18').notNull().default(false),
+    keepDataAfterStudyConducted: boolean('keepDataAfterStudyConducted').notNull(),
+    futureContactOk: boolean('futureContactOk').notNull(),
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
+});
+
+export const dataCollectionStudyParticipationRelations = relations(dataCollectionStudyParticipations, ({ one }) => ({
+    user: one(users, { fields: [dataCollectionStudyParticipations.userId], references: [users.id] }),
+}));
+
+export const userDemographics = table(
+    'userDemographic',
+    {
+        id: serial('id').primaryKey(),
+        userId: varcharUuid('userId'),
+        participantId: varcharUuid('participant_id'),
+        ageRange: mysqlEnum('age_range', ageRangeCodes).notNull(),
+        country: mysqlEnum('country', countryCodes).notNull(),
+
+        genderWoman: boolean('gender_woman').notNull().default(false),
+        genderMan: boolean('gender_man').notNull().default(false),
+        genderNonBinary: boolean('gender_non_binary').notNull().default(false),
+        genderPreferNotToDisclose: boolean('gender_prefer_not_to_disclose').notNull().default(false),
+        genderPreferToSelfDescribe: boolean('gender_prefer_to_self_describe').notNull().default(false),
+        genderCustom: varchar('gender_custom', { length: 124 }),
+
+        createdAt: timestamp('created_at')
+            .default(sql`CURRENT_TIMESTAMP`)
+            .notNull(),
+        updatedAt: timestamp('updatedAt').onUpdateNow(),
+    },
+    (userDemographic) => ({
+        userIdIdx: index('userId_idx').on(userDemographic.userId),
+        participantIdIdx: index('participantId_idx').on(userDemographic.participantId),
+    }),
+);
+
+export const hkExperience = table(
+    'hkExperience',
+    {
+        id: serial('id').primaryKey(),
+        userId: varcharUuid('userId'),
+        participantId: varcharUuid('participant_id'),
+
+        playedBefore: boolean('played_before').notNull(),
+        gotDreamnail: boolean('got_dreamnail').notNull(),
+        didEndboss: boolean('did_enboss').notNull(),
+        enteredWhitePalace: boolean('entered_white_palace').notNull(),
+        got112Percent: boolean('got_112_percent').notNull(),
+
+        createdAt: timestamp('created_at')
+            .default(sql`CURRENT_TIMESTAMP`)
+            .notNull(),
+        updatedAt: timestamp('updatedAt').onUpdateNow(),
+    },
+    (hkExperience) => ({
+        userIdIdx: index('userId_idx').on(hkExperience.userId),
+        participantIdIdx: index('participantId_idx').on(hkExperience.participantId),
+    }),
+);
+
+export const userDemographicsRelations = relations(userDemographics, ({ one }) => ({
+    user: one(users, { fields: [userDemographics.userId], references: [users.id] }),
+    participant: one(studyParticipant, {
+        fields: [userDemographics.participantId],
+        references: [studyParticipant.participantId],
+    }),
+}));
+
+// user study:
+
+/**
+ * Each user has a participant id, but a user study participant does not need to have a user account.
+ * The user account is only needed to use the mod and upload gameplays.
+ */
+export const studyParticipant = table('studyParticipant', {
+    participantId: varcharUuid('participant_id').notNull().primaryKey(),
+    comment: varchar('comment', { length: 1024 }),
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
+    userStudyFinished: boolean('user_study_finished').notNull().default(false),
+});
+
+export const userStudyInformedConsent = table('userStudyInformedConsent', {
+    participantId: varcharUuid('participant_id').notNull().primaryKey(),
+    createdAt: timestamp('created_at')
+        .default(sql`CURRENT_TIMESTAMP`)
+        .notNull(),
+    updatedAt: timestamp('updatedAt').onUpdateNow(),
+});
+
+export const userStudyInformedConsentRelations = relations(userStudyInformedConsent, ({ one }) => ({
+    participant: one(studyParticipant, {
+        fields: [userStudyInformedConsent.participantId],
+        references: [studyParticipant.participantId],
+    }),
+}));

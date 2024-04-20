@@ -6,6 +6,8 @@ import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/
 import { ingameAuth } from '~/server/db/schema';
 
 import { and, eq, gte, isNull } from 'drizzle-orm';
+import { cookies } from 'next/headers';
+import { COOKIE_NAME_INGAME_AUTH_URL_ID } from '~/lib/cookie-names';
 import type { db } from '~/server/db';
 
 function isMax10MinutesOld() {
@@ -90,6 +92,8 @@ export const ingameAuthRouter = createTRPCRouter({
         if (result.rowsAffected !== 1) {
             throw new Error('Unexpected session state');
         }
+
+        cookies().delete(COOKIE_NAME_INGAME_AUTH_URL_ID);
     }),
 
     cancelLogin: protectedProcedure.input(z.object({ id: z.string().uuid() })).mutation(async ({ ctx, input }) => {
@@ -100,6 +104,8 @@ export const ingameAuthRouter = createTRPCRouter({
         if (result.rowsAffected !== 1) {
             throw new Error('Unexpected session state');
         }
+
+        cookies().delete(COOKIE_NAME_INGAME_AUTH_URL_ID);
     }),
 
     getStatus: publicProcedure.input(z.object({ id: z.string().uuid() })).query(async ({ ctx, input }) => {

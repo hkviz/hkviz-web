@@ -5,6 +5,8 @@ import { ingameAuthRouter } from './routers/ingameauth';
 import { runRouter } from './routers/run/run';
 import { studyDemographicsRouter } from './routers/study-demographics';
 import { studyParticipationRouter } from './routers/study-participation';
+import { participantRouter } from './routers/study/participant';
+import { userStudyInformedConsentRouter } from './routers/study/user-study-informed-consent';
 
 /**
  * This is the primary router for your server.
@@ -18,4 +20,6 @@ export const appRouter = createTRPCRouter({
     studyParticipation: studyParticipationRouter,
     studyDemographics: studyDemographicsRouter,
     hkExperience: hkExperienceRouter,
+    participant: participantRouter,
+    userStudyInformedConsent: userStudyInformedConsentRouter,
 });
