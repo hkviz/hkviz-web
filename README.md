@@ -6,7 +6,7 @@
 
 # HKViz web
 
-A site for visualizing player-behavior for [Hollow Knight](https://www.hollowknight.com), like seeing the path one has taken in playthrough, to which boss one has died the most, where one has spent the most time, and more.
+A site for visualizing player-behavior for [Hollow Knight](https://www.hollowknight.com), like seeing the path one has taken in playthrough, to which boss one had the most difficulties, where one has spent the most time, and more.
 
 The mod for recording player behavior is contained in the [hkviz-mod repository](https://github.com/hkviz/hkviz-mod).
 
@@ -14,7 +14,7 @@ Visit [hkviz.org](https://www.hkviz.org/) to get started recording your own game
 
 ## I have Ideas/Feedback for visualizations
 
-Feel free to [open a issue](https://github.com/hkviz/hkviz-web/issues) on this repository, write @olivergrack on discord or contact me via [support@hkviz.org](mailto:support@hkviz.org).
+Feel free to [open an issue](https://github.com/hkviz/hkviz-web/issues) on this repository, write @olivergrack on discord or contact me via [support@hkviz.org](mailto:support@hkviz.org).
 
 ## How to use
 
