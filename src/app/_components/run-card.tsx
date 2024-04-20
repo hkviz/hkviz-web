@@ -488,10 +488,16 @@ function RunCardLikeButton({ run }: { run: RunMetadata }) {
         <Button
             size="icon"
             variant="ghost"
+            aria-pressed={hasLiked}
+            aria-label={hasLiked ? 'Unlike gameplay' : 'Like gameplay'}
             onClick={handleClick}
             className="absolute bottom-0 right-0 z-[7] rounded-full"
         >
-            {hasLiked ? <Star className="h-4 w-4 fill-current" /> : <Star className="h-4 w-4" />}
+            <Star
+                className={
+                    'h-4 w-4 transition-[fill] ' + (hasLiked ? 'fill-current' : 'fill-[rgba(255,255,255,0.001)]')
+                }
+            />
         </Button>
     );
 }
