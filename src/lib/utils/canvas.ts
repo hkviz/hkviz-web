@@ -7,9 +7,12 @@ export function useElementSize<T extends HTMLElement>(element: ReadonlySignal<T 
         const _element = element.value;
         if (!_element) return;
 
-        const resizeObserver = new ResizeObserver(() => {
+        function handleResize() {
             size.value = { width: element.value?.offsetWidth ?? 0, height: element.value?.offsetHeight ?? 0 };
-        });
+        }
+
+        const resizeObserver = new ResizeObserver(handleResize);
+        handleResize();
 
         resizeObserver.observe(_element);
 

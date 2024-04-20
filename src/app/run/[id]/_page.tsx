@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
-import { Tabs } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Tooltip, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useSignals } from '@preact/signals-react/runtime';
@@ -16,7 +16,7 @@ import { type Session } from 'next-auth';
 import { useEffect, useRef, useState } from 'react';
 import { type ImperativePanelHandle, type PanelGroupOnLayout } from 'react-resizable-panels';
 import { storeInitializer, useStoreInitializer } from '~/lib/stores/store-initializer';
-import { MainCardTab, uiStore } from '~/lib/stores/ui-store';
+import { uiStore, type MainCardTab } from '~/lib/stores/ui-store';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
@@ -57,10 +57,26 @@ export function SingleRunClientPage({ session, runData }: Props) {
     useSignals();
     const isV1 = uiStore.isV1.value;
     const mainCardTab = uiStore.mainCardTab.value;
+    const mobileTab = uiStore.mobileTab.value;
+
+    // const layout = useSignal<HTMLDivElement | null>(null);
+    // const layoutSize = useElementSize(layout);
+
+    // const isMobileLayoutSignal = useComputed(() => {
+    //     const width = layoutSize.value.width;
+    //     console.log(width);
+    //     return width !== 0 && width < 768; // tailwind md breakpoint
+    // });
+    // const isMobileLayout = isMobileLayoutSignal.value;
 
     return (
-        <div className="m-2 flex min-h-full grow flex-col items-stretch justify-stretch gap-2 lg:flex-row">
-            <div className="flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:shrink-0 lg:flex-col">
+        <div className="flex min-h-full grow flex-col items-stretch justify-stretch gap-2 md:m-2 lg:flex-row">
+            <div
+                className={cn(
+                    'flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:shrink-0 lg:flex-col',
+                    mobileTab === 'map' ? '' : 'hidden md:flex',
+                )}
+            >
                 <Card className="max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto sm:min-w-min">
                     <CardHeader className={cardHeaderSmallClasses}>
                         <CardTitle className={cardTitleSmallClasses}>{isV1 ? 'View options' : 'Map options'}</CardTitle>
@@ -71,13 +87,19 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 </Card>
                 <RoomInfo />
             </div>
-            <div className="flex grow flex-col gap-2">
+            <div
+                className={cn(
+                    'grow flex-col gap-2',
+                    mobileTab === 'map' || mobileTab === 'overview' ? 'flex' : 'hidden md:flex',
+                )}
+            >
                 <Card className="relative grid grow grid-cols-1 grid-rows-1 overflow-hidden">
                     <Tabs
                         value={mainCardTab}
-                        className="absolute left-0 right-0 top-0 z-10 mx-auto w-fit"
+                        className="absolute left-0 right-0 top-0 z-10 mx-auto hidden w-fit md:block"
                         onValueChange={(tab: string) => {
                             uiStore.mainCardTab.value = tab as MainCardTab;
+                            uiStore.mobileTab.value = tab as MainCardTab;
                         }}
                     >
                         <TabsListTransparent>
@@ -85,13 +107,6 @@ export function SingleRunClientPage({ session, runData }: Props) {
                             <TabsTriggerTransparent value="map">Map</TabsTriggerTransparent>
                         </TabsListTransparent>
                     </Tabs>
-
-                    {/* <Tabs defaultValue="animate" className="w-[400px]">
-                    <TabsList>
-                        <TabsTrigger value="animate">Overview Map</TabsTrigger>
-                        <TabsTrigger value="password">Game</TabsTrigger>
-                    </TabsList>
-                </Tabs> */}
                     <HKMap className="col-start-1 col-end-1 row-start-1 row-end-1 min-h-[50vh]" />
                     <RunOverviewTab
                         className="col-start-1 col-end-1 row-start-1 row-end-1"
@@ -104,6 +119,24 @@ export function SingleRunClientPage({ session, runData }: Props) {
             </div>
 
             <RightCard />
+
+            <Tabs
+                className="sticky bottom-0 left-0 right-0 z-10 md:hidden"
+                value={mobileTab}
+                onValueChange={(tab: string) => {
+                    if (uiStore.isMainCardTab(tab)) {
+                        uiStore.mainCardTab.value = tab as MainCardTab;
+                    }
+                    uiStore.mobileTab.value = tab as MainCardTab;
+                }}
+            >
+                <TabsList className="w-full rounded-none">
+                    <TabsTrigger value="overview">Overview</TabsTrigger>
+                    <TabsTrigger value="map">Map</TabsTrigger>
+                    <TabsTrigger value="time-charts">Time charts</TabsTrigger>
+                    <TabsTrigger value="splits">Splits</TabsTrigger>
+                </TabsList>
+            </Tabs>
         </div>
     );
 }
@@ -160,6 +193,7 @@ const DEFAULT_EXTRA_CHARTS_SIZE = 63;
 function RightCard() {
     useSignals();
     const isV1 = uiStore.isV1.value;
+    const mobileTab = uiStore.mobileTab.value;
 
     const [layoutState, setLayoutState] = useState<'only-extra-charts' | 'only-splits' | 'both'>('both');
     const extraChartsPanelRef = useRef<ImperativePanelHandle>(null);
@@ -210,35 +244,39 @@ function RightCard() {
     );
 
     return (
-        <ResizablePanelGroup
-            direction="vertical"
-            className="h-unset-important min-h-[calc(100vh-var(--main-nav-height))] lg:min-h-[35rem] lg:max-w-[350px]"
-            onLayout={onLayout}
-        >
-            {!isV1 && (
-                <>
-                    <ResizablePanel
-                        defaultSize={100 - DEFAULT_EXTRA_CHARTS_SIZE}
-                        collapsible
-                        minSize={18}
-                        className={cn(cardClasses, 'min-h-[44px]')}
-                        ref={splitsPanelRef}
-                    >
-                        <RunSplits resizeOptions={splitsResizeOptions} />
-                    </ResizablePanel>
-                    <ResizableHandle withHandle className="bg-transparent p-1" />
-                </>
-            )}
-            <ResizablePanel
-                defaultSize={DEFAULT_EXTRA_CHARTS_SIZE}
-                collapsible
-                minSize={30}
-                className={cn(cardClasses, 'min-h-[44px]')}
-                ref={extraChartsPanelRef}
+        <div className={mobileTab === 'splits' || mobileTab === 'time-charts' ? '' : 'hidden md:flex'}>
+            <ResizablePanelGroup
+                direction="vertical"
+                className={
+                    'h-unset-important min-h-[calc(100vh-var(--main-nav-height))] lg:min-h-[35rem] lg:max-w-[350px]'
+                }
+                onLayout={onLayout}
             >
-                <RunExtraCharts resizeOptions={runExtraChartsResizeOptions} />
-            </ResizablePanel>
-        </ResizablePanelGroup>
+                {!isV1 && (
+                    <>
+                        <ResizablePanel
+                            defaultSize={100 - DEFAULT_EXTRA_CHARTS_SIZE}
+                            collapsible
+                            minSize={18}
+                            className={cn(cardClasses, 'min-h-[44px]', mobileTab === 'splits' ? '' : 'hidden md:block')}
+                            ref={splitsPanelRef}
+                        >
+                            <RunSplits resizeOptions={splitsResizeOptions} />
+                        </ResizablePanel>
+                        <ResizableHandle withHandle className="hidden bg-transparent p-1 md:flex" />
+                    </>
+                )}
+                <ResizablePanel
+                    defaultSize={DEFAULT_EXTRA_CHARTS_SIZE}
+                    collapsible
+                    minSize={30}
+                    className={cn(cardClasses, 'min-h-[44px]', mobileTab === 'time-charts' ? '' : 'hidden md:block')}
+                    ref={extraChartsPanelRef}
+                >
+                    <RunExtraCharts resizeOptions={runExtraChartsResizeOptions} />
+                </ResizablePanel>
+            </ResizablePanelGroup>
+        </div>
     );
 
     // return (

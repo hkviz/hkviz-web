@@ -215,7 +215,7 @@ function RunSplitsRows() {
 }
 
 interface RunSplitsProps {
-    resizeOptions: ReactNode;
+    resizeOptions?: ReactNode;
 }
 
 export function RunSplits({ resizeOptions }: RunSplitsProps) {

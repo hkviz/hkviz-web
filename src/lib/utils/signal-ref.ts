@@ -1,4 +1,5 @@
-import { type Signal } from '@preact/signals-react';
+import { useSignal, type Signal } from '@preact/signals-react';
+import { useEffect, useRef } from 'react';
 
 export function signalRef<T extends HTMLElement | SVGElement>(element: Signal<T | null>) {
     return (el: T | null) => {
@@ -9,5 +10,18 @@ export function signalRef<T extends HTMLElement | SVGElement>(element: Signal<T 
         // something to look into later.
         if (el === null) return;
         element.value = el;
+    };
+}
+
+export function useSignalRef<T extends HTMLElement | SVGElement>() {
+    const ref = useRef<T | null>(null);
+    const signal = useSignal<T | null>(null);
+    useEffect(() => {
+        signal.value = ref.current;
+    }, [signal]);
+
+    return {
+        signal,
+        ref,
     };
 }
