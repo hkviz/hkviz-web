@@ -37,7 +37,7 @@ export function RunOverviewTab({
     const isOpen = mainCardTab === 'overview';
 
     function viewAnimatedAnalytics() {
-        uiStore.mainCardTab.value = 'map';
+        uiStore.activateTab('map');
         animationStore.setIsPlaying(true);
         roomDisplayStore.roomVisibility.value = 'visited-animated';
         traceStore.visibility.value = 'animated';
@@ -48,7 +48,7 @@ export function RunOverviewTab({
     }
 
     function viewStaticAnalytics() {
-        uiStore.mainCardTab.value = 'map';
+        uiStore.activateTab('map');
         animationStore.setIsPlaying(false);
         roomDisplayStore.roomVisibility.value = 'visited';
         roomColoringStore.setRoomColorMode('1-var');
@@ -79,7 +79,7 @@ export function RunOverviewTab({
     return (
         <div
             className={cn(
-                'flex items-center justify-center pt-20 transition',
+                'flex items-center justify-center transition',
                 isOpen ? 'visible backdrop-blur-md' : 'pointer-events-none invisible backdrop-blur-none',
                 className,
             )}
@@ -87,80 +87,82 @@ export function RunOverviewTab({
             <div className={cn('absolute inset-0 bg-card', isOpen ? 'opacity-75' : 'opacity-0')} />
             <div
                 className={cn(
-                    'relative z-10 flex w-full max-w-[700px] flex-col items-center gap-4 transition',
+                    'relative z-10 max-h-full w-full overflow-y-auto transition',
                     isOpen ? '' : 'scale-75 opacity-0',
                 )}
             >
-                <div className="w-full">
-                    <RunCard run={runData} isOwnRun={isOwnRun} />
-                </div>
-                <div className="flex flex-col items-center justify-center gap-2">
-                    <div className="grid max-w-[500px] grid-cols-2 gap-2">
-                        <Button onClick={viewAnimatedAnalytics} disabled={isDisabled}>
-                            <Play className="mr-2 h-5 w-5" />
-                            <span className="grow">View player movement</span>
-                        </Button>
-                        <Button onClick={viewStaticAnalytics} disabled={isDisabled}>
-                            <AreaChart size={20} className="mr-2 h-5 w-5" />
-                            View room based analytics
-                        </Button>
+                <div className="flex min-h-full w-full max-w-[700px] flex-col items-center justify-center gap-4 mx-auto">
+                    <div className="w-full">
+                        <RunCard run={runData} isOwnRun={isOwnRun} />
                     </div>
-                    <div className="">
-                        <Button variant="secondary" asChild>
-                            <a href="/guide/analytics" target="_blank">
-                                <HelpCircle size={20} className="mr-2 h-5 w-5" />
-                                View analytics guide
-                            </a>
-                        </Button>
+                    <div className="flex flex-col items-center justify-center gap-2">
+                        <div className="grid max-w-[500px] grid-cols-2 gap-2">
+                            <Button onClick={viewAnimatedAnalytics} disabled={isDisabled}>
+                                <Play className="mr-2 h-5 w-5" />
+                                <span className="grow">View player movement</span>
+                            </Button>
+                            <Button onClick={viewStaticAnalytics} disabled={isDisabled}>
+                                <AreaChart size={20} className="mr-2 h-5 w-5" />
+                                View room based analytics
+                            </Button>
+                        </div>
+                        <div className="">
+                            <Button variant="secondary" asChild>
+                                <a href="/guide/analytics" target="_blank">
+                                    <HelpCircle size={20} className="mr-2 h-5 w-5" />
+                                    View analytics guide
+                                </a>
+                            </Button>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <Expander expanded={!!recording}>
-                        <Table>
-                            <TableBody>
-                                <TableRow>
-                                    <TableHead>Gameplay started</TableHead>
-                                    <TableCell>
-                                        {runData.startedAt && <RelativeDate date={runData.startedAt} />}
-                                    </TableCell>
-                                </TableRow>
-                                {hollowKnightVersions && (
+                    <div>
+                        <Expander expanded={!!recording}>
+                            <Table>
+                                <TableBody>
                                     <TableRow>
-                                        <TableHead>Hollow Knight version</TableHead>
+                                        <TableHead>Gameplay started</TableHead>
                                         <TableCell>
-                                            {hollowKnightVersions.map((it) => (
+                                            {runData.startedAt && <RelativeDate date={runData.startedAt} />}
+                                        </TableCell>
+                                    </TableRow>
+                                    {hollowKnightVersions && (
+                                        <TableRow>
+                                            <TableHead>Hollow Knight version</TableHead>
+                                            <TableCell>
+                                                {hollowKnightVersions.map((it) => (
+                                                    <span className="block" key={it}>
+                                                        {it}
+                                                    </span>
+                                                ))}
+                                            </TableCell>
+                                        </TableRow>
+                                    )}
+                                    <TableRow>
+                                        <TableHead>HKViz mod version</TableHead>
+                                        <TableCell>
+                                            {recording?.allHkVizModVersions.map((it) => (
                                                 <span className="block" key={it}>
                                                     {it}
                                                 </span>
                                             ))}
                                         </TableCell>
                                     </TableRow>
-                                )}
-                                <TableRow>
-                                    <TableHead>HKViz mod version</TableHead>
-                                    <TableCell>
-                                        {recording?.allHkVizModVersions.map((it) => (
-                                            <span className="block" key={it}>
-                                                {it}
-                                            </span>
-                                        ))}
-                                    </TableCell>
-                                </TableRow>
-                                {fiteredModVersions?.map((mod) => (
-                                    <TableRow key={mod.name}>
-                                        <TableHead>{mod.name} version</TableHead>
-                                        <TableCell>
-                                            {mod.versions.map((it) => (
-                                                <span className="block" key={it}>
-                                                    {it}
-                                                </span>
-                                            ))}
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </Expander>
+                                    {fiteredModVersions?.map((mod) => (
+                                        <TableRow key={mod.name}>
+                                            <TableHead>{mod.name} version</TableHead>
+                                            <TableCell>
+                                                {mod.versions.map((it) => (
+                                                    <span className="block" key={it}>
+                                                        {it}
+                                                    </span>
+                                                ))}
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </Expander>
+                    </div>
                 </div>
             </div>
         </div>

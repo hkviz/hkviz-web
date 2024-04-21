@@ -226,13 +226,13 @@ export function RoomInfo() {
                 } as CSSProperties
             }
         >
-            <CardHeader className="flex flex-row items-center p-4 pt-2">
+            <CardHeader className="flex flex-row items-center p-2 pt-2">
                 {allRoomInfosIncludingSubsprites && (
                     <HKMapRoom roomInfos={allRoomInfosIncludingSubsprites} className="mr-4 h-14 w-14" />
                 )}
 
                 <div>
-                    <CardTitle className="text-lg">
+                    <CardTitle className="text-base md:text-lg">
                         {!selectedRoom || isV1 ? <>Room analytics</> : areaWithTooltip}
                     </CardTitle>
                     <CardDescription>

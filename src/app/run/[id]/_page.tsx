@@ -77,7 +77,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
 
     return (
         <div className="dashboard-grid">
-            <div className={cn('dashboard-grid-map-options', mobileTab === 'map' ? 'flex' : 'hidden md:flex')}>
+            <div className={cn('dashboard-grid-map-options', mobileTab === 'map' ? 'flex' : 'hidden lg:flex')}>
                 <Card
                     className={cn(
                         cardRoundedMdOnlyClasses,
@@ -98,15 +98,14 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     cardRoundedMdOnlyClasses,
                     'relative grow grid-cols-1 grid-rows-1 overflow-hidden border-t',
                     mobileTab === 'overview' ? 'dashboard-grid-map-big' : 'dashboard-grid-map',
-                    mobileTab === 'overview' || mobileTab === 'map' ? 'grid' : 'hidden md:grid',
+                    mobileTab === 'overview' || mobileTab === 'map' ? 'grid' : 'hidden lg:grid',
                 )}
             >
                 <Tabs
                     value={mainCardTab}
-                    className="absolute left-0 right-0 top-0 z-10 mx-auto hidden w-fit md:block"
+                    className="absolute left-0 right-0 top-0 z-10 mx-auto hidden w-fit lg:block"
                     onValueChange={(tab: string) => {
-                        uiStore.mainCardTab.value = tab as MainCardTab;
-                        uiStore.mobileTab.value = tab as MainCardTab;
+                        uiStore.activateTab(tab as MainCardTab);
                     }}
                 >
                     <TabsListTransparent>
@@ -142,7 +141,7 @@ function ResizeButtons({
     maximize: () => void;
 }) {
     return (
-        <div className="-ml-3 hidden md:inline-block">
+        <div className="-ml-3 hidden lg:inline-block">
             {state !== 'minimized' && (
                 <Tooltip>
                     <TooltipTrigger asChild>
@@ -233,7 +232,7 @@ function RightCard({ className }: { className?: string }) {
     );
 
     return (
-        <div className={cn(mobileTab === 'splits' || mobileTab === 'time-charts' ? '' : 'hidden md:flex', className)}>
+        <div className={cn(mobileTab === 'splits' || mobileTab === 'time-charts' ? '' : 'hidden lg:flex', className)}>
             <ResizablePanelGroup direction="vertical" onLayout={onLayout}>
                 {!isV1 && (
                     <>
@@ -245,13 +244,13 @@ function RightCard({ className }: { className?: string }) {
                                 cardClasses,
                                 cardRoundedMdOnlyClasses,
                                 'min-h-[44px] border-t',
-                                mobileTab === 'splits' ? '' : 'hidden md:block',
+                                mobileTab === 'splits' ? '' : 'hidden lg:block',
                             )}
                             ref={splitsPanelRef}
                         >
                             <RunSplits resizeOptions={splitsResizeOptions} />
                         </ResizablePanel>
-                        <ResizableHandle withHandle className="hidden bg-transparent p-1 md:flex" />
+                        <ResizableHandle withHandle className="hidden bg-transparent p-1 lg:flex" />
                     </>
                 )}
                 <ResizablePanel
@@ -262,7 +261,7 @@ function RightCard({ className }: { className?: string }) {
                         cardClasses,
                         cardRoundedMdOnlyClasses,
                         'min-h-[44px] border-t',
-                        mobileTab === 'time-charts' ? '' : 'hidden md:block',
+                        mobileTab === 'time-charts' ? '' : 'hidden lg:block',
                     )}
                     ref={extraChartsPanelRef}
                 >

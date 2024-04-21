@@ -1,7 +1,7 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useSignals } from '@preact/signals-react/runtime';
 import { AreaChart, BadgeInfo, Map, Timer, type LucideIcon } from 'lucide-react';
-import { uiStore, type MainCardTab, type MobileTab } from '~/lib/stores/ui-store';
+import { uiStore, type MobileTab } from '~/lib/stores/ui-store';
 
 function MobileTabTrigger({ value, title, icon: Icon }: { value: MobileTab; title: string; icon: LucideIcon }) {
     return (
@@ -20,13 +20,10 @@ export function MobileTabBar() {
     const mobileTab = uiStore.mobileTab.value;
     return (
         <Tabs
-            className="dashboard-grid-tabs sticky bottom-0 left-0 right-0 z-10 md:hidden"
+            className="dashboard-grid-tabs sticky bottom-0 left-0 right-0 z-10 lg:hidden"
             value={mobileTab}
             onValueChange={(tab: string) => {
-                if (uiStore.isMainCardTab(tab)) {
-                    uiStore.mainCardTab.value = tab as MainCardTab;
-                }
-                uiStore.mobileTab.value = tab as MainCardTab;
+                uiStore.activateTab(tab as MobileTab);
             }}
         >
             <TabsList className="flex h-14 w-full flex-row rounded-none border-t">

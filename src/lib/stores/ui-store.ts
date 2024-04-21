@@ -1,4 +1,5 @@
 import { computed, effect, signal } from '@preact/signals-react';
+import { asReadonlySignal } from '../utils/signals';
 import { animationStore } from './animation-store';
 
 export type DisplayVersion = 'v1' | 'vnext';
@@ -37,20 +38,30 @@ function reset() {
     mobileTab.value = 'overview';
 }
 
+function activateTab(tab: MainCardTab | MobileTab) {
+    mobileTab.value = tab;
+    if (isMainCardTab(tab)) {
+        mainCardTab.value = tab;
+    } else {
+        mainCardTab.value = 'map';
+    }
+}
+
 export const uiStore = {
-    mainCardTab,
-    mobileTab,
+    mainCardTab: asReadonlySignal(mainCardTab),
+    mobileTab: asReadonlySignal(mobileTab),
     showMapIfOverview,
     displayVersion,
     isV1,
     reset,
     isMainCardTab,
     isMobileTab,
+    activateTab,
 };
 
 effect(() => {
     if (animationStore.isPlaying.value && uiStore.mainCardTab.value === 'overview') {
-        uiStore.mainCardTab.value = 'map';
+        uiStore.activateTab('map');
     }
 });
 

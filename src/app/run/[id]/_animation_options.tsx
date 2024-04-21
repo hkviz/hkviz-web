@@ -152,13 +152,13 @@ function AnimationTimeLineColorCodes() {
 
     return (
         <div
-            className="absolute -bottom-4 left-0 h-3 w-full"
+            className="absolute bottom-0 left-0 h-3 w-full"
             ref={signalRef(container)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}
         >
-            <span className="absolute -left-3 top-[50%] translate-x-[-100%] translate-y-[-35%] text-[0.6rem]">
+            <span className="@3xl:block absolute -left-3 top-[50%] hidden translate-x-[-100%] translate-y-[-35%] text-[0.6rem]">
                 Area
             </span>
             <canvas ref={signalRef(canvas)} className="absolute inset-0 h-full w-full" />
@@ -250,28 +250,25 @@ function AnimationTimeLineDuration() {
 
 // this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
 // Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
-export function AnimationTimeLine() {
+export function AnimationTimeLine({ className }: { className?: string }) {
     useSignals();
     const hoveredMsIntoGame = hoverMsStore.hoveredMsIntoGame.value;
     const timeFrame = gameplayStore.timeFrame.value;
     const isV1 = uiStore.isV1.value;
 
     return (
-        <>
-            <AnimationTimeLineDuration />
-            <div className="relative flex w-full shrink grow flex-col gap-2">
-                <div className="-mx-2">
-                    <AnimationTimeLineSlider />
-                </div>
-                {!isV1 && hoveredMsIntoGame != null && (
-                    <div
-                        className="absolute bottom-0 top-0 w-[1px] bg-foreground"
-                        style={{ left: (100 * hoveredMsIntoGame) / timeFrame.max + '%' }}
-                    ></div>
-                )}
-                {!isV1 && <AnimationTimeLineColorCodes />}
+        <div className={cn('relative flex h-10 shrink grow flex-col justify-center gap-2', className)}>
+            <div>
+                <AnimationTimeLineSlider />
             </div>
-        </>
+            {!isV1 && hoveredMsIntoGame != null && (
+                <div
+                    className="absolute bottom-0 top-0 w-[1px] bg-foreground"
+                    style={{ left: (100 * hoveredMsIntoGame) / timeFrame.max + '%' }}
+                ></div>
+            )}
+            {!isV1 && <AnimationTimeLineColorCodes />}
+        </div>
     );
 }
 
@@ -281,59 +278,60 @@ export function AnimationOptions({ className }: { className?: string }) {
     const isDisabled = !gameplayStore.recording.value;
 
     return (
-        <Card
-            className={cn(
-                cardRoundedMdOnlyClasses,
-                'g-1 bottom-0 flex flex-row items-center justify-center border-t',
-                className,
-            )}
-        >
-            <PlayButton />
-            <AnimationTimeLine />
+        <div className={cn('@container', className)}>
+            <Card
+                className={cn(
+                    cardRoundedMdOnlyClasses,
+                    'g-1 @3xl:grid-cols-[auto_auto_1fr_auto] bottom-0 grid grid-cols-[auto_1fr_auto] flex-row items-center justify-center border-t',
+                )}
+            >
+                <PlayButton />
+                <AnimationTimeLineDuration />
+                <AnimationTimeLine className="@3xl:col-span-1 @3xl:row-auto @3xl:px-0 col-span-3 row-start-2 mx-2" />
 
-            <div className="relative">
-                <Popover>
-                    <PopoverTrigger asChild>
-                        <Button variant="ghost" disabled={isDisabled}>
-                            <Times />
-                            {Number.isNaN(animationSpeedMultiplier) ? 0 : animationSpeedMultiplier}
-                        </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-[10rem] p-0">
-                        {[500, 250, 100, 50, 25, 10].map((it) => (
-                            <Button
-                                onClick={() => (animationStore.speedMultiplier.value = it)}
-                                variant="ghost"
-                                className="w-full"
-                                key={it}
-                            >
+                <div className="relative">
+                    <Popover>
+                        <PopoverTrigger asChild>
+                            <Button variant="ghost" disabled={isDisabled}>
                                 <Times />
-                                <span>{it}</span>
+                                {Number.isNaN(animationSpeedMultiplier) ? 0 : animationSpeedMultiplier}
                             </Button>
-                        ))}
+                        </PopoverTrigger>
+                        <PopoverContent className="w-[10rem] p-0">
+                            {[500, 250, 100, 50, 25, 10].map((it) => (
+                                <Button
+                                    onClick={() => (animationStore.speedMultiplier.value = it)}
+                                    variant="ghost"
+                                    className="w-full"
+                                    key={it}
+                                >
+                                    <Times />
+                                    <span>{it}</span>
+                                </Button>
+                            ))}
 
-                        <div className="relative w-full">
-                            <Times className="absolute left-3 top-[50%] translate-y-[-50%]" />
-                            <Input
-                                type="number"
-                                placeholder="Playback speed"
-                                value={animationSpeedMultiplier.toString()}
-                                className="border-none pl-6 outline-none"
-                                onChange={(v) => {
-                                    try {
-                                        const vv = Number.parseInt(v.target.value);
-                                        animationStore.speedMultiplier.value = vv;
-                                    } catch (e) {
-                                        // ignore
-                                        console.log(e);
-                                    }
-                                }}
-                            />
-                        </div>
-                    </PopoverContent>
-                </Popover>
-            </div>
-            {/* <Select
+                            <div className="relative w-full">
+                                <Times className="absolute left-3 top-[50%] translate-y-[-50%]" />
+                                <Input
+                                    type="number"
+                                    placeholder="Playback speed"
+                                    value={animationSpeedMultiplier.toString()}
+                                    className="border-none pl-6 outline-none"
+                                    onChange={(v) => {
+                                        try {
+                                            const vv = Number.parseInt(v.target.value);
+                                            animationStore.speedMultiplier.value = vv;
+                                        } catch (e) {
+                                            // ignore
+                                            console.log(e);
+                                        }
+                                    }}
+                                />
+                            </div>
+                        </PopoverContent>
+                    </Popover>
+                </div>
+                {/* <Select
                 className="grow-0"
                 value={animationSpeedMultiplier.toString()}
                 onValueChange={(v) => setAnimationSpeedMultiplier(Number.parseInt(v))}
@@ -347,6 +345,7 @@ export function AnimationOptions({ className }: { className?: string }) {
                     <SelectItem value="100">100x</SelectItem>
                 </SelectContent>
             </Select> */}
-        </Card>
+            </Card>
+        </div>
     );
 }

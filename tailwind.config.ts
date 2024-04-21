@@ -92,5 +92,9 @@ export default {
             },
         },
     },
-    plugins: [require('tailwindcss-animate'), require('@tailwindcss/typography')],
+    plugins: [
+        require('tailwindcss-animate'),
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/container-queries'),
+    ],
 } satisfies Config;
