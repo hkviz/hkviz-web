@@ -126,10 +126,10 @@ export function MapLegend() {
     }, [hoveredRoom, var1, tickX, var1SelectedRoomValue]);
 
     return (
-        <Card className="text-center" hidden={mode === 'area'}>
+        <Card className="pt-1 text-center" hidden={mode === 'area'}>
             <div className="flex flex-col items-center justify-center gap-1">
-                <div className="flex flex-row items-center justify-center gap-1 px-2">
-                    <div className="text-sm">{var1Info?.name ?? ''} </div>
+                <div className="flex flex-row items-center justify-center gap-1 px-1">
+                    <div className="pl-1 text-sm">{var1Info?.name ?? ''} </div>
                     {!isV1 && <RoomColorCurveSelect variable={var1} />}
                 </div>
                 <svg className="w-36" viewBox={`0 0 ${200 + LEGEND_PADDING * 2} 100`} ref={svg} />

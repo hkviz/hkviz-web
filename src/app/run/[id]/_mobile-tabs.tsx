@@ -7,9 +7,9 @@ function MobileTabTrigger({ value, title, icon: Icon }: { value: MobileTab; titl
     return (
         <TabsTrigger
             value={value}
-            className="group flex h-14 max-w-28 shrink grow flex-col items-center justify-center rounded-none"
+            className="group flex h-12 max-w-28 shrink grow flex-col items-center justify-center rounded-none"
         >
-            <Icon className="h-5 w-5 transition group-data-[state=active]:scale-110" />
+            <Icon className="h-4 w-4 transition group-data-[state=active]:scale-110" />
             <span className="text-sm transition group-data-[state=active]:translate-y-0.5">{title}</span>
         </TabsTrigger>
     );
@@ -20,13 +20,13 @@ export function MobileTabBar() {
     const mobileTab = uiStore.mobileTab.value;
     return (
         <Tabs
-            className="dashboard-grid-tabs sticky bottom-0 left-0 right-0 z-10 lg:hidden"
+            className="dashboard-grid-tabs sticky z-10 lg:hidden"
             value={mobileTab}
             onValueChange={(tab: string) => {
                 uiStore.activateTab(tab as MobileTab);
             }}
         >
-            <TabsList className="flex h-14 w-full flex-row rounded-none border-t">
+            <TabsList className="flex h-12 w-full flex-row rounded-none border-t">
                 <MobileTabTrigger value="overview" title="Overview" icon={BadgeInfo} />
                 <MobileTabTrigger value="map" title="Map" icon={Map} />
                 <MobileTabTrigger value="time-charts" title="Charts" icon={AreaChart} />

@@ -65,7 +65,7 @@ export function ViewOptions() {
                             Traces
                         </Label>
                     </TableHead>
-                    <TableCell className={isV1 ? '' : 'px-1 py-2'}>
+                    <TableCell className={isV1 ? '' : 'p-1'}>
                         <Select
                             value={traceVisibility}
                             onValueChange={(v) => {

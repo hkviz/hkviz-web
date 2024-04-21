@@ -3,7 +3,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useSignals } from '@preact/signals-react/runtime';
 import { useId } from 'react';
-import { ZoomFollowTarget, mapZoomStore } from '~/lib/stores/map-zoom-store';
+import { mapZoomStore, type ZoomFollowTarget } from '~/lib/stores/map-zoom-store';
 
 export function MapOverlayOptions() {
     useSignals();
@@ -16,7 +16,7 @@ export function MapOverlayOptions() {
     const zoomFollowTransition = mapZoomStore.transition.value;
 
     return (
-        <Card className="flex flex-col gap-2 p-3">
+        <Card className="flex flex-col gap-2 bg-opacity-30 p-2 pr-1 pt-1">
             {/* <div className="flex flex-col gap-1">
                 <h3 className="flex flex-row items-center gap-1 text-base font-semibold">
                     <Text className="h-4 w-4" />
@@ -64,7 +64,7 @@ export function MapOverlayOptions() {
                         }}
                     >
                         <SelectTrigger className="h-8 w-fit py-1 pl-2 pr-1 text-[0.7rem]">
-                            <SelectValue placeholder="Select a fruit" />
+                            <SelectValue placeholder="Zoom target" />
                         </SelectTrigger>
                         <SelectContent>
                             <SelectGroup>

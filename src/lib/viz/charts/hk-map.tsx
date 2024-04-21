@@ -152,12 +152,12 @@ export function HKMap({ className }: HKMapProps) {
                 </g>
             </svg>
             {!isV1 && <HKMapZoom svg={svg} zoom={zoom} />}
-            <div className="absolute right-4 top-4 px-0 py-2">
+            <div className="absolute right-2 top-2">
                 <MapLegend />
             </div>
             <HKMapTraces containerRef={containerRef} zoomHandler={tracesZoomHandler} />
             {!isV1 && (
-                <div className="absolute bottom-4 right-4 px-0 py-2">
+                <div className="absolute bottom-2 right-2">
                     <MapOverlayOptions />
                 </div>
             )}

@@ -158,7 +158,7 @@ function AnimationTimeLineColorCodes() {
             onMouseLeave={handleMouseLeave}
             onClick={handleClick}
         >
-            <span className="@3xl:block absolute -left-3 top-[50%] hidden translate-x-[-100%] translate-y-[-35%] text-[0.6rem]">
+            <span className="absolute -left-3 top-[50%] hidden translate-x-[-100%] translate-y-[-35%] text-[0.6rem] @3xl:block">
                 Area
             </span>
             <canvas ref={signalRef(canvas)} className="absolute inset-0 h-full w-full" />
@@ -257,7 +257,7 @@ export function AnimationTimeLine({ className }: { className?: string }) {
     const isV1 = uiStore.isV1.value;
 
     return (
-        <div className={cn('relative flex h-10 shrink grow flex-col justify-center gap-2', className)}>
+        <div className={cn('relative flex h-5 shrink grow flex-col gap-2 @3xl:h-10 @3xl:justify-center', className)}>
             <div>
                 <AnimationTimeLineSlider />
             </div>
@@ -282,12 +282,12 @@ export function AnimationOptions({ className }: { className?: string }) {
             <Card
                 className={cn(
                     cardRoundedMdOnlyClasses,
-                    'g-1 @3xl:grid-cols-[auto_auto_1fr_auto] bottom-0 grid grid-cols-[auto_1fr_auto] flex-row items-center justify-center border-t',
+                    'g-1 bottom-0 grid grid-cols-[auto_1fr_auto] flex-row items-center justify-center border-t @3xl:grid-cols-[auto_auto_1fr_auto]',
                 )}
             >
                 <PlayButton />
                 <AnimationTimeLineDuration />
-                <AnimationTimeLine className="@3xl:col-span-1 @3xl:row-auto @3xl:px-0 col-span-3 row-start-2 mx-2" />
+                <AnimationTimeLine className="col-span-3 row-start-2 mx-2 @3xl:col-span-1 @3xl:row-auto @3xl:px-0" />
 
                 <div className="relative">
                     <Popover>
