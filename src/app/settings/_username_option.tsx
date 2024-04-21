@@ -31,7 +31,7 @@ export function UserNameSettingsOption({ currentName }: { currentName: string })
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
             <div>
                 <h3 className="text-lg font-semibold">Player name</h3>
-                <p className="text-sm text-gray-500">Choose the name, that is displayed next to your public runs.</p>
+                <p className="text-sm text-gray-500">Choose the name, that is displayed next to your public gameplays.</p>
             </div>
             <Input defaultValue={userName} onBlur={handleUsernameChange} />
         </div>

@@ -202,7 +202,7 @@ export const LineAreaChart = memo(function LineAreaChart({
     });
 
     const skipNextUpdate = useRef(false);
-    const onBrushEnd = useEvent((event: D3BrushEvent<unknown>) => {
+    const onBrushEnd = useEvent((didHoldAction: boolean, event: D3BrushEvent<unknown>) => {
         const selection = (event.selection ?? null) as [number, number] | null;
 
         if (skipNextUpdate.current) {
@@ -211,7 +211,9 @@ export const LineAreaChart = memo(function LineAreaChart({
         }
 
         if (selection == null) {
-            extraChartStore.resetTimeBounds();
+            if (!didHoldAction) {
+                extraChartStore.resetTimeBounds();
+            }
         } else {
             const invSelection = [x.value.invert(selection[0]), x.value.invert(selection[1])] as const;
             extraChartStore.setTimeBoundsStopFollowIfOutside(invSelection);
@@ -295,6 +297,43 @@ export const LineAreaChart = memo(function LineAreaChart({
             return _recording.sceneEventFromMs(ms);
         }
 
+        let didHoldAction = false;
+        let holdTimeout: number | null = null;
+        let holdStartMousePosition = { x: 0, y: 0 };
+        let currentMousePosition = { x: 0, y: 0 };
+        function startHold(e: MouseEvent) {
+            didHoldAction = false;
+            cancelHold();
+            holdStartMousePosition = { x: e.clientX, y: e.clientY };
+            holdTimeout = window.setTimeout(() => {
+                holdTimeout = null;
+                const distance = Math.sqrt(
+                    (currentMousePosition.x - holdStartMousePosition.x) ** 2 +
+                        (currentMousePosition.y - holdStartMousePosition.y) ** 2,
+                );
+                if (distance < 10) {
+                    moveToMsIntoGame(e);
+                    didHoldAction = true;
+                }
+            }, 500);
+        }
+
+        function cancelHold() {
+            if (holdTimeout) {
+                window.clearTimeout(holdTimeout);
+                holdTimeout = null;
+            }
+        }
+
+        function moveToMsIntoGame(e: MouseEvent) {
+            const ms = mouseToMsIntoGame(e);
+            animationStore.setMsIntoGame(ms);
+            const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
+            if (scene) {
+                roomDisplayStore.setSelectedRoom(scene);
+            }
+        }
+
         // brush
         const brush = d3
             .brushX()
@@ -302,8 +341,13 @@ export const LineAreaChart = memo(function LineAreaChart({
                 [0, 0],
                 [width, height],
             ])
-            .filter((e) => !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey)
-            .on('end', onBrushEnd);
+            .filter((e) => {
+                return !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey;
+            })
+            .on('end', (e) => {
+                onBrushEnd(didHoldAction, e);
+                didHoldAction = false;
+            });
         const brushG = rootG
             .append('g')
             .attr('class', 'brush')
@@ -317,20 +361,25 @@ export const LineAreaChart = memo(function LineAreaChart({
                     roomDisplayStore.setSelectedRoomIfNotPinned(scene);
                 }
             })
+            .on('pointermove', (e) => {
+                if (isV1) return;
+                currentMousePosition = { x: e.clientX, y: e.clientY };
+            })
             .on('mouseleave', () => {
                 if (isV1) return;
                 hoverMsStore.setHoveredMsIntoGame(null);
                 roomDisplayStore.setHoveredRoom(null);
             })
+            .on('mousedown', (e) => {
+                if (isV1) return;
+                startHold(e);
+            })
             .on('click', (e) => {
                 if (isV1) return;
+                cancelHold();
                 if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
-                    const ms = mouseToMsIntoGame(e);
-                    animationStore.setMsIntoGame(ms);
-                    const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
-                    if (scene) {
-                        roomDisplayStore.setSelectedRoom(scene);
-                    }
+                    moveToMsIntoGame(e);
+                    e.preventDefault();
                 }
             });
         brushG.call(brush);

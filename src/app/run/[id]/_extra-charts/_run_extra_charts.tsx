@@ -68,7 +68,8 @@ export function RunExtraCharts({ resizeOptions }: RunExtraChartsProps) {
                                             <CommandShortcut>⌘ + Click</CommandShortcut>
                                         ) : (
                                             <CommandShortcut>Ctrl + Click</CommandShortcut>
-                                        )}
+                                        )}{' '}
+                                        or <CommandShortcut>Click + Hold</CommandShortcut>
                                     </TableCell>
                                     <TableCell className="p-1">select time on map.</TableCell>
                                 </TableRow>
