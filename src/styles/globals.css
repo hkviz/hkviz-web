@@ -215,8 +215,10 @@ html {
     max-height: var(--dashboard-height);
     min-height: var(--dashboard-height);
     overflow: hidden;
+}
 
-    @screen md {
+@media screen(md) {
+    .dashboard-grid {
         grid-template-columns: 300px 1fr;
         grid-template-rows: 1fr auto;
         grid-template-areas:
@@ -226,8 +228,10 @@ html {
         gap: 0.25rem;
         padding: 0.25rem;
     }
+}
 
-    @screen lg {
+@media screen(lg) {
+    .dashboard-grid {
         grid-template-columns: 300px 1fr 350px;
         grid-template-rows: 1fr auto;
         grid-template-areas:
@@ -241,7 +245,10 @@ html {
     flex-direction: row;
     max-width: 100%;
     overflow-x: auto;
-    @screen md {
+}
+
+@media screen(md) {
+    .dashboard-grid-map-options {
         grid-area: map-options;
         flex-direction: column;
         gap: 0.25rem;
@@ -252,7 +259,10 @@ html {
 
 .dashboard-grid-map {
     grid-area: tab-content;
-    @screen md {
+}
+
+@media screen(md) {
+    .dashboard-grid-map {
         grid-area: map;
     }
 }
@@ -262,13 +272,18 @@ html {
     grid-column-start: tab-options;
     grid-row-end: tab-content;
     grid-column-end: tab-options;
-    @screen md {
+}
+
+@media screen(md) {
+    .dashboard-grid-map-big {
         grid-row-start: map-options;
         grid-column-start: map-options;
         grid-row-end: map;
         grid-column-end: map;
     }
-    @screen lg {
+}
+@media screen(lg) {
+    .dashboard-grid-map-big {
         grid-area: map;
     }
 }
@@ -278,13 +293,18 @@ html {
     grid-column-start: tab-options;
     grid-row-end: tab-content;
     grid-column-end: tab-options;
-    @screen md {
+}
+
+@media screen(md) {
+    .dashboard-grid-splits-and-timecharts {
         grid-row-start: map-options;
         grid-column-start: map-options;
         grid-row-end: map;
         grid-column-end: map;
     }
-    @screen lg {
+}
+@media screen(lg) {
+    .dashboard-grid-splits-and-timecharts {
         grid-area: splits-and-timecharts;
     }
 }
@@ -299,12 +319,17 @@ html {
     top: 0;
     left: 0;
     right: 0;
-    @screen md {
+}
+
+@media screen(md) {
+    .dashboard-grid-tabs {
         top: 0.25rem;
         left: -0.25rem;
         right: -0.25rem;
     }
-    @screen lg {
+}
+@media screen(lg) {
+    .dashboard-grid-tabs {
         top: 0;
         left: 0;
         right: 0;
