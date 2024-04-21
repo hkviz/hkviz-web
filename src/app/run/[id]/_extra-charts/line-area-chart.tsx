@@ -305,13 +305,14 @@ export const LineAreaChart = memo(function LineAreaChart({
             didHoldAction = false;
             cancelHold();
             holdStartMousePosition = { x: e.clientX, y: e.clientY };
+            currentMousePosition = { x: e.clientX, y: e.clientY };
             holdTimeout = window.setTimeout(() => {
                 holdTimeout = null;
                 const distance = Math.sqrt(
                     (currentMousePosition.x - holdStartMousePosition.x) ** 2 +
                         (currentMousePosition.y - holdStartMousePosition.y) ** 2,
                 );
-                if (distance < 10) {
+                if (distance < 25) {
                     moveToMsIntoGame(e);
                     didHoldAction = true;
                 }
@@ -361,16 +362,18 @@ export const LineAreaChart = memo(function LineAreaChart({
                     roomDisplayStore.setSelectedRoomIfNotPinned(scene);
                 }
             })
-            .on('pointermove', (e) => {
+            .on('pointermove', (e: PointerEvent) => {
                 if (isV1) return;
                 currentMousePosition = { x: e.clientX, y: e.clientY };
+
+                e.preventDefault();
             })
             .on('mouseleave', () => {
                 if (isV1) return;
                 hoverMsStore.setHoveredMsIntoGame(null);
                 roomDisplayStore.setHoveredRoom(null);
             })
-            .on('mousedown', (e) => {
+            .on('pointerdown', (e) => {
                 if (isV1) return;
                 startHold(e);
             })
@@ -528,7 +531,7 @@ export const LineAreaChart = memo(function LineAreaChart({
                 width={widthWithMargin}
                 height={heightWithMargin}
                 viewBox={`0 0 ${widthWithMargin} ${heightWithMargin}`}
-                className="mx-auto h-auto w-full max-w-[550px]"
+                className="mx-auto h-auto w-full max-w-[550px] touch-none select-none"
             ></svg>
             <Table>
                 <TableBody>
