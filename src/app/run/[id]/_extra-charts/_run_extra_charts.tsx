@@ -37,14 +37,12 @@ function RunExtraChartsFollowCheckbox() {
 }
 
 export interface RunExtraChartsProps {
-    resizeOptions: ReactNode;
+    resizeOptions?: ReactNode;
 }
 
 export function RunExtraCharts({ resizeOptions }: RunExtraChartsProps) {
     useSignals();
     const isV1 = uiStore.isV1.value;
-
-    const id = useId();
 
     const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
     return (

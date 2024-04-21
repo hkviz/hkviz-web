@@ -1,5 +1,6 @@
 'use client';
 
+import { cardRoundedMdOnlyClasses } from '@/components/additions/cards';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -274,13 +275,19 @@ export function AnimationTimeLine() {
     );
 }
 
-export function AnimationOptions() {
+export function AnimationOptions({ className }: { className?: string }) {
     useSignals();
     const animationSpeedMultiplier = animationStore.speedMultiplier.value;
     const isDisabled = !gameplayStore.recording.value;
 
     return (
-        <Card className="g-1 bottom-0 flex flex-row items-center justify-center">
+        <Card
+            className={cn(
+                cardRoundedMdOnlyClasses,
+                'g-1 bottom-0 flex flex-row items-center justify-center border-t',
+                className,
+            )}
+        >
             <PlayButton />
             <AnimationTimeLine />
 

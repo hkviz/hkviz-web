@@ -8,8 +8,10 @@ import { useMemo, type CSSProperties } from 'react';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
 import { allRoomDataIncludingSubspritesBySceneName, mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 
+import { cardRoundedMdOnlyClasses } from '@/components/additions/cards';
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@/components/ui/context-menu';
 import { Toggle } from '@/components/ui/toggle';
+import { cn } from '@/lib/utils';
 import { useComputed, useSignals } from '@preact/signals-react/runtime';
 import { Palette, Pin, PinOff } from 'lucide-react';
 import { AggregationVariableIcon } from '~/app/_components/aggregation_variable_icon';
@@ -213,7 +215,10 @@ export function RoomInfo() {
 
     return (
         <Card
-            className="max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col bg-gradient-to-b from-transparent  to-transparent"
+            className={cn(
+                cardRoundedMdOnlyClasses,
+                'max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-gradient-to-b from-transparent  to-transparent',
+            )}
             style={
                 {
                     '--tw-gradient-from': gradientColor,
