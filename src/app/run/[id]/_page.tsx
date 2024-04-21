@@ -1,12 +1,17 @@
 'use client';
 
-import { cardClasses, cardHeaderSmallClasses, cardTitleSmallClasses } from '@/components/additions/cards';
+import {
+    cardClasses,
+    cardHeaderSmallClasses,
+    cardRoundedMdOnlyClasses,
+    cardTitleSmallClasses,
+} from '@/components/additions/cards';
 import { TabsListTransparent, TabsTriggerTransparent } from '@/components/additions/tabs';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs } from '@/components/ui/tabs';
 import { Tooltip, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
 import { useSignals } from '@preact/signals-react/runtime';
@@ -22,6 +27,7 @@ import { useRecordingFiles } from '~/lib/viz/recording-files/use-recording-files
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
 import { AnimationOptions } from './_animation_options';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
+import { MobileTabBar } from './_mobile-tabs';
 import { RoomInfo } from './_room_infos';
 import { RunOverviewTab } from './_run-overview-tab';
 import { RunSplits } from './_run_splits';
@@ -70,14 +76,14 @@ export function SingleRunClientPage({ session, runData }: Props) {
     // const isMobileLayout = isMobileLayoutSignal.value;
 
     return (
-        <div className="flex min-h-full grow flex-col items-stretch justify-stretch gap-2 md:m-2 lg:flex-row">
-            <div
-                className={cn(
-                    'flex min-w-[250px] flex-row gap-2 overflow-x-auto lg:w-[300px] lg:shrink-0 lg:flex-col',
-                    mobileTab === 'map' ? '' : 'hidden md:flex',
-                )}
-            >
-                <Card className="max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto sm:min-w-min">
+        <div className="dashboard-grid">
+            <div className={cn('dashboard-grid-map-options', mobileTab === 'map' ? 'flex' : 'hidden md:flex')}>
+                <Card
+                    className={cn(
+                        cardRoundedMdOnlyClasses,
+                        'max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto border-t sm:min-w-min',
+                    )}
+                >
                     <CardHeader className={cardHeaderSmallClasses}>
                         <CardTitle className={cardTitleSmallClasses}>{isV1 ? 'View options' : 'Map options'}</CardTitle>
                     </CardHeader>
@@ -87,56 +93,39 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 </Card>
                 <RoomInfo />
             </div>
-            <div
+            <Card
                 className={cn(
-                    'grow flex-col gap-2',
-                    mobileTab === 'map' || mobileTab === 'overview' ? 'flex' : 'hidden md:flex',
+                    cardRoundedMdOnlyClasses,
+                    'relative grow grid-cols-1 grid-rows-1 overflow-hidden border-t',
+                    mobileTab === 'overview' ? 'dashboard-grid-map-big' : 'dashboard-grid-map',
+                    mobileTab === 'overview' || mobileTab === 'map' ? 'grid' : 'hidden md:grid',
                 )}
             >
-                <Card className="relative grid grow grid-cols-1 grid-rows-1 overflow-hidden">
-                    <Tabs
-                        value={mainCardTab}
-                        className="absolute left-0 right-0 top-0 z-10 mx-auto hidden w-fit md:block"
-                        onValueChange={(tab: string) => {
-                            uiStore.mainCardTab.value = tab as MainCardTab;
-                            uiStore.mobileTab.value = tab as MainCardTab;
-                        }}
-                    >
-                        <TabsListTransparent>
-                            <TabsTriggerTransparent value="overview">Overview</TabsTriggerTransparent>
-                            <TabsTriggerTransparent value="map">Map</TabsTriggerTransparent>
-                        </TabsListTransparent>
-                    </Tabs>
-                    <HKMap className="col-start-1 col-end-1 row-start-1 row-end-1 min-h-[50vh]" />
-                    <RunOverviewTab
-                        className="col-start-1 col-end-1 row-start-1 row-end-1"
-                        runData={runData}
-                        session={session}
-                    />
-                    <RunClientLoader runData={runData} />
-                </Card>
-                <AnimationOptions />
-            </div>
-
-            <RightCard />
-
-            <Tabs
-                className="sticky bottom-0 left-0 right-0 z-10 md:hidden"
-                value={mobileTab}
-                onValueChange={(tab: string) => {
-                    if (uiStore.isMainCardTab(tab)) {
+                <Tabs
+                    value={mainCardTab}
+                    className="absolute left-0 right-0 top-0 z-10 mx-auto hidden w-fit md:block"
+                    onValueChange={(tab: string) => {
                         uiStore.mainCardTab.value = tab as MainCardTab;
-                    }
-                    uiStore.mobileTab.value = tab as MainCardTab;
-                }}
-            >
-                <TabsList className="w-full rounded-none">
-                    <TabsTrigger value="overview">Overview</TabsTrigger>
-                    <TabsTrigger value="map">Map</TabsTrigger>
-                    <TabsTrigger value="time-charts">Time charts</TabsTrigger>
-                    <TabsTrigger value="splits">Splits</TabsTrigger>
-                </TabsList>
-            </Tabs>
+                        uiStore.mobileTab.value = tab as MainCardTab;
+                    }}
+                >
+                    <TabsListTransparent>
+                        <TabsTriggerTransparent value="overview">Overview</TabsTriggerTransparent>
+                        <TabsTriggerTransparent value="map">Map</TabsTriggerTransparent>
+                    </TabsListTransparent>
+                </Tabs>
+                <HKMap className="col-start-1 col-end-1 row-start-1 row-end-1 min-h-[50vh]" />
+                <RunOverviewTab
+                    className="col-start-1 col-end-1 row-start-1 row-end-1"
+                    runData={runData}
+                    session={session}
+                />
+                <RunClientLoader runData={runData} />
+            </Card>
+            <AnimationOptions className="dashboard-grid-timeline" />
+
+            <RightCard className="dashboard-grid-splits-and-timecharts" />
+            <MobileTabBar />
         </div>
     );
 }
@@ -153,7 +142,7 @@ function ResizeButtons({
     maximize: () => void;
 }) {
     return (
-        <div className="-ml-3 inline-block">
+        <div className="-ml-3 hidden md:inline-block">
             {state !== 'minimized' && (
                 <Tooltip>
                     <TooltipTrigger asChild>
@@ -190,7 +179,7 @@ function ResizeButtons({
 
 const DEFAULT_EXTRA_CHARTS_SIZE = 63;
 
-function RightCard() {
+function RightCard({ className }: { className?: string }) {
     useSignals();
     const isV1 = uiStore.isV1.value;
     const mobileTab = uiStore.mobileTab.value;
@@ -244,21 +233,20 @@ function RightCard() {
     );
 
     return (
-        <div className={mobileTab === 'splits' || mobileTab === 'time-charts' ? '' : 'hidden md:flex'}>
-            <ResizablePanelGroup
-                direction="vertical"
-                className={
-                    'h-unset-important min-h-[calc(100vh-var(--main-nav-height))] lg:min-h-[35rem] lg:max-w-[350px]'
-                }
-                onLayout={onLayout}
-            >
+        <div className={cn(mobileTab === 'splits' || mobileTab === 'time-charts' ? '' : 'hidden md:flex', className)}>
+            <ResizablePanelGroup direction="vertical" onLayout={onLayout}>
                 {!isV1 && (
                     <>
                         <ResizablePanel
                             defaultSize={100 - DEFAULT_EXTRA_CHARTS_SIZE}
                             collapsible
                             minSize={18}
-                            className={cn(cardClasses, 'min-h-[44px]', mobileTab === 'splits' ? '' : 'hidden md:block')}
+                            className={cn(
+                                cardClasses,
+                                cardRoundedMdOnlyClasses,
+                                'min-h-[44px] border-t',
+                                mobileTab === 'splits' ? '' : 'hidden md:block',
+                            )}
                             ref={splitsPanelRef}
                         >
                             <RunSplits resizeOptions={splitsResizeOptions} />
@@ -270,7 +258,12 @@ function RightCard() {
                     defaultSize={DEFAULT_EXTRA_CHARTS_SIZE}
                     collapsible
                     minSize={30}
-                    className={cn(cardClasses, 'min-h-[44px]', mobileTab === 'time-charts' ? '' : 'hidden md:block')}
+                    className={cn(
+                        cardClasses,
+                        cardRoundedMdOnlyClasses,
+                        'min-h-[44px] border-t',
+                        mobileTab === 'time-charts' ? '' : 'hidden md:block',
+                    )}
                     ref={extraChartsPanelRef}
                 >
                     <RunExtraCharts resizeOptions={runExtraChartsResizeOptions} />
