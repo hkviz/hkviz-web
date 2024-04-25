@@ -316,22 +316,19 @@ html {
 .dashboard-grid-tabs {
     grid-area: tabs;
     position: relative;
+    margin-top: 0;
     top: 0;
     left: 0;
     right: 0;
+    width: 100%;
 }
 
 @media screen(md) {
     .dashboard-grid-tabs {
+        margin-top: -0.25rem;
         top: 0.25rem;
         left: -0.25rem;
         right: -0.25rem;
-    }
-}
-@media screen(lg) {
-    .dashboard-grid-tabs {
-        top: 0;
-        left: 0;
-        right: 0;
+        width: calc(100% + 0.5rem);
     }
 }

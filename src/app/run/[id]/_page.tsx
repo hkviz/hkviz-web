@@ -20,6 +20,7 @@ import { Maximize, Minus, Rows } from 'lucide-react';
 import { type Session } from 'next-auth';
 import { useEffect, useRef, useState } from 'react';
 import { type ImperativePanelHandle, type PanelGroupOnLayout } from 'react-resizable-panels';
+import { splitsStore } from '~/lib/stores/splits-store';
 import { storeInitializer, useStoreInitializer } from '~/lib/stores/store-initializer';
 import { uiStore, type MainCardTab } from '~/lib/stores/ui-store';
 import { HKMap } from '~/lib/viz/charts/hk-map';
@@ -141,7 +142,7 @@ function ResizeButtons({
     maximize: () => void;
 }) {
     return (
-        <div className="-ml-3 hidden lg:inline-block">
+        <div className="-ml-3 hidden shrink-0 pl-1 lg:inline-block">
             {state !== 'minimized' && (
                 <Tooltip>
                     <TooltipTrigger asChild>
@@ -204,10 +205,13 @@ function RightCard({ className }: { className?: string }) {
         console.log({ extraChartsSize, splitsSize });
         if (extraChartsSize < 10) {
             setLayoutState('only-splits');
+            splitsStore.isSplitsPanelOpen.value = true;
         } else if (splitsSize < 10) {
             setLayoutState('only-extra-charts');
+            splitsStore.isSplitsPanelOpen.value = false;
         } else {
             setLayoutState('both');
+            splitsStore.isSplitsPanelOpen.value = true;
         }
     };
 

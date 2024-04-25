@@ -5,6 +5,10 @@ import { deleteParticipantIdCookie, getParticipantIdFromCookie } from '../_utils
 
 export const GET = async () => {
     const participantId = getParticipantIdFromCookie();
+    if (!participantId) {
+        return new Response('No participant ID found', { status: 400 });
+    }
+
     const session = await getServerAuthSession();
     const userId = session?.user?.id ?? null;
 

@@ -30,7 +30,7 @@ export default async function DataCollectionStudyParticipationPage() {
         <ContentCenterWrapper>
             <Card className="w-full max-w-[70ch]">
                 <CardHeader>
-                    <CardTitle>How much Hollow Knight did you play before?</CardTitle>
+                    <CardTitle>What progress have you made in Hollow Knight?</CardTitle>
                     <CardDescription>
                         This helps us better understand how the previous experience influences the study results.
                     </CardDescription>

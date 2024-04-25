@@ -181,8 +181,8 @@ export function RoomInfo() {
 
     const [mainRoomInfo, allRoomInfosIncludingSubsprites] = useMemo(() => {
         const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
-        const allRoomInfosIncludingSubsprites = selectedRoom
-            ? allRoomDataIncludingSubspritesBySceneName.get(selectedRoom) ?? null
+        const allRoomInfosIncludingSubsprites = mainRoomInfo
+            ? allRoomDataIncludingSubspritesBySceneName.get(mainRoomInfo.sceneName) ?? null
             : null;
         return [mainRoomInfo, allRoomInfosIncludingSubsprites];
     }, [selectedRoom]);

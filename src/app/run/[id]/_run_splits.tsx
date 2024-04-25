@@ -1,9 +1,12 @@
 import { cardHeaderSmallClasses, cardTitleSmallClasses } from '@/components/additions/cards';
+import { Button } from '@/components/ui/button';
 import { CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { useSignals } from '@preact/signals-react/runtime';
+import { Search, X } from 'lucide-react';
 import { forwardRef, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
 import { animationStore } from '~/lib/stores/animation-store';
 import { hoverMsStore } from '~/lib/stores/hover-ms-store';
@@ -218,6 +221,39 @@ interface RunSplitsProps {
     resizeOptions?: ReactNode;
 }
 
+function RunSplitsSearch() {
+    useSignals();
+    const filterTerm = splitsStore.filterTerm.value;
+    const show = splitsStore.isSplitsPanelOpen.value;
+
+    return (
+        <div className="relative mx-3 shrink grow">
+            {show && (
+                <>
+                    <Search className="absolute left-0 top-0 m-2.5 h-4 w-4" />
+                    <Input
+                        type="text"
+                        value={filterTerm}
+                        onChange={(e) => (splitsStore.filterTerm.value = e.target.value)}
+                        placeholder="Search"
+                        className="h-9 shrink grow pl-8"
+                    />
+                    {filterTerm && (
+                        <Button
+                            onClick={() => (splitsStore.filterTerm.value = '')}
+                            className="absolute right-0 top-0 flex h-9 w-9 items-center justify-center p-0"
+                            variant="ghost"
+                            title="Clear search"
+                        >
+                            <X className="h-4 w-4" />
+                        </Button>
+                    )}
+                </>
+            )}
+        </div>
+    );
+}
+
 export function RunSplits({ resizeOptions }: RunSplitsProps) {
     useSignals();
     const id = useId();
@@ -233,8 +269,11 @@ export function RunSplits({ resizeOptions }: RunSplitsProps) {
     return (
         <div className="flex h-full flex-col">
             <CardHeader className={cardHeaderSmallClasses}>
-                <CardTitle className={cn(cardTitleSmallClasses, 'flex w-full flex-row justify-between')}>
+                <CardTitle
+                    className={cn(cardTitleSmallClasses, 'flex w-full flex-row items-center justify-between gap-2')}
+                >
                     Splits
+                    <RunSplitsSearch />
                     {resizeOptions}
                 </CardTitle>
             </CardHeader>

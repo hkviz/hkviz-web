@@ -20,7 +20,8 @@ Feel free to [open an issue](https://github.com/hkviz/hkviz-web/issues) on this 
 
 To get started recording your own gameplay analytics visit [hkviz.org](https://www.hkviz.org).
 
-You can also view gameplays from other players, if they send you a link and have set their gameplay to 'public' or 'unlisted'.
+You can also view gameplays from other players, if they send you a link and have set their gameplay to 'public' or 'unlisted' or by visting the
+[public gameplays page](https://www.hkviz.org/run).
 
 ## For developers
 
