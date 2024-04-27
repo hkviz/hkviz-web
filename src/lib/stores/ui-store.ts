@@ -60,7 +60,7 @@ export const uiStore = {
 };
 
 effect(() => {
-    if (animationStore.isPlaying.value && uiStore.mainCardTab.value === 'overview') {
+    if (animationStore.isPlaying.value && uiStore.mainCardTab.peek() === 'overview') {
         uiStore.activateTab('map');
     }
 });

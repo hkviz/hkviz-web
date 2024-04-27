@@ -91,7 +91,7 @@ export const LineAreaChart = memo(function LineAreaChart({
         variables
             .filter(isShownInGraph)
             .filter((it) => !it.defaultHidden)
-            .toSorted((a, b) => a.order - b.order)
+            .sort((a, b) => a.order - b.order)
             .map((it) => it.key),
     );
 
@@ -141,7 +141,7 @@ export const LineAreaChart = memo(function LineAreaChart({
             _selectedVars.length === 0
                 ? variables
                       .filter(isShownInGraph)
-                      .toSorted((a, b) => a.order - b.order)
+                      .sort((a, b) => a.order - b.order)
                       .map((it) => it.key)
                 : _selectedVars,
         )(_data) as unknown as Series[];
@@ -312,7 +312,7 @@ export const LineAreaChart = memo(function LineAreaChart({
                     (currentMousePosition.x - holdStartMousePosition.x) ** 2 +
                         (currentMousePosition.y - holdStartMousePosition.y) ** 2,
                 );
-                if (distance < 25) {
+                if (distance < 10) {
                     moveToMsIntoGame(e);
                     didHoldAction = true;
                 }
@@ -347,6 +347,7 @@ export const LineAreaChart = memo(function LineAreaChart({
             })
             .on('end', (e) => {
                 onBrushEnd(didHoldAction, e);
+                cancelHold();
                 didHoldAction = false;
             });
         const brushG = rootG

@@ -236,7 +236,7 @@ function RunSplitsSearch() {
                         value={filterTerm}
                         onChange={(e) => (splitsStore.filterTerm.value = e.target.value)}
                         placeholder="Search"
-                        className="h-9 shrink grow pl-8"
+                        className="h-9 shrink grow px-8"
                     />
                     {filterTerm && (
                         <Button
