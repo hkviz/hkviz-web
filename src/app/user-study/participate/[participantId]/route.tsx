@@ -8,7 +8,8 @@ import { apiFromServer } from '~/trpc/from-server';
 export const GET = async (req: NextRequest, { params: { participantId } }: { params: { participantId: string } }) => {
     const api = await apiFromServer();
 
-    if (!(await api.participant.exists({ participantId }))) {
+    const participant = await api.participant.getByParticipantId({ participantId });
+    if (!participant) {
         return new Response('404: This participation link does not exist', { status: 404 });
     }
 
@@ -19,7 +20,7 @@ export const GET = async (req: NextRequest, { params: { participantId } }: { par
     const session = await getServerAuthSession();
     const userId = session?.user?.id ?? null;
 
-    if (!userId) {
+    if (!userId && !participant.skipLoginQuestion && !participant.hasUserId) {
         // give option to login or continue without login
         redirect('/user-study/participate');
     } else {

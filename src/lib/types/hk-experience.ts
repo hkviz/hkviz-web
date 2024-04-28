@@ -1,7 +1,10 @@
 import { z } from 'zod';
+import { playingFrequencyCodeSchema } from './playing-frequency';
+import { playingSinceCodeSchema } from './playing-since';
 
 export const hkExperienceSchema = z.object({
-    playedBefore: z.boolean(),
+    playingSince: playingSinceCodeSchema,
+    playingFrequency: playingFrequencyCodeSchema.nullable(),
     gotDreamnail: z.boolean(),
     didEndboss: z.boolean(),
     enteredWhitePalace: z.boolean(),
@@ -10,29 +13,36 @@ export const hkExperienceSchema = z.object({
 
 export type HkExperience = z.infer<typeof hkExperienceSchema>;
 
-export type HkExerienceInput = { [key in keyof HkExperience]: HkExperience[key] | undefined };
+export type HkExperienceInput = { [key in keyof HkExperience]: HkExperience[key] | null };
 
-export const hkExperienceEmpty: HkExerienceInput = {
-    playedBefore: undefined,
-    gotDreamnail: undefined,
-    didEndboss: undefined,
-    enteredWhitePalace: undefined,
-    got112Percent: undefined,
+export const hkExperienceEmpty: HkExperienceInput = {
+    playingSince: null,
+    playingFrequency: null,
+    gotDreamnail: null,
+    didEndboss: null,
+    enteredWhitePalace: null,
+    got112Percent: null,
 };
 
-export function hkExperienceFinished(input: HkExerienceInput): boolean {
+export function hkExperienceFinished(input: HkExperienceInput): boolean {
+    if (input.playingSince === 'never') {
+        return true;
+    }
+    if (!input.playingFrequency) {
+        return false;
+    }
+
     return (
-        input.playedBefore === false ||
         input.gotDreamnail === false ||
         ((input.didEndboss === false || input.enteredWhitePalace === false) &&
-            input.didEndboss !== undefined &&
-            input.enteredWhitePalace !== undefined) ||
-        input.got112Percent !== undefined
+            input.didEndboss != null &&
+            input.enteredWhitePalace != null) ||
+        input.got112Percent != null
     );
 }
 
-export function hkExperienceCleaned(input: HkExerienceInput): HkExperience {
-    const playedBefore = input.playedBefore ?? false;
+export function hkExperienceCleaned(input: HkExperienceInput): HkExperience {
+    const playedBefore = input.playingFrequency !== 'not_in_the_last_year';
     const gotDreamnail = (playedBefore && input.gotDreamnail) ?? false;
 
     const didEndboss = (gotDreamnail && input.didEndboss) ?? false;
@@ -41,7 +51,8 @@ export function hkExperienceCleaned(input: HkExerienceInput): HkExperience {
     const got112Percent = (didEndboss && enteredWhitePalace && input.got112Percent) ?? false;
 
     return {
-        playedBefore,
+        playingSince: input.playingSince!,
+        playingFrequency: input.playingFrequency!,
         gotDreamnail,
         didEndboss,
         enteredWhitePalace,

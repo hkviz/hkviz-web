@@ -75,7 +75,7 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
     const [countryOpen, setCountryOpen] = useState(false);
 
     if (props.hasPreviouslySubmitted) {
-        return <CardContent>You have already submitted the demographic form. Thank you for participating</CardContent>;
+        return <CardContent>You have already submitted the demographic form. Thank you for participating!</CardContent>;
     }
 
     if (saveMutation.isSuccess && !props.navigationFlow) {

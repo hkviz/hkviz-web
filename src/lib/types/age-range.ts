@@ -2,8 +2,6 @@
 
 import { z } from 'zod';
 
-z.enum(['prefer-no', 'under 18', '18-24', '25-34', '35-44', '45-54', '55-64', '65+']);
-
 export const ageRanges = [
     {
         code: 'u18',

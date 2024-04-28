@@ -130,7 +130,7 @@ export function DataCollectionStudyParticipationClientForm({
             <CardHeader>
                 <CardTitle>
                     {hasPreviouslyAccepted ? (
-                        <>Thank you for participating in the study.</>
+                        <>Thank you for participating in the study!</>
                     ) : (
                         <>
                             By using the <HKVizText /> mod, you agree to the informed consent form {formPositionText}

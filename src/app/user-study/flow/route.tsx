@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation';
+import { hkExperienceFinished } from '~/lib/types/hk-experience';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { deleteParticipantIdCookie, getParticipantIdFromCookie } from '../_utils';
@@ -30,7 +31,7 @@ export const GET = async () => {
     }
 
     const hkExperience = await api.hkExperience.getFromParticipantId({ participantId });
-    if (!hkExperience) {
+    if (!hkExperience || !hkExperienceFinished(hkExperience)) {
         redirect('/experience');
     }
 

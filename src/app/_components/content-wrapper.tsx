@@ -45,5 +45,5 @@ export function ContentWrapper({
 }
 
 export function ContentCenterWrapper(props: ContentWrapperProps) {
-    return <ContentWrapper className="items-center justify-center" {...props} />;
+    return <ContentWrapper className="items-center justify-center p-4" {...props} />;
 }

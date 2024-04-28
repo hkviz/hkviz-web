@@ -17,6 +17,8 @@ import {
 import { type AdapterAccount } from 'next-auth/adapters';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { countryCodes } from '~/lib/types/country';
+import { playingFrequencyCodes } from '~/lib/types/playing-frequency';
+import { playingSinceCodes } from '~/lib/types/playing-since';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { runInteractionTypes } from '~/lib/types/run-interaction';
 import { tags, type TagCode } from '~/lib/types/tags';
@@ -65,6 +67,10 @@ export const usersRelations = relations(users, ({ many, one }) => ({
     dataCollectionStudyParticipation: one(dataCollectionStudyParticipations, {
         fields: [users.id],
         references: [dataCollectionStudyParticipations.userId],
+    }),
+    studyParticipant: one(studyParticipant, {
+        fields: [users.participantId],
+        references: [studyParticipant.participantId],
     }),
 }));
 
@@ -367,6 +373,8 @@ export const hkExperience = table(
         userId: varcharUuid('userId'),
         participantId: varcharUuid('participant_id'),
 
+        playingSince: mysqlEnum('playing_since', playingSinceCodes),
+        playingFrequency: mysqlEnum('playing_frequency', playingFrequencyCodes),
         playedBefore: boolean('played_before').notNull(),
         gotDreamnail: boolean('got_dreamnail').notNull(),
         didEndboss: boolean('did_enboss').notNull(),
@@ -405,8 +413,12 @@ export const studyParticipant = table('studyParticipant', {
         .default(sql`CURRENT_TIMESTAMP`)
         .notNull(),
     updatedAt: timestamp('updatedAt').onUpdateNow(),
+    skipLoginQuestion: boolean('skip_login_question').notNull().default(false),
     userStudyFinished: boolean('user_study_finished').notNull().default(false),
 });
+export const studyParticipantRelations = relations(studyParticipant, ({ one }) => ({
+    user: one(users),
+}));
 
 export const userStudyInformedConsent = table('userStudyInformedConsent', {
     participantId: varcharUuid('participant_id').notNull().primaryKey(),

@@ -4,9 +4,10 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { type ComponentProps } from 'react';
+import { getLoginLink } from './login-link-shared';
 
 export function useLoginUrl() {
-    return '/api/auth/signin?callbackUrl=' + usePathname();
+    return getLoginLink(usePathname());
 }
 
 export function LoginLink(props: Omit<ComponentProps<typeof Link>, 'href'>) {

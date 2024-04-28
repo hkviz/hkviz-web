@@ -3,7 +3,6 @@ import { type Metadata } from 'next';
 import { getNavigationFlowFromCookies } from '~/lib/navigation-flow/from-cookies';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
-import { AuthNeeded } from '../_components/auth-needed';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { HkExperienceClientForm } from './_components';
 
@@ -19,23 +18,23 @@ export default async function DataCollectionStudyParticipationPage() {
 
     const session = await getServerAuthSession();
 
-    if (!session) {
-        return <AuthNeeded />;
-    }
+    // if (!session) {
+    //     return <AuthNeeded />;
+    // }
     const navigationFlow = getNavigationFlowFromCookies();
 
-    const hkExperience = session ? await api.hkExperience.getFromLoggedInUser({}) : null;
+    const hkExperience = session ? await api.hkExperience.getFromLoggedInUserOrParticipantId() : null;
 
     return (
         <ContentCenterWrapper>
             <Card className="w-full max-w-[70ch]">
                 <CardHeader>
-                    <CardTitle>What progress have you made in Hollow Knight?</CardTitle>
+                    <CardTitle className="leading-snug">Your previous Hollow Knight experience</CardTitle>
                     <CardDescription>
                         This helps us better understand how the previous experience influences the study results.
                     </CardDescription>
                 </CardHeader>
-                <HkExperienceClientForm navigationFlow={navigationFlow} hasPreviouslySubmitted={!!hkExperience} />
+                <HkExperienceClientForm navigationFlow={navigationFlow} existingHkExperience={hkExperience ?? null} />
             </Card>
         </ContentCenterWrapper>
     );
