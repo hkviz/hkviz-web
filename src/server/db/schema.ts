@@ -415,6 +415,7 @@ export const studyParticipant = table('studyParticipant', {
     updatedAt: timestamp('updatedAt').onUpdateNow(),
     skipLoginQuestion: boolean('skip_login_question').notNull().default(false),
     userStudyFinished: boolean('user_study_finished').notNull().default(false),
+    resetId: varcharUuid('reset_id'),
 });
 export const studyParticipantRelations = relations(studyParticipant, ({ one }) => ({
     user: one(users),
