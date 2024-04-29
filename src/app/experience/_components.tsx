@@ -215,7 +215,7 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
                         </div>
                         <Expander expanded={showEndboss}>
                             <FormFieldLabel htmlFor={ids.didEndboss}>
-                                Did you already defeat the endboss?
+                                Did you already defeat the endboss and see the credits?
                             </FormFieldLabel>
                             <ToggleGroup
                                 type="single"

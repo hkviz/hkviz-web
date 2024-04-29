@@ -8,13 +8,13 @@ import { ContentCenterWrapper } from '../../_components/content-wrapper';
 import { ContinueWithoutLoginUserStudyButton } from './_continue-without-login-button';
 
 export default async function UserStudyParticipatePage() {
-    const loginUrl = getLoginLink('/user-study/flow');
+    const loginUrl = getLoginLink('/user-study/flow?from=user-study-login');
 
     const session = await getServerAuthSession();
     const userId = session?.user?.id ?? null;
 
     if (userId) {
-        redirect('/user-study/flow');
+        redirect('/user-study/flow?from=user-study-participate-auto-redirect');
     }
 
     return (

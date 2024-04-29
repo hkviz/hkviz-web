@@ -22,7 +22,7 @@ export const playingFrequencyOptions = [
     },
     {
         code: 'less_than_once_per_month',
-        name: 'Less than once per month',
+        name: 'Less than once per month but more than once per year',
     },
     {
         code: 'at_least_once_per_year',

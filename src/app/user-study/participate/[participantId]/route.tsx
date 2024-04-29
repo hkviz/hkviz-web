@@ -25,6 +25,6 @@ export const GET = async (req: NextRequest, { params: { participantId } }: { par
         redirect('/user-study/participate');
     } else {
         // already logged in
-        redirect('/user-study/flow');
+        redirect('/user-study/flow?from=user-study-id-url');
     }
 };

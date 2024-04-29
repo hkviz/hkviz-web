@@ -9,7 +9,7 @@ export function ContinueWithoutLoginUserStudyButton() {
     const router = useRouter();
     function handleClick() {
         setSkipLoginMutation.mutate();
-        router.push('/user-study/flow');
+        router.push('/user-study/flow?from=user-study-continue-without-login');
     }
 
     return (

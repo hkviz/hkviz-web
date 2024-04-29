@@ -12,7 +12,7 @@ export function UserStudyInformedConsentAcceptButton({ participantId }: { partic
 
     const acceptMutation = api.userStudyInformedConsent.accept.useMutation({
         onSuccess: () => {
-            router.push('/user-study/flow');
+            router.push('/user-study/flow?from=informed-consent-accept');
         },
         onError: (error) => {
             console.error('Failed to accept informed consent', error);
