@@ -84,37 +84,39 @@ export function OverviewScreenshot() {
                 {/* <ImageArea positionClassName="left-[1%] top-[9%] h-[32%] w-[28%]" href="#map-options">
                     Map options
                 </ImageArea> */}
-                <ImageArea positionClassName="left-[1%] top-[13.5%] h-[6.5%] w-[28%]" href="#room-visibility">
+                <ImageArea positionClassName="left-[0.5%] top-[13%] h-[6.25%] w-[28%]" href="#room-visibility">
                     Room visibility
                 </ImageArea>
                 <ImageArea
-                    positionClassName="left-[1%] top-[20.25%] h-[6.5%] w-[28%]"
+                    positionClassName="left-[0.5%] top-[19.25%] h-[6.25%] w-[28%]"
                     href="#player-movement-and-traces"
                 >
                     Traces
                 </ImageArea>
-                <ImageArea positionClassName="left-[1%] top-[27%] h-[6.5%] w-[28%]" href="#map-coloring-by-variables">
-                    Room colors
-                </ImageArea>
-                <ImageArea positionClassName="left-[1%] top-[36%] h-[63%] w-[28%]" href="#map-coloring-by-variables">
+                {/* TODO change link */}
+                {/* <ImageArea positionClassName="left-[0.5%] top-[25.5%] h-[9%] w-[28%]" href="#map-coloring-by-variables">
+                    Area names 
+                </ImageArea> */}
+                <ImageArea positionClassName="left-[0.5%] top-[35%] h-[64%] w-[28%]" href="#map-coloring-by-variables">
                     Room analytics
                 </ImageArea>
-                <ImageArea positionClassName="left-[1.5%] top-[45.5%] h-[6.5%] w-[27%]" href="#multi-room-buildings">
+                <ImageArea positionClassName="left-[1%] top-[43.5%] h-[6.5%] w-[27%]" href="#multi-room-buildings">
                     Multi-room buildings
                 </ImageArea>
-                <ImageArea positionClassName="left-[23.75%] top-[37.75%] h-[6%] aspect-square" href="#room-pin">
+                <ImageArea positionClassName="left-[24.25%] top-[36.75%] h-[6%] aspect-square" href="#room-pin">
                     Room pinning
                 </ImageArea>
-                <ImageArea positionClassName="left-[30%] top-[8%] h-[85%] w-[35.25%]" href="#map">
+                <ImageArea positionClassName="left-[29%] top-[7.75%] h-[83.25%] w-[37%]" href="#map">
                     Map
                 </ImageArea>
-                <ImageArea positionClassName="left-[30%] top-[93.5%] h-[5.5%] w-[35.25%]" href="#timeline">
+                {/* TODO add auto zoom link */}
+                <ImageArea positionClassName="left-[29%] top-[91.5%] h-[7.75%] w-[37%]" href="#timeline">
                     Timeline
                 </ImageArea>
-                <ImageArea positionClassName="left-[66%] top-[8%] h-[32%] w-[33%]" href="#splits">
+                <ImageArea positionClassName="left-[66.5%] top-[7.75%] h-[30.25%] w-[33%]" href="#splits">
                     Splits
                 </ImageArea>
-                <ImageArea positionClassName="left-[66%] top-[41.25%] h-[57.75%] w-[33%]" href="#time-based-charts">
+                <ImageArea positionClassName="left-[66.5%] top-[39%] h-[60.25%] w-[33%]" href="#time-based-charts">
                     Time charts
                 </ImageArea>
             </ImageAreaShadow>

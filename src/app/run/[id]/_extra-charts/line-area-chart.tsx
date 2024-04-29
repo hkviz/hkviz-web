@@ -391,7 +391,7 @@ export const LineAreaChart = memo(function LineAreaChart({
         // animationLine
         const animationLine = rootG
             .append('line')
-            .attr('class', 'stroke-current text-foreground')
+            .attr('class', 'stroke-current text-foreground pointer-events-none')
             .attr('stroke-width', 2 * renderScale)
             .attr('stroke-dasharray', `${renderScale * 3} ${renderScale * 3}`)
             .attr('x1', 0)

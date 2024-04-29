@@ -22,8 +22,8 @@ export default async function UserStudyInformedConsentPage() {
             <BottomInteractionRow>
                 <BottomInteractionRowText>
                     {didAccept
-                        ? 'You have already accepted the informed consent.'
-                        : 'Accept the informed consent form to continue.'}
+                        ? 'You have agreed to the informed consent.'
+                        : 'Agree to the informed consent form to continue.'}
                 </BottomInteractionRowText>
 
                 {!didAccept && <UserStudyInformedConsentAcceptButton participantId={participantId} />}

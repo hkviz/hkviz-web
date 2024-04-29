@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getLoginLink } from '~/app/_components/login-link-shared';
 import { getServerAuthSession } from '~/server/auth';
-import { ContentCenterWrapper } from '../../_components/content-wrapper';
+import { ContentCenterWrapper } from '../../../_components/content-wrapper';
 import { ContinueWithoutLoginUserStudyButton } from './_continue-without-login-button';
 
 export default async function UserStudyParticipatePage() {

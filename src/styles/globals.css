@@ -332,3 +332,7 @@ html {
         width: calc(100% + 0.5rem);
     }
 }
+
+.prose {
+    --tw-prose-bullets: #b6b9be;
+}

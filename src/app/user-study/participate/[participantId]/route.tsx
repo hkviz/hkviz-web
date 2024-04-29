@@ -22,7 +22,7 @@ export const GET = async (req: NextRequest, { params: { participantId } }: { par
 
     if (!userId && !participant.skipLoginQuestion && !participant.hasUserId) {
         // give option to login or continue without login
-        redirect('/user-study/participate');
+        redirect('/user-study/participate/login');
     } else {
         // already logged in
         redirect('/user-study/flow?from=user-study-id-url');

@@ -152,7 +152,7 @@ function AnimationTimeLineColorCodes() {
 
     return (
         <div
-            className="absolute bottom-0 left-0 h-3 w-full"
+            className="absolute bottom-0 left-2.5 right-2.5 h-3"
             ref={signalRef(container)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -261,11 +261,15 @@ export function AnimationTimeLine({ className }: { className?: string }) {
             <div>
                 <AnimationTimeLineSlider />
             </div>
-            {!isV1 && hoveredMsIntoGame != null && (
-                <div
-                    className="absolute bottom-0 top-0 w-[1px] bg-foreground"
-                    style={{ left: (100 * hoveredMsIntoGame) / timeFrame.max + '%' }}
-                ></div>
+            {!isV1 && (
+                <div className="pointer-events-none absolute bottom-0 left-2.5 right-2.5 top-0">
+                    {hoveredMsIntoGame != null && (
+                        <div
+                            className="absolute bottom-0 top-0 w-[1px] bg-foreground"
+                            style={{ left: (100 * hoveredMsIntoGame) / timeFrame.max + '%' }}
+                        ></div>
+                    )}
+                </div>
             )}
             {!isV1 && <AnimationTimeLineColorCodes />}
         </div>

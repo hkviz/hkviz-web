@@ -29,7 +29,7 @@ export function UserStudyInformedConsentAcceptButton({ participantId }: { partic
             disabled={acceptMutation.isLoading || acceptMutation.isSuccess}
             onClick={() => acceptMutation.mutate({ participantId })}
         >
-            Accept
+            Agree
         </Button>
     );
 }

@@ -91,7 +91,7 @@ export function RunOverviewTab({
                     isOpen ? '' : 'scale-75 opacity-0',
                 )}
             >
-                <div className="flex min-h-full w-full max-w-[700px] flex-col items-center justify-center gap-4 mx-auto">
+                <div className="mx-auto flex min-h-full w-full max-w-[700px] flex-col items-center justify-center gap-4 px-4 pb-12 pt-[max(12vh,3rem)]">
                     <div className="w-full">
                         <RunCard run={runData} isOwnRun={isOwnRun} />
                     </div>

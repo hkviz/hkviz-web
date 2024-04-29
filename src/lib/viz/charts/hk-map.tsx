@@ -152,7 +152,7 @@ export function HKMap({ className }: HKMapProps) {
                 </g>
             </svg>
             {!isV1 && <HKMapZoom svg={svg} zoom={zoom} />}
-            <div className="absolute right-2 top-2">
+            <div className="absolute right-2 top-2 lg:top-10 xl:top-2">
                 <MapLegend />
             </div>
             <HKMapTraces containerRef={containerRef} zoomHandler={tracesZoomHandler} />

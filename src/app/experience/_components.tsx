@@ -159,7 +159,7 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
                     </div>
                     <Expander expanded={showFrequency}>
                         <FormFieldLabel htmlFor={ids.playingFrequency}>
-                            How often have you been playing Hollow Knight recently?
+                            How often did you play Hollow Knight recently?
                         </FormFieldLabel>
                         <Select
                             value={values.playingFrequency ?? undefined}
