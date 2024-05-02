@@ -52,7 +52,7 @@ export function MapOverlayOptions() {
                 </div>
             </div>
             <Separator /> */}
-            <div className="flex flex-col gap-1">
+            <div className="auto-zoom-option flex flex-col gap-1">
                 <h3 className="flex flex-row items-center gap-1 text-base font-semibold">
                     {/* <Fullscreen className="h-4 w-4" /> */}
                     Auto zoom to

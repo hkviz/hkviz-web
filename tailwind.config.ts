@@ -75,10 +75,20 @@ export default {
                     from: { height: 'var(--radix-accordion-content-height)' },
                     to: { height: '0' },
                 },
+                'pulse-shadow-white': {
+                    '0%': { 'box-shadow': '0 0 0 0 rgba(255,255,255,0.3)' },
+                    '75%, 100%': { 'box-shadow': '0 0 0 2rem transparent' },
+                },
+                'pulse-shadow-black': {
+                    '0%': { 'box-shadow': '0 0 0 0 rgba(0,0,0,0.3)' },
+                    '75%, 100%': { 'box-shadow': '0 0 0 2rem transparent' },
+                },
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
+                'pulse-shadow-white': 'pulse-shadow-white 1.75s ease-in-out infinite',
+                'pulse-shadow-black': 'pulse-shadow-black 1.75s ease-in-out infinite',
             },
             dropShadow: {
                 'glow-sm': ['0 0px 3px rgba(255,255, 255, 0.2)', '0 0px 6px rgba(255, 255,255, 0.05)'],

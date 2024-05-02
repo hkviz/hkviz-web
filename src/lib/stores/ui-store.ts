@@ -6,6 +6,7 @@ export type DisplayVersion = 'v1' | 'vnext';
 
 const mainCardTabs = ['overview', 'map'] as const;
 const mobileTabs = ['overview', 'map', 'time-charts', 'splits'] as const;
+const isMobileView = signal(false);
 
 export type MainCardTab = (typeof mainCardTabs)[number];
 export type MobileTab = (typeof mobileTabs)[number];

@@ -81,7 +81,7 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
                     hasClicked.current.hasClicked = true;
                     markClicked();
                 } else {
-                    roomDisplayStore.togglePinnedRoom(sceneName);
+                    roomDisplayStore.togglePinnedRoom(sceneName, 'split-click');
                     markClicked();
                 }
             }
@@ -267,7 +267,7 @@ export function RunSplits({ resizeOptions }: RunSplitsProps) {
     }, []);
 
     return (
-        <div className="flex h-full flex-col">
+        <div className="run-splits flex h-full flex-col">
             <CardHeader className={cardHeaderSmallClasses}>
                 <CardTitle
                     className={cn(cardTitleSmallClasses, 'flex w-full flex-row items-center justify-between gap-2')}

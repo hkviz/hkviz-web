@@ -285,7 +285,7 @@ export const allRoomDataIncludingSubspritesBySceneName = (() => {
 
     roomData.forEach((room) => {
         add(room, room.sceneName);
-        if (room.subSpriteOfGameObjectName) {
+        if (!!room.subSpriteOfGameObjectName) {
             const other = roomDataByGameObjectName.get(room.subSpriteOfGameObjectName)!;
             add(room, other.sceneName);
         }

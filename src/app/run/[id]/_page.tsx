@@ -32,6 +32,7 @@ import { MobileTabBar } from './_mobile-tabs';
 import { RoomInfo } from './_room_infos';
 import { RunOverviewTab } from './_run-overview-tab';
 import { RunSplits } from './_run_splits';
+import { SingleRunPageTour } from './_tour';
 import { ViewOptions } from './_view_options';
 
 interface Props {
@@ -111,16 +112,19 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 >
                     <TabsListTransparent>
                         <TabsTriggerTransparent value="overview">Overview</TabsTriggerTransparent>
-                        <TabsTriggerTransparent value="map">Map</TabsTriggerTransparent>
+                        <TabsTriggerTransparent value="map" className="map-tab-large-layout">
+                            Map
+                        </TabsTriggerTransparent>
                     </TabsListTransparent>
                 </Tabs>
-                <HKMap className="col-start-1 col-end-1 row-start-1 row-end-1 min-h-[50vh]" />
+                <HKMap className="col-start-1 col-end-1 row-start-1 row-end-1" />
                 <RunOverviewTab
                     className="col-start-1 col-end-1 row-start-1 row-end-1"
                     runData={runData}
                     session={session}
                 />
                 <RunClientLoader runData={runData} />
+                <SingleRunPageTour />
             </Card>
             <AnimationOptions className="dashboard-grid-timeline" />
 
