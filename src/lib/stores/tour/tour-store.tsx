@@ -25,7 +25,7 @@ const steps: Step[] = [
                 <P>
                     Welcome to the <HKVizText /> quick start tour!
                 </P>
-                <P>You can always reopen it later using this button</P>
+                <P>You can always reopen it later using this button.</P>
             </>
         ),
         onActivate: () => {
@@ -41,7 +41,7 @@ const steps: Step[] = [
         target: computed(() =>
             viewportStore.isMobileLayout.value ? '.map-tab-mobile-layout' : '.map-tab-large-layout',
         ),
-        content: () => <>Lets start by switching to the Map</>,
+        content: () => <>Let{"'"}s start by switching to the Map.</>,
         onActivate: () => {
             if (uiStore.mainCardTab.peek() === 'map') {
                 back();
@@ -67,7 +67,10 @@ const steps: Step[] = [
         content: () => (
             <>
                 <P>Hovering over rooms allows you to select them.</P>
-                <P>Clicking on a room pins it, and once pinned, rooms can only be selected through clicking.</P>
+                <P>
+                    Clicking on a room pins it. Once a room is pinned, other rooms can only be selected through
+                    clicking.
+                </P>
             </>
         ),
         activeEffect: () => {
@@ -84,7 +87,7 @@ const steps: Step[] = [
 
         return {
             target: '.room-info-pin-button',
-            content: () => <>Here you can also pin and unpin the selected room.</>,
+            content: () => <P>Here, you can also pin and unpin the selected room.</P>,
             activeEffect: () => {
                 roomDisplayStore.selectedScenePinned.value;
                 if (roomDisplayStore.selectedScenePinSource.value === 'pin-button-click') {
@@ -160,8 +163,8 @@ const steps: Step[] = [
             content: () => (
                 <>
                     <P>
-                        This is the animation timeline. Bellow the timeline there are color codes showing the visited
-                        areas. Like on the map you can hover to select a room, and click for pinning the room.
+                        This is the animation timeline. Below the timeline there are color codes showing the visited
+                        areas. Like on the map, you can hover to select a room, and click for pinning the room.
                     </P>
                     <P>
                         Press play (<Play className="inline-block h-3 w-3" />) to look at the player movement and the
@@ -191,7 +194,7 @@ const steps: Step[] = [
             content: () => (
                 <>
                     <P>While animating, the map can automatically follow the player. </P>
-                    <P>By manually zooming or moving the map, this is disabled automatically.</P>
+                    <P>Manually zooming or moving the map automatically disables this feature.</P>
                 </>
             ),
             onActivate: () => {
@@ -213,8 +216,8 @@ const steps: Step[] = [
         content: () => (
             <>
                 <P>
-                    In the splits panel you can see timestamps of certain events in the gameplay. Click a split to jump
-                    to it in the timeline.
+                    In the splits panel, you can see timestamps of certain events in the gameplay. Click on a split to
+                    jump directly to it in the timeline.
                 </P>
             </>
         ),
@@ -234,10 +237,10 @@ const steps: Step[] = [
         content: () => (
             <>
                 <P>
-                    And last, the time charts for {"'"}Geo{"'"}, {"'"}Essence{"'"} and much more. At the top of the
-                    charts there are some actions to use, like zooming in and out.
+                    Lastly, the time charts for {"'"}Geo{"'"}, {"'"}Essence{"'"} and more. At the top of the charts,
+                    there are some actions to use, like zooming in and out.
                 </P>
-                <P>Thats it! Good luck exploring.</P>
+                <P>That{"'"}s it! Good luck exploring.</P>
             </>
         ),
         onActivate: () => {

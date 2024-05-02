@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
 import { useSignals } from '@preact/signals-react/runtime';
-import { AreaChart, HelpCircle, Play } from 'lucide-react';
+import { AreaChart, Play, Rocket } from 'lucide-react';
 import { type Session } from 'next-auth';
 import { useMemo } from 'react';
 import { RelativeDate } from '~/app/_components/date';
@@ -109,8 +109,8 @@ export function RunOverviewTab({
                                 disabled={isDisabled}
                                 className="getting-started-tour-button"
                             >
-                                <HelpCircle className="mr-2 h-5 w-5" />
-                                <span className="grow">Take Getting Started Tour</span>
+                                <Rocket className="mr-2 h-5 w-5" />
+                                <span className="grow">Quick start tour</span>
                             </Button>
                         </div>
                         <div className="grid max-w-[500px] grid-cols-2 gap-2">
