@@ -100,6 +100,7 @@ function TourShadow() {
 
     const shadowRef = useSignalRef<HTMLDivElement>();
     const shadowInnerRef = useSignalRef<HTMLDivElement>();
+    const previousTarget = useRef<HTMLElement | null>(null);
 
     useSignalEffect(() => {
         const _shadow = shadowRef.signal.value;
@@ -115,7 +116,15 @@ function TourShadow() {
                     ? currentStep.target
                     : currentStep.target.value
                 : undefined;
-        const target = targetQuery != null ? document.querySelector<HTMLElement>(targetQuery) : undefined;
+        const target = targetQuery != null ? document.querySelector<HTMLElement>(targetQuery) : null;
+
+        if (previousTarget.current !== target) {
+            previousTarget.current = target;
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+        }
+
         const fadeout = currentStep?.fadeoutShadow?.value ?? false;
         _shadowInner.style.opacity = fadeout ? '0' : '1';
 

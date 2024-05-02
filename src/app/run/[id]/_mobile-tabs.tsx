@@ -43,8 +43,13 @@ export function MobileTabBar() {
             <TabsList className="flex h-12 w-full flex-row rounded-none border-t">
                 <MobileTabTrigger value="overview" title="Overview" icon={BadgeInfo} />
                 <MobileTabTrigger value="map" title="Map" icon={Map} className="map-tab-mobile-layout" />
-                <MobileTabTrigger value="time-charts" title="Charts" icon={AreaChart} />
-                <MobileTabTrigger value="splits" title="Splits" icon={Timer} />
+                <MobileTabTrigger
+                    value="time-charts"
+                    title="Charts"
+                    icon={AreaChart}
+                    className="time-chart-tab-mobile-layout"
+                />
+                <MobileTabTrigger value="splits" title="Splits" icon={Timer} className="splits-tab-mobile-layout" />
             </TabsList>
         </Tabs>
     );

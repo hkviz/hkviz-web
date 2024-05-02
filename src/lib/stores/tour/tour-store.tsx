@@ -143,7 +143,7 @@ const steps: Step[] = [
         ),
         onActivate: () => {
             if (roomColoringStore.colorMode.peek() === 'area') {
-                roomColoringStore.cycleRoomColorVar1('geoEarned');
+                roomColoringStore.cycleRoomColorVar1('damageTaken');
             }
         },
         activeEffect: () => {
@@ -164,7 +164,7 @@ const steps: Step[] = [
                         areas. Like on the map you can hover to select a room, and click for pinning the room.
                     </P>
                     <P>
-                        Press play (<Play className="inline-block h-3 w-3" />) on to look at the player movement and the
+                        Press play (<Play className="inline-block h-3 w-3" />) to look at the player movement and the
                         map expanding as it is explored.
                     </P>
                 </>
@@ -207,28 +207,8 @@ const steps: Step[] = [
             },
         };
     }),
-    // {
-    //     target: '.animation-time',
-    //     widthByTrigger: true,
-    //     content: () => (
-    //         <>
-    //             <P>Below the timeline you can see the color codes for the rooms visited.</P>
-    //             <P>
-    //                 The color codes of the selected room and its area are shown larger. So you can quickly find when in
-    //                 the gameplay it has been visited.
-    //             </P>
-    //             <P>Hovering over a color code selects the room, if its not pinned. Clicking toggles the room pin.</P>
-    //         </>
-    //     ),
-    //     activeEffect: () => {
-    //         if (roomDisplayStore.selectedScenePinSource.value === 'timeline-color-code-click') {
-    //             next();
-    //         }
-    //     },
-    // },
     {
-        target: '.run-splits',
-        widthByTrigger: true,
+        target: computed(() => (viewportStore.isMobileLayout.value ? '.splits-tab-mobile-layout' : '.run-splits')),
         padding: 0,
         content: () => (
             <>
@@ -239,6 +219,7 @@ const steps: Step[] = [
             </>
         ),
         onActivate: () => {
+            uiStore.activateTab('splits');
             animationStore.setIsPlaying(false);
         },
         activeEffect: () => {
@@ -246,8 +227,9 @@ const steps: Step[] = [
         },
     },
     {
-        target: '.extra-charts',
-        widthByTrigger: true,
+        target: computed(() =>
+            viewportStore.isMobileLayout.value ? '.time-chart-tab-mobile-layout' : '.extra-charts',
+        ),
         padding: 0,
         content: () => (
             <>
@@ -258,6 +240,9 @@ const steps: Step[] = [
                 <P>Thats it! Good luck exploring.</P>
             </>
         ),
+        onActivate: () => {
+            uiStore.activateTab('time-charts');
+        },
     },
 ];
 
