@@ -126,7 +126,7 @@ export function HKMap({ className }: HKMapProps) {
         useMapTraces({ animatedTraceG, knightPinG });
     }
     return (
-        <div className={cn('relative', className)} ref={containerRef}>
+        <div className={cn('hk-main-map-wrapper relative', className)} ref={containerRef}>
             <svg className="absolute inset-0" ref={svgRef}>
                 <g data-group="root" ref={rootGRef}>
                     <HkMapRooms
@@ -141,7 +141,7 @@ export function HKMap({ className }: HKMapProps) {
                         onClick={(event, r) => {
                             console.log('clicked room', r);
                             // if (event.pointerType !== 'touch') {
-                            roomDisplayStore.togglePinnedRoom(r.sceneName);
+                            roomDisplayStore.togglePinnedRoom(r.sceneName, 'map-room-click');
                             // } else {
                             // setSelectedRoomPinned(false);
                             // setSelectedRoomIfNotPinned(r.sceneName);

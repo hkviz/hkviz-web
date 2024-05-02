@@ -46,7 +46,7 @@ export function RunExtraCharts({ resizeOptions }: RunExtraChartsProps) {
 
     const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
     return (
-        <div className="flex h-full flex-col">
+        <div className="extra-charts flex h-full flex-col">
             <CardHeader className={cardHeaderSmallClasses}>
                 <CardTitle className={cn(cardTitleSmallClasses, 'flex w-full flex-row justify-between')}>
                     Time-based charts

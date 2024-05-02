@@ -30,6 +30,10 @@ import { assertNever } from '~/lib/utils/utils';
 import { getRelatedVirtualRoomNames } from '~/lib/viz/map-data/room-groups';
 import { RoomColorCurveContextMenuItems } from './_room-color-curve-menu';
 
+export function roomInfoColoringToggleClasses(variable: AggregationVariable) {
+    return 'room-info-coloring-toggle_' + variable;
+}
+
 function AggregationVariableToggles({ variable }: { variable: AggregationVariable }) {
     useSignals();
     const roomColors = roomColoringStore.colorMode.value;
@@ -65,7 +69,9 @@ function AggregationVariableToggles({ variable }: { variable: AggregationVariabl
                                       ? 'data-[state=on]:bg-blue-600'
                                       : roomColorVar1Curve.type === 'exponential'
                                         ? 'data-[state=on]:bg-green-600'
-                                        : assertNever(roomColorVar1Curve))
+                                        : assertNever(roomColorVar1Curve)) +
+                                ' ' +
+                                roomInfoColoringToggleClasses(variable)
                             }
                         >
                             <span className="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
@@ -217,7 +223,7 @@ export function RoomInfo() {
         <Card
             className={cn(
                 cardRoundedMdOnlyClasses,
-                'max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-gradient-to-b from-transparent  to-transparent',
+                'room-infos-card max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-gradient-to-b from-transparent  to-transparent',
             )}
             style={
                 {
@@ -233,13 +239,13 @@ export function RoomInfo() {
 
                 <div>
                     <CardTitle className="text-base md:text-lg">
-                        {!selectedRoom || isV1 ? <>Room analytics</> : areaWithTooltip}
+                        {selectedRoom == null || isV1 ? <>Room analytics</> : areaWithTooltip}
                     </CardTitle>
                     <CardDescription>
-                        {!selectedRoom && (
+                        {selectedRoom == null && (
                             <span className="text-sm opacity-50">Hover or click a room to view analytics</span>
                         )}
-                        {selectedRoom && (
+                        {selectedRoom != null && (
                             <>
                                 {isV1 && <>{areaWithTooltip} - </>}
                                 <Tooltip>
@@ -264,7 +270,7 @@ export function RoomInfo() {
                                 variant="outline"
                                 size="icon"
                                 onClick={() => {
-                                    roomDisplayStore.selectedScenePinned.value = false;
+                                    roomDisplayStore.unpinScene('pin-button-click');
                                 }}
                                 className={isV1 ? '' : 'h-8 w-8'}
                             >
@@ -283,8 +289,10 @@ export function RoomInfo() {
                                 <Button
                                     variant="outline"
                                     size="icon"
-                                    onClick={() => (roomDisplayStore.selectedScenePinned.value = true)}
-                                    className="h-8 w-8"
+                                    onClick={() => {
+                                        roomDisplayStore.pinScene('pin-button-click');
+                                    }}
+                                    className="room-info-pin-button h-8 w-8"
                                 >
                                     <Pin className="h-4 w-4" />
                                 </Button>
@@ -299,7 +307,7 @@ export function RoomInfo() {
                     )
                 )}
             </CardHeader>
-            {selectedRoom && (
+            {selectedRoom != null && (
                 <CardContent className="shrink grow basis-0 overflow-auto px-0 pb-1">
                     {!isV1 && relatedRooms.length !== 0 && (
                         <div className="flex flex-row gap-1 overflow-x-auto overflow-y-hidden p-1">

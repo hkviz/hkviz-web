@@ -1,5 +1,6 @@
 import { batch, computed, effect, signal } from '@preact/signals-react';
 import { asReadonlySignal } from '~/lib/utils/signals';
+import { RoomData, mainRoomDataBySceneName } from '../viz/map-data/rooms';
 import { gameplayStore } from './gameplay-store';
 
 const intervalMs = 1000 / 30;
@@ -25,6 +26,17 @@ const currentSceneEvent = computed(() => {
     if (index === null) return null;
 
     return r.sceneEvents[index] ?? null;
+});
+
+const currentSceneEventWithMainMapRoom = computed(() => {
+    let sceneEvent = currentSceneEvent.value;
+    let mainRoomData: RoomData | undefined = undefined;
+    do {
+        if (!sceneEvent) break;
+        mainRoomData = mainRoomDataBySceneName.get(sceneEvent.sceneName);
+        sceneEvent = sceneEvent.previousSceneEvent;
+    } while (!mainRoomData && !!sceneEvent);
+    return { mainRoomData, sceneEvent };
 });
 
 const currentFrameEndEventIndex = computed(() => {
@@ -92,6 +104,7 @@ export const animationStore = {
     setIsPlaying,
     togglePlaying,
     reset,
+    currentSceneEventWithMainMapRoom,
 };
 
 effect(() => {

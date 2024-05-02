@@ -142,7 +142,7 @@ function AnimationTimeLineColorCodes() {
         console.log(sceneChange);
         if (!sceneChange) return;
         animationStore.setMsIntoGame(sceneChange.startMs);
-        roomDisplayStore.togglePinnedRoom(sceneChange.mainVirtualScene, true);
+        roomDisplayStore.togglePinnedRoom(sceneChange.mainVirtualScene, 'timeline-color-code-click', true);
         uiStore.showMapIfOverview();
     }
     function handleMouseLeave() {
@@ -152,7 +152,7 @@ function AnimationTimeLineColorCodes() {
 
     return (
         <div
-            className="absolute bottom-0 left-2.5 right-2.5 h-3"
+            className="animation-timeline-color-codes absolute bottom-0 left-2.5 right-2.5 h-3"
             ref={signalRef(container)}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
@@ -286,7 +286,7 @@ export function AnimationOptions({ className }: { className?: string }) {
             <Card
                 className={cn(
                     cardRoundedMdOnlyClasses,
-                    'g-1 bottom-0 grid grid-cols-[auto_1fr_auto] flex-row items-center justify-center border-t @3xl:grid-cols-[auto_auto_1fr_auto]',
+                    'animation-time g-1 bottom-0 grid grid-cols-[auto_1fr_auto] flex-row items-center justify-center border-t @3xl:grid-cols-[auto_auto_1fr_auto]',
                 )}
             >
                 <PlayButton />

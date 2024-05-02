@@ -6,6 +6,10 @@ import { roomDisplayStore } from '~/lib/stores/room-display-store';
 import { themeStore } from '~/lib/stores/theme-store';
 import { type RoomInfo, type RoomSpriteVariant } from '../map-data/rooms';
 
+export function hkMapRoomRectClass({ gameObjectName }: { gameObjectName: string }) {
+    return 'hk-map-room-react_' + gameObjectName;
+}
+
 function HkMapRoom({
     room,
     onClick,
@@ -61,6 +65,7 @@ function HkMapRoom({
         outlineG.current!.style.fill = color;
     });
 
+    // update main color
     useSignalEffect(function hkMapRoomColorEffect() {
         rootRect.current!.style.fill = alwaysUseAreaAsColor
             ? roomColoringStore.areaColorByGameObjectName.value.get(room.gameObjectName)!
@@ -89,6 +94,7 @@ function HkMapRoom({
                 ))}
             </mask>
             <rect
+                className={hkMapRoomRectClass(room)}
                 ref={rootRect}
                 mask={`url(#${maskId})`}
                 x={room.allSpritesScaledPositionBounds.min.x}
