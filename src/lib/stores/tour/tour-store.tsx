@@ -80,6 +80,8 @@ const steps: Step[] = [
         },
         onActivate: () => {
             uiStore.activateTab('map');
+            mapZoomStore.enabled.value = true;
+            mapZoomStore.target.value = 'current-zone';
         },
     },
     makeStep(() => {
