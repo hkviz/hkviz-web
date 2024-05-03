@@ -121,6 +121,7 @@ const steps: Step[] = [
             </>
         ),
         onActivate: () => {
+            uiStore.activateTab('map');
             if (roomDisplayStore.selectedSceneName.peek() == null) {
                 // if no scene has been selected, lets just select one for the user
                 roomDisplayStore.selectedSceneName.value =
@@ -147,6 +148,7 @@ const steps: Step[] = [
             </>
         ),
         onActivate: () => {
+            uiStore.activateTab('map');
             if (roomColoringStore.colorMode.peek() === 'area') {
                 roomColoringStore.cycleRoomColorVar1('damageTaken');
             }
@@ -200,6 +202,7 @@ const steps: Step[] = [
                 </>
             ),
             onActivate: () => {
+                uiStore.activateTab('map');
                 autoZoomChanges = 0;
             },
             activeEffect: () => {
