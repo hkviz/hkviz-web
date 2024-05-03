@@ -43,9 +43,7 @@ const steps: Step[] = [
         ),
         content: () => <>Let{"'"}s start by switching to the Map.</>,
         onActivate: () => {
-            if (uiStore.mainCardTab.peek() === 'map') {
-                back();
-            }
+            uiStore.activateTab('overview');
         },
         activeEffect: () => {
             console.log('active effect', uiStore.mobileTab.value);
@@ -76,6 +74,10 @@ const steps: Step[] = [
         activeEffect: () => {
             if (roomDisplayStore.selectedScenePinSource.value === 'map-room-click') {
                 next();
+            }
+
+            if (uiStore.mainCardTab.value === 'overview') {
+                back();
             }
         },
         onActivate: () => {
@@ -108,7 +110,7 @@ const steps: Step[] = [
     }),
     {
         target: '.room-infos-card',
-        padding: 0,
+        padding: 2,
         popoverSide: computed(() => (viewportStore.isMobileLayout.value ? 'bottom' : 'right')),
         content: () => (
             <>
@@ -143,7 +145,7 @@ const steps: Step[] = [
         popoverSide: computed(() => (viewportStore.isMobileLayout.value ? 'bottom' : 'right')),
         content: () => (
             <>
-                <P>A second click enhances the visibility of smaller values.</P>
+                <P>A second click exaggerates small values, for better visibility in some cases.</P>
                 <P>A third click resets the map to its original colors.</P>
             </>
         ),
@@ -163,13 +165,14 @@ const steps: Step[] = [
         return {
             target: '.animation-time',
             widthByTrigger: true,
-            padding: 0,
+            padding: 2,
             content: () => (
                 <>
                     <P>
-                        This is the animation timeline. Below the timeline there are color codes showing the visited
-                        areas. Like on the map, you can hover to select a room, and click for pinning the room.
+                        This is the animation timeline with color codes below showing the visited areas. Like on the
+                        map, you can hover to select a room, and click for pinning the room.
                     </P>
+                    <P>Hold shift while scrubbing on the timeline, to slowly move the animation forward or backward.</P>
                     <P>
                         Press play (<Play className="inline-block h-3 w-3" />) to look at the player movement and the
                         map expanding as it is explored.
@@ -217,7 +220,7 @@ const steps: Step[] = [
     }),
     {
         target: computed(() => (viewportStore.isMobileLayout.value ? '.splits-tab-mobile-layout' : '.run-splits')),
-        padding: 0,
+        padding: 2,
         content: () => (
             <>
                 <P>
@@ -238,14 +241,15 @@ const steps: Step[] = [
         target: computed(() =>
             viewportStore.isMobileLayout.value ? '.time-chart-tab-mobile-layout' : '.extra-charts',
         ),
-        padding: 0,
+        padding: 2,
         content: () => (
             <>
                 <P>
-                    Lastly, the time charts for {"'"}Geo{"'"}, {"'"}Essence{"'"} and more. At the top of the charts,
-                    there are some actions to use, like zooming in and out.
+                    Lastly, here are some charts showing stats over time. For {"'"}Geo{"'"}, {"'"}Essence{"'"} and more.
+                    Scroll down to see more charts. The values below the carts and the dotted line on the cart are
+                    always showing the selected point in the timeline.
                 </P>
-                <P>That{"'"}s it! Good luck exploring.</P>
+                <P>That{"'"}s it! Happy exploring!</P>
             </>
         ),
         onActivate: () => {
