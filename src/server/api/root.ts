@@ -7,6 +7,7 @@ import { runRouter } from './routers/run/run';
 import { studyDemographicsRouter } from './routers/study-demographics';
 import { studyParticipationRouter } from './routers/study-participation';
 import { participantRouter } from './routers/study/participant';
+import { userStudyTimeSlotRouter } from './routers/study/timeslots';
 import { userStudyInformedConsentRouter } from './routers/study/user-study-informed-consent';
 
 /**
@@ -24,4 +25,5 @@ export const appRouter = createTRPCRouter({
     hkExperience: hkExperienceRouter,
     participant: participantRouter,
     userStudyInformedConsent: userStudyInformedConsentRouter,
+    userStudyTimeSlot: userStudyTimeSlotRouter,
 });

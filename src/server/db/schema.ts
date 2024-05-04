@@ -16,6 +16,7 @@ import {
 } from 'drizzle-orm/mysql-core';
 import { type AdapterAccount } from 'next-auth/adapters';
 import { ageRangeCodes } from '~/lib/types/age-range';
+import { callOptionCodes } from '~/lib/types/call-option';
 import { countryCodes } from '~/lib/types/country';
 import { playingFrequencyCodes } from '~/lib/types/playing-frequency';
 import { playingSinceCodes } from '~/lib/types/playing-since';
@@ -416,6 +417,8 @@ export const studyParticipant = table('studyParticipant', {
     skipLoginQuestion: boolean('skip_login_question').notNull().default(false),
     userStudyFinished: boolean('user_study_finished').notNull().default(false),
     resetId: varcharUuid('reset_id'),
+    callOption: mysqlEnum('contact_type', callOptionCodes),
+    callName: varchar('contact_name', { length: 256 }),
 });
 export const studyParticipantRelations = relations(studyParticipant, ({ one }) => ({
     user: one(users),
@@ -435,3 +438,9 @@ export const userStudyInformedConsentRelations = relations(userStudyInformedCons
         references: [studyParticipant.participantId],
     }),
 }));
+
+export const userStudyTimeSlot = table('userStudyTimeSlot', {
+    id: serial('id').primaryKey(),
+    startAt: timestamp('start_at').notNull(),
+    participantId: varcharUuid('participant_id'),
+});

@@ -5,7 +5,7 @@ import { findRuns } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
 import { ContentCenterWrapper } from './_components/content-wrapper';
-import { GradientSeperator } from './_components/gradient-seperator';
+import { GradientSeparator } from './_components/gradient-separator';
 import { HKVizText } from './_components/hkviz-text';
 import { OwnRuns } from './_page_own_runs';
 
@@ -62,12 +62,12 @@ export default async function Home() {
 
                 {userRuns.length > 0 && (
                     <>
-                        <GradientSeperator />
+                        <GradientSeparator />
                         <OwnRuns runs={userRuns} />
                     </>
                 )}
 
-                <GradientSeperator />
+                <GradientSeparator />
                 <div className={`max-w-[70ch] text-center`}>
                     <p className="text-pretty">
                         <HKVizText /> is developed to allow research on visual analytics and data visualization in

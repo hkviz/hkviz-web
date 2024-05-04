@@ -1,7 +1,7 @@
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
 
-export function GradientSeperator({ className }: { className?: string }) {
+export function GradientSeparator({ className }: { className?: string }) {
     return (
         <Separator
             className={cn(
