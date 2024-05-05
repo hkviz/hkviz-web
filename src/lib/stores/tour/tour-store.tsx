@@ -105,6 +105,11 @@ const steps: Step[] = [
             onActivate: () => {
                 pinChanges = 0;
                 uiStore.activateTab('map');
+                if (roomDisplayStore.selectedSceneName.peek() == null) {
+                    // if no scene has been selected, lets just select one for the user
+                    roomDisplayStore.selectedSceneName.value =
+                        animationStore.currentSceneEventWithMainMapRoom.value.sceneEvent?.sceneName ?? null;
+                }
             },
         };
     }),

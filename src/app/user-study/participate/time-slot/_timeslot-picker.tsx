@@ -202,8 +202,7 @@ export function TimeSlotPicker({
                 <GradientSeparator className="my-8" />
                 <h2 className="font-serif text-xl font-bold">2. When should the call start?</h2>
                 <p>
-                    If none of these times work for you, we can probably find a different one that works for you. Just
-                    let me know via{' '}
+                    If none of these times work for you, we can probably find a different one. Just let me know via{' '}
                     <MailLinkUnstyled
                         className="text-inherit underline hover:no-underline"
                         mail="participate@hkviz.org"
