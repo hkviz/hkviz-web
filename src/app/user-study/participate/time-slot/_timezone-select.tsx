@@ -7,19 +7,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { cn } from '@/lib/utils';
 import { useMemo, useState } from 'react';
-
-function getGmtOffset(timeZone: string) {
-    const date = new Date(); // You can use any specific date here
-    const formatter = new Intl.DateTimeFormat('en-US', {
-        timeZone,
-        timeZoneName: 'shortOffset',
-    });
-
-    const parts = formatter.formatToParts(date);
-    const timeZonePart = parts.find((part) => part.type === 'timeZoneName');
-
-    return timeZonePart ? `${timeZonePart.value}` : '?';
-}
+import { formatTimeZoneName, getGmtOffset } from './_timezone-name';
 
 export interface TimezoneSelectProps {
     value: string;
@@ -31,7 +19,7 @@ export function TimezoneSelect({ value, onChange }: TimezoneSelectProps) {
         const names = Intl.supportedValuesOf('timeZone');
 
         return names.map((name) => {
-            const displayName = name.replaceAll('/', ' - ');
+            const displayName = formatTimeZoneName(name);
             const gmtOffset = getGmtOffset(name);
             return {
                 displayName,

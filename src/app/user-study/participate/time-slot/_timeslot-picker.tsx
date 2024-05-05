@@ -17,46 +17,61 @@ import { GradientSeparator } from '~/app/_components/gradient-separator';
 import { MailLinkUnstyled } from '~/app/_components/mail-link';
 import { callOptions, type CallOptionCode } from '~/lib/types/call-option';
 import { api } from '~/trpc/react';
-import { TimezoneSelect } from './timezone-select';
+import { type RouterOutputs } from '~/trpc/shared';
+import { revalidateTagFromClient } from './_invalidate-tag';
+import { TimezoneSelect } from './_timezone-select';
 
-export function TimeSlotPicker() {
+export function TimeSlotPicker({
+    hasParticipantCookie,
+    currentTimeSlot,
+    currentParticipant,
+}: {
+    hasParticipantCookie: boolean;
+    currentTimeSlot: RouterOutputs['userStudyTimeSlot']['findByParticipantId'];
+    currentParticipant: RouterOutputs['participant']['getByParticipantId'];
+}) {
     useSignals();
     const timeSlotsQuery = api.userStudyTimeSlot.findAllVisible.useQuery();
     const timeSlots = timeSlotsQuery.data;
 
     const { toast, dismiss } = useToast();
 
-    const [timeZone, setTimeZone] = useState('');
-    const [callOption, setCallOption] = useState<CallOptionCode>('zoom');
+    const [timeZone, setTimeZone] = useState(currentParticipant?.timeZone ?? '');
+    const [callOption, setCallOption] = useState<CallOptionCode>(currentParticipant?.callOption ?? 'zoom');
 
     useEffect(() => {
-        setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+        setTimeZone((timeZone) => timeZone || Intl.DateTimeFormat().resolvedOptions().timeZone);
     }, []);
 
     const zonedTimeSlots = useMemo(
         () =>
-            timeSlots?.map((slot) => {
-                const startAt = new Date(slot.startAt);
-                return {
-                    id: slot.id,
-                    idStr: slot.id.toString(),
-                    free: slot.free,
-                    day: startAt.toLocaleDateString(undefined, {
-                        timeZone,
-                        weekday: 'long',
-                        day: 'numeric',
-                        month: 'long',
-                    }),
-                    time: startAt.toLocaleTimeString(undefined, { timeZone, hour: '2-digit', minute: '2-digit' }),
-                };
-            }),
+            timeZone
+                ? timeSlots?.map((slot) => {
+                      const startAt = new Date(slot.startAt);
+                      return {
+                          id: slot.id,
+                          idStr: slot.id.toString(),
+                          free: slot.free,
+                          day: startAt.toLocaleDateString(undefined, {
+                              timeZone,
+                              weekday: 'long',
+                              day: 'numeric',
+                              month: 'long',
+                          }),
+                          time: startAt.toLocaleTimeString(undefined, { timeZone, hour: '2-digit', minute: '2-digit' }),
+                      };
+                  })
+                : undefined,
         [timeSlots, timeZone],
     );
 
-    type TonedTimeSlot = NonNullable<typeof zonedTimeSlots>[number];
-
-    const [selectedTimeSlot, setSelectedTimeSlot] = useState<TonedTimeSlot | null>(null);
-    console.log(selectedTimeSlot);
+    const [selectedTimeSlotId, setSelectedTimeSlotId] = useState<string | null>(
+        currentTimeSlot?.id?.toString?.() ?? null,
+    );
+    const selectedTimeSlot = useMemo(() => {
+        if (zonedTimeSlots == null || selectedTimeSlotId == null) return null;
+        return zonedTimeSlots.find((d) => d.idStr === selectedTimeSlotId) ?? null;
+    }, [zonedTimeSlots, selectedTimeSlotId]);
 
     const groupedTimeSlots = useMemo(() => {
         if (!zonedTimeSlots) return undefined;
@@ -67,25 +82,30 @@ export function TimeSlotPicker() {
     const continueButtonRef = useRef<HTMLButtonElement>(null);
     const firstTimeSlotRef = useRef<HTMLButtonElement>(null);
 
-    const contactName = useSignal('');
+    const contactName = useSignal(currentParticipant?.callName ?? '');
     const router = useRouter();
 
     const bookMutation = api.userStudyTimeSlot.book.useMutation({
         onError(error) {
             void timeSlotsQuery.refetch();
-            toast({ title: 'An error occurred while booking the time-slot.' + error.message });
+            toast({ title: 'An error occurred while booking the time slot.' + error.message });
         },
-        onSuccess(participantId) {
+        async onSuccess(participantId) {
             if (participantId === false) {
                 void timeSlotsQuery.refetch();
                 toast({
-                    title: 'Ohh no, this time-slot just has been booked by somebody else. Please pick another one.',
+                    title: 'Ohh no, this time slot just has been booked by somebody else. Please pick another one.',
                 });
-                setSelectedTimeSlot(null);
+                setSelectedTimeSlotId(null);
 
                 void timeSlotsQuery.refetch();
                 return;
             }
+            await revalidateTagFromClient([
+                '/user-study/participate/' + participantId,
+                'user-study/participate/time-slot',
+                'user-study/participate',
+            ]);
             router.push('/user-study/participate/' + participantId);
         },
     });
@@ -113,6 +133,8 @@ export function TimeSlotPicker() {
             id: selectedTimeSlot.id,
             callOption,
             callName: _contactName,
+            timeZone,
+            locale: Intl.DateTimeFormat().resolvedOptions().locale,
         });
     }
 
@@ -160,6 +182,7 @@ export function TimeSlotPicker() {
                             contactName.value = e.currentTarget.value;
                             dismiss();
                         }}
+                        defaultValue={contactName.peek()}
                         maxLength={callOption === 'discord' ? 32 : undefined}
                     />
                     {callOption === 'discord' && (
@@ -209,9 +232,7 @@ export function TimeSlotPicker() {
                                             className="flex-wrap justify-start"
                                             value={selectedTimeSlot?.day === group ? selectedTimeSlot.idStr : 'none'}
                                             onValueChange={(value) => {
-                                                setSelectedTimeSlot(
-                                                    zonedTimeSlots?.find((d) => d.idStr === value) ?? null,
-                                                );
+                                                setSelectedTimeSlotId(value ?? null);
                                                 continueButtonRef.current?.focus();
                                                 dismiss();
                                             }}
@@ -221,7 +242,6 @@ export function TimeSlotPicker() {
                                                     key={slot.id}
                                                     value={slot.idStr}
                                                     variant="outline"
-                                                    disabled={!slot.free}
                                                     ref={
                                                         groupIndex === 0 && slotIndex === 0
                                                             ? firstTimeSlotRef
@@ -247,9 +267,9 @@ export function TimeSlotPicker() {
                 </div>
             </div>
             <BottomInteractionRow>
-                <BottomInteractionRowText>Select a call option and time-slot to continue.</BottomInteractionRowText>
+                <BottomInteractionRowText>Select a call option and time slot to continue.</BottomInteractionRowText>
                 <Button onClick={() => book()} ref={continueButtonRef}>
-                    Participate
+                    {hasParticipantCookie ? 'Pick time slot' : 'Participate'}
                 </Button>
             </BottomInteractionRow>
         </fieldset>

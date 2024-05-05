@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { z } from 'zod';
-import { COOKIE_NAME_USER_STUDY_PARTICIPANT_ID } from '~/lib/cookie-names';
+import { COOKIE_NAME_CURRENT_FLOW, COOKIE_NAME_USER_STUDY_PARTICIPANT_ID } from '~/lib/cookie-names';
+import { type NavigationFlow } from '~/lib/navigation-flow/type';
 
 export function getParticipantIdFromCookie() {
     const value = cookies().get(COOKIE_NAME_USER_STUDY_PARTICIPANT_ID)?.value;
@@ -15,6 +16,10 @@ export function getParticipantIdFromCookie() {
     }
 }
 
-export function deleteParticipantIdCookie() {
-    cookies().delete(COOKIE_NAME_USER_STUDY_PARTICIPANT_ID);
+export function deleteFlowCookie() {
+    cookies().delete(COOKIE_NAME_CURRENT_FLOW);
+}
+
+export function setFlowCookie(flow: NavigationFlow) {
+    cookies().set(COOKIE_NAME_CURRENT_FLOW, flow);
 }

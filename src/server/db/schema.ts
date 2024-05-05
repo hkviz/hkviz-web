@@ -419,6 +419,8 @@ export const studyParticipant = table('studyParticipant', {
     resetId: varcharUuid('reset_id'),
     callOption: mysqlEnum('contact_type', callOptionCodes),
     callName: varchar('contact_name', { length: 256 }),
+    timeZone: varchar('time_zone', { length: 256 }),
+    locale: varchar('locale', { length: 256 }),
 });
 export const studyParticipantRelations = relations(studyParticipant, ({ one }) => ({
     user: one(users),

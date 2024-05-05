@@ -170,7 +170,7 @@ const steps: Step[] = [
                 <>
                     <P>
                         This is the animation timeline with color codes below showing the visited areas. Like on the
-                        map, you can hover to select a room, and click for pinning the room.
+                        map, you can hover over color codes to select a room, and click for pinning the room.
                     </P>
                     <P>Hold shift while scrubbing on the timeline, to slowly move the animation forward or backward.</P>
                     <P>
@@ -232,6 +232,9 @@ const steps: Step[] = [
         onActivate: () => {
             uiStore.activateTab('splits');
             animationStore.setIsPlaying(false);
+            setTimeout(() => {
+                mapZoomStore.enabled.value = true;
+            }, 50);
         },
         activeEffect: () => {
             // TODO
@@ -246,7 +249,7 @@ const steps: Step[] = [
             <>
                 <P>
                     Lastly, here are some charts showing stats over time. For {"'"}Geo{"'"}, {"'"}Essence{"'"} and more.
-                    Scroll down to see more charts. The values below the carts and the dotted line on the cart are
+                    Scroll down to see more charts. The values below the charts and the dotted line on the charts are
                     always showing the selected point in the timeline.
                 </P>
                 <P>That{"'"}s it! Happy exploring!</P>

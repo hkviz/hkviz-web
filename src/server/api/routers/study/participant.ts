@@ -42,6 +42,10 @@ export const participantRouter = createTRPCRouter({
                 where: (studyParticipant, { eq }) => eq(studyParticipant.participantId, input.participantId),
                 columns: {
                     skipLoginQuestion: true,
+                    locale: true,
+                    timeZone: true,
+                    callName: true,
+                    callOption: true,
                 },
                 with: {
                     user: {
@@ -55,6 +59,10 @@ export const participantRouter = createTRPCRouter({
             return {
                 hasUserId: !!result.user?.id,
                 skipLoginQuestion: result.skipLoginQuestion,
+                locale: result.locale,
+                timeZone: result.timeZone,
+                callName: result.callName,
+                callOption: result.callOption,
             };
         }),
     existsAndStoreUserId: publicProcedure

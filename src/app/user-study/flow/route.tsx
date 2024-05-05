@@ -1,11 +1,13 @@
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { hkExperienceFinished } from '~/lib/types/hk-experience';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
-import { deleteParticipantIdCookie, getParticipantIdFromCookie } from '../_utils';
+import { deleteFlowCookie, getParticipantIdFromCookie, setFlowCookie } from '../_utils';
 
 export const GET = async () => {
     const participantId = getParticipantIdFromCookie();
+    setFlowCookie('user-study');
     if (!participantId) {
         return new Response('No participant ID found', { status: 400 });
     }
@@ -35,6 +37,10 @@ export const GET = async () => {
         redirect('/experience');
     }
 
-    deleteParticipantIdCookie();
+    revalidatePath('/user-study/participate/[id]', 'page');
+    revalidatePath('/user-study/informed-consent', 'page');
+    revalidatePath('/experience', 'page');
+
+    deleteFlowCookie();
     redirect('/user-study/done');
 };

@@ -24,3 +24,10 @@ export function sendMailToSupport(options: Omit<Mail.Options, 'from' | 'to'>) {
         to: `"HKViz Support" <${env.EMAIL_FROM}>`,
     });
 }
+
+export function sendMailToUser(options: Omit<Mail.Options, 'from'>) {
+    return mailTransporter.sendMail({
+        ...options,
+        from: `"Oliver from HKViz" <${env.EMAIL_FROM}>`,
+    });
+}
