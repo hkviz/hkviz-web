@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { CardContent, CardFooter } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem } from '@/components/ui/command';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
@@ -311,36 +311,38 @@ export function StudyDemographicClientForm(props: StudyDemographicClientFormProp
                                                 <Command>
                                                     <CommandInput placeholder="Search a country..." />
                                                     <CommandEmpty>No country found.</CommandEmpty>
-                                                    <CommandGroup>
-                                                        {countries.map((c) => {
-                                                            const Icon = 'icon' in c ? c.icon : undefined;
+                                                    <CommandList>
+                                                        <CommandGroup>
+                                                            {countries.map((c) => {
+                                                                const Icon = 'icon' in c ? c.icon : undefined;
 
-                                                            return (
-                                                                <CommandItem
-                                                                    value={c.code + ' ' + c.name}
-                                                                    key={c.code}
-                                                                    onSelect={() => {
-                                                                        form.setValue('country', c.code);
-                                                                        setCountryOpen(false);
-                                                                    }}
-                                                                >
-                                                                    {/* <Check
+                                                                return (
+                                                                    <CommandItem
+                                                                        value={c.code + ' ' + c.name}
+                                                                        key={c.code}
+                                                                        onSelect={() => {
+                                                                            form.setValue('country', c.code);
+                                                                            setCountryOpen(false);
+                                                                        }}
+                                                                    >
+                                                                        {/* <Check
                                                             className={cn(
                                                                 'mr-2 h-4 w-4',
                                                                 c.code === field.value ? 'opacity-100' : 'opacity-0',
                                                             )}
                                                         /> */}
-                                                                    {Icon && (
-                                                                        <Icon
-                                                                            className="mr-2 w-5 rounded-[2px]"
-                                                                            role="presentation"
-                                                                        />
-                                                                    )}
-                                                                    {c.name}
-                                                                </CommandItem>
-                                                            );
-                                                        })}
-                                                    </CommandGroup>
+                                                                        {Icon && (
+                                                                            <Icon
+                                                                                className="mr-2 w-5 rounded-[2px]"
+                                                                                role="presentation"
+                                                                            />
+                                                                        )}
+                                                                        {c.name}
+                                                                    </CommandItem>
+                                                                );
+                                                            })}
+                                                        </CommandGroup>
+                                                    </CommandList>
                                                 </Command>
                                             </PopoverContent>
                                         </Popover>

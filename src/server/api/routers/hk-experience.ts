@@ -1,5 +1,6 @@
 import { TRPCError } from '@trpc/server';
 import { eq } from 'drizzle-orm';
+import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
 import { getParticipantIdFromCookie } from '~/app/user-study/_utils';
 import { hkExperienceFinished, hkExperienceSchema } from '~/lib/types/hk-experience';
@@ -49,6 +50,8 @@ export const hkExperienceRouter = createTRPCRouter({
         if (result.rowsAffected !== 1) {
             throw new Error('Could not save hk experience');
         }
+
+        revalidatePath('/user-study/participate/' + participantId);
     }),
 
     getFromLoggedInUser: protectedProcedure.input(z.object({})).query(async ({ ctx }) => {

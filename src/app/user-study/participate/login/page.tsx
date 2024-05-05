@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
+import { HKVizText } from '~/app/_components/hkviz-text';
 import { getLoginLink } from '~/app/_components/login-link-shared';
 import { getServerAuthSession } from '~/server/auth';
 import { ContentCenterWrapper } from '../../../_components/content-wrapper';
@@ -21,9 +22,13 @@ export default async function UserStudyParticipatePage() {
         <ContentCenterWrapper>
             <Card className="w-full max-w-[70ch]">
                 <CardHeader>
-                    <CardTitle>Continue with login?</CardTitle>
+                    <CardTitle>
+                        Do you already have a <HKVizText /> account?
+                    </CardTitle>
                     <CardDescription>
-                        If you have already used HKViz, you can skip a few steps by logging in.
+                        If you have already used HKViz before, you can skip a form, since you filled it out already.{' '}
+                        <br />
+                        If not, no need to create an account, you can continue without login.
                     </CardDescription>
                 </CardHeader>
                 <CardFooter className="justify-end gap-2">
