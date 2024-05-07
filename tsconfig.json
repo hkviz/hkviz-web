@@ -16,27 +16,9 @@
         "jsx": "preserve",
         "incremental": true,
         "noUncheckedIndexedAccess": true,
-        "baseUrl": ".",
-        "paths": {
-            "~/*": ["./src/*"]
-        },
-        "types": ["@types/dom-view-transitions"],
-        "plugins": [
-            {
-                "name": "next"
-            }
-        ]
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
     },
-    "include": [
-        ".eslintrc.cjs",
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.cjs",
-        "**/*.mjs",
-        // ".next/types/**/*.ts",
-        "src/app/privacy-policy/page.mdx",
-        ".next/types/**/*.ts"
-    ],
-    "exclude": ["node_modules"]
+    "exclude": ["node_modules", "dist", "build"]
 }
