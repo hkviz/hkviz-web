@@ -18,7 +18,7 @@ import { MailLinkUnstyled } from '~/app/_components/mail-link';
 import { callOptions, type CallOptionCode } from '~/lib/types/call-option';
 import { api } from '~/trpc/react';
 import { type RouterOutputs } from '~/trpc/shared';
-import { revalidateTagFromClient } from './_invalidate-tag';
+import { revalidatePathFromClient } from './_invalidate-tag';
 import { TimezoneSelect } from './_timezone-select';
 
 export function TimeSlotPicker({
@@ -101,7 +101,7 @@ export function TimeSlotPicker({
                 void timeSlotsQuery.refetch();
                 return;
             }
-            await revalidateTagFromClient([
+            await revalidatePathFromClient([
                 '/user-study/participate/' + participantId,
                 'user-study/participate/time-slot',
                 'user-study/participate',

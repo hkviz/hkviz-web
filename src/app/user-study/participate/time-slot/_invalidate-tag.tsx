@@ -1,10 +1,10 @@
 'use server';
 
-import { revalidateTag } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 
 // eslint-disable-next-line @typescript-eslint/require-await
-export async function revalidateTagFromClient(tags: string[]): Promise<void> {
+export async function revalidatePathFromClient(tags: string[]): Promise<void> {
     tags.forEach((tag) => {
-        revalidateTag(tag);
+        revalidatePath(tag);
     });
 }

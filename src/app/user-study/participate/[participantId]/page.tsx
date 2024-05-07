@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Clock, FileCheck } from 'lucide-react';
 import { type Metadata } from 'next';
-import Link from 'next/link';
 import { ContentCenterWrapper } from '~/app/_components/content-wrapper';
 import { GradientSeparator } from '~/app/_components/gradient-separator';
 import { MailLink, MailLinkUnstyled } from '~/app/_components/mail-link';
@@ -33,8 +32,8 @@ export default async function UserStudyParticipatePage({
                 <div className="mx-auto w-full max-w-[80ch] px-4 pt-8 text-center">
                     <h1 className="font-serif text-3xl font-bold">Participant not found</h1>
                     <p>
-                        The participantion link seems to be invalid. If you need help, please contact me at <MailLink />{' '}
-                        or via Discord @OliverGrack.
+                        The participantion link seems to be invalid. If you need help, please contact me via{' '}
+                        <MailLink /> or via Discord @OliverGrack.
                     </p>
                 </div>
             </ContentCenterWrapper>
@@ -101,10 +100,10 @@ export default async function UserStudyParticipatePage({
                         variant="outline"
                         className="flex h-auto flex-row justify-start gap-4 py-4 text-left"
                     >
-                        <Link href="/user-study/participate/time-slot">
+                        <a href="/user-study/participate/time-slot">
                             <Clock className="h-8 w-8 shrink-0 stroke-1" />
                             {dateTimeStr != null ? 'Reschedule' : 'Select a time slot'}
-                        </Link>
+                        </a>
                     </Button>
 
                     <Button
@@ -112,7 +111,7 @@ export default async function UserStudyParticipatePage({
                         variant="outline"
                         className="flex h-auto flex-row justify-start gap-4 py-4 text-left"
                     >
-                        <Link
+                        <a
                             href={
                                 hasFinishedForms ? '/user-study/informed-consent' : '/user-study/flow/' + participantId
                             }
@@ -134,12 +133,12 @@ export default async function UserStudyParticipatePage({
                                     </span>
                                 </span>
                             )}
-                        </Link>
+                        </a>
                     </Button>
                 </div>
 
                 <p className="pt-4">
-                    For any questions, please contact me at{' '}
+                    For any questions, please contact me via{' '}
                     <MailLinkUnstyled className="underline hover:no-underline" mail="participate@hkviz.org" /> or via
                     Discord @OliverGrack.
                 </p>

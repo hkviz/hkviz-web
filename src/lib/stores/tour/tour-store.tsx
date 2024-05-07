@@ -84,6 +84,7 @@ const steps: Step[] = [
             uiStore.activateTab('map');
             mapZoomStore.enabled.value = true;
             mapZoomStore.target.value = 'current-zone';
+            roomDisplayStore.unpinScene('code');
         },
     },
     makeStep(() => {

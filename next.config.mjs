@@ -12,6 +12,39 @@ import remarkToc from 'remark-toc';
 /** @type {import("next").NextConfig} */
 const config = {
     pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
+    // eslint-disable-next-line @typescript-eslint/require-await
+    async headers() {
+        // no cache for user study
+        return [
+            {
+                source: '/user-study/(.*)',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'no-store',
+                    },
+                ],
+            },
+            {
+                source: '/experience',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'no-store',
+                    },
+                ],
+            },
+            {
+                source: '/study-demographic-form',
+                headers: [
+                    {
+                        key: 'Cache-Control',
+                        value: 'no-store',
+                    },
+                ],
+            },
+        ];
+    },
 };
 
 /** @type {import("rehype-autolink-headings").Options} */
