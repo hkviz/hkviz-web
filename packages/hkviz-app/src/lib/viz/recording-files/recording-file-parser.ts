@@ -112,6 +112,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                             previousPlayerDataEventOfField: null, // filled in combiner
                         }),
                     );
+                    continue LINE_LOOP;
                 }
                 case PARTIAL_EVENT_PREFIXES.PLAYER_DATA_LONGNAME: {
                     // TODO

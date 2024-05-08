@@ -51,7 +51,7 @@ export function MapLegend() {
             .attr('fill', (d) => singleVarColormap(d))
             .attr('stroke', 'none')
             .attr('y', 40)
-            .attr('x', (d, i) => i + LEGEND_PADDING)
+            .attr('x', (_d, i) => i + LEGEND_PADDING)
             .attr('width', 2)
             .attr('height', 20);
 

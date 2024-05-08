@@ -48,6 +48,6 @@ function getVersionCheckResult(version: string): ModVersionCheckResponse {
     }
 }
 
-export function GET(request: Request, { params }: { params: { version: string } }) {
+export function GET(_request: Request, { params }: { params: { version: string } }) {
     return Response.json(getVersionCheckResult(params.version));
 }

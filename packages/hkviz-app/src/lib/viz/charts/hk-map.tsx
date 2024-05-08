@@ -131,14 +131,14 @@ export function HKMap({ className }: HKMapProps) {
                 <g data-group="root" ref={rootGRef}>
                     <HkMapRooms
                         rooms={roomData}
-                        onMouseOver={(event, r) => {
+                        onMouseOver={(_, r) => {
                             roomDisplayStore.setSelectedRoomIfNotPinned(r.sceneName);
                             roomDisplayStore.setHoveredRoom(r.sceneName);
                         }}
-                        onMouseOut={(event, r) => {
+                        onMouseOut={(_, r) => {
                             roomDisplayStore.unsetHoveredRoom(r.sceneName);
                         }}
-                        onClick={(event, r) => {
+                        onClick={(_, r) => {
                             console.log('clicked room', r);
                             // if (event.pointerType !== 'touch') {
                             roomDisplayStore.togglePinnedRoom(r.sceneName, 'map-room-click');

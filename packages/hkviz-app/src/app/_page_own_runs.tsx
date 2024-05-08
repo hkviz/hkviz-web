@@ -96,7 +96,6 @@ export function OwnRuns({ runs }: OwnRunsPageProps) {
                                         key={run.id}
                                         showUser={false}
                                         isOwnRun={true}
-                                        className="grow"
                                         onClick={onRunClickIfInCombineMode}
                                         onCombineClicked={onCombineClicked}
                                     />

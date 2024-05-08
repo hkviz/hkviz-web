@@ -4,7 +4,7 @@ import { type NextRequest } from 'next/server';
 import { COOKIE_NAME_INGAME_AUTH_URL_ID } from '~/lib/cookie-names';
 import { apiFromServer } from '~/trpc/from-server';
 
-export const GET = async (req: NextRequest, { params: { urlId } }: { params: { urlId: string } }) => {
+export const GET = async (_req: NextRequest, { params: { urlId } }: { params: { urlId: string } }) => {
     const ingameAuth = await (await apiFromServer()).ingameAuth.getByUrlIdIfNew({ urlId });
 
     if (!ingameAuth || ingameAuth.user) {

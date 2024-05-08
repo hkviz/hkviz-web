@@ -205,7 +205,9 @@ function RunSplitsRows() {
                                 key={index}
                                 split={split}
                                 activeState={activeState}
-                                ref={(el) => (splitRefs.current[index] = el)}
+                                ref={(el) => {
+                                    splitRefs.current[index] = el;
+                                }}
                             />
                         );
                     })}

@@ -79,7 +79,9 @@ function HkMapRoom({
                 {room.sprites.map((sprite) => (
                     <image
                         key={sprite.variant}
-                        ref={(element) => imageRefPerVariant.current.set(sprite.variant, element)}
+                        ref={(element) => {
+                            imageRefPerVariant.current.set(sprite.variant, element);
+                        }}
                         data-variant={sprite.variant}
                         preserveAspectRatio="none"
                         x={sprite.scaledPosition.min.x}

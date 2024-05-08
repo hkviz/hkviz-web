@@ -5,7 +5,7 @@ import { COOKIE_NAME_INGAME_AUTH_URL_ID, COOKIE_NAME_USER_STUDY_PARTICIPANT_ID }
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 
-export const GET = async (req: NextRequest, { params: { participantId } }: { params: { participantId: string } }) => {
+export const GET = async (_req: NextRequest, { params: { participantId } }: { params: { participantId: string } }) => {
     const api = await apiFromServer();
 
     const participant = await api.participant.getByParticipantId({ participantId });

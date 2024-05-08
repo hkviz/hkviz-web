@@ -161,6 +161,9 @@ importers:
       d3:
         specifier: ^7.8.5
         version: 7.9.0
+      d3-brush:
+        specifier: ^3.0.0
+        version: 3.0.0
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
@@ -270,6 +273,9 @@ importers:
       '@types/d3':
         specifier: ^7.4.3
         version: 7.4.3
+      '@types/d3-brush':
+        specifier: ^3.0.6
+        version: 3.0.6
       '@types/eslint':
         specifier: ^8.44.2
         version: 8.56.10
