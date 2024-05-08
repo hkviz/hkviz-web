@@ -43,7 +43,7 @@ const config = {
         '@typescript-eslint/no-unsafe-call': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',
 
-        '@typescript-eslint/strict-boolean-expressions': 'warn',
+        '@typescript-eslint/strict-boolean-expressions': 'off',
     },
 };
 

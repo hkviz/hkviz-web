@@ -1,0 +1,104 @@
+{
+    "name": "@hkviz/parser",
+    "version": "0.0.1",
+    "description": "hkviz recording file parser",
+    "author": "hkviz",
+    "contributors": [],
+    "homepage": "https://www.hkviz.org",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hkviz/hkviz-web.git"
+    },
+    "bugs": {
+        "url": "https://github.com/hkviz/hkviz-web/issues"
+    },
+    "keywords": [
+        "hkviz",
+        "analytics"
+    ],
+    "private": true,
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "dist"
+    ],
+    "type": "module",
+    "main": "./dist/server.js",
+    "module": "./dist/server.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "worker": {
+            "solid": "./dist/server.jsx",
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "browser": {
+            "solid": {
+                "development": "./dist/dev.jsx",
+                "import": "./dist/index.jsx"
+            },
+            "development": {
+                "import": {
+                    "types": "./dist/index.d.ts",
+                    "default": "./dist/dev.js"
+                }
+            },
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            }
+        },
+        "deno": {
+            "solid": "./dist/server.jsx",
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "node": {
+            "solid": "./dist/server.jsx",
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "solid": {
+            "development": "./dist/dev.jsx",
+            "import": "./dist/index.jsx"
+        },
+        "development": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/dev.js"
+            }
+        },
+        "import": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "browser": {
+        "./dist/server.js": "./dist/index.js"
+    },
+    "typesVersions": {},
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup",
+        "test": "concurrently pnpm:test:*",
+        "test:client": "vitest -c ../../configs/vitest.config.ts",
+        "test:ssr": "pnpm run test:client --mode ssr",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "tsup": "^8.0.2",
+        "zod": "^3.22.4"
+    },
+    "devDependencies": {
+        "tsup-preset-solid": "^2.2.0"
+    },
+    "packageManager": "pnpm@8.15.8"
+}
