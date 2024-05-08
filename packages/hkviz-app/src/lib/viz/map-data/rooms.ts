@@ -1,10 +1,9 @@
+import { Bounds, Vector2 } from '@hkviz/parser';
 import * as d3 from 'd3';
 import { omit } from '~/lib/utils/omit';
 import { roomDataConditionalByGameObjectName } from '../generated/map-rooms-conditionals.generated';
 import { roomDataUnscaledFinishedGame } from '../generated/map-rooms-finished.generated';
 import { roomDataUnscaled } from '../generated/map-rooms.generated';
-import { Bounds } from '../types/bounds';
-import { Vector2 } from '../types/vector2';
 import { prepareTextExportData } from './area-names';
 import { customRoomData, type CustomRoomInfo, type UnprocessedRoomInfo } from './room-custom';
 import { roomGroupByName } from './room-groups';
@@ -213,7 +212,7 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
         }
 
         const subSpritesByVariant = {
-            normal: subSpriteInfoWithScaledPosition('normal')!,
+            normal: subSpriteInfoWithScaledPosition('normal'),
             conditional: subSpriteInfoWithScaledPosition('conditional'),
             rough: subSpriteInfoWithScaledPosition('rough'),
         } as (typeof roomCorrected)['spritesByVariant'];

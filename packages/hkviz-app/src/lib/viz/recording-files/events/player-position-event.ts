@@ -1,5 +1,5 @@
+import { type Vector2 } from '@hkviz/parser';
 import { playerPositionToMapPosition } from '../../map-data/player-position';
-import { type Vector2 } from '../../types/vector2';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 import { type SceneEvent } from './scene-event';
 

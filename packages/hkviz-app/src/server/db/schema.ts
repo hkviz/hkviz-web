@@ -23,7 +23,7 @@ import { playingSinceCodes } from '~/lib/types/playing-since';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { runInteractionTypes } from '~/lib/types/run-interaction';
 import { tags, type TagCode } from '~/lib/types/tags';
-import { mapZoneSchema } from '~/lib/viz/types/mapZone';
+import { mapZoneSchema } from '@hkviz/parser';
 
 const UUID_LENGTH = 36;
 function varcharUuid(name: string) {

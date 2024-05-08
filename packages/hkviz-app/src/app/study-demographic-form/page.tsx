@@ -1,15 +1,12 @@
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { headers } from 'next/headers';
 import { getNavigationFlowFromCookies } from '~/lib/navigation-flow/from-cookies';
-import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { StudyDemographicClientForm } from './_components';
 
 export default async function DataCollectionStudyParticipationPage() {
     const api = await apiFromServer();
-
-    const session = await getServerAuthSession();
 
     // if (!session) {
     //     return <AuthNeeded />;

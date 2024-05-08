@@ -12,7 +12,7 @@ export function useIsVisibleSignal(elementRef: ReadonlySignal<SVGElement | HTMLE
     useSignalEffect(function isVisibleEffect() {
         const element = elementRef.value;
         if (element) {
-            const observer = new IntersectionObserver((entries, observer) => {
+            const observer = new IntersectionObserver((entries, _observer) => {
                 isVisible.value = entries.some((entry) => entry.isIntersecting);
             }, OPTIONS);
             observer.observe(element);

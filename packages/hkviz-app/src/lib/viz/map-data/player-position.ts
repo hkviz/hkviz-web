@@ -1,5 +1,5 @@
+import { Vector2 } from '@hkviz/parser';
 import { type SceneEvent } from '../recording-files/events/scene-event';
-import { Vector2 } from '../types/vector2';
 import { mainRoomDataBySceneName } from './rooms';
 
 export function playerPositionToMapPosition(playerPosition: Vector2, sceneEvent: SceneEvent): Vector2 | undefined {

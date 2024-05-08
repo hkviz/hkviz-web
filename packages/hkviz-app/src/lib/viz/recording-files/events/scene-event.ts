@@ -1,5 +1,5 @@
+import { type Vector2 } from '@hkviz/parser';
 import { type BossSequenceData } from '../../player-data/boss-sequence';
-import { type Vector2 } from '../../types/vector2';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 
 type SceneEventOptions = RecordingEventBaseOptions & Pick<SceneEvent, 'sceneName' | 'originOffset' | 'sceneSize'>;

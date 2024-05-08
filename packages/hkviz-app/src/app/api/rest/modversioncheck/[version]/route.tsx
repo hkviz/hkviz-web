@@ -1,5 +1,5 @@
 import { typeCheckNever } from '~/lib/utils/utils';
-import { type ModVersion as HKVizModVersion } from '~/lib/viz/types/recording-file-version';
+import { type ModVersion as HKVizModVersion } from '@hkviz/parser';
 
 interface ModVersionCheckResponse {
     message: string;

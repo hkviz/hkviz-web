@@ -1,8 +1,8 @@
+import { type RecordingFileVersion } from '@hkviz/parser';
 import { binarySearchLastIndexBefore } from '~/lib/utils/binary-search';
 import { raise } from '~/lib/utils/utils';
 import { type HeroStateField } from '../hero-state/hero-states';
 import { type PlayerDataField } from '../player-data/player-data';
-import { type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent } from './events/frame-end-event';
 import { type HKVizModVersionEvent } from './events/hkviz-mod-version-event';
 import { type ModInfo, type ModdingInfoEvent } from './events/modding-info-event';

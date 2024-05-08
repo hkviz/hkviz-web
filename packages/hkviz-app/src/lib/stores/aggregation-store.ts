@@ -23,7 +23,6 @@ import {
 } from '../viz/recording-files/recording';
 import { gameplayStore } from './gameplay-store';
 
-type RunId = string;
 export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
 
 export const aggregationVariableInfos = {
@@ -129,7 +128,7 @@ const createEmptyAggregation = (): ValueAggregation => ({
 
 export type AggregationVariable = keyof ValueAggregation;
 
-type AggregationStoreValue = Record<RunId, AggregatedRunData>;
+// type AggregationStoreValue = Record<RunId, AggregatedRunData>;
 
 function aggregateRecording(recording: CombinedRecording) {
     const countPerScene: Record<string, ValueAggregation> = {};

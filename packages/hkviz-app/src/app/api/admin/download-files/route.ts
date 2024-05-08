@@ -9,7 +9,7 @@ import { db } from '~/server/db';
 
 function fileExists(path: string) {
     return new Promise<boolean>((resolve, reject) => {
-        fsOld.stat(path, function (err, stat) {
+        fsOld.stat(path, function (err, _stat) {
             if (err == null) {
                 resolve(true);
             } else if (err.code === 'ENOENT') {

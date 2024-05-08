@@ -115,7 +115,7 @@ function RunCardEpicInfo({
     if (!href) return spans;
 
     return (
-        <Link className="z-[7] hover:underline hover:drop-shadow-glow-md" href={href}>
+        <Link className="hover:drop-shadow-glow-md z-[7] hover:underline" href={href}>
             {spans}
         </Link>
     );
@@ -193,7 +193,7 @@ function RunTitle({ run, isOwnRun }: { run: RunMetadata; isOwnRun: boolean }) {
                 onBlur={handleInputBlur}
                 maxLength={MAX_RUN_TITLE_LENGTH}
                 className={
-                    'max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm focus:bg-background focus:text-foreground md:text-2xl'
+                    'max-w-auto focus:bg-background focus:text-foreground relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm md:text-2xl'
                 }
             />
         );
@@ -212,14 +212,12 @@ export function RunCard({
     run,
     showUser = true,
     isOwnRun = false,
-    className,
     onClick,
     onCombineClicked,
 }: {
     run: RunMetadata | GetRunResult;
     showUser?: boolean;
     isOwnRun?: boolean;
-    className?: string;
     onClick?: (runId: string) => void;
     onCombineClicked?: (runId: string) => void;
 }) {
@@ -299,7 +297,7 @@ export function RunCard({
             <div
                 key={run.id}
                 className={cn(
-                    'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-[1.25rem] bg-black py-2 pl-4 pr-3 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
+                    'focus-within:drop-shadow-glow-md hover:drop-shadow-glow-sm group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-[1.25rem] bg-black py-2 pl-4 pr-3 text-white transition hover:bg-black hover:text-white active:drop-shadow-none md:flex-row',
                     isRemoved ? 'scale-125 opacity-0' : '',
                     isLoading ? 'grayscale' : '',
                 )}
@@ -377,7 +375,7 @@ export function RunCard({
                                     <Image
                                         src={Coin}
                                         alt="Geo icon"
-                                        className="inline-block w-7 p-1 drop-shadow-glow-md"
+                                        className="drop-shadow-glow-md inline-block w-7 p-1"
                                     />
                                     <span className="text-xl font-semibold sm:text-2xl">{gameState?.geo ?? '?'}</span>
                                 </span>
@@ -386,7 +384,7 @@ export function RunCard({
                                         <Image
                                             src={gameState?.dreamNailUpgraded ? DreamNailAwokenImg : DreamNailImg}
                                             alt="Essence icon"
-                                            className="-mb-3 -mt-4 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
+                                            className="drop-shadow-glow-md -mb-3 -mt-4 inline-block w-7 p-1 brightness-110 sm:w-9"
                                         />
                                         <span className="text-xl font-semibold sm:text-2xl">{gameState.dreamOrbs}</span>
                                     </span>

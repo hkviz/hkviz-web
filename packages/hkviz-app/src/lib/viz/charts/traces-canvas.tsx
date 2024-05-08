@@ -1,3 +1,4 @@
+import { Vector2 } from '@hkviz/parser';
 import { useSignal, useSignalEffect } from '@preact/signals-react';
 import { useSignals } from '@preact/signals-react/runtime';
 import Image from 'next/image';
@@ -14,7 +15,6 @@ import shadePinSrc from '../../../../public/ingame-sprites/pin/Shade_Pin.png';
 import { mapVisualExtends } from '../map-data/map-extends';
 import { playerPositionToMapPosition } from '../map-data/player-position';
 import { scale } from '../map-data/scaling';
-import { Vector2 } from '../types/vector2';
 
 export interface HKMapTracesProps {
     containerRef: RefObject<HTMLDivElement>;

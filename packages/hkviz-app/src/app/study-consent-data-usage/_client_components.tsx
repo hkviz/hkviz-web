@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 import { useRouter } from 'next/navigation';
 import React, { useId, useMemo, useState, type FormEvent } from 'react';
 import { routerRedirectToFlow } from '~/lib/navigation-flow/redirect';
-import { NavigationFlow } from '~/lib/navigation-flow/type';
+import { type NavigationFlow } from '~/lib/navigation-flow/type';
 import { type AppRouterOutput } from '~/server/api/types';
 import { api } from '~/trpc/react';
 import { HKVizText } from '../_components/hkviz-text';

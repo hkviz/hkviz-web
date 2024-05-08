@@ -11,17 +11,6 @@ const ContentSidebarContext = createContext<ContentSidebarContext>({
     setSidebarContainer: null,
 });
 
-export function TOCStealer({ children }: { children: React.ReactNode }) {
-    // const selfRef = useRef<HTMLDivElement>(null);
-    // useEffect(() => {}, []);
-    // const { sidebarContainer } = useContext(ContentSidebarContext);
-    // if (sidebarContainer) {
-    //     return createPortal(children, sidebarContainer);
-    // } else {
-    //     return <div ref={selfRef}>{children}</div>;
-    // }
-}
-
 export function TOCContainer() {
     const { setSidebarContainer } = useContext(ContentSidebarContext);
 

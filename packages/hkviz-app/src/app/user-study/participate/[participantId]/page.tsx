@@ -9,7 +9,7 @@ import { apiFromServer } from '~/trpc/from-server';
 import { formatTimeZoneName, getGmtOffset } from '../time-slot/_timezone-name';
 import { SetParticipantCookie } from './_cookie-setter';
 
-export function generateMetadata({ params }: { params: { participantId: string } }): Metadata {
+export function generateMetadata(): Metadata {
     return {
         title: 'Participate in the HKViz user study',
     };

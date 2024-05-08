@@ -3,14 +3,18 @@
     "version": "0.0.1",
     "description": "",
     "scripts": {
-        "dev": "pnpm --parallel run dev",
-        "build": "pnpm --recursive run build"
+        "dev": "pnpm --parallel --reporter append-only --color=always --reporter=append-only run dev",
+        "build": "pnpm --recursive --reporter append-only --color=always --reporter=append-only run build",
+        "lint": "pnpm --recursive --reporter append-only --color=always run lint",
+        "lint:fix": "pnpm --recursive --reporter append-only --color=always run lint:fix "
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "packageManager": "pnpm@9.1.0",
     "devDependencies": {
-        "prettier": "^3.2.5"
+        "prettier": "^3.2.5",
+        "tsup": "^8.0.2",
+        "tsup-preset-solid": "^2.2.0"
     }
 }

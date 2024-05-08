@@ -35,7 +35,7 @@ export const ingameAuthRouter = createTRPCRouter({
                 modVersion: z.string().optional().nullable(),
             }),
         )
-        .mutation(async ({ ctx, input }) => {
+        .mutation(async ({ ctx, input: _ }) => {
             const id = uuidv4();
             const urlId = uuidv4();
             await ctx.db.insert(ingameAuth).values({

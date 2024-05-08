@@ -1,7 +1,7 @@
+import { isVersionBefore1_4_0, type RecordingFileVersion } from '@hkviz/parser';
 import { raise } from '~/lib/utils/utils';
 import { type HeroStateField } from '../hero-state/hero-states';
 import { getDefaultValue, playerDataFields, type PlayerDataField } from '../player-data/player-data';
-import { isVersionBefore1_4_0, type RecordingFileVersion } from '../types/recording-file-version';
 import { FrameEndEvent, frameEndEventHeroStateFields, frameEndEventPlayerDataFields } from './events/frame-end-event';
 import { HKVizModVersionEvent } from './events/hkviz-mod-version-event';
 import { ModdingInfoEvent } from './events/modding-info-event';

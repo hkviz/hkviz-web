@@ -10,12 +10,10 @@ import { Search, X } from 'lucide-react';
 import { forwardRef, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
 import { animationStore } from '~/lib/stores/animation-store';
 import { hoverMsStore } from '~/lib/stores/hover-ms-store';
-import { changeRoomColorForLightTheme } from '~/lib/stores/room-coloring-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
 import { splitsStore } from '~/lib/stores/splits-store';
 import { uiStore } from '~/lib/stores/ui-store';
 import { assertNever } from '~/lib/utils/utils';
-import { mainRoomDataBySceneName } from '~/lib/viz/map-data/rooms';
 import {
     recordingSplitGroups,
     type RecordingSplit,
@@ -115,13 +113,13 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
             );
         }
 
-        const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-        const scene = sceneName ? mainRoomDataBySceneName.get(sceneName) ?? null : null;
-        const displaySceneName = scene
-            ? scene.zoneNameFormatted // + ' - ' + scene.roomNameFormattedZoneExclusive
-            : sceneName;
+        // const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+        // const scene = sceneName ? mainRoomDataBySceneName.get(sceneName) ?? null : null;
+        // const displaySceneName = scene
+        //     ? scene.zoneNameFormatted // + ' - ' + scene.roomNameFormattedZoneExclusive
+        //     : sceneName;
 
-        const color = scene ? changeRoomColorForLightTheme(scene.color) : undefined;
+        // const color = scene ? changeRoomColorForLightTheme(scene.color) : undefined;
 
         return (
             <button

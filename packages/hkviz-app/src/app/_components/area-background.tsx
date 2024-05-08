@@ -1,5 +1,5 @@
 import { assertNever } from '~/lib/utils/utils';
-import { type MapZone } from '~/lib/viz/types/mapZone';
+import { type MapZone } from '@hkviz/parser';
 
 /*
 Matches can be extracted using c# repl using Explorer Mod for Hollow Knight. Using the following script:

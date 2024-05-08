@@ -1,8 +1,7 @@
+import { Vector2, isKnownRecordingFileVersion, isVersion0xx, type RecordingFileVersion } from '@hkviz/parser';
 import { raise, typeCheckNever } from '~/lib/utils/utils';
 import { heroStateFields, heroStatesSkipParsing } from '../hero-state/hero-states';
 import { parsePlayerDataFieldValue, playerDataFields } from '../player-data/player-data';
-import { isKnownRecordingFileVersion, isVersion0xx, type RecordingFileVersion } from '../types/recording-file-version';
-import { Vector2 } from '../types/vector2';
 
 import {
     EVENT_PREFIXES,

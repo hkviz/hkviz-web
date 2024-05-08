@@ -3,14 +3,16 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "~/*": ["./src/*"]
+            "~/*": ["./src/*"],
+            "@hkviz/parser": ["../hkviz-parser/src"]
         },
         "types": ["@types/dom-view-transitions"],
         "plugins": [
             {
                 "name": "next"
             }
-        ]
+        ],
+        "incremental": true
     },
     "include": [
         ".eslintrc.cjs",

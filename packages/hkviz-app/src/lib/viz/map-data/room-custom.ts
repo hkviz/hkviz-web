@@ -128,7 +128,7 @@ const abysee15 = makeCustomRoom({
     nextToRoom: unscaledRoomByGameObjectName('Abyss_06_Core')!,
     size: { x: 403.0, y: 282.0 },
     scale: 1 / 90,
-})(({ nextToRoom, makeSpriteInfo, makeBounds, scale }) => {
+})(({ nextToRoom, makeSpriteInfo, makeBounds }) => {
     const nextToRoomB = unscaledRoomByGameObjectName('Abyss_06_Core_b')!;
 
     const visualBounds = makeBounds({ alignLeft: 0.4, below: 0.6 });

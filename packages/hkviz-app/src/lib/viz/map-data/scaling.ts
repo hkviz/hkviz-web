@@ -1,5 +1,4 @@
-import { Bounds } from '../types/bounds';
-import { Vector2 } from '../types/vector2';
+import { Bounds, Vector2 } from '@hkviz/parser';
 
 /**
  * Everything on the ingame map is scaled up,

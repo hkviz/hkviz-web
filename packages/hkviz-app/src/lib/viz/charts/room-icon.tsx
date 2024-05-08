@@ -1,11 +1,10 @@
 'use client';
 
 import { cn } from '@/lib/utils';
+import { Bounds, Vector2 } from '@hkviz/parser';
 import { memo, useMemo } from 'react';
-import { type RoomInfo } from '../map-data/rooms';
-import { Bounds } from '../types/bounds';
-import { Vector2 } from '../types/vector2';
 import { HkMapRooms } from './hk-map-rooms';
+import { type RoomInfo } from '../map-data/rooms';
 
 export interface HKMapProps {
     className?: string;

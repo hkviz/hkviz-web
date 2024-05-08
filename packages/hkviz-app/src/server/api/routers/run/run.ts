@@ -6,7 +6,7 @@ import { and, eq } from 'drizzle-orm';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { tagSchema } from '~/lib/types/tags';
 import { raise } from '~/lib/utils/utils';
-import { mapZoneSchema } from '~/lib/viz/types/mapZone';
+import { mapZoneSchema } from '@hkviz/parser';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
 import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
 import { getUserIdFromIngameSession } from '../ingameauth';

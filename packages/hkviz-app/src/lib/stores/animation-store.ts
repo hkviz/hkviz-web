@@ -1,6 +1,6 @@
 import { batch, computed, effect, signal } from '@preact/signals-react';
 import { asReadonlySignal } from '~/lib/utils/signals';
-import { RoomData, mainRoomDataBySceneName } from '../viz/map-data/rooms';
+import { type RoomData, mainRoomDataBySceneName } from '../viz/map-data/rooms';
 import { gameplayStore } from './gameplay-store';
 
 const intervalMs = 1000 / 30;
@@ -53,7 +53,6 @@ const currentFrameEndEvent = computed(() => {
 
 function setLimitedAnimationMsIntoGame(newMsIntoGame: number) {
     batch(() => {
-        const previousMsIntoGame = msIntoGame.value;
         const timeFrame = gameplayStore.timeFrame.value;
         if (Number.isNaN(newMsIntoGame) || typeof newMsIntoGame != 'number') return;
 
