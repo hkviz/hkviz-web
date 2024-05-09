@@ -32,7 +32,7 @@ const steps: Step[] = [
             uiStore.activateTab('overview');
         },
         activeEffect: () => {
-            if (uiStore.mainCardTab.value === 'map') {
+            if (uiStore.mainCardTab.valuePreact === 'map') {
                 next();
             }
         },
@@ -46,8 +46,8 @@ const steps: Step[] = [
             uiStore.activateTab('overview');
         },
         activeEffect: () => {
-            console.log('active effect', uiStore.mobileTab.value);
-            if (uiStore.mainCardTab.value === 'map') {
+            console.log('active effect', uiStore.mobileTab.valuePreact);
+            if (uiStore.mainCardTab.valuePreact === 'map') {
                 next();
             }
         },
@@ -76,7 +76,7 @@ const steps: Step[] = [
                 next();
             }
 
-            if (uiStore.mainCardTab.value === 'overview') {
+            if (uiStore.mainCardTab.valuePreact === 'overview') {
                 back();
             }
         },
@@ -192,7 +192,7 @@ const steps: Step[] = [
                 roomDisplayStore.unpinScene('code');
             },
             activeEffect: () => {
-                if (animationStore.isPlaying.value === true) {
+                if (animationStore.isPlaying.valuePreact === true) {
                     next();
                 }
             },

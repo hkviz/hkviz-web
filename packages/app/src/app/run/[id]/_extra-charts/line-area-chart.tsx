@@ -107,7 +107,7 @@ export const LineAreaChart = memo(function LineAreaChart({
     const id = useId();
 
     const data = useComputed(() => {
-        const recording = gameplayStore.recording.value;
+        const recording = gameplayStore.recording.valuePreact;
         if (!recording) return [];
         const togetherEvents = downScale(
             recording.frameEndEvents,
@@ -224,7 +224,7 @@ export const LineAreaChart = memo(function LineAreaChart({
     });
 
     const svgParts = useComputed(function lineAreaChartMainSetup() {
-        const _recording = gameplayStore.recording.value;
+        const _recording = gameplayStore.recording.valuePreact;
         if (!_recording) {
             return {
                 areaPaths: null,

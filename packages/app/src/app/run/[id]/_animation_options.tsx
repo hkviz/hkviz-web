@@ -34,8 +34,8 @@ function Times({ className }: { className?: string }) {
 
 function PlayButton() {
     useSignals();
-    const isPlaying = animationStore.isPlaying.value;
-    const isDisabled = !gameplayStore.recording.value;
+    const isPlaying = animationStore.isPlaying.valuePreact;
+    const isDisabled = !gameplayStore.recording.valuePreact;
     return (
         <Tooltip>
             <TooltipTrigger asChild>
@@ -55,7 +55,7 @@ function AnimationTimeLineColorCodes() {
     const timeFrameMs = gameplayStore.timeFrame.value;
 
     const sceneChanges = useComputed(function timelineColorCodesSceneChangesComputed() {
-        const sceneEvents = gameplayStore.recording.value?.sceneEvents ?? EMPTY_ARRAY;
+        const sceneEvents = gameplayStore.recording.valuePreact?.sceneEvents ?? EMPTY_ARRAY;
         const timeframe = gameplayStore.timeFrame.value;
         const theme = themeStore.currentTheme.value;
         const sceneChanges = sceneEvents.map((it) => {
@@ -168,9 +168,9 @@ function AnimationTimeLineColorCodes() {
 
 function AnimationTimeLineSlider() {
     useSignals();
-    const animationMsIntoGame = animationStore.msIntoGame.value;
+    const animationMsIntoGame = animationStore.msIntoGame.valuePreact;
     const timeFrame = gameplayStore.timeFrame.value;
-    const isDisabled = !gameplayStore.recording.value;
+    const isDisabled = !gameplayStore.recording.valuePreact;
 
     const isShiftPressedRef = useRef(false);
 
@@ -214,7 +214,7 @@ function AnimationTimeLineSlider() {
                 const isV1 = uiStore.isV1.value;
                 if (!dragRef.current.isDragging) {
                     dragRef.current.isDragging = true;
-                    dragRef.current.startedAtMsIntoGame = animationStore.msIntoGame.value;
+                    dragRef.current.startedAtMsIntoGame = animationStore.msIntoGame.valuePreact;
                     dragRef.current.previousDiff = 0;
                 }
                 const value = values[0]!;
@@ -223,13 +223,13 @@ function AnimationTimeLineSlider() {
 
                 const scale = isShiftPressedRef.current && !isV1 ? 10 : 1;
 
-                const newMsIntoGame = animationStore.msIntoGame.value + newDiff / scale;
+                const newMsIntoGame = animationStore.msIntoGame.valuePreact + newDiff / scale;
                 animationStore.setMsIntoGame(newMsIntoGame);
                 uiStore.showMapIfOverview();
                 dragRef.current.previousDiff = diff;
 
                 if (!isV1 && !roomDisplayStore.selectedScenePinned.value) {
-                    const sceneEvent = gameplayStore.recording.value?.sceneEventFromMs(newMsIntoGame);
+                    const sceneEvent = gameplayStore.recording.valuePreact?.sceneEventFromMs(newMsIntoGame);
                     if (sceneEvent) {
                         roomDisplayStore.setSelectedRoomIfNotPinned(sceneEvent.getMainVirtualSceneName());
                     }
@@ -245,14 +245,14 @@ function AnimationTimeLineSlider() {
 }
 
 function AnimationTimeLineDuration() {
-    return <DurationSignal ms={animationStore.msIntoGame} className="pr-3" />;
+    return <DurationSignal ms={animationStore.msIntoGame.rawPreactSignal} className="pr-3" />;
 }
 
 // this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
 // Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
 export function AnimationTimeLine({ className }: { className?: string }) {
     useSignals();
-    const hoveredMsIntoGame = hoverMsStore.hoveredMsIntoGame.value;
+    const hoveredMsIntoGame = hoverMsStore.hoveredMsIntoGame.valuePreact;
     const timeFrame = gameplayStore.timeFrame.value;
     const isV1 = uiStore.isV1.value;
 
@@ -278,8 +278,8 @@ export function AnimationTimeLine({ className }: { className?: string }) {
 
 export function AnimationOptions({ className }: { className?: string }) {
     useSignals();
-    const animationSpeedMultiplier = animationStore.speedMultiplier.value;
-    const isDisabled = !gameplayStore.recording.value;
+    const animationSpeedMultiplier = animationStore.speedMultiplier.valuePreact;
+    const isDisabled = !gameplayStore.recording.valuePreact;
 
     return (
         <div className={cn('@container', className)}>
@@ -304,7 +304,7 @@ export function AnimationOptions({ className }: { className?: string }) {
                         <PopoverContent className="w-[10rem] p-0">
                             {[500, 250, 100, 50, 25, 10].map((it) => (
                                 <Button
-                                    onClick={() => (animationStore.speedMultiplier.value = it)}
+                                    onClick={() => animationStore.setSpeedMultiplier(it)}
                                     variant="ghost"
                                     className="w-full"
                                     key={it}
@@ -324,7 +324,7 @@ export function AnimationOptions({ className }: { className?: string }) {
                                     onChange={(v) => {
                                         try {
                                             const vv = Number.parseInt(v.target.value);
-                                            animationStore.speedMultiplier.value = vv;
+                                            animationStore.setSpeedMultiplier(vv);
                                         } catch (e) {
                                             // ignore
                                             console.log(e);

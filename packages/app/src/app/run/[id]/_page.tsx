@@ -22,7 +22,7 @@ import { useEffect, useRef, useState } from 'react';
 import { type ImperativePanelHandle, type PanelGroupOnLayout } from 'react-resizable-panels';
 import { splitsStore } from '~/lib/stores/splits-store';
 import { storeInitializer, useStoreInitializer } from '~/lib/stores/store-initializer';
-import { uiStore, type MainCardTab } from '~/lib/stores/ui-store';
+import { uiStore } from '~/lib/stores/ui-store';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFiles } from '~/lib/viz/use-recording-files';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
@@ -35,6 +35,7 @@ import { RunSplits } from './_run_splits';
 import { SingleRunPageTour } from './_tour';
 import { ViewOptions } from './_view_options';
 import dynamic from 'next/dynamic';
+import { MainCardTab } from '@hkviz/viz';
 
 const RunSplitsSolidWrapper = dynamic(() => import('./_dynamic'), { ssr: false });
 
@@ -67,8 +68,8 @@ export function SingleRunClientPage({ session, runData }: Props) {
     useStoreInitializer();
     useSignals();
     const isV1 = uiStore.isV1.value;
-    const mainCardTab = uiStore.mainCardTab.value;
-    const mobileTab = uiStore.mobileTab.value;
+    const mainCardTab = uiStore.mainCardTab.valuePreact;
+    const mobileTab = uiStore.mobileTab.valuePreact;
 
     // const layout = useSignal<HTMLDivElement | null>(null);
     // const layoutSize = useElementSize(layout);
@@ -190,7 +191,7 @@ const DEFAULT_EXTRA_CHARTS_SIZE = 63;
 function RightCard({ className }: { className?: string }) {
     useSignals();
     const isV1 = uiStore.isV1.value;
-    const mobileTab = uiStore.mobileTab.value;
+    const mobileTab = uiStore.mobileTab.valuePreact;
 
     const [layoutState, setLayoutState] = useState<'only-extra-charts' | 'only-splits' | 'both'>('both');
     const extraChartsPanelRef = useRef<ImperativePanelHandle>(null);

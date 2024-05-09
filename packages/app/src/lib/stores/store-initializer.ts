@@ -13,9 +13,24 @@ import { splitsStore } from './splits-store';
 import { traceStore } from './trace-store';
 import { uiStore } from './ui-store';
 
+import {
+    animationStore as animationStoreSolid,
+    gameplayStore as gameplayStoreSolid,
+    splitsStore as splitsStoreSolid,
+    // extraChartStore as extraChartStoreSolid,
+    // hoverMsStore as hoverMsStoreSolid,
+    // roomColoringStore as roomColoringStoreSolid,
+    // roomDisplayStore as roomDisplayStoreSolid,
+    // traceStore as traceStoreSolid,
+    // uiStore as uiStoreSolid,
+    // mapZoomStore as mapZoomStoreSolid,
+} from '@hkviz/viz';
+
+import { batch as batchSolid } from 'solid-js';
+
 function initializeStores(searchParams: ReadonlyURLSearchParams) {
     batch(() => {
-        uiStore.displayVersion.value = searchParams.get('v') === '1' ? 'v1' : 'vnext';
+        uiStore.setDisplayVersion(searchParams.get('v') === '1' ? 'v1' : 'vnext');
         gameplayStore.reset();
         uiStore.reset();
         animationStore.reset();
@@ -27,6 +42,11 @@ function initializeStores(searchParams: ReadonlyURLSearchParams) {
         traceStore.reset();
         mapZoomStore.reset();
     });
+    batchSolid(() => {
+        gameplayStoreSolid.reset();
+        animationStoreSolid.reset();
+        splitsStoreSolid.reset();
+    });
 }
 
 export function useStoreInitializer() {
@@ -35,7 +55,7 @@ export function useStoreInitializer() {
 }
 
 export function initializeFromRecording(recording: CombinedRecording | null) {
-    gameplayStore.recording.value = recording;
+    gameplayStore.setRecording(recording);
     animationStore.setMsIntoGame(gameplayStore.timeFrame.value.max);
     extraChartStore.setTimeboundsForFollow();
 }

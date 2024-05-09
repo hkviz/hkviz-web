@@ -1,8 +1,9 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
+import { MobileTab } from '@hkviz/viz';
 import { useSignals } from '@preact/signals-react/runtime';
 import { AreaChart, BadgeInfo, Map, Timer, type LucideIcon } from 'lucide-react';
-import { uiStore, type MobileTab } from '~/lib/stores/ui-store';
+import { uiStore } from '~/lib/stores/ui-store';
 
 function MobileTabTrigger({
     value,
@@ -31,7 +32,7 @@ function MobileTabTrigger({
 
 export function MobileTabBar() {
     useSignals();
-    const mobileTab = uiStore.mobileTab.value;
+    const mobileTab = uiStore.mobileTab.valuePreact;
     return (
         <Tabs
             className="dashboard-grid-tabs sticky z-10 lg:hidden"

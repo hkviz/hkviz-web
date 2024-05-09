@@ -5,18 +5,16 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
 import { cn } from '@/lib/utils';
+import { assertNever, recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '@hkviz/parser';
 import { useSignals } from '@preact/signals-react/runtime';
 import { Search, X } from 'lucide-react';
 import { forwardRef, useCallback, useEffect, useId, useMemo, useRef, type ReactNode } from 'react';
 import { animationStore } from '~/lib/stores/animation-store';
 import { hoverMsStore } from '~/lib/stores/hover-ms-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
-import { splitsStore } from '~/lib/stores/splits-store';
-import { uiStore } from '~/lib/stores/ui-store';
-import { assertNever } from '@hkviz/parser';
-import { recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '@hkviz/parser';
+import { splitsStore } from '../store';
 import { Duration } from './_duration';
-import { splitColors } from '@hkviz/viz';
+import { splitColors } from './split-colors';
 
 type RowActiveState = 'past' | 'next' | 'future';
 
@@ -59,7 +57,7 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
         function handleClick() {
             console.log('split clicked', split);
             animationStore.setMsIntoGame(split.msIntoGame);
-            uiStore.showMapIfOverview();
+            // uiStore.showMapIfOverview();
 
             function markClicked() {
                 clearTimeout(hasClicked.current.timeout);
@@ -222,7 +220,7 @@ interface RunSplitsProps {
 
 function RunSplitsSearch() {
     useSignals();
-    const filterTerm = splitsStore.filterTerm.valuePreact;
+    const filterTerm = splitsStore.filterTerm.value;
     const show = splitsStore.isSplitsPanelOpen.value;
 
     return (
@@ -233,13 +231,13 @@ function RunSplitsSearch() {
                     <Input
                         type="text"
                         value={filterTerm}
-                        onChange={(e) => splitsStore.setFilterTerm(e.target.value)}
+                        onChange={(e) => (splitsStore.filterTerm.value = e.target.value)}
                         placeholder="Search"
                         className="h-9 shrink grow px-8"
                     />
                     {filterTerm && (
                         <Button
-                            onClick={() => splitsStore.setFilterTerm('')}
+                            onClick={() => (splitsStore.filterTerm.value = '')}
                             className="absolute right-0 top-0 flex h-9 w-9 items-center justify-center p-0"
                             variant="ghost"
                             title="Clear search"
@@ -256,11 +254,13 @@ function RunSplitsSearch() {
 export function RunSplits({ resizeOptions }: RunSplitsProps) {
     useSignals();
     const id = useId();
-    const visibleSplitGroups = splitsStore.visibleSplitGroups.valuePreact;
+    const visibleSplitGroups = splitsStore.visibleSplitGroups.value;
 
     const setVisibleSplitGroupChecked = useCallback((group: RecordingSplitGroup, checked: boolean) => {
-        const currentGroup = splitsStore.visibleSplitGroups.valuePreact;
-        splitsStore.setVisibleSplitGroups(checked ? [...currentGroup, group] : currentGroup.filter((g) => g !== group));
+        const currentGroup = splitsStore.visibleSplitGroups.value;
+        splitsStore.visibleSplitGroups.value = checked
+            ? [...currentGroup, group]
+            : currentGroup.filter((g) => g !== group);
     }, []);
 
     return (

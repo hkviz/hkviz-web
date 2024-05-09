@@ -79,7 +79,9 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@hkviz/parser": "workspace:*"
+        "@hkviz/parser": "workspace:*",
+        "@preact/signals-react": "^2.0.1",
+        "fuse.js": "^7.0.0"
     },
     "devDependencies": {
         "solid-js": "^1.8.17"

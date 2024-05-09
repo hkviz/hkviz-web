@@ -390,6 +390,12 @@ importers:
       '@hkviz/parser':
         specifier: workspace:*
         version: link:../parser
+      '@preact/signals-react':
+        specifier: ^2.0.1
+        version: 2.0.1(react@18.2.0)
+      fuse.js:
+        specifier: ^7.0.0
+        version: 7.0.0
     devDependencies:
       solid-js:
         specifier: ^1.8.17

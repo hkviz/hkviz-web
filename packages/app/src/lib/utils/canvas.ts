@@ -36,7 +36,7 @@ export function useAutoSizeCanvas(
 
         if (!_canvas || !_containerSize) return { widthInUnits: 0, heightInUnits: 0, pixelRatio: 1, canvas: null };
 
-        const zoomLevel = repaintOnZoom ? viewportStore.visualViewportScale.value : 1;
+        const zoomLevel = repaintOnZoom ? viewportStore.visualViewportScale.valuePreact : 1;
 
         const ratio = window.devicePixelRatio * zoomLevel;
 

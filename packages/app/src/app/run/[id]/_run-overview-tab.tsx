@@ -32,8 +32,8 @@ export function RunOverviewTab({
     useSignals();
     const isOwnRun = session?.user?.id === runData.user.id;
 
-    const mainCardTab = uiStore.mainCardTab.value;
-    const recording = gameplayStore.recording.value;
+    const mainCardTab = uiStore.mainCardTab.valuePreact;
+    const recording = gameplayStore.recording.valuePreact;
 
     const isOpen = mainCardTab === 'overview';
 

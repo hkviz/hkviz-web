@@ -67,8 +67,9 @@ const roomsVisible: ReadonlySignal<ReadonlySet<string> | 'all'> = computed(() =>
             return 'all' as const;
         case 'visited':
             return new Set(
-                gameplayStore.recording.value?.lastPlayerDataEventOfField(playerDataFields.byFieldName.scenesVisited)
-                    ?.value ?? [],
+                gameplayStore.recording.valuePreact?.lastPlayerDataEventOfField(
+                    playerDataFields.byFieldName.scenesVisited,
+                )?.value ?? [],
             );
         case 'visited-animated':
             return new Set(playerDataAnimationStore.currentValues.scenesVisited.value ?? []);

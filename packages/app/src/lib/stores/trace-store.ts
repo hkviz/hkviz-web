@@ -21,7 +21,7 @@ const msIntoGameForTraces = computed(() => {
         case 'all':
             return -1;
         case 'animated':
-            return animationStore.msIntoGame.value;
+            return animationStore.msIntoGame.valuePreact;
         default:
             assertNever(visibility.value);
     }

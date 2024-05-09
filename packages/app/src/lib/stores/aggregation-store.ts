@@ -279,7 +279,7 @@ function aggregateRecording(recording: CombinedRecording) {
 }
 
 const aggregations = computed(() => {
-    const recording = gameplayStore.recording.value;
+    const recording = gameplayStore.recording.valuePreact;
     if (!recording) return null;
     return aggregateRecording(recording);
 });

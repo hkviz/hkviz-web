@@ -25,9 +25,9 @@ export function HKMapZoom({
     svg: MutableRefObject<d3.Selection<SVGSVGElement, unknown, null, undefined> | undefined>;
 }) {
     useSignals();
-    const animatedMsIntoGame = animationStore.msIntoGame.value;
+    const animatedMsIntoGame = animationStore.msIntoGame.valuePreact;
     const traceAnimationLengthMs = traceStore.lengthMs.value;
-    const recording = gameplayStore.recording.value;
+    const recording = gameplayStore.recording.valuePreact;
     const zoomFollowEnabled = mapZoomStore.enabled.value;
     const zoomFollowTarget = mapZoomStore.target.value;
     const roomsVisible = roomDisplayStore.roomsVisible.value;

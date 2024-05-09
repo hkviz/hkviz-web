@@ -66,10 +66,11 @@ export function HKMapTraces({ zoomHandler }: HKMapTracesProps) {
         }
 
         // animation
-        const minMsIntoGame = animationStore.msIntoGame.value - traceStore.lengthMs.value;
-        const maxMsIntoGame = animationStore.msIntoGame.value;
+        const minMsIntoGame = animationStore.msIntoGame.valuePreact - traceStore.lengthMs.value;
+        const maxMsIntoGame = animationStore.msIntoGame.valuePreact;
 
-        const positionEvents = gameplayStore.recording.value?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
+        const positionEvents =
+            gameplayStore.recording.valuePreact?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
 
         const visibility = traceStore.visibility.value;
 
@@ -121,7 +122,7 @@ export function HKMapTraces({ zoomHandler }: HKMapTracesProps) {
 
         // shade pin
         const frameEvent = animationStore.currentFrameEndEvent.value;
-        const recording = gameplayStore.recording.value;
+        const recording = gameplayStore.recording.valuePreact;
         if (traceStore.visibility.value === 'animated' && recording && frameEvent && frameEvent.shadeScene != 'None') {
             const mapPosition = playerPositionToMapPosition(
                 new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),

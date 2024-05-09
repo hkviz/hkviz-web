@@ -36,10 +36,10 @@ export function useMapTraces({ animatedTraceG, knightPinG }: Props) {
     >();
     const knightPin = useRef<d3.Selection<SVGImageElement, unknown, null, undefined> | undefined>();
 
-    const animationMsIntoGame = animationStore.msIntoGame.value;
+    const animationMsIntoGame = animationStore.msIntoGame.valuePreact;
     const traceAnimationLengthMs = traceStore.lengthMs.value;
     const traceVisibility = traceStore.visibility.value;
-    const recording = gameplayStore.recording.value;
+    const recording = gameplayStore.recording.valuePreact;
     const isV1 = uiStore.isV1.value;
 
     // always 0 when traceVisibility !== 'animated' since that avoids running the effect when animating, but traces are not animating

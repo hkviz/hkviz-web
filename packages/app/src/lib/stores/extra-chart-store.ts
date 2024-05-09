@@ -2,6 +2,7 @@ import { batch, effect, signal } from '@preact/signals-react';
 import { asReadonlySignal } from '../utils/signals';
 import { animationStore } from './animation-store';
 import { gameplayStore } from './gameplay-store';
+import { untrack } from 'solid-js';
 
 const transitionDuration = 250;
 
@@ -21,7 +22,7 @@ function reset() {
 if (typeof window !== 'undefined') {
     setInterval(() => {
         batch(() => {
-            debouncedMsIntoGame.value = animationStore.msIntoGame.value;
+            debouncedMsIntoGame.value = animationStore.msIntoGame.valuePreact;
             debouncedTimeBounds.value = timeBounds.value;
         });
     }, transitionDuration);
@@ -40,15 +41,17 @@ function resetTimeBounds() {
 
 function setTimeBoundsStopFollowIfOutside(extraChartsTimeBounds: readonly [number, number]) {
     setTimeBounds(extraChartsTimeBounds);
-    const msIntoGame = animationStore.msIntoGame.value;
+    const msIntoGame = animationStore.msIntoGame.valuePreact;
     if (followsAnimation.value && (msIntoGame < extraChartsTimeBounds[0] || msIntoGame > extraChartsTimeBounds[1])) {
         followsAnimation.value = false;
     }
 }
 
 function setTimeboundsForFollow() {
-    const ms = animationStore.msIntoGame.peek();
-    timeBounds.value = [ms - 17 * 60 * 1000, ms + 3 * 60 * 1000] as const;
+    untrack(() => {
+        const ms = animationStore.msIntoGame();
+        timeBounds.value = [ms - 17 * 60 * 1000, ms + 3 * 60 * 1000] as const;
+    });
 }
 
 function setFollowsAnimationAutoBounds(value: boolean) {
@@ -76,7 +79,7 @@ export const extraChartStore = {
 
 const previousMsIntoGame = signal(0);
 effect(() => {
-    const newMsIntoGame = animationStore.msIntoGame.value;
+    const newMsIntoGame = animationStore.msIntoGame.valuePreact;
     const timeFrame = gameplayStore.timeFrame.value;
     const _previousMsIntoGame = previousMsIntoGame.peek();
 

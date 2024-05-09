@@ -1,21 +1,14 @@
-import { recordingSplitGroups, type RecordingSplit } from '@hkviz/parser';
+import { type RecordingSplit } from '@hkviz/parser';
+import { splitsStore as splitsStoreSolid } from '@hkviz/viz';
 import { computed, signal } from '@preact/signals-react';
 import Fuse from 'fuse.js';
 import { animationStore } from './animation-store';
 import { gameplayStore } from './gameplay-store';
 
-const visibleSplitGroups = signal(recordingSplitGroups.filter((it) => it.defaultShown));
-const filterTerm = signal('');
-
-function reset() {
-    visibleSplitGroups.value = recordingSplitGroups.filter((it) => it.defaultShown);
-    filterTerm.value = '';
-}
-
 const filteredByGroupSplits = computed<readonly RecordingSplit[]>(() => {
-    const recording = gameplayStore.recording.value;
+    const recording = gameplayStore.recording.valuePreact;
     if (!recording) return [];
-    const visibleGroups = visibleSplitGroups.value;
+    const visibleGroups = splitsStoreSolid.visibleSplitGroups.valuePreact;
     return recording.splits?.filter((it) => visibleGroups.includes(it.group)) ?? [];
 });
 
@@ -32,14 +25,14 @@ const splitsFuse = computed(
         }),
 );
 const filteredSplits = computed<readonly RecordingSplit[]>(() => {
-    const term = filterTerm.value.toLowerCase();
+    const term = splitsStoreSolid.filterTerm.valuePreact.toLowerCase();
     const splits = filteredByGroupSplits.value;
     if (!term) return splits;
     return splitsFuse.value.search(term).map((it) => it.item);
 });
 
 const nextSplitIndex = computed(() => {
-    const msIntoGame = animationStore.msIntoGame.value;
+    const msIntoGame = animationStore.msIntoGame.valuePreact;
     const splits = filteredSplits.value;
     const nextSplitIndex = splits.findIndex(
         (split, index) => split.msIntoGame >= msIntoGame && splits[index + 1]?.msIntoGame !== split.msIntoGame,
@@ -51,10 +44,8 @@ const nextSplitIndex = computed(() => {
 const isSplitsPanelOpen = signal(false);
 
 export const splitsStore = {
-    filterTerm,
-    visibleSplitGroups,
+    ...splitsStoreSolid,
     filteredSplits,
     nextSplitIndex,
     isSplitsPanelOpen,
-    reset,
 };

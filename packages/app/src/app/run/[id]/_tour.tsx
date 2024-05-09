@@ -87,7 +87,7 @@ function TourStep({ step, index }: TourStepProps) {
                             {index === tourStore.steps.length - 1 ? 'Finish' : 'Next'}
                         </Button>
                     </div>
-                    <PopoverArrow width={15} height={8} className="fill-popover stroke-current stroke-2 text-border" />
+                    <PopoverArrow width={15} height={8} className="fill-popover text-border stroke-current stroke-2" />
                 </PopoverContent>
             </Popover>
             {/* {isActive.value && <TourStepEffectRunner step={step} />} */}
@@ -185,7 +185,7 @@ function TourShadow() {
 
 export function SingleRunPageTour() {
     useSignals();
-    const recording = gameplayStore.recording.value;
+    const recording = gameplayStore.recording.valuePreact;
     const isOpen = tourStore.isOpen.value;
 
     if (!recording || !isOpen) {

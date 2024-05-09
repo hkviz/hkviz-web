@@ -1,4 +1,10 @@
-import { binarySearchLastIndexBefore, getDefaultValue, playerDataFields, type PlayerDataEvent, type PlayerDataFieldValue } from '@hkviz/parser';
+import {
+    binarySearchLastIndexBefore,
+    getDefaultValue,
+    playerDataFields,
+    type PlayerDataEvent,
+    type PlayerDataFieldValue,
+} from '@hkviz/parser';
 import { computed, type ReadonlySignal } from '@preact/signals-react';
 import { animationStore } from './animation-store';
 import { gameplayStore } from './gameplay-store';
@@ -8,13 +14,17 @@ const currentEvents = Object.fromEntries(
         return [
             fieldName,
             computed(() => {
-                const r = gameplayStore.recording.value;
+                const r = gameplayStore.recording.valuePreact;
                 if (!r) return null;
 
                 const events = r.playerDataEventsPerField.get(field);
                 if (!events || events.length === 0) return null;
 
-                const index = binarySearchLastIndexBefore(events, animationStore.msIntoGame.value, (e) => e.msIntoGame);
+                const index = binarySearchLastIndexBefore(
+                    events,
+                    animationStore.msIntoGame.valuePreact,
+                    (e) => e.msIntoGame,
+                );
                 if (index === -1) return null;
                 return events[index] ?? null;
             }),
