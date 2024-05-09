@@ -1,9 +1,8 @@
 import { ContextMenuItem } from '@/components/ui/context-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { type AggregationVariable, roomColorCurves } from '@hkviz/viz';
 import { useSignals } from '@preact/signals-react/runtime';
-import { type AggregationVariable } from '~/lib/stores/aggregation-store';
 import { roomColoringStore } from '~/lib/stores/room-coloring-store';
-import { roomColorCurves } from './_room-color-curve';
 
 export function RoomColorCurveContextMenuItems({ variable }: { variable: AggregationVariable }) {
     return (
@@ -25,7 +24,7 @@ export function RoomColorCurveContextMenuItems({ variable }: { variable: Aggrega
 
 export function RoomColorCurveSelect({ variable }: { variable: AggregationVariable }) {
     useSignals();
-    const roomColorVar1Curve = roomColoringStore.var1Curve.value;
+    const roomColorVar1Curve = roomColoringStore.var1Curve.valuePreact;
 
     function handleValueChange(value: string): void {
         roomColoringStore.setRoomColorVar1(variable);

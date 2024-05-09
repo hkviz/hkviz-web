@@ -1,6 +1,6 @@
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
-import { MobileTab } from '@hkviz/viz';
+import { type MobileTab } from '@hkviz/viz';
 import { useSignals } from '@preact/signals-react/runtime';
 import { AreaChart, BadgeInfo, Map, Timer, type LucideIcon } from 'lucide-react';
 import { uiStore } from '~/lib/stores/ui-store';

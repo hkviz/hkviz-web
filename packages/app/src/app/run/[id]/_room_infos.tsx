@@ -4,25 +4,25 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '@/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { allRoomDataIncludingSubspritesBySceneName, mainRoomDataBySceneName } from '@hkviz/parser';
 import { useMemo, type CSSProperties } from 'react';
 import { HKMapRoom } from '~/lib/viz/charts/room-icon';
-import { allRoomDataIncludingSubspritesBySceneName, mainRoomDataBySceneName } from '@hkviz/parser';
 
 import { cardRoundedMdOnlyClasses } from '@/components/additions/cards';
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '@/components/ui/context-menu';
 import { Toggle } from '@/components/ui/toggle';
 import { cn } from '@/lib/utils';
 import { assertNever, getRelatedVirtualRoomNames } from '@hkviz/parser';
-import { useComputed, useSignals } from '@preact/signals-react/runtime';
-import { Palette, Pin, PinOff } from 'lucide-react';
-import { AggregationVariableIcon } from '~/app/_components/aggregation_variable_icon';
 import {
-    aggregationStore,
     aggregationVariableInfos,
     aggregationVariables,
     formatAggregatedVariableValue,
     type AggregationVariable,
-} from '~/lib/stores/aggregation-store';
+} from '@hkviz/viz';
+import { useComputed, useSignals } from '@preact/signals-react/runtime';
+import { Palette, Pin, PinOff } from 'lucide-react';
+import { AggregationVariableIcon } from '~/app/_components/aggregation_variable_icon';
+import { aggregationStore } from '~/lib/stores/aggregation-store';
 import { roomColoringStore } from '~/lib/stores/room-coloring-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
 import { useThemeStore } from '~/lib/stores/theme-store';
@@ -35,9 +35,9 @@ export function roomInfoColoringToggleClasses(variable: AggregationVariable) {
 
 function AggregationVariableToggles({ variable }: { variable: AggregationVariable }) {
     useSignals();
-    const roomColors = roomColoringStore.colorMode.value;
-    const roomColorVar1 = roomColoringStore.var1.value;
-    const roomColorVar1Curve = roomColoringStore.var1Curve.value;
+    const roomColors = roomColoringStore.colorMode.valuePreact;
+    const roomColorVar1 = roomColoringStore.var1.valuePreact;
+    const roomColorVar1Curve = roomColoringStore.var1Curve.valuePreact;
     const isV1 = uiStore.isV1.value;
 
     const isActive = roomColors === '1-var' && roomColorVar1 === variable;
@@ -98,9 +98,9 @@ function AggregationVariableRow({
     variable: AggregationVariable;
 }>) {
     useSignals();
-    const selectedRoom = roomDisplayStore.selectedSceneName.value;
+    const selectedRoom = roomDisplayStore.selectedSceneName.valuePreact;
     const aggregatedVariableValue = useComputed(function aggregatedVariableComputed() {
-        const sceneName = roomDisplayStore.selectedSceneName.value;
+        const sceneName = roomDisplayStore.selectedSceneName.valuePreact;
         const aggregations = aggregationStore.data.value;
         return sceneName ? aggregations?.countPerScene?.[sceneName]?.[variable] ?? 0 : 0;
     });
@@ -116,7 +116,7 @@ function AggregationVariableRow({
                 <Tooltip>
                     <TooltipTrigger>
                         <div className="flex flex-row items-center justify-center gap-2">
-                            <AggregationVariableIcon variable={variableInfo} />
+                            <AggregationVariableIcon variable={variable} />
                             <span>{variableInfo.name}</span>
                         </div>
                     </TooltipTrigger>
@@ -132,7 +132,7 @@ function AggregationVariableRow({
 function AggregationVariables() {
     useSignals();
     const aggregatedMaxs = aggregationStore.data.value?.maxOverScenes;
-    const viewNeverHappenedAggregations = aggregationStore.viewNeverHappenedAggregations.value;
+    const viewNeverHappenedAggregations = aggregationStore.viewNeverHappenedAggregations.valuePreact;
 
     const neverHappenedEvents = aggregationVariables.filter((variable) => !aggregatedMaxs?.[variable]);
 
@@ -152,7 +152,7 @@ function AggregationVariables() {
                                     className="h-fit"
                                     variant="outline"
                                     onClick={() => {
-                                        aggregationStore.viewNeverHappenedAggregations.value = false;
+                                        aggregationStore.setViewNeverHappenedAggregations(false);
                                     }}
                                 >
                                     Hide never occurred events
@@ -164,7 +164,7 @@ function AggregationVariables() {
                                     className="h-fit"
                                     variant="outline"
                                     onClick={() => {
-                                        aggregationStore.viewNeverHappenedAggregations.value = true;
+                                        aggregationStore.setViewNeverHappenedAggregations(true);
                                     }}
                                 >
                                     Show never occurred events (Spoilers)
@@ -181,8 +181,8 @@ function AggregationVariables() {
 export function RoomInfo() {
     useSignals();
     const isV1 = uiStore.isV1.value;
-    const selectedRoom = roomDisplayStore.selectedSceneName.value;
-    const selectedRoomPinned = roomDisplayStore.selectedScenePinned.value;
+    const selectedRoom = roomDisplayStore.selectedSceneName.valuePreact;
+    const selectedRoomPinned = roomDisplayStore.selectedScenePinned.valuePreact;
 
     const [mainRoomInfo, allRoomInfosIncludingSubsprites] = useMemo(() => {
         const mainRoomInfo = selectedRoom ? mainRoomDataBySceneName.get(selectedRoom) ?? null : null;
@@ -315,7 +315,7 @@ export function RoomInfo() {
                                     key={room.name}
                                     size="sm"
                                     variant={room.name === selectedRoom ? undefined : 'outline'}
-                                    onClick={() => roomDisplayStore.setSelectedRoom(room.name)}
+                                    onClick={() => roomDisplayStore.setSelectedSceneName(room.name)}
                                     className="shrink-0"
                                 >
                                     {room.displayName}

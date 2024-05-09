@@ -55,6 +55,7 @@ const config = {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         return config;
     },
+    typescript: {},
 };
 
 /** @type {import("rehype-autolink-headings").Options} */

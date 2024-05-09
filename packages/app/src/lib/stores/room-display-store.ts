@@ -5,51 +5,14 @@ import {
     roomDataByGameObjectName,
     type RoomSpriteVariant,
 } from '@hkviz/parser';
-import { computed, signal, type ReadonlySignal } from '@preact/signals-react';
+import { roomDisplayStore as roomDisplayStoreSolid } from '@hkviz/viz';
+import { computed, type ReadonlySignal } from '@preact/signals-react';
 import * as d3 from 'd3';
-import { asReadonlySignal } from '../utils/signals';
 import { gameplayStore } from './gameplay-store';
 import { playerDataAnimationStore } from './player-data-animation-store';
 
-export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
-export type RoomPinChangeSource =
-    | 'code'
-    | 'map-room-click'
-    | 'pin-button-click'
-    | 'timeline-color-code-click'
-    | 'split-click';
-
-const roomVisibility = signal<RoomVisibility>('visited-animated');
-const selectedSceneName = signal<string | null>(null);
-const hoveredSceneName = signal<string | null>(null);
-const selectedScenePinned = signal(false);
-const selectedScenePinSource = signal<RoomPinChangeSource>('code');
-
-const showAreaNames = signal(true);
-const showSubAreaNames = signal(true);
-
-function reset() {
-    roomVisibility.value = 'visited-animated';
-    selectedSceneName.value = null;
-    hoveredSceneName.value = null;
-    selectedScenePinned.value = false;
-    selectedScenePinSource.value = 'code';
-
-    showAreaNames.value = true;
-    showSubAreaNames.value = true;
-}
-
-function pinScene(source: RoomPinChangeSource) {
-    selectedScenePinned.value = true;
-    selectedScenePinSource.value = source;
-}
-function unpinScene(source: RoomPinChangeSource) {
-    selectedScenePinned.value = false;
-    selectedScenePinSource.value = source;
-}
-
 const selectedRoomZoneFormatted = computed(() => {
-    const selected = selectedSceneName.value;
+    const selected = roomDisplayStoreSolid.selectedSceneName.valuePreact;
     if (selected == null) return null;
     const room = mainRoomDataBySceneName.get(selected);
     if (!room) return null;
@@ -57,12 +20,12 @@ const selectedRoomZoneFormatted = computed(() => {
 });
 
 const hoveredMainRoom = computed(() => {
-    const hovered = hoveredSceneName.value;
+    const hovered = roomDisplayStoreSolid.hoveredSceneName.valuePreact;
     return hovered != null ? mainRoomDataBySceneName.get(hovered)?.sceneName ?? null : null;
 });
 
 const roomsVisible: ReadonlySignal<ReadonlySet<string> | 'all'> = computed(() => {
-    switch (roomVisibility.value) {
+    switch (roomDisplayStoreSolid.roomVisibility.valuePreact) {
         case 'all':
             return 'all' as const;
         case 'visited':
@@ -103,9 +66,11 @@ function isAnyRoomVisible(gameObjects: readonly string[]) {
 const statesByGameObjectName = new Map(
     roomData.map((room) => {
         const isHovered = computed(
-            () => hoveredSceneName.value === room.sceneName || hoveredMainRoom.value === room.sceneName,
+            () =>
+                roomDisplayStoreSolid.hoveredSceneName.valuePreact === room.sceneName ||
+                hoveredMainRoom.value === room.sceneName,
         );
-        const isSelected = computed(() => selectedSceneName.value === room.sceneName);
+        const isSelected = computed(() => roomDisplayStoreSolid.selectedSceneName.valuePreact === room.sceneName);
         const selfIsVisible = getSelfVisibilitySignal(room.gameObjectName);
 
         const variant = computed<RoomSpriteVariant | 'hidden'>(() => {
@@ -142,49 +107,10 @@ const zoneVisible = new Map(
     }),
 );
 
-function setSelectedRoom(name: string | null) {
-    selectedSceneName.value = name;
-}
-function setHoveredRoom(name: string | null) {
-    roomDisplayStore.hoveredSceneName.value = name;
-}
-function unsetHoveredRoom(name: string | null) {
-    if (hoveredSceneName.value === name) setHoveredRoom(null);
-}
-function setSelectedRoomIfNotPinned(selectedRoom: string | null) {
-    if (selectedScenePinned.value) return;
-    setSelectedRoom(selectedRoom);
-}
-function togglePinnedRoom(selectedRoom: string | null, source: RoomPinChangeSource, firstClickUnpinned = false) {
-    console.log('selectedRoom', selectedRoom);
-    if (selectedScenePinned.value && selectedSceneName.value === selectedRoom) {
-        unpinScene(source);
-    } else if (firstClickUnpinned && selectedSceneName.value !== selectedRoom && !selectedScenePinned.value) {
-        setSelectedRoom(selectedRoom);
-    } else {
-        setSelectedRoom(selectedRoom);
-        pinScene(source);
-    }
-}
-
 export const roomDisplayStore = {
+    ...roomDisplayStoreSolid,
     statesByGameObjectName,
-    roomVisibility,
-    selectedSceneName,
-    selectedScenePinned: asReadonlySignal(selectedScenePinned),
-    selectedScenePinSource: asReadonlySignal(selectedScenePinSource),
     selectedRoomZoneFormatted,
-    hoveredSceneName,
     zoneVisible,
-    showAreaNames,
-    showSubAreaNames,
     roomsVisible,
-    setSelectedRoom,
-    setHoveredRoom,
-    unsetHoveredRoom,
-    setSelectedRoomIfNotPinned,
-    togglePinnedRoom,
-    reset,
-    pinScene,
-    unpinScene,
 };

@@ -1,4 +1,5 @@
 import { Card } from '@/components/ui/card';
+import { aggregationVariableInfos, formatAggregatedVariableValue } from '@hkviz/viz';
 import { useSignals } from '@preact/signals-react/runtime';
 import * as d3 from 'd3';
 import { useCallback, useEffect, useRef } from 'react';
@@ -7,7 +8,6 @@ import { aggregationStore } from '~/lib/stores/aggregation-store';
 import { roomColoringStore } from '~/lib/stores/room-coloring-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
 import { uiStore } from '~/lib/stores/ui-store';
-import { aggregationVariableInfos, formatAggregatedVariableValue } from '../../stores/aggregation-store';
 
 const LEGEND_PADDING = 30;
 
@@ -18,10 +18,10 @@ export function MapLegend() {
     const svg = useRef<SVGSVGElement>(null);
 
     const isV1 = uiStore.isV1.value;
-    const var1 = roomColoringStore.var1.value;
-    const mode = roomColoringStore.colorMode.value;
+    const var1 = roomColoringStore.var1.valuePreact;
+    const mode = roomColoringStore.colorMode.valuePreact;
     const var1Info = aggregationVariableInfos[var1];
-    const hoveredRoom = roomDisplayStore.hoveredSceneName.value;
+    const hoveredRoom = roomDisplayStore.hoveredSceneName.valuePreact;
     const var1SelectedRoomValue = hoveredRoom
         ? aggregationStore.data.value?.countPerScene?.[hoveredRoom]?.[var1] ?? 0
         : null;

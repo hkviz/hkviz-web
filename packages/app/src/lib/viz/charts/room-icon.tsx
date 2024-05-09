@@ -3,7 +3,9 @@
 import { cn } from '@/lib/utils';
 import { Bounds, Vector2, type RoomInfo } from '@hkviz/parser';
 import { memo, useMemo } from 'react';
-import { HkMapRooms } from './hk-map-rooms';
+import dynamic from 'next/dynamic';
+
+const HkMapRoomsWrapper = dynamic(() => import('./hk-map-rooms'), { ssr: false });
 
 export interface HKMapProps {
     className?: string;
@@ -62,7 +64,7 @@ export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos }: HKMap
     return (
         <div className={cn('relative', className)}>
             <svg className="absolute inset-0" width="100%" height="100%" viewBox="0 0 1 1">
-                <HkMapRooms
+                <HkMapRoomsWrapper
                     rooms={roomInfosOfRoom}
                     alwaysShowMainRoom={true}
                     alwaysUseAreaAsColor={true}

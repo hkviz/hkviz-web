@@ -2,6 +2,8 @@
 
 import { Checkbox } from '@/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { type FrameEndEvent, type FrameEndEventNumberKey } from '@hkviz/parser';
+import { d3Ticks, formatTimeMs, isFilledD3Selection, type ColorClasses } from '@hkviz/viz';
 import { type ReadonlySignal } from '@preact/signals-react';
 import { useComputed, useSignal, useSignalEffect, useSignals } from '@preact/signals-react/runtime';
 import * as d3 from 'd3';
@@ -14,12 +16,8 @@ import { gameplayStore } from '~/lib/stores/gameplay-store';
 import { hoverMsStore } from '~/lib/stores/hover-ms-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
 import { uiStore } from '~/lib/stores/ui-store';
-import { d3Ticks, isFilledD3Selection } from '~/lib/utils/d3';
 import { signalRef } from '~/lib/utils/signal-ref';
-import { formatTimeMs } from '~/lib/utils/time';
 import { useIsVisibleSignal } from '~/lib/utils/use-is-visible';
-import { type FrameEndEvent, type FrameEndEventNumberKey } from '@hkviz/parser';
-import { type ColorClasses } from '@hkviz/viz';
 import { downScale } from './down-scale';
 
 export type LineChartVariableDescription = {
@@ -331,7 +329,7 @@ export const LineAreaChart = memo(function LineAreaChart({
             animationStore.setMsIntoGame(ms);
             const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
             if (scene) {
-                roomDisplayStore.setSelectedRoom(scene);
+                roomDisplayStore.setSelectedSceneName(scene);
             }
         }
 

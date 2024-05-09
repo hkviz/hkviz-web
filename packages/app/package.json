@@ -14,7 +14,7 @@
         "lint:fix": "next lint --fix",
         "lint:watch": "esw -w -c ./.eslintrc.cjs --ignore-path ./.eslintignore",
         "start": "next start",
-        "dev:tsc": "tsc --noEmit --incremental --pretty --watch",
+        "tsc": "tsc --noEmit --incremental --pretty --watch",
         "tsc:no-watch": "tsc --noEmit --incremental --pretty",
         "alex": "alex ."
     },
@@ -25,6 +25,7 @@
         "@hkviz/hk-data": "workspace:*",
         "@hkviz/parser": "workspace:*",
         "@hkviz/viz": "workspace:*",
+        "@hkviz/viz-ui": "workspace:*",
         "@hookform/resolvers": "^3.3.3",
         "@icons-pack/react-simple-icons": "^9.2.0",
         "@mdx-js/loader": "^3.0.0",

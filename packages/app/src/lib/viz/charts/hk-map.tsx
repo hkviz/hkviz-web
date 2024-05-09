@@ -8,7 +8,6 @@ import { useEffect, useRef } from 'react';
 import { mapZoomStore } from '~/lib/stores/map-zoom-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
 import { uiStore } from '~/lib/stores/ui-store';
-import { HkMapRooms } from './hk-map-rooms';
 import { HkMapTexts } from './hk-map-texts';
 import { HKMapZoom } from './hk-map-zoom';
 import { MapLegend } from './legend';
@@ -16,6 +15,11 @@ import { MapOverlayOptions } from './map-overlay-options';
 import { appendOutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 import { useMapTraces } from './use-traces';
+import dynamic from 'next/dynamic';
+import { roomDisplayStore as roomDisplayStoreSolid } from '@hkviz/viz';
+import { test } from '@hkviz/parser';
+
+const HkMapRoomsWrapper = dynamic(() => import('./hk-map-rooms'), { ssr: false });
 
 export interface HKMapProps {
     className?: string;
@@ -128,7 +132,7 @@ export function HKMap({ className }: HKMapProps) {
         <div className={cn('hk-main-map-wrapper relative', className)} ref={containerRef}>
             <svg className="absolute inset-0" ref={svgRef}>
                 <g data-group="root" ref={rootGRef}>
-                    <HkMapRooms
+                    <HkMapRoomsWrapper
                         rooms={roomData}
                         onMouseOver={(_, r) => {
                             roomDisplayStore.setSelectedRoomIfNotPinned(r.sceneName);
@@ -163,3 +167,6 @@ export function HKMap({ className }: HKMapProps) {
         </div>
     );
 }
+
+console.log('react', { roomDisplayStoreSolid });
+console.log('react', test);

@@ -3,7 +3,6 @@ import { Palette, Play } from 'lucide-react';
 import { HKVizText } from '~/app/_components/hkviz-text';
 import { roomInfoColoringToggleClasses } from '~/app/run/[id]/_room_infos';
 import { asReadonlySignal } from '../../utils/signals';
-import { hkMapRoomRectClass } from '../../viz/charts/hk-map-rooms';
 import { animationStore } from '../animation-store';
 import { mapZoomStore } from '../map-zoom-store';
 import { roomColoringStore } from '../room-coloring-store';
@@ -11,6 +10,11 @@ import { roomDisplayStore } from '../room-display-store';
 import { uiStore } from '../ui-store';
 import { viewportStore } from '../viewport-store';
 import { makeStep, type Step } from './step';
+import { untrack } from 'solid-js';
+
+export function hkMapRoomRectClass({ gameObjectName }: { gameObjectName: string }) {
+    return 'hk-map-room-react_' + gameObjectName;
+}
 
 function P({ children }: { children: React.ReactNode }) {
     return <p className="mb-3">{children}</p>;
@@ -72,7 +76,7 @@ const steps: Step[] = [
             </>
         ),
         activeEffect: () => {
-            if (roomDisplayStore.selectedScenePinSource.value === 'map-room-click') {
+            if (roomDisplayStore.selectedScenePinSource.valuePreact === 'map-room-click') {
                 next();
             }
 
@@ -94,8 +98,8 @@ const steps: Step[] = [
             target: '.room-info-pin-button',
             content: () => <P>Here, you can also pin and unpin the selected room.</P>,
             activeEffect: () => {
-                roomDisplayStore.selectedScenePinned.value;
-                if (roomDisplayStore.selectedScenePinSource.value === 'pin-button-click') {
+                roomDisplayStore.selectedScenePinned.valuePreact;
+                if (roomDisplayStore.selectedScenePinSource.valuePreact === 'pin-button-click') {
                     pinChanges++;
                 }
 
@@ -106,10 +110,11 @@ const steps: Step[] = [
             onActivate: () => {
                 pinChanges = 0;
                 uiStore.activateTab('map');
-                if (roomDisplayStore.selectedSceneName.peek() == null) {
+                if (roomDisplayStore.selectedSceneName.peekPreact() == null) {
                     // if no scene has been selected, lets just select one for the user
-                    roomDisplayStore.selectedSceneName.value =
-                        animationStore.currentSceneEventWithMainMapRoom.value.sceneEvent?.sceneName ?? null;
+                    roomDisplayStore.setSelectedSceneName(
+                        animationStore.currentSceneEventWithMainMapRoom.value.sceneEvent?.sceneName ?? null,
+                    );
                 }
             },
         };
@@ -130,23 +135,26 @@ const steps: Step[] = [
         ),
         onActivate: () => {
             uiStore.activateTab('map');
-            if (roomDisplayStore.selectedSceneName.peek() == null) {
-                // if no scene has been selected, lets just select one for the user
-                roomDisplayStore.selectedSceneName.value =
-                    animationStore.currentSceneEventWithMainMapRoom.value.sceneEvent?.sceneName ?? null;
-            }
-            if (roomColoringStore.colorMode.peek() !== 'area') {
-                roomColoringStore.setRoomColorMode('area');
-            }
+            untrack(() => {
+                if (roomDisplayStore.selectedSceneName() == null) {
+                    // if no scene has been selected, lets just select one for the user
+                    roomDisplayStore.setSelectedSceneName(
+                        animationStore.currentSceneEventWithMainMapRoom.value.sceneEvent?.sceneName ?? null,
+                    );
+                }
+                if (roomColoringStore.colorMode.peekPreact() !== 'area') {
+                    roomColoringStore.setRoomColorMode('area');
+                }
+            });
         },
         activeEffect: () => {
-            if (roomColoringStore.colorMode.value !== 'area') {
+            if (roomColoringStore.colorMode.valuePreact !== 'area') {
                 next();
             }
         },
     },
     {
-        target: computed(() => '.' + roomInfoColoringToggleClasses(roomColoringStore.var1.value)),
+        target: computed(() => '.' + roomInfoColoringToggleClasses(roomColoringStore.var1.valuePreact)),
         targetFallback: '.room-infos-card',
         popoverSide: computed(() => (viewportStore.isMobileLayout.value ? 'bottom' : 'right')),
         content: () => (
@@ -157,12 +165,12 @@ const steps: Step[] = [
         ),
         onActivate: () => {
             uiStore.activateTab('map');
-            if (roomColoringStore.colorMode.peek() === 'area') {
+            if (roomColoringStore.colorMode.peekPreact() === 'area') {
                 roomColoringStore.cycleRoomColorVar1('damageTaken');
             }
         },
         activeEffect: () => {
-            if (roomColoringStore.colorMode.value === 'area') {
+            if (roomColoringStore.colorMode.valuePreact === 'area') {
                 next();
             }
         },
@@ -186,7 +194,7 @@ const steps: Step[] = [
                 </>
             ),
             onActivate: () => {
-                roomDisplayStore.roomVisibility.value = 'visited-animated';
+                roomDisplayStore.setRoomVisibility('visited-animated');
                 roomColoringStore.setRoomColorMode('area');
                 animationStore.setIsPlaying(false);
                 roomDisplayStore.unpinScene('code');

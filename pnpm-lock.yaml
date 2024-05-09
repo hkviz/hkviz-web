@@ -42,6 +42,9 @@ importers:
       '@hkviz/viz':
         specifier: workspace:*
         version: link:../viz
+      '@hkviz/viz-ui':
+        specifier: workspace:*
+        version: link:../viz-ui
       '@hookform/resolvers':
         specifier: ^3.3.3
         version: 3.3.3(react-hook-form@7.49.2)
@@ -393,9 +396,46 @@ importers:
       '@preact/signals-react':
         specifier: ^2.0.1
         version: 2.0.1(react@18.2.0)
+      '@types/d3':
+        specifier: ^7.4.3
+        version: 7.4.3
+      d3:
+        specifier: ^7.8.5
+        version: 7.8.5
       fuse.js:
         specifier: ^7.0.0
         version: 7.0.0
+      micro-memoize:
+        specifier: ^4.1.2
+        version: 4.1.2
+    devDependencies:
+      solid-js:
+        specifier: ^1.8.17
+        version: 1.8.17
+
+  packages/viz-ui:
+    dependencies:
+      '@hkviz/parser':
+        specifier: workspace:*
+        version: link:../parser
+      '@hkviz/viz':
+        specifier: workspace:*
+        version: link:../viz
+      '@preact/signals-react':
+        specifier: ^2.0.1
+        version: 2.0.1(react@18.2.0)
+      '@types/d3':
+        specifier: ^7.4.3
+        version: 7.4.3
+      d3:
+        specifier: ^7.8.5
+        version: 7.8.5
+      fuse.js:
+        specifier: ^7.0.0
+        version: 7.0.0
+      micro-memoize:
+        specifier: ^4.1.2
+        version: 4.1.2
     devDependencies:
       solid-js:
         specifier: ^1.8.17

@@ -1,5 +1,5 @@
-import { createMemo, batch, createEffect, untrack } from 'solid-js';
-import { type RoomData, mainRoomDataBySceneName } from '@hkviz/parser';
+import { createMemo, batch, createEffect, untrack, onCleanup } from 'solid-js';
+import { type RoomData, mainRoomDataBySceneName, type SceneEvent } from '@hkviz/parser';
 import { gameplayStore } from './gameplay-store';
 import { createSignal } from '../preact-solid-combat';
 
@@ -28,16 +28,18 @@ const currentSceneEvent = createMemo(() => {
     return r.sceneEvents[index] ?? null;
 });
 
-const currentSceneEventWithMainMapRoom = createMemo(() => {
-    let sceneEvent = currentSceneEvent();
-    let mainRoomData: RoomData | undefined = undefined;
-    do {
-        if (!sceneEvent) break;
-        mainRoomData = mainRoomDataBySceneName.get(sceneEvent.sceneName);
-        sceneEvent = sceneEvent.previousSceneEvent;
-    } while (!mainRoomData && !!sceneEvent);
-    return { mainRoomData, sceneEvent };
-});
+const currentSceneEventWithMainMapRoom = createMemo<{ mainRoomData: RoomData | null; sceneEvent: SceneEvent | null }>(
+    () => {
+        let sceneEvent = currentSceneEvent();
+        let mainRoomData: RoomData | null = null;
+        do {
+            if (!sceneEvent) break;
+            mainRoomData = mainRoomDataBySceneName.get(sceneEvent.sceneName) ?? null;
+            sceneEvent = sceneEvent.previousSceneEvent;
+        } while (!mainRoomData && !!sceneEvent);
+        return { mainRoomData, sceneEvent };
+    },
+);
 
 const currentFrameEndEventIndex = createMemo(() => {
     return gameplayStore.recording()?.frameEndEventIndexFromMs(msIntoGame()) ?? null;
@@ -117,5 +119,5 @@ createEffect(() => {
         });
     }, intervalMs);
 
-    return () => clearInterval(interval);
+    onCleanup(() => clearInterval(interval));
 });

@@ -1,7 +1,8 @@
 import { areaNames, hkLangString, roomData, type AreaNameTextData } from '@hkviz/parser';
+import { changeRoomColorForLightTheme } from '@hkviz/viz';
 import { useSignalEffect } from '@preact/signals-react';
 import { useMemo, useRef } from 'react';
-import { changeRoomColorForLightTheme, roomColoringStore } from '~/lib/stores/room-coloring-store';
+import { roomColoringStore } from '~/lib/stores/room-coloring-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
 import { themeStore } from '~/lib/stores/theme-store';
 import { ebGaramond } from '~/styles/fonts';
@@ -17,8 +18,8 @@ function HkMapText({
 
     // color
     useSignalEffect(function hkMapTextColorEffect() {
-        const colorMode = roomColoringStore.colorMode.value;
-        const theme = themeStore.currentTheme.value;
+        const colorMode = roomColoringStore.colorMode.valuePreact;
+        const theme = themeStore.currentTheme.valuePreact;
 
         let fill: string;
         if (theme === 'light') {
@@ -32,7 +33,9 @@ function HkMapText({
     // opacity
     useSignalEffect(function hkMapTextOpacityEffect() {
         const typeVisible =
-            textData.type === 'area' ? roomDisplayStore.showAreaNames.value : roomDisplayStore.showSubAreaNames.value;
+            textData.type === 'area'
+                ? roomDisplayStore.showAreaNames.valuePreact
+                : roomDisplayStore.showSubAreaNames.valuePreact;
 
         const visible =
             typeVisible &&

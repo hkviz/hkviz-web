@@ -15,7 +15,6 @@ import { useEffect, useRef } from 'react';
 import { animationStore } from '~/lib/stores/animation-store';
 import { gameplayStore } from '~/lib/stores/gameplay-store';
 import { hoverMsStore } from '~/lib/stores/hover-ms-store';
-import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '~/lib/stores/room-coloring-store';
 import { roomDisplayStore } from '~/lib/stores/room-display-store';
 import { themeStore } from '~/lib/stores/theme-store';
 import { uiStore } from '~/lib/stores/ui-store';
@@ -23,6 +22,7 @@ import { useAutoSizeCanvas } from '~/lib/utils/canvas';
 import { signalRef } from '~/lib/utils/signal-ref';
 import { mainRoomDataBySceneName } from '@hkviz/parser';
 import { DurationSignal } from './_duration';
+import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '@hkviz/viz';
 
 function Times({ className }: { className?: string }) {
     return (
@@ -57,7 +57,7 @@ function AnimationTimeLineColorCodes() {
     const sceneChanges = useComputed(function timelineColorCodesSceneChangesComputed() {
         const sceneEvents = gameplayStore.recording.valuePreact?.sceneEvents ?? EMPTY_ARRAY;
         const timeframe = gameplayStore.timeFrame.value;
-        const theme = themeStore.currentTheme.value;
+        const theme = themeStore.currentTheme.valuePreact;
         const sceneChanges = sceneEvents.map((it) => {
             const mainVirtualScene = it.getMainVirtualSceneName();
             const mainRoomData = mainRoomDataBySceneName.get(mainVirtualScene);
@@ -94,7 +94,7 @@ function AnimationTimeLineColorCodes() {
         const _sceneChanges = sceneChanges.value;
         const _c = autoSizeCanvas.value;
         const timeframe = gameplayStore.timeFrame.value;
-        const selectedScene = roomDisplayStore.selectedSceneName.value;
+        const selectedScene = roomDisplayStore.selectedSceneName.valuePreact;
         const selectedZone = roomDisplayStore.selectedRoomZoneFormatted.value;
 
         if (!_c || !_sceneChanges) return;
@@ -228,7 +228,7 @@ function AnimationTimeLineSlider() {
                 uiStore.showMapIfOverview();
                 dragRef.current.previousDiff = diff;
 
-                if (!isV1 && !roomDisplayStore.selectedScenePinned.value) {
+                if (!isV1 && !roomDisplayStore.selectedScenePinned.valuePreact) {
                     const sceneEvent = gameplayStore.recording.valuePreact?.sceneEventFromMs(newMsIntoGame);
                     if (sceneEvent) {
                         roomDisplayStore.setSelectedRoomIfNotPinned(sceneEvent.getMainVirtualSceneName());

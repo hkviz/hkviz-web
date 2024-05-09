@@ -40,7 +40,7 @@ export function RunOverviewTab({
     function viewAnimatedAnalytics() {
         uiStore.activateTab('map');
         animationStore.setIsPlaying(true);
-        roomDisplayStore.roomVisibility.value = 'visited-animated';
+        roomDisplayStore.setRoomVisibility('visited-animated');
         traceStore.visibility.value = 'animated';
         roomColoringStore.setRoomColorMode('area');
         extraChartStore.setFollowsAnimationAutoBounds(true);
@@ -51,9 +51,9 @@ export function RunOverviewTab({
     function viewStaticAnalytics() {
         uiStore.activateTab('map');
         animationStore.setIsPlaying(false);
-        roomDisplayStore.roomVisibility.value = 'visited';
+        roomDisplayStore.setRoomVisibility('visited');
         roomColoringStore.setRoomColorMode('1-var');
-        if (roomColoringStore.var1.value !== 'firstVisitMs') {
+        if (roomColoringStore.var1.valuePreact !== 'firstVisitMs') {
             roomColoringStore.cycleRoomColorVar1('firstVisitMs');
         }
         extraChartStore.setFollowsAnimationAutoBounds(false);

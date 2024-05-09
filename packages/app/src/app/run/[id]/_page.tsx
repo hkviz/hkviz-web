@@ -14,10 +14,12 @@ import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/componen
 import { Tabs } from '@/components/ui/tabs';
 import { Tooltip, TooltipContent } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import { type MainCardTab } from '@hkviz/viz';
 import { useSignals } from '@preact/signals-react/runtime';
 import { TooltipTrigger } from '@radix-ui/react-tooltip';
 import { Maximize, Minus, Rows } from 'lucide-react';
 import { type Session } from 'next-auth';
+import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import { type ImperativePanelHandle, type PanelGroupOnLayout } from 'react-resizable-panels';
 import { splitsStore } from '~/lib/stores/splits-store';
@@ -34,8 +36,6 @@ import { RunOverviewTab } from './_run-overview-tab';
 import { RunSplits } from './_run_splits';
 import { SingleRunPageTour } from './_tour';
 import { ViewOptions } from './_view_options';
-import dynamic from 'next/dynamic';
-import { MainCardTab } from '@hkviz/viz';
 
 const RunSplitsSolidWrapper = dynamic(() => import('./_dynamic'), { ssr: false });
 

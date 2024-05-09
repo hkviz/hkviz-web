@@ -18,12 +18,12 @@ export function ViewOptions() {
 
     const isV1 = uiStore.isV1.value;
 
-    const roomVisibility = roomDisplayStore.roomVisibility.value;
+    const roomVisibility = roomDisplayStore.roomVisibility.valuePreact;
     const traceVisibility = traceStore.visibility.value;
-    const roomColorMode = roomColoringStore.colorMode.value;
+    const roomColorMode = roomColoringStore.colorMode.valuePreact;
 
-    const showAreaNames = roomDisplayStore.showAreaNames.value;
-    const showSubAreaNames = roomDisplayStore.showSubAreaNames.value;
+    const showAreaNames = roomDisplayStore.showAreaNames.valuePreact;
+    const showSubAreaNames = roomDisplayStore.showSubAreaNames.valuePreact;
 
     return (
         <Table className="w-full">
@@ -39,7 +39,7 @@ export function ViewOptions() {
                         <Select
                             value={roomVisibility}
                             onValueChange={(v) => {
-                                roomDisplayStore.roomVisibility.value = v as any;
+                                roomDisplayStore.setRoomVisibility(v as any);
                             }}
                         >
                             <SelectTrigger id="visibleRoomSelectTrigger">
@@ -132,27 +132,27 @@ export function ViewOptions() {
                                 <div className="flex flex-row items-center">
                                     <label
                                         htmlFor={id + 'show_area_names'}
-                                        className="grow py-1.5 pr-2 text-sm font-medium leading-none text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                        className="text-muted-foreground grow py-1.5 pr-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                     >
                                         Main areas
                                     </label>
                                     <Checkbox
                                         id={id + 'show_area_names'}
                                         checked={showAreaNames}
-                                        onCheckedChange={(c) => (roomDisplayStore.showAreaNames.value = c === true)}
+                                        onCheckedChange={(c) => roomDisplayStore.setShowAreaNames(c === true)}
                                     />
                                 </div>
                                 <div className="flex flex-row items-center">
                                     <label
                                         htmlFor={id + 'show_sub_area_names'}
-                                        className="grow py-1.5 pr-2 text-sm font-medium leading-none text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                                        className="text-muted-foreground grow py-1.5 pr-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                     >
                                         Sub areas
                                     </label>
                                     <Checkbox
                                         id={id + 'show_sub_area_names'}
                                         checked={showSubAreaNames}
-                                        onCheckedChange={(c) => (roomDisplayStore.showSubAreaNames.value = c === true)}
+                                        onCheckedChange={(c) => roomDisplayStore.setShowSubAreaNames(c === true)}
                                     />
                                 </div>
                             </div>

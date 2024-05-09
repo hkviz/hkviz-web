@@ -72,7 +72,7 @@ const RunSplitRow = forwardRef<HTMLTableRowElement, RowProps>(function RunSplitR
             const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
             if (sceneName) {
                 if (activeStateRef.current !== 'next') {
-                    roomDisplayStore.setSelectedRoom(sceneName);
+                    roomDisplayStore.setSelectedSceneName(sceneName);
                     hasClicked.current.hasClicked = true;
                     markClicked();
                 } else {
