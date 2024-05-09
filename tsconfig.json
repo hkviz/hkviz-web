@@ -19,5 +19,5 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true
     },
-    "exclude": ["node_modules", "dist", "build"]
+    "exclude": ["node_modules", "dist", "build", "**/dist"]
 }

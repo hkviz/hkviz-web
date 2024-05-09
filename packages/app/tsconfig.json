@@ -13,16 +13,6 @@
         ],
         "incremental": true
     },
-    "include": [
-        ".eslintrc.cjs",
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.cjs",
-        "**/*.mjs",
-        // ".next/types/**/*.ts",
-        "src/app/privacy-policy/page.mdx",
-        ".next/types/**/*.ts"
-    ],
+    "include": [".eslintrc.cjs", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", ".next/types/**/*.ts"],
     "exclude": ["node_modules"]
 }

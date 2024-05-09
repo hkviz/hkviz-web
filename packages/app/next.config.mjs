@@ -4,6 +4,7 @@
  */
 await import('./src/env.mjs');
 import withMDX from '@next/mdx';
+import path from 'path';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
@@ -44,6 +45,15 @@ const config = {
                 ],
             },
         ];
+    },
+    webpack: (config) => {
+        // Add this to tell webpack to include solid-js/web correctly
+        config.resolve.alias['solid-js/web'] = path.resolve('./node_modules/solid-js/web/dist/web.js');
+        config.resolve.alias['solid-js'] = path.resolve('./node_modules/solid-js/dist/solid.js');
+
+        // Return the altered config
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+        return config;
     },
 };
 

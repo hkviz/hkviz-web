@@ -34,6 +34,9 @@ import { RunOverviewTab } from './_run-overview-tab';
 import { RunSplits } from './_run_splits';
 import { SingleRunPageTour } from './_tour';
 import { ViewOptions } from './_view_options';
+import dynamic from 'next/dynamic';
+
+const RunSplitsSolidWrapper = dynamic(() => import('./_dynamic'), { ssr: false });
 
 interface Props {
     session: Session | null;
@@ -91,6 +94,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     </CardHeader>
                     <CardContent className="px-0 pb-1">
                         <ViewOptions />
+                        <RunSplitsSolidWrapper />
                     </CardContent>
                 </Card>
                 <RoomInfo />

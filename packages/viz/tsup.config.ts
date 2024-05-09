@@ -14,6 +14,12 @@ const preset_options: preset.PresetOptions = {
             // set `true` or pass a specific path to generate a server-only entry
             server_entry: false,
         },
+        {
+            name: 'client-only',
+            entry: 'src/client-only.ts',
+            dev_entry: true,
+            server_entry: false,
+        },
         // {
         //     // non-default entries with "index" filename should have a name specified
         //     name: 'additional',

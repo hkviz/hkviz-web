@@ -11,6 +11,7 @@ export default {
         './src/**/*.mdx',
         './@/components/**/*.{ts,tsx}',
         './next.config.mjs',
+        '../viz/src/**/*.{ts,tsx}',
     ],
     theme: {
         container: {
