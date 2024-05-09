@@ -1,0 +1,96 @@
+{
+    "name": "@hkviz/viz",
+    "version": "0.0.1",
+    "description": "The package containing visualizations of gameplay data",
+    "license": "MIT",
+    "author": "hkviz",
+    "contributors": [],
+    "homepage": "https://www.hkviz.org",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/hkviz/hkviz-web.git"
+    },
+    "bugs": {
+        "url": "https://github.com/hkviz/hkviz-web/issues"
+    },
+    "keywords": [
+        "hkviz",
+        "analytics",
+        "solid"
+    ],
+    "private": true,
+    "sideEffects": false,
+    "publishConfig": {
+        "access": "public"
+    },
+    "files": [
+        "dist"
+    ],
+    "type": "module",
+    "main": "./dist/server.js",
+    "module": "./dist/server.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "worker": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "browser": {
+            "development": {
+                "import": {
+                    "types": "./dist/index.d.ts",
+                    "default": "./dist/dev.js"
+                }
+            },
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            }
+        },
+        "deno": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "node": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "development": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/dev.js"
+            }
+        },
+        "import": {
+            "types": "./dist/index.d.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "browser": {
+        "./dist/server.js": "./dist/index.js"
+    },
+    "typesVersions": {},
+    "scripts": {
+        "dev": "tsup --watch",
+        "build": "tsup",
+        "test": "concurrently pnpm:test:*",
+        "test:client": "vitest -c ../../configs/vitest.config.ts",
+        "test:ssr": "pnpm run test:client --mode ssr",
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@hkviz/parser": "workspace:*"
+    },
+    "devDependencies": {
+        "solid-js": "^1.8.17"
+    },
+    "peerDependencies": {
+        "solid-js": "^1.8.17"
+    }
+}
