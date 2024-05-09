@@ -27,54 +27,20 @@
         "dist"
     ],
     "type": "module",
-    "main": "./dist/server.js",
-    "module": "./dist/server.js",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "exports": {
-        "worker": {
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/server.js"
-            }
-        },
-        "browser": {
-            "development": {
-                "import": {
-                    "types": "./dist/index.d.ts",
-                    "default": "./dist/dev.js"
-                }
-            },
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/index.js"
-            }
-        },
-        "deno": {
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/server.js"
-            }
-        },
-        "node": {
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/server.js"
-            }
-        },
-        "development": {
-            "import": {
-                "types": "./dist/index.d.ts",
-                "default": "./dist/dev.js"
-            }
-        },
         "import": {
             "types": "./dist/index.d.ts",
             "default": "./dist/index.js"
+        },
+        "require": {
+            "types": "./dist/index.d.cts",
+            "default": "./dist/index.cjs"
         }
     },
-    "browser": {
-        "./dist/server.js": "./dist/index.js"
-    },
+    "browser": {},
     "typesVersions": {},
     "scripts": {
         "dev": "tsup --watch",

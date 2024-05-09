@@ -10,9 +10,9 @@ const preset_options: preset.PresetOptions = {
             // entries with '.tsx' extension will have `solid` export condition generated
             entry: 'src/index.ts',
             // set `true` or pass a specific path to generate a development-only entry
-            dev_entry: true,
+            dev_entry: false,
             // set `true` or pass a specific path to generate a server-only entry
-            server_entry: true,
+            server_entry: false,
         },
         // {
         //     // non-default entries with "index" filename should have a name specified
@@ -27,7 +27,7 @@ const preset_options: preset.PresetOptions = {
     // Set to `true` to remove all `console.*` calls and `debugger` statements in prod builds
     drop_console: true,
     // Set to `true` to generate a CommonJS build alongside ESM
-    cjs: false,
+    cjs: true,
 };
 
 export default defineConfig((config) => {
