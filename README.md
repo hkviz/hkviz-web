@@ -1,6 +1,6 @@
 <p align="center">
     <a href="https://www.hkviz.org">
-        <img width="128" height="128" src="logo/logo_glow.svg">
+        <img width="128" height="128" src="packages/app/logo/logo_glow.svg">
     </a>
 </p>
 
@@ -32,3 +32,15 @@ To set this project up locally:
     -   a r2/s3 bucket (where analytics files are stored)
     -   auth providers (discord, google, ...). Can be left empty if you are testing with the email login
 -   Start the project locally using `npm run dev`
+
+### Project structure
+
+This project is a monorepo, with the following packages:
+
+-   `@hkviz/hk-data`: A package containing extracted data from Hollow Knight. It mainly exists so the other packages can be licensed under MIT, while this package contains copyrighted data.
+-   `@hkviz/parser`: A package for parsing the recording files created by the mod
+-   `@hkviz/app`: The frontend of the project, currently a Next.js app
+
+### License
+
+This project will largely be MIT licensed, with the exception of the `@hkviz/hk-data` package. Currently, this separation is not yet finished. Therefore, licenses are still missing.
