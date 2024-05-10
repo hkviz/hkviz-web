@@ -1,9 +1,10 @@
 import { type AggregationVariable } from '@hkviz/viz';
 import { Clock12, Clock2, Hash, type LucideIcon } from 'lucide-solid';
 import { coinImg, focusImg, healthImg, shadeImg, spellDownImg, spellFireballImg, spellUpImg } from '../img-urls';
-import { render } from 'solid-js/web';
+import { Dynamic, render } from 'solid-js/web';
+import { Match, Switch } from 'solid-js';
 
-export const aggregationVariableDisplayInfos = {
+export const aggregationVariableDisplayInfos: Record<AggregationVariable, { Icon?: LucideIcon; image?: string }> = {
     visits: {
         Icon: Hash,
     },
@@ -37,19 +38,23 @@ export const aggregationVariableDisplayInfos = {
     geoSpent: {
         image: coinImg,
     },
-} satisfies Record<AggregationVariable, { Icon: LucideIcon } | { image: string }>;
+};
 
-export function AggregationVariableIcon({ variable }: { variable: AggregationVariable }) {
-    const displayInfos = aggregationVariableDisplayInfos[variable];
+export function AggregationVariableIcon(props: { variable: AggregationVariable }) {
+    const displayInfos = () => aggregationVariableDisplayInfos[props.variable];
 
-    if ('image' in displayInfos) {
-        return <img class="w-6" src={displayInfos.image} alt={'Aggregation Variable icon'} aria-hidden={true} />;
-    } else if ('Icon' in displayInfos) {
-        const Icon = displayInfos.Icon;
-        return <Icon class="h-5 w-5" />;
-    } else {
-        return null;
-    }
+    return (
+        <Switch>
+            <Match when={'image' in displayInfos() && displayInfos()}>
+                {(displayInfos) => (
+                    <img class="w-6" src={displayInfos().image} alt={'Aggregation Variable icon'} aria-hidden={true} />
+                )}
+            </Match>
+            <Match when={'Icon' in displayInfos() && displayInfos()}>
+                {(displayInfos) => <Dynamic component={displayInfos().Icon} class="h-5 w-5" />}
+            </Match>
+        </Switch>
+    );
 }
 
 export function renderAggregationVariableIcon(variable: AggregationVariable, container: HTMLElement) {

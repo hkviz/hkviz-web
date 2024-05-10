@@ -46,13 +46,13 @@ import { HKMapRoom } from '../map/room-icon';
 import { render } from 'solid-js/web';
 import { roomInfoColoringToggleClasses } from '@hkviz/viz';
 
-function AggregationVariableToggles({ variable }: { variable: AggregationVariable }) {
+function AggregationVariableToggles(props: { variable: AggregationVariable }) {
     const roomColors = roomColoringStore.colorMode;
     const roomColorVar1 = roomColoringStore.var1;
     const roomColorVar1Curve = roomColoringStore.var1Curve;
     const isV1 = uiStore.isV1;
 
-    const isActive = () => roomColors() === '1-var' && roomColorVar1() === variable;
+    const isActive = () => roomColors() === '1-var' && roomColorVar1() === props.variable;
 
     // const showVar1 = roomColors === '1-var';
 
@@ -64,7 +64,7 @@ function AggregationVariableToggles({ variable }: { variable: AggregationVariabl
                         variant="outline"
                         pressed={isActive()}
                         onChange={() => {
-                            roomColoringStore.cycleRoomColorVar1(variable);
+                            roomColoringStore.cycleRoomColorVar1(props.variable);
                             uiStore.showMapIfOverview();
                         }}
                         class={
@@ -79,7 +79,7 @@ function AggregationVariableToggles({ variable }: { variable: AggregationVariabl
                                       ? 'bg-green-600 text-white'
                                       : '') +
                             ' ' +
-                            roomInfoColoringToggleClasses(variable)
+                            roomInfoColoringToggleClasses(props.variable)
                         }
                     >
                         <span class="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
@@ -101,7 +101,7 @@ function AggregationVariableToggles({ variable }: { variable: AggregationVariabl
                     </Toggle>
                 </ContextMenuTrigger>
                 <ContextMenuContent>
-                    <RoomColorCurveContextMenuItems variable={variable} />
+                    <RoomColorCurveContextMenuItems variable={props.variable} />
                 </ContextMenuContent>
             </ContextMenu>
         </TableCell>
@@ -122,23 +122,24 @@ const AggregationVariableRow: Component<{
     });
     const variableInfo = createMemo(() => aggregationVariableInfos[props.variable]);
 
-    if (!selectedRoom) return null;
     return (
-        <TableRow>
-            <TableHead class="flex items-center p-1 pl-3">
-                <Tooltip>
-                    <TooltipTrigger>
-                        <div class="flex flex-row items-center justify-center gap-2">
-                            <AggregationVariableIcon variable={props.variable} />
-                            <span>{variableInfo().name}</span>
-                        </div>
-                    </TooltipTrigger>
-                    <TooltipContent>{variableInfo().description}</TooltipContent>
-                </Tooltip>
-            </TableHead>
-            <TableCell class="w-1 p-1 pr-6 text-right">{formatted()}</TableCell>
-            <AggregationVariableToggles variable={props.variable} />
-        </TableRow>
+        <Show when={selectedRoom()}>
+            <TableRow>
+                <TableHead class="flex items-center p-1 pl-3">
+                    <Tooltip>
+                        <TooltipTrigger>
+                            <div class="flex flex-row items-center justify-center gap-2">
+                                <AggregationVariableIcon variable={props.variable} />
+                                <span>{variableInfo().name}</span>
+                            </div>
+                        </TooltipTrigger>
+                        <TooltipContent>{variableInfo().description}</TooltipContent>
+                    </Tooltip>
+                </TableHead>
+                <TableCell class="w-1 p-1 pr-6 text-right">{formatted()}</TableCell>
+                <AggregationVariableToggles variable={props.variable} />
+            </TableRow>
+        </Show>
     );
 };
 
@@ -251,7 +252,7 @@ export function RoomInfo() {
             <CardHeader class="flex flex-row items-center p-2 pt-2">
                 <Show when={roomInfos().allRoomInfosIncludingSubsprites}>
                     {(allRoomDataIncludingSubspritesBySceneName) => (
-                        <HKMapRoom roomInfos={allRoomDataIncludingSubspritesBySceneName()} className="mr-4 h-14 w-14" />
+                        <HKMapRoom roomInfos={allRoomDataIncludingSubspritesBySceneName()} class="mr-4 h-14 w-14" />
                     )}
                 </Show>
 

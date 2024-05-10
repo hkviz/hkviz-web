@@ -6,7 +6,7 @@ import { createMemo, type Component } from 'solid-js';
 import { HkMapRooms } from './hk-map-rooms';
 
 export interface HKMapRoomProps {
-    className?: string;
+    class?: string;
     roomInfos: RoomInfo[];
 }
 
@@ -62,7 +62,7 @@ export const HKMapRoom: Component<HKMapRoomProps> = (props) => {
     });
 
     return (
-        <div class={cn('relative', props.className)}>
+        <div class={cn('relative', props.class)}>
             <svg class="absolute inset-0" width="100%" height="100%" viewBox="0 0 1 1">
                 <HkMapRooms
                     rooms={roomInfosOfRoom()}

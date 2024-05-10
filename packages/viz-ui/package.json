@@ -49,6 +49,7 @@
         "test": "concurrently pnpm:test:*",
         "test:client": "vitest -c ../../configs/vitest.config.ts",
         "test:ssr": "pnpm run test:client --mode ssr",
+        "lint": "eslint --ext .ts,.tsx src",
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
@@ -64,6 +65,7 @@
         "micro-memoize": "^4.1.2"
     },
     "devDependencies": {
+        "eslint-plugin-solid": "^0.14.0",
         "solid-js": "^1.8.17"
     },
     "peerDependencies": {

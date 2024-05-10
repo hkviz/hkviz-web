@@ -3,13 +3,13 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { type AggregationVariable, roomColorCurves, roomColoringStore } from '@hkviz/viz';
 import { For } from 'solid-js';
 
-export function RoomColorCurveContextMenuItems({ variable }: { variable: AggregationVariable }) {
+export function RoomColorCurveContextMenuItems(props: { variable: AggregationVariable }) {
     return (
         <For each={roomColorCurves}>
             {(curve) => (
                 <ContextMenuItem
                     onClick={() => {
-                        roomColoringStore.setRoomColorVar1(variable);
+                        roomColoringStore.setRoomColorVar1(props.variable);
                         roomColoringStore.setRoomColorVar1Curve(curve);
                     }}
                 >
@@ -20,11 +20,11 @@ export function RoomColorCurveContextMenuItems({ variable }: { variable: Aggrega
     );
 }
 
-export function RoomColorCurveSelect({ variable }: { variable: AggregationVariable }) {
+export function RoomColorCurveSelect(props: { variable: AggregationVariable }) {
     const roomColorVar1Curve = roomColoringStore.var1Curve;
 
     function handleValueChange(value: string): void {
-        roomColoringStore.setRoomColorVar1(variable);
+        roomColoringStore.setRoomColorVar1(props.variable);
         roomColoringStore.setRoomColorVar1Curve(roomColorCurves.find((curve) => curve.name === value)!);
     }
 
