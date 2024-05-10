@@ -3,10 +3,10 @@ import { redirect } from 'next/navigation';
 import { hkExperienceFinished } from '~/lib/types/hk-experience';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
-import { deleteFlowCookie, getParticipantIdFromCookie, setFlowCookie } from '../_utils';
+import { deleteFlowCookie, getParticipantIdFromCookieOrSessionUser, setFlowCookie } from '../_utils';
 
 export const GET = async () => {
-    const participantId = getParticipantIdFromCookie();
+    const participantId = await getParticipantIdFromCookieOrSessionUser();
     setFlowCookie('user-study');
     if (!participantId) {
         return new Response('No participant ID found', { status: 400 });

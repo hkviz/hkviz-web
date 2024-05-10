@@ -188,8 +188,7 @@ export function TimeSlotPicker({
                     {callOption === 'discord' && (
                         <p className="pt-2 text-left text-sm opacity-70">
                             You will be contacted by a user named @OliverGrack. Please make sure to accept the friend
-                            request, so I can call you. You can remove me from your friends list after the study is
-                            over.
+                            request, so I can call you. You can remove me from your friends list after the call.
                         </p>
                     )}
                     {callOption === 'zoom' && (
@@ -258,9 +257,9 @@ export function TimeSlotPicker({
                     )}
                     {!timeSlotsQuery.data && (
                         <>
-                            <Skeleton className="h-36 w-full border bg-card" />
-                            <Skeleton className="h-44 w-full border bg-card" />
-                            <Skeleton className="h-44 w-full border bg-card" />
+                            <Skeleton className="bg-card h-36 w-full border" />
+                            <Skeleton className="bg-card h-44 w-full border" />
+                            <Skeleton className="bg-card h-44 w-full border" />
                         </>
                     )}
                 </div>

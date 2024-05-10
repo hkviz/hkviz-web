@@ -1,7 +1,7 @@
 import { TRPCError } from '@trpc/server';
 import { and, eq, isNull } from 'drizzle-orm';
 import { z } from 'zod';
-import { getParticipantIdFromCookie } from '~/app/user-study/_utils';
+import { getParticipantIdFromCookieOrSessionUser } from '~/app/user-study/_utils';
 import { db } from '~/server/db';
 import { hkExperience, studyParticipant, userDemographics, userStudyInformedConsent, users } from '~/server/db/schema';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
@@ -46,6 +46,7 @@ export const participantRouter = createTRPCRouter({
                     timeZone: true,
                     callName: true,
                     callOption: true,
+                    userStudyFinished: true,
                 },
                 with: {
                     user: {
@@ -63,6 +64,7 @@ export const participantRouter = createTRPCRouter({
                 timeZone: result.timeZone,
                 callName: result.callName,
                 callOption: result.callOption,
+                userStudyFinished: result.userStudyFinished,
             };
         }),
     existsAndStoreUserId: publicProcedure
@@ -71,7 +73,7 @@ export const participantRouter = createTRPCRouter({
             return await existsAndStoreUserId(input);
         }),
     setSkipLoginQuestion: publicProcedure.mutation(async ({ ctx }) => {
-        const participantId = getParticipantIdFromCookie();
+        const participantId = await getParticipantIdFromCookieOrSessionUser();
         if (!participantId) {
             throw new TRPCError({
                 code: 'UNAUTHORIZED',

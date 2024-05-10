@@ -193,7 +193,7 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
                     <CardContent>
                         <div>
                             <FormFieldLabel htmlFor={ids.gotDreamnail} className="pt-0">
-                                Did you already get the dreamnail and/or enter a dream?
+                                Did you get the dreamnail and/or enter a dream?
                             </FormFieldLabel>
                             <ToggleGroup
                                 type="single"
@@ -215,7 +215,7 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
                         </div>
                         <Expander expanded={showEndboss}>
                             <FormFieldLabel htmlFor={ids.didEndboss}>
-                                Did you already defeat the endboss and see the credits?
+                                Did you defeat the endboss and see the credits?
                             </FormFieldLabel>
                             <ToggleGroup
                                 type="single"
@@ -241,7 +241,7 @@ export function HkExperienceClientForm(props: HKExperienceFormProps) {
                         </Expander>
                         <Expander expanded={showWhitePalace}>
                             <FormFieldLabel htmlFor={ids.enteredWhitePalace}>
-                                Did you already enter white palace?
+                                Did you enter white palace?
                             </FormFieldLabel>
                             <ToggleGroup
                                 type="single"

@@ -3,10 +3,10 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CircleCheck } from 'lucide-react';
 import Link from 'next/link';
 import { ContentCenterWrapper } from '~/app/_components/content-wrapper';
-import { getParticipantIdFromCookie } from '../_utils';
+import { getParticipantIdFromCookieOrSessionUser } from '../_utils';
 
 export default function UserStudyDonePage() {
-    const participantId = getParticipantIdFromCookie();
+    const participantId = await getParticipantIdFromCookieOrSessionUser();
 
     return (
         <ContentCenterWrapper>

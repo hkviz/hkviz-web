@@ -2,7 +2,7 @@ import { and, eq, isNull, not, or } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 import { v4 as uuid } from 'uuid';
 import { z } from 'zod';
-import { getParticipantIdFromCookie } from '~/app/user-study/_utils';
+import { getParticipantIdFromCookieOrSessionUser } from '~/app/user-study/_utils';
 import { formatTimeZoneName, getGmtOffset } from '~/app/user-study/participate/time-slot/_timezone-name';
 import { sendMailToSupport, sendMailToUser } from '~/lib/mails';
 import { studyParticipant, userStudyTimeSlot, users } from '~/server/db/schema';
@@ -10,25 +10,35 @@ import { createTRPCRouter, publicProcedure } from '../../trpc';
 
 export const userStudyTimeSlotRouter = createTRPCRouter({
     findAllVisible: publicProcedure.query(async ({ ctx }) => {
+        const participantId = await getParticipantIdFromCookieOrSessionUser();
+
+        const until = new Date();
+        until.setHours(until.getHours() + 4);
+
         const result = await ctx.db.query.userStudyTimeSlot.findMany({
+            where: (timeSlot, { eq, gt, and, isNull, or }) => {
+                const free = and(isNull(timeSlot.participantId), gt(timeSlot.startAt, until));
+                if (participantId == null) {
+                    return free;
+                } else {
+                    return or(free, eq(timeSlot.participantId, participantId));
+                }
+            },
             orderBy: (timeSlot) => timeSlot.startAt,
         });
 
-        const participantId = getParticipantIdFromCookie();
-
-        return result
-            .filter((timeSlot) => timeSlot.participantId === null || timeSlot.participantId === participantId)
-            .map((timeSlot) => {
-                return {
-                    id: timeSlot.id,
-                    startAt: timeSlot.startAt,
-                    free: timeSlot.participantId === null,
-                };
-            });
+        return result.map((timeSlot) => {
+            return {
+                id: timeSlot.id,
+                startAt: timeSlot.startAt,
+                free: timeSlot.participantId === null,
+            };
+        });
     }),
     findByParticipantId: publicProcedure
         .input(z.object({ participantId: z.string().uuid() }))
         .query(async ({ ctx, input }) => {
+            console.log(input);
             const result = await ctx.db.query.userStudyTimeSlot.findFirst({
                 where: (timeSlot, { eq }) => eq(timeSlot.participantId, input.participantId),
                 columns: {
@@ -70,7 +80,7 @@ export const userStudyTimeSlotRouter = createTRPCRouter({
             revalidatePath('/user-study/participate/time-slot', 'page');
             const { id, callOption, callName, locale, timeZone } = input;
 
-            const participantCookie = getParticipantIdFromCookie();
+            const participantCookie = await getParticipantIdFromCookieOrSessionUser();
             const participantExisted = participantCookie != null;
 
             if (participantCookie != null) {

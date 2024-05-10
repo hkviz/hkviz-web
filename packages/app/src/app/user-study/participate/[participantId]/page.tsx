@@ -40,6 +40,20 @@ export default async function UserStudyParticipatePage({
         );
     }
 
+    if (participant.userStudyFinished) {
+        return (
+            <ContentCenterWrapper backgroundClassName="dark:opacity-40 opacity-20">
+                <div className="mx-auto w-full max-w-[80ch] px-4 pt-8 text-center">
+                    <h1 className="font-serif text-3xl font-bold">Thank you for completing the call!</h1>
+                    <p>
+                        Thank you very much for completing the participation! If you still have any questions or
+                        feedback, feel free to write me via <MailLink /> or on Discord @OliverGrack.
+                    </p>
+                </div>
+            </ContentCenterWrapper>
+        );
+    }
+
     const timeSlot = await api.userStudyTimeSlot.findByParticipantId({
         participantId,
     });

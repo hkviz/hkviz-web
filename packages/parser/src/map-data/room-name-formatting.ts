@@ -10,6 +10,10 @@ const ancientBasinRooms = [
     'Abyss_21',
 ];
 
+const areaOverwrites: Record<string, string> = {
+    Abyss_01: 'City of Tears',
+};
+
 const predefinedRoomNames = {
     // Dirtmouth
     Town: 'Town',
@@ -84,6 +88,8 @@ const predefinedRoomNames = {
     Ruins_House_03: "Emilitia's House",
     Ruins_House_02: 'Gorgeous Husk House',
     Ruins_House_01: 'Grub House',
+
+    Abyss_01: 'City of Tears 1ab',
 
     // Waterways
     Waterways_13: "Isma's Grove",
@@ -175,6 +181,10 @@ export function formatRoomName(zoneName: string | undefined, roomName: string) {
 }
 
 export function formatZoneName(zoneName: string | undefined, roomName: string) {
+    if (roomName in areaOverwrites) {
+        return areaOverwrites[roomName];
+    }
+
     if (roomName.startsWith('Hive')) {
         return 'Hive';
     } else if (ancientBasinRooms.includes(roomName)) {

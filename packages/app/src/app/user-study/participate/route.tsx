@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation';
-import { getParticipantIdFromCookie } from '../_utils';
+import { getParticipantIdFromCookieOrSessionUser } from '../_utils';
 
-export function GET() {
-    const participantId = getParticipantIdFromCookie();
+export async function GET() {
+    const participantId = await getParticipantIdFromCookieOrSessionUser();
 
     if (participantId) {
         redirect(`/user-study/participate/${participantId}`);

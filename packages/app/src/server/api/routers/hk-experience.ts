@@ -2,7 +2,7 @@ import { TRPCError } from '@trpc/server';
 import { eq } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 import { z } from 'zod';
-import { getParticipantIdFromCookie } from '~/app/user-study/_utils';
+import { getParticipantIdFromCookieOrSessionUser } from '~/app/user-study/_utils';
 import { hkExperienceFinished, hkExperienceSchema } from '~/lib/types/hk-experience';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
 import { hkExperience } from '~/server/db/schema';
@@ -17,7 +17,7 @@ export const hkExperienceRouter = createTRPCRouter({
         }
 
         const userId = ctx.session?.user?.id;
-        const participantId = getParticipantIdFromCookie();
+        const participantId = await getParticipantIdFromCookieOrSessionUser();
 
         if (!userId && !participantId) {
             throw new TRPCError({
@@ -70,7 +70,7 @@ export const hkExperienceRouter = createTRPCRouter({
 
     getFromLoggedInUserOrParticipantId: publicProcedure.query(async ({ ctx }) => {
         const userId = ctx.session?.user?.id;
-        const participantId = getParticipantIdFromCookie();
+        const participantId = await getParticipantIdFromCookieOrSessionUser();
         if (!userId && !participantId) {
             throw new TRPCError({
                 code: 'UNAUTHORIZED',
