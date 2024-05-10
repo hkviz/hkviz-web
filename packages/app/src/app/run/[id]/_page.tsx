@@ -27,8 +27,7 @@ import { uiStore } from '~/lib/stores/ui-store';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFiles } from '~/lib/viz/use-recording-files';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
-import { AnimationOptions } from './_animation_options';
-import { RoomInfoWrapper, RunSplitsSolidWrapper } from './_dynamic_loader';
+import { RoomInfoWrapper, RunSplitsSolidWrapper, AnimationOptionsWrapper } from './_dynamic_loader';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { MobileTabBar } from './_mobile-tabs';
 import { RunOverviewTab } from './_run-overview-tab';
@@ -128,7 +127,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                 <RunClientLoader runData={runData} />
                 <SingleRunPageTour />
             </Card>
-            <AnimationOptions className="dashboard-grid-timeline" />
+            <AnimationOptionsWrapper className="dashboard-grid-timeline" />
 
             <RightCard className="dashboard-grid-splits-and-timecharts" />
             <MobileTabBar />

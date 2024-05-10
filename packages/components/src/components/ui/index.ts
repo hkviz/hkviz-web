@@ -5,3 +5,7 @@ export * from './tooltip';
 export * from './toggle';
 export * from './context-menu';
 export * from './select';
+export * from './input';
+export * from './slider';
+export * from './popover';
+export * from './label';

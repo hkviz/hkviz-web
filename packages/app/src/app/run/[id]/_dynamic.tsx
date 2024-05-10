@@ -4,6 +4,7 @@ import {
     renderHkMapRooms,
     renderRunSplits,
     renderAggregationVariableIcon,
+    renderAnimationOptions,
     type HkMapRoomsProps,
     renderRoomInfo,
 } from '@hkviz/viz-ui';
@@ -67,4 +68,19 @@ export const AggregationVariableIconWrapper = memo(function AggregationVariableI
         }
     }, [variable]);
     return <div ref={wrapper} />;
+});
+
+export const AnimationOptionsWrapper = memo(function AnimationOptionsWrapper({
+    className,
+}: {
+    className: AggregationVariable;
+}) {
+    const wrapper = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (wrapper.current) {
+            return renderAnimationOptions('', wrapper.current);
+        }
+    }, []);
+    return <div ref={wrapper} className={className} />;
 });
