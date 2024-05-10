@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ContentCenterWrapper } from '~/app/_components/content-wrapper';
 import { getParticipantIdFromCookieOrSessionUser } from '../_utils';
 
-export default function UserStudyDonePage() {
+export default async function UserStudyDonePage() {
     const participantId = await getParticipantIdFromCookieOrSessionUser();
 
     return (

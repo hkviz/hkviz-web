@@ -181,8 +181,9 @@ export function formatRoomName(zoneName: string | undefined, roomName: string) {
 }
 
 export function formatZoneName(zoneName: string | undefined, roomName: string) {
-    if (roomName in areaOverwrites) {
-        return areaOverwrites[roomName];
+    const override = areaOverwrites[roomName];
+    if (override) {
+        return override;
     }
 
     if (roomName.startsWith('Hive')) {
