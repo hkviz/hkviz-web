@@ -167,6 +167,3 @@ export function HKMap({ className }: HKMapProps) {
         </div>
     );
 }
-
-console.log('react', { roomDisplayStoreSolid });
-console.log('react', test);

@@ -138,6 +138,3 @@ export function HkMapRooms(props: HkMapRoomsProps) {
 export function renderHkMapRooms(props: HkMapRoomsProps, element: Element) {
     return render(() => <HkMapRooms {...props} />, element);
 }
-
-console.log('solid', { roomDisplayStore });
-console.log('solid', test);
