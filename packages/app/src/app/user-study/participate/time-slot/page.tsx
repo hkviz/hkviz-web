@@ -17,8 +17,6 @@ export default async function UserStudyParticipatePage() {
         redirect('/user-study/participate/' + participantId);
     }
 
-    console.log({ participant, timeSlot });
-
     return (
         <ContentWrapper backgroundClassName="dark:opacity-40 opacity-20">
             <div className="mx-auto w-full max-w-[80ch] px-4 pt-8 text-center">

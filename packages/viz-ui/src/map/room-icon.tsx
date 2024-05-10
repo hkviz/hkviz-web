@@ -1,20 +1,20 @@
 'use client';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@hkviz/components';
 import { Bounds, Vector2, type RoomInfo } from '@hkviz/parser';
-import { memo, useMemo } from 'react';
-import dynamic from 'next/dynamic';
+import { createMemo, type Component } from 'solid-js';
+import { HkMapRooms } from './hk-map-rooms';
 
-const HkMapRoomsWrapper = dynamic(() => import('./hk-map-rooms'), { ssr: false });
-
-export interface HKMapProps {
+export interface HKMapRoomProps {
     className?: string;
     roomInfos: RoomInfo[];
 }
 
-export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos }: HKMapProps) {
-    const roomInfosOfRoom = useMemo(() => {
-        const containingBounds = Bounds.fromContainingBounds(roomInfos.map((it) => it.allSpritesScaledPositionBounds));
+export const HKMapRoom: Component<HKMapRoomProps> = (props) => {
+    const roomInfosOfRoom = createMemo(() => {
+        const containingBounds = Bounds.fromContainingBounds(
+            props.roomInfos.map((it) => it.allSpritesScaledPositionBounds),
+        );
         const smallerRoomSizeProportion = containingBounds.size.minElement() / containingBounds.size.maxElement();
         const roomPositionWithin0To1 =
             containingBounds.size.x > containingBounds.size.y
@@ -45,7 +45,7 @@ export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos }: HKMap
             return x;
         }
 
-        return roomInfos.map((it) => {
+        return props.roomInfos.map((it) => {
             const sprites = it.sprites.map((it) => ({
                 ...it,
                 scaledPosition: relativeToRoomBounds(it.scaledPosition),
@@ -59,13 +59,13 @@ export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos }: HKMap
                 allSpritesScaledPositionBounds: roomPositionWithin0To1,
             };
         });
-    }, [roomInfos]);
+    });
 
     return (
-        <div className={cn('relative', className)}>
-            <svg className="absolute inset-0" width="100%" height="100%" viewBox="0 0 1 1">
-                <HkMapRoomsWrapper
-                    rooms={roomInfosOfRoom}
+        <div class={cn('relative', props.className)}>
+            <svg class="absolute inset-0" width="100%" height="100%" viewBox="0 0 1 1">
+                <HkMapRooms
+                    rooms={roomInfosOfRoom()}
                     alwaysShowMainRoom={true}
                     alwaysUseAreaAsColor={true}
                     highlightSelectedRoom={false}
@@ -73,4 +73,4 @@ export const HKMapRoom = memo(function HKMapRoom({ className, roomInfos }: HKMap
             </svg>
         </div>
     );
-});
+};

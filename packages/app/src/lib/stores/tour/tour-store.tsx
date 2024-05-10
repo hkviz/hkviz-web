@@ -1,7 +1,7 @@
 import { computed, effect, signal, untracked } from '@preact/signals-react';
 import { Palette, Play } from 'lucide-react';
 import { HKVizText } from '~/app/_components/hkviz-text';
-import { roomInfoColoringToggleClasses } from '~/app/run/[id]/_room_infos';
+import { roomInfoColoringToggleClasses } from '@hkviz/viz';
 import { asReadonlySignal } from '../../utils/signals';
 import { animationStore } from '../animation-store';
 import { mapZoomStore } from '../map-zoom-store';
@@ -50,7 +50,6 @@ const steps: Step[] = [
             uiStore.activateTab('overview');
         },
         activeEffect: () => {
-            console.log('active effect', uiStore.mobileTab.valuePreact);
             if (uiStore.mainCardTab.valuePreact === 'map') {
                 next();
             }
@@ -290,7 +289,6 @@ function changeCurrentStepIndex(index: number) {
         currentStepIndex.value = index;
         const _currentStep = currentStep.peek();
         _currentStep?.onActivate?.();
-        console.log('currentStep', index, _currentStep);
 
         const activeEffect = _currentStep?.activeEffect;
 

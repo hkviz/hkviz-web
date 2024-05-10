@@ -1,8 +1,7 @@
 import { type RoomInfo } from '@hkviz/parser';
-import { For, createUniqueId } from 'solid-js';
 import { roomColoringStore, roomDisplayStore, themeStore } from '@hkviz/viz';
+import { For, createUniqueId } from 'solid-js';
 import { render } from 'solid-js/web';
-import { test } from '@hkviz/parser';
 
 export function hkMapRoomRectClass({ gameObjectName }: { gameObjectName: string }) {
     return 'hk-map-room-react_' + gameObjectName;
@@ -112,8 +111,7 @@ export interface HkMapRoomsProps {
 }
 
 export function HkMapRooms(props: HkMapRoomsProps) {
-    console.log('render', props);
-    const x = (
+    return (
         <g>
             <For each={props.rooms}>
                 {(room) => (
@@ -130,9 +128,6 @@ export function HkMapRooms(props: HkMapRoomsProps) {
             </For>
         </g>
     );
-
-    console.log(x);
-    return x;
 }
 
 export function renderHkMapRooms(props: HkMapRoomsProps, element: Element) {

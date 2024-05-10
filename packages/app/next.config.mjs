@@ -49,6 +49,7 @@ const config = {
     webpack: (config) => {
         // Add this to tell webpack to include solid-js/web correctly
         config.resolve.alias['solid-js/web'] = path.resolve('./node_modules/solid-js/web/dist/web.js');
+        config.resolve.alias['solid-js/store'] = path.resolve('./node_modules/solid-js/store/dist/store.js');
         config.resolve.alias['solid-js'] = path.resolve('./node_modules/solid-js/dist/solid.js');
 
         // Return the altered config

@@ -7,7 +7,3 @@ export * from './charms';
 export * from './lang';
 export * from './recording-file-version';
 export * from './util';
-
-export const test = {
-    abc: 'xyz',
-};

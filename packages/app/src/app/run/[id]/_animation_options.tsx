@@ -1,6 +1,6 @@
 'use client';
 
-import { cardRoundedMdOnlyClasses } from '@/components/additions/cards';
+import { cardRoundedMdOnlyClasses } from '@/components/additions/card';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';

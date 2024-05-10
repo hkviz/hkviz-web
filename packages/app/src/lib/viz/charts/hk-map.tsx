@@ -15,11 +15,7 @@ import { MapOverlayOptions } from './map-overlay-options';
 import { appendOutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 import { useMapTraces } from './use-traces';
-import dynamic from 'next/dynamic';
-import { roomDisplayStore as roomDisplayStoreSolid } from '@hkviz/viz';
-import { test } from '@hkviz/parser';
-
-const HkMapRoomsWrapper = dynamic(() => import('./hk-map-rooms'), { ssr: false });
+import { HkMapRoomsWrapper } from '~/app/run/[id]/_dynamic_loader';
 
 export interface HKMapProps {
     className?: string;

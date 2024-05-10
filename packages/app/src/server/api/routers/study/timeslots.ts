@@ -38,7 +38,6 @@ export const userStudyTimeSlotRouter = createTRPCRouter({
     findByParticipantId: publicProcedure
         .input(z.object({ participantId: z.string().uuid() }))
         .query(async ({ ctx, input }) => {
-            console.log(input);
             const result = await ctx.db.query.userStudyTimeSlot.findFirst({
                 where: (timeSlot, { eq }) => eq(timeSlot.participantId, input.participantId),
                 columns: {

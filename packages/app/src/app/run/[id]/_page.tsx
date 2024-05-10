@@ -5,7 +5,7 @@ import {
     cardHeaderSmallClasses,
     cardRoundedMdOnlyClasses,
     cardTitleSmallClasses,
-} from '@/components/additions/cards';
+} from '@/components/additions/card';
 import { TabsListTransparent, TabsTriggerTransparent } from '@/components/additions/tabs';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -19,7 +19,6 @@ import { useSignals } from '@preact/signals-react/runtime';
 import { TooltipTrigger } from '@radix-ui/react-tooltip';
 import { Maximize, Minus, Rows } from 'lucide-react';
 import { type Session } from 'next-auth';
-import dynamic from 'next/dynamic';
 import { useEffect, useRef, useState } from 'react';
 import { type ImperativePanelHandle, type PanelGroupOnLayout } from 'react-resizable-panels';
 import { splitsStore } from '~/lib/stores/splits-store';
@@ -29,15 +28,13 @@ import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFiles } from '~/lib/viz/use-recording-files';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
 import { AnimationOptions } from './_animation_options';
+import { RoomInfoWrapper, RunSplitsSolidWrapper } from './_dynamic_loader';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { MobileTabBar } from './_mobile-tabs';
-import { RoomInfo } from './_room_infos';
 import { RunOverviewTab } from './_run-overview-tab';
 import { RunSplits } from './_run_splits';
 import { SingleRunPageTour } from './_tour';
 import { ViewOptions } from './_view_options';
-
-const RunSplitsSolidWrapper = dynamic(() => import('./_dynamic'), { ssr: false });
 
 interface Props {
     session: Session | null;
@@ -98,7 +95,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                         <RunSplitsSolidWrapper />
                     </CardContent>
                 </Card>
-                <RoomInfo />
+                <RoomInfoWrapper />
             </div>
             <Card
                 className={cn(

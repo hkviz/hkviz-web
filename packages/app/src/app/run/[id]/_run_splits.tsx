@@ -1,4 +1,4 @@
-import { cardHeaderSmallClasses, cardTitleSmallClasses } from '@/components/additions/cards';
+import { cardHeaderSmallClasses, cardTitleSmallClasses } from '@/components/additions/card';
 import { Button } from '@/components/ui/button';
 import { CardHeader, CardTitle } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';

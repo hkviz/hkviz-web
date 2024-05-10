@@ -1,7 +1,7 @@
 {
-    "name": "@hkviz/viz-ui",
+    "name": "@hkviz/components",
     "version": "0.0.1",
-    "description": "The package containing visualizations of gameplay data",
+    "description": "The mostly solid-ui components for hkviz",
     "license": "MIT",
     "author": "hkviz",
     "contributors": [],
@@ -15,7 +15,7 @@
     },
     "keywords": [
         "hkviz",
-        "analytics",
+        "components",
         "solid"
     ],
     "private": true,
@@ -52,16 +52,10 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@hkviz/components": "workspace:*",
-        "@hkviz/parser": "workspace:*",
-        "@hkviz/viz": "workspace:*",
         "@kobalte/core": "^0.13.1",
-        "@preact/signals-react": "^2.0.1",
-        "@types/d3": "^7.4.3",
-        "d3": "^7.8.5",
-        "fuse.js": "^7.0.0",
-        "lucide-solid": "^0.378.0",
-        "micro-memoize": "^4.1.2"
+        "class-variance-authority": "^0.7.0",
+        "clsx": "^2.0.0",
+        "tailwind-merge": "^2.2.0"
     },
     "devDependencies": {
         "solid-js": "^1.8.17"
