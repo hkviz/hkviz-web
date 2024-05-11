@@ -53,7 +53,7 @@ export const RunExtraCharts: Component<RunExtraChartsProps> = (props) => {
 
     const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
     return (
-        <>
+        <div class="extra-charts flex h-full flex-col">
             <CardHeader class={cardHeaderSmallClasses}>
                 <CardTitle class={cn(cardTitleSmallClasses, 'flex w-full flex-row justify-between')}>
                     Time-based charts
@@ -120,6 +120,6 @@ export const RunExtraCharts: Component<RunExtraChartsProps> = (props) => {
                 </Show>
                 <div class="snap-start snap-normal" />
             </div>
-        </>
+        </div>
     );
 };

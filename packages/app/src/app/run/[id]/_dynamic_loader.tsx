@@ -1,9 +1,5 @@
 import dynamic from 'next/dynamic';
 
-export const RunSplitsSolidWrapper = dynamic(() => import('./_dynamic').then((it) => it.RunSplitsSolidWrapper), {
-    ssr: false,
-});
-
 export const DashboardMapOptionsWrapper = dynamic(
     () => import('./_dynamic').then((it) => it.DashboardMapOptionsWrapper),
     {
@@ -19,6 +15,6 @@ export const AnimationOptionsWrapper = dynamic(() => import('./_dynamic').then((
     ssr: false,
 });
 
-export const RunExtraChartsWrapper = dynamic(() => import('./_dynamic').then((it) => it.RunExtraChartsWrapper), {
+export const RightCardWrapper = dynamic(() => import('./_dynamic').then((it) => it.RightCardWrapper), {
     ssr: false,
 });

@@ -1,8 +1,7 @@
-import { untracked } from '@preact/signals-react';
+import { createEffect, untrack } from 'solid-js';
 import { batch, createSignal } from '../preact-solid-combat';
 import { animationStore } from './animation-store';
 import { gameplayStore } from './gameplay-store';
-import { createEffect, untrack } from 'solid-js';
 
 const transitionDuration = 250;
 
@@ -41,7 +40,7 @@ function resetTimeBounds() {
 
 function setTimeBoundsStopFollowIfOutside(extraChartsTimeBounds: readonly [number, number]) {
     setTimeBounds(extraChartsTimeBounds);
-    const msIntoGame = animationStore.msIntoGame.valuePreact;
+    const msIntoGame = animationStore.msIntoGame();
     if (followsAnimation() && (msIntoGame < extraChartsTimeBounds[0] || msIntoGame > extraChartsTimeBounds[1])) {
         setFollowsAnimation(false);
     }

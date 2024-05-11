@@ -1,1 +1,1 @@
-export * from './run-splits-component';
+export * from './splits';

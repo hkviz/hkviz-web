@@ -10,3 +10,4 @@ export * from './slider';
 export * from './popover';
 export * from './label';
 export * from './checkbox';
+export * from './resizable';

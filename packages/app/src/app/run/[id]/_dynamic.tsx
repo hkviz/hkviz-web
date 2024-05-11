@@ -2,13 +2,12 @@
 import { cn } from '@/lib/utils';
 import { type AggregationVariable } from '@hkviz/viz';
 import {
-    RunExtraCharts,
+    RightCard,
     render,
     renderAggregationVariableIcon,
     renderAnimationOptions,
     renderDashboardMapOptions,
     renderHkMapRooms,
-    renderRunSplits,
     type HkMapRoomsProps,
 } from '@hkviz/viz-ui';
 import { useSignals } from '@preact/signals-react/runtime';
@@ -22,18 +21,6 @@ function useReactPropsToSolid<T extends object>(props: T) {
     set(props);
 
     return get;
-}
-
-export function RunSplitsSolidWrapper() {
-    const wrapper = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-        if (wrapper.current) {
-            return renderRunSplits(wrapper.current);
-        }
-    }, []);
-
-    return <div ref={wrapper} />;
 }
 
 export function HkMapRoomsWrapper(props: HkMapRoomsProps) {
@@ -90,13 +77,12 @@ export function AnimationOptionsWrapper({ className }: { className: string }) {
     return <div ref={wrapper} className={className} />;
 }
 
-export function RunExtraChartsWrapper() {
+export function RightCardWrapper() {
     const wrapper = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (wrapper.current) {
-            return render(wrapper.current, RunExtraCharts, {});
-        }
+        return render(wrapper.current!, RightCard, {});
     }, []);
-    return <div className="extra-charts flex h-full flex-col" ref={wrapper} />;
+
+    return <div className="dashboard-grid-splits-and-timecharts flex" ref={wrapper} />;
 }
