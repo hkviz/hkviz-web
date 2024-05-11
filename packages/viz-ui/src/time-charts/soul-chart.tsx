@@ -1,12 +1,12 @@
-import Image from 'next/image';
-import vesselImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0000_magic_orb.png';
-import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { tailwindChartColors } from '@hkviz/viz';
+import { type Component } from 'solid-js';
+import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
+import { vesselImg } from '../img-urls';
 
-function Unit({ className }: { className?: string }) {
-    return <Image src={vesselImg} className={className} alt="Soul" />;
-}
+const Unit: Component<{ class?: string }> = (props) => {
+    return <img src={vesselImg} class={props.class} alt="Soul" />;
+};
 
 const variables: LineChartVariableDescription[] = [
     {
@@ -42,7 +42,7 @@ export function SoulChart() {
             variables={variables}
             header={
                 <>
-                    <Unit className="mr-1 inline-block w-6" />
+                    <Unit class="mr-1 inline-block w-6" />
                     Soul
                 </>
             }

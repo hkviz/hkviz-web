@@ -1,25 +1,21 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@hkviz/components';
 import { tailwindChartColors } from '@hkviz/viz';
-import Image from 'next/image';
-import { gameplayStore } from '~/lib/stores/gameplay-store';
-import blueMaskImg from '../../../../../public/ingame-sprites/hud/edited/blueMask.png';
-import emptyMaskImg from '../../../../../public/ingame-sprites/hud/edited/emptyMask.png';
-import maskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health.png';
-import steelMaskImg from '../../../../../public/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
+import { type Component } from 'solid-js';
+import { gameplayStore } from '@hkviz/viz';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
+import { blueMaskImg, emptyMaskImg, maskImg, steelMaskImg } from 'src/img-urls';
 
-function MaskUnit({ className }: { className?: string }) {
-    const isSteelSoul = gameplayStore.isSteelSoul.value;
-    return <Image src={isSteelSoul ? steelMaskImg : maskImg} className={className} alt="Mask" />;
-}
-
-function LifebloodUnit({ className }: { className?: string }) {
-    return <Image src={blueMaskImg} className={cn(className, '-mx-1 w-7')} alt="Lifeblood" />;
-}
-function EmptyMaskUnit({ className }: { className?: string }) {
-    return <Image src={emptyMaskImg} className={className} alt="Empty mask" />;
-}
+const MaskUnit: Component<{ class?: string }> = (props) => {
+    const isSteelSoul = gameplayStore.isSteelSoul;
+    return <img src={isSteelSoul() ? steelMaskImg : maskImg} class={props.class} alt="Mask" />;
+};
+const LifebloodUnit: Component<{ class?: string }> = (props) => {
+    return <img src={blueMaskImg} class={cn(props.class, '-mx-1 w-7')} alt="Lifeblood" />;
+};
+const EmptyMaskUnit: Component<{ class?: string }> = (props) => {
+    return <img src={emptyMaskImg} class={props.class} alt="Empty mask" />;
+};
 
 const variables: LineChartVariableDescription[] = [
     {
@@ -55,7 +51,7 @@ export function HealthChart() {
             variables={variables}
             header={
                 <>
-                    <MaskUnit className="mr-1 inline-block w-6" />
+                    <MaskUnit class="mr-1 inline-block w-6" />
                     Health
                 </>
             }

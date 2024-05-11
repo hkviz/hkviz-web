@@ -59,7 +59,9 @@
         "@kobalte/core": "^0.13.1",
         "@preact/signals-react": "^2.0.1",
         "@types/d3": "^7.4.3",
+        "@types/d3-brush": "^3.0.6",
         "d3": "^7.8.5",
+        "d3-brush": "^3.0.0",
         "fuse.js": "^7.0.0",
         "lucide-solid": "^0.378.0",
         "micro-memoize": "^4.1.2"

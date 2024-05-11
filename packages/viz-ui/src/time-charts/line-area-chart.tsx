@@ -1,30 +1,41 @@
 'use client';
 
-import { Checkbox } from '@/components/ui/checkbox';
-import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { Checkbox, Table, TableBody, TableCell, TableRow } from '@hkviz/components';
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '@hkviz/parser';
-import { d3Ticks, formatTimeMs, isFilledD3Selection, type ColorClasses } from '@hkviz/viz';
-import { type ReadonlySignal } from '@preact/signals-react';
-import { useComputed, useSignal, useSignalEffect, useSignals } from '@preact/signals-react/runtime';
+import {
+    animationStore,
+    d3Ticks,
+    extraChartStore,
+    formatTimeMs,
+    gameplayStore,
+    hoverMsStore,
+    isFilledD3Selection,
+    roomDisplayStore,
+    uiStore,
+    type ColorClasses,
+} from '@hkviz/viz';
 import * as d3 from 'd3';
 import { type D3BrushEvent } from 'd3-brush';
-import { memo, useId, useMemo, useRef } from 'react';
-import useEvent from 'react-use-event-hook';
-import { animationStore } from '~/lib/stores/animation-store';
-import { extraChartStore } from '~/lib/stores/extra-chart-store';
-import { gameplayStore } from '~/lib/stores/gameplay-store';
-import { hoverMsStore } from '~/lib/stores/hover-ms-store';
-import { roomDisplayStore } from '~/lib/stores/room-display-store';
-import { uiStore } from '~/lib/stores/ui-store';
-import { signalRef } from '~/lib/utils/signal-ref';
-import { useIsVisibleSignal } from '~/lib/utils/use-is-visible';
+import {
+    type Component,
+    For,
+    type JSXElement,
+    createEffect,
+    createMemo,
+    createUniqueId,
+    untrack,
+    Show,
+    createSignal,
+} from 'solid-js';
+import { Dynamic } from 'solid-js/web';
 import { downScale } from './down-scale';
+import { createIsVisible } from './use-is-visible';
 
 export type LineChartVariableDescription = {
     key: FrameEndEventNumberKey;
     name: string;
     description: string;
-    UnitIcon: React.FunctionComponent<{ className?: string }>;
+    UnitIcon: Component<{ class?: string }>;
     order: number;
     color: ColorClasses;
 } & (
@@ -45,48 +56,43 @@ function isShownInGraph(it: LineChartVariableDescription): it is LineChartShownV
 export interface LineAreaChartProps {
     variables: LineChartVariableDescription[];
     yAxisLabel: string;
-    header: React.ReactNode;
+    header: JSXElement;
     minimalMaximumY: number;
     downScaleMaxTimeDelta: number;
     renderScale?: number;
 }
 
-export const LineAreaChart = memo(function LineAreaChart({
-    variables,
-    yAxisLabel,
-    header,
-    minimalMaximumY,
-    downScaleMaxTimeDelta,
-    renderScale = 10,
-}: LineAreaChartProps) {
-    useSignals();
-    const variablesPerKey = useMemo(() => {
-        return Object.fromEntries(variables.map((it) => [it.key, it] as const));
-    }, [variables]);
+export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
+    const renderScale = () => props.renderScale ?? 10;
 
-    const svgSignal = useSignal<SVGSVGElement | null>(null);
+    const variablesPerKey = createMemo(() => {
+        return Object.fromEntries(props.variables.map((it) => [it.key, it] as const));
+    });
 
-    const isV1 = uiStore.isV1.value;
+    const [svgRef, setSvgRef] = createSignal<SVGSVGElement | null>(null);
 
-    const isVisible = useIsVisibleSignal(svgSignal);
+    const isV1 = uiStore.isV1();
 
-    const previousTimeBounds = useSignal([0, 0] as readonly [number, number]);
-    const debouncedTimeBounds = useComputed<readonly [number, number]>(() => {
-        if (!isVisible.value) return previousTimeBounds.peek();
-        const bounds = extraChartStore.debouncedTimeBounds.value;
-        previousTimeBounds.value = bounds;
+    const isVisible = createIsVisible(svgRef);
+
+    let previousTimeBounds: readonly [number, number] = [0, 0];
+    const debouncedTimeBounds = createMemo<readonly [number, number]>(() => {
+        if (!isVisible()) return previousTimeBounds;
+        const bounds = extraChartStore.debouncedTimeBounds();
+        previousTimeBounds = bounds;
         return bounds;
     });
-    const previousMsIntoGame = useSignal(0);
-    const debouncedMsIntoGame = useComputed<number>(() => {
-        if (!isVisible.value) return previousMsIntoGame.peek();
-        const ms = extraChartStore.debouncedMsIntoGame.value;
-        previousMsIntoGame.value = ms;
+    let previousMsIntoGame = 0;
+    const debouncedMsIntoGame = createMemo<number>(() => {
+        if (!isVisible()) return previousMsIntoGame;
+        const ms = extraChartStore.debouncedMsIntoGame();
+        previousMsIntoGame = ms;
         return ms;
     });
 
-    const selectedVars = useSignal<FrameEndEventNumberKey[]>(
-        variables
+    const [selectedVars, setSelectedVars] = createSignal<FrameEndEventNumberKey[]>(
+        // eslint-disable-next-line solid/reactivity
+        props.variables
             .filter(isShownInGraph)
             .filter((it) => !it.defaultHidden)
             .sort((a, b) => a.order - b.order)
@@ -94,23 +100,24 @@ export const LineAreaChart = memo(function LineAreaChart({
     );
 
     function onVariableCheckedChange(key: FrameEndEventNumberKey, checked: boolean) {
-        const prev = selectedVars.value;
+        const prev = selectedVars();
+        const _variablesPerKey = variablesPerKey();
         if (checked) {
-            selectedVars.value = [...prev, key].sort((a, b) => variablesPerKey[a]!.order - variablesPerKey[b]!.order);
+            setSelectedVars([...prev, key].sort((a, b) => _variablesPerKey[a]!.order - _variablesPerKey[b]!.order));
         } else {
-            selectedVars.value = prev.filter((it) => it !== key);
+            setSelectedVars(prev.filter((it) => it !== key));
         }
     }
 
-    const id = useId();
+    const id = createUniqueId();
 
-    const data = useComputed(() => {
-        const recording = gameplayStore.recording.valuePreact;
+    const data = createMemo(() => {
+        const recording = gameplayStore.recording();
         if (!recording) return [];
         const togetherEvents = downScale(
             recording.frameEndEvents,
-            variables.map((it) => it.key),
-            downScaleMaxTimeDelta,
+            props.variables.map((it) => it.key),
+            props.downScaleMaxTimeDelta,
         );
         return togetherEvents;
     });
@@ -122,22 +129,22 @@ export const LineAreaChart = memo(function LineAreaChart({
         1: number;
     }[] & { key: string; index: number };
 
-    const widthWithMargin = 400 * renderScale;
-    const heightWithMargin = 300 * renderScale;
-    const marginTop = 25 * renderScale;
-    const marginRight = 10 * renderScale;
-    const marginBottom = 35 * renderScale;
-    const marginLeft = 45 * renderScale;
-    const height = heightWithMargin - marginTop - marginBottom;
-    const width = widthWithMargin - marginLeft - marginRight;
+    const widthWithMargin = () => 400 * renderScale();
+    const heightWithMargin = () => 300 * renderScale();
+    const marginTop = () => 25 * renderScale();
+    const marginRight = () => 10 * renderScale();
+    const marginBottom = () => 35 * renderScale();
+    const marginLeft = () => 45 * renderScale();
+    const height = () => heightWithMargin() - marginTop() - marginBottom();
+    const width = () => widthWithMargin() - marginLeft() - marginRight();
 
     // Determine the series that need to be stacked.
-    const series = useComputed(() => {
-        const _data = data.value;
-        const _selectedVars = selectedVars.value;
+    const series = createMemo(() => {
+        const _data = data();
+        const _selectedVars = selectedVars();
         return d3.stack<Datum>().keys(
             _selectedVars.length === 0
-                ? variables
+                ? props.variables
                       .filter(isShownInGraph)
                       .sort((a, b) => a.order - b.order)
                       .map((it) => it.key)
@@ -145,26 +152,26 @@ export const LineAreaChart = memo(function LineAreaChart({
         )(_data) as unknown as Series[];
     });
 
-    const x = useComputed(() => {
-        return d3.scaleLinear().domain(debouncedTimeBounds.value).range([0, width]);
+    const x = createMemo(() => {
+        return d3.scaleLinear().domain(debouncedTimeBounds()).range([0, width()]);
     });
 
-    const xNotAnimated = useComputed(() => {
+    const xNotAnimated = createMemo(() => {
         return d3
             .scaleLinear()
-            .domain([gameplayStore.timeFrame.value.min, gameplayStore.timeFrame.value.max])
-            .range([0, width]);
+            .domain([gameplayStore.timeFrame().min, gameplayStore.timeFrame().max])
+            .range([0, width()]);
     });
 
-    const maxYOverAllTime = useComputed(() => {
-        return Math.max(d3.max(series.value.at(-1)!, (d) => d[1]) ?? minimalMaximumY, minimalMaximumY);
+    const maxYOverAllTime = createMemo(() => {
+        return Math.max(d3.max(series().at(-1)!, (d) => d[1]) ?? props.minimalMaximumY, props.minimalMaximumY);
     });
 
     // todo sub to series
-    const maxYInSelection = useComputed(() => {
-        if (isV1) return maxYOverAllTime.value;
-        const _series = series.value;
-        const _debouncedTimeBounds = debouncedTimeBounds.value;
+    const maxYInSelection = createMemo(() => {
+        if (isV1) return maxYOverAllTime();
+        const _series = series();
+        const _debouncedTimeBounds = debouncedTimeBounds();
         const s = _series.at(-1)!;
         const minMsIntoGame = _debouncedTimeBounds[0];
         const maxMsIntoGame = _debouncedTimeBounds[1];
@@ -182,29 +189,29 @@ export const LineAreaChart = memo(function LineAreaChart({
 
                 return isInRangeOrClose ? d[1] : 0;
             }) ?? 0;
-        return Math.max(max * 1.05, minimalMaximumY);
+        return Math.max(max * 1.05, props.minimalMaximumY);
     });
 
-    const y = useComputed(() => {
+    const y = createMemo(() => {
         return d3
             .scaleLinear()
-            .domain([0, maxYOverAllTime.value] as [number, number])
-            .rangeRound([height, 0]);
+            .domain([0, maxYOverAllTime()] as [number, number])
+            .rangeRound([height(), 0]);
     });
 
-    const yInSelection = useComputed(() => {
+    const yInSelection = createMemo(() => {
         return d3
             .scaleLinear()
-            .domain([0, maxYInSelection.value] as [number, number])
-            .rangeRound([height, 0]);
+            .domain([0, maxYInSelection()] as [number, number])
+            .rangeRound([height(), 0]);
     });
 
-    const skipNextUpdate = useRef(false);
-    const onBrushEnd = useEvent((didHoldAction: boolean, event: D3BrushEvent<unknown>) => {
+    let skipNextUpdate = false;
+    const onBrushEnd = (didHoldAction: boolean, event: D3BrushEvent<unknown>) => {
         const selection = (event.selection ?? null) as [number, number] | null;
 
-        if (skipNextUpdate.current) {
-            skipNextUpdate.current = false;
+        if (skipNextUpdate) {
+            skipNextUpdate = false;
             return;
         }
 
@@ -213,16 +220,16 @@ export const LineAreaChart = memo(function LineAreaChart({
                 extraChartStore.resetTimeBounds();
             }
         } else {
-            const invSelection = [x.value.invert(selection[0]), x.value.invert(selection[1])] as const;
+            const invSelection = [x().invert(selection[0]), x().invert(selection[1])] as const;
             extraChartStore.setTimeBoundsStopFollowIfOutside(invSelection);
         }
         // todo animate axis
-        skipNextUpdate.current = true;
-        svgParts.value.brush!.move(svgParts.value.brushG!, null);
-    });
+        skipNextUpdate = true;
+        svgParts().brush!.move(svgParts().brushG!, null);
+    };
 
-    const svgParts = useComputed(function lineAreaChartMainSetup() {
-        const _recording = gameplayStore.recording.valuePreact;
+    const svgParts = createMemo(function lineAreaChartMainSetup() {
+        const _recording = gameplayStore.recording();
         if (!_recording) {
             return {
                 areaPaths: null,
@@ -233,29 +240,29 @@ export const LineAreaChart = memo(function LineAreaChart({
                 animationLine: null,
             };
         }
-        const svg = d3.select(svgSignal.value);
+        const svg = d3.select(svgRef());
 
         svg.selectAll('*').remove();
 
         svg.append('text')
-            .attr('x', marginLeft - 10 * renderScale)
-            .attr('y', 14 * renderScale)
+            .attr('x', marginLeft() - 10 * renderScale())
+            .attr('y', 14 * renderScale())
             .attr('text-anchor', 'end')
             .attr('class', 'text-foreground fill-current')
-            .attr('font-size', 10 * renderScale)
-            .text(yAxisLabel);
+            .attr('font-size', 10 * renderScale())
+            .text(props.yAxisLabel);
 
         // Append the horizontal axis atop the area.
         svg.append('text')
-            .attr('x', widthWithMargin / 2)
-            .attr('y', heightWithMargin - 2 * renderScale)
+            .attr('x', widthWithMargin() / 2)
+            .attr('y', heightWithMargin() - 2 * renderScale())
             .attr('text-anchor', 'middle')
             .attr('class', 'text-foreground fill-current')
-            .attr('font-size', 10 * renderScale)
+            .attr('font-size', 10 * renderScale())
             .text('Time');
 
         // brush
-        const rootG = svg.append('g').attr('transform', 'translate(' + marginLeft + ',' + marginTop + ')');
+        const rootG = svg.append('g').attr('transform', 'translate(' + marginLeft() + ',' + marginTop() + ')');
         rootG
             .append('defs')
             .append('svg:clipPath')
@@ -266,29 +273,32 @@ export const LineAreaChart = memo(function LineAreaChart({
             .attr('x', 0)
             .attr('y', 0);
 
+        const _variablesPerKey = variablesPerKey();
         const areaPaths = rootG
             .append('g')
             .attr('clip-path', `url(#${id}clip)`)
             .selectAll()
-            .data(series.value)
+            .data(series())
             .join('path')
             .attr('transform-origin', '0 80%')
-            .attr('class', (d) => variablesPerKey[d.key]?.color?.path ?? '');
+            .attr('class', (d) => _variablesPerKey[d.key]?.color?.path ?? '');
         areaPaths.append('title').text((d) => d.key);
 
         // axis x
-        const xAxis = rootG.append('g').attr('transform', `translate(0,${height})`);
+        const xAxis = rootG.append('g').attr('transform', `translate(0,${height()})`);
 
         // axis y
         const yAxis = rootG.append('g');
 
         function mouseToMsIntoGame(e: MouseEvent) {
-            const extraChartsTimeBounds = extraChartStore.timeBounds.peek();
-            const rect = brushG.node()!.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            return Math.round(
-                extraChartsTimeBounds[0] + (extraChartsTimeBounds[1] - extraChartsTimeBounds[0]) * (x / rect.width),
-            );
+            return untrack(() => {
+                const extraChartsTimeBounds = extraChartStore.timeBounds();
+                const rect = brushG.node()!.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                return Math.round(
+                    extraChartsTimeBounds[0] + (extraChartsTimeBounds[1] - extraChartsTimeBounds[0]) * (x / rect.width),
+                );
+            });
         }
         function sceneFromMs(ms: number) {
             if (!_recording) return null;
@@ -338,11 +348,12 @@ export const LineAreaChart = memo(function LineAreaChart({
             .brushX()
             .extent([
                 [0, 0],
-                [width, height],
+                [width(), height()],
             ])
             .filter((e) => {
                 return !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey;
             })
+            // eslint-disable-next-line solid/reactivity
             .on('end', (e) => {
                 onBrushEnd(didHoldAction, e);
                 cancelHold();
@@ -390,8 +401,8 @@ export const LineAreaChart = memo(function LineAreaChart({
         const animationLine = rootG
             .append('line')
             .attr('class', 'stroke-current text-foreground pointer-events-none')
-            .attr('stroke-width', 2 * renderScale)
-            .attr('stroke-dasharray', `${renderScale * 3} ${renderScale * 3}`)
+            .attr('stroke-width', 2 * renderScale())
+            .attr('stroke-dasharray', `${renderScale() * 3} ${renderScale() * 3}`)
             .attr('x1', 0)
             .attr('x2', 0)
             .attr('y1', 0)
@@ -408,22 +419,23 @@ export const LineAreaChart = memo(function LineAreaChart({
     });
 
     // update area
-    useSignalEffect(function lineAreaChartUpdateAreaEffect() {
-        const { areaPaths } = svgParts.value;
+    createEffect(function lineAreaChartUpdateAreaEffect() {
+        const { areaPaths } = svgParts();
         if (!isFilledD3Selection(areaPaths)) return;
-        const _y = y.value;
+        const _y = y();
+        const _xNotAnimated = xNotAnimated();
 
         // Construct an area shape.
         const area = d3
             .area<Series[number]>()
             .x((d) => {
-                return xNotAnimated.value(d.data?.msIntoGame ?? 0);
+                return _xNotAnimated(d.data?.msIntoGame ?? 0);
             })
             .y0((d) => _y(d[0]))
             .y1((d) => _y(d[1]))
             .curve(d3.curveStepAfter);
 
-        // areaPaths.value.transition().ease(d3.easeLinear).duration(extraChartStore.transitionDuration).attr('d', area);
+        // areaPaths().transition().ease(d3.easeLinear).duration(extraChartStore.transitionDuration).attr('d', area);
         areaPaths.attr('d', area);
         //areaPaths.current.attr('d', area);
 
@@ -432,17 +444,17 @@ export const LineAreaChart = memo(function LineAreaChart({
     });
 
     // update area movement
-    useSignalEffect(function lineAreaChartMoveAreaEffect() {
-        const { areaPaths } = svgParts.value;
+    createEffect(function lineAreaChartMoveAreaEffect() {
+        const { areaPaths } = svgParts();
         if (!isFilledD3Selection(areaPaths)) return;
-        const _x = x.value;
+        const _x = x();
 
         const zeroX = _x(0);
-        const maxX = _x(gameplayStore.timeFrame.value.max);
+        const maxX = _x(gameplayStore.timeFrame().max);
 
-        const scaleX = Math.round(((maxX - zeroX) / width) * 100) / 100;
+        const scaleX = Math.round(((maxX - zeroX) / width()) * 100) / 100;
 
-        const scaleY = Math.round((maxYOverAllTime.value / maxYInSelection.value) * 100) / 100;
+        const scaleY = Math.round((maxYOverAllTime() / maxYInSelection()) * 100) / 100;
 
         const base =
             areaPaths.attr('data-existed') === 'true'
@@ -454,11 +466,11 @@ export const LineAreaChart = memo(function LineAreaChart({
     });
 
     // update x axis
-    useSignalEffect(function lineAreaChartUpdateXAxisEffect() {
-        const { xAxis } = svgParts.value;
+    createEffect(function lineAreaChartUpdateXAxisEffect() {
+        const { xAxis } = svgParts();
         if (!isFilledD3Selection(xAxis)) return;
-        const _x = x.value;
-        xAxis.attr('font-size', renderScale * 9).style('stroke-width', renderScale);
+        const _x = x();
+        xAxis.attr('font-size', renderScale() * 9).style('stroke-width', renderScale);
         const base = xAxis.selectAll('*').empty()
             ? xAxis
             : xAxis.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear);
@@ -468,23 +480,23 @@ export const LineAreaChart = memo(function LineAreaChart({
                     .axisBottom(_x)
                     .tickSizeOuter(0)
                     .ticks(6)
-                    .tickSize(6 * renderScale)
-                    .tickSizeInner(6 * renderScale)
-                    .tickSizeOuter(6 * renderScale)
-                    .tickPadding(3 * renderScale)
+                    .tickSize(6 * renderScale())
+                    .tickSizeInner(6 * renderScale())
+                    .tickSizeOuter(6 * renderScale())
+                    .tickPadding(3 * renderScale())
                     .tickFormat((d) => formatTimeMs(d.valueOf())),
             ),
         )
-            .attr('font-size', renderScale * 9)
-            .style('stroke-width', renderScale);
+            .attr('font-size', renderScale() * 9)
+            .style('stroke-width', renderScale());
     });
 
     // update y axis
-    useSignalEffect(function lineAreaChartUpdateYAxisEffect() {
-        const { yAxis } = svgParts.value;
+    createEffect(function lineAreaChartUpdateYAxisEffect() {
+        const { yAxis } = svgParts();
         if (!isFilledD3Selection(yAxis)) return;
 
-        yAxis.attr('font-size', renderScale * 9).style('stroke-width', renderScale);
+        yAxis.attr('font-size', renderScale() * 9).style('stroke-width', renderScale);
 
         const base = yAxis.selectAll('*').empty()
             ? yAxis
@@ -493,113 +505,106 @@ export const LineAreaChart = memo(function LineAreaChart({
         d3Ticks(
             base.call(
                 d3
-                    .axisLeft(yInSelection.value)
+                    .axisLeft(yInSelection())
                     .ticks(6)
-                    .tickSize(6 * renderScale)
-                    .tickSizeInner(6 * renderScale)
-                    .tickSizeOuter(6 * renderScale)
-                    .tickPadding(3 * renderScale),
+                    .tickSize(6 * renderScale())
+                    .tickSizeInner(6 * renderScale())
+                    .tickSizeOuter(6 * renderScale())
+                    .tickPadding(3 * renderScale()),
             ),
         )
-            .attr('font-size', renderScale * 9)
-            .style('stroke-width', renderScale);
+            .attr('font-size', renderScale() * 9)
+            .style('stroke-width', renderScale());
         // .call((g) => g.select('.domain').remove())
         // .call((g) => g.selectAll('.tick line').clone().attr('x2', width).attr('stroke-opacity', 0.1));
     });
 
     // update animation line
-    useSignalEffect(function lineAreaChartUpdateAnimationLineEffect() {
-        const { animationLine } = svgParts.value;
+    createEffect(function lineAreaChartUpdateAnimationLineEffect() {
+        const { animationLine } = svgParts();
         if (!isFilledD3Selection(animationLine)) return;
-        const _x = x.value;
+        const _x = x();
 
         const base =
             animationLine.attr('data-existed') === 'true'
                 ? animationLine.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear)
                 : animationLine;
         base.attr('data-existed', 'true');
-        base.attr('x1', _x(debouncedMsIntoGame.value));
-        base.attr('x2', _x(debouncedMsIntoGame.value));
+        base.attr('x1', _x(debouncedMsIntoGame()));
+        base.attr('x2', _x(debouncedMsIntoGame()));
     });
 
     return (
-        <div className="snap-start snap-normal overflow-hidden">
-            <h3 className="-mb-3 pt-2 text-center">{header}</h3>
+        <div class="snap-start snap-normal overflow-hidden">
+            <h3 class="-mb-3 pt-2 text-center">{props.header}</h3>
             <svg
-                ref={signalRef(svgSignal)}
-                width={widthWithMargin}
-                height={heightWithMargin}
-                viewBox={`0 0 ${widthWithMargin} ${heightWithMargin}`}
-                className="mx-auto h-auto w-full max-w-[550px] touch-none select-none"
-            ></svg>
+                ref={setSvgRef}
+                width={widthWithMargin()}
+                height={heightWithMargin()}
+                viewBox={`0 0 ${widthWithMargin()} ${heightWithMargin()}`}
+                class="mx-auto h-auto w-full max-w-[550px] touch-none select-none"
+            />
             <Table>
                 <TableBody>
-                    {variables.map((variable) => (
-                        <LineAreaChartVarRow
-                            key={variable.key}
-                            variable={variable}
-                            isV1={isV1}
-                            selectedVars={selectedVars}
-                            onCheckedChange={(c) => onVariableCheckedChange(variable.key, c === true)}
-                        />
-                    ))}
+                    <For each={props.variables}>
+                        {(variable) => (
+                            <LineAreaChartVarRow
+                                variable={variable}
+                                selectedVars={selectedVars()}
+                                onCheckedChange={(c) => onVariableCheckedChange(variable.key, c === true)}
+                            />
+                        )}
+                    </For>
                 </TableBody>
             </Table>
         </div>
     );
-});
+};
 
-function LineAreaChartVarRow({
-    variable,
-    isV1,
-    onCheckedChange,
-    selectedVars,
-}: {
+interface LineAreaChartVarRowProps {
     variable: LineChartVariableDescription;
-    isV1: boolean;
-    selectedVars: ReadonlySignal<FrameEndEventNumberKey[]>;
+    selectedVars: FrameEndEventNumberKey[];
     onCheckedChange: (checked: boolean) => void;
-}) {
-    useSignals();
-    const id = useId();
+}
 
-    const { key, name, color: classNames, UnitIcon } = variable;
-    const isShowable = isShownInGraph(variable);
+const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
+    const id = createUniqueId();
+    const isV1 = uiStore.isV1;
 
-    const value = useComputed(() => {
-        return animationStore.currentFrameEndEvent.value?.[key] ?? 0;
-    });
+    const isShowable = () => isShownInGraph(props.variable);
 
-    const checked = useComputed(() => selectedVars.value.includes(key));
+    const value = () => {
+        return animationStore.currentFrameEndEvent()?.[props.variable.key] ?? 0;
+    };
+
+    const checked = () => props.selectedVars.includes(props.variable.key);
 
     return (
         <TableRow>
-            <TableCell className={isV1 ? '' : 'p-2 pl-3'}>
-                <div className="flex flex-row items-center gap-2">
-                    {isShowable ? (
+            <TableCell class={isV1() ? '' : 'p-2 pl-3'}>
+                <div class="flex flex-row items-center gap-2">
+                    <Show when={isShowable()} fallback={<span class="inline-block w-5" />}>
                         <Checkbox
-                            id={id + key + '_checkbox'}
-                            checked={checked.value}
-                            onCheckedChange={onCheckedChange}
-                            className={classNames.checkbox}
+                            id={id + props.variable.key + '_checkbox'}
+                            checked={checked()}
+                            onChange={props.onCheckedChange}
+                            controlClass={props.variable.color.checkboxSolid}
                         />
-                    ) : (
-                        <span className="inline-block w-5"></span>
-                    )}
+                    </Show>
                     <label
-                        htmlFor={id + key + '_checkbox'}
-                        className="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        for={id + props.variable.key + '_checkbox-input'}
+                        class="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                     >
-                        {name}
+                        {props.variable.name}
                     </label>
                 </div>
             </TableCell>
-            <TableCell className={isV1 ? '' : 'text-nowrap p-2 text-right'}>
-                <>{value}</>
-                <span className="ml-2">
-                    <UnitIcon className="inline-block h-auto w-5" />
+            <TableCell class={isV1() ? '' : 'text-nowrap p-2 text-right'}>
+                <>{value()}</>
+                <span class="ml-2">
+                    <Dynamic component={props.variable.UnitIcon} class="inline-block h-auto w-5" />
                 </span>
             </TableCell>
         </TableRow>
     );
-}
+};

@@ -18,3 +18,7 @@ export const HkMapRoomsWrapper = dynamic(() => import('./_dynamic').then((it) =>
 export const AnimationOptionsWrapper = dynamic(() => import('./_dynamic').then((it) => it.AnimationOptionsWrapper), {
     ssr: false,
 });
+
+export const RunExtraChartsWrapper = dynamic(() => import('./_dynamic').then((it) => it.RunExtraChartsWrapper), {
+    ssr: false,
+});

@@ -1,10 +1,12 @@
 import { tailwindChartColors } from '@hkviz/viz';
-import Image from 'next/image';
-import grubImage from '../../../../../public/ingame-sprites/pin/pin_grub_location.png';
+import { type Component } from 'solid-js';
+import { grubImage } from 'src/img-urls';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 
-const Unit = ({ className }: { className?: string }) => <Image src={grubImage} className={className} alt="Geo" />;
+const Unit: Component<{ class?: string }> = (props) => {
+    return <img src={grubImage} class={props.class} alt="Geo" />;
+};
 
 const variables: LineChartVariableDescription[] = [
     {
@@ -42,7 +44,7 @@ export function GrubChart() {
             variables={variables}
             header={
                 <>
-                    <Unit className="mr-1 inline-block w-6" />
+                    <Unit class="mr-1 inline-block w-6" />
                     Grubs
                 </>
             }

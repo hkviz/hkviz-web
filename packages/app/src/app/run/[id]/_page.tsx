@@ -22,7 +22,7 @@ import { uiStore } from '~/lib/stores/ui-store';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFiles } from '~/lib/viz/use-recording-files';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
-import { AnimationOptionsWrapper, DashboardMapOptionsWrapper } from './_dynamic_loader';
+import { AnimationOptionsWrapper, DashboardMapOptionsWrapper, RunExtraChartsWrapper } from './_dynamic_loader';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { MobileTabBar } from './_mobile-tabs';
 import { RunOverviewTab } from './_run-overview-tab';
@@ -251,7 +251,7 @@ function RightCard({ className }: { className?: string }) {
                     )}
                     ref={extraChartsPanelRef}
                 >
-                    <RunExtraCharts resizeOptions={runExtraChartsResizeOptions} />
+                    <RunExtraChartsWrapper />
                 </ResizablePanel>
             </ResizablePanelGroup>
         </div>

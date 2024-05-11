@@ -1,10 +1,12 @@
 import { tailwindChartColors } from '@hkviz/viz';
-import Image from 'next/image';
-import coinImg from '../../../../../public/ingame-sprites/HUD_coin_shop.png';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
+import { coinImg } from 'src/img-urls';
+import { type Component } from 'solid-js';
 
-const Unit = ({ className }: { className?: string }) => <Image src={coinImg} className={className} alt="Geo" />;
+const Unit: Component<{ class?: string }> = (props) => {
+    return <img src={coinImg} class={props.class} alt="Geo" />;
+};
 
 const variables: LineChartVariableDescription[] = [
     {
@@ -49,7 +51,7 @@ export function GeoChart() {
             variables={variables}
             header={
                 <>
-                    <Unit className="mr-1 inline-block w-6" />
+                    <Unit class="mr-1 inline-block w-6" />
                     Geo
                 </>
             }

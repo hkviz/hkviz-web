@@ -6,14 +6,22 @@ import { type PolymorphicProps } from '@kobalte/core/polymorphic';
 
 import { cn } from '../../lib';
 
-type CheckboxProps<T extends ValidComponent = 'div'> = PolymorphicProps<T, CheckboxRootProps>;
+type CheckboxProps<T extends ValidComponent = 'div'> = { controlClass?: string } & PolymorphicProps<
+    T,
+    CheckboxRootProps
+>;
 
 const Checkbox: Component<CheckboxProps> = (props) => {
-    const [, rest] = splitProps(props, ['class']);
+    const [, rest] = splitProps(props, ['class', 'controlClass']);
     return (
         <CheckboxPrimitive class={cn('items-top group flex space-x-2', props.class)} {...rest}>
             <CheckboxPrimitive.Input />
-            <CheckboxPrimitive.Control class="border-primary ring-offset-background focus-visible:ring-ring data-[checked]:bg-primary data-[checked]:text-primary-foreground peer size-4 shrink-0 rounded-[4px] border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:border-none">
+            <CheckboxPrimitive.Control
+                class={cn(
+                    'border-primary ring-offset-background focus-visible:ring-ring data-[checked]:bg-primary data-[checked]:text-primary-foreground peer size-4 shrink-0 rounded-[4px] border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[checked]:border-none',
+                    props.controlClass,
+                )}
+            >
                 <CheckboxPrimitive.Indicator>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

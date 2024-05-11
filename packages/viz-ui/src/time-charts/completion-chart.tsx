@@ -1,14 +1,13 @@
 import { tailwindChartColors } from '@hkviz/viz';
-import { BadgePercent } from 'lucide-react';
+import { BadgePercent } from 'lucide-solid';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
+import { type Component } from 'solid-js';
 
-function Unit({ className }: { className?: string }) {
-    return <BadgePercent className={className} />;
-}
-// function Unit({ className }: { className?: string }) {
-//     return <span className={className}>%</span>;
-// }
+const Unit: Component<{ class?: string }> = (props) => {
+    return <BadgePercent class={props.class} />;
+};
+
 const variables: LineChartVariableDescription[] = [
     {
         key: 'completionPercentageEarlyCalc',
@@ -34,7 +33,7 @@ export function CompletionChart() {
             variables={variables}
             header={
                 <>
-                    <Unit className="mr-1 inline-block w-6" />
+                    <Unit class="mr-1 inline-block w-6" />
                     Game completion
                 </>
             }

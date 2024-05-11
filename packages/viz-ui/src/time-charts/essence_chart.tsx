@@ -1,13 +1,13 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@hkviz/components';
 import { tailwindChartColors } from '@hkviz/viz';
-import Image from 'next/image';
-import DreamNailImg from '../../../../../public/ingame-sprites/inventory/dream_nail_0003_1.png';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
+import { dreamNailImg } from 'src/img-urls';
+import { type Component } from 'solid-js';
 
-function Unit({ className }: { className?: string }) {
-    return <Image src={DreamNailImg} className={cn('drop-shadow-glow-sm', className)} alt="Dream nail" />;
-}
+const Unit: Component<{ class?: string }> = (props) => {
+    return <img src={dreamNailImg} class={cn('drop-shadow-glow-sm', props.class)} alt="Dream nail" />;
+};
 // function Unit({ className }: { className?: string }) {
 //     return <span className={className}>%</span>;
 // }
@@ -28,7 +28,7 @@ export function EssenceChart() {
             variables={variables}
             header={
                 <>
-                    <Unit className="mr-1 inline-block w-6" />
+                    <Unit class="mr-1 inline-block w-6" />
                     Essence
                 </>
             }

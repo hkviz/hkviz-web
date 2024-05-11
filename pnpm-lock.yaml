@@ -455,9 +455,15 @@ importers:
       '@types/d3':
         specifier: ^7.4.3
         version: 7.4.3
+      '@types/d3-brush':
+        specifier: ^3.0.6
+        version: 3.0.6
       d3:
         specifier: ^7.8.5
         version: 7.8.5
+      d3-brush:
+        specifier: ^3.0.0
+        version: 3.0.0
       fuse.js:
         specifier: ^7.0.0
         version: 7.0.0

@@ -8,6 +8,8 @@ import {
     renderAnimationOptions,
     type HkMapRoomsProps,
     renderDashboardMapOptions,
+    render,
+    RunExtraCharts,
 } from '@hkviz/viz-ui';
 import { useSignals } from '@preact/signals-react/runtime';
 import { memo, useEffect, useRef, useState } from 'react';
@@ -90,4 +92,15 @@ export const AnimationOptionsWrapper = memo(function AnimationOptionsWrapper({ c
         }
     }, []);
     return <div ref={wrapper} className={className} />;
+});
+
+export const RunExtraChartsWrapper = memo(function AnimationOptionsWrapper() {
+    const wrapper = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (wrapper.current) {
+            return render(wrapper.current, RunExtraCharts, {});
+        }
+    }, []);
+    return <div className="extra-charts flex h-full flex-col" ref={wrapper} />;
 });

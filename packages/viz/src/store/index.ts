@@ -11,3 +11,4 @@ export * from './viewport-store';
 export * from './aggregation-store';
 export * from './room-coloring-store';
 export * from './trace-store';
+export * from './extra-chart-store';

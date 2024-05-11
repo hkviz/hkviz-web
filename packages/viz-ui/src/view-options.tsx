@@ -170,9 +170,9 @@ export function ViewOptions() {
                                 </TableHead>
                                 <TableCell class={isV1() ? '' : 'p-2'}>
                                     <Select
-                                        value={traceVisibility()}
+                                        value={roomColorMode()}
                                         onChange={(v) => {
-                                            traceStore.setVisibility(v);
+                                            roomColoringStore.setRoomColorMode(v);
                                         }}
                                         options={['area', '1-var']}
                                         placeholder="Room colors"
@@ -209,7 +209,7 @@ export function ViewOptions() {
                                     <div class="flex flex-col">
                                         <div class="flex flex-row items-center">
                                             <Label
-                                                for={id + 'show_area_names'}
+                                                for={id + 'show_area_names-input'}
                                                 class="text-muted-foreground grow py-1.5 pr-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                             >
                                                 Main areas
@@ -222,7 +222,7 @@ export function ViewOptions() {
                                         </div>
                                         <div class="flex flex-row items-center">
                                             <Label
-                                                for={id + 'show_sub_area_names'}
+                                                for={id + 'show_sub_area_names-input'}
                                                 class="text-muted-foreground grow py-1.5 pr-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
                                             >
                                                 Sub areas
