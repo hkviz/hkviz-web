@@ -34,17 +34,16 @@ import {
     formatAggregatedVariableValue,
     roomColoringStore,
     roomDisplayStore,
+    roomInfoColoringToggleClasses,
     themeStore,
     uiStore,
     type AggregationVariable,
 } from '@hkviz/viz';
 import { Palette, Pin, PinOff } from 'lucide-solid';
 import { For, Match, Show, Switch, createMemo, type Component } from 'solid-js';
+import { HKMapRoom } from '../map/room-icon';
 import { AggregationVariableIcon } from './aggregation_variable_icon';
 import { RoomColorCurveContextMenuItems } from './room-color-curve-menu';
-import { HKMapRoom } from '../map/room-icon';
-import { render } from 'solid-js/web';
-import { roomInfoColoringToggleClasses } from '@hkviz/viz';
 
 function AggregationVariableToggles(props: { variable: AggregationVariable }) {
     const roomColors = roomColoringStore.colorMode;
@@ -357,8 +356,4 @@ export function RoomInfo() {
             </CardContent>
         </Card>
     );
-}
-
-export function renderRoomInfo(element: Element) {
-    return render(() => <RoomInfo />, element);
 }

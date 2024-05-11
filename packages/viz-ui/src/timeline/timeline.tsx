@@ -214,6 +214,8 @@ function AnimationTimeLineSlider() {
         });
     });
 
+    // let prev = new Date();
+
     return (
         <Slider
             value={[animationMsIntoGame()]}
@@ -223,7 +225,7 @@ function AnimationTimeLineSlider() {
             class="-my-4 grow py-4"
             disabled={isDisabled}
             onChange={(values) => {
-                console.log(dragRef);
+                // console.log(dragRef);
 
                 const isV1 = uiStore.isV1();
                 if (!dragRef.isDragging) {
@@ -248,6 +250,10 @@ function AnimationTimeLineSlider() {
                         roomDisplayStore.setSelectedRoomIfNotPinned(sceneEvent.getMainVirtualSceneName());
                     }
                 }
+
+                // const now = new Date();
+                // console.log(now.getTime() - prev.getTime(), 'call');
+                // prev = now;
             }}
             onChangeEnd={() => {
                 dragRef.isDragging = false;

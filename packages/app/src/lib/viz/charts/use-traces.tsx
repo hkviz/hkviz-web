@@ -37,8 +37,8 @@ export function useMapTraces({ animatedTraceG, knightPinG }: Props) {
     const knightPin = useRef<d3.Selection<SVGImageElement, unknown, null, undefined> | undefined>();
 
     const animationMsIntoGame = animationStore.msIntoGame.valuePreact;
-    const traceAnimationLengthMs = traceStore.lengthMs.value;
-    const traceVisibility = traceStore.visibility.value;
+    const traceAnimationLengthMs = traceStore.lengthMs.valuePreact;
+    const traceVisibility = traceStore.visibility.valuePreact;
     const recording = gameplayStore.recording.valuePreact;
     const isV1 = uiStore.isV1.value;
 

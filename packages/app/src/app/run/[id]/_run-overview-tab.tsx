@@ -41,7 +41,7 @@ export function RunOverviewTab({
         uiStore.activateTab('map');
         animationStore.setIsPlaying(true);
         roomDisplayStore.setRoomVisibility('visited-animated');
-        traceStore.visibility.value = 'animated';
+        traceStore.setVisibility('animated');
         roomColoringStore.setRoomColorMode('area');
         extraChartStore.setFollowsAnimationAutoBounds(true);
         mapZoomStore.enabled.value = true;

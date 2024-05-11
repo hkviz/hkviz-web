@@ -1,4 +1,5 @@
 export * from './splits';
 export * from './map';
-export * from './room-infos';
 export * from './timeline';
+export * from './dashboard';
+export * from './room-infos';

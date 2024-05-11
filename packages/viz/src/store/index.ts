@@ -10,3 +10,4 @@ export * from './animation-store';
 export * from './viewport-store';
 export * from './aggregation-store';
 export * from './room-coloring-store';
+export * from './trace-store';

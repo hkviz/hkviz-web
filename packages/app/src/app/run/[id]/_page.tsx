@@ -1,14 +1,9 @@
 'use client';
 
-import {
-    cardClasses,
-    cardHeaderSmallClasses,
-    cardRoundedMdOnlyClasses,
-    cardTitleSmallClasses,
-} from '@/components/additions/card';
+import { cardClasses, cardRoundedMdOnlyClasses } from '@/components/additions/card';
 import { TabsListTransparent, TabsTriggerTransparent } from '@/components/additions/tabs';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from '@/components/ui/resizable';
 import { Tabs } from '@/components/ui/tabs';
@@ -27,13 +22,12 @@ import { uiStore } from '~/lib/stores/ui-store';
 import { HKMap } from '~/lib/viz/charts/hk-map';
 import { useRecordingFiles } from '~/lib/viz/use-recording-files';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
-import { RoomInfoWrapper, RunSplitsSolidWrapper, AnimationOptionsWrapper } from './_dynamic_loader';
+import { AnimationOptionsWrapper, DashboardMapOptionsWrapper } from './_dynamic_loader';
 import { RunExtraCharts } from './_extra-charts/_run_extra_charts';
 import { MobileTabBar } from './_mobile-tabs';
 import { RunOverviewTab } from './_run-overview-tab';
 import { RunSplits } from './_run_splits';
 import { SingleRunPageTour } from './_tour';
-import { ViewOptions } from './_view_options';
 
 interface Props {
     session: Session | null;
@@ -63,7 +57,6 @@ function RunClientLoader({ runData }: { runData: GetRunResult }) {
 export function SingleRunClientPage({ session, runData }: Props) {
     useStoreInitializer();
     useSignals();
-    const isV1 = uiStore.isV1.value;
     const mainCardTab = uiStore.mainCardTab.valuePreact;
     const mobileTab = uiStore.mobileTab.valuePreact;
 
@@ -79,23 +72,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
 
     return (
         <div className="dashboard-grid">
-            <div className={cn('dashboard-grid-map-options', mobileTab === 'map' ? 'flex' : 'hidden lg:flex')}>
-                <Card
-                    className={cn(
-                        cardRoundedMdOnlyClasses,
-                        'min-w-[300px] overflow-auto border-t max-lg:grow max-lg:basis-0 sm:min-w-min',
-                    )}
-                >
-                    <CardHeader className={cardHeaderSmallClasses}>
-                        <CardTitle className={cardTitleSmallClasses}>{isV1 ? 'View options' : 'Map options'}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="px-0 pb-1">
-                        <ViewOptions />
-                        <RunSplitsSolidWrapper />
-                    </CardContent>
-                </Card>
-                <RoomInfoWrapper />
-            </div>
+            <DashboardMapOptionsWrapper />
             <Card
                 className={cn(
                     cardRoundedMdOnlyClasses,

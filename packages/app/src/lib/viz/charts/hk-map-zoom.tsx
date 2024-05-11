@@ -26,7 +26,7 @@ export function HKMapZoom({
 }) {
     useSignals();
     const animatedMsIntoGame = animationStore.msIntoGame.valuePreact;
-    const traceAnimationLengthMs = traceStore.lengthMs.value;
+    const traceAnimationLengthMs = traceStore.lengthMs.valuePreact;
     const recording = gameplayStore.recording.valuePreact;
     const zoomFollowEnabled = mapZoomStore.enabled.value;
     const zoomFollowTarget = mapZoomStore.target.value;

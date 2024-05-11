@@ -9,3 +9,4 @@ export * from './input';
 export * from './slider';
 export * from './popover';
 export * from './label';
+export * from './checkbox';

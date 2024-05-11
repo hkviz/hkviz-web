@@ -4,9 +4,12 @@ export const RunSplitsSolidWrapper = dynamic(() => import('./_dynamic').then((it
     ssr: false,
 });
 
-export const RoomInfoWrapper = dynamic(() => import('./_dynamic').then((it) => it.RoomInfoWrapper), {
-    ssr: false,
-});
+export const DashboardMapOptionsWrapper = dynamic(
+    () => import('./_dynamic').then((it) => it.DashboardMapOptionsWrapper),
+    {
+        ssr: false,
+    },
+);
 
 export const HkMapRoomsWrapper = dynamic(() => import('./_dynamic').then((it) => it.HkMapRoomsWrapper), {
     ssr: false,

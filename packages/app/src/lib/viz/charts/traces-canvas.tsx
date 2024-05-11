@@ -66,13 +66,13 @@ export function HKMapTraces({ zoomHandler }: HKMapTracesProps) {
         }
 
         // animation
-        const minMsIntoGame = animationStore.msIntoGame.valuePreact - traceStore.lengthMs.value;
+        const minMsIntoGame = animationStore.msIntoGame.valuePreact - traceStore.lengthMs.valuePreact;
         const maxMsIntoGame = animationStore.msIntoGame.valuePreact;
 
         const positionEvents =
             gameplayStore.recording.valuePreact?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
 
-        const visibility = traceStore.visibility.value;
+        const visibility = traceStore.visibility.valuePreact;
 
         const firstIndex =
             visibility === 'animated' && positionEvents.length > 0 && minMsIntoGame > positionEvents[0]!.msIntoGame
@@ -101,7 +101,9 @@ export function HKMapTraces({ zoomHandler }: HKMapTracesProps) {
         while (event && (visibility === 'all' || event.msIntoGame <= maxMsIntoGame)) {
             if (previousEvent) {
                 const opacity =
-                    visibility === 'animated' ? 1 - (maxMsIntoGame - event.msIntoGame) / traceStore.lengthMs.value : 1;
+                    visibility === 'animated'
+                        ? 1 - (maxMsIntoGame - event.msIntoGame) / traceStore.lengthMs.valuePreact
+                        : 1;
 
                 ctx.globalAlpha = opacity ** 0.5; // fade out slower
                 ctx.beginPath();
@@ -123,7 +125,12 @@ export function HKMapTraces({ zoomHandler }: HKMapTracesProps) {
         // shade pin
         const frameEvent = animationStore.currentFrameEndEvent.value;
         const recording = gameplayStore.recording.valuePreact;
-        if (traceStore.visibility.value === 'animated' && recording && frameEvent && frameEvent.shadeScene != 'None') {
+        if (
+            traceStore.visibility.valuePreact === 'animated' &&
+            recording &&
+            frameEvent &&
+            frameEvent.shadeScene != 'None'
+        ) {
             const mapPosition = playerPositionToMapPosition(
                 new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),
                 recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene)!,
