@@ -2,17 +2,17 @@
 import { cn } from '@/lib/utils';
 import { type AggregationVariable } from '@hkviz/viz';
 import {
-    renderHkMapRooms,
-    renderRunSplits,
+    RunExtraCharts,
+    render,
     renderAggregationVariableIcon,
     renderAnimationOptions,
-    type HkMapRoomsProps,
     renderDashboardMapOptions,
-    render,
-    RunExtraCharts,
+    renderHkMapRooms,
+    renderRunSplits,
+    type HkMapRoomsProps,
 } from '@hkviz/viz-ui';
 import { useSignals } from '@preact/signals-react/runtime';
-import { memo, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createStore } from 'solid-js/store';
 import { uiStore } from '~/lib/stores/ui-store';
 
@@ -36,7 +36,7 @@ export function RunSplitsSolidWrapper() {
     return <div ref={wrapper} />;
 }
 
-export const HkMapRoomsWrapper = memo(function HkMapRoomsWrapper(props: HkMapRoomsProps) {
+export function HkMapRoomsWrapper(props: HkMapRoomsProps) {
     const roomWrapperRef = useRef<SVGGElement>(null);
 
     const solidProps = useReactPropsToSolid(props);
@@ -47,9 +47,9 @@ export const HkMapRoomsWrapper = memo(function HkMapRoomsWrapper(props: HkMapRoo
     }, [solidProps]);
 
     return <g ref={roomWrapperRef} />;
-});
+}
 
-export const DashboardMapOptionsWrapper = memo(function RoomInfoWrapper() {
+export const DashboardMapOptionsWrapper = function RoomInfoWrapper() {
     useSignals();
     const roomWrapperRef = useRef<HTMLDivElement>(null);
     const mobileTab = uiStore.mobileTab.valuePreact;
@@ -58,7 +58,7 @@ export const DashboardMapOptionsWrapper = memo(function RoomInfoWrapper() {
         if (roomWrapperRef.current) {
             return renderDashboardMapOptions(roomWrapperRef.current);
         }
-    });
+    }, []);
 
     return (
         <div
@@ -66,13 +66,9 @@ export const DashboardMapOptionsWrapper = memo(function RoomInfoWrapper() {
             className={cn('dashboard-grid-map-options', mobileTab === 'map' ? 'flex' : 'hidden lg:flex')}
         ></div>
     );
-});
+};
 
-export const AggregationVariableIconWrapper = memo(function AggregationVariableIconWrapper({
-    variable,
-}: {
-    variable: AggregationVariable;
-}) {
+export function AggregationVariableIconWrapper({ variable }: { variable: AggregationVariable }) {
     const wrapper = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -81,9 +77,9 @@ export const AggregationVariableIconWrapper = memo(function AggregationVariableI
         }
     }, [variable]);
     return <div ref={wrapper} />;
-});
+}
 
-export const AnimationOptionsWrapper = memo(function AnimationOptionsWrapper({ className }: { className: string }) {
+export function AnimationOptionsWrapper({ className }: { className: string }) {
     const wrapper = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -92,9 +88,9 @@ export const AnimationOptionsWrapper = memo(function AnimationOptionsWrapper({ c
         }
     }, []);
     return <div ref={wrapper} className={className} />;
-});
+}
 
-export const RunExtraChartsWrapper = memo(function AnimationOptionsWrapper() {
+export function RunExtraChartsWrapper() {
     const wrapper = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -103,4 +99,4 @@ export const RunExtraChartsWrapper = memo(function AnimationOptionsWrapper() {
         }
     }, []);
     return <div className="extra-charts flex h-full flex-col" ref={wrapper} />;
-});
+}
