@@ -154,7 +154,7 @@ const RunSplitsRows: Component = () => {
     const filteredSplits = splitsStore.filteredSplits;
     const nextSplitIndex = splitsStore.nextSplitIndex;
 
-    let [scrollDiv, setScrollDiv] = createSignal<HTMLDivElement>();
+    const [scrollDiv, setScrollDiv] = createSignal<HTMLDivElement>();
 
     return (
         <div class="grow overflow-y-auto lg:shrink lg:basis-0" ref={setScrollDiv}>

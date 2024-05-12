@@ -1,23 +1,23 @@
-import { Match, Show, Switch, createEffect, createMemo, createSignal, type Component } from 'solid-js';
-import { render } from 'solid-js/web';
-import { RoomInfo } from './room-infos';
-import { ViewOptions } from './view-options';
 import {
     Button,
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-    cn,
     Resizable,
     ResizableHandle,
     ResizablePanel,
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
     cardClasses,
     cardRoundedMdOnlyClasses,
+    cn,
 } from '@hkviz/components';
-import { Maximize, Minus, Rows } from 'lucide-solid';
 import { splitsStore, uiStore } from '@hkviz/viz';
-import { RunExtraCharts } from './time-charts';
+import { Maximize, Minus, Rows } from 'lucide-solid';
+import { Show, createEffect, createMemo, createSignal, type Component } from 'solid-js';
+import { render } from 'solid-js/web';
+import { RoomInfo } from './room-infos';
 import { RunSplits } from './splits';
+import { RunExtraCharts } from './time-charts';
+import { ViewOptions } from './view-options';
 
 export const DashboardMapOptions: Component = () => {
     return (

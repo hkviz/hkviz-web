@@ -301,8 +301,7 @@ export function AnimationTimeLine(props: { class?: string }) {
 }
 
 export function AnimationOptions(props: { class?: string }) {
-    const animationSpeedMultiplier = animationStore.speedMultiplier();
-    const isDisabled = !gameplayStore.recording();
+    const animationSpeedMultiplier = animationStore.speedMultiplier;
 
     return (
         <div class={cn('@container', props.class)}>
@@ -317,14 +316,11 @@ export function AnimationOptions(props: { class?: string }) {
                 <AnimationTimeLine class="@3xl:col-span-1 @3xl:row-auto @3xl:px-0 col-span-3 row-start-2 mx-2" />
                 <div class="relative">
                     <Popover>
-                        <PopoverTrigger
-                            as={() => (
-                                <Button variant="ghost" disabled={isDisabled}>
-                                    <Times />
-                                    {Number.isNaN(animationSpeedMultiplier) ? 0 : animationSpeedMultiplier}
-                                </Button>
-                            )}
-                        />
+                        <PopoverTrigger as={Button} variant="ghost">
+                            <Times />
+                            {Number.isNaN(animationSpeedMultiplier()) ? 0 : animationSpeedMultiplier()}
+                        </PopoverTrigger>
+                        {/* <PopoverTrigger>abc</PopoverTrigger> */}
                         <PopoverContent class="w-[10rem] p-0">
                             <Index each={[500, 250, 100, 50, 25, 10]}>
                                 {(it) => (
@@ -344,7 +340,7 @@ export function AnimationOptions(props: { class?: string }) {
                                 <Input
                                     type="number"
                                     placeholder="Playback speed"
-                                    value={animationSpeedMultiplier.toString()}
+                                    value={animationSpeedMultiplier().toString()}
                                     class="border-none pl-6 outline-none"
                                     onChange={(v) => {
                                         try {
