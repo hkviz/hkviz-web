@@ -15,15 +15,15 @@ import {
 import { assertNever, recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '@hkviz/parser';
 import { animationStore, hoverMsStore, roomDisplayStore, splitColors, splitsStore, uiStore } from '@hkviz/viz';
 import { Search, X } from 'lucide-solid';
+import { For, Show, createEffect, createSignal, createUniqueId, type Component, type JSXElement } from 'solid-js';
 import { Duration } from '../duration';
-import { type Component, Show, createEffect, For, type JSXElement, createUniqueId } from 'solid-js';
 
 type RowActiveState = 'past' | 'next' | 'future';
 
 interface RowProps {
     split: RecordingSplit;
     activeState: RowActiveState;
-    ref: (el: HTMLTableRowElement | null) => void;
+    scrollParent: HTMLDivElement | undefined;
 }
 
 const RunSplitRow: Component<RowProps> = (props) => {
@@ -95,16 +95,24 @@ const RunSplitRow: Component<RowProps> = (props) => {
 
     const splitGroupColor = () => splitColors[props.split.group.name];
 
-    // const sceneName = split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-    // const scene = sceneName ? mainRoomDataBySceneName.get(sceneName) ?? null : null;
-    // const displaySceneName = scene
-    //     ? scene.zoneNameFormatted // + ' - ' + scene.roomNameFormattedZoneExclusive
-    //     : sceneName;
+    let ref!: HTMLTableRowElement;
 
-    // const color = scene ? changeRoomColorForLightTheme(scene.color) : undefined;
+    createEffect(() => {
+        if (props.activeState === 'next') {
+            const tr = ref;
+            const scrollDiv = props.scrollParent;
+            if (!tr || !scrollDiv) return;
+            const maxOk = tr.offsetTop;
+            const minOk = tr.offsetTop - scrollDiv.clientHeight + tr.clientHeight;
+            // (tr.parentNode! as any).scrollTop = tr.offsetTop;
+            if (scrollDiv.scrollTop < minOk || scrollDiv.scrollTop > maxOk) {
+                scrollDiv.scrollTo({ top: minOk, behavior: 'smooth' });
+            }
+        }
+    });
 
     return (
-        <TableRow ref={props.ref}>
+        <TableRow ref={ref}>
             <TableCell class={cn('p-0', activeStateClasses())}>
                 <button
                     onClick={handleClick}
@@ -146,39 +154,10 @@ const RunSplitsRows: Component = () => {
     const filteredSplits = splitsStore.filteredSplits;
     const nextSplitIndex = splitsStore.nextSplitIndex;
 
-    let scrollDivRef!: HTMLDivElement;
-    let splitRefs: (HTMLTableRowElement | null)[] = [];
-
-    createEffect(() => {
-        splitRefs = splitRefs.slice(0, filteredSplits().length);
-    });
-
-    createEffect(() => {
-        const scrollToIndex =
-            nextSplitIndex() === -1 || nextSplitIndex() === undefined ? filteredSplits().length - 1 : nextSplitIndex();
-        if (scrollToIndex >= 0 && scrollToIndex < filteredSplits().length) {
-            // splitRefs.current[scrollToIndex]?.scrollIntoView({
-            //     behavior: 'smooth',
-            //     block: 'nearest',
-            //     inline: 'start',
-            // });
-
-            console.log('next index effect', splitRefs);
-
-            const tr = splitRefs[scrollToIndex];
-            const scrollDiv = scrollDivRef;
-            if (!tr || !scrollDiv) return;
-            const maxOk = tr.offsetTop;
-            const minOk = tr.offsetTop - scrollDiv.clientHeight + tr.clientHeight;
-            // (tr.parentNode! as any).scrollTop = tr.offsetTop;
-            if (scrollDiv.scrollTop < minOk || scrollDiv.scrollTop > maxOk) {
-                scrollDiv.scrollTo({ top: minOk, behavior: 'smooth' });
-            }
-        }
-    });
+    let [scrollDiv, setScrollDiv] = createSignal<HTMLDivElement>();
 
     return (
-        <div class="grow overflow-y-auto lg:shrink lg:basis-0" ref={scrollDivRef}>
+        <div class="grow overflow-y-auto lg:shrink lg:basis-0" ref={setScrollDiv}>
             <Table class="w-full">
                 <TableBody>
                     <For each={filteredSplits()}>
@@ -191,15 +170,7 @@ const RunSplitsRows: Component = () => {
                                       : index() < nextSplitIndex()
                                         ? 'past'
                                         : 'future';
-                            return (
-                                <RunSplitRow
-                                    split={split}
-                                    activeState={activeState()}
-                                    ref={(el) => {
-                                        splitRefs[index()] = el;
-                                    }}
-                                />
-                            );
+                            return <RunSplitRow split={split} activeState={activeState()} scrollParent={scrollDiv()} />;
                         }}
                     </For>
                 </TableBody>
