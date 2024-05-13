@@ -13,7 +13,7 @@ export const userStudyTimeSlotRouter = createTRPCRouter({
         const participantId = await getParticipantIdFromCookieOrSessionUser();
 
         const until = new Date();
-        until.setHours(until.getHours() + 4);
+        until.setHours(until.getHours() + 0.75);
 
         const result = await ctx.db.query.userStudyTimeSlot.findMany({
             where: (timeSlot, { eq, gt, and, isNull, or }) => {
