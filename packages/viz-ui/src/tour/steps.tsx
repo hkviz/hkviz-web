@@ -3,6 +3,7 @@ import { type Step, makeStep } from './step';
 import { HKVizText } from '../hkviz-text';
 import {
     animationStore,
+    hkMapRoomRectClass,
     mapZoomStore,
     roomColoringStore,
     roomDisplayStore,
@@ -11,10 +12,6 @@ import {
 } from '@hkviz/viz';
 import { tourStore, viewportStore } from '@hkviz/viz';
 import { Palette, Play } from 'lucide-solid';
-
-export function hkMapRoomRectClass({ gameObjectName }: { gameObjectName: string }) {
-    return 'hk-map-room-react_' + gameObjectName;
-}
 
 const P: Component<{ children: JSXElement }> = (props) => {
     return <p class="mb-3">{props.children}</p>;
@@ -93,6 +90,7 @@ export const tourSteps: Step[] = [
 
         return {
             target: () => '.room-info-pin-button',
+            padding: 8,
             content: () => <P>Here, you can also pin and unpin the selected room.</P>,
             activeEffect: () => {
                 roomDisplayStore.selectedScenePinned();

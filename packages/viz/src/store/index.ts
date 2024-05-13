@@ -14,3 +14,4 @@ export * from './trace-store';
 export * from './extra-chart-store';
 export * from './map-zoom-store';
 export * from './tour-store';
+export * from './store-initializer';

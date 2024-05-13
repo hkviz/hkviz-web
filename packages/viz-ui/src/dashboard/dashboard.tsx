@@ -1,5 +1,6 @@
 import {
     Button,
+    Card,
     Resizable,
     ResizableHandle,
     ResizablePanel,
@@ -10,27 +11,29 @@ import {
     cardRoundedMdOnlyClasses,
     cn,
 } from '@hkviz/components';
-import { splitsStore, uiStore } from '@hkviz/viz';
+import { type RunFileInfo, createRunFileLoader, splitsStore, uiStore } from '@hkviz/viz';
 import { Maximize, Minus, Rows } from 'lucide-solid';
 import { Show, createEffect, createMemo, createSignal, type Component } from 'solid-js';
-import { render } from 'solid-js/web';
-import { RoomInfo } from './room-infos';
-import { RunSplits } from './splits';
-import { RunExtraCharts } from './time-charts';
-import { ViewOptions } from './view-options';
+import { RoomInfo } from '../room-infos';
+import { RunSplits } from '../splits';
+import { RunExtraCharts } from '../time-charts';
+import { ViewOptions } from '../view-options';
+import { HKMap } from '../map';
+import { SingleRunPageTour } from '../tour';
+import { RunOverviewTab } from './overview-tab';
+import { AnimationOptions } from '../timeline';
+import { MobileTabBar } from './mobile-tabs';
+import { LargeScreenTabs } from './tabs-large-screen';
 
 export const DashboardMapOptions: Component = () => {
+    const mobileTab = uiStore.mobileTab;
     return (
-        <>
+        <div class={cn('dashboard-grid-map-options', mobileTab() === 'map' ? 'flex' : 'hidden lg:flex')}>
             <ViewOptions />
             <RoomInfo />
-        </>
+        </div>
     );
 };
-
-export function renderDashboardMapOptions(element: Element) {
-    return render(() => <DashboardMapOptions />, element);
-}
 
 interface ResizeButtonsProps {
     state: 'minimized' | 'medimized' | 'maximized';
@@ -213,4 +216,44 @@ export const RightCard: Component<{ class?: string }> = (props) => {
     //         </Tabs>
     //     </Card>
     // );
+};
+
+export interface GameplayDashboardProps {
+    fileInfos: RunFileInfo[];
+    startDate: Date | undefined;
+    onRunCardWrapperReady: (element: HTMLDivElement) => void;
+}
+export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
+    const mobileTab = uiStore.mobileTab;
+    const runFileLoader = createMemo(() => createRunFileLoader(props.fileInfos));
+
+    return (
+        <div class="dashboard-grid">
+            <DashboardMapOptions />
+            <Card
+                class={cn(
+                    cardRoundedMdOnlyClasses,
+                    'relative grow grid-cols-1 grid-rows-1 overflow-hidden border-t',
+                    mobileTab() === 'overview' ? 'dashboard-grid-map-big' : 'dashboard-grid-map',
+                    mobileTab() === 'overview' || mobileTab() === 'map' ? 'grid' : 'hidden lg:grid',
+                )}
+            >
+                <LargeScreenTabs />
+                <HKMap class="absolute inset-0" />
+                <RunOverviewTab
+                    class="col-start-1 col-end-1 row-start-1 row-end-1"
+                    startDate={props.startDate}
+                    loadingDone={runFileLoader().done()}
+                    loadingProgress={runFileLoader().progress()}
+                    onRunCardWrapperReady={(element) => props.onRunCardWrapperReady(element)}
+                />
+                <SingleRunPageTour />
+                {/* <RunClientLoader runData={runData} /> */}
+            </Card>
+            <AnimationOptions class="dashboard-grid-timeline" />
+
+            <RightCard class="dashboard-grid-splits-and-timecharts flex" />
+            <MobileTabBar />
+        </div>
+    );
 };

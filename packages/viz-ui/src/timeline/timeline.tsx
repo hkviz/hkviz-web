@@ -30,7 +30,6 @@ import {
 } from '@hkviz/viz';
 import { Pause, Play } from 'lucide-solid';
 import { Index, Show, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
-import { render } from 'solid-js/web';
 import { createAutoSizeCanvas } from '../canvas';
 import { Duration } from '../duration';
 
@@ -359,8 +358,4 @@ export function AnimationOptions(props: { class?: string }) {
             </Card>
         </div>
     );
-}
-
-export function renderAnimationOptions(className: string, element: Element) {
-    return render(() => <AnimationOptions class={className} />, element);
 }

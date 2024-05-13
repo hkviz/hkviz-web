@@ -11,3 +11,5 @@ export * from './popover';
 export * from './label';
 export * from './checkbox';
 export * from './resizable';
+export * from './tabs';
+export * from './progress';

@@ -4,3 +4,4 @@ export * from './store';
 export * from './color-curves';
 export * from './util';
 export * from './class-names';
+export * from './loader';

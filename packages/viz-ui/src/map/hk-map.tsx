@@ -4,7 +4,7 @@ import { cn } from '@hkviz/components';
 import { mapVisualExtends, roomData } from '@hkviz/parser';
 import { mapZoomStore, roomDisplayStore, uiStore } from '@hkviz/viz';
 import * as d3 from 'd3';
-import { type Component, Show, createEffect } from 'solid-js';
+import { Show, createEffect, type Component } from 'solid-js';
 import { createElementSize } from '../canvas';
 import { HkMapRooms } from './hk-map-rooms';
 import { HkMapTexts } from './hk-map-texts';
@@ -13,13 +13,12 @@ import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
 import { OutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
-import { SingleRunPageTour } from '../tour';
 
 export interface HKMapProps {
     class?: string;
 }
 
-export const HKMap: Component = (props: HKMapProps) => {
+export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
     const isV1 = uiStore.isV1;
 
     const zoom = d3
@@ -123,10 +122,5 @@ export const HKMap: Component = (props: HKMapProps) => {
     });
 
     console.log('hkmap', container);
-    return (
-        <>
-            {container}
-            <SingleRunPageTour />
-        </>
-    );
+    return container;
 };

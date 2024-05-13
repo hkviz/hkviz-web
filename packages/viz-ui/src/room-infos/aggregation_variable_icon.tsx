@@ -56,7 +56,3 @@ export function AggregationVariableIcon(props: { variable: AggregationVariable }
         </Switch>
     );
 }
-
-export function renderAggregationVariableIcon(variable: AggregationVariable, container: HTMLElement) {
-    return render(() => <AggregationVariableIcon variable={variable} />, container);
-}

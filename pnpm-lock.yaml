@@ -467,6 +467,9 @@ importers:
       d3-brush:
         specifier: ^3.0.0
         version: 3.0.0
+      date-fns:
+        specifier: ^2.30.0
+        version: 2.30.0
       fuse.js:
         specifier: ^7.0.0
         version: 7.0.0

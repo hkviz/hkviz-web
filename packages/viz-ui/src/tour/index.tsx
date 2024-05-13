@@ -1,7 +1,7 @@
-import { Button, Popover, PopoverAnchor, PopoverArrow, PopoverContent } from '@hkviz/components';
+import { Button, Popover, PopoverArrow, PopoverContent } from '@hkviz/components';
 import { gameplayStore, tourStore } from '@hkviz/viz';
 import { X } from 'lucide-solid';
-import { type Component, For, Show, createEffect, createMemo, untrack, onCleanup } from 'solid-js';
+import { For, Show, createEffect, createMemo, onCleanup, untrack, type Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { type Step } from './step';
 import { tourSteps } from './steps';
@@ -88,6 +88,7 @@ const TourShadow: Component = () => {
     createEffect(() => {
         const _currentStep = currentStep();
         const padding = _currentStep?.padding ?? 8;
+        console.log('padding', padding);
         const targetQuery = _currentStep?.target();
         const target = targetQuery != null ? document.querySelector<HTMLElement>(targetQuery) : null;
 
