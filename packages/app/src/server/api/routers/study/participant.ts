@@ -3,7 +3,7 @@ import { and, eq, isNull } from 'drizzle-orm';
 import { z } from 'zod';
 import { getParticipantIdFromCookieOrSessionUser } from '~/app/user-study/_utils';
 import { db } from '~/server/db';
-import { hkExperience, studyParticipant, userDemographics, userStudyInformedConsent, users } from '~/server/db/schema';
+import { hkExperience, studyParticipant, userDemographics, users } from '~/server/db/schema';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
 
 async function exists({ participantId }: { participantId: string }) {
@@ -88,34 +88,4 @@ export const participantRouter = createTRPCRouter({
             throw new Error('Could not set skipLoginQuestion');
         }
     }),
-
-    resetParticipant: publicProcedure
-        .input(z.object({ resetId: z.string().uuid() }))
-        .mutation(async ({ ctx, input }) => {
-            if (!input.resetId) {
-                // im paranoid :) - this should never happen
-                throw new TRPCError({
-                    code: 'BAD_REQUEST',
-                    message: 'Invalid reset ID',
-                });
-            }
-
-            const participant = await ctx.db.query.studyParticipant.findFirst({
-                where: (studyParticipant, { eq }) => eq(studyParticipant.resetId, input.resetId),
-            });
-
-            if (!participant) {
-                throw new TRPCError({
-                    code: 'NOT_FOUND',
-                    message: 'Participant not found',
-                });
-            }
-            const participantId = participant.participantId;
-
-            await ctx.db.delete(hkExperience).where(eq(hkExperience.participantId, participantId));
-            await ctx.db.delete(userDemographics).where(eq(userDemographics.participantId, participantId));
-            await ctx.db
-                .delete(userStudyInformedConsent)
-                .where(eq(userStudyInformedConsent.participantId, participantId));
-        }),
 });

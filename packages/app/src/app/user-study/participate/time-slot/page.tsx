@@ -5,6 +5,11 @@ import { ContentWrapper } from '../../../_components/content-wrapper';
 import { getParticipantIdFromCookieOrSessionUser } from '../../_utils';
 import { TimeSlotPicker } from './_timeslot-picker';
 import { redirect } from 'next/navigation';
+import { type Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Participate in the HKViz user study',
+};
 
 export default async function UserStudyParticipatePage() {
     const api = await apiFromServer();

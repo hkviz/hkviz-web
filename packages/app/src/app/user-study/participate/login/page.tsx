@@ -8,6 +8,12 @@ import { getServerAuthSession } from '~/server/auth';
 import { ContentCenterWrapper } from '../../../_components/content-wrapper';
 import { ContinueWithoutLoginUserStudyButton } from './_continue-without-login-button';
 
+import { type Metadata } from 'next';
+
+export const metadata: Metadata = {
+    title: 'Login in for the HKViz user study',
+};
+
 export default async function UserStudyParticipatePage() {
     const loginUrl = getLoginLink('/user-study/flow?from=user-study-login');
 
