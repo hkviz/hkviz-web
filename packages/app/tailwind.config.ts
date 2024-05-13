@@ -28,6 +28,7 @@ export default {
                 sans: ['var(--font-sans)', ...fontFamily.sans],
                 serif: ['var(--font-serif)', ...fontFamily.serif],
                 serifDecorative: ['var(--font-serif-decorative)', ...fontFamily.serif],
+                serifMixedCase: ['var(--font-serif-mixed-case)', ...fontFamily.serif],
             },
             colors: {
                 border: 'hsl(var(--border))',

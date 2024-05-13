@@ -7,7 +7,7 @@ export const DashboardMapOptionsWrapper = dynamic(
     },
 );
 
-export const HkMapRoomsWrapper = dynamic(() => import('./_dynamic').then((it) => it.HkMapRoomsWrapper), {
+export const HkMapWrapper = dynamic(() => import('./_dynamic').then((it) => it.HkMapWrapper), {
     ssr: false,
 });
 

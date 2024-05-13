@@ -12,3 +12,6 @@ export const blueMaskImg = '/ingame-sprites/hud/edited/blueMask.png';
 export const emptyMaskImg = '/ingame-sprites/hud/edited/emptyMask.png';
 export const maskImg = '/ingame-sprites/hud/select_game_HUD_0001_health.png';
 export const steelMaskImg = '/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
+
+export const knightPinSrc = '/ingame-sprites/Map_Knight_Pin_Compass.png';
+export const shadePinSrc = '/ingame-sprites/pin/Shade_Pin.png';

@@ -2,13 +2,13 @@
 import { cn } from '@/lib/utils';
 import { type AggregationVariable } from '@hkviz/viz';
 import {
+    HKMap,
     RightCard,
     render,
     renderAggregationVariableIcon,
     renderAnimationOptions,
     renderDashboardMapOptions,
-    renderHkMapRooms,
-    type HkMapRoomsProps,
+    type HKMapProps,
 } from '@hkviz/viz-ui';
 import { useSignals } from '@preact/signals-react/runtime';
 import { useEffect, useRef, useState } from 'react';
@@ -21,19 +21,6 @@ function useReactPropsToSolid<T extends object>(props: T) {
     set(props);
 
     return get;
-}
-
-export function HkMapRoomsWrapper(props: HkMapRoomsProps) {
-    const roomWrapperRef = useRef<SVGGElement>(null);
-
-    const solidProps = useReactPropsToSolid(props);
-
-    useEffect(() => {
-        console.log(roomWrapperRef, solidProps);
-        return renderHkMapRooms(solidProps, roomWrapperRef.current!);
-    }, [solidProps]);
-
-    return <g ref={roomWrapperRef} />;
 }
 
 export const DashboardMapOptionsWrapper = function RoomInfoWrapper() {
@@ -85,4 +72,16 @@ export function RightCardWrapper() {
     }, []);
 
     return <div className="dashboard-grid-splits-and-timecharts flex" ref={wrapper} />;
+}
+
+export function HkMapWrapper(props: { className: string }) {
+    const wrapper = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        return render(wrapper.current!, HKMap, {
+            ['class']: 'absolute inset-0',
+        });
+    }, []);
+
+    return <div ref={wrapper} className={props.className} />;
 }

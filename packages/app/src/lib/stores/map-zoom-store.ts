@@ -1,6 +1,6 @@
 import { computed, signal } from '@preact/signals-react';
-
-export type ZoomFollowTarget = 'current-zone' | 'visible-rooms' | 'player-movement' | 'recent-scenes';
+// todo delete
+export type ZoomFollowTarget = 'current-zone' | 'visible-rooms';
 
 const target = signal<ZoomFollowTarget>('current-zone');
 const enabled = signal(true);
