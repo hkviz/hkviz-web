@@ -1,9 +1,10 @@
 import { combineRecordings, parseRecordingFile } from '@hkviz/parser';
 import { createDeferred, createMemo, createSignal } from 'solid-js';
-import { storeInitializer } from 'src/store';
+import { storeInitializer } from '../store';
 import { fetchWithRunfileCache } from './recording-file-browser-cache';
 import { type RunFileInfo } from './run-files-info';
 import { wrapResultWithProgress } from './wrap-result-with-progress';
+import { isServer } from 'solid-js/web';
 
 async function loadFile(file: RunFileInfo, onProgress: (progress: number) => void) {
     const loader = () => fetchWithRunfileCache(file.id, file.version, file.signedUrl);
@@ -25,9 +26,17 @@ async function loadFile(file: RunFileInfo, onProgress: (progress: number) => voi
 }
 
 export function createRunFileLoader(files: RunFileInfo[]) {
-    // if (isServer) {
-    //     return;
-    // }
+    // todo use correct version
+    storeInitializer.initializeStores('vnext');
+    if (isServer) {
+        return {
+            progress: () => 0,
+            done: () => false,
+            abort: () => {
+                // no-op
+            },
+        };
+    }
 
     console.log('started loading run files');
 

@@ -33,6 +33,9 @@ importers:
       '@aws-sdk/s3-request-presigner':
         specifier: ^3.445.0
         version: 3.445.0
+      '@hkviz/components':
+        specifier: workspace:*
+        version: link:../components
       '@hkviz/hk-data':
         specifier: workspace:*
         version: link:../hk-data
@@ -51,6 +54,9 @@ importers:
       '@icons-pack/react-simple-icons':
         specifier: ^9.2.0
         version: 9.2.0(react@18.2.0)
+      '@kobalte/core':
+        specifier: ^0.13.1
+        version: 0.13.1(solid-js@1.8.17)
       '@mdx-js/loader':
         specifier: ^3.0.0
         version: 3.0.0(webpack@5.89.0)
@@ -2062,7 +2068,7 @@ packages:
     peerDependencies:
       solid-js: ^1.8.15
     dependencies:
-      '@floating-ui/dom': 1.5.3
+      '@floating-ui/dom': 1.6.5
       '@internationalized/date': 3.5.3
       '@internationalized/number': 3.5.2
       '@kobalte/utils': 0.9.0(solid-js@1.8.17)

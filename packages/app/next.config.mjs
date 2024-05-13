@@ -46,11 +46,23 @@ const config = {
             },
         ];
     },
-    webpack: (config) => {
+    webpack: (config, { isServer, dev }) => {
         // Add this to tell webpack to include solid-js/web correctly
-        config.resolve.alias['solid-js/web'] = path.resolve('./node_modules/solid-js/web/dist/web.js');
-        config.resolve.alias['solid-js/store'] = path.resolve('./node_modules/solid-js/store/dist/store.js');
-        config.resolve.alias['solid-js'] = path.resolve('./node_modules/solid-js/dist/solid.js');
+        const p = (pa) => path.resolve(pa);
+
+        const type = isServer ? 'server' : dev ? 'dev' : null;
+
+        config.resolve.alias['solid-js/web'] =
+            type === 'server'
+                ? p('./solid-js-server-dist-hack.js')
+                : p('./node_modules/solid-js/web/dist/' + (type || 'web') + '.js');
+        config.resolve.alias['solid-js/store'] = p('./node_modules/solid-js/store/dist/' + (type || 'store') + '.js');
+        config.resolve.alias['solid-js'] = p('./node_modules/solid-js/dist/' + (type || 'solid') + '.js');
+
+        config.resolve.alias['@hkviz/viz-ui'] = p('./node_modules/@hkviz/viz-ui/dist/' + (type || 'index') + '.js');
+        config.resolve.alias['@hkviz/components'] = p(
+            './node_modules/@hkviz/components/dist/' + (type || 'index') + '.js',
+        );
 
         // Return the altered config
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return

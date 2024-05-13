@@ -1,7 +1,7 @@
 'use client';
 
 import { type Session } from 'next-auth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { RunCard } from '~/app/_components/run-card';
 import { useStoreInitializer } from '~/lib/stores/store-initializer';
@@ -17,15 +17,24 @@ export function SingleRunClientPage({ session, runData }: Props) {
     useStoreInitializer();
     const isOwnRun = session?.user?.id === runData.user.id;
 
+    const [dashboardWrapper, setDashboardWrapper] = useState<HTMLDivElement | null>(null);
     const [cardWrapper, setCardWrapper] = useState<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        setDashboardWrapper(document.getElementById('dashboardWrapper') as HTMLDivElement);
+    }, []);
 
     return (
         <>
-            <GameplayDashboardWrapper
-                startDate={runData.startedAt}
-                fileInfos={runData.files}
-                onRunCardWrapperReady={setCardWrapper}
-            />
+            {dashboardWrapper &&
+                createPortal(
+                    <GameplayDashboardWrapper
+                        startDate={runData.startedAt}
+                        fileInfos={runData.files}
+                        onRunCardWrapperReady={setCardWrapper}
+                    />,
+                    dashboardWrapper,
+                )}
             {cardWrapper && createPortal(<RunCard run={runData} isOwnRun={isOwnRun} />, cardWrapper)}
         </>
     );

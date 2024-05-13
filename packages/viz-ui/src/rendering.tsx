@@ -6,5 +6,6 @@ export function render<T>(element: Element, component: Component<T>, props: T) {
 }
 
 export function renderToString<T>(component: Component<T>, props: T) {
+    console.log('renderToString', component, renderToStringSolid);
     return renderToStringSolid(() => <Dynamic component={component} {...props} />);
 }

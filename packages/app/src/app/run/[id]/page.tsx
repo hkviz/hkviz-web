@@ -8,6 +8,7 @@ import { findNewRunId } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
 import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-wrapper';
+import { renderDashboardToString } from './_server_render_solid';
 
 interface Params {
     id: string;
@@ -24,9 +25,17 @@ export default async function SingleRunPage({ params }: { params: Params }) {
     try {
         const runData = await getRun(params.id, session?.user?.id ?? null);
 
+        const dashboardHtml =
+            renderDashboardToString({
+                startDate: runData.startedAt,
+                fileInfos: runData.files,
+            }) ?? '';
+        console.log({ dashboardHtml });
+
         return (
             <ContentWrapper footerOutOfSight={true}>
                 <SingleRunClientPage runData={runData} session={session} />
+                <div id="dashboard-wrapper" dangerouslySetInnerHTML={{ __html: dashboardHtml }} />
             </ContentWrapper>
         );
     } catch (e) {

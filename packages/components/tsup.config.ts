@@ -10,9 +10,9 @@ const preset_options: preset.PresetOptions = {
             // entries with '.tsx' extension will have `solid` export condition generated
             entry: 'src/index.ts',
             // set `true` or pass a specific path to generate a development-only entry
-            dev_entry: false,
+            dev_entry: true,
             // set `true` or pass a specific path to generate a server-only entry
-            server_entry: false,
+            server_entry: true,
         },
         // {
         //     // non-default entries with "index" filename should have a name specified
