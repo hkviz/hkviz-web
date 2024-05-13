@@ -2,7 +2,7 @@ import { cn } from '@hkviz/components';
 import { tailwindChartColors } from '@hkviz/viz';
 import { type Component } from 'solid-js';
 import { gameplayStore } from '@hkviz/viz';
-import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
+import { ChartDocTitleIcon, ChartDocVars } from './chart-doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 import { blueMaskImg, emptyMaskImg, maskImg, steelMaskImg } from '../img-urls';
 

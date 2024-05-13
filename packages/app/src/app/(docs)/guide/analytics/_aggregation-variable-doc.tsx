@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/card';
 import { aggregationVariableInfos } from '@hkviz/viz';
-import { AggregationVariableIconWrapper } from '~/app/run/[id]/_dynamic';
+import { AggregationVariableIconWrapper } from '~/app/run/[id]/_dynamic_loader';
 
 export function AggregationVariableDoc() {
     return (

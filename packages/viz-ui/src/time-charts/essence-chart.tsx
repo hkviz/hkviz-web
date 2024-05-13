@@ -1,6 +1,6 @@
 import { cn } from '@hkviz/components';
 import { tailwindChartColors } from '@hkviz/viz';
-import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
+import { ChartDocTitleIcon, ChartDocVars } from './chart-doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 import { dreamNailImg } from '../img-urls';
 import { type Component } from 'solid-js';
@@ -39,10 +39,10 @@ export function EssenceChart() {
     );
 }
 
-export function CompletionChartDocVars() {
+export function EssenceChartDocVars() {
     return <ChartDocVars variables={variables} />;
 }
 
-export function CompletionChartDocIcon() {
+export function EssenceChartDocIcon() {
     return <ChartDocTitleIcon unit={Unit} />;
 }

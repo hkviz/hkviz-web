@@ -1,6 +1,6 @@
 import { tailwindChartColors } from '@hkviz/viz';
 import { type Component } from 'solid-js';
-import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
+import { ChartDocTitleIcon, ChartDocVars } from './chart-doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 import { vesselImg } from '../img-urls';
 

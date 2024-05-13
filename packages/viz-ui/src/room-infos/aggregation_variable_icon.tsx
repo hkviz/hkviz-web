@@ -1,8 +1,8 @@
 import { type AggregationVariable } from '@hkviz/viz';
 import { Clock12, Clock2, Hash, type LucideIcon } from 'lucide-solid';
-import { coinImg, focusImg, maskImg, shadeImg, spellDownImg, spellFireballImg, spellUpImg } from '../img-urls';
-import { Dynamic, render } from 'solid-js/web';
 import { Match, Switch } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
+import { coinImg, focusImg, maskImg, shadeImg, spellDownImg, spellFireballImg, spellUpImg } from '../img-urls';
 
 export const aggregationVariableDisplayInfos: Record<AggregationVariable, { Icon?: LucideIcon; image?: string }> = {
     visits: {

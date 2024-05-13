@@ -36,11 +36,20 @@ import { SpoilerWrapper } from './_spoiler-wrapper';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
 import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
 
-import { CompletionChartDocIcon, CompletionChartDocVars } from '../../../run/[id]/_extra-charts/completion-chart';
-import { GeoChartDocIcon, GeoChartDocVars } from '../../../run/[id]/_extra-charts/geo-chart';
-import { GrubsChartDocIcon, GrubsChartDocVars } from '../../../run/[id]/_extra-charts/grub-chart';
-import { HealthChartDocIcon, HealthChartDocVars } from '../../../run/[id]/_extra-charts/health-chart';
-import { SoulChartDocIcon, SoulChartDocVars } from '../../../run/[id]/_extra-charts/soul-chart';
+import {
+    GeoChartDocIcon,
+    GeoChartDocVars,
+    CompletionChartDocIcon,
+    CompletionChartDocVars,
+    EssenceChartDocIcon,
+    EssenceChartDocVars,
+    GrubsChartDocIcon,
+    GrubsChartDocVars,
+    HealthChartDocIcon,
+    HealthChartDocVars,
+    SoulChartDocIcon,
+    SoulChartDocVars,
+} from './_chart-docs.tsx';
 
 import { AggregationVariableDoc } from './_aggregation-variable-doc';
 
@@ -320,11 +329,19 @@ additionally the room the player is in is highlighted on the map while hovering 
 
 <GeoChartScreenshot />
 
-The Geo chart shows geo over time. By default it shows the geo that the player has at the moment, and the potential geo the player can gain by defeating the shade and by selling relicts.
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Geo">Geo</ExternalLinkMdx> chart shows Geo over time. By default it shows the geo that the player has at the moment, and the potential geo the player can gain by defeating the shade and by selling relicts.
 
 <GeoChartDocVars />
 
 Hint: You can find out when money has been lost by failing to defeat the shade, by finding the spots where the 'Shade Geo' decreases without the 'Inventory Geo' increasing.
+
+<FloatClear />
+
+### <EssenceChartDocIcon />Essence chart
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Essence">Essence</ExternalLinkMdx> charts shows the Essence collected over time.
+
+<EssenceChartDocVars />
 
 <FloatClear />
 
