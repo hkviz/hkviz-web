@@ -2,8 +2,7 @@ import { recordingSplitGroups, type RecordingSplit } from '@hkviz/parser';
 import Fuse from 'fuse.js';
 import { animationStore } from './animation-store';
 import { gameplayStore } from './gameplay-store';
-import { createMemo } from 'solid-js';
-import { createSignal } from '../preact-solid-combat';
+import { createMemo, createSignal } from 'solid-js';
 
 const [visibleSplitGroups, setVisibleSplitGroups] = createSignal(recordingSplitGroups.filter((it) => it.defaultShown));
 const [filterTerm, setFilterTerm] = createSignal('');

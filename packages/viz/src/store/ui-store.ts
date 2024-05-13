@@ -1,6 +1,5 @@
-import { createEffect, createMemo, untrack } from 'solid-js';
+import { createEffect, createMemo, untrack, createSignal } from 'solid-js';
 import { animationStore } from './animation-store';
-import { createSignal } from '../preact-solid-combat';
 
 export type DisplayVersion = 'v1' | 'vnext';
 

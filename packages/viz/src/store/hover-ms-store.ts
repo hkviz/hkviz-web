@@ -1,4 +1,4 @@
-import { createSignal } from '../preact-solid-combat';
+import { createSignal } from 'solid-js';
 
 const [hoveredMsIntoGame, setHoveredMsIntoGame] = createSignal<number | null>(null);
 

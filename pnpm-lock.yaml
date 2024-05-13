@@ -418,9 +418,6 @@ importers:
       '@hkviz/parser':
         specifier: workspace:*
         version: link:../parser
-      '@preact/signals-react':
-        specifier: ^2.0.1
-        version: 2.0.1(react@18.2.0)
       '@types/d3':
         specifier: ^7.4.3
         version: 7.4.3

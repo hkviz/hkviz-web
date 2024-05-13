@@ -1,5 +1,4 @@
-import { createMemo } from 'solid-js';
-import { createSignal } from '../preact-solid-combat';
+import { createMemo, createSignal } from 'solid-js';
 
 const [visualViewportScale, setVisualViewportScale] = createSignal(1);
 const [windowSize, setWindowSize] = createSignal({ width: 1080, height: 1920 });

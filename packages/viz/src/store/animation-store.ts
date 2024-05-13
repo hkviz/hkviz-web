@@ -1,7 +1,6 @@
-import { createMemo, batch, createEffect, untrack, onCleanup } from 'solid-js';
-import { type RoomData, mainRoomDataBySceneName, type SceneEvent } from '@hkviz/parser';
+import { mainRoomDataBySceneName, type RoomData, type SceneEvent } from '@hkviz/parser';
+import { batch, createEffect, createMemo, createSignal, onCleanup, untrack } from 'solid-js';
 import { gameplayStore } from './gameplay-store';
-import { createSignal } from '../preact-solid-combat';
 
 const intervalMs = 1000 / 30;
 // const intervalMs = 1000 / 60;

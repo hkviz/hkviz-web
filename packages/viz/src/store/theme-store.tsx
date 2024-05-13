@@ -1,4 +1,4 @@
-import { createSignal } from '../preact-solid-combat';
+import { createSignal } from 'solid-js';
 
 export type Theme = 'light' | 'dark';
 

@@ -13,8 +13,7 @@ import {
 } from '@hkviz/parser';
 import { formatTimeMs } from '../util';
 import { gameplayStore } from './gameplay-store';
-import { createMemo } from 'solid-js';
-import { createSignal } from '../preact-solid-combat';
+import { createMemo, createSignal } from 'solid-js';
 
 export type ValueAggregation = {
     deaths: number;

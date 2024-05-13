@@ -1,6 +1,5 @@
 import { playerDataFields, type CombinedRecording } from '@hkviz/parser';
-import { createMemo } from 'solid-js';
-import { createSignal } from '../preact-solid-combat';
+import { createMemo, createSignal } from 'solid-js';
 
 const [recording, setRecording] = createSignal<CombinedRecording | null>(null);
 

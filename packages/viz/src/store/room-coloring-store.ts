@@ -5,8 +5,7 @@ import { themeStore } from './theme-store';
 import { roomData } from '@hkviz/parser';
 import { aggregationStore, type AggregationVariable } from './aggregation-store';
 import { uiStore } from './ui-store';
-import { batch, createSignal } from '../preact-solid-combat';
-import { createMemo } from 'solid-js';
+import { batch, createMemo, createSignal } from 'solid-js';
 
 function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
     return a.h === b.h && a.s === b.s && a.l === b.l;

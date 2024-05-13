@@ -1,5 +1,4 @@
-import { createMemo } from 'solid-js';
-import { createSignal } from '../preact-solid-combat';
+import { createMemo, createSignal } from 'solid-js';
 
 export type ZoomFollowTarget = 'current-zone' | 'visible-rooms';
 

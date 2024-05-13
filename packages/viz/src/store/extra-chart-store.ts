@@ -1,5 +1,4 @@
-import { createEffect, untrack } from 'solid-js';
-import { batch, createSignal } from '../preact-solid-combat';
+import { createEffect, untrack, createSignal, batch } from 'solid-js';
 import { animationStore } from './animation-store';
 import { gameplayStore } from './gameplay-store';
 

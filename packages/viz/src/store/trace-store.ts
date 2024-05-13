@@ -1,6 +1,5 @@
 import { assertNever } from '@hkviz/parser';
-import { createMemo } from 'solid-js';
-import { createSignal } from '../preact-solid-combat';
+import { createMemo, createSignal } from 'solid-js';
 import { animationStore } from './animation-store';
 
 export type TraceVisibility = 'all' | 'animated' | 'hide';
