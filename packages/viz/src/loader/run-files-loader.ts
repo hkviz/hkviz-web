@@ -24,7 +24,13 @@ async function loadFile(file: RunFileInfo, onProgress: (progress: number) => voi
     return recording;
 }
 
-export function createRunFileLoader(files: RunFileInfo[]) {
+export interface RunFileLoader {
+    progress: () => number;
+    done: () => boolean;
+    abort: () => void;
+}
+
+export function createRunFileLoader(files: RunFileInfo[]): RunFileLoader {
     // if (isServer) {
     //     return;
     // }

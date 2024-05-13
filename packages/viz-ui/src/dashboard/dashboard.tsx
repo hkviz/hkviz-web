@@ -11,18 +11,18 @@ import {
     cardRoundedMdOnlyClasses,
     cn,
 } from '@hkviz/components';
-import { type RunFileInfo, createRunFileLoader, splitsStore, uiStore } from '@hkviz/viz';
+import { splitsStore, uiStore, type RunFileInfo, type RunFileLoader } from '@hkviz/viz';
 import { Maximize, Minus, Rows } from 'lucide-solid';
 import { Show, createEffect, createMemo, createSignal, type Component } from 'solid-js';
+import { HKMap } from '../map';
 import { RoomInfo } from '../room-infos';
 import { RunSplits } from '../splits';
 import { RunExtraCharts } from '../time-charts';
-import { ViewOptions } from '../view-options';
-import { HKMap } from '../map';
-import { SingleRunPageTour } from '../tour';
-import { RunOverviewTab } from './overview-tab';
 import { AnimationOptions } from '../timeline';
+import { SingleRunPageTour } from '../tour';
+import { ViewOptions } from '../view-options';
 import { MobileTabBar } from './mobile-tabs';
+import { RunOverviewTab } from './overview-tab';
 import { LargeScreenTabs } from './tabs-large-screen';
 
 export const DashboardMapOptions: Component = () => {
@@ -222,10 +222,10 @@ export interface GameplayDashboardProps {
     fileInfos: RunFileInfo[];
     startDate: Date | undefined;
     onRunCardWrapperReady: (element: HTMLDivElement) => void;
+    runFileLoader: RunFileLoader;
 }
 export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
     const mobileTab = uiStore.mobileTab;
-    const runFileLoader = createMemo(() => createRunFileLoader(props.fileInfos));
 
     return (
         <div class="dashboard-grid">
@@ -243,8 +243,8 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
                 <RunOverviewTab
                     class="col-start-1 col-end-1 row-start-1 row-end-1"
                     startDate={props.startDate}
-                    loadingDone={runFileLoader().done()}
-                    loadingProgress={runFileLoader().progress()}
+                    loadingDone={props.runFileLoader.done()}
+                    loadingProgress={props.runFileLoader.progress()}
                     onRunCardWrapperReady={(element) => props.onRunCardWrapperReady(element)}
                 />
                 <SingleRunPageTour />
