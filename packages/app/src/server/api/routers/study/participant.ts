@@ -3,7 +3,7 @@ import { and, eq, isNull } from 'drizzle-orm';
 import { z } from 'zod';
 import { getParticipantIdFromCookieOrSessionUser } from '~/app/user-study/_utils';
 import { db } from '~/server/db';
-import { hkExperience, studyParticipant, userDemographics, userStudyInformedConsent, users } from '~/server/db/schema';
+import { hkExperience, studyParticipant, userDemographics, users } from '~/server/db/schema';
 import { createTRPCRouter, publicProcedure } from '../../trpc';
 
 async function exists({ participantId }: { participantId: string }) {
