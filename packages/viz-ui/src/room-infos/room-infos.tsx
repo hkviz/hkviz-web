@@ -40,7 +40,7 @@ import {
     type AggregationVariable,
 } from '@hkviz/viz';
 import { Palette, Pin, PinOff } from 'lucide-solid';
-import { For, Match, Show, Switch, createMemo, type Component } from 'solid-js';
+import { For, Index, Match, Show, Switch, createMemo, type Component } from 'solid-js';
 import { HKMapRoom } from '../map/room-icon';
 import { AggregationVariableIcon } from './aggregation_variable_icon';
 import { RoomColorCurveContextMenuItems } from './room-color-curve-menu';
@@ -281,70 +281,61 @@ export function RoomInfo() {
 
                 <div class="grow" />
 
-                <Show when={selectedRoomPinned()}>
-                    <Tooltip>
-                        <TooltipTrigger
-                            as={() => (
-                                <Button
-                                    variant="outline"
-                                    size="icon"
-                                    onClick={() => {
+                <Tooltip>
+                    <TooltipTrigger
+                        as={() => (
+                            <Button
+                                variant="outline"
+                                size="icon"
+                                onClick={() => {
+                                    if (selectedRoomPinned()) {
                                         roomDisplayStore.unpinScene('pin-button-click');
-                                    }}
-                                    class={isV1() ? '' : 'h-8 w-8'}
-                                >
-                                    <PinOff class={isV1() ? 'h-6 w-6' : 'h-4 w-4'} />
-                                </Button>
-                            )}
-                        />
-                        <TooltipContent>
+                                    } else {
+                                        roomDisplayStore.pinScene('pin-button-click');
+                                    }
+                                }}
+                                class={'h-8 w-8'}
+                            >
+                                <Show when={selectedRoomPinned()}>
+                                    <PinOff class={'h-4 w-4'} />
+                                </Show>
+                                <Show when={!selectedRoomPinned()}>
+                                    <Pin class="room-info-pin-button h-4 w-4" />
+                                </Show>
+                            </Button>
+                        )}
+                    />
+                    <TooltipContent>
+                        <Show when={selectedRoomPinned()}>
                             Remove pin. Will automatically select the room when you hover over it. <br />
                             You can also click a room on the map to pin/unpin it.
-                        </TooltipContent>
-                    </Tooltip>
-                </Show>
-                <Show when={!selectedRoomPinned() && !isV1()}>
-                    <Tooltip>
-                        <TooltipTrigger
-                            as={() => (
-                                <Button
-                                    variant="outline"
-                                    size="icon"
-                                    onClick={() => {
-                                        roomDisplayStore.pinScene('pin-button-click');
-                                    }}
-                                    class="room-info-pin-button h-8 w-8"
-                                >
-                                    <Pin class="h-4 w-4" />
-                                </Button>
-                            )}
-                        />
-                        <TooltipContent>
+                        </Show>
+                        <Show when={!selectedRoomPinned()}>
                             Pin room. Will not change the selected room when you hover over the map and other charts.
                             <br />
                             You can also click a room on the map to pin/unpin it.
-                        </TooltipContent>
-                    </Tooltip>
-                </Show>
+                        </Show>
+                    </TooltipContent>
+                </Tooltip>
             </CardHeader>
             <CardContent class="shrink grow basis-0 overflow-auto px-0 pb-1">
                 <Show when={selectedRoom() != null}>
                     <Show when={!isV1() && relatedRooms().length !== 0}>
                         <div class="flex flex-row gap-1 overflow-x-auto overflow-y-hidden p-1">
-                            <For each={relatedRooms()}>
+                            <Index each={relatedRooms()}>
                                 {(room) => (
                                     <Button
                                         size="sm"
-                                        variant={room.name === selectedRoom() ? undefined : 'outline'}
+                                        variant={room().name === selectedRoom() ? undefined : 'outline'}
                                         onClick={() => {
-                                            roomDisplayStore.setSelectedSceneName(room.name);
+                                            roomDisplayStore.setSelectedSceneName(room().name);
                                         }}
                                         class="shrink-0"
                                     >
-                                        {room.displayName}
+                                        {room().displayName}
                                     </Button>
                                 )}
-                            </For>
+                            </Index>
                         </div>
                     </Show>
                     <Table class="w-full">

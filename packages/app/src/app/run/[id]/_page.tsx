@@ -17,7 +17,6 @@ import { type GetRunResult } from '~/server/api/routers/run/run-get';
 import { AnimationOptionsWrapper, DashboardMapOptionsWrapper, HkMapWrapper, RightCardWrapper } from './_dynamic_loader';
 import { MobileTabBar } from './_mobile-tabs';
 import { RunOverviewTab } from './_run-overview-tab';
-import { SingleRunPageTour } from './_tour';
 
 interface Props {
     session: Session | null;
@@ -92,7 +91,6 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     session={session}
                 />
                 <RunClientLoader runData={runData} />
-                <SingleRunPageTour />
             </Card>
             <AnimationOptionsWrapper className="dashboard-grid-timeline" />
 

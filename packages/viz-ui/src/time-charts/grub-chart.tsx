@@ -1,6 +1,6 @@
 import { tailwindChartColors } from '@hkviz/viz';
 import { type Component } from 'solid-js';
-import { grubImage } from 'src/img-urls';
+import { grubImage } from '../img-urls';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
 

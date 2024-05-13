@@ -8,7 +8,6 @@ import {
     renderAggregationVariableIcon,
     renderAnimationOptions,
     renderDashboardMapOptions,
-    type HKMapProps,
 } from '@hkviz/viz-ui';
 import { useSignals } from '@preact/signals-react/runtime';
 import { useEffect, useRef, useState } from 'react';

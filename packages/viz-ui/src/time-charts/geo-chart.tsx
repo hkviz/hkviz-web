@@ -1,7 +1,7 @@
 import { tailwindChartColors } from '@hkviz/viz';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
-import { coinImg } from 'src/img-urls';
+import { coinImg } from '../img-urls';
 import { type Component } from 'solid-js';
 
 const Unit: Component<{ class?: string }> = (props) => {

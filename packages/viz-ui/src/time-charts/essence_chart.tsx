@@ -2,7 +2,7 @@ import { cn } from '@hkviz/components';
 import { tailwindChartColors } from '@hkviz/viz';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
-import { dreamNailImg } from 'src/img-urls';
+import { dreamNailImg } from '../img-urls';
 import { type Component } from 'solid-js';
 
 const Unit: Component<{ class?: string }> = (props) => {

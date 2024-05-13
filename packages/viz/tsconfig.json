@@ -10,5 +10,5 @@
         }
     },
     "extends": "../../tsconfig.json",
-    "include": ["src/**/*", "test/**/*"]
+    "include": ["src/**/*", "test/**/*", "../viz-ui/src/tour/step.tsx"]
 }

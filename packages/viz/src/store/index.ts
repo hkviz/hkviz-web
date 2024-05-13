@@ -13,3 +13,4 @@ export * from './room-coloring-store';
 export * from './trace-store';
 export * from './extra-chart-store';
 export * from './map-zoom-store';
+export * from './tour-store';

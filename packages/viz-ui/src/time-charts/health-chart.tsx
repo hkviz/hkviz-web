@@ -4,7 +4,7 @@ import { type Component } from 'solid-js';
 import { gameplayStore } from '@hkviz/viz';
 import { ChartDocTitleIcon, ChartDocVars } from './chart_doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
-import { blueMaskImg, emptyMaskImg, maskImg, steelMaskImg } from 'src/img-urls';
+import { blueMaskImg, emptyMaskImg, maskImg, steelMaskImg } from '../img-urls';
 
 const MaskUnit: Component<{ class?: string }> = (props) => {
     const isSteelSoul = gameplayStore.isSteelSoul;

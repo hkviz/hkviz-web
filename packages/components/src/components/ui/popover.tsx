@@ -11,6 +11,8 @@ const Popover: Component<PopoverRootProps> = (props) => {
 };
 
 const PopoverTrigger = PopoverPrimitive.Trigger;
+const PopoverAnchor = PopoverPrimitive.Anchor;
+const PopoverArrow = PopoverPrimitive.Arrow;
 
 type ContentProps<T extends ValidComponent = 'div'> = PolymorphicProps<T, PopoverContentProps>;
 
@@ -29,4 +31,4 @@ const PopoverContent: Component<ContentProps> = (props) => {
     );
 };
 
-export { Popover, PopoverTrigger, PopoverContent };
+export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor, PopoverArrow };
