@@ -213,7 +213,29 @@ function AnimationTimeLineSlider() {
         });
     });
 
-    // let prev = new Date();
+    // Here we scale the pointer movement to be 10% of the actual movement when shift is pressed.
+    // so the user can move the slider more precisely.
+    // thats pretty hacky, since we are manipulating the event object.
+    // Atm the slider context is not exposed from kobalte, and I didn't find a better way to do this.
+
+    let previousScaledX = 0;
+    let previousActualX = 0;
+    function onPointerDown(e: PointerEvent) {
+        previousScaledX = e.clientX;
+        previousActualX = e.clientX;
+    }
+
+    function onPointerMove(e: PointerEvent) {
+        console.log('onPointerMove', { isShiftPressed });
+        const scaler = isShiftPressed ? 0.1 : 1;
+        const diff = e.clientX - previousActualX;
+        const scaledX = previousScaledX + diff * scaler;
+        previousActualX = e.clientX;
+        previousScaledX = scaledX;
+        Object.defineProperty(e, 'clientX', {
+            get: () => scaledX,
+        });
+    }
 
     return (
         <Slider
@@ -224,24 +246,13 @@ function AnimationTimeLineSlider() {
             class="-my-4 grow py-4"
             disabled={isDisabled}
             onChange={(values) => {
-                // console.log(dragRef);
-
                 const isV1 = uiStore.isV1();
-                if (!dragRef.isDragging) {
-                    dragRef.isDragging = true;
-                    dragRef.startedAtMsIntoGame = animationStore.msIntoGame();
-                    dragRef.previousDiff = 0;
-                }
-                const value = values[0]!;
-                const diff = value - dragRef.startedAtMsIntoGame!;
-                const newDiff = diff - dragRef.previousDiff;
 
-                const scale = isShiftPressed && !isV1 ? 10 : 1;
+                const newMsIntoGame = values[0]!;
 
-                const newMsIntoGame = animationStore.msIntoGame() + newDiff / scale;
                 animationStore.setMsIntoGame(newMsIntoGame);
                 uiStore.showMapIfOverview();
-                dragRef.previousDiff = diff;
+                dragRef.previousDiff = 0; //diff;
 
                 if (!isV1 && !roomDisplayStore.selectedScenePinned()) {
                     const sceneEvent = gameplayStore.recording()?.sceneEventFromMs(newMsIntoGame);
@@ -249,10 +260,6 @@ function AnimationTimeLineSlider() {
                         roomDisplayStore.setSelectedRoomIfNotPinned(sceneEvent.getMainVirtualSceneName());
                     }
                 }
-
-                // const now = new Date();
-                // console.log(now.getTime() - prev.getTime(), 'call');
-                // prev = now;
             }}
             onChangeEnd={() => {
                 dragRef.isDragging = false;
@@ -260,9 +267,9 @@ function AnimationTimeLineSlider() {
                 dragRef.previousDiff = 0;
             }}
         >
-            <SliderTrack>
+            <SliderTrack onPointerDown={onPointerDown} onPointerMove={onPointerMove}>
                 <SliderFill class="rounded-full" />
-                <SliderThumb />
+                <SliderThumb onPointerDown={onPointerDown} onPointerMove={onPointerMove} />
             </SliderTrack>
         </Slider>
     );
