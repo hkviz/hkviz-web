@@ -155,7 +155,7 @@ export const RightCard: Component<{ class?: string }> = (props) => {
         <div
             class={cn(
                 'shrink grow',
-                mobileTab() === 'splits' || mobileTab() === 'time-charts' ? '' : 'hidden lg:flex',
+                mobileTab() === 'splits' || mobileTab() === 'time-charts' ? 'flex' : 'hidden lg:flex',
                 props.class,
             )}
         >
@@ -252,7 +252,7 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
             </Card>
             <AnimationOptions class="dashboard-grid-timeline" />
 
-            <RightCard class="dashboard-grid-splits-and-timecharts flex" />
+            <RightCard class="dashboard-grid-splits-and-timecharts" />
             <MobileTabBar />
         </div>
     );

@@ -294,13 +294,13 @@ export function RoomInfo() {
                                         roomDisplayStore.pinScene('pin-button-click');
                                     }
                                 }}
-                                class={'h-8 w-8'}
+                                class={'room-info-pin-button h-8 w-8'}
                             >
                                 <Show when={selectedRoomPinned()}>
                                     <PinOff class={'h-4 w-4'} />
                                 </Show>
                                 <Show when={!selectedRoomPinned()}>
-                                    <Pin class="room-info-pin-button h-4 w-4" />
+                                    <Pin class="h-4 w-4" />
                                 </Show>
                             </Button>
                         )}
