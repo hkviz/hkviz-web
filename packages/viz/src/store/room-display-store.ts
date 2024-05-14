@@ -6,7 +6,7 @@ import {
     type RoomSpriteVariant,
 } from '@hkviz/parser';
 import * as d3 from 'd3';
-import { createMemo, type Accessor, createSignal } from 'solid-js';
+import { createMemo, createSignal, type Accessor } from 'solid-js';
 import { gameplayStore } from './gameplay-store';
 import { playerDataAnimationStore } from './player-data-animation-store';
 
@@ -90,12 +90,6 @@ function getSelfVisibilitySignal(gameObjectName: string) {
     });
     selfRoomVisibilityByGameObjectName.set(gameObjectName, signal);
     return signal;
-}
-
-function isAnyRoomVisible(gameObjects: readonly string[]) {
-    return gameObjects.some((go) => {
-        return getSelfVisibilitySignal(go)();
-    });
 }
 
 const statesByGameObjectName = new Map(
