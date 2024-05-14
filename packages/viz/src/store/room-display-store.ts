@@ -78,11 +78,11 @@ const selfRoomVisibilityByGameObjectName = new Map<string, Accessor<boolean>>();
 
 function getSelfVisibilitySignal(gameObjectName: string) {
     const room = roomDataByGameObjectName.get(gameObjectName);
-    const gameObjectNameNeededInVisited = room?.gameObjectNameNeededInVisited ?? gameObjectName;
     const existing = selfRoomVisibilityByGameObjectName.get(gameObjectName);
     if (existing) {
         return existing;
     }
+    const gameObjectNameNeededInVisited = room?.gameObjectNameNeededInVisited ?? gameObjectName;
     const signal = createMemo(() => {
         const visible = roomsVisible();
         if (visible === 'all') return true;
@@ -106,15 +106,15 @@ const statesByGameObjectName = new Map(
         const isSelected = createMemo(() => selectedSceneName() === room.sceneName);
         const selfIsVisible = getSelfVisibilitySignal(room.gameObjectName);
 
+        const conditionalOn = room.spritesByVariant.conditional?.conditionalOn;
+        const conditionalOnVisibility = conditionalOn ? conditionalOn.map(getSelfVisibilitySignal) : [];
+
         const variant = createMemo<RoomSpriteVariant | 'hidden'>(() => {
             let variant: RoomSpriteVariant;
             const visible = selfIsVisible();
             if (!visible) {
                 return 'hidden';
-            } else if (
-                room.spritesByVariant.conditional &&
-                isAnyRoomVisible(room.spritesByVariant.conditional.conditionalOn)
-            ) {
+            } else if (conditionalOnVisibility.some((v) => v())) {
                 variant = 'conditional';
             } else {
                 variant = 'normal';
