@@ -46,7 +46,7 @@ function HkMapText(props: HkMapTextProps) {
             dominant-baseline="central"
             x={props.textData.bounds.center.x}
             y={props.textData.bounds.center.y}
-            style={{ ['font-size']: '3.25', transition: 'opacity 0.1s ease 0s', fill: fill(), opacity: opacity() }}
+            style={{ ['font-size']: '3.25px', transition: 'opacity 0.1s ease 0s', fill: fill(), opacity: opacity() }}
         >
             {hkLangString(props.textData.sheetName as any, props.textData.convoName) ?? props.textData.convoName}
         </text>
