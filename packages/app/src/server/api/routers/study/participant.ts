@@ -41,6 +41,11 @@ export async function getParticipantsForAdmin() {
             timeZone: true,
         },
         with: {
+            informedConsent: {
+                columns: {
+                    createdAt: true,
+                },
+            },
             user: {
                 columns: {
                     id: true,
@@ -79,7 +84,18 @@ export async function getParticipantsForAdmin() {
                 ...p,
                 timeslot: {
                     ...(p.timeslot ?? {}),
-                    startAt: p.timeslot?.startAt?.toLocaleString('de-AT', {
+                    startAtVienna: p.timeslot?.startAt?.toLocaleString('de-AT', {
+                        timeZone: 'Europe/Vienna',
+                    }),
+                    startAtParticipant: p.timeZone
+                        ? p.timeslot?.startAt?.toLocaleString('de-AT', {
+                              timeZone: p.timeZone,
+                          })
+                        : undefined,
+                },
+                informedConsent: {
+                    ...(p.informedConsent ?? {}),
+                    createdAt: p.informedConsent?.createdAt?.toLocaleString('de-AT', {
                         timeZone: 'Europe/Vienna',
                     }),
                 },

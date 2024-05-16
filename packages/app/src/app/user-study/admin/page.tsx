@@ -41,7 +41,9 @@ export default async function UserStudyAdmin() {
                             <CardTitle>
                                 {p.callName} - {p.callOption}
                             </CardTitle>
-                            <CardDescription>{p.timeslot.startAt}</CardDescription>
+                            <CardDescription>
+                                {p.timeslot.startAtVienna} (VIE) - {p.timeslot.startAtParticipant} (P)
+                            </CardDescription>
                         </CardHeader>
                         <Table>
                             <TableBody>
@@ -52,6 +54,7 @@ export default async function UserStudyAdmin() {
                                 <Data title="Email">{p.user?.email}</Data>
                                 <Data title="Name">{p.user?.name}</Data>
                                 <Data title="Country">{p.demographics?.country}</Data>
+                                <Data title="Informed consent">{p.informedConsent.createdAt}</Data>
                                 <Data title="Hk experience">{p.hkExperience?.id}</Data>
                                 <Data title="Playing since">{p.hkExperience?.playingSince}</Data>
                                 <Data title="Playing frequency">{p.hkExperience?.playingFrequency}</Data>
