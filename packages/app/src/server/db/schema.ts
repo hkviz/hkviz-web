@@ -367,6 +367,14 @@ export const userDemographics = table(
     }),
 );
 
+export const userDemographicsRelations = relations(userDemographics, ({ one }) => ({
+    user: one(users, { fields: [userDemographics.userId], references: [users.id] }),
+    participant: one(studyParticipant, {
+        fields: [userDemographics.participantId],
+        references: [studyParticipant.participantId],
+    }),
+}));
+
 export const hkExperience = table(
     'hkExperience',
     {
@@ -393,10 +401,10 @@ export const hkExperience = table(
     }),
 );
 
-export const userDemographicsRelations = relations(userDemographics, ({ one }) => ({
-    user: one(users, { fields: [userDemographics.userId], references: [users.id] }),
+export const hkExperienceRelations = relations(hkExperience, ({ one }) => ({
+    user: one(users, { fields: [hkExperience.userId], references: [users.id] }),
     participant: one(studyParticipant, {
-        fields: [userDemographics.participantId],
+        fields: [hkExperience.participantId],
         references: [studyParticipant.participantId],
     }),
 }));
@@ -424,6 +432,10 @@ export const studyParticipant = table('studyParticipant', {
 });
 export const studyParticipantRelations = relations(studyParticipant, ({ one }) => ({
     user: one(users),
+    informedConsent: one(userStudyInformedConsent),
+    hkExperience: one(hkExperience),
+    demographics: one(userDemographics),
+    timeslot: one(userStudyTimeSlot),
 }));
 
 export const userStudyInformedConsent = table('userStudyInformedConsent', {
@@ -446,3 +458,10 @@ export const userStudyTimeSlot = table('userStudyTimeSlot', {
     startAt: timestamp('start_at').notNull(),
     participantId: varcharUuid('participant_id'),
 });
+
+export const userStudyTimeSlotRelations = relations(userStudyTimeSlot, ({ one }) => ({
+    participant: one(studyParticipant, {
+        fields: [userStudyTimeSlot.participantId],
+        references: [studyParticipant.participantId],
+    }),
+}));

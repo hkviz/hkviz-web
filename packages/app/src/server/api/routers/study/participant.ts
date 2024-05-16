@@ -31,6 +31,62 @@ async function existsAndStoreUserId({ participantId, userId }: { participantId: 
     return true;
 }
 
+export async function getParticipantsForAdmin() {
+    const result = await db.query.studyParticipant.findMany({
+        columns: {
+            participantId: true,
+            callOption: true,
+            callName: true,
+            locale: true,
+            timeZone: true,
+        },
+        with: {
+            user: {
+                columns: {
+                    id: true,
+                    email: true,
+                    name: true,
+                },
+            },
+            timeslot: {
+                columns: {
+                    id: true,
+                    startAt: true,
+                },
+            },
+            hkExperience: {
+                columns: {
+                    id: true,
+                    playingSince: true,
+                    playingFrequency: true,
+                },
+            },
+            demographics: {
+                columns: {
+                    id: true,
+                    country: true,
+                },
+            },
+        },
+    });
+
+    return result
+        .sort((a, b) => {
+            return (a.timeslot?.startAt?.getTime() ?? 0) - (b.timeslot?.startAt?.getTime() ?? 0);
+        })
+        .map((p) => {
+            return {
+                ...p,
+                timeslot: {
+                    ...(p.timeslot ?? {}),
+                    startAt: p.timeslot?.startAt?.toLocaleString('de-AT', {
+                        timeZone: 'Europe/Vienna',
+                    }),
+                },
+            };
+        });
+}
+
 export const participantRouter = createTRPCRouter({
     exists: publicProcedure.input(z.object({ participantId: z.string().uuid() })).query(async ({ input }) => {
         return await exists(input);
