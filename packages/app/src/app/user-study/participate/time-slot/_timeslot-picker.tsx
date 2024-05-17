@@ -143,8 +143,8 @@ export function TimeSlotPicker({
             <div className="mx-auto w-full max-w-[80ch] px-4 pb-4 text-center">
                 <h2 className="font-serif text-xl font-bold">1. Call option</h2>
                 <p>
-                    For the 30 minute session, I will either call you via Zoom or Discord, depending on your preference.
-                    Your contact info is deleted once the study is conducted.
+                    We can have a call either via Zoom or Discord, as you prefer. Your contact info is deleted once the
+                    study is conducted.
                 </p>
                 <div className="pt-4">
                     <ToggleGroup
