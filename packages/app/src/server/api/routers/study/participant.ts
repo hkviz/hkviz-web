@@ -40,6 +40,7 @@ export async function getParticipantsForAdmin() {
             locale: true,
             timeZone: true,
             comment: true,
+            userStudyFinished: true,
         },
         with: {
             informedConsent: {
@@ -79,6 +80,9 @@ export async function getParticipantsForAdmin() {
     return result
         .sort((a, b) => {
             return (a.timeslot?.startAt?.getTime() ?? 0) - (b.timeslot?.startAt?.getTime() ?? 0);
+        })
+        .sort((a, b) => {
+            return (a.userStudyFinished ? 1 : 0) - (b.userStudyFinished ? 1 : 0);
         })
         .map((p) => {
             return {

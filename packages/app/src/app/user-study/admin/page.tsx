@@ -1,5 +1,6 @@
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableCell, TableRow } from '@/components/ui/table';
+import { cn } from '@/lib/utils';
 import { AuthNeeded } from '~/app/_components/auth-needed';
 import { ContentCenterWrapper } from '~/app/_components/content-wrapper';
 import { assertIsResearcher } from '~/server/api/routers/lib/researcher';
@@ -36,7 +37,15 @@ export default async function UserStudyAdmin() {
         <ContentCenterWrapper>
             <div className="flex flex-col gap-4">
                 {data.map((p) => (
-                    <Card className="max-w-[60ch]" key={p.participantId}>
+                    <Card
+                        className={cn(
+                            'max-w-[60ch]',
+                            p.userStudyFinished
+                                ? ' to-card border-2 border-green-500 bg-gradient-to-b from-green-50 dark:from-green-950'
+                                : undefined,
+                        )}
+                        key={p.participantId}
+                    >
                         <CardHeader>
                             <CardTitle>
                                 {p.callName} - {p.callOption}
