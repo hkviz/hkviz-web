@@ -39,6 +39,7 @@ export async function getParticipantsForAdmin() {
             callName: true,
             locale: true,
             timeZone: true,
+            comment: true,
         },
         with: {
             informedConsent: {

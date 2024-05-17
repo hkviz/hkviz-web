@@ -47,6 +47,7 @@ export default async function UserStudyAdmin() {
                         </CardHeader>
                         <Table>
                             <TableBody>
+                                <Data title="Comment">{p.comment}</Data>
                                 <Data title="Participant ID">{p.participantId}</Data>
                                 <Data title="Locale">{p.locale}</Data>
                                 <Data title="Timezone">{p.timeZone}</Data>
