@@ -66,6 +66,12 @@ export async function getParticipantsForAdmin() {
                     id: true,
                     playingSince: true,
                     playingFrequency: true,
+
+                    playedBefore: true,
+                    gotDreamnail: true,
+                    didEndboss: true,
+                    enteredWhitePalace: true,
+                    got112Percent: true,
                 },
             },
             demographics: {

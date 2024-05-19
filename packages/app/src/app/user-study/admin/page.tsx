@@ -65,9 +65,19 @@ export default async function UserStudyAdmin() {
                                 <Data title="Name">{p.user?.name}</Data>
                                 <Data title="Country">{p.demographics?.country}</Data>
                                 <Data title="Informed consent">{p.informedConsent.createdAt}</Data>
-                                <Data title="Hk experience">{p.hkExperience?.id}</Data>
-                                <Data title="Playing since">{p.hkExperience?.playingSince}</Data>
-                                <Data title="Playing frequency">{p.hkExperience?.playingFrequency}</Data>
+                                {p.hkExperience && (
+                                    <>
+                                        <Data title="Playing since">{p.hkExperience?.playingSince}</Data>
+                                        <Data title="Playing frequency">{p.hkExperience?.playingFrequency}</Data>
+                                        <Data title="Played before">{p.hkExperience?.playedBefore ? 'yes' : 'no'}</Data>
+                                        <Data title="Got dreamnail">{p.hkExperience?.gotDreamnail ? 'yes' : 'no'}</Data>
+                                        <Data title="Did endboss">{p.hkExperience?.didEndboss ? 'yes' : 'no'}</Data>
+                                        <Data title="Entered white palace">
+                                            {p.hkExperience?.enteredWhitePalace ? 'yes' : 'no'}
+                                        </Data>
+                                        <Data title="Got 112%">{p.hkExperience?.got112Percent ? 'yes' : 'no'}</Data>
+                                    </>
+                                )}
                             </TableBody>
                         </Table>
                     </Card>
