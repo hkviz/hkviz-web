@@ -4,7 +4,7 @@ import { cn } from '@hkviz/components';
 import { mapVisualExtends, roomData } from '@hkviz/parser';
 import { mapZoomStore, roomDisplayStore, uiStore } from '@hkviz/viz';
 import * as d3 from 'd3';
-import { Show, createEffect, type Component } from 'solid-js';
+import { Show, createEffect, onMount, type Component } from 'solid-js';
 import { createElementSize } from '../canvas';
 import { HkMapRooms } from './hk-map-rooms';
 import { HkMapTexts } from './hk-map-texts';
@@ -90,8 +90,10 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
         .attr('width', 1000)
         .attr('height', 1000)
         .attr('viewBox', mapVisualExtends.toD3ViewBox())
-        .attr('preserveAspectRatio', 'xMidYMid meet')
-        .call(zoom);
+        .attr('preserveAspectRatio', 'xMidYMid meet');
+    onMount(() => {
+        svgD3.call(zoom);
+    });
 
     const container = (
         <div class={cn('hk-main-map-wrapper relative', props.class)}>
