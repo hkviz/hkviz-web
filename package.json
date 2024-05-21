@@ -15,7 +15,8 @@
     "devDependencies": {
         "prettier": "^3.2.5",
         "tsup": "^8.0.2",
-        "tsup-preset-solid": "^2.2.0"
+        "tsup-preset-solid": "^2.2.0",
+        "turbo": "^1.13.3"
     },
     "dependencies": {
         "next": "^14.0.4"

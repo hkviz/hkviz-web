@@ -4,7 +4,7 @@
 // with: $1: "$2",
 // \' with \'
 
-export const enemiesJournalLang = {
+export const enemiesJournalLang: Record<string, string> = {
     DESC_BLOB_FLYER: 'Fat, slow, flying bug. Frequently discharges the acidic liquid stored in its round body.',
     DESC_FINAL_BOSS: 'The light, forgotten.',
     NAME_JELLYFISH: 'Ooma',

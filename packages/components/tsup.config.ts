@@ -28,6 +28,10 @@ const preset_options: preset.PresetOptions = {
     drop_console: false,
     // Set to `true` to generate a CommonJS build alongside ESM
     cjs: true,
+    modify_esbuild_options: (options) => {
+        // options.tsconfig = 'tsconfig.prod.json';
+        return options;
+    },
 };
 
 export default defineConfig((config) => {

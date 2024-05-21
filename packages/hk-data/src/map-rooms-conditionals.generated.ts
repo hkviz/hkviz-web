@@ -4,7 +4,9 @@
 // and is therefore mostly intellectual property of TeamCherry from https://www.teamcherry.com.au/
 // some room have been extracted from the AdditionalMaps mod https://github.com/SFGrenade/AdditionalMaps
 
-export const roomDataConditionals = {
+import { type RoomDataConditional } from './map-rooms-conditionals.types';
+
+export const roomDataConditionals: Record<string, RoomDataConditional> = {
     Deepnest_East_01: {
         conditionalOn: ['Hive_03_c'],
         name: 'Deepnest_East_01_b',
@@ -38,9 +40,7 @@ export const roomDataConditionals = {
     },
 };
 
-export function roomDataConditionalByGameObjectName(gameObjectName: string) {
+export function roomDataConditionalByGameObjectName(gameObjectName: string): RoomDataConditional | null {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
-    return ((roomDataConditionals as any)[gameObjectName] ?? null) as
-        | (typeof roomDataConditionals)[keyof typeof roomDataConditionals]
-        | null;
+    return roomDataConditionals[gameObjectName] ?? null;
 }

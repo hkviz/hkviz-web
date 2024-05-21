@@ -1,4 +1,6 @@
-export const enemiesJournalGenerated = [
+import { type EnemyJournalType } from './enemies-journal.types';
+
+export const enemiesJournalGenerated: EnemyJournalType[] = [
     {
         portraitName: 'bestiary_crawler_s',
         convoName: 'CRAWLER',

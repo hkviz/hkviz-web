@@ -1,4 +1,7 @@
-export const roomDataUnscaledFinishedGame = {
+import { type MapRoomUnscaled } from './map-rooms.types';
+
+// todo if regenerated remove omit
+export const roomDataUnscaledFinishedGame: { rooms: Omit<MapRoomUnscaled, 'texts'>[] } = {
     rooms: [
         {
             sceneName: 'Crossroads_01',

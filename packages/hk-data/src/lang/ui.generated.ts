@@ -4,7 +4,7 @@
 // with: $1: "$2",
 // \' with \'
 
-export const uiLangGenerated = {
+export const uiLangGenerated: Record<string, string> = {
     SHOP: 'SHOP',
     PIN_NAME_TRAM: 'Tram Pin',
     CHARM_NAME_40: 'Grimmchild',

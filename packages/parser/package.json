@@ -37,12 +37,17 @@
     },
     "typesVersions": {},
     "scripts": {
-        "dev": "tsup --watch",
-        "build": "tsup",
+        "dev": "pnpm run --filter=. --parallel /^dev:/",
+        "dev:tsup": "tsup --watch",
+        "dev:tsc": "tsc --watch --emitDeclarationOnly --declaration",
+        "build": "pnpm run --filter=. --parallel /^build:/",
+        "build:tsup": "tsup",
+        "build:tsc": "tsc --emitDeclarationOnly --declaration",
         "test": "concurrently pnpm:test:*",
         "test:client": "vitest -c ../../configs/vitest.config.ts",
         "test:ssr": "pnpm run test:client --mode ssr",
-        "typecheck": "tsc --noEmit"
+        "tsc-perf": "tsc --noEmit false --declaration --emitDeclarationOnly --extendedDiagnostics --declarationDir ../../dist/debug/declaration/hk-data",
+        "tsc-trace": "tsc --generateTrace ./dist/trace && npx @typescript/analyze-trace ./dist/trace"
     },
     "dependencies": {
         "@hkviz/hk-data": "workspace:*",
@@ -52,7 +57,8 @@
         "zod": "^3.22.4"
     },
     "devDependencies": {
-        "tsup-preset-solid": "^2.2.0"
+        "tsup-preset-solid": "^2.2.0",
+        "typescript": "^5.4.5"
     },
     "packageManager": "pnpm@8.15.8"
 }

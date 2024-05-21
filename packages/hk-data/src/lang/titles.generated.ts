@@ -1,4 +1,4 @@
-export const langTitles = {
+export const langTitles: Record<string, string> = {
     WHITE_PALACE_SUB: '',
     ROYAL_GARDENS_MAIN: 'Gardens',
     FINAL_BOSS_SUB: '',

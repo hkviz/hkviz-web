@@ -1,6 +1,6 @@
 // from EN_JOURNAL in the game's files
 
-export const langMapZones = {
+export const langMapZones: Record<string, string> = {
     GODSEEKER_WASTE: 'Junk Pit',
     GODS_GLORY: 'Godhome',
     BLUE_LAKE: 'Blue Lake',
