@@ -4,7 +4,7 @@ import { cn } from '@hkviz/components';
 import { mapVisualExtends, roomData } from '@hkviz/parser';
 import { mapZoomStore, roomDisplayStore, uiStore } from '@hkviz/viz';
 import * as d3 from 'd3';
-import { Show, createEffect, type Component } from 'solid-js';
+import { Show, createEffect, onMount, type Component } from 'solid-js';
 import { createElementSize } from '../canvas';
 import { HkMapRooms } from './hk-map-rooms';
 import { HkMapTexts } from './hk-map-texts';
@@ -77,7 +77,13 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
     const rootGD3 = d3.select(rootG);
 
     const svg = (
-        <svg class="absolute inset-0">
+        <svg
+            class="absolute inset-0"
+            width={1000}
+            height={1000}
+            viewBox={mapVisualExtends.toD3ViewBox().toString()}
+            preserveAspectRatio="xMidYMid meet"
+        >
             <defs>
                 <OutlineFilter />
             </defs>
@@ -85,13 +91,10 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
         </svg>
     ) as SVGSVGElement;
 
-    const svgD3 = d3
-        .select(svg)
-        .attr('width', 1000)
-        .attr('height', 1000)
-        .attr('viewBox', mapVisualExtends.toD3ViewBox())
-        .attr('preserveAspectRatio', 'xMidYMid meet')
-        .call(zoom);
+    const svgD3 = d3.select(svg);
+    onMount(() => {
+        svgD3.call(zoom);
+    });
 
     const container = (
         <div class={cn('hk-main-map-wrapper relative', props.class)}>
