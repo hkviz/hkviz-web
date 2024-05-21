@@ -77,7 +77,13 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
     const rootGD3 = d3.select(rootG);
 
     const svg = (
-        <svg class="absolute inset-0">
+        <svg
+            class="absolute inset-0"
+            width={1000}
+            height={1000}
+            viewBox={mapVisualExtends.toD3ViewBox().toString()}
+            preserveAspectRatio="xMidYMid meet"
+        >
             <defs>
                 <OutlineFilter />
             </defs>
@@ -85,12 +91,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
         </svg>
     ) as SVGSVGElement;
 
-    const svgD3 = d3
-        .select(svg)
-        .attr('width', 1000)
-        .attr('height', 1000)
-        .attr('viewBox', mapVisualExtends.toD3ViewBox())
-        .attr('preserveAspectRatio', 'xMidYMid meet');
+    const svgD3 = d3.select(svg);
     onMount(() => {
         svgD3.call(zoom);
     });
