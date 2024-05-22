@@ -4,12 +4,6 @@
         "jsxImportSource": "solid-js",
         "types": [],
         "baseUrl": ".",
-        "paths": {
-            "@hkviz/parser": ["../parser/src/index.ts"],
-            "@hkviz/viz": ["../viz/src/index.ts"],
-            "@hkviz/hk-data": ["../hk-data/src/index.ts"],
-            "@hkviz/components": ["../components/src/index.ts"]
-        },
         "rootDir": null
     },
     "extends": "../../tsconfig.json",

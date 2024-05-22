@@ -1,0 +1,45 @@
+{
+    "name": "@hkviz/app2",
+    "type": "module",
+    "scripts": {
+        "dev": "vinxi dev",
+        "build": "vinxi build",
+        "start": "vinxi start"
+    },
+    "dependencies": {
+        "@floating-ui/dom": "^1.6.5",
+        "@fontsource-variable/cinzel": "^5.0.13",
+        "@fontsource-variable/noto-sans": "^5.0.5",
+        "@fontsource/cinzel-decorative": "^5.0.19",
+        "@hkviz/components": "workspace:^",
+        "@hkviz/parser": "workspace:^",
+        "@hkviz/viz": "workspace:^",
+        "@hkviz/viz-ui": "workspace:^",
+        "@internationalized/date": "^3.5.4",
+        "@internationalized/number": "^3.5.3",
+        "@kobalte/core": "^0.13.1",
+        "@kobalte/utils": "^0.9.0",
+        "@mdx-js/mdx": "^2.3.0",
+        "@solidjs/router": "^0.13.3",
+        "@solidjs/start": "^1.0.0",
+        "@vinxi/plugin-mdx": "^3.7.1",
+        "autoprefixer": "^10.4.19",
+        "corvu": "^0.5.1",
+        "date-fns": "^3.6.0",
+        "lucide-solid": "^0.378.0",
+        "marked": "^12.0.1",
+        "postcss": "^8.4.38",
+        "solid-js": "^1.8.17",
+        "solid-mdx": "^0.0.7",
+        "solid-prevent-scroll": "^0.1.7",
+        "tailwindcss": "^3.4.3",
+        "unstorage": "1.10.2",
+        "vinxi": "^0.3.11"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "devDependencies": {
+        "postcss-import": "^16.1.0"
+    }
+}

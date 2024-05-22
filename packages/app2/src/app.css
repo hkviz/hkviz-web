@@ -1,0 +1,368 @@
+@import './style/fonts.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* violet */
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 224 71.4% 4.1%;
+        --card: 0 0% 100%;
+        --card-foreground: 224 71.4% 4.1%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 224 71.4% 4.1%;
+        --primary: 262.1 83.3% 57.8%;
+        --primary-foreground: 210 20% 98%;
+        --secondary: 220 14.3% 95.9%;
+        --secondary-foreground: 220.9 39.3% 11%;
+        --muted: 220 14.3% 95.9%;
+        --muted-foreground: 220 8.9% 46.1%;
+        --accent: 220 14.3% 95.9%;
+        --accent-foreground: 220.9 39.3% 11%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 20% 98%;
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 262.1 83.3% 57.8%;
+        --radius: 1rem;
+
+        /* form solid-ui */
+        --info: 204 94% 94%;
+        --info-foreground: 199 89% 48%;
+
+        --success: 149 80% 90%;
+        --success-foreground: 160 84% 39%;
+
+        --warning: 48 96% 89%;
+        --warning-foreground: 25 95% 53%;
+
+        --error: 0 93% 94%;
+        --error-foreground: 0 84% 60%;
+    }
+
+    .dark {
+        --background: 224 71.4% 4.1%;
+        --foreground: 210 20% 98%;
+        --card: 224 71.4% 4.1%;
+        --card-foreground: 210 20% 98%;
+        --popover: 224 71.4% 4.1%;
+        --popover-foreground: 210 20% 98%;
+        --primary: 263.4 70% 50.4%;
+        --primary-foreground: 210 20% 98%;
+        --secondary: 215 27.9% 16.9%;
+        --secondary-foreground: 210 20% 98%;
+        --muted: 215 27.9% 16.9%;
+        --muted-foreground: 217.9 10.6% 64.9%;
+        --accent: 215 27.9% 16.9%;
+        --accent-foreground: 210 20% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 20% 98%;
+        --border: 215 27.9% 16.9%;
+        --input: 215 27.9% 16.9%;
+        --ring: 263.4 70% 50.4%;
+
+        /* from solid-ui */
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+
+        --info: 204 94% 94%;
+        --info-foreground: 199 89% 48%;
+
+        --success: 149 80% 90%;
+        --success-foreground: 160 84% 39%;
+
+        --warning: 48 96% 89%;
+        --warning-foreground: 25 95% 53%;
+
+        --error: 0 93% 94%;
+        --error-foreground: 0 84% 60%;
+    }
+
+    /* custom */
+    .dark {
+        /* same as light */
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 20% 98%;
+    }
+}
+
+/* end theme colors*/
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+.navigation-menu-content-from-right > :last-child {
+    right: 0;
+    left: unset;
+}
+
+.title-text-glow {
+    text-shadow: 0.1rem 0.1rem 0.5rem rgba(0, 0, 0, 0.35);
+}
+
+@layer utilities {
+    @property --tw-gradient-from {
+        syntax: '<color>';
+        initial-value: transparent;
+        inherits: false;
+    }
+
+    @property --tw-gradient-to {
+        syntax: '<color>';
+        initial-value: transparent;
+        inherits: false;
+    }
+}
+
+:root:has(.dark) {
+    color-scheme: dark;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+}
+
+.dark ::-webkit-scrollbar-thumb,
+.dark::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover,
+.dark::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.app-region-drag {
+    -webkit-app-region: drag;
+    app-region: drag;
+}
+
+.app-region-no-drag {
+    -webkit-app-region: no-drag;
+    app-region: no-drag;
+}
+
+:root {
+    --main-nav-height: max(env(titlebar-area-height, 56px), 40px);
+    --footer-height: 113px;
+}
+
+.main-nav {
+    width: env(titlebar-area-width, 100%);
+    height: var(--main-nav-height);
+}
+.main-nav-inner {
+    position: fixed;
+    top: calc(-10rem + env(titlebar-area-y, 0rem));
+    width: 100%;
+    height: calc(var(--main-nav-height) + 10rem);
+    padding: 0.5rem;
+    padding-left: calc(0.5rem + env(titlebar-area-x, 0rem));
+    padding-right: calc(0.5rem + 100% - env(titlebar-area-width, 100%) - env(titlebar-area-x, 0rem));
+    padding-top: 10.5rem;
+}
+
+.hash-link {
+    text-decoration: none;
+}
+
+.hash-link::before {
+    content: '#';
+    transition: color 0.2s ease-in-out;
+}
+
+:root {
+    --scroll-margin-top: calc(0.5rem + var(--main-nav-height, 0rem));
+}
+
+.hide-hash-links .hash-link {
+    display: none;
+}
+
+.area-name-shadow {
+    filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 1)) drop-shadow(0px 0px 0.2px rgba(255, 255, 255, 1))
+        drop-shadow(0px 0px 2px rgba(255, 255, 255, 1));
+}
+
+.dark .area-name-shadow {
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 1)) drop-shadow(0px 0px 0.2px rgba(0, 0, 0, 1))
+        drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
+}
+
+.h-unset-important {
+    /* used to overwrite resizable height inside flex layout */
+    height: unset !important;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion) {
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr min-content min-content;
+    grid-template-areas:
+        'tab-options'
+        'tab-content'
+        'timeline'
+        'tabs';
+
+    --dashboard-height: calc(100vh - var(--main-nav-height));
+    --dashboard-height: calc(100dvh - var(--main-nav-height));
+
+    height: var(--dashboard-height);
+    max-height: var(--dashboard-height);
+    min-height: var(--dashboard-height);
+    overflow: hidden;
+}
+
+@media screen(md) {
+    .dashboard-grid {
+        grid-template-columns: 300px 1fr;
+        grid-template-rows: 1fr auto;
+        grid-template-areas:
+            'map-options map'
+            'timeline timeline'
+            'tabs tabs';
+        gap: 0.25rem;
+        padding: 0.25rem;
+    }
+}
+
+@media screen(lg) {
+    .dashboard-grid {
+        grid-template-columns: 300px 1fr 350px;
+        grid-template-rows: 1fr auto;
+        grid-template-areas:
+            'map-options map      splits-and-timecharts'
+            'map-options timeline splits-and-timecharts';
+    }
+}
+
+.dashboard-grid-map-options {
+    grid-area: tab-options;
+    flex-direction: row;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+@media screen(md) {
+    .dashboard-grid-map-options {
+        grid-area: map-options;
+        flex-direction: column;
+        gap: 0.25rem;
+        max-width: unset;
+        overflow-x: unset;
+    }
+}
+
+.dashboard-grid-map {
+    grid-area: tab-content;
+}
+
+@media screen(md) {
+    .dashboard-grid-map {
+        grid-area: map;
+    }
+}
+
+.dashboard-grid-map-big {
+    grid-row-start: tab-options;
+    grid-column-start: tab-options;
+    grid-row-end: tab-content;
+    grid-column-end: tab-options;
+}
+
+@media screen(md) {
+    .dashboard-grid-map-big {
+        grid-row-start: map-options;
+        grid-column-start: map-options;
+        grid-row-end: map;
+        grid-column-end: map;
+    }
+}
+@media screen(lg) {
+    .dashboard-grid-map-big {
+        grid-area: map;
+    }
+}
+
+.dashboard-grid-splits-and-timecharts {
+    grid-row-start: tab-options;
+    grid-column-start: tab-options;
+    grid-row-end: tab-content;
+    grid-column-end: tab-options;
+}
+
+@media screen(md) {
+    .dashboard-grid-splits-and-timecharts {
+        grid-row-start: map-options;
+        grid-column-start: map-options;
+        grid-row-end: map;
+        grid-column-end: map;
+    }
+}
+@media screen(lg) {
+    .dashboard-grid-splits-and-timecharts {
+        grid-area: splits-and-timecharts;
+    }
+}
+
+.dashboard-grid-timeline {
+    grid-area: timeline;
+}
+
+.dashboard-grid-tabs {
+    grid-area: tabs;
+    position: relative;
+    margin-top: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+@media screen(md) {
+    .dashboard-grid-tabs {
+        margin-top: -0.25rem;
+        top: 0.25rem;
+        left: -0.25rem;
+        right: -0.25rem;
+        width: calc(100% + 0.5rem);
+    }
+}
+
+.prose {
+    --tw-prose-bullets: #b6b9be;
+}

@@ -27,21 +27,55 @@
         "dist"
     ],
     "type": "module",
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.js",
+    "main": "./dist/server.js",
+    "module": "./dist/server.js",
     "types": "./dist/index.d.ts",
-    "typings": "./dist/index.d.cts",
+    "typings": "./dist/index.d.ts",
     "exports": {
+        "worker": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "browser": {
+            "development": {
+                "import": {
+                    "types": "./dist/index.d.ts",
+                    "default": "./dist/dev.js"
+                }
+            },
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            }
+        },
+        "deno": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "node": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "development": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/dev.js"
+            }
+        },
         "import": {
             "types": "./dist/index.d.ts",
             "default": "./dist/index.js"
-        },
-        "require": {
-            "types": "./dist/index.d.cts",
-            "default": "./dist/index.cjs"
         }
     },
-    "browser": {},
+    "browser": {
+        "./dist/server.js": "./dist/index.js"
+    },
     "typesVersions": {},
     "scripts": {
         "dev": "pnpm run --filter=. --parallel /^dev:/",
@@ -61,7 +95,8 @@
         "class-variance-authority": "^0.7.0",
         "clsx": "^2.0.0",
         "corvu": "^0.5.1",
-        "tailwind-merge": "^2.2.0"
+        "tailwind-merge": "^2.2.0",
+        "typescript": "^5.4.5"
     },
     "devDependencies": {
         "solid-js": "^1.8.17"

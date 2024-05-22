@@ -23,8 +23,8 @@
     },
     "type": "module",
     "main": "./dist/index.cjs",
-    "types": "./dist/index.d.cts",
-    "typings": "./dist/index.d.cts",
+    "types": "./dist/index.d.ts",
+    "typings": "./dist/index.d.ts",
     "exports": {
         "import": {
             "types": "./dist/index.d.ts",
@@ -37,10 +37,12 @@
     },
     "typesVersions": {},
     "scripts": {
-        "dev": "pnpm run --filter=. --parallel /^dev:/",
+        "dev": "tsup --watch",
+        "dev-old": "pnpm run --filter=. --parallel /^dev:/",
         "dev:tsup": "tsup --watch",
         "dev:tsc": "tsc --watch --emitDeclarationOnly --declaration",
-        "build": "pnpm run --filter=. --parallel /^build:/",
+        "build-old": "pnpm run --filter=. --parallel /^build:/",
+        "build": "tsup",
         "build:tsup": "tsup",
         "build:tsc": "tsc --emitDeclarationOnly --declaration",
         "test": "concurrently pnpm:test:*",

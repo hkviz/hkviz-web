@@ -10,3 +10,4 @@ export * from './map-rooms-finished.generated';
 export * from './map-rooms.generated';
 export * from './map-rooms.types';
 export * from './player-data-fields.generated';
+export * from './types';

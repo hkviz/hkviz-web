@@ -27,21 +27,55 @@
         "dist"
     ],
     "type": "module",
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.js",
+    "main": "./dist/server.js",
+    "module": "./dist/server.js",
     "types": "./dist/index.d.ts",
-    "typings": "./dist/index.d.cts",
+    "typings": "./dist/index.d.ts",
     "exports": {
+        "worker": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "browser": {
+            "development": {
+                "import": {
+                    "types": "./dist/index.d.ts",
+                    "default": "./dist/dev.js"
+                }
+            },
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/index.js"
+            }
+        },
+        "deno": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "node": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/server.js"
+            }
+        },
+        "development": {
+            "import": {
+                "types": "./dist/index.d.ts",
+                "default": "./dist/dev.js"
+            }
+        },
         "import": {
             "types": "./dist/index.d.ts",
             "default": "./dist/index.js"
-        },
-        "require": {
-            "types": "./dist/index.d.cts",
-            "default": "./dist/index.cjs"
         }
     },
-    "browser": {},
+    "browser": {
+        "./dist/server.js": "./dist/index.js"
+    },
     "typesVersions": {},
     "scripts": {
         "dev": "tsup --watch",
@@ -63,6 +97,7 @@
         "d3": "^7.8.5",
         "d3-brush": "^3.0.0",
         "date-fns": "^2.30.0",
+        "esbuild-plugin-solid": "^0.6.0",
         "fuse.js": "^7.0.0",
         "lucide-solid": "^0.378.0",
         "micro-memoize": "^4.1.2"

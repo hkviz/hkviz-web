@@ -1,4 +1,4 @@
-import { enemiesGenerated, enemiesJournalGenerated } from '@hkviz/hk-data';
+import { type EnemyName, enemiesGenerated, enemiesJournalGenerated } from '@hkviz/hk-data';
 
 export const greyPrinceNames = [
     // https://hollowknight.wiki/w/Grey_Prince_Zote
@@ -20,8 +20,6 @@ for (let i = 1; i < greyPrinceNames.length; i++) {
 for (let i = 0; i < greyPrinceNames.length; i++) {
     greyPrinceNames[i] = greyPrinceNames[i] + ` (Level ${i + 1})`;
 }
-
-type EnemyName = keyof typeof enemiesGenerated;
 
 // fields in playerData {name}Defeated: boolean
 // Some of the defeated fields need to be used to detect boss kills instead
