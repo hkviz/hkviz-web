@@ -2,15 +2,29 @@ import { Button, Tooltip, TooltipContent, TooltipTrigger } from '@hkviz/componen
 import { themeStore } from '@hkviz/viz';
 import { Moon, Sun } from 'lucide-solid';
 import { type Component, Show } from 'solid-js';
+import { createCookieFromClient } from '~/lib/client-cookies';
+import { COOKIE_NAME_THEME } from '~/lib/cookie-names';
 
 export type Theme = 'light' | 'dark';
+
+function toggleTheme() {
+    const theme = themeStore.currentTheme() === 'light' ? 'dark' : 'light';
+    themeStore.setCurrentTheme(theme);
+    createCookieFromClient(COOKIE_NAME_THEME, theme, 365 * 5);
+
+    if (theme === 'dark') {
+        document.body.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark');
+    }
+}
 
 export const ThemeSwitcher: Component = () => {
     const theme = themeStore.currentTheme;
 
     return (
         <Tooltip>
-            <TooltipTrigger as={Button<'button'>} variant="ghost" onClick={() => undefined}>
+            <TooltipTrigger as={Button<'button'>} variant="ghost" onClick={toggleTheme}>
                 <Show when={theme() === 'light'} fallback={<Moon class="h-5 w-5" />}>
                     <Sun class="h-5 w-5" />
                 </Show>

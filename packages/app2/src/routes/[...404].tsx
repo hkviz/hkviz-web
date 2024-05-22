@@ -1,5 +1,6 @@
-import { Navigate } from "@solidjs/router";
+import { Navigate } from '@solidjs/router';
 
 export default function NotFound() {
-  return <Navigate href="/" />;
+    return <div>404 Not Found</div>;
+    // return <Navigate href="/" />;
 }
