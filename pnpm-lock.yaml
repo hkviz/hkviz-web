@@ -361,6 +361,9 @@ importers:
 
   packages/app2:
     dependencies:
+      '@auth/core':
+        specifier: ^0.31.0
+        version: 0.31.0
       '@floating-ui/dom':
         specifier: ^1.6.5
         version: 1.6.5
@@ -400,6 +403,12 @@ importers:
       '@mdx-js/mdx':
         specifier: ^2.3.0
         version: 2.3.0
+      '@planetscale/database':
+        specifier: ^1.11.0
+        version: 1.11.0
+      '@solid-mediakit/auth':
+        specifier: ^2.0.11
+        version: 2.0.11(@auth/core@0.31.0)(@solidjs/meta@0.29.4)(@solidjs/router@0.13.3)(@solidjs/start@1.0.0)(solid-js@1.8.17)(vinxi@0.3.11)
       '@solidjs/router':
         specifier: ^0.13.3
         version: 0.13.3(solid-js@1.8.17)
@@ -418,6 +427,9 @@ importers:
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
+      drizzle-orm:
+        specifier: ^0.28.5
+        version: 0.28.6(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)
       lucide-solid:
         specifier: ^0.378.0
         version: 0.378.0(solid-js@1.8.17)
@@ -439,12 +451,15 @@ importers:
       tailwindcss:
         specifier: ^3.4.3
         version: 3.4.3
-      unstorage:
-        specifier: 1.10.2
-        version: 1.10.2(ioredis@5.4.1)
+      typescript:
+        specifier: ^5.4.5
+        version: 5.4.5
+      valibot:
+        specifier: 0.31.0-rc.2
+        version: 0.31.0-rc.2
       vinxi:
         specifier: ^0.3.11
-        version: 0.3.11(@opentelemetry/api@1.8.0)
+        version: 0.3.11(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)(drizzle-orm@0.28.6)
     devDependencies:
       postcss-import:
         specifier: ^16.1.0
@@ -624,6 +639,29 @@ packages:
       jose: 4.15.4
       nodemailer: 6.9.7
       oauth4webapi: 2.3.0
+      preact: 10.11.3
+      preact-render-to-string: 5.2.3(preact@10.11.3)
+    dev: false
+
+  /@auth/core@0.31.0:
+    resolution: {integrity: sha512-UKk3psvA1cRbk4/c9CkpWB8mdWrkKvzw0DmEYRsWolUQytQ2cRqx+hYuV6ZCsngw/xbj9hpmkZmAZEyq2g4fMg==}
+    peerDependencies:
+      '@simplewebauthn/browser': ^9.0.1
+      '@simplewebauthn/server': ^9.0.2
+      nodemailer: ^6.8.0
+    peerDependenciesMeta:
+      '@simplewebauthn/browser':
+        optional: true
+      '@simplewebauthn/server':
+        optional: true
+      nodemailer:
+        optional: true
+    dependencies:
+      '@panva/hkdf': 1.1.1
+      '@types/cookie': 0.6.0
+      cookie: 0.6.0
+      jose: 5.3.0
+      oauth4webapi: 2.10.4
       preact: 10.11.3
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
@@ -1253,6 +1291,29 @@ packages:
     resolution: {integrity: sha512-vg8Gih2MLK+kOkHJp4gBEIkyaIi00jgWot2D9QOmmfLC8jINSOzmCLta6Bvz/JSBCqnegV0L80jhxkol5GWNfQ==}
     engines: {node: '>=6.9.0'}
 
+  /@babel/core@7.20.12:
+    resolution: {integrity: sha512-XsMfHovsUYHFMdrIHkZphTN/2Hzzi78R08NuHfDBehym2VsPDL6Zn/JAD/JQdnRvbSsbQc4mVaU1m6JgtTEElg==}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@ampproject/remapping': 2.3.0
+      '@babel/code-frame': 7.24.2
+      '@babel/generator': 7.24.5
+      '@babel/helper-compilation-targets': 7.23.6
+      '@babel/helper-module-transforms': 7.24.5(@babel/core@7.20.12)
+      '@babel/helpers': 7.24.5
+      '@babel/parser': 7.24.5
+      '@babel/template': 7.24.0
+      '@babel/traverse': 7.24.5
+      '@babel/types': 7.24.5
+      convert-source-map: 1.9.0
+      debug: 4.3.4
+      gensync: 1.0.0-beta.2
+      json5: 2.2.3
+      semver: 6.3.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@babel/core@7.24.5:
     resolution: {integrity: sha512-tVQRucExLQ02Boi4vdPp49svNGcfL2GhdTCT9aldhXgCJVAI21EtRfBettiuLUwce/7r6bFdgs6JFkcdTiFttA==}
     engines: {node: '>=6.9.0'}
@@ -1351,6 +1412,20 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/types': 7.24.5
+
+  /@babel/helper-module-transforms@7.24.5(@babel/core@7.20.12):
+    resolution: {integrity: sha512-9GxeY8c2d2mdQUP1Dye0ks3VDyIMS98kt/llQ2nUId8IsWqTF0l1LkSX0/uP7l7MCDrzXS009Hyhe2gzTiGW8A==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+    dependencies:
+      '@babel/core': 7.20.12
+      '@babel/helper-environment-visitor': 7.22.20
+      '@babel/helper-module-imports': 7.24.3
+      '@babel/helper-simple-access': 7.24.5
+      '@babel/helper-split-export-declaration': 7.24.5
+      '@babel/helper-validator-identifier': 7.24.5
+    dev: false
 
   /@babel/helper-module-transforms@7.24.5(@babel/core@7.24.5):
     resolution: {integrity: sha512-9GxeY8c2d2mdQUP1Dye0ks3VDyIMS98kt/llQ2nUId8IsWqTF0l1LkSX0/uP7l7MCDrzXS009Hyhe2gzTiGW8A==}
@@ -4861,6 +4936,38 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /@solid-mediakit/auth@2.0.11(@auth/core@0.31.0)(@solidjs/meta@0.29.4)(@solidjs/router@0.13.3)(@solidjs/start@1.0.0)(solid-js@1.8.17)(vinxi@0.3.11):
+    resolution: {integrity: sha512-oo5BKqsWLbpK++R97mf9z5xc56zIO70hJQeOBRIsEVrZRa07GQEwzLJdmYZpbDzoHInjBtCjLAEp//PkY2LiJA==}
+    engines: {node: '>=16'}
+    peerDependencies:
+      '@auth/core': ^0.29.0 || ~0.29.0
+      '@solidjs/meta': ^0.29.3
+      '@solidjs/router': ^0.13.1
+      '@solidjs/start': ^1.0.0-rc.0
+      solid-js: ^1.8.15
+      vinxi: ^0.3.10
+    dependencies:
+      '@auth/core': 0.31.0
+      '@solid-mediakit/shared': 0.0.3
+      '@solidjs/meta': 0.29.4(solid-js@1.8.17)
+      '@solidjs/router': 0.13.3(solid-js@1.8.17)
+      '@solidjs/start': 1.0.0(solid-js@1.8.17)(vinxi@0.3.11)(vite@5.2.11)
+      cookie: 0.6.0
+      set-cookie-parser: 2.6.0
+      solid-js: 1.8.17
+      vinxi: 0.3.11(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)(drizzle-orm@0.28.6)
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@solid-mediakit/shared@0.0.3:
+    resolution: {integrity: sha512-fmZ/6YwJ7grb21Woo9NYNuYEnYFzTfGnpHncRz9ewuNTIinptRici/PXeJ8lfOaVBnu+7uSadhnW1LpKgfwl8w==}
+    dependencies:
+      '@babel/core': 7.20.12
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@solid-primitives/event-listener@2.3.3(solid-js@1.8.17):
     resolution: {integrity: sha512-DAJbl+F0wrFW2xmcV8dKMBhk9QLVLuBSW+TR4JmIfTaObxd13PuL7nqaXnaYKDWOYa6otB00qcCUIGbuIhSUgQ==}
     peerDependencies:
@@ -4966,6 +5073,14 @@ packages:
     resolution: {integrity: sha512-CqAwKb2T5Vi72+rhebSsqNZ9o67buYRdEJrIFzRXz3U59QqezuuxPsyzTSVCacwS5Pf109VRsgCJQoxKRoECZQ==}
     peerDependencies:
       solid-js: ^1.6.12
+    dependencies:
+      solid-js: 1.8.17
+    dev: false
+
+  /@solidjs/meta@0.29.4(solid-js@1.8.17):
+    resolution: {integrity: sha512-zdIWBGpR9zGx1p1bzIPqF5Gs+Ks/BH8R6fWhmUa/dcK1L2rUC8BAcZJzNRYBQv74kScf1TSOs0EY//Vd/I0V8g==}
+    peerDependencies:
+      solid-js: '>=1.8.4'
     dependencies:
       solid-js: 1.8.17
     dev: false
@@ -5201,6 +5316,10 @@ packages:
     dependencies:
       '@types/node': 18.18.8
     dev: true
+
+  /@types/cookie@0.6.0:
+    resolution: {integrity: sha512-4Kh9a6B2bQciAhf7FSuMRRkUWecJgJu9nPnx3yzpsfXX/c50REIqpHY4C82bXP90qrLtXtkDxTZosYO3UpOwlA==}
+    dev: false
 
   /@types/d3-array@3.2.1:
     resolution: {integrity: sha512-Y2Jn2idRrLzUfAKV2LyRImR+y4oa2AntrgID95SHJxuMUrkNXmanDSed71sRNZysveJVt1hLLemQZIady0FpEg==}
@@ -5787,7 +5906,7 @@ packages:
       magicast: 0.2.11
       recast: 0.23.7
       tslib: 2.6.2
-      vinxi: 0.3.11(@opentelemetry/api@1.8.0)
+      vinxi: 0.3.11(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)(drizzle-orm@0.28.6)
     dev: false
 
   /@vinxi/plugin-mdx@3.7.1(@mdx-js/mdx@2.3.0):
@@ -5815,7 +5934,7 @@ packages:
       astring: 1.8.6
       magicast: 0.2.11
       recast: 0.23.7
-      vinxi: 0.3.11(@opentelemetry/api@1.8.0)
+      vinxi: 0.3.11(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)(drizzle-orm@0.28.6)
     dev: false
 
   /@vinxi/server-functions@0.3.2(vinxi@0.3.11):
@@ -5830,7 +5949,7 @@ packages:
       astring: 1.8.6
       magicast: 0.2.11
       recast: 0.23.7
-      vinxi: 0.3.11(@opentelemetry/api@1.8.0)
+      vinxi: 0.3.11(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)(drizzle-orm@0.28.6)
     dev: false
 
   /@webassemblyjs/ast@1.11.6:
@@ -6882,6 +7001,10 @@ packages:
     resolution: {integrity: sha512-ty/fTekppD2fIwRvnZAVdeOiGd1c7YXEixbgJTNzqcxJWKQnjJ/V1bNEEE6hygpM3WjwHFUVK6HTjWSzV4a8sQ==}
     dev: false
 
+  /convert-source-map@1.9.0:
+    resolution: {integrity: sha512-ASFBup0Mz1uyiIjANan1jzLQami9z1PoYSZCiiYW2FczPbenXc45FZdBZLzOT+r6+iciuEModtmCti+hjaAk0A==}
+    dev: false
+
   /convert-source-map@2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
 
@@ -6891,6 +7014,11 @@ packages:
 
   /cookie@0.5.0:
     resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+    engines: {node: '>= 0.6'}
+    dev: false
+
+  /cookie@0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
     dev: false
 
@@ -7304,7 +7432,7 @@ packages:
       undici-types: 5.26.5
     dev: false
 
-  /db0@0.1.4:
+  /db0@0.1.4(drizzle-orm@0.28.6):
     resolution: {integrity: sha512-Ft6eCwONYxlwLjBXSJxw0t0RYtA5gW9mq8JfBXn9TtC0nDPlqePAhpv9v4g9aONBi6JI1OXHTKKkUYGd+BOrCA==}
     peerDependencies:
       '@libsql/client': ^0.5.2
@@ -7317,6 +7445,8 @@ packages:
         optional: true
       drizzle-orm:
         optional: true
+    dependencies:
+      drizzle-orm: 0.28.6(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)
     dev: false
 
   /debug@2.6.9:
@@ -7626,6 +7756,72 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /drizzle-orm@0.28.6(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0):
+    resolution: {integrity: sha512-yBe+F9htrlYER7uXgDJUQsTHFoIrI5yMm5A0bg0GiZ/kY5jNXTWoEy4KQtg35cE27sw1VbgzoMWHAgCckUUUww==}
+    peerDependencies:
+      '@aws-sdk/client-rds-data': '>=3'
+      '@cloudflare/workers-types': '>=3'
+      '@libsql/client': '*'
+      '@neondatabase/serverless': '>=0.1'
+      '@opentelemetry/api': ^1.4.1
+      '@planetscale/database': '>=1'
+      '@types/better-sqlite3': '*'
+      '@types/pg': '*'
+      '@types/sql.js': '*'
+      '@vercel/postgres': '*'
+      better-sqlite3: '>=7'
+      bun-types: '*'
+      knex: '*'
+      kysely: '*'
+      mysql2: '>=2'
+      pg: '>=8'
+      postgres: '>=3'
+      sql.js: '>=1'
+      sqlite3: '>=5'
+    peerDependenciesMeta:
+      '@aws-sdk/client-rds-data':
+        optional: true
+      '@cloudflare/workers-types':
+        optional: true
+      '@libsql/client':
+        optional: true
+      '@neondatabase/serverless':
+        optional: true
+      '@opentelemetry/api':
+        optional: true
+      '@planetscale/database':
+        optional: true
+      '@types/better-sqlite3':
+        optional: true
+      '@types/pg':
+        optional: true
+      '@types/sql.js':
+        optional: true
+      '@vercel/postgres':
+        optional: true
+      better-sqlite3:
+        optional: true
+      bun-types:
+        optional: true
+      knex:
+        optional: true
+      kysely:
+        optional: true
+      mysql2:
+        optional: true
+      pg:
+        optional: true
+      postgres:
+        optional: true
+      sql.js:
+        optional: true
+      sqlite3:
+        optional: true
+    dependencies:
+      '@opentelemetry/api': 1.8.0
+      '@planetscale/database': 1.11.0
+    dev: false
 
   /drizzle-orm@0.28.6(@planetscale/database@1.11.0)(mysql2@3.6.3):
     resolution: {integrity: sha512-yBe+F9htrlYER7uXgDJUQsTHFoIrI5yMm5A0bg0GiZ/kY5jNXTWoEy4KQtg35cE27sw1VbgzoMWHAgCckUUUww==}
@@ -9934,6 +10130,10 @@ packages:
     resolution: {integrity: sha512-W+oqK4H+r5sITxfxpSU+MMdr/YSWGvgZMQDIsNoBDGGy4i7GBPTtvFKibQzW06n3U3TqHjhvBJsirShsEJ6eeQ==}
     dev: false
 
+  /jose@5.3.0:
+    resolution: {integrity: sha512-IChe9AtAE79ru084ow8jzkN2lNrG3Ntfiv65Cvj9uOCE2m5LNsdHG+9EbxWxAoWRF9TgDOqLN5jm08++owDVRg==}
+    dev: false
+
   /joycon@3.1.1:
     resolution: {integrity: sha512-34wB/Y7MW7bzjKRjUKTa46I2Z7eV62Rkhva+KkopW7Qvv/OSWBqvkSY7vusOPrNuZcUG3tApvdVgNB8POj3SPw==}
     engines: {node: '>=10'}
@@ -11761,7 +11961,7 @@ packages:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
     dev: false
 
-  /nitropack@2.9.6(@opentelemetry/api@1.8.0):
+  /nitropack@2.9.6(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)(drizzle-orm@0.28.6):
     resolution: {integrity: sha512-HP2PE0dREcDIBVkL8Zm6eVyrDd10/GI9hTL00PHvjUM8I9Y/2cv73wRDmxNyInfrx/CJKHATb2U/pQrqpzJyXA==}
     engines: {node: ^16.11.0 || >=17.0.0}
     hasBin: true
@@ -11792,7 +11992,7 @@ packages:
       cookie-es: 1.1.0
       croner: 8.0.2
       crossws: 0.2.4
-      db0: 0.1.4
+      db0: 0.1.4(drizzle-orm@0.28.6)
       defu: 6.1.4
       destr: 2.0.3
       dot-prop: 8.0.2
@@ -11836,7 +12036,7 @@ packages:
       unctx: 2.3.1
       unenv: 1.9.0
       unimport: 3.7.1(rollup@4.17.2)
-      unstorage: 1.10.2(ioredis@5.4.1)
+      unstorage: 1.10.2(@planetscale/database@1.11.0)(ioredis@5.4.1)
       unwasm: 0.3.9
     transitivePeerDependencies:
       - '@azure/app-configuration'
@@ -12071,6 +12271,10 @@ packages:
       execa: 8.0.1
       pathe: 1.1.2
       ufo: 1.5.3
+    dev: false
+
+  /oauth4webapi@2.10.4:
+    resolution: {integrity: sha512-DSoj8QoChzOCQlJkRmYxAJCIpnXFW32R0Uq7avyghIeB6iJq0XAblOD7pcq3mx4WEBDwMuKr0Y1qveCBleG2Xw==}
     dev: false
 
   /oauth4webapi@2.3.0:
@@ -13530,6 +13734,10 @@ packages:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
     dev: false
 
+  /set-cookie-parser@2.6.0:
+    resolution: {integrity: sha512-RVnVQxTXuerk653XfuliOxBP81Sf0+qfQE73LIYKcyMYHG94AuH0kgrQpRDuTZnSmjpysHmzxJXKNfa6PjFhyQ==}
+    dev: false
+
   /set-function-length@1.1.1:
     resolution: {integrity: sha512-VoaqjbBJKiWtg4yRcKBQ7g7wnGnLV3M8oLvVWwOk2PdYY6PEFegR1vezXR0tw6fZGF9csVakIRjrJiy2veSBFQ==}
     engines: {node: '>= 0.4'}
@@ -14920,7 +15128,7 @@ packages:
       webpack-virtual-modules: 0.6.1
     dev: false
 
-  /unstorage@1.10.2(ioredis@5.4.1):
+  /unstorage@1.10.2(@planetscale/database@1.11.0)(ioredis@5.4.1):
     resolution: {integrity: sha512-cULBcwDqrS8UhlIysUJs2Dk0Mmt8h7B0E6mtR+relW9nZvsf/u4SkAYyNliPiPW7XtFNb5u3IUMkxGxFTTRTgQ==}
     peerDependencies:
       '@azure/app-configuration': ^1.5.0
@@ -14964,6 +15172,7 @@ packages:
       ioredis:
         optional: true
     dependencies:
+      '@planetscale/database': 1.11.0
       anymatch: 3.1.3
       chokidar: 3.6.0
       destr: 2.0.3
@@ -15120,6 +15329,10 @@ packages:
       kleur: 4.1.5
       sade: 1.8.1
 
+  /valibot@0.31.0-rc.2:
+    resolution: {integrity: sha512-+w/JZp2dX1+TREkKXlggIC5UriB3skeSk0MiWPD5JfMRmIYkN++OqPRKrfso3CAj5FCGt6VAxUvW1Vn7KLu6AA==}
+    dev: false
+
   /validate-html-nesting@1.2.2:
     resolution: {integrity: sha512-hGdgQozCsQJMyfK5urgFcWEqsSSrK63Awe0t/IMR0bZ0QMtnuaiHzThW81guu3qx9abLi99NEuiaN6P9gVYsNg==}
 
@@ -15215,7 +15428,7 @@ packages:
       vfile-message: 4.0.2
     dev: false
 
-  /vinxi@0.3.11(@opentelemetry/api@1.8.0):
+  /vinxi@0.3.11(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)(drizzle-orm@0.28.6):
     resolution: {integrity: sha512-ASEpiwldZIsViv2/ZlO6qnRhDAwxr92nKXxMOinA+5nCY7nlaKgekaLDjTyUmFzB8DSiXVZqmHnd6OZVkn4vzw==}
     hasBin: true
     dependencies:
@@ -15239,7 +15452,7 @@ packages:
       hookable: 5.5.3
       http-proxy: 1.18.1
       micromatch: 4.0.5
-      nitropack: 2.9.6(@opentelemetry/api@1.8.0)
+      nitropack: 2.9.6(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)(drizzle-orm@0.28.6)
       node-fetch-native: 1.6.4
       path-to-regexp: 6.2.2
       pathe: 1.1.2
@@ -15250,7 +15463,7 @@ packages:
       ufo: 1.5.3
       unctx: 2.3.1
       unenv: 1.9.0
-      unstorage: 1.10.2(ioredis@5.4.1)
+      unstorage: 1.10.2(@planetscale/database@1.11.0)(ioredis@5.4.1)
       vite: 5.2.11
       zod: 3.22.4
     transitivePeerDependencies:

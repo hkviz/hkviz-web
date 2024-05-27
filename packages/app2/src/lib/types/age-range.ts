@@ -1,6 +1,6 @@
 // Genders from https://www.reimaginegender.org/insights/gender-and-forms
 
-import { z } from 'zod';
+import * as v from 'valibot';
 
 export const ageRanges = [
     {
@@ -47,4 +47,4 @@ type AgeRanges = CodesOf<typeof ageRanges>;
 export type AgeRange = AgeRanges[number];
 export const ageRangeCodes = ageRanges.map((it) => it.code) as unknown as AgeRanges;
 
-export const ageRangeSchema = z.enum(ageRangeCodes);
+export const ageRangeSchema = v.picklist(ageRangeCodes);

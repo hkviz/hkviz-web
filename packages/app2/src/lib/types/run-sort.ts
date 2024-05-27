@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import * as v from 'valibot';
 
 export const runSorts = [
     {
@@ -19,7 +19,7 @@ type RunSort = (typeof runSorts)[number];
 type RunSortCodes = CodesOf<typeof runSorts>;
 export type RunSortCode = RunSortCodes[number];
 export const runSortCodes = runSorts.map((it) => it.code) as unknown as RunSortCodes;
-export const runSortSchema = z.enum(runSortCodes);
+export const runSortSchema = v.picklist(runSortCodes);
 
 export function runSortFromCode(code: RunSortCode): RunSort {
     return runSorts.find((it) => it.code === code)!;

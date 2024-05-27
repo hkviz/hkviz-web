@@ -1,6 +1,6 @@
 // Genders from https://www.reimaginegender.org/insights/gender-and-forms
 
-import { z } from 'zod';
+import * as v from 'valibot';
 import { type CodesOf } from './_utils';
 
 export const playingFrequencyOptions = [
@@ -44,4 +44,4 @@ type PlayingFrequencyCodes = CodesOf<typeof playingFrequencyOptions>;
 export type PlayingFrequencyCode = PlayingFrequencyCodes[number];
 export const playingFrequencyCodes = playingFrequencyOptions.map((it) => it.code) as unknown as PlayingFrequencyCodes;
 
-export const playingFrequencyCodeSchema = z.enum(playingFrequencyCodes);
+export const playingFrequencyCodeSchema = v.picklist(playingFrequencyCodes);

@@ -1,5 +1,5 @@
-import { Globe, Lock, Unlock } from 'lucide-react';
-import { z } from 'zod';
+import { Globe, Lock, Unlock } from 'lucide-solid';
+import * as v from 'valibot';
 
 export const visibilities = [
     {
@@ -27,7 +27,7 @@ type VisibilityCodes = CodesOf<typeof visibilities>;
 export type VisibilityCode = VisibilityCodes[number];
 export const visibilityCodes = visibilities.map((it) => it.code) as unknown as VisibilityCodes;
 
-export const visibilitySchema = z.enum(visibilityCodes);
+export const visibilitySchema = v.picklist(visibilityCodes);
 
 export function visibilityByCode(code: VisibilityCode) {
     return visibilities.find((it) => it.code === code)!;

@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import * as v from 'valibot';
 
 const lime = {
     className: 'bg-lime-600 dark:bg-lime-700 hover:bg-lime-900',
@@ -185,13 +185,13 @@ type TagGroupCodes = CodesOf<typeof tagGroups>;
 export type TagGroup = (typeof tagGroups)[number];
 export type TagGroupCode = TagGroupCodes[number];
 export const tagGroupCodes = tagGroups.map((it) => it.code) as unknown as TagGroupCodes;
-export const tagGroupSchema = z.enum(tagGroupCodes);
+export const tagGroupSchema = v.picklist(tagGroupCodes);
 
 type TagCodes = CodesOf<typeof tags>;
 export type Tag = (typeof tags)[number];
 export type TagCode = TagCodes[number];
 export const tagCodes = tags.map((it) => it.code) as unknown as TagCodes;
-export const tagSchema = z.enum(tagCodes);
+export const tagSchema = v.picklist(tagCodes);
 
 export function tagFromCode(code: TagCode): Tag {
     return tags.find((it) => it.code === code)!;

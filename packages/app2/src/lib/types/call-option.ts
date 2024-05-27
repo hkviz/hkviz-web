@@ -1,6 +1,6 @@
 // Genders from https://www.reimaginegender.org/insights/gender-and-forms
 
-import { z } from 'zod';
+import * as v from 'valibot';
 import { type CodesOf } from './_utils';
 
 export const callOptions = [
@@ -18,4 +18,4 @@ type CallOptionCodes = CodesOf<typeof callOptions>;
 export type CallOptionCode = CallOptionCodes[number];
 export const callOptionCodes = callOptions.map((it) => it.code) as unknown as CallOptionCodes;
 
-export const callOptionCodeSchema = z.enum(callOptionCodes);
+export const callOptionCodeSchema = v.picklist(callOptionCodes);

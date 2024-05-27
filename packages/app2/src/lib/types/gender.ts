@@ -1,6 +1,6 @@
 // Genders from https://www.reimaginegender.org/insights/gender-and-forms
 
-import { z } from 'zod';
+import * as v from 'valibot';
 
 export const genders = [
     {
@@ -45,4 +45,4 @@ type GenderCodes = CodesOf<typeof genders>;
 export type GenderCode = GenderCodes[number];
 export const oldGenderCodes = genders.map((it) => it.code) as unknown as GenderCodes;
 
-export const oldGenderSchema = z.enum(oldGenderCodes);
+export const oldGenderSchema = v.picklist(oldGenderCodes);

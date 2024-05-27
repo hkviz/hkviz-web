@@ -1,17 +1,19 @@
-import { z } from 'zod';
+// TODO remove once surveys are removed
+
+import * as v from 'valibot';
 import { playingFrequencyCodeSchema } from './playing-frequency';
 import { playingSinceCodeSchema } from './playing-since';
 
-export const hkExperienceSchema = z.object({
+export const hkExperienceSchema = v.object({
     playingSince: playingSinceCodeSchema,
-    playingFrequency: playingFrequencyCodeSchema.nullable(),
-    gotDreamnail: z.boolean(),
-    didEndboss: z.boolean(),
-    enteredWhitePalace: z.boolean(),
-    got112Percent: z.boolean(),
+    playingFrequency: v.nullable(playingFrequencyCodeSchema),
+    gotDreamnail: v.boolean(),
+    didEndboss: v.boolean(),
+    enteredWhitePalace: v.boolean(),
+    got112Percent: v.boolean(),
 });
 
-export type HkExperience = z.infer<typeof hkExperienceSchema>;
+export type HkExperience = v.InferInput<typeof hkExperienceSchema>;
 
 export type HkExperienceInput = { [key in keyof HkExperience]: HkExperience[key] | null };
 
