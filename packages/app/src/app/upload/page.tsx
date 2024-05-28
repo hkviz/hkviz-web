@@ -1,6 +1,6 @@
 import { getServerAuthSession } from '~/server/auth';
 import { AuthNeeded } from '../_components/auth-needed';
-import { ContentCenterWrapper } from '../_components/content-wrapper';
+import { ContentCenterWrapper } from '../../../../app2/src/components/content-wrapper';
 import { UploadForm } from './_upload-form';
 
 export default async function Upload() {

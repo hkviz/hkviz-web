@@ -3,7 +3,7 @@ import { findRuns } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
 import { AuthNeeded } from '../_components/auth-needed';
-import { ContentCenterWrapper } from '../_components/content-wrapper';
+import { ContentCenterWrapper } from '../../../../app2/src/components/content-wrapper';
 import { RunCard } from '../_components/run-card';
 
 export const metadata: Metadata = {

@@ -1,5 +1,5 @@
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { ContentCenterWrapper } from './content-wrapper';
+import { ContentCenterWrapper } from '../../../../app2/src/components/content-wrapper';
 import { LoginButton } from './login-link';
 
 export function AuthNeeded() {

@@ -1,7 +1,8 @@
-import { getThemeColorByTheme } from '~/lib/theme';
+import { type Component } from 'solid-js';
+import { getThemeColorByTheme } from './main-nav/theme-switcher';
 
-export function FaviconsHead({ theme }: { theme: 'light' | 'dark' }) {
-    const themeColor = getThemeColorByTheme(theme);
+export const FaviconsHead: Component<{ theme: 'light' | 'dark' }> = (props) => {
+    const themeColor = () => getThemeColorByTheme(props.theme);
 
     return (
         <>
@@ -11,7 +12,7 @@ export function FaviconsHead({ theme }: { theme: 'light' | 'dark' }) {
             <link rel="icon" type="image/png" sizes="48x48" href="/favicons/favicon-48x48.png" />
             <link rel="manifest" href="/manifest.json" />
             <meta name="mobile-web-app-capable" content="yes" />
-            <meta name="theme-color" content={themeColor} />
+            <meta name="theme-color" content={themeColor()} />
             <meta name="application-name" content="HKViz" />
             <link rel="apple-touch-icon" sizes="57x57" href="/favicons/apple-touch-icon-57x57.png" />
             <link rel="apple-touch-icon" sizes="60x60" href="/favicons/apple-touch-icon-60x60.png" />
@@ -163,4 +164,4 @@ export function FaviconsHead({ theme }: { theme: 'light' | 'dark' }) {
             <link rel="yandex-tableau-widget" href="/favicons/yandex-browser-manifest.json" />
         </>
     );
-}
+};

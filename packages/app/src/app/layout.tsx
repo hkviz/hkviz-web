@@ -8,7 +8,7 @@ import { getServerAuthSession } from '~/server/auth';
 import { cinzel, cinzelDecorative, ebGaramond, notoSans } from '~/styles/fonts';
 import { TRPCReactProvider } from '~/trpc/react';
 import ClientContext from './_components/context';
-import { Footer } from './_components/footer';
+import { Footer } from '../../../app2/src/components/footer';
 import { MainNav } from './_components/main-nav';
 import { FaviconsHead } from './_favicons-head';
 

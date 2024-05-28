@@ -1,14 +1,16 @@
 'use client';
 
-import { Button } from '@hkviz/components';
+import { Button, Sheet, SheetTrigger, SheetContent, SheetClose } from '@hkviz/components';
 import { HKVizText } from '@hkviz/viz-ui';
-import { BadgeHelp, Globe } from 'lucide-solid';
-import { Show, type Component } from 'solid-js';
-import { createLoginUrl } from '../login-link';
+import { createSession } from '@solid-mediakit/auth/client';
+import { A, useBeforeLeave } from '@solidjs/router';
+import { BadgeHelp, Globe, LogIn } from 'lucide-solid';
+import { Show, Suspense, createSignal, type Component } from 'solid-js';
+import { createLoginUrl } from '~/lib/auth-urls';
+import { CurrentUserDropdown, CurrentUserNavLinks } from './current-user-dropdown';
+import { MenuItem, MenuItemContextProvider } from './main-nav-item';
 import { ThemeSwitcher, type Theme } from './theme-switcher';
-import { CurrentUserDropdown } from './current-user-dropdown';
-import { MenuItem } from './main-nav-item';
-import { A } from '@solidjs/router';
+import { Menu } from 'lucide-solid';
 
 export const MainNavLeftSide: Component = () => {
     return (
@@ -32,11 +34,15 @@ export const MainNavLeftSide: Component = () => {
     );
 };
 
-// TODO
-type Session = { user: { name: string } };
-
-export const MainNav: Component<{ session: Session | null; theme: Theme }> = (props) => {
+export const MainNav: Component<{ theme: Theme }> = (props) => {
+    const session = createSession();
     const loginUrl = createLoginUrl();
+
+    const [open, setOpen] = createSignal(false);
+
+    useBeforeLeave(() => {
+        setOpen(false);
+    });
 
     return (
         <div class="main-nav">
@@ -47,19 +53,51 @@ export const MainNav: Component<{ session: Session | null; theme: Theme }> = (pr
                     </span>
                 </Button>
 
-                <MainNavLeftSide />
+                <MenuItemContextProvider value={{ buttonClass: 'hidden md:inline-flex' }}>
+                    <MainNavLeftSide />
+                </MenuItemContextProvider>
                 <div class="grow" />
-                <ThemeSwitcher />
-                <Show
-                    when={props.session}
-                    fallback={
-                        <Button as={A} href={loginUrl()} variant="ghost">
-                            Login
-                        </Button>
-                    }
-                >
-                    {(session) => <CurrentUserDropdown session={1} class="hidden md:flex" />}
-                </Show>
+                {/* <ErrorBoundary fallback={<div>Loading login failed</div>}> */}
+                <Suspense fallback={<div></div>}>
+                    <ThemeSwitcher />
+                    <Show
+                        when={session()}
+                        fallback={
+                            <Button as={'a'} href={loginUrl()} variant="ghost" class="hidden md:inline-flex">
+                                Login
+                            </Button>
+                        }
+                    >
+                        {(session) => <CurrentUserDropdown session={session()} class="hidden md:inline-flex" />}
+                    </Show>
+                </Suspense>
+                <Sheet open={open()} onOpenChange={setOpen}>
+                    <SheetTrigger as={Button<'button'>} variant="ghost" class="md:hidden">
+                        <Menu class="h-5 w-5" />
+                    </SheetTrigger>
+                    <SheetContent position="right">
+                        <MenuItemContextProvider
+                            value={{ titleClass: 'grow', iconClass: 'mr-4 h-5 w-5', buttonClass: 'h-12' }}
+                        >
+                            <div class="app-region-no-drag flex flex-col gap-1">
+                                <Button as={A} href="/" variant="ghost" class="h-16 justify-start">
+                                    <span class="text-2xl">
+                                        <HKVizText />
+                                    </span>
+                                </Button>
+                                <MainNavLeftSide />
+                                <Show
+                                    when={session()}
+                                    fallback={
+                                        <MenuItem href={loginUrl()} title="Login" icon={LogIn} useNativeLink={true} />
+                                    }
+                                >
+                                    {(session) => <CurrentUserNavLinks session={session()} />}
+                                </Show>
+                            </div>
+                        </MenuItemContextProvider>
+                    </SheetContent>
+                </Sheet>
                 {/* <Sheet>
                         <SheetTrigger asChild>
                             <NavigationMenuLink class={cn(navigationMenuTriggerStyle(), ' md:hidden')} asChild>

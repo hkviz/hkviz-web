@@ -7,6 +7,10 @@ import { COOKIE_NAME_THEME } from '~/lib/cookie-names';
 
 export type Theme = 'light' | 'dark';
 
+export function getThemeColorByTheme(theme: 'light' | 'dark') {
+    return theme === 'light' ? '#ffffff' : '#030712';
+}
+
 function toggleTheme() {
     const theme = themeStore.currentTheme() === 'light' ? 'dark' : 'light';
     themeStore.setCurrentTheme(theme);
@@ -17,6 +21,8 @@ function toggleTheme() {
     } else {
         document.body.classList.remove('dark');
     }
+
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getThemeColorByTheme(theme));
 }
 
 export const ThemeSwitcher: Component = () => {

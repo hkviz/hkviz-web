@@ -2,7 +2,7 @@ import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/ca
 import { headers } from 'next/headers';
 import { getNavigationFlowFromCookies } from '~/lib/navigation-flow/from-cookies';
 import { apiFromServer } from '~/trpc/from-server';
-import { ContentCenterWrapper } from '../_components/content-wrapper';
+import { ContentCenterWrapper } from '../../../../app2/src/components/content-wrapper';
 import { StudyDemographicClientForm } from './_components';
 
 export default async function DataCollectionStudyParticipationPage() {

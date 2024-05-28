@@ -2,7 +2,7 @@ import { isTagCode, tagGroupFromCode, tagOrGroupFromCode } from '~/lib/types/tag
 import { findRuns, type RunFilter } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
-import { ContentWrapper } from '../_components/content-wrapper';
+import { ContentWrapper } from '../../../../app2/src/components/content-wrapper';
 import { RunCard } from '../_components/run-card';
 import { RunFilters } from './_components';
 import { runFilterParamsSchema } from './_params';

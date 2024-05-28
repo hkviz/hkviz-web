@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { AuthNeeded } from '../_components/auth-needed';
-import { ContentCenterWrapper } from '../_components/content-wrapper';
+import { ContentCenterWrapper } from '../../../../app2/src/components/content-wrapper';
 import { KeepAccountSettingsOption } from './_keep_account_option';
 import { UserNameSettingsOption } from './_username_option';
 

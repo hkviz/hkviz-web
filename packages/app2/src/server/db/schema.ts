@@ -14,7 +14,7 @@ import {
     varchar,
     type MySqlBooleanBuilderInitial,
 } from 'drizzle-orm/mysql-core';
-import { type AdapterAccount } from 'next-auth/adapters';
+import { type ProviderType } from '@auth/core/providers';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { callOptionCodes } from '~/lib/types/call-option';
 import { countryCodes } from '~/lib/types/country';
@@ -24,6 +24,7 @@ import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { runInteractionTypes } from '~/lib/types/run-interaction';
 import { tags, type TagCode } from '~/lib/types/tags';
 import { mapZoneSchema } from '@hkviz/parser';
+import { AccountType } from '../auth';
 
 const UUID_LENGTH = 36;
 function varcharUuid(name: string) {
@@ -79,7 +80,7 @@ export const accounts = table(
     'account',
     {
         userId: varchar('userId', { length: 255 }).notNull(),
-        type: varchar('type', { length: 255 }).$type<AdapterAccount['type']>().notNull(),
+        type: varchar('type', { length: 255 }).$type<AccountType>().notNull(),
         provider: varchar('provider', { length: 255 }).notNull(),
         providerAccountId: varchar('providerAccountId', { length: 255 }).notNull(),
         refresh_token: text('refresh_token'),

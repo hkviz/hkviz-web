@@ -1,49 +1,45 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@hkviz/components';
+import { type JSXElement, type Component } from 'solid-js';
 
 export type ContentWrapperProps = {
-    children: React.ReactNode;
+    children: JSXElement;
     className?: string;
     backgroundClassName?: string;
     footerOutOfSight?: boolean;
 };
 
-export function ContentWrapper({
-    children,
-    className,
-    backgroundClassName,
-    footerOutOfSight = false,
-}: ContentWrapperProps) {
+export const ContentWrapper: Component<ContentWrapperProps> = (props) => {
     // t3 template: from-[#2e026d] to-[#15162c]
     // similar to hk initial menu style: from-[#233458] to-[#010103]
     // similar to lifeblood menu style: from-[#4585bc] to-[#06111d]
     return (
         <div
-            className={cn(
+            class={cn(
                 'relative flex grow flex-col',
-                footerOutOfSight
+                props.footerOutOfSight
                     ? 'min-h-[calc(100vh-var(--main-nav-height))]'
                     : 'min-h-[calc(100vh-var(--main-nav-height)-var(--footer-height)-4px)]',
             )}
         >
             <div
-                className={cn(
+                class={cn(
                     'absolute inset-0 -z-10 bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-[#6245bc94]/60 to-[#c3cdd8]/60 bg-fixed dark:from-[#6245bc94]/60 dark:to-[#06111d]/60',
-                    backgroundClassName,
+                    props.backgroundClassName,
                 )}
             />
             <main
-                className={cn(
+                class={cn(
                     'flex grow flex-col text-black dark:text-white',
-                    footerOutOfSight ? 'min-h-[100vh-(var(--main-nav-height))]' : '',
-                    className,
+                    props.footerOutOfSight ? 'min-h-[100vh-(var(--main-nav-height))]' : '',
+                    props.className,
                 )}
             >
-                {children}
+                {props.children}
             </main>
         </div>
     );
-}
+};
 
-export function ContentCenterWrapper(props: ContentWrapperProps) {
+export const ContentCenterWrapper: Component<ContentWrapperProps> = (props) => {
     return <ContentWrapper className="items-center justify-center p-4" {...props} />;
-}
+};

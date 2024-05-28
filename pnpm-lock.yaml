@@ -364,6 +364,9 @@ importers:
       '@auth/core':
         specifier: ^0.31.0
         version: 0.31.0
+      '@auth/drizzle-adapter':
+        specifier: ^0.3.2
+        version: 0.3.5(nodemailer@6.9.7)
       '@floating-ui/dom':
         specifier: ^1.6.5
         version: 1.6.5
@@ -415,6 +418,12 @@ importers:
       '@solidjs/start':
         specifier: ^1.0.0
         version: 1.0.0(solid-js@1.8.17)(vinxi@0.3.11)(vite@5.2.11)
+      '@tailwindcss/container-queries':
+        specifier: ^0.1.1
+        version: 0.1.1(tailwindcss@3.4.3)
+      '@tailwindcss/typography':
+        specifier: ^0.5.10
+        version: 0.5.10(tailwindcss@3.4.3)
       '@vinxi/plugin-mdx':
         specifier: ^3.7.1
         version: 3.7.1(@mdx-js/mdx@2.3.0)
@@ -428,17 +437,23 @@ importers:
         specifier: ^3.6.0
         version: 3.6.0
       drizzle-orm:
-        specifier: ^0.28.5
+        specifier: ^0.28.6
         version: 0.28.6(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)
       lucide-solid:
         specifier: ^0.378.0
         version: 0.378.0(solid-js@1.8.17)
+      mailchecker:
+        specifier: ^6.0.1
+        version: 6.0.1
       marked:
         specifier: ^12.0.1
         version: 12.0.2
       postcss:
         specifier: ^8.4.38
         version: 8.4.38
+      simple-icons:
+        specifier: ^12.0.0
+        version: 12.0.0
       solid-js:
         specifier: ^1.8.17
         version: 1.8.17
@@ -451,6 +466,9 @@ importers:
       tailwindcss:
         specifier: ^3.4.3
         version: 3.4.3
+      tailwindcss-animate:
+        specifier: ^1.0.7
+        version: 1.0.7(tailwindcss@3.4.3)
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
@@ -461,6 +479,9 @@ importers:
         specifier: ^0.3.11
         version: 0.3.11(@opentelemetry/api@1.8.0)(@planetscale/database@1.11.0)(drizzle-orm@0.28.6)
     devDependencies:
+      drizzle-kit:
+        specifier: ^0.19.13
+        version: 0.19.13
       postcss-import:
         specifier: ^16.1.0
         version: 16.1.0(postcss@8.4.38)
@@ -638,7 +659,7 @@ packages:
       cookie: 0.5.0
       jose: 4.15.4
       nodemailer: 6.9.7
-      oauth4webapi: 2.3.0
+      oauth4webapi: 2.10.4
       preact: 10.11.3
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
@@ -5169,6 +5190,14 @@ packages:
       tailwindcss: 3.4.1
     dev: false
 
+  /@tailwindcss/container-queries@0.1.1(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-p18dswChx6WnTSaJCSGx6lTmrGzNNvm2FtXmiO6AuA1V4U5REyoqwmT6kgAsIMdjo07QdAfYXHJ4hnMtfHzWgA==}
+    peerDependencies:
+      tailwindcss: '>=3.2.0'
+    dependencies:
+      tailwindcss: 3.4.3
+    dev: false
+
   /@tailwindcss/typography@0.5.10(tailwindcss@3.4.1):
     resolution: {integrity: sha512-Pe8BuPJQJd3FfRnm6H0ulKIGoMEQS+Vq01R6M5aCrFB/ccR/shT+0kXLjouGC1gFLm9hopTFN+DMP0pfwRWzPw==}
     peerDependencies:
@@ -5180,6 +5209,18 @@ packages:
       postcss-selector-parser: 6.0.10
       tailwindcss: 3.4.1
     dev: true
+
+  /@tailwindcss/typography@0.5.10(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-Pe8BuPJQJd3FfRnm6H0ulKIGoMEQS+Vq01R6M5aCrFB/ccR/shT+0kXLjouGC1gFLm9hopTFN+DMP0pfwRWzPw==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      lodash.castarray: 4.4.0
+      lodash.isplainobject: 4.0.6
+      lodash.merge: 4.6.2
+      postcss-selector-parser: 6.0.10
+      tailwindcss: 3.4.3
+    dev: false
 
   /@tanstack/query-core@4.36.1:
     resolution: {integrity: sha512-DJSilV5+ytBP1FbFcEJovv4rnnm/CokuVvrBEtW/Va9DvuJ3HksbXUJEpI0aV1KtuL4ZoO9AVE6PyNLzF7tLeA==}
@@ -10371,7 +10412,6 @@ packages:
 
   /lodash.castarray@4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
-    dev: true
 
   /lodash.debounce@4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
@@ -10395,7 +10435,6 @@ packages:
 
   /lodash.isplainobject@4.0.6:
     resolution: {integrity: sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA==}
-    dev: true
 
   /lodash.kebabcase@4.1.1:
     resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==}
@@ -12277,10 +12316,6 @@ packages:
     resolution: {integrity: sha512-DSoj8QoChzOCQlJkRmYxAJCIpnXFW32R0Uq7avyghIeB6iJq0XAblOD7pcq3mx4WEBDwMuKr0Y1qveCBleG2Xw==}
     dev: false
 
-  /oauth4webapi@2.3.0:
-    resolution: {integrity: sha512-JGkb5doGrwzVDuHwgrR4nHJayzN4h59VCed6EW8Tql6iHDfZIabCJvg6wtbn5q6pyB2hZruI3b77Nudvq7NmvA==}
-    dev: false
-
   /oauth@0.9.15:
     resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
     dev: false
@@ -12748,7 +12783,6 @@ packages:
     dependencies:
       cssesc: 3.0.0
       util-deprecate: 1.0.2
-    dev: true
 
   /postcss-selector-parser@6.0.13:
     resolution: {integrity: sha512-EaV1Gl4mUEV4ddhDnv/xtj7sxwrwxdetHdWUGnT4VJQf+4d05v6lHYZr8N573k5Z0BViss7BDhfWtKS3+sfAqQ==}
@@ -13844,6 +13878,11 @@ packages:
       simple-concat: 1.0.1
     dev: false
 
+  /simple-icons@12.0.0:
+    resolution: {integrity: sha512-KsqyGTRS1c9hp1oGEspCdp8qbqljjH199pUZZWR3DeStg2RBjzB3EJT9kLZ8tPlIrWOyktjj+TIgDQphYHq7XQ==}
+    engines: {node: '>=0.12.18'}
+    dev: false
+
   /simple-swizzle@0.2.2:
     resolution: {integrity: sha512-JA//kQgZtbuY83m+xT+tXJkmJncGMTFT+C+g2h2R9uxkYIrE2yy9sgmcLhCnw57/WSD+Eh3J97FPEDFnbXnDUg==}
     dependencies:
@@ -14309,6 +14348,14 @@ packages:
       tailwindcss: '>=3.0.0 || insiders'
     dependencies:
       tailwindcss: 3.4.1
+    dev: false
+
+  /tailwindcss-animate@1.0.7(tailwindcss@3.4.3):
+    resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
+    peerDependencies:
+      tailwindcss: '>=3.0.0 || insiders'
+    dependencies:
+      tailwindcss: 3.4.3
     dev: false
 
   /tailwindcss@3.4.1:

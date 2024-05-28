@@ -7,7 +7,7 @@ import { getRun } from '~/server/api/routers/run/run-get';
 import { findNewRunId } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
-import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-wrapper';
+import { ContentCenterWrapper, ContentWrapper } from '../../../../../app2/src/components/content-wrapper';
 
 interface Params {
     id: string;

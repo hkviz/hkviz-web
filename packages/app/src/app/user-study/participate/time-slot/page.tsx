@@ -1,7 +1,7 @@
 import { GradientSeparator } from '~/app/_components/gradient-separator';
 import { HKVizText } from '~/app/_components/hkviz-text';
 import { apiFromServer } from '~/trpc/from-server';
-import { ContentWrapper } from '../../../_components/content-wrapper';
+import { ContentWrapper } from '../../../../../../app2/src/components/content-wrapper';
 import { getParticipantIdFromCookieOrSessionUser } from '../../_utils';
 import { TimeSlotPicker } from './_timeslot-picker';
 import { redirect } from 'next/navigation';

@@ -1,33 +1,31 @@
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import {
+    Badge,
+    Button,
     Dialog,
     DialogContent,
     DialogDescription,
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from '@/components/ui/dialog';
-import { SiDiscord, SiGithub } from '@icons-pack/react-simple-icons';
-import { ChevronRight, Mail } from 'lucide-react';
-import { HKVizText } from './hkviz-text';
+} from '@hkviz/components';
+import { HKVizText } from '@hkviz/viz-ui';
+import { ChevronRight, Mail } from 'lucide-solid';
+import { siDiscord, siGithub } from 'simple-icons';
+import { type Component } from 'solid-js';
+import { SimpleIcon } from './simple-icon';
 
 export const HOLLOW_KNIGHT_MODDING_DISCORD_URL = 'https://discord.com/servers/hollow-knight-modding-879125729936298015';
 
-export function DiscordDialogButton({ children }: { children?: React.ReactNode }) {
+export const DiscordDialogButton: Component = () => {
     return (
         <Dialog>
-            <DialogTrigger asChild>
-                {children ?? (
-                    <Button variant="ghost" size="icon" className="h-12 w-12 rounded-full">
-                        <SiDiscord />
-                    </Button>
-                )}
+            <DialogTrigger as={Button<'button'>} variant="ghost" size="icon" class="h-12 w-12 rounded-full">
+                <SimpleIcon icon={siDiscord} />
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px]">
+            <DialogContent class="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle className="flex flex-row items-center gap-2">
-                        <SiDiscord />
+                    <DialogTitle class="flex flex-row items-center gap-2">
+                        <SimpleIcon icon={siDiscord} />
                         <span>
                             <HKVizText /> - Discord
                         </span>
@@ -38,16 +36,16 @@ export function DiscordDialogButton({ children }: { children?: React.ReactNode }
                     </DialogDescription>
                     <DialogDescription>
                         The channel is located under <Badge variant="outline">Utility Mods</Badge>{' '}
-                        <ChevronRight className="inline-block h-3 w-3" /> <Badge variant="outline">#hkviz</Badge>.
+                        <ChevronRight class="inline-block h-3 w-3" /> <Badge variant="outline">#hkviz</Badge>.
                     </DialogDescription>
                 </DialogHeader>
-                <div className="flex flex-col justify-center gap-2 p-4 pt-2 align-baseline">
-                    <Button asChild className="w-full">
+                <div class="flex flex-col justify-center gap-2 p-4 pt-2 align-baseline">
+                    <Button asChild class="w-full">
                         <a href={HOLLOW_KNIGHT_MODDING_DISCORD_URL} target="_blank" rel="noreferrer">
                             1. Join the Modding Discord Server
                         </a>
                     </Button>
-                    <Button asChild className="flex w-full flex-row items-baseline gap-1">
+                    <Button asChild class="flex w-full flex-row items-baseline gap-1">
                         <a
                             href="https://discord.com/channels/879125729936298015/1194832408168648816"
                             target="_blank"
@@ -60,13 +58,13 @@ export function DiscordDialogButton({ children }: { children?: React.ReactNode }
             </DialogContent>
         </Dialog>
     );
-}
+};
 
 export function GithubButton() {
     return (
-        <Button asChild variant="ghost" size="icon" className="h-12 w-12 rounded-full">
+        <Button asChild variant="ghost" size="icon" class="h-12 w-12 rounded-full">
             <a href="https://github.com/hkviz" target="_blank" rel="noreferrer">
-                <SiGithub />
+                <SimpleIcon icon={siGithub} />
             </a>
         </Button>
     );
@@ -74,7 +72,7 @@ export function GithubButton() {
 
 export function MailButton() {
     return (
-        <Button asChild variant="ghost" size="icon" className="h-12 w-12 rounded-full">
+        <Button asChild variant="ghost" size="icon" class="h-12 w-12 rounded-full">
             <a href="mailto:support@hkviz.org">
                 <Mail />
             </a>

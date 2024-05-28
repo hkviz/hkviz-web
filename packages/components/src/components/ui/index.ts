@@ -15,3 +15,6 @@ export * from './checkbox';
 export * from './resizable';
 export * from './tabs';
 export * from './progress';
+export * from './dialog';
+export * from './badge';
+export * from './separator';
