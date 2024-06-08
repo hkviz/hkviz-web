@@ -3,8 +3,12 @@
         "jsx": "preserve",
         "jsxImportSource": "solid-js",
         "types": [],
-        "baseUrl": "."
+        "baseUrl": ".",
+        "paths": {
+            "@hkviz/parser": ["../parser/src/index.ts"],
+            "@hkviz/hk-data": ["../hk-data/src/index.ts"]
+        }
     },
     "extends": "../../tsconfig.json",
-    "include": ["src/**/*", "test/**/*"]
+    "include": ["src/**/*", "test/**/*", "../viz-ui/src/tour/step.tsx"]
 }

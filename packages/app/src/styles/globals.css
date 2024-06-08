@@ -26,6 +26,19 @@
         --input: 220 13% 91%;
         --ring: 262.1 83.3% 57.8%;
         --radius: 1rem;
+
+        /* form solid-ui */
+        --info: 204 94% 94%;
+        --info-foreground: 199 89% 48%;
+
+        --success: 149 80% 90%;
+        --success-foreground: 160 84% 39%;
+
+        --warning: 48 96% 89%;
+        --warning-foreground: 25 95% 53%;
+
+        --error: 0 93% 94%;
+        --error-foreground: 0 84% 60%;
     }
 
     .dark {
@@ -48,6 +61,22 @@
         --border: 215 27.9% 16.9%;
         --input: 215 27.9% 16.9%;
         --ring: 263.4 70% 50.4%;
+
+        /* from solid-ui */
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 0 0% 98%;
+
+        --info: 204 94% 94%;
+        --info-foreground: 199 89% 48%;
+
+        --success: 149 80% 90%;
+        --success-foreground: 160 84% 39%;
+
+        --warning: 48 96% 89%;
+        --warning-foreground: 25 95% 53%;
+
+        --error: 0 93% 94%;
+        --error-foreground: 0 84% 60%;
     }
 
     /* custom */

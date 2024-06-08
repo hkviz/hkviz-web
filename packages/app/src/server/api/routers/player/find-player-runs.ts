@@ -3,7 +3,6 @@ import { db } from '~/server/db';
 import { findRuns } from '../run/runs-find';
 
 export const findPlayerPublicRuns = cache(async (id: string) => {
-    console.log('findPlayerPublicRuns', id);
     return await findRuns({
         db,
         filter: {

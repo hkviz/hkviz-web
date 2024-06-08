@@ -6,7 +6,6 @@ const config = {
     },
     plugins: ['@typescript-eslint'],
     extends: [
-        'next/core-web-vitals',
         'plugin:@typescript-eslint/recommended-type-checked',
         'plugin:@typescript-eslint/stylistic-type-checked',
         // 'plugin:prettier/recommended',
@@ -29,12 +28,6 @@ const config = {
             2,
             {
                 checksVoidReturn: { attributes: false },
-            },
-        ],
-        'react-hooks/exhaustive-deps': [
-            'warn',
-            {
-                additionalHooks: 'useDependableEffect',
             },
         ],
         '@typescript-eslint/no-unsafe-assignment': 'off',
