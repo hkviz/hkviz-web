@@ -12,7 +12,7 @@ export default function App() {
             explicitLinks
             root={(props) => (
                 <div>
-                    <Suspense fallback="Loading Content">
+                    <Suspense>
                         <SessionProvider>
                             <MainNav theme={'dark'} />
                             {props.children}

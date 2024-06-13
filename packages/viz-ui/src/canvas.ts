@@ -1,5 +1,6 @@
 import { viewportStore } from '@hkviz/viz';
 import { type Accessor, createEffect, createSignal, onCleanup, createMemo } from 'solid-js';
+import { isServer } from 'solid-js/web';
 
 export function createElementSize<T extends HTMLElement>(
     element: Accessor<T | null>,
@@ -37,7 +38,9 @@ export function createAutoSizeCanvas(
         const _canvas = canvas();
         const _containerSize = containerSize();
 
-        if (!_canvas || !_containerSize) return { widthInUnits: 0, heightInUnits: 0, pixelRatio: 1, canvas: null };
+        if (isServer || !_canvas || !_containerSize) {
+            return { widthInUnits: 0, heightInUnits: 0, pixelRatio: 1, canvas: null };
+        }
 
         const zoomLevel = repaintOnZoom ? viewportStore.visualViewportScale() : 1;
 

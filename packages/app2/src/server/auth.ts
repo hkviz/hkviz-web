@@ -1,12 +1,14 @@
 import DiscordProvider from '@auth/core/providers/discord';
 import EmailProvider from '@auth/core/providers/nodemailer';
 import GoogleProvider from '@auth/core/providers/google';
-import type { SolidAuthConfig } from '@solid-mediakit/auth';
+import { getSession, type SolidAuthConfig } from '@solid-mediakit/auth';
 import { env } from '~/env';
 import { isValid as isValidNonBlacklistedEmail } from 'mailchecker';
 import { db } from '~/server/db';
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import { table } from './db/schema';
+import { getWebRequest } from 'vinxi/http';
+import { cache } from '@solidjs/router';
 
 export const authOptions: SolidAuthConfig = {
     callbacks: {
@@ -55,3 +57,21 @@ export const authOptions: SolidAuthConfig = {
 };
 
 export type AccountType = 'discord' | 'google' | 'email';
+
+const getSessionOrNull = cache(async () => {
+    const request = getWebRequest();
+    const session = await getSession(request, authOptions);
+    return session;
+}, 'session');
+
+export async function getUserOrNull() {
+    return (await getSessionOrNull())?.user ?? null;
+}
+
+export async function getUserOrThrow() {
+    const user = await getUserOrNull();
+    if (!user) {
+        throw new Error('User not found');
+    }
+    return user;
+}

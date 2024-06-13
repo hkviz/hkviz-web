@@ -228,15 +228,6 @@ export function RoomInfo() {
         return getRelatedVirtualRoomNames(mapZone, _selectedRoom);
     });
 
-    const areaWithTooltip = (
-        <Tooltip>
-            <TooltipTrigger class="text-left">
-                {roomInfos().mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}
-            </TooltipTrigger>
-            <TooltipContent>Area</TooltipContent>
-        </Tooltip>
-    );
-
     return (
         <Card
             class={cn(
@@ -257,7 +248,17 @@ export function RoomInfo() {
 
                 <div>
                     <CardTitle class="text-base md:text-lg">
-                        <Show when={selectedRoom() == null || isV1()} fallback={areaWithTooltip}>
+                        <Show
+                            when={selectedRoom() == null || isV1()}
+                            fallback={
+                                <Tooltip>
+                                    <TooltipTrigger class="text-left">
+                                        {roomInfos().mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}
+                                    </TooltipTrigger>
+                                    <TooltipContent>Area</TooltipContent>
+                                </Tooltip>
+                            }
+                        >
                             Room analytics
                         </Show>
                     </CardTitle>
@@ -266,7 +267,14 @@ export function RoomInfo() {
                             <span class="text-sm opacity-50">Hover or click a room to view analytics</span>
                         </Show>
                         <Show when={selectedRoom() != null}>
-                            <Show when={isV1()}>{areaWithTooltip}</Show>
+                            <Show when={isV1()}>
+                                <Tooltip>
+                                    <TooltipTrigger class="text-left">
+                                        {roomInfos().mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}
+                                    </TooltipTrigger>
+                                    <TooltipContent>Area</TooltipContent>
+                                </Tooltip>
+                            </Show>
                             <Tooltip>
                                 <TooltipTrigger class="text-left">
                                     {roomInfos().mainRoomInfo?.roomNameFormattedZoneExclusive ?? selectedRoom()}

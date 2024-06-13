@@ -8,7 +8,7 @@ import {
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
 import fs from 'fs/promises';
-import { env } from '~/env.mjs';
+import { env } from '~/env';
 
 export const r2 = new S3Client({
     region: 'auto',

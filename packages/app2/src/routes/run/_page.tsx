@@ -6,7 +6,7 @@ import { createPortal } from 'react-dom';
 import { RunCard } from '~/app/_components/run-card';
 import { useStoreInitializer } from '~/lib/stores/store-initializer';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
-import { GameplayDashboardWrapper } from './_dynamic_loader';
+import { GameplayDashboardWrapper } from '../../../../app/src/app/run/[id]/_dynamic_loader';
 import { createRunFileLoader, type RunFileLoader } from '@hkviz/viz';
 
 interface Props {

@@ -4,6 +4,7 @@ import { storeInitializer } from 'src/store';
 import { fetchWithRunfileCache } from './recording-file-browser-cache';
 import { type RunFileInfo } from './run-files-info';
 import { wrapResultWithProgress } from './wrap-result-with-progress';
+import { isServer } from 'solid-js/web';
 
 async function loadFile(file: RunFileInfo, onProgress: (progress: number) => void) {
     const loader = () => fetchWithRunfileCache(file.id, file.version, file.signedUrl);
@@ -31,9 +32,15 @@ export interface RunFileLoader {
 }
 
 export function createRunFileLoader(files: RunFileInfo[]): RunFileLoader {
-    // if (isServer) {
-    //     return;
-    // }
+    if (isServer) {
+        return {
+            progress: () => 0,
+            done: () => false,
+            abort: () => {
+                // do nothing
+            },
+        };
+    }
 
     console.log('started loading run files');
 

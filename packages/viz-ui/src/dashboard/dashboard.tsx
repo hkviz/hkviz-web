@@ -13,7 +13,7 @@ import {
 } from '@hkviz/components';
 import { splitsStore, uiStore, type RunFileInfo, type RunFileLoader } from '@hkviz/viz';
 import { Maximize, Minus, Rows } from 'lucide-solid';
-import { Show, createEffect, createMemo, createSignal, type Component } from 'solid-js';
+import { JSXElement, Show, createEffect, createMemo, createSignal, type Component } from 'solid-js';
 import { HKMap } from '../map';
 import { RoomInfo } from '../room-infos';
 import { RunSplits } from '../splits';
@@ -221,7 +221,7 @@ export const RightCard: Component<{ class?: string }> = (props) => {
 export interface GameplayDashboardProps {
     fileInfos: RunFileInfo[];
     startDate: Date | undefined;
-    onRunCardWrapperReady: (element: HTMLDivElement) => void;
+    gameplayCard: JSXElement;
     runFileLoader: RunFileLoader;
 }
 export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
@@ -245,7 +245,7 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
                     startDate={props.startDate}
                     loadingDone={props.runFileLoader.done()}
                     loadingProgress={props.runFileLoader.progress()}
-                    onRunCardWrapperReady={(element) => props.onRunCardWrapperReady(element)}
+                    gameplayCard={props.gameplayCard}
                 />
                 <SingleRunPageTour />
                 {/* <RunClientLoader runData={runData} /> */}

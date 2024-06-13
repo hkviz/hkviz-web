@@ -1,8 +1,18 @@
-import { ContentCenterWrapper } from '~/components/content-wrapper';
-import { HKVizText } from '@hkviz/viz-ui';
 import { GradientSeparator } from '@hkviz/components';
+import { HKVizText } from '@hkviz/viz-ui';
+import { createAsync, type RouteDefinition } from '@solidjs/router';
+import { ContentCenterWrapper } from '~/components/content-wrapper';
+import { OwnRuns } from '~/components/own-runs';
+import { findOwnRuns } from '~/server/run';
+
+export const route: RouteDefinition = {
+    load: async () => {
+        // await findOwnRuns();
+    },
+};
 
 export default function HomePage() {
+    const runs = createAsync(() => findOwnRuns());
     return (
         <ContentCenterWrapper>
             <div class="text-foreground container flex flex-col items-center justify-center gap-12 px-4 py-16">
@@ -25,12 +35,7 @@ export default function HomePage() {
                     )} */}
                 </div>
 
-                {/* {userRuns.length > 0 && (
-                    <>
-                        <GradientSeparator />
-                        <OwnRuns runs={userRuns} />
-                    </>
-                )}*/}
+                <OwnRuns runs={runs()!} />
 
                 <GradientSeparator />
                 <div class={`max-w-[70ch] text-center`}>

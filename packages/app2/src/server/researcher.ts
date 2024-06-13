@@ -1,4 +1,3 @@
-import { TRPCError } from '@trpc/server';
 import { and, eq, sql } from 'drizzle-orm';
 import { type DB } from '~/server/db';
 import { users } from '~/server/db/schema';
@@ -19,11 +18,7 @@ export async function isResearcher({ db, userId }: { db: DB; userId: string }) {
 export async function assertIsResearcher({
     db,
     userId,
-    makeError = () =>
-        new TRPCError({
-            code: 'FORBIDDEN',
-            message: 'Forbidden',
-        }),
+    makeError = () => new Error('Forbidden'),
 }: {
     db: DB;
     userId: string | null;

@@ -1,6 +1,7 @@
 // tsup.config.ts
 import { defineConfig } from 'tsup';
 import * as preset from 'tsup-preset-solid';
+import { solidPlugin } from 'esbuild-plugin-solid';
 
 const preset_options: preset.PresetOptions = {
     // array or single object
@@ -28,10 +29,14 @@ const preset_options: preset.PresetOptions = {
     drop_console: false,
     // Set to `true` to generate a CommonJS build alongside ESM
     cjs: false,
-    modify_esbuild_options: (options) => {
-        // options.tsconfig = 'tsconfig.prod.json';
-        return options;
-    },
+    //     modify_esbuild_options: (modify_esbuild_options, permutation) => {
+    //         permutation.entries.forEach((entry) => {
+    //             // modify esbuild options
+    //             entry.type.jsx = true;
+    //         });
+    //         // modify esbuild options
+    //         return modify_esbuild_options;
+    //     },
 };
 
 export default defineConfig((config) => {
@@ -50,8 +55,27 @@ export default defineConfig((config) => {
         preset.writePackageJson(package_fields);
     }
 
-    return preset.generateTsupOptions(parsed_data).map((build) => {
-        build.sourcemap = true;
+    const tsupOptions = preset.generateTsupOptions(parsed_data);
+
+    tsupOptions.forEach((build) => {
+        const solidPluginIndex = build.esbuildPlugins?.findIndex((plugin) => plugin.name === 'esbuild:solid') ?? -1;
+        console.log({ solidPluginIndex });
+        console.log(build.esbuildPlugins);
+        if (solidPluginIndex !== -1) {
+            const isServer = build.platform === 'node';
+            const override = solidPlugin({
+                solid: {
+                    generate: isServer ? 'ssr' : 'dom',
+                    hydratable: true,
+                },
+            });
+            build.esbuildPlugins![0] = override;
+        }
+
         return build;
     });
+
+    console.log(Object.fromEntries(tsupOptions.map((b) => [JSON.stringify(b.entry), b.esbuildPlugins])));
+
+    return tsupOptions;
 });

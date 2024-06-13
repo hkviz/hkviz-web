@@ -12,7 +12,7 @@ import {
     uiStore,
 } from '@hkviz/viz';
 import { AreaChart, Play, Rocket } from 'lucide-solid';
-import { For, Show, createEffect, createMemo, type Component } from 'solid-js';
+import { For, type JSXElement, Show, createEffect, createMemo, type Component } from 'solid-js';
 import { RelativeDate } from '../datetime/date';
 
 export interface RunOverviewTabProps {
@@ -20,15 +20,10 @@ export interface RunOverviewTabProps {
     startDate: Date | undefined;
     loadingProgress: number;
     loadingDone: boolean;
-    onRunCardWrapperReady: (element: HTMLDivElement) => void;
+    gameplayCard: JSXElement;
 }
 
 export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
-    const runCardWrapper = (<div />) as HTMLDivElement;
-    createEffect(() => {
-        props.onRunCardWrapperReady(runCardWrapper);
-    });
-
     const mainCardTab = uiStore.mainCardTab;
     const recording = gameplayStore.recording;
 
@@ -99,7 +94,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
                             class="w-[300px] space-y-1"
                         />
                     </Expander>
-                    <div class="w-full">{runCardWrapper}</div>
+                    <div class="w-full">{props.gameplayCard}</div>
                     <div class="flex flex-col items-center justify-center gap-2">
                         <div class="">
                             {/* <Button variant="secondary" asChild>

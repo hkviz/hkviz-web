@@ -1,0 +1,23 @@
+import { cn } from '@hkviz/components';
+import { type Component, type JSXElement } from 'solid-js';
+
+export const BottomInteractionRow: Component<{
+    children: JSXElement;
+    isVisible?: boolean;
+    mode?: 'sticky' | 'fixed';
+}> = (props) => {
+    return (
+        <div
+            class={cn(
+                props.mode + ' bg-background bottom-[-1px] left-0 right-0 z-10 border-b border-t p-3 transition-all',
+                props.isVisible ? 'visible opacity-100' : 'invisible translate-y-10 opacity-0',
+            )}
+        >
+            <div class="mx-auto flex max-w-[800px] flex-row items-center gap-2 ">{props.children}</div>
+        </div>
+    );
+};
+
+export const BottomInteractionRowText: Component<{ children?: JSXElement }> = (props) => {
+    return <span class="grow">{props.children}</span>;
+};

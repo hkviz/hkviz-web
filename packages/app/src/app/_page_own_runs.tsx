@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useId, useState } from 'react';
 import type { findRuns } from '~/server/api/routers/run/runs-find';
 import { api } from '~/trpc/react';
-import { BottomInteractionRow, BottomInteractionRowText } from './_components/bottom_interaction';
+import { BottomInteractionRow, BottomInteractionRowText } from '../../../app2/src/components/bottom_interaction';
 import { RunCard } from './_components/run-card';
 
 interface OwnRunsPageProps {

@@ -6,3 +6,5 @@ export * from './room-infos';
 export * from './rendering';
 export * from './time-charts';
 export * from './hkviz-text';
+export * from './img-urls';
+export * from './datetime';
