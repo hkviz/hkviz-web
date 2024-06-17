@@ -5,6 +5,7 @@ import { Suspense } from 'solid-js';
 import './app.css';
 import { MainNav } from './components/main-nav/main-nav';
 import { Footer } from './components/footer';
+import { Toaster } from '@hkviz/components';
 
 export default function App() {
     return (
@@ -17,6 +18,7 @@ export default function App() {
                             <MainNav theme={'dark'} />
                             {props.children}
                             <Footer />
+                            <Toaster />
                         </SessionProvider>
                     </Suspense>
                 </div>

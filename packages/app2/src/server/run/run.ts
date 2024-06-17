@@ -2,11 +2,9 @@ import { v4 as uuidv4 } from 'uuid';
 import { z } from 'zod';
 import { r2FileHead, r2GetSignedUploadUrl, r2RunPartFileKey } from '~/lib/r2';
 
+import { mapZoneSchema, raise } from '@hkviz/parser';
 import { and, eq } from 'drizzle-orm';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
-import { tagSchema } from '~/lib/types/tags';
-import { raise } from '@hkviz/parser';
-import { mapZoneSchema } from '@hkviz/parser';
 import { createTRPCRouter, protectedProcedure, publicProcedure } from '~/server/api/trpc';
 import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
 import { getUserIdFromIngameSession } from '../ingameauth';
@@ -18,44 +16,6 @@ import { deleteRunProcedure, setRunArchivedProcedure } from './run-deletion';
 export const runRouter = createTRPCRouter({
     delete: deleteRunProcedure,
     setArchived: setRunArchivedProcedure,
-    setVisibility: protectedProcedure
-        .input(
-            z.object({
-                id: z.string().uuid(),
-                visibility: z.enum(['public', 'unlisted', 'private']),
-            }),
-        )
-        .mutation(async ({ ctx, input }) => {
-            const userId = ctx.session.user?.id ?? raise(new Error('Not logged in'));
-            const result = await ctx.db
-                .update(runs)
-                .set({ visibility: input.visibility })
-                .where(and(eq(runs.id, input.id), eq(runs.userId, userId)));
-
-            if (result.rowsAffected !== 1) {
-                throw new Error('Run not found');
-            }
-        }),
-    setTag: protectedProcedure
-        .input(
-            z.object({
-                id: z.string().uuid(),
-                code: tagSchema,
-                hasTag: z.boolean(),
-            }),
-        )
-        .mutation(async ({ ctx, input }) => {
-            const userId = ctx.session.user?.id ?? raise(new Error('Not logged in'));
-
-            const result = await ctx.db
-                .update(runs)
-                .set({ [`tag_${input.code}`]: input.hasTag })
-                .where(and(eq(runs.id, input.id), eq(runs.userId, userId)));
-
-            if (result.rowsAffected !== 1) {
-                throw new Error('Could not add tag');
-            }
-        }),
     setTitle: protectedProcedure
         .input(
             z.object({

@@ -5,7 +5,7 @@ import { HKVizText } from '@hkviz/viz-ui';
 import { createSession } from '@solid-mediakit/auth/client';
 import { A, useBeforeLeave } from '@solidjs/router';
 import { BadgeHelp, Globe, LogIn } from 'lucide-solid';
-import { Show, Suspense, createSignal, type Component } from 'solid-js';
+import { ErrorBoundary, Show, Suspense, createSignal, type Component } from 'solid-js';
 import { createLoginUrl } from '~/lib/auth-urls';
 import { CurrentUserDropdown, CurrentUserNavLinks } from './current-user-dropdown';
 import { MenuItem, MenuItemContextProvider } from './main-nav-item';
@@ -57,20 +57,21 @@ export const MainNav: Component<{ theme: Theme }> = (props) => {
                     <MainNavLeftSide />
                 </MenuItemContextProvider>
                 <div class="grow" />
-                {/* <ErrorBoundary fallback={<div>Loading login failed</div>}> */}
-                <Suspense fallback={<div></div>}>
-                    <ThemeSwitcher />
-                    <Show
-                        when={session()}
-                        fallback={
-                            <Button as={'a'} href={loginUrl()} variant="ghost" class="hidden md:inline-flex">
-                                Login
-                            </Button>
-                        }
-                    >
-                        {(session) => <CurrentUserDropdown session={session()} class="hidden md:inline-flex" />}
-                    </Show>
-                </Suspense>
+                <ErrorBoundary fallback={<div>Loading login failed</div>}>
+                    <Suspense fallback={<></>}>
+                        <ThemeSwitcher />
+                        <Show
+                            when={session()}
+                            fallback={
+                                <Button as={'a'} href={loginUrl()} variant="ghost" class="hidden md:inline-flex">
+                                    Login
+                                </Button>
+                            }
+                        >
+                            {(session) => <CurrentUserDropdown session={session()} class="hidden md:inline-flex" />}
+                        </Show>
+                    </Suspense>
+                </ErrorBoundary>
                 <Sheet open={open()} onOpenChange={setOpen}>
                     <SheetTrigger as={Button<'button'>} variant="ghost" class="md:hidden">
                         <Menu class="h-5 w-5" />

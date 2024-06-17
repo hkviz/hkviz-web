@@ -3,7 +3,7 @@ import { type JSXElement, type Component } from 'solid-js';
 
 export type ContentWrapperProps = {
     children: JSXElement;
-    className?: string;
+    class?: string;
     backgroundClassName?: string;
     footerOutOfSight?: boolean;
 };
@@ -31,7 +31,7 @@ export const ContentWrapper: Component<ContentWrapperProps> = (props) => {
                 class={cn(
                     'flex grow flex-col text-black dark:text-white',
                     props.footerOutOfSight ? 'min-h-[100vh-(var(--main-nav-height))]' : '',
-                    props.className,
+                    props.class,
                 )}
             >
                 {props.children}
@@ -41,5 +41,5 @@ export const ContentWrapper: Component<ContentWrapperProps> = (props) => {
 };
 
 export const ContentCenterWrapper: Component<ContentWrapperProps> = (props) => {
-    return <ContentWrapper className="items-center justify-center p-4" {...props} />;
+    return <ContentWrapper class="items-center justify-center p-4" {...props} />;
 };

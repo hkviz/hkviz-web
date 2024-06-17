@@ -2,12 +2,12 @@
 
 import { Button, Checkbox, GradientSeparator } from '@hkviz/components';
 import { type Component, For, Suspense, createSignal, createUniqueId } from 'solid-js';
-import { type findRuns } from '~/server/run/runs-find';
+import { type findRunsInternal } from '~/server/run/_find_runs_internal';
 import { RunCard } from './run-card';
 import { BottomInteractionRow, BottomInteractionRowText } from './bottom_interaction';
 
 interface OwnRunsPageProps {
-    runs: Awaited<ReturnType<typeof findRuns>>;
+    runs: Awaited<ReturnType<typeof findRunsInternal>>;
 }
 
 export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
@@ -73,7 +73,7 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
     const onRunClickIfInCombineMode = inCombineMode ? onRunClick : undefined;
 
     return (
-        <Suspense>
+        <>
             <GradientSeparator />
             <div class="w-full">
                 <div class="mx-auto max-w-[800px]">
@@ -128,6 +128,6 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
                     </Button>
                 </BottomInteractionRow>
             </div>
-        </Suspense>
+        </>
     );
 };

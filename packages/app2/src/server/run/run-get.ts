@@ -1,6 +1,6 @@
 import { raise } from '@hkviz/parser';
 import { db } from '~/server/db';
-import { findRuns, type RunFilter } from './runs-find';
+import { findRunsInternal, type RunFilter } from './_find_runs_internal';
 import { cache } from '@solidjs/router';
 import { assertIsResearcher } from '../researcher';
 import { getUserOrNull } from '../auth';
@@ -15,7 +15,7 @@ export const getRun = cache(async (id: string) => {
 
     const metadata =
         (
-            await findRuns({
+            await findRunsInternal({
                 db,
                 filter: filter,
                 includeFiles: true,

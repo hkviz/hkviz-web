@@ -3,11 +3,11 @@ import { HKVizText } from '@hkviz/viz-ui';
 import { createAsync, type RouteDefinition } from '@solidjs/router';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { OwnRuns } from '~/components/own-runs';
-import { findOwnRuns } from '~/server/run';
+import { findOwnRuns } from '~/server/run/find-own-runs';
 
 export const route: RouteDefinition = {
-    load: async () => {
-        // await findOwnRuns();
+    load: () => {
+        void findOwnRuns();
     },
 };
 
@@ -15,6 +15,7 @@ export default function HomePage() {
     const runs = createAsync(() => findOwnRuns());
     return (
         <ContentCenterWrapper>
+            <title>HKViz for Hollow Knight</title>
             <div class="text-foreground container flex flex-col items-center justify-center gap-12 px-4 py-16">
                 <div class={`max-w-[70ch] text-center`}>
                     <h1 class={`title-text-glow  -mb-6 font-serif text-[5rem] font-bold tracking-tight sm:text-[6rem]`}>

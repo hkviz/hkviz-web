@@ -1,7 +1,7 @@
 import { cache } from '@solidjs/router';
 import { getUserOrNull } from '../auth';
 import { db } from '../db';
-import { findRuns } from './runs-find';
+import { findRunsInternal } from './_find_runs_internal';
 
 export const findOwnRuns = cache(async () => {
     'use server';
@@ -12,7 +12,7 @@ export const findOwnRuns = cache(async () => {
 
     console.log('findOwnRuns', user.id);
 
-    return await findRuns({
+    return await findRunsInternal({
         db,
         currentUser: { id: user.id },
         filter: { userId: user.id, archived: [false] },

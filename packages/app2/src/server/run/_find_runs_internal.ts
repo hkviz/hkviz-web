@@ -47,7 +47,7 @@ export interface FindRunsOptions {
     isAnonymAccess?: boolean;
 }
 
-export async function findRuns({
+export async function findRunsInternal({
     db,
     currentUser,
     filter,
@@ -147,6 +147,18 @@ export async function findRuns({
         },
     });
 
+    // little cache here, just to make the same users have the same references
+    // therefore the serializer can dedupe them.
+    const userRefCache = new Map<string, { name: string; id: string }>();
+    function getOrMakeUser(id: string, name: string) {
+        let user = userRefCache.get(id);
+        if (!user) {
+            user = { id, name };
+            userRefCache.set(id, user);
+        }
+        return user;
+    }
+
     return await Promise.all(
         runs.map(
             async ({
@@ -196,10 +208,10 @@ export async function findRuns({
                         : (Object.entries(run)
                               .filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
                               .map((kv) => kv[0].slice(4)) as TagCode[]),
-                    user: {
-                        id: isResearchView ? '' : run.user.id,
-                        name: isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed player',
-                    },
+                    user: getOrMakeUser(
+                        isResearchView ? '' : run.user.id,
+                        isResearchView ? 'Anonym' : run.user.name ?? 'Unnamed player',
+                    ),
                     startedAt: gameState?.startedAt ?? createdAt,
                     lastPlayedAt: gameState?.endedAt ?? updatedAt,
                     isSteelSoul,
@@ -230,7 +242,7 @@ export async function findRuns({
     // });
 }
 
-export type RunMetadata = Awaited<ReturnType<typeof findRuns>>[number];
+export type RunMetadata = Awaited<ReturnType<typeof findRunsInternal>>[number];
 
 export async function findNewRunId(db: DB, runId: string) {
     return (

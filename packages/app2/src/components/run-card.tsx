@@ -1,4 +1,14 @@
-import { Expander, cn } from '@hkviz/components';
+import {
+    Badge,
+    Button,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+    Expander,
+    cn,
+    showToast,
+} from '@hkviz/components';
 import {
     RelativeDate,
     coin2 as coin2Img,
@@ -13,12 +23,16 @@ import {
     vesselImg,
     vesselSteelSoul as vesselSteelSoulImg,
 } from '@hkviz/viz-ui';
-import { A } from '@solidjs/router';
-import { Index, Match, Show, Switch, createEffect, createSignal, type Component, type JSXElement } from 'solid-js';
-import { visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
+import { A, useAction, useSubmission } from '@solidjs/router';
+import { For, Index, Match, Show, Switch, createEffect, createSignal, type Component, type JSXElement } from 'solid-js';
+import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { type GetRunResult } from '~/server/run/run-get';
-import { type RunMetadata } from '~/server/run/runs-find';
+import { type RunMetadata } from '~/server/run/_find_runs_internal';
 import { getMapZoneHudBackground } from './area-background';
+import { RunTags } from './run-tags';
+import { Dynamic } from 'solid-js/web';
+import { ChevronDown } from 'lucide-solid';
+import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
 
 function Duration({ seconds }: { seconds: number }) {
     const hours = Math.floor(seconds / 60 / 60);
@@ -249,18 +263,19 @@ export const RunCard: Component<{
 
     // set visibility
     const [visibility, setVisibility] = createSignal<VisibilityCode>(props.run.visibility);
-    // const visibilityMutation = api.run.setVisibility.useMutation();
+    const visibilityAction = useAction(runSetVisibilityAction);
+    // const visibilityActionSubmission = useSubmission(runSetVisibilityAction, ([input]) => input.id === props.run.id);
 
     createEffect(() => {
         setVisibility(props.run.visibility);
     });
 
     async function handleVisibilityChange(newVisibility: VisibilityCode) {
-        // setVisibility(newVisibility);
-        // await visibilityMutation.mutateAsync({ id: run.id, visibility: newVisibility });
-        // toast({
-        //     title: 'Successfully set run visibility to ' + visibilityByCode(newVisibility).name,
-        // });
+        setVisibility(newVisibility);
+        await visibilityAction({ id: props.run.id, visibility: newVisibility });
+        showToast({
+            title: 'Successfully set run visibility to ' + visibilityByCode(newVisibility).name,
+        });
     }
 
     const [isRemoved, setIsRemoved] = createSignal(false);
@@ -301,33 +316,33 @@ export const RunCard: Component<{
                 <div class="flex grow flex-col">
                     <div class="-mb-4 flex flex-row items-start justify-end gap-1 sm:-mb-7">
                         {/* TODO add mutations */}
-                        {/* <RunTags
-                            codes={run.tags}
-                            runId={run.id}
-                            isOwn={isOwnRun}
-                            addButtonclass="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
-                            removeButtonclass="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                        <RunTags
+                            codes={props.run.tags}
+                            runId={props.run.id}
+                            isOwn={!!props.isOwnRun}
+                            addButtonClass="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+                            removeButtonClass="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
                         />
-                        {isOwnRun && (
+                        <Show when={props.isOwnRun}>
                             <DropdownMenu>
-                                <DropdownMenuTrigger class="inline-flex">
-                                    <Badge class="relative z-[8] overflow-hidden" variant="secondary">
-                                        <VisibilityIcon class="h-4 w-4" />
+                                <DropdownMenuTrigger as={Button<'button'>} class="inline-flex h-auto p-0">
+                                    <Badge class={'relative z-[8] overflow-hidden'} variant="secondary">
+                                        <Dynamic component={VisibilityIcon()} class="h-4 w-4" />
                                         <ChevronDown class="-mr-1 ml-1 h-3 w-3" />
                                     </Badge>
                                 </DropdownMenuTrigger>
-                                <DropdownMenuContent class="w-56">
-                                    <DropdownMenuGroup>
-                                        {visibilities.map(({ name, Icon, code }) => (
-                                            <DropdownMenuItem key={code} onClick={() => handleVisibilityChange(code)}>
-                                                <Icon class="mr-2 h-4 w-4" />
-                                                <span>{name}</span>
+                                <DropdownMenuContent class="w-32">
+                                    <For each={visibilities}>
+                                        {(visibility) => (
+                                            <DropdownMenuItem onClick={() => handleVisibilityChange(visibility.code)}>
+                                                <Dynamic component={visibility.Icon} class="mr-2 h-4 w-4" />
+                                                <span>{visibility.name}</span>
                                             </DropdownMenuItem>
-                                        ))}
-                                    </DropdownMenuGroup>
+                                        )}
+                                    </For>
                                 </DropdownMenuContent>
                             </DropdownMenu>
-                        )} */}
+                        </Show>
                     </div>
                     <div class="flex flex-grow flex-row">
                         <div class="relative z-[3] -mb-5 h-[7rem] w-[4rem] shrink-0 origin-top-left scale-75 sm:mb-0 sm:w-[6.5rem] sm:scale-100">

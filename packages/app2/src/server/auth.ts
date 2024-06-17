@@ -11,6 +11,7 @@ import { getWebRequest } from 'vinxi/http';
 import { cache } from '@solidjs/router';
 
 export const authOptions: SolidAuthConfig = {
+    basePath: '/api/auth',
     callbacks: {
         session: ({ session, user }) => ({
             ...session,
