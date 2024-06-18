@@ -417,13 +417,13 @@ importers:
         version: 1.11.0
       '@solid-mediakit/auth':
         specifier: ^2.0.11
-        version: 2.0.11(@auth/core@0.31.0)(@solidjs/meta@0.29.4)(@solidjs/router@0.13.3)(@solidjs/start@1.0.0)(solid-js@1.8.17)(vinxi@0.3.11)
+        version: 2.0.11(@auth/core@0.31.0)(@solidjs/meta@0.29.4)(@solidjs/router@0.13.6)(@solidjs/start@1.0.1)(solid-js@1.8.17)(vinxi@0.3.11)
       '@solidjs/router':
-        specifier: ^0.13.3
-        version: 0.13.3(solid-js@1.8.17)
+        specifier: ^0.13.6
+        version: 0.13.6(solid-js@1.8.17)
       '@solidjs/start':
-        specifier: ^1.0.0
-        version: 1.0.0(solid-js@1.8.17)(vinxi@0.3.11)(vite@5.2.11)
+        specifier: ^1.0.1
+        version: 1.0.1(solid-js@1.8.17)(vinxi@0.3.11)(vite@5.2.11)
       '@tailwindcss/container-queries':
         specifier: ^0.1.1
         version: 0.1.1(tailwindcss@3.4.3)
@@ -457,6 +457,18 @@ importers:
       postcss:
         specifier: ^8.4.38
         version: 8.4.38
+      rehype-autolink-headings:
+        specifier: ^7.1.0
+        version: 7.1.0
+      rehype-slug:
+        specifier: ^6.0.0
+        version: 6.0.0
+      remark-gfm:
+        specifier: ^4.0.0
+        version: 4.0.0
+      remark-toc:
+        specifier: ^9.0.0
+        version: 9.0.0
       simple-icons:
         specifier: ^12.0.0
         version: 12.0.0
@@ -4965,7 +4977,7 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@solid-mediakit/auth@2.0.11(@auth/core@0.31.0)(@solidjs/meta@0.29.4)(@solidjs/router@0.13.3)(@solidjs/start@1.0.0)(solid-js@1.8.17)(vinxi@0.3.11):
+  /@solid-mediakit/auth@2.0.11(@auth/core@0.31.0)(@solidjs/meta@0.29.4)(@solidjs/router@0.13.6)(@solidjs/start@1.0.1)(solid-js@1.8.17)(vinxi@0.3.11):
     resolution: {integrity: sha512-oo5BKqsWLbpK++R97mf9z5xc56zIO70hJQeOBRIsEVrZRa07GQEwzLJdmYZpbDzoHInjBtCjLAEp//PkY2LiJA==}
     engines: {node: '>=16'}
     peerDependencies:
@@ -4979,8 +4991,8 @@ packages:
       '@auth/core': 0.31.0
       '@solid-mediakit/shared': 0.0.3
       '@solidjs/meta': 0.29.4(solid-js@1.8.17)
-      '@solidjs/router': 0.13.3(solid-js@1.8.17)
-      '@solidjs/start': 1.0.0(solid-js@1.8.17)(vinxi@0.3.11)(vite@5.2.11)
+      '@solidjs/router': 0.13.6(solid-js@1.8.17)
+      '@solidjs/start': 1.0.1(solid-js@1.8.17)(vinxi@0.3.11)(vite@5.2.11)
       cookie: 0.6.0
       set-cookie-parser: 2.6.0
       solid-js: 1.8.17
@@ -5114,16 +5126,16 @@ packages:
       solid-js: 1.8.17
     dev: false
 
-  /@solidjs/router@0.13.3(solid-js@1.8.17):
-    resolution: {integrity: sha512-p8zznlvnN3KySMXqT8irhubgDNTETNa/guaGHU/cZl7kuiPO3PmkWNYfoNCygtEpoxLmLpf62/ZKeyhFdZexsw==}
+  /@solidjs/router@0.13.6(solid-js@1.8.17):
+    resolution: {integrity: sha512-CdpFsBYoiJ/FQ4wZIamj3KEFRkmrYu5sVXM6PouNkmSENta1YJamsm9wa/VjaPmkw2RsnDnO0UvZ705v6EgOXQ==}
     peerDependencies:
       solid-js: ^1.8.6
     dependencies:
       solid-js: 1.8.17
     dev: false
 
-  /@solidjs/start@1.0.0(solid-js@1.8.17)(vinxi@0.3.11)(vite@5.2.11):
-    resolution: {integrity: sha512-N+Zlb5hrYkOcYecBfKOtJ3jW1DRVNRJnHDsiljSbWefgdncJTvmcnVBr8rjqp898bDHyDo0c7iFdGrhKFEv06A==}
+  /@solidjs/start@1.0.1(solid-js@1.8.17)(vinxi@0.3.11)(vite@5.2.11):
+    resolution: {integrity: sha512-W29OlcJewXUehvDu5Lf+w8hQRiRMdMGaNUwMhnR3neqPxwdZf0LPPPVGyHxZHk4375HdcdBXHuvrOI+xv8Xrcg==}
     dependencies:
       '@vinxi/plugin-directives': 0.3.1(vinxi@0.3.11)
       '@vinxi/server-components': 0.3.3(vinxi@0.3.11)
@@ -5136,7 +5148,7 @@ packages:
       seroval: 1.0.5
       seroval-plugins: 1.0.5(seroval@1.0.5)
       shikiji: 0.9.19
-      source-map-js: 1.0.2
+      source-map-js: 1.2.0
       terracotta: 1.0.5(solid-js@1.8.17)
       vite-plugin-inspect: 0.7.42(vite@5.2.11)
       vite-plugin-solid: 2.10.2(solid-js@1.8.17)(vite@5.2.11)
@@ -5947,10 +5959,10 @@ packages:
       vinxi: ^0.3.10
     dependencies:
       '@babel/parser': 7.24.5
-      acorn: 8.11.2
-      acorn-jsx: 5.3.2(acorn@8.11.2)
+      acorn: 8.11.3
+      acorn-jsx: 5.3.2(acorn@8.11.3)
       acorn-loose: 8.4.0
-      acorn-typescript: 1.4.13(acorn@8.11.2)
+      acorn-typescript: 1.4.13(acorn@8.11.3)
       astring: 1.8.6
       magicast: 0.2.11
       recast: 0.23.7
@@ -5977,9 +5989,9 @@ packages:
       vinxi: ^0.3.10
     dependencies:
       '@vinxi/plugin-directives': 0.3.1(vinxi@0.3.11)
-      acorn: 8.11.2
+      acorn: 8.11.3
       acorn-loose: 8.4.0
-      acorn-typescript: 1.4.13(acorn@8.11.2)
+      acorn-typescript: 1.4.13(acorn@8.11.3)
       astring: 1.8.6
       magicast: 0.2.11
       recast: 0.23.7
@@ -5992,9 +6004,9 @@ packages:
       vinxi: ^0.3.10
     dependencies:
       '@vinxi/plugin-directives': 0.3.1(vinxi@0.3.11)
-      acorn: 8.11.2
+      acorn: 8.11.3
       acorn-loose: 8.4.0
-      acorn-typescript: 1.4.13(acorn@8.11.2)
+      acorn-typescript: 1.4.13(acorn@8.11.3)
       astring: 1.8.6
       magicast: 0.2.11
       recast: 0.23.7
@@ -6154,19 +6166,27 @@ packages:
     dependencies:
       acorn: 8.11.2
 
+  /acorn-jsx@5.3.2(acorn@8.11.3):
+    resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
+    peerDependencies:
+      acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
+    dependencies:
+      acorn: 8.11.3
+    dev: false
+
   /acorn-loose@8.4.0:
     resolution: {integrity: sha512-M0EUka6rb+QC4l9Z3T0nJEzNOO7JcoJlYMrBlyBCiFSXRyxjLKayd4TbQs2FDRWQU1h9FR7QVNHt+PEaoNL5rQ==}
     engines: {node: '>=0.4.0'}
     dependencies:
-      acorn: 8.11.2
+      acorn: 8.11.3
     dev: false
 
-  /acorn-typescript@1.4.13(acorn@8.11.2):
+  /acorn-typescript@1.4.13(acorn@8.11.3):
     resolution: {integrity: sha512-xsc9Xv0xlVfwp2o7sQ+GCQ1PgbkdcpWdTzrwXxO3xDMTAywVS3oXVOcOHuRjAPkS4P9b+yc/qNF15460v+jp4Q==}
     peerDependencies:
       acorn: '>=8.9.0'
     dependencies:
-      acorn: 8.11.2
+      acorn: 8.11.3
     dev: false
 
   /acorn@8.11.2:

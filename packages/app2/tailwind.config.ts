@@ -11,6 +11,7 @@ export default {
         '../viz/src/**/*.{ts,tsx}',
         '../viz-ui/src/**/*.{ts,tsx}',
         '../components/src/**/*.{ts,tsx}',
+        './app.config.ts',
     ],
     theme: {
         container: {

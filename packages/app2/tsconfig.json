@@ -11,10 +11,13 @@
         "strict": true,
         "noEmit": true,
         "types": ["vinxi/types/client"],
+        "declarationMap": false,
         "isolatedModules": true,
         "skipLibCheck": true,
         "paths": {
-            "~/*": ["./src/*"]
+            "~/*": ["./src/*"],
+            "solid-mdx": ["./node_modules/solid-mdx/types/index.d.ts"],
+            "@vinxi/plugin-mdx": ["./node_modules/@vinxi/plugin-mdx/dist/index.d.ts"]
         }
     }
 }
