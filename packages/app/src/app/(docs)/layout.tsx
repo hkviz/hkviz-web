@@ -3,7 +3,7 @@ import { Separator } from '@/components/ui/separator';
 import { Cookie, Download, Map, UsersRound } from 'lucide-react';
 import { HKVizText } from '../_components/hkviz-text';
 import { SubMenuLink } from '../_components/main-nav-item';
-import { MdxOuterWrapper } from '../_components/mdx-layout';
+import { MdxOuterWrapper } from '../../../../app2/src/components/mdx-layout';
 import { TOCProvider } from './_content_sidebar';
 
 function SubMenuSectionTitle({ children }: { children: React.ReactNode }) {

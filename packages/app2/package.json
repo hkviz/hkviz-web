@@ -28,7 +28,7 @@
         "@planetscale/database": "^1.11.0",
         "@solid-mediakit/auth": "^2.0.11",
         "@solidjs/router": "^0.13.3",
-        "@solidjs/start": "^1.0.0",
+        "@solidjs/start": "^1.0.1",
         "@tailwindcss/container-queries": "^0.1.1",
         "@tailwindcss/typography": "^0.5.10",
         "@vinxi/plugin-mdx": "^3.7.1",

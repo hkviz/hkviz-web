@@ -1,12 +1,5 @@
-import { MailLinkUnstyled } from '../../_components/mail-link';
-import { MdxInnerWrapper } from '../../_components/mdx-layout';
-
-export const metadata = {
-    title: 'Privacy policy - HKViz',
-    alternates: {
-        canonical: '/privacy-policy',
-    },
-};
+import { MailLinkUnstyled } from '../../components/mail-link';
+import { MdxInnerWrapper } from '../../components/mdx-layout';
 
 # HKViz Privacy Policy
 
@@ -160,7 +153,3 @@ Email us at: <MailLinkUnstyled />
 ## How to contact the appropriate authority
 
 Should you wish to report a complaint or if you feel that we have not addressed your concern in a satisfactory manner, you may contact the Austrian Data Protection Authority (Datenschutzbehörde) at [www.dsb.gv.at](https://www.dsb.gv.at/).
-
-export default function MDXPage({ children }) {
-    return <MdxInnerWrapper>{children}</MdxInnerWrapper>;
-}

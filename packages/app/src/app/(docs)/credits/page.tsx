@@ -1,5 +1,5 @@
 import { type Metadata } from 'next';
-import { MdxInnerWrapper } from '../../_components/mdx-layout';
+import { MdxInnerWrapper } from '../../../../../app2/src/components/mdx-layout';
 import Mdx from './_page.mdx';
 
 export const metadata: Metadata = {

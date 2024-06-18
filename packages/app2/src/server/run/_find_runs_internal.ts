@@ -122,9 +122,8 @@ export async function findRunsInternal({
                 : {
                       columns: {
                           id: true,
-                          partNumber: true,
-                          uploadFinished: true,
                           version: true,
+                          // TODO remove once anonym access is removed
                           createdAt: true,
                       },
                       // should pretty much always sort by playTime, if it does not exist in the meta data

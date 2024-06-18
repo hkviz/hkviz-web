@@ -14,21 +14,6 @@
         "incremental": true,
         "noEmit": true
     },
-    "include": [
-        ".eslintrc.cjs",
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx",
-        "**/*.cjs",
-        "**/*.mjs",
-        ".next/types/**/*.ts",
-        "../app2/src/components/content-wrapper.tsx",
-        "../app2/src/components/footer.tsx",
-        "../app2/src/components/socials-links.tsx",
-        "../components/src/additions/gradient-separator.tsx",
-        "../app2/src/components/bottom_interaction.tsx",
-        "../app2/src/components/run-card-dropdown.tsx",
-        "../app2/src/routes/run/_page.tsx"
-    ],
+    "include": [".eslintrc.cjs", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", ".next/types/**/*.ts"],
     "exclude": ["node_modules"]
 }

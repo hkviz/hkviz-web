@@ -1,7 +1,7 @@
 import { createRunFileLoader } from '@hkviz/viz';
 import { GameplayDashboard } from '@hkviz/viz-ui';
 import { RouteSectionProps, createAsync, useParams } from '@solidjs/router';
-import { Show, createMemo } from 'solid-js';
+import { Show, Suspense, createMemo } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card';
 import { getRun } from '~/server/run/run-get';
