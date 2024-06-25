@@ -5,6 +5,7 @@ import { Show, Suspense, createMemo } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card';
 import { getRun } from '~/server/run/run-get';
+import { getRunPageTitle } from './_metadata';
 
 interface Params {
     id: string;
@@ -31,12 +32,15 @@ export default function SingleRunPage({ params }: RouteSectionProps) {
         <ContentWrapper footerOutOfSight={true}>
             <Show when={runData()}>
                 {(runData) => (
-                    <GameplayDashboard
-                        startDate={runData().startedAt}
-                        fileInfos={runData().files}
-                        runFileLoader={loader()!}
-                        gameplayCard={<RunCard run={runData()} showUser={true} />}
-                    />
+                    <>
+                        <title>{getRunPageTitle(runData())}</title>
+                        <GameplayDashboard
+                            startDate={runData().startedAt}
+                            fileInfos={runData().files}
+                            runFileLoader={loader()!}
+                            gameplayCard={<RunCard run={runData()} showUser={true} />}
+                        />
+                    </>
                 )}
             </Show>
         </ContentWrapper>

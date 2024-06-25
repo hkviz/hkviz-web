@@ -1,6 +1,17 @@
 const CACHE_NAME = 'run-file-cache';
 
-export function fetchWithRunfileCache(fileId: string, version: number, signedUrl: string) {
+export async function openRunfileCache(): Promise<Cache | null> {
+    if (!window.caches) return null;
+    console.log('Opening cache');
+    return window.caches.open(CACHE_NAME);
+}
+
+export async function fetchWithRunfileCache(
+    cache: Promise<Cache | null>,
+    fileId: string,
+    version: number,
+    signedUrl: string,
+) {
     const request = new Request(`https://run-file-cache.internal/${fileId}/${version}`);
 
     function fetchFromServer(cache: Cache | null) {
@@ -11,17 +22,16 @@ export function fetchWithRunfileCache(fileId: string, version: number, signedUrl
         });
     }
 
-    if (!window.caches) return fetchFromServer(null);
+    const cache_ = await cache;
+    if (!cache_) return fetchFromServer(null);
 
-    return window.caches.open(CACHE_NAME).then((cache) => {
-        return cache.match(request).then((response) => {
-            if (response) {
-                // console.log(`${request.url} found in local cache`);
-                return response;
-            }
-            // console.log(`No response for ${request.url} found in cache`);
+    return cache_.match(request).then((response) => {
+        if (response) {
+            // console.log(`${request.url} found in local cache`);
+            return response;
+        }
+        // console.log(`No response for ${request.url} found in cache`);
 
-            return fetchFromServer(cache);
-        });
+        return fetchFromServer(cache_);
     });
 }
