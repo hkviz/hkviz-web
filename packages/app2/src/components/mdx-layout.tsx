@@ -22,12 +22,12 @@ export function MdxOuterWrapper(props: { children: JSXElement }) {
     return (
         <MDXProvider
             components={{
-                h1: (props) => <h1 {...props} class={cn(largeHeaderClasses, props.className)} />,
-                h2: (props) => <h2 {...props} class={cn(largeHeaderClasses, props.className, 'mb-[.5em] text-4xl')} />,
-                h3: (props) => <h3 {...props} class={cn(largeHeaderClasses, props.className)} />,
-                h4: (props) => <h3 {...props} class={cn(smallHeaderClasses, props.className)} />,
-                h5: (props) => <h3 {...props} class={cn(smallHeaderClasses, props.className)} />,
-                h6: (props) => <h3 {...props} class={cn(smallHeaderClasses, props.className)} />,
+                h1: (props) => <h1 {...props} class={cn(largeHeaderClasses, props.class)} />,
+                h2: (props) => <h2 {...props} class={cn(largeHeaderClasses, props.class, 'mb-[.5em] text-4xl')} />,
+                h3: (props) => <h3 {...props} class={cn(largeHeaderClasses, props.class)} />,
+                h4: (props) => <h3 {...props} class={cn(smallHeaderClasses, props.class)} />,
+                h5: (props) => <h3 {...props} class={cn(smallHeaderClasses, props.class)} />,
+                h6: (props) => <h3 {...props} class={cn(smallHeaderClasses, props.class)} />,
             }}
         >
             <ContentWrapper backgroundClass="dark:opacity-40 opacity-20">{props.children}</ContentWrapper>

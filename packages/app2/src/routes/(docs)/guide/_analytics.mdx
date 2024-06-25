@@ -1,12 +1,17 @@
-import { LayoutDashboard, Mouse, Palette, Pin, Spline, Tent } from 'lucide-react';
-import Link from 'next/link';
-import { ExternalLinkMdx } from '../../../_components/external-link';
-import { FloatClear } from '../../../_components/float';
-import { HKVizText } from '../../../_components/hkviz-text';
-import { MailLinkUnstyled } from '../../../_components/mail-link';
-import { MdxInnerWrapper } from '../../../_components/mdx-layout';
-import { SpoilerWarningEarlyGame } from '../../_spoiler_warning';
-import { LinkableSpan } from './_linkable_paragraph';
+import { HKVizText } from '@hkviz/viz-ui';
+import { LayoutDashboard, Mouse, Palette, Pin, Spline, Tent } from 'lucide-solid';
+import { ExternalLinkMdx } from '../../../components/external-link';
+import { FloatClear } from '../../../components/float';
+import { MailLinkUnstyled } from '../../../components/mail-link';
+import { MdxInnerWrapper } from '../../../components/mdx-layout';
+import { SpoilerWarningEarlyGame } from '../_spoiler_warning';
+import { LinkableSpan } from './_analytics/_linkable_paragraph';
+import {
+    TimelineColorCodesTable,
+    SplitActionsTable,
+    TimeBasedChartActionsTable,
+    TimelineTable,
+} from './_analytics/_tables';
 import {
     BuildingsColormapScreenshot,
     ColorModeAreaScreenshot,
@@ -30,12 +35,11 @@ import {
     TracesAllScreenshot,
     TracesAnimatedScreenshot,
     TracesNoneScreenshot,
-} from './_screenshots';
-import { SplitsList } from './_splits-list';
-import { SpoilerWrapper } from './_spoiler-wrapper';
-import { ReflowCell, ReflowCellHeader, ReflowRow } from './_table-like';
-import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_videos';
-
+} from './_analytics/_screenshots';
+import { SplitsList } from './_analytics/_splits-list';
+import { SpoilerWrapper } from './_analytics/_spoiler-wrapper';
+import { ReflowCell, ReflowCellHeader, ReflowRow } from './_analytics/_table-like';
+import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_analytics/_videos';
 import {
     GeoChartDocIcon,
     GeoChartDocVars,
@@ -49,30 +53,23 @@ import {
     HealthChartDocVars,
     SoulChartDocIcon,
     SoulChartDocVars,
-} from './_chart-docs.tsx';
-
-import { AggregationVariableDoc } from './_aggregation-variable-doc';
-
-export const metadata = {
-    title: 'Analytics guide - HKViz',
-    alternates: {
-        canonical: '/guides/visualizations',
-    },
-};
+} from './_analytics/_chart-docs.tsx';
+import { AggregationVariableDoc } from './_analytics/_aggregation-variable-doc';
+import { A } from '@solidjs/router';
 
 # How to analyze a gameplay with the <HKVizText /> visualizations
 
 <SpoilerWarningEarlyGame />
 
 Here you learn how to use the different parts of the <HKVizText /> gameplay analytics page.
-It is accessible by clicking on one of your gameplays on the <Link href="/">start page</Link> or by viewing a gameplay from the <Link href="/run">public gameplays page</Link>.
+It is accessible by clicking on one of your gameplays on the <A href="/">start page</A> or by viewing a gameplay from the <A href="/run">public gameplays page</A>.
 
 If you want to learn how to record the analytics while playing {<ExternalLinkMdx href="https://hollowknight.com">Hollow Knight</ExternalLinkMdx>}
-checkout the <Link href="/guide/install">mod install guide</Link>
+checkout the <A href="/guide/install">mod install guide</A>
 
 ## Overview
 
-<Mouse className="inline-block h-4 w-4" /> Click on the section you want to know more about:
+<Mouse class="inline-block h-4 w-4" /> Click on the section you want to know more about:
 
 <OverviewScreenshot />
 
@@ -84,7 +81,7 @@ The map forms the center of the analytics page. It is very similar to the in-gam
 
 The map is able to display player movement as traces, show which rooms are visited and allows displaying other information by recoloring the map itself.
 
-### <Spline className="w-4 h-4 mr-2 inline-block"/>Player movement and traces
+### <Spline class="w-4 h-4 mr-2 inline-block"/>Player movement and traces
 
 <ReflowRow>
     <ReflowCell>
@@ -105,7 +102,7 @@ The map is able to display player movement as traces, show which rooms are visit
 
 </ReflowRow>
 
-### <LayoutDashboard className="w-4 h-4 mr-2 inline-block"/>Room visibility
+### <LayoutDashboard class="w-4 h-4 mr-2 inline-block"/>Room visibility
 
 The room visibility option within the map options controls which rooms are shown on the map.
 You can choose between three options:
@@ -135,7 +132,7 @@ You can choose between three options:
 
 </ReflowRow>
 
-### <Palette className="w-5 h-5 mr-2 inline-block"/>Map coloring by variables
+### <Palette class="w-5 h-5 mr-2 inline-block"/>Map coloring by variables
 
 <RoomAnalyticsScreenshot />
 
@@ -153,18 +150,18 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
 
     {' '}
 
-    <Pin className="inline-block h-4 w-4" aria-label="Pin" />
+    <Pin class="inline-block h-4 w-4" aria-label="Pin" />
     -button in the room analytics panel or by clicking a room on the map. Rooms can also be pinned by clicking on the color
     code at the bottom of the <a href="#timeline">timeline</a> or by double clicking on a <a href="#splits">split</a>.
 
     </LinkableSpan>}
 
 3.  **Select a variable for coloring**:
-    Click the <Palette className="inline-block h-4 w-4" aria-label="Color" />
+    Click the <Palette class="inline-block h-4 w-4" aria-label="Color" />
     -button in the room's info panel. This lets you pick which stat to use for coloring.
 
 4.  **Color scales**:
-    By clicking the <Palette className="inline-block h-4 w-4" aria-label="Color" />
+    By clicking the <Palette class="inline-block h-4 w-4" aria-label="Color" />
     -button a few times you can select a color scale.
 
 #### Color scales:
@@ -174,14 +171,14 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
         <ReflowCellHeader>Linear color scale</ReflowCellHeader>
         <ColorModeLinearTableScreenshot />
         <ColorModeLinearScreenshot />
-        The first click on the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button will color the map by the selected variable using a linear color scale.
+        The first click on the <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button will color the map by the selected variable using a linear color scale.
         This works best for variables like the first visiting time since the values are likely distributed relatively evenly.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>Exponential color scale</ReflowCellHeader>
         <ColorModeExpTableScreenshot />
         <ColorModeExpScreenshot />
-        A second click on the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button will switch to an exponential color scale.
+        A second click on the <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button will switch to an exponential color scale.
 
         For many variables, there will be a small number of rooms with a high value and a large number of rooms with a low values.
         Using an exponential color scale will make the differences in the low values more visible.
@@ -191,18 +188,18 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
         <ReflowCellHeader>Area color</ReflowCellHeader>
         <ColorModeAreaTableScreenshot />
         <ColorModeAreaScreenshot />
-        Clicking the <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button a third time will switch back to color the map by the area the room is in, i.e. how the map is colored in the game.
+        Clicking the <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button a third time will switch back to color the map by the area the room is in, i.e. how the map is colored in the game.
     </ReflowCell>
 
 </ReflowRow>
 
-Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette className="w-4 h-4 inline-block" aria-label="Color" />-button.
+Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button.
 
 #### Availible stats:
 
 <AggregationVariableDoc />
 
-### <Tent className="w-5 h-5 mr-2 inline-block" />Special rooms
+### <Tent class="w-5 h-5 mr-2 inline-block" />Special rooms
 
 The map in <HKVizText /> has a few modifications compared to the in-game map, to allow to analyze the gameplay in more areas.
 Like added maps for Godhome, White Palace and Birthplace. Additionally a few other modifications have been made:
@@ -302,11 +299,7 @@ By toggling the checkboxes corresponding to the event types, the splits can be f
 
 **Splits actions**
 
-| Shortcut     | Action                                                                                                                                   |
-| ------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| Hover        | Shows a marker for the split on the <a href="#timeline">timeline</a> and highlights the room of the split on the <a href="#map">map</a>. |
-| Click        | Jump to the timepoint of a split and change the selected room of the room analytics panel to the room of the split                       |
-| Double click | <a href="#room-pin"><Pin className="w-4 h-4 inline-block" /> Pin the room</a> of a split                                                 |
+<SplitActionsTable />
 
 ## Time-based charts
 
@@ -317,11 +310,7 @@ additionally the room the player is in is highlighted on the map while hovering 
 
 **Time-based chart actions**
 
-| Shortcut                     | Action                                                  |
-| ---------------------------- | ------------------------------------------------------- |
-| Ctrl + Click or Click + Hold | Move the timeline to the timepoint hovered on the chart |
-| Drag from left to right      | zoom into the selected timespan                         |
-| Click                        | Zoom out                                                |
+<TimeBasedChartActionsTable />
 
 <FloatClear />
 
@@ -404,18 +393,8 @@ This can make it easier to find the time a specific area was visited.
 
 **Timeline slider shortcuts**
 
-| Shortcut     | Action                                                                                                              |
-| ------------ | ------------------------------------------------------------------------------------------------------------------- |
-| Shift + Drag | More precisely drag on the timeline.The slider moves 10 times slower, making it easier to find a certain timestamp. |
+<TimelineTable />
 
 **Timeline color code shortcuts**
 
-| Shortcut     | Action                                                                                                  |
-| ------------ | ------------------------------------------------------------------------------------------------------- |
-| Click        | Jump to the timepoint of the color code                                                                 |
-| Hover        | Change selected room, if not pinned                                                                     |
-| Double Click | Toggle if the selected <a href="#room-pin">room is pinned. <Pin className="w-4 h-4 inline-block" /></a> |
-
-export default function MDXPage({ children }) {
-    return <MdxInnerWrapper>{children}</MdxInnerWrapper>;
-}
+<TimelineColorCodesTable />

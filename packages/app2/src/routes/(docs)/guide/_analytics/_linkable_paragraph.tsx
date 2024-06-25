@@ -1,25 +1,19 @@
-'use client';
-import { cn } from '@/lib/utils';
-import { useEffect, useRef, useState, type ReactNode } from 'react';
+import { cn } from '@hkviz/components';
+import { createEffect, createSignal, type JSXElement } from 'solid-js';
 
-export function LinkableSpan({
-    children,
-    id,
-    className,
-    initialScrollMargin,
-}: {
-    children: ReactNode;
+export function LinkableSpan(props: {
+    children: JSXElement;
     id: string;
-    className?: string;
+    class?: string;
     initialScrollMargin?: number;
 }) {
-    const [scrollMargin, setScrollMargin] = useState(initialScrollMargin ?? 0);
-    const ref = useRef<HTMLSpanElement>(null);
+    const [scrollMargin, setScrollMargin] = createSignal(props.initialScrollMargin ?? 0);
+    let ref!: HTMLSpanElement;
 
-    useEffect(() => {
+    createEffect(() => {
         function calcScrollMargin() {
             // searches for a tag which is a heading in its parent, and parents parent
-            let previousHeading: Element | null = ref.current;
+            let previousHeading: Element | null = ref;
             while (previousHeading && !['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(previousHeading.tagName)) {
                 previousHeading =
                     previousHeading.previousElementSibling ??
@@ -29,7 +23,7 @@ export function LinkableSpan({
 
             // if a heading is found, set the scroll margin to the distance between the heading and the linkable paragraph
             const headingRect = previousHeading?.getBoundingClientRect();
-            const refRect = ref.current?.getBoundingClientRect();
+            const refRect = ref?.getBoundingClientRect();
             if (headingRect && refRect) {
                 setScrollMargin(Math.max(refRect.top - headingRect.top, 0));
             }
@@ -44,19 +38,17 @@ export function LinkableSpan({
 
     return (
         <span
-            id={id}
+            id={props.id}
             ref={ref}
-            className={cn(
+            class={cn(
                 'linkable-paragraph scroll-mt-[var(--scroll-margin-top)] target:bg-amber-400 target:bg-opacity-70 dark:target:bg-opacity-30',
-                className,
+                props.class,
             )}
-            style={
-                {
-                    scrollMarginTop: `calc(${scrollMargin}px + var(--scroll-margin-top))`,
-                } as React.CSSProperties
-            }
+            style={{
+                'scroll-margin-top': `calc(${scrollMargin()}px + var(--scroll-margin-top))`,
+            }}
         >
-            {children}
+            {props.children}
         </span>
     );
 }

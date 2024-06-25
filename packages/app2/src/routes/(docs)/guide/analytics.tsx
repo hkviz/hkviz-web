@@ -1,10 +1,10 @@
 import { MdxInnerWrapper } from '~/components/mdx-layout';
-import Mdx from './_install.mdx';
+import Mdx from './_analytics.mdx';
 
-export default function InstallGuidePage() {
+export default function AnalyticsGuidePage() {
     return (
         <MdxInnerWrapper>
-            <title>Install guide - HKViz</title>
+            <title>Analytics guide - HKViz</title>
             <Mdx />
         </MdxInnerWrapper>
     );

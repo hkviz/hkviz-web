@@ -11,7 +11,7 @@ export const ChartDocVars: Component<{ variables: LineChartVariableDescription[]
                 <CardHeader class="pb-2 pt-2">
                     <b>Variables</b>
                 </CardHeader>
-                <CardContent>
+                <CardContent class="pb-0">
                     <Ul>
                         <For each={props.variables}>
                             {(it) => (

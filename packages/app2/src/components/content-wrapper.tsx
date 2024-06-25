@@ -14,6 +14,7 @@ export const ContentWrapper: Component<ContentWrapperProps> = (props) => {
     // similar to lifeblood menu style: from-[#4585bc] to-[#06111d]
     return (
         <div
+            data-content-wrapper
             class={cn(
                 'relative flex grow flex-col',
                 props.footerOutOfSight

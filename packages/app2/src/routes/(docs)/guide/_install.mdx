@@ -1,16 +1,9 @@
-import Link from 'next/link';
-import { ExternalLinkMdx } from '../../../_components/external-link';
-import { HKVizText } from '../../../_components/hkviz-text';
-import { MailLinkUnstyled } from '../../../_components/mail-link';
-import { MdxInnerWrapper } from '../../../_components/mdx-layout';
-import { HOLLOW_KNIGHT_MODDING_DISCORD_URL } from '../../../_components/socials-links';
-
-export const metadata = {
-    title: 'Install guide - HKViz',
-    alternates: {
-        canonical: '/guides/install',
-    },
-};
+import { A } from '@solidjs/router';
+import { ExternalLinkMdx } from '../../../components/external-link';
+import { HKVizText } from '@hkviz/viz-ui';
+import { MailLinkUnstyled } from '../../../components/mail-link';
+import { MdxInnerWrapper } from '../../../components/mdx-layout';
+import { HOLLOW_KNIGHT_MODDING_DISCORD_URL } from '../../../components/socials-links';
 
 # How to use the <HKVizText />-mod to record analytics of your gameplays
 
@@ -64,7 +57,7 @@ Click on it and follow the steps to create an account.
 ## 5. Start playing HollowKnight
 
 Once logged in you can start playing HollowKnight. The mod will automatically record your gameplay, and upload it to <HKVizText />.
-You can view your gameplay on <Link href="/">the start page</Link>.
+You can view your gameplay on <A href="/">the start page</A>.
 
 The mod uploads analytics roughly every 5 minutes, so your gameplay might not be visible immediately.
 When you go back to the main menu of HollowKnight, the mod will upload the last bit of gameplay,
@@ -88,7 +81,3 @@ Additionally, the login button does not currently work, while in game mode.
 -   Then you can login to <HKVizText /> from the main menu of HollowKnight.
 -   After the login, close HollowKnight and switch back to game mode.
 -   Playing HollowKnight and using the mod now should work as expected.
-
-export default function MDXPage({ children }) {
-    return <MdxInnerWrapper>{children}</MdxInnerWrapper>;
-}

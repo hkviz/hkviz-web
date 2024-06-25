@@ -1,27 +1,27 @@
-import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@hkviz/components';
 import { recordingSplitGroups } from '@hkviz/parser';
 import { splitColors } from '@hkviz/viz';
-import { Li, Ul } from '~/app/_components/list';
+import { Li, Ul } from '@hkviz/viz-ui';
+import { For } from 'solid-js';
 
 export function SplitsList() {
     return (
-        <div className="not-prose block md:flex">
+        <div class="not-prose block md:flex">
             <Card>
-                <CardHeader className="pb-2 pt-2">
+                <CardHeader class="pb-2 pt-2">
                     <b>Split types</b>
                 </CardHeader>
                 <CardContent>
                     <Ul>
-                        {recordingSplitGroups.map((group) => {
-                            const color = splitColors[group.name];
-                            return (
-                                <Li key={group.name} color={color}>
+                        <For each={recordingSplitGroups}>
+                            {(group) => (
+                                <Li color={splitColors[group.name]}>
                                     <b>{group.displayName}</b>
                                     <br />
                                     <span>{group.description}</span>
                                 </Li>
-                            );
-                        })}
+                            )}
+                        </For>
                     </Ul>
                 </CardContent>
             </Card>

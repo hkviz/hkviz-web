@@ -11,4 +11,4 @@ export {
     HealthChartDocVars,
     SoulChartDocIcon,
     SoulChartDocVars,
-} from '../../../run/[id]/_dynamic_loader';
+} from '@hkviz/viz-ui';

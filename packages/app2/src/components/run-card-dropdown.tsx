@@ -73,19 +73,19 @@ export function RunCardDropdownMenu({
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="absolute bottom-1 right-[2.5rem] z-[7] flex h-6 items-center rounded-sm"
+                        class="absolute bottom-1 right-[2.5rem] z-[7] flex h-6 items-center rounded-sm"
                     >
-                        <MoreHorizontal className="h-6 w-6" />
+                        <MoreHorizontal class="h-6 w-6" />
                     </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="-top-2 w-56" side="top" align="end" alignOffset={-10}>
+                <DropdownMenuContent class="-top-2 w-56" side="top" align="end" alignOffset={-10}>
                     {!run.archived && (
                         <>
                             {run.isCombinedRun && (
                                 <Tooltip>
                                     <TooltipTrigger asChild>
                                         <DropdownMenuItem onClick={() => setIsSplitDialogOpen(true)}>
-                                            <Split className="mr-2 h-4 w-4" />
+                                            <Split class="mr-2 h-4 w-4" />
                                             <span>Split</span>
                                         </DropdownMenuItem>
                                     </TooltipTrigger>
@@ -99,7 +99,7 @@ export function RunCardDropdownMenu({
                                 <Tooltip>
                                     <TooltipTrigger asChild>
                                         <DropdownMenuItem onClick={() => onCombineClicked(run.id)}>
-                                            <Merge className="mr-2 h-4 w-4" />
+                                            <Merge class="mr-2 h-4 w-4" />
                                             <span>Combine</span>
                                         </DropdownMenuItem>
                                     </TooltipTrigger>
@@ -114,19 +114,19 @@ export function RunCardDropdownMenu({
                     )}
                     {run.archived && (
                         <DropdownMenuItem onClick={handleArchiveToggle}>
-                            <ArchiveRestore className="mr-2 h-4 w-4" />
+                            <ArchiveRestore class="mr-2 h-4 w-4" />
                             <span>Unarchive</span>
                         </DropdownMenuItem>
                     )}
                     {!run.archived && (
                         <DropdownMenuItem onClick={handleArchiveToggle}>
-                            <Archive className="mr-2 h-4 w-4" />
+                            <Archive class="mr-2 h-4 w-4" />
                             <span>Archive</span>
                         </DropdownMenuItem>
                     )}
                     <DropdownMenuGroup>
                         <DropdownMenuItem onClick={() => setIsDeleteDialogOpen(true)}>
-                            <Trash className="mr-2 h-4 w-4" />
+                            <Trash class="mr-2 h-4 w-4" />
                             <span>Delete</span>
                         </DropdownMenuItem>
                     </DropdownMenuGroup>
@@ -140,17 +140,17 @@ export function RunCardDropdownMenu({
                             {run.archived ? 'Delete this run completely?' : 'Delete or Archive this gameplay?'}
                         </AlertDialogTitle>
                         <AlertDialogDescription>
-                            <ul className="list-disc pl-5">
+                            <ul class="list-disc pl-5">
                                 <li>
-                                    <b className="text-bold">Delete can not be undone</b>, your data will be deleted
+                                    <b class="text-bold">Delete can not be undone</b>, your data will be deleted
                                     completely. <br />
                                     Playing again on this profile while using the mod, will create a new gamplay without
                                     the previous data.
                                 </li>
                                 {!run.archived && (
                                     <li>
-                                        <b className="text-bold">Archive</b> will hide this gameplay from your gameplays
-                                        and other views, you can still view it inside your archive. <br />
+                                        <b class="text-bold">Archive</b> will hide this gameplay from your gameplays and
+                                        other views, you can still view it inside your archive. <br />
                                         Playing again on this profile while using the mod, will record the data into
                                         your archive.
                                     </li>

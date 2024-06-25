@@ -6,8 +6,6 @@ export default {
     content: [
         './src/**/*.{ts,tsx}',
         './src/**/*.mdx',
-        './@/components/**/*.{ts,tsx}',
-        './next.config.mjs',
         '../viz/src/**/*.{ts,tsx}',
         '../viz-ui/src/**/*.{ts,tsx}',
         '../components/src/**/*.{ts,tsx}',
