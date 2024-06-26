@@ -10,7 +10,7 @@ export const Li: Component<{ children: JSXElement; color: ColorClasses }> = (pro
     return (
         <li
             class={
-                'ml-6 list-none border-b py-1 before:-ml-6 before:mr-3.5 before:inline-block before:h-2.5 before:w-2.5 before:rounded-full before:content-[""] last:border-b-0 ' +
+                'ml-6 list-none border-b py-1 before:-ml-6 before:mr-3.5 before:inline-block before:h-2.5 before:w-2.5 before:rounded-full last:border-b-0 last:border-b-0 ' +
                 props.color.beforeBackground
             }
         >

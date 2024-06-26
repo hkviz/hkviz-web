@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import { api } from '~/trpc/react';
-import { MailLink } from '../../_components/mail-link';
+import { MailLink } from '../../../../../app2/src/components/mail-link';
 
 export function AccountDeletionForm(props: { removalRequestId: string }) {
     const acceptRemovalRequestMutation = api.account.acceptAccountRemovalRequest.useMutation();
@@ -21,9 +21,7 @@ export function AccountDeletionForm(props: { removalRequestId: string }) {
                 <CardHeader>
                     <CardTitle>Account marked for deletion</CardTitle>
                     <CardDescription>
-                        <p>
-                            All your data will be deleted within 30 days.
-                        </p>
+                        <p>All your data will be deleted within 30 days.</p>
                     </CardDescription>
                 </CardHeader>
                 <CardFooter className="flex justify-end">

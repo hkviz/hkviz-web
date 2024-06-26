@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
-import { ContentCenterWrapper } from './_components/content-wrapper';
+import { ContentCenterWrapper } from '../../../app2/src/components/content-wrapper';
 
 export default function NotFound() {
     return (

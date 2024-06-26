@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { findRuns } from '~/server/api/routers/run/runs-find';
 import { getServerAuthSession } from '~/server/auth';
 import { db } from '~/server/db';
-import { ContentCenterWrapper } from './_components/content-wrapper';
-import { GradientSeparator } from './_components/gradient-separator';
+import { ContentCenterWrapper } from '../../../app2/src/components/content-wrapper';
+import { GradientSeparator } from '../../../components/src/additions/gradient-separator';
 import { HKVizText } from './_components/hkviz-text';
 import { OwnRuns } from './_page_own_runs';
 

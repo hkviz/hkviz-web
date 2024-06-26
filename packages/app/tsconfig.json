@@ -11,8 +11,18 @@
                 "name": "next"
             }
         ],
-        "incremental": true
+        "incremental": true,
+        "noEmit": true
     },
-    "include": [".eslintrc.cjs", "next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.cjs", "**/*.mjs", ".next/types/**/*.ts"],
+    "include": [
+        ".eslintrc.cjs",
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx",
+        "**/*.cjs",
+        "**/*.mjs",
+        ".next/types/**/*.ts",
+        "../app2/src/routes/(docs)/credits.tsx"
+    ],
     "exclude": ["node_modules"]
 }

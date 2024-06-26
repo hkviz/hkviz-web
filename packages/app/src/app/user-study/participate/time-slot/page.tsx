@@ -1,7 +1,7 @@
 import { GradientSeparator } from '~/app/_components/gradient-separator';
 import { HKVizText } from '~/app/_components/hkviz-text';
 import { apiFromServer } from '~/trpc/from-server';
-import { ContentWrapper } from '../../../_components/content-wrapper';
+import { ContentWrapper } from '../../../../../../app2/src/components/content-wrapper';
 import { getParticipantIdFromCookieOrSessionUser } from '../../_utils';
 import { TimeSlotPicker } from './_timeslot-picker';
 import { redirect } from 'next/navigation';
@@ -23,7 +23,7 @@ export default async function UserStudyParticipatePage() {
     }
 
     return (
-        <ContentWrapper backgroundClassName="dark:opacity-40 opacity-20">
+        <ContentWrapper backgroundClass="dark:opacity-40 opacity-20">
             <div className="mx-auto w-full max-w-[80ch] px-4 pt-8 text-center">
                 <h1 className="font-serif text-3xl font-bold">
                     {hasParticipantId ? (

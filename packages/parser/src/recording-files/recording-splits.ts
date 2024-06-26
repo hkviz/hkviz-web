@@ -78,9 +78,9 @@ function createRecordingSplitFromEnemy(
     previousPlayerPositionEvent: PlayerPositionEvent | null,
     overrideName?: string | undefined,
 ): RecordingSplit {
-    const enemyNameDisplay =
-        overrideName ??
-        (enemyInfo?.nameConvo ? parseHtmlEntities(enemiesJournalLang[enemyInfo.nameConvo]) ?? enemyName : enemyName);
+    const nameConvo = enemyInfo?.nameConvo;
+    const name = nameConvo ? enemiesJournalLang[nameConvo] : undefined;
+    const enemyNameDisplay = overrideName ?? (nameConvo && name ? parseHtmlEntities(name) ?? enemyName : enemyName);
     return {
         msIntoGame,
         title: enemyNameDisplay, // + '(' + enemyInfo?.neededForJournal + ')',
@@ -199,10 +199,10 @@ export function createRecordingSplits(recording: CombinedRecording): RecordingSp
             recording.allPlayerDataEventsOfField(field).forEach((event) => {
                 const boolCondition =
                     isPlayerDataBoolField(event.field) && event.value && !event.previousPlayerDataEventOfField?.value;
-                const intCondition =
+                const intCondition: boolean =
                     event.field.type === 'Int32' &&
                     (event.value as any as number) > 0 &&
-                    event.previousPlayerDataEventOfField &&
+                    event.previousPlayerDataEventOfField != null &&
                     event.previousPlayerDataEventOfField.value < event.value;
 
                 if (boolCondition || intCondition) {

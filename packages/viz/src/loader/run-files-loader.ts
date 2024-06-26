@@ -1,12 +1,13 @@
 import { combineRecordings, parseRecordingFile } from '@hkviz/parser';
 import { createDeferred, createMemo, createSignal } from 'solid-js';
 import { storeInitializer } from 'src/store';
-import { fetchWithRunfileCache } from './recording-file-browser-cache';
+import { fetchWithRunfileCache, openRunfileCache } from './recording-file-browser-cache';
 import { type RunFileInfo } from './run-files-info';
 import { wrapResultWithProgress } from './wrap-result-with-progress';
+import { isServer } from 'solid-js/web';
 
-async function loadFile(file: RunFileInfo, onProgress: (progress: number) => void) {
-    const loader = () => fetchWithRunfileCache(file.id, file.version, file.signedUrl);
+async function loadFile(cache: Promise<Cache | null>, file: RunFileInfo, onProgress: (progress: number) => void) {
+    const loader = () => fetchWithRunfileCache(cache, file.id, file.version, file.signedUrl);
 
     // uncomment to get file content from console. useful for debugging
     // very bad for performance, since context needs to be kept in memory.
@@ -31,19 +32,26 @@ export interface RunFileLoader {
 }
 
 export function createRunFileLoader(files: RunFileInfo[]): RunFileLoader {
-    // if (isServer) {
-    //     return;
-    // }
+    if (isServer) {
+        return {
+            progress: () => 0,
+            done: () => false,
+            abort: () => {
+                // do nothing
+            },
+        };
+    }
 
     console.log('started loading run files');
 
     const abortController = new AbortController();
 
+    const cache = openRunfileCache();
     const fileLoaders = files.map((file) => {
         const [progress, setProgress] = createSignal(0);
         return {
             progress,
-            promise: loadFile(file, setProgress),
+            promise: loadFile(cache, file, setProgress),
         };
     });
 

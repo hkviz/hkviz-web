@@ -1,6 +1,3 @@
-import { type Component, type JSXElement, createEffect, createMemo, untrack } from 'solid-js';
-import { type Step, makeStep } from './step';
-import { HKVizText } from '../hkviz-text';
 import {
     animationStore,
     hkMapRoomRectClass,
@@ -8,10 +5,14 @@ import {
     roomColoringStore,
     roomDisplayStore,
     roomInfoColoringToggleClasses,
+    tourStore,
     uiStore,
+    viewportStore,
 } from '@hkviz/viz';
-import { tourStore, viewportStore } from '@hkviz/viz';
 import { Palette, Play } from 'lucide-solid';
+import { untrack, type Component, type JSXElement } from 'solid-js';
+import { HKVizText } from '../hkviz-text';
+import { makeStep, type Step } from './step';
 
 const P: Component<{ children: JSXElement }> = (props) => {
     return <p class="mb-3">{props.children}</p>;

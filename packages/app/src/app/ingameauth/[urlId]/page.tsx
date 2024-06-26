@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { COOKIE_NAME_INGAME_AUTH_URL_ID } from '~/lib/cookie-names';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
-import { ContentCenterWrapper } from '../../_components/content-wrapper';
+import { ContentCenterWrapper } from '../../../../../app2/src/components/content-wrapper';
 import { IngameAuthCard } from './_components';
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default async function IngameAuthPage({ params }: { params: { urlId: stri
                         <CardDescription>This might be because one of the following reasons:</CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <ul className="list-inside list-disc text-sm text-muted-foreground">
+                        <ul className="text-muted-foreground list-inside list-disc text-sm">
                             <li>The link was already used to login</li>
                             <li>The link has expired (after 10 minutes)</li>
                             <li>The link has never existed</li>

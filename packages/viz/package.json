@@ -27,25 +27,27 @@
         "dist"
     ],
     "type": "module",
-    "main": "./dist/index.cjs",
+    "main": "./dist/index.js",
     "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
-    "typings": "./dist/index.d.cts",
+    "typings": "./dist/index.d.ts",
     "exports": {
         "import": {
             "types": "./dist/index.d.ts",
             "default": "./dist/index.js"
-        },
-        "require": {
-            "types": "./dist/index.d.cts",
-            "default": "./dist/index.cjs"
         }
     },
     "browser": {},
     "typesVersions": {},
     "scripts": {
         "dev": "tsup --watch",
+        "dev-old": "pnpm run --filter=. --parallel /^dev:/",
+        "dev:tsup": "tsup --watch",
+        "dev:tsc": "tsc --watch --emitDeclarationOnly --declaration",
+        "build-old": "pnpm run --filter=. --parallel /^build:/",
         "build": "tsup",
+        "build:tsup": "tsup",
+        "build:tsc": "tsc --emitDeclarationOnly --declaration",
         "test": "concurrently pnpm:test:*",
         "test:client": "vitest -c ../../configs/vitest.config.ts",
         "test:ssr": "pnpm run test:client --mode ssr",

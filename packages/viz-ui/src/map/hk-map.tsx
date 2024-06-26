@@ -124,6 +124,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
         svg: svgD3,
     });
 
-    console.log('hkmap', container);
+    // TODO don render on server
+    // console.log('hkmap', container);
     return container;
 };

@@ -2,7 +2,7 @@ import { getNavigationFlowFromCookies } from '~/lib/navigation-flow/from-cookies
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
 import { AuthNeeded } from '../_components/auth-needed';
-import { MdxInnerWrapper, MdxOuterWrapper } from '../_components/mdx-layout';
+import { MdxInnerWrapper, MdxOuterWrapper } from '../../../../app2/src/components/mdx-layout';
 import { DataCollectionStudyParticipationClientForm } from './_client_components';
 import MdxContent from './_page.mdx';
 

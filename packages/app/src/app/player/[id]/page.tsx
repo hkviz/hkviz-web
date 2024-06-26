@@ -1,6 +1,6 @@
 import { findPlayerPublicRuns } from '~/server/api/routers/player/find-player-runs';
 import { getPlayerMeta } from '~/server/api/routers/player/get-player-meta';
-import { ContentCenterWrapper } from '../../_components/content-wrapper';
+import { ContentCenterWrapper } from '../../../../../app2/src/components/content-wrapper';
 import { RunCard } from '../../_components/run-card';
 
 interface Params {

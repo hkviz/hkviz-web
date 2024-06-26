@@ -3,7 +3,7 @@ import { type Metadata } from 'next';
 import { getNavigationFlowFromCookies } from '~/lib/navigation-flow/from-cookies';
 import { getServerAuthSession } from '~/server/auth';
 import { apiFromServer } from '~/trpc/from-server';
-import { ContentCenterWrapper } from '../_components/content-wrapper';
+import { ContentCenterWrapper } from '../../../../app2/src/components/content-wrapper';
 import { HkExperienceClientForm } from './_components';
 
 export const metadata: Metadata = {
