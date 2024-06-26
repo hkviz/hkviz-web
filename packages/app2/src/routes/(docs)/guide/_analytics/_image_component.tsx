@@ -1,18 +1,30 @@
 import { cn } from '@hkviz/components';
-import { type JSXElement, Show, type ComponentProps } from 'solid-js';
+import { type ComponentProps, Show, type JSXElement } from 'solid-js';
+import { Image, type OptimizedImageSrc } from '~/components/image';
 
 export type ThemedImageProps = {
-    srcLight: ComponentProps<'img'>['src'];
-    srcDark: ComponentProps<'img'>['src'];
+    srcLight: OptimizedImageSrc;
+    srcDark: OptimizedImageSrc;
     class?: string;
     alt: string;
+    sizes?: ComponentProps<typeof Image>['sizes'];
 };
 
 export function ThemedImage(props: ThemedImageProps) {
     return (
         <>
-            <img alt={props.alt} src={props.srcLight} class={cn('block rounded-md dark:hidden', props.class)} />
-            <img alt={props.alt} src={props.srcDark} class={cn('hidden rounded-md dark:block', props.class)} />
+            <Image
+                alt={props.alt}
+                src={props.srcLight}
+                class={cn('block rounded-md dark:hidden', props.class)}
+                sizes={props.sizes}
+            />
+            <Image
+                alt={props.alt}
+                src={props.srcDark}
+                class={cn('hidden rounded-md dark:block', props.class)}
+                sizes={props.sizes}
+            />
         </>
     );
 }

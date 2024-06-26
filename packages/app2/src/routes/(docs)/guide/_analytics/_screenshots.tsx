@@ -2,68 +2,76 @@ import { HKVizText } from '@hkviz/viz-ui';
 import { ImageContainer, ThemedImage } from './_image_component';
 import { ImageArea, ImageAreaShadow } from './_image_component_client';
 
-import overviewDarkSrc from './screenshots/overview_dark.png';
-import overviewLightSrc from './screenshots/overview_light.png';
+import overviewDarkSrc from './screenshots/overview_dark.png?hero';
+console.log({ overviewDarkSrc });
+import overviewLightSrc from './screenshots/overview_light.png?hero';
 
-import tracesAllDarkSrc from './screenshots/traces_all_dark.png';
-import tracesAllLightSrc from './screenshots/traces_all_light.png';
+import tracesAllDarkSrc from './screenshots/traces_all_dark.png?hero';
+import tracesAllLightSrc from './screenshots/traces_all_light.png?hero';
 
-import tracesAnimatedDarkSrc from './screenshots/traces_animated_dark.png';
-import tracesAnimatedLightSrc from './screenshots/traces_animated_light.png';
+import tracesAnimatedDarkSrc from './screenshots/traces_animated_dark.png?hero';
+import tracesAnimatedLightSrc from './screenshots/traces_animated_light.png?hero';
 
-import tracesNoneDarkSrc from './screenshots/traces_none_dark.png';
-import tracesNoneLightSrc from './screenshots/traces_none_light.png';
+import tracesNoneDarkSrc from './screenshots/traces_none_dark.png?hero';
+import tracesNoneLightSrc from './screenshots/traces_none_light.png?hero';
 
-import roomAnalyticsDarkSrc from './screenshots/room_analytics_dark.png';
-import roomAnalyticsLightSrc from './screenshots/room_analytics_light.png';
+import roomAnalyticsDarkSrc from './screenshots/room_analytics_dark.png?hero';
+import roomAnalyticsLightSrc from './screenshots/room_analytics_light.png?hero';
 
-import colorModeAreaDarkSrc from './screenshots/room_colors_area_dark.png';
-import colorModeAreaDarkTableSrc from './screenshots/room_colors_area_dark_table.png';
-import colorModeAreaLightSrc from './screenshots/room_colors_area_light.png';
-import colorModeAreaLightTableSrc from './screenshots/room_colors_area_light_table.png';
+import colorModeAreaDarkSrc from './screenshots/room_colors_area_dark.png?hero';
+import colorModeAreaDarkTableSrc from './screenshots/room_colors_area_dark_table.png?hero';
+import colorModeAreaLightSrc from './screenshots/room_colors_area_light.png?hero';
+import colorModeAreaLightTableSrc from './screenshots/room_colors_area_light_table.png?hero';
 
-import colorModeLinearDarkSrc from './screenshots/room_colors_linear_dark.png';
-import colorModeLinearDarkTableSrc from './screenshots/room_colors_linear_dark_table.png';
-import colorModeLinearLightSrc from './screenshots/room_colors_linear_light.png';
-import colorModeLinearLightTableSrc from './screenshots/room_colors_linear_light_table.png';
+import colorModeLinearDarkSrc from './screenshots/room_colors_linear_dark.png?hero';
+import colorModeLinearDarkTableSrc from './screenshots/room_colors_linear_dark_table.png?hero';
+import colorModeLinearLightSrc from './screenshots/room_colors_linear_light.png?hero';
+import colorModeLinearLightTableSrc from './screenshots/room_colors_linear_light_table.png?hero';
 
-import colorModeExpDarkSrc from './screenshots/room_colors_exp3_dark.png';
-import colorModeExpDarkTableSrc from './screenshots/room_colors_exp3_dark_table.png';
-import colorModeExpLightSrc from './screenshots/room_colors_exp3_light.png';
-import colorModeExpLightTableSrc from './screenshots/room_colors_exp3_light_table.png';
+import colorModeExpDarkSrc from './screenshots/room_colors_exp3_dark.png?hero';
+import colorModeExpDarkTableSrc from './screenshots/room_colors_exp3_dark_table.png?hero';
+import colorModeExpLightSrc from './screenshots/room_colors_exp3_light.png?hero';
+import colorModeExpLightTableSrc from './screenshots/room_colors_exp3_light_table.png?hero';
 
-import godhomeDarkSrc from './screenshots/godhome_dark.png';
-import godhomeLightSrc from './screenshots/godhome_light.png';
+import godhomeDarkSrc from './screenshots/godhome_dark.png?hero';
+import godhomeLightSrc from './screenshots/godhome_light.png?hero';
 
-import colosseumDarkSrc from './screenshots/colluseum_dark.png';
-import colosseumLightSrc from './screenshots/colluseum_light.png';
+import colosseumDarkSrc from './screenshots/colluseum_dark.png?hero';
+import colosseumLightSrc from './screenshots/colluseum_light.png?hero';
 
-import timelineDarkSrc from './screenshots/timeline_dark.png';
-import timelineLightSrc from './screenshots/timeline_light.png';
+import timelineDarkSrc from './screenshots/timeline_dark.png?hero';
+import timelineLightSrc from './screenshots/timeline_light.png?hero';
 
-import splitsDarkSrc from './screenshots/splits_dark.png';
-import splitsLightSrc from './screenshots/splits_light.png';
+import splitsDarkSrc from './screenshots/splits_dark.png?hero';
+import splitsLightSrc from './screenshots/splits_light.png?hero';
 
-import buildingsColormapDarkSrc from './screenshots/buildings_colormap_dark.png';
-import buildingsColormapLightSrc from './screenshots/buildings_colormap_light.png';
+import buildingsColormapDarkSrc from './screenshots/buildings_colormap_dark.png?hero';
+import buildingsColormapLightSrc from './screenshots/buildings_colormap_light.png?hero';
 
-import subroomsDarkSrc from './screenshots/subrooms_dark.png';
-import subroomsLightSrc from './screenshots/subrooms_light.png';
+import subroomsDarkSrc from './screenshots/subrooms_dark.png?hero';
+import subroomsLightSrc from './screenshots/subrooms_light.png?hero';
 
-import extraChartGeoDarkSrc from './screenshots/extra_chart_geo_dark.png';
-import extraChartGeoLightSrc from './screenshots/extra_chart_geo_light.png';
+import extraChartGeoDarkSrc from './screenshots/extra_chart_geo_dark.png?hero';
+import extraChartGeoLightSrc from './screenshots/extra_chart_geo_light.png?hero';
 
-import extraChartHealthDarkSrc from './screenshots/extra_chart_health_dark.png';
-import extraChartHealthLightSrc from './screenshots/extra_chart_health_light.png';
+import extraChartHealthDarkSrc from './screenshots/extra_chart_health_dark.png?hero';
+import extraChartHealthLightSrc from './screenshots/extra_chart_health_light.png?hero';
 
-import extraChartSoulDarkSrc from './screenshots/extra_chart_soul_dark.png';
-import extraChartSoulLightSrc from './screenshots/extra_chart_soul_light.png';
+import extraChartSoulDarkSrc from './screenshots/extra_chart_soul_dark.png?hero';
+import extraChartSoulLightSrc from './screenshots/extra_chart_soul_light.png?hero';
 
-import extraChartCompletionDarkSrc from './screenshots/extra_chart_completion_dark.png';
-import extraChartCompletionLightSrc from './screenshots/extra_chart_completion_light.png';
+import extraChartCompletionDarkSrc from './screenshots/extra_chart_completion_dark.png?hero';
+import extraChartCompletionLightSrc from './screenshots/extra_chart_completion_light.png?hero';
 
-import extraChartGrubsDarkSrc from './screenshots/extra_chart_grubs_dark.png';
-import extraChartGrubsLightSrc from './screenshots/extra_chart_grubs_light.png';
+import extraChartGrubsDarkSrc from './screenshots/extra_chart_grubs_dark.png?hero';
+import extraChartGrubsLightSrc from './screenshots/extra_chart_grubs_light.png?hero';
+import {
+    IMAGE_SIZE_ARTICLE_FULL_WIDTH,
+    IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD,
+    IMAGE_SIZE_MAX_W_30REM,
+    IMAGE_SIZE_MAX_W_48,
+    IMAGE_SIZE_MAX_W_60,
+} from '~/components/image';
 
 export function OverviewScreenshot() {
     return (
@@ -80,6 +88,7 @@ export function OverviewScreenshot() {
                     srcDark={overviewDarkSrc}
                     class="m-0"
                     alt="HKViz gameplay analytics page"
+                    sizes={IMAGE_SIZE_ARTICLE_FULL_WIDTH}
                 />
                 {/* <ImageArea positionClassName="left-[1%] top-[9%] h-[32%] w-[28%]" href="#map-options">
                     Map options
@@ -132,6 +141,7 @@ export function TracesAllScreenshot() {
                 srcDark={tracesAllDarkSrc}
                 class="m-0"
                 alt="Traces on game map showing all player movement within a gameplay in the Forgotten Crossroads area"
+                sizes={IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD}
             />
         </ImageContainer>
     );
@@ -145,6 +155,7 @@ export function TracesAnimatedScreenshot() {
                 srcDark={tracesAnimatedDarkSrc}
                 class="m-0"
                 alt="Traces on game map showing player movement of 4 minutes. The traces fade out, for positions further in the past in the Forgotten Crossroads area"
+                sizes={IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD}
             />
         </ImageContainer>
     );
@@ -158,6 +169,7 @@ export function TracesNoneScreenshot() {
                 srcDark={tracesNoneDarkSrc}
                 class="m-0"
                 alt="A game map showing rooms of Forgotten Crossroads with no traces on top, displaying player movement."
+                sizes={IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD}
             />
         </ImageContainer>
     );
@@ -178,6 +190,7 @@ export function RoomAnalyticsScreenshot() {
                 srcDark={roomAnalyticsDarkSrc}
                 class="m-0"
                 alt="A table showing various variables of a room selected on the map."
+                sizes={IMAGE_SIZE_MAX_W_48}
             />
         </ImageContainer>
     );
@@ -191,6 +204,7 @@ export function ColorModeAreaScreenshot() {
                 srcDark={colorModeAreaDarkSrc}
                 class="m-0"
                 alt="A map showing the area colors of the game rooms"
+                sizes={IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD}
             />
         </ImageContainer>
     );
@@ -204,6 +218,7 @@ export function ColorModeAreaTableScreenshot() {
                 srcDark={colorModeAreaDarkTableSrc}
                 class="m-0"
                 alt="Variable table row showing area color mode selected"
+                sizes={IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD}
             />
         </ImageContainer>
     );
@@ -217,6 +232,7 @@ export function ColorModeLinearScreenshot() {
                 srcDark={colorModeLinearDarkSrc}
                 class="m-0"
                 alt="A map showing rooms colored by the geo earned by area"
+                sizes={IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD}
             />
         </ImageContainer>
     );
@@ -230,6 +246,7 @@ export function ColorModeLinearTableScreenshot() {
                 srcDark={colorModeLinearDarkTableSrc}
                 class="m-0"
                 alt="Variable table row showing linear color scale selected"
+                sizes={IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD}
             />
         </ImageContainer>
     );
@@ -243,6 +260,7 @@ export function ColorModeExpScreenshot() {
                 srcDark={colorModeExpDarkSrc}
                 class="m-0"
                 alt="A map showing rooms colored by the geo earned by area in an exponential scale"
+                sizes={IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD}
             />
         </ImageContainer>
     );
@@ -256,6 +274,7 @@ export function ColorModeExpTableScreenshot() {
                 srcDark={colorModeExpDarkTableSrc}
                 class="m-0"
                 alt="Variable table row showing exponential color scale selected"
+                sizes={IMAGE_SIZE_ARTICLE_RESPONSIVE_THIRD}
             />
         </ImageContainer>
     );
@@ -269,6 +288,7 @@ export function GodhomeScreenshot() {
                 srcDark={godhomeDarkSrc}
                 class="m-0"
                 alt="A map showing the Godhome area of the game, with colored pantheon doors."
+                sizes={IMAGE_SIZE_MAX_W_30REM}
             />
         </ImageContainer>
     );
@@ -282,6 +302,7 @@ export function ColosseumScreenshot() {
                 srcDark={colosseumDarkSrc}
                 class="m-0"
                 alt="A map showing the trials in the pantheons as separate signs on the game map"
+                sizes={IMAGE_SIZE_MAX_W_30REM}
             />
         </ImageContainer>
     );
@@ -295,6 +316,7 @@ export function TimelineScreenshot() {
                 srcDark={timelineDarkSrc}
                 class="m-0"
                 alt="a timeline similar to one on a video player"
+                sizes={IMAGE_SIZE_ARTICLE_FULL_WIDTH}
             />
         </ImageContainer>
     );
@@ -308,6 +330,7 @@ export function SplitsScreenshot() {
                 srcDark={splitsDarkSrc}
                 class="m-0"
                 alt="Splits view, showing charm pickups, item pickups, boss defeats"
+                sizes={IMAGE_SIZE_MAX_W_48}
             />
         </ImageContainer>
     );
@@ -324,6 +347,7 @@ export function BuildingsColormapScreenshot() {
                 srcDark={buildingsColormapDarkSrc}
                 class="m-0"
                 alt="A view of dirtmouth displaying the geo spend in each building by usage a colormap"
+                sizes={IMAGE_SIZE_MAX_W_48}
             />
         </ImageContainer>
     );
@@ -340,6 +364,7 @@ export function SubroomsScreenshot() {
                 srcDark={subroomsDarkSrc}
                 class="m-0"
                 alt="Room analytics showing a building with multiple rooms"
+                sizes={IMAGE_SIZE_MAX_W_48}
             />
         </ImageContainer>
     );
@@ -348,7 +373,13 @@ export function SubroomsScreenshot() {
 export function GeoChartScreenshot() {
     return (
         <ImageContainer caption={<>Geo chart</>} class="max-w-60 md:float-right md:ml-4">
-            <ThemedImage srcLight={extraChartGeoLightSrc} srcDark={extraChartGeoDarkSrc} class="m-0" alt="Geo chart" />
+            <ThemedImage
+                srcLight={extraChartGeoLightSrc}
+                srcDark={extraChartGeoDarkSrc}
+                class="m-0"
+                alt="Geo chart"
+                sizes={IMAGE_SIZE_MAX_W_60}
+            />
         </ImageContainer>
     );
 }
@@ -361,6 +392,7 @@ export function HealthChartScreenshot() {
                 srcDark={extraChartHealthDarkSrc}
                 class="m-0"
                 alt="Health chart"
+                sizes={IMAGE_SIZE_MAX_W_60}
             />
         </ImageContainer>
     );
@@ -374,6 +406,7 @@ export function SoulChartScreenshot() {
                 srcDark={extraChartSoulDarkSrc}
                 class="m-0"
                 alt="Soul chart"
+                sizes={IMAGE_SIZE_MAX_W_60}
             />
         </ImageContainer>
     );
@@ -387,6 +420,7 @@ export function CompletionChartScreenshot() {
                 srcDark={extraChartCompletionDarkSrc}
                 class="m-0"
                 alt="Completion chart"
+                sizes={IMAGE_SIZE_MAX_W_60}
             />
         </ImageContainer>
     );
@@ -400,6 +434,7 @@ export function GrubsChartScreenshot() {
                 srcDark={extraChartGrubsDarkSrc}
                 class="m-0"
                 alt="Grubs chart"
+                sizes={IMAGE_SIZE_MAX_W_60}
             />
         </ImageContainer>
     );

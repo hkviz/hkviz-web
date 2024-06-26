@@ -54,7 +54,8 @@
         "tailwindcss-animate": "^1.0.7",
         "typescript": "^5.4.5",
         "valibot": "0.31.0-rc.2",
-        "vinxi": "^0.3.11"
+        "vinxi": "^0.3.11",
+        "vite-plugin-lqip": "^0.0.5"
     },
     "engines": {
         "node": ">=18"
@@ -62,6 +63,8 @@
     "devDependencies": {
         "dotenv-cli": "^7.3.0",
         "drizzle-kit": "^0.19.13",
-        "postcss-import": "^16.1.0"
+        "get-image-colors": "^4.0.1",
+        "postcss-import": "^16.1.0",
+        "vite-imagetools": "^7.0.2"
     }
 }

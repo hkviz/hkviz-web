@@ -23,16 +23,16 @@ import {
     vesselImg,
     vesselSteelSoul as vesselSteelSoulImg,
 } from '@hkviz/viz-ui';
-import { A, useAction, useSubmission } from '@solidjs/router';
+import { A, useAction } from '@solidjs/router';
+import { ChevronDown } from 'lucide-solid';
 import { For, Index, Match, Show, Switch, createEffect, createSignal, type Component, type JSXElement } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
-import { type GetRunResult } from '~/server/run/run-get';
 import { type RunMetadata } from '~/server/run/_find_runs_internal';
+import { type GetRunResult } from '~/server/run/run-get';
+import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
 import { getMapZoneHudBackground } from './area-background';
 import { RunTags } from './run-tags';
-import { Dynamic } from 'solid-js/web';
-import { ChevronDown } from 'lucide-solid';
-import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
 
 function Duration({ seconds }: { seconds: number }) {
     const hours = Math.floor(seconds / 60 / 60);
@@ -298,7 +298,7 @@ export const RunCard: Component<{
         <Expander expanded={!isRemoved()}>
             <div
                 class={cn(
-                    'focus-within:drop-shadow-glow-md hover:drop-shadow-glow-sm group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-[1.25rem] bg-black py-2 pl-4 pr-3 text-white transition hover:bg-black hover:text-white active:drop-shadow-none md:flex-row',
+                    'focus-within:drop-shadow-glow-md hover:drop-shadow-glow-sm group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pl-4 pr-3 text-white transition hover:bg-black hover:text-white active:drop-shadow-none md:flex-row',
                     isRemoved() ? 'scale-125 opacity-0' : '',
                     isLoading() ? 'grayscale' : '',
                 )}

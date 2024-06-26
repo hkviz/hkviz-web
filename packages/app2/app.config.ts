@@ -4,8 +4,10 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkToc from 'remark-toc';
-
+import lqip from 'vite-plugin-lqip';
 import type { MdxOptions } from '@vinxi/plugin-mdx';
+// import { imagetoolsWithAverageColor } from './image-processing';
+import { imagetools } from 'vite-imagetools';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -38,6 +40,29 @@ const mdxOptions: MdxOptions = {
 export default defineConfig({
     extensions: ['tsx', 'mdx'],
     vite: {
-        plugins: [mdx.withImports({})(mdxOptions)],
+        plugins: [
+            mdx.withImports({})(mdxOptions),
+            lqip({
+                sharp: {
+                    resize: {
+                        width: 16,
+                        height: 16,
+                        fit: 'inside',
+                        kernel: 'cubic',
+                    },
+                },
+            }),
+            imagetools({
+                defaultDirectives: (id) => {
+                    if (id.searchParams.has('hero')) {
+                        // the `hero` directive was set on the image
+                        return new URLSearchParams(
+                            'w=1200;800;600;400;300&format=webp;jpg&as=picture&withoutEnlargement',
+                        );
+                    }
+                    return new URLSearchParams();
+                },
+            }),
+        ],
     },
 });
