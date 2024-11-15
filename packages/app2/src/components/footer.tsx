@@ -8,11 +8,9 @@ import { uiStore } from '@hkviz/viz';
 export const Footer: Component = () => {
     const location = useLocation();
 
-    const isVisible = createMemo(() => uiStore.mobileTab() === 'overview' || !location.pathname.startsWith('/run'));
+    const isVisible = createMemo(() => uiStore.mobileTab() === 'overview' || !location.pathname.startsWith('/run/'));
 
     createEffect(() => {
-        console.log(location.pathname);
-        console.log('isVisible', isVisible());
         if (isVisible()) {
             document.body.classList.remove('overflow-hidden');
         } else {

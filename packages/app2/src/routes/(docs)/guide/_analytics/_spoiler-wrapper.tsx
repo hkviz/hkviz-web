@@ -11,7 +11,7 @@ export function SpoilerWrapper(props: { children: JSXElement; title: string }) {
                 <Button onClick={() => setIsOpen(true)}>{props.title}</Button>
             </Expander>
             <Expander expanded={isOpen()}>
-                <div class="-mb-5 -mt-5">{props.children}</div>
+                <div>{props.children}</div>
             </Expander>
         </>
     );

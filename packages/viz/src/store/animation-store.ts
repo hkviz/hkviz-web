@@ -120,3 +120,7 @@ createEffect(() => {
 
     onCleanup(() => clearInterval(interval));
 });
+
+if (typeof window !== 'undefined') {
+    (window as any).animationStore = animationStore;
+}

@@ -97,6 +97,7 @@ export const enemies = {
 // of enemies which have only 1 kill, but are no bosses and the other way around
 // these exceptions are defined here
 const isBossOverrides: Partial<Record<EnemyName, boolean>> = {
+    BlackKnight: true, // Watcher Knights
     BigFly: true, // Gruz Mother
     MageKnight: true, // Soul Warrior
     ZapBug: false, // Lumafly
