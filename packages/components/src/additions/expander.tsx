@@ -12,7 +12,11 @@ export interface ExpanderProps {
 export const Expander: Component<ExpanderProps> = (props) => {
     return (
         <div
-            class={cn('transition-grid-rows grid', props.class, props.expanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]')}
+            class={cn(
+                'transition-grid-rows grid overflow-hidden',
+                props.class,
+                props.expanded ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
+            )}
         >
             <div
                 class={cn(

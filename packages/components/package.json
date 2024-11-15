@@ -18,7 +18,7 @@
         "components",
         "solid"
     ],
-    "private": true,
+    "private": false,
     "sideEffects": false,
     "publishConfig": {
         "access": "public"
