@@ -1,6 +1,15 @@
 'use client';
 
-import { Checkbox, Table, TableBody, TableCell, TableRow } from '@hkviz/components';
+import {
+    Checkbox,
+    Table,
+    TableBody,
+    TableCell,
+    TableRow,
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from '@hkviz/components';
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '@hkviz/parser';
 import {
     animationStore,
@@ -584,19 +593,27 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
             <TableCell class={isV1() ? '' : 'p-2 pl-3'}>
                 <div class="flex flex-row items-center gap-2">
                     <Show when={isShowable()} fallback={<span class="inline-block w-5" />}>
-                        <Checkbox
-                            id={id + props.variable.key + '_checkbox'}
-                            checked={checked()}
-                            onChange={props.onCheckedChange}
-                            controlClass={props.variable.color.checkboxSolid}
-                        />
+                        <Tooltip>
+                            <TooltipTrigger
+                                as={Checkbox}
+                                id={id + props.variable.key + '_checkbox'}
+                                checked={checked()}
+                                onChange={props.onCheckedChange}
+                                controlClass={props.variable.color.checkboxSolid}
+                            />
+                            <TooltipContent>{props.variable.description}</TooltipContent>
+                        </Tooltip>
                     </Show>
-                    <label
-                        for={id + props.variable.key + '_checkbox-input'}
-                        class="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                        {props.variable.name}
-                    </label>
+                    <Tooltip>
+                        <TooltipTrigger
+                            as={'label'}
+                            for={id + props.variable.key + '_checkbox-input'}
+                            class="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                        >
+                            {props.variable.name}
+                        </TooltipTrigger>
+                        <TooltipContent>{props.variable.description}</TooltipContent>
+                    </Tooltip>
                 </div>
             </TableCell>
             <TableCell class={isV1() ? '' : 'text-nowrap p-2 text-right'}>

@@ -89,7 +89,7 @@ const predefinedRoomNames = {
     Ruins_House_02: 'Gorgeous Husk House',
     Ruins_House_01: 'Grub House',
 
-    Abyss_01: 'City of Tears 1ab',
+    Abyss_01: 'Broken Elevator Shaft', //'City of Tears 1ab',
 
     // Waterways
     Waterways_13: "Isma's Grove",

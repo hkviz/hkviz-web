@@ -318,7 +318,7 @@ export function AnimationOptions(props: { class?: string }) {
                 )}
             >
                 <PlayButton />
-                <Duration ms={animationStore.msIntoGame()} class="pr-3" />
+                <Duration ms={animationStore.msIntoGame()} class="pr-3" withTooltip={true} />
                 <AnimationTimeLine class="@3xl:col-span-1 @3xl:row-auto @3xl:px-0 col-span-3 row-start-2 mx-2" />
                 <div class="relative">
                     <Popover>
