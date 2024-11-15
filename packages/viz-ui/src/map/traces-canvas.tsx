@@ -2,13 +2,14 @@ import {
     Vector2,
     binarySearchLastIndexBefore,
     mapVisualExtends,
+    playerDataFields,
     playerPositionToMapPosition,
     scale,
 } from '@hkviz/parser';
 import { animationStore, gameplayStore, mapZoomStore, traceStore, uiStore } from '@hkviz/viz';
 import { createEffect, type Component } from 'solid-js';
 import { createAutoSizeCanvas } from '../canvas';
-import { knightPinSrc, shadePinSrc } from '../img-urls';
+import { dreamGatePinSrc as dreamGatePinSrc, knightPinSrc, shadePinSrc } from '../img-urls';
 
 const EMPTY_ARRAY = [] as const;
 
@@ -22,11 +23,16 @@ export const HKMapTraces: Component = () => {
     const shadePinImage = (
         <img src={shadePinSrc} alt="shade pin" class="hidden" loading="eager" />
     ) as HTMLImageElement;
+    const dreamGateImage = (
+        <img src={dreamGatePinSrc} alt="dream gate" class="hidden" loading="eager" />
+    ) as HTMLImageElement;
+
     const container = (
         <div class="pointer-events-none absolute inset-0">
             {canvas}
             {knightPinImage}
             {shadePinImage}
+            {dreamGateImage}
         </div>
     ) as HTMLDivElement;
 
@@ -121,28 +127,53 @@ export const HKMapTraces: Component = () => {
             event = positionEvents[i];
         }
 
-        // shade pin
+        // frame end pins
         const frameEvent = animationStore.currentFrameEndEvent();
         const recording = gameplayStore.recording();
-        if (traceStore.visibility() === 'animated' && recording && frameEvent && frameEvent.shadeScene != 'None') {
-            const mapPosition = playerPositionToMapPosition(
-                new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),
-                recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene)!,
-            );
-            if (mapPosition) {
-                const shadePinSize = baseLineWidth * 12;
-                ctx.shadowColor = 'rgba(255,255,255,0.6)';
-                ctx.shadowOffsetX = 0;
-                ctx.shadowOffsetY = 0;
-                ctx.shadowBlur = baseLineWidth * 4;
-                ctx.drawImage(
-                    shadePinImage,
-                    x(mapPosition.x) - 0.5 * shadePinSize,
-                    y(mapPosition.y) - 0.5 * shadePinSize,
-                    shadePinSize,
-                    shadePinSize,
+        if (traceStore.visibility() === 'animated' && recording && frameEvent) {
+            // dream gate
+            if (frameEvent.dreamGateScene !== playerDataFields.byFieldName.dreamGateScene.defaultValue) {
+                const mapPosition = playerPositionToMapPosition(
+                    new Vector2(frameEvent.dreamGateX, frameEvent.dreamGateY),
+                    recording.sceneEvents.find((it) => it.sceneName === frameEvent.dreamGateScene)!,
                 );
-                ctx.shadowBlur = 0;
+                if (mapPosition) {
+                    const pinSize = baseLineWidth * 8;
+                    ctx.shadowColor = 'rgba(255,255,255,0.6)';
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
+                    ctx.shadowBlur = baseLineWidth * 4;
+                    ctx.drawImage(
+                        dreamGateImage,
+                        x(mapPosition.x) - 0.5 * pinSize,
+                        y(mapPosition.y) - 0.5 * pinSize,
+                        pinSize,
+                        pinSize,
+                    );
+                    ctx.shadowBlur = 0;
+                }
+            }
+            // shade
+            if (frameEvent.shadeScene !== playerDataFields.byFieldName.shadeScene.defaultValue) {
+                const mapPosition = playerPositionToMapPosition(
+                    new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),
+                    recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene)!,
+                );
+                if (mapPosition) {
+                    const shadePinSize = baseLineWidth * 12;
+                    ctx.shadowColor = 'rgba(255,255,255,0.6)';
+                    ctx.shadowOffsetX = 0;
+                    ctx.shadowOffsetY = 0;
+                    ctx.shadowBlur = baseLineWidth * 4;
+                    ctx.drawImage(
+                        shadePinImage,
+                        x(mapPosition.x) - 0.5 * shadePinSize,
+                        y(mapPosition.y) - 0.5 * shadePinSize,
+                        shadePinSize,
+                        shadePinSize,
+                    );
+                    ctx.shadowBlur = 0;
+                }
             }
         }
 

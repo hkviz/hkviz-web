@@ -593,7 +593,7 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
             <TableCell class={isV1() ? '' : 'p-2 pl-3'}>
                 <div class="flex flex-row items-center gap-2">
                     <Show when={isShowable()} fallback={<span class="inline-block w-5" />}>
-                        <Tooltip>
+                        <Tooltip placement="left">
                             <TooltipTrigger
                                 as={Checkbox}
                                 id={id + props.variable.key + '_checkbox'}
@@ -601,10 +601,10 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
                                 onChange={props.onCheckedChange}
                                 controlClass={props.variable.color.checkboxSolid}
                             />
-                            <TooltipContent>{props.variable.description}</TooltipContent>
+                            <TooltipContent class="max-w-96">{props.variable.description}</TooltipContent>
                         </Tooltip>
                     </Show>
-                    <Tooltip>
+                    <Tooltip placement="left" gutter={36}>
                         <TooltipTrigger
                             as={'label'}
                             for={id + props.variable.key + '_checkbox-input'}
@@ -612,7 +612,7 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
                         >
                             {props.variable.name}
                         </TooltipTrigger>
-                        <TooltipContent>{props.variable.description}</TooltipContent>
+                        <TooltipContent class="max-w-96">{props.variable.description}</TooltipContent>
                     </Tooltip>
                 </div>
             </TableCell>

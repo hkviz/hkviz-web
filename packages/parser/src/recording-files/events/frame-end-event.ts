@@ -152,6 +152,11 @@ export const frameEndEventPlayerDataFieldsArray = [
     playerDataFields.byFieldName.shadeScene,
     playerDataFields.byFieldName.shadePositionX,
     playerDataFields.byFieldName.shadePositionY,
+
+    // dreamgate
+    playerDataFields.byFieldName.dreamGateScene,
+    playerDataFields.byFieldName.dreamGateX,
+    playerDataFields.byFieldName.dreamGateY,
 ] as const;
 export const frameEndEventPlayerDataFields = new Set<PlayerDataField>(frameEndEventPlayerDataFieldsArray);
 
@@ -340,6 +345,11 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
     shadeScene: string;
     shadePositionX: number;
     shadePositionY: number;
+
+    // dreamgate
+    dreamGateScene: string;
+    dreamGateX: number;
+    dreamGateY: number;
 
     constructor(options: FrameEndEventOptions) {
         super(options);
@@ -1001,6 +1011,19 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
         this.shadePositionY = previousShadePositionY
             ? previousShadePositionY.value
             : getDefaultPlayerDataValue(playerDataFields.byFieldName.shadePositionY);
+
+        const previousDreamGateScene = options.getPreviousPlayerData(playerDataFields.byFieldName.dreamGateScene);
+        this.dreamGateScene = previousDreamGateScene
+            ? previousDreamGateScene.value
+            : getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamGateScene);
+        const previousDreamGateX = options.getPreviousPlayerData(playerDataFields.byFieldName.dreamGateX);
+        this.dreamGateX = previousDreamGateX
+            ? previousDreamGateX.value
+            : getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamGateX);
+        const previousDreamGateY = options.getPreviousPlayerData(playerDataFields.byFieldName.dreamGateY);
+        this.dreamGateY = previousDreamGateY
+            ? previousDreamGateY.value
+            : getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamGateY);
 
         // end auto generated from code above
 

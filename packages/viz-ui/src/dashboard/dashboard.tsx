@@ -227,6 +227,11 @@ export interface GameplayDashboardProps {
 export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
     const mobileTab = uiStore.mobileTab;
 
+    const [showMap, setShowMap] = createSignal(false);
+
+    createEffect(() => {
+        setShowMap(true);
+    });
     return (
         <div class="dashboard-grid">
             <DashboardMapOptions />
@@ -239,7 +244,9 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
                 )}
             >
                 <LargeScreenTabs />
-                <HKMap class="absolute inset-0" />
+                <Show when={showMap()}>
+                    <HKMap class="absolute inset-0" />
+                </Show>
                 <RunOverviewTab
                     class="col-start-1 col-end-1 row-start-1 row-end-1"
                     startDate={props.startDate}

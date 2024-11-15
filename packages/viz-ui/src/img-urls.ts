@@ -17,6 +17,7 @@ export const steelMaskImg = '/ingame-sprites/hud/select_game_HUD_0001_health_ste
 
 export const knightPinSrc = '/ingame-sprites/Map_Knight_Pin_Compass.png';
 export const shadePinSrc = '/ingame-sprites/pin/Shade_Pin.png';
+export const dreamGatePinSrc = '/ingame-sprites/pin/Dream_Gate_Pin_0000_3.png';
 
 export const coin2 = '/ingame-sprites/hud/HUD_coin_v020004.png';
 export const healthFrameSteelSoulBrokenImg = '/ingame-sprites/hud/break_hud.png';

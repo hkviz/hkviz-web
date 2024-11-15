@@ -114,7 +114,7 @@ const AggregationVariableRow: Component<{
     const aggregatedVariableValue = createMemo(() => {
         const sceneName = roomDisplayStore.selectedSceneName();
         const aggregations = aggregationStore.data();
-        return sceneName ? aggregations?.countPerScene?.[sceneName]?.[props.variable] ?? 0 : 0;
+        return sceneName ? (aggregations?.countPerScene?.[sceneName]?.[props.variable] ?? 0) : 0;
     });
     const formatted = createMemo(() => {
         return formatAggregatedVariableValue(props.variable, aggregatedVariableValue());
@@ -200,9 +200,9 @@ export function RoomInfo() {
 
     const roomInfos = createMemo(() => {
         const _selectedRoom = selectedRoom();
-        const mainRoomInfo = _selectedRoom ? mainRoomDataBySceneName.get(_selectedRoom) ?? null : null;
+        const mainRoomInfo = _selectedRoom ? (mainRoomDataBySceneName.get(_selectedRoom) ?? null) : null;
         const allRoomInfosIncludingSubsprites = mainRoomInfo
-            ? allRoomDataIncludingSubspritesBySceneName.get(mainRoomInfo.sceneName) ?? null
+            ? (allRoomDataIncludingSubspritesBySceneName.get(mainRoomInfo.sceneName) ?? null)
             : null;
         return { mainRoomInfo, allRoomInfosIncludingSubsprites };
     });
@@ -232,7 +232,7 @@ export function RoomInfo() {
         <Card
             class={cn(
                 cardRoundedMdOnlyClasses,
-                'room-infos-card flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-gradient-to-b from-transparent to-transparent  max-lg:basis-0',
+                'room-infos-card flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-gradient-to-b from-transparent to-transparent max-lg:basis-0',
             )}
             style={{
                 '--tw-gradient-from': gradientColor(),
@@ -291,28 +291,22 @@ export function RoomInfo() {
 
                 <Tooltip>
                     <TooltipTrigger
-                        as={() => (
-                            <Button
-                                variant="outline"
-                                size="icon"
-                                onClick={() => {
-                                    if (selectedRoomPinned()) {
-                                        roomDisplayStore.unpinScene('pin-button-click');
-                                    } else {
-                                        roomDisplayStore.pinScene('pin-button-click');
-                                    }
-                                }}
-                                class={'room-info-pin-button h-8 w-8'}
-                            >
-                                <Show when={selectedRoomPinned()}>
-                                    <PinOff class={'h-4 w-4'} />
-                                </Show>
-                                <Show when={!selectedRoomPinned()}>
-                                    <Pin class="h-4 w-4" />
-                                </Show>
-                            </Button>
-                        )}
-                    />
+                        as={Button}
+                        variant="outline"
+                        size="icon"
+                        onClick={() => {
+                            if (selectedRoomPinned()) {
+                                roomDisplayStore.unpinScene('pin-button-click');
+                            } else {
+                                roomDisplayStore.pinScene('pin-button-click');
+                            }
+                        }}
+                        class={'room-info-pin-button h-8 w-8'}
+                    >
+                        <Show when={selectedRoomPinned()} fallback={<Pin class="h-4 w-4" />}>
+                            <PinOff class={'h-4 w-4'} />
+                        </Show>
+                    </TooltipTrigger>
                     <TooltipContent>
                         <Show when={selectedRoomPinned()}>
                             Remove pin. Will automatically select the room when you hover over it. <br />
