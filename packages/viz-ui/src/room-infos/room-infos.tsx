@@ -1,5 +1,3 @@
-'use client';
-
 import {
     Button,
     Card,
@@ -114,7 +112,7 @@ const AggregationVariableRow: Component<{
     const aggregatedVariableValue = createMemo(() => {
         const sceneName = roomDisplayStore.selectedSceneName();
         const aggregations = aggregationStore.data();
-        return sceneName ? (aggregations?.countPerScene?.[sceneName]?.[props.variable] ?? 0) : 0;
+        return sceneName ? aggregations?.countPerScene?.[sceneName]?.[props.variable] ?? 0 : 0;
     });
     const formatted = createMemo(() => {
         return formatAggregatedVariableValue(props.variable, aggregatedVariableValue());
@@ -200,9 +198,9 @@ export function RoomInfo() {
 
     const roomInfos = createMemo(() => {
         const _selectedRoom = selectedRoom();
-        const mainRoomInfo = _selectedRoom ? (mainRoomDataBySceneName.get(_selectedRoom) ?? null) : null;
+        const mainRoomInfo = _selectedRoom ? mainRoomDataBySceneName.get(_selectedRoom) ?? null : null;
         const allRoomInfosIncludingSubsprites = mainRoomInfo
-            ? (allRoomDataIncludingSubspritesBySceneName.get(mainRoomInfo.sceneName) ?? null)
+            ? allRoomDataIncludingSubspritesBySceneName.get(mainRoomInfo.sceneName) ?? null
             : null;
         return { mainRoomInfo, allRoomInfosIncludingSubsprites };
     });

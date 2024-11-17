@@ -1,5 +1,3 @@
-'use client';
-
 import { Button } from '@hkviz/components';
 import { cn } from '@hkviz/components';
 import { Play } from 'lucide-solid';

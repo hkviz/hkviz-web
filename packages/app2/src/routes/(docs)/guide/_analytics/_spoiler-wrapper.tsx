@@ -1,4 +1,3 @@
-'use client';
 import { Button, Expander } from '@hkviz/components';
 import { type JSXElement, createSignal } from 'solid-js';
 

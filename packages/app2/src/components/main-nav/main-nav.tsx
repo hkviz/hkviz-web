@@ -1,5 +1,3 @@
-'use client';
-
 import { Button, Sheet, SheetContent, SheetTrigger } from '@hkviz/components';
 import { HKVizText } from '@hkviz/viz-ui';
 import { useAuth } from '@solid-mediakit/auth/client';

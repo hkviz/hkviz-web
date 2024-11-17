@@ -1,5 +1,3 @@
-'use client';
-
 import { cn } from '@hkviz/components';
 import { Bounds, Vector2, type RoomInfo } from '@hkviz/parser';
 import { createMemo, type Component } from 'solid-js';

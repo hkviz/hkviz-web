@@ -494,8 +494,8 @@ importers:
         specifier: ^5.4.5
         version: 5.4.5
       valibot:
-        specifier: 0.31.0-rc.2
-        version: 0.31.0-rc.2
+        specifier: 1.0.0-beta.7
+        version: 1.0.0-beta.7(typescript@5.4.5)
       vinxi:
         specifier: ^0.4.3
         version: 0.4.3(@opentelemetry/api@1.8.0)(@planetscale/database@1.19.0)(drizzle-orm@0.29.5)
@@ -16706,8 +16706,15 @@ packages:
       kleur: 4.1.5
       sade: 1.8.1
 
-  /valibot@0.31.0-rc.2:
-    resolution: {integrity: sha512-+w/JZp2dX1+TREkKXlggIC5UriB3skeSk0MiWPD5JfMRmIYkN++OqPRKrfso3CAj5FCGt6VAxUvW1Vn7KLu6AA==}
+  /valibot@1.0.0-beta.7(typescript@5.4.5):
+    resolution: {integrity: sha512-8CsDu3tqyg7quEHMzCOYdQ/d9NlmVQKtd4AlFje6oJpvqo70EIZjSakKIeWltJyNAiUtdtLe0LAk4625gavoeQ==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.4.5
     dev: false
 
   /validate-html-nesting@1.2.2:

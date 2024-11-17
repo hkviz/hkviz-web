@@ -1,5 +1,3 @@
-'use client';
-
 import { type Session } from 'next-auth';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';

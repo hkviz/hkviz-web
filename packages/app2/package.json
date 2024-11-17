@@ -53,7 +53,7 @@
         "tailwindcss": "^3.4.3",
         "tailwindcss-animate": "^1.0.7",
         "typescript": "^5.4.5",
-        "valibot": "0.31.0-rc.2",
+        "valibot": "1.0.0-beta.7",
         "vinxi": "^0.4.3",
         "vite-plugin-lqip": "^0.0.5"
     },

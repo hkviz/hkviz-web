@@ -1,5 +1,3 @@
-'use client';
-
 import { Button, Checkbox, GradientSeparator } from '@hkviz/components';
 import { type Component, For, Suspense, createSignal, createUniqueId } from 'solid-js';
 import { type findRunsInternal } from '~/server/run/_find_runs_internal';

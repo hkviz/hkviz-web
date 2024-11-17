@@ -1,5 +1,3 @@
-'use client';
-
 import { cn } from '@hkviz/components';
 import { mapVisualExtends, roomData } from '@hkviz/parser';
 import { mapZoomStore, roomDisplayStore, uiStore } from '@hkviz/viz';

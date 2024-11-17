@@ -1,5 +1,3 @@
-'use client';
-
 import { cn } from '../lib';
 import { type Component, type JSXElement } from 'solid-js';
 
