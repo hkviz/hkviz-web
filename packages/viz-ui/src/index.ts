@@ -4,7 +4,6 @@ export * from './hkviz-text';
 export * from './img-urls';
 export * from './list';
 export * from './map';
-export * from './rendering';
 export * from './room-infos';
 export * from './splits';
 export * from './time-charts';

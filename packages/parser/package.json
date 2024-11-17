@@ -55,7 +55,7 @@
         "@hkviz/hk-data": "workspace:*",
         "@types/d3": "^7.4.3",
         "d3": "^7.8.5",
-        "tsup": "^8.0.2",
+        "tsup": "^8.3.5",
         "zod": "^3.22.4"
     },
     "devDependencies": {

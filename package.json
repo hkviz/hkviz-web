@@ -15,10 +15,10 @@
     "license": "ISC",
     "packageManager": "pnpm@8.15.8",
     "devDependencies": {
-        "prettier": "^3.2.5",
-        "tsup": "^8.0.2",
+        "prettier": "^3.3.3",
+        "tsup": "^8.3.5",
         "tsup-preset-solid": "^2.2.0",
-        "turbo": "^1.13.3"
+        "turbo": "^1.13.4"
     },
     "dependencies": {
         "esbuild-plugin-solid": "^0.6.0",

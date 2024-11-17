@@ -1,16 +1,15 @@
 'use client';
 
-import { Button, Sheet, SheetTrigger, SheetContent, SheetClose } from '@hkviz/components';
+import { Button, Sheet, SheetContent, SheetTrigger } from '@hkviz/components';
 import { HKVizText } from '@hkviz/viz-ui';
-import { createSession } from '@solid-mediakit/auth/client';
+import { useAuth } from '@solid-mediakit/auth/client';
 import { A, useBeforeLeave } from '@solidjs/router';
-import { BadgeHelp, Globe, LogIn } from 'lucide-solid';
+import { BadgeHelp, Globe, LogIn, Menu } from 'lucide-solid';
 import { ErrorBoundary, Show, Suspense, createSignal, type Component } from 'solid-js';
 import { createLoginUrl } from '~/lib/auth-urls';
 import { CurrentUserDropdown, CurrentUserNavLinks } from './current-user-dropdown';
 import { MenuItem, MenuItemContextProvider } from './main-nav-item';
 import { ThemeSwitcher, type Theme } from './theme-switcher';
-import { Menu } from 'lucide-solid';
 
 export const MainNavLeftSide: Component = () => {
     return (
@@ -35,7 +34,7 @@ export const MainNavLeftSide: Component = () => {
 };
 
 export const MainNav: Component<{ theme: Theme }> = (props) => {
-    const session = createSession();
+    const session = useAuth().session;
     const loginUrl = createLoginUrl();
 
     const [open, setOpen] = createSignal(false);
