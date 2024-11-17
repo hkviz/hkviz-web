@@ -126,6 +126,7 @@ export const HKMapTraces: Component = () => {
             previousEvent = event;
             event = positionEvents[i];
         }
+        ctx.globalAlpha = 1;
 
         // frame end pins
         const frameEvent = animationStore.currentFrameEndEvent();

@@ -55,6 +55,7 @@ const predefinedRoomNames = {
 
     // Cliffs
     Room_nailmaster: 'Nailmaster Mato',
+    Cliffs_05: "Joni's Repose",
 
     // Fog canyon
     Room_Fungus_Shaman: 'Overgrown Mound',
@@ -67,6 +68,11 @@ const predefinedRoomNames = {
     Fungus2_01: 'Queen Station Hub',
     Fungus2_02: 'Queen Station Stag',
     Fungus2_34: 'Queen Station Willoh',
+    Fungus2_30: 'Fungal Core Bottom',
+    Fungus2_29: 'Fungal Core Top',
+    Fungus2_14: 'Mantis Village Top',
+    Fungus2_15: 'Mantis Village Bottom',
+    Fungus2_31: 'Mantis Storage Room',
 
     // City of tears
     Ruins2_10b: 'East elevator', // from city of tears
@@ -78,6 +84,7 @@ const predefinedRoomNames = {
     Ruins2_07: 'Kings Station Broken Stag',
     Ruins2_11_b: 'Tower of Love Lower',
     Ruins2_11: 'Tower of Love Upper',
+    Ruins1_27: 'Fountain Square',
 
     Ruins1_29: 'Storerooms Stag',
     Ruins1_28: 'Storerooms Upper',
@@ -115,10 +122,12 @@ const predefinedRoomNames = {
     Dream_Guardian_Hegemol: "Beast's Den Herrah's Dream",
     Room_spider_small: 'Small Weaver Room',
     // TODO 'Weaver's Den',
+    Room_Mask_Maker: "Mask Maker's Room",
 
     // Queens garden
     Fungus3_40: 'Stag Station',
     Room_Queen: "White Lady's Chamber",
+    Fungus3_49: "Grave of the Traitors' Child",
 
     // Kingdoms edge
     Room_Colosseum_Bronze: 'Trial of the Warrior',
