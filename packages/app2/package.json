@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vinxi dev",
         "dev:tsc": "tsc -w",
-        "build": "vinxi build",
+        "build": "vinxi build  --preset vercel-edge",
         "start": "vinxi start",
         "start:env": "dotenv -- vinxi start"
     },
