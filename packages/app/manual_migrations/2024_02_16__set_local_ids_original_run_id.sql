@@ -1,1 +1,0 @@
-update hkviz_run_local_id set original_run_id = run_id where original_run_id is null;

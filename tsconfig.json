@@ -1,24 +1,19 @@
 {
-    "compilerOptions": {
-        "target": "es2017",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "allowJs": true,
-        "checkJs": false,
-        "skipLibCheck": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "noUncheckedIndexedAccess": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true,
-        "declarationMap": true,
-        "declaration": true
-    },
-    "exclude": ["node_modules", "dist", "build", "**/dist"]
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "allowJs": true,
+    "strict": true,
+    "noEmit": true,
+    "types": ["vinxi/types/client"],
+    "isolatedModules": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  }
 }

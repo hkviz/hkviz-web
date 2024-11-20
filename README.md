@@ -1,46 +1,32 @@
-<p align="center">
-    <a href="https://www.hkviz.org">
-        <img width="128" height="128" src="packages/app/logo/logo_glow.svg">
-    </a>
-</p>
+# SolidStart
 
-# HKViz web
+Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
 
-A site for visualizing player-behavior for [Hollow Knight](https://www.hollowknight.com), like seeing the path one has taken in playthrough, to which boss one had the most difficulties, where one has spent the most time, and more.
+## Creating a project
 
-The mod for recording player behavior is contained in the [hkviz-mod repository](https://github.com/hkviz/hkviz-mod).
+```bash
+# create a new project in the current directory
+npm init solid@latest
 
-Visit [hkviz.org](https://www.hkviz.org/) to get started recording your own gameplay.
+# create a new project in my-app
+npm init solid@latest my-app
+```
 
-## I have Ideas/Feedback for visualizations
+## Developing
 
-Feel free to [open an issue](https://github.com/hkviz/hkviz-web/issues) on this repository, write @olivergrack on discord or contact me via [support@hkviz.org](mailto:support@hkviz.org).
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-## How to use
+```bash
+npm run dev
 
-To get started recording your own gameplay analytics visit [hkviz.org](https://www.hkviz.org).
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-You can also view gameplays from other players, if they send you a link and have set their gameplay to 'public' or 'unlisted' or by visting the
-[public gameplays page](https://www.hkviz.org/run).
+## Building
 
-## For developers
+Solid apps are built with _presets_, which optimise your project for deployment to different environments.
 
-To set this project up locally:
+By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different preset, add it to the `devDependencies` in `package.json` and specify in your `app.config.js`.
 
--   First copy the .env.example file in the root directly, and fill it with connection information for
-    -   a mysql database (where user accounts, and run metadata is stored)
-    -   a r2/s3 bucket (where analytics files are stored)
-    -   auth providers (discord, google, ...). Can be left empty if you are testing with the email login
--   Start the project locally using `npm run dev`
-
-### Project structure
-
-This project is a monorepo, with the following packages:
-
--   `@hkviz/hk-data`: A package containing extracted data from Hollow Knight. It mainly exists so the other packages can be licensed under MIT, while this package contains copyrighted data.
--   `@hkviz/parser`: A package for parsing the recording files created by the mod
--   `@hkviz/app`: The frontend of the project, currently a Next.js app
-
-### License
-
-This project will largely be MIT licensed, with the exception of the `@hkviz/hk-data` package. Currently, this separation is not yet finished. Therefore, licenses are still missing.
+## This project was created with the [Solid CLI](https://solid-cli.netlify.app)

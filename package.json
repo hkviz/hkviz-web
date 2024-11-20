@@ -1,27 +1,20 @@
 {
-    "name": "hkviz-web",
-    "version": "0.0.1",
-    "description": "",
-    "scripts": {
-        "dev:old": "pnpm --parallel --reporter append-only --color=always --reporter=append-only --filter=!app2 run dev",
-        "dev": "pnpm --parallel --reporter append-only --color=always --reporter=append-only --filter=!app run dev",
-        "build:old": "pnpm --recursive --reporter append-only --color=always --reporter=append-only --filter=!app2 run build",
-        "build": "pnpm --recursive --reporter append-only --color=always --reporter=append-only --filter=!app run build",
-        "lint": "pnpm --recursive --reporter append-only --color=always run lint",
-        "lint:fix": "pnpm --recursive --reporter append-only --color=always run lint:fix "
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "packageManager": "pnpm@8.15.8",
-    "devDependencies": {
-        "prettier": "^3.3.3",
-        "tsup": "^8.3.5",
-        "tsup-preset-solid": "^2.2.0",
-        "turbo": "^1.13.4"
-    },
-    "dependencies": {
-        "esbuild-plugin-solid": "^0.6.0",
-        "next": "^14.0.4"
-    }
+  "name": "example-basic",
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "version": "vinxi version"
+  },
+  "dependencies": {
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.15.0",
+    "@solidjs/start": "^1.0.10",
+    "solid-js": "^1.9.2",
+    "vinxi": "^0.4.3"
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }
