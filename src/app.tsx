@@ -3,16 +3,21 @@ import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
 import "./app.css";
+import { MainNav } from "./components/main-nav/main-nav";
 
 export default function App() {
   return (
     <Router
-      root={props => (
+      root={(props) => (
         <MetaProvider>
-          <Title>SolidStart - Basic</Title>
-          <a href="/">Index</a>
-          <a href="/about">About</a>
-          <Suspense>{props.children}</Suspense>
+          <Title>HKViz</Title>
+          <MainNav theme={"dark"} />
+          <Suspense>
+            {props.children}
+            {/* <SessionProvider>{props.children}</SessionProvider> */}
+          </Suspense>
+          {/* <Footer />
+            <Toaster /> */}
         </MetaProvider>
       )}
     >
