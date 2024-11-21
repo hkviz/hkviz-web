@@ -65,9 +65,8 @@ const envPreParse: Record<keyof Env, string | undefined> = {
 
 const parseResult = v.safeParse(envSchema, envPreParse);
 
-console.log(envPreParse);
 if (parseResult.success === false) {
-	throw new Error('env variables parse failed');
+	throw new Error('env variables parse failed\n' + JSON.stringify(parseResult.issues, null, 2));
 }
 
 export const env = parseResult.output as Env;

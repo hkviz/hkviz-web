@@ -1,5 +1,5 @@
 import { cache } from '@solidjs/router';
-import { getUserOrNull } from '../auth/server';
+import { getUserOrNull } from '~/lib/auth/shared';
 import { db } from '../db';
 import { findRunsInternal } from './_find_runs_internal';
 

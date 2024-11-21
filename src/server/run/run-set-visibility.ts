@@ -1,10 +1,10 @@
+import { action } from '@solidjs/router';
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
+import { getUserOrThrow } from '~/lib/auth/shared';
 import { visibilitySchema } from '~/lib/types/visibility';
-import { getUserOrThrow } from '../auth/server';
 import { db } from '../db';
 import { runs } from '../db/schema';
-import { action } from '@solidjs/router';
 
 const RunSetVisibility = v.object({
 	id: v.pipe(v.string(), v.uuid()),

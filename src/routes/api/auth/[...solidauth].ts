@@ -5,10 +5,9 @@ import { authOptions } from '~/lib/auth/auth-options';
 const { GET: defaultGet, POST: defaultPost } = SolidAuth(authOptions);
 
 export const POST = defaultPost;
-export const GET = defaultGet;
-export const GET_TODO: APIHandler = async (event) => {
+export const GET: APIHandler = async (event) => {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
-	const responsePromise: Promise<Response | undefined> = defaultGet(event);
+	const responsePromise = defaultGet(event);
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
 	const paths = event.params.solidauth;
 

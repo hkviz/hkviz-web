@@ -1,8 +1,8 @@
 import { cache } from '@solidjs/router';
 import * as v from 'valibot';
+import { getUserOrNull } from '~/lib/auth/shared';
 import { runSortSchema } from '~/lib/types/run-sort';
 import { isTagCode, tagGroupFromCode, tagGroupSchema, tagSchema } from '~/lib/types/tags';
-import { getUserOrNull } from '../auth/server';
 import { db } from '../db';
 import { findRunsInternal } from './_find_runs_internal';
 

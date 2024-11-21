@@ -1,9 +1,9 @@
+import { cache } from '@solidjs/router';
+import { getUserOrNull } from '~/lib/auth/shared';
 import { raise } from '~/lib/parser';
 import { db } from '~/server/db';
-import { findRunsInternal, type RunFilter } from './_find_runs_internal';
-import { cache } from '@solidjs/router';
 import { assertIsResearcher } from '../researcher';
-import { getUserOrNull } from '../auth/server';
+import { findRunsInternal, type RunFilter } from './_find_runs_internal';
 
 export const getRun = cache(async (id: string) => {
 	'use server';
