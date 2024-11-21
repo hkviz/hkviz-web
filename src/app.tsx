@@ -7,6 +7,7 @@ import { MainNav } from './components/main-nav/main-nav';
 import { SessionProvider } from './lib/auth/client';
 import { Toaster } from './components/ui/toast';
 import { Footer } from './components/footer';
+import { ContentCenterWrapper } from './components/content-wrapper';
 
 export default function App() {
 	return (
@@ -16,7 +17,7 @@ export default function App() {
 					<MetaProvider>
 						<Title>HKViz</Title>
 						<MainNav theme={'dark'} />
-						<Suspense>{props.children}</Suspense>
+						<Suspense fallback={<ContentCenterWrapper />}>{props.children}</Suspense>
 						<Footer />
 						<Toaster />
 					</MetaProvider>

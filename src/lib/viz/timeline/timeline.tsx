@@ -159,7 +159,7 @@ function AnimationTimeLineColorCodes() {
 			onMouseLeave={handleMouseLeave}
 			onClick={handleClick}
 		>
-			<span class="@3xl:block absolute -left-3 top-[50%] hidden translate-x-[-100%] translate-y-[-35%] text-[0.6rem]">
+			<span class="absolute -left-3 top-[50%] hidden translate-x-[-100%] translate-y-[-35%] text-[0.6rem] @3xl:block">
 				Area
 			</span>
 			<canvas ref={(el) => setCanvas(el)} class="absolute inset-0 h-full w-full" />
@@ -272,7 +272,7 @@ export function AnimationTimeLine(props: { class?: string }) {
 	const isV1 = uiStore.isV1;
 
 	return (
-		<div class={cn('@3xl:h-10 @3xl:justify-center relative flex h-5 shrink grow flex-col gap-2', props.class)}>
+		<div class={cn('relative flex h-5 shrink grow flex-col gap-2 @3xl:h-10 @3xl:justify-center', props.class)}>
 			<div>
 				<AnimationTimeLineSlider />
 			</div>
@@ -303,12 +303,12 @@ export function AnimationOptions(props: { class?: string }) {
 			<Card
 				class={cn(
 					cardRoundedMdOnlyClasses,
-					'animation-time g-1 @3xl:grid-cols-[auto_auto_1fr_auto] bottom-0 grid grid-cols-[auto_1fr_auto] flex-row items-center justify-center border-t',
+					'animation-time g-1 bottom-0 grid grid-cols-[auto_1fr_auto] flex-row items-center justify-center border-t @3xl:grid-cols-[auto_auto_1fr_auto]',
 				)}
 			>
 				<PlayButton />
 				<Duration ms={animationStore.msIntoGame()} class="pr-3" withTooltip={true} />
-				<AnimationTimeLine class="@3xl:col-span-1 @3xl:row-auto @3xl:px-0 col-span-3 row-start-2 mx-2" />
+				<AnimationTimeLine class="col-span-3 row-start-2 mx-2 @3xl:col-span-1 @3xl:row-auto @3xl:px-0" />
 				<div class="relative">
 					<Popover>
 						<PopoverTrigger as={Button} variant="ghost">
@@ -333,14 +333,12 @@ export function AnimationOptions(props: { class?: string }) {
 							<div class="relative w-full">
 								<Times class="absolute left-4 top-[50%] translate-y-[-50%]" />
 								<TextField>
-									<TextFieldLabel for="playback-speed-custom">Custom Speed</TextFieldLabel>
 									<TextFieldInput
-										id="playback-speed-custom"
 										type="number"
-										placeholder="Playback speed"
+										placeholder="Custom speed"
 										value={animationSpeedMultiplier().toString()}
 										class="m-2 w-[calc(100%_-_1rem)] rounded-sm pl-8 outline-none"
-										onChange={(v) => {
+										onChange={(v: any) => {
 											try {
 												const vv = Number.parseInt(v.target.value);
 												animationStore.setSpeedMultiplier(vv);

@@ -2,7 +2,7 @@ import { type Component, type JSXElement } from 'solid-js';
 import { cn } from '~/lib/utils';
 
 export type ContentWrapperProps = {
-	children: JSXElement;
+	children?: JSXElement;
 	class?: string;
 	backgroundClass?: string;
 	footerOutOfSight?: boolean;
