@@ -1,4 +1,4 @@
-// import { useAuth } from '@solid-mediakit/auth/client';
+import { useAuth } from "@solid-mediakit/auth/client";
 import { A, useBeforeLeave } from "@solidjs/router";
 import { BadgeHelp, Globe, LogIn, Menu } from "lucide-solid";
 import {
@@ -8,7 +8,7 @@ import {
   createSignal,
   type Component,
 } from "solid-js";
-// import { createLoginUrl } from '~/lib/auth-urls';
+import { createLoginUrl } from "~/lib/auth-urls";
 import { HKVizText } from "../HKVizText";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
@@ -42,8 +42,8 @@ export const MainNavLeftSide: Component = () => {
 };
 
 export const MainNav: Component<{ theme: Theme }> = (props) => {
-  const session = () => {}; // useAuth().session;
-  const loginUrl = () => ""; //createLoginUrl();
+  const session = useAuth().session;
+  const loginUrl = createLoginUrl();
 
   const [open, setOpen] = createSignal(false);
 

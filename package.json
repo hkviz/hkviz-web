@@ -8,22 +8,38 @@
     "version": "vinxi version"
   },
   "dependencies": {
+    "@auth/core": "^0.37.4",
+    "@auth/drizzle-adapter": "^1.7.4",
+    "@aws-sdk/client-s3": "^3.697.0",
+    "@aws-sdk/s3-request-presigner": "^3.697.0",
     "@kobalte/core": "^0.13.7",
+    "@planetscale/database": "^1.19.0",
+    "@solid-mediakit/auth": "^3.1.2",
     "@solidjs/meta": "^0.29.4",
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.0.10",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "d3": "^7.9.0",
+    "drizzle-orm": "^0.36.3",
     "lucide-solid": "^0.460.0",
+    "mailchecker": "^6.0.11",
+    "nodemailer": "^6.9.16",
     "postcss": "^8.4.49",
+    "prettier-plugin-tailwindcss": "^0.6.9",
     "solid-js": "^1.9.2",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.15",
     "tailwindcss-animate": "^1.0.7",
+    "uuid": "^11.0.3",
+    "valibot": "1.0.0-beta.7",
     "vinxi": "^0.4.3"
   },
   "engines": {
     "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/d3": "^7.4.3"
   }
 }

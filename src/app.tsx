@@ -1,3 +1,4 @@
+import { SessionProvider } from "@solid-mediakit/auth/client";
 import { MetaProvider, Title } from "@solidjs/meta";
 import { Router } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
@@ -11,13 +12,12 @@ export default function App() {
       root={(props) => (
         <MetaProvider>
           <Title>HKViz</Title>
-          <MainNav theme={"dark"} />
-          <Suspense>
-            {props.children}
-            {/* <SessionProvider>{props.children}</SessionProvider> */}
-          </Suspense>
-          {/* <Footer />
+          <SessionProvider>
+            <MainNav theme={"dark"} />
+            <Suspense>{props.children}</Suspense>
+            {/* <Footer />
             <Toaster /> */}
+          </SessionProvider>
         </MetaProvider>
       )}
     >

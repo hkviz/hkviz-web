@@ -8,14 +8,14 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "~/components/ui/dropdown-menu";
-// import { createLogoutUrl } from "~/lib/auth-urls";
+import { createLogoutUrl } from "~/lib/auth-urls";
 import { cn } from "~/lib/utils";
 import { MenuItem, MenuItemContextProvider } from "./main-nav-item";
 
 type Session = any;
 
 export const CurrentUserNavLinks: Component<{ session: Session }> = (props) => {
-  const logoutUrl = () => "abc"; // createLogoutUrl();
+  const logoutUrl = createLogoutUrl();
   return (
     <>
       <MenuItem href="/settings" title="Settings" icon={Settings} />
