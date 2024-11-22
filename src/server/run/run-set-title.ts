@@ -2,25 +2,26 @@ import { action } from '@solidjs/router';
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
 import { getUserOrThrow } from '~/lib/auth/shared';
-import { visibilitySchema } from '~/lib/types/visibility';
+import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { db } from '../db';
 import { runs } from '../db/schema';
 
-const runSetVisibilitySchema = v.object({
+const runSetTitleSchema = v.object({
 	id: v.pipe(v.string(), v.uuid()),
-	visibility: visibilitySchema,
+	title: v.pipe(v.string(), v.maxLength(MAX_RUN_TITLE_LENGTH)),
 });
-type RunSetVisibility = v.InferOutput<typeof runSetVisibilitySchema>;
+type RunSetTitle = v.InferOutput<typeof runSetTitleSchema>;
 
-export async function runSetVisibility(unsaveInput: RunSetVisibility) {
+export async function runSetTitle(unsaveInput: RunSetTitle) {
 	'use server';
 	const user = await getUserOrThrow();
-	const input = v.parse(runSetVisibilitySchema, unsaveInput);
+	const input = v.parse(runSetTitleSchema, unsaveInput);
 
 	const userId = user.id;
+
 	const result = await db
 		.update(runs)
-		.set({ visibility: input.visibility })
+		.set({ title: input.title })
 		.where(and(eq(runs.id, input.id), eq(runs.userId, userId)));
 
 	if (result.rowsAffected !== 1) {
@@ -28,4 +29,4 @@ export async function runSetVisibility(unsaveInput: RunSetVisibility) {
 	}
 }
 
-export const runSetVisibilityAction = action(runSetVisibility, 'run-set-visibility');
+export const runSetTitleAction = action(runSetTitle, 'run-set-title');

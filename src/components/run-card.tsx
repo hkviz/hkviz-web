@@ -2,6 +2,7 @@ import { A, useAction } from '@solidjs/router';
 import { ChevronDown } from 'lucide-solid';
 import { For, Index, Match, Show, Switch, createEffect, createSignal, type Component, type JSXElement } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+import { MAX_RUN_TITLE_LENGTH, cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { cn } from '~/lib/utils';
 import {
@@ -20,6 +21,7 @@ import {
 } from '~/lib/viz';
 import { type RunMetadata } from '~/server/run/_find_runs_internal';
 import { type GetRunResult } from '~/server/run/run-get';
+import { runSetTitleAction } from '~/server/run/run-set-title';
 import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
 import { getMapZoneHudBackground } from './area-background';
 import { RunTags } from './run-tags';
@@ -27,6 +29,7 @@ import { Expander } from './ui/additions';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
+import { TextField, TextFieldTextArea } from './ui/text-field';
 import { showToast } from './ui/toast';
 
 function Duration({ seconds }: { seconds: number }) {
@@ -104,7 +107,7 @@ const RunCardEpicInfo: Component<{
 	return (
 		<Show when={props.href} fallback={spans}>
 			{(href) => (
-				<A href={href()} class="hover:drop-shadow-glow-md z-[7] hover:underline">
+				<A href={href()} class="z-[7] hover:underline hover:drop-shadow-glow-md">
 					{spans}
 				</A>
 			)}
@@ -113,99 +116,91 @@ const RunCardEpicInfo: Component<{
 };
 
 const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => {
-	// TODO add title editing
+	const [title, setTitle] = createSignal(props.run.title);
+	createEffect(() => {
+		setTitle(props.run.title);
+	});
+
+	const setTitleAction = useAction(runSetTitleAction);
+	// const setTitleSubmission = useSubmission(runSetTitleAction, ([input]) => input.id === props.run.id);
+
+	let textareaRef!: HTMLTextAreaElement;
+
+	const updateInputSize = () => {
+		if (textareaRef) {
+			textareaRef.style.width = `min(${Math.max(textareaRef.value.length * 1.5 + 5, 10)}ch, 100%)`;
+			textareaRef.style.height = 'auto';
+			textareaRef.style.height = textareaRef.scrollHeight + 'px';
+		}
+	};
+
+	createEffect(() => {
+		if (!textareaRef) return;
+		textareaRef.value = props.run.title ?? '';
+		updateInputSize();
+	});
+
+	const handleTitleChange = (e: InputEvent) => {
+		textareaRef.value = cleanupRunTitle(textareaRef.value, true);
+		updateInputSize();
+	};
+
+	const handleInputBlur = async () => {
+		if (!textareaRef) return;
+
+		const newTitle = cleanupRunTitle(textareaRef.value);
+		if (title() === newTitle) return;
+		setTitle(newTitle);
+		try {
+			const result = await setTitleAction({ id: props.run.id, title: newTitle });
+			showToast({
+				title: 'Successfully updated title',
+			});
+		} catch (ex) {
+			showToast({
+				title: 'Failed to update title',
+				description: (ex as Error)?.message,
+			});
+		}
+	};
+
+	createEffect(() => {
+		if (!textareaRef) return;
+		const resizeObserver = new ResizeObserver(updateInputSize);
+
+		resizeObserver.observe(textareaRef);
+
+		return () => {
+			resizeObserver.disconnect();
+		};
+	});
+
 	return (
-		<Show when={props.run.title}>
-			<h2 class="color-white relative z-[8] font-serif text-xl font-bold drop-shadow-sm md:text-2xl">
-				{props.run.title}
-			</h2>
-		</Show>
+		<>
+			<Show when={props.isOwnRun}>
+				<TextField>
+					<TextFieldTextArea
+						ref={textareaRef}
+						placeholder="Add title"
+						rows={1}
+						onInput={handleTitleChange}
+						onBlur={handleInputBlur}
+						maxLength={MAX_RUN_TITLE_LENGTH}
+						class={
+							'max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm focus:bg-background focus:text-foreground md:text-2xl'
+						}
+					>
+						{title()}
+					</TextFieldTextArea>
+				</TextField>
+			</Show>
+			<Show when={!props.isOwnRun && props.run.title}>
+				<h2 class="color-white relative z-[8] font-serif text-xl font-bold drop-shadow-sm md:text-2xl">
+					{props.run.title}
+				</h2>
+			</Show>
+		</>
 	);
-
-	// const { toast } = useToast();
-
-	// const setTitleMutation = api.run.setTitle.useMutation({
-	//     onSuccess: () => {
-	//         toast({
-	//             title: 'Successfully updated title',
-	//         });
-	//     },
-	//     onError: (err) => {
-	//         toast({
-	//             title: 'Failed to update title',
-	//             description: `${err.data?.code}: ${err?.message}`,
-	//         });
-	//     },
-	// });
-
-	// const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-	// const updateInputSize = useCallback(() => {
-	//     if (textareaRef.current) {
-	//         textareaRef.current.style.width = `min(${Math.max(textareaRef.current.value.length * 1.5 + 5, 10)}ch, 100%)`;
-	//         textareaRef.current.style.height = 'auto';
-	//         textareaRef.current.style.height = textareaRef.current.scrollHeight + 'px';
-	//     }
-	// }, []);
-
-	// useEffect(() => {
-	//     if (!textareaRef.current) return;
-	//     textareaRef.current.value = run.title ?? '';
-	//     updateInputSize();
-	// }, [run.title, updateInputSize]);
-
-	// const handleTitleChange: FormEventHandler<HTMLTextAreaElement> = useCallback(
-	//     (e) => {
-	//         e.currentTarget.value = cleanupRunTitle(e.currentTarget.value, true);
-	//         updateInputSize();
-	//     },
-	//     [updateInputSize],
-	// );
-
-	// const handleInputBlur = useCallback(() => {
-	//     if (!textareaRef.current) return;
-
-	//     const title = cleanupRunTitle(textareaRef.current.value);
-	//     if (run.title === title) return;
-	//     run.title = title;
-	//     setTitleMutation.mutate({ id: run.id, title });
-	// }, [run, setTitleMutation]);
-
-	// useEffect(() => {
-	//     if (!textareaRef.current) return;
-	//     const resizeObserver = new ResizeObserver(updateInputSize);
-
-	//     resizeObserver.observe(textareaRef.current);
-
-	//     return () => {
-	//         resizeObserver.disconnect();
-	//     };
-	// }, [updateInputSize]);
-
-	// if (isOwnRun) {
-	//     return (
-	//         <Textarea
-	//             ref={textareaRef}
-	//             placeholder="Add title"
-	//             rows={1}
-	//             defaultValue={run.title ?? ''}
-	//             onInput={handleTitleChange}
-	//             onBlur={handleInputBlur}
-	//             maxLength={MAX_RUN_TITLE_LENGTH}
-	//             class={
-	//                 'max-w-auto focus:bg-background focus:text-foreground relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm md:text-2xl'
-	//             }
-	//         />
-	//     );
-	// } else if (run.title) {
-	//     return (
-	//         <h2 class="color-white relative z-[8] font-serif text-xl font-bold drop-shadow-sm md:text-2xl">
-	//             {run.title}
-	//         </h2>
-	//     );
-	// } else {
-	//     return undefined;
-	// }
 };
 
 export const RunCard: Component<{
@@ -285,15 +280,15 @@ export const RunCard: Component<{
 	const soulOrbImgSrc = () => (isSteelSoul() ? vesselSteelSoulImg : vesselImg);
 	const healthImgSrc = () => (isSteelSoul() ? steelMaskImg : maskImg);
 
-	const VisibilityIcon = () => visibilityByCode(visibility()).Icon;
+	const visibilityIcon = () => visibilityByCode(visibility()).Icon;
 
 	const isLoading = () => false;
 
 	return (
-		<Expander expanded={!isRemoved()}>
+		<Expander expanded={!isRemoved()} class="overflow-auto">
 			<div
 				class={cn(
-					'focus-within:drop-shadow-glow-md hover:drop-shadow-glow-sm group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pl-4 pr-3 text-white transition hover:bg-black hover:text-white active:drop-shadow-none md:flex-row',
+					'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pl-4 pr-3 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
 					isRemoved() ? 'scale-125 opacity-0' : '',
 					isLoading() ? 'grayscale' : '',
 				)}
@@ -322,7 +317,7 @@ export const RunCard: Component<{
 							<DropdownMenu>
 								<DropdownMenuTrigger as={Button<'button'>} class="inline-flex h-auto p-0">
 									<Badge class={'relative z-[8] overflow-hidden'} variant="secondary">
-										<Dynamic component={VisibilityIcon()} class="h-4 w-4" />
+										<Dynamic component={visibilityIcon()} class="h-4 w-4" />
 										<ChevronDown class="-mr-1 ml-1 h-3 w-3" />
 									</Badge>
 								</DropdownMenuTrigger>
@@ -375,7 +370,7 @@ export const RunCard: Component<{
 									<img
 										src={coin2Img}
 										alt="Geo icon"
-										class="drop-shadow-glow-md inline-block w-7 p-1"
+										class="inline-block w-7 p-1 drop-shadow-glow-md"
 									/>
 									<span class="text-xl font-semibold sm:text-2xl">{gameState()?.geo ?? '?'}</span>
 								</span>
@@ -384,7 +379,7 @@ export const RunCard: Component<{
 										<img
 											src={gameState()?.dreamNailUpgraded ? dreamNailAwokenImg : dreamNailImg}
 											alt="Essence icon"
-											class="drop-shadow-glow-md -mb-3 -mt-4 inline-block w-7 p-1 brightness-110 sm:w-9"
+											class="-mb-3 -mt-4 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
 										/>
 										<span class="text-xl font-semibold sm:text-2xl">{gameState().dreamOrbs}</span>
 									</span>
