@@ -9,6 +9,7 @@ import { findRunsInternal } from './_find_runs_internal';
 export const RunFilterParamsSchema = v.object({
 	tag: v.optional(v.union([tagSchema, tagGroupSchema])),
 	sort: v.optional(runSortSchema),
+	userId: v.optional(v.pipe(v.string(), v.uuid())),
 });
 export type RunFilterParams = v.InferOutput<typeof RunFilterParamsSchema>;
 
@@ -28,6 +29,7 @@ export const findPublicRuns = cache(async (unsaveFilter: RunFilterParams) => {
 					: tagGroupFromCode(filter.tag).tags.map((it) => it.code)
 				: undefined,
 			sort: filter.sort ?? 'favorites',
+			userId: filter.userId,
 			archived: [false],
 		},
 		currentUser: user ?? undefined,

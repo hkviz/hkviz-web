@@ -1,4 +1,4 @@
-import { A, useAction } from '@solidjs/router';
+import { A, useAction, useSubmission } from '@solidjs/router';
 import { ChevronDown } from 'lucide-solid';
 import { For, Index, Match, Show, Switch, createEffect, createSignal, type Component, type JSXElement } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
@@ -122,7 +122,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 	});
 
 	const setTitleAction = useAction(runSetTitleAction);
-	// const setTitleSubmission = useSubmission(runSetTitleAction, ([input]) => input.id === props.run.id);
+	const titleSubmission = useSubmission(runSetTitleAction, ([input]) => input.id === props.run.id);
 
 	let textareaRef!: HTMLTextAreaElement;
 
@@ -186,6 +186,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 						onInput={handleTitleChange}
 						onBlur={handleInputBlur}
 						maxLength={MAX_RUN_TITLE_LENGTH}
+						disabled={titleSubmission.pending}
 						class={
 							'max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm focus:bg-background focus:text-foreground md:text-2xl'
 						}

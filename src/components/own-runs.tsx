@@ -1,4 +1,4 @@
-import { type Component, For, Suspense, createSignal, createUniqueId } from 'solid-js';
+import { type Component, For, Show, Suspense, createSignal, createUniqueId } from 'solid-js';
 import { type findRunsInternal } from '~/server/run/_find_runs_internal';
 import { RunCard } from './run-card';
 import { BottomInteractionRow, BottomInteractionRowText } from './bottom_interaction';
@@ -73,7 +73,7 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 	const onRunClickIfInCombineMode = inCombineMode ? onRunClick : undefined;
 
 	return (
-		<>
+		<Show when={props.runs && props.runs.length > 0}>
 			<GradientSeparator />
 			<div class="w-full">
 				<div class="mx-auto max-w-[800px]">
@@ -128,6 +128,6 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 					</Button>
 				</BottomInteractionRow>
 			</div>
-		</>
+		</Show>
 	);
 };

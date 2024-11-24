@@ -1,24 +1,22 @@
-import { getServerAuthSession } from '~/server/auth';
-import { apiFromServer } from '~/trpc/from-server';
-import { AuthNeeded } from '../../_components/auth-needed';
-import { ContentCenterWrapper } from '../../../../../app2/src/components/content-wrapper';
+import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { AccountDeletionForm } from './_components';
+import { useSession } from '~/lib/auth/client';
 
 export default async function Upload() {
-    const session = await getServerAuthSession();
+	const session = useSession();
 
-    if (!session) {
-        return <AuthNeeded />;
-    }
+	const currentName = () => session()?.user?.name ?? '';
 
-    const removalRequestId = await (await apiFromServer()).account.initiateAccountRemovalRequest();
+	return <Show when={session()} fallback={<AuthNeeded />}></Show>;
 
-    return (
-        <ContentCenterWrapper>
-            <div className="container flex flex-col items-center justify-center gap-4">
-                {/* <h1 className="text-4xl font-extrabold tracking-tight">Upload a Hollow Knight run</h1> */}
-                <AccountDeletionForm removalRequestId={removalRequestId} />
-            </div>
-        </ContentCenterWrapper>
-    );
+	const removalRequestId = await (await apiFromServer()).account.initiateAccountRemovalRequest();
+
+	return (
+		<ContentCenterWrapper>
+			<div class="container flex flex-col items-center justify-center gap-4">
+				{/* <h1 className="text-4xl font-extrabold tracking-tight">Upload a Hollow Knight run</h1> */}
+				<AccountDeletionForm removalRequestId={removalRequestId} />
+			</div>
+		</ContentCenterWrapper>
+	);
 }

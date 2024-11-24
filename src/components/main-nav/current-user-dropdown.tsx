@@ -18,7 +18,7 @@ export const CurrentUserNavLinks: Component<{ session: AuthSession }> = (props) 
 		<>
 			<MenuItem href="/settings" title="Settings" icon={Settings} />
 			<MenuItem href="/archive" title="Archived gameplays" icon={Archive} />
-			<MenuItem href={logoutUrl()} title="Logout" icon={LogOut} useNativeLink={true} />
+			<MenuItem href={logoutUrl()} title="Logout" icon={LogOut} useNativeLink={true} target="_self" />
 		</>
 	);
 };

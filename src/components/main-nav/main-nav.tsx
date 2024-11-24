@@ -62,7 +62,13 @@ export const MainNav: Component<{ theme: Theme }> = (props) => {
 						<Show
 							when={session()}
 							fallback={
-								<Button as={'a'} href={loginUrl()} variant="ghost" class="hidden md:inline-flex">
+								<Button
+									as={'a'}
+									href={loginUrl()}
+									variant="ghost"
+									class="hidden md:inline-flex"
+									target="_self"
+								>
 									Login
 								</Button>
 							}

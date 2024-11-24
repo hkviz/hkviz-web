@@ -184,7 +184,9 @@ export function aggregateRecording(recording: CombinedRecording) {
 		} else if (event instanceof HeroStateEvent && event.field.name === 'dead' && event.value) {
 			// counted in frame end event, since deaths in pantheons (and probably dreams) don't trigger heroState dead
 			// addToScenes(currentVirtualScenes, 'deaths', 1);
-		} else if (event instanceof HeroStateEvent && event.field.name === 'focusing') {
+		} else if (event instanceof HeroStateEvent && event.field.name === 'focusing' && event.value) {
+			// TODO needs some work, since probably not counting continuous focusing, and also not able to
+			// differentiate between successful and unsuccessful focusing
 			addToScenes(currentVirtualScenes, 'focusing', 1);
 		} else if (event instanceof SpellFireballEvent) {
 			addToScenes(currentVirtualScenes, 'spellFireball', 1);
