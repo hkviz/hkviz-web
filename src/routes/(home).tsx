@@ -6,11 +6,11 @@ import { OwnRuns } from '~/components/own-runs';
 import { GradientSeparator } from '~/components/ui/additions';
 import { findOwnRuns } from '~/server/run/find-own-runs';
 
-export const route: RouteDefinition = {
+export const route = {
 	load: () => {
 		void findOwnRuns();
 	},
-};
+} satisfies RouteDefinition;
 
 export default function HomePage() {
 	const runs = createAsync(() => findOwnRuns());

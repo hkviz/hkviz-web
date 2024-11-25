@@ -56,6 +56,9 @@ dependencies:
   '@tailwindcss/typography':
     specifier: ^0.5.15
     version: 0.5.15(tailwindcss@3.4.15)
+  '@types/nodemailer':
+    specifier: ^6.4.17
+    version: 6.4.17
   '@vinxi/plugin-mdx':
     specifier: ^3.7.2
     version: 3.7.2(@mdx-js/mdx@2.3.0)
@@ -4939,6 +4942,12 @@ packages:
     resolution: {integrity: sha512-p8Yy/8sw1caA8CdRIQBG5tiLHmxtQKObCijiAa9Ez+d4+PRffM4054xbju0msf+cvhJpnFEeNjxmVT/0ipktrg==}
     dependencies:
       undici-types: 6.19.8
+    dev: false
+
+  /@types/nodemailer@6.4.17:
+    resolution: {integrity: sha512-I9CCaIp6DTldEg7vyUTZi8+9Vo0hi1/T8gv3C89yk1rSAAzoKQ8H8ki/jBYJSFoH/BisgLP8tkZMlQ91CIquww==}
+    dependencies:
+      '@types/node': 22.9.1
     dev: false
 
   /@types/resolve@1.20.2:

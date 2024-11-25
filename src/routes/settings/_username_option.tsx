@@ -1,23 +1,26 @@
+import { useAction, useSubmission } from '@solidjs/router';
 import { createSignal } from 'solid-js';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { showToast } from '~/components/ui/toast';
+import { errorGetMessage } from '~/lib/error-get-message';
+import { accountSetUsernameAction } from '~/server/account/set-username';
 
 export function UserNameSettingsOption(props: { currentName: string }) {
 	const [userName, setUsername] = createSignal(props.currentName);
 
-	// todo
-	// const setUsernameMutation = api.account.setUsername.useMutation({
-	// 	onSuccess() {
-	// 		showToast({ title: 'Successfully set username' });
-	// 		router.refresh();
-	// 	},
-	// });
+	const accountSetUsername = useAction(accountSetUsernameAction);
+	const accountSetUsernameSubmission = useSubmission(accountSetUsernameAction);
 
-	function handleUsernameChange(event: FocusEvent) {
+	async function handleUsernameChange(event: FocusEvent) {
 		const eventName = (event.target as HTMLInputElement).value;
 		if (userName() != eventName) {
 			setUsername(eventName);
-			// setUsernameMutation.mutate({ username: eventName });
+			try {
+				await accountSetUsername({ username: eventName });
+				showToast({ title: 'Successfully set username' });
+			} catch (error) {
+				showToast({ title: 'Failed to set username', description: errorGetMessage(error) });
+			}
 		}
 	}
 
@@ -28,7 +31,12 @@ export function UserNameSettingsOption(props: { currentName: string }) {
 				<p class="text-sm text-gray-500">Choose the name, that is displayed next to your public gameplays.</p>
 			</div>
 			<TextField>
-				<TextFieldInput type="text" value={userName()} onBlur={handleUsernameChange} />
+				<TextFieldInput
+					type="text"
+					disabled={accountSetUsernameSubmission.pending}
+					value={userName()}
+					onBlur={handleUsernameChange}
+				/>
 			</TextField>
 		</div>
 	);
