@@ -6,33 +6,16 @@ import { GradientSeparator } from './ui/additions';
 import { Checkbox } from './ui/checkbox';
 import { Button } from './ui/button';
 import { Key } from '@solid-primitives/keyed';
+import { useAction, useSubmission } from '@solidjs/router';
+import { runCombine } from '~/server/run/run-combine';
+import { showToast } from './ui/toast';
+import { errorGetMessage } from '~/lib/error-get-message';
 
 interface OwnRunsPageProps {
 	runs: Awaited<ReturnType<typeof findRunsInternal>>;
 }
 
 export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
-	// TODO
-	// const { toast } = useToast();
-	// const router = useRouter();
-
-	// const combineRunMutation = api.run.combine.useMutation({
-	//     onSuccess: () => {
-	//         toast({
-	//             title: 'Gameplays successfully combined',
-	//         });
-	//         setSelectedRunIds([]);
-	//         router.refresh();
-	//     },
-	//     onError: (error) => {
-	//         console.log('failed to combine gameplays', error);
-	//         toast({
-	//             title: 'Failed to combine gameplays',
-	//             description: error.message,
-	//         });
-	//     },
-	// });
-
 	const id = createUniqueId();
 	const [selectedRunIds, setSelectedRunIds] = createSignal<string[]>([]);
 
@@ -48,18 +31,30 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 		setSelectedRunIds([]);
 	}
 
-	function combine() {
-		// TODO
-		// combineRunMutation.mutate({
-		//     runIds: selectedRunIds,
-		// });
+	const combineAction = useAction(runCombine);
+	const combineSubmission = useSubmission(runCombine);
+
+	async function combine() {
+		try {
+			await combineAction({ runIds: selectedRunIds() });
+			showToast({
+				title: 'Gameplays successfully combined',
+			});
+			setSelectedRunIds([]);
+		} catch (e) {
+			showToast({
+				title: 'Failed to combine gameplays',
+				description: errorGetMessage(e),
+			});
+			console.log('failed to combine gameplays', e);
+		}
 	}
 
 	const onCombineClicked = (runId: string) => {
 		setSelectedRunIds((selectedRunIds) => [...selectedRunIds, runId]);
 	};
 
-	const inCombineMode = selectedRunIds.length >= 1;
+	const inCombineMode = () => selectedRunIds().length >= 1;
 
 	const onRunClick = (runId: string) => {
 		setSelectedRunIds((selectedRunIds) => {
@@ -71,7 +66,7 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 		});
 	};
 
-	const onRunClickIfInCombineMode = inCombineMode ? onRunClick : undefined;
+	const onRunClickIfInCombineMode = () => (inCombineMode() ? onRunClick : undefined);
 
 	return (
 		<Show when={props.runs && props.runs.length > 0}>
@@ -85,21 +80,22 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 								const checkboxId = `run-checkbox-${id}-${run().id}`;
 								return (
 									<li class="flex flex-row items-center gap-3">
-										{inCombineMode && (
+										<Show when={inCombineMode()}>
 											<Checkbox
 												id={checkboxId}
 												checked={selectedRunIds().includes(run().id)}
+												disabled={combineSubmission.pending}
 												onChange={(checked) =>
 													handleCheckedChanged(run().id, checked as boolean)
 												}
 											/>
-										)}
+										</Show>
 										<div class="flex-grow">
 											<RunCard
 												run={run()}
 												showUser={false}
 												isOwnRun={true}
-												onClick={onRunClickIfInCombineMode}
+												onClick={onRunClickIfInCombineMode()}
 												onCombineClicked={onCombineClicked}
 											/>
 										</div>
@@ -109,23 +105,19 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 						</Key>
 					</ul>
 				</div>
-				<BottomInteractionRow isVisible={inCombineMode} mode="fixed">
+				<BottomInteractionRow isVisible={inCombineMode()} mode="fixed">
 					<BottomInteractionRowText>
-						{selectedRunIds.length > 1
-							? `${selectedRunIds.length} gameplays selected`
-							: 'Select gameplays to combine into one'}
+						<Show when={selectedRunIds().length > 1} fallback={<>Select gameplays to combine into one</>}>
+							{selectedRunIds().length} gameplays selected
+						</Show>
 					</BottomInteractionRowText>
-					<Button
-						onClick={cancelCombine}
-						variant="ghost"
-						disabled={false /*TODO combineRunMutation.isLoading}>*/}
-					>
+					<Button onClick={cancelCombine} variant="ghost" disabled={combineSubmission.pending}>
 						Cancel
 					</Button>
 					<Button
 						onClick={combine}
 						variant="default"
-						disabled={selectedRunIds().length < 2 || false /*TODO combineRunMutation.isLoading}>*/}
+						disabled={selectedRunIds().length < 2 || combineSubmission.pending}
 					>
 						Combine
 					</Button>

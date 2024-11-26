@@ -1,14 +1,7 @@
-import {
-	AlertDialog,
-	AlertDialogAction,
-	AlertDialogCancel,
-	AlertDialogContent,
-	AlertDialogDescription,
-	AlertDialogFooter,
-	AlertDialogHeader,
-	AlertDialogTitle,
-} from '@/components/ui/alert-dialog';
-import { Button } from '@/components/ui/button';
+import { useAction, useSubmission } from '@solidjs/router';
+import { Archive, ArchiveRestore, Merge, MoreHorizontal, Split, Trash } from 'lucide-solid';
+import { createSignal, Show } from 'solid-js';
+import { Button } from '~/components/ui/button';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -16,90 +9,85 @@ import {
 	DropdownMenuItem,
 	DropdownMenuSeparator,
 	DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { useToast } from '@/components/ui/use-toast';
-import { Archive, ArchiveRestore, Merge, MoreHorizontal, Split, Trash } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { type RunMetadata } from '~/server/api/routers/run/runs-find';
-import { api } from '~/trpc/react';
+} from '~/components/ui/dropdown-menu';
+import { errorGetMessage } from '~/lib/error-get-message';
+import type { RunMetadata } from '~/server/run/_find_runs_internal';
+import { runUncombine } from '~/server/run/run-combine';
+import { showToast } from './ui/toast';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
+import { AlertDialogDescription, AlertDialogTitle } from './ui/alert-dialog';
+import { runArchive, runDelete } from '~/server/run/run-deletion';
 
-export function RunCardDropdownMenu({
-	run,
-	handleArchiveToggle,
-	handleDelete,
-	onCombineClicked,
-}: {
+export function RunCardDropdownMenu(props: {
 	run: RunMetadata;
 	handleArchiveToggle: () => void;
 	handleDelete: () => void;
 	onCombineClicked: undefined | null | ((runId: string) => void);
 }) {
-	const { toast } = useToast();
-	const router = useRouter();
+	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = createSignal(false);
+	const [isSplitDialogOpen, setIsSplitDialogOpen] = createSignal(false);
 
-	const uncombineMutation = api.run.uncombine.useMutation({
-		onSuccess: () => {
-			toast({
+	const uncombineAction = useAction(runUncombine);
+	const uncombineSubmission = useSubmission(runUncombine);
+	const deletionSubmission = useSubmission(runDelete);
+	const archiveSubmission = useSubmission(runArchive);
+
+	const isRemoving = () => deletionSubmission.pending || archiveSubmission.pending;
+
+	async function uncombine() {
+		try {
+			await uncombineAction({ runId: props.run.id });
+			showToast({
 				title: 'Gameplays successfully split',
 			});
-			router.refresh();
-		},
-		onError: (error) => {
-			console.log('failed to split gameplays', error);
-			toast({
+		} catch (e) {
+			showToast({
 				title: 'Failed to split gameplays',
-				description: error.message,
+				description: errorGetMessage(e),
 			});
-		},
-	});
-
-	function handleSplit() {
-		uncombineMutation.mutate({ runId: run.id });
+		} finally {
+			setIsSplitDialogOpen(false);
+		}
 	}
-
-	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
-	const [isSplitDialogOpen, setIsSplitDialogOpen] = useState(false);
 
 	// weirdly structured alert outside of dropdown bc of:
 	// https://stackoverflow.com/questions/77185827/shadcn-dialog-inside-of-dropdown-closes-automatically
+	// now that we are using solid-ui one could test if this is still the case
+
 	return (
 		<>
 			<DropdownMenu>
-				<DropdownMenuTrigger asChild>
-					<Button
-						variant="ghost"
-						size="icon"
-						class="absolute bottom-1 right-[2.5rem] z-[7] flex h-6 items-center rounded-sm"
-					>
-						<MoreHorizontal class="h-6 w-6" />
-					</Button>
+				<DropdownMenuTrigger
+					as={Button<'button'>}
+					variant="ghost"
+					size="icon"
+					class="absolute bottom-1 right-[2.5rem] z-[7] flex h-6 items-center rounded-sm"
+				>
+					<MoreHorizontal class="h-6 w-6" />
 				</DropdownMenuTrigger>
-				<DropdownMenuContent class="-top-2 w-56" side="top" align="end" alignOffset={-10}>
-					{!run.archived && (
-						<>
-							{run.isCombinedRun && (
+				<DropdownMenuContent class="w-56">
+					<Show when={!props.run.archived}>
+						<Show when={props.run.isCombinedRun}>
+							<Tooltip>
+								<TooltipTrigger as={DropdownMenuItem} onClick={() => setIsSplitDialogOpen(true)}>
+									<Split class="mr-2 h-4 w-4" />
+									<span>Split</span>
+								</TooltipTrigger>
+								<TooltipContent>
+									Use to split the gameplay into its original parts, after it was wrongly combined.
+								</TooltipContent>
+							</Tooltip>
+						</Show>
+						<Show when={props.onCombineClicked}>
+							{(onCombineClicked) => (
 								<Tooltip>
-									<TooltipTrigger asChild>
-										<DropdownMenuItem onClick={() => setIsSplitDialogOpen(true)}>
-											<Split class="mr-2 h-4 w-4" />
-											<span>Split</span>
-										</DropdownMenuItem>
-									</TooltipTrigger>
-									<TooltipContent>
-										Use to split the gameplay into its original parts, after it was wrongly
-										combined.
-									</TooltipContent>
-								</Tooltip>
-							)}
-							{onCombineClicked && (
-								<Tooltip>
-									<TooltipTrigger asChild>
-										<DropdownMenuItem onClick={() => onCombineClicked(run.id)}>
-											<Merge class="mr-2 h-4 w-4" />
-											<span>Combine</span>
-										</DropdownMenuItem>
+									<TooltipTrigger
+										as={DropdownMenuItem}
+										onClick={() => onCombineClicked()(props.run.id)}
+									>
+										<Merge class="mr-2 h-4 w-4" />
+										<span>Combine</span>
 									</TooltipTrigger>
 									<TooltipContent>
 										Use combine to merge a single gameplay, which has wrongly been created as
@@ -107,21 +95,21 @@ export function RunCardDropdownMenu({
 									</TooltipContent>
 								</Tooltip>
 							)}
-							<DropdownMenuSeparator />
-						</>
-					)}
-					{run.archived && (
-						<DropdownMenuItem onClick={handleArchiveToggle}>
+						</Show>
+						<DropdownMenuSeparator />
+					</Show>
+					<Show when={props.run.archived}>
+						<DropdownMenuItem onClick={props.handleArchiveToggle}>
 							<ArchiveRestore class="mr-2 h-4 w-4" />
 							<span>Unarchive</span>
 						</DropdownMenuItem>
-					)}
-					{!run.archived && (
-						<DropdownMenuItem onClick={handleArchiveToggle}>
+					</Show>
+					<Show when={!props.run.archived}>
+						<DropdownMenuItem onClick={props.handleArchiveToggle}>
 							<Archive class="mr-2 h-4 w-4" />
 							<span>Archive</span>
 						</DropdownMenuItem>
-					)}
+					</Show>
 					<DropdownMenuGroup>
 						<DropdownMenuItem onClick={() => setIsDeleteDialogOpen(true)}>
 							<Trash class="mr-2 h-4 w-4" />
@@ -131,13 +119,15 @@ export function RunCardDropdownMenu({
 				</DropdownMenuContent>
 			</DropdownMenu>
 			{/* Delete dialog */}
-			<AlertDialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
-				<AlertDialogContent>
-					<AlertDialogHeader>
-						<AlertDialogTitle>
-							{run.archived ? 'Delete this run permanently?' : 'Delete or Archive this gameplay?'}
-						</AlertDialogTitle>
-						<AlertDialogDescription>
+			<Dialog open={isDeleteDialogOpen()} onOpenChange={setIsDeleteDialogOpen}>
+				<DialogContent>
+					<DialogHeader>
+						<DialogTitle>
+							<Show when={props.run.archived} fallback={<>Delete or Archive this gameplay?</>}>
+								Delete this run permanently?
+							</Show>
+						</DialogTitle>
+						<DialogDescription>
 							<ul class="list-disc pl-5">
 								<li>
 									<b class="text-bold">Delete can not be undone</b>, your data will be deleted
@@ -145,45 +135,57 @@ export function RunCardDropdownMenu({
 									Playing again on this profile while using the mod, will create a new gamplay without
 									the previous data.
 								</li>
-								{!run.archived && (
+								<Show when={!props.run.archived}>
 									<li>
 										<b class="text-bold">Archive</b> will hide this gameplay from your gameplays and
 										other views, you can still view it inside your archive. <br />
 										Playing again on this profile while using the mod, will record the data into
 										your archive.
 									</li>
-								)}
+								</Show>
 							</ul>
-						</AlertDialogDescription>
-					</AlertDialogHeader>
-					<AlertDialogFooter>
-						<AlertDialogCancel>Cancel</AlertDialogCancel>
-						{!run.archived && (
-							<AlertDialogAction onClick={handleArchiveToggle}>
-								{run.archived ? 'Unarchive' : 'Archive'}
-							</AlertDialogAction>
-						)}
-						<AlertDialogAction onClick={handleDelete}>Delete</AlertDialogAction>
-					</AlertDialogFooter>
-				</AlertDialogContent>
-			</AlertDialog>
+						</DialogDescription>
+					</DialogHeader>
+					<DialogFooter>
+						<Button variant="outline" onClick={() => setIsDeleteDialogOpen(false)} disabled={isRemoving()}>
+							Cancel
+						</Button>
+						<Show when={!props.run.archived}>
+							<Button onClick={props.handleArchiveToggle} disabled={isRemoving()}>
+								{props.run.archived ? 'Unarchive' : 'Archive'}
+							</Button>
+						</Show>
+						<Button onClick={props.handleDelete} disabled={isRemoving()}>
+							Delete
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
 			{/* Split dialog */}
-			<AlertDialog open={isSplitDialogOpen} onOpenChange={setIsSplitDialogOpen}>
-				<AlertDialogContent>
-					<AlertDialogHeader>
+			<Dialog open={isSplitDialogOpen()} onOpenChange={setIsSplitDialogOpen}>
+				<DialogContent>
+					<DialogHeader>
 						<AlertDialogTitle>
 							Split all already combined gameplays into individual gameplays?
 						</AlertDialogTitle>
 						<AlertDialogDescription>
 							You can combine parts of the gameplays again later.
 						</AlertDialogDescription>
-					</AlertDialogHeader>
-					<AlertDialogFooter>
-						<AlertDialogCancel>Cancel</AlertDialogCancel>
-						<AlertDialogAction onClick={handleSplit}>Split</AlertDialogAction>
-					</AlertDialogFooter>
-				</AlertDialogContent>
-			</AlertDialog>
+					</DialogHeader>
+					<DialogFooter>
+						<Button
+							variant="outline"
+							onClick={() => setIsSplitDialogOpen(false)}
+							disabled={uncombineSubmission.pending}
+						>
+							Cancel
+						</Button>
+						<Button onClick={uncombine} disabled={uncombineSubmission.pending}>
+							Split
+						</Button>
+					</DialogFooter>
+				</DialogContent>
+			</Dialog>
 		</>
 	);
 }

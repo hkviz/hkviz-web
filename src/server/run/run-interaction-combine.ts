@@ -5,66 +5,76 @@ import { type DB } from '~/server/db';
 import { runInteraction, runs } from '~/server/db/schema';
 
 export async function runInteractionCombine(db: DB, chosenId: string, runIdsWithoutChosen: string[]) {
-    const interactions = await db.query.runInteraction.findMany({
-        where: (runInteraction, { and, inArray }) =>
-            and(inArray(runInteraction.runId, [chosenId, ...runIdsWithoutChosen])),
-    });
+	const interactions = await db.query.runInteraction.findMany({
+		where: (runInteraction, { and, inArray }) =>
+			and(inArray(runInteraction.runId, [chosenId, ...runIdsWithoutChosen])),
+	});
 
-    const groupedInteractions = d3.group(interactions, (i) => `${i.userId}_${i.type}`);
+	if (interactions.length === 0) {
+		return;
+	}
 
-    for (const group of groupedInteractions.values()) {
-        const { userId, type } = group[0]!;
-        const kept = group.find((i) => i.runId === chosenId);
+	const groupedInteractions = d3.group(interactions, (i) => `${i.userId}_${i.type}`);
 
-        const originalRunIds = group.flatMap((i) => i.originalRunIds);
+	for (const [_, group] of groupedInteractions.entries()) {
+		const { userId, type } = group[0]!;
+		const kept = group.find((i) => i.runId === chosenId);
 
-        const result = kept
-            ? await db
-                  .update(runInteraction)
-                  .set({ originalRunIds: [...new Set([...kept.originalRunIds, ...originalRunIds])] })
-                  .where(
-                      and(
-                          eq(runInteraction.runId, chosenId),
-                          eq(runInteraction.userId, userId),
-                          eq(runInteraction.type, type),
-                      ),
-                  )
-            : await db.insert(runInteraction).values({ userId, runId: chosenId, originalRunIds, type });
+		const originalRunIds = group.flatMap((i) => i.originalRunIds);
 
-        if (result.rowsAffected !== 1) {
-            console.error('Failed to combine interactions', chosenId, userId, type, result.rowsAffected);
-        }
-    }
+		const result = kept
+			? await db
+					.update(runInteraction)
+					.set({ originalRunIds: [...new Set([...kept.originalRunIds, ...originalRunIds])] })
+					.where(
+						and(
+							eq(runInteraction.runId, chosenId),
+							eq(runInteraction.userId, userId),
+							eq(runInteraction.type, type),
+						),
+					)
+			: await db.insert(runInteraction).values({ userId, runId: chosenId, originalRunIds, type });
 
-    // delete all interactions for not chosen runs
-    await db.delete(runInteraction).where(inArray(runInteraction.runId, runIdsWithoutChosen));
+		if (result.rowsAffected !== 1) {
+			console.error('Failed to combine interactions', chosenId, userId, type, result.rowsAffected);
+		}
+	}
 
-    await db.update(runs).set({ likeCount: 0 }).where(inArray(runs.id, runIdsWithoutChosen));
-    await db.update(runs).set({ likeCount: groupedInteractions.size }).where(eq(runs.id, chosenId));
+	// delete all interactions for not chosen runs
+	await db.delete(runInteraction).where(inArray(runInteraction.runId, runIdsWithoutChosen));
+
+	await db.update(runs).set({ likeCount: 0 }).where(inArray(runs.id, runIdsWithoutChosen));
+	await db.update(runs).set({ likeCount: groupedInteractions.size }).where(eq(runs.id, chosenId));
 }
 
 export async function runInteractionUncombine(db: DB, runId: string) {
-    const interactions = await db.query.runInteraction.findMany({
-        where: (runInteraction, { eq }) => eq(runInteraction.runId, runId),
-    });
+	const interactions = await db.query.runInteraction.findMany({
+		where: (runInteraction, { eq }) => eq(runInteraction.runId, runId),
+	});
 
-    const inserts: MySqlInsertValue<typeof runInteraction>[] = [];
+	if (interactions.length === 0) {
+		return;
+	}
 
-    const likesPerRunId = new Map<string, number>();
+	const inserts: MySqlInsertValue<typeof runInteraction>[] = [];
 
-    for (const interaction of interactions) {
-        const { userId, type, originalRunIds } = interaction;
+	const likesPerRunId = new Map<string, number>();
 
-        originalRunIds.forEach((originalRunId) => {
-            inserts.push({ userId, runId: originalRunId, originalRunIds: [originalRunId], type });
-            likesPerRunId.set(originalRunId, (likesPerRunId.get(originalRunId) ?? 0) + 1);
-        });
-    }
+	for (const interaction of interactions) {
+		const { userId, type, originalRunIds } = interaction;
 
-    await db.delete(runInteraction).where(eq(runInteraction.runId, runId));
-    await db.insert(runInteraction).values(inserts);
+		originalRunIds.forEach((originalRunId) => {
+			inserts.push({ userId, runId: originalRunId, originalRunIds: [originalRunId], type });
+			likesPerRunId.set(originalRunId, (likesPerRunId.get(originalRunId) ?? 0) + 1);
+		});
+	}
 
-    for (const [runId, likeCount] of likesPerRunId.entries()) {
-        await db.update(runs).set({ likeCount }).where(eq(runs.id, runId));
-    }
+	await db.delete(runInteraction).where(eq(runInteraction.runId, runId));
+	if (inserts.length > 0) {
+		await db.insert(runInteraction).values(inserts);
+	}
+
+	for (const [runId, likeCount] of likesPerRunId.entries()) {
+		await db.update(runs).set({ likeCount }).where(eq(runs.id, runId));
+	}
 }

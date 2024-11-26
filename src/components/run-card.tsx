@@ -34,6 +34,8 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { TextField, TextFieldTextArea } from './ui/text-field';
 import { showToast } from './ui/toast';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
+import { runArchive, runDelete } from '~/server/run/run-deletion';
+import { RunCardDropdownMenu } from './run-card-dropdown';
 
 function Duration({ seconds }: { seconds: number }) {
 	const hours = Math.floor(seconds / 60 / 60);
@@ -214,45 +216,41 @@ export const RunCard: Component<{
 	onClick?: (runId: string) => void;
 	onCombineClicked?: (runId: string) => void;
 }> = (props) => {
-	// TODO add mutations
-	// const { toast } = useToast();
+	const deleteAction = useAction(runDelete);
+	const deleteSubmission = useSubmission(runDelete, ([input]) => input.runId === props.run.id);
+	const archiveAction = useAction(runArchive);
+	const archiveSubmission = useSubmission(runArchive, ([input]) => input.runId === props.run.id);
 
-	// // deletion
-	// const deletionMutation = api.run.delete.useMutation({
-	//     onSuccess: () => {
-	//         toast({
-	//             title: 'Successfully deleted gameplay',
-	//         });
-	//         setIsRemoved(true);
-	//     },
-	//     onError: (err) => {
-	//         toast({
-	//             title: 'Failed to delete gameplay',
-	//             description: `${err.data?.code}: ${err?.message}`,
-	//         });
-	//     },
-	// });
-	// const archiveMutation = api.run.setArchived.useMutation({
-	//     onSuccess: () => {
-	//         toast({
-	//             title: `Successfully ${run.archived ? 'unarchived' : 'archived'} gameplay`,
-	//         });
-	//         setIsRemoved(true);
-	//     },
-	//     onError: (err) => {
-	//         toast({
-	//             title: `Failed to ${run.archived ? 'unarchived' : 'archived'} gameplay`,
-	//             description: `${err.data?.code}: ${err?.message}`,
-	//         });
-	//     },
-	// });
+	const [isRemoved, setIsRemoved] = createSignal(false);
 
-	function handleDelete() {
-		// deletionMutation.mutate({ runId: run.id });
+	async function handleDelete() {
+		try {
+			await deleteAction({ runId: props.run.id });
+			showToast({
+				title: 'Successfully deleted gameplay',
+			});
+			setIsRemoved(true);
+		} catch (err) {
+			showToast({
+				title: 'Failed to delete gameplay',
+				description: errorGetMessage(err),
+			});
+		}
 	}
 
-	function handleArchiveToggle() {
-		// archiveMutation.mutate({ runId: run.id, archived: !run.archived });
+	async function handleArchiveToggle() {
+		try {
+			await archiveAction({ runId: props.run.id, archived: !props.run.archived });
+			showToast({
+				title: `Successfully ${props.run.archived ? 'unarchived' : 'archived'} gameplay`,
+			});
+			setIsRemoved(true);
+		} catch (err) {
+			showToast({
+				title: `Failed to ${props.run.archived ? 'unarchived' : 'archived'} gameplay`,
+				description: errorGetMessage(err),
+			});
+		}
 	}
 
 	// set visibility
@@ -272,7 +270,6 @@ export const RunCard: Component<{
 		});
 	}
 
-	const [isRemoved, setIsRemoved] = createSignal(false);
 	// const isLoading = deletionMutation.isLoading || archiveMutation.isLoading;
 
 	const gameState = () => props.run.gameState;
@@ -286,7 +283,7 @@ export const RunCard: Component<{
 
 	const visibilityIcon = () => visibilityByCode(visibility()).Icon;
 
-	const isLoading = () => false;
+	const isRemoving = () => false; // deleteSubmission.pending || archiveSubmission.pending;
 
 	return (
 		<Expander expanded={!isRemoved()} class="overflow-auto">
@@ -294,7 +291,7 @@ export const RunCard: Component<{
 				class={cn(
 					'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pl-4 pr-3 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
 					isRemoved() ? 'scale-125 opacity-0' : '',
-					isLoading() ? 'grayscale' : '',
+					isRemoving() ? 'grayscale' : '',
 				)}
 			>
 				{/* https://css-tricks.com/nested-links/ */}
@@ -425,17 +422,15 @@ export const RunCard: Component<{
 					</div>
 				</div>
 
-				{/* TODO Dropdown */}
-				{/* {isOwnRun && (
-                    <RunCardDropdownMenu
-                        run={run}
-                        handleDelete={handleDelete}
-                        handleArchiveToggle={handleArchiveToggle}
-                        onCombineClicked={onCombineClicked}
-                    />
-                )} */}
+				<Show when={props.isOwnRun}>
+					<RunCardDropdownMenu
+						run={props.run}
+						handleDelete={handleDelete}
+						handleArchiveToggle={handleArchiveToggle}
+						onCombineClicked={props.onCombineClicked}
+					/>
+				</Show>
 
-				{/* TODO */}
 				<Show when={props.run.currentUserState}>
 					<RunCardLikeButton run={props.run} />
 				</Show>
@@ -460,10 +455,10 @@ function RunCardLikeButton({ run }: { run: RunMetadata }) {
 	const unlikeSubmission = useSubmission(runInteractionUnlike, ([input]) => input.runId === run.id);
 	const isSubmitting = () => likeSubmission.pending || unlikeSubmission.pending;
 
-	function like() {
+	async function like() {
 		try {
 			setHasLiked(true);
-			likeAction({ runId: run.id });
+			await likeAction({ runId: run.id });
 		} catch (err) {
 			showToast({
 				title: 'Failed to like',
@@ -473,10 +468,10 @@ function RunCardLikeButton({ run }: { run: RunMetadata }) {
 		}
 	}
 
-	function unlike() {
+	async function unlike() {
 		try {
 			setHasLiked(false);
-			unlikeAction({ runId: run.id });
+			await unlikeAction({ runId: run.id });
 		} catch (err) {
 			showToast({
 				title: 'Failed to unlike',
@@ -500,7 +495,7 @@ function RunCardLikeButton({ run }: { run: RunMetadata }) {
 				as={Button}
 				size="icon"
 				variant="ghost"
-				aria-pressed={hasLiked}
+				aria-pressed={hasLiked()}
 				onClick={handleClick}
 				disabled={isSubmitting()}
 				class="group absolute bottom-0 right-0 z-[7] rounded-full"
