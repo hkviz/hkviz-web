@@ -5,6 +5,7 @@ import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card';
 import { findPublicRuns, RunFilterParamsSchema } from '~/server/run/find-public-runs';
 import { RunFilters } from '../run/_components';
+import { Key } from '@solid-primitives/keyed';
 
 interface Params {
 	id: string;
@@ -36,13 +37,13 @@ export default function PublicPlayerPage({ params }: { params: Params }) {
 						</h1>
 						<RunFilters searchParams={filter()} class="mb-4" />
 						<ul class="flex flex-col">
-							<For each={runs()}>
+							<Key each={runs()} by={(it) => it.id}>
 								{(run) => (
 									<li>
-										<RunCard run={run} showUser={false} />
+										<RunCard run={run()} showUser={false} />
 									</li>
 								)}
-							</For>
+							</Key>
 						</ul>
 					</Show>
 				</div>

@@ -5,6 +5,7 @@ import { BottomInteractionRow, BottomInteractionRowText } from './bottom_interac
 import { GradientSeparator } from './ui/additions';
 import { Checkbox } from './ui/checkbox';
 import { Button } from './ui/button';
+import { Key } from '@solid-primitives/keyed';
 
 interface OwnRunsPageProps {
 	runs: Awaited<ReturnType<typeof findRunsInternal>>;
@@ -79,21 +80,23 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 				<div class="mx-auto max-w-[800px]">
 					<h1 class="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Your gameplays</h1>
 					<ul class="flex flex-col">
-						<For each={props.runs}>
+						<Key each={props.runs} by={(it) => it.id}>
 							{(run) => {
-								const checkboxId = `run-checkbox-${id}-${run.id}`;
+								const checkboxId = `run-checkbox-${id}-${run().id}`;
 								return (
 									<li class="flex flex-row items-center gap-3">
 										{inCombineMode && (
 											<Checkbox
 												id={checkboxId}
-												checked={selectedRunIds().includes(run.id)}
-												onChange={(checked) => handleCheckedChanged(run.id, checked as boolean)}
+												checked={selectedRunIds().includes(run().id)}
+												onChange={(checked) =>
+													handleCheckedChanged(run().id, checked as boolean)
+												}
 											/>
 										)}
 										<div class="flex-grow">
 											<RunCard
-												run={run}
+												run={run()}
 												showUser={false}
 												isOwnRun={true}
 												onClick={onRunClickIfInCombineMode}
@@ -103,7 +106,7 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 									</li>
 								);
 							}}
-						</For>
+						</Key>
 					</ul>
 				</div>
 				<BottomInteractionRow isVisible={inCombineMode} mode="fixed">

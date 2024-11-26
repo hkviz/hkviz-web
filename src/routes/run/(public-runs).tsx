@@ -13,6 +13,7 @@ import { RunFilters } from './_components';
 import * as v from 'valibot';
 import { tagOrGroupFromCode } from '~/lib/types/tags';
 import { Title } from '@solidjs/meta';
+import { Key } from '@solid-primitives/keyed';
 
 // TODO
 // export function generateMetadata({ searchParams }: { searchParams: RunFilter }) {
@@ -63,11 +64,13 @@ export default function Runs() {
 						{(runs) => (
 							<Show when={runs().length > 0} fallback={<p class="text-center">No gameplays found</p>}>
 								<ul class="flex flex-col">
-									{runs().map((run) => (
-										<li>
-											<RunCard run={run} showUser={true} />
-										</li>
-									))}
+									<Key each={runs()} by={(it) => it.id}>
+										{(run) => (
+											<li>
+												<RunCard run={run()} showUser={true} />
+											</li>
+										)}
+									</Key>
 								</ul>
 							</Show>
 						)}

@@ -1,7 +1,8 @@
 import { A, useAction, useSubmission } from '@solidjs/router';
-import { ChevronDown } from 'lucide-solid';
+import { ChevronDown, Heart } from 'lucide-solid';
 import { For, Index, Match, Show, Switch, createEffect, createSignal, type Component, type JSXElement } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+import { errorGetMessage } from '~/lib/error-get-message';
 import { MAX_RUN_TITLE_LENGTH, cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { cn } from '~/lib/utils';
@@ -21,6 +22,7 @@ import {
 } from '~/lib/viz';
 import { type RunMetadata } from '~/server/run/_find_runs_internal';
 import { type GetRunResult } from '~/server/run/run-get';
+import { runInteractionLike, runInteractionUnlike } from '~/server/run/run-interaction';
 import { runSetTitleAction } from '~/server/run/run-set-title';
 import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
 import { getMapZoneHudBackground } from './area-background';
@@ -31,6 +33,7 @@ import { Button } from './ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
 import { TextField, TextFieldTextArea } from './ui/text-field';
 import { showToast } from './ui/toast';
+import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 
 function Duration({ seconds }: { seconds: number }) {
 	const hours = Math.floor(seconds / 60 / 60);
@@ -433,8 +436,9 @@ export const RunCard: Component<{
                 )} */}
 
 				{/* TODO */}
-				{/* {run.currentUserState && <RunCardLikeButton run={run} />} */}
-
+				<Show when={props.run.currentUserState}>
+					<RunCardLikeButton run={props.run} />
+				</Show>
 				{/* Background */}
 				<img
 					class="l-0 t-0 absolute z-[1] h-full w-full bg-black object-cover opacity-70 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
@@ -448,57 +452,71 @@ export const RunCard: Component<{
 };
 
 // TODO
-// function RunCardLikeButton({ run }: { run: RunMetadata }) {
-//     const [hasLiked, setHasLiked] = useState(run.currentUserState!.hasLiked);
-//     const { toast } = useToast();
-//     const likeMutation = api.runInteraction.like.useMutation({
-//         onMutate: () => {
-//             setHasLiked(true);
-//         },
-//         onError: (err) => {
-//             toast({
-//                 title: 'Failed to like',
-//                 description: `${err.data?.code}: ${err?.message}`,
-//             });
-//             setHasLiked(false);
-//         },
-//     });
-//     const unlikeMutation = api.runInteraction.unlike.useMutation({
-//         onMutate: () => {
-//             setHasLiked(false);
-//         },
-//         onError: (err) => {
-//             toast({
-//                 title: 'Failed to remove like',
-//                 description: `${err.data?.code}: ${err?.message}`,
-//             });
-//             setHasLiked(true);
-//         },
-//     });
+function RunCardLikeButton({ run }: { run: RunMetadata }) {
+	const [hasLiked, setHasLiked] = createSignal(run.currentUserState!.hasLiked);
+	const likeAction = useAction(runInteractionLike);
+	const unlikeAction = useAction(runInteractionUnlike);
+	const likeSubmission = useSubmission(runInteractionLike, ([input]) => input.runId === run.id);
+	const unlikeSubmission = useSubmission(runInteractionUnlike, ([input]) => input.runId === run.id);
+	const isSubmitting = () => likeSubmission.pending || unlikeSubmission.pending;
 
-//     function handleClick() {
-//         if (hasLiked) {
-//             unlikeMutation.mutate({ runId: run.id });
-//         } else {
-//             likeMutation.mutate({ runId: run.id });
-//         }
-//     }
+	function like() {
+		try {
+			setHasLiked(true);
+			likeAction({ runId: run.id });
+		} catch (err) {
+			showToast({
+				title: 'Failed to like',
+				description: errorGetMessage(err),
+			});
+			setHasLiked(false);
+		}
+	}
 
-//     return (
-//         <Button
-//             size="icon"
-//             variant="ghost"
-//             aria-pressed={hasLiked}
-//             aria-label={hasLiked ? 'Unlike gameplay' : 'Like gameplay'}
-//             onClick={handleClick}
-//             class="absolute bottom-0 right-0 z-[7] rounded-full"
-//         >
-//             <Star
-//                 class={'h-4 w-4 transition-[fill] ' + (hasLiked ? 'fill-current' : 'fill-[rgba(255,255,255,0.001)]')}
-//             />
-//         </Button>
-//     );
-// }
+	function unlike() {
+		try {
+			setHasLiked(false);
+			unlikeAction({ runId: run.id });
+		} catch (err) {
+			showToast({
+				title: 'Failed to unlike',
+				description: errorGetMessage(err),
+			});
+			setHasLiked(true);
+		}
+	}
+
+	function handleClick() {
+		if (hasLiked()) {
+			unlike();
+		} else {
+			like();
+		}
+	}
+
+	return (
+		<Tooltip>
+			<TooltipTrigger
+				as={Button}
+				size="icon"
+				variant="ghost"
+				aria-pressed={hasLiked}
+				onClick={handleClick}
+				disabled={isSubmitting()}
+				class="group absolute bottom-0 right-0 z-[7] rounded-full"
+			>
+				<Heart
+					class={
+						'h-4 w-4 transition-[fill] group-hover:drop-shadow-glow-md ' +
+						(hasLiked() ? 'fill-current' : 'fill-[rgba(255,255,255,0.001)]')
+					}
+				/>
+			</TooltipTrigger>
+			<TooltipContent>{hasLiked() ? 'Unlike gameplay' : 'Like gameplay'}</TooltipContent>
+		</Tooltip>
+	);
+}
+
 function displayPercentage(
 	gameState: RunMetadata['gameState'],
 ): gameState is RunMetadata['gameState'] & { completionPercentage: number } {
