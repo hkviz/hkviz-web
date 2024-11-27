@@ -8,6 +8,8 @@ import lqip from 'vite-plugin-lqip';
 import type { MdxOptions } from '@vinxi/plugin-mdx';
 // import { imagetoolsWithAverageColor } from './image-processing';
 import { imagetools } from 'vite-imagetools';
+import { visit } from 'unist-util-visit';
+import type { Node } from 'unist';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -21,6 +23,7 @@ const rehypeAutolinkOptions = {
 		tabIndex: -1,
 		className:
 			'hash-link text-zinc-400 dark:text-zinc-600 hover:text-zinc-800 dark:hover:text-zinc-200 no-underline p-2 lg:ml-[calc(-1ch-1rem)]',
+		target: '_self',
 	},
 };
 
@@ -29,11 +32,36 @@ const remarkTocOptions = {
 	maxDepth: 3,
 };
 
+// plugin to add _self to all # links, so the target is correctly set, and can be styled
+const addTargetToHashLinks = () => (tree: any) => {
+	// similar to https://github.com/rjanjic/remark-link-rewrite/blob/main/src/index.js
+	const nodes: Node[] = [];
+	visit(tree, (node: Node) => {
+		if (node.type === 'link') {
+			nodes.push(node);
+		}
+		if (node.type === 'jsx' || node.type === 'html') {
+			if (/<a.*>/.test((node as any).value)) {
+				nodes.push(node);
+			}
+		}
+	});
+
+	nodes.forEach((node) => {
+		const url = (node as any).url || (node as any).value.match(/href="([^"]*)"/)?.[1];
+		if (url && url.startsWith('#')) {
+			node.data = node.data || {};
+			(node.data as any).hProperties = (node.data as any).hProperties || {};
+			(node.data as any).hProperties.target = '_self';
+		}
+	});
+};
+
 const mdxOptions: MdxOptions = {
 	jsx: true,
 	jsxImportSource: 'solid-js',
 	providerImportSource: 'solid-mdx',
-	remarkPlugins: [[remarkToc, remarkTocOptions], remarkGfm],
+	remarkPlugins: [[remarkToc, remarkTocOptions], remarkGfm, addTargetToHashLinks],
 	rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, rehypeAutolinkOptions]],
 };
 
