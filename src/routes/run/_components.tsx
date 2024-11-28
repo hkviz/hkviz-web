@@ -1,5 +1,5 @@
 import { useSearchParams } from '@solidjs/router';
-import { For, Show, createMemo, type Component } from 'solid-js';
+import { For, Show, createMemo, onMount, type Component } from 'solid-js';
 import { TagDropdownMenu } from '~/components/run-tags';
 import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
@@ -10,10 +10,17 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
-import { runSortFromCode, runSorts, type RunSortCode } from '~/lib/types/run-sort';
+import { RUN_SORT_DEFAULT, runSortFromCode, runSorts, type RunSortCode } from '~/lib/types/run-sort';
 import { isTag, tagOrGroupFromCode, type Tag, type TagGroup } from '~/lib/types/tags';
 import { cn } from '~/lib/utils';
 import { type RunFilterParams } from '~/server/run/find-public-runs';
+
+function withoutDefaultParams(params: RunFilterParams) {
+	return {
+		...params,
+		sort: params.sort === RUN_SORT_DEFAULT ? undefined : params.sort,
+	};
+}
 
 export const RunFilters: Component<{ searchParams: RunFilterParams; class?: string }> = (props) => {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -21,20 +28,28 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 	const tagOrGroup = createMemo(() =>
 		props.searchParams.tag ? tagOrGroupFromCode(props.searchParams.tag) : undefined,
 	);
-	const sort = createMemo(() => runSortFromCode(props.searchParams.sort ?? 'favorites'));
+	const sort = createMemo(() => runSortFromCode(props.searchParams.sort ?? RUN_SORT_DEFAULT));
+
+	onMount(() => {
+		setSearchParams(withoutDefaultParams(props.searchParams));
+	});
 
 	function setTagFilter(tagOrGroup: TagGroup | Tag | undefined) {
-		setSearchParams({
-			...searchParams,
-			tag: tagOrGroup?.code,
-		});
+		setSearchParams(
+			withoutDefaultParams({
+				...searchParams,
+				tag: tagOrGroup?.code,
+			}),
+		);
 	}
 
 	function setSort(sort: RunSortCode) {
-		setSearchParams({
-			...searchParams,
-			sort: sort === 'favorites' ? undefined : sort,
-		});
+		setSearchParams(
+			withoutDefaultParams({
+				...searchParams,
+				sort,
+			}),
+		);
 	}
 
 	function getColorClass(tagOrGroup: TagGroup | Tag) {

@@ -65,6 +65,7 @@ export function ImageArea(props: { positionClass: string; children: JSXElement; 
 				aria-describedby={'tooltip' + id}
 				as={'a'}
 				href={props.href}
+				target="_self"
 			/>
 			<span
 				id={'tooltip' + id}

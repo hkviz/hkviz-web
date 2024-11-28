@@ -90,7 +90,7 @@ export function OverviewScreenshot() {
 					alt="HKViz gameplay analytics page"
 					sizes={IMAGE_SIZE_ARTICLE_FULL_WIDTH}
 				/>
-				{/* <ImageArea positionClassName="left-[1%] top-[9%] h-[32%] w-[28%]" href="#map-options">
+				{/* <ImageArea positionClass="left-[1%] top-[9%] h-[32%] w-[28%]" href="#map-options">
                     Map options
                 </ImageArea> */}
 				<ImageArea positionClass="left-[0.5%] top-[13%] h-[6.25%] w-[28%]" href="#room-visibility">
@@ -103,7 +103,7 @@ export function OverviewScreenshot() {
 					Traces
 				</ImageArea>
 				{/* TODO change link */}
-				{/* <ImageArea positionClassName="left-[0.5%] top-[25.5%] h-[9%] w-[28%]" href="#map-coloring-by-variables">
+				{/* <ImageArea positionClass="left-[0.5%] top-[25.5%] h-[9%] w-[28%]" href="#map-coloring-by-variables">
                     Area names 
                 </ImageArea> */}
 				<ImageArea positionClass="left-[0.5%] top-[35%] h-[64%] w-[28%]" href="#map-coloring-by-variables">

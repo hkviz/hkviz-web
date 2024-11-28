@@ -9,7 +9,7 @@ const Unit: Component<{ class?: string }> = (props) => {
 	return <img src={dreamNailImg} class={cn('drop-shadow-glow-sm', props.class)} alt="Dream nail" />;
 };
 // function Unit({ className }: { className?: string }) {
-//     return <span className={className}>%</span>;
+//     return <span class={className}>%</span>;
 // }
 const variables: LineChartVariableDescription[] = [
 	{

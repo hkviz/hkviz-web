@@ -1,4 +1,5 @@
 import {
+	allRoomDataBySceneName,
 	Bounds,
 	gameObjectNamesIgnoredInZoomZone,
 	mainRoomDataBySceneName,
@@ -83,6 +84,18 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		return Bounds.fromContainingBounds(visibleRooms.map((r) => r.visualBounds));
 	});
 
+	// const hoveredRoomExtends = createMemo(() => {
+	// 	if (uiStore.isV1()) return null;
+	// 	// todo add disable
+	// 	const enabled = mapZoomStore.enabled();
+	// 	if (!enabled) return null;
+	// 	const hoveredSceneName = roomDisplayStore.hoveredSceneName();
+	// 	if (!hoveredSceneName) return null;
+	// 	const hoveredRoomData = allRoomDataBySceneName.get(hoveredSceneName);
+	// 	if (!hoveredRoomData) return null;
+	// 	return Bounds.fromContainingBounds(hoveredRoomData.map((r) => r.visualBounds));
+	// });
+
 	const zoomToBounds = (bounds: Bounds) => {
 		untrack(() => {
 			const svg = props.svg;
@@ -102,6 +115,12 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 			);
 		});
 	};
+
+	// const zoomToBoundsWithHoveredRoom = (bounds: Bounds) => {
+	// 	const _hoveredRoomExtends = hoveredRoomExtends();
+	// 	if (!_hoveredRoomExtends) return zoomToBounds(bounds);
+	// 	zoomToBounds(Bounds.fromContainingBounds([bounds, _hoveredRoomExtends]));
+	// };
 
 	createEffect(() => {
 		const _zoomZone = zoomZone();

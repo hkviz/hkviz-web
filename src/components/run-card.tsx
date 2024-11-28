@@ -225,12 +225,13 @@ export const RunCard: Component<{
 
 	async function handleDelete() {
 		try {
+			setIsRemoved(true);
 			await deleteAction({ runId: props.run.id });
 			showToast({
 				title: 'Successfully deleted gameplay',
 			});
-			setIsRemoved(true);
 		} catch (err) {
+			setIsRemoved(false);
 			showToast({
 				title: 'Failed to delete gameplay',
 				description: errorGetMessage(err),
@@ -240,12 +241,13 @@ export const RunCard: Component<{
 
 	async function handleArchiveToggle() {
 		try {
+			setIsRemoved(true);
 			await archiveAction({ runId: props.run.id, archived: !props.run.archived });
 			showToast({
 				title: `Successfully ${props.run.archived ? 'unarchived' : 'archived'} gameplay`,
 			});
-			setIsRemoved(true);
 		} catch (err) {
+			setIsRemoved(false);
 			showToast({
 				title: `Failed to ${props.run.archived ? 'unarchived' : 'archived'} gameplay`,
 				description: errorGetMessage(err),
@@ -286,7 +288,7 @@ export const RunCard: Component<{
 	const isRemoving = () => false; // deleteSubmission.pending || archiveSubmission.pending;
 
 	return (
-		<Expander expanded={!isRemoved()} class="overflow-auto">
+		<Expander expanded={!isRemoved()} class="overflow-visible">
 			<div
 				class={cn(
 					'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pl-4 pr-3 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
@@ -502,7 +504,7 @@ function RunCardLikeButton({ run }: { run: RunMetadata }) {
 			>
 				<Heart
 					class={
-						'h-4 w-4 transition-[fill] group-hover:drop-shadow-glow-md ' +
+						'h-4 w-4 transition-[fill] duration-300 group-hover:drop-shadow-glow-md ' +
 						(hasLiked() ? 'fill-current' : 'fill-[rgba(255,255,255,0.001)]')
 					}
 				/>

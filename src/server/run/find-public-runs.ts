@@ -1,7 +1,7 @@
 import { cache } from '@solidjs/router';
 import * as v from 'valibot';
 import { getUserOrNull } from '~/lib/auth/shared';
-import { runSortSchema } from '~/lib/types/run-sort';
+import { RUN_SORT_DEFAULT, runSortSchema } from '~/lib/types/run-sort';
 import { isTagCode, tagGroupFromCode, tagGroupSchema, tagSchema } from '~/lib/types/tags';
 import { db } from '../db';
 import { findRunsInternal } from './_find_runs_internal';
@@ -28,7 +28,7 @@ export const findPublicRuns = cache(async (unsaveFilter: RunFilterParams) => {
 					? [filter.tag]
 					: tagGroupFromCode(filter.tag).tags.map((it) => it.code)
 				: undefined,
-			sort: filter.sort ?? 'favorites',
+			sort: filter.sort ?? RUN_SORT_DEFAULT,
 			userId: filter.userId,
 			archived: [false],
 		},
