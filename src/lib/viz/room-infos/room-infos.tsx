@@ -216,7 +216,7 @@ export function RoomInfo() {
 		<Card
 			class={cn(
 				cardRoundedMdOnlyClasses,
-				'room-infos-card flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-gradient-to-b from-transparent to-transparent max-lg:basis-0',
+				'room-infos-card max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-gradient-to-b from-transparent to-transparent',
 			)}
 			style={{
 				'--tw-gradient-from': gradientColor(),
@@ -285,7 +285,12 @@ export function RoomInfo() {
 								roomDisplayStore.pinScene('pin-button-click');
 							}
 						}}
-						class={'room-info-pin-button h-8 w-8'}
+						class={
+							'room-info-pin-button h-8 w-8 ' +
+							(selectedRoomPinned()
+								? 'bg-black bg-opacity-20 hover:bg-opacity-30 dark:bg-white dark:bg-opacity-20 dark:hover:bg-opacity-30'
+								: '')
+						}
 					>
 						<Show when={selectedRoomPinned()} fallback={<Pin class="h-4 w-4" />}>
 							<PinOff class={'h-4 w-4'} />

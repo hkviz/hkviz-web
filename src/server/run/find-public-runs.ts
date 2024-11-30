@@ -10,6 +10,7 @@ export const RunFilterParamsSchema = v.object({
 	tag: v.optional(v.union([tagSchema, tagGroupSchema])),
 	sort: v.optional(runSortSchema),
 	userId: v.optional(v.pipe(v.string(), v.uuid())),
+	limit: v.optional(v.number()),
 });
 export type RunFilterParams = v.InferOutput<typeof RunFilterParamsSchema>;
 
@@ -31,6 +32,7 @@ export const findPublicRuns = cache(async (unsaveFilter: RunFilterParams) => {
 			sort: filter.sort ?? RUN_SORT_DEFAULT,
 			userId: filter.userId,
 			archived: [false],
+			limit: filter.limit,
 		},
 		currentUser: user ?? undefined,
 	});

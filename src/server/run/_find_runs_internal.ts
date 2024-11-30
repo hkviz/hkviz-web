@@ -16,6 +16,7 @@ export const runFilterSchema = v.object({
 	id: v.nullish(v.array(v.string())),
 	anonymAccessKey: v.nullish(v.string()),
 	sort: v.nullish(runSortSchema),
+	limit: v.nullish(v.number()),
 });
 
 export type RunFilter = v.InferOutput<typeof runFilterSchema>;
@@ -97,6 +98,7 @@ export async function findRunsInternal({
 					return lastPlayedSort;
 			}
 		},
+		limit: filter.limit ?? undefined,
 		columns: {
 			id: true,
 			title: true,
