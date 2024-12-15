@@ -5,8 +5,8 @@
 
 /* fonts */
 :root {
-    --font-sans: 'Noto Sans';
-    --font-serif: 'Cinzel';
-    --font-serif-decorative: 'Cinzel Decorative';
-    --font-serif-mixed-case: 'EB Garamond';
+	--font-sans: 'Noto Sans Variable';
+	--font-serif: 'Cinzel Variable';
+	--font-serif-decorative: 'Cinzel Decorative';
+	--font-serif-mixed-case: 'EB Garamond Variable';
 }
