@@ -66,7 +66,7 @@ export const MainNav: Component<{ theme: Theme }> = (props) => {
 									as={'a'}
 									href={loginUrl()}
 									variant="ghost"
-									class="hidden md:inline-flex"
+									class="app-region-no-drag hidden md:inline-flex"
 									target="_self"
 								>
 									Login
@@ -78,7 +78,7 @@ export const MainNav: Component<{ theme: Theme }> = (props) => {
 					</Suspense>
 				</ErrorBoundary>
 				<Sheet open={open()} onOpenChange={setOpen}>
-					<SheetTrigger as={Button<'button'>} variant="ghost" class="md:hidden">
+					<SheetTrigger as={Button<'button'>} variant="ghost" class="app-region-no-drag md:hidden">
 						<Menu class="h-5 w-5" />
 					</SheetTrigger>
 					<SheetContent position="right">

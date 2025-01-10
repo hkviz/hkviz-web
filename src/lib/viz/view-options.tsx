@@ -64,7 +64,7 @@ export function ViewOptions() {
 		<Card
 			class={cn(
 				cardRoundedMdOnlyClasses,
-				'min-w-[300px] overflow-auto border-t max-lg:grow max-lg:basis-0 sm:min-w-min',
+				'max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto border-t sm:min-w-min',
 			)}
 		>
 			<CardHeader class={cardHeaderSmallClasses}>
@@ -84,7 +84,8 @@ export function ViewOptions() {
 								<Select
 									value={roomVisibility()}
 									onChange={(v) => {
-										roomDisplayStore.setRoomVisibility(v!);
+										if (!v) return;
+										roomDisplayStore.setRoomVisibility(v);
 									}}
 									options={['all', 'visited-animated', 'visited']}
 									placeholder="Room visibility"
@@ -119,7 +120,8 @@ export function ViewOptions() {
 								<Select
 									value={traceVisibility()}
 									onChange={(v) => {
-										traceStore.setVisibility(v!);
+										if (!v) return;
+										traceStore.setVisibility(v);
 									}}
 									options={['all', 'animated', 'hide']}
 									placeholder="Trace visibility"
@@ -155,6 +157,7 @@ export function ViewOptions() {
 									<Select
 										value={roomColorMode()}
 										onChange={(v) => {
+											if (!v) return;
 											roomColoringStore.setRoomColorMode(v);
 										}}
 										options={['area', '1-var']}

@@ -215,7 +215,7 @@ function AnimationTimeLineSlider() {
 	}
 
 	function onPointerMove(e: PointerEvent) {
-		console.log('onPointerMove', { isShiftPressed });
+		// console.log('onPointerMove', { isShiftPressed });
 		const scaler = isShiftPressed ? 0.1 : 1;
 		const diff = e.clientX - previousActualX;
 		const scaledX = previousScaledX + diff * scaler;
@@ -231,7 +231,7 @@ function AnimationTimeLineSlider() {
 			value={[animationMsIntoGame()]}
 			minValue={timeFrame().min}
 			maxValue={timeFrame().max}
-			step={100}
+			step={10}
 			class="-my-4 grow py-4"
 			disabled={isDisabled}
 			onChange={(values) => {

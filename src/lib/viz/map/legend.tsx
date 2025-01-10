@@ -1,7 +1,9 @@
 import {
 	aggregationStore,
 	aggregationVariableInfos,
+	animationStore,
 	formatAggregatedVariableValue,
+	gameplayStore,
 	roomColoringStore,
 	roomDisplayStore,
 	uiStore,
@@ -10,6 +12,7 @@ import * as d3 from 'd3';
 import { Show, createEffect, createSignal, onCleanup, type Component } from 'solid-js';
 import { RoomColorCurveSelect } from '../room-infos/room-color-curve-menu';
 import { Card } from '~/components/ui/card';
+import { Expander } from '~/components/ui/additions';
 
 const LEGEND_PADDING = 30;
 
@@ -28,6 +31,15 @@ export const MapLegend: Component = () => {
 	const var1Max = roomColoringStore.var1Max;
 	const singleVarColormap = roomColoringStore.singleVarColorMap;
 
+	const showSelectedTimeComment = () => {
+		console.log('aggregationStore.aggregationCountMode()', aggregationStore.aggregationCountMode());
+		console.log('gameplayStore.timeFrame().max', gameplayStore.timeFrame().max);
+		console.log('animationStore.msIntoGame()', animationStore.msIntoGame());
+		return (
+			aggregationStore.aggregationCountMode() !== 'total' &&
+			gameplayStore.timeFrame().max - animationStore.msIntoGame() > 10
+		);
+	};
 	const tickX = (d: number) => {
 		return (d / var1Max()) * 200 + LEGEND_PADDING;
 	};
@@ -134,6 +146,9 @@ export const MapLegend: Component = () => {
 						<RoomColorCurveSelect variable={var1()} />
 					</Show>
 				</div>
+				<Expander expanded={showSelectedTimeComment()}>
+					<div class="text-xs opacity-75">Up to the selected time</div>
+				</Expander>
 				<svg class="w-36" viewBox={`0 0 ${200 + LEGEND_PADDING * 2} 100`} ref={setSvg} />
 			</div>
 		</Card>

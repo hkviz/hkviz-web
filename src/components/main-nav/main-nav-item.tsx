@@ -31,7 +31,7 @@ export interface MenuItemProps {
 	icon?: LucideIcon;
 	isActive?: ({ pathname }: { pathname: string }) => boolean;
 	class?: string;
-	target: string;
+	target?: string;
 }
 
 export const MenuItem: Component<MenuItemProps> = (props) => {
@@ -60,7 +60,7 @@ export const MenuItem: Component<MenuItemProps> = (props) => {
 			target={props.target}
 			onClick={props.onClick}
 			variant={currentIsActive() ? 'default' : 'ghost'}
-			class={context.buttonClass}
+			class={'app-region-no-drag ' + context.buttonClass}
 		>
 			{content}
 		</Dynamic>

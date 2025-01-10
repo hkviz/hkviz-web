@@ -29,7 +29,11 @@ export const CurrentUserDropdown: Component<{
 }> = (props) => {
 	return (
 		<DropdownMenu>
-			<DropdownMenuTrigger as={Button<'button'>} variant="ghost" class={cn('group', props.class)}>
+			<DropdownMenuTrigger
+				as={Button<'button'>}
+				variant="ghost"
+				class={cn('app-region-no-drag group', props.class)}
+			>
 				{props.session.user?.name ?? 'Account'}
 				<ChevronDown class="ml-1 h-4 w-4 transition-transform group-data-[expanded]:rotate-180" />
 			</DropdownMenuTrigger>

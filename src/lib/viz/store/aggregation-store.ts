@@ -5,6 +5,8 @@ import {
 	SpellDownEvent,
 	SpellFireballEvent,
 	SpellUpEvent,
+	assertNever,
+	binarySearchLastIndexBefore,
 	isPlayerDataEventOfField,
 	playerDataFields,
 	roomGroupNamesBySceneName,
@@ -12,10 +14,12 @@ import {
 	type PlayerDataEvent,
 } from '../../parser';
 import { formatTimeMs } from '../util';
+import { animationStore } from './animation-store';
 import { gameplayStore } from './gameplay-store';
 import { createMemo, createSignal } from 'solid-js';
+import { roomDisplayStore } from './room-display-store';
 
-export type ValueAggregation = {
+export interface ValueAggregation {
 	deaths: number;
 	focusing: number;
 	spellFireball: number;
@@ -27,7 +31,12 @@ export type ValueAggregation = {
 	timeSpendMs: number;
 	firstVisitMs: number;
 	visits: number;
-};
+}
+
+export interface ValueAggregationTimePoint extends ValueAggregation {
+	msIntoGame: number;
+	isActiveScene: boolean;
+}
 
 const createEmptyAggregation = (): ValueAggregation => ({
 	deaths: 0,
@@ -42,6 +51,32 @@ const createEmptyAggregation = (): ValueAggregation => ({
 	firstVisitMs: 0,
 	visits: 0,
 });
+
+const createAggregationTimePointClone = (
+	aggregation: ValueAggregationTimePoint | undefined,
+	msIntoGame: number,
+	isActiveScene: boolean,
+): ValueAggregationTimePoint => ({
+	deaths: aggregation?.deaths ?? 0,
+	focusing: aggregation?.focusing ?? 0,
+	spellFireball: aggregation?.spellFireball ?? 0,
+	spellUp: aggregation?.spellUp ?? 0,
+	spellDown: aggregation?.spellDown ?? 0,
+	damageTaken: aggregation?.damageTaken ?? 0,
+	geoEarned: aggregation?.geoEarned ?? 0,
+	geoSpent: aggregation?.geoSpent ?? 0,
+	timeSpendMs: aggregation?.timeSpendMs ?? 0,
+	firstVisitMs: aggregation?.firstVisitMs ?? 0,
+	visits: aggregation?.visits ?? 0,
+	msIntoGame,
+	isActiveScene,
+});
+
+function isAggregationTimepoint(
+	aggregation: ValueAggregation | ValueAggregationTimePoint,
+): aggregation is ValueAggregationTimePoint {
+	return 'msIntoGame' in aggregation;
+}
 
 export type AggregationVariable = keyof ValueAggregation;
 
@@ -113,34 +148,73 @@ export function formatAggregatedVariableValue(variable: AggregationVariable, val
 
 export function aggregateRecording(recording: CombinedRecording) {
 	const countPerScene: Record<string, ValueAggregation> = {};
+	const countPerSceneOverTime: Record<string, ValueAggregationTimePoint[]> = {};
 	const maxOverScenes: ValueAggregation = createEmptyAggregation();
 
-	function addToScenes(virtualScenes: readonly string[], key: AggregationVariable, value: number) {
+	let countOfTimePoints = 0;
+
+	function addToScenes(
+		virtualScenes: readonly string[],
+		msIntoGame: number,
+		key: AggregationVariable,
+		value: number,
+	) {
 		virtualScenes.forEach((sceneOrGroupName) => {
-			const existing = countPerScene[sceneOrGroupName] ?? createEmptyAggregation();
-			countPerScene[sceneOrGroupName] = {
-				...existing,
-				[key]: existing[key] + value,
-			};
-			maxOverScenes[key] = Math.max(maxOverScenes[key], existing[key] + value);
+			// total of scene
+			let totalsOfScene: ValueAggregation = countPerScene[sceneOrGroupName];
+			if (!totalsOfScene) {
+				totalsOfScene = countPerScene[sceneOrGroupName] = createEmptyAggregation();
+			}
+			totalsOfScene[key] += value;
+
+			// over time of scene
+			const allOverTime =
+				sceneOrGroupName in countPerSceneOverTime
+					? countPerSceneOverTime[sceneOrGroupName]
+					: (countPerSceneOverTime[sceneOrGroupName] = []);
+
+			const last = allOverTime.at(-1);
+			let current: ValueAggregationTimePoint;
+			if (last && last.msIntoGame === msIntoGame) {
+				current = last;
+			} else {
+				current = createAggregationTimePointClone(last, msIntoGame, true);
+				countOfTimePoints++;
+				allOverTime.push(current);
+				if (last && last.isActiveScene) {
+					// here we could also add msIntoGame - last.msIntoGame to timeSpendMs
+					// however, we could have more rounding issues, so we always go from the start of the visit to current time.
+					const msSpent =
+						msIntoGame -
+						currentSceneEnteredAtMs +
+						currentSceneEnteredWithMsSpendPerVirtualScene.get(sceneOrGroupName)!;
+
+					// if (currentSceneEvent?.sceneName === 'Town') {
+					// 	console.log(`${formatTimeMs(msSpent)}`);
+					// }
+
+					current.timeSpendMs = msSpent;
+					totalsOfScene.timeSpendMs = msSpent;
+				}
+			}
+			current[key] += value;
+
+			// max total over all scenes
+			maxOverScenes[key] = Math.max(maxOverScenes[key], totalsOfScene[key]);
+			maxOverScenes.timeSpendMs = Math.max(maxOverScenes.timeSpendMs, totalsOfScene.timeSpendMs);
 		});
 	}
 
 	let currentSceneEvent: SceneEvent | null = null;
 	let currentVirtualScenes: string[] = [];
-	let previousSceneEnteredAtMs = 0;
+	let currentSceneEnteredAtMs = 0;
+	let currentSceneEnteredWithMsSpendPerVirtualScene: Map<string, number> = new Map();
+	// let previousScene
 
 	const x = [] as any[];
 
-	function currentVirtualScenesChanged({
-		event,
-		previousSceneEvent,
-	}: {
-		event: SceneEvent | PlayerDataEvent<typeof playerDataFields.byFieldName.currentBossSequence>;
-		previousSceneEvent: SceneEvent | null;
-	}) {
+	function calculateCurrentVirtualScenes() {
 		const groups = currentSceneEvent ? (roomGroupNamesBySceneName.get(currentSceneEvent.sceneName) ?? []) : [];
-		const previousVirtualScenes = currentVirtualScenes;
 		currentVirtualScenes = [
 			...(currentSceneEvent ? [currentSceneEvent.sceneName] : []),
 			...groups.map((it) => it),
@@ -155,31 +229,74 @@ export function aggregateRecording(recording: CombinedRecording) {
 				return [it];
 			}
 		});
-		x.push(formatTimeMs(event.msIntoGame) + ' ' + currentVirtualScenes.join(','));
-		if (previousSceneEvent) {
-			addToScenes(previousVirtualScenes, 'timeSpendMs', event.msIntoGame - previousSceneEnteredAtMs);
-		}
-		previousSceneEnteredAtMs = event.msIntoGame;
+	}
 
+	function currentVirtualScenesChanged({
+		msIntoGame,
+		previousVirtualScenes,
+	}: {
+		msIntoGame: number;
+		previousVirtualScenes: string[];
+	}) {
+		x.push(formatTimeMs(msIntoGame) + ' ' + currentVirtualScenes.join(','));
+		if (previousVirtualScenes) {
+			// addToScenes(
+			// 	previousVirtualScenes,
+			// 	event.msIntoGame,
+			// 	'timeSpendMs',
+			// 	event.msIntoGame - previousSceneEnteredAtMs,
+			// );
+
+			// call add just so new time points are created & isActiveScene is set to false
+			addToScenes(previousVirtualScenes, msIntoGame, 'visits', 0);
+		}
+
+		for (const previousVirtualScene of previousVirtualScenes) {
+			if (!currentVirtualScenes.includes(previousVirtualScene)) {
+				// set isActiveScene to false
+				const allOverTime = countPerSceneOverTime[previousVirtualScene];
+				if (allOverTime) {
+					const last = allOverTime.at(-1);
+					if (last && last.isActiveScene) {
+						last.isActiveScene = false;
+						// const addedMsSpent = event.msIntoGame - last.msIntoGame;
+						// const totalsOfScene = countPerScene[previousVirtualScene];
+						// if (totalsOfScene) {
+						// 	totalsOfScene.timeSpendMs += addedMsSpent;
+						// }
+					}
+				}
+			}
+		}
+
+		currentSceneEnteredAtMs = msIntoGame;
+		currentSceneEnteredWithMsSpendPerVirtualScene.clear();
 		for (const virtualScene of currentVirtualScenes) {
 			const virtualSceneAsArr = [virtualScene];
+
+			currentSceneEnteredWithMsSpendPerVirtualScene.set(
+				virtualScene,
+				countPerScene[virtualScene]?.timeSpendMs ?? 0,
+			);
+
 			if (!countPerScene[virtualScene]?.firstVisitMs) {
-				addToScenes(virtualSceneAsArr, 'firstVisitMs', event.msIntoGame);
+				addToScenes(virtualSceneAsArr, msIntoGame, 'firstVisitMs', msIntoGame);
 			}
 			if (!previousVirtualScenes.includes(virtualScene)) {
 				// only counts visit when not already in virtual scene before
-				addToScenes(virtualSceneAsArr, 'visits', 1);
+				addToScenes(virtualSceneAsArr, msIntoGame, 'visits', 1);
 			}
 		}
 	}
 
 	for (const event of recording.events) {
 		if (event instanceof SceneEvent) {
-			const previousSceneEvent = currentSceneEvent;
 			currentSceneEvent = event;
+			const previousVirtualScenes = currentVirtualScenes;
+			calculateCurrentVirtualScenes();
 			currentVirtualScenesChanged({
-				event,
-				previousSceneEvent,
+				msIntoGame: event.msIntoGame,
+				previousVirtualScenes,
 			});
 		} else if (event instanceof HeroStateEvent && event.field.name === 'dead' && event.value) {
 			// counted in frame end event, since deaths in pantheons (and probably dreams) don't trigger heroState dead
@@ -187,20 +304,20 @@ export function aggregateRecording(recording: CombinedRecording) {
 		} else if (event instanceof HeroStateEvent && event.field.name === 'focusing' && event.value) {
 			// TODO needs some work, since probably not counting continuous focusing, and also not able to
 			// differentiate between successful and unsuccessful focusing
-			addToScenes(currentVirtualScenes, 'focusing', 1);
+			addToScenes(currentVirtualScenes, event.msIntoGame, 'focusing', 1);
 		} else if (event instanceof SpellFireballEvent) {
-			addToScenes(currentVirtualScenes, 'spellFireball', 1);
+			addToScenes(currentVirtualScenes, event.msIntoGame, 'spellFireball', 1);
 		} else if (event instanceof SpellUpEvent) {
-			addToScenes(currentVirtualScenes, 'spellUp', 1);
+			addToScenes(currentVirtualScenes, event.msIntoGame, 'spellUp', 1);
 		} else if (event instanceof SpellDownEvent) {
-			addToScenes(currentVirtualScenes, 'spellDown', 1);
+			addToScenes(currentVirtualScenes, event.msIntoGame, 'spellDown', 1);
 		} else if (
 			isPlayerDataEventOfField(event, playerDataFields.byFieldName.health) &&
 			event.previousPlayerDataEventOfField
 		) {
 			const diff = event.value - event.previousPlayerDataEventOfField.value;
 			if (diff < 0) {
-				addToScenes(currentVirtualScenes, 'damageTaken', -diff);
+				addToScenes(currentVirtualScenes, event.msIntoGame, 'damageTaken', -diff);
 			}
 		} else if (
 			isPlayerDataEventOfField(event, playerDataFields.byFieldName.healthBlue) &&
@@ -208,7 +325,7 @@ export function aggregateRecording(recording: CombinedRecording) {
 		) {
 			const diff = event.value - event.previousPlayerDataEventOfField.value;
 			if (diff < 0) {
-				addToScenes(currentVirtualScenes, 'damageTaken', -diff);
+				addToScenes(currentVirtualScenes, event.msIntoGame, 'damageTaken', -diff);
 			}
 		} else if (event instanceof FrameEndEvent && event.previousFrameEndEvent) {
 			if (
@@ -216,7 +333,7 @@ export function aggregateRecording(recording: CombinedRecording) {
 				event.previousFrameEndEvent &&
 				event.previousFrameEndEvent.healthTotal !== 0
 			) {
-				addToScenes(currentVirtualScenes, 'deaths', 1);
+				addToScenes(currentVirtualScenes, event.msIntoGame, 'deaths', 1);
 			}
 			// todo handle death changes in currency
 			const poolDiff = event.geoPool - event.previousFrameEndEvent.geoPool;
@@ -244,21 +361,30 @@ export function aggregateRecording(recording: CombinedRecording) {
 			// }
 
 			if (geoDiff < 0) {
-				addToScenes(currentVirtualScenes, 'geoSpent', -geoDiff);
+				addToScenes(currentVirtualScenes, event.msIntoGame, 'geoSpent', -geoDiff);
 			} else if (geoDiff > 0) {
-				addToScenes(currentVirtualScenes, 'geoEarned', geoDiff);
+				addToScenes(currentVirtualScenes, event.msIntoGame, 'geoEarned', geoDiff);
 			}
 		}
 	}
 
 	if (currentSceneEvent) {
-		addToScenes(currentVirtualScenes, 'timeSpendMs', recording.lastEvent().msIntoGame - previousSceneEnteredAtMs);
+		const lastMsIntoGame = recording.lastEvent().msIntoGame;
+		// addToScenes(currentVirtualScenes, lastMsIntoGame, 'timeSpendMs', lastMsIntoGame - previousSceneEnteredAtMs);
+		const previousVirtualScenes = currentVirtualScenes;
+		currentVirtualScenes = [];
+		currentVirtualScenesChanged({
+			msIntoGame: lastMsIntoGame,
+			previousVirtualScenes,
+		});
 	}
+
+	console.log('Created', countOfTimePoints, 'room time points in aggregation store', countPerSceneOverTime);
 
 	// console.log({ countPerScene, maxOverScenes });
 	// console.log(x);
 
-	return { countPerScene, maxOverScenes };
+	return { countPerScene, maxOverScenes, countPerSceneOverTime };
 }
 
 const aggregations = createMemo(() => {
@@ -269,8 +395,60 @@ const aggregations = createMemo(() => {
 
 const [viewNeverHappenedAggregations, setViewNeverHappenedAggregations] = createSignal(false);
 
+export type AggregationCountMode = 'total' | 'until-current-time';
+export const aggregationCountModes = ['until-current-time', 'total'] as AggregationCountMode[];
+export function getAggregationCountModeLabel(mode: AggregationCountMode) {
+	if (mode === 'total') return 'Stats of complete gameplay';
+	if (mode === 'until-current-time') return 'Stats until selected time';
+	assertNever(mode);
+}
+
+const [aggregationCountMode, setAggregationCountMode] = createSignal<AggregationCountMode>('until-current-time');
+
+function getAggregations(sceneName: string): ValueAggregation | null {
+	// console.log('getAggregations', sceneName);
+	const aggregations = aggregationStore.data();
+	if (!aggregations) return null;
+	const mode = aggregationCountMode();
+	if (mode === 'total') return aggregations.countPerScene[sceneName];
+	if (mode === 'until-current-time') {
+		const timePoints = aggregations.countPerSceneOverTime[sceneName];
+		if (!timePoints) return null;
+		const msIntoGame = animationStore.msIntoGame();
+		const currentIndex = binarySearchLastIndexBefore(timePoints, msIntoGame, (it) => it.msIntoGame);
+		return currentIndex ? (timePoints[currentIndex] ?? null) : null;
+	}
+
+	assertNever(mode);
+}
+
+const visibleRoomAggregations = createMemo(() => {
+	const sceneName = roomDisplayStore.selectedSceneName();
+	if (!sceneName) return null;
+	return getAggregations(sceneName);
+});
+
+function getCorrectedAggregationValue(
+	aggregation: ValueAggregation | null,
+	variable: AggregationVariable,
+	msIntoGame: () => number,
+): number | null {
+	if (!aggregation) return null;
+	const value = aggregation[variable];
+	if (variable === 'timeSpendMs' && isAggregationTimepoint(aggregation) && aggregation.isActiveScene) {
+		return value + msIntoGame() - aggregation.msIntoGame;
+	} else {
+		return value;
+	}
+}
+
 export const aggregationStore = {
 	data: aggregations,
+	getAggregations,
 	viewNeverHappenedAggregations,
 	setViewNeverHappenedAggregations,
+	visibleRoomAggregations,
+	aggregationCountMode,
+	setAggregationCountMode,
+	getCorrectedAggregationValue,
 };

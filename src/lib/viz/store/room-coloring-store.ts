@@ -3,9 +3,10 @@ import memoize from 'micro-memoize';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
 import { themeStore } from './theme-store';
 import { roomData } from '../../parser';
-import { aggregationStore, type AggregationVariable } from './aggregation-store';
+import { aggregationStore, getCorrectedAggregationValue, type AggregationVariable } from './aggregation-store';
 import { uiStore } from './ui-store';
 import { batch, createMemo, createSignal } from 'solid-js';
+import { animationStore } from './animation-store';
 
 function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
 	return a.h === b.h && a.s === b.s && a.l === b.l;
@@ -78,18 +79,22 @@ const singleVarColorMap = createMemo(() => {
 });
 
 const singleVarColorByGameObjectName = createMemo(() => {
-	const aggregatedRunData = aggregationStore.data();
+	if (colorMode() !== '1-var') return null;
 	const colorMap = singleVarColorMap();
 
 	return new Map<string, string>(
 		roomData.map((room) => {
-			return [room.gameObjectName, colorMap(aggregatedRunData?.countPerScene?.[room.sceneName]?.[var1()] ?? 0)];
+			const aggregations = aggregationStore.getAggregations(room.sceneName);
+			const aggregationValue =
+				aggregationStore.getCorrectedAggregationValue(aggregations, var1(), animationStore.msIntoGame) ?? 0;
+			// const aggregationValue = getCorrectedAggregationValue().getAggregations(room.sceneName)?.[var1()] ?? 0;
+			return [room.gameObjectName, colorMap(aggregationValue)];
 		}),
 	);
 });
 
 const selectedModeColorByGameObjectName = createMemo(() => {
-	return colorMode() === 'area' ? areaColorByGameObjectName() : singleVarColorByGameObjectName();
+	return colorMode() === 'area' ? areaColorByGameObjectName() : singleVarColorByGameObjectName()!;
 });
 
 function setRoomColorMode(roomColorMode: RoomColorMode) {
@@ -128,7 +133,6 @@ export const roomColoringStore = {
 
 	areaColorByGameObjectName,
 	singleVarColorMap,
-	singleVarColorByGameObjectName,
 	selectedModeColorByGameObjectName,
 
 	setRoomColorMode,

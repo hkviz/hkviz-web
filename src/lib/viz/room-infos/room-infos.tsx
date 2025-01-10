@@ -16,10 +16,14 @@ import {
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { HKMapRoom } from '../map/room-icon';
 import {
+	AggregationCountMode,
+	aggregationCountModes,
 	aggregationStore,
 	aggregationVariableInfos,
 	aggregationVariables,
+	animationStore,
 	formatAggregatedVariableValue,
+	getAggregationCountModeLabel,
 	roomColoringStore,
 	roomDisplayStore,
 	themeStore,
@@ -28,6 +32,7 @@ import {
 } from '../store';
 import { AggregationVariableIcon } from './aggregation_variable_icon';
 import { RoomColorCurveContextMenuItems } from './room-color-curve-menu';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 
 function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 	const roomColors = roomColoringStore.colorMode;
@@ -96,9 +101,13 @@ const AggregationVariableRow: Component<{
 }> = (props) => {
 	const selectedRoom = roomDisplayStore.selectedSceneName;
 	const aggregatedVariableValue = createMemo(() => {
-		const sceneName = roomDisplayStore.selectedSceneName();
-		const aggregations = aggregationStore.data();
-		return sceneName ? (aggregations?.countPerScene?.[sceneName]?.[props.variable] ?? 0) : 0;
+		return (
+			aggregationStore.getCorrectedAggregationValue(
+				aggregationStore.visibleRoomAggregations(),
+				props.variable,
+				animationStore.msIntoGame,
+			) ?? 0
+		);
 	});
 	const formatted = createMemo(() => {
 		return formatAggregatedVariableValue(props.variable, aggregatedVariableValue());
@@ -329,6 +338,29 @@ export function RoomInfo() {
 							</Index>
 						</div>
 					</Show>
+					<div class="mx-2 mb-2 mt-1">
+						<Select
+							value={aggregationStore.aggregationCountMode()}
+							onChange={(v) => {
+								if (!v) return;
+								aggregationStore.setAggregationCountMode(v);
+							}}
+							options={aggregationCountModes}
+							placeholder="Aggregation mode"
+							itemComponent={(props) => (
+								<SelectItem item={props.item}>
+									{getAggregationCountModeLabel(props.item.rawValue)}
+								</SelectItem>
+							)}
+						>
+							<SelectTrigger aria-label="Trace visibility">
+								<SelectValue<AggregationCountMode>>
+									{(state) => getAggregationCountModeLabel(state.selectedOption())}
+								</SelectValue>
+							</SelectTrigger>
+							<SelectContent />
+						</Select>
+					</div>
 					<Table class="w-full">
 						<TableBody>
 							<AggregationVariables />

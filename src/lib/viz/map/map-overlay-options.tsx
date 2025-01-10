@@ -69,8 +69,9 @@ export const MapOverlayOptions: Component = () => {
 					<Select
 						value={zoomFollowTarget()}
 						onChange={(v) => {
+							if (!v) return;
 							mapZoomStore.setEnabled(true);
-							mapZoomStore.setTarget(v!);
+							mapZoomStore.setTarget(v);
 						}}
 						options={[
 							'current-zone' satisfies ZoomFollowTarget,
