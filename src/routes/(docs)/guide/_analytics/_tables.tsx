@@ -17,11 +17,11 @@ export function SplitActionsTable() {
 						<TableCell>Hover</TableCell>
 						<TableCell>
 							Shows a marker for the split on the{' '}
-							<a href="#timeline" class="underline">
+							<a href="#timeline" class="underline" target="_self">
 								timeline
 							</a>{' '}
 							and highlights the room of the split on the{' '}
-							<a href="#map" class="underline">
+							<a href="#map" class="underline" target="_self">
 								map
 							</a>
 							.
@@ -37,7 +37,7 @@ export function SplitActionsTable() {
 					<TableRow>
 						<TableCell>Double click</TableCell>
 						<TableCell>
-							<a href="#room-pin" class="underline">
+							<a href="#room-pin" class="underline" target="_self">
 								<Pin class="inline-block h-4 w-4" />
 								Pin the room
 							</a>{' '}
@@ -125,7 +125,7 @@ export function TimelineColorCodesTable() {
 					<TableRow>
 						<TableCell>Double Click</TableCell>
 						<TableCell>
-							<a href="#room-pin" class="underline">
+							<a href="#room-pin" class="underline" target="_self">
 								Toggle if the selected room is pinned. <Pin class="inline-block h-4 w-4" />
 							</a>
 						</TableCell>

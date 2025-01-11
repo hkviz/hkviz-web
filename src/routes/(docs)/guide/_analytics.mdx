@@ -97,7 +97,7 @@ The map is able to display player movement as traces, show which rooms are visit
     <ReflowCell>
         <ReflowCellHeader>Hidden</ReflowCellHeader>
         <TracesNoneScreenshot />
-        Hides the trace. This can be useful, if you want to <a href="#map-coloring-by-variables">look at a variable on the map</a>, without the trace covering it.
+        Hides the trace. This can be useful, if you want to <a href="#map-coloring-by-variables" target="_self">look at a variable on the map</a>, without the trace covering it.
     </ReflowCell>
 
 </ReflowRow>
@@ -111,16 +111,16 @@ You can choose between three options:
     <ReflowCell>
         <ReflowCellHeader>Animated</ReflowCellHeader>
         <RoomVisibilityAnimatedVideo />
-        Rooms appear once they are visited in the gameplay, based on the time selected in the <a href="#timeline">timeline</a>. 
+        Rooms appear once they are visited in the gameplay, based on the time selected in the <a href="#timeline" target="_self">timeline</a>. 
         
         Great to see the progression of the gameplay.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>Visited</ReflowCellHeader>
         <RoomVisibilityVisitedVideo />
-        All rooms visited at any time in the gameplay are shown. Not impacted by the <a href="#timeline">timeline</a>. 
+        All rooms visited at any time in the gameplay are shown. Not impacted by the <a href="#timeline" target="_self">timeline</a>. 
         
-        Useful to <a href="#map-coloring-by-variables">analyze variables by recoloring the map</a>.
+        Useful to <a href="#map-coloring-by-variables" target="_self">analyze variables by recoloring the map</a>.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>All</ReflowCellHeader>
@@ -142,7 +142,7 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
 
 1.  **Select a room** by hovering over it on the map. The hovered room will be displayed in the room analytics. Showing stats for the selected routeModule.
 
-    Hint: your selected room is not only shown in the room analytics panel, but also highlighted in the <a href="#timeline">timeline</a>.
+    Hint: your selected room is not only shown in the room analytics panel, but also highlighted in the <a href="#timeline" target="_self">timeline</a>.
 
 2.  {<LinkableSpan id="room-pin" initialScrollMargin={360}>
 
@@ -152,7 +152,9 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
 
     <Pin class="inline-block h-4 w-4" aria-label="Pin" />
     -button in the room analytics panel or by clicking a room on the map. Rooms can also be pinned by clicking on the
-    color code at the bottom of the <a href="#timeline">timeline</a> or by double clicking on a <a href="#splits">
+    color code at the bottom of the <a href="#timeline" target="_self">
+    	timeline
+    </a> or by double clicking on a <a href="#splits" target="_self">
     	split
     </a>
     .
@@ -261,7 +263,11 @@ By clicking on the building on the map, the analytics for each room inside can b
 	</li>
 	{
 		<li>
-			The pantehons described in the <a href="#godhome">Godhome section</a>.
+			The pantehons described in the{' '}
+			<a href="#godhome" target="_self">
+				Godhome section
+			</a>
+			.
 		</li>
 	}
 </SpoilerWrapper>
@@ -282,7 +288,7 @@ Unlike on the ingame map, each trial of the colosseum has its own sign on the ma
 On the map information for each pantheon / boss rush is displayed at its entrance.
 
 By clicking on one of the doors, one sees the overal analytics of the selected pantehon.
-Analytics can also be displayed for each boss individually, by clicking on one of the bosses above the analytics, similar to other <a href="#multi-room-buildings">multi-room buildings</a>.
+Analytics can also be displayed for each boss individually, by clicking on one of the bosses above the analytics, similar to other <a href="#multi-room-buildings" target="_self">multi-room buildings</a>.
 
 <GodhomeScreenshot />
 
@@ -308,8 +314,8 @@ By toggling the checkboxes corresponding to the event types, the splits can be f
 
 The time-based charts show some variables over time, such as the completion percentage, geo, number of collected grubs.
 
-Hovering over a chart will show a marker on the <a href="#timeline">timeline</a> to highlight the hovered timepoint,
-additionally the room the player is in is highlighted on the map while hovering <a href="#map">map</a>.
+Hovering over a chart will show a marker on the <a href="#timeline" target="_self">timeline</a> to highlight the hovered timepoint,
+additionally the room the player is in is highlighted on the map while hovering <a href="#map" target="_self">map</a>.
 
 **Time-based chart actions**
 
@@ -391,7 +397,7 @@ On the right of the timeline the speed of the animation can be adjusted.
 
 <TimelineScreenshot />
 
-At the bottom of the timeline, the color of visitied rooms is displayed. By <a href="#map-coloring-by-variables">selecting a room on the map</a>, the color codes of the selected room and area are enlarged.
+At the bottom of the timeline, the color of visitied rooms is displayed. By <a href="#map-coloring-by-variables" target="_self">selecting a room on the map</a>, the color codes of the selected room and area are enlarged.
 This can make it easier to find the time a specific area was visited.
 
 **Timeline slider shortcuts**

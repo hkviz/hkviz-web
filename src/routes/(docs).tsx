@@ -1,5 +1,5 @@
 import { A, useLocation } from '@solidjs/router';
-import { Cookie, Download, Map, UsersRound } from 'lucide-solid';
+import { Cookie, Download, History, Map, UsersRound } from 'lucide-solid';
 import { type JSXElement } from 'solid-js';
 import { HKVizText } from '~/components/HKVizText';
 import { MdxOuterWrapper } from '~/components/mdx-layout';
@@ -55,6 +55,10 @@ export default function DocsLayout(props: { children: JSXElement }) {
 							<SubMenuLink href="/privacy-policy">
 								<Cookie class="h-4 pr-2" />
 								Privacy policy
+							</SubMenuLink>
+							<SubMenuLink href="/changelog">
+								<History class="h-4 pr-2" />
+								Changelog
 							</SubMenuLink>
 						</SubMenuList>
 					</Card>
