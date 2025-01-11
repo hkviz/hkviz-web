@@ -45,6 +45,7 @@ export function createRunFileLoader(files: RunFileInfo[]): RunFileLoader {
 	console.log('started loading run files');
 
 	const abortController = new AbortController();
+	storeInitializer.initializeStores('vnext');
 
 	const cache = openRunfileCache();
 	const fileLoaders = files.map((file) => {
