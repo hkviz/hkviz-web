@@ -247,7 +247,7 @@ export function aggregateRecording(recording: CombinedRecording) {
 			// 	event.msIntoGame - previousSceneEnteredAtMs,
 			// );
 
-			// call add just so new time points are created & isActiveScene is set to false
+			// call add just so new time points are created for which active scene is set to false
 			addToScenes(previousVirtualScenes, msIntoGame, 'visits', 0);
 		}
 
@@ -416,7 +416,7 @@ function getAggregations(sceneName: string): ValueAggregation | null {
 		if (!timePoints) return null;
 		const msIntoGame = animationStore.msIntoGame();
 		const currentIndex = binarySearchLastIndexBefore(timePoints, msIntoGame, (it) => it.msIntoGame);
-		return currentIndex ? (timePoints[currentIndex] ?? null) : null;
+		return currentIndex !== -1 ? (timePoints[currentIndex] ?? null) : null;
 	}
 
 	assertNever(mode);
@@ -425,6 +425,7 @@ function getAggregations(sceneName: string): ValueAggregation | null {
 const visibleRoomAggregations = createMemo(() => {
 	const sceneName = roomDisplayStore.selectedSceneName();
 	if (!sceneName) return null;
+	console.log('visibleRoomAggregations', sceneName, animationStore.msIntoGame());
 	return getAggregations(sceneName);
 });
 

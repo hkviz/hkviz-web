@@ -32,9 +32,6 @@ export const MapLegend: Component = () => {
 	const singleVarColormap = roomColoringStore.singleVarColorMap;
 
 	const showSelectedTimeComment = () => {
-		console.log('aggregationStore.aggregationCountMode()', aggregationStore.aggregationCountMode());
-		console.log('gameplayStore.timeFrame().max', gameplayStore.timeFrame().max);
-		console.log('animationStore.msIntoGame()', animationStore.msIntoGame());
 		return (
 			aggregationStore.aggregationCountMode() !== 'total' &&
 			gameplayStore.timeFrame().max - animationStore.msIntoGame() > 10
