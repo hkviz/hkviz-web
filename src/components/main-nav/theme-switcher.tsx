@@ -1,7 +1,7 @@
 import { Moon, Sun } from 'lucide-solid';
 import { type Component, Show } from 'solid-js';
-import { createCookieFromClient } from '~/lib/client-cookies';
-import { COOKIE_NAME_THEME } from '~/lib/cookie-names';
+import { createCookieFromClient } from '~/lib/cookies/cookies-client';
+import { COOKIE_NAME_THEME } from '~/lib/cookies/cookie-names';
 import { Button } from '../ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import { themeStore } from '~/stores/theme-store';
