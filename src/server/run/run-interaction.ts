@@ -63,6 +63,10 @@ export const runInteractionUnlike = action(async (unsafeInput: RunInteractionUnl
 	'use server';
 	const user = await getUserOrThrow();
 	const input = v.parse(runInteractionUnlikeInputSchema, unsafeInput);
+	runInteractionUnlikeInternal({ runId: input.runId, userId: user.id });
+});
+
+export async function runInteractionUnlikeInternal(input: { runId: string; userId: string }) {
 	await db.transaction(async (db) => {
 		const run = await db.query.runs.findFirst({
 			where: eq(runs.id, input.runId),
@@ -72,19 +76,18 @@ export const runInteractionUnlike = action(async (unsafeInput: RunInteractionUnl
 			throw new Error('Run not found');
 		}
 
-		const userId = user.id;
 		const result = await db
 			.delete(runInteraction)
 			.where(
 				and(
-					eq(runInteraction.userId, userId),
+					eq(runInteraction.userId, input.userId),
 					eq(runInteraction.runId, input.runId),
 					eq(runInteraction.type, 'like'),
 				),
 			);
 
 		if (result.rowsAffected > 1) {
-			console.error('Deleted more than one like', input.runId, userId, result.rowsAffected);
+			console.error('Deleted more than one like', input.runId, input.userId, result.rowsAffected);
 		}
 		if (result.rowsAffected !== 0) {
 			await db
@@ -93,4 +96,4 @@ export const runInteractionUnlike = action(async (unsafeInput: RunInteractionUnl
 				.where(eq(runs.id, input.runId));
 		}
 	});
-});
+}

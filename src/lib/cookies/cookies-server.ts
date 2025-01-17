@@ -2,13 +2,31 @@ import { query } from '@solidjs/router';
 import { parse, serialize } from 'cookie';
 import { getWebRequest } from 'vinxi/http';
 
-class ServerCookies {
+export class ServerCookies {
 	#cookies = new Map<string, string>();
-	#headers = new Map<string, [string, string]>();
+	#setHeaders = new Map<string, [string, string]>();
 
-	constructor(cookies: Record<string, string | undefined>) {
+	#initialHeader: string;
+	#didParse = false;
+
+	get didParse() {
+		return this.#didParse;
+	}
+
+	constructor(cookieHeader: string) {
+		this.#initialHeader = cookieHeader;
+	}
+
+	#ensureParsed() {
+		if (this.#didParse) {
+			return;
+		}
+
+		this.#didParse = true;
+		const cookies = parse(this.#initialHeader);
 		for (const [name, value] of Object.entries(cookies)) {
-			if (value != null) {
+			if (value !== undefined && this.#setHeaders.get(name) === undefined) {
+				// Only set the cookie if it hasn't been set before
 				this.#cookies.set(name, value);
 			}
 		}
@@ -16,32 +34,35 @@ class ServerCookies {
 
 	set(name: string, value: string, options: { maxAge?: number } = {}) {
 		const setCookieHeader = serialize(name, value, options);
-		this.#headers.set(name, ['Set-Cookie', setCookieHeader]);
+		this.#setHeaders.set(name, ['Set-Cookie', setCookieHeader]);
 		this.#cookies.set(name, value);
 	}
 
 	delete(name: string) {
 		const deleteCookieHeader = serialize(name, '', { maxAge: -1 });
-		this.#headers.set(name, ['Set-Cookie', deleteCookieHeader]);
+		this.#setHeaders.set(name, ['Set-Cookie', deleteCookieHeader]);
 		this.#cookies.delete(name);
 	}
 
 	get(name: string): string | undefined {
+		if (!this.#didParse && !this.#setHeaders.has(name)) {
+			this.#ensureParsed();
+		}
 		return this.#cookies.get(name);
 	}
 
 	getAll(): ReadonlyMap<string, string> {
+		this.#ensureParsed();
 		return this.#cookies;
 	}
 
-	getHeaders() {
-		return Array.from(this.#headers.values());
+	getSetHeaders() {
+		return Array.from(this.#setHeaders.values());
 	}
 }
 
 export const serverCookiesGet = query(async () => {
 	const request = getWebRequest();
 	const cookie = request.headers.get('cookie') || '';
-	const cookies = parse(cookie);
-	return new ServerCookies(cookies);
+	return new ServerCookies(cookie);
 }, 'get-cookies-server');

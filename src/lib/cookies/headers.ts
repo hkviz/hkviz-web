@@ -1,11 +1,22 @@
-type HeaderLike = Record<string, string | undefined> | [string, string][];
+export function combineHeaders(...headerLikes: (HeadersInit | undefined | null)[]): HeadersInit | undefined {
+	if (headerLikes.length === 0) {
+		return undefined;
+	}
+	if (headerLikes.length === 1) {
+		return headerLikes[0] ?? undefined;
+	}
 
-export function combineHeaders(...headerLikes: HeaderLike[]) {
 	const combined: [string, string][] = [];
 
 	for (const headerLike of headerLikes) {
-		if (Array.isArray(headerLike)) {
+		if (!headerLike) {
+			continue;
+		} else if (Array.isArray(headerLike)) {
 			combined.push(...headerLike);
+		} else if (headerLike instanceof Headers) {
+			headerLike.forEach((value, name) => {
+				combined.push([name, value]);
+			});
 		} else {
 			for (const [name, value] of Object.entries(headerLike)) {
 				if (value != null) {

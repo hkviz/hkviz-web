@@ -14,27 +14,7 @@
 // import { deleteRunProcedure, setRunArchivedProcedure } from './run-deletion';
 
 // export const runRouter = createTRPCRouter({
-//     delete: deleteRunProcedure,
-//     setArchived: setRunArchivedProcedure,
-//     setTitle: protectedProcedure
-//         .input(
-//             z.object({
-//                 id: z.string().uuid(),
-//                 title: z.string().max(MAX_RUN_TITLE_LENGTH),
-//             }),
-//         )
-//         .mutation(async ({ ctx, input }) => {
-//             const userId = ctx.session.user?.id ?? raise(new Error('Not logged in'));
 
-//             const result = await ctx.db
-//                 .update(runs)
-//                 .set({ title: input.title })
-//                 .where(and(eq(runs.id, input.id), eq(runs.userId, userId)));
-
-//             if (result.rowsAffected !== 1) {
-//                 throw new Error('Could not update title');
-//             }
-//         }),
 //     createUploadPartUrl: publicProcedure
 //         .input(
 //             z.object({
@@ -204,6 +184,4 @@
 //                 console.error('Could not update run meta from file', ex);
 //             }
 //         }),
-//     combine: combineRunsProcedure,
-//     uncombine: uncombineRunProcedure,
 // });

@@ -1,5 +1,3 @@
-'use server';
-
 import { getSession } from '@auth/solid-start';
 import { getWebRequest } from 'vinxi/http';
 import { authOptions } from './auth-options';
