@@ -4,6 +4,8 @@ import { Dynamic } from 'solid-js/web';
 import { gameplayStore, tourStore } from '../store';
 import { type Step } from './step';
 import { tourSteps } from './steps';
+import { Popover, PopoverContent } from '~/components/ui/popover';
+import { Button } from '~/components/ui/button';
 
 interface TourStepProps {
 	step: Step;
@@ -57,7 +59,8 @@ const TourStep: Component<TourStepProps> = (props) => {
 							{props.index === tourStore.tourLength - 1 ? 'Finish' : 'Next'}
 						</Button>
 					</div>
-					<PopoverArrow size={15} class="fill-popover stroke-current stroke-2 text-border" />
+					{/* TODO arrow: */}
+					{/* <PopoverArrow size={15} class="fill-popover stroke-current stroke-2 text-border" /> */}
 				</PopoverContent>
 			</Popover>
 			{/* {isActive() && <TourStepEffectRunner step={step} />} */}
@@ -76,7 +79,7 @@ const TourShadow: Component = () => {
 			}
 		>
 			{shadowInner}
-			<div class="animate-pulse-shadow-black dark:animate-pulse-shadow-white absolute inset-0 h-full w-full rounded-md" />
+			<div class="absolute inset-0 h-full w-full animate-pulse-shadow-black rounded-md dark:animate-pulse-shadow-white" />
 			{/* <div class="animate-pulse-shadow-black dark:animate-pulse-shadow-white inset-0 h-full w-full rounded-md text-foreground opacity-50" /> */}
 		</div>
 	) as HTMLDivElement;

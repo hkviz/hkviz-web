@@ -11,3 +11,9 @@ declare module '*?hero' {
 	};
 	export default img;
 }
+
+declare module '*.mdx' {
+	import { Component } from 'solid-js';
+	let MDXComponent: Component;
+	export default MDXComponent;
+}

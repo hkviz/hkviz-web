@@ -1,4 +1,3 @@
-import { mapZoneSchema } from '~/lib/parser';
 import { relations, sql, type HasDefault, type NotNull } from 'drizzle-orm';
 import {
 	boolean,
@@ -15,6 +14,8 @@ import {
 	varchar,
 	type MySqlBooleanBuilderInitial,
 } from 'drizzle-orm/mysql-core';
+import { AccountType } from '~/lib/auth/auth-options';
+import { mapZoneSchema } from '~/lib/parser';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { callOptionCodes } from '~/lib/types/call-option';
 import { countryCodes } from '~/lib/types/country';
@@ -23,7 +24,6 @@ import { playingSinceCodes } from '~/lib/types/playing-since';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { runInteractionTypes } from '~/lib/types/run-interaction';
 import { tags, type TagCode } from '~/lib/types/tags';
-import { AccountType } from '../auth/server';
 
 const UUID_LENGTH = 36;
 function varcharUuid(name: string) {

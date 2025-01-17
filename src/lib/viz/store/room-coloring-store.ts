@@ -1,12 +1,12 @@
 import * as d3 from 'd3';
 import memoize from 'micro-memoize';
-import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
-import { themeStore } from './theme-store';
-import { roomData } from '../../parser';
-import { aggregationStore, getCorrectedAggregationValue, type AggregationVariable } from './aggregation-store';
-import { uiStore } from './ui-store';
 import { batch, createMemo, createSignal } from 'solid-js';
+import { roomData } from '../../parser';
+import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
+import { aggregationStore, type AggregationVariable } from './aggregation-store';
 import { animationStore } from './animation-store';
+import { themeStore } from './theme-store';
+import { uiStore } from './ui-store';
 
 function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
 	return a.h === b.h && a.s === b.s && a.l === b.l;

@@ -8,7 +8,8 @@
 		"version": "vinxi version",
 		"test": "vitest run",
 		"test:watch": "vitest watch",
-		"typecheck": "tsc --noEmit"
+		"typecheck": "tsc --noEmit",
+		"tsc:config": "tsc --showConfig"
 	},
 	"dependencies": {
 		"@auth/core": "^0.37.4",

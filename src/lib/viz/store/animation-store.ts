@@ -116,7 +116,7 @@ createEffect(() => {
 		untrack(() => {
 			animationStore.incrementMsIntoGame(intervalMs * speedMultiplier());
 		});
-	}, intervalMs);
+	}, intervalMs) as any;
 
 	onCleanup(() => clearInterval(interval));
 });
