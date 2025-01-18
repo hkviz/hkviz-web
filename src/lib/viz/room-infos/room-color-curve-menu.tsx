@@ -2,9 +2,10 @@ import { For } from 'solid-js';
 import { ContextMenuItem } from '~/components/ui/context-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { roomColorCurves } from '../color-curves';
-import { AggregationVariable, roomColoringStore } from '../store';
+import { AggregationVariable, useRoomColoringStore } from '../store';
 
 export function RoomColorCurveContextMenuItems(props: { variable: AggregationVariable }) {
+	const roomColoringStore = useRoomColoringStore();
 	return (
 		<For each={roomColorCurves}>
 			{(curve) => (
@@ -22,6 +23,7 @@ export function RoomColorCurveContextMenuItems(props: { variable: AggregationVar
 }
 
 export function RoomColorCurveSelect(props: { variable: AggregationVariable }) {
+	const roomColoringStore = useRoomColoringStore();
 	const roomColorVar1Curve = roomColoringStore.var1Curve;
 
 	function handleValueChange(value: string | null): void {

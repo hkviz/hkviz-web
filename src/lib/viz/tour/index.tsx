@@ -1,11 +1,10 @@
 import { X } from 'lucide-solid';
 import { For, Show, createEffect, createMemo, onCleanup, untrack, type Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import { gameplayStore, tourStore } from '../store';
-import { type Step } from './step';
-import { tourSteps } from './steps';
-import { Popover, PopoverContent } from '~/components/ui/popover';
 import { Button } from '~/components/ui/button';
+import { Popover, PopoverContent } from '~/components/ui/popover';
+import { gameplayStore, useTourStore } from '../store';
+import { type Step } from './step';
 
 interface TourStepProps {
 	step: Step;
@@ -13,6 +12,8 @@ interface TourStepProps {
 }
 
 const TourStep: Component<TourStepProps> = (props) => {
+	const tourStore = useTourStore();
+
 	const isActive = createMemo(() => tourStore.currentStepIndex() === props.index);
 	const target = () => props.step.target();
 	const popoverSide = () => props.step.popoverSide?.();
@@ -69,6 +70,8 @@ const TourStep: Component<TourStepProps> = (props) => {
 };
 
 const TourShadow: Component = () => {
+	const tourStore = useTourStore();
+
 	const shadowInner = (
 		<div class={'absolute inset-0 h-full w-full rounded-md shadow-[0_0_0_100vmax_rgba(0,0,0,0.3)]'} />
 	) as HTMLDivElement;
@@ -85,7 +88,7 @@ const TourShadow: Component = () => {
 	) as HTMLDivElement;
 	let previousTarget: HTMLElement | null = null;
 
-	const currentStep = () => tourSteps[tourStore.currentStepIndex()];
+	const currentStep = () => tourStore.steps[tourStore.currentStepIndex()];
 
 	createEffect(() => {
 		const _currentStep = currentStep();
@@ -146,10 +149,11 @@ const TourShadow: Component = () => {
 };
 
 export const SingleRunPageTour: Component = () => {
+	const tourStore = useTourStore();
 	const recording = gameplayStore.recording;
 	const isOpen = tourStore.isOpen;
 
-	const currentStep = createMemo(() => tourSteps[tourStore.currentStepIndex()]);
+	const currentStep = createMemo(() => tourStore.steps[tourStore.currentStepIndex()]);
 
 	createEffect(() => {
 		const step = currentStep();
@@ -165,7 +169,7 @@ export const SingleRunPageTour: Component = () => {
 
 	return (
 		<Show when={recording() && isOpen()}>
-			<For each={tourSteps}>{(step, index) => <TourStep step={step} index={index()} />}</For>
+			<For each={tourStore.steps}>{(step, index) => <TourStep step={step} index={index()} />}</For>
 			<TourShadow />
 		</Show>
 	);

@@ -56,9 +56,11 @@ export const MainNav: Component<{ theme: Theme }> = (props) => {
 					<MainNavLeftSide />
 				</MenuItemContextProvider>
 				<div class="grow" />
+				<ErrorBoundary fallback={<div>Theme switcher error</div>}>
+					<ThemeSwitcher />
+				</ErrorBoundary>
 				<ErrorBoundary fallback={<div>Loading login failed</div>}>
 					<Suspense fallback={<></>}>
-						<ThemeSwitcher />
 						<Show
 							when={session()}
 							fallback={

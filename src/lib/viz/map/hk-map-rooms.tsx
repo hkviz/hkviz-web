@@ -1,6 +1,6 @@
-import { type RoomInfo } from '../../parser';
-import { hkMapRoomRectClass, roomColoringStore, roomDisplayStore, themeStore } from '../store';
 import { For, createMemo, createUniqueId } from 'solid-js';
+import { type RoomInfo } from '../../parser';
+import { hkMapRoomRectClass, roomDisplayStore, useRoomColoringStore, useThemeStore } from '../store';
 
 function HkMapRoom(props: {
 	room: RoomInfo;
@@ -11,6 +11,9 @@ function HkMapRoom(props: {
 	alwaysShowMainRoom: boolean;
 	alwaysUseAreaAsColor: boolean;
 }) {
+	const themeStore = useThemeStore();
+	const roomColoringStore = useRoomColoringStore();
+
 	const states = createMemo(() => roomDisplayStore.statesByGameObjectName.get(props.room.gameObjectName)!);
 
 	const id = createUniqueId();

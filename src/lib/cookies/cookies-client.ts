@@ -1,29 +1,29 @@
-export function createCookieFromClient(name: string, value: string, days: number) {
-    let expires: string;
-    if (days) {
-        const date = new Date();
-        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-        expires = '; expires=' + date.toUTCString();
-    } else {
-        expires = '';
-    }
-    document.cookie = name + '=' + value + expires + '; path=/';
+export function cookiesClientSet(name: string, value: string, days: number) {
+	let expires: string;
+	if (days) {
+		const date = new Date();
+		date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+		expires = '; expires=' + date.toUTCString();
+	} else {
+		expires = '';
+	}
+	document.cookie = name + '=' + value + expires + '; path=/';
 }
 
-export function readCookieFromClient(name: string) {
-    const nameEQ = name + '=';
-    const ca = document.cookie.split(';');
-    for (let c of ca) {
-        while (c.startsWith(' ')) {
-            c = c.substring(1, c.length);
-        }
-        if (c.startsWith(nameEQ)) {
-            return c.substring(nameEQ.length, c.length);
-        }
-    }
-    return null;
+export function cookiesClientRead(name: string) {
+	const nameEQ = name + '=';
+	const ca = document.cookie.split(';');
+	for (let c of ca) {
+		while (c.startsWith(' ')) {
+			c = c.substring(1, c.length);
+		}
+		if (c.startsWith(nameEQ)) {
+			return c.substring(nameEQ.length, c.length);
+		}
+	}
+	return null;
 }
 
-export function eraseCookie(name: string) {
-    createCookieFromClient(name, '', -1);
+export function cookiesClientDelete(name: string) {
+	cookiesClientSet(name, '', -1);
 }

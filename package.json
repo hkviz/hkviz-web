@@ -9,7 +9,8 @@
 		"test": "vitest run",
 		"test:watch": "vitest watch",
 		"typecheck": "tsc --noEmit",
-		"tsc:config": "tsc --showConfig"
+		"tsc:config": "tsc --showConfig",
+		"lint": "eslint ."
 	},
 	"dependencies": {
 		"@auth/core": "^0.37.4",
@@ -70,14 +71,19 @@
 		"node": ">=18"
 	},
 	"devDependencies": {
+		"@eslint/js": "^9.18.0",
 		"@solidjs/testing-library": "^0.8.10",
 		"@testing-library/jest-dom": "^6.6.3",
 		"@testing-library/user-event": "^14.6.0",
 		"@types/d3": "^7.4.3",
 		"@types/d3-brush": "^3.0.6",
 		"@types/unist": "^3.0.3",
+		"@typescript-eslint/parser": "^8.20.0",
+		"eslint": "^9.18.0",
+		"eslint-plugin-solid": "^0.14.5",
 		"jsdom": "^26.0.0",
 		"typescript": "^5.7.3",
+		"typescript-eslint": "^8.20.0",
 		"vite-plugin-solid": "^2.11.0",
 		"vitest": "^3.0.2"
 	}

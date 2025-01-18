@@ -5,6 +5,7 @@ import { Button } from '~/components/ui/button';
 import { Card } from '~/components/ui/card';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 import { Slider, SliderFill, SliderThumb, SliderTrack } from '~/components/ui/slider';
+import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
 import { mainRoomDataBySceneName } from '../../parser';
@@ -17,10 +18,9 @@ import {
 	gameplayStore,
 	hoverMsStore,
 	roomDisplayStore,
-	themeStore,
 	uiStore,
+	useThemeStore,
 } from '../store';
-import { TextField, TextFieldInput, TextFieldLabel } from '~/components/ui/text-field';
 
 function Times(props: { class?: string }) {
 	return (
@@ -53,6 +53,7 @@ const EMPTY_ARRAY = [] as const;
 
 function AnimationTimeLineColorCodes() {
 	const timeFrameMs = gameplayStore.timeFrame;
+	const themeStore = useThemeStore();
 
 	const sceneChanges = createMemo(function timelineColorCodesSceneChangesComputed() {
 		const sceneEvents = gameplayStore.recording()?.sceneEvents ?? EMPTY_ARRAY;

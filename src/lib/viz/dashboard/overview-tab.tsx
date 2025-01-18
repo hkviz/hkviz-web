@@ -12,11 +12,11 @@ import {
 	extraChartStore,
 	gameplayStore,
 	mapZoomStore,
-	roomColoringStore,
 	roomDisplayStore,
-	tourStore,
 	traceStore,
 	uiStore,
+	useRoomColoringStore,
+	useTourStore,
 } from '../store';
 
 export interface RunOverviewTabProps {
@@ -28,6 +28,8 @@ export interface RunOverviewTabProps {
 }
 
 export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
+	const tourStore = useTourStore();
+	const roomColoringStore = useRoomColoringStore();
 	const mainCardTab = uiStore.mainCardTab;
 	const recording = gameplayStore.recording;
 

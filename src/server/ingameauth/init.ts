@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 import * as v from 'valibot';
 import { ingameAuth } from '~/server/db/schema';
 
-import { raise } from '~/lib/parser';
 import { db } from '~/server/db';
 
 const ingameAuthInitInputSchema = v.object({

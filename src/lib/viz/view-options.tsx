@@ -6,13 +6,13 @@ import { Label } from '~/components/ui/label';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import { cn } from '../utils';
 import {
-	roomColoringStore,
 	RoomColorMode,
 	roomDisplayStore,
 	RoomVisibility,
 	traceStore,
 	TraceVisibility,
 	uiStore,
+	useRoomColoringStore,
 } from './store';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Checkbox } from '~/components/ui/checkbox';
@@ -50,6 +50,7 @@ function roomColorModeName(v: RoomColorMode) {
 
 export function ViewOptions() {
 	const id = createUniqueId();
+	const roomColoringStore = useRoomColoringStore();
 
 	const isV1 = uiStore.isV1;
 

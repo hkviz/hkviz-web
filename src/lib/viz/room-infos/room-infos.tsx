@@ -4,6 +4,7 @@ import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '~/components/ui/context-menu';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import { Toggle } from '~/components/ui/toggle';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
@@ -24,17 +25,17 @@ import {
 	animationStore,
 	formatAggregatedVariableValue,
 	getAggregationCountModeLabel,
-	roomColoringStore,
 	roomDisplayStore,
-	themeStore,
 	uiStore,
+	useRoomColoringStore,
+	useThemeStore,
 	type AggregationVariable,
 } from '../store';
 import { AggregationVariableIcon } from './aggregation_variable_icon';
 import { RoomColorCurveContextMenuItems } from './room-color-curve-menu';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 
 function AggregationVariableToggles(props: { variable: AggregationVariable }) {
+	const roomColoringStore = useRoomColoringStore();
 	const roomColors = roomColoringStore.colorMode;
 	const roomColorVar1 = roomColoringStore.var1;
 	const roomColorVar1Curve = roomColoringStore.var1Curve;
@@ -190,6 +191,8 @@ export function RoomInfo() {
 	const isV1 = uiStore.isV1;
 	const selectedRoom = roomDisplayStore.selectedSceneName;
 	const selectedRoomPinned = roomDisplayStore.selectedScenePinned;
+
+	const themeStore = useThemeStore();
 
 	const roomInfos = createMemo(() => {
 		const _selectedRoom = selectedRoom();

@@ -37,17 +37,18 @@ import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { runArchive, runDelete } from '~/server/run/run-deletion';
 import { RunCardDropdownMenu } from './run-card-dropdown';
 
-function Duration({ seconds }: { seconds: number }) {
-	const hours = Math.floor(seconds / 60 / 60);
-	const minutes = Math.floor((seconds / 60) % 60);
+function Duration(props: { seconds: number }) {
+	const duration = () => {
+		const hours = Math.floor(props.seconds / 60 / 60);
+		const minutes = Math.floor((props.seconds / 60) % 60);
 
-	const duration: string[] = [];
-	if (hours > 0) duration.push(`${hours}h`);
-	if (minutes > 0) duration.push(`${minutes}m`);
+		const d = [];
+		if (hours > 0) d.push(`${hours}h`);
+		if (minutes > 0) d.push(`${minutes}m`);
+		return d.length === 0 ? '0m' : d.join(' ');
+	};
 
-	if (duration.length === 0) return <span>0m</span>;
-
-	return <>{duration.join(' ')}</>;
+	return <span>{duration()}</span>;
 }
 
 const interactiveBrightnessClasses =

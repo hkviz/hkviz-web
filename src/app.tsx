@@ -8,6 +8,8 @@ import { SessionProvider } from './lib/auth/client';
 import { Toaster } from './components/ui/toast';
 import { Footer } from './components/footer';
 import { ContentCenterWrapper } from './components/content-wrapper';
+import { GlobalStoresProvider } from './lib/viz/store/store-context';
+import { createThemeStore, ThemeContext } from './lib/viz';
 
 // function Error(props: any) {
 // 	console.log(props);
@@ -28,11 +30,14 @@ export default function App() {
 				// <ErrorBoundary fallback={(error) => <Error error={error} />}>
 				<SessionProvider>
 					<MetaProvider>
-						<Title>HKViz</Title>
-						<MainNav theme={'dark'} />
-						<Suspense fallback={<ContentCenterWrapper />}>{props.children}</Suspense>
-						<Footer />
-						<Toaster />
+						<GlobalStoresProvider>
+							<Title>HKViz</Title>
+
+							<MainNav theme={'dark'} />
+							<Suspense fallback={<ContentCenterWrapper />}>{props.children}</Suspense>
+							<Footer />
+							<Toaster />
+						</GlobalStoresProvider>
 					</MetaProvider>
 				</SessionProvider>
 				// </ErrorBoundary>

@@ -1,24 +1,25 @@
+import * as d3 from 'd3';
+import { Show, createEffect, createSignal, onCleanup, type Component } from 'solid-js';
+import { Expander } from '~/components/ui/additions';
+import { Card } from '~/components/ui/card';
+import { RoomColorCurveSelect } from '../room-infos/room-color-curve-menu';
 import {
 	aggregationStore,
 	aggregationVariableInfos,
 	animationStore,
 	formatAggregatedVariableValue,
 	gameplayStore,
-	roomColoringStore,
 	roomDisplayStore,
 	uiStore,
+	useRoomColoringStore,
 } from '../store';
-import * as d3 from 'd3';
-import { Show, createEffect, createSignal, onCleanup, type Component } from 'solid-js';
-import { RoomColorCurveSelect } from '../room-infos/room-color-curve-menu';
-import { Card } from '~/components/ui/card';
-import { Expander } from '~/components/ui/additions';
 
 const LEGEND_PADDING = 30;
 
 const LEGEND_SVG_TEXT_CLASSES = 'text-black dark:text-white fill-current';
 
 export const MapLegend: Component = () => {
+	const roomColoringStore = useRoomColoringStore();
 	const [svg, setSvg] = createSignal<SVGSVGElement>();
 
 	const isV1 = uiStore.isV1;

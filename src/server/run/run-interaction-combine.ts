@@ -16,7 +16,7 @@ export async function runInteractionCombine(db: DB, chosenId: string, runIdsWith
 
 	const groupedInteractions = d3.group(interactions, (i) => `${i.userId}_${i.type}`);
 
-	for (const [_, group] of groupedInteractions.entries()) {
+	for (const [, group] of groupedInteractions.entries()) {
 		const { userId, type } = group[0]!;
 		const kept = group.find((i) => i.runId === chosenId);
 

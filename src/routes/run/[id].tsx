@@ -6,6 +6,7 @@ import { GameplayDashboard, createRunFileLoader } from '~/lib/viz';
 import { getRun } from '~/server/run/run-get';
 import { getRunPageTitle } from './_metadata';
 import { Title } from '@solidjs/meta';
+import { RunStoresProvider } from '~/lib/viz/store/store-context';
 
 interface Params {
 	id: string;
@@ -29,20 +30,22 @@ export default function SingleRunPage({ params }: RouteSectionProps) {
 	});
 
 	return (
-		<ContentWrapper footerOutOfSight={true}>
-			<Show when={runData()}>
-				{(runData) => (
-					<>
-						<Title>{getRunPageTitle(runData())}</Title>
-						<GameplayDashboard
-							startDate={runData().startedAt}
-							fileInfos={runData().files}
-							runFileLoader={loader()!}
-							gameplayCard={<RunCard run={runData()} showUser={true} />}
-						/>
-					</>
-				)}
-			</Show>
-		</ContentWrapper>
+		<RunStoresProvider>
+			<ContentWrapper footerOutOfSight={true}>
+				<Show when={runData()}>
+					{(runData) => (
+						<>
+							<Title>{getRunPageTitle(runData())}</Title>
+							<GameplayDashboard
+								startDate={runData().startedAt}
+								fileInfos={runData().files}
+								runFileLoader={loader()!}
+								gameplayCard={<RunCard run={runData()} showUser={true} />}
+							/>
+						</>
+					)}
+				</Show>
+			</ContentWrapper>
+		</RunStoresProvider>
 	);
 }
