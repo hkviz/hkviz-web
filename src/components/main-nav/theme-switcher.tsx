@@ -11,14 +11,6 @@ export type Theme = 'light' | 'dark';
 export const ThemeSwitcher: Component = () => {
 	const themeStore = useThemeStore();
 
-	// effect(() => {
-	// 	untrack(() => {
-	// 		if (typeof document !== 'undefined') {
-	// 			const theme = cookiesClientRead(COOKIE_NAME_THEME) === 'light' ? 'light' : 'dark';
-	// 			themeStore.setCurrentTheme(theme);
-	// 		}
-	// 	});
-	// })
 	function toggleTheme() {
 		const theme = themeStore.currentTheme() === 'light' ? 'dark' : 'light';
 		themeStore.setCurrentTheme(theme);

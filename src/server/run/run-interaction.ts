@@ -1,4 +1,4 @@
-import { action } from '@solidjs/router';
+import { action, json } from '@solidjs/router';
 import { eq, sql } from 'drizzle-orm';
 import * as v from 'valibot';
 import { getUserOrThrow } from '~/lib/auth/shared';
@@ -53,6 +53,8 @@ export const runInteractionLike = action(async (unsafeInput: RunInteractionLikeI
 				.where(eq(runs.id, input.runId));
 		}
 	});
+
+	return json({}, { revalidate: 'nothing' });
 });
 
 const runInteractionUnlikeInputSchema = v.object({
@@ -65,4 +67,6 @@ export const runInteractionUnlike = action(async (unsafeInput: RunInteractionUnl
 	const user = await getUserOrThrow();
 	const input = v.parse(runInteractionUnlikeInputSchema, unsafeInput);
 	runInteractionUnlikeInternal({ runId: input.runId, userId: user.id });
+
+	return json({}, { revalidate: 'nothing' });
 });

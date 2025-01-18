@@ -23,8 +23,8 @@ export function createThemeStore() {
 	// }
 
 	// const themeResource = createAsync(() => serverCookiesGetTheme());
-
 	// const [currentTheme, setCurrentTheme] = createMutableMemo<Theme>(() => themeResource()!);
+
 	const [currentTheme, setCurrentTheme] = createSignal<Theme>('dark');
 
 	createEffect(() => {
@@ -55,17 +55,6 @@ export function createThemeStore() {
 }
 
 export type ThemeStore = ReturnType<typeof createThemeStore>;
-
-// // todo probably should use context instead of global store, especially for server side rendering
-// if (typeof window !== 'undefined') {
-// 	effect(() => {
-// 		// just using effect, to delay execution until after hydration
-// 		// console.log('theme store init', window.document.body.classList.contains('dark') ? 'dark' : 'light');
-// 		// const theme = window.document.body.classList.contains('dark') ? 'dark' : 'light';
-// 		const theme = cookiesClientRead(COOKIE_NAME_THEME) === 'light' ? 'light' : 'dark';
-// 		setCurrentTheme(theme);
-// 	});
-// }
 
 export const ThemeStoreContext = createContext<ThemeStore>();
 

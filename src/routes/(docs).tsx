@@ -19,7 +19,7 @@ function SubMenuLink(props: { children: JSXElement; href: string }) {
 	const isActive = () => location.pathname === props.href;
 	return (
 		<li>
-			<Button variant={isActive() ? 'default' : 'ghost'} as={A} href={props.href}>
+			<Button variant={isActive() ? 'default' : 'ghost'} class="min-h-fit" as={A} href={props.href}>
 				{props.children}
 			</Button>
 		</li>

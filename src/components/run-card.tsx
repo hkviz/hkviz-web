@@ -1,6 +1,17 @@
 import { A, useAction, useSubmission } from '@solidjs/router';
 import { ChevronDown, Heart } from 'lucide-solid';
-import { For, Index, Match, Show, Switch, createEffect, createSignal, type Component, type JSXElement } from 'solid-js';
+import {
+	For,
+	Index,
+	Match,
+	Show,
+	Switch,
+	createEffect,
+	createSignal,
+	onCleanup,
+	type Component,
+	type JSXElement,
+} from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { errorGetMessage } from '~/lib/error-get-message';
 import { MAX_RUN_TITLE_LENGTH, cleanupRunTitle } from '~/lib/types/run-fields';
@@ -177,9 +188,9 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 
 		resizeObserver.observe(textareaRef);
 
-		return () => {
+		onCleanup(() => {
 			resizeObserver.disconnect();
-		};
+		});
 	});
 
 	return (

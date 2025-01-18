@@ -37,3 +37,6 @@ export function useGameplayStore() {
 	if (!store) throw new Error('useGameplayStore must be used within a GameplayStoreContext.Provider');
 	return store;
 }
+export function useGameplayStoreOptional() {
+	return useContext(GameplayStoreContext);
+}
