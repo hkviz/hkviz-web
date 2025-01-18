@@ -57,7 +57,7 @@ export async function GET() {
 						await fs.appendFile(logPath, ':' + it.id + '\n', 'utf8');
 					} catch (ex: any) {
 						console.error('Error while downloading file', it.id, ex);
-						// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+						 
 						await fs.appendFile(errorPath, '::::' + it.id + ':' + ex?.message + '\n\n', 'utf8');
 					}
 				}

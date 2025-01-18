@@ -41,6 +41,6 @@ export const roomDataConditionals: Record<string, RoomDataConditional> = {
 };
 
 export function roomDataConditionalByGameObjectName(gameObjectName: string): RoomDataConditional | null {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+     
     return roomDataConditionals[gameObjectName] ?? null;
 }

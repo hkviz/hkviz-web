@@ -34,7 +34,7 @@ export function LinkableSpan(props: {
 		return () => {
 			window.removeEventListener('resize', calcScrollMargin);
 		};
-	}, []);
+	});
 
 	return (
 		<span

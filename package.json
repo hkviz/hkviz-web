@@ -10,7 +10,8 @@
 		"test:watch": "vitest watch",
 		"typecheck": "tsc --noEmit",
 		"tsc:config": "tsc --showConfig",
-		"lint": "eslint ."
+		"lint": "eslint .",
+		"lint:fix": "eslint . --fix"
 	},
 	"dependencies": {
 		"@auth/core": "^0.37.4",

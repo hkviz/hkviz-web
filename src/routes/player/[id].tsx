@@ -17,9 +17,9 @@ export const route = {
 	},
 } satisfies RouteDefinition;
 
-export default function PublicPlayerPage({ params }: { params: Params }) {
+export default function PublicPlayerPage(props: { params: Params }) {
 	const [searchParams, setSearchParams] = useSearchParams();
-	const filter = createMemo(() => v.parse(RunFilterParamsSchema, { ...searchParams, userId: params.id }));
+	const filter = createMemo(() => v.parse(RunFilterParamsSchema, { ...searchParams, userId: props.params.id }));
 	const runs = createAsync(() => findPublicRuns(filter()));
 	const userName = createMemo(() => runs()?.[0]?.user?.name ?? 'Unnamed player');
 

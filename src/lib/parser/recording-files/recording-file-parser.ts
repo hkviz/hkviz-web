@@ -101,14 +101,14 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                     const field = playerDataFields.byShortCode[eventTypeSuffix()];
                     if (!field) throw new Error('Unknown player data field short code' + eventTypeSuffix());
 
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                     
                     const value = parsePlayerDataFieldValue(field, args.length === 1 ? args[0]! : args.join(';'));
                     // TODO
                     events.push(
                         new PlayerDataEvent({
                             timestamp,
                             field,
-                            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+                             
                             value,
                             previousPlayerPositionEvent: previousPlayerPositionEvent,
                             previousPlayerDataEventOfField: null, // filled in combiner
@@ -347,7 +347,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                 `Error while parsing line ${i}: |${line}| using file version ${currentRecordingFileVersion} in part number ${combinedPartNumber}`,
                 e,
             );
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
+             
             ((window as any).errorLines = (window as any).errorLines ?? []).push(line);
             parsingErrors++;
         }

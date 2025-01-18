@@ -6,9 +6,9 @@ const { GET: defaultGet, POST: defaultPost } = SolidAuth(authOptions);
 
 export const POST = defaultPost;
 export const GET: APIHandler = async (event) => {
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-call
+	 
 	const responsePromise = defaultGet(event);
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
+	 
 	const paths = event.params.solidauth;
 
 	if (paths !== 'signin') return responsePromise;

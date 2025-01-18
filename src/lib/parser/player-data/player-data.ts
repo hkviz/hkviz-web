@@ -24,7 +24,7 @@ export type PlayerDataFieldValue<TField extends PlayerDataField> =
 
 export const playerDataFields = {
     byFieldName: playerDataFieldsGenerated,
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
     byShortCode: Object.fromEntries(playerDataFieldsArray.map((it) => [it.shortCode, it])) as Record<
         string,
         PlayerDataField
@@ -40,28 +40,28 @@ export function parsePlayerDataFieldValue<TField extends PlayerDataField>(
     value: string,
 ): PlayerDataFieldValue<TField> {
     if (field.type === 'Int32') {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+         
         return parseInt(value) as any;
     } else if (field.type === 'Single') {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+         
         return parseFloat(value) as any;
     } else if (field.type === 'Boolean') {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+         
         return (value === '1') as any;
     } else if (field.type === 'List`1') {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+         
         return value.split(',') as any;
     } else if (field.type === 'BossSequenceData') {
         const args = value.split(';');
         if (args[0] === 'null') {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+             
             return null as any;
         } else {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+             
             return new BossSequenceData(parseInt(args[0]!), args[1]!) as any;
         }
     } else {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+         
         return value as any;
     }
 }

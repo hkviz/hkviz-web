@@ -18,7 +18,7 @@ export const authOptions: SolidAuthConfig = {
 				id: user.id,
 			},
 		}),
-		// eslint-disable-next-line @typescript-eslint/require-await
+		 
 		signIn: async ({ user }) => {
 			if (user.email && !isValidNonBlacklistedEmail(user.email)) {
 				return false;

@@ -38,7 +38,7 @@ const currentValues = Object.fromEntries(
 			fieldName,
 			createMemo(() => {
 				const e: PlayerDataEvent<any> = (event as any)();
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+				 
 				if (!e) return getDefaultValue((playerDataFields.byFieldName as any)[fieldName as any]);
 				return e.value;
 			}),

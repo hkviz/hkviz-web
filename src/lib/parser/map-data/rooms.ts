@@ -201,11 +201,11 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
             } satisfies typeof parentSpriteInfo;
 
             if ('conditionalOn' in parentSpriteInfo) {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 (subSpriteInfo as any).conditionalOn = parentSpriteInfo.conditionalOn;
             }
 
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             return subSpriteInfo as any;
         }
 
@@ -282,7 +282,7 @@ export const allRoomDataIncludingSubspritesBySceneName = (() => {
 
     roomData.forEach((room) => {
         add(room, room.sceneName);
-        if (!!room.subSpriteOfGameObjectName) {
+        if (room.subSpriteOfGameObjectName) {
             const other = roomDataByGameObjectName.get(room.subSpriteOfGameObjectName)!;
             add(room, other.sceneName);
         }

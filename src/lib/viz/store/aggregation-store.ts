@@ -208,7 +208,7 @@ export function aggregateRecording(recording: CombinedRecording) {
 	let currentSceneEvent: SceneEvent | null = null;
 	let currentVirtualScenes: string[] = [];
 	let currentSceneEnteredAtMs = 0;
-	let currentSceneEnteredWithMsSpendPerVirtualScene: Map<string, number> = new Map();
+	const currentSceneEnteredWithMsSpendPerVirtualScene: Map<string, number> = new Map();
 	// let previousScene
 
 	const x = [] as any[];

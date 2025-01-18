@@ -18,8 +18,8 @@ interface Params {
 //     return getRunMeta(params.id, session?.user?.id ?? null);
 // }
 
-export default function SingleRunPage({ params }: RouteSectionProps) {
-	const id = () => params.id;
+export default function SingleRunPage(props: RouteSectionProps) {
+	const id = () => props.params.id;
 
 	const runData = createAsync(() => getRun(id()));
 

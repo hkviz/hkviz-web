@@ -154,12 +154,12 @@ export class CombinedRecording extends ParsedRecording {
     }
 
     lastPlayerDataEventOfField<TField extends PlayerDataField>(field: TField): PlayerDataEvent<TField> | null {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return (this.lastPlayerDataEventsByField.get(field) as any) ?? null;
     }
 
     allPlayerDataEventsOfField<TField extends PlayerDataField>(field: TField): PlayerDataEvent<TField>[] {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-return
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         return (this.playerDataEventsPerField.get(field) as any) ?? [];
     }
 

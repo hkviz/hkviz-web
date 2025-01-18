@@ -74,7 +74,7 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 					</Show>
 				</DropdownMenuTrigger>
 			</TagDropdownMenu>
-			<div class="grow"></div>
+			<div class="grow" />
 			<DropdownMenu>
 				<DropdownMenuTrigger as={Button<'button'>} variant="outline">
 					<span class="mr-2 opacity-60">Sort:</span>

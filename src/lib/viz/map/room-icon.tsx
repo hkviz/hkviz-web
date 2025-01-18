@@ -52,7 +52,7 @@ export const HKMapRoom: Component<HKMapRoomProps> = (props) => {
 			return {
 				...it,
 				sprites,
-				// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-explicit-any
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				spritesByVariant: spritesByVariant as any,
 				allSpritesScaledPositionBounds: roomPositionWithin0To1,
 			};

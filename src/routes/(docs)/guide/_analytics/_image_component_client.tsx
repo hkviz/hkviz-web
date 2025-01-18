@@ -28,7 +28,7 @@ export function ImageAreaShadow(props: { children: JSXElement }) {
 						'pointer-events-none absolute rounded-md shadow-[0_0_0_100vmax_rgba(0,0,0,0.5)] transition-all duration-100 dark:shadow-[0_0_0_100vmax_rgba(255,255,255,0.35)] ' +
 						(positionClassName() ?? 'left-0 top-0 h-full w-full delay-150')
 					}
-				></div>
+				 />
 			</div>
 			{props.children}
 		</ImageAreaShadowContext.Provider>

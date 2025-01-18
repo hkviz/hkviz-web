@@ -300,10 +300,10 @@ export const RunCard: Component<{
 				{/* https://css-tricks.com/nested-links/ */}
 				<Show
 					when={props.onClick}
-					fallback={<A href={`/run/${props.run.id}`} class="absolute inset-0 z-[6] block"></A>}
+					fallback={<A href={`/run/${props.run.id}`} class="absolute inset-0 z-[6] block" />}
 				>
 					{(onClick) => (
-						<button onClick={() => onClick()(props.run.id)} class="absolute inset-0 z-[6] block"></button>
+						<button onClick={() => onClick()(props.run.id)} class="absolute inset-0 z-[6] block" />
 					)}
 				</Show>
 
@@ -443,25 +443,25 @@ export const RunCard: Component<{
 					src={bgImage()}
 					alt="Area background image"
 				/>
-				<div class="absolute inset-0 z-[2] bg-gradient-to-r from-black via-transparent to-black"></div>
+				<div class="absolute inset-0 z-[2] bg-gradient-to-r from-black via-transparent to-black" />
 			</div>
 		</Expander>
 	);
 };
 
 // TODO
-function RunCardLikeButton({ run }: { run: RunMetadata }) {
-	const [hasLiked, setHasLiked] = createSignal(run.currentUserState!.hasLiked);
+function RunCardLikeButton(props: { run: RunMetadata }) {
+	const [hasLiked, setHasLiked] = createSignal(props.run.currentUserState!.hasLiked);
 	const likeAction = useAction(runInteractionLike);
 	const unlikeAction = useAction(runInteractionUnlike);
-	const likeSubmission = useSubmission(runInteractionLike, ([input]) => input.runId === run.id);
-	const unlikeSubmission = useSubmission(runInteractionUnlike, ([input]) => input.runId === run.id);
+	const likeSubmission = useSubmission(runInteractionLike, ([input]) => input.runId === props.run.id);
+	const unlikeSubmission = useSubmission(runInteractionUnlike, ([input]) => input.runId === props.run.id);
 	const isSubmitting = () => likeSubmission.pending || unlikeSubmission.pending;
 
 	async function like() {
 		try {
 			setHasLiked(true);
-			await likeAction({ runId: run.id });
+			await likeAction({ runId: props.run.id });
 		} catch (err) {
 			showToast({
 				title: 'Failed to like',
@@ -474,7 +474,7 @@ function RunCardLikeButton({ run }: { run: RunMetadata }) {
 	async function unlike() {
 		try {
 			setHasLiked(false);
-			await unlikeAction({ runId: run.id });
+			await unlikeAction({ runId: props.run.id });
 		} catch (err) {
 			showToast({
 				title: 'Failed to unlike',

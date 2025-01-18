@@ -37,7 +37,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 				mapZoomStore.setEnabled(false);
 			}
 
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
+			 
 			rootGD3.attr('transform', event.transform);
 			mapZoomStore.setTransform({
 				offsetX: event.transform.x,

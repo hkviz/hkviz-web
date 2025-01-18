@@ -58,9 +58,9 @@ type RunGameStateMeta = Pick<InferSelectModel<typeof runs>, RunGameStateMetaColu
 export function getGameStateMeta(run: RunGameStateMeta): RunGameStateMeta {
     const picked: any = {};
     for (const col of Object.keys(runGameStateMetaColumnsSelect) as RunGameStateMetaColumnName[]) {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+         
         picked[col] = run[col];
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+     
     return picked;
 }
