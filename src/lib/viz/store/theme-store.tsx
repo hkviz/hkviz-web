@@ -1,9 +1,6 @@
-import { createAsync } from '@solidjs/router';
 import { createContext, createEffect, createSignal, untrack, useContext } from 'solid-js';
 import { COOKIE_NAME_THEME } from '~/lib/cookies/cookie-names';
 import { cookiesClientRead } from '~/lib/cookies/cookies-client';
-import { serverCookiesGetTheme } from '~/lib/cookies/cookies-server-theme-query';
-import { createMutableMemo } from '~/lib/create-mutable-memo';
 // import { effect } from 'solid-js/web';
 // import { COOKIE_NAME_THEME } from '~/lib/cookies/cookie-names';
 // import { cookiesClientRead } from '~/lib/cookies/cookies-client';

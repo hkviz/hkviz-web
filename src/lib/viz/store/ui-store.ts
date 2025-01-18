@@ -1,4 +1,4 @@
-import { createContext, createEffect, createSignal, untrack, useContext } from 'solid-js';
+import { createContext, createSignal, useContext } from 'solid-js';
 
 const mainCardTabs = ['overview', 'map'] as const;
 const mobileTabs = ['overview', 'map', 'time-charts', 'splits'] as const;
