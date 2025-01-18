@@ -34,6 +34,8 @@
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/nodemailer": "^6.4.17",
+		"@vercel/analytics": "^1.4.1",
+		"@vercel/speed-insights": "^1.1.0",
 		"@vinxi/plugin-mdx": "^3.7.2",
 		"autoprefixer": "^10.4.20",
 		"class-variance-authority": "^0.7.0",

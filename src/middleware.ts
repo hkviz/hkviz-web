@@ -14,7 +14,7 @@ export default createMiddleware({
 			const url = event.request.url;
 
 			for (const oldUrl of oldUrls) {
-				if (url.includes(oldUrl) && !url.includes('api') && !url.includes('o=o')) {
+				if (url.includes(oldUrl) && !url.includes('api') && !url.includes('_server') && !url.includes('o=o')) {
 					// don't redirect api calls, since these are used by old mod versions.
 					const newUrl = url.replace(oldUrl, 'https://www.hkviz.org');
 					return redirect(newUrl, {
