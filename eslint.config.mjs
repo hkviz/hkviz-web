@@ -46,6 +46,7 @@ export default tseslint.config(
 			'app.config.ts',
 			'app.config.*.js',
 			'postcss.config.cjs',
+			'generate-favicons.mjs',
 		],
 	},
 );
