@@ -3,14 +3,14 @@ import { AggregationStoreContext, createAggregationStore } from './aggregation-s
 import { createPlayerDataAnimationStore, PlayerDataAnimationStoreContext } from './player-data-animation-store';
 import { createRoomColoringStore, RoomColoringStoreContext } from './room-coloring-store';
 import { createRoomDisplayStore, RoomDisplayStoreContext } from './room-display-store';
-import { createThemeStore, ThemeContext } from './theme-store';
+import { createThemeStore, ThemeStoreContext } from './theme-store';
 import { createTourStore, TourStoreContext } from './tour-store';
 import { createViewportStore, ViewportStoreContext } from './viewport-store';
 
 export function GlobalStoresProvider(props: { children: JSXElement }) {
 	const themeStore = createThemeStore();
-	console.log({ themeStore });
-	return <ThemeContext.Provider value={themeStore}>{props.children}</ThemeContext.Provider>;
+
+	return <ThemeStoreContext.Provider value={themeStore}>{props.children}</ThemeStoreContext.Provider>;
 }
 
 export function RunStoresProvider(props: { children: JSXElement }) {
@@ -22,8 +22,6 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 	const aggregationStore = createAggregationStore(roomDisplayStore);
 	const roomColoringStore = createRoomColoringStore(themeStore, aggregationStore);
 	const tourStore = createTourStore(roomColoringStore, roomDisplayStore, viewportStore);
-
-	console.log({ themeStore, roomColoringStore, tourStore });
 
 	return (
 		<ViewportStoreContext.Provider value={viewportStore}>

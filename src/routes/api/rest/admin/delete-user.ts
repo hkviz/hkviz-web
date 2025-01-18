@@ -12,7 +12,7 @@ import {
 } from '~/server/db/schema';
 import { assertIsResearcher } from '~/server/researcher';
 import { runDeleteInternal } from '~/server/run/run-deletion-internal';
-import { runInteractionUnlikeInternal } from '~/server/run/run-interaction';
+import { runInteractionUnlikeInternal } from '~/server/run/run-interaction-internal';
 
 export async function GET(request: Request) {
 	const { searchParams } = new URL(request.url);

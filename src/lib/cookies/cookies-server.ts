@@ -67,12 +67,6 @@ export const serverCookiesGet = query(async () => {
 	return new ServerCookies(cookie);
 }, 'get-cookies-server');
 
-export const serverCookiesGetTheme = query(async () => {
-	'use server';
-	const cookies = await serverCookiesGet();
-	return cookies.get('theme') === 'light' ? 'light' : 'dark';
-}, 'get-cookies-theme-server');
-
 export function serverCookiesGetSyncDontUse() {
 	// TODO would be nice to not double parse cookies on initial page requests
 	const request = getWebRequest();

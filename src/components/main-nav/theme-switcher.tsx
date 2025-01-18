@@ -8,10 +8,6 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 
 export type Theme = 'light' | 'dark';
 
-export function getThemeColorByTheme(theme: 'light' | 'dark') {
-	return theme === 'light' ? '#ffffff' : '#030712';
-}
-
 export const ThemeSwitcher: Component = () => {
 	const themeStore = useThemeStore();
 
@@ -22,22 +18,7 @@ export const ThemeSwitcher: Component = () => {
 	// 			themeStore.setCurrentTheme(theme);
 	// 		}
 	// 	});
-	// });
-
-	// effect(() => {
-	// 	if (typeof document !== 'undefined') {
-	// 		const theme = themeStore.currentTheme();
-
-	// 		if (theme === 'dark') {
-	// 			document.body.classList.add('dark');
-	// 		} else {
-	// 			document.body.classList.remove('dark');
-	// 		}
-
-	// 		document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getThemeColorByTheme(theme));
-	// 	}
-	// });
-
+	// })
 	function toggleTheme() {
 		const theme = themeStore.currentTheme() === 'light' ? 'dark' : 'light';
 		themeStore.setCurrentTheme(theme);
