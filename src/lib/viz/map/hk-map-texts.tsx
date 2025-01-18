@@ -1,6 +1,6 @@
 import { For } from 'solid-js';
 import { areaNames, hkLangString, roomData, type AreaNameTextData } from '../../parser';
-import { changeRoomColorForLightTheme, roomDisplayStore, useRoomColoringStore, useThemeStore } from '../store';
+import { changeRoomColorForLightTheme, useRoomColoringStore, useRoomDisplayStore, useThemeStore } from '../store';
 
 interface HkMapTextProps {
 	textData: AreaNameTextData;
@@ -8,6 +8,7 @@ interface HkMapTextProps {
 }
 
 function HkMapText(props: HkMapTextProps) {
+	const roomDisplayStore = useRoomDisplayStore();
 	const roomColoringStore = useRoomColoringStore();
 	const colorMode = roomColoringStore.colorMode;
 	const themeStore = useThemeStore();

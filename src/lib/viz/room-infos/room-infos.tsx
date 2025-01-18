@@ -19,15 +19,15 @@ import { HKMapRoom } from '../map/room-icon';
 import {
 	AggregationCountMode,
 	aggregationCountModes,
-	aggregationStore,
 	aggregationVariableInfos,
 	aggregationVariables,
 	animationStore,
 	formatAggregatedVariableValue,
 	getAggregationCountModeLabel,
-	roomDisplayStore,
 	uiStore,
+	useAggregationStore,
 	useRoomColoringStore,
+	useRoomDisplayStore,
 	useThemeStore,
 	type AggregationVariable,
 } from '../store';
@@ -100,6 +100,8 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 const AggregationVariableRow: Component<{
 	variable: AggregationVariable;
 }> = (props) => {
+	const roomDisplayStore = useRoomDisplayStore();
+	const aggregationStore = useAggregationStore();
 	const selectedRoom = roomDisplayStore.selectedSceneName;
 	const aggregatedVariableValue = createMemo(() => {
 		return (
@@ -137,6 +139,7 @@ const AggregationVariableRow: Component<{
 };
 
 function AggregationVariables() {
+	const aggregationStore = useAggregationStore();
 	const aggregatedMaxs = () => aggregationStore.data()?.maxOverScenes;
 	const viewNeverHappenedAggregations = aggregationStore.viewNeverHappenedAggregations;
 
@@ -188,6 +191,8 @@ function AggregationVariables() {
 }
 
 export function RoomInfo() {
+	const roomDisplayStore = useRoomDisplayStore();
+	const aggregationStore = useAggregationStore();
 	const isV1 = uiStore.isV1;
 	const selectedRoom = roomDisplayStore.selectedSceneName;
 	const selectedRoomPinned = roomDisplayStore.selectedScenePinned;

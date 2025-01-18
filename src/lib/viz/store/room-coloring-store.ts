@@ -3,7 +3,7 @@ import memoize from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { roomData } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
-import { aggregationStore, type AggregationVariable } from './aggregation-store';
+import { AggregationStore, type AggregationVariable } from './aggregation-store';
 import { animationStore } from './animation-store';
 import { ThemeStore } from './theme-store';
 import { uiStore } from './ui-store';
@@ -34,7 +34,7 @@ export const changeRoomColorForDarkTheme = memoize(
 
 export type RoomColorMode = 'area' | '1-var';
 
-export function createRoomColoringStore(themeStore: ThemeStore) {
+export function createRoomColoringStore(themeStore: ThemeStore, aggregationStore: AggregationStore) {
 	const [colorMode, setColorMode] = createSignal<RoomColorMode>('area');
 	const [var1, setVar1] = createSignal<AggregationVariable>('firstVisitMs');
 	const [var1Curve, setVar1Curve] = createSignal<RoomColorCurve>(RoomColorCurveLinear);

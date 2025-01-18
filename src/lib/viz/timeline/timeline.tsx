@@ -17,8 +17,8 @@ import {
 	changeRoomColorForLightTheme,
 	gameplayStore,
 	hoverMsStore,
-	roomDisplayStore,
 	uiStore,
+	useRoomDisplayStore,
 	useThemeStore,
 } from '../store';
 
@@ -52,6 +52,7 @@ function PlayButton() {
 const EMPTY_ARRAY = [] as const;
 
 function AnimationTimeLineColorCodes() {
+	const roomDisplayStore = useRoomDisplayStore();
 	const timeFrameMs = gameplayStore.timeFrame;
 	const themeStore = useThemeStore();
 
@@ -169,6 +170,7 @@ function AnimationTimeLineColorCodes() {
 }
 
 function AnimationTimeLineSlider() {
+	const roomDisplayStore = useRoomDisplayStore();
 	const animationMsIntoGame = animationStore.msIntoGame;
 	const timeFrame = gameplayStore.timeFrame;
 	const isDisabled = !gameplayStore.recording;

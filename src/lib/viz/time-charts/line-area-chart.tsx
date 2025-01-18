@@ -1,5 +1,5 @@
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '../../parser';
-import { animationStore, extraChartStore, gameplayStore, hoverMsStore, roomDisplayStore, uiStore } from '../store';
+import { animationStore, extraChartStore, gameplayStore, hoverMsStore, uiStore, useRoomDisplayStore } from '../store';
 import * as d3 from 'd3';
 import { type D3BrushEvent } from 'd3-brush';
 import {
@@ -54,6 +54,7 @@ export interface LineAreaChartProps {
 }
 
 export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
+	const roomDisplayStore = useRoomDisplayStore();
 	const renderScale = () => props.renderScale ?? 10;
 
 	const variablesPerKey = createMemo(() => {

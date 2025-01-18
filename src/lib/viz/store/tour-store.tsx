@@ -1,12 +1,18 @@
 import { createContext, createMemo, createSignal, untrack, useContext } from 'solid-js';
 import { createTourSteps } from '../tour/steps';
 import { RoomColoringStore } from './room-coloring-store';
+import { RoomDisplayStore } from './room-display-store';
+import { ViewportStore } from './viewport-store';
 
 export function hkMapRoomRectClass({ gameObjectName }: { gameObjectName: string }) {
 	return 'hk-map-room-react_' + gameObjectName;
 }
 
-export function createTourStore(roomColoringStore: RoomColoringStore) {
+export function createTourStore(
+	roomColoringStore: RoomColoringStore,
+	roomDisplayStore: RoomDisplayStore,
+	viewportStore: ViewportStore,
+) {
 	const tourLength = 10;
 	const [currentStepIndex, setCurrentStepIndex] = createSignal<number>(-1);
 	const isOpen = createMemo(() => currentStepIndex() !== -1);
@@ -51,7 +57,7 @@ export function createTourStore(roomColoringStore: RoomColoringStore) {
 		changeCurrentStepIndex(0);
 	}
 
-	const steps = createTourSteps({ next, back, roomColoringStore });
+	const steps = createTourSteps({ next, back, roomColoringStore, roomDisplayStore, viewportStore });
 
 	return {
 		currentStepIndex,

@@ -5,7 +5,6 @@ import { extraChartStore } from './extra-chart-store';
 import { gameplayStore } from './gameplay-store';
 import { hoverMsStore } from './hover-ms-store';
 import { mapZoomStore } from './map-zoom-store';
-import { roomDisplayStore } from './room-display-store';
 import { splitsStore } from './splits-store';
 import { traceStore } from './trace-store';
 import { type DisplayVersion, uiStore } from './ui-store';
@@ -18,7 +17,6 @@ function initializeStores(displayVersion: DisplayVersion) {
 		animationStore.reset();
 		extraChartStore.reset();
 		hoverMsStore.reset();
-		roomDisplayStore.reset();
 		splitsStore.reset();
 		traceStore.reset();
 		mapZoomStore.reset();

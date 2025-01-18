@@ -1,6 +1,6 @@
 import { type Accessor, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
 import { isServer } from 'solid-js/web';
-import { viewportStore } from './store';
+import { useViewportStore } from './store';
 
 export function createElementSize<T extends HTMLElement>(
 	element: Accessor<T | null>,
@@ -32,6 +32,7 @@ export function createAutoSizeCanvas(
 	canvas: Accessor<HTMLCanvasElement | null>,
 	repaintOnZoom = true,
 ) {
+	const viewportStore = useViewportStore();
 	const containerSize = createElementSize(container);
 
 	const canvasSize = createMemo(function autoSizeCanvasResizingComputed() {

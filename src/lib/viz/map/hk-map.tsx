@@ -3,7 +3,7 @@ import { Show, createEffect, onMount, type Component } from 'solid-js';
 import { cn } from '~/lib/utils';
 import { mapVisualExtends, roomData } from '../../parser';
 import { createElementSize } from '../canvas';
-import { mapZoomStore, roomDisplayStore, uiStore } from '../store';
+import { mapZoomStore, uiStore, useRoomDisplayStore } from '../store';
 import { HkMapRooms } from './hk-map-rooms';
 import { HkMapTexts } from './hk-map-texts';
 import { createHKMapZoom } from './hk-map-zoom';
@@ -17,6 +17,7 @@ export interface HKMapProps {
 }
 
 export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
+	const roomDisplayStore = useRoomDisplayStore();
 	const isV1 = uiStore.isV1;
 
 	const zoom = d3
@@ -37,7 +38,6 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 				mapZoomStore.setEnabled(false);
 			}
 
-			 
 			rootGD3.attr('transform', event.transform);
 			mapZoomStore.setTransform({
 				offsetX: event.transform.x,

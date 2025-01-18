@@ -7,9 +7,9 @@ import {
 	hkMapRoomRectClass,
 	mapZoomStore,
 	RoomColoringStore,
-	roomDisplayStore,
+	RoomDisplayStore,
 	uiStore,
-	viewportStore,
+	ViewportStore,
 } from '../store';
 import { makeStep, type Step } from './step';
 
@@ -21,9 +21,17 @@ interface CreateTourStepsInput {
 	next: () => void;
 	back: () => void;
 	roomColoringStore: RoomColoringStore;
+	roomDisplayStore: RoomDisplayStore;
+	viewportStore: ViewportStore;
 }
 
-export function createTourSteps({ next, back, roomColoringStore }: CreateTourStepsInput): Step[] {
+export function createTourSteps({
+	next,
+	back,
+	roomColoringStore,
+	roomDisplayStore,
+	viewportStore,
+}: CreateTourStepsInput): Step[] {
 	return [
 		{
 			target: () => '.getting-started-tour-button',

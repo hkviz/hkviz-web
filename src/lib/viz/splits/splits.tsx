@@ -1,16 +1,16 @@
 import { Search, X } from 'lucide-solid';
 import { For, Show, createEffect, createSignal, createUniqueId, type Component, type JSXElement } from 'solid-js';
+import { cardHeaderSmallClasses, cardTitleSmallClasses } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
+import { CardHeader, CardTitle } from '~/components/ui/card';
+import { Checkbox } from '~/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { cn } from '~/lib/utils';
 import { assertNever, recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '../../parser';
 import { Duration } from '../duration';
-import { animationStore, hoverMsStore, roomDisplayStore, splitsStore, uiStore } from '../store';
+import { animationStore, hoverMsStore, splitsStore, uiStore, useRoomDisplayStore } from '../store';
 import { splitColors } from './split-colors';
-import { CardHeader, CardTitle } from '~/components/ui/card';
-import { cardHeaderSmallClasses, cardTitleSmallClasses } from '~/components/ui/additions';
-import { Checkbox } from '~/components/ui/checkbox';
 
 type RowActiveState = 'past' | 'next' | 'future';
 
@@ -21,6 +21,7 @@ interface RowProps {
 }
 
 const RunSplitRow: Component<RowProps> = (props) => {
+	const roomDisplayStore = useRoomDisplayStore();
 	// const activeStateClasses =
 	//     activeState === 'past'
 	//         ? 'bg-green-200 dark:bg-green-900'

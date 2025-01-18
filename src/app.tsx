@@ -27,18 +27,17 @@ export default function App() {
 		<Router
 			root={(props) => (
 				// <ErrorBoundary fallback={(error) => <Error error={error} />}>
-				<SessionProvider>
-					<MetaProvider>
-						<GlobalStoresProvider>
+				<GlobalStoresProvider>
+					<SessionProvider>
+						<MetaProvider>
 							<Title>HKViz</Title>
-
 							<MainNav />
 							<Suspense fallback={<ContentCenterWrapper />}>{props.children}</Suspense>
 							<Footer />
 							<Toaster />
-						</GlobalStoresProvider>
-					</MetaProvider>
-				</SessionProvider>
+						</MetaProvider>
+					</SessionProvider>
+				</GlobalStoresProvider>
 				// </ErrorBoundary>
 			)}
 		>

@@ -4,14 +4,14 @@ import { Expander } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
 import { RoomColorCurveSelect } from '../room-infos/room-color-curve-menu';
 import {
-	aggregationStore,
 	aggregationVariableInfos,
 	animationStore,
 	formatAggregatedVariableValue,
 	gameplayStore,
-	roomDisplayStore,
 	uiStore,
+	useAggregationStore,
 	useRoomColoringStore,
+	useRoomDisplayStore,
 } from '../store';
 
 const LEGEND_PADDING = 30;
@@ -19,7 +19,9 @@ const LEGEND_PADDING = 30;
 const LEGEND_SVG_TEXT_CLASSES = 'text-black dark:text-white fill-current';
 
 export const MapLegend: Component = () => {
+	const roomDisplayStore = useRoomDisplayStore();
 	const roomColoringStore = useRoomColoringStore();
+	const aggregationStore = useAggregationStore();
 	const [svg, setSvg] = createSignal<SVGSVGElement>();
 
 	const isV1 = uiStore.isV1;

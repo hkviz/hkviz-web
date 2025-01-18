@@ -7,12 +7,12 @@ export type Theme = 'light' | 'dark';
 
 export function createThemeStore() {
 	// todo move effect to here from theme-switcher
-	let initialTheme: Theme = 'dark';
-	if (typeof window !== 'undefined') {
-		initialTheme = window.document.body.classList.contains('dark') ? 'dark' : 'light';
-	}
+	// let initialTheme: Theme = 'dark';
+	// if (typeof window !== 'undefined') {
+	// 	initialTheme = window.document.body.classList.contains('dark') ? 'dark' : 'light';
+	// }
 
-	const [currentTheme, setCurrentTheme] = createSignal<Theme>(initialTheme);
+	const [currentTheme, setCurrentTheme] = createSignal<Theme>('dark');
 
 	return {
 		currentTheme,

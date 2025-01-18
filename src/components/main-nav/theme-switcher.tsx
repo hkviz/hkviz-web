@@ -1,6 +1,5 @@
 import { Moon, Sun } from 'lucide-solid';
 import { type Component, Show } from 'solid-js';
-import { effect } from 'solid-js/web';
 import { COOKIE_NAME_THEME } from '~/lib/cookies/cookie-names';
 import { cookiesClientSet } from '~/lib/cookies/cookies-client';
 import { useThemeStore } from '~/lib/viz/store/theme-store';
@@ -25,19 +24,19 @@ export const ThemeSwitcher: Component = () => {
 	// 	});
 	// });
 
-	effect(() => {
-		if (typeof document !== 'undefined') {
-			const theme = themeStore.currentTheme();
+	// effect(() => {
+	// 	if (typeof document !== 'undefined') {
+	// 		const theme = themeStore.currentTheme();
 
-			if (theme === 'dark') {
-				document.body.classList.add('dark');
-			} else {
-				document.body.classList.remove('dark');
-			}
+	// 		if (theme === 'dark') {
+	// 			document.body.classList.add('dark');
+	// 		} else {
+	// 			document.body.classList.remove('dark');
+	// 		}
 
-			document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getThemeColorByTheme(theme));
-		}
-	});
+	// 		document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getThemeColorByTheme(theme));
+	// 	}
+	// });
 
 	function toggleTheme() {
 		const theme = themeStore.currentTheme() === 'light' ? 'dark' : 'light';

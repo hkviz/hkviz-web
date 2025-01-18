@@ -452,7 +452,8 @@ export const RunCard: Component<{
 
 // TODO
 function RunCardLikeButton(props: { run: RunMetadata }) {
-	const [hasLiked, setHasLiked] = createMutableMemo(() => props.run.currentUserState!.hasLiked);
+	// eslint-disable-next-line solid/reactivity
+	const [hasLiked, setHasLiked] = createSignal(props.run.currentUserState!.hasLiked);
 	const likeAction = useAction(runInteractionLike);
 	const unlikeAction = useAction(runInteractionUnlike);
 	const likeSubmission = useSubmission(runInteractionLike, ([input]) => input.runId === props.run.id);

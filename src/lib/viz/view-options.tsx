@@ -7,12 +7,12 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/u
 import { cn } from '../utils';
 import {
 	RoomColorMode,
-	roomDisplayStore,
 	RoomVisibility,
 	traceStore,
 	TraceVisibility,
 	uiStore,
 	useRoomColoringStore,
+	useRoomDisplayStore,
 } from './store';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Checkbox } from '~/components/ui/checkbox';
@@ -49,6 +49,8 @@ function roomColorModeName(v: RoomColorMode) {
 }
 
 export function ViewOptions() {
+	const roomDisplayStore = useRoomDisplayStore();
+
 	const id = createUniqueId();
 	const roomColoringStore = useRoomColoringStore();
 

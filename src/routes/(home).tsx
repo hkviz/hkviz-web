@@ -1,5 +1,6 @@
 import { Title } from '@solidjs/meta';
-import { createAsync, type RouteDefinition } from '@solidjs/router';
+import { createAsync, RouteDefinition } from '@solidjs/router';
+import { Suspense } from 'solid-js';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { HKVizText } from '~/components/HKVizText';
 import { OwnRuns } from '~/components/own-runs';
@@ -29,12 +30,12 @@ export default function HomePage() {
 					</p>
 
 					{/* {userRuns.length == 0 && (
-                        <div class="flex flex-row items-center justify-center py-8 transition sm:gap-12">
-                            <Button asChild class="rounded-3xl p-8 text-2xl font-semibold shadow-md hover:shadow-lg">
-                                <Link href="/guide/install">Record gameplay analytics</Link>
-                            </Button>
-                        </div>
-                    )} */}
+	                    <div class="flex flex-row items-center justify-center py-8 transition sm:gap-12">
+	                        <Button asChild class="rounded-3xl p-8 text-2xl font-semibold shadow-md hover:shadow-lg">
+	                            <Link href="/guide/install">Record gameplay analytics</Link>
+	                        </Button>
+	                    </div>
+	                )} */}
 				</div>
 
 				<OwnRuns runs={runs()!} />

@@ -8,7 +8,7 @@ import {
 	roomData,
 	type ZoomZone,
 } from '../../parser';
-import { animationStore, gameplayStore, mapZoomStore, roomDisplayStore, uiStore } from '../store';
+import { animationStore, gameplayStore, mapZoomStore, uiStore, useRoomDisplayStore } from '../store';
 
 interface HKMapZoomProps {
 	zoom: d3.ZoomBehavior<SVGSVGElement, unknown> | undefined;
@@ -17,6 +17,8 @@ interface HKMapZoomProps {
 
 // todo change away from props
 export function createHKMapZoom(props: HKMapZoomProps) {
+	const roomDisplayStore = useRoomDisplayStore();
+
 	let previousZoomZone: ZoomZone | null = null;
 	const zoomZone = createMemo(() => {
 		if (uiStore.isV1()) return null;

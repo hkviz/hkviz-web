@@ -10,6 +10,7 @@ import type { MdxOptions } from '@vinxi/plugin-mdx';
 import { imagetools } from 'vite-imagetools';
 import { visit } from 'unist-util-visit';
 import type { Node } from 'unist';
+import devtools from 'solid-devtools/vite';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -69,6 +70,10 @@ export default defineConfig({
 	extensions: ['tsx', 'mdx'],
 	vite: {
 		plugins: [
+			devtools({
+				/* features options - all disabled by default */
+				autoname: true, // e.g. enable autoname
+			}),
 			mdx.withImports({})(mdxOptions),
 			lqip({
 				sharp: {

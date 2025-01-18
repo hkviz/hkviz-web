@@ -1,4 +1,4 @@
-import { createMemo, createSignal } from 'solid-js';
+import { createContext, createMemo, createSignal, useContext } from 'solid-js';
 import {
 	FrameEndEvent,
 	HeroStateEvent,
@@ -16,7 +16,7 @@ import {
 import { formatTimeMs } from '../util';
 import { animationStore } from './animation-store';
 import { gameplayStore } from './gameplay-store';
-import { roomDisplayStore } from './room-display-store';
+import { RoomDisplayStore } from './room-display-store';
 
 export interface ValueAggregation {
 	deaths: number;
@@ -386,14 +386,6 @@ export function aggregateRecording(recording: CombinedRecording) {
 	return { countPerScene, maxOverScenes, countPerSceneOverTime };
 }
 
-const aggregations = createMemo(() => {
-	const recording = gameplayStore.recording();
-	if (!recording) return null;
-	return aggregateRecording(recording);
-});
-
-const [viewNeverHappenedAggregations, setViewNeverHappenedAggregations] = createSignal(false);
-
 export type AggregationCountMode = 'total' | 'until-current-time';
 export const aggregationCountModes = ['until-current-time', 'total'] as AggregationCountMode[];
 export function getAggregationCountModeLabel(mode: AggregationCountMode) {
@@ -402,53 +394,72 @@ export function getAggregationCountModeLabel(mode: AggregationCountMode) {
 	assertNever(mode);
 }
 
-const [aggregationCountMode, setAggregationCountMode] = createSignal<AggregationCountMode>('until-current-time');
+export function createAggregationStore(roomDisplayStore: RoomDisplayStore) {
+	const aggregations = createMemo(() => {
+		const recording = gameplayStore.recording();
+		if (!recording) return null;
+		return aggregateRecording(recording);
+	});
 
-function getAggregations(sceneName: string): ValueAggregation | null {
-	// console.log('getAggregations', sceneName);
-	const aggregations = aggregationStore.data();
-	if (!aggregations) return null;
-	const mode = aggregationCountMode();
-	if (mode === 'total') return aggregations.countPerScene[sceneName];
-	if (mode === 'until-current-time') {
-		const timePoints = aggregations.countPerSceneOverTime[sceneName];
-		if (!timePoints) return null;
-		const msIntoGame = animationStore.msIntoGame();
-		const currentIndex = binarySearchLastIndexBefore(timePoints, msIntoGame, (it) => it.msIntoGame);
-		return currentIndex !== -1 ? (timePoints[currentIndex] ?? null) : null;
+	const [viewNeverHappenedAggregations, setViewNeverHappenedAggregations] = createSignal(false);
+
+	const [aggregationCountMode, setAggregationCountMode] = createSignal<AggregationCountMode>('until-current-time');
+
+	function getAggregations(sceneName: string): ValueAggregation | null {
+		// console.log('getAggregations', sceneName);
+		const aggregations_ = aggregations();
+		if (!aggregations_) return null;
+		const mode = aggregationCountMode();
+		if (mode === 'total') return aggregations_.countPerScene[sceneName];
+		if (mode === 'until-current-time') {
+			const timePoints = aggregations_.countPerSceneOverTime[sceneName];
+			if (!timePoints) return null;
+			const msIntoGame = animationStore.msIntoGame();
+			const currentIndex = binarySearchLastIndexBefore(timePoints, msIntoGame, (it) => it.msIntoGame);
+			return currentIndex !== -1 ? (timePoints[currentIndex] ?? null) : null;
+		}
+
+		assertNever(mode);
 	}
 
-	assertNever(mode);
-}
+	const visibleRoomAggregations = createMemo(() => {
+		const sceneName = roomDisplayStore.selectedSceneName();
+		if (!sceneName) return null;
+		console.log('visibleRoomAggregations', sceneName, animationStore.msIntoGame());
+		return getAggregations(sceneName);
+	});
 
-const visibleRoomAggregations = createMemo(() => {
-	const sceneName = roomDisplayStore.selectedSceneName();
-	if (!sceneName) return null;
-	console.log('visibleRoomAggregations', sceneName, animationStore.msIntoGame());
-	return getAggregations(sceneName);
-});
-
-function getCorrectedAggregationValue(
-	aggregation: ValueAggregation | null,
-	variable: AggregationVariable,
-	msIntoGame: () => number,
-): number | null {
-	if (!aggregation) return null;
-	const value = aggregation[variable];
-	if (variable === 'timeSpendMs' && isAggregationTimepoint(aggregation) && aggregation.isActiveScene) {
-		return value + msIntoGame() - aggregation.msIntoGame;
-	} else {
-		return value;
+	function getCorrectedAggregationValue(
+		aggregation: ValueAggregation | null,
+		variable: AggregationVariable,
+		msIntoGame: () => number,
+	): number | null {
+		if (!aggregation) return null;
+		const value = aggregation[variable];
+		if (variable === 'timeSpendMs' && isAggregationTimepoint(aggregation) && aggregation.isActiveScene) {
+			return value + msIntoGame() - aggregation.msIntoGame;
+		} else {
+			return value;
+		}
 	}
-}
 
-export const aggregationStore = {
-	data: aggregations,
-	getAggregations,
-	viewNeverHappenedAggregations,
-	setViewNeverHappenedAggregations,
-	visibleRoomAggregations,
-	aggregationCountMode,
-	setAggregationCountMode,
-	getCorrectedAggregationValue,
-};
+	return {
+		data: aggregations,
+		getAggregations,
+		viewNeverHappenedAggregations,
+		setViewNeverHappenedAggregations,
+		visibleRoomAggregations,
+		aggregationCountMode,
+		setAggregationCountMode,
+		getCorrectedAggregationValue,
+	};
+}
+export type AggregationStore = ReturnType<typeof createAggregationStore>;
+
+export const AggregationStoreContext = createContext<AggregationStore>();
+
+export function useAggregationStore() {
+	const store = useContext(AggregationStoreContext);
+	if (!store) throw new Error('No AggregationStoreContext provided');
+	return store;
+}
