@@ -1,19 +1,13 @@
-import {
-	type RouteDefinition,
-	type RouteSectionProps,
-	createAsync,
-	useLocation,
-	useSearchParams,
-} from '@solidjs/router';
+import { Key } from '@solid-primitives/keyed';
+import { Title } from '@solidjs/meta';
+import { type RouteDefinition, createAsync, useSearchParams } from '@solidjs/router';
 import { Show, createMemo } from 'solid-js';
+import * as v from 'valibot';
 import { RunCard } from '~/components/run-card';
+import { tagOrGroupFromCode } from '~/lib/types/tags';
 import { RunFilterParamsSchema, findPublicRuns } from '~/server/run/find-public-runs';
 import { ContentWrapper } from '../../components/content-wrapper';
 import { RunFilters } from './_components';
-import * as v from 'valibot';
-import { tagOrGroupFromCode } from '~/lib/types/tags';
-import { Title } from '@solidjs/meta';
-import { Key } from '@solid-primitives/keyed';
 
 // TODO
 // export function generateMetadata({ searchParams }: { searchParams: RunFilter }) {
@@ -37,7 +31,7 @@ export const route = {
 } satisfies RouteDefinition;
 
 export default function Runs() {
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [searchParams, _setSearchParams] = useSearchParams();
 	const filter = createMemo(() => v.parse(RunFilterParamsSchema, searchParams));
 	const runs = createAsync(() => findPublicRuns(filter()));
 

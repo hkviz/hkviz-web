@@ -1,6 +1,6 @@
-import { afterAll, afterEach, beforeEach, expect, test, vi } from 'vitest';
-import { serverCookiesGet } from './cookies-server';
 import { revalidate } from '@solidjs/router';
+import { afterAll, beforeEach, expect, test, vi } from 'vitest';
+import { serverCookiesGet } from './cookies-server';
 
 let currentCookieHeader = '';
 vi.mock('vinxi/http', async (importOriginal) => {

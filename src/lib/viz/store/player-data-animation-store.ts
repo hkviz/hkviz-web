@@ -13,6 +13,7 @@ const currentEvents = Object.fromEntries(
 	Object.entries(playerDataFields.byFieldName).map(([fieldName, field]) => {
 		return [
 			fieldName,
+			// eslint-disable-next-line solid/reactivity
 			createMemo(() => {
 				const r = gameplayStore.recording();
 				if (!r) return null;
@@ -36,9 +37,10 @@ const currentValues = Object.fromEntries(
 	Object.entries(currentEvents).map(([fieldName, event]) => {
 		return [
 			fieldName,
+			// eslint-disable-next-line solid/reactivity
 			createMemo(() => {
 				const e: PlayerDataEvent<any> = (event as any)();
-				 
+
 				if (!e) return getDefaultValue((playerDataFields.byFieldName as any)[fieldName as any]);
 				return e.value;
 			}),

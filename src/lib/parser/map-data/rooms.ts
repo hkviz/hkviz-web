@@ -201,11 +201,11 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
             } satisfies typeof parentSpriteInfo;
 
             if ('conditionalOn' in parentSpriteInfo) {
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                 
                 (subSpriteInfo as any).conditionalOn = parentSpriteInfo.conditionalOn;
             }
 
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+             
             return subSpriteInfo as any;
         }
 

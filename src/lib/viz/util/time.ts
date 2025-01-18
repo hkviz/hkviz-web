@@ -21,5 +21,6 @@ export function formatTimeMs(ms: number): string {
 }
 
 if (typeof window !== 'undefined') {
+	 
 	(window as any).formatTimeMs = formatTimeMs;
 }

@@ -21,11 +21,13 @@ import {
 	vesselSteelSoul as vesselSteelSoulImg,
 } from '~/lib/viz';
 import { type RunMetadata } from '~/server/run/_find_runs_internal';
+import { runArchive, runDelete } from '~/server/run/run-deletion';
 import { type GetRunResult } from '~/server/run/run-get';
 import { runInteractionLike, runInteractionUnlike } from '~/server/run/run-interaction';
 import { runSetTitleAction } from '~/server/run/run-set-title';
 import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
 import { getMapZoneHudBackground } from './area-background';
+import { RunCardDropdownMenu } from './run-card-dropdown';
 import { RunTags } from './run-tags';
 import { Expander } from './ui/additions';
 import { Badge } from './ui/badge';
@@ -34,8 +36,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { TextField, TextFieldTextArea } from './ui/text-field';
 import { showToast } from './ui/toast';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
-import { runArchive, runDelete } from '~/server/run/run-deletion';
-import { RunCardDropdownMenu } from './run-card-dropdown';
+import { createMutableMemo } from '~/lib/create-mutable-memo';
 
 function Duration(props: { seconds: number }) {
 	const duration = () => {
@@ -122,7 +123,7 @@ const RunCardEpicInfo: Component<{
 };
 
 const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => {
-	const [title, setTitle] = createSignal(props.run.title);
+	const [title, setTitle] = createMutableMemo(() => props.run.title);
 	createEffect(() => {
 		setTitle(props.run.title);
 	});
@@ -146,7 +147,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 		updateInputSize();
 	});
 
-	const handleTitleChange = (e: InputEvent) => {
+	const handleTitleChange = (_e: InputEvent) => {
 		textareaRef.value = cleanupRunTitle(textareaRef.value, true);
 		updateInputSize();
 	};
@@ -158,7 +159,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 		if (title() === newTitle) return;
 		setTitle(newTitle);
 		try {
-			const result = await setTitleAction({ id: props.run.id, title: newTitle });
+			const _result = await setTitleAction({ id: props.run.id, title: newTitle });
 			showToast({
 				title: 'Successfully updated title',
 			});
@@ -218,9 +219,9 @@ export const RunCard: Component<{
 	onCombineClicked?: (runId: string) => void;
 }> = (props) => {
 	const deleteAction = useAction(runDelete);
-	const deleteSubmission = useSubmission(runDelete, ([input]) => input.runId === props.run.id);
+	const _deleteSubmission = useSubmission(runDelete, ([input]) => input.runId === props.run.id);
 	const archiveAction = useAction(runArchive);
-	const archiveSubmission = useSubmission(runArchive, ([input]) => input.runId === props.run.id);
+	const _archiveSubmission = useSubmission(runArchive, ([input]) => input.runId === props.run.id);
 
 	const [isRemoved, setIsRemoved] = createSignal(false);
 
@@ -257,7 +258,7 @@ export const RunCard: Component<{
 	}
 
 	// set visibility
-	const [visibility, setVisibility] = createSignal<VisibilityCode>(props.run.visibility);
+	const [visibility, setVisibility] = createMutableMemo<VisibilityCode>(() => props.run.visibility);
 	const visibilityAction = useAction(runSetVisibilityAction);
 	// const visibilityActionSubmission = useSubmission(runSetVisibilityAction, ([input]) => input.id === props.run.id);
 
@@ -451,7 +452,7 @@ export const RunCard: Component<{
 
 // TODO
 function RunCardLikeButton(props: { run: RunMetadata }) {
-	const [hasLiked, setHasLiked] = createSignal(props.run.currentUserState!.hasLiked);
+	const [hasLiked, setHasLiked] = createMutableMemo(() => props.run.currentUserState!.hasLiked);
 	const likeAction = useAction(runInteractionLike);
 	const unlikeAction = useAction(runInteractionUnlike);
 	const likeSubmission = useSubmission(runInteractionLike, ([input]) => input.runId === props.run.id);

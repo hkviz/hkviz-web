@@ -1,4 +1,4 @@
-import { createContext, createSignal, JSXElement, useContext } from 'solid-js';
+import { createContext, createSignal, useContext } from 'solid-js';
 // import { effect } from 'solid-js/web';
 // import { COOKIE_NAME_THEME } from '~/lib/cookies/cookie-names';
 // import { cookiesClientRead } from '~/lib/cookies/cookies-client';
@@ -6,12 +6,13 @@ import { createContext, createSignal, JSXElement, useContext } from 'solid-js';
 export type Theme = 'light' | 'dark';
 
 export function createThemeStore() {
+	// todo move effect to here from theme-switcher
 	let initialTheme: Theme = 'dark';
 	if (typeof window !== 'undefined') {
 		initialTheme = window.document.body.classList.contains('dark') ? 'dark' : 'light';
 	}
 
-	const [currentTheme, setCurrentTheme] = createSignal<Theme>('dark');
+	const [currentTheme, setCurrentTheme] = createSignal<Theme>(initialTheme);
 
 	return {
 		currentTheme,

@@ -16,10 +16,8 @@ interface MenuItemContextValue {
 }
 const MenuItemContext = createContext<MenuItemContextValue>({});
 
-export const MenuItemContextProvider: Component<{
-	value: MenuItemContextValue;
-	children: JSXElement;
-}> = (props) => {
+export const MenuItemContextProvider = (props: { value: MenuItemContextValue; children: JSXElement }) => {
+	// eslint-disable-next-line solid/reactivity
 	return <MenuItemContext.Provider value={props.value}>{props.children}</MenuItemContext.Provider>;
 };
 

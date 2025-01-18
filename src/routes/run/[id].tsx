@@ -1,16 +1,12 @@
+import { Title } from '@solidjs/meta';
 import { RouteSectionProps, createAsync } from '@solidjs/router';
 import { Show, createMemo } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card';
 import { GameplayDashboard, createRunFileLoader } from '~/lib/viz';
+import { RunStoresProvider } from '~/lib/viz/store/store-context';
 import { getRun } from '~/server/run/run-get';
 import { getRunPageTitle } from './_metadata';
-import { Title } from '@solidjs/meta';
-import { RunStoresProvider } from '~/lib/viz/store/store-context';
-
-interface Params {
-	id: string;
-}
 
 // TODO
 // export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {

@@ -1,5 +1,5 @@
 import { A, createAsync, useAction, useSubmission } from '@solidjs/router';
-import { Match, Show, Switch } from 'solid-js';
+import { Match, Switch } from 'solid-js';
 import { Button } from '~/components/ui/button';
 import { accountCancelRemovalRequest, accountGetScheduledForDeletion } from '~/server/account/deletion';
 import { Setting, SettingContent, SettingDescription, SettingTitle } from './_option';

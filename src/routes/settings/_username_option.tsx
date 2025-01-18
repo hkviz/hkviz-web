@@ -1,12 +1,12 @@
 import { useAction, useSubmission } from '@solidjs/router';
-import { createSignal } from 'solid-js';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { showToast } from '~/components/ui/toast';
+import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { errorGetMessage } from '~/lib/error-get-message';
 import { accountSetUsernameAction } from '~/server/account/set-username';
 
 export function UserNameSettingsOption(props: { currentName: string }) {
-	const [userName, setUsername] = createSignal(props.currentName);
+	const [userName, setUsername] = createMutableMemo(() => props.currentName);
 
 	const accountSetUsername = useAction(accountSetUsernameAction);
 	const accountSetUsernameSubmission = useSubmission(accountSetUsernameAction);

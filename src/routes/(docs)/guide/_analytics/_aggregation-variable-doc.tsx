@@ -1,6 +1,6 @@
 import { For } from 'solid-js';
 import { Card } from '~/components/ui/card';
-import { AggregationVariableIcon, aggregationVariableInfos } from '~/lib/viz';
+import { AggregationVariable, AggregationVariableIcon, aggregationVariableInfos } from '~/lib/viz';
 
 export function AggregationVariableDoc() {
 	return (
@@ -11,7 +11,7 @@ export function AggregationVariableDoc() {
 						{([key, it]) => (
 							<li class="flex flex-row items-center justify-start gap-2 border-b p-1 pl-2 last:border-b-0">
 								<span class="flex w-10 flex-row items-center justify-center">
-									<AggregationVariableIcon variable={key as any} />
+									<AggregationVariableIcon variable={key as AggregationVariable} />
 								</span>
 								<span>
 									<b>{it.name}:</b>

@@ -1,15 +1,14 @@
 import { MetaProvider, Title } from '@solidjs/meta';
 import { Router } from '@solidjs/router';
 import { FileRoutes } from '@solidjs/start/router';
-import { ErrorBoundary, Suspense } from 'solid-js';
+import { Suspense } from 'solid-js';
 import './app.css';
-import { MainNav } from './components/main-nav/main-nav';
-import { SessionProvider } from './lib/auth/client';
-import { Toaster } from './components/ui/toast';
-import { Footer } from './components/footer';
 import { ContentCenterWrapper } from './components/content-wrapper';
+import { Footer } from './components/footer';
+import { MainNav } from './components/main-nav/main-nav';
+import { Toaster } from './components/ui/toast';
+import { SessionProvider } from './lib/auth/client';
 import { GlobalStoresProvider } from './lib/viz/store/store-context';
-import { createThemeStore, ThemeContext } from './lib/viz';
 
 // function Error(props: any) {
 // 	console.log(props);
@@ -33,7 +32,7 @@ export default function App() {
 						<GlobalStoresProvider>
 							<Title>HKViz</Title>
 
-							<MainNav theme={'dark'} />
+							<MainNav />
 							<Suspense fallback={<ContentCenterWrapper />}>{props.children}</Suspense>
 							<Footer />
 							<Toaster />

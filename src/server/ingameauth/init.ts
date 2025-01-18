@@ -10,7 +10,7 @@ const ingameAuthInitInputSchema = v.object({
 type IngameAuthInitInput = v.InferInput<typeof ingameAuthInitInputSchema>;
 
 export async function ingameAuthInit(unsafeInput: IngameAuthInitInput) {
-	const input = v.parse(ingameAuthInitInputSchema, unsafeInput);
+	v.parse(ingameAuthInitInputSchema, unsafeInput);
 	const id = uuidv4();
 	const urlId = uuidv4();
 	await db.insert(ingameAuth).values({

@@ -1,3 +1,4 @@
+import { createMemo, createSignal } from 'solid-js';
 import {
 	FrameEndEvent,
 	HeroStateEvent,
@@ -11,12 +12,10 @@ import {
 	playerDataFields,
 	roomGroupNamesBySceneName,
 	type CombinedRecording,
-	type PlayerDataEvent,
 } from '../../parser';
 import { formatTimeMs } from '../util';
 import { animationStore } from './animation-store';
 import { gameplayStore } from './gameplay-store';
-import { createMemo, createSignal } from 'solid-js';
 import { roomDisplayStore } from './room-display-store';
 
 export interface ValueAggregation {

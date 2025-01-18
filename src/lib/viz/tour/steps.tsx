@@ -9,7 +9,6 @@ import {
 	RoomColoringStore,
 	roomDisplayStore,
 	uiStore,
-	useRoomColoringStore,
 	viewportStore,
 } from '../store';
 import { makeStep, type Step } from './step';

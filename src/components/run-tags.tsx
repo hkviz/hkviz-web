@@ -1,6 +1,7 @@
 import { useAction, useSubmission } from '@solidjs/router';
 import { Plus, X } from 'lucide-solid';
-import { For, Show, createMemo, createSignal, type Component, type JSXElement } from 'solid-js';
+import { For, Show, createMemo, type Component, type JSXElement } from 'solid-js';
+import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode, type TagGroup } from '~/lib/types/tags';
 import { cn } from '~/lib/utils';
 import { addTagAction, removeTagAction } from '~/server/run/tags';
@@ -70,16 +71,12 @@ export const RunTags: Component<{
 	addButtonClass?: string;
 	removeButtonClass?: string;
 }> = (props) => {
-	const [codes, setCodes] = createSignal<TagCode[]>(props.codes);
+	const [codes, setCodes] = createMutableMemo<TagCode[]>(() => props.codes);
 	const runTags = createMemo(() =>
 		codes()
 			.map(tagFromCode)
 			.sort((a, b) => a.order - b.order),
 	);
-
-	createSignal(() => {
-		setCodes(props.codes);
-	});
 
 	const _addTag = useAction(addTagAction);
 	const addTagSubmission = useSubmission(addTagAction, ([runId]) => runId === props.runId);

@@ -10,7 +10,7 @@ import { accountGetScheduledForDeletion } from '~/server/account/deletion';
 import SettingsAccountDeletionOption from './_deletion_option';
 import { UserNameSettingsOption } from './_username_option';
 
-const route = {
+export const route = {
 	preload: () => {
 		accountGetScheduledForDeletion();
 	},

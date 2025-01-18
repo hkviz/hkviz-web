@@ -1,5 +1,6 @@
+import * as d3 from 'd3';
+import { createEffect, createMemo, untrack } from 'solid-js';
 import {
-	allRoomDataBySceneName,
 	Bounds,
 	gameObjectNamesIgnoredInZoomZone,
 	mainRoomDataBySceneName,
@@ -8,8 +9,6 @@ import {
 	type ZoomZone,
 } from '../../parser';
 import { animationStore, gameplayStore, mapZoomStore, roomDisplayStore, uiStore } from '../store';
-import * as d3 from 'd3';
-import { createEffect, createMemo, untrack } from 'solid-js';
 
 interface HKMapZoomProps {
 	zoom: d3.ZoomBehavior<SVGSVGElement, unknown> | undefined;

@@ -88,6 +88,7 @@ function getSelfVisibilitySignal(gameObjectName: string) {
 		if (visible === 'all') return true;
 		return visible.has(gameObjectNameNeededInVisited);
 	});
+	// eslint-disable-next-line solid/reactivity
 	selfRoomVisibilityByGameObjectName.set(gameObjectName, signal);
 	return signal;
 }
@@ -130,6 +131,7 @@ const statesByGameObjectName = new Map(
 
 const zoneVisible = new Map(
 	[...d3.group(roomData, (d) => d.mapZone)].map(([zone, rooms]) => {
+		// eslint-disable-next-line solid/reactivity
 		return [zone, createMemo(() => rooms.some((r) => statesByGameObjectName.get(r.gameObjectName)!.isVisible()))];
 	}),
 );

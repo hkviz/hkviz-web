@@ -12,7 +12,7 @@ import { cn } from '~/lib/utils';
 import { AuthSession } from '~/lib/auth/types';
 import { MenuItem, MenuItemContextProvider } from './main-nav-item';
 
-export const CurrentUserNavLinks: Component<{ session: AuthSession }> = (props) => {
+export const CurrentUserNavLinks = () => {
 	const logoutUrl = createLogoutUrl();
 	return (
 		<>
@@ -45,7 +45,7 @@ export const CurrentUserDropdown: Component<{
 						as: DropdownMenuItem,
 					}}
 				>
-					<CurrentUserNavLinks session={props.session} />
+					<CurrentUserNavLinks />
 				</MenuItemContextProvider>
 			</DropdownMenuContent>
 		</DropdownMenu>

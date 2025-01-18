@@ -6,61 +6,61 @@ type RunFileColumnSelect = Partial<{ [Col in keyof (typeof runFiles)['$columns']
 type RunColumnSelect = Partial<{ [Col in keyof (typeof runs)['$columns']]: true }>;
 
 export const runFilesMetaFieldsSelect = {
-    hkVersion: true,
-    playTime: true,
-    maxHealth: true,
-    mpReserveMax: true,
-    geo: true,
-    dreamOrbs: true,
-    permadeathMode: true,
-    mapZone: true,
-    killedHollowKnight: true,
-    killedFinalBoss: true,
-    killedVoidIdol: true,
-    completionPercentage: true,
-    unlockedCompletionRate: true,
-    dreamNailUpgraded: true,
-    lastScene: true,
+	hkVersion: true,
+	playTime: true,
+	maxHealth: true,
+	mpReserveMax: true,
+	geo: true,
+	dreamOrbs: true,
+	permadeathMode: true,
+	mapZone: true,
+	killedHollowKnight: true,
+	killedFinalBoss: true,
+	killedVoidIdol: true,
+	completionPercentage: true,
+	unlockedCompletionRate: true,
+	dreamNailUpgraded: true,
+	lastScene: true,
 
-    startedAt: true,
-    endedAt: true,
+	startedAt: true,
+	endedAt: true,
 } satisfies RunFileColumnSelect;
 
 export const runTagFieldsSelect = Object.fromEntries(tags.map((tag) => [`tag_${tag.code}`, true])) as {
-    [Code in TagCode as `tag_${Code}`]: true;
+	[Code in TagCode as `tag_${Code}`]: true;
 } satisfies RunColumnSelect;
 
 export const runGameStateMetaColumnsSelect = {
-    hkVersion: true,
-    playTime: true,
-    maxHealth: true,
-    mpReserveMax: true,
-    geo: true,
-    dreamOrbs: true,
-    permadeathMode: true,
-    mapZone: true,
-    killedHollowKnight: true,
-    killedFinalBoss: true,
-    killedVoidIdol: true,
-    completionPercentage: true,
-    unlockedCompletionRate: true,
-    dreamNailUpgraded: true,
-    lastScene: true,
+	hkVersion: true,
+	playTime: true,
+	maxHealth: true,
+	mpReserveMax: true,
+	geo: true,
+	dreamOrbs: true,
+	permadeathMode: true,
+	mapZone: true,
+	killedHollowKnight: true,
+	killedFinalBoss: true,
+	killedVoidIdol: true,
+	completionPercentage: true,
+	unlockedCompletionRate: true,
+	dreamNailUpgraded: true,
+	lastScene: true,
 
-    startedAt: true,
-    endedAt: true,
+	startedAt: true,
+	endedAt: true,
 } as const satisfies {
-    [Col in RunGameStateMetaColumnName]: true;
+	[Col in RunGameStateMetaColumnName]: true;
 } satisfies RunColumnSelect satisfies RunFileColumnSelect;
 
 type RunGameStateMeta = Pick<InferSelectModel<typeof runs>, RunGameStateMetaColumnName>;
 
 export function getGameStateMeta(run: RunGameStateMeta): RunGameStateMeta {
-    const picked: any = {};
-    for (const col of Object.keys(runGameStateMetaColumnsSelect) as RunGameStateMetaColumnName[]) {
-         
-        picked[col] = run[col];
-    }
-     
-    return picked;
+	 
+	const picked: any = {};
+	for (const col of Object.keys(runGameStateMetaColumnsSelect) as RunGameStateMetaColumnName[]) {
+		picked[col] = run[col];
+	}
+
+	return picked;
 }

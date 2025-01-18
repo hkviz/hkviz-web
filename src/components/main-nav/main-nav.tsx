@@ -9,7 +9,7 @@ import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import { CurrentUserDropdown, CurrentUserNavLinks } from './current-user-dropdown';
 import { MenuItem, MenuItemContextProvider } from './main-nav-item';
-import { ThemeSwitcher, type Theme } from './theme-switcher';
+import { ThemeSwitcher } from './theme-switcher';
 
 export const MainNavLeftSide: Component = () => {
 	return (
@@ -33,7 +33,7 @@ export const MainNavLeftSide: Component = () => {
 	);
 };
 
-export const MainNav: Component<{ theme: Theme }> = (props) => {
+export const MainNav = () => {
 	const session = useSession();
 	const loginUrl = createLoginUrl();
 
@@ -104,7 +104,7 @@ export const MainNav: Component<{ theme: Theme }> = (props) => {
 										<MenuItem href={loginUrl()} title="Login" icon={LogIn} useNativeLink={true} />
 									}
 								>
-									{(session) => <CurrentUserNavLinks session={session()} />}
+									<CurrentUserNavLinks />
 								</Show>
 							</div>
 						</MenuItemContextProvider>

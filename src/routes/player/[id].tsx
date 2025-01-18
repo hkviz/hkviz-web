@@ -1,11 +1,11 @@
+import { Key } from '@solid-primitives/keyed';
 import { createAsync, RouteDefinition, useSearchParams } from '@solidjs/router';
-import { createMemo, For, Show } from 'solid-js';
+import { createMemo, Show } from 'solid-js';
 import * as v from 'valibot';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card';
 import { findPublicRuns, RunFilterParamsSchema } from '~/server/run/find-public-runs';
 import { RunFilters } from '../run/_components';
-import { Key } from '@solid-primitives/keyed';
 
 interface Params {
 	id: string;
@@ -18,7 +18,7 @@ export const route = {
 } satisfies RouteDefinition;
 
 export default function PublicPlayerPage(props: { params: Params }) {
-	const [searchParams, setSearchParams] = useSearchParams();
+	const [searchParams, _] = useSearchParams();
 	const filter = createMemo(() => v.parse(RunFilterParamsSchema, { ...searchParams, userId: props.params.id }));
 	const runs = createAsync(() => findPublicRuns(filter()));
 	const userName = createMemo(() => runs()?.[0]?.user?.name ?? 'Unnamed player');
