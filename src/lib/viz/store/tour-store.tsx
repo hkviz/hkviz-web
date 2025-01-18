@@ -3,6 +3,9 @@ import { createTourSteps } from '../tour/steps';
 import { RoomColoringStore } from './room-coloring-store';
 import { RoomDisplayStore } from './room-display-store';
 import { ViewportStore } from './viewport-store';
+import { AnimationStore } from './animation-store';
+import { UiStore } from './ui-store';
+import { MapZoomStore } from './map-zoom-store';
 
 export function hkMapRoomRectClass({ gameObjectName }: { gameObjectName: string }) {
 	return 'hk-map-room-react_' + gameObjectName;
@@ -12,6 +15,9 @@ export function createTourStore(
 	roomColoringStore: RoomColoringStore,
 	roomDisplayStore: RoomDisplayStore,
 	viewportStore: ViewportStore,
+	animationStore: AnimationStore,
+	uiStore: UiStore,
+	mapZoomStore: MapZoomStore,
 ) {
 	const tourLength = 10;
 	const [currentStepIndex, setCurrentStepIndex] = createSignal<number>(-1);
@@ -57,7 +63,16 @@ export function createTourStore(
 		changeCurrentStepIndex(0);
 	}
 
-	const steps = createTourSteps({ next, back, roomColoringStore, roomDisplayStore, viewportStore });
+	const steps = createTourSteps({
+		next,
+		back,
+		roomColoringStore,
+		roomDisplayStore,
+		viewportStore,
+		animationStore,
+		uiStore,
+		mapZoomStore,
+	});
 
 	return {
 		currentStepIndex,

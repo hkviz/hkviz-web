@@ -56,11 +56,11 @@ export const MainNav = () => {
 					<MainNavLeftSide />
 				</MenuItemContextProvider>
 				<div class="grow" />
-				<ErrorBoundary fallback={<div>Theme switcher error</div>}>
-					<ThemeSwitcher />
-				</ErrorBoundary>
 				<ErrorBoundary fallback={<div>Loading login failed</div>}>
 					<Suspense fallback={<></>}>
+						<ErrorBoundary fallback={<div>Theme switcher error</div>}>
+							<ThemeSwitcher />
+						</ErrorBoundary>
 						<Show
 							when={session()}
 							fallback={

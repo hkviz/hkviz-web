@@ -1,17 +1,17 @@
-import { type Component, type JSXElement, Show, createUniqueId } from 'solid-js';
+import { type Component, type JSXElement, createUniqueId } from 'solid-js';
 import { cardHeaderSmallClasses, cardTitleSmallClasses } from '~/components/ui/additions';
 import { CardHeader, CardTitle } from '~/components/ui/card';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Label } from '~/components/ui/label';
+import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { cn } from '~/lib/utils';
-import { extraChartStore, uiStore } from '../store';
+import { useExtraChartStore } from '../store';
 import { CompletionChart } from './completion-chart';
 import { EssenceChart } from './essence-chart';
 import { GeoChart } from './geo-chart';
 import { GrubChart } from './grub-chart';
 import { HealthChart } from './health-chart';
 import { SoulChart } from './soul-chart';
-import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 
 const Shortcut: Component<{ children: JSXElement }> = (props) => {
 	return <span class="rounded-md bg-gray-200 px-1 font-mono dark:bg-gray-800">{props.children}</span>;
@@ -19,6 +19,7 @@ const Shortcut: Component<{ children: JSXElement }> = (props) => {
 
 const RunExtraChartsFollowCheckbox: Component = () => {
 	const id = createUniqueId();
+	const extraChartStore = useExtraChartStore();
 	const extraChartsFollowAnimation = extraChartStore.followsAnimation;
 	return (
 		<div class="flex flex-row gap-2 px-4 pb-2">
@@ -42,8 +43,6 @@ export interface RunExtraChartsProps {
 }
 
 export const RunExtraCharts: Component<RunExtraChartsProps> = (props) => {
-	const isV1 = uiStore.isV1;
-
 	const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
 	return (
 		<div class="extra-charts flex h-full flex-col">
@@ -58,59 +57,44 @@ export const RunExtraCharts: Component<RunExtraChartsProps> = (props) => {
 			<hr />
 			{/* snap-proximity */}
 			<div class="shrink grow snap-y snap-mandatory overflow-y-auto lg:shrink lg:basis-0">
-				<Show when={!isV1()}>
-					<div class="snap-start snap-normal">
-						<Table class="pb-2">
-							<TableBody>
-								<TableRow>
-									<TableCell class="p-1 pl-4">
-										<Shortcut>{isMac ? '⌘ + Click' : 'Ctrl + Click'}</Shortcut> or <br />
-										<Shortcut>Click + Hold</Shortcut>
-									</TableCell>
-									<TableCell class="p-1">select point in timeline.</TableCell>
-								</TableRow>
-								<TableRow class="pb-2">
-									<TableCell class="p-1 pl-4">
-										<Shortcut>Drag</Shortcut>
-									</TableCell>
-									<TableCell class="p-1">zoom into graph.</TableCell>
-								</TableRow>
-								<TableRow class="pb-2">
-									<TableCell class="p-1 pl-4">
-										<Shortcut>Click</Shortcut>
-									</TableCell>
-									<TableCell class="p-1">zoom out of graph.</TableCell>
-								</TableRow>
-							</TableBody>
-						</Table>
-						<hr />
-					</div>
-				</Show>
+				<div class="snap-start snap-normal">
+					<Table class="pb-2">
+						<TableBody>
+							<TableRow>
+								<TableCell class="p-1 pl-4">
+									<Shortcut>{isMac ? '⌘ + Click' : 'Ctrl + Click'}</Shortcut> or <br />
+									<Shortcut>Click + Hold</Shortcut>
+								</TableCell>
+								<TableCell class="p-1">select point in timeline.</TableCell>
+							</TableRow>
+							<TableRow class="pb-2">
+								<TableCell class="p-1 pl-4">
+									<Shortcut>Drag</Shortcut>
+								</TableCell>
+								<TableCell class="p-1">zoom into graph.</TableCell>
+							</TableRow>
+							<TableRow class="pb-2">
+								<TableCell class="p-1 pl-4">
+									<Shortcut>Click</Shortcut>
+								</TableCell>
+								<TableCell class="p-1">zoom out of graph.</TableCell>
+							</TableRow>
+						</TableBody>
+					</Table>
+					<hr />
+				</div>
 				<GeoChart />
 				<hr />
-				<Show when={!isV1()}>
-					<>
-						<EssenceChart />
-						<hr />
-						<GrubChart />
-						<hr />
-						<CompletionChart />
-						<hr />
-					</>
-				</Show>
+				<EssenceChart />
+				<hr />
+				<GrubChart />
+				<hr />
+				<CompletionChart />
+				<hr />
 				<HealthChart />
 				<hr />
-				<Show when={!isV1()}>
-					<>
-						<SoulChart />
-						<hr />
-					</>
-				</Show>
-				<Show when={isV1()}>
-					<CompletionChart />
-					<hr />
-					<GrubChart />
-				</Show>
+				<SoulChart />
+				<hr />
 				<div class="snap-start snap-normal" />
 			</div>
 		</div>

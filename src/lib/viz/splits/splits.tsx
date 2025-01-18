@@ -9,7 +9,7 @@ import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { cn } from '~/lib/utils';
 import { assertNever, recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '../../parser';
 import { Duration } from '../duration';
-import { animationStore, hoverMsStore, splitsStore, uiStore, useRoomDisplayStore } from '../store';
+import { useAnimationStore, useHoverMsStore, useRoomDisplayStore, useSplitsStore, useUiStore } from '../store';
 import { splitColors } from './split-colors';
 
 type RowActiveState = 'past' | 'next' | 'future';
@@ -21,7 +21,10 @@ interface RowProps {
 }
 
 const RunSplitRow: Component<RowProps> = (props) => {
+	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
+	const uiStore = useUiStore();
+	const hoverMsStore = useHoverMsStore();
 	// const activeStateClasses =
 	//     activeState === 'past'
 	//         ? 'bg-green-200 dark:bg-green-900'
@@ -146,6 +149,7 @@ const RunSplitRow: Component<RowProps> = (props) => {
 };
 
 const RunSplitsRows: Component = () => {
+	const splitsStore = useSplitsStore();
 	const filteredSplits = splitsStore.filteredSplits;
 	const nextSplitIndex = splitsStore.nextSplitIndex;
 
@@ -179,6 +183,7 @@ interface RunSplitsProps {
 }
 
 const RunSplitsSearch: Component = () => {
+	const splitsStore = useSplitsStore();
 	const filterTerm = splitsStore.filterTerm;
 	const show = splitsStore.isSplitsPanelOpen;
 
@@ -216,6 +221,7 @@ const RunSplitsSearch: Component = () => {
 
 export const RunSplits: Component<RunSplitsProps> = (props) => {
 	const id = createUniqueId();
+	const splitsStore = useSplitsStore();
 	const visibleSplitGroups = splitsStore.visibleSplitGroups;
 
 	const setVisibleSplitGroupChecked = (group: RecordingSplitGroup, checked: boolean) => {

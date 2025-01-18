@@ -6,10 +6,10 @@ import {
 	type PlayerDataEvent,
 	type PlayerDataFieldValue,
 } from '../../parser';
-import { animationStore } from './animation-store';
-import { gameplayStore } from './gameplay-store';
+import { AnimationStore } from './animation-store';
+import { GameplayStore } from './gameplay-store';
 
-export function createPlayerDataAnimationStore() {
+export function createPlayerDataAnimationStore(animationStore: AnimationStore, gameplayStore: GameplayStore) {
 	const currentEvents = Object.fromEntries(
 		Object.entries(playerDataFields.byFieldName).map(([fieldName, field]) => {
 			return [

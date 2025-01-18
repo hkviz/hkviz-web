@@ -14,10 +14,8 @@ import { getRunPageTitle } from './_metadata';
 //     return getRunMeta(params.id, session?.user?.id ?? null);
 // }
 
-export default function SingleRunPage(props: RouteSectionProps) {
-	const id = () => props.params.id;
-
-	const runData = createAsync(() => getRun(id()));
+function SingleRunLoadingWrapper(props: { id: string }) {
+	const runData = createAsync(() => getRun(props.id));
 
 	const loader = createMemo(() => {
 		const run = runData();
@@ -26,21 +24,32 @@ export default function SingleRunPage(props: RouteSectionProps) {
 	});
 
 	return (
-		<RunStoresProvider>
-			<ContentWrapper footerOutOfSight={true}>
-				<Show when={runData()}>
-					{(runData) => (
+		<Show when={runData()}>
+			{(runData) => (
+				<Show when={loader()}>
+					{(loader) => (
 						<>
 							<Title>{getRunPageTitle(runData())}</Title>
 							<GameplayDashboard
 								startDate={runData().startedAt}
 								fileInfos={runData().files}
-								runFileLoader={loader()!}
+								runFileLoader={loader()}
 								gameplayCard={<RunCard run={runData()} showUser={true} />}
 							/>
 						</>
 					)}
 				</Show>
+			)}
+		</Show>
+	);
+}
+
+export default function SingleRunPage(props: RouteSectionProps) {
+	const id = () => props.params.id;
+	return (
+		<RunStoresProvider>
+			<ContentWrapper footerOutOfSight={true}>
+				<SingleRunLoadingWrapper id={id()} />
 			</ContentWrapper>
 		</RunStoresProvider>
 	);

@@ -2,7 +2,7 @@ import { AreaChart, BadgeInfo, Map, Timer, type LucideIcon } from 'lucide-solid'
 import { type Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
-import { MobileTab, uiStore } from '../store';
+import { MobileTab, useUiStore } from '../store';
 import { cn } from '~/lib/utils';
 
 interface MobileTabTriggerProps {
@@ -28,6 +28,7 @@ const MobileTabTrigger: Component<MobileTabTriggerProps> = (props) => {
 };
 
 export const MobileTabBar: Component = () => {
+	const uiStore = useUiStore();
 	const mobileTab = uiStore.mobileTab;
 	return (
 		<Tabs

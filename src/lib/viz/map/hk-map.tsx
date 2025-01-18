@@ -1,9 +1,9 @@
 import * as d3 from 'd3';
-import { Show, createEffect, onMount, type Component } from 'solid-js';
+import { createEffect, onMount, type Component } from 'solid-js';
 import { cn } from '~/lib/utils';
 import { mapVisualExtends, roomData } from '../../parser';
 import { createElementSize } from '../canvas';
-import { mapZoomStore, uiStore, useRoomDisplayStore } from '../store';
+import { useMapZoomStore, useRoomDisplayStore } from '../store';
 import { HkMapRooms } from './hk-map-rooms';
 import { HkMapTexts } from './hk-map-texts';
 import { createHKMapZoom } from './hk-map-zoom';
@@ -18,7 +18,7 @@ export interface HKMapProps {
 
 export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 	const roomDisplayStore = useRoomDisplayStore();
-	const isV1 = uiStore.isV1;
+	const mapZoomStore = useMapZoomStore();
 
 	const zoom = d3
 		.zoom<SVGSVGElement, unknown>()
@@ -67,9 +67,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 					// }
 				}}
 			/>
-			<Show when={!isV1()}>
-				<HkMapTexts />
-			</Show>
+			<HkMapTexts />
 		</g>
 	) as SVGGElement;
 	const rootGD3 = d3.select(rootG);
@@ -101,11 +99,9 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 			<div class="absolute right-2 top-2 lg:top-10 xl:top-2">
 				<MapLegend />
 			</div>
-			<Show when={!isV1()}>
-				<div class="absolute bottom-2 right-2">
-					<MapOverlayOptions />
-				</div>
-			</Show>
+			<div class="absolute bottom-2 right-2">
+				<MapOverlayOptions />
+			</div>
 		</div>
 	) as HTMLDivElement;
 

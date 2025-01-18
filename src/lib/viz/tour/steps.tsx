@@ -3,12 +3,12 @@ import { untrack, type Component, type JSXElement } from 'solid-js';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { HKVizText } from '../hkviz-text';
 import {
-	animationStore,
+	AnimationStore,
 	hkMapRoomRectClass,
-	mapZoomStore,
+	MapZoomStore,
 	RoomColoringStore,
 	RoomDisplayStore,
-	uiStore,
+	UiStore,
 	ViewportStore,
 } from '../store';
 import { makeStep, type Step } from './step';
@@ -23,6 +23,9 @@ interface CreateTourStepsInput {
 	roomColoringStore: RoomColoringStore;
 	roomDisplayStore: RoomDisplayStore;
 	viewportStore: ViewportStore;
+	animationStore: AnimationStore;
+	uiStore: UiStore;
+	mapZoomStore: MapZoomStore;
 }
 
 export function createTourSteps({
@@ -31,6 +34,9 @@ export function createTourSteps({
 	roomColoringStore,
 	roomDisplayStore,
 	viewportStore,
+	animationStore,
+	uiStore,
+	mapZoomStore,
 }: CreateTourStepsInput): Step[] {
 	return [
 		{

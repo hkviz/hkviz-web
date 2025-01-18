@@ -12,14 +12,14 @@ import { mainRoomDataBySceneName } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
 import { Duration } from '../duration';
 import {
-	animationStore,
 	changeRoomColorForDarkTheme,
 	changeRoomColorForLightTheme,
-	gameplayStore,
-	hoverMsStore,
-	uiStore,
+	useAnimationStore,
+	useGameplayStore,
+	useHoverMsStore,
 	useRoomDisplayStore,
 	useThemeStore,
+	useUiStore,
 } from '../store';
 
 function Times(props: { class?: string }) {
@@ -31,6 +31,8 @@ function Times(props: { class?: string }) {
 }
 
 function PlayButton() {
+	const gameplayStore = useGameplayStore();
+	const animationStore = useAnimationStore();
 	const isPlaying = animationStore.isPlaying;
 	const isDisabled = !gameplayStore.recording;
 	return (
@@ -52,7 +54,11 @@ function PlayButton() {
 const EMPTY_ARRAY = [] as const;
 
 function AnimationTimeLineColorCodes() {
+	const uiStore = useUiStore();
+	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
+	const gameplayStore = useGameplayStore();
+	const hoverMsStore = useHoverMsStore();
 	const timeFrameMs = gameplayStore.timeFrame;
 	const themeStore = useThemeStore();
 
@@ -170,7 +176,11 @@ function AnimationTimeLineColorCodes() {
 }
 
 function AnimationTimeLineSlider() {
+	const uiStore = useUiStore();
+	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
+	const gameplayStore = useGameplayStore();
+
 	const animationMsIntoGame = animationStore.msIntoGame;
 	const timeFrame = gameplayStore.timeFrame;
 	const isDisabled = !gameplayStore.recording;
@@ -238,15 +248,13 @@ function AnimationTimeLineSlider() {
 			class="-my-4 grow py-4"
 			disabled={isDisabled}
 			onChange={(values) => {
-				const isV1 = uiStore.isV1();
-
 				const newMsIntoGame = values[0]!;
 
 				animationStore.setMsIntoGame(newMsIntoGame);
 				uiStore.showMapIfOverview();
 				dragRef.previousDiff = 0; //diff;
 
-				if (!isV1 && !roomDisplayStore.selectedScenePinned()) {
+				if (!roomDisplayStore.selectedScenePinned()) {
 					const sceneEvent = gameplayStore.recording()?.sceneEventFromMs(newMsIntoGame);
 					if (sceneEvent) {
 						roomDisplayStore.setSelectedRoomIfNotPinned(sceneEvent.getMainVirtualSceneName());
@@ -270,35 +278,34 @@ function AnimationTimeLineSlider() {
 // this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
 // Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
 export function AnimationTimeLine(props: { class?: string }) {
+	const hoverMsStore = useHoverMsStore();
+	const gameplayStore = useGameplayStore();
+
 	const hoveredMsIntoGame = hoverMsStore.hoveredMsIntoGame;
 	const timeFrame = gameplayStore.timeFrame;
-	const isV1 = uiStore.isV1;
 
 	return (
 		<div class={cn('relative flex h-5 shrink grow flex-col gap-2 @3xl:h-10 @3xl:justify-center', props.class)}>
 			<div>
 				<AnimationTimeLineSlider />
 			</div>
-			<Show when={!isV1()}>
-				<div class="pointer-events-none absolute bottom-0 left-0 right-0 top-0">
-					<Show when={hoveredMsIntoGame()}>
-						{(hoveredMsIntoGame) => (
-							<div
-								class="absolute bottom-0 top-0 w-[1px] bg-foreground"
-								style={{ left: (100 * hoveredMsIntoGame()) / timeFrame().max + '%' }}
-							/>
-						)}
-					</Show>
-				</div>
-			</Show>
-			<Show when={!isV1()}>
-				<AnimationTimeLineColorCodes />
-			</Show>
+			<div class="pointer-events-none absolute bottom-0 left-0 right-0 top-0">
+				<Show when={hoveredMsIntoGame()}>
+					{(hoveredMsIntoGame) => (
+						<div
+							class="absolute bottom-0 top-0 w-[1px] bg-foreground"
+							style={{ left: (100 * hoveredMsIntoGame()) / timeFrame().max + '%' }}
+						/>
+					)}
+				</Show>
+			</div>
+			<AnimationTimeLineColorCodes />
 		</div>
 	);
 }
 
 export function AnimationOptions(props: { class?: string }) {
+	const animationStore = useAnimationStore();
 	const animationSpeedMultiplier = animationStore.speedMultiplier;
 
 	return (

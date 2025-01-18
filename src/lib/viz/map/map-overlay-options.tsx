@@ -1,6 +1,6 @@
 import { createUniqueId, type Component } from 'solid-js';
 import { assertNever } from '~/lib/parser';
-import { mapZoomStore, ZoomFollowTarget } from '../store';
+import { useMapZoomStore, ZoomFollowTarget } from '../store';
 import { Card } from '~/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Checkbox } from '~/components/ui/checkbox';
@@ -18,6 +18,7 @@ function zoomFollowTargetName(target: ZoomFollowTarget) {
 
 export const MapOverlayOptions: Component = () => {
 	const id = createUniqueId();
+	const mapZoomStore = useMapZoomStore();
 	// const showAreaNames = roomDisplayStore.showAreaNames();
 	// const showSubAreaNames = roomDisplayStore.showSubAreaNames();
 

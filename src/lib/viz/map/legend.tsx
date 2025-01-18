@@ -1,15 +1,14 @@
 import * as d3 from 'd3';
-import { Show, createEffect, createSignal, onCleanup, type Component } from 'solid-js';
+import { createEffect, createSignal, onCleanup, type Component } from 'solid-js';
 import { Expander } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
 import { RoomColorCurveSelect } from '../room-infos/room-color-curve-menu';
 import {
 	aggregationVariableInfos,
-	animationStore,
 	formatAggregatedVariableValue,
-	gameplayStore,
-	uiStore,
 	useAggregationStore,
+	useAnimationStore,
+	useGameplayStore,
 	useRoomColoringStore,
 	useRoomDisplayStore,
 } from '../store';
@@ -19,12 +18,13 @@ const LEGEND_PADDING = 30;
 const LEGEND_SVG_TEXT_CLASSES = 'text-black dark:text-white fill-current';
 
 export const MapLegend: Component = () => {
+	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const roomColoringStore = useRoomColoringStore();
 	const aggregationStore = useAggregationStore();
+	const gameplayStore = useGameplayStore();
 	const [svg, setSvg] = createSignal<SVGSVGElement>();
 
-	const isV1 = uiStore.isV1;
 	const var1 = roomColoringStore.var1;
 	const mode = roomColoringStore.colorMode;
 	const var1Info = () => aggregationVariableInfos[var1()];
@@ -142,9 +142,7 @@ export const MapLegend: Component = () => {
 			<div class="flex flex-col items-center justify-center gap-1">
 				<div class="flex flex-row items-center justify-center gap-1 px-1">
 					<div class="pl-1 text-sm">{var1Info()?.name ?? ''} </div>
-					<Show when={!isV1()}>
-						<RoomColorCurveSelect variable={var1()} />
-					</Show>
+					<RoomColorCurveSelect variable={var1()} />
 				</div>
 				<Expander expanded={showSelectedTimeComment()}>
 					<div class="text-xs opacity-75">Up to the selected time</div>

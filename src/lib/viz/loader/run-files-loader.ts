@@ -4,7 +4,7 @@ import { fetchWithRunfileCache, openRunfileCache } from './recording-file-browse
 import { type RunFileInfo } from './run-files-info';
 import { wrapResultWithProgress } from './wrap-result-with-progress';
 import { isServer } from 'solid-js/web';
-import { storeInitializer } from '../store';
+import { createStoreInitializer } from '../store/store-initializer';
 
 async function loadFile(cache: Promise<Cache | null>, file: RunFileInfo, onProgress: (progress: number) => void) {
 	const loader = () => fetchWithRunfileCache(cache, file.id, file.version, file.signedUrl);
@@ -12,7 +12,6 @@ async function loadFile(cache: Promise<Cache | null>, file: RunFileInfo, onProgr
 	// uncomment to get file content from console. useful for debugging
 	// very bad for performance, since context needs to be kept in memory.
 
-	 
 	// (window as any)['fileLoader_' + combinedPartNumber] = loader;
 
 	const response = await loader().then((it) =>
@@ -45,7 +44,6 @@ export function createRunFileLoader(files: RunFileInfo[]): RunFileLoader {
 	console.log('started loading run files');
 
 	const abortController = new AbortController();
-	storeInitializer.initializeStores('vnext');
 
 	const cache = openRunfileCache();
 	const fileLoaders = files.map((file) => {
@@ -66,6 +64,9 @@ export function createRunFileLoader(files: RunFileInfo[]): RunFileLoader {
 	});
 
 	const [done, setDone] = createSignal(false);
+
+	const storeInitializer = createStoreInitializer();
+	storeInitializer.reset();
 
 	void Promise.all(fileLoaders.map((it) => it.promise)).then((recordings) => {
 		if (abortController.signal.aborted) return;

@@ -1,12 +1,13 @@
 import { A, useLocation } from '@solidjs/router';
 import { createEffect, createMemo, type Component } from 'solid-js';
-import { uiStore } from '~/lib/viz/store';
 import { HKVizText } from './HKVizText';
 import { DiscordDialogButton, GithubButton, MailButton } from './socials-links';
 import { Expander } from './ui/additions';
 import { Button } from './ui/button';
+import { useUiStore } from '~/lib/viz';
 
 export const Footer: Component = () => {
+	const uiStore = useUiStore();
 	const location = useLocation();
 
 	const isVisible = createMemo(() => uiStore.mobileTab() === 'overview' || !location.pathname.startsWith('/run/'));

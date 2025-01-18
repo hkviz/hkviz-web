@@ -3,7 +3,7 @@ import { For, Show, createEffect, createMemo, onCleanup, untrack, type Component
 import { Dynamic } from 'solid-js/web';
 import { Button } from '~/components/ui/button';
 import { Popover, PopoverContent } from '~/components/ui/popover';
-import { gameplayStore, useTourStore } from '../store';
+import { useGameplayStore, useTourStore } from '../store';
 import { type Step } from './step';
 
 interface TourStepProps {
@@ -150,6 +150,7 @@ const TourShadow: Component = () => {
 
 export const SingleRunPageTour: Component = () => {
 	const tourStore = useTourStore();
+	const gameplayStore = useGameplayStore();
 	const recording = gameplayStore.recording;
 	const isOpen = tourStore.isOpen;
 

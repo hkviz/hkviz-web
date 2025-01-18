@@ -1,9 +1,10 @@
 import { type Component } from 'solid-js';
-import { MainCardTab, uiStore } from '../store';
+import { MainCardTab, useUiStore } from '../store';
 import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { tabsListTransparentClasses, tabsTriggerTransparentClasses } from '~/components/ui/additions';
 
 export const LargeScreenTabs: Component = () => {
+	const uiStore = useUiStore();
 	const mainCardTab = uiStore.mainCardTab;
 	return (
 		<Tabs

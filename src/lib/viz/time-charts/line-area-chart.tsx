@@ -1,26 +1,32 @@
-import { type FrameEndEvent, type FrameEndEventNumberKey } from '../../parser';
-import { animationStore, extraChartStore, gameplayStore, hoverMsStore, uiStore, useRoomDisplayStore } from '../store';
 import * as d3 from 'd3';
 import { type D3BrushEvent } from 'd3-brush';
 import {
 	type Component,
 	For,
 	type JSXElement,
+	Show,
 	createEffect,
 	createMemo,
+	createSignal,
 	createUniqueId,
 	untrack,
-	Show,
-	createSignal,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import { downScale } from './down-scale';
-import { createIsVisible } from './use-is-visible';
-import { ColorClasses } from '../colors';
-import { d3Ticks, formatTimeMs, isFilledD3Selection } from '../util';
+import { Checkbox } from '~/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
-import { Checkbox } from '~/components/ui/checkbox';
+import { type FrameEndEvent, type FrameEndEventNumberKey } from '../../parser';
+import { ColorClasses } from '../colors';
+import {
+	useAnimationStore,
+	useExtraChartStore,
+	useGameplayStore,
+	useHoverMsStore,
+	useRoomDisplayStore,
+} from '../store';
+import { d3Ticks, formatTimeMs, isFilledD3Selection } from '../util';
+import { downScale } from './down-scale';
+import { createIsVisible } from './use-is-visible';
 
 export type LineChartVariableDescription = {
 	key: FrameEndEventNumberKey;
@@ -55,6 +61,10 @@ export interface LineAreaChartProps {
 
 export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 	const roomDisplayStore = useRoomDisplayStore();
+	const extraChartStore = useExtraChartStore();
+	const animationStore = useAnimationStore();
+	const gameplayStore = useGameplayStore();
+	const hoverMsStore = useHoverMsStore();
 	const renderScale = () => props.renderScale ?? 10;
 
 	const variablesPerKey = createMemo(() => {
@@ -62,8 +72,6 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 	});
 
 	const [svgRef, setSvgRef] = createSignal<SVGSVGElement | null>(null);
-
-	const isV1 = uiStore.isV1();
 
 	const isVisible = createIsVisible(svgRef);
 
@@ -161,7 +169,6 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 
 	// todo sub to series
 	const maxYInSelection = createMemo(() => {
-		if (isV1) return maxYOverAllTime();
 		const _series = series();
 		const _debouncedTimeBounds = debouncedTimeBounds();
 		const s = _series.at(-1)!;
@@ -355,7 +362,6 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 			.append('g')
 			.attr('class', 'brush')
 			.on('mousemove', (e) => {
-				if (isV1) return;
 				const ms = mouseToMsIntoGame(e);
 				hoverMsStore.setHoveredMsIntoGame(ms);
 				const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
@@ -365,22 +371,18 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 				}
 			})
 			.on('pointermove', (e: PointerEvent) => {
-				if (isV1) return;
 				currentMousePosition = { x: e.clientX, y: e.clientY };
 
 				e.preventDefault();
 			})
 			.on('mouseleave', () => {
-				if (isV1) return;
 				hoverMsStore.setHoveredMsIntoGame(null);
 				roomDisplayStore.setHoveredRoom(null);
 			})
 			.on('pointerdown', (e) => {
-				if (isV1) return;
 				startHold(e);
 			})
 			.on('click', (e) => {
-				if (isV1) return;
 				cancelHold();
 				if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
 					moveToMsIntoGame(e);
@@ -561,7 +563,7 @@ interface LineAreaChartVarRowProps {
 
 const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 	const id = createUniqueId();
-	const isV1 = uiStore.isV1;
+	const animationStore = useAnimationStore();
 
 	const isShowable = () => isShownInGraph(props.variable);
 
@@ -573,7 +575,7 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 
 	return (
 		<TableRow>
-			<TableCell class={isV1() ? '' : 'p-2 pl-3'}>
+			<TableCell class="p-2 pl-3">
 				<div class="flex flex-row items-center gap-2">
 					<Show when={isShowable()} fallback={<span class="inline-block w-5" />}>
 						<Tooltip placement="left">
@@ -599,7 +601,7 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 					</Tooltip>
 				</div>
 			</TableCell>
-			<TableCell class={isV1() ? '' : 'text-nowrap p-2 text-right'}>
+			<TableCell class="text-nowrap p-2 text-right">
 				<>{value()}</>
 				<span class="ml-2">
 					<Dynamic component={props.variable.UnitIcon} class="inline-block h-auto w-5" />

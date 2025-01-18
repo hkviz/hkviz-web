@@ -8,15 +8,15 @@ import { playerDataFields } from '~/lib/parser';
 import { cn } from '~/lib/utils';
 import { RelativeDate } from '../datetime/date';
 import {
-	animationStore,
-	extraChartStore,
-	gameplayStore,
-	mapZoomStore,
-	traceStore,
-	uiStore,
+	useAnimationStore,
+	useExtraChartStore,
+	useGameplayStore,
+	useMapZoomStore,
 	useRoomColoringStore,
 	useRoomDisplayStore,
 	useTourStore,
+	useTraceStore,
+	useUiStore,
 } from '../store';
 
 export interface RunOverviewTabProps {
@@ -29,8 +29,15 @@ export interface RunOverviewTabProps {
 
 export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 	const roomDisplayStore = useRoomDisplayStore();
+	const extraChartStore = useExtraChartStore();
+	const animationStore = useAnimationStore();
 	const tourStore = useTourStore();
 	const roomColoringStore = useRoomColoringStore();
+	const uiStore = useUiStore();
+	const gameplayStore = useGameplayStore();
+	const traceStore = useTraceStore();
+	const mapZoomStore = useMapZoomStore();
+
 	const mainCardTab = uiStore.mainCardTab;
 	const recording = gameplayStore.recording;
 

@@ -9,12 +9,15 @@ import {
 } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
 import { dreamGatePinSrc, knightPinSrc, shadePinSrc } from '../img-urls';
-import { animationStore, gameplayStore, mapZoomStore, traceStore, uiStore } from '../store';
+import { useAnimationStore, useGameplayStore, useMapZoomStore, useTraceStore } from '../store';
 
 const EMPTY_ARRAY = [] as const;
 
 export const HKMapTraces: Component = () => {
-	const isV1 = uiStore.isV1;
+	const animationStore = useAnimationStore();
+	const traceStore = useTraceStore();
+	const mapZoomStore = useMapZoomStore();
+	const gameplayStore = useGameplayStore();
 
 	const canvas = (<canvas class="pointer-events-none absolute inset-0 h-full w-full" />) as HTMLCanvasElement;
 	const knightPinImage = (
@@ -43,7 +46,7 @@ export const HKMapTraces: Component = () => {
 
 	createEffect(function tracesCanvasEffect() {
 		const _canvas = autoSizeCanvas();
-		if (!_canvas.canvas || isV1()) return;
+		if (!_canvas.canvas) return;
 
 		// scaling
 		const boundsAspectRatio = mapVisualExtends.size.x / mapVisualExtends.size.y;

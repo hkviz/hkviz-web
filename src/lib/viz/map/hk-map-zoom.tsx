@@ -8,7 +8,7 @@ import {
 	roomData,
 	type ZoomZone,
 } from '../../parser';
-import { animationStore, gameplayStore, mapZoomStore, uiStore, useRoomDisplayStore } from '../store';
+import { useAnimationStore, useGameplayStore, useMapZoomStore, useRoomDisplayStore } from '../store';
 
 interface HKMapZoomProps {
 	zoom: d3.ZoomBehavior<SVGSVGElement, unknown> | undefined;
@@ -17,11 +17,13 @@ interface HKMapZoomProps {
 
 // todo change away from props
 export function createHKMapZoom(props: HKMapZoomProps) {
+	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
+	const mapZoomStore = useMapZoomStore();
+	const gameplayStore = useGameplayStore();
 
 	let previousZoomZone: ZoomZone | null = null;
 	const zoomZone = createMemo(() => {
-		if (uiStore.isV1()) return null;
 		const target = mapZoomStore.target();
 		if (target !== 'current-zone') return null;
 		const enabled = mapZoomStore.enabled();
@@ -74,7 +76,6 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 	});
 
 	const visibleRoomsExtends = createMemo(() => {
-		if (uiStore.isV1()) return null;
 		const target = mapZoomStore.target();
 		if (target !== 'visible-rooms') return null;
 		const enabled = mapZoomStore.enabled();

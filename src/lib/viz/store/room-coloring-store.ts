@@ -4,9 +4,8 @@ import { batch, createContext, createMemo, createSignal, useContext } from 'soli
 import { roomData } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
 import { AggregationStore, type AggregationVariable } from './aggregation-store';
-import { animationStore } from './animation-store';
 import { ThemeStore } from './theme-store';
-import { uiStore } from './ui-store';
+import { AnimationStore } from './animation-store';
 
 function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
 	return a.h === b.h && a.s === b.s && a.l === b.l;
@@ -34,7 +33,11 @@ export const changeRoomColorForDarkTheme = memoize(
 
 export type RoomColorMode = 'area' | '1-var';
 
-export function createRoomColoringStore(themeStore: ThemeStore, aggregationStore: AggregationStore) {
+export function createRoomColoringStore(
+	themeStore: ThemeStore,
+	aggregationStore: AggregationStore,
+	animationStore: AnimationStore,
+) {
 	const [colorMode, setColorMode] = createSignal<RoomColorMode>('area');
 	const [var1, setVar1] = createSignal<AggregationVariable>('firstVisitMs');
 	const [var1Curve, setVar1Curve] = createSignal<RoomColorCurve>(RoomColorCurveLinear);
@@ -105,7 +108,7 @@ export function createRoomColoringStore(themeStore: ThemeStore, aggregationStore
 	function cycleRoomColorVar1(roomColorVar1: AggregationVariable) {
 		batch(() => {
 			if (var1() === roomColorVar1 && colorMode() === '1-var') {
-				if (var1Curve().type === 'linear' && !uiStore.isV1()) {
+				if (var1Curve().type === 'linear') {
 					setVar1Curve(RoomColorCurveExponential.EXPONENT_2);
 				} else {
 					setRoomColorMode('area');

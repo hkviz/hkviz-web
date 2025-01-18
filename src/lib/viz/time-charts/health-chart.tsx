@@ -2,11 +2,12 @@ import { type Component } from 'solid-js';
 import { cn } from '~/lib/utils';
 import { tailwindChartColors } from '../colors';
 import { blueMaskImg, emptyMaskImg, maskImg, steelMaskImg } from '../img-urls';
-import { gameplayStore } from '../store';
 import { ChartDocTitleIcon, ChartDocVars } from './chart-doc';
 import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
+import { useGameplayStore } from '../store';
 
 const MaskUnit: Component<{ class?: string }> = (props) => {
+	const gameplayStore = useGameplayStore();
 	const isSteelSoul = gameplayStore.isSteelSoul;
 	return <img src={isSteelSoul() ? steelMaskImg : maskImg} class={props.class} alt="Mask" />;
 };

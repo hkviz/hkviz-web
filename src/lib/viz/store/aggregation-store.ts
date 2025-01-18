@@ -14,9 +14,9 @@ import {
 	type CombinedRecording,
 } from '../../parser';
 import { formatTimeMs } from '../util';
-import { animationStore } from './animation-store';
-import { gameplayStore } from './gameplay-store';
 import { RoomDisplayStore } from './room-display-store';
+import { AnimationStore } from './animation-store';
+import { GameplayStore } from './gameplay-store';
 
 export interface ValueAggregation {
 	deaths: number;
@@ -394,7 +394,11 @@ export function getAggregationCountModeLabel(mode: AggregationCountMode) {
 	assertNever(mode);
 }
 
-export function createAggregationStore(roomDisplayStore: RoomDisplayStore) {
+export function createAggregationStore(
+	roomDisplayStore: RoomDisplayStore,
+	animationStore: AnimationStore,
+	gameplayStore: GameplayStore,
+) {
 	const aggregations = createMemo(() => {
 		const recording = gameplayStore.recording();
 		if (!recording) return null;
@@ -425,7 +429,7 @@ export function createAggregationStore(roomDisplayStore: RoomDisplayStore) {
 	const visibleRoomAggregations = createMemo(() => {
 		const sceneName = roomDisplayStore.selectedSceneName();
 		if (!sceneName) return null;
-		console.log('visibleRoomAggregations', sceneName, animationStore.msIntoGame());
+		// console.log('visibleRoomAggregations', sceneName, animationStore.msIntoGame());
 		return getAggregations(sceneName);
 	});
 

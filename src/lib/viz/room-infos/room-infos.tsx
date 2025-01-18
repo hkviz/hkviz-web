@@ -21,14 +21,14 @@ import {
 	aggregationCountModes,
 	aggregationVariableInfos,
 	aggregationVariables,
-	animationStore,
 	formatAggregatedVariableValue,
 	getAggregationCountModeLabel,
-	uiStore,
 	useAggregationStore,
+	useAnimationStore,
 	useRoomColoringStore,
 	useRoomDisplayStore,
 	useThemeStore,
+	useUiStore,
 	type AggregationVariable,
 } from '../store';
 import { AggregationVariableIcon } from './aggregation_variable_icon';
@@ -39,7 +39,7 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 	const roomColors = roomColoringStore.colorMode;
 	const roomColorVar1 = roomColoringStore.var1;
 	const roomColorVar1Curve = roomColoringStore.var1Curve;
-	const isV1 = uiStore.isV1;
+	const uiStore = useUiStore();
 
 	const isActive = () => roomColors() === '1-var' && roomColorVar1() === props.variable;
 
@@ -73,10 +73,10 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 					>
 						<span class="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
 							<Switch>
-								<Match when={!isActive() || isV1()}>
+								<Match when={!isActive()}>
 									<Palette class="h-4 w-4 text-base" />
 								</Match>
-								<Match when={isActive() && !isV1() && roomColorVar1Curve().type === 'linear'}>
+								<Match when={isActive() && roomColorVar1Curve().type === 'linear'}>
 									<span class="text-[.7rem]">linear</span>
 								</Match>
 								<Match when={isActive() && roomColorVar1Curve().type === 'log'}>
@@ -100,6 +100,7 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 const AggregationVariableRow: Component<{
 	variable: AggregationVariable;
 }> = (props) => {
+	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const aggregationStore = useAggregationStore();
 	const selectedRoom = roomDisplayStore.selectedSceneName;
@@ -193,7 +194,6 @@ function AggregationVariables() {
 export function RoomInfo() {
 	const roomDisplayStore = useRoomDisplayStore();
 	const aggregationStore = useAggregationStore();
-	const isV1 = uiStore.isV1;
 	const selectedRoom = roomDisplayStore.selectedSceneName;
 	const selectedRoomPinned = roomDisplayStore.selectedScenePinned;
 
@@ -250,7 +250,7 @@ export function RoomInfo() {
 				<div>
 					<CardTitle class="text-base md:text-lg">
 						<Show
-							when={selectedRoom() == null || isV1()}
+							when={selectedRoom() == null}
 							fallback={
 								<Tooltip>
 									<TooltipTrigger class="text-left">
@@ -268,14 +268,6 @@ export function RoomInfo() {
 							<span class="text-sm opacity-50">Hover or click a room to view analytics</span>
 						</Show>
 						<Show when={selectedRoom() != null}>
-							<Show when={isV1()}>
-								<Tooltip>
-									<TooltipTrigger class="text-left">
-										{roomInfos().mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}
-									</TooltipTrigger>
-									<TooltipContent>Area</TooltipContent>
-								</Tooltip>
-							</Show>
 							<Tooltip>
 								<TooltipTrigger class="text-left">
 									{roomInfos().mainRoomInfo?.roomNameFormattedZoneExclusive ?? selectedRoom()}
@@ -328,7 +320,7 @@ export function RoomInfo() {
 			</CardHeader>
 			<CardContent class="shrink grow basis-0 overflow-auto px-0 pb-1">
 				<Show when={selectedRoom() != null}>
-					<Show when={!isV1() && relatedRooms().length !== 0}>
+					<Show when={relatedRooms().length !== 0}>
 						<div class="flex flex-row gap-1 overflow-x-auto overflow-y-hidden p-1">
 							<Index each={relatedRooms()}>
 								{(room) => (

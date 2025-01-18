@@ -10,7 +10,6 @@ import { RunFileInfo, RunFileLoader } from '../loader';
 import { HKMap } from '../map';
 import { RoomInfo } from '../room-infos';
 import { RunSplits } from '../splits';
-import { splitsStore, uiStore } from '../store';
 import { RunExtraCharts } from '../time-charts';
 import { AnimationOptions } from '../timeline';
 import { SingleRunPageTour } from '../tour';
@@ -18,8 +17,10 @@ import { ViewOptions } from '../view-options';
 import { MobileTabBar } from './mobile-tabs';
 import { RunOverviewTab } from './overview-tab';
 import { LargeScreenTabs } from './tabs-large-screen';
+import { useSplitsStore, useUiStore } from '../store';
 
 export const DashboardMapOptions: Component = () => {
+	const uiStore = useUiStore();
 	const mobileTab = uiStore.mobileTab;
 	return (
 		<div class={cn('dashboard-grid-map-options', mobileTab() === 'map' ? 'flex' : 'hidden lg:flex')}>
@@ -82,7 +83,8 @@ const DEFAULT_EXTRA_CHARTS_SIZE = 0.63;
 const DEFAULT_SIZES = [1 - DEFAULT_EXTRA_CHARTS_SIZE, DEFAULT_EXTRA_CHARTS_SIZE];
 
 export const RightCard: Component<{ class?: string }> = (props) => {
-	const isV1 = uiStore.isV1;
+	const uiStore = useUiStore();
+	const splitsStore = useSplitsStore();
 	const mobileTab = uiStore.mobileTab;
 	const [sizes, setSizes] = createSignal(DEFAULT_SIZES);
 
@@ -116,33 +118,27 @@ export const RightCard: Component<{ class?: string }> = (props) => {
 	});
 
 	const runExtraChartsResizeOptions = (
-		<Show when={!isV1()}>
-			<ResizeButtons
-				state={
-					layoutState() === 'both'
-						? 'medimized'
-						: layoutState() === 'only-extra-charts'
-							? 'maximized'
-							: 'minimized'
-				}
-				minimize={closeExtraCharts}
-				medimize={both}
-				maximize={closeSplits}
-			/>
-		</Show>
+		<ResizeButtons
+			state={
+				layoutState() === 'both'
+					? 'medimized'
+					: layoutState() === 'only-extra-charts'
+						? 'maximized'
+						: 'minimized'
+			}
+			minimize={closeExtraCharts}
+			medimize={both}
+			maximize={closeSplits}
+		/>
 	);
 
 	const splitsResizeOptions = (
-		<Show when={!isV1()}>
-			<ResizeButtons
-				state={
-					layoutState() === 'both' ? 'medimized' : layoutState() === 'only-splits' ? 'maximized' : 'minimized'
-				}
-				minimize={closeSplits}
-				medimize={both}
-				maximize={closeExtraCharts}
-			/>
-		</Show>
+		<ResizeButtons
+			state={layoutState() === 'both' ? 'medimized' : layoutState() === 'only-splits' ? 'maximized' : 'minimized'}
+			minimize={closeSplits}
+			medimize={both}
+			maximize={closeExtraCharts}
+		/>
 	);
 
 	return (
@@ -154,22 +150,20 @@ export const RightCard: Component<{ class?: string }> = (props) => {
 			)}
 		>
 			<Resizable orientation="vertical" sizes={sizes()} onSizesChange={setSizes}>
-				<Show when={!isV1()}>
-					<ResizablePanel
-						collapsible
-						minSize={0.18}
-						class={cn(
-							cardClasses,
-							cardRoundedMdOnlyClasses,
-							'overflow-hidden',
-							'min-h-[44px] border-t',
-							mobileTab() === 'splits' ? '' : 'hidden lg:block',
-						)}
-					>
-						<RunSplits resizeOptions={splitsResizeOptions} />
-					</ResizablePanel>
-					<ResizableHandle withHandle class="hidden bg-transparent p-1 lg:flex" />
-				</Show>
+				<ResizablePanel
+					collapsible
+					minSize={0.18}
+					class={cn(
+						cardClasses,
+						cardRoundedMdOnlyClasses,
+						'overflow-hidden',
+						'min-h-[44px] border-t',
+						mobileTab() === 'splits' ? '' : 'hidden lg:block',
+					)}
+				>
+					<RunSplits resizeOptions={splitsResizeOptions} />
+				</ResizablePanel>
+				<ResizableHandle withHandle class="hidden bg-transparent p-1 lg:flex" />
 				<ResizablePanel
 					collapsible
 					minSize={0.3}
@@ -219,6 +213,7 @@ export interface GameplayDashboardProps {
 	runFileLoader: RunFileLoader;
 }
 export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
+	const uiStore = useUiStore();
 	const mobileTab = uiStore.mobileTab;
 
 	const [showMap, setShowMap] = createSignal(false);

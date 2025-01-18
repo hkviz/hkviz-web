@@ -7,8 +7,8 @@ import {
 	roomDataByGameObjectName,
 	type RoomSpriteVariant,
 } from '../../parser';
-import { gameplayStore } from './gameplay-store';
 import { PlayerDataAnimationStore } from './player-data-animation-store';
+import { GameplayStore } from './gameplay-store';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type RoomPinChangeSource =
@@ -18,7 +18,10 @@ export type RoomPinChangeSource =
 	| 'timeline-color-code-click'
 	| 'split-click';
 
-export function createRoomDisplayStore(playerDataAnimationStore: PlayerDataAnimationStore) {
+export function createRoomDisplayStore(
+	playerDataAnimationStore: PlayerDataAnimationStore,
+	gameplayStore: GameplayStore,
+) {
 	const [roomVisibility, setRoomVisibility] = createSignal<RoomVisibility>('visited-animated');
 	const [selectedSceneName, setSelectedSceneName] = createSignal<string | null>(null);
 	const [hoveredSceneName, setHoveredSceneName] = createSignal<string | null>(null);
@@ -134,6 +137,7 @@ export function createRoomDisplayStore(playerDataAnimationStore: PlayerDataAnima
 		[...d3.group(roomData, (d) => d.mapZone)].map(([zone, rooms]) => {
 			return [
 				zone,
+				// eslint-disable-next-line solid/reactivity
 				createMemo(() => rooms.some((r) => statesByGameObjectName.get(r.gameObjectName)!.isVisible())),
 			];
 		}),
