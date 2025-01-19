@@ -1,5 +1,5 @@
 import { createContext, createEffect, createSignal, untrack, useContext } from 'solid-js';
-import { COOKIE_NAME_THEME } from '~/lib/cookies/cookie-names';
+import { COOKIE_THEME } from '~/lib/cookies/cookie-names';
 import { cookiesClientRead } from '~/lib/cookies/cookies-client';
 // import { effect } from 'solid-js/web';
 // import { COOKIE_NAME_THEME } from '~/lib/cookies/cookie-names';
@@ -26,7 +26,7 @@ export function createThemeStore() {
 
 	createEffect(() => {
 		untrack(() => {
-			const theme = cookiesClientRead(COOKIE_NAME_THEME) === 'light' ? 'light' : 'dark';
+			const theme = cookiesClientRead(COOKIE_THEME);
 			setCurrentTheme(theme);
 		});
 	});

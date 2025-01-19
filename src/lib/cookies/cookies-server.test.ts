@@ -1,6 +1,8 @@
 import { revalidate } from '@solidjs/router';
 import { afterAll, beforeEach, expect, test, vi } from 'vitest';
 import { serverCookiesGet } from './cookies-server';
+import { CookieDefinition } from './cookie-names';
+import * as v from 'valibot';
 
 let currentCookieHeader = '';
 vi.mock('vinxi/http', async (importOriginal) => {
@@ -19,6 +21,16 @@ afterAll(() => {
 beforeEach(() => {
 	currentCookieHeader = '';
 	revalidate(serverCookiesGet.key);
+});
+
+const COOKIE_NAME = new CookieDefinition({
+	name: 'name',
+	schema: v.string(),
+});
+
+const COOKIE_NAME2 = new CookieDefinition({
+	name: 'name2',
+	schema: v.string(),
 });
 
 test('parses simple cookies', async () => {
@@ -53,8 +65,10 @@ test('parses cookies with spaces', async () => {
 
 test('sets cookie correctly', async () => {
 	const cookies = await serverCookiesGet();
-	cookies.set('name', 'value');
-	expect(cookies.getSetHeaders()).toEqual([['Set-Cookie', 'name=value']]);
+	cookies.set(COOKIE_NAME, 'value');
+	expect(cookies.getSetHeaders()).toEqual([
+		['Set-Cookie', 'name=value; Max-Age=31536000; Path=/; HttpOnly; SameSite=Strict'],
+	]);
 	expect(cookies.getAll()).toEqual(new Map([['name', 'value']]));
 });
 
@@ -63,19 +77,19 @@ test('deletes cookie correctly', async () => {
 	const cookies = await serverCookiesGet();
 	cookies.delete('name');
 
-	expect(cookies.getSetHeaders()).toEqual([['Set-Cookie', 'name=; Max-Age=-1']]);
+	expect(cookies.getSetHeaders()).toEqual([['Set-Cookie', 'name=; Max-Age=-1; Path=/']]);
 	expect(cookies.getAll()).toEqual(new Map());
 });
 
 test('deduplicates set headers', async () => {
 	// initial values
 	const cookies = await serverCookiesGet();
-	cookies.set('name', 'value');
-	cookies.set('name2', 'value2');
+	cookies.set(COOKIE_NAME, 'value');
+	cookies.set(COOKIE_NAME2, 'value2');
 
 	expect(cookies.getSetHeaders()).toEqual([
-		['Set-Cookie', 'name=value'],
-		['Set-Cookie', 'name2=value2'],
+		['Set-Cookie', 'name=value; Max-Age=31536000; Path=/; HttpOnly; SameSite=Strict'],
+		['Set-Cookie', 'name2=value2; Max-Age=31536000; Path=/; HttpOnly; SameSite=Strict'],
 	]);
 	expect(cookies.getAll()).toEqual(
 		new Map([
@@ -85,11 +99,11 @@ test('deduplicates set headers', async () => {
 	);
 
 	// update values
-	cookies.set('name', 'new-value');
+	cookies.set(COOKIE_NAME, 'new-value');
 
 	expect(cookies.getSetHeaders()).toEqual([
-		['Set-Cookie', 'name=new-value'],
-		['Set-Cookie', 'name2=value2'],
+		['Set-Cookie', 'name=new-value; Max-Age=31536000; Path=/; HttpOnly; SameSite=Strict'],
+		['Set-Cookie', 'name2=value2; Max-Age=31536000; Path=/; HttpOnly; SameSite=Strict'],
 	]);
 	expect(cookies.getAll()).toEqual(
 		new Map([
@@ -102,8 +116,8 @@ test('deduplicates set headers', async () => {
 	cookies.delete('name');
 
 	expect(cookies.getSetHeaders()).toEqual([
-		['Set-Cookie', 'name=; Max-Age=-1'],
-		['Set-Cookie', 'name2=value2'],
+		['Set-Cookie', 'name=; Max-Age=-1; Path=/'],
+		['Set-Cookie', 'name2=value2; Max-Age=31536000; Path=/; HttpOnly; SameSite=Strict'],
 	]);
 	expect(cookies.getAll()).toEqual(new Map([['name2', 'value2']]));
 });
@@ -138,7 +152,7 @@ test('does not parse cookies if getHeaders is called', async () => {
 test('does not parse cookies when reading already set cookie', async () => {
 	currentCookieHeader = 'name=value';
 	const cookies = await serverCookiesGet();
-	cookies.set('name2', 'value2');
+	cookies.set(COOKIE_NAME2, 'value2');
 	expect(cookies.get('name2')).toBe('value2');
 	expect(cookies.didParse).toBe(false);
 });
@@ -154,7 +168,7 @@ test('does not parse cookies when reading already set cookie', async () => {
 test('does not overwrite already set cookie when parsing after set', async () => {
 	currentCookieHeader = 'name=value; name2=value2';
 	const cookies = await serverCookiesGet();
-	cookies.set('name', 'new-value');
+	cookies.set(COOKIE_NAME, 'new-value');
 	expect(cookies.get('name')).toBe('new-value');
 	expect(cookies.didParse).toBe(false);
 

@@ -8,7 +8,7 @@ const ingameAuthGetByUrlIdIfNewSchema = v.object({
 });
 type IngameAuthGetByUrlIdIfNewInput = v.InferInput<typeof ingameAuthGetByUrlIdIfNewSchema>;
 
-export async function ingameAuthGetByUrlIdIfNew(unsafeInput: IngameAuthGetByUrlIdIfNewInput) {
+export async function ingameAuthGetByUrlIdIfNewAndGetNewUrlId(unsafeInput: IngameAuthGetByUrlIdIfNewInput) {
 	const input = v.parse(ingameAuthGetByUrlIdIfNewSchema, unsafeInput);
 	const session = await db.query.ingameAuth.findFirst({
 		where: (ingameAuth, { eq, and }) => and(eq(ingameAuth.urlId, input.urlId), isMax10MinutesOld()),

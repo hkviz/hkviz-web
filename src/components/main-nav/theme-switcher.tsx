@@ -1,6 +1,6 @@
 import { Moon, Sun } from 'lucide-solid';
 import { type Component, Show } from 'solid-js';
-import { COOKIE_NAME_THEME } from '~/lib/cookies/cookie-names';
+import { COOKIE_THEME } from '~/lib/cookies/cookie-names';
 import { cookiesClientSet } from '~/lib/cookies/cookies-client';
 import { useThemeStore } from '~/lib/viz/store/theme-store';
 import { Button } from '../ui/button';
@@ -14,7 +14,7 @@ export const ThemeSwitcher: Component = () => {
 	function toggleTheme() {
 		const theme = themeStore.currentTheme() === 'light' ? 'dark' : 'light';
 		themeStore.setCurrentTheme(theme);
-		cookiesClientSet(COOKIE_NAME_THEME, theme, 365 * 5);
+		cookiesClientSet(COOKIE_THEME, theme, 365 * 5);
 	}
 
 	return (

@@ -1,4 +1,8 @@
-export function cookiesClientSet(name: string, value: string, days: number) {
+import { CookieDefinition, CookieNameLike, getCookieName } from './cookie-names';
+import * as v from 'valibot';
+
+export function cookiesClientSet(name: CookieNameLike, value: string, days: number) {
+	const _name = getCookieName(name);
 	let expires: string;
 	if (days) {
 		const date = new Date();
@@ -7,21 +11,21 @@ export function cookiesClientSet(name: string, value: string, days: number) {
 	} else {
 		expires = '';
 	}
-	document.cookie = name + '=' + value + expires + '; path=/';
+	document.cookie = _name + '=' + value + expires + '; path=/';
 }
 
-export function cookiesClientRead(name: string) {
-	const nameEQ = name + '=';
+export function cookiesClientRead<T>(definition: CookieDefinition<T>): T {
+	const nameEQ = definition.name + '=';
 	const ca = document.cookie.split(';');
 	for (let c of ca) {
 		while (c.startsWith(' ')) {
 			c = c.substring(1, c.length);
 		}
 		if (c.startsWith(nameEQ)) {
-			return c.substring(nameEQ.length, c.length);
+			return v.parse(definition.schema, c.substring(nameEQ.length, c.length));
 		}
 	}
-	return null;
+	return v.parse(definition.schema, null);
 }
 
 export function cookiesClientDelete(name: string) {
