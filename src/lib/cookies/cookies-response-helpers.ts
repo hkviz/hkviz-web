@@ -9,7 +9,6 @@ export function withCookies(
 	let initModified = init;
 
 	const headers = cookies.getSetHeaders();
-	console.log({ headers });
 
 	if (headers.length) {
 		initModified ??= {};
@@ -21,7 +20,7 @@ export function withCookies(
 
 export function jsonWithCookies<T>(data: T, cookies: ServerCookies, init?: RouterResponseInit): CustomResponse<T> {
 	const initModified = withCookies(cookies, init);
-	console.log(JSON.stringify({ initModified }, null, 2));
+	// console.log(JSON.stringify({ initModified }, null, 2));
 	return json(data, initModified);
 }
 

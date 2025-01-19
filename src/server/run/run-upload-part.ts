@@ -1,17 +1,19 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import { and, eq } from 'drizzle-orm';
-import { mapZoneSchema, raise } from '~/lib/parser';
-import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
-import { getOrCreateRunId } from './get-or-create-run-id';
-import { runGameStateMetaColumnsSelect } from './run-column-selects';
 import * as v from 'valibot';
+import { isModVersionBefore1_6_0, mapZoneSchema, ModVersion, raise } from '~/lib/parser';
+import { r2RunPartFileKey } from '~/lib/r2';
+import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
 import { db } from '../db';
 import { getUserIdFromIngameSession } from '../ingameauth/utils';
 import { r2FileHead, r2GetSignedUploadUrl } from '../r2';
-import { r2RunPartFileKey } from '~/lib/r2';
+import { getOrCreateRunId } from './get-or-create-run-id';
+import { runGameStateMetaColumnsSelect } from './run-column-selects';
 
 const runPartCreateInputSchema = v.object({
+	modVersion: v.nullish(v.string()), // provided starting with mod version 1.6.x.x
+
 	ingameAuthId: v.pipe(v.string(), v.uuid()),
 	localRunId: v.pipe(v.string(), v.uuid()),
 	partNumber: v.pipe(v.number(), v.integer(), v.minValue(0)),
@@ -37,7 +39,20 @@ const runPartCreateInputSchema = v.object({
 });
 type RunPartCreateInput = v.InferOutput<typeof runPartCreateInputSchema>;
 
-export async function runPartCreate(unsafeInput: RunPartCreateInput) {
+interface RunPartCreateResult {
+	fileId: string;
+	runId: string;
+	signedUploadUrl: string;
+	/**
+	 * File was already uploaded to bucket and marked as finished.
+	 * Save to mark as completed on client without performing further steps.
+	 * Will only be true for mod versions >= 1.6, since older versions
+	 * Would not handle it correctly.
+	 */
+	alreadyFinished: boolean;
+}
+
+export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<RunPartCreateResult> {
 	const input = v.parse(runPartCreateInputSchema, unsafeInput);
 	const userId = await getUserIdFromIngameSession(db, input.ingameAuthId);
 	const runId = await getOrCreateRunId(db, input.localRunId, userId);
@@ -57,14 +72,46 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput) {
 	});
 
 	if (existingFile?.uploadFinished) {
-		// unless already uploaded
-		throw new Error('File already uploaded');
+		if (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as ModVersion)) {
+			// old versions don't check for the 'alreadyFinished' flag
+			// so for those versions, the previous behavior is kept.
+			throw new Error('File already uploaded');
+		} else {
+			return { fileId: existingFile.id, runId, signedUploadUrl: '', alreadyFinished: true };
+		}
 	} else if (existingFile) {
-		return {
-			fileId: existingFile.id,
-			runId,
-			signedUploadUrl: await r2GetSignedUploadUrl(r2RunPartFileKey(existingFile.id)),
-		};
+		// here either the mark finish call failed / did not happen, but the bucket upload succeeded
+		// or the bucket upload failed / was not attempted.
+
+		// first lets try finishing the upload, which only succeeds if the file is in the bucket
+		try {
+			runPartMarkFinished({
+				ingameAuthId: input.ingameAuthId,
+				localRunId: input.localRunId,
+				fileId: existingFile.id,
+			});
+			if (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as ModVersion)) {
+				throw new Error('File already uploaded');
+			} else {
+				return {
+					fileId: existingFile.id,
+					runId,
+					signedUploadUrl: '',
+					alreadyFinished: true,
+				};
+			}
+		} catch (error: unknown) {
+			console.log(
+				'Attemped to mark finished in existing file for upload failed. User will get signed url again',
+				error,
+			);
+			return {
+				fileId: existingFile.id,
+				runId,
+				signedUploadUrl: await r2GetSignedUploadUrl(r2RunPartFileKey(existingFile.id)),
+				alreadyFinished: false,
+			};
+		}
 	}
 
 	const fileId = uuidv4();
@@ -97,7 +144,12 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput) {
 		startedAt: input.firstUnixSeconds ? new Date(input.firstUnixSeconds * 1000) : null,
 		endedAt: input.lastUnixSeconds ? new Date(input.lastUnixSeconds * 1000) : null,
 	});
-	return { fileId, runId, signedUploadUrl: await r2GetSignedUploadUrl(r2RunPartFileKey(fileId)) };
+	return {
+		fileId,
+		runId,
+		signedUploadUrl: await r2GetSignedUploadUrl(r2RunPartFileKey(fileId)),
+		alreadyFinished: false,
+	};
 }
 
 const runPartMarkFinishedInputSchema = v.object({
@@ -107,7 +159,11 @@ const runPartMarkFinishedInputSchema = v.object({
 });
 type RunPartMarkFinishedInput = v.InferOutput<typeof runPartMarkFinishedInputSchema>;
 
-export async function runPartMarkFinished(unsafeInput: RunPartMarkFinishedInput) {
+interface RunPartMarkFinishedResult {
+	alreadyFinished: boolean;
+}
+
+export async function runPartMarkFinished(unsafeInput: RunPartMarkFinishedInput): Promise<RunPartMarkFinishedResult> {
 	const input = v.parse(runPartMarkFinishedInputSchema, unsafeInput);
 	const userId = await getUserIdFromIngameSession(db, input.ingameAuthId);
 	const runId = await getOrCreateRunId(db, input.localRunId, userId);
@@ -115,14 +171,18 @@ export async function runPartMarkFinished(unsafeInput: RunPartMarkFinishedInput)
 	// first get to make sure file belongs to user and is not already marked as finished
 	const file =
 		(await db.query.runFiles.findFirst({
-			where: (runFiles, { and, eq }) =>
-				and(eq(runFiles.id, input.fileId), eq(runFiles.runId, runId), eq(runFiles.uploadFinished, false)),
+			where: (runFiles, { and, eq }) => and(eq(runFiles.id, input.fileId), eq(runFiles.runId, runId)),
 			columns: {
 				id: true,
 				partNumber: true,
+				uploadFinished: true,
 				...runGameStateMetaColumnsSelect,
 			},
-		})) ?? raise(new Error('File not found or already marked as finished'));
+		})) ?? raise(new Error('File not found'));
+
+	if (file.uploadFinished) {
+		return { alreadyFinished: true };
+	}
 
 	const head = await r2FileHead(r2RunPartFileKey(input.fileId));
 	if (!head) {
@@ -176,4 +236,6 @@ export async function runPartMarkFinished(unsafeInput: RunPartMarkFinishedInput)
 	} catch (ex) {
 		console.error('Could not update run meta from file', ex);
 	}
+
+	return { alreadyFinished: false };
 }
