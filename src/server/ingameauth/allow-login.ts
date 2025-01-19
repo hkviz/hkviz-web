@@ -1,4 +1,3 @@
-import * as v from 'valibot';
 import { ingameAuth } from '~/server/db/schema';
 
 import { action } from '@solidjs/router';
@@ -7,9 +6,9 @@ import { getUserOrThrow } from '~/lib/auth/shared';
 import { COOKIE_INGAME_AUTH_URL_ID } from '~/lib/cookies/cookie-names';
 import { jsonWithCookies } from '~/lib/cookies/cookies-response-helpers';
 import { serverCookiesGet } from '~/lib/cookies/cookies-server';
+import { raise } from '~/lib/parser';
 import { db } from '~/server/db';
 import { isMax10MinutesOld } from './utils';
-import { raise } from '~/lib/parser';
 
 export const ingameAuthAllowLogin = action(async () => {
 	'use server';

@@ -1,4 +1,4 @@
-import { JSXElement } from 'solid-js';
+import { createEffect, JSXElement, onCleanup } from 'solid-js';
 import { AggregationStoreContext, createAggregationStore } from './aggregation-store';
 import { AnimationStoreContext, createAnimationStore } from './animation-store';
 import { createExtraChartStore, ExtraChartStoreContext } from './extra-chart-store';
@@ -50,6 +50,31 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 		uiStore,
 		mapZoomStore,
 	);
+
+	createEffect(() => {
+		const allStores = {
+			gameplayStore,
+			hoverMsStore,
+			animationStore,
+			mapZoomStore,
+			traceStore,
+			extraChartStore,
+			playerDataAnimationStore,
+			roomDisplayStore,
+			aggregationStore,
+			roomColoringStore,
+			splitsStore,
+			tourStore,
+		};
+
+		(window as any).stores = allStores;
+
+		onCleanup(() => {
+			if ((window as any).stores === allStores) {
+				(window as any).stores = null;
+			}
+		});
+	});
 
 	return (
 		<SplitsStoreContext.Provider value={splitsStore}>
