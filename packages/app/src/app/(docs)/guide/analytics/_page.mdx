@@ -53,13 +53,6 @@ import {
 
 import { AggregationVariableDoc } from './_aggregation-variable-doc';
 
-export const metadata = {
-    title: 'Analytics guide - HKViz',
-    alternates: {
-        canonical: '/guides/visualizations',
-    },
-};
-
 # How to analyze a gameplay with the <HKVizText /> visualizations
 
 <SpoilerWarningEarlyGame />
@@ -415,9 +408,3 @@ This can make it easier to find the time a specific area was visited.
 | Click        | Jump to the timepoint of the color code                                                                 |
 | Hover        | Change selected room, if not pinned                                                                     |
 | Double Click | Toggle if the selected <a href="#room-pin">room is pinned. <Pin className="w-4 h-4 inline-block" /></a> |
-
-export const runtime = 'edge';
-
-export default function MDXPage({ children }) {
-    return <MdxInnerWrapper>{children}</MdxInnerWrapper>;
-}
