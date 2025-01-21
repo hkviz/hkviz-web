@@ -3,7 +3,7 @@ import { createDeferred, createMemo, createSignal } from 'solid-js';
 import { fetchWithRunfileCache } from './recording-file-browser-cache';
 import { type RunFileInfo } from './run-files-info';
 import { wrapResultWithProgress } from './wrap-result-with-progress';
-import { storeInitializer } from 'src/store';
+import { storeInitializer } from '../store/store-initializer';
 
 async function loadFile(file: RunFileInfo, onProgress: (progress: number) => void) {
     const loader = () => fetchWithRunfileCache(file.id, file.version, file.signedUrl);
