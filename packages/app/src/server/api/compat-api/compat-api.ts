@@ -7,7 +7,7 @@ export async function apiGet<TResult>(
     init?: RequestInit,
 ): Promise<TResult> {
     const fullUrl = env.API_URL + url + env.API_URL_SUFFIX;
-    console.log({ fullUrl });
+    console.log({ fullUrl, key: env.API_URL_KEY });
     const response = await fetch(fullUrl, {
         ...(init ?? {}),
         headers: {
@@ -15,7 +15,7 @@ export async function apiGet<TResult>(
             ...(init?.headers ?? {}),
         },
     });
-    const json = await response.json();
+    const json = await response.text();
 
     console.log({ json });
 
