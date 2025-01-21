@@ -5,6 +5,7 @@
     "scripts": {
         "dev": "pnpm --parallel --reporter append-only --color=always --reporter=append-only run dev",
         "build": "pnpm --recursive --reporter append-only --color=always --reporter=append-only run build",
+        "build-pages": "pnpm -r --filter '!app' build && pnpm -r --filter 'app' build-pages",
         "lint": "pnpm --recursive --reporter append-only --color=always run lint",
         "lint:fix": "pnpm --recursive --reporter append-only --color=always run lint:fix "
     },
