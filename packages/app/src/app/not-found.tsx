@@ -3,6 +3,8 @@ import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/ca
 import Link from 'next/link';
 import { ContentCenterWrapper } from './_components/content-wrapper';
 
+export const runtime = 'edge';
+
 export default function NotFound() {
     return (
         <ContentCenterWrapper>

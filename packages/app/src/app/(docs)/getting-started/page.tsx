@@ -7,6 +7,8 @@ export const metadata = {
     },
 };
 
+export const runtime = 'edge';
+
 export default function Page() {
     return <ClientRedirect />;
 }

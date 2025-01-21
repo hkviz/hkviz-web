@@ -3,6 +3,8 @@ import { getPlayerMeta } from '~/server/api/routers/player/get-player-meta';
 import { ContentCenterWrapper } from '../../_components/content-wrapper';
 import { RunCard } from '../../_components/run-card';
 
+export const runtime = 'edge';
+
 interface Params {
     id: string;
 }

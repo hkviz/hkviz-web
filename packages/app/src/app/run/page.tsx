@@ -7,6 +7,8 @@ import { RunCard } from '../_components/run-card';
 import { RunFilters } from './_components';
 import { runFilterParamsSchema } from './_params';
 
+export const runtime = 'edge';
+
 export function generateMetadata({ searchParams }: { searchParams: RunFilter }) {
     const filter = runFilterParamsSchema.parse(searchParams);
     const tagOrGroup = filter.tag ? tagOrGroupFromCode(filter.tag) : undefined;

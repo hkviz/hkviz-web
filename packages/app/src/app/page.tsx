@@ -5,6 +5,8 @@ import { GradientSeparator } from './_components/gradient-separator';
 import { HKVizText } from './_components/hkviz-text';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
+export const runtime = 'edge';
+
 export const metadata: Metadata = {
     alternates: {
         canonical: '/',

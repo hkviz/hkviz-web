@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { ContentCenterWrapper } from '../_components/content-wrapper';
 import { HKVizText } from '../_components/hkviz-text';
 
+export const runtime = 'edge';
+
 export function generateMetadata(): Metadata {
     return {
         title: 'Login - HKViz',

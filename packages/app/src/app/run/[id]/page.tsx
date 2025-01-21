@@ -5,6 +5,8 @@ import { getRunMeta } from '~/server/api/routers/run/get-run-meta';
 import { getRun } from '~/server/api/routers/run/run-get';
 import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-wrapper';
 
+export const runtime = 'edge';
+
 interface Params {
     id: string;
 }
