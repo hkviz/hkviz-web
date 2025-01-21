@@ -8,6 +8,7 @@ const config = {
                 additionalHooks: 'useDependableEffect',
             },
         ],
+        '@typescript-eslint/require-await': 'off',
     },
 };
 

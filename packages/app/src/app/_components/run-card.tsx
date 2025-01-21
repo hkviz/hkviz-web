@@ -4,8 +4,8 @@ import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 import { type PropsWithChildren } from 'react';
+import { RunDataGameStateV1, RunDataV1 } from '~/server/api/compat-api/v1-api-models';
 import { type GetRunResult } from '~/server/api/routers/run/run-get';
-import { type RunMetadata } from '~/server/api/routers/run/runs-find';
 import Coin from '../../../public/ingame-sprites/hud/HUD_coin_v020004.png';
 import HealthFrameSteelSoulBrokenImg from '../../../public/ingame-sprites/hud/break_hud.png';
 import HealthFrameSteelSoulSmallImg from '../../../public/ingame-sprites/hud/mode_select_Steel_Soul_HUD.png';
@@ -104,7 +104,7 @@ function RunCardEpicInfo({
     );
 }
 
-function RunTitle({ run }: { run: RunMetadata }) {
+function RunTitle({ run }: { run: RunDataV1 }) {
     if (run.title) {
         return (
             <h2 className="color-white relative z-[8] font-serif text-xl font-bold drop-shadow-sm md:text-2xl">
@@ -121,7 +121,7 @@ export function RunCard({
     showUser = true,
     onClick,
 }: {
-    run: RunMetadata | GetRunResult;
+    run: RunDataV1 | GetRunResult;
     showUser?: boolean;
     onClick?: (runId: string) => void;
 }) {
@@ -243,8 +243,8 @@ export function RunCard({
 }
 
 function displayPercentage(
-    gameState: RunMetadata['gameState'],
-): gameState is RunMetadata['gameState'] & { completionPercentage: number } {
+    gameState: RunDataGameStateV1,
+): gameState is RunDataGameStateV1 & { completionPercentage: number } {
     if (!gameState) return false;
 
     return (

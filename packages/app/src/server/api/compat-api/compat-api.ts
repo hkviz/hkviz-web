@@ -3,7 +3,7 @@ import { env } from '~/env.mjs';
 
 export async function apiGet<TResult>(
     url: string,
-    schema: v.BaseSchema<TResult, TResult, any>,
+    schema: v.BaseSchema<any, TResult, any>,
     init?: RequestInit,
 ): Promise<TResult> {
     const fullUrl = env.API_URL + url + env.API_URL_SUFFIX;
@@ -30,7 +30,7 @@ export async function apiGet<TResult>(
 export async function apiPost<TResult, TInput>(
     url: string,
     input: TInput,
-    schema: v.BaseSchema<TResult, TResult, any>,
+    schema: v.BaseSchema<any, TResult, any>,
 ): Promise<TResult> {
     return await apiGet(url, schema, {
         method: 'POST',

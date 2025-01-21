@@ -8,8 +8,6 @@ export interface FindRunsOptions {
 
 export type RunFilter = RunFilterV1;
 
-export async function findRuns({ filter }: FindRunsOptions) {
+export async function findRuns({ filter }: FindRunsOptions): Promise<RunDataV1[]> {
     return await apiPost<RunDataV1[], RunFilterV1>('run', filter, v.array(runDataV1Schema));
 }
-
-export type RunMetadata = Awaited<ReturnType<typeof findRuns>>[number];
