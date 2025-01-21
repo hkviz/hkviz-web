@@ -3,13 +3,13 @@ import { type Metadata } from 'next';
 import { tagFromCode, tagGroupFromCode } from '~/lib/types/tags';
 import { getRun } from './run-get';
 
-export async function getRunMeta(id: string, sessionUserId: string | null): Promise<Metadata> {
+export async function getRunMeta(id: string): Promise<Metadata> {
     try {
-        const data = await getRun(id, sessionUserId);
+        const data = await getRun(id);
 
         const tagCodes = data.tags;
 
-        const tags = tagCodes.map((code) => tagFromCode(code));
+        const tags = tagCodes.map((code) => tagFromCode(code as any));
         const tagNames = tags.map((tag) => tag.name);
 
         const speedRunTags = tagGroupFromCode('speedrun').tags;

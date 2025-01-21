@@ -1,10 +1,9 @@
 import '~/styles/globals.css';
 
-import { cookies, headers } from 'next/headers';
+import { cookies } from 'next/headers';
 
 import { Toaster } from '@/components/ui/toaster';
 import { type Metadata } from 'next';
-import { getServerAuthSession } from '~/server/auth';
 import { cinzel, cinzelDecorative, ebGaramond, notoSans } from '~/styles/fonts';
 import { TRPCReactProvider } from '~/trpc/react';
 import ClientContext from './_components/context';
@@ -14,7 +13,6 @@ import { FaviconsHead } from './_favicons-head';
 
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { permanentRedirect } from 'next/navigation';
 import { COOKIE_NAME_THEME } from '~/lib/cookie-names';
 
 export const metadata: Metadata = {
@@ -28,13 +26,6 @@ export const metadata: Metadata = {
     },
 };
 
-const oldUrls = [
-    // production
-    'https://hkviz.olii.dev',
-    // for local testing uncomment
-    // 'http://localhost:3000'
-];
-
 const jsonLd = {
     __html: JSON.stringify({
         '@context': 'https://schema.org',
@@ -44,19 +35,9 @@ const jsonLd = {
     }),
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-    const session = await getServerAuthSession();
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     const isDarkTheme = cookies().get(COOKIE_NAME_THEME)?.value !== 'light';
     const theme = isDarkTheme ? 'dark' : 'light';
-
-    // only redirects users which are not logged in for now, since otherwise the session is lost
-    const url = headers().get('x-url') ?? '';
-    for (const oldUrl of oldUrls) {
-        if (url.includes(oldUrl) && !session && !url.includes('o=o')) {
-            permanentRedirect(url.replace(oldUrl, 'https://www.hkviz.org'));
-        }
-    }
 
     return (
         <html lang="en">
@@ -72,7 +53,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
                 <ClientContext>
                     <TRPCReactProvider cookies={cookies().toString()}>
                         <div>
-                            <MainNav session={session} theme={theme} />
+                            <MainNav theme={theme} />
                             {children}
                             <Footer />
                         </div>

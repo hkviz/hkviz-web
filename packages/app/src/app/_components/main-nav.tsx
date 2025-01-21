@@ -11,19 +11,15 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { LogIn, Menu } from 'lucide-react';
-import type { Session } from 'next-auth';
-import { CurrentUserDropdown, CurrentUserHamburgerItems } from './current-user-dropdown';
 import { HKVizText } from './hkviz-text';
-import { LoginLink, useLoginUrl } from './login-link';
+import { LoginLink } from './login-link';
 import { MenuEntryInHamburger, MenuEntryOutsideHamburger, linksLeft } from './main-nav-item';
 import { ThemeSwitcher, type Theme } from './theme-switcher';
 
-export function MainNav({ session, theme }: { session: Session | null; theme: Theme }) {
-    const loginUrl = useLoginUrl();
-
+export function MainNav({ theme }: { theme: Theme }) {
     return (
         <div className="main-nav">
-            <div className="main-nav-inner app-region-drag z-40 flex items-center justify-center bg-background">
+            <div className="main-nav-inner app-region-drag bg-background z-40 flex items-center justify-center">
                 <NavigationMenu>
                     <NavigationMenuList className="app-region-no-drag">
                         <Link href="/" legacyBehavior passHref>
@@ -42,12 +38,9 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                 <NavigationMenu className="navigation-menu-content-from-right app-region-no-drag">
                     <ThemeSwitcher theme={theme} />
                     <NavigationMenuList>
-                        {!session && (
-                            <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'hidden md:flex')} asChild>
-                                <LoginLink />
-                            </NavigationMenuLink>
-                        )}
-                        {session && <CurrentUserDropdown session={session} className="hidden md:flex" />}
+                        <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), 'hidden md:flex')} asChild>
+                            <LoginLink />
+                        </NavigationMenuLink>
                     </NavigationMenuList>
                     <Sheet>
                         <SheetTrigger asChild>
@@ -73,12 +66,9 @@ export function MainNav({ session, theme }: { session: Session | null; theme: Th
                                 {linksLeft.map((menuEntry) => (
                                     <MenuEntryInHamburger key={menuEntry.key} menuEntry={menuEntry} />
                                 ))}
-                                {session && <CurrentUserHamburgerItems session={session} />}
-                                {!session && (
-                                    <MenuEntryInHamburger
-                                        menuEntry={{ key: 'login', href: loginUrl, title: 'Login', icon: LogIn }}
-                                    />
-                                )}
+                                <MenuEntryInHamburger
+                                    menuEntry={{ key: 'login', href: '/login', title: 'Login', icon: LogIn }}
+                                />
                             </div>
                         </SheetContent>
                     </Sheet>

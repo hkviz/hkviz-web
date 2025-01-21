@@ -1,6 +1,5 @@
 'use client';
 
-import { type Session } from 'next-auth';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { RunCard } from '~/app/_components/run-card';
@@ -10,13 +9,11 @@ import { GameplayDashboardWrapper } from './_dynamic_loader';
 import { createRunFileLoader, type RunFileLoader } from '@hkviz/viz';
 
 interface Props {
-    session: Session | null;
     runData: GetRunResult;
 }
 
-export function SingleRunClientPage({ session, runData }: Props) {
+export function SingleRunClientPage({ runData }: Props) {
     useStoreInitializer();
-    const isOwnRun = session?.user?.id === runData.user.id;
 
     const [runFileLoader, setRunFileLoader] = useState<RunFileLoader | null>(null);
 
@@ -44,7 +41,7 @@ export function SingleRunClientPage({ session, runData }: Props) {
                     runFileLoader={runFileLoader}
                 />
             )}
-            {cardWrapper && createPortal(<RunCard run={runData} isOwnRun={isOwnRun} />, cardWrapper)}
+            {cardWrapper && createPortal(<RunCard run={runData} />, cardWrapper)}
         </>
     );
 }

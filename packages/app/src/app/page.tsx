@@ -1,13 +1,9 @@
-import { Button } from '@/components/ui/button';
 import { type Metadata } from 'next';
-import Link from 'next/link';
-import { findRuns } from '~/server/api/routers/run/runs-find';
-import { getServerAuthSession } from '~/server/auth';
-import { db } from '~/server/db';
+import { hkVizUrl } from '~/lib/url';
 import { ContentCenterWrapper } from './_components/content-wrapper';
 import { GradientSeparator } from './_components/gradient-separator';
 import { HKVizText } from './_components/hkviz-text';
-import { OwnRuns } from './_page_own_runs';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const metadata: Metadata = {
     alternates: {
@@ -15,22 +11,7 @@ export const metadata: Metadata = {
     },
 };
 
-export default async function Home() {
-    const session = await getServerAuthSession();
-    const userId = session?.user?.id;
-    const userRuns = userId
-        ? await findRuns({
-              db,
-              filter: {
-                  archived: [false],
-                  userId: userId,
-              },
-              currentUser: {
-                  id: userId,
-              },
-          })
-        : [];
-
+export default function Home() {
     return (
         <ContentCenterWrapper>
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16">
@@ -47,25 +28,44 @@ export default async function Home() {
                         With <HKVizText /> you can record gameplay analytics of your Hollow Knight gameplays, and share
                         them with others.
                     </p>
-
-                    {userRuns.length == 0 && (
-                        <div className="flex flex-row items-center justify-center py-8 transition sm:gap-12">
-                            <Button
-                                asChild
-                                className="rounded-3xl p-8 text-2xl font-semibold shadow-md hover:shadow-lg"
-                            >
-                                <Link href="/guide/install">Record gameplay analytics</Link>
-                            </Button>
-                        </div>
-                    )}
                 </div>
 
-                {userRuns.length > 0 && (
-                    <>
-                        <GradientSeparator />
-                        <OwnRuns runs={userRuns} />
-                    </>
-                )}
+                <GradientSeparator />
+
+                <Card className="max-w-[76ch]">
+                    <CardHeader>
+                        <CardTitle className="font-serif text-3xl font-semibold">
+                            You are using a old version of <HKVizText />
+                        </CardTitle>
+                        <CardDescription>
+                            <p className="text-pretty pt-4">
+                                The visualizations of this version were presented to our user study participants. If you
+                                are looking for the newest version visit{' '}
+                                <a href={hkVizUrl()} className="underline">
+                                    www.hkviz.org
+                                </a>
+                            </p>
+                            <p className="text-pretty pt-4">
+                                From the original version, all features that require authorization have been removed.
+                                However, the visualizations the participants explored have not been changed.
+                            </p>
+                            <p className="text-pretty pt-4">
+                                To view a particular gameplay, the easiest way is to open it in the{' '}
+                                <a href={hkVizUrl()} className="underline">
+                                    current <HKVizText /> version
+                                </a>{' '}
+                                and to replace <code className="text-green-800 dark:text-green-400">www.hkviz.org</code>{' '}
+                                with <code className="text-green-800 dark:text-green-400">v2.hkviz.org</code> in the
+                                url. So you full url should be something like{' '}
+                                <code className="text-green-800 dark:text-green-400">
+                                    https://v2.hkviz.org/run/{'<'}id{'>'}
+                                </code>
+                                . This version of <HKVizText /> does not support viewing private gameplays, make sure
+                                they are public or unlisted first.
+                            </p>
+                        </CardDescription>
+                    </CardHeader>
+                </Card>
 
                 <GradientSeparator />
                 <div className={`max-w-[70ch] text-center`}>

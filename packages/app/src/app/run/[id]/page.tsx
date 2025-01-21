@@ -1,12 +1,8 @@
-import { TRPCError } from '@trpc/server';
 import { type Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { HKVizText } from '~/app/_components/hkviz-text';
 import { SingleRunClientPage } from '~/app/run/[id]/_page';
 import { getRunMeta } from '~/server/api/routers/run/get-run-meta';
 import { getRun } from '~/server/api/routers/run/run-get';
-import { findNewRunId } from '~/server/api/routers/run/runs-find';
-import { getServerAuthSession } from '~/server/auth';
-import { db } from '~/server/db';
 import { ContentCenterWrapper, ContentWrapper } from '../../_components/content-wrapper';
 
 interface Params {
@@ -14,37 +10,30 @@ interface Params {
 }
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
-    const session = await getServerAuthSession();
-    return getRunMeta(params.id, session?.user?.id ?? null);
+    return getRunMeta(params.id);
 }
 
 export default async function SingleRunPage({ params }: { params: Params }) {
-    const session = await getServerAuthSession();
-
     try {
-        const runData = await getRun(params.id, session?.user?.id ?? null);
+        const runData = await getRun(params.id);
 
         return (
             <ContentWrapper footerOutOfSight={true}>
-                <SingleRunClientPage runData={runData} session={session} />
+                <SingleRunClientPage runData={runData} />
             </ContentWrapper>
         );
     } catch (e) {
-        if (e instanceof TRPCError && e.code === 'NOT_FOUND') {
-            const newId = await findNewRunId(db, params.id);
-            if (newId) {
-                redirect(`/run/${newId}`);
-            }
-
-            notFound();
-        }
-        if (e instanceof TRPCError && e.code === 'FORBIDDEN') {
-            return (
-                <ContentCenterWrapper>
-                    This gameplay is set to private and can only be viewed by its owner.
-                </ContentCenterWrapper>
-            );
-        }
-        throw e;
+        return (
+            <ContentCenterWrapper>
+                <div className="text-center">
+                    <h1 className="text-3xl font-semibold">Gameplay could not be loaded</h1>
+                    <p className="mt-4">
+                        This might be because it is private, or not accessible in the archived version of <HKVizText />.
+                        You can try visiting the gameplay at the latest version of <HKVizText />:
+                        <a href={'/run' + params.id}>https://hkviz.org/run/{params.id}</a>
+                    </p>
+                </div>
+            </ContentCenterWrapper>
+        );
     }
 }

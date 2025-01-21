@@ -1,50 +1,16 @@
-import { TRPCError } from '@trpc/server';
-import { cache } from 'react';
-import { raise } from '@hkviz/parser';
-import { db } from '~/server/db';
-import { assertIsResearcher } from '../lib/researcher';
-import { findRuns, type RunFilter } from './runs-find';
+import { z } from 'zod';
+import { apiGet } from '../../compat-api/compat-api';
+import { runDataV1Schema } from '../../compat-api/v1-api-models';
 
-export const getRun = cache(async (id: string, sessionUserId: string | null) => {
-    // console.log(id);
-    const isAnonymAccessKey = id.startsWith('a-');
-    const filter: RunFilter = isAnonymAccessKey ? { anonymAccessKey: id.slice(2) } : { id: [id] };
+export const getRun = async (unsafeId: string) => {
+    const id = z.string().uuid().parse(unsafeId);
 
-    const metadata =
-        (
-            await findRuns({
-                db,
-                filter: filter,
-                includeFiles: true,
-                skipVisibilityCheck: true,
-                currentUser: sessionUserId ? { id: sessionUserId } : undefined,
-                isAnonymAccess: isAnonymAccessKey,
-            })
-        )[0] ??
-        raise(
-            new TRPCError({
-                code: 'NOT_FOUND',
-                message: 'Run not found',
-            }),
-        );
-
-    if (!isAnonymAccessKey && metadata.visibility === 'private' && metadata.user.id !== sessionUserId) {
-        await assertIsResearcher({
-            db: db,
-            userId: sessionUserId,
-            makeError: () =>
-                new TRPCError({
-                    code: 'FORBIDDEN',
-                    message: 'Run is private',
-                }),
-        });
-    }
+    const metadata = await apiGet(`run/${id}`, runDataV1Schema);
 
     return {
         ...metadata,
-        user: isAnonymAccessKey ? { id: '', name: 'Anonym' } : metadata.user,
         files: metadata.files!,
     };
-});
+};
 
 export type GetRunResult = Awaited<ReturnType<typeof getRun>>;

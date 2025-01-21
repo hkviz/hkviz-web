@@ -1,32 +1,8 @@
 import { type MetadataRoute } from 'next';
 import { hkVizUrl } from '~/lib/url';
-import { findRuns } from '~/server/api/routers/run/runs-find';
-import { db } from '~/server/db';
 
+// eslint-disable-next-line @typescript-eslint/require-await
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-    const publicRuns = await findRuns({
-        db,
-        filter: {
-            visibility: ['public'],
-            archived: [false],
-        },
-    });
-
-    const publicRunsMap: MetadataRoute.Sitemap = publicRuns.map((run) => ({
-        url: hkVizUrl(`/run/${run.id}`),
-        lastModified: new Date(),
-        changeFrequency: 'daily',
-        // todo calc priority by popularity rating from started runs?
-        priority: 0.3,
-    }));
-
-    const publicPlayerMap: MetadataRoute.Sitemap = [...new Set(publicRuns.map((run) => run.user.id))].map((id) => ({
-        url: hkVizUrl(`/player/${id}`),
-        lastModified: new Date(),
-        changeFrequency: 'daily',
-        priority: 0.4,
-    }));
-
     return [
         {
             url: hkVizUrl(),
@@ -64,7 +40,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: 'monthly',
             priority: 0.4,
         },
-        ...publicPlayerMap,
-        ...publicRunsMap,
     ];
 }

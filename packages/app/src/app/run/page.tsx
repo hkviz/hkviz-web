@@ -1,11 +1,11 @@
-import { isTagCode, tagGroupFromCode, tagOrGroupFromCode } from '~/lib/types/tags';
+import { tagOrGroupFromCode } from '~/lib/types/tags';
 import { findRuns, type RunFilter } from '~/server/api/routers/run/runs-find';
-import { getServerAuthSession } from '~/server/auth';
-import { db } from '~/server/db';
 import { ContentWrapper } from '../_components/content-wrapper';
 import { RunCard } from '../_components/run-card';
 import { RunFilters } from './_components';
 import { runFilterParamsSchema } from './_params';
+import { Card, CardContent, CardDescription, CardHeader } from '@/components/ui/card';
+import { HKVizText } from '../_components/hkviz-text';
 
 export function generateMetadata({ searchParams }: { searchParams: RunFilter }) {
     const filter = runFilterParamsSchema.parse(searchParams);
@@ -24,20 +24,11 @@ export function generateMetadata({ searchParams }: { searchParams: RunFilter }) 
 export default async function Runs({ searchParams }: { searchParams: RunFilter }) {
     const filter = runFilterParamsSchema.parse(searchParams);
 
-    const session = await getServerAuthSession();
     const runs = await findRuns({
-        db,
         filter: {
-            visibility: ['public'],
-            tag: filter.tag
-                ? isTagCode(filter.tag)
-                    ? [filter.tag]
-                    : tagGroupFromCode(filter.tag).tags.map((it) => it.code)
-                : undefined,
+            tag: filter.tag,
             sort: filter.sort ?? 'favorites',
-            archived: [false],
         },
-        currentUser: session?.user,
     });
 
     return (
@@ -45,6 +36,20 @@ export default async function Runs({ searchParams }: { searchParams: RunFilter }
             <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
                 <div className="w-full max-w-[800px]">
                     <h1 className="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Public gameplays</h1>
+
+                    <Card className="mb-4">
+                        <CardHeader>
+                            <CardDescription>
+                                The archived version of <HKVizText /> only shows the first 10 public gameplays. To use
+                                this versions with other gameplays, first fisit the gameplay in the{' '}
+                                <a className="underline" href="https://www.hkviz.org">
+                                    latest version of <HKVizText />
+                                </a>{' '}
+                                and replace <code className="text-green-400 text-green-800">wwww.hkviz.org</code> in the
+                                url <code className="text-green-400 text-green-800">v2.hkviz.org</code>.
+                            </CardDescription>
+                        </CardHeader>
+                    </Card>
 
                     <RunFilters searchParams={filter} className="mb-4" />
 
