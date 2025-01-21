@@ -38,7 +38,7 @@ export interface FindRunsOptions {
 	 */
 	includeFiles?: boolean;
 	/**
-	 * defaults to false only used in endpoint which gets a single run by id,
+	 * defaults to false only used in endpoint which gets a single run by id (both rest and server function)
 	 * which does its own permission checks after loading.
 	 */
 	skipVisibilityCheck?: boolean;
@@ -195,7 +195,7 @@ export async function findRunsInternal({
 					? mappedFiles
 					: mappedFiles?.filter(
 							(it) =>
-								run.anonymAccessGameplayCutOffAt === null ||
+								run.anonymAccessGameplayCutOffAt == null ||
 								it.createdAt <= run.anonymAccessGameplayCutOffAt,
 						);
 

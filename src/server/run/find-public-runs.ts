@@ -7,10 +7,10 @@ import { db } from '../db';
 import { findRunsInternal } from './_find_runs_internal';
 
 export const RunFilterParamsSchema = v.object({
-	tag: v.optional(v.union([tagSchema, tagGroupSchema])),
-	sort: v.optional(runSortSchema),
-	userId: v.optional(v.pipe(v.string(), v.uuid())),
-	limit: v.optional(v.number()),
+	tag: v.nullish(v.union([tagSchema, tagGroupSchema])),
+	sort: v.nullish(runSortSchema),
+	userId: v.nullish(v.pipe(v.string(), v.uuid())),
+	limit: v.nullish(v.number()),
 });
 export type RunFilterParams = v.InferOutput<typeof RunFilterParamsSchema>;
 

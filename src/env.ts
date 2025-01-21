@@ -32,6 +32,9 @@ const envSchema = v.object({
 
 	// aggregation pipeline
 	FILE_DOWNLOAD_PATH: v.string(),
+
+	// compat api
+	COMPAT_API_KEY: v.string(),
 });
 export type Env = v.InferOutput<typeof envSchema>;
 
@@ -61,6 +64,8 @@ const envPreParse: Record<keyof Env, string | undefined> = {
 	EMAIL_FROM: process.env.EMAIL_FROM,
 
 	FILE_DOWNLOAD_PATH: process.env.FILE_DOWNLOAD_PATH,
+
+	COMPAT_API_KEY: process.env.COMPAT_API_KEY,
 };
 
 const parseResult = v.safeParse(envSchema, envPreParse);

@@ -11,6 +11,7 @@ const oldUrls = [
 export default createMiddleware({
 	onRequest: [
 		(event) => {
+			// console.log('middleware', event);
 			const url = event.request.url;
 
 			for (const oldUrl of oldUrls) {

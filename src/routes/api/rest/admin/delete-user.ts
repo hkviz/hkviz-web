@@ -14,6 +14,7 @@ import { assertIsResearcher } from '~/server/researcher';
 import { runDeleteInternal } from '~/server/run/run-deletion-internal';
 import { runInteractionUnlikeInternal } from '~/server/run/run-interaction-internal';
 
+// TODO not correctly implemented since request is not correct type
 export async function GET(request: Request) {
 	const { searchParams } = new URL(request.url);
 	const userId = searchParams.get('userId');
