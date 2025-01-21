@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "build": "next build --debug",
-        "build-pages": "npx @cloudflare/next-on-pages@1",
+        "build-pages": "pnpm exec @cloudflare/next-on-pages@1",
         "dev-and-tsc": "run-p -l tsc:watch next:dev",
         "dev-next-turbo": "next dev --turbo -p 3001",
         "dev:next": "next dev -p 3001",
@@ -96,6 +96,7 @@
         "zustand": "^4.4.6"
     },
     "devDependencies": {
+        "@cloudflare/next-on-pages": "^1.13.7",
         "@tailwindcss/typography": "^0.5.10",
         "@types/d3": "^7.4.3",
         "@types/d3-brush": "^3.0.6",
