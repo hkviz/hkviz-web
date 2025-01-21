@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "build": "next build --debug",
-        "build-pages": "pnpm exec @cloudflare/next-on-pages@1",
+        "build-pages": "pnpm exec next-on-pages",
         "dev-and-tsc": "run-p -l tsc:watch next:dev",
         "dev-next-turbo": "next dev --turbo -p 3001",
         "dev:next": "next dev -p 3001",
