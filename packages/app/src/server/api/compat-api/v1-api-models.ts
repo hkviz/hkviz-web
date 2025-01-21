@@ -149,13 +149,13 @@ export const runFilterV1Schema = v.object({
     sort: v.nullish(runSortV1Schema),
 });
 
-export type RunDataV1 = v.InferInput<typeof runDataV1Schema>;
-export type RunDataGameStateV1 = v.InferInput<typeof runDataGameStateV1Schema>;
-export type RunFileV1 = v.InferInput<typeof runFileV1Schema>;
-export type UserV1 = v.InferInput<typeof userV1Schema>;
-export type RunFilterV1 = v.InferInput<typeof runFilterV1Schema>;
-export type RunSortV1 = v.InferInput<typeof runSortV1Schema>;
-export type TagCodeV1 = v.InferInput<typeof tagCodeV1Schema>;
-export type TagGroupV1 = v.InferInput<typeof tagGroupV1Schema>;
-export type MapZoneV1 = v.InferInput<typeof mapZoneV1Schema>;
-export type VisibilityV1 = v.InferInput<typeof visibilityV1Schema>;
+export type RunDataV1 = v.InferOutput<typeof runDataV1Schema>;
+export type RunDataGameStateV1 = v.InferOutput<typeof runDataGameStateV1Schema>;
+export type RunFileV1 = v.InferOutput<typeof runFileV1Schema>;
+export type UserV1 = v.InferOutput<typeof userV1Schema>;
+export type RunFilterV1 = v.InferOutput<typeof runFilterV1Schema>;
+export type RunSortV1 = v.InferOutput<typeof runSortV1Schema>;
+export type TagCodeV1 = v.InferOutput<typeof tagCodeV1Schema>;
+export type TagGroupV1 = v.InferOutput<typeof tagGroupV1Schema>;
+export type MapZoneV1 = v.InferOutput<typeof mapZoneV1Schema>;
+export type VisibilityV1 = v.InferOutput<typeof visibilityV1Schema>;
