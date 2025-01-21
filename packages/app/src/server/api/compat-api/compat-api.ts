@@ -6,7 +6,7 @@ export async function apiGet<TResult>(
     schema: v.BaseSchema<TResult, TResult, any>,
     init?: RequestInit,
 ): Promise<TResult> {
-    const fullUrl = 'http://localhost:3000/api/rest/v1/' + url + env.API_URL_SUFFIX;
+    const fullUrl = env.API_URL + url + env.API_URL_SUFFIX;
     console.log({ fullUrl });
     const response = await fetch(fullUrl, {
         ...(init ?? {}),
