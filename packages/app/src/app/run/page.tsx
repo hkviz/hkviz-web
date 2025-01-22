@@ -47,8 +47,9 @@ export default async function Runs({ searchParams }: { searchParams: RunFilter }
                                 <a className="underline" href="https://www.hkviz.org">
                                     latest version of <HKVizText />
                                 </a>{' '}
-                                and replace <code className="text-green-400 text-green-800">wwww.hkviz.org</code> in the
-                                url <code className="text-green-400 text-green-800">v2.hkviz.org</code>.
+                                and replace <code className="text-green-800 dark:text-green-400">wwww.hkviz.org</code>{' '}
+                                in the url with <code className="text-green-800 dark:text-green-400">v2.hkviz.org</code>
+                                .
                             </CardDescription>
                         </CardHeader>
                     </Card>
