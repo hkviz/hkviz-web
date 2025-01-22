@@ -6,9 +6,7 @@ export async function apiGet<TResult>(
     schema: v.BaseSchema<any, TResult, any>,
     init?: RequestInit,
 ): Promise<TResult> {
-    let vCookie: string | null = null;
     const fullUrl = env.API_URL + url;
-    console.log({ fullUrl, key: env.API_URL_KEY, vCookie });
     const response = await fetch(fullUrl, {
         ...(init ?? {}),
         headers: {
