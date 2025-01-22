@@ -6,6 +6,13 @@
 
 # HKViz web
 
+> [!WARNING]  
+> This is a branch, that is only updated when things break, but aims to maintain a functioning version of the website
+> containing the visualizations as shown to our user study participants in mid 2024.
+> This version is deployed to [https://v2.hkviz.org](https://v2.hkviz.org).
+> The current version of the website is deployed to [https://www.hkviz.org](https://www.hkviz.org) and is maintained
+> in the [main branch](https://github.com/hkviz/hkviz-web).
+
 A site for visualizing player-behavior for [Hollow Knight](https://www.hollowknight.com), like seeing the path one has taken in playthrough, to which boss one had the most difficulties, where one has spent the most time, and more.
 
 The mod for recording player behavior is contained in the [hkviz-mod repository](https://github.com/hkviz/hkviz-mod).
