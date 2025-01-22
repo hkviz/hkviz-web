@@ -14,7 +14,6 @@ export async function apiGet<TResult>(
             'x-vercel-protection-bypass': env.API_VERCEL_AUTOMATION_BYPASS_SECRET,
             ...(init?.headers ?? {}),
         },
-        credentials: 'include',
     });
 
     const json = await response.json();

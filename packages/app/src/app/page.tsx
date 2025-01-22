@@ -37,34 +37,31 @@ export default function Home() {
                 <Card className="max-w-[76ch]">
                     <CardHeader>
                         <CardTitle className="font-serif text-3xl font-semibold">
-                            You are using a old version of <HKVizText />
+                            You are using an older version of <HKVizText />
                         </CardTitle>
                         <CardDescription className="text-pretty pt-4">
-                            The visualizations of this version were presented to our user study participants. If you are
-                            looking for the newest version visit{' '}
+                            The visualizations here were shown to our study participants. For the latest version, visit{' '}
                             <a href={hkVizUrl()} className="underline">
                                 www.hkviz.org
                             </a>
+                            . Features requiring authorization have been removed, but the visualizations remain
+                            unchanged.
                         </CardDescription>
-
                         <CardDescription className="text-pretty pt-4">
-                            From the original version, all features that require authorization have been removed.
-                            However, the visualizations the participants explored have not been changed.
-                        </CardDescription>
-
-                        <CardDescription className="text-pretty pt-4">
-                            To view a particular gameplay, the easiest way is to open it in the{' '}
+                            To view a specific gameplay, open it in the{' '}
                             <a href={hkVizUrl()} className="underline">
-                                current <HKVizText /> version
-                            </a>{' '}
-                            and to replace <code className="text-green-800 dark:text-green-400">www.hkviz.org</code>{' '}
-                            with <code className="text-green-800 dark:text-green-400">v2.hkviz.org</code> in the url. So
-                            you full url should be something like{' '}
+                                current <HKVizText /> version{' '}
+                            </a>
+                            , then change <code className="text-green-800 dark:text-green-400">www.hkviz.org</code> to{' '}
+                            <code className="text-green-800 dark:text-green-400">v2.hkviz.org</code> in the URL, e.g.,{' '}
                             <code className="text-green-800 dark:text-green-400">
                                 https://v2.hkviz.org/run/{'<'}id{'>'}
                             </code>
-                            . This version of <HKVizText /> does not support viewing private gameplays, make sure they
-                            are public or unlisted first.
+                            .
+                        </CardDescription>
+                        <CardDescription className="text-pretty pt-4">
+                            Note: This version does not support private gameplays — make sure they are public or
+                            unlisted.
                         </CardDescription>
                     </CardHeader>
                 </Card>
