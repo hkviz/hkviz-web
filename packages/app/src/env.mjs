@@ -10,7 +10,7 @@ export const env = createEnv({
         NODE_ENV: z.enum(['development', 'test', 'production']).default('development'),
         API_URL: z.string(),
         API_URL_KEY: z.string(),
-        API_URL_SUFFIX: z.string().default(''),
+        API_VERCEL_AUTOMATION_BYPASS_SECRET: z.string(),
     },
 
     /**
@@ -30,7 +30,7 @@ export const env = createEnv({
         NODE_ENV: process.env.NODE_ENV,
         API_URL: process.env.API_URL,
         API_URL_KEY: process.env.API_URL_KEY,
-        API_URL_SUFFIX: process.env.API_URL_SUFFIX,
+        API_VERCEL_AUTOMATION_BYPASS_SECRET: process.env.API_VERCEL_AUTOMATION_BYPASS_SECRET,
     },
     /**
      * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
