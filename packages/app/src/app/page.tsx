@@ -39,32 +39,32 @@ export default function Home() {
                         <CardTitle className="font-serif text-3xl font-semibold">
                             You are using a old version of <HKVizText />
                         </CardTitle>
-                        <CardDescription>
-                            <p className="text-pretty pt-4">
-                                The visualizations of this version were presented to our user study participants. If you
-                                are looking for the newest version visit{' '}
-                                <a href={hkVizUrl()} className="underline">
-                                    www.hkviz.org
-                                </a>
-                            </p>
-                            <p className="text-pretty pt-4">
-                                From the original version, all features that require authorization have been removed.
-                                However, the visualizations the participants explored have not been changed.
-                            </p>
-                            <p className="text-pretty pt-4">
-                                To view a particular gameplay, the easiest way is to open it in the{' '}
-                                <a href={hkVizUrl()} className="underline">
-                                    current <HKVizText /> version
-                                </a>{' '}
-                                and to replace <code className="text-green-800 dark:text-green-400">www.hkviz.org</code>{' '}
-                                with <code className="text-green-800 dark:text-green-400">v2.hkviz.org</code> in the
-                                url. So you full url should be something like{' '}
-                                <code className="text-green-800 dark:text-green-400">
-                                    https://v2.hkviz.org/run/{'<'}id{'>'}
-                                </code>
-                                . This version of <HKVizText /> does not support viewing private gameplays, make sure
-                                they are public or unlisted first.
-                            </p>
+                        <CardDescription className="text-pretty pt-4">
+                            The visualizations of this version were presented to our user study participants. If you are
+                            looking for the newest version visit{' '}
+                            <a href={hkVizUrl()} className="underline">
+                                www.hkviz.org
+                            </a>
+                        </CardDescription>
+
+                        <CardDescription className="text-pretty pt-4">
+                            From the original version, all features that require authorization have been removed.
+                            However, the visualizations the participants explored have not been changed.
+                        </CardDescription>
+
+                        <CardDescription className="text-pretty pt-4">
+                            To view a particular gameplay, the easiest way is to open it in the{' '}
+                            <a href={hkVizUrl()} className="underline">
+                                current <HKVizText /> version
+                            </a>{' '}
+                            and to replace <code className="text-green-800 dark:text-green-400">www.hkviz.org</code>{' '}
+                            with <code className="text-green-800 dark:text-green-400">v2.hkviz.org</code> in the url. So
+                            you full url should be something like{' '}
+                            <code className="text-green-800 dark:text-green-400">
+                                https://v2.hkviz.org/run/{'<'}id{'>'}
+                            </code>
+                            . This version of <HKVizText /> does not support viewing private gameplays, make sure they
+                            are public or unlisted first.
                         </CardDescription>
                     </CardHeader>
                 </Card>
