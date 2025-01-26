@@ -1,7 +1,7 @@
 import { For, createMemo, createUniqueId } from 'solid-js';
 import { type RoomInfo } from '../../parser';
 import { hkMapRoomRectClass, useRoomColoringStore, useRoomDisplayStore, useThemeStore } from '../store';
-import { mapSpriteSheetMeta } from '../spritesheets';
+import { useSpriteSheetStore } from '../spritesheets/spritesheet-store';
 
 function HkMapRoom(props: {
 	room: RoomInfo;
@@ -15,6 +15,8 @@ function HkMapRoom(props: {
 	const roomDisplayStore = useRoomDisplayStore();
 	const themeStore = useThemeStore();
 	const roomColoringStore = useRoomColoringStore();
+	const spriteSheetStore = useSpriteSheetStore();
+	const mapSheetData = spriteSheetStore.mapSheetData;
 
 	const states = createMemo(() => roomDisplayStore.statesByGameObjectName.get(props.room.gameObjectName)!);
 
@@ -28,91 +30,23 @@ function HkMapRoom(props: {
 				<For each={props.room.sprites}>
 					{(sprite) => {
 						const imgPath = sprite.nameWithoutSubSprites ?? sprite.name;
-						const sheetTileMeta = mapSpriteSheetMeta.frames[imgPath];
-						if (sheetTileMeta == null) return null;
-
-						const clipPathId = 'clipPath_' + imgPath.replace('/', '_');
-						const symbolId = 'symbol_' + imgPath.replace('/', '_');
+						const href = () => mapSheetData()?.[imgPath];
 
 						return (
-							<>
-								<defs>
-									{/* <clipPath id={clipPathId}>
-										<rect
-											x={sheetTileMeta.frame.x}
-											y={sheetTileMeta.frame.y}
-											width={sheetTileMeta.frame.w}
-											height={sheetTileMeta.frame.h}
-										/>
-									</clipPath> */}
-									<symbol
-										id={symbolId}
-										viewBox={`${sheetTileMeta.frame.x} ${sheetTileMeta.frame.y} ${sheetTileMeta.frame.w} ${sheetTileMeta.frame.h}`}
-									>
-										<image
-											href="/assets/map.webp"
-											width={mapSpriteSheetMeta.meta.size.w}
-											height={mapSpriteSheetMeta.meta.size.h}
-										/>
-									</symbol>
-								</defs>
-								{/* <use
-									data-variant={sprite.variant}
-									// preserveAspectRatio="none"
-									x={sprite.scaledPosition.min.x}
-									y={sprite.scaledPosition.min.y}
-									width={sprite.scaledPosition.size.x}
-									height={sprite.scaledPosition.size.y}
-									href="#map-sheet"
-									clip-path={`url(#${clipPathId})`}
-									style={{
-										transition: 'opacity 0.1s ease 0s',
-										opacity: states().variant() === sprite.variant ? '100%' : '0%',
-									}}
-								/> */}
-								<use
-									href={`#${symbolId}`}
-									data-variant={sprite.variant}
-									// preserveAspectRatio="none"
-									x={sprite.scaledPosition.min.x}
-									y={sprite.scaledPosition.min.y}
-									width={sprite.scaledPosition.size.x}
-									height={sprite.scaledPosition.size.y}
-									clip-path={`url(#${clipPathId})`}
-									style={{
-										transition: 'opacity 0.1s ease 0s',
-										opacity: states().variant() === sprite.variant ? '100%' : '0%',
-									}}
-								/>
-
-								{/* <image
+							<image
 								data-variant={sprite.variant}
 								preserveAspectRatio="none"
 								x={sprite.scaledPosition.min.x}
 								y={sprite.scaledPosition.min.y}
 								width={sprite.scaledPosition.size.x}
 								height={sprite.scaledPosition.size.y}
-								href={'/ingame-map/' + (sprite.nameWithoutSubSprites ?? sprite.name) + '.png'}
+								// href={'/ingame-map/' + (sprite.nameWithoutSubSprites ?? sprite.name) + '.png'}
+								href={href()}
 								style={{
 									transition: 'opacity 0.1s ease 0s',
 									opacity: states().variant() === sprite.variant ? '100%' : '0%',
 								}}
-							/> */}
-								{/* <image
-									data-variant={sprite.variant}
-									clip-path={`url(#${clipPathId})`}
-									preserveAspectRatio="none"
-									x={sprite.scaledPosition.min.x}
-									y={sprite.scaledPosition.min.y}
-									width={sprite.scaledPosition.size.x}
-									height={sprite.scaledPosition.size.y}
-									href="/assets/map.webp"
-									style={{
-										transition: 'opacity 0.1s ease 0s',
-										opacity: states().variant() === sprite.variant ? '100%' : '0%',
-									}}
-								/> */}
-							</>
+							/>
 						);
 					}}
 				</For>
@@ -181,14 +115,6 @@ export interface HkMapRoomsProps {
 export function HkMapRooms(props: HkMapRoomsProps) {
 	return (
 		<g>
-			<defs>
-				<image
-					id="map-sheet"
-					href="/assets/map.webp"
-					width={mapSpriteSheetMeta.meta.size.w}
-					height={mapSpriteSheetMeta.meta.size.h}
-				/>
-			</defs>
 			<For each={props.rooms}>
 				{(room) => (
 					<HkMapRoom

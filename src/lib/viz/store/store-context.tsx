@@ -14,15 +14,19 @@ import { createMapZoomStore, MapZoomStoreContext } from './map-zoom-store';
 import { createHoverMsStore, HoverMsStoreContext } from './hover-ms-store';
 import { createGameplayStore, GameplayStoreContext } from './gameplay-store';
 import { createSplitsStore, SplitsStoreContext } from './splits-store';
+import { createSpriteSheetStore, SpriteStoreContext } from '../spritesheets/spritesheet-store';
 
 export function GlobalStoresProvider(props: { children: JSXElement }) {
 	const themeStore = createThemeStore();
 	const uiStore = createUiStore();
+	const spriteSheetStore = createSpriteSheetStore();
 
 	return (
-		<UiStoreContext.Provider value={uiStore}>
-			<ThemeStoreContext.Provider value={themeStore}>{props.children}</ThemeStoreContext.Provider>
-		</UiStoreContext.Provider>
+		<SpriteStoreContext.Provider value={spriteSheetStore}>
+			<UiStoreContext.Provider value={uiStore}>
+				<ThemeStoreContext.Provider value={themeStore}>{props.children}</ThemeStoreContext.Provider>
+			</UiStoreContext.Provider>
+		</SpriteStoreContext.Provider>
 	);
 }
 

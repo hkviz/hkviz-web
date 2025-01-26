@@ -1,13 +1,14 @@
 // vite.config.mts
 import { AssetPack, AssetPackConfig } from '@assetpack/core';
 import { compress, CompressOptions } from '@assetpack/core/image';
+import { json } from '@assetpack/core/json';
 import { texturePacker, texturePackerCompress } from '@assetpack/core/texture-packer';
 import { type Plugin, type ResolvedConfig } from 'vite';
 
 const compressionOptions: CompressOptions = {
 	jpg: false,
-	png: { quality: 80 },
-	webp: { quality: 70, alphaQuality: 70 },
+	png: { quality: 75 },
+	webp: { quality: 75, alphaQuality: 75 },
 	avif: false,
 	bc7: false,
 	astc: false,
@@ -43,6 +44,7 @@ export function assetpackPlugin(): Plugin {
 			}),
 			compress(compressionOptions),
 			texturePackerCompress(compressionOptions),
+			json(),
 		],
 		assetSettings: [
 			{

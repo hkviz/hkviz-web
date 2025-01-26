@@ -11,7 +11,7 @@ import { imagetools } from 'vite-imagetools';
 import { visit } from 'unist-util-visit';
 import type { Node } from 'unist';
 import devtools from 'solid-devtools/vite';
-import { assetpackPlugin } from './spritesheet-plugin';
+import { assetpackPlugin } from './assetpack-plugin';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore

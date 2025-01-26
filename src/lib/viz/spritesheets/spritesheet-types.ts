@@ -33,6 +33,11 @@ export interface SpriteSheetMeta {
 		related_multi_packs: unknown[];
 	};
 }
-import mapJson from '../../../public/assets/map.png.json';
 
-export const mapSpriteSheetMeta = mapJson as SpriteSheetMeta;
+export interface SpriteSheetExtractWorkerMessage {
+	spritesheetUrl: string;
+	metadataUrl: string;
+}
+
+export type SpriteSheetExtractWorkerResponse = Record<string, Blob>;
+export type SpriteSheetExtracted = Record<string, string>;
