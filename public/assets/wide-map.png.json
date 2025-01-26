@@ -1,0 +1,316 @@
+{
+  "frames": {
+    "wide_map__0013_queen_garden": {
+      "frame": {
+        "x": 2,
+        "y": 2,
+        "w": 285,
+        "h": 166
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 285,
+        "h": 166
+      },
+      "sourceSize": {
+        "w": 285,
+        "h": 166
+      }
+    },
+    "wide_map__0012_outskirts": {
+      "frame": {
+        "x": 2,
+        "y": 170,
+        "w": 385,
+        "h": 396
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 385,
+        "h": 396
+      },
+      "sourceSize": {
+        "w": 385,
+        "h": 396
+      }
+    },
+    "wide_map__0011_palace_grounds": {
+      "frame": {
+        "x": 389,
+        "y": 2,
+        "w": 475,
+        "h": 147
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 475,
+        "h": 147
+      },
+      "sourceSize": {
+        "w": 475,
+        "h": 147
+      }
+    },
+    "wide_map__0010_cliffs": {
+      "frame": {
+        "x": 389,
+        "y": 151,
+        "w": 254,
+        "h": 182
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 254,
+        "h": 182
+      },
+      "sourceSize": {
+        "w": 254,
+        "h": 182
+      }
+    },
+    "wide_map__0009_city": {
+      "frame": {
+        "x": 389,
+        "y": 335,
+        "w": 466,
+        "h": 228
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 466,
+        "h": 228
+      },
+      "sourceSize": {
+        "w": 466,
+        "h": 228
+      }
+    },
+    "wide_map__0008_resting_grounds": {
+      "frame": {
+        "x": 2,
+        "y": 568,
+        "w": 350,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 350,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 350,
+        "h": 128
+      }
+    },
+    "wide_map__0007_waterways": {
+      "frame": {
+        "x": 2,
+        "y": 698,
+        "w": 474,
+        "h": 151
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 474,
+        "h": 151
+      },
+      "sourceSize": {
+        "w": 474,
+        "h": 151
+      }
+    },
+    "wide_map__0006_deepnest": {
+      "frame": {
+        "x": 2,
+        "y": 851,
+        "w": 515,
+        "h": 232
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 515,
+        "h": 232
+      },
+      "sourceSize": {
+        "w": 515,
+        "h": 232
+      }
+    },
+    "wide_map__0005_fungal-wastes": {
+      "frame": {
+        "x": 519,
+        "y": 565,
+        "w": 272,
+        "h": 296
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 272,
+        "h": 296
+      },
+      "sourceSize": {
+        "w": 272,
+        "h": 296
+      }
+    },
+    "wide_map__0004_fog-canyon": {
+      "frame": {
+        "x": 519,
+        "y": 863,
+        "w": 264,
+        "h": 139
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 264,
+        "h": 139
+      },
+      "sourceSize": {
+        "w": 264,
+        "h": 139
+      }
+    },
+    "wide_map__0003_green-path": {
+      "frame": {
+        "x": 866,
+        "y": 2,
+        "w": 415,
+        "h": 155
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 415,
+        "h": 155
+      },
+      "sourceSize": {
+        "w": 415,
+        "h": 155
+      }
+    },
+    "wide_map__0002_mines": {
+      "frame": {
+        "x": 857,
+        "y": 159,
+        "w": 324,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 324,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 324,
+        "h": 270
+      }
+    },
+    "wide_map__0001_town": {
+      "frame": {
+        "x": 785,
+        "y": 863,
+        "w": 280,
+        "h": 103
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 280,
+        "h": 103
+      },
+      "sourceSize": {
+        "w": 280,
+        "h": 103
+      }
+    },
+    "wide_map__0000_crossroads": {
+      "frame": {
+        "x": 857,
+        "y": 431,
+        "w": 309,
+        "h": 125
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 309,
+        "h": 125
+      },
+      "sourceSize": {
+        "w": 309,
+        "h": 125
+      }
+    },
+    "wide_map_hive": {
+      "frame": {
+        "x": 645,
+        "y": 151,
+        "w": 187,
+        "h": 117
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 187,
+        "h": 117
+      },
+      "sourceSize": {
+        "w": 187,
+        "h": 117
+      }
+    }
+  },
+  "meta": {
+    "app": "http://github.com/pixijs/assetpack",
+    "version": "1.0",
+    "image": "wide-map.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1283,
+      "h": 1085
+    },
+    "scale": 1,
+    "related_multi_packs": []
+  }
+}
