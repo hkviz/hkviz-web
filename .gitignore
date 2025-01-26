@@ -28,3 +28,6 @@ gitignore
 .DS_Store
 Thumbs.db
 .assetpack
+
+# Generated via assetpack build
+public/assets

@@ -7,8 +7,8 @@ import { type Plugin, type ResolvedConfig } from 'vite';
 
 const compressionOptions: CompressOptions = {
 	jpg: false,
-	png: { quality: 75 },
-	webp: { quality: 75, alphaQuality: 75 },
+	png: { quality: 80 },
+	webp: { quality: 80, alphaQuality: 80 },
 	avif: false,
 	bc7: false,
 	astc: false,
