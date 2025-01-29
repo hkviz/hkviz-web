@@ -1,7 +1,12 @@
 import { heroStateFields, heroStatesSkipParsing } from '../hero-state';
 import { Vector2 } from '../hk-types';
 import { parsePlayerDataFieldValue, playerDataFields } from '../player-data';
-import { type RecordingFileVersion, isKnownRecordingFileVersion, isVersion0xx } from '../recording-file-version';
+import {
+	type RecordingFileVersion,
+	isKnownRecordingFileVersion,
+	isVersion0xx,
+	newestRecordingFileVersion,
+} from '../recording-file-version';
 import { raise, typeCheckNever } from '../util';
 import {
 	EVENT_PREFIXES,
@@ -234,18 +239,22 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 				case EVENT_PREFIXES.RECORDING_FILE_VERSION: {
 					const version = args[0]!;
 
-					if (!isKnownRecordingFileVersion(version)) {
-						throw new Error(`Unknown recording file version ${version}`);
+					if (isKnownRecordingFileVersion(version)) {
+						currentRecordingFileVersion = version;
+					} else {
+						console.error(
+							`Unknown recording file version ${version} falling back to newest known version ${newestRecordingFileVersion}`,
+						);
+						currentRecordingFileVersion = newestRecordingFileVersion;
 					}
-					currentRecordingFileVersion = version;
-					// console.log('changed version', currentRecordingFileVersion);
 
 					events.push(
 						new RecordingFileVersionEvent({
 							timestamp,
-							version: version as RecordingFileVersion,
+							version: currentRecordingFileVersion as RecordingFileVersion,
 						}),
 					);
+
 					break;
 				}
 				case EVENT_PREFIXES.RECORDING_ID: {

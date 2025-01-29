@@ -53,6 +53,8 @@ export const recordingFileVersions = [
 	'0.0.0',
 ] as const;
 
+export const newestRecordingFileVersion: RecordingFileVersion = recordingFileVersions[0];
+
 export type RecordingFileVersion = (typeof recordingFileVersions)[number];
 export type ModVersion = `${RecordingFileVersion}.0` | '1.2.0.0' | '1.3.0.0';
 
