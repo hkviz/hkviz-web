@@ -271,7 +271,7 @@ export const RunCard: Component<{
 	// set visibility
 	const [visibility, setVisibility] = createMutableMemo<VisibilityCode>(() => props.run.visibility);
 	const visibilityAction = useAction(runSetVisibilityAction);
-	// const visibilityActionSubmission = useSubmission(runSetVisibilityAction, ([input]) => input.id === props.run.id);
+	const visibilityActionSubmission = useSubmission(runSetVisibilityAction, ([input]) => input.id === props.run.id);
 
 	createEffect(() => {
 		setVisibility(props.run.visibility);
@@ -331,8 +331,12 @@ export const RunCard: Component<{
 						/>
 						<Show when={props.isOwnRun}>
 							<DropdownMenu>
-								<DropdownMenuTrigger as={Button<'button'>} class="inline-flex h-auto p-0">
-									<Badge class={'relative z-[8] overflow-hidden'} variant="secondary">
+								<DropdownMenuTrigger
+									as={Button<'button'>}
+									class="z-[8] inline-flex h-auto p-0 disabled:z-[8]"
+									disabled={visibilityActionSubmission.pending}
+								>
+									<Badge class={'relative z-[8] overflow-hidden disabled:z-[8]'} variant="secondary">
 										<Dynamic component={visibilityIcon()} class="h-4 w-4" />
 										<ChevronDown class="-mr-1 ml-1 h-3 w-3" />
 									</Badge>

@@ -7,6 +7,7 @@ import { GameplayDashboard, createRunFileLoader } from '~/lib/viz';
 import { RunStoresProvider } from '~/lib/viz/store/store-context';
 import { getRun } from '~/server/run/run-get';
 import { getRunPageTitle } from './_metadata';
+import { useUser } from '~/lib/auth/client';
 
 // TODO
 // export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -16,6 +17,7 @@ import { getRunPageTitle } from './_metadata';
 
 function SingleRunLoadingWrapper(props: { id: string }) {
 	const runData = createAsync(() => getRun(props.id));
+	const user = useUser();
 
 	const loader = createMemo(() => {
 		const run = runData();
@@ -34,7 +36,13 @@ function SingleRunLoadingWrapper(props: { id: string }) {
 								startDate={runData().startedAt}
 								fileInfos={runData().files}
 								runFileLoader={loader()}
-								gameplayCard={<RunCard run={runData()} showUser={true} />}
+								gameplayCard={
+									<RunCard
+										run={runData()}
+										showUser={true}
+										isOwnRun={user()?.id === runData().user.id}
+									/>
+								}
 							/>
 						</>
 					)}

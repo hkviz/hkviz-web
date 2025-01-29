@@ -1,4 +1,4 @@
-import { action } from '@solidjs/router';
+import { action, json } from '@solidjs/router';
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
 import { getUserOrThrow } from '~/lib/auth/shared';
@@ -27,6 +27,8 @@ export async function runSetTitle(unsaveInput: RunSetTitle) {
 	if (result.rowsAffected !== 1) {
 		throw new Error('Run not found');
 	}
+
+	return json({}, { revalidate: 'nothing' });
 }
 
 export const runSetTitleAction = action(runSetTitle, 'run-set-title');
