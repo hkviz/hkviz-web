@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
 import { and, eq, inArray } from 'drizzle-orm';
-import { type MySqlInsertValue } from 'drizzle-orm/mysql-core';
+import { type SQLiteInsertValue } from 'drizzle-orm/sqlite-core';
 import { type DB } from '~/server/db';
 import { runInteraction, runs } from '~/server/db/schema';
 
@@ -56,7 +56,7 @@ export async function runInteractionUncombine(db: DB, runId: string) {
 		return;
 	}
 
-	const inserts: MySqlInsertValue<typeof runInteraction>[] = [];
+	const inserts: SQLiteInsertValue<typeof runInteraction>[] = [];
 
 	const likesPerRunId = new Map<string, number>();
 

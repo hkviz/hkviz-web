@@ -1,5 +1,5 @@
 import { eq, inArray, or, sql } from 'drizzle-orm';
-import { type MySqlUpdateSetSource } from 'drizzle-orm/mysql-core';
+import { type SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core';
 import * as v from 'valibot';
 import { type VisibilityCode } from '~/lib/types/visibility';
 import { raise } from '~/lib/parser';
@@ -45,7 +45,7 @@ export const runCombine = action(async (unsafeInput: RunCombineInput) => {
 		const runIdsWithoutChosen = input.runIds.filter((it) => it !== chosenId);
 
 		// if a tag exists for any of the combined runs it will be added to the combined run
-		const runTagUpdate: MySqlUpdateSetSource<typeof runs> = {};
+		const runTagUpdate: SQLiteUpdateSetSource<typeof runs> = {};
 		for (const run of foundRuns) {
 			for (const tag of Object.keys(runTagFieldsSelect) as (keyof typeof runTagFieldsSelect)[]) {
 				if (run[tag]) {

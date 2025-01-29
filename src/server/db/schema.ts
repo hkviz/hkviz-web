@@ -1,19 +1,13 @@
 import { relations, sql, type HasDefault, type NotNull } from 'drizzle-orm';
 import {
-	boolean,
-	double,
 	index,
 	int,
-	json,
-	mysqlEnum,
-	mysqlTableCreator,
 	primaryKey,
-	serial,
+	real,
+	SQLiteBooleanBuilderInitial,
+	sqliteTableCreator,
 	text,
-	timestamp,
-	varchar,
-	type MySqlBooleanBuilderInitial,
-} from 'drizzle-orm/mysql-core';
+} from 'drizzle-orm/sqlite-core';
 import { AccountType } from '~/lib/auth/auth-options';
 import { mapZoneSchema } from '~/lib/parser';
 import { ageRangeCodes } from '~/lib/types/age-range';
@@ -25,9 +19,35 @@ import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { runInteractionTypes } from '~/lib/types/run-interaction';
 import { tags, type TagCode } from '~/lib/types/tags';
 
+// ---- CUSTOM TYPES ----
+// uuid
 const UUID_LENGTH = 36;
-function varcharUuid(name: string) {
-	return varchar(name, { length: UUID_LENGTH });
+function uuid(name: string) {
+	return text(name, { length: UUID_LENGTH });
+}
+// boolean
+function boolean(name: string) {
+	return int(name, { mode: 'boolean' });
+}
+// timestamp
+function timestamp(name: string) {
+	return int(name, { mode: 'timestamp' });
+}
+function createdAt(name: string = 'created_at') {
+	return timestamp(name)
+		.default(sql`(unixepoch())` as any)
+		.notNull();
+}
+function updatedAt(name: string = 'updated_at') {
+	return int(name, { mode: 'timestamp' }).$onUpdate(() => new Date());
+}
+// enum
+function textEnum<const TEnum extends readonly [string, ...string[]]>(name: string, values: TEnum) {
+	return text(name, { enum: values });
+}
+// auto increment
+function intSerialPrimaryKey(name: string) {
+	return int(name, { mode: 'number' }).primaryKey({ autoIncrement: true });
 }
 
 /**
@@ -36,30 +56,24 @@ function varcharUuid(name: string) {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const table = mysqlTableCreator((name) => `hkviz_${name}`);
+export const table = sqliteTableCreator((name) => `hkviz_${name}`);
 
 export const users = table(
 	'user',
 	{
-		id: varchar('id', { length: 255 }).notNull().primaryKey(),
-		// intentionally optional. Since study participants don't need a user account.
-		participantId: varcharUuid('participant_id'),
-		name: varchar('name', { length: 255 }),
-		previousName: varchar('previous_name', { length: 255 }),
+		id: text('id', { length: 255 }).notNull().primaryKey(),
+		participantId: uuid('participant_id'),
+		name: text('name', { length: 256 }),
+		previousName: text('previous_name', { length: 255 }),
 		isResearcher: boolean('is_researcher').notNull().default(false),
-		email: varchar('email', { length: 255 }).notNull(),
-		emailVerified: timestamp('emailVerified', {
-			mode: 'date',
-			fsp: 3,
-		}).default(sql`CURRENT_TIMESTAMP(3)`),
-		image: varchar('image', { length: 255 }),
-		createdAt: timestamp('created_at')
-			.default(sql`CURRENT_TIMESTAMP`)
-			.notNull(),
-		updatedAt: timestamp('updatedAt').onUpdateNow(),
+		email: text('email', { length: 255 }).notNull(),
+		emailVerified: timestamp('email_verified').default(sql`(unixepoch())` as any),
+		image: text('image', { length: 255 }),
+		createdAt: createdAt(),
+		updatedAt: updatedAt(),
 	},
 	(user) => ({
-		emailIdx: index('email_idx').on(user.email),
+		emailIdx: index('users_email_idx').on(user.email),
 	}),
 );
 
@@ -78,25 +92,23 @@ export const usersRelations = relations(users, ({ many, one }) => ({
 export const accounts = table(
 	'account',
 	{
-		userId: varchar('userId', { length: 255 }).notNull(),
-		type: varchar('type', { length: 255 }).$type<AccountType>().notNull(),
-		provider: varchar('provider', { length: 255 }).notNull(),
-		providerAccountId: varchar('providerAccountId', { length: 255 }).notNull(),
+		userId: text('user_id', { length: 255 }).notNull(),
+		type: text('type', { length: 255 }).$type<AccountType>().notNull(),
+		provider: text('provider', { length: 255 }).notNull(),
+		providerAccountId: text('provider_account_id', { length: 255 }).notNull(),
 		refresh_token: text('refresh_token'),
 		access_token: text('access_token'),
 		expires_at: int('expires_at'),
-		token_type: varchar('token_type', { length: 255 }),
-		scope: varchar('scope', { length: 255 }),
+		token_type: text('token_type', { length: 255 }),
+		scope: text('scope', { length: 255 }),
 		id_token: text('id_token'),
-		session_state: varchar('session_state', { length: 255 }),
-		createdAt: timestamp('created_at')
-			.default(sql`CURRENT_TIMESTAMP`)
-			.notNull(),
-		updatedAt: timestamp('updatedAt').onUpdateNow(),
+		session_state: text('session_state', { length: 255 }),
+		createdAt: createdAt(),
+		updatedAt: updatedAt(),
 	},
 	(account) => ({
 		compoundKey: primaryKey(account.provider, account.providerAccountId),
-		userIdIdx: index('userId_idx').on(account.userId),
+		userIdIdx: index('accounts_userId_idx').on(account.userId),
 	}),
 );
 
@@ -107,9 +119,9 @@ export const accountsRelations = relations(accounts, ({ one }) => ({
 export const sessions = table(
 	'session',
 	{
-		sessionToken: varchar('sessionToken', { length: 255 }).notNull().primaryKey(),
-		userId: varchar('userId', { length: 255 }).notNull(),
-		expires: timestamp('expires', { mode: 'date' }).notNull(),
+		sessionToken: text('session_token', { length: 255 }).notNull().primaryKey(),
+		userId: text('user_id', { length: 255 }).notNull(),
+		expires: timestamp('expires').notNull(),
 	},
 	(session) => ({
 		userIdIdx: index('userId_idx').on(session.userId),
@@ -123,9 +135,9 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
 export const verificationTokens = table(
 	'verificationToken',
 	{
-		identifier: varchar('identifier', { length: 255 }).notNull(),
-		token: varchar('token', { length: 255 }).notNull(),
-		expires: timestamp('expires', { mode: 'date' }).notNull(),
+		identifier: text('identifier', { length: 255 }).notNull(),
+		token: text('token', { length: 255 }).notNull(),
+		expires: timestamp('expires').notNull(),
 	},
 	(vt) => ({
 		compoundKey: primaryKey(vt.identifier, vt.token),
@@ -135,26 +147,26 @@ export const verificationTokens = table(
 const runTagColumns = Object.fromEntries(
 	tags.map((tag) => [`tag_${tag.code}`, boolean(`tag_${tag.code}`).notNull().default(false)]),
 ) as {
-	[Code in TagCode as `tag_${Code}`]: HasDefault<NotNull<MySqlBooleanBuilderInitial<`tag_${Code}`>>>;
+	[Code in TagCode as `tag_${Code}`]: HasDefault<NotNull<SQLiteBooleanBuilderInitial<`tag_${Code}`>>>;
 };
 
 // meta data, so it can easily be displayed in the UI without parsing recording files
 const runGameStateMetaColumns = {
-	hkVersion: varchar('hk_version', { length: 64 }),
-	playTime: double('play_time'),
+	hkVersion: text('hk_version', { length: 64 }),
+	playTime: real('play_time'),
 	maxHealth: int('max_health'),
 	mpReserveMax: int('mp_reserve_max'),
 	geo: int('geo'),
 	dreamOrbs: int('dream_orbs'),
 	permadeathMode: int('permadeath_mode'),
-	mapZone: mysqlEnum('map_zone', mapZoneSchema.options),
+	mapZone: textEnum('map_zone', mapZoneSchema.options),
 	killedHollowKnight: boolean('killed_hollow_knight'),
 	killedFinalBoss: boolean('killed_final_boss'),
 	killedVoidIdol: boolean('killed_void_idol'),
 	completionPercentage: int('completion_percentage'),
 	unlockedCompletionRate: boolean('unlocked_completion_rate'),
 	dreamNailUpgraded: boolean('dream_nail_upgraded'),
-	lastScene: varchar('last_scene', { length: 255 }),
+	lastScene: text('last_scene', { length: 255 }),
 
 	startedAt: timestamp('started_at'),
 	endedAt: timestamp('ended_at'),
@@ -166,26 +178,24 @@ export const runs = table(
 	'run',
 	{
 		// server generated. Used for urls
-		id: varchar('id', { length: 255 }).notNull().primaryKey(),
-		userId: varchar('user_id', { length: 255 }).notNull(),
-		title: varchar('title', { length: MAX_RUN_TITLE_LENGTH }),
+		id: text('id', { length: 255 }).notNull().primaryKey(),
+		userId: text('user_id', { length: 255 }).notNull(),
+		title: text('title', { length: MAX_RUN_TITLE_LENGTH }),
 		description: text('description'),
-		visibility: mysqlEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),
+		visibility: textEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),
 
-		combinedIntoRunId: varcharUuid('combined_into_run_id'),
+		combinedIntoRunId: uuid('combined_into_run_id'),
 		isCombinedRun: boolean('is_combined_run').notNull().default(false),
 
-		anonymAccessKey: varcharUuid('anonymAccessKey'),
-		anonymAccessTitle: varchar('anonymAccessTitle', {
+		anonymAccessKey: uuid('anonym_access_key'),
+		anonymAccessTitle: text('anonym_access_title', {
 			length: MAX_RUN_TITLE_LENGTH,
 		}),
-		anonymAccessGameplayCutOffAt: timestamp('anonymAccessGameplayCutOffAt'),
+		anonymAccessGameplayCutOffAt: timestamp('anonym_access_gameplay_cut_off_At'),
 		preventDeletion: boolean('prevent_deletion').notNull().default(false),
 
-		createdAt: timestamp('created_at')
-			.default(sql`CURRENT_TIMESTAMP`)
-			.notNull(),
-		updatedAt: timestamp('updatedAt').onUpdateNow(),
+		createdAt: createdAt(),
+		updatedAt: updatedAt(),
 
 		// generally when a run is deleted, it is actually deleted from the database.
 		// unless deleting a file from r2 failed, then it will be kept for manual cleanup.
@@ -203,9 +213,9 @@ export const runs = table(
 	},
 	(run) => ({
 		userIdVisibilityDeletedArchivedCombinedIntoRunIdIdx: index(
-			'userIdVisibilityDeletedArchivedCombinedIntoRunId_idx',
+			'run_userIdVisibilityDeletedArchivedCombinedIntoRunId_idx',
 		).on(run.userId, run.visibility, run.deleted, run.archived, run.combinedIntoRunId),
-		visibilityDeletedArchivedCombinedIntoRunIdIdx: index('visibilityDeletedArchivedCombinedIntoRunId_idx').on(
+		visibilityDeletedArchivedCombinedIntoRunIdIdx: index('run_visibilityDeletedArchivedCombinedIntoRunId_idx').on(
 			run.visibility,
 			run.deleted,
 			run.archived,
@@ -227,10 +237,10 @@ export const runsRelations = relations(runs, ({ one, many }) => ({
 export const runLocalIds = table(
 	'run_local_id',
 	{
-		localId: varcharUuid('local_id').notNull(),
-		userId: varcharUuid('user_id').notNull(),
-		runId: varcharUuid('run_id').notNull(),
-		originalRunId: varcharUuid('original_run_id'),
+		localId: uuid('local_id').notNull(),
+		userId: uuid('user_id').notNull(),
+		runId: uuid('run_id').notNull(),
+		originalRunId: uuid('original_run_id'),
 	},
 	(runLocalId) => ({
 		compoundKey: primaryKey(runLocalId.userId, runLocalId.localId),
@@ -246,21 +256,19 @@ export const runFiles = table(
 	'runfile',
 	{
 		// this id is also used to find the file inside the r2 bucket
-		id: varcharUuid('id').notNull().primaryKey(),
-		runId: varcharUuid('run_id').notNull(),
-		localId: varcharUuid('local_id'),
+		id: uuid('id').notNull().primaryKey(),
+		runId: uuid('run_id').notNull(),
+		localId: uuid('local_id'),
 		partNumber: int('part_number').notNull(),
 		uploadFinished: boolean('upload_finished').notNull(),
-		createdAt: timestamp('created_at')
-			.default(sql`CURRENT_TIMESTAMP`)
-			.notNull(),
-		updatedAt: timestamp('updatedAt').onUpdateNow(),
+		createdAt: createdAt(),
+		updatedAt: updatedAt(),
 		version: int('version').notNull().default(0),
 		contentLength: int('content_length').notNull().default(0),
 		...runGameStateMetaColumns,
 	},
 	(runFile) => ({
-		runIdPartNumberIdx: index('runIdPartNumber_idx').on(runFile.runId, runFile.partNumber),
+		runIdPartNumberIdx: index('runFiles_runIdPartNumber_idx').on(runFile.runId, runFile.partNumber),
 	}),
 );
 
@@ -271,19 +279,21 @@ export const runFilesRelations = relations(runFiles, ({ one }) => ({
 export const runInteraction = table(
 	'runInteraction',
 	{
-		id: serial('id').primaryKey(),
-		runId: varcharUuid('run_id').notNull(),
+		id: intSerialPrimaryKey('id'),
+		runId: uuid('run_id').notNull(),
 
-		userId: varcharUuid('user_id').notNull(),
-		type: mysqlEnum('type', runInteractionTypes).notNull(),
-		createdAt: timestamp('created_at')
-			.default(sql`CURRENT_TIMESTAMP`)
-			.notNull(),
-		updatedAt: timestamp('updatedAt').onUpdateNow(),
-		originalRunIds: json('original_run_ids').$type<string[]>().notNull(),
+		userId: uuid('user_id').notNull(),
+		type: textEnum('type', runInteractionTypes).notNull(),
+		createdAt: createdAt(),
+		updatedAt: updatedAt(),
+		originalRunIds: text('original_run_ids', { mode: 'json' }).$type<string[]>().notNull(),
 	},
 	(runInteraction) => ({
-		runIdTypeUserIdIdx: index('runIdType_idx').on(runInteraction.runId, runInteraction.type, runInteraction.userId),
+		runIdTypeUserIdIdx: index('runInteraction_runIdType_idx').on(
+			runInteraction.runId,
+			runInteraction.type,
+			runInteraction.userId,
+		),
 	}),
 );
 
@@ -296,19 +306,17 @@ export const ingameAuth = table(
 	'ingameauth',
 	{
 		// server generated, to authenticate a user from the game. Does only permit uploads.
-		id: varchar('id', { length: 255 }).notNull().primaryKey(),
+		id: text('id', { length: 255 }).notNull().primaryKey(),
 		// just used for the login url, since the actual id should not be inside the browser history.
 		// this urlId is immediatly changed or deleted after the login url is visited, even before canceling or allowing.
-		urlId: varchar('url_id', { length: 255 }),
-		name: varchar('name', { length: 255 }).notNull(),
-		userId: varchar('user_id', { length: 255 }),
-		createdAt: timestamp('created_at')
-			.default(sql`CURRENT_TIMESTAMP`)
-			.notNull(),
-		updatedAt: timestamp('updatedAt').onUpdateNow(),
+		urlId: text('url_id', { length: 255 }),
+		name: text('name', { length: 255 }).notNull(),
+		userId: text('user_id', { length: 255 }),
+		createdAt: createdAt(),
+		updatedAt: updatedAt(),
 	},
 	(ingameAuth) => ({
-		urlIdIdx: index('urlId_idx').on(ingameAuth.urlId),
+		urlIdIdx: index('ingameAuth_urlId_idx').on(ingameAuth.urlId),
 	}),
 );
 
@@ -317,25 +325,21 @@ export const ingameAuthRelations = relations(ingameAuth, ({ one }) => ({
 }));
 
 export const accountDeletionRequest = table('accountDeletionRequest', {
-	id: varchar('id', { length: 255 }).notNull().primaryKey(),
-	userId: varchar('user_id', { length: 255 }).notNull(),
-	createdAt: timestamp('created_at')
-		.default(sql`CURRENT_TIMESTAMP`)
-		.notNull(),
-	updatedAt: timestamp('updatedAt').onUpdateNow(),
+	id: text('id', { length: 255 }).notNull().primaryKey(),
+	userId: text('user_id', { length: 255 }).notNull(),
+	createdAt: createdAt(),
+	updatedAt: updatedAt(),
 	formAccepted: boolean('form_accepted').notNull().default(false),
 });
 
 // data collection study:
 export const dataCollectionStudyParticipations = table('userDataCollectionResearchParticipation', {
-	userId: varchar('userId', { length: 255 }).notNull().primaryKey(),
-	excludedSinceU18: boolean('exludedSinceU18').notNull().default(false),
-	keepDataAfterStudyConducted: boolean('keepDataAfterStudyConducted').notNull(),
-	futureContactOk: boolean('futureContactOk').notNull(),
-	createdAt: timestamp('created_at')
-		.default(sql`CURRENT_TIMESTAMP`)
-		.notNull(),
-	updatedAt: timestamp('updatedAt').onUpdateNow(),
+	userId: text('user_id', { length: 255 }).notNull().primaryKey(),
+	excludedSinceU18: boolean('exluded_since_u18').notNull().default(false),
+	keepDataAfterStudyConducted: boolean('keep_data_after_study_conducted').notNull(),
+	futureContactOk: boolean('future_contact_ok').notNull(),
+	createdAt: createdAt(),
+	updatedAt: updatedAt(),
 });
 
 export const dataCollectionStudyParticipationRelations = relations(dataCollectionStudyParticipations, ({ one }) => ({
@@ -348,27 +352,25 @@ export const dataCollectionStudyParticipationRelations = relations(dataCollectio
 export const userDemographics = table(
 	'userDemographic',
 	{
-		id: serial('id').primaryKey(),
-		userId: varcharUuid('userId'),
-		participantId: varcharUuid('participant_id'),
-		ageRange: mysqlEnum('age_range', ageRangeCodes).notNull(),
-		country: mysqlEnum('country', countryCodes).notNull(),
+		id: intSerialPrimaryKey('id'),
+		userId: uuid('user_id'),
+		participantId: uuid('participant_id'),
+		ageRange: textEnum('age_range', ageRangeCodes).notNull(),
+		country: textEnum('country', countryCodes).notNull(),
 
 		genderWoman: boolean('gender_woman').notNull().default(false),
 		genderMan: boolean('gender_man').notNull().default(false),
 		genderNonBinary: boolean('gender_non_binary').notNull().default(false),
 		genderPreferNotToDisclose: boolean('gender_prefer_not_to_disclose').notNull().default(false),
 		genderPreferToSelfDescribe: boolean('gender_prefer_to_self_describe').notNull().default(false),
-		genderCustom: varchar('gender_custom', { length: 124 }),
+		genderCustom: text('gender_custom', { length: 124 }),
 
-		createdAt: timestamp('created_at')
-			.default(sql`CURRENT_TIMESTAMP`)
-			.notNull(),
-		updatedAt: timestamp('updatedAt').onUpdateNow(),
+		createdAt: createdAt(),
+		updatedAt: updatedAt(),
 	},
 	(userDemographic) => ({
-		userIdIdx: index('userId_idx').on(userDemographic.userId),
-		participantIdIdx: index('participantId_idx').on(userDemographic.participantId),
+		userIdIdx: index('userDemographics_userId_idx').on(userDemographic.userId),
+		participantIdIdx: index('userDemographics_participantId_idx').on(userDemographic.participantId),
 	}),
 );
 
@@ -386,26 +388,24 @@ export const userDemographicsRelations = relations(userDemographics, ({ one }) =
 export const hkExperience = table(
 	'hkExperience',
 	{
-		id: serial('id').primaryKey(),
-		userId: varcharUuid('userId'),
-		participantId: varcharUuid('participant_id'),
+		id: intSerialPrimaryKey('id'),
+		userId: uuid('user_id'),
+		participantId: uuid('participant_id'),
 
-		playingSince: mysqlEnum('playing_since', playingSinceCodes),
-		playingFrequency: mysqlEnum('playing_frequency', playingFrequencyCodes),
+		playingSince: textEnum('playing_since', playingSinceCodes),
+		playingFrequency: textEnum('playing_frequency', playingFrequencyCodes),
 		playedBefore: boolean('played_before').notNull(),
 		gotDreamnail: boolean('got_dreamnail').notNull(),
 		didEndboss: boolean('did_enboss').notNull(),
 		enteredWhitePalace: boolean('entered_white_palace').notNull(),
 		got112Percent: boolean('got_112_percent').notNull(),
 
-		createdAt: timestamp('created_at')
-			.default(sql`CURRENT_TIMESTAMP`)
-			.notNull(),
-		updatedAt: timestamp('updatedAt').onUpdateNow(),
+		createdAt: createdAt(),
+		updatedAt: updatedAt(),
 	},
 	(hkExperience) => ({
-		userIdIdx: index('userId_idx').on(hkExperience.userId),
-		participantIdIdx: index('participantId_idx').on(hkExperience.participantId),
+		userIdIdx: index('hkExperience_userId_idx').on(hkExperience.userId),
+		participantIdIdx: index('hkExperience_participantId_idx').on(hkExperience.participantId),
 	}),
 );
 
@@ -424,19 +424,17 @@ export const hkExperienceRelations = relations(hkExperience, ({ one }) => ({
  * The user account is only needed to use the mod and upload gameplays.
  */
 export const studyParticipant = table('studyParticipant', {
-	participantId: varcharUuid('participant_id').notNull().primaryKey(),
-	comment: varchar('comment', { length: 1024 }),
-	createdAt: timestamp('created_at')
-		.default(sql`CURRENT_TIMESTAMP`)
-		.notNull(),
-	updatedAt: timestamp('updatedAt').onUpdateNow(),
+	participantId: uuid('participant_id').notNull().primaryKey(),
+	comment: text('comment', { length: 1024 }),
+	createdAt: createdAt(),
+	updatedAt: updatedAt(),
 	skipLoginQuestion: boolean('skip_login_question').notNull().default(false),
 	userStudyFinished: boolean('user_study_finished').notNull().default(false),
-	resetId: varcharUuid('reset_id'),
-	callOption: mysqlEnum('contact_type', callOptionCodes),
-	callName: varchar('contact_name', { length: 256 }),
-	timeZone: varchar('time_zone', { length: 256 }),
-	locale: varchar('locale', { length: 256 }),
+	resetId: uuid('reset_id'),
+	callOption: textEnum('contact_type', callOptionCodes),
+	callName: text('contact_name', { length: 256 }),
+	timeZone: text('time_zone', { length: 256 }),
+	locale: text('locale', { length: 256 }),
 });
 export const studyParticipantRelations = relations(studyParticipant, ({ one }) => ({
 	user: one(users),
@@ -447,11 +445,9 @@ export const studyParticipantRelations = relations(studyParticipant, ({ one }) =
 }));
 
 export const userStudyInformedConsent = table('userStudyInformedConsent', {
-	participantId: varcharUuid('participant_id').notNull().primaryKey(),
-	createdAt: timestamp('created_at')
-		.default(sql`CURRENT_TIMESTAMP`)
-		.notNull(),
-	updatedAt: timestamp('updatedAt').onUpdateNow(),
+	participantId: uuid('participant_id').notNull().primaryKey(),
+	createdAt: createdAt(),
+	updatedAt: updatedAt(),
 });
 
 export const userStudyInformedConsentRelations = relations(userStudyInformedConsent, ({ one }) => ({
@@ -462,9 +458,9 @@ export const userStudyInformedConsentRelations = relations(userStudyInformedCons
 }));
 
 export const userStudyTimeSlot = table('userStudyTimeSlot', {
-	id: serial('id').primaryKey(),
+	id: intSerialPrimaryKey('id'),
 	startAt: timestamp('start_at').notNull(),
-	participantId: varcharUuid('participant_id'),
+	participantId: uuid('participant_id'),
 });
 
 export const userStudyTimeSlotRelations = relations(userStudyTimeSlot, ({ one }) => ({

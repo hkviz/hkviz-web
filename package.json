@@ -12,7 +12,11 @@
 		"typecheck:watch": "tsc --noEmit --watch",
 		"tsc:config": "tsc --showConfig",
 		"lint": "eslint .",
-		"lint:fix": "eslint . --fix"
+		"lint:fix": "eslint . --fix",
+		"db:generate": "drizzle-kit generate",
+		"db:migrate": "drizzle-kit migrate",
+		"db:push": "drizzle-kit push",
+		"db:studio": "drizzle-kit studio"
 	},
 	"dependencies": {
 		"@assetpack/core": "^1.3.0",
@@ -27,7 +31,7 @@
 		"@fontsource-variable/noto-sans": "^5.1.0",
 		"@fontsource/cinzel-decorative": "^5.1.0",
 		"@kobalte/core": "^0.13.7",
-		"@planetscale/database": "^1.19.0",
+		"@libsql/client": "^0.14.0",
 		"@solid-primitives/keyed": "^1.2.3",
 		"@solidjs/meta": "^0.29.4",
 		"@solidjs/router": "^0.15.0",
@@ -47,7 +51,8 @@
 		"d3": "^7.9.0",
 		"d3-brush": "^3.0.0",
 		"date-fns": "^4.1.0",
-		"drizzle-orm": "^0.36.3",
+		"drizzle-kit": "^0.30.3",
+		"drizzle-orm": "^0.39.0",
 		"fuse.js": "^7.0.0",
 		"lucide-solid": "^0.460.0",
 		"mailchecker": "^6.0.11",
