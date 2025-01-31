@@ -1,0 +1,409 @@
+import { HKVizText } from '../../../components/HKVizText';
+import { LayoutDashboard, Mouse, Palette, Pin, Spline, Tent } from 'lucide-solid';
+import { ExternalLinkMdx } from '../../../components/external-link';
+import { FloatClear } from '../../../components/float';
+import { MailLinkUnstyled } from '../../../components/mail-link';
+import { MdxInnerWrapper } from '../../../components/mdx-layout';
+import { SpoilerWarningEarlyGame } from '../_spoiler_warning';
+import { LinkableSpan } from './_analytics/_linkable_paragraph';
+import {
+	TimelineColorCodesTable,
+	SplitActionsTable,
+	TimeBasedChartActionsTable,
+	TimelineTable,
+} from './_analytics/_tables';
+import {
+	BuildingsColormapScreenshot,
+	ColorModeAreaScreenshot,
+	ColorModeAreaTableScreenshot,
+	ColorModeExpScreenshot,
+	ColorModeExpTableScreenshot,
+	ColorModeLinearScreenshot,
+	ColorModeLinearTableScreenshot,
+	ColosseumScreenshot,
+	CompletionChartScreenshot,
+	GeoChartScreenshot,
+	GodhomeScreenshot,
+	GrubsChartScreenshot,
+	HealthChartScreenshot,
+	OverviewScreenshot,
+	RoomAnalyticsScreenshot,
+	SoulChartScreenshot,
+	SplitsScreenshot,
+	SubroomsScreenshot,
+	TimelineScreenshot,
+	TracesAllScreenshot,
+	TracesAnimatedScreenshot,
+	TracesNoneScreenshot,
+} from './_analytics/_screenshots';
+import { SplitsList } from './_analytics/_splits-list';
+import { SpoilerWrapper } from './_analytics/_spoiler-wrapper';
+import { ReflowCell, ReflowCellHeader, ReflowRow } from './_analytics/_table-like';
+import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_analytics/_videos';
+import {
+	GeoChartDocIcon,
+	GeoChartDocVars,
+	CompletionChartDocIcon,
+	CompletionChartDocVars,
+	EssenceChartDocIcon,
+	EssenceChartDocVars,
+	GrubsChartDocIcon,
+	GrubsChartDocVars,
+	HealthChartDocIcon,
+	HealthChartDocVars,
+	SoulChartDocIcon,
+	SoulChartDocVars,
+} from './_analytics/_chart-docs.tsx';
+import { AggregationVariableDoc } from './_analytics/_aggregation-variable-doc';
+import { A } from '@solidjs/router';
+
+# How to analyze a gameplay with the <HKVizText /> visualizations
+
+<SpoilerWarningEarlyGame />
+
+Here you learn how to use the different parts of the <HKVizText /> gameplay analytics page.
+It is accessible by clicking on one of your gameplays on the <A href="/">start page</A> or by viewing a gameplay from the <A href="/run">public gameplays page</A>.
+
+If you want to learn how to record the analytics while playing {<ExternalLinkMdx href="https://hollowknight.com">Hollow Knight</ExternalLinkMdx>}
+checkout the <A href="/guide/install">mod install guide</A>
+
+## Overview
+
+<Mouse class="inline-block h-4 w-4" /> Click on the section you want to know more about:
+
+<OverviewScreenshot />
+
+## Contents
+
+## Map
+
+The map forms the center of the analytics page. It is very similar to the in-game map, but with some modifications.
+
+The map is able to display player movement as traces, show which rooms are visited and allows displaying other information by recoloring the map itself.
+
+### <Spline class="w-4 h-4 mr-2 inline-block"/>Player movement and traces
+
+<ReflowRow>
+    <ReflowCell>
+        <ReflowCellHeader>Animated</ReflowCellHeader>
+        <TracesAnimatedScreenshot />
+        Shows the last 4 minutes of player's movement as a trace. Positions further in the past are faded out.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>All</ReflowCellHeader>
+        <TracesAllScreenshot />
+        Shows the player's movement of the complete gameplay at once.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>Hidden</ReflowCellHeader>
+        <TracesNoneScreenshot />
+        Hides the trace. This can be useful, if you want to <a href="#map-coloring-by-variables" target="_self">look at a variable on the map</a>, without the trace covering it.
+    </ReflowCell>
+
+</ReflowRow>
+
+### <LayoutDashboard class="w-4 h-4 mr-2 inline-block"/>Room visibility
+
+The room visibility option within the map options controls which rooms are shown on the map.
+You can choose between three options:
+
+<ReflowRow>
+    <ReflowCell>
+        <ReflowCellHeader>Animated</ReflowCellHeader>
+        <RoomVisibilityAnimatedVideo />
+        Rooms appear once they are visited in the gameplay, based on the time selected in the <a href="#timeline" target="_self">timeline</a>. 
+        
+        Great to see the progression of the gameplay.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>Visited</ReflowCellHeader>
+        <RoomVisibilityVisitedVideo />
+        All rooms visited at any time in the gameplay are shown. Not impacted by the <a href="#timeline" target="_self">timeline</a>. 
+        
+        Useful to <a href="#map-coloring-by-variables" target="_self">analyze variables by recoloring the map</a>.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>All</ReflowCellHeader>
+        <RoomVisibilityAllVideo />
+        Even rooms not visitied in the gameplay at all are shown. 
+        
+        This can allow to find unvisited rooms, which have been missed in a gameplay.
+    </ReflowCell>
+
+</ReflowRow>
+
+### <Palette class="w-5 h-5 mr-2 inline-block"/>Map coloring by variables
+
+<RoomAnalyticsScreenshot />
+
+Ever wondered how to easily spot the most interesting or challenging parts of your game? Coloring the map based on different game stats can help!
+
+**How it works:**
+
+1.  **Select a room** by hovering over it on the map. The hovered room will be displayed in the room analytics. Showing stats for the selected routeModule.
+
+    Hint: your selected room is not only shown in the room analytics panel, but also highlighted in the <a href="#timeline" target="_self">timeline</a>.
+
+2.  {<LinkableSpan id="room-pin" initialScrollMargin={360}>
+
+    <b>Pin a room:</b> To stop the shown room from changing by hovering over them, you can pin it with the
+
+    {' '}
+
+    <Pin class="inline-block h-4 w-4" aria-label="Pin" />
+    -button in the room analytics panel or by clicking a room on the map. Rooms can also be pinned by clicking on the
+    color code at the bottom of the <a href="#timeline" target="_self">
+    	timeline
+    </a> or by double clicking on a <a href="#splits" target="_self">
+    	split
+    </a>
+    .
+
+    </LinkableSpan>}
+
+3.  **Select a variable for coloring**:
+    Click the <Palette class="inline-block h-4 w-4" aria-label="Color" />
+    -button in the room's info panel. This lets you pick which stat to use for coloring.
+
+4.  **Color scales**:
+    By clicking the <Palette class="inline-block h-4 w-4" aria-label="Color" />
+    -button a few times you can select a color scale.
+
+#### Color scales:
+
+<ReflowRow>
+    <ReflowCell>
+        <ReflowCellHeader>Linear color scale</ReflowCellHeader>
+        <ColorModeLinearTableScreenshot />
+        <ColorModeLinearScreenshot />
+        The first click on the <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button will color the map by the selected variable using a linear color scale.
+        This works best for variables like the first visiting time since the values are likely distributed relatively evenly.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>Exponential color scale</ReflowCellHeader>
+        <ColorModeExpTableScreenshot />
+        <ColorModeExpScreenshot />
+        A second click on the <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button will switch to an exponential color scale.
+
+        For many variables, there will be a small number of rooms with a high value and a large number of rooms with a low values.
+        Using an exponential color scale will make the differences in the low values more visible.
+        Especially useful for geo spent, since there are a small number of shops where a lot of geo can be spent.
+    </ReflowCell>
+    <ReflowCell>
+        <ReflowCellHeader>Area color</ReflowCellHeader>
+        <ColorModeAreaTableScreenshot />
+        <ColorModeAreaScreenshot />
+        Clicking the <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button a third time will switch back to color the map by the area the room is in, i.e. how the map is colored in the game.
+    </ReflowCell>
+
+</ReflowRow>
+
+Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button.
+
+#### Availible stats:
+
+<AggregationVariableDoc />
+
+### <Tent class="w-5 h-5 mr-2 inline-block" />Special rooms
+
+The map in <HKVizText /> has a few modifications compared to the in-game map, to allow to analyze the gameplay in more areas.
+Like added maps for Godhome, White Palace and Birthplace. Additionally a few other modifications have been made:
+
+#### Buildings
+
+<BuildingsColormapScreenshot />
+
+Some parts of the Hollow Knight world are not represented on the Map directly, but are just hinted at by a building or door.
+For <HKVizText /> these have been cut out from the game sprites, to allow seeing analytics for these buildings inidividually.
+
+In the game, the player location is not displayed when inside on of these buildings.
+In <HKVizText /> the player movement is displayed ontop of the buildings.
+
+#### Multi-room buildings
+
+<SubroomsScreenshot />
+
+Some buildings contain multiple rooms, on the map the analytics are displayed for all rooms inside the building together.
+(e.g. the number of deaths in the building is the sum over all rooms and the 'first visited at' is the earliest time any room of the building has been visited).
+
+By clicking on the building on the map, the analytics for each room inside can be displayed individually by using the buttons displayed for each room inside the building.
+
+<SpoilerWrapper title="Spoilers: show list of all multi-room buildings">
+	Other examples for multi-room buildings on the map are:
+	<li>
+		{
+			<ExternalLinkMdx
+				href="https://hollowknight.wiki/w/Forgotten_Crossroads#Sub-Area:_Temple_Of_The_Black_Egg"
+				target="_blank"
+			>
+				Black Egg Temple
+			</ExternalLinkMdx>
+		}
+	</li>
+	<li>
+		{
+			<ExternalLinkMdx href="https://hollowknight.wiki/w/Deepnest#Sub-area:_Beast's_Den" target="_blank">
+				Beasts Den
+			</ExternalLinkMdx>
+		}
+	</li>
+	<li>
+		{
+			<ExternalLinkMdx href="https://hollowknight.wiki/w/Greenpath#Sub-area:_Stone_Sanctuary" target="_blank">
+				Stone Sancturary
+			</ExternalLinkMdx>
+		}
+	</li>
+	<li>
+		{
+			<ExternalLinkMdx href="https://hollowknight.wiki/w/Dirtmouth#The_Grimm_Troupe's_Tents" target="_blank">
+				Grimms Tent
+			</ExternalLinkMdx>
+		}
+	</li>
+	{
+		<li>
+			The pantehons described in the{' '}
+			<a href="#godhome" target="_self">
+				Godhome section
+			</a>
+			.
+		</li>
+	}
+</SpoilerWrapper>
+
+#### Colosseum
+
+<SpoilerWrapper title="Show colosseum spoilers">
+Unlike on the ingame map, each trial of the colosseum has its own sign on the map. Allowing to see room analytics, such as how often one has died in each of them.
+
+<ColosseumScreenshot />
+
+</SpoilerWrapper>
+<FloatClear />
+
+#### Godhome
+
+<SpoilerWrapper title="Show spoilers for Godhome">
+On the map information for each pantheon / boss rush is displayed at its entrance.
+
+By clicking on one of the doors, one sees the overal analytics of the selected pantehon.
+Analytics can also be displayed for each boss individually, by clicking on one of the bosses above the analytics, similar to other <a href="#multi-room-buildings" target="_self">multi-room buildings</a>.
+
+<GodhomeScreenshot />
+
+</SpoilerWrapper>
+<FloatClear />
+
+## Splits
+
+<SplitsScreenshot />
+
+The splits view provides a quick overview of what happened in a gameplay.
+It shows the times of events of the following types:
+
+<SplitsList />
+
+By toggling the checkboxes corresponding to the event types, the splits can be filtered to only show the events of interest.
+
+**Splits actions**
+
+<SplitActionsTable />
+
+## Time-based charts
+
+The time-based charts show some variables over time, such as the completion percentage, geo, number of collected grubs.
+
+Hovering over a chart will show a marker on the <a href="#timeline" target="_self">timeline</a> to highlight the hovered timepoint,
+additionally the room the player is in is highlighted on the map while hovering <a href="#map" target="_self">map</a>.
+
+**Time-based chart actions**
+
+<TimeBasedChartActionsTable />
+
+<FloatClear />
+
+### <GeoChartDocIcon />Geo chart
+
+<GeoChartScreenshot />
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Geo">Geo</ExternalLinkMdx> chart shows Geo over time. By default it shows the geo that the player has at the moment, and the potential geo the player can gain by defeating the shade and by selling relicts.
+
+<GeoChartDocVars />
+
+Hint: You can find out when money has been lost by failing to defeat the shade, by finding the spots where the 'Shade Geo' decreases without the 'Inventory Geo' increasing.
+
+<FloatClear />
+
+### <EssenceChartDocIcon />Essence chart
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Essence">Essence</ExternalLinkMdx> charts shows the Essence collected over time.
+
+<EssenceChartDocVars />
+
+<FloatClear />
+
+### <GrubsChartDocIcon />Grubs chart
+
+<GrubsChartScreenshot />
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Grub">Grub</ExternalLinkMdx> chart shows the number of grubs collected over time, and for how many grubs the reward has been collected.
+
+<GrubsChartDocVars />
+
+<FloatClear />
+
+### <CompletionChartDocIcon />Completion chart
+
+<CompletionChartScreenshot />
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Completion_(Hollow_Knight)">completion</ExternalLinkMdx> chart shows the completion percentage over time.
+
+<CompletionChartDocVars />
+
+<FloatClear />
+
+### <HealthChartDocIcon />Health chart
+
+<HealthChartScreenshot />
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Knight#Health">health</ExternalLinkMdx> chart shows the masks over time.
+Since health does change very frequently, this chart is most useful when zooming in closely.
+
+<HealthChartDocVars />
+
+<FloatClear />
+
+### <SoulChartDocIcon />Soul chart
+
+<SoulChartScreenshot />
+
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">soul</ExternalLinkMdx> chart shows soul over time.
+Soul is used for spells and healing, and is gained by:
+
+-   hitting enemies with the nail
+-   dreamnailing enemies or npcs
+-   {<ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">and some other sources</ExternalLinkMdx>}
+
+Since soul does change very frequently, this chart is most useful when zooming in closely.
+
+<SoulChartDocVars />
+
+<FloatClear />
+## Timeline
+
+The timeline allows scrolling through a gameplay, to see the player location and room visibility at different points in time.
+On the right of the timeline the speed of the animation can be adjusted.
+
+<TimelineScreenshot />
+
+At the bottom of the timeline, the color of visitied rooms is displayed. By <a href="#map-coloring-by-variables" target="_self">selecting a room on the map</a>, the color codes of the selected room and area are enlarged.
+This can make it easier to find the time a specific area was visited.
+
+**Timeline slider shortcuts**
+
+<TimelineTable />
+
+**Timeline color code shortcuts**
+
+<TimelineColorCodesTable />

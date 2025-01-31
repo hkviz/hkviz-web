@@ -1,9 +1,0 @@
-{
-    "extends": "../../tsconfig.json",
-    "include": ["src/**/*", "test/**/*"],
-    "compilerOptions": {
-        "paths": {
-            "@hkviz/hk-data": ["../hk-data/src/index.ts"]
-        }
-    }
-}

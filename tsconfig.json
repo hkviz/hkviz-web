@@ -1,23 +1,23 @@
 {
-    "compilerOptions": {
-        "target": "es2017",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "allowJs": true,
-        "checkJs": false,
-        "skipLibCheck": true,
-        "strict": true,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "noUncheckedIndexedAccess": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
-    },
-    "exclude": ["node_modules", "dist", "build", "**/dist"]
+	"compilerOptions": {
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "bundler",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"jsx": "preserve",
+		"jsxImportSource": "solid-js",
+		"allowJs": true,
+		"strict": true,
+		"noEmit": true,
+		"types": ["vinxi/types/client", "@testing-library/jest-dom"],
+		"isolatedModules": true,
+		"skipLibCheck": true,
+		"paths": {
+			"~/*": ["./src/*"],
+			"solid-mdx": ["./node_modules/solid-mdx/types/index.d.ts"],
+			"@vinxi/plugin-mdx": ["./node_modules/@vinxi/plugin-mdx/dist/index.d.ts"]
+		}
+	},
+	"include": ["src/**/*.ts", "src/**/*.tsx"]
 }

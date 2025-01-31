@@ -1,0 +1,11 @@
+{
+    "trailingComma": "all",
+    "tabWidth": 4,
+    "printWidth": 120,
+    "useTabs": true,
+    "semi": true,
+    "singleQuote": true,
+    "plugins": ["prettier-plugin-tailwindcss"],
+    "tailwindFunctions": ["cn"],
+    "tailwindAttributes": ["iconClassName", "textClassName"]
+}

@@ -20,7 +20,7 @@ Feel free to [open an issue](https://github.com/hkviz/hkviz-web/issues) on this 
 
 To get started recording your own gameplay analytics visit [hkviz.org](https://www.hkviz.org).
 
-You can also view gameplays from other players, if they send you a link and have set their gameplay to 'public' or 'unlisted' or by visting the
+You can also view gameplays from other players, if they send you a link and have set their gameplay to 'public' or 'unlisted' or by visiting the
 [public gameplays page](https://www.hkviz.org/run).
 
 ## For developers
@@ -37,9 +37,9 @@ To set this project up locally:
 
 This project is a monorepo, with the following packages:
 
--   `@hkviz/hk-data`: A package containing extracted data from Hollow Knight. It mainly exists so the other packages can be licensed under MIT, while this package contains copyrighted data.
--   `@hkviz/parser`: A package for parsing the recording files created by the mod
--   `@hkviz/app`: The frontend of the project, currently a Next.js app
+-   `src/lib/hk-data`: Contains extracted data from Hollow Knight. (Not licensed under MIT)
+-   `src/lib/parser`: Parsing the recording files created by the mod
+-   `src/routes`: standard solid start folder for routes
 
 ### License
 

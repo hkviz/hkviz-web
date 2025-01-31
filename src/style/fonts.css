@@ -1,0 +1,12 @@
+@import '../../node_modules/@fontsource-variable/noto-sans/index.css';
+@import '../../node_modules/@fontsource-variable/cinzel/index.css';
+@import '../../node_modules/@fontsource/cinzel-decorative/latin-700.css';
+@import '../../node_modules/@fontsource-variable/eb-garamond/index.css';
+
+/* fonts */
+:root {
+	--font-sans: 'Noto Sans Variable';
+	--font-serif: 'Cinzel Variable';
+	--font-serif-decorative: 'Cinzel Decorative';
+	--font-serif-mixed-case: 'EB Garamond Variable';
+}
