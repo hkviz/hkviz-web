@@ -1,9 +1,12 @@
 import { Title } from '@solidjs/meta';
-import { createAsync, RouteDefinition } from '@solidjs/router';
+import { A, createAsync, RouteDefinition } from '@solidjs/router';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
+import { FancyButton } from '~/components/fancy-button';
 import { HKVizText } from '~/components/HKVizText';
 import { OwnRuns } from '~/components/own-runs';
 import { GradientSeparator } from '~/components/ui/additions';
+import { Button } from '~/components/ui/button';
+import { cn } from '~/lib/utils';
 import { findOwnRuns } from '~/server/run/find-own-runs';
 
 export const route = {
@@ -28,13 +31,13 @@ export default function HomePage() {
 						them with others.
 					</p>
 
-					{/* {userRuns.length == 0 && (
-	                    <div class="flex flex-row items-center justify-center py-8 transition sm:gap-12">
-	                        <Button asChild class="rounded-3xl p-8 text-2xl font-semibold shadow-md hover:shadow-lg">
-	                            <Link href="/guide/install">Record gameplay analytics</Link>
-	                        </Button>
-	                    </div>
-	                )} */}
+					{runs() && runs()!.length === 0 && (
+						<div class="flex flex-row items-center justify-center py-8 transition sm:gap-12">
+							<FancyButton as={A} href="/guide/install">
+								Record Gameplay Analytics
+							</FancyButton>
+						</div>
+					)}
 				</div>
 
 				<OwnRuns runs={runs()!} />

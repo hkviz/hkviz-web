@@ -101,7 +101,13 @@ export const MainNav = () => {
 								<Show
 									when={session()}
 									fallback={
-										<MenuItem href={loginUrl()} title="Login" icon={LogIn} useNativeLink={true} />
+										<MenuItem
+											href={loginUrl()}
+											title="Login"
+											icon={LogIn}
+											useNativeLink={true}
+											target="_self"
+										/>
 									}
 								>
 									<CurrentUserNavLinks />

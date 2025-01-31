@@ -1,0 +1,83 @@
+:root {
+	--main-nav-height: max(env(titlebar-area-height, 56px), 40px);
+	--footer-height: 113px;
+}
+
+.main-nav {
+	width: env(titlebar-area-width, 100%);
+	height: var(--main-nav-height);
+}
+.main-nav-inner {
+	position: fixed;
+	top: calc(-10rem + env(titlebar-area-y, 0rem));
+	width: 100%;
+	height: calc(var(--main-nav-height) + 10rem);
+	padding: 0.5rem;
+	padding-left: calc(0.5rem + env(titlebar-area-x, 0rem));
+	padding-right: calc(0.5rem + 100% - env(titlebar-area-width, 100%) - env(titlebar-area-x, 0rem));
+	padding-top: 10.5rem;
+}
+
+.hash-link {
+	text-decoration: none;
+}
+
+.hash-link::before {
+	content: '#';
+	transition: color 0.2s ease-in-out;
+}
+
+:root {
+	--scroll-margin-top: calc(0.5rem + var(--main-nav-height, 0rem));
+}
+
+.hide-hash-links .hash-link {
+	display: none;
+}
+
+.area-name-shadow {
+	filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 1)) drop-shadow(0px 0px 0.2px rgba(255, 255, 255, 1))
+		drop-shadow(0px 0px 2px rgba(255, 255, 255, 1));
+}
+
+.dark .area-name-shadow {
+	filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 1)) drop-shadow(0px 0px 0.2px rgba(0, 0, 0, 1))
+		drop-shadow(0px 0px 2px rgba(0, 0, 0, 1));
+}
+
+.h-unset-important {
+	/* used to overwrite resizable height inside flex layout */
+	height: unset !important;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion) {
+	html {
+		scroll-behavior: auto;
+	}
+}
+
+.prose {
+	--tw-prose-bullets: #b6b9be;
+}
+/* 
+.fancy-button {
+	position: relative;
+	transform-style: preserve-3d;
+}
+.fancy-button::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border-radius: inherit;
+	filter: blur(10px);
+	background: conic-gradient(in oklab, #6154b4, orange, yellow, #6154b4);
+	transform: translate3d(10px, 8px, -1px);
+}
+ */

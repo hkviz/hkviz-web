@@ -1,0 +1,76 @@
+/* modified from https://css-tricks.com/different-ways-to-get-css-gradient-shadows/ */
+
+@property --fancy-button-shadow-rotation {
+	syntax: '<angle>';
+	initial-value: 0deg;
+	inherits: true;
+}
+
+@keyframes fancy-button-rotate-shadow {
+	from {
+		--fancy-button-shadow-rotation: 0deg;
+	}
+	to {
+		--fancy-button-shadow-rotation: 360deg;
+	}
+}
+
+.fancy-button {
+	--radius: 5rem;
+	--r-top: var(--radius);
+	--r-right: var(--radius);
+	--r-bottom: var(--radius);
+	--r-left: var(--radius);
+
+	--border-width: 2px;
+
+	--fancy-button-shadow-rotation: 0deg;
+	border: var(--border-width) solid white;
+	border-radius: var(--r-top) var(--r-right) var(--r-bottom) var(--r-left);
+	position: relative;
+	transform: translate(0);
+	transform-style: preserve-3d;
+}
+.fancy-button-shadow {
+	--overflow: 150px;
+	position: absolute;
+	pointer-events: none;
+	inset: calc(-1 * (var(--overflow) + var(--border-width)));
+	border: var(--overflow) solid #0000;
+	border-radius: calc(var(--overflow) + var(--r-top)) calc(var(--overflow) + var(--r-right))
+		calc(var(--overflow) + var(--r-bottom)) calc(var(--overflow) + var(--r-left));
+	transform: translateZ(-1px);
+	-webkit-mask:
+		linear-gradient(#000 0 0) content-box,
+		linear-gradient(#000 0 0);
+	-webkit-mask-composite: xor;
+	mask-composite: exclude;
+
+	mix-blend-mode: screen;
+	opacity: 0.25;
+	transition: opacity 1s ease-in-out;
+}
+.fancy-button .fancy-button-shadow,
+.fancy-button:focus-visible .fancy-button-shadow {
+	opacity: 0.5;
+	transition: opacity 0.5s ease-in-out;
+}
+.fancy-button:not(.fancy-button-loading) {
+	animation: fancy-button-rotate-shadow 10s linear infinite;
+}
+.fancy-button-shadow:before {
+	content: '';
+	position: absolute;
+	inset: -5px;
+	transform: translate(0, 0);
+	background: conic-gradient(in oklab from var(--fancy-button-shadow-rotation), #8b0000, #d4af37, #2e4f4f, #8b0000);
+	filter: blur(10px);
+	border-radius: var(--r-top) var(--r-right) var(--r-bottom) var(--r-left);
+	transition: filter 0.2s ease-in-out;
+}
+
+.fancy-button:hover .fancy-button-shadow:before,
+.fancy-button:focus-visible .fancy-button-shadow:before {
+	animation-play-state: paused;
+	filter: blur(20px);
+}
