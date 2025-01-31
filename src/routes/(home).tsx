@@ -22,10 +22,16 @@ export default function HomePage() {
 			<Title>HKViz for Hollow Knight</Title>
 			<div class="container flex flex-col items-center justify-center gap-12 px-4 py-16 text-foreground">
 				<div class={`max-w-[70ch] text-center`}>
-					<h1 class={`title-text-glow -mb-6 font-serif text-[5rem] font-bold tracking-tight sm:text-[6rem]`}>
-						<HKVizText />
-					</h1>
-					<h2 class="title-text-glow font-serif text-2xl sm:text-3xl">Visual Analytics for Hollow Knight</h2>
+					<div class="start-page-header">
+						<h1
+							class={`title-text-glow -mb-6 font-serif text-[5rem] font-bold tracking-tight sm:text-[6rem]`}
+						>
+							<HKVizText />
+						</h1>
+						<h2 class="title-text-glow font-serif text-2xl sm:text-3xl">
+							Visual Analytics for Hollow Knight
+						</h2>
+					</div>
 					<p class="text-pretty pt-4">
 						With <HKVizText /> you can record gameplay analytics of your Hollow Knight gameplays, and share
 						them with others.

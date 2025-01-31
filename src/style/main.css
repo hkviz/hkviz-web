@@ -63,21 +63,7 @@ html {
 .prose {
 	--tw-prose-bullets: #b6b9be;
 }
-/* 
-.fancy-button {
-	position: relative;
-	transform-style: preserve-3d;
+
+.start-page-header {
+	text-shadow: 0 0 150px rgba(255, 177, 21, 0.5);
 }
-.fancy-button::before {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	border-radius: inherit;
-	filter: blur(10px);
-	background: conic-gradient(in oklab, #6154b4, orange, yellow, #6154b4);
-	transform: translate3d(10px, 8px, -1px);
-}
- */

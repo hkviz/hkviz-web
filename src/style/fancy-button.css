@@ -30,6 +30,12 @@
 	position: relative;
 	transform: translate(0);
 	transform-style: preserve-3d;
+
+	transform-origin: center;
+	transition: transform 0.4s ease-out;
+}
+.fancy-button:hover {
+	transform: scale(1.025);
 }
 .fancy-button-shadow {
 	--overflow: 150px;
@@ -46,7 +52,6 @@
 	-webkit-mask-composite: xor;
 	mask-composite: exclude;
 
-	mix-blend-mode: screen;
 	opacity: 0.25;
 	transition: opacity 1s ease-in-out;
 }
@@ -63,7 +68,13 @@
 	position: absolute;
 	inset: -5px;
 	transform: translate(0, 0);
-	background: conic-gradient(in oklab from var(--fancy-button-shadow-rotation), #8b0000, #d4af37, #2e4f4f, #8b0000);
+	background: conic-gradient(
+		in oklab from var(--fancy-button-shadow-rotation),
+		#b752ff50,
+		#ffd754b0,
+		#8bffff34,
+		#b752ff50
+	);
 	filter: blur(10px);
 	border-radius: var(--r-top) var(--r-right) var(--r-bottom) var(--r-left);
 	transition: filter 0.2s ease-in-out;
