@@ -5,8 +5,6 @@ import { FancyButton } from '~/components/fancy-button';
 import { HKVizText } from '~/components/HKVizText';
 import { OwnRuns } from '~/components/own-runs';
 import { GradientSeparator } from '~/components/ui/additions';
-import { Button } from '~/components/ui/button';
-import { cn } from '~/lib/utils';
 import { findOwnRuns } from '~/server/run/find-own-runs';
 
 export const route = {

@@ -1,9 +1,9 @@
-import * as v from 'valibot';
-import { db } from '../db';
-import { getUserOrThrow } from '~/lib/auth/shared';
-import { users } from '../db/schema';
-import { eq } from 'drizzle-orm';
 import { action } from '@solidjs/router';
+import { eq } from 'drizzle-orm';
+import * as v from 'valibot';
+import { getUserOrThrow } from '~/lib/auth/shared';
+import { db } from '../db';
+import { users } from '../db/schema';
 
 const setUsernameInputSchema = v.object({
 	username: v.pipe(v.string(), v.maxLength(64)),

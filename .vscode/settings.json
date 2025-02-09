@@ -1,5 +1,21 @@
 {
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "always"
-	}
+	},
+	"tailwindCSS.experimental.classRegex": [
+		["Classes \\=([^;]*);", "'([^']*)'"],
+		["Classes \\=([^;]*);", "\"([^\"]*)\""],
+		["Classes \\=([^;]*);", "\\`([^\\`]*)\\`"],
+		["cn\\(([^)]*)\\)", "\"([^\"]*)\""]
+	],
+	"tailwindCSS.classAttributes": [
+		"class",
+		"className",
+		"ngClass",
+		"class:list",
+		".*Classes",
+		".*Styles",
+		".*Class",
+		".*ClassName"
+	]
 }
