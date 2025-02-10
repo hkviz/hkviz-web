@@ -2,14 +2,15 @@ import { action, query } from '@solidjs/router';
 import { and, eq } from 'drizzle-orm';
 import { v4 as uuidv4 } from 'uuid';
 import * as v from 'valibot';
-import { getUserOrThrow } from '~/lib/auth/shared';
+import { getUserOrNull, getUserOrThrow } from '~/lib/auth/shared';
 import { db } from '../db';
 import { accountDeletionRequest } from '../db/schema';
 import { sendMailToSupport } from '../mails';
 
 export const accountGetScheduledForDeletion = query(async () => {
 	'use server';
-	const user = await getUserOrThrow();
+	const user = await getUserOrNull();
+	if (!user) return false;
 
 	const request = await db.query.accountDeletionRequest.findFirst({
 		where: (request, { eq, and }) => and(eq(request.userId, user.id), eq(request.formAccepted, true)),
