@@ -6,8 +6,8 @@ import { getUserOrThrow } from '~/lib/auth/shared';
 import { COOKIE_INGAME_AUTH_URL_ID } from '~/lib/cookies/cookie-names';
 import { jsonWithCookies } from '~/lib/cookies/cookies-response-helpers';
 import { serverCookiesGet } from '~/lib/cookies/cookies-server';
-import { raise } from '~/lib/parser';
 import { db } from '~/server/db';
+import { getIngameAuthFlowState, getIngameAuthRedirect } from './ingameauth-flow-state';
 import { isMax10MinutesOld } from './utils';
 
 export const ingameAuthAllowLogin = action(async () => {
@@ -15,13 +15,18 @@ export const ingameAuthAllowLogin = action(async () => {
 	const user = await getUserOrThrow();
 	const userId = user.id;
 
+	const flowState = await getIngameAuthFlowState();
+	if (flowState.type !== 'final-accept') {
+		// should not be able to accept login yet
+		return await getIngameAuthRedirect(flowState);
+	}
+
 	const cookies = await serverCookiesGet();
-	const urlId = cookies.getSafe(COOKIE_INGAME_AUTH_URL_ID) ?? raise(new Error('Login failed. No login id found.'));
 
 	const result = await db
 		.update(ingameAuth)
 		.set({ userId })
-		.where(and(eq(ingameAuth.urlId, urlId), isNull(ingameAuth.userId), isMax10MinutesOld()));
+		.where(and(eq(ingameAuth.urlId, flowState.urlId), isNull(ingameAuth.userId), isMax10MinutesOld()));
 
 	if (result.rowsAffected !== 1) {
 		throw new Error('Unexpected session state');

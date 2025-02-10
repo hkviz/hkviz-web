@@ -6,6 +6,7 @@ import { getUserOrNull, getUserOrThrow } from '~/lib/auth/shared';
 import { db } from '../db';
 import { accountDeletionRequest } from '../db/schema';
 import { sendMailToSupport } from '../mails';
+import { accountCancelRemovalRequestInternal } from './deletion-internal';
 
 export const accountGetScheduledForDeletion = query(async () => {
 	'use server';
@@ -64,15 +65,7 @@ export const accountInitiateRemovalRequest = query(async (): Promise<AccountInit
 
 export const accountCancelRemovalRequest = action(async () => {
 	'use server';
-	const user = await getUserOrThrow();
-
-	const result = await db.delete(accountDeletionRequest).where(eq(accountDeletionRequest.userId, user.id));
-
-	if (result.rowsAffected === 0) {
-		// no need to throw
-		console.error('Account deletion request not found', user.id);
-	}
-	return true;
+	return accountCancelRemovalRequestInternal();
 });
 
 export const accountAcceptRemovalRequestInputSchema = v.object({

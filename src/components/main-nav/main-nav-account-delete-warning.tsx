@@ -25,13 +25,13 @@ export function MainNavAccountDeletionWarning() {
 			<Suspense fallback={<></>}>
 				<Show when={accountWillBeDeleted()}>
 					<Card class="bg-red-100 p-2 text-red-800 dark:bg-red-900 dark:text-red-100">
-						<span class="px-2">Your account will be deleted soon</span>
+						<span class="px-2">Your account will be deleted</span>
 						<Button
 							variant="destructive"
 							onClick={cancelDelete}
 							disabled={cancelDeletionSubmission.pending}
 						>
-							Keep account
+							Cancel deletion
 						</Button>
 					</Card>
 				</Show>
