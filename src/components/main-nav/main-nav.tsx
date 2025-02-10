@@ -8,6 +8,7 @@ import { HKVizText } from '../HKVizText';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
 import { CurrentUserDropdown, CurrentUserNavLinks } from './current-user-dropdown';
+import { MainNavAccountDeletionWarning } from './main-nav-account-delete-warning';
 import { MenuItem, MenuItemContextProvider } from './main-nav-item';
 import { ThemeSwitcher } from './theme-switcher';
 
@@ -58,6 +59,9 @@ export const MainNav = () => {
 				<div class="grow" />
 				<ErrorBoundary fallback={<div>Loading login failed</div>}>
 					<Suspense fallback={<></>}>
+						<div class="hidden md:inline-flex">
+							<MainNavAccountDeletionWarning />
+						</div>
 						<ErrorBoundary fallback={<div>Theme switcher error</div>}>
 							<ThemeSwitcher />
 						</ErrorBoundary>
@@ -112,6 +116,7 @@ export const MainNav = () => {
 								>
 									<CurrentUserNavLinks />
 								</Show>
+								<MainNavAccountDeletionWarning />
 							</div>
 						</MenuItemContextProvider>
 					</SheetContent>
