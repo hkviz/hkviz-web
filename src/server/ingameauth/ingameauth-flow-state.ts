@@ -84,7 +84,6 @@ export async function getIngameAuthFlowState(urlIdOrContinue: string = 'continue
 	}
 
 	const accountMarkedForDeletion = await accountGetScheduledForDeletion();
-	console.log({ accountGetScheduledForDeletion });
 	if (accountMarkedForDeletion) {
 		return { type: 'cancel-account-deletion' };
 	}

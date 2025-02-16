@@ -1,4 +1,4 @@
-import { cache } from '@solidjs/router';
+import { query } from '@solidjs/router';
 import * as v from 'valibot';
 import { getUserOrNull } from '~/lib/auth/shared';
 import { RUN_SORT_DEFAULT, runSortSchema } from '~/lib/types/run-sort';
@@ -14,7 +14,7 @@ export const RunFilterParamsSchema = v.object({
 });
 export type RunFilterParams = v.InferOutput<typeof RunFilterParamsSchema>;
 
-export const findPublicRuns = cache(async (unsaveFilter: RunFilterParams) => {
+export const findPublicRuns = query(async (unsaveFilter: RunFilterParams) => {
 	'use server';
 	const filter = v.parse(RunFilterParamsSchema, unsaveFilter);
 

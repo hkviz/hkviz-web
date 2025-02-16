@@ -1,6 +1,8 @@
+import { useUser } from '~/lib/auth/client';
 import { ContentCenterWrapper } from './content-wrapper';
 import { LoginButton } from './login-link';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
+import { JSXElement, Show } from 'solid-js';
 
 export function AuthNeeded() {
 	return (
@@ -15,5 +17,19 @@ export function AuthNeeded() {
 				</CardFooter>
 			</Card>
 		</ContentCenterWrapper>
+	);
+}
+
+export interface AuthNeededWrapperProps {
+	children: JSXElement;
+}
+
+export function AuthNeededWrapper(props: AuthNeededWrapperProps) {
+	const user = useUser();
+
+	return (
+		<Show when={user()?.id} fallback={<AuthNeeded />}>
+			{props.children}
+		</Show>
 	);
 }
