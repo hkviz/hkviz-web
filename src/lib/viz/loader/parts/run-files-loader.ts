@@ -1,10 +1,10 @@
-import { combineRecordings, parseRecordingFile } from '../../parser';
+import { combineRecordings, parseRecordingFile } from '../../../parser';
 import { createDeferred, createMemo, createSignal } from 'solid-js';
 import { fetchWithRunfileCache, openRunfileCache } from './recording-file-browser-cache';
 import { type RunFileInfo } from './run-files-info';
 import { wrapResultWithProgress } from './wrap-result-with-progress';
 import { isServer } from 'solid-js/web';
-import { createStoreInitializer } from '../store/store-initializer';
+import { createStoreInitializer } from '../../store/store-initializer';
 
 async function loadFile(cache: Promise<Cache | null>, file: RunFileInfo, onProgress: (progress: number) => void) {
 	const loader = () => fetchWithRunfileCache(cache, file.id, file.version, file.signedUrl);
