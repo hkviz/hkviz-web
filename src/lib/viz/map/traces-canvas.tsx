@@ -1,5 +1,6 @@
 import { createEffect, type Component } from 'solid-js';
 import {
+	PlayerPositionEvent,
 	Vector2,
 	binarySearchLastIndexBefore,
 	mapVisualExtends,
@@ -80,7 +81,9 @@ export const HKMapTraces: Component = () => {
 		const minMsIntoGame = animationStore.msIntoGame() - traceStore.lengthMs();
 		const maxMsIntoGame = animationStore.msIntoGame();
 
-		const positionEvents = gameplayStore.recording()?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
+		const positionEvents =
+			gameplayStore.recording()?.playerPositionEventsWithTracePosition ??
+			(EMPTY_ARRAY as ReadonlyArray<PlayerPositionEvent>);
 
 		const visibility = traceStore.visibility();
 

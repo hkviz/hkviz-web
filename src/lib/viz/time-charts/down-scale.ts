@@ -1,6 +1,6 @@
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '../../parser';
 
-export function downScale(data: FrameEndEvent[], fields: FrameEndEventNumberKey[], maxTimeDelta = 10000) {
+export function downScale(data: ArrayLike<FrameEndEvent>, fields: FrameEndEventNumberKey[], maxTimeDelta = 10000) {
 	console.log('Original length', data.length, fields);
 
 	let previous: FrameEndEvent | undefined = undefined;

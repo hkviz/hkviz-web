@@ -14,7 +14,7 @@ export function createCombinedRunLoader(runData: () => GetRunResult | undefined)
 		return createRunFileLoader(run.files);
 	});
 
-	const liveLoader = createRunLiveLoader();
+	const liveLoader = createRunLiveLoader(() => loader()?.combinedRecording() ?? null);
 
 	return { loader, liveLoader };
 }

@@ -51,20 +51,29 @@ function parseVector2_v1(str: string, factor = 1) {
 	);
 }
 
-export function parseRecordingFile(recordingFileContent: string, combinedPartNumber: number): ParsedRecording {
-	const lines = recordingFileContent.split('\n');
-	const events: RecordingEvent[] = [];
-	let unknownEvents = 0;
-	let parsingErrors = 0;
+export class ParseRecordingFileContext {
+	unknownEvents = 0;
+	parsingErrors = 0;
 
-	let lastSceneEvent: SceneEvent | undefined = undefined;
-	let previousPlayerPosition: Vector2 | undefined = undefined;
-	let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
-	let previousTimestamp: number | undefined = undefined;
+	lastSceneEvent: SceneEvent | undefined = undefined;
+	previousPlayerPosition: Vector2 | undefined = undefined;
+	previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+	previousTimestamp: number | undefined = undefined;
 
 	// defaults to 0.0.0 since in early version of the mod, the version was only
 	// written at the beginning of a session, not for each part
-	let currentRecordingFileVersion: RecordingFileVersion = '0.0.0';
+	currentRecordingFileVersion: RecordingFileVersion = '0.0.0';
+}
+
+export function parseRecordingFile(
+	recordingFileContent: string,
+	combinedPartNumber: number,
+	context?: ParseRecordingFileContext,
+): RecordingEvent[] {
+	const lines = recordingFileContent.split('\n');
+	const events: RecordingEvent[] = [];
+
+	const ctx = context ?? new ParseRecordingFileContext();
 
 	let i = 0;
 	LINE_LOOP: for (let line of lines) {
@@ -84,19 +93,19 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 
 			let timestamp: number;
 			if (timestampStr == null || timestampStr === '') {
-				if (previousTimestamp === undefined) {
+				if (ctx.previousTimestamp === undefined) {
 					throw new Error('Relative timestamp found, but no previous timestamp found');
 				}
-				timestamp = previousTimestamp!;
+				timestamp = ctx.previousTimestamp!;
 			} else if (isRelativeTimestamp) {
-				if (previousTimestamp == null) {
+				if (ctx.previousTimestamp == null) {
 					throw new Error('Relative timestamp found, but no previous timestamp found');
 				}
-				timestamp = previousTimestamp + parseInt(timestampStr);
+				timestamp = ctx.previousTimestamp + parseInt(timestampStr);
 			} else {
 				timestamp = parseInt(timestampStr);
 			}
-			previousTimestamp = timestamp;
+			ctx.previousTimestamp = timestamp;
 
 			// ------ EVENT TYPE ------
 			const partialEventType = eventType[0] as PartialEventPrefix;
@@ -114,7 +123,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 							field,
 
 							value,
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
+							previousPlayerPositionEvent: ctx.previousPlayerPositionEvent,
 							previousPlayerDataEventOfField: null, // filled in combiner
 						}),
 					);
@@ -133,7 +142,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 							timestamp,
 							field,
 							value: args[0] === '1',
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
+							previousPlayerPositionEvent: ctx.previousPlayerPositionEvent,
 						}),
 					);
 					continue LINE_LOOP;
@@ -150,22 +159,22 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 			const eventTypePrefix = eventType as EventPrefix;
 			switch (eventTypePrefix) {
 				case EVENT_PREFIXES.SCENE_CHANGE: {
-					lastSceneEvent = new SceneEvent({
+					ctx.lastSceneEvent = new SceneEvent({
 						timestamp,
 						sceneName: args[0]!,
 						originOffset: undefined,
 						sceneSize: undefined,
 					});
-					previousPlayerPosition = undefined;
-					events.push(lastSceneEvent);
+					ctx.previousPlayerPosition = undefined;
+					events.push(ctx.lastSceneEvent);
 					break;
 				}
 				case EVENT_PREFIXES.ROOM_DIMENSIONS: {
-					if (lastSceneEvent) {
+					if (ctx.lastSceneEvent) {
 						let originOffset: Vector2;
 						let sceneSize: Vector2;
 
-						if (isVersion0xx(currentRecordingFileVersion)) {
+						if (isVersion0xx(ctx.currentRecordingFileVersion)) {
 							originOffset = parseVector2_v0(args[0]!, args[1]!);
 							sceneSize = parseVector2_v0(args[2]!, args[3]!);
 						} else {
@@ -176,34 +185,34 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 						// for some reason in Abyss_10 (the scene right to the light house),
 						// the origin offset is always first set to correct values, and then shortly after to zero
 						if (
-							(!lastSceneEvent.originOffset && !lastSceneEvent.sceneSize) ||
+							(!ctx.lastSceneEvent.originOffset && !ctx.lastSceneEvent.sceneSize) ||
 							(!originOffset.isZero() && !sceneSize.isZero())
 						) {
-							lastSceneEvent.originOffset = originOffset;
-							lastSceneEvent.sceneSize = sceneSize;
+							ctx.lastSceneEvent.originOffset = originOffset;
+							ctx.lastSceneEvent.sceneSize = sceneSize;
 						}
 					}
 					break;
 				}
 				case EVENT_PREFIXES.ENTITY_POSITIONS: {
-					if (lastSceneEvent) {
+					if (ctx.lastSceneEvent) {
 						const position: Vector2 | undefined =
 							args[0] === '='
-								? previousPlayerPosition
-								: isVersion0xx(currentRecordingFileVersion)
+								? ctx.previousPlayerPosition
+								: isVersion0xx(ctx.currentRecordingFileVersion)
 									? parseVector2_v0(args[0]!, args[1]!)
 									: parseVector2_v1(args[0]!, 1 / 10);
 						if (!position) {
 							continue;
 							// throw new Error('Could not assign player position to player position event');
 						}
-						previousPlayerPosition = position;
-						previousPlayerPositionEvent = new PlayerPositionEvent({
+						ctx.previousPlayerPosition = position;
+						ctx.previousPlayerPositionEvent = new PlayerPositionEvent({
 							timestamp,
 							position,
-							sceneEvent: lastSceneEvent,
+							sceneEvent: ctx.lastSceneEvent,
 						});
-						events.push(previousPlayerPositionEvent);
+						events.push(ctx.previousPlayerPositionEvent);
 					}
 					break;
 				}
@@ -240,18 +249,18 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 					const version = args[0]!;
 
 					if (isKnownRecordingFileVersion(version)) {
-						currentRecordingFileVersion = version;
+						ctx.currentRecordingFileVersion = version;
 					} else {
 						console.error(
 							`Unknown recording file version ${version} falling back to newest known version ${newestRecordingFileVersion}`,
 						);
-						currentRecordingFileVersion = newestRecordingFileVersion;
+						ctx.currentRecordingFileVersion = newestRecordingFileVersion;
 					}
 
 					events.push(
 						new RecordingFileVersionEvent({
 							timestamp,
-							version: currentRecordingFileVersion as RecordingFileVersion,
+							version: ctx.currentRecordingFileVersion as RecordingFileVersion,
 						}),
 					);
 
@@ -269,7 +278,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 					events.push(
 						new SpellFireballEvent({
 							timestamp,
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
+							previousPlayerPositionEvent: ctx.previousPlayerPositionEvent,
 						}),
 					);
 					break;
@@ -278,7 +287,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 					events.push(
 						new SpellUpEvent({
 							timestamp,
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
+							previousPlayerPositionEvent: ctx.previousPlayerPositionEvent,
 						}),
 					);
 					break;
@@ -287,7 +296,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 					events.push(
 						new SpellDownEvent({
 							timestamp,
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
+							previousPlayerPositionEvent: ctx.previousPlayerPositionEvent,
 						}),
 					);
 					break;
@@ -347,20 +356,20 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 				default: {
 					typeCheckNever(eventTypePrefix);
 					console.log(`Unexpected event type |${eventType}| ignoring line |${line}|`);
-					unknownEvents++;
+					ctx.unknownEvents++;
 				}
 			}
 		} catch (e) {
 			console.error(
-				`Error while parsing line ${i}: |${line}| using file version ${currentRecordingFileVersion} in part number ${combinedPartNumber}`,
+				`Error while parsing line ${i}: |${line}| using file version ${ctx.currentRecordingFileVersion} in part number ${combinedPartNumber}`,
 				e,
 			);
 
 			((window as any).errorLines = (window as any).errorLines ?? []).push(line);
-			parsingErrors++;
+			ctx.parsingErrors++;
 		}
 		i++;
 	}
 
-	return new ParsedRecording(events, unknownEvents, parsingErrors, combinedPartNumber);
+	return events;
 }

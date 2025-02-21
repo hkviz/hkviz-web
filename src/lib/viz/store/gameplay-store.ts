@@ -1,4 +1,4 @@
-import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { createContext, createEffect, createMemo, createSignal, useContext } from 'solid-js';
 import { playerDataFields, type CombinedRecording } from '../../parser';
 
 export function createGameplayStore() {
@@ -20,6 +20,9 @@ export function createGameplayStore() {
 			playerDataFields.byFieldName.permadeathMode,
 		)?.value;
 		return permaDeathValue === 1 || permaDeathValue === 2;
+	});
+	createEffect(() => {
+		console.log('tf', timeFrame());
 	});
 
 	return {

@@ -18,7 +18,7 @@ import {
 	playerDataFields,
 } from '../player-data/player-data';
 import { type PlayerPositionEvent } from './events/player-position-event';
-import { type CombinedRecording } from './recording';
+import { RecordingEvent, type CombinedRecording } from './recording';
 import { assertNever, parseHtmlEntities } from '../util';
 
 export const recordingSplitGroups = [
@@ -111,7 +111,9 @@ function createRecordingSplitFromEnemy(
 //     }
 // }
 
-export function createRecordingSplits(recording: CombinedRecording): RecordingSplit[] {
+export interface CreatingRecordingSplitsContext {}
+
+export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[] {
 	const splits: RecordingSplit[] = [];
 
 	for (const field of Object.values(playerDataFields.byFieldName)) {
