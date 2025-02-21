@@ -1,15 +1,45 @@
-import { mainRoomDataBySceneName, type RoomData, type SceneEvent } from '../../parser';
 import { batch, createContext, createEffect, createMemo, createSignal, onCleanup, untrack, useContext } from 'solid-js';
+import { createMutableMemo } from '~/lib/create-mutable-memo';
+import { mainRoomDataBySceneName, type RoomData, type SceneEvent } from '../../parser';
 import { GameplayStore } from './gameplay-store';
 import { UiStore } from './ui-store';
 
 const intervalMs = 1000 / 30;
 // const intervalMs = 1000 / 60;
 
+const SPEEDUP_LIVE_DELTA_MS = 3000;
+
 export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiStore) {
-	const [isPlaying, _setIsPlaying] = createSignal(false);
+	const [isPlaying, _setIsPlaying] = createMutableMemo(() => gameplayStore.isLive() ?? false);
 	const [msIntoGame, _setMsIntoGame] = createSignal(0);
 	const [speedMultiplier, setSpeedMultiplier] = createSignal(100);
+
+	const isLiveFollowing = createMemo(() => {
+		const recording = gameplayStore.recording();
+		return (
+			!!recording &&
+			recording.isLive &&
+			msIntoGame() >= gameplayStore.timeFrame().max - (recording.liveAppendAfterMs + SPEEDUP_LIVE_DELTA_MS)
+		);
+	});
+
+	const effectiveSpeedMultiplier = createMemo(() => {
+		const recording = gameplayStore.recording();
+		if (!isLiveFollowing() || !recording) return speedMultiplier();
+		if (msIntoGame() >= gameplayStore.timeFrame().max - recording.liveAppendAfterMs) {
+			// within the last seconds appended, use 1:1 speed
+			return 1;
+		} else {
+			// within SPEEDUP_LIVE_DELTA_SECONDS
+			// lost track a little, possibly because of inperformant playback
+			// speed up to catch up
+			return 2;
+		}
+	});
+
+	createEffect(() => {
+		console.log('effectiveSpeedMultiplier', effectiveSpeedMultiplier());
+	});
 
 	function reset() {
 		_setIsPlaying(false);
@@ -62,7 +92,9 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 
 			if (newMsIntoGame > timeFrame.max) {
 				newMsIntoGame = timeFrame.max;
-				setIsPlaying(false);
+				if (!gameplayStore.isLive) {
+					setIsPlaying(false);
+				}
 			} else if (newMsIntoGame < timeFrame.min) {
 				newMsIntoGame = timeFrame.min;
 				setIsPlaying(false);
@@ -94,13 +126,12 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 		setIsPlaying(!isPlaying());
 	}
 
-	// TODO move to solid
 	createEffect(() => {
 		if (!isPlaying()) return;
 
 		const interval = setInterval(() => {
 			untrack(() => {
-				incrementMsIntoGame(intervalMs * speedMultiplier());
+				incrementMsIntoGame(intervalMs * effectiveSpeedMultiplier());
 			});
 		}, intervalMs) as any;
 
@@ -109,10 +140,13 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 
 	// change tabs when animation starts
 	createEffect(() => {
+		// refactor to just switch if manually clicked play?
 		if (isPlaying()) {
 			untrack(() => {
-				if (uiStore.mainCardTab() === 'overview') {
-					uiStore.activateTab('map');
+				if (!gameplayStore.isLive) {
+					if (uiStore.mainCardTab() === 'overview') {
+						uiStore.activateTab('map');
+					}
 				}
 			});
 		}
@@ -133,6 +167,8 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 		reset,
 		currentSceneEventWithMainMapRoom,
 		setSpeedMultiplier,
+		effectiveSpeedMultiplier,
+		isLiveFollowing,
 	};
 }
 export type AnimationStore = ReturnType<typeof createAnimationStore>;

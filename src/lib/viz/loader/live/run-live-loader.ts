@@ -8,6 +8,8 @@ import {
 	ParseRecordingFileContext,
 } from '~/lib/parser';
 import { ViewerMessage } from './outgoing-message-model';
+import { CLOSE_CODE_HOST_LEFT } from './websocker-close-codes';
+import { showToast } from '~/components/ui/toast';
 
 export function createRunLiveLoader(combinedRecording: () => CombinedRecording | null) {
 	// TODO take url and access token as argument
@@ -20,6 +22,8 @@ export function createRunLiveLoader(combinedRecording: () => CombinedRecording |
 
 		let combinedRecordingReady = false;
 		let queue = [] as ViewerMessage[];
+
+		let wasConnectedPreviously = false;
 
 		function processMessage(message: ViewerMessage) {
 			const recording = combinedRecording()!;
@@ -45,6 +49,12 @@ export function createRunLiveLoader(combinedRecording: () => CombinedRecording |
 					currentRecordingFile.append(events, currentParsingContext);
 				}
 				combineRecordingsAppend(recording, events);
+			} else if (message.type === 'viewer:host-state') {
+				recording.isHostConnected = message.connected;
+				if (message.connected) {
+					recording.isLive = true;
+					wasConnectedPreviously = true;
+				}
 			}
 			console.log('received', message);
 		}
@@ -67,6 +77,24 @@ export function createRunLiveLoader(combinedRecording: () => CombinedRecording |
 				processMessage(message);
 			} else {
 				queue.push(message);
+			}
+		};
+
+		ws.onclose = (event) => {
+			if (event.code === CLOSE_CODE_HOST_LEFT) {
+				const recording = combinedRecording();
+				if (recording) {
+					recording.isLive = false;
+					recording.freeze();
+					if (wasConnectedPreviously) {
+						showToast({
+							title: 'Player disconnected',
+							description:
+								"Your connection has been terminated and won't automatically reconnect when the player returns. Reload the page if you believe the player is back.",
+							variant: 'destructive',
+						});
+					}
+				}
 			}
 		};
 

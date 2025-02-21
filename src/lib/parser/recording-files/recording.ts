@@ -104,9 +104,9 @@ export type RecordingEvent =
 
 export class ParsedRecording {
 	events: readonly RecordingEvent[] | AppendOnlySignalArray<RecordingEvent>;
-	#isLive: boolean;
-	isLive(): this is ParsedRecording & { events: AppendOnlySignalArray<RecordingEvent> } {
-		return this.#isLive;
+	#allowsAppends: boolean;
+	allowsAppends(): this is ParsedRecording & { events: AppendOnlySignalArray<RecordingEvent> } {
+		return this.#allowsAppends;
 	}
 
 	constructor(
@@ -117,7 +117,7 @@ export class ParsedRecording {
 		isLive: boolean = false,
 	) {
 		this.events = isLive ? createAppendOnlyReactiveArray(events) : events;
-		this.#isLive = isLive;
+		this.#allowsAppends = isLive;
 	}
 
 	lastEvent() {
@@ -131,14 +131,14 @@ export class ParsedRecording {
 			this.events[0] ?? raise(new Error(`Recording file ${this.combinedPartNumber} does not contain any events`))
 		);
 	}
-	makeUnlive() {
-		this.#isLive = false;
+	freeze() {
+		this.#allowsAppends = false;
 		if (isAppendOnlyReactiveArray(this.events)) {
 			this.events = this.events.unwrap();
 		}
 	}
 	append(events: RecordingEvent[], currentParsingContext: ParseRecordingFileContext) {
-		if (!this.isLive()) {
+		if (!this.allowsAppends()) {
 			throw new Error('Cannot append to non-live recording');
 		}
 		this.events.push(...events);
@@ -158,9 +158,32 @@ export class CombinedRecording {
 	public splits: AppendOnlyOrArray<RecordingSplit>;
 	public playerPositionEventsWithTracePosition: AppendOnlyOrArray<PlayerPositionEvent>;
 
-	#isLive: boolean;
-	isLive(): this is CombinedRecording & { events: AppendOnlySignalArray<RecordingEvent> } {
-		return this.#isLive;
+	// eslint-disable-next-line solid/reactivity
+	#isLive = createSignal(false);
+	get isLive() {
+		return this.#isLive[0]();
+	}
+	set isLive(value: boolean) {
+		this.#isLive[1](value);
+	}
+
+	// eslint-disable-next-line solid/reactivity
+	#isHostConnected = createSignal(false);
+	get isHostConnected() {
+		return this.#isHostConnected[0]();
+	}
+	set isHostConnected(value: boolean) {
+		this.#isHostConnected[1](value);
+	}
+
+	#allowsAppends: boolean;
+	allowsAppends(): this is CombinedRecording & { events: AppendOnlySignalArray<RecordingEvent> } {
+		return this.#allowsAppends;
+	}
+
+	#liveAppendAfterMs = 1000;
+	get liveAppendAfterMs() {
+		return this.#liveAppendAfterMs;
 	}
 
 	constructor(
@@ -171,25 +194,25 @@ export class CombinedRecording {
 		public readonly allModVersions: ModInfo[],
 		public readonly allHkVizModVersions: string[],
 		public readonly combiningContext: CombineRecordingsContext,
-		isLive: boolean = false,
+		allowsAppends: boolean,
+		isLive: boolean,
 	) {
-		this.#isLive = isLive;
+		this.#allowsAppends = allowsAppends;
 
-		this.events = isLive ? createAppendOnlyReactiveArray(events) : events;
-		this.frameEndEvents = isLive ? createAppendOnlyReactiveArray<FrameEndEvent>([]) : [];
-		this.sceneEvents = isLive ? createAppendOnlyReactiveArray<SceneEvent>([]) : [];
-		this.splits = isLive ? createAppendOnlyReactiveArray<RecordingSplit>([]) : [];
-		this.playerPositionEventsWithTracePosition = isLive
+		this.events = allowsAppends ? createAppendOnlyReactiveArray(events) : events;
+		this.frameEndEvents = allowsAppends ? createAppendOnlyReactiveArray<FrameEndEvent>([]) : [];
+		this.sceneEvents = allowsAppends ? createAppendOnlyReactiveArray<SceneEvent>([]) : [];
+		this.splits = allowsAppends ? createAppendOnlyReactiveArray<RecordingSplit>([]) : [];
+		this.playerPositionEventsWithTracePosition = allowsAppends
 			? createAppendOnlyReactiveArray<PlayerPositionEvent>([])
 			: [];
 
 		this.#processAddedEvents(events);
-
-		this.splits = createRecordingSplits(this);
+		this.#isLive[1](isLive);
 	}
 
 	append(events: RecordingEvent[]) {
-		if (!this.isLive()) {
+		if (!this.allowsAppends()) {
 			throw new Error('Cannot append to non-live recording');
 		}
 		this.events.push(...events);
@@ -217,6 +240,8 @@ export class CombinedRecording {
 				}
 			}
 		}
+
+		this.splits.push(...createRecordingSplits(events));
 	}
 
 	#getLastPlayerDataEventSignal<TField extends PlayerDataField>(field: TField): Signal<PlayerDataEvent<TField>> {
@@ -262,5 +287,24 @@ export class CombinedRecording {
 
 	firstEvent() {
 		return this.events[0] ?? raise(new Error('CombinedRecording does not contain any events'));
+	}
+
+	freeze() {
+		this.#allowsAppends = false;
+		if (isAppendOnlyReactiveArray(this.events)) {
+			this.events = this.events.unwrap();
+		}
+		if (isAppendOnlyReactiveArray(this.frameEndEvents)) {
+			this.frameEndEvents = this.frameEndEvents.unwrap();
+		}
+		if (isAppendOnlyReactiveArray(this.sceneEvents)) {
+			this.sceneEvents = this.sceneEvents.unwrap();
+		}
+		if (isAppendOnlyReactiveArray(this.splits)) {
+			this.splits = this.splits.unwrap();
+		}
+		if (isAppendOnlyReactiveArray(this.playerPositionEventsWithTracePosition)) {
+			this.playerPositionEventsWithTracePosition = this.playerPositionEventsWithTracePosition.unwrap();
+		}
 	}
 }

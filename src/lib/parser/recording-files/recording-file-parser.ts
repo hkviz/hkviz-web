@@ -24,7 +24,6 @@ import {
 } from './events';
 import {
 	HeroStateEvent,
-	ParsedRecording,
 	type RecordingEvent,
 	RecordingFileVersionEvent,
 	SpellDownEvent,

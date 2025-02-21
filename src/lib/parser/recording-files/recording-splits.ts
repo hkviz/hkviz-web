@@ -1,6 +1,6 @@
-import { virtualCharms } from '../charms';
 import { enemiesJournalLang } from '../../hk-data';
-import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../player-data/abilities';
+import { virtualCharms } from '../charms';
+import { abilitiesAndItems } from '../player-data/abilities';
 import {
 	enemies,
 	greyPrinceNames,
@@ -13,13 +13,12 @@ import {
 	getEnemyNameFromDefeatedField,
 	getEnemyNameFromKilledField,
 	isPlayerDataBoolField,
-	isPlayerDataDefeatedField,
-	isPlayerDataKilledField,
 	playerDataFields,
 } from '../player-data/player-data';
-import { type PlayerPositionEvent } from './events/player-position-event';
-import { RecordingEvent, type CombinedRecording } from './recording';
 import { assertNever, parseHtmlEntities } from '../util';
+import { FrameEndEvent, PlayerDataEvent } from './events';
+import { type PlayerPositionEvent } from './events/player-position-event';
+import { RecordingEvent } from './recording';
 
 export const recordingSplitGroups = [
 	{
@@ -111,18 +110,16 @@ function createRecordingSplitFromEnemy(
 //     }
 // }
 
-export interface CreatingRecordingSplitsContext {}
-
 export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[] {
 	const splits: RecordingSplit[] = [];
 
-	for (const field of Object.values(playerDataFields.byFieldName)) {
-		if (isPlayerDataDefeatedField(field)) {
-			const enemyDefeatName = getEnemyNameFromDefeatedField(field);
-			const defeatMapping = playerDataNameToDefeatedName[enemyDefeatName];
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+	for (const event of events) {
+		if (event instanceof PlayerDataEvent) {
+			if (event.isOfDefeatedField()) {
+				const enemyDefeatName = getEnemyNameFromDefeatedField(event.field);
+				const defeatMapping = playerDataNameToDefeatedName[enemyDefeatName];
 				if (!(event.value && !event.previousPlayerDataEventOfField?.value)) {
-					return;
+					continue;
 				}
 
 				if (defeatMapping === undefined) {
@@ -159,12 +156,10 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 				} else {
 					assertNever(defeatMapping);
 				}
-			});
-		} else if (isPlayerDataKilledField(field)) {
-			const enemyName = getEnemyNameFromKilledField(field);
-			const enemyInfo = enemies.byPlayerDataName[enemyName];
-			if (enemyInfo && isEnemyBoss(enemyInfo)) {
-				recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfKilledField()) {
+				const enemyName = getEnemyNameFromKilledField(event.field);
+				const enemyInfo = enemies.byPlayerDataName[enemyName];
+				if (enemyInfo && isEnemyBoss(enemyInfo)) {
 					if (event.value && !event.previousPlayerDataEventOfField?.value) {
 						const split = createRecordingSplitFromEnemy(
 							event.msIntoGame,
@@ -175,15 +170,13 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						splits.push(split);
 						console.log('kill split', split);
 					}
-				});
-			}
-		} else if (field === playerDataFields.byFieldName.killsMegaBeamMiner) {
-			// our good friend the Crystal Guardian has a little special case
-			// its second form does not have a separate killed field, nor defeated field (afaik)
-			// so we need to check the kills field, which at first is 2 an is decreased with each kill
-			// since the killed field handles the first version, only the second version is interesting
+				}
+			} else if (event.isOfField(playerDataFields.byFieldName.killsMegaBeamMiner)) {
+				// The Crystal Guardian has a special case
+				// its second form does not have a separate killed field, nor defeated field (afaik)
+				// so we need to check the kills field, which at first is 2 and is decreased with each kill
+				// since the killed field handles the first version, only the second version is interesting
 
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
 				const previous = event.previousPlayerDataEventOfField;
 				if (event.value === 0 && (!previous || previous.value > 0)) {
 					// the value is 0, so the second form is defeated
@@ -198,10 +191,8 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						),
 					);
 				}
-			});
-		} else if (field === playerDataFields.byFieldName.greyPrinceDefeats) {
-			const enemyInfo = enemies.byPlayerDataName.GreyPrince;
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfField(playerDataFields.byFieldName.greyPrinceDefeats)) {
+				const enemyInfo = enemies.byPlayerDataName.GreyPrince;
 				if (event.value >= 1 && event.previousPlayerDataEventOfField?.value !== event.value) {
 					const enemyName =
 						greyPrinceNames.at(event.value >= greyPrinceNames.length ? -1 : event.value - 1) ??
@@ -216,11 +207,9 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						),
 					);
 				}
-			});
-		} else if (isPlayerDataAbilityOrItemField(field)) {
-			const abilityOrItem = abilitiesAndItems[field.name];
-			if (!abilityOrItem) continue;
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfAbilityOrItemField()) {
+				const abilityOrItem = abilitiesAndItems[event.field.name];
+				if (!abilityOrItem) continue;
 				const boolCondition =
 					isPlayerDataBoolField(event.field) && event.value && !event.previousPlayerDataEventOfField?.value;
 				const intCondition: boolean =
@@ -245,9 +234,7 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 					});
 				}
-			});
-		} else if (field === playerDataFields.byFieldName.charmSlots) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfField(playerDataFields.byFieldName.charmSlots)) {
 				if (
 					event.value > getDefaultValue(playerDataFields.byFieldName.charmSlots) &&
 					event.previousPlayerDataEventOfField?.value !== event.value
@@ -262,9 +249,7 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 					});
 				}
-			});
-		} else if (field === playerDataFields.byFieldName.hasDreamNail) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfField(playerDataFields.byFieldName.hasDreamNail)) {
 				if (event.value && !event.previousPlayerDataEventOfField?.value) {
 					splits.push({
 						msIntoGame: event.msIntoGame,
@@ -276,9 +261,7 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 					});
 				}
-			});
-		} else if (field === playerDataFields.byFieldName.hasDreamGate) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfField(playerDataFields.byFieldName.hasDreamGate)) {
 				if (event.value && !event.previousPlayerDataEventOfField?.value) {
 					splits.push({
 						msIntoGame: event.msIntoGame,
@@ -290,9 +273,7 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 					});
 				}
-			});
-		} else if (field === playerDataFields.byFieldName.dreamNailUpgraded) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfField(playerDataFields.byFieldName.dreamNailUpgraded)) {
 				if (event.value && !event.previousPlayerDataEventOfField?.value) {
 					splits.push({
 						msIntoGame: event.msIntoGame,
@@ -304,9 +285,7 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 					});
 				}
-			});
-		} else if (field === playerDataFields.byFieldName.nailSmithUpgrades) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfField(playerDataFields.byFieldName.nailSmithUpgrades)) {
 				if (event.value === 1 && event.previousPlayerDataEventOfField?.value !== 1) {
 					splits.push({
 						msIntoGame: event.msIntoGame,
@@ -348,9 +327,7 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 					});
 				}
-			});
-		} else if (field === playerDataFields.byFieldName.heartPieces) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfField(playerDataFields.byFieldName.heartPieces)) {
 				if (
 					event.value > 0 &&
 					event.previousPlayerDataEventOfField &&
@@ -390,9 +367,7 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 					});
 				}
-			});
-		} else if (field === playerDataFields.byFieldName.vesselFragments) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			} else if (event.isOfField(playerDataFields.byFieldName.vesselFragments)) {
 				if (
 					event.value > 0 &&
 					event.previousPlayerDataEventOfField &&
@@ -429,44 +404,42 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 					});
 				}
-			});
-		} else {
-			[
-				{ field: playerDataFields.byFieldName.mapAbyss, title: 'Abyss Map' },
-				{
-					field: playerDataFields.byFieldName.mapCity,
-					title: 'City of Tears Map',
-				},
-				{ field: playerDataFields.byFieldName.mapCliffs, title: 'Howling Cliffs Map' },
-				{
-					field: playerDataFields.byFieldName.mapCrossroads,
-					title: 'Forgotten Crossroads Map',
-				},
-				{ field: playerDataFields.byFieldName.mapDeepnest, title: 'Deepnest Map' },
-				{
-					field: playerDataFields.byFieldName.mapFogCanyon,
-					title: 'Fog Canyon Map',
-				},
-				{ field: playerDataFields.byFieldName.mapGreenpath, title: 'Greenpath Map' },
-				{
-					field: playerDataFields.byFieldName.mapMines,
-					title: 'Crystal Peak Map',
-				},
-				{ field: playerDataFields.byFieldName.mapOutskirts, title: "Kingdom's Edge Map" },
-				{
-					field: playerDataFields.byFieldName.mapRestingGrounds,
-					title: 'Resting Grounds Map',
-				},
-				{ field: playerDataFields.byFieldName.mapRoyalGardens, title: "Queen's Gardens Map" },
+			} else {
+				[
+					{ field: playerDataFields.byFieldName.mapAbyss, title: 'Abyss Map' },
+					{
+						field: playerDataFields.byFieldName.mapCity,
+						title: 'City of Tears Map',
+					},
+					{ field: playerDataFields.byFieldName.mapCliffs, title: 'Howling Cliffs Map' },
+					{
+						field: playerDataFields.byFieldName.mapCrossroads,
+						title: 'Forgotten Crossroads Map',
+					},
+					{ field: playerDataFields.byFieldName.mapDeepnest, title: 'Deepnest Map' },
+					{
+						field: playerDataFields.byFieldName.mapFogCanyon,
+						title: 'Fog Canyon Map',
+					},
+					{ field: playerDataFields.byFieldName.mapGreenpath, title: 'Greenpath Map' },
+					{
+						field: playerDataFields.byFieldName.mapMines,
+						title: 'Crystal Peak Map',
+					},
+					{ field: playerDataFields.byFieldName.mapOutskirts, title: "Kingdom's Edge Map" },
+					{
+						field: playerDataFields.byFieldName.mapRestingGrounds,
+						title: 'Resting Grounds Map',
+					},
+					{ field: playerDataFields.byFieldName.mapRoyalGardens, title: "Queen's Gardens Map" },
 
-				{
-					field: playerDataFields.byFieldName.mapFungalWastes,
-					title: 'Fungal Wastes Map',
-				},
-				{ field: playerDataFields.byFieldName.mapWaterways, title: 'Royal Waterways Map' },
-			].map((map) => {
-				if (field === map.field) {
-					recording.allPlayerDataEventsOfField(field).forEach((event) => {
+					{
+						field: playerDataFields.byFieldName.mapFungalWastes,
+						title: 'Fungal Wastes Map',
+					},
+					{ field: playerDataFields.byFieldName.mapWaterways, title: 'Royal Waterways Map' },
+				].forEach((map) => {
+					if (event.isOfField(map.field)) {
 						if (event.value && !event.previousPlayerDataEventOfField?.value) {
 							splits.push({
 								msIntoGame: event.msIntoGame,
@@ -478,137 +451,133 @@ export function createRecordingSplits(events: RecordingEvent[]): RecordingSplit[
 								previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 							});
 						}
+					}
+				});
+			}
+		} else if (event instanceof FrameEndEvent) {
+			// ----- CHARMS -----
+			for (const virtualCharm of virtualCharms) {
+				if (
+					virtualCharm.hasCharm(event) &&
+					(!event.previousFrameEndEvent || !virtualCharm.hasCharm(event.previousFrameEndEvent))
+				) {
+					splits.push({
+						msIntoGame: event.msIntoGame,
+						title: `${virtualCharm.name}`,
+						tooltip: `Got ${virtualCharm.name}`,
+						imageUrl: `/ingame-sprites/charms/${virtualCharm.spriteName}.png`,
+						group: recordingSplitGroupsByName.charmCollection,
+						debugInfo: undefined,
+						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 					});
 				}
-			});
-		}
-	}
+			}
 
-	// ----- CHARMS -----
-	for (const virtualCharm of virtualCharms) {
-		for (const frameEndEvent of recording.frameEndEvents) {
-			if (
-				virtualCharm.hasCharm(frameEndEvent) &&
-				(!frameEndEvent.previousFrameEndEvent || !virtualCharm.hasCharm(frameEndEvent.previousFrameEndEvent))
-			) {
+			// ----- FLOWER -----
+			{
+				const previousEvent = event.previousFrameEndEvent;
+				const hadBrokenFlowerLastFrame = previousEvent?.xunFlowerBroken ?? false;
+				const hadFlowerLastFrame = (previousEvent?.hasXunFlower ?? false) && !hadBrokenFlowerLastFrame;
+
+				const hasBrokenFlowerThisFrame = event.xunFlowerBroken;
+				const hasFlowerThisFrame = event.hasXunFlower && !hasBrokenFlowerThisFrame;
+
+				if (!hadFlowerLastFrame && hasFlowerThisFrame) {
+					splits.push({
+						msIntoGame: event.msIntoGame,
+						title: 'Delicate Flower',
+						tooltip: 'Got Delicate Flower',
+						imageUrl: '/ingame-sprites/inventory/White_Flower_Full.png',
+						group: recordingSplitGroupsByName.items,
+						debugInfo: undefined,
+						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+					});
+				}
+				if (!hadBrokenFlowerLastFrame && hasBrokenFlowerThisFrame) {
+					splits.push({
+						msIntoGame: event.msIntoGame,
+						title: 'Ruined Flower',
+						tooltip: 'Broke Delicate Flower',
+						imageUrl: '/ingame-sprites/inventory/White_Flower_Half.png',
+						group: recordingSplitGroupsByName.items,
+						debugInfo: undefined,
+						previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+					});
+				}
+			}
+
+			// ----- SPELL LEVELS -----
+			// fireball
+			if (event.fireballLevel === 1 && event.previousFrameEndEvent?.fireballLevel !== 1) {
 				splits.push({
-					msIntoGame: frameEndEvent.msIntoGame,
-					title: `${virtualCharm.name}`,
-					tooltip: `Got ${virtualCharm.name}`,
-					imageUrl: `/ingame-sprites/charms/${virtualCharm.spriteName}.png`,
-					group: recordingSplitGroupsByName.charmCollection,
+					msIntoGame: event.msIntoGame,
+					title: 'Vengeful Spirit',
+					tooltip: 'Got Vengeful Spirit',
+					imageUrl: '/ingame-sprites/inventory/Inv_0025_spell_fireball_01.png',
+					group: recordingSplitGroupsByName.abilities,
 					debugInfo: undefined,
-					previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
+					previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+				});
+			}
+			if (event.fireballLevel === 2 && event.previousFrameEndEvent?.fireballLevel !== 2) {
+				splits.push({
+					msIntoGame: event.msIntoGame,
+					title: 'Shade Soul',
+					tooltip: 'Got Shade Soul (upgrade for Vengeful Spirit)',
+					imageUrl: '/ingame-sprites/inventory/Inv_0025_spell_fireball_01_level2.png',
+					group: recordingSplitGroupsByName.abilities,
+					debugInfo: undefined,
+					previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+				});
+			}
+			// up spell
+			if (event.screamLevel === 1 && event.previousFrameEndEvent?.screamLevel !== 1) {
+				splits.push({
+					msIntoGame: event.msIntoGame,
+					title: 'Howling Wraiths',
+					tooltip: 'Got Howling Wraiths',
+					imageUrl: '/ingame-sprites/inventory/Inv_0024_spell_scream_01.png',
+					group: recordingSplitGroupsByName.abilities,
+					debugInfo: undefined,
+					previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+				});
+			}
+			if (event.screamLevel === 2 && event.previousFrameEndEvent?.screamLevel !== 2) {
+				splits.push({
+					msIntoGame: event.msIntoGame,
+					title: 'Abyss Shriek',
+					tooltip: 'Got Abyss Shriek (upgrade for Howling Wraiths)',
+					imageUrl: '/ingame-sprites/inventory/Inv_0024_spell_scream_01_level2.png',
+					group: recordingSplitGroupsByName.abilities,
+					debugInfo: undefined,
+					previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+				});
+			}
+			// down spell
+			if (event.quakeLevel === 1 && event.previousFrameEndEvent?.quakeLevel !== 1) {
+				splits.push({
+					msIntoGame: event.msIntoGame,
+					title: 'Desolate Dive',
+					tooltip: 'Got Howling Wraiths',
+					imageUrl: '/ingame-sprites/inventory/Inv_0026_spell_quake_01.png',
+					group: recordingSplitGroupsByName.abilities,
+					debugInfo: undefined,
+					previousPlayerPositionEvent: event.previousPlayerPositionEvent,
+				});
+			}
+			if (event.quakeLevel === 2 && event.previousFrameEndEvent?.quakeLevel !== 2) {
+				splits.push({
+					msIntoGame: event.msIntoGame,
+					title: 'Descending Dark',
+					tooltip: 'Got Descending Dark (upgrade for Desolate Dive)',
+					imageUrl: '/ingame-sprites/inventory/Inv_0026_spell_quake_01_level2.png',
+					group: recordingSplitGroupsByName.abilities,
+					debugInfo: undefined,
+					previousPlayerPositionEvent: event.previousPlayerPositionEvent,
 				});
 			}
 		}
 	}
 
-	// ----- FLOWER -----
-	let hadFlowerLastFrame = false;
-	let hadBrokenFlowerLastFrame = false;
-	for (const frameEndEvent of recording.frameEndEvents) {
-		const xunFlowerBrokenThisFrame = frameEndEvent.xunFlowerBroken;
-		const hasFlowerThisFrame = frameEndEvent.hasXunFlower && !xunFlowerBrokenThisFrame;
-
-		if (!hadFlowerLastFrame && hasFlowerThisFrame) {
-			splits.push({
-				msIntoGame: frameEndEvent.msIntoGame,
-				title: 'Delicate Flower',
-				tooltip: 'Got Delicate Flower',
-				imageUrl: '/ingame-sprites/inventory/White_Flower_Full.png',
-				group: recordingSplitGroupsByName.items,
-				debugInfo: undefined,
-				previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
-			});
-		}
-		if (!hadBrokenFlowerLastFrame && xunFlowerBrokenThisFrame) {
-			splits.push({
-				msIntoGame: frameEndEvent.msIntoGame,
-				title: 'Ruined Flower',
-				tooltip: 'Broke Delicate Flower',
-				imageUrl: '/ingame-sprites/inventory/White_Flower_Half.png',
-				group: recordingSplitGroupsByName.items,
-				debugInfo: undefined,
-				previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
-			});
-		}
-		hadFlowerLastFrame = hasFlowerThisFrame;
-		hadBrokenFlowerLastFrame = xunFlowerBrokenThisFrame;
-	}
-
-	// Spell levels
-	for (const frameEndEvent of recording.frameEndEvents) {
-		// fireball
-		if (frameEndEvent.fireballLevel === 1 && frameEndEvent.previousFrameEndEvent?.fireballLevel !== 1) {
-			splits.push({
-				msIntoGame: frameEndEvent.msIntoGame,
-				title: 'Vengeful Spirit',
-				tooltip: 'Got Vengeful Spirit',
-				imageUrl: '/ingame-sprites/inventory/Inv_0025_spell_fireball_01.png',
-				group: recordingSplitGroupsByName.abilities,
-				debugInfo: undefined,
-				previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
-			});
-		}
-		if (frameEndEvent.fireballLevel === 2 && frameEndEvent.previousFrameEndEvent?.fireballLevel !== 2) {
-			splits.push({
-				msIntoGame: frameEndEvent.msIntoGame,
-				title: 'Shade Soul',
-				tooltip: 'Got Shade Soul (upgrade for Vengeful Spirit)',
-				imageUrl: '/ingame-sprites/inventory/Inv_0025_spell_fireball_01_level2.png',
-				group: recordingSplitGroupsByName.abilities,
-				debugInfo: undefined,
-				previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
-			});
-		}
-		// up spell
-		if (frameEndEvent.screamLevel === 1 && frameEndEvent.previousFrameEndEvent?.screamLevel !== 1) {
-			splits.push({
-				msIntoGame: frameEndEvent.msIntoGame,
-				title: 'Howling Wraiths',
-				tooltip: 'Got Howling Wraiths',
-				imageUrl: '/ingame-sprites/inventory/Inv_0024_spell_scream_01.png',
-				group: recordingSplitGroupsByName.abilities,
-				debugInfo: undefined,
-				previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
-			});
-		}
-		if (frameEndEvent.screamLevel === 2 && frameEndEvent.previousFrameEndEvent?.screamLevel !== 2) {
-			splits.push({
-				msIntoGame: frameEndEvent.msIntoGame,
-				title: 'Abyss Shriek',
-				tooltip: 'Got Abyss Shriek (upgrade for Howling Wraiths)',
-				imageUrl: '/ingame-sprites/inventory/Inv_0024_spell_scream_01_level2.png',
-				group: recordingSplitGroupsByName.abilities,
-				debugInfo: undefined,
-				previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
-			});
-		}
-		// down spell
-		if (frameEndEvent.quakeLevel === 1 && frameEndEvent.previousFrameEndEvent?.quakeLevel !== 1) {
-			splits.push({
-				msIntoGame: frameEndEvent.msIntoGame,
-				title: 'Desolate Dive',
-				tooltip: 'Got Howling Wraiths',
-				imageUrl: '/ingame-sprites/inventory/Inv_0026_spell_quake_01.png',
-				group: recordingSplitGroupsByName.abilities,
-				debugInfo: undefined,
-				previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
-			});
-		}
-		if (frameEndEvent.quakeLevel === 2 && frameEndEvent.previousFrameEndEvent?.quakeLevel !== 2) {
-			splits.push({
-				msIntoGame: frameEndEvent.msIntoGame,
-				title: 'Descending Dark',
-				tooltip: 'Got Descending Dark (upgrade for Desolate Dive)',
-				imageUrl: '/ingame-sprites/inventory/Inv_0026_spell_quake_01_level2.png',
-				group: recordingSplitGroupsByName.abilities,
-				debugInfo: undefined,
-				previousPlayerPositionEvent: frameEndEvent.previousPlayerPositionEvent,
-			});
-		}
-	}
-
-	return splits.sort((a, b) => a.msIntoGame - b.msIntoGame);
+	return splits; //.sort((a, b) => a.msIntoGame - b.msIntoGame);
 }

@@ -4,4 +4,9 @@ export interface ViewerAppendDataMessage {
 	data: string[];
 }
 
-export type ViewerMessage = ViewerAppendDataMessage;
+export interface ViewerHostStateMessage {
+	type: 'viewer:host-state';
+	connected: boolean;
+}
+
+export type ViewerMessage = ViewerAppendDataMessage | ViewerHostStateMessage;

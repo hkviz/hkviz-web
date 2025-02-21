@@ -63,11 +63,6 @@ export class InternalAppendOnlyReactiveArray<T> implements Omit<AppendOnlySignal
 	private _getLength: Accessor<number>;
 	private _setLength: Setter<number>;
 
-	[Symbol.iterator] = Array.prototype[Symbol.iterator];
-	filter = Array.prototype.filter;
-	findLast = Array.prototype.findLast;
-	findLastIndex = Array.prototype.findLastIndex;
-
 	constructor(values: T[]) {
 		this._items = values;
 		// eslint-disable-next-line solid/reactivity
@@ -143,10 +138,34 @@ export class InternalAppendOnlyReactiveArray<T> implements Omit<AppendOnlySignal
 	};
 
 	map: Array<T>['map'] = <U>(callbackfn: (value: T, index: number, array: T[]) => U) => {
-		// TODO replace with another method? always dependent on map, but could replace with a optimized memo version
+		// always depends on length.
 		this._getLength();
 		return this._items.map(callbackfn);
 	};
+
+	filter(predicate: (value: T, index: number, array: T[]) => unknown): T[] {
+		// always depends on length
+		this._getLength();
+		return this._items.filter(predicate);
+	}
+
+	findLastIndex(predicate: (value: T, index: number, array: T[]) => unknown): number {
+		// always depends on length
+		this._getLength();
+		return this._items.findLastIndex(predicate);
+	}
+
+	findLast(predicate: (value: T, index: number, array: T[]) => unknown): T | undefined {
+		// always depends on length
+		this._getLength();
+		return this._items.findLast(predicate);
+	}
+
+	[Symbol.iterator](): IterableIterator<T> {
+		// always depends on length
+		this._getLength();
+		return this._items[Symbol.iterator]();
+	}
 }
 
 export function createAppendOnlyReactiveArray<T>(values: NotFunction<T>[]): AppendOnlySignalArray<NotFunction<T>> {

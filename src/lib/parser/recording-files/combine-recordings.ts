@@ -1,3 +1,4 @@
+import { scale } from '../map-data/scaling';
 import { getDefaultValue, playerDataFields, type PlayerDataField } from '../player-data/player-data';
 import { isVersionBefore1_4_0 } from '../recording-file-version';
 import { raise } from '../util';
@@ -255,6 +256,7 @@ function internalCombineRecordingEvents(
 					event.mapDistanceToPrevious = ctx.previousPlayerPositionEventWithMapPosition.mapPosition.distanceTo(
 						event.mapPosition,
 					);
+					event.isJump = (event.mapDistanceToPrevious ?? 0) > scale(1.5);
 				}
 				if (event.mapPosition != null) {
 					ctx.previousPlayerPositionEventWithMapPosition = event;
@@ -367,6 +369,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 		ctx,
 		// todo make not live when not live?
 		true,
+		false,
 	);
 }
 

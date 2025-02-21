@@ -31,6 +31,12 @@ export function createGameplayStore() {
 		timeFrame,
 		isSteelSoul,
 		reset,
+		isLive() {
+			return recording()?.isLive ?? false;
+		},
+		isHostConnected() {
+			return recording()?.isHostConnected ?? false;
+		},
 	};
 }
 export type GameplayStore = ReturnType<typeof createGameplayStore>;
