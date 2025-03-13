@@ -2,7 +2,8 @@ import * as v from 'valibot';
 
 const envSchema = v.object({
 	DATABASE_URL: v.pipe(v.string(), v.url()),
-	NODE_ENV: v.picklist(['development', 'test', 'production']),
+	DATABASE_AUTH_TOKEN: v.string(),
+	NODE_ENV: v.optional(v.picklist(['development', 'test', 'production']), 'development'),
 	AUTH_SECRET: v.string(),
 	// VERCEL_URL doesn't include `https` so it cant be validated as a URL
 	AUTH_URL: v.string(),
@@ -35,11 +36,18 @@ const envSchema = v.object({
 
 	// compat api
 	COMPAT_API_KEY: v.string(),
+
+	// make all requests return 503:
+	MAINTENANCE_MODE: v.pipe(
+		v.optional(v.string()),
+		v.transform((v) => v === 'true'),
+	),
 });
 export type Env = v.InferOutput<typeof envSchema>;
 
 const envPreParse: Record<keyof Env, string | undefined> = {
 	DATABASE_URL: process.env.DATABASE_URL,
+	DATABASE_AUTH_TOKEN: process.env.DATABASE_AUTH_TOKEN,
 	NODE_ENV: process.env.NODE_ENV,
 	AUTH_SECRET: process.env.AUTH_SECRET,
 	AUTH_URL: process.env.VERCEL_URL ?? process.env.AUTH_URL,
@@ -66,6 +74,8 @@ const envPreParse: Record<keyof Env, string | undefined> = {
 	FILE_DOWNLOAD_PATH: process.env.FILE_DOWNLOAD_PATH,
 
 	COMPAT_API_KEY: process.env.COMPAT_API_KEY,
+
+	MAINTENANCE_MODE: process.env.MAINTENANCE_MODE,
 };
 
 const parseResult = v.safeParse(envSchema, envPreParse);

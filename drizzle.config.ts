@@ -1,13 +1,14 @@
 import 'dotenv/config';
-import { type Config } from 'drizzle-kit';
+import { defineConfig } from 'drizzle-kit';
+import { env } from './src/env';
 
-import { env } from '~/env.mjs';
-
-export default {
+export default defineConfig({
+	out: './drizzle',
 	schema: './src/server/db/schema.ts',
-	driver: 'mysql2',
+	dialect: 'turso',
 	dbCredentials: {
-		connectionString: env.DATABASE_URL,
+		url: env.DATABASE_URL,
+		authToken: env.DATABASE_AUTH_TOKEN,
 	},
 	tablesFilter: ['hkviz_*'],
-} satisfies Config;
+});
