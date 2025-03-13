@@ -36,6 +36,12 @@ const envSchema = v.object({
 
 	// compat api
 	COMPAT_API_KEY: v.string(),
+
+	// make all requests return 503:
+	MAINTENANCE_MODE: v.pipe(
+		v.optional(v.string()),
+		v.transform((v) => v === 'true'),
+	),
 });
 export type Env = v.InferOutput<typeof envSchema>;
 
@@ -68,6 +74,8 @@ const envPreParse: Record<keyof Env, string | undefined> = {
 	FILE_DOWNLOAD_PATH: process.env.FILE_DOWNLOAD_PATH,
 
 	COMPAT_API_KEY: process.env.COMPAT_API_KEY,
+
+	MAINTENANCE_MODE: process.env.MAINTENANCE_MODE,
 };
 
 const parseResult = v.safeParse(envSchema, envPreParse);
