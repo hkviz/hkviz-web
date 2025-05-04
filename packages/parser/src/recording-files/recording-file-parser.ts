@@ -241,6 +241,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
                     const version = args[0]!;
 
                     if (isKnownRecordingFileVersion(version)) {
+                        console.log(`Switching to recording file version ${version}`);
                         currentRecordingFileVersion = version;
                     } else {
                         console.error(

@@ -99,7 +99,7 @@ export const runFileV1Schema = v.object({
 });
 
 export const userV1Schema = v.object({
-    id: v.pipe(v.string(), v.uuid()),
+    id: v.string(),
     name: v.string(),
 });
 
