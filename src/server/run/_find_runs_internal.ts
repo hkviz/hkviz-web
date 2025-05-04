@@ -200,7 +200,7 @@ export async function findRunsInternal({
 						);
 
 				return {
-					id,
+					id: isAnonymAccess ? filter.anonymAccessKey : id,
 					title: isAnonymAccess ? (anonymAccessTitle ?? title) : title,
 					description,
 					createdAt,
@@ -211,8 +211,8 @@ export async function findRunsInternal({
 								.filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
 								.map((kv) => kv[0].slice(4)) as TagCode[]),
 					user: getOrMakeUser(
-						isResearchView ? '' : run.user.id,
-						isResearchView ? 'Anonym' : (run.user.name ?? 'Unnamed player'),
+						isResearchView || isAnonymAccess ? '' : run.user.id,
+						isResearchView || isAnonymAccess ? 'Anonym' : (run.user.name ?? 'Unnamed player'),
 					),
 					startedAt: gameState?.startedAt ?? createdAt,
 					lastPlayedAt: gameState?.endedAt ?? updatedAt,
