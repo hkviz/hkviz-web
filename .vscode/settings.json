@@ -17,5 +17,6 @@
 		".*Styles",
 		".*Class",
 		".*ClassName"
-	]
+	],
+	"cSpell.words": ["Arrayish", "inperformant"]
 }

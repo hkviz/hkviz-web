@@ -5,21 +5,22 @@ import { type SceneEvent } from './scene-event';
 
 type PlayerPositionEventOptions = RecordingEventBaseOptions & Pick<PlayerPositionEvent, 'position' | 'sceneEvent'>;
 export class PlayerPositionEvent extends RecordingEventBase {
-    public position: Vector2;
-    public sceneEvent: SceneEvent;
-    public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
+	public position: Vector2;
+	public sceneEvent: SceneEvent;
+	public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
 
-    public mapPosition: Vector2 | null = null;
-    public previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
-    public mapDistanceToPrevious: number | null = null;
+	public mapPosition: Vector2 | null = null;
+	public previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
+	public mapDistanceToPrevious: number | null = null;
+	public isJump: boolean = true;
 
-    constructor(options: PlayerPositionEventOptions) {
-        super(options);
-        this.position = options.position;
-        this.sceneEvent = options.sceneEvent;
-    }
+	constructor(options: PlayerPositionEventOptions) {
+		super(options);
+		this.position = options.position;
+		this.sceneEvent = options.sceneEvent;
+	}
 
-    calcMapPosition() {
-        this.mapPosition = playerPositionToMapPosition(this.position, this.sceneEvent) ?? null;
-    }
+	calcMapPosition() {
+		this.mapPosition = playerPositionToMapPosition(this.position, this.sceneEvent) ?? null;
+	}
 }
