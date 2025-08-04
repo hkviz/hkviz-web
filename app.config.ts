@@ -1,16 +1,16 @@
 import { defineConfig } from '@solidjs/start/config';
+import type { MdxOptions } from '@vinxi/plugin-mdx';
 import pkg from '@vinxi/plugin-mdx';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkToc from 'remark-toc';
 import lqip from 'vite-plugin-lqip';
-import type { MdxOptions } from '@vinxi/plugin-mdx';
 // import { imagetoolsWithAverageColor } from './image-processing';
-import { imagetools } from 'vite-imagetools';
-import { visit } from 'unist-util-visit';
 import type { Node } from 'unist';
-import devtools from 'solid-devtools/vite';
+import { visit } from 'unist-util-visit';
+import { imagetools } from 'vite-imagetools';
+// import devtools from 'solid-devtools/vite';
 import { assetpackPlugin } from './assetpack-plugin';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -69,12 +69,15 @@ const mdxOptions: MdxOptions = {
 
 export default defineConfig({
 	extensions: ['tsx', 'mdx'],
+	server: {
+		preset: 'cloudflare-worker',
+	},
 	vite: {
 		plugins: [
-			devtools({
+			//devtools({
 				/* features options - all disabled by default */
-				autoname: true, // e.g. enable autoname
-			}),
+			//	autoname: true, // e.g. enable autoname
+			//}),
 			mdx.withImports({})(mdxOptions),
 			lqip({
 				sharp: {
