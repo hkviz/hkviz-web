@@ -2,7 +2,3 @@ name = "hkviz-web"
 main = "./.output/server/index.mjs"
 workers_dev = true
 compatibility_date = "2025-08-04"
-compatibility_flags = [ "streams_enable_constructors" ]
-[site]
-bucket = ".output/public"
-
