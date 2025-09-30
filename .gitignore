@@ -31,3 +31,6 @@ Thumbs.db
 
 # Generated via assetpack build
 public/assets
+
+# cloudflare pages
+.wrangler

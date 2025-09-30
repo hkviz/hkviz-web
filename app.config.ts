@@ -70,11 +70,9 @@ const mdxOptions: MdxOptions = {
 export default defineConfig({
 	extensions: ['tsx', 'mdx'],
 	server: {
-		preset: 'cloudflare-worker',
+		preset: "cloudflare-pages",
 		rollupConfig: {
-			external: [
-				"cloudflare:sockets",
-			],
+			external: ["__STATIC_CONTENT_MANIFEST", "node:async_hooks", "cloudflare:sockets"],
 		},
 	},
 	vite: {
