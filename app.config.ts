@@ -67,12 +67,16 @@ const mdxOptions: MdxOptions = {
 	rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, rehypeAutolinkOptions]],
 };
 
+const rollupExternal = [
+	"__STATIC_CONTENT_MANIFEST", "node:async_hooks", "cloudflare:sockets", "nodemailer"
+];
+
 export default defineConfig({
 	extensions: ['tsx', 'mdx'],
 	server: {
 		preset: "cloudflare-pages",
 		rollupConfig: {
-			external: ["__STATIC_CONTENT_MANIFEST", "node:async_hooks", "cloudflare:sockets", "nodemailer"],
+			external: rollupExternal,
 		},
 	},
 	vite: {
@@ -104,7 +108,12 @@ export default defineConfig({
 				},
 			}),
 			assetpackPlugin(),
-		]
+		],
+		build: {
+			rollupOptions: {
+				external: rollupExternal,
+			}
+		}
 	},
 	middleware: './src/middleware.ts',
 });
