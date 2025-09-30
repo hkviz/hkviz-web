@@ -2,3 +2,4 @@ name = "hkviz-web"
 main = "./.output/server/index.mjs"
 workers_dev = true
 compatibility_date = "2025-08-04"
+compatibility_flags = ["nodejs_compat_v2"]

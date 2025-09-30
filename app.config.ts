@@ -101,7 +101,7 @@ export default defineConfig({
 				},
 			}),
 			assetpackPlugin(),
-		],
+		]
 	},
 	middleware: './src/middleware.ts',
 });
