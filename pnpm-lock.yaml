@@ -191,6 +191,9 @@ importers:
       vite-plugin-lqip:
         specifier: ^0.0.5
         version: 0.0.5
+      worker-mailer:
+        specifier: ^1.1.5
+        version: 1.1.5
     devDependencies:
       '@eslint/js':
         specifier: ^9.18.0
@@ -8298,6 +8301,9 @@ packages:
 
   wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
+
+  worker-mailer@1.1.5:
+    resolution: {integrity: sha512-Yq+LiQ25CHjdQakO3IE/srzYFS94XVQH9e0z30y/NoPyw6vLiLacYDPOBDD9CLpEMhy6vTgLQbsJzFBt9/7E2w==}
 
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
@@ -17638,6 +17644,8 @@ snapshots:
   word-wrap@1.2.5: {}
 
   wordwrap@1.0.0: {}
+
+  worker-mailer@1.1.5: {}
 
   wrap-ansi@7.0.0:
     dependencies:
