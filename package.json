@@ -3,7 +3,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vinxi dev",
-		"build": "vinxi build",
+		"build": "NODE_OPTIONS='--max-old-space-size=4096' vinxi build",
 		"start": "vinxi start",
 		"version": "vinxi version",
 		"test": "vitest run",
