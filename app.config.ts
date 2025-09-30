@@ -71,6 +71,11 @@ export default defineConfig({
 	extensions: ['tsx', 'mdx'],
 	server: {
 		preset: 'cloudflare-worker',
+		rollupConfig: {
+			external: [
+				"cloudflare:sockets",
+			],
+		},
 	},
 	vite: {
 		plugins: [
