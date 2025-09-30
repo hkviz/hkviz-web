@@ -1,0 +1,5 @@
+ignoredBuiltDependencies:
+  - '@vercel/speed-insights'
+
+onlyBuiltDependencies:
+  - sharp
