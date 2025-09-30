@@ -11,7 +11,7 @@ interface SendMailOptions {
 
 async function sendMail(options: SendMailOptions) {
 	  // Check if running in development environment
-  if (import.meta.dev) {
+  if ((import.meta as any).dev) {
     // Development: nodemailer
 	  const nodemailer = await import('nodemailer');
 
