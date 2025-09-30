@@ -74,7 +74,7 @@ const rollupExternal = [
 export default defineConfig({
 	extensions: ['tsx', 'mdx'],
 	server: {
-		preset: "cloudflare-module",
+		preset: "cloudflare-worker",
 		rollupConfig: {
 			external: rollupExternal,
 		},
