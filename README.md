@@ -26,7 +26,7 @@ Feel free to [open an issue](https://github.com/hkviz/hkviz-web/issues) on this 
 To set this project up locally:
 
 -   First copy the `.env.example` file in the root directly, and name it `.env`, and fill it with connection information for
-    -   a mysql database (where user accounts, and run metadata is stored)
+    -   a turso database (where user accounts, and run metadata is stored)
     -   a r2/s3 bucket (where analytics files are stored)
     -   auth providers (discord, google, ...). Can be left empty if you are testing with the email login
 -   If needed [install pnpm](https://pnpm.io/installation)
