@@ -1,8 +1,8 @@
 name = "hkviz-web"
 main = "./.output/server/index.mjs"
 workers_dev = true
-compatibility_date = "2025-08-04"
-compatibility_flags = ["nodejs_compat", "nodejs_compat_populate_process_env"]
+compatibility_date = "2025-10-01"
+compatibility_flags = ["nodejs_compat", "nodejs_compat_populate_process_env", "enable_nodejs_process_v2"]
 
 [assets]
 directory = ".output/public"

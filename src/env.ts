@@ -1,4 +1,5 @@
 import * as v from 'valibot';
+import process from 'node:process';
 
 const envSchema = v.object({
 	DATABASE_URL: v.pipe(v.string(), v.url()),
@@ -81,7 +82,7 @@ const envPreParse: Record<keyof Env, string | undefined> = {
 const parseResult = v.safeParse(envSchema, envPreParse);
 
 if (parseResult.success === false) {
-	throw new Error('env variables parse failed\n' + JSON.stringify(parseResult.issues, null, 2));
+	throw new Error('env variables parse failed\n' + JSON.stringify(parseResult.issues, null, 2) + ' actual env: ' + JSON.stringify(process.env, null, 2));
 }
 
 export const env = parseResult.output as Env;

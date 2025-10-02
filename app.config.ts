@@ -78,6 +78,24 @@ export default defineConfig({
 		rollupConfig: {
 			external: rollupExternal,
 		},
+		compatibilityDate: '2025-10-01',
+		cloudflare: {
+			nodeCompat: true,
+			wrangler: {
+				name: 'hkviz-web',
+				compatibility_flags: ["nodejs_compat", "nodejs_compat_populate_process_env", "enable_nodejs_process_v2"],
+				main: './.output/server/index.mjs',
+				compatibility_date: '2025-10-01',
+				assets: {
+					directory: './.output/public',
+				},
+				observability: {
+					logs: {
+						enabled: true,
+					},
+				}
+			}
+		}
 	},
 	vite: {
 		plugins: [
