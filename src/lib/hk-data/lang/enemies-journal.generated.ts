@@ -70,7 +70,7 @@ export const enemiesJournalLang: Record<string, string> = {
     NAME_MINI_SPIDER: 'Deepling',
     NAME_GIANT_HOPPER: 'Great Hopper',
     NOTE_JAR_COLLECTOR:
-        'A shadow that sometimes flits through the caverns, making strange noises to itself. I&#39;ve never seen it clearly so I have no idea what type of creature it is.',
+        'A shadow-sm that sometimes flits through the caverns, making strange noises to itself. I&#39;ve never seen it clearly so I have no idea what type of creature it is.',
     NOTE_HEALTH_SCUTTLER:
         'The bright liquid inside of these little fellows is delicious, and drinking it will make you feel stronger. I wonder how my own innards taste... would it be a heinous thing to try and drink some?',
     NAME_PURE_VESSEL: 'Pure Vessel',

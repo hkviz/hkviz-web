@@ -167,7 +167,7 @@ function AnimationTimeLineColorCodes() {
 			onMouseLeave={handleMouseLeave}
 			onClick={handleClick}
 		>
-			<span class="absolute -left-3 top-[50%] hidden translate-x-[-100%] translate-y-[-35%] text-[0.6rem] @3xl:block">
+			<span class="absolute -left-3 top-[50%] hidden -translate-x-full translate-y-[-35%] text-[0.6rem] @3xl:block">
 				Area
 			</span>
 			<canvas ref={(el) => setCanvas(el)} class="absolute inset-0 h-full w-full" />
@@ -293,7 +293,7 @@ export function AnimationTimeLine(props: { class?: string }) {
 				<Show when={hoveredMsIntoGame()}>
 					{(hoveredMsIntoGame) => (
 						<div
-							class="absolute bottom-0 top-0 w-[1px] bg-foreground"
+							class="absolute bottom-0 top-0 w-px bg-foreground"
 							style={{ left: (100 * hoveredMsIntoGame()) / timeFrame().max + '%' }}
 						/>
 					)}
@@ -326,7 +326,7 @@ export function AnimationOptions(props: { class?: string }) {
 							{Number.isNaN(animationSpeedMultiplier()) ? 0 : animationSpeedMultiplier()}
 						</PopoverTrigger>
 						{/* <PopoverTrigger>abc</PopoverTrigger> */}
-						<PopoverContent class="w-[10rem] p-0">
+						<PopoverContent class="w-40 p-0">
 							<Index each={[250, 100, 75, 50, 25, 10]}>
 								{(it) => (
 									<Button
@@ -347,7 +347,7 @@ export function AnimationOptions(props: { class?: string }) {
 										type="number"
 										placeholder="Custom speed"
 										value={animationSpeedMultiplier().toString()}
-										class="m-2 w-[calc(100%_-_1rem)] rounded-sm pl-8 outline-none"
+										class="m-2 w-[calc(100%-1rem)] rounded-sm pl-8 outline-hidden"
 										onChange={(v: any) => {
 											try {
 												const vv = Number.parseInt(v.target.value);

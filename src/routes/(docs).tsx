@@ -30,7 +30,7 @@ export default function DocsLayout(props: { children: JSXElement }) {
 	return (
 		<MdxOuterWrapper>
 			<div class="flex flex-col lg:flex-row">
-				<div class="h-fit p-3 lg:sticky lg:top-[var(--main-nav-height)]">
+				<div class="h-fit p-3 lg:sticky lg:top-(--main-nav-height)">
 					<Card class="h-fit p-3">
 						<SubMenuSectionTitle>
 							How to{"'"}s for <HKVizText />

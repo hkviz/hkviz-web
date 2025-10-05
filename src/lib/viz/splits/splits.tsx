@@ -36,7 +36,7 @@ const RunSplitRow: Component<RowProps> = (props) => {
 
 	const activeStateClasses = () =>
 		props.activeState === 'past'
-			? 'bg-gradient-to-r from-green-300/10 to-green-500/20 dark:from-green-500/10 dark:to-green-500/15'
+			? 'bg-linear-to-r from-green-300/10 to-green-500/20 dark:from-green-500/10 dark:to-green-500/15'
 			: props.activeState === 'next'
 				? 'bg-blue-300 dark:bg-blue-800'
 				: props.activeState === 'future'

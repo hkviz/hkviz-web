@@ -14,10 +14,10 @@ export function MdxLayout(props: { children: JSXElement }) {
 
 export function MdxOuterWrapper(props: { children: JSXElement }) {
 	const sharedHeaderClasses =
-		'scroll-mt-[var(--scroll-margin-top)] target:bg-amber-400 target:bg-opacity-70 dark:target:bg-opacity-30 -ml-2 px-2 rounded max-w-fit ';
+		'scroll-mt-(--scroll-margin-top) target:bg-amber-400/70 dark:target:bg-amber-400/30 -ml-2 px-2 rounded max-w-fit ';
 
 	const largeHeaderClasses = sharedHeaderClasses + ' font-serif';
-	const smallHeaderClasses = sharedHeaderClasses + ' font-serifMixedCase';
+	const smallHeaderClasses = sharedHeaderClasses + ' font-serif-mixed-case';
 
 	return (
 		<MDXProvider
@@ -37,7 +37,7 @@ export function MdxOuterWrapper(props: { children: JSXElement }) {
 
 export function MdxInnerWrapper(props: { children: JSXElement; class?: string }) {
 	return (
-		<div class={cn('prose mx-auto my-[4rem] max-w-[90ch] p-4 dark:prose-invert', props.class)}>
+		<div class={cn('prose mx-auto my-16 max-w-[90ch] p-4 dark:prose-invert', props.class)}>
 			{props.children}
 		</div>
 	);

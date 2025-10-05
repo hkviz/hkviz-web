@@ -510,7 +510,7 @@ export function countryFlag(country: CountryCode): string | null {
 }
 
 export function CountryFlag(props: { code: CountryCode }) {
-	const flag = () => countryFlag(props.code)?.replace('<svg', '<svg class="w-[1rem] h-[0.666rem]"');
+	const flag = () => countryFlag(props.code)?.replace('<svg', '<svg class="w-4 h-[0.666rem]"');
 	return (
 		<Show when={flag()}>
 			{(flag) => (

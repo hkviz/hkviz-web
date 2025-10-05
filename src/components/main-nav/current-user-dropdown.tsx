@@ -35,7 +35,7 @@ export const CurrentUserDropdown: Component<{
 				class={cn('app-region-no-drag group', props.class)}
 			>
 				{props.session.user?.name ?? 'Account'}
-				<ChevronDown class="ml-1 h-4 w-4 transition-transform group-data-[expanded]:rotate-180" />
+				<ChevronDown class="ml-1 h-4 w-4 transition-transform group-data-expanded:rotate-180" />
 			</DropdownMenuTrigger>
 			<DropdownMenuContent class="w-64">
 				<MenuItemContextProvider

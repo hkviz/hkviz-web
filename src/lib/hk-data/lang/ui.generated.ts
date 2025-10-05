@@ -338,7 +338,7 @@ export const uiLangGenerated: Record<string, string> = {
     INV_NAME_ART_UPPER: 'Dash Slash',
     KEY_BLACKEGG: 'Black Egg Temple',
     INV_DESC_SPELL_FIREBALL2:
-        'Conjure a shadow that will fly forward and burn foes in its path.&lt;br&gt;&lt;br&gt;The shadow requires SOUL to be conjured. Strike enemies to gather SOUL.',
+        'Conjure a shadow-sm that will fly forward and burn foes in its path.&lt;br&gt;&lt;br&gt;The shadow-sm requires SOUL to be conjured. Strike enemies to gather SOUL.',
     CHARM_NAME_10: "Defender's Crest",
     CHARM_NAME_13: 'Mark of Pride',
     CTRL_ZOOM_IN: 'Zoom In',

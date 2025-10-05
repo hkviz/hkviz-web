@@ -282,7 +282,7 @@ export function ColorModeExpTableScreenshot() {
 
 export function GodhomeScreenshot() {
 	return (
-		<ImageContainer caption="Godhome pantheons displayed on the map" class="max-w-[30rem]">
+		<ImageContainer caption="Godhome pantheons displayed on the map" class="max-w-120">
 			<ThemedImage
 				srcLight={godhomeLightSrc}
 				srcDark={godhomeDarkSrc}
@@ -296,7 +296,7 @@ export function GodhomeScreenshot() {
 
 export function ColosseumScreenshot() {
 	return (
-		<ImageContainer caption="Colosseum trials displayed on the map" class="max-w-[30rem]">
+		<ImageContainer caption="Colosseum trials displayed on the map" class="max-w-120">
 			<ThemedImage
 				srcLight={colosseumLightSrc}
 				srcDark={colosseumDarkSrc}

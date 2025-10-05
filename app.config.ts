@@ -1,16 +1,16 @@
 import { defineConfig } from '@solidjs/start/config';
+import type { MdxOptions } from '@vinxi/plugin-mdx';
 import pkg from '@vinxi/plugin-mdx';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkToc from 'remark-toc';
 import lqip from 'vite-plugin-lqip';
-import type { MdxOptions } from '@vinxi/plugin-mdx';
 // import { imagetoolsWithAverageColor } from './image-processing';
-import { imagetools } from 'vite-imagetools';
-import { visit } from 'unist-util-visit';
-import type { Node } from 'unist';
 import devtools from 'solid-devtools/vite';
+import type { Node } from 'unist';
+import { visit } from 'unist-util-visit';
+import { imagetools } from 'vite-imagetools';
 import { assetpackPlugin } from './assetpack-plugin';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -24,7 +24,7 @@ const rehypeAutolinkOptions = {
 		ariaHidden: true,
 		tabIndex: -1,
 		className:
-			'hash-link text-zinc-400 dark:text-zinc-600 hover:text-zinc-800 dark:hover:text-zinc-200 no-underline p-2 lg:ml-[calc(-1ch-1rem)]',
+			'hash-link opacity-50 hover:text-zinc-800 dark:hover:text-zinc-200 no-underline p-2 lg:ml-[calc(-1ch-1rem)]',
 		target: '_self',
 	},
 };

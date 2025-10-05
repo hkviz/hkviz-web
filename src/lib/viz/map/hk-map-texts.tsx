@@ -40,7 +40,7 @@ function HkMapText(props: HkMapTextProps) {
 		<text
 			class={
 				'area-name-shadow pointer-events-none drop-shadow-md ' +
-				(props.textData.type === 'area' ? 'font-serif' : 'font-serifMixedCase')
+				(props.textData.type === 'area' ? 'font-serif' : 'font-serif-mixed-case')
 			}
 			text-anchor="middle"
 			dominant-baseline="central"
