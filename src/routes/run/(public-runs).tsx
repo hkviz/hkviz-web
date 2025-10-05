@@ -48,7 +48,7 @@ export default function Runs() {
 	return (
 		<ContentWrapper>
 			<Title>{title()}</Title>
-			<div class="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+			<div class="container mx-auto flex flex-col items-center justify-center gap-12 px-4 py-16">
 				<div class="w-full max-w-[800px]">
 					<h1 class="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Public gameplays</h1>
 

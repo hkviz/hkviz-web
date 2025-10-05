@@ -62,7 +62,7 @@ export function RunCardDropdownMenu(props: {
 					as={Button<'button'>}
 					variant="ghost"
 					size="icon"
-					class="absolute bottom-1 right-[2.5rem] z-[7] flex h-6 items-center rounded-sm"
+					class="absolute bottom-1 right-10 z-7 flex h-6 items-center rounded-sm"
 				>
 					<MoreHorizontal class="h-6 w-6" />
 				</DropdownMenuTrigger>

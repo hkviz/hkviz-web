@@ -1,8 +1,13 @@
+import '@fontsource-variable/cinzel/index.css';
+import '@fontsource-variable/eb-garamond/index.css';
+import '@fontsource-variable/noto-sans/index.css';
+import '@fontsource/cinzel-decorative/latin-700.css';
+import './app.css';
+
 import { MetaProvider, Title } from '@solidjs/meta';
 import { Router } from '@solidjs/router';
 import { FileRoutes } from '@solidjs/start/router';
 import { Suspense } from 'solid-js';
-import './app.css';
 import { ContentCenterWrapper } from './components/content-wrapper';
 import { Footer } from './components/footer';
 import { MainNav } from './components/main-nav/main-nav';

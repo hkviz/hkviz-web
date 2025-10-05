@@ -17,7 +17,7 @@ const Checkbox = <T extends ValidComponent = 'div'>(props: PolymorphicProps<T, C
 			<CheckboxPrimitive.Input class="peer" />
 			<CheckboxPrimitive.Control
 				class={cn(
-					'size-4 shrink-0 rounded-[4px] border border-primary ring-offset-background peer-focus-visible:outline-none peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 data-[disabled]:cursor-not-allowed data-[checked]:border-none data-[indeterminate]:border-none data-[checked]:bg-primary data-[indeterminate]:bg-primary data-[checked]:text-primary-foreground data-[indeterminate]:text-primary-foreground data-[disabled]:opacity-50 data-[disabled]:grayscale',
+					'size-4 shrink-0 rounded-[4px] border border-primary ring-offset-background peer-focus-visible:outline-hidden peer-focus-visible:ring-2 peer-focus-visible:ring-ring peer-focus-visible:ring-offset-2 data-disabled:cursor-not-allowed data-checked:border-none data-indeterminate:border-none data-checked:bg-primary data-indeterminate:bg-primary data-checked:text-primary-foreground data-indeterminate:text-primary-foreground data-disabled:opacity-50 data-disabled:grayscale',
 					props.controlClass,
 				)}
 			>

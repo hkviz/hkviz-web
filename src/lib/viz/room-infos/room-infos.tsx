@@ -233,7 +233,7 @@ export function RoomInfo() {
 		<Card
 			class={cn(
 				cardRoundedMdOnlyClasses,
-				'room-infos-card max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-gradient-to-b from-transparent to-transparent',
+				'room-infos-card max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-linear-to-b from-transparent to-transparent before:bg-card before:inset-0 before:absolute before:-z-10 before:w-full before:h-full',
 			)}
 			style={{
 				'--tw-gradient-from': gradientColor(),

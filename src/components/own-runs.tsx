@@ -90,7 +90,7 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 												}
 											/>
 										</Show>
-										<div class="flex-grow">
+										<div class="grow">
 											<RunCard
 												run={run()}
 												showUser={false}

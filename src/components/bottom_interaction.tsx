@@ -9,7 +9,7 @@ export const BottomInteractionRow: Component<{
 	return (
 		<div
 			class={cn(
-				props.mode + ' bottom-[-1px] left-0 right-0 z-10 border-b border-t bg-background p-3 transition-all',
+				props.mode + ' -bottom-px left-0 right-0 z-10 border-b border-t bg-background p-3 transition-all',
 				props.isVisible ? 'visible opacity-100' : 'invisible translate-y-10 opacity-0',
 			)}
 		>

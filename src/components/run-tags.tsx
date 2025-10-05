@@ -42,7 +42,7 @@ export const RunTag: Component<{
 	return (
 		<Badge
 			class={cn(
-				'relative z-[8] overflow-hidden',
+				'relative z-8 overflow-hidden',
 				props.tag.color.className,
 				removeTagSubmission.pending ? 'bg-zinc-700 hover:bg-zinc-700' : '',
 			)}
@@ -102,7 +102,7 @@ export const RunTags: Component<{
 								variant="outline"
 								size="sm"
 								class={cn(
-									'relative z-[8] h-auto rounded-full bg-background px-2 py-1 text-xs text-black dark:text-white',
+									'relative z-8 h-auto rounded-full bg-background px-2 py-1 text-xs text-black dark:text-white',
 									props.addButtonClass,
 								)}
 							>
@@ -127,7 +127,7 @@ export const RunTags: Component<{
 				</For>
 				<Show when={addTagSubmission.pending}>
 					<li>
-						<Skeleton class="relative z-[8] h-6 w-[4rem] brightness-125" />
+						<Skeleton class="relative z-8 h-6 w-16 brightness-125" />
 					</li>
 				</Show>
 			</ul>

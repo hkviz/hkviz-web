@@ -13,6 +13,7 @@ import {
 	type JSXElement,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { errorGetMessage } from '~/lib/error-get-message';
 import { MAX_RUN_TITLE_LENGTH, cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
@@ -47,7 +48,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { TextField, TextFieldTextArea } from './ui/text-field';
 import { showToast } from './ui/toast';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
-import { createMutableMemo } from '~/lib/create-mutable-memo';
 
 function Duration(props: { seconds: number }) {
 	const duration = () => {
@@ -73,7 +73,7 @@ const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean 
 				<img
 					src={healthFrameImg}
 					alt="Standard game mode frame"
-					class="absolute left-1 top-0 z-[2] h-[6rem] w-auto max-w-none"
+					class="absolute left-1 top-0 z-2 h-24 w-auto max-w-none"
 				/>
 			}
 		>
@@ -82,7 +82,7 @@ const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean 
 					src={healthFrameSteelSoulBrokenImg}
 					alt="Broken Steel Soul game mode frame"
 					class={cn(
-						'absolute left-[-2.5rem] top-[-2rem] z-[2] h-[10rem] w-auto max-w-none',
+						'absolute -left-10 -top-8 z-2 h-40 w-auto max-w-none',
 						interactiveBrightnessClasses,
 					)}
 				/>
@@ -92,7 +92,7 @@ const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean 
 					src={healthFrameSteelSoulImg}
 					alt="Steel Soul game mode frame"
 					class={cn(
-						'roup-focus-visible:brightness-110 absolute left-[-2.5rem] top-[-2rem] z-[2] hidden h-[10rem] w-auto max-w-none sm:block',
+						'roup-focus-visible:brightness-110 absolute -left-10 -top-8 z-2 hidden h-40 w-auto max-w-none sm:block',
 						interactiveBrightnessClasses,
 					)}
 				/>
@@ -100,7 +100,7 @@ const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean 
 					src={healthFrameSteelSoulSmallImg}
 					alt="Steel Soul game mode frame"
 					class={cn(
-						'absolute left-[-2.5rem] top-[-2rem] z-[2] h-[10rem] w-auto max-w-none sm:hidden',
+						'absolute -left-10 -top-8 z-2 h-40 w-auto max-w-none sm:hidden',
 						interactiveBrightnessClasses,
 					)}
 				/>
@@ -116,7 +116,7 @@ const RunCardEpicInfo: Component<{
 	children: JSXElement;
 }> = (props) => {
 	const spans = (
-		<span class={cn('z-[4] flex flex-row items-baseline gap-1 drop-shadow-sm', props.class)}>
+		<span class={cn('z-4 flex flex-row items-baseline gap-1 drop-shadow-xs', props.class)}>
 			<span class="text-xs md:text-sm">{props.title}</span>
 			<span class="text-sm font-bold md:text-base">{props.children}</span>
 		</span>
@@ -125,7 +125,7 @@ const RunCardEpicInfo: Component<{
 	return (
 		<Show when={props.href} fallback={spans}>
 			{(href) => (
-				<A href={href()} class="z-[7] hover:underline hover:drop-shadow-glow-md">
+				<A href={href()} class="z-7 hover:underline hover:drop-shadow-glow-md">
 					{spans}
 				</A>
 			)}
@@ -206,7 +206,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 						maxLength={MAX_RUN_TITLE_LENGTH}
 						disabled={titleSubmission.pending}
 						class={
-							'max-w-auto relative z-[8] -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-sm focus:bg-background focus:text-foreground md:text-2xl'
+							'max-w-auto relative z-8 -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-xs focus:bg-background focus:text-foreground md:text-2xl'
 						}
 					>
 						{title()}
@@ -214,7 +214,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 				</TextField>
 			</Show>
 			<Show when={!props.isOwnRun && props.run.title}>
-				<h2 class="color-white relative z-[8] font-serif text-xl font-bold drop-shadow-sm md:text-2xl">
+				<h2 class="color-white relative z-5 font-serif text-xl font-bold drop-shadow-xs md:text-2xl">
 					{props.run.title}
 				</h2>
 			</Show>
@@ -312,10 +312,10 @@ export const RunCard: Component<{
 				{/* https://css-tricks.com/nested-links/ */}
 				<Show
 					when={props.onClick}
-					fallback={<A href={`/run/${props.run.id}`} class="absolute inset-0 z-[6] block" />}
+					fallback={<A href={`/run/${props.run.id}`} class="absolute inset-0 z-6 block" />}
 				>
 					{(onClick) => (
-						<button onClick={() => onClick()(props.run.id)} class="absolute inset-0 z-[6] block" />
+						<button onClick={() => onClick()(props.run.id)} class="absolute inset-0 z-6 block" />
 					)}
 				</Show>
 
@@ -333,10 +333,10 @@ export const RunCard: Component<{
 							<DropdownMenu>
 								<DropdownMenuTrigger
 									as={Button<'button'>}
-									class="z-[8] inline-flex h-auto p-0 disabled:z-[8]"
+									class="z-8 inline-flex h-auto p-0 disabled:z-8"
 									disabled={visibilityActionSubmission.pending}
 								>
-									<Badge class={'relative z-[8] overflow-hidden disabled:z-[8]'} variant="secondary">
+									<Badge class={'relative z-8 overflow-hidden disabled:z-8'} variant="secondary">
 										<Dynamic component={visibilityIcon()} class="h-4 w-4" />
 										<ChevronDown class="-mr-1 ml-1 h-3 w-3" />
 									</Badge>
@@ -354,38 +354,38 @@ export const RunCard: Component<{
 							</DropdownMenu>
 						</Show>
 					</div>
-					<div class="flex flex-grow flex-row">
-						<div class="relative z-[3] -mb-5 h-[7rem] w-[4rem] shrink-0 origin-top-left scale-75 sm:mb-0 sm:w-[6.5rem] sm:scale-100">
+					<div class="flex grow flex-row">
+						<div class="relative z-3 -mb-5 h-28 w-16 shrink-0 origin-top-left scale-75 sm:mb-0 sm:w-26 sm:scale-100">
 							<HealthFrame isSteelSoul={isSteelSoul()} isBrokenSteelSoul={isBrokenSteelSoul()} />
 							<Show when={(gameState()?.mpReserveMax ?? 100) >= 99}>
 								<img
 									src={soulOrbImgSrc()}
 									alt="Soul orb"
-									class="absolute bottom-[2.75rem] left-[-0.85rem] z-[3] scale-90"
+									class="absolute bottom-11 left-[-0.85rem] z-3 scale-90"
 								/>
 							</Show>
 							<Show when={(gameState()?.mpReserveMax ?? 100) >= 66}>
 								<img
 									src={soulOrbImgSrc()}
 									alt="Soul orb"
-									class="absolute bottom-[1.6rem] left-[-0.4rem] z-[3] scale-95"
+									class="absolute bottom-[1.6rem] left-[-0.4rem] z-3 scale-95"
 								/>
 							</Show>
 							<Show when={(gameState()?.mpReserveMax ?? 100) >= 33}>
 								<img
 									src={soulOrbImgSrc()}
 									alt="Soul orb"
-									class="absolute bottom-[0.65rem] left-[0.5rem] z-[3]"
+									class="absolute bottom-[0.65rem] left-2 z-3"
 								/>
 							</Show>
 						</div>
 						<div class="flex grow flex-col">
-							<div class="relative z-[4] mt-4 flex flex-row flex-wrap gap-1 drop-shadow-sm sm:gap-2">
+							<div class="relative z-4 mt-4 flex flex-row flex-wrap gap-1 drop-shadow-xs sm:gap-2">
 								<Index each={[...Array(gameState()?.maxHealth ?? 5).keys()]}>
 									{() => <img src={healthImgSrc()} alt="Health" class="-mb-1 w-5 sm:w-6" />}
 								</Index>
 							</div>
-							<div class="relative z-[4] mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-sm sm:mt-3">
+							<div class="relative z-4 mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-xs sm:mt-3">
 								<span>
 									<img
 										src={coin2Img}
@@ -455,11 +455,11 @@ export const RunCard: Component<{
 				</Show>
 				{/* Background */}
 				<img
-					class="l-0 t-0 absolute z-[1] h-full w-full bg-black object-cover opacity-70 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
+					class="l-0 t-0 absolute z-1 h-full w-full bg-black object-cover opacity-70 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
 					src={bgImage()}
 					alt="Area background image"
 				/>
-				<div class="absolute inset-0 z-[2] bg-gradient-to-r from-black via-transparent to-black" />
+				<div class="absolute inset-0 z-2 bg-linear-to-r from-black via-transparent to-black" />
 			</div>
 		</Expander>
 	);
@@ -518,7 +518,7 @@ function RunCardLikeButton(props: { run: RunMetadata }) {
 				aria-pressed={hasLiked()}
 				onClick={handleClick}
 				disabled={isSubmitting()}
-				class="group absolute bottom-0 right-0 z-[7] rounded-full"
+				class="group absolute bottom-0 right-0 z-7 rounded-full"
 			>
 				<Heart
 					class={

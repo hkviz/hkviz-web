@@ -41,7 +41,7 @@ export function LinkableSpan(props: {
 			id={props.id}
 			ref={ref}
 			class={cn(
-				'linkable-paragraph scroll-mt-[var(--scroll-margin-top)] target:bg-amber-400 target:bg-opacity-70 dark:target:bg-opacity-30',
+				'linkable-paragraph scroll-mt-(--scroll-margin-top) target:bg-amber-400 target:bg-opacity-70 dark:target:bg-opacity-30',
 				props.class,
 			)}
 			style={{

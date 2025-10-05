@@ -24,7 +24,7 @@ export const ContentWrapper: Component<ContentWrapperProps> = (props) => {
 		>
 			<div
 				class={cn(
-					'absolute inset-0 -z-10 bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-[#6245bc94]/60 to-[#c3cdd8]/60 bg-fixed dark:from-[#5d3da9]/60 dark:to-[#040c15]/60',
+					'absolute inset-0 -z-10 bg-radial from-[#6245bc94]/60 to-[#c3cdd8]/60 bg-fixed dark:from-[#5d3da9]/60 dark:to-[#040c15]/60',
 					props.backgroundClass,
 				)}
 			/>

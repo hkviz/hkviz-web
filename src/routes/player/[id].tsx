@@ -25,7 +25,7 @@ export default function PublicPlayerPage(props: { params: Params }) {
 
 	return (
 		<ContentCenterWrapper>
-			<div class="container flex flex-col items-center justify-center gap-12 px-4 py-16">
+			<div class="container mx-auto flex flex-col items-center justify-center gap-12 px-4 py-16">
 				<div class="w-full max-w-[800px]">
 					<Show
 						when={runs()?.length}

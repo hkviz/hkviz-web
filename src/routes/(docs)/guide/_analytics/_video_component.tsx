@@ -23,7 +23,7 @@ export function Video(props: { width: number; height: number; srcLight: string; 
 		updateIsPlaying();
 	});
 
-	const sharedClassName = 'relative m-0 pointer-events-none';
+	const sharedClassName = 'max-w-[102%] relative -m-px -mt-px -mb-px pointer-events-none';
 	const lightVideoRef = (
 		<video
 			width={props.width}
@@ -32,7 +32,7 @@ export function Video(props: { width: number; height: number; srcLight: string; 
 			autoplay={true}
 			muted={true}
 			playsinline={true}
-			class={cn(sharedClassName + 'block dark:hidden', props.class)}
+			class={cn(sharedClassName, 'block dark:hidden', props.class)}
 			onPlay={updateIsPlaying}
 			onPause={updateIsPlaying}
 			tabIndex={-1}
@@ -49,7 +49,7 @@ export function Video(props: { width: number; height: number; srcLight: string; 
 			autoplay={true}
 			muted={true}
 			playsinline={true}
-			class={cn(sharedClassName + 'left-2 top-[-1px] hidden dark:block', props.class)}
+			class={cn(sharedClassName + 'left-2 -top-px hidden dark:block', props.class)}
 			onPlay={updateIsPlaying}
 			onPause={updateIsPlaying}
 			tabIndex={-1}

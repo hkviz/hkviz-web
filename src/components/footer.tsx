@@ -22,7 +22,7 @@ export const Footer: Component = () => {
 
 	return (
 		<Expander expanded={isVisible()}>
-			<footer class="flex min-h-[var(--footer-height)] w-full flex-col items-center justify-center bg-background">
+			<footer class="flex min-h-(--footer-height) w-full flex-col items-center justify-center bg-background">
 				<div class="grid w-full max-w-[900px] grid-cols-1 p-4 sm:grid-cols-[1fr_2fr_1fr]">
 					<div class="text-balance text-center text-sm text-foreground opacity-80 sm:text-left">
 						<HKVizText /> is not affiliated with Team Cherry. Hollow Knight and all related indicia are
