@@ -13,6 +13,7 @@ import {
 	type JSXElement,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { errorGetMessage } from '~/lib/error-get-message';
 import { MAX_RUN_TITLE_LENGTH, cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
@@ -47,7 +48,6 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { TextField, TextFieldTextArea } from './ui/text-field';
 import { showToast } from './ui/toast';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
-import { createMutableMemo } from '~/lib/create-mutable-memo';
 
 function Duration(props: { seconds: number }) {
 	const duration = () => {
@@ -214,7 +214,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 				</TextField>
 			</Show>
 			<Show when={!props.isOwnRun && props.run.title}>
-				<h2 class="color-white relative z-8 font-serif text-xl font-bold drop-shadow-xs md:text-2xl">
+				<h2 class="color-white relative z-5 font-serif text-xl font-bold drop-shadow-xs md:text-2xl">
 					{props.run.title}
 				</h2>
 			</Show>
