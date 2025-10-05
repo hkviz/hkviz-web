@@ -326,7 +326,7 @@ export function RoomInfo() {
 								{(room) => (
 									<Button
 										size="sm"
-										variant={room().name === selectedRoom() ? undefined : 'outline-solid'}
+										variant={room().name === selectedRoom() ? undefined : 'outline'}
 										onClick={() => {
 											roomDisplayStore.setSelectedSceneName(room().name);
 										}}
