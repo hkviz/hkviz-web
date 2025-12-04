@@ -1,13 +1,14 @@
 import { Title } from '@solidjs/meta';
 import { RouteSectionProps, createAsync } from '@solidjs/router';
-import { Show, createMemo } from 'solid-js';
+import { Show } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card';
-import { GameplayDashboard, createRunFileLoader } from '~/lib/viz';
+import { useUser } from '~/lib/auth/client';
+import { GameplayDashboard } from '~/lib/viz';
+import { createCombinedRunLoader } from '~/lib/viz/loader/combined/run-combined-loader';
 import { RunStoresProvider } from '~/lib/viz/store/store-context';
 import { getRun } from '~/server/run/run-get';
 import { getRunPageTitle } from './_metadata';
-import { useUser } from '~/lib/auth/client';
 
 // TODO
 // export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -19,11 +20,7 @@ function SingleRunLoadingWrapper(props: { id: string }) {
 	const runData = createAsync(() => getRun(props.id));
 	const user = useUser();
 
-	const loader = createMemo(() => {
-		const run = runData();
-		if (!run) return null;
-		return createRunFileLoader(run.files);
-	});
+	const { loader, liveLoader } = createCombinedRunLoader(runData);
 
 	return (
 		<Show when={runData()}>
