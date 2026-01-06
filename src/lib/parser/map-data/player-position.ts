@@ -2,17 +2,22 @@ import { Vector2 } from '../hk-types';
 import { type SceneEvent } from '../recording-files/events/scene-event';
 import { mainRoomDataBySceneName } from './rooms';
 
-export function playerPositionToMapPosition(playerPosition: Vector2, sceneEvent: SceneEvent): Vector2 | undefined {
-    const mapRoom = mainRoomDataBySceneName.get(sceneEvent.getMainVirtualSceneName());
-    if (!mapRoom || !sceneEvent.originOffset || !sceneEvent.sceneSize) return undefined;
+export function playerPositionToMapPosition(
+	playerPosition: Vector2,
+	sceneEvent: SceneEvent | undefined,
+): Vector2 | undefined {
+	if (!sceneEvent) return undefined;
 
-    const { playerPositionBounds } = mapRoom;
+	const mapRoom = mainRoomDataBySceneName.get(sceneEvent.getMainVirtualSceneName());
+	if (!mapRoom || !sceneEvent.originOffset || !sceneEvent.sceneSize) return undefined;
 
-    const scaledPlayerX = playerPosition.x + sceneEvent.originOffset.x;
-    const scaledPlayerY = playerPosition.y + sceneEvent.originOffset.y;
+	const { playerPositionBounds } = mapRoom;
 
-    const x = playerPositionBounds.min.x + playerPositionBounds.size.x * (scaledPlayerX / sceneEvent.sceneSize.x);
-    const y = playerPositionBounds.max.y - playerPositionBounds.size.y * (scaledPlayerY / sceneEvent.sceneSize.y);
+	const scaledPlayerX = playerPosition.x + sceneEvent.originOffset.x;
+	const scaledPlayerY = playerPosition.y + sceneEvent.originOffset.y;
 
-    return new Vector2(x, y);
+	const x = playerPositionBounds.min.x + playerPositionBounds.size.x * (scaledPlayerX / sceneEvent.sceneSize.x);
+	const y = playerPositionBounds.max.y - playerPositionBounds.size.y * (scaledPlayerY / sceneEvent.sceneSize.y);
+
+	return new Vector2(x, y);
 }

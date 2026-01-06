@@ -72,9 +72,7 @@ export const users = table(
 		createdAt: createdAt(),
 		updatedAt: updatedAt(),
 	},
-	(user) => ({
-		emailIdx: index('users_email_idx').on(user.email),
-	}),
+	(user) => [index('users_email_idx').on(user.email)],
 );
 
 export const usersRelations = relations(users, ({ many, one }) => ({
@@ -106,10 +104,10 @@ export const accounts = table(
 		createdAt: createdAt(),
 		updatedAt: updatedAt(),
 	},
-	(account) => ({
-		compoundKey: primaryKey(account.provider, account.providerAccountId),
-		userIdIdx: index('accounts_userId_idx').on(account.userId),
-	}),
+	(account) => [
+		primaryKey({ columns: [account.provider, account.providerAccountId] }),
+		index('accounts_userId_idx').on(account.userId),
+	],
 );
 
 export const accountsRelations = relations(accounts, ({ one }) => ({
@@ -123,9 +121,7 @@ export const sessions = table(
 		userId: text('user_id', { length: 255 }).notNull(),
 		expires: timestamp('expires').notNull(),
 	},
-	(session) => ({
-		userIdIdx: index('userId_idx').on(session.userId),
-	}),
+	(session) => [index('userId_idx').on(session.userId)],
 );
 
 export const sessionsRelations = relations(sessions, ({ one }) => ({
@@ -139,9 +135,7 @@ export const verificationTokens = table(
 		token: text('token', { length: 255 }).notNull(),
 		expires: timestamp('expires').notNull(),
 	},
-	(vt) => ({
-		compoundKey: primaryKey(vt.identifier, vt.token),
-	}),
+	(vt) => [primaryKey({ columns: [vt.identifier, vt.token] })],
 );
 
 const runTagColumns = Object.fromEntries(
@@ -211,17 +205,23 @@ export const runs = table(
 
 		...runGameStateMetaColumns,
 	},
-	(run) => ({
-		userIdVisibilityDeletedArchivedCombinedIntoRunIdIdx: index(
-			'run_userIdVisibilityDeletedArchivedCombinedIntoRunId_idx',
-		).on(run.userId, run.visibility, run.deleted, run.archived, run.combinedIntoRunId),
-		visibilityDeletedArchivedCombinedIntoRunIdIdx: index('run_visibilityDeletedArchivedCombinedIntoRunId_idx').on(
+	(run) => [
+		index('run_userIdVisibilityDeletedArchivedCombinedIntoRunId_idx').on(
+			run.userId,
+			run.visibility,
+			// TODO check if index is useable in archive query.
+			run.deleted,
+			run.archived,
+			run.combinedIntoRunId,
+		),
+		// TODO index should have where public. Possibly add a index per tag.
+		index('run_visibilityDeletedArchivedCombinedIntoRunId_idx').on(
 			run.visibility,
 			run.deleted,
 			run.archived,
 			run.combinedIntoRunId,
 		),
-	}),
+	],
 );
 
 export const runsRelations = relations(runs, ({ one, many }) => ({
@@ -242,9 +242,7 @@ export const runLocalIds = table(
 		runId: uuid('run_id').notNull(),
 		originalRunId: uuid('original_run_id'),
 	},
-	(runLocalId) => ({
-		compoundKey: primaryKey(runLocalId.userId, runLocalId.localId),
-	}),
+	(runLocalId) => [primaryKey({ columns: [runLocalId.userId, runLocalId.localId] })],
 );
 
 export const runLocalIdRelations = relations(runLocalIds, ({ one }) => ({
@@ -267,9 +265,7 @@ export const runFiles = table(
 		contentLength: int('content_length').notNull().default(0),
 		...runGameStateMetaColumns,
 	},
-	(runFile) => ({
-		runIdPartNumberIdx: index('runFiles_runIdPartNumber_idx').on(runFile.runId, runFile.partNumber),
-	}),
+	(runFile) => [index('runFiles_runIdPartNumber_idx').on(runFile.runId, runFile.partNumber)],
 );
 
 export const runFilesRelations = relations(runFiles, ({ one }) => ({
@@ -288,13 +284,9 @@ export const runInteraction = table(
 		updatedAt: updatedAt(),
 		originalRunIds: text('original_run_ids', { mode: 'json' }).$type<string[]>().notNull(),
 	},
-	(runInteraction) => ({
-		runIdTypeUserIdIdx: index('runInteraction_runIdType_idx').on(
-			runInteraction.runId,
-			runInteraction.type,
-			runInteraction.userId,
-		),
-	}),
+	(runInteraction) => [
+		index('runInteraction_runIdType_idx').on(runInteraction.runId, runInteraction.type, runInteraction.userId),
+	],
 );
 
 export const runInteractionRelations = relations(runInteraction, ({ one }) => ({
@@ -315,9 +307,7 @@ export const ingameAuth = table(
 		createdAt: createdAt(),
 		updatedAt: updatedAt(),
 	},
-	(ingameAuth) => ({
-		urlIdIdx: index('ingameAuth_urlId_idx').on(ingameAuth.urlId),
-	}),
+	(ingameAuth) => [index('ingameAuth_urlId_idx').on(ingameAuth.urlId)],
 );
 
 export const ingameAuthRelations = relations(ingameAuth, ({ one }) => ({
@@ -368,10 +358,10 @@ export const userDemographics = table(
 		createdAt: createdAt(),
 		updatedAt: updatedAt(),
 	},
-	(userDemographic) => ({
-		userIdIdx: index('userDemographics_userId_idx').on(userDemographic.userId),
-		participantIdIdx: index('userDemographics_participantId_idx').on(userDemographic.participantId),
-	}),
+	(userDemographic) => [
+		index('userDemographics_userId_idx').on(userDemographic.userId),
+		index('userDemographics_participantId_idx').on(userDemographic.participantId),
+	],
 );
 
 export const userDemographicsRelations = relations(userDemographics, ({ one }) => ({
@@ -403,10 +393,10 @@ export const hkExperience = table(
 		createdAt: createdAt(),
 		updatedAt: updatedAt(),
 	},
-	(hkExperience) => ({
-		userIdIdx: index('hkExperience_userId_idx').on(hkExperience.userId),
-		participantIdIdx: index('hkExperience_participantId_idx').on(hkExperience.participantId),
-	}),
+	(hkExperience) => [
+		index('hkExperience_userId_idx').on(hkExperience.userId),
+		index('hkExperience_participantId_idx').on(hkExperience.participantId),
+	],
 );
 
 export const hkExperienceRelations = relations(hkExperience, ({ one }) => ({
