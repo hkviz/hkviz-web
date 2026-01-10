@@ -1,5 +1,5 @@
 import { A, useBeforeLeave } from '@solidjs/router';
-import { BadgeHelp, Globe, LogIn, Menu } from 'lucide-solid';
+import { BadgeHelp, BookOpen, Globe, LogIn, Menu } from 'lucide-solid';
 import { ErrorBoundary, Show, Suspense, createSignal, type Component } from 'solid-js';
 import { createLoginUrl } from '~/lib/auth/urls';
 // import { useSession } from '~/lib/auth/client';
@@ -30,6 +30,7 @@ export const MainNavLeftSide: Component = () => {
 				icon={BadgeHelp}
 				isActive={({ pathname }) => pathname.startsWith('/guide')}
 			/>
+			<MenuItem href="/research" title="Research" icon={BookOpen} />
 		</>
 	);
 };
@@ -46,7 +47,7 @@ export const MainNav = () => {
 
 	return (
 		<div class="main-nav">
-			<div class="main-nav-inner app-region-drag z-40 flex items-center justify-center bg-background">
+			<div class="main-nav-inner app-region-drag bg-background z-40 flex items-center justify-center">
 				<Button as={A} class="app-region-no-drag" href="/" variant="ghost">
 					<span class="text-lg">
 						<HKVizText />

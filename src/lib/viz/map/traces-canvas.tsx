@@ -139,7 +139,7 @@ export const HKMapTraces: Component = () => {
 			if (frameEvent.dreamGateScene !== playerDataFields.byFieldName.dreamGateScene.defaultValue) {
 				const mapPosition = playerPositionToMapPosition(
 					new Vector2(frameEvent.dreamGateX, frameEvent.dreamGateY),
-					recording.sceneEvents.find((it) => it.sceneName === frameEvent.dreamGateScene)!,
+					recording.sceneEvents.find((it) => it.sceneName === frameEvent.dreamGateScene),
 				);
 				if (mapPosition) {
 					const pinSize = baseLineWidth * 8;
@@ -161,7 +161,7 @@ export const HKMapTraces: Component = () => {
 			if (frameEvent.shadeScene !== playerDataFields.byFieldName.shadeScene.defaultValue) {
 				const mapPosition = playerPositionToMapPosition(
 					new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),
-					recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene)!,
+					recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene),
 				);
 				if (mapPosition) {
 					const shadePinSize = baseLineWidth * 12;

@@ -1,5 +1,5 @@
 import { A, useLocation } from '@solidjs/router';
-import { Cookie, Download, History, Map, UsersRound } from 'lucide-solid';
+import { BookOpen, Cookie, Download, History, Map, UsersRound } from 'lucide-solid';
 import { type JSXElement } from 'solid-js';
 import { HKVizText } from '~/components/HKVizText';
 import { MdxOuterWrapper } from '~/components/mdx-layout';
@@ -48,6 +48,10 @@ export default function DocsLayout(props: { children: JSXElement }) {
 						<Separator />
 						<h3 class="mt-4 font-serif text-xl font-bold">Other links</h3>
 						<SubMenuList>
+							<SubMenuLink href="/research">
+								<BookOpen class="h-4 pr-2" />
+								Research
+							</SubMenuLink>
 							<SubMenuLink href="/credits">
 								<UsersRound class="h-4 pr-2" />
 								Credits
