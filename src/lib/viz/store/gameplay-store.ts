@@ -1,4 +1,4 @@
-import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { createContext, createEffect, createMemo, createSignal, useContext } from 'solid-js';
 import { playerDataFields, type CombinedRecording } from '../../parser';
 
 export function createGameplayStore() {
@@ -21,6 +21,9 @@ export function createGameplayStore() {
 		)?.value;
 		return permaDeathValue === 1 || permaDeathValue === 2;
 	});
+	createEffect(() => {
+		console.log('tf', timeFrame());
+	});
 
 	return {
 		recording,
@@ -28,6 +31,12 @@ export function createGameplayStore() {
 		timeFrame,
 		isSteelSoul,
 		reset,
+		isLive() {
+			return recording()?.isLive ?? false;
+		},
+		isHostConnected() {
+			return recording()?.isHostConnected ?? false;
+		},
 	};
 }
 export type GameplayStore = ReturnType<typeof createGameplayStore>;

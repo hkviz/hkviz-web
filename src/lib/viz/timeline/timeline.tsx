@@ -306,7 +306,17 @@ export function AnimationTimeLine(props: { class?: string }) {
 
 export function AnimationOptions(props: { class?: string }) {
 	const animationStore = useAnimationStore();
+	const gameplayStore = useGameplayStore();
 	const animationSpeedMultiplier = animationStore.speedMultiplier;
+	const isLiveFollowing = animationStore.isLiveFollowing;
+	const isLive = gameplayStore.isLive;
+	const isHostConnected = gameplayStore.isHostConnected;
+
+	function liveClicked() {
+		if (!isLiveFollowing()) {
+			animationStore.setMsIntoGame(gameplayStore.timeFrame().max);
+		}
+	}
 
 	return (
 		<div class={cn('@container', props.class)}>
@@ -319,9 +329,9 @@ export function AnimationOptions(props: { class?: string }) {
 				<PlayButton />
 				<Duration ms={animationStore.msIntoGame()} class="pr-3" withTooltip={true} />
 				<AnimationTimeLine class="col-span-3 row-start-2 mx-2 @3xl:col-span-1 @3xl:row-auto @3xl:px-0" />
-				<div class="relative">
+				<div class="relative flex flex-row">
 					<Popover>
-						<PopoverTrigger as={Button} variant="ghost">
+						<PopoverTrigger as={Button} variant="ghost" class="px-3">
 							<Times />
 							{Number.isNaN(animationSpeedMultiplier()) ? 0 : animationSpeedMultiplier()}
 						</PopoverTrigger>
@@ -362,6 +372,31 @@ export function AnimationOptions(props: { class?: string }) {
 							</div>
 						</PopoverContent>
 					</Popover>
+					<Show when={isLive()}>
+						<Tooltip>
+							<TooltipTrigger as={Button} variant="ghost" onClick={liveClicked} class="-ml-2 px-3">
+								<div
+									class={
+										'round rounded-sm px-2 text-white ' +
+										(!isHostConnected()
+											? 'bg-green-500 dark:bg-green-600'
+											: isLiveFollowing()
+												? 'bg-red-500 dark:bg-red-600'
+												: 'bg-gray-500 dark:bg-gray-600')
+									}
+								>
+									{isHostConnected() ? 'Live' : 'Waiting'}
+								</div>
+							</TooltipTrigger>
+							<TooltipContent>
+								{!isHostConnected()
+									? 'Player is not connected. Waiting for them to join...'
+									: isLiveFollowing()
+										? 'Currently viewing live play stats'
+										: 'Click to view live player stats'}
+							</TooltipContent>
+						</Tooltip>
+					</Show>
 				</div>
 			</Card>
 		</div>

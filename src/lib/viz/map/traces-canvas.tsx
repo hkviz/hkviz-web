@@ -1,5 +1,6 @@
 import { createEffect, type Component } from 'solid-js';
 import {
+	PlayerPositionEvent,
 	Vector2,
 	binarySearchLastIndexBefore,
 	mapVisualExtends,
@@ -10,6 +11,8 @@ import {
 import { createAutoSizeCanvas } from '../canvas';
 import { dreamGatePinSrc, knightPinSrc, shadePinSrc } from '../img-urls';
 import { useAnimationStore, useGameplayStore, useMapZoomStore, useTraceStore } from '../store';
+import { interpolate } from 'd3';
+import { lerp, reverseLerp } from '../util/lerp';
 
 const EMPTY_ARRAY = [] as const;
 
@@ -77,10 +80,15 @@ export const HKMapTraces: Component = () => {
 		}
 
 		// animation
-		const minMsIntoGame = animationStore.msIntoGame() - traceStore.lengthMs();
-		const maxMsIntoGame = animationStore.msIntoGame();
+		const msIntoGame = animationStore.msIntoGame();
+		const minMsIntoGame = msIntoGame - traceStore.lengthMs();
+		const maxMsIntoGame = msIntoGame;
+		const playbackSpeed = animationStore.effectiveSpeedMultiplier();
+		const isPlaying = animationStore.isPlaying();
 
-		const positionEvents = gameplayStore.recording()?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
+		const positionEvents =
+			gameplayStore.recording()?.playerPositionEventsWithTracePosition ??
+			(EMPTY_ARRAY as ReadonlyArray<PlayerPositionEvent>);
 
 		const visibility = traceStore.visibility();
 
@@ -115,7 +123,7 @@ export const HKMapTraces: Component = () => {
 
 				ctx.globalAlpha = opacity ** 0.5; // fade out slower
 				ctx.beginPath();
-				const isJump = (event.mapDistanceToPrevious ?? 0) > scale(1.5);
+				const isJump = event.isJump;
 				ctx.setLineDash(isJump ? dashArray : EMPTY_ARRAY);
 				ctx.lineWidth = isJump ? baseLineWidth / 2 : baseLineWidth;
 
@@ -188,10 +196,27 @@ export const HKMapTraces: Component = () => {
 			previousEvent.msIntoGame + 30000 >= maxMsIntoGame // 15000
 		) {
 			const knightPinSize = baseLineWidth * 15;
+
+			// if speed is high, no need to interpolate, since the knight will be moving fast
+			const currPos = previousEvent.mapPosition!;
+			const nextPos = event?.mapPosition;
+			const interpolate = nextPos && !event.isJump && (playbackSpeed < 15 || !isPlaying);
+
+			let posX: number;
+			let posY: number;
+			if (interpolate) {
+				const t = reverseLerp(previousEvent.msIntoGame, event.msIntoGame, msIntoGame);
+				posX = lerp(currPos.x, nextPos.x, t);
+				posY = lerp(currPos.y, nextPos.y, t);
+			} else {
+				posX = currPos.x;
+				posY = currPos.y;
+			}
+
 			ctx.drawImage(
 				knightPinImage,
-				x(previousEvent.mapPosition!.x) - 0.5 * knightPinSize,
-				y(previousEvent.mapPosition!.y) - 0.5 * knightPinSize,
+				x(posX) - 0.5 * knightPinSize,
+				y(posY) - 0.5 * knightPinSize,
 				knightPinSize,
 				knightPinSize,
 			);

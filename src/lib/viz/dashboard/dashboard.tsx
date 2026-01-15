@@ -6,7 +6,6 @@ import { Card } from '~/components/ui/card';
 import { Resizable, ResizableHandle, ResizablePanel } from '~/components/ui/resizable';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
-import { RunFileInfo, RunFileLoader } from '../loader';
 import { HKMap } from '../map';
 import { RoomInfo } from '../room-infos';
 import { RunSplits } from '../splits';
@@ -18,6 +17,8 @@ import { MobileTabBar } from './mobile-tabs';
 import { RunOverviewTab } from './overview-tab';
 import { LargeScreenTabs } from './tabs-large-screen';
 import { useSplitsStore, useUiStore } from '../store';
+import { RunFileInfo } from '../loader/parts/run-files-info';
+import { RunFileLoader } from '../loader/parts/run-files-loader';
 
 export const DashboardMapOptions: Component = () => {
 	const uiStore = useUiStore();
@@ -210,7 +211,7 @@ export interface GameplayDashboardProps {
 	fileInfos: RunFileInfo[];
 	startDate: Date | undefined;
 	gameplayCard: JSXElement;
-	runFileLoader: RunFileLoader;
+	runFileLoader: RunFileLoader | undefined;
 }
 export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 	const uiStore = useUiStore();
@@ -239,8 +240,8 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 				<RunOverviewTab
 					class="col-start-1 col-end-1 row-start-1 row-end-1"
 					startDate={props.startDate}
-					loadingDone={props.runFileLoader.done()}
-					loadingProgress={props.runFileLoader.progress()}
+					loadingDone={props.runFileLoader?.done() ?? false}
+					loadingProgress={props.runFileLoader?.progress() ?? 0}
 					gameplayCard={props.gameplayCard}
 				/>
 				<SingleRunPageTour />
