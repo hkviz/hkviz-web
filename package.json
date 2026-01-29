@@ -103,5 +103,6 @@
 		"typescript-eslint": "^8.54.0",
 		"vite-plugin-solid": "^2.11.10",
 		"vitest": "^3.2.4"
-	}
+	},
+	"packageManager": "pnpm@10.12.4"
 }
