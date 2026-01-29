@@ -1,32 +1,37 @@
+# Website 3.0.1
+
+**2026-01-29**
+
+- **Bug and styling fixes**: There have been a couple of styling issues coming from a dependency update (tailwind 3 to tailwind 4 update).
 
 # Mod Version 1.6.0.0
 
 **2025-01-31**
 
--   **Better error recovery when uploading data**:
-    As the website version 3.0.0 or later now provides better information and error handling when a file upload is reattempted,
-    which previously succeeded in early steps of the upload,
-    the upload can now recover from the error and continue where it left off.
+- **Better error recovery when uploading data**:
+  As the website version 3.0.0 or later now provides better information and error handling when a file upload is reattempted,
+  which previously succeeded in early steps of the upload,
+  the upload can now recover from the error and continue where it left off.
 
 # Website 3.0.0
 
 **2025-01-31**
 
--   **Room analytics based on timeline position**:
-    Following confusions in the user study, the room analytics now updates based on the timeline position, but can also be set to display the gameplay totals like they did before.
-    This also impacts the feature that colors the map based on a metric (the choropleth feature).
--   **Watcher Knights in splits**:
-    A edge case which was overlooked caused the Watcher Knights not to be included in the splits.
--   **Footer hides when looking at the map**:
-    The footer now hides when looking at the map, since many user study participants found it annoying to have multiple scrolling areas within one another.
-    This hopefully makes using the dashboard more pleasant.
--   **Dreamgate icon on the map**:
-    The map now always displays the current location of the Dreamgate. (Thank you for the idea to one of our study participants!)
--   **Pin button more visible if enabled**:
-    Previously a enabled pin button was barely distinguishable from when it was disabled. Now it has a light background color when its enabled. (Also a change following user study feedback)
--   **Better error handling when mod uploads data**:
-    Using mod version 1.6.0.0 or later, when a file upload is reattempted, which previously succeeded in early steps of the upload,
-    the upload can now recover from the error and continue where it left off.
--   **Rewrote remaining ui and backend in solid-start**:
-    while the previous version was a mix of NextJS for most pages, and SolidJS for the visualization dashboard.
-    This version is now fully SolidJS, which will make the build process a little more streamlined, and allow for better code sharing between.
+- **Room analytics based on timeline position**:
+  Following confusions in the user study, the room analytics now updates based on the timeline position, but can also be set to display the gameplay totals like they did before.
+  This also impacts the feature that colors the map based on a metric (the choropleth feature).
+- **Watcher Knights in splits**:
+  A edge case which was overlooked caused the Watcher Knights not to be included in the splits.
+- **Footer hides when looking at the map**:
+  The footer now hides when looking at the map, since many user study participants found it annoying to have multiple scrolling areas within one another.
+  This hopefully makes using the dashboard more pleasant.
+- **Dreamgate icon on the map**:
+  The map now always displays the current location of the Dreamgate. (Thank you for the idea to one of our study participants!)
+- **Pin button more visible if enabled**:
+  Previously a enabled pin button was barely distinguishable from when it was disabled. Now it has a light background color when its enabled. (Also a change following user study feedback)
+- **Better error handling when mod uploads data**:
+  Using mod version 1.6.0.0 or later, when a file upload is reattempted, which previously succeeded in early steps of the upload,
+  the upload can now recover from the error and continue where it left off.
+- **Rewrote remaining ui and backend in solid-start**:
+  while the previous version was a mix of NextJS for most pages, and SolidJS for the visualization dashboard.
+  This version is now fully SolidJS, which will make the build process a little more streamlined, and allow for better code sharing between.

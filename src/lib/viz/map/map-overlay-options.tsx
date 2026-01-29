@@ -1,9 +1,9 @@
 import { createUniqueId, type Component } from 'solid-js';
+import { Card } from '~/components/ui/card';
+import { Checkbox } from '~/components/ui/checkbox';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { assertNever } from '~/lib/parser';
 import { useMapZoomStore, ZoomFollowTarget } from '../store';
-import { Card } from '~/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
-import { Checkbox } from '~/components/ui/checkbox';
 
 function zoomFollowTargetName(target: ZoomFollowTarget) {
 	switch (target) {
@@ -27,7 +27,7 @@ export const MapOverlayOptions: Component = () => {
 	const zoomFollowTransition = mapZoomStore.transition;
 
 	return (
-		<Card class="flex flex-col gap-2 bg-opacity-30 p-2 pr-1 pt-1">
+		<Card class="flex flex-col gap-2 p-2 pt-1 pr-1">
 			{/* <div class="flex flex-col gap-1">
                 <h3 class="flex flex-row items-center gap-1 text-base font-semibold">
                     <Text class="h-4 w-4" />
@@ -83,7 +83,7 @@ export const MapOverlayOptions: Component = () => {
 							<SelectItem item={props.item}>{zoomFollowTargetName(props.item.rawValue)}</SelectItem>
 						)}
 					>
-						<SelectTrigger aria-label="Zoom target" class="h-8 w-fit py-1 pl-2 pr-1 text-[0.7rem]">
+						<SelectTrigger aria-label="Zoom target" class="h-8 w-fit py-1 pr-1 pl-2 text-[0.7rem]">
 							<SelectValue<ZoomFollowTarget>>
 								{(state) => zoomFollowTargetName(state.selectedOption())}
 							</SelectValue>
@@ -102,7 +102,7 @@ export const MapOverlayOptions: Component = () => {
 						/>
 						<label
 							for={id + 'zoom_follow_zone-input'}
-							class="grow pl-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+							class="grow pl-2 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 						>
 							Enabled
 						</label>
@@ -118,7 +118,7 @@ export const MapOverlayOptions: Component = () => {
 						/>
 						<label
 							for={id + 'zoom_follow_transition-input'}
-							class="grow pl-2 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+							class="grow pl-2 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 						>
 							Smooth
 						</label>

@@ -71,7 +71,7 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 							roomInfoColoringToggleClasses(props.variable)
 						}
 					>
-						<span class="absolute left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]">
+						<span class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
 							<Switch>
 								<Match when={!isActive()}>
 									<Palette class="h-4 w-4 text-base" />
@@ -233,7 +233,7 @@ export function RoomInfo() {
 		<Card
 			class={cn(
 				cardRoundedMdOnlyClasses,
-				'room-infos-card max-lg:basis-0 flex min-w-[300px] shrink grow basis-0 flex-col border-l border-t bg-linear-to-b from-transparent to-transparent before:bg-card before:inset-0 before:absolute before:-z-10 before:w-full before:h-full',
+				'room-infos-card before:bg-card min-w-[300px relative flex shrink grow basis-0 flex-col border-t border-l bg-linear-to-b from-transparent to-transparent before:absolute before:inset-0 before:-z-10 before:h-full before:w-full before:rounded-lg max-lg:basis-0',
 			)}
 			style={{
 				'--tw-gradient-from': gradientColor(),
@@ -297,7 +297,7 @@ export function RoomInfo() {
 						class={
 							'room-info-pin-button h-8 w-8 ' +
 							(selectedRoomPinned()
-								? 'bg-black bg-opacity-20 hover:bg-opacity-30 dark:bg-white dark:bg-opacity-20 dark:hover:bg-opacity-30'
+								? 'bg-black/20 hover:bg-black/30 dark:bg-white/20 hover:dark:bg-white/30'
 								: '')
 						}
 					>
@@ -338,7 +338,7 @@ export function RoomInfo() {
 							</Index>
 						</div>
 					</Show>
-					<div class="mx-2 mb-2 mt-1">
+					<div class="mx-2 mt-1 mb-2">
 						<Select
 							value={aggregationStore.aggregationCountMode()}
 							onChange={(v) => {

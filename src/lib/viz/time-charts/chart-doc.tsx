@@ -8,7 +8,7 @@ export const ChartDocVars: Component<{ variables: LineChartVariableDescription[]
 	return (
 		<div class="not-prose block md:flex">
 			<Card>
-				<CardHeader class="pb-2 pt-2">
+				<CardHeader class="pt-2 pb-2">
 					<b>Variables</b>
 				</CardHeader>
 				<CardContent class="pb-0">
@@ -30,5 +30,5 @@ export const ChartDocVars: Component<{ variables: LineChartVariableDescription[]
 };
 
 export const ChartDocTitleIcon: Component<{ unit: Component<{ class?: string }> }> = (props) => {
-	return <Dynamic component={props.unit} class="m-0 mr-1 inline-block w-[1.25em]" />;
+	return <Dynamic component={props.unit} class="not-prose m-0 mr-1 inline-block w-[1.25em]" />;
 };
