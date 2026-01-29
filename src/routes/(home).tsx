@@ -18,7 +18,7 @@ export default function HomePage() {
 	return (
 		<ContentCenterWrapper>
 			<Title>HKViz for Hollow Knight</Title>
-			<div class="container mx-auto flex flex-col items-center justify-center gap-12 px-4 py-16 text-foreground">
+			<div class="text-foreground container mx-auto flex w-full flex-col items-center justify-center gap-12 px-4 py-16">
 				<div class={`max-w-[70ch] text-center`}>
 					<div class="start-page-header">
 						<h1
@@ -30,7 +30,7 @@ export default function HomePage() {
 							Visual Analytics for Hollow Knight
 						</h2>
 					</div>
-					<p class="text-pretty pt-4">
+					<p class="pt-4 text-pretty">
 						With <HKVizText /> you can record gameplay analytics of your Hollow Knight gameplays, and share
 						them with others.
 					</p>
