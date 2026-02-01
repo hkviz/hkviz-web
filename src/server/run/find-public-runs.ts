@@ -10,6 +10,7 @@ export const RunFilterParamsSchema = v.object({
 	tag: v.nullish(v.union([tagSchema, tagGroupSchema])),
 	sort: v.nullish(runSortSchema),
 	userId: v.nullish(v.pipe(v.string(), v.uuid())),
+	term: v.nullish(v.string()),
 	limit: v.nullish(v.number()),
 });
 export type RunFilterParams = v.InferOutput<typeof RunFilterParamsSchema>;
@@ -20,6 +21,8 @@ export const findPublicRuns = query(async (unsaveFilter: RunFilterParams) => {
 
 	const user = await getUserOrNull();
 
+	console.log(filter);
+
 	return await findRunsInternal({
 		db,
 		filter: {
@@ -29,6 +32,7 @@ export const findPublicRuns = query(async (unsaveFilter: RunFilterParams) => {
 					? [filter.tag]
 					: tagGroupFromCode(filter.tag).tags.map((it) => it.code)
 				: undefined,
+			term: filter.term,
 			sort: filter.sort ?? RUN_SORT_DEFAULT,
 			userId: filter.userId,
 			archived: [false],

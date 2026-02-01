@@ -1,4 +1,4 @@
-import { isNull } from 'drizzle-orm';
+import { isNull, like } from 'drizzle-orm';
 import * as v from 'valibot';
 import { r2RunPartFileKey } from '~/lib/r2';
 import { runSortSchema } from '~/lib/types/run-sort';
@@ -12,6 +12,7 @@ export const runFilterSchema = v.object({
 	userId: v.nullish(v.string()),
 	visibility: v.nullish(v.array(visibilitySchema)),
 	tag: v.nullish(v.array(tagSchema)),
+	term: v.nullish(v.string()),
 	archived: v.nullish(v.array(v.boolean())),
 	id: v.nullish(v.array(v.string())),
 	anonymAccessKey: v.nullish(v.string()),
@@ -75,11 +76,13 @@ export async function findRunsInternal({
 	const runs = await db.query.runs.findMany({
 		where: (run, { eq, and, inArray, or }) => {
 			const tagFilter = filter.tag ? or(...filter.tag.map((tag) => eq(run[`tag_${tag}`], true))) : undefined;
+			const termFilter = filter.term ? or(like(run.title, `%${filter.term}%`)) : undefined;
 
 			const conditions = [
 				filter.userId ? eq(run.userId, filter.userId) : undefined,
 				filter.visibility ? inArray(run.visibility, filter.visibility) : undefined,
 				tagFilter,
+				termFilter,
 				filter.archived ? inArray(run.archived, filter.archived) : undefined,
 				eq(run.deleted, false),
 				filter.id ? inArray(run.id, filter.id) : undefined,

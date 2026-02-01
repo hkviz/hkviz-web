@@ -1,5 +1,7 @@
+import { debounce } from '@solid-primitives/scheduled';
 import { useSearchParams } from '@solidjs/router';
-import { For, Show, createMemo, onMount, type Component } from 'solid-js';
+import { For, Show, createMemo, createSignal, onMount, type Component } from 'solid-js';
+import { effect } from 'solid-js/web';
 import { TagDropdownMenu } from '~/components/run-tags';
 import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
@@ -10,6 +12,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
+import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { RUN_SORT_DEFAULT, runSortFromCode, runSorts, type RunSortCode } from '~/lib/types/run-sort';
 import { isTag, tagOrGroupFromCode, type Tag, type TagGroup } from '~/lib/types/tags';
 import { cn } from '~/lib/utils';
@@ -33,6 +36,28 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 	onMount(() => {
 		setSearchParams(withoutDefaultParams(props.searchParams));
 	});
+
+	let lastRequestedTerm = props.searchParams.term ?? '';
+	const [searchTerm, setSearchTerm] = createSignal(props.searchParams.term ?? '');
+
+	effect(() => {
+		if (props.searchParams.term !== lastRequestedTerm) {
+			setSearchTerm(props.searchParams.term ?? '');
+		}
+	});
+
+	const updateSearchTermQuery = debounce(() => {
+		const term = searchTerm().trim();
+		lastRequestedTerm = term;
+		if (term !== (searchParams.term ?? '')) {
+			setSearchParams(
+				withoutDefaultParams({
+					...searchParams,
+					term: searchTerm() || undefined,
+				}),
+			);
+		}
+	}, 300);
 
 	function setTagFilter(tagOrGroup: TagGroup | Tag | undefined) {
 		setSearchParams(
@@ -74,6 +99,23 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 					</Show>
 				</DropdownMenuTrigger>
 			</TagDropdownMenu>
+			<div class="grow" />
+			<TextField class="grow">
+				<TextFieldInput
+					type="text"
+					placeholder="Search..."
+					value={searchTerm()}
+					class="rounded-sm outline-hidden"
+					onChange={(v: any) => {
+						setSearchTerm(v.target.value);
+						updateSearchTermQuery();
+					}}
+					onInput={(v: any) => {
+						setSearchTerm(v.target.value);
+						updateSearchTermQuery();
+					}}
+				/>
+			</TextField>
 			<div class="grow" />
 			<DropdownMenu>
 				<DropdownMenuTrigger as={Button<'button'>} variant="outline">
