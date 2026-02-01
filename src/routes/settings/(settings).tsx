@@ -26,7 +26,7 @@ export default function SettingsPage() {
 			<Title>Settings - HKViz</Title>
 			<ContentCenterWrapper>
 				<div class="max-w-[600px]">
-					<h1 class="mb-4 pl-2 font-serif text-3xl font-semibold">Settings</h1>
+					<h1 class="mb-4 pl-2 text-center font-serif text-4xl font-semibold">Settings</h1>
 					<Card>
 						<div class="p-6">
 							<UserNameSettingsOption currentName={currentName()} />

@@ -25,8 +25,8 @@ export default function ArchivePage() {
 			<Title>Archived gameplays - HKViz</Title>
 			<Show when={userId()} fallback={<AuthNeeded />}>
 				<ContentCenterWrapper>
-					<div class="w-full max-w-[800px]">
-						<h1 class="mb-4 mt-4 pl-2 text-center font-serif text-3xl font-semibold">
+					<div class="w-full max-w-200">
+						<h1 class="mt-4 mb-4 pl-2 text-center font-serif text-3xl font-semibold">
 							Your archived gameplays
 						</h1>
 						<ul class="flex flex-col">

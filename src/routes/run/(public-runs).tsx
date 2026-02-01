@@ -49,8 +49,8 @@ export default function Runs() {
 		<ContentWrapper>
 			<Title>{title()}</Title>
 			<div class="container mx-auto flex w-full flex-col items-center justify-center gap-12 px-4 py-16">
-				<div class="w-full max-w-[800px]">
-					<h1 class="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Public gameplays</h1>
+				<div class="w-full max-w-200">
+					<h1 class="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Public Gameplays</h1>
 
 					<RunFilters searchParams={filter()} class="mb-4" />
 

@@ -72,7 +72,7 @@ export const OwnRuns: Component<OwnRunsPageProps> = (props) => {
 		<Show when={props.runs && props.runs.length > 0}>
 			<GradientSeparator />
 			<div class="w-full">
-				<div class="mx-auto max-w-[800px]">
+				<div class="mx-auto max-w-200">
 					<h1 class="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Your gameplays</h1>
 					<ul class="flex flex-col">
 						<Key each={props.runs} by={(it) => it.id}>
