@@ -105,5 +105,12 @@
 		"vite-plugin-solid": "^2.11.10",
 		"vitest": "^3.2.4"
 	},
-	"packageManager": "pnpm@10.12.4"
+	"packageManager": "pnpm@10.28.2",
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"@parcel/watcher",
+			"esbuild",
+			"sharp"
+		]
+	}
 }
