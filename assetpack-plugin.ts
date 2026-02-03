@@ -17,7 +17,7 @@ const compressionOptions: CompressOptions = {
 
 export function assetpackPlugin(): Plugin {
 	const apConfig: AssetPackConfig = {
-		entry: './assets',
+		entry: './assets-build',
 		cache: true,
 		output: './public/assets',
 		pipes: [
