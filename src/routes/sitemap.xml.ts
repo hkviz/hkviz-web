@@ -1,6 +1,6 @@
+import { SitemapStream, streamToPromise } from 'sitemap';
 import { hkVizUrl } from '~/lib/url';
 import { findPublicRuns } from '~/server/run/find-public-runs';
-import { SitemapStream, streamToPromise } from 'sitemap';
 
 async function writeSitemap(sitemapStream: SitemapStream) {
 	sitemapStream.write({ url: hkVizUrl(), changefreq: 'weekly', priority: 1 });
@@ -30,7 +30,7 @@ export async function GET(): Promise<Response> {
 	const sitemapStream = new SitemapStream({ hostname: 'https://hkviz.org' });
 	await writeSitemap(sitemapStream);
 	const sitemap = await streamToPromise(sitemapStream);
-	return new Response(sitemap, { headers: { 'Content-Type': 'application/xml' } });
+	return new Response(sitemap as any, { headers: { 'Content-Type': 'application/xml' } });
 
 	// return [...publicPlayerMap, ...publicRunsMap];
 

@@ -3,11 +3,11 @@ import { RouteSectionProps, createAsync } from '@solidjs/router';
 import { Show, createMemo } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card';
+import { useUser } from '~/lib/auth/client';
 import { GameplayDashboard, createRunFileLoader } from '~/lib/viz';
 import { RunStoresProvider } from '~/lib/viz/store/store-context';
 import { getRun } from '~/server/run/run-get';
 import { getRunPageTitle } from './_metadata';
-import { useUser } from '~/lib/auth/client';
 
 // TODO
 // export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
@@ -57,7 +57,9 @@ export default function SingleRunPage(props: RouteSectionProps) {
 	return (
 		<RunStoresProvider>
 			<ContentWrapper footerOutOfSight={true}>
-				<SingleRunLoadingWrapper id={id()} />
+				<Show when={id()} fallback={<div>Invalid run ID</div>}>
+					{(id) => <SingleRunLoadingWrapper id={id()} />}
+				</Show>
 			</ContentWrapper>
 		</RunStoresProvider>
 	);

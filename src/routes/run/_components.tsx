@@ -1,7 +1,6 @@
 import { debounce } from '@solid-primitives/scheduled';
 import { useSearchParams } from '@solidjs/router';
-import { For, Show, createMemo, createSignal, onMount, type Component } from 'solid-js';
-import { effect } from 'solid-js/web';
+import { For, Show, createEffect, createMemo, createSignal, onMount, untrack, type Component } from 'solid-js';
 import { TagDropdownMenu } from '~/components/run-tags';
 import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
@@ -37,10 +36,12 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 		setSearchParams(withoutDefaultParams(props.searchParams));
 	});
 
+	// eslint-disable-next-line solid/reactivity
 	let lastRequestedTerm = props.searchParams.term ?? '';
+	// eslint-disable-next-line solid/reactivity
 	const [searchTerm, setSearchTerm] = createSignal(props.searchParams.term ?? '');
 
-	effect(() => {
+	createEffect(() => {
 		const newPropTerm = props.searchParams.term ?? '';
 		if (newPropTerm !== lastRequestedTerm) {
 			setSearchTerm(newPropTerm);
@@ -48,16 +49,18 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 	});
 
 	const updateSearchTermQuery = debounce(() => {
-		const term = searchTerm().trim();
-		lastRequestedTerm = term;
-		if (term !== (searchParams.term ?? '')) {
-			setSearchParams(
-				withoutDefaultParams({
-					...searchParams,
-					term: searchTerm() || undefined,
-				}),
-			);
-		}
+		untrack(() => {
+			const term = searchTerm().trim();
+			lastRequestedTerm = term;
+			if (term !== (searchParams.term ?? '')) {
+				setSearchParams(
+					withoutDefaultParams({
+						...searchParams,
+						term: searchTerm() || undefined,
+					}),
+				);
+			}
+		});
 	}, 300);
 
 	function setTagFilter(tagOrGroup: TagGroup | Tag | undefined) {
