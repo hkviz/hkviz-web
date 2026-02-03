@@ -41,8 +41,9 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 	const [searchTerm, setSearchTerm] = createSignal(props.searchParams.term ?? '');
 
 	effect(() => {
-		if (props.searchParams.term !== lastRequestedTerm) {
-			setSearchTerm(props.searchParams.term ?? '');
+		const newPropTerm = props.searchParams.term ?? '';
+		if (newPropTerm !== lastRequestedTerm) {
+			setSearchTerm(newPropTerm);
 		}
 	});
 
