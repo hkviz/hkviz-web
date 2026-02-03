@@ -68,6 +68,10 @@ html {
 	text-shadow: 0 0 150px rgba(255, 177, 21, 0.5);
 }
 
+.glowing-text-md {
+	text-shadow: 0 0 50px rgba(255, 177, 21, 0.4);
+}
+
 .prose :where(a):not(:where([class~='not-prose'], [class~='not-prose'] *)) {
 	text-decoration-color: color-mix(in hsl, currentColor, transparent 40%);
 }
