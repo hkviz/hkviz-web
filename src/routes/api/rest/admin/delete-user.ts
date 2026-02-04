@@ -1,3 +1,4 @@
+import type { APIEvent } from '@solidjs/start/server';
 import { eq } from 'drizzle-orm';
 import { getUserOrThrow } from '~/lib/auth/shared';
 import { db } from '~/server/db';
@@ -9,13 +10,14 @@ import {
 	runInteraction,
 	sessions,
 	userDemographics,
+	users,
 } from '~/server/db/schema';
 import { assertIsResearcher } from '~/server/researcher';
 import { runDeleteInternal } from '~/server/run/run-deletion-internal';
 import { runInteractionUnlikeInternal } from '~/server/run/run-interaction-internal';
 
 // TODO not correctly implemented since request is not correct type
-export async function GET(request: Request) {
+export async function GET({ request }: APIEvent) {
 	const { searchParams } = new URL(request.url);
 	const userId = searchParams.get('userId');
 
@@ -69,6 +71,7 @@ export async function GET(request: Request) {
 	await db.delete(accounts).where(eq(accounts.userId, userId));
 	await db.delete(ingameAuth).where(eq(ingameAuth.userId, userId));
 	await db.delete(accountDeletionRequest).where(eq(accountDeletionRequest.userId, userId));
+	await db.delete(users).where(eq(users.id, userId));
 
 	return new Response('ok');
 }

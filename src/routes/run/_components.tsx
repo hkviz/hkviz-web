@@ -36,14 +36,14 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 		setSearchParams(withoutDefaultParams(props.searchParams));
 	});
 
-	// eslint-disable-next-line solid/reactivity
-	let lastRequestedTerm = props.searchParams.term ?? '';
+	 
+	let termHasChangedSinceRequest = false;
 	// eslint-disable-next-line solid/reactivity
 	const [searchTerm, setSearchTerm] = createSignal(props.searchParams.term ?? '');
 
 	createEffect(() => {
 		const newPropTerm = props.searchParams.term ?? '';
-		if (newPropTerm !== lastRequestedTerm) {
+		if (!termHasChangedSinceRequest) {
 			setSearchTerm(newPropTerm);
 		}
 	});
@@ -51,7 +51,7 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 	const updateSearchTermQuery = debounce(() => {
 		untrack(() => {
 			const term = searchTerm().trim();
-			lastRequestedTerm = term;
+			termHasChangedSinceRequest = false;
 			if (term !== (searchParams.term ?? '')) {
 				setSearchParams(
 					withoutDefaultParams({
@@ -112,10 +112,12 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 					class="rounded-sm outline-hidden"
 					onChange={(v: any) => {
 						setSearchTerm(v.target.value);
+						termHasChangedSinceRequest = true;
 						updateSearchTermQuery();
 					}}
 					onInput={(v: any) => {
 						setSearchTerm(v.target.value);
+						termHasChangedSinceRequest = true;
 						updateSearchTermQuery();
 					}}
 				/>

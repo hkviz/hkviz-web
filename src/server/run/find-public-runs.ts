@@ -21,8 +21,6 @@ export const findPublicRuns = query(async (unsaveFilter: RunFilterParams) => {
 
 	const user = await getUserOrNull();
 
-	console.log(filter);
-
 	return await findRunsInternal({
 		db,
 		filter: {

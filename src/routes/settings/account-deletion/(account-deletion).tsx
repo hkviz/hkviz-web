@@ -1,6 +1,6 @@
 import { Title } from '@solidjs/meta';
 import { A, createAsync, RouteDefinition, useAction, useSubmission } from '@solidjs/router';
-import { Match, Switch, Show } from 'solid-js';
+import { Match, Show, Switch } from 'solid-js';
 import { AuthNeeded } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { MailLink } from '~/components/mail-link';
@@ -72,8 +72,7 @@ export default function AccountDeletionPage() {
 							<CardHeader>
 								<CardTitle>Account Deletion Confirmed</CardTitle>
 								<CardDescription>
-									Account deletion confirmed. Your account and all associated data will be deleted
-									within a month.
+									Your account and all associated data will be deleted within a month.
 								</CardDescription>
 							</CardHeader>
 							<CardFooter class="flex justify-end gap-1">
@@ -99,7 +98,7 @@ export default function AccountDeletionPage() {
 					</Match>
 					{/* Show form */}
 					<Match when={true}>
-						<Card class="w-[600px] max-w-[calc(100%-2rem)]">
+						<Card class="w-150 max-w-[calc(100%-2rem)]">
 							<CardHeader>
 								<CardTitle>Delete your account</CardTitle>
 								<CardDescription>
