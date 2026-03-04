@@ -73,7 +73,7 @@ const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean 
 				<img
 					src={healthFrameImg}
 					alt="Standard game mode frame"
-					class="absolute left-1 top-0 z-2 h-24 w-auto max-w-none"
+					class="absolute top-0 left-1 z-2 h-24 w-auto max-w-none"
 				/>
 			}
 		>
@@ -81,10 +81,7 @@ const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean 
 				<img
 					src={healthFrameSteelSoulBrokenImg}
 					alt="Broken Steel Soul game mode frame"
-					class={cn(
-						'absolute -left-10 -top-8 z-2 h-40 w-auto max-w-none',
-						interactiveBrightnessClasses,
-					)}
+					class={cn('absolute -top-8 -left-10 z-2 h-40 w-auto max-w-none', interactiveBrightnessClasses)}
 				/>
 			</Match>
 			<Match when={props.isSteelSoul}>
@@ -92,7 +89,7 @@ const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean 
 					src={healthFrameSteelSoulImg}
 					alt="Steel Soul game mode frame"
 					class={cn(
-						'roup-focus-visible:brightness-110 absolute -left-10 -top-8 z-2 hidden h-40 w-auto max-w-none sm:block',
+						'roup-focus-visible:brightness-110 absolute -top-8 -left-10 z-2 hidden h-40 w-auto max-w-none sm:block',
 						interactiveBrightnessClasses,
 					)}
 				/>
@@ -100,7 +97,7 @@ const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean 
 					src={healthFrameSteelSoulSmallImg}
 					alt="Steel Soul game mode frame"
 					class={cn(
-						'absolute -left-10 -top-8 z-2 h-40 w-auto max-w-none sm:hidden',
+						'absolute -top-8 -left-10 z-2 h-40 w-auto max-w-none sm:hidden',
 						interactiveBrightnessClasses,
 					)}
 				/>
@@ -125,7 +122,7 @@ const RunCardEpicInfo: Component<{
 	return (
 		<Show when={props.href} fallback={spans}>
 			{(href) => (
-				<A href={href()} class="z-7 hover:underline hover:drop-shadow-glow-md">
+				<A href={href()} class="hover:drop-shadow-glow-md z-7 hover:underline">
 					{spans}
 				</A>
 			)}
@@ -206,7 +203,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 						maxLength={MAX_RUN_TITLE_LENGTH}
 						disabled={titleSubmission.pending}
 						class={
-							'max-w-auto relative z-8 -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-xs focus:bg-background focus:text-foreground md:text-2xl'
+							'max-w-auto focus:bg-background focus:text-foreground relative z-8 -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-xs md:text-2xl'
 						}
 					>
 						{title()}
@@ -304,7 +301,7 @@ export const RunCard: Component<{
 		<Expander expanded={!isRemoved()} class="overflow-visible">
 			<div
 				class={cn(
-					'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pl-4 pr-3 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
+					'group focus-within:drop-shadow-glow-md hover:drop-shadow-glow-sm relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pr-3 pl-4 text-white transition hover:bg-black hover:text-white active:drop-shadow-none md:flex-row',
 					isRemoved() ? 'scale-125 opacity-0' : '',
 					isRemoving() ? 'grayscale' : '',
 				)}
@@ -314,9 +311,7 @@ export const RunCard: Component<{
 					when={props.onClick}
 					fallback={<A href={`/run/${props.run.id}`} class="absolute inset-0 z-6 block" />}
 				>
-					{(onClick) => (
-						<button onClick={() => onClick()(props.run.id)} class="absolute inset-0 z-6 block" />
-					)}
+					{(onClick) => <button onClick={() => onClick()(props.run.id)} class="absolute inset-0 z-6 block" />}
 				</Show>
 
 				<div class="flex grow flex-col">
@@ -390,7 +385,7 @@ export const RunCard: Component<{
 									<img
 										src={coin2Img}
 										alt="Geo icon"
-										class="inline-block w-7 p-1 drop-shadow-glow-md"
+										class="drop-shadow-glow-md inline-block w-7 p-1"
 									/>
 									<span class="text-xl font-semibold sm:text-2xl">{gameState()?.geo ?? '?'}</span>
 								</span>
@@ -399,7 +394,7 @@ export const RunCard: Component<{
 										<img
 											src={gameState()?.dreamNailUpgraded ? dreamNailAwokenImg : dreamNailImg}
 											alt="Essence icon"
-											class="-mb-3 -mt-4 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
+											class="drop-shadow-glow-md -mt-4 -mb-3 inline-block w-7 p-1 brightness-110 sm:w-9"
 										/>
 										<span class="text-xl font-semibold sm:text-2xl">{gameState().dreamOrbs}</span>
 									</span>
@@ -455,9 +450,10 @@ export const RunCard: Component<{
 				</Show>
 				{/* Background */}
 				<img
-					class="l-0 t-0 absolute z-1 h-full w-full bg-black object-cover opacity-70 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
+					class="absolute top-0 left-0 z-1 h-full w-full bg-black object-cover opacity-70 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
 					src={bgImage()}
 					alt="Area background image"
+					loading="lazy"
 				/>
 				<div class="absolute inset-0 z-2 bg-linear-to-r from-black via-transparent to-black" />
 			</div>
@@ -518,11 +514,11 @@ function RunCardLikeButton(props: { run: RunMetadata }) {
 				aria-pressed={hasLiked()}
 				onClick={handleClick}
 				disabled={isSubmitting()}
-				class="group absolute bottom-0 right-0 z-7 rounded-full"
+				class="group absolute right-0 bottom-0 z-7 rounded-full"
 			>
 				<Heart
 					class={
-						'h-4 w-4 transition-[fill] duration-300 group-hover:drop-shadow-glow-md ' +
+						'group-hover:drop-shadow-glow-md h-4 w-4 transition-[fill] duration-300 ' +
 						(hasLiked() ? 'fill-current' : 'fill-[rgba(255,255,255,0.001)]')
 					}
 				/>
