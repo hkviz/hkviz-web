@@ -1,17 +1,27 @@
-import { HKVizText } from '../../../components/HKVizText';
+import { A } from '@solidjs/router';
 import { LayoutDashboard, Mouse, Palette, Pin, Spline, Tent } from 'lucide-solid';
 import { ExternalLinkMdx } from '../../../components/external-link';
 import { FloatClear } from '../../../components/float';
+import { HKVizText } from '../../../components/HKVizText';
 import { MailLinkUnstyled } from '../../../components/mail-link';
 import { MdxInnerWrapper } from '../../../components/mdx-layout';
 import { SpoilerWarningEarlyGame } from '../_spoiler_warning';
-import { LinkableSpan } from './_analytics/_linkable_paragraph';
+import { AggregationVariableDoc } from './_analytics/_aggregation-variable-doc';
 import {
-	TimelineColorCodesTable,
-	SplitActionsTable,
-	TimeBasedChartActionsTable,
-	TimelineTable,
-} from './_analytics/_tables';
+	CompletionChartDocIcon,
+	CompletionChartDocVars,
+	EssenceChartDocIcon,
+	EssenceChartDocVars,
+	GeoChartDocIcon,
+	GeoChartDocVars,
+	GrubsChartDocIcon,
+	GrubsChartDocVars,
+	HealthChartDocIcon,
+	HealthChartDocVars,
+	SoulChartDocIcon,
+	SoulChartDocVars,
+} from './_analytics/_chart-docs.tsx';
+import { LinkableSpan } from './_analytics/_linkable_paragraph';
 import {
 	BuildingsColormapScreenshot,
 	ColorModeAreaScreenshot,
@@ -39,23 +49,13 @@ import {
 import { SplitsList } from './_analytics/_splits-list';
 import { SpoilerWrapper } from './_analytics/_spoiler-wrapper';
 import { ReflowCell, ReflowCellHeader, ReflowRow } from './_analytics/_table-like';
-import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_analytics/_videos';
 import {
-	GeoChartDocIcon,
-	GeoChartDocVars,
-	CompletionChartDocIcon,
-	CompletionChartDocVars,
-	EssenceChartDocIcon,
-	EssenceChartDocVars,
-	GrubsChartDocIcon,
-	GrubsChartDocVars,
-	HealthChartDocIcon,
-	HealthChartDocVars,
-	SoulChartDocIcon,
-	SoulChartDocVars,
-} from './_analytics/_chart-docs.tsx';
-import { AggregationVariableDoc } from './_analytics/_aggregation-variable-doc';
-import { A } from '@solidjs/router';
+	SplitActionsTable,
+	TimeBasedChartActionsTableCard,
+	TimelineColorCodesTable,
+	TimelineTable,
+} from './_analytics/_tables';
+import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisitedVideo } from './_analytics/_videos';
 
 # How to analyze a gameplay with the <HKVizText /> visualizations
 
@@ -152,9 +152,12 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
 
     <Pin class="inline-block h-4 w-4" aria-label="Pin" />
     -button in the room analytics panel or by clicking a room on the map. Rooms can also be pinned by clicking on the
-    color code at the bottom of the <a href="#timeline" target="_self">
+    color code at the bottom of the
+    <a href="#timeline" target="_self">
     	timeline
-    </a> or by double clicking on a <a href="#splits" target="_self">
+    </a>
+    or by double clicking on a
+    <a href="#splits" target="_self">
     	split
     </a>
     .
@@ -319,7 +322,7 @@ additionally the room the player is in is highlighted on the map while hovering 
 
 **Time-based chart actions**
 
-<TimeBasedChartActionsTable />
+<TimeBasedChartActionsTableCard />
 
 <FloatClear />
 
@@ -381,9 +384,9 @@ Since health does change very frequently, this chart is most useful when zooming
 The <ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">soul</ExternalLinkMdx> chart shows soul over time.
 Soul is used for spells and healing, and is gained by:
 
--   hitting enemies with the nail
--   dreamnailing enemies or npcs
--   {<ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">and some other sources</ExternalLinkMdx>}
+- hitting enemies with the nail
+- dreamnailing enemies or npcs
+- {<ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">and some other sources</ExternalLinkMdx>}
 
 Since soul does change very frequently, this chart is most useful when zooming in closely.
 

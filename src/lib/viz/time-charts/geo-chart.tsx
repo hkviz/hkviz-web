@@ -12,7 +12,7 @@ const variables: LineChartVariableDescription[] = [
 	{
 		key: 'geo',
 		name: 'Inventory Geo',
-		description: 'Geo the player has. When dying in Hollow Knight, it will be transferred to the shade.',
+		description: 'Geo the player has. When dying, it will be transferred to the shade.',
 		color: tailwindChartColors.emerald,
 		UnitIcon: Unit,
 		order: 3,
@@ -20,7 +20,7 @@ const variables: LineChartVariableDescription[] = [
 	{
 		key: 'geoPool',
 		name: 'Shade Geo',
-		description: 'The geo the shade has, which can be earned back by defeating the shade.',
+		description: 'The Geo the shade has, which can be earned back by defeating the shade.',
 		color: tailwindChartColors.indigo,
 		UnitIcon: Unit,
 		order: 2,
@@ -28,7 +28,7 @@ const variables: LineChartVariableDescription[] = [
 	{
 		key: 'trinketGeo',
 		name: 'Relict Geo worth',
-		description: 'The geo worth of all relicts in the inventory when sold to Lemm.',
+		description: 'The Geo worth of all relicts in the inventory when sold to Lemm.',
 		color: tailwindChartColors.rose,
 		UnitIcon: Unit,
 		order: 1,
