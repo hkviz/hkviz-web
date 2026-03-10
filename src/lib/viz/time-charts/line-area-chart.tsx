@@ -1,5 +1,4 @@
 import * as d3 from 'd3';
-import { type D3BrushEvent } from 'd3-brush';
 import {
 	type Component,
 	For,
@@ -9,6 +8,7 @@ import {
 	createMemo,
 	createSignal,
 	createUniqueId,
+	onCleanup,
 	untrack,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
@@ -16,15 +16,17 @@ import { Checkbox } from '~/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { type FrameEndEvent, type FrameEndEventNumberKey } from '../../parser';
+import { createAutoSizeCanvas } from '../canvas';
 import { ColorClasses } from '../colors';
 import {
+	MsIntoGameChangeType,
 	useAnimationStore,
 	useExtraChartStore,
 	useGameplayStore,
 	useHoverMsStore,
 	useRoomDisplayStore,
+	useViewportStore,
 } from '../store';
-import { d3Ticks, formatTimeMs, isFilledD3Selection } from '../util';
 import { downScale } from './down-scale';
 import { createIsVisible } from './use-is-visible';
 
@@ -59,36 +61,68 @@ export interface LineAreaChartProps {
 	renderScale?: number;
 }
 
+// Helper to get CSS color from ColorClasses
+function getColorFromClass(colorClass: ColorClasses, canvas: HTMLCanvasElement | null): string {
+	if (!canvas) {
+		// Fallback colors
+		const defaultColors = [
+			'#ef4444',
+			'#10b981',
+			'#22c55e',
+			'#84cc16',
+			'#6366f1',
+			'#f43f5e',
+			'#fb923c',
+			'#0ea5e9',
+			'#64748b',
+			'#fbbf24',
+		];
+		const hash = colorClass.path.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+		return defaultColors[hash % defaultColors.length];
+	}
+
+	// Create a temporary element to get the computed color
+	const tempDiv = document.createElement('div');
+	tempDiv.className = colorClass.path;
+	tempDiv.style.position = 'absolute';
+	tempDiv.style.visibility = 'hidden';
+	canvas.parentElement?.appendChild(tempDiv);
+
+	const computedColor = getComputedStyle(tempDiv).color;
+	canvas.parentElement?.removeChild(tempDiv);
+
+	// Convert rgb/rgba to hex or return as is
+	if (computedColor.startsWith('rgb')) {
+		const matches = computedColor.match(/\d+/g);
+		if (matches && matches.length >= 3) {
+			const r = parseInt(matches[0]);
+			const g = parseInt(matches[1]);
+			const b = parseInt(matches[2]);
+			return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+		}
+	}
+
+	return computedColor || '#6366f1'; // fallback to indigo
+}
+
 export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 	const roomDisplayStore = useRoomDisplayStore();
 	const extraChartStore = useExtraChartStore();
 	const animationStore = useAnimationStore();
 	const gameplayStore = useGameplayStore();
 	const hoverMsStore = useHoverMsStore();
-	const renderScale = () => props.renderScale ?? 10;
+	const viewportStore = useViewportStore();
 
 	const variablesPerKey = createMemo(() => {
 		return Object.fromEntries(props.variables.map((it) => [it.key, it] as const));
 	});
 
-	const [svgRef, setSvgRef] = createSignal<SVGSVGElement | null>(null);
+	const [canvasRef, setCanvasRef] = createSignal<HTMLCanvasElement | null>(null);
+	const [overlayCanvasRef, setOverlayCanvasRef] = createSignal<HTMLCanvasElement | null>(null);
+	const [chartContainerRef, setChartContainerRef] = createSignal<HTMLDivElement | null>(null);
+	const autoSizedOverlayCanvas = createAutoSizeCanvas(chartContainerRef, overlayCanvasRef);
 
-	const isVisible = createIsVisible(svgRef);
-
-	let previousTimeBounds: readonly [number, number] = [0, 0];
-	const debouncedTimeBounds = createMemo<readonly [number, number]>(() => {
-		if (!isVisible()) return previousTimeBounds;
-		const bounds = extraChartStore.debouncedTimeBounds();
-		previousTimeBounds = bounds;
-		return bounds;
-	});
-	let previousMsIntoGame = 0;
-	const debouncedMsIntoGame = createMemo<number>(() => {
-		if (!isVisible()) return previousMsIntoGame;
-		const ms = extraChartStore.debouncedMsIntoGame();
-		previousMsIntoGame = ms;
-		return ms;
-	});
+	const isVisible = createIsVisible(canvasRef);
 
 	const [selectedVars, setSelectedVars] = createSignal<FrameEndEventNumberKey[]>(
 		// eslint-disable-next-line solid/reactivity
@@ -109,8 +143,6 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		}
 	}
 
-	const id = createUniqueId();
-
 	const data = createMemo(() => {
 		const recording = gameplayStore.recording();
 		if (!recording) return [];
@@ -129,12 +161,12 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		1: number;
 	}[] & { key: string; index: number };
 
-	const widthWithMargin = () => 400 * renderScale();
-	const heightWithMargin = () => 300 * renderScale();
-	const marginTop = () => 25 * renderScale();
-	const marginRight = () => 10 * renderScale();
-	const marginBottom = () => 35 * renderScale();
-	const marginLeft = () => 45 * renderScale();
+	const widthWithMargin = () => 400;
+	const heightWithMargin = () => 300;
+	const marginTop = () => 25;
+	const marginRight = () => 10;
+	const marginBottom = () => 35;
+	const marginLeft = () => 45;
 	const height = () => heightWithMargin() - marginTop() - marginBottom();
 	const width = () => widthWithMargin() - marginLeft() - marginRight();
 
@@ -152,392 +184,488 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		)(_data) as unknown as Series[];
 	});
 
-	const x = createMemo(() => {
-		return d3.scaleLinear().domain(debouncedTimeBounds()).range([0, width()]);
-	});
+	// Brush selection state
+	const [brushStart, setBrushStart] = createSignal<number | null>(null);
+	const [brushEnd, setBrushEnd] = createSignal<number | null>(null);
 
-	const xNotAnimated = createMemo(() => {
-		return d3
-			.scaleLinear()
-			.domain([gameplayStore.timeFrame().min, gameplayStore.timeFrame().max])
-			.range([0, width()]);
-	});
+	// Mouse interaction handlers
+	function mouseToMsIntoGame(e: MouseEvent) {
+		return untrack(() => {
+			const canvas = canvasRef();
+			if (!canvas) return 0;
+			const extraChartsTimeBounds = extraChartStore.timeBoundsTransition();
+			const rect = canvas.getBoundingClientRect();
+			const _marginLeft = marginLeft();
+			const _width = width();
+			const x = e.clientX - rect.left - _marginLeft * (rect.width / 400);
+			const chartWidth = _width * (rect.width / 400);
+			return Math.round(
+				extraChartsTimeBounds[0] + (extraChartsTimeBounds[1] - extraChartsTimeBounds[0]) * (x / chartWidth),
+			);
+		});
+	}
 
-	const maxYOverAllTime = createMemo(() => {
-		return Math.max(d3.max(series().at(-1)!, (d) => d[1]) ?? props.minimalMaximumY, props.minimalMaximumY);
-	});
+	function sceneFromMs(ms: number) {
+		const recording = gameplayStore.recording();
+		if (!recording) return null;
+		return recording.sceneEventFromMs(ms);
+	}
 
-	// todo sub to series
-	const maxYInSelection = createMemo(() => {
+	let didHoldAction = false;
+	let holdTimeout: number | null = null;
+	let holdStartMousePosition = { x: 0, y: 0 };
+	let currentMousePosition = { x: 0, y: 0 };
+	let modifierDragLastClientX: number | null = null;
+	let activePointerId: number | null = null;
+	let didModifierDeltaDrag = false;
+	let suppressNextModifierClick = false;
+	let renderWorker: Worker | null = null;
+	let workerReady = false;
+
+	const workerSeries = createMemo(() => {
 		const _series = series();
-		const _debouncedTimeBounds = debouncedTimeBounds();
-		const s = _series.at(-1)!;
-		const minMsIntoGame = _debouncedTimeBounds[0];
-		const maxMsIntoGame = _debouncedTimeBounds[1];
-		const max =
-			d3.max(s, (d, i) => {
-				const dMsIntoGame = d.data.msIntoGame;
-				const dNextMsIntoGame = s[i + 1]?.data.msIntoGame ?? dMsIntoGame;
-				function isInRange(msIntoGame: number | null) {
-					if (msIntoGame == null) return false;
-					return msIntoGame >= minMsIntoGame && msIntoGame <= maxMsIntoGame;
-				}
-				const isInRangeOrClose =
-					isInRange(dMsIntoGame) ||
-					(dMsIntoGame < minMsIntoGame && (dNextMsIntoGame > maxMsIntoGame || i === s.length - 1));
-
-				return isInRangeOrClose ? d[1] : 0;
-			}) ?? 0;
-		return Math.max(max * 1.05, props.minimalMaximumY);
+		const _variablesPerKey = variablesPerKey();
+		const _canvas = canvasRef();
+		return _series
+			.map((s) => {
+				const colorClass = _variablesPerKey[s.key]?.color;
+				if (!colorClass) return null;
+				return {
+					color: getColorFromClass(colorClass, _canvas),
+					points: s.map((d) => ({
+						ms: d.data?.msIntoGame ?? 0,
+						y0: d[0],
+						y1: d[1],
+					})),
+				};
+			})
+			.filter((it): it is { color: string; points: { ms: number; y0: number; y1: number }[] } => it !== null);
 	});
 
-	const y = createMemo(() => {
-		return d3
-			.scaleLinear()
-			.domain([0, maxYOverAllTime()] as [number, number])
-			.rangeRound([height(), 0]);
-	});
+	function startHold(e: MouseEvent) {
+		didHoldAction = false;
+		cancelHold();
+		holdStartMousePosition = { x: e.clientX, y: e.clientY };
+		currentMousePosition = { x: e.clientX, y: e.clientY };
+		holdTimeout = window.setTimeout(() => {
+			holdTimeout = null;
+			const distance = Math.sqrt(
+				(currentMousePosition.x - holdStartMousePosition.x) ** 2 +
+					(currentMousePosition.y - holdStartMousePosition.y) ** 2,
+			);
+			if (distance < 10) {
+				moveToMsIntoGame(e, 'smooth');
+				didHoldAction = true;
+			}
+		}, 500);
+	}
 
-	const yInSelection = createMemo(() => {
-		return d3
-			.scaleLinear()
-			.domain([0, maxYInSelection()] as [number, number])
-			.rangeRound([height(), 0]);
-	});
+	function cancelHold() {
+		if (holdTimeout) {
+			window.clearTimeout(holdTimeout);
+			holdTimeout = null;
+		}
+	}
 
-	let skipNextUpdate = false;
-	const onBrushEnd = (didHoldAction: boolean, event: D3BrushEvent<unknown>) => {
-		const selection = (event.selection ?? null) as [number, number] | null;
+	function moveToMsIntoGame(e: MouseEvent, changeType: MsIntoGameChangeType) {
+		const ms = mouseToMsIntoGame(e);
+		animationStore.setMsIntoGame(ms, changeType);
+		const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
+		if (scene) {
+			roomDisplayStore.setSelectedSceneName(scene);
+		}
+	}
 
-		if (skipNextUpdate) {
-			skipNextUpdate = false;
+	function moveByDeltaMsIntoGame(e: MouseEvent) {
+		const canvas = canvasRef();
+		if (!canvas) return;
+
+		const currentClientX = e.clientX;
+		if (modifierDragLastClientX === null) {
+			modifierDragLastClientX = currentClientX;
 			return;
 		}
 
-		if (selection == null) {
-			if (!didHoldAction) {
-				extraChartStore.resetTimeBounds();
-			}
+		const deltaX = currentClientX - modifierDragLastClientX;
+		modifierDragLastClientX = currentClientX;
+		if (deltaX === 0) return;
+		didModifierDeltaDrag = true;
+
+		const rect = canvas.getBoundingClientRect();
+		const chartWidth = width() * (rect.width / widthWithMargin());
+		if (chartWidth <= 0) return;
+
+		const timeBounds = extraChartStore.timeBoundsTransition();
+		const msPerPixel = (timeBounds[1] - timeBounds[0]) / chartWidth;
+		const nextMs = animationStore.msIntoGame() + deltaX * msPerPixel;
+
+		animationStore.setMsIntoGame(nextMs, 'instant');
+		const scene = sceneFromMs(animationStore.msIntoGame())?.getMainVirtualSceneName();
+		if (scene) {
+			roomDisplayStore.setSelectedSceneName(scene);
+		}
+	}
+
+	function clampBrushXToChart(canvas: HTMLCanvasElement, rawX: number) {
+		const rect = canvas.getBoundingClientRect();
+		const chartLeft = marginLeft() * (rect.width / widthWithMargin());
+		const chartWidth = width() * (rect.width / widthWithMargin());
+		const chartRight = chartLeft + chartWidth;
+		return Math.max(chartLeft, Math.min(chartRight, rawX));
+	}
+
+	function handleModifierDragMove(e: MouseEvent) {
+		const isModifierSeek = (e.ctrlKey || e.metaKey) && e.buttons !== 0;
+		if (!isModifierSeek) {
+			modifierDragLastClientX = null;
+			return;
+		}
+
+		const timeFrame = gameplayStore.timeFrame();
+		const currentBounds = extraChartStore.timeBoundsTransition();
+		const epsilonMs = 1;
+		const isFullRangeVisible =
+			Math.abs(currentBounds[0] - timeFrame.min) <= epsilonMs &&
+			Math.abs(currentBounds[1] - timeFrame.max) <= epsilonMs;
+
+		if (extraChartStore.followsAnimation() && !isFullRangeVisible) {
+			moveByDeltaMsIntoGame(e);
 		} else {
-			const invSelection = [x().invert(selection[0]), x().invert(selection[1])] as const;
-			extraChartStore.setTimeBoundsStopFollowIfOutside(invSelection);
+			modifierDragLastClientX = e.clientX;
+			moveToMsIntoGame(e, 'instant');
 		}
-		// todo animate axis
-		skipNextUpdate = true;
-		svgParts().brush!.move(svgParts().brushG!, null);
-	};
+	}
 
-	const svgParts = createMemo(function lineAreaChartMainSetup() {
-		const _recording = gameplayStore.recording();
-		if (!_recording) {
-			return {
-				areaPaths: null,
-				xAxis: null,
-				yAxis: null,
-				brush: null,
-				brushG: null,
-				animationLine: null,
-			};
-		}
-		const svg = d3.select(svgRef());
+	// Canvas event handlers
+	function handleMouseMove(e: MouseEvent) {
+		handleModifierDragMove(e);
 
-		svg.selectAll('*').remove();
-
-		svg.append('text')
-			.attr('x', marginLeft() - 10 * renderScale())
-			.attr('y', 14 * renderScale())
-			.attr('text-anchor', 'end')
-			.attr('class', 'text-foreground fill-current')
-			.attr('font-size', 10 * renderScale())
-			.text(props.yAxisLabel);
-
-		// Append the horizontal axis atop the area.
-		svg.append('text')
-			.attr('x', widthWithMargin() / 2)
-			.attr('y', heightWithMargin() - 2 * renderScale())
-			.attr('text-anchor', 'middle')
-			.attr('class', 'text-foreground fill-current')
-			.attr('font-size', 10 * renderScale())
-			.text('Time');
-
-		// brush
-		const rootG = svg.append('g').attr('transform', 'translate(' + marginLeft() + ',' + marginTop() + ')');
-		rootG
-			.append('defs')
-			.append('svg:clipPath')
-			.attr('id', id + 'clip')
-			.append('svg:rect')
-			.attr('width', width)
-			.attr('height', height)
-			.attr('x', 0)
-			.attr('y', 0);
-
-		const _variablesPerKey = variablesPerKey();
-		const areaPaths = rootG
-			.append('g')
-			.attr('clip-path', `url(#${id}clip)`)
-			.selectAll()
-			.data(series())
-			.join('path')
-			.attr('transform-origin', '0 80%')
-			.attr('class', (d) => _variablesPerKey[d.key]?.color?.path ?? '');
-		areaPaths.append('title').text((d) => d.key);
-
-		// axis x
-		const xAxis = rootG.append('g').attr('transform', `translate(0,${height()})`);
-
-		// axis y
-		const yAxis = rootG.append('g');
-
-		function mouseToMsIntoGame(e: MouseEvent) {
-			return untrack(() => {
-				const extraChartsTimeBounds = extraChartStore.timeBounds();
-				const rect = brushG.node()!.getBoundingClientRect();
-				const x = e.clientX - rect.left;
-				return Math.round(
-					extraChartsTimeBounds[0] + (extraChartsTimeBounds[1] - extraChartsTimeBounds[0]) * (x / rect.width),
-				);
-			});
-		}
-		function sceneFromMs(ms: number) {
-			if (!_recording) return null;
-			return _recording.sceneEventFromMs(ms);
+		const ms = mouseToMsIntoGame(e);
+		hoverMsStore.setHoveredMsIntoGame(ms);
+		const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
+		if (scene) {
+			roomDisplayStore.setHoveredRoom(scene);
+			roomDisplayStore.setSelectedRoomIfNotPinned(scene);
 		}
 
-		let didHoldAction = false;
-		let holdTimeout: number | null = null;
-		let holdStartMousePosition = { x: 0, y: 0 };
-		let currentMousePosition = { x: 0, y: 0 };
-		function startHold(e: MouseEvent) {
+		if (brushStart() !== null) {
+			const canvas = canvasRef();
+			if (!canvas) return;
+			const rect = canvas.getBoundingClientRect();
+			const mouseX = clampBrushXToChart(canvas, e.clientX - rect.left);
+			setBrushEnd(mouseX);
+		}
+	}
+
+	function handleMouseLeave() {
+		hoverMsStore.setHoveredMsIntoGame(null);
+		roomDisplayStore.setHoveredRoom(null);
+		modifierDragLastClientX = null;
+	}
+
+	function handlePointerMove(e: PointerEvent) {
+		currentMousePosition = { x: e.clientX, y: e.clientY };
+		handleModifierDragMove(e);
+
+		if (brushStart() !== null) {
+			const canvas = canvasRef();
+			if (canvas) {
+				const rect = canvas.getBoundingClientRect();
+				setBrushEnd(clampBrushXToChart(canvas, e.clientX - rect.left));
+			}
+		}
+
+		e.preventDefault();
+	}
+
+	function handlePointerDown(e: PointerEvent) {
+		if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
+			modifierDragLastClientX = e.clientX;
+			didModifierDeltaDrag = false;
+			return;
+		}
+
+		startHold(e);
+		const canvas = canvasRef();
+		if (!canvas) return;
+		const rect = canvas.getBoundingClientRect();
+		const mouseX = clampBrushXToChart(canvas, e.clientX - rect.left);
+		activePointerId = e.pointerId;
+		canvas.setPointerCapture(e.pointerId);
+		setBrushStart(mouseX);
+		setBrushEnd(mouseX);
+	}
+
+	function handlePointerUp(e: PointerEvent) {
+		const canvas = canvasRef();
+		if (activePointerId !== null && canvas?.hasPointerCapture(activePointerId)) {
+			canvas.releasePointerCapture(activePointerId);
+		}
+		activePointerId = null;
+
+		cancelHold();
+		modifierDragLastClientX = null;
+		if (didModifierDeltaDrag) {
+			suppressNextModifierClick = true;
+		}
+		didModifierDeltaDrag = false;
+
+		if (brushStart() !== null && canvas) {
+			const rect = canvas.getBoundingClientRect();
+			setBrushEnd(clampBrushXToChart(canvas, e.clientX - rect.left));
+		}
+
+		if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
+			setBrushStart(null);
+			setBrushEnd(null);
 			didHoldAction = false;
-			cancelHold();
-			holdStartMousePosition = { x: e.clientX, y: e.clientY };
-			currentMousePosition = { x: e.clientX, y: e.clientY };
-			holdTimeout = window.setTimeout(() => {
-				holdTimeout = null;
-				const distance = Math.sqrt(
-					(currentMousePosition.x - holdStartMousePosition.x) ** 2 +
-						(currentMousePosition.y - holdStartMousePosition.y) ** 2,
-				);
-				if (distance < 10) {
-					moveToMsIntoGame(e);
-					didHoldAction = true;
-				}
-			}, 500);
+			return;
 		}
 
-		function cancelHold() {
-			if (holdTimeout) {
-				window.clearTimeout(holdTimeout);
-				holdTimeout = null;
-			}
+		const start = brushStart();
+		const end = brushEnd();
+
+		if (start !== null && end !== null && Math.abs(end - start) > 5) {
+			// Calculate the selection in data space
+			const canvas = canvasRef();
+			if (!canvas) return;
+			const rect = canvas.getBoundingClientRect();
+			const _marginLeft = marginLeft();
+			const _width = width();
+			const marginLeftPx = _marginLeft * (rect.width / 400);
+			const chartWidth = _width * (rect.width / 400);
+
+			const x1 = (Math.min(start, end) - marginLeftPx) / chartWidth;
+			const x2 = (Math.max(start, end) - marginLeftPx) / chartWidth;
+
+			const timeBounds = extraChartStore.timeBoundsTransition();
+			const msStart = timeBounds[0] + (timeBounds[1] - timeBounds[0]) * x1;
+			const msEnd = timeBounds[0] + (timeBounds[1] - timeBounds[0]) * x2;
+
+			extraChartStore.setTimeBoundsStopFollowIfOutside([msStart, msEnd] as const);
+		} else if (!didHoldAction && Math.abs((end ?? start ?? 0) - (start ?? 0)) <= 5) {
+			// Single click without drag - reset zoom
+			extraChartStore.resetTimeBounds();
 		}
 
-		function moveToMsIntoGame(e: MouseEvent) {
-			const ms = mouseToMsIntoGame(e);
-			animationStore.setMsIntoGame(ms);
-			const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
-			if (scene) {
-				roomDisplayStore.setSelectedSceneName(scene);
-			}
+		setBrushStart(null);
+		setBrushEnd(null);
+		didHoldAction = false;
+	}
+
+	function handlePointerCancel() {
+		const canvas = canvasRef();
+		if (activePointerId !== null && canvas?.hasPointerCapture(activePointerId)) {
+			canvas.releasePointerCapture(activePointerId);
 		}
+		activePointerId = null;
+		cancelHold();
+		modifierDragLastClientX = null;
+		didModifierDeltaDrag = false;
+		setBrushStart(null);
+		setBrushEnd(null);
+		didHoldAction = false;
+	}
 
-		// brush
-		const brush = d3
-			.brushX()
-			.extent([
-				[0, 0],
-				[width(), height()],
-			])
-			.filter((e) => {
-				return !e.ctrlKey && !e.shiftKey && !e.altKey && !e.metaKey;
-			})
-			// eslint-disable-next-line solid/reactivity
-			.on('end', (e) => {
-				onBrushEnd(didHoldAction, e);
-				cancelHold();
-				didHoldAction = false;
-			});
-		const brushG = rootG
-			.append('g')
-			.attr('class', 'brush')
-			.on('mousemove', (e) => {
-				const ms = mouseToMsIntoGame(e);
-				hoverMsStore.setHoveredMsIntoGame(ms);
-				const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
-				if (scene) {
-					roomDisplayStore.setHoveredRoom(scene);
-					roomDisplayStore.setSelectedRoomIfNotPinned(scene);
-				}
-			})
-			.on('pointermove', (e: PointerEvent) => {
-				currentMousePosition = { x: e.clientX, y: e.clientY };
-
+	function handleClick(e: MouseEvent) {
+		cancelHold();
+		if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
+			if (suppressNextModifierClick) {
+				suppressNextModifierClick = false;
 				e.preventDefault();
-			})
-			.on('mouseleave', () => {
-				hoverMsStore.setHoveredMsIntoGame(null);
-				roomDisplayStore.setHoveredRoom(null);
-			})
-			.on('pointerdown', (e) => {
-				startHold(e);
-			})
-			.on('click', (e) => {
-				cancelHold();
-				if (e.ctrlKey || e.shiftKey || e.altKey || e.metaKey) {
-					moveToMsIntoGame(e);
-					e.preventDefault();
+				return;
+			}
+			moveToMsIntoGame(e, 'smooth');
+			e.preventDefault();
+		}
+	}
+
+	// Render brush selection on overlay canvas
+	function renderOverlay() {
+		const canvas = overlayCanvasRef();
+		if (!canvas) return;
+
+		const ctx = canvas.getContext('2d');
+		if (!ctx) return;
+
+		const sizedCanvas = autoSizedOverlayCanvas();
+		if (!sizedCanvas.canvas) return;
+
+		const displayWidth = sizedCanvas.widthInUnits || widthWithMargin();
+		const displayHeight = sizedCanvas.heightInUnits || heightWithMargin();
+		const ratio = sizedCanvas.canvas.width / Math.max(displayWidth, 1);
+		ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+		ctx.clearRect(0, 0, displayWidth, displayHeight);
+
+		const bounds = extraChartStore.timeBoundsTransition();
+		const currentMs = animationStore.msIntoGame() ?? gameplayStore.timeFrame().min;
+		const hoverMs = hoverMsStore.hoveredMsIntoGame();
+		const domainSpan = bounds[1] - bounds[0];
+		if (domainSpan > 0) {
+			const chartScaleX = displayWidth / widthWithMargin();
+			const chartScaleY = displayHeight / heightWithMargin();
+			const _marginLeft = marginLeft() * chartScaleX;
+			const _marginTop = marginTop() * chartScaleY;
+			const _width = width() * chartScaleX;
+			const _height = height() * chartScaleY;
+			const currentT = (currentMs - bounds[0]) / domainSpan;
+
+			function isInsideChartX(t: number) {
+				return t >= 0 && t <= 1;
+			}
+
+			if (hoverMs != null) {
+				const hoverT = (hoverMs - bounds[0]) / domainSpan;
+				if (isInsideChartX(hoverT)) {
+					const hoverLineX = _marginLeft + _width * hoverT;
+					ctx.strokeStyle = getComputedStyle(canvasRef() ?? canvas).color || '#000';
+					ctx.lineWidth = 1;
+					ctx.setLineDash([2, 2]);
+					ctx.beginPath();
+					ctx.moveTo(hoverLineX, _marginTop);
+					ctx.lineTo(hoverLineX, _marginTop + _height);
+					ctx.stroke();
 				}
+			}
+
+			if (isInsideChartX(currentT)) {
+				const currentLineX = _marginLeft + _width * currentT;
+				ctx.strokeStyle = getComputedStyle(canvasRef() ?? canvas).color || '#000';
+				ctx.lineWidth = 2;
+				ctx.setLineDash([3, 3]);
+				ctx.beginPath();
+				ctx.moveTo(currentLineX, _marginTop);
+				ctx.lineTo(currentLineX, _marginTop + _height);
+				ctx.stroke();
+			}
+			ctx.setLineDash([]);
+		}
+
+		const start = brushStart();
+		const end = brushEnd();
+
+		if (start !== null && end !== null) {
+			const minX = Math.min(start, end);
+			const maxX = Math.max(start, end);
+			const chartScaleY = displayHeight / heightWithMargin();
+			const _marginTop = marginTop() * chartScaleY;
+			const _height = height() * chartScaleY;
+
+			ctx.fillStyle = 'rgba(128, 128, 128, 0.3)';
+			ctx.fillRect(minX, _marginTop, maxX - minX, _height);
+
+			ctx.strokeStyle = 'rgba(128, 128, 128, 0.8)';
+			ctx.lineWidth = 1;
+			ctx.strokeRect(minX, _marginTop, maxX - minX, _height);
+		}
+	}
+
+	createEffect(() => {
+		const canvas = canvasRef();
+		if (!canvas || renderWorker || typeof Worker === 'undefined') return;
+		if (typeof canvas.transferControlToOffscreen !== 'function') return;
+
+		renderWorker = new Worker(new URL('./line-area-chart-render.worker.ts', import.meta.url), { type: 'module' });
+		const offscreen = canvas.transferControlToOffscreen();
+		renderWorker.postMessage({ type: 'init', canvas: offscreen }, [offscreen]);
+		workerReady = true;
+
+		onCleanup(() => {
+			renderWorker?.terminate();
+			renderWorker = null;
+			workerReady = false;
+		});
+	});
+
+	createEffect(() => {
+		const canvas = canvasRef();
+		if (!canvas) return;
+		const overlaySize = autoSizedOverlayCanvas();
+		viewportStore.visualViewportScale();
+
+		const fallbackDisplayWidth = chartContainerRef()?.offsetWidth || widthWithMargin();
+		const fallbackDisplayHeight = chartContainerRef()?.offsetHeight || heightWithMargin();
+		const zoom = window.visualViewport?.scale ?? 1;
+		const ratio = (window.devicePixelRatio || 1) * zoom;
+
+		const pixelWidth = Math.max(1, overlaySize.canvas?.width ?? Math.round(fallbackDisplayWidth * ratio));
+		const pixelHeight = Math.max(1, overlaySize.canvas?.height ?? Math.round(fallbackDisplayHeight * ratio));
+
+		if (renderWorker && workerReady) {
+			renderWorker.postMessage({
+				type: 'resize',
+				pixelWidth,
+				pixelHeight,
 			});
-		brushG.call(brush);
-
-		// animationLine
-		const animationLine = rootG
-			.append('line')
-			.attr('class', 'stroke-current text-foreground pointer-events-none')
-			.attr('stroke-width', 2 * renderScale())
-			.attr('stroke-dasharray', `${renderScale() * 3} ${renderScale() * 3}`)
-			.attr('x1', 0)
-			.attr('x2', 0)
-			.attr('y1', 0)
-			.attr('y2', height);
-
-		return {
-			areaPaths,
-			xAxis,
-			yAxis,
-			brush,
-			brushG,
-			animationLine,
-		};
+		} else {
+			canvas.width = pixelWidth;
+			canvas.height = pixelHeight;
+		}
 	});
 
-	// update area
-	createEffect(function lineAreaChartUpdateAreaEffect() {
-		const { areaPaths } = svgParts();
-		if (!isFilledD3Selection(areaPaths)) return;
-		const _y = y();
-		const _xNotAnimated = xNotAnimated();
-
-		// Construct an area shape.
-		const area = d3
-			.area<Series[number]>()
-			.x((d) => {
-				return _xNotAnimated(d.data?.msIntoGame ?? 0);
-			})
-			.y0((d) => _y(d[0]))
-			.y1((d) => _y(d[1]))
-			.curve(d3.curveStepAfter);
-
-		// areaPaths().transition().ease(d3.easeLinear).duration(extraChartStore.transitionDuration).attr('d', area);
-		areaPaths.attr('d', area);
-		//areaPaths.current.attr('d', area);
-
-		// areaPaths.current.attr('d', area);
-		// }, [mainEffectChanges, recording, width, x, y]);
+	createEffect(() => {
+		if (!renderWorker || !workerReady) return;
+		const dataForWorker = workerSeries();
+		renderWorker.postMessage({
+			type: 'setData',
+			series: dataForWorker,
+			yAxisLabel: props.yAxisLabel,
+			minimalMaximumY: props.minimalMaximumY,
+		});
 	});
 
-	// update area movement
-	createEffect(function lineAreaChartMoveAreaEffect() {
-		const { areaPaths } = svgParts();
-		if (!isFilledD3Selection(areaPaths)) return;
-		const _x = x();
-
-		const zeroX = _x(0);
-		const maxX = _x(gameplayStore.timeFrame().max);
-
-		const scaleX = Math.round(((maxX - zeroX) / width()) * 100) / 100;
-
-		const scaleY = Math.round((maxYOverAllTime() / maxYInSelection()) * 100) / 100;
-
-		const base =
-			areaPaths.attr('data-existed') === 'true'
-				? areaPaths.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear)
-				: areaPaths;
-		areaPaths.attr('data-existed', 'true');
-
-		base.attr('transform', `translate(${zeroX} 0) scale(${scaleX} ${scaleY})`);
+	createEffect(() => {
+		if (!renderWorker || !workerReady || !isVisible()) return;
+		const canvas = canvasRef();
+		if (!canvas) return;
+		renderWorker.postMessage({
+			type: 'setFrame',
+			timeBoundsAnimated: extraChartStore.timeBoundsTransition(),
+			timeBoundsTarget: extraChartStore.timeBounds(),
+			axisColor: getComputedStyle(canvas).color || '#000',
+		});
 	});
 
-	// update x axis
-	createEffect(function lineAreaChartUpdateXAxisEffect() {
-		const { xAxis } = svgParts();
-		if (!isFilledD3Selection(xAxis)) return;
-		const _x = x();
-		xAxis.attr('font-size', renderScale() * 9).style('stroke-width', renderScale);
-		const base = xAxis.selectAll('*').empty()
-			? xAxis
-			: xAxis.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear);
-		d3Ticks(
-			base.call(
-				d3
-					.axisBottom(_x)
-					.tickSizeOuter(0)
-					.ticks(6)
-					.tickSize(6 * renderScale())
-					.tickSizeInner(6 * renderScale())
-					.tickSizeOuter(6 * renderScale())
-					.tickPadding(3 * renderScale())
-					.tickFormat((d) => formatTimeMs(d.valueOf())),
-			),
-		)
-			.attr('font-size', renderScale() * 9)
-			.style('stroke-width', renderScale());
-	});
-
-	// update y axis
-	createEffect(function lineAreaChartUpdateYAxisEffect() {
-		const { yAxis } = svgParts();
-		if (!isFilledD3Selection(yAxis)) return;
-
-		yAxis.attr('font-size', renderScale() * 9).style('stroke-width', renderScale);
-
-		const base = yAxis.selectAll('*').empty()
-			? yAxis
-			: yAxis.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear);
-
-		d3Ticks(
-			base.call(
-				d3
-					.axisLeft(yInSelection())
-					.ticks(6)
-					.tickSize(6 * renderScale())
-					.tickSizeInner(6 * renderScale())
-					.tickSizeOuter(6 * renderScale())
-					.tickPadding(3 * renderScale()),
-			),
-		)
-			.attr('font-size', renderScale() * 9)
-			.style('stroke-width', renderScale());
-		// .call((g) => g.select('.domain').remove())
-		// .call((g) => g.selectAll('.tick line').clone().attr('x2', width).attr('stroke-opacity', 0.1));
-	});
-
-	// update animation line
-	createEffect(function lineAreaChartUpdateAnimationLineEffect() {
-		const { animationLine } = svgParts();
-		if (!isFilledD3Selection(animationLine)) return;
-		const _x = x();
-
-		const base =
-			animationLine.attr('data-existed') === 'true'
-				? animationLine.transition().duration(extraChartStore.transitionDuration).ease(d3.easeLinear)
-				: animationLine;
-		base.attr('data-existed', 'true');
-		base.attr('x1', _x(debouncedMsIntoGame()));
-		base.attr('x2', _x(debouncedMsIntoGame()));
+	createEffect(() => {
+		autoSizedOverlayCanvas();
+		brushStart();
+		brushEnd();
+		animationStore.msIntoGame();
+		hoverMsStore.hoveredMsIntoGame();
+		extraChartStore.timeBoundsTransition();
+		gameplayStore.timeFrame();
+		renderOverlay();
 	});
 
 	return (
 		<div class="snap-start snap-normal overflow-hidden">
 			<h3 class="-mb-3 pt-2 text-center">{props.header}</h3>
-			<svg
-				ref={setSvgRef}
-				width={widthWithMargin()}
-				height={heightWithMargin()}
-				viewBox={`0 0 ${widthWithMargin()} ${heightWithMargin()}`}
-				class="mx-auto h-auto w-full max-w-[550px] touch-none select-none"
-			/>
+			<div
+				ref={setChartContainerRef}
+				class="relative mx-auto w-full"
+				style={{ 'max-width': '550px', 'aspect-ratio': '4 / 3' }}
+			>
+				<canvas
+					ref={setCanvasRef}
+					width={400}
+					height={300}
+					class="absolute inset-0 block h-full w-full touch-none select-none"
+					onMouseMove={handleMouseMove}
+					onMouseLeave={handleMouseLeave}
+					onPointerMove={handlePointerMove}
+					onPointerDown={handlePointerDown}
+					onPointerUp={handlePointerUp}
+					onPointerCancel={handlePointerCancel}
+					onClick={handleClick}
+				/>
+				<canvas
+					ref={setOverlayCanvasRef}
+					width={400}
+					height={300}
+					class="pointer-events-none absolute inset-0 h-full w-full touch-none select-none"
+				/>
+			</div>
 			<Table>
 				<TableBody>
 					<For each={props.variables}>
@@ -564,11 +692,18 @@ interface LineAreaChartVarRowProps {
 const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 	const id = createUniqueId();
 	const animationStore = useAnimationStore();
+	const hoverMsStore = useHoverMsStore();
 
 	const isShowable = () => isShownInGraph(props.variable);
 
 	const value = () => {
 		return animationStore.currentFrameEndEvent()?.[props.variable.key] ?? 0;
+	};
+
+	const valueHover = () => {
+		const hoveredFrameEndEvent = hoverMsStore.hoveredFrameEndEvent();
+		if (!hoveredFrameEndEvent) return null;
+		return hoveredFrameEndEvent[props.variable.key] ?? null;
 	};
 
 	const checked = () => props.selectedVars.includes(props.variable.key);
@@ -593,7 +728,7 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 						<TooltipTrigger
 							as={'label'}
 							for={id + props.variable.key + '_checkbox-input'}
-							class="grow text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+							class="grow text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 						>
 							{props.variable.name}
 						</TooltipTrigger>
@@ -601,7 +736,13 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 					</Tooltip>
 				</div>
 			</TableCell>
-			<TableCell class="text-nowrap p-2 text-right">
+
+			<Show when={valueHover() !== null}>
+				<TableCell class="p-2 text-right text-nowrap">
+					<span class="text-muted-foreground mr-2">{valueHover()}</span>
+				</TableCell>
+			</Show>
+			<TableCell class="p-2 text-right text-nowrap">
 				<>{value()}</>
 				<span class="ml-2">
 					<Dynamic component={props.variable.UnitIcon} class="inline-block h-auto w-5" />

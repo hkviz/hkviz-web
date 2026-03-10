@@ -1,6 +1,7 @@
-import { createContext, createSignal, useContext } from 'solid-js';
+import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { GameplayStore } from './gameplay-store';
 
-export function createHoverMsStore() {
+export function createHoverMsStore(gameplayStore: GameplayStore) {
 	const [hoveredMsIntoGame, setHoveredMsIntoGame] = createSignal<number | null>(null);
 
 	function reset() {
@@ -13,10 +14,26 @@ export function createHoverMsStore() {
 		}
 	}
 
+	const hoveredFrameEndEventIndex = createMemo(() => {
+		const _hoveredMsIntoGame = hoveredMsIntoGame();
+		if (_hoveredMsIntoGame === null) return null;
+		return gameplayStore.recording()?.frameEndEventIndexFromMs(_hoveredMsIntoGame) ?? null;
+	});
+	const hoveredFrameEndEvent = createMemo(() => {
+		const r = gameplayStore.recording();
+		if (!r) return null;
+		const index = hoveredFrameEndEventIndex();
+		if (index === null) return null;
+
+		return r.frameEndEvents[index] ?? null;
+	});
+
 	return {
 		hoveredMsIntoGame,
 		setHoveredMsIntoGame,
 		unsetHoveredMsIntoGame,
+		hoveredFrameEndEventIndex,
+		hoveredFrameEndEvent,
 		reset,
 	};
 }

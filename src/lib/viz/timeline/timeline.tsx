@@ -150,7 +150,7 @@ function AnimationTimeLineColorCodes() {
 		const sceneChange = getSceneChangeFromMouseEvent(e);
 		console.log(sceneChange);
 		if (!sceneChange) return;
-		animationStore.setMsIntoGame(sceneChange.startMs);
+		animationStore.setMsIntoGame(sceneChange.startMs, 'instant');
 		roomDisplayStore.togglePinnedRoom(sceneChange.mainVirtualScene, 'timeline-color-code-click', true);
 		uiStore.showMapIfOverview();
 	}
@@ -161,13 +161,13 @@ function AnimationTimeLineColorCodes() {
 
 	return (
 		<div
-			class="animation-timeline-color-codes absolute bottom-0 left-0 right-0 h-3"
+			class="animation-timeline-color-codes absolute right-0 bottom-0 left-0 h-3"
 			ref={(el) => setContainer(el)}
 			onMouseMove={handleMouseMove}
 			onMouseLeave={handleMouseLeave}
 			onClick={handleClick}
 		>
-			<span class="absolute -left-3 top-[50%] hidden -translate-x-full translate-y-[-35%] text-[0.6rem] @3xl:block">
+			<span class="absolute top-[50%] -left-3 hidden -translate-x-full translate-y-[-35%] text-[0.6rem] @3xl:block">
 				Area
 			</span>
 			<canvas ref={(el) => setCanvas(el)} class="absolute inset-0 h-full w-full" />
@@ -250,7 +250,7 @@ function AnimationTimeLineSlider() {
 			onChange={(values) => {
 				const newMsIntoGame = values[0]!;
 
-				animationStore.setMsIntoGame(newMsIntoGame);
+				animationStore.setMsIntoGame(newMsIntoGame, 'instant');
 				uiStore.showMapIfOverview();
 				dragRef.previousDiff = 0; //diff;
 
@@ -289,11 +289,11 @@ export function AnimationTimeLine(props: { class?: string }) {
 			<div>
 				<AnimationTimeLineSlider />
 			</div>
-			<div class="pointer-events-none absolute bottom-0 left-0 right-0 top-0">
+			<div class="pointer-events-none absolute top-0 right-0 bottom-0 left-0">
 				<Show when={hoveredMsIntoGame()}>
 					{(hoveredMsIntoGame) => (
 						<div
-							class="absolute bottom-0 top-0 w-px bg-foreground"
+							class="bg-foreground absolute top-0 bottom-0 w-px"
 							style={{ left: (100 * hoveredMsIntoGame()) / timeFrame().max + '%' }}
 						/>
 					)}
@@ -341,7 +341,7 @@ export function AnimationOptions(props: { class?: string }) {
 							</Index>
 
 							<div class="relative w-full">
-								<Times class="absolute left-4 top-[50%] translate-y-[-50%]" />
+								<Times class="absolute top-[50%] left-4 translate-y-[-50%]" />
 								<TextField>
 									<TextFieldInput
 										type="number"

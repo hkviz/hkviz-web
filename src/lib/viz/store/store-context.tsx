@@ -1,20 +1,21 @@
 import { createEffect, JSXElement, onCleanup } from 'solid-js';
+import { createSpriteSheetStore, SpriteStoreContext } from '../spritesheets/spritesheet-store';
 import { AggregationStoreContext, createAggregationStore } from './aggregation-store';
 import { AnimationStoreContext, createAnimationStore } from './animation-store';
+import { AnimationTickStoreContext, createAnimationTickStore } from './animation-tick-store';
 import { createExtraChartStore, ExtraChartStoreContext } from './extra-chart-store';
+import { createGameplayStore, GameplayStoreContext } from './gameplay-store';
+import { createHoverMsStore, HoverMsStoreContext } from './hover-ms-store';
+import { createMapZoomStore, MapZoomStoreContext } from './map-zoom-store';
 import { createPlayerDataAnimationStore, PlayerDataAnimationStoreContext } from './player-data-animation-store';
 import { createRoomColoringStore, RoomColoringStoreContext } from './room-coloring-store';
 import { createRoomDisplayStore, RoomDisplayStoreContext } from './room-display-store';
+import { createSplitsStore, SplitsStoreContext } from './splits-store';
 import { createThemeStore, ThemeStoreContext, useThemeStore } from './theme-store';
 import { createTourStore, TourStoreContext } from './tour-store';
-import { createViewportStore, ViewportStoreContext } from './viewport-store';
-import { createUiStore, UiStoreContext, useUiStore } from './ui-store';
 import { createTraceStore, TraceStoreContext } from './trace-store';
-import { createMapZoomStore, MapZoomStoreContext } from './map-zoom-store';
-import { createHoverMsStore, HoverMsStoreContext } from './hover-ms-store';
-import { createGameplayStore, GameplayStoreContext } from './gameplay-store';
-import { createSplitsStore, SplitsStoreContext } from './splits-store';
-import { createSpriteSheetStore, SpriteStoreContext } from '../spritesheets/spritesheet-store';
+import { createUiStore, UiStoreContext, useUiStore } from './ui-store';
+import { createViewportStore, ViewportStoreContext } from './viewport-store';
 
 export function GlobalStoresProvider(props: { children: JSXElement }) {
 	const themeStore = createThemeStore();
@@ -35,7 +36,7 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 	const uiStore = useUiStore();
 
 	const gameplayStore = createGameplayStore();
-	const hoverMsStore = createHoverMsStore();
+	const hoverMsStore = createHoverMsStore(gameplayStore);
 	const animationStore = createAnimationStore(gameplayStore, uiStore);
 	const mapZoomStore = createMapZoomStore();
 	const viewportStore = createViewportStore();
@@ -54,6 +55,7 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 		uiStore,
 		mapZoomStore,
 	);
+	const animationTickStore = createAnimationTickStore(animationStore, extraChartStore);
 
 	createEffect(() => {
 		const allStores = {
@@ -69,6 +71,8 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 			roomColoringStore,
 			splitsStore,
 			tourStore,
+			viewportStore,
+			animationTickStore,
 		};
 
 		(window as any).stores = allStores;
@@ -94,7 +98,11 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 												<RoomColoringStoreContext.Provider value={roomColoringStore}>
 													<AggregationStoreContext.Provider value={aggregationStore}>
 														<TourStoreContext.Provider value={tourStore}>
-															{props.children}
+															<AnimationTickStoreContext.Provider
+																value={animationTickStore}
+															>
+																{props.children}
+															</AnimationTickStoreContext.Provider>
 														</TourStoreContext.Provider>
 													</AggregationStoreContext.Provider>
 												</RoomColoringStoreContext.Provider>

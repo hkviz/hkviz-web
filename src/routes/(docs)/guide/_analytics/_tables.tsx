@@ -1,4 +1,5 @@
 import { Pin } from 'lucide-solid';
+import { Component, JSXElement } from 'solid-js';
 import { Card } from '~/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
 
@@ -50,31 +51,57 @@ export function SplitActionsTable() {
 	);
 }
 
+const Shortcut: Component<{ children: JSXElement }> = (props) => {
+	return <span class="rounded-md bg-gray-200 px-1 text-sm whitespace-nowrap dark:bg-gray-800">{props.children}</span>;
+};
+
 export function TimeBasedChartActionsTable() {
+	const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
+	const ctrlKey = isMac ? '⌘' : 'Ctrl';
+	return (
+		<Table>
+			<TableHeader>
+				<TableRow>
+					<TableHead>Shortcut</TableHead>
+					<TableHead>Action</TableHead>
+				</TableRow>
+			</TableHeader>
+			<TableBody>
+				<TableRow>
+					<TableCell>
+						<Shortcut>Drag over Chart</Shortcut>
+					</TableCell>
+					<TableCell>Zoom in</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell>
+						<Shortcut>Click</Shortcut>
+					</TableCell>
+					<TableCell>Zoom out</TableCell>
+				</TableRow>
+				<TableRow>
+					<TableCell class="p-1 pl-4">
+						<Shortcut>{ctrlKey} + Click</Shortcut> or <br />
+						<Shortcut>Click + Hold</Shortcut>
+					</TableCell>
+					<TableCell>Move the timeline to where your mouse is on the chart</TableCell>
+				</TableRow>
+
+				<TableRow>
+					<TableCell class="p-1 pl-4">
+						<Shortcut>{ctrlKey} + Drag</Shortcut>
+					</TableCell>
+					<TableCell>Move the timeline to where your mouse is on the chart until letting go</TableCell>
+				</TableRow>
+			</TableBody>
+		</Table>
+	);
+}
+
+export function TimeBasedChartActionsTableCard() {
 	return (
 		<Card class="not-prose max-w-[60ch] overflow-hidden">
-			<Table>
-				<TableHeader>
-					<TableRow>
-						<TableHead>Shortcut</TableHead>
-						<TableHead>Action</TableHead>
-					</TableRow>
-				</TableHeader>
-				<TableBody>
-					<TableRow>
-						<TableCell>Ctrl + Click or Click + Hold</TableCell>
-						<TableCell>Move the timeline to the timepoint hovered on the chart</TableCell>
-					</TableRow>
-					<TableRow>
-						<TableCell>Drag from left to right</TableCell>
-						<TableCell>Zoom into the selected timespan</TableCell>
-					</TableRow>
-					<TableRow>
-						<TableCell>Click</TableCell>
-						<TableCell>Zoom out</TableCell>
-					</TableRow>
-				</TableBody>
-			</Table>
+			<TimeBasedChartActionsTable />
 		</Card>
 	);
 }

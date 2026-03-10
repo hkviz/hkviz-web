@@ -1,15 +1,21 @@
+import { batch, createContext, createEffect, createMemo, createSignal, untrack, useContext } from 'solid-js';
 import { mainRoomDataBySceneName, type RoomData, type SceneEvent } from '../../parser';
-import { batch, createContext, createEffect, createMemo, createSignal, onCleanup, untrack, useContext } from 'solid-js';
 import { GameplayStore } from './gameplay-store';
 import { UiStore } from './ui-store';
 
-const intervalMs = 1000 / 30;
-// const intervalMs = 1000 / 60;
+export type MsIntoGameChangeType = 'smooth' | 'instant';
+export type OnMsIntoGameChangeListener = (
+	oldMsIntoGame: number,
+	newMsIntoGame: number,
+	changeType: MsIntoGameChangeType,
+) => void;
 
 export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiStore) {
 	const [isPlaying, _setIsPlaying] = createSignal(false);
 	const [msIntoGame, _setMsIntoGame] = createSignal(0);
 	const [speedMultiplier, setSpeedMultiplier] = createSignal(100);
+
+	const onMsIntoGameChangeListeners = new Set<OnMsIntoGameChangeListener>();
 
 	function reset() {
 		_setIsPlaying(false);
@@ -55,7 +61,7 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 		return r.frameEndEvents[index] ?? null;
 	});
 
-	function setLimitedAnimationMsIntoGame(newMsIntoGame: number) {
+	function setLimitedAnimationMsIntoGame(newMsIntoGame: number, changeType: MsIntoGameChangeType) {
 		batch(() => {
 			const timeFrame = gameplayStore.timeFrame();
 			if (Number.isNaN(newMsIntoGame) || typeof newMsIntoGame != 'number') return;
@@ -68,24 +74,35 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 				setIsPlaying(false);
 			}
 
+			const oldMsIntoGame = msIntoGame();
 			_setMsIntoGame(newMsIntoGame);
+
+			untrack(() => {
+				onMsIntoGameChangeListeners.forEach((listener) => {
+					try {
+						listener(oldMsIntoGame, newMsIntoGame, changeType);
+					} catch (e) {
+						console.error('Error in onMsIntoGameChangeListener', e);
+					}
+				});
+			});
 			// TODO
 			// recalcNextSplit();
 		});
 	}
-	function setMsIntoGame(animationMsIntoGame: number) {
-		setLimitedAnimationMsIntoGame(animationMsIntoGame);
+	function setMsIntoGame(animationMsIntoGame: number, changeType: MsIntoGameChangeType) {
+		setLimitedAnimationMsIntoGame(animationMsIntoGame, changeType);
 	}
-	function incrementMsIntoGame(increment: number) {
-		setLimitedAnimationMsIntoGame(msIntoGame() + increment);
+	function incrementMsIntoGame(increment: number, changeType: MsIntoGameChangeType) {
+		setLimitedAnimationMsIntoGame(msIntoGame() + increment, changeType);
 	}
 
 	function setIsPlaying(playing: boolean) {
 		if (playing && speedMultiplier() > 0 && msIntoGame() >= gameplayStore.timeFrame().max) {
-			setMsIntoGame(gameplayStore.timeFrame().min);
+			setMsIntoGame(gameplayStore.timeFrame().min, 'instant');
 		}
 		if (playing && speedMultiplier() < 0 && msIntoGame() <= gameplayStore.timeFrame().min) {
-			setMsIntoGame(gameplayStore.timeFrame().max);
+			setMsIntoGame(gameplayStore.timeFrame().max, 'instant');
 		}
 
 		_setIsPlaying(playing);
@@ -94,18 +111,11 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 		setIsPlaying(!isPlaying());
 	}
 
-	// TODO move to solid
-	createEffect(() => {
-		if (!isPlaying()) return;
-
-		const interval = setInterval(() => {
-			untrack(() => {
-				incrementMsIntoGame(intervalMs * speedMultiplier());
-			});
-		}, intervalMs) as any;
-
-		onCleanup(() => clearInterval(interval));
-	});
+	function tick(deltaMs: number) {
+		if (isPlaying()) {
+			incrementMsIntoGame(deltaMs * speedMultiplier(), 'instant');
+		}
+	}
 
 	// change tabs when animation starts
 	createEffect(() => {
@@ -117,6 +127,11 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 			});
 		}
 	});
+
+	function onMsIntoGameChange(listener: OnMsIntoGameChangeListener) {
+		onMsIntoGameChangeListeners.add(listener);
+		return () => onMsIntoGameChangeListeners.delete(listener);
+	}
 
 	return {
 		isPlaying,
@@ -133,6 +148,8 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 		reset,
 		currentSceneEventWithMainMapRoom,
 		setSpeedMultiplier,
+		onMsIntoGameChange,
+		tick,
 	};
 }
 export type AnimationStore = ReturnType<typeof createAnimationStore>;

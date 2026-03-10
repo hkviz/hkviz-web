@@ -50,7 +50,7 @@ const RunSplitRow: Component<RowProps> = (props) => {
 
 	function handleClick() {
 		console.log('split clicked', props.split);
-		animationStore.setMsIntoGame(props.split.msIntoGame);
+		animationStore.setMsIntoGame(props.split.msIntoGame, 'smooth');
 		uiStore.showMapIfOverview();
 
 		function markClicked() {
@@ -116,9 +116,9 @@ const RunSplitRow: Component<RowProps> = (props) => {
 					onClick={handleClick}
 					onMouseEnter={handleMouseEnter}
 					onMouseLeave={handleMouseLeave}
-					class="relative flex w-full flex-row items-center gap-2 p-3 pl-4"
+					class="relative flex w-full flex-row items-center gap-2 py-2.5 pr-3 pl-4"
 				>
-					<div class={cn('absolute bottom-0 left-0 top-0 w-1', splitGroupColor().background)} />
+					<div class={cn('absolute top-0 bottom-0 left-0 w-1', splitGroupColor().background)} />
 					<Show when={props.split.imageUrl}>
 						{(imageUrl) => (
 							<div
@@ -130,7 +130,14 @@ const RunSplitRow: Component<RowProps> = (props) => {
 						)}
 					</Show>
 					<p class="flex grow flex-col items-start justify-center text-left">
-						<span>{props.split.title}</span>
+						<span class="relative">
+							<Show when={props.activeState === 'next'}>
+								<span class="absolute bottom-full left-0 text-[.5rem] font-bold opacity-75">
+									Up Next
+								</span>
+							</Show>
+							{props.split.title}
+						</span>
 						{/* <span
                             class="-mb-1 mt-1 rounded-lg bg-slate-400 px-1 py-0.5 text-[.5rem] font-bold leading-none text-black"
                             style={{ backgroundColor: scene?.color?.formatHex() }}
@@ -192,7 +199,7 @@ const RunSplitsSearch: Component = () => {
 			<Show when={show()}>
 				{show() && (
 					<>
-						<Search class="absolute left-0 top-0 m-2.5 h-4 w-4" />
+						<Search class="absolute top-0 left-0 m-2.5 h-4 w-4" />
 						<TextField>
 							<TextFieldInput
 								type="text"
@@ -205,7 +212,7 @@ const RunSplitsSearch: Component = () => {
 						<Show when={filterTerm()}>
 							<Button
 								onClick={() => splitsStore.setFilterTerm('')}
-								class="absolute right-0 top-0 flex h-9 w-9 items-center justify-center p-0"
+								class="absolute top-0 right-0 flex h-9 w-9 items-center justify-center p-0"
 								variant="ghost"
 								title="Clear search"
 							>
@@ -253,7 +260,7 @@ export const RunSplits: Component<RunSplitsProps> = (props) => {
 								/>
 								<label
 									for={id + '_run_split_option_' + group.name + '-input'}
-									class="grow pl-1 text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+									class="grow pl-1 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 								>
 									{group.displayName}
 								</label>

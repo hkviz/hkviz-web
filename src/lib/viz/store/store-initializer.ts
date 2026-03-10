@@ -16,7 +16,7 @@ export function createStoreInitializer() {
 		},
 		initializeFromRecording(recording: CombinedRecording | null) {
 			gameplayStore.setRecording(recording);
-			animationStore.setMsIntoGame(gameplayStore.timeFrame().max);
+			animationStore.setMsIntoGame(gameplayStore.timeFrame().max, 'instant');
 			extraChartStore.setTimeboundsForFollow();
 		},
 	};
