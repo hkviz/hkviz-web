@@ -602,7 +602,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 	});
 
 	return (
-		<div class="flex max-h-fit shrink grow basis-0 snap-start snap-normal flex-col overflow-hidden">
+		<div class="flex shrink grow basis-0 snap-start snap-normal flex-col overflow-hidden">
 			<div
 				ref={setChartContainerRef}
 				class="relative mx-auto max-h-70 min-h-23 w-full shrink grow basis-0"

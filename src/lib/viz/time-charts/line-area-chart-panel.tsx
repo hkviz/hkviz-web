@@ -44,7 +44,7 @@ export interface LineAreaChartPanelProps extends LineAreaChartProps, LayoutPanel
 export const LineAreaChartPanel = (props: LineAreaChartPanelProps) => {
 	const panelContext = useLayoutPanelContext();
 	return (
-		<div class="extra-charts flex h-full max-h-fit flex-col">
+		<div class="extra-charts flex h-full flex-col">
 			<LayoutPanelPanelHeader resizeOptions={props.resizeOptions}>
 				<Show when={!panelContext.isCollapsed()}>
 					<RunExtraChartsFollowButton />
