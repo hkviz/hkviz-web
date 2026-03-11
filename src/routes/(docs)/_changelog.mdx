@@ -1,38 +1,51 @@
-# Website 3.2.0
+import { ChangelogEntry } from './_changelog-entry';
 
-**2026-03-07**
+<ChangelogEntry title="Layout customization of right panel" type="web" version="3.3.0" date="2026-03-11">
+
+- **Customizable right panel**: You can now choose exactly which time-based charts are shown and in what order via dropdowns, instead of having all charts stacked and reachable only by scrolling.
+- **Movable splits panel**: The splits panel can be repositioned the same way.
+
+These customizations are not yet saved between visits, and currently only apply to the right side of the dashboard.
+
+</ChangelogEntry>
+
+<ChangelogEntry title="Super fast time-based charts" type="web" version="3.2.0" date="2026-03-10">
 
 - **Faster time-based charts**: Area/time charts were rewritten to be smoother and more efficient. (Switched from SVG rendering to off-screen canvases and now run one worker per chart.)
 - **Hover values in time-based charts**: Any hovered time (in the timeline, splits or area chats) are now highlighted on the area chart.
 - **Hold ctrl and drag**: to move trough time quickly from the area chart.
 - **Moved area chart tooltips to popover**: these are now always accessible via a question-mark icon, instead of being at the top of the geo chart.
 
-# Website 3.1.0
+</ChangelogEntry>
 
-**2026-02-04**
+<ChangelogEntry title="Run search and new player page" type="web" version="3.1.0" date="2026-02-04">
 
 - **Search runs by title**: a searchbar was added to public runs, and to pages of players
 - **Redesigned player page**: when clicking on a player of a gameplay, the page listing all gameplays of a player has been slightly redesigned.
 - **Bug fixes**: Fixed bug where player page would not work once selecting a filter that resulted in no gameplays.
 
-# Website 3.0.1
+</ChangelogEntry>
 
-**2026-01-29**
+<ChangelogEntry title="Style bug fixes" type="web" version="3.0.1" date="2026-01-29">
 
 - **Bug and styling fixes**: There have been a couple of styling issues coming from a dependency update (tailwind 3 to tailwind 4 update).
 
-# Mod Version 1.6.0.0
+</ChangelogEntry>
 
-**2025-01-31**
+<ChangelogEntry title="Resumable uploads" type="mod" version="1.6.0.0" date="2025-01-31">
 
 - **Better error recovery when uploading data**:
   As the website version 3.0.0 or later now provides better information and error handling when a file upload is reattempted,
   which previously succeeded in early steps of the upload,
   the upload can now recover from the error and continue where it left off.
 
-# Website 3.0.0
+</ChangelogEntry>
 
-**2025-01-31**
+<ChangelogEntry title="Full SolidJS rewrite" type="web" version="3.0.0" date="2025-01-31">
+
+The website has been partially written in SolidJS since quite a bit, now all remaining UI
+parts were moved to SolidJS and Solid Start. This means most of the pages will be noticeable
+faster, and easier to improve.
 
 - **Room analytics based on timeline position**:
   Following confusions in the user study, the room analytics now updates based on the timeline position, but can also be set to display the gameplay totals like they did before.
@@ -52,3 +65,5 @@
 - **Rewrote remaining ui and backend in solid-start**:
   while the previous version was a mix of NextJS for most pages, and SolidJS for the visualization dashboard.
   This version is now fully SolidJS, which will make the build process a little more streamlined, and allow for better code sharing between.
+
+</ChangelogEntry>

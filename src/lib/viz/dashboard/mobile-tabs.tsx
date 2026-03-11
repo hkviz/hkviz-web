@@ -1,9 +1,9 @@
-import { AreaChart, BadgeInfo, Map, Timer, type LucideIcon } from 'lucide-solid';
+import { AreaChart, BadgeInfo, Map, type LucideIcon } from 'lucide-solid';
 import { type Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
-import { MobileTab, useUiStore } from '../store';
 import { cn } from '~/lib/utils';
+import { MobileTab, useUiStore } from '../store';
 
 interface MobileTabTriggerProps {
 	value: MobileTab;
@@ -41,13 +41,7 @@ export const MobileTabBar: Component = () => {
 			<TabsList class="flex h-12 w-full flex-row rounded-none border-t">
 				<MobileTabTrigger value="overview" title="Overview" icon={BadgeInfo} />
 				<MobileTabTrigger value="map" title="Map" icon={Map} class="map-tab-mobile-layout" />
-				<MobileTabTrigger
-					value="time-charts"
-					title="Charts"
-					icon={AreaChart}
-					class="time-chart-tab-mobile-layout"
-				/>
-				<MobileTabTrigger value="splits" title="Splits" icon={Timer} class="splits-tab-mobile-layout" />
+				<MobileTabTrigger value="right" title="Charts" icon={AreaChart} class="chart-tab-mobile-layout" />
 			</TabsList>
 		</Tabs>
 	);

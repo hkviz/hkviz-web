@@ -1,4 +1,3 @@
-export * from './all';
 export * from './chart-doc';
 export * from './completion-chart';
 export * from './essence-chart';
@@ -7,3 +6,4 @@ export * from './grub-chart';
 export * from './health-chart';
 export * from './line-area-chart';
 export * from './soul-chart';
+

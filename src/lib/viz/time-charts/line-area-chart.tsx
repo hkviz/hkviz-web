@@ -25,9 +25,12 @@ import {
 	useGameplayStore,
 	useHoverMsStore,
 	useRoomDisplayStore,
+	useThemeStore,
 	useViewportStore,
 } from '../store';
+import { chartBaseHeight, chartBaseWidth, getChartFrame } from './chart-frame';
 import { downScale } from './down-scale';
+import type { InitMessage, ResizeMessage, SetDataMessage, SetViewMessage } from './line-area-chart-render.worker';
 import { createIsVisible } from './use-is-visible';
 
 export type LineChartVariableDescription = {
@@ -55,54 +58,11 @@ function isShownInGraph(it: LineChartVariableDescription): it is LineChartShownV
 export interface LineAreaChartProps {
 	variables: LineChartVariableDescription[];
 	yAxisLabel: string;
+	icon: JSXElement;
 	header: JSXElement;
 	minimalMaximumY: number;
 	downScaleMaxTimeDelta: number;
 	renderScale?: number;
-}
-
-// Helper to get CSS color from ColorClasses
-function getColorFromClass(colorClass: ColorClasses, canvas: HTMLCanvasElement | null): string {
-	if (!canvas) {
-		// Fallback colors
-		const defaultColors = [
-			'#ef4444',
-			'#10b981',
-			'#22c55e',
-			'#84cc16',
-			'#6366f1',
-			'#f43f5e',
-			'#fb923c',
-			'#0ea5e9',
-			'#64748b',
-			'#fbbf24',
-		];
-		const hash = colorClass.path.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-		return defaultColors[hash % defaultColors.length];
-	}
-
-	// Create a temporary element to get the computed color
-	const tempDiv = document.createElement('div');
-	tempDiv.className = colorClass.path;
-	tempDiv.style.position = 'absolute';
-	tempDiv.style.visibility = 'hidden';
-	canvas.parentElement?.appendChild(tempDiv);
-
-	const computedColor = getComputedStyle(tempDiv).color;
-	canvas.parentElement?.removeChild(tempDiv);
-
-	// Convert rgb/rgba to hex or return as is
-	if (computedColor.startsWith('rgb')) {
-		const matches = computedColor.match(/\d+/g);
-		if (matches && matches.length >= 3) {
-			const r = parseInt(matches[0]);
-			const g = parseInt(matches[1]);
-			const b = parseInt(matches[2]);
-			return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
-		}
-	}
-
-	return computedColor || '#6366f1'; // fallback to indigo
 }
 
 export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
@@ -161,15 +121,6 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		1: number;
 	}[] & { key: string; index: number };
 
-	const widthWithMargin = () => 400;
-	const heightWithMargin = () => 300;
-	const marginTop = () => 25;
-	const marginRight = () => 10;
-	const marginBottom = () => 35;
-	const marginLeft = () => 45;
-	const height = () => heightWithMargin() - marginTop() - marginBottom();
-	const width = () => widthWithMargin() - marginLeft() - marginRight();
-
 	// Determine the series that need to be stacked.
 	const series = createMemo(() => {
 		const _data = data();
@@ -195,10 +146,9 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 			if (!canvas) return 0;
 			const extraChartsTimeBounds = extraChartStore.timeBoundsTransition();
 			const rect = canvas.getBoundingClientRect();
-			const _marginLeft = marginLeft();
-			const _width = width();
-			const x = e.clientX - rect.left - _marginLeft * (rect.width / 400);
-			const chartWidth = _width * (rect.width / 400);
+			const chartFrame = getChartFrame(rect.width, rect.height);
+			const x = e.clientX - rect.left - chartFrame.marginLeft;
+			const chartWidth = chartFrame.width;
 			return Math.round(
 				extraChartsTimeBounds[0] + (extraChartsTimeBounds[1] - extraChartsTimeBounds[0]) * (x / chartWidth),
 			);
@@ -221,17 +171,18 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 	let suppressNextModifierClick = false;
 	let renderWorker: Worker | null = null;
 	let workerReady = false;
+	const isDarkTheme = createMemo(() => useThemeStore().currentTheme() === 'dark');
 
 	const workerSeries = createMemo(() => {
 		const _series = series();
 		const _variablesPerKey = variablesPerKey();
-		const _canvas = canvasRef();
+		const _isDarkTheme = isDarkTheme();
 		return _series
 			.map((s) => {
 				const colorClass = _variablesPerKey[s.key]?.color;
 				if (!colorClass) return null;
 				return {
-					color: getColorFromClass(colorClass, _canvas),
+					color: _isDarkTheme ? colorClass.hexDark : colorClass.hexLight,
 					points: s.map((d) => ({
 						ms: d.data?.msIntoGame ?? 0,
 						y0: d[0],
@@ -292,7 +243,8 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		didModifierDeltaDrag = true;
 
 		const rect = canvas.getBoundingClientRect();
-		const chartWidth = width() * (rect.width / widthWithMargin());
+		const chartFrame = getChartFrame(rect.width, rect.height);
+		const chartWidth = chartFrame.width;
 		if (chartWidth <= 0) return;
 
 		const timeBounds = extraChartStore.timeBoundsTransition();
@@ -308,8 +260,9 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 
 	function clampBrushXToChart(canvas: HTMLCanvasElement, rawX: number) {
 		const rect = canvas.getBoundingClientRect();
-		const chartLeft = marginLeft() * (rect.width / widthWithMargin());
-		const chartWidth = width() * (rect.width / widthWithMargin());
+		const chartFrame = getChartFrame(rect.width, rect.height);
+		const chartLeft = chartFrame.marginLeft;
+		const chartWidth = chartFrame.width;
 		const chartRight = chartLeft + chartWidth;
 		return Math.max(chartLeft, Math.min(chartRight, rawX));
 	}
@@ -430,10 +383,9 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 			const canvas = canvasRef();
 			if (!canvas) return;
 			const rect = canvas.getBoundingClientRect();
-			const _marginLeft = marginLeft();
-			const _width = width();
-			const marginLeftPx = _marginLeft * (rect.width / 400);
-			const chartWidth = _width * (rect.width / 400);
+			const chartFrame = getChartFrame(rect.width, rect.height);
+			const marginLeftPx = chartFrame.marginLeft;
+			const chartWidth = chartFrame.width;
 
 			const x1 = (Math.min(start, end) - marginLeftPx) / chartWidth;
 			const x2 = (Math.max(start, end) - marginLeftPx) / chartWidth;
@@ -491,8 +443,9 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		const sizedCanvas = autoSizedOverlayCanvas();
 		if (!sizedCanvas.canvas) return;
 
-		const displayWidth = sizedCanvas.widthInUnits || widthWithMargin();
-		const displayHeight = sizedCanvas.heightInUnits || heightWithMargin();
+		const displayWidth = sizedCanvas.widthInUnits || chartBaseWidth;
+		const displayHeight = sizedCanvas.heightInUnits || chartBaseHeight;
+		const chartFrame = getChartFrame(displayWidth, displayHeight);
 		const ratio = sizedCanvas.canvas.width / Math.max(displayWidth, 1);
 		ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
 
@@ -503,23 +456,23 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		const hoverMs = hoverMsStore.hoveredMsIntoGame();
 		const domainSpan = bounds[1] - bounds[0];
 		if (domainSpan > 0) {
-			const chartScaleX = displayWidth / widthWithMargin();
-			const chartScaleY = displayHeight / heightWithMargin();
-			const _marginLeft = marginLeft() * chartScaleX;
-			const _marginTop = marginTop() * chartScaleY;
-			const _width = width() * chartScaleX;
-			const _height = height() * chartScaleY;
+			const _marginLeft = chartFrame.marginLeft;
+			const _marginTop = chartFrame.marginTop;
+			const _width = chartFrame.width;
+			const _height = chartFrame.height;
 			const currentT = (currentMs - bounds[0]) / domainSpan;
 
 			function isInsideChartX(t: number) {
 				return t >= 0 && t <= 1;
 			}
 
+			const textColor = isDarkTheme() ? '#fff' : '#000';
+
 			if (hoverMs != null) {
 				const hoverT = (hoverMs - bounds[0]) / domainSpan;
 				if (isInsideChartX(hoverT)) {
 					const hoverLineX = _marginLeft + _width * hoverT;
-					ctx.strokeStyle = getComputedStyle(canvasRef() ?? canvas).color || '#000';
+					ctx.strokeStyle = textColor;
 					ctx.lineWidth = 1;
 					ctx.setLineDash([2, 2]);
 					ctx.beginPath();
@@ -531,7 +484,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 
 			if (isInsideChartX(currentT)) {
 				const currentLineX = _marginLeft + _width * currentT;
-				ctx.strokeStyle = getComputedStyle(canvasRef() ?? canvas).color || '#000';
+				ctx.strokeStyle = textColor;
 				ctx.lineWidth = 2;
 				ctx.setLineDash([3, 3]);
 				ctx.beginPath();
@@ -548,9 +501,8 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		if (start !== null && end !== null) {
 			const minX = Math.min(start, end);
 			const maxX = Math.max(start, end);
-			const chartScaleY = displayHeight / heightWithMargin();
-			const _marginTop = marginTop() * chartScaleY;
-			const _height = height() * chartScaleY;
+			const _marginTop = chartFrame.marginTop;
+			const _height = chartFrame.height;
 
 			ctx.fillStyle = 'rgba(128, 128, 128, 0.3)';
 			ctx.fillRect(minX, _marginTop, maxX - minX, _height);
@@ -568,7 +520,8 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 
 		renderWorker = new Worker(new URL('./line-area-chart-render.worker.ts', import.meta.url), { type: 'module' });
 		const offscreen = canvas.transferControlToOffscreen();
-		renderWorker.postMessage({ type: 'init', canvas: offscreen }, [offscreen]);
+		const message: InitMessage = { type: 'init', canvas: offscreen };
+		renderWorker.postMessage(message, [offscreen]);
 		workerReady = true;
 
 		onCleanup(() => {
@@ -584,20 +537,25 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		const overlaySize = autoSizedOverlayCanvas();
 		viewportStore.visualViewportScale();
 
-		const fallbackDisplayWidth = chartContainerRef()?.offsetWidth || widthWithMargin();
-		const fallbackDisplayHeight = chartContainerRef()?.offsetHeight || heightWithMargin();
+		const fallbackDisplayWidth = chartContainerRef()?.offsetWidth || chartBaseWidth;
+		const fallbackDisplayHeight = chartContainerRef()?.offsetHeight || chartBaseHeight;
+		const displayWidth = Math.max(1, overlaySize.widthInUnits || fallbackDisplayWidth);
+		const displayHeight = Math.max(1, overlaySize.heightInUnits || fallbackDisplayHeight);
 		const zoom = window.visualViewport?.scale ?? 1;
 		const ratio = (window.devicePixelRatio || 1) * zoom;
 
-		const pixelWidth = Math.max(1, overlaySize.canvas?.width ?? Math.round(fallbackDisplayWidth * ratio));
-		const pixelHeight = Math.max(1, overlaySize.canvas?.height ?? Math.round(fallbackDisplayHeight * ratio));
+		const pixelWidth = Math.max(1, overlaySize.canvas?.width ?? Math.round(displayWidth * ratio));
+		const pixelHeight = Math.max(1, overlaySize.canvas?.height ?? Math.round(displayHeight * ratio));
 
 		if (renderWorker && workerReady) {
-			renderWorker.postMessage({
+			const message: ResizeMessage = {
 				type: 'resize',
+				displayWidth,
+				displayHeight,
 				pixelWidth,
 				pixelHeight,
-			});
+			};
+			renderWorker.postMessage(message);
 		} else {
 			canvas.width = pixelWidth;
 			canvas.height = pixelHeight;
@@ -607,24 +565,26 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 	createEffect(() => {
 		if (!renderWorker || !workerReady) return;
 		const dataForWorker = workerSeries();
-		renderWorker.postMessage({
+		const message: SetDataMessage = {
 			type: 'setData',
 			series: dataForWorker,
 			yAxisLabel: props.yAxisLabel,
 			minimalMaximumY: props.minimalMaximumY,
-		});
+		};
+		renderWorker.postMessage(message);
 	});
 
 	createEffect(() => {
 		if (!renderWorker || !workerReady || !isVisible()) return;
 		const canvas = canvasRef();
 		if (!canvas) return;
-		renderWorker.postMessage({
+		const message: SetViewMessage = {
 			type: 'setFrame',
 			timeBoundsAnimated: extraChartStore.timeBoundsTransition(),
 			timeBoundsTarget: extraChartStore.timeBounds(),
-			axisColor: getComputedStyle(canvas).color || '#000',
-		});
+			axisColor: isDarkTheme() ? '#fff' : '#000',
+		};
+		renderWorker.postMessage(message);
 	});
 
 	createEffect(() => {
@@ -635,21 +595,23 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		hoverMsStore.hoveredMsIntoGame();
 		extraChartStore.timeBoundsTransition();
 		gameplayStore.timeFrame();
-		renderOverlay();
+		isDarkTheme();
+		untrack(() => {
+			renderOverlay();
+		});
 	});
 
 	return (
-		<div class="snap-start snap-normal overflow-hidden">
-			<h3 class="-mb-3 pt-2 text-center">{props.header}</h3>
+		<div class="flex max-h-fit shrink grow basis-0 snap-start snap-normal flex-col overflow-hidden">
 			<div
 				ref={setChartContainerRef}
-				class="relative mx-auto w-full"
-				style={{ 'max-width': '550px', 'aspect-ratio': '4 / 3' }}
+				class="relative mx-auto max-h-70 min-h-23 w-full shrink grow basis-0"
+				style={{ 'max-width': '550px' }}
 			>
 				<canvas
 					ref={setCanvasRef}
-					width={400}
-					height={300}
+					width={chartBaseWidth}
+					height={chartBaseHeight}
 					class="absolute inset-0 block h-full w-full touch-none select-none"
 					onMouseMove={handleMouseMove}
 					onMouseLeave={handleMouseLeave}
@@ -661,8 +623,8 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 				/>
 				<canvas
 					ref={setOverlayCanvasRef}
-					width={400}
-					height={300}
+					width={chartBaseWidth}
+					height={chartBaseHeight}
 					class="pointer-events-none absolute inset-0 h-full w-full touch-none select-none"
 				/>
 			</div>
@@ -738,11 +700,11 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 			</TableCell>
 
 			<Show when={valueHover() !== null}>
-				<TableCell class="p-2 text-right text-nowrap">
+				<TableCell class="p-2 py-1 text-right text-nowrap">
 					<span class="text-muted-foreground mr-2">{valueHover()}</span>
 				</TableCell>
 			</Show>
-			<TableCell class="p-2 text-right text-nowrap">
+			<TableCell class="p-2 py-1 text-right text-nowrap">
 				<>{value()}</>
 				<span class="ml-2">
 					<Dynamic component={props.variable.UnitIcon} class="inline-block h-auto w-5" />

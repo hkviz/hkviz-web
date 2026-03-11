@@ -1,22 +1,13 @@
-import { type Component } from 'solid-js';
-import { cn } from '~/lib/utils';
 import { tailwindChartColors } from '../colors';
-import { blueMaskImg, emptyMaskImg, maskImg, steelMaskImg } from '../img-urls';
-import { useGameplayStoreOptional } from '../store';
+import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { ChartDocTitleIcon, ChartDocVars } from './chart-doc';
-import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
-
-const MaskUnit: Component<{ class?: string }> = (props) => {
-	const gameplayStore = useGameplayStoreOptional();
-	const isSteelSoul = () => gameplayStore?.isSteelSoul() ?? false;
-	return <img src={isSteelSoul() ? steelMaskImg : maskImg} class={props.class} alt="Mask" />;
-};
-const LifebloodUnit: Component<{ class?: string }> = (props) => {
-	return <img src={blueMaskImg} class={cn(props.class, '-mx-1 w-7')} alt="Lifeblood" />;
-};
-const EmptyMaskUnit: Component<{ class?: string }> = (props) => {
-	return <img src={emptyMaskImg} class={props.class} alt="Empty mask" />;
-};
+import {
+	EmptyMaskUnit as EmptyMaskUnitIcon,
+	HealthChartMaskUnitIcon,
+	LifebloodUnit as LifebloodUnitIcon,
+} from './chart-icons';
+import { type LineChartVariableDescription } from './line-area-chart';
+import { LineAreaChartPanel } from './line-area-chart-panel';
 
 const variables: LineChartVariableDescription[] = [
 	{
@@ -24,7 +15,7 @@ const variables: LineChartVariableDescription[] = [
 		name: 'Masks',
 		description: 'The players health.',
 		color: tailwindChartColors.slate,
-		UnitIcon: MaskUnit,
+		UnitIcon: HealthChartMaskUnitIcon,
 		order: 1,
 	},
 	{
@@ -32,7 +23,7 @@ const variables: LineChartVariableDescription[] = [
 		name: 'Lifeblood masks',
 		description: 'The players additional health from lifeblood masks.',
 		color: tailwindChartColors.sky,
-		UnitIcon: LifebloodUnit,
+		UnitIcon: LifebloodUnitIcon,
 		order: 2,
 	},
 	{
@@ -40,25 +31,22 @@ const variables: LineChartVariableDescription[] = [
 		name: 'Empty masks',
 		description: 'The currently empty masks, which can be healed back up.',
 		color: tailwindChartColors.light,
-		UnitIcon: EmptyMaskUnit,
+		UnitIcon: EmptyMaskUnitIcon,
 		order: 3,
 		defaultHidden: true,
 	},
 ];
 
-export function HealthChart() {
+export function HealthChart(props: LayoutPanelTypeProps) {
 	return (
-		<LineAreaChart
+		<LineAreaChartPanel
 			variables={variables}
-			header={
-				<>
-					<MaskUnit class="mr-1 inline-block w-6" />
-					Health
-				</>
-			}
+			icon={<HealthChartMaskUnitIcon class="mr-1 inline-block w-6" />}
+			header="Health"
 			yAxisLabel="Masks"
 			minimalMaximumY={5}
 			downScaleMaxTimeDelta={100}
+			{...props}
 		/>
 	);
 }
@@ -68,5 +56,5 @@ export function HealthChartDocVars() {
 }
 
 export function HealthChartDocIcon() {
-	return <ChartDocTitleIcon unit={MaskUnit} />;
+	return <ChartDocTitleIcon unit={HealthChartMaskUnitIcon} />;
 }

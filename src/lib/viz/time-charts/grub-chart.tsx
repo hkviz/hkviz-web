@@ -1,21 +1,18 @@
-import { type Component } from 'solid-js';
 import { tailwindChartColors } from '../colors';
-import { grubImage } from '../img-urls';
+import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { ChartDocTitleIcon, ChartDocVars } from './chart-doc';
-import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
-
-const Unit: Component<{ class?: string }> = (props) => {
-	return <img src={grubImage} class={props.class} alt="Geo" />;
-};
+import { GrubChartUnitIcon } from './chart-icons';
+import { type LineChartVariableDescription } from './line-area-chart';
+import { LineAreaChartPanel } from './line-area-chart-panel';
 
 const variables: LineChartVariableDescription[] = [
 	{
 		key: 'grubsNoRewardCollected',
-		name: 'Grubs freed, reward not collected',
+		name: 'Grubs freed, unrewarded',
 		description:
 			'These grubs have already been freed from their glass jars, going to the grub father will reward you for freeing them.',
 		color: tailwindChartColors.amberLight,
-		UnitIcon: Unit,
+		UnitIcon: GrubChartUnitIcon,
 		order: 2,
 	},
 	{
@@ -24,7 +21,7 @@ const variables: LineChartVariableDescription[] = [
 		description:
 			'These grubs have already been freed from their glass jars and the reward from grub father has been collected as well.',
 		color: tailwindChartColors.green,
-		UnitIcon: Unit,
+		UnitIcon: GrubChartUnitIcon,
 		order: 1,
 	},
 	{
@@ -32,25 +29,22 @@ const variables: LineChartVariableDescription[] = [
 		name: 'Total',
 		description: 'Total number of grubs freed from their glass jars.',
 		color: tailwindChartColors.slate,
-		UnitIcon: Unit,
+		UnitIcon: GrubChartUnitIcon,
 		order: 1,
 		notShownInGraph: true,
 	},
 ];
 
-export function GrubChart() {
+export function GrubChart(props: LayoutPanelTypeProps) {
 	return (
-		<LineAreaChart
+		<LineAreaChartPanel
 			variables={variables}
-			header={
-				<>
-					<Unit class="mr-1 inline-block w-6" />
-					Grubs
-				</>
-			}
+			icon={<GrubChartUnitIcon class="mr-1 inline-block w-6" />}
+			header="Grubs"
 			yAxisLabel="Grubs"
 			minimalMaximumY={1}
 			downScaleMaxTimeDelta={100}
+			{...props}
 		/>
 	);
 }
@@ -60,5 +54,5 @@ export function GrubsChartDocVars() {
 }
 
 export function GrubsChartDocIcon() {
-	return <ChartDocTitleIcon unit={Unit} />;
+	return <ChartDocTitleIcon unit={GrubChartUnitIcon} />;
 }
