@@ -1,23 +1,26 @@
 import * as d3 from 'd3';
 import { binarySearchLastIndexBefore } from '../../parser/util/binary-search';
 import { formatTimeMs } from '../util';
+import { chartBaseHeight, chartBaseWidth, getChartFrame, type ChartFrame } from './chart-frame';
 
 type WorkerPoint = { ms: number; y0: number; y1: number };
 type WorkerSeries = { color: string; points: WorkerPoint[] };
 
-type InitMessage = { type: 'init'; canvas: OffscreenCanvas };
-type ResizeMessage = {
+export type InitMessage = { type: 'init'; canvas: OffscreenCanvas };
+export type ResizeMessage = {
 	type: 'resize';
+	displayWidth: number;
+	displayHeight: number;
 	pixelWidth: number;
 	pixelHeight: number;
 };
-type SetDataMessage = {
+export type SetDataMessage = {
 	type: 'setData';
 	series: WorkerSeries[];
 	yAxisLabel: string;
 	minimalMaximumY: number;
 };
-type SetViewMessage = {
+export type SetViewMessage = {
 	type: 'setFrame';
 	timeBoundsAnimated: readonly [number, number];
 	timeBoundsTarget: readonly [number, number];
@@ -29,8 +32,10 @@ type WorkerMessage = InitMessage | ResizeMessage | SetDataMessage | SetViewMessa
 let canvas: OffscreenCanvas | null = null;
 let ctx: OffscreenCanvasRenderingContext2D | null = null;
 
-let pixelWidth = 400;
-let pixelHeight = 300;
+let displayWidth = chartBaseWidth;
+let displayHeight = chartBaseHeight;
+let pixelWidth = chartBaseWidth;
+let pixelHeight = chartBaseHeight;
 
 let series: WorkerSeries[] = [];
 let allPoints: WorkerPoint[] = [];
@@ -45,20 +50,15 @@ let drawDelayMs = 0;
 let animatedMaxY: number | null = null;
 let lastDrawTimeMs: number | null = null;
 
-const widthWithMargin = 400;
-const heightWithMargin = 300;
-const marginTop = 25;
-const marginRight = 10;
-const marginBottom = 35;
-const marginLeft = 45;
-const height = heightWithMargin - marginTop - marginBottom;
-const width = widthWithMargin - marginLeft - marginRight;
 const targetFps = 60;
 const frameDurationMs = 1000 / targetFps;
 const maxDtForYAnimationMs = frameDurationMs * 2;
 const yAnimationDurationMs = 50;
 const ySnapEpsilon = 0.05;
 const maxSamplesPerPixel = 2;
+const maxYAxisTickCount = 8;
+const minYAxisTickCount = 3;
+const minPixelsPerYAxisTick = 24;
 
 function getVisibleIndexRange(points: WorkerPoint[], minMs: number, maxMs: number): readonly [number, number] {
 	if (points.length === 0) return [0, -1] as const;
@@ -134,9 +134,14 @@ function iterateDecimatedRangeByMs(
 	};
 }
 
-function drawXAxis(ctx: OffscreenCanvasRenderingContext2D, xScale: d3.ScaleLinear<number, number>, axisColor: string) {
+function drawXAxis(
+	ctx: OffscreenCanvasRenderingContext2D,
+	xScale: d3.ScaleLinear<number, number>,
+	axisColor: string,
+	chartFrame: ChartFrame,
+) {
 	ctx.save();
-	ctx.translate(marginLeft, marginTop + height);
+	ctx.translate(chartFrame.marginLeft, chartFrame.marginTop + chartFrame.height);
 
 	ctx.strokeStyle = axisColor;
 	ctx.fillStyle = axisColor;
@@ -147,7 +152,7 @@ function drawXAxis(ctx: OffscreenCanvasRenderingContext2D, xScale: d3.ScaleLinea
 
 	ctx.beginPath();
 	ctx.moveTo(0, 0);
-	ctx.lineTo(width, 0);
+	ctx.lineTo(chartFrame.width, 0);
 	ctx.stroke();
 
 	const ticks = xScale.ticks(6);
@@ -163,9 +168,14 @@ function drawXAxis(ctx: OffscreenCanvasRenderingContext2D, xScale: d3.ScaleLinea
 	ctx.restore();
 }
 
-function drawYAxis(ctx: OffscreenCanvasRenderingContext2D, yScale: d3.ScaleLinear<number, number>, axisColor: string) {
+function drawYAxis(
+	ctx: OffscreenCanvasRenderingContext2D,
+	yScale: d3.ScaleLinear<number, number>,
+	axisColor: string,
+	chartFrame: ChartFrame,
+) {
 	ctx.save();
-	ctx.translate(marginLeft, marginTop);
+	ctx.translate(chartFrame.marginLeft, chartFrame.marginTop);
 
 	ctx.strokeStyle = axisColor;
 	ctx.fillStyle = axisColor;
@@ -176,10 +186,14 @@ function drawYAxis(ctx: OffscreenCanvasRenderingContext2D, yScale: d3.ScaleLinea
 
 	ctx.beginPath();
 	ctx.moveTo(0, 0);
-	ctx.lineTo(0, height);
+	ctx.lineTo(0, chartFrame.height);
 	ctx.stroke();
 
-	const ticks = yScale.ticks(6);
+	const desiredTickCount = Math.max(
+		minYAxisTickCount,
+		Math.min(maxYAxisTickCount, Math.floor(chartFrame.height / minPixelsPerYAxisTick)),
+	);
+	const ticks = yScale.ticks(desiredTickCount);
 	for (const tick of ticks) {
 		const yPos = yScale(tick);
 		ctx.beginPath();
@@ -200,24 +214,27 @@ function draw(nowMs: number) {
 		return;
 	}
 
-	const sx = pixelWidth / widthWithMargin;
-	const sy = pixelHeight / heightWithMargin;
+	const chartFrame = getChartFrame(displayWidth, displayHeight);
+	const sx = pixelWidth / chartFrame.widthWithMargin;
+	const sy = pixelHeight / chartFrame.heightWithMargin;
 	ctx.setTransform(sx, 0, 0, sy, 0, 0);
-	ctx.clearRect(0, 0, widthWithMargin, heightWithMargin);
+	ctx.clearRect(0, 0, chartFrame.widthWithMargin, chartFrame.heightWithMargin);
 
 	ctx.fillStyle = axisColor;
 	ctx.font = '10px sans-serif';
 	ctx.textAlign = 'end';
-	ctx.fillText(yAxisLabel, marginLeft - 4, 14);
+	ctx.textBaseline = 'middle';
+	ctx.fillText(yAxisLabel, chartFrame.marginLeft - 4, chartFrame.marginTop / 2);
 
 	ctx.textAlign = 'center';
-	ctx.fillText('Time', widthWithMargin / 2, heightWithMargin - 2);
+	ctx.textBaseline = 'alphabetic';
+	ctx.fillText('Time', chartFrame.marginLeft + chartFrame.width / 2, chartFrame.heightWithMargin - 4);
 
 	const frameMin = allPoints.length > 0 ? allPoints[0]!.ms : 0;
 	const frameMax = allPoints.length > 0 ? allPoints[allPoints.length - 1]!.ms : 1;
 
-	const xRender = d3.scaleLinear().domain(timeBoundsAnimated).range([0, width]);
-	const xNotAnimated = d3.scaleLinear().domain([frameMin, frameMax]).range([0, width]);
+	const xRender = d3.scaleLinear().domain(timeBoundsAnimated).range([0, chartFrame.width]);
+	const xNotAnimated = d3.scaleLinear().domain([frameMin, frameMax]).range([0, chartFrame.width]);
 
 	const topSeries = series.at(-1);
 	const [targetStartIdx, targetEndIdx] = topSeries
@@ -248,23 +265,23 @@ function draw(nowMs: number) {
 		didNotMove || !Number.isFinite(interpolatedMaxY) || Math.abs(targetMaxY - interpolatedMaxY) <= ySnapEpsilon;
 	animatedMaxY = shouldSnap ? targetMaxY : interpolatedMaxY;
 
-	const yScale = d3.scaleLinear().domain([0, animatedMaxY]).rangeRound([height, 0]);
+	const yScale = d3.scaleLinear().domain([0, animatedMaxY]).rangeRound([chartFrame.height, 0]);
 
 	ctx.save();
-	ctx.translate(marginLeft, marginTop);
+	ctx.translate(chartFrame.marginLeft, chartFrame.marginTop);
 	ctx.beginPath();
-	ctx.rect(0, 0, width, height);
+	ctx.rect(0, 0, chartFrame.width, chartFrame.height);
 	ctx.clip();
 
 	const frameMinX = xRender(frameMin);
 	const frameMaxX = xRender(frameMax);
-	const scaleX = (frameMaxX - frameMinX) / width;
+	const scaleX = (frameMaxX - frameMinX) / chartFrame.width;
 
 	ctx.save();
 	ctx.translate(frameMinX, 0);
 	ctx.scale(scaleX, 1);
 
-	const visiblePlotPixelWidth = Math.max(1, (pixelWidth * width) / widthWithMargin);
+	const visiblePlotPixelWidth = Math.max(1, (pixelWidth * chartFrame.width) / chartFrame.widthWithMargin);
 	const maxVisiblePoints = Math.max(8, Math.floor(visiblePlotPixelWidth * maxSamplesPerPixel));
 
 	for (const stackedSeries of series) {
@@ -303,8 +320,8 @@ function draw(nowMs: number) {
 
 	ctx.restore();
 
-	drawXAxis(ctx, xRender, axisColor);
-	drawYAxis(ctx, yScale, axisColor);
+	drawXAxis(ctx, xRender, axisColor, chartFrame);
+	drawYAxis(ctx, yScale, axisColor, chartFrame);
 
 	lastDrawTimeMs = nowMs;
 	if (!Number.isFinite(targetMaxY) || !Number.isFinite(animatedMaxY)) return;
@@ -346,6 +363,8 @@ self.onmessage = (event: MessageEvent<WorkerMessage>) => {
 		return;
 	}
 	if (message.type === 'resize') {
+		displayWidth = message.displayWidth;
+		displayHeight = message.displayHeight;
 		pixelWidth = message.pixelWidth;
 		pixelHeight = message.pixelHeight;
 		if (canvas) {

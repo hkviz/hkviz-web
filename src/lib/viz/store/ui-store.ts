@@ -1,7 +1,7 @@
 import { createContext, createSignal, useContext } from 'solid-js';
 
 const mainCardTabs = ['overview', 'map'] as const;
-const mobileTabs = ['overview', 'map', 'time-charts', 'splits'] as const;
+const mobileTabs = ['overview', 'map', 'right'] as const;
 
 export type MainCardTab = (typeof mainCardTabs)[number];
 export type MobileTab = (typeof mobileTabs)[number];

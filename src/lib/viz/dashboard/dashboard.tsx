@@ -1,23 +1,23 @@
 import { Maximize, Minus, Rows } from 'lucide-solid';
-import { JSXElement, Show, createEffect, createMemo, createSignal, type Component } from 'solid-js';
+import { For, JSXElement, Show, createEffect, createSignal, type Component } from 'solid-js';
 import { cardClasses, cardRoundedMdOnlyClasses } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
 import { Card } from '~/components/ui/card';
 import { Resizable, ResizableHandle, ResizablePanel } from '~/components/ui/resizable';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
+import { LayoutPanel } from '../layout/layout-panel';
 import { RunFileInfo, RunFileLoader } from '../loader';
 import { HKMap } from '../map';
 import { RoomInfo } from '../room-infos';
-import { RunSplits } from '../splits';
-import { RunExtraCharts } from '../time-charts';
+import { useUiStore } from '../store';
+import { useLayoutStore } from '../store/layout-store';
 import { AnimationOptions } from '../timeline';
 import { SingleRunPageTour } from '../tour';
 import { ViewOptions } from '../view-options';
 import { MobileTabBar } from './mobile-tabs';
 import { RunOverviewTab } from './overview-tab';
 import { LargeScreenTabs } from './tabs-large-screen';
-import { useSplitsStore, useUiStore } from '../store';
 
 export const DashboardMapOptions: Component = () => {
 	const uiStore = useUiStore();
@@ -38,7 +38,7 @@ interface ResizeButtonsProps {
 }
 const ResizeButtons: Component<ResizeButtonsProps> = (props) => {
 	return (
-		<div class="-ml-3 hidden shrink-0 pl-1 lg:inline-block">
+		<div class="-ml-3 inline-block shrink-0 pl-1">
 			<Show when={props.state !== 'minimized'}>
 				<Tooltip>
 					<TooltipTrigger
@@ -79,131 +79,64 @@ const ResizeButtons: Component<ResizeButtonsProps> = (props) => {
 	);
 };
 
-const DEFAULT_EXTRA_CHARTS_SIZE = 0.63;
-const DEFAULT_SIZES = [1 - DEFAULT_EXTRA_CHARTS_SIZE, DEFAULT_EXTRA_CHARTS_SIZE];
-
 export const RightCard: Component<{ class?: string }> = (props) => {
 	const uiStore = useUiStore();
-	const splitsStore = useSplitsStore();
+	const layoutStore = useLayoutStore();
 	const mobileTab = uiStore.mobileTab;
-	const [sizes, setSizes] = createSignal(DEFAULT_SIZES);
 
-	function closeExtraCharts() {
-		setSizes([1, 0]);
+	//createEffect(() => {
+	//const state = layoutState();
+	// todo move to somewhere
+	//splitsStore.setIsSplitsPanelOpen(state === 'only-splits' || state === 'both');
+	//});
+
+	const lanePanels = () => layoutStore.getLaneLocationIds('right');
+	const sizes = () => layoutStore.getLaneSizes('right');
+	const setSizes = (newSizes: number[]) => layoutStore.setLaneSizes('right', newSizes);
+
+	function resizeOptions(index: number) {
+		return (
+			<ResizeButtons
+				state={sizes()[index] < 0.1 ? 'minimized' : sizes()[index] >= 0.9 ? 'maximized' : 'medimized'}
+				minimize={() => layoutStore.minimizePanel('right', index)}
+				medimize={() => layoutStore.medimizePanel('right', index)}
+				maximize={() => layoutStore.maximizePanel('right', index)}
+			/>
+		);
 	}
-
-	function closeSplits() {
-		setSizes([0, 1]);
-	}
-
-	function both() {
-		setSizes(DEFAULT_SIZES);
-	}
-
-	const layoutState = createMemo(() => {
-		const [splitsSize, extraChartsSize] = sizes() as [number, number];
-		console.log({ extraChartsSize, splitsSize });
-		if (extraChartsSize < 0.1) {
-			return 'only-splits';
-		} else if (splitsSize < 0.1) {
-			return 'only-extra-charts';
-		} else {
-			return 'both';
-		}
-	});
-
-	createEffect(() => {
-		const state = layoutState();
-		splitsStore.setIsSplitsPanelOpen(state === 'only-splits' || state === 'both');
-	});
-
-	const runExtraChartsResizeOptions = (
-		<ResizeButtons
-			state={
-				layoutState() === 'both'
-					? 'medimized'
-					: layoutState() === 'only-extra-charts'
-						? 'maximized'
-						: 'minimized'
-			}
-			minimize={closeExtraCharts}
-			medimize={both}
-			maximize={closeSplits}
-		/>
-	);
-
-	const splitsResizeOptions = (
-		<ResizeButtons
-			state={layoutState() === 'both' ? 'medimized' : layoutState() === 'only-splits' ? 'maximized' : 'minimized'}
-			minimize={closeSplits}
-			medimize={both}
-			maximize={closeExtraCharts}
-		/>
-	);
 
 	return (
-		<div
-			class={cn(
-				'shrink grow',
-				mobileTab() === 'splits' || mobileTab() === 'time-charts' ? 'flex' : 'hidden lg:flex',
-				props.class,
-			)}
-		>
+		<div class={cn('shrink grow', mobileTab() === 'right' ? 'flex' : 'hidden lg:flex', props.class)}>
 			<Resizable orientation="vertical" sizes={sizes()} onSizesChange={setSizes}>
-				<ResizablePanel
-					collapsible
-					minSize={0.18}
-					class={cn(
-						cardClasses,
-						cardRoundedMdOnlyClasses,
-						'overflow-hidden',
-						'min-h-[44px] border-t',
-						mobileTab() === 'splits' ? '' : 'hidden lg:block',
+				<For each={lanePanels()}>
+					{(_panel, index) => (
+						<>
+							<Show when={index() !== 0}>
+								<ResizableHandle withHandle class="bg-transparent p-1" />
+							</Show>
+							<ResizablePanel
+								collapsible
+								minSize={0.18}
+								class={cn(
+									cardClasses,
+									cardRoundedMdOnlyClasses,
+									'overflow-hidden',
+									'min-h-11 border-t',
+								)}
+							>
+								<LayoutPanel
+									layoutLane="right"
+									layoutLaneIndex={index()}
+									resizeOptions={resizeOptions(index())}
+									isCollapsed={sizes()[index()] < 0.1}
+								/>
+							</ResizablePanel>
+						</>
 					)}
-				>
-					<RunSplits resizeOptions={splitsResizeOptions} />
-				</ResizablePanel>
-				<ResizableHandle withHandle class="hidden bg-transparent p-1 lg:flex" />
-				<ResizablePanel
-					collapsible
-					minSize={0.3}
-					class={cn(
-						cardClasses,
-						cardRoundedMdOnlyClasses,
-						'overflow-hidden',
-						'min-h-[44px] border-t',
-						mobileTab() === 'time-charts' ? '' : 'hidden lg:block',
-					)}
-				>
-					<RunExtraCharts resizeOptions={runExtraChartsResizeOptions} />
-				</ResizablePanel>
+				</For>
 			</Resizable>
 		</div>
 	);
-
-	// return (
-	//     <Card class="flex w-full flex-col overflow-hidden lg:w-[400px]">
-	//         {isV1 && (
-	//             <CardHeader class="px-4 pb-3 pt-2">
-	//                 <CardTitle class="text-lg">Time-based analytics</CardTitle>
-	//             </CardHeader>
-	//         )}
-	//         <Tabs defaultValue={isV1 ? 'extra-charts' : 'splits'} class="flex grow flex-col">
-	//             {!isV1 && (
-	//                 <TabsListTransparent class="flex flex-row justify-center">
-	//                     <TabsTriggerTransparent value="splits">Splits</TabsTriggerTransparent>
-	//                     <TabsTriggerTransparent value="extra-charts">Time charts</TabsTriggerTransparent>
-	//                 </TabsListTransparent>
-	//             )}
-	//             <TabsContent value="splits" class="hidden shrink grow flex-col data-[state='active']:flex">
-	//                 <RunSplits  />
-	//             </TabsContent>
-	//             <TabsContent value="extra-charts" class="hidden shrink grow flex-col data-[state='active']:flex">
-	//                 <RunExtraCharts  />
-	//             </TabsContent>
-	//         </Tabs>
-	//     </Card>
-	// );
 };
 
 export interface GameplayDashboardProps {

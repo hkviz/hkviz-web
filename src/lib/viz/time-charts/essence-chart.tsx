@@ -1,40 +1,31 @@
-import { type Component } from 'solid-js';
-import { cn } from '~/lib/utils';
 import { tailwindChartColors } from '../colors';
-import { dreamNailImg } from '../img-urls';
+import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { ChartDocTitleIcon, ChartDocVars } from './chart-doc';
-import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
+import { EssenceChartUnitIcon } from './chart-icons';
+import { type LineChartVariableDescription } from './line-area-chart';
+import { LineAreaChartPanel } from './line-area-chart-panel';
 
-const Unit: Component<{ class?: string }> = (props) => {
-	return <img src={dreamNailImg} class={cn('drop-shadow-glow-sm', props.class)} alt="Dream nail" />;
-};
-// function Unit({ className }: { className?: string }) {
-//     return <span class={className}>%</span>;
-// }
 const variables: LineChartVariableDescription[] = [
 	{
 		key: 'dreamOrbs',
 		name: 'Essence',
 		description: 'Essence collected',
 		color: tailwindChartColors.orange,
-		UnitIcon: Unit,
+		UnitIcon: EssenceChartUnitIcon,
 		order: 1,
 	},
 ];
 
-export function EssenceChart() {
+export function EssenceChart(props: LayoutPanelTypeProps) {
 	return (
-		<LineAreaChart
+		<LineAreaChartPanel
 			variables={variables}
-			header={
-				<>
-					<Unit class="mr-1 inline-block w-6" />
-					Essence
-				</>
-			}
+			icon={<EssenceChartUnitIcon class="mr-1 inline-block w-6" />}
+			header="Essence"
 			yAxisLabel="Essence"
 			minimalMaximumY={10}
 			downScaleMaxTimeDelta={100}
+			{...props}
 		/>
 	);
 }
@@ -44,5 +35,5 @@ export function EssenceChartDocVars() {
 }
 
 export function EssenceChartDocIcon() {
-	return <ChartDocTitleIcon unit={Unit} />;
+	return <ChartDocTitleIcon unit={EssenceChartUnitIcon} />;
 }

@@ -252,7 +252,7 @@ export function createTourSteps({
 			};
 		}),
 		{
-			target: () => (viewportStore.isMobileLayout() ? '.splits-tab-mobile-layout' : '.run-splits'),
+			target: () => (viewportStore.isMobileLayout() ? '.chart-tab-mobile-layout' : '.run-splits'),
 			padding: 2,
 			content: () => (
 				<>
@@ -263,7 +263,7 @@ export function createTourSteps({
 				</>
 			),
 			onActivate: () => {
-				uiStore.activateTab('splits');
+				uiStore.activateTab('right');
 				animationStore.setIsPlaying(false);
 				setTimeout(() => {
 					mapZoomStore.setEnabled(true);
@@ -274,7 +274,7 @@ export function createTourSteps({
 			},
 		},
 		{
-			target: () => (viewportStore.isMobileLayout() ? '.time-chart-tab-mobile-layout' : '.extra-charts'),
+			target: () => (viewportStore.isMobileLayout() ? '.chart-tab-mobile-layout' : '.extra-charts'),
 			padding: 2,
 			content: () => (
 				<>
@@ -287,7 +287,7 @@ export function createTourSteps({
 				</>
 			),
 			onActivate: () => {
-				uiStore.activateTab('time-charts');
+				uiStore.activateTab('right');
 			},
 		},
 	];

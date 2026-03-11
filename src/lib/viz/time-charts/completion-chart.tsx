@@ -1,12 +1,9 @@
-import { BadgePercent } from 'lucide-solid';
-import { type Component } from 'solid-js';
 import { tailwindChartColors } from '../colors';
+import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { ChartDocTitleIcon, ChartDocVars } from './chart-doc';
-import { LineAreaChart, type LineChartVariableDescription } from './line-area-chart';
-
-const Unit: Component<{ class?: string }> = (props) => {
-	return <BadgePercent class={props.class} />;
-};
+import { CompletionChartUnitIcon } from './chart-icons';
+import { type LineChartVariableDescription } from './line-area-chart';
+import { LineAreaChartPanel } from './line-area-chart-panel';
 
 const variables: LineChartVariableDescription[] = [
 	{
@@ -14,7 +11,7 @@ const variables: LineChartVariableDescription[] = [
 		name: 'Game completion',
 		description: 'Percentage of the game completed.',
 		color: tailwindChartColors.rose,
-		UnitIcon: Unit,
+		UnitIcon: CompletionChartUnitIcon,
 		order: 1,
 	},
 	// {
@@ -27,19 +24,16 @@ const variables: LineChartVariableDescription[] = [
 	// },
 ];
 
-export function CompletionChart() {
+export function CompletionChart(props: LayoutPanelTypeProps) {
 	return (
-		<LineAreaChart
+		<LineAreaChartPanel
 			variables={variables}
-			header={
-				<>
-					<Unit class="mr-1 inline-block w-6" />
-					Game completion
-				</>
-			}
+			icon={<CompletionChartUnitIcon class="mr-1 inline-block w-6" />}
+			header="Game completion"
 			yAxisLabel="%"
 			minimalMaximumY={10}
 			downScaleMaxTimeDelta={100}
+			{...props}
 		/>
 	);
 }
@@ -49,5 +43,5 @@ export function CompletionChartDocVars() {
 }
 
 export function CompletionChartDocIcon() {
-	return <ChartDocTitleIcon unit={Unit} />;
+	return <ChartDocTitleIcon unit={CompletionChartUnitIcon} />;
 }

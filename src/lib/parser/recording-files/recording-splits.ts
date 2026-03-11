@@ -1,5 +1,5 @@
-import { virtualCharms } from '../charms';
 import { enemiesJournalLang } from '../../hk-data';
+import { virtualCharms } from '../charms';
 import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../player-data/abilities';
 import {
 	enemies,
@@ -17,9 +17,9 @@ import {
 	isPlayerDataKilledField,
 	playerDataFields,
 } from '../player-data/player-data';
+import { assertNever, parseHtmlEntities } from '../util';
 import { type PlayerPositionEvent } from './events/player-position-event';
 import { type CombinedRecording } from './recording';
-import { assertNever, parseHtmlEntities } from '../util';
 
 export const recordingSplitGroups = [
 	{
@@ -30,7 +30,7 @@ export const recordingSplitGroups = [
 	},
 	{
 		name: 'boss',
-		displayName: 'Bosses defeats',
+		displayName: 'Boss defeats',
 		description: 'Defeated bosses. Not including bosses which are fought again in Godhome.',
 		defaultShown: true,
 	},
@@ -48,7 +48,7 @@ export const recordingSplitGroups = [
 	},
 	{
 		name: 'charmCollection',
-		displayName: 'Charm pick ups',
+		displayName: 'Charm pickups',
 		description: 'Collected charms and charm upgrades',
 		defaultShown: true,
 	},

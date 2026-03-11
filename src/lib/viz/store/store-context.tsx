@@ -6,6 +6,7 @@ import { AnimationTickStoreContext, createAnimationTickStore } from './animation
 import { createExtraChartStore, ExtraChartStoreContext } from './extra-chart-store';
 import { createGameplayStore, GameplayStoreContext } from './gameplay-store';
 import { createHoverMsStore, HoverMsStoreContext } from './hover-ms-store';
+import { createLayoutStore, LayoutStoreContext } from './layout-store';
 import { createMapZoomStore, MapZoomStoreContext } from './map-zoom-store';
 import { createPlayerDataAnimationStore, PlayerDataAnimationStoreContext } from './player-data-animation-store';
 import { createRoomColoringStore, RoomColoringStoreContext } from './room-coloring-store';
@@ -35,6 +36,7 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 	const themeStore = useThemeStore();
 	const uiStore = useUiStore();
 
+	const layoutStore = createLayoutStore();
 	const gameplayStore = createGameplayStore();
 	const hoverMsStore = createHoverMsStore(gameplayStore);
 	const animationStore = createAnimationStore(gameplayStore, uiStore);
@@ -85,36 +87,38 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 	});
 
 	return (
-		<SplitsStoreContext.Provider value={splitsStore}>
-			<GameplayStoreContext.Provider value={gameplayStore}>
-				<HoverMsStoreContext.Provider value={hoverMsStore}>
-					<MapZoomStoreContext.Provider value={mapZoomStore}>
-						<TraceStoreContext.Provider value={traceStore}>
-							<ExtraChartStoreContext.Provider value={extraChartStore}>
-								<AnimationStoreContext.Provider value={animationStore}>
-									<ViewportStoreContext.Provider value={viewportStore}>
-										<PlayerDataAnimationStoreContext.Provider value={playerDataAnimationStore}>
-											<RoomDisplayStoreContext.Provider value={roomDisplayStore}>
-												<RoomColoringStoreContext.Provider value={roomColoringStore}>
-													<AggregationStoreContext.Provider value={aggregationStore}>
-														<TourStoreContext.Provider value={tourStore}>
-															<AnimationTickStoreContext.Provider
-																value={animationTickStore}
-															>
-																{props.children}
-															</AnimationTickStoreContext.Provider>
-														</TourStoreContext.Provider>
-													</AggregationStoreContext.Provider>
-												</RoomColoringStoreContext.Provider>
-											</RoomDisplayStoreContext.Provider>
-										</PlayerDataAnimationStoreContext.Provider>
-									</ViewportStoreContext.Provider>
-								</AnimationStoreContext.Provider>
-							</ExtraChartStoreContext.Provider>
-						</TraceStoreContext.Provider>
-					</MapZoomStoreContext.Provider>
-				</HoverMsStoreContext.Provider>
-			</GameplayStoreContext.Provider>
-		</SplitsStoreContext.Provider>
+		<LayoutStoreContext.Provider value={layoutStore}>
+			<SplitsStoreContext.Provider value={splitsStore}>
+				<GameplayStoreContext.Provider value={gameplayStore}>
+					<HoverMsStoreContext.Provider value={hoverMsStore}>
+						<MapZoomStoreContext.Provider value={mapZoomStore}>
+							<TraceStoreContext.Provider value={traceStore}>
+								<ExtraChartStoreContext.Provider value={extraChartStore}>
+									<AnimationStoreContext.Provider value={animationStore}>
+										<ViewportStoreContext.Provider value={viewportStore}>
+											<PlayerDataAnimationStoreContext.Provider value={playerDataAnimationStore}>
+												<RoomDisplayStoreContext.Provider value={roomDisplayStore}>
+													<RoomColoringStoreContext.Provider value={roomColoringStore}>
+														<AggregationStoreContext.Provider value={aggregationStore}>
+															<TourStoreContext.Provider value={tourStore}>
+																<AnimationTickStoreContext.Provider
+																	value={animationTickStore}
+																>
+																	{props.children}
+																</AnimationTickStoreContext.Provider>
+															</TourStoreContext.Provider>
+														</AggregationStoreContext.Provider>
+													</RoomColoringStoreContext.Provider>
+												</RoomDisplayStoreContext.Provider>
+											</PlayerDataAnimationStoreContext.Provider>
+										</ViewportStoreContext.Provider>
+									</AnimationStoreContext.Provider>
+								</ExtraChartStoreContext.Provider>
+							</TraceStoreContext.Provider>
+						</MapZoomStoreContext.Provider>
+					</HoverMsStoreContext.Provider>
+				</GameplayStoreContext.Provider>
+			</SplitsStoreContext.Provider>
+		</LayoutStoreContext.Provider>
 	);
 }

@@ -1,14 +1,17 @@
-import { Search, X } from 'lucide-solid';
-import { For, Show, createEffect, createSignal, createUniqueId, type Component, type JSXElement } from 'solid-js';
-import { cardHeaderSmallClasses, cardTitleSmallClasses } from '~/components/ui/additions';
+import { CircleQuestionMark, Search, X } from 'lucide-solid';
+import { For, Show, createEffect, createSignal, createUniqueId, type Component } from 'solid-js';
 import { Button } from '~/components/ui/button';
-import { CardHeader, CardTitle } from '~/components/ui/card';
 import { Checkbox } from '~/components/ui/checkbox';
+import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { cn } from '~/lib/utils';
+import { SplitsList } from '~/routes/(docs)/guide/_analytics/_splits-list';
 import { assertNever, recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '../../parser';
 import { Duration } from '../duration';
+import { useLayoutPanelContext } from '../layout/layout-panel-context';
+import { LayoutPanelPanelHeader } from '../layout/layout-panel-header';
+import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { useAnimationStore, useHoverMsStore, useRoomDisplayStore, useSplitsStore, useUiStore } from '../store';
 import { splitColors } from './split-colors';
 
@@ -163,7 +166,7 @@ const RunSplitsRows: Component = () => {
 	const [scrollDiv, setScrollDiv] = createSignal<HTMLDivElement>();
 
 	return (
-		<div class="grow overflow-y-auto lg:shrink lg:basis-0" ref={setScrollDiv}>
+		<div class="shrink grow basis-0 overflow-y-auto" ref={setScrollDiv}>
 			<Table class="w-full">
 				<TableBody>
 					<For each={filteredSplits()}>
@@ -185,48 +188,40 @@ const RunSplitsRows: Component = () => {
 	);
 };
 
-interface RunSplitsProps {
-	resizeOptions?: JSXElement;
-}
-
 const RunSplitsSearch: Component = () => {
 	const splitsStore = useSplitsStore();
 	const filterTerm = splitsStore.filterTerm;
-	const show = splitsStore.isSplitsPanelOpen;
+	const panelContext = useLayoutPanelContext();
 
 	return (
-		<div class="relative mx-3 shrink grow">
-			<Show when={show()}>
-				{show() && (
-					<>
-						<Search class="absolute top-0 left-0 m-2.5 h-4 w-4" />
-						<TextField>
-							<TextFieldInput
-								type="text"
-								value={filterTerm()}
-								onInput={(e) => splitsStore.setFilterTerm((e.target as HTMLInputElement).value)}
-								placeholder="Search"
-								class="h-9 shrink grow px-8"
-							/>
-						</TextField>
-						<Show when={filterTerm()}>
-							<Button
-								onClick={() => splitsStore.setFilterTerm('')}
-								class="absolute top-0 right-0 flex h-9 w-9 items-center justify-center p-0"
-								variant="ghost"
-								title="Clear search"
-							>
-								<X class="h-4 w-4" />
-							</Button>
-						</Show>
-					</>
-				)}
+		<div class="relative mr-2 shrink grow">
+			<Show when={!panelContext.isCollapsed()}>
+				<Search class="absolute top-0 left-0 m-2.5 h-4 w-4" />
+				<TextField>
+					<TextFieldInput
+						type="text"
+						value={filterTerm()}
+						onInput={(e) => splitsStore.setFilterTerm((e.target as HTMLInputElement).value)}
+						placeholder="Search"
+						class="h-9 shrink grow px-8"
+					/>
+				</TextField>
+				<Show when={filterTerm()}>
+					<Button
+						onClick={() => splitsStore.setFilterTerm('')}
+						class="absolute top-0 right-0 flex h-9 w-9 items-center justify-center p-0"
+						variant="ghost"
+						title="Clear search"
+					>
+						<X class="h-4 w-4" />
+					</Button>
+				</Show>
 			</Show>
 		</div>
 	);
 };
 
-export const RunSplits: Component<RunSplitsProps> = (props) => {
+export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
 	const id = createUniqueId();
 	const splitsStore = useSplitsStore();
 	const visibleSplitGroups = splitsStore.visibleSplitGroups;
@@ -238,13 +233,28 @@ export const RunSplits: Component<RunSplitsProps> = (props) => {
 
 	return (
 		<div class="run-splits flex h-full flex-col">
-			<CardHeader class={cardHeaderSmallClasses}>
-				<CardTitle class={cn(cardTitleSmallClasses, 'flex w-full flex-row items-center justify-between gap-2')}>
-					Splits
-					<RunSplitsSearch />
-					{props.resizeOptions}
-				</CardTitle>
-			</CardHeader>
+			<LayoutPanelPanelHeader resizeOptions={props.resizeOptions}>
+				<RunSplitsSearch />
+				<Popover>
+					<PopoverTrigger
+						as={Button}
+						variant="ghost"
+						size="icon"
+						class="h-7 w-7 shrink-0"
+						aria-label="Splits help"
+					>
+						<CircleQuestionMark class="h-3 w-3" />
+					</PopoverTrigger>
+					<PopoverContent class="shadow-accent w-120 max-w-[90vw] p-0">
+						<div class="text-sm">
+							<SplitsList />
+						</div>
+						<a href="/guide/analytics#splits" class="m-4 block text-sm underline" target="_blank">
+							Learn more
+						</a>
+					</PopoverContent>
+				</Popover>
+			</LayoutPanelPanelHeader>
 			<div class="flex flex-wrap gap-1 p-3 pt-0">
 				<For each={recordingSplitGroups}>
 					{(group) => {
