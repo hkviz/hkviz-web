@@ -22,7 +22,7 @@ export const LayoutPanelSelect: Component = () => {
 			onChange={setValue}
 			options={layoutPanelTypeIds}
 			itemComponent={(props) => (
-				<SelectItem item={props.item}>
+				<SelectItem item={props.item} class="flex items-center">
 					<Dynamic
 						component={getLayoutPanelTypeById(props.item.rawValue)?.icon}
 						class="mr-2 inline-block h-6"

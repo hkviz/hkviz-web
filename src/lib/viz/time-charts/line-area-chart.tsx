@@ -297,7 +297,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		hoverMsStore.setHoveredMsIntoGame(ms);
 		const scene = sceneFromMs(ms)?.getMainVirtualSceneName();
 		if (scene) {
-			roomDisplayStore.setHoveredRoom(scene);
+			roomDisplayStore.setHoveredRoom(scene, 'chart');
 			roomDisplayStore.setSelectedRoomIfNotPinned(scene);
 		}
 
@@ -602,7 +602,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 	});
 
 	return (
-		<div class="flex shrink grow basis-0 snap-start snap-normal flex-col overflow-hidden">
+		<div class="container-size @container flex shrink grow basis-0 snap-start snap-normal flex-col overflow-hidden">
 			<div
 				ref={setChartContainerRef}
 				class="relative mx-auto max-h-70 min-h-23 w-full shrink grow basis-0"
@@ -628,7 +628,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 					class="pointer-events-none absolute inset-0 h-full w-full touch-none select-none"
 				/>
 			</div>
-			<Table>
+			<Table class="[@container(height<8rem)]:hidden">
 				<TableBody>
 					<For each={props.variables}>
 						{(variable) => (

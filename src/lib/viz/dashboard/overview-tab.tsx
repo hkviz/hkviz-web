@@ -51,7 +51,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 		roomColoringStore.setRoomColorMode('area');
 		extraChartStore.setFollowsAnimationAutoBounds(true);
 		mapZoomStore.setEnabled(true);
-		mapZoomStore.setTarget('current-zone');
+		mapZoomStore.setTarget('current-area-smooth');
 	}
 
 	function viewStaticAnalytics() {
@@ -90,15 +90,17 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 				isOpen() ? 'visible backdrop-blur-md' : 'pointer-events-none invisible backdrop-blur-none',
 				props.class,
 			)}
+			tabIndex={isOpen() ? 0 : -1}
+			aria-hidden={!isOpen()}
 		>
-			<div class={cn('absolute inset-0 bg-card', isOpen() ? 'opacity-75' : 'opacity-0')} />
+			<div class={cn('bg-card absolute inset-0', isOpen() ? 'opacity-75' : 'opacity-0')} />
 			<div
 				class={cn(
 					'relative z-10 max-h-full w-full overflow-y-auto transition',
 					isOpen() ? '' : 'scale-75 opacity-0',
 				)}
 			>
-				<div class="mx-auto flex min-h-full w-full max-w-[700px] flex-col items-center justify-center gap-4 px-4 pb-12 pt-[max(12vh,3rem)]">
+				<div class="mx-auto flex min-h-full w-full max-w-[700px] flex-col items-center justify-center gap-4 px-4 pt-[max(12vh,3rem)] pb-12">
 					<Expander expanded={!props.loadingDone}>
 						<Progress
 							value={props.loadingProgress * 99 + 1}

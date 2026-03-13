@@ -47,7 +47,7 @@ export function ViewOptions() {
 		<Card
 			class={cn(
 				cardRoundedMdOnlyClasses,
-				'max-lg:grow max-lg:basis-0 min-w-[300px] overflow-auto border-t sm:min-w-min',
+				'min-w-75 overflow-auto border-t max-lg:grow max-lg:basis-0 sm:min-w-min',
 			)}
 		>
 			<CardHeader class={cardHeaderSmallClasses}>
@@ -140,7 +140,7 @@ export function ViewOptions() {
 									<div class="flex flex-row items-center">
 										<Label
 											for={id + 'show_area_names-input'}
-											class="grow py-1.5 pr-2 text-sm font-medium leading-none text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+											class="text-muted-foreground grow py-1.5 pr-2 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 										>
 											Main areas
 										</Label>
@@ -153,7 +153,7 @@ export function ViewOptions() {
 									<div class="flex flex-row items-center">
 										<Label
 											for={id + 'show_sub_area_names-input'}
-											class="grow py-1.5 pr-2 text-sm font-medium leading-none text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+											class="text-muted-foreground grow py-1.5 pr-2 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 										>
 											Sub areas
 										</Label>
