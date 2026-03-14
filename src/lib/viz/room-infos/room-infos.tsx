@@ -51,46 +51,45 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 	return (
 		<TableCell class="w-1 p-0 pr-1">
 			<ContextMenu>
-				<ContextMenuTrigger>
-					<Toggle
-						variant="outline"
-						pressed={isActive()}
-						onChange={() => {
-							roomColoringStore.cycleRoomColorVar1(props.variable);
-							uiStore.showMapIfOverview();
-						}}
-						class={
-							'relative h-10 w-10 rounded-full ' +
-							(!isActive()
-								? ''
-								: roomColorVar1Curve().type === 'linear'
-									? 'bg-primary text-white'
-									: roomColorVar1Curve().type === 'log'
-										? 'bg-blue-600 text-white'
-										: roomColorVar1Curve().type === 'exponential'
-											? 'bg-green-600 text-white'
-											: '') +
-							' ' +
-							roomInfoColoringToggleClasses(props.variable)
-						}
-					>
-						<span class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
-							<Switch>
-								<Match when={!isActive()}>
-									<Palette class="h-4 w-4 text-base" />
-								</Match>
-								<Match when={isActive() && roomColorVar1Curve().type === 'linear'}>
-									<span class="text-[.7rem]">linear</span>
-								</Match>
-								<Match when={isActive() && roomColorVar1Curve().type === 'log'}>
-									<span>log</span>
-								</Match>
-								<Match when={isActive() && roomColorVar1Curve().type === 'exponential'}>
-									<span>exp</span>
-								</Match>
-							</Switch>
-						</span>
-					</Toggle>
+				<ContextMenuTrigger
+					as={Toggle}
+					variant="outline"
+					pressed={isActive()}
+					onChange={() => {
+						roomColoringStore.cycleRoomColorVar1(props.variable);
+						uiStore.showMapIfOverview();
+					}}
+					class={
+						'relative mt-1 h-8.5 w-8.5 rounded-full ' +
+						(!isActive()
+							? ''
+							: roomColorVar1Curve().type === 'linear'
+								? 'bg-primary text-white'
+								: roomColorVar1Curve().type === 'log'
+									? 'bg-blue-600 text-white'
+									: roomColorVar1Curve().type === 'exponential'
+										? 'bg-green-600 text-white'
+										: '') +
+						' ' +
+						roomInfoColoringToggleClasses(props.variable)
+					}
+				>
+					<span class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+						<Switch>
+							<Match when={!isActive()}>
+								<Palette class="h-4 w-4 text-base" />
+							</Match>
+							<Match when={isActive() && roomColorVar1Curve().type === 'linear'}>
+								<span class="text-[.7rem]">linear</span>
+							</Match>
+							<Match when={isActive() && roomColorVar1Curve().type === 'log'}>
+								<span>log</span>
+							</Match>
+							<Match when={isActive() && roomColorVar1Curve().type === 'exponential'}>
+								<span>exp</span>
+							</Match>
+						</Switch>
+					</span>
 				</ContextMenuTrigger>
 				<ContextMenuContent>
 					<RoomColorCurveContextMenuItems variable={props.variable} />
@@ -124,7 +123,7 @@ const AggregationVariableRow: Component<{
 	return (
 		<Show when={selectedRoom()}>
 			<TableRow>
-				<TableHead class="flex items-center p-1 pl-3">
+				<TableHead class="flex h-11.5 items-center p-1 pl-3">
 					<Tooltip>
 						<TooltipTrigger>
 							<div class="flex flex-row items-center justify-center gap-2">
@@ -135,7 +134,7 @@ const AggregationVariableRow: Component<{
 						<TooltipContent>{variableInfo().description}</TooltipContent>
 					</Tooltip>
 				</TableHead>
-				<TableCell class="w-1 p-1 pr-6 text-right">{formatted()}</TableCell>
+				<TableCell class="w-1 p-1 pr-3 text-right">{formatted()}</TableCell>
 				<AggregationVariableToggles variable={props.variable} />
 			</TableRow>
 		</Show>
@@ -283,7 +282,9 @@ export function RoomInfo(_props: LayoutPanelTypeProps) {
 
 				<div class="grow" />
 
-				<LayoutPanelSelect iconOnly={true} />
+				<div class="-ml-8">
+					<LayoutPanelSelect iconOnly={true} />
+				</div>
 
 				<Tooltip>
 					<TooltipTrigger

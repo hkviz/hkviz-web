@@ -3,11 +3,7 @@ import { Dynamic } from 'solid-js/web';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { useLayoutStore } from '../store/layout-store';
 import { useLayoutPanelContext } from './layout-panel-context';
-import {
-	getLayoutPanelTypeById,
-	LayoutPanelTypeId,
-	layoutPanelTypeIdsInSelect
-} from './layout-panel-type';
+import { getLayoutPanelTypeById, LayoutPanelTypeId, layoutPanelTypeIdsInSelect } from './layout-panel-type';
 
 export interface LayoutPanelSelectProps {
 	iconOnly?: boolean;
