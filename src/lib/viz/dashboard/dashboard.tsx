@@ -49,7 +49,7 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 
 	return (
 		<div class="dashboard-grid">
-			<Show when={isSmallMobileLayout()}>
+			<Show when={showMap() && isSmallMobileLayout()}>
 				<LayoutLane
 					lane="mobileMap"
 					class={cn(
