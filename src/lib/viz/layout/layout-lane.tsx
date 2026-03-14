@@ -109,8 +109,9 @@ export const LayoutLane: Component<{ class?: string; lane: LaneId }> = (props) =
 						<>
 							<Show when={index() !== 0}>
 								<ResizableHandle
+									withHandle
 									class="group hover:before:bg-primary/70 -my-px bg-transparent p-1 before:absolute before:inset-x-2 before:inset-y-px before:rounded before:transition-colors"
-									handleClass="hasHover:opacity-0 transition-opacity"
+									handleClass="hasHover:opacity-0"
 								/>
 							</Show>
 							<LayoutPanel
