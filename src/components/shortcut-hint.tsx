@@ -18,13 +18,19 @@ export const ShortcutHint: Component<ShortcutHintProps> = (props) => {
 				{(key, i) => (
 					<>
 						{i() > 0 && <span>+</span>}
-						<kbd class="bg-muted text-foreground rounded border px-1.5 py-0.5 text-[11px] font-medium">
-							{key}
-						</kbd>
+						<ShortcutKey>{key}</ShortcutKey>
 					</>
 				)}
 			</For>
 			{props.after && <span>{props.after}</span>}
 		</div>
+	);
+};
+
+export const ShortcutKey: Component<{ class?: string; children: JSXElement }> = (props) => {
+	return (
+		<kbd class={cn('bg-muted text-foreground rounded border px-1.5 py-0.5 text-[11px] font-medium', props.class)}>
+			{props.children}
+		</kbd>
 	);
 };
