@@ -9,31 +9,29 @@ import {
 	SoulChartUnitIcon,
 } from '../time-charts/chart-icons';
 
-export type LayoutPanelTypeCategory = 'splits' | 'area-chart';
+export type LayoutPanelTypeCategory = 'splits' | 'area-chart' | 'map-options';
 
-export interface LayoutPanelTypeAreaChart {
-	id:
-		| 'area-chart-geo'
-		| 'area-chart-grub'
-		| 'area-chart-health'
-		| 'area-chart-soul'
-		| 'area-chart-completion'
-		| 'area-chart-essence';
-	category: 'area-chart';
+export interface LayoutPanelTypeBase<TId extends string, TCategory extends LayoutPanelTypeCategory> {
+	id: TId;
+	category: TCategory;
 	displayName: string;
 	icon: Component<{ class?: string }>;
 	showIconInSelect: boolean;
 	intrinsicSize: number;
 }
 
-export interface LayoutPanelTypeSplits {
-	id: 'splits';
-	category: 'splits';
-	displayName: string;
-	icon: Component<{ class?: string }>;
-	showIconInSelect: boolean;
-	intrinsicSize: number;
-}
+export type LayoutPanelTypeAreaChart = LayoutPanelTypeBase<
+	| 'area-chart-geo'
+	| 'area-chart-grub'
+	| 'area-chart-health'
+	| 'area-chart-soul'
+	| 'area-chart-completion'
+	| 'area-chart-essence',
+	'area-chart'
+>;
+
+export type LayoutPanelTypeSplits = LayoutPanelTypeBase<'splits', 'splits'>;
+export type LayoutPanelTypeMapOptions = LayoutPanelTypeBase<'map-options', 'map-options'>;
 
 export type LayoutPanelType = LayoutPanelTypeAreaChart | LayoutPanelTypeSplits;
 

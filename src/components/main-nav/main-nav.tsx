@@ -1,5 +1,5 @@
 import { A, useBeforeLeave } from '@solidjs/router';
-import { BadgeHelp, BookOpen, Globe, LogIn, Menu } from 'lucide-solid';
+import { BadgeQuestionMark, BookOpen, Globe, LogIn, Menu } from 'lucide-solid';
 import { ErrorBoundary, Show, Suspense, createSignal, type Component } from 'solid-js';
 import { createLoginUrl } from '~/lib/auth/urls';
 // import { useSession } from '~/lib/auth/client';
@@ -27,7 +27,7 @@ export const MainNavLeftSide: Component = () => {
 					return '/guide/install';
 				}}
 				title="How to's"
-				icon={BadgeHelp}
+				icon={BadgeQuestionMark}
 				isActive={({ pathname }) => pathname.startsWith('/guide')}
 			/>
 			<MenuItem href="/research" title="Research" icon={BookOpen} />

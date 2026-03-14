@@ -62,6 +62,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 		if (roomColoringStore.var1() !== 'firstVisitMs') {
 			roomColoringStore.cycleRoomColorVar1('firstVisitMs');
 		}
+		animationStore.setMsIntoGame(gameplayStore.timeFrame().max, 'instant');
 		extraChartStore.setFollowsAnimationAutoBounds(false);
 		mapZoomStore.setEnabled(true);
 		mapZoomStore.setTarget('visible-rooms');

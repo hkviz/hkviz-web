@@ -9,21 +9,33 @@ interface ShortcutHintProps {
 }
 
 export const ShortcutHint: Component<ShortcutHintProps> = (props) => {
-	const keys = () => (Array.isArray(props.keys) ? props.keys : [props.keys]);
-
 	return (
 		<div class={cn('text-muted-foreground mt-2 flex items-center gap-1.5 text-xs', props.class)}>
 			{props.before && <span>{props.before}</span>}
-			<For each={keys()}>
-				{(key, i) => (
-					<>
-						{i() > 0 && <span>+</span>}
-						<ShortcutKey>{key}</ShortcutKey>
-					</>
-				)}
-			</For>
+			<ShortcutKeys keys={props.keys} />
 			{props.after && <span>{props.after}</span>}
 		</div>
+	);
+};
+
+export const CtrlOrCommandKeyText: Component = () => {
+	const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
+	const ctrlKey = isMac ? '⌘' : 'Ctrl';
+	return <span>{ctrlKey}</span>;
+};
+
+export const ShortcutKeys: Component<{ keys: JSXElement | JSXElement[]; class?: string }> = (props) => {
+	const keys = () => (Array.isArray(props.keys) ? props.keys : [props.keys]);
+
+	return (
+		<For each={keys()}>
+			{(key, i) => (
+				<>
+					{i() > 0 && <span class="px-0.5 text-sm opacity-75">+</span>}
+					<ShortcutKey>{key}</ShortcutKey>
+				</>
+			)}
+		</For>
 	);
 };
 

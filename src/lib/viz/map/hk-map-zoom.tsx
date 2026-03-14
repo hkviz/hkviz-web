@@ -144,6 +144,7 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		if (!enabled) return null;
 		const roomsVisible = roomDisplayStore.roomsVisible();
 		const visibleRooms = roomData.filter((r) => roomsVisible === 'all' || roomsVisible.has(r.gameObjectName));
+		if (visibleRooms.length === 0) return null;
 
 		return Bounds.fromContainingBounds(visibleRooms.map((r) => r.visualBounds));
 	});

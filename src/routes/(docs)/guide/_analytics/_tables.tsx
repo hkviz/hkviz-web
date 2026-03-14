@@ -1,5 +1,5 @@
 import { Pin } from 'lucide-solid';
-import { Component, JSXElement } from 'solid-js';
+import { CtrlOrCommandKeyText, ShortcutKeys } from '~/components/shortcut-hint';
 import { Card } from '~/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
 
@@ -15,7 +15,9 @@ export function SplitActionsTable() {
 				</TableHeader>
 				<TableBody>
 					<TableRow>
-						<TableCell>Hover</TableCell>
+						<TableCell>
+							<ShortcutKeys keys={['Hover']} />
+						</TableCell>
 						<TableCell>
 							Shows a marker for the split on the{' '}
 							<a href="#timeline" class="underline" target="_self">
@@ -29,14 +31,18 @@ export function SplitActionsTable() {
 						</TableCell>
 					</TableRow>
 					<TableRow>
-						<TableCell>Click</TableCell>
+						<TableCell>
+							<ShortcutKeys keys={['Click']} />
+						</TableCell>
 						<TableCell>
 							Jump to the timepoint of a split and change the selected room of the room analytics panel to
 							the room of the split
 						</TableCell>
 					</TableRow>
 					<TableRow>
-						<TableCell>Double click</TableCell>
+						<TableCell>
+							<ShortcutKeys keys={['Double Click']} />
+						</TableCell>
 						<TableCell>
 							<a href="#room-pin" class="underline" target="_self">
 								<Pin class="inline-block h-4 w-4" />
@@ -51,13 +57,7 @@ export function SplitActionsTable() {
 	);
 }
 
-const Shortcut: Component<{ children: JSXElement }> = (props) => {
-	return <span class="rounded-md bg-gray-200 px-1 text-sm whitespace-nowrap dark:bg-gray-800">{props.children}</span>;
-};
-
 export function TimeBasedChartActionsTable() {
-	const isMac = typeof window !== 'undefined' ? /(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent) : false;
-	const ctrlKey = isMac ? '⌘' : 'Ctrl';
 	return (
 		<Table>
 			<TableHeader>
@@ -69,27 +69,27 @@ export function TimeBasedChartActionsTable() {
 			<TableBody>
 				<TableRow>
 					<TableCell>
-						<Shortcut>Drag over Chart</Shortcut>
+						<ShortcutKeys keys={['Drag']} /> over Chart
 					</TableCell>
 					<TableCell>Zoom in</TableCell>
 				</TableRow>
 				<TableRow>
 					<TableCell>
-						<Shortcut>Click</Shortcut>
+						<ShortcutKeys keys={['Click']} />
 					</TableCell>
 					<TableCell>Zoom out</TableCell>
 				</TableRow>
 				<TableRow>
 					<TableCell class="p-1 pl-4">
-						<Shortcut>{ctrlKey} + Click</Shortcut> or <br />
-						<Shortcut>Click + Hold</Shortcut>
+						<ShortcutKeys keys={[<CtrlOrCommandKeyText />, 'Click']} /> or <br />
+						<ShortcutKeys keys={['Click', 'Hold']} />
 					</TableCell>
 					<TableCell>Move the timeline to where your mouse is on the chart</TableCell>
 				</TableRow>
 
 				<TableRow>
 					<TableCell class="p-1 pl-4">
-						<Shortcut>{ctrlKey} + Drag</Shortcut>
+						<ShortcutKeys keys={[<CtrlOrCommandKeyText />, 'Drag']} />
 					</TableCell>
 					<TableCell>Move the timeline to where your mouse is on the chart until letting go</TableCell>
 				</TableRow>
@@ -118,7 +118,9 @@ export function TimelineTable() {
 				</TableHeader>
 				<TableBody>
 					<TableRow>
-						<TableCell>Shift + Drag</TableCell>
+						<TableCell>
+							<ShortcutKeys keys={['Shift', 'Drag']} />
+						</TableCell>
 						<TableCell>
 							More precisely drag on the timeline. The slider moves 10 times slower, making it easier to
 							find a certain timestamp.
@@ -142,15 +144,21 @@ export function TimelineColorCodesTable() {
 				</TableHeader>
 				<TableBody>
 					<TableRow>
-						<TableCell>Click</TableCell>
+						<TableCell>
+							<ShortcutKeys keys={['Click']} />
+						</TableCell>
 						<TableCell>Jump to the timepoint of the color code</TableCell>
 					</TableRow>
 					<TableRow>
-						<TableCell>Hover</TableCell>
+						<TableCell>
+							<ShortcutKeys keys={['Hover']} />
+						</TableCell>
 						<TableCell>Change selected room, if not pinned</TableCell>
 					</TableRow>
 					<TableRow>
-						<TableCell>Double Click</TableCell>
+						<TableCell>
+							<ShortcutKeys keys={['Click', 'Click']} />
+						</TableCell>
 						<TableCell>
 							<a href="#room-pin" class="underline" target="_self">
 								Toggle if the selected room is pinned. <Pin class="inline-block h-4 w-4" />
