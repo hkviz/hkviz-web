@@ -6,6 +6,8 @@ const intervalMs = 1000 / 30;
 // const intervalMs = 1000 / 60;
 
 export function createAnimationTickStore(animationStore: AnimationStore, extraChartStore: ExtraChartStore) {
+	const tickListeners = new Set<(deltaMs: number) => void>();
+
 	createEffect(() => {
 		// const interval = setInterval(() => {
 		// 	batch(() => {
@@ -24,6 +26,10 @@ export function createAnimationTickStore(animationStore: AnimationStore, extraCh
 			batch(() => {
 				animationStore.tick(deltaMs);
 				extraChartStore.tick(deltaMs);
+
+				for (const listener of tickListeners) {
+					listener(deltaMs);
+				}
 			});
 
 			frameId = requestAnimationFrame(tick);
@@ -36,7 +42,12 @@ export function createAnimationTickStore(animationStore: AnimationStore, extraCh
 		// onCleanup(() => clearInterval(interval));
 	});
 
-	return {};
+	function addTickListener(cb: (deltaMs: number) => void): () => void {
+		tickListeners.add(cb);
+		return () => tickListeners.delete(cb);
+	}
+
+	return { addTickListener };
 }
 export type AnimationTickStore = ReturnType<typeof createAnimationTickStore>;
 export const AnimationTickStoreContext = createContext<AnimationTickStore>();

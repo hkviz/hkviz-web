@@ -12,7 +12,13 @@ import {
 	Vector2,
 	type ZoomZone,
 } from '../../parser';
-import { useAnimationStore, useGameplayStore, useMapZoomStore, useRoomDisplayStore } from '../store';
+import {
+	useAnimationStore,
+	useAnimationTickStore,
+	useGameplayStore,
+	useMapZoomStore,
+	useRoomDisplayStore,
+} from '../store';
 
 interface HKMapZoomProps {
 	zoom: d3.ZoomBehavior<SVGSVGElement, unknown> | undefined;
@@ -21,6 +27,7 @@ interface HKMapZoomProps {
 
 export function createHKMapZoom(props: HKMapZoomProps) {
 	const animationStore = useAnimationStore();
+	const animationTickStore = useAnimationTickStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const mapZoomStore = useMapZoomStore();
 	const gameplayStore = useGameplayStore();
@@ -80,12 +87,9 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		minY: 0,
 		maxX: 0,
 		maxY: 0,
-		lastNow: 0,
 		initialized: false,
 	};
 	const recentIncludedAreaAtMs = new Map<string, number>();
-
-	let autoZoomTimer: d3.Timer | null = null;
 
 	const currentSceneContext = createLazyMemo(() => {
 		const enabled = mapZoomStore.enabled();
@@ -361,7 +365,6 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 
 	const resetBoundsAnimator = () => {
 		boundsAnimator.initialized = false;
-		boundsAnimator.lastNow = 0;
 		recentIncludedAreaAtMs.clear();
 	};
 
@@ -389,23 +392,16 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		const usesAutoZoomMomentum =
 			target === 'current-area' || target === 'current-area-smooth' || target === 'visible-rooms';
 		if (!usesAutoZoomMomentum || !enabled) {
-			if (autoZoomTimer) {
-				autoZoomTimer.stop();
-				autoZoomTimer = null;
-			}
 			resetBoundsAnimator();
 			return;
 		}
 
-		if (autoZoomTimer) return;
-
-		autoZoomTimer = d3.timer(() => {
+		const removeTickListener = animationTickStore.addTickListener((deltaMs: number) => {
 			untrack(() => {
 				const svg = props.svg;
 				const zoom = props.zoom;
 				if (!svg || !zoom) return;
 
-				const now = performance.now();
 				const targetBounds = getAutoTargetBounds();
 				if (!targetBounds) return;
 
@@ -421,12 +417,10 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 					boundsAnimator.minY = currentBounds.min.y;
 					boundsAnimator.maxX = currentBounds.max.x;
 					boundsAnimator.maxY = currentBounds.max.y;
-					boundsAnimator.lastNow = now;
 					boundsAnimator.initialized = true;
 				}
 
-				const dtSeconds = Math.min(0.05, Math.max(1 / 240, (now - boundsAnimator.lastNow) / 1000));
-				boundsAnimator.lastNow = now;
+				const dtSeconds = Math.min(0.05, Math.max(1 / 240, deltaMs / 1000));
 
 				const reduceTime =
 					mapZoomStore.target() === 'current-area-smooth'
@@ -467,10 +461,8 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		});
 
 		onCleanup(() => {
-			if (autoZoomTimer) {
-				autoZoomTimer.stop();
-				autoZoomTimer = null;
-			}
+			removeTickListener();
+			resetBoundsAnimator();
 		});
 	});
 }
