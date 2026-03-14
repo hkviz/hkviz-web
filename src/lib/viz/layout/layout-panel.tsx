@@ -18,7 +18,7 @@ export interface LayoutPanelProps {
 	layoutLane: LaneId;
 	layoutLaneIndex: number;
 	resizeOptions?: JSXElement;
-	isCollapsed?: boolean;
+	maxSize?: number;
 }
 
 function getComponentForPanelType(type: LayoutPanelType): Component<LayoutPanelTypeProps> {
@@ -58,7 +58,6 @@ export const LayoutPanel: Component<LayoutPanelProps> = (props) => {
 		layoutStore,
 		layoutLane: () => props.layoutLane,
 		layoutLaneIndex: () => props.layoutLaneIndex,
-		isCollapsed: () => props.isCollapsed ?? false,
 	});
 	const PanelComponent = () => getComponentForPanelType(panelContext.type());
 

@@ -19,7 +19,9 @@ export interface LayoutPanelTypeBase<TId extends string, TCategory extends Layou
 	icon: Component<{ class?: string }>;
 	showIconInSelect: boolean;
 	intrinsicSize: number;
+	maxSizeInRems?: number;
 	selectableInSelect: boolean;
+	collapsedSizeInRem: number;
 }
 
 export type LayoutPanelTypeAreaChart = LayoutPanelTypeBase<
@@ -43,6 +45,8 @@ export type LayoutPanelType =
 	| LayoutPanelTypeRoomInfo
 	| LayoutPanelTypeMap;
 
+const DEFAULT_COLLAPSED_SIZE_IN_REM = 2.75;
+
 export const layoutPanelTypes: LayoutPanelType[] = [
 	{
 		id: 'map-options',
@@ -50,8 +54,10 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		displayName: 'Map options',
 		icon: Map,
 		showIconInSelect: false,
-		intrinsicSize: 0.25,
+		intrinsicSize: 0.5,
 		selectableInSelect: true,
+		maxSizeInRems: 14,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 	{
 		id: 'splits',
@@ -61,6 +67,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: false,
 		intrinsicSize: 0.4,
 		selectableInSelect: true,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 	{
 		id: 'area-chart-geo',
@@ -70,6 +77,8 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: true,
 		intrinsicSize: 0.45,
 		selectableInSelect: true,
+		// maxSizeInRems: 29,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 	{
 		id: 'area-chart-grub',
@@ -79,6 +88,8 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: true,
 		intrinsicSize: 0.35,
 		selectableInSelect: true,
+		// maxSizeInRems: 27,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 	{
 		id: 'area-chart-health',
@@ -88,6 +99,8 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: true,
 		intrinsicSize: 0.35,
 		selectableInSelect: true,
+		// maxSizeInRems: 27,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 	{
 		id: 'area-chart-soul',
@@ -97,6 +110,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: true,
 		intrinsicSize: 0.35,
 		selectableInSelect: true,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 	{
 		id: 'area-chart-completion',
@@ -106,6 +120,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: true,
 		intrinsicSize: 0.25,
 		selectableInSelect: true,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 	{
 		id: 'area-chart-essence',
@@ -115,6 +130,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: true,
 		intrinsicSize: 0.25,
 		selectableInSelect: true,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 	{
 		id: 'room-info',
@@ -124,6 +140,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: false,
 		intrinsicSize: 0.4,
 		selectableInSelect: true,
+		collapsedSizeInRem: 5.5,
 	},
 	{
 		id: 'map',
@@ -133,6 +150,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: false,
 		intrinsicSize: 0.7,
 		selectableInSelect: false,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 ];
 

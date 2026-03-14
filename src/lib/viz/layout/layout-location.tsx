@@ -10,6 +10,8 @@ export interface LayoutLane {
 
 export type LaneId = 'right' | 'left' | 'mobileMap';
 
+export const laneIds: LaneId[] = ['right', 'left', 'mobileMap'];
+
 export interface LayoutLocation {
 	laneId: LaneId;
 	entryIndex: number;

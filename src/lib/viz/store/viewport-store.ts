@@ -6,6 +6,8 @@ export function createViewportStore() {
 	const isMobileLayout = createMemo(() => windowSize().width < 1024); // tailwind lg breakpoint
 	const isSmallMobileLayout = createMemo(() => windowSize().width < 768);
 
+	const rootFontSize = () => 16;
+
 	createEffect(() => {
 		if (typeof window !== 'undefined') {
 			if ('visualViewport' in window) {
@@ -41,6 +43,7 @@ export function createViewportStore() {
 		visualViewportScale,
 		isMobileLayout,
 		isSmallMobileLayout,
+		rootFontSize,
 	};
 }
 

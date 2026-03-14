@@ -45,7 +45,7 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 	const showSubAreaNames = roomDisplayStore.showSubAreaNames;
 
 	return (
-		<LayoutPanelWrapper class="flex max-h-54 min-w-75 flex-col border-t max-lg:grow max-lg:basis-0 sm:min-w-min">
+		<LayoutPanelWrapper class="flex min-w-75 flex-col border-t max-lg:grow max-lg:basis-0 sm:min-w-min">
 			<LayoutPanelHeader resizeOptions={props.resizeOptions} />
 			<CardContent class="shrink grow overflow-auto px-0 pb-1">
 				<Table class="w-full">
