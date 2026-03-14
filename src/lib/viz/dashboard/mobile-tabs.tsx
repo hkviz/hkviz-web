@@ -38,7 +38,7 @@ export const MobileTabBar: Component = () => {
 				uiStore.activateTab(tab as MobileTab);
 			}}
 		>
-			<TabsList class="flex h-12 w-full flex-row rounded-none border-t">
+			<TabsList class="bg-muted/75 flex h-12 w-full flex-row rounded-none border-t">
 				<MobileTabTrigger value="overview" title="Overview" icon={BadgeInfo} />
 				<MobileTabTrigger value="map" title="Map" icon={Map} class="map-tab-mobile-layout" />
 				<MobileTabTrigger value="right" title="Charts" icon={AreaChart} class="chart-tab-mobile-layout" />

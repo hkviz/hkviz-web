@@ -6,8 +6,9 @@ import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { TimeBasedChartActionsTable } from '~/routes/(docs)/guide/_analytics/_tables';
 import { useLayoutPanelContext } from '../layout/layout-panel-context';
-import { LayoutPanelPanelHeader } from '../layout/layout-panel-header';
+import { LayoutPanelHeader } from '../layout/layout-panel-header';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
+import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
 import { useExtraChartStore } from '../store';
 import { LineAreaChart, type LineAreaChartProps } from './line-area-chart';
 
@@ -44,34 +45,36 @@ export interface LineAreaChartPanelProps extends LineAreaChartProps, LayoutPanel
 export const LineAreaChartPanel = (props: LineAreaChartPanelProps) => {
 	const panelContext = useLayoutPanelContext();
 	return (
-		<div class="extra-charts flex h-full flex-col">
-			<LayoutPanelPanelHeader resizeOptions={props.resizeOptions}>
-				<Show when={!panelContext.isCollapsed()}>
-					<RunExtraChartsFollowButton />
-				</Show>
-				<Popover>
-					<PopoverTrigger
-						as={Button}
-						variant="ghost"
-						size="icon"
-						class="h-7 w-7"
-						aria-label="Time-based charts help"
-					>
-						<CircleQuestionMark class="h-3 w-3" />
-					</PopoverTrigger>
-					<PopoverContent class="shadow-accent w-120 max-w-[90vw] p-0">
-						<TimeBasedChartActionsTable />
-						<a
-							href="/guide/analytics#time-based-charts"
-							class="m-4 block text-sm underline"
-							target="_blank"
+		<LayoutPanelWrapper>
+			<div class="extra-charts flex h-full flex-col">
+				<LayoutPanelHeader resizeOptions={props.resizeOptions}>
+					<Show when={!panelContext.isCollapsed()}>
+						<RunExtraChartsFollowButton />
+					</Show>
+					<Popover>
+						<PopoverTrigger
+							as={Button}
+							variant="ghost"
+							size="icon"
+							class="h-7 w-7"
+							aria-label="Time-based charts help"
 						>
-							Learn more
-						</a>
-					</PopoverContent>
-				</Popover>
-			</LayoutPanelPanelHeader>
-			<LineAreaChart {...props} />
-		</div>
+							<CircleQuestionMark class="h-3 w-3" />
+						</PopoverTrigger>
+						<PopoverContent class="shadow-accent w-120 max-w-[90vw] p-0">
+							<TimeBasedChartActionsTable />
+							<a
+								href="/guide/analytics#time-based-charts"
+								class="m-4 block text-sm underline"
+								target="_blank"
+							>
+								Learn more
+							</a>
+						</PopoverContent>
+					</Popover>
+				</LayoutPanelHeader>
+				<LineAreaChart {...props} />
+			</div>
+		</LayoutPanelWrapper>
 	);
 };

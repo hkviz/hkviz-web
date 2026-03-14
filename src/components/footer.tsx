@@ -1,10 +1,10 @@
 import { A, useLocation } from '@solidjs/router';
 import { createEffect, createMemo, type Component } from 'solid-js';
+import { useUiStore } from '~/lib/viz';
 import { HKVizText } from './HKVizText';
 import { DiscordDialogButton, GithubButton, MailButton } from './socials-links';
 import { Expander } from './ui/additions';
 import { Button } from './ui/button';
-import { useUiStore } from '~/lib/viz';
 
 export const Footer: Component = () => {
 	const uiStore = useUiStore();
@@ -22,9 +22,9 @@ export const Footer: Component = () => {
 
 	return (
 		<Expander expanded={isVisible()}>
-			<footer class="flex min-h-(--footer-height) w-full flex-col items-center justify-center bg-background">
-				<div class="grid w-full max-w-[900px] grid-cols-1 p-4 sm:grid-cols-[1fr_2fr_1fr]">
-					<div class="text-balance text-center text-sm text-foreground opacity-80 sm:text-left">
+			<footer class="bg-background flex min-h-(--footer-height) w-full flex-col items-center justify-center">
+				<div class="grid w-full max-w-225 grid-cols-1 p-4 sm:grid-cols-[1fr_2fr_1fr]">
+					<div class="text-foreground text-center text-sm text-balance opacity-80 sm:text-left">
 						<HKVizText /> is not affiliated with Team Cherry. Hollow Knight and all related indicia are
 						trademarks of{' '}
 						<a class="hover:underline" href="https://teamcherry.com.au" target="_blank" rel="noreferrer">

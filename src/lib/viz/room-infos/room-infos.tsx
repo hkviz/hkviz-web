@@ -1,21 +1,23 @@
 import { Palette, Pin, PinOff } from 'lucide-solid';
 import { For, Index, Match, Show, Switch, createMemo, type Component } from 'solid-js';
 import { ShortcutHint } from '~/components/shortcut-hint';
-import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
+import { CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '~/components/ui/context-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import { Toggle } from '~/components/ui/toggle';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
-import { cn } from '~/lib/utils';
 import {
 	allRoomDataIncludingSubspritesBySceneName,
 	getRelatedVirtualRoomNames,
 	mainRoomDataBySceneName,
 } from '../../parser';
 import { roomInfoColoringToggleClasses } from '../class-names';
+import { useLayoutPanelContext } from '../layout/layout-panel-context';
+import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
+import { LayoutPanelSelect } from '../layout/layout-panel-select';
+import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
 import { HKMapRoom } from '../map/room-icon';
 import {
 	AggregationCountMode,
@@ -192,11 +194,12 @@ function AggregationVariables() {
 	);
 }
 
-export function RoomInfo() {
+export function RoomInfo(_props: LayoutPanelTypeProps) {
 	const roomDisplayStore = useRoomDisplayStore();
 	const aggregationStore = useAggregationStore();
 	const selectedRoom = roomDisplayStore.selectedSceneName;
 	const selectedRoomPinned = roomDisplayStore.selectedScenePinned;
+	const panelContext = useLayoutPanelContext();
 
 	const themeStore = useThemeStore();
 
@@ -231,11 +234,8 @@ export function RoomInfo() {
 	});
 
 	return (
-		<Card
-			class={cn(
-				cardRoundedMdOnlyClasses,
-				'room-infos-card before:bg-card min-w-[300px relative flex shrink grow basis-0 flex-col border-t border-l bg-linear-to-b from-transparent to-transparent before:absolute before:inset-0 before:-z-10 before:h-full before:w-full before:rounded-lg max-lg:basis-0',
-			)}
+		<LayoutPanelWrapper
+			class="room-infos-card before:bg-card relative flex min-h-22 min-w-75 shrink grow basis-0 flex-col border-t border-l bg-linear-to-b from-transparent to-transparent before:absolute before:inset-0 before:-z-10 before:h-full before:w-full before:rounded-lg max-lg:basis-0 before:max-lg:rounded-none"
 			style={{
 				'--tw-gradient-from': gradientColor(),
 				transition: '--tw-gradient-from .25s ease-in-out',
@@ -283,6 +283,8 @@ export function RoomInfo() {
 
 				<div class="grow" />
 
+				<LayoutPanelSelect iconOnly={true} />
+
 				<Tooltip>
 					<TooltipTrigger
 						as={Button}
@@ -320,56 +322,58 @@ export function RoomInfo() {
 					</TooltipContent>
 				</Tooltip>
 			</CardHeader>
-			<CardContent class="shrink grow basis-0 overflow-auto px-0 pb-1">
-				<Show when={selectedRoom() != null}>
-					<Show when={relatedRooms().length !== 0}>
-						<div class="flex flex-row gap-1 overflow-x-auto overflow-y-hidden p-1">
-							<Index each={relatedRooms()}>
-								{(room) => (
-									<Button
-										size="sm"
-										variant={room().name === selectedRoom() ? undefined : 'outline'}
-										onClick={() => {
-											roomDisplayStore.setSelectedSceneName(room().name);
-										}}
-										class="shrink-0"
-									>
-										{room().displayName}
-									</Button>
+			<Show when={!panelContext.isCollapsed()}>
+				<CardContent class="shrink grow basis-0 overflow-auto px-0 pb-1">
+					<Show when={selectedRoom() != null}>
+						<Show when={relatedRooms().length !== 0}>
+							<div class="flex flex-row gap-1 overflow-x-auto overflow-y-hidden p-1">
+								<Index each={relatedRooms()}>
+									{(room) => (
+										<Button
+											size="sm"
+											variant={room().name === selectedRoom() ? undefined : 'outline'}
+											onClick={() => {
+												roomDisplayStore.setSelectedSceneName(room().name);
+											}}
+											class="shrink-0"
+										>
+											{room().displayName}
+										</Button>
+									)}
+								</Index>
+							</div>
+						</Show>
+						<div class="mx-2 mt-1 mb-2">
+							<Select
+								value={aggregationStore.aggregationCountMode()}
+								onChange={(v) => {
+									if (!v) return;
+									aggregationStore.setAggregationCountMode(v);
+								}}
+								options={aggregationCountModes}
+								placeholder="Aggregation mode"
+								itemComponent={(props) => (
+									<SelectItem item={props.item}>
+										{getAggregationCountModeLabel(props.item.rawValue)}
+									</SelectItem>
 								)}
-							</Index>
+							>
+								<SelectTrigger aria-label="Trace visibility">
+									<SelectValue<AggregationCountMode>>
+										{(state) => getAggregationCountModeLabel(state.selectedOption())}
+									</SelectValue>
+								</SelectTrigger>
+								<SelectContent />
+							</Select>
 						</div>
+						<Table class="w-full">
+							<TableBody>
+								<AggregationVariables />
+							</TableBody>
+						</Table>
 					</Show>
-					<div class="mx-2 mt-1 mb-2">
-						<Select
-							value={aggregationStore.aggregationCountMode()}
-							onChange={(v) => {
-								if (!v) return;
-								aggregationStore.setAggregationCountMode(v);
-							}}
-							options={aggregationCountModes}
-							placeholder="Aggregation mode"
-							itemComponent={(props) => (
-								<SelectItem item={props.item}>
-									{getAggregationCountModeLabel(props.item.rawValue)}
-								</SelectItem>
-							)}
-						>
-							<SelectTrigger aria-label="Trace visibility">
-								<SelectValue<AggregationCountMode>>
-									{(state) => getAggregationCountModeLabel(state.selectedOption())}
-								</SelectValue>
-							</SelectTrigger>
-							<SelectContent />
-						</Select>
-					</div>
-					<Table class="w-full">
-						<TableBody>
-							<AggregationVariables />
-						</TableBody>
-					</Table>
-				</Show>
-			</CardContent>
-		</Card>
+				</CardContent>
+			</Show>
+		</LayoutPanelWrapper>
 	);
 }

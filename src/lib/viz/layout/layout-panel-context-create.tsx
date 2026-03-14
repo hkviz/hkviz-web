@@ -7,7 +7,6 @@ export function createLayoutPanelContext(props: {
 	layoutStore: LayoutStore;
 	layoutLane: () => LaneId;
 	layoutLaneIndex: () => number;
-	isCollapsed?: () => boolean;
 }) {
 	const type = createMemo(() =>
 		getLayoutPanelTypeById(props.layoutStore.getPanelType(props.layoutLane(), props.layoutLaneIndex())),
@@ -23,8 +22,14 @@ export function createLayoutPanelContext(props: {
 		type() {
 			return type();
 		},
+		maxSizePercent() {
+			return props.layoutStore.getMaxSizePercent(props.layoutLane(), props.layoutLaneIndex());
+		},
+		collapsedSizePercent() {
+			return props.layoutStore.getCollapsedSizePercent(props.layoutLane(), props.layoutLaneIndex());
+		},
 		isCollapsed() {
-			return props.isCollapsed ? props.isCollapsed() : false;
+			return props.layoutStore.isCollapsed(props.layoutLane(), props.layoutLaneIndex());
 		},
 	};
 }

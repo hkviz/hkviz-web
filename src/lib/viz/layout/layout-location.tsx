@@ -8,7 +8,9 @@ export interface LayoutLane {
 	entries: LayoutLaneEntryWithoutLocation[];
 }
 
-export type LaneId = 'right';
+export type LaneId = 'right' | 'left' | 'mobileMap';
+
+export const laneIds: LaneId[] = ['right', 'left', 'mobileMap'];
 
 export interface LayoutLocation {
 	laneId: LaneId;

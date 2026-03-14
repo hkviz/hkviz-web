@@ -1,8 +1,10 @@
 import * as d3 from 'd3';
-import { createEffect, onMount, type Component } from 'solid-js';
+import { createEffect, onMount, Show, type Component } from 'solid-js';
 import { cn } from '~/lib/utils';
 import { mapVisualExtends, roomData } from '../../parser';
 import { createElementSize } from '../canvas';
+import { useLayoutPanelContextOrNull } from '../layout/layout-panel-context';
+import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { useMapZoomStore, useRoomDisplayStore } from '../store';
 import { HkMapRooms } from './hk-map-rooms';
 import { HkMapTexts } from './hk-map-texts';
@@ -12,13 +14,15 @@ import { MapOverlayOptions } from './map-overlay-options';
 import { OutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 
-export interface HKMapProps {
+export interface HKMapProps extends LayoutPanelTypeProps {
 	class?: string;
 }
 
 export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 	const roomDisplayStore = useRoomDisplayStore();
 	const mapZoomStore = useMapZoomStore();
+	const panelContext = useLayoutPanelContextOrNull();
+	const isCollapsed = () => panelContext?.isCollapsed() ?? false;
 
 	const zoom = d3
 		.zoom<SVGSVGElement, unknown>()
@@ -99,9 +103,11 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 			<div class="absolute top-2 right-2 lg:top-10 xl:top-2">
 				<MapLegend />
 			</div>
-			<div class="absolute right-2 bottom-2">
-				<MapOverlayOptions />
-			</div>
+			<Show when={!isCollapsed()}>
+				<div class="absolute right-2 bottom-2">
+					<MapOverlayOptions />
+				</div>
+			</Show>
 		</div>
 	) as HTMLDivElement;
 

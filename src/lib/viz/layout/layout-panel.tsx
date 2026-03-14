@@ -1,6 +1,9 @@
 import { Component, JSXElement } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { assertNever } from '~/lib/parser';
+import { HKMap } from '../map';
+import { MapOptions } from '../map-options';
+import { RoomInfo } from '../room-infos';
 import { RunSplits } from '../splits';
 import { useLayoutStore } from '../store/layout-store';
 import { CompletionChart, EssenceChart, GeoChart, GrubChart, HealthChart, SoulChart } from '../time-charts';
@@ -9,12 +12,13 @@ import { LayoutPanelContext } from './layout-panel-context';
 import { createLayoutPanelContext } from './layout-panel-context-create';
 import { LayoutPanelTypeProps } from './layout-panel-props';
 import { LayoutPanelType } from './layout-panel-type';
+import { LayoutPanelWrapper } from './layout-panel-wrapper';
 
 export interface LayoutPanelProps {
 	layoutLane: LaneId;
 	layoutLaneIndex: number;
 	resizeOptions?: JSXElement;
-	isCollapsed?: boolean;
+	maxSize?: number;
 }
 
 function getComponentForPanelType(type: LayoutPanelType): Component<LayoutPanelTypeProps> {
@@ -33,6 +37,16 @@ function getComponentForPanelType(type: LayoutPanelType): Component<LayoutPanelT
 			return SoulChart;
 		case 'splits':
 			return RunSplits;
+		case 'map-options':
+			return MapOptions;
+		case 'room-info':
+			return RoomInfo;
+		case 'map':
+			return (props) => (
+				<LayoutPanelWrapper class="relative">
+					<HKMap class="absolute inset-0" {...props} />
+				</LayoutPanelWrapper>
+			);
 		default:
 			assertNever(type);
 	}
@@ -44,7 +58,6 @@ export const LayoutPanel: Component<LayoutPanelProps> = (props) => {
 		layoutStore,
 		layoutLane: () => props.layoutLane,
 		layoutLaneIndex: () => props.layoutLaneIndex,
-		isCollapsed: () => props.isCollapsed ?? false,
 	});
 	const PanelComponent = () => getComponentForPanelType(panelContext.type());
 

@@ -1,9 +1,12 @@
-import { A, useBeforeLeave } from '@solidjs/router';
+import { A, useBeforeLeave, useLocation } from '@solidjs/router';
 import { BadgeQuestionMark, BookOpen, Globe, LogIn, Menu } from 'lucide-solid';
-import { ErrorBoundary, Show, Suspense, createSignal, type Component } from 'solid-js';
+import { ErrorBoundary, Show, Suspense, createMemo, type Component } from 'solid-js';
 import { createLoginUrl } from '~/lib/auth/urls';
 // import { useSession } from '~/lib/auth/client';
 import { useSession } from '~/lib/auth/client';
+import { cn } from '~/lib/utils';
+import { useUiStore } from '~/lib/viz/store/ui-store';
+import { useViewportStore } from '~/lib/viz/store/viewport-store';
 import { HKVizText } from '../HKVizText';
 import { Button } from '../ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet';
@@ -38,15 +41,26 @@ export const MainNavLeftSide: Component = () => {
 export const MainNav = () => {
 	const session = useSession();
 	const loginUrl = createLoginUrl();
+	const uiStore = useUiStore();
+	const viewportStore = useViewportStore();
 
-	const [open, setOpen] = createSignal(false);
+	const location = useLocation();
+	const isVisible = createMemo(
+		() =>
+			uiStore.mobileTab() === 'overview' ||
+			!location.pathname.startsWith('/run/') ||
+			!viewportStore.isSmallMobileLayout(),
+	);
+
+	const open = uiStore.isMenuOpen;
+	const setOpen = uiStore.setIsMenuOpen;
 
 	useBeforeLeave(() => {
 		setOpen(false);
 	});
 
 	return (
-		<div class="main-nav">
+		<div class={cn('main-nav', isVisible() ? '' : 'main-nav-hidden')}>
 			<div class="main-nav-inner app-region-drag bg-background z-40 flex items-center justify-center">
 				<Button as={A} class="app-region-no-drag" href="/" variant="ghost">
 					<span class="text-lg">
@@ -96,7 +110,7 @@ export const MainNav = () => {
 								buttonClass: 'h-12',
 							}}
 						>
-							<div class="app-region-no-drag flex flex-col gap-1">
+							<div class="app-region-no-drag flex h-full flex-col gap-1">
 								<Button as={A} href="/" variant="ghost" class="h-16 justify-start">
 									<span class="text-2xl">
 										<HKVizText />
@@ -118,44 +132,17 @@ export const MainNav = () => {
 									<CurrentUserNavLinks />
 								</Show>
 								<MainNavAccountDeletionWarning />
+
+								<div class="grow" />
+								<div class="flex flex-row">
+									<ErrorBoundary fallback={<div>Theme switcher error</div>}>
+										<ThemeSwitcher />
+									</ErrorBoundary>
+								</div>
 							</div>
 						</MenuItemContextProvider>
 					</SheetContent>
 				</Sheet>
-				{/* <Sheet>
-                        <SheetTrigger asChild>
-                            <NavigationMenuLink class={cn(navigationMenuTriggerStyle(), ' md:hidden')} asChild>
-                                <button>
-                                    <Menu class="h-5 w-5" />
-                                </button>
-                            </NavigationMenuLink>
-                        </SheetTrigger>
-                        <SheetContent class="overflow-y-auto">
-                            <div class="flex flex-col gap-2 pt-4">
-                                <MenuEntryInHamburger
-                                    menuEntry={{
-                                        key: 'home',
-                                        href: '/',
-                                        title: (
-                                            <span class="text-lg">
-                                                <HKVizText />
-                                            </span>
-                                        ),
-                                    }}
-                                />
-                                {linksLeft.map((menuEntry) => (
-                                    <MenuEntryInHamburger key={menuEntry.key} menuEntry={menuEntry} />
-                                ))}
-                                {session && <CurrentUserHamburgerItems session={session} />}
-                                {!session && (
-                                    <MenuEntryInHamburger
-                                        menuEntry={{ key: 'login', href: loginUrl, title: 'Login', icon: LogIn }}
-                                    />
-                                )}
-                            </div>
-                        </SheetContent>
-                    </Sheet>
-                </NavigationMenu> */}
 			</div>
 		</div>
 	);

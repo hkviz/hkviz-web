@@ -10,8 +10,9 @@ import { SplitsList } from '~/routes/(docs)/guide/_analytics/_splits-list';
 import { assertNever, recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '../../parser';
 import { Duration } from '../duration';
 import { useLayoutPanelContext } from '../layout/layout-panel-context';
-import { LayoutPanelPanelHeader } from '../layout/layout-panel-header';
+import { LayoutPanelHeader } from '../layout/layout-panel-header';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
+import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
 import { useAnimationStore, useHoverMsStore, useRoomDisplayStore, useSplitsStore, useUiStore } from '../store';
 import { splitColors } from './split-colors';
 
@@ -232,55 +233,57 @@ export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
 	};
 
 	return (
-		<div class="run-splits flex h-full flex-col">
-			<LayoutPanelPanelHeader resizeOptions={props.resizeOptions}>
-				<RunSplitsSearch />
-				<Popover>
-					<PopoverTrigger
-						as={Button}
-						variant="ghost"
-						size="icon"
-						class="h-7 w-7 shrink-0"
-						aria-label="Splits help"
-					>
-						<CircleQuestionMark class="h-3 w-3" />
-					</PopoverTrigger>
-					<PopoverContent class="shadow-accent w-120 max-w-[90vw] p-0">
-						<div class="text-sm">
-							<SplitsList />
-						</div>
-						<a href="/guide/analytics#splits" class="m-4 block text-sm underline" target="_blank">
-							Learn more
-						</a>
-					</PopoverContent>
-				</Popover>
-			</LayoutPanelPanelHeader>
-			<div class="flex flex-wrap gap-1 p-3 pt-0">
-				<For each={recordingSplitGroups}>
-					{(group) => {
-						const checked = () => visibleSplitGroups().includes(group);
-						const color = splitColors[group.name];
-						return (
-							<div class="flex flex-row">
-								<Checkbox
-									id={id + '_run_split_option_' + group.name}
-									checked={checked()}
-									onChange={(checked) => setVisibleSplitGroupChecked(group, checked as boolean)}
-									controlClass={color.checkboxSolid}
-								/>
-								<label
-									for={id + '_run_split_option_' + group.name + '-input'}
-									class="grow pl-1 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-								>
-									{group.displayName}
-								</label>
+		<LayoutPanelWrapper>
+			<div class="run-splits flex h-full flex-col">
+				<LayoutPanelHeader resizeOptions={props.resizeOptions}>
+					<RunSplitsSearch />
+					<Popover>
+						<PopoverTrigger
+							as={Button}
+							variant="ghost"
+							size="icon"
+							class="h-7 w-7 shrink-0"
+							aria-label="Splits help"
+						>
+							<CircleQuestionMark class="h-3 w-3" />
+						</PopoverTrigger>
+						<PopoverContent class="shadow-accent w-120 max-w-[90vw] p-0">
+							<div class="text-sm">
+								<SplitsList />
 							</div>
-						);
-					}}
-				</For>
+							<a href="/guide/analytics#splits" class="m-4 block text-sm underline" target="_blank">
+								Learn more
+							</a>
+						</PopoverContent>
+					</Popover>
+				</LayoutPanelHeader>
+				<div class="flex flex-wrap gap-1 p-3 pt-0">
+					<For each={recordingSplitGroups}>
+						{(group) => {
+							const checked = () => visibleSplitGroups().includes(group);
+							const color = splitColors[group.name];
+							return (
+								<div class="flex flex-row">
+									<Checkbox
+										id={id + '_run_split_option_' + group.name}
+										checked={checked()}
+										onChange={(checked) => setVisibleSplitGroupChecked(group, checked as boolean)}
+										controlClass={color.checkboxSolid}
+									/>
+									<label
+										for={id + '_run_split_option_' + group.name + '-input'}
+										class="grow pl-1 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+									>
+										{group.displayName}
+									</label>
+								</div>
+							);
+						}}
+					</For>
+				</div>
+				<hr />
+				<RunSplitsRows />
 			</div>
-			<hr />
-			<RunSplitsRows />
-		</div>
+		</LayoutPanelWrapper>
 	);
 };

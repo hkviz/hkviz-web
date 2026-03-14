@@ -17,6 +17,7 @@ function isMobileTab(tab: string): tab is MobileTab {
 export function createUiStore() {
 	const [mainCardTab, setMainCardTab] = createSignal<MainCardTab>('overview');
 	const [mobileTab, setMobileTab] = createSignal<MobileTab>('overview');
+	const [isMenuOpen, setIsMenuOpen] = createSignal<boolean>(false);
 
 	function showMapIfOverview() {
 		if (mainCardTab() === 'overview') {
@@ -49,6 +50,8 @@ export function createUiStore() {
 		isMainCardTab,
 		isMobileTab,
 		activateTab,
+		isMenuOpen,
+		setIsMenuOpen,
 	};
 }
 
