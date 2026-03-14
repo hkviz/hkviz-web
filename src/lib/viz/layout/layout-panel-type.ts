@@ -1,4 +1,4 @@
-import { Map } from 'lucide-solid';
+import { LayoutDashboardIcon, Map } from 'lucide-solid';
 import { Component } from 'solid-js';
 import { SplitIcon as SplitPanelIcon } from '../splits/split-icon';
 import {
@@ -48,17 +48,6 @@ export type LayoutPanelType =
 const DEFAULT_COLLAPSED_SIZE_IN_REM = 2.75;
 
 export const layoutPanelTypes: LayoutPanelType[] = [
-	{
-		id: 'map-options',
-		category: 'map-options',
-		displayName: 'Map options',
-		icon: Map,
-		showIconInSelect: false,
-		intrinsicSize: 0.5,
-		selectableInSelect: true,
-		maxSizeInRems: 14,
-		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
-	},
 	{
 		id: 'splits',
 		category: 'splits',
@@ -133,10 +122,21 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 	{
+		id: 'map-options',
+		category: 'map-options',
+		displayName: 'Map options',
+		icon: Map,
+		showIconInSelect: false,
+		intrinsicSize: 0.5,
+		selectableInSelect: true,
+		maxSizeInRems: 13.125,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
+	},
+	{
 		id: 'room-info',
 		category: 'room-info',
 		displayName: 'Room info',
-		icon: Map,
+		icon: LayoutDashboardIcon,
 		showIconInSelect: false,
 		intrinsicSize: 0.4,
 		selectableInSelect: true,

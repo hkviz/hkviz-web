@@ -64,7 +64,7 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 					cardRoundedMdOnlyClasses,
 					'relative grow grid-cols-1 grid-rows-1 overflow-hidden border-t',
 					mobileTab() === 'overview' ? 'dashboard-grid-map-big' : 'dashboard-grid-map',
-					mobileTab() === 'overview' ? 'grid' : mobileTab() === 'map' ? 'hidden md:grid' : 'hidden lg:grid',
+					mobileTab() === 'overview' ? 'grid' : 'hidden md:grid',
 				)}
 			>
 				<LargeScreenTabs />

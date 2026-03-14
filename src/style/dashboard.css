@@ -96,10 +96,7 @@
 
 @variant md {
 	.dashboard-grid-splits-and-timecharts {
-		grid-row-start: map-options;
-		grid-column-start: map-options;
-		grid-row-end: map;
-		grid-column-end: map;
+		grid-area: map-options;
 	}
 }
 @variant lg {
