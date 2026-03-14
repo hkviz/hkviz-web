@@ -1,4 +1,5 @@
-import { createContext, createMemo, useContext, type Accessor } from 'solid-js';
+import { createLazyMemo } from '@solid-primitives/memo';
+import { createContext, useContext, type Accessor } from 'solid-js';
 import {
 	binarySearchLastIndexBefore,
 	getDefaultValue,
@@ -14,8 +15,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 		Object.entries(playerDataFields.byFieldName).map(([fieldName, field]) => {
 			return [
 				fieldName,
-				// eslint-disable-next-line solid/reactivity
-				createMemo(() => {
+				createLazyMemo(() => {
 					const r = gameplayStore.recording();
 					if (!r) return null;
 
@@ -38,8 +38,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 		Object.entries(currentEvents).map(([fieldName, event]) => {
 			return [
 				fieldName,
-				// eslint-disable-next-line solid/reactivity
-				createMemo(() => {
+				createLazyMemo(() => {
 					const e: PlayerDataEvent<any> = (event as any)();
 
 					if (!e) return getDefaultValue((playerDataFields.byFieldName as any)[fieldName as any]);

@@ -1,6 +1,6 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import { batch, createContext, createEffect, createMemo, createSignal, untrack, useContext } from 'solid-js';
-import { mainRoomDataBySceneName, type RoomData, type SceneEvent } from '../../parser';
+import { binarySearchLastIndexBefore, mainRoomDataBySceneName, type RoomData, type SceneEvent } from '../../parser';
 import { GameplayStore } from './gameplay-store';
 import { UiStore } from './ui-store';
 
@@ -51,17 +51,49 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 		return r.sceneEvents[index] ?? null;
 	});
 
+	const mainMapSceneEventIndexes = createMemo(() => {
+		const sceneEvents = gameplayStore.recording()?.sceneEvents;
+		if (!sceneEvents) return null;
+
+		const indexes: number[] = [];
+		for (let i = 0; i < sceneEvents.length; i++) {
+			if (mainRoomDataBySceneName.get(sceneEvents[i]!.sceneName)) {
+				indexes.push(i);
+			}
+		}
+		return indexes;
+	});
+
 	const currentSceneEventWithMainMapRoom = createMemo<{
 		mainRoomData: RoomData | null;
 		sceneEvent: SceneEvent | null;
 	}>(() => {
-		let sceneEvent = currentSceneEvent();
-		let mainRoomData: RoomData | null = null;
-		do {
-			if (!sceneEvent) break;
-			mainRoomData = mainRoomDataBySceneName.get(sceneEvent.sceneName) ?? null;
-			sceneEvent = sceneEvent.previousSceneEvent;
-		} while (!mainRoomData && !!sceneEvent);
+		const recording = gameplayStore.recording();
+		if (!recording) {
+			return { mainRoomData: null, sceneEvent: null };
+		}
+
+		const indexes = mainMapSceneEventIndexes();
+		if (!indexes || indexes.length === 0) {
+			return { mainRoomData: null, sceneEvent: null };
+		}
+
+		const sceneEvents = recording.sceneEvents;
+		const currentMs = msIntoGame();
+		const indexInCandidates = binarySearchLastIndexBefore(
+			indexes,
+			currentMs,
+			(sceneEventIndex) => sceneEvents[sceneEventIndex]!.msIntoGame,
+		);
+
+		if (indexInCandidates === -1) {
+			return { mainRoomData: null, sceneEvent: null };
+		}
+
+		const sceneEventIndex = indexes[indexInCandidates]!;
+		const sceneEvent = sceneEvents[sceneEventIndex] ?? null;
+		const mainRoomData = sceneEvent ? (mainRoomDataBySceneName.get(sceneEvent.sceneName) ?? null) : null;
+
 		return { mainRoomData, sceneEvent };
 	});
 

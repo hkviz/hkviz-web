@@ -14,9 +14,9 @@ import {
 	type CombinedRecording,
 } from '../../parser';
 import { formatTimeMs } from '../util';
-import { RoomDisplayStore } from './room-display-store';
 import { AnimationStore } from './animation-store';
 import { GameplayStore } from './gameplay-store';
+import { RoomDisplayStore } from './room-display-store';
 
 export interface ValueAggregation {
 	deaths: number;
@@ -85,12 +85,13 @@ export const aggregationVariableInfos: {
 	[key in AggregationVariable]: {
 		name: string;
 		description: string;
-		format?: (value: number) => string;
+		format: (value: number) => string | number;
 	};
 } = {
 	visits: {
 		name: 'Visits',
 		description: 'Number of times this scene has been entered.',
+		format: (value) => value,
 	},
 	firstVisitMs: {
 		name: 'First visited at',
@@ -105,34 +106,42 @@ export const aggregationVariableInfos: {
 	damageTaken: {
 		name: 'Damage taken',
 		description: 'Total damage taken in masks',
+		format: (value) => value,
 	},
 	deaths: {
 		name: 'Deaths',
 		description: 'Number of times the player died in a scene.',
+		format: (value) => value,
 	},
 	focusing: {
 		name: 'Focusing',
 		description: 'Number of times the player started to focus.',
+		format: (value) => value,
 	},
 	spellFireball: {
 		name: 'Vengeful Spirit',
 		description: 'Number of times the player used a fireball spell.',
+		format: (value) => value,
 	},
 	spellDown: {
 		name: 'Desolate Dive',
 		description: 'Number of times the player used a downwards spell.',
+		format: (value) => value,
 	},
 	spellUp: {
 		name: 'Howling Wraiths',
 		description: 'Number of times the player used an upwards spell.',
+		format: (value) => value,
 	},
 	geoEarned: {
 		name: 'Geo earned',
 		description: 'Does not include geo earned by defeating the shade.',
+		format: (value) => value,
 	},
 	geoSpent: {
 		name: 'Geo spent',
 		description: 'Does not include Geo lost by dying and not defeating the shade.',
+		format: (value) => value,
 	},
 };
 
@@ -140,7 +149,7 @@ export const aggregationVariables = Object.keys(aggregationVariableInfos) as Agg
 
 export function formatAggregatedVariableValue(variable: AggregationVariable, value: number) {
 	const varInfo = aggregationVariableInfos[variable];
-	return 'format' in varInfo && varInfo.format ? varInfo.format(value) : value;
+	return varInfo.format(value);
 }
 
 // type AggregationStoreValue = Record<RunId, AggregatedRunData>;

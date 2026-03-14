@@ -2,19 +2,38 @@ import { batch, createContext, createEffect, onCleanup, useContext } from 'solid
 import { AnimationStore } from './animation-store';
 import { ExtraChartStore } from './extra-chart-store';
 
-const intervalMs = 1000 / 60;
+const intervalMs = 1000 / 30;
 // const intervalMs = 1000 / 60;
 
 export function createAnimationTickStore(animationStore: AnimationStore, extraChartStore: ExtraChartStore) {
 	createEffect(() => {
-		const interval = setInterval(() => {
-			batch(() => {
-				animationStore.tick(intervalMs);
-				extraChartStore.tick(intervalMs);
-			});
-		}, intervalMs) as any;
+		// const interval = setInterval(() => {
+		// 	batch(() => {
+		// 		animationStore.tick(intervalMs);
+		// 		extraChartStore.tick(intervalMs);
+		// 	});
+		// }, intervalMs) as any;
 
-		onCleanup(() => clearInterval(interval));
+		let previousNow: number | null = null;
+		let frameId = 0;
+
+		function tick(now: number) {
+			const deltaMs = previousNow === null ? intervalMs : now - previousNow;
+			previousNow = now;
+
+			batch(() => {
+				animationStore.tick(deltaMs);
+				extraChartStore.tick(deltaMs);
+			});
+
+			frameId = requestAnimationFrame(tick);
+		}
+
+		frameId = requestAnimationFrame(tick);
+
+		onCleanup(() => cancelAnimationFrame(frameId));
+
+		// onCleanup(() => clearInterval(interval));
 	});
 
 	return {};

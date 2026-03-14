@@ -1,7 +1,9 @@
+import { createLazyMemo } from '@solid-primitives/memo';
 import * as d3 from 'd3';
 import { createEffect, createMemo, onCleanup, untrack } from 'solid-js';
 import {
 	allRoomDataBySceneName,
+	binarySearchLastIndexBefore,
 	Bounds,
 	gameObjectNamesIgnoredInZoomZone,
 	mainRoomDataBySceneName,
@@ -17,7 +19,6 @@ interface HKMapZoomProps {
 	svg: d3.Selection<SVGSVGElement, unknown, null, undefined> | undefined;
 }
 
-// todo change away from props
 export function createHKMapZoom(props: HKMapZoomProps) {
 	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
@@ -48,6 +49,19 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 			[...new Set(rooms.map((room) => room.mapZone))],
 		]),
 	);
+
+	const mainSceneEventIndexes = createMemo(() => {
+		const sceneEvents = gameplayStore.recording()?.sceneEvents;
+		if (!sceneEvents) return null;
+		const indexes: number[] = [];
+		for (let i = 0; i < sceneEvents.length; i++) {
+			if (mainRoomDataBySceneName.get(sceneEvents[i]!.sceneName)) {
+				indexes.push(i);
+			}
+		}
+		return indexes;
+	});
+
 	const boundsByArea = new Map(
 		[...d3.group([...mainRoomsByGameObjectName.values()], (r) => r.mapZone)].map(([mapZone, rooms]) => [
 			mapZone,
@@ -73,16 +87,23 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 
 	let autoZoomTimer: d3.Timer | null = null;
 
-	const currentSceneContext = createMemo(() => {
+	const currentSceneContext = createLazyMemo(() => {
 		const enabled = mapZoomStore.enabled();
 		if (!enabled) return null;
 		const sceneEvents = gameplayStore.recording()?.sceneEvents;
 		if (!sceneEvents) return null;
+		const candidateIndexes = mainSceneEventIndexes();
+		if (!candidateIndexes || candidateIndexes.length === 0) return null;
+		const msIntoGame = animationStore.msIntoGame();
 
-		const sceneEventIndex =
-			sceneEvents.findLastIndex(
-				(e) => e.msIntoGame <= animationStore.msIntoGame() && !!mainRoomDataBySceneName.get(e.sceneName),
-			) ?? -1;
+		const candidateIndex = binarySearchLastIndexBefore(
+			candidateIndexes,
+			msIntoGame,
+			(index) => sceneEvents[index]!.msIntoGame,
+		);
+		if (candidateIndex === -1) return null;
+
+		const sceneEventIndex = candidateIndexes[candidateIndex] ?? -1;
 		if (sceneEventIndex === -1) return null;
 
 		const sceneEvent = sceneEvents[sceneEventIndex]!;
@@ -93,7 +114,7 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 	});
 
 	let previousZoomZone: ZoomZone | null = null;
-	const zoomZone = createMemo(() => {
+	const zoomZone = createLazyMemo(() => {
 		const target = mapZoomStore.target();
 		if (target !== 'current-area') return null;
 		const context = currentSceneContext();
@@ -137,7 +158,7 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		return zoomZone;
 	});
 
-	const visibleRoomsExtends = createMemo(() => {
+	const visibleRoomsExtends = createLazyMemo(() => {
 		const target = mapZoomStore.target();
 		if (target !== 'visible-rooms') return null;
 		const enabled = mapZoomStore.enabled();

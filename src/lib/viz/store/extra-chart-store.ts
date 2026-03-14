@@ -33,14 +33,14 @@ export function createExtraChartStore(animationStore: AnimationStore, gameplaySt
 	}
 
 	function setTimeBounds(extraChartsTimeBounds: readonly [number, number]) {
-		Object.freeze(extraChartsTimeBounds);
+		// Object.freeze(extraChartsTimeBounds); <-- sadly this causes a performance regression
 		const previous = timeBounds();
 		if (previous[0] === extraChartsTimeBounds[0] && previous[1] === extraChartsTimeBounds[1]) return;
 		_setTimeBounds(extraChartsTimeBounds);
 	}
 
 	function setTimeBoundsTransition(extraChartsTimeBounds: readonly [number, number]) {
-		Object.freeze(extraChartsTimeBounds);
+		// Object.freeze(extraChartsTimeBounds); <-- sadly this causes a performance regression
 		const previous = timeBoundsTransition();
 		if (previous[0] === extraChartsTimeBounds[0] && previous[1] === extraChartsTimeBounds[1]) return;
 		_setTimeBoundsTransition(extraChartsTimeBounds);
