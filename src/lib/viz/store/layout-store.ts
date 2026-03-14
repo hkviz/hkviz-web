@@ -73,6 +73,7 @@ export function createLayoutStore(viewportStore: ViewportStore) {
 		});
 	});
 
+	// eslint-disable-next-line solid/reactivity
 	const collapsedSizesPerLane = perLaneMemo((laneId) => {
 		const types = lanes[laneId].panelTypes;
 		const laneSize = containerSizesPx[laneId];
@@ -116,116 +117,142 @@ export function createLayoutStore(viewportStore: ViewportStore) {
 		return Math.max(min, Math.min(max, value));
 	}
 
+	function distributeDelta(params: {
+		indices: number[];
+		nextSizes: number[];
+		bounds: number[];
+		delta: number;
+		mode: 'grow' | 'shrink';
+	}) {
+		let remaining = params.delta;
+		let active = [...params.indices];
+
+		for (let iteration = 0; iteration < 4 && active.length > 0 && remaining > 1e-9; iteration++) {
+			const capacities = active.map((panelIndex) => {
+				if (params.mode === 'grow') {
+					return Math.max(0, params.bounds[panelIndex] - params.nextSizes[panelIndex]);
+				}
+				return Math.max(0, params.nextSizes[panelIndex] - params.bounds[panelIndex]);
+			});
+
+			const totalCapacity = capacities.reduce((sum, cap) => sum + cap, 0);
+			if (totalCapacity <= 1e-9) {
+				break;
+			}
+
+			const weights = active.map((panelIndex, idx) => {
+				if (params.nextSizes[panelIndex] > 1e-9) {
+					return params.nextSizes[panelIndex];
+				}
+				return capacities[idx] > 1e-9 ? 1 : 0;
+			});
+			const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
+
+			const uncapped: number[] = [];
+			let consumed = 0;
+			let cappedAny = false;
+
+			for (let idx = 0; idx < active.length; idx++) {
+				const panelIndex = active[idx];
+				const capacity = capacities[idx];
+				if (capacity <= 1e-9) {
+					cappedAny = true;
+					continue;
+				}
+
+				const weight = totalWeight > 1e-9 ? weights[idx] : 1;
+				const denominator = totalWeight > 1e-9 ? totalWeight : active.length;
+				const share = (remaining * weight) / denominator;
+
+				if (share >= capacity - 1e-9) {
+					if (params.mode === 'grow') {
+						params.nextSizes[panelIndex] += capacity;
+					} else {
+						params.nextSizes[panelIndex] -= capacity;
+					}
+					consumed += capacity;
+					cappedAny = true;
+				} else {
+					if (params.mode === 'grow') {
+						params.nextSizes[panelIndex] += share;
+					} else {
+						params.nextSizes[panelIndex] -= share;
+					}
+					consumed += share;
+					uncapped.push(panelIndex);
+				}
+			}
+
+			remaining = Math.max(0, remaining - consumed);
+			active = cappedAny ? uncapped : [];
+		}
+
+		return remaining;
+	}
+
 	function sizePanel(lane: LaneId, index: number, unboundSize: number) {
 		const laneSizes = lanes[lane].sizes;
-		const otherIndexes = laneSizes
-			.map((_, panelIndex) => panelIndex)
-			.filter((panelIndex) => panelIndex !== index);
-
 		const minSizes = laneSizes.map((_, panelIndex) => getCollapsedSizePercent(lane, panelIndex));
 		const maxSizes = laneSizes.map((_, panelIndex) => getMaxSizePercent(lane, panelIndex) ?? 1);
+		const otherIndexes = laneSizes.map((_, panelIndex) => panelIndex).filter((panelIndex) => panelIndex !== index);
 
-		const othersMinSum = otherIndexes.reduce((sum, panelIndex) => sum + minSizes[panelIndex], 0);
-		const othersMaxSum = otherIndexes.reduce((sum, panelIndex) => sum + maxSizes[panelIndex], 0);
+		const otherMinsSum = otherIndexes.reduce((sum, panelIndex) => sum + minSizes[panelIndex], 0);
+		const otherMaxSum = otherIndexes.reduce((sum, panelIndex) => sum + maxSizes[panelIndex], 0);
 
-		const targetMin = Math.max(minSizes[index], 1 - othersMaxSum);
-		const targetMax = Math.min(maxSizes[index], 1 - othersMinSum);
+		const targetMin = Math.max(minSizes[index], 1 - otherMaxSum);
+		const targetMax = Math.min(maxSizes[index], 1 - otherMinsSum);
 		const requestedSize = clamp(unboundSize, targetMin, targetMax);
+
+		const nextSizes = laneSizes.map((size, panelIndex) => clamp(size, minSizes[panelIndex], maxSizes[panelIndex]));
+		nextSizes[index] = requestedSize;
+
 		const desiredOthersSum = 1 - requestedSize;
+		const currentOthersSum = otherIndexes.reduce((sum, panelIndex) => sum + nextSizes[panelIndex], 0);
+		const delta = desiredOthersSum - currentOthersSum;
 
-		const allocations = [...laneSizes];
-		for (const otherIndex of otherIndexes) {
-			allocations[otherIndex] = clamp(allocations[otherIndex], minSizes[otherIndex], maxSizes[otherIndex]);
-		}
+		const preferredIndexes = otherIndexes.filter(
+			(panelIndex) => laneSizes[panelIndex] > minSizes[panelIndex] + 0.01,
+		);
+		const fallbackIndexes = otherIndexes.filter((panelIndex) => !preferredIndexes.includes(panelIndex));
 
-		let currentOthersSum = otherIndexes.reduce((sum, otherIndex) => sum + allocations[otherIndex], 0);
-		let delta = desiredOthersSum - currentOthersSum;
-
-		if (delta < -1e-9) {
-			let excess = -delta;
-			let activeIndexes = otherIndexes.filter(
-				(otherIndex) => allocations[otherIndex] - minSizes[otherIndex] > 1e-9,
-			);
-
-			for (let iteration = 0; iteration < 4 && activeIndexes.length > 0 && excess > 1e-9; iteration++) {
-				const totalReducible = activeIndexes.reduce(
-					(sum, otherIndex) => sum + (allocations[otherIndex] - minSizes[otherIndex]),
-					0,
-				);
-
-				if (totalReducible <= 0) {
-					break;
-				}
-
-				const uncappedIndexes: number[] = [];
-				let reducedAnyToMin = false;
-				let reducedTotal = 0;
-
-				for (const otherIndex of activeIndexes) {
-					const reducible = allocations[otherIndex] - minSizes[otherIndex];
-					const proportionalReduction = (excess * reducible) / totalReducible;
-
-					if (proportionalReduction >= reducible - 1e-9) {
-						allocations[otherIndex] = minSizes[otherIndex];
-						reducedTotal += reducible;
-						reducedAnyToMin = true;
-					} else {
-						allocations[otherIndex] -= proportionalReduction;
-						reducedTotal += proportionalReduction;
-						uncappedIndexes.push(otherIndex);
-					}
-				}
-
-				excess = Math.max(0, excess - reducedTotal);
-				activeIndexes = reducedAnyToMin ? uncappedIndexes : [];
+		if (delta > 1e-9) {
+			let remaining = distributeDelta({
+				indices: preferredIndexes,
+				nextSizes,
+				bounds: maxSizes,
+				delta,
+				mode: 'grow',
+			});
+			if (remaining > 1e-9) {
+				remaining = distributeDelta({
+					indices: fallbackIndexes,
+					nextSizes,
+					bounds: maxSizes,
+					delta: remaining,
+					mode: 'grow',
+				});
 			}
-		} else if (delta > 1e-9) {
-			let shortage = delta;
-			let activeIndexes = otherIndexes.filter(
-				(otherIndex) => maxSizes[otherIndex] - allocations[otherIndex] > 1e-9,
-			);
-
-			for (let iteration = 0; iteration < 4 && activeIndexes.length > 0 && shortage > 1e-9; iteration++) {
-				const totalGrowable = activeIndexes.reduce(
-					(sum, otherIndex) => sum + (maxSizes[otherIndex] - allocations[otherIndex]),
-					0,
-				);
-
-				if (totalGrowable <= 0) {
-					break;
-				}
-
-				const uncappedIndexes: number[] = [];
-				let grewAnyToMax = false;
-				let grownTotal = 0;
-
-				for (const otherIndex of activeIndexes) {
-					const growable = maxSizes[otherIndex] - allocations[otherIndex];
-					const proportionalGrowth = (shortage * growable) / totalGrowable;
-
-					if (proportionalGrowth >= growable - 1e-9) {
-						allocations[otherIndex] = maxSizes[otherIndex];
-						grownTotal += growable;
-						grewAnyToMax = true;
-					} else {
-						allocations[otherIndex] += proportionalGrowth;
-						grownTotal += proportionalGrowth;
-						uncappedIndexes.push(otherIndex);
-					}
-				}
-
-				shortage = Math.max(0, shortage - grownTotal);
-				activeIndexes = grewAnyToMax ? uncappedIndexes : [];
+		} else if (delta < -1e-9) {
+			let remaining = distributeDelta({
+				indices: preferredIndexes,
+				nextSizes,
+				bounds: minSizes,
+				delta: -delta,
+				mode: 'shrink',
+			});
+			if (remaining > 1e-9) {
+				remaining = distributeDelta({
+					indices: fallbackIndexes,
+					nextSizes,
+					bounds: minSizes,
+					delta: remaining,
+					mode: 'shrink',
+				});
 			}
 		}
 
-		currentOthersSum = otherIndexes.reduce((sum, otherIndex) => sum + allocations[otherIndex], 0);
-
-		const nextSizes = [...laneSizes];
-		for (const otherIndex of otherIndexes) {
-			nextSizes[otherIndex] = allocations[otherIndex];
-		}
-		nextSizes[index] = clamp(1 - currentOthersSum, minSizes[index], maxSizes[index]);
+		const rebalancedOthersSum = otherIndexes.reduce((sum, panelIndex) => sum + nextSizes[panelIndex], 0);
+		nextSizes[index] = clamp(1 - rebalancedOthersSum, targetMin, targetMax);
 
 		setLanes(lane, 'sizes', nextSizes);
 	}
@@ -269,14 +296,14 @@ export function createLayoutStore(viewportStore: ViewportStore) {
 	function isMaximized(laneId: LaneId, index: number) {
 		const size = lanes[laneId].sizes[index];
 		const directMax = getMaxSizePercent(laneId, index) ?? 1;
-		const othersCollapsedSum = lanes[laneId].sizes.reduce((sum, _panelSize, panelIndex) => {
+		const otherCollapsedSum = lanes[laneId].sizes.reduce((sum, _panelSize, panelIndex) => {
 			if (panelIndex === index) {
 				return sum;
 			}
 			return sum + getCollapsedSizePercent(laneId, panelIndex);
 		}, 0);
-		const effectiveMax = Math.min(directMax, Math.max(0, 1 - othersCollapsedSum));
 
+		const effectiveMax = Math.min(directMax, Math.max(0, 1 - otherCollapsedSum));
 		return size >= effectiveMax - 0.01;
 	}
 

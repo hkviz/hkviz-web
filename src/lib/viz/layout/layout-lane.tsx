@@ -90,7 +90,7 @@ export const LayoutLane: Component<{ class?: string; lane: LaneId }> = (props) =
 				state={
 					layoutStore.isCollapsed(props.lane, index)
 						? 'minimized'
-						: sizes()[index] >= 0.9
+						: layoutStore.isMaximized(props.lane, index)
 							? 'maximized'
 							: 'medimized'
 				}
