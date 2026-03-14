@@ -17,7 +17,6 @@ function HkMapRoom(props: {
 
 	const states = createMemo(() => roomDisplayStore.statesByGameObjectName.get(props.room.gameObjectName)!);
 
-	const maskId = createMemo(() => `mask_${id}_${props.room.gameObjectName}`);
 	return (
 		<g data-scene-name={props.room.sceneName} data-game-object-name={props.room.gameObjectName}>
 			<mask id={props.maskId}>
