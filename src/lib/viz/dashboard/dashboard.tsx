@@ -1,20 +1,19 @@
 import { Maximize, Minus, Rows } from 'lucide-solid';
 import { For, JSXElement, Show, createEffect, createSignal, type Component } from 'solid-js';
-import { cardClasses, cardRoundedMdOnlyClasses } from '~/components/ui/additions';
+import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
 import { Card } from '~/components/ui/card';
-import { Resizable, ResizableHandle, ResizablePanel } from '~/components/ui/resizable';
+import { Resizable, ResizableHandle } from '~/components/ui/resizable';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
+import { LaneId } from '../layout/layout-location';
 import { LayoutPanel } from '../layout/layout-panel';
 import { RunFileInfo, RunFileLoader } from '../loader';
 import { HKMap } from '../map';
-import { RoomInfo } from '../room-infos';
-import { useUiStore } from '../store';
+import { useUiStore, useViewportStore } from '../store';
 import { useLayoutStore } from '../store/layout-store';
 import { AnimationOptions } from '../timeline';
 import { SingleRunPageTour } from '../tour';
-import { ViewOptions } from '../view-options';
 import { MobileTabBar } from './mobile-tabs';
 import { RunOverviewTab } from './overview-tab';
 import { LargeScreenTabs } from './tabs-large-screen';
@@ -23,10 +22,10 @@ export const DashboardMapOptions: Component = () => {
 	const uiStore = useUiStore();
 	const mobileTab = uiStore.mobileTab;
 	return (
-		<div class={cn('dashboard-grid-map-options', mobileTab() === 'map' ? 'flex' : 'hidden lg:flex')}>
-			<ViewOptions />
-			<RoomInfo />
-		</div>
+		<LayoutLane
+			lane="left"
+			class={cn('dashboard-grid-map-options hidden', mobileTab() === 'map' ? 'md:flex' : 'lg:flex')}
+		/>
 	);
 };
 
@@ -79,7 +78,7 @@ const ResizeButtons: Component<ResizeButtonsProps> = (props) => {
 	);
 };
 
-export const RightCard: Component<{ class?: string }> = (props) => {
+export const LayoutLane: Component<{ class?: string; lane: LaneId }> = (props) => {
 	const uiStore = useUiStore();
 	const layoutStore = useLayoutStore();
 	const mobileTab = uiStore.mobileTab;
@@ -90,23 +89,23 @@ export const RightCard: Component<{ class?: string }> = (props) => {
 	//splitsStore.setIsSplitsPanelOpen(state === 'only-splits' || state === 'both');
 	//});
 
-	const lanePanels = () => layoutStore.getLaneLocationIds('right');
-	const sizes = () => layoutStore.getLaneSizes('right');
-	const setSizes = (newSizes: number[]) => layoutStore.setLaneSizes('right', newSizes);
+	const lanePanels = () => layoutStore.getLaneLocationIds(props.lane);
+	const sizes = () => layoutStore.getLaneSizes(props.lane);
+	const setSizes = (newSizes: number[]) => layoutStore.setLaneSizes(props.lane, newSizes);
 
 	function resizeOptions(index: number) {
 		return (
 			<ResizeButtons
 				state={sizes()[index] < 0.1 ? 'minimized' : sizes()[index] >= 0.9 ? 'maximized' : 'medimized'}
-				minimize={() => layoutStore.minimizePanel('right', index)}
-				medimize={() => layoutStore.medimizePanel('right', index)}
-				maximize={() => layoutStore.maximizePanel('right', index)}
+				minimize={() => layoutStore.minimizePanel(props.lane, index)}
+				medimize={() => layoutStore.medimizePanel(props.lane, index)}
+				maximize={() => layoutStore.maximizePanel(props.lane, index)}
 			/>
 		);
 	}
 
 	return (
-		<div class={cn('shrink grow', mobileTab() === 'right' ? 'flex' : 'hidden lg:flex', props.class)}>
+		<div class={cn('shrink grow', props.class)}>
 			<Resizable orientation="vertical" sizes={sizes()} onSizesChange={setSizes}>
 				<For each={lanePanels()}>
 					{(_panel, index) => (
@@ -114,29 +113,24 @@ export const RightCard: Component<{ class?: string }> = (props) => {
 							<Show when={index() !== 0}>
 								<ResizableHandle withHandle class="bg-transparent p-1" />
 							</Show>
-							<ResizablePanel
-								collapsible
-								minSize={0.18}
-								class={cn(
-									cardClasses,
-									cardRoundedMdOnlyClasses,
-									'overflow-hidden',
-									'min-h-11 border-t',
-								)}
-							>
-								<LayoutPanel
-									layoutLane="right"
-									layoutLaneIndex={index()}
-									resizeOptions={resizeOptions(index())}
-									isCollapsed={sizes()[index()] < 0.1}
-								/>
-							</ResizablePanel>
+							<LayoutPanel
+								layoutLane={props.lane}
+								layoutLaneIndex={index()}
+								resizeOptions={resizeOptions(index())}
+								isCollapsed={sizes()[index()] < 0.1}
+							/>
 						</>
 					)}
 				</For>
 			</Resizable>
 		</div>
 	);
+};
+
+export const RightCard: Component<{ class?: string }> = (props) => {
+	const uiStore = useUiStore();
+	const mobileTab = uiStore.mobileTab;
+	return <LayoutLane class={cn(mobileTab() === 'right' ? 'flex' : 'hidden lg:flex', props.class)} lane="right" />;
 };
 
 export interface GameplayDashboardProps {
@@ -148,25 +142,37 @@ export interface GameplayDashboardProps {
 export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 	const uiStore = useUiStore();
 	const mobileTab = uiStore.mobileTab;
+	const viewportStore = useViewportStore();
+	const isSmallMobileLayout = viewportStore.isSmallMobileLayout;
 
 	const [showMap, setShowMap] = createSignal(false);
 
 	createEffect(() => {
 		setShowMap(true);
 	});
+
 	return (
 		<div class="dashboard-grid">
+			<Show when={isSmallMobileLayout()}>
+				<LayoutLane
+					lane="mobileMap"
+					class={cn(
+						'dashboard-grid-mobile-map-lane max-w-[100vw] md:hidden',
+						mobileTab() === 'map' ? '' : 'hidden',
+					)}
+				/>
+			</Show>
 			<DashboardMapOptions />
 			<Card
 				class={cn(
 					cardRoundedMdOnlyClasses,
 					'relative grow grid-cols-1 grid-rows-1 overflow-hidden border-t',
 					mobileTab() === 'overview' ? 'dashboard-grid-map-big' : 'dashboard-grid-map',
-					mobileTab() === 'overview' || mobileTab() === 'map' ? 'grid' : 'hidden lg:grid',
+					mobileTab() === 'overview' ? 'grid' : mobileTab() === 'map' ? 'hidden md:grid' : 'hidden lg:grid',
 				)}
 			>
 				<LargeScreenTabs />
-				<Show when={showMap()}>
+				<Show when={showMap() && !isSmallMobileLayout()}>
 					<HKMap class="absolute inset-0" />
 				</Show>
 				<RunOverviewTab
@@ -181,7 +187,7 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 			</Card>
 			<AnimationOptions class="dashboard-grid-timeline" />
 
-			<RightCard class="dashboard-grid-splits-and-timecharts" />
+			<RightCard class={'dashboard-grid-splits-and-timecharts'} />
 			<MobileTabBar />
 		</div>
 	);

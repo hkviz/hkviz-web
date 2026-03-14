@@ -11,10 +11,20 @@ interface Lane {
 
 export function createLayoutStore() {
 	const [lanes, setLanes] = createStore<Record<LaneId, Lane>>({
+		left: {
+			locationIds: ['l1', 'l2'],
+			sizes: [0.3, 0.7],
+			panelTypes: ['map-options', 'room-info'],
+		},
 		right: {
 			locationIds: ['r1', 'r2', 'r3'],
 			sizes: [0.4, 0.4, 0.18],
 			panelTypes: ['splits', 'area-chart-geo', 'area-chart-health'],
+		},
+		mobileMap: {
+			locationIds: ['mm1', 'mm2'],
+			sizes: [0.3, 0.7],
+			panelTypes: ['room-info', 'map'],
 		},
 	});
 

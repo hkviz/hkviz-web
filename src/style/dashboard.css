@@ -1,12 +1,11 @@
-  @reference "./style/tailwind.css";
+@reference "./style/tailwind.css";
 
 .dashboard-grid {
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 1fr 2fr min-content min-content;
+	grid-template-rows: 1fr min-content min-content;
 	grid-template-areas:
-		'tab-options'
-		'tab-content'
+		'tab'
 		'timeline'
 		'tabs';
 
@@ -49,6 +48,10 @@
 	overflow-x: auto;
 }
 
+.dashboard-grid-mobile-map-lane {
+	grid-area: tab;
+}
+
 @variant md {
 	.dashboard-grid-map-options {
 		grid-area: map-options;
@@ -60,7 +63,7 @@
 }
 
 .dashboard-grid-map {
-	grid-area: tab-content;
+	grid-area: tab;
 }
 
 @variant md {
@@ -70,10 +73,7 @@
 }
 
 .dashboard-grid-map-big {
-	grid-row-start: tab-options;
-	grid-column-start: tab-options;
-	grid-row-end: tab-content;
-	grid-column-end: tab-options;
+	grid-area: tab;
 }
 
 @variant md {
@@ -91,10 +91,7 @@
 }
 
 .dashboard-grid-splits-and-timecharts {
-	grid-row-start: tab-options;
-	grid-column-start: tab-options;
-	grid-row-end: tab-content;
-	grid-column-end: tab-options;
+	grid-area: tab;
 }
 
 @variant md {

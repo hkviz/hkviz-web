@@ -3,6 +3,10 @@
 	--footer-height: 113px;
 }
 
+body:has(.main-nav-hidden) {
+	--main-nav-height: 0px;
+}
+
 .main-nav {
 	width: env(titlebar-area-width, 100%);
 	height: var(--main-nav-height);
@@ -16,6 +20,9 @@
 	padding-left: calc(0.5rem + env(titlebar-area-x, 0rem));
 	padding-right: calc(0.5rem + 100% - env(titlebar-area-width, 100%) - env(titlebar-area-x, 0rem));
 	padding-top: 10.5rem;
+}
+.main-nav-hidden {
+	display: none;
 }
 
 .hash-link {

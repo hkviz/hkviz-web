@@ -16,32 +16,35 @@ import { createThemeStore, ThemeStoreContext, useThemeStore } from './theme-stor
 import { createTourStore, TourStoreContext } from './tour-store';
 import { createTraceStore, TraceStoreContext } from './trace-store';
 import { createUiStore, UiStoreContext, useUiStore } from './ui-store';
-import { createViewportStore, ViewportStoreContext } from './viewport-store';
+import { createViewportStore, useViewportStore, ViewportStoreContext } from './viewport-store';
 
 export function GlobalStoresProvider(props: { children: JSXElement }) {
 	const themeStore = createThemeStore();
 	const uiStore = createUiStore();
+	const viewportStore = createViewportStore();
 	const spriteSheetStore = createSpriteSheetStore();
 
 	return (
-		<SpriteStoreContext.Provider value={spriteSheetStore}>
-			<UiStoreContext.Provider value={uiStore}>
-				<ThemeStoreContext.Provider value={themeStore}>{props.children}</ThemeStoreContext.Provider>
-			</UiStoreContext.Provider>
-		</SpriteStoreContext.Provider>
+		<ViewportStoreContext.Provider value={viewportStore}>
+			<SpriteStoreContext.Provider value={spriteSheetStore}>
+				<UiStoreContext.Provider value={uiStore}>
+					<ThemeStoreContext.Provider value={themeStore}>{props.children}</ThemeStoreContext.Provider>
+				</UiStoreContext.Provider>
+			</SpriteStoreContext.Provider>
+		</ViewportStoreContext.Provider>
 	);
 }
 
 export function RunStoresProvider(props: { children: JSXElement }) {
 	const themeStore = useThemeStore();
 	const uiStore = useUiStore();
+	const viewportStore = useViewportStore();
 
 	const layoutStore = createLayoutStore();
 	const gameplayStore = createGameplayStore();
 	const hoverMsStore = createHoverMsStore(gameplayStore);
 	const animationStore = createAnimationStore(gameplayStore, uiStore);
 	const mapZoomStore = createMapZoomStore();
-	const viewportStore = createViewportStore();
 	const traceStore = createTraceStore(animationStore);
 	const extraChartStore = createExtraChartStore(animationStore, gameplayStore);
 	const playerDataAnimationStore = createPlayerDataAnimationStore(animationStore, gameplayStore);

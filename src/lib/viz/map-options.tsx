@@ -1,12 +1,13 @@
 import { LayoutDashboard, Spline, Text } from 'lucide-solid';
 import { createUniqueId } from 'solid-js';
-import { cardHeaderSmallClasses, cardRoundedMdOnlyClasses, cardTitleSmallClasses } from '~/components/ui/additions';
-import { Card, CardContent, CardHeader, CardTitle } from '~/components/ui/card';
+import { CardContent } from '~/components/ui/card';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Label } from '~/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
-import { cn } from '../utils';
+import { LayoutPanelHeader } from './layout/layout-panel-header';
+import { LayoutPanelTypeProps } from './layout/layout-panel-props';
+import { LayoutPanelWrapper } from './layout/layout-panel-wrapper';
 import { RoomVisibility, TraceVisibility, useRoomDisplayStore, useTraceStore } from './store';
 
 function roomVisibilityName(v: RoomVisibility) {
@@ -31,7 +32,7 @@ function traceVisibilityName(v: TraceVisibility) {
 	}
 }
 
-export function ViewOptions() {
+export function MapOptions(props: LayoutPanelTypeProps) {
 	const id = createUniqueId();
 
 	const roomDisplayStore = useRoomDisplayStore();
@@ -44,16 +45,9 @@ export function ViewOptions() {
 	const showSubAreaNames = roomDisplayStore.showSubAreaNames;
 
 	return (
-		<Card
-			class={cn(
-				cardRoundedMdOnlyClasses,
-				'min-w-75 overflow-auto border-t max-lg:grow max-lg:basis-0 sm:min-w-min',
-			)}
-		>
-			<CardHeader class={cardHeaderSmallClasses}>
-				<CardTitle class={cardTitleSmallClasses}>Map options</CardTitle>
-			</CardHeader>
-			<CardContent class="px-0 pb-1">
+		<LayoutPanelWrapper class="flex max-h-54 min-w-75 flex-col border-t max-lg:grow max-lg:basis-0 sm:min-w-min">
+			<LayoutPanelHeader resizeOptions={props.resizeOptions} />
+			<CardContent class="shrink grow overflow-auto px-0 pb-1">
 				<Table class="w-full">
 					<TableBody>
 						<TableRow>
@@ -169,6 +163,6 @@ export function ViewOptions() {
 					</TableBody>
 				</Table>
 			</CardContent>
-		</Card>
+		</LayoutPanelWrapper>
 	);
 }

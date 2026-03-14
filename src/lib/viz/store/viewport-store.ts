@@ -1,34 +1,46 @@
-import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { createContext, createEffect, createMemo, createSignal, onCleanup, useContext } from 'solid-js';
 
 export function createViewportStore() {
 	const [visualViewportScale, setVisualViewportScale] = createSignal(1);
 	const [windowSize, setWindowSize] = createSignal({ width: 1080, height: 1920 });
 	const isMobileLayout = createMemo(() => windowSize().width < 1024); // tailwind lg breakpoint
+	const isSmallMobileLayout = createMemo(() => windowSize().width < 768);
 
-	if (typeof window !== 'undefined') {
-		if ('visualViewport' in window) {
-			window.visualViewport!.addEventListener('resize', function () {
-				setVisualViewportScale(window.visualViewport!.scale);
-			});
-		} else {
-			console.log('The Visual Viewport API is not supported in this browser.');
+	createEffect(() => {
+		if (typeof window !== 'undefined') {
+			if ('visualViewport' in window) {
+				function onResize() {
+					setVisualViewportScale(window.visualViewport!.scale);
+				}
+				window.visualViewport!.addEventListener('resize', onResize);
+				onCleanup(() => {
+					window.visualViewport!.removeEventListener('resize', onResize);
+				});
+				onResize();
+			} else {
+				console.log('The Visual Viewport API is not supported in this browser.');
+			}
 		}
-	}
-	if (typeof window !== 'undefined') {
-		function onResize() {
-			setWindowSize({
-				width: window.innerWidth,
-				height: window.innerHeight,
+		if (typeof window !== 'undefined') {
+			function onResize() {
+				setWindowSize({
+					width: window.innerWidth,
+					height: window.innerHeight,
+				});
+			}
+			window.addEventListener('resize', onResize);
+			onCleanup(() => {
+				window.removeEventListener('resize', onResize);
 			});
+			onResize();
 		}
-		window.addEventListener('resize', onResize);
-		onResize();
-	}
+	});
 
 	return {
 		windowSize,
 		visualViewportScale,
 		isMobileLayout,
+		isSmallMobileLayout,
 	};
 }
 

@@ -4,7 +4,7 @@ import { CardHeader, CardTitle } from '~/components/ui/card';
 import { cn } from '~/lib/utils';
 import { LayoutPanelSelect } from './layout-panel-select';
 
-export const LayoutPanelPanelHeader: Component<{
+export const LayoutPanelHeader: Component<{
 	children?: JSXElement;
 	resizeOptions?: JSXElement;
 }> = (props) => {

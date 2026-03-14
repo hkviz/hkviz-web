@@ -1,3 +1,4 @@
+import { Map } from 'lucide-solid';
 import { Component } from 'solid-js';
 import { SplitIcon as SplitPanelIcon } from '../splits/split-icon';
 import {
@@ -9,7 +10,7 @@ import {
 	SoulChartUnitIcon,
 } from '../time-charts/chart-icons';
 
-export type LayoutPanelTypeCategory = 'splits' | 'area-chart' | 'map-options';
+export type LayoutPanelTypeCategory = 'splits' | 'area-chart' | 'map-options' | 'room-info' | 'map';
 
 export interface LayoutPanelTypeBase<TId extends string, TCategory extends LayoutPanelTypeCategory> {
 	id: TId;
@@ -18,6 +19,7 @@ export interface LayoutPanelTypeBase<TId extends string, TCategory extends Layou
 	icon: Component<{ class?: string }>;
 	showIconInSelect: boolean;
 	intrinsicSize: number;
+	selectableInSelect: boolean;
 }
 
 export type LayoutPanelTypeAreaChart = LayoutPanelTypeBase<
@@ -32,10 +34,25 @@ export type LayoutPanelTypeAreaChart = LayoutPanelTypeBase<
 
 export type LayoutPanelTypeSplits = LayoutPanelTypeBase<'splits', 'splits'>;
 export type LayoutPanelTypeMapOptions = LayoutPanelTypeBase<'map-options', 'map-options'>;
-
-export type LayoutPanelType = LayoutPanelTypeAreaChart | LayoutPanelTypeSplits;
+export type LayoutPanelTypeRoomInfo = LayoutPanelTypeBase<'room-info', 'room-info'>;
+export type LayoutPanelTypeMap = LayoutPanelTypeBase<'map', 'map'>;
+export type LayoutPanelType =
+	| LayoutPanelTypeAreaChart
+	| LayoutPanelTypeSplits
+	| LayoutPanelTypeMapOptions
+	| LayoutPanelTypeRoomInfo
+	| LayoutPanelTypeMap;
 
 export const layoutPanelTypes: LayoutPanelType[] = [
+	{
+		id: 'map-options',
+		category: 'map-options',
+		displayName: 'Map options',
+		icon: Map,
+		showIconInSelect: false,
+		intrinsicSize: 0.25,
+		selectableInSelect: true,
+	},
 	{
 		id: 'splits',
 		category: 'splits',
@@ -43,6 +60,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		icon: SplitPanelIcon,
 		showIconInSelect: false,
 		intrinsicSize: 0.4,
+		selectableInSelect: true,
 	},
 	{
 		id: 'area-chart-geo',
@@ -51,6 +69,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		icon: GeoChartUnitIcon,
 		showIconInSelect: true,
 		intrinsicSize: 0.45,
+		selectableInSelect: true,
 	},
 	{
 		id: 'area-chart-grub',
@@ -59,6 +78,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		icon: GrubChartUnitIcon,
 		showIconInSelect: true,
 		intrinsicSize: 0.35,
+		selectableInSelect: true,
 	},
 	{
 		id: 'area-chart-health',
@@ -67,6 +87,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		icon: HealthChartMaskUnitIcon,
 		showIconInSelect: true,
 		intrinsicSize: 0.35,
+		selectableInSelect: true,
 	},
 	{
 		id: 'area-chart-soul',
@@ -75,6 +96,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		icon: SoulChartUnitIcon,
 		showIconInSelect: true,
 		intrinsicSize: 0.35,
+		selectableInSelect: true,
 	},
 	{
 		id: 'area-chart-completion',
@@ -83,6 +105,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		icon: CompletionChartUnitIcon,
 		showIconInSelect: true,
 		intrinsicSize: 0.25,
+		selectableInSelect: true,
 	},
 	{
 		id: 'area-chart-essence',
@@ -91,6 +114,25 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		icon: EssenceChartUnitIcon,
 		showIconInSelect: true,
 		intrinsicSize: 0.25,
+		selectableInSelect: true,
+	},
+	{
+		id: 'room-info',
+		category: 'room-info',
+		displayName: 'Room info',
+		icon: Map,
+		showIconInSelect: false,
+		intrinsicSize: 0.4,
+		selectableInSelect: true,
+	},
+	{
+		id: 'map',
+		category: 'map',
+		displayName: 'Map',
+		icon: Map,
+		showIconInSelect: false,
+		intrinsicSize: 0.7,
+		selectableInSelect: false,
 	},
 ];
 
@@ -105,3 +147,6 @@ export function getLayoutPanelTypeById(id: LayoutPanelTypeId): LayoutPanelType {
 }
 
 export const layoutPanelTypeIds: LayoutPanelTypeId[] = layoutPanelTypes.map((type) => type.id);
+export const layoutPanelTypeIdsInSelect: LayoutPanelTypeId[] = layoutPanelTypes
+	.filter((type) => type.selectableInSelect)
+	.map((type) => type.id);
