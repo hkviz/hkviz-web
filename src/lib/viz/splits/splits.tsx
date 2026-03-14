@@ -80,7 +80,7 @@ const RunSplitRow: Component<RowProps> = (props) => {
 	function handleMouseEnter() {
 		const sceneName = props.split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
 		if (sceneName) {
-			roomDisplayStore.setHoveredRoom(sceneName);
+			roomDisplayStore.setHoveredRoom(sceneName, 'splits');
 			roomDisplayStore.setSelectedRoomIfNotPinned(sceneName);
 		}
 		hoverMsStore.setHoveredMsIntoGame(props.split.msIntoGame);

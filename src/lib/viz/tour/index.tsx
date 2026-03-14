@@ -34,7 +34,7 @@ const TourStep: Component<TourStepProps> = (props) => {
 				<PopoverContent
 					class={
 						props.step.widthByTrigger === true
-							? 'w-[min(calc(var(--kb-popper-anchor-width,0)+2rem),calc(100vw-2rem),70ch)]'
+							? 'min-w-[min(calc(var(--kb-popper-anchor-width,0)+2rem),calc(100vw-2rem),70ch)]'
 							: undefined
 					}
 				>
@@ -78,11 +78,11 @@ const TourShadow: Component = () => {
 	const shadow = (
 		<div
 			class={
-				'pointer-events-none fixed left-0 top-0 z-20 h-full w-full rounded-md border-2 border-black dark:border-white'
+				'pointer-events-none fixed top-0 left-0 z-20 h-full w-full rounded-md border-2 border-black dark:border-white'
 			}
 		>
 			{shadowInner}
-			<div class="absolute inset-0 h-full w-full animate-pulse-shadow-black rounded-md dark:animate-pulse-shadow-white" />
+			<div class="animate-pulse-shadow-black dark:animate-pulse-shadow-white absolute inset-0 h-full w-full rounded-md" />
 			{/* <div class="animate-pulse-shadow-black dark:animate-pulse-shadow-white inset-0 h-full w-full rounded-md text-foreground opacity-50" /> */}
 		</div>
 	) as HTMLDivElement;

@@ -52,7 +52,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 				rooms={roomData}
 				onMouseOver={(_, r) => {
 					roomDisplayStore.setSelectedRoomIfNotPinned(r.sceneName);
-					roomDisplayStore.setHoveredRoom(r.sceneName);
+					roomDisplayStore.setHoveredRoom(r.sceneName, 'map');
 				}}
 				onMouseOut={(_, r) => {
 					roomDisplayStore.unsetHoveredRoom(r.sceneName);
@@ -96,10 +96,10 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 		<div class={cn('hk-main-map-wrapper relative', props.class)}>
 			{svg}
 			<HKMapTraces />
-			<div class="absolute right-2 top-2 lg:top-10 xl:top-2">
+			<div class="absolute top-2 right-2 lg:top-10 xl:top-2">
 				<MapLegend />
 			</div>
-			<div class="absolute bottom-2 right-2">
+			<div class="absolute right-2 bottom-2">
 				<MapOverlayOptions />
 			</div>
 		</div>

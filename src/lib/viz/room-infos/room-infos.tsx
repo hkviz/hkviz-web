@@ -1,5 +1,6 @@
 import { Palette, Pin, PinOff } from 'lucide-solid';
 import { For, Index, Match, Show, Switch, createMemo, type Component } from 'solid-js';
+import { ShortcutHint } from '~/components/shortcut-hint';
 import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
@@ -315,6 +316,7 @@ export function RoomInfo() {
 							<br />
 							You can also click a room on the map to pin/unpin it.
 						</Show>
+						<ShortcutHint keys="P" before="Or press" after="to toggle pinning the selected room" />
 					</TooltipContent>
 				</Tooltip>
 			</CardHeader>

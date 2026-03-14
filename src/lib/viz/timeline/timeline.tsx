@@ -1,5 +1,6 @@
 import { Pause, Play } from 'lucide-solid';
-import { Index, Show, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
+import { createEffect, createMemo, createSignal, Index, onCleanup, Show } from 'solid-js';
+import { ShortcutHint } from '~/components/shortcut-hint';
 import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
 import { Card } from '~/components/ui/card';
@@ -14,6 +15,7 @@ import { Duration } from '../duration';
 import {
 	changeRoomColorForDarkTheme,
 	changeRoomColorForLightTheme,
+	PLAYBACK_SPEED_OPTIONS_VISIBLE,
 	useAnimationStore,
 	useGameplayStore,
 	useHoverMsStore,
@@ -37,16 +39,17 @@ function PlayButton() {
 	const isDisabled = !gameplayStore.recording;
 	return (
 		<Tooltip>
-			<TooltipTrigger
-				as={() => (
-					<Button onClick={animationStore.togglePlaying} variant="ghost" disabled={isDisabled}>
-						<Show when={isPlaying()} fallback={<Play class="h-5 w-5" />}>
-							<Pause class="h-5 w-5" />
-						</Show>
-					</Button>
-				)}
-			/>
-			<TooltipContent>{isPlaying() ? 'Pause' : 'Play'}</TooltipContent>
+			<TooltipTrigger as={Button} onClick={animationStore.togglePlaying} variant="ghost" disabled={isDisabled}>
+				<Show when={isPlaying()} fallback={<Play class="h-5 w-5" />}>
+					<Pause class="h-5 w-5" />
+				</Show>
+			</TooltipTrigger>
+			<TooltipContent>
+				{isPlaying() ? 'Pause' : 'Play'}
+				<ShortcutHint before="Press" keys="J" after="to move 1 second backwards" />
+				<ShortcutHint before="Press" keys="K" after="to toggle play/pause" />
+				<ShortcutHint before="Press" keys="L" after="to move 1 second forwards" />
+			</TooltipContent>
 		</Tooltip>
 	);
 }
@@ -143,7 +146,7 @@ function AnimationTimeLineColorCodes() {
 		const sceneChange = getSceneChangeFromMouseEvent(e);
 		if (!sceneChange) return;
 		roomDisplayStore.setSelectedRoomIfNotPinned(sceneChange.mainVirtualScene);
-		roomDisplayStore.setHoveredRoom(sceneChange.mainVirtualScene);
+		roomDisplayStore.setHoveredRoom(sceneChange.mainVirtualScene, 'timeline');
 		hoverMsStore.setHoveredMsIntoGame(sceneChange.startMs);
 	}
 	function handleClick(e: MouseEvent) {
@@ -151,11 +154,11 @@ function AnimationTimeLineColorCodes() {
 		console.log(sceneChange);
 		if (!sceneChange) return;
 		animationStore.setMsIntoGame(sceneChange.startMs, 'instant');
-		roomDisplayStore.togglePinnedRoom(sceneChange.mainVirtualScene, 'timeline-color-code-click', true);
+		roomDisplayStore.togglePinnedRoom(sceneChange.mainVirtualScene, 'timeline-color-code-click', false);
 		uiStore.showMapIfOverview();
 	}
 	function handleMouseLeave() {
-		roomDisplayStore.setHoveredRoom(null);
+		roomDisplayStore.setHoveredRoom(null, 'timeline');
 		hoverMsStore.setHoveredMsIntoGame(null);
 	}
 
@@ -326,11 +329,13 @@ export function AnimationOptions(props: { class?: string }) {
 							{Number.isNaN(animationSpeedMultiplier()) ? 0 : animationSpeedMultiplier()}
 						</PopoverTrigger>
 						{/* <PopoverTrigger>abc</PopoverTrigger> */}
-						<PopoverContent class="w-40 p-0">
-							<Index each={[250, 100, 75, 50, 25, 10]}>
+						<PopoverContent class="w-50 max-w-[90vw] p-0">
+							<ShortcutHint before="Press" keys="," after="to decrease speed" class="m-2" />
+							<ShortcutHint before="Press" keys="." after="to increase speed" class="m-2" />
+							<Index each={PLAYBACK_SPEED_OPTIONS_VISIBLE}>
 								{(it) => (
 									<Button
-										onClick={() => animationStore.setSpeedMultiplier(it)}
+										onClick={() => animationStore.setSpeedMultiplier(it())}
 										variant="ghost"
 										class="w-full"
 									>

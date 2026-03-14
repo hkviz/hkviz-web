@@ -11,23 +11,29 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
 }
 
 @utility step {
-  counter-increment: step;
+	counter-increment: step;
 
-  &:before {
-    @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
-    @apply ml-[-50px] mt-[-4px];
-    content: counter(step);
-  }
+	&:before {
+		@apply border-background bg-muted absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 text-center -indent-px font-mono text-base font-medium;
+		@apply mt-[-4px] ml-[-50px];
+		content: counter(step);
+	}
+}
+
+@layer utilities {
+	.container-size {
+		container-type: size;
+	}
 }
 
 /* included theme from solid ui cli */

@@ -1,4 +1,19 @@
+import { ShortcutKey } from '~/components/shortcut-hint';
 import { ChangelogEntry } from './_changelog-entry';
+
+<ChangelogEntry title="Map auto-zoom improvements" type="web" version="3.4.0" date="2026-03-16">
+
+- **More compact auto-zoom UI**: The auto-zoom controls now take up less space on the map and make switching between zoom modes quicker.
+- **New auto-zoom mode**: In addition to the existing area and full-map modes, there is now a third mode that dynamically trades off between area-focused and full-map zooming to reduce abrupt jumps.
+- **Smoother auto-zoom transitions**: Auto-zoom behavior has been improved in cases where the target area changes rapidly, preventing it from getting stuck.
+- **Keyboard shortcuts**: The first controls are now accessible by keyboard:
+    - <ShortcutKey>Z</ShortcutKey> cycles through auto-zoom modes
+    - <ShortcutKey>J</ShortcutKey> / <ShortcutKey>L</ShortcutKey> move one second backward / forward
+    - <ShortcutKey>K</ShortcutKey> toggles play / pause
+    - <ShortcutKey>,</ShortcutKey> / <ShortcutKey>.</ShortcutKey> decrease / increase playback speed
+    - <ShortcutKey>P</ShortcutKey> toggles room pinning
+
+</ChangelogEntry>
 
 <ChangelogEntry title="Layout customization of right panel" type="web" version="3.3.0" date="2026-03-11">
 

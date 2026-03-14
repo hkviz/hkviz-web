@@ -102,7 +102,7 @@ export function createTourSteps({
 			onActivate: () => {
 				uiStore.activateTab('map');
 				mapZoomStore.setEnabled(true);
-				mapZoomStore.setTarget('current-zone');
+				mapZoomStore.setTarget('current-area-smooth');
 				roomDisplayStore.unpinScene('code');
 			},
 		},

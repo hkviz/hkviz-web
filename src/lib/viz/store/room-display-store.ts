@@ -1,3 +1,4 @@
+import { createHotkey } from '@tanstack/solid-hotkeys';
 import * as d3 from 'd3';
 import { createContext, createMemo, createSignal, useContext, type Accessor } from 'solid-js';
 import {
@@ -7,8 +8,8 @@ import {
 	roomDataByGameObjectName,
 	type RoomSpriteVariant,
 } from '../../parser';
-import { PlayerDataAnimationStore } from './player-data-animation-store';
 import { GameplayStore } from './gameplay-store';
+import { PlayerDataAnimationStore } from './player-data-animation-store';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type RoomPinChangeSource =
@@ -16,7 +17,10 @@ export type RoomPinChangeSource =
 	| 'map-room-click'
 	| 'pin-button-click'
 	| 'timeline-color-code-click'
-	| 'split-click';
+	| 'split-click'
+	| 'hotkey';
+
+export type RoomHoverSource = 'map' | 'chart' | 'splits' | 'timeline' | 'other';
 
 export function createRoomDisplayStore(
 	playerDataAnimationStore: PlayerDataAnimationStore,
@@ -25,6 +29,7 @@ export function createRoomDisplayStore(
 	const [roomVisibility, setRoomVisibility] = createSignal<RoomVisibility>('visited-animated');
 	const [selectedSceneName, setSelectedSceneName] = createSignal<string | null>(null);
 	const [hoveredSceneName, setHoveredSceneName] = createSignal<string | null>(null);
+	const [hoveredSceneNameSource, setHoveredSceneNameSource] = createSignal<RoomHoverSource | null>(null);
 	const [selectedScenePinned, setSelectedScenePinned] = createSignal(false);
 	const [selectedScenePinSource, setSelectedScenePinSource] = createSignal<RoomPinChangeSource>('code');
 
@@ -35,6 +40,7 @@ export function createRoomDisplayStore(
 		setRoomVisibility('visited-animated');
 		setSelectedSceneName(null);
 		setHoveredSceneName(null);
+		setHoveredSceneNameSource(null);
 		setSelectedScenePinned(false);
 		setSelectedScenePinSource('code');
 
@@ -143,8 +149,9 @@ export function createRoomDisplayStore(
 		}),
 	);
 
-	function setHoveredRoom(name: string | null) {
+	function setHoveredRoom(name: string | null, source: RoomHoverSource = 'other') {
 		setHoveredSceneName(name);
+		setHoveredSceneNameSource(name !== null ? source : null);
 	}
 	function unsetHoveredRoom(name: string | null) {
 		if (hoveredSceneName() === name) setHoveredRoom(null);
@@ -165,6 +172,11 @@ export function createRoomDisplayStore(
 		}
 	}
 
+	createHotkey({ key: 'P' }, () => {
+		console.log('hotkey toggle pin', selectedSceneName(), selectedScenePinned());
+		togglePinnedRoom(selectedSceneName(), 'hotkey', true);
+	});
+
 	return {
 		statesByGameObjectName,
 		roomVisibility,
@@ -174,6 +186,7 @@ export function createRoomDisplayStore(
 		selectedScenePinSource,
 		selectedRoomZoneFormatted,
 		hoveredSceneName,
+		hoveredSceneNameSource,
 		zoneVisible,
 		showAreaNames,
 		setShowAreaNames,
