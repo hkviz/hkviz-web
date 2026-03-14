@@ -1,31 +1,25 @@
 import { For, createMemo, createUniqueId } from 'solid-js';
 import { type RoomInfo } from '../../parser';
-import { hkMapRoomRectClass, useRoomColoringStore, useRoomDisplayStore, useThemeStore } from '../store';
 import { useSpriteSheetStore } from '../spritesheets/spritesheet-store';
+import { hkMapRoomRectClass, useRoomColoringStore, useRoomDisplayStore, useThemeStore } from '../store';
 
 function HkMapRoom(props: {
 	room: RoomInfo;
-	onClick?: (event: MouseEvent, r: RoomInfo) => void;
-	onMouseOver?: (event: MouseEvent, r: RoomInfo) => void;
-	onMouseOut?: (event: MouseEvent, r: RoomInfo) => void;
 	highlightSelectedRoom: boolean;
 	alwaysShowMainRoom: boolean;
 	alwaysUseAreaAsColor: boolean;
+	maskId: string;
 }) {
 	const roomDisplayStore = useRoomDisplayStore();
-	const themeStore = useThemeStore();
 	const roomColoringStore = useRoomColoringStore();
 	const spriteSheetStore = useSpriteSheetStore();
 	const mapSheetData = spriteSheetStore.mapSheetData;
 
 	const states = createMemo(() => roomDisplayStore.statesByGameObjectName.get(props.room.gameObjectName)!);
 
-	const id = createUniqueId();
-	const maskId = createMemo(() => `mask_${id}_${props.room.gameObjectName}`);
-
 	return (
 		<g data-scene-name={props.room.sceneName} data-game-object-name={props.room.gameObjectName}>
-			<mask id={maskId()}>
+			<mask id={props.maskId}>
 				<rect style={{ fill: 'black' }} />
 				<For each={props.room.sprites}>
 					{(sprite) => {
@@ -53,7 +47,7 @@ function HkMapRoom(props: {
 			</mask>
 			<rect
 				class={hkMapRoomRectClass(props.room)}
-				mask={`url(#${maskId()})`}
+				mask={`url(#${props.maskId})`}
 				x={props.room.allSpritesScaledPositionBounds.min.x}
 				y={props.room.allSpritesScaledPositionBounds.min.y}
 				width={props.room.allSpritesScaledPositionBounds.size.x}
@@ -68,36 +62,7 @@ function HkMapRoom(props: {
 							? 'all'
 							: 'none',
 				}}
-				onMouseOver={(event) => {
-					if (event.buttons === 0) {
-						// when holding down (because of drag) don't change hovered room
-						props.onMouseOver?.(event, props.room);
-					}
-				}}
-				onMouseOut={(event) => {
-					if (event.buttons === 0) {
-						// when holding down (because of drag) don't change hovered room
-						props.onMouseOut?.(event, props.room);
-					}
-				}}
-				onClick={(event) => props.onClick?.(event, props.room)}
 			/>
-			<g
-				filter="url(#hover_mask_filter)"
-				style={{
-					fill: themeStore.currentTheme() === 'dark' ? 'white' : 'black',
-					visibility: props.highlightSelectedRoom && states().isHovered() ? 'visible' : 'hidden',
-				}}
-			>
-				<rect
-					mask={`url(#${maskId()})`}
-					x={props.room.allSpritesScaledPositionBounds.min.x}
-					y={props.room.allSpritesScaledPositionBounds.min.y}
-					width={props.room.allSpritesScaledPositionBounds.size.x}
-					height={props.room.allSpritesScaledPositionBounds.size.y}
-					style={{ ['pointer-events']: 'none' }}
-				/>
-			</g>
 		</g>
 	);
 }
@@ -113,21 +78,101 @@ export interface HkMapRoomsProps {
 }
 
 export function HkMapRooms(props: HkMapRoomsProps) {
+	const roomDisplayStore = useRoomDisplayStore();
+	const themeStore = useThemeStore();
+	const idPrefix = createUniqueId();
+
+	const roomByGameObjectName = createMemo(() => new Map(props.rooms.map((room) => [room.gameObjectName, room])));
+	const maskIdByGameObjectName = createMemo(
+		() => new Map(props.rooms.map((room) => [room.gameObjectName, `mask_${idPrefix}_${room.gameObjectName}`])),
+	);
+	const hoveredRooms = createMemo(() => {
+		if (!(props.highlightSelectedRoom ?? true)) return [] as RoomInfo[];
+		return props.rooms.filter((room) =>
+			roomDisplayStore.statesByGameObjectName.get(room.gameObjectName)?.isHovered(),
+		);
+	});
+
+	let hoveredGameObjectName: string | null = null;
+
+	function roomFromEventTarget(target: EventTarget | null) {
+		if (!(target instanceof Element)) return null;
+		const roomElement = target.closest<SVGGElement>('[data-game-object-name]');
+		if (!roomElement) return null;
+		const gameObjectName = roomElement.dataset.gameObjectName;
+		if (!gameObjectName) return null;
+		return roomByGameObjectName().get(gameObjectName) ?? null;
+	}
+
+	function handleMouseMove(event: MouseEvent) {
+		if (event.buttons !== 0) return;
+
+		const hoveredRoom = roomFromEventTarget(event.target);
+		const nextGameObjectName = hoveredRoom?.gameObjectName ?? null;
+		if (nextGameObjectName === hoveredGameObjectName) return;
+
+		if (hoveredGameObjectName) {
+			const previousRoom = roomByGameObjectName().get(hoveredGameObjectName);
+			if (previousRoom) {
+				props.onMouseOut?.(event, previousRoom);
+			}
+		}
+
+		if (hoveredRoom) {
+			props.onMouseOver?.(event, hoveredRoom);
+		}
+
+		hoveredGameObjectName = nextGameObjectName;
+	}
+
+	function handleMouseLeave(event: MouseEvent) {
+		if (!hoveredGameObjectName) return;
+		const previousRoom = roomByGameObjectName().get(hoveredGameObjectName);
+		if (previousRoom) {
+			props.onMouseOut?.(event, previousRoom);
+		}
+		hoveredGameObjectName = null;
+	}
+
+	function handleClick(event: MouseEvent) {
+		const room = roomFromEventTarget(event.target);
+		if (!room) return;
+		props.onClick?.(event, room);
+	}
+
 	return (
-		<g>
+		<g onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} onClick={handleClick}>
 			<For each={props.rooms}>
 				{(room) => (
 					<HkMapRoom
 						room={room}
-						onClick={props.onClick}
-						onMouseOver={props.onMouseOver}
-						onMouseOut={props.onMouseOut}
 						highlightSelectedRoom={props.highlightSelectedRoom ?? true}
 						alwaysShowMainRoom={props.alwaysShowMainRoom ?? false}
 						alwaysUseAreaAsColor={props.alwaysUseAreaAsColor ?? false}
+						maskId={maskIdByGameObjectName().get(room.gameObjectName)!}
 					/>
 				)}
 			</For>
+			<g
+				filter="url(#hover_mask_filter)"
+				style={{
+					fill: themeStore.currentTheme() === 'dark' ? 'white' : 'black',
+					visibility: hoveredRooms().length > 0 ? 'visible' : 'hidden',
+				}}
+			>
+				<For each={hoveredRooms()}>
+					{(room) => (
+						<rect
+							mask={`url(#${maskIdByGameObjectName().get(room.gameObjectName)!})`}
+							x={room.allSpritesScaledPositionBounds.min.x}
+							y={room.allSpritesScaledPositionBounds.min.y}
+							width={room.allSpritesScaledPositionBounds.size.x}
+							height={room.allSpritesScaledPositionBounds.size.y}
+							style={{ ['pointer-events']: 'none' }}
+						/>
+					)}
+				</For>
+			</g>
 		</g>
 	);
 }

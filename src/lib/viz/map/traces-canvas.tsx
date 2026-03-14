@@ -77,7 +77,8 @@ export const HKMapTraces: Component = () => {
 		}
 
 		// animation
-		const minMsIntoGame = animationStore.msIntoGame() - traceStore.lengthMs();
+		const traceLengthMs = traceStore.lengthMs();
+		const minMsIntoGame = animationStore.msIntoGame() - traceLengthMs;
 		const maxMsIntoGame = animationStore.msIntoGame();
 
 		const positionEvents = gameplayStore.recording()?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
@@ -91,6 +92,7 @@ export const HKMapTraces: Component = () => {
 
 		const ctx = _canvas.canvas.getContext('2d');
 		if (!ctx) return;
+		const context = ctx;
 
 		ctx.clearRect(0, 0, _canvas.widthInUnits, _canvas.heightInUnits);
 
@@ -100,36 +102,58 @@ export const HKMapTraces: Component = () => {
 		// using sqrt so the line becomes thicker when zooming in, but not at the same speed
 		// as everything else grows.
 		const baseLineWidth = mapDistanceToCanvasUnits * transform.scale ** 0.5;
+		const halfBaseLineWidth = baseLineWidth / 2;
+		const jumpThreshold = scale(1.5);
 
 		let i = firstIndex;
+		type PositionEvent = (typeof positionEvents)[number];
 		let event = positionEvents[i];
-		let previousEvent = null;
+		let previousEvent: PositionEvent | null = null;
 		if (!event) return;
-		ctx.strokeStyle = `rgb(225 29 72/1)`; // tailwind rose-600
+		context.strokeStyle = `rgb(225 29 72/1)`; // tailwind rose-600
 		const dashArray = [baseLineWidth * 1, baseLineWidth * 2];
+		let previousIsJump: boolean | null = null;
 
-		while (event && (visibility === 'all' || event.msIntoGame <= maxMsIntoGame)) {
-			if (previousEvent) {
-				const opacity =
-					visibility === 'animated' ? 1 - (maxMsIntoGame - event.msIntoGame) / traceStore.lengthMs() : 1;
-
-				ctx.globalAlpha = opacity ** 0.5; // fade out slower
-				ctx.beginPath();
-				const isJump = (event.mapDistanceToPrevious ?? 0) > scale(1.5);
-				ctx.setLineDash(isJump ? dashArray : EMPTY_ARRAY);
-				ctx.lineWidth = isJump ? baseLineWidth / 2 : baseLineWidth;
-
-				ctx.moveTo(x(previousEvent.mapPosition!.x), y(previousEvent.mapPosition!.y));
-				ctx.lineTo(x(event.mapPosition!.x), y(event.mapPosition!.y));
-				ctx.stroke();
-				ctx.closePath();
+		function drawSegment(from: PositionEvent, to: PositionEvent) {
+			const isJump = (to.mapDistanceToPrevious ?? 0) > jumpThreshold;
+			if (isJump !== previousIsJump) {
+				context.setLineDash(isJump ? dashArray : EMPTY_ARRAY);
+				context.lineWidth = isJump ? halfBaseLineWidth : baseLineWidth;
+				previousIsJump = isJump;
 			}
 
-			i++;
-			previousEvent = event;
-			event = positionEvents[i];
+			context.beginPath();
+			context.moveTo(x(from.mapPosition!.x), y(from.mapPosition!.y));
+			context.lineTo(x(to.mapPosition!.x), y(to.mapPosition!.y));
+			context.stroke();
+			context.closePath();
 		}
-		ctx.globalAlpha = 1;
+
+		if (visibility === 'all') {
+			context.globalAlpha = 1;
+			while (event) {
+				if (previousEvent) {
+					drawSegment(previousEvent, event);
+				}
+
+				i++;
+				previousEvent = event;
+				event = positionEvents[i];
+			}
+		} else {
+			while (event && event.msIntoGame <= maxMsIntoGame) {
+				if (previousEvent) {
+					const opacity = 1 - (maxMsIntoGame - event.msIntoGame) / traceLengthMs;
+					context.globalAlpha = opacity ** 0.5; // fade out slower
+					drawSegment(previousEvent, event);
+				}
+
+				i++;
+				previousEvent = event;
+				event = positionEvents[i];
+			}
+		}
+		context.globalAlpha = 1;
 
 		// frame end pins
 		const frameEvent = animationStore.currentFrameEndEvent();

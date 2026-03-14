@@ -1,7 +1,9 @@
+import { createLazyMemo } from '@solid-primitives/memo';
 import * as d3 from 'd3';
 import { createEffect, createMemo, onCleanup, untrack } from 'solid-js';
 import {
 	allRoomDataBySceneName,
+	binarySearchLastIndexBefore,
 	Bounds,
 	gameObjectNamesIgnoredInZoomZone,
 	mainRoomDataBySceneName,
@@ -10,16 +12,22 @@ import {
 	Vector2,
 	type ZoomZone,
 } from '../../parser';
-import { useAnimationStore, useGameplayStore, useMapZoomStore, useRoomDisplayStore } from '../store';
+import {
+	useAnimationStore,
+	useAnimationTickStore,
+	useGameplayStore,
+	useMapZoomStore,
+	useRoomDisplayStore,
+} from '../store';
 
 interface HKMapZoomProps {
 	zoom: d3.ZoomBehavior<SVGSVGElement, unknown> | undefined;
 	svg: d3.Selection<SVGSVGElement, unknown, null, undefined> | undefined;
 }
 
-// todo change away from props
 export function createHKMapZoom(props: HKMapZoomProps) {
 	const animationStore = useAnimationStore();
+	const animationTickStore = useAnimationTickStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const mapZoomStore = useMapZoomStore();
 	const gameplayStore = useGameplayStore();
@@ -48,6 +56,19 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 			[...new Set(rooms.map((room) => room.mapZone))],
 		]),
 	);
+
+	const mainSceneEventIndexes = createMemo(() => {
+		const sceneEvents = gameplayStore.recording()?.sceneEvents;
+		if (!sceneEvents) return null;
+		const indexes: number[] = [];
+		for (let i = 0; i < sceneEvents.length; i++) {
+			if (mainRoomDataBySceneName.get(sceneEvents[i]!.sceneName)) {
+				indexes.push(i);
+			}
+		}
+		return indexes;
+	});
+
 	const boundsByArea = new Map(
 		[...d3.group([...mainRoomsByGameObjectName.values()], (r) => r.mapZone)].map(([mapZone, rooms]) => [
 			mapZone,
@@ -66,23 +87,27 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		minY: 0,
 		maxX: 0,
 		maxY: 0,
-		lastNow: 0,
 		initialized: false,
 	};
 	const recentIncludedAreaAtMs = new Map<string, number>();
 
-	let autoZoomTimer: d3.Timer | null = null;
-
-	const currentSceneContext = createMemo(() => {
+	const currentSceneContext = createLazyMemo(() => {
 		const enabled = mapZoomStore.enabled();
 		if (!enabled) return null;
 		const sceneEvents = gameplayStore.recording()?.sceneEvents;
 		if (!sceneEvents) return null;
+		const candidateIndexes = mainSceneEventIndexes();
+		if (!candidateIndexes || candidateIndexes.length === 0) return null;
+		const msIntoGame = animationStore.msIntoGame();
 
-		const sceneEventIndex =
-			sceneEvents.findLastIndex(
-				(e) => e.msIntoGame <= animationStore.msIntoGame() && !!mainRoomDataBySceneName.get(e.sceneName),
-			) ?? -1;
+		const candidateIndex = binarySearchLastIndexBefore(
+			candidateIndexes,
+			msIntoGame,
+			(index) => sceneEvents[index]!.msIntoGame,
+		);
+		if (candidateIndex === -1) return null;
+
+		const sceneEventIndex = candidateIndexes[candidateIndex] ?? -1;
 		if (sceneEventIndex === -1) return null;
 
 		const sceneEvent = sceneEvents[sceneEventIndex]!;
@@ -93,7 +118,7 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 	});
 
 	let previousZoomZone: ZoomZone | null = null;
-	const zoomZone = createMemo(() => {
+	const zoomZone = createLazyMemo(() => {
 		const target = mapZoomStore.target();
 		if (target !== 'current-area') return null;
 		const context = currentSceneContext();
@@ -137,7 +162,7 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		return zoomZone;
 	});
 
-	const visibleRoomsExtends = createMemo(() => {
+	const visibleRoomsExtends = createLazyMemo(() => {
 		const target = mapZoomStore.target();
 		if (target !== 'visible-rooms') return null;
 		const enabled = mapZoomStore.enabled();
@@ -340,7 +365,6 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 
 	const resetBoundsAnimator = () => {
 		boundsAnimator.initialized = false;
-		boundsAnimator.lastNow = 0;
 		recentIncludedAreaAtMs.clear();
 	};
 
@@ -368,23 +392,16 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		const usesAutoZoomMomentum =
 			target === 'current-area' || target === 'current-area-smooth' || target === 'visible-rooms';
 		if (!usesAutoZoomMomentum || !enabled) {
-			if (autoZoomTimer) {
-				autoZoomTimer.stop();
-				autoZoomTimer = null;
-			}
 			resetBoundsAnimator();
 			return;
 		}
 
-		if (autoZoomTimer) return;
-
-		autoZoomTimer = d3.timer(() => {
+		const removeTickListener = animationTickStore.addTickListener((deltaMs: number) => {
 			untrack(() => {
 				const svg = props.svg;
 				const zoom = props.zoom;
 				if (!svg || !zoom) return;
 
-				const now = performance.now();
 				const targetBounds = getAutoTargetBounds();
 				if (!targetBounds) return;
 
@@ -400,12 +417,10 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 					boundsAnimator.minY = currentBounds.min.y;
 					boundsAnimator.maxX = currentBounds.max.x;
 					boundsAnimator.maxY = currentBounds.max.y;
-					boundsAnimator.lastNow = now;
 					boundsAnimator.initialized = true;
 				}
 
-				const dtSeconds = Math.min(0.05, Math.max(1 / 240, (now - boundsAnimator.lastNow) / 1000));
-				boundsAnimator.lastNow = now;
+				const dtSeconds = Math.min(0.05, Math.max(1 / 240, deltaMs / 1000));
 
 				const reduceTime =
 					mapZoomStore.target() === 'current-area-smooth'
@@ -446,10 +461,8 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		});
 
 		onCleanup(() => {
-			if (autoZoomTimer) {
-				autoZoomTimer.stop();
-				autoZoomTimer = null;
-			}
+			removeTickListener();
+			resetBoundsAnimator();
 		});
 	});
 }
