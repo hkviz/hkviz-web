@@ -284,7 +284,14 @@ export function createLayoutStore(viewportStore: ViewportStore) {
 	}
 
 	function setLanePanelSizes(laneId: LaneId, sizes: number[]) {
-		setLanes(laneId, 'sizes', sizes);
+		let sanitizedSizes = sizes;
+		if (sanitizedSizes.some((size) => isNaN(size) || size < 0)) {
+			sanitizedSizes = sanitizedSizes.map(
+				(_, index) => getCollapsedSizePercent(laneId, index) || lanes[laneId].sizes[index],
+			);
+		}
+
+		setLanes(laneId, 'sizes', sanitizedSizes);
 	}
 
 	function isCollapsed(laneId: LaneId, index: number) {
