@@ -5,11 +5,12 @@ import { Checkbox } from '~/components/ui/checkbox';
 import { Label } from '~/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
+import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { useLayoutPanelContext } from './layout/layout-panel-context';
 import { LayoutPanelHeader } from './layout/layout-panel-header';
 import { LayoutPanelTypeProps } from './layout/layout-panel-props';
 import { LayoutPanelWrapper } from './layout/layout-panel-wrapper';
-import { RoomVisibility, TraceVisibility, useRoomDisplayStore, useTraceStore } from './store';
+import { RoomVisibility, TRACE_VISIBILITIES, TraceVisibility, useRoomDisplayStore, useTraceStore } from './store';
 
 function roomVisibilityName(v: RoomVisibility) {
 	switch (v) {
@@ -24,13 +25,52 @@ function roomVisibilityName(v: RoomVisibility) {
 
 function traceVisibilityName(v: TraceVisibility) {
 	switch (v) {
-		case 'all':
-			return 'All';
-		case 'animated':
-			return 'Animated';
+		case 'stay':
+			return 'Stay';
+		case 'fade_out':
+			return 'Fade out';
 		case 'hide':
 			return 'Hidden';
 	}
+}
+
+function TraceLengthInput() {
+	const traceStore = useTraceStore();
+
+	function onChange(v: any) {
+		try {
+			const vv = Number.parseInt(v.target.value);
+			if (isNaN(vv) || vv < 0) return;
+			traceStore.setLengthMin(vv);
+		} catch (e) {
+			// ignore
+			console.log(e);
+		}
+	}
+
+	const cssWidth = () =>
+		`calc(${Math.max(Math.min(traceStore.lengthMin().toString().length, 3), 2)}ch + calc(var(--spacing, 0.25rem) * 10))`;
+
+	return (
+		<div class="flex flex-row items-baseline">
+			<TextField>
+				<TextFieldInput
+					type="number"
+					aria-label="Trace length in minutes"
+					class="no-spinner -mr-1 w-10 border-0 p-3 pr-7 text-right"
+					style={{
+						width: cssWidth(),
+						'margin-left': `calc(-1 * ${cssWidth()} + var(--spacing, 0.25rem))`,
+					}}
+					value={traceStore.lengthMin()}
+					onKeyUp={onChange}
+					onKeyDown={onChange}
+					onChange={onChange}
+				/>
+			</TextField>
+			<span class="pointer-events-none -ml-5 text-[0.65rem]">min</span>
+		</div>
+	);
 }
 
 export function MapOptions(props: LayoutPanelTypeProps) {
@@ -46,6 +86,8 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 	const showSubAreaNames = roomDisplayStore.showSubAreaNames;
 
 	const panelContext = useLayoutPanelContext();
+
+	const showTraceLengthInput = () => traceStore.visibility() === 'fade_out';
 
 	return (
 		<LayoutPanelWrapper class="flex min-w-75 flex-col border-t max-lg:grow max-lg:basis-0 sm:min-w-min">
@@ -98,27 +140,33 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 									</Label>
 								</TableHead>
 								<TableCell class="p-1">
-									<Select
-										value={traceVisibility()}
-										onChange={(v) => {
-											if (!v) return;
-											traceStore.setVisibility(v);
-										}}
-										options={['all', 'animated', 'hide']}
-										placeholder="Trace visibility"
-										itemComponent={(props) => (
-											<SelectItem item={props.item}>
-												{traceVisibilityName(props.item.rawValue)}
-											</SelectItem>
-										)}
-									>
-										<SelectTrigger aria-label="Trace visibility" class="border-0">
-											<SelectValue<TraceVisibility>>
-												{(state) => traceVisibilityName(state.selectedOption())}
-											</SelectValue>
-										</SelectTrigger>
-										<SelectContent />
-									</Select>
+									<div class="flex flex-row items-baseline">
+										<Show when={showTraceLengthInput()}>
+											<TraceLengthInput />
+										</Show>
+										<Select
+											value={traceVisibility()}
+											onChange={(v) => {
+												if (!v) return;
+												traceStore.setVisibility(v);
+											}}
+											class="grow"
+											options={TRACE_VISIBILITIES}
+											placeholder="Trace visibility"
+											itemComponent={(props) => (
+												<SelectItem item={props.item}>
+													{traceVisibilityName(props.item.rawValue)}
+												</SelectItem>
+											)}
+										>
+											<SelectTrigger aria-label="Trace visibility" class="border-0">
+												<SelectValue<TraceVisibility>>
+													{(state) => traceVisibilityName(state.selectedOption())}
+												</SelectValue>
+											</SelectTrigger>
+											<SelectContent />
+										</Select>
+									</div>
 								</TableCell>
 								{/* {!isV1 && (
                         <TableCell class="p-0 pr-1">
@@ -133,7 +181,7 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 										Area names
 									</Label>
 								</TableHead>
-								<td class="px-2 py-1 pr-2.5">
+								<TableCell class="px-2 py-1 pr-2.5">
 									<div class="flex flex-col">
 										<div class="flex flex-row items-center">
 											<Label
@@ -162,7 +210,7 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 											/>
 										</div>
 									</div>
-								</td>
+								</TableCell>
 							</TableRow>
 						</TableBody>
 					</Table>

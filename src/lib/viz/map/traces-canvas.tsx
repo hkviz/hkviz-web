@@ -80,13 +80,14 @@ export const HKMapTraces: Component = () => {
 		const traceLengthMs = traceStore.lengthMs();
 		const minMsIntoGame = animationStore.msIntoGame() - traceLengthMs;
 		const maxMsIntoGame = animationStore.msIntoGame();
+		const gameplayMaxMsIntoGame = gameplayStore.timeFrame().max;
 
 		const positionEvents = gameplayStore.recording()?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
 
 		const visibility = traceStore.visibility();
 
 		const firstIndex =
-			visibility === 'animated' && positionEvents.length > 0 && minMsIntoGame > positionEvents[0]!.msIntoGame
+			visibility === 'fade_out' && positionEvents.length > 0 && minMsIntoGame > positionEvents[0]!.msIntoGame
 				? binarySearchLastIndexBefore(positionEvents, minMsIntoGame, (v) => v.msIntoGame)
 				: 0;
 
@@ -129,9 +130,9 @@ export const HKMapTraces: Component = () => {
 			context.closePath();
 		}
 
-		if (visibility === 'all') {
+		if (visibility === 'stay') {
 			context.globalAlpha = 1;
-			while (event) {
+			while (event && event.msIntoGame <= maxMsIntoGame) {
 				if (previousEvent) {
 					drawSegment(previousEvent, event);
 				}
@@ -158,7 +159,7 @@ export const HKMapTraces: Component = () => {
 		// frame end pins
 		const frameEvent = animationStore.currentFrameEndEvent();
 		const recording = gameplayStore.recording();
-		if (traceStore.visibility() === 'animated' && recording && frameEvent) {
+		if (traceStore.visibility() === 'fade_out' && recording && frameEvent) {
 			// dream gate
 			if (frameEvent.dreamGateScene !== playerDataFields.byFieldName.dreamGateScene.defaultValue) {
 				const mapPosition = playerPositionToMapPosition(
@@ -207,7 +208,7 @@ export const HKMapTraces: Component = () => {
 
 		// knight pin
 		if (
-			visibility === 'animated' &&
+			// (visibility === 'fade_out' || maxMsIntoGame <= gameplayMaxMsIntoGame) &&
 			previousEvent &&
 			previousEvent.msIntoGame + 30000 >= maxMsIntoGame // 15000
 		) {

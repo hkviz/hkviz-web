@@ -3,10 +3,12 @@ import { ChangelogEntry } from './_changelog-entry';
 
 <ChangelogEntry title="Keyboard navigation refinements + usability improvements" type="web" version="3.6.0" date="2026-03-18">
 
-- **Navigate map room via arrow-keys**: while on the map select rooms via the arrow keys.
-- **Sub-rooms arrow keys**: the sub-rooms (like bosses in pantheons or basement/entrance in Brettas house) are now selectable via arrow keys left+right and are automatically scrolled to when a sub-room is selected.
-- **Smaller map legend**: the map legend has been space-optimized to take less space away of the map.
-- **First visited at clickable**: in the room-infos panel click a first-visited time to jump to it in the timeline.
+- **Arrow-key room navigation on the map**: You can now select rooms directly with the arrow keys while focused on the map.
+- **Arrow-key support for sub-rooms**: Sub-rooms (for example Pantheon bosses or Bretta's house basement/entrance) can now be selected with <ShortcutKey>←</ShortcutKey> / <ShortcutKey>→</ShortcutKey> while navigating the room info panel via the keyboard, and the list auto-scrolls to the selected item.
+- **Smaller map legend**: The legend now uses less space, leaving more room for the map itself.
+- **Clickable "first visited" timestamps**: In the room info panel, click a "first visited" time to jump to that point in the timeline.
+- **Configurable trace fade-out**: The default trace fade-out duration increased from 4 to 5 minutes, and can now be adjusted in the map options panel.
+- **Trace mode update (_All_ → _Stay_)**: The old _All_ option was replaced with _Stay_, which keeps the full trace visible up to the selected time point. Move to the end of the run to view the complete trace.
 
 </ChangelogEntry>
 

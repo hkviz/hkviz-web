@@ -1,17 +1,24 @@
-import { assertNever } from '../../parser';
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { assertNever } from '../../parser';
 import { AnimationStore } from './animation-store';
 
-export type TraceVisibility = 'all' | 'animated' | 'hide';
+export type TraceVisibility = 'stay' | 'fade_out' | 'hide';
+
+export const TRACE_VISIBILITIES: TraceVisibility[] = ['stay', 'fade_out', 'hide'];
+
+const DEFAULT_TRACE_LENGTH_MS = 1000 * 60 * 5;
 
 export function createTraceStore(animationStore: AnimationStore) {
-	const [visibility, setVisibility] = createSignal<TraceVisibility>('animated');
+	const [visibility, setVisibility] = createSignal<TraceVisibility>('fade_out');
 
-	const [lengthMs, setLengthMs] = createSignal(1000 * 60 * 4);
+	const [lengthMs, setLengthMs] = createSignal(DEFAULT_TRACE_LENGTH_MS);
+
+	const lengthMin = () => lengthMs() / (1000 * 60);
+	const setLengthMin = (min: number) => setLengthMs(Math.min(min, 999) * 1000 * 60);
 
 	function reset() {
-		setVisibility('animated');
-		setLengthMs(1000 * 60 * 4);
+		setVisibility('fade_out');
+		setLengthMs(DEFAULT_TRACE_LENGTH_MS);
 	}
 
 	const msIntoGameForTraces = createMemo(() => {
@@ -19,10 +26,9 @@ export function createTraceStore(animationStore: AnimationStore) {
 		switch (_visibility) {
 			// different for hide and all, so rendering still triggers when changing visibility
 			case 'hide':
-				return -2;
-			case 'all':
 				return -1;
-			case 'animated':
+			case 'stay':
+			case 'fade_out':
 				return animationStore.msIntoGame();
 			default:
 				assertNever(_visibility);
@@ -36,6 +42,8 @@ export function createTraceStore(animationStore: AnimationStore) {
 		lengthMs,
 		setLengthMs,
 		reset,
+		lengthMin,
+		setLengthMin,
 	};
 }
 export type TraceStore = ReturnType<typeof createTraceStore>;

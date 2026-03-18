@@ -149,6 +149,13 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 	}
 
 	function handleMapKeyDown(event: KeyboardEvent) {
+		if (event.defaultPrevented) return;
+
+		const eventTarget = event.target;
+		if (eventTarget instanceof Element && eventTarget.closest('[data-map-interactive-control="true"]')) {
+			return;
+		}
+
 		const currentScene = activeSceneName() ?? chooseInitialActiveRoom();
 		if (!currentScene) return;
 
@@ -281,11 +288,11 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 			</p>
 			{svg}
 			<HKMapTraces />
-			<div class="lg2:top-1 absolute top-1 right-1 lg:top-10">
+			<div class="lg2:top-1 absolute top-1 right-1 lg:top-10" data-map-interactive-control="true">
 				<MapLegend />
 			</div>
 			<Show when={!isCollapsed()}>
-				<div class="absolute right-2 bottom-2">
+				<div class="absolute right-2 bottom-2" data-map-interactive-control="true">
 					<MapOverlayOptions />
 				</div>
 			</Show>

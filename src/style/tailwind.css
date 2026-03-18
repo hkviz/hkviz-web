@@ -239,6 +239,10 @@
 	}
 }
 
+html {
+	scrollbar-width: thin;
+}
+
 ::-webkit-scrollbar {
 	width: 12px;
 	height: 12px;

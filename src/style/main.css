@@ -85,3 +85,14 @@ html {
 .prose :where(a):not(:where([class~='not-prose'], [class~='not-prose'] *)):hover {
 	text-decoration-color: currentColor;
 }
+
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.no-spinner {
+	-moz-appearance: textfield; /* Firefox */
+	appearance: textfield;
+}

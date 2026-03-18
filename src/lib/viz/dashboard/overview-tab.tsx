@@ -47,7 +47,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 		uiStore.activateTab('map');
 		animationStore.setIsPlaying(true);
 		roomDisplayStore.setRoomVisibility('visited-animated');
-		traceStore.setVisibility('animated');
+		traceStore.setVisibility('fade_out');
 		roomColoringStore.setRoomColorMode('area');
 		extraChartStore.setFollowsAnimationAutoBounds(true);
 		mapZoomStore.setEnabled(true);
