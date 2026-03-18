@@ -20,7 +20,7 @@
 
 @variant md {
 	.dashboard-grid {
-		grid-template-columns: 300px 1fr;
+		grid-template-columns: 18.75rem 1fr;
 		grid-template-rows: 1fr auto;
 		grid-template-areas:
 			'map-options map'
@@ -29,11 +29,14 @@
 		gap: 0.25rem;
 		padding: 0.25rem;
 	}
+	.dashboard-grid.dashboard-mobile-tab-right {
+		grid-template-columns: 21rem 1fr;
+	}
 }
 
 @variant lg {
 	.dashboard-grid {
-		grid-template-columns: 300px 1fr 350px;
+		grid-template-columns: 18.75rem 1fr 21.875rem;
 		grid-template-rows: 1fr auto;
 		grid-template-areas:
 			'map-options map      splits-and-timecharts'

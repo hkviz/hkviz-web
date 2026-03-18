@@ -48,7 +48,7 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 	});
 
 	return (
-		<div class="dashboard-grid">
+		<div class={cn('dashboard-grid', mobileTab() === 'right' ? 'dashboard-mobile-tab-right' : '')}>
 			<Show when={showMap() && isSmallMobileLayout()}>
 				<LayoutLane
 					lane="mobileMap"
