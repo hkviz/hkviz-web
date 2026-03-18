@@ -142,10 +142,10 @@ export const MapLegend: Component = () => {
 			<div class="flex flex-col items-center justify-center gap-1">
 				<div class="flex flex-row items-center justify-center gap-1 px-1">
 					<div class="pl-1 text-sm">{var1Info()?.name ?? ''} </div>
-					<RoomColorCurveSelect variable={var1()} />
+					<RoomColorCurveSelect variable={var1()} class="-ml-1" />
 				</div>
-				<Expander expanded={showSelectedTimeComment()}>
-					<div class="text-xs opacity-75">Up to the selected time</div>
+				<Expander expanded={showSelectedTimeComment()} class="-mt-2 mb-1">
+					<div class="text-muted-foreground text-xs">Up to the selected time</div>
 				</Expander>
 				<svg class="w-36" viewBox={`0 0 ${200 + LEGEND_PADDING * 2} 100`} ref={setSvg} />
 			</div>

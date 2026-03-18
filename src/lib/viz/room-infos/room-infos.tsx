@@ -253,7 +253,7 @@ export function RoomInfo(_props: LayoutPanelTypeProps) {
 							when={selectedRoom() == null}
 							fallback={
 								<Tooltip>
-									<TooltipTrigger class="text-left">
+									<TooltipTrigger class="text-left leading-[1.15]">
 										{roomInfos().mainRoomInfo?.zoneNameFormatted ?? 'Unknown area'}
 									</TooltipTrigger>
 									<TooltipContent>Area</TooltipContent>

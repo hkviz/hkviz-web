@@ -28,9 +28,11 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 	const onMsIntoGameChangeListeners = new Set<OnMsIntoGameChangeListener>();
 
 	function setSpeedMultiplier(multiplier: number) {
-		if (multiplier < MIN_PLAYBACK_SPEED) multiplier = MIN_PLAYBACK_SPEED;
-		if (multiplier > MAX_PLAYBACK_SPEED) multiplier = MAX_PLAYBACK_SPEED;
-		_setSpeedMultiplier(multiplier);
+		let absMultiplier = Math.abs(multiplier);
+		const sign = Math.sign(multiplier) || 1;
+		if (absMultiplier < MIN_PLAYBACK_SPEED) absMultiplier = MIN_PLAYBACK_SPEED;
+		if (absMultiplier > MAX_PLAYBACK_SPEED) absMultiplier = MAX_PLAYBACK_SPEED;
+		_setSpeedMultiplier(sign * absMultiplier);
 	}
 
 	function reset() {
@@ -183,26 +185,30 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 
 	function increasePlaybackSpeed() {
 		const currentSpeed = speedMultiplier();
-		const multiplied = currentSpeed * 2;
+		const absCurrentSpeed = Math.abs(currentSpeed);
+		const sign = Math.sign(currentSpeed) || 1;
+		const multiplied = absCurrentSpeed * 2;
 		if (multiplied < PLAYBACK_SPEED_OPTION_MIN) {
-			setSpeedMultiplier(multiplied);
+			setSpeedMultiplier(multiplied * sign);
 			return;
 		}
 
-		const nextSpeed = PLAYBACK_SPEED_OPTIONS_REVERSED.find((s) => s > currentSpeed) ?? multiplied;
-		setSpeedMultiplier(nextSpeed);
+		const nextSpeed = PLAYBACK_SPEED_OPTIONS_REVERSED.find((s) => s > absCurrentSpeed) ?? multiplied;
+		setSpeedMultiplier(nextSpeed * sign);
 	}
 
 	function decreasePlaybackSpeed() {
 		const currentSpeed = speedMultiplier();
-		const multiplied = currentSpeed * 0.5;
+		const absCurrentSpeed = Math.abs(currentSpeed);
+		const sign = Math.sign(currentSpeed) || 1;
+		const multiplied = absCurrentSpeed * 0.5;
 		if (multiplied > PLAYBACK_SPEED_OPTION_MAX) {
-			setSpeedMultiplier(multiplied);
+			setSpeedMultiplier(multiplied * sign);
 			return;
 		}
 
-		const nextSpeed = PLAYBACK_SPEED_OPTIONS.find((s) => s < currentSpeed) ?? multiplied;
-		setSpeedMultiplier(nextSpeed);
+		const nextSpeed = PLAYBACK_SPEED_OPTIONS.find((s) => s < absCurrentSpeed) ?? multiplied;
+		setSpeedMultiplier(nextSpeed * sign);
 	}
 
 	createHotkey({ key: 'L' }, () => {

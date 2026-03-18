@@ -1,7 +1,8 @@
 import { For } from 'solid-js';
 import { ContextMenuItem } from '~/components/ui/context-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
-import { roomColorCurves } from '../color-curves';
+import { cn } from '~/lib/utils';
+import { roomColorCurveById, RoomColorCurveId, roomColorCurveIds, roomColorCurves } from '../color-curves';
 import { AggregationVariable, useRoomColoringStore } from '../store';
 
 export function RoomColorCurveContextMenuItems(props: { variable: AggregationVariable }) {
@@ -22,25 +23,36 @@ export function RoomColorCurveContextMenuItems(props: { variable: AggregationVar
 	);
 }
 
-export function RoomColorCurveSelect(props: { variable: AggregationVariable }) {
+export function RoomColorCurveSelect(props: { variable: AggregationVariable; class?: string }) {
 	const roomColoringStore = useRoomColoringStore();
 	const roomColorVar1Curve = roomColoringStore.var1Curve;
 
-	function handleValueChange(value: string | null): void {
+	function handleValueChange(value: RoomColorCurveId | null): void {
+		if (!value) return;
+		const curve = roomColorCurveById.get(value);
+		if (!curve) return;
 		roomColoringStore.setRoomColorVar1(props.variable);
-		roomColoringStore.setRoomColorVar1Curve(roomColorCurves.find((curve) => curve.name === value)!);
+		roomColoringStore.setRoomColorVar1Curve(curve);
 	}
 
 	return (
 		<Select
 			onChange={handleValueChange}
-			value={roomColorVar1Curve().name}
+			value={roomColorVar1Curve().id}
 			multiple={false}
-			options={roomColorCurves.map((curve) => curve.name)}
-			itemComponent={(props) => <SelectItem item={props.item}>{props.item.rawValue}</SelectItem>}
+			options={roomColorCurveIds}
+			optionTextValue={(id) => roomColorCurveById.get(id)?.name ?? id}
+			itemComponent={(props) => (
+				<SelectItem item={props.item}>{roomColorCurveById.get(props.item.rawValue)?.name}</SelectItem>
+			)}
 		>
-			<SelectTrigger class="h-8 w-fit py-1 pl-2 pr-1 text-[0.7rem]" aria-label="Curve">
-				<SelectValue<string>>{(state) => state.selectedOption()}</SelectValue>
+			<SelectTrigger
+				class={cn('h-8 w-fit border-0 py-1 pr-1 pl-2 text-[0.7rem]', props.class)}
+				aria-label="Curve"
+			>
+				<SelectValue<RoomColorCurveId>>
+					{(state) => roomColorCurveById.get(state.selectedOption())?.shortName ?? ''}
+				</SelectValue>
 			</SelectTrigger>
 			<SelectContent />
 		</Select>

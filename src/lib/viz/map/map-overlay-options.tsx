@@ -1,8 +1,10 @@
 import { Focus, Fullscreen, Group } from 'lucide-solid';
 import { JSXElement, type Component } from 'solid-js';
 import { ShortcutHint } from '~/components/shortcut-hint';
+import { overlayBlurBackgroundClasses } from '~/components/ui/additions/overlay';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
+import { cn } from '~/lib/utils';
 import { useMapZoomStore, useUiStore, ZoomFollowTarget } from '../store';
 
 const MapZoomButton: Component<{
@@ -18,7 +20,10 @@ const MapZoomButton: Component<{
 				as={ToggleGroupItem<'button'>}
 				value={props.state}
 				aria-label={props.ariaLabel}
-				class="bg-card/50 data-pressed:bg-primary/80 data-pressed:text-primary-foreground h-9 w-9 rounded-full px-0 backdrop-blur-xs"
+				class={cn(
+					overlayBlurBackgroundClasses,
+					'bg-card/50 data-pressed:bg-primary/80 data-pressed:text-primary-foreground h-9 w-9 rounded-full px-0 backdrop-blur-xs',
+				)}
 			>
 				{props.children}
 			</TooltipTrigger>
@@ -71,7 +76,7 @@ export const MapOverlayOptions: Component = () => {
 					<>
 						Tends to center the current area.
 						<br />
-						Sometimes zooms out for smoother transitions.
+						Zooms out when the player is moving between areas.
 					</>
 				}
 			>

@@ -233,7 +233,10 @@ export function createTourSteps({
 				widthByTrigger: true,
 				content: () => (
 					<>
-						<P>While animating, the map can automatically follow the player. </P>
+						<P>
+							While animating, the map can automatically follow the player, with one of 3 closeness
+							options.
+						</P>
 						<P>Manually zooming or moving the map automatically disables this feature.</P>
 					</>
 				),
