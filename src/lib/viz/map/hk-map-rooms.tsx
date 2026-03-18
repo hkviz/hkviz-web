@@ -10,12 +10,15 @@ function HkMapRoom(props: {
 	alwaysUseAreaAsColor: boolean;
 	maskId: string;
 }) {
-	const roomDisplayStore = useRoomDisplayStore();
 	const roomColoringStore = useRoomColoringStore();
 	const spriteSheetStore = useSpriteSheetStore();
 	const mapSheetData = spriteSheetStore.mapSheetData;
 
+	const roomDisplayStore = useRoomDisplayStore();
 	const states = createMemo(() => roomDisplayStore.statesByGameObjectName.get(props.room.gameObjectName)!);
+	const isInteractable = createMemo(
+		() => (props.room.isMainGameObject && props.alwaysShowMainRoom) || states().isVisible(),
+	);
 
 	return (
 		<g data-scene-name={props.room.sceneName} data-game-object-name={props.room.gameObjectName}>
@@ -57,10 +60,7 @@ function HkMapRoom(props: {
 					fill: props.alwaysUseAreaAsColor
 						? roomColoringStore.areaColorByGameObjectName().get(props.room.gameObjectName)
 						: roomColoringStore.selectedModeColorByGameObjectName().get(props.room.gameObjectName),
-					['pointer-events']:
-						(props.room.isMainGameObject && props.alwaysShowMainRoom) || states().isVisible()
-							? 'all'
-							: 'none',
+					['pointer-events']: isInteractable() ? 'all' : 'none',
 				}}
 			/>
 		</g>

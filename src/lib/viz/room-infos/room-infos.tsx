@@ -1,11 +1,13 @@
 import { Palette, Pin, PinOff } from 'lucide-solid';
-import { For, Index, Match, Show, Switch, createMemo, type Component } from 'solid-js';
+import { For, Index, Match, Show, Switch, createEffect, createMemo, type Component } from 'solid-js';
 import { ShortcutHint } from '~/components/shortcut-hint';
+import { tabsListTransparentClasses } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
 import { CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '~/components/ui/context-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
+import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Toggle } from '~/components/ui/toggle';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import {
@@ -134,7 +136,17 @@ const AggregationVariableRow: Component<{
 						<TooltipContent>{variableInfo().description}</TooltipContent>
 					</Tooltip>
 				</TableHead>
-				<TableCell class="w-1 p-1 pr-3 text-right">{formatted()}</TableCell>
+				<TableCell class="w-1 p-1 pr-3 text-right">
+					<Show when={variableInfo().isTimestamp} fallback={formatted()}>
+						<Button
+							variant="ghost"
+							class="-m-2 p-2"
+							onClick={() => animationStore.setMsIntoGame(aggregatedVariableValue(), 'smooth')}
+						>
+							{formatted()}
+						</Button>
+					</Show>
+				</TableCell>
 				<AggregationVariableToggles variable={props.variable} />
 			</TableRow>
 		</Show>
@@ -190,6 +202,61 @@ function AggregationVariables() {
 				</TableRow>
 			</Show>
 		</>
+	);
+}
+
+function RelatedRoomsTabs(props: {
+	selectedRoom: string | null;
+	relatedRooms: Array<{ name: string; displayName: string }>;
+	onChange: (tab: string) => void;
+}) {
+	let tabsViewportRef: HTMLDivElement | undefined;
+	const triggerRefs = new Map<string, HTMLButtonElement>();
+
+	createEffect(() => {
+		const selected = props.selectedRoom;
+		const _related = props.relatedRooms;
+		if (!selected || !tabsViewportRef) return;
+
+		queueMicrotask(() => {
+			if (!tabsViewportRef) return;
+			const trigger = triggerRefs.get(selected);
+			if (!trigger) return;
+
+			const viewportRect = tabsViewportRef.getBoundingClientRect();
+			const triggerRect = trigger.getBoundingClientRect();
+			const isFullyVisible =
+				triggerRect.left >= viewportRect.left + 1 && triggerRect.right <= viewportRect.right - 1;
+
+			if (isFullyVisible) return;
+			trigger.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+		});
+	});
+
+	return (
+		<Show when={props.relatedRooms.length !== 0}>
+			<Tabs
+				value={props.selectedRoom ?? undefined}
+				class="max-w-full overflow-x-auto overflow-y-hidden"
+				onChange={props.onChange}
+				ref={tabsViewportRef}
+			>
+				<TabsList class={tabsListTransparentClasses}>
+					<Index each={props.relatedRooms}>
+						{(room) => (
+							<TabsTrigger
+								value={room().name}
+								ref={(el) => {
+									triggerRefs.set(room().name, el as HTMLButtonElement);
+								}}
+							>
+								{room().displayName}
+							</TabsTrigger>
+						)}
+					</Index>
+				</TabsList>
+			</Tabs>
+		</Show>
 	);
 }
 
@@ -326,23 +393,15 @@ export function RoomInfo(_props: LayoutPanelTypeProps) {
 			<Show when={!panelContext.isCollapsed()}>
 				<CardContent class="shrink grow basis-0 overflow-auto px-0 pb-1">
 					<Show when={selectedRoom() != null}>
-						<Show when={relatedRooms().length !== 0}>
-							<div class="flex flex-row gap-1 overflow-x-auto overflow-y-hidden p-1">
-								<Index each={relatedRooms()}>
-									{(room) => (
-										<Button
-											size="sm"
-											variant={room().name === selectedRoom() ? undefined : 'outline'}
-											onClick={() => {
-												roomDisplayStore.setSelectedSceneName(room().name);
-											}}
-											class="shrink-0"
-										>
-											{room().displayName}
-										</Button>
-									)}
-								</Index>
-							</div>
+						{/* keys since should scrolling reset between scenes */}
+						<Show when={roomInfos().mainRoomInfo?.sceneName} keyed>
+							<RelatedRoomsTabs
+								selectedRoom={selectedRoom()}
+								relatedRooms={relatedRooms()}
+								onChange={(tab) => {
+									roomDisplayStore.setSelectedSceneName(tab);
+								}}
+							/>
 						</Show>
 						<div class="mx-2 mt-1 mb-2">
 							<Select

@@ -9,7 +9,6 @@ import { useMapZoomStore, useUiStore, ZoomFollowTarget } from '../store';
 
 const MapZoomButton: Component<{
 	state: ZoomFollowTarget;
-	ariaLabel: string;
 	tooltipHeading: JSXElement;
 	tooltipBody: JSXElement;
 	children: JSXElement;
@@ -19,7 +18,6 @@ const MapZoomButton: Component<{
 			<TooltipTrigger
 				as={ToggleGroupItem<'button'>}
 				value={props.state}
-				aria-label={props.ariaLabel}
 				class={cn(
 					overlayBlurBackgroundClasses,
 					'bg-card/50 data-pressed:bg-primary/80 data-pressed:text-primary-foreground h-9 w-9 rounded-full px-0 backdrop-blur-xs',
@@ -61,7 +59,6 @@ export const MapOverlayOptions: Component = () => {
 		>
 			<MapZoomButton
 				state="visible-rooms"
-				ariaLabel="Show whole map"
 				tooltipHeading="Show whole map"
 				tooltipBody="Show the entire map at once"
 			>
@@ -70,7 +67,6 @@ export const MapOverlayOptions: Component = () => {
 
 			<MapZoomButton
 				state="current-area-smooth"
-				ariaLabel="Follow player automatic zoom level"
 				tooltipHeading="Follow player automatic zoom level"
 				tooltipBody={
 					<>
@@ -85,7 +81,6 @@ export const MapOverlayOptions: Component = () => {
 
 			<MapZoomButton
 				state="current-area"
-				ariaLabel="Follow player's area"
 				tooltipHeading="Follow player's area"
 				tooltipBody="Keep the current area centered on the screen"
 			>

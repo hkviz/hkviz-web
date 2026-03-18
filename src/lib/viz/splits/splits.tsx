@@ -226,6 +226,7 @@ export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
 	const id = createUniqueId();
 	const splitsStore = useSplitsStore();
 	const visibleSplitGroups = splitsStore.visibleSplitGroups;
+	const panelContext = useLayoutPanelContext();
 
 	const setVisibleSplitGroupChecked = (group: RecordingSplitGroup, checked: boolean) => {
 		const currentGroup = splitsStore.visibleSplitGroups();
@@ -257,32 +258,37 @@ export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
 						</PopoverContent>
 					</Popover>
 				</LayoutPanelHeader>
-				<div class="flex flex-wrap gap-1 p-3 pt-0">
-					<For each={recordingSplitGroups}>
-						{(group) => {
-							const checked = () => visibleSplitGroups().includes(group);
-							const color = splitColors[group.name];
-							return (
-								<div class="flex flex-row">
-									<Checkbox
-										id={id + '_run_split_option_' + group.name}
-										checked={checked()}
-										onChange={(checked) => setVisibleSplitGroupChecked(group, checked as boolean)}
-										controlClass={color.checkboxSolid}
-									/>
-									<label
-										for={id + '_run_split_option_' + group.name + '-input'}
-										class="grow pl-1 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-									>
-										{group.displayName}
-									</label>
-								</div>
-							);
-						}}
-					</For>
-				</div>
-				<hr />
-				<RunSplitsRows />
+				<Show when={!panelContext.isCollapsed()}>
+					<div class="flex flex-wrap gap-1 p-3 pt-0">
+						<For each={recordingSplitGroups}>
+							{(group) => {
+								const checked = () => visibleSplitGroups().includes(group);
+								const color = splitColors[group.name];
+								return (
+									<div class="flex flex-row">
+										<Checkbox
+											id={id + '_run_split_option_' + group.name}
+											checked={checked()}
+											onChange={(checked) =>
+												setVisibleSplitGroupChecked(group, checked as boolean)
+											}
+											controlClass={color.checkboxSolid}
+										/>
+										<label
+											for={id + '_run_split_option_' + group.name + '-input'}
+											class="grow pl-1 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+										>
+											{group.displayName}
+										</label>
+									</div>
+								);
+							}}
+						</For>
+					</div>
+
+					<hr />
+					<RunSplitsRows />
+				</Show>
 			</div>
 		</LayoutPanelWrapper>
 	);

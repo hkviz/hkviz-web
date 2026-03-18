@@ -9,6 +9,8 @@ async function writeSitemap(sitemapStream: SitemapStream) {
 	sitemapStream.write({ url: hkVizUrl('/guide/analytics'), changefreq: 'monthly', priority: 0.9 });
 	sitemapStream.write({ url: hkVizUrl('/credits'), changefreq: 'monthly', priority: 0.6 });
 	sitemapStream.write({ url: hkVizUrl('/privacy-policy'), changefreq: 'monthly', priority: 0.1 });
+	sitemapStream.write({ url: hkVizUrl('/research'), changefreq: 'monthly', priority: 0.1 });
+	sitemapStream.write({ url: hkVizUrl('/changelog'), changefreq: 'monthly', priority: 0.1 });
 
 	const publicRuns = await findPublicRuns({
 		sort: 'likes',

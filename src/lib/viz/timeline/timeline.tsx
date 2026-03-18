@@ -23,6 +23,7 @@ import {
 	useThemeStore,
 	useUiStore,
 } from '../store';
+import { formatTimeMs } from '../util';
 
 function Times(props: { class?: string }) {
 	return (
@@ -269,10 +270,15 @@ function AnimationTimeLineSlider() {
 				dragRef.startedAtMsIntoGame = null;
 				dragRef.previousDiff = 0;
 			}}
+			getValueLabel={(params) => formatTimeMs(params.values[0] ?? 0)}
 		>
 			<SliderTrack onPointerDown={onPointerDown} onPointerMove={onPointerMove}>
 				<SliderFill class="rounded-full" />
-				<SliderThumb onPointerDown={onPointerDown} onPointerMove={onPointerMove} />
+				<SliderThumb
+					onPointerDown={onPointerDown}
+					onPointerMove={onPointerMove}
+					aria-valuelabel={formatTimeMs(animationMsIntoGame())}
+				/>
 			</SliderTrack>
 		</Slider>
 	);

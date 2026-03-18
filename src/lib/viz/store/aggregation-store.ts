@@ -86,62 +86,74 @@ export const aggregationVariableInfos: {
 		name: string;
 		description: string;
 		format: (value: number) => string | number;
+		isTimestamp: boolean;
 	};
 } = {
 	visits: {
 		name: 'Visits',
 		description: 'Number of times this scene has been entered.',
 		format: (value) => value,
+		isTimestamp: false,
 	},
 	firstVisitMs: {
 		name: 'First visited at',
 		description: 'Time of first visit',
 		format: formatTimeMs,
+		isTimestamp: true,
 	},
 	timeSpendMs: {
 		name: 'Time spent',
 		description: 'Total time spent in a scene of all visits combined.',
 		format: formatTimeMs,
+		isTimestamp: false,
 	},
 	damageTaken: {
 		name: 'Damage taken',
 		description: 'Total damage taken in masks',
 		format: (value) => value,
+		isTimestamp: false,
 	},
 	deaths: {
 		name: 'Deaths',
 		description: 'Number of times the player died in a scene.',
 		format: (value) => value,
+		isTimestamp: false,
 	},
 	focusing: {
 		name: 'Focusing',
 		description: 'Number of times the player started to focus.',
 		format: (value) => value,
+		isTimestamp: false,
 	},
 	spellFireball: {
 		name: 'Vengeful Spirit',
 		description: 'Number of times the player used a fireball spell.',
 		format: (value) => value,
+		isTimestamp: false,
 	},
 	spellDown: {
 		name: 'Desolate Dive',
 		description: 'Number of times the player used a downwards spell.',
 		format: (value) => value,
+		isTimestamp: false,
 	},
 	spellUp: {
 		name: 'Howling Wraiths',
 		description: 'Number of times the player used an upwards spell.',
 		format: (value) => value,
+		isTimestamp: false,
 	},
 	geoEarned: {
 		name: 'Geo earned',
 		description: 'Does not include geo earned by defeating the shade.',
 		format: (value) => value,
+		isTimestamp: false,
 	},
 	geoSpent: {
 		name: 'Geo spent',
 		description: 'Does not include Geo lost by dying and not defeating the shade.',
 		format: (value) => value,
+		isTimestamp: false,
 	},
 };
 

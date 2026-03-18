@@ -19,37 +19,25 @@ const ResizeButtons: Component<ResizeButtonsProps> = (props) => {
 		<div class="-ml-3 inline-block shrink-0 pl-1">
 			<Show when={props.state !== 'minimized'}>
 				<Tooltip>
-					<TooltipTrigger
-						as={() => (
-							<Button variant="ghost" size="icon" class="h-7 w-7" onClick={props.minimize}>
-								<Minus class="h-3 w-3" />
-							</Button>
-						)}
-					/>
+					<TooltipTrigger as={Button} variant="ghost" size="icon" class="h-7 w-7" onClick={props.minimize}>
+						<Minus class="h-3 w-3" />
+					</TooltipTrigger>
 					<TooltipContent>Close</TooltipContent>
 				</Tooltip>
 			</Show>
 			<Show when={props.state !== 'medimized'}>
 				<Tooltip>
-					<TooltipTrigger
-						as={() => (
-							<Button variant="ghost" size="icon" class="h-7 w-7" onClick={props.medimize}>
-								<Rows class="h-3 w-3" />
-							</Button>
-						)}
-					/>
-					<TooltipContent>Show splits & time-based charts</TooltipContent>
+					<TooltipTrigger as={Button} variant="ghost" size="icon" class="h-7 w-7" onClick={props.medimize}>
+						<Rows class="h-3 w-3" />
+					</TooltipTrigger>
+					<TooltipContent>Medimize</TooltipContent>
 				</Tooltip>
 			</Show>
 			<Show when={props.state !== 'maximized'}>
 				<Tooltip>
-					<TooltipTrigger
-						as={() => (
-							<Button variant="ghost" size="icon" class="h-7 w-7" onClick={props.maximize}>
-								<Maximize class="h-3 w-3" />
-							</Button>
-						)}
-					/>
+					<TooltipTrigger as={Button} variant="ghost" size="icon" class="h-7 w-7" onClick={props.maximize}>
+						<Maximize class="h-3 w-3" />
+					</TooltipTrigger>
 					<TooltipContent>Maximize</TooltipContent>
 				</Tooltip>
 			</Show>

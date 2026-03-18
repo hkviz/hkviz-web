@@ -9,7 +9,7 @@ export const LargeScreenTabs: Component = () => {
 	return (
 		<Tabs
 			value={mainCardTab()}
-			class="absolute top-0 right-0 left-0 z-10 mx-auto hidden w-fit lg:block"
+			class="absolute top-0 right-0 left-0 z-20 mx-auto hidden w-fit lg:block"
 			onChange={(tab: string) => {
 				uiStore.activateTab(tab as MainCardTab);
 			}}

@@ -68,16 +68,16 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 				)}
 			>
 				<LargeScreenTabs />
-				<Show when={showMap() && !isSmallMobileLayout()}>
-					<HKMap class="absolute inset-0" />
-				</Show>
 				<RunOverviewTab
-					class="col-start-1 col-end-1 row-start-1 row-end-1"
+					class="z-10 col-start-1 col-end-1 row-start-1 row-end-1"
 					startDate={props.startDate}
 					loadingDone={props.runFileLoader.done()}
 					loadingProgress={props.runFileLoader.progress()}
 					gameplayCard={props.gameplayCard}
 				/>
+				<Show when={showMap() && !isSmallMobileLayout()}>
+					<HKMap class="absolute inset-0" />
+				</Show>
 				<SingleRunPageTour />
 				{/* <RunClientLoader runData={runData} /> */}
 			</Card>

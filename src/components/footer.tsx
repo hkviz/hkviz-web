@@ -36,8 +36,8 @@ export const Footer: Component = () => {
 						<Button as={A} href="/guide/install" variant="link" class="text-foreground opacity-80">
 							Getting started
 						</Button>
-						<Button as={A} href="/credits" variant="link" class="text-foreground opacity-80">
-							Credits
+						<Button as={A} href="/changelog" variant="link" class="text-foreground opacity-80">
+							Changelog
 						</Button>
 						<Button as={A} href="/privacy-policy" variant="link" class="text-foreground opacity-80">
 							Privacy policy

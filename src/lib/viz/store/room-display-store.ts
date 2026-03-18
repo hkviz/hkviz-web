@@ -55,6 +55,10 @@ export function createRoomDisplayStore(
 	function unpinScene(source: RoomPinChangeSource) {
 		setSelectedScenePinned(false);
 		setSelectedScenePinSource(source);
+		const hovered = hoveredSceneName();
+		if (hovered) {
+			setSelectedSceneName(hovered);
+		}
 	}
 
 	const selectedRoomZoneFormatted = createMemo(() => {
