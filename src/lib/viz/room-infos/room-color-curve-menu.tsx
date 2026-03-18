@@ -47,7 +47,8 @@ export function RoomColorCurveSelect(props: { variable: AggregationVariable; cla
 			)}
 		>
 			<SelectTrigger
-				class={cn('h-8 w-fit border-0 py-1 pr-1 pl-2 text-[0.7rem]', props.class)}
+				class={cn('h-8 w-fit border-0 py-1 pr-1 pl-2 text-[0.65rem]', props.class)}
+				iconClass="size-3"
 				aria-label="Curve"
 			>
 				<SelectValue<RoomColorCurveId>>

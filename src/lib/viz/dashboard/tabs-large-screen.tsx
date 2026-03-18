@@ -1,7 +1,7 @@
 import { type Component } from 'solid-js';
-import { MainCardTab, useUiStore } from '../store';
-import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { tabsListTransparentClasses, tabsTriggerTransparentClasses } from '~/components/ui/additions';
+import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
+import { MainCardTab, useUiStore } from '../store';
 
 export const LargeScreenTabs: Component = () => {
 	const uiStore = useUiStore();
@@ -9,7 +9,7 @@ export const LargeScreenTabs: Component = () => {
 	return (
 		<Tabs
 			value={mainCardTab()}
-			class="absolute left-0 right-0 top-0 z-10 mx-auto hidden w-fit lg:block"
+			class="absolute top-0 right-0 left-0 z-10 mx-auto hidden w-fit lg:block"
 			onChange={(tab: string) => {
 				uiStore.activateTab(tab as MainCardTab);
 			}}

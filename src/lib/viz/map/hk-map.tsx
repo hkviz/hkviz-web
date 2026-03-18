@@ -100,7 +100,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 		<div class={cn('hk-main-map-wrapper relative', props.class)}>
 			{svg}
 			<HKMapTraces />
-			<div class="absolute top-2 right-2 lg:top-10 xl:top-2">
+			<div class="lg2:top-1 absolute top-1 right-1 lg:top-10">
 				<MapLegend />
 			</div>
 			<Show when={!isCollapsed()}>
