@@ -137,7 +137,88 @@ const predefinedRoomNames = {
 
 	// Crystal Peak
 	Mines_35: 'Crystallised Mound',
+
+	// Endings:
+	Cinematic_Ending_A: 'Ending 1: The Hollow Knight',
+	Cinematic_Ending_B: 'Ending 2: Sealed Siblings',
+	Cinematic_Ending_C: 'Ending 3: Dream No More',
+	Cinematic_Ending_D: 'Ending 4: Embrace the Void',
 } as Record<string, string>;
+
+function replaceBossSequenceName(roomName: string) {
+	return roomName
+		.replace(/(group_)?boss_seq:Boss Sequence Tier 1(:GG)?/g, 'Pantheon of the Master ')
+		.replace(/(group_)?boss_seq:Boss Sequence Tier 2(:GG)?/g, 'Pantheon of the Artist ')
+		.replace(/(group_)?boss_seq:Boss Sequence Tier 3(:GG)?/g, 'Pantheon of the Sage ')
+		.replace(/(group_)?boss_seq:Boss Sequence Tier 4(:GG)?/g, 'Pantheon of the Knight ')
+		.replace(/(group_)?boss_seq:Boss Sequence Tier 5(:GG)?/g, 'Pantheon of the Hallownest ');
+}
+
+const bossRoomNames: Record<string, string> = {
+	GG_Vengefly: 'Vengefly King',
+	GG_Gruz_Mother: 'Gruz Mother',
+	GG_False_Knight: 'False Knight',
+	GG_Mega_Moss_Charger: 'Massive Moss Charger',
+	GG_Hornet_1: 'Hornet (Protector)',
+	GG_Ghost_Gorb: 'Gorb',
+	GG_Dung_Defender: 'Dung Defender',
+	GG_Mage_Knight: 'Soul Warrior',
+	GG_Brooding_Mawlek: 'Brooding Mawlek',
+	GG_Nailmasters: 'Oro & Mato',
+	GG_Ghost_Xero: 'Xero',
+	GG_Crystal_Guardian: 'Crystal Guardian',
+	GG_Soul_Master: 'Soul Master',
+	GG_Oblobbles: 'Oblobbles',
+	GG_Mantis_Lords: 'Mantis Lords',
+	GG_Ghost_Marmu: 'Marmu',
+	GG_Nosk: 'Nosk',
+	GG_Flukemarm: 'Flukemarm',
+	GG_Broken_Vessel: 'Broken Vessel',
+	GG_Painter: 'Paintmaster Sheo',
+	GG_Hive_Knight: 'Hive Knight',
+	GG_Ghost_Hu: 'Elder Hu',
+	GG_Collector: 'The Collector',
+	GG_God_Tamer: 'God Tamer',
+	GG_Grimm: 'Troupe Master Grimm',
+	GG_Ghost_Galien: 'Galien',
+	GG_Grey_Prince_Zote: 'Grey Prince Zote',
+	GG_Uumuu: 'Uumuu',
+	GG_Hornet_2: 'Hornet (Sentinel)',
+	GG_Sly: 'Great Nailsage Sly',
+	GG_Crystal_Guardian_2: 'Enraged Guardian',
+	GG_Lost_Kin: 'Lost Kin',
+	GG_Ghost_No_Eyes: 'No Eyes',
+	GG_Traitor_Lord: 'Traitor Lord',
+	GG_White_Defender: 'White Defender',
+	GG_Failed_Champion: 'Failed Champion',
+	GG_Ghost_Markoth: 'Markoth',
+	GG_Watcher_Knights: 'Watcher Knights',
+	GG_Soul_Tyrant: 'Soul Tyrant',
+	GG_Hollow_Knight: 'Pure Vessel',
+	GG_Grimm_Nightmare: 'Nightmare King Grimm',
+	GG_Nosk_Hornet: 'Winged Nosk',
+	GG_Radiance: 'Absolute Radiance',
+
+	GG_Spa: 'Hot Spring',
+	GG_Unn: 'Godseeker (Unn)',
+
+	GG_Engine: 'Godseeker',
+	GG_End_Sequence: 'End',
+	GG_Engine_Prime: 'Godseeker',
+	GG_Door_5_Finale: 'End',
+	GG_Engine_Root: 'Godseeker (White Lady)',
+	GG_Wyrm: 'Godseeker (Pale King) ',
+};
+
+function replaceBossRoomName(roomName: string) {
+	if (!roomName.includes('boss_seq:')) return roomName;
+
+	return roomName.replace(/:?GG_[A-Za-z0-9_]+/g, (sceneToken) => {
+		const sceneName = sceneToken.startsWith(':') ? sceneToken.slice(1) : sceneToken;
+		const normalizedSceneName = sceneName.endsWith('_V') ? sceneName.slice(0, -2) : sceneName;
+		return bossRoomNames[sceneName] ?? bossRoomNames[normalizedSceneName] ?? '<TODO>';
+	});
+}
 
 export function formatRoomName(zoneName: string | undefined, roomName: string) {
 	const predefinedName = predefinedRoomNames[roomName];
@@ -147,14 +228,7 @@ export function formatRoomName(zoneName: string | undefined, roomName: string) {
 		return roomName.replace('Abyss_', 'Ancient Basin ');
 	}
 
-	let formattedRoomName = roomName
-		// Pantheons
-		.replace(/(group_)?boss_seq:Boss Sequence Tier 1(:GG)?/g, 'Pantheon of the Master ')
-		.replace(/(group_)?boss_seq:Boss Sequence Tier 2(:GG)?/g, 'Pantheon of the Artist ')
-		.replace(/(group_)?boss_seq:Boss Sequence Tier 3(:GG)?/g, 'Pantheon of the Sage ')
-		.replace(/(group_)?boss_seq:Boss Sequence Tier 4(:GG)?/g, 'Pantheon of the Knight ')
-		.replace(/(group_)?boss_seq:Boss Sequence Tier 5(:GG)?/g, 'Pantheon of the Hallownest ')
-
+	let formattedRoomName = replaceBossSequenceName(replaceBossRoomName(roomName))
 		// Area names
 		.replace('Abyss', 'The Abyss')
 		// handled above .replace('-', 'Ancient Basin')

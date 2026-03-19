@@ -1,5 +1,5 @@
 import { Palette, Pin, PinOff } from 'lucide-solid';
-import { For, Index, Match, Show, Switch, createEffect, createMemo, type Component } from 'solid-js';
+import { createEffect, createMemo, For, Index, Match, Show, Switch, type Component } from 'solid-js';
 import { ShortcutHint } from '~/components/shortcut-hint';
 import { tabsListTransparentClasses } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
@@ -10,10 +10,12 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/u
 import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Toggle } from '~/components/ui/toggle';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
+import { cn } from '~/lib/utils';
 import {
 	allRoomDataIncludingSubspritesBySceneName,
 	getRelatedVirtualRoomNames,
 	mainRoomDataBySceneName,
+	RelatedVirtualRoom,
 } from '../../parser';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { useLayoutPanelContext } from '../layout/layout-panel-context';
@@ -207,7 +209,7 @@ function AggregationVariables() {
 
 function RelatedRoomsTabs(props: {
 	selectedRoom: string | null;
-	relatedRooms: Array<{ name: string; displayName: string }>;
+	relatedRooms: Array<RelatedVirtualRoom>;
 	onChange: (tab: string) => void;
 }) {
 	let tabsViewportRef: HTMLDivElement | undefined;
@@ -233,6 +235,13 @@ function RelatedRoomsTabs(props: {
 		});
 	});
 
+	const roomColoringStore = useRoomColoringStore();
+	const roomColors = createMemo(() => {
+		return props.relatedRooms.map((room) => {
+			return roomColoringStore.getSingleVarColorForSceneName(room.name);
+		});
+	});
+
 	return (
 		<Show when={props.relatedRooms.length !== 0}>
 			<Tabs
@@ -241,13 +250,21 @@ function RelatedRoomsTabs(props: {
 				onChange={props.onChange}
 				ref={tabsViewportRef}
 			>
-				<TabsList class={tabsListTransparentClasses}>
+				<TabsList class={cn(tabsListTransparentClasses, 'from')}>
 					<Index each={props.relatedRooms}>
-						{(room) => (
+						{(room, index) => (
 							<TabsTrigger
 								value={room().name}
 								ref={(el) => {
 									triggerRefs.set(room().name, el as HTMLButtonElement);
+								}}
+								class={'border-t bg-linear-to-b from-transparent to-transparent'}
+								style={{
+									'border-top-color': roomColors()[index] ?? 'transparent',
+									'--tw-gradient-from':
+										'color-mix(in hsl, ' +
+										(roomColors()[index] ?? 'transparent') +
+										' 20%, transparent)',
 								}}
 							>
 								{room().displayName}

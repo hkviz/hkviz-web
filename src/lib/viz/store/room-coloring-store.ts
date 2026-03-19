@@ -4,8 +4,8 @@ import { batch, createContext, createMemo, createSignal, useContext } from 'soli
 import { roomData } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
 import { AggregationStore, type AggregationVariable } from './aggregation-store';
-import { ThemeStore } from './theme-store';
 import { AnimationStore } from './animation-store';
+import { ThemeStore } from './theme-store';
 
 function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
 	return a.h === b.h && a.s === b.s && a.l === b.l;
@@ -83,6 +83,15 @@ export function createRoomColoringStore(
 		};
 	});
 
+	function getSingleVarColorForSceneName(sceneName: string) {
+		if (colorMode() !== '1-var') return null;
+		const colorMap = singleVarColorMap();
+		const aggregations = aggregationStore.getAggregations(sceneName);
+		const aggregationValue =
+			aggregationStore.getCorrectedAggregationValue(aggregations, var1(), animationStore.msIntoGame) ?? 0;
+		return colorMap(aggregationValue);
+	}
+
 	const singleVarColorByGameObjectName = createMemo(() => {
 		if (colorMode() !== '1-var') return null;
 		const colorMap = singleVarColorMap();
@@ -144,6 +153,8 @@ export function createRoomColoringStore(
 		cycleRoomColorVar1,
 		setRoomColorVar1,
 		setRoomColorVar1Curve,
+
+		getSingleVarColorForSceneName,
 
 		reset,
 	};

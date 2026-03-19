@@ -80,7 +80,6 @@ export const HKMapTraces: Component = () => {
 		const traceLengthMs = traceStore.lengthMs();
 		const minMsIntoGame = animationStore.msIntoGame() - traceLengthMs;
 		const maxMsIntoGame = animationStore.msIntoGame();
-		const gameplayMaxMsIntoGame = gameplayStore.timeFrame().max;
 
 		const positionEvents = gameplayStore.recording()?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
 

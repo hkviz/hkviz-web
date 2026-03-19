@@ -307,6 +307,17 @@ export function aggregateRecording(recording: CombinedRecording) {
 				addToScenes(virtualSceneAsArr, msIntoGame, 'visits', 1);
 			}
 		}
+
+		if (
+			currentVirtualScenes.some((scene) => scene === 'GG_Atrium') &&
+			previousVirtualScenes.some((scene) => scene === 'group_boss_seq:Boss Sequence Tier 5:GG_Radiance')
+		) {
+			console.log('asoaso', {
+				currentVirtualScenes,
+				previousVirtualScenes,
+				msIntoGame: formatTimeMs(msIntoGame),
+			});
+		}
 	}
 
 	for (const event of recording.events) {

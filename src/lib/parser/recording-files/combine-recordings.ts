@@ -9,13 +9,13 @@ import { PlayerDataEvent } from './events/player-data-event';
 import { PlayerPositionEvent } from './events/player-position-event';
 import { SceneEvent } from './events/scene-event';
 import {
-    CombinedRecording,
-    HeroStateEvent,
-    RecordingFileVersionEvent,
-    isPlayerDataEventOfField,
-    isPlayerDataEventWithFieldType,
-    type ParsedRecording,
-    type RecordingEvent,
+	CombinedRecording,
+	HeroStateEvent,
+	RecordingFileVersionEvent,
+	isPlayerDataEventOfField,
+	isPlayerDataEventWithFieldType,
+	type ParsedRecording,
+	type RecordingEvent,
 } from './recording';
 
 function isPantheonRoom(sceneName: string) {
@@ -48,6 +48,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 	let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
 	let previousFrameEndEvent: FrameEndEvent | null = null;
 	let previousSceneEvent: SceneEvent | null = null;
+	let diedInThisSceneVisit = false;
 
 	let recordingFileVersion: RecordingFileVersion = '0.0.0';
 
@@ -117,7 +118,19 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 			} else if (event instanceof HKVizModVersionEvent) {
 				allHkVizModVersions.add(event.version);
 			} else if (event instanceof SceneEvent) {
+				if (
+					event.sceneName === 'GG_Atrium_Roof' &&
+					previousSceneEvent?.sceneName === 'GG_Radiance' &&
+					previousSceneEvent?.currentBossSequence?.name === 'Boss Sequence Tier 5'
+				) {
+					console.log(
+						'detected radiance to roof top scene transition. Died in previous scene: ',
+						diedInThisSceneVisit,
+					);
+				}
+
 				event.previousSceneEvent = previousSceneEvent;
+				diedInThisSceneVisit = false;
 				const previousCurrentBossSequenceEvent = getPreviousPlayerData(
 					playerDataFields.byFieldName.currentBossSequence,
 				);
@@ -217,6 +230,11 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 				} else if (event.field.name === 'transitioning') {
 					isTransitioning = event.value;
 					lastTimestamp = event.timestamp;
+				} else if (event.field.name === 'dead') {
+					const isDead = event.value;
+					if (isDead) {
+						diedInThisSceneVisit = true;
+					}
 				}
 				previousHeroStateByField.set(event.field, event);
 				if (frameEndEventHeroStateFields.has(event.field)) {
