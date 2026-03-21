@@ -1,4 +1,4 @@
-import { LayoutDashboard, Spline, TextAlignStart } from 'lucide-solid';
+import { LayoutDashboardIcon, SplineIcon, TextAlignStartIcon } from 'lucide-solid';
 import { createUniqueId, Show } from 'solid-js';
 import { CardContent } from '~/components/ui/card';
 import { Checkbox } from '~/components/ui/checkbox';
@@ -99,7 +99,7 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 							<TableRow>
 								<TableHead>
 									<Label class="flex items-center" for="visibleRoomSelectTrigger">
-										<LayoutDashboard class="mr-2 h-5 w-5" />
+										<LayoutDashboardIcon class="mr-2 h-5 w-5" />
 										Visible rooms
 									</Label>
 								</TableHead>
@@ -135,7 +135,7 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 							<TableRow>
 								<TableHead>
 									<Label class="flex items-center" for="traceVisibilitySelectTrigger">
-										<Spline class="mr-2 h-5 w-5" />
+										<SplineIcon class="mr-2 h-5 w-5" />
 										Traces
 									</Label>
 								</TableHead>
@@ -177,7 +177,7 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 							<TableRow>
 								<TableHead>
 									<Label class="flex items-center">
-										<TextAlignStart class="mr-2 h-5 w-5" />
+										<TextAlignStartIcon class="mr-2 h-5 w-5" />
 										Area names
 									</Label>
 								</TableHead>

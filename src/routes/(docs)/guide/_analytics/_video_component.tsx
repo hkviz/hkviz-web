@@ -1,4 +1,4 @@
-import { Play } from 'lucide-solid';
+import { PlayIcon } from 'lucide-solid';
 import { Show, createEffect, createSignal } from 'solid-js';
 import { Button } from '~/components/ui/button';
 import { cn } from '~/lib/utils';
@@ -49,7 +49,7 @@ export function Video(props: { width: number; height: number; srcLight: string; 
 			autoplay={true}
 			muted={true}
 			playsinline={true}
-			class={cn(sharedClassName + 'left-2 -top-px hidden dark:block', props.class)}
+			class={cn(sharedClassName + '-top-px left-2 hidden dark:block', props.class)}
 			onPlay={updateIsPlaying}
 			onPause={updateIsPlaying}
 			tabIndex={-1}
@@ -67,7 +67,7 @@ export function Video(props: { width: number; height: number; srcLight: string; 
 			{lightVideoRef}
 			{darkVideoRef}
 			<Show when={!isPlaying()}>
-				<Play class="absolute bottom-3 right-3 h-5 w-5 text-foreground" />
+				<PlayIcon class="text-foreground absolute right-3 bottom-3 h-5 w-5" />
 			</Show>
 		</Button>
 	);

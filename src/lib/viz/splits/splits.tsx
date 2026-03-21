@@ -1,4 +1,4 @@
-import { CircleQuestionMark, Search, X } from 'lucide-solid';
+import { CircleQuestionMarkIcon, SearchIcon, XIcon } from 'lucide-solid';
 import { For, Show, createEffect, createSignal, createUniqueId, type Component } from 'solid-js';
 import { Button } from '~/components/ui/button';
 import { Checkbox } from '~/components/ui/checkbox';
@@ -182,7 +182,7 @@ const RunSplitsSearch: Component = () => {
 	return (
 		<div class="relative mr-2 shrink grow">
 			<Show when={!panelContext.isCollapsed()}>
-				<Search class="absolute top-0 left-0 m-2.5 h-4 w-4" />
+				<SearchIcon class="absolute top-0 left-0 m-2.5 h-4 w-4" />
 				<TextField>
 					<TextFieldInput
 						type="text"
@@ -199,7 +199,7 @@ const RunSplitsSearch: Component = () => {
 						variant="ghost"
 						title="Clear search"
 					>
-						<X class="h-4 w-4" />
+						<XIcon class="h-4 w-4" />
 					</Button>
 				</Show>
 			</Show>
@@ -231,7 +231,7 @@ export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
 							class="h-7 w-7 shrink-0"
 							aria-label="Splits help"
 						>
-							<CircleQuestionMark class="h-3 w-3" />
+							<CircleQuestionMarkIcon class="h-3 w-3" />
 						</PopoverTrigger>
 						<PopoverContent class="shadow-accent w-120 max-w-[90vw] p-0">
 							<div class="text-sm">

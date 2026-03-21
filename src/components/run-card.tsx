@@ -1,5 +1,5 @@
 import { A, useAction, useSubmission } from '@solidjs/router';
-import { ChevronDown, Heart } from 'lucide-solid';
+import { ChevronDownIcon, HeartIcon } from 'lucide-solid';
 import {
 	For,
 	Index,
@@ -333,7 +333,7 @@ export const RunCard: Component<{
 								>
 									<Badge class={'relative z-8 overflow-hidden disabled:z-8'} variant="secondary">
 										<Dynamic component={visibilityIcon()} class="h-4 w-4" />
-										<ChevronDown class="-mr-1 ml-1 h-3 w-3" />
+										<ChevronDownIcon class="-mr-1 ml-1 h-3 w-3" />
 									</Badge>
 								</DropdownMenuTrigger>
 								<DropdownMenuContent class="w-32">
@@ -516,7 +516,7 @@ function RunCardLikeButton(props: { run: RunMetadata }) {
 				disabled={isSubmitting()}
 				class="group absolute right-0 bottom-0 z-7 rounded-full"
 			>
-				<Heart
+				<HeartIcon
 					class={
 						'group-hover:drop-shadow-glow-md h-4 w-4 transition-[fill] duration-300 ' +
 						(hasLiked() ? 'fill-current' : 'fill-[rgba(255,255,255,0.001)]')

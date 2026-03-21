@@ -1,5 +1,5 @@
 import { useAction, useSubmission } from '@solidjs/router';
-import { Archive, ArchiveRestore, Merge, MoreHorizontal, Split, Trash } from 'lucide-solid';
+import { ArchiveIcon, ArchiveRestoreIcon, EllipsisIcon, MergeIcon, SplitIcon, TrashIcon } from 'lucide-solid';
 import { createSignal, Show } from 'solid-js';
 import { Button } from '~/components/ui/button';
 import {
@@ -13,11 +13,11 @@ import {
 import { errorGetMessage } from '~/lib/error-get-message';
 import type { RunMetadata } from '~/server/run/_find_runs_internal';
 import { runUncombine } from '~/server/run/run-combine';
+import { runArchive, runDelete } from '~/server/run/run-deletion';
+import { AlertDialogDescription, AlertDialogTitle } from './ui/alert-dialog';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
 import { showToast } from './ui/toast';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from './ui/dialog';
-import { AlertDialogDescription, AlertDialogTitle } from './ui/alert-dialog';
-import { runArchive, runDelete } from '~/server/run/run-deletion';
 
 export function RunCardDropdownMenu(props: {
 	run: RunMetadata;
@@ -62,16 +62,16 @@ export function RunCardDropdownMenu(props: {
 					as={Button<'button'>}
 					variant="ghost"
 					size="icon"
-					class="absolute bottom-1 right-10 z-7 flex h-6 items-center rounded-sm"
+					class="absolute right-10 bottom-1 z-7 flex h-6 items-center rounded-sm"
 				>
-					<MoreHorizontal class="h-6 w-6" />
+					<EllipsisIcon class="h-6 w-6" />
 				</DropdownMenuTrigger>
 				<DropdownMenuContent class="w-56">
 					<Show when={!props.run.archived}>
 						<Show when={props.run.isCombinedRun}>
 							<Tooltip>
 								<TooltipTrigger as={DropdownMenuItem} onClick={() => setIsSplitDialogOpen(true)}>
-									<Split class="mr-2 h-4 w-4" />
+									<SplitIcon class="mr-2 h-4 w-4" />
 									<span>Split</span>
 								</TooltipTrigger>
 								<TooltipContent>
@@ -86,7 +86,7 @@ export function RunCardDropdownMenu(props: {
 										as={DropdownMenuItem}
 										onClick={() => onCombineClicked()(props.run.id)}
 									>
-										<Merge class="mr-2 h-4 w-4" />
+										<MergeIcon class="mr-2 h-4 w-4" />
 										<span>Combine</span>
 									</TooltipTrigger>
 									<TooltipContent>
@@ -100,19 +100,19 @@ export function RunCardDropdownMenu(props: {
 					</Show>
 					<Show when={props.run.archived}>
 						<DropdownMenuItem onClick={props.handleArchiveToggle}>
-							<ArchiveRestore class="mr-2 h-4 w-4" />
+							<ArchiveRestoreIcon class="mr-2 h-4 w-4" />
 							<span>Unarchive</span>
 						</DropdownMenuItem>
 					</Show>
 					<Show when={!props.run.archived}>
 						<DropdownMenuItem onClick={props.handleArchiveToggle}>
-							<Archive class="mr-2 h-4 w-4" />
+							<ArchiveIcon class="mr-2 h-4 w-4" />
 							<span>Archive</span>
 						</DropdownMenuItem>
 					</Show>
 					<DropdownMenuGroup>
 						<DropdownMenuItem onClick={() => setIsDeleteDialogOpen(true)}>
-							<Trash class="mr-2 h-4 w-4" />
+							<TrashIcon class="mr-2 h-4 w-4" />
 							<span>Delete</span>
 						</DropdownMenuItem>
 					</DropdownMenuGroup>

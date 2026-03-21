@@ -1,5 +1,5 @@
 import { A, useBeforeLeave, useLocation } from '@solidjs/router';
-import { BadgeQuestionMark, BookOpen, Globe, LogIn, Menu } from 'lucide-solid';
+import { BadgeQuestionMarkIcon, BookOpenIcon, GlobeIcon, LogInIcon, MenuIcon } from 'lucide-solid';
 import { ErrorBoundary, Show, Suspense, createMemo, type Component } from 'solid-js';
 import { createLoginUrl } from '~/lib/auth/urls';
 // import { useSession } from '~/lib/auth/client';
@@ -18,7 +18,7 @@ import { ThemeSwitcher } from './theme-switcher';
 export const MainNavLeftSide: Component = () => {
 	return (
 		<>
-			<MenuItem href="/run" title="Public gameplays" icon={Globe} />
+			<MenuItem href="/run" title="Public gameplays" icon={GlobeIcon} />
 			<MenuItem
 				href={({ pathname }) => {
 					if (pathname.startsWith('/guide')) {
@@ -30,10 +30,10 @@ export const MainNavLeftSide: Component = () => {
 					return '/guide/install';
 				}}
 				title="How to's"
-				icon={BadgeQuestionMark}
+				icon={BadgeQuestionMarkIcon}
 				isActive={({ pathname }) => pathname.startsWith('/guide')}
 			/>
-			<MenuItem href="/research" title="Research" icon={BookOpen} />
+			<MenuItem href="/research" title="Research" icon={BookOpenIcon} />
 		</>
 	);
 };
@@ -100,7 +100,7 @@ export const MainNav = () => {
 				</ErrorBoundary>
 				<Sheet open={open()} onOpenChange={setOpen}>
 					<SheetTrigger as={Button<'button'>} variant="ghost" class="app-region-no-drag md:hidden">
-						<Menu class="h-5 w-5" />
+						<MenuIcon class="h-5 w-5" />
 					</SheetTrigger>
 					<SheetContent position="right">
 						<MenuItemContextProvider
@@ -123,7 +123,7 @@ export const MainNav = () => {
 										<MenuItem
 											href={loginUrl()}
 											title="Login"
-											icon={LogIn}
+											icon={LogInIcon}
 											useNativeLink={true}
 											target="_self"
 										/>

@@ -1,4 +1,4 @@
-import { Palette, Play } from 'lucide-solid';
+import { PaletteIcon, PlayIcon } from 'lucide-solid';
 import { untrack, type Component, type JSXElement } from 'solid-js';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { HKVizText } from '../hkviz-text';
@@ -144,7 +144,7 @@ export function createTourSteps({
 					<P>This table shows some statistics about the selected room.</P>
 					<P>
 						By clicking on one of the coloring-buttons (
-						<Palette class="inline-block h-3 w-3" />
+						<PaletteIcon class="inline-block h-3 w-3" />
 						), you can recolor the map based on the selected statistic.
 					</P>
 				</>
@@ -207,8 +207,8 @@ export function createTourSteps({
 							backward.
 						</P>
 						<P>
-							Press play (<Play class="inline-block h-3 w-3" />) to look at the player movement and the
-							map expanding as it is explored.
+							Press play (<PlayIcon class="inline-block h-3 w-3" />) to look at the player movement and
+							the map expanding as it is explored.
 						</P>
 					</>
 				),

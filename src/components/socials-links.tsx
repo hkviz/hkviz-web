@@ -1,4 +1,4 @@
-import { ChevronRight, Mail } from 'lucide-solid';
+import { ChevronRightIcon, MailIcon } from 'lucide-solid';
 import { siDiscord, siGithub } from 'simple-icons';
 import { type Component } from 'solid-js';
 import { HKVizText } from './HKVizText';
@@ -29,7 +29,7 @@ export const DiscordDialogButton: Component = () => {
 					</DialogDescription>
 					<DialogDescription>
 						The channel is located under <Badge variant="outline">Utility Mods</Badge>{' '}
-						<ChevronRight class="inline-block h-3 w-3" /> <Badge variant="outline">#hkviz</Badge>.
+						<ChevronRightIcon class="inline-block h-3 w-3" /> <Badge variant="outline">#hkviz</Badge>.
 					</DialogDescription>
 				</DialogHeader>
 				<div class="flex flex-col justify-center gap-2 p-4 pt-2 align-baseline">
@@ -76,7 +76,7 @@ export function GithubButton() {
 export function MailButton() {
 	return (
 		<Button as={'a'} variant="ghost" size="icon" class="h-12 w-12 rounded-full" href="mailto:support@hkviz.org">
-			<Mail />
+			<MailIcon />
 		</Button>
 	);
 }

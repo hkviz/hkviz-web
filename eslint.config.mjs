@@ -1,9 +1,52 @@
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import solid from 'eslint-plugin-solid/configs/typescript';
 import * as tsParser from '@typescript-eslint/parser';
+import solid from 'eslint-plugin-solid/configs/typescript';
+import tseslint from 'typescript-eslint';
 
 const filesPattern = 'src/**/*.{ts,tsx}';
+
+const localRules = {
+	'lucide-import-suffix': {
+		meta: {
+			type: 'problem',
+			docs: {
+				description: 'Require lucide-solid import names to end with Icon',
+			},
+			schema: [],
+			messages: {
+				invalidImportName:
+					'Import "{{name}}" from "lucide-solid" must end with "Icon" (for example "GlobeIcon").',
+			},
+		},
+		create(context) {
+			return {
+				ImportDeclaration(node) {
+					if (node.source.value !== 'lucide-solid') return;
+
+					for (const specifier of node.specifiers) {
+						if (specifier.type !== 'ImportSpecifier') {
+							context.report({
+								node: specifier,
+								messageId: 'invalidImportName',
+								data: { name: specifier.local.name },
+							});
+							continue;
+						}
+
+						const importedName = specifier.imported.name;
+						if (!importedName.endsWith('Icon')) {
+							context.report({
+								node: specifier.imported,
+								messageId: 'invalidImportName',
+								data: { name: importedName },
+							});
+						}
+					}
+				},
+			};
+		},
+	},
+};
 
 export default tseslint.config(
 	eslint.configs.recommended,
@@ -11,16 +54,21 @@ export default tseslint.config(
 	{
 		files: [filesPattern],
 		...solid,
+		plugins: {
+			...solid.plugins,
+			local: {
+				rules: localRules,
+			},
+		},
 		languageOptions: {
 			parser: tsParser,
 			parserOptions: {
 				project: 'tsconfig.json',
 			},
 		},
-	},
-	{
-		files: [filesPattern],
 		rules: {
+			...solid.rules,
+			'local/lucide-import-suffix': 'error',
 			'@typescript-eslint/no-unused-vars': [
 				'error',
 				{
@@ -34,6 +82,7 @@ export default tseslint.config(
 				},
 			],
 			'@typescript-eslint/no-explicit-any': 'off',
+			'@typescript-eslint/no-deprecated': 'warn',
 		},
 	},
 	{

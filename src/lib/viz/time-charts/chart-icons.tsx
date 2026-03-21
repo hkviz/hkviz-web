@@ -1,4 +1,4 @@
-import { BadgePercent } from 'lucide-solid';
+import { BadgePercentIcon } from 'lucide-solid';
 import type { Component } from 'solid-js';
 import { cn } from '~/lib/utils';
 import {
@@ -14,7 +14,7 @@ import {
 import { useGameplayStoreOptional } from '../store';
 
 export const CompletionChartUnitIcon: Component<{ class?: string }> = (props) => {
-	return <BadgePercent class={props.class} />;
+	return <BadgePercentIcon class={props.class} />;
 };
 
 export const SoulChartUnitIcon: Component<{ class?: string }> = (props) => {

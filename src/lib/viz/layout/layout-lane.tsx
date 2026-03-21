@@ -1,4 +1,4 @@
-import { Maximize, Minus, Rows } from 'lucide-solid';
+import { MaximizeIcon, MinusIcon, Rows2Icon } from 'lucide-solid';
 import { For, onCleanup, onMount, Show, type Component } from 'solid-js';
 import { Button } from '~/components/ui/button';
 import { Resizable, ResizableHandle } from '~/components/ui/resizable';
@@ -20,7 +20,7 @@ const ResizeButtons: Component<ResizeButtonsProps> = (props) => {
 			<Show when={props.state !== 'minimized'}>
 				<Tooltip>
 					<TooltipTrigger as={Button} variant="ghost" size="icon" class="h-7 w-7" onClick={props.minimize}>
-						<Minus class="h-3 w-3" />
+						<MinusIcon class="h-3 w-3" />
 					</TooltipTrigger>
 					<TooltipContent>Close</TooltipContent>
 				</Tooltip>
@@ -28,7 +28,7 @@ const ResizeButtons: Component<ResizeButtonsProps> = (props) => {
 			<Show when={props.state !== 'medimized'}>
 				<Tooltip>
 					<TooltipTrigger as={Button} variant="ghost" size="icon" class="h-7 w-7" onClick={props.medimize}>
-						<Rows class="h-3 w-3" />
+						<Rows2Icon class="h-3 w-3" />
 					</TooltipTrigger>
 					<TooltipContent>Medimize</TooltipContent>
 				</Tooltip>
@@ -36,7 +36,7 @@ const ResizeButtons: Component<ResizeButtonsProps> = (props) => {
 			<Show when={props.state !== 'maximized'}>
 				<Tooltip>
 					<TooltipTrigger as={Button} variant="ghost" size="icon" class="h-7 w-7" onClick={props.maximize}>
-						<Maximize class="h-3 w-3" />
+						<MaximizeIcon class="h-3 w-3" />
 					</TooltipTrigger>
 					<TooltipContent>Maximize</TooltipContent>
 				</Tooltip>

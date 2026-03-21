@@ -1,4 +1,4 @@
-import { Clock12, Clock2, Hash, type LucideIcon } from 'lucide-solid';
+import { Clock12Icon, Clock2Icon, HashIcon, type LucideIcon } from 'lucide-solid';
 import { Match, Switch } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { coinImg, focusImg, maskImg, shadeImg, spellDownImg, spellFireballImg, spellUpImg } from '../img-urls';
@@ -6,13 +6,13 @@ import { AggregationVariable } from '../store/aggregations/aggregate-recording';
 
 export const aggregationVariableDisplayInfos: Record<AggregationVariable, { Icon?: LucideIcon; image?: string }> = {
 	visits: {
-		Icon: Hash,
+		Icon: HashIcon,
 	},
 	firstVisitMs: {
-		Icon: Clock12,
+		Icon: Clock12Icon,
 	},
 	timeSpendMs: {
-		Icon: Clock2,
+		Icon: Clock2Icon,
 	},
 	damageTaken: {
 		image: maskImg,

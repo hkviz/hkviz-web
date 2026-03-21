@@ -1,4 +1,4 @@
-import { Moon, Sun } from 'lucide-solid';
+import { MoonIcon, SunIcon } from 'lucide-solid';
 import { type Component, Show } from 'solid-js';
 import { COOKIE_THEME } from '~/lib/cookies/cookie-names';
 import { cookiesClientSet } from '~/lib/cookies/cookies-client';
@@ -20,8 +20,8 @@ export const ThemeSwitcher: Component = () => {
 	return (
 		<Tooltip>
 			<TooltipTrigger as={Button<'button'>} variant="ghost" onClick={toggleTheme} class="app-region-no-drag">
-				<Show when={themeStore.currentTheme() === 'light'} fallback={<Moon class="h-5 w-5" />}>
-					<Sun class="h-5 w-5" />
+				<Show when={themeStore.currentTheme() === 'light'} fallback={<MoonIcon class="h-5 w-5" />}>
+					<SunIcon class="h-5 w-5" />
 				</Show>
 			</TooltipTrigger>
 			<TooltipContent>

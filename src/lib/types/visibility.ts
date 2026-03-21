@@ -1,26 +1,26 @@
-import { Globe, Lock, Unlock } from 'lucide-solid';
+import { GlobeIcon, LockIcon, LockOpenIcon } from 'lucide-solid';
 import * as v from 'valibot';
 
 export const visibilities = [
-    {
-        code: 'public',
-        name: 'Public',
-        Icon: Globe,
-    },
-    {
-        code: 'unlisted',
-        name: 'Unlisted',
-        Icon: Unlock,
-    },
-    {
-        code: 'private',
-        name: 'Private',
-        Icon: Lock,
-    },
+	{
+		code: 'public',
+		name: 'Public',
+		Icon: GlobeIcon,
+	},
+	{
+		code: 'unlisted',
+		name: 'Unlisted',
+		Icon: LockOpenIcon,
+	},
+	{
+		code: 'private',
+		name: 'Private',
+		Icon: LockIcon,
+	},
 ] as const;
 
 type CodesOf<T extends readonly { code: unknown }[]> = {
-    [I in keyof T]: T[I]['code'];
+	[I in keyof T]: T[I]['code'];
 };
 
 type VisibilityCodes = CodesOf<typeof visibilities>;
@@ -30,5 +30,5 @@ export const visibilityCodes = visibilities.map((it) => it.code) as unknown as V
 export const visibilitySchema = v.picklist(visibilityCodes);
 
 export function visibilityByCode(code: VisibilityCode) {
-    return visibilities.find((it) => it.code === code)!;
+	return visibilities.find((it) => it.code === code)!;
 }

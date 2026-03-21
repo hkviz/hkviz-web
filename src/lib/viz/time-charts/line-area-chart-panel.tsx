@@ -1,4 +1,4 @@
-import { Pause, Play } from 'lucide-solid';
+import { PauseIcon, PlayIcon } from 'lucide-solid';
 import CircleQuestionMark from 'lucide-solid/icons/circle-help';
 import { Component, Show } from 'solid-js';
 import { Button } from '~/components/ui/button';
@@ -31,8 +31,8 @@ const RunExtraChartsFollowButton: Component = () => {
 						: '')
 				}
 			>
-				<Show when={extraChartsFollowAnimation()} fallback={<Play class="h-4 w-4" />}>
-					<Pause class={'h-4 w-4'} />
+				<Show when={extraChartsFollowAnimation()} fallback={<PlayIcon class="h-4 w-4" />}>
+					<PauseIcon class={'h-4 w-4'} />
 				</Show>
 			</TooltipTrigger>
 			<TooltipContent>Follow animation</TooltipContent>

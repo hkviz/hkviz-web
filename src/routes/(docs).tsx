@@ -1,5 +1,12 @@
 import { A, useLocation } from '@solidjs/router';
-import { BookOpen, Cookie, Download, History, Map, UsersRound } from 'lucide-solid';
+import {
+	BookOpenIcon,
+	CookieIcon,
+	DownloadIcon,
+	HistoryIcon,
+	MapIcon,
+	UsersRoundIcon
+} from 'lucide-solid';
 import { type JSXElement } from 'solid-js';
 import { HKVizText } from '~/components/HKVizText';
 import { MdxOuterWrapper } from '~/components/mdx-layout';
@@ -37,11 +44,11 @@ export default function DocsLayout(props: { children: JSXElement }) {
 						</SubMenuSectionTitle>
 						<SubMenuList>
 							<SubMenuLink href="/guide/install">
-								<Download class="h-4 pr-2" />
+								<DownloadIcon class="h-4 pr-2" />
 								How to record gameplay analytics
 							</SubMenuLink>
 							<SubMenuLink href="/guide/analytics">
-								<Map class="h-4 pr-2" />
+								<MapIcon class="h-4 pr-2" />
 								How to use the analytics page
 							</SubMenuLink>
 						</SubMenuList>
@@ -49,19 +56,19 @@ export default function DocsLayout(props: { children: JSXElement }) {
 						<h3 class="mt-4 font-serif text-xl font-bold">Other links</h3>
 						<SubMenuList>
 							<SubMenuLink href="/research">
-								<BookOpen class="h-4 pr-2" />
+								<BookOpenIcon class="h-4 pr-2" />
 								Research
 							</SubMenuLink>
 							<SubMenuLink href="/credits">
-								<UsersRound class="h-4 pr-2" />
+								<UsersRoundIcon class="h-4 pr-2" />
 								Credits
 							</SubMenuLink>
 							<SubMenuLink href="/privacy-policy">
-								<Cookie class="h-4 pr-2" />
+								<CookieIcon class="h-4 pr-2" />
 								Privacy policy
 							</SubMenuLink>
 							<SubMenuLink href="/changelog">
-								<History class="h-4 pr-2" />
+								<HistoryIcon class="h-4 pr-2" />
 								Changelog
 							</SubMenuLink>
 						</SubMenuList>

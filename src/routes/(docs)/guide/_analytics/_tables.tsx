@@ -1,4 +1,4 @@
-import { Pin } from 'lucide-solid';
+import { PinIcon } from 'lucide-solid';
 import { CtrlOrCommandKeyText, ShortcutKeys } from '~/components/shortcut-hint';
 import { Card } from '~/components/ui/card';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '~/components/ui/table';
@@ -45,7 +45,7 @@ export function SplitActionsTable() {
 						</TableCell>
 						<TableCell>
 							<a href="#room-pin" class="underline" target="_self">
-								<Pin class="inline-block h-4 w-4" />
+								<PinIcon class="inline-block h-4 w-4" />
 								Pin the room
 							</a>{' '}
 							of a split
@@ -161,7 +161,7 @@ export function TimelineColorCodesTable() {
 						</TableCell>
 						<TableCell>
 							<a href="#room-pin" class="underline" target="_self">
-								Toggle if the selected room is pinned. <Pin class="inline-block h-4 w-4" />
+								Toggle if the selected room is pinned. <PinIcon class="inline-block h-4 w-4" />
 							</a>
 						</TableCell>
 					</TableRow>

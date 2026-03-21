@@ -1,5 +1,5 @@
 import { useAction, useSubmission } from '@solidjs/router';
-import { Plus, X } from 'lucide-solid';
+import { PlusIcon, XIcon } from 'lucide-solid';
 import { For, Show, createMemo, type Component, type JSXElement } from 'solid-js';
 import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode, type TagGroup } from '~/lib/types/tags';
@@ -56,7 +56,7 @@ export const RunTag: Component<{
 					onClick={removeTag}
 					disabled={removeTagSubmission.pending || !!removeTagSubmission.result}
 				>
-					<X class="h-3 w-3" />
+					<XIcon class="h-3 w-3" />
 				</Button>
 			</Show>
 		</Badge>
@@ -102,11 +102,11 @@ export const RunTags: Component<{
 								variant="outline"
 								size="sm"
 								class={cn(
-									'relative z-8 h-auto rounded-full bg-background px-2 py-1 text-xs text-black dark:text-white',
+									'bg-background relative z-8 h-auto rounded-full px-2 py-1 text-xs text-black dark:text-white',
 									props.addButtonClass,
 								)}
 							>
-								<Plus class="h-4 w-4" />
+								<PlusIcon class="h-4 w-4" />
 								Add Tag
 							</DropdownMenuTrigger>
 						</TagDropdownMenu>

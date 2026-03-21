@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Palette, Pin, PinOff } from 'lucide-solid';
+import { ArrowLeftIcon, ArrowRightIcon, PaletteIcon, PinIcon, PinOffIcon } from 'lucide-solid';
 import { createEffect, createMemo, For, Index, Match, onCleanup, Show, Switch, type Component } from 'solid-js';
 import { ShortcutHint } from '~/components/shortcut-hint';
 import { tabsListTransparentClasses } from '~/components/ui/additions';
@@ -89,7 +89,7 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 					<span class="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
 						<Switch>
 							<Match when={!isActive()}>
-								<Palette class="h-4 w-4 text-base" />
+								<PaletteIcon class="h-4 w-4 text-base" />
 							</Match>
 							<Match when={isActive() && roomColorVar1Curve().type === 'linear'}>
 								<span class="text-[.7rem]">linear</span>
@@ -149,7 +149,7 @@ const AggregationVariableRow: Component<{
 								class="-mr-3 h-10 w-7"
 								onClick={() => props.deselectVariable?.()}
 							>
-								<ArrowLeft class="h-3 w-3" />
+								<ArrowLeftIcon class="h-3 w-3" />
 							</TooltipTrigger>
 							<TooltipContent>Back to variable list</TooltipContent>
 						</Tooltip>
@@ -196,7 +196,7 @@ const AggregationVariableRow: Component<{
 								class="h-10 w-7"
 								onClick={() => props.selectVariable?.(props.variable)}
 							>
-								<ArrowRight class="h-3 w-3" />
+								<ArrowRightIcon class="h-3 w-3" />
 							</TooltipTrigger>
 							<TooltipContent>Show history</TooltipContent>
 						</Tooltip>
@@ -481,8 +481,8 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 									: '')
 							}
 						>
-							<Show when={selectedRoomPinned()} fallback={<Pin class="h-4 w-4" />}>
-								<PinOff class={'h-4 w-4'} />
+							<Show when={selectedRoomPinned()} fallback={<PinIcon class="h-4 w-4" />}>
+								<PinOffIcon class={'h-4 w-4'} />
 							</Show>
 						</TooltipTrigger>
 						<TooltipContent>

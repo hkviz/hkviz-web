@@ -1,4 +1,4 @@
-import { AreaChart, Play, Rocket } from 'lucide-solid';
+import { ChartAreaIcon, PlayIcon, RocketIcon } from 'lucide-solid';
 import { For, Show, createMemo, type Component, type JSXElement } from 'solid-js';
 import { Expander } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
@@ -125,17 +125,17 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 								disabled={isDisabled()}
 								class="getting-started-tour-button"
 							>
-								<Rocket class="mr-2 h-5 w-5" />
+								<RocketIcon class="mr-2 h-5 w-5" />
 								<span class="grow">Quick start tour</span>
 							</Button>
 						</div>
-						<div class="grid max-w-[500px] grid-cols-2 gap-2">
+						<div class="grid grid-cols-2 gap-2">
 							<Button onClick={viewAnimatedAnalytics} disabled={isDisabled()} variant="outline">
-								<Play class="mr-2 h-5 w-5" />
+								<PlayIcon class="mr-2 h-5 w-5" />
 								<span class="grow">View player movement</span>
 							</Button>
 							<Button onClick={viewStaticAnalytics} disabled={isDisabled()} variant="outline">
-								<AreaChart size={20} class="mr-2 h-5 w-5" />
+								<ChartAreaIcon class="mr-2 h-5 w-5" />
 								View room based analytics
 							</Button>
 						</div>

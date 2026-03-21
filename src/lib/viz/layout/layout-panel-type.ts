@@ -1,4 +1,4 @@
-import { ChartBarBigIcon, Map } from 'lucide-solid';
+import { ChartBarBigIcon, MapIcon } from 'lucide-solid';
 import { Component } from 'solid-js';
 import { SplitIcon as SplitPanelIcon } from '../splits/split-icon';
 import {
@@ -62,7 +62,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		id: 'map-options',
 		category: 'map-options',
 		displayName: 'Map Options',
-		icon: Map,
+		icon: MapIcon,
 		showIconInSelect: false,
 		intrinsicSize: 0.5,
 		selectableInSelect: true,
@@ -73,7 +73,7 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		id: 'map',
 		category: 'map',
 		displayName: 'Map',
-		icon: Map,
+		icon: MapIcon,
 		showIconInSelect: false,
 		intrinsicSize: 0.7,
 		selectableInSelect: false,

@@ -1,4 +1,4 @@
-import { Focus, Fullscreen, Group } from 'lucide-solid';
+import { FocusIcon, FullscreenIcon, GroupIcon } from 'lucide-solid';
 import { JSXElement, type Component } from 'solid-js';
 import { ShortcutHint } from '~/components/shortcut-hint';
 import { overlayBlurBackgroundClasses } from '~/components/ui/additions/overlay';
@@ -62,7 +62,7 @@ export const MapOverlayOptions: Component = () => {
 				tooltipHeading="Show whole map"
 				tooltipBody="Show the entire map at once"
 			>
-				<Fullscreen class="h-4 w-4" />
+				<FullscreenIcon class="h-4 w-4" />
 			</MapZoomButton>
 
 			<MapZoomButton
@@ -76,7 +76,7 @@ export const MapOverlayOptions: Component = () => {
 					</>
 				}
 			>
-				<Group class="h-4 w-4" />
+				<GroupIcon class="h-4 w-4" />
 			</MapZoomButton>
 
 			<MapZoomButton
@@ -84,7 +84,7 @@ export const MapOverlayOptions: Component = () => {
 				tooltipHeading="Follow player's area"
 				tooltipBody="Keep the current area centered on the screen"
 			>
-				<Focus class="h-4 w-4" />
+				<FocusIcon class="h-4 w-4" />
 			</MapZoomButton>
 		</ToggleGroup>
 	);

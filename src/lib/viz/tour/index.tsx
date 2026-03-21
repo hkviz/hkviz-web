@@ -1,4 +1,4 @@
-import { X } from 'lucide-solid';
+import { XIcon } from 'lucide-solid';
 import { For, Show, createEffect, createMemo, onCleanup, untrack, type Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Button } from '~/components/ui/button';
@@ -44,7 +44,7 @@ const TourStep: Component<TourStepProps> = (props) => {
 						variant="outline"
 						onClick={tourStore.close}
 					>
-						<X class="h-4 w-4" />
+						<XIcon class="h-4 w-4" />
 					</Button>
 					<Dynamic component={props.step.content} />
 					<div class="flex flex-row items-end gap-2">

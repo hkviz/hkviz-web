@@ -1,4 +1,4 @@
-import { Pause, Play } from 'lucide-solid';
+import { PauseIcon, PlayIcon } from 'lucide-solid';
 import { createEffect, createMemo, createSignal, Index, onCleanup, Show } from 'solid-js';
 import { ShortcutHint } from '~/components/shortcut-hint';
 import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
@@ -41,8 +41,8 @@ function PlayButton() {
 	return (
 		<Tooltip>
 			<TooltipTrigger as={Button} onClick={animationStore.togglePlaying} variant="ghost" disabled={isDisabled}>
-				<Show when={isPlaying()} fallback={<Play class="h-5 w-5" />}>
-					<Pause class="h-5 w-5" />
+				<Show when={isPlaying()} fallback={<PlayIcon class="h-5 w-5" />}>
+					<PauseIcon class="h-5 w-5" />
 				</Show>
 			</TooltipTrigger>
 			<TooltipContent>

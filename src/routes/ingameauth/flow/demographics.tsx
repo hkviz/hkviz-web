@@ -1,6 +1,6 @@
 import { Title } from '@solidjs/meta';
 import { A, createAsync, useAction, useSubmission } from '@solidjs/router';
-import { Asterisk } from 'lucide-solid';
+import { AsteriskIcon } from 'lucide-solid';
 import { createEffect, createMemo, createSignal, For, Show } from 'solid-js';
 import { AuthNeededWrapper } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
@@ -32,7 +32,7 @@ import { demographicsGetUserState, demographicsSave } from '~/server/ingameauth/
 function RequiredStar() {
 	return (
 		<span>
-			<Asterisk class="-mt-[0.5em] inline-block h-[1.2rem] w-[1.2rem] pl-2 text-red-500" />
+			<AsteriskIcon class="-mt-[0.5em] inline-block h-[1.2rem] w-[1.2rem] pl-2 text-red-500" />
 		</span>
 	);
 }
