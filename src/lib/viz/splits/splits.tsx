@@ -12,7 +12,7 @@ import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import { LayoutPanelHeader } from '../layout/layout-panel-header';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
-import { useAnimationStore, useRoomDisplayStore, useSplitsStore, useUiStore } from '../store';
+import { useSplitsStore } from '../store';
 import { TimelineList, TimelineListEntryButton, useTimelineListEntryContext } from '../timeline-list/timeline-list';
 import { splitColors } from './split-colors';
 
@@ -21,42 +21,7 @@ interface RowProps {
 }
 
 const RunSplitRow: Component<RowProps> = (props) => {
-	const animationStore = useAnimationStore();
 	const timelineListContext = useTimelineListEntryContext();
-	const roomDisplayStore = useRoomDisplayStore();
-	const uiStore = useUiStore();
-
-	const hasClicked = {
-		hasClicked: false,
-		timeout: null as any,
-	};
-
-	function handleClick() {
-		console.log('split clicked', props.split);
-		animationStore.setMsIntoGame(props.split.msIntoGame, 'smooth');
-		uiStore.showMapIfOverview();
-
-		function markClicked() {
-			clearTimeout(hasClicked.timeout);
-			hasClicked.hasClicked = true;
-			hasClicked.timeout = setTimeout(() => {
-				hasClicked.hasClicked = false;
-			}, 1000);
-		}
-
-		const sceneName = props.split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-		if (sceneName) {
-			if (props.activeState !== 'next') {
-				roomDisplayStore.setSelectedSceneName(sceneName);
-				hasClicked.hasClicked = true;
-				markClicked();
-			} else {
-				roomDisplayStore.togglePinnedRoom(sceneName, 'split-click');
-				markClicked();
-			}
-		}
-	}
-
 	const splitGroupColor = () => splitColors[props.split.group.name];
 
 	return (
@@ -78,7 +43,7 @@ const RunSplitRow: Component<RowProps> = (props) => {
 			<p class="flex grow flex-col items-start justify-center text-left">
 				<span class="relative">
 					<Show when={timelineListContext.state() === 'next'}>
-						<span class="absolute bottom-full left-0 text-[.5rem] font-bold opacity-75">Up Next</span>
+						<span class="absolute bottom-full left-0 w-max text-[.5rem] font-bold opacity-75">Up Next</span>
 					</Show>
 					{props.split.title}
 				</span>
