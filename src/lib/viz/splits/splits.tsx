@@ -1,43 +1,30 @@
 import { CircleQuestionMarkIcon, SearchIcon, XIcon } from 'lucide-solid';
-import { For, Show, createEffect, createSignal, createUniqueId, type Component } from 'solid-js';
+import { For, Show, createUniqueId, type Component } from 'solid-js';
 import { Button } from '~/components/ui/button';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
-import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { cn } from '~/lib/utils';
 import { SplitsList } from '~/routes/(docs)/guide/_analytics/_splits-list';
-import { assertNever, recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '../../parser';
+import { recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '../../parser';
 import { Duration } from '../duration';
 import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import { LayoutPanelHeader } from '../layout/layout-panel-header';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
 import { useAnimationStore, useRoomDisplayStore, useSplitsStore, useUiStore } from '../store';
-import { createRoomMsButtonProps } from '../util/shared-interactions';
+import { TimelineList, TimelineListEntryButton, useTimelineListEntryContext } from '../timeline-list/timeline-list';
 import { splitColors } from './split-colors';
-
-type RowActiveState = 'past' | 'next' | 'future';
 
 interface RowProps {
 	split: RecordingSplit;
-	activeState: RowActiveState;
-	scrollParent: HTMLDivElement | undefined;
 }
 
 const RunSplitRow: Component<RowProps> = (props) => {
 	const animationStore = useAnimationStore();
+	const timelineListContext = useTimelineListEntryContext();
 	const roomDisplayStore = useRoomDisplayStore();
 	const uiStore = useUiStore();
-
-	const activeStateClasses = () =>
-		props.activeState === 'past'
-			? 'bg-linear-to-r from-green-300/10 to-green-500/20 dark:from-green-500/10 dark:to-green-500/15'
-			: props.activeState === 'next'
-				? 'bg-blue-300 dark:bg-blue-800'
-				: props.activeState === 'future'
-					? ''
-					: assertNever(props.activeState);
 
 	const hasClicked = {
 		hasClicked: false,
@@ -70,106 +57,65 @@ const RunSplitRow: Component<RowProps> = (props) => {
 		}
 	}
 
-	const hover = createRoomMsButtonProps({
-		room: () => ({
-			sceneName: props.split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.(),
-			hoverSource: 'splits',
-			selectIfNotPinned: true,
-		}),
-		time: () => ({
-			msIntoGame: props.split.msIntoGame,
-		}),
-	});
-
 	const splitGroupColor = () => splitColors[props.split.group.name];
 
-	let ref!: HTMLTableRowElement;
-
-	createEffect(() => {
-		if (props.activeState === 'next') {
-			const tr = ref;
-			const scrollDiv = props.scrollParent;
-			if (!tr || !scrollDiv) return;
-			const maxOk = tr.offsetTop;
-			const minOk = tr.offsetTop - scrollDiv.clientHeight + tr.clientHeight;
-			// (tr.parentNode! as any).scrollTop = tr.offsetTop;
-			if (scrollDiv.scrollTop < minOk || scrollDiv.scrollTop > maxOk) {
-				scrollDiv.scrollTo({ top: minOk, behavior: 'smooth' });
-			}
-		}
-	});
-
 	return (
-		<TableRow ref={ref}>
-			<TableCell class={cn('p-0', activeStateClasses())}>
-				<button
-					onClick={handleClick}
-					class="relative flex w-full flex-row items-center gap-2 py-2.5 pr-3 pl-4"
-					{...hover}
-				>
-					<div class={cn('absolute top-0 bottom-0 left-0 w-1', splitGroupColor().background)} />
-					<Show when={props.split.imageUrl}>
-						{(imageUrl) => (
-							<div
-								class="mr-2 h-7 w-7 shrink-0 bg-contain bg-center bg-no-repeat"
-								style={{
-									['background-image']: `url(${imageUrl()})`,
-								}}
-							/>
-						)}
+		<TimelineListEntryButton
+			class="flex w-full flex-row items-center justify-between gap-2 py-2.5 pr-3 pl-4 text-sm"
+			heightMode="auto"
+		>
+			<div class={cn('absolute top-0 bottom-0 left-0 w-1', splitGroupColor().background)} />
+			<Show when={props.split.imageUrl}>
+				{(imageUrl) => (
+					<div
+						class="mr-2 h-7 w-7 shrink-0 bg-contain bg-center bg-no-repeat"
+						style={{
+							['background-image']: `url(${imageUrl()})`,
+						}}
+					/>
+				)}
+			</Show>
+			<p class="flex grow flex-col items-start justify-center text-left">
+				<span class="relative">
+					<Show when={timelineListContext.state() === 'next'}>
+						<span class="absolute bottom-full left-0 text-[.5rem] font-bold opacity-75">Up Next</span>
 					</Show>
-					<p class="flex grow flex-col items-start justify-center text-left">
-						<span class="relative">
-							<Show when={props.activeState === 'next'}>
-								<span class="absolute bottom-full left-0 text-[.5rem] font-bold opacity-75">
-									Up Next
-								</span>
-							</Show>
-							{props.split.title}
-						</span>
-						{/* <span
+					{props.split.title}
+				</span>
+				{/* <span
                             class="-mb-1 mt-1 rounded-lg bg-slate-400 px-1 py-0.5 text-[.5rem] font-bold leading-none text-black"
                             style={{ backgroundColor: scene?.color?.formatHex() }}
                         >
                             {displaySceneName}
                         </span> */}
-						{/* <span class="-mb-1 rounded-lg py-0.5 text-[.6rem] font-bold leading-none" style={{ color }}>
+				{/* <span class="-mb-1 rounded-lg py-0.5 text-[.6rem] font-bold leading-none" style={{ color }}>
                             {displaySceneName}
                         </span> */}
-					</p>
-					<Duration ms={props.split.msIntoGame} class="pr-3" withTooltip={false} />
-				</button>
-			</TableCell>
-		</TableRow>
+			</p>
+			<Duration ms={props.split.msIntoGame} class="pr-3" withTooltip={false} />
+		</TimelineListEntryButton>
 	);
 };
 
 const RunSplitsRows: Component = () => {
 	const splitsStore = useSplitsStore();
 	const filteredSplits = splitsStore.filteredSplits;
-	const nextSplitIndex = splitsStore.nextSplitIndex;
 
-	const [scrollDiv, setScrollDiv] = createSignal<HTMLDivElement>();
+	function getSceneName(entry: RecordingSplit) {
+		const newScene = entry.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
+		return newScene;
+	}
 
 	return (
-		<div class="shrink grow basis-0 overflow-y-auto" ref={setScrollDiv}>
-			<Table class="w-full">
-				<TableBody>
-					<For each={filteredSplits()}>
-						{(split, index) => {
-							const activeState = () =>
-								nextSplitIndex() === -1 || nextSplitIndex() === undefined
-									? 'past'
-									: nextSplitIndex() === index()
-										? 'next'
-										: index() < nextSplitIndex()
-											? 'past'
-											: 'future';
-							return <RunSplitRow split={split} activeState={activeState()} scrollParent={scrollDiv()} />;
-						}}
-					</For>
-				</TableBody>
-			</Table>
+		<div class="relative flex shrink grow basis-0 flex-col">
+			<TimelineList
+				entries={filteredSplits()}
+				getEntryTime={(entry) => entry.msIntoGame}
+				getSceneName={getSceneName}
+				virtualize={false}
+			>
+				{(split, _state, _previousEntry) => <RunSplitRow split={split()} />}
+			</TimelineList>
 		</div>
 	);
 };

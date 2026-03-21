@@ -8,6 +8,7 @@ export function createRoomMsButtonProps(props: {
 		| null;
 	time?: () => { msIntoGame: number | undefined | null } | undefined | null;
 	withClick?: boolean;
+	onClick?: () => void;
 }): JSX.HTMLAttributes<HTMLButtonElement> {
 	const hoverMsStore = useHoverMsStore();
 	const roomDisplayStore = useRoomDisplayStore();
@@ -55,6 +56,7 @@ export function createRoomMsButtonProps(props: {
 			if (time?.msIntoGame !== undefined && time.msIntoGame !== null) {
 				animationStore.setMsIntoGame(time.msIntoGame, 'smooth');
 			}
+			props.onClick?.();
 		};
 	}
 	return attributes;

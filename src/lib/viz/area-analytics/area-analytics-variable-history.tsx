@@ -1,5 +1,6 @@
 import { Component, createMemo, Show } from 'solid-js';
 import { assertNever } from '~/lib/parser';
+import { Duration } from '../duration';
 import { AreaSelectionMode, useAggregationStore, useGameplayStore, useRoomDisplayStore } from '../store';
 import {
 	AggregationVariable,
@@ -8,7 +9,6 @@ import {
 	ValueAggregationTimePoint,
 } from '../store/aggregations/aggregate-recording';
 import { TimelineList, TimelineListEntryButton } from '../timeline-list/timeline-list';
-import { formatTimeMs } from '../util/time';
 import { useAreaAnalyticsContext } from './area-analytics-context';
 
 function noHistoryMessage(mode: AreaSelectionMode): string {
@@ -32,8 +32,8 @@ const AreaAnalyticsVariableHistoryRow: Component<{
 	});
 
 	return (
-		<TimelineListEntryButton class="flex items-center justify-between p-2 pr-4 text-sm">
-			<span>{formatTimeMs(props.entry.msIntoGame)}</span>
+		<TimelineListEntryButton class="flex items-center justify-between p-2 pr-4 text-sm" heightMode="from-estimate">
+			<Duration ms={props.entry.msIntoGame} class="pr-3" withTooltip={false} />
 			<span>
 				<Show when={varInfo().showHistoryDelta && delta()}>
 					{(delta) => (
@@ -85,11 +85,13 @@ export const AreaAnalyticsVariableHistory: Component = () => {
 							entries={history()}
 							getEntryTime={(entry) => entry.msIntoGame}
 							getSceneName={getSceneName}
+							estimateSize={() => 37}
+							virtualize={true}
 						>
 							{(entry, _state, previousEntry) => (
 								<AreaAnalyticsVariableHistoryRow
 									variable={variable()}
-									entry={entry}
+									entry={entry()}
 									previousEntry={previousEntry() ?? null}
 								/>
 							)}
