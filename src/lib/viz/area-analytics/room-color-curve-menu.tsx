@@ -3,7 +3,8 @@ import { ContextMenuItem } from '~/components/ui/context-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { cn } from '~/lib/utils';
 import { roomColorCurveById, RoomColorCurveId, roomColorCurveIds, roomColorCurves } from '../color-curves';
-import { AggregationVariable, useRoomColoringStore } from '../store';
+import { useRoomColoringStore } from '../store';
+import { AggregationVariable } from '../store/aggregations/aggregate-recording';
 
 export function RoomColorCurveContextMenuItems(props: { variable: AggregationVariable }) {
 	const roomColoringStore = useRoomColoringStore();

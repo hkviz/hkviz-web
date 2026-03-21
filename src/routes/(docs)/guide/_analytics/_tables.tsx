@@ -35,7 +35,7 @@ export function SplitActionsTable() {
 							<ShortcutKeys keys={['Click']} />
 						</TableCell>
 						<TableCell>
-							Jump to the timepoint of a split and change the selected room of the room analytics panel to
+							Jump to the timepoint of a split and change the selected room of the area analytics panel to
 							the room of the split
 						</TableCell>
 					</TableRow>

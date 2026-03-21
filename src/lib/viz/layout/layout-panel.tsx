@@ -1,9 +1,9 @@
 import { Component, JSXElement } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { assertNever } from '~/lib/parser';
+import { AreaAnalyticsPanel } from '../area-analytics';
 import { HKMap } from '../map';
 import { MapOptions } from '../map-options';
-import { RoomInfo } from '../room-infos';
 import { RunSplits } from '../splits';
 import { useLayoutStore } from '../store/layout-store';
 import { CompletionChart, EssenceChart, GeoChart, GrubChart, HealthChart, SoulChart } from '../time-charts';
@@ -39,8 +39,8 @@ function getComponentForPanelType(type: LayoutPanelType): Component<LayoutPanelT
 			return RunSplits;
 		case 'map-options':
 			return MapOptions;
-		case 'room-info':
-			return RoomInfo;
+		case 'area-analytics':
+			return AreaAnalyticsPanel;
 		case 'map':
 			return (props) => (
 				<LayoutPanelWrapper class="relative">

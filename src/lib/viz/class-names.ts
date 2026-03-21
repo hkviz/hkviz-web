@@ -1,5 +1,5 @@
-import { type AggregationVariable } from './store';
+import { AggregationVariable } from './store/aggregations/aggregate-recording';
 
 export function roomInfoColoringToggleClasses(variable: AggregationVariable) {
-    return 'room-info-coloring-toggle_' + variable;
+	return 'room-info-coloring-toggle_' + variable;
 }

@@ -24,7 +24,7 @@ export function createLayoutStore(viewportStore: ViewportStore) {
 		left: {
 			locationIds: ['l1', 'l2'],
 			sizes: [0.3, 0.7],
-			panelTypes: ['map-options', 'room-info'],
+			panelTypes: ['map-options', 'area-analytics'],
 		},
 		right: {
 			locationIds: ['r1', 'r2', 'r3'],
@@ -34,7 +34,7 @@ export function createLayoutStore(viewportStore: ViewportStore) {
 		mobileMap: {
 			locationIds: ['mm1', 'mm2'],
 			sizes: [0.3, 0.7],
-			panelTypes: ['room-info', 'map'],
+			panelTypes: ['area-analytics', 'map'],
 		},
 	});
 

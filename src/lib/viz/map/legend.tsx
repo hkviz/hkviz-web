@@ -2,16 +2,19 @@ import * as d3 from 'd3';
 import { createMemo, For, Show, type Component } from 'solid-js';
 import { Expander } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
-import { RoomColorCurveSelect } from '../room-infos/room-color-curve-menu';
+import { RoomColorCurveSelect } from '../area-analytics/room-color-curve-menu';
 import {
-	aggregationVariableInfos,
-	formatAggregatedVariableValue,
 	useAggregationStore,
 	useAnimationStore,
 	useGameplayStore,
 	useRoomColoringStore,
 	useRoomDisplayStore,
 } from '../store';
+import {
+	aggregationVariableDefaultValue,
+	aggregationVariableInfos,
+	formatAggregatedVariableValue,
+} from '../store/aggregations/aggregate-recording';
 
 const LEGEND_PADDING = 30;
 const LEGEND_RAMP_WIDTH = 200;
@@ -46,7 +49,10 @@ export const MapLegend: Component = () => {
 	const var1Info = () => aggregationVariableInfos[var1()];
 	const hoveredRoom = roomDisplayStore.hoveredSceneName;
 	const var1SelectedRoomValue = () =>
-		hoveredRoom() ? (aggregationStore.data()?.countPerScene?.[hoveredRoom()!]?.[var1()] ?? 0) : null;
+		hoveredRoom()
+			? (aggregationStore.data()?.countPerScene?.[hoveredRoom()!]?.[var1()] ??
+				aggregationVariableDefaultValue(var1()))
+			: null;
 	const var1Max = roomColoringStore.var1Max;
 	const singleVarColormap = roomColoringStore.singleVarColorMap;
 

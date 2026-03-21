@@ -21,6 +21,7 @@ export type RoomPinChangeSource =
 	| 'hotkey';
 
 export type RoomHoverSource = 'map' | 'chart' | 'splits' | 'timeline' | 'other';
+export type AreaSelectionMode = 'room' | 'zone' | 'all';
 
 export function createRoomDisplayStore(
 	playerDataAnimationStore: PlayerDataAnimationStore,
@@ -32,6 +33,7 @@ export function createRoomDisplayStore(
 	const [hoveredSceneNameSource, setHoveredSceneNameSource] = createSignal<RoomHoverSource | null>(null);
 	const [selectedScenePinned, setSelectedScenePinned] = createSignal(false);
 	const [selectedScenePinSource, setSelectedScenePinSource] = createSignal<RoomPinChangeSource>('code');
+	const [areaSelectionMode, setAreaSelectionMode] = createSignal<AreaSelectionMode>('room');
 
 	const [showAreaNames, setShowAreaNames] = createSignal(true);
 	const [showSubAreaNames, setShowSubAreaNames] = createSignal(true);
@@ -205,6 +207,8 @@ export function createRoomDisplayStore(
 		reset,
 		pinScene,
 		unpinScene,
+		areaSelectionMode,
+		setAreaSelectionMode,
 	};
 }
 

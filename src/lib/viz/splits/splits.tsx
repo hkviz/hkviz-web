@@ -13,7 +13,8 @@ import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import { LayoutPanelHeader } from '../layout/layout-panel-header';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
-import { useAnimationStore, useHoverMsStore, useRoomDisplayStore, useSplitsStore, useUiStore } from '../store';
+import { useAnimationStore, useRoomDisplayStore, useSplitsStore, useUiStore } from '../store';
+import { createRoomMsButtonProps } from '../util/shared-interactions';
 import { splitColors } from './split-colors';
 
 type RowActiveState = 'past' | 'next' | 'future';
@@ -28,15 +29,6 @@ const RunSplitRow: Component<RowProps> = (props) => {
 	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const uiStore = useUiStore();
-	const hoverMsStore = useHoverMsStore();
-	// const activeStateClasses =
-	//     activeState === 'past'
-	//         ? 'bg-green-200 dark:bg-green-900'
-	//         : activeState === 'next'
-	//           ? 'bg-blue-300 dark:bg-blue-800'
-	//           : activeState === 'future'
-	//             ? ''
-	//             : assertNever(activeState);
 
 	const activeStateClasses = () =>
 		props.activeState === 'past'
@@ -78,22 +70,16 @@ const RunSplitRow: Component<RowProps> = (props) => {
 		}
 	}
 
-	function handleMouseEnter() {
-		const sceneName = props.split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-		if (sceneName) {
-			roomDisplayStore.setHoveredRoom(sceneName, 'splits');
-			roomDisplayStore.setSelectedRoomIfNotPinned(sceneName);
-		}
-		hoverMsStore.setHoveredMsIntoGame(props.split.msIntoGame);
-	}
-
-	function handleMouseLeave() {
-		const sceneName = props.split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
-		if (sceneName) {
-			roomDisplayStore.unsetHoveredRoom(sceneName);
-		}
-		hoverMsStore.unsetHoveredMsIntoGame(props.split.msIntoGame);
-	}
+	const hover = createRoomMsButtonProps({
+		room: () => ({
+			sceneName: props.split.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.(),
+			hoverSource: 'splits',
+			selectIfNotPinned: true,
+		}),
+		time: () => ({
+			msIntoGame: props.split.msIntoGame,
+		}),
+	});
 
 	const splitGroupColor = () => splitColors[props.split.group.name];
 
@@ -118,9 +104,8 @@ const RunSplitRow: Component<RowProps> = (props) => {
 			<TableCell class={cn('p-0', activeStateClasses())}>
 				<button
 					onClick={handleClick}
-					onMouseEnter={handleMouseEnter}
-					onMouseLeave={handleMouseLeave}
 					class="relative flex w-full flex-row items-center gap-2 py-2.5 pr-3 pl-4"
+					{...hover}
 				>
 					<div class={cn('absolute top-0 bottom-0 left-0 w-1', splitGroupColor().background)} />
 					<Show when={props.split.imageUrl}>

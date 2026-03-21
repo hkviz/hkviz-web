@@ -1,6 +1,21 @@
 import { ShortcutKey } from '~/components/shortcut-hint';
 import { ChangelogEntry } from './_changelog-entry';
 
+<ChangelogEntry title="Room analytics per area / full runs + analytics history view" type="web" version="3.7.0" date="2026-03-21">
+
+- **Area analytics scope selector**: The Area Analytics panel (previously Room Info / Room Analytics) now supports three scopes instead of only a single room:
+    - All: statistics across the full run
+    - Area: statistics for the selected area
+    - Room: statistics for the selected room
+- **Analytics history view**: Every area-analytics variable can now be shown as a timestamped history.
+    - Example 1: view all deaths across the full run with timestamps.
+    - Example 2: view all Vengeful Spirit casts in Black Egg Temple with timestamps.
+- **Clearer choropleth defaults**: Unvisited rooms are now shown in gray, making them easier to distinguish with rooms of value zero.
+
+The analytics history view still does not auto-scroll to the most recent change, and performance for very large histories may still need improvement.
+
+</ChangelogEntry>
+
 <ChangelogEntry title="Keyboard navigation refinements + usability improvements" type="web" version="3.6.0" date="2026-03-18">
 
 - **Arrow-key room navigation on the map**: You can now select rooms directly with the arrow keys while focused on the map.

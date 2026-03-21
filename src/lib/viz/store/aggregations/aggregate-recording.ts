@@ -1,4 +1,3 @@
-import { createContext, createMemo, createSignal, useContext } from 'solid-js';
 import {
 	FrameEndEvent,
 	HeroStateEvent,
@@ -7,16 +6,14 @@ import {
 	SpellFireballEvent,
 	SpellUpEvent,
 	assertNever,
-	binarySearchLastIndexBefore,
 	isPlayerDataEventOfField,
+	mainRoomDataBySceneName,
 	playerDataFields,
 	roomGroupNamesBySceneName,
 	type CombinedRecording,
-} from '../../parser';
-import { formatTimeMs } from '../util';
-import { AnimationStore } from './animation-store';
-import { GameplayStore } from './gameplay-store';
-import { RoomDisplayStore } from './room-display-store';
+} from '../../../parser';
+import { formatTimeMs } from '../../util';
+import { AreaSelectionMode } from '../room-display-store';
 
 export interface ValueAggregation {
 	deaths: number;
@@ -28,9 +25,13 @@ export interface ValueAggregation {
 	geoEarned: number;
 	geoSpent: number;
 	timeSpendMs: number;
-	firstVisitMs: number;
+	firstVisitMs: number | null;
 	visits: number;
 }
+export type AggregationVariable = keyof ValueAggregation;
+export type AggregationVariableAdditive = {
+	[K in AggregationVariable]: null extends ValueAggregation[K] ? never : K;
+}[AggregationVariable];
 
 export interface ValueAggregationTimePoint extends ValueAggregation {
 	msIntoGame: number;
@@ -47,9 +48,18 @@ const createEmptyAggregation = (): ValueAggregation => ({
 	geoEarned: 0,
 	geoSpent: 0,
 	timeSpendMs: 0,
-	firstVisitMs: 0,
+	firstVisitMs: null,
 	visits: 0,
 });
+
+const EMPTY_AGGREGATION: ValueAggregation = createEmptyAggregation();
+
+export function isAggregationVariableAdditive(variable: AggregationVariable): variable is AggregationVariableAdditive {
+	return EMPTY_AGGREGATION[variable] !== null;
+}
+export function aggregationVariableDefaultValue(variable: AggregationVariable) {
+	return EMPTY_AGGREGATION[variable];
+}
 
 const createAggregationTimePointClone = (
 	aggregation: ValueAggregationTimePoint | undefined,
@@ -65,28 +75,32 @@ const createAggregationTimePointClone = (
 	geoEarned: aggregation?.geoEarned ?? 0,
 	geoSpent: aggregation?.geoSpent ?? 0,
 	timeSpendMs: aggregation?.timeSpendMs ?? 0,
-	firstVisitMs: aggregation?.firstVisitMs ?? 0,
+	firstVisitMs: aggregation?.firstVisitMs ?? null,
 	visits: aggregation?.visits ?? 0,
 	msIntoGame,
 	isActiveScene,
 });
 
-function isAggregationTimepoint(
+export function isAggregationTimepoint(
 	aggregation: ValueAggregation | ValueAggregationTimePoint,
 ): aggregation is ValueAggregationTimePoint {
 	return 'msIntoGame' in aggregation;
 }
 
-export type AggregationVariable = keyof ValueAggregation;
-
 export type AggregatedRunData = ReturnType<typeof aggregateRecording>;
+
+const formatTimeMsVar = (ms: number | null) => {
+	return ms !== null ? formatTimeMs(ms) : 'N/A';
+};
 
 export const aggregationVariableInfos: {
 	[key in AggregationVariable]: {
 		name: string;
 		description: string;
-		format: (value: number) => string | number;
+		format: (value: number | null) => string | number | null;
 		isTimestamp: boolean;
+		showHistory: boolean;
+		showHistoryDelta: boolean;
 	};
 } = {
 	visits: {
@@ -94,74 +108,131 @@ export const aggregationVariableInfos: {
 		description: 'Number of times this scene has been entered.',
 		format: (value) => value,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: false,
 	},
 	firstVisitMs: {
 		name: 'First visited at',
 		description: 'Time of first visit',
-		format: formatTimeMs,
+		format: formatTimeMsVar,
 		isTimestamp: true,
+		showHistory: false,
+		showHistoryDelta: false,
 	},
 	timeSpendMs: {
 		name: 'Time spent',
 		description: 'Total time spent in a scene of all visits combined.',
-		format: formatTimeMs,
+		format: formatTimeMsVar,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
 	},
 	damageTaken: {
 		name: 'Damage taken',
 		description: 'Total damage taken in masks',
 		format: (value) => value,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
 	},
 	deaths: {
 		name: 'Deaths',
 		description: 'Number of times the player died in a scene.',
 		format: (value) => value,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: false,
 	},
 	focusing: {
 		name: 'Focusing',
 		description: 'Number of times the player started to focus.',
 		format: (value) => value,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: false,
 	},
 	spellFireball: {
 		name: 'Vengeful Spirit',
 		description: 'Number of times the player used a fireball spell.',
 		format: (value) => value,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: false,
 	},
 	spellDown: {
 		name: 'Desolate Dive',
 		description: 'Number of times the player used a downwards spell.',
 		format: (value) => value,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: false,
 	},
 	spellUp: {
 		name: 'Howling Wraiths',
 		description: 'Number of times the player used an upwards spell.',
 		format: (value) => value,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: false,
 	},
 	geoEarned: {
 		name: 'Geo earned',
 		description: 'Does not include geo earned by defeating the shade.',
 		format: (value) => value,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
 	},
 	geoSpent: {
 		name: 'Geo spent',
 		description: 'Does not include Geo lost by dying and not defeating the shade.',
 		format: (value) => value,
 		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
 	},
 };
 
 export const aggregationVariables = Object.keys(aggregationVariableInfos) as AggregationVariable[];
 
-export function formatAggregatedVariableValue(variable: AggregationVariable, value: number) {
+export function formatAggregatedVariableValue(variable: AggregationVariable, value: number | null) {
 	const varInfo = aggregationVariableInfos[variable];
 	return varInfo.format(value);
+}
+
+export const virtualSceneName = {
+	all: ':all:',
+	zone(zoneName: string) {
+		return `:zone:${zoneName}`;
+	},
+	groupBossSequence(bossSequenceName: string) {
+		return `group_boss_seq:${bossSequenceName}`;
+	},
+	bossSequence(bossSequenceName: string, sceneName: string) {
+		return `boss_seq:${bossSequenceName}:${sceneName}`;
+	},
+};
+
+function isVirtualScenePartOfMaximums(sceneName: string) {
+	return sceneName != virtualSceneName.all && !sceneName.startsWith(':zone:');
+}
+
+export function getVirtualSceneName(sceneName: string, mode: AreaSelectionMode): string | null {
+	if (mode === 'room') return sceneName;
+	if (mode === 'zone') {
+		if (!sceneName) return null;
+		const roomData = mainRoomDataBySceneName.get(sceneName);
+		const zoneName = roomData?.zoneNameFormatted;
+		return zoneName ? virtualSceneName.zone(zoneName) : null;
+	}
+	if (mode === 'all') return virtualSceneName.all;
+	assertNever(mode);
+}
+
+export function getZoneNameFromSceneName(sceneName: string | undefined | null): string | undefined {
+	if (!sceneName) return undefined;
+	const roomData = mainRoomDataBySceneName.get(sceneName);
+	return roomData?.zoneNameFormatted;
 }
 
 // type AggregationStoreValue = Record<RunId, AggregatedRunData>;
@@ -176,7 +247,7 @@ export function aggregateRecording(recording: CombinedRecording) {
 	function addToScenes(
 		virtualScenes: readonly string[],
 		msIntoGame: number,
-		key: AggregationVariable,
+		variable: AggregationVariable,
 		value: number,
 	) {
 		virtualScenes.forEach((sceneOrGroupName) => {
@@ -185,7 +256,7 @@ export function aggregateRecording(recording: CombinedRecording) {
 			if (!totalsOfScene) {
 				totalsOfScene = countPerScene[sceneOrGroupName] = createEmptyAggregation();
 			}
-			totalsOfScene[key] += value;
+			totalsOfScene[variable] = (totalsOfScene[variable] ?? 0) + value;
 
 			// over time of scene
 			const allOverTime =
@@ -217,11 +288,16 @@ export function aggregateRecording(recording: CombinedRecording) {
 					totalsOfScene.timeSpendMs = msSpent;
 				}
 			}
-			current[key] += value;
+			current[variable] += value;
 
 			// max total over all scenes
-			maxOverScenes[key] = Math.max(maxOverScenes[key], totalsOfScene[key]);
-			maxOverScenes.timeSpendMs = Math.max(maxOverScenes.timeSpendMs, totalsOfScene.timeSpendMs);
+			if (isVirtualScenePartOfMaximums(sceneOrGroupName)) {
+				maxOverScenes[variable] = Math.max(
+					maxOverScenes[variable] ?? -Infinity,
+					totalsOfScene[variable] ?? -Infinity,
+				);
+				maxOverScenes.timeSpendMs = Math.max(maxOverScenes.timeSpendMs, totalsOfScene.timeSpendMs);
+			}
 		});
 	}
 
@@ -231,24 +307,34 @@ export function aggregateRecording(recording: CombinedRecording) {
 	const currentSceneEnteredWithMsSpendPerVirtualScene: Map<string, number> = new Map();
 	// let previousScene
 
-	const x = [] as any[];
+	// const x = [] as any[];
 
 	function calculateCurrentVirtualScenes() {
 		const groups = currentSceneEvent ? (roomGroupNamesBySceneName.get(currentSceneEvent.sceneName) ?? []) : [];
-		currentVirtualScenes = [
+		const newVirtualScenes = [
 			...(currentSceneEvent ? [currentSceneEvent.sceneName] : []),
 			...groups.map((it) => it),
-		].flatMap((it) => {
-			if (currentSceneEvent?.currentBossSequence) {
-				return [
-					it,
-					`group_boss_seq:${currentSceneEvent.currentBossSequence.name}`,
-					`boss_seq:${currentSceneEvent.currentBossSequence.name}:${it}`,
-				];
-			} else {
-				return [it];
+		];
+
+		// boss sequences
+		if (currentSceneEvent?.currentBossSequence) {
+			const originalLength = newVirtualScenes.length;
+			for (let i = 0; i < originalLength; i++) {
+				const sceneName = newVirtualScenes[i];
+				newVirtualScenes.push(virtualSceneName.groupBossSequence(currentSceneEvent.currentBossSequence.name));
+				newVirtualScenes.push(
+					virtualSceneName.bossSequence(currentSceneEvent.currentBossSequence.name, sceneName),
+				);
 			}
-		});
+		}
+		// all
+		newVirtualScenes.push(virtualSceneName.all);
+		currentVirtualScenes = newVirtualScenes;
+		// zone
+		const zoneName = getZoneNameFromSceneName(currentSceneEvent?.sceneName);
+		if (zoneName) {
+			currentVirtualScenes.push(virtualSceneName.zone(zoneName));
+		}
 	}
 
 	function currentVirtualScenesChanged({
@@ -258,7 +344,7 @@ export function aggregateRecording(recording: CombinedRecording) {
 		msIntoGame: number;
 		previousVirtualScenes: string[];
 	}) {
-		x.push(formatTimeMs(msIntoGame) + ' ' + currentVirtualScenes.join(','));
+		// x.push(formatTimeMs(msIntoGame) + ' ' + currentVirtualScenes.join(','));
 		if (previousVirtualScenes) {
 			// addToScenes(
 			// 	previousVirtualScenes,
@@ -299,24 +385,13 @@ export function aggregateRecording(recording: CombinedRecording) {
 				countPerScene[virtualScene]?.timeSpendMs ?? 0,
 			);
 
-			if (!countPerScene[virtualScene]?.firstVisitMs) {
-				addToScenes(virtualSceneAsArr, msIntoGame, 'firstVisitMs', msIntoGame);
-			}
 			if (!previousVirtualScenes.includes(virtualScene)) {
 				// only counts visit when not already in virtual scene before
 				addToScenes(virtualSceneAsArr, msIntoGame, 'visits', 1);
 			}
-		}
-
-		if (
-			currentVirtualScenes.some((scene) => scene === 'GG_Atrium') &&
-			previousVirtualScenes.some((scene) => scene === 'group_boss_seq:Boss Sequence Tier 5:GG_Radiance')
-		) {
-			console.log('asoaso', {
-				currentVirtualScenes,
-				previousVirtualScenes,
-				msIntoGame: formatTimeMs(msIntoGame),
-			});
+			if ((countPerScene[virtualScene]?.firstVisitMs ?? null) === null) {
+				addToScenes(virtualSceneAsArr, msIntoGame, 'firstVisitMs', msIntoGame);
+			}
 		}
 	}
 
@@ -416,86 +491,4 @@ export function aggregateRecording(recording: CombinedRecording) {
 	// console.log(x);
 
 	return { countPerScene, maxOverScenes, countPerSceneOverTime };
-}
-
-export type AggregationCountMode = 'total' | 'until-current-time';
-export const aggregationCountModes = ['until-current-time', 'total'] as AggregationCountMode[];
-export function getAggregationCountModeLabel(mode: AggregationCountMode) {
-	if (mode === 'total') return 'Stats of complete gameplay';
-	if (mode === 'until-current-time') return 'Stats until selected time';
-	assertNever(mode);
-}
-
-export function createAggregationStore(
-	roomDisplayStore: RoomDisplayStore,
-	animationStore: AnimationStore,
-	gameplayStore: GameplayStore,
-) {
-	const aggregations = createMemo(() => {
-		const recording = gameplayStore.recording();
-		if (!recording) return null;
-		return aggregateRecording(recording);
-	});
-
-	const [viewNeverHappenedAggregations, setViewNeverHappenedAggregations] = createSignal(false);
-
-	const [aggregationCountMode, setAggregationCountMode] = createSignal<AggregationCountMode>('until-current-time');
-
-	function getAggregations(sceneName: string): ValueAggregation | null {
-		// console.log('getAggregations', sceneName);
-		const aggregations_ = aggregations();
-		if (!aggregations_) return null;
-		const mode = aggregationCountMode();
-		if (mode === 'total') return aggregations_.countPerScene[sceneName];
-		if (mode === 'until-current-time') {
-			const timePoints = aggregations_.countPerSceneOverTime[sceneName];
-			if (!timePoints) return null;
-			const msIntoGame = animationStore.msIntoGame();
-			const currentIndex = binarySearchLastIndexBefore(timePoints, msIntoGame, (it) => it.msIntoGame);
-			return currentIndex !== -1 ? (timePoints[currentIndex] ?? null) : null;
-		}
-
-		assertNever(mode);
-	}
-
-	const visibleRoomAggregations = createMemo(() => {
-		const sceneName = roomDisplayStore.selectedSceneName();
-		if (!sceneName) return null;
-		// console.log('visibleRoomAggregations', sceneName, animationStore.msIntoGame());
-		return getAggregations(sceneName);
-	});
-
-	function getCorrectedAggregationValue(
-		aggregation: ValueAggregation | null,
-		variable: AggregationVariable,
-		msIntoGame: () => number,
-	): number | null {
-		if (!aggregation) return null;
-		const value = aggregation[variable];
-		if (variable === 'timeSpendMs' && isAggregationTimepoint(aggregation) && aggregation.isActiveScene) {
-			return value + msIntoGame() - aggregation.msIntoGame;
-		} else {
-			return value;
-		}
-	}
-
-	return {
-		data: aggregations,
-		getAggregations,
-		viewNeverHappenedAggregations,
-		setViewNeverHappenedAggregations,
-		visibleRoomAggregations,
-		aggregationCountMode,
-		setAggregationCountMode,
-		getCorrectedAggregationValue,
-	};
-}
-export type AggregationStore = ReturnType<typeof createAggregationStore>;
-
-export const AggregationStoreContext = createContext<AggregationStore>();
-
-export function useAggregationStore() {
-	const store = useContext(AggregationStoreContext);
-	if (!store) throw new Error('No AggregationStoreContext provided');
-	return store;
 }

@@ -1,4 +1,4 @@
-import { LayoutDashboardIcon, Map } from 'lucide-solid';
+import { ChartBarBigIcon, Map } from 'lucide-solid';
 import { Component } from 'solid-js';
 import { SplitIcon as SplitPanelIcon } from '../splits/split-icon';
 import {
@@ -10,7 +10,7 @@ import {
 	SoulChartUnitIcon,
 } from '../time-charts/chart-icons';
 
-export type LayoutPanelTypeCategory = 'splits' | 'area-chart' | 'map-options' | 'room-info' | 'map';
+export type LayoutPanelTypeCategory = 'splits' | 'area-chart' | 'map-options' | 'area-analytics' | 'map';
 
 export interface LayoutPanelTypeBase<TId extends string, TCategory extends LayoutPanelTypeCategory> {
 	id: TId;
@@ -36,7 +36,7 @@ export type LayoutPanelTypeAreaChart = LayoutPanelTypeBase<
 
 export type LayoutPanelTypeSplits = LayoutPanelTypeBase<'splits', 'splits'>;
 export type LayoutPanelTypeMapOptions = LayoutPanelTypeBase<'map-options', 'map-options'>;
-export type LayoutPanelTypeRoomInfo = LayoutPanelTypeBase<'room-info', 'room-info'>;
+export type LayoutPanelTypeRoomInfo = LayoutPanelTypeBase<'area-analytics', 'area-analytics'>;
 export type LayoutPanelTypeMap = LayoutPanelTypeBase<'map', 'map'>;
 export type LayoutPanelType =
 	| LayoutPanelTypeAreaChart
@@ -48,6 +48,37 @@ export type LayoutPanelType =
 const DEFAULT_COLLAPSED_SIZE_IN_REM = 2.75;
 
 export const layoutPanelTypes: LayoutPanelType[] = [
+	{
+		id: 'area-analytics',
+		category: 'area-analytics',
+		displayName: 'Area Analytics',
+		icon: ChartBarBigIcon,
+		showIconInSelect: false,
+		intrinsicSize: 0.4,
+		selectableInSelect: true,
+		collapsedSizeInRem: 4.5,
+	},
+	{
+		id: 'map-options',
+		category: 'map-options',
+		displayName: 'Map Options',
+		icon: Map,
+		showIconInSelect: false,
+		intrinsicSize: 0.5,
+		selectableInSelect: true,
+		maxSizeInRems: 13.125,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
+	},
+	{
+		id: 'map',
+		category: 'map',
+		displayName: 'Map',
+		icon: Map,
+		showIconInSelect: false,
+		intrinsicSize: 0.7,
+		selectableInSelect: false,
+		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
+	},
 	{
 		id: 'splits',
 		category: 'splits',
@@ -119,37 +150,6 @@ export const layoutPanelTypes: LayoutPanelType[] = [
 		showIconInSelect: true,
 		intrinsicSize: 0.25,
 		selectableInSelect: true,
-		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
-	},
-	{
-		id: 'map-options',
-		category: 'map-options',
-		displayName: 'Map options',
-		icon: Map,
-		showIconInSelect: false,
-		intrinsicSize: 0.5,
-		selectableInSelect: true,
-		maxSizeInRems: 13.125,
-		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
-	},
-	{
-		id: 'room-info',
-		category: 'room-info',
-		displayName: 'Room info',
-		icon: LayoutDashboardIcon,
-		showIconInSelect: false,
-		intrinsicSize: 0.4,
-		selectableInSelect: true,
-		collapsedSizeInRem: 5.5,
-	},
-	{
-		id: 'map',
-		category: 'map',
-		displayName: 'Map',
-		icon: Map,
-		showIconInSelect: false,
-		intrinsicSize: 0.7,
-		selectableInSelect: false,
 		collapsedSizeInRem: DEFAULT_COLLAPSED_SIZE_IN_REM,
 	},
 ];

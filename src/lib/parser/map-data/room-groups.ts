@@ -24,7 +24,12 @@ export const roomGroups = [
 	},
 	{
 		name: 'group_Fungus3_archive',
-		sceneNames: ['Fungus3_archive', 'Fungus3_archive_02', 'Fungus3_archive_02_boss'],
+		sceneNames: [
+			'Fungus3_archive',
+			'Fungus3_archive_02',
+			//'Fungus3_archive_02_boss', // <-- boss seems to be in 02 actually. Not sure whats in this room
+			'Dream_Guardian_Monomon',
+		],
 	},
 	{
 		name: 'group_stone_sanctuary',

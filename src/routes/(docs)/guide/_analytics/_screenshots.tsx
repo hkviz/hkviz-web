@@ -107,13 +107,13 @@ export function OverviewScreenshot() {
                     Area names 
                 </ImageArea> */}
 				<ImageArea positionClass="left-[0.5%] top-[35%] h-[64%] w-[28%]" href="#map-coloring-by-variables">
-					Room analytics
+					Area Analytics
 				</ImageArea>
 				<ImageArea positionClass="left-[1%] top-[43.5%] h-[6.5%] w-[27%]" href="#multi-room-buildings">
 					Multi-room buildings
 				</ImageArea>
 				<ImageArea positionClass="left-[24.25%] top-[36.75%] h-[6%] aspect-square" href="#room-pin">
-					Room pinning
+					Room Pinning
 				</ImageArea>
 				<ImageArea positionClass="left-[29%] top-[7.75%] h-[83.25%] w-[37%]" href="#map">
 					Map
@@ -126,7 +126,7 @@ export function OverviewScreenshot() {
 					Splits
 				</ImageArea>
 				<ImageArea positionClass="left-[66.5%] top-[39%] h-[60.25%] w-[33%]" href="#time-based-charts">
-					Time charts
+					Time Charts
 				</ImageArea>
 			</ImageAreaShadow>
 		</ImageContainer>
@@ -181,7 +181,7 @@ export function RoomAnalyticsScreenshot() {
 			class="max-w-48 md:float-right md:ml-4"
 			caption={
 				<span>
-					<HKVizText /> Room analytics panel
+					<HKVizText /> Area analytics panel
 				</span>
 			}
 		>
@@ -356,14 +356,14 @@ export function BuildingsColormapScreenshot() {
 export function SubroomsScreenshot() {
 	return (
 		<ImageContainer
-			caption={<>Room analytics showing a building with multiple rooms</>}
+			caption={<>Area analytics showing a building with multiple rooms</>}
 			class="max-w-48 md:float-right md:ml-4"
 		>
 			<ThemedImage
 				srcLight={subroomsLightSrc}
 				srcDark={subroomsDarkSrc}
 				class="m-0"
-				alt="Room analytics showing a building with multiple rooms"
+				alt="Area analytics showing a building with multiple rooms"
 				sizes={IMAGE_SIZE_MAX_W_48}
 			/>
 		</ImageContainer>

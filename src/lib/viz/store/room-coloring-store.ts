@@ -3,7 +3,8 @@ import memoize from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { roomData } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
-import { AggregationStore, type AggregationVariable } from './aggregation-store';
+import { AggregationVariable } from './aggregations/aggregate-recording';
+import { AggregationStore } from './aggregations/aggregation-store';
 import { AnimationStore } from './animation-store';
 import { ThemeStore } from './theme-store';
 
@@ -70,7 +71,9 @@ export function createRoomColoringStore(
 		const max = var1Max();
 		const curve = var1Curve();
 		const theme = themeStore.currentTheme();
-		return function (value: number) {
+		return function (value: number | null) {
+			if (value === null) return theme === 'dark' ? '#303030' : '#bbbbbb';
+
 			const ratio = curve.transformTo01(value, max);
 			if (theme === 'light') {
 				const colorMapColor = d3.hsl(d3.interpolateCool(ratio));
@@ -83,12 +86,15 @@ export function createRoomColoringStore(
 		};
 	});
 
-	function getSingleVarColorForSceneName(sceneName: string) {
+	function getSingleVarColorForSceneName(sceneName: string): string | null {
 		if (colorMode() !== '1-var') return null;
 		const colorMap = singleVarColorMap();
 		const aggregations = aggregationStore.getAggregations(sceneName);
-		const aggregationValue =
-			aggregationStore.getCorrectedAggregationValue(aggregations, var1(), animationStore.msIntoGame) ?? 0;
+		const aggregationValue = aggregationStore.getCorrectedAggregationValueNullIfUnvisited(
+			aggregations,
+			var1(),
+			animationStore.msIntoGame,
+		);
 		return colorMap(aggregationValue);
 	}
 
@@ -99,8 +105,11 @@ export function createRoomColoringStore(
 		return new Map<string, string>(
 			roomData.map((room) => {
 				const aggregations = aggregationStore.getAggregations(room.sceneName);
-				const aggregationValue =
-					aggregationStore.getCorrectedAggregationValue(aggregations, var1(), animationStore.msIntoGame) ?? 0;
+				const aggregationValue = aggregationStore.getCorrectedAggregationValueNullIfUnvisited(
+					aggregations,
+					var1(),
+					animationStore.msIntoGame,
+				);
 				// const aggregationValue = getCorrectedAggregationValue().getAggregations(room.sceneName)?.[var1()] ?? 0;
 				return [room.gameObjectName, colorMap(aggregationValue)];
 			}),

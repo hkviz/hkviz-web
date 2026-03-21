@@ -1,6 +1,7 @@
 import { For } from 'solid-js';
 import { Card } from '~/components/ui/card';
-import { AggregationVariable, AggregationVariableIcon, aggregationVariableInfos } from '~/lib/viz';
+import { AggregationVariableIcon } from '~/lib/viz';
+import { AggregationVariable, aggregationVariableInfos } from '~/lib/viz/store/aggregations/aggregate-recording';
 
 export function AggregationVariableDoc() {
 	return (

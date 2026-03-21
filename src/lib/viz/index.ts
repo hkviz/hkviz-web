@@ -1,3 +1,4 @@
+export * from './area-analytics';
 export * from './class-names';
 export * from './color-curves';
 export * from './colors';
@@ -8,9 +9,9 @@ export * from './img-urls';
 export * from './list';
 export * from './loader';
 export * from './map';
-export * from './room-infos';
 export * from './splits';
 export * from './store';
 export * from './time-charts';
 export * from './timeline';
 export * from './util';
+

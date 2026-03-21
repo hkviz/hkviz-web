@@ -63,6 +63,7 @@ const predefinedRoomNames = {
 	Fungus3_archive: "Teacher's Archives Entrance",
 	Fungus3_archive_02: "Teacher's Archives Middle Room",
 	Fungus3_archive_02_boss: "Teacher's Archives Uumuu",
+	Dream_Guardian_Monomon: "Teacher's Archives Monomon's Dream",
 
 	// Fungal wastes
 	Fungus2_01: 'Queen Station Hub',

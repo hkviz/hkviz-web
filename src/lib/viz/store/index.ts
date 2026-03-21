@@ -1,4 +1,4 @@
-export * from './aggregation-store';
+export * from './aggregations/aggregation-store';
 export * from './animation-store';
 export * from './animation-tick-store';
 export * from './extra-chart-store';
