@@ -4,7 +4,7 @@ import { AnimationStore } from './animation-store';
 
 export type TraceVisibility = 'stay' | 'fade_out' | 'hide';
 
-export const TRACE_VISIBILITIES: TraceVisibility[] = ['stay', 'fade_out', 'hide'];
+export const TRACE_VISIBILITIES: TraceVisibility[] = ['fade_out', 'stay', 'hide'];
 
 const DEFAULT_TRACE_LENGTH_MS = 1000 * 60 * 5;
 

@@ -55,7 +55,7 @@ const SelectContent = <T extends ValidComponent = 'div'>(props: PolymorphicProps
 		<SelectPrimitive.Portal>
 			<SelectPrimitive.Content
 				class={cn(
-					'bg-popover text-popover-foreground animate-in fade-in-80 relative z-50 min-w-32 overflow-hidden rounded-md border shadow-md',
+					'bg-popover text-popover-foreground animate-in fade-in-80 relative z-50 max-w-80 min-w-32 overflow-hidden rounded-md border shadow-md',
 					local.class,
 				)}
 				{...others}
@@ -102,4 +102,3 @@ const SelectItem = <T extends ValidComponent = 'li'>(props: PolymorphicProps<T, 
 };
 
 export { Select, SelectContent, SelectHiddenSelect, SelectItem, SelectTrigger, SelectValue };
-

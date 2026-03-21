@@ -1,5 +1,22 @@
-import { LayoutDashboardIcon, SplineIcon, TextAlignStartIcon } from 'lucide-solid';
+import {
+	ClockIcon,
+	EyeOffIcon,
+	GalleryHorizontalEnd,
+	InfinityIcon,
+	LayoutDashboardIcon,
+	MapIcon,
+	MapPinCheckInsideIcon,
+	SplineIcon,
+	TextAlignStartIcon,
+} from 'lucide-solid';
 import { createUniqueId, Show } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
+import {
+	SelectItemBody,
+	SelectItemDescription,
+	SelectItemHeader,
+	selectItemIconClasses,
+} from '~/components/ui/additions/select';
 import { CardContent } from '~/components/ui/card';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Label } from '~/components/ui/label';
@@ -12,14 +29,36 @@ import { LayoutPanelTypeProps } from './layout/layout-panel-props';
 import { LayoutPanelWrapper } from './layout/layout-panel-wrapper';
 import { RoomVisibility, TRACE_VISIBILITIES, TraceVisibility, useRoomDisplayStore, useTraceStore } from './store';
 
-function roomVisibilityName(v: RoomVisibility) {
+function roomVisibilityName(v: RoomVisibility, short: boolean) {
 	switch (v) {
 		case 'all':
-			return 'All (Spoilers)';
+			return short ? 'All' : 'All (Spoilers)';
 		case 'visited-animated':
 			return 'Animated';
 		case 'visited':
 			return 'Visited';
+	}
+}
+
+function roomVisibilityDescription(v: RoomVisibility) {
+	switch (v) {
+		case 'all':
+			return 'All rooms are visible on the map, including those that were never visited in this gameplay.';
+		case 'visited-animated':
+			return 'Only rooms that were visited at any time in the gameplay are visible.';
+		case 'visited':
+			return 'Only rooms that were visited before the selected time in the timeline are visible.';
+	}
+}
+
+function roomVisibilityIcon(v: RoomVisibility) {
+	switch (v) {
+		case 'all':
+			return MapIcon;
+		case 'visited-animated':
+			return GalleryHorizontalEnd;
+		case 'visited':
+			return MapPinCheckInsideIcon;
 	}
 }
 
@@ -31,6 +70,28 @@ function traceVisibilityName(v: TraceVisibility) {
 			return 'Fade out';
 		case 'hide':
 			return 'Hidden';
+	}
+}
+
+function traceVisibilityDescription(v: TraceVisibility) {
+	switch (v) {
+		case 'stay':
+			return 'Shows all player movement until the selected time in the timeline.';
+		case 'fade_out':
+			return 'Traces will fade out over a configurable period. Only recent player movement is visible.';
+		case 'hide':
+			return 'No player movement displayed on the map.';
+	}
+}
+
+function traceVisibilityIcon(v: TraceVisibility) {
+	switch (v) {
+		case 'stay':
+			return InfinityIcon;
+		case 'fade_out':
+			return ClockIcon;
+		case 'hide':
+			return EyeOffIcon;
 	}
 }
 
@@ -110,17 +171,28 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 											if (!v) return;
 											roomDisplayStore.setRoomVisibility(v);
 										}}
-										options={['all', 'visited-animated', 'visited']}
+										options={['visited-animated', 'visited', 'all']}
 										placeholder="Room visibility"
 										itemComponent={(props) => (
 											<SelectItem item={props.item}>
-												{roomVisibilityName(props.item.rawValue)}
+												<SelectItemBody>
+													<SelectItemHeader>
+														<Dynamic
+															component={roomVisibilityIcon(props.item.rawValue)}
+															class={selectItemIconClasses}
+														/>
+														{roomVisibilityName(props.item.rawValue, false)}
+													</SelectItemHeader>
+													<SelectItemDescription>
+														{roomVisibilityDescription(props.item.rawValue)}
+													</SelectItemDescription>
+												</SelectItemBody>
 											</SelectItem>
 										)}
 									>
 										<SelectTrigger aria-label="Room visibility" class="border-0">
 											<SelectValue<RoomVisibility>>
-												{(state) => roomVisibilityName(state.selectedOption())}
+												{(state) => roomVisibilityName(state.selectedOption(), true)}
 											</SelectValue>
 										</SelectTrigger>
 										<SelectContent />
@@ -155,7 +227,18 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 											placeholder="Trace visibility"
 											itemComponent={(props) => (
 												<SelectItem item={props.item}>
-													{traceVisibilityName(props.item.rawValue)}
+													<SelectItemBody>
+														<SelectItemHeader>
+															<Dynamic
+																component={traceVisibilityIcon(props.item.rawValue)}
+																class={selectItemIconClasses}
+															/>
+															{traceVisibilityName(props.item.rawValue)}
+														</SelectItemHeader>
+														<SelectItemDescription>
+															{traceVisibilityDescription(props.item.rawValue)}
+														</SelectItemDescription>
+													</SelectItemBody>
 												</SelectItem>
 											)}
 										>

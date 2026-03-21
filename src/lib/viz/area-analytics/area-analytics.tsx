@@ -1,7 +1,14 @@
 import { ArrowLeftIcon, ArrowRightIcon, PaletteIcon, PinIcon, PinOffIcon } from 'lucide-solid';
 import { createEffect, createMemo, For, Index, Match, onCleanup, Show, Switch, type Component } from 'solid-js';
+import { Dynamic } from 'solid-js/web';
 import { ShortcutHint } from '~/components/shortcut-hint';
 import { tabsListTransparentClasses } from '~/components/ui/additions';
+import {
+	SelectItemBody,
+	SelectItemDescription,
+	SelectItemHeader,
+	selectItemIconClasses,
+} from '~/components/ui/additions/select';
 import { Button } from '~/components/ui/button';
 import { CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '~/components/ui/context-menu';
@@ -29,6 +36,7 @@ import {
 	aggregationCountModes,
 	AreaSelectionMode,
 	getAggregationCountModeDescription,
+	getAggregationCountModeIcon,
 	getAggregationCountModeLabel,
 	useAggregationStore,
 	useAnimationStore,
@@ -525,12 +533,18 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 									placeholder="Aggregation mode"
 									itemComponent={(props) => (
 										<SelectItem item={props.item}>
-											<span class="block">
-												{getAggregationCountModeLabel(props.item.rawValue)}
-											</span>
-											<span class="text-muted-foreground block text-xs">
-												{getAggregationCountModeDescription(props.item.rawValue)}
-											</span>
+											<SelectItemBody>
+												<SelectItemHeader>
+													<Dynamic
+														component={getAggregationCountModeIcon(props.item.rawValue)}
+														class={selectItemIconClasses}
+													/>
+													{getAggregationCountModeLabel(props.item.rawValue)}
+												</SelectItemHeader>
+												<SelectItemDescription>
+													{getAggregationCountModeDescription(props.item.rawValue)}
+												</SelectItemDescription>
+											</SelectItemBody>
 										</SelectItem>
 									)}
 								>
@@ -539,7 +553,7 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 											{(state) => getAggregationCountModeLabel(state.selectedOption())}
 										</SelectValue>
 									</SelectTrigger>
-									<SelectContent class="max-w-80" />
+									<SelectContent />
 								</Select>
 							</div>
 							{/* keys since should scrolling reset between scenes */}

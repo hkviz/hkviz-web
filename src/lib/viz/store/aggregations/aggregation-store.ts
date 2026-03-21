@@ -1,3 +1,4 @@
+import { PlayIcon, SigmaIcon } from 'lucide-solid';
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { assertNever, binarySearchLastIndexBefore } from '../../../parser';
 import { AnimationStore } from '../animation-store';
@@ -23,6 +24,15 @@ export function getAggregationCountModeLabel(mode: AggregationCountMode) {
 export function getAggregationCountModeDescription(mode: AggregationCountMode) {
 	if (mode === 'total') return 'Shows the stats for the complete gameplay, ignoring the selected time.';
 	if (mode === 'until-current-time') return 'Shows the stats up to the selected time in the timeline.';
+	assertNever(mode);
+}
+export function getAggregationCountModeIcon(mode: AggregationCountMode) {
+	if (mode === 'total') {
+		return SigmaIcon;
+	}
+	if (mode === 'until-current-time') {
+		return PlayIcon;
+	}
 	assertNever(mode);
 }
 

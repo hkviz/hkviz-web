@@ -1,8 +1,8 @@
 // @refresh reload
 import { createHandler, StartServer } from '@solidjs/start/server';
 import { FaviconsHead } from './components/favicons-head';
-import { serverCookiesGetSyncDontUse } from './lib/cookies/cookies-server';
 import { COOKIE_THEME } from './lib/cookies/cookie-names';
+import { serverCookiesGetSyncDontUse } from './lib/cookies/cookies-server';
 
 const jsonLd = JSON.stringify({
 	'@context': 'https://schema.org',
@@ -21,7 +21,10 @@ export default createHandler(() => {
 					<html lang="en">
 						<head>
 							<meta charset="utf-8" />
-							<meta name="viewport" content="width=device-width, initial-scale=1" />
+							<meta
+								name="viewport"
+								content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0"
+							/>
 							<link rel="icon" href="/favicon.ico" />
 							{/* eslint-disable-next-line solid/no-innerhtml */}
 							<script type="application/ld+json" innerHTML={jsonLd} />
