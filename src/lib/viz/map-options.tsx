@@ -1,13 +1,13 @@
 import {
 	ClockIcon,
 	EyeOffIcon,
-	GalleryHorizontalEnd,
+	GalleryHorizontalEndIcon,
 	InfinityIcon,
 	LayoutDashboardIcon,
 	MapIcon,
 	MapPinCheckInsideIcon,
 	SplineIcon,
-	TextAlignStartIcon,
+	TextAlignStartIcon
 } from 'lucide-solid';
 import { createUniqueId, Show } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
@@ -56,7 +56,7 @@ function roomVisibilityIcon(v: RoomVisibility) {
 		case 'all':
 			return MapIcon;
 		case 'visited-animated':
-			return GalleryHorizontalEnd;
+			return GalleryHorizontalEndIcon;
 		case 'visited':
 			return MapPinCheckInsideIcon;
 	}
