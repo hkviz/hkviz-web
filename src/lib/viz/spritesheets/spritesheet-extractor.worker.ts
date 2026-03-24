@@ -3,6 +3,7 @@
 import {
 	SpriteSheetExtractWorkerMessage,
 	SpriteSheetExtractWorkerResponse,
+	SpriteSheetExtractWorkerResponseFrames,
 	SpriteSheetMeta,
 } from './spritesheet-types';
 
@@ -48,7 +49,7 @@ async function getAllSpritesAsDataURL(
 		loadSpriteSheetMetadata(message.metadataUrl),
 	]);
 
-	const results: SpriteSheetExtractWorkerResponse = {};
+	const results: SpriteSheetExtractWorkerResponseFrames = {};
 
 	for (const [spriteName, spriteData] of Object.entries(metadata.frames)) {
 		const tempCanvas = new OffscreenCanvas(spriteData.frame.w, spriteData.frame.h);
@@ -78,5 +79,5 @@ async function getAllSpritesAsDataURL(
 		results[spriteName] = blob;
 	}
 
-	return results;
+	return { id: message.id, frames: results };
 }

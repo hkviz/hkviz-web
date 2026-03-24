@@ -2,6 +2,9 @@
  * TypeScript types that mirror the C# MapExportTypes for Silksong map export
  */
 
+import { SpriteInfoGenerated } from '../shared/sprite-info-generated';
+import { Vector3Like, Vector4Like } from '../shared/vector-like';
+
 export const MapZonesGenerated = {
 	Tut: 'Tut',
 	Bonetown: 'Bonetown',
@@ -40,12 +43,6 @@ export const MapZonesGenerated = {
 
 export type SilkMapZoneGenerated = (typeof MapZonesGenerated)[keyof typeof MapZonesGenerated];
 
-export interface SilkSpriteInfoGenerated {
-	name: string;
-	size: SilkVector2Generated;
-	padding: SilkVector4Generated;
-}
-
 export type SilkPlayerDataTestTypeGenerated = 'Bool' | 'Int' | 'Float' | 'Enum' | 'String';
 export type SilkPlayerDataTestNumTypeGenerated = 'Equal' | 'NotEqual' | 'LessThan' | 'MoreThan';
 export type SilkPlayerDataTestStringTypeGenerated = 'Equal' | 'NotEqual' | 'Contains' | 'NotContains';
@@ -70,48 +67,34 @@ export interface SilkPlayerDataTestDataGenerated {
 	testGroups: SilkPlayerDataTestGroupGenerated[];
 }
 
+export interface SilkSpriteInfoGenerated extends SpriteInfoGenerated {
+	nameShort: string;
+}
+
 export interface SilkSpriteConditionDataGenerated {
 	sprite: SilkSpriteInfoGenerated;
 	condition: SilkPlayerDataTestDataGenerated | null;
 }
 
 export interface SilkColorConditionData {
-	color: SilkVector4Generated;
+	color: Vector4Like;
 	condition: SilkPlayerDataTestDataGenerated | null;
 }
 
-export interface SilkVector2Generated {
-	x: number;
-	y: number;
-}
-
-export interface SilkVector3Generated {
-	x: number;
-	y: number;
-	z: number;
-}
-
-export interface SilkVector4Generated {
-	x: number;
-	y: number;
-	z: number;
-	w: number;
-}
-
 export interface SilkExportBoundsGenerated {
-	min: SilkVector3Generated;
-	max: SilkVector3Generated;
+	min: Vector3Like;
+	max: Vector3Like;
 }
 
 export interface SilkTextDataGenerated {
 	objectPath: string;
 	convoName: string;
 	sheetName: string;
-	position: SilkVector3Generated;
+	position: Vector3Like;
 	fontSize: number;
 	fontWeight: number;
 	bounds: SilkExportBoundsGenerated;
-	origColor: SilkVector4Generated;
+	origColor: Vector4Like;
 }
 
 export interface SilkMapRoomDataGenerated {
@@ -123,7 +106,7 @@ export interface SilkMapRoomDataGenerated {
 	texts: SilkTextDataGenerated[];
 	hasSpriteRenderer: boolean;
 
-	origColor: SilkVector4Generated | null;
+	origColor: Vector4Like | null;
 	visualBounds: SilkExportBoundsGenerated | null;
 	playerPositionBounds: SilkExportBoundsGenerated | null;
 

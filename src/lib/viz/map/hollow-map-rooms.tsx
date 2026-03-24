@@ -12,7 +12,7 @@ function HkMapRoom(props: {
 }) {
 	const roomColoringStore = useRoomColoringStore();
 	const spriteSheetStore = useSpriteSheetStore();
-	const mapSheetData = spriteSheetStore.mapSheetData;
+	const mapSheetData = spriteSheetStore.hollowMapSheetData;
 
 	const roomDisplayStore = useRoomDisplayStore();
 	const states = createMemo(() => roomDisplayStore.statesByGameObjectName.get(props.room.gameObjectName)!);
