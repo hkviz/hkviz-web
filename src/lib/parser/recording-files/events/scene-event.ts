@@ -1,4 +1,4 @@
-import { type Vector2 } from '../../hk-types';
+import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { type BossSequenceData } from '../../player-data/boss-sequence';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 

@@ -1,8 +1,5 @@
-/**
- * TypeScript types that mirror the C# MapExportTypes for Silksong map export
- */
-
-import { Bounds } from '../parser';
+import { Bounds } from '../shared/bounds';
+import { Vector3Like, Vector4Like } from '../shared/vector-like';
 
 export const MapZones = {
 	Tut: 'Tut',
@@ -44,8 +41,7 @@ export type SilkMapZone = (typeof MapZones)[keyof typeof MapZones];
 
 export interface SilkSpriteInfo {
 	name: string;
-	size: SilkVector2;
-	padding: SilkVector4;
+	bounds: Bounds;
 }
 
 export type SilkPlayerDataTestType = 'Bool' | 'Int' | 'Float' | 'Enum' | 'String';
@@ -73,42 +69,32 @@ export interface SilkPlayerDataTestData {
 }
 
 export interface SilkSpriteConditionData {
+	type: 'alt-full-sprite';
 	sprite: SilkSpriteInfo;
 	condition: SilkPlayerDataTestData | null;
 }
 
+export type SilkSomeSpriteType =
+	| SilkSpriteConditionData
+	| {
+			type: 'initial' | 'full' | 'renderer';
+			sprite: SilkSpriteInfo;
+	  };
+
 export interface SilkColorConditionData {
-	color: SilkVector4;
+	color: Vector4Like;
 	condition: SilkPlayerDataTestData | null;
-}
-
-export interface SilkVector2 {
-	x: number;
-	y: number;
-}
-
-export interface SilkVector3 {
-	x: number;
-	y: number;
-	z: number;
-}
-
-export interface SilkVector4 {
-	x: number;
-	y: number;
-	z: number;
-	w: number;
 }
 
 export interface SilkTextData {
 	objectPath: string;
 	convoName: string;
 	sheetName: string;
-	position: SilkVector3;
+	position: Vector3Like;
 	fontSize: number;
 	fontWeight: number;
 	bounds: Bounds;
-	origColor: SilkVector4;
+	origColor: Vector4Like;
 }
 
 export interface SilkMapRoomData {
@@ -120,16 +106,18 @@ export interface SilkMapRoomData {
 	texts: SilkTextData[];
 	hasSpriteRenderer: boolean;
 
-	origColor: SilkVector4 | null;
+	origColor: Vector4Like | null;
 	visualBounds: Bounds | null;
 	playerPositionBounds: Bounds | null;
 
 	// Sprite data
-	initialSprite: SilkSpriteInfo | null;
+	/*initialSprite: SilkSpriteInfo | null;
 	fullSprite: SilkSpriteInfo | null;
 	rendererSprite: SilkSpriteInfo | null;
 	altFullSprites: SilkSpriteConditionData[] | null;
-	altColors: SilkColorConditionData[] | null;
+	altColors: SilkColorConditionData[] | null;*/
+
+	allSprites: SilkSomeSpriteType[];
 
 	// State information
 	initialState: 'Hidden' | 'Rough' | 'Full';

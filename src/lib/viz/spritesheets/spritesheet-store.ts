@@ -1,7 +1,11 @@
-import { createContext, createSignal, onMount, useContext } from 'solid-js';
-import { SpriteSheetExtracted } from './spritesheet-types';
-import { SpriteSheetExtractWorkerMessage, SpriteSheetExtractWorkerResponse } from './spritesheet-types';
+import { createContext, createSignal, useContext } from 'solid-js';
 import { isServer } from 'solid-js/web';
+import { assertNever } from '~/lib/parser';
+import {
+	SpriteSheetExtracted,
+	SpriteSheetExtractWorkerMessage,
+	SpriteSheetExtractWorkerResponse,
+} from './spritesheet-types';
 
 /**
  * You might be wondering, why all this complexity?
@@ -15,45 +19,78 @@ import { isServer } from 'solid-js/web';
  * and then converts the canvas to a blob. This blob is then sent back to the main thread.
  */
 
-// to not delay loading the sprites, the worker is immediately created,
-// and possible results are queued until the store is mounted
-const queuedMessages: SpriteSheetExtracted[] = [];
-let messageHandler = (extractedSheet: SpriteSheetExtracted) => {
-	console.log('handling queue sheet');
-	queuedMessages.push(extractedSheet);
-};
-if (!isServer) {
-	let worker: Worker | null = null;
-	worker = new Worker(new URL('./spritesheet-extractor-worker.ts', import.meta.url), { type: 'module' });
-	const message: SpriteSheetExtractWorkerMessage = {
-		spritesheetUrl: '/assets/map.webp',
-		metadataUrl: '/assets/map.webp.json',
-	};
-	worker.postMessage(message);
-	worker.onmessage = (event) => {
-		const sprites = event.data as SpriteSheetExtractWorkerResponse;
-		console.log({ sprites });
-
-		messageHandler(
-			Object.fromEntries(Object.entries(sprites).map(([name, sprite]) => [name, URL.createObjectURL(sprite)])),
-		);
-	};
-}
+const HOLLOW_MAP_SHEET_ID = 'hollow-map';
+const SILK_MAP_SHEET_ID = 'silk-map';
 
 export function createSpriteSheetStore() {
 	// currently only handles a single spritesheet
-	const [mapSheetData, setSheetData] = createSignal<SpriteSheetExtracted>({});
+	const [hollowMapSheetData, setHollowSheetData] = createSignal<SpriteSheetExtracted>({});
+	const [silkMapSheetData, setSilkSheetData] = createSignal<SpriteSheetExtracted>({});
 
-	onMount(() => {
-		messageHandler = (extractedSheet) => {
-			console.log('handling unqueued sheet');
-			setSheetData(extractedSheet);
+	let hollowLoaded = false;
+	let silkLoaded = false;
+
+	let ensureLoaded = (_map: 'hollow' | 'silk') => {
+		// noop
+	};
+
+	if (!isServer) {
+		let worker: Worker | null = null;
+		worker = new Worker(new URL('./spritesheet-extractor.worker.ts', import.meta.url), { type: 'module' });
+
+		worker.onmessage = (event) => {
+			const response = event.data as SpriteSheetExtractWorkerResponse;
+			console.log({ sprites: response });
+
+			if (response.id === HOLLOW_MAP_SHEET_ID) {
+				setHollowSheetData(
+					Object.fromEntries(
+						Object.entries(response.frames).map(([name, sprite]) => [name, URL.createObjectURL(sprite)]),
+					),
+				);
+			} else if (response.id === SILK_MAP_SHEET_ID) {
+				setSilkSheetData(
+					Object.fromEntries(
+						Object.entries(response.frames).map(([name, sprite]) => [name, URL.createObjectURL(sprite)]),
+					),
+				);
+			} else {
+				console.warn(`Unknown spritesheet ID results received from worker: ${response.id}`);
+			}
 		};
-		queuedMessages.forEach((msg) => setSheetData(msg));
-	});
+		ensureLoaded = (map) => {
+			if (map === 'hollow') {
+				if (hollowLoaded) {
+					return;
+				}
+				hollowLoaded = true;
+				const message: SpriteSheetExtractWorkerMessage = {
+					id: HOLLOW_MAP_SHEET_ID,
+					spritesheetUrl: '/assets/map.webp',
+					metadataUrl: '/assets/map.webp.json',
+				};
+				worker.postMessage(message);
+			} else if (map === 'silk') {
+				if (silkLoaded) {
+					return;
+				}
+				silkLoaded = true;
+				const message: SpriteSheetExtractWorkerMessage = {
+					id: SILK_MAP_SHEET_ID,
+					spritesheetUrl: '/assets/silk-map.webp',
+					metadataUrl: '/assets/silk-map.webp.json',
+				};
+				worker.postMessage(message);
+			} else {
+				assertNever(map);
+			}
+		};
+	}
 
 	return {
-		mapSheetData,
+		hollowMapSheetData,
+		silkMapSheetData,
+		ensureLoaded,
 	};
 }
 

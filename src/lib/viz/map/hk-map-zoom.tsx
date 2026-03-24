@@ -1,15 +1,15 @@
 import { createLazyMemo } from '@solid-primitives/memo';
 import * as d3 from 'd3';
 import { createEffect, createMemo, onCleanup, untrack } from 'solid-js';
+import { Bounds } from '~/lib/game-data/shared/bounds';
+import { Vector2 } from '~/lib/game-data/shared/vectors';
 import {
 	allRoomDataBySceneName,
 	binarySearchLastIndexBefore,
-	Bounds,
 	gameObjectNamesIgnoredInZoomZone,
 	mainRoomDataBySceneName,
 	mapVisualExtends,
 	roomData,
-	Vector2,
 	type ZoomZone,
 } from '../../parser';
 import {

@@ -1,4 +1,4 @@
-import { playerDataFieldsGenerated } from '../../hk-data';
+import { playerDataFieldsGenerated } from '../../game-data/hollow-data';
 import { type BossSequenceDoorCompletion, type BossStatueCompletion } from './boss-completion';
 import { BossSequenceData } from './boss-sequence';
 

@@ -13,11 +13,19 @@
 		"types": ["vinxi/types/client", "@testing-library/jest-dom"],
 		"isolatedModules": true,
 		"skipLibCheck": true,
+		"allowImportingTsExtensions": true,
 		"paths": {
 			"~/*": ["./src/*"],
 			"solid-mdx": ["./node_modules/solid-mdx/types/index.d.ts"],
 			"@vinxi/plugin-mdx": ["./node_modules/@vinxi/plugin-mdx/dist/index.d.ts"]
 		}
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx"]
+	"include": [
+		"src/**/*.ts",
+		"src/**/*.tsx",
+		"scripts/**/*.ts",
+		"scripts/silk-map-copy-sprites.mts",
+		"src/lib/game-data/silk-data/silk-map.generated.ts",
+		"src/lib/game-data/silk-data/silk-map.generated.types.ts"
+	]
 }

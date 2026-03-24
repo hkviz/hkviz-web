@@ -1,5 +1,5 @@
+import { roomDataUnscaled } from '../../game-data/hollow-data';
 import { assertNever } from '../util';
-import { roomDataUnscaled } from '../../hk-data';
 
 export type UnprocessedRoomInfo = (typeof roomDataUnscaled)['rooms'][number];
 

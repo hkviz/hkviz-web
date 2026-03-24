@@ -1,4 +1,4 @@
-import { heroStateFieldsGenerated } from '../../hk-data';
+import { heroStateFieldsGenerated } from '../../game-data/hollow-data';
 
 const heroStateFieldsArray = Object.values(heroStateFieldsGenerated);
 

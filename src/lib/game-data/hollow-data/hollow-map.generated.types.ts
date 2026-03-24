@@ -1,15 +1,10 @@
-import { type Vector2Like, type Vector3Like, type Vector4Like } from './types';
+import { SpriteInfoGenerated } from '../shared/sprite-info-generated';
+import { Vector3Like, Vector4Like } from '../shared/vector-like';
 
-export interface SpriteInfoUnscaled {
-	name: string;
-	size: Vector2Like;
-	padding: Vector4Like;
-}
-
-export interface MapRoomUnscaled {
+export interface HollowMapRoomGenerated {
 	sceneName: string;
-	spriteInfo: SpriteInfoUnscaled;
-	roughSpriteInfo: SpriteInfoUnscaled | null;
+	spriteInfo: SpriteInfoGenerated;
+	roughSpriteInfo: SpriteInfoGenerated | null;
 	gameObjectName: string;
 	mapZone: string;
 	origColor: Vector4Like;
@@ -52,7 +47,7 @@ export interface MapRoomUnscaled {
 	}[];
 }
 
-export interface TextInfoUnscaled {
+export interface HollowTextInfoGenerated {
 	objectPath: string;
 	convoName: string;
 	sheetName: string;

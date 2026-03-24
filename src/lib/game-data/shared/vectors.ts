@@ -1,7 +1,4 @@
-export interface Vector2Like {
-	x: number;
-	y: number;
-}
+import { Vector2Like } from './vector-like';
 
 export class Vector2 {
 	public constructor(

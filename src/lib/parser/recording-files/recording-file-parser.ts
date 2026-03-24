@@ -1,5 +1,5 @@
+import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { heroStateFields, heroStatesSkipParsing } from '../hero-state';
-import { Vector2 } from '../hk-types';
 import { parsePlayerDataFieldValue, playerDataFields } from '../player-data';
 import {
 	type HollowRecordingFileVersion,

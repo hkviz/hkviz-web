@@ -1,4 +1,4 @@
-import { type Vector2 } from '../../hk-types';
+import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { playerPositionToMapPosition } from '../../map-data/player-position';
 import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 import { type SceneEvent } from './scene-event';

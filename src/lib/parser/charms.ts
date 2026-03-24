@@ -1,5 +1,5 @@
+import { charmsGenerated, uiLangGenerated } from '../game-data/hollow-data';
 import { type FrameEndEvent } from './recording-files/events/frame-end-event';
-import { charmsGenerated, uiLangGenerated } from '../hk-data';
 import { parseHtmlEntities, raise } from './util';
 
 const charmsArray = charmsGenerated.map((charm) => {

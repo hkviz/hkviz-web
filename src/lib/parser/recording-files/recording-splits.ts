@@ -1,21 +1,21 @@
-import { enemiesJournalLang } from '../../hk-data';
+import { enemiesJournalLang } from '../../game-data/hollow-data';
 import { virtualCharms } from '../charms';
 import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../player-data/abilities';
 import {
-	enemies,
-	greyPrinceNames,
-	isEnemyBoss,
-	playerDataNameToDefeatedName,
-	type EnemyInfo,
+    enemies,
+    greyPrinceNames,
+    isEnemyBoss,
+    playerDataNameToDefeatedName,
+    type EnemyInfo,
 } from '../player-data/enemies';
 import {
-	getDefaultValue,
-	getEnemyNameFromDefeatedField,
-	getEnemyNameFromKilledField,
-	isPlayerDataBoolField,
-	isPlayerDataDefeatedField,
-	isPlayerDataKilledField,
-	playerDataFields,
+    getDefaultValue,
+    getEnemyNameFromDefeatedField,
+    getEnemyNameFromKilledField,
+    isPlayerDataBoolField,
+    isPlayerDataDefeatedField,
+    isPlayerDataKilledField,
+    playerDataFields,
 } from '../player-data/player-data';
 import { assertNever, parseHtmlEntities } from '../util';
 import { type PlayerPositionEvent } from './events/player-position-event';
