@@ -37,9 +37,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tut_01_51',
+				name: 'Tut_01_51_189x197_26',
 				nameShort: 'Tut_01',
 				size: {
 					x: 189.0,
@@ -53,21 +55,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Tut_01_9',
-				nameShort: 'Tut_01',
-				size: {
-					x: 189.0,
-					y: 194.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 80.07612,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Tut_01_9',
+				name: 'Tut_01_9_189x194_1',
 				nameShort: 'Tut_01',
 				size: {
 					x: 189.0,
@@ -155,9 +143,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tut_01_top_rough_4',
+				name: 'Tut_01_top_rough_4_31x25_2',
 				nameShort: 'Tut_01_top_rough',
 				size: {
 					x: 31.0,
@@ -171,21 +161,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Tut_01_top_4',
-				nameShort: 'Tut_01_top',
-				size: {
-					x: 21.0,
-					y: 11.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Tut_01_top_4',
+				name: 'Tut_01_top_4_21x11_1',
 				nameShort: 'Tut_01_top',
 				size: {
 					x: 21.0,
@@ -242,9 +218,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tut_01_left_room_6',
+				name: 'Tut_01_left_room_6_106x204_1',
 				nameShort: 'Tut_01_left_room',
 				size: {
 					x: 106.0,
@@ -258,7 +236,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Tut_01_9',
+				name: 'Tut_01_9_189x194_1',
 				nameShort: 'Tut_01',
 				size: {
 					x: 189.0,
@@ -269,20 +247,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 80.07612,
 					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Tut_01_left_room_6',
-				nameShort: 'Tut_01_left_room',
-				size: {
-					x: 106.0,
-					y: 204.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 97.01291,
-					z: 33.02675,
-					w: 68.0761261,
 				},
 			},
 			altFullSprites: null,
@@ -329,9 +293,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tut_02_25',
+				name: 'Tut_02_25_232x95_23',
 				nameShort: 'Tut_02',
 				size: {
 					x: 232.0,
@@ -345,21 +311,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Tut_02_21',
-				nameShort: 'Tut_02',
-				size: {
-					x: 232.0,
-					y: 93.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Tut_02_21',
+				name: 'Tut_02_21_232x93_1',
 				nameShort: 'Tut_02',
 				size: {
 					x: 232.0,
@@ -416,9 +368,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tut_01b_46',
+				name: 'Tut_01b_46_268x167_15',
 				nameShort: 'Tut_01b',
 				size: {
 					x: 268.0,
@@ -432,21 +386,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Tut_01b_14',
-				nameShort: 'Tut_01b',
-				size: {
-					x: 268.0,
-					y: 167.0,
-				},
-				padding: {
-					x: 107.076118,
-					y: 50.0761223,
-					z: 4.076111,
-					w: 0.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Tut_01b_14',
+				name: 'Tut_01b_14_268x167_1',
 				nameShort: 'Tut_01b',
 				size: {
 					x: 268.0,
@@ -534,9 +474,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tut_03_19',
+				name: 'Tut_03_19_202x55_11',
 				nameShort: 'Tut_03',
 				size: {
 					x: 202.0,
@@ -550,21 +492,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Tut_03_8',
-				nameShort: 'Tut_03',
-				size: {
-					x: 202.0,
-					y: 53.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Tut_03_8',
+				name: 'Tut_03_8_202x53_1',
 				nameShort: 'Tut_03',
 				size: {
 					x: 202.0,
@@ -652,10 +580,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -700,9 +629,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bonetown_83',
+				name: 'Bonetown_83_564x156_40',
 				nameShort: 'Bonetown',
 				size: {
 					x: 564.0,
@@ -716,21 +647,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bonetown_17',
-				nameShort: 'Bonetown',
-				size: {
-					x: 564.0,
-					y: 156.0,
-				},
-				padding: {
-					x: 5.07612038,
-					y: 0.0,
-					z: 0.0,
-					w: 73.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Bonetown_17',
+				name: 'Bonetown_17_564x156_1',
 				nameShort: 'Bonetown',
 				size: {
 					x: 564.0,
@@ -881,10 +798,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			origColor: null,
 			visualBounds: null,
 			playerPositionBounds: null,
+			sortingOrder: 0,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -929,9 +847,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bonetown_top_left_8',
+				name: 'Bonetown_top_left_8_564x156_1',
 				nameShort: 'Bonetown_top_left',
 				size: {
 					x: 564.0,
@@ -945,20 +865,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bonetown_top_left_8',
-				nameShort: 'Bonetown_top_left',
-				size: {
-					x: 564.0,
-					y: 156.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 15.0513163,
-					z: 265.0477,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -1003,9 +909,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bonetown_top_right_13',
+				name: 'Bonetown_top_right_13_564x156_14',
 				nameShort: 'Bonetown_top_right',
 				size: {
 					x: 564.0,
@@ -1019,21 +927,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bonetown_top_right_16',
-				nameShort: 'Bonetown_top_right',
-				size: {
-					x: 564.0,
-					y: 156.0,
-				},
-				padding: {
-					x: 244.012909,
-					y: 38.0129128,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bonetown_top_right_16',
+				name: 'Bonetown_top_right_16_564x156_1',
 				nameShort: 'Bonetown_top_right',
 				size: {
 					x: 564.0,
@@ -1090,9 +984,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bonegrave_11',
+				name: 'Bonegrave_11_575x147_1',
 				nameShort: 'Bonegrave',
 				size: {
 					x: 575.0,
@@ -1106,20 +1002,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bonegrave_11',
-				nameShort: 'Bonegrave',
-				size: {
-					x: 575.0,
-					y: 147.0,
-				},
-				padding: {
-					x: 266.019165,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0267486572,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -1195,9 +1077,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bonegrave_Gate_11',
+				name: 'Bonegrave_Gate_11_626x156_1',
 				nameShort: 'Bonegrave_Gate',
 				size: {
 					x: 626.0,
@@ -1211,7 +1095,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bonetown_17',
+				name: 'Bonetown_17_564x156_1',
 				nameShort: 'Bonetown',
 				size: {
 					x: 564.0,
@@ -1222,20 +1106,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 73.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Bonegrave_Gate_11',
-				nameShort: 'Bonegrave_Gate',
-				size: {
-					x: 626.0,
-					y: 156.0,
-				},
-				padding: {
-					x: 13.0267506,
-					y: 1.0761205,
-					z: 568.0761,
-					w: 118.012909,
 				},
 			},
 			altFullSprites: null,
@@ -1282,10 +1152,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -1330,9 +1201,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aspid_01_blank_5',
+				name: 'Aspid_01_blank_5_124x504_0',
 				nameShort: 'Aspid_01_blank',
 				size: {
 					x: 124.0,
@@ -1346,20 +1219,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aspid_01_blank_5',
-				nameShort: 'Aspid_01_blank',
-				size: {
-					x: 124.0,
-					y: 504.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 118.076118,
-					w: 498.0761,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -1404,9 +1263,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aspid_01_13',
+				name: 'Aspid_01_13_124x519_2',
 				nameShort: 'Aspid_01',
 				size: {
 					x: 124.0,
@@ -1420,20 +1281,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aspid_01_13',
-				nameShort: 'Aspid_01',
-				size: {
-					x: 124.0,
-					y: 519.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 204.026749,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -1539,9 +1386,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aspid_01_mid_6',
+				name: 'Aspid_01_mid_6_124x519_1',
 				nameShort: 'Aspid_01_mid',
 				size: {
 					x: 124.0,
@@ -1555,20 +1404,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aspid_01_mid_6',
-				nameShort: 'Aspid_01_mid',
-				size: {
-					x: 124.0,
-					y: 519.0,
-				},
-				padding: {
-					x: 6.07612038,
-					y: 82.01291,
-					z: 8.069435,
-					w: 261.001923,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -1613,9 +1448,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_19_base2_7',
+				name: 'Coral_19_base2_7_124x519_1',
 				nameShort: 'Coral_19_base2',
 				size: {
 					x: 124.0,
@@ -1629,7 +1466,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -1674,9 +1510,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aspid_01_base_12',
+				name: 'Aspid_01_base_12_124x504_6',
 				nameShort: 'Aspid_01_base',
 				size: {
 					x: 124.0,
@@ -1690,21 +1528,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Aspid_01_base_10',
-				nameShort: 'Aspid_01_base',
-				size: {
-					x: 124.0,
-					y: 504.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 350.149353,
-				},
-			},
-			rendererSprite: {
-				name: 'Aspid_01_base_10',
+				name: 'Aspid_01_base_10_124x504_1',
 				nameShort: 'Aspid_01_base',
 				size: {
 					x: 124.0,
@@ -1792,9 +1616,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_01b_12',
+				name: 'Bone_01b_12_84x180_13',
 				nameShort: 'Bone_01b',
 				size: {
 					x: 84.0,
@@ -1808,21 +1634,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_01b_6',
-				nameShort: 'Bone_01b',
-				size: {
-					x: 84.0,
-					y: 180.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 108.076118,
-					z: 4.07611847,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_01b_6',
+				name: 'Bone_01b_6_84x180_1',
 				nameShort: 'Bone_01b',
 				size: {
 					x: 84.0,
@@ -1879,9 +1691,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_05b_18',
+				name: 'Bone_05b_18_121x41_4',
 				nameShort: 'Bone_05b',
 				size: {
 					x: 121.0,
@@ -1895,21 +1709,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_05b_6',
-				nameShort: 'Bone_05b',
-				size: {
-					x: 121.0,
-					y: 41.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 17.07612,
-					z: 61.0267525,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_05b_6',
+				name: 'Bone_05b_6_121x41_1',
 				nameShort: 'Bone_05b',
 				size: {
 					x: 121.0,
@@ -1966,9 +1766,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_05b_right_5',
+				name: 'Bone_05b_right_5_127x41_1',
 				nameShort: 'Bone_05b_right',
 				size: {
 					x: 127.0,
@@ -1982,7 +1784,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_05b_6',
+				name: 'Bone_05b_6_121x41_1',
 				nameShort: 'Bone_05b',
 				size: {
 					x: 121.0,
@@ -1993,20 +1795,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 17.07612,
 					z: 61.0267525,
 					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_05b_right_5',
-				nameShort: 'Bone_05b_right',
-				size: {
-					x: 127.0,
-					y: 41.0,
-				},
-				padding: {
-					x: 39.0761223,
-					y: 17.07612,
-					z: 1.02674866,
-					w: 1.0362854,
 				},
 			},
 			altFullSprites: null,
@@ -2053,9 +1841,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_11_29',
+				name: 'Bone_11_29_213x54_20',
 				nameShort: 'Bone_11',
 				size: {
 					x: 213.0,
@@ -2069,21 +1859,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_11_7',
-				nameShort: 'Bone_11',
-				size: {
-					x: 213.0,
-					y: 54.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_11_7',
+				name: 'Bone_11_7_213x54_1',
 				nameShort: 'Bone_11',
 				size: {
 					x: 213.0,
@@ -2171,9 +1947,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_11b_5',
+				name: 'Bone_11b_5_104x35_1',
 				nameShort: 'Bone_11b',
 				size: {
 					x: 104.0,
@@ -2187,20 +1965,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_11b_5',
-				nameShort: 'Bone_11b',
-				size: {
-					x: 104.0,
-					y: 35.0,
-				},
-				padding: {
-					x: 7.07612038,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -2245,9 +2009,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Mosstown_01_27',
+				name: 'Mosstown_01_27_250x54_14',
 				nameShort: 'Mosstown_01',
 				size: {
 					x: 250.0,
@@ -2261,21 +2027,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Mosstown_01_6',
-				nameShort: 'Mosstown_01',
-				size: {
-					x: 250.0,
-					y: 54.0,
-				},
-				padding: {
-					x: 43.2928925,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Mosstown_01_6',
+				name: 'Mosstown_01_6_250x54_1',
 				nameShort: 'Mosstown_01',
 				size: {
 					x: 250.0,
@@ -2332,9 +2084,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Mosstown_02_27',
+				name: 'Mosstown_02_27_291x122_25',
 				nameShort: 'Mosstown_02',
 				size: {
 					x: 291.0,
@@ -2348,21 +2102,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Mosstown_02_7',
-				nameShort: 'Mosstown_02',
-				size: {
-					x: 291.0,
-					y: 122.0,
-				},
-				padding: {
-					x: 17.02675,
-					y: 51.0513153,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Mosstown_02_7',
+				name: 'Mosstown_02_7_291x122_1',
 				nameShort: 'Mosstown_02',
 				size: {
 					x: 291.0,
@@ -2450,9 +2190,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Mosstown_02c_4',
+				name: 'Mosstown_02c_4_86x25_1',
 				nameShort: 'Mosstown_02c',
 				size: {
 					x: 86.0,
@@ -2466,20 +2208,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Mosstown_02c_4',
-				nameShort: 'Mosstown_02c',
-				size: {
-					x: 86.0,
-					y: 25.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -2524,9 +2252,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bonegrave_top_one_way_4',
+				name: 'Bonegrave_top_one_way_4_24x19_1',
 				nameShort: 'Bonegrave_top_one_way',
 				size: {
 					x: 24.0,
@@ -2540,20 +2270,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bonegrave_top_one_way_4',
-				nameShort: 'Bonegrave_top_one_way',
-				size: {
-					x: 24.0,
-					y: 19.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -2629,9 +2345,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.002998352,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Mosstown_02_left_4',
+				name: 'Mosstown_02_left_4_77x30_1',
 				nameShort: 'Mosstown_02_left',
 				size: {
 					x: 77.0,
@@ -2645,7 +2363,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -2690,9 +2407,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00199890137,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_Steel_Servant_9',
+				name: 'Bone_Steel_Servant_9_229x67_1',
 				nameShort: 'Bone_Steel_Servant',
 				size: {
 					x: 229.0,
@@ -2706,7 +2425,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -2751,9 +2469,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_01_26',
+				name: 'Bone_01_26_248x159_27',
 				nameShort: 'Bone_01',
 				size: {
 					x: 248.0,
@@ -2767,21 +2487,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_01_12',
-				nameShort: 'Bone_01',
-				size: {
-					x: 248.0,
-					y: 159.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_01_12',
+				name: 'Bone_01_12_248x159_1',
 				nameShort: 'Bone_01',
 				size: {
 					x: 248.0,
@@ -2869,9 +2575,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_01c_top_7',
+				name: 'Bone_01c_top_7_137x44_1',
 				nameShort: 'Bone_01c_top',
 				size: {
 					x: 137.0,
@@ -2885,7 +2593,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -2930,9 +2637,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_01c_bot_10',
+				name: 'Bone_01c_bot_10_132x40_5',
 				nameShort: 'Bone_01c_bot',
 				size: {
 					x: 132.0,
@@ -2946,21 +2655,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_01c_bot_8',
-				nameShort: 'Bone_01c_bot',
-				size: {
-					x: 132.0,
-					y: 40.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_01c_bot_8',
+				name: 'Bone_01c_bot_8_132x40_1',
 				nameShort: 'Bone_01c_bot',
 				size: {
 					x: 132.0,
@@ -3017,9 +2712,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_01c_8',
+				name: 'Bone_01c_8_380x159_0',
 				nameShort: 'Bone_01c',
 				size: {
 					x: 380.0,
@@ -3033,21 +2730,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_01c_8',
-				nameShort: 'Bone_01c',
-				size: {
-					x: 380.0,
-					y: 159.0,
-				},
-				padding: {
-					x: 316.0761,
-					y: 14.07612,
-					z: 56.0267639,
-					w: 137.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_01c_8',
+				name: 'Bone_01c_8_380x159_0',
 				nameShort: 'Bone_01c',
 				size: {
 					x: 380.0,
@@ -3104,9 +2787,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_02_34',
+				name: 'Bone_02_34_268x76_21',
 				nameShort: 'Bone_02',
 				size: {
 					x: 268.0,
@@ -3120,21 +2805,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_02_7',
-				nameShort: 'Bone_02',
-				size: {
-					x: 268.0,
-					y: 76.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_02_7',
+				name: 'Bone_02_7_268x76_1',
 				nameShort: 'Bone_02',
 				size: {
 					x: 268.0,
@@ -3191,9 +2862,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_03_33',
+				name: 'Bone_03_33_85x218_13',
 				nameShort: 'Bone_03',
 				size: {
 					x: 85.0,
@@ -3207,21 +2880,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_03_10',
-				nameShort: 'Bone_03',
-				size: {
-					x: 85.0,
-					y: 218.0,
-				},
-				padding: {
-					x: 2.042908,
-					y: 0.0,
-					z: 0.0,
-					w: 75.02675,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_03_10',
+				name: 'Bone_03_10_85x218_1',
 				nameShort: 'Bone_03',
 				size: {
 					x: 85.0,
@@ -3278,9 +2937,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_03_top_20',
+				name: 'Bone_03_top_20_85x226_8',
 				nameShort: 'Bone_03_top',
 				size: {
 					x: 85.0,
@@ -3294,21 +2955,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_03_top_8',
-				nameShort: 'Bone_03_top',
-				size: {
-					x: 85.0,
-					y: 218.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 128.042908,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_03_top_8',
+				name: 'Bone_03_top_8_85x218_1',
 				nameShort: 'Bone_03_top',
 				size: {
 					x: 85.0,
@@ -3365,9 +3012,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_04_35',
+				name: 'Bone_04_35_391x52_31',
 				nameShort: 'Bone_04',
 				size: {
 					x: 391.0,
@@ -3381,21 +3030,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_04_6',
-				nameShort: 'Bone_04',
-				size: {
-					x: 391.0,
-					y: 52.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_04_6',
+				name: 'Bone_04_6_391x52_1',
 				nameShort: 'Bone_04',
 				size: {
 					x: 391.0,
@@ -3483,9 +3118,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_05_68',
+				name: 'Bone_05_68_340x44_22',
 				nameShort: 'Bone_05',
 				size: {
 					x: 340.0,
@@ -3499,21 +3136,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_05_14',
-				nameShort: 'Bone_05',
-				size: {
-					x: 340.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 114.076126,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_05_14',
+				name: 'Bone_05_14_340x44_1',
 				nameShort: 'Bone_05',
 				size: {
 					x: 340.0,
@@ -3570,9 +3193,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_05_right_4',
+				name: 'Bone_05_right_4_345x44_15',
 				nameShort: 'Bone_05_right',
 				size: {
 					x: 345.0,
@@ -3586,21 +3211,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_05_right_short_6',
-				nameShort: 'Bone_05_right_short',
-				size: {
-					x: 345.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 196.012909,
-					y: 0.0,
-					z: 0.0,
-					w: 3.07612228,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_05_right_short_6',
+				name: 'Bone_05_right_short_6_345x44_1',
 				nameShort: 'Bone_05_right_short',
 				size: {
 					x: 345.0,
@@ -3657,9 +3268,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_06_6',
+				name: 'Bone_06_6_189x86_1',
 				nameShort: 'Bone_06',
 				size: {
 					x: 189.0,
@@ -3673,20 +3286,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_06_6',
-				nameShort: 'Bone_06',
-				size: {
-					x: 189.0,
-					y: 86.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -3731,9 +3330,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Mosstown_03_join_4',
+				name: 'Mosstown_03_join_4_9x20_1',
 				nameShort: 'Mosstown_03_join',
 				size: {
 					x: 9.0,
@@ -3747,20 +3348,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Mosstown_03_join_4',
-				nameShort: 'Mosstown_03_join',
-				size: {
-					x: 9.0,
-					y: 20.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -3836,9 +3423,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_07_27',
+				name: 'Bone_07_27_143x113_15',
 				nameShort: 'Bone_07',
 				size: {
 					x: 143.0,
@@ -3852,21 +3441,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_07_7',
-				nameShort: 'Bone_07',
-				size: {
-					x: 143.0,
-					y: 111.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_07_7',
+				name: 'Bone_07_7_143x111_1',
 				nameShort: 'Bone_07',
 				size: {
 					x: 143.0,
@@ -3923,9 +3498,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_08_29',
+				name: 'Bone_08_29_62x161_10',
 				nameShort: 'Bone_08',
 				size: {
 					x: 62.0,
@@ -3939,21 +3516,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_08_7',
-				nameShort: 'Bone_08',
-				size: {
-					x: 62.0,
-					y: 161.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_08_7',
+				name: 'Bone_08_7_62x161_1',
 				nameShort: 'Bone_08',
 				size: {
 					x: 62.0,
@@ -4071,9 +3634,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_09_26',
+				name: 'Bone_09_26_287x82_19',
 				nameShort: 'Bone_09',
 				size: {
 					x: 287.0,
@@ -4087,21 +3652,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_09_7',
-				nameShort: 'Bone_09',
-				size: {
-					x: 287.0,
-					y: 80.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_09_7',
+				name: 'Bone_09_7_287x80_1',
 				nameShort: 'Bone_09',
 				size: {
 					x: 287.0,
@@ -4189,9 +3740,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_10_9',
+				name: 'Bone_10_9_174x107_1',
 				nameShort: 'Bone_10',
 				size: {
 					x: 174.0,
@@ -4205,20 +3758,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_10_9',
-				nameShort: 'Bone_10',
-				size: {
-					x: 174.0,
-					y: 107.0,
-				},
-				padding: {
-					x: 14.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -4263,9 +3802,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_10_left_6',
+				name: 'Bone_10_left_6_174x107_1',
 				nameShort: 'Bone_10_left',
 				size: {
 					x: 174.0,
@@ -4279,20 +3820,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_10_left_6',
-				nameShort: 'Bone_10_left',
-				size: {
-					x: 174.0,
-					y: 107.0,
-				},
-				padding: {
-					x: 9.07612,
-					y: 3.07612038,
-					z: 57.07612,
-					w: 49.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -4337,10 +3864,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -4385,10 +3913,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -4433,9 +3962,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_14_13',
+				name: 'Bone_14_13_234x55_20',
 				nameShort: 'Bone_14',
 				size: {
 					x: 234.0,
@@ -4449,21 +3980,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_14_9',
-				nameShort: 'Bone_14',
-				size: {
-					x: 234.0,
-					y: 55.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.07612038,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_14_9',
+				name: 'Bone_14_9_234x55_1',
 				nameShort: 'Bone_14',
 				size: {
 					x: 234.0,
@@ -4520,9 +4037,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_15_9',
+				name: 'Bone_15_9_181x51_1',
 				nameShort: 'Bone_15',
 				size: {
 					x: 181.0,
@@ -4536,20 +4055,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_15_9',
-				nameShort: 'Bone_15',
-				size: {
-					x: 181.0,
-					y: 51.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -4594,9 +4099,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_16_13',
+				name: 'Bone_16_13_219x114_8',
 				nameShort: 'Bone_16',
 				size: {
 					x: 219.0,
@@ -4610,21 +4117,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_Tramway_left_7',
-				nameShort: 'Bone_Tramway_left',
-				size: {
-					x: 219.0,
-					y: 114.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 152.012909,
-					w: 69.02675,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_Tramway_left_7',
+				name: 'Bone_Tramway_left_7_219x114_1',
 				nameShort: 'Bone_Tramway_left',
 				size: {
 					x: 219.0,
@@ -4681,9 +4174,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_Tramway_02_6',
+				name: 'Bone_Tramway_02_6_200x55_1',
 				nameShort: 'Bone_Tramway_02',
 				size: {
 					x: 200.0,
@@ -4697,20 +4192,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_Tramway_02_6',
-				nameShort: 'Bone_Tramway_02',
-				size: {
-					x: 200.0,
-					y: 55.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -4755,9 +4236,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_16_right_24',
+				name: 'Bone_16_right_24_219x116_18',
 				nameShort: 'Bone_16_right',
 				size: {
 					x: 219.0,
@@ -4771,21 +4254,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_Tramway_8',
-				nameShort: 'Bone_Tramway',
-				size: {
-					x: 219.0,
-					y: 116.0,
-				},
-				padding: {
-					x: 36.0761223,
-					y: 0.0,
-					z: 0.0,
-					w: 56.0761223,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_Tramway_8',
+				name: 'Bone_Tramway_8_219x116_1',
 				nameShort: 'Bone_Tramway',
 				size: {
 					x: 219.0,
@@ -4842,9 +4311,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_17_4',
+				name: 'Bone_17_4_58x25_1',
 				nameShort: 'Bone_17',
 				size: {
 					x: 58.0,
@@ -4858,20 +4329,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_17_4',
-				nameShort: 'Bone_17',
-				size: {
-					x: 58.0,
-					y: 25.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -4916,9 +4373,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_18_6',
+				name: 'Bone_18_6_75x59_1',
 				nameShort: 'Bone_18',
 				size: {
 					x: 75.0,
@@ -4932,20 +4391,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_18_6',
-				nameShort: 'Bone_18',
-				size: {
-					x: 75.0,
-					y: 59.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 2.07612038,
-					z: 13.0761223,
-					w: 25.0129128,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -4990,9 +4435,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_18_top_7',
+				name: 'Bone_18_top_7_75x59_1',
 				nameShort: 'Bone_18_top',
 				size: {
 					x: 75.0,
@@ -5006,20 +4453,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_18_top_7',
-				nameShort: 'Bone_18_top',
-				size: {
-					x: 75.0,
-					y: 59.0,
-				},
-				padding: {
-					x: 5.07612038,
-					y: 16.07612,
-					z: 0.05973053,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -5064,9 +4497,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_19_5',
+				name: 'Bone_19_5_245x45_1',
 				nameShort: 'Bone_19',
 				size: {
 					x: 245.0,
@@ -5080,20 +4515,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_19_5',
-				nameShort: 'Bone_19',
-				size: {
-					x: 245.0,
-					y: 45.0,
-				},
-				padding: {
-					x: 25.02675,
-					y: 0.0,
-					z: 3.076126,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -5138,9 +4559,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellshrine_47',
+				name: 'Bellshrine_47_68x39_6',
 				nameShort: 'Bellshrine',
 				size: {
 					x: 68.0,
@@ -5154,21 +4577,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellshrine_9',
-				nameShort: 'Bellshrine',
-				size: {
-					x: 68.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0267509818,
-					z: 0.0,
-					w: 2.02675247,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellshrine_9',
+				name: 'Bellshrine_9_68x39_1',
 				nameShort: 'Bellshrine',
 				size: {
 					x: 68.0,
@@ -5225,9 +4634,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_07_bot_left_6',
+				name: 'Bone_07_bot_left_6_143x111_1',
 				nameShort: 'Bone_07_bot_left',
 				size: {
 					x: 143.0,
@@ -5241,20 +4652,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_07_bot_left_6',
-				nameShort: 'Bone_07_bot_left',
-				size: {
-					x: 143.0,
-					y: 111.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 94.0761261,
-					w: 68.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -5299,9 +4696,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_01_19',
+				name: 'Crawl_01_19_239x215_18',
 				nameShort: 'Crawl_01',
 				size: {
 					x: 239.0,
@@ -5315,21 +4714,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Aspid_xx_7',
-				nameShort: 'Aspid_xx',
-				size: {
-					x: 239.0,
-					y: 215.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 26.02675,
-					z: 0.0,
-					w: 18.0267487,
-				},
-			},
-			rendererSprite: {
-				name: 'Aspid_xx_7',
+				name: 'Aspid_xx_7_239x215_1',
 				nameShort: 'Aspid_xx',
 				size: {
 					x: 239.0,
@@ -5417,9 +4802,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_02_bottom_19',
+				name: 'Crawl_02_bottom_19_52x252_5',
 				nameShort: 'Crawl_02_bottom',
 				size: {
 					x: 52.0,
@@ -5433,21 +4820,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Crawl_02_bottom_8',
-				nameShort: 'Crawl_02_bottom',
-				size: {
-					x: 52.0,
-					y: 252.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 180.026749,
-				},
-			},
-			rendererSprite: {
-				name: 'Crawl_02_bottom_8',
+				name: 'Crawl_02_bottom_8_52x252_1',
 				nameShort: 'Crawl_02_bottom',
 				size: {
 					x: 52.0,
@@ -5504,9 +4877,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_02_top_15',
+				name: 'Crawl_02_top_15_52x199_12',
 				nameShort: 'Crawl_02_top',
 				size: {
 					x: 52.0,
@@ -5520,21 +4895,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Crawl_02_top_8',
-				nameShort: 'Crawl_02_top',
-				size: {
-					x: 52.0,
-					y: 199.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0761204958,
-					z: 0.0,
-					w: 4.02674866,
-				},
-			},
-			rendererSprite: {
-				name: 'Crawl_02_top_8',
+				name: 'Crawl_02_top_8_52x199_1',
 				nameShort: 'Crawl_02_top',
 				size: {
 					x: 52.0,
@@ -5591,9 +4952,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_03_15',
+				name: 'Crawl_03_15_322x129_1',
 				nameShort: 'Crawl_03',
 				size: {
 					x: 322.0,
@@ -5607,20 +4970,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Crawl_03_15',
-				nameShort: 'Crawl_03',
-				size: {
-					x: 322.0,
-					y: 129.0,
-				},
-				padding: {
-					x: 13.0267506,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -5665,9 +5014,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_03b_6',
+				name: 'Crawl_03b_6_228x36_1',
 				nameShort: 'Crawl_03b',
 				size: {
 					x: 228.0,
@@ -5681,20 +5032,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Crawl_03b_6',
-				nameShort: 'Crawl_03b',
-				size: {
-					x: 228.0,
-					y: 36.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -5739,9 +5076,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_04_15',
+				name: 'Crawl_04_15_268x33_8',
 				nameShort: 'Crawl_04',
 				size: {
 					x: 268.0,
@@ -5755,21 +5094,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Crawl_04_6',
-				nameShort: 'Crawl_04',
-				size: {
-					x: 268.0,
-					y: 33.0,
-				},
-				padding: {
-					x: 26.07612,
-					y: 0.0761204958,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Crawl_04_6',
+				name: 'Crawl_04_6_268x33_1',
 				nameShort: 'Crawl_04',
 				size: {
 					x: 268.0,
@@ -5857,9 +5182,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_05_6',
+				name: 'Crawl_05_6_382x47_1',
 				nameShort: 'Crawl_05',
 				size: {
 					x: 382.0,
@@ -5873,20 +5200,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Crawl_05_6',
-				nameShort: 'Crawl_05',
-				size: {
-					x: 382.0,
-					y: 47.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -5931,9 +5244,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_xx_5',
+				name: 'Crawl_xx_5_154x54_1',
 				nameShort: 'Crawl_xx',
 				size: {
 					x: 154.0,
@@ -5947,20 +5262,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Crawl_xx_5',
-				nameShort: 'Crawl_xx',
-				size: {
-					x: 154.0,
-					y: 54.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6005,9 +5306,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_07_7',
+				name: 'Crawl_07_7_138x84_1',
 				nameShort: 'Crawl_07',
 				size: {
 					x: 138.0,
@@ -6021,20 +5324,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Crawl_07_7',
-				nameShort: 'Crawl_07',
-				size: {
-					x: 138.0,
-					y: 84.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6110,9 +5399,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_08_9',
+				name: 'Crawl_08_9_190x40_1',
 				nameShort: 'Crawl_08',
 				size: {
 					x: 190.0,
@@ -6126,20 +5417,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Crawl_08_9',
-				nameShort: 'Crawl_08',
-				size: {
-					x: 190.0,
-					y: 40.0,
-				},
-				padding: {
-					x: 60.00404,
-					y: 0.0,
-					z: 4.076126,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6184,9 +5461,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_09_7',
+				name: 'Crawl_09_7_185x90_1',
 				nameShort: 'Crawl_09',
 				size: {
 					x: 185.0,
@@ -6200,20 +5479,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Crawl_09_7',
-				nameShort: 'Crawl_09',
-				size: {
-					x: 185.0,
-					y: 90.0,
-				},
-				padding: {
-					x: 1.0761205,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6258,9 +5523,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Crawl_10_8',
+				name: 'Crawl_10_8_82x32_1',
 				nameShort: 'Crawl_10',
 				size: {
 					x: 82.0,
@@ -6274,20 +5541,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Crawl_10_8',
-				nameShort: 'Crawl_10',
-				size: {
-					x: 82.0,
-					y: 32.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6332,9 +5585,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_01_19',
+				name: 'Dock_01_19_66x139_8',
 				nameShort: 'Dock_01',
 				size: {
 					x: 66.0,
@@ -6348,21 +5603,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dock_01_6',
-				nameShort: 'Dock_01',
-				size: {
-					x: 66.0,
-					y: 139.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Dock_01_6',
+				name: 'Dock_01_6_66x139_1',
 				nameShort: 'Dock_01',
 				size: {
 					x: 66.0,
@@ -6419,9 +5660,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_02_empty_8',
+				name: 'Dock_02_empty_8_205x193_0',
 				nameShort: 'Dock_02_empty',
 				size: {
 					x: 205.0,
@@ -6435,20 +5678,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_02_empty_8',
-				nameShort: 'Dock_02_empty',
-				size: {
-					x: 205.0,
-					y: 193.0,
-				},
-				padding: {
-					x: 99.07612,
-					y: 84.07612,
-					z: 99.07612,
-					w: 100.076118,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6493,9 +5722,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_02_bot_left_9',
+				name: 'Dock_02_bot_left_9_205x193_1',
 				nameShort: 'Dock_02_bot_left',
 				size: {
 					x: 205.0,
@@ -6509,20 +5740,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_02_bot_left_9',
-				nameShort: 'Dock_02_bot_left',
-				size: {
-					x: 205.0,
-					y: 193.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 15.07612,
-					z: 143.076126,
-					w: 119.042908,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6567,9 +5784,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_02_shortcut_4',
+				name: 'Dock_02_shortcut_4_30x62_1',
 				nameShort: 'Dock_02_shortcut',
 				size: {
 					x: 30.0,
@@ -6583,20 +5802,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_02_shortcut_4',
-				nameShort: 'Dock_02_shortcut',
-				size: {
-					x: 30.0,
-					y: 62.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6641,9 +5846,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_02b_5',
+				name: 'Dock_02b_5_166x194_0',
 				nameShort: 'Dock_02b',
 				size: {
 					x: 166.0,
@@ -6657,20 +5864,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_02b_5',
-				nameShort: 'Dock_02b',
-				size: {
-					x: 166.0,
-					y: 194.0,
-				},
-				padding: {
-					x: 151.149353,
-					y: 191.076126,
-					z: 9.076126,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6715,9 +5908,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_02b_bot_46',
+				name: 'Dock_02b_bot_46_151x192_1',
 				nameShort: 'Dock_02b_bot',
 				size: {
 					x: 151.0,
@@ -6731,20 +5926,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_02b_bot_46',
-				nameShort: 'Dock_02b_bot',
-				size: {
-					x: 151.0,
-					y: 192.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 80.01291,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6789,9 +5970,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_02b_top_9',
+				name: 'Dock_02b_top_9_150x83_1',
 				nameShort: 'Dock_02b_top',
 				size: {
 					x: 150.0,
@@ -6805,20 +5988,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_02b_top_9',
-				nameShort: 'Dock_02b_top',
-				size: {
-					x: 150.0,
-					y: 83.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6863,9 +6032,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_02_bot_5',
+				name: 'Dock_02_bot_5_51x71_1',
 				nameShort: 'Dock_02_bot',
 				size: {
 					x: 51.0,
@@ -6879,20 +6050,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_02_bot_5',
-				nameShort: 'Dock_02_bot',
-				size: {
-					x: 51.0,
-					y: 71.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6937,9 +6094,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00400161743,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_02b_gate_4',
+				name: 'Dock_02b_gate_4_61x18_1',
 				nameShort: 'Dock_02b_gate',
 				size: {
 					x: 61.0,
@@ -6953,7 +6112,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -6998,9 +6156,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_02_7',
+				name: 'Dock_02_7_205x193_1',
 				nameShort: 'Dock_02',
 				size: {
 					x: 205.0,
@@ -7014,20 +6174,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_02_7',
-				nameShort: 'Dock_02',
-				size: {
-					x: 205.0,
-					y: 193.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 9.026749,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -7072,9 +6218,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_03_8',
+				name: 'Dock_03_8_279x176_1',
 				nameShort: 'Dock_03',
 				size: {
 					x: 279.0,
@@ -7088,20 +6236,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_03_8',
-				nameShort: 'Dock_03',
-				size: {
-					x: 279.0,
-					y: 176.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 100.076118,
-					z: 57.0362854,
-					w: 1.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -7146,9 +6280,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_03b_7',
+				name: 'Dock_03b_7_274x122_1',
 				nameShort: 'Dock_03b',
 				size: {
 					x: 274.0,
@@ -7162,20 +6298,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_03b_7',
-				nameShort: 'Dock_03b',
-				size: {
-					x: 274.0,
-					y: 122.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0267509818,
-					z: 57.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -7220,9 +6342,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_03b_3_7',
+				name: 'Dock_03b_3_7_80x127_1',
 				nameShort: 'Dock_03b_3',
 				size: {
 					x: 80.0,
@@ -7236,20 +6360,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_03b_3_7',
-				nameShort: 'Dock_03b_3',
-				size: {
-					x: 80.0,
-					y: 127.0,
-				},
-				padding: {
-					x: 3.07612038,
-					y: 10.0267506,
-					z: 12.0761185,
-					w: 8.026749,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -7294,9 +6404,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_03c_7',
+				name: 'Dock_03c_7_181x117_1',
 				nameShort: 'Dock_03c',
 				size: {
 					x: 181.0,
@@ -7310,20 +6422,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_03c_7',
-				nameShort: 'Dock_03c',
-				size: {
-					x: 181.0,
-					y: 117.0,
-				},
-				padding: {
-					x: 20.07612,
-					y: 68.07612,
-					z: 3.05131531,
-					w: 2.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -7368,9 +6466,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_03_top_left_4',
+				name: 'Dock_03_top_left_4_15x26_1',
 				nameShort: 'Dock_03_top_left',
 				size: {
 					x: 15.0,
@@ -7384,20 +6484,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_03_top_left_4',
-				nameShort: 'Dock_03_top_left',
-				size: {
-					x: 15.0,
-					y: 26.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -7473,9 +6559,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_04_25',
+				name: 'Dock_04_25_56x189_12',
 				nameShort: 'Dock_04',
 				size: {
 					x: 56.0,
@@ -7489,21 +6577,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dock_04_8',
-				nameShort: 'Dock_04',
-				size: {
-					x: 56.0,
-					y: 189.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 3.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Dock_04_8',
+				name: 'Dock_04_8_56x189_1',
 				nameShort: 'Dock_04',
 				size: {
 					x: 56.0,
@@ -7560,9 +6634,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_04_sauna_exit_8',
+				name: 'Dock_04_sauna_exit_8_56x189_1',
 				nameShort: 'Dock_04_sauna_exit',
 				size: {
 					x: 56.0,
@@ -7576,7 +6652,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dock_04_8',
+				name: 'Dock_04_8_56x189_1',
 				nameShort: 'Dock_04',
 				size: {
 					x: 56.0,
@@ -7587,20 +6663,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 3.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Dock_04_sauna_exit_8',
-				nameShort: 'Dock_04_sauna_exit',
-				size: {
-					x: 56.0,
-					y: 189.0,
-				},
-				padding: {
-					x: 29.07612,
-					y: 8.026751,
-					z: 0.0,
-					w: 140.026764,
 				},
 			},
 			altFullSprites: null,
@@ -7647,9 +6709,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_05_4',
+				name: 'Dock_05_4_49x30_6',
 				nameShort: 'Dock_05',
 				size: {
 					x: 49.0,
@@ -7663,21 +6727,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dock_05_4',
-				nameShort: 'Dock_05',
-				size: {
-					x: 49.0,
-					y: 30.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Dock_05_4',
+				name: 'Dock_05_4_49x30_1',
 				nameShort: 'Dock_05',
 				size: {
 					x: 49.0,
@@ -7734,9 +6784,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_06_Church_10',
+				name: 'Dock_06_Church_10_119x66_5',
 				nameShort: 'Dock_06_Church',
 				size: {
 					x: 119.0,
@@ -7750,21 +6802,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dock_06_Church_7',
-				nameShort: 'Dock_06_Church',
-				size: {
-					x: 119.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 32.0761223,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Dock_06_Church_7',
+				name: 'Dock_06_Church_7_119x66_1',
 				nameShort: 'Dock_06_Church',
 				size: {
 					x: 119.0,
@@ -7821,10 +6859,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: {
-				name: 'Dock_06_Church_7',
+				name: 'Dock_06_Church_7_119x66_1',
 				nameShort: 'Dock_06_Church',
 				size: {
 					x: 119.0,
@@ -7837,7 +6877,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					w: 0.0,
 				},
 			},
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -7882,9 +6921,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_06_Church_bot_5',
+				name: 'Dock_06_Church_bot_5_71x44_1',
 				nameShort: 'Dock_06_Church_bot',
 				size: {
 					x: 71.0,
@@ -7898,20 +6939,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_06_Church_bot_5',
-				nameShort: 'Dock_06_Church_bot',
-				size: {
-					x: 71.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 21.0761223,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -7956,9 +6983,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_08_33',
+				name: 'Dock_08_33_170x53_8',
 				nameShort: 'Dock_08',
 				size: {
 					x: 170.0,
@@ -7972,21 +7001,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dock_01b_6',
-				nameShort: 'Dock_01b',
-				size: {
-					x: 170.0,
-					y: 53.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 11.0761223,
-				},
-			},
-			rendererSprite: {
-				name: 'Dock_01b_6',
+				name: 'Dock_01b_6_170x53_1',
 				nameShort: 'Dock_01b',
 				size: {
 					x: 170.0,
@@ -8074,9 +7089,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_01b_2_7',
+				name: 'Dock_01b_2_7_170x53_1',
 				nameShort: 'Dock_01b_2',
 				size: {
 					x: 170.0,
@@ -8090,20 +7107,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_01b_2_7',
-				nameShort: 'Dock_01b_2',
-				size: {
-					x: 170.0,
-					y: 53.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 20.07612,
-					z: 80.07612,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8148,9 +7151,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_09_9',
+				name: 'Dock_09_9_130x48_1',
 				nameShort: 'Dock_09',
 				size: {
 					x: 130.0,
@@ -8164,20 +7169,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_09_9',
-				nameShort: 'Dock_09',
-				size: {
-					x: 130.0,
-					y: 48.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8222,9 +7213,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_10_6',
+				name: 'Dock_10_6_68x39_1',
 				nameShort: 'Dock_10',
 				size: {
 					x: 68.0,
@@ -8238,20 +7231,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_10_6',
-				nameShort: 'Dock_10',
-				size: {
-					x: 68.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 10.2928934,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8296,9 +7275,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_11_6',
+				name: 'Dock_11_6_241x124_1',
 				nameShort: 'Dock_11',
 				size: {
 					x: 241.0,
@@ -8312,20 +7293,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_11_6',
-				nameShort: 'Dock_11',
-				size: {
-					x: 241.0,
-					y: 124.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8370,9 +7337,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_12_6',
+				name: 'Dock_12_6_78x108_1',
 				nameShort: 'Dock_12',
 				size: {
 					x: 78.0,
@@ -8386,20 +7355,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_12_6',
-				nameShort: 'Dock_12',
-				size: {
-					x: 78.0,
-					y: 108.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 19.02675,
-					z: 2.02674866,
-					w: 27.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8444,9 +7399,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_12_top_9',
+				name: 'Dock_12_top_9_77x100_1',
 				nameShort: 'Dock_12_top',
 				size: {
 					x: 77.0,
@@ -8460,20 +7417,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_12_top_9',
-				nameShort: 'Dock_12_top',
-				size: {
-					x: 77.0,
-					y: 100.0,
-				},
-				padding: {
-					x: 25.0610142,
-					y: 28.02675,
-					z: 2.02674866,
-					w: 11.0761185,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8518,9 +7461,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_13_6',
+				name: 'Dock_13_6_50x123_1',
 				nameShort: 'Dock_13',
 				size: {
 					x: 50.0,
@@ -8534,20 +7479,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_13_6',
-				nameShort: 'Dock_13',
-				size: {
-					x: 50.0,
-					y: 123.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8592,9 +7523,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_14_8',
+				name: 'Dock_14_8_50x37_1',
 				nameShort: 'Dock_14',
 				size: {
 					x: 50.0,
@@ -8608,20 +7541,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_14_8',
-				nameShort: 'Dock_14',
-				size: {
-					x: 50.0,
-					y: 37.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 5.04290771,
-					z: 0.0761222839,
-					w: 0.0761222839,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8666,9 +7585,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_15_8',
+				name: 'Dock_15_8_46x138_1',
 				nameShort: 'Dock_15',
 				size: {
 					x: 46.0,
@@ -8682,20 +7603,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_15_8',
-				nameShort: 'Dock_15',
-				size: {
-					x: 46.0,
-					y: 138.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0267509818,
-					z: 0.0,
-					w: 3.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8740,9 +7647,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_15_secret_8',
+				name: 'Dock_15_secret_8_46x138_1',
 				nameShort: 'Dock_15_secret',
 				size: {
 					x: 46.0,
@@ -8756,20 +7665,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_15_secret_8',
-				nameShort: 'Dock_15_secret',
-				size: {
-					x: 46.0,
-					y: 138.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 41.0362854,
-					z: 21.02675,
-					w: 65.02675,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8814,9 +7709,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_16_6',
+				name: 'Dock_16_6_106x68_1',
 				nameShort: 'Dock_16',
 				size: {
 					x: 106.0,
@@ -8830,20 +7727,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_16_6',
-				nameShort: 'Dock_16',
-				size: {
-					x: 106.0,
-					y: 68.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0267509818,
-					z: 0.0,
-					w: 2.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -8888,9 +7771,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_02_18',
+				name: 'Bellway_02_18_180x93_7',
 				nameShort: 'Bellway_02',
 				size: {
 					x: 180.0,
@@ -8904,21 +7789,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellway_02_8',
-				nameShort: 'Bellway_02',
-				size: {
-					x: 180.0,
-					y: 93.0,
-				},
-				padding: {
-					x: 85.07612,
-					y: 25.07612,
-					z: 0.0,
-					w: 4.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellway_02_8',
+				name: 'Bellway_02_8_180x93_1',
 				nameShort: 'Bellway_02',
 				size: {
 					x: 180.0,
@@ -8975,9 +7846,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_02_left_6',
+				name: 'Bellway_02_left_6_180x93_1',
 				nameShort: 'Bellway_02_left',
 				size: {
 					x: 180.0,
@@ -8991,7 +7864,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellway_02_8',
+				name: 'Bellway_02_8_180x93_1',
 				nameShort: 'Bellway_02',
 				size: {
 					x: 180.0,
@@ -9002,20 +7875,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 25.07612,
 					z: 0.0,
 					w: 4.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellway_02_left_6',
-				nameShort: 'Bellway_02_left',
-				size: {
-					x: 180.0,
-					y: 93.0,
-				},
-				padding: {
-					x: 59.0761223,
-					y: 32.0761223,
-					z: 76.04771,
-					w: 39.0429077,
 				},
 			},
 			altFullSprites: null,
@@ -9062,9 +7921,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_01_36',
+				name: 'Bone_East_01_36_69x132_12',
 				nameShort: 'Bone_East_01',
 				size: {
 					x: 69.0,
@@ -9078,21 +7939,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_01_6',
-				nameShort: 'Bone_East_01',
-				size: {
-					x: 69.0,
-					y: 132.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.026751,
-					z: 0.0,
-					w: 3.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_01_6',
+				name: 'Bone_East_01_6_69x132_1',
 				nameShort: 'Bone_East_01',
 				size: {
 					x: 69.0,
@@ -9149,9 +7996,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_13_10',
+				name: 'Bone_East_13_10_207x51_13',
 				nameShort: 'Bone_East_13',
 				size: {
 					x: 207.0,
@@ -9165,21 +8014,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_13_5',
-				nameShort: 'Bone_East_13',
-				size: {
-					x: 205.0,
-					y: 49.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_13_5',
+				name: 'Bone_East_13_5_205x49_1',
 				nameShort: 'Bone_East_13',
 				size: {
 					x: 205.0,
@@ -9236,9 +8071,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_12_26',
+				name: 'Bone_East_12_26_269x51_10',
 				nameShort: 'Bone_East_12',
 				size: {
 					x: 269.0,
@@ -9252,21 +8089,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_12_7',
-				nameShort: 'Bone_East_12',
-				size: {
-					x: 269.0,
-					y: 51.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_12_7',
+				name: 'Bone_East_12_7_269x51_1',
 				nameShort: 'Bone_East_12',
 				size: {
 					x: 269.0,
@@ -9323,9 +8146,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellshrine_02_16',
+				name: 'Bellshrine_02_16_68x39_6',
 				nameShort: 'Bellshrine_02',
 				size: {
 					x: 68.0,
@@ -9339,21 +8164,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellshrine_9',
-				nameShort: 'Bellshrine',
-				size: {
-					x: 68.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0267509818,
-					z: 0.0,
-					w: 2.02675247,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellshrine_9',
+				name: 'Bellshrine_9_68x39_1',
 				nameShort: 'Bellshrine',
 				size: {
 					x: 68.0,
@@ -9441,9 +8252,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Room_Forge_39',
+				name: 'Room_Forge_39_231x114_14',
 				nameShort: 'Room_Forge',
 				size: {
 					x: 231.0,
@@ -9457,21 +8270,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Room_Forge_9',
-				nameShort: 'Room_Forge',
-				size: {
-					x: 231.0,
-					y: 114.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 7.07612038,
-					z: 93.0761261,
-					w: 7.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Room_Forge_9',
+				name: 'Room_Forge_9_231x114_1',
 				nameShort: 'Room_Forge',
 				size: {
 					x: 231.0,
@@ -9528,9 +8327,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Room_Forge_right_rough_34',
+				name: 'Room_Forge_right_rough_34_231x114_14',
 				nameShort: 'Room_Forge_right_rough',
 				size: {
 					x: 231.0,
@@ -9544,21 +8345,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Room_Forge_right_5',
-				nameShort: 'Room_Forge_right',
-				size: {
-					x: 231.0,
-					y: 114.0,
-				},
-				padding: {
-					x: 108.076118,
-					y: 0.0,
-					z: 0.0,
-					w: 30.0761185,
-				},
-			},
-			rendererSprite: {
-				name: 'Room_Forge_right_5',
+				name: 'Room_Forge_right_5_231x114_1',
 				nameShort: 'Room_Forge_right',
 				size: {
 					x: 231.0,
@@ -9615,9 +8402,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_03_17',
+				name: 'Bone_East_03_17_372x63_17',
 				nameShort: 'Bone_East_03',
 				size: {
 					x: 372.0,
@@ -9631,21 +8420,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_03_31',
-				nameShort: 'Bone_East_03',
-				size: {
-					x: 372.0,
-					y: 63.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 72.01291,
-					w: 0.01291275,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_03_31',
+				name: 'Bone_East_03_31_372x63_1',
 				nameShort: 'Bone_East_03',
 				size: {
 					x: 372.0,
@@ -9702,9 +8477,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_03_right_18',
+				name: 'Bone_East_03_right_18_372x63_12',
 				nameShort: 'Bone_East_03_right',
 				size: {
 					x: 372.0,
@@ -9718,21 +8495,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_03_right_clean_36',
-				nameShort: 'Bone_East_03_right_clean',
-				size: {
-					x: 372.0,
-					y: 63.0,
-				},
-				padding: {
-					x: 247.012909,
-					y: 8.042908,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_03_right_clean_36',
+				name: 'Bone_East_03_right_clean_36_372x63_1',
 				nameShort: 'Bone_East_03_right_clean',
 				size: {
 					x: 372.0,
@@ -9789,9 +8552,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_05_15',
+				name: 'Bone_East_05_15_322x76_15',
 				nameShort: 'Bone_East_05',
 				size: {
 					x: 322.0,
@@ -9805,21 +8570,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_05_97',
-				nameShort: 'Bone_East_05',
-				size: {
-					x: 322.0,
-					y: 76.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_05_97',
+				name: 'Bone_East_05_97_322x76_1',
 				nameShort: 'Bone_East_05',
 				size: {
 					x: 322.0,
@@ -9876,9 +8627,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_09_top_16',
+				name: 'Abyss_09_top_16_93x1593_1',
 				nameShort: 'Abyss_09_top',
 				size: {
 					x: 93.0,
@@ -9892,20 +8645,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Abyss_09_top_16',
-				nameShort: 'Abyss_09_top',
-				size: {
-					x: 93.0,
-					y: 1593.0,
-				},
-				padding: {
-					x: 7.07612038,
-					y: 1446.07617,
-					z: 25.0267487,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -9950,9 +8689,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_04_6',
+				name: 'Bone_East_04_6_136x169_1',
 				nameShort: 'Bone_East_04',
 				size: {
 					x: 136.0,
@@ -9966,20 +8707,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_04_6',
-				nameShort: 'Bone_East_04',
-				size: {
-					x: 136.0,
-					y: 169.0,
-				},
-				padding: {
-					x: 60.0761223,
-					y: 67.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -10085,9 +8812,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_04_bot_11',
+				name: 'Bone_East_04_bot_11_136x169_1',
 				nameShort: 'Bone_East_04_bot',
 				size: {
 					x: 136.0,
@@ -10101,20 +8830,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_04_bot_11',
-				nameShort: 'Bone_East_04_bot',
-				size: {
-					x: 136.0,
-					y: 169.0,
-				},
-				padding: {
-					x: 70.0362854,
-					y: 64.07612,
-					z: 7.014679,
-					w: 78.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -10159,9 +8874,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_04b_6',
+				name: 'Bone_East_04b_6_68x169_1',
 				nameShort: 'Bone_East_04b',
 				size: {
 					x: 68.0,
@@ -10175,20 +8892,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_04b_6',
-				nameShort: 'Bone_East_04b',
-				size: {
-					x: 68.0,
-					y: 169.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 68.07612,
-					z: 1.07611847,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -10264,9 +8967,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_04c_4',
+				name: 'Bone_East_04c_4_103x26_1',
 				nameShort: 'Bone_East_04c',
 				size: {
 					x: 103.0,
@@ -10280,20 +8985,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_04c_4',
-				nameShort: 'Bone_East_04c',
-				size: {
-					x: 103.0,
-					y: 26.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -10338,10 +9029,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -10386,9 +9078,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_02_26',
+				name: 'Weave_02_26_66x356_19',
 				nameShort: 'Weave_02',
 				size: {
 					x: 66.0,
@@ -10402,21 +9096,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Weave_02_11',
-				nameShort: 'Weave_02',
-				size: {
-					x: 66.0,
-					y: 356.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 166.076126,
-					z: 0.0,
-					w: 41.07611,
-				},
-			},
-			rendererSprite: {
-				name: 'Weave_02_11',
+				name: 'Weave_02_11_66x356_1',
 				nameShort: 'Weave_02',
 				size: {
 					x: 66.0,
@@ -10473,9 +9153,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_04_21',
+				name: 'Weave_04_21_182x243_13',
 				nameShort: 'Weave_04',
 				size: {
 					x: 182.0,
@@ -10489,21 +9171,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Weave_04_5',
-				nameShort: 'Weave_04',
-				size: {
-					x: 182.0,
-					y: 243.0,
-				},
-				padding: {
-					x: 0.0267509818,
-					y: 169.076126,
-					z: 0.0,
-					w: 42.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Weave_04_5',
+				name: 'Weave_04_5_182x243_1',
 				nameShort: 'Weave_04',
 				size: {
 					x: 182.0,
@@ -10591,9 +9259,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_03_15',
+				name: 'Weave_03_15_463x56_1',
 				nameShort: 'Weave_03',
 				size: {
 					x: 463.0,
@@ -10607,20 +9277,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_03_15',
-				nameShort: 'Weave_03',
-				size: {
-					x: 463.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 304.0129,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0761222839,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -10665,9 +9321,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_03_mid_23',
+				name: 'Weave_03_mid_23_463x56_1',
 				nameShort: 'Weave_03_mid',
 				size: {
 					x: 463.0,
@@ -10681,20 +9339,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_03_mid_23',
-				nameShort: 'Weave_03_mid',
-				size: {
-					x: 463.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 110.012909,
-					y: 0.0,
-					z: 75.03351,
-					w: 0.01291275,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -10739,9 +9383,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_03_left_13',
+				name: 'Weave_03_left_13_463x56_1',
 				nameShort: 'Weave_03_left',
 				size: {
 					x: 463.0,
@@ -10755,20 +9401,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_03_left_13',
-				nameShort: 'Weave_03_left',
-				size: {
-					x: 463.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 294.0129,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -10813,9 +9445,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_05b_8',
+				name: 'Weave_05b_8_380x75_1',
 				nameShort: 'Weave_05b',
 				size: {
 					x: 380.0,
@@ -10829,20 +9463,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_05b_8',
-				nameShort: 'Weave_05b',
-				size: {
-					x: 380.0,
-					y: 75.0,
-				},
-				padding: {
-					x: 184.076126,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -10887,9 +9507,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_07_14',
+				name: 'Weave_07_14_111x224_7',
 				nameShort: 'Weave_07',
 				size: {
 					x: 111.0,
@@ -10903,21 +9525,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Weave_07_9',
-				nameShort: 'Weave_07',
-				size: {
-					x: 111.0,
-					y: 224.0,
-				},
-				padding: {
-					x: 17.02675,
-					y: 184.026749,
-					z: 0.0,
-					w: 1.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Weave_07_9',
+				name: 'Weave_07_9_111x224_1',
 				nameShort: 'Weave_07',
 				size: {
 					x: 111.0,
@@ -10974,9 +9582,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_07_left_4',
+				name: 'Weave_07_left_4_36x26_1',
 				nameShort: 'Weave_07_left',
 				size: {
 					x: 36.0,
@@ -10990,20 +9600,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_07_left_4',
-				nameShort: 'Weave_07_left',
-				size: {
-					x: 36.0,
-					y: 26.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -11048,9 +9644,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_08_7',
+				name: 'Weave_08_7_121x108_1',
 				nameShort: 'Weave_08',
 				size: {
 					x: 121.0,
@@ -11064,20 +9662,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_08_7',
-				nameShort: 'Weave_08',
-				size: {
-					x: 121.0,
-					y: 108.0,
-				},
-				padding: {
-					x: 48.0761223,
-					y: 41.0761223,
-					z: 27.0761185,
-					w: 4.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -11122,9 +9706,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_08_bot_8',
+				name: 'Weave_08_bot_8_121x108_1',
 				nameShort: 'Weave_08_bot',
 				size: {
 					x: 121.0,
@@ -11138,20 +9724,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_08_bot_8',
-				nameShort: 'Weave_08_bot',
-				size: {
-					x: 121.0,
-					y: 108.0,
-				},
-				padding: {
-					x: 80.0513153,
-					y: 19.07612,
-					z: 0.0,
-					w: 44.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -11196,9 +9768,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_10_17',
+				name: 'Weave_10_17_163x77_8',
 				nameShort: 'Weave_10',
 				size: {
 					x: 163.0,
@@ -11212,21 +9786,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Weave_10_6',
-				nameShort: 'Weave_10',
-				size: {
-					x: 163.0,
-					y: 77.0,
-				},
-				padding: {
-					x: 48.0761223,
-					y: 15.0429077,
-					z: 10.0513153,
-					w: 8.026749,
-				},
-			},
-			rendererSprite: {
-				name: 'Weave_10_6',
+				name: 'Weave_10_6_163x77_1',
 				nameShort: 'Weave_10',
 				size: {
 					x: 163.0,
@@ -11283,9 +9843,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_11_7',
+				name: 'Weave_11_7_202x48_16',
 				nameShort: 'Weave_11',
 				size: {
 					x: 202.0,
@@ -11299,21 +9861,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Weave_11_6',
-				nameShort: 'Weave_11',
-				size: {
-					x: 202.0,
-					y: 46.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Weave_11_6',
+				name: 'Weave_11_6_202x46_1',
 				nameShort: 'Weave_11',
 				size: {
 					x: 202.0,
@@ -11370,9 +9918,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_12_6',
+				name: 'Weave_12_6_102x37_5',
 				nameShort: 'Weave_12',
 				size: {
 					x: 102.0,
@@ -11386,21 +9936,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Weave_12_5',
-				nameShort: 'Weave_12',
-				size: {
-					x: 102.0,
-					y: 35.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Weave_12_5',
+				name: 'Weave_12_5_102x35_1',
 				nameShort: 'Weave_12',
 				size: {
 					x: 102.0,
@@ -11457,9 +9993,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_13_4',
+				name: 'Weave_13_4_106x19_1',
 				nameShort: 'Weave_13',
 				size: {
 					x: 106.0,
@@ -11473,20 +10011,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_13_4',
-				nameShort: 'Weave_13',
-				size: {
-					x: 106.0,
-					y: 19.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -11531,9 +10055,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_11_top_4',
+				name: 'Weave_11_top_4_16x26_1',
 				nameShort: 'Weave_11_top',
 				size: {
 					x: 16.0,
@@ -11547,20 +10073,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_11_top_4',
-				nameShort: 'Weave_11_top',
-				size: {
-					x: 16.0,
-					y: 26.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -11605,9 +10117,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Weave_14_6',
+				name: 'Weave_14_6_137x36_1',
 				nameShort: 'Weave_14',
 				size: {
 					x: 137.0,
@@ -11621,20 +10135,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Weave_14_6',
-				nameShort: 'Weave_14',
-				size: {
-					x: 137.0,
-					y: 36.0,
-				},
-				padding: {
-					x: 50.0761223,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0267524719,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -11679,9 +10179,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_02_4',
+				name: 'Ant_02_4_218x26_15',
 				nameShort: 'Ant_02',
 				size: {
 					x: 218.0,
@@ -11695,21 +10197,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_02_4',
-				nameShort: 'Ant_02',
-				size: {
-					x: 218.0,
-					y: 26.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_02_4',
+				name: 'Ant_02_4_218x26_1',
 				nameShort: 'Ant_02',
 				size: {
 					x: 218.0,
@@ -11797,9 +10285,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_03_20',
+				name: 'Ant_03_20_86x119_12',
 				nameShort: 'Ant_03',
 				size: {
 					x: 86.0,
@@ -11813,21 +10303,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_03_8',
-				nameShort: 'Ant_03',
-				size: {
-					x: 86.0,
-					y: 119.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_03_8',
+				name: 'Ant_03_8_86x119_1',
 				nameShort: 'Ant_03',
 				size: {
 					x: 86.0,
@@ -11884,9 +10360,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_04_13',
+				name: 'Ant_04_13_620x51_12',
 				nameShort: 'Ant_04',
 				size: {
 					x: 620.0,
@@ -11900,21 +10378,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_04_10',
-				nameShort: 'Ant_04',
-				size: {
-					x: 620.0,
-					y: 51.0,
-				},
-				padding: {
-					x: 386.149353,
-					y: 2.07612038,
-					z: 0.0,
-					w: 6.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_04_10',
+				name: 'Ant_04_10_620x51_1',
 				nameShort: 'Ant_04',
 				size: {
 					x: 620.0,
@@ -11971,9 +10435,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_04_left_18',
+				name: 'Ant_04_left_18_229x51_11',
 				nameShort: 'Ant_04_left',
 				size: {
 					x: 229.0,
@@ -11987,21 +10453,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_04_left_7',
-				nameShort: 'Ant_04_left',
-				size: {
-					x: 229.0,
-					y: 51.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 2.07612038,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_04_left_7',
+				name: 'Ant_04_left_7_229x51_1',
 				nameShort: 'Ant_04_left',
 				size: {
 					x: 229.0,
@@ -12058,9 +10510,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_04_mid_13',
+				name: 'Ant_04_mid_13_388x51_12',
 				nameShort: 'Ant_04_mid',
 				size: {
 					x: 388.0,
@@ -12074,21 +10528,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_04_mid_9',
-				nameShort: 'Ant_04_mid',
-				size: {
-					x: 388.0,
-					y: 51.0,
-				},
-				padding: {
-					x: 227.118332,
-					y: 2.07612038,
-					z: 0.0,
-					w: 5.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_04_mid_9',
+				name: 'Ant_04_mid_9_388x51_1',
 				nameShort: 'Ant_04_mid',
 				size: {
 					x: 388.0,
@@ -12145,9 +10585,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_05b_4',
+				name: 'Ant_05b_4_152x25_1',
 				nameShort: 'Ant_05b',
 				size: {
 					x: 152.0,
@@ -12161,20 +10603,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ant_05b_4',
-				nameShort: 'Ant_05b',
-				size: {
-					x: 152.0,
-					y: 25.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -12280,9 +10708,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_05c_15',
+				name: 'Ant_05c_15_132x64_5',
 				nameShort: 'Ant_05c',
 				size: {
 					x: 132.0,
@@ -12296,21 +10726,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_05c_7',
-				nameShort: 'Ant_05c',
-				size: {
-					x: 132.0,
-					y: 64.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 2.0362854,
-					w: 18.0129128,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_05c_7',
+				name: 'Ant_05c_7_132x64_1',
 				nameShort: 'Ant_05c',
 				size: {
 					x: 132.0,
@@ -12367,9 +10783,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_05c_top_right_7',
+				name: 'Ant_05c_top_right_7_152x76_1',
 				nameShort: 'Ant_05c_top_right',
 				size: {
 					x: 152.0,
@@ -12383,20 +10801,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ant_05c_top_right_7',
-				nameShort: 'Ant_05c_top_right',
-				size: {
-					x: 152.0,
-					y: 76.0,
-				},
-				padding: {
-					x: 110.026749,
-					y: 36.0761223,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -12441,9 +10845,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_09_6',
+				name: 'Ant_09_6_283x79_1',
 				nameShort: 'Ant_09',
 				size: {
 					x: 283.0,
@@ -12457,20 +10863,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ant_09_6',
-				nameShort: 'Ant_09',
-				size: {
-					x: 283.0,
-					y: 79.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -12546,9 +10938,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_14_35',
+				name: 'Ant_14_35_50x213_16',
 				nameShort: 'Ant_14',
 				size: {
 					x: 50.0,
@@ -12562,21 +10956,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_14_4',
-				nameShort: 'Ant_14',
-				size: {
-					x: 50.0,
-					y: 213.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_14_4',
+				name: 'Ant_14_4_50x213_1',
 				nameShort: 'Ant_14',
 				size: {
 					x: 50.0,
@@ -12633,9 +11013,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_17_4',
+				name: 'Ant_17_4_102x24_4',
 				nameShort: 'Ant_17',
 				size: {
 					x: 102.0,
@@ -12649,21 +11031,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_17_4',
-				nameShort: 'Ant_17',
-				size: {
-					x: 102.0,
-					y: 24.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_17_4',
+				name: 'Ant_17_4_102x24_1',
 				nameShort: 'Ant_17',
 				size: {
 					x: 102.0,
@@ -12720,10 +11088,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -12768,9 +11137,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_20_19',
+				name: 'Ant_20_19_323x86_14',
 				nameShort: 'Ant_20',
 				size: {
 					x: 323.0,
@@ -12784,21 +11155,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_20_6',
-				nameShort: 'Ant_20',
-				size: {
-					x: 323.0,
-					y: 86.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0761204958,
-					z: 90.0761261,
-					w: 31.0129128,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_20_6',
+				name: 'Ant_20_6_323x86_1',
 				nameShort: 'Ant_20',
 				size: {
 					x: 323.0,
@@ -12855,9 +11212,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_20_top_15',
+				name: 'Ant_20_top_15_323x86_13',
 				nameShort: 'Ant_20_top',
 				size: {
 					x: 323.0,
@@ -12871,21 +11230,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_20_top_9',
-				nameShort: 'Ant_20_top',
-				size: {
-					x: 323.0,
-					y: 86.0,
-				},
-				padding: {
-					x: 155.059723,
-					y: 28.07612,
-					z: 4.026764,
-					w: 1.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_20_top_9',
+				name: 'Ant_20_top_9_323x86_1',
 				nameShort: 'Ant_20_top',
 				size: {
 					x: 323.0,
@@ -12942,9 +11287,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_21_10',
+				name: 'Ant_21_10_213x152_8',
 				nameShort: 'Ant_21',
 				size: {
 					x: 213.0,
@@ -12958,21 +11305,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_21_5',
-				nameShort: 'Ant_21',
-				size: {
-					x: 213.0,
-					y: 152.0,
-				},
-				padding: {
-					x: 57.0761223,
-					y: 115.042908,
-					z: 36.0761261,
-					w: 1.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_21_5',
+				name: 'Ant_21_5_213x152_1',
 				nameShort: 'Ant_21',
 				size: {
 					x: 213.0,
@@ -13029,9 +11362,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_Merchant_b_6',
+				name: 'Ant_Merchant_b_6_241x47_4',
 				nameShort: 'Ant_Merchant_b',
 				size: {
 					x: 241.0,
@@ -13045,21 +11380,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ant_Merchant_b_8',
-				nameShort: 'Ant_Merchant_b',
-				size: {
-					x: 241.0,
-					y: 47.0,
-				},
-				padding: {
-					x: 196.042908,
-					y: 10.1183252,
-					z: 0.0,
-					w: 5.07612228,
-				},
-			},
-			rendererSprite: {
-				name: 'Ant_Merchant_b_8',
+				name: 'Ant_Merchant_b_8_241x47_1',
 				nameShort: 'Ant_Merchant_b',
 				size: {
 					x: 241.0,
@@ -13116,9 +11437,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_Merchant_7',
+				name: 'Ant_Merchant_7_203x33_1',
 				nameShort: 'Ant_Merchant',
 				size: {
 					x: 203.0,
@@ -13132,20 +11455,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ant_Merchant_7',
-				nameShort: 'Ant_Merchant',
-				size: {
-					x: 203.0,
-					y: 33.0,
-				},
-				padding: {
-					x: 90.01291,
-					y: 0.0,
-					z: 0.0,
-					w: 7.07612038,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -13190,9 +11499,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ant_Merchant_left_7',
+				name: 'Ant_Merchant_left_7_203x33_1',
 				nameShort: 'Ant_Merchant_left',
 				size: {
 					x: 203.0,
@@ -13206,20 +11517,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ant_Merchant_left_7',
-				nameShort: 'Ant_Merchant_left',
-				size: {
-					x: 203.0,
-					y: 33.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 59.033493,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -13264,9 +11561,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_02_23',
+				name: 'Bone_East_02_23_249x59_12',
 				nameShort: 'Bone_East_02',
 				size: {
 					x: 249.0,
@@ -13280,21 +11579,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_02_10',
-				nameShort: 'Bone_East_02',
-				size: {
-					x: 249.0,
-					y: 59.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_02_10',
+				name: 'Bone_East_02_10_249x59_1',
 				nameShort: 'Bone_East_02',
 				size: {
 					x: 249.0,
@@ -13382,9 +11667,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_02b_27',
+				name: 'Bone_East_02b_27_536x61_19',
 				nameShort: 'Bone_East_02b',
 				size: {
 					x: 536.0,
@@ -13398,21 +11685,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_02b_7',
-				nameShort: 'Bone_East_02b',
-				size: {
-					x: 536.0,
-					y: 61.0,
-				},
-				padding: {
-					x: 246.076126,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_02b_7',
+				name: 'Bone_East_02b_7_536x61_1',
 				nameShort: 'Bone_East_02b',
 				size: {
 					x: 536.0,
@@ -13469,9 +11742,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_03_b_13',
+				name: 'Bellway_03_b_13_92x90_1',
 				nameShort: 'Bellway_03_b',
 				size: {
 					x: 92.0,
@@ -13485,20 +11760,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bellway_03_b_13',
-				nameShort: 'Bellway_03_b',
-				size: {
-					x: 92.0,
-					y: 90.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 15.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -13543,9 +11804,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_03_c_19',
+				name: 'Bellway_03_c_19_114x108_1',
 				nameShort: 'Bellway_03_c',
 				size: {
 					x: 114.0,
@@ -13559,20 +11822,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bellway_03_c_19',
-				nameShort: 'Bellway_03_c',
-				size: {
-					x: 114.0,
-					y: 108.0,
-				},
-				padding: {
-					x: 2.07612038,
-					y: 7.07612038,
-					z: 10.149353,
-					w: 47.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -13617,9 +11866,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_07_5',
+				name: 'Bone_East_07_5_68x315_0',
 				nameShort: 'Bone_East_07',
 				size: {
 					x: 68.0,
@@ -13633,21 +11884,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_07_5',
-				nameShort: 'Bone_East_07',
-				size: {
-					x: 68.0,
-					y: 315.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 62.07612,
-					w: 309.0761,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_07_5',
+				name: 'Bone_East_07_5_68x315_0',
 				nameShort: 'Bone_East_07',
 				size: {
 					x: 68.0,
@@ -13704,9 +11941,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_08_22',
+				name: 'Bone_East_08_22_249x88_5',
 				nameShort: 'Bone_East_08',
 				size: {
 					x: 249.0,
@@ -13720,21 +11959,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_08_6',
-				nameShort: 'Bone_East_08',
-				size: {
-					x: 249.0,
-					y: 88.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 20.02675,
-					z: 180.059723,
-					w: 3.02674866,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_08_6',
+				name: 'Bone_East_08_6_249x88_1',
 				nameShort: 'Bone_East_08',
 				size: {
 					x: 249.0,
@@ -13791,9 +12016,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_08_right_rough_18',
+				name: 'Bone_East_08_right_rough_18_249x88_20',
 				nameShort: 'Bone_East_08_right_rough',
 				size: {
 					x: 249.0,
@@ -13807,21 +12034,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_08_right_7',
-				nameShort: 'Bone_East_08_right',
-				size: {
-					x: 249.0,
-					y: 88.0,
-				},
-				padding: {
-					x: 2.026751,
-					y: 3.026751,
-					z: 0.0,
-					w: 5.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_08_right_7',
+				name: 'Bone_East_08_right_7_249x88_1',
 				nameShort: 'Bone_East_08_right',
 				size: {
 					x: 249.0,
@@ -13878,9 +12091,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_09_9',
+				name: 'Bone_East_09_9_163x170_1',
 				nameShort: 'Bone_East_09',
 				size: {
 					x: 163.0,
@@ -13894,20 +12109,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_09_9',
-				nameShort: 'Bone_East_09',
-				size: {
-					x: 163.0,
-					y: 170.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 2.026751,
-					z: 0.0,
-					w: 3.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -13952,9 +12153,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_09b_10',
+				name: 'Bone_East_09b_10_153x305_1',
 				nameShort: 'Bone_East_09b',
 				size: {
 					x: 153.0,
@@ -13968,20 +12171,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_09b_10',
-				nameShort: 'Bone_East_09b',
-				size: {
-					x: 153.0,
-					y: 305.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 129.076126,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -14026,9 +12215,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_10_35',
+				name: 'Bone_East_10_35_207x61_14',
 				nameShort: 'Bone_East_10',
 				size: {
 					x: 207.0,
@@ -14042,21 +12233,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_10_7',
-				nameShort: 'Bone_East_10',
-				size: {
-					x: 205.0,
-					y: 61.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0267486572,
-					w: 4.07612228,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_10_7',
+				name: 'Bone_East_10_7_205x61_1',
 				nameShort: 'Bone_East_10',
 				size: {
 					x: 205.0,
@@ -14144,9 +12321,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09549856,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.8955,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_10_gate_10',
+				name: 'Bone_East_10_gate_10_205x61_1',
 				nameShort: 'Bone_East_10_gate',
 				size: {
 					x: 205.0,
@@ -14160,7 +12339,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_10_7',
+				name: 'Bone_East_10_7_205x61_1',
 				nameShort: 'Bone_East_10',
 				size: {
 					x: 205.0,
@@ -14171,20 +12350,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0267486572,
 					w: 4.07612228,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_10_gate_10',
-				nameShort: 'Bone_East_10_gate',
-				size: {
-					x: 205.0,
-					y: 61.0,
-				},
-				padding: {
-					x: 184.026749,
-					y: 3.026751,
-					z: 0.0761261,
-					w: 24.0267525,
 				},
 			},
 			altFullSprites: null,
@@ -14231,10 +12396,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -14279,9 +12445,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_10_Church_8',
+				name: 'Bone_East_10_Church_8_316x39_1',
 				nameShort: 'Bone_East_10_Church',
 				size: {
 					x: 316.0,
@@ -14295,20 +12463,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_10_Church_8',
-				nameShort: 'Bone_East_10_Church',
-				size: {
-					x: 316.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 194.076126,
-					y: 4.07612038,
-					z: 0.0,
-					w: 1.02675629,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -14353,9 +12507,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_10_top_right_7',
+				name: 'Bone_East_10_top_right_7_195x61_1',
 				nameShort: 'Bone_East_10_top_right',
 				size: {
 					x: 195.0,
@@ -14369,20 +12525,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_10_top_right_7',
-				nameShort: 'Bone_East_10_top_right',
-				size: {
-					x: 195.0,
-					y: 61.0,
-				},
-				padding: {
-					x: 163.076126,
-					y: 32.0761223,
-					z: 0.0,
-					w: 4.07612228,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -14427,9 +12569,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_11_19',
+				name: 'Bone_East_11_19_67x477_8',
 				nameShort: 'Bone_East_11',
 				size: {
 					x: 67.0,
@@ -14443,21 +12587,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_11_8',
-				nameShort: 'Bone_East_11',
-				size: {
-					x: 67.0,
-					y: 477.0,
-				},
-				padding: {
-					x: 3.05131674,
-					y: 0.0,
-					z: 0.0,
-					w: 404.026733,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_11_8',
+				name: 'Bone_East_11_8_67x477_1',
 				nameShort: 'Bone_East_11',
 				size: {
 					x: 67.0,
@@ -14514,9 +12644,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_11_top_7',
+				name: 'Bone_East_11_top_7_67x477_1',
 				nameShort: 'Bone_East_11_top',
 				size: {
 					x: 67.0,
@@ -14530,20 +12662,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_11_top_7',
-				nameShort: 'Bone_East_11_top',
-				size: {
-					x: 67.0,
-					y: 477.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 19.0,
-					z: 2.012909,
-					w: 24.07611,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -14619,9 +12737,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_11_connection_16',
+				name: 'Bone_East_11_connection_16_67x477_2',
 				nameShort: 'Bone_East_11_connection',
 				size: {
 					x: 67.0,
@@ -14635,20 +12755,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_11_connection_16',
-				nameShort: 'Bone_East_11_connection',
-				size: {
-					x: 67.0,
-					y: 477.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 175.036285,
-					z: 0.0,
-					w: 257.026733,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -14754,9 +12860,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_14_16',
+				name: 'Bone_East_14_16_235x133_1',
 				nameShort: 'Bone_East_14',
 				size: {
 					x: 235.0,
@@ -14770,20 +12878,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_14_16',
-				nameShort: 'Bone_East_14',
-				size: {
-					x: 235.0,
-					y: 133.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 2.02674866,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -14828,9 +12922,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_14_2_4',
+				name: 'Bone_East_14_2_4_73x19_1',
 				nameShort: 'Bone_East_14_2',
 				size: {
 					x: 73.0,
@@ -14844,20 +12940,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_14_2_4',
-				nameShort: 'Bone_East_14_2',
-				size: {
-					x: 73.0,
-					y: 19.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -14902,9 +12984,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_14b_23',
+				name: 'Bone_East_14b_23_511x122_1',
 				nameShort: 'Bone_East_14b',
 				size: {
 					x: 511.0,
@@ -14918,20 +13002,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_14b_23',
-				nameShort: 'Bone_East_14b',
-				size: {
-					x: 511.0,
-					y: 122.0,
-				},
-				padding: {
-					x: 231.076126,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -14976,9 +13046,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_14b_lava_room_14',
+				name: 'Bone_East_14b_lava_room_14_268x122_1',
 				nameShort: 'Bone_East_14b_lava_room',
 				size: {
 					x: 268.0,
@@ -14992,20 +13064,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_14b_lava_room_14',
-				nameShort: 'Bone_East_14b_lava_room',
-				size: {
-					x: 268.0,
-					y: 122.0,
-				},
-				padding: {
-					x: 1.01291251,
-					y: 21.0129128,
-					z: 163.036285,
-					w: 40.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15023,10 +13081,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			origColor: null,
 			visualBounds: null,
 			playerPositionBounds: null,
+			sortingOrder: 0,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15071,9 +13130,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_15_blank_5',
+				name: 'Bone_East_15_blank_5_277x179_0',
 				nameShort: 'Bone_East_15_blank',
 				size: {
 					x: 277.0,
@@ -15087,21 +13148,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_15_blank_5',
-				nameShort: 'Bone_East_15_blank',
-				size: {
-					x: 277.0,
-					y: 179.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 271.0761,
-					w: 173.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_15_blank_5',
+				name: 'Bone_East_15_blank_5_277x179_0',
 				nameShort: 'Bone_East_15_blank',
 				size: {
 					x: 277.0,
@@ -15158,9 +13205,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_15_bot_20',
+				name: 'Bone_East_15_bot_20_277x170_11',
 				nameShort: 'Bone_East_15_bot',
 				size: {
 					x: 277.0,
@@ -15174,21 +13223,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_15_bot_7',
-				nameShort: 'Bone_East_15_bot',
-				size: {
-					x: 277.0,
-					y: 170.0,
-				},
-				padding: {
-					x: 51.0761223,
-					y: 0.0,
-					z: 101.051315,
-					w: 53.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_15_bot_7',
+				name: 'Bone_East_15_bot_7_277x170_1',
 				nameShort: 'Bone_East_15_bot',
 				size: {
 					x: 277.0,
@@ -15245,9 +13280,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_15_left_16',
+				name: 'Bone_East_15_left_16_277x170_6',
 				nameShort: 'Bone_East_15_left',
 				size: {
 					x: 277.0,
@@ -15261,21 +13298,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_15_left_17',
-				nameShort: 'Bone_East_15_left',
-				size: {
-					x: 277.0,
-					y: 170.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 76.0513153,
-					z: 161.149353,
-					w: 50.02675,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_15_left_17',
+				name: 'Bone_East_15_left_17_277x170_1',
 				nameShort: 'Bone_East_15_left',
 				size: {
 					x: 277.0,
@@ -15363,9 +13386,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_15_top_right_7',
+				name: 'Bone_East_15_top_right_7_277x170_1',
 				nameShort: 'Bone_East_15_top_right',
 				size: {
 					x: 277.0,
@@ -15379,20 +13404,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_15_top_right_7',
-				nameShort: 'Bone_East_15_top_right',
-				size: {
-					x: 277.0,
-					y: 170.0,
-				},
-				padding: {
-					x: 94.0362854,
-					y: 53.0267525,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15437,9 +13448,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_16_4',
+				name: 'Bone_East_16_4_88x42_1',
 				nameShort: 'Bone_East_16',
 				size: {
 					x: 88.0,
@@ -15453,20 +13466,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_16_4',
-				nameShort: 'Bone_East_16',
-				size: {
-					x: 88.0,
-					y: 42.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15511,9 +13510,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_17_6',
+				name: 'Bone_East_17_6_194x171_1',
 				nameShort: 'Bone_East_17',
 				size: {
 					x: 194.0,
@@ -15527,20 +13528,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_17_6',
-				nameShort: 'Bone_East_17',
-				size: {
-					x: 194.0,
-					y: 171.0,
-				},
-				padding: {
-					x: 7.036285,
-					y: 99.07612,
-					z: 0.0,
-					w: 8.051315,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15585,9 +13572,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_17_top_6',
+				name: 'Bone_East_17_top_6_194x171_1',
 				nameShort: 'Bone_East_17_top',
 				size: {
 					x: 194.0,
@@ -15601,20 +13590,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_17_top_6',
-				nameShort: 'Bone_East_17_top',
-				size: {
-					x: 194.0,
-					y: 171.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 136.042908,
-					z: 70.0513153,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15659,9 +13634,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_17b_12',
+				name: 'Bone_East_17b_12_184x101_1',
 				nameShort: 'Bone_East_17b',
 				size: {
 					x: 184.0,
@@ -15675,20 +13652,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_17b_12',
-				nameShort: 'Bone_East_17b',
-				size: {
-					x: 184.0,
-					y: 101.0,
-				},
-				padding: {
-					x: 3.07612038,
-					y: 1.0761205,
-					z: 36.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15733,9 +13696,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09789801,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89789963,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_29_join_4',
+				name: 'Coral_29_join_4_20x24_1',
 				nameShort: 'Coral_29_join',
 				size: {
 					x: 20.0,
@@ -15749,20 +13714,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_29_join_4',
-				nameShort: 'Coral_29_join',
-				size: {
-					x: 20.0,
-					y: 24.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15807,9 +13758,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: '_0001_Bone_East_18_right_7',
+				name: '_0001_Bone_East_18_right_7_282x105_1',
 				nameShort: '_0001_Bone_East_18_right',
 				size: {
 					x: 282.0,
@@ -15823,20 +13776,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '_0001_Bone_East_18_right_7',
-				nameShort: '_0001_Bone_East_18_right',
-				size: {
-					x: 282.0,
-					y: 105.0,
-				},
-				padding: {
-					x: 93.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15881,9 +13820,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: '_0003_Bone_East_18b_14',
+				name: '_0003_Bone_East_18b_14_566x186_1',
 				nameShort: '_0003_Bone_East_18b',
 				size: {
 					x: 566.0,
@@ -15897,20 +13838,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '_0003_Bone_East_18b_14',
-				nameShort: '_0003_Bone_East_18b',
-				size: {
-					x: 566.0,
-					y: 186.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 107.067665,
-					z: 221.076111,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -15955,9 +13882,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_18_4',
+				name: 'Bone_East_18_4_109x29_1',
 				nameShort: 'Bone_East_18',
 				size: {
 					x: 109.0,
@@ -15971,20 +13900,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_18_4',
-				nameShort: 'Bone_East_18',
-				size: {
-					x: 109.0,
-					y: 29.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16029,9 +13944,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: '_0002_Bone_East_18b_right_7',
+				name: '_0002_Bone_East_18b_right_7_256x66_1',
 				nameShort: '_0002_Bone_East_18b_right',
 				size: {
 					x: 256.0,
@@ -16045,20 +13962,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '_0002_Bone_East_18b_right_7',
-				nameShort: '_0002_Bone_East_18b_right',
-				size: {
-					x: 256.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 2.07612038,
-					y: 0.0,
-					z: 7.076126,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16103,9 +14006,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: '_0000_Bone_East_18b_bot_6',
+				name: '_0000_Bone_East_18b_bot_6_120x151_1',
 				nameShort: '_0000_Bone_East_18b_bot',
 				size: {
 					x: 120.0,
@@ -16119,20 +14024,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '_0000_Bone_East_18b_bot_6',
-				nameShort: '_0000_Bone_East_18b_bot',
-				size: {
-					x: 120.0,
-					y: 151.0,
-				},
-				padding: {
-					x: 41.0761223,
-					y: 7.026751,
-					z: 3.07611084,
-					w: 2.04290771,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16177,9 +14068,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: '_0000_Bone_East_18b_bot_left_9',
+				name: '_0000_Bone_East_18b_bot_left_9_187x135_1',
 				nameShort: '_0000_Bone_East_18b_bot_left',
 				size: {
 					x: 187.0,
@@ -16193,20 +14086,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '_0000_Bone_East_18b_bot_left_9',
-				nameShort: '_0000_Bone_East_18b_bot_left',
-				size: {
-					x: 187.0,
-					y: 135.0,
-				},
-				padding: {
-					x: 0.0267509818,
-					y: 0.0,
-					z: 95.07612,
-					w: 93.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16251,9 +14130,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_20_6',
+				name: 'Bone_East_20_6_247x53_1',
 				nameShort: 'Bone_East_20',
 				size: {
 					x: 247.0,
@@ -16267,20 +14148,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_20_6',
-				nameShort: 'Bone_East_20',
-				size: {
-					x: 247.0,
-					y: 53.0,
-				},
-				padding: {
-					x: 113.076118,
-					y: 2.07612038,
-					z: 0.0,
-					w: 1.02675629,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16325,9 +14192,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_21_6',
+				name: 'Bone_East_21_6_70x45_4',
 				nameShort: 'Bone_East_21',
 				size: {
 					x: 70.0,
@@ -16341,21 +14210,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_21_9',
-				nameShort: 'Bone_East_21',
-				size: {
-					x: 70.0,
-					y: 45.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 6.07612038,
-					z: 24.0761223,
-					w: 11.0761223,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_21_9',
+				name: 'Bone_East_21_9_70x45_1',
 				nameShort: 'Bone_East_21',
 				size: {
 					x: 70.0,
@@ -16412,9 +14267,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_22_4',
+				name: 'Bone_East_22_4_100x25_9',
 				nameShort: 'Bone_East_22',
 				size: {
 					x: 100.0,
@@ -16428,21 +14285,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_22_4',
-				nameShort: 'Bone_East_22',
-				size: {
-					x: 100.0,
-					y: 25.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_22_4',
+				name: 'Bone_East_22_4_100x25_1',
 				nameShort: 'Bone_East_22',
 				size: {
 					x: 100.0,
@@ -16499,9 +14342,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_24_13',
+				name: 'Bone_East_24_13_434x118_1',
 				nameShort: 'Bone_East_24',
 				size: {
 					x: 434.0,
@@ -16515,20 +14360,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_24_13',
-				nameShort: 'Bone_East_24',
-				size: {
-					x: 434.0,
-					y: 118.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16573,9 +14404,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_25_8',
+				name: 'Bone_East_25_8_260x39_1',
 				nameShort: 'Bone_East_25',
 				size: {
 					x: 260.0,
@@ -16589,20 +14422,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_25_8',
-				nameShort: 'Bone_East_25',
-				size: {
-					x: 260.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 137.051315,
-					w: 2.07612228,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16647,9 +14466,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_25_right_7',
+				name: 'Bone_East_25_right_7_260x39_1',
 				nameShort: 'Bone_East_25_right',
 				size: {
 					x: 260.0,
@@ -16663,20 +14484,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_25_right_7',
-				nameShort: 'Bone_East_25_right',
-				size: {
-					x: 260.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 115.076118,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16721,10 +14528,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -16769,9 +14577,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_26_7',
+				name: 'Bone_East_26_7_351x79_1',
 				nameShort: 'Bone_East_26',
 				size: {
 					x: 351.0,
@@ -16785,20 +14595,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_26_7',
-				nameShort: 'Bone_East_26',
-				size: {
-					x: 351.0,
-					y: 79.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16843,9 +14639,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_27_11',
+				name: 'Bone_East_27_11_84x103_1',
 				nameShort: 'Bone_East_27',
 				size: {
 					x: 84.0,
@@ -16859,20 +14657,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_27_11',
-				nameShort: 'Bone_East_27',
-				size: {
-					x: 84.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 2.07612038,
-					z: 0.0,
-					w: 54.0513153,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16917,9 +14701,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_27_top_9',
+				name: 'Bone_East_27_top_9_84x103_1',
 				nameShort: 'Bone_East_27_top',
 				size: {
 					x: 84.0,
@@ -16933,20 +14719,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_27_top_9',
-				nameShort: 'Bone_East_27_top',
-				size: {
-					x: 84.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 16.07612,
-					y: 30.07612,
-					z: 11.0040436,
-					w: 0.0129089355,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -16991,9 +14763,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_03_15',
+				name: 'Bellway_03_15_257x103_10',
 				nameShort: 'Bellway_03',
 				size: {
 					x: 257.0,
@@ -17007,21 +14781,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellway_03_8',
-				nameShort: 'Bellway_03',
-				size: {
-					x: 257.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.07612038,
-					z: 92.0761261,
-					w: 52.0267563,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellway_03_8',
+				name: 'Bellway_03_8_257x103_1',
 				nameShort: 'Bellway_03',
 				size: {
 					x: 257.0,
@@ -17078,10 +14838,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -17126,9 +14887,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_07_bot_43',
+				name: 'Bone_East_07_bot_43_67x315_16',
 				nameShort: 'Bone_East_07_bot',
 				size: {
 					x: 67.0,
@@ -17142,21 +14905,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_07_bot_5',
-				nameShort: 'Bone_East_07_bot',
-				size: {
-					x: 67.0,
-					y: 315.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 98.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_07_bot_5',
+				name: 'Bone_East_07_bot_5_67x315_1',
 				nameShort: 'Bone_East_07_bot',
 				size: {
 					x: 67.0,
@@ -17213,9 +14962,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_07_top_58',
+				name: 'Bone_East_07_top_58_68x315_13',
 				nameShort: 'Bone_East_07_top',
 				size: {
 					x: 68.0,
@@ -17229,21 +14980,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_07_top_5',
-				nameShort: 'Bone_East_07_top',
-				size: {
-					x: 68.0,
-					y: 315.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 198.012909,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_07_top_5',
+				name: 'Bone_East_07_top_5_68x315_1',
 				nameShort: 'Bone_East_07_top',
 				size: {
 					x: 68.0,
@@ -17300,9 +15037,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_07_5',
+				name: 'Bone_East_07_5_68x315_0',
 				nameShort: 'Bone_East_07',
 				size: {
 					x: 68.0,
@@ -17316,21 +15055,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bone_East_07_5',
-				nameShort: 'Bone_East_07',
-				size: {
-					x: 68.0,
-					y: 315.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 62.07612,
-					w: 309.0761,
-				},
-			},
-			rendererSprite: {
-				name: 'Bone_East_07_5',
+				name: 'Bone_East_07_5_68x315_0',
 				nameShort: 'Bone_East_07',
 				size: {
 					x: 68.0,
@@ -17387,9 +15112,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_03_2_6',
+				name: 'Dock_03_2_6_277x203_1',
 				nameShort: 'Dock_03_2',
 				size: {
 					x: 277.0,
@@ -17403,20 +15130,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_03_2_6',
-				nameShort: 'Dock_03_2',
-				size: {
-					x: 277.0,
-					y: 203.0,
-				},
-				padding: {
-					x: 222.076126,
-					y: 132.026749,
-					z: 0.0,
-					w: 50.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -17461,9 +15174,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_03b_2_6',
+				name: 'Dock_03b_2_6_48x58_1',
 				nameShort: 'Dock_03b_2',
 				size: {
 					x: 48.0,
@@ -17477,20 +15192,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_03b_2_6',
-				nameShort: 'Dock_03b_2',
-				size: {
-					x: 48.0,
-					y: 58.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0761222839,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -17535,9 +15236,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dock_03b_left_4',
+				name: 'Dock_03b_left_4_17x37_1',
 				nameShort: 'Dock_03b_left',
 				size: {
 					x: 17.0,
@@ -17551,20 +15254,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dock_03b_left_4',
-				nameShort: 'Dock_03b_left',
-				size: {
-					x: 17.0,
-					y: 37.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -17640,9 +15329,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_Weavehome_7',
+				name: 'Bone_East_Weavehome_7_349x202_1',
 				nameShort: 'Bone_East_Weavehome',
 				size: {
 					x: 349.0,
@@ -17656,20 +15347,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_Weavehome_7',
-				nameShort: 'Bone_East_Weavehome',
-				size: {
-					x: 349.0,
-					y: 202.0,
-				},
-				padding: {
-					x: 15.07612,
-					y: 144.042908,
-					z: 122.076126,
-					w: 22.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -17714,9 +15391,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_Weavehome_Basement_15',
+				name: 'Bone_East_Weavehome_Basement_15_214x68_1',
 				nameShort: 'Bone_East_Weavehome_Basement',
 				size: {
 					x: 214.0,
@@ -17730,20 +15409,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_Weavehome_Basement_15',
-				nameShort: 'Bone_East_Weavehome_Basement',
-				size: {
-					x: 214.0,
-					y: 68.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 6.01291275,
-					z: 16.0129089,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -17788,10 +15453,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00199890137,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -17836,9 +15502,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_01_27',
+				name: 'Greymoor_01_27_219x89_18',
 				nameShort: 'Greymoor_01',
 				size: {
 					x: 219.0,
@@ -17852,21 +15520,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_01_7',
-				nameShort: 'Greymoor_01',
-				size: {
-					x: 219.0,
-					y: 91.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.0,
-					w: 35.0129128,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_01_7',
+				name: 'Greymoor_01_7_219x91_1',
 				nameShort: 'Greymoor_01',
 				size: {
 					x: 219.0,
@@ -17923,9 +15577,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bone_East_11_top_greymoor_6',
+				name: 'Bone_East_11_top_greymoor_6_67x477_1',
 				nameShort: 'Bone_East_11_top_greymoor',
 				size: {
 					x: 67.0,
@@ -17939,20 +15595,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bone_East_11_top_greymoor_6',
-				nameShort: 'Bone_East_11_top_greymoor',
-				size: {
-					x: 67.0,
-					y: 477.0,
-				},
-				padding: {
-					x: 21.0541267,
-					y: 458.0761,
-					z: 23.0761223,
-					w: 7.076111,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -18028,9 +15670,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellshrine_02_16',
+				name: 'Bellshrine_02_16_68x39_6',
 				nameShort: 'Bellshrine_02',
 				size: {
 					x: 68.0,
@@ -18044,21 +15688,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellshrine_9',
-				nameShort: 'Bellshrine',
-				size: {
-					x: 68.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0267509818,
-					z: 0.0,
-					w: 2.02675247,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellshrine_9',
+				name: 'Bellshrine_9_68x39_1',
 				nameShort: 'Bellshrine',
 				size: {
 					x: 68.0,
@@ -18115,9 +15745,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_01_top_19',
+				name: 'Greymoor_01_top_19_219x91_1',
 				nameShort: 'Greymoor_01_top',
 				size: {
 					x: 219.0,
@@ -18131,20 +15763,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_01_top_19',
-				nameShort: 'Greymoor_01_top',
-				size: {
-					x: 219.0,
-					y: 91.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 18.0513172,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -18189,9 +15807,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_02_26',
+				name: 'Greymoor_02_26_145x246_11',
 				nameShort: 'Greymoor_02',
 				size: {
 					x: 145.0,
@@ -18205,21 +15825,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_02_7',
-				nameShort: 'Greymoor_02',
-				size: {
-					x: 145.0,
-					y: 244.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 175.076111,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_02_7',
+				name: 'Greymoor_02_7_145x244_1',
 				nameShort: 'Greymoor_02',
 				size: {
 					x: 145.0,
@@ -18276,9 +15882,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_02_mid_29',
+				name: 'Greymoor_02_mid_29_145x246_6',
 				nameShort: 'Greymoor_02_mid',
 				size: {
 					x: 145.0,
@@ -18292,21 +15900,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_02_mid_13',
-				nameShort: 'Greymoor_02_mid',
-				size: {
-					x: 145.0,
-					y: 244.0,
-				},
-				padding: {
-					x: 35.0513153,
-					y: 46.0761223,
-					z: 0.0,
-					w: 143.076111,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_02_mid_13',
+				name: 'Greymoor_02_mid_13_145x244_1',
 				nameShort: 'Greymoor_02_mid',
 				size: {
 					x: 145.0,
@@ -18363,9 +15957,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00199890137,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_02_top_right_4',
+				name: 'Greymoor_02_top_right_4_46x25_1',
 				nameShort: 'Greymoor_02_top_right',
 				size: {
 					x: 46.0,
@@ -18379,7 +15975,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -18424,9 +16019,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_02_top_7',
+				name: 'Greymoor_02_top_7_145x244_1',
 				nameShort: 'Greymoor_02_top',
 				size: {
 					x: 145.0,
@@ -18440,20 +16037,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_02_top_7',
-				nameShort: 'Greymoor_02_top',
-				size: {
-					x: 145.0,
-					y: 244.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 69.01291,
-					z: 6.02674866,
-					w: 4.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -18498,9 +16081,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_03_42',
+				name: 'Greymoor_03_42_192x223_17',
 				nameShort: 'Greymoor_03',
 				size: {
 					x: 192.0,
@@ -18514,21 +16099,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_03_10',
-				nameShort: 'Greymoor_03',
-				size: {
-					x: 192.0,
-					y: 223.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 6.04290771,
-					z: 0.0,
-					w: 133.051315,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_03_10',
+				name: 'Greymoor_03_10_192x223_2',
 				nameShort: 'Greymoor_03',
 				size: {
 					x: 192.0,
@@ -18585,9 +16156,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_03_top_88',
+				name: 'Greymoor_03_top_88_192x272_1',
 				nameShort: 'Greymoor_03_top',
 				size: {
 					x: 192.0,
@@ -18601,20 +16174,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_03_top_88',
-				nameShort: 'Greymoor_03_top',
-				size: {
-					x: 192.0,
-					y: 272.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 4.05131674,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -18690,9 +16249,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_03_mid_right_8',
+				name: 'Greymoor_03_mid_right_8_192x272_1',
 				nameShort: 'Greymoor_03_mid_right',
 				size: {
 					x: 192.0,
@@ -18706,20 +16267,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_03_mid_right_8',
-				nameShort: 'Greymoor_03_mid_right',
-				size: {
-					x: 192.0,
-					y: 272.0,
-				},
-				padding: {
-					x: 170.042908,
-					y: 105.076118,
-					z: 0.0,
-					w: 143.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -18764,9 +16311,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_04_bot_19',
+				name: 'Greymoor_04_bot_19_68x275_10',
 				nameShort: 'Greymoor_04_bot',
 				size: {
 					x: 68.0,
@@ -18780,21 +16329,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_04_bot_6',
-				nameShort: 'Greymoor_04_bot',
-				size: {
-					x: 68.0,
-					y: 275.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 211.004044,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_04_bot_6',
+				name: 'Greymoor_04_bot_6_68x275_1',
 				nameShort: 'Greymoor_04_bot',
 				size: {
 					x: 68.0,
@@ -18851,9 +16386,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_04_18',
+				name: 'Greymoor_04_18_68x275_2',
 				nameShort: 'Greymoor_04',
 				size: {
 					x: 68.0,
@@ -18867,20 +16404,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_04_18',
-				nameShort: 'Greymoor_04',
-				size: {
-					x: 68.0,
-					y: 275.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 25.0019321,
-					z: 0.0,
-					w: 25.0129089,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -18925,9 +16448,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_04_top_6',
+				name: 'Greymoor_04_top_6_68x275_1',
 				nameShort: 'Greymoor_04_top',
 				size: {
 					x: 68.0,
@@ -18941,20 +16466,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_04_top_6',
-				nameShort: 'Greymoor_04_top',
-				size: {
-					x: 68.0,
-					y: 275.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 203.118332,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -18999,9 +16510,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_05_23',
+				name: 'Greymoor_05_23_185x138_22',
 				nameShort: 'Greymoor_05',
 				size: {
 					x: 185.0,
@@ -19015,21 +16528,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_05_8',
-				nameShort: 'Greymoor_05',
-				size: {
-					x: 185.0,
-					y: 138.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_05_8',
+				name: 'Greymoor_05_8_185x138_1',
 				nameShort: 'Greymoor_05',
 				size: {
 					x: 185.0,
@@ -19086,9 +16585,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_06_47',
+				name: 'Greymoor_06_47_67x360_15',
 				nameShort: 'Greymoor_06',
 				size: {
 					x: 67.0,
@@ -19102,21 +16603,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_06_21',
-				nameShort: 'Greymoor_06',
-				size: {
-					x: 67.0,
-					y: 360.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 39.0429077,
-					z: 0.0,
-					w: 151.012909,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_06_21',
+				name: 'Greymoor_06_21_67x360_1',
 				nameShort: 'Greymoor_06',
 				size: {
 					x: 67.0,
@@ -19173,9 +16660,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_06_mid_top_26',
+				name: 'Greymoor_06_mid_top_26_67x361_2',
 				nameShort: 'Greymoor_06_mid_top',
 				size: {
 					x: 67.0,
@@ -19189,20 +16678,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_06_mid_top_26',
-				nameShort: 'Greymoor_06_mid_top',
-				size: {
-					x: 67.0,
-					y: 361.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 150.076126,
-					z: 0.0,
-					w: 123.026749,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -19247,9 +16722,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_06_top_6',
+				name: 'Greymoor_06_top_6_67x361_1',
 				nameShort: 'Greymoor_06_top',
 				size: {
 					x: 67.0,
@@ -19263,20 +16740,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_06_top_6',
-				nameShort: 'Greymoor_06_top',
-				size: {
-					x: 67.0,
-					y: 361.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 187.149353,
-					z: 0.0,
-					w: 38.0267639,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -19321,9 +16784,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_06_top_left_7',
+				name: 'Greymoor_06_top_left_7_62x57_1',
 				nameShort: 'Greymoor_06_top_left',
 				size: {
 					x: 62.0,
@@ -19337,20 +16802,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_06_top_left_7',
-				nameShort: 'Greymoor_06_top_left',
-				size: {
-					x: 62.0,
-					y: 57.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 40.0362854,
-					w: 38.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -19426,9 +16877,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_07_32',
+				name: 'Greymoor_07_32_125x166_17',
 				nameShort: 'Greymoor_07',
 				size: {
 					x: 125.0,
@@ -19442,21 +16895,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_07_6',
-				nameShort: 'Greymoor_07',
-				size: {
-					x: 125.0,
-					y: 166.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_07_6',
+				name: 'Greymoor_07_6_125x166_1',
 				nameShort: 'Greymoor_07',
 				size: {
 					x: 125.0,
@@ -19513,9 +16952,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_08_20',
+				name: 'Greymoor_08_20_228x66_10',
 				nameShort: 'Greymoor_08',
 				size: {
 					x: 228.0,
@@ -19529,21 +16970,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_08_4',
-				nameShort: 'Greymoor_08',
-				size: {
-					x: 228.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_08_4',
+				name: 'Greymoor_08_4_228x66_1',
 				nameShort: 'Greymoor_08',
 				size: {
 					x: 228.0,
@@ -19631,9 +17058,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_10_9',
+				name: 'Greymoor_10_9_185x37_2',
 				nameShort: 'Greymoor_10',
 				size: {
 					x: 185.0,
@@ -19647,20 +17076,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_10_9',
-				nameShort: 'Greymoor_10',
-				size: {
-					x: 185.0,
-					y: 37.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -19705,9 +17120,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_11_4',
+				name: 'Greymoor_11_4_185x118_1',
 				nameShort: 'Greymoor_11',
 				size: {
 					x: 185.0,
@@ -19721,20 +17138,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_11_4',
-				nameShort: 'Greymoor_11',
-				size: {
-					x: 185.0,
-					y: 118.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -19779,9 +17182,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_11_top_7',
+				name: 'Greymoor_11_top_7_185x162_1',
 				nameShort: 'Greymoor_11_top',
 				size: {
 					x: 185.0,
@@ -19795,20 +17200,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_11_top_7',
-				nameShort: 'Greymoor_11_top',
-				size: {
-					x: 185.0,
-					y: 162.0,
-				},
-				padding: {
-					x: 143.076126,
-					y: 114.076118,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -19853,9 +17244,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_12_8',
+				name: 'Greymoor_12_8_298x55_1',
 				nameShort: 'Greymoor_12',
 				size: {
 					x: 298.0,
@@ -19869,20 +17262,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_12_8',
-				nameShort: 'Greymoor_12',
-				size: {
-					x: 298.0,
-					y: 55.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -19927,9 +17306,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_13_17',
+				name: 'Greymoor_13_17_298x41_17',
 				nameShort: 'Greymoor_13',
 				size: {
 					x: 298.0,
@@ -19943,21 +17324,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_13_7',
-				nameShort: 'Greymoor_13',
-				size: {
-					x: 298.0,
-					y: 41.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_13_7',
+				name: 'Greymoor_13_7_298x41_1',
 				nameShort: 'Greymoor_13',
 				size: {
 					x: 298.0,
@@ -20014,9 +17381,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_15_17',
+				name: 'Greymoor_15_17_140x141_5',
 				nameShort: 'Greymoor_15',
 				size: {
 					x: 140.0,
@@ -20030,21 +17399,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_15_8',
-				nameShort: 'Greymoor_15',
-				size: {
-					x: 140.0,
-					y: 141.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 5.001932,
-					z: 83.0761261,
-					w: 88.02676,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_15_8',
+				name: 'Greymoor_15_8_140x141_1',
 				nameShort: 'Greymoor_15',
 				size: {
 					x: 140.0,
@@ -20101,9 +17456,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_15_mid_19',
+				name: 'Greymoor_15_mid_19_140x141_10',
 				nameShort: 'Greymoor_15_mid',
 				size: {
 					x: 140.0,
@@ -20117,21 +17474,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_15_mid_21',
-				nameShort: 'Greymoor_15_mid',
-				size: {
-					x: 140.0,
-					y: 141.0,
-				},
-				padding: {
-					x: 18.0429077,
-					y: 5.01291275,
-					z: 0.0,
-					w: 70.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_15_mid_21',
+				name: 'Greymoor_15_mid_21_140x141_1',
 				nameShort: 'Greymoor_15_mid',
 				size: {
 					x: 140.0,
@@ -20188,9 +17531,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_15_top_8',
+				name: 'Greymoor_15_top_8_140x141_1',
 				nameShort: 'Greymoor_15_top',
 				size: {
 					x: 140.0,
@@ -20204,20 +17549,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_15_top_8',
-				nameShort: 'Greymoor_15_top',
-				size: {
-					x: 140.0,
-					y: 141.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 43.0362854,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -20262,9 +17593,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_15b_42',
+				name: 'Greymoor_15b_42_359x231_14',
 				nameShort: 'Greymoor_15b',
 				size: {
 					x: 359.0,
@@ -20278,21 +17611,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_15b_19',
-				nameShort: 'Greymoor_15b',
-				size: {
-					x: 359.0,
-					y: 231.0,
-				},
-				padding: {
-					x: 126.076118,
-					y: 1.01291251,
-					z: 6.149353,
-					w: 140.033508,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_15b_19',
+				name: 'Greymoor_15b_19_359x231_1',
 				nameShort: 'Greymoor_15b',
 				size: {
 					x: 359.0,
@@ -20380,9 +17699,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_15b_bot_right_11',
+				name: 'Greymoor_15b_bot_right_11_359x231_1',
 				nameShort: 'Greymoor_15b_bot_right',
 				size: {
 					x: 359.0,
@@ -20396,7 +17717,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_15b_19',
+				name: 'Greymoor_15b_19_359x231_1',
 				nameShort: 'Greymoor_15b',
 				size: {
 					x: 359.0,
@@ -20407,20 +17728,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 1.01291251,
 					z: 6.149353,
 					w: 140.033508,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_15b_bot_right_11',
-				nameShort: 'Greymoor_15b_bot_right',
-				size: {
-					x: 359.0,
-					y: 231.0,
-				},
-				padding: {
-					x: 306.0761,
-					y: 19.07612,
-					z: 0.0,
-					w: 158.026749,
 				},
 			},
 			altFullSprites: null,
@@ -20558,9 +17865,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_15b_2_12',
+				name: 'Greymoor_15b_2_12_217x226_1',
 				nameShort: 'Greymoor_15b_2',
 				size: {
 					x: 217.0,
@@ -20574,20 +17883,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_15b_2_12',
-				nameShort: 'Greymoor_15b_2',
-				size: {
-					x: 217.0,
-					y: 226.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 43.0129128,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -20632,9 +17927,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_16_7',
+				name: 'Greymoor_16_7_277x95_1',
 				nameShort: 'Greymoor_16',
 				size: {
 					x: 277.0,
@@ -20648,20 +17945,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_16_7',
-				nameShort: 'Greymoor_16',
-				size: {
-					x: 277.0,
-					y: 95.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -20706,9 +17989,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_17_2_7',
+				name: 'Greymoor_17_2_7_100x124_1',
 				nameShort: 'Greymoor_17_2',
 				size: {
 					x: 100.0,
@@ -20722,7 +18007,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -20798,9 +18082,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00199890137,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_17_bot_10',
+				name: 'Greymoor_17_bot_10_100x124_1',
 				nameShort: 'Greymoor_17_bot',
 				size: {
 					x: 100.0,
@@ -20814,7 +18100,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -20859,9 +18144,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_20b_19',
+				name: 'Greymoor_20b_19_80x34_7',
 				nameShort: 'Greymoor_20b',
 				size: {
 					x: 80.0,
@@ -20875,21 +18162,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Greymoor_20b_6',
-				nameShort: 'Greymoor_20b',
-				size: {
-					x: 80.0,
-					y: 32.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Greymoor_20b_6',
+				name: 'Greymoor_20b_6_80x32_1',
 				nameShort: 'Greymoor_20b',
 				size: {
 					x: 80.0,
@@ -20946,10 +18219,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -20994,9 +18268,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_13_2_7',
+				name: 'Greymoor_13_2_7_120x48_1',
 				nameShort: 'Greymoor_13_2',
 				size: {
 					x: 120.0,
@@ -21010,20 +18286,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_13_2_7',
-				nameShort: 'Greymoor_13_2',
-				size: {
-					x: 120.0,
-					y: 48.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21068,9 +18330,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_22_14',
+				name: 'Greymoor_22_14_200x91_1',
 				nameShort: 'Greymoor_22',
 				size: {
 					x: 200.0,
@@ -21084,20 +18348,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_22_14',
-				nameShort: 'Greymoor_22',
-				size: {
-					x: 200.0,
-					y: 91.0,
-				},
-				padding: {
-					x: 28.0477047,
-					y: 0.0,
-					z: 7.076126,
-					w: 1.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21142,9 +18392,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Greymoor_24_6',
+				name: 'Greymoor_24_6_155x52_1',
 				nameShort: 'Greymoor_24',
 				size: {
 					x: 155.0,
@@ -21158,20 +18410,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Greymoor_24_6',
-				nameShort: 'Greymoor_24',
-				size: {
-					x: 155.0,
-					y: 52.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.0267486572,
-					w: 0.0761222839,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21216,9 +18454,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_03_13',
+				name: 'Wisp_03_13_334x89_2',
 				nameShort: 'Wisp_03',
 				size: {
 					x: 334.0,
@@ -21232,20 +18472,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_03_13',
-				nameShort: 'Wisp_03',
-				size: {
-					x: 334.0,
-					y: 89.0,
-				},
-				padding: {
-					x: 75.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 0.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21290,9 +18516,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.101998806,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90200043,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_03_2_8',
+				name: 'Wisp_03_2_8_231x104_1',
 				nameShort: 'Wisp_03_2',
 				size: {
 					x: 231.0,
@@ -21306,20 +18534,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_03_2_8',
-				nameShort: 'Wisp_03_2',
-				size: {
-					x: 231.0,
-					y: 104.0,
-				},
-				padding: {
-					x: 115.026749,
-					y: 41.0761223,
-					z: 0.0,
-					w: 2.03197479,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21364,9 +18578,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_06_6',
+				name: 'Wisp_06_6_70x39_1',
 				nameShort: 'Wisp_06',
 				size: {
 					x: 70.0,
@@ -21380,20 +18596,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_06_6',
-				nameShort: 'Wisp_06',
-				size: {
-					x: 70.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 0.0,
-					z: 14.0,
-					w: 5.07612228,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21438,9 +18640,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_06_secret_4',
+				name: 'Wisp_06_secret_4_58x55_1',
 				nameShort: 'Wisp_06_secret',
 				size: {
 					x: 58.0,
@@ -21454,20 +18658,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_06_secret_4',
-				nameShort: 'Wisp_06_secret',
-				size: {
-					x: 58.0,
-					y: 55.0,
-				},
-				padding: {
-					x: 17.02675,
-					y: 0.0,
-					z: 20.0129128,
-					w: 44.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21512,9 +18702,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_04_14',
+				name: 'Bellway_04_14_138x48_8',
 				nameShort: 'Bellway_04',
 				size: {
 					x: 138.0,
@@ -21528,21 +18720,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellway_04_25',
-				nameShort: 'Bellway_04',
-				size: {
-					x: 138.0,
-					y: 48.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellway_04_25',
+				name: 'Bellway_04_25_138x48_1',
 				nameShort: 'Bellway_04',
 				size: {
 					x: 138.0,
@@ -21599,9 +18777,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_04_bot_left_7',
+				name: 'Bellway_04_bot_left_7_138x48_1',
 				nameShort: 'Bellway_04_bot_left',
 				size: {
 					x: 138.0,
@@ -21615,20 +18795,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bellway_04_bot_left_7',
-				nameShort: 'Bellway_04_bot_left',
-				size: {
-					x: 138.0,
-					y: 48.0,
-				},
-				padding: {
-					x: 10.07612,
-					y: 0.0,
-					z: 57.01291,
-					w: 12.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21673,10 +18839,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Rough',
@@ -21752,10 +18919,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -21773,10 +18941,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			origColor: null,
 			visualBounds: null,
 			playerPositionBounds: null,
+			sortingOrder: 0,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21794,10 +18963,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			origColor: null,
 			visualBounds: null,
 			playerPositionBounds: null,
+			sortingOrder: 0,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -21842,9 +19012,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_01_15',
+				name: 'Dust_01_15_256x43_18',
 				nameShort: 'Dust_01',
 				size: {
 					x: 256.0,
@@ -21858,21 +19030,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dust_01_5',
-				nameShort: 'Dust_01',
-				size: {
-					x: 256.0,
-					y: 43.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Dust_01_5',
+				name: 'Dust_01_5_256x43_1',
 				nameShort: 'Dust_01',
 				size: {
 					x: 256.0,
@@ -21960,9 +19118,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_02_45',
+				name: 'Dust_02_45_69x218_20',
 				nameShort: 'Dust_02',
 				size: {
 					x: 69.0,
@@ -21976,21 +19136,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dust_02_7',
-				nameShort: 'Dust_02',
-				size: {
-					x: 69.0,
-					y: 218.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Dust_02_7',
+				name: 'Dust_02_7_69x218_1',
 				nameShort: 'Dust_02',
 				size: {
 					x: 69.0,
@@ -22047,9 +19193,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_03_16',
+				name: 'Dust_03_16_240x62_12',
 				nameShort: 'Dust_03',
 				size: {
 					x: 240.0,
@@ -22063,21 +19211,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dust_03_5',
-				nameShort: 'Dust_03',
-				size: {
-					x: 240.0,
-					y: 62.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 17.149353,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Dust_03_5',
+				name: 'Dust_03_5_240x62_1',
 				nameShort: 'Dust_03',
 				size: {
 					x: 240.0,
@@ -22134,9 +19268,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_03_2_7',
+				name: 'Dust_03_2_7_78x55_1',
 				nameShort: 'Dust_03_2',
 				size: {
 					x: 78.0,
@@ -22150,20 +19286,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_03_2_7',
-				nameShort: 'Dust_03_2',
-				size: {
-					x: 78.0,
-					y: 55.0,
-				},
-				padding: {
-					x: 28.07612,
-					y: 0.0,
-					z: 2.012909,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -22208,9 +19330,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_04_47',
+				name: 'Dust_04_47_170x149_44',
 				nameShort: 'Dust_04',
 				size: {
 					x: 170.0,
@@ -22224,21 +19348,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dust_04_7',
-				nameShort: 'Dust_04',
-				size: {
-					x: 170.0,
-					y: 149.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 20.02675,
-					z: 0.0,
-					w: 0.0429077148,
-				},
-			},
-			rendererSprite: {
-				name: 'Dust_04_7',
+				name: 'Dust_04_7_170x149_1',
 				nameShort: 'Dust_04',
 				size: {
 					x: 170.0,
@@ -22295,9 +19405,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_05_16',
+				name: 'Dust_05_16_577x46_30',
 				nameShort: 'Dust_05',
 				size: {
 					x: 577.0,
@@ -22311,21 +19423,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dust_05_8',
-				nameShort: 'Dust_05',
-				size: {
-					x: 577.0,
-					y: 46.0,
-				},
-				padding: {
-					x: 16.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Dust_05_8',
+				name: 'Dust_05_8_577x46_1',
 				nameShort: 'Dust_05',
 				size: {
 					x: 577.0,
@@ -22382,9 +19480,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_Maze_08_completed_11',
+				name: 'Dust_Maze_08_completed_11_141x147_1',
 				nameShort: 'Dust_Maze_08_completed',
 				size: {
 					x: 141.0,
@@ -22398,20 +19498,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_Maze_08_completed_11',
-				nameShort: 'Dust_Maze_08_completed',
-				size: {
-					x: 141.0,
-					y: 147.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.29289317,
-					z: 0.0,
-					w: 0.0267486572,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -22487,9 +19573,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_06_37',
+				name: 'Dust_06_37_63x300_21',
 				nameShort: 'Dust_06',
 				size: {
 					x: 63.0,
@@ -22503,21 +19591,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dust_06_24',
-				nameShort: 'Dust_06',
-				size: {
-					x: 63.0,
-					y: 300.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 58.149353,
-				},
-			},
-			rendererSprite: {
-				name: 'Dust_06_24',
+				name: 'Dust_06_24_63x300_1',
 				nameShort: 'Dust_06',
 				size: {
 					x: 63.0,
@@ -22574,9 +19648,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_06_top_5',
+				name: 'Dust_06_top_5_63x300_1',
 				nameShort: 'Dust_06_top',
 				size: {
 					x: 63.0,
@@ -22590,20 +19666,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_06_top_5',
-				nameShort: 'Dust_06_top',
-				size: {
-					x: 63.0,
-					y: 300.0,
-				},
-				padding: {
-					x: 2.05131674,
-					y: 190.005966,
-					z: 3.02675247,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -22648,9 +19710,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_10_9',
+				name: 'Dust_10_9_256x129_8',
 				nameShort: 'Dust_10',
 				size: {
 					x: 256.0,
@@ -22664,21 +19728,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dust_10_8',
-				nameShort: 'Dust_10',
-				size: {
-					x: 256.0,
-					y: 129.0,
-				},
-				padding: {
-					x: 169.076126,
-					y: 48.0267525,
-					z: 0.0,
-					w: 24.0761185,
-				},
-			},
-			rendererSprite: {
-				name: 'Dust_10_8',
+				name: 'Dust_10_8_256x129_1',
 				nameShort: 'Dust_10',
 				size: {
 					x: 256.0,
@@ -22735,9 +19785,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_10b_9',
+				name: 'Dust_10b_9_212x119_2',
 				nameShort: 'Dust_10b',
 				size: {
 					x: 212.0,
@@ -22751,20 +19803,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_10b_9',
-				nameShort: 'Dust_10b',
-				size: {
-					x: 212.0,
-					y: 119.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 18.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -22809,9 +19847,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_11_empty_5',
+				name: 'Dust_11_empty_5_195x66_0',
 				nameShort: 'Dust_11_empty',
 				size: {
 					x: 195.0,
@@ -22825,20 +19865,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_11_empty_5',
-				nameShort: 'Dust_11_empty',
-				size: {
-					x: 195.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 189.076126,
-					w: 60.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -22883,9 +19909,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_11_15',
+				name: 'Dust_11_15_195x52_7',
 				nameShort: 'Dust_11',
 				size: {
 					x: 195.0,
@@ -22899,21 +19927,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dust_11_13',
-				nameShort: 'Dust_11',
-				size: {
-					x: 195.0,
-					y: 52.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 12.0129128,
-					z: 82.07612,
-					w: 1.01291275,
-				},
-			},
-			rendererSprite: {
-				name: 'Dust_11_13',
+				name: 'Dust_11_13_195x52_1',
 				nameShort: 'Dust_11',
 				size: {
 					x: 195.0,
@@ -22970,9 +19984,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_11_right_5',
+				name: 'Dust_11_right_5_195x52_1',
 				nameShort: 'Dust_11_right',
 				size: {
 					x: 195.0,
@@ -22986,20 +20002,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_11_right_5',
-				nameShort: 'Dust_11_right',
-				size: {
-					x: 195.0,
-					y: 52.0,
-				},
-				padding: {
-					x: 67.07612,
-					y: 1.0761205,
-					z: 0.0,
-					w: 1.07612228,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -23044,9 +20046,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00199890137,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_11_bot_4',
+				name: 'Dust_11_bot_4_48x29_1',
 				nameShort: 'Dust_11_bot',
 				size: {
 					x: 48.0,
@@ -23060,7 +20064,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -23136,9 +20139,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_12_8',
+				name: 'Dust_12_8_62x32_2',
 				nameShort: 'Dust_12',
 				size: {
 					x: 62.0,
@@ -23152,21 +20157,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Dust_12_6',
-				nameShort: 'Dust_12',
-				size: {
-					x: 62.0,
-					y: 32.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 1.07612038,
-				},
-			},
-			rendererSprite: {
-				name: 'Dust_12_6',
+				name: 'Dust_12_6_62x32_1',
 				nameShort: 'Dust_12',
 				size: {
 					x: 62.0,
@@ -23223,9 +20214,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09769964,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89770126,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_Chef_7',
+				name: 'Dust_Chef_7_121x132_1',
 				nameShort: 'Dust_Chef',
 				size: {
 					x: 121.0,
@@ -23239,20 +20232,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_Chef_7',
-				nameShort: 'Dust_Chef',
-				size: {
-					x: 121.0,
-					y: 132.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 3.07611847,
-					w: 44.02675,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -23297,9 +20276,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00400161743,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_Chef_b_6',
+				name: 'Dust_Chef_b_6_70x47_1',
 				nameShort: 'Dust_Chef_b',
 				size: {
 					x: 70.0,
@@ -23313,7 +20294,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -23358,9 +20338,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_05_b_4',
+				name: 'Dust_05_b_4_59x27_1',
 				nameShort: 'Dust_05_b',
 				size: {
 					x: 59.0,
@@ -23374,20 +20356,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_05_b_4',
-				nameShort: 'Dust_05_b',
-				size: {
-					x: 59.0,
-					y: 27.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -23432,9 +20400,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_06_right_8',
+				name: 'Dust_06_right_8_63x300_1',
 				nameShort: 'Dust_06_right',
 				size: {
 					x: 63.0,
@@ -23448,20 +20418,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_06_right_8',
-				nameShort: 'Dust_06_right',
-				size: {
-					x: 63.0,
-					y: 300.0,
-				},
-				padding: {
-					x: 48.0761223,
-					y: 136.026749,
-					z: 0.0,
-					w: 134.0477,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -23537,10 +20493,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -23585,10 +20542,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -23633,10 +20591,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -23681,10 +20640,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -23729,10 +20689,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -23777,10 +20738,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -23825,10 +20787,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -23873,10 +20836,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -23921,10 +20885,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -23969,10 +20934,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -24017,10 +20983,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -24065,10 +21032,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -24113,10 +21081,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -24161,9 +21130,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_02_8',
+				name: 'Wisp_02_8_396x68_1',
 				nameShort: 'Wisp_02',
 				size: {
 					x: 396.0,
@@ -24177,20 +21148,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_02_8',
-				nameShort: 'Wisp_02',
-				size: {
-					x: 396.0,
-					y: 68.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -24235,9 +21192,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09499884,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89500046,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_04_6',
+				name: 'Wisp_04_6_118x43_1',
 				nameShort: 'Wisp_04',
 				size: {
 					x: 118.0,
@@ -24251,20 +21210,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_04_6',
-				nameShort: 'Wisp_04',
-				size: {
-					x: 118.0,
-					y: 43.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -24370,9 +21315,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_05_5',
+				name: 'Wisp_05_5_87x116_1',
 				nameShort: 'Wisp_05',
 				size: {
 					x: 87.0,
@@ -24386,20 +21333,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_05_5',
-				nameShort: 'Wisp_05',
-				size: {
-					x: 87.0,
-					y: 116.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -24444,9 +21377,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_07_8',
+				name: 'Wisp_07_8_463x62_1',
 				nameShort: 'Wisp_07',
 				size: {
 					x: 463.0,
@@ -24460,20 +21395,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_07_8',
-				nameShort: 'Wisp_07',
-				size: {
-					x: 463.0,
-					y: 62.0,
-				},
-				padding: {
-					x: 141.076126,
-					y: 0.0129125714,
-					z: 0.0,
-					w: 2.0563736,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -24518,9 +21439,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_08_4',
+				name: 'Wisp_08_4_46x199_1',
 				nameShort: 'Wisp_08',
 				size: {
 					x: 46.0,
@@ -24534,20 +21457,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_08_4',
-				nameShort: 'Wisp_08',
-				size: {
-					x: 46.0,
-					y: 199.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 1.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -24592,9 +21501,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Wisp_09_11',
+				name: 'Wisp_09_11_180x63_1',
 				nameShort: 'Wisp_09',
 				size: {
 					x: 180.0,
@@ -24608,20 +21519,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Wisp_09_11',
-				nameShort: 'Wisp_09',
-				size: {
-					x: 180.0,
-					y: 63.0,
-				},
-				padding: {
-					x: 4.07612038,
-					y: 21.0429077,
-					z: 0.0563659668,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -24697,9 +21594,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_08_14',
+				name: 'Belltown_08_14_209x106_1',
 				nameShort: 'Belltown_08',
 				size: {
 					x: 209.0,
@@ -24713,20 +21612,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Belltown_08_14',
-				nameShort: 'Belltown_08',
-				size: {
-					x: 209.0,
-					y: 106.0,
-				},
-				padding: {
-					x: 55.0761223,
-					y: 5.07612038,
-					z: 0.0,
-					w: 12.0267487,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -24771,9 +21656,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_09_7',
+				name: 'Dust_09_7_285x90_1',
 				nameShort: 'Dust_09',
 				size: {
 					x: 285.0,
@@ -24787,20 +21674,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_09_7',
-				nameShort: 'Dust_09',
-				size: {
-					x: 285.0,
-					y: 90.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 3.07611084,
-					w: 27.0129128,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -24876,9 +21749,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_09_right_8',
+				name: 'Dust_09_right_8_310x90_1',
 				nameShort: 'Dust_09_right',
 				size: {
 					x: 310.0,
@@ -24892,20 +21767,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_09_right_8',
-				nameShort: 'Dust_09_right',
-				size: {
-					x: 310.0,
-					y: 90.0,
-				},
-				padding: {
-					x: 270.0761,
-					y: 2.07612038,
-					z: 0.0,
-					w: 59.0362854,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -24950,9 +21811,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.101499081,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.9015007,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_09_top_4',
+				name: 'Dust_09_top_4_21x281_17',
 				nameShort: 'Dust_09_top',
 				size: {
 					x: 21.0,
@@ -24966,20 +21829,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_09_top_4',
-				nameShort: 'Dust_09_top',
-				size: {
-					x: 21.0,
-					y: 281.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -25055,9 +21904,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_09_top_2_8',
+				name: 'Dust_09_top_2_8_285x90_1',
 				nameShort: 'Dust_09_top_2',
 				size: {
 					x: 285.0,
@@ -25071,20 +21922,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_09_top_2_8',
-				nameShort: 'Dust_09_top_2',
-				size: {
-					x: 285.0,
-					y: 90.0,
-				},
-				padding: {
-					x: 0.0429079533,
-					y: 34.0761223,
-					z: 36.02675,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -25129,9 +21966,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_01_79',
+				name: 'Shadow_01_79_115x299_16',
 				nameShort: 'Shadow_01',
 				size: {
 					x: 115.0,
@@ -25145,21 +21984,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_01_8',
-				nameShort: 'Shadow_01',
-				size: {
-					x: 115.0,
-					y: 299.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 73.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_01_8',
+				name: 'Shadow_01_8_115x299_1',
 				nameShort: 'Shadow_01',
 				size: {
 					x: 115.0,
@@ -25247,9 +22072,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_01_top_9',
+				name: 'Shadow_01_top_9_115x299_1',
 				nameShort: 'Shadow_01_top',
 				size: {
 					x: 115.0,
@@ -25263,20 +22090,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_01_top_9',
-				nameShort: 'Shadow_01_top',
-				size: {
-					x: 115.0,
-					y: 299.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 169.051315,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -25321,9 +22134,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_02_41',
+				name: 'Shadow_02_41_114x344_22',
 				nameShort: 'Shadow_02',
 				size: {
 					x: 114.0,
@@ -25337,21 +22152,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_02_9',
-				nameShort: 'Shadow_02',
-				size: {
-					x: 114.0,
-					y: 344.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 26.0129128,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_02_9',
+				name: 'Shadow_02_9_114x344_1',
 				nameShort: 'Shadow_02',
 				size: {
 					x: 114.0,
@@ -25408,9 +22209,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_03_24',
+				name: 'Shadow_03_24_254x71_20',
 				nameShort: 'Shadow_03',
 				size: {
 					x: 254.0,
@@ -25424,21 +22227,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_04b_9',
-				nameShort: 'Shadow_04b',
-				size: {
-					x: 254.0,
-					y: 71.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.026751,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_04b_9',
+				name: 'Shadow_04b_9_254x71_1',
 				nameShort: 'Shadow_04b',
 				size: {
 					x: 254.0,
@@ -25495,9 +22284,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_04_b_4',
+				name: 'Shadow_04_b_4_44x21_1',
 				nameShort: 'Shadow_04_b',
 				size: {
 					x: 44.0,
@@ -25511,20 +22302,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_04_b_4',
-				nameShort: 'Shadow_04_b',
-				size: {
-					x: 44.0,
-					y: 21.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -25569,9 +22346,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_04_21',
+				name: 'Shadow_04_21_107x153_20',
 				nameShort: 'Shadow_04',
 				size: {
 					x: 107.0,
@@ -25585,21 +22364,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_04_7',
-				nameShort: 'Shadow_04',
-				size: {
-					x: 107.0,
-					y: 153.0,
-				},
-				padding: {
-					x: 10.0267506,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_04_7',
+				name: 'Shadow_04_7_107x153_1',
 				nameShort: 'Shadow_04',
 				size: {
 					x: 107.0,
@@ -25656,9 +22421,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_xx_25',
+				name: 'Shadow_xx_25_302x158_12',
 				nameShort: 'Shadow_xx',
 				size: {
 					x: 302.0,
@@ -25672,21 +22439,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_xx_7',
-				nameShort: 'Shadow_xx',
-				size: {
-					x: 302.0,
-					y: 158.0,
-				},
-				padding: {
-					x: 100.076118,
-					y: 100.026749,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_xx_7',
+				name: 'Shadow_xx_7_302x158_1',
 				nameShort: 'Shadow_xx',
 				size: {
 					x: 302.0,
@@ -25743,9 +22496,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_05_13',
+				name: 'Shadow_05_13_358x103_25',
 				nameShort: 'Shadow_05',
 				size: {
 					x: 358.0,
@@ -25759,21 +22514,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_05_10',
-				nameShort: 'Shadow_05',
-				size: {
-					x: 358.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.026751,
-					z: 0.0,
-					w: 9.076118,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_05_10',
+				name: 'Shadow_05_10_358x103_1',
 				nameShort: 'Shadow_05',
 				size: {
 					x: 358.0,
@@ -25861,9 +22602,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_08_6',
+				name: 'Shadow_08_6_140x93_1',
 				nameShort: 'Shadow_08',
 				size: {
 					x: 140.0,
@@ -25877,20 +22620,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_08_6',
-				nameShort: 'Shadow_08',
-				size: {
-					x: 140.0,
-					y: 93.0,
-				},
-				padding: {
-					x: 54.0761223,
-					y: 0.0,
-					z: 0.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -25935,9 +22664,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_08_left_8',
+				name: 'Shadow_08_left_8_140x93_1',
 				nameShort: 'Shadow_08_left',
 				size: {
 					x: 140.0,
@@ -25951,20 +22682,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_08_left_8',
-				nameShort: 'Shadow_08_left',
-				size: {
-					x: 140.0,
-					y: 93.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.042908,
-					z: 68.0513153,
-					w: 29.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26009,9 +22726,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_09_18',
+				name: 'Shadow_09_18_259x227_16',
 				nameShort: 'Shadow_09',
 				size: {
 					x: 259.0,
@@ -26025,21 +22744,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_09_5',
-				nameShort: 'Shadow_09',
-				size: {
-					x: 259.0,
-					y: 227.0,
-				},
-				padding: {
-					x: 22.07612,
-					y: 75.01291,
-					z: 133.051315,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_09_5',
+				name: 'Shadow_09_5_259x227_1',
 				nameShort: 'Shadow_09',
 				size: {
 					x: 259.0,
@@ -26096,9 +22801,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09990072,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89990234,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_09_right_7',
+				name: 'Shadow_09_right_7_235x149_1',
 				nameShort: 'Shadow_09_right',
 				size: {
 					x: 235.0,
@@ -26112,20 +22819,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_09_right_7',
-				nameShort: 'Shadow_09_right',
-				size: {
-					x: 235.0,
-					y: 149.0,
-				},
-				padding: {
-					x: 60.0267525,
-					y: 0.0,
-					z: 12.0267487,
-					w: 105.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26170,9 +22863,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_10_69',
+				name: 'Shadow_10_69_345x103_1',
 				nameShort: 'Shadow_10',
 				size: {
 					x: 345.0,
@@ -26186,20 +22881,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_10_69',
-				nameShort: 'Shadow_10',
-				size: {
-					x: 345.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26244,9 +22925,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_10_right_9',
+				name: 'Shadow_10_right_9_345x103_1',
 				nameShort: 'Shadow_10_right',
 				size: {
 					x: 345.0,
@@ -26260,20 +22943,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_10_right_9',
-				nameShort: 'Shadow_10_right',
-				size: {
-					x: 345.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 300.0761,
-					y: 0.0,
-					z: 9.076111,
-					w: 70.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26318,9 +22987,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_10_top_9',
+				name: 'Shadow_10_top_9_96x43_1',
 				nameShort: 'Shadow_10_top',
 				size: {
 					x: 96.0,
@@ -26334,20 +23005,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_10_top_9',
-				nameShort: 'Shadow_10_top',
-				size: {
-					x: 96.0,
-					y: 43.0,
-				},
-				padding: {
-					x: 0.05131668,
-					y: 1.01291251,
-					z: 1.01290894,
-					w: 1.02675247,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26392,9 +23049,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_11_7',
+				name: 'Shadow_11_7_64x194_1',
 				nameShort: 'Shadow_11',
 				size: {
 					x: 64.0,
@@ -26408,20 +23067,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_11_7',
-				nameShort: 'Shadow_11',
-				size: {
-					x: 64.0,
-					y: 194.0,
-				},
-				padding: {
-					x: 1.0761205,
-					y: 4.05131674,
-					z: 0.0,
-					w: 85.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26466,9 +23111,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_11_top_7',
+				name: 'Shadow_11_top_7_57x97_1',
 				nameShort: 'Shadow_11_top',
 				size: {
 					x: 57.0,
@@ -26482,20 +23129,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_11_top_7',
-				nameShort: 'Shadow_11_top',
-				size: {
-					x: 57.0,
-					y: 97.0,
-				},
-				padding: {
-					x: 2.026751,
-					y: 0.0,
-					z: 2.07612228,
-					w: 2.05131531,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26540,9 +23173,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_12_13',
+				name: 'Shadow_12_13_355x73_1',
 				nameShort: 'Shadow_12',
 				size: {
 					x: 355.0,
@@ -26556,20 +23191,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_12_13',
-				nameShort: 'Shadow_12',
-				size: {
-					x: 355.0,
-					y: 73.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.0,
-					w: 0.0267486572,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26614,9 +23235,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_13_7',
+				name: 'Shadow_13_7_466x98_1',
 				nameShort: 'Shadow_13',
 				size: {
 					x: 466.0,
@@ -26630,20 +23253,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_13_7',
-				nameShort: 'Shadow_13',
-				size: {
-					x: 466.0,
-					y: 98.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 2.026764,
-					w: 0.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26688,9 +23297,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_14_13',
+				name: 'Shadow_14_13_54x136_9',
 				nameShort: 'Shadow_14',
 				size: {
 					x: 54.0,
@@ -26704,21 +23315,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow14_8',
-				nameShort: 'Shadow14',
-				size: {
-					x: 54.0,
-					y: 132.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow14_8',
+				name: 'Shadow14_8_54x132_1',
 				nameShort: 'Shadow14',
 				size: {
 					x: 54.0,
@@ -26775,9 +23372,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_16_9',
+				name: 'Shadow_16_9_202x83_1',
 				nameShort: 'Shadow_16',
 				size: {
 					x: 202.0,
@@ -26791,20 +23390,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_16_9',
-				nameShort: 'Shadow_16',
-				size: {
-					x: 202.0,
-					y: 83.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -26849,9 +23434,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_Top_Bench_8',
+				name: 'Shadow_Top_Bench_8_52x113_5',
 				nameShort: 'Shadow_Top_Bench',
 				size: {
 					x: 52.0,
@@ -26865,21 +23452,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_Top_Bench_6',
-				nameShort: 'Shadow_Top_Bench',
-				size: {
-					x: 52.0,
-					y: 113.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 72.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_Top_Bench_6',
+				name: 'Shadow_Top_Bench_6_52x113_1',
 				nameShort: 'Shadow_Top_Bench',
 				size: {
 					x: 52.0,
@@ -26936,9 +23509,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_Top_Bench_Under_8',
+				name: 'Shadow_Top_Bench_Under_8_95x84_1',
 				nameShort: 'Shadow_Top_Bench_Under',
 				size: {
 					x: 95.0,
@@ -26952,20 +23527,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_Top_Bench_Under_8',
-				nameShort: 'Shadow_Top_Bench_Under',
-				size: {
-					x: 95.0,
-					y: 84.0,
-				},
-				padding: {
-					x: 12.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27010,9 +23571,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_18_9',
+				name: 'Shadow_18_9_191x74_1',
 				nameShort: 'Shadow_18',
 				size: {
 					x: 191.0,
@@ -27026,20 +23589,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_18_9',
-				nameShort: 'Shadow_18',
-				size: {
-					x: 191.0,
-					y: 74.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 6.01291275,
-					z: 0.0,
-					w: 17.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27115,9 +23664,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_18_top_8',
+				name: 'Shadow_18_top_8_191x74_1',
 				nameShort: 'Shadow_18_top',
 				size: {
 					x: 191.0,
@@ -27131,7 +23682,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27176,10 +23726,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -27224,9 +23775,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_19_5',
+				name: 'Shadow_19_5_143x164_1',
 				nameShort: 'Shadow_19',
 				size: {
 					x: 143.0,
@@ -27240,20 +23793,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_19_5',
-				nameShort: 'Shadow_19',
-				size: {
-					x: 143.0,
-					y: 164.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.01291251,
-					z: 0.0,
-					w: 1.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27298,9 +23837,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_xx_mandrake_6',
+				name: 'Shadow_xx_mandrake_6_373x105_1',
 				nameShort: 'Shadow_xx_mandrake',
 				size: {
 					x: 373.0,
@@ -27314,20 +23855,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_xx_mandrake_6',
-				nameShort: 'Shadow_xx_mandrake',
-				size: {
-					x: 373.0,
-					y: 105.0,
-				},
-				padding: {
-					x: 175.0582,
-					y: 0.0,
-					z: 131.06102,
-					w: 74.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27372,9 +23899,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_xx_mandrake_upper_6',
+				name: 'Shadow_xx_mandrake_upper_6_172x61_1',
 				nameShort: 'Shadow_xx_mandrake_upper',
 				size: {
 					x: 172.0,
@@ -27388,20 +23917,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_xx_mandrake_upper_6',
-				nameShort: 'Shadow_xx_mandrake_upper',
-				size: {
-					x: 172.0,
-					y: 61.0,
-				},
-				padding: {
-					x: 24.07612,
-					y: 1.0761205,
-					z: 1.0761261,
-					w: 2.02675247,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27446,9 +23961,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09850073,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89850235,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_20_right_9',
+				name: 'Shadow_20_right_9_254x105_1',
 				nameShort: 'Shadow_20_right',
 				size: {
 					x: 254.0,
@@ -27462,20 +23979,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_20_right_9',
-				nameShort: 'Shadow_20_right',
-				size: {
-					x: 254.0,
-					y: 105.0,
-				},
-				padding: {
-					x: 1.0761205,
-					y: 0.0761204958,
-					z: 16.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27520,9 +24023,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_xx_mandrake_left_8',
+				name: 'Shadow_xx_mandrake_left_8_237x57_1',
 				nameShort: 'Shadow_xx_mandrake_left',
 				size: {
 					x: 237.0,
@@ -27536,20 +24041,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_xx_mandrake_left_8',
-				nameShort: 'Shadow_xx_mandrake_left',
-				size: {
-					x: 237.0,
-					y: 57.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 27.0761261,
-					w: 2.04290771,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27594,9 +24085,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_Shadow_22',
+				name: 'Bellway_Shadow_22_142x76_13',
 				nameShort: 'Bellway_Shadow',
 				size: {
 					x: 142.0,
@@ -27610,21 +24103,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellway_Shadow_7',
-				nameShort: 'Bellway_Shadow',
-				size: {
-					x: 142.0,
-					y: 76.0,
-				},
-				padding: {
-					x: 36.0477028,
-					y: 28.07612,
-					z: 5.076126,
-					w: 2.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellway_Shadow_7',
+				name: 'Bellway_Shadow_7_142x76_1',
 				nameShort: 'Bellway_Shadow',
 				size: {
 					x: 142.0,
@@ -27681,9 +24160,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_21_6',
+				name: 'Shadow_21_6_189x45_1',
 				nameShort: 'Shadow_21',
 				size: {
 					x: 189.0,
@@ -27697,20 +24178,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_21_6',
-				nameShort: 'Shadow_21',
-				size: {
-					x: 189.0,
-					y: 45.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 0.0,
-					z: 0.0429077148,
-					w: 1.07612228,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27755,9 +24222,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_22_6',
+				name: 'Shadow_22_6_104x162_1',
 				nameShort: 'Shadow_22',
 				size: {
 					x: 104.0,
@@ -27771,20 +24240,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_22_6',
-				nameShort: 'Shadow_22',
-				size: {
-					x: 104.0,
-					y: 162.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -27860,9 +24315,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_26_13',
+				name: 'Shadow_26_13_97x36_5',
 				nameShort: 'Shadow_26',
 				size: {
 					x: 97.0,
@@ -27876,21 +24333,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_26_7',
-				nameShort: 'Shadow_26',
-				size: {
-					x: 97.0,
-					y: 36.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.0267486572,
-					w: 1.05131531,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_26_7',
+				name: 'Shadow_26_7_97x36_1',
 				nameShort: 'Shadow_26',
 				size: {
 					x: 97.0,
@@ -27947,9 +24390,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_24_8',
+				name: 'Shadow_24_8_485x52_1',
 				nameShort: 'Shadow_24',
 				size: {
 					x: 485.0,
@@ -27963,20 +24408,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_24_8',
-				nameShort: 'Shadow_24',
-				size: {
-					x: 485.0,
-					y: 52.0,
-				},
-				padding: {
-					x: 152.076126,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -28021,9 +24452,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_25_7',
+				name: 'Shadow_25_7_51x63_1',
 				nameShort: 'Shadow_25',
 				size: {
 					x: 51.0,
@@ -28037,20 +24470,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_25_7',
-				nameShort: 'Shadow_25',
-				size: {
-					x: 51.0,
-					y: 63.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 8.07612,
-					z: 1.07612228,
-					w: 0.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -28095,9 +24514,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_26_new_21',
+				name: 'Shadow_26_new_21_55x202_16',
 				nameShort: 'Shadow_26_new',
 				size: {
 					x: 55.0,
@@ -28111,21 +24532,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_26_new_7',
-				nameShort: 'Shadow_26_new',
-				size: {
-					x: 55.0,
-					y: 202.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_26_new_7',
+				name: 'Shadow_26_new_7_55x202_1',
 				nameShort: 'Shadow_26_new',
 				size: {
 					x: 55.0,
@@ -28182,9 +24589,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_27_12',
+				name: 'Shadow_27_12_343x48_23',
 				nameShort: 'Shadow_27',
 				size: {
 					x: 343.0,
@@ -28198,21 +24607,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_27_6',
-				nameShort: 'Shadow_27',
-				size: {
-					x: 343.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_27_6',
+				name: 'Shadow_27_6_343x44_1',
 				nameShort: 'Shadow_27',
 				size: {
 					x: 343.0,
@@ -28269,9 +24664,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_27_right_8',
+				name: 'Shadow_27_right_8_355x44_1',
 				nameShort: 'Shadow_27_right',
 				size: {
 					x: 355.0,
@@ -28285,7 +24682,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shadow_27_6',
+				name: 'Shadow_27_6_343x44_1',
 				nameShort: 'Shadow_27',
 				size: {
 					x: 343.0,
@@ -28296,20 +24693,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shadow_27_right_8',
-				nameShort: 'Shadow_27_right',
-				size: {
-					x: 355.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 337.0761,
-					y: 0.0761204958,
-					z: 0.0,
-					w: 17.02675,
 				},
 			},
 			altFullSprites: null,
@@ -28356,9 +24739,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_28_7',
+				name: 'Shadow_28_7_132x62_1',
 				nameShort: 'Shadow_28',
 				size: {
 					x: 132.0,
@@ -28372,20 +24757,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_28_7',
-				nameShort: 'Shadow_28',
-				size: {
-					x: 132.0,
-					y: 62.0,
-				},
-				padding: {
-					x: 28.0429077,
-					y: 3.07612038,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -28430,10 +24801,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -28509,9 +24881,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_Weavehome_8',
+				name: 'Shadow_Weavehome_8_292x112_1',
 				nameShort: 'Shadow_Weavehome',
 				size: {
 					x: 292.0,
@@ -28525,20 +24899,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_Weavehome_8',
-				nameShort: 'Shadow_Weavehome',
-				size: {
-					x: 292.0,
-					y: 112.0,
-				},
-				padding: {
-					x: 0.0267509818,
-					y: 51.0610161,
-					z: 51.02675,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -28583,9 +24943,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shadow_Weavehome_right_7',
+				name: 'Shadow_Weavehome_right_7_292x65_1',
 				nameShort: 'Shadow_Weavehome_right',
 				size: {
 					x: 292.0,
@@ -28599,20 +24961,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shadow_Weavehome_right_7',
-				nameShort: 'Shadow_Weavehome_right',
-				size: {
-					x: 292.0,
-					y: 65.0,
-				},
-				padding: {
-					x: 229.0477,
-					y: 5.05131674,
-					z: 3.026764,
-					w: 0.04548645,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -28657,9 +25005,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_01_11',
+				name: 'Aqueduct_01_11_427x70_37',
 				nameShort: 'Aqueduct_01',
 				size: {
 					x: 427.0,
@@ -28673,21 +25023,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Aqueduct_01_9',
-				nameShort: 'Aqueduct_01',
-				size: {
-					x: 427.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0429077148,
-				},
-			},
-			rendererSprite: {
-				name: 'Aqueduct_01_9',
+				name: 'Aqueduct_01_9_427x66_1',
 				nameShort: 'Aqueduct_01',
 				size: {
 					x: 427.0,
@@ -28775,9 +25111,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_02_35',
+				name: 'Aqueduct_02_35_53x196_20',
 				nameShort: 'Aqueduct_02',
 				size: {
 					x: 53.0,
@@ -28791,21 +25129,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Aqueduct_02_4',
-				nameShort: 'Aqueduct_02',
-				size: {
-					x: 53.0,
-					y: 196.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Aqueduct_02_4',
+				name: 'Aqueduct_02_4_53x196_1',
 				nameShort: 'Aqueduct_02',
 				size: {
 					x: 53.0,
@@ -28862,9 +25186,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_02_right_5',
+				name: 'Aqueduct_02_right_5_53x196_1',
 				nameShort: 'Aqueduct_02_right',
 				size: {
 					x: 53.0,
@@ -28878,7 +25204,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Aqueduct_02_4',
+				name: 'Aqueduct_02_4_53x196_1',
 				nameShort: 'Aqueduct_02',
 				size: {
 					x: 53.0,
@@ -28889,20 +25215,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Aqueduct_02_right_5',
-				nameShort: 'Aqueduct_02_right',
-				size: {
-					x: 53.0,
-					y: 196.0,
-				},
-				padding: {
-					x: 36.0761223,
-					y: 21.07612,
-					z: 0.0,
-					w: 100.076118,
 				},
 			},
 			altFullSprites: null,
@@ -28949,9 +25261,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_03_31',
+				name: 'Aqueduct_03_31_440x66_27',
 				nameShort: 'Aqueduct_03',
 				size: {
 					x: 440.0,
@@ -28965,21 +25279,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Aqueduct_03_9',
-				nameShort: 'Aqueduct_03',
-				size: {
-					x: 440.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Aqueduct_03_9',
+				name: 'Aqueduct_03_9_440x66_1',
 				nameShort: 'Aqueduct_03',
 				size: {
 					x: 440.0,
@@ -29036,9 +25336,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_04_8',
+				name: 'Aqueduct_04_8_280x85_1',
 				nameShort: 'Aqueduct_04',
 				size: {
 					x: 280.0,
@@ -29052,20 +25354,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aqueduct_04_8',
-				nameShort: 'Aqueduct_04',
-				size: {
-					x: 280.0,
-					y: 85.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 33.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -29110,9 +25398,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_04_bottom_4',
+				name: 'Aqueduct_04_bottom_4_37x30_1',
 				nameShort: 'Aqueduct_04_bottom',
 				size: {
 					x: 37.0,
@@ -29126,20 +25416,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aqueduct_04_bottom_4',
-				nameShort: 'Aqueduct_04_bottom',
-				size: {
-					x: 37.0,
-					y: 30.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -29215,9 +25491,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_04_right_4',
+				name: 'Aqueduct_04_right_4_43x23_1',
 				nameShort: 'Aqueduct_04_right',
 				size: {
 					x: 43.0,
@@ -29231,20 +25509,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aqueduct_04_right_4',
-				nameShort: 'Aqueduct_04_right',
-				size: {
-					x: 43.0,
-					y: 23.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -29289,9 +25553,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_05_10',
+				name: 'Aqueduct_05_10_549x165_1',
 				nameShort: 'Aqueduct_05',
 				size: {
 					x: 549.0,
@@ -29305,20 +25571,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aqueduct_05_10',
-				nameShort: 'Aqueduct_05',
-				size: {
-					x: 549.0,
-					y: 165.0,
-				},
-				padding: {
-					x: 15.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 94.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -29424,9 +25676,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_05_top_8',
+				name: 'Aqueduct_05_top_8_549x165_1',
 				nameShort: 'Aqueduct_05_top',
 				size: {
 					x: 549.0,
@@ -29440,20 +25694,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aqueduct_05_top_8',
-				nameShort: 'Aqueduct_05_top',
-				size: {
-					x: 549.0,
-					y: 165.0,
-				},
-				padding: {
-					x: 375.0761,
-					y: 56.0761223,
-					z: 87.0362854,
-					w: 3.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -29498,9 +25738,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_06_6',
+				name: 'Aqueduct_06_6_245x200_1',
 				nameShort: 'Aqueduct_06',
 				size: {
 					x: 245.0,
@@ -29514,20 +25756,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aqueduct_06_6',
-				nameShort: 'Aqueduct_06',
-				size: {
-					x: 245.0,
-					y: 200.0,
-				},
-				padding: {
-					x: 19.02675,
-					y: 0.0,
-					z: 5.02674866,
-					w: 152.012909,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -29572,9 +25800,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_06_left_11',
+				name: 'Aqueduct_06_left_11_245x200_1',
 				nameShort: 'Aqueduct_06_left',
 				size: {
 					x: 245.0,
@@ -29588,20 +25818,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aqueduct_06_left_11',
-				nameShort: 'Aqueduct_06_left',
-				size: {
-					x: 245.0,
-					y: 200.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 8.026751,
-					z: 204.076126,
-					w: 169.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -29646,9 +25862,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_06_top_8',
+				name: 'Aqueduct_06_top_8_76x170_1',
 				nameShort: 'Aqueduct_06_top',
 				size: {
 					x: 76.0,
@@ -29662,20 +25880,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aqueduct_06_top_8',
-				nameShort: 'Aqueduct_06_top',
-				size: {
-					x: 76.0,
-					y: 170.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -29720,9 +25924,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_07_4',
+				name: 'Aqueduct_07_4_51x66_2',
 				nameShort: 'Aqueduct_07',
 				size: {
 					x: 51.0,
@@ -29736,21 +25942,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Aqueduct_07_6',
-				nameShort: 'Aqueduct_07',
-				size: {
-					x: 51.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 2.07612038,
-					y: 3.07612038,
-					z: 0.0,
-					w: 41.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Aqueduct_07_6',
+				name: 'Aqueduct_07_6_51x66_1',
 				nameShort: 'Aqueduct_07',
 				size: {
 					x: 51.0,
@@ -29807,9 +25999,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_07_top_4',
+				name: 'Aqueduct_07_top_4_49x50_1',
 				nameShort: 'Aqueduct_07_top',
 				size: {
 					x: 49.0,
@@ -29823,20 +26017,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Aqueduct_07_top_4',
-				nameShort: 'Aqueduct_07_top',
-				size: {
-					x: 49.0,
-					y: 50.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -29881,9 +26061,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Aqueduct_08_6',
+				name: 'Aqueduct_08_6_94x37_1',
 				nameShort: 'Aqueduct_08',
 				size: {
 					x: 94.0,
@@ -29897,7 +26079,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Aqueduct_07_6',
+				name: 'Aqueduct_07_6_51x66_1',
 				nameShort: 'Aqueduct_07',
 				size: {
 					x: 51.0,
@@ -29908,20 +26090,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 3.07612038,
 					z: 0.0,
 					w: 41.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Aqueduct_08_6',
-				nameShort: 'Aqueduct_08',
-				size: {
-					x: 94.0,
-					y: 37.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 1.02675247,
 				},
 			},
 			altFullSprites: null,
@@ -29968,9 +26136,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_Aqueduct_12',
+				name: 'Bellway_Aqueduct_12_165x134_7',
 				nameShort: 'Bellway_Aqueduct',
 				size: {
 					x: 165.0,
@@ -29984,21 +26154,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellway_Aqueduct_11',
-				nameShort: 'Bellway_Aqueduct',
-				size: {
-					x: 165.0,
-					y: 134.0,
-				},
-				padding: {
-					x: 60.0761223,
-					y: 23.07612,
-					z: 5.076126,
-					w: 60.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellway_Aqueduct_11',
+				name: 'Bellway_Aqueduct_11_165x134_1',
 				nameShort: 'Bellway_Aqueduct',
 				size: {
 					x: 165.0,
@@ -30055,9 +26211,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_Aqueduct_top_6',
+				name: 'Bellway_Aqueduct_top_6_81x78_1',
 				nameShort: 'Bellway_Aqueduct_top',
 				size: {
 					x: 81.0,
@@ -30071,20 +26229,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bellway_Aqueduct_top_6',
-				nameShort: 'Bellway_Aqueduct_top',
-				size: {
-					x: 81.0,
-					y: 78.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 1.02674866,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -30129,10 +26273,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -30177,9 +26322,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_13',
+				name: 'Belltown_13_187x126_11',
 				nameShort: 'Belltown',
 				size: {
 					x: 187.0,
@@ -30193,21 +26340,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Belltown_6',
-				nameShort: 'Belltown',
-				size: {
-					x: 187.0,
-					y: 126.0,
-				},
-				padding: {
-					x: 33.0761223,
-					y: 3.07612038,
-					z: 0.0,
-					w: 32.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Belltown_6',
+				name: 'Belltown_6_187x126_1',
 				nameShort: 'Belltown',
 				size: {
 					x: 187.0,
@@ -30295,9 +26428,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_04_7',
+				name: 'Belltown_04_7_158x164_1',
 				nameShort: 'Belltown_04',
 				size: {
 					x: 158.0,
@@ -30311,20 +26446,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Belltown_04_7',
-				nameShort: 'Belltown_04',
-				size: {
-					x: 158.0,
-					y: 164.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0761261,
-					w: 0.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -30430,9 +26551,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_06_19',
+				name: 'Belltown_06_19_150x139_10',
 				nameShort: 'Belltown_06',
 				size: {
 					x: 150.0,
@@ -30446,21 +26569,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Belltown_06_6',
-				nameShort: 'Belltown_06',
-				size: {
-					x: 150.0,
-					y: 137.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 97.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Belltown_06_6',
+				name: 'Belltown_06_6_150x137_1',
 				nameShort: 'Belltown_06',
 				size: {
 					x: 150.0,
@@ -30548,9 +26657,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_06_fisher_13',
+				name: 'Belltown_06_fisher_13_150x137_1',
 				nameShort: 'Belltown_06_fisher',
 				size: {
 					x: 150.0,
@@ -30564,7 +26675,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -30609,9 +26719,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_06_top_5',
+				name: 'Belltown_06_top_5_150x137_1',
 				nameShort: 'Belltown_06_top',
 				size: {
 					x: 150.0,
@@ -30625,20 +26737,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Belltown_06_top_5',
-				nameShort: 'Belltown_06_top',
-				size: {
-					x: 150.0,
-					y: 137.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 24.07612,
-					z: 87.02675,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -30683,9 +26781,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_07_4',
+				name: 'Belltown_07_4_111x28_6',
 				nameShort: 'Belltown_07',
 				size: {
 					x: 111.0,
@@ -30699,21 +26799,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Belltown_07_4',
-				nameShort: 'Belltown_07',
-				size: {
-					x: 111.0,
-					y: 26.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Belltown_07_4',
+				name: 'Belltown_07_4_111x26_1',
 				nameShort: 'Belltown_07',
 				size: {
 					x: 111.0,
@@ -30801,9 +26887,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_Shrine_6',
+				name: 'Belltown_Shrine_6_155x49_1',
 				nameShort: 'Belltown_Shrine',
 				size: {
 					x: 155.0,
@@ -30817,20 +26905,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Belltown_Shrine_6',
-				nameShort: 'Belltown_Shrine',
-				size: {
-					x: 155.0,
-					y: 49.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -30875,10 +26949,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -30923,9 +26998,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_basement_03b_empty_5',
+				name: 'Belltown_basement_03b_empty_5_241x243_0',
 				nameShort: 'Belltown_basement_03b_empty',
 				size: {
 					x: 241.0,
@@ -30939,20 +27016,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Belltown_basement_03b_empty_5',
-				nameShort: 'Belltown_basement_03b_empty',
-				size: {
-					x: 241.0,
-					y: 243.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 235.076126,
-					w: 237.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -30997,9 +27060,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_basement_03_5',
+				name: 'Belltown_basement_03_5_141x244_1',
 				nameShort: 'Belltown_basement_03',
 				size: {
 					x: 141.0,
@@ -31013,20 +27078,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Belltown_basement_03_5',
-				nameShort: 'Belltown_basement_03',
-				size: {
-					x: 141.0,
-					y: 244.0,
-				},
-				padding: {
-					x: 46.0129128,
-					y: 165.036285,
-					z: 4.02674866,
-					w: 7.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -31071,9 +27122,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_basement_03_2_7',
+				name: 'Belltown_basement_03_2_7_135x223_1',
 				nameShort: 'Belltown_basement_03_2',
 				size: {
 					x: 135.0,
@@ -31087,20 +27140,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Belltown_basement_03_2_7',
-				nameShort: 'Belltown_basement_03_2',
-				size: {
-					x: 135.0,
-					y: 223.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 2.07612038,
-					z: 11.0761185,
-					w: 31.0267487,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -31118,10 +27157,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			origColor: null,
 			visualBounds: null,
 			playerPositionBounds: null,
+			sortingOrder: 0,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -31139,10 +27179,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			origColor: null,
 			visualBounds: null,
 			playerPositionBounds: null,
+			sortingOrder: 0,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -31187,9 +27228,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_basement_03b_6',
+				name: 'Belltown_basement_03b_6_148x243_1',
 				nameShort: 'Belltown_basement_03b',
 				size: {
 					x: 148.0,
@@ -31203,20 +27246,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Belltown_basement_03b_6',
-				nameShort: 'Belltown_basement_03b',
-				size: {
-					x: 148.0,
-					y: 243.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 113.076126,
-					w: 207.026749,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -31265,10 +27294,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			origColor: null,
 			visualBounds: null,
 			playerPositionBounds: null,
+			sortingOrder: 0,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -31313,10 +27343,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -31361,9 +27392,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellshrine_9',
+				name: 'Bellshrine_9_68x39_1',
 				nameShort: 'Bellshrine',
 				size: {
 					x: 68.0,
@@ -31377,20 +27410,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bellshrine_9',
-				nameShort: 'Bellshrine',
-				size: {
-					x: 68.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0267509818,
-					z: 0.0,
-					w: 2.02675247,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -31435,9 +27454,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_01b_31',
+				name: 'Shellwood_01b_31_81x178_12',
 				nameShort: 'Shellwood_01b',
 				size: {
 					x: 81.0,
@@ -31451,21 +27472,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_01b_9',
-				nameShort: 'Shellwood_01b',
-				size: {
-					x: 81.0,
-					y: 174.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_01b_9',
+				name: 'Shellwood_01b_9_81x174_1',
 				nameShort: 'Shellwood_01b',
 				size: {
 					x: 81.0,
@@ -31522,9 +27529,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_01_30',
+				name: 'Shellwood_01_30_221x163_19',
 				nameShort: 'Shellwood_01',
 				size: {
 					x: 221.0,
@@ -31538,21 +27547,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_01_12',
-				nameShort: 'Shellwood_01',
-				size: {
-					x: 221.0,
-					y: 161.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 5.01291275,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_01_12',
+				name: 'Shellwood_01_12_221x161_1',
 				nameShort: 'Shellwood_01',
 				size: {
 					x: 221.0,
@@ -31640,9 +27635,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_02_28',
+				name: 'Shellwood_02_28_126x160_19',
 				nameShort: 'Shellwood_02',
 				size: {
 					x: 126.0,
@@ -31656,21 +27653,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_02_7',
-				nameShort: 'Shellwood_02',
-				size: {
-					x: 126.0,
-					y: 162.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 5.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_02_7',
+				name: 'Shellwood_02_7_126x162_1',
 				nameShort: 'Shellwood_02',
 				size: {
 					x: 126.0,
@@ -31727,9 +27710,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_03_26',
+				name: 'Shellwood_03_26_68x210_20',
 				nameShort: 'Shellwood_03',
 				size: {
 					x: 68.0,
@@ -31743,21 +27728,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_03_7',
-				nameShort: 'Shellwood_03',
-				size: {
-					x: 68.0,
-					y: 210.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0761204958,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_03_7',
+				name: 'Shellwood_03_7_68x210_1',
 				nameShort: 'Shellwood_03',
 				size: {
 					x: 68.0,
@@ -31814,9 +27785,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_04b_35',
+				name: 'Shellwood_04b_35_414x50_27',
 				nameShort: 'Shellwood_04b',
 				size: {
 					x: 414.0,
@@ -31830,21 +27803,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_04b_7',
-				nameShort: 'Shellwood_04b',
-				size: {
-					x: 414.0,
-					y: 47.0,
-				},
-				padding: {
-					x: 56.0761223,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_04b_7',
+				name: 'Shellwood_04b_7_414x47_1',
 				nameShort: 'Shellwood_04b',
 				size: {
 					x: 414.0,
@@ -31901,9 +27860,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_04c_7',
+				name: 'Shellwood_04c_7_45x134_1',
 				nameShort: 'Shellwood_04c',
 				size: {
 					x: 45.0,
@@ -31917,20 +27878,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_04c_7',
-				nameShort: 'Shellwood_04c',
-				size: {
-					x: 45.0,
-					y: 134.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -31975,9 +27922,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_08_5',
+				name: 'Shellwood_08_5_152x35_1',
 				nameShort: 'Shellwood_08',
 				size: {
 					x: 152.0,
@@ -31991,20 +27940,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_08_5',
-				nameShort: 'Shellwood_08',
-				size: {
-					x: 152.0,
-					y: 35.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -32080,9 +28015,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_08c_7',
+				name: 'Shellwood_08c_7_57x37_1',
 				nameShort: 'Shellwood_08c',
 				size: {
 					x: 57.0,
@@ -32096,20 +28033,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_08c_7',
-				nameShort: 'Shellwood_08c',
-				size: {
-					x: 57.0,
-					y: 37.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -32185,9 +28108,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellgrave_16',
+				name: 'Shellgrave_16_237x71_7',
 				nameShort: 'Shellgrave',
 				size: {
 					x: 237.0,
@@ -32201,21 +28126,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_09_8',
-				nameShort: 'Shellwood_09',
-				size: {
-					x: 237.0,
-					y: 71.0,
-				},
-				padding: {
-					x: 81.07612,
-					y: 0.0,
-					z: 1.02676392,
-					w: 20.0761223,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_09_8',
+				name: 'Shellwood_09_8_237x71_1',
 				nameShort: 'Shellwood_09',
 				size: {
 					x: 237.0,
@@ -32272,9 +28183,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_10_39',
+				name: 'Shellwood_10_39_121x152_10',
 				nameShort: 'Shellwood_10',
 				size: {
 					x: 121.0,
@@ -32288,21 +28201,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_10_4',
-				nameShort: 'Shellwood_10',
-				size: {
-					x: 121.0,
-					y: 152.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 65.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_10_4',
+				name: 'Shellwood_10_4_121x152_1',
 				nameShort: 'Shellwood_10',
 				size: {
 					x: 121.0,
@@ -32359,9 +28258,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_10_top_7',
+				name: 'Shellwood_10_top_7_121x152_1',
 				nameShort: 'Shellwood_10_top',
 				size: {
 					x: 121.0,
@@ -32375,20 +28276,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_10_top_7',
-				nameShort: 'Shellwood_10_top',
-				size: {
-					x: 121.0,
-					y: 152.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 28.0025158,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -32433,9 +28320,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_11_7',
+				name: 'Shellwood_11_7_168x129_1',
 				nameShort: 'Shellwood_11',
 				size: {
 					x: 168.0,
@@ -32449,20 +28338,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_11_7',
-				nameShort: 'Shellwood_11',
-				size: {
-					x: 168.0,
-					y: 129.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.005971074,
-					z: 0.0,
-					w: 53.02675,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -32507,9 +28382,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_13_24',
+				name: 'Shellwood_13_24_223x133_14',
 				nameShort: 'Shellwood_13',
 				size: {
 					x: 223.0,
@@ -32523,21 +28400,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_13_6',
-				nameShort: 'Shellwood_13',
-				size: {
-					x: 223.0,
-					y: 133.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 48.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_13_6',
+				name: 'Shellwood_13_6_223x133_1',
 				nameShort: 'Shellwood_13',
 				size: {
 					x: 223.0,
@@ -32625,9 +28488,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00230026245,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89770126,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_13b_7',
+				name: 'Shellwood_13b_7_35x61_1',
 				nameShort: 'Shellwood_13b',
 				size: {
 					x: 35.0,
@@ -32641,7 +28506,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -32686,9 +28550,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_14_4',
+				name: 'Shellwood_14_4_213x35_1',
 				nameShort: 'Shellwood_14',
 				size: {
 					x: 213.0,
@@ -32702,20 +28568,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_14_4',
-				nameShort: 'Shellwood_14',
-				size: {
-					x: 213.0,
-					y: 35.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -32760,9 +28612,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_15_6',
+				name: 'Shellwood_15_6_233x41_1',
 				nameShort: 'Shellwood_15',
 				size: {
 					x: 233.0,
@@ -32776,20 +28630,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_15_6',
-				nameShort: 'Shellwood_15',
-				size: {
-					x: 233.0,
-					y: 41.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0761222839,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -32865,9 +28705,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_16_11',
+				name: 'Shellwood_16_11_144x32_14',
 				nameShort: 'Shellwood_16',
 				size: {
 					x: 144.0,
@@ -32881,21 +28723,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_16_6',
-				nameShort: 'Shellwood_16',
-				size: {
-					x: 144.0,
-					y: 32.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_16_6',
+				name: 'Shellwood_16_6_144x32_1',
 				nameShort: 'Shellwood_16',
 				size: {
 					x: 144.0,
@@ -32952,9 +28780,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_19_6',
+				name: 'Shellwood_19_6_188x43_1',
 				nameShort: 'Shellwood_19',
 				size: {
 					x: 188.0,
@@ -32968,20 +28798,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_19_6',
-				nameShort: 'Shellwood_19',
-				size: {
-					x: 188.0,
-					y: 43.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33026,9 +28842,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_18_7',
+				name: 'Shellwood_18_7_229x44_1',
 				nameShort: 'Shellwood_18',
 				size: {
 					x: 229.0,
@@ -33042,20 +28860,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_18_7',
-				nameShort: 'Shellwood_18',
-				size: {
-					x: 229.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33100,9 +28904,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_20_12',
+				name: 'Shellwood_20_12_149x67_11',
 				nameShort: 'Shellwood_20',
 				size: {
 					x: 149.0,
@@ -33116,21 +28922,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_20_8',
-				nameShort: 'Shellwood_20',
-				size: {
-					x: 149.0,
-					y: 67.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_20_8',
+				name: 'Shellwood_20_8_149x67_1',
 				nameShort: 'Shellwood_20',
 				size: {
 					x: 149.0,
@@ -33187,9 +28979,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'shellwood_25_60',
+				name: 'shellwood_25_60_475x56_1',
 				nameShort: 'shellwood_25',
 				size: {
 					x: 475.0,
@@ -33203,20 +28997,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'shellwood_25_60',
-				nameShort: 'shellwood_25',
-				size: {
-					x: 475.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 1.149353,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33261,9 +29041,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'shellwood_25_right_8',
+				name: 'shellwood_25_right_8_475x56_1',
 				nameShort: 'shellwood_25_right',
 				size: {
 					x: 475.0,
@@ -33277,20 +29059,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'shellwood_25_right_8',
-				nameShort: 'shellwood_25_right',
-				size: {
-					x: 475.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 378.0761,
-					y: 8.026751,
-					z: 0.0,
-					w: 0.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33335,9 +29103,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_26_8',
+				name: 'Shellwood_26_8_236x227_1',
 				nameShort: 'Shellwood_26',
 				size: {
 					x: 236.0,
@@ -33351,20 +29121,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_26_8',
-				nameShort: 'Shellwood_26',
-				size: {
-					x: 236.0,
-					y: 227.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 87.01291,
-					z: 1.0761261,
-					w: 13.0267487,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33409,9 +29165,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_26b_7',
+				name: 'Shellwood_26b_7_76x41_1',
 				nameShort: 'Shellwood_26b',
 				size: {
 					x: 76.0,
@@ -33425,20 +29183,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_26b_7',
-				nameShort: 'Shellwood_26b',
-				size: {
-					x: 76.0,
-					y: 41.0,
-				},
-				padding: {
-					x: 7.026751,
-					y: 0.0,
-					z: 0.07611847,
-					w: 5.02675247,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33483,9 +29227,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_Witch_6',
+				name: 'Shellwood_Witch_6_96x57_4',
 				nameShort: 'Shellwood_Witch',
 				size: {
 					x: 96.0,
@@ -33499,21 +29245,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Shellwood_Witch_7',
-				nameShort: 'Shellwood_Witch',
-				size: {
-					x: 96.0,
-					y: 57.0,
-				},
-				padding: {
-					x: 18.07612,
-					y: 5.07612038,
-					z: 0.0,
-					w: 15.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Shellwood_Witch_7',
+				name: 'Shellwood_Witch_7_96x57_1',
 				nameShort: 'Shellwood_Witch',
 				size: {
 					x: 96.0,
@@ -33543,10 +29275,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			origColor: null,
 			visualBounds: null,
 			playerPositionBounds: null,
+			sortingOrder: 0,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Rough',
@@ -33591,9 +29324,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Mosstown_03_9',
+				name: 'Mosstown_03_9_59x260_1',
 				nameShort: 'Mosstown_03',
 				size: {
 					x: 59.0,
@@ -33607,20 +29342,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Mosstown_03_9',
-				nameShort: 'Mosstown_03',
-				size: {
-					x: 59.0,
-					y: 260.0,
-				},
-				padding: {
-					x: 0.0429079533,
-					y: 106.012909,
-					z: 0.0,
-					w: 29.033493,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33665,9 +29386,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09789801,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89789963,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Mosstown_03_top_7',
+				name: 'Mosstown_03_top_7_59x260_1',
 				nameShort: 'Mosstown_03_top',
 				size: {
 					x: 59.0,
@@ -33681,20 +29404,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Mosstown_03_top_7',
-				nameShort: 'Mosstown_03_top',
-				size: {
-					x: 59.0,
-					y: 260.0,
-				},
-				padding: {
-					x: 8.07612,
-					y: 190.076126,
-					z: 2.01291656,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33739,9 +29448,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09789801,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89789963,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Mosstown_03_bot_5',
+				name: 'Mosstown_03_bot_5_59x260_1',
 				nameShort: 'Mosstown_03_bot',
 				size: {
 					x: 59.0,
@@ -33755,20 +29466,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Mosstown_03_bot_5',
-				nameShort: 'Mosstown_03_bot',
-				size: {
-					x: 59.0,
-					y: 260.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 52.0761223,
-					z: 5.07612228,
-					w: 106.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33813,9 +29510,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Belltown_Room_Shellwood_4',
+				name: 'Belltown_Room_Shellwood_4_95x44_1',
 				nameShort: 'Belltown_Room_Shellwood',
 				size: {
 					x: 95.0,
@@ -33829,20 +29528,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Belltown_Room_Shellwood_4',
-				nameShort: 'Belltown_Room_Shellwood',
-				size: {
-					x: 95.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 28.07612,
-					y: 6.07612038,
-					z: 20.0761185,
-					w: 7.02675247,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -33887,10 +29572,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -33935,9 +29621,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Mosstown_03_join_left_4',
+				name: 'Mosstown_03_join_left_4_8x20_1',
 				nameShort: 'Mosstown_03_join_left',
 				size: {
 					x: 8.0,
@@ -33951,20 +29639,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Mosstown_03_join_left_4',
-				nameShort: 'Mosstown_03_join_left',
-				size: {
-					x: 8.0,
-					y: 20.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -34040,9 +29714,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_Coral_13',
+				name: 'Bellway_Coral_13_254x58_11',
 				nameShort: 'Bellway_Coral',
 				size: {
 					x: 254.0,
@@ -34056,21 +29732,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellway_Coral_6',
-				nameShort: 'Bellway_Coral',
-				size: {
-					x: 254.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 110.076118,
-					y: 4.07612038,
-					z: 0.0,
-					w: 2.02675629,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellway_Coral_6',
+				name: 'Bellway_Coral_6_254x56_1',
 				nameShort: 'Bellway_Coral',
 				size: {
 					x: 254.0,
@@ -34127,9 +29789,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_02_18',
+				name: 'Coral_02_18_400x141_31',
 				nameShort: 'Coral_02',
 				size: {
 					x: 400.0,
@@ -34143,21 +29807,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_02_13',
-				nameShort: 'Coral_02',
-				size: {
-					x: 400.0,
-					y: 141.0,
-				},
-				padding: {
-					x: 37.0429077,
-					y: 0.0,
-					z: 0.0,
-					w: 8.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_02_13',
+				name: 'Coral_02_13_400x141_1',
 				nameShort: 'Coral_02',
 				size: {
 					x: 400.0,
@@ -34214,9 +29864,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_03_39',
+				name: 'Coral_03_39_100x358_22',
 				nameShort: 'Coral_03',
 				size: {
 					x: 100.0,
@@ -34230,21 +29882,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_03_8',
-				nameShort: 'Coral_03',
-				size: {
-					x: 100.0,
-					y: 358.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 5.076111,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_03_8',
+				name: 'Coral_03_8_100x358_1',
 				nameShort: 'Coral_03',
 				size: {
 					x: 100.0,
@@ -34301,9 +29939,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_11_9',
+				name: 'Coral_11_9_300x50_1',
 				nameShort: 'Coral_11',
 				size: {
 					x: 300.0,
@@ -34317,20 +29957,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_11_9',
-				nameShort: 'Coral_11',
-				size: {
-					x: 300.0,
-					y: 50.0,
-				},
-				padding: {
-					x: 58.0761223,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -34375,9 +30001,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_12_22',
+				name: 'Coral_12_22_145x122_10',
 				nameShort: 'Coral_12',
 				size: {
 					x: 145.0,
@@ -34391,21 +30019,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_12_7',
-				nameShort: 'Coral_12',
-				size: {
-					x: 145.0,
-					y: 118.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_12_7',
+				name: 'Coral_12_7_145x118_1',
 				nameShort: 'Coral_12',
 				size: {
 					x: 145.0,
@@ -34462,9 +30076,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_19_40',
+				name: 'Coral_19_40_680x83_25',
 				nameShort: 'Coral_19',
 				size: {
 					x: 680.0,
@@ -34478,21 +30094,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_19_9',
-				nameShort: 'Coral_19',
-				size: {
-					x: 680.0,
-					y: 83.0,
-				},
-				padding: {
-					x: 391.026764,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_19_9',
+				name: 'Coral_19_9_680x83_1',
 				nameShort: 'Coral_19',
 				size: {
 					x: 680.0,
@@ -34610,9 +30212,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_19_left_21',
+				name: 'Coral_19_left_21_680x83_33',
 				nameShort: 'Coral_19_left',
 				size: {
 					x: 680.0,
@@ -34626,21 +30230,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_19_left_7',
-				nameShort: 'Coral_19_left',
-				size: {
-					x: 680.0,
-					y: 83.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 11.07612,
-					z: 264.0761,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_19_left_7',
+				name: 'Coral_19_left_7_680x83_1',
 				nameShort: 'Coral_19_left',
 				size: {
 					x: 680.0,
@@ -34697,9 +30287,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_19b_7',
+				name: 'Coral_19b_7_194x190_1',
 				nameShort: 'Coral_19b',
 				size: {
 					x: 194.0,
@@ -34713,20 +30305,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_19b_7',
-				nameShort: 'Coral_19b',
-				size: {
-					x: 194.0,
-					y: 190.0,
-				},
-				padding: {
-					x: 89.07612,
-					y: 54.0761223,
-					z: 4.076126,
-					w: 1.05131531,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -34771,9 +30349,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_32_25',
+				name: 'Coral_32_25_275x187_21',
 				nameShort: 'Coral_32',
 				size: {
 					x: 275.0,
@@ -34787,21 +30367,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_32_7',
-				nameShort: 'Coral_32',
-				size: {
-					x: 275.0,
-					y: 187.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 5.01291275,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_32_7',
+				name: 'Coral_32_7_275x187_1',
 				nameShort: 'Coral_32',
 				size: {
 					x: 275.0,
@@ -34858,10 +30424,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: {
-				name: 'Coral_32_7',
+				name: 'Coral_32_7_275x187_1',
 				nameShort: 'Coral_32',
 				size: {
 					x: 275.0,
@@ -34874,7 +30442,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					w: 0.0,
 				},
 			},
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -34950,9 +30517,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_33_6',
+				name: 'Coral_33_6_105x137_1',
 				nameShort: 'Coral_33',
 				size: {
 					x: 105.0,
@@ -34966,20 +30535,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_33_6',
-				nameShort: 'Coral_33',
-				size: {
-					x: 105.0,
-					y: 137.0,
-				},
-				padding: {
-					x: 18.07612,
-					y: 101.076118,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35024,9 +30579,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_34_10',
+				name: 'Coral_34_10_381x136_1',
 				nameShort: 'Coral_34',
 				size: {
 					x: 381.0,
@@ -35040,20 +30597,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_34_10',
-				nameShort: 'Coral_34',
-				size: {
-					x: 381.0,
-					y: 136.0,
-				},
-				padding: {
-					x: 260.10556,
-					y: 0.0,
-					z: 0.0,
-					w: 69.01291,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35098,9 +30641,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_34_mid_8',
+				name: 'Coral_34_mid_8_381x136_1',
 				nameShort: 'Coral_34_mid',
 				size: {
 					x: 381.0,
@@ -35114,20 +30659,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_34_mid_8',
-				nameShort: 'Coral_34_mid',
-				size: {
-					x: 381.0,
-					y: 136.0,
-				},
-				padding: {
-					x: 85.0362854,
-					y: 0.0,
-					z: 52.07611,
-					w: 47.1055756,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35172,9 +30703,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_34_top_9',
+				name: 'Coral_34_top_9_294x134_1',
 				nameShort: 'Coral_34_top',
 				size: {
 					x: 294.0,
@@ -35188,20 +30721,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_34_top_9',
-				nameShort: 'Coral_34_top',
-				size: {
-					x: 294.0,
-					y: 134.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 51.0335,
-					z: 134.076126,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35277,9 +30796,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_34_2_4',
+				name: 'Coral_34_2_4_160x23_1',
 				nameShort: 'Coral_34_2',
 				size: {
 					x: 160.0,
@@ -35293,20 +30814,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_34_2_4',
-				nameShort: 'Coral_34_2',
-				size: {
-					x: 160.0,
-					y: 23.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35351,9 +30858,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_35_7',
+				name: 'Coral_35_7_49x248_1',
 				nameShort: 'Coral_35',
 				size: {
 					x: 49.0,
@@ -35367,20 +30876,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_35_7',
-				nameShort: 'Coral_35',
-				size: {
-					x: 49.0,
-					y: 248.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35425,9 +30920,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_35_secret2_8',
+				name: 'Coral_35_secret2_8_49x248_1',
 				nameShort: 'Coral_35_secret2',
 				size: {
 					x: 49.0,
@@ -35441,20 +30938,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_35_secret2_8',
-				nameShort: 'Coral_35_secret2',
-				size: {
-					x: 49.0,
-					y: 248.0,
-				},
-				padding: {
-					x: 29.07612,
-					y: 119.076118,
-					z: 0.0,
-					w: 101.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35499,9 +30982,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_36_7',
+				name: 'Coral_36_7_117x94_1',
 				nameShort: 'Coral_36',
 				size: {
 					x: 117.0,
@@ -35515,20 +31000,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_36_7',
-				nameShort: 'Coral_36',
-				size: {
-					x: 117.0,
-					y: 94.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 39.02675,
-					w: 25.0761185,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35573,9 +31044,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_35_top_break_base_bottom_8',
+				name: 'Coral_35_top_break_base_bottom_8_49x356_1',
 				nameShort: 'Coral_35_top_break_base_bottom',
 				size: {
 					x: 49.0,
@@ -35589,20 +31062,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_35_top_break_base_bottom_8',
-				nameShort: 'Coral_35_top_break_base_bottom',
-				size: {
-					x: 49.0,
-					y: 356.0,
-				},
-				padding: {
-					x: 15.07612,
-					y: 239.076126,
-					z: 12.0761223,
-					w: 105.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35678,9 +31137,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_37_4',
+				name: 'Coral_37_4_159x42_1',
 				nameShort: 'Coral_37',
 				size: {
 					x: 159.0,
@@ -35694,20 +31155,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_37_4',
-				nameShort: 'Coral_37',
-				size: {
-					x: 159.0,
-					y: 42.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.07612038,
-					z: 105.026749,
-					w: 7.07612228,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35752,9 +31199,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00199890137,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_37_right_7',
+				name: 'Coral_37_right_7_159x42_1',
 				nameShort: 'Coral_37_right',
 				size: {
 					x: 159.0,
@@ -35768,7 +31217,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35813,9 +31261,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.002998352,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_37_right_cap_9',
+				name: 'Coral_37_right_cap_9_159x42_1',
 				nameShort: 'Coral_37_right_cap',
 				size: {
 					x: 159.0,
@@ -35829,7 +31279,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35874,9 +31323,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_42_19',
+				name: 'Coral_42_19_107x65_1',
 				nameShort: 'Coral_42',
 				size: {
 					x: 107.0,
@@ -35890,20 +31341,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_42_19',
-				nameShort: 'Coral_42',
-				size: {
-					x: 107.0,
-					y: 65.0,
-				},
-				padding: {
-					x: 39.0129128,
-					y: 1.0761205,
-					z: 0.0,
-					w: 22.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -35948,9 +31385,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_42_top_9',
+				name: 'Coral_42_top_9_107x65_1',
 				nameShort: 'Coral_42_top',
 				size: {
 					x: 107.0,
@@ -35964,20 +31403,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_42_top_9',
-				nameShort: 'Coral_42_top',
-				size: {
-					x: 107.0,
-					y: 65.0,
-				},
-				padding: {
-					x: 27.0129128,
-					y: 27.07612,
-					z: 5.04290771,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -36022,9 +31447,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_43_4',
+				name: 'Coral_43_4_191x30_1',
 				nameShort: 'Coral_43',
 				size: {
 					x: 191.0,
@@ -36038,20 +31465,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_43_4',
-				nameShort: 'Coral_43',
-				size: {
-					x: 191.0,
-					y: 30.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -36096,9 +31509,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_Judge_Arena_11',
+				name: 'Coral_Judge_Arena_11_104x72_6',
 				nameShort: 'Coral_Judge_Arena',
 				size: {
 					x: 104.0,
@@ -36112,21 +31527,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_Judge_Arena_7',
-				nameShort: 'Coral_Judge_Arena',
-				size: {
-					x: 104.0,
-					y: 72.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 37.0267525,
-					z: 4.02674866,
-					w: 3.02674866,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_Judge_Arena_7',
+				name: 'Coral_Judge_Arena_7_104x72_1',
 				nameShort: 'Coral_Judge_Arena',
 				size: {
 					x: 104.0,
@@ -36214,10 +31615,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Rough',
@@ -36262,9 +31664,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_23_20',
+				name: 'Coral_23_20_533x161_23',
 				nameShort: 'Coral_23',
 				size: {
 					x: 533.0,
@@ -36278,21 +31682,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_23_10',
-				nameShort: 'Coral_23',
-				size: {
-					x: 533.0,
-					y: 161.0,
-				},
-				padding: {
-					x: 68.07612,
-					y: 16.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_23_10',
+				name: 'Coral_23_10_533x161_1',
 				nameShort: 'Coral_23',
 				size: {
 					x: 533.0,
@@ -36349,9 +31739,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_23_secret_8',
+				name: 'Coral_23_secret_8_533x161_1',
 				nameShort: 'Coral_23_secret',
 				size: {
 					x: 533.0,
@@ -36365,7 +31757,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_23_10',
+				name: 'Coral_23_10_533x161_1',
 				nameShort: 'Coral_23',
 				size: {
 					x: 533.0,
@@ -36376,20 +31768,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 16.07612,
 					z: 0.0,
 					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_23_secret_8',
-				nameShort: 'Coral_23_secret',
-				size: {
-					x: 533.0,
-					y: 161.0,
-				},
-				padding: {
-					x: 148.076126,
-					y: 82.02675,
-					z: 346.0761,
-					w: 5.02674866,
 				},
 			},
 			altFullSprites: null,
@@ -36436,9 +31814,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_24_15',
+				name: 'Coral_24_15_303x96_12',
 				nameShort: 'Coral_24',
 				size: {
 					x: 303.0,
@@ -36452,21 +31832,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_24_8',
-				nameShort: 'Coral_24',
-				size: {
-					x: 303.0,
-					y: 92.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_24_8',
+				name: 'Coral_24_8_303x92_1',
 				nameShort: 'Coral_24',
 				size: {
 					x: 303.0,
@@ -36523,9 +31889,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_25_17',
+				name: 'Coral_25_17_83x181_8',
 				nameShort: 'Coral_25',
 				size: {
 					x: 83.0,
@@ -36539,21 +31907,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_25_15',
-				nameShort: 'Coral_25',
-				size: {
-					x: 83.0,
-					y: 181.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 14.0362854,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_25_15',
+				name: 'Coral_25_15_83x181_1',
 				nameShort: 'Coral_25',
 				size: {
 					x: 83.0,
@@ -36641,9 +31995,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_26_rough_30',
+				name: 'Coral_26_rough_30_49x242_15',
 				nameShort: 'Coral_26_rough',
 				size: {
 					x: 49.0,
@@ -36657,21 +32013,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_26_7',
-				nameShort: 'Coral_26',
-				size: {
-					x: 49.0,
-					y: 242.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 42.0429077,
-					z: 0.0,
-					w: 1.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_26_7',
+				name: 'Coral_26_7_49x242_1',
 				nameShort: 'Coral_26',
 				size: {
 					x: 49.0,
@@ -36728,9 +32070,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_27_8',
+				name: 'Coral_27_8_333x74_29',
 				nameShort: 'Coral_27',
 				size: {
 					x: 333.0,
@@ -36744,21 +32088,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_27_8',
-				nameShort: 'Coral_27',
-				size: {
-					x: 333.0,
-					y: 74.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_27_8',
+				name: 'Coral_27_8_333x74_1',
 				nameShort: 'Coral_27',
 				size: {
 					x: 333.0,
@@ -36815,9 +32145,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_28_36',
+				name: 'Coral_28_36_183x118_9',
 				nameShort: 'Coral_28',
 				size: {
 					x: 183.0,
@@ -36831,21 +32163,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_28_7',
-				nameShort: 'Coral_28',
-				size: {
-					x: 183.0,
-					y: 118.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 1.0761205,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_28_7',
+				name: 'Coral_28_7_183x118_1',
 				nameShort: 'Coral_28',
 				size: {
 					x: 183.0,
@@ -36933,10 +32251,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -36981,10 +32300,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Rough',
@@ -37029,10 +32349,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.001499176,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89850235,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -37108,9 +32429,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_35_top_34',
+				name: 'Coral_35_top_34_49x295_15',
 				nameShort: 'Coral_35_top',
 				size: {
 					x: 49.0,
@@ -37124,21 +32447,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_35_top_7',
-				nameShort: 'Coral_35_top',
-				size: {
-					x: 49.0,
-					y: 296.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 2.29289317,
-					z: 0.0,
-					w: 74.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_35_top_7',
+				name: 'Coral_35_top_7_49x296_1',
 				nameShort: 'Coral_35_top',
 				size: {
 					x: 49.0,
@@ -37195,9 +32504,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_35_top_break_base_7',
+				name: 'Coral_35_top_break_base_7_49x356_1',
 				nameShort: 'Coral_35_top_break_base',
 				size: {
 					x: 49.0,
@@ -37211,20 +32522,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_35_top_break_base_7',
-				nameShort: 'Coral_35_top_break_base',
-				size: {
-					x: 49.0,
-					y: 356.0,
-				},
-				padding: {
-					x: 14.0267506,
-					y: 247.076126,
-					z: 11.0761223,
-					w: 96.07611,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -37300,9 +32597,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_35_top_secret_7',
+				name: 'Coral_35_top_secret_7_49x294_1',
 				nameShort: 'Coral_35_top_secret',
 				size: {
 					x: 49.0,
@@ -37316,7 +32615,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_35_top_7',
+				name: 'Coral_35_top_7_49x296_1',
 				nameShort: 'Coral_35_top',
 				size: {
 					x: 49.0,
@@ -37327,20 +32626,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 2.29289317,
 					z: 0.0,
 					w: 74.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_35_top_secret_7',
-				nameShort: 'Coral_35_top_secret',
-				size: {
-					x: 49.0,
-					y: 294.0,
-				},
-				padding: {
-					x: 5.07612038,
-					y: 196.026749,
-					z: 7.01291656,
-					w: 0.026763916,
 				},
 			},
 			altFullSprites: null,
@@ -37387,9 +32672,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_38_14',
+				name: 'Coral_38_14_219x148_1',
 				nameShort: 'Coral_38',
 				size: {
 					x: 219.0,
@@ -37403,20 +32690,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_38_14',
-				nameShort: 'Coral_38',
-				size: {
-					x: 219.0,
-					y: 148.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -37461,9 +32734,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_38_bot_7',
+				name: 'Coral_38_bot_7_219x148_1',
 				nameShort: 'Coral_38_bot',
 				size: {
 					x: 219.0,
@@ -37477,20 +32752,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_38_bot_7',
-				nameShort: 'Coral_38_bot',
-				size: {
-					x: 219.0,
-					y: 148.0,
-				},
-				padding: {
-					x: 22.07612,
-					y: 0.0,
-					z: 103.076118,
-					w: 43.01291,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -37566,9 +32827,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellshrine_Coral_7',
+				name: 'Bellshrine_Coral_7_63x78_1',
 				nameShort: 'Bellshrine_Coral',
 				size: {
 					x: 63.0,
@@ -37582,20 +32845,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bellshrine_Coral_7',
-				nameShort: 'Bellshrine_Coral',
-				size: {
-					x: 63.0,
-					y: 78.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 21.07612,
-					z: 9.076122,
-					w: 24.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -37640,9 +32889,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_39_7',
+				name: 'Coral_39_7_225x108_1',
 				nameShort: 'Coral_39',
 				size: {
 					x: 225.0,
@@ -37656,20 +32907,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_39_7',
-				nameShort: 'Coral_39',
-				size: {
-					x: 225.0,
-					y: 108.0,
-				},
-				padding: {
-					x: 49.0454865,
-					y: 11.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -37714,9 +32951,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_40_5',
+				name: 'Coral_40_5_90x34_5',
 				nameShort: 'Coral_40',
 				size: {
 					x: 90.0,
@@ -37730,21 +32969,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_40_6',
-				nameShort: 'Coral_40',
-				size: {
-					x: 90.0,
-					y: 34.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_40_6',
+				name: 'Coral_40_6_90x34_1',
 				nameShort: 'Coral_40',
 				size: {
 					x: 90.0,
@@ -37801,9 +33026,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09850073,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89850235,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_41_11',
+				name: 'Coral_41_11_250x113_1',
 				nameShort: 'Coral_41',
 				size: {
 					x: 250.0,
@@ -37817,20 +33044,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Coral_41_11',
-				nameShort: 'Coral_41',
-				size: {
-					x: 250.0,
-					y: 113.0,
-				},
-				padding: {
-					x: 5.07612038,
-					y: 3.026751,
-					z: 0.0,
-					w: 0.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -37875,9 +33088,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_44_rough_16',
+				name: 'Coral_44_rough_16_303x89_8',
 				nameShort: 'Coral_44_rough',
 				size: {
 					x: 303.0,
@@ -37891,21 +33106,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_44_6',
-				nameShort: 'Coral_44',
-				size: {
-					x: 303.0,
-					y: 89.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.0,
-					w: 0.0267486572,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_44_6',
+				name: 'Coral_44_6_303x89_1',
 				nameShort: 'Coral_44',
 				size: {
 					x: 303.0,
@@ -37962,9 +33163,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_01_5',
+				name: 'Slab_01_5_351x74_1',
 				nameShort: 'Slab_01',
 				size: {
 					x: 351.0,
@@ -37978,20 +33181,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_01_5',
-				nameShort: 'Slab_01',
-				size: {
-					x: 351.0,
-					y: 74.0,
-				},
-				padding: {
-					x: 45.0761223,
-					y: 22.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38067,9 +33256,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_02_10',
+				name: 'Slab_02_10_207x54_1',
 				nameShort: 'Slab_02',
 				size: {
 					x: 207.0,
@@ -38083,20 +33274,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_02_10',
-				nameShort: 'Slab_02',
-				size: {
-					x: 207.0,
-					y: 54.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38141,9 +33318,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_03_60',
+				name: 'Slab_03_60_54x469_14',
 				nameShort: 'Slab_03',
 				size: {
 					x: 54.0,
@@ -38157,21 +33336,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_03_13',
-				nameShort: 'Slab_03',
-				size: {
-					x: 52.0,
-					y: 469.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 234.076126,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_03_13',
+				name: 'Slab_03_13_52x469_1',
 				nameShort: 'Slab_03',
 				size: {
 					x: 52.0,
@@ -38228,9 +33393,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_03_centre_shaft_9',
+				name: 'Slab_03_centre_shaft_9_52x490_1',
 				nameShort: 'Slab_03_centre_shaft',
 				size: {
 					x: 52.0,
@@ -38244,20 +33411,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_03_centre_shaft_9',
-				nameShort: 'Slab_03_centre_shaft',
-				size: {
-					x: 52.0,
-					y: 490.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 177.026749,
-					z: 0.0,
-					w: 239.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38302,9 +33455,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_03b_5',
+				name: 'Slab_03b_5_52x229_1',
 				nameShort: 'Slab_03b',
 				size: {
 					x: 52.0,
@@ -38318,20 +33473,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_03b_5',
-				nameShort: 'Slab_03b',
-				size: {
-					x: 52.0,
-					y: 229.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 88.07612,
-					z: 0.0,
-					w: 16.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38376,9 +33517,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_03b_basement_9',
+				name: 'Slab_03b_basement_9_52x229_1',
 				nameShort: 'Slab_03b_basement',
 				size: {
 					x: 52.0,
@@ -38392,20 +33535,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_03b_basement_9',
-				nameShort: 'Slab_03b_basement',
-				size: {
-					x: 52.0,
-					y: 229.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 10.0429077,
-					z: 0.0,
-					w: 125.026749,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38450,9 +33579,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_05_6',
+				name: 'Slab_05_6_163x66_1',
 				nameShort: 'Slab_05',
 				size: {
 					x: 163.0,
@@ -38466,20 +33597,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_05_6',
-				nameShort: 'Slab_05',
-				size: {
-					x: 163.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 20.02675,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38524,9 +33641,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_04_5',
+				name: 'Slab_04_5_162x53_1',
 				nameShort: 'Slab_04',
 				size: {
 					x: 162.0,
@@ -38540,20 +33659,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_04_5',
-				nameShort: 'Slab_04',
-				size: {
-					x: 162.0,
-					y: 53.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38598,9 +33703,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_06_8',
+				name: 'Slab_06_8_162x56_1',
 				nameShort: 'Slab_06',
 				size: {
 					x: 162.0,
@@ -38614,20 +33721,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_06_8',
-				nameShort: 'Slab_06',
-				size: {
-					x: 162.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38703,9 +33796,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_07_8',
+				name: 'Slab_07_8_136x64_1',
 				nameShort: 'Slab_07',
 				size: {
 					x: 136.0,
@@ -38719,20 +33814,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_07_8',
-				nameShort: 'Slab_07',
-				size: {
-					x: 136.0,
-					y: 64.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0597267151,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38777,9 +33858,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_08_13',
+				name: 'Slab_08_13_69x62_1',
 				nameShort: 'Slab_08',
 				size: {
 					x: 69.0,
@@ -38793,20 +33876,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_08_13',
-				nameShort: 'Slab_08',
-				size: {
-					x: 69.0,
-					y: 62.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 6.05131674,
-					z: 4.02674866,
-					w: 13.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38851,9 +33920,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_08_top_16',
+				name: 'Slab_08_top_16_59x68_1',
 				nameShort: 'Slab_08_top',
 				size: {
 					x: 59.0,
@@ -38867,20 +33938,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_08_top_16',
-				nameShort: 'Slab_08_top',
-				size: {
-					x: 59.0,
-					y: 68.0,
-				},
-				padding: {
-					x: 5.026751,
-					y: 33.0761223,
-					z: 20.0362854,
-					w: 2.0362854,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -38925,9 +33982,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.101499081,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.9015007,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_Pass_4',
+				name: 'Cog_Pass_4_6x28_0',
 				nameShort: 'Cog_Pass',
 				size: {
 					x: 6.0,
@@ -38941,20 +34000,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cog_Pass_4',
-				nameShort: 'Cog_Pass',
-				size: {
-					x: 6.0,
-					y: 28.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -38999,10 +34044,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00199890137,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -39047,9 +34093,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_10c_5',
+				name: 'Slab_10c_5_64x104_1',
 				nameShort: 'Slab_10c',
 				size: {
 					x: 64.0,
@@ -39063,20 +34111,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_10c_5',
-				nameShort: 'Slab_10c',
-				size: {
-					x: 64.0,
-					y: 104.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.0267524719,
-					w: 3.11832428,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -39121,9 +34155,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_12_7',
+				name: 'Slab_12_7_183x67_1',
 				nameShort: 'Slab_12',
 				size: {
 					x: 183.0,
@@ -39137,20 +34173,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_12_7',
-				nameShort: 'Slab_12',
-				size: {
-					x: 183.0,
-					y: 67.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 39.0761223,
-					z: 10.0761261,
-					w: 3.02675247,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -39195,9 +34217,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_13_3_5',
+				name: 'Slab_13_3_5_164x43_0',
 				nameShort: 'Slab_13_3',
 				size: {
 					x: 164.0,
@@ -39211,20 +34235,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_13_3_5',
-				nameShort: 'Slab_13_3',
-				size: {
-					x: 164.0,
-					y: 43.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 158.076126,
-					w: 37.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -39269,9 +34279,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_13_2_5',
+				name: 'Slab_13_2_5_162x46_5',
 				nameShort: 'Slab_13_2',
 				size: {
 					x: 162.0,
@@ -39285,21 +34297,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_13_2_8',
-				nameShort: 'Slab_13_2',
-				size: {
-					x: 164.0,
-					y: 43.0,
-				},
-				padding: {
-					x: 50.0761223,
-					y: 10.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_13_2_8',
+				name: 'Slab_13_2_8_164x43_1',
 				nameShort: 'Slab_13_2',
 				size: {
 					x: 164.0,
@@ -39356,9 +34354,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_13_6',
+				name: 'Slab_13_6_164x49_1',
 				nameShort: 'Slab_13',
 				size: {
 					x: 164.0,
@@ -39372,20 +34372,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_13_6',
-				nameShort: 'Slab_13',
-				size: {
-					x: 164.0,
-					y: 49.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 64.07612,
-					w: 29.02675,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -39430,9 +34416,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_14_20',
+				name: 'Slab_14_20_164x47_6',
 				nameShort: 'Slab_14',
 				size: {
 					x: 164.0,
@@ -39446,21 +34434,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_14_7',
-				nameShort: 'Slab_14',
-				size: {
-					x: 164.0,
-					y: 47.0,
-				},
-				padding: {
-					x: 97.00193,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_14_7',
+				name: 'Slab_14_7_164x47_1',
 				nameShort: 'Slab_14',
 				size: {
 					x: 164.0,
@@ -39517,9 +34491,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.101998806,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90200043,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_14_left_5',
+				name: 'Slab_14_left_5_164x47_2',
 				nameShort: 'Slab_14_left',
 				size: {
 					x: 164.0,
@@ -39533,21 +34509,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_14_left_4',
-				nameShort: 'Slab_14_left',
-				size: {
-					x: 164.0,
-					y: 47.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 48.0,
-					w: 12.0761223,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_14_left_4',
+				name: 'Slab_14_left_4_164x47_1',
 				nameShort: 'Slab_14_left',
 				size: {
 					x: 164.0,
@@ -39604,9 +34566,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_15_33',
+				name: 'Slab_15_33_164x49_6',
 				nameShort: 'Slab_15',
 				size: {
 					x: 164.0,
@@ -39620,21 +34584,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_15_7',
-				nameShort: 'Slab_15',
-				size: {
-					x: 164.0,
-					y: 49.0,
-				},
-				padding: {
-					x: 50.00404,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_15_7',
+				name: 'Slab_15_7_164x49_1',
 				nameShort: 'Slab_15',
 				size: {
 					x: 164.0,
@@ -39691,9 +34641,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_15_left_rough_17',
+				name: 'Slab_15_left_rough_17_164x49_4',
 				nameShort: 'Slab_15_left_rough',
 				size: {
 					x: 164.0,
@@ -39707,21 +34659,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_15_left_6',
-				nameShort: 'Slab_15_left',
-				size: {
-					x: 164.0,
-					y: 49.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 89.07612,
-					w: 4.05131531,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_15_left_6',
+				name: 'Slab_15_left_6_164x49_1',
 				nameShort: 'Slab_15_left',
 				size: {
 					x: 164.0,
@@ -39778,9 +34716,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_16_c_5',
+				name: 'Slab_16_c_5_164x131_0',
 				nameShort: 'Slab_16_c',
 				size: {
 					x: 164.0,
@@ -39794,21 +34734,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_16_c_5',
-				nameShort: 'Slab_16_c',
-				size: {
-					x: 164.0,
-					y: 131.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 158.076126,
-					w: 125.076118,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_16_c_5',
+				name: 'Slab_16_c_5_164x131_0',
 				nameShort: 'Slab_16_c',
 				size: {
 					x: 164.0,
@@ -39865,9 +34791,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_16_14',
+				name: 'Slab_16_14_164x131_6',
 				nameShort: 'Slab_16',
 				size: {
 					x: 164.0,
@@ -39881,21 +34809,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_16_29',
-				nameShort: 'Slab_16',
-				size: {
-					x: 164.0,
-					y: 131.0,
-				},
-				padding: {
-					x: 3.07612038,
-					y: 64.0,
-					z: 39.02675,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_16_29',
+				name: 'Slab_16_29_164x131_1',
 				nameShort: 'Slab_16',
 				size: {
 					x: 164.0,
@@ -39952,10 +34866,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: {
-				name: 'Slab_16_29',
+				name: 'Slab_16_29_164x131_1',
 				nameShort: 'Slab_16',
 				size: {
 					x: 164.0,
@@ -39968,7 +34884,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					w: 0.0,
 				},
 			},
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -40013,9 +34928,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_16_mid_10',
+				name: 'Slab_16_mid_10_164x131_13',
 				nameShort: 'Slab_16_mid',
 				size: {
 					x: 164.0,
@@ -40029,21 +34946,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_16_mid_7',
-				nameShort: 'Slab_16_mid',
-				size: {
-					x: 164.0,
-					y: 131.0,
-				},
-				padding: {
-					x: 7.04290771,
-					y: 21.0335,
-					z: 18.0129089,
-					w: 46.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_16_mid_7',
+				name: 'Slab_16_mid_7_164x131_1',
 				nameShort: 'Slab_16_mid',
 				size: {
 					x: 164.0,
@@ -40100,9 +35003,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_16_b_17',
+				name: 'Slab_16_b_17_164x131_9',
 				nameShort: 'Slab_16_b',
 				size: {
 					x: 164.0,
@@ -40116,21 +35021,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_16_b_8',
-				nameShort: 'Slab_16_b',
-				size: {
-					x: 164.0,
-					y: 131.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 31.0429077,
-					w: 102.118324,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_16_b_8',
+				name: 'Slab_16_b_8_164x131_1',
 				nameShort: 'Slab_16_b',
 				size: {
 					x: 164.0,
@@ -40187,9 +35078,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_16_right_11',
+				name: 'Slab_16_right_11_164x131_2',
 				nameShort: 'Slab_16_right',
 				size: {
 					x: 164.0,
@@ -40203,21 +35096,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_16_right_5',
-				nameShort: 'Slab_16_right',
-				size: {
-					x: 164.0,
-					y: 131.0,
-				},
-				padding: {
-					x: 109.012909,
-					y: 21.0429077,
-					z: 0.0,
-					w: 86.04291,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_16_right_5',
+				name: 'Slab_16_right_5_164x131_1',
 				nameShort: 'Slab_16_right',
 				size: {
 					x: 164.0,
@@ -40274,9 +35153,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_16_c_5',
+				name: 'Slab_16_c_5_164x131_0',
 				nameShort: 'Slab_16_c',
 				size: {
 					x: 164.0,
@@ -40290,20 +35171,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_16_c_5',
-				nameShort: 'Slab_16_c',
-				size: {
-					x: 164.0,
-					y: 131.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 158.076126,
-					w: 125.076118,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -40348,9 +35215,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_17_6',
+				name: 'Slab_17_6_125x123_1',
 				nameShort: 'Slab_17',
 				size: {
 					x: 125.0,
@@ -40364,20 +35233,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_17_6',
-				nameShort: 'Slab_17',
-				size: {
-					x: 125.0,
-					y: 123.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 6.07611847,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -40422,9 +35277,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_18_7',
+				name: 'Slab_18_7_161x135_1',
 				nameShort: 'Slab_18',
 				size: {
 					x: 161.0,
@@ -40438,20 +35295,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_18_7',
-				nameShort: 'Slab_18',
-				size: {
-					x: 161.0,
-					y: 135.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 6.026751,
-					z: 0.0,
-					w: 4.02674866,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -40496,9 +35339,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_19b_7',
+				name: 'Slab_19b_7_72x58_1',
 				nameShort: 'Slab_19b',
 				size: {
 					x: 72.0,
@@ -40512,20 +35357,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_19b_7',
-				nameShort: 'Slab_19b',
-				size: {
-					x: 72.0,
-					y: 58.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 8.07612,
-					z: 19.0267525,
-					w: 18.0429077,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -40570,9 +35401,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_19b_top_6',
+				name: 'Slab_19b_top_6_63x33_1',
 				nameShort: 'Slab_19b_top',
 				size: {
 					x: 63.0,
@@ -40586,20 +35419,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_19b_top_6',
-				nameShort: 'Slab_19b_top',
-				size: {
-					x: 63.0,
-					y: 33.0,
-				},
-				padding: {
-					x: 1.026751,
-					y: 1.0761205,
-					z: 0.0,
-					w: 1.07612038,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -40644,9 +35463,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_20_21',
+				name: 'Slab_20_21_156x40_4',
 				nameShort: 'Slab_20',
 				size: {
 					x: 156.0,
@@ -40660,21 +35481,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_20_7',
-				nameShort: 'Slab_20',
-				size: {
-					x: 156.0,
-					y: 40.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.07612038,
-					z: 67.07612,
-					w: 3.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_20_7',
+				name: 'Slab_20_7_156x40_1',
 				nameShort: 'Slab_20',
 				size: {
 					x: 156.0,
@@ -40731,9 +35538,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_20_right_4',
+				name: 'Slab_20_right_4_161x30_1',
 				nameShort: 'Slab_20_right',
 				size: {
 					x: 161.0,
@@ -40747,20 +35556,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_20_right_4',
-				nameShort: 'Slab_20_right',
-				size: {
-					x: 161.0,
-					y: 30.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -40805,9 +35600,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_21_21',
+				name: 'Slab_21_21_44x280_18',
 				nameShort: 'Slab_21',
 				size: {
 					x: 44.0,
@@ -40821,21 +35618,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_21_5',
-				nameShort: 'Slab_21',
-				size: {
-					x: 44.0,
-					y: 278.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_21_5',
+				name: 'Slab_21_5_44x278_1',
 				nameShort: 'Slab_21',
 				size: {
 					x: 44.0,
@@ -40892,9 +35675,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_21_left_7',
+				name: 'Slab_21_left_7_44x278_1',
 				nameShort: 'Slab_21_left',
 				size: {
 					x: 44.0,
@@ -40908,7 +35693,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_21_5',
+				name: 'Slab_21_5_44x278_1',
 				nameShort: 'Slab_21',
 				size: {
 					x: 44.0,
@@ -40919,20 +35704,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_21_left_7',
-				nameShort: 'Slab_21_left',
-				size: {
-					x: 44.0,
-					y: 278.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 159.020416,
-					z: 24.02675,
-					w: 81.01291,
 				},
 			},
 			altFullSprites: null,
@@ -40979,9 +35750,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_22_rough_21',
+				name: 'Slab_22_rough_21_433x84_18',
 				nameShort: 'Slab_22_rough',
 				size: {
 					x: 433.0,
@@ -40995,21 +35768,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_22_5',
-				nameShort: 'Slab_22',
-				size: {
-					x: 433.0,
-					y: 84.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 0.0,
-					z: 17.07611,
-					w: 17.0761185,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_22_5',
+				name: 'Slab_22_5_433x84_1',
 				nameShort: 'Slab_22',
 				size: {
 					x: 433.0,
@@ -41066,9 +35825,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_23_12',
+				name: 'Slab_23_12_161x45_3',
 				nameShort: 'Slab_23',
 				size: {
 					x: 161.0,
@@ -41082,21 +35843,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_23_7',
-				nameShort: 'Slab_23',
-				size: {
-					x: 161.0,
-					y: 45.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 14.07612,
-					z: 61.07612,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_23_7',
+				name: 'Slab_23_7_161x45_1',
 				nameShort: 'Slab_23',
 				size: {
 					x: 161.0,
@@ -41153,9 +35900,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_23_right_13',
+				name: 'Slab_23_right_13_161x45_4',
 				nameShort: 'Slab_23_right',
 				size: {
 					x: 161.0,
@@ -41169,21 +35918,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_23_right_6',
-				nameShort: 'Slab_23_right',
-				size: {
-					x: 161.0,
-					y: 45.0,
-				},
-				padding: {
-					x: 72.0362854,
-					y: 14.1183252,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_23_right_6',
+				name: 'Slab_23_right_6_161x45_1',
 				nameShort: 'Slab_23_right',
 				size: {
 					x: 161.0,
@@ -41240,9 +35975,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_23_2_7',
+				name: 'Slab_23_2_7_161x47_1',
 				nameShort: 'Slab_23_2',
 				size: {
 					x: 161.0,
@@ -41256,7 +35993,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Slab_23_7',
+				name: 'Slab_23_7_161x45_1',
 				nameShort: 'Slab_23',
 				size: {
 					x: 161.0,
@@ -41267,20 +36004,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 14.07612,
 					z: 61.07612,
 					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Slab_23_2_7',
-				nameShort: 'Slab_23_2',
-				size: {
-					x: 161.0,
-					y: 47.0,
-				},
-				padding: {
-					x: 2.026751,
-					y: 5.01291275,
-					z: 90.01291,
-					w: 14.0761223,
 				},
 			},
 			altFullSprites: null,
@@ -41327,9 +36050,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_01_right_mid_5',
+				name: 'Peak_01_right_mid_5_167x479_1',
 				nameShort: 'Peak_01_right_mid',
 				size: {
 					x: 167.0,
@@ -41343,20 +36068,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_01_right_mid_5',
-				nameShort: 'Peak_01_right_mid',
-				size: {
-					x: 167.0,
-					y: 479.0,
-				},
-				padding: {
-					x: 137.076126,
-					y: 218.076126,
-					z: 0.0,
-					w: 167.076111,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -41401,9 +36112,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_01_right_top_17',
+				name: 'Peak_01_right_top_17_167x479_10',
 				nameShort: 'Peak_01_right_top',
 				size: {
 					x: 167.0,
@@ -41417,21 +36130,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Peak_01_right_top_11',
-				nameShort: 'Peak_01_right_top',
-				size: {
-					x: 167.0,
-					y: 479.0,
-				},
-				padding: {
-					x: 139.076126,
-					y: 316.0129,
-					z: 0.0,
-					w: 25.07611,
-				},
-			},
-			rendererSprite: {
-				name: 'Peak_01_right_top_11',
+				name: 'Peak_01_right_top_11_167x479_1',
 				nameShort: 'Peak_01_right_top',
 				size: {
 					x: 167.0,
@@ -41488,10 +36187,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -41536,10 +36236,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -41584,9 +36285,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Slab_03b_basement_shortcut_8',
+				name: 'Slab_03b_basement_shortcut_8_148x281_1',
 				nameShort: 'Slab_03b_basement_shortcut',
 				size: {
 					x: 148.0,
@@ -41600,20 +36303,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Slab_03b_basement_shortcut_8',
-				nameShort: 'Slab_03b_basement_shortcut',
-				size: {
-					x: 148.0,
-					y: 281.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 63.0761223,
-					z: 76.07612,
-					w: 177.149353,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -41658,9 +36347,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_01_29',
+				name: 'Peak_01_29_167x497_19',
 				nameShort: 'Peak_01',
 				size: {
 					x: 167.0,
@@ -41674,21 +36365,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Peak_01_14',
-				nameShort: 'Peak_01',
-				size: {
-					x: 167.0,
-					y: 497.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 72.01291,
-					z: 0.0,
-					w: 278.0129,
-				},
-			},
-			rendererSprite: {
-				name: 'Peak_01_14',
+				name: 'Peak_01_14_167x497_1',
 				nameShort: 'Peak_01',
 				size: {
 					x: 167.0,
@@ -41776,9 +36453,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_01_top_58',
+				name: 'Peak_01_top_58_167x483_28',
 				nameShort: 'Peak_01_top',
 				size: {
 					x: 167.0,
@@ -41792,21 +36471,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Peak_01_top_15',
-				nameShort: 'Peak_01_top',
-				size: {
-					x: 167.0,
-					y: 483.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 150.004044,
-					z: 6.076126,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Peak_01_top_15',
+				name: 'Peak_01_top_15_167x483_1',
 				nameShort: 'Peak_01_top',
 				size: {
 					x: 167.0,
@@ -41863,9 +36528,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_02_35',
+				name: 'Peak_02_35_179x355_24',
 				nameShort: 'Peak_02',
 				size: {
 					x: 179.0,
@@ -41879,21 +36546,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Peak_02_9',
-				nameShort: 'Peak_02',
-				size: {
-					x: 179.0,
-					y: 355.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 228.026749,
-				},
-			},
-			rendererSprite: {
-				name: 'Peak_02_9',
+				name: 'Peak_02_9_179x355_1',
 				nameShort: 'Peak_02',
 				size: {
 					x: 179.0,
@@ -41950,9 +36603,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_02_top_33',
+				name: 'Peak_02_top_33_179x397_28',
 				nameShort: 'Peak_02_top',
 				size: {
 					x: 179.0,
@@ -41966,21 +36621,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Peak_02_top_8',
-				nameShort: 'Peak_02_top',
-				size: {
-					x: 179.0,
-					y: 397.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 300.0761,
-					z: 0.0,
-					w: 0.026763916,
-				},
-			},
-			rendererSprite: {
-				name: 'Peak_02_top_8',
+				name: 'Peak_02_top_8_179x397_1',
 				nameShort: 'Peak_02_top',
 				size: {
 					x: 179.0,
@@ -42037,9 +36678,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_02_mid_28',
+				name: 'Peak_02_mid_28_179x385_18',
 				nameShort: 'Peak_02_mid',
 				size: {
 					x: 179.0,
@@ -42053,21 +36696,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Peak_02_mid_8',
-				nameShort: 'Peak_02_mid',
-				size: {
-					x: 179.0,
-					y: 385.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 86.0362854,
-					z: 117.026749,
-					w: 71.07611,
-				},
-			},
-			rendererSprite: {
-				name: 'Peak_02_mid_8',
+				name: 'Peak_02_mid_8_179x385_1',
 				nameShort: 'Peak_02_mid',
 				size: {
 					x: 179.0,
@@ -42124,9 +36753,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_04_12',
+				name: 'Peak_04_12_581x68_1',
 				nameShort: 'Peak_04',
 				size: {
 					x: 581.0,
@@ -42140,20 +36771,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_04_12',
-				nameShort: 'Peak_04',
-				size: {
-					x: 581.0,
-					y: 68.0,
-				},
-				padding: {
-					x: 210.076126,
-					y: 12.0129128,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42198,9 +36815,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_04d_4',
+				name: 'Peak_04d_4_187x29_1',
 				nameShort: 'Peak_04d',
 				size: {
 					x: 187.0,
@@ -42214,20 +36833,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_04d_4',
-				nameShort: 'Peak_04d',
-				size: {
-					x: 187.0,
-					y: 29.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42272,9 +36877,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_04c_6',
+				name: 'Peak_04c_6_177x79_1',
 				nameShort: 'Peak_04c',
 				size: {
 					x: 177.0,
@@ -42288,20 +36895,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_04c_6',
-				nameShort: 'Peak_04c',
-				size: {
-					x: 177.0,
-					y: 79.0,
-				},
-				padding: {
-					x: 71.02675,
-					y: 0.0429079533,
-					z: 0.0,
-					w: 0.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42346,9 +36939,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_05_10',
+				name: 'Peak_05_10_377x295_1',
 				nameShort: 'Peak_05',
 				size: {
 					x: 377.0,
@@ -42362,20 +36957,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_05_10',
-				nameShort: 'Peak_05',
-				size: {
-					x: 377.0,
-					y: 295.0,
-				},
-				padding: {
-					x: 67.02675,
-					y: 0.0,
-					z: 13.0761108,
-					w: 58.0019379,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42420,9 +37001,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_05_top_7',
+				name: 'Peak_05_top_7_299x295_1',
 				nameShort: 'Peak_05_top',
 				size: {
 					x: 299.0,
@@ -42436,20 +37019,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_05_top_7',
-				nameShort: 'Peak_05_top',
-				size: {
-					x: 299.0,
-					y: 295.0,
-				},
-				padding: {
-					x: 174.076126,
-					y: 204.076126,
-					z: 1.07611084,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42494,9 +37063,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_05c_9',
+				name: 'Peak_05c_9_443x207_1',
 				nameShort: 'Peak_05c',
 				size: {
 					x: 443.0,
@@ -42510,20 +37081,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_05c_9',
-				nameShort: 'Peak_05c',
-				size: {
-					x: 443.0,
-					y: 207.0,
-				},
-				padding: {
-					x: 299.0761,
-					y: 36.0129128,
-					z: 0.0,
-					w: 0.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42568,9 +37125,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_05c_top_8',
+				name: 'Peak_05c_top_8_443x207_1',
 				nameShort: 'Peak_05c_top',
 				size: {
 					x: 443.0,
@@ -42584,20 +37143,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_05c_top_8',
-				nameShort: 'Peak_05c_top',
-				size: {
-					x: 443.0,
-					y: 207.0,
-				},
-				padding: {
-					x: 380.0429,
-					y: 121.076118,
-					z: 15.0761108,
-					w: 6.02674866,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42642,9 +37187,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_05d_6',
+				name: 'Peak_05d_6_662x482_1',
 				nameShort: 'Peak_05d',
 				size: {
 					x: 662.0,
@@ -42658,20 +37205,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_05d_6',
-				nameShort: 'Peak_05d',
-				size: {
-					x: 662.0,
-					y: 482.0,
-				},
-				padding: {
-					x: 281.026764,
-					y: 340.0761,
-					z: 263.0761,
-					w: 0.07611084,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42716,9 +37249,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_05e_8',
+				name: 'Peak_05e_8_188x104_1',
 				nameShort: 'Peak_05e',
 				size: {
 					x: 188.0,
@@ -42732,20 +37267,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_05e_8',
-				nameShort: 'Peak_05e',
-				size: {
-					x: 188.0,
-					y: 104.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.01291251,
-					z: 0.0,
-					w: 57.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42790,9 +37311,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_05e_top_5',
+				name: 'Peak_05e_top_5_171x73_1',
 				nameShort: 'Peak_05e_top',
 				size: {
 					x: 171.0,
@@ -42806,20 +37329,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_05e_top_5',
-				nameShort: 'Peak_05e_top',
-				size: {
-					x: 171.0,
-					y: 73.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.00251579285,
-					z: 0.0,
-					w: 0.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -42864,10 +37373,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -42912,9 +37422,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_06_8',
+				name: 'Peak_06_8_79x95_1',
 				nameShort: 'Peak_06',
 				size: {
 					x: 79.0,
@@ -42928,20 +37440,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_06_8',
-				nameShort: 'Peak_06',
-				size: {
-					x: 79.0,
-					y: 95.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 38.0761223,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43017,9 +37515,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_03_6',
+				name: 'Peak_03_6_202x268_1',
 				nameShort: 'Peak_03',
 				size: {
 					x: 202.0,
@@ -43033,20 +37533,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_03_6',
-				nameShort: 'Peak_03',
-				size: {
-					x: 202.0,
-					y: 268.0,
-				},
-				padding: {
-					x: 28.07612,
-					y: 0.0,
-					z: 32.1183319,
-					w: 195.026749,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43091,9 +37577,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_03_top_11',
+				name: 'Peak_03_top_11_202x268_1',
 				nameShort: 'Peak_03_top',
 				size: {
 					x: 202.0,
@@ -43107,20 +37595,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_03_top_11',
-				nameShort: 'Peak_03_top',
-				size: {
-					x: 202.0,
-					y: 268.0,
-				},
-				padding: {
-					x: 3.07612038,
-					y: 43.0761223,
-					z: 33.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43165,9 +37639,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_07_bench_cave_4',
+				name: 'Peak_07_bench_cave_4_58x29_1',
 				nameShort: 'Peak_07_bench_cave',
 				size: {
 					x: 58.0,
@@ -43181,20 +37657,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_07_bench_cave_4',
-				nameShort: 'Peak_07_bench_cave',
-				size: {
-					x: 58.0,
-					y: 29.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43239,9 +37701,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_08_26',
+				name: 'Peak_08_26_591x317_1',
 				nameShort: 'Peak_08',
 				size: {
 					x: 591.0,
@@ -43255,20 +37719,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_08_26',
-				nameShort: 'Peak_08',
-				size: {
-					x: 591.0,
-					y: 317.0,
-				},
-				padding: {
-					x: 33.0429077,
-					y: 0.0,
-					z: 0.0,
-					w: 5.076111,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43313,9 +37763,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_08b_13',
+				name: 'Peak_08b_13_563x230_2',
 				nameShort: 'Peak_08b',
 				size: {
 					x: 563.0,
@@ -43329,20 +37781,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_08b_13',
-				nameShort: 'Peak_08b',
-				size: {
-					x: 563.0,
-					y: 230.0,
-				},
-				padding: {
-					x: 350.0761,
-					y: 0.0,
-					z: 2.07611084,
-					w: 4.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43387,9 +37825,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_10_7',
+				name: 'Peak_10_7_142x89_1',
 				nameShort: 'Peak_10',
 				size: {
 					x: 142.0,
@@ -43403,21 +37843,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Peak_10_7',
-				nameShort: 'Peak_10',
-				size: {
-					x: 142.0,
-					y: 89.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 51.0362854,
-					z: 0.0,
-					w: 1.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Peak_10_7',
+				name: 'Peak_10_7_142x89_1',
 				nameShort: 'Peak_10',
 				size: {
 					x: 142.0,
@@ -43474,9 +37900,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_08b_2_6',
+				name: 'Peak_08b_2_6_52x46_1',
 				nameShort: 'Peak_08b_2',
 				size: {
 					x: 52.0,
@@ -43490,20 +37918,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_08b_2_6',
-				nameShort: 'Peak_08b_2',
-				size: {
-					x: 52.0,
-					y: 46.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43548,9 +37962,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Peak_04b_5',
+				name: 'Peak_04b_5_54x86_1',
 				nameShort: 'Peak_04b',
 				size: {
 					x: 54.0,
@@ -43564,20 +37980,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Peak_04b_5',
-				nameShort: 'Peak_04b',
-				size: {
-					x: 54.0,
-					y: 86.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43622,9 +38024,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_Peak_02_10',
+				name: 'Bellway_Peak_02_10_179x66_1',
 				nameShort: 'Bellway_Peak_02',
 				size: {
 					x: 179.0,
@@ -43638,20 +38042,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Bellway_Peak_02_10',
-				nameShort: 'Bellway_Peak_02',
-				size: {
-					x: 179.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.0668487549,
-					w: 0.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43696,10 +38086,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -43744,9 +38135,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_01_27',
+				name: 'Song_01_27_274x244_24',
 				nameShort: 'Song_01',
 				size: {
 					x: 274.0,
@@ -43760,21 +38153,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_01_11',
-				nameShort: 'Song_01',
-				size: {
-					x: 275.0,
-					y: 244.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 51.0761223,
-					z: 13.0761108,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_01_11',
+				name: 'Song_01_11_275x244_1',
 				nameShort: 'Song_01',
 				size: {
 					x: 275.0,
@@ -43831,9 +38210,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_01_secret_6',
+				name: 'Song_01_secret_6_275x244_1',
 				nameShort: 'Song_01_secret',
 				size: {
 					x: 275.0,
@@ -43847,7 +38228,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_01_11',
+				name: 'Song_01_11_275x244_1',
 				nameShort: 'Song_01',
 				size: {
 					x: 275.0,
@@ -43858,20 +38239,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 51.0761223,
 					z: 13.0761108,
 					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_01_secret_6',
-				nameShort: 'Song_01_secret',
-				size: {
-					x: 275.0,
-					y: 244.0,
-				},
-				padding: {
-					x: 109.076118,
-					y: 176.076126,
-					z: 101.076126,
-					w: 37.0761261,
 				},
 			},
 			altFullSprites: null,
@@ -43918,9 +38285,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_01_bot_4',
+				name: 'Song_01_bot_4_2x2_0',
 				nameShort: 'Song_01_bot',
 				size: {
 					x: 2.0,
@@ -43934,7 +38303,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_01_11',
+				name: 'Song_01_11_275x244_1',
 				nameShort: 'Song_01',
 				size: {
 					x: 275.0,
@@ -43944,20 +38313,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					x: 0.0761204958,
 					y: 51.0761223,
 					z: 13.0761108,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_01_bot_4',
-				nameShort: 'Song_01_bot',
-				size: {
-					x: 2.0,
-					y: 2.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
 					w: 0.0,
 				},
 			},
@@ -44036,9 +38391,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_01b_37',
+				name: 'Song_01b_37_232x36_19',
 				nameShort: 'Song_01b',
 				size: {
 					x: 232.0,
@@ -44052,21 +38409,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_01b_20',
-				nameShort: 'Song_01b',
-				size: {
-					x: 232.0,
-					y: 36.0,
-				},
-				padding: {
-					x: 31.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_01b_20',
+				name: 'Song_01b_20_232x36_1',
 				nameShort: 'Song_01b',
 				size: {
 					x: 232.0,
@@ -44123,9 +38466,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_01b_2_7',
+				name: 'Song_01b_2_7_232x36_1',
 				nameShort: 'Song_01b_2',
 				size: {
 					x: 232.0,
@@ -44139,20 +38484,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_01b_2_7',
-				nameShort: 'Song_01b_2',
-				size: {
-					x: 232.0,
-					y: 36.0,
-				},
-				padding: {
-					x: 12.07612,
-					y: 0.0761204958,
-					z: 167.076111,
-					w: 6.02675056,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -44197,9 +38528,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_03_7',
+				name: 'Song_03_7_253x66_1',
 				nameShort: 'Song_03',
 				size: {
 					x: 253.0,
@@ -44213,20 +38546,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_03_7',
-				nameShort: 'Song_03',
-				size: {
-					x: 253.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 7.07612038,
-					y: 0.0,
-					z: 0.0267486572,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -44271,9 +38590,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_03_top_8',
+				name: 'Song_03_top_8_244x66_1',
 				nameShort: 'Song_03_top',
 				size: {
 					x: 244.0,
@@ -44287,20 +38608,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_03_top_8',
-				nameShort: 'Song_03_top',
-				size: {
-					x: 244.0,
-					y: 66.0,
-				},
-				padding: {
-					x: 29.07612,
-					y: 54.0761223,
-					z: 179.076111,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -44345,9 +38652,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_02_14',
+				name: 'Song_02_14_300x77_15',
 				nameShort: 'Song_02',
 				size: {
 					x: 300.0,
@@ -44361,21 +38670,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song__02_5',
-				nameShort: 'Song__02',
-				size: {
-					x: 300.0,
-					y: 77.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 24.07612,
-					z: 0.0,
-					w: 1.04290771,
-				},
-			},
-			rendererSprite: {
-				name: 'Song__02_5',
+				name: 'Song__02_5_300x77_1',
 				nameShort: 'Song__02',
 				size: {
 					x: 300.0,
@@ -44432,9 +38727,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_04_8',
+				name: 'Song_04_8_247x114_1',
 				nameShort: 'Song_04',
 				size: {
 					x: 247.0,
@@ -44448,20 +38745,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_04_8',
-				nameShort: 'Song_04',
-				size: {
-					x: 247.0,
-					y: 114.0,
-				},
-				padding: {
-					x: 25.0597286,
-					y: 0.0,
-					z: 0.0,
-					w: 31.0761185,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -44506,9 +38789,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_04_top_6',
+				name: 'Song_04_top_6_247x114_1',
 				nameShort: 'Song_04_top',
 				size: {
 					x: 247.0,
@@ -44522,20 +38807,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_04_top_6',
-				nameShort: 'Song_04_top',
-				size: {
-					x: 247.0,
-					y: 114.0,
-				},
-				padding: {
-					x: 152.076126,
-					y: 46.0761223,
-					z: 0.0,
-					w: 0.07611084,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -44611,9 +38882,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_04_blank_5',
+				name: 'Song_04_blank_5_247x114_0',
 				nameShort: 'Song_04_blank',
 				size: {
 					x: 247.0,
@@ -44627,20 +38900,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_04_blank_5',
-				nameShort: 'Song_04_blank',
-				size: {
-					x: 247.0,
-					y: 114.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 241.076126,
-					w: 108.076118,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -44685,9 +38944,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_05_35',
+				name: 'Song_05_35_81x194_17',
 				nameShort: 'Song_05',
 				size: {
 					x: 81.0,
@@ -44701,21 +38962,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_05_4',
-				nameShort: 'Song_05',
-				size: {
-					x: 81.0,
-					y: 190.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_05_4',
+				name: 'Song_05_4_81x190_1',
 				nameShort: 'Song_05',
 				size: {
 					x: 81.0,
@@ -44803,9 +39050,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_07_9',
+				name: 'Song_07_9_116x32_11',
 				nameShort: 'Song_07',
 				size: {
 					x: 116.0,
@@ -44819,21 +39068,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_07_4',
-				nameShort: 'Song_07',
-				size: {
-					x: 116.0,
-					y: 28.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_07_4',
+				name: 'Song_07_4_116x28_1',
 				nameShort: 'Song_07',
 				size: {
 					x: 116.0,
@@ -44890,9 +39125,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_28_4',
+				name: 'Song_28_4_68x27_1',
 				nameShort: 'Song_28',
 				size: {
 					x: 68.0,
@@ -44906,20 +39143,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_28_4',
-				nameShort: 'Song_28',
-				size: {
-					x: 68.0,
-					y: 27.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -44964,9 +39187,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_09_14',
+				name: 'Song_09_14_81x138_12',
 				nameShort: 'Song_09',
 				size: {
 					x: 81.0,
@@ -44980,21 +39205,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_09_5',
-				nameShort: 'Song_09',
-				size: {
-					x: 79.0,
-					y: 138.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_09_5',
+				name: 'Song_09_5_79x138_1',
 				nameShort: 'Song_09',
 				size: {
 					x: 79.0,
@@ -45051,9 +39262,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_09_2_9',
+				name: 'Song_09_2_9_87x138_1',
 				nameShort: 'Song_09_2',
 				size: {
 					x: 87.0,
@@ -45067,20 +39280,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_09_2_9',
-				nameShort: 'Song_09_2',
-				size: {
-					x: 87.0,
-					y: 138.0,
-				},
-				padding: {
-					x: 67.01291,
-					y: 49.0761223,
-					z: 0.0,
-					w: 44.149353,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -45156,9 +39355,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_09b_18',
+				name: 'Song_09b_18_249x161_14',
 				nameShort: 'Song_09b',
 				size: {
 					x: 249.0,
@@ -45172,21 +39373,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_09b_4',
-				nameShort: 'Song_09b',
-				size: {
-					x: 249.0,
-					y: 161.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 111.076118,
-					z: 0.0,
-					w: 9.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_09b_4',
+				name: 'Song_09b_4_249x161_1',
 				nameShort: 'Song_09b',
 				size: {
 					x: 249.0,
@@ -45243,9 +39430,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_09b_top_15',
+				name: 'Song_09b_top_15_249x161_8',
 				nameShort: 'Song_09b_top',
 				size: {
 					x: 249.0,
@@ -45259,21 +39448,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_09b_top_7',
-				nameShort: 'Song_09b_top',
-				size: {
-					x: 249.0,
-					y: 161.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 130.076126,
-					z: 45.01291,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_09b_top_7',
+				name: 'Song_09b_top_7_249x161_1',
 				nameShort: 'Song_09b_top',
 				size: {
 					x: 249.0,
@@ -45330,9 +39505,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_10_7',
+				name: 'Song_10_7_199x110_1',
 				nameShort: 'Song_10',
 				size: {
 					x: 199.0,
@@ -45346,20 +39523,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_10_7',
-				nameShort: 'Song_10',
-				size: {
-					x: 199.0,
-					y: 110.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 38.0761223,
-					z: 108.076118,
-					w: 3.07611084,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -45404,9 +39567,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_10_right_6',
+				name: 'Song_10_right_6_151x44_1',
 				nameShort: 'Song_10_right',
 				size: {
 					x: 151.0,
@@ -45420,20 +39585,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_10_right_6',
-				nameShort: 'Song_10_right',
-				size: {
-					x: 151.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 82.02675,
-					y: 7.07612038,
-					z: 26.0761185,
-					w: 3.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -45478,9 +39629,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_10_shortcut_6',
+				name: 'Song_10_shortcut_6_151x44_1',
 				nameShort: 'Song_10_shortcut',
 				size: {
 					x: 151.0,
@@ -45494,20 +39647,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_10_shortcut_6',
-				nameShort: 'Song_10_shortcut',
-				size: {
-					x: 151.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 120.076118,
-					y: 13.0129128,
-					z: 13.0513153,
-					w: 1.07612228,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -45552,9 +39691,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_10_2_9',
+				name: 'Song_10_2_9_151x84_1',
 				nameShort: 'Song_10_2',
 				size: {
 					x: 151.0,
@@ -45568,20 +39709,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_10_2_9',
-				nameShort: 'Song_10_2',
-				size: {
-					x: 151.0,
-					y: 84.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 5.01467228,
-					z: 55.01291,
-					w: 30.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -45657,9 +39784,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_10_pipes_broken_8',
+				name: 'Song_10_pipes_broken_8_198x110_1',
 				nameShort: 'Song_10_pipes_broken',
 				size: {
 					x: 198.0,
@@ -45673,20 +39802,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_10_pipes_broken_8',
-				nameShort: 'Song_10_pipes_broken',
-				size: {
-					x: 198.0,
-					y: 110.0,
-				},
-				padding: {
-					x: 9.07612,
-					y: 17.02675,
-					z: 167.026749,
-					w: 59.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -45731,9 +39846,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_11_25',
+				name: 'Song_11_25_100x307_11',
 				nameShort: 'Song_11',
 				size: {
 					x: 100.0,
@@ -45747,21 +39864,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_11_9',
-				nameShort: 'Song_11',
-				size: {
-					x: 100.0,
-					y: 307.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 7.07612038,
-					z: 0.0,
-					w: 205.076111,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_11_9',
+				name: 'Song_11_9_100x307_1',
 				nameShort: 'Song_11',
 				size: {
 					x: 100.0,
@@ -45818,9 +39921,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_11_2_9',
+				name: 'Song_11_2_9_42x152_1',
 				nameShort: 'Song_11_2',
 				size: {
 					x: 42.0,
@@ -45834,20 +39939,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_11_2_9',
-				nameShort: 'Song_11_2',
-				size: {
-					x: 42.0,
-					y: 152.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0761204958,
-					z: 4.07612228,
-					w: 7.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -45892,9 +39983,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_11_3_8',
+				name: 'Song_11_3_8_67x60_1',
 				nameShort: 'Song_11_3',
 				size: {
 					x: 67.0,
@@ -45908,20 +40001,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_11_3_8',
-				nameShort: 'Song_11_3',
-				size: {
-					x: 67.0,
-					y: 60.0,
-				},
-				padding: {
-					x: 7.04290771,
-					y: 0.0,
-					z: 0.0,
-					w: 14.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -45966,9 +40045,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_11_top_28',
+				name: 'Song_11_top_28_100x288_18',
 				nameShort: 'Song_11_top',
 				size: {
 					x: 100.0,
@@ -45982,21 +40063,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_11_top_26',
-				nameShort: 'Song_11_top',
-				size: {
-					x: 100.0,
-					y: 288.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 71.01291,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_11_top_26',
+				name: 'Song_11_top_26_100x288_1',
 				nameShort: 'Song_11_top',
 				size: {
 					x: 100.0,
@@ -46053,9 +40120,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09499884,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89500046,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_11_top_cap_7',
+				name: 'Song_11_top_cap_7_77x60_1',
 				nameShort: 'Song_11_top_cap',
 				size: {
 					x: 77.0,
@@ -46069,20 +40138,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_11_top_cap_7',
-				nameShort: 'Song_11_top_cap',
-				size: {
-					x: 77.0,
-					y: 60.0,
-				},
-				padding: {
-					x: 66.07612,
-					y: 16.0429077,
-					z: 0.0,
-					w: 19.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -46127,9 +40182,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_12_42',
+				name: 'Song_12_42_53x191_16',
 				nameShort: 'Song_12',
 				size: {
 					x: 53.0,
@@ -46143,21 +40200,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_12_7',
-				nameShort: 'Song_12',
-				size: {
-					x: 53.0,
-					y: 191.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 13.0429077,
-					z: 0.0,
-					w: 2.076126,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_12_7',
+				name: 'Song_12_7_53x191_1',
 				nameShort: 'Song_12',
 				size: {
 					x: 53.0,
@@ -46214,9 +40257,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_13_19',
+				name: 'Song_13_19_147x35_7',
 				nameShort: 'Song_13',
 				size: {
 					x: 147.0,
@@ -46230,21 +40275,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_13_4',
-				nameShort: 'Song_13',
-				size: {
-					x: 147.0,
-					y: 31.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_13_4',
+				name: 'Song_13_4_147x31_1',
 				nameShort: 'Song_13',
 				size: {
 					x: 147.0,
@@ -46301,9 +40332,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_14_4',
+				name: 'Song_14_4_123x31_8',
 				nameShort: 'Song_14',
 				size: {
 					x: 123.0,
@@ -46317,21 +40350,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_14_4',
-				nameShort: 'Song_14',
-				size: {
-					x: 123.0,
-					y: 31.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_14_4',
+				name: 'Song_14_4_123x31_1',
 				nameShort: 'Song_14',
 				size: {
 					x: 123.0,
@@ -46388,9 +40407,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_15_6',
+				name: 'Song_15_6_147x70_1',
 				nameShort: 'Song_15',
 				size: {
 					x: 147.0,
@@ -46404,20 +40425,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_15_6',
-				nameShort: 'Song_15',
-				size: {
-					x: 147.0,
-					y: 70.0,
-				},
-				padding: {
-					x: 1.06585836,
-					y: 1.0761205,
-					z: 0.0,
-					w: 37.0267525,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -46462,9 +40469,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_15_top_10',
+				name: 'Song_15_top_10_147x70_1',
 				nameShort: 'Song_15_top',
 				size: {
 					x: 147.0,
@@ -46478,20 +40487,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_15_top_10',
-				nameShort: 'Song_15_top',
-				size: {
-					x: 147.0,
-					y: 70.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 23.07612,
-					z: 53.02675,
-					w: 0.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -46536,9 +40531,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_17_21',
+				name: 'Song_17_21_200x171_10',
 				nameShort: 'Song_17',
 				size: {
 					x: 200.0,
@@ -46552,21 +40549,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_17_9',
-				nameShort: 'Song_17',
-				size: {
-					x: 200.0,
-					y: 171.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 77.29289,
-					z: 0.0,
-					w: 0.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_17_9',
+				name: 'Song_17_9_200x171_1',
 				nameShort: 'Song_17',
 				size: {
 					x: 200.0,
@@ -46623,9 +40606,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_18_5',
+				name: 'Song_18_5_171x112_1',
 				nameShort: 'Song_18',
 				size: {
 					x: 171.0,
@@ -46639,20 +40624,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_18_5',
-				nameShort: 'Song_18',
-				size: {
-					x: 171.0,
-					y: 112.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 80.07612,
-					z: 0.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -46697,9 +40668,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_18_2_7',
+				name: 'Song_18_2_7_110x61_1',
 				nameShort: 'Song_18_2',
 				size: {
 					x: 110.0,
@@ -46713,20 +40686,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_18_2_7',
-				nameShort: 'Song_18_2',
-				size: {
-					x: 110.0,
-					y: 61.0,
-				},
-				padding: {
-					x: 18.02675,
-					y: 5.07612038,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -46771,9 +40730,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_18_3_6',
+				name: 'Song_18_3_6_110x61_1',
 				nameShort: 'Song_18_3',
 				size: {
 					x: 110.0,
@@ -46787,20 +40748,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_18_3_6',
-				nameShort: 'Song_18_3',
-				size: {
-					x: 110.0,
-					y: 61.0,
-				},
-				padding: {
-					x: 58.0761223,
-					y: 0.0,
-					z: 30.0761185,
-					w: 51.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -46845,9 +40792,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_26_4',
+				name: 'Song_26_4_62x35_1',
 				nameShort: 'Song_26',
 				size: {
 					x: 62.0,
@@ -46861,20 +40810,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_26_4',
-				nameShort: 'Song_26',
-				size: {
-					x: 62.0,
-					y: 35.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -46919,9 +40854,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_28_2_rough_6',
+				name: 'Song_28_2_rough_6_83x33_6',
 				nameShort: 'Song_28_2_rough',
 				size: {
 					x: 83.0,
@@ -46935,21 +40872,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_28_2_7',
-				nameShort: 'Song_28_2',
-				size: {
-					x: 83.0,
-					y: 33.0,
-				},
-				padding: {
-					x: 1.026751,
-					y: 1.0761205,
-					z: 0.0,
-					w: 1.07612038,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_28_2_7',
+				name: 'Song_28_2_7_83x33_1',
 				nameShort: 'Song_28_2',
 				size: {
 					x: 83.0,
@@ -47006,9 +40929,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_27_rough_15',
+				name: 'Song_27_rough_15_446x47_45',
 				nameShort: 'Song_27_rough',
 				size: {
 					x: 446.0,
@@ -47022,21 +40947,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_18b_14',
-				nameShort: 'Song_18b',
-				size: {
-					x: 437.0,
-					y: 47.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0761204958,
-					z: 0.0,
-					w: 4.07612228,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_18b_14',
+				name: 'Song_18b_14_437x47_1',
 				nameShort: 'Song_18b',
 				size: {
 					x: 437.0,
@@ -47093,9 +41004,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_01_2_6',
+				name: 'Hang_01_2_6_83x194_1',
 				nameShort: 'Hang_01_2',
 				size: {
 					x: 83.0,
@@ -47109,20 +41022,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Hang_01_2_6',
-				nameShort: 'Hang_01_2',
-				size: {
-					x: 83.0,
-					y: 194.0,
-				},
-				padding: {
-					x: 11.0267506,
-					y: 16.07612,
-					z: 0.0,
-					w: 118.012909,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -47167,9 +41066,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_01_7',
+				name: 'Hang_01_7_83x194_1',
 				nameShort: 'Hang_01',
 				size: {
 					x: 83.0,
@@ -47183,20 +41084,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Hang_01_7',
-				nameShort: 'Hang_01',
-				size: {
-					x: 83.0,
-					y: 194.0,
-				},
-				padding: {
-					x: 21.07612,
-					y: 44.0761223,
-					z: 0.0,
-					w: 20.0513153,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -47272,9 +41159,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_07b_bot_6',
+				name: 'Under_07b_bot_6_125x38_1',
 				nameShort: 'Under_07b_bot',
 				size: {
 					x: 125.0,
@@ -47288,20 +41177,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_07b_bot_6',
-				nameShort: 'Under_07b_bot',
-				size: {
-					x: 125.0,
-					y: 38.0,
-				},
-				padding: {
-					x: 56.0761223,
-					y: 0.0,
-					z: 35.07612,
-					w: 24.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -47377,9 +41252,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_07b_22',
+				name: 'Under_07b_22_188x180_4',
 				nameShort: 'Under_07b',
 				size: {
 					x: 188.0,
@@ -47393,21 +41270,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_07b_7',
-				nameShort: 'Under_07b',
-				size: {
-					x: 188.0,
-					y: 180.0,
-				},
-				padding: {
-					x: 37.0761223,
-					y: 135.026749,
-					z: 23.0267487,
-					w: 10.0129089,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_07b_7',
+				name: 'Under_07b_7_188x180_1',
 				nameShort: 'Under_07b',
 				size: {
 					x: 188.0,
@@ -47464,9 +41327,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_07_31',
+				name: 'Hang_07_31_243x47_15',
 				nameShort: 'Hang_07',
 				size: {
 					x: 243.0,
@@ -47480,21 +41345,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_07_9',
-				nameShort: 'Hang_07',
-				size: {
-					x: 243.0,
-					y: 45.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_07_9',
+				name: 'Hang_07_9_243x45_1',
 				nameShort: 'Hang_07',
 				size: {
 					x: 243.0,
@@ -47582,9 +41433,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_03_left_15',
+				name: 'Library_03_left_15_53x59_4',
 				nameShort: 'Library_03_left',
 				size: {
 					x: 53.0,
@@ -47598,21 +41451,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_03_left_6',
-				nameShort: 'Library_03_left',
-				size: {
-					x: 53.0,
-					y: 57.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_03_left_6',
+				name: 'Library_03_left_6_53x57_1',
 				nameShort: 'Library_03_left',
 				size: {
 					x: 53.0,
@@ -47669,9 +41508,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09499884,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89500046,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_03_tunnel_5',
+				name: 'Library_03_tunnel_5_204x104_1',
 				nameShort: 'Library_03_tunnel',
 				size: {
 					x: 204.0,
@@ -47685,20 +41526,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_03_tunnel_5',
-				nameShort: 'Library_03_tunnel',
-				size: {
-					x: 204.0,
-					y: 104.0,
-				},
-				padding: {
-					x: 47.0761223,
-					y: 64.07612,
-					z: 142.076126,
-					w: 18.0582047,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -47774,9 +41601,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_City_13',
+				name: 'Bellway_City_13_179x56_19',
 				nameShort: 'Bellway_City',
 				size: {
 					x: 179.0,
@@ -47790,21 +41619,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellway_City_9',
-				nameShort: 'Bellway_City',
-				size: {
-					x: 179.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 4.07612038,
-					z: 2.056366,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellway_City_9',
+				name: 'Bellway_City_9_179x56_1',
 				nameShort: 'Bellway_City',
 				size: {
 					x: 179.0,
@@ -47892,9 +41707,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Bellway_City_b_4',
+				name: 'Bellway_City_b_4_100x29_1',
 				nameShort: 'Bellway_City_b',
 				size: {
 					x: 100.0,
@@ -47908,21 +41725,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Bellway_City_b_4',
-				nameShort: 'Bellway_City_b',
-				size: {
-					x: 100.0,
-					y: 29.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Bellway_City_b_4',
+				name: 'Bellway_City_b_4_100x29_1',
 				nameShort: 'Bellway_City_b',
 				size: {
 					x: 100.0,
@@ -48010,9 +41813,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_20_40',
+				name: 'Song_20_40_83x278_19',
 				nameShort: 'Song_20',
 				size: {
 					x: 83.0,
@@ -48026,21 +41831,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_20_7',
-				nameShort: 'Song_20',
-				size: {
-					x: 83.0,
-					y: 278.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 10.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_20_7',
+				name: 'Song_20_7_83x278_1',
 				nameShort: 'Song_20',
 				size: {
 					x: 83.0,
@@ -48128,9 +41919,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_20b_45',
+				name: 'Song_20b_45_83x413_16',
 				nameShort: 'Song_20b',
 				size: {
 					x: 83.0,
@@ -48144,21 +41937,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_20b_5',
-				nameShort: 'Song_20b',
-				size: {
-					x: 83.0,
-					y: 413.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 277.0761,
-					z: 0.0,
-					w: 0.07611084,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_20b_5',
+				name: 'Song_20b_5_83x413_1',
 				nameShort: 'Song_20b',
 				size: {
 					x: 83.0,
@@ -48276,9 +42055,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_24_9',
+				name: 'Song_24_9_101x93_8',
 				nameShort: 'Song_24',
 				size: {
 					x: 101.0,
@@ -48292,21 +42073,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_24_5',
-				nameShort: 'Song_24',
-				size: {
-					x: 101.0,
-					y: 93.0,
-				},
-				padding: {
-					x: 3.026751,
-					y: 21.07612,
-					z: 0.0,
-					w: 6.05131531,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_24_5',
+				name: 'Song_24_5_101x93_1',
 				nameShort: 'Song_24',
 				size: {
 					x: 101.0,
@@ -48363,9 +42130,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_25_25',
+				name: 'Song_25_25_430x47_24',
 				nameShort: 'Song_25',
 				size: {
 					x: 430.0,
@@ -48379,21 +42148,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_25_6',
-				nameShort: 'Song_25',
-				size: {
-					x: 432.0,
-					y: 47.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_25_6',
+				name: 'Song_25_6_432x47_1',
 				nameShort: 'Song_25',
 				size: {
 					x: 432.0,
@@ -48541,9 +42296,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_29_rough_6',
+				name: 'Song_29_rough_6_83x33_6',
 				nameShort: 'Song_29_rough',
 				size: {
 					x: 83.0,
@@ -48557,21 +42314,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_29_5',
-				nameShort: 'Song_29',
-				size: {
-					x: 83.0,
-					y: 33.0,
-				},
-				padding: {
-					x: 0.0267509818,
-					y: 0.0761204958,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_29_5',
+				name: 'Song_29_5_83x33_1',
 				nameShort: 'Song_29',
 				size: {
 					x: 83.0,
@@ -48628,9 +42371,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_Enclave_44',
+				name: 'Song_Enclave_44_196x59_19',
 				nameShort: 'Song_Enclave',
 				size: {
 					x: 196.0,
@@ -48644,21 +42389,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_Enclave_6',
-				nameShort: 'Song_Enclave',
-				size: {
-					x: 196.0,
-					y: 59.0,
-				},
-				padding: {
-					x: 8.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_Enclave_6',
+				name: 'Song_Enclave_6_196x59_1',
 				nameShort: 'Song_Enclave',
 				size: {
 					x: 196.0,
@@ -48746,9 +42477,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Enclave_bridge_left_9',
+				name: 'Enclave_bridge_left_9_166x194_1',
 				nameShort: 'Enclave_bridge_left',
 				size: {
 					x: 166.0,
@@ -48762,21 +42495,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Enclave_bridge_left_9',
-				nameShort: 'Enclave_bridge_left',
-				size: {
-					x: 166.0,
-					y: 194.0,
-				},
-				padding: {
-					x: 2.01291251,
-					y: 90.02675,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Enclave_bridge_left_9',
+				name: 'Enclave_bridge_left_9_166x194_1',
 				nameShort: 'Enclave_bridge_left',
 				size: {
 					x: 166.0,
@@ -48833,9 +42552,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_04_top_enclave_6',
+				name: 'Library_04_top_enclave_6_77x67_1',
 				nameShort: 'Library_04_top_enclave',
 				size: {
 					x: 77.0,
@@ -48849,20 +42570,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_04_top_enclave_6',
-				nameShort: 'Library_04_top_enclave',
-				size: {
-					x: 77.0,
-					y: 67.0,
-				},
-				padding: {
-					x: 12.07612,
-					y: 45.0761223,
-					z: 43.0761223,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -48938,9 +42645,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_Enclave_Tube_4',
+				name: 'Song_Enclave_Tube_4_69x31_1',
 				nameShort: 'Song_Enclave_Tube',
 				size: {
 					x: 69.0,
@@ -48954,21 +42663,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_Enclave_Tube_4',
-				nameShort: 'Song_Enclave_Tube',
-				size: {
-					x: 69.0,
-					y: 31.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_Enclave_Tube_4',
+				name: 'Song_Enclave_Tube_4_69x31_1',
 				nameShort: 'Song_Enclave_Tube',
 				size: {
 					x: 69.0,
@@ -49025,9 +42720,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_25b_7',
+				name: 'Song_25b_7_44x38_1',
 				nameShort: 'Song_25b',
 				size: {
 					x: 44.0,
@@ -49041,21 +42738,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_25b_7',
-				nameShort: 'Song_25b',
-				size: {
-					x: 44.0,
-					y: 38.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 1.026751,
-					z: 0.0513153076,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_25b_7',
+				name: 'Song_25b_7_44x38_1',
 				nameShort: 'Song_25b',
 				size: {
 					x: 44.0,
@@ -49143,9 +42826,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_02_top_4',
+				name: 'Library_02_top_4_206x27_1',
 				nameShort: 'Library_02_top',
 				size: {
 					x: 206.0,
@@ -49159,21 +42844,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_02_top_4',
-				nameShort: 'Library_02_top',
-				size: {
-					x: 206.0,
-					y: 27.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_02_top_4',
+				name: 'Library_02_top_4_206x27_1',
 				nameShort: 'Library_02_top',
 				size: {
 					x: 206.0,
@@ -49230,10 +42901,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Rough',
@@ -49278,9 +42950,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Coral_10_9',
+				name: 'Coral_10_9_193x44_26',
 				nameShort: 'Coral_10',
 				size: {
 					x: 193.0,
@@ -49294,21 +42968,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Coral_10_5',
-				nameShort: 'Coral_10',
-				size: {
-					x: 193.0,
-					y: 44.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Coral_10_5',
+				name: 'Coral_10_5_193x44_1',
 				nameShort: 'Coral_10',
 				size: {
 					x: 193.0,
@@ -49396,9 +43056,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_19_entrance_51',
+				name: 'Song_19_entrance_51_116x186_32',
 				nameShort: 'Song_19_entrance',
 				size: {
 					x: 116.0,
@@ -49412,21 +43074,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_19_entrance_7',
-				nameShort: 'Song_19_entrance',
-				size: {
-					x: 116.0,
-					y: 186.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.29289317,
-					z: 0.0,
-					w: 63.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_19_entrance_7',
+				name: 'Song_19_entrance_7_116x186_1',
 				nameShort: 'Song_19_entrance',
 				size: {
 					x: 116.0,
@@ -49483,9 +43131,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_19_entrance_top_7',
+				name: 'Song_19_entrance_top_7_116x170_1',
 				nameShort: 'Song_19_entrance_top',
 				size: {
 					x: 116.0,
@@ -49499,7 +43149,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_19_entrance_7',
+				name: 'Song_19_entrance_7_116x186_1',
 				nameShort: 'Song_19_entrance',
 				size: {
 					x: 116.0,
@@ -49510,20 +43160,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 3.29289317,
 					z: 0.0,
 					w: 63.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_19_entrance_top_7',
-				nameShort: 'Song_19_entrance_top',
-				size: {
-					x: 116.0,
-					y: 170.0,
-				},
-				padding: {
-					x: 4.07612038,
-					y: 62.0761223,
-					z: 4.02674866,
-					w: 0.0,
 				},
 			},
 			altFullSprites: null,
@@ -49570,9 +43206,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09499884,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89500046,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_01c_door_4',
+				name: 'Song_01c_door_4_7x19_1',
 				nameShort: 'Song_01c_door',
 				size: {
 					x: 7.0,
@@ -49586,20 +43224,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_01c_door_4',
-				nameShort: 'Song_01c_door',
-				size: {
-					x: 7.0,
-					y: 19.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -49644,9 +43268,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_01_2_7',
+				name: 'Song_01_2_7_93x56_1',
 				nameShort: 'Song_01_2',
 				size: {
 					x: 93.0,
@@ -49660,20 +43286,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_01_2_7',
-				nameShort: 'Song_01_2',
-				size: {
-					x: 93.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 4.07611847,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -49749,9 +43361,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_01_11',
+				name: 'Under_01_11_92x263_5',
 				nameShort: 'Under_01',
 				size: {
 					x: 92.0,
@@ -49765,21 +43379,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_01_7',
-				nameShort: 'Under_01',
-				size: {
-					x: 92.0,
-					y: 263.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 192.076126,
-					z: 26.0267487,
-					w: 17.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_01_7',
+				name: 'Under_01_7_92x263_1',
 				nameShort: 'Under_01',
 				size: {
 					x: 92.0,
@@ -49836,9 +43436,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_22_right_12',
+				name: 'Shellwood_22_right_12_215x173_2',
 				nameShort: 'Shellwood_22_right',
 				size: {
 					x: 215.0,
@@ -49852,20 +43454,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_22_right_12',
-				nameShort: 'Shellwood_22_right',
-				size: {
-					x: 215.0,
-					y: 173.0,
-				},
-				padding: {
-					x: 180.076126,
-					y: 41.0761223,
-					z: 0.0513153076,
-					w: 44.02675,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -49910,9 +43498,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_01_top_right_5',
+				name: 'Under_01_top_right_5_92x263_1',
 				nameShort: 'Under_01_top_right',
 				size: {
 					x: 92.0,
@@ -49926,7 +43516,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_01_7',
+				name: 'Under_01_7_92x263_1',
 				nameShort: 'Under_01',
 				size: {
 					x: 92.0,
@@ -49937,20 +43527,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 192.076126,
 					z: 26.0267487,
 					w: 17.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_01_top_right_5',
-				nameShort: 'Under_01_top_right',
-				size: {
-					x: 92.0,
-					y: 263.0,
-				},
-				padding: {
-					x: 16.07612,
-					y: 114.076118,
-					z: 3.07611847,
-					w: 0.0,
 				},
 			},
 			altFullSprites: null,
@@ -49997,9 +43573,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_01_bot_9',
+				name: 'Under_01_bot_9_92x263_1',
 				nameShort: 'Under_01_bot',
 				size: {
 					x: 92.0,
@@ -50013,21 +43591,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_01_bot_9',
-				nameShort: 'Under_01_bot',
-				size: {
-					x: 92.0,
-					y: 263.0,
-				},
-				padding: {
-					x: 2.042908,
-					y: 8.118325,
-					z: 0.0,
-					w: 70.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_01_bot_9',
+				name: 'Under_01_bot_9_92x263_1',
 				nameShort: 'Under_01_bot',
 				size: {
 					x: 92.0,
@@ -50115,9 +43679,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_22_6',
+				name: 'Shellwood_22_6_301x63_1',
 				nameShort: 'Shellwood_22',
 				size: {
 					x: 301.0,
@@ -50131,20 +43697,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_22_6',
-				nameShort: 'Shellwood_22',
-				size: {
-					x: 301.0,
-					y: 63.0,
-				},
-				padding: {
-					x: 110.026749,
-					y: 2.07612038,
-					z: 0.0,
-					w: 24.0267563,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -50189,9 +43741,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_27_6',
+				name: 'Under_27_6_216x157_1',
 				nameShort: 'Under_27',
 				size: {
 					x: 216.0,
@@ -50205,20 +43759,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_27_6',
-				nameShort: 'Under_27',
-				size: {
-					x: 216.0,
-					y: 157.0,
-				},
-				padding: {
-					x: 98.07612,
-					y: 95.02675,
-					z: 0.0,
-					w: 1.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -50263,9 +43803,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_27_bot_7',
+				name: 'Under_27_bot_7_216x157_1',
 				nameShort: 'Under_27_bot',
 				size: {
 					x: 216.0,
@@ -50279,20 +43821,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_27_bot_7',
-				nameShort: 'Under_27_bot',
-				size: {
-					x: 216.0,
-					y: 157.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.07612038,
-					z: 2.076126,
-					w: 51.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -50337,10 +43865,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -50385,9 +43914,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Shellwood_22_left_10',
+				name: 'Shellwood_22_left_10_301x63_1',
 				nameShort: 'Shellwood_22_left',
 				size: {
 					x: 301.0,
@@ -50401,20 +43932,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Shellwood_22_left_10',
-				nameShort: 'Shellwood_22_left',
-				size: {
-					x: 301.0,
-					y: 63.0,
-				},
-				padding: {
-					x: 1.0761205,
-					y: 1.0761205,
-					z: 172.076126,
-					w: 12.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -50459,9 +43976,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_01b_4',
+				name: 'Under_01b_4_75x30_6',
 				nameShort: 'Under_01b',
 				size: {
 					x: 75.0,
@@ -50475,21 +43994,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_01b_4',
-				nameShort: 'Under_01b',
-				size: {
-					x: 75.0,
-					y: 28.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_01b_4',
+				name: 'Under_01b_4_75x28_1',
 				nameShort: 'Under_01b',
 				size: {
 					x: 75.0,
@@ -50577,9 +44082,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_02_top_rough_25',
+				name: 'Under_02_top_rough_25_73x381_7',
 				nameShort: 'Under_02_top_rough',
 				size: {
 					x: 73.0,
@@ -50593,21 +44100,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_02_top_7',
-				nameShort: 'Under_02_top',
-				size: {
-					x: 73.0,
-					y: 381.0,
-				},
-				padding: {
-					x: 9.026751,
-					y: 257.0129,
-					z: 0.0,
-					w: 6.076111,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_02_top_7',
+				name: 'Under_02_top_7_73x381_1',
 				nameShort: 'Under_02_top',
 				size: {
 					x: 73.0,
@@ -50664,9 +44157,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_02_35',
+				name: 'Under_02_35_73x381_18',
 				nameShort: 'Under_02',
 				size: {
 					x: 73.0,
@@ -50680,21 +44175,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_02_7',
-				nameShort: 'Under_02',
-				size: {
-					x: 73.0,
-					y: 381.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 50.0761223,
-					z: 0.0,
-					w: 94.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_02_7',
+				name: 'Under_02_7_73x381_1',
 				nameShort: 'Under_02',
 				size: {
 					x: 73.0,
@@ -50751,9 +44232,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_02_bot_17',
+				name: 'Under_02_bot_17_73x375_5',
 				nameShort: 'Under_02_bot',
 				size: {
 					x: 73.0,
@@ -50767,21 +44250,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_02_bot_5',
-				nameShort: 'Under_02_bot',
-				size: {
-					x: 73.0,
-					y: 373.0,
-				},
-				padding: {
-					x: 10.0267506,
-					y: 0.0,
-					z: 0.0,
-					w: 275.0761,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_02_bot_5',
+				name: 'Under_02_bot_5_73x373_1',
 				nameShort: 'Under_02_bot',
 				size: {
 					x: 73.0,
@@ -50838,9 +44307,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_03_x_4',
+				name: 'Under_03_x_4_115x26_4',
 				nameShort: 'Under_03_x',
 				size: {
 					x: 115.0,
@@ -50854,21 +44325,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_03_x_4',
-				nameShort: 'Under_03_x',
-				size: {
-					x: 115.0,
-					y: 24.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_03_x_4',
+				name: 'Under_03_x_4_115x24_1',
 				nameShort: 'Under_03_x',
 				size: {
 					x: 115.0,
@@ -50925,9 +44382,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_03_2_4',
+				name: 'Under_03_2_4_76x23_1',
 				nameShort: 'Under_03_2',
 				size: {
 					x: 76.0,
@@ -50941,20 +44400,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_03_2_4',
-				nameShort: 'Under_03_2',
-				size: {
-					x: 76.0,
-					y: 23.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -50999,9 +44444,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_03_10',
+				name: 'Under_03_10_153x32_19',
 				nameShort: 'Under_03',
 				size: {
 					x: 153.0,
@@ -51015,21 +44462,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_03_6',
-				nameShort: 'Under_03',
-				size: {
-					x: 153.0,
-					y: 32.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_03_6',
+				name: 'Under_03_6_153x32_1',
 				nameShort: 'Under_03',
 				size: {
 					x: 153.0,
@@ -51086,9 +44519,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_03c_23',
+				name: 'Under_03c_23_49x105_13',
 				nameShort: 'Under_03c',
 				size: {
 					x: 49.0,
@@ -51102,21 +44537,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_03c_7',
-				nameShort: 'Under_03c',
-				size: {
-					x: 49.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_03c_7',
+				name: 'Under_03c_7_49x103_1',
 				nameShort: 'Under_03c',
 				size: {
 					x: 49.0,
@@ -51173,9 +44594,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_03d_5',
+				name: 'Under_03d_5_96x49_1',
 				nameShort: 'Under_03d',
 				size: {
 					x: 96.0,
@@ -51189,20 +44612,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_03d_5',
-				nameShort: 'Under_03d',
-				size: {
-					x: 96.0,
-					y: 49.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -51247,9 +44656,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_03d_join_5',
+				name: 'Under_03d_join_5_96x55_1',
 				nameShort: 'Under_03d_join',
 				size: {
 					x: 96.0,
@@ -51263,20 +44674,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_03d_join_5',
-				nameShort: 'Under_03d_join',
-				size: {
-					x: 96.0,
-					y: 55.0,
-				},
-				padding: {
-					x: 77.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 45.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -51321,9 +44718,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_04_11',
+				name: 'Under_04_11_192x50_19',
 				nameShort: 'Under_04',
 				size: {
 					x: 192.0,
@@ -51337,21 +44736,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_04_7',
-				nameShort: 'Under_04',
-				size: {
-					x: 192.0,
-					y: 46.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_04_7',
+				name: 'Under_04_7_192x46_1',
 				nameShort: 'Under_04',
 				size: {
 					x: 192.0,
@@ -51408,9 +44793,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_05_25',
+				name: 'Under_05_25_56x246_19',
 				nameShort: 'Under_05',
 				size: {
 					x: 56.0,
@@ -51424,21 +44811,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_05_4',
-				nameShort: 'Under_05',
-				size: {
-					x: 56.0,
-					y: 246.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 85.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_05_4',
+				name: 'Under_05_4_56x246_1',
 				nameShort: 'Under_05',
 				size: {
 					x: 56.0,
@@ -51495,9 +44868,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_05_2_7',
+				name: 'Under_05_2_7_56x246_1',
 				nameShort: 'Under_05_2',
 				size: {
 					x: 56.0,
@@ -51511,20 +44886,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_05_2_7',
-				nameShort: 'Under_05_2',
-				size: {
-					x: 56.0,
-					y: 246.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 7.07612038,
-					z: 0.0,
-					w: 143.076111,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -51569,9 +44930,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_06_19',
+				name: 'Under_06_19_241x42_17',
 				nameShort: 'Under_06',
 				size: {
 					x: 241.0,
@@ -51585,21 +44948,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_06_8',
-				nameShort: 'Under_06',
-				size: {
-					x: 241.0,
-					y: 42.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_06_8',
+				name: 'Under_06_8_241x42_1',
 				nameShort: 'Under_06',
 				size: {
 					x: 241.0,
@@ -51656,9 +45005,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_07_17',
+				name: 'Under_07_17_153x49_12',
 				nameShort: 'Under_07',
 				size: {
 					x: 153.0,
@@ -51672,21 +45023,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_07_6',
-				nameShort: 'Under_07',
-				size: {
-					x: 153.0,
-					y: 49.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 6.07612038,
-					z: 0.0,
-					w: 2.02675629,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_07_6',
+				name: 'Under_07_6_153x49_1',
 				nameShort: 'Under_07',
 				size: {
 					x: 153.0,
@@ -51743,9 +45080,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_07c_8',
+				name: 'Under_07c_8_138x168_1',
 				nameShort: 'Under_07c',
 				size: {
 					x: 138.0,
@@ -51759,20 +45098,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_07c_8',
-				nameShort: 'Under_07c',
-				size: {
-					x: 138.0,
-					y: 168.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 43.0761223,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -51848,9 +45173,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_08_15',
+				name: 'Under_08_15_233x102_9',
 				nameShort: 'Under_08',
 				size: {
 					x: 233.0,
@@ -51864,21 +45191,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_08_8',
-				nameShort: 'Under_08',
-				size: {
-					x: 233.0,
-					y: 102.0,
-				},
-				padding: {
-					x: 112.026749,
-					y: 22.07612,
-					z: 27.0429077,
-					w: 38.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_08_8',
+				name: 'Under_08_8_233x102_1',
 				nameShort: 'Under_08',
 				size: {
 					x: 233.0,
@@ -51935,9 +45248,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_08_b_7',
+				name: 'Under_08_b_7_127x77_1',
 				nameShort: 'Under_08_b',
 				size: {
 					x: 127.0,
@@ -51951,20 +45266,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_08_b_7',
-				nameShort: 'Under_08_b',
-				size: {
-					x: 127.0,
-					y: 77.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 25.0429077,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -52040,9 +45341,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_10_10',
+				name: 'Under_10_10_131x32_10',
 				nameShort: 'Under_10',
 				size: {
 					x: 131.0,
@@ -52056,21 +45359,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_10_4',
-				nameShort: 'Under_10',
-				size: {
-					x: 131.0,
-					y: 30.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_10_4',
+				name: 'Under_10_4_131x30_1',
 				nameShort: 'Under_10',
 				size: {
 					x: 131.0,
@@ -52127,9 +45416,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_11_12',
+				name: 'Under_11_12_131x32_10',
 				nameShort: 'Under_11',
 				size: {
 					x: 131.0,
@@ -52143,21 +45434,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_11_4',
-				nameShort: 'Under_11',
-				size: {
-					x: 131.0,
-					y: 30.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_11_4',
+				name: 'Under_11_4_131x30_1',
 				nameShort: 'Under_11',
 				size: {
 					x: 131.0,
@@ -52214,9 +45491,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_12_9',
+				name: 'Under_12_9_66x41_6',
 				nameShort: 'Under_12',
 				size: {
 					x: 66.0,
@@ -52230,21 +45509,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_12_6',
-				nameShort: 'Under_12',
-				size: {
-					x: 66.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_12_6',
+				name: 'Under_12_6_66x39_1',
 				nameShort: 'Under_12',
 				size: {
 					x: 66.0,
@@ -52301,9 +45566,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_13_empty_5',
+				name: 'Under_13_empty_5_83x211_0',
 				nameShort: 'Under_13_empty',
 				size: {
 					x: 83.0,
@@ -52317,20 +45584,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_13_empty_5',
-				nameShort: 'Under_13_empty',
-				size: {
-					x: 83.0,
-					y: 211.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 77.07612,
-					w: 205.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -52375,9 +45628,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_14_10',
+				name: 'Under_14_10_151x32_8',
 				nameShort: 'Under_14',
 				size: {
 					x: 151.0,
@@ -52391,21 +45646,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_14_5',
-				nameShort: 'Under_14',
-				size: {
-					x: 151.0,
-					y: 32.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 41.07612,
-					w: 1.07612038,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_14_5',
+				name: 'Under_14_5_151x32_1',
 				nameShort: 'Under_14',
 				size: {
 					x: 151.0,
@@ -52462,9 +45703,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_14_right_9',
+				name: 'Under_14_right_9_90x38_1',
 				nameShort: 'Under_14_right',
 				size: {
 					x: 90.0,
@@ -52478,7 +45721,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -52523,9 +45765,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_13_left_24',
+				name: 'Under_13_left_24_83x211_7',
 				nameShort: 'Under_13_left',
 				size: {
 					x: 83.0,
@@ -52539,21 +45783,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_13_left_5',
-				nameShort: 'Under_13_left',
-				size: {
-					x: 83.0,
-					y: 211.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 25.07612,
-					z: 42.0025177,
-					w: 20.0267487,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_13_left_5',
+				name: 'Under_13_left_5_83x211_1',
 				nameShort: 'Under_13_left',
 				size: {
 					x: 83.0,
@@ -52610,9 +45840,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_13_5',
+				name: 'Under_13_5_85x211_1',
 				nameShort: 'Under_13',
 				size: {
 					x: 85.0,
@@ -52626,20 +45858,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_13_5',
-				nameShort: 'Under_13',
-				size: {
-					x: 85.0,
-					y: 211.0,
-				},
-				padding: {
-					x: 2.026751,
-					y: 26.0429077,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -52684,9 +45902,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_13_bot_6',
+				name: 'Under_13_bot_6_85x211_1',
 				nameShort: 'Under_13_bot',
 				size: {
 					x: 85.0,
@@ -52700,20 +45920,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_13_bot_6',
-				nameShort: 'Under_13_bot',
-				size: {
-					x: 85.0,
-					y: 211.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 161.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -52758,9 +45964,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_13_right_mid_8',
+				name: 'Under_13_right_mid_8_83x211_1',
 				nameShort: 'Under_13_right_mid',
 				size: {
 					x: 83.0,
@@ -52774,20 +45982,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_13_right_mid_8',
-				nameShort: 'Under_13_right_mid',
-				size: {
-					x: 83.0,
-					y: 211.0,
-				},
-				padding: {
-					x: 40.0761223,
-					y: 82.07612,
-					z: 0.0,
-					w: 45.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -52832,9 +46026,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_16_7',
+				name: 'Under_16_7_122x103_3',
 				nameShort: 'Under_16',
 				size: {
 					x: 122.0,
@@ -52848,21 +46044,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_16_5',
-				nameShort: 'Under_16',
-				size: {
-					x: 122.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 74.07612,
-					y: 53.0761223,
-					z: 0.0,
-					w: 17.0761185,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_16_5',
+				name: 'Under_16_5_122x103_1',
 				nameShort: 'Under_16',
 				size: {
 					x: 122.0,
@@ -52919,9 +46101,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_16_b_6',
+				name: 'Under_16_b_6_126x103_1',
 				nameShort: 'Under_16_b',
 				size: {
 					x: 126.0,
@@ -52935,20 +46119,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_16_b_6',
-				nameShort: 'Under_16_b',
-				size: {
-					x: 126.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 58.0267525,
-					y: 18.07612,
-					z: 0.0761261,
-					w: 17.0761185,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -52993,9 +46163,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_17_10',
+				name: 'Under_17_10_279x84_1',
 				nameShort: 'Under_17',
 				size: {
 					x: 279.0,
@@ -53009,20 +46181,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_17_10',
-				nameShort: 'Under_17',
-				size: {
-					x: 279.0,
-					y: 84.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53098,9 +46256,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_17_2_4',
+				name: 'Under_17_2_4_66x24_1',
 				nameShort: 'Under_17_2',
 				size: {
 					x: 66.0,
@@ -53114,20 +46274,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_17_2_4',
-				nameShort: 'Under_17_2',
-				size: {
-					x: 66.0,
-					y: 24.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53172,9 +46318,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_17_top_13',
+				name: 'Under_17_top_13_279x84_1',
 				nameShort: 'Under_17_top',
 				size: {
 					x: 279.0,
@@ -53188,20 +46336,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_17_top_13',
-				nameShort: 'Under_17_top',
-				size: {
-					x: 279.0,
-					y: 84.0,
-				},
-				padding: {
-					x: 24.0541267,
-					y: 36.0429077,
-					z: 49.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53246,9 +46380,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_18_2_7',
+				name: 'Under_18_2_7_266x83_1',
 				nameShort: 'Under_18_2',
 				size: {
 					x: 266.0,
@@ -53262,20 +46398,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_18_2_7',
-				nameShort: 'Under_18_2',
-				size: {
-					x: 266.0,
-					y: 83.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 6.01291275,
-					z: 191.026749,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53320,9 +46442,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_18_7',
+				name: 'Under_18_7_211x83_1',
 				nameShort: 'Under_18',
 				size: {
 					x: 211.0,
@@ -53336,20 +46460,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_18_7',
-				nameShort: 'Under_18',
-				size: {
-					x: 211.0,
-					y: 83.0,
-				},
-				padding: {
-					x: 30.07612,
-					y: 6.05131674,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53425,9 +46535,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_19_5',
+				name: 'Under_19_5_286x37_1',
 				nameShort: 'Under_19',
 				size: {
 					x: 286.0,
@@ -53441,20 +46553,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_19_5',
-				nameShort: 'Under_19',
-				size: {
-					x: 286.0,
-					y: 37.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53499,9 +46597,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_19b_9',
+				name: 'Under_19b_9_215x43_1',
 				nameShort: 'Under_19b',
 				size: {
 					x: 215.0,
@@ -53515,20 +46615,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_19b_9',
-				nameShort: 'Under_19b',
-				size: {
-					x: 215.0,
-					y: 43.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 0.0267509818,
-					z: 0.0,
-					w: 0.0761222839,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53573,9 +46659,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_19c_5',
+				name: 'Under_19c_5_61x111_1',
 				nameShort: 'Under_19c',
 				size: {
 					x: 61.0,
@@ -53589,20 +46677,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_19c_5',
-				nameShort: 'Under_19c',
-				size: {
-					x: 61.0,
-					y: 111.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53647,10 +46721,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53695,9 +46770,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_21_6',
+				name: 'Under_21_6_129x40_1',
 				nameShort: 'Under_21',
 				size: {
 					x: 129.0,
@@ -53711,20 +46788,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_21_6',
-				nameShort: 'Under_21',
-				size: {
-					x: 129.0,
-					y: 40.0,
-				},
-				padding: {
-					x: 3.07612038,
-					y: 6.07612038,
-					z: 0.0,
-					w: 1.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53769,9 +46832,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_22_16',
+				name: 'Under_22_16_158x41_5',
 				nameShort: 'Under_22',
 				size: {
 					x: 158.0,
@@ -53785,21 +46850,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Under_22_9',
-				nameShort: 'Under_22',
-				size: {
-					x: 158.0,
-					y: 41.0,
-				},
-				padding: {
-					x: 108.076118,
-					y: 1.0761205,
-					z: 0.0,
-					w: 6.07612228,
-				},
-			},
-			rendererSprite: {
-				name: 'Under_22_9',
+				name: 'Under_22_9_158x41_1',
 				nameShort: 'Under_22',
 				size: {
 					x: 158.0,
@@ -53856,9 +46907,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Under_X_5',
+				name: 'Under_X_5_261x56_1',
 				nameShort: 'Under_X',
 				size: {
 					x: 261.0,
@@ -53872,20 +46925,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Under_X_5',
-				nameShort: 'Under_X',
-				size: {
-					x: 261.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 23.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 4.05131531,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -53961,9 +47000,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_11_8',
+				name: 'Library_11_8_78x474_1',
 				nameShort: 'Library_11',
 				size: {
 					x: 78.0,
@@ -53977,20 +47018,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_11_8',
-				nameShort: 'Library_11',
-				size: {
-					x: 78.0,
-					y: 474.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 136.012909,
-					z: 26.0761223,
-					w: 2.026764,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54066,9 +47093,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_11_blank_5',
+				name: 'Library_11_blank_5_72x357_0',
 				nameShort: 'Library_11_blank',
 				size: {
 					x: 72.0,
@@ -54082,20 +47111,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_11_blank_5',
-				nameShort: 'Library_11_blank',
-				size: {
-					x: 72.0,
-					y: 357.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 66.07612,
-					w: 351.0761,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54140,9 +47155,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_11_bot_7',
+				name: 'Library_11_bot_7_72x357_1',
 				nameShort: 'Library_11_bot',
 				size: {
 					x: 72.0,
@@ -54156,20 +47173,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_11_bot_7',
-				nameShort: 'Library_11_bot',
-				size: {
-					x: 72.0,
-					y: 357.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 0.0,
-					z: 0.0,
-					w: 318.0761,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54214,9 +47217,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_11_2_7',
+				name: 'Library_11_2_7_69x357_1',
 				nameShort: 'Library_11_2',
 				size: {
 					x: 69.0,
@@ -54230,20 +47235,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_11_2_7',
-				nameShort: 'Library_11_2',
-				size: {
-					x: 69.0,
-					y: 357.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 150.076126,
-					z: 0.0,
-					w: 44.07611,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54319,9 +47310,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_11b_9',
+				name: 'Library_11b_9_185x250_1',
 				nameShort: 'Library_11b',
 				size: {
 					x: 185.0,
@@ -54335,20 +47328,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_11b_9',
-				nameShort: 'Library_11b',
-				size: {
-					x: 185.0,
-					y: 250.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 115.026749,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54393,9 +47372,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_11b_bot_6',
+				name: 'Library_11b_bot_6_185x250_1',
 				nameShort: 'Library_11b_bot',
 				size: {
 					x: 185.0,
@@ -54409,20 +47390,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_11b_bot_6',
-				nameShort: 'Library_11b_bot',
-				size: {
-					x: 185.0,
-					y: 250.0,
-				},
-				padding: {
-					x: 39.0761223,
-					y: 0.0,
-					z: 76.056366,
-					w: 106.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54467,9 +47434,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_12_4_5',
+				name: 'Library_12_4_5_217x185_0',
 				nameShort: 'Library_12_4',
 				size: {
 					x: 217.0,
@@ -54483,20 +47452,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_12_4_5',
-				nameShort: 'Library_12_4',
-				size: {
-					x: 217.0,
-					y: 185.0,
-				},
-				padding: {
-					x: 187.012909,
-					y: 138.051315,
-					z: 25.149353,
-					w: 42.01291,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54541,9 +47496,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_12_2_4',
+				name: 'Library_12_2_4_124x26_1',
 				nameShort: 'Library_12_2',
 				size: {
 					x: 124.0,
@@ -54557,20 +47514,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_12_2_4',
-				nameShort: 'Library_12_2',
-				size: {
-					x: 124.0,
-					y: 26.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54615,9 +47558,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_12_3_7',
+				name: 'Library_12_3_7_91x37_1',
 				nameShort: 'Library_12_3',
 				size: {
 					x: 91.0,
@@ -54631,20 +47576,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_12_3_7',
-				nameShort: 'Library_12_3',
-				size: {
-					x: 91.0,
-					y: 37.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 0.07611847,
-					w: 1.02675247,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54689,9 +47620,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_12_11',
+				name: 'Library_12_11_217x191_1',
 				nameShort: 'Library_12',
 				size: {
 					x: 217.0,
@@ -54705,20 +47638,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_12_11',
-				nameShort: 'Library_12',
-				size: {
-					x: 217.0,
-					y: 191.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 50.0429077,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54763,9 +47682,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00400161743,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_12_shortcut_8',
+				name: 'Library_12_shortcut_8_217x191_1',
 				nameShort: 'Library_12_shortcut',
 				size: {
 					x: 217.0,
@@ -54779,7 +47700,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54824,9 +47744,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_12b_8',
+				name: 'Library_12b_8_339x165_1',
 				nameShort: 'Library_12b',
 				size: {
 					x: 339.0,
@@ -54840,20 +47762,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_12b_8',
-				nameShort: 'Library_12b',
-				size: {
-					x: 339.0,
-					y: 165.0,
-				},
-				padding: {
-					x: 196.076126,
-					y: 18.07612,
-					z: 0.07611084,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -54929,9 +47837,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.101598263,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.9016,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Dust_09_top_understore_4',
+				name: 'Dust_09_top_understore_4_21x281_9',
 				nameShort: 'Dust_09_top_understore',
 				size: {
 					x: 21.0,
@@ -54945,20 +47855,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Dust_09_top_understore_4',
-				nameShort: 'Dust_09_top_understore',
-				size: {
-					x: 21.0,
-					y: 281.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -55034,9 +47930,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_01_rough_12',
+				name: 'Library_01_rough_12_102x186_8',
 				nameShort: 'Library_01_rough',
 				size: {
 					x: 102.0,
@@ -55050,21 +47948,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_01_6',
-				nameShort: 'Library_01',
-				size: {
-					x: 102.0,
-					y: 186.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 156.2929,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_01_6',
+				name: 'Library_01_6_102x186_1',
 				nameShort: 'Library_01',
 				size: {
 					x: 102.0,
@@ -55121,9 +48005,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_01_bot_rough_16',
+				name: 'Library_01_bot_rough_16_102x188_16',
 				nameShort: 'Library_01_bot_rough',
 				size: {
 					x: 102.0,
@@ -55137,21 +48023,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_01_bot_6',
-				nameShort: 'Library_01_bot',
-				size: {
-					x: 102.0,
-					y: 188.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 31.056366,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_01_bot_6',
+				name: 'Library_01_bot_6_102x188_1',
 				nameShort: 'Library_01_bot',
 				size: {
 					x: 102.0,
@@ -55208,9 +48080,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_02_3_5',
+				name: 'Library_02_3_5_200x96_0',
 				nameShort: 'Library_02_3',
 				size: {
 					x: 200.0,
@@ -55224,20 +48098,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_02_3_5',
-				nameShort: 'Library_02_3',
-				size: {
-					x: 200.0,
-					y: 96.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 194.076126,
-					w: 90.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -55282,9 +48142,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_02_rough_10',
+				name: 'Library_02_rough_10_200x96_7',
 				nameShort: 'Library_02_rough',
 				size: {
 					x: 200.0,
@@ -55298,21 +48160,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_02_7',
-				nameShort: 'Library_02',
-				size: {
-					x: 200.0,
-					y: 96.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 19.0761185,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_02_7',
+				name: 'Library_02_7_200x96_1',
 				nameShort: 'Library_02',
 				size: {
 					x: 200.0,
@@ -55400,9 +48248,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_03_3_5',
+				name: 'Library_03_3_5_204x104_0',
 				nameShort: 'Library_03_3',
 				size: {
 					x: 204.0,
@@ -55416,20 +48266,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_03_3_5',
-				nameShort: 'Library_03_3',
-				size: {
-					x: 204.0,
-					y: 104.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 198.076126,
-					w: 98.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -55474,9 +48310,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_03_5',
+				name: 'Library_03_5_204x104_1',
 				nameShort: 'Library_03',
 				size: {
 					x: 204.0,
@@ -55490,20 +48328,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_03_5',
-				nameShort: 'Library_03',
-				size: {
-					x: 204.0,
-					y: 104.0,
-				},
-				padding: {
-					x: 71.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 40.0129128,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -55579,9 +48403,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_03_top_7',
+				name: 'Library_03_top_7_204x104_1',
 				nameShort: 'Library_03_top',
 				size: {
 					x: 204.0,
@@ -55595,20 +48421,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_03_top_7',
-				nameShort: 'Library_03_top',
-				size: {
-					x: 204.0,
-					y: 104.0,
-				},
-				padding: {
-					x: 55.0761223,
-					y: 36.0761223,
-					z: 28.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -55653,9 +48465,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_04_top_rough_30',
+				name: 'Library_04_top_rough_30_114x376_21',
 				nameShort: 'Library_04_top_rough',
 				size: {
 					x: 114.0,
@@ -55669,21 +48483,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_04_14',
-				nameShort: 'Library_04',
-				size: {
-					x: 114.0,
-					y: 376.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 145.012909,
-					z: 0.0,
-					w: 30.07611,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_04_14',
+				name: 'Library_04_14_114x376_1',
 				nameShort: 'Library_04',
 				size: {
 					x: 114.0,
@@ -55740,9 +48540,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_04_bot_8',
+				name: 'Library_04_bot_8_114x376_1',
 				nameShort: 'Library_04_bot',
 				size: {
 					x: 114.0,
@@ -55756,20 +48558,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_04_bot_8',
-				nameShort: 'Library_04_bot',
-				size: {
-					x: 114.0,
-					y: 376.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0129125714,
-					z: 0.0,
-					w: 302.026733,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -55814,9 +48602,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_04_mid_rough_30',
+				name: 'Library_04_mid_rough_30_114x376_14',
 				nameShort: 'Library_04_mid_rough',
 				size: {
 					x: 114.0,
@@ -55830,21 +48620,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_04_center_8',
-				nameShort: 'Library_04_center',
-				size: {
-					x: 114.0,
-					y: 376.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 45.0513153,
-					z: 0.0,
-					w: 142.012909,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_04_center_8',
+				name: 'Library_04_center_8_114x376_1',
 				nameShort: 'Library_04_center',
 				size: {
 					x: 114.0,
@@ -55901,9 +48677,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_04_top_10',
+				name: 'Library_04_top_10_110x83_1',
 				nameShort: 'Library_04_top',
 				size: {
 					x: 110.0,
@@ -55917,20 +48695,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_04_top_10',
-				nameShort: 'Library_04_top',
-				size: {
-					x: 110.0,
-					y: 83.0,
-				},
-				padding: {
-					x: 1.05131674,
-					y: 12.0362854,
-					z: 9.076118,
-					w: 25.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -56006,9 +48770,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_05_rough_4',
+				name: 'Library_05_rough_4_76x26_4',
 				nameShort: 'Library_05_rough',
 				size: {
 					x: 76.0,
@@ -56022,21 +48788,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_05_4',
-				nameShort: 'Library_05',
-				size: {
-					x: 76.0,
-					y: 26.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_05_4',
+				name: 'Library_05_4_76x26_1',
 				nameShort: 'Library_05',
 				size: {
 					x: 76.0,
@@ -56093,9 +48845,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_05_3_rough_16',
+				name: 'Library_05_3_rough_16_76x132_4',
 				nameShort: 'Library_05_3_rough',
 				size: {
 					x: 76.0,
@@ -56109,21 +48863,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_05_3_6',
-				nameShort: 'Library_05_3',
-				size: {
-					x: 76.0,
-					y: 132.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 76.29289,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_05_3_6',
+				name: 'Library_05_3_6_76x132_1',
 				nameShort: 'Library_05_3',
 				size: {
 					x: 76.0,
@@ -56180,9 +48920,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_05_2_8',
+				name: 'Library_05_2_8_64x75_1',
 				nameShort: 'Library_05_2',
 				size: {
 					x: 64.0,
@@ -56196,20 +48938,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_05_2_8',
-				nameShort: 'Library_05_2',
-				size: {
-					x: 64.0,
-					y: 75.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 4.07612038,
-					z: 0.0,
-					w: 0.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -56254,9 +48982,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_06_rough_18',
+				name: 'Library_06_rough_18_108x121_11',
 				nameShort: 'Library_06_rough',
 				size: {
 					x: 108.0,
@@ -56270,21 +49000,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_06_8',
-				nameShort: 'Library_06',
-				size: {
-					x: 108.0,
-					y: 121.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_06_8',
+				name: 'Library_06_8_108x121_1',
 				nameShort: 'Library_06',
 				size: {
 					x: 108.0,
@@ -56341,9 +49057,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_06_top_right_4',
+				name: 'Library_06_top_right_4_36x30_1',
 				nameShort: 'Library_06_top_right',
 				size: {
 					x: 36.0,
@@ -56357,20 +49075,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_06_top_right_4',
-				nameShort: 'Library_06_top_right',
-				size: {
-					x: 36.0,
-					y: 30.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -56415,9 +49119,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_07_9',
+				name: 'Library_07_9_129x283_1',
 				nameShort: 'Library_07',
 				size: {
 					x: 129.0,
@@ -56431,20 +49137,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_07_9',
-				nameShort: 'Library_07',
-				size: {
-					x: 129.0,
-					y: 283.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -56520,9 +49212,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_08_5',
+				name: 'Library_08_5_191x60_1',
 				nameShort: 'Library_08',
 				size: {
 					x: 191.0,
@@ -56536,20 +49230,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_08_5',
-				nameShort: 'Library_08',
-				size: {
-					x: 191.0,
-					y: 60.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0761204958,
-					z: 35.0761261,
-					w: 0.0761222839,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -56594,9 +49274,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_08_right_5',
+				name: 'Library_08_right_5_45x40_1',
 				nameShort: 'Library_08_right',
 				size: {
 					x: 45.0,
@@ -56610,20 +49292,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_08_right_5',
-				nameShort: 'Library_08_right',
-				size: {
-					x: 45.0,
-					y: 40.0,
-				},
-				padding: {
-					x: 12.07612,
-					y: 0.0761204958,
-					z: 0.0,
-					w: 0.0761222839,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -56668,9 +49336,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_09_18',
+				name: 'Library_09_18_269x176_1',
 				nameShort: 'Library_09',
 				size: {
 					x: 269.0,
@@ -56684,21 +49354,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_09_18',
-				nameShort: 'Library_09',
-				size: {
-					x: 269.0,
-					y: 176.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 1.07611084,
-					w: 93.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_09_18',
+				name: 'Library_09_18_269x176_1',
 				nameShort: 'Library_09',
 				size: {
 					x: 269.0,
@@ -56755,9 +49411,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_09_mid_23',
+				name: 'Library_09_mid_23_269x176_1',
 				nameShort: 'Library_09_mid',
 				size: {
 					x: 269.0,
@@ -56771,7 +49429,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_09_18',
+				name: 'Library_09_18_269x176_1',
 				nameShort: 'Library_09',
 				size: {
 					x: 269.0,
@@ -56782,20 +49440,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 1.07611084,
 					w: 93.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_09_mid_23',
-				nameShort: 'Library_09_mid',
-				size: {
-					x: 269.0,
-					y: 176.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 2.026764,
-					w: 62.01291,
 				},
 			},
 			altFullSprites: null,
@@ -56842,9 +49486,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_09_top_8',
+				name: 'Library_09_top_8_265x169_1',
 				nameShort: 'Library_09_top',
 				size: {
 					x: 265.0,
@@ -56858,21 +49504,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_09_top_8',
-				nameShort: 'Library_09_top',
-				size: {
-					x: 265.0,
-					y: 169.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 66.02675,
-					z: 7.076111,
-					w: 0.0267486572,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_09_top_8',
+				name: 'Library_09_top_8_265x169_1',
 				nameShort: 'Library_09_top',
 				size: {
 					x: 265.0,
@@ -56929,9 +49561,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_10_7',
+				name: 'Library_10_7_243x51_1',
 				nameShort: 'Library_10',
 				size: {
 					x: 243.0,
@@ -56945,20 +49579,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_10_7',
-				nameShort: 'Library_10',
-				size: {
-					x: 243.0,
-					y: 51.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 62.0761261,
-					w: 16.0761223,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -57034,9 +49654,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_13_blank_5',
+				name: 'Library_13_blank_5_185x74_0',
 				nameShort: 'Library_13_blank',
 				size: {
 					x: 185.0,
@@ -57050,7 +49672,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_13_7',
+				name: 'Library_13_7_185x74_1',
 				nameShort: 'Library_13',
 				size: {
 					x: 185.0,
@@ -57061,20 +49683,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 29.0129089,
 					w: 28.0761223,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_13_blank_5',
-				nameShort: 'Library_13_blank',
-				size: {
-					x: 185.0,
-					y: 74.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 179.076126,
-					w: 68.07612,
 				},
 			},
 			altFullSprites: null,
@@ -57121,9 +49729,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_13_18',
+				name: 'Library_13_18_185x74_10',
 				nameShort: 'Library_13',
 				size: {
 					x: 185.0,
@@ -57137,21 +49747,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_13_7',
-				nameShort: 'Library_13',
-				size: {
-					x: 185.0,
-					y: 74.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 29.0129089,
-					w: 28.0761223,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_13_7',
+				name: 'Library_13_7_185x74_1',
 				nameShort: 'Library_13',
 				size: {
 					x: 185.0,
@@ -57269,9 +49865,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_10_top_11',
+				name: 'Library_10_top_11_115x39_1',
 				nameShort: 'Library_10_top',
 				size: {
 					x: 115.0,
@@ -57285,20 +49883,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_10_top_11',
-				nameShort: 'Library_10_top',
-				size: {
-					x: 115.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 9.07612,
-					y: 0.0,
-					z: 3.07611847,
-					w: 1.02675247,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -57343,9 +49927,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_13_right_rough_24',
+				name: 'Library_13_right_rough_24_185x80_5',
 				nameShort: 'Library_13_right_rough',
 				size: {
 					x: 185.0,
@@ -57359,21 +49945,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_13_right_7',
-				nameShort: 'Library_13_right',
-				size: {
-					x: 185.0,
-					y: 80.0,
-				},
-				padding: {
-					x: 117.005974,
-					y: 1.0761205,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_13_right_7',
+				name: 'Library_13_right_7_185x80_1',
 				nameShort: 'Library_13_right',
 				size: {
 					x: 185.0,
@@ -57461,9 +50033,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_14_7',
+				name: 'Library_14_7_91x52_1',
 				nameShort: 'Library_14',
 				size: {
 					x: 91.0,
@@ -57477,20 +50051,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_14_7',
-				nameShort: 'Library_14',
-				size: {
-					x: 91.0,
-					y: 52.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 26.0761185,
-					w: 22.0513172,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -57535,9 +50095,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_13b_rough_4',
+				name: 'Library_13b_rough_4_119x28_5',
 				nameShort: 'Library_13b_rough',
 				size: {
 					x: 119.0,
@@ -57551,21 +50113,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Library_13b_4',
-				nameShort: 'Library_13b',
-				size: {
-					x: 119.0,
-					y: 28.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Library_13b_4',
+				name: 'Library_13b_4_119x28_1',
 				nameShort: 'Library_13b',
 				size: {
 					x: 119.0,
@@ -57622,9 +50170,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.00199890137,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_15_7',
+				name: 'Library_15_7_149x37_1',
 				nameShort: 'Library_15',
 				size: {
 					x: 149.0,
@@ -57638,7 +50188,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -57683,9 +50232,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_16_8',
+				name: 'Library_16_8_115x36_1',
 				nameShort: 'Library_16',
 				size: {
 					x: 115.0,
@@ -57699,20 +50250,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_16_8',
-				nameShort: 'Library_16',
-				size: {
-					x: 115.0,
-					y: 36.0,
-				},
-				padding: {
-					x: 53.0267525,
-					y: 0.0761204958,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -57757,9 +50294,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Library_04_one_way_patch_7',
+				name: 'Library_04_one_way_patch_7_114x327_1',
 				nameShort: 'Library_04_one_way_patch',
 				size: {
 					x: 114.0,
@@ -57773,20 +50312,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Library_04_one_way_patch_7',
-				nameShort: 'Library_04_one_way_patch',
-				size: {
-					x: 114.0,
-					y: 327.0,
-				},
-				padding: {
-					x: 91.07612,
-					y: 296.0429,
-					z: 4.07611847,
-					w: 1.07611084,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -57831,9 +50356,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_Dancers_24',
+				name: 'Cog_Dancers_24_135x77_13',
 				nameShort: 'Cog_Dancers',
 				size: {
 					x: 135.0,
@@ -57847,21 +50374,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_Dancers_8',
-				nameShort: 'Cog_Dancers',
-				size: {
-					x: 135.0,
-					y: 77.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 30.0129128,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_Dancers_8',
+				name: 'Cog_Dancers_8_135x77_1',
 				nameShort: 'Cog_Dancers',
 				size: {
 					x: 135.0,
@@ -57997,9 +50510,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_Dancers_Top_Rough_18',
+				name: 'Cog_Dancers_Top_Rough_18_135x77_11',
 				nameShort: 'Cog_Dancers_Top_Rough',
 				size: {
 					x: 135.0,
@@ -58013,21 +50528,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_Dancers_top_6',
-				nameShort: 'Cog_Dancers_top',
-				size: {
-					x: 135.0,
-					y: 77.0,
-				},
-				padding: {
-					x: 8.026751,
-					y: 27.02675,
-					z: 1.0761261,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_Dancers_top_6',
+				name: 'Cog_Dancers_top_6_135x77_1',
 				nameShort: 'Cog_Dancers_top',
 				size: {
 					x: 135.0,
@@ -58102,10 +50603,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Rough',
@@ -58150,9 +50652,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_Pass_4',
+				name: 'Cog_Pass_4_6x28_0',
 				nameShort: 'Cog_Pass',
 				size: {
 					x: 6.0,
@@ -58166,20 +50670,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cog_Pass_4',
-				nameShort: 'Cog_Pass',
-				size: {
-					x: 6.0,
-					y: 28.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -58224,9 +50714,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_04_62',
+				name: 'Cog_04_62_113x266_38',
 				nameShort: 'Cog_04',
 				size: {
 					x: 113.0,
@@ -58240,21 +50732,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_04_7',
-				nameShort: 'Cog_04',
-				size: {
-					x: 113.0,
-					y: 266.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 12.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_04_7',
+				name: 'Cog_04_7_113x266_4',
 				nameShort: 'Cog_04',
 				size: {
 					x: 113.0,
@@ -58311,9 +50789,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_05_26',
+				name: 'Cog_05_26_219x75_13',
 				nameShort: 'Cog_05',
 				size: {
 					x: 219.0,
@@ -58327,21 +50807,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_05_16',
-				nameShort: 'Cog_05',
-				size: {
-					x: 219.0,
-					y: 75.0,
-				},
-				padding: {
-					x: 61.0761223,
-					y: 3.026751,
-					z: 0.0,
-					w: 1.05131531,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_05_16',
+				name: 'Cog_05_16_219x75_1',
 				nameShort: 'Cog_05',
 				size: {
 					x: 219.0,
@@ -58398,9 +50864,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_05_left_11',
+				name: 'Cog_05_left_11_181x81_1',
 				nameShort: 'Cog_05_left',
 				size: {
 					x: 181.0,
@@ -58414,20 +50882,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cog_05_left_11',
-				nameShort: 'Cog_05_left',
-				size: {
-					x: 181.0,
-					y: 81.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 1.0761205,
-					z: 139.076126,
-					w: 0.105575562,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -58503,9 +50957,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_06_14',
+				name: 'Cog_06_14_155x72_14',
 				nameShort: 'Cog_06',
 				size: {
 					x: 155.0,
@@ -58519,21 +50975,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_06_8',
-				nameShort: 'Cog_06',
-				size: {
-					x: 155.0,
-					y: 72.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 32.0761223,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_06_8',
+				name: 'Cog_06_8_155x72_1',
 				nameShort: 'Cog_06',
 				size: {
 					x: 155.0,
@@ -58621,9 +51063,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_07_10',
+				name: 'Cog_07_10_151x120_10',
 				nameShort: 'Cog_07',
 				size: {
 					x: 151.0,
@@ -58637,21 +51081,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_07_6',
-				nameShort: 'Cog_07',
-				size: {
-					x: 151.0,
-					y: 120.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 16.07612,
-					z: 0.0,
-					w: 35.0429077,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_07_6',
+				name: 'Cog_07_6_151x120_1',
 				nameShort: 'Cog_07',
 				size: {
 					x: 151.0,
@@ -58708,9 +51138,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_07b_6',
+				name: 'Cog_07b_6_152x123_1',
 				nameShort: 'Cog_07b',
 				size: {
 					x: 152.0,
@@ -58724,20 +51156,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cog_07b_6',
-				nameShort: 'Cog_07b',
-				size: {
-					x: 152.0,
-					y: 123.0,
-				},
-				padding: {
-					x: 19.07612,
-					y: 73.04291,
-					z: 72.04291,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -58782,9 +51200,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_08_18',
+				name: 'Cog_08_18_120x262_17',
 				nameShort: 'Cog_08',
 				size: {
 					x: 120.0,
@@ -58798,21 +51218,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_08_13',
-				nameShort: 'Cog_08',
-				size: {
-					x: 116.0,
-					y: 262.0,
-				},
-				padding: {
-					x: 0.0761204958,
-					y: 0.0,
-					z: 1.07611847,
-					w: 194.012909,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_08_13',
+				name: 'Cog_08_13_116x262_2',
 				nameShort: 'Cog_08',
 				size: {
 					x: 116.0,
@@ -58887,9 +51293,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_08_top_59',
+				name: 'Cog_08_top_59_120x262_44',
 				nameShort: 'Cog_08_top',
 				size: {
 					x: 120.0,
@@ -58903,21 +51311,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_08_top_22',
-				nameShort: 'Cog_08_top',
-				size: {
-					x: 116.0,
-					y: 262.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 31.07612,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_08_top_22',
+				name: 'Cog_08_top_22_116x262_5',
 				nameShort: 'Cog_08_top',
 				size: {
 					x: 116.0,
@@ -58992,9 +51386,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_09_16',
+				name: 'Cog_09_16_109x177_11',
 				nameShort: 'Cog_09',
 				size: {
 					x: 109.0,
@@ -59008,21 +51404,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_09_9',
-				nameShort: 'Cog_09',
-				size: {
-					x: 109.0,
-					y: 177.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 39.0761223,
-					z: 0.0,
-					w: 39.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_09_9',
+				name: 'Cog_09_9_109x177_2',
 				nameShort: 'Cog_09',
 				size: {
 					x: 109.0,
@@ -59097,9 +51479,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_10_6',
+				name: 'Cog_10_6_92x87_1',
 				nameShort: 'Cog_10',
 				size: {
 					x: 92.0,
@@ -59113,20 +51497,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cog_10_6',
-				nameShort: 'Cog_10',
-				size: {
-					x: 92.0,
-					y: 87.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 41.0761223,
-					z: 0.0,
-					w: 5.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -59171,9 +51541,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_09_Destroyed_25',
+				name: 'Cog_09_Destroyed_25_109x177_2',
 				nameShort: 'Cog_09_Destroyed',
 				size: {
 					x: 109.0,
@@ -59187,20 +51559,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cog_09_Destroyed_25',
-				nameShort: 'Cog_09_Destroyed',
-				size: {
-					x: 109.0,
-					y: 177.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 41.0267525,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -59276,9 +51634,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_09_Destroyed_bot_right_7',
+				name: 'Cog_09_Destroyed_bot_right_7_54x41_1',
 				nameShort: 'Cog_09_Destroyed_bot_right',
 				size: {
 					x: 54.0,
@@ -59292,20 +51652,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cog_09_Destroyed_bot_right_7',
-				nameShort: 'Cog_09_Destroyed_bot_right',
-				size: {
-					x: 54.0,
-					y: 41.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -59350,9 +51696,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_10_Destroyed_6',
+				name: 'Cog_10_Destroyed_6_47x307_1',
 				nameShort: 'Cog_10_Destroyed',
 				size: {
 					x: 47.0,
@@ -59366,20 +51714,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cog_10_Destroyed_6',
-				nameShort: 'Cog_10_Destroyed',
-				size: {
-					x: 47.0,
-					y: 307.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 2.07612228,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -59424,9 +51758,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_Dancers_Destroyed_11',
+				name: 'Cog_Dancers_Destroyed_11_135x77_1',
 				nameShort: 'Cog_Dancers_Destroyed',
 				size: {
 					x: 135.0,
@@ -59440,7 +51776,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_Dancers_8',
+				name: 'Cog_Dancers_8_135x77_1',
 				nameShort: 'Cog_Dancers',
 				size: {
 					x: 135.0,
@@ -59451,20 +51787,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 30.0129128,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_Dancers_Destroyed_11',
-				nameShort: 'Cog_Dancers_Destroyed',
-				size: {
-					x: 135.0,
-					y: 77.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 8.0,
 				},
 			},
 			altFullSprites: null,
@@ -59511,9 +51833,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cog_08_destroyed_25',
+				name: 'Cog_08_destroyed_25_116x286_6',
 				nameShort: 'Cog_08_destroyed',
 				size: {
 					x: 116.0,
@@ -59527,7 +51851,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cog_Dancers_8',
+				name: 'Cog_Dancers_8_135x77_1',
 				nameShort: 'Cog_Dancers',
 				size: {
 					x: 135.0,
@@ -59538,20 +51862,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 30.0129128,
-				},
-			},
-			rendererSprite: {
-				name: 'Cog_08_destroyed_25',
-				nameShort: 'Cog_08_destroyed',
-				size: {
-					x: 116.0,
-					y: 286.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0362850428,
-					z: 0.0,
-					w: 18.0111084,
 				},
 			},
 			altFullSprites: null,
@@ -59598,9 +51908,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_01_48',
+				name: 'Ward_01_48_121x186_22',
 				nameShort: 'Ward_01',
 				size: {
 					x: 121.0,
@@ -59614,21 +51926,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ward_01_6',
-				nameShort: 'Ward_01',
-				size: {
-					x: 121.0,
-					y: 186.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Ward_01_6',
+				name: 'Ward_01_6_121x186_1',
 				nameShort: 'Ward_01',
 				size: {
 					x: 121.0,
@@ -59716,9 +52014,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_01_2_4',
+				name: 'Ward_01_2_4_61x19_8',
 				nameShort: 'Ward_01_2',
 				size: {
 					x: 61.0,
@@ -59732,21 +52032,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ward_01_2_4',
-				nameShort: 'Ward_01_2',
-				size: {
-					x: 61.0,
-					y: 19.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Ward_01_2_4',
+				name: 'Ward_01_2_4_61x19_1',
 				nameShort: 'Ward_01_2',
 				size: {
 					x: 61.0,
@@ -59803,9 +52089,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_01_3_21',
+				name: 'Ward_01_3_21_71x106_9',
 				nameShort: 'Ward_01_3',
 				size: {
 					x: 71.0,
@@ -59819,21 +52107,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ward_01_3_5',
-				nameShort: 'Ward_01_3',
-				size: {
-					x: 71.0,
-					y: 106.0,
-				},
-				padding: {
-					x: 4.026751,
-					y: 1.026751,
-					z: 0.0,
-					w: 31.0761185,
-				},
-			},
-			rendererSprite: {
-				name: 'Ward_01_3_5',
+				name: 'Ward_01_3_5_71x106_1',
 				nameShort: 'Ward_01_3',
 				size: {
 					x: 71.0,
@@ -59890,9 +52164,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: '__0002_Ward_01_top_right_4',
+				name: '__0002_Ward_01_top_right_4_30x57_1',
 				nameShort: '__0002_Ward_01_top_right',
 				size: {
 					x: 30.0,
@@ -59906,20 +52182,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '__0002_Ward_01_top_right_4',
-				nameShort: '__0002_Ward_01_top_right',
-				size: {
-					x: 30.0,
-					y: 57.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -59964,9 +52226,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: '__0003_Ward_01_mid_right_4',
+				name: '__0003_Ward_01_mid_right_4_17x19_1',
 				nameShort: '__0003_Ward_01_mid_right',
 				size: {
 					x: 17.0,
@@ -59980,20 +52244,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '__0003_Ward_01_mid_right_4',
-				nameShort: '__0003_Ward_01_mid_right',
-				size: {
-					x: 17.0,
-					y: 19.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -60038,9 +52288,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_02_11',
+				name: 'Ward_02_11_251x137_25',
 				nameShort: 'Ward_02',
 				size: {
 					x: 251.0,
@@ -60054,21 +52306,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ward_02_6',
-				nameShort: 'Ward_02',
-				size: {
-					x: 251.0,
-					y: 137.0,
-				},
-				padding: {
-					x: 7.026751,
-					y: 84.02675,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Ward_02_6',
+				name: 'Ward_02_6_251x137_1',
 				nameShort: 'Ward_02',
 				size: {
 					x: 251.0,
@@ -60125,9 +52363,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_02_2_6',
+				name: 'Ward_02_2_6_127x96_1',
 				nameShort: 'Ward_02_2',
 				size: {
 					x: 127.0,
@@ -60141,24 +52381,10 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ward_02_2_post_boss_6',
-				nameShort: 'Ward_02_2_post_boss',
-				size: {
-					x: 127.0,
-					y: 96.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 2.07612038,
-					z: 75.0761261,
-					w: 12.0513153,
-				},
-			},
 			altFullSprites: [
 				{
 					sprite: {
-						name: 'Ward_02_2_post_boss_6',
+						name: 'Ward_02_2_post_boss_6_127x96_1',
 						nameShort: 'Ward_02_2_post_boss',
 						size: {
 							x: 127.0,
@@ -60235,9 +52461,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_02_3_6',
+				name: 'Ward_02_3_6_127x92_1',
 				nameShort: 'Ward_02_3',
 				size: {
 					x: 127.0,
@@ -60251,20 +52479,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ward_02_3_6',
-				nameShort: 'Ward_02_3',
-				size: {
-					x: 127.0,
-					y: 92.0,
-				},
-				padding: {
-					x: 42.0761223,
-					y: 0.0,
-					z: 38.07612,
-					w: 63.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -60340,9 +52554,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_02b_15',
+				name: 'Ward_02b_15_251x59_19',
 				nameShort: 'Ward_02b',
 				size: {
 					x: 251.0,
@@ -60356,21 +52572,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ward_02b_5',
-				nameShort: 'Ward_02b',
-				size: {
-					x: 251.0,
-					y: 59.0,
-				},
-				padding: {
-					x: 7.07612038,
-					y: 0.0,
-					z: 0.0,
-					w: 4.07612228,
-				},
-			},
-			rendererSprite: {
-				name: 'Ward_02b_5',
+				name: 'Ward_02b_5_251x59_1',
 				nameShort: 'Ward_02b',
 				size: {
 					x: 251.0,
@@ -60427,9 +52629,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_03_rough_patch_9',
+				name: 'Ward_03_rough_patch_9_396x85_13',
 				nameShort: 'Ward_03_rough_patch',
 				size: {
 					x: 396.0,
@@ -60443,21 +52647,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Ward_03_patch_5',
-				nameShort: 'Ward_03_patch',
-				size: {
-					x: 396.0,
-					y: 85.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 17.07612,
-					z: 65.07611,
-					w: 12.0429077,
-				},
-			},
-			rendererSprite: {
-				name: 'Ward_03_patch_5',
+				name: 'Ward_03_patch_5_396x85_1',
 				nameShort: 'Ward_03_patch',
 				size: {
 					x: 396.0,
@@ -60514,9 +52704,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_03_2_patch_7',
+				name: 'Ward_03_2_patch_7_83x71_1',
 				nameShort: 'Ward_03_2_patch',
 				size: {
 					x: 83.0,
@@ -60530,20 +52722,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ward_03_2_patch_7',
-				nameShort: 'Ward_03_2_patch',
-				size: {
-					x: 83.0,
-					y: 71.0,
-				},
-				padding: {
-					x: 12.07612,
-					y: 0.0,
-					z: 3.01435852,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -60588,9 +52766,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_03_top_4',
+				name: 'Ward_03_top_4_50x15_1',
 				nameShort: 'Ward_03_top',
 				size: {
 					x: 50.0,
@@ -60604,20 +52784,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ward_03_top_4',
-				nameShort: 'Ward_03_top',
-				size: {
-					x: 50.0,
-					y: 15.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -60662,9 +52828,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09649801,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89649963,
 			mappedParent: null,
 			initialSprite: {
-				name: '__0001_Ward_05_12',
+				name: '__0001_Ward_05_12_234x39_1',
 				nameShort: '__0001_Ward_05',
 				size: {
 					x: 234.0,
@@ -60678,20 +52846,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '__0001_Ward_05_12',
-				nameShort: '__0001_Ward_05',
-				size: {
-					x: 234.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 72.02675,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -60736,9 +52890,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: '__0000_Ward_05_right_4',
+				name: '__0000_Ward_05_right_4_81x31_1',
 				nameShort: '__0000_Ward_05_right',
 				size: {
 					x: 81.0,
@@ -60752,20 +52908,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '__0000_Ward_05_right_4',
-				nameShort: '__0000_Ward_05_right',
-				size: {
-					x: 81.0,
-					y: 31.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -60810,9 +52952,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09649801,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89649963,
 			mappedParent: null,
 			initialSprite: {
-				name: '__0003_Ward_04_7',
+				name: '__0003_Ward_04_7_70x51_1',
 				nameShort: '__0003_Ward_04',
 				size: {
 					x: 70.0,
@@ -60826,20 +52970,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: '__0003_Ward_04_7',
-				nameShort: '__0003_Ward_04',
-				size: {
-					x: 70.0,
-					y: 51.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0761204958,
-					z: 4.02674866,
-					w: 4.07612228,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -60884,9 +53014,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_06_7',
+				name: 'Ward_06_7_138x89_1',
 				nameShort: 'Ward_06',
 				size: {
 					x: 138.0,
@@ -60900,20 +53032,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ward_06_7',
-				nameShort: 'Ward_06',
-				size: {
-					x: 138.0,
-					y: 89.0,
-				},
-				padding: {
-					x: 103.076118,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -60989,9 +53107,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Ward_07_9',
+				name: 'Ward_07_9_222x34_1',
 				nameShort: 'Ward_07',
 				size: {
 					x: 222.0,
@@ -61005,20 +53125,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Ward_07_9',
-				nameShort: 'Ward_07',
-				size: {
-					x: 222.0,
-					y: 34.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 4.076126,
-					w: 0.0761222839,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -61063,10 +53169,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -61111,9 +53218,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_02_10',
+				name: 'Hang_02_10_176x87_9',
 				nameShort: 'Hang_02',
 				size: {
 					x: 176.0,
@@ -61127,21 +53236,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_02_7',
-				nameShort: 'Hang_02',
-				size: {
-					x: 176.0,
-					y: 87.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_02_7',
+				name: 'Hang_02_7_176x87_1',
 				nameShort: 'Hang_02',
 				size: {
 					x: 176.0,
@@ -61229,9 +53324,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_03_27',
+				name: 'Hang_03_27_58x175_15',
 				nameShort: 'Hang_03',
 				size: {
 					x: 58.0,
@@ -61245,21 +53342,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_03_6',
-				nameShort: 'Hang_03',
-				size: {
-					x: 58.0,
-					y: 173.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_03_6',
+				name: 'Hang_03_6_58x173_1',
 				nameShort: 'Hang_03',
 				size: {
 					x: 58.0,
@@ -61316,9 +53399,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_03_top_6',
+				name: 'Hang_03_top_6_58x269_1',
 				nameShort: 'Hang_03_top',
 				size: {
 					x: 58.0,
@@ -61332,7 +53417,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_03_6',
+				name: 'Hang_03_6_58x173_1',
 				nameShort: 'Hang_03',
 				size: {
 					x: 58.0,
@@ -61341,20 +53426,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				padding: {
 					x: 0.0,
 					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_03_top_6',
-				nameShort: 'Hang_03_top',
-				size: {
-					x: 58.0,
-					y: 269.0,
-				},
-				padding: {
-					x: 2.07612038,
-					y: 104.076118,
 					z: 0.0,
 					w: 0.0,
 				},
@@ -61403,9 +53474,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_04_14',
+				name: 'Hang_04_14_107x39_9',
 				nameShort: 'Hang_04',
 				size: {
 					x: 107.0,
@@ -61419,21 +53492,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_04_6',
-				nameShort: 'Hang_04',
-				size: {
-					x: 107.0,
-					y: 39.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_04_6',
+				name: 'Hang_04_6_107x39_1',
 				nameShort: 'Hang_04',
 				size: {
 					x: 107.0,
@@ -61521,9 +53580,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_06_31',
+				name: 'Hang_06_31_151x50_17',
 				nameShort: 'Hang_06',
 				size: {
 					x: 151.0,
@@ -61537,21 +53598,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_06_10',
-				nameShort: 'Hang_06',
-				size: {
-					x: 151.0,
-					y: 52.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_06_10',
+				name: 'Hang_06_10_151x52_1',
 				nameShort: 'Hang_06',
 				size: {
 					x: 151.0,
@@ -61639,9 +53686,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_06b_9',
+				name: 'Hang_06b_9_89x36_7',
 				nameShort: 'Hang_06b',
 				size: {
 					x: 89.0,
@@ -61655,21 +53704,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_06b_6',
-				nameShort: 'Hang_06b',
-				size: {
-					x: 89.0,
-					y: 36.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0761204958,
-					z: 0.0,
-					w: 0.0267524719,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_06b_6',
+				name: 'Hang_06b_6_89x36_1',
 				nameShort: 'Hang_06b',
 				size: {
 					x: 89.0,
@@ -61726,10 +53761,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Rough',
@@ -61774,9 +53810,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_08_33',
+				name: 'Hang_08_33_50x381_29',
 				nameShort: 'Hang_08',
 				size: {
 					x: 50.0,
@@ -61790,21 +53828,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_08_6',
-				nameShort: 'Hang_08',
-				size: {
-					x: 50.0,
-					y: 381.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.01291275,
-					w: 41.0267639,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_08_6',
+				name: 'Hang_08_6_50x381_1',
 				nameShort: 'Hang_08',
 				size: {
 					x: 50.0,
@@ -61861,9 +53885,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_08_bot_right_7',
+				name: 'Hang_08_bot_right_7_50x348_1',
 				nameShort: 'Hang_08_bot_right',
 				size: {
 					x: 50.0,
@@ -61877,7 +53903,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_08_6',
+				name: 'Hang_08_6_50x381_1',
 				nameShort: 'Hang_08',
 				size: {
 					x: 50.0,
@@ -61888,20 +53914,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.01291275,
 					w: 41.0267639,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_08_bot_right_7',
-				nameShort: 'Hang_08_bot_right',
-				size: {
-					x: 50.0,
-					y: 348.0,
-				},
-				padding: {
-					x: 31.02675,
-					y: 0.149349213,
-					z: 0.0,
-					w: 315.0761,
 				},
 			},
 			altFullSprites: null,
@@ -61948,9 +53960,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_09_13',
+				name: 'Hang_09_13_199x79_8',
 				nameShort: 'Hang_09',
 				size: {
 					x: 199.0,
@@ -61964,21 +53978,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_09_7',
-				nameShort: 'Hang_09',
-				size: {
-					x: 199.0,
-					y: 79.0,
-				},
-				padding: {
-					x: 109.076118,
-					y: 15.07612,
-					z: 0.0,
-					w: 2.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_09_7',
+				name: 'Hang_09_7_199x79_1',
 				nameShort: 'Hang_09',
 				size: {
 					x: 199.0,
@@ -62035,9 +54035,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_10_9',
+				name: 'Hang_10_9_158x65_1',
 				nameShort: 'Hang_10',
 				size: {
 					x: 158.0,
@@ -62051,20 +54053,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Hang_10_9',
-				nameShort: 'Hang_10',
-				size: {
-					x: 158.0,
-					y: 65.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -62109,9 +54097,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_12_5',
+				name: 'Hang_12_5_123x34_1',
 				nameShort: 'Hang_12',
 				size: {
 					x: 123.0,
@@ -62125,20 +54115,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Hang_12_5',
-				nameShort: 'Hang_12',
-				size: {
-					x: 123.0,
-					y: 34.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -62183,9 +54159,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_13_15',
+				name: 'Hang_13_15_151x114_15',
 				nameShort: 'Hang_13',
 				size: {
 					x: 151.0,
@@ -62199,21 +54177,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_13_9',
-				nameShort: 'Hang_13',
-				size: {
-					x: 151.0,
-					y: 114.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 7.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_13_9',
+				name: 'Hang_13_9_151x114_1',
 				nameShort: 'Hang_13',
 				size: {
 					x: 151.0,
@@ -62270,9 +54234,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_15_7',
+				name: 'Hang_15_7_141x83_1',
 				nameShort: 'Hang_15',
 				size: {
 					x: 141.0,
@@ -62286,20 +54252,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Hang_15_7',
-				nameShort: 'Hang_15',
-				size: {
-					x: 141.0,
-					y: 83.0,
-				},
-				padding: {
-					x: 99.07612,
-					y: 18.07612,
-					z: 0.0,
-					w: 38.0267525,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -62344,9 +54296,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_16_8',
+				name: 'Hang_16_8_171x49_1',
 				nameShort: 'Hang_16',
 				size: {
 					x: 171.0,
@@ -62360,20 +54314,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Hang_16_8',
-				nameShort: 'Hang_16',
-				size: {
-					x: 171.0,
-					y: 49.0,
-				},
-				padding: {
-					x: 97.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 24.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -62418,10 +54358,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -62466,9 +54407,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_song_knight_left_4',
+				name: 'Hang_song_knight_left_4_79x31_1',
 				nameShort: 'Hang_song_knight_left',
 				size: {
 					x: 79.0,
@@ -62482,21 +54425,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Hang_song_knight_left_4',
-				nameShort: 'Hang_song_knight_left',
-				size: {
-					x: 79.0,
-					y: 31.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Hang_song_knight_left_4',
+				name: 'Hang_song_knight_left_4_79x31_1',
 				nameShort: 'Hang_song_knight_left',
 				size: {
 					x: 79.0,
@@ -62553,9 +54482,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -0.0009994507,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Hang_right_top_11',
+				name: 'Hang_right_top_11_77x161_1',
 				nameShort: 'Hang_right_top',
 				size: {
 					x: 77.0,
@@ -62569,7 +54500,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -62614,9 +54544,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_01_22',
+				name: 'Arborium_01_22_50x258_9',
 				nameShort: 'Arborium_01',
 				size: {
 					x: 50.0,
@@ -62630,21 +54562,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Arborium_01_17',
-				nameShort: 'Arborium_01',
-				size: {
-					x: 50.0,
-					y: 258.0,
-				},
-				padding: {
-					x: 1.026751,
-					y: 0.0,
-					z: 0.0,
-					w: 168.076111,
-				},
-			},
-			rendererSprite: {
-				name: 'Arborium_01_17',
+				name: 'Arborium_01_17_50x258_1',
 				nameShort: 'Arborium_01',
 				size: {
 					x: 50.0,
@@ -62732,9 +54650,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_01_bot_left_7',
+				name: 'Arborium_01_bot_left_7_50x227_1',
 				nameShort: 'Arborium_01_bot_left',
 				size: {
 					x: 50.0,
@@ -62748,20 +54668,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_01_bot_left_7',
-				nameShort: 'Arborium_01_bot_left',
-				size: {
-					x: 50.0,
-					y: 227.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 5.020422,
-					z: 34.07612,
-					w: 188.036285,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -62806,9 +54712,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_01_top2_7',
+				name: 'Arborium_01_top2_7_50x258_1',
 				nameShort: 'Arborium_01_top2',
 				size: {
 					x: 50.0,
@@ -62822,20 +54730,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_01_top2_7',
-				nameShort: 'Arborium_01_top2',
-				size: {
-					x: 50.0,
-					y: 258.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 80.07612,
-					z: 0.0,
-					w: 28.0761414,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -62880,9 +54774,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_01_top_7',
+				name: 'Arborium_01_top_7_50x258_1',
 				nameShort: 'Arborium_01_top',
 				size: {
 					x: 50.0,
@@ -62896,20 +54792,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_01_top_7',
-				nameShort: 'Arborium_01_top',
-				size: {
-					x: 50.0,
-					y: 258.0,
-				},
-				padding: {
-					x: 2.026751,
-					y: 220.076126,
-					z: 0.0,
-					w: 5.05131531,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -62954,9 +54836,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_02_16',
+				name: 'Arborium_02_16_217x45_13',
 				nameShort: 'Arborium_02',
 				size: {
 					x: 217.0,
@@ -62970,21 +54854,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Arborium_02_4',
-				nameShort: 'Arborium_02',
-				size: {
-					x: 217.0,
-					y: 42.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 4.07612038,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Arborium_02_4',
+				name: 'Arborium_02_4_217x42_1',
 				nameShort: 'Arborium_02',
 				size: {
 					x: 217.0,
@@ -63041,9 +54911,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_03_34',
+				name: 'Arborium_03_34_50x188_13',
 				nameShort: 'Arborium_03',
 				size: {
 					x: 50.0,
@@ -63057,21 +54929,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Arborium_03_7',
-				nameShort: 'Arborium_03',
-				size: {
-					x: 50.0,
-					y: 188.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 14.07612,
-					z: 0.0,
-					w: 29.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Arborium_03_7',
+				name: 'Arborium_03_7_50x188_1',
 				nameShort: 'Arborium_03',
 				size: {
 					x: 50.0,
@@ -63128,9 +54986,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_03_top_rough_12',
+				name: 'Arborium_03_top_rough_12_50x171_4',
 				nameShort: 'Arborium_03_top_rough',
 				size: {
 					x: 50.0,
@@ -63144,21 +55004,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Arborium_03_top_6',
-				nameShort: 'Arborium_03_top',
-				size: {
-					x: 50.0,
-					y: 168.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 137.076126,
-					z: 11.0513153,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Arborium_03_top_6',
+				name: 'Arborium_03_top_6_50x168_1',
 				nameShort: 'Arborium_03_top',
 				size: {
 					x: 50.0,
@@ -63215,9 +55061,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_04_11',
+				name: 'Arborium_04_11_217x56_19',
 				nameShort: 'Arborium_04',
 				size: {
 					x: 217.0,
@@ -63231,21 +55079,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Arborium_04_6',
-				nameShort: 'Arborium_04',
-				size: {
-					x: 217.0,
-					y: 56.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 4.29289341,
-					z: 0.0,
-					w: 5.0362854,
-				},
-			},
-			rendererSprite: {
-				name: 'Arborium_04_6',
+				name: 'Arborium_04_6_217x56_1',
 				nameShort: 'Arborium_04',
 				size: {
 					x: 217.0,
@@ -63302,9 +55136,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_05_18',
+				name: 'Arborium_05_18_213x45_11',
 				nameShort: 'Arborium_05',
 				size: {
 					x: 213.0,
@@ -63318,21 +55154,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Arborium_05_7',
-				nameShort: 'Arborium_05',
-				size: {
-					x: 213.0,
-					y: 45.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 5.118325,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Arborium_05_7',
+				name: 'Arborium_05_7_213x45_1',
 				nameShort: 'Arborium_05',
 				size: {
 					x: 213.0,
@@ -63389,9 +55211,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_06_17',
+				name: 'Arborium_06_17_217x48_23',
 				nameShort: 'Arborium_06',
 				size: {
 					x: 217.0,
@@ -63405,21 +55229,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Arborium_06_8',
-				nameShort: 'Arborium_06',
-				size: {
-					x: 217.0,
-					y: 46.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Arborium_06_8',
+				name: 'Arborium_06_8_217x46_1',
 				nameShort: 'Arborium_06',
 				size: {
 					x: 217.0,
@@ -63476,9 +55286,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_07_5',
+				name: 'Arborium_07_5_284x35_1',
 				nameShort: 'Arborium_07',
 				size: {
 					x: 284.0,
@@ -63492,20 +55304,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_07_5',
-				nameShort: 'Arborium_07',
-				size: {
-					x: 284.0,
-					y: 35.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 101.042908,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -63550,9 +55348,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_07b_4',
+				name: 'Arborium_07b_4_88x26_1',
 				nameShort: 'Arborium_07b',
 				size: {
 					x: 88.0,
@@ -63566,20 +55366,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_07b_4',
-				nameShort: 'Arborium_07b',
-				size: {
-					x: 88.0,
-					y: 26.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -63624,9 +55410,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_08_8',
+				name: 'Arborium_08_8_203x92_1',
 				nameShort: 'Arborium_08',
 				size: {
 					x: 203.0,
@@ -63640,20 +55428,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_08_8',
-				nameShort: 'Arborium_08',
-				size: {
-					x: 203.0,
-					y: 92.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 35.0761261,
-					w: 14.0761185,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -63698,9 +55472,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_09_6',
+				name: 'Arborium_09_6_110x187_1',
 				nameShort: 'Arborium_09',
 				size: {
 					x: 110.0,
@@ -63714,20 +55490,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_09_6',
-				nameShort: 'Arborium_09',
-				size: {
-					x: 110.0,
-					y: 187.0,
-				},
-				padding: {
-					x: 33.0761223,
-					y: 14.07612,
-					z: 0.0,
-					w: 2.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -63772,9 +55534,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_10_5',
+				name: 'Arborium_10_5_54x34_2',
 				nameShort: 'Arborium_10',
 				size: {
 					x: 54.0,
@@ -63788,21 +55552,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Arborium_10_5',
-				nameShort: 'Arborium_10',
-				size: {
-					x: 54.0,
-					y: 34.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Arborium_10_5',
+				name: 'Arborium_10_5_54x34_1',
 				nameShort: 'Arborium_10',
 				size: {
 					x: 54.0,
@@ -63859,9 +55609,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_11_10',
+				name: 'Arborium_11_10_351x76_6',
 				nameShort: 'Arborium_11',
 				size: {
 					x: 351.0,
@@ -63875,21 +55627,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Arborium_11_6',
-				nameShort: 'Arborium_11',
-				size: {
-					x: 351.0,
-					y: 76.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 295.026764,
-					w: 47.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Arborium_11_6',
+				name: 'Arborium_11_6_351x76_1',
 				nameShort: 'Arborium_11',
 				size: {
 					x: 351.0,
@@ -63946,9 +55684,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_11_mid_7',
+				name: 'Arborium_11_mid_7_351x76_1',
 				nameShort: 'Arborium_11_mid',
 				size: {
 					x: 351.0,
@@ -63962,20 +55702,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_11_mid_7',
-				nameShort: 'Arborium_11_mid',
-				size: {
-					x: 351.0,
-					y: 76.0,
-				},
-				padding: {
-					x: 26.02675,
-					y: 0.0,
-					z: 11.0761108,
-					w: 10.0129089,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -64020,9 +55746,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_11_right_7',
+				name: 'Arborium_11_right_7_351x76_1',
 				nameShort: 'Arborium_11_right',
 				size: {
 					x: 351.0,
@@ -64036,20 +55764,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_11_right_7',
-				nameShort: 'Arborium_11_right',
-				size: {
-					x: 351.0,
-					y: 76.0,
-				},
-				padding: {
-					x: 53.0761223,
-					y: 1.0761205,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -64094,9 +55808,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Arborium_tube_7',
+				name: 'Arborium_tube_7_46x46_1',
 				nameShort: 'Arborium_tube',
 				size: {
 					x: 46.0,
@@ -64110,20 +55826,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Arborium_tube_7',
-				nameShort: 'Arborium_tube',
-				size: {
-					x: 46.0,
-					y: 46.0,
-				},
-				padding: {
-					x: 0.0267509818,
-					y: 6.07612038,
-					z: 0.0,
-					w: 3.03987885,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -64168,9 +55870,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cradle_01_10',
+				name: 'Cradle_01_10_137x119_9',
 				nameShort: 'Cradle_01',
 				size: {
 					x: 137.0,
@@ -64184,21 +55888,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cradle_01_6',
-				nameShort: 'Cradle_01',
-				size: {
-					x: 137.0,
-					y: 119.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 86.29289,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Cradle_01_6',
+				name: 'Cradle_01_6_137x119_1',
 				nameShort: 'Cradle_01',
 				size: {
 					x: 137.0,
@@ -64273,9 +55963,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cradle_02_19',
+				name: 'Cradle_02_19_131x179_8',
 				nameShort: 'Cradle_02',
 				size: {
 					x: 131.0,
@@ -64289,21 +55981,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cradle_02_11',
-				nameShort: 'Cradle_02',
-				size: {
-					x: 131.0,
-					y: 179.0,
-				},
-				padding: {
-					x: 79.07612,
-					y: 0.0,
-					z: 0.0,
-					w: 9.020416,
-				},
-			},
-			rendererSprite: {
-				name: 'Cradle_02_11',
+				name: 'Cradle_02_11_131x179_1',
 				nameShort: 'Cradle_02',
 				size: {
 					x: 131.0,
@@ -64378,9 +56056,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cradle_02b_6',
+				name: 'Cradle_02b_6_104x105_1',
 				nameShort: 'Cradle_02b',
 				size: {
 					x: 104.0,
@@ -64394,20 +56074,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cradle_02b_6',
-				nameShort: 'Cradle_02b',
-				size: {
-					x: 104.0,
-					y: 105.0,
-				},
-				padding: {
-					x: 6.07612038,
-					y: 5.07612038,
-					z: 0.0,
-					w: 1.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -64470,9 +56136,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cradle_03_78',
+				name: 'Cradle_03_78_137x275_40',
 				nameShort: 'Cradle_03',
 				size: {
 					x: 137.0,
@@ -64486,21 +56154,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Cradle_03_13',
-				nameShort: 'Cradle_03',
-				size: {
-					x: 137.0,
-					y: 275.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 86.29289,
-					z: 0.0,
-					w: 5.076111,
-				},
-			},
-			rendererSprite: {
-				name: 'Cradle_03_13',
+				name: 'Cradle_03_13_137x275_1',
 				nameShort: 'Cradle_03',
 				size: {
 					x: 137.0,
@@ -64575,9 +56229,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_Tower_19',
+				name: 'Song_Tower_19_256x276_9',
 				nameShort: 'Song_Tower',
 				size: {
 					x: 256.0,
@@ -64591,21 +56247,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Song_Tower_7',
-				nameShort: 'Song_Tower',
-				size: {
-					x: 256.0,
-					y: 276.0,
-				},
-				padding: {
-					x: 63.0267525,
-					y: 173.042908,
-					z: 78.0761261,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Song_Tower_7',
+				name: 'Song_Tower_7_256x276_1',
 				nameShort: 'Song_Tower',
 				size: {
 					x: 256.0,
@@ -64680,9 +56322,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tube_Hub_9',
+				name: 'Tube_Hub_9_222x238_1',
 				nameShort: 'Tube_Hub',
 				size: {
 					x: 222.0,
@@ -64696,20 +56340,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Tube_Hub_9',
-				nameShort: 'Tube_Hub',
-				size: {
-					x: 222.0,
-					y: 238.0,
-				},
-				padding: {
-					x: 65.07612,
-					y: 55.0761223,
-					z: 6.07614136,
-					w: 149.014359,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -64772,9 +56402,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tube_Hub_2_15',
+				name: 'Tube_Hub_2_15_229x238_13',
 				nameShort: 'Tube_Hub_2',
 				size: {
 					x: 229.0,
@@ -64788,21 +56420,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Tube_Hub_2_8',
-				nameShort: 'Tube_Hub_2',
-				size: {
-					x: 229.0,
-					y: 238.0,
-				},
-				padding: {
-					x: 25.07612,
-					y: 25.0513172,
-					z: 154.051315,
-					w: 80.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Tube_Hub_2_8',
+				name: 'Tube_Hub_2_8_229x238_1',
 				nameShort: 'Tube_Hub_2',
 				size: {
 					x: 229.0,
@@ -64877,9 +56495,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tube_Hub_top_6',
+				name: 'Tube_Hub_top_6_187x224_1',
 				nameShort: 'Tube_Hub_top',
 				size: {
 					x: 187.0,
@@ -64893,20 +56513,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Tube_Hub_top_6',
-				nameShort: 'Tube_Hub_top',
-				size: {
-					x: 187.0,
-					y: 224.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 116.012909,
-					z: 154.076126,
-					w: 7.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -64969,9 +56575,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tube_Hub_Shortcut_4',
+				name: 'Tube_Hub_Shortcut_4_26x28_1',
 				nameShort: 'Tube_Hub_Shortcut',
 				size: {
 					x: 26.0,
@@ -64985,20 +56593,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Tube_Hub_Shortcut_4',
-				nameShort: 'Tube_Hub_Shortcut',
-				size: {
-					x: 26.0,
-					y: 28.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -65061,9 +56655,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cradle_01_Destroyed_7',
+				name: 'Cradle_01_Destroyed_7_144x159_1',
 				nameShort: 'Cradle_01_Destroyed',
 				size: {
 					x: 144.0,
@@ -65077,20 +56673,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cradle_01_Destroyed_7',
-				nameShort: 'Cradle_01_Destroyed',
-				size: {
-					x: 144.0,
-					y: 159.0,
-				},
-				padding: {
-					x: 31.0513172,
-					y: 87.07612,
-					z: 5.076126,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -65135,9 +56717,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Cradle_03_Destroyed_13',
+				name: 'Cradle_03_Destroyed_13_137x326_1',
 				nameShort: 'Cradle_03_Destroyed',
 				size: {
 					x: 137.0,
@@ -65151,20 +56735,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Cradle_03_Destroyed_13',
-				nameShort: 'Cradle_03_Destroyed',
-				size: {
-					x: 137.0,
-					y: 326.0,
-				},
-				padding: {
-					x: 5.07612038,
-					y: 82.07612,
-					z: 17.0761185,
-					w: 56.07611,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -65209,9 +56779,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09700155,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.897003,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_Tower_Destroyed_7',
+				name: 'Song_Tower_Destroyed_7_118x318_1',
 				nameShort: 'Song_Tower_Destroyed',
 				size: {
 					x: 118.0,
@@ -65225,20 +56797,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_Tower_Destroyed_7',
-				nameShort: 'Song_Tower_Destroyed',
-				size: {
-					x: 118.0,
-					y: 318.0,
-				},
-				padding: {
-					x: 4.04290771,
-					y: 193.076126,
-					z: 16.0267487,
-					w: 20.07611,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -65283,9 +56841,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Tube_Hub_Destroyed_11',
+				name: 'Tube_Hub_Destroyed_11_229x238_1',
 				nameShort: 'Tube_Hub_Destroyed',
 				size: {
 					x: 229.0,
@@ -65299,7 +56859,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Tube_Hub_2_8',
+				name: 'Tube_Hub_2_8_229x238_1',
 				nameShort: 'Tube_Hub_2',
 				size: {
 					x: 229.0,
@@ -65310,20 +56870,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 25.0513172,
 					z: 154.051315,
 					w: 80.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Tube_Hub_Destroyed_11',
-				nameShort: 'Tube_Hub_Destroyed',
-				size: {
-					x: 229.0,
-					y: 238.0,
-				},
-				padding: {
-					x: 36.0761223,
-					y: 20.0513172,
-					z: 8.076126,
-					w: 104.076126,
 				},
 			},
 			altFullSprites: null,
@@ -65370,9 +56916,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09599829,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.896,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_Tower_Destroyed_Top_7',
+				name: 'Song_Tower_Destroyed_Top_7_118x318_1',
 				nameShort: 'Song_Tower_Destroyed_Top',
 				size: {
 					x: 118.0,
@@ -65386,20 +56934,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_Tower_Destroyed_Top_7',
-				nameShort: 'Song_Tower_Destroyed_Top',
-				size: {
-					x: 118.0,
-					y: 318.0,
-				},
-				padding: {
-					x: 8.07612,
-					y: 278.051331,
-					z: 44.02675,
-					w: 8.076111,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -65444,9 +56978,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09499884,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89500046,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Song_Tower_Destroyed_bot_7',
+				name: 'Song_Tower_Destroyed_bot_7_118x318_1',
 				nameShort: 'Song_Tower_Destroyed_bot',
 				size: {
 					x: 118.0,
@@ -65460,20 +56996,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Song_Tower_Destroyed_bot_7',
-				nameShort: 'Song_Tower_Destroyed_bot',
-				size: {
-					x: 118.0,
-					y: 318.0,
-				},
-				padding: {
-					x: 9.026751,
-					y: 189.076126,
-					z: 81.0513153,
-					w: 110.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -65549,9 +57071,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_01_16',
+				name: 'Clover_01_16_327x44_18',
 				nameShort: 'Clover_01',
 				size: {
 					x: 327.0,
@@ -65565,21 +57089,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Clover_01_9',
-				nameShort: 'Clover_01',
-				size: {
-					x: 327.0,
-					y: 42.0,
-				},
-				padding: {
-					x: 6.07612038,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Clover_01_9',
+				name: 'Clover_01_9_327x42_1',
 				nameShort: 'Clover_01',
 				size: {
 					x: 327.0,
@@ -65667,9 +57177,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_01_top_5',
+				name: 'Clover_01_top_5_327x40_0',
 				nameShort: 'Clover_01_top',
 				size: {
 					x: 327.0,
@@ -65683,21 +57195,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Clover_01_top_5',
-				nameShort: 'Clover_01_top',
-				size: {
-					x: 327.0,
-					y: 40.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 321.0761,
-					w: 34.07612,
-				},
-			},
-			rendererSprite: {
-				name: 'Clover_01_top_5',
+				name: 'Clover_01_top_5_327x40_0',
 				nameShort: 'Clover_01_top',
 				size: {
 					x: 327.0,
@@ -65782,9 +57280,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_02c_standard_6',
+				name: 'Clover_02c_standard_6_329x118_0',
 				nameShort: 'Clover_02c_standard',
 				size: {
 					x: 329.0,
@@ -65798,20 +57298,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_02c_standard_6',
-				nameShort: 'Clover_02c_standard',
-				size: {
-					x: 329.0,
-					y: 118.0,
-				},
-				padding: {
-					x: 325.0761,
-					y: 12.07612,
-					z: 0.0,
-					w: 99.07612,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -65884,9 +57370,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_20_15',
+				name: 'Clover_20_15_329x118_1',
 				nameShort: 'Clover_20',
 				size: {
 					x: 329.0,
@@ -65900,24 +57388,10 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_20_after_14',
-				nameShort: 'Clover_20_after',
-				size: {
-					x: 329.0,
-					y: 118.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 40.0761223,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: [
 				{
 					sprite: {
-						name: 'Clover_20_after_14',
+						name: 'Clover_20_after_14_329x118_2',
 						nameShort: 'Clover_20_after',
 						size: {
 							x: 329.0,
@@ -66022,9 +57496,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_02c_bot_right_6',
+				name: 'Clover_02c_bot_right_6_332x117_1',
 				nameShort: 'Clover_02c_bot_right',
 				size: {
 					x: 332.0,
@@ -66038,24 +57514,10 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_02c_bot_right_after_5',
-				nameShort: 'Clover_02c_bot_right_after',
-				size: {
-					x: 332.0,
-					y: 117.0,
-				},
-				padding: {
-					x: 237.076126,
-					y: 6.07612038,
-					z: 10.0761108,
-					w: 67.0761261,
-				},
-			},
 			altFullSprites: [
 				{
 					sprite: {
-						name: 'Clover_02c_bot_right_after_5',
+						name: 'Clover_02c_bot_right_after_5_332x117_1',
 						nameShort: 'Clover_02c_bot_right_after',
 						size: {
 							x: 332.0,
@@ -66160,9 +57622,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_03_9',
+				name: 'Clover_03_9_55x323_1',
 				nameShort: 'Clover_03',
 				size: {
 					x: 55.0,
@@ -66176,20 +57640,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_03_9',
-				nameShort: 'Clover_03',
-				size: {
-					x: 55.0,
-					y: 323.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 116.012909,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -66262,9 +57712,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_05c_5',
+				name: 'Clover_05c_5_52x227_1',
 				nameShort: 'Clover_05c',
 				size: {
 					x: 52.0,
@@ -66278,20 +57730,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_05c_5',
-				nameShort: 'Clover_05c',
-				size: {
-					x: 52.0,
-					y: 227.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 2.02674866,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -66364,9 +57802,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_06_4',
+				name: 'Clover_06_4_436x48_1',
 				nameShort: 'Clover_06',
 				size: {
 					x: 436.0,
@@ -66380,20 +57820,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_06_4',
-				nameShort: 'Clover_06',
-				size: {
-					x: 436.0,
-					y: 48.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -66466,9 +57892,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_10_7',
+				name: 'Clover_10_7_329x135_1',
 				nameShort: 'Clover_10',
 				size: {
 					x: 329.0,
@@ -66482,20 +57910,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_10_7',
-				nameShort: 'Clover_10',
-				size: {
-					x: 329.0,
-					y: 135.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 54.0362854,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -66568,9 +57982,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_10_top_5',
+				name: 'Clover_10_top_5_329x135_1',
 				nameShort: 'Clover_10_top',
 				size: {
 					x: 329.0,
@@ -66584,20 +58000,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_10_top_5',
-				nameShort: 'Clover_10_top',
-				size: {
-					x: 329.0,
-					y: 135.0,
-				},
-				padding: {
-					x: 163.076126,
-					y: 31.07612,
-					z: 99.0761261,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -66670,10 +58072,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: [
 				{
@@ -66746,10 +58149,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: [
 				{
@@ -66822,9 +58226,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_11_6',
+				name: 'Clover_11_6_129x52_1',
 				nameShort: 'Clover_11',
 				size: {
 					x: 129.0,
@@ -66838,20 +58244,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_11_6',
-				nameShort: 'Clover_11',
-				size: {
-					x: 129.0,
-					y: 52.0,
-				},
-				padding: {
-					x: 26.07612,
-					y: 13.07612,
-					z: 8.076118,
-					w: 3.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -66924,9 +58316,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_16_10',
+				name: 'Clover_16_10_229x163_1',
 				nameShort: 'Clover_16',
 				size: {
 					x: 229.0,
@@ -66940,20 +58334,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_16_10',
-				nameShort: 'Clover_16',
-				size: {
-					x: 229.0,
-					y: 163.0,
-				},
-				padding: {
-					x: 14.07612,
-					y: 17.0429077,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -67026,9 +58406,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_16_left_7',
+				name: 'Clover_16_left_7_68x111_1',
 				nameShort: 'Clover_16_left',
 				size: {
 					x: 68.0,
@@ -67042,20 +58424,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_16_left_7',
-				nameShort: 'Clover_16_left',
-				size: {
-					x: 68.0,
-					y: 111.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 6.07611847,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -67128,9 +58496,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_16_right_4',
+				name: 'Clover_16_right_4_79x103_1',
 				nameShort: 'Clover_16_right',
 				size: {
 					x: 79.0,
@@ -67144,20 +58514,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_16_right_4',
-				nameShort: 'Clover_16_right',
-				size: {
-					x: 79.0,
-					y: 103.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 4.01291275,
-					z: 0.0,
-					w: 29.0761261,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -67230,9 +58586,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_18_21',
+				name: 'Clover_18_21_318x131_1',
 				nameShort: 'Clover_18',
 				size: {
 					x: 318.0,
@@ -67246,20 +58604,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_18_21',
-				nameShort: 'Clover_18',
-				size: {
-					x: 318.0,
-					y: 131.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 3.01291251,
-					z: 221.012909,
-					w: 2.149353,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -67332,9 +58676,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_18_right_8',
+				name: 'Clover_18_right_8_318x131_1',
 				nameShort: 'Clover_18_right',
 				size: {
 					x: 318.0,
@@ -67348,20 +58694,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_18_right_8',
-				nameShort: 'Clover_18_right',
-				size: {
-					x: 318.0,
-					y: 131.0,
-				},
-				padding: {
-					x: 51.0,
-					y: 3.01291251,
-					z: 35.07611,
-					w: 1.04290771,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -67434,9 +58766,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_19_7',
+				name: 'Clover_19_7_156x37_1',
 				nameShort: 'Clover_19',
 				size: {
 					x: 156.0,
@@ -67450,20 +58784,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_19_7',
-				nameShort: 'Clover_19',
-				size: {
-					x: 156.0,
-					y: 37.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -67536,9 +58856,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_02c_14',
+				name: 'Clover_02c_14_243x76_12',
 				nameShort: 'Clover_02c',
 				size: {
 					x: 243.0,
@@ -67552,21 +58874,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Clover_02c_19',
-				nameShort: 'Clover_02c',
-				size: {
-					x: 243.0,
-					y: 76.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 7.076126,
-					w: 3.06389618,
-				},
-			},
-			rendererSprite: {
-				name: 'Clover_02c_19',
+				name: 'Clover_02c_19_243x76_1',
 				nameShort: 'Clover_02c',
 				size: {
 					x: 243.0,
@@ -67623,9 +58931,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Clover_21_8',
+				name: 'Clover_21_8_282x50_1',
 				nameShort: 'Clover_21',
 				size: {
 					x: 282.0,
@@ -67639,20 +58949,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Clover_21_8',
-				nameShort: 'Clover_21',
-				size: {
-					x: 282.0,
-					y: 50.0,
-				},
-				padding: {
-					x: 16.02675,
-					y: 1.01291251,
-					z: 0.0,
-					w: 1.03128815,
-				},
-			},
 			altFullSprites: null,
 			altColors: [
 				{
@@ -67725,9 +59021,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_01_32',
+				name: 'Abyss_01_32_76x264_18',
 				nameShort: 'Abyss_01',
 				size: {
 					x: 76.0,
@@ -67741,21 +59039,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_01_6',
-				nameShort: 'Abyss_01',
-				size: {
-					x: 76.0,
-					y: 264.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 37.2928925,
-					z: 0.0,
-					w: 0.026763916,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_01_6',
+				name: 'Abyss_01_6_76x264_1',
 				nameShort: 'Abyss_01',
 				size: {
 					x: 76.0,
@@ -67812,9 +59096,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_02_24',
+				name: 'Abyss_02_24_334x47_33',
 				nameShort: 'Abyss_02',
 				size: {
 					x: 334.0,
@@ -67828,21 +59114,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_02_7',
-				nameShort: 'Abyss_02',
-				size: {
-					x: 334.0,
-					y: 46.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_02_7',
+				name: 'Abyss_02_7_334x46_1',
 				nameShort: 'Abyss_02',
 				size: {
 					x: 334.0,
@@ -67899,9 +59171,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_02b_39',
+				name: 'Abyss_02b_39_382x78_40',
 				nameShort: 'Abyss_02b',
 				size: {
 					x: 382.0,
@@ -67915,21 +59189,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_02b_9',
-				nameShort: 'Abyss_02b',
-				size: {
-					x: 382.0,
-					y: 78.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 3.02674866,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_02b_9',
+				name: 'Abyss_02b_9_382x78_1',
 				nameShort: 'Abyss_02b',
 				size: {
 					x: 382.0,
@@ -67986,9 +59246,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_02b_top_6',
+				name: 'Abyss_02b_top_6_83x34_1',
 				nameShort: 'Abyss_02b_top',
 				size: {
 					x: 83.0,
@@ -68002,7 +59264,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_02b_9',
+				name: 'Abyss_02b_9_382x78_1',
 				nameShort: 'Abyss_02b',
 				size: {
 					x: 382.0,
@@ -68013,20 +59275,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 3.02674866,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_02b_top_6',
-				nameShort: 'Abyss_02b_top',
-				size: {
-					x: 83.0,
-					y: 34.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
 				},
 			},
 			altFullSprites: null,
@@ -68073,9 +59321,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_03_29',
+				name: 'Abyss_03_29_135x160_20',
 				nameShort: 'Abyss_03',
 				size: {
 					x: 135.0,
@@ -68089,21 +59339,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_03_9',
-				nameShort: 'Abyss_03',
-				size: {
-					x: 135.0,
-					y: 160.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 18.0761261,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_03_9',
+				name: 'Abyss_03_9_135x160_5',
 				nameShort: 'Abyss_03',
 				size: {
 					x: 135.0,
@@ -68160,9 +59396,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: 'Abyss_03',
 			initialSprite: {
-				name: 'Abyss_03_bell_6',
+				name: 'Abyss_03_bell_6_135x160_5',
 				nameShort: 'Abyss_03_bell',
 				size: {
 					x: 135.0,
@@ -68176,21 +59414,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_03_bell_9',
-				nameShort: 'Abyss_03_bell',
-				size: {
-					x: 135.0,
-					y: 160.0,
-				},
-				padding: {
-					x: 75.07612,
-					y: 41.0761223,
-					z: 21.0267487,
-					w: 71.02675,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_03_bell_9',
+				name: 'Abyss_03_bell_9_135x160_1',
 				nameShort: 'Abyss_03_bell',
 				size: {
 					x: 135.0,
@@ -68247,9 +59471,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0990004539,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.899002,
 			mappedParent: 'Abyss_03',
 			initialSprite: {
-				name: 'Abyss_03_bell_repaired_10',
+				name: 'Abyss_03_bell_repaired_10_35x46_1',
 				nameShort: 'Abyss_03_bell_repaired',
 				size: {
 					x: 35.0,
@@ -68263,21 +59489,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_03_bell_repaired_10',
-				nameShort: 'Abyss_03_bell_repaired',
-				size: {
-					x: 35.0,
-					y: 46.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.05131668,
-					z: 0.0,
-					w: 0.0761222839,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_03_bell_repaired_10',
+				name: 'Abyss_03_bell_repaired_10_35x46_1',
 				nameShort: 'Abyss_03_bell_repaired',
 				size: {
 					x: 35.0,
@@ -68334,9 +59546,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_03_top_7',
+				name: 'Abyss_03_top_7_135x160_1',
 				nameShort: 'Abyss_03_top',
 				size: {
 					x: 135.0,
@@ -68350,20 +59564,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Abyss_03_top_7',
-				nameShort: 'Abyss_03_top',
-				size: {
-					x: 135.0,
-					y: 160.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 89.07612,
-					z: 31.0761185,
-					w: 9.076126,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -68408,10 +59608,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -68456,10 +59657,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -68504,9 +59706,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_04_10',
+				name: 'Abyss_04_10_174x124_4',
 				nameShort: 'Abyss_04',
 				size: {
 					x: 174.0,
@@ -68520,21 +59724,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_04_8',
-				nameShort: 'Abyss_04',
-				size: {
-					x: 174.0,
-					y: 124.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 87.02675,
-					z: 130.076126,
-					w: 17.0761185,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_04_8',
+				name: 'Abyss_04_8_174x124_1',
 				nameShort: 'Abyss_04',
 				size: {
 					x: 174.0,
@@ -68591,9 +59781,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_04_right_7',
+				name: 'Abyss_04_right_7_174x124_1',
 				nameShort: 'Abyss_04_right',
 				size: {
 					x: 174.0,
@@ -68607,20 +59799,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Abyss_04_right_7',
-				nameShort: 'Abyss_04_right',
-				size: {
-					x: 174.0,
-					y: 124.0,
-				},
-				padding: {
-					x: 7.026751,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -68665,9 +59843,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.09890127,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.898903,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_05_21',
+				name: 'Abyss_05_21_292x177_15',
 				nameShort: 'Abyss_05',
 				size: {
 					x: 292.0,
@@ -68681,21 +59861,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_05_10',
-				nameShort: 'Abyss_05',
-				size: {
-					x: 292.0,
-					y: 177.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 69.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_05_10',
+				name: 'Abyss_05_10_292x177_1',
 				nameShort: 'Abyss_05',
 				size: {
 					x: 292.0,
@@ -68752,9 +59918,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_05_top_9',
+				name: 'Abyss_05_top_9_292x177_1',
 				nameShort: 'Abyss_05_top',
 				size: {
 					x: 292.0,
@@ -68768,7 +59936,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_05_10',
+				name: 'Abyss_05_10_292x177_1',
 				nameShort: 'Abyss_05',
 				size: {
 					x: 292.0,
@@ -68779,20 +59947,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 69.01291,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_05_top_9',
-				nameShort: 'Abyss_05_top',
-				size: {
-					x: 292.0,
-					y: 177.0,
-				},
-				padding: {
-					x: 88.07612,
-					y: 67.01291,
-					z: 0.026763916,
-					w: 0.0,
 				},
 			},
 			altFullSprites: null,
@@ -68839,9 +59993,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_06_21',
+				name: 'Abyss_06_21_110x96_9',
 				nameShort: 'Abyss_06',
 				size: {
 					x: 110.0,
@@ -68855,21 +60011,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_06_7',
-				nameShort: 'Abyss_06',
-				size: {
-					x: 110.0,
-					y: 96.0,
-				},
-				padding: {
-					x: 14.07612,
-					y: 9.07612,
-					z: 0.0,
-					w: 4.07611847,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_06_7',
+				name: 'Abyss_06_7_110x96_1',
 				nameShort: 'Abyss_06',
 				size: {
 					x: 110.0,
@@ -68926,9 +60068,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_07_15',
+				name: 'Abyss_07_15_217x38_15',
 				nameShort: 'Abyss_07',
 				size: {
 					x: 217.0,
@@ -68942,21 +60086,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_07_9',
-				nameShort: 'Abyss_07',
-				size: {
-					x: 217.0,
-					y: 34.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_07_9',
+				name: 'Abyss_07_9_217x34_1',
 				nameShort: 'Abyss_07',
 				size: {
 					x: 217.0,
@@ -69013,9 +60143,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.100999355,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.901001,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_08_10',
+				name: 'Abyss_08_10_264x172_1',
 				nameShort: 'Abyss_08',
 				size: {
 					x: 264.0,
@@ -69029,20 +60161,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Abyss_08_10',
-				nameShort: 'Abyss_08',
-				size: {
-					x: 264.0,
-					y: 172.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -69087,9 +60205,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_09_6',
+				name: 'Abyss_09_6_93x1593_1',
 				nameShort: 'Abyss_09',
 				size: {
 					x: 93.0,
@@ -69103,21 +60223,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_09_6',
-				nameShort: 'Abyss_09',
-				size: {
-					x: 93.0,
-					y: 1593.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 1542.07617,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_09_6',
+				name: 'Abyss_09_6_93x1593_1',
 				nameShort: 'Abyss_09',
 				size: {
 					x: 93.0,
@@ -69174,9 +60280,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_09_ascent_4',
+				name: 'Abyss_09_ascent_4_3x3_0',
 				nameShort: 'Abyss_09_ascent',
 				size: {
 					x: 3.0,
@@ -69190,20 +60298,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Abyss_09_ascent_4',
-				nameShort: 'Abyss_09_ascent',
-				size: {
-					x: 3.0,
-					y: 3.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -69248,9 +60342,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.098001,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.89800262,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_09_connection_6',
+				name: 'Abyss_09_connection_6_93x1593_1',
 				nameShort: 'Abyss_09_connection',
 				size: {
 					x: 93.0,
@@ -69264,20 +60360,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: null,
-			rendererSprite: {
-				name: 'Abyss_09_connection_6',
-				nameShort: 'Abyss_09_connection',
-				size: {
-					x: 93.0,
-					y: 1593.0,
-				},
-				padding: {
-					x: 31.07612,
-					y: 38.0761223,
-					z: 38.0429077,
-					w: 1519.043,
-				},
-			},
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Hidden',
@@ -69322,9 +60404,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_11_4',
+				name: 'Abyss_11_4_74x100_1',
 				nameShort: 'Abyss_11',
 				size: {
 					x: 74.0,
@@ -69338,7 +60422,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_02b_9',
+				name: 'Abyss_02b_9_382x78_1',
 				nameShort: 'Abyss_02b',
 				size: {
 					x: 382.0,
@@ -69349,20 +60433,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 3.02674866,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_11_4',
-				nameShort: 'Abyss_11',
-				size: {
-					x: 74.0,
-					y: 100.0,
-				},
-				padding: {
-					x: 30.0513172,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
 				},
 			},
 			altFullSprites: null,
@@ -69409,9 +60479,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_12_23',
+				name: 'Abyss_12_23_46x67_7',
 				nameShort: 'Abyss_12',
 				size: {
 					x: 46.0,
@@ -69425,21 +60497,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_12_6',
-				nameShort: 'Abyss_12',
-				size: {
-					x: 46.0,
-					y: 67.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 7.29289341,
-					z: 0.0,
-					w: 0.0,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_12_6',
+				name: 'Abyss_12_6_46x67_1',
 				nameShort: 'Abyss_12',
 				size: {
 					x: 46.0,
@@ -69496,9 +60554,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0999999046,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: {
-				name: 'Abyss_13_7',
+				name: 'Abyss_13_7_422x59_1',
 				nameShort: 'Abyss_13',
 				size: {
 					x: 422.0,
@@ -69512,7 +60572,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 			},
 			fullSprite: {
-				name: 'Abyss_02b_9',
+				name: 'Abyss_02b_9_382x78_1',
 				nameShort: 'Abyss_02b',
 				size: {
 					x: 382.0,
@@ -69523,20 +60583,6 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					y: 0.0,
 					z: 0.0,
 					w: 3.02674866,
-				},
-			},
-			rendererSprite: {
-				name: 'Abyss_13_7',
-				nameShort: 'Abyss_13',
-				size: {
-					x: 422.0,
-					y: 59.0,
-				},
-				padding: {
-					x: 0.0,
-					y: 0.0,
-					z: 0.0,
-					w: 0.0,
 				},
 			},
 			altFullSprites: null,
@@ -69583,10 +60629,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -69631,10 +60678,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',
@@ -69679,10 +60727,11 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: 0.0,
 				},
 			},
+			sortingOrder: 11,
+			positionZ: 4.90000153,
 			mappedParent: null,
 			initialSprite: null,
 			fullSprite: null,
-			rendererSprite: null,
 			altFullSprites: null,
 			altColors: null,
 			initialState: 'Full',

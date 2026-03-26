@@ -29,7 +29,6 @@ async function copySprite(sprite: SpriteInfoGenerated | undefined | null) {
 for (const room of silkMapDataGenerated.rooms) {
 	await copySprite(room.initialSprite);
 	await copySprite(room.fullSprite);
-	await copySprite(room.rendererSprite);
 	if (room.altFullSprites) {
 		for (const alt of room.altFullSprites) {
 			await copySprite(alt.sprite);

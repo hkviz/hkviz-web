@@ -64,3 +64,13 @@ export const silkMapData: SilkMapData = {
 	}),
 	areaNames: silkMapDataGenerated.areaNames.map(mapGeneratedText),
 };
+
+silkMapData.rooms.sort((a, b) => {
+	if (a.sortingOrder !== b.sortingOrder) {
+		return a.sortingOrder - b.sortingOrder;
+	}
+	if (a.positionZ !== b.positionZ) {
+		return b.positionZ - a.positionZ;
+	}
+	return 0;
+});
