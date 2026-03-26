@@ -9,10 +9,11 @@ import {
 	text,
 } from 'drizzle-orm/sqlite-core';
 import { AccountType } from '~/lib/auth/auth-options';
-import { mapZoneSchema } from '~/lib/parser';
+import { hollowMapZoneSchema } from '~/lib/game-data/hollow-data/hollow-map-zone';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { callOptionCodes } from '~/lib/types/call-option';
 import { countryCodes } from '~/lib/types/country';
+import { gameIds } from '~/lib/types/game';
 import { playingFrequencyCodes } from '~/lib/types/playing-frequency';
 import { playingSinceCodes } from '~/lib/types/playing-since';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
@@ -146,14 +147,14 @@ const runTagColumns = Object.fromEntries(
 
 // meta data, so it can easily be displayed in the UI without parsing recording files
 const runGameStateMetaColumns = {
-	hkVersion: text('hk_version', { length: 64 }),
+	gameVersion: text('hk_version', { length: 64 }),
 	playTime: real('play_time'),
 	maxHealth: int('max_health'),
 	mpReserveMax: int('mp_reserve_max'),
 	geo: int('geo'),
 	dreamOrbs: int('dream_orbs'),
 	permadeathMode: int('permadeath_mode'),
-	mapZone: textEnum('map_zone', mapZoneSchema.options),
+	mapZone: textEnum('map_zone', hollowMapZoneSchema.options),
 	killedHollowKnight: boolean('killed_hollow_knight'),
 	killedFinalBoss: boolean('killed_final_boss'),
 	killedVoidIdol: boolean('killed_void_idol'),
@@ -174,6 +175,7 @@ export const runs = table(
 		// server generated. Used for urls
 		id: text('id', { length: 255 }).notNull().primaryKey(),
 		userId: text('user_id', { length: 255 }).notNull(),
+		game: textEnum('game', gameIds).notNull().default('hollow'),
 		title: text('title', { length: MAX_RUN_TITLE_LENGTH }),
 		description: text('description'),
 		visibility: textEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),

@@ -110,10 +110,13 @@ export interface SilkMapRoomDataGenerated {
 	visualBounds: SilkExportBoundsGenerated | null;
 	playerPositionBounds: SilkExportBoundsGenerated | null;
 
+	sortingOrder: number;
+	positionZ: number;
+
 	// Sprite data
 	initialSprite: SilkSpriteInfoGenerated | null;
 	fullSprite: SilkSpriteInfoGenerated | null;
-	rendererSprite: SilkSpriteInfoGenerated | null;
+	// rendererSprite: SilkSpriteInfoGenerated | null;
 	altFullSprites: SilkSpriteConditionDataGenerated[] | null;
 	altColors: SilkColorConditionData[] | null;
 

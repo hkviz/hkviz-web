@@ -6,7 +6,7 @@ type RunFileColumnSelect = Partial<{ [Col in keyof typeof runFiles]: true }>;
 type RunColumnSelect = Partial<{ [Col in keyof typeof runs]: true }>;
 
 export const runFilesMetaFieldsSelect = {
-	hkVersion: true,
+	gameVersion: true,
 	playTime: true,
 	maxHealth: true,
 	mpReserveMax: true,
@@ -31,7 +31,7 @@ export const runTagFieldsSelect = Object.fromEntries(tags.map((tag) => [`tag_${t
 } satisfies RunColumnSelect;
 
 export const runGameStateMetaColumnsSelect = {
-	hkVersion: true,
+	gameVersion: true,
 	playTime: true,
 	maxHealth: true,
 	mpReserveMax: true,

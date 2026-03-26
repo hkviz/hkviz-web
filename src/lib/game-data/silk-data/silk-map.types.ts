@@ -110,6 +110,9 @@ export interface SilkMapRoomData {
 	visualBounds: Bounds | null;
 	playerPositionBounds: Bounds | null;
 
+	sortingOrder: number;
+	positionZ: number;
+
 	// Sprite data
 	/*initialSprite: SilkSpriteInfo | null;
 	fullSprite: SilkSpriteInfo | null;
