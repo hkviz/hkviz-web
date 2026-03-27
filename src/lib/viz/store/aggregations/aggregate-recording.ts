@@ -93,6 +93,8 @@ const formatTimeMsVar = (ms: number | null) => {
 	return ms !== null ? formatTimeMs(ms) : 'N/A';
 };
 
+export type MaximumMode = 'overScenes' | 'overZones';
+
 export const aggregationVariableInfos: {
 	[key in AggregationVariable]: {
 		name: string;
@@ -213,8 +215,10 @@ export const virtualSceneName = {
 	},
 };
 
-function isVirtualScenePartOfMaximums(sceneName: string) {
-	return sceneName != virtualSceneName.all && !sceneName.startsWith(':zone:');
+function getMaximumModeOfVirtualScene(sceneName: string): MaximumMode | null {
+	if (sceneName === virtualSceneName.all) return null;
+	if (sceneName.startsWith(':zone:')) return 'overZones';
+	return 'overScenes';
 }
 
 export function getVirtualSceneName(sceneName: string, mode: AreaSelectionMode): string | null {
@@ -229,6 +233,11 @@ export function getVirtualSceneName(sceneName: string, mode: AreaSelectionMode):
 	assertNever(mode);
 }
 
+export function getVirtualSceneNameForHeatMap(sceneName: string, mode: AreaSelectionMode): string {
+	if (mode == 'all') return sceneName;
+	return getVirtualSceneName(sceneName, mode) ?? sceneName;
+}
+
 export function getZoneNameFromSceneName(sceneName: string | undefined | null): string | undefined {
 	if (!sceneName) return undefined;
 	const roomData = mainRoomDataBySceneName.get(sceneName);
@@ -240,7 +249,11 @@ export function getZoneNameFromSceneName(sceneName: string | undefined | null): 
 export function aggregateRecording(recording: CombinedRecording) {
 	const countPerScene: Record<string, ValueAggregation> = {};
 	const countPerSceneOverTime: Record<string, ValueAggregationTimePoint[]> = {};
-	const maxOverScenes: ValueAggregation = createEmptyAggregation();
+
+	const maxPerMode: Record<MaximumMode, ValueAggregation> = {
+		overScenes: createEmptyAggregation(),
+		overZones: createEmptyAggregation(),
+	};
 
 	let countOfTimePoints = 0;
 
@@ -291,12 +304,16 @@ export function aggregateRecording(recording: CombinedRecording) {
 			current[variable] += value;
 
 			// max total over all scenes
-			if (isVirtualScenePartOfMaximums(sceneOrGroupName)) {
-				maxOverScenes[variable] = Math.max(
-					maxOverScenes[variable] ?? -Infinity,
+			const maximumMode = getMaximumModeOfVirtualScene(sceneOrGroupName);
+			if (maximumMode) {
+				maxPerMode[maximumMode][variable] = Math.max(
+					maxPerMode[maximumMode][variable] ?? -Infinity,
 					totalsOfScene[variable] ?? -Infinity,
 				);
-				maxOverScenes.timeSpendMs = Math.max(maxOverScenes.timeSpendMs, totalsOfScene.timeSpendMs);
+				maxPerMode[maximumMode].timeSpendMs = Math.max(
+					maxPerMode[maximumMode].timeSpendMs,
+					totalsOfScene.timeSpendMs,
+				);
 			}
 		});
 	}
@@ -487,8 +504,8 @@ export function aggregateRecording(recording: CombinedRecording) {
 
 	console.log('Created', countOfTimePoints, 'room time points in aggregation store', countPerSceneOverTime);
 
-	// console.log({ countPerScene, maxOverScenes });
+	// console.log({ countPerScene, maxPerMode });
 	// console.log(x);
 
-	return { countPerScene, maxOverScenes, countPerSceneOverTime };
+	return { countPerScene, maxPerMode, countPerSceneOverTime };
 }

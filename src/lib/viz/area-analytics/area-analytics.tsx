@@ -218,11 +218,11 @@ const AggregationVariableRow: Component<{
 function AggregationVariables() {
 	const aggregationStore = useAggregationStore();
 	const roomInfosContext = useAreaAnalyticsContext();
-	const aggregatedMaxs = () => aggregationStore.data()?.maxOverScenes;
+	const aggregatedMaxOverScenes = () => aggregationStore.data()?.maxPerMode.overScenes;
 	const viewNeverHappenedAggregations = aggregationStore.viewNeverHappenedAggregations;
 
 	const neverHappenedEvents = createMemo(() =>
-		aggregationVariables.filter((variable) => !aggregatedMaxs()?.[variable]),
+		aggregationVariables.filter((variable) => !aggregatedMaxOverScenes()?.[variable]),
 	);
 
 	const displayedVariables = createMemo(() =>
@@ -519,9 +519,45 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 										roomDisplayStore.setAreaSelectionMode((v as AreaSelectionMode) ?? 'room')
 									}
 								>
-									<ToggleGroupItem value="all">All</ToggleGroupItem>
-									<ToggleGroupItem value="zone">Area</ToggleGroupItem>
-									<ToggleGroupItem value="room">Room</ToggleGroupItem>
+									<Tooltip>
+										<TooltipTrigger as={ToggleGroupItem} value="all">
+											All
+										</TooltipTrigger>
+										<TooltipContent>
+											Analytics over all rooms together
+											<ShortcutHint
+												before="Press"
+												keys="A"
+												after="to cycle area selection mode"
+											/>
+										</TooltipContent>
+									</Tooltip>
+									<Tooltip>
+										<TooltipTrigger as={ToggleGroupItem} value="zone">
+											Area
+										</TooltipTrigger>
+										<TooltipContent>
+											Analytics aggregated by area (e.g. City of Tears)
+											<ShortcutHint
+												before="Press"
+												keys="A"
+												after="to cycle area selection mode"
+											/>
+										</TooltipContent>
+									</Tooltip>
+									<Tooltip>
+										<TooltipTrigger as={ToggleGroupItem} value="room">
+											Room
+										</TooltipTrigger>
+										<TooltipContent>
+											Analytics for each individual room
+											<ShortcutHint
+												before="Press"
+												keys="A"
+												after="to cycle area selection mode"
+											/>
+										</TooltipContent>
+									</Tooltip>
 								</ToggleGroup>
 								<Select
 									value={aggregationStore.aggregationCountMode()}

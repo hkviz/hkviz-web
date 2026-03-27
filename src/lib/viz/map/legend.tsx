@@ -14,6 +14,7 @@ import {
 	aggregationVariableDefaultValue,
 	aggregationVariableInfos,
 	formatAggregatedVariableValue,
+	getVirtualSceneNameForHeatMap,
 } from '../store/aggregations/aggregate-recording';
 
 const LEGEND_PADDING = 30;
@@ -48,9 +49,14 @@ export const MapLegend: Component = () => {
 	const mode = roomColoringStore.colorMode;
 	const var1Info = () => aggregationVariableInfos[var1()];
 	const hoveredRoom = roomDisplayStore.hoveredSceneName;
+	const hoveredVirtualScene = () => {
+		const room = hoveredRoom();
+		if (!room) return null;
+		return getVirtualSceneNameForHeatMap(room, roomDisplayStore.areaSelectionMode());
+	};
 	const var1SelectedRoomValue = () =>
 		hoveredRoom()
-			? (aggregationStore.data()?.countPerScene?.[hoveredRoom()!]?.[var1()] ??
+			? (aggregationStore.data()?.countPerScene?.[hoveredVirtualScene()!]?.[var1()] ??
 				aggregationVariableDefaultValue(var1()))
 			: null;
 	const var1Max = roomColoringStore.var1Max;

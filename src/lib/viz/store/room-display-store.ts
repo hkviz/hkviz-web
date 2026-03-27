@@ -2,6 +2,7 @@ import { createHotkey } from '@tanstack/solid-hotkeys';
 import * as d3 from 'd3';
 import { createContext, createMemo, createSignal, useContext, type Accessor } from 'solid-js';
 import {
+	assertNever,
 	mainRoomDataBySceneName,
 	playerDataFields,
 	roomData,
@@ -181,6 +182,16 @@ export function createRoomDisplayStore(
 	createHotkey({ key: 'P' }, () => {
 		console.log('hotkey toggle pin', selectedSceneName(), selectedScenePinned());
 		togglePinnedRoom(selectedSceneName(), 'hotkey', true);
+	});
+
+	createHotkey({ key: 'A' }, () => {
+		console.log('hotkey toggle area selection mode');
+		setAreaSelectionMode((mode) => {
+			if (mode === 'all') return 'zone';
+			if (mode === 'zone') return 'room';
+			if (mode === 'room') return 'all';
+			assertNever(mode);
+		});
 	});
 
 	return {

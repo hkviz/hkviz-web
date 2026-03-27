@@ -3,9 +3,13 @@ import memoize from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { roomData } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
-import { AggregationVariable } from './aggregations/aggregate-recording';
+import {
+	AggregationVariable,
+	getVirtualSceneNameForHeatMap
+} from './aggregations/aggregate-recording';
 import { AggregationStore } from './aggregations/aggregation-store';
 import { AnimationStore } from './animation-store';
+import { RoomDisplayStore } from './room-display-store';
 import { ThemeStore } from './theme-store';
 
 function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
@@ -36,6 +40,7 @@ export type RoomColorMode = 'area' | '1-var';
 
 export function createRoomColoringStore(
 	themeStore: ThemeStore,
+	roomDisplayStore: RoomDisplayStore,
 	aggregationStore: AggregationStore,
 	animationStore: AnimationStore,
 ) {
@@ -51,7 +56,9 @@ export function createRoomColoringStore(
 
 	const var1Max = createMemo(() => {
 		const aggregatedRunData = aggregationStore.data();
-		return aggregatedRunData?.maxOverScenes?.[var1()] ?? 0;
+		const areaSelectionMode = roomDisplayStore.areaSelectionMode();
+		const maxMode = areaSelectionMode === 'zone' ? 'overZones' : 'overScenes';
+		return aggregatedRunData?.maxPerMode[maxMode]?.[var1()] ?? 0;
 	});
 
 	const areaColorByGameObjectName = createMemo(() => {
@@ -86,10 +93,14 @@ export function createRoomColoringStore(
 		};
 	});
 
+	function toVirtualSceneName(sceneName: string): string {
+		return getVirtualSceneNameForHeatMap(sceneName, roomDisplayStore.areaSelectionMode()) ?? sceneName;
+	}
+
 	function getSingleVarColorForSceneName(sceneName: string): string | null {
 		if (colorMode() !== '1-var') return null;
 		const colorMap = singleVarColorMap();
-		const aggregations = aggregationStore.getAggregations(sceneName);
+		const aggregations = aggregationStore.getAggregations(toVirtualSceneName(sceneName));
 		const aggregationValue = aggregationStore.getCorrectedAggregationValueNullIfUnvisited(
 			aggregations,
 			var1(),
@@ -104,7 +115,7 @@ export function createRoomColoringStore(
 
 		return new Map<string, string>(
 			roomData.map((room) => {
-				const aggregations = aggregationStore.getAggregations(room.sceneName);
+				const aggregations = aggregationStore.getAggregations(toVirtualSceneName(room.sceneName));
 				const aggregationValue = aggregationStore.getCorrectedAggregationValueNullIfUnvisited(
 					aggregations,
 					var1(),
