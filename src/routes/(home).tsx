@@ -36,6 +36,27 @@ export default function HomePage() {
 						them with others.
 					</p>
 
+					{/* <div class="start-page-header text-center">
+						<h1
+							class={`title-text-glow -mb-2 font-serif text-[6rem] font-bold tracking-tight sm:text-[6rem]`}
+						>
+							<HKVizText />
+						</h1>
+
+						<h2 class="title-text-glow font-serif text-2xl sm:text-3xl">
+							Analytics for
+							<span class="mt-2 block text-3xl leading-[0.8] font-semibold sm:text-4xl">
+								<span class="whitespace-nowrap">Hollow Knight</span>
+								<span class="px-3 opacity-50">&</span>
+								<span class="relative tracking-wider">Silksong</span>
+							</span>
+						</h2>
+					</div>
+
+					<p class="mx-auto max-w-xl pt-6 text-center text-pretty">
+						With <HKVizText /> you can record and share gameplay analytics of your playthroughs.
+					</p> */}
+
 					{runs() && runs()!.length === 0 && (
 						<div class="flex flex-row items-center justify-center py-8 transition sm:gap-12">
 							<FancyButton as={AA} href="/guide/install">
