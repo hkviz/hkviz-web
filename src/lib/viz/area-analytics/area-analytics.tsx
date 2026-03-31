@@ -4,10 +4,10 @@ import { Dynamic } from 'solid-js/web';
 import { ShortcutHint } from '~/components/shortcut-hint';
 import { tabsListTransparentClasses } from '~/components/ui/additions';
 import {
-	SelectItemBody,
-	SelectItemDescription,
-	SelectItemHeader,
-	selectItemIconClasses,
+    SelectItemBody,
+    SelectItemDescription,
+    SelectItemHeader,
+    selectItemIconClasses,
 } from '~/components/ui/additions/select';
 import { Button } from '~/components/ui/button';
 import { CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
@@ -20,42 +20,42 @@ import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
 import {
-	allRoomDataIncludingSubspritesBySceneName,
-	getRelatedVirtualRoomNames,
-	mainRoomDataBySceneName,
-	RelatedVirtualRoom,
+    allRoomDataIncludingSubspritesBySceneName,
+    getRelatedVirtualRoomNames,
+    mainRoomDataBySceneName,
+    RelatedVirtualRoom,
 } from '../../parser';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { LayoutPanelSelect } from '../layout/layout-panel-select';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
+import { RoomColorCurveContextMenuItems } from '../map/room-color-curve-menu';
 import { HKMapRoom } from '../map/room-icon';
 import {
-	AggregationCountMode,
-	aggregationCountModes,
-	AreaSelectionMode,
-	getAggregationCountModeDescription,
-	getAggregationCountModeIcon,
-	getAggregationCountModeLabel,
-	useAggregationStore,
-	useAnimationStore,
-	useRoomColoringStore,
-	useRoomDisplayStore,
-	useThemeStore,
-	useUiStore,
+    AggregationCountMode,
+    aggregationCountModes,
+    AreaSelectionMode,
+    getAggregationCountModeDescription,
+    getAggregationCountModeIcon,
+    getAggregationCountModeLabel,
+    useAggregationStore,
+    useAnimationStore,
+    useRoomColoringStore,
+    useRoomDisplayStore,
+    useThemeStore,
+    useUiStore,
 } from '../store';
 import {
-	AggregationVariable,
-	aggregationVariableInfos,
-	aggregationVariables,
-	formatAggregatedVariableValue,
+    AggregationVariable,
+    aggregationVariableInfos,
+    aggregationVariables,
+    formatAggregatedVariableValue,
 } from '../store/aggregations/aggregate-recording';
 import { createRoomMsButtonProps } from '../util/shared-interactions';
 import { AggregationVariableIcon } from './aggregation-variable-icon';
 import { AreaAnalyticsContext, createAreaAnalyticsContext, useAreaAnalyticsContext } from './area-analytics-context';
 import { AreaAnalyticsVariableHistory } from './area-analytics-variable-history';
-import { RoomColorCurveContextMenuItems } from './room-color-curve-menu';
 
 function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 	const roomColoringStore = useRoomColoringStore();

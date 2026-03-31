@@ -1,14 +1,16 @@
 import * as d3 from 'd3';
+import { ChevronsUpDownIcon } from 'lucide-solid';
 import { createMemo, For, Show, type Component } from 'solid-js';
 import { Expander } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
-import { RoomColorCurveSelect } from '../area-analytics/room-color-curve-menu';
+import { DropdownMenu, DropdownMenuTrigger } from '~/components/ui/dropdown-menu';
 import {
 	useAggregationStore,
 	useAnimationStore,
 	useGameplayStore,
 	useRoomColoringStore,
 	useRoomDisplayStore,
+	useThemeStore,
 } from '../store';
 import {
 	aggregationVariableDefaultValue,
@@ -16,6 +18,7 @@ import {
 	formatAggregatedVariableValue,
 	getVirtualSceneNameForHeatMap,
 } from '../store/aggregations/aggregate-recording';
+import { RoomColorMapDropdown } from './room-color-map-dropdown';
 
 const LEGEND_PADDING = 30;
 const LEGEND_RAMP_WIDTH = 200;
@@ -44,6 +47,7 @@ export const MapLegend: Component = () => {
 	const roomColoringStore = useRoomColoringStore();
 	const aggregationStore = useAggregationStore();
 	const gameplayStore = useGameplayStore();
+	const themeStore = useThemeStore();
 
 	const var1 = roomColoringStore.var1;
 	const mode = roomColoringStore.colorMode;
@@ -95,84 +99,92 @@ export const MapLegend: Component = () => {
 
 	return (
 		<Card class="rounded-sm text-center" hidden={mode() === 'area'}>
-			<div class="flex flex-col items-center justify-center">
-				<div class="-mb-1 flex flex-row items-center justify-center gap-1 px-0.5">
-					<div class="pl-1 text-sm">{var1Info()?.name ?? ''} </div>
-					<RoomColorCurveSelect variable={var1()} class="-ml-1" />
-				</div>
-				<Expander expanded={showSelectedTimeComment()}>
-					<div class="text-muted-foreground text-[0.65rem]">Up to the selected time</div>
-				</Expander>
-				<svg class="w-36" viewBox={`0 0 ${LEGEND_SVG_WIDTH} ${LEGEND_SVG_HEIGHT}`}>
-					{/* Color ramp */}
-					<g>
-						<For each={rampData()}>
-							{(value, index) => (
-								<rect
-									fill={singleVarColormap()(value)}
-									stroke="none"
-									y={LEGEND_RAMP_Y}
-									x={index() + LEGEND_PADDING}
-									width={LEGEND_RAMP_BAR_WIDTH}
-									height={LEGEND_COLOR_RAMP_HEIGHT}
-								/>
-							)}
-						</For>
-					</g>
-
-					{/* Tick labels */}
-					<g>
-						<For each={steps()}>
-							{(step) => (
-								<text
-									class={LEGEND_SVG_TEXT_CLASSES}
-									stroke="none"
-									y={LEGEND_TICK_LABEL_Y}
-									x={tickX(step)}
-									text-anchor="middle"
-								>
-									{formatAggregatedVariableValue(var1(), step)}
-								</text>
-							)}
-						</For>
-					</g>
-
-					{/* Tick pointers */}
-					<g>
-						<For each={steps()}>
-							{(step) => (
-								<path
-									d={trianglePath()}
-									class={LEGEND_SVG_TEXT_CLASSES}
-									transform={`translate(${tickX(step)}, ${LEGEND_TICK_POINTER_Y}) rotate(180)`}
-								/>
-							)}
-						</For>
-					</g>
-
-					<Show when={var1SelectedRoomValue() != null}>
-						{/* Current room marker */}
-						<g>
-							<text
-								class={LEGEND_SVG_TEXT_CLASSES}
-								stroke="none"
-								y={LEGEND_CURRENT_VALUE_Y}
-								x={tickX(var1SelectedRoomValue()!)}
-								text-anchor="middle"
-							>
-								{formatAggregatedVariableValue(var1(), var1SelectedRoomValue()!)}
-							</text>
+			<DropdownMenu>
+				<DropdownMenuTrigger>
+					<div class="flex flex-col items-center justify-center">
+						<div class="flex flex-row items-center justify-center px-0.5">
+							<span class="pr-2 pl-1 text-sm">{var1Info()?.name ?? ''} </span>
+							<span class="text-muted-foreground text-[0.65rem]">
+								{roomColoringStore.var1Curve().shortName}
+							</span>
+							<ChevronsUpDownIcon class="text-muted-foreground size-2" />
+						</div>
+						<Expander expanded={showSelectedTimeComment()}>
+							<div class="text-muted-foreground text-[0.65rem]">Up to the selected time</div>
+						</Expander>
+						<svg class="w-36" viewBox={`0 0 ${LEGEND_SVG_WIDTH} ${LEGEND_SVG_HEIGHT}`}>
+							{/* Color ramp */}
 							<g>
-								<path
-									d={trianglePath()}
-									class={LEGEND_SVG_TEXT_CLASSES}
-									transform={`translate(${tickX(var1SelectedRoomValue()!)}, ${LEGEND_CURRENT_POINTER_Y})`}
-								/>
+								<For each={rampData()}>
+									{(value, index) => (
+										<rect
+											fill={singleVarColormap()(value)}
+											stroke="none"
+											y={LEGEND_RAMP_Y}
+											x={index() + LEGEND_PADDING}
+											width={LEGEND_RAMP_BAR_WIDTH}
+											height={LEGEND_COLOR_RAMP_HEIGHT}
+										/>
+									)}
+								</For>
 							</g>
-						</g>
-					</Show>
-				</svg>
-			</div>
+
+							{/* Tick labels */}
+							<g>
+								<For each={steps()}>
+									{(step) => (
+										<text
+											class={LEGEND_SVG_TEXT_CLASSES}
+											stroke="none"
+											y={LEGEND_TICK_LABEL_Y}
+											x={tickX(step)}
+											text-anchor="middle"
+										>
+											{formatAggregatedVariableValue(var1(), step)}
+										</text>
+									)}
+								</For>
+							</g>
+
+							{/* Tick pointers */}
+							<g>
+								<For each={steps()}>
+									{(step) => (
+										<path
+											d={trianglePath()}
+											class={LEGEND_SVG_TEXT_CLASSES}
+											transform={`translate(${tickX(step)}, ${LEGEND_TICK_POINTER_Y}) rotate(180)`}
+										/>
+									)}
+								</For>
+							</g>
+
+							<Show when={var1SelectedRoomValue() != null}>
+								{/* Current room marker */}
+								<g>
+									<text
+										class={LEGEND_SVG_TEXT_CLASSES}
+										stroke="none"
+										y={LEGEND_CURRENT_VALUE_Y}
+										x={tickX(var1SelectedRoomValue()!)}
+										text-anchor="middle"
+									>
+										{formatAggregatedVariableValue(var1(), var1SelectedRoomValue()!)}
+									</text>
+									<g>
+										<path
+											d={trianglePath()}
+											class={LEGEND_SVG_TEXT_CLASSES}
+											transform={`translate(${tickX(var1SelectedRoomValue()!)}, ${LEGEND_CURRENT_POINTER_Y})`}
+										/>
+									</g>
+								</g>
+							</Show>
+						</svg>
+					</div>
+				</DropdownMenuTrigger>
+				<RoomColorMapDropdown />
+			</DropdownMenu>
 		</Card>
 	);
 };

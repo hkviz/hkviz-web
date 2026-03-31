@@ -3,10 +3,8 @@ import memoize from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { roomData } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
-import {
-	AggregationVariable,
-	getVirtualSceneNameForHeatMap
-} from './aggregations/aggregate-recording';
+import { ColorMapId, getRoomColorMapById } from '../color-map';
+import { AggregationVariable, getVirtualSceneNameForHeatMap } from './aggregations/aggregate-recording';
 import { AggregationStore } from './aggregations/aggregation-store';
 import { AnimationStore } from './animation-store';
 import { RoomDisplayStore } from './room-display-store';
@@ -47,11 +45,13 @@ export function createRoomColoringStore(
 	const [colorMode, setColorMode] = createSignal<RoomColorMode>('area');
 	const [var1, setVar1] = createSignal<AggregationVariable>('firstVisitMs');
 	const [var1Curve, setVar1Curve] = createSignal<RoomColorCurve>(RoomColorCurveLinear);
+	const [singleVarColorMapId, setSingleVarColorMapId] = createSignal<ColorMapId>('viridis-cool');
 
 	function reset() {
 		setColorMode('area');
 		setVar1('firstVisitMs');
 		setVar1Curve(RoomColorCurveLinear);
+		setSingleVarColorMapId('viridis-cool');
 	}
 
 	const var1Max = createMemo(() => {
@@ -60,6 +60,8 @@ export function createRoomColoringStore(
 		const maxMode = areaSelectionMode === 'zone' ? 'overZones' : 'overScenes';
 		return aggregatedRunData?.maxPerMode[maxMode]?.[var1()] ?? 0;
 	});
+
+	const singleVarColorMapType = createMemo(() => getRoomColorMapById(singleVarColorMapId()));
 
 	const areaColorByGameObjectName = createMemo(() => {
 		const theme = themeStore.currentTheme();
@@ -78,17 +80,15 @@ export function createRoomColoringStore(
 		const max = var1Max();
 		const curve = var1Curve();
 		const theme = themeStore.currentTheme();
+		const colorMap = singleVarColorMapType();
 		return function (value: number | null) {
 			if (value === null) return theme === 'dark' ? '#303030' : '#bbbbbb';
 
 			const ratio = curve.transformTo01(value, max);
 			if (theme === 'light') {
-				const colorMapColor = d3.hsl(d3.interpolateCool(ratio));
-
-				return colorMapColor.copy({ s: colorMapColor.s * 1.35, l: colorMapColor.l ** 0.7 * 0.75 }).formatHex();
+				return colorMap.getColorLight(ratio);
 			} else {
-				const colorMapColor = d3.color(d3.interpolateViridis(ratio))!;
-				return colorMapColor.brighter(1).formatHex();
+				return colorMap.getColorDark(ratio);
 			}
 		};
 	});
@@ -173,6 +173,9 @@ export function createRoomColoringStore(
 		cycleRoomColorVar1,
 		setRoomColorVar1,
 		setRoomColorVar1Curve,
+
+		singleVarColorMapId,
+		setSingleVarColorMapId,
 
 		getSingleVarColorForSceneName,
 
