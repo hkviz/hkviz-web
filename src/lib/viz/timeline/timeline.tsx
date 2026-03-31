@@ -40,7 +40,13 @@ function PlayButton() {
 	const isDisabled = !gameplayStore.recording;
 	return (
 		<Tooltip>
-			<TooltipTrigger as={Button} onClick={animationStore.togglePlaying} variant="ghost" disabled={isDisabled}>
+			<TooltipTrigger
+				as={Button}
+				onClick={animationStore.togglePlaying}
+				variant="ghost"
+				disabled={isDisabled}
+				class="px-3"
+			>
 				<Show when={isPlaying()} fallback={<PlayIcon class="h-5 w-5" />}>
 					<PauseIcon class="h-5 w-5" />
 				</Show>
@@ -324,11 +330,11 @@ export function AnimationOptions(props: { class?: string }) {
 				)}
 			>
 				<PlayButton />
-				<Duration ms={animationStore.msIntoGame()} class="pr-3" withTooltip={true} />
+				<Duration ms={animationStore.msIntoGame()} class="pr-0" withTooltip={true} />
 				<AnimationTimeLine class="col-span-3 row-start-2 mx-2 @3xl:col-span-1 @3xl:row-auto @3xl:px-0" />
 				<div class="relative">
 					<Popover>
-						<PopoverTrigger as={Button} variant="ghost">
+						<PopoverTrigger as={Button} variant="ghost" class="pl-2">
 							<Times />
 							{Number.isNaN(animationSpeedMultiplier()) ? 0 : animationSpeedMultiplier()}
 						</PopoverTrigger>
