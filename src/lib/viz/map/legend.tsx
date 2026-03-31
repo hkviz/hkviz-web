@@ -9,8 +9,7 @@ import {
 	useAnimationStore,
 	useGameplayStore,
 	useRoomColoringStore,
-	useRoomDisplayStore,
-	useThemeStore,
+	useRoomDisplayStore
 } from '../store';
 import {
 	aggregationVariableDefaultValue,
@@ -47,7 +46,6 @@ export const MapLegend: Component = () => {
 	const roomColoringStore = useRoomColoringStore();
 	const aggregationStore = useAggregationStore();
 	const gameplayStore = useGameplayStore();
-	const themeStore = useThemeStore();
 
 	const var1 = roomColoringStore.var1;
 	const mode = roomColoringStore.colorMode;
