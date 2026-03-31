@@ -16,14 +16,20 @@ import { formatTimeMs } from '../../util';
 import { AreaSelectionMode } from '../room-display-store';
 
 export interface ValueAggregation {
+	damageTaken: number;
 	deaths: number;
+
 	focusing: number;
 	spellFireball: number;
 	spellUp: number;
 	spellDown: number;
-	damageTaken: number;
+
 	geoEarned: number;
 	geoSpent: number;
+
+	essenceEarned: number;
+	essenceSpent: number;
+
 	timeSpendMs: number;
 	firstVisitMs: number | null;
 	visits: number;
@@ -47,6 +53,8 @@ const createEmptyAggregation = (): ValueAggregation => ({
 	damageTaken: 0,
 	geoEarned: 0,
 	geoSpent: 0,
+	essenceEarned: 0,
+	essenceSpent: 0,
 	timeSpendMs: 0,
 	firstVisitMs: null,
 	visits: 0,
@@ -74,6 +82,8 @@ const createAggregationTimePointClone = (
 	damageTaken: aggregation?.damageTaken ?? 0,
 	geoEarned: aggregation?.geoEarned ?? 0,
 	geoSpent: aggregation?.geoSpent ?? 0,
+	essenceEarned: aggregation?.essenceEarned ?? 0,
+	essenceSpent: aggregation?.essenceSpent ?? 0,
 	timeSpendMs: aggregation?.timeSpendMs ?? 0,
 	firstVisitMs: aggregation?.firstVisitMs ?? null,
 	visits: aggregation?.visits ?? 0,
@@ -188,6 +198,22 @@ export const aggregationVariableInfos: {
 	geoSpent: {
 		name: 'Geo spent',
 		description: 'Does not include Geo lost by dying and not defeating the shade.',
+		format: (value) => value,
+		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
+	},
+	essenceEarned: {
+		name: 'Essence earned',
+		description: 'Essence obtained by e.g. defeating dream bosses, or collecting orbs from whispering roots.',
+		format: (value) => value,
+		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
+	},
+	essenceSpent: {
+		name: 'Essence spent',
+		description: 'Essence spent by using the dream gate.',
 		format: (value) => value,
 		isTimestamp: false,
 		showHistory: true,
@@ -487,6 +513,14 @@ export function aggregateRecording(recording: CombinedRecording) {
 				addToScenes(currentVirtualScenes, event.msIntoGame, 'geoSpent', -geoDiff);
 			} else if (geoDiff > 0) {
 				addToScenes(currentVirtualScenes, event.msIntoGame, 'geoEarned', geoDiff);
+			}
+
+			// --- essence ---
+			const essenceDiff = event.dreamOrbs - event.previousFrameEndEvent.dreamOrbs;
+			if (essenceDiff < 0) {
+				addToScenes(currentVirtualScenes, event.msIntoGame, 'essenceSpent', -essenceDiff);
+			} else if (essenceDiff > 0) {
+				addToScenes(currentVirtualScenes, event.msIntoGame, 'essenceEarned', essenceDiff);
 			}
 		}
 	}

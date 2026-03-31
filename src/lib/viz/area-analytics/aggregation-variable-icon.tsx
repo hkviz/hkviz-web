@@ -1,7 +1,16 @@
 import { Clock12Icon, Clock2Icon, HashIcon, type LucideIcon } from 'lucide-solid';
 import { Match, Switch } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import { coinImg, focusImg, maskImg, shadeImg, spellDownImg, spellFireballImg, spellUpImg } from '../img-urls';
+import {
+	coinImg,
+	dreamNailImg,
+	focusImg,
+	maskImg,
+	shadeImg,
+	spellDownImg,
+	spellFireballImg,
+	spellUpImg,
+} from '../img-urls';
 import { AggregationVariable } from '../store/aggregations/aggregate-recording';
 
 export const aggregationVariableDisplayInfos: Record<AggregationVariable, { Icon?: LucideIcon; image?: string }> = {
@@ -37,6 +46,12 @@ export const aggregationVariableDisplayInfos: Record<AggregationVariable, { Icon
 	},
 	geoSpent: {
 		image: coinImg,
+	},
+	essenceEarned: {
+		image: dreamNailImg,
+	},
+	essenceSpent: {
+		image: dreamNailImg,
 	},
 };
 
