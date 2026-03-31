@@ -1,9 +1,11 @@
-import { A, useBeforeLeave, useLocation } from '@solidjs/router';
+import { useBeforeLeave } from '@solidjs/router';
 import { BadgeQuestionMarkIcon, BookOpenIcon, GlobeIcon, LogInIcon, MenuIcon } from 'lucide-solid';
-import { ErrorBoundary, Show, Suspense, createMemo, type Component } from 'solid-js';
+import { ErrorBoundary, Show, Suspense, createMemo, createSignal, onCleanup, onMount, type Component } from 'solid-js';
 import { createLoginUrl } from '~/lib/auth/urls';
 // import { useSession } from '~/lib/auth/client';
 import { useSession } from '~/lib/auth/client';
+import { AA, useLocation } from '~/lib/routing/AA';
+import { isRunUrl } from '~/lib/routing/url';
 import { cn } from '~/lib/utils';
 import { useUiStore } from '~/lib/viz/store/ui-store';
 import { useViewportStore } from '~/lib/viz/store/viewport-store';
@@ -29,27 +31,60 @@ export const MainNavLeftSide: Component = () => {
 					}
 					return '/guide/install';
 				}}
-				title="How to's"
+				title="Guides"
 				icon={BadgeQuestionMarkIcon}
 				isActive={({ pathname }) => pathname.startsWith('/guide')}
 			/>
-			<MenuItem href="/research" title="Research" icon={BookOpenIcon} />
+			<MenuItem
+				href="/credits"
+				title="About"
+				icon={BookOpenIcon}
+				isActive={({ pathname }) =>
+					pathname === '/publications' ||
+					pathname === '/credits' ||
+					pathname === '/privacy-policy' ||
+					pathname === '/changelog'
+				}
+			/>
 		</>
 	);
 };
+
+function createScrollTop() {
+	const [isAtTop, setIsAtTop] = createSignal(true);
+
+	onMount(() => {
+		const handleScroll = () => {
+			setIsAtTop(window.scrollY === 0);
+		};
+
+		window.addEventListener('scroll', handleScroll);
+
+		onCleanup(() => {
+			window.removeEventListener('scroll', handleScroll);
+		});
+	});
+
+	return isAtTop;
+}
 
 export const MainNav = () => {
 	const session = useSession();
 	const loginUrl = createLoginUrl();
 	const uiStore = useUiStore();
 	const viewportStore = useViewportStore();
-
 	const location = useLocation();
 	const isVisible = createMemo(
 		() =>
-			uiStore.mobileTab() === 'overview' ||
-			!location.pathname.startsWith('/run/') ||
-			!viewportStore.isSmallMobileLayout(),
+			uiStore.mobileTab() === 'overview' || !isRunUrl(location.pathname) || !viewportStore.isSmallMobileLayout(),
+	);
+
+	const isAtTop = createScrollTop();
+	const isTransparent = createMemo(
+		() =>
+			(isRunUrl(location.pathname) || location.pathname === '/') &&
+			!viewportStore.isSmallMobileLayout() &&
+			isAtTop(),
 	);
 
 	const open = uiStore.isMenuOpen;
@@ -61,8 +96,13 @@ export const MainNav = () => {
 
 	return (
 		<div class={cn('main-nav', isVisible() ? '' : 'main-nav-hidden')}>
-			<div class="main-nav-inner app-region-drag bg-background z-40 flex items-center justify-center">
-				<Button as={A} class="app-region-no-drag" href="/" variant="ghost">
+			<div
+				class={cn(
+					'main-nav-inner app-region-drag z-40 flex items-center justify-center border-b transition-colors',
+					isTransparent() ? 'border-b-transparent' : 'bg-background/90 border-b-border/40 backdrop-blur-sm',
+				)}
+			>
+				<Button as={AA} class="app-region-no-drag" href="/" variant="ghost">
 					<span class="text-lg">
 						<HKVizText />
 					</span>
@@ -111,7 +151,7 @@ export const MainNav = () => {
 							}}
 						>
 							<div class="app-region-no-drag flex h-full flex-col gap-1">
-								<Button as={A} href="/" variant="ghost" class="h-16 justify-start">
+								<Button as={AA} href="/" variant="ghost" class="h-16 justify-start">
 									<span class="text-2xl">
 										<HKVizText />
 									</span>

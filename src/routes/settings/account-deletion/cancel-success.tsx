@@ -1,10 +1,10 @@
 import { Title } from '@solidjs/meta';
-import { A } from '@solidjs/router';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { Button } from '~/components/ui/button';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
 import { useUser } from '~/lib/auth/client';
 import { getLoginUrl } from '~/lib/auth/urls';
+import { AA } from '~/lib/routing/AA';
 
 export default function AccountDeletionPage() {
 	const user = useUser();
@@ -23,14 +23,14 @@ export default function AccountDeletionPage() {
 					</CardDescription>
 				</CardHeader>
 				<CardFooter class="flex flex-col justify-center gap-2">
-					<Button as={A} href={user() ? '/' : getLoginUrl('/')}>
-						View your gameplays
+					<Button as={AA} href={user() ? '/' : getLoginUrl('/')}>
+						View Your Gameplays
 					</Button>
-					<Button as={A} href="/run">
-						Explore public gameplays
+					<Button as={AA} href="/run">
+						Explore Public Gameplays
 					</Button>
-					<Button as={A} href="/guide/install">
-						View mod install guide
+					<Button as={AA} href="/guide/install">
+						View Gameplay Recording Guide
 					</Button>
 				</CardFooter>
 			</Card>

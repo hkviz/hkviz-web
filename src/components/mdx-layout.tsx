@@ -30,7 +30,7 @@ export function MdxOuterWrapper(props: { children: JSXElement }) {
 				h6: (props) => <h3 {...props} class={cn(smallHeaderClasses, props.class)} />,
 			}}
 		>
-			<ContentWrapper backgroundClass="dark:opacity-40 opacity-20">{props.children}</ContentWrapper>
+			<ContentWrapper backgroundClass="dark:opacity-60 opacity-60">{props.children}</ContentWrapper>
 		</MDXProvider>
 	);
 }

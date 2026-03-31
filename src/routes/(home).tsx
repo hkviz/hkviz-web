@@ -1,10 +1,11 @@
 import { Title } from '@solidjs/meta';
-import { A, createAsync, RouteDefinition } from '@solidjs/router';
+import { createAsync, RouteDefinition } from '@solidjs/router';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { FancyButton } from '~/components/fancy-button';
 import { HKVizText } from '~/components/HKVizText';
 import { OwnRuns } from '~/components/own-runs';
 import { GradientSeparator } from '~/components/ui/additions';
+import { AA } from '~/lib/routing/AA';
 import { findOwnRuns } from '~/server/run/find-own-runs';
 
 export const route = {
@@ -37,7 +38,7 @@ export default function HomePage() {
 
 					{runs() && runs()!.length === 0 && (
 						<div class="flex flex-row items-center justify-center py-8 transition sm:gap-12">
-							<FancyButton as={A} href="/guide/install">
+							<FancyButton as={AA} href="/guide/install">
 								Record Gameplay Analytics
 							</FancyButton>
 						</div>

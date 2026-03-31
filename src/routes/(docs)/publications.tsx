@@ -1,11 +1,11 @@
 import { Title } from '@solidjs/meta';
 import { MdxInnerWrapper } from '~/components/mdx-layout';
-import Mdx from './_install-guide.mdx';
+import Mdx from './_publications.mdx';
 
-export default function InstallGuidePage() {
+export default function Publications() {
 	return (
 		<MdxInnerWrapper>
-			<Title>Analytics Recording Guide - HKViz</Title>
+			<Title>Publications - HKViz</Title>
 			<Mdx />
 		</MdxInnerWrapper>
 	);

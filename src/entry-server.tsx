@@ -3,6 +3,7 @@ import { createHandler, StartServer } from '@solidjs/start/server';
 import { FaviconsHead } from './components/favicons-head';
 import { COOKIE_THEME } from './lib/cookies/cookie-names';
 import { serverCookiesGetSyncDontUse } from './lib/cookies/cookies-server';
+import { cn } from './lib/utils';
 
 const jsonLd = JSON.stringify({
 	'@context': 'https://schema.org',
@@ -18,7 +19,7 @@ export default createHandler(() => {
 				const theme = serverCookiesGetSyncDontUse().getSafe(COOKIE_THEME);
 
 				return (
-					<html lang="en">
+					<html lang="en" class={cn(theme === 'dark' ? 'dark' : undefined)}>
 						<head>
 							<meta charset="utf-8" />
 							<meta
@@ -31,7 +32,11 @@ export default createHandler(() => {
 							<FaviconsHead theme={theme} />
 							{assets}
 						</head>
-						<body class={theme === 'dark' ? 'dark' : ''}>
+						<body
+							class={cn(
+								'bg-radial from-[#c3cdd8]/60 to-[#6245bc94]/60 bg-fixed dark:from-[#5d3da9]/60 dark:to-[#040c15]/60',
+							)}
+						>
 							<div id="app">{children}</div>
 							{scripts}
 						</body>

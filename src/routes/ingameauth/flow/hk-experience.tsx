@@ -1,6 +1,6 @@
 import { Title } from '@solidjs/meta';
-import { A, createAsync, useAction, useSubmission } from '@solidjs/router';
-import { createMemo, createSignal, createUniqueId, JSXElement, Match, Switch, Show } from 'solid-js';
+import { createAsync, useAction, useSubmission } from '@solidjs/router';
+import { createMemo, createSignal, createUniqueId, JSXElement, Match, Show, Switch } from 'solid-js';
 import { AuthNeededWrapper } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { Expander } from '~/components/ui/additions';
@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Label } from '~/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
+import { AA } from '~/lib/routing/AA';
 import {
 	hkExperienceCleaned,
 	hkExperienceEmpty,
@@ -37,7 +38,7 @@ function toBoolString(value: string | boolean | null | undefined) {
 
 function FormFieldLabel(props: { for: string; children: JSXElement; class?: string }) {
 	return (
-		<Label class={cn('block w-full pb-2 pt-3', props.class)} for={props.for}>
+		<Label class={cn('block w-full pt-3 pb-2', props.class)} for={props.for}>
 			{props.children}
 		</Label>
 	);
@@ -179,7 +180,7 @@ export default function DataCollectionStudyParticipationPage() {
 								</CardHeader>
 								<CardContent>Thank you for participating!</CardContent>
 								<CardFooter class="flex justify-end">
-									<Button as={A} href="/settings" variant="outline">
+									<Button as={AA} href="/settings" variant="outline">
 										Back to settings
 									</Button>
 								</CardFooter>
@@ -192,7 +193,7 @@ export default function DataCollectionStudyParticipationPage() {
 								</CardHeader>
 								<CardContent>Thanks for participating!</CardContent>
 								<CardFooter class="flex justify-end">
-									<Button as={A} href="/settings" variant="outline">
+									<Button as={AA} href="/settings" variant="outline">
 										Back to settings
 									</Button>
 								</CardFooter>

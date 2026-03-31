@@ -1,6 +1,6 @@
-import { A } from '@solidjs/router';
 import { BellIcon } from 'lucide-solid';
 import { Alert, AlertDescription, AlertTitle } from '~/components/ui/alert';
+import { AA } from '~/lib/routing/AA';
 
 export function SpoilerWarningEarlyGame() {
 	return (
@@ -12,7 +12,7 @@ export function SpoilerWarningEarlyGame() {
 				<AlertTitle>Early game spoiler warning!</AlertTitle>
 				<AlertDescription>
 					If you would like to avoid spoilers, and use this mod to collect stats for your first playthrough,
-					you can follow the <A href="/guide/install">install guide</A>, and look at the stats and this guide
+					you can follow the <AA href="/guide/install">Gameplay Recording Guide</AA>, and look at this guide
 					later.
 				</AlertDescription>
 			</div>

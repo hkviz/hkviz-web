@@ -1,6 +1,7 @@
-import { A, createAsync, useAction, useSubmission } from '@solidjs/router';
+import { createAsync, useAction, useSubmission } from '@solidjs/router';
 import { Match, Switch } from 'solid-js';
 import { Button } from '~/components/ui/button';
+import { AA } from '~/lib/routing/AA';
 import { accountCancelRemovalRequest, accountGetScheduledForDeletion } from '~/server/account/deletion';
 import { Setting, SettingContent, SettingDescription, SettingTitle } from './_option';
 
@@ -18,7 +19,7 @@ export default function SettingsAccountDeletionOption() {
 						<SettingTitle>Deletion canceled</SettingTitle>
 						<SettingDescription>Welcome back! 🎉</SettingDescription>
 					</SettingContent>
-					<Button variant="destructive" as={A} class="shrink-0" href="/settings/account-deletion">
+					<Button variant="destructive" as={AA} class="shrink-0" href="/settings/account-deletion">
 						Delete account
 					</Button>
 				</Setting>
@@ -46,7 +47,7 @@ export default function SettingsAccountDeletionOption() {
 						<SettingTitle>Account deletion</SettingTitle>
 						<SettingDescription>Delete your account and your game play data.</SettingDescription>
 					</SettingContent>
-					<Button variant="destructive" as={A} class="shrink-0" href="/settings/account-deletion">
+					<Button variant="destructive" as={AA} class="shrink-0" href="/settings/account-deletion">
 						Delete account
 					</Button>
 				</Setting>

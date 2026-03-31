@@ -1,5 +1,5 @@
 import { Title } from '@solidjs/meta';
-import { A, createAsync, RouteDefinition, useAction, useSubmission } from '@solidjs/router';
+import { createAsync, RouteDefinition, useAction, useSubmission } from '@solidjs/router';
 import { Match, Show, Switch } from 'solid-js';
 import { AuthNeeded } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
@@ -8,6 +8,7 @@ import { Button } from '~/components/ui/button';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
 import { useSession } from '~/lib/auth/client';
 import { createLogoutUrl } from '~/lib/auth/urls';
+import { AA } from '~/lib/routing/AA';
 import {
 	accountAcceptRemovalRequest,
 	accountCancelRemovalRequest,
@@ -60,7 +61,7 @@ export default function AccountDeletionPage() {
 								<CardTitle>Account Deletion Cancelled</CardTitle>
 							</CardHeader>
 							<CardFooter class="flex justify-end">
-								<Button as={A} href="/settings">
+								<Button as={AA} href="/settings">
 									Back to Settings
 								</Button>
 							</CardFooter>
@@ -79,7 +80,7 @@ export default function AccountDeletionPage() {
 								<Button onClick={handleCancel} variant="outline">
 									Undo Deletion
 								</Button>
-								<Button as={A} href={logoutUrl()} target="_self">
+								<Button as={AA} href={logoutUrl()} target="_self">
 									Sign Out
 								</Button>
 							</CardFooter>

@@ -1,5 +1,5 @@
-import { redirect } from '@solidjs/router';
 import type { APIEvent } from '@solidjs/start/server';
+import { redirect } from '~/lib/routing/redirect';
 import { accountCancelRemovalRequestById } from '~/server/account/deletion-internal';
 
 export async function GET({ params }: APIEvent): Promise<Response> {

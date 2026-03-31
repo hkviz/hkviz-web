@@ -16,18 +16,13 @@ export const ContentWrapper: Component<ContentWrapperProps> = (props) => {
 		<div
 			data-content-wrapper
 			class={cn(
-				'relative flex grow flex-col',
+				'relative -mt-40 flex grow flex-col pt-40',
 				props.footerOutOfSight
-					? 'min-h-[calc(100vh-var(--main-nav-height))]'
-					: 'min-h-[calc(100vh-var(--main-nav-height)-var(--footer-height)-4px)]',
+					? 'min-h-[calc(100vh+var(--spacing,0.25rem)*40-var(--main-nav-height))]'
+					: 'min-h-[calc(100vh+var(--spacing,0.25rem)*40-var(--main-nav-height)-var(--footer-height))]',
 			)}
 		>
-			<div
-				class={cn(
-					'absolute inset-0 -z-10 bg-radial from-[#6245bc94]/60 to-[#c3cdd8]/60 bg-fixed dark:from-[#5d3da9]/60 dark:to-[#040c15]/60',
-					props.backgroundClass,
-				)}
-			/>
+			<div class={cn('bg-background absolute inset-0 -z-10 opacity-0', props.backgroundClass)} />
 			<main
 				class={cn(
 					'flex grow flex-col text-black dark:text-white',

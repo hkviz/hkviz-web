@@ -5,10 +5,10 @@ import { COOKIE_INGAME_AUTH_URL_ID } from '~/lib/cookies/cookie-names';
 import { redirectWithCookies } from '~/lib/cookies/cookies-response-helpers';
 import { serverCookiesGet } from '~/lib/cookies/cookies-server';
 import { assertNever } from '~/lib/parser';
+import { accountGetScheduledForDeletion } from '../account/deletion';
 import { db } from '../db';
 import { ingameAuth } from '../db/schema';
 import { isMax10MinutesOld } from './utils';
-import { accountGetScheduledForDeletion } from '../account/deletion';
 
 export type IngameAuthFlowState =
 	| { type: 'no-id-provided' }
@@ -96,7 +96,7 @@ export async function getIngameAuthRedirect(state: IngameAuthFlowState) {
 		case 'no-id-provided':
 			return redirectWithCookies('/ingameauth/flow/not-found?no-id', cookies);
 		case 'not-found':
-			return redirectWithCookies('/ingameauth/flow/not-found?' + state.count, cookies);
+			return redirectWithCookies(`/ingameauth/flow/not-found?${state.count}`, cookies);
 		case 'sign-in-required':
 			return redirectWithCookies('/api/auth/signin?callbackUrl=/ingameauth/continue', cookies);
 		case 'cancel-account-deletion':

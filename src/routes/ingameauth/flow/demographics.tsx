@@ -1,5 +1,5 @@
 import { Title } from '@solidjs/meta';
-import { A, createAsync, useAction, useSubmission } from '@solidjs/router';
+import { createAsync, useAction, useSubmission } from '@solidjs/router';
 import { AsteriskIcon } from 'lucide-solid';
 import { createEffect, createMemo, createSignal, For, Show } from 'solid-js';
 import { AuthNeededWrapper } from '~/components/auth-needed';
@@ -22,6 +22,7 @@ import { Label } from '~/components/ui/label';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { TextField, TextFieldInput, TextFieldLabel } from '~/components/ui/text-field';
+import { AA } from '~/lib/routing/AA';
 import { AgeRange, ageRangeCodes, ageRangeName } from '~/lib/types/age-range';
 import { countries, CountryCode, countryName } from '~/lib/types/country';
 import { CountryFlag } from '~/lib/types/country-flags';
@@ -122,7 +123,7 @@ export default function StudyDemographicClientForm() {
 									</CardTitle>
 								</CardHeader>
 								<CardFooter class="flex justify-end">
-									<Button variant="outline" as={A} href="/settings">
+									<Button variant="outline" as={AA} href="/settings">
 										Back to Settings
 									</Button>
 								</CardFooter>

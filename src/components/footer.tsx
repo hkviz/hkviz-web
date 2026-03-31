@@ -1,7 +1,7 @@
-import { A, useLocation } from '@solidjs/router';
 import { createEffect, createMemo, type Component } from 'solid-js';
+import { AA, useLocation } from '~/lib/routing/AA';
+import { isRunUrl } from '~/lib/routing/url';
 import { useUiStore } from '~/lib/viz';
-import { HKVizText } from './HKVizText';
 import { DiscordDialogButton, GithubButton, MailButton } from './socials-links';
 import { Expander } from './ui/additions';
 import { Button } from './ui/button';
@@ -10,7 +10,7 @@ export const Footer: Component = () => {
 	const uiStore = useUiStore();
 	const location = useLocation();
 
-	const isVisible = createMemo(() => uiStore.mobileTab() === 'overview' || !location.pathname.startsWith('/run/'));
+	const isVisible = createMemo(() => uiStore.mobileTab() === 'overview' || !isRunUrl(location.pathname));
 
 	createEffect(() => {
 		if (isVisible()) {
@@ -22,24 +22,23 @@ export const Footer: Component = () => {
 
 	return (
 		<Expander expanded={isVisible()}>
-			<footer class="bg-background flex min-h-(--footer-height) w-full flex-col items-center justify-center">
+			<footer class="bg-background/90 flex min-h-(--footer-height) w-full flex-col items-center justify-center">
 				<div class="grid w-full max-w-225 grid-cols-1 p-4 sm:grid-cols-[1fr_2fr_1fr]">
 					<div class="text-foreground text-center text-sm text-balance opacity-80 sm:text-left">
-						<HKVizText /> is not affiliated with Team Cherry. Hollow Knight and all related indicia are
-						trademarks of{' '}
+						Hollow Knight and all related indicia are trademarks of{' '}
 						<a class="hover:underline" href="https://teamcherry.com.au" target="_blank" rel="noreferrer">
 							Team Cherry
 						</a>{' '}
-						© 2017
+						© 2025
 					</div>
 					<div class="flex w-full flex-row flex-wrap items-center justify-center">
-						<Button as={A} href="/guide/install" variant="link" class="text-foreground opacity-80">
+						<Button as={AA} href={'/guide/install'} variant="link" class="text-foreground opacity-80">
 							Getting started
 						</Button>
-						<Button as={A} href="/changelog" variant="link" class="text-foreground opacity-80">
+						<Button as={AA} href={'/changelog'} variant="link" class="text-foreground opacity-80">
 							Changelog
 						</Button>
-						<Button as={A} href="/privacy-policy" variant="link" class="text-foreground opacity-80">
+						<Button as={AA} href={'/privacy-policy'} variant="link" class="text-foreground opacity-80">
 							Privacy policy
 						</Button>
 					</div>

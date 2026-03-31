@@ -1,4 +1,6 @@
-import { CustomResponse, json, redirect, RouterResponseInit } from '@solidjs/router';
+import { CustomResponse, json, RouterResponseInit } from '@solidjs/router';
+import { redirect } from '../routing/redirect';
+import { UrlPath } from '../routing/url';
 import { ServerCookies } from './cookies-server';
 import { combineHeaders } from './headers';
 
@@ -25,7 +27,7 @@ export function jsonWithCookies<T>(data: T, cookies: ServerCookies, init?: Route
 }
 
 export function redirectWithCookies(
-	url: string,
+	url: UrlPath,
 	cookies: ServerCookies,
 	init?: RouterResponseInit,
 ): CustomResponse<never> {

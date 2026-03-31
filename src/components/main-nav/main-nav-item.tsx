@@ -1,9 +1,10 @@
-import { Button } from '~/components/ui/button';
-import { DropdownMenuItem } from '~/components/ui/dropdown-menu';
-import { A, useLocation } from '@solidjs/router';
 import { type LucideIcon } from 'lucide-solid';
 import { Show, createContext, useContext, type Component, type JSXElement } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+import { Button } from '~/components/ui/button';
+import { DropdownMenuItem } from '~/components/ui/dropdown-menu';
+import { AA, useLocation } from '~/lib/routing/AA';
+import { UrlPath } from '~/lib/routing/url';
 import { cn } from '~/lib/utils';
 
 export type MenuItemAs = typeof Button | typeof DropdownMenuItem;
@@ -22,12 +23,12 @@ export const MenuItemContextProvider = (props: { value: MenuItemContextValue; ch
 };
 
 export interface MenuItemProps {
-	href?: string | (({ pathname }: { pathname: string }) => string);
+	href?: UrlPath | (({ pathname }: { pathname: UrlPath }) => UrlPath);
 	useNativeLink?: boolean;
 	onClick?: () => void;
 	title: JSXElement;
 	icon?: LucideIcon;
-	isActive?: ({ pathname }: { pathname: string }) => boolean;
+	isActive?: ({ pathname }: { pathname: UrlPath }) => boolean;
 	class?: string;
 	target?: string;
 }
@@ -53,7 +54,7 @@ export const MenuItem: Component<MenuItemProps> = (props) => {
 	return (
 		<Dynamic
 			component={context.as ?? Button}
-			as={!href() ? 'button' : props.useNativeLink ? 'a' : A}
+			as={!href() ? 'button' : props.useNativeLink ? 'a' : AA}
 			href={href()}
 			target={props.target}
 			onClick={props.onClick}

@@ -1,4 +1,4 @@
-import { A, useAction, useSubmission } from '@solidjs/router';
+import { useAction, useSubmission } from '@solidjs/router';
 import { ChevronDownIcon, HeartIcon } from 'lucide-solid';
 import {
 	For,
@@ -15,6 +15,8 @@ import {
 import { Dynamic } from 'solid-js/web';
 import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { errorGetMessage } from '~/lib/error-get-message';
+import { AA } from '~/lib/routing/AA';
+import { UrlPath } from '~/lib/routing/url';
 import { MAX_RUN_TITLE_LENGTH, cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { cn } from '~/lib/utils';
@@ -109,7 +111,7 @@ const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean 
 const RunCardEpicInfo: Component<{
 	title: JSXElement;
 	class?: string;
-	href?: string;
+	href?: UrlPath;
 	children: JSXElement;
 }> = (props) => {
 	const spans = (
@@ -122,9 +124,9 @@ const RunCardEpicInfo: Component<{
 	return (
 		<Show when={props.href} fallback={spans}>
 			{(href) => (
-				<A href={href()} class="hover:drop-shadow-glow-md z-7 hover:underline">
+				<AA href={href()} class="hover:drop-shadow-glow-md z-7 hover:underline">
 					{spans}
-				</A>
+				</AA>
 			)}
 		</Show>
 	);
@@ -309,7 +311,7 @@ export const RunCard: Component<{
 				{/* https://css-tricks.com/nested-links/ */}
 				<Show
 					when={props.onClick}
-					fallback={<A href={`/run/${props.run.id}`} class="absolute inset-0 z-6 block" />}
+					fallback={<AA href={`/run/${props.run.id}`} class="absolute inset-0 z-6 block" />}
 				>
 					{(onClick) => <button onClick={() => onClick()(props.run.id)} class="absolute inset-0 z-6 block" />}
 				</Show>
