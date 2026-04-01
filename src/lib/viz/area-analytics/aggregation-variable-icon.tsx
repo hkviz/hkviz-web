@@ -1,4 +1,4 @@
-import { Clock12Icon, Clock2Icon, HashIcon, type LucideIcon } from 'lucide-solid';
+import { Clock12Icon, Clock2Icon, ClockArrowUpIcon, HashIcon, type LucideIcon } from 'lucide-solid';
 import { Match, Switch } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import {
@@ -14,6 +14,9 @@ import {
 import { AggregationVariable } from '../store/aggregations/aggregate-recording';
 
 export const aggregationVariableDisplayInfos: Record<AggregationVariable, { Icon?: LucideIcon; image?: string }> = {
+	visitOrder: {
+		Icon: ClockArrowUpIcon,
+	},
 	visits: {
 		Icon: HashIcon,
 	},

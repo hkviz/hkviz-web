@@ -18,28 +18,35 @@ export const RoomColorCurveLog = {
 };
 
 export class RoomColorCurveExponential {
-	readonly type = 'exponential' as const;
-	id: string;
-	name: string;
-	shortName: string;
+	readonly type: 'exponential' | 'root';
+	readonly id: string;
+	readonly isRoot: boolean;
+	readonly name: string;
+	readonly shortName: string;
+	readonly exponentInverse: number;
 
 	constructor(public readonly exponent: number) {
-		this.id = `exp-${exponent}`;
-		this.name = `Exponential ${exponent}`;
-		this.shortName = `Exp ${exponent}`;
+		this.isRoot = exponent < 1;
+		this.type = this.isRoot ? 'root' : 'exponential';
+		this.exponentInverse = 1 / exponent;
+		this.id = `exp-${Math.round(exponent * 100) / 100}`;
+		this.name = this.isRoot ? `Root ${this.exponentInverse}` : `Exponential ${exponent}`;
+		this.shortName = this.isRoot ? `Root ${this.exponentInverse}` : `Exp ${exponent}`;
 	}
 	transformTo01(value: number, max: number) {
-		return max ? Math.pow(value / max, 1 / this.exponent) : 0;
+		return max ? Math.pow(value / max, this.exponent) : 0;
 	}
 
-	static EXPONENT_1_5 = new RoomColorCurveExponential(1.5);
-	static EXPONENT_2 = new RoomColorCurveExponential(2);
-	static EXPONENT_3 = new RoomColorCurveExponential(3);
+	static EXPONENT_0_5 = new RoomColorCurveExponential(2);
+	static EXPONENT_1_5 = new RoomColorCurveExponential(1 / 1.5);
+	static EXPONENT_2 = new RoomColorCurveExponential(1 / 2);
+	static EXPONENT_3 = new RoomColorCurveExponential(1 / 3);
 }
 
 export type RoomColorCurve = typeof RoomColorCurveLinear | typeof RoomColorCurveLog | RoomColorCurveExponential;
 
 export const roomColorCurves: RoomColorCurve[] = [
+	RoomColorCurveExponential.EXPONENT_0_5,
 	RoomColorCurveLinear,
 	RoomColorCurveExponential.EXPONENT_1_5,
 	RoomColorCurveExponential.EXPONENT_2,

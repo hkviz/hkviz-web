@@ -87,9 +87,11 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 								? 'bg-primary text-white'
 								: roomColorVar1Curve().type === 'log'
 									? 'bg-blue-600 text-white'
-									: roomColorVar1Curve().type === 'exponential'
+									: roomColorVar1Curve().type === 'root'
 										? 'bg-green-600 text-white'
-										: '') +
+										: roomColorVar1Curve().type === 'exponential'
+											? 'bg-red-600 text-white'
+											: '') +
 						' ' +
 						roomInfoColoringToggleClasses(props.variable)
 					}
@@ -107,6 +109,9 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 							</Match>
 							<Match when={isActive() && roomColorVar1Curve().type === 'exponential'}>
 								<span>exp</span>
+							</Match>
+							<Match when={isActive() && roomColorVar1Curve().type === 'root'}>
+								<span>root</span>
 							</Match>
 						</Switch>
 					</span>
@@ -171,7 +176,7 @@ const AggregationVariableRow: Component<{
 								<span>{variableInfo().name}</span>
 							</div>
 						</TooltipTrigger>
-						<TooltipContent>{variableInfo().description}</TooltipContent>
+						<TooltipContent class="max-w-120">{variableInfo().description}</TooltipContent>
 					</Tooltip>
 				</TableHead>
 				<TableCell class="w-1 p-1 pr-3 text-right">

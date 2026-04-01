@@ -33,6 +33,7 @@ export interface ValueAggregation {
 	timeSpendMs: number;
 	firstVisitMs: number | null;
 	visits: number;
+	visitOrder: number | null;
 }
 export type AggregationVariable = keyof ValueAggregation;
 export type AggregationVariableAdditive = {
@@ -45,6 +46,8 @@ export interface ValueAggregationTimePoint extends ValueAggregation {
 }
 
 const createEmptyAggregation = (): ValueAggregation => ({
+	visitOrder: null,
+	visits: 0,
 	deaths: 0,
 	focusing: 0,
 	spellFireball: 0,
@@ -57,7 +60,6 @@ const createEmptyAggregation = (): ValueAggregation => ({
 	essenceSpent: 0,
 	timeSpendMs: 0,
 	firstVisitMs: null,
-	visits: 0,
 });
 
 const EMPTY_AGGREGATION: ValueAggregation = createEmptyAggregation();
@@ -87,6 +89,7 @@ const createAggregationTimePointClone = (
 	timeSpendMs: aggregation?.timeSpendMs ?? 0,
 	firstVisitMs: aggregation?.firstVisitMs ?? null,
 	visits: aggregation?.visits ?? 0,
+	visitOrder: aggregation?.visitOrder ?? null,
 	msIntoGame,
 	isActiveScene,
 });
@@ -103,6 +106,10 @@ const formatTimeMsVar = (ms: number | null) => {
 	return ms !== null ? formatTimeMs(ms) : 'N/A';
 };
 
+const formatNumberVar = (value: number | null) => {
+	return value !== null ? value : 'N/A';
+};
+
 export type MaximumMode = 'overScenes' | 'overZones';
 
 export const aggregationVariableInfos: {
@@ -117,8 +124,8 @@ export const aggregationVariableInfos: {
 } = {
 	visits: {
 		name: 'Visits',
-		description: 'Number of times this scene has been entered.',
-		format: (value) => value,
+		description: 'Number of times this scene/area has been entered.',
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
@@ -131,9 +138,18 @@ export const aggregationVariableInfos: {
 		showHistory: false,
 		showHistoryDelta: false,
 	},
+	visitOrder: {
+		name: 'Visit Order',
+		description:
+			'The order this scene or area was first visited (e.g., 5 means four others were first visited before it).',
+		format: formatNumberVar,
+		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: false,
+	},
 	timeSpendMs: {
 		name: 'Time spent',
-		description: 'Total time spent in a scene of all visits combined.',
+		description: 'Total time spent in a scene/area of all visits combined.',
 		format: formatTimeMsVar,
 		isTimestamp: false,
 		showHistory: true,
@@ -142,15 +158,15 @@ export const aggregationVariableInfos: {
 	damageTaken: {
 		name: 'Damage taken',
 		description: 'Total damage taken in masks',
-		format: (value) => value,
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
 	},
 	deaths: {
 		name: 'Deaths',
-		description: 'Number of times the player died in a scene.',
-		format: (value) => value,
+		description: 'Number of times the player died in a scene/area.',
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
@@ -158,7 +174,7 @@ export const aggregationVariableInfos: {
 	focusing: {
 		name: 'Focusing',
 		description: 'Number of times the player started to focus.',
-		format: (value) => value,
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
@@ -166,7 +182,7 @@ export const aggregationVariableInfos: {
 	spellFireball: {
 		name: 'Vengeful Spirit',
 		description: 'Number of times the player used a fireball spell.',
-		format: (value) => value,
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
@@ -174,7 +190,7 @@ export const aggregationVariableInfos: {
 	spellDown: {
 		name: 'Desolate Dive',
 		description: 'Number of times the player used a downwards spell.',
-		format: (value) => value,
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
@@ -182,7 +198,7 @@ export const aggregationVariableInfos: {
 	spellUp: {
 		name: 'Howling Wraiths',
 		description: 'Number of times the player used an upwards spell.',
-		format: (value) => value,
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
@@ -190,7 +206,7 @@ export const aggregationVariableInfos: {
 	geoEarned: {
 		name: 'Geo earned',
 		description: 'Does not include geo earned by defeating the shade.',
-		format: (value) => value,
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
@@ -198,7 +214,7 @@ export const aggregationVariableInfos: {
 	geoSpent: {
 		name: 'Geo spent',
 		description: 'Does not include Geo lost by dying and not defeating the shade.',
-		format: (value) => value,
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
@@ -206,7 +222,7 @@ export const aggregationVariableInfos: {
 	essenceEarned: {
 		name: 'Essence earned',
 		description: 'Essence obtained by e.g. defeating dream bosses, or collecting orbs from whispering roots.',
-		format: (value) => value,
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
@@ -214,7 +230,7 @@ export const aggregationVariableInfos: {
 	essenceSpent: {
 		name: 'Essence spent',
 		description: 'Essence spent by using the dream gate.',
-		format: (value) => value,
+		format: formatNumberVar,
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
@@ -279,6 +295,11 @@ export function aggregateRecording(recording: CombinedRecording) {
 	const maxPerMode: Record<MaximumMode, ValueAggregation> = {
 		overScenes: createEmptyAggregation(),
 		overZones: createEmptyAggregation(),
+	};
+
+	const visitOrderPerMode: Record<MaximumMode, number> = {
+		overScenes: 0,
+		overZones: 0,
 	};
 
 	let countOfTimePoints = 0;
@@ -420,6 +441,10 @@ export function aggregateRecording(recording: CombinedRecording) {
 
 		currentSceneEnteredAtMs = msIntoGame;
 		currentSceneEnteredWithMsSpendPerVirtualScene.clear();
+		const didIncreaseVisitOrderPerMode: Record<MaximumMode, boolean> = {
+			overScenes: false,
+			overZones: false,
+		};
 		for (const virtualScene of currentVirtualScenes) {
 			const virtualSceneAsArr = [virtualScene];
 
@@ -433,7 +458,19 @@ export function aggregateRecording(recording: CombinedRecording) {
 				addToScenes(virtualSceneAsArr, msIntoGame, 'visits', 1);
 			}
 			if ((countPerScene[virtualScene]?.firstVisitMs ?? null) === null) {
+				// first visit of virtual scene
 				addToScenes(virtualSceneAsArr, msIntoGame, 'firstVisitMs', msIntoGame);
+			}
+			if ((countPerScene[virtualScene]?.visitOrder ?? null) === null) {
+				// first visit of virtual scene
+				const maximumMode = getMaximumModeOfVirtualScene(virtualScene);
+				if (maximumMode) {
+					const visitOrder = didIncreaseVisitOrderPerMode[maximumMode]
+						? visitOrderPerMode[maximumMode]
+						: ++visitOrderPerMode[maximumMode];
+					didIncreaseVisitOrderPerMode[maximumMode] = true;
+					addToScenes(virtualSceneAsArr, msIntoGame, 'visitOrder', visitOrder);
+				}
 			}
 		}
 	}
