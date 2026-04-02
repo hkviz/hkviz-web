@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import memoize from 'micro-memoize';
+import { memoize } from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { roomData } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';

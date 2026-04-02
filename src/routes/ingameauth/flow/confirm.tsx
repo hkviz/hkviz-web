@@ -60,7 +60,7 @@ export default function IngameAuthPage() {
 				<Match when={true}>
 					<Card class="max-w-[500px]">
 						<CardHeader>
-							<CardTitle>Allow this device to upload play data?</CardTitle>
+							<CardTitle>Allow this device to upload analytics data?</CardTitle>
 							<CardDescription>
 								Data will be uploaded to{' '}
 								<Show when={user()} fallback={<span>your account</span>}>
