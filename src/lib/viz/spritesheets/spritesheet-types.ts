@@ -35,9 +35,11 @@ export interface SpriteSheetMeta {
 }
 
 export interface SpriteSheetExtractWorkerMessage {
+	id: string;
 	spritesheetUrl: string;
 	metadataUrl: string;
 }
 
-export type SpriteSheetExtractWorkerResponse = Record<string, Blob>;
+export type SpriteSheetExtractWorkerResponseFrames = Record<string, Blob>;
+export type SpriteSheetExtractWorkerResponse = { id: string; frames: SpriteSheetExtractWorkerResponseFrames };
 export type SpriteSheetExtracted = Record<string, string>;

@@ -15,11 +15,11 @@ import { createElementSize } from '../canvas';
 import { useLayoutPanelContextOrNull } from '../layout/layout-panel-context';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { useMapZoomStore, useRoomDisplayStore, useUiStore } from '../store';
-import { HkMapRooms } from './hk-map-rooms';
 import { HkMapTexts } from './hk-map-texts';
 import { createHKMapZoom } from './hk-map-zoom';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
+import { SilkMapRooms } from './silk-map-rooms';
 import { OutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 
@@ -216,7 +216,8 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 
 	const rootG = (
 		<g data-group="root">
-			<HkMapRooms
+			<SilkMapRooms />
+			{/* <HkMapRooms
 				rooms={roomData}
 				onMouseOver={(_, r) => {
 					setActiveSceneName(r.sceneName);
@@ -236,7 +237,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 					// setSelectedRoomIfNotPinned(r.sceneName);
 					// }
 				}}
-			/>
+			/> */}
 			<HkMapTexts />
 		</g>
 	) as SVGGElement;

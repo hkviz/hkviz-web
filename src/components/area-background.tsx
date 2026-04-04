@@ -1,4 +1,5 @@
-import { type MapZone, assertNever } from '~/lib/parser';
+import { MapZone } from '~/lib/game-data/hollow-data/hollow-map-zone';
+import { assertNever } from '~/lib/parser';
 
 /*
 Matches can be extracted using c# repl using Explorer Mod for Hollow Knight. Using the following script:

@@ -1,4 +1,4 @@
+import { Bounds } from '~/lib/game-data/shared/bounds';
 import { roomData } from './rooms';
-import { Bounds } from '../hk-types';
 
 export const mapVisualExtends = Bounds.fromContainingBounds(roomData.map((r) => r.visualBounds));

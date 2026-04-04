@@ -21,7 +21,7 @@ export async function updateRunMetaByFiles(db: DB, runId: string) {
 	};
 
 	for (const file of files) {
-		updateSet.hkVersion = updateSet.hkVersion ?? file.hkVersion;
+		updateSet.gameVersion = updateSet.gameVersion ?? file.gameVersion;
 		updateSet.playTime = updateSet.playTime ?? file.playTime;
 		updateSet.maxHealth = updateSet.maxHealth ?? file.maxHealth;
 		updateSet.mpReserveMax = updateSet.mpReserveMax ?? file.mpReserveMax;

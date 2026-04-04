@@ -7,5 +7,5 @@ export * from './room-groups';
 export * from './room-name-formatting';
 export * from './room-sub-sprites';
 export * from './rooms';
-export * from './scaling';
 export * from './zoom-zone';
+

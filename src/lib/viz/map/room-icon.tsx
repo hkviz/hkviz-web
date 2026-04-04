@@ -1,7 +1,9 @@
 import { createMemo, type Component } from 'solid-js';
-import { Bounds, RoomInfo, Vector2 } from '~/lib/parser';
+import { Bounds } from '~/lib/game-data/shared/bounds';
+import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { RoomInfo } from '~/lib/parser';
 import { cn } from '~/lib/utils';
-import { HkMapRooms } from './hk-map-rooms';
+import { HkMapRooms } from './hollow-map-rooms';
 
 export interface HKMapRoomProps {
 	class?: string;
@@ -52,7 +54,7 @@ export const HKMapRoom: Component<HKMapRoomProps> = (props) => {
 			return {
 				...it,
 				sprites,
-				 
+
 				spritesByVariant: spritesByVariant as any,
 				allSpritesScaledPositionBounds: roomPositionWithin0To1,
 			};

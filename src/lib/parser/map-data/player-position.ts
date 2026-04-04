@@ -1,4 +1,4 @@
-import { Vector2 } from '../hk-types';
+import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { type SceneEvent } from '../recording-files/events/scene-event';
 import { mainRoomDataBySceneName } from './rooms';
 
