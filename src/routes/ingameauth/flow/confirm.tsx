@@ -42,7 +42,7 @@ export default function IngameAuthPage() {
 			<Title>Login - HKViz</Title>
 			<Switch>
 				<Match when={allowSuccess()}>
-					<Card class="max-w-[500px]">
+					<Card class="max-w-125">
 						<CardHeader>
 							<CardTitle>Login successful</CardTitle>
 							<CardDescription>You can switch back to Hollow Knight now</CardDescription>
@@ -50,7 +50,7 @@ export default function IngameAuthPage() {
 					</Card>
 				</Match>
 				<Match when={cancelSuccess()}>
-					<Card class="max-w-[500px]">
+					<Card class="max-w-125">
 						<CardHeader>
 							<CardTitle>Login canceled</CardTitle>
 							<CardDescription>You can close this page now</CardDescription>
@@ -58,7 +58,7 @@ export default function IngameAuthPage() {
 					</Card>
 				</Match>
 				<Match when={true}>
-					<Card class="max-w-[500px]">
+					<Card class="max-w-125">
 						<CardHeader>
 							<CardTitle>Allow this device to upload analytics data?</CardTitle>
 							<CardDescription>
