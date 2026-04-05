@@ -1,7 +1,7 @@
 import { action, query } from '@solidjs/router';
+import { getWebRequest } from '@solidjs/start/http';
 import { eq } from 'drizzle-orm';
 import * as v from 'valibot';
-import { getWebRequest } from 'vinxi/http';
 import { getUserOrThrow } from '~/lib/auth/shared';
 import { countryByNameIfExists, CountryCode } from '~/lib/types/country';
 import { StudyDemographicData, studyDemographicSchema } from '~/lib/types/study-demographic-data';

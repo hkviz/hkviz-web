@@ -92,10 +92,11 @@ export default tseslint.config(
 			'.vinxi',
 			'tailwind.config.cjs',
 			'vitest.config.ts',
-			'app.config.ts',
-			'app.config.*.js',
+			'vite.config.ts',
 			'postcss.config.cjs',
 			'generate-favicons.mjs',
+			'.nitro',
+			'dist',
 		],
 	},
 );

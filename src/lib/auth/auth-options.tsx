@@ -10,6 +10,7 @@ import { accounts, sessions, users, verificationTokens } from '~/server/db/schem
 
 export const authOptions: SolidAuthConfig = {
 	basePath: '/api/auth',
+	secret: env.AUTH_SECRET,
 	callbacks: {
 		session: ({ session, user }) => ({
 			...session,

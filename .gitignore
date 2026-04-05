@@ -4,6 +4,7 @@ dist
 .output
 .vercel
 .netlify
+.nitro
 .vinxi
 app.config.timestamp_*.js
 
