@@ -83,7 +83,13 @@ export default defineConfig(() => ({
 			middleware: './src/middleware.ts',
 			extensions: ['mdx', 'md'],
 		}),
-		nitroV2Plugin(),
+		nitroV2Plugin({
+			compatibilityDate: '2026-04-01',
+			cloudflare: {
+				deployConfig: true,
+				nodeCompat: true,
+			},
+		}),
 		/*devtools({
 			// features options - all disabled by default
 			autoname: true, // e.g. enable autoname
