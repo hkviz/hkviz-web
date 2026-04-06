@@ -84,7 +84,7 @@ export default defineConfig(() => ({
 			extensions: ['mdx', 'md'],
 		}),
 		nitroV2Plugin({
-			compatibilityDate: '2026-04-01',
+			compatibilityDate: '2026-04-02',
 			cloudflare: {
 				deployConfig: true,
 				nodeCompat: true,
