@@ -1,6 +1,14 @@
 export const recordingFileVersions = [
 	/**
-	 * No file changes (yet)
+	 * No file changes
+	 *
+	 * Other mod changes:
+	 * - uses rich text for mod version info display
+	 */
+	'1.6.1',
+
+	/**
+	 * No file changes
 	 *
 	 * Other mod changes:
 	 * - provides mod version when initializing file upload
@@ -57,8 +65,6 @@ export const newestRecordingFileVersion: RecordingFileVersion = recordingFileVer
 
 export type RecordingFileVersion = (typeof recordingFileVersions)[number];
 export type ModVersion = `${RecordingFileVersion}.0` | '1.2.0.0' | '1.3.0.0';
-
-export const newestModVersion: ModVersion = '1.5.0.0';
 
 export function isKnownRecordingFileVersion(version: string): version is RecordingFileVersion {
 	return recordingFileVersions.includes(version as RecordingFileVersion);

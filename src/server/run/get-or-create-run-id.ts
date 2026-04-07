@@ -9,7 +9,7 @@ export async function getOrCreateRunId(db: DB, localId: string, userId: string):
 			where: (runLocalId, { and, eq }) => and(eq(runLocalId.localId, localId), eq(runLocalId.userId, userId)),
 			columns: {
 				runId: true,
-    		},
+			},
 		})
 	)?.runId;
 

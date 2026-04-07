@@ -1,5 +1,5 @@
 import type { APIEvent } from '@solidjs/start/server';
-import { typeCheckNever, ModVersion } from '~/lib/parser';
+import { ModVersion, typeCheckNever } from '~/lib/parser';
 
 interface ModVersionCheckResponse {
 	message: string;
@@ -9,12 +9,11 @@ interface ModVersionCheckResponse {
 
 function getVersionCheckResult(version: string): ModVersionCheckResponse {
 	const versionTyped = version as ModVersion;
-	// const toUpdate = 'To update, close Hollow Knight and open a mod manager like Lumafly or Scarab.';
 
-	const updateForBetterStats = 'Update to get better statistics and bug fixes.';
+	const updateForBetterStats = 'Update for better analytics and stability improvements.';
 
-	// console.log(version);
 	switch (versionTyped) {
+		case '1.6.1.0':
 		case '1.6.0.0':
 		case '1.5.1.0':
 		case '1.5.0.0':
@@ -23,18 +22,17 @@ function getVersionCheckResult(version: string): ModVersionCheckResponse {
 				color: 'cyan',
 				show: false,
 			};
-		case '1.3.0.0':
 		case '1.4.0.0':
+		case '1.3.0.0':
 			return {
 				message: `A newer version of HKViz has been released. ${updateForBetterStats}`,
 				color: 'cyan',
 				show: true,
 			};
-
-		case '0.0.0.0':
-		case '1.0.0.0':
-		case '1.1.0.0':
 		case '1.2.0.0':
+		case '1.1.0.0':
+		case '1.0.0.0':
+		case '0.0.0.0':
 			return {
 				message: `You are using a very old version of HKViz. ${updateForBetterStats}`,
 				color: 'red',
@@ -43,7 +41,7 @@ function getVersionCheckResult(version: string): ModVersionCheckResponse {
 		default: {
 			typeCheckNever(versionTyped);
 			return {
-				message: `You are using a unknown version of HKViz. ${updateForBetterStats}`,
+				message: `You are using a unknown version of the HKViz mod.`,
 				color: 'cyan',
 				show: true,
 			};
