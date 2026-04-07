@@ -1,8 +1,5 @@
 name: CI
 
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 concurrency:
     group: ci-${{ github.ref }}
     cancel-in-progress: true
@@ -22,7 +19,7 @@ jobs:
 
         steps:
             - name: Checkout code
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: Setup pnpm
               uses: pnpm/action-setup@v5
