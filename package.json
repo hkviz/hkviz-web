@@ -13,6 +13,8 @@
 		"typecheck:watch": "tsgo --noEmit --watch",
 		"typecheck:tsc:watch": "tsc --noEmit --watch",
 		"tsc:config": "tsc --showConfig",
+		"check": "oxlint --type-check",
+		"check:fix": "oxlint --fix --type-check",
 		"lint": "oxlint",
 		"lint:fix": "oxlint --fix",
 		"db:generate": "drizzle-kit generate",
