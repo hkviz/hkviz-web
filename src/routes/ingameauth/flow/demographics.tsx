@@ -101,7 +101,7 @@ export default function StudyDemographicClientForm() {
 			genderPreferToSelfDescribe: selfDescribe,
 		};
 
-		demographicsSaveAction(unwrapped);
+		void demographicsSaveAction(unwrapped);
 	}
 
 	createEffect(() => {

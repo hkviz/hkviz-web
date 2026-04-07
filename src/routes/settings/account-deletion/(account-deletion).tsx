@@ -38,14 +38,14 @@ export default function AccountDeletionPage() {
 
 	function handleCancel() {
 		confirmSubmission.clear();
-		cancelAction();
+		void cancelAction();
 	}
 
 	function handleConfirm() {
 		const request = deletionRequest();
 		if (request && !request.existing) {
 			cancelSubmission.clear();
-			confirmAction({ id: request.id });
+			void confirmAction({ id: request.id });
 		}
 	}
 

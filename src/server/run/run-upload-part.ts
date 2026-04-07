@@ -85,7 +85,7 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 
 		// first lets try finishing the upload, which only succeeds if the file is in the bucket
 		try {
-			runPartMarkFinished({
+			await runPartMarkFinished({
 				ingameAuthId: input.ingameAuthId,
 				localRunId: input.localRunId,
 				fileId: existingFile.id,

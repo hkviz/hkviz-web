@@ -52,7 +52,7 @@ export const HKMapRoom: Component<HKMapRoomProps> = (props) => {
 			return {
 				...it,
 				sprites,
-				 
+
 				spritesByVariant: spritesByVariant as any,
 				allSpritesScaledPositionBounds: roomPositionWithin0To1,
 			};

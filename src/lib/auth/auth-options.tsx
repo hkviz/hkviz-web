@@ -18,7 +18,7 @@ export const authOptions: SolidAuthConfig = {
 				id: user.id,
 			},
 		}),
-		 
+
 		signIn: async ({ user }) => {
 			if (user.email && !isValidNonBlacklistedEmail(user.email)) {
 				return false;

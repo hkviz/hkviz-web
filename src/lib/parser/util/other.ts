@@ -1,15 +1,15 @@
 export function raise(e: Error): never {
-    throw e;
+	throw e;
 }
 
 export function assertNever(x: never): never {
-    throw new Error(`Unexpected value: ${x as unknown as string}`);
+	throw new Error(`Unexpected value: ${x as unknown as string}`);
 }
 
 export function typeCheckNever(_: never): void {
-    return;
+	return;
 }
 
 export function zeroPad(num: number, places: number) {
-    return String(num).padStart(places, '0');
+	return String(num).padStart(places, '0');
 }

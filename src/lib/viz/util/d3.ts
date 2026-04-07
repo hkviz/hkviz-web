@@ -1,4 +1,3 @@
- 
 import type * as d3 from 'd3';
 
 export function isFilledD3Selection<T extends d3.Selection<any, any, any, any>>(

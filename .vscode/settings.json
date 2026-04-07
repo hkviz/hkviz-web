@@ -1,6 +1,6 @@
 {
 	"editor.codeActionsOnSave": {
-		"source.fixAll": "always"
+		"source.fixAll.oxc": "always"
 	},
 	"tailwindCSS.experimental.classRegex": [
 		["Classes \\=([^;]*);", "'([^']*)'"],
@@ -17,5 +17,11 @@
 		".*Styles",
 		".*Class",
 		".*ClassName"
-	]
+	],
+	"oxc.enable.oxfmt": true,
+	"oxc.enable.oxlint": true,
+	"oxc.fmt.configPath": ".oxfmtrc.json",
+	"editor.defaultFormatter": "oxc.oxc-vscode",
+	"editor.formatOnSave": true,
+	"js/ts.experimental.useTsgo": true
 }

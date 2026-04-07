@@ -94,7 +94,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 			tabIndex={isOpen() ? 0 : -1}
 			aria-hidden={!isOpen()}
 		>
-			<div class={cn('bg-card absolute inset-0', isOpen() ? 'opacity-75' : 'opacity-0')} />
+			<div class={cn('absolute inset-0 bg-card', isOpen() ? 'opacity-75' : 'opacity-0')} />
 			<div
 				class={cn(
 					'relative z-10 max-h-full w-full overflow-y-auto transition',

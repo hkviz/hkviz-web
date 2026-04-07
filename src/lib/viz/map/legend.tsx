@@ -9,7 +9,7 @@ import {
 	useAnimationStore,
 	useGameplayStore,
 	useRoomColoringStore,
-	useRoomDisplayStore
+	useRoomDisplayStore,
 } from '../store';
 import {
 	aggregationVariableDefaultValue,
@@ -102,13 +102,13 @@ export const MapLegend: Component = () => {
 					<div class="flex flex-col items-center justify-center">
 						<div class="flex flex-row items-center justify-center px-0.5">
 							<span class="pr-2 pl-1 text-sm">{var1Info()?.name ?? ''} </span>
-							<span class="text-muted-foreground text-[0.65rem]">
+							<span class="text-[0.65rem] text-muted-foreground">
 								{roomColoringStore.var1Curve().shortName}
 							</span>
-							<ChevronsUpDownIcon class="text-muted-foreground size-2" />
+							<ChevronsUpDownIcon class="size-2 text-muted-foreground" />
 						</div>
 						<Expander expanded={showSelectedTimeComment()}>
-							<div class="text-muted-foreground text-[0.65rem]">Up to the selected time</div>
+							<div class="text-[0.65rem] text-muted-foreground">Up to the selected time</div>
 						</Expander>
 						<svg class="w-36" viewBox={`0 0 ${LEGEND_SVG_WIDTH} ${LEGEND_SVG_HEIGHT}`}>
 							{/* Color ramp */}

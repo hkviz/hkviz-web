@@ -288,7 +288,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 			</p>
 			{svg}
 			<HKMapTraces />
-			<div class="lg2:top-1 absolute top-1 right-1 lg:top-10" data-map-interactive-control="true">
+			<div class="absolute top-1 right-1 lg:top-10 lg2:top-1" data-map-interactive-control="true">
 				<MapLegend />
 			</div>
 			<Show when={!isCollapsed()}>

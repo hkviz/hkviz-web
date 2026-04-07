@@ -12,7 +12,7 @@ import { UserNameSettingsOption } from './_username_option';
 
 export const route = {
 	preload: () => {
-		accountGetScheduledForDeletion();
+		void accountGetScheduledForDeletion();
 	},
 } satisfies RouteDefinition;
 
@@ -25,7 +25,7 @@ export default function SettingsPage() {
 		<Show when={session()} fallback={<AuthNeeded />}>
 			<Title>Settings - HKViz</Title>
 			<ContentCenterWrapper>
-				<div class="max-w-[600px]">
+				<div class="max-w-150">
 					<h1 class="mb-4 pl-2 text-center font-serif text-4xl font-semibold">Settings</h1>
 					<Card>
 						<div class="p-6">

@@ -47,6 +47,7 @@ const ResizeButtons: Component<ResizeButtonsProps> = (props) => {
 
 export const LayoutLane: Component<{ class?: string; lane: LaneId }> = (props) => {
 	const layoutStore = useLayoutStore();
+	// oxlint-disable-next-line no-unassigned-vars
 	let laneRef: HTMLDivElement | undefined;
 
 	const lanePanels = () => layoutStore.getLaneLocationIds(props.lane);
@@ -98,7 +99,7 @@ export const LayoutLane: Component<{ class?: string; lane: LaneId }> = (props) =
 							<Show when={index() !== 0}>
 								<ResizableHandle
 									withHandle
-									class="group hover:before:bg-primary/70 -my-px bg-transparent p-1 before:absolute before:inset-x-2 before:inset-y-px before:rounded before:transition-colors"
+									class="group -my-px bg-transparent p-1 before:absolute before:inset-x-2 before:inset-y-px before:rounded before:transition-colors hover:before:bg-primary/70"
 									handleClass="hasHover:opacity-0"
 								/>
 							</Show>

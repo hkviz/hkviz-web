@@ -99,7 +99,7 @@ export const MainNav = () => {
 			<div
 				class={cn(
 					'main-nav-inner app-region-drag z-40 flex items-center justify-center border-b transition-colors',
-					isTransparent() ? 'border-b-transparent' : 'bg-background/90 border-b-border/40 backdrop-blur-sm',
+					isTransparent() ? 'border-b-transparent' : 'border-b-border/40 bg-background/90 backdrop-blur-sm',
 				)}
 			>
 				<Button as={AA} class="app-region-no-drag" href="/" variant="ghost">

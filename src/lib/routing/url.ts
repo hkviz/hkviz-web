@@ -33,7 +33,7 @@ export function urlPath(path: UrlPath): UrlPath {
 		const valid = isUrlPath(path);
 
 		if (!valid) {
-			throw new Error(`Invalid URL path: ${path}`);
+			throw new Error(`Invalid URL path: ${path as string}`);
 		}
 	}
 

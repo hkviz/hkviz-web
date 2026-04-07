@@ -27,7 +27,7 @@ export const SelectItemHeader: Component<{ children: JSXElement; class?: string 
 };
 
 export const SelectItemDescription: Component<{ children: JSXElement; class?: string }> = (props) => {
-	return <span class="text-muted-foreground block text-xs">{props.children}</span>;
+	return <span class="block text-xs text-muted-foreground">{props.children}</span>;
 };
 
 export const selectItemIconClasses = 'w-3 h-3 mr-2';

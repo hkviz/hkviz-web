@@ -1,0 +1,16 @@
+{
+	"$schema": "./node_modules/oxfmt/configuration_schema.json",
+	"trailingComma": "all",
+	"tabWidth": 4,
+	"printWidth": 120,
+	"useTabs": true,
+	"semi": true,
+	"singleQuote": true,
+	"ignorePatterns": [],
+	"sortTailwindcss": {
+		"stylesheet": "./src/style/tailwind.css",
+		"functions": ["cn"],
+		"attributes": ["iconClassName", "textClassName"],
+		"preserveWhitespace": false
+	}
+}

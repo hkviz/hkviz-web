@@ -9,7 +9,7 @@ export function createMutableMemo<T>(getter: () => T): Signal<T> {
 	});
 
 	const get: Accessor<T> = () => signal()[0]();
-	 
+
 	const set: Setter<T> = ((value: any) => untrack(() => signal()[1](value as any))) as Setter<T>;
 
 	return [get, set] as const;

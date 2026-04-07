@@ -14,7 +14,7 @@ export const runDelete = action(async (unsafeInput: RunDeleteInput) => {
 	const user = await getUserOrThrow();
 	const userId = user.id;
 	const input = v.parse(runDeleteInputSchema, unsafeInput);
-	runDeleteInternal({ runId: input.runId, userId });
+	await runDeleteInternal({ runId: input.runId, userId });
 });
 
 const runArchiveInputSchema = v.object({ runId: v.pipe(v.string(), v.uuid()), archived: v.boolean() });

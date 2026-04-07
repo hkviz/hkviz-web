@@ -4,10 +4,7 @@ import { UrlPath } from '../routing/url';
 import { ServerCookies } from './cookies-server';
 import { combineHeaders } from './headers';
 
-export function withCookies(
-	cookies: ServerCookies,
-	init?: RouterResponseInit | undefined,
-): RouterResponseInit | undefined {
+export function withCookies(cookies: ServerCookies, init?: RouterResponseInit): RouterResponseInit | undefined {
 	let initModified = init;
 
 	const headers = cookies.getSetHeaders();

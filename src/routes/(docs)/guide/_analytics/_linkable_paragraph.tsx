@@ -8,6 +8,7 @@ export function LinkableSpan(props: {
 	initialScrollMargin?: number;
 }) {
 	const [scrollMargin, setScrollMargin] = createSignal(props.initialScrollMargin ?? 0);
+	// oxlint-disable-next-line no-unassigned-vars
 	let ref!: HTMLSpanElement;
 
 	createEffect(() => {

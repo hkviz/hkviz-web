@@ -1,8 +1,8 @@
 import { revalidate } from '@solidjs/router';
-import { afterAll, beforeEach, expect, test, vi } from 'vitest';
-import { serverCookiesGet } from './cookies-server';
-import { CookieDefinition } from './cookie-names';
 import * as v from 'valibot';
+import { afterAll, beforeEach, expect, test, vi } from 'vitest';
+import { CookieDefinition } from './cookie-names';
+import { serverCookiesGet } from './cookies-server';
 
 let currentCookieHeader = '';
 vi.mock('vinxi/http', async (importOriginal) => {
@@ -18,9 +18,9 @@ afterAll(() => {
 	vi.clearAllMocks();
 });
 
-beforeEach(() => {
+beforeEach(async () => {
 	currentCookieHeader = '';
-	revalidate(serverCookiesGet.key);
+	await revalidate(serverCookiesGet.key);
 });
 
 const COOKIE_NAME = new CookieDefinition({

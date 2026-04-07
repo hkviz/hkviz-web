@@ -35,7 +35,7 @@ export default function PublicPlayerPage(props: { params: Params }) {
 						fallback={<p class="text-center">This player does not exist or has no public gameplays</p>}
 					>
 						<h2 class="glowing-text-md text-center font-serif text-xl">Gameplays of</h2>
-						<h1 class="first-letter:font-serifDecorative glowing-text-md mb-4 pl-2 text-center font-serif text-4xl font-semibold">
+						<h1 class="glowing-text-md mb-4 pl-2 text-center font-serif text-4xl font-semibold first-letter:font-serifDecorative">
 							{userName()}
 						</h1>
 						<RunFilters searchParams={filter()} class="mb-4" />

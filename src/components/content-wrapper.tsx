@@ -22,7 +22,7 @@ export const ContentWrapper: Component<ContentWrapperProps> = (props) => {
 					: 'min-h-[calc(100vh+var(--spacing,0.25rem)*40-var(--main-nav-height)-var(--footer-height))]',
 			)}
 		>
-			<div class={cn('bg-background absolute inset-0 -z-10 opacity-0', props.backgroundClass)} />
+			<div class={cn('absolute inset-0 -z-10 bg-background opacity-0', props.backgroundClass)} />
 			<main
 				class={cn(
 					'flex grow flex-col text-black dark:text-white',

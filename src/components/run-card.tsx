@@ -124,7 +124,7 @@ const RunCardEpicInfo: Component<{
 	return (
 		<Show when={props.href} fallback={spans}>
 			{(href) => (
-				<AA href={href()} class="hover:drop-shadow-glow-md z-7 hover:underline">
+				<AA href={href()} class="z-7 hover:underline hover:drop-shadow-glow-md">
 					{spans}
 				</AA>
 			)}
@@ -141,6 +141,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 	const setTitleAction = useAction(runSetTitleAction);
 	const titleSubmission = useSubmission(runSetTitleAction, ([input]) => input.id === props.run.id);
 
+	// oxlint-disable-next-line no-unassigned-vars
 	let textareaRef!: HTMLTextAreaElement;
 
 	const updateInputSize = () => {
@@ -205,7 +206,7 @@ const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => 
 						maxLength={MAX_RUN_TITLE_LENGTH}
 						disabled={titleSubmission.pending}
 						class={
-							'max-w-auto focus:bg-background focus:text-foreground relative z-8 -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-xs md:text-2xl'
+							'max-w-auto relative z-8 -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-xs focus:bg-background focus:text-foreground md:text-2xl'
 						}
 					>
 						{title()}
@@ -303,7 +304,7 @@ export const RunCard: Component<{
 		<Expander expanded={!isRemoved()} class="overflow-visible">
 			<div
 				class={cn(
-					'group focus-within:drop-shadow-glow-md hover:drop-shadow-glow-sm relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pr-3 pl-4 text-white transition hover:bg-black hover:text-white active:drop-shadow-none md:flex-row',
+					'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pr-3 pl-4 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
 					isRemoved() ? 'scale-125 opacity-0' : '',
 					isRemoving() ? 'grayscale' : '',
 				)}
@@ -387,7 +388,7 @@ export const RunCard: Component<{
 									<img
 										src={coin2Img}
 										alt="Geo icon"
-										class="drop-shadow-glow-md inline-block w-7 p-1"
+										class="inline-block w-7 p-1 drop-shadow-glow-md"
 									/>
 									<span class="text-xl font-semibold sm:text-2xl">{gameState()?.geo ?? '?'}</span>
 								</span>
@@ -396,7 +397,7 @@ export const RunCard: Component<{
 										<img
 											src={gameState()?.dreamNailUpgraded ? dreamNailAwokenImg : dreamNailImg}
 											alt="Essence icon"
-											class="drop-shadow-glow-md -mt-4 -mb-3 inline-block w-7 p-1 brightness-110 sm:w-9"
+											class="-mt-4 -mb-3 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
 										/>
 										<span class="text-xl font-semibold sm:text-2xl">{gameState().dreamOrbs}</span>
 									</span>
@@ -501,9 +502,9 @@ function RunCardLikeButton(props: { run: RunMetadata }) {
 
 	function handleClick() {
 		if (hasLiked()) {
-			unlike();
+			void unlike();
 		} else {
-			like();
+			void like();
 		}
 	}
 
@@ -520,7 +521,7 @@ function RunCardLikeButton(props: { run: RunMetadata }) {
 			>
 				<HeartIcon
 					class={
-						'group-hover:drop-shadow-glow-md h-4 w-4 transition-[fill] duration-300 ' +
+						'h-4 w-4 transition-[fill] duration-300 group-hover:drop-shadow-glow-md ' +
 						(hasLiked() ? 'fill-current' : 'fill-[rgba(255,255,255,0.001)]')
 					}
 				/>

@@ -144,7 +144,7 @@ export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
 						>
 							<CircleQuestionMarkIcon class="h-3 w-3" />
 						</PopoverTrigger>
-						<PopoverContent class="shadow-accent w-120 max-w-[90vw] p-0">
+						<PopoverContent class="w-120 max-w-[90vw] p-0 shadow-accent">
 							<div class="text-sm">
 								<SplitsList />
 							</div>

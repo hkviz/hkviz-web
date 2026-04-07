@@ -21,7 +21,7 @@ const SelectTrigger = <T extends ValidComponent = 'button'>(props: PolymorphicPr
 	return (
 		<SelectPrimitive.Trigger
 			class={cn(
-				'border-input ring-offset-background placeholder:text-muted-foreground focus:ring-ring flex h-10 w-full items-center justify-between rounded-md border bg-transparent px-3 py-2 text-sm focus:ring-2 focus:ring-offset-2 focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-50',
+				'flex h-10 w-full items-center justify-between rounded-md border border-input bg-transparent px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-50',
 				local.class,
 			)}
 			{...others}
@@ -55,7 +55,7 @@ const SelectContent = <T extends ValidComponent = 'div'>(props: PolymorphicProps
 		<SelectPrimitive.Portal>
 			<SelectPrimitive.Content
 				class={cn(
-					'bg-popover text-popover-foreground animate-in fade-in-80 relative z-50 max-w-80 min-w-32 overflow-hidden rounded-md border shadow-md',
+					'relative z-50 max-w-80 min-w-32 overflow-hidden rounded-md border bg-popover text-popover-foreground shadow-md animate-in fade-in-80',
 					local.class,
 				)}
 				{...others}
@@ -76,7 +76,7 @@ const SelectItem = <T extends ValidComponent = 'li'>(props: PolymorphicProps<T, 
 	return (
 		<SelectPrimitive.Item
 			class={cn(
-				'focus:bg-accent focus:text-accent-foreground relative mt-0 flex w-full cursor-default items-center rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50',
+				'relative mt-0 flex w-full cursor-default items-center rounded-sm py-1.5 pr-8 pl-2 text-sm outline-hidden select-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50',
 				local.class,
 			)}
 			{...others}

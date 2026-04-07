@@ -307,7 +307,7 @@ export function AnimationTimeLine(props: { class?: string }) {
 			<div class="pointer-events-none absolute top-0 right-0 bottom-0 left-0">
 				<Show when={hoveredMsIntoGame() !== null}>
 					<div
-						class="bg-foreground absolute top-0 bottom-0 w-px"
+						class="absolute top-0 bottom-0 w-px bg-foreground"
 						style={{ left: (100 * hoveredMsIntoGame()!) / timeFrame().max + '%' }}
 					/>
 				</Show>
