@@ -1,0 +1,42 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"options": {
+		"typeAware": true,
+		"typeCheck": true
+	},
+	"plugins": ["typescript"],
+	"ignorePatterns": [
+		"node_modules",
+		".output",
+		".vinxi",
+		"tailwind.config.cjs",
+		"vitest.config.ts",
+		"app.config.ts",
+		"app.config.*.js",
+		"postcss.config.cjs",
+		"generate-favicons.mjs"
+	],
+	"overrides": [
+		{
+			"files": ["src/**/*.{ts,tsx}"],
+			"jsPlugins": ["eslint-plugin-solid"],
+			"rules": {
+				"solid/components-return-once": "warn",
+				"solid/event-handlers": "warn",
+				"solid/imports": "warn",
+				"solid/jsx-no-duplicate-props": "error",
+				"solid/jsx-no-undef": ["error", { "typescriptEnabled": true }],
+				"solid/jsx-uses-vars": "error",
+				"solid/no-destructure": "error",
+				"solid/no-innerhtml": "error",
+				"solid/no-react-deps": "warn",
+				"solid/no-react-specific-props": "warn",
+				"solid/reactivity": "error",
+				"solid/self-closing-comp": "warn",
+				"solid/style-prop": "warn",
+				"typescript/no-floating-promises": "error",
+				"typescript/no-deprecated": "warn"
+			}
+		}
+	]
+}

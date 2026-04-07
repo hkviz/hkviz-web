@@ -319,6 +319,7 @@ function RelatedRoomsTabs(props: {
 	relatedRooms: Array<RelatedVirtualRoom>;
 	onChange: (tab: string) => void;
 }) {
+	// oxlint-disable-next-line no-unassigned-vars
 	let tabsViewportRef: HTMLDivElement | undefined;
 	const triggerRefs = new Map<string, HTMLButtonElement>();
 
@@ -416,7 +417,7 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 	return (
 		<AreaAnalyticsContext.Provider value={roomInfosContext}>
 			<LayoutPanelWrapper
-				class="room-infos-card before:bg-card relative flex min-h-22 min-w-75 shrink grow basis-0 flex-col border-t border-l bg-linear-to-b from-transparent to-transparent before:absolute before:inset-0 before:-z-10 before:h-full before:w-full before:rounded-lg max-lg:basis-0 before:max-lg:rounded-none"
+				class="room-infos-card relative flex min-h-22 min-w-75 shrink grow basis-0 flex-col border-t border-l bg-linear-to-b from-transparent to-transparent before:absolute before:inset-0 before:-z-10 before:h-full before:w-full before:rounded-lg before:bg-card max-lg:basis-0 before:max-lg:rounded-none"
 				style={{
 					'--tw-gradient-from': gradientColor(),
 					transition: '--tw-gradient-from .25s ease-in-out',

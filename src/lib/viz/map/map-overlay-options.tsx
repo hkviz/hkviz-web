@@ -20,7 +20,7 @@ const MapZoomButton: Component<{
 				value={props.state}
 				class={cn(
 					overlayBlurBackgroundClasses,
-					'bg-card/50 data-pressed:bg-primary/80 data-pressed:text-primary-foreground h-9 w-9 rounded-full px-0 backdrop-blur-xs',
+					'h-9 w-9 rounded-full bg-card/50 px-0 backdrop-blur-xs data-pressed:bg-primary/80 data-pressed:text-primary-foreground',
 				)}
 			>
 				{props.children}

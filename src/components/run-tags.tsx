@@ -102,7 +102,7 @@ export const RunTags: Component<{
 								variant="outline"
 								size="sm"
 								class={cn(
-									'bg-background relative z-8 h-auto rounded-full px-2 py-1 text-xs text-black dark:text-white',
+									'relative z-8 h-auto rounded-full bg-background px-2 py-1 text-xs text-black dark:text-white',
 									props.addButtonClass,
 								)}
 							>

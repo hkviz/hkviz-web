@@ -18,7 +18,7 @@ export function ChangelogEntry(props: ChangelogEntryProps) {
 	const mod = () => props.type === 'mod';
 
 	return (
-		<section class="border-border mt-14 border-t pt-10 first:mt-0 first:border-t-0 first:pt-0">
+		<section class="mt-14 border-t border-border pt-10 first:mt-0 first:border-t-0 first:pt-0">
 			<div class="not-prose mb-4">
 				<Heading as="h1" id={entryId(props.type, props.version)} class="m-0 text-4xl">
 					{props.title}
@@ -34,9 +34,9 @@ export function ChangelogEntry(props: ChangelogEntryProps) {
 					>
 						{mod() ? 'Mod' : 'Website'}
 					</span>
-					<span class="text-muted-foreground text-sm tabular-nums">{props.version}</span>
-					<span class="text-muted-foreground/50 text-sm">·</span>
-					<time class="text-muted-foreground text-sm tabular-nums" dateTime={props.date}>
+					<span class="text-sm text-muted-foreground tabular-nums">{props.version}</span>
+					<span class="text-sm text-muted-foreground/50">·</span>
+					<time class="text-sm text-muted-foreground tabular-nums" dateTime={props.date}>
 						{props.date}
 					</time>
 				</div>

@@ -2,13 +2,14 @@ import { SolidAuth } from '@auth/solid-start';
 import { type APIHandler } from '@solidjs/start/server';
 import { authOptions } from '~/lib/auth/auth-options';
 
-const { GET: defaultGet, POST: defaultPost } = SolidAuth(authOptions);
+const solidAuth = SolidAuth(authOptions);
+const defaultPost = solidAuth.POST.bind(solidAuth);
+const defaultGet = solidAuth.GET.bind(solidAuth);
 
 export const POST = defaultPost;
 export const GET: APIHandler = async (event) => {
-	 
 	const responsePromise = defaultGet(event);
-	 
+
 	const paths = event.params.solidauth;
 
 	if (paths !== 'signin') return responsePromise;

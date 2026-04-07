@@ -7,7 +7,7 @@ import {
 	MapIcon,
 	MapPinCheckInsideIcon,
 	SplineIcon,
-	TextAlignStartIcon
+	TextAlignStartIcon,
 } from 'lucide-solid';
 import { createUniqueId, Show } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
@@ -269,7 +269,7 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 										<div class="flex flex-row items-center">
 											<Label
 												for={id + 'show_area_names-input'}
-												class="text-muted-foreground grow py-1.5 pr-2 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+												class="grow py-1.5 pr-2 text-sm leading-none font-medium text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 											>
 												Main areas
 											</Label>
@@ -282,7 +282,7 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 										<div class="flex flex-row items-center">
 											<Label
 												for={id + 'show_sub_area_names-input'}
-												class="text-muted-foreground grow py-1.5 pr-2 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+												class="grow py-1.5 pr-2 text-sm leading-none font-medium text-muted-foreground peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 											>
 												Sub areas
 											</Label>

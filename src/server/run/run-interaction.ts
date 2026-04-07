@@ -66,7 +66,7 @@ export const runInteractionUnlike = action(async (unsafeInput: RunInteractionUnl
 	'use server';
 	const user = await getUserOrThrow();
 	const input = v.parse(runInteractionUnlikeInputSchema, unsafeInput);
-	runInteractionUnlikeInternal({ runId: input.runId, userId: user.id });
+	await runInteractionUnlikeInternal({ runId: input.runId, userId: user.id });
 
 	return json({}, { revalidate: 'nothing' });
 });

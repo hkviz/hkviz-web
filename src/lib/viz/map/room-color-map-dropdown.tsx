@@ -1,10 +1,10 @@
 import { type Component, For, createMemo } from 'solid-js';
 import {
-    DropdownMenuContent,
-    DropdownMenuGroup,
-    DropdownMenuGroupLabel,
-    DropdownMenuRadioGroup,
-    DropdownMenuRadioItem,
+	DropdownMenuContent,
+	DropdownMenuGroup,
+	DropdownMenuGroupLabel,
+	DropdownMenuRadioGroup,
+	DropdownMenuRadioItem,
 } from '~/components/ui/dropdown-menu';
 import { type RoomColorCurve, roomColorCurveById, roomColorCurves } from '../color-curves';
 import { type RoomColorMap, roomColorMaps } from '../color-map';
@@ -31,7 +31,7 @@ const CurvePreview: Component<{ curve: RoomColorCurve; max: number }> = (props) 
 
 	return (
 		<svg
-			class="text-foreground/85 h-6 w-15 rounded-xs"
+			class="h-6 w-15 rounded-xs text-foreground/85"
 			width={PREVIEW_WIDTH}
 			height={PREVIEW_HEIGHT}
 			viewBox={`0 0 ${PREVIEW_WIDTH} ${PREVIEW_HEIGHT}`}

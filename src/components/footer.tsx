@@ -22,9 +22,9 @@ export const Footer: Component = () => {
 
 	return (
 		<Expander expanded={isVisible()}>
-			<footer class="bg-background/90 flex min-h-(--footer-height) w-full flex-col items-center justify-center">
+			<footer class="flex min-h-(--footer-height) w-full flex-col items-center justify-center bg-background/90">
 				<div class="grid w-full max-w-225 grid-cols-1 p-4 sm:grid-cols-[1fr_2fr_1fr]">
-					<div class="text-foreground text-center text-sm text-balance opacity-80 sm:text-left">
+					<div class="text-center text-sm text-balance text-foreground opacity-80 sm:text-left">
 						Hollow Knight and all related indicia are trademarks of{' '}
 						<a class="hover:underline" href="https://teamcherry.com.au" target="_blank" rel="noreferrer">
 							Team Cherry

@@ -76,7 +76,7 @@ function createRecordingSplitFromEnemy(
 	enemyName: string,
 	enemyInfo: EnemyInfo | undefined,
 	previousPlayerPositionEvent: PlayerPositionEvent | null,
-	overrideName?: string | undefined,
+	overrideName?: string,
 ): RecordingSplit {
 	const nameConvo = enemyInfo?.nameConvo;
 	const name = nameConvo ? enemiesJournalLang[nameConvo] : undefined;

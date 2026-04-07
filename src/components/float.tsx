@@ -1,3 +1,3 @@
 export function FloatClear() {
-    return <div class="clear-both" />;
+	return <div class="clear-both" />;
 }

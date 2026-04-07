@@ -61,7 +61,7 @@ export const LineAreaChartPanel = (props: LineAreaChartPanelProps) => {
 						>
 							<CircleQuestionMark class="h-3 w-3" />
 						</PopoverTrigger>
-						<PopoverContent class="shadow-accent w-120 max-w-[90vw] p-0">
+						<PopoverContent class="w-120 max-w-[90vw] p-0 shadow-accent">
 							<TimeBasedChartActionsTable />
 							<a
 								href="/guide/analytics#time-based-charts"

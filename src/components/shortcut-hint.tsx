@@ -10,7 +10,7 @@ interface ShortcutHintProps {
 
 export const ShortcutHint: Component<ShortcutHintProps> = (props) => {
 	return (
-		<div class={cn('text-muted-foreground mt-2 flex items-center gap-1.5 text-xs', props.class)}>
+		<div class={cn('mt-2 flex items-center gap-1.5 text-xs text-muted-foreground', props.class)}>
 			{props.before && <span>{props.before}</span>}
 			<ShortcutKeys keys={props.keys} />
 			{props.after && <span>{props.after}</span>}
@@ -41,7 +41,7 @@ export const ShortcutKeys: Component<{ keys: JSXElement | JSXElement[]; class?: 
 
 export const ShortcutKey: Component<{ class?: string; children: JSXElement }> = (props) => {
 	return (
-		<kbd class={cn('bg-muted text-foreground rounded border px-1.5 py-0.5 text-[11px] font-medium', props.class)}>
+		<kbd class={cn('rounded border bg-muted px-1.5 py-0.5 text-[11px] font-medium text-foreground', props.class)}>
 			{props.children}
 		</kbd>
 	);

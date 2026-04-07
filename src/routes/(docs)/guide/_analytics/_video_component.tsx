@@ -67,7 +67,7 @@ export function Video(props: { width: number; height: number; srcLight: string; 
 			{lightVideoRef}
 			{darkVideoRef}
 			<Show when={!isPlaying()}>
-				<PlayIcon class="text-foreground absolute right-3 bottom-3 h-5 w-5" />
+				<PlayIcon class="absolute right-3 bottom-3 h-5 w-5 text-foreground" />
 			</Show>
 		</Button>
 	);

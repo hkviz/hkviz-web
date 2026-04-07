@@ -701,7 +701,7 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 
 			<Show when={valueHover() !== null}>
 				<TableCell class="p-2 py-1 text-right text-nowrap">
-					<span class="text-muted-foreground mr-2">{valueHover()}</span>
+					<span class="mr-2 text-muted-foreground">{valueHover()}</span>
 				</TableCell>
 			</Show>
 			<TableCell class="p-2 py-1 text-right text-nowrap">

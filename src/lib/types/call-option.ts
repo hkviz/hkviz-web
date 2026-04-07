@@ -4,14 +4,14 @@ import * as v from 'valibot';
 import { type CodesOf } from './_utils';
 
 export const callOptions = [
-    {
-        code: 'zoom',
-        name: 'Zoom',
-    },
-    {
-        code: 'discord',
-        name: 'Discord',
-    },
+	{
+		code: 'zoom',
+		name: 'Zoom',
+	},
+	{
+		code: 'discord',
+		name: 'Discord',
+	},
 ] as const;
 
 type CallOptionCodes = CodesOf<typeof callOptions>;

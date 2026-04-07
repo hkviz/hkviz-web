@@ -37,6 +37,6 @@ export function MdxOuterWrapper(props: { children: JSXElement }) {
 
 export function MdxInnerWrapper(props: { children: JSXElement; class?: string }) {
 	return (
-		<div class={cn('prose dark:prose-invert mx-auto my-16 max-w-[90ch] p-4', props.class)}>{props.children}</div>
+		<div class={cn('mx-auto my-16 prose max-w-[90ch] p-4 dark:prose-invert', props.class)}>{props.children}</div>
 	);
 }

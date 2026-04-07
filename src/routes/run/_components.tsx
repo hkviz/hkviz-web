@@ -36,7 +36,6 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 		setSearchParams(withoutDefaultParams(props.searchParams));
 	});
 
-	 
 	let termHasChangedSinceRequest = false;
 	// eslint-disable-next-line solid/reactivity
 	const [searchTerm, setSearchTerm] = createSignal(props.searchParams.term ?? '');

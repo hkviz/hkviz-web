@@ -517,7 +517,7 @@ export function CountryFlag(props: { code: CountryCode }) {
 				<div
 					// eslint-disable-next-line solid/no-innerhtml
 					innerHTML={flag()}
-					class="mr-2 border border-black border-opacity-20 dark:border-white dark:border-opacity-20"
+					class="border-opacity-20 dark:border-opacity-20 mr-2 border border-black dark:border-white"
 				/>
 			)}
 		</Show>

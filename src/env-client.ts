@@ -1,3 +1,3 @@
 export const envPublic = {
-    R2_PUBLIC_BUCKET_URL: 'https://content.hkviz.org/',
+	R2_PUBLIC_BUCKET_URL: 'https://content.hkviz.org/',
 };

@@ -82,7 +82,7 @@ const TourShadow: Component = () => {
 			}
 		>
 			{shadowInner}
-			<div class="animate-pulse-shadow-black dark:animate-pulse-shadow-white absolute inset-0 h-full w-full rounded-md" />
+			<div class="absolute inset-0 h-full w-full animate-pulse-shadow-black rounded-md dark:animate-pulse-shadow-white" />
 			{/* <div class="animate-pulse-shadow-black dark:animate-pulse-shadow-white inset-0 h-full w-full rounded-md text-foreground opacity-50" /> */}
 		</div>
 	) as HTMLDivElement;
