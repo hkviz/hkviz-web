@@ -7,7 +7,6 @@ import {
 	type HeadObjectCommandOutput,
 } from '@aws-sdk/client-s3';
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner';
-import fs from 'fs/promises';
 import { env } from '~/env';
 import { type R2Key } from '~/lib/r2';
 
@@ -73,7 +72,7 @@ export async function r2GetSignedDownloadUrl(key: R2Key) {
 	);
 }
 
-export async function r2DownloadToFile(key: R2Key, location: string) {
+export async function r2Download(key: R2Key) {
 	const { Body } = await r2.send(
 		new GetObjectCommand({
 			Bucket: env.R2_BUCKET_NAME,
@@ -82,5 +81,5 @@ export async function r2DownloadToFile(key: R2Key, location: string) {
 	);
 
 	if (!Body) throw new Error('No body');
-	await fs.writeFile(location, Body.transformToWebStream());
+	return Body.transformToWebStream();
 }

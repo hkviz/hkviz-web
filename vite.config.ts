@@ -2,7 +2,7 @@ import { solidStart } from '@solidjs/start/config';
 import { defineConfig, Plugin } from 'vite';
 // import { imagetoolsWithAverageColor } from './image-processing';
 import mdx from '@mdx-js/rollup';
-import { nitroV2Plugin } from '@solidjs/vite-plugin-nitro-2';
+import { nitro } from 'nitro/vite';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
@@ -83,13 +83,7 @@ export default defineConfig(() => ({
 			middleware: './src/middleware.ts',
 			extensions: ['mdx', 'md'],
 		}),
-		nitroV2Plugin({
-			compatibilityDate: '2026-04-02',
-			cloudflare: {
-				deployConfig: true,
-				nodeCompat: true,
-			},
-		}),
+		nitro(),
 		/*devtools({
 			// features options - all disabled by default
 			autoname: true, // e.g. enable autoname
@@ -115,4 +109,14 @@ export default defineConfig(() => ({
 		}),
 		assetpackPlugin(),
 	],
+	nitro: {
+		compatibilityDate: '2026-04-01' as any,
+		preset: 'cloudflare_module',
+		exportConditions: ['worker'],
+	},
+	build: {
+		rollupOptions: {
+			external: ['fs', 'fs/promises', 'fsevents'],
+		},
+	},
 }));
