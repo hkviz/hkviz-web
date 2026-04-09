@@ -1,4 +1,4 @@
-export const recordingFileVersions = [
+export const hollowRecordingFileVersions = [
 	/**
 	 * No file changes
 	 *
@@ -61,34 +61,34 @@ export const recordingFileVersions = [
 	'0.0.0',
 ] as const;
 
-export const newestRecordingFileVersion: RecordingFileVersion = recordingFileVersions[0];
+export const hollowRecordingFileVersionNewest: HollowRecordingFileVersion = hollowRecordingFileVersions[0];
 
-export type RecordingFileVersion = (typeof recordingFileVersions)[number];
-export type ModVersion = `${RecordingFileVersion}.0` | '1.2.0.0' | '1.3.0.0';
+export type HollowRecordingFileVersion = (typeof hollowRecordingFileVersions)[number];
+export type HollowModVersion = `${HollowRecordingFileVersion}.0` | '1.2.0.0' | '1.3.0.0';
 
-export function isKnownRecordingFileVersion(version: string): version is RecordingFileVersion {
-	return recordingFileVersions.includes(version as RecordingFileVersion);
+export function hollowRecordingFileVersionIsKnown(version: string): version is HollowRecordingFileVersion {
+	return hollowRecordingFileVersions.includes(version as HollowRecordingFileVersion);
 }
 
-export type RecordingFileVersion0xx = '0.0.0';
-export function isVersion0xx(version: RecordingFileVersion): version is RecordingFileVersion0xx {
+export type HollowRecordingFileVersion0xx = '0.0.0';
+export function isVersion0xx(version: HollowRecordingFileVersion): version is HollowRecordingFileVersion0xx {
 	return version === '0.0.0';
 }
 
 export type RecordingFileVersion1xx = '1.0.0' | '1.1.0' | '1.4.0' | '1.5.0' | '1.5.1';
-export function isVersion1xx(version: RecordingFileVersion): version is RecordingFileVersion1xx {
+export function isVersion1xx(version: HollowRecordingFileVersion): version is RecordingFileVersion1xx {
 	return (
 		version === '1.0.0' || version === '1.1.0' || version === '1.4.0' || version === '1.5.0' || version === '1.5.1'
 	);
 }
 
 export function isVersionBefore1_4_0(
-	version: RecordingFileVersion,
-): version is RecordingFileVersion0xx | '1.0.0' | '1.1.0' {
+	version: HollowRecordingFileVersion,
+): version is HollowRecordingFileVersion0xx | '1.0.0' | '1.1.0' {
 	return isVersion0xx(version) || version === '1.0.0' || version === '1.1.0';
 }
 
-export function isModVersionBefore1_6_0(version: ModVersion): boolean {
+export function isModVersionBefore1_6_0(version: HollowModVersion): boolean {
 	return (
 		version === '0.0.0.0' ||
 		version === '1.0.0.0' ||

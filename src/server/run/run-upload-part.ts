@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
-import { isModVersionBefore1_6_0, mapZoneSchema, ModVersion, raise } from '~/lib/parser';
+import { HollowModVersion, isModVersionBefore1_6_0, mapZoneSchema, raise } from '~/lib/parser';
 import { r2RunPartFileKey } from '~/lib/r2';
 import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
 import { db } from '../db';
@@ -72,7 +72,7 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 	});
 
 	if (existingFile?.uploadFinished) {
-		if (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as ModVersion)) {
+		if (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as HollowModVersion)) {
 			// old versions don't check for the 'alreadyFinished' flag
 			// so for those versions, the previous behavior is kept.
 			throw new Error('File already uploaded');
@@ -90,7 +90,7 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 				localRunId: input.localRunId,
 				fileId: existingFile.id,
 			});
-			if (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as ModVersion)) {
+			if (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as HollowModVersion)) {
 				throw new Error('File already uploaded');
 			} else {
 				return {

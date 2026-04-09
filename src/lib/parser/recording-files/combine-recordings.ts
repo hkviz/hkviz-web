@@ -1,6 +1,6 @@
 import { type HeroStateField } from '../hero-state/hero-states';
 import { getDefaultValue, playerDataFields, type PlayerDataField } from '../player-data/player-data';
-import { isVersionBefore1_4_0, type RecordingFileVersion } from '../recording-file-version';
+import { isVersionBefore1_4_0, type HollowRecordingFileVersion } from '../recording-file-version';
 import { raise } from '../util';
 import { FrameEndEvent, frameEndEventHeroStateFields, frameEndEventPlayerDataFields } from './events/frame-end-event';
 import { HKVizModVersionEvent } from './events/hkviz-mod-version-event';
@@ -50,7 +50,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 	let previousSceneEvent: SceneEvent | null = null;
 	let diedInThisSceneVisit = false;
 
-	let recordingFileVersion: RecordingFileVersion = '0.0.0';
+	let recordingFileVersion: HollowRecordingFileVersion = '0.0.0';
 
 	const visitedScenesToCheckIfInPlayerData = [] as { sceneName: string; msIntoGame: number }[];
 

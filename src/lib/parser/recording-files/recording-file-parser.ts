@@ -2,10 +2,10 @@ import { heroStateFields, heroStatesSkipParsing } from '../hero-state';
 import { Vector2 } from '../hk-types';
 import { parsePlayerDataFieldValue, playerDataFields } from '../player-data';
 import {
-	type RecordingFileVersion,
-	isKnownRecordingFileVersion,
+	type HollowRecordingFileVersion,
+	hollowRecordingFileVersionIsKnown,
+	hollowRecordingFileVersionNewest,
 	isVersion0xx,
-	newestRecordingFileVersion,
 } from '../recording-file-version';
 import { raise, typeCheckNever } from '../util';
 import {
@@ -64,7 +64,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 
 	// defaults to 0.0.0 since in early version of the mod, the version was only
 	// written at the beginning of a session, not for each part
-	let currentRecordingFileVersion: RecordingFileVersion = '0.0.0';
+	let currentRecordingFileVersion: HollowRecordingFileVersion = '0.0.0';
 
 	let i = 0;
 	LINE_LOOP: for (let line of lines) {
@@ -239,19 +239,19 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 				case EVENT_PREFIXES.RECORDING_FILE_VERSION: {
 					const version = args[0]!;
 
-					if (isKnownRecordingFileVersion(version)) {
+					if (hollowRecordingFileVersionIsKnown(version)) {
 						currentRecordingFileVersion = version;
 					} else {
 						console.error(
-							`Unknown recording file version ${version} falling back to newest known version ${newestRecordingFileVersion}`,
+							`Unknown recording file version ${version} falling back to newest known version ${hollowRecordingFileVersionNewest}`,
 						);
-						currentRecordingFileVersion = newestRecordingFileVersion;
+						currentRecordingFileVersion = hollowRecordingFileVersionNewest;
 					}
 
 					events.push(
 						new RecordingFileVersionEvent({
 							timestamp,
-							version: currentRecordingFileVersion as RecordingFileVersion,
+							version: currentRecordingFileVersion as HollowRecordingFileVersion,
 						}),
 					);
 

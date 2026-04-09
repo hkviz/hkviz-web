@@ -1,6 +1,6 @@
 import { type HeroStateField } from '../hero-state/hero-states';
 import { type PlayerDataField } from '../player-data/player-data';
-import { type RecordingFileVersion } from '../recording-file-version';
+import { type HollowRecordingFileVersion } from '../recording-file-version';
 import { binarySearchLastIndexBefore, raise } from '../util';
 import { FrameEndEvent } from './events/frame-end-event';
 import { type HKVizModVersionEvent } from './events/hkviz-mod-version-event';
@@ -13,7 +13,7 @@ import { createRecordingSplits, type RecordingSplit } from './recording-splits';
 
 type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
 export class RecordingFileVersionEvent extends RecordingEventBase {
-	public version: RecordingFileVersion;
+	public version: HollowRecordingFileVersion;
 
 	constructor(options: RecordingFileVersionEventOptions) {
 		super(options);
