@@ -129,7 +129,7 @@ export default defineConfig(() => ({
 	},
 	build: {
 		rollupOptions: {
-			external: ['fs', 'fs/promises', 'fsevents'],
+			external: ['fs', 'fs/promises', 'fsevents', 'nodemailer'],
 		},
 	},
 }));

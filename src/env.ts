@@ -1,5 +1,5 @@
+import process from 'node:process';
 import * as v from 'valibot';
-import { loadEnv } from 'vite';
 
 const envSchema = v.object({
 	DATABASE_URL: v.pipe(v.string(), v.url()),
@@ -46,39 +46,39 @@ const envSchema = v.object({
 });
 export type Env = v.InferOutput<typeof envSchema>;
 
-const viteEnv = loadEnv(process.env.NODE_ENV || 'production', process.cwd(), '');
+const processEnv = process.env;
 
 const envPreParse: Record<keyof Env, string | undefined> = {
-	DATABASE_URL: viteEnv.DATABASE_URL,
-	DATABASE_AUTH_TOKEN: viteEnv.DATABASE_AUTH_TOKEN,
-	NODE_ENV: viteEnv.NODE_ENV,
-	AUTH_SECRET: viteEnv.AUTH_SECRET,
-	AUTH_URL: viteEnv.VERCEL_URL ?? viteEnv.AUTH_URL,
+	DATABASE_URL: processEnv.DATABASE_URL,
+	DATABASE_AUTH_TOKEN: processEnv.DATABASE_AUTH_TOKEN,
+	NODE_ENV: processEnv.NODE_ENV,
+	AUTH_SECRET: processEnv.AUTH_SECRET,
+	AUTH_URL: processEnv.VERCEL_URL ?? processEnv.AUTH_URL,
 
-	DISCORD_CLIENT_ID: viteEnv.DISCORD_CLIENT_ID,
-	DISCORD_CLIENT_SECRET: viteEnv.DISCORD_CLIENT_SECRET,
+	DISCORD_CLIENT_ID: processEnv.DISCORD_CLIENT_ID,
+	DISCORD_CLIENT_SECRET: processEnv.DISCORD_CLIENT_SECRET,
 
-	GOOGLE_CLIENT_ID: viteEnv.GOOGLE_CLIENT_ID,
-	GOOGLE_CLIENT_SECRET: viteEnv.GOOGLE_CLIENT_SECRET,
+	GOOGLE_CLIENT_ID: processEnv.GOOGLE_CLIENT_ID,
+	GOOGLE_CLIENT_SECRET: processEnv.GOOGLE_CLIENT_SECRET,
 
-	R2_ACCESS_KEY_ID: viteEnv.R2_ACCESS_KEY_ID,
-	R2_SECRET_ACCESS_KEY: viteEnv.R2_SECRET_ACCESS_KEY,
-	R2_BUCKET_NAME: viteEnv.R2_BUCKET_NAME,
-	R2_ACCOUNT_ID: viteEnv.R2_ACCOUNT_ID,
-	R2_ENDPOINT: viteEnv.R2_ENDPOINT,
-	R2_PUBLIC_BUCKET_URL: viteEnv.R2_PUBLIC_BUCKET_URL,
+	R2_ACCESS_KEY_ID: processEnv.R2_ACCESS_KEY_ID,
+	R2_SECRET_ACCESS_KEY: processEnv.R2_SECRET_ACCESS_KEY,
+	R2_BUCKET_NAME: processEnv.R2_BUCKET_NAME,
+	R2_ACCOUNT_ID: processEnv.R2_ACCOUNT_ID,
+	R2_ENDPOINT: processEnv.R2_ENDPOINT,
+	R2_PUBLIC_BUCKET_URL: processEnv.R2_PUBLIC_BUCKET_URL,
 
-	EMAIL_SERVER_HOST: viteEnv.EMAIL_SERVER_HOST,
-	EMAIL_SERVER_PORT: viteEnv.EMAIL_SERVER_PORT,
-	EMAIL_SERVER_USER: viteEnv.EMAIL_SERVER_USER,
-	EMAIL_SERVER_PASSWORD: viteEnv.EMAIL_SERVER_PASSWORD,
-	EMAIL_FROM: viteEnv.EMAIL_FROM,
+	EMAIL_SERVER_HOST: processEnv.EMAIL_SERVER_HOST,
+	EMAIL_SERVER_PORT: processEnv.EMAIL_SERVER_PORT,
+	EMAIL_SERVER_USER: processEnv.EMAIL_SERVER_USER,
+	EMAIL_SERVER_PASSWORD: processEnv.EMAIL_SERVER_PASSWORD,
+	EMAIL_FROM: processEnv.EMAIL_FROM,
 
-	FILE_DOWNLOAD_PATH: viteEnv.FILE_DOWNLOAD_PATH,
+	FILE_DOWNLOAD_PATH: processEnv.FILE_DOWNLOAD_PATH,
 
-	COMPAT_API_KEY: viteEnv.COMPAT_API_KEY,
+	COMPAT_API_KEY: processEnv.COMPAT_API_KEY,
 
-	MAINTENANCE_MODE: viteEnv.MAINTENANCE_MODE,
+	MAINTENANCE_MODE: processEnv.MAINTENANCE_MODE,
 };
 
 const parseResult = v.safeParse(envSchema, envPreParse);

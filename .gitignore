@@ -8,6 +8,7 @@ dist
 .vinxi
 app.config.timestamp_*.js
 vite.config.timestamp_*.js
+.wrangler
 
 # Environment
 .env
