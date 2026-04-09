@@ -113,6 +113,17 @@ export default defineConfig(() => ({
 		compatibilityDate: '2026-04-01' as any,
 		preset: 'cloudflare_module',
 		exportConditions: ['worker'],
+		cloudflare: {
+			wrangler: {
+				observability: {
+					logs: {
+						enabled: true,
+						invocation_logs: true,
+					},
+					traces: {},
+				},
+			},
+		},
 	},
 	build: {
 		rollupOptions: {
