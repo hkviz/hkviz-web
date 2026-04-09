@@ -120,7 +120,9 @@ export default defineConfig(() => ({
 						enabled: true,
 						invocation_logs: true,
 					},
-					traces: {},
+					traces: {
+						enabled: true,
+					},
 				},
 			},
 		},
