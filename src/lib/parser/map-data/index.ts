@@ -8,4 +8,3 @@ export * from './room-name-formatting';
 export * from './room-sub-sprites';
 export * from './rooms';
 export * from './zoom-zone';
-
