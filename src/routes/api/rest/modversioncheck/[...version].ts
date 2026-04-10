@@ -1,6 +1,6 @@
 import type { APIEvent } from '@solidjs/start/server';
 import { HollowModVersion, typeCheckNever } from '~/lib/parser';
-import { GameID } from '~/lib/types/game-ids';
+import { GameId } from '~/lib/types/game-ids';
 
 interface ModVersionCheckResponse {
 	message: string;
@@ -65,7 +65,7 @@ export function GET({ params }: APIEvent) {
 		// old hollow knight mod version. No game id present.
 		return Response.json(getHollowVersionCheckResult(params.version));
 	} else if (pathSplit.length === 2) {
-		const gameId = pathSplit[0] as GameID;
+		const gameId = pathSplit[0] as GameId;
 		const version = pathSplit[1];
 		if (gameId === 'hollow') {
 			return Response.json(getHollowVersionCheckResult(version));

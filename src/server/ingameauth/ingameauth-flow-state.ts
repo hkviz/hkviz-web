@@ -5,6 +5,7 @@ import { COOKIE_INGAME_AUTH_URL_ID } from '~/lib/cookies/cookie-names';
 import { redirectWithCookies } from '~/lib/cookies/cookies-response-helpers';
 import { serverCookiesGet } from '~/lib/cookies/cookies-server';
 import { assertNever } from '~/lib/parser';
+import { GameId } from '~/lib/types/game-ids';
 import { accountGetScheduledForDeletion } from '../account/deletion';
 import { db } from '../db';
 import { ingameAuth } from '../db/schema';
@@ -15,7 +16,7 @@ export type IngameAuthFlowState =
 	| { type: 'not-found'; count: number }
 	| { type: 'sign-in-required' }
 	| { type: 'cancel-account-deletion' }
-	| { type: 'final-accept'; urlId: string };
+	| { type: 'final-accept'; urlId: string; game: GameId };
 
 export async function getIngameAuthFlowState(urlIdOrContinue: string = 'continue'): Promise<IngameAuthFlowState> {
 	const cookies = await serverCookiesGet();
@@ -36,6 +37,7 @@ export async function getIngameAuthFlowState(urlIdOrContinue: string = 'continue
 		columns: {
 			id: true,
 			name: true,
+			game: true,
 		},
 		with: {
 			user: {
@@ -87,7 +89,7 @@ export async function getIngameAuthFlowState(urlIdOrContinue: string = 'continue
 	if (accountMarkedForDeletion) {
 		return { type: 'cancel-account-deletion' };
 	}
-	return { type: 'final-accept', urlId: afterChangeUrlId };
+	return { type: 'final-accept', urlId: afterChangeUrlId, game: result.game };
 }
 
 export async function getIngameAuthRedirect(state: IngameAuthFlowState) {
@@ -102,7 +104,7 @@ export async function getIngameAuthRedirect(state: IngameAuthFlowState) {
 		case 'cancel-account-deletion':
 			return redirectWithCookies('/ingameauth/flow/account-deleted', cookies);
 		case 'final-accept':
-			return redirectWithCookies('/ingameauth/flow/confirm', cookies);
+			return redirectWithCookies(`/ingameauth/flow/confirm?game=${state.game}`, cookies);
 		default:
 			assertNever(state);
 	}

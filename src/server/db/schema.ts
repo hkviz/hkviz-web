@@ -13,7 +13,7 @@ import { hollowMapZoneSchema } from '~/lib/game-data/hollow-data/hollow-map-zone
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { callOptionCodes } from '~/lib/types/call-option';
 import { countryCodes } from '~/lib/types/country';
-import { gameIds } from '~/lib/types/game';
+import { gameIds } from '~/lib/types/game-ids';
 import { playingFrequencyCodes } from '~/lib/types/playing-frequency';
 import { playingSinceCodes } from '~/lib/types/playing-since';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
@@ -49,6 +49,11 @@ function textEnum<const TEnum extends readonly [string, ...string[]]>(name: stri
 // auto increment
 function intSerialPrimaryKey(name: string) {
 	return int(name, { mode: 'number' }).primaryKey({ autoIncrement: true });
+}
+
+// specific common fields
+function gameDefaultHollow() {
+	return textEnum('game', gameIds).notNull().default('hollow');
 }
 
 /**
@@ -175,7 +180,7 @@ export const runs = table(
 		// server generated. Used for urls
 		id: text('id', { length: 255 }).notNull().primaryKey(),
 		userId: text('user_id', { length: 255 }).notNull(),
-		game: textEnum('game', gameIds).notNull().default('hollow'),
+		game: gameDefaultHollow(),
 		title: text('title', { length: MAX_RUN_TITLE_LENGTH }),
 		description: text('description'),
 		visibility: textEnum('visibility', ['public', 'unlisted', 'private']).notNull().default('private'),
@@ -305,6 +310,7 @@ export const ingameAuth = table(
 		// this urlId is immediatly changed or deleted after the login url is visited, even before canceling or allowing.
 		urlId: text('url_id', { length: 255 }),
 		name: text('name', { length: 255 }).notNull(),
+		game: gameDefaultHollow(),
 		userId: text('user_id', { length: 255 }),
 		createdAt: createdAt(),
 		updatedAt: updatedAt(),

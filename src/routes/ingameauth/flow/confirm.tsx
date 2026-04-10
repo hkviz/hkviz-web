@@ -1,14 +1,19 @@
 import { Title } from '@solidjs/meta';
-import { useAction, useSubmission } from '@solidjs/router';
+import { useAction, useSearchParams, useSubmission } from '@solidjs/router';
 import { createSignal, Match, Show, Switch } from 'solid-js';
+import * as v from 'valibot';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
 import { useUser } from '~/lib/auth/client';
+import { gameIdSchemaHollowDefault, getGameName } from '~/lib/types/game-ids';
 import { ingameAuthAllowLogin } from '~/server/ingameauth/allow-login';
 import { ingameAuthCancelLogin } from '~/server/ingameauth/cancel-login';
 
 export default function IngameAuthPage() {
+	const [params] = useSearchParams();
+	const game = () => v.parse(gameIdSchemaHollowDefault, params.game);
+
 	const allowMutation = useAction(ingameAuthAllowLogin);
 	const cancelMutation = useAction(ingameAuthCancelLogin);
 	const allowSubmission = useSubmission(ingameAuthAllowLogin);
@@ -45,7 +50,7 @@ export default function IngameAuthPage() {
 					<Card class="max-w-125">
 						<CardHeader>
 							<CardTitle>Login successful</CardTitle>
-							<CardDescription>You can switch back to Hollow Knight now</CardDescription>
+							<CardDescription>You can switch back to {getGameName(game())} now</CardDescription>
 						</CardHeader>
 					</Card>
 				</Match>
