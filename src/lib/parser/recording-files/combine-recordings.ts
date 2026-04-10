@@ -2,15 +2,20 @@ import { type HeroStateField } from '../hero-state/hero-states';
 import { getDefaultValue, playerDataFields, type PlayerDataField } from '../player-data/player-data';
 import { isVersionBefore1_4_0, type HollowRecordingFileVersion } from '../recording-file-version';
 import { raise } from '../util';
-import { FrameEndEvent, frameEndEventHeroStateFields, frameEndEventPlayerDataFields } from './events/frame-end-event';
-import { HKVizModVersionEvent } from './events/hkviz-mod-version-event';
-import { ModdingInfoEvent } from './events/modding-info-event';
-import { PlayerDataEvent } from './events/player-data-event';
-import { PlayerPositionEvent } from './events/player-position-event';
-import { SceneEvent } from './events/scene-event';
+import {
+	FrameEndEvent,
+	frameEndEventHeroStateFields,
+	frameEndEventPlayerDataFields,
+} from './events-hollow/frame-end-event';
+import { HeroStateEvent } from './events-hollow/hero-state-event';
+import { HKVizModVersionEvent } from './events-hollow/hkviz-mod-version-event';
+import { ModdingInfoEvent } from './events-hollow/modding-info-event';
+import { PlayerDataEvent } from './events-hollow/player-data-event';
+import { PlayerPositionEvent } from './events-hollow/player-position-event';
+import { SceneEvent } from './events-hollow/scene-event';
+import { EventCreationContext } from './events-shared/event-creation-context';
 import {
 	CombinedRecording,
-	HeroStateEvent,
 	RecordingFileVersionEvent,
 	isPlayerDataEventOfField,
 	isPlayerDataEventWithFieldType,
@@ -59,6 +64,8 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 
 	const hasCreatedFirstEndFrameEvent = false;
 
+	const ctx = new EventCreationContext();
+
 	for (const recording of recordings.sort((a, b) => a.combinedPartNumber! - b.combinedPartNumber!)) {
 		for (const event of recording.events) {
 			// create together player data event if needed
@@ -70,11 +77,15 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 						if (!previousPlayerDataEventsByField.has(field)) {
 							// if part number = 1 all non default player data fields should have been added
 							// so we can add default values for the rest
-							const event = new PlayerDataEvent<PlayerDataField>({
+							ctx.timestamp = lastTimestamp;
+							ctx.msIntoGame = msIntoGame; // should be zero
+							const event = new PlayerDataEvent<PlayerDataField>(
+								null,
+								null,
 								field,
-								timestamp: 0,
-								value: getDefaultValue(field),
-							} as any);
+								getDefaultValue(field),
+								ctx,
+							);
 							events.push(event);
 							previousPlayerDataEventsByField.set(field, event);
 							if (frameEndEventPlayerDataFields.has(field)) {
@@ -84,14 +95,15 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 					});
 				}
 				if (createEndFrameEvent) {
-					const endFrameEvent: FrameEndEvent = new FrameEndEvent({
-						timestamp: lastTimestamp,
-						getPreviousPlayerData,
-						msIntoGame,
+					ctx.timestamp = lastTimestamp;
+					ctx.msIntoGame = msIntoGame;
+					const endFrameEvent: FrameEndEvent = new FrameEndEvent(
 						previousFrameEndEvent,
 						previousPlayerPositionEvent,
+						getPreviousPlayerData,
 						getPreviousHeroState,
-					});
+						ctx,
+					);
 					previousFrameEndEvent = endFrameEvent;
 					events.push(endFrameEvent);
 					createEndFrameEvent = false;
@@ -137,17 +149,18 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 				if (previousCurrentBossSequenceEvent?.value && !isPantheonRoom(event.sceneName)) {
 					// pantheon stopped, but game does not change player data to reflect that
 					// so a event is faked here
+					ctx.timestamp = lastTimestamp;
+					ctx.msIntoGame = msIntoGame;
 
 					const currentBossSequenceEvent = new PlayerDataEvent<
 						typeof playerDataFields.byFieldName.currentBossSequence
-					>({
-						timestamp: lastTimestamp,
-						value: null,
-						field: playerDataFields.byFieldName.currentBossSequence,
-						previousPlayerPositionEvent: previousPlayerPositionEvent,
-						previousPlayerDataEventOfField: previousCurrentBossSequenceEvent ?? null,
-					});
-					currentBossSequenceEvent.msIntoGame = msIntoGame;
+					>(
+						previousPlayerPositionEvent,
+						previousCurrentBossSequenceEvent ?? null,
+						playerDataFields.byFieldName.currentBossSequence,
+						null,
+						ctx,
+					);
 					previousPlayerDataEventsByField.set(
 						playerDataFields.byFieldName.currentBossSequence,
 						currentBossSequenceEvent,
@@ -330,15 +343,16 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 	// there might not have been a end frame event for a bit at the end, so we duplicate the last one
 	// so graphs can depend on there being one at the end of the msIntoGame
 	if (previousFrameEndEvent) {
+		ctx.timestamp = lastTimestamp;
+		ctx.msIntoGame = msIntoGame;
 		events.push(
-			new FrameEndEvent({
-				timestamp: lastTimestamp,
-				getPreviousPlayerData,
-				msIntoGame,
+			new FrameEndEvent(
 				previousFrameEndEvent,
 				previousPlayerPositionEvent,
+				getPreviousPlayerData,
 				getPreviousHeroState,
-			}),
+				ctx,
+			),
 		);
 	}
 
@@ -352,14 +366,15 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 			const previousValue = previousScenesVisitedEvent?.value ?? [];
 
 			if (!previousValue.includes(sceneName)) {
-				const visitedScenesEvent = new PlayerDataEvent<typeof playerDataFields.byFieldName.scenesVisited>({
-					timestamp: lastTimestamp,
-					value: [...previousValue, sceneName],
-					field: playerDataFields.byFieldName.scenesVisited,
-
-					previousPlayerPositionEvent: previousPlayerPositionEvent,
-					previousPlayerDataEventOfField: previousScenesVisitedEvent ?? null,
-				});
+				ctx.timestamp = lastTimestamp;
+				ctx.msIntoGame = msIntoGame;
+				const visitedScenesEvent = new PlayerDataEvent<typeof playerDataFields.byFieldName.scenesVisited>(
+					previousPlayerPositionEvent,
+					previousScenesVisitedEvent ?? null,
+					playerDataFields.byFieldName.scenesVisited,
+					[...previousValue, sceneName],
+					ctx,
+				);
 				visitedScenesEvent.msIntoGame = msIntoGame;
 				previousPlayerDataEventsByField.set(playerDataFields.byFieldName.scenesVisited, visitedScenesEvent);
 				if (frameEndEventPlayerDataFields.has(playerDataFields.byFieldName.scenesVisited)) {

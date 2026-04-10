@@ -14,23 +14,18 @@ import {
 	PARTIAL_EVENT_PREFIXES,
 	type PartialEventPrefix,
 } from './event-type-prefixes';
-import {
-	HKVizModVersionEvent,
-	type ModInfo,
-	ModdingInfoEvent,
-	PlayerDataEvent,
-	PlayerPositionEvent,
-	SceneEvent,
-} from './events';
-import {
-	HeroStateEvent,
-	ParsedRecording,
-	type RecordingEvent,
-	RecordingFileVersionEvent,
-	SpellDownEvent,
-	SpellFireballEvent,
-	SpellUpEvent,
-} from './recording';
+
+import { HeroStateEvent } from './events-hollow/hero-state-event';
+import { HKVizModVersionEvent } from './events-hollow/hkviz-mod-version-event';
+import { ModdingInfoEvent, ModInfo } from './events-hollow/modding-info-event';
+import { PlayerDataEvent } from './events-hollow/player-data-event';
+import { PlayerPositionEvent } from './events-hollow/player-position-event';
+import { SceneEvent } from './events-hollow/scene-event';
+import { SpellDownEvent } from './events-hollow/spell-down-event';
+import { SpellFireballEvent } from './events-hollow/spell-fireball-event';
+import { SpellUpEvent } from './events-hollow/spell-up-event';
+import { EventCreationContext } from './events-shared/event-creation-context';
+import { ParsedRecording, type RecordingEvent, RecordingFileVersionEvent } from './recording';
 
 // any newer version will always log using . instead of ,
 function parseFloatAnyCommaVersion_v0(value: string) {
@@ -66,6 +61,8 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 	// written at the beginning of a session, not for each part
 	let currentRecordingFileVersion: HollowRecordingFileVersion = '0.0.0';
 
+	const ctx = new EventCreationContext();
+
 	let i = 0;
 	LINE_LOOP: for (let line of lines) {
 		try {
@@ -97,6 +94,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 				timestamp = parseInt(timestampStr);
 			}
 			previousTimestamp = timestamp;
+			ctx.timestamp = timestamp;
 
 			// ------ EVENT TYPE ------
 			const partialEventType = eventType[0] as PartialEventPrefix;
@@ -109,14 +107,13 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 					const value = parsePlayerDataFieldValue(field, args.length === 1 ? args[0]! : args.join(';'));
 					// TODO
 					events.push(
-						new PlayerDataEvent({
-							timestamp,
+						new PlayerDataEvent(
+							previousPlayerPositionEvent,
+							null, // filled in combiner - previousPlayerDataEventOfField
 							field,
-
 							value,
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
-							previousPlayerDataEventOfField: null, // filled in combiner
-						}),
+							ctx,
+						),
 					);
 					continue LINE_LOOP;
 				}
@@ -128,14 +125,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 					const field = heroStateFields.byShortCode[eventTypeSuffix()];
 					if (!field) throw new Error('Unknown hero controller field short code' + eventTypeSuffix());
 					if (heroStatesSkipParsing.has(field)) continue LINE_LOOP;
-					events.push(
-						new HeroStateEvent({
-							timestamp,
-							field,
-							value: args[0] === '1',
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
-						}),
-					);
+					events.push(new HeroStateEvent(previousPlayerPositionEvent, field, args[0] === '1', ctx));
 					continue LINE_LOOP;
 				}
 				case PARTIAL_EVENT_PREFIXES.HERO_CONTROLER_STATE_LONGNAME: {
@@ -150,12 +140,8 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 			const eventTypePrefix = eventType as EventPrefix;
 			switch (eventTypePrefix) {
 				case EVENT_PREFIXES.SCENE_CHANGE: {
-					lastSceneEvent = new SceneEvent({
-						timestamp,
-						sceneName: args[0]!,
-						originOffset: undefined,
-						sceneSize: undefined,
-					});
+					const sceneName = args[0]!;
+					lastSceneEvent = new SceneEvent(sceneName, undefined, undefined, ctx);
 					previousPlayerPosition = undefined;
 					events.push(lastSceneEvent);
 					break;
@@ -198,11 +184,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 							// throw new Error('Could not assign player position to player position event');
 						}
 						previousPlayerPosition = position;
-						previousPlayerPositionEvent = new PlayerPositionEvent({
-							timestamp,
-							position,
-							sceneEvent: lastSceneEvent,
-						});
+						previousPlayerPositionEvent = new PlayerPositionEvent(position, lastSceneEvent, ctx);
 						events.push(previousPlayerPositionEvent);
 					}
 					break;
@@ -212,7 +194,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 					break;
 				}
 				case EVENT_PREFIXES.HZVIZ_MOD_VERSION: {
-					events.push(new HKVizModVersionEvent({ timestamp, version: args[0] ?? 'Unknown version' }));
+					events.push(new HKVizModVersionEvent(args[0] ?? 'Unknown version', ctx));
 					break;
 				}
 				case EVENT_PREFIXES.MODDING_INFO: {
@@ -228,12 +210,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 								? base
 								: { ...base, enabled: split[2]?.[0] === '1', errorCode: split[2]?.[1] };
 						});
-					events.push(
-						new ModdingInfoEvent({
-							timestamp,
-							mods,
-						}),
-					);
+					events.push(new ModdingInfoEvent(mods, ctx));
 					break;
 				}
 				case EVENT_PREFIXES.RECORDING_FILE_VERSION: {
@@ -249,10 +226,7 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 					}
 
 					events.push(
-						new RecordingFileVersionEvent({
-							timestamp,
-							version: currentRecordingFileVersion as HollowRecordingFileVersion,
-						}),
+						new RecordingFileVersionEvent(currentRecordingFileVersion as HollowRecordingFileVersion, ctx),
 					);
 
 					break;
@@ -266,30 +240,27 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 					break;
 				}
 				case EVENT_PREFIXES.SPELL_FIREBALL: {
-					events.push(
-						new SpellFireballEvent({
-							timestamp,
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
-						}),
-					);
+					events.push(new SpellFireballEvent(previousPlayerPositionEvent, ctx));
 					break;
 				}
 				case EVENT_PREFIXES.SPELL_UP: {
-					events.push(
-						new SpellUpEvent({
-							timestamp,
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
-						}),
-					);
+					events.push(new SpellUpEvent(previousPlayerPositionEvent, ctx));
 					break;
 				}
 				case EVENT_PREFIXES.SPELL_DOWN: {
-					events.push(
-						new SpellDownEvent({
-							timestamp,
-							previousPlayerPositionEvent: previousPlayerPositionEvent,
-						}),
-					);
+					events.push(new SpellDownEvent(previousPlayerPositionEvent, ctx));
+					break;
+				}
+				case EVENT_PREFIXES.FOCUS_START: {
+					// TODO
+					break;
+				}
+				case EVENT_PREFIXES.FOCUS_CANCELED: {
+					// TODO
+					break;
+				}
+				case EVENT_PREFIXES.FOCUS_SUCCESS: {
+					// TODO
 					break;
 				}
 				case EVENT_PREFIXES.NAIL_ART_CYCLONE: {

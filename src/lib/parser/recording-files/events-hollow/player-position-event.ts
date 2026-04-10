@@ -1,9 +1,9 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { playerPositionToMapPosition } from '../../map-data/player-position';
-import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
+import { EventCreationContext } from '../events-shared/event-creation-context';
+import { RecordingEventBase } from '../events-shared/recording-event-base';
 import { type SceneEvent } from './scene-event';
 
-type PlayerPositionEventOptions = RecordingEventBaseOptions & Pick<PlayerPositionEvent, 'position' | 'sceneEvent'>;
 export class PlayerPositionEvent extends RecordingEventBase {
 	public position: Vector2;
 	public sceneEvent: SceneEvent;
@@ -13,10 +13,10 @@ export class PlayerPositionEvent extends RecordingEventBase {
 	public previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
 	public mapDistanceToPrevious: number | null = null;
 
-	constructor(options: PlayerPositionEventOptions) {
-		super(options);
-		this.position = options.position;
-		this.sceneEvent = options.sceneEvent;
+	constructor(position: Vector2, sceneEvent: SceneEvent, ctx: EventCreationContext) {
+		super(ctx);
+		this.position = position;
+		this.sceneEvent = sceneEvent;
 	}
 
 	calcMapPosition() {

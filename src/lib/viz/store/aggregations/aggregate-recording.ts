@@ -1,10 +1,10 @@
+import { FrameEndEvent } from '~/lib/parser/recording-files/events-hollow/frame-end-event';
+import { HeroStateEvent } from '~/lib/parser/recording-files/events-hollow/hero-state-event';
+import { SceneEvent } from '~/lib/parser/recording-files/events-hollow/scene-event';
+import { SpellDownEvent } from '~/lib/parser/recording-files/events-hollow/spell-down-event';
+import { SpellFireballEvent } from '~/lib/parser/recording-files/events-hollow/spell-fireball-event';
+import { SpellUpEvent } from '~/lib/parser/recording-files/events-hollow/spell-up-event';
 import {
-	FrameEndEvent,
-	HeroStateEvent,
-	SceneEvent,
-	SpellDownEvent,
-	SpellFireballEvent,
-	SpellUpEvent,
 	assertNever,
 	isPlayerDataEventOfField,
 	mainRoomDataBySceneName,

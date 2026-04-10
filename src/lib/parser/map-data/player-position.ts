@@ -1,5 +1,5 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { type SceneEvent } from '../recording-files/events/scene-event';
+import { type SceneEvent } from '../recording-files/events-hollow/scene-event';
 import { mainRoomDataBySceneName } from './rooms';
 
 export function playerPositionToMapPosition(

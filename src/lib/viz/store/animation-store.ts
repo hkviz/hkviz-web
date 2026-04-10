@@ -1,6 +1,7 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import { batch, createContext, createEffect, createMemo, createSignal, untrack, useContext } from 'solid-js';
-import { binarySearchLastIndexBefore, mainRoomDataBySceneName, type RoomData, type SceneEvent } from '../../parser';
+import { SceneEvent } from '~/lib/parser/recording-files/events-hollow/scene-event';
+import { binarySearchLastIndexBefore, mainRoomDataBySceneName, type RoomData } from '../../parser';
 import { GameplayStore } from './gameplay-store';
 import { UiStore } from './ui-store';
 

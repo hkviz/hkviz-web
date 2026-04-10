@@ -1,8 +1,8 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { type BossSequenceData } from '../../player-data/boss-sequence';
-import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
+import { EventCreationContext } from '../events-shared/event-creation-context';
+import { RecordingEventBase } from '../events-shared/recording-event-base';
 
-type SceneEventOptions = RecordingEventBaseOptions & Pick<SceneEvent, 'sceneName' | 'originOffset' | 'sceneSize'>;
 export class SceneEvent extends RecordingEventBase {
 	public sceneName: string;
 	public originOffset: Vector2 | undefined;
@@ -10,11 +10,16 @@ export class SceneEvent extends RecordingEventBase {
 	public currentBossSequence: BossSequenceData | null = null;
 	public previousSceneEvent: SceneEvent | null = null;
 
-	constructor(options: SceneEventOptions) {
-		super(options);
-		this.sceneName = options.sceneName;
-		this.originOffset = options.originOffset;
-		this.sceneSize = options.sceneSize;
+	constructor(
+		sceneName: string,
+		originOffset: Vector2 | undefined,
+		sceneSize: Vector2 | undefined,
+		ctx: EventCreationContext,
+	) {
+		super(ctx);
+		this.sceneName = sceneName;
+		this.originOffset = originOffset;
+		this.sceneSize = sceneSize;
 	}
 
 	getMainVirtualSceneName(): string {

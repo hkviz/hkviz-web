@@ -1,4 +1,4 @@
-import { type FrameEndEvent, type FrameEndEventNumberKey } from '../../parser';
+import { FrameEndEvent, FrameEndEventNumberKey } from '~/lib/parser/recording-files/events-hollow/frame-end-event';
 
 export function downScale(data: FrameEndEvent[], fields: FrameEndEventNumberKey[], maxTimeDelta = 10000) {
 	console.log('Original length', data.length, fields);

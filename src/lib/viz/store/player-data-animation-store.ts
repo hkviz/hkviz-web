@@ -1,12 +1,7 @@
 import { createLazyMemo } from '@solid-primitives/memo';
 import { createContext, useContext, type Accessor } from 'solid-js';
-import {
-	binarySearchLastIndexBefore,
-	getDefaultValue,
-	playerDataFields,
-	type PlayerDataEvent,
-	type PlayerDataFieldValue,
-} from '../../parser';
+import { PlayerDataEvent } from '~/lib/parser/recording-files/events-hollow/player-data-event';
+import { binarySearchLastIndexBefore, getDefaultValue, playerDataFields, PlayerDataFieldValue } from '../../parser';
 import { AnimationStore } from './animation-store';
 import { GameplayStore } from './gameplay-store';
 

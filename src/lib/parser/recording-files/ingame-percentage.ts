@@ -2,7 +2,7 @@
 // it is largely taken from a decompiled Hollow Knight code file
 
 import { BossSequenceDoorCompletion } from '../player-data/boss-completion';
-import { type FrameEndEvent } from './events/frame-end-event';
+import { type FrameEndEvent } from './events-hollow/frame-end-event';
 
 function countCharms(frameEndEvent: FrameEndEvent) {
 	let charmsOwned = 0;

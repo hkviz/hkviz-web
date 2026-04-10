@@ -15,7 +15,7 @@ import { Dynamic } from 'solid-js/web';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
-import { type FrameEndEvent, type FrameEndEventNumberKey } from '../../parser';
+import { FrameEndEvent, FrameEndEventNumberKey } from '~/lib/parser/recording-files/events-hollow/frame-end-event';
 import { createAutoSizeCanvas } from '../canvas';
 import { ColorClasses } from '../colors';
 import {

@@ -5,11 +5,12 @@ import {
 	playerDataFields,
 	type PlayerDataField,
 } from '../../player-data/player-data';
+import { EventCreationContext } from '../events-shared/event-creation-context';
+import { RecordingEventBase } from '../events-shared/recording-event-base';
 import { countGameCompletion } from '../ingame-percentage';
-import { type HeroStateEvent } from '../recording';
+import { HeroStateEvent } from './hero-state-event';
 import { type PlayerDataEvent } from './player-data-event';
 import { type PlayerPositionEvent } from './player-position-event';
-import { RecordingEventBase, type RecordingEventBaseOptions } from './recording-event-base';
 
 export const frameEndEventPlayerDataFieldsArray = [
 	// geo
@@ -180,7 +181,7 @@ type FrameEndBase = {
 //     frameEndEventPlayerDataFieldsArray
 //         .map(
 //             (it) => `
-//                 const previous${it.name} = options.getPreviousPlayerData(playerDataFields.byFieldName.${it.name});
+//                 const previous${it.name} = getPreviousPlayerData(playerDataFields.byFieldName.${it.name});
 //                 this.${it.name} = previous${it.name} ? previous${it.name}.value : getDefaultPlayerDataValue(playerDataFields.byFieldName.${it.name});
 //             `,
 //         )
@@ -188,7 +189,7 @@ type FrameEndBase = {
 //         frameEndHeroStateFieldsArray
 //             .map(
 //                 (it) => `
-//                 this.${it.name} = options.getPreviousHeroState(heroStateFields.byFieldName.${it.name})?.value ?? false;
+//                 this.${it.name} = getPreviousHeroState(heroStateFields.byFieldName.${it.name})?.value ?? false;
 //             `,
 //             )
 //             .join(''),
@@ -198,10 +199,7 @@ type FrameEndBase = {
  * Synthetic event / not actually recorded
  * created by recording combiner whenever the timestamp changes if any of the values in it changed
  */
-type FrameEndEventOptions = RecordingEventBaseOptions & {
-	getPreviousPlayerData: <TField extends PlayerDataField>(field: TField) => PlayerDataEvent<TField> | undefined;
-	getPreviousHeroState: (field: HeroStateField) => HeroStateEvent | undefined;
-} & Pick<FrameEndEvent, 'previousFrameEndEvent' | 'previousPlayerPositionEvent'>;
+
 export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
 	// directly from player data and hero states
 
@@ -351,676 +349,660 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
 	dreamGateX: number;
 	dreamGateY: number;
 
-	constructor(options: FrameEndEventOptions) {
-		super(options);
+	constructor(
+		previousFrameEndEvent: FrameEndEvent | null,
+		previousPlayerPositionEvent: PlayerPositionEvent | null,
+		getPreviousPlayerData: <TField extends PlayerDataField>(field: TField) => PlayerDataEvent<TField> | undefined,
+		getPreviousHeroState: (field: HeroStateField) => HeroStateEvent | undefined,
+		ctx: EventCreationContext,
+	) {
+		super(ctx);
 
-		this.previousFrameEndEvent = options.previousFrameEndEvent;
-		this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
+		this.previousFrameEndEvent = previousFrameEndEvent;
+		this.previousPlayerPositionEvent = previousPlayerPositionEvent;
 
 		// start auto generated from code above
 		// meta programming sadly produced a properties array for each instance, which is not acceptable
 		// for this object as it is instantiated very often
 
-		const previousgeo = options.getPreviousPlayerData(playerDataFields.byFieldName.geo);
+		const previousgeo = getPreviousPlayerData(playerDataFields.byFieldName.geo);
 		this.geo = previousgeo ? previousgeo.value : getDefaultPlayerDataValue(playerDataFields.byFieldName.geo);
 
-		const previousgeoPool = options.getPreviousPlayerData(playerDataFields.byFieldName.geoPool);
+		const previousgeoPool = getPreviousPlayerData(playerDataFields.byFieldName.geoPool);
 		this.geoPool = previousgeoPool
 			? previousgeoPool.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.geoPool);
 
-		const previoustrinket1 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket1);
+		const previoustrinket1 = getPreviousPlayerData(playerDataFields.byFieldName.trinket1);
 		this.trinket1 = previoustrinket1
 			? previoustrinket1.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.trinket1);
 
-		const previoustrinket2 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket2);
+		const previoustrinket2 = getPreviousPlayerData(playerDataFields.byFieldName.trinket2);
 		this.trinket2 = previoustrinket2
 			? previoustrinket2.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.trinket2);
 
-		const previoustrinket3 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket3);
+		const previoustrinket3 = getPreviousPlayerData(playerDataFields.byFieldName.trinket3);
 		this.trinket3 = previoustrinket3
 			? previoustrinket3.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.trinket3);
 
-		const previoustrinket4 = options.getPreviousPlayerData(playerDataFields.byFieldName.trinket4);
+		const previoustrinket4 = getPreviousPlayerData(playerDataFields.byFieldName.trinket4);
 		this.trinket4 = previoustrinket4
 			? previoustrinket4.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.trinket4);
 
-		const previoushealth = options.getPreviousPlayerData(playerDataFields.byFieldName.health);
+		const previoushealth = getPreviousPlayerData(playerDataFields.byFieldName.health);
 		this.health = previoushealth
 			? previoushealth.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.health);
 
-		const previousmaxHealth = options.getPreviousPlayerData(playerDataFields.byFieldName.maxHealth);
+		const previousmaxHealth = getPreviousPlayerData(playerDataFields.byFieldName.maxHealth);
 		this.maxHealth = previousmaxHealth
 			? previousmaxHealth.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.maxHealth);
 
-		const previoushealthBlue = options.getPreviousPlayerData(playerDataFields.byFieldName.healthBlue);
+		const previoushealthBlue = getPreviousPlayerData(playerDataFields.byFieldName.healthBlue);
 		this.healthBlue = previoushealthBlue
 			? previoushealthBlue.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.healthBlue);
 
-		const previousMPCharge = options.getPreviousPlayerData(playerDataFields.byFieldName.MPCharge);
+		const previousMPCharge = getPreviousPlayerData(playerDataFields.byFieldName.MPCharge);
 		this.MPCharge = previousMPCharge
 			? previousMPCharge.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.MPCharge);
 
-		const previousMPReserve = options.getPreviousPlayerData(playerDataFields.byFieldName.MPReserve);
+		const previousMPReserve = getPreviousPlayerData(playerDataFields.byFieldName.MPReserve);
 		this.MPReserve = previousMPReserve
 			? previousMPReserve.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.MPReserve);
 
-		const previouskilledFalseKnight = options.getPreviousPlayerData(playerDataFields.byFieldName.killedFalseKnight);
+		const previouskilledFalseKnight = getPreviousPlayerData(playerDataFields.byFieldName.killedFalseKnight);
 		this.killedFalseKnight = previouskilledFalseKnight
 			? previouskilledFalseKnight.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedFalseKnight);
 
-		const previoushornet1Defeated = options.getPreviousPlayerData(playerDataFields.byFieldName.hornet1Defeated);
+		const previoushornet1Defeated = getPreviousPlayerData(playerDataFields.byFieldName.hornet1Defeated);
 		this.hornet1Defeated = previoushornet1Defeated
 			? previoushornet1Defeated.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hornet1Defeated);
 
-		const previoushornetOutskirtsDefeated = options.getPreviousPlayerData(
+		const previoushornetOutskirtsDefeated = getPreviousPlayerData(
 			playerDataFields.byFieldName.hornetOutskirtsDefeated,
 		);
 		this.hornetOutskirtsDefeated = previoushornetOutskirtsDefeated
 			? previoushornetOutskirtsDefeated.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hornetOutskirtsDefeated);
 
-		const previouskilledMantisLord = options.getPreviousPlayerData(playerDataFields.byFieldName.killedMantisLord);
+		const previouskilledMantisLord = getPreviousPlayerData(playerDataFields.byFieldName.killedMantisLord);
 		this.killedMantisLord = previouskilledMantisLord
 			? previouskilledMantisLord.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedMantisLord);
 
-		const previouskilledMageLord = options.getPreviousPlayerData(playerDataFields.byFieldName.killedMageLord);
+		const previouskilledMageLord = getPreviousPlayerData(playerDataFields.byFieldName.killedMageLord);
 		this.killedMageLord = previouskilledMageLord
 			? previouskilledMageLord.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedMageLord);
 
-		const previouskilledDungDefender = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.killedDungDefender,
-		);
+		const previouskilledDungDefender = getPreviousPlayerData(playerDataFields.byFieldName.killedDungDefender);
 		this.killedDungDefender = previouskilledDungDefender
 			? previouskilledDungDefender.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedDungDefender);
 
-		const previouskilledBlackKnight = options.getPreviousPlayerData(playerDataFields.byFieldName.killedBlackKnight);
+		const previouskilledBlackKnight = getPreviousPlayerData(playerDataFields.byFieldName.killedBlackKnight);
 		this.killedBlackKnight = previouskilledBlackKnight
 			? previouskilledBlackKnight.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedBlackKnight);
 
-		const previouskilledInfectedKnight = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.killedInfectedKnight,
-		);
+		const previouskilledInfectedKnight = getPreviousPlayerData(playerDataFields.byFieldName.killedInfectedKnight);
 		this.killedInfectedKnight = previouskilledInfectedKnight
 			? previouskilledInfectedKnight.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedInfectedKnight);
 
-		const previouskilledMimicSpider = options.getPreviousPlayerData(playerDataFields.byFieldName.killedMimicSpider);
+		const previouskilledMimicSpider = getPreviousPlayerData(playerDataFields.byFieldName.killedMimicSpider);
 		this.killedMimicSpider = previouskilledMimicSpider
 			? previouskilledMimicSpider.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedMimicSpider);
 
-		const previouskilledMegaJellyfish = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.killedMegaJellyfish,
-		);
+		const previouskilledMegaJellyfish = getPreviousPlayerData(playerDataFields.byFieldName.killedMegaJellyfish);
 		this.killedMegaJellyfish = previouskilledMegaJellyfish
 			? previouskilledMegaJellyfish.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedMegaJellyfish);
 
-		const previouskilledTraitorLord = options.getPreviousPlayerData(playerDataFields.byFieldName.killedTraitorLord);
+		const previouskilledTraitorLord = getPreviousPlayerData(playerDataFields.byFieldName.killedTraitorLord);
 		this.killedTraitorLord = previouskilledTraitorLord
 			? previouskilledTraitorLord.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedTraitorLord);
 
-		const previouskilledJarCollector = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.killedJarCollector,
-		);
+		const previouskilledJarCollector = getPreviousPlayerData(playerDataFields.byFieldName.killedJarCollector);
 		this.killedJarCollector = previouskilledJarCollector
 			? previouskilledJarCollector.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedJarCollector);
 
-		const previouskilledBigFly = options.getPreviousPlayerData(playerDataFields.byFieldName.killedBigFly);
+		const previouskilledBigFly = getPreviousPlayerData(playerDataFields.byFieldName.killedBigFly);
 		this.killedBigFly = previouskilledBigFly
 			? previouskilledBigFly.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedBigFly);
 
-		const previouskilledMawlek = options.getPreviousPlayerData(playerDataFields.byFieldName.killedMawlek);
+		const previouskilledMawlek = getPreviousPlayerData(playerDataFields.byFieldName.killedMawlek);
 		this.killedMawlek = previouskilledMawlek
 			? previouskilledMawlek.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedMawlek);
 
-		const previouskilledHiveKnight = options.getPreviousPlayerData(playerDataFields.byFieldName.killedHiveKnight);
+		const previouskilledHiveKnight = getPreviousPlayerData(playerDataFields.byFieldName.killedHiveKnight);
 		this.killedHiveKnight = previouskilledHiveKnight
 			? previouskilledHiveKnight.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedHiveKnight);
 
-		const previouscolosseumBronzeCompleted = options.getPreviousPlayerData(
+		const previouscolosseumBronzeCompleted = getPreviousPlayerData(
 			playerDataFields.byFieldName.colosseumBronzeCompleted,
 		);
 		this.colosseumBronzeCompleted = previouscolosseumBronzeCompleted
 			? previouscolosseumBronzeCompleted.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.colosseumBronzeCompleted);
 
-		const previouscolosseumSilverCompleted = options.getPreviousPlayerData(
+		const previouscolosseumSilverCompleted = getPreviousPlayerData(
 			playerDataFields.byFieldName.colosseumSilverCompleted,
 		);
 		this.colosseumSilverCompleted = previouscolosseumSilverCompleted
 			? previouscolosseumSilverCompleted.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.colosseumSilverCompleted);
 
-		const previouscolosseumGoldCompleted = options.getPreviousPlayerData(
+		const previouscolosseumGoldCompleted = getPreviousPlayerData(
 			playerDataFields.byFieldName.colosseumGoldCompleted,
 		);
 		this.colosseumGoldCompleted = previouscolosseumGoldCompleted
 			? previouscolosseumGoldCompleted.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.colosseumGoldCompleted);
 
-		const previouskilledGhostAladar = options.getPreviousPlayerData(playerDataFields.byFieldName.killedGhostAladar);
+		const previouskilledGhostAladar = getPreviousPlayerData(playerDataFields.byFieldName.killedGhostAladar);
 		this.killedGhostAladar = previouskilledGhostAladar
 			? previouskilledGhostAladar.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedGhostAladar);
 
-		const previouskilledGhostHu = options.getPreviousPlayerData(playerDataFields.byFieldName.killedGhostHu);
+		const previouskilledGhostHu = getPreviousPlayerData(playerDataFields.byFieldName.killedGhostHu);
 		this.killedGhostHu = previouskilledGhostHu
 			? previouskilledGhostHu.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedGhostHu);
 
-		const previouskilledGhostXero = options.getPreviousPlayerData(playerDataFields.byFieldName.killedGhostXero);
+		const previouskilledGhostXero = getPreviousPlayerData(playerDataFields.byFieldName.killedGhostXero);
 		this.killedGhostXero = previouskilledGhostXero
 			? previouskilledGhostXero.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedGhostXero);
 
-		const previouskilledGhostMarkoth = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.killedGhostMarkoth,
-		);
+		const previouskilledGhostMarkoth = getPreviousPlayerData(playerDataFields.byFieldName.killedGhostMarkoth);
 		this.killedGhostMarkoth = previouskilledGhostMarkoth
 			? previouskilledGhostMarkoth.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedGhostMarkoth);
 
-		const previouskilledGhostNoEyes = options.getPreviousPlayerData(playerDataFields.byFieldName.killedGhostNoEyes);
+		const previouskilledGhostNoEyes = getPreviousPlayerData(playerDataFields.byFieldName.killedGhostNoEyes);
 		this.killedGhostNoEyes = previouskilledGhostNoEyes
 			? previouskilledGhostNoEyes.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedGhostNoEyes);
 
-		const previouskilledGhostMarmu = options.getPreviousPlayerData(playerDataFields.byFieldName.killedGhostMarmu);
+		const previouskilledGhostMarmu = getPreviousPlayerData(playerDataFields.byFieldName.killedGhostMarmu);
 		this.killedGhostMarmu = previouskilledGhostMarmu
 			? previouskilledGhostMarmu.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedGhostMarmu);
 
-		const previouskilledGhostGalien = options.getPreviousPlayerData(playerDataFields.byFieldName.killedGhostGalien);
+		const previouskilledGhostGalien = getPreviousPlayerData(playerDataFields.byFieldName.killedGhostGalien);
 		this.killedGhostGalien = previouskilledGhostGalien
 			? previouskilledGhostGalien.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedGhostGalien);
 
-		const previousfireballLevel = options.getPreviousPlayerData(playerDataFields.byFieldName.fireballLevel);
+		const previousfireballLevel = getPreviousPlayerData(playerDataFields.byFieldName.fireballLevel);
 		this.fireballLevel = previousfireballLevel
 			? previousfireballLevel.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.fireballLevel);
 
-		const previousquakeLevel = options.getPreviousPlayerData(playerDataFields.byFieldName.quakeLevel);
+		const previousquakeLevel = getPreviousPlayerData(playerDataFields.byFieldName.quakeLevel);
 		this.quakeLevel = previousquakeLevel
 			? previousquakeLevel.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.quakeLevel);
 
-		const previousscreamLevel = options.getPreviousPlayerData(playerDataFields.byFieldName.screamLevel);
+		const previousscreamLevel = getPreviousPlayerData(playerDataFields.byFieldName.screamLevel);
 		this.screamLevel = previousscreamLevel
 			? previousscreamLevel.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.screamLevel);
 
-		const previoushasCyclone = options.getPreviousPlayerData(playerDataFields.byFieldName.hasCyclone);
+		const previoushasCyclone = getPreviousPlayerData(playerDataFields.byFieldName.hasCyclone);
 		this.hasCyclone = previoushasCyclone
 			? previoushasCyclone.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasCyclone);
 
-		const previoushasDashSlash = options.getPreviousPlayerData(playerDataFields.byFieldName.hasDashSlash);
+		const previoushasDashSlash = getPreviousPlayerData(playerDataFields.byFieldName.hasDashSlash);
 		this.hasDashSlash = previoushasDashSlash
 			? previoushasDashSlash.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasDashSlash);
 
-		const previoushasUpwardSlash = options.getPreviousPlayerData(playerDataFields.byFieldName.hasUpwardSlash);
+		const previoushasUpwardSlash = getPreviousPlayerData(playerDataFields.byFieldName.hasUpwardSlash);
 		this.hasUpwardSlash = previoushasUpwardSlash
 			? previoushasUpwardSlash.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasUpwardSlash);
 
-		const previoushasDash = options.getPreviousPlayerData(playerDataFields.byFieldName.hasDash);
+		const previoushasDash = getPreviousPlayerData(playerDataFields.byFieldName.hasDash);
 		this.hasDash = previoushasDash
 			? previoushasDash.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasDash);
 
-		const previoushasWalljump = options.getPreviousPlayerData(playerDataFields.byFieldName.hasWalljump);
+		const previoushasWalljump = getPreviousPlayerData(playerDataFields.byFieldName.hasWalljump);
 		this.hasWalljump = previoushasWalljump
 			? previoushasWalljump.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasWalljump);
 
-		const previoushasDoubleJump = options.getPreviousPlayerData(playerDataFields.byFieldName.hasDoubleJump);
+		const previoushasDoubleJump = getPreviousPlayerData(playerDataFields.byFieldName.hasDoubleJump);
 		this.hasDoubleJump = previoushasDoubleJump
 			? previoushasDoubleJump.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasDoubleJump);
 
-		const previoushasAcidArmour = options.getPreviousPlayerData(playerDataFields.byFieldName.hasAcidArmour);
+		const previoushasAcidArmour = getPreviousPlayerData(playerDataFields.byFieldName.hasAcidArmour);
 		this.hasAcidArmour = previoushasAcidArmour
 			? previoushasAcidArmour.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasAcidArmour);
 
-		const previoushasSuperDash = options.getPreviousPlayerData(playerDataFields.byFieldName.hasSuperDash);
+		const previoushasSuperDash = getPreviousPlayerData(playerDataFields.byFieldName.hasSuperDash);
 		this.hasSuperDash = previoushasSuperDash
 			? previoushasSuperDash.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasSuperDash);
 
-		const previoushasShadowDash = options.getPreviousPlayerData(playerDataFields.byFieldName.hasShadowDash);
+		const previoushasShadowDash = getPreviousPlayerData(playerDataFields.byFieldName.hasShadowDash);
 		this.hasShadowDash = previoushasShadowDash
 			? previoushasShadowDash.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasShadowDash);
 
-		const previoushasKingsBrand = options.getPreviousPlayerData(playerDataFields.byFieldName.hasKingsBrand);
+		const previoushasKingsBrand = getPreviousPlayerData(playerDataFields.byFieldName.hasKingsBrand);
 		this.hasKingsBrand = previoushasKingsBrand
 			? previoushasKingsBrand.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasKingsBrand);
 
-		const previouslurienDefeated = options.getPreviousPlayerData(playerDataFields.byFieldName.lurienDefeated);
+		const previouslurienDefeated = getPreviousPlayerData(playerDataFields.byFieldName.lurienDefeated);
 		this.lurienDefeated = previouslurienDefeated
 			? previouslurienDefeated.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.lurienDefeated);
 
-		const previoushegemolDefeated = options.getPreviousPlayerData(playerDataFields.byFieldName.hegemolDefeated);
+		const previoushegemolDefeated = getPreviousPlayerData(playerDataFields.byFieldName.hegemolDefeated);
 		this.hegemolDefeated = previoushegemolDefeated
 			? previoushegemolDefeated.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hegemolDefeated);
 
-		const previousmonomonDefeated = options.getPreviousPlayerData(playerDataFields.byFieldName.monomonDefeated);
+		const previousmonomonDefeated = getPreviousPlayerData(playerDataFields.byFieldName.monomonDefeated);
 		this.monomonDefeated = previousmonomonDefeated
 			? previousmonomonDefeated.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.monomonDefeated);
 
-		const previoushasDreamNail = options.getPreviousPlayerData(playerDataFields.byFieldName.hasDreamNail);
+		const previoushasDreamNail = getPreviousPlayerData(playerDataFields.byFieldName.hasDreamNail);
 		this.hasDreamNail = previoushasDreamNail
 			? previoushasDreamNail.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasDreamNail);
 
-		const previousdreamNailUpgraded = options.getPreviousPlayerData(playerDataFields.byFieldName.dreamNailUpgraded);
+		const previousdreamNailUpgraded = getPreviousPlayerData(playerDataFields.byFieldName.dreamNailUpgraded);
 		this.dreamNailUpgraded = previousdreamNailUpgraded
 			? previousdreamNailUpgraded.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamNailUpgraded);
 
-		const previousdreamOrbs = options.getPreviousPlayerData(playerDataFields.byFieldName.dreamOrbs);
+		const previousdreamOrbs = getPreviousPlayerData(playerDataFields.byFieldName.dreamOrbs);
 		this.dreamOrbs = previousdreamOrbs
 			? previousdreamOrbs.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamOrbs);
 
-		const previousmothDeparted = options.getPreviousPlayerData(playerDataFields.byFieldName.mothDeparted);
+		const previousmothDeparted = getPreviousPlayerData(playerDataFields.byFieldName.mothDeparted);
 		this.mothDeparted = previousmothDeparted
 			? previousmothDeparted.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.mothDeparted);
 
-		const previousnailSmithUpgrades = options.getPreviousPlayerData(playerDataFields.byFieldName.nailSmithUpgrades);
+		const previousnailSmithUpgrades = getPreviousPlayerData(playerDataFields.byFieldName.nailSmithUpgrades);
 		this.nailSmithUpgrades = previousnailSmithUpgrades
 			? previousnailSmithUpgrades.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.nailSmithUpgrades);
 
-		const previousmaxHealthBase = options.getPreviousPlayerData(playerDataFields.byFieldName.maxHealthBase);
+		const previousmaxHealthBase = getPreviousPlayerData(playerDataFields.byFieldName.maxHealthBase);
 		this.maxHealthBase = previousmaxHealthBase
 			? previousmaxHealthBase.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.maxHealthBase);
 
-		const previousMPReserveMax = options.getPreviousPlayerData(playerDataFields.byFieldName.MPReserveMax);
+		const previousMPReserveMax = getPreviousPlayerData(playerDataFields.byFieldName.MPReserveMax);
 		this.MPReserveMax = previousMPReserveMax
 			? previousMPReserveMax.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.MPReserveMax);
 
-		const previouskilledGrimm = options.getPreviousPlayerData(playerDataFields.byFieldName.killedGrimm);
+		const previouskilledGrimm = getPreviousPlayerData(playerDataFields.byFieldName.killedGrimm);
 		this.killedGrimm = previouskilledGrimm
 			? previouskilledGrimm.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedGrimm);
 
-		const previouskilledNightmareGrimm = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.killedNightmareGrimm,
-		);
+		const previouskilledNightmareGrimm = getPreviousPlayerData(playerDataFields.byFieldName.killedNightmareGrimm);
 		this.killedNightmareGrimm = previouskilledNightmareGrimm
 			? previouskilledNightmareGrimm.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.killedNightmareGrimm);
 
-		const previousdestroyedNightmareLantern = options.getPreviousPlayerData(
+		const previousdestroyedNightmareLantern = getPreviousPlayerData(
 			playerDataFields.byFieldName.destroyedNightmareLantern,
 		);
 		this.destroyedNightmareLantern = previousdestroyedNightmareLantern
 			? previousdestroyedNightmareLantern.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.destroyedNightmareLantern);
 
-		const previoushasGodfinder = options.getPreviousPlayerData(playerDataFields.byFieldName.hasGodfinder);
+		const previoushasGodfinder = getPreviousPlayerData(playerDataFields.byFieldName.hasGodfinder);
 		this.hasGodfinder = previoushasGodfinder
 			? previoushasGodfinder.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasGodfinder);
 
-		const previousbossDoorStateTier1 = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.bossDoorStateTier1,
-		);
+		const previousbossDoorStateTier1 = getPreviousPlayerData(playerDataFields.byFieldName.bossDoorStateTier1);
 		this.bossDoorStateTier1 = previousbossDoorStateTier1
 			? previousbossDoorStateTier1.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.bossDoorStateTier1);
 
-		const previousbossDoorStateTier2 = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.bossDoorStateTier2,
-		);
+		const previousbossDoorStateTier2 = getPreviousPlayerData(playerDataFields.byFieldName.bossDoorStateTier2);
 		this.bossDoorStateTier2 = previousbossDoorStateTier2
 			? previousbossDoorStateTier2.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.bossDoorStateTier2);
 
-		const previousbossDoorStateTier3 = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.bossDoorStateTier3,
-		);
+		const previousbossDoorStateTier3 = getPreviousPlayerData(playerDataFields.byFieldName.bossDoorStateTier3);
 		this.bossDoorStateTier3 = previousbossDoorStateTier3
 			? previousbossDoorStateTier3.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.bossDoorStateTier3);
 
-		const previousbossDoorStateTier4 = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.bossDoorStateTier4,
-		);
+		const previousbossDoorStateTier4 = getPreviousPlayerData(playerDataFields.byFieldName.bossDoorStateTier4);
 		this.bossDoorStateTier4 = previousbossDoorStateTier4
 			? previousbossDoorStateTier4.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.bossDoorStateTier4);
 
-		const previousgotCharm_1 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_1);
+		const previousgotCharm_1 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_1);
 		this.gotCharm_1 = previousgotCharm_1
 			? previousgotCharm_1.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_1);
 
-		const previousgotCharm_2 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_2);
+		const previousgotCharm_2 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_2);
 		this.gotCharm_2 = previousgotCharm_2
 			? previousgotCharm_2.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_2);
 
-		const previousgotCharm_3 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_3);
+		const previousgotCharm_3 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_3);
 		this.gotCharm_3 = previousgotCharm_3
 			? previousgotCharm_3.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_3);
 
-		const previousgotCharm_4 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_4);
+		const previousgotCharm_4 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_4);
 		this.gotCharm_4 = previousgotCharm_4
 			? previousgotCharm_4.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_4);
 
-		const previousgotCharm_5 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_5);
+		const previousgotCharm_5 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_5);
 		this.gotCharm_5 = previousgotCharm_5
 			? previousgotCharm_5.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_5);
 
-		const previousgotCharm_6 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_6);
+		const previousgotCharm_6 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_6);
 		this.gotCharm_6 = previousgotCharm_6
 			? previousgotCharm_6.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_6);
 
-		const previousgotCharm_7 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_7);
+		const previousgotCharm_7 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_7);
 		this.gotCharm_7 = previousgotCharm_7
 			? previousgotCharm_7.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_7);
 
-		const previousgotCharm_8 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_8);
+		const previousgotCharm_8 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_8);
 		this.gotCharm_8 = previousgotCharm_8
 			? previousgotCharm_8.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_8);
 
-		const previousgotCharm_9 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_9);
+		const previousgotCharm_9 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_9);
 		this.gotCharm_9 = previousgotCharm_9
 			? previousgotCharm_9.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_9);
 
-		const previousgotCharm_10 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_10);
+		const previousgotCharm_10 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_10);
 		this.gotCharm_10 = previousgotCharm_10
 			? previousgotCharm_10.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_10);
 
-		const previousgotCharm_11 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_11);
+		const previousgotCharm_11 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_11);
 		this.gotCharm_11 = previousgotCharm_11
 			? previousgotCharm_11.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_11);
 
-		const previousgotCharm_12 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_12);
+		const previousgotCharm_12 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_12);
 		this.gotCharm_12 = previousgotCharm_12
 			? previousgotCharm_12.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_12);
 
-		const previousgotCharm_13 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_13);
+		const previousgotCharm_13 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_13);
 		this.gotCharm_13 = previousgotCharm_13
 			? previousgotCharm_13.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_13);
 
-		const previousgotCharm_14 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_14);
+		const previousgotCharm_14 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_14);
 		this.gotCharm_14 = previousgotCharm_14
 			? previousgotCharm_14.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_14);
 
-		const previousgotCharm_15 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_15);
+		const previousgotCharm_15 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_15);
 		this.gotCharm_15 = previousgotCharm_15
 			? previousgotCharm_15.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_15);
 
-		const previousgotCharm_16 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_16);
+		const previousgotCharm_16 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_16);
 		this.gotCharm_16 = previousgotCharm_16
 			? previousgotCharm_16.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_16);
 
-		const previousgotCharm_17 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_17);
+		const previousgotCharm_17 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_17);
 		this.gotCharm_17 = previousgotCharm_17
 			? previousgotCharm_17.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_17);
 
-		const previousgotCharm_18 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_18);
+		const previousgotCharm_18 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_18);
 		this.gotCharm_18 = previousgotCharm_18
 			? previousgotCharm_18.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_18);
 
-		const previousgotCharm_19 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_19);
+		const previousgotCharm_19 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_19);
 		this.gotCharm_19 = previousgotCharm_19
 			? previousgotCharm_19.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_19);
 
-		const previousgotCharm_20 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_20);
+		const previousgotCharm_20 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_20);
 		this.gotCharm_20 = previousgotCharm_20
 			? previousgotCharm_20.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_20);
 
-		const previousgotCharm_21 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_21);
+		const previousgotCharm_21 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_21);
 		this.gotCharm_21 = previousgotCharm_21
 			? previousgotCharm_21.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_21);
 
-		const previousgotCharm_22 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_22);
+		const previousgotCharm_22 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_22);
 		this.gotCharm_22 = previousgotCharm_22
 			? previousgotCharm_22.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_22);
 
-		const previousgotCharm_23 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_23);
+		const previousgotCharm_23 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_23);
 		this.gotCharm_23 = previousgotCharm_23
 			? previousgotCharm_23.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_23);
 
-		const previousgotCharm_24 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_24);
+		const previousgotCharm_24 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_24);
 		this.gotCharm_24 = previousgotCharm_24
 			? previousgotCharm_24.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_24);
 
-		const previousgotCharm_25 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_25);
+		const previousgotCharm_25 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_25);
 		this.gotCharm_25 = previousgotCharm_25
 			? previousgotCharm_25.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_25);
 
-		const previousgotCharm_26 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_26);
+		const previousgotCharm_26 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_26);
 		this.gotCharm_26 = previousgotCharm_26
 			? previousgotCharm_26.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_26);
 
-		const previousgotCharm_27 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_27);
+		const previousgotCharm_27 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_27);
 		this.gotCharm_27 = previousgotCharm_27
 			? previousgotCharm_27.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_27);
 
-		const previousgotCharm_28 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_28);
+		const previousgotCharm_28 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_28);
 		this.gotCharm_28 = previousgotCharm_28
 			? previousgotCharm_28.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_28);
 
-		const previousgotCharm_29 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_29);
+		const previousgotCharm_29 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_29);
 		this.gotCharm_29 = previousgotCharm_29
 			? previousgotCharm_29.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_29);
 
-		const previousgotCharm_30 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_30);
+		const previousgotCharm_30 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_30);
 		this.gotCharm_30 = previousgotCharm_30
 			? previousgotCharm_30.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_30);
 
-		const previousgotCharm_31 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_31);
+		const previousgotCharm_31 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_31);
 		this.gotCharm_31 = previousgotCharm_31
 			? previousgotCharm_31.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_31);
 
-		const previousgotCharm_32 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_32);
+		const previousgotCharm_32 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_32);
 		this.gotCharm_32 = previousgotCharm_32
 			? previousgotCharm_32.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_32);
 
-		const previousgotCharm_33 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_33);
+		const previousgotCharm_33 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_33);
 		this.gotCharm_33 = previousgotCharm_33
 			? previousgotCharm_33.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_33);
 
-		const previousgotCharm_34 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_34);
+		const previousgotCharm_34 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_34);
 		this.gotCharm_34 = previousgotCharm_34
 			? previousgotCharm_34.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_34);
 
-		const previousgotCharm_35 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_35);
+		const previousgotCharm_35 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_35);
 		this.gotCharm_35 = previousgotCharm_35
 			? previousgotCharm_35.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_35);
 
-		const previousgotCharm_36 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_36);
+		const previousgotCharm_36 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_36);
 		this.gotCharm_36 = previousgotCharm_36
 			? previousgotCharm_36.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_36);
 
-		const previousgotCharm_37 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_37);
+		const previousgotCharm_37 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_37);
 		this.gotCharm_37 = previousgotCharm_37
 			? previousgotCharm_37.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_37);
 
-		const previousgotCharm_38 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_38);
+		const previousgotCharm_38 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_38);
 		this.gotCharm_38 = previousgotCharm_38
 			? previousgotCharm_38.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_38);
 
-		const previousgotCharm_39 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_39);
+		const previousgotCharm_39 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_39);
 		this.gotCharm_39 = previousgotCharm_39
 			? previousgotCharm_39.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_39);
 
-		const previousgotCharm_40 = options.getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_40);
+		const previousgotCharm_40 = getPreviousPlayerData(playerDataFields.byFieldName.gotCharm_40);
 		this.gotCharm_40 = previousgotCharm_40
 			? previousgotCharm_40.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.gotCharm_40);
 
-		const previousroyalCharmState = options.getPreviousPlayerData(playerDataFields.byFieldName.royalCharmState);
+		const previousroyalCharmState = getPreviousPlayerData(playerDataFields.byFieldName.royalCharmState);
 		this.royalCharmState = previousroyalCharmState
 			? previousroyalCharmState.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.royalCharmState);
 
-		const previousfragileHealth_unbreakable = options.getPreviousPlayerData(
+		const previousfragileHealth_unbreakable = getPreviousPlayerData(
 			playerDataFields.byFieldName.fragileHealth_unbreakable,
 		);
 		this.fragileHealth_unbreakable = previousfragileHealth_unbreakable
 			? previousfragileHealth_unbreakable.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.fragileHealth_unbreakable);
 
-		const previousfragileStrength_unbreakable = options.getPreviousPlayerData(
+		const previousfragileStrength_unbreakable = getPreviousPlayerData(
 			playerDataFields.byFieldName.fragileStrength_unbreakable,
 		);
 		this.fragileStrength_unbreakable = previousfragileStrength_unbreakable
 			? previousfragileStrength_unbreakable.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.fragileStrength_unbreakable);
 
-		const previousfragileGreed_unbreakable = options.getPreviousPlayerData(
+		const previousfragileGreed_unbreakable = getPreviousPlayerData(
 			playerDataFields.byFieldName.fragileGreed_unbreakable,
 		);
 		this.fragileGreed_unbreakable = previousfragileGreed_unbreakable
 			? previousfragileGreed_unbreakable.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.fragileGreed_unbreakable);
 
-		const previousbrokenCharm_23 = options.getPreviousPlayerData(playerDataFields.byFieldName.brokenCharm_23);
+		const previousbrokenCharm_23 = getPreviousPlayerData(playerDataFields.byFieldName.brokenCharm_23);
 		this.brokenCharm_23 = previousbrokenCharm_23
 			? previousbrokenCharm_23.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.brokenCharm_23);
 
-		const previousbrokenCharm_24 = options.getPreviousPlayerData(playerDataFields.byFieldName.brokenCharm_24);
+		const previousbrokenCharm_24 = getPreviousPlayerData(playerDataFields.byFieldName.brokenCharm_24);
 		this.brokenCharm_24 = previousbrokenCharm_24
 			? previousbrokenCharm_24.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.brokenCharm_24);
 
-		const previousbrokenCharm_25 = options.getPreviousPlayerData(playerDataFields.byFieldName.brokenCharm_25);
+		const previousbrokenCharm_25 = getPreviousPlayerData(playerDataFields.byFieldName.brokenCharm_25);
 		this.brokenCharm_25 = previousbrokenCharm_25
 			? previousbrokenCharm_25.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.brokenCharm_25);
 
-		const previousgrimmChildLevel = options.getPreviousPlayerData(playerDataFields.byFieldName.grimmChildLevel);
+		const previousgrimmChildLevel = getPreviousPlayerData(playerDataFields.byFieldName.grimmChildLevel);
 		this.grimmChildLevel = previousgrimmChildLevel
 			? previousgrimmChildLevel.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.grimmChildLevel);
 
-		const previouscompletionPercentage = options.getPreviousPlayerData(
-			playerDataFields.byFieldName.completionPercentage,
-		);
+		const previouscompletionPercentage = getPreviousPlayerData(playerDataFields.byFieldName.completionPercentage);
 		this.completionPercentage = previouscompletionPercentage
 			? previouscompletionPercentage.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.completionPercentage);
 
-		const previousgrubsCollected = options.getPreviousPlayerData(playerDataFields.byFieldName.grubsCollected);
+		const previousgrubsCollected = getPreviousPlayerData(playerDataFields.byFieldName.grubsCollected);
 		this.grubsCollected = previousgrubsCollected
 			? previousgrubsCollected.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.grubsCollected);
 
-		const previousgrubRewards = options.getPreviousPlayerData(playerDataFields.byFieldName.grubRewards);
+		const previousgrubRewards = getPreviousPlayerData(playerDataFields.byFieldName.grubRewards);
 		this.grubRewards = previousgrubRewards
 			? previousgrubRewards.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.grubRewards);
 
-		const previousHasXunFlower = options.getPreviousPlayerData(playerDataFields.byFieldName.hasXunFlower);
+		const previousHasXunFlower = getPreviousPlayerData(playerDataFields.byFieldName.hasXunFlower);
 		this.hasXunFlower = previousHasXunFlower
 			? previousHasXunFlower.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.hasXunFlower);
-		const previousXunFlowerBroken = options.getPreviousPlayerData(playerDataFields.byFieldName.xunFlowerBroken);
+		const previousXunFlowerBroken = getPreviousPlayerData(playerDataFields.byFieldName.xunFlowerBroken);
 		this.xunFlowerBroken = previousXunFlowerBroken
 			? previousXunFlowerBroken.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.xunFlowerBroken);
 
-		this.dead = options.getPreviousHeroState(heroStateFields.byFieldName.dead)?.value ?? false;
+		this.dead = getPreviousHeroState(heroStateFields.byFieldName.dead)?.value ?? false;
 
-		const previousShadeScene = options.getPreviousPlayerData(playerDataFields.byFieldName.shadeScene);
+		const previousShadeScene = getPreviousPlayerData(playerDataFields.byFieldName.shadeScene);
 		this.shadeScene = previousShadeScene
 			? previousShadeScene.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.shadeScene);
 
-		const previousShadePositionX = options.getPreviousPlayerData(playerDataFields.byFieldName.shadePositionX);
+		const previousShadePositionX = getPreviousPlayerData(playerDataFields.byFieldName.shadePositionX);
 		this.shadePositionX = previousShadePositionX
 			? previousShadePositionX.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.shadePositionX);
-		const previousShadePositionY = options.getPreviousPlayerData(playerDataFields.byFieldName.shadePositionY);
+		const previousShadePositionY = getPreviousPlayerData(playerDataFields.byFieldName.shadePositionY);
 		this.shadePositionY = previousShadePositionY
 			? previousShadePositionY.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.shadePositionY);
 
-		const previousDreamGateScene = options.getPreviousPlayerData(playerDataFields.byFieldName.dreamGateScene);
+		const previousDreamGateScene = getPreviousPlayerData(playerDataFields.byFieldName.dreamGateScene);
 		this.dreamGateScene = previousDreamGateScene
 			? previousDreamGateScene.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamGateScene);
-		const previousDreamGateX = options.getPreviousPlayerData(playerDataFields.byFieldName.dreamGateX);
+		const previousDreamGateX = getPreviousPlayerData(playerDataFields.byFieldName.dreamGateX);
 		this.dreamGateX = previousDreamGateX
 			? previousDreamGateX.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamGateX);
-		const previousDreamGateY = options.getPreviousPlayerData(playerDataFields.byFieldName.dreamGateY);
+		const previousDreamGateY = getPreviousPlayerData(playerDataFields.byFieldName.dreamGateY);
 		this.dreamGateY = previousDreamGateY
 			? previousDreamGateY.value
 			: getDefaultPlayerDataValue(playerDataFields.byFieldName.dreamGateY);

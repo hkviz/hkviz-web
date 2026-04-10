@@ -18,7 +18,7 @@ import {
 	playerDataFields,
 } from '../player-data/player-data';
 import { assertNever, parseHtmlEntities } from '../util';
-import { type PlayerPositionEvent } from './events/player-position-event';
+import { type PlayerPositionEvent } from './events-hollow/player-position-event';
 import { type CombinedRecording } from './recording';
 
 export const recordingSplitGroups = [

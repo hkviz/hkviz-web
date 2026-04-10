@@ -28,6 +28,11 @@ export const EVENT_PREFIXES = {
 	SPELL_UP: 'sup',
 	SPELL_DOWN: 'sdn',
 
+	// logged since 1.6.0 - before that, must be inferred from player data + hero state events
+	FOCUS_START: 'f',
+	FOCUS_CANCELED: 'Fc',
+	FOCUS_SUCCESS: 'F',
+
 	NAIL_ART_CYCLONE: 'nc',
 	NAIL_ART_D_SLASH: 'nd',
 	NAIL_ART_G_SLASH: 'ng',

@@ -1,23 +1,26 @@
-import { type HeroStateField } from '../hero-state/hero-states';
 import { type PlayerDataField } from '../player-data/player-data';
 import { type HollowRecordingFileVersion } from '../recording-file-version';
 import { binarySearchLastIndexBefore, raise } from '../util';
-import { FrameEndEvent } from './events/frame-end-event';
-import { type HKVizModVersionEvent } from './events/hkviz-mod-version-event';
-import { type ModInfo, type ModdingInfoEvent } from './events/modding-info-event';
-import { PlayerDataEvent } from './events/player-data-event';
-import { PlayerPositionEvent } from './events/player-position-event';
-import { RecordingEventBase, type RecordingEventBaseOptions } from './events/recording-event-base';
-import { SceneEvent } from './events/scene-event';
+import { FrameEndEvent } from './events-hollow/frame-end-event';
+import { HeroStateEvent } from './events-hollow/hero-state-event';
+import { type HKVizModVersionEvent } from './events-hollow/hkviz-mod-version-event';
+import { type ModInfo, type ModdingInfoEvent } from './events-hollow/modding-info-event';
+import { PlayerDataEvent } from './events-hollow/player-data-event';
+import { PlayerPositionEvent } from './events-hollow/player-position-event';
+import { SceneEvent } from './events-hollow/scene-event';
+import { SpellDownEvent } from './events-hollow/spell-down-event';
+import { SpellFireballEvent } from './events-hollow/spell-fireball-event';
+import { SpellUpEvent } from './events-hollow/spell-up-event';
+import { EventCreationContext } from './events-shared/event-creation-context';
+import { RecordingEventBase } from './events-shared/recording-event-base';
 import { createRecordingSplits, type RecordingSplit } from './recording-splits';
 
-type RecordingFileVersionEventOptions = RecordingEventBaseOptions & Pick<RecordingFileVersionEvent, 'version'>;
 export class RecordingFileVersionEvent extends RecordingEventBase {
 	public version: HollowRecordingFileVersion;
 
-	constructor(options: RecordingFileVersionEventOptions) {
-		super(options);
-		this.version = options.version;
+	constructor(version: HollowRecordingFileVersion, ctx: EventCreationContext) {
+		super(ctx);
+		this.version = version;
 	}
 }
 
@@ -33,51 +36,6 @@ export function isPlayerDataEventWithFieldType<FieldType extends PlayerDataField
 	type: FieldType,
 ): event is PlayerDataEvent<Extract<PlayerDataField, { type: FieldType }>> {
 	return event instanceof PlayerDataEvent && event.field.type === type;
-}
-
-type HeroStateEventOptions = RecordingEventBaseOptions &
-	Pick<HeroStateEvent, 'field' | 'value' | 'previousPlayerPositionEvent'>;
-export class HeroStateEvent extends RecordingEventBase {
-	public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
-	public readonly field: HeroStateField;
-	public readonly value: boolean;
-
-	constructor(options: HeroStateEventOptions) {
-		super(options);
-		this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
-		this.field = options.field;
-		this.value = options.value;
-	}
-}
-
-type SpellFireballEventOptions = RecordingEventBaseOptions & Pick<SpellFireballEvent, 'previousPlayerPositionEvent'>;
-export class SpellFireballEvent extends RecordingEventBase {
-	public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
-
-	constructor(options: SpellFireballEventOptions) {
-		super(options);
-		this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
-	}
-}
-
-type SpellUpEventOptions = RecordingEventBaseOptions & Pick<SpellUpEvent, 'previousPlayerPositionEvent'>;
-export class SpellUpEvent extends RecordingEventBase {
-	public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
-
-	constructor(options: SpellUpEventOptions) {
-		super(options);
-		this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
-	}
-}
-
-type SpellDownEventOptions = RecordingEventBaseOptions & Pick<SpellDownEvent, 'previousPlayerPositionEvent'>;
-export class SpellDownEvent extends RecordingEventBase {
-	public previousPlayerPositionEvent: PlayerPositionEvent | null = null;
-
-	constructor(options: SpellDownEventOptions) {
-		super(options);
-		this.previousPlayerPositionEvent = options.previousPlayerPositionEvent;
-	}
 }
 
 export type RecordingEvent =
