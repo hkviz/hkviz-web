@@ -5,6 +5,7 @@ import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card';
 import { useUser } from '~/lib/auth/client';
 import { GameplayDashboard, createRunFileLoader } from '~/lib/viz';
+import { useSpriteSheetStore } from '~/lib/viz/spritesheets/spritesheet-store';
 import { RunStoresProvider } from '~/lib/viz/store/store-context';
 import { getRun } from '~/server/run/run-get';
 import { getRunPageTitle } from './_metadata';
@@ -18,6 +19,11 @@ import { getRunPageTitle } from './_metadata';
 function SingleRunLoadingWrapper(props: { id: string }) {
 	const runData = createAsync(() => getRun(props.id));
 	const user = useUser();
+	const spritesheetStore = useSpriteSheetStore();
+
+	// TODO decide which spritesheets to load based on run data
+	spritesheetStore.ensureLoaded('hollow');
+	// spritesheetStore.ensureLoaded('silk');
 
 	const loader = createMemo(() => {
 		const run = runData();

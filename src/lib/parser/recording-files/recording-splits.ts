@@ -1,4 +1,4 @@
-import { enemiesJournalLang } from '../../hk-data';
+import { enemiesJournalLang } from '../../game-data/hollow-data';
 import { virtualCharms } from '../charms';
 import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../player-data/abilities';
 import {

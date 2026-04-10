@@ -1,11 +1,11 @@
 import { createEffect, type Component } from 'solid-js';
+import { hollowScale } from '~/lib/game-data/hollow-data/hollow-scaling';
+import { Vector2 } from '~/lib/game-data/shared/vectors';
 import {
-	Vector2,
 	binarySearchLastIndexBefore,
 	mapVisualExtends,
 	playerDataFields,
 	playerPositionToMapPosition,
-	scale,
 } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
 import { dreamGatePinSrc, knightPinSrc, shadePinSrc } from '../img-urls';
@@ -103,7 +103,7 @@ export const HKMapTraces: Component = () => {
 		// as everything else grows.
 		const baseLineWidth = mapDistanceToCanvasUnits * transform.scale ** 0.5;
 		const halfBaseLineWidth = baseLineWidth / 2;
-		const jumpThreshold = scale(1.5);
+		const jumpThreshold = hollowScale(1.5);
 
 		let i = firstIndex;
 		type PositionEvent = (typeof positionEvents)[number];

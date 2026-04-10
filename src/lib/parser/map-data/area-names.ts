@@ -1,7 +1,8 @@
 import * as d3 from 'd3';
-import { type TextInfoUnscaled, roomDataUnscaled, type Vector4Like } from '../../hk-data';
-import { scaleBounds } from './scaling';
-import { type Bounds } from '../hk-types';
+import { hollowScaleBounds } from '~/lib/game-data/hollow-data/hollow-scaling';
+import { Bounds } from '~/lib/game-data/shared/bounds';
+import { Vector4Like } from '~/lib/game-data/shared/vector-like';
+import { roomDataUnscaled, type HollowTextInfoGenerated } from '../../game-data/hollow-data';
 
 type TextType = 'area' | 'sub-area';
 
@@ -9,7 +10,7 @@ function areaTypeFromObjectPath(path: string): TextType {
 	return path.includes('Sub') ? 'sub-area' : 'area';
 }
 
-export interface TextData extends Omit<TextInfoUnscaled, 'position' | 'bounds'> {
+export interface TextData extends Omit<HollowTextInfoGenerated, 'position' | 'bounds'> {
 	objectPath: string;
 	convoName: string;
 	sheetName: string;
@@ -24,11 +25,11 @@ export interface TextData extends Omit<TextInfoUnscaled, 'position' | 'bounds'> 
 	type: TextType;
 }
 
-export function prepareTextExportData(text: TextInfoUnscaled): TextData {
+export function prepareTextExportData(text: HollowTextInfoGenerated): TextData {
 	return {
 		...text,
 		position: null, //scaleVector2(text.position),
-		bounds: scaleBounds(text.bounds),
+		bounds: hollowScaleBounds(text.bounds),
 		color: d3.hsl(d3.rgb(text.origColor.x * 255, text.origColor.y * 255, text.origColor.z * 255)),
 		isSubArea: text.objectPath.includes('Sub') || text.convoName === 'HIVE',
 		type: areaTypeFromObjectPath(text.objectPath),

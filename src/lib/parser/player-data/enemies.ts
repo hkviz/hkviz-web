@@ -1,4 +1,4 @@
-import { type EnemyName, enemiesGenerated, enemiesJournalGenerated } from '../../hk-data';
+import { type EnemyName, enemiesGenerated, enemiesJournalGenerated } from '../../game-data/hollow-data';
 
 export const greyPrinceNames = [
 	// https://hollowknight.wiki/w/Grey_Prince_Zote

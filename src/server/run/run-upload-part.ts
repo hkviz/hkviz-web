@@ -2,9 +2,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
-import { HollowModVersion, isModVersionBefore1_6_0, mapZoneSchema, raise } from '~/lib/parser';
+import { hollowMapZoneSchema } from '~/lib/game-data/hollow-data/hollow-map-zone';
+import { HollowModVersion, isModVersionBefore1_6_0, raise } from '~/lib/parser';
 import { r2RunPartFileKey } from '~/lib/r2';
-import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
+import { runFiles, type RunGameStateMetaColumnName, runs } from '~/server/db/schema';
 import { db } from '../db';
 import { getUserIdFromIngameSession } from '../ingameauth/utils';
 import { r2FileHead, r2GetSignedUploadUrl } from '../r2';
@@ -18,6 +19,7 @@ const runPartCreateInputSchema = v.object({
 	localRunId: v.pipe(v.string(), v.uuid()),
 	partNumber: v.pipe(v.number(), v.integer(), v.minValue(0)),
 
+	// TODO rename to gameVersion in new endpoint? or use union type here?
 	hkVersion: v.nullish(v.pipe(v.string(), v.maxLength(64))),
 	playTime: v.nullish(v.number()),
 	maxHealth: v.nullish(v.pipe(v.number(), v.integer())),
@@ -25,7 +27,7 @@ const runPartCreateInputSchema = v.object({
 	geo: v.nullish(v.pipe(v.number(), v.integer())),
 	dreamOrbs: v.nullish(v.pipe(v.number(), v.integer())),
 	permadeathMode: v.nullish(v.pipe(v.number(), v.integer())),
-	mapZone: v.nullish(mapZoneSchema),
+	mapZone: v.nullish(hollowMapZoneSchema),
 	killedHollowKnight: v.nullish(v.boolean()),
 	killedFinalBoss: v.nullish(v.boolean()),
 	killedVoidIdol: v.nullish(v.boolean()),
@@ -124,7 +126,7 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 		uploadFinished: false,
 		version: 0,
 
-		hkVersion: input.hkVersion,
+		gameVersion: input.hkVersion,
 		playTime: input.playTime,
 		maxHealth: input.maxHealth,
 		mpReserveMax: input.mpReserveMax,
@@ -212,7 +214,7 @@ export async function runPartMarkFinished(unsafeInput: RunPartMarkFinishedInput)
 			await db
 				.update(runs)
 				.set({
-					hkVersion: file.hkVersion ?? run.hkVersion,
+					gameVersion: file.gameVersion ?? run.gameVersion,
 					playTime: file.playTime ?? run.playTime,
 					maxHealth: file.maxHealth ?? run.maxHealth,
 					mpReserveMax: file.mpReserveMax ?? run.mpReserveMax,

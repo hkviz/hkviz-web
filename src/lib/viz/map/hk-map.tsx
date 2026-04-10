@@ -15,9 +15,9 @@ import { createElementSize } from '../canvas';
 import { useLayoutPanelContextOrNull } from '../layout/layout-panel-context';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { useMapZoomStore, useRoomDisplayStore, useUiStore } from '../store';
-import { HkMapRooms } from './hk-map-rooms';
 import { HkMapTexts } from './hk-map-texts';
 import { createHKMapZoom } from './hk-map-zoom';
+import { HkMapRooms } from './hollow-map-rooms';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
 import { OutlineFilter } from './svg-filters';
@@ -216,6 +216,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 
 	const rootG = (
 		<g data-group="root">
+			{/* <SilkMapRooms /> */}
 			<HkMapRooms
 				rooms={roomData}
 				onMouseOver={(_, r) => {

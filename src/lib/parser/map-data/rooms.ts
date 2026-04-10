@@ -1,13 +1,17 @@
 import * as d3 from 'd3';
-import { roomDataConditionalByGameObjectName, roomDataUnscaled, roomDataUnscaledFinishedGame } from '../../hk-data';
-import { Bounds, Vector2 } from '../hk-types';
+import { hollowScaleBounds } from '~/lib/game-data/hollow-data/hollow-scaling';
+import { roomDataConditionalByGameObjectName } from '~/lib/game-data/hollow-data/map-rooms-conditionals.generated';
+import { roomDataUnscaledFinishedGame } from '~/lib/game-data/hollow-data/map-rooms-finished.generated';
+import { roomDataUnscaled } from '~/lib/game-data/hollow-data/map-rooms.generated';
+import { Bounds } from '~/lib/game-data/shared/bounds';
+import { spriteInfoBounds } from '~/lib/game-data/shared/sprite-info-mapper';
+import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { omit } from '../util';
 import { prepareTextExportData } from './area-names';
 import { customRoomData, type CustomRoomInfo, type UnprocessedRoomInfo } from './room-custom';
 import { roomGroupByName } from './room-groups';
 import { formatZoneAndRoomName } from './room-name-formatting';
 import { getSubSprites } from './room-sub-sprites';
-import { scaleBounds } from './scaling';
 import { getZoomZones } from './zoom-zone';
 
 const roomDataUnscaledWithCustom: Array<UnprocessedRoomInfo | CustomRoomInfo> = [
@@ -68,27 +72,9 @@ const finishedUnprocessedRoomsByGameObjectName = new Map(
 
 export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 	const finishedRoom = finishedUnprocessedRoomsByGameObjectName.get(room.gameObjectName);
-	const visualBounds = scaleBounds(room.visualBounds);
-	const playerPositionBounds = scaleBounds(finishedRoom?.playerPositionBounds ?? room.playerPositionBounds);
+	const visualBounds = hollowScaleBounds(room.visualBounds);
+	const playerPositionBounds = hollowScaleBounds(finishedRoom?.playerPositionBounds ?? room.playerPositionBounds);
 	const isMainGameObject = room.gameObjectName === mainGameObjectNamePerSceneName[room.sceneName];
-
-	function roomPositionWithPadding(
-		spriteInfo: Exclude<typeof room.roughSpriteInfo | typeof room.spriteInfo, null | undefined>,
-	) {
-		const widthScaler = visualBounds.size.x / spriteInfo.size.x;
-		const heightScaler = visualBounds.size.y / spriteInfo.size.y;
-
-		const min = new Vector2(
-			visualBounds.min.x + spriteInfo.padding.x * widthScaler,
-			visualBounds.min.y + spriteInfo.padding.w * heightScaler,
-		);
-		const size = new Vector2(
-			visualBounds.size.x - (spriteInfo.padding.x + spriteInfo.padding.z) * widthScaler,
-			visualBounds.size.y - (spriteInfo.padding.y + spriteInfo.padding.w) * heightScaler,
-		);
-
-		return Bounds.fromMinSize(min, size);
-	}
 
 	function spriteInfoWithScaledPosition<
 		T extends Exclude<typeof room.roughSpriteInfo | typeof room.spriteInfo, null | undefined>,
@@ -96,7 +82,7 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 		return {
 			...spriteInfo,
 			nameWithoutSubSprites: null as null | string,
-			scaledPosition: roomPositionWithPadding(spriteInfo),
+			scaledPosition: spriteInfoBounds(visualBounds, spriteInfo),
 			variant,
 			alwaysHidden: false,
 		};
