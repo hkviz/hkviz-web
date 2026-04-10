@@ -1,7 +1,9 @@
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { GameId } from '~/lib/types/game-ids';
 import { playerDataFields, type CombinedRecording } from '../../parser';
 
 export function createGameplayStore() {
+	const [game, setGame] = createSignal<GameId | null>(null);
 	const [recording, setRecording] = createSignal<CombinedRecording | null>(null);
 
 	function reset() {
@@ -28,6 +30,8 @@ export function createGameplayStore() {
 		timeFrame,
 		isSteelSoul,
 		reset,
+		game,
+		setGame,
 	};
 }
 export type GameplayStore = ReturnType<typeof createGameplayStore>;

@@ -1,10 +1,11 @@
 import { Title } from '@solidjs/meta';
 import { RouteSectionProps, createAsync } from '@solidjs/router';
-import { Show, createMemo } from 'solid-js';
+import { Show, createEffect, createMemo } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card';
 import { useUser } from '~/lib/auth/client';
-import { GameplayDashboard, createRunFileLoader } from '~/lib/viz';
+import { assertNever } from '~/lib/parser';
+import { GameplayDashboard, createRunFileLoader, useGameplayStore } from '~/lib/viz';
 import { useSpriteSheetStore } from '~/lib/viz/spritesheets/spritesheet-store';
 import { RunStoresProvider } from '~/lib/viz/store/store-context';
 import { getRun } from '~/server/run/run-get';
@@ -20,10 +21,21 @@ function SingleRunLoadingWrapper(props: { id: string }) {
 	const runData = createAsync(() => getRun(props.id));
 	const user = useUser();
 	const spritesheetStore = useSpriteSheetStore();
+	const gameplayStore = useGameplayStore();
 
 	// TODO decide which spritesheets to load based on run data
-	spritesheetStore.ensureLoaded('hollow');
-	// spritesheetStore.ensureLoaded('silk');
+	createEffect(() => {
+		const game = runData()?.gameState.game;
+		gameplayStore.setGame(game ?? null);
+		if (!game) return;
+		if (game === 'hollow') {
+			spritesheetStore.ensureLoaded('hollow');
+		} else if (game === 'silk') {
+			spritesheetStore.ensureLoaded('silk');
+		} else {
+			assertNever(game);
+		}
+	});
 
 	const loader = createMemo(() => {
 		const run = runData();
@@ -39,7 +51,7 @@ function SingleRunLoadingWrapper(props: { id: string }) {
 						<>
 							<Title>{getRunPageTitle(runData())}</Title>
 							<GameplayDashboard
-								startDate={runData().startedAt}
+								runData={runData()}
 								fileInfos={runData().files}
 								runFileLoader={loader()}
 								gameplayCard={

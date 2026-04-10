@@ -2,6 +2,7 @@ import { JSXElement, Show, createEffect, createSignal, type Component } from 'so
 import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
 import { cn } from '~/lib/utils';
+import { RunMetadata } from '~/server/run/_find_runs_internal';
 import { LayoutLane } from '../layout/layout-lane';
 import { RunFileInfo, RunFileLoader } from '../loader';
 import { HKMap } from '../map';
@@ -31,7 +32,7 @@ export const RightCard: Component<{ class?: string }> = (props) => {
 
 export interface GameplayDashboardProps {
 	fileInfos: RunFileInfo[];
-	startDate: Date | undefined;
+	runData: RunMetadata;
 	gameplayCard: JSXElement;
 	runFileLoader: RunFileLoader;
 }
@@ -70,7 +71,7 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 				<LargeScreenTabs />
 				<RunOverviewTab
 					class="z-10 col-start-1 col-end-1 row-start-1 row-end-1"
-					startDate={props.startDate}
+					startDate={props.runData.startedAt}
 					loadingDone={props.runFileLoader.done()}
 					loadingProgress={props.runFileLoader.progress()}
 					gameplayCard={props.gameplayCard}
