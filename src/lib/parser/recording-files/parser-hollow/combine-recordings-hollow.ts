@@ -1,34 +1,35 @@
-import { type HeroStateField } from '../hero-state/hero-states';
-import { getDefaultValue, playerDataFields, type PlayerDataField } from '../player-data/player-data';
-import { isVersionBefore1_4_0, type HollowRecordingFileVersion } from '../recording-file-version';
-import { raise } from '../util';
+import { type HeroStateField } from '../../hero-state/hero-states';
+import { playerPositionToMapPositionHollow } from '../../map-data';
+import { getDefaultValue, playerDataFields, type PlayerDataField } from '../../player-data/player-data';
+import { isVersionBefore1_4_0, type HollowRecordingFileVersion } from '../../recording-file-version';
+import { raise } from '../../util';
 import {
-	FrameEndEvent,
+	FrameEndEventHollow,
 	frameEndEventHeroStateFields,
 	frameEndEventPlayerDataFields,
-} from './events-hollow/frame-end-event';
-import { HeroStateEvent } from './events-hollow/hero-state-event';
-import { HKVizModVersionEvent } from './events-hollow/hkviz-mod-version-event';
-import { ModdingInfoEvent } from './events-hollow/modding-info-event';
-import { PlayerDataEvent } from './events-hollow/player-data-event';
-import { PlayerPositionEvent } from './events-hollow/player-position-event';
-import { SceneEvent } from './events-hollow/scene-event';
-import { EventCreationContext } from './events-shared/event-creation-context';
+} from '../events-hollow/frame-end-event-hollow';
+import { HeroStateEvent } from '../events-hollow/hero-state-event';
+import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
+import { ModdingInfoEvent } from '../events-hollow/modding-info-event';
+import { PlayerDataEvent } from '../events-hollow/player-data-event';
+import { EventCreationContext } from '../events-shared/event-creation-context';
+import { PlayerPositionEvent } from '../events-shared/player-position-event';
+import { SceneEvent } from '../events-shared/scene-event';
 import {
-	CombinedRecording,
+	CombinedRecordingHollow,
 	RecordingFileVersionEvent,
 	isPlayerDataEventOfField,
 	isPlayerDataEventWithFieldType,
-	type ParsedRecording,
-	type RecordingEvent,
-} from './recording';
+	type ParsedRecordingHollow,
+	type RecordingEventHollow,
+} from './recording-hollow';
 
 function isPantheonRoom(sceneName: string) {
 	return sceneName.startsWith('GG_') && !sceneName.startsWith('GG_Atrium');
 }
 
-export function combineRecordings(recordings: ParsedRecording[]): CombinedRecording {
-	const events: RecordingEvent[] = [];
+export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): CombinedRecordingHollow {
+	const events: RecordingEventHollow[] = [];
 	let msIntoGame = 0;
 	let lastTimestamp: number =
 		recordings[0]?.events?.[0]?.timestamp ?? raise(new Error('No events found in first recording'));
@@ -51,7 +52,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 	let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
 	let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
 	let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
-	let previousFrameEndEvent: FrameEndEvent | null = null;
+	let previousFrameEndEvent: FrameEndEventHollow | null = null;
 	let previousSceneEvent: SceneEvent | null = null;
 	let diedInThisSceneVisit = false;
 
@@ -97,7 +98,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 				if (createEndFrameEvent) {
 					ctx.timestamp = lastTimestamp;
 					ctx.msIntoGame = msIntoGame;
-					const endFrameEvent: FrameEndEvent = new FrameEndEvent(
+					const endFrameEvent: FrameEndEventHollow = new FrameEndEventHollow(
 						previousFrameEndEvent,
 						previousPlayerPositionEvent,
 						getPreviousPlayerData,
@@ -258,7 +259,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 					if (isTransitioning) {
 						continue;
 					}
-					event.calcMapPosition();
+					event.calcMapPosition(playerPositionToMapPositionHollow);
 					const playerPositionChanged =
 						previousPositionEventWithChangedPosition?.position?.equals(event.position) !== true;
 					if (playerPositionChanged) {
@@ -346,7 +347,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 		ctx.timestamp = lastTimestamp;
 		ctx.msIntoGame = msIntoGame;
 		events.push(
-			new FrameEndEvent(
+			new FrameEndEventHollow(
 				previousFrameEndEvent,
 				previousPlayerPositionEvent,
 				getPreviousPlayerData,
@@ -387,7 +388,7 @@ export function combineRecordings(recordings: ParsedRecording[]): CombinedRecord
 
 	(window as any).hkvizEvents = () => events;
 
-	return new CombinedRecording(
+	return new CombinedRecordingHollow(
 		events,
 		recordings.reduce((sum, recording) => sum + recording.unknownEvents, 0),
 		recordings.reduce((sum, recording) => sum + recording.parsingErrors, 0),

@@ -1,7 +1,7 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { type BossSequenceData } from '../../player-data/boss-sequence';
-import { EventCreationContext } from '../events-shared/event-creation-context';
-import { RecordingEventBase } from '../events-shared/recording-event-base';
+import { EventCreationContext } from './event-creation-context';
+import { RecordingEventBase } from './recording-event-base';
 
 export class SceneEvent extends RecordingEventBase {
 	public sceneName: string;

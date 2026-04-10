@@ -1,11 +1,12 @@
 import { createEffect, type Component } from 'solid-js';
 import { hollowScale } from '~/lib/game-data/hollow-data/hollow-scaling';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
 import {
 	binarySearchLastIndexBefore,
 	mapVisualExtends,
 	playerDataFields,
-	playerPositionToMapPosition,
+	playerPositionToMapPositionHollow,
 } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
 import { dreamGatePinSrc, knightPinSrc, shadePinSrc } from '../img-urls';
@@ -158,10 +159,15 @@ export const HKMapTraces: Component = () => {
 		// frame end pins
 		const frameEvent = animationStore.currentFrameEndEvent();
 		const recording = gameplayStore.recording();
-		if (traceStore.visibility() === 'fade_out' && recording && frameEvent) {
+		if (
+			frameEvent instanceof FrameEndEventHollow &&
+			traceStore.visibility() === 'fade_out' &&
+			recording &&
+			frameEvent
+		) {
 			// dream gate
 			if (frameEvent.dreamGateScene !== playerDataFields.byFieldName.dreamGateScene.defaultValue) {
-				const mapPosition = playerPositionToMapPosition(
+				const mapPosition = playerPositionToMapPositionHollow(
 					new Vector2(frameEvent.dreamGateX, frameEvent.dreamGateY),
 					recording.sceneEvents.find((it) => it.sceneName === frameEvent.dreamGateScene),
 				);
@@ -183,7 +189,7 @@ export const HKMapTraces: Component = () => {
 			}
 			// shade
 			if (frameEvent.shadeScene !== playerDataFields.byFieldName.shadeScene.defaultValue) {
-				const mapPosition = playerPositionToMapPosition(
+				const mapPosition = playerPositionToMapPositionHollow(
 					new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),
 					recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene),
 				);

@@ -1,18 +1,19 @@
-import { type PlayerDataField } from '../player-data/player-data';
-import { type HollowRecordingFileVersion } from '../recording-file-version';
-import { binarySearchLastIndexBefore, raise } from '../util';
-import { FrameEndEvent } from './events-hollow/frame-end-event';
-import { HeroStateEvent } from './events-hollow/hero-state-event';
-import { type HKVizModVersionEvent } from './events-hollow/hkviz-mod-version-event';
-import { type ModInfo, type ModdingInfoEvent } from './events-hollow/modding-info-event';
-import { PlayerDataEvent } from './events-hollow/player-data-event';
-import { PlayerPositionEvent } from './events-hollow/player-position-event';
-import { SceneEvent } from './events-hollow/scene-event';
-import { SpellDownEvent } from './events-hollow/spell-down-event';
-import { SpellFireballEvent } from './events-hollow/spell-fireball-event';
-import { SpellUpEvent } from './events-hollow/spell-up-event';
-import { EventCreationContext } from './events-shared/event-creation-context';
-import { RecordingEventBase } from './events-shared/recording-event-base';
+import { type PlayerDataField } from '../../player-data/player-data';
+import { type HollowRecordingFileVersion } from '../../recording-file-version';
+import { raise } from '../../util';
+import { FrameEndEventHollow } from '../events-hollow/frame-end-event-hollow';
+import { HeroStateEvent } from '../events-hollow/hero-state-event';
+import { type HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
+import { type ModInfo, type ModdingInfoEvent } from '../events-hollow/modding-info-event';
+import { PlayerDataEvent } from '../events-hollow/player-data-event';
+import { SpellDownEvent } from '../events-hollow/spell-down-event';
+import { SpellFireballEvent } from '../events-hollow/spell-fireball-event';
+import { SpellUpEvent } from '../events-hollow/spell-up-event';
+import { EventCreationContext } from '../events-shared/event-creation-context';
+import { PlayerPositionEvent } from '../events-shared/player-position-event';
+import { RecordingEventBase } from '../events-shared/recording-event-base';
+import { SceneEvent } from '../events-shared/scene-event';
+import { CombinedRecordingBase } from '../parser-shared/recording-shared';
 import { createRecordingSplits, type RecordingSplit } from './recording-splits';
 
 export class RecordingFileVersionEvent extends RecordingEventBase {
@@ -25,20 +26,20 @@ export class RecordingFileVersionEvent extends RecordingEventBase {
 }
 
 export function isPlayerDataEventOfField<TField extends PlayerDataField>(
-	event: RecordingEvent,
+	event: RecordingEventHollow,
 	field: TField,
 ): event is PlayerDataEvent<TField> {
 	return event instanceof PlayerDataEvent && event.field === field;
 }
 
 export function isPlayerDataEventWithFieldType<FieldType extends PlayerDataField['type']>(
-	event: RecordingEvent,
+	event: RecordingEventHollow,
 	type: FieldType,
 ): event is PlayerDataEvent<Extract<PlayerDataField, { type: FieldType }>> {
 	return event instanceof PlayerDataEvent && event.field.type === type;
 }
 
-export type RecordingEvent =
+export type RecordingEventHollow =
 	| SceneEvent
 	| PlayerPositionEvent
 	| PlayerDataEvent<PlayerDataField>
@@ -47,13 +48,13 @@ export type RecordingEvent =
 	| SpellFireballEvent
 	| SpellDownEvent
 	| SpellUpEvent
-	| FrameEndEvent
+	| FrameEndEventHollow
 	| ModdingInfoEvent
 	| HKVizModVersionEvent;
 
-export class ParsedRecording {
+export class ParsedRecordingHollow {
 	constructor(
-		public readonly events: RecordingEvent[],
+		public readonly events: RecordingEventHollow[],
 		public readonly unknownEvents: number,
 		public readonly parsingErrors: number,
 		public readonly combinedPartNumber: number | null,
@@ -72,22 +73,20 @@ export class ParsedRecording {
 	}
 }
 
-export class CombinedRecording extends ParsedRecording {
+export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
 	public playerDataEventsPerField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>[]>();
-	public frameEndEvents: FrameEndEvent[] = [];
-	public sceneEvents: SceneEvent[] = [];
 	public splits: RecordingSplit[];
 	public playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
 
 	constructor(
-		events: RecordingEvent[],
+		events: RecordingEventHollow[],
 		unknownEvents: number,
 		parsingErrors: number,
 		public readonly lastPlayerDataEventsByField: Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>,
 		public readonly allModVersions: ModInfo[],
 		public readonly allHkVizModVersions: string[],
 	) {
-		super(events, unknownEvents, parsingErrors, null);
+		super(events, unknownEvents, parsingErrors);
 
 		for (const event of events) {
 			if (event instanceof PlayerDataEvent) {
@@ -96,7 +95,7 @@ export class CombinedRecording extends ParsedRecording {
 				this.playerDataEventsPerField.set(event.field, eventsOfField);
 			} else if (event instanceof SceneEvent) {
 				this.sceneEvents.push(event);
-			} else if (event instanceof FrameEndEvent) {
+			} else if (event instanceof FrameEndEventHollow) {
 				this.frameEndEvents.push(event);
 			} else if (event instanceof PlayerPositionEvent) {
 				if (
@@ -117,22 +116,5 @@ export class CombinedRecording extends ParsedRecording {
 
 	allPlayerDataEventsOfField<TField extends PlayerDataField>(field: TField): PlayerDataEvent<TField>[] {
 		return (this.playerDataEventsPerField.get(field) as any) ?? [];
-	}
-
-	sceneEventIndexFromMs(ms: number): number {
-		return binarySearchLastIndexBefore(this.sceneEvents, ms, (it) => it.msIntoGame);
-	}
-
-	sceneEventFromMs(ms: number): SceneEvent | null {
-		const index = this.sceneEventIndexFromMs(ms);
-		return this.sceneEvents[index] ?? null;
-	}
-
-	frameEndEventIndexFromMs(ms: number): number {
-		return binarySearchLastIndexBefore(this.frameEndEvents, ms, (it) => it.msIntoGame);
-	}
-	frameEndEventFromMs(ms: number): FrameEndEvent | null {
-		const index = this.frameEndEventIndexFromMs(ms);
-		return this.frameEndEvents[index] ?? null;
 	}
 }

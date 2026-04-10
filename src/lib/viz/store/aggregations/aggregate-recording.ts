@@ -1,17 +1,14 @@
-import { FrameEndEvent } from '~/lib/parser/recording-files/events-hollow/frame-end-event';
+import { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
 import { HeroStateEvent } from '~/lib/parser/recording-files/events-hollow/hero-state-event';
-import { SceneEvent } from '~/lib/parser/recording-files/events-hollow/scene-event';
 import { SpellDownEvent } from '~/lib/parser/recording-files/events-hollow/spell-down-event';
 import { SpellFireballEvent } from '~/lib/parser/recording-files/events-hollow/spell-fireball-event';
 import { SpellUpEvent } from '~/lib/parser/recording-files/events-hollow/spell-up-event';
+import { SceneEvent } from '~/lib/parser/recording-files/events-shared/scene-event';
 import {
-	assertNever,
+	CombinedRecordingHollow,
 	isPlayerDataEventOfField,
-	mainRoomDataBySceneName,
-	playerDataFields,
-	roomGroupNamesBySceneName,
-	type CombinedRecording,
-} from '../../../parser';
+} from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
+import { assertNever, mainRoomDataBySceneName, playerDataFields, roomGroupNamesBySceneName } from '../../../parser';
 import { formatTimeMs } from '../../util';
 import { AreaSelectionMode } from '../room-display-store';
 
@@ -288,7 +285,7 @@ export function getZoneNameFromSceneName(sceneName: string | undefined | null): 
 
 // type AggregationStoreValue = Record<RunId, AggregatedRunData>;
 
-export function aggregateRecording(recording: CombinedRecording) {
+export function aggregateRecording(recording: CombinedRecordingHollow) {
 	const countPerScene: Record<string, ValueAggregation> = {};
 	const countPerSceneOverTime: Record<string, ValueAggregationTimePoint[]> = {};
 
@@ -513,7 +510,7 @@ export function aggregateRecording(recording: CombinedRecording) {
 			if (diff < 0) {
 				addToScenes(currentVirtualScenes, event.msIntoGame, 'damageTaken', -diff);
 			}
-		} else if (event instanceof FrameEndEvent && event.previousFrameEndEvent) {
+		} else if (event instanceof FrameEndEventHollow && event.previousFrameEndEvent) {
 			if (
 				event.healthTotal === 0 &&
 				event.previousFrameEndEvent &&

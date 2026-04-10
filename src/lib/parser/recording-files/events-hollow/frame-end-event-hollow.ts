@@ -6,11 +6,11 @@ import {
 	type PlayerDataField,
 } from '../../player-data/player-data';
 import { EventCreationContext } from '../events-shared/event-creation-context';
+import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
-import { countGameCompletion } from '../ingame-percentage';
+import { countGameCompletion } from '../parser-hollow/ingame-percentage';
 import { HeroStateEvent } from './hero-state-event';
 import { type PlayerDataEvent } from './player-data-event';
-import { type PlayerPositionEvent } from './player-position-event';
 
 export const frameEndEventPlayerDataFieldsArray = [
 	// geo
@@ -200,7 +200,7 @@ type FrameEndBase = {
  * created by recording combiner whenever the timestamp changes if any of the values in it changed
  */
 
-export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
+export class FrameEndEventHollow extends RecordingEventBase implements FrameEndBase {
 	// directly from player data and hero states
 
 	dead: boolean;
@@ -327,7 +327,7 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
 	xunFlowerBroken: boolean;
 
 	// computed properties
-	previousFrameEndEvent: FrameEndEvent | null = null;
+	previousFrameEndEvent: FrameEndEventHollow | null = null;
 	previousPlayerPositionEvent: PlayerPositionEvent | null = null;
 
 	completionPercentageEarlyCalc: number;
@@ -350,7 +350,7 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
 	dreamGateY: number;
 
 	constructor(
-		previousFrameEndEvent: FrameEndEvent | null,
+		previousFrameEndEvent: FrameEndEventHollow | null,
 		previousPlayerPositionEvent: PlayerPositionEvent | null,
 		getPreviousPlayerData: <TField extends PlayerDataField>(field: TField) => PlayerDataEvent<TField> | undefined,
 		getPreviousHeroState: (field: HeroStateField) => HeroStateEvent | undefined,
@@ -1017,13 +1017,13 @@ export class FrameEndEvent extends RecordingEventBase implements FrameEndBase {
 
 		this.MPTotal = this.MPCharge + this.MPReserve;
 
-		this.completionPercentageEarlyCalc = countGameCompletion(this);
-
 		this.healthTotal = this.health + this.healthBlue;
+
+		this.completionPercentageEarlyCalc = countGameCompletion(this);
 	}
 }
 
 export type FrameEndEventNumberKeys = {
-	[TField in keyof FrameEndEvent as FrameEndEvent[TField] extends number ? TField : never]: number;
+	[TField in keyof FrameEndEventHollow as FrameEndEventHollow[TField] extends number ? TField : never]: number;
 };
 export type FrameEndEventNumberKey = keyof FrameEndEventNumberKeys;

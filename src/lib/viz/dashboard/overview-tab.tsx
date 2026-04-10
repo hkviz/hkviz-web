@@ -5,6 +5,7 @@ import { Button } from '~/components/ui/button';
 import { Progress } from '~/components/ui/progress';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import { playerDataFields } from '~/lib/parser';
+import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { cn } from '~/lib/utils';
 import { RelativeDate } from '../datetime/date';
 import {
@@ -69,15 +70,20 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 	}
 
 	const fiteredModVersions = createMemo(() => {
-		return recording()?.allModVersions?.filter(() => false); // (mod) => mod.name === 'HKViz');
+		const rec = recording();
+		if (!rec || rec instanceof CombinedRecordingSilk) {
+			return [];
+		}
+		return rec.allModVersions?.filter(() => false); // (mod) => mod.name === 'HKViz');
 	});
 
 	const hollowKnightVersions = createMemo(() => {
+		const rec = recording();
+		// TODO silk
+		if (!rec || rec instanceof CombinedRecordingSilk) return [];
 		return [
 			...new Set(
-				recording()
-					?.allPlayerDataEventsOfField(playerDataFields.byFieldName.version)
-					?.map((event) => event.value),
+				rec?.allPlayerDataEventsOfField(playerDataFields.byFieldName.version)?.map((event) => event.value),
 			),
 		];
 	});

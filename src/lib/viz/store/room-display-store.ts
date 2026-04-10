@@ -1,6 +1,7 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import * as d3 from 'd3';
 import { createContext, createMemo, createSignal, useContext, type Accessor } from 'solid-js';
+import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import {
 	assertNever,
 	mainRoomDataBySceneName,
@@ -82,9 +83,10 @@ export function createRoomDisplayStore(
 			case 'all':
 				return 'all' as const;
 			case 'visited':
+				const recording = gameplayStore.recording();
+				if (!recording || recording instanceof CombinedRecordingSilk) return new Set<string>();
 				return new Set(
-					gameplayStore.recording()?.lastPlayerDataEventOfField(playerDataFields.byFieldName.scenesVisited)
-						?.value ?? [],
+					recording.lastPlayerDataEventOfField(playerDataFields.byFieldName.scenesVisited)?.value ?? [],
 				);
 			case 'visited-animated':
 				return new Set(playerDataAnimationStore.currentValues.scenesVisited() ?? []);

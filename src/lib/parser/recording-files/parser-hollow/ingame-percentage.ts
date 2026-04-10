@@ -1,10 +1,10 @@
 // this file is not licensed under the project license
 // it is largely taken from a decompiled Hollow Knight code file
 
-import { BossSequenceDoorCompletion } from '../player-data/boss-completion';
-import { type FrameEndEvent } from './events-hollow/frame-end-event';
+import { BossSequenceDoorCompletion } from '../../player-data/boss-completion';
+import { type FrameEndEventHollow } from '../events-hollow/frame-end-event-hollow';
 
-function countCharms(frameEndEvent: FrameEndEvent) {
+function countCharms(frameEndEvent: FrameEndEventHollow) {
 	let charmsOwned = 0;
 	if (frameEndEvent.gotCharm_1) {
 		charmsOwned++;
@@ -129,7 +129,7 @@ function countCharms(frameEndEvent: FrameEndEvent) {
 	return charmsOwned;
 }
 
-export function countGameCompletion(frameEndEvent: FrameEndEvent) {
+export function countGameCompletion(frameEndEvent: FrameEndEventHollow) {
 	let completionPercentage = 0;
 	completionPercentage += countCharms(frameEndEvent);
 	if (frameEndEvent.killedFalseKnight) {

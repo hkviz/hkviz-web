@@ -1,12 +1,19 @@
 import { createDeferred, createMemo, createSignal } from 'solid-js';
 import { isServer } from 'solid-js/web';
-import { combineRecordings, parseRecordingFile } from '../../parser';
+import { ParserModule } from '~/lib/parser/recording-files/parser-shared/parser-module';
+import { loadParserModule } from '~/lib/parser/recording-files/parser-specific/load-parser-module';
+import { GameId } from '~/lib/types/game-ids';
 import { createStoreInitializer } from '../store/store-initializer';
 import { fetchWithRunfileCache, openRunfileCache } from './recording-file-browser-cache';
 import { type RunFileInfo } from './run-files-info';
 import { wrapResultWithProgress } from './wrap-result-with-progress';
 
-async function loadFile(cache: Promise<Cache | null>, file: RunFileInfo, onProgress: (progress: number) => void) {
+async function loadFile<Game extends GameId>(
+	parserModulePromise: Promise<ParserModule<Game>>,
+	cache: Promise<Cache | null>,
+	file: RunFileInfo,
+	onProgress: (progress: number) => void,
+) {
 	const loader = () => fetchWithRunfileCache(cache, file.id, file.version, file.signedUrl);
 
 	// uncomment to get file content from console. useful for debugging
@@ -19,8 +26,8 @@ async function loadFile(cache: Promise<Cache | null>, file: RunFileInfo, onProgr
 			onProgress(total ? loaded / total : 0);
 		}),
 	);
-	const data = await response.text();
-	const recording = parseRecordingFile(data, file.combinedPartNumber);
+	const parserModule = await parserModulePromise;
+	const recording = await parserModule.parseRecordingFile(response, file.combinedPartNumber);
 	return recording;
 }
 
@@ -30,7 +37,7 @@ export interface RunFileLoader {
 	abort: () => void;
 }
 
-export function createRunFileLoader(files: RunFileInfo[]): RunFileLoader {
+export function createRunFileLoader<Game extends GameId>(game: Game, files: RunFileInfo[]): RunFileLoader {
 	if (isServer) {
 		return {
 			progress: () => 0,
@@ -44,13 +51,14 @@ export function createRunFileLoader(files: RunFileInfo[]): RunFileLoader {
 	console.log('started loading run files');
 
 	const abortController = new AbortController();
+	const parserModulePromise = loadParserModule(game);
 
 	const cache = openRunfileCache();
 	const fileLoaders = files.map((file) => {
 		const [progress, setProgress] = createSignal(0);
 		return {
 			progress,
-			promise: loadFile(cache, file, setProgress),
+			promise: loadFile(parserModulePromise, cache, file, setProgress),
 		};
 	});
 
@@ -68,10 +76,11 @@ export function createRunFileLoader(files: RunFileInfo[]): RunFileLoader {
 	const storeInitializer = createStoreInitializer();
 	storeInitializer.reset();
 
-	void Promise.all(fileLoaders.map((it) => it.promise)).then((recordings) => {
+	void Promise.all(fileLoaders.map((it) => it.promise)).then(async (recordings) => {
 		if (abortController.signal.aborted) return;
-		const combinedRecording = combineRecordings(recordings);
-		storeInitializer.initializeFromRecording(combinedRecording);
+		const parserModule = await parserModulePromise;
+		const combinedRecording = parserModule.combineRecordings(recordings);
+		storeInitializer.initializeFromRecording(parserModule, combinedRecording);
 		setDone(true);
 	});
 

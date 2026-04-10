@@ -1,8 +1,8 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { type SceneEvent } from '../recording-files/events-hollow/scene-event';
-import { mainRoomDataBySceneName } from './rooms';
+import { mainRoomDataBySceneName } from '../../parser/map-data/rooms';
+import { type SceneEvent } from '../../parser/recording-files/events-shared/scene-event';
 
-export function playerPositionToMapPosition(
+export function playerPositionToMapPositionHollow(
 	playerPosition: Vector2,
 	sceneEvent: SceneEvent | undefined,
 ): Vector2 | undefined {

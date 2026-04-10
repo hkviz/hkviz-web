@@ -1,6 +1,6 @@
 import { For } from 'solid-js';
 import { Card, CardContent, CardHeader } from '~/components/ui/card';
-import { recordingSplitGroups } from '~/lib/parser';
+import { recordingSplitGroups } from '~/lib/parser/recording-files/parser-hollow/recording-splits';
 import { Li, splitColors, Ul } from '~/lib/viz';
 
 export function SplitsListCard() {

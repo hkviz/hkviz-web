@@ -1,7 +1,7 @@
 import { HeroStateField } from '../../hero-state';
 import { EventCreationContext } from '../events-shared/event-creation-context';
+import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
-import { PlayerPositionEvent } from './player-position-event';
 
 export class HeroStateEvent extends RecordingEventBase {
 	public previousPlayerPositionEvent: PlayerPositionEvent | null = null;

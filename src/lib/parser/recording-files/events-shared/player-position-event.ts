@@ -1,7 +1,6 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { playerPositionToMapPosition } from '../../map-data/player-position';
-import { EventCreationContext } from '../events-shared/event-creation-context';
-import { RecordingEventBase } from '../events-shared/recording-event-base';
+import { EventCreationContext } from './event-creation-context';
+import { RecordingEventBase } from './recording-event-base';
 import { type SceneEvent } from './scene-event';
 
 export class PlayerPositionEvent extends RecordingEventBase {
@@ -19,7 +18,7 @@ export class PlayerPositionEvent extends RecordingEventBase {
 		this.sceneEvent = sceneEvent;
 	}
 
-	calcMapPosition() {
-		this.mapPosition = playerPositionToMapPosition(this.position, this.sceneEvent) ?? null;
+	calcMapPosition(positionToMap: (position: Vector2, sceneEvent: SceneEvent) => Vector2 | undefined) {
+		this.mapPosition = positionToMap(this.position, this.sceneEvent) ?? null;
 	}
 }

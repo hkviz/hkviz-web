@@ -74,3 +74,5 @@ silkMapData.rooms.sort((a, b) => {
 	}
 	return 0;
 });
+
+export const silkMapDataBySceneNameLower = new Map(silkMapData.rooms.map((it) => [it.sceneName.toLowerCase(), it]));

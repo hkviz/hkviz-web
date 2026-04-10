@@ -1,5 +1,6 @@
 import { PlayIcon, SigmaIcon } from 'lucide-solid';
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { assertNever, binarySearchLastIndexBefore } from '../../../parser';
 import { AnimationStore } from '../animation-store';
 import { GameplayStore } from '../gameplay-store';
@@ -43,7 +44,8 @@ export function createAggregationStore(
 ) {
 	const aggregations = createMemo(() => {
 		const recording = gameplayStore.recording();
-		if (!recording) return null;
+		// TODO load aggregator from parser module
+		if (!recording || recording instanceof CombinedRecordingSilk) return null;
 		return aggregateRecording(recording);
 	});
 

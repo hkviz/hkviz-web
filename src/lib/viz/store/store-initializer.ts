@@ -1,10 +1,13 @@
-import { type CombinedRecording } from '../../parser';
+import { batch } from 'solid-js';
+import { ParserModule } from '~/lib/parser/recording-files/parser-shared/parser-module';
+import { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
+import { GameId } from '~/lib/types/game-ids';
 import { useAnimationStore } from './animation-store';
 import { useExtraChartStore } from './extra-chart-store';
 import { useGameplayStore } from './gameplay-store';
 import { useUiStore } from './ui-store';
 
-export function createStoreInitializer() {
+export function createStoreInitializer<Game extends GameId>() {
 	const uiStore = useUiStore();
 	const gameplayStore = useGameplayStore();
 	const animationStore = useAnimationStore();
@@ -14,10 +17,13 @@ export function createStoreInitializer() {
 		reset() {
 			uiStore.reset();
 		},
-		initializeFromRecording(recording: CombinedRecording | null) {
-			gameplayStore.setRecording(recording);
-			animationStore.setMsIntoGame(gameplayStore.timeFrame().max, 'instant');
-			extraChartStore.setTimeboundsForFollow();
+		initializeFromRecording(module: ParserModule<Game>, recording: CombinedRecordingOfGame<Game> | null) {
+			batch(() => {
+				gameplayStore.setGameModule(module);
+				gameplayStore.setRecording(recording);
+				animationStore.setMsIntoGame(gameplayStore.timeFrame().max, 'instant');
+				extraChartStore.setTimeboundsForFollow();
+			});
 		},
 	};
 }

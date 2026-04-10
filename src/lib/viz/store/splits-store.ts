@@ -1,8 +1,9 @@
-import { recordingSplitGroups, type RecordingSplit } from '../../parser';
 import Fuse from 'fuse.js';
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
-import { GameplayStore } from './gameplay-store';
+import { RecordingSplit, recordingSplitGroups } from '~/lib/parser/recording-files/parser-hollow/recording-splits';
+import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { AnimationStore } from './animation-store';
+import { GameplayStore } from './gameplay-store';
 
 export function createSplitsStore(gameplayStore: GameplayStore, animationStore: AnimationStore) {
 	const [visibleSplitGroups, setVisibleSplitGroups] = createSignal(
@@ -17,7 +18,7 @@ export function createSplitsStore(gameplayStore: GameplayStore, animationStore: 
 
 	const filteredByGroupSplits = createMemo<readonly RecordingSplit[]>(() => {
 		const recording = gameplayStore.recording();
-		if (!recording) return [];
+		if (!recording || recording instanceof CombinedRecordingSilk) return [];
 		const visibleGroups = visibleSplitGroups();
 		return recording.splits?.filter((it) => visibleGroups.includes(it.group)) ?? [];
 	});

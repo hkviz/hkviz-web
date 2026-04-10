@@ -1,13 +1,13 @@
-import { enemiesJournalLang } from '../../game-data/hollow-data';
-import { virtualCharms } from '../charms';
-import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../player-data/abilities';
+import { enemiesJournalLang } from '../../../game-data/hollow-data';
+import { virtualCharms } from '../../charms';
+import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../../player-data/abilities';
 import {
 	enemies,
 	greyPrinceNames,
 	isEnemyBoss,
 	playerDataNameToDefeatedName,
 	type EnemyInfo,
-} from '../player-data/enemies';
+} from '../../player-data/enemies';
 import {
 	getDefaultValue,
 	getEnemyNameFromDefeatedField,
@@ -16,10 +16,10 @@ import {
 	isPlayerDataDefeatedField,
 	isPlayerDataKilledField,
 	playerDataFields,
-} from '../player-data/player-data';
-import { assertNever, parseHtmlEntities } from '../util';
-import { type PlayerPositionEvent } from './events-hollow/player-position-event';
-import { type CombinedRecording } from './recording';
+} from '../../player-data/player-data';
+import { assertNever, parseHtmlEntities } from '../../util';
+import { type PlayerPositionEvent } from '../events-shared/player-position-event';
+import { CombinedRecordingHollow } from './recording-hollow';
 
 export const recordingSplitGroups = [
 	{
@@ -111,7 +111,7 @@ function createRecordingSplitFromEnemy(
 //     }
 // }
 
-export function createRecordingSplits(recording: CombinedRecording): RecordingSplit[] {
+export function createRecordingSplits(recording: CombinedRecordingHollow): RecordingSplit[] {
 	const splits: RecordingSplit[] = [];
 
 	for (const field of Object.values(playerDataFields.byFieldName)) {

@@ -1,6 +1,7 @@
 import { createLazyMemo } from '@solid-primitives/memo';
 import { createContext, useContext, type Accessor } from 'solid-js';
 import { PlayerDataEvent } from '~/lib/parser/recording-files/events-hollow/player-data-event';
+import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { binarySearchLastIndexBefore, getDefaultValue, playerDataFields, PlayerDataFieldValue } from '../../parser';
 import { AnimationStore } from './animation-store';
 import { GameplayStore } from './gameplay-store';
@@ -12,7 +13,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 				fieldName,
 				createLazyMemo(() => {
 					const r = gameplayStore.recording();
-					if (!r) return null;
+					if (!r || r instanceof CombinedRecordingSilk) return null;
 
 					const events = r.playerDataEventsPerField.get(field);
 					if (!events || events.length === 0) return null;

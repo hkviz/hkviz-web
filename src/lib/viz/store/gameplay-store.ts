@@ -1,10 +1,14 @@
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { playerDataFields } from '~/lib/parser/player-data/player-data';
+import { ParserModule } from '~/lib/parser/recording-files/parser-shared/parser-module';
+import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
 import { GameId } from '~/lib/types/game-ids';
-import { playerDataFields, type CombinedRecording } from '../../parser';
 
-export function createGameplayStore() {
+export function createGameplayStore<Game extends GameId>() {
 	const [game, setGame] = createSignal<GameId | null>(null);
-	const [recording, setRecording] = createSignal<CombinedRecording | null>(null);
+	const [gameModule, setGameModule] = createSignal<ParserModule<Game> | null>(null);
+	const [recording, setRecording] = createSignal<CombinedRecordingOfGame<Game> | null>(null);
 
 	function reset() {
 		setRecording(null);
@@ -18,9 +22,10 @@ export function createGameplayStore() {
 	});
 
 	const isSteelSoul = createMemo(() => {
-		const permaDeathValue = recording()?.lastPlayerDataEventOfField(
-			playerDataFields.byFieldName.permadeathMode,
-		)?.value;
+		const rec = recording();
+		// TODO
+		if (!rec || rec instanceof CombinedRecordingSilk) return false;
+		const permaDeathValue = rec?.lastPlayerDataEventOfField(playerDataFields.byFieldName.permadeathMode)?.value;
 		return permaDeathValue === 1 || permaDeathValue === 2;
 	});
 
@@ -32,15 +37,17 @@ export function createGameplayStore() {
 		reset,
 		game,
 		setGame,
+		gameModule,
+		setGameModule,
 	};
 }
-export type GameplayStore = ReturnType<typeof createGameplayStore>;
+export type GameplayStore<Game extends GameId = GameId> = ReturnType<typeof createGameplayStore<Game>>;
 export const GameplayStoreContext = createContext<GameplayStore>();
-export function useGameplayStore() {
+export function useGameplayStore<Game extends GameId = GameId>() {
 	const store = useContext(GameplayStoreContext);
 	if (!store) throw new Error('useGameplayStore must be used within a GameplayStoreContext.Provider');
-	return store;
+	return store as GameplayStore<Game>;
 }
-export function useGameplayStoreOptional() {
-	return useContext(GameplayStoreContext);
+export function useGameplayStoreOptional<Game extends GameId = GameId>() {
+	return (useContext(GameplayStoreContext) ?? null) as GameplayStore<Game> | null;
 }

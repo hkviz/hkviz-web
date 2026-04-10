@@ -1,13 +1,13 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { heroStateFields, heroStatesSkipParsing } from '../hero-state';
-import { parsePlayerDataFieldValue, playerDataFields } from '../player-data';
+import { heroStateFields, heroStatesSkipParsing } from '../../hero-state';
+import { parsePlayerDataFieldValue, playerDataFields } from '../../player-data';
 import {
 	type HollowRecordingFileVersion,
 	hollowRecordingFileVersionIsKnown,
 	hollowRecordingFileVersionNewest,
 	isVersion0xx,
-} from '../recording-file-version';
-import { raise, typeCheckNever } from '../util';
+} from '../../recording-file-version';
+import { raise, typeCheckNever } from '../../util';
 import {
 	EVENT_PREFIXES,
 	type EventPrefix,
@@ -15,17 +15,17 @@ import {
 	type PartialEventPrefix,
 } from './event-type-prefixes';
 
-import { HeroStateEvent } from './events-hollow/hero-state-event';
-import { HKVizModVersionEvent } from './events-hollow/hkviz-mod-version-event';
-import { ModdingInfoEvent, ModInfo } from './events-hollow/modding-info-event';
-import { PlayerDataEvent } from './events-hollow/player-data-event';
-import { PlayerPositionEvent } from './events-hollow/player-position-event';
-import { SceneEvent } from './events-hollow/scene-event';
-import { SpellDownEvent } from './events-hollow/spell-down-event';
-import { SpellFireballEvent } from './events-hollow/spell-fireball-event';
-import { SpellUpEvent } from './events-hollow/spell-up-event';
-import { EventCreationContext } from './events-shared/event-creation-context';
-import { ParsedRecording, type RecordingEvent, RecordingFileVersionEvent } from './recording';
+import { HeroStateEvent } from '../events-hollow/hero-state-event';
+import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
+import { ModdingInfoEvent, ModInfo } from '../events-hollow/modding-info-event';
+import { PlayerDataEvent } from '../events-hollow/player-data-event';
+import { SpellDownEvent } from '../events-hollow/spell-down-event';
+import { SpellFireballEvent } from '../events-hollow/spell-fireball-event';
+import { SpellUpEvent } from '../events-hollow/spell-up-event';
+import { EventCreationContext } from '../events-shared/event-creation-context';
+import { PlayerPositionEvent } from '../events-shared/player-position-event';
+import { SceneEvent } from '../events-shared/scene-event';
+import { ParsedRecordingHollow, type RecordingEventHollow, RecordingFileVersionEvent } from './recording-hollow';
 
 // any newer version will always log using . instead of ,
 function parseFloatAnyCommaVersion_v0(value: string) {
@@ -46,9 +46,12 @@ function parseVector2_v1(str: string, factor = 1) {
 	);
 }
 
-export function parseRecordingFile(recordingFileContent: string, combinedPartNumber: number): ParsedRecording {
+export function parseRecordingFileHollow(
+	recordingFileContent: string,
+	combinedPartNumber: number,
+): ParsedRecordingHollow {
 	const lines = recordingFileContent.split('\n');
-	const events: RecordingEvent[] = [];
+	const events: RecordingEventHollow[] = [];
 	let unknownEvents = 0;
 	let parsingErrors = 0;
 
@@ -333,5 +336,5 @@ export function parseRecordingFile(recordingFileContent: string, combinedPartNum
 		i++;
 	}
 
-	return new ParsedRecording(events, unknownEvents, parsingErrors, combinedPartNumber);
+	return new ParsedRecordingHollow(events, unknownEvents, parsingErrors, combinedPartNumber);
 }

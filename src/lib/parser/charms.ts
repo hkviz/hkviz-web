@@ -1,5 +1,5 @@
 import { charmsGenerated, uiLangGenerated } from '../game-data/hollow-data';
-import { type FrameEndEvent } from './recording-files/events-hollow/frame-end-event';
+import { type FrameEndEventHollow } from './recording-files/events-hollow/frame-end-event-hollow';
 import { parseHtmlEntities, raise } from './util';
 
 const charmsArray = charmsGenerated.map((charm) => {
@@ -18,9 +18,9 @@ export const charms = {
 export type CharmInfo = (typeof charmsArray)[number];
 
 type GetCharmId<T> = T extends `gotCharm_${infer N}` ? N : never;
-type CharmPlayerDataId = GetCharmId<keyof FrameEndEvent>;
+type CharmPlayerDataId = GetCharmId<keyof FrameEndEventHollow>;
 
-function defaultHasCharm(charmId: CharmPlayerDataId): (frameEndEvent: FrameEndEvent) => boolean {
+function defaultHasCharm(charmId: CharmPlayerDataId): (frameEndEvent: FrameEndEventHollow) => boolean {
 	const key = `gotCharm_${charmId}` as const;
 	return (frameEndEvent) => !!frameEndEvent[key];
 }
@@ -33,7 +33,7 @@ export interface VirtualCharm {
 	id: string;
 	name: string;
 	spriteName: string;
-	hasCharm: (frameEndEvent: FrameEndEvent) => boolean;
+	hasCharm: (frameEndEvent: FrameEndEventHollow) => boolean;
 }
 
 function makeVirtualCharm({
@@ -47,7 +47,7 @@ function makeVirtualCharm({
 	name: string;
 	playerDataId?: CharmPlayerDataId;
 	spriteName?: string;
-	hasCharm?: (frameEndEvent: FrameEndEvent) => boolean;
+	hasCharm?: (frameEndEvent: FrameEndEventHollow) => boolean;
 }): VirtualCharm {
 	return {
 		id,

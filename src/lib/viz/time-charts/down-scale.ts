@@ -1,14 +1,17 @@
-import { FrameEndEvent, FrameEndEventNumberKey } from '~/lib/parser/recording-files/events-hollow/frame-end-event';
+import {
+	FrameEndEventHollow,
+	FrameEndEventNumberKey,
+} from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
 
-export function downScale(data: FrameEndEvent[], fields: FrameEndEventNumberKey[], maxTimeDelta = 10000) {
+export function downScale(data: FrameEndEventHollow[], fields: FrameEndEventNumberKey[], maxTimeDelta = 10000) {
 	console.log('Original length', data.length, fields);
 
-	let previous: FrameEndEvent | undefined = undefined;
-	let current: FrameEndEvent | undefined = undefined;
-	let next: FrameEndEvent | undefined = data[0];
+	let previous: FrameEndEventHollow | undefined = undefined;
+	let current: FrameEndEventHollow | undefined = undefined;
+	let next: FrameEndEventHollow | undefined = data[0];
 
 	const filtered = [];
-	let lastIncluded: FrameEndEvent | undefined = undefined;
+	let lastIncluded: FrameEndEventHollow | undefined = undefined;
 
 	for (let i = 0; i < data.length; i++) {
 		previous = current;

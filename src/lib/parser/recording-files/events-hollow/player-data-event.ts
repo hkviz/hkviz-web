@@ -1,7 +1,7 @@
 import { type PlayerDataField, type PlayerDataFieldValue } from '../../player-data/player-data';
 import { EventCreationContext } from '../events-shared/event-creation-context';
+import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
-import { type PlayerPositionEvent } from './player-position-event';
 
 export class PlayerDataEvent<TField extends PlayerDataField> extends RecordingEventBase {
 	public previousPlayerPositionEvent: PlayerPositionEvent | null;

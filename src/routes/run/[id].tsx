@@ -40,7 +40,7 @@ function SingleRunLoadingWrapper(props: { id: string }) {
 	const loader = createMemo(() => {
 		const run = runData();
 		if (!run) return null;
-		return createRunFileLoader(run.files);
+		return createRunFileLoader(run.gameState.game, run.files);
 	});
 
 	return (

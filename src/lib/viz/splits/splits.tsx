@@ -4,9 +4,13 @@ import { Button } from '~/components/ui/button';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
+import {
+	RecordingSplit,
+	RecordingSplitGroup,
+	recordingSplitGroups,
+} from '~/lib/parser/recording-files/parser-hollow/recording-splits';
 import { cn } from '~/lib/utils';
 import { SplitsList } from '~/routes/(docs)/guide/_analytics/_splits-list';
-import { recordingSplitGroups, type RecordingSplit, type RecordingSplitGroup } from '../../parser';
 import { Duration } from '../duration';
 import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import { LayoutPanelHeader } from '../layout/layout-panel-header';

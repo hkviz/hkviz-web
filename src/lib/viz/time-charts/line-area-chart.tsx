@@ -15,7 +15,12 @@ import { Dynamic } from 'solid-js/web';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
-import { FrameEndEvent, FrameEndEventNumberKey } from '~/lib/parser/recording-files/events-hollow/frame-end-event';
+import {
+	FrameEndEventHollow,
+	FrameEndEventNumberKey,
+} from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
+import { FrameEndEventSilk } from '~/lib/parser/recording-files/parser-silk/frame-end-event-silk';
+import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { createAutoSizeCanvas } from '../canvas';
 import { ColorClasses } from '../colors';
 import {
@@ -105,7 +110,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 
 	const data = createMemo(() => {
 		const recording = gameplayStore.recording();
-		if (!recording) return [];
+		if (!recording || recording instanceof CombinedRecordingSilk) return [];
 		const togetherEvents = downScale(
 			recording.frameEndEvents,
 			props.variables.map((it) => it.key),
@@ -114,7 +119,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		return togetherEvents;
 	});
 
-	type Datum = FrameEndEvent;
+	type Datum = FrameEndEventHollow;
 	type Series = {
 		data: Datum;
 		0: number;
@@ -659,12 +664,14 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 	const isShowable = () => isShownInGraph(props.variable);
 
 	const value = () => {
-		return animationStore.currentFrameEndEvent()?.[props.variable.key] ?? 0;
+		const frame = animationStore.currentFrameEndEvent();
+		if (frame instanceof FrameEndEventSilk) return 0;
+		return frame?.[props.variable.key] ?? 0;
 	};
 
 	const valueHover = () => {
 		const hoveredFrameEndEvent = hoverMsStore.hoveredFrameEndEvent();
-		if (!hoveredFrameEndEvent) return null;
+		if (!hoveredFrameEndEvent || hoveredFrameEndEvent instanceof FrameEndEventSilk) return null;
 		return hoveredFrameEndEvent[props.variable.key] ?? null;
 	};
 
