@@ -1,4 +1,8 @@
 import { type InferSelectModel } from 'drizzle-orm';
+import { HollowMapZone } from '~/lib/game-data/hollow-data/hollow-map-zone';
+import { SilkMapZone } from '~/lib/game-data/silk-data/silk-map-zone';
+import { assertNever } from '~/lib/parser';
+import { GameId } from '~/lib/types/game-ids';
 import { tags, type TagCode } from '~/lib/types/tags';
 import { type RunGameStateMetaColumnName, type runFiles, type runs } from '~/server/db/schema';
 
@@ -53,13 +57,46 @@ export const runGameStateMetaColumnsSelect = {
 	[Col in RunGameStateMetaColumnName]: true;
 } satisfies RunColumnSelect satisfies RunFileColumnSelect;
 
-type RunGameStateMeta = Pick<InferSelectModel<typeof runs>, RunGameStateMetaColumnName>;
+type RunGameStateUnmapped = Pick<InferSelectModel<typeof runs>, RunGameStateMetaColumnName>;
 
-export function getGameStateMeta(run: RunGameStateMeta): RunGameStateMeta {
-	const picked: any = {};
-	for (const col of Object.keys(runGameStateMetaColumnsSelect) as RunGameStateMetaColumnName[]) {
-		picked[col] = run[col];
+type RunGameStateBase = Omit<RunGameStateUnmapped, 'mapZone'>;
+export interface RunGameStateHollow extends RunGameStateBase {
+	game: 'hollow';
+	mapZone: HollowMapZone | null;
+}
+
+export interface RunGameStateSilk extends RunGameStateBase {
+	game: 'silk';
+	mapZone: SilkMapZone | null;
+}
+
+export type RunGameStateMeta = RunGameStateHollow | RunGameStateSilk;
+
+export function getGameStateMeta(game: GameId, run: RunGameStateUnmapped): RunGameStateMeta {
+	const base = {
+		gameVersion: run.gameVersion,
+		playTime: run.playTime,
+		maxHealth: run.maxHealth,
+		mpReserveMax: run.mpReserveMax,
+		geo: run.geo,
+		dreamOrbs: run.dreamOrbs,
+		permadeathMode: run.permadeathMode,
+		killedHollowKnight: run.killedHollowKnight,
+		killedFinalBoss: run.killedFinalBoss,
+		killedVoidIdol: run.killedVoidIdol,
+		completionPercentage: run.completionPercentage,
+		unlockedCompletionRate: run.unlockedCompletionRate,
+		dreamNailUpgraded: run.dreamNailUpgraded,
+		lastScene: run.lastScene,
+
+		startedAt: run.startedAt,
+		endedAt: run.endedAt,
+	};
+
+	if (game === 'hollow') {
+		return { ...base, game: 'hollow', mapZone: run.mapZone as HollowMapZone | null };
+	} else if (game === 'silk') {
+		return { ...base, game: 'silk', mapZone: run.mapZone as SilkMapZone | null };
 	}
-
-	return picked;
+	assertNever(game);
 }

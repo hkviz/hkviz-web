@@ -288,7 +288,7 @@ export const RunCard: Component<{
 	// const isLoading = deletionMutation.isLoading || archiveMutation.isLoading;
 
 	const gameState = () => props.run.gameState;
-	const bgImage = () => getMapZoneHudBackground(gameState()?.mapZone);
+	const bgImage = () => getMapZoneHudBackground(gameState());
 
 	const isSteelSoul = () => props.run.isSteelSoul;
 	const isBrokenSteelSoul = () => props.run.isBrokenSteelSoul;

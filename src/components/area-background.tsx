@@ -1,5 +1,7 @@
-import { MapZone } from '~/lib/game-data/hollow-data/hollow-map-zone';
+import { HollowMapZone } from '~/lib/game-data/hollow-data/hollow-map-zone';
+import { SilkMapZone } from '~/lib/game-data/silk-data/silk-map-zone';
 import { assertNever } from '~/lib/parser';
+import { RunGameStateMeta } from '~/server/run/run-column-selects';
 
 /*
 Matches can be extracted using c# repl using Explorer Mod for Hollow Knight. Using the following script:
@@ -83,7 +85,7 @@ const areaTramLower = '/ingame-sprites/areas/Area_Tram_Lower.png';
 const areaWaterways = '/ingame-sprites/areas/Area_Waterways.png';
 const areaWhitePalace = '/ingame-sprites/areas/Area_White_Palace.png';
 
-export function getMapZoneHudBackground(zone: MapZone | undefined | null) {
+export function getMapZoneHudBackgroundHollow(zone: HollowMapZone | null) {
 	switch (zone) {
 		case 'NONE':
 		case null:
@@ -193,5 +195,18 @@ export function getMapZoneHudBackground(zone: MapZone | undefined | null) {
 			return areaJunkPit;
 		default:
 			assertNever(zone);
+	}
+}
+
+export function getMapZoneHudBackgroundSilk(zone: SilkMapZone | null) {
+	// todo
+	return areaDirtmouth; // not defined in game
+}
+
+export function getMapZoneHudBackground(gameState: RunGameStateMeta) {
+	if (gameState.game === 'hollow') {
+		return getMapZoneHudBackgroundHollow(gameState.mapZone);
+	} else if (gameState.game === 'silk') {
+		return getMapZoneHudBackgroundSilk(gameState.mapZone);
 	}
 }

@@ -55,4 +55,4 @@ export const hollowMapZoneSchema = v.picklist([
 	'GODSEEKER_WASTE',
 ]);
 
-export type MapZone = v.InferOutput<typeof hollowMapZoneSchema>;
+export type HollowMapZone = v.InferOutput<typeof hollowMapZoneSchema>;

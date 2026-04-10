@@ -9,11 +9,11 @@ import {
 	text,
 } from 'drizzle-orm/sqlite-core';
 import { AccountType } from '~/lib/auth/auth-options';
-import { hollowMapZoneSchema } from '~/lib/game-data/hollow-data/hollow-map-zone';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { callOptionCodes } from '~/lib/types/call-option';
 import { countryCodes } from '~/lib/types/country';
 import { gameIds } from '~/lib/types/game-ids';
+import { hollowOrSilkMapZoneSchema } from '~/lib/types/map-zone';
 import { playingFrequencyCodes } from '~/lib/types/playing-frequency';
 import { playingSinceCodes } from '~/lib/types/playing-since';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
@@ -159,7 +159,7 @@ const runGameStateMetaColumns = {
 	geo: int('geo'),
 	dreamOrbs: int('dream_orbs'),
 	permadeathMode: int('permadeath_mode'),
-	mapZone: textEnum('map_zone', hollowMapZoneSchema.options),
+	mapZone: textEnum('map_zone', hollowOrSilkMapZoneSchema.options),
 	killedHollowKnight: boolean('killed_hollow_knight'),
 	killedFinalBoss: boolean('killed_final_boss'),
 	killedVoidIdol: boolean('killed_void_idol'),
@@ -248,6 +248,7 @@ export const runLocalIds = table(
 		userId: uuid('user_id').notNull(),
 		runId: uuid('run_id').notNull(),
 		originalRunId: uuid('original_run_id'),
+		game: gameDefaultHollow(),
 	},
 	(runLocalId) => [primaryKey({ columns: [runLocalId.userId, runLocalId.localId] })],
 );

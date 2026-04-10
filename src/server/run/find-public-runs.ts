@@ -1,6 +1,7 @@
 import { query } from '@solidjs/router';
 import * as v from 'valibot';
 import { getUserOrNull } from '~/lib/auth/shared';
+import { gameIdSchema } from '~/lib/types/game-ids';
 import { RUN_SORT_DEFAULT, runSortSchema } from '~/lib/types/run-sort';
 import { isTagCode, tagGroupFromCode, tagGroupSchema, tagSchema } from '~/lib/types/tags';
 import { db } from '../db';
@@ -11,6 +12,7 @@ export const RunFilterParamsSchema = v.object({
 	sort: v.nullish(runSortSchema),
 	userId: v.nullish(v.pipe(v.string(), v.uuid())),
 	term: v.nullish(v.string()),
+	games: v.nullish(v.array(gameIdSchema)),
 	limit: v.nullish(v.number()),
 });
 export type RunFilterParams = v.InferOutput<typeof RunFilterParamsSchema>;
@@ -33,6 +35,7 @@ export const findPublicRuns = query(async (unsaveFilter: RunFilterParams) => {
 			term: filter.term,
 			sort: filter.sort ?? RUN_SORT_DEFAULT,
 			userId: filter.userId,
+			games: filter.games,
 			archived: [false],
 			limit: filter.limit,
 		},

@@ -5,6 +5,8 @@ import * as v from 'valibot';
 import { hollowMapZoneSchema } from '~/lib/game-data/hollow-data/hollow-map-zone';
 import { HollowModVersion, isModVersionBefore1_6_0, raise } from '~/lib/parser';
 import { r2RunPartFileKey } from '~/lib/r2';
+import { gameIdSchemaHollowDefault } from '~/lib/types/game-ids';
+import { hollowOrSilkMapZoneSchema } from '~/lib/types/map-zone';
 import { runFiles, type RunGameStateMetaColumnName, runs } from '~/server/db/schema';
 import { db } from '../db';
 import { getUserIdFromIngameSession } from '../ingameauth/utils';
@@ -12,8 +14,9 @@ import { r2FileHead, r2GetSignedUploadUrl } from '../r2';
 import { getOrCreateRunId } from './get-or-create-run-id';
 import { runGameStateMetaColumnsSelect } from './run-column-selects';
 
-const runPartCreateInputSchema = v.object({
+const runPartCreateBaseInputSchema = {
 	modVersion: v.nullish(v.string()), // provided starting with mod version 1.6.x.x
+	game: gameIdSchemaHollowDefault,
 
 	ingameAuthId: v.pipe(v.string(), v.uuid()),
 	localRunId: v.pipe(v.string(), v.uuid()),
@@ -27,7 +30,6 @@ const runPartCreateInputSchema = v.object({
 	geo: v.nullish(v.pipe(v.number(), v.integer())),
 	dreamOrbs: v.nullish(v.pipe(v.number(), v.integer())),
 	permadeathMode: v.nullish(v.pipe(v.number(), v.integer())),
-	mapZone: v.nullish(hollowMapZoneSchema),
 	killedHollowKnight: v.nullish(v.boolean()),
 	killedFinalBoss: v.nullish(v.boolean()),
 	killedVoidIdol: v.nullish(v.boolean()),
@@ -38,7 +40,21 @@ const runPartCreateInputSchema = v.object({
 
 	firstUnixSeconds: v.nullish(v.number()),
 	lastUnixSeconds: v.nullish(v.number()),
-});
+};
+
+const runPartCreateInputSchema = v.variant('game', [
+	v.object({
+		...runPartCreateBaseInputSchema,
+		game: v.literal('hollow'),
+		mapZone: v.nullish(hollowMapZoneSchema),
+	}),
+	v.object({
+		...runPartCreateBaseInputSchema,
+		game: v.literal('silk'),
+		mapZone: v.nullish(hollowOrSilkMapZoneSchema),
+	}),
+]);
+
 type RunPartCreateInput = v.InferOutput<typeof runPartCreateInputSchema>;
 
 interface RunPartCreateResult {
@@ -55,9 +71,10 @@ interface RunPartCreateResult {
 }
 
 export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<RunPartCreateResult> {
+	console.log('Creating run part for runId', unsafeInput);
 	const input = v.parse(runPartCreateInputSchema, unsafeInput);
 	const userId = await getUserIdFromIngameSession(db, input.ingameAuthId);
-	const runId = await getOrCreateRunId(db, input.localRunId, userId);
+	const runId = await getOrCreateRunId(db, input.localRunId, userId, input.game);
 
 	// if there is already a row for that part we can use it
 	const existingFile = await db.query.runFiles.findFirst({
@@ -88,11 +105,12 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 		// first lets try finishing the upload, which only succeeds if the file is in the bucket
 		try {
 			await runPartMarkFinished({
+				game: input.game,
 				ingameAuthId: input.ingameAuthId,
 				localRunId: input.localRunId,
 				fileId: existingFile.id,
 			});
-			if (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as HollowModVersion)) {
+			if (input.game === 'hollow' && (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as HollowModVersion))) {
 				throw new Error('File already uploaded');
 			} else {
 				return {
@@ -156,6 +174,7 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 
 const runPartMarkFinishedInputSchema = v.object({
 	ingameAuthId: v.pipe(v.string(), v.uuid()),
+	game: gameIdSchemaHollowDefault,
 	localRunId: v.pipe(v.string(), v.uuid()),
 	fileId: v.pipe(v.string(), v.uuid()),
 });
@@ -166,9 +185,10 @@ interface RunPartMarkFinishedResult {
 }
 
 export async function runPartMarkFinished(unsafeInput: RunPartMarkFinishedInput): Promise<RunPartMarkFinishedResult> {
+	console.log('Finish run part for runId', unsafeInput);
 	const input = v.parse(runPartMarkFinishedInputSchema, unsafeInput);
 	const userId = await getUserIdFromIngameSession(db, input.ingameAuthId);
-	const runId = await getOrCreateRunId(db, input.localRunId, userId);
+	const runId = await getOrCreateRunId(db, input.localRunId, userId, input.game);
 
 	// first get to make sure file belongs to user and is not already marked as finished
 	const file =

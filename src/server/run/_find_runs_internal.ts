@@ -1,6 +1,7 @@
 import { isNull, like } from 'drizzle-orm';
 import * as v from 'valibot';
 import { r2RunPartFileKey } from '~/lib/r2';
+import { gameIdSchema } from '~/lib/types/game-ids';
 import { runSortSchema } from '~/lib/types/run-sort';
 import { tagSchema, type TagCode } from '~/lib/types/tags';
 import { visibilitySchema } from '~/lib/types/visibility';
@@ -15,6 +16,7 @@ export const runFilterSchema = v.object({
 	term: v.nullish(v.string()),
 	archived: v.nullish(v.array(v.boolean())),
 	id: v.nullish(v.array(v.string())),
+	games: v.nullish(v.array(gameIdSchema)),
 	anonymAccessKey: v.nullish(v.string()),
 	sort: v.nullish(runSortSchema),
 	limit: v.nullish(v.number()),
@@ -88,6 +90,7 @@ export async function findRunsInternal({
 				filter.id ? inArray(run.id, filter.id) : undefined,
 				filter.anonymAccessKey ? eq(run.anonymAccessKey, filter.anonymAccessKey) : undefined,
 				isNull(run.combinedIntoRunId),
+				filter.games ? inArray(run.game, filter.games) : undefined,
 			];
 
 			return and(...conditions.filter((c) => c != null));
@@ -113,6 +116,7 @@ export async function findRunsInternal({
 			isCombinedRun: true,
 			anonymAccessGameplayCutOffAt: true,
 			anonymAccessTitle: true,
+			game: true,
 			...runTagFieldsSelect,
 			...runFilesMetaFieldsSelect,
 		},
@@ -179,7 +183,7 @@ export async function findRunsInternal({
 				isCombinedRun,
 				...run
 			}) => {
-				const gameState = getGameStateMeta(run);
+				const gameState = getGameStateMeta(run.game, run);
 				const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
 				const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
 				const isResearchView = run.user.id !== currentUser?.id && visibility === 'private';
