@@ -1,3 +1,6 @@
+import { assertNever } from '../parser';
+import { GameId } from '../types/game-ids';
+
 export const coinImg = '/ingame-sprites/HUD_coin_shop.png';
 export const shadeImg = '/ingame-sprites/bestiary/bestiary_hollow-shade_s.png';
 export const spellUpImg = '/ingame-sprites/inventory/Inv_0024_spell_scream_01.png';
@@ -16,6 +19,7 @@ export const maskImg = '/ingame-sprites/hud/select_game_HUD_0001_health.png';
 export const steelMaskImg = '/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
 
 export const knightPinSrc = '/ingame-sprites/Map_Knight_Pin_Compass.png';
+export const hornetPinSrc = '/silk-sprites/Map_Knight_Pin_Compass_idle0000.png';
 export const shadePinSrc = '/ingame-sprites/pin/Shade_Pin.png';
 export const dreamGatePinSrc = '/ingame-sprites/pin/Dream_Gate_Pin_0000_3.png';
 
@@ -24,3 +28,17 @@ export const healthFrameSteelSoulBrokenImg = '/ingame-sprites/hud/break_hud.png'
 export const healthFrameSteelSoulSmallImg = '/ingame-sprites/hud/mode_select_Steel_Soul_HUD.png';
 export const healthFrameImg = '/ingame-sprites/hud/select_game_HUD_0002_health_frame.png';
 export const healthFrameSteelSoulImg = '/ingame-sprites/hud/select_game_HUD_Steel_Soul.png';
+
+export function heroPinSource(game: GameId) {
+	if (game === 'silk') {
+		return hornetPinSrc;
+	} else if (game === 'hollow') {
+		return knightPinSrc;
+	}
+	assertNever(game);
+}
+
+export function heroPinSourceOrUndefined(game: GameId | undefined | null) {
+	if (game) return heroPinSource(game);
+	return undefined;
+}

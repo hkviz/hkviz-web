@@ -9,7 +9,7 @@ import {
 	playerPositionToMapPositionHollow,
 } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
-import { dreamGatePinSrc, knightPinSrc, shadePinSrc } from '../img-urls';
+import { dreamGatePinSrc, heroPinSourceOrUndefined, shadePinSrc } from '../img-urls';
 import { useAnimationStore, useGameplayStore, useMapZoomStore, useTraceStore } from '../store';
 
 const EMPTY_ARRAY = [] as const;
@@ -22,7 +22,7 @@ export const HKMapTraces: Component = () => {
 
 	const canvas = (<canvas class="pointer-events-none absolute inset-0 h-full w-full" />) as HTMLCanvasElement;
 	const knightPinImage = (
-		<img src={knightPinSrc} alt="knight pin" class="hidden" loading="eager" />
+		<img src={heroPinSourceOrUndefined(gameplayStore.game())} alt="knight pin" class="hidden" loading="eager" />
 	) as HTMLImageElement;
 	const shadePinImage = (
 		<img src={shadePinSrc} alt="shade pin" class="hidden" loading="eager" />
@@ -217,13 +217,35 @@ export const HKMapTraces: Component = () => {
 			previousEvent &&
 			previousEvent.msIntoGame + 30000 >= maxMsIntoGame // 15000
 		) {
-			const knightPinSize = baseLineWidth * 15;
+			const baseSize = baseLineWidth * 15;
+
+			const imgW = knightPinImage.naturalWidth;
+			const imgH = knightPinImage.naturalHeight;
+
+			let drawW, drawH;
+
+			const game = gameplayStore.game();
+			if (game == 'hollow') {
+				// looks better imo stretched for hollow knight
+				// but possibly just used to it
+				drawH = baseSize;
+				drawW = baseSize;
+			} else if (imgW < imgH) {
+				// width is smaller → lock width to baseSize
+				drawW = baseSize;
+				drawH = baseSize * (imgH / imgW);
+			} else {
+				// height is smaller → lock height to baseSize
+				drawH = baseSize;
+				drawW = baseSize * (imgW / imgH);
+			}
+
 			ctx.drawImage(
 				knightPinImage,
-				x(previousEvent.mapPosition!.x) - 0.5 * knightPinSize,
-				y(previousEvent.mapPosition!.y) - 0.5 * knightPinSize,
-				knightPinSize,
-				knightPinSize,
+				x(previousEvent.mapPosition!.x) - 0.5 * drawW,
+				y(previousEvent.mapPosition!.y) - 0.5 * drawH,
+				drawW,
+				drawH,
 			);
 		}
 	});
