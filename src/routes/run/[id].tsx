@@ -23,7 +23,7 @@ function SingleRunLoadingWrapper(props: { id: string }) {
 
 	// TODO decide which spritesheets to load based on run data
 	spritesheetStore.ensureLoaded('hollow');
-	spritesheetStore.ensureLoaded('silk');
+	// spritesheetStore.ensureLoaded('silk');
 
 	const loader = createMemo(() => {
 		const run = runData();
