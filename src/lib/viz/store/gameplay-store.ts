@@ -1,6 +1,6 @@
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { GameModuleOfGame } from '~/lib/game-module/game-module';
-import { playerDataFields } from '~/lib/parser/player-data/player-data';
+import { playerDataFieldsHollow } from '~/lib/parser/player-data/player-data';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
 import { GameId } from '~/lib/types/game-ids';
@@ -25,7 +25,9 @@ export function createGameplayStore<Game extends GameId>() {
 		const rec = recording();
 		// TODO
 		if (!rec || rec instanceof CombinedRecordingSilk) return false;
-		const permaDeathValue = rec?.lastPlayerDataEventOfField(playerDataFields.byFieldName.permadeathMode)?.value;
+		const permaDeathValue = rec?.lastPlayerDataEventOfField(
+			playerDataFieldsHollow.byFieldName.permadeathMode,
+		)?.value;
 		return permaDeathValue === 1 || permaDeathValue === 2;
 	});
 

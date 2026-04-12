@@ -13,6 +13,7 @@ export interface GameModule<Game extends GameId> {
 	getMainRoomDataBySceneName: (sceneName: string) => RoomDataOfGame<Game> | undefined;
 	getAllRoomDataBySceneNameNoSubSprites: (sceneName: string) => RoomDataOfGame<Game>[] | undefined;
 	getAllRoomDataBySceneNameWithSubSprites: (sceneName: string) => RoomDataOfGame<Game>[] | undefined;
+	getRoomDataByGameObjectName: (gameObjectName: string) => RoomDataOfGame<Game> | undefined;
 	mapRooms: RoomDataOfGame<Game>[];
 }
 

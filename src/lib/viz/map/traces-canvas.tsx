@@ -5,7 +5,7 @@ import { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/
 import {
 	binarySearchLastIndexBefore,
 	mapVisualExtends,
-	playerDataFields,
+	playerDataFieldsHollow,
 	playerPositionToMapPositionHollow,
 } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
@@ -166,7 +166,7 @@ export const HKMapTraces: Component = () => {
 			frameEvent
 		) {
 			// dream gate
-			if (frameEvent.dreamGateScene !== playerDataFields.byFieldName.dreamGateScene.defaultValue) {
+			if (frameEvent.dreamGateScene !== playerDataFieldsHollow.byFieldName.dreamGateScene.defaultValue) {
 				const mapPosition = playerPositionToMapPositionHollow(
 					new Vector2(frameEvent.dreamGateX, frameEvent.dreamGateY),
 					recording.sceneEvents.find((it) => it.sceneName === frameEvent.dreamGateScene),
@@ -188,7 +188,7 @@ export const HKMapTraces: Component = () => {
 				}
 			}
 			// shade
-			if (frameEvent.shadeScene !== playerDataFields.byFieldName.shadeScene.defaultValue) {
+			if (frameEvent.shadeScene !== playerDataFieldsHollow.byFieldName.shadeScene.defaultValue) {
 				const mapPosition = playerPositionToMapPositionHollow(
 					new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),
 					recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene),

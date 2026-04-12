@@ -1,6 +1,6 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { type SceneEvent } from '../../parser/recording-files/events-shared/scene-event';
-import { silkMapDataBySceneNameLower } from './map-data-silk';
+import { mapDataBySceneNameLowerSilk } from './map-data-silk';
 
 export function playerPositionToMapPositionSilk(
 	playerPosition: Vector2,
@@ -8,7 +8,7 @@ export function playerPositionToMapPositionSilk(
 ): Vector2 | undefined {
 	if (!sceneEvent) return undefined;
 
-	const mapRoom = silkMapDataBySceneNameLower.get(sceneEvent.getMainVirtualSceneName());
+	const mapRoom = mapDataBySceneNameLowerSilk.get(sceneEvent.getMainVirtualSceneName());
 	const playerPositionBounds = mapRoom?.playerPositionBounds;
 	if (!mapRoom || !sceneEvent.originOffset || !sceneEvent.sceneSize || !playerPositionBounds) return undefined;
 

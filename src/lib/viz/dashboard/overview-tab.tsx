@@ -4,7 +4,7 @@ import { Expander } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
 import { Progress } from '~/components/ui/progress';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
-import { playerDataFields } from '~/lib/parser';
+import { playerDataFieldsHollow } from '~/lib/parser';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { getGameName } from '~/lib/types/game-ids';
 import { cn } from '~/lib/utils';
@@ -84,7 +84,9 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 		if (!rec || rec instanceof CombinedRecordingSilk) return [];
 		return [
 			...new Set(
-				rec?.allPlayerDataEventsOfField(playerDataFields.byFieldName.version)?.map((event) => event.value),
+				rec
+					?.allPlayerDataEventsOfField(playerDataFieldsHollow.byFieldName.version)
+					?.map((event) => event.value),
 			),
 		];
 	});

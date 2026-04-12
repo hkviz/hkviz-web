@@ -8,7 +8,12 @@ import {
 	CombinedRecordingHollow,
 	isPlayerDataEventOfField,
 } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
-import { assertNever, mainRoomDataBySceneName, playerDataFields, roomGroupNamesBySceneName } from '../../../parser';
+import {
+	assertNever,
+	mainRoomDataBySceneName,
+	playerDataFieldsHollow,
+	roomGroupNamesBySceneName,
+} from '../../../parser';
 import { formatTimeMs } from '../../util';
 import { AreaSelectionMode } from '../room-display-store';
 
@@ -495,7 +500,7 @@ export function aggregateRecording(recording: CombinedRecordingHollow) {
 		} else if (event instanceof SpellDownEvent) {
 			addToScenes(currentVirtualScenes, event.msIntoGame, 'spellDown', 1);
 		} else if (
-			isPlayerDataEventOfField(event, playerDataFields.byFieldName.health) &&
+			isPlayerDataEventOfField(event, playerDataFieldsHollow.byFieldName.health) &&
 			event.previousPlayerDataEventOfField
 		) {
 			const diff = event.value - event.previousPlayerDataEventOfField.value;
@@ -503,7 +508,7 @@ export function aggregateRecording(recording: CombinedRecordingHollow) {
 				addToScenes(currentVirtualScenes, event.msIntoGame, 'damageTaken', -diff);
 			}
 		} else if (
-			isPlayerDataEventOfField(event, playerDataFields.byFieldName.healthBlue) &&
+			isPlayerDataEventOfField(event, playerDataFieldsHollow.byFieldName.healthBlue) &&
 			event.previousPlayerDataEventOfField
 		) {
 			const diff = event.value - event.previousPlayerDataEventOfField.value;

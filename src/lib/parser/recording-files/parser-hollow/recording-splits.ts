@@ -16,7 +16,7 @@ import {
 	isPlayerDataBoolField,
 	isPlayerDataDefeatedField,
 	isPlayerDataKilledField,
-	playerDataFields,
+	playerDataFieldsHollow,
 } from '../../player-data/player-data';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { CombinedRecordingHollow } from './recording-hollow';
@@ -114,7 +114,7 @@ function createRecordingSplitFromEnemy(
 export function createRecordingSplits(recording: CombinedRecordingHollow): RecordingSplit[] {
 	const splits: RecordingSplit[] = [];
 
-	for (const field of Object.values(playerDataFields.byFieldName)) {
+	for (const field of Object.values(playerDataFieldsHollow.byFieldName)) {
 		if (isPlayerDataDefeatedField(field)) {
 			const enemyDefeatName = getEnemyNameFromDefeatedField(field);
 			const defeatMapping = playerDataNameToDefeatedName[enemyDefeatName];
@@ -175,7 +175,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					}
 				});
 			}
-		} else if (field === playerDataFields.byFieldName.killsMegaBeamMiner) {
+		} else if (field === playerDataFieldsHollow.byFieldName.killsMegaBeamMiner) {
 			// our good friend the Crystal Guardian has a little special case
 			// its second form does not have a separate killed field, nor defeated field (afaik)
 			// so we need to check the kills field, which at first is 2 an is decreased with each kill
@@ -197,7 +197,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					);
 				}
 			});
-		} else if (field === playerDataFields.byFieldName.greyPrinceDefeats) {
+		} else if (field === playerDataFieldsHollow.byFieldName.greyPrinceDefeats) {
 			const enemyInfo = enemies.byPlayerDataName.GreyPrince;
 			recording.allPlayerDataEventsOfField(field).forEach((event) => {
 				if (event.value >= 1 && event.previousPlayerDataEventOfField?.value !== event.value) {
@@ -244,10 +244,10 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					});
 				}
 			});
-		} else if (field === playerDataFields.byFieldName.charmSlots) {
+		} else if (field === playerDataFieldsHollow.byFieldName.charmSlots) {
 			recording.allPlayerDataEventsOfField(field).forEach((event) => {
 				if (
-					event.value > getDefaultValue(playerDataFields.byFieldName.charmSlots) &&
+					event.value > getDefaultValue(playerDataFieldsHollow.byFieldName.charmSlots) &&
 					event.previousPlayerDataEventOfField?.value !== event.value
 				) {
 					splits.push({
@@ -261,7 +261,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					});
 				}
 			});
-		} else if (field === playerDataFields.byFieldName.hasDreamNail) {
+		} else if (field === playerDataFieldsHollow.byFieldName.hasDreamNail) {
 			recording.allPlayerDataEventsOfField(field).forEach((event) => {
 				if (event.value && !event.previousPlayerDataEventOfField?.value) {
 					splits.push({
@@ -275,7 +275,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					});
 				}
 			});
-		} else if (field === playerDataFields.byFieldName.hasDreamGate) {
+		} else if (field === playerDataFieldsHollow.byFieldName.hasDreamGate) {
 			recording.allPlayerDataEventsOfField(field).forEach((event) => {
 				if (event.value && !event.previousPlayerDataEventOfField?.value) {
 					splits.push({
@@ -289,7 +289,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					});
 				}
 			});
-		} else if (field === playerDataFields.byFieldName.dreamNailUpgraded) {
+		} else if (field === playerDataFieldsHollow.byFieldName.dreamNailUpgraded) {
 			recording.allPlayerDataEventsOfField(field).forEach((event) => {
 				if (event.value && !event.previousPlayerDataEventOfField?.value) {
 					splits.push({
@@ -303,7 +303,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					});
 				}
 			});
-		} else if (field === playerDataFields.byFieldName.nailSmithUpgrades) {
+		} else if (field === playerDataFieldsHollow.byFieldName.nailSmithUpgrades) {
 			recording.allPlayerDataEventsOfField(field).forEach((event) => {
 				if (event.value === 1 && event.previousPlayerDataEventOfField?.value !== 1) {
 					splits.push({
@@ -347,7 +347,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					});
 				}
 			});
-		} else if (field === playerDataFields.byFieldName.heartPieces) {
+		} else if (field === playerDataFieldsHollow.byFieldName.heartPieces) {
 			recording.allPlayerDataEventsOfField(field).forEach((event) => {
 				if (
 					event.value > 0 &&
@@ -389,7 +389,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					});
 				}
 			});
-		} else if (field === playerDataFields.byFieldName.vesselFragments) {
+		} else if (field === playerDataFieldsHollow.byFieldName.vesselFragments) {
 			recording.allPlayerDataEventsOfField(field).forEach((event) => {
 				if (
 					event.value > 0 &&
@@ -430,38 +430,38 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 			});
 		} else {
 			[
-				{ field: playerDataFields.byFieldName.mapAbyss, title: 'Abyss Map' },
+				{ field: playerDataFieldsHollow.byFieldName.mapAbyss, title: 'Abyss Map' },
 				{
-					field: playerDataFields.byFieldName.mapCity,
+					field: playerDataFieldsHollow.byFieldName.mapCity,
 					title: 'City of Tears Map',
 				},
-				{ field: playerDataFields.byFieldName.mapCliffs, title: 'Howling Cliffs Map' },
+				{ field: playerDataFieldsHollow.byFieldName.mapCliffs, title: 'Howling Cliffs Map' },
 				{
-					field: playerDataFields.byFieldName.mapCrossroads,
+					field: playerDataFieldsHollow.byFieldName.mapCrossroads,
 					title: 'Forgotten Crossroads Map',
 				},
-				{ field: playerDataFields.byFieldName.mapDeepnest, title: 'Deepnest Map' },
+				{ field: playerDataFieldsHollow.byFieldName.mapDeepnest, title: 'Deepnest Map' },
 				{
-					field: playerDataFields.byFieldName.mapFogCanyon,
+					field: playerDataFieldsHollow.byFieldName.mapFogCanyon,
 					title: 'Fog Canyon Map',
 				},
-				{ field: playerDataFields.byFieldName.mapGreenpath, title: 'Greenpath Map' },
+				{ field: playerDataFieldsHollow.byFieldName.mapGreenpath, title: 'Greenpath Map' },
 				{
-					field: playerDataFields.byFieldName.mapMines,
+					field: playerDataFieldsHollow.byFieldName.mapMines,
 					title: 'Crystal Peak Map',
 				},
-				{ field: playerDataFields.byFieldName.mapOutskirts, title: "Kingdom's Edge Map" },
+				{ field: playerDataFieldsHollow.byFieldName.mapOutskirts, title: "Kingdom's Edge Map" },
 				{
-					field: playerDataFields.byFieldName.mapRestingGrounds,
+					field: playerDataFieldsHollow.byFieldName.mapRestingGrounds,
 					title: 'Resting Grounds Map',
 				},
-				{ field: playerDataFields.byFieldName.mapRoyalGardens, title: "Queen's Gardens Map" },
+				{ field: playerDataFieldsHollow.byFieldName.mapRoyalGardens, title: "Queen's Gardens Map" },
 
 				{
-					field: playerDataFields.byFieldName.mapFungalWastes,
+					field: playerDataFieldsHollow.byFieldName.mapFungalWastes,
 					title: 'Fungal Wastes Map',
 				},
-				{ field: playerDataFields.byFieldName.mapWaterways, title: 'Royal Waterways Map' },
+				{ field: playerDataFieldsHollow.byFieldName.mapWaterways, title: 'Royal Waterways Map' },
 			].map((map) => {
 				if (field === map.field) {
 					recording.allPlayerDataEventsOfField(field).forEach((event) => {

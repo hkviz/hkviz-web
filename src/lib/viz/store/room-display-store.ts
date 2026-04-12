@@ -4,14 +4,7 @@ import { createContext, createMemo, createSignal, useContext, type Accessor } fr
 import { RoomSpriteVariantSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
 import { isRoomDataHollow, isRoomDataSilk } from '~/lib/game-data/specific/room-data-of-game';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
-import {
-	assertNever,
-	mainRoomDataBySceneName,
-	mapRoomsHollow,
-	playerDataFields,
-	roomDataByGameObjectName,
-	type RoomSpriteVariantHollow,
-} from '../../parser';
+import { assertNever, mapRoomsHollow, playerDataFieldsHollow, type RoomSpriteVariantHollow } from '../../parser';
 import { GameplayStore } from './gameplay-store';
 import { PlayerDataAnimationStore } from './player-data-animation-store';
 
@@ -31,6 +24,8 @@ export function createRoomDisplayStore(
 	playerDataAnimationStore: PlayerDataAnimationStore,
 	gameplayStore: GameplayStore,
 ) {
+	const gameModule = gameplayStore.gameModule;
+
 	const [roomVisibility, setRoomVisibility] = createSignal<RoomVisibility>('visited-animated');
 	const [selectedSceneName, setSelectedSceneName] = createSignal<string | null>(null);
 	const [hoveredSceneName, setHoveredSceneName] = createSignal<string | null>(null);
@@ -70,14 +65,14 @@ export function createRoomDisplayStore(
 	const selectedRoomZoneFormatted = createMemo(() => {
 		const selected = selectedSceneName();
 		if (selected == null) return null;
-		const room = mainRoomDataBySceneName.get(selected);
+		const room = gameModule()?.getMainRoomDataBySceneName(selected);
 		if (!room) return null;
 		return room.zoneNameFormatted;
 	});
 
 	const hoveredMainRoom = createMemo(() => {
 		const hovered = hoveredSceneName();
-		return hovered != null ? (mainRoomDataBySceneName.get(hovered)?.sceneName ?? null) : null;
+		return hovered != null ? (gameModule()?.getMainRoomDataBySceneName(hovered)?.sceneName ?? null) : null;
 	});
 
 	const roomsVisible: Accessor<ReadonlySet<string> | 'all'> = createMemo(() => {
@@ -88,7 +83,7 @@ export function createRoomDisplayStore(
 				const recording = gameplayStore.recording();
 				if (!recording || recording instanceof CombinedRecordingSilk) return new Set<string>();
 				return new Set(
-					recording.lastPlayerDataEventOfField(playerDataFields.byFieldName.scenesVisited)?.value ?? [],
+					recording.lastPlayerDataEventOfField(playerDataFieldsHollow.byFieldName.scenesVisited)?.value ?? [],
 				);
 			case 'visited-animated':
 				return new Set(playerDataAnimationStore.currentValues.scenesVisited() ?? []);
@@ -98,12 +93,13 @@ export function createRoomDisplayStore(
 	const selfRoomVisibilityByGameObjectName = new Map<string, Accessor<boolean>>();
 
 	function getSelfVisibilitySignal(gameObjectName: string) {
-		const room = roomDataByGameObjectName.get(gameObjectName);
+		const room = gameModule()?.getRoomDataByGameObjectName(gameObjectName);
 		const existing = selfRoomVisibilityByGameObjectName.get(gameObjectName);
 		if (existing) {
 			return existing;
 		}
-		const gameObjectNameNeededInVisited = room?.gameObjectNameNeededInVisited ?? gameObjectName;
+		const gameObjectNameNeededInVisited =
+			room && isRoomDataHollow(room) ? (room?.gameObjectNameNeededInVisited ?? gameObjectName) : gameObjectName;
 		const signal = createMemo(() => {
 			const visible = roomsVisible();
 			if (visible === 'all') return true;
@@ -115,7 +111,7 @@ export function createRoomDisplayStore(
 	}
 
 	const statesByGameObjectName = createMemo(() => {
-		const rooms = gameplayStore.gameModule()?.mapRooms ?? [];
+		const rooms = gameModule()?.mapRooms ?? [];
 		return new Map(
 			rooms.map((room) => {
 				const isHovered = createMemo(
@@ -151,7 +147,9 @@ export function createRoomDisplayStore(
 				} else if (isSilk) {
 					// oxlint-disable-next-line solid/reactivity
 					variant = createMemo<RoomSpriteVariantSilk | 'hidden'>(() => {
-						return 'full';
+						const variantFull = room.initialState == 'Full' ? 'initial' : 'full';
+
+						return variantFull;
 					});
 				} else {
 					// oxlint-disable-next-line solid/reactivity

@@ -30,7 +30,7 @@ export function formatAreaNameSilk(mapZone: MapZoneSilk) {
 		case 'Song':
 			return 'Songclave';
 		case 'Ward':
-			return 'The Citadel';
+			return 'Whiteward';
 		case 'Clover':
 			return 'Clover';
 		case 'Abyss':

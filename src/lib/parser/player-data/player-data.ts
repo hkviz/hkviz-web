@@ -22,7 +22,7 @@ export type PlayerDataFieldValue<TField extends PlayerDataField> =
 // type PlayerDataFieldShortCode = PlayerDataField['shortCode'];
 // type PlayerDataFieldByShortCode<T extends PlayerDataFieldShortCode> = Extract<PlayerDataField, { shortCode: T }>;
 
-export const playerDataFields = {
+export const playerDataFieldsHollow = {
 	byFieldName: playerDataFieldsGenerated,
 
 	byShortCode: Object.fromEntries(playerDataFieldsArray.map((it) => [it.shortCode, it])) as Record<

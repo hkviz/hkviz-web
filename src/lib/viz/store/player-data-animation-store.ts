@@ -2,13 +2,18 @@ import { createLazyMemo } from '@solid-primitives/memo';
 import { createContext, useContext, type Accessor } from 'solid-js';
 import { PlayerDataEvent } from '~/lib/parser/recording-files/events-hollow/player-data-event';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
-import { binarySearchLastIndexBefore, getDefaultValue, playerDataFields, PlayerDataFieldValue } from '../../parser';
+import {
+	binarySearchLastIndexBefore,
+	getDefaultValue,
+	playerDataFieldsHollow,
+	PlayerDataFieldValue,
+} from '../../parser';
 import { AnimationStore } from './animation-store';
 import { GameplayStore } from './gameplay-store';
 
 export function createPlayerDataAnimationStore(animationStore: AnimationStore, gameplayStore: GameplayStore) {
 	const currentEvents = Object.fromEntries(
-		Object.entries(playerDataFields.byFieldName).map(([fieldName, field]) => {
+		Object.entries(playerDataFieldsHollow.byFieldName).map(([fieldName, field]) => {
 			return [
 				fieldName,
 				createLazyMemo(() => {
@@ -25,8 +30,8 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 			];
 		}),
 	) as any as {
-		[fieldName in keyof typeof playerDataFields.byFieldName]: Accessor<
-			PlayerDataEvent<(typeof playerDataFields)['byFieldName'][fieldName]>
+		[fieldName in keyof typeof playerDataFieldsHollow.byFieldName]: Accessor<
+			PlayerDataEvent<(typeof playerDataFieldsHollow)['byFieldName'][fieldName]>
 		>;
 	};
 
@@ -37,14 +42,14 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 				createLazyMemo(() => {
 					const e: PlayerDataEvent<any> = (event as any)();
 
-					if (!e) return getDefaultValue((playerDataFields.byFieldName as any)[fieldName as any]);
+					if (!e) return getDefaultValue((playerDataFieldsHollow.byFieldName as any)[fieldName as any]);
 					return e.value;
 				}),
 			];
 		}),
 	) as any as {
-		[fieldName in keyof typeof playerDataFields.byFieldName]: Accessor<
-			PlayerDataFieldValue<(typeof playerDataFields)['byFieldName'][fieldName]>
+		[fieldName in keyof typeof playerDataFieldsHollow.byFieldName]: Accessor<
+			PlayerDataFieldValue<(typeof playerDataFieldsHollow)['byFieldName'][fieldName]>
 		>;
 	};
 

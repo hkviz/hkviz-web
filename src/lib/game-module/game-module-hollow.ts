@@ -4,6 +4,7 @@ import {
 	mainRoomDataBySceneName,
 	mapRoomsHollow,
 	playerPositionToMapPositionHollow,
+	roomDataByGameObjectName,
 } from '../parser/map-data';
 import { combineRecordingsHollow } from '../parser/recording-files';
 import { parseRecordingFileHollow } from '../parser/recording-files/parser-hollow/parse-recording-file-hollow';
@@ -21,5 +22,8 @@ export const gameModuleHollow: GameModule<'hollow'> = {
 	getAllRoomDataBySceneNameNoSubSprites: (sceneName) => allRoomDataBySceneNameHollow.get(sceneName),
 	getAllRoomDataBySceneNameWithSubSprites: (sceneName) =>
 		allRoomDataIncludingSubspritesBySceneNameHollow.get(sceneName),
+	getRoomDataByGameObjectName: (gameObjectName) => {
+		return roomDataByGameObjectName.get(gameObjectName);
+	},
 	mapRooms: mapRoomsHollow,
 };

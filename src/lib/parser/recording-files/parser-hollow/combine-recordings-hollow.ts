@@ -1,7 +1,7 @@
 import { raise } from '../../../util';
 import { type HeroStateField } from '../../hero-state/hero-states';
 import { playerPositionToMapPositionHollow } from '../../map-data';
-import { getDefaultValue, playerDataFields, type PlayerDataField } from '../../player-data/player-data';
+import { getDefaultValue, playerDataFieldsHollow, type PlayerDataField } from '../../player-data/player-data';
 import {
 	FrameEndEventHollow,
 	frameEndEventHeroStateFields,
@@ -74,7 +74,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 			// for the visualizations
 			if (event.timestamp > lastTimestamp) {
 				if (!hasCreatedFirstEndFrameEvent && recording.combinedPartNumber === 1) {
-					Object.values(playerDataFields.byFieldName).forEach((field) => {
+					Object.values(playerDataFieldsHollow.byFieldName).forEach((field) => {
 						if (!previousPlayerDataEventsByField.has(field)) {
 							// if part number = 1 all non default player data fields should have been added
 							// so we can add default values for the rest
@@ -145,7 +145,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 				event.previousSceneEvent = previousSceneEvent;
 				diedInThisSceneVisit = false;
 				const previousCurrentBossSequenceEvent = getPreviousPlayerData(
-					playerDataFields.byFieldName.currentBossSequence,
+					playerDataFieldsHollow.byFieldName.currentBossSequence,
 				);
 				if (previousCurrentBossSequenceEvent?.value && !isPantheonRoom(event.sceneName)) {
 					// pantheon stopped, but game does not change player data to reflect that
@@ -154,26 +154,27 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 					ctx.msIntoGame = msIntoGame;
 
 					const currentBossSequenceEvent = new PlayerDataEvent<
-						typeof playerDataFields.byFieldName.currentBossSequence
+						typeof playerDataFieldsHollow.byFieldName.currentBossSequence
 					>(
 						previousPlayerPositionEvent,
 						previousCurrentBossSequenceEvent ?? null,
-						playerDataFields.byFieldName.currentBossSequence,
+						playerDataFieldsHollow.byFieldName.currentBossSequence,
 						null,
 						ctx,
 					);
 					previousPlayerDataEventsByField.set(
-						playerDataFields.byFieldName.currentBossSequence,
+						playerDataFieldsHollow.byFieldName.currentBossSequence,
 						currentBossSequenceEvent,
 					);
 					events.push(currentBossSequenceEvent);
 				}
 
 				const currentBossSequence =
-					getPreviousPlayerData(playerDataFields.byFieldName.currentBossSequence)?.value ?? null;
+					getPreviousPlayerData(playerDataFieldsHollow.byFieldName.currentBossSequence)?.value ?? null;
 				event.currentBossSequence = currentBossSequence;
 
-				const visitedScenes = getPreviousPlayerData(playerDataFields.byFieldName.scenesVisited)?.value ?? [];
+				const visitedScenes =
+					getPreviousPlayerData(playerDataFieldsHollow.byFieldName.scenesVisited)?.value ?? [];
 
 				// if scene is not in player data, it might still be added in a few seconds or so, but if its not
 				// its added to the scenes below.
@@ -309,7 +310,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 					createEndFrameEvent = true;
 				}
 
-				if (isPlayerDataEventOfField(event, playerDataFields.byFieldName.currentBossSequence)) {
+				if (isPlayerDataEventOfField(event, playerDataFieldsHollow.byFieldName.currentBossSequence)) {
 					const sceneEvent = previousPlayerPositionEvent?.sceneEvent;
 					if (sceneEvent && isPantheonRoom(sceneEvent.sceneName)) {
 						sceneEvent.currentBossSequence = event.value;
@@ -320,7 +321,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 					event.value = event.value.flatMap((it) =>
 						it === '::' ? (event.previousPlayerDataEventOfField?.value ?? []) : [it],
 					);
-					if (isPlayerDataEventOfField(event, playerDataFields.byFieldName.scenesVisited)) {
+					if (isPlayerDataEventOfField(event, playerDataFieldsHollow.byFieldName.scenesVisited)) {
 						for (const it of event.previousPlayerDataEventOfField?.value ?? []) {
 							// even if scenes are removed again from the player data (e.g. by loading an old save or modding),
 							// we don't want to loose the scenes visited in the recording.
@@ -363,22 +364,25 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 			(all || visitedScenesToCheckIfInPlayerData[0]!.msIntoGame + 0 < msIntoGame)
 		) {
 			const { sceneName, msIntoGame } = visitedScenesToCheckIfInPlayerData.shift()!;
-			const previousScenesVisitedEvent = getPreviousPlayerData(playerDataFields.byFieldName.scenesVisited);
+			const previousScenesVisitedEvent = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.scenesVisited);
 			const previousValue = previousScenesVisitedEvent?.value ?? [];
 
 			if (!previousValue.includes(sceneName)) {
 				ctx.timestamp = lastTimestamp;
 				ctx.msIntoGame = msIntoGame;
-				const visitedScenesEvent = new PlayerDataEvent<typeof playerDataFields.byFieldName.scenesVisited>(
+				const visitedScenesEvent = new PlayerDataEvent<typeof playerDataFieldsHollow.byFieldName.scenesVisited>(
 					previousPlayerPositionEvent,
 					previousScenesVisitedEvent ?? null,
-					playerDataFields.byFieldName.scenesVisited,
+					playerDataFieldsHollow.byFieldName.scenesVisited,
 					[...previousValue, sceneName],
 					ctx,
 				);
 				visitedScenesEvent.msIntoGame = msIntoGame;
-				previousPlayerDataEventsByField.set(playerDataFields.byFieldName.scenesVisited, visitedScenesEvent);
-				if (frameEndEventPlayerDataFields.has(playerDataFields.byFieldName.scenesVisited)) {
+				previousPlayerDataEventsByField.set(
+					playerDataFieldsHollow.byFieldName.scenesVisited,
+					visitedScenesEvent,
+				);
+				if (frameEndEventPlayerDataFields.has(playerDataFieldsHollow.byFieldName.scenesVisited)) {
 					createEndFrameEvent = true;
 				}
 				events.push(visitedScenesEvent);
