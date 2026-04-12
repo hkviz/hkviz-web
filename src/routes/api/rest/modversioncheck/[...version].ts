@@ -1,5 +1,5 @@
 import type { APIEvent } from '@solidjs/start/server';
-import { HollowModVersion, typeCheckNever } from '~/lib/parser';
+import { ModVersionHollow, typeCheckNever } from '~/lib/parser';
 import { GameId } from '~/lib/types/game-ids';
 
 interface ModVersionCheckResponse {
@@ -9,7 +9,7 @@ interface ModVersionCheckResponse {
 }
 
 function getHollowVersionCheckResult(version: string): ModVersionCheckResponse {
-	const versionTyped = version as HollowModVersion;
+	const versionTyped = version as ModVersionHollow;
 
 	const updateForBetterStats = 'Update for better analytics and stability improvements.';
 

@@ -6,6 +6,7 @@ import { Progress } from '~/components/ui/progress';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import { playerDataFields } from '~/lib/parser';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import { getGameName } from '~/lib/types/game-ids';
 import { cn } from '~/lib/utils';
 import { RelativeDate } from '../datetime/date';
 import {
@@ -77,7 +78,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 		return rec.allModVersions?.filter(() => false); // (mod) => mod.name === 'HKViz');
 	});
 
-	const hollowKnightVersions = createMemo(() => {
+	const gameVersions = createMemo(() => {
 		const rec = recording();
 		// TODO silk
 		if (!rec || rec instanceof CombinedRecordingSilk) return [];
@@ -159,11 +160,15 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 										</TableCell>
 									</TableRow>
 									<TableRow>
-										<TableHead>Hollow Knight version</TableHead>
+										<TableHead>
+											<Show when={gameplayStore.game()}>
+												{(game) => <>{getGameName(game())} version</>}
+											</Show>
+										</TableHead>
 										<TableCell>
-											<Show when={hollowKnightVersions()}>
-												{(hollowKnightVersions) => (
-													<For each={hollowKnightVersions()}>
+											<Show when={gameVersions()}>
+												{(gameVersions) => (
+													<For each={gameVersions()}>
 														{(it) => <span class="block">{it}</span>}
 													</For>
 												)}
@@ -171,7 +176,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 										</TableCell>
 									</TableRow>
 									<TableRow>
-										<TableHead>HKViz mod version</TableHead>
+										<TableHead>HKViz Mod Version</TableHead>
 										<TableCell>
 											<For each={recording()?.allHkVizModVersions}>
 												{(it) => <span class="block">{it}</span>}

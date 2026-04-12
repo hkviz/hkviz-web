@@ -2,7 +2,6 @@ import { raise } from '../../../util';
 import { type HeroStateField } from '../../hero-state/hero-states';
 import { playerPositionToMapPositionHollow } from '../../map-data';
 import { getDefaultValue, playerDataFields, type PlayerDataField } from '../../player-data/player-data';
-import { isVersionBefore1_4_0, type HollowRecordingFileVersion } from '../../recording-file-version';
 import {
 	FrameEndEventHollow,
 	frameEndEventHeroStateFields,
@@ -15,6 +14,7 @@ import { PlayerDataEvent } from '../events-hollow/player-data-event';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
+import { isRecordingVersionBefore1_4_0, type RecordingFileVersionHollow } from './mod-version-hollow';
 import {
 	CombinedRecordingHollow,
 	RecordingFileVersionEvent,
@@ -56,7 +56,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 	let previousSceneEvent: SceneEvent | null = null;
 	let diedInThisSceneVisit = false;
 
-	let recordingFileVersion: HollowRecordingFileVersion = '0.0.0';
+	let recordingFileVersion: RecordingFileVersionHollow = '0.0.0';
 
 	const visitedScenesToCheckIfInPlayerData = [] as { sceneName: string; msIntoGame: number }[];
 
@@ -184,7 +184,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 				// in version < 1.4.0 the mod did not record the transitioning bool
 				// therefore, here we try to detect player events which where transitioned to a new scene
 				// and remove them:
-				if (isVersionBefore1_4_0(recordingFileVersion) && previousPlayerPositionEvent) {
+				if (isRecordingVersionBefore1_4_0(recordingFileVersion) && previousPlayerPositionEvent) {
 					const lastPlayerPositionEvent: PlayerPositionEvent = previousPlayerPositionEvent;
 					const sceneEvent = lastPlayerPositionEvent.sceneEvent;
 					const sceneOriginOffset = sceneEvent.originOffset;

@@ -1,4 +1,4 @@
-export const hollowRecordingFileVersions = [
+export const recordingFileVersionsHollow = [
 	/**
 	 * No file changes
 	 *
@@ -61,34 +61,38 @@ export const hollowRecordingFileVersions = [
 	'0.0.0',
 ] as const;
 
-export const hollowRecordingFileVersionNewest: HollowRecordingFileVersion = hollowRecordingFileVersions[0];
+export const recordingFileVersionNewestHollow: RecordingFileVersionHollow = recordingFileVersionsHollow[0];
 
-export type HollowRecordingFileVersion = (typeof hollowRecordingFileVersions)[number];
-export type HollowModVersion = `${HollowRecordingFileVersion}.0` | '1.2.0.0' | '1.3.0.0';
+export type RecordingFileVersionHollow = (typeof recordingFileVersionsHollow)[number];
+export type ModVersionHollow = `${RecordingFileVersionHollow}.0` | '1.2.0.0' | '1.3.0.0';
 
-export function hollowRecordingFileVersionIsKnown(version: string): version is HollowRecordingFileVersion {
-	return hollowRecordingFileVersions.includes(version as HollowRecordingFileVersion);
+export function recordingFileVersionIsKnownHollow(version: string): version is RecordingFileVersionHollow {
+	return recordingFileVersionsHollow.includes(version as RecordingFileVersionHollow);
 }
 
-export type HollowRecordingFileVersion0xx = '0.0.0';
-export function isVersion0xx(version: HollowRecordingFileVersion): version is HollowRecordingFileVersion0xx {
+export type RecordingFileVersion0xxHollow = '0.0.0';
+export function isRecordingFileVersion0xxHollow(
+	version: RecordingFileVersionHollow,
+): version is RecordingFileVersion0xxHollow {
 	return version === '0.0.0';
 }
 
-export type RecordingFileVersion1xx = '1.0.0' | '1.1.0' | '1.4.0' | '1.5.0' | '1.5.1';
-export function isVersion1xx(version: HollowRecordingFileVersion): version is RecordingFileVersion1xx {
+export type RecordingFileVersion1xxHollow = '1.0.0' | '1.1.0' | '1.4.0' | '1.5.0' | '1.5.1';
+export function isRecordingVersion1xxHollow(
+	version: RecordingFileVersionHollow,
+): version is RecordingFileVersion1xxHollow {
 	return (
 		version === '1.0.0' || version === '1.1.0' || version === '1.4.0' || version === '1.5.0' || version === '1.5.1'
 	);
 }
 
-export function isVersionBefore1_4_0(
-	version: HollowRecordingFileVersion,
-): version is HollowRecordingFileVersion0xx | '1.0.0' | '1.1.0' {
-	return isVersion0xx(version) || version === '1.0.0' || version === '1.1.0';
+export function isRecordingVersionBefore1_4_0(
+	version: RecordingFileVersionHollow,
+): version is RecordingFileVersion0xxHollow | '1.0.0' | '1.1.0' {
+	return isRecordingFileVersion0xxHollow(version) || version === '1.0.0' || version === '1.1.0';
 }
 
-export function isModVersionBefore1_6_0(version: HollowModVersion): boolean {
+export function isModVersionBefore1_6_0Hollow(version: ModVersionHollow): boolean {
 	return (
 		version === '0.0.0.0' ||
 		version === '1.0.0.0' ||

@@ -1,6 +1,5 @@
 import { raise } from '../../../util';
 import { type PlayerDataField } from '../../player-data/player-data';
-import { type HollowRecordingFileVersion } from '../../recording-file-version';
 import { FrameEndEventHollow } from '../events-hollow/frame-end-event-hollow';
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { type HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
@@ -14,12 +13,13 @@ import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
 import { SceneEvent } from '../events-shared/scene-event';
 import { CombinedRecordingBase } from '../parser-shared/recording-shared';
+import { type RecordingFileVersionHollow } from './mod-version-hollow';
 import { createRecordingSplits, type RecordingSplit } from './recording-splits';
 
 export class RecordingFileVersionEvent extends RecordingEventBase {
-	public version: HollowRecordingFileVersion;
+	public version: RecordingFileVersionHollow;
 
-	constructor(version: HollowRecordingFileVersion, ctx: EventCreationContext) {
+	constructor(version: RecordingFileVersionHollow, ctx: EventCreationContext) {
 		super(ctx);
 		this.version = version;
 	}

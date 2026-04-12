@@ -5,5 +5,5 @@ export * from './hk-types';
 export * from './lang';
 export * from './map-data';
 export * from './player-data';
-export * from './recording-file-version';
 export * from './recording-files';
+export * from './recording-files/parser-hollow/mod-version-hollow';

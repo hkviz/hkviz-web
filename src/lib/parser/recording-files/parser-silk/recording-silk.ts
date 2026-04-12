@@ -12,6 +12,8 @@ export class ParsedRecordingSilk {
 		public readonly unknownEvents: number,
 		public readonly parsingErrors: number,
 		public readonly combinedPartNumber: number | null,
+		public readonly recordingFileVersion: number,
+		public readonly hkVizModVersion: string | null,
 	) {}
 
 	lastEvent() {

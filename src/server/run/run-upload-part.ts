@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from 'uuid';
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
 import { hollowMapZoneSchema } from '~/lib/game-data/hollow-data/hollow-map-zone';
-import { HollowModVersion, isModVersionBefore1_6_0, raise } from '~/lib/parser';
+import { ModVersionHollow, isModVersionBefore1_6_0Hollow, raise } from '~/lib/parser';
 import { r2RunPartFileKey } from '~/lib/r2';
 import { gameIdSchemaHollowDefault } from '~/lib/types/game-ids';
 import { hollowOrSilkMapZoneSchema } from '~/lib/types/map-zone';
-import { runFiles, type RunGameStateMetaColumnName, runs } from '~/server/db/schema';
+import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
 import { db } from '../db';
 import { getUserIdFromIngameSession } from '../ingameauth/utils';
 import { r2FileHead, r2GetSignedUploadUrl } from '../r2';
@@ -91,7 +91,7 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 	});
 
 	if (existingFile?.uploadFinished) {
-		if (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as HollowModVersion)) {
+		if (!input.modVersion || isModVersionBefore1_6_0Hollow(input.modVersion as ModVersionHollow)) {
 			// old versions don't check for the 'alreadyFinished' flag
 			// so for those versions, the previous behavior is kept.
 			throw new Error('File already uploaded');
@@ -110,7 +110,10 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 				localRunId: input.localRunId,
 				fileId: existingFile.id,
 			});
-			if (input.game === 'hollow' && (!input.modVersion || isModVersionBefore1_6_0(input.modVersion as HollowModVersion))) {
+			if (
+				input.game === 'hollow' &&
+				(!input.modVersion || isModVersionBefore1_6_0Hollow(input.modVersion as ModVersionHollow))
+			) {
 				throw new Error('File already uploaded');
 			} else {
 				return {

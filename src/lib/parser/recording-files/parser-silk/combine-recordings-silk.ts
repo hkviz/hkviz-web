@@ -1,6 +1,5 @@
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
 import { raise } from '../../../util';
-import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { CombinedRecordingSilk, ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
@@ -17,17 +16,14 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 	let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
 	let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
 	let previousSceneEvent: SceneEvent | null = null;
-	const recordingFileVersion = '0.0.0'; // TODO
 
 	const allHkVizModVersions = new Set<string>();
 
-	const ctx = new EventCreationContext();
-
 	for (const recording of recordings.sort((a, b) => a.combinedPartNumber! - b.combinedPartNumber!)) {
+		const _recordingFileVersion = recording.recordingFileVersion;
+		allHkVizModVersions.add(recording.hkVizModVersion ?? 'Unknown version');
+
 		for (const event of recording.events) {
-			ctx.timestamp += 1000; // TODO parse time
-			event.timestamp = ctx.timestamp;
-			// msIntoGame calculation
 			if (event instanceof PlayerPositionEvent) {
 				if (isTransitioning) {
 					continue;

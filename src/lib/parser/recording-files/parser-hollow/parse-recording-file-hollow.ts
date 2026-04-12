@@ -3,17 +3,17 @@ import { raise, typeCheckNever } from '../../../util';
 import { heroStateFields, heroStatesSkipParsing } from '../../hero-state';
 import { parsePlayerDataFieldValue, playerDataFields } from '../../player-data';
 import {
-	type HollowRecordingFileVersion,
-	hollowRecordingFileVersionIsKnown,
-	hollowRecordingFileVersionNewest,
-	isVersion0xx,
-} from '../../recording-file-version';
-import {
 	EVENT_PREFIXES,
 	type EventPrefix,
 	PARTIAL_EVENT_PREFIXES,
 	type PartialEventPrefix,
 } from './event-type-prefixes';
+import {
+	isRecordingFileVersion0xxHollow,
+	type RecordingFileVersionHollow,
+	recordingFileVersionIsKnownHollow,
+	recordingFileVersionNewestHollow,
+} from './mod-version-hollow';
 
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
@@ -62,7 +62,7 @@ export function parseRecordingFileHollow(
 
 	// defaults to 0.0.0 since in early version of the mod, the version was only
 	// written at the beginning of a session, not for each part
-	let currentRecordingFileVersion: HollowRecordingFileVersion = '0.0.0';
+	let currentRecordingFileVersion: RecordingFileVersionHollow = '0.0.0';
 
 	const ctx = new EventCreationContext();
 
@@ -154,7 +154,7 @@ export function parseRecordingFileHollow(
 						let originOffset: Vector2;
 						let sceneSize: Vector2;
 
-						if (isVersion0xx(currentRecordingFileVersion)) {
+						if (isRecordingFileVersion0xxHollow(currentRecordingFileVersion)) {
 							originOffset = parseVector2_v0(args[0]!, args[1]!);
 							sceneSize = parseVector2_v0(args[2]!, args[3]!);
 						} else {
@@ -179,7 +179,7 @@ export function parseRecordingFileHollow(
 						const position: Vector2 | undefined =
 							args[0] === '='
 								? previousPlayerPosition
-								: isVersion0xx(currentRecordingFileVersion)
+								: isRecordingFileVersion0xxHollow(currentRecordingFileVersion)
 									? parseVector2_v0(args[0]!, args[1]!)
 									: parseVector2_v1(args[0]!, 1 / 10);
 						if (!position) {
@@ -219,17 +219,17 @@ export function parseRecordingFileHollow(
 				case EVENT_PREFIXES.RECORDING_FILE_VERSION: {
 					const version = args[0]!;
 
-					if (hollowRecordingFileVersionIsKnown(version)) {
+					if (recordingFileVersionIsKnownHollow(version)) {
 						currentRecordingFileVersion = version;
 					} else {
 						console.error(
-							`Unknown recording file version ${version} falling back to newest known version ${hollowRecordingFileVersionNewest}`,
+							`Unknown recording file version ${version} falling back to newest known version ${recordingFileVersionNewestHollow}`,
 						);
-						currentRecordingFileVersion = hollowRecordingFileVersionNewest;
+						currentRecordingFileVersion = recordingFileVersionNewestHollow;
 					}
 
 					events.push(
-						new RecordingFileVersionEvent(currentRecordingFileVersion as HollowRecordingFileVersion, ctx),
+						new RecordingFileVersionEvent(currentRecordingFileVersion as RecordingFileVersionHollow, ctx),
 					);
 
 					break;
