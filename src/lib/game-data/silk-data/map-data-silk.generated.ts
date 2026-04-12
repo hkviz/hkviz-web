@@ -1,4 +1,4 @@
-import type { SilkMapDataGenerated } from './silk-map.generated.types.ts';
+import type { SilkMapDataGenerated } from './map-data-silk.generated.types.ts';
 
 export const silkMapDataGenerated: SilkMapDataGenerated = {
 	rooms: [

@@ -4,15 +4,16 @@ import { roomDataConditionalByGameObjectName } from '~/lib/game-data/hollow-data
 import { roomDataUnscaledFinishedGame } from '~/lib/game-data/hollow-data/map-rooms-finished.generated';
 import { roomDataUnscaled } from '~/lib/game-data/hollow-data/map-rooms.generated';
 import { Bounds } from '~/lib/game-data/shared/bounds';
+import { colorFromRgbVector } from '~/lib/game-data/shared/colors';
 import { spriteInfoBounds } from '~/lib/game-data/shared/sprite-info-mapper';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { omit } from '../util';
-import { prepareTextExportData } from './area-names';
-import { customRoomData, type CustomRoomInfo, type UnprocessedRoomInfo } from './room-custom';
-import { roomGroupByName } from './room-groups';
-import { formatZoneAndRoomName } from './room-name-formatting';
-import { getSubSprites } from './room-sub-sprites';
-import { getZoomZones } from './zoom-zone';
+import { prepareTextExportData } from '../../parser/map-data/area-names';
+import { customRoomData, type CustomRoomInfo, type UnprocessedRoomInfo } from '../../parser/map-data/room-custom';
+import { roomGroupByName } from '../../parser/map-data/room-groups';
+import { getSubSprites } from '../../parser/map-data/room-sub-sprites';
+import { getZoomZones } from '../../parser/map-data/zoom-zone';
+import { omit } from '../../parser/util';
+import { formatZoneAndRoomNameHollow } from './room-name-formatting-hollow';
 
 const roomDataUnscaledWithCustom: Array<UnprocessedRoomInfo | CustomRoomInfo> = [
 	...roomDataUnscaled.rooms,
@@ -48,8 +49,8 @@ resortings.forEach((resort) => {
 
 // logPossibleConditionals();
 
-export type RoomData = (typeof roomData)[number];
-export type SpriteVariants = RoomData['spritesByVariant'];
+export type RoomDataHollow = (typeof mapRoomsHollow)[number];
+export type SpriteVariants = RoomDataHollow['spritesByVariant'];
 export type SpriteInfo = SpriteVariants['normal'] | SpriteVariants['rough'];
 
 // some rooms have multiple game objects, we need the 'main' one, which is used to determine how to map onto the map.
@@ -64,13 +65,13 @@ const mainGameObjectNamePerSceneName = Object.fromEntries(
 	}),
 );
 
-export type RoomSpriteVariant = 'rough' | 'normal' | 'conditional';
+export type RoomSpriteVariantHollow = 'rough' | 'normal' | 'conditional';
 
 const finishedUnprocessedRoomsByGameObjectName = new Map(
 	roomDataUnscaledFinishedGame.rooms.map((room) => [room.gameObjectName, room] as const),
 );
 
-export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
+export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 	const finishedRoom = finishedUnprocessedRoomsByGameObjectName.get(room.gameObjectName);
 	const visualBounds = hollowScaleBounds(room.visualBounds);
 	const playerPositionBounds = hollowScaleBounds(finishedRoom?.playerPositionBounds ?? room.playerPositionBounds);
@@ -78,23 +79,26 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 
 	function spriteInfoWithScaledPosition<
 		T extends Exclude<typeof room.roughSpriteInfo | typeof room.spriteInfo, null | undefined>,
-	>(variant: RoomSpriteVariant, spriteInfo: T) {
+	>(variant: RoomSpriteVariantHollow, spriteInfo: T) {
 		return {
 			...spriteInfo,
 			nameWithoutSubSprites: null as null | string,
-			scaledPosition: spriteInfoBounds(visualBounds, spriteInfo),
 			variant,
 			alwaysHidden: false,
+			sprite: {
+				name: spriteInfo.name,
+				visualBounds: spriteInfoBounds(visualBounds, spriteInfo),
+			},
 		};
 	}
 
 	// extra handling of additional map mod:
-	const color = d3.hsl(
+	const origColor = d3.hsl(
 		room.mapZone === 'GODS_GLORY'
 			? d3.color('#f8ecd7')!
 			: room.mapZone === 'WHITE_PALACE'
 				? d3.color('#dfe2e4')!
-				: d3.rgb(room.origColor.x * 255, room.origColor.y * 255, room.origColor.z * 255),
+				: colorFromRgbVector(room.origColor),
 	);
 
 	const conditionalSpriteInfo = roomDataConditionalByGameObjectName(room.gameObjectName);
@@ -104,24 +108,25 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 		conditional: conditionalSpriteInfo ? spriteInfoWithScaledPosition('conditional', conditionalSpriteInfo) : null,
 		rough: room.roughSpriteInfo ? spriteInfoWithScaledPosition('rough', room.roughSpriteInfo) : null,
 	};
-	const sprites = Object.values(spritesByVariant).filter((it): it is NonNullable<typeof it> => !!it);
-	const allSpritesScaledPositionBounds = Bounds.fromContainingBounds(sprites.map((it) => it.scaledPosition));
+	const allSprites = Object.values(spritesByVariant).filter((it): it is NonNullable<typeof it> => !!it);
+	const visualBoundsAllSprites = Bounds.fromContainingBounds(allSprites.map((it) => it.sprite.visualBounds));
 
 	const texts = room.texts.map((text) => prepareTextExportData(text));
 
-	const names = formatZoneAndRoomName(room.mapZone, room.sceneName);
+	const names = formatZoneAndRoomNameHollow(room.mapZone, room.sceneName);
 	const zoomZones = getZoomZones(room.sceneName, names.zoneNameFormatted);
 
 	const roomCorrected = {
+		game: 'hollow' as const,
 		...omit(room, ['sprite', 'spriteInfo']),
 		...names,
 		zoomZones,
 		spritesByVariant,
-		sprites,
-		allSpritesScaledPositionBounds,
+		allSprites,
+		visualBoundsAllSprites,
 		visualBounds,
 		playerPositionBounds,
-		color,
+		origColor,
 		isMainGameObject,
 		gameObjectNameNeededInVisited:
 			'gameObjectNameNeededInVisited' in room && room.gameObjectNameNeededInVisited
@@ -145,10 +150,10 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 		}
 	}
 	const subSpritesCorrected = (subSprites?.childSprites ?? []).map((childSprite) => {
-		function subSpriteInfoWithScaledPosition<TVariant extends RoomSpriteVariant>(
+		function subSpriteInfoWithScaledPosition<TVariant extends RoomSpriteVariantHollow>(
 			variant: TVariant,
 		): (typeof roomCorrected.spritesByVariant)[TVariant] {
-			const parentSpriteInfo = spritesByVariant[variant as RoomSpriteVariant];
+			const parentSpriteInfo = spritesByVariant[variant as RoomSpriteVariantHollow];
 			const childVariant = childSprite[variant];
 
 			if (!childVariant || !parentSpriteInfo) {
@@ -166,23 +171,26 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 				variant,
 				size: childVariant.size,
 				padding: parentSpriteInfo.padding,
-				scaledPosition: Bounds.fromMinSize(
-					new Vector2(
-						parentSpriteInfo.scaledPosition.min.x +
-							childVariant.offsetTop.x *
-								(parentSpriteInfo.scaledPosition.size.x / parentSpriteSizeWithoutPadding.x),
+				sprite: {
+					name: childVariant.name,
+					visualBounds: Bounds.fromMinSize(
+						new Vector2(
+							parentSpriteInfo.sprite.visualBounds.min.x +
+								childVariant.offsetTop.x *
+									(parentSpriteInfo.sprite.visualBounds.size.x / parentSpriteSizeWithoutPadding.x),
 
-						parentSpriteInfo.scaledPosition.min.y +
-							childVariant.offsetTop.y *
-								(parentSpriteInfo.scaledPosition.size.y / parentSpriteSizeWithoutPadding.y),
+							parentSpriteInfo.sprite.visualBounds.min.y +
+								childVariant.offsetTop.y *
+									(parentSpriteInfo.sprite.visualBounds.size.y / parentSpriteSizeWithoutPadding.y),
+						),
+						new Vector2(
+							childVariant.size.x *
+								(parentSpriteInfo.sprite.visualBounds.size.x / parentSpriteSizeWithoutPadding.x),
+							childVariant.size.y *
+								(parentSpriteInfo.sprite.visualBounds.size.y / parentSpriteSizeWithoutPadding.y),
+						),
 					),
-					new Vector2(
-						childVariant.size.x *
-							(parentSpriteInfo.scaledPosition.size.x / parentSpriteSizeWithoutPadding.x),
-						childVariant.size.y *
-							(parentSpriteInfo.scaledPosition.size.y / parentSpriteSizeWithoutPadding.y),
-					),
-				),
+				},
 				alwaysHidden: 'alwaysHidden' in childVariant ? (childVariant.alwaysHidden as boolean) : false,
 			} satisfies typeof parentSpriteInfo;
 
@@ -203,25 +211,25 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 
 		const escapedSpriteName = childSprite.normal.name.replace(/\//g, '_');
 
-		const visualBounds = Bounds.fromContainingBounds(subSprites.map((it) => it.scaledPosition));
+		const visualBounds = Bounds.fromContainingBounds(subSprites.map((it) => it.sprite.visualBounds));
 		const playerPositionBounds = visualBounds;
-		const allSpritesScaledPositionBounds = visualBounds;
+		const visualBoundsAllSprites = visualBounds;
 
 		return {
 			...roomCorrected,
-			...formatZoneAndRoomName(room.mapZone, childSprite.sceneName),
+			...formatZoneAndRoomNameHollow(room.mapZone, childSprite.sceneName),
 			sceneName: childSprite.sceneName,
 			gameObjectName:
 				roomCorrected.gameObjectName +
 				'_' +
 				('gameObjectName' in childSprite ? (childSprite.gameObjectName as string) : escapedSpriteName),
 			spritesByVariant: subSpritesByVariant,
-			sprites: subSprites,
+			allSprites: subSprites,
 			gameObjectNameNeededInVisited: roomCorrected.gameObjectNameNeededInVisited,
 			isMainGameObject: true,
 			visualBounds,
 			playerPositionBounds,
-			allSpritesScaledPositionBounds,
+			visualBoundsAllSprites: visualBoundsAllSprites,
 			subSpriteOfGameObjectName: roomCorrected.gameObjectName,
 		} satisfies typeof roomCorrected;
 	});
@@ -229,14 +237,12 @@ export const roomData = roomDataUnscaledWithCustom.flatMap((room) => {
 	return [roomCorrected, ...subSpritesCorrected];
 });
 
-export type RoomInfo = (typeof roomData)[number];
-
-export const roomDataByGameObjectName = new Map<string, RoomData>(
-	roomData.map((room) => [room.gameObjectName, room] as const),
+export const roomDataByGameObjectName = new Map<string, RoomDataHollow>(
+	mapRoomsHollow.map((room) => [room.gameObjectName, room] as const),
 );
 
-export const mainRoomDataBySceneName = new Map<string, RoomData>(
-	roomData
+export const mainRoomDataBySceneName = new Map<string, RoomDataHollow>(
+	mapRoomsHollow
 		.filter((it) => it.isMainGameObject)
 		.flatMap((room) => {
 			const self = [room.sceneName, room] as const;
@@ -245,8 +251,8 @@ export const mainRoomDataBySceneName = new Map<string, RoomData>(
 		}),
 );
 
-export const allRoomDataBySceneName = new Map<string, RoomData[]>(
-	[...d3.group(roomData, (d) => d.sceneName).entries()].flatMap(([sceneName, rooms]) => {
+export const allRoomDataBySceneName = new Map<string, RoomDataHollow[]>(
+	[...d3.group(mapRoomsHollow, (d) => d.sceneName).entries()].flatMap(([sceneName, rooms]) => {
 		const self = [sceneName, rooms] as const;
 		const groupChildren = roomGroupByName.get(sceneName as never)?.sceneNames ?? [];
 		return [self, ...groupChildren.map((scene) => [scene, rooms] as const)];
@@ -254,8 +260,8 @@ export const allRoomDataBySceneName = new Map<string, RoomData[]>(
 );
 
 export const allRoomDataIncludingSubspritesBySceneName = (() => {
-	const map = new Map<string, RoomData[]>();
-	function add(room: RoomData, sceneName: string) {
+	const map = new Map<string, RoomDataHollow[]>();
+	function add(room: RoomDataHollow, sceneName: string) {
 		let arr = map.get(sceneName);
 		if (!arr) {
 			arr = [];
@@ -264,7 +270,7 @@ export const allRoomDataIncludingSubspritesBySceneName = (() => {
 		arr.push(room);
 	}
 
-	roomData.forEach((room) => {
+	mapRoomsHollow.forEach((room) => {
 		add(room, room.sceneName);
 		if (room.subSpriteOfGameObjectName) {
 			const other = roomDataByGameObjectName.get(room.subSpriteOfGameObjectName)!;

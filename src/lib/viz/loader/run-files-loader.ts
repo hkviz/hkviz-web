@@ -1,7 +1,7 @@
 import { createDeferred, createMemo, createSignal } from 'solid-js';
 import { isServer } from 'solid-js/web';
-import { ParserModule } from '~/lib/parser/recording-files/parser-shared/parser-module';
-import { loadParserModule } from '~/lib/parser/recording-files/parser-specific/load-parser-module';
+import { GameModuleOfGame } from '~/lib/parser/game-module/game-module';
+import { loadGameModule } from '~/lib/parser/game-module/load-game-module';
 import { GameId } from '~/lib/types/game-ids';
 import { createStoreInitializer } from '../store/store-initializer';
 import { fetchWithRunfileCache, openRunfileCache } from './recording-file-browser-cache';
@@ -9,7 +9,7 @@ import { type RunFileInfo } from './run-files-info';
 import { wrapResultWithProgress } from './wrap-result-with-progress';
 
 async function loadFile<Game extends GameId>(
-	parserModulePromise: Promise<ParserModule<Game>>,
+	parserModulePromise: Promise<GameModuleOfGame<Game>>,
 	cache: Promise<Cache | null>,
 	file: RunFileInfo,
 	onProgress: (progress: number) => void,
@@ -51,14 +51,14 @@ export function createRunFileLoader<Game extends GameId>(game: Game, files: RunF
 	console.log('started loading run files');
 
 	const abortController = new AbortController();
-	const parserModulePromise = loadParserModule(game);
+	const parserModulePromise = loadGameModule(game);
 
 	const cache = openRunfileCache();
 	const fileLoaders = files.map((file) => {
 		const [progress, setProgress] = createSignal(0);
 		return {
 			progress,
-			promise: loadFile(parserModulePromise, cache, file, setProgress),
+			promise: loadFile<Game>(parserModulePromise, cache, file, setProgress),
 		};
 	});
 
@@ -79,7 +79,7 @@ export function createRunFileLoader<Game extends GameId>(game: Game, files: RunF
 	void Promise.all(fileLoaders.map((it) => it.promise)).then(async (recordings) => {
 		if (abortController.signal.aborted) return;
 		const parserModule = await parserModulePromise;
-		const combinedRecording = parserModule.combineRecordings(recordings);
+		const combinedRecording = parserModule.combineRecordings(recordings as any);
 		storeInitializer.initializeFromRecording(parserModule, combinedRecording);
 		setDone(true);
 	});

@@ -9,7 +9,6 @@ import { Slider, SliderFill, SliderThumb, SliderTrack } from '~/components/ui/sl
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
-import { mainRoomDataBySceneName } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
 import { Duration } from '../duration';
 import {
@@ -73,14 +72,16 @@ function AnimationTimeLineColorCodes() {
 	const themeStore = useThemeStore();
 
 	const sceneChanges = createMemo(function timelineColorCodesSceneChangesComputed() {
+		const gameModule = gameplayStore.gameModule();
+		if (!gameModule) return EMPTY_ARRAY;
 		const sceneEvents = gameplayStore.recording()?.sceneEvents ?? EMPTY_ARRAY;
 		const timeframe = gameplayStore.timeFrame();
 		const theme = themeStore.currentTheme();
 		const sceneChanges = sceneEvents.map((it) => {
 			const mainVirtualScene = it.getMainVirtualSceneName();
-			const mainRoomData = mainRoomDataBySceneName.get(mainVirtualScene);
+			const mainRoomData = gameModule.getMainRoomDataBySceneName(mainVirtualScene);
 
-			const roomColor = mainRoomData?.color;
+			const roomColor = mainRoomData?.origColor;
 			let color: string;
 			if (!roomColor) {
 				color = theme === 'dark' ? 'white' : 'black';

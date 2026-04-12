@@ -1,6 +1,6 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { type SceneEvent } from '../../parser/recording-files/events-shared/scene-event';
-import { silkMapDataBySceneNameLower } from './silk-map';
+import { silkMapDataBySceneNameLower } from './map-data-silk';
 
 export function playerPositionToMapPositionSilk(
 	playerPosition: Vector2,

@@ -264,7 +264,7 @@ export function formatRoomName(zoneName: string | undefined, roomName: string) {
 	return formattedRoomName;
 }
 
-export function formatZoneName(zoneName: string | undefined, roomName: string) {
+export function formatZoneNameHollow(zoneName: string | undefined, roomName: string) {
 	const override = areaOverwrites[roomName];
 	if (override) {
 		return override;
@@ -316,17 +316,17 @@ export function formatZoneName(zoneName: string | undefined, roomName: string) {
 			return zoneName as never;
 	}
 }
-export type ZoneNameFormatted = ReturnType<typeof formatZoneName>;
+export type ZoneNameFormattedHollow = ReturnType<typeof formatZoneNameHollow>;
 
-export function formatZoneAndRoomName(
+export function formatZoneAndRoomNameHollow(
 	zoneName: string | undefined,
 	roomName: string,
 ): {
-	zoneNameFormatted: ZoneNameFormatted;
+	zoneNameFormatted: ZoneNameFormattedHollow;
 	roomNameFormatted: string;
 	roomNameFormattedZoneExclusive: string;
 } {
-	const zoneNameFormatted = formatZoneName(zoneName, roomName);
+	const zoneNameFormatted = formatZoneNameHollow(zoneName, roomName);
 	const roomNameFormatted = formatRoomName(zoneName, roomName);
 
 	return {

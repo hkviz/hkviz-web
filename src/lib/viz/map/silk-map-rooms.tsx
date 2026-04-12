@@ -1,12 +1,12 @@
 import * as d3 from 'd3';
 import { createUniqueId, For } from 'solid-js';
-import { silkMapData } from '~/lib/game-data/silk-data/silk-map';
-import { SilkMapRoomData } from '~/lib/game-data/silk-data/silk-map.types';
-import { type RoomInfo } from '../../parser';
+import { RoomDataHollow } from '~/lib/game-data/hollow-data/map-data-hollow';
+import { silkMapData } from '~/lib/game-data/silk-data/map-data-silk';
+import { RoomDataSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
 import { useSpriteSheetStore } from '../spritesheets/spritesheet-store';
 import { hkMapRoomRectClass } from '../store';
 
-function SilkMapRoom(props: { room: SilkMapRoomData; parentId: string }) {
+function SilkMapRoom(props: { room: RoomDataSilk; parentId: string }) {
 	const spriteSheetStore = useSpriteSheetStore();
 	const mapSheetData = spriteSheetStore.silkMapSheetData;
 
@@ -15,7 +15,7 @@ function SilkMapRoom(props: { room: SilkMapRoomData; parentId: string }) {
 		if (!origColor) {
 			return 'red';
 		}
-		return d3.rgb(origColor.x * 255, origColor.y * 255, origColor.z * 255).formatHex();
+		return origColor.formatHex();
 	}
 
 	function fillRgb() {
@@ -73,10 +73,10 @@ function SilkMapRoom(props: { room: SilkMapRoomData; parentId: string }) {
 									preserveAspectRatio="none"
 									data-type={sprite.type}
 									data-sprite-name={sprite.sprite.name}
-									x={sprite.sprite.bounds.min.x}
-									y={sprite.sprite.bounds.min.y}
-									width={sprite.sprite.bounds.size.x}
-									height={sprite.sprite.bounds.size.y}
+									x={sprite.sprite.visualBounds.min.x}
+									y={sprite.sprite.visualBounds.min.y}
+									width={sprite.sprite.visualBounds.size.x}
+									height={sprite.sprite.visualBounds.size.y}
 									href={href()}
 									style={{
 										transition: 'opacity 0.1s ease 0s',
@@ -115,10 +115,10 @@ function SilkMapRoom(props: { room: SilkMapRoomData; parentId: string }) {
 									preserveAspectRatio="none"
 									data-type={sprite.type}
 									data-sprite-name={sprite.sprite.name}
-									x={sprite.sprite.bounds.min.x - roomMinX()}
-									y={sprite.sprite.bounds.min.y - roomMinY()}
-									width={sprite.sprite.bounds.size.x}
-									height={sprite.sprite.bounds.size.y}
+									x={sprite.sprite.visualBounds.min.x - roomMinX()}
+									y={sprite.sprite.visualBounds.min.y - roomMinY()}
+									width={sprite.sprite.visualBounds.size.x}
+									height={sprite.sprite.visualBounds.size.y}
 									href={href()}
 									style={{
 										transition: 'opacity 0.1s ease 0s',
@@ -156,9 +156,9 @@ function SilkMapRoom(props: { room: SilkMapRoomData; parentId: string }) {
 }
 
 export interface SilkMapRoomsProps {
-	onClick?: (event: MouseEvent, r: RoomInfo) => void;
-	onMouseOver?: (event: MouseEvent, r: RoomInfo) => void;
-	onMouseOut?: (event: MouseEvent, r: RoomInfo) => void;
+	onClick?: (event: MouseEvent, r: RoomDataHollow) => void;
+	onMouseOver?: (event: MouseEvent, r: RoomDataHollow) => void;
+	onMouseOut?: (event: MouseEvent, r: RoomDataHollow) => void;
 	alwaysUseAreaAsColor?: boolean;
 	highlightSelectedRoom?: boolean;
 	alwaysShowMainRoom?: boolean;

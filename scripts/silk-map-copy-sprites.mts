@@ -1,7 +1,7 @@
 import { copyFile } from 'fs/promises';
 import path from 'path';
 import type { SpriteInfoGenerated } from '~/lib/game-data/shared/sprite-info-generated.ts';
-import { silkMapDataGenerated } from '../src/lib/game-data/silk-data/silk-map.generated.ts';
+import { silkMapDataGenerated } from '../src/lib/game-data/silk-data/map-data-silk.generated.ts';
 
 const silksongAssetsPath = '../hkviz-silk-extract-export-2';
 const destBasePath = './assets-build/silk-map{tps}';

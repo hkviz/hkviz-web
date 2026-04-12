@@ -1,7 +1,7 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import { batch, createContext, createEffect, createMemo, createSignal, untrack, useContext } from 'solid-js';
 import { SceneEvent } from '~/lib/parser/recording-files/events-shared/scene-event';
-import { binarySearchLastIndexBefore, mainRoomDataBySceneName, type RoomData } from '../../parser';
+import { binarySearchLastIndexBefore, mainRoomDataBySceneName, type RoomDataHollow } from '../../parser';
 import { GameplayStore } from './gameplay-store';
 import { UiStore } from './ui-store';
 
@@ -68,7 +68,7 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 	});
 
 	const currentSceneEventWithMainMapRoom = createMemo<{
-		mainRoomData: RoomData | null;
+		mainRoomData: RoomDataHollow | null;
 		sceneEvent: SceneEvent | null;
 	}>(() => {
 		const recording = gameplayStore.recording();

@@ -19,12 +19,7 @@ import { Toggle } from '~/components/ui/toggle';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
-import {
-	allRoomDataIncludingSubspritesBySceneName,
-	getRelatedVirtualRoomNames,
-	mainRoomDataBySceneName,
-	RelatedVirtualRoom,
-} from '../../parser';
+import { getRelatedVirtualRoomNames, RelatedVirtualRoom } from '../../parser';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
@@ -41,6 +36,7 @@ import {
 	getAggregationCountModeLabel,
 	useAggregationStore,
 	useAnimationStore,
+	useGameplayStore,
 	useRoomColoringStore,
 	useRoomDisplayStore,
 	useThemeStore,
@@ -373,6 +369,7 @@ function RelatedRoomsTabs(props: {
 }
 
 export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
+	const gameplayStore = useGameplayStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const aggregationStore = useAggregationStore();
 	const panelContext = useLayoutPanelContext();
@@ -381,20 +378,23 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 	const selectedRoom = roomDisplayStore.selectedSceneName;
 	const selectedRoomPinned = roomDisplayStore.selectedScenePinned;
 	const areaSelectionMode = roomDisplayStore.areaSelectionMode;
+	const gameModule = gameplayStore.gameModule;
 
 	const roomInfos = createMemo(() => {
+		const gm = gameModule();
 		const _selectedRoom = selectedRoom();
-		const mainRoomInfo = _selectedRoom ? (mainRoomDataBySceneName.get(_selectedRoom) ?? null) : null;
+		const mainRoomInfo = _selectedRoom ? (gm?.getMainRoomDataBySceneName(_selectedRoom) ?? null) : null;
 		const allRoomInfosIncludingSubsprites = mainRoomInfo
-			? (allRoomDataIncludingSubspritesBySceneName.get(mainRoomInfo.sceneName) ?? null)
+			? (gm?.getAllRoomDataBySceneNameWithSubSprites(mainRoomInfo.sceneName) ?? null)
 			: null;
+		console.log({ mainRoomInfo, allRoomInfosIncludingSubsprites });
 		return { mainRoomInfo, allRoomInfosIncludingSubsprites };
 	});
 
 	const theme = themeStore.currentTheme;
 
 	const gradientColor = createMemo(() => {
-		const color = roomInfos().mainRoomInfo?.color;
+		const color = roomInfos().mainRoomInfo?.origColor;
 		if (!color) {
 			return 'transparent';
 		}

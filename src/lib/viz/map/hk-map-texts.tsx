@@ -1,5 +1,5 @@
 import { For } from 'solid-js';
-import { areaNames, hkLangString, roomData, type AreaNameTextData } from '../../parser';
+import { areaNames, hkLangString, mapRoomsHollow, type AreaNameTextData } from '../../parser';
 import { changeRoomColorForLightTheme, useRoomColoringStore, useRoomDisplayStore, useThemeStore } from '../store';
 
 interface HkMapTextProps {
@@ -31,8 +31,8 @@ function HkMapText(props: HkMapTextProps) {
 		const visible =
 			typeVisible &&
 			('gameObjectName' in props.visibleBy
-				? roomDisplayStore.statesByGameObjectName.get(props.visibleBy.gameObjectName)!.isVisible()
-				: roomDisplayStore.zoneVisible.get(props.visibleBy.zoneName)!());
+				? roomDisplayStore.stateForGameObjectName(props.visibleBy.gameObjectName)?.isVisible()
+				: roomDisplayStore.zoneVisible.get(props.visibleBy.zoneName)?.());
 		return visible ? '1' : '0';
 	};
 
@@ -53,7 +53,7 @@ function HkMapText(props: HkMapTextProps) {
 	);
 }
 
-const roomTexts = roomData.flatMap((room) =>
+const roomTexts = mapRoomsHollow.flatMap((room) =>
 	room.texts.filter((text) => !text.objectPath.includes('Next Area')).map((text) => ({ room, text })),
 );
 

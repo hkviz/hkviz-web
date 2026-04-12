@@ -101,7 +101,6 @@ export function parseRecordingFileSilk(
 
 				case entryTypeSilk.HeroLocation: {
 					const position = readVector2();
-					console.log('position entry', position);
 
 					if (previousSceneEvent) {
 						const posEvent = new PlayerPositionEvent(position, previousSceneEvent, ctx);

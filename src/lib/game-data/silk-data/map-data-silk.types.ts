@@ -1,54 +1,22 @@
 import { Bounds } from '../shared/bounds';
+import { RoomDataBase } from '../shared/map-shared';
 import { Vector3Like, Vector4Like } from '../shared/vector-like';
+import { MapZonesGenerated as MapZonesGeneratedSilk } from './map-data-silk.generated.types';
 
-export const MapZones = {
-	Tut: 'Tut',
-	Bonetown: 'Bonetown',
-	Bone: 'Bone',
-	Crawl: 'Crawl',
-	Dock: 'Dock',
-	Weavehome: 'Weavehome',
-	Ant: 'Ant',
-	Wilds: 'Wilds',
-	Greymoor: 'Greymoor',
-	Dust: 'Dust',
-	DustMaze: 'Dust Maze',
-	Wisp: 'Wisp',
-	Swamp: 'Swamp',
-	Aqueduct: 'Aqueduct',
-	Belltown: 'Belltown',
-	Shellwood: 'Shellwood',
-	BlastedSteps: 'Blasted_Steps',
-	CoralCaves: 'Coral_Caves',
-	Slab: 'Slab',
-	Peak: 'Peak',
-	Song: 'Song',
-	SongGate: 'Song_Gate',
-	Under: 'Under',
-	Library: 'Library',
-	Cog: 'Cog',
-	Ward: 'Ward',
-	Hang: 'Hang',
-	Arborium: 'Arborium',
-	Cradle: 'Cradle',
-	Clover: 'Clover',
-	Abyss: 'Abyss',
-	Surface: 'Surface',
-	Bellshrine: 'Bellshrine',
-} as const;
+export const MapZonesSilk = MapZonesGeneratedSilk;
 
-export type SilkMapZone = (typeof MapZones)[keyof typeof MapZones];
+export type MapZoneSilk = (typeof MapZonesSilk)[keyof typeof MapZonesSilk];
 
 export interface SilkSpriteInfo {
 	name: string;
-	bounds: Bounds;
+	visualBounds: Bounds;
 }
 
 export type SilkPlayerDataTestType = 'Bool' | 'Int' | 'Float' | 'Enum' | 'String';
 export type SilkPlayerDataTestNumType = 'Equal' | 'NotEqual' | 'LessThan' | 'MoreThan';
 export type SilkPlayerDataTestStringType = 'Equal' | 'NotEqual' | 'Contains' | 'NotContains';
 
-export interface SilkPlayerDataTestEntry {
+export interface PlayerDataTestEntrySilk {
 	type: SilkPlayerDataTestType;
 	fieldName: string;
 	boolValue: boolean | null;
@@ -59,34 +27,43 @@ export interface SilkPlayerDataTestEntry {
 	stringType: SilkPlayerDataTestStringType | null;
 }
 
-export interface SilkPlayerDataTestGroup {
-	tests: SilkPlayerDataTestEntry[];
+export interface PlayerDataTestGroupSilk {
+	tests: PlayerDataTestEntrySilk[];
 }
 
-export interface SilkPlayerDataTestData {
+export interface PlayerDataTestDataSilk {
 	playerDataOverrideType: string | null;
-	testGroups: SilkPlayerDataTestGroup[];
+	testGroups: PlayerDataTestGroupSilk[];
 }
 
-export interface SilkSpriteConditionData {
+export interface SpriteConditionDataSilk {
 	type: 'alt-full-sprite';
 	sprite: SilkSpriteInfo;
-	condition: SilkPlayerDataTestData | null;
+	condition: PlayerDataTestDataSilk | null;
+	variant: `alt-full-sprite-${number}`;
 }
 
-export type SilkSomeSpriteType =
-	| SilkSpriteConditionData
+export type SomeSpriteTypeSilk =
+	| SpriteConditionDataSilk
 	| {
-			type: 'initial' | 'full' | 'renderer';
+			type: 'initial';
 			sprite: SilkSpriteInfo;
+			variant: 'initial';
+	  }
+	| {
+			type: 'full';
+			sprite: SilkSpriteInfo;
+			variant: 'full';
 	  };
 
-export interface SilkColorConditionData {
+export type RoomSpriteVariantSilk = SomeSpriteTypeSilk['variant'];
+
+export interface ColorConditionDataSilk {
 	color: Vector4Like;
-	condition: SilkPlayerDataTestData | null;
+	condition: PlayerDataTestDataSilk | null;
 }
 
-export interface SilkTextData {
+export interface TextDataSilk {
 	objectPath: string;
 	convoName: string;
 	sheetName: string;
@@ -97,16 +74,13 @@ export interface SilkTextData {
 	origColor: Vector4Like;
 }
 
-export interface SilkMapRoomData {
-	sceneName: string;
-	gameObjectName: string;
-	mapZone: SilkMapZone;
-	mappedParent: string | null;
+export interface RoomDataSilk extends RoomDataBase<'silk'> {
+	mapZone: MapZoneSilk;
+	// mappedParent: string | null; -> moved to mappedIfAllMapped
 	mappedIfAllMapped: string[] | null;
-	texts: SilkTextData[];
+	texts: TextDataSilk[];
 	hasSpriteRenderer: boolean;
 
-	origColor: Vector4Like | null;
 	visualBounds: Bounds | null;
 	playerPositionBounds: Bounds | null;
 
@@ -120,18 +94,19 @@ export interface SilkMapRoomData {
 	altFullSprites: SilkSpriteConditionData[] | null;
 	altColors: SilkColorConditionData[] | null;*/
 
-	allSprites: SilkSomeSpriteType[];
+	allSprites: SomeSpriteTypeSilk[];
+	spritesByVariant: Record<string, SomeSpriteTypeSilk>;
 
 	// State information
 	initialState: 'Hidden' | 'Rough' | 'Full';
 	unmappedNoBounds: boolean;
 	excludeBounds: boolean;
-	hideCondition: SilkPlayerDataTestData | null;
+	hideCondition: PlayerDataTestDataSilk | null;
 }
 
-export interface SilkMapData {
-	rooms: SilkMapRoomData[];
-	areaNames: SilkTextData[];
+export interface MapDataSilk {
+	rooms: RoomDataSilk[];
+	areaNames: TextDataSilk[];
 }
 
 // /**

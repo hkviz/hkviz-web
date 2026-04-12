@@ -50,7 +50,13 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 	const playerDataAnimationStore = createPlayerDataAnimationStore(animationStore, gameplayStore);
 	const roomDisplayStore = createRoomDisplayStore(playerDataAnimationStore, gameplayStore);
 	const aggregationStore = createAggregationStore(roomDisplayStore, animationStore, gameplayStore);
-	const roomColoringStore = createRoomColoringStore(themeStore, roomDisplayStore, aggregationStore, animationStore);
+	const roomColoringStore = createRoomColoringStore(
+		themeStore,
+		roomDisplayStore,
+		aggregationStore,
+		animationStore,
+		gameplayStore,
+	);
 	const splitsStore = createSplitsStore(gameplayStore, animationStore);
 	const tourStore = createTourStore(
 		roomColoringStore,

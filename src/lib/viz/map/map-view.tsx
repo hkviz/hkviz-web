@@ -4,15 +4,13 @@ import {
 	createMemo,
 	createSignal,
 	createUniqueId,
-	Match,
 	onMount,
 	Show,
-	Switch,
 	untrack,
 	type Component,
 } from 'solid-js';
 import { cn } from '~/lib/utils';
-import { mapVisualExtends, roomData, type RoomInfo } from '../../parser';
+import { mapRoomsHollow, mapVisualExtends, RoomDataHollow } from '../../parser';
 import { createElementSize } from '../canvas';
 import { useLayoutPanelContextOrNull } from '../layout/layout-panel-context';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
@@ -22,15 +20,14 @@ import { createHKMapZoom } from './hk-map-zoom';
 import { HkMapRooms } from './hollow-map-rooms';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
-import { SilkMapRooms } from './silk-map-rooms';
 import { OutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 
-export interface HKMapProps extends LayoutPanelTypeProps {
+export interface MapViewProps extends LayoutPanelTypeProps {
 	class?: string;
 }
 
-export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
+export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 	const uiStore = useUiStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const gameplayStore = useGameplayStore();
@@ -45,23 +42,23 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 	const [previousActiveSceneName, setPreviousActiveSceneName] = createSignal<string | null>(null);
 
 	const visibleRooms = createMemo(() => {
-		return roomData.filter((room) => {
-			const state = roomDisplayStore.statesByGameObjectName.get(room.gameObjectName);
+		return mapRoomsHollow.filter((room) => {
+			const state = roomDisplayStore.stateForGameObjectName(room.gameObjectName);
 			return state?.isVisible() ?? false;
 		});
 	});
 
-	const roomBySceneName = createMemo(() => new Map(roomData.map((room) => [room.sceneName, room])));
+	const roomBySceneName = createMemo(() => new Map(mapRoomsHollow.map((room) => [room.sceneName, room])));
 
 	function roomSemanticName(sceneName: string) {
 		const room = roomBySceneName().get(sceneName);
 		return room?.roomNameFormatted ?? sceneName;
 	}
 
-	function centerOfRoom(room: RoomInfo) {
+	function centerOfRoom(room: RoomDataHollow) {
 		return {
-			x: room.allSpritesScaledPositionBounds.min.x + room.allSpritesScaledPositionBounds.size.x / 2,
-			y: room.allSpritesScaledPositionBounds.min.y + room.allSpritesScaledPositionBounds.size.y / 2,
+			x: room.visualBoundsAllSprites.min.x + room.visualBoundsAllSprites.size.x / 2,
+			y: room.visualBoundsAllSprites.min.y + room.visualBoundsAllSprites.size.y / 2,
 		};
 	}
 
@@ -74,7 +71,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 		if (hoveredScene && roomBySceneName().has(hoveredScene)) {
 			return hoveredScene;
 		}
-		return visibleRooms()[0]?.sceneName ?? roomData[0]?.sceneName ?? null;
+		return visibleRooms()[0]?.sceneName ?? mapRoomsHollow[0]?.sceneName ?? null;
 	}
 
 	createEffect(() => {
@@ -111,7 +108,7 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 	}
 
 	type Direction = 'up' | 'down' | 'left' | 'right';
-	type ScoredCandidate = { room: RoomInfo; score: number };
+	type ScoredCandidate = { room: RoomDataHollow; score: number };
 
 	function findNextRoomInDirection(currentSceneName: string, direction: Direction) {
 		const currentRoom = roomBySceneName().get(currentSceneName);
@@ -220,35 +217,35 @@ export const HKMap: Component<HKMapProps> = (props: HKMapProps) => {
 
 	const rootG = (
 		<g data-group="root">
-			<Switch>
+			{/* <Switch>
 				<Match when={gameplayStore.game() === 'silk'}>
 					<SilkMapRooms />
 				</Match>
-				<Match when={gameplayStore.game() === 'hollow'}>
-					<HkMapRooms
-						rooms={roomData}
-						onMouseOver={(_, r) => {
-							setActiveSceneName(r.sceneName);
-							roomDisplayStore.setSelectedRoomIfNotPinned(r.sceneName);
-							roomDisplayStore.setHoveredRoom(r.sceneName, 'map');
-							setLiveMapStatus(`${roomSemanticName(r.sceneName)} selected. Press Enter or Space to pin.`);
-						}}
-						onMouseOut={(_, r) => {
-							roomDisplayStore.unsetHoveredRoom(r.sceneName);
-						}}
-						onClick={(_, r) => {
-							console.log('clicked room', r);
-							// if (event.pointerType !== 'touch') {
-							roomDisplayStore.togglePinnedRoom(r.sceneName, 'map-room-click');
-							// } else {
-							// setSelectedRoomPinned(false);
-							// setSelectedRoomIfNotPinned(r.sceneName);
-							// }
-						}}
-					/>
-					<HkMapTexts />
-				</Match>
-			</Switch>
+				<Match when={gameplayStore.game() === 'hollow'}> */}
+			<HkMapRooms
+				rooms={gameplayStore.gameModule()?.mapRooms ?? []}
+				onMouseOver={(_, r) => {
+					setActiveSceneName(r.sceneName);
+					roomDisplayStore.setSelectedRoomIfNotPinned(r.sceneName);
+					roomDisplayStore.setHoveredRoom(r.sceneName, 'map');
+					setLiveMapStatus(`${roomSemanticName(r.sceneName)} selected. Press Enter or Space to pin.`);
+				}}
+				onMouseOut={(_, r) => {
+					roomDisplayStore.unsetHoveredRoom(r.sceneName);
+				}}
+				onClick={(_, r) => {
+					console.log('clicked room', r);
+					// if (event.pointerType !== 'touch') {
+					roomDisplayStore.togglePinnedRoom(r.sceneName, 'map-room-click');
+					// } else {
+					// setSelectedRoomPinned(false);
+					// setSelectedRoomIfNotPinned(r.sceneName);
+					// }
+				}}
+			/>
+			<HkMapTexts />
+			{/* </Match>
+			</Switch>*/}
 		</g>
 	) as SVGGElement;
 	const rootGD3 = d3.select(rootG);

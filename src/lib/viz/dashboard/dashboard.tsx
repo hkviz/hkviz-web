@@ -5,7 +5,7 @@ import { cn } from '~/lib/utils';
 import { RunMetadata } from '~/server/run/_find_runs_internal';
 import { LayoutLane } from '../layout/layout-lane';
 import { RunFileInfo, RunFileLoader } from '../loader';
-import { HKMap } from '../map';
+import { MapView } from '../map';
 import { useUiStore, useViewportStore } from '../store';
 import { AnimationOptions } from '../timeline';
 import { SingleRunPageTour } from '../tour';
@@ -77,7 +77,7 @@ export const GameplayDashboard: Component<GameplayDashboardProps> = (props) => {
 					gameplayCard={props.gameplayCard}
 				/>
 				<Show when={showMap() && !isSmallMobileLayout()}>
-					<HKMap class="absolute inset-0" />
+					<MapView class="absolute inset-0" />
 				</Show>
 				<SingleRunPageTour />
 				{/* <RunClientLoader runData={runData} /> */}

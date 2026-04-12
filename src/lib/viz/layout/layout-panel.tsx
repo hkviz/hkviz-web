@@ -2,7 +2,7 @@ import { Component, JSXElement } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { assertNever } from '~/lib/parser';
 import { AreaAnalyticsPanel } from '../area-analytics';
-import { HKMap } from '../map';
+import { MapView } from '../map';
 import { MapOptions } from '../map-options';
 import { RunSplits } from '../splits';
 import { useLayoutStore } from '../store/layout-store';
@@ -44,7 +44,7 @@ function getComponentForPanelType(type: LayoutPanelType): Component<LayoutPanelT
 		case 'map':
 			return (props) => (
 				<LayoutPanelWrapper class="relative">
-					<HKMap class="absolute inset-0" {...props} />
+					<MapView class="absolute inset-0" {...props} />
 				</LayoutPanelWrapper>
 			);
 		default:

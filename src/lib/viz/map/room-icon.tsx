@@ -1,20 +1,21 @@
-import { createMemo, type Component } from 'solid-js';
+import { createMemo } from 'solid-js';
 import { Bounds } from '~/lib/game-data/shared/bounds';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { RoomInfo } from '~/lib/parser';
+import { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
+import { GameId } from '~/lib/types/game-ids';
 import { cn } from '~/lib/utils';
 import { HkMapRooms } from './hollow-map-rooms';
 
-export interface HKMapRoomProps {
+export interface HKMapRoomProps<Game extends GameId> {
 	class?: string;
-	roomInfos: RoomInfo[];
+	roomInfos: RoomDataOfGame<Game>[];
 }
 
-export const HKMapRoom: Component<HKMapRoomProps> = (props) => {
+export function HKMapRoom<Game extends GameId>(props: HKMapRoomProps<Game>) {
 	const roomInfosOfRoom = createMemo(() => {
-		const containingBounds = Bounds.fromContainingBounds(
-			props.roomInfos.map((it) => it.allSpritesScaledPositionBounds),
-		);
+		const visualBoundsAllSprites = props.roomInfos.map((it) => it.visualBoundsAllSprites).filter((it) => !!it);
+		const containingBounds =
+			visualBoundsAllSprites.length === 0 ? Bounds.ZERO : Bounds.fromContainingBounds(visualBoundsAllSprites);
 		const smallerRoomSizeProportion = containingBounds.size.minElement() / containingBounds.size.maxElement();
 		const roomPositionWithin0To1 =
 			containingBounds.size.x > containingBounds.size.y
@@ -46,17 +47,20 @@ export const HKMapRoom: Component<HKMapRoomProps> = (props) => {
 		}
 
 		return props.roomInfos.map((it) => {
-			const sprites = it.sprites.map((it) => ({
+			const allSprites = it.allSprites.map((it) => ({
 				...it,
-				scaledPosition: relativeToRoomBounds(it.scaledPosition),
+				sprite: {
+					...it.sprite,
+					visualBounds: relativeToRoomBounds(it.sprite.visualBounds),
+				},
 			}));
-			const spritesByVariant = Object.fromEntries(sprites.map((it) => [it.variant, it]));
+			const spritesByVariant = Object.fromEntries(allSprites.map((it) => [it.variant, it]));
 			return {
 				...it,
-				sprites,
+				allSprites,
 
 				spritesByVariant: spritesByVariant as any,
-				allSpritesScaledPositionBounds: roomPositionWithin0To1,
+				visualBoundsAllSprites: roomPositionWithin0To1,
 			};
 		});
 	});
@@ -73,4 +77,4 @@ export const HKMapRoom: Component<HKMapRoomProps> = (props) => {
 			</svg>
 		</div>
 	);
-};
+}

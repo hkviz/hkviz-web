@@ -1,1 +1,1 @@
-export * from './hk-map';
+export * from './map-view';

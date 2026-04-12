@@ -38,7 +38,6 @@ export const MapZonesGenerated = {
 	Clover: 'Clover',
 	Abyss: 'Abyss',
 	Surface: 'Surface',
-	Bellshrine: 'Bellshrine',
 } as const;
 
 export type SilkMapZoneGenerated = (typeof MapZonesGenerated)[keyof typeof MapZonesGenerated];

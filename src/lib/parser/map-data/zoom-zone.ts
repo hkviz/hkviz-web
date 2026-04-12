@@ -1,15 +1,15 @@
-import { type ZoneNameFormatted } from './room-name-formatting';
+import { type ZoneNameFormattedHollow } from '../../game-data/hollow-data/room-name-formatting-hollow';
 
-export function zoomZone(zoneNameFormatted: ZoneNameFormatted) {
+export function zoomZone(zoneNameFormatted: ZoneNameFormattedHollow) {
 	switch (zoneNameFormatted) {
 		case 'Ancient Basin':
-			return 'The Abyss' satisfies ZoneNameFormatted;
+			return 'The Abyss' satisfies ZoneNameFormattedHollow;
 		case 'Dirtmouth':
-			return 'Forgotten Crossroads' satisfies ZoneNameFormatted;
+			return 'Forgotten Crossroads' satisfies ZoneNameFormattedHollow;
 		case 'Hive':
-			return "Kingdom's Edge" satisfies ZoneNameFormatted;
+			return "Kingdom's Edge" satisfies ZoneNameFormattedHollow;
 		case 'Royal Waterways':
-			return 'City of Tears' satisfies ZoneNameFormatted;
+			return 'City of Tears' satisfies ZoneNameFormattedHollow;
 		default:
 			return zoneNameFormatted;
 	}
@@ -56,7 +56,7 @@ export const gameObjectNamesIgnoredInZoomZone = new Set([
 	'Abyss_03_b', // tram passage, visual just on map, but can not be entered. Therefore no need to zoom to it.
 ]);
 
-export function getZoomZones(sceneName: string, zoneNameFormatted: ZoneNameFormatted): readonly ZoomZone[] {
+export function getZoomZones(sceneName: string, zoneNameFormatted: ZoneNameFormattedHollow): readonly ZoomZone[] {
 	const mainZoomZone = zoomZone(zoneNameFormatted);
 	const extraZoomZonesForScene = extraZoomZones[sceneName] ?? [];
 	return [mainZoomZone, ...extraZoomZonesForScene];

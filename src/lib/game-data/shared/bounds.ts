@@ -42,4 +42,8 @@ export class Bounds {
 	public toD3ViewBox(): [number, number, number, number] {
 		return [this.min.x, this.min.y, this.size.x, this.size.y];
 	}
+
+	static get ZERO() {
+		return new Bounds(new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0));
+	}
 }

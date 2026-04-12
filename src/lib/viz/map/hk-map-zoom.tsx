@@ -8,8 +8,8 @@ import {
 	binarySearchLastIndexBefore,
 	gameObjectNamesIgnoredInZoomZone,
 	mainRoomDataBySceneName,
+	mapRoomsHollow,
 	mapVisualExtends,
-	roomData,
 	type ZoomZone,
 } from '../../parser';
 import {
@@ -32,8 +32,8 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 	const mapZoomStore = useMapZoomStore();
 	const gameplayStore = useGameplayStore();
 
-	const roomsByZoomZone = new Map<ZoomZone, typeof roomData>();
-	for (const room of roomData) {
+	const roomsByZoomZone = new Map<ZoomZone, typeof mapRoomsHollow>();
+	for (const room of mapRoomsHollow) {
 		if (gameObjectNamesIgnoredInZoomZone.has(room.gameObjectName)) continue;
 		for (const zone of room.zoomZones) {
 			const existing = roomsByZoomZone.get(zone);
@@ -168,7 +168,7 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		const enabled = mapZoomStore.enabled();
 		if (!enabled) return null;
 		const roomsVisible = roomDisplayStore.roomsVisible();
-		const visibleRooms = roomData.filter((r) => roomsVisible === 'all' || roomsVisible.has(r.gameObjectName));
+		const visibleRooms = mapRoomsHollow.filter((r) => roomsVisible === 'all' || roomsVisible.has(r.gameObjectName));
 		if (visibleRooms.length === 0) return null;
 
 		return Bounds.fromContainingBounds(visibleRooms.map((r) => r.visualBounds));
@@ -268,7 +268,7 @@ export function createHKMapZoom(props: HKMapZoomProps) {
 		const _zoomZone = zoomZone();
 		if (!_zoomZone) return null;
 
-		const rooms = roomData.filter(
+		const rooms = mapRoomsHollow.filter(
 			(r) => r.zoomZones.includes(_zoomZone) && !gameObjectNamesIgnoredInZoomZone.has(r.gameObjectName),
 		);
 		if (rooms.length === 0) return null;

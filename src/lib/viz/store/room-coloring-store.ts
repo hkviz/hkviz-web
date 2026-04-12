@@ -1,12 +1,13 @@
 import * as d3 from 'd3';
 import { memoize } from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
-import { roomData } from '../../parser';
+import { mapRoomsHollow } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
 import { ColorMapId, getRoomColorMapById } from '../color-map';
 import { AggregationVariable, getVirtualSceneNameForHeatMap } from './aggregations/aggregate-recording';
 import { AggregationStore } from './aggregations/aggregation-store';
 import { AnimationStore } from './animation-store';
+import { GameplayStore } from './gameplay-store';
 import { RoomDisplayStore } from './room-display-store';
 import { ThemeStore } from './theme-store';
 
@@ -41,7 +42,9 @@ export function createRoomColoringStore(
 	roomDisplayStore: RoomDisplayStore,
 	aggregationStore: AggregationStore,
 	animationStore: AnimationStore,
+	gameplayStore: GameplayStore,
 ) {
+	const gameModule = gameplayStore.gameModule;
 	const [colorMode, setColorMode] = createSignal<RoomColorMode>('area');
 	const [var1, setVar1] = createSignal<AggregationVariable>('firstVisitMs');
 	const [var1Curve, setVar1Curve] = createSignal<RoomColorCurve>(RoomColorCurveLinear);
@@ -65,12 +68,14 @@ export function createRoomColoringStore(
 
 	const areaColorByGameObjectName = createMemo(() => {
 		const theme = themeStore.currentTheme();
+		const roomData = gameModule()?.mapRooms;
+		if (!roomData) return new Map<string, string>();
 
 		return new Map<string, string>(
 			roomData.map((room) => {
 				return [
 					room.gameObjectName,
-					theme === 'dark' ? room.color.formatHex() : changeRoomColorForLightTheme(room.color),
+					theme === 'dark' ? room.origColor.formatHex() : changeRoomColorForLightTheme(room.origColor),
 				];
 			}),
 		);
@@ -114,7 +119,7 @@ export function createRoomColoringStore(
 		const colorMap = singleVarColorMap();
 
 		return new Map<string, string>(
-			roomData.map((room) => {
+			mapRoomsHollow.map((room) => {
 				const aggregations = aggregationStore.getAggregations(toVirtualSceneName(room.sceneName));
 				const aggregationValue = aggregationStore.getCorrectedAggregationValueNullIfUnvisited(
 					aggregations,

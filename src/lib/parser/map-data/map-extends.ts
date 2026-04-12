@@ -1,4 +1,4 @@
 import { Bounds } from '~/lib/game-data/shared/bounds';
-import { roomData } from './rooms';
+import { mapRoomsHollow } from '../../game-data/hollow-data/map-data-hollow';
 
-export const mapVisualExtends = Bounds.fromContainingBounds(roomData.map((r) => r.visualBounds));
+export const mapVisualExtends = Bounds.fromContainingBounds(mapRoomsHollow.map((r) => r.visualBounds));

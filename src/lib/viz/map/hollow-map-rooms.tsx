@@ -1,10 +1,18 @@
 import { For, createMemo, createUniqueId } from 'solid-js';
-import { type RoomInfo } from '../../parser';
+import { RoomDataHollow } from '~/lib/game-data/hollow-data/map-data-hollow';
+import { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
+import { GameId } from '~/lib/types/game-ids';
 import { useSpriteSheetStore } from '../spritesheets/spritesheet-store';
-import { hkMapRoomRectClass, useRoomColoringStore, useRoomDisplayStore, useThemeStore } from '../store';
+import {
+	hkMapRoomRectClass,
+	useGameplayStore,
+	useRoomColoringStore,
+	useRoomDisplayStore,
+	useThemeStore,
+} from '../store';
 
-function HkMapRoom(props: {
-	room: RoomInfo;
+function HkMapRoom<Game extends GameId>(props: {
+	room: RoomDataOfGame<Game>;
 	highlightSelectedRoom: boolean;
 	alwaysShowMainRoom: boolean;
 	alwaysUseAreaAsColor: boolean;
@@ -12,10 +20,12 @@ function HkMapRoom(props: {
 }) {
 	const roomColoringStore = useRoomColoringStore();
 	const spriteSheetStore = useSpriteSheetStore();
-	const mapSheetData = spriteSheetStore.hollowMapSheetData;
+	const gameplayStore = useGameplayStore();
+	const mapSheetData = () =>
+		gameplayStore.game() === 'silk' ? spriteSheetStore.silkMapSheetData() : spriteSheetStore.hollowMapSheetData();
 
 	const roomDisplayStore = useRoomDisplayStore();
-	const states = createMemo(() => roomDisplayStore.statesByGameObjectName.get(props.room.gameObjectName)!);
+	const states = createMemo(() => roomDisplayStore.stateForGameObjectName(props.room.gameObjectName)!);
 	const isInteractable = createMemo(
 		() => (props.room.isMainGameObject && props.alwaysShowMainRoom) || states().isVisible(),
 	);
@@ -24,19 +34,22 @@ function HkMapRoom(props: {
 		<g data-scene-name={props.room.sceneName} data-game-object-name={props.room.gameObjectName}>
 			<mask id={props.maskId}>
 				<rect style={{ fill: 'black' }} />
-				<For each={props.room.sprites}>
+				<For each={props.room.allSprites}>
 					{(sprite) => {
-						const imgPath = sprite.nameWithoutSubSprites ?? sprite.name;
+						const imgPath =
+							'nameWithoutSubSprites' in sprite
+								? (sprite.nameWithoutSubSprites ?? sprite.sprite.name)
+								: sprite.sprite.name;
 						const href = () => mapSheetData()?.[imgPath];
 
 						return (
 							<image
 								data-variant={sprite.variant}
 								preserveAspectRatio="none"
-								x={sprite.scaledPosition.min.x}
-								y={sprite.scaledPosition.min.y}
-								width={sprite.scaledPosition.size.x}
-								height={sprite.scaledPosition.size.y}
+								x={sprite.sprite.visualBounds.min.x}
+								y={sprite.sprite.visualBounds.min.y}
+								width={sprite.sprite.visualBounds.size.x}
+								height={sprite.sprite.visualBounds.size.y}
 								// href={'/ingame-map/' + (sprite.nameWithoutSubSprites ?? sprite.name) + '.png'}
 								href={href()}
 								style={{
@@ -51,10 +64,10 @@ function HkMapRoom(props: {
 			<rect
 				class={hkMapRoomRectClass(props.room)}
 				mask={`url(#${props.maskId})`}
-				x={props.room.allSpritesScaledPositionBounds.min.x}
-				y={props.room.allSpritesScaledPositionBounds.min.y}
-				width={props.room.allSpritesScaledPositionBounds.size.x}
-				height={props.room.allSpritesScaledPositionBounds.size.y}
+				x={props.room.visualBoundsAllSprites?.min.x ?? 0}
+				y={props.room.visualBoundsAllSprites?.min.y ?? 0}
+				width={props.room.visualBoundsAllSprites?.size.x ?? 0}
+				height={props.room.visualBoundsAllSprites?.size.y ?? 0}
 				style={{
 					transition: 'fill 0.1s ease 0s',
 					fill: props.alwaysUseAreaAsColor
@@ -67,17 +80,17 @@ function HkMapRoom(props: {
 	);
 }
 
-export interface HkMapRoomsProps {
-	rooms: RoomInfo[];
-	onClick?: (event: MouseEvent, r: RoomInfo) => void;
-	onMouseOver?: (event: MouseEvent, r: RoomInfo) => void;
-	onMouseOut?: (event: MouseEvent, r: RoomInfo) => void;
+export interface HkMapRoomsProps<Game extends GameId> {
+	rooms: RoomDataOfGame<Game>[];
+	onClick?: (event: MouseEvent, r: RoomDataOfGame<Game>) => void;
+	onMouseOver?: (event: MouseEvent, r: RoomDataOfGame<Game>) => void;
+	onMouseOut?: (event: MouseEvent, r: RoomDataOfGame<Game>) => void;
 	alwaysUseAreaAsColor?: boolean;
 	highlightSelectedRoom?: boolean;
 	alwaysShowMainRoom?: boolean;
 }
 
-export function HkMapRooms(props: HkMapRoomsProps) {
+export function HkMapRooms<Game extends GameId>(props: HkMapRoomsProps<Game>) {
 	const roomDisplayStore = useRoomDisplayStore();
 	const themeStore = useThemeStore();
 	const idPrefix = createUniqueId();
@@ -87,10 +100,8 @@ export function HkMapRooms(props: HkMapRoomsProps) {
 		() => new Map(props.rooms.map((room) => [room.gameObjectName, `mask_${idPrefix}_${room.gameObjectName}`])),
 	);
 	const hoveredRooms = createMemo(() => {
-		if (!(props.highlightSelectedRoom ?? true)) return [] as RoomInfo[];
-		return props.rooms.filter((room) =>
-			roomDisplayStore.statesByGameObjectName.get(room.gameObjectName)?.isHovered(),
-		);
+		if (!(props.highlightSelectedRoom ?? true)) return [] as RoomDataHollow[];
+		return props.rooms.filter((room) => roomDisplayStore.stateForGameObjectName(room.gameObjectName)?.isHovered());
 	});
 
 	let hoveredGameObjectName: string | null = null;
@@ -164,10 +175,10 @@ export function HkMapRooms(props: HkMapRoomsProps) {
 					{(room) => (
 						<rect
 							mask={`url(#${maskIdByGameObjectName().get(room.gameObjectName)!})`}
-							x={room.allSpritesScaledPositionBounds.min.x}
-							y={room.allSpritesScaledPositionBounds.min.y}
-							width={room.allSpritesScaledPositionBounds.size.x}
-							height={room.allSpritesScaledPositionBounds.size.y}
+							x={room.visualBoundsAllSprites?.min.x ?? 0}
+							y={room.visualBoundsAllSprites?.min.y ?? 0}
+							width={room.visualBoundsAllSprites?.size.x ?? 0}
+							height={room.visualBoundsAllSprites?.size.y ?? 0}
 							style={{ ['pointer-events']: 'none' }}
 						/>
 					)}

@@ -1,13 +1,13 @@
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { GameModuleOfGame } from '~/lib/parser/game-module/game-module';
 import { playerDataFields } from '~/lib/parser/player-data/player-data';
-import { ParserModule } from '~/lib/parser/recording-files/parser-shared/parser-module';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
 import { GameId } from '~/lib/types/game-ids';
 
 export function createGameplayStore<Game extends GameId>() {
 	const [game, setGame] = createSignal<GameId | null>(null);
-	const [gameModule, setGameModule] = createSignal<ParserModule<Game> | null>(null);
+	const [gameModule, setGameModule] = createSignal<GameModuleOfGame<Game> | null>(null);
 	const [recording, setRecording] = createSignal<CombinedRecordingOfGame<Game> | null>(null);
 
 	function reset() {

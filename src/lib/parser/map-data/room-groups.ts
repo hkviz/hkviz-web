@@ -1,4 +1,4 @@
-import { formatZoneAndRoomName } from './room-name-formatting';
+import { formatZoneAndRoomNameHollow } from '../../game-data/hollow-data/room-name-formatting-hollow';
 
 type RoomGroup = {
 	readonly name: `group_${string}`;
@@ -226,7 +226,7 @@ export function getRelatedVirtualRoomNames(zoneName: string, virtualRoomName: st
 		: roomGroups.filter((group) => group.sceneNames.includes(virtualRoomName as never));
 
 	return groups.flatMap((group) => {
-		const allDisplayName = formatZoneAndRoomName(zoneName, group.name).roomNameFormattedZoneExclusive;
+		const allDisplayName = formatZoneAndRoomNameHollow(zoneName, group.name).roomNameFormattedZoneExclusive;
 		return [
 			{
 				name: group.name,
@@ -234,7 +234,7 @@ export function getRelatedVirtualRoomNames(zoneName: string, virtualRoomName: st
 			},
 			...group.sceneNames.map((sceneName) => ({
 				name: sceneName,
-				displayName: formatZoneAndRoomName(zoneName, sceneName)
+				displayName: formatZoneAndRoomNameHollow(zoneName, sceneName)
 					.roomNameFormattedZoneExclusive.replace(allDisplayName + ' - ', '')
 					.replace(allDisplayName + ' ', ''),
 			})),

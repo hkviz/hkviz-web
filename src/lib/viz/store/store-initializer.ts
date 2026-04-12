@@ -1,5 +1,5 @@
 import { batch } from 'solid-js';
-import { ParserModule } from '~/lib/parser/recording-files/parser-shared/parser-module';
+import { GameModuleOfGame } from '~/lib/parser/game-module/game-module';
 import { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
 import { GameId } from '~/lib/types/game-ids';
 import { useAnimationStore } from './animation-store';
@@ -17,7 +17,7 @@ export function createStoreInitializer<Game extends GameId>() {
 		reset() {
 			uiStore.reset();
 		},
-		initializeFromRecording(module: ParserModule<Game>, recording: CombinedRecordingOfGame<Game> | null) {
+		initializeFromRecording(module: GameModuleOfGame<Game>, recording: CombinedRecordingOfGame<Game> | null) {
 			batch(() => {
 				gameplayStore.setGameModule(module);
 				gameplayStore.setRecording(recording);

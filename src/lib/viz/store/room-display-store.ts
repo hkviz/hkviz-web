@@ -1,14 +1,16 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import * as d3 from 'd3';
 import { createContext, createMemo, createSignal, useContext, type Accessor } from 'solid-js';
+import { RoomSpriteVariantSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
+import { isRoomDataHollow, isRoomDataSilk } from '~/lib/game-data/specific/room-data-of-game';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import {
 	assertNever,
 	mainRoomDataBySceneName,
+	mapRoomsHollow,
 	playerDataFields,
-	roomData,
 	roomDataByGameObjectName,
-	type RoomSpriteVariant,
+	type RoomSpriteVariantHollow,
 } from '../../parser';
 import { GameplayStore } from './gameplay-store';
 import { PlayerDataAnimationStore } from './player-data-animation-store';
@@ -112,48 +114,65 @@ export function createRoomDisplayStore(
 		return signal;
 	}
 
-	const statesByGameObjectName = new Map(
-		roomData.map((room) => {
-			const isHovered = createMemo(
-				() => hoveredSceneName() === room.sceneName || hoveredMainRoom() === room.sceneName,
-			);
-			const isSelected = createMemo(() => selectedSceneName() === room.sceneName);
-			const selfIsVisible = getSelfVisibilitySignal(room.gameObjectName);
+	const statesByGameObjectName = createMemo(() => {
+		const rooms = gameplayStore.gameModule()?.mapRooms ?? [];
+		return new Map(
+			rooms.map((room) => {
+				const isHovered = createMemo(
+					() => hoveredSceneName() === room.sceneName || hoveredMainRoom() === room.sceneName,
+				);
+				const isSelected = createMemo(() => selectedSceneName() === room.sceneName);
+				const selfIsVisible = getSelfVisibilitySignal(room.gameObjectName);
+				const isHollow = isRoomDataHollow(room);
+				const isSilk = isRoomDataSilk(room);
 
-			const conditionalOn = room.spritesByVariant.conditional?.conditionalOn;
-			const conditionalOnVisibility = conditionalOn ? conditionalOn.map(getSelfVisibilitySignal) : [];
+				const conditionalOn = isHollow ? room.spritesByVariant.conditional?.conditionalOn : null;
+				const conditionalOnVisibility = conditionalOn ? conditionalOn.map(getSelfVisibilitySignal) : [];
 
-			const variant = createMemo<RoomSpriteVariant | 'hidden'>(() => {
-				let variant: RoomSpriteVariant;
-				const visible = selfIsVisible();
-				if (!visible) {
-					return 'hidden';
-				} else if (conditionalOnVisibility.some((v) => v())) {
-					variant = 'conditional';
+				let variant: () => RoomSpriteVariantHollow | RoomSpriteVariantSilk | 'hidden';
+				if (isHollow) {
+					// oxlint-disable-next-line solid/reactivity
+					variant = createMemo<RoomSpriteVariantHollow | 'hidden'>(() => {
+						let variant: RoomSpriteVariantHollow;
+						const visible = selfIsVisible();
+						if (!visible) {
+							return 'hidden';
+						} else if (conditionalOnVisibility.some((v) => v())) {
+							variant = 'conditional';
+						} else {
+							variant = 'normal';
+						}
+						if (isRoomDataHollow(room) && room.spritesByVariant[variant]?.alwaysHidden) {
+							return 'hidden';
+						} else {
+							return variant;
+						}
+					});
+				} else if (isSilk) {
+					// oxlint-disable-next-line solid/reactivity
+					variant = createMemo<RoomSpriteVariantSilk | 'hidden'>(() => {
+						return 'full';
+					});
 				} else {
-					variant = 'normal';
+					// oxlint-disable-next-line solid/reactivity
+					variant = createMemo<'hidden'>(() => 'hidden');
 				}
-				if (room.spritesByVariant[variant]?.alwaysHidden) {
-					return 'hidden';
-				} else {
-					return variant;
-				}
-			});
 
-			const isVisible = createMemo(() => {
-				return variant() !== 'hidden';
-			});
+				const isVisible = createMemo(() => {
+					return variant() !== 'hidden';
+				});
 
-			return [room.gameObjectName, { isVisible, isHovered, isSelected, variant }];
-		}),
-	);
+				return [room.gameObjectName, { isVisible, isHovered, isSelected, variant }];
+			}),
+		);
+	});
 
 	const zoneVisible = new Map(
-		[...d3.group(roomData, (d) => d.mapZone)].map(([zone, rooms]) => {
+		[...d3.group(mapRoomsHollow, (d) => d.mapZone)].map(([zone, rooms]) => {
 			return [
 				zone,
 				// eslint-disable-next-line solid/reactivity
-				createMemo(() => rooms.some((r) => statesByGameObjectName.get(r.gameObjectName)!.isVisible())),
+				createMemo(() => rooms.some((r) => statesByGameObjectName().get(r.gameObjectName)?.isVisible())),
 			];
 		}),
 	);
@@ -196,8 +215,13 @@ export function createRoomDisplayStore(
 		});
 	});
 
+	function stateForGameObjectName(gameObjectName: string) {
+		return statesByGameObjectName().get(gameObjectName);
+	}
+
 	return {
 		statesByGameObjectName,
+		stateForGameObjectName,
 		roomVisibility,
 		setRoomVisibility,
 		selectedSceneName,
