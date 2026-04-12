@@ -1,7 +1,11 @@
+import {
+	getDefaultValue,
+	playerDataFieldsHollow,
+	type PlayerDataField,
+} from '../../../game-data/hollow-data/player-data-hollow';
 import { raise } from '../../../util';
 import { type HeroStateField } from '../../hero-state/hero-states';
 import { playerPositionToMapPositionHollow } from '../../map-data';
-import { getDefaultValue, playerDataFieldsHollow, type PlayerDataField } from '../../player-data/player-data';
 import {
 	FrameEndEventHollow,
 	frameEndEventHeroStateFields,

@@ -1,6 +1,6 @@
-import { playerDataFieldsGenerated } from '../../game-data/hollow-data';
-import { type BossSequenceDoorCompletion, type BossStatueCompletion } from './boss-completion';
-import { BossSequenceData } from './boss-sequence';
+import { playerDataFieldsGenerated } from '.';
+import { type BossSequenceDoorCompletion, type BossStatueCompletion } from '../../parser/player-data/boss-completion';
+import { BossSequenceData } from '../../parser/player-data/boss-sequence';
 
 const playerDataFieldsArray = Object.values(playerDataFieldsGenerated);
 
@@ -35,7 +35,7 @@ export const playerDataFieldsHollow = {
 	// },
 };
 
-export function parsePlayerDataFieldValue<TField extends PlayerDataField>(
+export function parsePlayerDataFieldValueHollow<TField extends PlayerDataField>(
 	field: TField,
 	value: string,
 ): PlayerDataFieldValue<TField> {
@@ -60,7 +60,7 @@ export function parsePlayerDataFieldValue<TField extends PlayerDataField>(
 }
 
 export function getDefaultValue<TField extends PlayerDataField>(field: TField): PlayerDataFieldValue<TField> {
-	return parsePlayerDataFieldValue(field, field.defaultValue);
+	return parsePlayerDataFieldValueHollow(field, field.defaultValue);
 }
 
 // SUBSETS OF PLAYER DATA FIELDS

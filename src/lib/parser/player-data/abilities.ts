@@ -1,4 +1,4 @@
-import { type PlayerDataField } from './player-data';
+import { type PlayerDataField } from '../../game-data/hollow-data/player-data-hollow';
 
 export type AbilityType = 'ability' | 'item';
 export interface AbilityOrItem {

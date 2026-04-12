@@ -1,7 +1,7 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { raise, typeCheckNever } from '../../../util';
 import { heroStateFields, heroStatesSkipParsing } from '../../hero-state';
-import { parsePlayerDataFieldValue, playerDataFieldsHollow } from '../../player-data';
+import { parsePlayerDataFieldValueHollow, playerDataFieldsHollow } from '../../player-data';
 import {
 	EVENT_PREFIXES,
 	type EventPrefix,
@@ -107,7 +107,7 @@ export function parseRecordingFileHollow(
 					const field = playerDataFieldsHollow.byShortCode[eventTypeSuffix()];
 					if (!field) throw new Error('Unknown player data field short code' + eventTypeSuffix());
 
-					const value = parsePlayerDataFieldValue(field, args.length === 1 ? args[0]! : args.join(';'));
+					const value = parsePlayerDataFieldValueHollow(field, args.length === 1 ? args[0]! : args.join(';'));
 					// TODO
 					events.push(
 						new PlayerDataEvent(

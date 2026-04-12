@@ -1,10 +1,10 @@
-import { heroStateFields, type HeroStateField } from '../../hero-state/hero-states';
-import { type BossSequenceDoorCompletion } from '../../player-data/boss-completion';
 import {
 	getDefaultValue as getDefaultPlayerDataValue,
 	playerDataFieldsHollow,
 	type PlayerDataField,
-} from '../../player-data/player-data';
+} from '../../../game-data/hollow-data/player-data-hollow';
+import { heroStateFields, type HeroStateField } from '../../hero-state/hero-states';
+import { type BossSequenceDoorCompletion } from '../../player-data/boss-completion';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';

@@ -1,6 +1,6 @@
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { playerDataFieldsHollow } from '~/lib/game-data/hollow-data/player-data-hollow';
 import { GameModuleOfGame } from '~/lib/game-module/game-module';
-import { playerDataFieldsHollow } from '~/lib/parser/player-data/player-data';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
 import { GameId } from '~/lib/types/game-ids';

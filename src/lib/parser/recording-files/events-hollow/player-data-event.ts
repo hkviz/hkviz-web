@@ -1,4 +1,4 @@
-import { type PlayerDataField, type PlayerDataFieldValue } from '../../player-data/player-data';
+import { type PlayerDataField, type PlayerDataFieldValue } from '../../../game-data/hollow-data/player-data-hollow';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';

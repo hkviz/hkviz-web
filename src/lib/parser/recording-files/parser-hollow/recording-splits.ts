@@ -1,4 +1,13 @@
 import { enemiesJournalLang } from '../../../game-data/hollow-data';
+import {
+	getDefaultValue,
+	getEnemyNameFromDefeatedField,
+	getEnemyNameFromKilledField,
+	isPlayerDataBoolField,
+	isPlayerDataDefeatedField,
+	isPlayerDataKilledField,
+	playerDataFieldsHollow,
+} from '../../../game-data/hollow-data/player-data-hollow';
 import { assertNever, parseHtmlEntities } from '../../../util';
 import { virtualCharms } from '../../charms';
 import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../../player-data/abilities';
@@ -9,15 +18,6 @@ import {
 	playerDataNameToDefeatedName,
 	type EnemyInfo,
 } from '../../player-data/enemies';
-import {
-	getDefaultValue,
-	getEnemyNameFromDefeatedField,
-	getEnemyNameFromKilledField,
-	isPlayerDataBoolField,
-	isPlayerDataDefeatedField,
-	isPlayerDataKilledField,
-	playerDataFieldsHollow,
-} from '../../player-data/player-data';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { CombinedRecordingHollow } from './recording-hollow';
 
