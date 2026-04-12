@@ -4,9 +4,9 @@ import {
 	mainRoomDataBySceneName,
 	mapRoomsHollow,
 	playerPositionToMapPositionHollow,
-} from '../map-data';
-import { combineRecordingsHollow } from '../recording-files';
-import { parseRecordingFileHollow } from '../recording-files/parser-hollow/parse-recording-file-hollow';
+} from '../parser/map-data';
+import { combineRecordingsHollow } from '../parser/recording-files';
+import { parseRecordingFileHollow } from '../parser/recording-files/parser-hollow/parse-recording-file-hollow';
 import { GameModule } from './game-module';
 
 export const gameModuleHollow: GameModule<'hollow'> = {

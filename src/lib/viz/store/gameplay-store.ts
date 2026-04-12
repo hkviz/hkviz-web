@@ -1,5 +1,5 @@
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
-import { GameModuleOfGame } from '~/lib/parser/game-module/game-module';
+import { GameModuleOfGame } from '~/lib/game-module/game-module';
 import { playerDataFields } from '~/lib/parser/player-data/player-data';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';

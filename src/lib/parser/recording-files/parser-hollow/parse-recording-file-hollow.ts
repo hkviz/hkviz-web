@@ -1,4 +1,5 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { raise, typeCheckNever } from '../../../util';
 import { heroStateFields, heroStatesSkipParsing } from '../../hero-state';
 import { parsePlayerDataFieldValue, playerDataFields } from '../../player-data';
 import {
@@ -7,7 +8,6 @@ import {
 	hollowRecordingFileVersionNewest,
 	isVersion0xx,
 } from '../../recording-file-version';
-import { raise, typeCheckNever } from '../../util';
 import {
 	EVENT_PREFIXES,
 	type EventPrefix,

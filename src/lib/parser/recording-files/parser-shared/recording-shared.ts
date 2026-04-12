@@ -1,6 +1,6 @@
 import { GameId } from '~/lib/types/game-ids';
-import { raise } from '../../util';
-import { binarySearchLastIndexBefore } from '../../util/binary-search';
+import { raise } from '../../../util';
+import { binarySearchLastIndexBefore } from '../../../util/binary-search';
 import { SceneEvent } from '../events-shared/scene-event';
 import { RecordingEventOfGame } from '../events-specific/event-of-game';
 import { FrameEndEventOfGame } from '../events-specific/frame-end-event-of-game';

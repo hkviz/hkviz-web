@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { binarySearchLastIndexBefore } from '../../parser/util/binary-search';
+import { binarySearchLastIndexBefore } from '../../util/binary-search';
 import { formatTimeMs } from '../util';
 import { chartBaseHeight, chartBaseWidth, getChartFrame, type ChartFrame } from './chart-frame';
 

@@ -11,7 +11,7 @@ import {
 	useThemeStore,
 } from '../store';
 
-function HkMapRoom<Game extends GameId>(props: {
+function MapViewRoom<Game extends GameId>(props: {
 	room: RoomDataOfGame<Game>;
 	highlightSelectedRoom: boolean;
 	alwaysShowMainRoom: boolean;
@@ -80,7 +80,7 @@ function HkMapRoom<Game extends GameId>(props: {
 	);
 }
 
-export interface HkMapRoomsProps<Game extends GameId> {
+export interface MapViewRoomsProps<Game extends GameId> {
 	rooms: RoomDataOfGame<Game>[];
 	onClick?: (event: MouseEvent, r: RoomDataOfGame<Game>) => void;
 	onMouseOver?: (event: MouseEvent, r: RoomDataOfGame<Game>) => void;
@@ -90,7 +90,7 @@ export interface HkMapRoomsProps<Game extends GameId> {
 	alwaysShowMainRoom?: boolean;
 }
 
-export function HkMapRooms<Game extends GameId>(props: HkMapRoomsProps<Game>) {
+export function MapViewRooms<Game extends GameId>(props: MapViewRoomsProps<Game>) {
 	const roomDisplayStore = useRoomDisplayStore();
 	const themeStore = useThemeStore();
 	const idPrefix = createUniqueId();
@@ -155,7 +155,7 @@ export function HkMapRooms<Game extends GameId>(props: HkMapRoomsProps<Game>) {
 		<g onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} onClick={handleClick}>
 			<For each={props.rooms}>
 				{(room) => (
-					<HkMapRoom
+					<MapViewRoom
 						room={room}
 						highlightSelectedRoom={props.highlightSelectedRoom ?? true}
 						alwaysShowMainRoom={props.alwaysShowMainRoom ?? false}

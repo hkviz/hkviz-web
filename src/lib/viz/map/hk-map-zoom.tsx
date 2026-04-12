@@ -25,7 +25,7 @@ interface HKMapZoomProps {
 	svg: d3.Selection<SVGSVGElement, unknown, null, undefined> | undefined;
 }
 
-export function createHKMapZoom(props: HKMapZoomProps) {
+export function createMapViewZoom(props: HKMapZoomProps) {
 	const animationStore = useAnimationStore();
 	const animationTickStore = useAnimationTickStore();
 	const roomDisplayStore = useRoomDisplayStore();

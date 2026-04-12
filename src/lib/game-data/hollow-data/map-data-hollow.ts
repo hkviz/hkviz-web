@@ -12,7 +12,7 @@ import { customRoomData, type CustomRoomInfo, type UnprocessedRoomInfo } from '.
 import { roomGroupByName } from '../../parser/map-data/room-groups';
 import { getSubSprites } from '../../parser/map-data/room-sub-sprites';
 import { getZoomZones } from '../../parser/map-data/zoom-zone';
-import { omit } from '../../parser/util';
+import { omit } from '../../util';
 import { formatZoneAndRoomNameHollow } from './room-name-formatting-hollow';
 
 const roomDataUnscaledWithCustom: Array<UnprocessedRoomInfo | CustomRoomInfo> = [

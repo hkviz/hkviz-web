@@ -1,5 +1,5 @@
 import { batch } from 'solid-js';
-import { GameModuleOfGame } from '~/lib/parser/game-module/game-module';
+import { GameModuleOfGame } from '~/lib/game-module/game-module';
 import { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
 import { GameId } from '~/lib/types/game-ids';
 import { useAnimationStore } from './animation-store';

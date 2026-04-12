@@ -16,10 +16,10 @@ import { useLayoutPanelContextOrNull } from '../layout/layout-panel-context';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { useGameplayStore, useMapZoomStore, useRoomDisplayStore, useUiStore } from '../store';
 import { HkMapTexts } from './hk-map-texts';
-import { createHKMapZoom } from './hk-map-zoom';
-import { HkMapRooms } from './hollow-map-rooms';
+import { createMapViewZoom } from './hk-map-zoom';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
+import { MapViewRooms } from './map-view-rooms';
 import { OutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 
@@ -222,7 +222,7 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 					<SilkMapRooms />
 				</Match>
 				<Match when={gameplayStore.game() === 'hollow'}> */}
-			<HkMapRooms
+			<MapViewRooms
 				rooms={gameplayStore.gameModule()?.mapRooms ?? []}
 				onMouseOver={(_, r) => {
 					setActiveSceneName(r.sceneName);
@@ -315,7 +315,7 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 		svgD3.attr('width', _containerSize.width).attr('height', _containerSize.height);
 	});
 
-	createHKMapZoom({
+	createMapViewZoom({
 		zoom,
 		svg: svgD3,
 	});

@@ -1,9 +1,9 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import { GameId } from '~/lib/types/game-ids';
-import { SceneEvent } from '../recording-files/events-shared/scene-event';
-import { CombinedRecordingOfGame } from '../recording-files/parser-specific/combined-recording';
-import { ParsedRecordingOfGame } from '../recording-files/parser-specific/parsed-recording-of-game';
+import { SceneEvent } from '../parser/recording-files/events-shared/scene-event';
+import { CombinedRecordingOfGame } from '../parser/recording-files/parser-specific/combined-recording';
+import { ParsedRecordingOfGame } from '../parser/recording-files/parser-specific/parsed-recording-of-game';
 
 export interface GameModule<Game extends GameId> {
 	game: Game;

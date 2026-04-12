@@ -1,5 +1,5 @@
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
-import { raise } from '../../util';
+import { raise } from '../../../util';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';

@@ -1,4 +1,4 @@
-import { raise } from '../../util';
+import { raise } from '../../../util';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { CombinedRecordingBase } from '../parser-shared/recording-shared';

@@ -4,7 +4,7 @@ import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import { GameId } from '~/lib/types/game-ids';
 import { cn } from '~/lib/utils';
-import { HkMapRooms } from './hollow-map-rooms';
+import { MapViewRooms } from './map-view-rooms';
 
 export interface HKMapRoomProps<Game extends GameId> {
 	class?: string;
@@ -68,7 +68,7 @@ export function HKMapRoom<Game extends GameId>(props: HKMapRoomProps<Game>) {
 	return (
 		<div class={cn('relative', props.class)}>
 			<svg class="absolute inset-0" width="100%" height="100%" viewBox="0 0 1 1">
-				<HkMapRooms
+				<MapViewRooms
 					rooms={roomInfosOfRoom()}
 					alwaysShowMainRoom={true}
 					alwaysUseAreaAsColor={true}

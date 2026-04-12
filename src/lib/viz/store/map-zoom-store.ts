@@ -1,6 +1,6 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
-import { assertNever } from '~/lib/parser/util/other';
+import { assertNever } from '~/lib/util/other';
 
 export type ZoomFollowTarget = 'current-area' | 'current-area-smooth' | 'visible-rooms';
 export type ZoomFollowType = 'off' | ZoomFollowTarget;

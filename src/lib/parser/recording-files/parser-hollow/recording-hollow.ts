@@ -1,6 +1,6 @@
+import { raise } from '../../../util';
 import { type PlayerDataField } from '../../player-data/player-data';
 import { type HollowRecordingFileVersion } from '../../recording-file-version';
-import { raise } from '../../util';
 import { FrameEndEventHollow } from '../events-hollow/frame-end-event-hollow';
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { type HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';

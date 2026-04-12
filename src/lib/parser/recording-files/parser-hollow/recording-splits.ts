@@ -1,4 +1,5 @@
 import { enemiesJournalLang } from '../../../game-data/hollow-data';
+import { assertNever, parseHtmlEntities } from '../../../util';
 import { virtualCharms } from '../../charms';
 import { abilitiesAndItems, isPlayerDataAbilityOrItemField } from '../../player-data/abilities';
 import {
@@ -17,7 +18,6 @@ import {
 	isPlayerDataKilledField,
 	playerDataFields,
 } from '../../player-data/player-data';
-import { assertNever, parseHtmlEntities } from '../../util';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { CombinedRecordingHollow } from './recording-hollow';
 

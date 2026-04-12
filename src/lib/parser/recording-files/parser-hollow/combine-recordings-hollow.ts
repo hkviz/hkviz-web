@@ -1,8 +1,8 @@
+import { raise } from '../../../util';
 import { type HeroStateField } from '../../hero-state/hero-states';
 import { playerPositionToMapPositionHollow } from '../../map-data';
 import { getDefaultValue, playerDataFields, type PlayerDataField } from '../../player-data/player-data';
 import { isVersionBefore1_4_0, type HollowRecordingFileVersion } from '../../recording-file-version';
-import { raise } from '../../util';
 import {
 	FrameEndEventHollow,
 	frameEndEventHeroStateFields,
