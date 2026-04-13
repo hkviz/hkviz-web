@@ -21,11 +21,11 @@ export const gameModuleSilk: GameModule<'silk'> = {
 	},
 	combineRecordings: combineRecordingsSilk,
 	positionToMap: playerPositionToMapPositionSilk,
-	getMainRoomDataBySceneName: (sceneName) => mapDataBySceneNameSilk.get(sceneName.toLocaleLowerCase()),
-	getAllRoomDataBySceneNameNoSubSprites: (sceneName) => mapDataAllBySceneNameSilk.get(sceneName.toLocaleLowerCase()),
+	getMainRoomDataBySceneName: (sceneName) => mapDataBySceneNameSilk.get(sceneName),
+	getAllRoomDataBySceneNameNoSubSprites: (sceneName) => mapDataAllBySceneNameSilk.get(sceneName),
 	getAllRoomDataBySceneNameWithSubSprites: (sceneName) =>
 		// currently subsprites not implemented in silk
-		mapDataAllBySceneNameSilk.get(sceneName.toLocaleLowerCase()),
+		mapDataAllBySceneNameSilk.get(sceneName),
 	getRoomDataByGameObjectName: (gameObjectName) => {
 		return mapDataByGameObjectNameSilk.get(gameObjectName);
 	},

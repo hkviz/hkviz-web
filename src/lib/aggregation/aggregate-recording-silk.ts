@@ -10,10 +10,7 @@ import {
 
 export function getZoneNameFromSceneName(sceneName: string | undefined | null): string | undefined {
 	if (!sceneName) return undefined;
-	// TODO remove to lower
-	const roomData = mapDataBySceneNameSilk.get(sceneName);
-	console.log('getZoneNameFromSceneName', { sceneName, roomData, z: roomData?.zoneNameFormatted });
-	return roomData?.zoneNameFormatted;
+	return mapDataBySceneNameSilk.get(sceneName)?.zoneNameFormatted;
 }
 
 export function aggregateRecordingSilk(recording: CombinedRecordingSilk): AggregatedRunDataSilk {

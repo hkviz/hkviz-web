@@ -389,7 +389,6 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 		const allRoomInfosIncludingSubsprites = mainRoomInfo
 			? (gm?.getAllRoomDataBySceneNameWithSubSprites(mainRoomInfo.sceneName) ?? null)
 			: null;
-		console.log({ mainRoomInfo, allRoomInfosIncludingSubsprites });
 		return { mainRoomInfo, allRoomInfosIncludingSubsprites };
 	});
 

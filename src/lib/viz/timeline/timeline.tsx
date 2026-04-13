@@ -116,8 +116,6 @@ function AnimationTimeLineColorCodes() {
 		const selectedScene = roomDisplayStore.selectedSceneName();
 		const selectedZone = roomDisplayStore.selectedRoomZoneFormatted();
 
-		console.log('drawTimelineColorCodesEffect', { _sceneChanges, selectedScene, selectedZone });
-
 		if (!_c || !_sceneChanges) return;
 		const ctx = _c.canvas?.getContext('2d');
 		if (!ctx) return;
