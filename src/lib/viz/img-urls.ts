@@ -49,3 +49,15 @@ export function heroPinSourceOrUndefined(game: GameId | undefined | null) {
 	if (game) return heroPinSource(game);
 	return undefined;
 }
+
+export function corpsePinSource(game: GameId) {
+	if (game === 'silk') {
+		return hornetDeathPinImg;
+	} else if (game === 'hollow') {
+		return shadePinSrc;
+	}
+}
+export function corpsePinSourceOrUndefined(game: GameId | undefined | null) {
+	if (game) return corpsePinSource(game);
+	return undefined;
+}

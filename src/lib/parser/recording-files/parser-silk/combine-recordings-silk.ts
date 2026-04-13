@@ -2,8 +2,10 @@ import { isPlayerDataEventOfFieldSilk } from '~/lib/game-data/silk-data/player-d
 import { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
 import { raise } from '../../../util';
+import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
+import { frameEndEventPlayerDataFieldsSetSilk, FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
 import { CombinedRecordingSilk, ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
 
@@ -19,15 +21,35 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 	let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
 	let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
 	let previousSceneEvent: SceneEvent | null = null;
+
 	const lastPlayerDataEventByField = new Map<PlayerDataFieldNameSilk, PlayerDataEventSilk<PlayerDataFieldNameSilk>>();
+	function getLastPlayerDataEventOfField<K extends PlayerDataFieldNameSilk>(field: K): PlayerDataEventSilk<K> | null {
+		return (lastPlayerDataEventByField.get(field) as any) ?? null;
+	}
 
 	const allHkVizModVersions = new Set<string>();
+
+	let createFrameEndEvent = false;
+	let previousEvent: RecordingEventSilk | null = null;
+
+	const eventCreationContext = new EventCreationContext();
 
 	for (const recording of recordings.sort((a, b) => a.combinedPartNumber! - b.combinedPartNumber!)) {
 		const _recordingFileVersion = recording.recordingFileVersion;
 		allHkVizModVersions.add(recording.hkVizModVersion ?? 'Unknown version');
 
 		for (const event of recording.events) {
+			// first create frame end event if new time + needed
+			// since later last player data is overwritten
+			if (createFrameEndEvent && previousEvent && event.timestamp != previousEvent.timestamp) {
+				eventCreationContext.msIntoGame = msIntoGame;
+				eventCreationContext.timestamp = previousEvent.timestamp;
+				const frameEndEvent = new FrameEndEventSilk(getLastPlayerDataEventOfField, eventCreationContext);
+
+				events.push(frameEndEvent);
+				createFrameEndEvent = false;
+			}
+
 			if (event instanceof PlayerPositionEvent) {
 				if (isTransitioning) {
 					continue;
@@ -53,13 +75,14 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 				previousSceneEvent = event;
 			} else if (event instanceof PlayerDataEventSilk) {
 				event.previousPlayerPositionEvent = previousPlayerPositionEvent;
-				event.previousPlayerDataEventOfField = (lastPlayerDataEventByField.get(event.fieldName) as any) ?? null;
+				event.previousPlayerDataEventOfField = getLastPlayerDataEventOfField(event.fieldName);
 				lastPlayerDataEventByField.set(event.fieldName, event);
 				if (isPlayerDataEventOfFieldSilk(event, 'heroState_isPaused')) {
 					isPaused = event.value;
 				} else if (isPlayerDataEventOfFieldSilk(event, 'heroState_transitioning')) {
 					isTransitioning = event.value;
 				}
+				createFrameEndEvent = createFrameEndEvent || frameEndEventPlayerDataFieldsSetSilk.has(event.fieldName);
 			}
 
 			if (!isPaused) {
@@ -83,7 +106,9 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 			}
 			lastTimestamp = event.timestamp;
 			event.msIntoGame = msIntoGame;
+
 			events.push(event);
+			previousEvent = event;
 		}
 	}
 	(window as any).hkvizEvents = () => events;

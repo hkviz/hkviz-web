@@ -1,7 +1,8 @@
-import { createEffect, type Component } from 'solid-js';
+import { createEffect, createSignal, type Component } from 'solid-js';
 import { hollowScale } from '~/lib/game-data/hollow-data/hollow-scaling';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
+import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
 import {
 	binarySearchLastIndexBefore,
 	mapVisualExtends,
@@ -9,7 +10,7 @@ import {
 	playerPositionToMapPositionHollow,
 } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
-import { dreamGatePinSrc, heroPinSourceOrUndefined, shadePinSrc } from '../img-urls';
+import { corpsePinSourceOrUndefined, dreamGatePinSrc, heroPinSourceOrUndefined } from '../img-urls';
 import { useAnimationStore, useGameplayStore, useMapZoomStore, useTraceStore } from '../store';
 
 const EMPTY_ARRAY = [] as const;
@@ -19,16 +20,80 @@ export const HKMapTraces: Component = () => {
 	const traceStore = useTraceStore();
 	const mapZoomStore = useMapZoomStore();
 	const gameplayStore = useGameplayStore();
+	const [pinSizeTick, setPinSizeTick] = createSignal(0);
+
+	let knightPinWidthMultiplier = 1;
+	let knightPinHeightMultiplier = 1;
+	let shadePinWidthMultiplier = 1;
+	let shadePinHeightMultiplier = 1;
+	let dreamGatePinWidthMultiplier = 1;
+	let dreamGatePinHeightMultiplier = 1;
+
+	function initializePinSizeMultipliers(
+		img: HTMLImageElement,
+		setWidthMultiplier: (multiplier: number) => void,
+		setHeightMultiplier: (multiplier: number) => void,
+	) {
+		const imgW = img.naturalWidth;
+		const imgH = img.naturalHeight;
+		if (!imgW || !imgH) return;
+
+		if (imgW < imgH) {
+			setWidthMultiplier(1);
+			setHeightMultiplier(imgH / imgW);
+		} else {
+			setWidthMultiplier(imgW / imgH);
+			setHeightMultiplier(1);
+		}
+
+		setPinSizeTick((tick) => tick + 1);
+	}
 
 	const canvas = (<canvas class="pointer-events-none absolute inset-0 h-full w-full" />) as HTMLCanvasElement;
 	const knightPinImage = (
-		<img src={heroPinSourceOrUndefined(gameplayStore.game())} alt="knight pin" class="hidden" loading="eager" />
+		<img
+			src={heroPinSourceOrUndefined(gameplayStore.game())}
+			alt="knight pin"
+			class="hidden"
+			loading="eager"
+			onLoad={(event) =>
+				initializePinSizeMultipliers(
+					event.currentTarget,
+					(multiplier) => (knightPinWidthMultiplier = multiplier),
+					(multiplier) => (knightPinHeightMultiplier = multiplier),
+				)
+			}
+		/>
 	) as HTMLImageElement;
 	const shadePinImage = (
-		<img src={shadePinSrc} alt="shade pin" class="hidden" loading="eager" />
+		<img
+			src={corpsePinSourceOrUndefined(gameplayStore.game())}
+			alt="shade pin"
+			class="hidden"
+			loading="eager"
+			onLoad={(event) =>
+				initializePinSizeMultipliers(
+					event.currentTarget,
+					(multiplier) => (shadePinWidthMultiplier = multiplier),
+					(multiplier) => (shadePinHeightMultiplier = multiplier),
+				)
+			}
+		/>
 	) as HTMLImageElement;
 	const dreamGateImage = (
-		<img src={dreamGatePinSrc} alt="dream gate" class="hidden" loading="eager" />
+		<img
+			src={dreamGatePinSrc}
+			alt="dream gate"
+			class="hidden"
+			loading="eager"
+			onLoad={(event) =>
+				initializePinSizeMultipliers(
+					event.currentTarget,
+					(multiplier) => (dreamGatePinWidthMultiplier = multiplier),
+					(multiplier) => (dreamGatePinHeightMultiplier = multiplier),
+				)
+			}
+		/>
 	) as HTMLImageElement;
 
 	const container = (
@@ -46,7 +111,9 @@ export const HKMapTraces: Component = () => {
 	);
 
 	createEffect(function tracesCanvasEffect() {
+		pinSizeTick();
 		const _canvas = autoSizeCanvas();
+		const gameModule = gameplayStore.gameModule();
 		if (!_canvas.canvas) return;
 
 		// scaling
@@ -81,6 +148,7 @@ export const HKMapTraces: Component = () => {
 		const traceLengthMs = traceStore.lengthMs();
 		const minMsIntoGame = animationStore.msIntoGame() - traceLengthMs;
 		const maxMsIntoGame = animationStore.msIntoGame();
+		const game = gameplayStore.game();
 
 		const positionEvents = gameplayStore.recording()?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
 
@@ -159,54 +227,74 @@ export const HKMapTraces: Component = () => {
 		// frame end pins
 		const frameEvent = animationStore.currentFrameEndEvent();
 		const recording = gameplayStore.recording();
-		if (
-			frameEvent instanceof FrameEndEventHollow &&
-			traceStore.visibility() === 'fade_out' &&
-			recording &&
-			frameEvent
-		) {
+		if (frameEvent && traceStore.visibility() === 'fade_out' && recording && frameEvent) {
 			// dream gate
-			if (frameEvent.dreamGateScene !== playerDataFieldsHollow.byFieldName.dreamGateScene.defaultValue) {
+			if (
+				frameEvent instanceof FrameEndEventHollow &&
+				frameEvent.dreamGateScene !== playerDataFieldsHollow.byFieldName.dreamGateScene.defaultValue
+			) {
 				const mapPosition = playerPositionToMapPositionHollow(
 					new Vector2(frameEvent.dreamGateX, frameEvent.dreamGateY),
 					recording.sceneEvents.find((it) => it.sceneName === frameEvent.dreamGateScene),
 				);
 				if (mapPosition) {
 					const pinSize = baseLineWidth * 8;
+					const drawW = pinSize * dreamGatePinWidthMultiplier;
+					const drawH = pinSize * dreamGatePinHeightMultiplier;
 					ctx.shadowColor = 'rgba(255,255,255,0.6)';
 					ctx.shadowOffsetX = 0;
 					ctx.shadowOffsetY = 0;
 					ctx.shadowBlur = baseLineWidth * 4;
 					ctx.drawImage(
 						dreamGateImage,
-						x(mapPosition.x) - 0.5 * pinSize,
-						y(mapPosition.y) - 0.5 * pinSize,
-						pinSize,
-						pinSize,
+						x(mapPosition.x) - 0.5 * drawW,
+						y(mapPosition.y) - 0.5 * drawH,
+						drawW,
+						drawH,
 					);
 					ctx.shadowBlur = 0;
 				}
 			}
 			// shade
-			if (frameEvent.shadeScene !== playerDataFieldsHollow.byFieldName.shadeScene.defaultValue) {
-				const mapPosition = playerPositionToMapPositionHollow(
-					new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY),
-					recording.sceneEvents.find((it) => it.sceneName === frameEvent.shadeScene),
-				);
-				if (mapPosition) {
-					const shadePinSize = baseLineWidth * 12;
-					ctx.shadowColor = 'rgba(255,255,255,0.6)';
-					ctx.shadowOffsetX = 0;
-					ctx.shadowOffsetY = 0;
-					ctx.shadowBlur = baseLineWidth * 4;
-					ctx.drawImage(
-						shadePinImage,
-						x(mapPosition.x) - 0.5 * shadePinSize,
-						y(mapPosition.y) - 0.5 * shadePinSize,
-						shadePinSize,
-						shadePinSize,
-					);
-					ctx.shadowBlur = 0;
+			const hasShade =
+				(frameEvent instanceof FrameEndEventHollow &&
+					frameEvent.shadeScene !== playerDataFieldsHollow.byFieldName.shadeScene.defaultValue) ||
+				(frameEvent instanceof FrameEndEventSilk && frameEvent.HeroCorpseScene);
+
+			if (hasShade) {
+				const position =
+					frameEvent instanceof FrameEndEventHollow
+						? new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY)
+						: frameEvent instanceof FrameEndEventSilk
+							? frameEvent.HeroDeathScenePos
+							: null;
+				const sceneName =
+					frameEvent instanceof FrameEndEventHollow
+						? frameEvent.shadeScene
+						: frameEvent instanceof FrameEndEventSilk
+							? frameEvent.HeroCorpseScene
+							: null;
+
+				if (position && sceneName) {
+					const sceneEvent = recording.sceneEvents.find((it) => it.sceneName === sceneName);
+					const mapPosition = gameModule?.positionToMap(position, sceneEvent);
+					if (mapPosition) {
+						const pinSize = game === 'hollow' ? baseLineWidth * 12 : baseLineWidth * 9;
+						const drawW = pinSize * shadePinWidthMultiplier;
+						const drawH = pinSize * shadePinHeightMultiplier;
+						ctx.shadowColor = 'rgba(255,255,255,0.6)';
+						ctx.shadowOffsetX = 0;
+						ctx.shadowOffsetY = 0;
+						ctx.shadowBlur = baseLineWidth * 4;
+						ctx.drawImage(
+							shadePinImage,
+							x(mapPosition.x) - 0.5 * drawW,
+							y(mapPosition.y) - 0.5 * drawH,
+							drawW,
+							drawH,
+						);
+						ctx.shadowBlur = 0;
+					}
 				}
 			}
 		}
@@ -217,28 +305,11 @@ export const HKMapTraces: Component = () => {
 			previousEvent &&
 			previousEvent.msIntoGame + 30000 >= maxMsIntoGame // 15000
 		) {
-			const baseSize = baseLineWidth * 15;
+			const baseSizeHollow = baseLineWidth * 15;
+			const baseSizeSilk = baseLineWidth * 13;
 
-			const imgW = knightPinImage.naturalWidth;
-			const imgH = knightPinImage.naturalHeight;
-
-			let drawW, drawH;
-
-			const game = gameplayStore.game();
-			if (game == 'hollow') {
-				// looks better imo stretched for hollow knight
-				// but possibly just used to it
-				drawH = baseSize;
-				drawW = baseSize;
-			} else if (imgW < imgH) {
-				// width is smaller → lock width to baseSize
-				drawW = baseSize;
-				drawH = baseSize * (imgH / imgW);
-			} else {
-				// height is smaller → lock height to baseSize
-				drawH = baseSize;
-				drawW = baseSize * (imgW / imgH);
-			}
+			const drawW = game === 'hollow' ? baseSizeHollow : baseSizeSilk * knightPinWidthMultiplier;
+			const drawH = game === 'hollow' ? baseSizeHollow : baseSizeSilk * knightPinHeightMultiplier;
 
 			ctx.drawImage(
 				knightPinImage,

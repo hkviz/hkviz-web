@@ -12,7 +12,7 @@ import { countGameCompletion } from '../parser-hollow/ingame-percentage';
 import { HeroStateEvent } from './hero-state-event';
 import { type PlayerDataEventHollow } from './player-data-event';
 
-export const frameEndEventPlayerDataFieldsArray = [
+export const frameEndEventPlayerDataFieldsHollow = [
 	// geo
 	playerDataFieldsHollow.byFieldName.geo,
 	playerDataFieldsHollow.byFieldName.geoPool,
@@ -159,9 +159,9 @@ export const frameEndEventPlayerDataFieldsArray = [
 	playerDataFieldsHollow.byFieldName.dreamGateX,
 	playerDataFieldsHollow.byFieldName.dreamGateY,
 ] as const;
-export const frameEndEventPlayerDataFields = new Set<PlayerDataFieldHollow>(frameEndEventPlayerDataFieldsArray);
+export const frameEndEventPlayerDataFields = new Set<PlayerDataFieldHollow>(frameEndEventPlayerDataFieldsHollow);
 
-type FrameEndEventPlayerDataField = (typeof frameEndEventPlayerDataFieldsArray)[number];
+type FrameEndEventPlayerDataFieldHollow = (typeof frameEndEventPlayerDataFieldsHollow)[number];
 
 export const frameEndHeroStateFieldsArray = [heroStateFields.byFieldName.dead] as const;
 
@@ -172,7 +172,7 @@ type FrameEndEventHeroStateField = (typeof frameEndHeroStateFieldsArray)[number]
 type FrameEndBase = {
 	[TField in FrameEndEventHeroStateField as TField['name']]: boolean;
 } & {
-	[TField in FrameEndEventPlayerDataField as TField['name']]: PlayerDataEventHollow<TField>['value'];
+	[TField in FrameEndEventPlayerDataFieldHollow as TField['name']]: PlayerDataEventHollow<TField>['value'];
 };
 
 // use this to auto generate the constructor
