@@ -6,6 +6,7 @@ import {
 	PlayerDataFieldValueSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
+import { sceneIdToSceneName } from '../../../game-data/silk-data/scene-ids';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
@@ -13,7 +14,6 @@ import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
 import { entryTypeSilk, EntryTypeSilk } from './entry-type-silk';
 import { recordingFileVersionToModVersionSilk } from './mod-version-silk';
 import { ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
-import { sceneIdToSceneName } from './scene-ids';
 import {
 	parseAppendedList,
 	parseIndexedListDelta,

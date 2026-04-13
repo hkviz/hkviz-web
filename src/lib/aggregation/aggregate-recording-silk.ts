@@ -1,4 +1,4 @@
-import { mapDataBySceneNameLowerSilk } from '../game-data/silk-data/map-data-silk';
+import { mapDataBySceneNameSilk } from '../game-data/silk-data/map-data-silk';
 import { isPlayerDataEventOfFieldSilk } from '../game-data/silk-data/player-data-silk';
 import { CombinedRecordingSilk } from '../parser/recording-files/parser-silk/recording-silk';
 import { aggregateRecording } from './aggregate-recording-shared';
@@ -11,7 +11,7 @@ import {
 export function getZoneNameFromSceneName(sceneName: string | undefined | null): string | undefined {
 	if (!sceneName) return undefined;
 	// TODO remove to lower
-	const roomData = mapDataBySceneNameLowerSilk.get(sceneName.toLowerCase());
+	const roomData = mapDataBySceneNameSilk.get(sceneName);
 	console.log('getZoneNameFromSceneName', { sceneName, roomData, z: roomData?.zoneNameFormatted });
 	return roomData?.zoneNameFormatted;
 }

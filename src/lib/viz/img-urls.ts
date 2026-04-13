@@ -34,6 +34,7 @@ export const shellShardImg = '/silk-sprites/shell_shard_icon_gleam.png';
 export const rosaryIconImg = '/silk-sprites/I_rosary_icon_clean.png';
 export const hornetDeathPinImg = '/silk-sprites/Shade_Pin.png';
 export const hornetHealthImg = '/silk-sprites/select_game_HUD_0001_health.png';
+export const hornetHealingImg = '/silk-sprites/Inv_0029_spell_core.png';
 
 export function heroPinSource(game: GameId) {
 	if (game === 'silk') {

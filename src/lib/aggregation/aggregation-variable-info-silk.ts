@@ -6,7 +6,7 @@ import { AggregationVariableInfo, aggregationVariableInfosShared } from './aggre
 export const aggregationVariableInfosSilk: Record<AggregationVariableSilk, AggregationVariableInfo> = {
 	...aggregationVariableInfosShared,
 	focusing: {
-		name: 'Heals',
+		name: 'Binds',
 		key: 'focusing' as AggregationVariable,
 		format: formatNumberVar,
 		description: 'Number of times the player started to heal.',

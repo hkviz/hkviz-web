@@ -3,7 +3,6 @@ import { memoize } from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { AggregationVariableAny } from '~/lib/aggregation/aggregation-value-specific';
 import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
-import { mapRoomsHollow } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
 import { ColorMapId, getRoomColorMapById } from '../color-map';
 import { AggregationStore } from './aggregation-store';
@@ -123,7 +122,7 @@ export function createRoomColoringStore(
 		const colorMap = singleVarColorMap();
 
 		return new Map<string, string>(
-			mapRoomsHollow.map((room) => {
+			gameplayStore.gameModule()?.mapRooms.map((room) => {
 				const aggregations = aggregationStore.getAggregations(toVirtualSceneName(room.sceneName));
 				const aggregationValue = aggregationStore.getCorrectedAggregationValueNullIfUnvisited(
 					aggregations,

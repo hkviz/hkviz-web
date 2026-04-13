@@ -9,6 +9,7 @@ import {
 	dreamNailImg,
 	focusImg,
 	hornetDeathPinImg,
+	hornetHealingImg,
 	hornetHealthImg,
 	maskImg,
 	rosaryIconImg,
@@ -45,9 +46,9 @@ export const aggregationVariableDisplayInfos: Record<AggregationVariableAny, Ico
 	deaths: (game) => ({
 		image: game === 'silk' ? hornetDeathPinImg : shadeImg,
 	}),
-	focusing: {
-		image: focusImg,
-	},
+	focusing: (game) => ({
+		image: game === 'silk' ? hornetHealingImg : focusImg,
+	}),
 	spellFireball: {
 		image: spellFireballImg,
 	},
@@ -88,7 +89,7 @@ export function AggregationVariableIcon(props: { variable: AggregationVariable; 
 			<Match when={'image' in displayInfos() && displayInfos()}>
 				{(displayInfos) => (
 					<img
-						class="block h-6 w-6 object-contain object-center"
+						class="block h-7 w-6 object-contain object-center"
 						src={displayInfos().image}
 						alt={'Aggregation Variable icon'}
 						aria-hidden={true}

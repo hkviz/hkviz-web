@@ -125,11 +125,11 @@ silkMapData.rooms.sort((a, b) => {
 // Bone_East_07
 // Dock_02b_bot
 
-export const mapDataBySceneNameLowerSilk = new Map(silkMapData.rooms.map((it) => [it.sceneName.toLowerCase(), it]));
-export const mapDataAllBySceneNameLowerSilk = Map.groupBy(silkMapData.rooms, (it) => it.sceneName.toLocaleLowerCase());
+export const mapDataBySceneNameSilk = new Map(silkMapData.rooms.map((it) => [it.sceneName, it]));
+export const mapDataAllBySceneNameSilk = Map.groupBy(silkMapData.rooms, (it) => it.sceneName);
 export const mapDataByGameObjectNameSilk = new Map(silkMapData.rooms.map((it) => [it.gameObjectName, it]));
 
-mapDataAllBySceneNameLowerSilk.forEach((rooms) => {
+mapDataAllBySceneNameSilk.forEach((rooms) => {
 	// Not ideal. probably has some logic behind it.
 	rooms[0].isMainGameObject = true;
 });
