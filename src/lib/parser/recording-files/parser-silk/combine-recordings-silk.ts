@@ -30,6 +30,7 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 	const allHkVizModVersions = new Set<string>();
 
 	let createFrameEndEvent = false;
+	let previousFrameEndEvent: FrameEndEventSilk | null = null;
 	let previousEvent: RecordingEventSilk | null = null;
 
 	const eventCreationContext = new EventCreationContext();
@@ -44,9 +45,14 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 			if (createFrameEndEvent && previousEvent && event.timestamp != previousEvent.timestamp) {
 				eventCreationContext.msIntoGame = msIntoGame;
 				eventCreationContext.timestamp = previousEvent.timestamp;
-				const frameEndEvent = new FrameEndEventSilk(getLastPlayerDataEventOfField, eventCreationContext);
+				const frameEndEvent: FrameEndEventSilk = new FrameEndEventSilk(
+					getLastPlayerDataEventOfField,
+					previousFrameEndEvent,
+					eventCreationContext,
+				);
 
 				events.push(frameEndEvent);
+				previousFrameEndEvent = frameEndEvent;
 				createFrameEndEvent = false;
 			}
 

@@ -17,6 +17,7 @@ export const frameEndEventPlayerDataFieldsSilk = [
 	'HeroCorpseScene',
 	'HeroDeathScenePos',
 	'HeroDeathSceneSize',
+	'heroState_dead',
 ] satisfies PlayerDataFieldNameSilk[];
 
 export const frameEndEventPlayerDataFieldsSetSilk = new Set<PlayerDataFieldNameSilk>(frameEndEventPlayerDataFieldsSilk);
@@ -37,9 +38,17 @@ export class FrameEndEventSilk extends RecordingEventBase implements FrameEndBas
 	HeroCorpseScene: string;
 	HeroDeathScenePos: Vector2;
 	HeroDeathSceneSize: Vector2;
+	heroState_dead: boolean;
+
+	// synthetic
+	healthTotal: number;
+	geoTotal: number;
+
+	previousFrameEndEvent: FrameEndEventSilk | null = null;
 
 	public constructor(
 		getLastPlayerDataEventOfField: <K extends PlayerDataFieldNameSilk>(field: K) => PlayerDataEventSilk<K> | null,
+		previousFrameEndEvent: FrameEndEventSilk | null,
 		ctx: EventCreationContext,
 	) {
 		super(ctx);
@@ -52,5 +61,11 @@ export class FrameEndEventSilk extends RecordingEventBase implements FrameEndBas
 		this.HeroCorpseScene = getLastPlayerDataEventOfField('HeroCorpseScene')?.value ?? '';
 		this.HeroDeathScenePos = getLastPlayerDataEventOfField('HeroDeathScenePos')?.value ?? Vector2.ZERO;
 		this.HeroDeathSceneSize = getLastPlayerDataEventOfField('HeroDeathSceneSize')?.value ?? Vector2.ZERO;
+		this.heroState_dead = getLastPlayerDataEventOfField('heroState_dead')?.value ?? false;
+
+		this.healthTotal = this.health + this.healthBlue;
+		this.geoTotal = this.geo + this.HeroCorpseMoneyPool;
+
+		this.previousFrameEndEvent = previousFrameEndEvent;
 	}
 }
