@@ -1,5 +1,4 @@
 import { For, createMemo, createUniqueId } from 'solid-js';
-import { RoomDataHollow } from '~/lib/game-data/hollow-data/map-data-hollow';
 import { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import { GameId } from '~/lib/types/game-ids';
 import { useSpriteSheetStore } from '../spritesheets/spritesheet-store';
@@ -106,7 +105,7 @@ export function MapViewRooms<Game extends GameId>(props: MapViewRoomsProps<Game>
 			),
 	);
 	const hoveredRooms = createMemo(() => {
-		if (!(props.highlightSelectedRoom ?? true)) return [] as RoomDataHollow[];
+		if (!(props.highlightSelectedRoom ?? true)) return [] as RoomDataOfGame<Game>[];
 		return props.rooms.filter((room) => roomDisplayStore.stateForGameObjectName(room.gameObjectName)?.isHovered());
 	});
 

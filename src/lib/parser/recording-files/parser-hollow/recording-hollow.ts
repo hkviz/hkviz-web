@@ -1,3 +1,5 @@
+import { aggregateRecordingHollow } from '~/lib/aggregation/aggregate-recording-hollow';
+import { AggregatedRunDataHollow } from '~/lib/aggregation/aggregation-value-hollow';
 import { type PlayerDataFieldHollow } from '../../../game-data/hollow-data/player-data-hollow';
 import { raise } from '../../../util';
 import { FrameEndEventHollow } from '../events-hollow/frame-end-event-hollow';
@@ -74,9 +76,13 @@ export class ParsedRecordingHollow {
 }
 
 export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
-	public playerDataEventsPerField = new Map<PlayerDataFieldHollow, PlayerDataEventHollow<PlayerDataFieldHollow>[]>();
-	public splits: RecordingSplit[];
-	public playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
+	public readonly playerDataEventsPerField = new Map<
+		PlayerDataFieldHollow,
+		PlayerDataEventHollow<PlayerDataFieldHollow>[]
+	>();
+	public readonly splits: RecordingSplit[];
+	public readonly playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
+	public readonly aggregations: AggregatedRunDataHollow;
 
 	constructor(
 		events: RecordingEventHollow[],
@@ -111,6 +117,7 @@ export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
 			}
 		}
 		this.splits = createRecordingSplits(this);
+		this.aggregations = aggregateRecordingHollow(this);
 	}
 
 	lastPlayerDataEventOfField<TField extends PlayerDataFieldHollow>(

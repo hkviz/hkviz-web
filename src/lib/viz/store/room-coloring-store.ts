@@ -1,11 +1,12 @@
 import * as d3 from 'd3';
 import { memoize } from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { AggregationVariableAny } from '~/lib/aggregation/aggregation-value-specific';
+import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { mapRoomsHollow } from '../../parser';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
 import { ColorMapId, getRoomColorMapById } from '../color-map';
-import { AggregationVariable, getVirtualSceneNameForHeatMap } from './aggregations/aggregate-recording';
-import { AggregationStore } from './aggregations/aggregation-store';
+import { AggregationStore } from './aggregation-store';
 import { AnimationStore } from './animation-store';
 import { GameplayStore } from './gameplay-store';
 import { RoomDisplayStore } from './room-display-store';
@@ -46,22 +47,25 @@ export function createRoomColoringStore(
 ) {
 	const gameModule = gameplayStore.gameModule;
 	const [colorMode, setColorMode] = createSignal<RoomColorMode>('area');
-	const [var1, setVar1] = createSignal<AggregationVariable>('firstVisitMs');
+	const [var1, setVar1] = createSignal<AggregationVariable>(
+		'damageTaken' satisfies AggregationVariableAny as AggregationVariable,
+	);
 	const [var1Curve, setVar1Curve] = createSignal<RoomColorCurve>(RoomColorCurveLinear);
 	const [singleVarColorMapId, setSingleVarColorMapId] = createSignal<ColorMapId>('viridis-cool');
 
 	function reset() {
 		setColorMode('area');
-		setVar1('firstVisitMs');
+		setVar1('damageTaken' satisfies AggregationVariableAny as AggregationVariable);
 		setVar1Curve(RoomColorCurveLinear);
 		setSingleVarColorMapId('viridis-cool');
 	}
 
 	const var1Max = createMemo(() => {
-		const aggregatedRunData = aggregationStore.data();
+		const aggregatedRunData = gameplayStore.recording()?.aggregations;
 		const areaSelectionMode = roomDisplayStore.areaSelectionMode();
 		const maxMode = areaSelectionMode === 'zone' ? 'overZones' : 'overScenes';
-		return aggregatedRunData?.maxPerMode[maxMode]?.[var1()] ?? 0;
+		const value = aggregatedRunData?.maxPerMode[maxMode]?.getValue(var1());
+		return value ?? 0;
 	});
 
 	const singleVarColorMapType = createMemo(() => getRoomColorMapById(singleVarColorMapId()));
@@ -99,7 +103,7 @@ export function createRoomColoringStore(
 	});
 
 	function toVirtualSceneName(sceneName: string): string {
-		return getVirtualSceneNameForHeatMap(sceneName, roomDisplayStore.areaSelectionMode()) ?? sceneName;
+		return aggregationStore.getVirtualSceneNameForHeatMap(sceneName) ?? sceneName;
 	}
 
 	function getSingleVarColorForSceneName(sceneName: string): string | null {

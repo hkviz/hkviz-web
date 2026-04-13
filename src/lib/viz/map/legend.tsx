@@ -1,9 +1,10 @@
 import * as d3 from 'd3';
 import { ChevronsUpDownIcon } from 'lucide-solid';
-import { createMemo, For, Show, type Component } from 'solid-js';
+import { createMemo, For, Show } from 'solid-js';
 import { Expander } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
 import { DropdownMenu, DropdownMenuTrigger } from '~/components/ui/dropdown-menu';
+import { GameId } from '~/lib/types/game-ids';
 import {
 	useAggregationStore,
 	useAnimationStore,
@@ -11,12 +12,6 @@ import {
 	useRoomColoringStore,
 	useRoomDisplayStore,
 } from '../store';
-import {
-	aggregationVariableDefaultValue,
-	aggregationVariableInfos,
-	formatAggregatedVariableValue,
-	getVirtualSceneNameForHeatMap,
-} from '../store/aggregations/aggregate-recording';
 import { RoomColorMapDropdown } from './room-color-map-dropdown';
 
 const LEGEND_PADDING = 30;
@@ -40,27 +35,31 @@ const LEGEND_SVG_HEIGHT = LEGEND_CURRENT_VALUE_Y + LEGEND_TICK_POINTER_OFFSET_Y;
 
 const LEGEND_SVG_TEXT_CLASSES = 'text-black dark:text-white fill-current';
 
-export const MapLegend: Component = () => {
+export function MapLegend<Game extends GameId>() {
 	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const roomColoringStore = useRoomColoringStore();
 	const aggregationStore = useAggregationStore();
-	const gameplayStore = useGameplayStore();
+	const gameplayStore = useGameplayStore<Game>();
 
 	const var1 = roomColoringStore.var1;
 	const mode = roomColoringStore.colorMode;
-	const var1Info = () => aggregationVariableInfos[var1()];
+	const var1Info = () => gameplayStore.gameModule()?.aggregation.variableInfos?.[var1()];
 	const hoveredRoom = roomDisplayStore.hoveredSceneName;
 	const hoveredVirtualScene = () => {
 		const room = hoveredRoom();
 		if (!room) return null;
-		return getVirtualSceneNameForHeatMap(room, roomDisplayStore.areaSelectionMode());
+		return aggregationStore.getVirtualSceneNameForHeatMap(room);
 	};
-	const var1SelectedRoomValue = () =>
-		hoveredRoom()
-			? (aggregationStore.data()?.countPerScene?.[hoveredVirtualScene()!]?.[var1()] ??
-				aggregationVariableDefaultValue(var1()))
-			: null;
+	const hoveredRoomAggregations = createMemo(() => {
+		const hovered = hoveredVirtualScene();
+		if (!hovered) return null;
+		return aggregationStore.getAggregations(hovered);
+	});
+	const var1SelectedRoomValue = () => {
+		return hoveredRoomAggregations()?.getValue(var1()) ?? null;
+	};
+
 	const var1Max = roomColoringStore.var1Max;
 	const singleVarColormap = roomColoringStore.singleVarColorMap;
 
@@ -138,7 +137,7 @@ export const MapLegend: Component = () => {
 											x={tickX(step)}
 											text-anchor="middle"
 										>
-											{formatAggregatedVariableValue(var1(), step)}
+											{var1Info()?.format(step)}
 										</text>
 									)}
 								</For>
@@ -167,7 +166,7 @@ export const MapLegend: Component = () => {
 										x={tickX(var1SelectedRoomValue()!)}
 										text-anchor="middle"
 									>
-										{formatAggregatedVariableValue(var1(), var1SelectedRoomValue()!)}
+										{var1Info()?.format(var1SelectedRoomValue())}
 									</text>
 									<g>
 										<path
@@ -185,4 +184,4 @@ export const MapLegend: Component = () => {
 			</DropdownMenu>
 		</Card>
 	);
-};
+}

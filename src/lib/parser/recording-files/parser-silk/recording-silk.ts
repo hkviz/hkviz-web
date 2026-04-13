@@ -1,3 +1,5 @@
+import { aggregateRecordingSilk } from '~/lib/aggregation/aggregate-recording-silk';
+import { AggregatedRunDataSilk } from '~/lib/aggregation/aggregation-value-silk';
 import { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { raise } from '../../../util';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
@@ -36,16 +38,18 @@ export class ParsedRecordingSilk {
 }
 
 export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
-	public sceneEvents: SceneEvent[] = [];
-	public frameEndEvents: FrameEndEventSilk[] = [];
-	public playerDataEventsPerField: {
+	public readonly sceneEvents: SceneEvent[] = [];
+	public readonly frameEndEvents: FrameEndEventSilk[] = [];
+	public readonly playerDataEventsPerField: {
 		[K in PlayerDataFieldNameSilk]?: PlayerDataEventSilk<K>[];
 	} = {};
-	public lastPlayerDataEventsByField: {
+	public readonly lastPlayerDataEventsByField: {
 		[K in PlayerDataFieldNameSilk]?: PlayerDataEventSilk<K>;
 	} = {};
 
-	public playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
+	public readonly playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
+
+	public readonly aggregations: AggregatedRunDataSilk;
 
 	constructor(
 		events: RecordingEventSilk[],
@@ -75,6 +79,7 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 				this.frameEndEvents.push(event);
 			}
 		}
+		this.aggregations = aggregateRecordingSilk(this);
 	}
 
 	public getPlayerDataEventsOfField<K extends PlayerDataFieldNameSilk>(field: K): PlayerDataEventSilk<K>[] {

@@ -1,19 +1,32 @@
 import { Clock12Icon, Clock2Icon, ClockArrowUpIcon, HashIcon, type LucideIcon } from 'lucide-solid';
 import { Match, Switch } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+import { AggregationVariableAny } from '~/lib/aggregation/aggregation-value-specific';
+import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import { GameId } from '~/lib/types/game-ids';
 import {
 	coinImg,
 	dreamNailImg,
 	focusImg,
+	hornetDeathPinImg,
+	hornetHealthImg,
 	maskImg,
+	rosaryIconImg,
 	shadeImg,
+	shellShardImg,
 	spellDownImg,
 	spellFireballImg,
 	spellUpImg,
 } from '../img-urls';
-import { AggregationVariable } from '../store/aggregations/aggregate-recording';
 
-export const aggregationVariableDisplayInfos: Record<AggregationVariable, { Icon?: LucideIcon; image?: string }> = {
+interface IconInfoPrimitive {
+	Icon?: LucideIcon;
+	image?: string;
+}
+
+type IconInfo = IconInfoPrimitive | ((game: GameId) => IconInfoPrimitive);
+
+export const aggregationVariableDisplayInfos: Record<AggregationVariableAny, IconInfo> = {
 	visitOrder: {
 		Icon: ClockArrowUpIcon,
 	},
@@ -26,12 +39,12 @@ export const aggregationVariableDisplayInfos: Record<AggregationVariable, { Icon
 	timeSpendMs: {
 		Icon: Clock2Icon,
 	},
-	damageTaken: {
-		image: maskImg,
-	},
-	deaths: {
-		image: shadeImg,
-	},
+	damageTaken: (game) => ({
+		image: game === 'silk' ? hornetHealthImg : maskImg,
+	}),
+	deaths: (game) => ({
+		image: game === 'silk' ? hornetDeathPinImg : shadeImg,
+	}),
 	focusing: {
 		image: focusImg,
 	},
@@ -44,28 +57,42 @@ export const aggregationVariableDisplayInfos: Record<AggregationVariable, { Icon
 	spellUp: {
 		image: spellUpImg,
 	},
-	geoEarned: {
-		image: coinImg,
-	},
-	geoSpent: {
-		image: coinImg,
-	},
+	geoEarned: (game) => ({
+		image: game === 'silk' ? rosaryIconImg : coinImg,
+	}),
+	geoSpent: (game) => ({
+		image: game === 'silk' ? rosaryIconImg : coinImg,
+	}),
 	essenceEarned: {
 		image: dreamNailImg,
 	},
 	essenceSpent: {
 		image: dreamNailImg,
 	},
+	shellShardsEarned: {
+		image: shellShardImg,
+	},
+	shellShardsSpent: {
+		image: shellShardImg,
+	},
 };
 
-export function AggregationVariableIcon(props: { variable: AggregationVariable }) {
-	const displayInfos = () => aggregationVariableDisplayInfos[props.variable];
+export function AggregationVariableIcon(props: { variable: AggregationVariable; game: GameId }) {
+	const displayInfos = () => {
+		const info = aggregationVariableDisplayInfos[props.variable as AggregationVariableAny];
+		return typeof info === 'function' ? info(props.game) : info;
+	};
 
 	return (
 		<Switch>
 			<Match when={'image' in displayInfos() && displayInfos()}>
 				{(displayInfos) => (
-					<img class="w-6" src={displayInfos().image} alt={'Aggregation Variable icon'} aria-hidden={true} />
+					<img
+						class="block h-6 w-6 object-contain object-center"
+						src={displayInfos().image}
+						alt={'Aggregation Variable icon'}
+						aria-hidden={true}
+					/>
 				)}
 			</Match>
 			<Match when={'Icon' in displayInfos() && displayInfos()}>

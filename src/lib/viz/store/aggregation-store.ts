@@ -1,19 +1,14 @@
 import { PlayIcon, SigmaIcon } from 'lucide-solid';
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
-import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
-import { assertNever, binarySearchLastIndexBefore } from '../../../parser';
-import { AnimationStore } from '../animation-store';
-import { GameplayStore } from '../gameplay-store';
-import { RoomDisplayStore } from '../room-display-store';
-import {
-	aggregateRecording,
-	AggregationVariable,
-	aggregationVariableDefaultValue,
-	getVirtualSceneName,
-	isAggregationTimepoint,
-	ValueAggregation,
-	ValueAggregationTimePoint,
-} from './aggregate-recording';
+import { virtualSceneName } from '~/lib/aggregation/aggregate-recording-shared';
+import { AggregationTimePointBase, AggregationValueBase } from '~/lib/aggregation/aggregation-value-base';
+import { isAggregationTimepoint } from '~/lib/aggregation/aggregation-value-specific';
+import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import { AggregationVariableInfo } from '~/lib/aggregation/aggregation-variable-info-shared';
+import { assertNever, binarySearchLastIndexBefore } from '../../parser';
+import { AnimationStore } from './animation-store';
+import { GameplayStore } from './gameplay-store';
+import { AreaSelectionMode, RoomDisplayStore } from './room-display-store';
 
 export type AggregationCountMode = 'total' | 'until-current-time';
 export const aggregationCountModes = ['until-current-time', 'total'] as AggregationCountMode[];
@@ -42,13 +37,7 @@ export function createAggregationStore(
 	animationStore: AnimationStore,
 	gameplayStore: GameplayStore,
 ) {
-	const aggregations = createMemo(() => {
-		const recording = gameplayStore.recording();
-		// TODO load aggregator from parser module
-		if (!recording || recording instanceof CombinedRecordingSilk) return null;
-		return aggregateRecording(recording);
-	});
-
+	const recording = gameplayStore.recording;
 	const selectedVirtualScene = createMemo(() => {
 		const selectedSceneName = roomDisplayStore.selectedSceneName();
 		if (!selectedSceneName) return null;
@@ -56,22 +45,41 @@ export function createAggregationStore(
 		return getVirtualSceneName(selectedSceneName, mode);
 	});
 
+	function getVirtualSceneName(sceneName: string, mode: AreaSelectionMode): string | null {
+		if (mode === 'room') return sceneName;
+		if (mode === 'zone') {
+			if (!sceneName) return null;
+			const roomData = gameplayStore.gameModule()?.getMainRoomDataBySceneName(sceneName);
+			const zoneName = roomData?.zoneNameFormatted;
+			return zoneName ? virtualSceneName.zone(zoneName) : null;
+		}
+		if (mode === 'all') return virtualSceneName.all;
+		assertNever(mode);
+	}
+
+	function getVirtualSceneNameForHeatMap(sceneName: string): string {
+		const mode = roomDisplayStore.areaSelectionMode();
+		if (mode == 'all') return sceneName;
+		return getVirtualSceneName(sceneName, mode) ?? sceneName;
+	}
+
 	const [viewNeverHappenedAggregations, setViewNeverHappenedAggregations] = createSignal(false);
 
 	const [aggregationCountMode, setAggregationCountMode] = createSignal<AggregationCountMode>('total');
 
-	function getAggregations(virtualSceneName: string): ValueAggregation | null {
-		// console.log('getAggregations', sceneName);
-		const aggregations_ = aggregations();
+	function getAggregations(virtualSceneName: string): AggregationValueBase | null {
+		const aggregations_ = recording()?.aggregations;
 		if (!aggregations_) return null;
 		const mode = aggregationCountMode();
-		if (mode === 'total') return aggregations_.countPerScene[virtualSceneName] ?? null;
+		if (mode === 'total') return aggregations_.countPerScene[virtualSceneName] ?? aggregations_.DEFAULT;
 		if (mode === 'until-current-time') {
-			const timePoints = aggregations_.countPerSceneOverTime[virtualSceneName];
+			const timePoints = aggregations_.countPerSceneOverTime[virtualSceneName] as
+				| AggregationTimePointBase[]
+				| undefined;
 			if (!timePoints) return null;
 			const msIntoGame = animationStore.msIntoGame();
 			const currentIndex = binarySearchLastIndexBefore(timePoints, msIntoGame, (it) => it.msIntoGame);
-			return currentIndex !== -1 ? (timePoints[currentIndex] ?? null) : null;
+			return currentIndex !== -1 ? (timePoints[currentIndex] ?? aggregations_.DEFAULT) : aggregations_.DEFAULT;
 		}
 
 		assertNever(mode);
@@ -80,13 +88,14 @@ export function createAggregationStore(
 	function getAggregationHistory(
 		virtualSceneName: string,
 		variable: AggregationVariable,
-	): ValueAggregationTimePoint[] {
-		const aggregations_ = aggregations();
+	): AggregationTimePointBase[] {
+		const aggregations_ = recording()?.aggregations;
 		if (!aggregations_) return [];
-		const filtered: ValueAggregationTimePoint[] = [];
-		let previousValue: number | null = aggregationVariableDefaultValue(variable);
+		const filtered: AggregationTimePointBase[] = [];
+		let previousValue: number | null =
+			gameplayStore.gameModule()?.aggregation.DEFAULT_VALUES.getValue(variable) ?? null;
 		aggregations_?.countPerSceneOverTime[virtualSceneName]?.forEach((timePoint) => {
-			const value = timePoint[variable];
+			const value = timePoint.getValue(variable);
 			if (value !== previousValue) {
 				filtered.push(timePoint);
 				previousValue = value;
@@ -103,12 +112,12 @@ export function createAggregationStore(
 	});
 
 	function getCorrectedAggregationValue(
-		aggregation: ValueAggregation | null,
+		aggregation: AggregationValueBase | null,
 		variable: AggregationVariable,
 		msIntoGame: () => number,
 	): number | null {
-		if (!aggregation) return aggregationVariableDefaultValue(variable);
-		const value = aggregation[variable];
+		if (!aggregation) return gameplayStore.gameModule()?.aggregation.DEFAULT_VALUES.getValue(variable) ?? null;
+		const value = aggregation.getValue(variable) as number | null;
 		if (variable === 'timeSpendMs' && isAggregationTimepoint(aggregation) && aggregation.isActiveScene) {
 			return (value ?? 0) + msIntoGame() - aggregation.msIntoGame;
 		} else {
@@ -117,7 +126,7 @@ export function createAggregationStore(
 	}
 
 	function getCorrectedAggregationValueNullIfUnvisited(
-		aggregation: ValueAggregation | null,
+		aggregation: AggregationValueBase | null,
 		variable: AggregationVariable,
 		msIntoGame: () => number,
 	): number | null {
@@ -125,8 +134,12 @@ export function createAggregationStore(
 		return getCorrectedAggregationValue(aggregation, variable, msIntoGame);
 	}
 
+	function getInfo(variable: AggregationVariable) {
+		const gameModule = gameplayStore.gameModule();
+		return gameModule?.aggregation?.variableInfos?.[variable as any] as AggregationVariableInfo | undefined;
+	}
+
 	return {
-		data: aggregations,
 		getAggregations,
 		viewNeverHappenedAggregations,
 		setViewNeverHappenedAggregations,
@@ -137,6 +150,9 @@ export function createAggregationStore(
 		getAggregationHistory,
 		selectedVirtualScene,
 		getCorrectedAggregationValueNullIfUnvisited,
+		getInfo,
+		getVirtualSceneName,
+		getVirtualSceneNameForHeatMap,
 	};
 }
 export type AggregationStore = ReturnType<typeof createAggregationStore>;

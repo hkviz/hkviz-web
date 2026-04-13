@@ -18,8 +18,6 @@ export const emptyMaskImg = '/ingame-sprites/hud/edited/emptyMask.png';
 export const maskImg = '/ingame-sprites/hud/select_game_HUD_0001_health.png';
 export const steelMaskImg = '/ingame-sprites/hud/select_game_HUD_0001_health_steel.png';
 
-export const knightPinSrc = '/ingame-sprites/Map_Knight_Pin_Compass.png';
-export const hornetPinSrc = '/silk-sprites/Map_Knight_Pin_Compass_idle0000.png';
 export const shadePinSrc = '/ingame-sprites/pin/Shade_Pin.png';
 export const dreamGatePinSrc = '/ingame-sprites/pin/Dream_Gate_Pin_0000_3.png';
 
@@ -28,6 +26,14 @@ export const healthFrameSteelSoulBrokenImg = '/ingame-sprites/hud/break_hud.png'
 export const healthFrameSteelSoulSmallImg = '/ingame-sprites/hud/mode_select_Steel_Soul_HUD.png';
 export const healthFrameImg = '/ingame-sprites/hud/select_game_HUD_0002_health_frame.png';
 export const healthFrameSteelSoulImg = '/ingame-sprites/hud/select_game_HUD_Steel_Soul.png';
+export const knightPinSrc = '/ingame-sprites/Map_Knight_Pin_Compass.png';
+
+// Silk
+export const hornetPinSrc = '/silk-sprites/Map_Knight_Pin_Compass_idle0000.png';
+export const shellShardImg = '/silk-sprites/shell_shard_icon_gleam.png';
+export const rosaryIconImg = '/silk-sprites/I_rosary_icon_clean.png';
+export const hornetDeathPinImg = '/silk-sprites/Shade_Pin.png';
+export const hornetHealthImg = '/silk-sprites/select_game_HUD_0001_health.png';
 
 export function heroPinSource(game: GameId) {
 	if (game === 'silk') {

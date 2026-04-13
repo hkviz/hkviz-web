@@ -1,5 +1,5 @@
 import { ArrowLeftIcon, ArrowRightIcon, PaletteIcon, PinIcon, PinOffIcon } from 'lucide-solid';
-import { createEffect, createMemo, For, Index, Match, onCleanup, Show, Switch, type Component } from 'solid-js';
+import { createEffect, createMemo, For, Index, Match, onCleanup, Show, Switch } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { ShortcutHint } from '~/components/shortcut-hint';
 import { tabsListTransparentClasses } from '~/components/ui/additions';
@@ -18,6 +18,7 @@ import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Toggle } from '~/components/ui/toggle';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
+import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { cn } from '~/lib/utils';
 import { getRelatedVirtualRoomNames, RelatedVirtualRoom } from '../../parser';
 import { roomInfoColoringToggleClasses } from '../class-names';
@@ -42,12 +43,6 @@ import {
 	useThemeStore,
 	useUiStore,
 } from '../store';
-import {
-	AggregationVariable,
-	aggregationVariableInfos,
-	aggregationVariables,
-	formatAggregatedVariableValue,
-} from '../store/aggregations/aggregate-recording';
 import { createRoomMsButtonProps } from '../util/shared-interactions';
 import { AggregationVariableIcon } from './aggregation-variable-icon';
 import { AreaAnalyticsContext, createAreaAnalyticsContext, useAreaAnalyticsContext } from './area-analytics-context';
@@ -120,11 +115,12 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 	);
 }
 
-const AggregationVariableRow: Component<{
+function AggregationVariableRow(props: {
 	variable: AggregationVariable;
 	selectVariable?: (variable: AggregationVariable) => void;
 	deselectVariable?: () => void;
-}> = (props) => {
+}) {
+	const gameplayStore = useGameplayStore();
 	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const aggregationStore = useAggregationStore();
@@ -136,13 +132,14 @@ const AggregationVariableRow: Component<{
 			animationStore.msIntoGame,
 		);
 	});
+	const variableInfo = createMemo(() => gameplayStore.gameModule()!.aggregation.variableInfos[props.variable]);
+
 	const formatted = createMemo(() => {
-		return formatAggregatedVariableValue(props.variable, aggregatedVariableValue());
+		return variableInfo().format(aggregatedVariableValue());
 	});
-	const variableInfo = createMemo(() => aggregationVariableInfos[props.variable]);
 
 	const hover = createRoomMsButtonProps({
-		time: () => ({ msIntoGame: variableInfo().isTimestamp ? aggregatedVariableValue() : undefined }),
+		time: () => ({ msIntoGame: variableInfo()?.isTimestamp ? aggregatedVariableValue() : undefined }),
 	});
 
 	return (
@@ -168,7 +165,7 @@ const AggregationVariableRow: Component<{
 					<Tooltip>
 						<TooltipTrigger>
 							<div class="flex flex-row items-center justify-center gap-2">
-								<AggregationVariableIcon variable={props.variable} />
+								<AggregationVariableIcon variable={props.variable} game={gameplayStore.game()!} />
 								<span>{variableInfo().name}</span>
 							</div>
 						</TooltipTrigger>
@@ -214,20 +211,25 @@ const AggregationVariableRow: Component<{
 			</TableRow>
 		</Show>
 	);
-};
+}
 
 function AggregationVariables() {
+	const gameplayStore = useGameplayStore();
 	const aggregationStore = useAggregationStore();
 	const roomInfosContext = useAreaAnalyticsContext();
-	const aggregatedMaxOverScenes = () => aggregationStore.data()?.maxPerMode.overScenes;
+	const aggregatedMaxOverScenes = () => gameplayStore.recording()?.aggregations?.maxPerMode?.overScenes;
 	const viewNeverHappenedAggregations = aggregationStore.viewNeverHappenedAggregations;
+	const aggregationVariables = () => gameplayStore.gameModule()?.aggregation?.variables;
 
-	const neverHappenedEvents = createMemo(() =>
-		aggregationVariables.filter((variable) => !aggregatedMaxOverScenes()?.[variable]),
+	const neverHappenedEvents = createMemo(
+		() => aggregationVariables()?.filter((variable) => !aggregatedMaxOverScenes()?.getValue(variable)) ?? [],
 	);
 
-	const displayedVariables = createMemo(() =>
-		aggregationVariables.filter((it) => viewNeverHappenedAggregations() || !neverHappenedEvents().includes(it)),
+	const displayedVariables = createMemo(
+		() =>
+			aggregationVariables()?.filter(
+				(it) => viewNeverHappenedAggregations() || !neverHappenedEvents().includes(it),
+			) ?? [],
 	);
 
 	return (

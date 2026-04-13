@@ -4,6 +4,8 @@ import { Expander } from '~/components/ui/additions';
 import { Button } from '~/components/ui/button';
 import { Progress } from '~/components/ui/progress';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
+import { AggregationVariableShared } from '~/lib/aggregation/aggregation-value-base';
+import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { playerDataFieldsHollow } from '~/lib/parser';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { getGameName } from '~/lib/types/game-ids';
@@ -62,7 +64,9 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 		roomDisplayStore.setRoomVisibility('visited');
 		roomColoringStore.setRoomColorMode('1-var');
 		if (roomColoringStore.var1() !== 'firstVisitMs') {
-			roomColoringStore.cycleRoomColorVar1('firstVisitMs');
+			roomColoringStore.cycleRoomColorVar1(
+				'firstVisitMs' satisfies AggregationVariableShared as AggregationVariable,
+			);
 		}
 		animationStore.setMsIntoGame(gameplayStore.timeFrame().max, 'instant');
 		extraChartStore.setFollowsAnimationAutoBounds(false);

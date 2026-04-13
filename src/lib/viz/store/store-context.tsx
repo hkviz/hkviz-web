@@ -1,6 +1,6 @@
 import { createEffect, JSXElement, onCleanup } from 'solid-js';
 import { createSpriteSheetStore, SpriteStoreContext } from '../spritesheets/spritesheet-store';
-import { AggregationStoreContext, createAggregationStore } from './aggregations/aggregation-store';
+import { AggregationStoreContext, createAggregationStore } from './aggregation-store';
 import { AnimationStoreContext, createAnimationStore } from './animation-store';
 import { AnimationTickStoreContext, createAnimationTickStore } from './animation-tick-store';
 import { createExtraChartStore, ExtraChartStoreContext } from './extra-chart-store';

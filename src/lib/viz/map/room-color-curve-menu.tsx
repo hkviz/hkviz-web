@@ -1,8 +1,8 @@
 import { For } from 'solid-js';
 import { ContextMenuItem } from '~/components/ui/context-menu';
+import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { roomColorCurves } from '../color-curves';
 import { useRoomColoringStore } from '../store';
-import { AggregationVariable } from '../store/aggregations/aggregate-recording';
 
 export function RoomColorCurveContextMenuItems(props: { variable: AggregationVariable }) {
 	const roomColoringStore = useRoomColoringStore();

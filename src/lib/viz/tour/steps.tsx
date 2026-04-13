@@ -1,5 +1,6 @@
 import { PaletteIcon, PlayIcon } from 'lucide-solid';
 import { untrack, type Component, type JSXElement } from 'solid-js';
+import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { HKVizText } from '../hkviz-text';
 import {
@@ -182,7 +183,7 @@ export function createTourSteps({
 			onActivate: () => {
 				uiStore.activateTab('map');
 				if (roomColoringStore.colorMode() === 'area') {
-					roomColoringStore.cycleRoomColorVar1('damageTaken');
+					roomColoringStore.cycleRoomColorVar1('damageTaken' as AggregationVariable);
 				}
 			},
 			activeEffect: () => {

@@ -1,13 +1,9 @@
 import { Component, createMemo, Show } from 'solid-js';
+import { AggregationTimePointBase } from '~/lib/aggregation/aggregation-value-base';
+import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { assertNever } from '~/lib/parser';
 import { Duration } from '../duration';
 import { AreaSelectionMode, useAggregationStore, useGameplayStore, useRoomDisplayStore } from '../store';
-import {
-	AggregationVariable,
-	aggregationVariableDefaultValue,
-	aggregationVariableInfos,
-	ValueAggregationTimePoint,
-} from '../store/aggregations/aggregate-recording';
 import { TimelineList, TimelineListEntryButton } from '../timeline-list/timeline-list';
 import { useAreaAnalyticsContext } from './area-analytics-context';
 
@@ -20,14 +16,17 @@ function noHistoryMessage(mode: AreaSelectionMode): string {
 
 const AreaAnalyticsVariableHistoryRow: Component<{
 	variable: AggregationVariable;
-	previousEntry: ValueAggregationTimePoint | null;
-	entry: ValueAggregationTimePoint;
+	previousEntry: AggregationTimePointBase | null;
+	entry: AggregationTimePointBase;
 }> = (props) => {
-	const varInfo = createMemo(() => aggregationVariableInfos[props.variable]);
+	const gameplayStore = useGameplayStore();
+	const aggregation = () => gameplayStore.gameModule()!.aggregation;
+	const varInfo = createMemo(() => aggregation().variableInfos[props.variable]);
 
 	const delta = createMemo(() => {
-		const previousValue = props.previousEntry?.[props.variable] ?? aggregationVariableDefaultValue(props.variable);
-		const deltaValue = (props.entry[props.variable] ?? 0) - (previousValue ?? 0);
+		const previousValue =
+			props.previousEntry?.getValue(props.variable) ?? aggregation().DEFAULT_VALUES.getValue(props.variable);
+		const deltaValue = (props.entry.getValue(props.variable) ?? 0) - (previousValue ?? 0);
 		return deltaValue;
 	});
 
@@ -46,7 +45,7 @@ const AreaAnalyticsVariableHistoryRow: Component<{
 					)}
 				</Show>
 			</span>
-			<span>{varInfo().format(props.entry[props.variable])}</span>
+			<span>{varInfo().format(props.entry.getValue(props.variable))}</span>
 		</TimelineListEntryButton>
 	);
 };
@@ -66,7 +65,7 @@ export const AreaAnalyticsVariableHistory: Component = () => {
 		return roomInfosStore.getAggregationHistory(virtualScene, variable);
 	});
 
-	function getSceneName(entry: ValueAggregationTimePoint) {
+	function getSceneName(entry: AggregationTimePointBase) {
 		const newScene = gameplayStore.recording()?.sceneEventFromMs(entry.msIntoGame)?.sceneName;
 		return newScene;
 	}
