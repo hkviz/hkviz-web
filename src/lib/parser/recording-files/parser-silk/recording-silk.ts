@@ -12,6 +12,20 @@ export type RecordingEventSilk =
 	| FrameEndEventSilk
 	| PlayerDataEventSilk<PlayerDataFieldSilk>;
 
+export function isPlayerDataEventOfFieldSilk<TField extends PlayerDataFieldSilk>(
+	event: RecordingEventSilk,
+	field: TField,
+): event is PlayerDataEventSilk<TField> {
+	return event instanceof PlayerDataEventSilk && event.field === field;
+}
+
+export function isPlayerDataEventWithFieldTypeSilk<FieldType extends PlayerDataFieldSilk['type']>(
+	event: RecordingEventSilk,
+	type: FieldType,
+): event is PlayerDataEventSilk<Extract<PlayerDataFieldSilk, { type: FieldType }>> {
+	return event instanceof PlayerDataEventSilk && event.field.type === type;
+}
+
 export class ParsedRecordingSilk {
 	constructor(
 		public readonly events: RecordingEventSilk[],

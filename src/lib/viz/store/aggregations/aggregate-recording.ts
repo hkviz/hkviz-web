@@ -6,7 +6,7 @@ import { SpellUpEvent } from '~/lib/parser/recording-files/events-hollow/spell-u
 import { SceneEvent } from '~/lib/parser/recording-files/events-shared/scene-event';
 import {
 	CombinedRecordingHollow,
-	isPlayerDataEventOfField,
+	isPlayerDataEventOfFieldHollow,
 } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
 import {
 	assertNever,
@@ -500,7 +500,7 @@ export function aggregateRecording(recording: CombinedRecordingHollow) {
 		} else if (event instanceof SpellDownEvent) {
 			addToScenes(currentVirtualScenes, event.msIntoGame, 'spellDown', 1);
 		} else if (
-			isPlayerDataEventOfField(event, playerDataFieldsHollow.byFieldName.health) &&
+			isPlayerDataEventOfFieldHollow(event, playerDataFieldsHollow.byFieldName.health) &&
 			event.previousPlayerDataEventOfField
 		) {
 			const diff = event.value - event.previousPlayerDataEventOfField.value;
@@ -508,7 +508,7 @@ export function aggregateRecording(recording: CombinedRecordingHollow) {
 				addToScenes(currentVirtualScenes, event.msIntoGame, 'damageTaken', -diff);
 			}
 		} else if (
-			isPlayerDataEventOfField(event, playerDataFieldsHollow.byFieldName.healthBlue) &&
+			isPlayerDataEventOfFieldHollow(event, playerDataFieldsHollow.byFieldName.healthBlue) &&
 			event.previousPlayerDataEventOfField
 		) {
 			const diff = event.value - event.previousPlayerDataEventOfField.value;

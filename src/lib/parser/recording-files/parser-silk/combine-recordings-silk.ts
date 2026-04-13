@@ -1,10 +1,15 @@
-import { PlayerDataFieldSilk } from '~/lib/game-data/silk-data/player-data-silk';
+import { PlayerDataFieldSilk, playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk';
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
 import { raise } from '../../../util';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
-import { CombinedRecordingSilk, ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
+import {
+	CombinedRecordingSilk,
+	isPlayerDataEventOfFieldSilk,
+	ParsedRecordingSilk,
+	RecordingEventSilk,
+} from './recording-silk';
 
 export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): CombinedRecordingSilk {
 	const events: RecordingEventSilk[] = [];
@@ -54,6 +59,13 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 				event.previousPlayerPositionEvent = previousPlayerPositionEvent;
 				event.previousPlayerDataEventOfField = (lastPlayerDataEventByField.get(event.field) as any) ?? null;
 				lastPlayerDataEventByField.set(event.field, event);
+				if (isPlayerDataEventOfFieldSilk(event, playerDataFieldsSilk.byFieldName.heroState_isPaused)) {
+					isPaused = event.value;
+				} else if (
+					isPlayerDataEventOfFieldSilk(event, playerDataFieldsSilk.byFieldName.heroState_transitioning)
+				) {
+					isTransitioning = event.value;
+				}
 			}
 
 			if (!isPaused) {

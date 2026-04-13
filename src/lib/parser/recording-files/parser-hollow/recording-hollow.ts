@@ -25,20 +25,6 @@ export class RecordingFileVersionEvent extends RecordingEventBase {
 	}
 }
 
-export function isPlayerDataEventOfField<TField extends PlayerDataField>(
-	event: RecordingEventHollow,
-	field: TField,
-): event is PlayerDataEventHollow<TField> {
-	return event instanceof PlayerDataEventHollow && event.field === field;
-}
-
-export function isPlayerDataEventWithFieldType<FieldType extends PlayerDataField['type']>(
-	event: RecordingEventHollow,
-	type: FieldType,
-): event is PlayerDataEventHollow<Extract<PlayerDataField, { type: FieldType }>> {
-	return event instanceof PlayerDataEventHollow && event.field.type === type;
-}
-
 export type RecordingEventHollow =
 	| SceneEvent
 	| PlayerPositionEvent
@@ -51,6 +37,20 @@ export type RecordingEventHollow =
 	| FrameEndEventHollow
 	| ModdingInfoEvent
 	| HKVizModVersionEvent;
+
+export function isPlayerDataEventOfFieldHollow<TField extends PlayerDataField>(
+	event: RecordingEventHollow,
+	field: TField,
+): event is PlayerDataEventHollow<TField> {
+	return event instanceof PlayerDataEventHollow && event.field === field;
+}
+
+export function isPlayerDataEventWithFieldTypeHollow<FieldType extends PlayerDataField['type']>(
+	event: RecordingEventHollow,
+	type: FieldType,
+): event is PlayerDataEventHollow<Extract<PlayerDataField, { type: FieldType }>> {
+	return event instanceof PlayerDataEventHollow && event.field.type === type;
+}
 
 export class ParsedRecordingHollow {
 	constructor(

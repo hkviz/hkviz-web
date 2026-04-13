@@ -22,8 +22,8 @@ import { isRecordingVersionBefore1_4_0, type RecordingFileVersionHollow } from '
 import {
 	CombinedRecordingHollow,
 	RecordingFileVersionEvent,
-	isPlayerDataEventOfField,
-	isPlayerDataEventWithFieldType,
+	isPlayerDataEventOfFieldHollow,
+	isPlayerDataEventWithFieldTypeHollow,
 	type ParsedRecordingHollow,
 	type RecordingEventHollow,
 } from './recording-hollow';
@@ -314,18 +314,18 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 					createEndFrameEvent = true;
 				}
 
-				if (isPlayerDataEventOfField(event, playerDataFieldsHollow.byFieldName.currentBossSequence)) {
+				if (isPlayerDataEventOfFieldHollow(event, playerDataFieldsHollow.byFieldName.currentBossSequence)) {
 					const sceneEvent = previousPlayerPositionEvent?.sceneEvent;
 					if (sceneEvent && isPantheonRoom(sceneEvent.sceneName)) {
 						sceneEvent.currentBossSequence = event.value;
 					}
 				}
 
-				if (isPlayerDataEventWithFieldType(event, 'List`1')) {
+				if (isPlayerDataEventWithFieldTypeHollow(event, 'List`1')) {
 					event.value = event.value.flatMap((it) =>
 						it === '::' ? (event.previousPlayerDataEventOfField?.value ?? []) : [it],
 					);
-					if (isPlayerDataEventOfField(event, playerDataFieldsHollow.byFieldName.scenesVisited)) {
+					if (isPlayerDataEventOfFieldHollow(event, playerDataFieldsHollow.byFieldName.scenesVisited)) {
 						for (const it of event.previousPlayerDataEventOfField?.value ?? []) {
 							// even if scenes are removed again from the player data (e.g. by loading an old save or modding),
 							// we don't want to loose the scenes visited in the recording.
