@@ -1,15 +1,11 @@
-import { PlayerDataFieldSilk, playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk';
+import { isPlayerDataEventOfFieldSilk } from '~/lib/game-data/silk-data/player-data-silk';
+import { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
 import { raise } from '../../../util';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
-import {
-	CombinedRecordingSilk,
-	isPlayerDataEventOfFieldSilk,
-	ParsedRecordingSilk,
-	RecordingEventSilk,
-} from './recording-silk';
+import { CombinedRecordingSilk, ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
 
 export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): CombinedRecordingSilk {
 	const events: RecordingEventSilk[] = [];
@@ -23,7 +19,7 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 	let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
 	let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
 	let previousSceneEvent: SceneEvent | null = null;
-	const lastPlayerDataEventByField = new Map<PlayerDataFieldSilk, PlayerDataEventSilk<PlayerDataFieldSilk>>();
+	const lastPlayerDataEventByField = new Map<PlayerDataFieldNameSilk, PlayerDataEventSilk<PlayerDataFieldNameSilk>>();
 
 	const allHkVizModVersions = new Set<string>();
 
@@ -57,13 +53,11 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 				previousSceneEvent = event;
 			} else if (event instanceof PlayerDataEventSilk) {
 				event.previousPlayerPositionEvent = previousPlayerPositionEvent;
-				event.previousPlayerDataEventOfField = (lastPlayerDataEventByField.get(event.field) as any) ?? null;
-				lastPlayerDataEventByField.set(event.field, event);
-				if (isPlayerDataEventOfFieldSilk(event, playerDataFieldsSilk.byFieldName.heroState_isPaused)) {
+				event.previousPlayerDataEventOfField = (lastPlayerDataEventByField.get(event.fieldName) as any) ?? null;
+				lastPlayerDataEventByField.set(event.fieldName, event);
+				if (isPlayerDataEventOfFieldSilk(event, 'heroState_isPaused')) {
 					isPaused = event.value;
-				} else if (
-					isPlayerDataEventOfFieldSilk(event, playerDataFieldsSilk.byFieldName.heroState_transitioning)
-				) {
+				} else if (isPlayerDataEventOfFieldSilk(event, 'heroState_transitioning')) {
 					isTransitioning = event.value;
 				}
 			}

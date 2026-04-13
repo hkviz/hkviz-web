@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import { createContext, createMemo, createSignal, useContext, type Accessor } from 'solid-js';
 import { RoomSpriteVariantSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
 import { isRoomDataHollow, isRoomDataSilk } from '~/lib/game-data/specific/room-data-of-game';
+import { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { assertNever, mapRoomsHollow, playerDataFieldsHollow, type RoomSpriteVariantHollow } from '../../parser';
 import { GameplayStore } from './gameplay-store';
@@ -81,12 +82,18 @@ export function createRoomDisplayStore(
 				return 'all' as const;
 			case 'visited':
 				const recording = gameplayStore.recording();
-				if (!recording || recording instanceof CombinedRecordingSilk) return new Set<string>();
-				return new Set(
-					recording.lastPlayerDataEventOfField(playerDataFieldsHollow.byFieldName.scenesVisited)?.value ?? [],
-				);
+				if (!recording) return new Set<string>();
+				if (recording instanceof CombinedRecordingHollow) {
+					return new Set(
+						recording.lastPlayerDataEventOfField(playerDataFieldsHollow.byFieldName.scenesVisited)?.value ??
+							[],
+					);
+				} else if (recording instanceof CombinedRecordingSilk) {
+					return recording.lastPlayerDataEventOfField('scenesVisited')?.value ?? new Set<string>();
+				}
+				assertNever(recording);
 			case 'visited-animated':
-				return new Set(playerDataAnimationStore.currentValues.scenesVisited() ?? []);
+				return new Set(playerDataAnimationStore()?.values?.scenesVisited() ?? []);
 		}
 	});
 
@@ -147,7 +154,12 @@ export function createRoomDisplayStore(
 				} else if (isSilk) {
 					// oxlint-disable-next-line solid/reactivity
 					variant = createMemo<RoomSpriteVariantSilk | 'hidden'>(() => {
-						const variantFull = room.initialState == 'Full' ? 'initial' : 'full';
+						const variantFull: RoomSpriteVariantSilk = room.initialState == 'Full' ? 'initial' : 'full';
+						const visible = selfIsVisible();
+
+						if (!visible) {
+							return 'hidden';
+						}
 
 						return variantFull;
 					});

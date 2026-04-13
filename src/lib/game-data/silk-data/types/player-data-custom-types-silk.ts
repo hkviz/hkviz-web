@@ -62,3 +62,9 @@ export interface EnemyJournalKillDataSilk {
 	readonly Kills: number;
 	readonly HasBeenSeen: boolean;
 }
+
+export type StoryEventInfoSilk = {
+	eventType: number;
+	sceneName: string;
+	playTime: number;
+};

@@ -1,3 +1,4 @@
+import { playerDataFieldsHollow } from '../parser';
 import {
 	allRoomDataBySceneName as allRoomDataBySceneNameHollow,
 	allRoomDataIncludingSubspritesBySceneName as allRoomDataIncludingSubspritesBySceneNameHollow,
@@ -26,4 +27,8 @@ export const gameModuleHollow: GameModule<'hollow'> = {
 		return roomDataByGameObjectName.get(gameObjectName);
 	},
 	mapRooms: mapRoomsHollow,
+	playerDataFields: {
+		byFieldName: playerDataFieldsHollow.byFieldName,
+		list: playerDataFieldsHollow.list,
+	},
 };

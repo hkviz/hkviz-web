@@ -4,10 +4,10 @@ import { BossSequenceData } from '../../parser/player-data/boss-sequence';
 
 const playerDataFieldsArray = Object.values(playerDataFieldsGenerated);
 
-export type PlayerDataField = (typeof playerDataFieldsArray)[number];
+export type PlayerDataFieldHollow = (typeof playerDataFieldsArray)[number];
 
 // prettier-ignore
-export type PlayerDataFieldValue<TField extends PlayerDataField> =
+export type PlayerDataFieldValueHollow<TField extends PlayerDataFieldHollow> =
     TField['type'] extends 'Boolean' ? boolean :
     TField['type'] extends 'Int32' ? number :
     TField['type'] extends 'Single' ? number :
@@ -27,18 +27,19 @@ export const playerDataFieldsHollow = {
 
 	byShortCode: Object.fromEntries(playerDataFieldsArray.map((it) => [it.shortCode, it])) as Record<
 		string,
-		PlayerDataField
+		PlayerDataFieldHollow
 	>,
 	// this fancy types somehow do not build in vercel, but work locally. So no fancy types for now
 	//  as any as {
 	//     [Field in PlayerDataFieldShortCode]: PlayerDataFieldByShortCode<Field>;
 	// },
+	list: playerDataFieldsArray,
 };
 
-export function parsePlayerDataFieldValueHollow<TField extends PlayerDataField>(
+export function parsePlayerDataFieldValueHollow<TField extends PlayerDataFieldHollow>(
 	field: TField,
 	value: string,
-): PlayerDataFieldValue<TField> {
+): PlayerDataFieldValueHollow<TField> {
 	if (field.type === 'Int32') {
 		return parseInt(value) as any;
 	} else if (field.type === 'Single') {
@@ -59,41 +60,43 @@ export function parsePlayerDataFieldValueHollow<TField extends PlayerDataField>(
 	}
 }
 
-export function getDefaultValue<TField extends PlayerDataField>(field: TField): PlayerDataFieldValue<TField> {
+export function getDefaultValue<TField extends PlayerDataFieldHollow>(
+	field: TField,
+): PlayerDataFieldValueHollow<TField> {
 	return parsePlayerDataFieldValueHollow(field, field.defaultValue);
 }
 
 // SUBSETS OF PLAYER DATA FIELDS
 // bool
-export type PlayerDataBoolField = Extract<PlayerDataField, { type: 'Boolean' }>;
-export function isPlayerDataBoolField(field: PlayerDataField): field is PlayerDataBoolField {
+export type PlayerDataBoolField = Extract<PlayerDataFieldHollow, { type: 'Boolean' }>;
+export function isPlayerDataBoolField(field: PlayerDataFieldHollow): field is PlayerDataBoolField {
 	return field.type === 'Boolean';
 }
 // int
-export type PlayerDataIntField = Extract<PlayerDataField, { type: 'Int32' }>;
-export function isPlayerDataIntField(field: PlayerDataField): field is PlayerDataIntField {
+export type PlayerDataIntField = Extract<PlayerDataFieldHollow, { type: 'Int32' }>;
+export function isPlayerDataIntField(field: PlayerDataFieldHollow): field is PlayerDataIntField {
 	return field.type === 'Int32';
 }
 
 // kill
-export type PlayerDataKilledField = Extract<PlayerDataField, { name: `killed${string}` }>;
-export function isPlayerDataKilledField(field: PlayerDataField): field is PlayerDataKilledField {
+export type PlayerDataKilledField = Extract<PlayerDataFieldHollow, { name: `killed${string}` }>;
+export function isPlayerDataKilledField(field: PlayerDataFieldHollow): field is PlayerDataKilledField {
 	return field.name.startsWith('killed');
 }
 export function getEnemyNameFromKilledField(field: PlayerDataKilledField) {
 	return field.name.slice('killed'.length);
 }
 // defeat
-export type PlayerDataDefeatedField = Extract<PlayerDataField, { name: `${string}Defeated` }>;
-export function isPlayerDataDefeatedField(field: PlayerDataField): field is PlayerDataDefeatedField {
+export type PlayerDataDefeatedField = Extract<PlayerDataFieldHollow, { name: `${string}Defeated` }>;
+export function isPlayerDataDefeatedField(field: PlayerDataFieldHollow): field is PlayerDataDefeatedField {
 	return field.name.endsWith('Defeated');
 }
 export function getEnemyNameFromDefeatedField(field: PlayerDataDefeatedField) {
 	return field.name.slice(0, -'Defeated'.length);
 }
 // gotCharm
-export type PlayerDataGotCharmField = Extract<PlayerDataField, { name: `gotCharm_${string}` }>;
-export function isPlayerDataGotCharmField(field: PlayerDataField): field is PlayerDataGotCharmField {
+export type PlayerDataGotCharmField = Extract<PlayerDataFieldHollow, { name: `gotCharm_${string}` }>;
+export function isPlayerDataGotCharmField(field: PlayerDataFieldHollow): field is PlayerDataGotCharmField {
 	return field.name.startsWith('gotCharm_');
 }
 export function getCharmIdFromGotCharmField(field: PlayerDataGotCharmField) {

@@ -1,6 +1,7 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import { GameId } from '~/lib/types/game-ids';
+import { PlayerDataFieldByNameOfGame, PlayerDataFieldOfGame } from '../game-data/specific/player-data-of-game';
 import { SceneEvent } from '../parser/recording-files/events-shared/scene-event';
 import { CombinedRecordingOfGame } from '../parser/recording-files/parser-specific/combined-recording';
 import { ParsedRecordingOfGame } from '../parser/recording-files/parser-specific/parsed-recording-of-game';
@@ -15,6 +16,10 @@ export interface GameModule<Game extends GameId> {
 	getAllRoomDataBySceneNameWithSubSprites: (sceneName: string) => RoomDataOfGame<Game>[] | undefined;
 	getRoomDataByGameObjectName: (gameObjectName: string) => RoomDataOfGame<Game> | undefined;
 	mapRooms: RoomDataOfGame<Game>[];
+	playerDataFields: {
+		byFieldName: PlayerDataFieldByNameOfGame<Game>;
+		list: PlayerDataFieldOfGame<Game>[];
+	};
 }
 
 export type GameModuleAny = GameModule<'hollow'> | GameModule<'silk'>;

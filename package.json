@@ -23,7 +23,8 @@
 		"db:studio": "drizzle-kit studio",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check",
-		"gen:silk:copy-map-sprites": "node --experimental-transform-types ./scripts/silk-map-copy-sprites.mts"
+		"gen:silk:copy-map-sprites": "node --experimental-transform-types ./scripts/silk-map-copy-sprites.mts",
+		"gen:silk:player-data": "node --experimental-transform-types ./scripts/silk-player-data-gen.mts"
 	},
 	"dependencies": {
 		"@assetpack/core": "^1.7.0",

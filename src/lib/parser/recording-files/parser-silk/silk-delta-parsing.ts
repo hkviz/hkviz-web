@@ -1,5 +1,5 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { PlayerDataFieldSilk } from '~/lib/game-data/silk-data/player-data-silk';
+import { PlayerDataFieldTypeSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import {
 	CollectableItemsDataSilk,
 	CollectableMementosDataSilk,
@@ -8,11 +8,12 @@ import {
 	MateriumItemsDataSilk,
 	QuestCompletionDataSilk,
 	QuestRumourDataSilk,
+	StoryEventInfoSilk,
 	ToolCrestsDataSilk,
 	ToolItemLiquidsDataSilk,
 	ToolItemsDataSilk,
 } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
-import { SilkRecordingDataView, StoryEventInfoSilk } from './silk-recording-data-view';
+import { SilkRecordingDataView } from './silk-recording-data-view';
 
 const logDeltaStep = (step: string, details?: unknown): void => {
 	if (details === undefined) {
@@ -160,7 +161,7 @@ export function parseWrappedVector2ListAppend(
 
 export function readNamedMapValue(
 	reader: SilkRecordingDataView,
-	fieldType: PlayerDataFieldSilk['type'],
+	fieldType: PlayerDataFieldTypeSilk,
 ): NamedMapValueSilk {
 	switch (fieldType) {
 		case 'dictionary<string,bool>':
@@ -194,7 +195,7 @@ export function readNamedMapValue(
 
 export function parseNamedMapFull(
 	reader: SilkRecordingDataView,
-	fieldType: PlayerDataFieldSilk['type'],
+	fieldType: PlayerDataFieldTypeSilk,
 ): Map<string, NamedMapValueSilk> {
 	logDeltaStep('parse_named_map_full_start', { fieldType });
 	const count = reader.readInt32();
@@ -222,7 +223,7 @@ export function parseNamedMapFull(
 
 export function parseNamedMapDelta(
 	reader: SilkRecordingDataView,
-	fieldType: PlayerDataFieldSilk['type'],
+	fieldType: PlayerDataFieldTypeSilk,
 	previousValue: ReadonlyMap<string, NamedMapValueSilk> | null,
 ): Map<string, NamedMapValueSilk> {
 	logDeltaStep('parse_named_map_delta_start', {

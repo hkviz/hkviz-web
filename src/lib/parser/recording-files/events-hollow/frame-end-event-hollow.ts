@@ -1,7 +1,7 @@
 import {
 	getDefaultValue as getDefaultPlayerDataValue,
 	playerDataFieldsHollow,
-	type PlayerDataField,
+	type PlayerDataFieldHollow,
 } from '../../../game-data/hollow-data/player-data-hollow';
 import { heroStateFields, type HeroStateField } from '../../hero-state/hero-states';
 import { type BossSequenceDoorCompletion } from '../../player-data/boss-completion';
@@ -159,7 +159,7 @@ export const frameEndEventPlayerDataFieldsArray = [
 	playerDataFieldsHollow.byFieldName.dreamGateX,
 	playerDataFieldsHollow.byFieldName.dreamGateY,
 ] as const;
-export const frameEndEventPlayerDataFields = new Set<PlayerDataField>(frameEndEventPlayerDataFieldsArray);
+export const frameEndEventPlayerDataFields = new Set<PlayerDataFieldHollow>(frameEndEventPlayerDataFieldsArray);
 
 type FrameEndEventPlayerDataField = (typeof frameEndEventPlayerDataFieldsArray)[number];
 
@@ -352,7 +352,7 @@ export class FrameEndEventHollow extends RecordingEventBase implements FrameEndB
 	constructor(
 		previousFrameEndEvent: FrameEndEventHollow | null,
 		previousPlayerPositionEvent: PlayerPositionEvent | null,
-		getPreviousPlayerData: <TField extends PlayerDataField>(
+		getPreviousPlayerData: <TField extends PlayerDataFieldHollow>(
 			field: TField,
 		) => PlayerDataEventHollow<TField> | undefined,
 		getPreviousHeroState: (field: HeroStateField) => HeroStateEvent | undefined,

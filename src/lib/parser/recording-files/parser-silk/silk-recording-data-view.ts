@@ -8,16 +8,11 @@ import {
 	MateriumItemsDataSilk,
 	QuestCompletionDataSilk,
 	QuestRumourDataSilk,
+	StoryEventInfoSilk,
 	ToolCrestsDataSilk,
 	ToolItemLiquidsDataSilk,
 	ToolItemsDataSilk,
 } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
-
-export type StoryEventInfoSilk = {
-	eventType: number;
-	sceneName: string;
-	playTime: number;
-};
 
 export class SilkRecordingDataView {
 	private readonly view: DataView;

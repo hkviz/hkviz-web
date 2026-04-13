@@ -97,7 +97,13 @@ export function MapViewRooms<Game extends GameId>(props: MapViewRoomsProps<Game>
 
 	const roomByGameObjectName = createMemo(() => new Map(props.rooms.map((room) => [room.gameObjectName, room])));
 	const maskIdByGameObjectName = createMemo(
-		() => new Map(props.rooms.map((room) => [room.gameObjectName, `mask_${idPrefix}_${room.gameObjectName}`])),
+		() =>
+			new Map(
+				props.rooms.map((room) => {
+					const go = room.gameObjectName.replace(/\s/g, '_');
+					return [room.gameObjectName, `mask_${idPrefix}_${go}`];
+				}),
+			),
 	);
 	const hoveredRooms = createMemo(() => {
 		if (!(props.highlightSelectedRoom ?? true)) return [] as RoomDataHollow[];

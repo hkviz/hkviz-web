@@ -24,7 +24,7 @@
 		"src/**/*.ts",
 		"src/**/*.tsx",
 		"scripts/**/*.ts",
-		"scripts/silk-map-copy-sprites.mts",
+		"scripts/**/*.mts",
 		"src/lib/game-data/silk-data/map-data-silk.generated.ts",
 		"src/lib/game-data/silk-data/map-data-silk.generated.types.ts"
 	]

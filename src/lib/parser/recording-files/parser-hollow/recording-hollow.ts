@@ -1,4 +1,4 @@
-import { type PlayerDataField } from '../../../game-data/hollow-data/player-data-hollow';
+import { type PlayerDataFieldHollow } from '../../../game-data/hollow-data/player-data-hollow';
 import { raise } from '../../../util';
 import { FrameEndEventHollow } from '../events-hollow/frame-end-event-hollow';
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
@@ -28,7 +28,7 @@ export class RecordingFileVersionEvent extends RecordingEventBase {
 export type RecordingEventHollow =
 	| SceneEvent
 	| PlayerPositionEvent
-	| PlayerDataEventHollow<PlayerDataField>
+	| PlayerDataEventHollow<PlayerDataFieldHollow>
 	| RecordingFileVersionEvent
 	| HeroStateEvent
 	| SpellFireballEvent
@@ -38,17 +38,17 @@ export type RecordingEventHollow =
 	| ModdingInfoEvent
 	| HKVizModVersionEvent;
 
-export function isPlayerDataEventOfFieldHollow<TField extends PlayerDataField>(
+export function isPlayerDataEventOfFieldHollow<TField extends PlayerDataFieldHollow>(
 	event: RecordingEventHollow,
 	field: TField,
 ): event is PlayerDataEventHollow<TField> {
 	return event instanceof PlayerDataEventHollow && event.field === field;
 }
 
-export function isPlayerDataEventWithFieldTypeHollow<FieldType extends PlayerDataField['type']>(
+export function isPlayerDataEventWithFieldTypeHollow<FieldType extends PlayerDataFieldHollow['type']>(
 	event: RecordingEventHollow,
 	type: FieldType,
-): event is PlayerDataEventHollow<Extract<PlayerDataField, { type: FieldType }>> {
+): event is PlayerDataEventHollow<Extract<PlayerDataFieldHollow, { type: FieldType }>> {
 	return event instanceof PlayerDataEventHollow && event.field.type === type;
 }
 
@@ -74,7 +74,7 @@ export class ParsedRecordingHollow {
 }
 
 export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
-	public playerDataEventsPerField = new Map<PlayerDataField, PlayerDataEventHollow<PlayerDataField>[]>();
+	public playerDataEventsPerField = new Map<PlayerDataFieldHollow, PlayerDataEventHollow<PlayerDataFieldHollow>[]>();
 	public splits: RecordingSplit[];
 	public playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
 
@@ -82,7 +82,10 @@ export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
 		events: RecordingEventHollow[],
 		unknownEvents: number,
 		parsingErrors: number,
-		public readonly lastPlayerDataEventsByField: Map<PlayerDataField, PlayerDataEventHollow<PlayerDataField>>,
+		public readonly lastPlayerDataEventsByField: Map<
+			PlayerDataFieldHollow,
+			PlayerDataEventHollow<PlayerDataFieldHollow>
+		>,
 		public readonly allModVersions: ModInfo[],
 		public readonly allHkVizModVersions: string[],
 	) {
@@ -110,11 +113,13 @@ export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
 		this.splits = createRecordingSplits(this);
 	}
 
-	lastPlayerDataEventOfField<TField extends PlayerDataField>(field: TField): PlayerDataEventHollow<TField> | null {
+	lastPlayerDataEventOfField<TField extends PlayerDataFieldHollow>(
+		field: TField,
+	): PlayerDataEventHollow<TField> | null {
 		return (this.lastPlayerDataEventsByField.get(field) as any) ?? null;
 	}
 
-	allPlayerDataEventsOfField<TField extends PlayerDataField>(field: TField): PlayerDataEventHollow<TField>[] {
+	allPlayerDataEventsOfField<TField extends PlayerDataFieldHollow>(field: TField): PlayerDataEventHollow<TField>[] {
 		return (this.playerDataEventsPerField.get(field) as any) ?? [];
 	}
 }

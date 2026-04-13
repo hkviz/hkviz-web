@@ -1,5998 +1,9142 @@
-export const playerDataGeneratedSilk = {
-	fields: {
-		AbyssBellSeenDocks: {
-			id: 1,
-			type: 'bool',
-		},
-		AbyssBellSeenDocksRepaired: {
-			id: 2,
-			type: 'bool',
-		},
-		ArchitectLeft: {
-			id: 3,
-			type: 'bool',
-		},
-		ArchitectMelodyGainSeen: {
-			id: 4,
-			type: 'bool',
-		},
-		ArchitectMelodyReturnQueued: {
-			id: 5,
-			type: 'bool',
-		},
-		ArchitectMelodyReturnSeen: {
-			id: 6,
-			type: 'bool',
-		},
-		ArchitectMentionedCogHeart: {
-			id: 7,
-			type: 'bool',
-		},
-		ArchitectMentionedMelody: {
-			id: 8,
-			type: 'bool',
-		},
-		ArchitectMentionedWebShot: {
-			id: 9,
-			type: 'bool',
-		},
-		ArchitectTalkedCrest: {
-			id: 10,
-			type: 'bool',
-		},
-		ArchitectWillLeave: {
-			id: 11,
-			type: 'bool',
-		},
-		BallowGivenKey: {
-			id: 12,
-			type: 'bool',
-		},
-		BallowInSauna: {
-			id: 13,
-			type: 'bool',
-		},
-		BallowLeftSauna: {
-			id: 14,
-			type: 'bool',
-		},
-		BallowMovedToDivingBell: {
-			id: 15,
-			type: 'bool',
-		},
-		BallowSeenInSauna: {
-			id: 16,
-			type: 'bool',
-		},
-		BallowTalkedPostRepair: {
-			id: 17,
-			type: 'bool',
-		},
-		BallowTalkedPostRepairGramaphone: {
-			id: 18,
-			type: 'bool',
-		},
-		BelltownBagpipersOfferedQuest: {
-			id: 19,
-			type: 'bool',
-		},
-		BelltownCouriersBrokenDlg: {
-			id: 20,
-			type: 'bool',
-		},
-		BelltownCouriersBrokenDlgQueued: {
-			id: 21,
-			type: 'bool',
-		},
-		BelltownCouriersFirstBeginDlg: {
-			id: 22,
-			type: 'bool',
-		},
-		BelltownCouriersGenericQuests: {
-			id: 23,
-			type: 'list\u003Cstring\u003E',
-		},
-		BelltownCouriersGourmandHint: {
-			id: 24,
-			type: 'bool',
-		},
-		BelltownCouriersLastCompletedQuest: {
-			id: 25,
-			type: 'string',
-		},
-		BelltownCouriersMet: {
-			id: 26,
-			type: 'bool',
-		},
-		BelltownCouriersMetAct3: {
-			id: 27,
-			type: 'bool',
-		},
-		BelltownCouriersNotPurchasedDlg: {
-			id: 28,
-			type: 'bool',
-		},
-		BelltownCouriersPurchasedDlgBitmask: {
-			id: 29,
-			type: 'int',
-		},
-		BelltownCouriersTalkedCursed: {
-			id: 30,
-			type: 'bool',
-		},
-		BelltownCouriersTalkedGourmand: {
-			id: 31,
-			type: 'bool',
-		},
-		BelltownDoctorConvo: {
-			id: 32,
-			type: 'int',
-		},
-		BelltownDoctorCuredCurse: {
-			id: 33,
-			type: 'bool',
-		},
-		BelltownDoctorFixOffered: {
-			id: 34,
-			type: 'bool',
-		},
-		BelltownDoctorLifebloodSpoke: {
-			id: 35,
-			type: 'bool',
-		},
-		BelltownDoctorMaggotSpoke: {
-			id: 36,
-			type: 'bool',
-		},
-		BelltownDoctorQuestOffered: {
-			id: 37,
-			type: 'bool',
-		},
-		BelltownFurnishingDesk: {
-			id: 38,
-			type: 'bool',
-		},
-		BelltownFurnishingFairyLights: {
-			id: 39,
-			type: 'bool',
-		},
-		BelltownFurnishingGramaphone: {
-			id: 40,
-			type: 'bool',
-		},
-		BelltownFurnishingSpa: {
-			id: 41,
-			type: 'bool',
-		},
-		BelltownFurnishingSpaAvailable: {
-			id: 42,
-			type: 'bool',
-		},
-		BelltownGreetCursedConvo: {
-			id: 43,
-			type: 'bool',
-		},
-		BelltownGreeterConvo: {
-			id: 44,
-			type: 'int',
-		},
-		BelltownGreeterFurnishingDlg: {
-			id: 45,
-			type: 'bool',
-		},
-		BelltownGreeterHouseFullDlg: {
-			id: 46,
-			type: 'bool',
-		},
-		BelltownGreeterHouseHalfDlg: {
-			id: 47,
-			type: 'bool',
-		},
-		BelltownGreeterMetTimePassed: {
-			id: 48,
-			type: 'bool',
-		},
-		BelltownGreeterTwistedBudDlg: {
-			id: 49,
-			type: 'bool',
-		},
-		BelltownHermitConvoCooldown: {
-			id: 50,
-			type: 'bool',
-		},
-		BelltownHermitCursedConvo: {
-			id: 51,
-			type: 'bool',
-		},
-		BelltownHermitEnslavedConvo: {
-			id: 52,
-			type: 'int',
-		},
-		BelltownHermitMet: {
-			id: 53,
-			type: 'bool',
-		},
-		BelltownHermitSavedConvo: {
-			id: 54,
-			type: 'int',
-		},
-		BelltownHouseColour: {
-			id: 55,
-			type: 'enum',
-			enumType: 'GlobalEnums.BellhomePaintColours',
-		},
-		BelltownHousePaintComplete: {
-			id: 56,
-			type: 'bool',
-		},
-		BelltownHousePlayingInfo_RelicName: {
-			id: 57,
-			type: 'string',
-		},
-		BelltownHousePlayingInfo_StartTime: {
-			id: 58,
-			type: 'float',
-		},
-		BelltownHouseState: {
-			id: 59,
-			type: 'enum',
-			enumType: 'GlobalEnums.BelltownHouseStates',
-		},
-		BelltownHouseUnlocked: {
-			id: 60,
-			type: 'bool',
-		},
-		BelltownRelicDealerCylinderConvo: {
-			id: 61,
-			type: 'bool',
-		},
-		BelltownRelicDealerGaveRelic: {
-			id: 62,
-			type: 'bool',
-		},
-		BelltownRelicDealerOutroConvo: {
-			id: 63,
-			type: 'bool',
-		},
-		BelltownRelicDealerOutroConvoAllComplete: {
-			id: 64,
-			type: 'bool',
-		},
-		BelltownShopkeepAct3Convo: {
-			id: 65,
-			type: 'bool',
-		},
-		BelltownShopkeepCourierConvo1Accepted: {
-			id: 66,
-			type: 'bool',
-		},
-		BelltownShopkeepCourierConvo1Completed: {
-			id: 67,
-			type: 'bool',
-		},
-		BelltownShopkeepCursedConvo: {
-			id: 68,
-			type: 'bool',
-		},
-		BelltownShopkeepHouseConvo: {
-			id: 69,
-			type: 'bool',
-		},
-		BlueAssistantBloodCount: {
-			id: 70,
-			type: 'int',
-		},
-		BlueAssistantCorpseFound: {
-			id: 71,
-			type: 'bool',
-		},
-		BlueAssistantEnemyEncountered: {
-			id: 72,
-			type: 'bool',
-		},
-		BlueScientistDead: {
-			id: 73,
-			type: 'bool',
-		},
-		BlueScientistInfectedMet: {
-			id: 74,
-			type: 'bool',
-		},
-		BlueScientistInfectedSeen: {
-			id: 75,
-			type: 'bool',
-		},
-		BlueScientistMet: {
-			id: 76,
-			type: 'bool',
-		},
-		BlueScientistPreQuest2Convo: {
-			id: 77,
-			type: 'bool',
-		},
-		BlueScientistQuest2Offered: {
-			id: 78,
-			type: 'bool',
-		},
-		BlueScientistQuest3Offered: {
-			id: 79,
-			type: 'bool',
-		},
-		BlueScientistQuestOffered: {
-			id: 80,
-			type: 'bool',
-		},
-		BlueScientistSceneryPustulesGrown: {
-			id: 81,
-			type: 'bool',
-		},
-		BlueScientistTalkedCorpse: {
-			id: 82,
-			type: 'bool',
-		},
-		BoneBottomShellFrag1: {
-			id: 83,
-			type: 'bool',
-		},
-		BoneBottomShopKeepLeft: {
-			id: 84,
-			type: 'bool',
-		},
-		BoneBottomShopKeepWillLeave: {
-			id: 85,
-			type: 'bool',
-		},
-		BonePlazaOpened: {
-			id: 86,
-			type: 'bool',
-		},
-		Bone_East_04b_ExplodeWall: {
-			id: 87,
-			type: 'bool',
-		},
-		BonebottomBellwayPilgrimLeft: {
-			id: 88,
-			type: 'bool',
-		},
-		BonebottomBellwayPilgrimScared: {
-			id: 89,
-			type: 'bool',
-		},
-		BonebottomBellwayPilgrimState: {
-			id: 90,
-			type: 'int',
-		},
-		CaravanHauntedBellhartConvo_TroupeLeader: {
-			id: 91,
-			type: 'bool',
-		},
-		CaravanLechAct3Convo: {
-			id: 92,
-			type: 'bool',
-		},
-		CaravanLechMet: {
-			id: 93,
-			type: 'bool',
-		},
-		CaravanLechReturnedToCaravan: {
-			id: 94,
-			type: 'bool',
-		},
-		CaravanLechSaved: {
-			id: 95,
-			type: 'bool',
-		},
-		CaravanLechSpaAcceptState: {
-			id: 96,
-			type: 'bool',
-		},
-		CaravanLechSpaAttacked: {
-			id: 97,
-			type: 'bool',
-		},
-		CaravanLechWoundedSpoken: {
-			id: 98,
-			type: 'bool',
-		},
-		CaravanPilgrimAttackComplete: {
-			id: 99,
-			type: 'bool',
-		},
-		CaravanSpiderPaidExtraBellhart: {
-			id: 100,
-			type: 'bool',
-		},
-		CaravanSpiderTargetScene: {
-			id: 101,
-			type: 'string',
-		},
-		CaravanSpiderTravelDirection: {
-			id: 102,
-			type: 'float',
-		},
-		CaravanTroupeLeaderCanLeaveGreymoor: {
-			id: 103,
-			type: 'bool',
-		},
-		CaravanTroupeLeaderCanLeaveJudge: {
-			id: 104,
-			type: 'bool',
-		},
-		CaravanTroupeLocation: {
-			id: 105,
-			type: 'enum',
-			enumType: 'GlobalEnums.CaravanTroupeLocations',
-		},
-		CaretakerOfferedSnareQuest: {
-			id: 106,
-			type: 'bool',
-		},
-		CaretakerSnareProgressConvo: {
-			id: 107,
-			type: 'bool',
-		},
-		CaretakerSwampSoulConvo: {
-			id: 108,
-			type: 'bool',
-		},
-		ChurchKeeperLeftBasement: {
-			id: 109,
-			type: 'bool',
-		},
-		CollectedCommonSpine: {
-			id: 110,
-			type: 'bool',
-		},
-		CollectedDockDemoKey: {
-			id: 111,
-			type: 'bool',
-		},
-		CollectedDustCageKey: {
-			id: 112,
-			type: 'bool',
-		},
-		CollectedHeartClover: {
-			id: 113,
-			type: 'bool',
-		},
-		CollectedHeartCoral: {
-			id: 114,
-			type: 'bool',
-		},
-		CollectedHeartFlower: {
-			id: 115,
-			type: 'bool',
-		},
-		CollectedHeartHunter: {
-			id: 116,
-			type: 'bool',
-		},
-		CollectedMementoGrey: {
-			id: 117,
-			type: 'bool',
-		},
-		CollectedMementoSprintmaster: {
-			id: 118,
-			type: 'bool',
-		},
-		CollectedToolMetal: {
-			id: 119,
-			type: 'bool',
-		},
-		CompletedEndings: {
-			id: 120,
-			type: 'enum',
-			enumType: 'SaveSlotCompletionIcons.CompletionState',
-		},
-		CompletedRedMemory: {
-			id: 121,
-			type: 'bool',
-		},
-		CompletedWeaveSprintChallenge: {
-			id: 122,
-			type: 'bool',
-		},
-		CompletedWeaveSprintChallengeMax: {
-			id: 123,
-			type: 'bool',
-		},
-		ConductorWeaverDlgHeard: {
-			id: 124,
-			type: 'bool',
-		},
-		ConductorWeaverDlgQueued: {
-			id: 125,
-			type: 'bool',
-		},
-		ConstructedFarsight: {
-			id: 126,
-			type: 'bool',
-		},
-		ConstructedMaterium: {
-			id: 127,
-			type: 'bool',
-		},
-		CorrectMazeDoorsEntered: {
-			id: 128,
-			type: 'int',
-		},
-		CrawbellCrawsInside: {
-			id: 129,
-			type: 'bool',
-		},
-		CrawbellCurrency: {
-			id: 130,
-			type: 'int[]',
-		},
-		CrawbellCurrencyCaps: {
-			id: 131,
-			type: 'int[]',
-		},
-		CrawbellInstalled: {
-			id: 132,
-			type: 'bool',
-		},
-		CrawbellTimer: {
-			id: 133,
-			type: 'float',
-		},
-		CrestPreUpgradeAdditional: {
-			id: 134,
-			type: 'bool',
-		},
-		CrestPreUpgradeTalked: {
-			id: 135,
-			type: 'bool',
-		},
-		CrestPurposeQueued: {
-			id: 136,
-			type: 'bool',
-		},
-		CrestTalkedPurpose: {
-			id: 137,
-			type: 'bool',
-		},
-		CrestUpgraderOfferedFinal: {
-			id: 138,
-			type: 'bool',
-		},
-		CrestUpgraderTalkedSnare: {
-			id: 139,
-			type: 'bool',
-		},
-		CrowCourtInSession: {
-			id: 140,
-			type: 'bool',
-		},
-		CrowSummonsAppearedScene: {
-			id: 141,
-			type: 'string',
-		},
-		CurrentCrestID: {
-			id: 142,
-			type: 'string',
-		},
-		CurseKilledFlyBoneEast: {
-			id: 143,
-			type: 'bool',
-		},
-		CurseKilledFlyGreymoor: {
-			id: 144,
-			type: 'bool',
-		},
-		CurseKilledFlyShellwood: {
-			id: 145,
-			type: 'bool',
-		},
-		CurseKilledFlySwamp: {
-			id: 146,
-			type: 'bool',
-		},
-		DeclinedBartenderDrink: {
-			id: 147,
-			type: 'bool',
-		},
-		DefeatedBonetownBoss: {
-			id: 148,
-			type: 'bool',
-		},
-		DefeatedSwampShaman: {
-			id: 149,
-			type: 'bool',
-		},
-		DeskPlacedLibrarianList: {
-			id: 150,
-			type: 'bool',
-		},
-		DeskPlacedRelicList: {
-			id: 151,
-			type: 'bool',
-		},
-		DidEnterPreviousMazeDoor: {
-			id: 152,
-			type: 'bool',
-		},
-		DustTradersOfferedPins: {
-			id: 153,
-			type: 'bool',
-		},
-		DustTradersOfferedQuest: {
-			id: 154,
-			type: 'bool',
-		},
-		EnclaveStateNPCShortHorned: {
-			id: 155,
-			type: 'enum',
-			enumType: 'GlobalEnums.NPCEncounterState',
-		},
-		EnclaveStateNPCStandard: {
-			id: 156,
-			type: 'enum',
-			enumType: 'GlobalEnums.NPCEncounterState',
-		},
-		EnclaveStateNPCTall: {
-			id: 157,
-			type: 'enum',
-			enumType: 'GlobalEnums.NPCEncounterState',
-		},
-		EnclaveStatePilgrimSmall: {
-			id: 158,
-			type: 'enum',
-			enumType: 'GlobalEnums.NPCEncounterState',
-		},
-		EnclaveState_songKnightFan: {
-			id: 159,
-			type: 'enum',
-			enumType: 'GlobalEnums.NPCEncounterState',
-		},
-		EncounteredBonetownBoss: {
-			id: 160,
-			type: 'bool',
-		},
-		EncounteredLostLace: {
-			id: 161,
-			type: 'bool',
-		},
-		EncounteredSummonedSaviour: {
-			id: 162,
-			type: 'bool',
-		},
-		EnteredMazeRestScene: {
-			id: 163,
-			type: 'bool',
-		},
-		FastTravelNPCLocation: {
-			id: 164,
-			type: 'enum',
-			enumType: 'GlobalEnums.FastTravelLocations',
-		},
-		FisherWalkerDirection: {
-			id: 165,
-			type: 'bool',
-		},
-		FisherWalkerIdleTimeLeft: {
-			id: 166,
-			type: 'float',
-		},
-		FisherWalkerTimer: {
-			id: 167,
-			type: 'float',
-		},
-		FixedDustBellBench: {
-			id: 168,
-			type: 'bool',
-		},
-		FleaGamesCanStart: {
-			id: 169,
-			type: 'bool',
-		},
-		FleaGamesEnded: {
-			id: 170,
-			type: 'bool',
-		},
-		FleaGamesEndedContinuedPlaying: {
-			id: 171,
-			type: 'bool',
-		},
-		FleaGamesMementoGiven: {
-			id: 172,
-			type: 'bool',
-		},
-		FleaGamesPinataHit: {
-			id: 173,
-			type: 'bool',
-		},
-		FleaGamesSpiritScoreAdded: {
-			id: 174,
-			type: 'bool',
-		},
-		FleaGamesStarted: {
-			id: 175,
-			type: 'bool',
-		},
-		FleaQuestOffered: {
-			id: 176,
-			type: 'bool',
-		},
-		FleasCollectedTargetOrder: {
-			id: 177,
-			type: 'list\u003Cint\u003E',
-		},
-		ForgeDaughterMentionedDivingBell: {
-			id: 178,
-			type: 'bool',
-		},
-		ForgeDaughterMentionedWebShot: {
-			id: 179,
-			type: 'bool',
-		},
-		ForgeDaughterPostAbyssDlg: {
-			id: 180,
-			type: 'bool',
-		},
-		ForgeDaughterPurchaseDlg: {
-			id: 181,
-			type: 'bool',
-		},
-		ForgeDaughterSpentToolMetal: {
-			id: 182,
-			type: 'bool',
-		},
-		ForgeDaughterTalkState: {
-			id: 183,
-			type: 'int',
-		},
-		ForgeDaughterWhiteFlowerDlg: {
-			id: 184,
-			type: 'bool',
-		},
-		FreedCaravanSpider: {
-			id: 185,
-			type: 'bool',
-		},
-		GivenLibrarianRelic: {
-			id: 186,
-			type: 'bool',
-		},
-		GotGourmandReward: {
-			id: 187,
-			type: 'bool',
-		},
-		GourmandGivenCoral: {
-			id: 188,
-			type: 'bool',
-		},
-		GourmandGivenEgg: {
-			id: 189,
-			type: 'bool',
-		},
-		GourmandGivenMeat: {
-			id: 190,
-			type: 'bool',
-		},
-		GourmandGivenNectar: {
-			id: 191,
-			type: 'bool',
-		},
-		GourmandGivenStew: {
-			id: 192,
-			type: 'bool',
-		},
-		GourmandServantOfferedQuest: {
-			id: 193,
-			type: 'bool',
-		},
-		GreenPrinceLocation: {
-			id: 194,
-			type: 'enum',
-			enumType: 'GlobalEnums.GreenPrinceLocations',
-		},
-		GreenPrinceSeenSong04: {
-			id: 195,
-			type: 'bool',
-		},
-		GrowstoneState: {
-			id: 196,
-			type: 'int',
-		},
-		GrowstoneTimer: {
-			id: 197,
-			type: 'float',
-		},
-		GrubFarmerMimicValueList: {
-			id: 198,
-			type: 'int[]',
-		},
-		GrubFarmerSilkGrubsSold: {
-			id: 199,
-			type: 'int',
-		},
-		HalfwayBartenderCursedConvo: {
-			id: 200,
-			type: 'bool',
-		},
-		HalfwayBartenderHauntedBellhartConvo: {
-			id: 201,
-			type: 'bool',
-		},
-		HalfwayBartenderOfferedQuest: {
-			id: 202,
-			type: 'bool',
-		},
-		HalfwayDrinksPurchased: {
-			id: 203,
-			type: 'int',
-		},
-		HalfwayNectarOffered: {
-			id: 204,
-			type: 'bool',
-		},
-		HalfwayNectarPaid: {
-			id: 205,
-			type: 'bool',
-		},
-		HalfwayPatronLeftGone: {
-			id: 206,
-			type: 'bool',
-		},
-		HalfwayPatronRightGone: {
-			id: 207,
-			type: 'bool',
-		},
-		HalfwayPatronsCanVisit: {
-			id: 208,
-			type: 'bool',
-		},
-		HalfwayScarecrawAppeared: {
-			id: 209,
-			type: 'bool',
-		},
-		HasAbyssMap: {
-			id: 210,
-			type: 'bool',
-		},
-		HasAqueductMap: {
-			id: 211,
-			type: 'bool',
-		},
-		HasArboriumMap: {
-			id: 212,
-			type: 'bool',
-		},
-		HasBellhartMap: {
-			id: 213,
-			type: 'bool',
-		},
-		HasBoneforestMap: {
-			id: 214,
-			type: 'bool',
-		},
-		HasBoundCrestUpgrader: {
-			id: 215,
-			type: 'bool',
-		},
-		HasCitadelUnderstoreMap: {
-			id: 216,
-			type: 'bool',
-		},
-		HasCloverMap: {
-			id: 217,
-			type: 'bool',
-		},
-		HasCogMap: {
-			id: 218,
-			type: 'bool',
-		},
-		HasCoralMap: {
-			id: 219,
-			type: 'bool',
-		},
-		HasCradleMap: {
-			id: 220,
-			type: 'bool',
-		},
-		HasCrawlMap: {
-			id: 221,
-			type: 'bool',
-		},
-		HasDocksMap: {
-			id: 222,
-			type: 'bool',
-		},
-		HasDustpensMap: {
-			id: 223,
-			type: 'bool',
-		},
-		HasGreymoorMap: {
-			id: 224,
-			type: 'bool',
-		},
-		HasHallsMap: {
-			id: 225,
-			type: 'bool',
-		},
-		HasHangMap: {
-			id: 226,
-			type: 'bool',
-		},
-		HasHuntersNestMap: {
-			id: 227,
-			type: 'bool',
-		},
-		HasJudgeStepsMap: {
-			id: 228,
-			type: 'bool',
-		},
-		HasLibraryMap: {
-			id: 229,
-			type: 'bool',
-		},
-		HasMelodyArchitect: {
-			id: 230,
-			type: 'bool',
-		},
-		HasMelodyConductor: {
-			id: 231,
-			type: 'bool',
-		},
-		HasMelodyLibrarian: {
-			id: 232,
-			type: 'bool',
-		},
-		HasMossGrottoMap: {
-			id: 233,
-			type: 'bool',
-		},
-		HasPeakMap: {
-			id: 234,
-			type: 'bool',
-		},
-		HasSeenDash: {
-			id: 235,
-			type: 'bool',
-		},
-		HasSeenEvaHeal: {
-			id: 236,
-			type: 'bool',
-		},
-		HasSeenGeo: {
-			id: 237,
-			type: 'bool',
-		},
-		HasSeenGeoBig: {
-			id: 238,
-			type: 'bool',
-		},
-		HasSeenGeoMid: {
-			id: 239,
-			type: 'bool',
-		},
-		HasSeenHarpoon: {
-			id: 240,
-			type: 'bool',
-		},
-		HasSeenMapMarkerUpdated: {
-			id: 241,
-			type: 'bool',
-		},
-		HasSeenMapUpdated: {
-			id: 242,
-			type: 'bool',
-		},
-		HasSeenNeedolin: {
-			id: 243,
-			type: 'bool',
-		},
-		HasSeenNeedolinDown: {
-			id: 244,
-			type: 'bool',
-		},
-		HasSeenNeedolinUp: {
-			id: 245,
-			type: 'bool',
-		},
-		HasSeenRation: {
-			id: 246,
-			type: 'bool',
-		},
-		HasSeenShellShards: {
-			id: 247,
-			type: 'bool',
-		},
-		HasSeenSilkHearts: {
-			id: 248,
-			type: 'bool',
-		},
-		HasSeenSuperJump: {
-			id: 249,
-			type: 'bool',
-		},
-		HasSeenWalljump: {
-			id: 250,
-			type: 'bool',
-		},
-		HasShellwoodMap: {
-			id: 251,
-			type: 'bool',
-		},
-		HasSlabKeyA: {
-			id: 252,
-			type: 'bool',
-		},
-		HasSlabKeyB: {
-			id: 253,
-			type: 'bool',
-		},
-		HasSlabKeyC: {
-			id: 254,
-			type: 'bool',
-		},
-		HasSlabMap: {
-			id: 255,
-			type: 'bool',
-		},
-		HasSongGateMap: {
-			id: 256,
-			type: 'bool',
-		},
-		HasStoredMemoryState: {
-			id: 257,
-			type: 'bool',
-		},
-		HasSwampMap: {
-			id: 258,
-			type: 'bool',
-		},
-		HasWardMap: {
-			id: 259,
-			type: 'bool',
-		},
-		HasWeavehomeMap: {
-			id: 260,
-			type: 'bool',
-		},
-		HasWildsMap: {
-			id: 261,
-			type: 'bool',
-		},
-		HeardBoneBottomShopKeepPostBoss: {
-			id: 262,
-			type: 'bool',
-		},
-		HeardMelodyConductorNoQuest: {
-			id: 263,
-			type: 'bool',
-		},
-		HeroCorpseMarkerGuid: {
-			id: 264,
-			type: 'guid',
-		},
-		HeroCorpseMoneyPool: {
-			id: 265,
-			type: 'int',
-		},
-		HeroCorpseScene: {
-			id: 266,
-			type: 'string',
-		},
-		HeroCorpseType: {
-			id: 267,
-			type: 'enum',
-			enumType: 'GlobalEnums.HeroDeathCocoonTypes',
-		},
-		HeroDeathScenePos: {
-			id: 268,
-			type: 'vector2',
-		},
-		HeroDeathSceneSize: {
-			id: 269,
-			type: 'vector2',
-		},
-		HuntressQuestOffered: {
-			id: 270,
-			type: 'bool',
-		},
-		HuntressRuntAppeared: {
-			id: 271,
-			type: 'bool',
-		},
-		HuntressRuntQuestOffered: {
-			id: 272,
-			type: 'bool',
-		},
-		IncorrectMazeDoorsEntered: {
-			id: 273,
-			type: 'int',
-		},
-		InvNailHasNew: {
-			id: 274,
-			type: 'bool',
-		},
-		InvPaneHasNew: {
-			id: 275,
-			type: 'bool',
-		},
-		IsCurrentCrestTemp: {
-			id: 276,
-			type: 'bool',
-		},
-		IsPinGallerySetup: {
-			id: 277,
-			type: 'bool',
-		},
-		IsSilkSpoolBroken: {
-			id: 278,
-			type: 'bool',
-		},
-		IsTeleporting: {
-			id: 279,
-			type: 'bool',
-		},
-		JournalPaneHasNew: {
-			id: 280,
-			type: 'bool',
-		},
-		LastCompletedEnding: {
-			id: 281,
-			type: 'enum',
-			enumType: 'SaveSlotCompletionIcons.CompletionState',
-		},
-		LastDiveCursedConvo: {
-			id: 282,
-			type: 'bool',
-		},
-		LastSetFieldName: {
-			id: 283,
-			type: 'string',
-		},
-		LibrarianAskedForMelody: {
-			id: 284,
-			type: 'bool',
-		},
-		LibrarianAskedForRelic: {
-			id: 285,
-			type: 'bool',
-		},
-		LibrarianCollectionComplete: {
-			id: 286,
-			type: 'bool',
-		},
-		LibrarianMentionedMelody: {
-			id: 287,
-			type: 'bool',
-		},
-		LibrarianMetAct3: {
-			id: 288,
-			type: 'bool',
-		},
-		LibrarianPlayingInfo_RelicName: {
-			id: 289,
-			type: 'string',
-		},
-		LibrarianPlayingInfo_StartTime: {
-			id: 290,
-			type: 'float',
-		},
-		LightningToolToggle: {
-			id: 291,
-			type: 'bool',
-		},
-		MaggotCharmHits: {
-			id: 292,
-			type: 'int',
-		},
-		MapperAppearInBellhart: {
-			id: 293,
-			type: 'bool',
-		},
-		MapperLeftBellhart: {
-			id: 294,
-			type: 'bool',
-		},
-		MapperLeftBoneForest: {
-			id: 295,
-			type: 'bool',
-		},
-		MapperLeftBonetown: {
-			id: 296,
-			type: 'bool',
-		},
-		MapperLeftCoralCaverns: {
-			id: 297,
-			type: 'bool',
-		},
-		MapperLeftCrawl: {
-			id: 298,
-			type: 'bool',
-		},
-		MapperLeftDocks: {
-			id: 299,
-			type: 'bool',
-		},
-		MapperLeftDustpens: {
-			id: 300,
-			type: 'bool',
-		},
-		MapperLeftGreymoor: {
-			id: 301,
-			type: 'bool',
-		},
-		MapperLeftHuntersNest: {
-			id: 302,
-			type: 'bool',
-		},
-		MapperLeftJudgeSteps: {
-			id: 303,
-			type: 'bool',
-		},
-		MapperLeftPeak: {
-			id: 304,
-			type: 'bool',
-		},
-		MapperLeftShadow: {
-			id: 305,
-			type: 'bool',
-		},
-		MapperLeftShellwood: {
-			id: 306,
-			type: 'bool',
-		},
-		MapperLeftWilds: {
-			id: 307,
-			type: 'bool',
-		},
-		MaskMakerQueuedUnmasked2: {
-			id: 308,
-			type: 'bool',
-		},
-		MaskMakerTalkedPeak: {
-			id: 309,
-			type: 'bool',
-		},
-		MaskMakerTalkedRelationship: {
-			id: 310,
-			type: 'bool',
-		},
-		MaskMakerTalkedUnmasked: {
-			id: 311,
-			type: 'bool',
-		},
-		MaskMakerTalkedUnmasked1: {
-			id: 312,
-			type: 'bool',
-		},
-		MaskMakerTalkedUnmasked2: {
-			id: 313,
-			type: 'bool',
-		},
-		MaskMakerTalkedUnmaskedAct3: {
-			id: 314,
-			type: 'bool',
-		},
-		MazeEntranceDoor: {
-			id: 315,
-			type: 'string',
-		},
-		MazeEntranceInitialDoor: {
-			id: 316,
-			type: 'string',
-		},
-		MazeEntranceInitialScene: {
-			id: 317,
-			type: 'string',
-		},
-		MazeEntranceScene: {
-			id: 318,
-			type: 'string',
-		},
-		MelodyLiftCanReturn: {
-			id: 319,
-			type: 'bool',
-		},
-		MerchantEnclaveShellFragment: {
-			id: 320,
-			type: 'bool',
-		},
-		MerchantEnclaveSimpleKey: {
-			id: 321,
-			type: 'bool',
-		},
-		MerchantEnclaveSocket: {
-			id: 322,
-			type: 'bool',
-		},
-		MerchantEnclaveSpoolPiece: {
-			id: 323,
-			type: 'bool',
-		},
-		MerchantEnclaveToolMetal: {
-			id: 324,
-			type: 'bool',
-		},
-		MerchantEnclaveWardKey: {
-			id: 325,
-			type: 'bool',
-		},
-		MetAntMerchant: {
-			id: 326,
-			type: 'bool',
-		},
-		MetArchitect: {
-			id: 327,
-			type: 'bool',
-		},
-		MetArchitectAct3: {
-			id: 328,
-			type: 'bool',
-		},
-		MetBelltownBagpipers: {
-			id: 329,
-			type: 'bool',
-		},
-		MetBelltownDoctor: {
-			id: 330,
-			type: 'bool',
-		},
-		MetBelltownDoctorDoor: {
-			id: 331,
-			type: 'bool',
-		},
-		MetBelltownDoctorDoorAct3: {
-			id: 332,
-			type: 'bool',
-		},
-		MetBelltownRelicDealer: {
-			id: 333,
-			type: 'bool',
-		},
-		MetBelltownRelicDealerAct3: {
-			id: 334,
-			type: 'bool',
-		},
-		MetBelltownShopkeep: {
-			id: 335,
-			type: 'bool',
-		},
-		MetBoneBottomShopKeep: {
-			id: 336,
-			type: 'bool',
-		},
-		MetCaravanSpider: {
-			id: 337,
-			type: 'bool',
-		},
-		MetCaravanSpiderCoral: {
-			id: 338,
-			type: 'bool',
-		},
-		MetCaravanTroupeLeader: {
-			id: 339,
-			type: 'bool',
-		},
-		MetCaravanTroupeLeaderGreymoor: {
-			id: 340,
-			type: 'bool',
-		},
-		MetCaravanTroupeLeaderGreymoorScared: {
-			id: 341,
-			type: 'bool',
-		},
-		MetCaravanTroupeLeaderJudge: {
-			id: 342,
-			type: 'bool',
-		},
-		MetCityMerchantEnclave: {
-			id: 343,
-			type: 'bool',
-		},
-		MetCityMerchantEnclaveAct3: {
-			id: 344,
-			type: 'bool',
-		},
-		MetCityMerchantScavenge: {
-			id: 345,
-			type: 'bool',
-		},
-		MetCrestUpgrader: {
-			id: 346,
-			type: 'bool',
-		},
-		MetCrestUpgraderAct3: {
-			id: 347,
-			type: 'bool',
-		},
-		MetEnclaveScaredPilgrim: {
-			id: 348,
-			type: 'bool',
-		},
-		MetFisherHomeBasic: {
-			id: 349,
-			type: 'bool',
-		},
-		MetFisherHomeFull: {
-			id: 350,
-			type: 'bool',
-		},
-		MetForgeDaughter: {
-			id: 351,
-			type: 'bool',
-		},
-		MetForgeDaughterAct3: {
-			id: 352,
-			type: 'bool',
-		},
-		MetGourmandServant: {
-			id: 353,
-			type: 'bool',
-		},
-		MetGourmandServantAct3: {
-			id: 354,
-			type: 'bool',
-		},
-		MetGrubFarmerMimic: {
-			id: 355,
-			type: 'bool',
-		},
-		MetHalfwayBartender: {
-			id: 356,
-			type: 'bool',
-		},
-		MetHalfwayBartenderAct3: {
-			id: 357,
-			type: 'bool',
-		},
-		MetHalfwayHunterFan: {
-			id: 358,
-			type: 'bool',
-		},
-		MetHunterFanOutside: {
-			id: 359,
-			type: 'bool',
-		},
-		MetMaskMaker: {
-			id: 360,
-			type: 'bool',
-		},
-		MetMaskMakerAct3: {
-			id: 361,
-			type: 'bool',
-		},
-		MetPilgrimsRestShop: {
-			id: 362,
-			type: 'bool',
-		},
-		MetPinChallengeBug: {
-			id: 363,
-			type: 'bool',
-		},
-		MetSeamstress: {
-			id: 364,
-			type: 'bool',
-		},
-		MetSethNPC: {
-			id: 365,
-			type: 'bool',
-		},
-		MetTroupeHunterWild: {
-			id: 366,
-			type: 'bool',
-		},
-		MetWoodWitch: {
-			id: 367,
-			type: 'bool',
-		},
-		MottledChildGivenTool: {
-			id: 368,
-			type: 'bool',
-		},
-		MottledChildNewTool: {
-			id: 369,
-			type: 'bool',
-		},
-		MushroomQuestFound1: {
-			id: 370,
-			type: 'bool',
-		},
-		MushroomQuestFound2: {
-			id: 371,
-			type: 'bool',
-		},
-		MushroomQuestFound3: {
-			id: 372,
-			type: 'bool',
-		},
-		MushroomQuestFound4: {
-			id: 373,
-			type: 'bool',
-		},
-		MushroomQuestFound5: {
-			id: 374,
-			type: 'bool',
-		},
-		MushroomQuestFound6: {
-			id: 375,
-			type: 'bool',
-		},
-		MushroomQuestFound7: {
-			id: 376,
-			type: 'bool',
-		},
-		OpenedCoralCaravanSpider: {
-			id: 377,
-			type: 'bool',
-		},
-		OpenedCrowSummonsDoor: {
-			id: 378,
-			type: 'bool',
-		},
-		PickedUpCrowMemento: {
-			id: 379,
-			type: 'bool',
-		},
-		PilgrimStomperNPCOffered: {
-			id: 380,
-			type: 'bool',
-		},
-		PilgrimsRestDoorBroken: {
-			id: 381,
-			type: 'bool',
-		},
-		PilgrimsRestShopIdleTalkState: {
-			id: 382,
-			type: 'int',
-		},
-		PinGalleryHasPlayedFinalChallenge: {
-			id: 383,
-			type: 'bool',
-		},
-		PinGalleryLastChallengeOpen: {
-			id: 384,
-			type: 'bool',
-		},
-		PinGalleryWallet: {
-			id: 385,
-			type: 'int',
-		},
-		PinsmithMetBelltown: {
-			id: 386,
-			type: 'bool',
-		},
-		PinsmithQuestOffered: {
-			id: 387,
-			type: 'bool',
-		},
-		PinsmithUpg2Offered: {
-			id: 388,
-			type: 'bool',
-		},
-		PinsmithUpg3Offered: {
-			id: 389,
-			type: 'bool',
-		},
-		PinsmithUpg4Offered: {
-			id: 390,
-			type: 'bool',
-		},
-		PinstressPeakBattleAccepted: {
-			id: 391,
-			type: 'bool',
-		},
-		PinstressPeakBattleOffered: {
-			id: 392,
-			type: 'bool',
-		},
-		PinstressPeakQuestOffered: {
-			id: 393,
-			type: 'bool',
-		},
-		PreMemoryState_DoFullHeal: {
-			id: 394,
-			type: 'bool',
-		},
-		PreMemoryState_Health: {
-			id: 395,
-			type: 'int',
-		},
-		PreMemoryState_IsRecorded: {
-			id: 396,
-			type: 'bool',
-		},
-		PreMemoryState_Rosaries: {
-			id: 397,
-			type: 'int',
-		},
-		PreMemoryState_ShellShards: {
-			id: 398,
-			type: 'int',
-		},
-		PreMemoryState_Silk: {
-			id: 399,
-			type: 'int',
-		},
-		PreviousCrestID: {
-			id: 400,
-			type: 'string',
-		},
-		PreviousMazeDoor: {
-			id: 401,
-			type: 'string',
-		},
-		PreviousMazeScene: {
-			id: 402,
-			type: 'string',
-		},
-		PreviousMazeTargetDoor: {
-			id: 403,
-			type: 'string',
-		},
-		PurchasedArchitectKey: {
-			id: 404,
-			type: 'bool',
-		},
-		PurchasedArchitectToolKit: {
-			id: 405,
-			type: 'bool',
-		},
-		PurchasedBelltownMemoryLocket: {
-			id: 406,
-			type: 'bool',
-		},
-		PurchasedBelltownShellFragment: {
-			id: 407,
-			type: 'bool',
-		},
-		PurchasedBelltownSpoolSegment: {
-			id: 408,
-			type: 'bool',
-		},
-		PurchasedBelltownToolPouch: {
-			id: 409,
-			type: 'bool',
-		},
-		PurchasedBonebottomFaithToken: {
-			id: 410,
-			type: 'bool',
-		},
-		PurchasedBonebottomHeartPiece: {
-			id: 411,
-			type: 'bool',
-		},
-		PurchasedBonebottomToolMetal: {
-			id: 412,
-			type: 'bool',
-		},
-		PurchasedForgeToolKit: {
-			id: 413,
-			type: 'bool',
-		},
-		PurchasedPilgrimsRestMemoryLocket: {
-			id: 414,
-			type: 'bool',
-		},
-		PurchasedPilgrimsRestToolPouch: {
-			id: 415,
-			type: 'bool',
-		},
-		QuestPaneHasNew: {
-			id: 416,
-			type: 'bool',
-		},
-		QuillState: {
-			id: 417,
-			type: 'int',
-		},
-		RevisionBreak: {
-			id: 418,
-			type: 'int',
-		},
-		SatAtBenchAfterAbyssEscape: {
-			id: 419,
-			type: 'bool',
-		},
-		SavedFlea_Ant_03: {
-			id: 420,
-			type: 'bool',
-		},
-		SavedFlea_Belltown_04: {
-			id: 421,
-			type: 'bool',
-		},
-		SavedFlea_Bone_06: {
-			id: 422,
-			type: 'bool',
-		},
-		SavedFlea_Bone_East_05: {
-			id: 423,
-			type: 'bool',
-		},
-		SavedFlea_Bone_East_10_Church: {
-			id: 424,
-			type: 'bool',
-		},
-		SavedFlea_Bone_East_17b: {
-			id: 425,
-			type: 'bool',
-		},
-		SavedFlea_Coral_24: {
-			id: 426,
-			type: 'bool',
-		},
-		SavedFlea_Coral_35: {
-			id: 427,
-			type: 'bool',
-		},
-		SavedFlea_Crawl_06: {
-			id: 428,
-			type: 'bool',
-		},
-		SavedFlea_Dock_03d: {
-			id: 429,
-			type: 'bool',
-		},
-		SavedFlea_Dock_16: {
-			id: 430,
-			type: 'bool',
-		},
-		SavedFlea_Dust_09: {
-			id: 431,
-			type: 'bool',
-		},
-		SavedFlea_Dust_12: {
-			id: 432,
-			type: 'bool',
-		},
-		SavedFlea_Greymoor_06: {
-			id: 433,
-			type: 'bool',
-		},
-		SavedFlea_Greymoor_15b: {
-			id: 434,
-			type: 'bool',
-		},
-		SavedFlea_Library_01: {
-			id: 435,
-			type: 'bool',
-		},
-		SavedFlea_Library_09: {
-			id: 436,
-			type: 'bool',
-		},
-		SavedFlea_Peak_05c: {
-			id: 437,
-			type: 'bool',
-		},
-		SavedFlea_Shadow_10: {
-			id: 438,
-			type: 'bool',
-		},
-		SavedFlea_Shadow_28: {
-			id: 439,
-			type: 'bool',
-		},
-		SavedFlea_Shellwood_03: {
-			id: 440,
-			type: 'bool',
-		},
-		SavedFlea_Slab_06: {
-			id: 441,
-			type: 'bool',
-		},
-		SavedFlea_Slab_Cell: {
-			id: 442,
-			type: 'bool',
-		},
-		SavedFlea_Song_11: {
-			id: 443,
-			type: 'bool',
-		},
-		SavedFlea_Song_14: {
-			id: 444,
-			type: 'bool',
-		},
-		SavedFlea_Under_21: {
-			id: 445,
-			type: 'bool',
-		},
-		SavedFlea_Under_23: {
-			id: 446,
-			type: 'bool',
-		},
-		SeamstressAct3Convo: {
-			id: 447,
-			type: 'bool',
-		},
-		SeamstressBadgeConvo: {
-			id: 448,
-			type: 'bool',
-		},
-		SeamstressCitadelConvo: {
-			id: 449,
-			type: 'bool',
-		},
-		SeamstressIdleTalkState: {
-			id: 450,
-			type: 'int',
-		},
-		SeamstressOfferedQuest: {
-			id: 451,
-			type: 'bool',
-		},
-		SeamstressPinstressConvo: {
-			id: 452,
-			type: 'bool',
-		},
-		SeenAntMerchantDead: {
-			id: 453,
-			type: 'bool',
-		},
-		SeenArchitectLeft: {
-			id: 454,
-			type: 'bool',
-		},
-		SeenBelltownCutscene: {
-			id: 455,
-			type: 'bool',
-		},
-		SeenBindPrompt: {
-			id: 456,
-			type: 'bool',
-		},
-		SeenBoneBottomShopKeep: {
-			id: 457,
-			type: 'bool',
-		},
-		SeenCaravanSpider: {
-			id: 458,
-			type: 'bool',
-		},
-		SeenDivingBellGoneAbyss: {
-			id: 459,
-			type: 'bool',
-		},
-		SeenFleaCaravan: {
-			id: 460,
-			type: 'bool',
-		},
-		SeenFleatopiaEmpty: {
-			id: 461,
-			type: 'bool',
-		},
-		SeenGrindleShop: {
-			id: 462,
-			type: 'bool',
-		},
-		SeenHalfwayPatronLeft: {
-			id: 463,
-			type: 'bool',
-		},
-		SeenHalfwayPatronRight: {
-			id: 464,
-			type: 'bool',
-		},
-		SeenLastJudgeGateOpen: {
-			id: 465,
-			type: 'bool',
-		},
-		SeenMapperBellhart: {
-			id: 466,
-			type: 'bool',
-		},
-		SeenMapperBoneForest: {
-			id: 467,
-			type: 'bool',
-		},
-		SeenMapperBonetown: {
-			id: 468,
-			type: 'bool',
-		},
-		SeenMapperCoralCaverns: {
-			id: 469,
-			type: 'bool',
-		},
-		SeenMapperCrawl: {
-			id: 470,
-			type: 'bool',
-		},
-		SeenMapperDocks: {
-			id: 471,
-			type: 'bool',
-		},
-		SeenMapperDustpens: {
-			id: 472,
-			type: 'bool',
-		},
-		SeenMapperGreymoor: {
-			id: 473,
-			type: 'bool',
-		},
-		SeenMapperHuntersNest: {
-			id: 474,
-			type: 'bool',
-		},
-		SeenMapperJudgeSteps: {
-			id: 475,
-			type: 'bool',
-		},
-		SeenMapperPeak: {
-			id: 476,
-			type: 'bool',
-		},
-		SeenMapperShadow: {
-			id: 477,
-			type: 'bool',
-		},
-		SeenMapperShellwood: {
-			id: 478,
-			type: 'bool',
-		},
-		SeenMapperWilds: {
-			id: 479,
-			type: 'bool',
-		},
-		SeenMelodyLibrarianReturn: {
-			id: 480,
-			type: 'bool',
-		},
-		SeenMortDead: {
-			id: 481,
-			type: 'bool',
-		},
-		SeenMortLeft: {
-			id: 482,
-			type: 'bool',
-		},
-		SeenToolEquipPrompt: {
-			id: 483,
-			type: 'bool',
-		},
-		SeenToolGetPrompt: {
-			id: 484,
-			type: 'bool',
-		},
-		SeenToolUsePrompt: {
-			id: 485,
-			type: 'bool',
-		},
-		SeenToolWeaponGetPrompt: {
-			id: 486,
-			type: 'bool',
-		},
-		SethJoinedFleatopia: {
-			id: 487,
-			type: 'bool',
-		},
-		SethNpcLocation: {
-			id: 488,
-			type: 'enum',
-			enumType: 'GlobalEnums.SethNpcLocations',
-		},
-		ShakraFinalQuestAppear: {
-			id: 489,
-			type: 'bool',
-		},
-		ShamanRitualCursedConvo: {
-			id: 490,
-			type: 'bool',
-		},
-		ShellShards: {
-			id: 491,
-			type: 'int',
-		},
-		ShopkeeperQuestMentioned: {
-			id: 492,
-			type: 'bool',
-		},
-		SnailShamansCloverHeartConvo: {
-			id: 493,
-			type: 'bool',
-		},
-		SnailShamansCrestConvo: {
-			id: 494,
-			type: 'bool',
-		},
-		SpinnerDefeatedTimePassed: {
-			id: 495,
-			type: 'bool',
-		},
-		SprintMasterCurrentRace: {
-			id: 496,
-			type: 'int',
-		},
-		SprintMasterExtraRaceAvailable: {
-			id: 497,
-			type: 'bool',
-		},
-		SprintMasterExtraRaceDlg: {
-			id: 498,
-			type: 'bool',
-		},
-		SprintMasterExtraRaceWon: {
-			id: 499,
-			type: 'bool',
-		},
-		SteelQuestSpots: {
-			id: 500,
-			type: 'dictionary\u003Cstring,bool\u003E',
-		},
-		SteelSentinelMet: {
-			id: 501,
-			type: 'bool',
-		},
-		SteelSentinelOffered: {
-			id: 502,
-			type: 'bool',
-		},
-		TempGeoStore: {
-			id: 503,
-			type: 'int',
-		},
-		TempShellShardStore: {
-			id: 504,
-			type: 'int',
-		},
-		ToolKitUpgrades: {
-			id: 505,
-			type: 'int',
-		},
-		ToolPaneHasNew: {
-			id: 506,
-			type: 'bool',
-		},
-		ToolPouchUpgrades: {
-			id: 507,
-			type: 'int',
-		},
-		TroupeHunterWildAct3Convo: {
-			id: 508,
-			type: 'bool',
-		},
-		TroupeLeaderSpokenFleatopiaSearch: {
-			id: 509,
-			type: 'bool',
-		},
-		TroupeLeaderSpokenHunter: {
-			id: 510,
-			type: 'bool',
-		},
-		TroupeLeaderSpokenLech: {
-			id: 511,
-			type: 'bool',
-		},
-		UnlockSilkFinalCutscene: {
-			id: 512,
-			type: 'bool',
-		},
-		UnlockedAqueductStation: {
-			id: 513,
-			type: 'bool',
-		},
-		UnlockedArboriumTube: {
-			id: 514,
-			type: 'bool',
-		},
-		UnlockedBelltownStation: {
-			id: 515,
-			type: 'bool',
-		},
-		UnlockedBoneforestEastStation: {
-			id: 516,
-			type: 'bool',
-		},
-		UnlockedCityBellwayTube: {
-			id: 517,
-			type: 'bool',
-		},
-		UnlockedCityStation: {
-			id: 518,
-			type: 'bool',
-		},
-		UnlockedCoralTowerStation: {
-			id: 519,
-			type: 'bool',
-		},
-		UnlockedDocksStation: {
-			id: 520,
-			type: 'bool',
-		},
-		UnlockedDustCage: {
-			id: 521,
-			type: 'bool',
-		},
-		UnlockedEnclaveTube: {
-			id: 522,
-			type: 'bool',
-		},
-		UnlockedExtraBlueSlot: {
-			id: 523,
-			type: 'bool',
-		},
-		UnlockedExtraYellowSlot: {
-			id: 524,
-			type: 'bool',
-		},
-		UnlockedFastTravel: {
-			id: 525,
-			type: 'bool',
-		},
-		UnlockedFastTravelTeleport: {
-			id: 526,
-			type: 'bool',
-		},
-		UnlockedGreymoorStation: {
-			id: 527,
-			type: 'bool',
-		},
-		UnlockedHangTube: {
-			id: 528,
-			type: 'bool',
-		},
-		UnlockedMelodyLift: {
-			id: 529,
-			type: 'bool',
-		},
-		UnlockedPeakStation: {
-			id: 530,
-			type: 'bool',
-		},
-		UnlockedShadowStation: {
-			id: 531,
-			type: 'bool',
-		},
-		UnlockedShellwoodStation: {
-			id: 532,
-			type: 'bool',
-		},
-		UnlockedSongTube: {
-			id: 533,
-			type: 'bool',
-		},
-		UnlockedUnderTube: {
-			id: 534,
-			type: 'bool',
-		},
-		VampireGnatCorpseInWater: {
-			id: 535,
-			type: 'bool',
-		},
-		VampireGnatCorpseOnCaravan: {
-			id: 536,
-			type: 'bool',
-		},
-		VampireGnatDefeatedBeforeCaravanArrived: {
-			id: 537,
-			type: 'bool',
-		},
-		WasInPinChallenge: {
-			id: 538,
-			type: 'bool',
-		},
-		WasInSceneRace: {
-			id: 539,
-			type: 'bool',
-		},
-		WoodWitchGaveMandrake: {
-			id: 540,
-			type: 'bool',
-		},
-		WoodWitchOfferedCurse: {
-			id: 541,
-			type: 'bool',
-		},
-		WoodWitchOfferedFlowerQuest: {
-			id: 542,
-			type: 'bool',
-		},
-		WoodWitchOfferedItemQuest: {
-			id: 543,
-			type: 'bool',
-		},
-		WoodWitchTalkedPostQuest: {
-			id: 544,
-			type: 'bool',
-		},
-		act2Started: {
-			id: 545,
-			type: 'bool',
-		},
-		act3MapUpdated: {
-			id: 546,
-			type: 'bool',
-		},
-		act3_enclaveWakeSceneCompleted: {
-			id: 547,
-			type: 'bool',
-		},
-		act3_wokeUp: {
-			id: 548,
-			type: 'bool',
-		},
-		activatedStepsUpperBellbench: {
-			id: 549,
-			type: 'bool',
-		},
-		allowVampireGnatInAltLoc: {
-			id: 550,
-			type: 'bool',
-		},
-		ant02GuardDefeated: {
-			id: 551,
-			type: 'bool',
-		},
-		ant04_battleCompleted: {
-			id: 552,
-			type: 'bool',
-		},
-		ant04_enemiesReturn: {
-			id: 553,
-			type: 'bool',
-		},
-		ant21_ExtraBattleAdded: {
-			id: 554,
-			type: 'bool',
-		},
-		ant21_InitBattleCompleted: {
-			id: 555,
-			type: 'bool',
-		},
-		antBenchTrapDefused: {
-			id: 556,
-			type: 'bool',
-		},
-		antMerchantKilled: {
-			id: 557,
-			type: 'bool',
-		},
-		antMerchantShortcut: {
-			id: 558,
-			type: 'bool',
-		},
-		antQueenNPC_deepMelodyConvo: {
-			id: 559,
-			type: 'bool',
-		},
-		arborium_08_oneWay: {
-			id: 560,
-			type: 'bool',
-		},
-		arborium_09_oneWay: {
-			id: 561,
-			type: 'bool',
-		},
-		aspid06_battleComplete: {
-			id: 562,
-			type: 'bool',
-		},
-		aspid06_cloverStagsReturned: {
-			id: 563,
-			type: 'bool',
-		},
-		aspid07_cloverStagsReturned: {
-			id: 564,
-			type: 'bool',
-		},
-		aspid_04_gate: {
-			id: 565,
-			type: 'bool',
-		},
-		aspid_04b_battleCompleted: {
-			id: 566,
-			type: 'bool',
-		},
-		aspid_04b_wildlifeReturned: {
-			id: 567,
-			type: 'bool',
-		},
-		aspid_16_oneway: {
-			id: 568,
-			type: 'bool',
-		},
-		aspid_16_relic: {
-			id: 569,
-			type: 'bool',
-		},
-		atBench: {
-			id: 570,
-			type: 'bool',
-		},
-		attunement: {
-			id: 571,
-			type: 'int',
-		},
-		attunementLevel: {
-			id: 572,
-			type: 'int',
-		},
-		bankOpened: {
-			id: 573,
-			type: 'bool',
-		},
-		basementAntWall: {
-			id: 574,
-			type: 'bool',
-		},
-		beamDamage: {
-			id: 575,
-			type: 'int',
-		},
-		bellCentipedeAppeared: {
-			id: 576,
-			type: 'bool',
-		},
-		bellShrineBellhart: {
-			id: 577,
-			type: 'bool',
-		},
-		bellShrineBoneForest: {
-			id: 578,
-			type: 'bool',
-		},
-		bellShrineEnclave: {
-			id: 579,
-			type: 'bool',
-		},
-		bellShrineGreymoor: {
-			id: 580,
-			type: 'bool',
-		},
-		bellShrineShellwood: {
-			id: 581,
-			type: 'bool',
-		},
-		bellShrineWilds: {
-			id: 582,
-			type: 'bool',
-		},
-		belltownBasementBreakWall: {
-			id: 583,
-			type: 'bool',
-		},
-		belltownCrowd: {
-			id: 584,
-			type: 'int',
-		},
-		belltownCrowdsReady: {
-			id: 585,
-			type: 'bool',
-		},
-		betaEnd: {
-			id: 586,
-			type: 'bool',
-		},
-		bindCutscenePlayed: {
-			id: 587,
-			type: 'bool',
-		},
-		blackThreadWorld: {
-			id: 588,
-			type: 'bool',
-		},
-		bone01shortcutPlat: {
-			id: 589,
-			type: 'bool',
-		},
-		bone03_openedTrapdoor: {
-			id: 590,
-			type: 'bool',
-		},
-		bone03_openedTrapdoorForRockRoller: {
-			id: 591,
-			type: 'bool',
-		},
-		boneBottomAddition_RagLine: {
-			id: 592,
-			type: 'bool',
-		},
-		boneBottomFuneral: {
-			id: 593,
-			type: 'bool',
-		},
-		boneBottomFuneralComplete: {
-			id: 594,
-			type: 'bool',
-		},
-		boneEast07_openedMidRoof: {
-			id: 595,
-			type: 'bool',
-		},
-		boneEastJailerClearedOut: {
-			id: 596,
-			type: 'bool',
-		},
-		boneEastJailerKilled: {
-			id: 597,
-			type: 'bool',
-		},
-		bonebottomQuestBoardFixed: {
-			id: 598,
-			type: 'bool',
-		},
-		bonegraveAspidBerryCollected: {
-			id: 599,
-			type: 'bool',
-		},
-		bonegraveOpen: {
-			id: 600,
-			type: 'bool',
-		},
-		bonegravePilgrimCrowdsCanReturn: {
-			id: 601,
-			type: 'bool',
-		},
-		bonegraveRosaryPilgrimDefeated: {
-			id: 602,
-			type: 'bool',
-		},
-		bonetownAspidBerryCollected: {
-			id: 603,
-			type: 'bool',
-		},
-		bonetownCrowd: {
-			id: 604,
-			type: 'int',
-		},
-		bonetownPilgrimHornedActive: {
-			id: 605,
-			type: 'bool',
-		},
-		bonetownPilgrimHornedCount: {
-			id: 606,
-			type: 'int',
-		},
-		bonetownPilgrimHornedSeen: {
-			id: 607,
-			type: 'bool',
-		},
-		bonetownPilgrimRoundActive: {
-			id: 608,
-			type: 'bool',
-		},
-		bonetownPilgrimRoundCount: {
-			id: 609,
-			type: 'int',
-		},
-		bonetownPilgrimRoundSeen: {
-			id: 610,
-			type: 'bool',
-		},
-		bossReturnEntryGate: {
-			id: 611,
-			type: 'string',
-		},
-		bossRushMode: {
-			id: 612,
-			type: 'bool',
-		},
-		bossStatueTargetLevel: {
-			id: 613,
-			type: 'int',
-		},
-		brokeConfessional: {
-			id: 614,
-			type: 'bool',
-		},
-		brokeUnderstoreFloor: {
-			id: 615,
-			type: 'bool',
-		},
-		broodMotherEyeCollected: {
-			id: 616,
-			type: 'bool',
-		},
-		caretakerBeastConvo: {
-			id: 617,
-			type: 'bool',
-		},
-		caretakerConvoLv1: {
-			id: 618,
-			type: 'bool',
-		},
-		caretakerConvoLv2: {
-			id: 619,
-			type: 'bool',
-		},
-		caretakerConvoLv3: {
-			id: 620,
-			type: 'bool',
-		},
-		caretakerLaceConvo: {
-			id: 621,
-			type: 'bool',
-		},
-		caretakerMerchantConvo: {
-			id: 622,
-			type: 'bool',
-		},
-		caretakerSoulSnareConvo: {
-			id: 623,
-			type: 'bool',
-		},
-		caretakerWardConvo: {
-			id: 624,
-			type: 'bool',
-		},
-		cauldronShortcutUpdraft: {
-			id: 625,
-			type: 'bool',
-		},
-		chapelClosed_beast: {
-			id: 626,
-			type: 'bool',
-		},
-		chapelClosed_reaper: {
-			id: 627,
-			type: 'bool',
-		},
-		chapelClosed_shaman: {
-			id: 628,
-			type: 'bool',
-		},
-		chapelClosed_toolmaster: {
-			id: 629,
-			type: 'bool',
-		},
-		chapelClosed_wanderer: {
-			id: 630,
-			type: 'bool',
-		},
-		chapelClosed_witch: {
-			id: 631,
-			type: 'bool',
-		},
-		churchKeeperBonegraveConvo: {
-			id: 632,
-			type: 'bool',
-		},
-		churchKeeperCursedConvo: {
-			id: 633,
-			type: 'bool',
-		},
-		churchKeeperIntro: {
-			id: 634,
-			type: 'bool',
-		},
-		churchRhinoBlackThreadCorpse: {
-			id: 635,
-			type: 'bool',
-		},
-		churchRhinoKilled: {
-			id: 636,
-			type: 'bool',
-		},
-		citadelHalfwayComplete: {
-			id: 637,
-			type: 'bool',
-		},
-		citadelWoken: {
-			id: 638,
-			type: 'bool',
-		},
-		citadel_encounteredFencers: {
-			id: 639,
-			type: 'bool',
-		},
-		cityMerchantBridgeSaveRemeet: {
-			id: 640,
-			type: 'bool',
-		},
-		cityMerchantCanLeaveForBridge: {
-			id: 641,
-			type: 'bool',
-		},
-		cityMerchantConvo1: {
-			id: 642,
-			type: 'bool',
-		},
-		cityMerchantEnclaveConvo: {
-			id: 643,
-			type: 'bool',
-		},
-		cityMerchantInGrandForum: {
-			id: 644,
-			type: 'bool',
-		},
-		cityMerchantInGrandForumLeft: {
-			id: 645,
-			type: 'bool',
-		},
-		cityMerchantInGrandForumSeen: {
-			id: 646,
-			type: 'bool',
-		},
-		cityMerchantInLibrary03: {
-			id: 647,
-			type: 'bool',
-		},
-		cityMerchantInLibrary03Left: {
-			id: 648,
-			type: 'bool',
-		},
-		cityMerchantInLibrary03Seen: {
-			id: 649,
-			type: 'bool',
-		},
-		cityMerchantIntroduced: {
-			id: 650,
-			type: 'bool',
-		},
-		cityMerchantRecentlySeenInEnclave: {
-			id: 651,
-			type: 'bool',
-		},
-		cityMerchantSaved: {
-			id: 652,
-			type: 'bool',
-		},
-		cloakOdour_slabFly: {
-			id: 653,
-			type: 'int',
-		},
-		cloverDancerRegrowth: {
-			id: 654,
-			type: 'bool',
-		},
-		cog7_automatonDestroyed: {
-			id: 655,
-			type: 'bool',
-		},
-		cog7_automatonRepairing: {
-			id: 656,
-			type: 'bool',
-		},
-		cog7_automatonRepairingComplete: {
-			id: 657,
-			type: 'bool',
-		},
-		cog7_automaton_defeated: {
-			id: 658,
-			type: 'bool',
-		},
-		cog7_gateOpened: {
-			id: 659,
-			type: 'bool',
-		},
-		collectedWardBossKey: {
-			id: 660,
-			type: 'bool',
-		},
-		collectedWardKey: {
-			id: 661,
-			type: 'bool',
-		},
-		collectorEggsHatched: {
-			id: 662,
-			type: 'bool',
-		},
-		completedAbyssAscent: {
-			id: 663,
-			type: 'bool',
-		},
-		completedCog10_abyssBattle: {
-			id: 664,
-			type: 'bool',
-		},
-		completedGrandStageBattle: {
-			id: 665,
-			type: 'bool',
-		},
-		completedGreymoor17Battle: {
-			id: 666,
-			type: 'bool',
-		},
-		completedLavaChallenge: {
-			id: 667,
-			type: 'bool',
-		},
-		completedLibraryAcolyteBattle: {
-			id: 668,
-			type: 'bool',
-		},
-		completedLibraryEntryBattle: {
-			id: 669,
-			type: 'bool',
-		},
-		completedMemory_beast: {
-			id: 670,
-			type: 'bool',
-		},
-		completedMemory_reaper: {
-			id: 671,
-			type: 'bool',
-		},
-		completedMemory_shaman: {
-			id: 672,
-			type: 'bool',
-		},
-		completedMemory_toolmaster: {
-			id: 673,
-			type: 'bool',
-		},
-		completedMemory_wanderer: {
-			id: 674,
-			type: 'bool',
-		},
-		completedMemory_witch: {
-			id: 675,
-			type: 'bool',
-		},
-		completedSuperJumpSequence: {
-			id: 676,
-			type: 'bool',
-		},
-		completedTutorial: {
-			id: 677,
-			type: 'bool',
-		},
-		completionPercentage: {
-			id: 678,
-			type: 'float',
-		},
-		coral19_clearedOut: {
-			id: 679,
-			type: 'bool',
-		},
-		coralBridgeGuard2Stationed: {
-			id: 680,
-			type: 'bool',
-		},
-		coralDrillerSoloEnemiesReturned: {
-			id: 681,
-			type: 'bool',
-		},
-		coralDrillerSoloReady: {
-			id: 682,
-			type: 'bool',
-		},
-		coralKingHeartAppeared: {
-			id: 683,
-			type: 'bool',
-		},
-		crashedIntoGreymoor: {
-			id: 684,
-			type: 'bool',
-		},
-		crashingIntoGreymoor: {
-			id: 685,
-			type: 'bool',
-		},
-		crawl03_oneWayWall: {
-			id: 686,
-			type: 'bool',
-		},
-		creaturesReturnedToBone10: {
-			id: 687,
-			type: 'bool',
-		},
-		currentArea: {
-			id: 688,
-			type: 'string',
-		},
-		currentBossStatueCompletionKey: {
-			id: 689,
-			type: 'string',
-		},
-		currentInvPane: {
-			id: 690,
-			type: 'int',
-		},
-		damagedBlue: {
-			id: 691,
-			type: 'bool',
-		},
-		damagedPurple: {
-			id: 692,
-			type: 'bool',
-		},
-		date: {
-			id: 693,
-			type: 'string',
-		},
-		defeatedAntQueen: {
-			id: 694,
-			type: 'bool',
-		},
-		defeatedAntQueenAfterRedMemory: {
-			id: 695,
-			type: 'bool',
-		},
-		defeatedAntTrapper: {
-			id: 696,
-			type: 'bool',
-		},
-		defeatedBellBeast: {
-			id: 697,
-			type: 'bool',
-		},
-		defeatedBoneFlyerGiant: {
-			id: 698,
-			type: 'bool',
-		},
-		defeatedBoneFlyerGiantGolemScene: {
-			id: 699,
-			type: 'bool',
-		},
-		defeatedBroodMother: {
-			id: 700,
-			type: 'bool',
-		},
-		defeatedCloverDancers: {
-			id: 701,
-			type: 'bool',
-		},
-		defeatedCogworkDancers: {
-			id: 702,
-			type: 'bool',
-		},
-		defeatedCoralBridgeGuard1: {
-			id: 703,
-			type: 'bool',
-		},
-		defeatedCoralBridgeGuard2: {
-			id: 704,
-			type: 'bool',
-		},
-		defeatedCoralDrillerSolo: {
-			id: 705,
-			type: 'bool',
-		},
-		defeatedCoralDrillers: {
-			id: 706,
-			type: 'bool',
-		},
-		defeatedCoralKing: {
-			id: 707,
-			type: 'bool',
-		},
-		defeatedCrowCourt: {
-			id: 708,
-			type: 'bool',
-		},
-		defeatedDockForemen: {
-			id: 709,
-			type: 'bool',
-		},
-		defeatedFirstWeaver: {
-			id: 710,
-			type: 'bool',
-		},
-		defeatedFlowerQueen: {
-			id: 711,
-			type: 'bool',
-		},
-		defeatedGreyWarrior: {
-			id: 712,
-			type: 'bool',
-		},
-		defeatedGuardBoneEast25: {
-			id: 713,
-			type: 'bool',
-		},
-		defeatedLace1: {
-			id: 714,
-			type: 'bool',
-		},
-		defeatedLaceTower: {
-			id: 715,
-			type: 'bool',
-		},
-		defeatedLastJudge: {
-			id: 716,
-			type: 'bool',
-		},
-		defeatedMossEvolver: {
-			id: 717,
-			type: 'bool',
-		},
-		defeatedMossMother: {
-			id: 718,
-			type: 'bool',
-		},
-		defeatedPhantom: {
-			id: 719,
-			type: 'bool',
-		},
-		defeatedRoachkeeperChef: {
-			id: 720,
-			type: 'bool',
-		},
-		defeatedSeth: {
-			id: 721,
-			type: 'bool',
-		},
-		defeatedShellwoodRosaryPilgrim: {
-			id: 722,
-			type: 'bool',
-		},
-		defeatedSongChevalierBoss: {
-			id: 723,
-			type: 'bool',
-		},
-		defeatedSongGolem: {
-			id: 724,
-			type: 'bool',
-		},
-		defeatedSplinterQueen: {
-			id: 725,
-			type: 'bool',
-		},
-		defeatedTormentedTrobbio: {
-			id: 726,
-			type: 'bool',
-		},
-		defeatedTrobbio: {
-			id: 727,
-			type: 'bool',
-		},
-		defeatedVampireGnatBoss: {
-			id: 728,
-			type: 'bool',
-		},
-		defeatedWhiteCloverstag: {
-			id: 729,
-			type: 'bool',
-		},
-		defeatedWispPyreEffigy: {
-			id: 730,
-			type: 'bool',
-		},
-		defeatedZapCoreEnemy: {
-			id: 731,
-			type: 'bool',
-		},
-		defeatedZapGuard1: {
-			id: 732,
-			type: 'bool',
-		},
-		destroyedRosaryCannonMachine: {
-			id: 733,
-			type: 'bool',
-		},
-		destroyedSongGolemRock: {
-			id: 734,
-			type: 'bool',
-		},
-		dicePilgrimBank: {
-			id: 735,
-			type: 'int',
-		},
-		dicePilgrimDefeated: {
-			id: 736,
-			type: 'bool',
-		},
-		dicePilgrimGameExplained: {
-			id: 737,
-			type: 'bool',
-		},
-		dicePilgrimState: {
-			id: 738,
-			type: 'int',
-		},
-		didPilgrimIntroScene: {
-			id: 739,
-			type: 'bool',
-		},
-		didRhinoRuckus: {
-			id: 740,
-			type: 'bool',
-		},
-		disableInventory: {
-			id: 741,
-			type: 'bool',
-		},
-		disablePause: {
-			id: 742,
-			type: 'bool',
-		},
-		disableSaveQuit: {
-			id: 743,
-			type: 'bool',
-		},
-		disableSilkAbilities: {
-			id: 744,
-			type: 'bool',
-		},
-		docksBomberAmbush: {
-			id: 745,
-			type: 'bool',
-		},
-		docks_02_shortcut_left: {
-			id: 746,
-			type: 'bool',
-		},
-		docks_02_shortcut_right: {
-			id: 747,
-			type: 'bool',
-		},
-		dreamReturnScene: {
-			id: 748,
-			type: 'string',
-		},
-		droppedFloorBreakerPlat: {
-			id: 749,
-			type: 'bool',
-		},
-		druidAct3Intro: {
-			id: 750,
-			type: 'bool',
-		},
-		druidMossBerriesSold: {
-			id: 751,
-			type: 'int',
-		},
-		druidTradeIntro: {
-			id: 752,
-			type: 'bool',
-		},
-		dust01_battleCompleted: {
-			id: 753,
-			type: 'bool',
-		},
-		dust01_returnReady: {
-			id: 754,
-			type: 'bool',
-		},
-		dust03_battleCompleted: {
-			id: 755,
-			type: 'bool',
-		},
-		dust03_returnReady: {
-			id: 756,
-			type: 'bool',
-		},
-		dust05EnemyClearedOut: {
-			id: 757,
-			type: 'bool',
-		},
-		enclaveAddition_CloakLine: {
-			id: 758,
-			type: 'bool',
-		},
-		enclaveAddition_PinRack: {
-			id: 759,
-			type: 'bool',
-		},
-		enclaveDonation2_Available: {
-			id: 760,
-			type: 'bool',
-		},
-		enclaveLevel: {
-			id: 761,
-			type: 'int',
-		},
-		enclaveMerchantSaved: {
-			id: 762,
-			type: 'bool',
-		},
-		enclaveMerchantSeenInEnclave: {
-			id: 763,
-			type: 'bool',
-		},
-		enclaveNPC_songKnightFan: {
-			id: 764,
-			type: 'bool',
-		},
-		encounteredAntTrapper: {
-			id: 765,
-			type: 'bool',
-		},
-		encounteredBellBeast: {
-			id: 766,
-			type: 'bool',
-		},
-		encounteredCloverDancers: {
-			id: 767,
-			type: 'bool',
-		},
-		encounteredCogworkDancers: {
-			id: 768,
-			type: 'bool',
-		},
-		encounteredCoralDrillerSolo: {
-			id: 769,
-			type: 'bool',
-		},
-		encounteredCoralDrillers: {
-			id: 770,
-			type: 'bool',
-		},
-		encounteredCoralKing: {
-			id: 771,
-			type: 'bool',
-		},
-		encounteredCrowCourt: {
-			id: 772,
-			type: 'bool',
-		},
-		encounteredDockForemen: {
-			id: 773,
-			type: 'bool',
-		},
-		encounteredFirstWeaver: {
-			id: 774,
-			type: 'bool',
-		},
-		encounteredFlowerQueen: {
-			id: 775,
-			type: 'bool',
-		},
-		encounteredLace1: {
-			id: 776,
-			type: 'bool',
-		},
-		encounteredLace1Grotto: {
-			id: 777,
-			type: 'bool',
-		},
-		encounteredLaceBlastedBridge: {
-			id: 778,
-			type: 'bool',
-		},
-		encounteredLaceTower: {
-			id: 779,
-			type: 'bool',
-		},
-		encounteredLastJudge: {
-			id: 780,
-			type: 'bool',
-		},
-		encounteredLibraryEntryBattle: {
-			id: 781,
-			type: 'bool',
-		},
-		encounteredMossMother: {
-			id: 782,
-			type: 'bool',
-		},
-		encounteredPhantom: {
-			id: 783,
-			type: 'bool',
-		},
-		encounteredPharloomEdge: {
-			id: 784,
-			type: 'bool',
-		},
-		encounteredPharloomEdgeAct3: {
-			id: 785,
-			type: 'bool',
-		},
-		encounteredSeth: {
-			id: 786,
-			type: 'bool',
-		},
-		encounteredSilk: {
-			id: 787,
-			type: 'bool',
-		},
-		encounteredSongChevalierBoss: {
-			id: 788,
-			type: 'bool',
-		},
-		encounteredSongGolem: {
-			id: 789,
-			type: 'bool',
-		},
-		encounteredSpinner: {
-			id: 790,
-			type: 'bool',
-		},
-		encounteredSplinterQueen: {
-			id: 791,
-			type: 'bool',
-		},
-		encounteredSurfaceEdge: {
-			id: 792,
-			type: 'bool',
-		},
-		encounteredTormentedTrobbio: {
-			id: 793,
-			type: 'bool',
-		},
-		encounteredTrobbio: {
-			id: 794,
-			type: 'bool',
-		},
-		encounteredVampireGnatBoss: {
-			id: 795,
-			type: 'bool',
-		},
-		encounteredVampireGnat_05: {
-			id: 796,
-			type: 'bool',
-		},
-		encounteredVampireGnat_07: {
-			id: 797,
-			type: 'bool',
-		},
-		encounteredWhiteCloverstag: {
-			id: 798,
-			type: 'bool',
-		},
-		encounteredWhiteCloverstagMid: {
-			id: 799,
-			type: 'bool',
-		},
-		enemyGroupAnt04: {
-			id: 800,
-			type: 'int',
-		},
-		enteredCoral_10: {
-			id: 801,
-			type: 'bool',
-		},
-		enteredGreymoor05: {
-			id: 802,
-			type: 'bool',
-		},
-		enteredHang_08: {
-			id: 803,
-			type: 'bool',
-		},
-		enteredSong_01: {
-			id: 804,
-			type: 'bool',
-		},
-		enteredSong_02: {
-			id: 805,
-			type: 'bool',
-		},
-		enteredSong_13: {
-			id: 806,
-			type: 'bool',
-		},
-		enteredSong_17: {
-			id: 807,
-			type: 'bool',
-		},
-		enteredSong_19: {
-			id: 808,
-			type: 'bool',
-		},
-		enteredTutorialFirstTime: {
-			id: 809,
-			type: 'bool',
-		},
-		entered_Tut01b: {
-			id: 810,
-			type: 'bool',
-		},
-		environmentType: {
-			id: 811,
-			type: 'enum',
-			enumType: 'GlobalEnums.EnvironmentTypes',
-		},
-		explodeWallBoneEast18c: {
-			id: 812,
-			type: 'bool',
-		},
-		explodeWallMosstown3: {
-			id: 813,
-			type: 'bool',
-		},
-		extraRestZone: {
-			id: 814,
-			type: 'enum',
-			enumType: 'GlobalEnums.ExtraRestZones',
-		},
-		farmer_grewFirstGrub: {
-			id: 815,
-			type: 'bool',
-		},
-		farmer_grubGrowing_1: {
-			id: 816,
-			type: 'bool',
-		},
-		farmer_grubGrowing_2: {
-			id: 817,
-			type: 'bool',
-		},
-		farmer_grubGrowing_3: {
-			id: 818,
-			type: 'bool',
-		},
-		farmer_grubGrown_1: {
-			id: 819,
-			type: 'bool',
-		},
-		farmer_grubGrown_2: {
-			id: 820,
-			type: 'bool',
-		},
-		farmer_grubGrown_3: {
-			id: 821,
-			type: 'bool',
-		},
-		fixerAcceptedQuestConvo: {
-			id: 822,
-			type: 'bool',
-		},
-		fixerBridgeBreaking: {
-			id: 823,
-			type: 'bool',
-		},
-		fixerBridgeBroken: {
-			id: 824,
-			type: 'bool',
-		},
-		fixerBridgeConstructed: {
-			id: 825,
-			type: 'bool',
-		},
-		fixerQuestBoardConvo: {
-			id: 826,
-			type: 'bool',
-		},
-		fixerStatueConstructed: {
-			id: 827,
-			type: 'bool',
-		},
-		fixerStatueConvo: {
-			id: 828,
-			type: 'bool',
-		},
-		fleaGames_bouncing_highscore: {
-			id: 829,
-			type: 'int',
-		},
-		fleaGames_bouncing_played: {
-			id: 830,
-			type: 'bool',
-		},
-		fleaGames_dodging_highscore: {
-			id: 831,
-			type: 'int',
-		},
-		fleaGames_dodging_played: {
-			id: 832,
-			type: 'bool',
-		},
-		fleaGames_juggling_highscore: {
-			id: 833,
-			type: 'int',
-		},
-		fleaGames_juggling_played: {
-			id: 834,
-			type: 'bool',
-		},
-		flowerQueenHeartAppeared: {
-			id: 835,
-			type: 'bool',
-		},
-		fullyEnteredVerdania: {
-			id: 836,
-			type: 'bool',
-		},
-		gainedCurse: {
-			id: 837,
-			type: 'bool',
-		},
-		garmondAidForumBattle: {
-			id: 838,
-			type: 'bool',
-		},
-		garmondBlackThreadDefeated: {
-			id: 839,
-			type: 'bool',
-		},
-		garmondEncounterCooldown: {
-			id: 840,
-			type: 'bool',
-		},
-		garmondEncounters_act3: {
-			id: 841,
-			type: 'int',
-		},
-		garmondFinalQuestReady: {
-			id: 842,
-			type: 'bool',
-		},
-		garmondInDust05: {
-			id: 843,
-			type: 'bool',
-		},
-		garmondInEnclave: {
-			id: 844,
-			type: 'bool',
-		},
-		garmondInLibrary: {
-			id: 845,
-			type: 'bool',
-		},
-		garmondInSong01: {
-			id: 846,
-			type: 'bool',
-		},
-		garmondInSong02: {
-			id: 847,
-			type: 'bool',
-		},
-		garmondInSong13: {
-			id: 848,
-			type: 'bool',
-		},
-		garmondInSong17: {
-			id: 849,
-			type: 'bool',
-		},
-		garmondLibraryDefeatedHornet: {
-			id: 850,
-			type: 'bool',
-		},
-		garmondLibraryMet: {
-			id: 851,
-			type: 'bool',
-		},
-		garmondLibraryOffered: {
-			id: 852,
-			type: 'bool',
-		},
-		garmondLibrarySeen: {
-			id: 853,
-			type: 'bool',
-		},
-		garmondMetEnclave: {
-			id: 854,
-			type: 'bool',
-		},
-		garmondMoorwingConvo: {
-			id: 855,
-			type: 'bool',
-		},
-		garmondMoorwingConvoReady: {
-			id: 856,
-			type: 'bool',
-		},
-		garmondPurposeConvo: {
-			id: 857,
-			type: 'bool',
-		},
-		garmondSeenInDust05: {
-			id: 858,
-			type: 'bool',
-		},
-		garmondSeenInGreymoor10: {
-			id: 859,
-			type: 'bool',
-		},
-		garmondSeenInSong01: {
-			id: 860,
-			type: 'bool',
-		},
-		garmondSeenInSong02: {
-			id: 861,
-			type: 'bool',
-		},
-		garmondSeenInSong13: {
-			id: 862,
-			type: 'bool',
-		},
-		garmondSeenInSong17: {
-			id: 863,
-			type: 'bool',
-		},
-		garmondWillAidInForumBattle: {
-			id: 864,
-			type: 'bool',
-		},
-		gatePilgrimNoNeedolinConvo: {
-			id: 865,
-			type: 'bool',
-		},
-		geo: {
-			id: 866,
-			type: 'int',
-		},
-		gillyAct3Convo: {
-			id: 867,
-			type: 'bool',
-		},
-		gillyHunterCampConvo: {
-			id: 868,
-			type: 'bool',
-		},
-		gillyIntroduced: {
-			id: 869,
-			type: 'bool',
-		},
-		gillyLocation: {
-			id: 870,
-			type: 'int',
-		},
-		gillyLocationAct3: {
-			id: 871,
-			type: 'int',
-		},
-		gillyMet: {
-			id: 872,
-			type: 'bool',
-		},
-		gillyQueueMovingOn: {
-			id: 873,
-			type: 'bool',
-		},
-		gillyStatueConvo: {
-			id: 874,
-			type: 'bool',
-		},
-		gillyTrapConvo: {
-			id: 875,
-			type: 'bool',
-		},
-		gotPastDockSpearThrower: {
-			id: 876,
-			type: 'bool',
-		},
-		gotPickledRoachEgg: {
-			id: 877,
-			type: 'bool',
-		},
-		greatBoneGateOpened: {
-			id: 878,
-			type: 'bool',
-		},
-		greyWarriorDeathX: {
-			id: 879,
-			type: 'float',
-		},
-		greymoor05_clearedOut: {
-			id: 880,
-			type: 'bool',
-		},
-		greymoor05_farmerPlatBroken: {
-			id: 881,
-			type: 'bool',
-		},
-		greymoor05_killedJailer: {
-			id: 882,
-			type: 'bool',
-		},
-		greymoor08_plat_destroyed: {
-			id: 883,
-			type: 'bool',
-		},
-		greymoor_04_battleCompleted: {
-			id: 884,
-			type: 'bool',
-		},
-		greymoor_05_centipedeArrives: {
-			id: 885,
-			type: 'bool',
-		},
-		greymoor_10_entered: {
-			id: 886,
-			type: 'bool',
-		},
-		grindleChestEncountered: {
-			id: 887,
-			type: 'bool',
-		},
-		grindleChestLocation: {
-			id: 888,
-			type: 'int',
-		},
-		grindleEnclaveConvo: {
-			id: 889,
-			type: 'bool',
-		},
-		grindleInSong_08: {
-			id: 890,
-			type: 'bool',
-		},
-		grindleMetGrandForum: {
-			id: 891,
-			type: 'bool',
-		},
-		grindleReleasedFromBonejail: {
-			id: 892,
-			type: 'bool',
-		},
-		grindleShopEnemyIntro: {
-			id: 893,
-			type: 'bool',
-		},
-		grindleSlabSequence: {
-			id: 894,
-			type: 'int',
-		},
-		grishkinSethConvo: {
-			id: 895,
-			type: 'bool',
-		},
-		grubFarmLevel: {
-			id: 896,
-			type: 'int',
-		},
-		grubFarmerEmerged: {
-			id: 897,
-			type: 'bool',
-		},
-		grubFarmerTimer: {
-			id: 898,
-			type: 'float',
-		},
-		grubFarmer_firstGrubConvo: {
-			id: 899,
-			type: 'bool',
-		},
-		grubFarmer_needolinConvo1: {
-			id: 900,
-			type: 'bool',
-		},
-		halfwayCrowEnemyGroup: {
-			id: 901,
-			type: 'int',
-		},
-		halfwayCrowd: {
-			id: 902,
-			type: 'int',
-		},
-		hang04Battle: {
-			id: 903,
-			type: 'bool',
-		},
-		hang_10_oneWay: {
-			id: 904,
-			type: 'bool',
-		},
-		hasActivatedBellBench: {
-			id: 905,
-			type: 'bool',
-		},
-		hasBrolly: {
-			id: 906,
-			type: 'bool',
-		},
-		hasChargeSlash: {
-			id: 907,
-			type: 'bool',
-		},
-		hasDash: {
-			id: 908,
-			type: 'bool',
-		},
-		hasDoubleJump: {
-			id: 909,
-			type: 'bool',
-		},
-		hasGodfinder: {
-			id: 910,
-			type: 'bool',
-		},
-		hasHarpoonDash: {
-			id: 911,
-			type: 'bool',
-		},
-		hasJournal: {
-			id: 912,
-			type: 'bool',
-		},
-		hasKilled: {
-			id: 913,
-			type: 'bool',
-		},
-		hasMarker: {
-			id: 914,
-			type: 'bool',
-		},
-		hasMarker_a: {
-			id: 915,
-			type: 'bool',
-		},
-		hasMarker_b: {
-			id: 916,
-			type: 'bool',
-		},
-		hasMarker_c: {
-			id: 917,
-			type: 'bool',
-		},
-		hasMarker_d: {
-			id: 918,
-			type: 'bool',
-		},
-		hasMarker_e: {
-			id: 919,
-			type: 'bool',
-		},
-		hasNeedleThrow: {
-			id: 920,
-			type: 'bool',
-		},
-		hasNeedolin: {
-			id: 921,
-			type: 'bool',
-		},
-		hasNeedolinMemoryPowerup: {
-			id: 922,
-			type: 'bool',
-		},
-		hasParry: {
-			id: 923,
-			type: 'bool',
-		},
-		hasPinBench: {
-			id: 924,
-			type: 'bool',
-		},
-		hasPinCocoon: {
-			id: 925,
-			type: 'bool',
-		},
-		hasPinFleaBlastedlands: {
-			id: 926,
-			type: 'bool',
-		},
-		hasPinFleaCitadel: {
-			id: 927,
-			type: 'bool',
-		},
-		hasPinFleaMarrowlands: {
-			id: 928,
-			type: 'bool',
-		},
-		hasPinFleaMidlands: {
-			id: 929,
-			type: 'bool',
-		},
-		hasPinFleaMucklands: {
-			id: 930,
-			type: 'bool',
-		},
-		hasPinFleaPeaklands: {
-			id: 931,
-			type: 'bool',
-		},
-		hasPinShop: {
-			id: 932,
-			type: 'bool',
-		},
-		hasPinSpa: {
-			id: 933,
-			type: 'bool',
-		},
-		hasPinStag: {
-			id: 934,
-			type: 'bool',
-		},
-		hasPinTube: {
-			id: 935,
-			type: 'bool',
-		},
-		hasQuill: {
-			id: 936,
-			type: 'bool',
-		},
-		hasSilkBomb: {
-			id: 937,
-			type: 'bool',
-		},
-		hasSilkBossNeedle: {
-			id: 938,
-			type: 'bool',
-		},
-		hasSilkCharge: {
-			id: 939,
-			type: 'bool',
-		},
-		hasSilkSpecial: {
-			id: 940,
-			type: 'bool',
-		},
-		hasSuperJump: {
-			id: 941,
-			type: 'bool',
-		},
-		hasThreadSphere: {
-			id: 942,
-			type: 'bool',
-		},
-		hasWalljump: {
-			id: 943,
-			type: 'bool',
-		},
-		hazardRespawnFacing: {
-			id: 944,
-			type: 'enum',
-			enumType: 'HazardRespawnMarker.FacingDirection',
-		},
-		hazardRespawnLocation: {
-			id: 945,
-			type: 'vector3',
-		},
-		health: {
-			id: 946,
-			type: 'int',
-		},
-		healthBlue: {
-			id: 947,
-			type: 'int',
-		},
-		heartPieces: {
-			id: 948,
-			type: 'int',
-		},
-		heroState_airDashing: {
-			id: 949,
-			type: 'bool',
-		},
-		heroState_altAttack: {
-			id: 950,
-			type: 'bool',
-		},
-		heroState_attackCount: {
-			id: 951,
-			type: 'int',
-		},
-		heroState_attacking: {
-			id: 952,
-			type: 'bool',
-		},
-		heroState_backDashCooldown: {
-			id: 953,
-			type: 'bool',
-		},
-		heroState_backDashing: {
-			id: 954,
-			type: 'bool',
-		},
-		heroState_bouncing: {
-			id: 955,
-			type: 'bool',
-		},
-		heroState_castRecoiling: {
-			id: 956,
-			type: 'bool',
-		},
-		heroState_casting: {
-			id: 957,
-			type: 'bool',
-		},
-		heroState_dashCooldown: {
-			id: 958,
-			type: 'bool',
-		},
-		heroState_dashing: {
-			id: 959,
-			type: 'bool',
-		},
-		heroState_dead: {
-			id: 960,
-			type: 'bool',
-		},
-		heroState_doubleJumping: {
-			id: 961,
-			type: 'bool',
-		},
-		heroState_downAttacking: {
-			id: 962,
-			type: 'bool',
-		},
-		heroState_downSpikeAntic: {
-			id: 963,
-			type: 'bool',
-		},
-		heroState_downSpikeBouncing: {
-			id: 964,
-			type: 'bool',
-		},
-		heroState_downSpikeBouncingShort: {
-			id: 965,
-			type: 'bool',
-		},
-		heroState_downSpikeRecovery: {
-			id: 966,
-			type: 'bool',
-		},
-		heroState_downSpiking: {
-			id: 967,
-			type: 'bool',
-		},
-		heroState_downTravelling: {
-			id: 968,
-			type: 'bool',
-		},
-		heroState_downspikeInvulnerabilitySteps: {
-			id: 969,
-			type: 'int',
-		},
-		heroState_evading: {
-			id: 970,
-			type: 'bool',
-		},
-		heroState_facingRight: {
-			id: 971,
-			type: 'bool',
-		},
-		heroState_fakeHurt: {
-			id: 972,
-			type: 'bool',
-		},
-		heroState_falling: {
-			id: 973,
-			type: 'bool',
-		},
-		heroState_floating: {
-			id: 974,
-			type: 'bool',
-		},
-		heroState_focusing: {
-			id: 975,
-			type: 'bool',
-		},
-		heroState_freezeCharge: {
-			id: 976,
-			type: 'bool',
-		},
-		heroState_hazardDeath: {
-			id: 977,
-			type: 'bool',
-		},
-		heroState_hazardRespawning: {
-			id: 978,
-			type: 'bool',
-		},
-		heroState_inAcid: {
-			id: 979,
-			type: 'bool',
-		},
-		heroState_inConveyorZone: {
-			id: 980,
-			type: 'bool',
-		},
-		heroState_inFrostRegion: {
-			id: 981,
-			type: 'bool',
-		},
-		heroState_inUpdraft: {
-			id: 982,
-			type: 'bool',
-		},
-		heroState_inWalkZone: {
-			id: 983,
-			type: 'bool',
-		},
-		heroState_inWindRegion: {
-			id: 984,
-			type: 'bool',
-		},
-		heroState_invulnerable: {
-			id: 985,
-			type: 'bool',
-		},
-		heroState_invulnerableCount: {
-			id: 986,
-			type: 'int',
-		},
-		heroState_isBackScuttling: {
-			id: 987,
-			type: 'bool',
-		},
-		heroState_isBackSprinting: {
-			id: 988,
-			type: 'bool',
-		},
-		heroState_isBinding: {
-			id: 989,
-			type: 'bool',
-		},
-		heroState_isFrostDeath: {
-			id: 990,
-			type: 'bool',
-		},
-		heroState_isFrosted: {
-			id: 991,
-			type: 'bool',
-		},
-		heroState_isInCancelableFSMMove: {
-			id: 992,
-			type: 'bool',
-		},
-		heroState_isInCutsceneMovement: {
-			id: 993,
-			type: 'bool',
-		},
-		heroState_isMaggoted: {
-			id: 994,
-			type: 'bool',
-		},
-		heroState_isPaused: {
-			id: 995,
-			type: 'bool',
-		},
-		heroState_isScrewDownAttacking: {
-			id: 996,
-			type: 'bool',
-		},
-		heroState_isSprinting: {
-			id: 997,
-			type: 'bool',
-		},
-		heroState_isToolThrowing: {
-			id: 998,
-			type: 'bool',
-		},
-		heroState_isTouchingSlopeLeft: {
-			id: 999,
-			type: 'bool',
-		},
-		heroState_isTouchingSlopeRight: {
-			id: 1000,
-			type: 'bool',
-		},
-		heroState_isTriggerEventsPaused: {
-			id: 1001,
-			type: 'bool',
-		},
-		heroState_jumping: {
-			id: 1002,
-			type: 'bool',
-		},
-		heroState_lookingDown: {
-			id: 1003,
-			type: 'bool',
-		},
-		heroState_lookingDownAnim: {
-			id: 1004,
-			type: 'bool',
-		},
-		heroState_lookingDownRing: {
-			id: 1005,
-			type: 'bool',
-		},
-		heroState_lookingUp: {
-			id: 1006,
-			type: 'bool',
-		},
-		heroState_lookingUpAnim: {
-			id: 1007,
-			type: 'bool',
-		},
-		heroState_lookingUpRing: {
-			id: 1008,
-			type: 'bool',
-		},
-		heroState_mantleRecovery: {
-			id: 1009,
-			type: 'bool',
-		},
-		heroState_mantling: {
-			id: 1010,
-			type: 'bool',
-		},
-		heroState_nailCharging: {
-			id: 1011,
-			type: 'bool',
-		},
-		heroState_nearBench: {
-			id: 1012,
-			type: 'bool',
-		},
-		heroState_needolinPlayingMemory: {
-			id: 1013,
-			type: 'bool',
-		},
-		heroState_onConveyor: {
-			id: 1014,
-			type: 'bool',
-		},
-		heroState_onConveyorV: {
-			id: 1015,
-			type: 'bool',
-		},
-		heroState_onGround: {
-			id: 1016,
-			type: 'bool',
-		},
-		heroState_parryAttack: {
-			id: 1017,
-			type: 'bool',
-		},
-		heroState_parrying: {
-			id: 1018,
-			type: 'bool',
-		},
-		heroState_preventBackDash: {
-			id: 1019,
-			type: 'bool',
-		},
-		heroState_preventDash: {
-			id: 1020,
-			type: 'bool',
-		},
-		heroState_recoilFrozen: {
-			id: 1021,
-			type: 'bool',
-		},
-		heroState_recoiling: {
-			id: 1022,
-			type: 'bool',
-		},
-		heroState_recoilingDrill: {
-			id: 1023,
-			type: 'bool',
-		},
-		heroState_recoilingLeft: {
-			id: 1024,
-			type: 'bool',
-		},
-		heroState_recoilingRight: {
-			id: 1025,
-			type: 'bool',
-		},
-		heroState_shadowDashing: {
-			id: 1026,
-			type: 'bool',
-		},
-		heroState_shroomBouncing: {
-			id: 1027,
-			type: 'bool',
-		},
-		heroState_shuttleCock: {
-			id: 1028,
-			type: 'bool',
-		},
-		heroState_spellQuake: {
-			id: 1029,
-			type: 'bool',
-		},
-		heroState_superDashOnWall: {
-			id: 1030,
-			type: 'bool',
-		},
-		heroState_superDashing: {
-			id: 1031,
-			type: 'bool',
-		},
-		heroState_swimming: {
-			id: 1032,
-			type: 'bool',
-		},
-		heroState_throwingToolVertical: {
-			id: 1033,
-			type: 'int',
-		},
-		heroState_toolThrowCount: {
-			id: 1034,
-			type: 'int',
-		},
-		heroState_touchingNonSlider: {
-			id: 1035,
-			type: 'bool',
-		},
-		heroState_touchingWall: {
-			id: 1036,
-			type: 'bool',
-		},
-		heroState_transitioning: {
-			id: 1037,
-			type: 'bool',
-		},
-		heroState_upAttacking: {
-			id: 1038,
-			type: 'bool',
-		},
-		heroState_wallClinging: {
-			id: 1039,
-			type: 'bool',
-		},
-		heroState_wallJumping: {
-			id: 1040,
-			type: 'bool',
-		},
-		heroState_wallScrambling: {
-			id: 1041,
-			type: 'bool',
-		},
-		heroState_wallSliding: {
-			id: 1042,
-			type: 'bool',
-		},
-		heroState_wasOnGround: {
-			id: 1043,
-			type: 'bool',
-		},
-		heroState_whipLashing: {
-			id: 1044,
-			type: 'bool',
-		},
-		heroState_willHardLand: {
-			id: 1045,
-			type: 'bool',
-		},
-		hitCrowCourtSwitch: {
-			id: 1046,
-			type: 'bool',
-		},
-		hunterInfestationBoneForest: {
-			id: 1047,
-			type: 'bool',
-		},
-		infiniteAirJump: {
-			id: 1048,
-			type: 'bool',
-		},
-		isFirstGame: {
-			id: 1049,
-			type: 'bool',
-		},
-		isInventoryOpen: {
-			id: 1050,
-			type: 'bool',
-		},
-		isInvincible: {
-			id: 1051,
-			type: 'bool',
-		},
-		killedRoostingCrowman: {
-			id: 1052,
-			type: 'bool',
-		},
-		laceCorpseAddedEffects: {
-			id: 1053,
-			type: 'bool',
-		},
-		laceCorpsePosX: {
-			id: 1054,
-			type: 'float',
-		},
-		laceCorpseScaleX: {
-			id: 1055,
-			type: 'float',
-		},
-		laceLeftDocks: {
-			id: 1056,
-			type: 'bool',
-		},
-		laceMeetCitadel: {
-			id: 1057,
-			type: 'bool',
-		},
-		laceTowerDoorOpened: {
-			id: 1058,
-			type: 'bool',
-		},
-		lavaChallengeEntranceCavedIn: {
-			id: 1059,
-			type: 'bool',
-		},
-		lavaSpittersEmerge: {
-			id: 1060,
-			type: 'bool',
-		},
-		learnedPilbyName: {
-			id: 1061,
-			type: 'bool',
-		},
-		leftTheGrandForum: {
-			id: 1062,
-			type: 'bool',
-		},
-		libraryRoofShortcut: {
-			id: 1063,
-			type: 'bool',
-		},
-		libraryStatueWoken: {
-			id: 1064,
-			type: 'bool',
-		},
-		library_14_ambush: {
-			id: 1065,
-			type: 'bool',
-		},
-		littleCrabsAppeared: {
-			id: 1066,
-			type: 'bool',
-		},
-		mapAllRooms: {
-			id: 1067,
-			type: 'bool',
-		},
-		mapKeyPref: {
-			id: 1068,
-			type: 'int',
-		},
-		mapUpdateQueued: {
-			id: 1069,
-			type: 'bool',
-		},
-		mapZone: {
-			id: 1070,
-			type: 'enum',
-			enumType: 'GlobalEnums.MapZone',
-		},
-		mapperAway: {
-			id: 1071,
-			type: 'bool',
-		},
-		mapperBellhartConvo: {
-			id: 1072,
-			type: 'bool',
-		},
-		mapperBellhartConvo2: {
-			id: 1073,
-			type: 'bool',
-		},
-		mapperBellhartConvoTimePassed: {
-			id: 1074,
-			type: 'bool',
-		},
-		mapperBrokenBenchConvo: {
-			id: 1075,
-			type: 'bool',
-		},
-		mapperCalledConvo: {
-			id: 1076,
-			type: 'bool',
-		},
-		mapperConvo_Act3Intro: {
-			id: 1077,
-			type: 'bool',
-		},
-		mapperConvo_Act3IntroTimePassed: {
-			id: 1078,
-			type: 'bool',
-		},
-		mapperConvo_Act3NoStock: {
-			id: 1079,
-			type: 'bool',
-		},
-		mapperConvo_WhiteFlower: {
-			id: 1080,
-			type: 'bool',
-		},
-		mapperCursedConvo: {
-			id: 1081,
-			type: 'bool',
-		},
-		mapperFightGroup: {
-			id: 1082,
-			type: 'int',
-		},
-		mapperHauntedBellhartConvo: {
-			id: 1083,
-			type: 'bool',
-		},
-		mapperIsFightingAct3: {
-			id: 1084,
-			type: 'bool',
-		},
-		mapperLocationAct3: {
-			id: 1085,
-			type: 'int',
-		},
-		mapperMaggottedConvo: {
-			id: 1086,
-			type: 'bool',
-		},
-		mapperMappingConvo: {
-			id: 1087,
-			type: 'bool',
-		},
-		mapperMasterAfterConvo: {
-			id: 1088,
-			type: 'bool',
-		},
-		mapperMentorConvo: {
-			id: 1089,
-			type: 'bool',
-		},
-		mapperMetInAnt04: {
-			id: 1090,
-			type: 'bool',
-		},
-		mapperQuillConvo: {
-			id: 1091,
-			type: 'bool',
-		},
-		mapperReactedToBrokenBellBench: {
-			id: 1092,
-			type: 'bool',
-		},
-		mapperRosaryConvo: {
-			id: 1093,
-			type: 'bool',
-		},
-		mapperSellingTubePins: {
-			id: 1094,
-			type: 'bool',
-		},
-		mapperSparIntro: {
-			id: 1095,
-			type: 'bool',
-		},
-		mapperTubeConvo: {
-			id: 1096,
-			type: 'bool',
-		},
-		marionettesBurned: {
-			id: 1097,
-			type: 'bool',
-		},
-		marionettesMet: {
-			id: 1098,
-			type: 'bool',
-		},
-		maxHealth: {
-			id: 1099,
-			type: 'int',
-		},
-		maxHealthBase: {
-			id: 1100,
-			type: 'int',
-		},
-		memoryOrbs_Clover_02c_A: {
-			id: 1101,
-			type: 'bool',
-		},
-		memoryOrbs_Clover_03_B: {
-			id: 1102,
-			type: 'bool',
-		},
-		memoryOrbs_Clover_06_A: {
-			id: 1103,
-			type: 'bool',
-		},
-		memoryOrbs_Clover_11: {
-			id: 1104,
-			type: 'bool',
-		},
-		memoryOrbs_Clover_16_B: {
-			id: 1105,
-			type: 'bool',
-		},
-		memoryOrbs_Clover_16_C: {
-			id: 1106,
-			type: 'bool',
-		},
-		memoryOrbs_Clover_18_A: {
-			id: 1107,
-			type: 'ulong',
-		},
-		memoryOrbs_Clover_18_B: {
-			id: 1108,
-			type: 'ulong',
-		},
-		memoryOrbs_Clover_18_C: {
-			id: 1109,
-			type: 'ulong',
-		},
-		memoryOrbs_Clover_18_D: {
-			id: 1110,
-			type: 'ulong',
-		},
-		memoryOrbs_Clover_18_E: {
-			id: 1111,
-			type: 'ulong',
-		},
-		memoryOrbs_Clover_19: {
-			id: 1112,
-			type: 'ulong',
-		},
-		memoryOrbs_Clover_21: {
-			id: 1113,
-			type: 'bool',
-		},
-		metAntQueenNPC: {
-			id: 1114,
-			type: 'bool',
-		},
-		metCaretaker: {
-			id: 1115,
-			type: 'bool',
-		},
-		metDicePilgrim: {
-			id: 1116,
-			type: 'bool',
-		},
-		metDruid: {
-			id: 1117,
-			type: 'bool',
-		},
-		metGarmond: {
-			id: 1118,
-			type: 'bool',
-		},
-		metGarmondAct3: {
-			id: 1119,
-			type: 'bool',
-		},
-		metGatePilgrim: {
-			id: 1120,
-			type: 'bool',
-		},
-		metGrindleAct3: {
-			id: 1121,
-			type: 'bool',
-		},
-		metGrubFarmer: {
-			id: 1122,
-			type: 'bool',
-		},
-		metGrubFarmerAct3: {
-			id: 1123,
-			type: 'bool',
-		},
-		metLearnedPilgrim: {
-			id: 1124,
-			type: 'bool',
-		},
-		metLearnedPilgrimAct3: {
-			id: 1125,
-			type: 'bool',
-		},
-		metMapper: {
-			id: 1126,
-			type: 'bool',
-		},
-		metSherma: {
-			id: 1127,
-			type: 'bool',
-		},
-		metShermaEnclave: {
-			id: 1128,
-			type: 'bool',
-		},
-		metShermaPilgrimsRest: {
-			id: 1129,
-			type: 'bool',
-		},
-		metSwampMuckmen: {
-			id: 1130,
-			type: 'bool',
-		},
-		mortKeptWeightedAnklet: {
-			id: 1131,
-			type: 'bool',
-		},
-		mossBerryValueList: {
-			id: 1132,
-			type: 'int[]',
-		},
-		mosstown01_shortcut: {
-			id: 1133,
-			type: 'bool',
-		},
-		mosstownAspidBerryCollected: {
-			id: 1134,
-			type: 'bool',
-		},
-		muchTimePassed: {
-			id: 1135,
-			type: 'bool',
-		},
-		nailRange: {
-			id: 1136,
-			type: 'int',
-		},
-		nailUpgrades: {
-			id: 1137,
-			type: 'int',
-		},
-		newDatTraitorLord: {
-			id: 1138,
-			type: 'bool',
-		},
-		nextScene: {
-			id: 1139,
-			type: 'string',
-		},
-		nonLethalRespawnMarker: {
-			id: 1140,
-			type: 'string',
-		},
-		nonLethalRespawnScene: {
-			id: 1141,
-			type: 'string',
-		},
-		nonLethalRespawnType: {
-			id: 1142,
-			type: 'int',
-		},
-		nuuEncountered_coralDrillers: {
-			id: 1143,
-			type: 'bool',
-		},
-		nuuEncountered_skullKing: {
-			id: 1144,
-			type: 'bool',
-		},
-		nuuEncountered_splinterQueen: {
-			id: 1145,
-			type: 'bool',
-		},
-		nuuEncountered_zapNest: {
-			id: 1146,
-			type: 'bool',
-		},
-		nuuIntroAct3: {
-			id: 1147,
-			type: 'bool',
-		},
-		nuuIsHome: {
-			id: 1148,
-			type: 'bool',
-		},
-		nuuMementoAwarded: {
-			id: 1149,
-			type: 'bool',
-		},
-		nuuSlappedOutside: {
-			id: 1150,
-			type: 'bool',
-		},
-		nuuVisiting_coralDrillers: {
-			id: 1151,
-			type: 'bool',
-		},
-		nuuVisiting_skullKing: {
-			id: 1152,
-			type: 'bool',
-		},
-		nuuVisiting_splinterQueen: {
-			id: 1153,
-			type: 'bool',
-		},
-		nuuVisiting_zapNest: {
-			id: 1154,
-			type: 'bool',
-		},
-		openedBeastmasterDen: {
-			id: 1155,
-			type: 'bool',
-		},
-		openedCauldronShortcut: {
-			id: 1156,
-			type: 'bool',
-		},
-		openedCitadelSpaLeft: {
-			id: 1157,
-			type: 'bool',
-		},
-		openedCitadelSpaRight: {
-			id: 1158,
-			type: 'bool',
-		},
-		openedDocksBackEntrance: {
-			id: 1159,
-			type: 'bool',
-		},
-		openedDust05Gate: {
-			id: 1160,
-			type: 'bool',
-		},
-		openedGateCoral_14: {
-			id: 1161,
-			type: 'bool',
-		},
-		openedGeyserShaft: {
-			id: 1162,
-			type: 'bool',
-		},
-		openedShellwoodShortcut: {
-			id: 1163,
-			type: 'bool',
-		},
-		openedSongGateDocks: {
-			id: 1164,
-			type: 'bool',
-		},
-		openedTallGeyser: {
-			id: 1165,
-			type: 'bool',
-		},
-		openedUnder_01b: {
-			id: 1166,
-			type: 'bool',
-		},
-		openedUnder_05: {
-			id: 1167,
-			type: 'bool',
-		},
-		openedUnder_19: {
-			id: 1168,
-			type: 'bool',
-		},
-		opened_cog_06_door: {
-			id: 1169,
-			type: 'bool',
-		},
-		openingCreditsPlayed: {
-			id: 1170,
-			type: 'bool',
-		},
-		peak05b_oneWay: {
-			id: 1171,
-			type: 'bool',
-		},
-		peak05c_oneWay: {
-			id: 1172,
-			type: 'bool',
-		},
-		peak06_oneWay: {
-			id: 1173,
-			type: 'bool',
-		},
-		peak13_oneWay: {
-			id: 1174,
-			type: 'bool',
-		},
-		permadeathMode: {
-			id: 1175,
-			type: 'enum',
-			enumType: 'GlobalEnums.PermadeathModes',
-		},
-		pilbyAtPilgrimsRest: {
-			id: 1176,
-			type: 'bool',
-		},
-		pilbyBellhartConvo: {
-			id: 1177,
-			type: 'bool',
-		},
-		pilbyCampConvo: {
-			id: 1178,
-			type: 'bool',
-		},
-		pilbyFirstRepeatConvo: {
-			id: 1179,
-			type: 'bool',
-		},
-		pilbyFriendship: {
-			id: 1180,
-			type: 'int',
-		},
-		pilbyGotSprintConvo: {
-			id: 1181,
-			type: 'bool',
-		},
-		pilbyInsidePilgrimsRest: {
-			id: 1182,
-			type: 'bool',
-		},
-		pilbyKilled: {
-			id: 1183,
-			type: 'bool',
-		},
-		pilbyLeftPilgrimsRest: {
-			id: 1184,
-			type: 'bool',
-		},
-		pilbyMeetConvo: {
-			id: 1185,
-			type: 'bool',
-		},
-		pilbyMosstownConvo: {
-			id: 1186,
-			type: 'bool',
-		},
-		pilbyPilgrimsRestMeetConvo: {
-			id: 1187,
-			type: 'bool',
-		},
-		pilbySeenAtPilgrimsRest: {
-			id: 1188,
-			type: 'bool',
-		},
-		pilgrimFisherPossessed: {
-			id: 1189,
-			type: 'bool',
-		},
-		pilgrimGroupBonegrave: {
-			id: 1190,
-			type: 'int',
-		},
-		pilgrimGroupGreymoorField: {
-			id: 1191,
-			type: 'int',
-		},
-		pilgrimGroupShellgrave: {
-			id: 1192,
-			type: 'int',
-		},
-		pilgrimQuestSpoolCollected: {
-			id: 1193,
-			type: 'bool',
-		},
-		pilgrimRestCrowd: {
-			id: 1194,
-			type: 'int',
-		},
-		pilgrimRestMerchant_RhinoRuckusConvo: {
-			id: 1195,
-			type: 'bool',
-		},
-		pilgrimRestMerchant_SingConvo: {
-			id: 1196,
-			type: 'bool',
-		},
-		pilgrimsRestRosaryThiefCowardLeft: {
-			id: 1197,
-			type: 'bool',
-		},
-		pinGalleriesCompleted: {
-			id: 1198,
-			type: 'int',
-		},
-		pinstressInsideSitting: {
-			id: 1199,
-			type: 'bool',
-		},
-		pinstressQuestReady: {
-			id: 1200,
-			type: 'bool',
-		},
-		pinstressStoppedResting: {
-			id: 1201,
-			type: 'bool',
-		},
-		placedMarkers: {
-			id: 1202,
-			type: 'wrappedvector2list[]',
-		},
-		playTime: {
-			id: 1203,
-			type: 'float',
-		},
-		prevHealth: {
-			id: 1204,
-			type: 'int',
-		},
-		previousDarkness: {
-			id: 1205,
-			type: 'int',
-		},
-		previouslyVisitedGreymoor_05: {
-			id: 1206,
-			type: 'bool',
-		},
-		profileID: {
-			id: 1207,
-			type: 'int',
-		},
-		promisedFirstWish: {
-			id: 1208,
-			type: 'bool',
-		},
-		promptFocus: {
-			id: 1209,
-			type: 'bool',
-		},
-		purchasedGrindleMemoryLocket: {
-			id: 1210,
-			type: 'bool',
-		},
-		purchasedGrindleSimpleKey: {
-			id: 1211,
-			type: 'bool',
-		},
-		purchasedGrindleSpoolPiece: {
-			id: 1212,
-			type: 'bool',
-		},
-		purchasedGrindleToolKit: {
-			id: 1213,
-			type: 'bool',
-		},
-		queuedGodfinderIcon: {
-			id: 1214,
-			type: 'bool',
-		},
-		respawnMarkerName: {
-			id: 1215,
-			type: 'string',
-		},
-		respawnScene: {
-			id: 1216,
-			type: 'string',
-		},
-		respawnType: {
-			id: 1217,
-			type: 'int',
-		},
-		rhinoChurchUnlocked: {
-			id: 1218,
-			type: 'bool',
-		},
-		rhinoRampageCompleted: {
-			id: 1219,
-			type: 'bool',
-		},
-		rhinoRuckus: {
-			id: 1220,
-			type: 'bool',
-		},
-		roachkeeperChefCorpsePrepared: {
-			id: 1221,
-			type: 'bool',
-		},
-		rockRollerDefeated_bone01: {
-			id: 1222,
-			type: 'bool',
-		},
-		rockRollerDefeated_bone06: {
-			id: 1223,
-			type: 'bool',
-		},
-		rockRollerDefeated_bone07: {
-			id: 1224,
-			type: 'bool',
-		},
-		roofCrabDefeated: {
-			id: 1225,
-			type: 'bool',
-		},
-		roofCrabEncountered: {
-			id: 1226,
-			type: 'bool',
-		},
-		rosaryThievesInBank: {
-			id: 1227,
-			type: 'bool',
-		},
-		rosaryThievesInUnder07: {
-			id: 1228,
-			type: 'bool',
-		},
-		rosaryThievesLeftBank: {
-			id: 1229,
-			type: 'bool',
-		},
-		savedGrindleInCitadel: {
-			id: 1230,
-			type: 'bool',
-		},
-		savedPlinney: {
-			id: 1231,
-			type: 'bool',
-		},
-		savedPlinneyConvo: {
-			id: 1232,
-			type: 'bool',
-		},
-		sawPlinneyLeft: {
-			id: 1233,
-			type: 'bool',
-		},
-		scenesEncounteredBench: {
-			id: 1234,
-			type: 'hashset\u003Cstring\u003E',
-		},
-		scenesEncounteredCocoon: {
-			id: 1235,
-			type: 'hashset\u003Cstring\u003E',
-		},
-		scenesMapped: {
-			id: 1236,
-			type: 'hashset\u003Cstring\u003E',
-		},
-		scenesVisited: {
-			id: 1237,
-			type: 'hashset\u003Cstring\u003E',
-		},
-		scholarAcolytesInLibrary_02: {
-			id: 1238,
-			type: 'bool',
-		},
-		scholarAcolytesReleased: {
-			id: 1239,
-			type: 'bool',
-		},
-		scholarAcolytesReleasedAct3: {
-			id: 1240,
-			type: 'bool',
-		},
-		scholarAmbushReady: {
-			id: 1241,
-			type: 'bool',
-		},
-		seenBellBeast: {
-			id: 1242,
-			type: 'bool',
-		},
-		seenBonetownDestroyed: {
-			id: 1243,
-			type: 'bool',
-		},
-		seenDreamNailPrompt: {
-			id: 1244,
-			type: 'bool',
-		},
-		seenEmptyShellwood16: {
-			id: 1245,
-			type: 'bool',
-		},
-		seenFocusTablet: {
-			id: 1246,
-			type: 'bool',
-		},
-		seenGrindleInSong_08: {
-			id: 1247,
-			type: 'bool',
-		},
-		seenJournalMsg: {
-			id: 1248,
-			type: 'bool',
-		},
-		seenJournalQuestUpdateMsg: {
-			id: 1249,
-			type: 'bool',
-		},
-		seenMapperAct3: {
-			id: 1250,
-			type: 'bool',
-		},
-		seenMateriumMsg: {
-			id: 1251,
-			type: 'bool',
-		},
-		seenPebbLeft: {
-			id: 1252,
-			type: 'bool',
-		},
-		seenPilbyLeft: {
-			id: 1253,
-			type: 'bool',
-		},
-		seenScholarAcolytes: {
-			id: 1254,
-			type: 'bool',
-		},
-		sethConvo: {
-			id: 1255,
-			type: 'int',
-		},
-		sethLeftShellwood: {
-			id: 1256,
-			type: 'bool',
-		},
-		sethRevived: {
-			id: 1257,
-			type: 'bool',
-		},
-		sethShortcut: {
-			id: 1258,
-			type: 'bool',
-		},
-		shakraAidForumBattle: {
-			id: 1259,
-			type: 'bool',
-		},
-		shellGravePopulated: {
-			id: 1260,
-			type: 'bool',
-		},
-		shellwood13_BellWall: {
-			id: 1261,
-			type: 'bool',
-		},
-		shellwood14_ambushed: {
-			id: 1262,
-			type: 'bool',
-		},
-		shellwoodBellshrineTwigWall: {
-			id: 1263,
-			type: 'bool',
-		},
-		shellwoodSlabflyDefeated: {
-			id: 1264,
-			type: 'bool',
-		},
-		shellwoodTwigShortcut: {
-			id: 1265,
-			type: 'bool',
-		},
-		shermaAtSteps: {
-			id: 1266,
-			type: 'bool',
-		},
-		shermaCaretakerConvo1: {
-			id: 1267,
-			type: 'bool',
-		},
-		shermaCaretakerConvoFinal: {
-			id: 1268,
-			type: 'bool',
-		},
-		shermaCitadelEnclave_Seen: {
-			id: 1269,
-			type: 'bool',
-		},
-		shermaCitadelEntrance_Left: {
-			id: 1270,
-			type: 'bool',
-		},
-		shermaCitadelEntrance_Seen: {
-			id: 1271,
-			type: 'bool',
-		},
-		shermaCitadelEntrance_Visiting: {
-			id: 1272,
-			type: 'bool',
-		},
-		shermaCitadelSpa_ExtraConvo: {
-			id: 1273,
-			type: 'bool',
-		},
-		shermaCitadelSpa_Left: {
-			id: 1274,
-			type: 'bool',
-		},
-		shermaCitadelSpa_Seen: {
-			id: 1275,
-			type: 'bool',
-		},
-		shermaCitadelSpa_Visiting: {
-			id: 1276,
-			type: 'bool',
-		},
-		shermaConvoBellBeast: {
-			id: 1277,
-			type: 'bool',
-		},
-		shermaConvoCoralBench: {
-			id: 1278,
-			type: 'bool',
-		},
-		shermaConvoCoralJudges: {
-			id: 1279,
-			type: 'bool',
-		},
-		shermaEnclaveHealingConvo: {
-			id: 1280,
-			type: 'bool',
-		},
-		shermaHealerActive: {
-			id: 1281,
-			type: 'bool',
-		},
-		shermaInBellhart: {
-			id: 1282,
-			type: 'bool',
-		},
-		shermaInEnclave: {
-			id: 1283,
-			type: 'bool',
-		},
-		shermaPos: {
-			id: 1284,
-			type: 'int',
-		},
-		shermaQuestActive: {
-			id: 1285,
-			type: 'bool',
-		},
-		shermaSeenInBellhart: {
-			id: 1286,
-			type: 'bool',
-		},
-		shermaSeenInSteps: {
-			id: 1287,
-			type: 'bool',
-		},
-		shermaWokeInSteps: {
-			id: 1288,
-			type: 'bool',
-		},
-		shermaWoundedPilgrim: {
-			id: 1289,
-			type: 'int',
-		},
-		showGeoUI: {
-			id: 1290,
-			type: 'bool',
-		},
-		showHealthUI: {
-			id: 1291,
-			type: 'bool',
-		},
-		silk: {
-			id: 1292,
-			type: 'int',
-		},
-		silkFarmAbyssCoresCleared: {
-			id: 1293,
-			type: 'bool',
-		},
-		silkFarmBattle1_complete: {
-			id: 1294,
-			type: 'bool',
-		},
-		silkMax: {
-			id: 1295,
-			type: 'int',
-		},
-		silkParts: {
-			id: 1296,
-			type: 'int',
-		},
-		silkRegenMax: {
-			id: 1297,
-			type: 'int',
-		},
-		silkSpecialLevel: {
-			id: 1298,
-			type: 'int',
-		},
-		silkSpoolParts: {
-			id: 1299,
-			type: 'int',
-		},
-		skullKingAwake: {
-			id: 1300,
-			type: 'bool',
-		},
-		skullKingBenchMended: {
-			id: 1301,
-			type: 'bool',
-		},
-		skullKingDefeated: {
-			id: 1302,
-			type: 'bool',
-		},
-		skullKingDefeatedBlackThreaded: {
-			id: 1303,
-			type: 'bool',
-		},
-		skullKingInvaded: {
-			id: 1304,
-			type: 'bool',
-		},
-		skullKingKilled: {
-			id: 1305,
-			type: 'bool',
-		},
-		skullKingPlatMended: {
-			id: 1306,
-			type: 'bool',
-		},
-		skullKingShortcut: {
-			id: 1307,
-			type: 'bool',
-		},
-		skullKingWillInvade: {
-			id: 1308,
-			type: 'bool',
-		},
-		slabCaptor_heardChallenge: {
-			id: 1309,
-			type: 'bool',
-		},
-		slabCaptor_heardChallengeRings: {
-			id: 1310,
-			type: 'bool',
-		},
-		slabFlyInShellwood16: {
-			id: 1311,
-			type: 'bool',
-		},
-		slabPrisonerFlyConvo: {
-			id: 1312,
-			type: 'bool',
-		},
-		slabPrisonerRemeetConvo: {
-			id: 1313,
-			type: 'bool',
-		},
-		slabPrisonerSingConvo: {
-			id: 1314,
-			type: 'bool',
-		},
-		slab_03_rubbishCleared: {
-			id: 1315,
-			type: 'bool',
-		},
-		slab_05_gateOpen: {
-			id: 1316,
-			type: 'bool',
-		},
-		slab_07_gateOpen: {
-			id: 1317,
-			type: 'bool',
-		},
-		slab_17_openedGateLeft: {
-			id: 1318,
-			type: 'bool',
-		},
-		slab_17_openedGateRight: {
-			id: 1319,
-			type: 'bool',
-		},
-		slab_cell_quiet_oneWayWall: {
-			id: 1320,
-			type: 'bool',
-		},
-		slab_cloak_battle_completed: {
-			id: 1321,
-			type: 'bool',
-		},
-		slab_cloak_battle_encountered: {
-			id: 1322,
-			type: 'bool',
-		},
-		slab_cloak_gate_reopened: {
-			id: 1323,
-			type: 'bool',
-		},
-		song05MarchGroupReady: {
-			id: 1324,
-			type: 'bool',
-		},
-		song18Shortcut: {
-			id: 1325,
-			type: 'bool',
-		},
-		songChevalierActiveInHang_02: {
-			id: 1326,
-			type: 'bool',
-		},
-		songChevalierActiveInSong_02: {
-			id: 1327,
-			type: 'bool',
-		},
-		songChevalierActiveInSong_04: {
-			id: 1328,
-			type: 'bool',
-		},
-		songChevalierActiveInSong_07: {
-			id: 1329,
-			type: 'bool',
-		},
-		songChevalierActiveInSong_24: {
-			id: 1330,
-			type: 'bool',
-		},
-		songChevalierActiveInSong_25: {
-			id: 1331,
-			type: 'bool',
-		},
-		songChevalierActiveInSong_27: {
-			id: 1332,
-			type: 'bool',
-		},
-		songChevalierEncounterCooldown: {
-			id: 1333,
-			type: 'bool',
-		},
-		songChevalierEncounters: {
-			id: 1334,
-			type: 'int',
-		},
-		songChevalierQuestReady: {
-			id: 1335,
-			type: 'bool',
-		},
-		songChevalierRestingMet: {
-			id: 1336,
-			type: 'bool',
-		},
-		songChevalierRestingMetAct3: {
-			id: 1337,
-			type: 'bool',
-		},
-		songChevalierSeenInHang_02: {
-			id: 1338,
-			type: 'bool',
-		},
-		songChevalierSeenInSong_02: {
-			id: 1339,
-			type: 'bool',
-		},
-		songChevalierSeenInSong_04: {
-			id: 1340,
-			type: 'bool',
-		},
-		songChevalierSeenInSong_07: {
-			id: 1341,
-			type: 'bool',
-		},
-		songChevalierSeenInSong_24: {
-			id: 1342,
-			type: 'bool',
-		},
-		songChevalierSeenInSong_25: {
-			id: 1343,
-			type: 'bool',
-		},
-		songChevalierSeenInSong_27: {
-			id: 1344,
-			type: 'bool',
-		},
-		song_04_battleCompleted: {
-			id: 1345,
-			type: 'bool',
-		},
-		song_11_oneway: {
-			id: 1346,
-			type: 'bool',
-		},
-		song_17_clearedOut: {
-			id: 1347,
-			type: 'bool',
-		},
-		song_27_opened: {
-			id: 1348,
-			type: 'bool',
-		},
-		soulSnareReady: {
-			id: 1349,
-			type: 'bool',
-		},
-		spinnerDefeated: {
-			id: 1350,
-			type: 'bool',
-		},
-		spinnerEncounter: {
-			id: 1351,
-			type: 'int',
-		},
-		splinterQueenSproutCut: {
-			id: 1352,
-			type: 'bool',
-		},
-		splinterQueenSproutGrewLarge: {
-			id: 1353,
-			type: 'bool',
-		},
-		splinterQueenSproutTimer: {
-			id: 1354,
-			type: 'int',
-		},
-		summonedLakeOrbs: {
-			id: 1355,
-			type: 'bool',
-		},
-		swampMuckmanTallInvades: {
-			id: 1356,
-			type: 'bool',
-		},
-		tamedGiantFlea: {
-			id: 1357,
-			type: 'bool',
-		},
-		tempRespawnMarker: {
-			id: 1358,
-			type: 'string',
-		},
-		tempRespawnScene: {
-			id: 1359,
-			type: 'string',
-		},
-		tempRespawnType: {
-			id: 1360,
-			type: 'int',
-		},
-		thievesReturnedToShadow28: {
-			id: 1361,
-			type: 'bool',
-		},
-		tinyBroodMotherAppeared: {
-			id: 1362,
-			type: 'bool',
-		},
-		tookGreymoor17Spool: {
-			id: 1363,
-			type: 'bool',
-		},
-		tookRestroomRosaries: {
-			id: 1364,
-			type: 'bool',
-		},
-		toolAmountsOverride: {
-			id: 1365,
-			type: 'dictionary\u003Cstring,int\u003E',
-		},
-		tormentedTrobbioLurking: {
-			id: 1366,
-			type: 'bool',
-		},
-		travelling: {
-			id: 1367,
-			type: 'bool',
-		},
-		trobbioCleanedUp: {
-			id: 1368,
-			type: 'bool',
-		},
-		uncagedGiantFlea: {
-			id: 1369,
-			type: 'bool',
-		},
-		under07_battleCompleted: {
-			id: 1370,
-			type: 'bool',
-		},
-		under07_heavyWorkerReturned: {
-			id: 1371,
-			type: 'bool',
-		},
-		understoreLiftBroke: {
-			id: 1372,
-			type: 'bool',
-		},
-		unlockedBossScenes: {
-			id: 1373,
-			type: 'list\u003Cstring\u003E',
-		},
-		unlockedNewBossStatue: {
-			id: 1374,
-			type: 'bool',
-		},
-		vampireGnatDeaths: {
-			id: 1375,
-			type: 'int',
-		},
-		vampireGnatRequestedAid: {
-			id: 1376,
-			type: 'bool',
-		},
-		version: {
-			id: 1377,
-			type: 'string',
-		},
-		visitedAbyss: {
-			id: 1378,
-			type: 'bool',
-		},
-		visitedAqueducts: {
-			id: 1379,
-			type: 'bool',
-		},
-		visitedArborium: {
-			id: 1380,
-			type: 'bool',
-		},
-		visitedBellhart: {
-			id: 1381,
-			type: 'bool',
-		},
-		visitedBellhartHaunted: {
-			id: 1382,
-			type: 'bool',
-		},
-		visitedBellhartSaved: {
-			id: 1383,
-			type: 'bool',
-		},
-		visitedBoneBottom: {
-			id: 1384,
-			type: 'bool',
-		},
-		visitedBoneEast14b: {
-			id: 1385,
-			type: 'bool',
-		},
-		visitedBoneForest: {
-			id: 1386,
-			type: 'bool',
-		},
-		visitedCitadel: {
-			id: 1387,
-			type: 'bool',
-		},
-		visitedCogwork: {
-			id: 1388,
-			type: 'bool',
-		},
-		visitedCoral: {
-			id: 1389,
-			type: 'bool',
-		},
-		visitedCoralBellshrine: {
-			id: 1390,
-			type: 'bool',
-		},
-		visitedCoralRiver: {
-			id: 1391,
-			type: 'bool',
-		},
-		visitedCoralRiverInner: {
-			id: 1392,
-			type: 'bool',
-		},
-		visitedCoralTower: {
-			id: 1393,
-			type: 'bool',
-		},
-		visitedCradle: {
-			id: 1394,
-			type: 'bool',
-		},
-		visitedCrawl: {
-			id: 1395,
-			type: 'bool',
-		},
-		visitedDeepDocks: {
-			id: 1396,
-			type: 'bool',
-		},
-		visitedDustpens: {
-			id: 1397,
-			type: 'bool',
-		},
-		visitedEnclave: {
-			id: 1398,
-			type: 'bool',
-		},
-		visitedFleaFestival: {
-			id: 1399,
-			type: 'bool',
-		},
-		visitedFleatopia: {
-			id: 1400,
-			type: 'bool',
-		},
-		visitedGloom: {
-			id: 1401,
-			type: 'bool',
-		},
-		visitedGrandGate: {
-			id: 1402,
-			type: 'bool',
-		},
-		visitedGreymoor: {
-			id: 1403,
-			type: 'bool',
-		},
-		visitedGrove: {
-			id: 1404,
-			type: 'bool',
-		},
-		visitedHalfway: {
-			id: 1405,
-			type: 'bool',
-		},
-		visitedHalls: {
-			id: 1406,
-			type: 'bool',
-		},
-		visitedHang: {
-			id: 1407,
-			type: 'bool',
-		},
-		visitedHangAtrium: {
-			id: 1408,
-			type: 'bool',
-		},
-		visitedHuntersTrail: {
-			id: 1409,
-			type: 'bool',
-		},
-		visitedIceCore: {
-			id: 1410,
-			type: 'bool',
-		},
-		visitedLibrary: {
-			id: 1411,
-			type: 'bool',
-		},
-		visitedMistmaze: {
-			id: 1412,
-			type: 'bool',
-		},
-		visitedMossCave: {
-			id: 1413,
-			type: 'bool',
-		},
-		visitedMosstown: {
-			id: 1414,
-			type: 'bool',
-		},
-		visitedMountain: {
-			id: 1415,
-			type: 'bool',
-		},
-		visitedRuinedCradle: {
-			id: 1416,
-			type: 'bool',
-		},
-		visitedShadow: {
-			id: 1417,
-			type: 'bool',
-		},
-		visitedShadow03: {
-			id: 1418,
-			type: 'bool',
-		},
-		visitedShellwood: {
-			id: 1419,
-			type: 'bool',
-		},
-		visitedShellwood_16: {
-			id: 1420,
-			type: 'bool',
-		},
-		visitedSlab: {
-			id: 1421,
-			type: 'bool',
-		},
-		visitedStage: {
-			id: 1422,
-			type: 'bool',
-		},
-		visitedUnderstore: {
-			id: 1423,
-			type: 'bool',
-		},
-		visitedUpperSlab: {
-			id: 1424,
-			type: 'bool',
-		},
-		visitedWard: {
-			id: 1425,
-			type: 'bool',
-		},
-		visitedWeave: {
-			id: 1426,
-			type: 'bool',
-		},
-		visitedWilds: {
-			id: 1427,
-			type: 'bool',
-		},
-		visitedWisp: {
-			id: 1428,
-			type: 'bool',
-		},
-		wardBossDefeated: {
-			id: 1429,
-			type: 'bool',
-		},
-		wardBossEncountered: {
-			id: 1430,
-			type: 'bool',
-		},
-		wardBossHatchOpened: {
-			id: 1431,
-			type: 'bool',
-		},
-		wardWoken: {
-			id: 1432,
-			type: 'bool',
-		},
-		weave01_oneWay: {
-			id: 1433,
-			type: 'bool',
-		},
-		weave05_oneWay: {
-			id: 1434,
-			type: 'bool',
-		},
-		whiteCloverPos: {
-			id: 1435,
-			type: 'int',
-		},
-		wisp02_enemiesReturned: {
-			id: 1436,
-			type: 'bool',
-		},
-		wokeGreyWarrior: {
-			id: 1437,
-			type: 'bool',
-		},
-		wokeLiftWeaver: {
-			id: 1438,
-			type: 'bool',
-		},
-		wokeMossEvolver: {
-			id: 1439,
-			type: 'bool',
-		},
-		wokeSongChevalier: {
-			id: 1440,
-			type: 'bool',
-		},
-		Collectables: {
-			id: 1441,
-			type: 'CollectableItemsData',
-		},
-		EnemyJournalKillData: {
-			id: 1442,
-			type: 'EnemyJournalKillData',
-		},
-		MateriumCollected: {
-			id: 1443,
-			type: 'MateriumItemsData',
-		},
-		MementosDeposited: {
-			id: 1444,
-			type: 'CollectableMementosData',
-		},
-		QuestCompletionData: {
-			id: 1445,
-			type: 'QuestCompletionData',
-		},
-		QuestRumourData: {
-			id: 1446,
-			type: 'QuestRumourData',
-		},
-		Relics: {
-			id: 1447,
-			type: 'CollectableRelicsData',
-		},
-		ToolEquips: {
-			id: 1448,
-			type: 'ToolCrestsData',
-		},
-		ToolLiquids: {
-			id: 1449,
-			type: 'ToolItemLiquidsData',
-		},
-		Tools: {
-			id: 1450,
-			type: 'ToolItemsData',
-		},
-		ExtraToolEquips: {
-			id: 1451,
-			type: 'FloatingCrestSlotsData',
-		},
-		StoryEvents: {
-			id: 1452,
-			type: 'list\u003Cplayerstory.eventinfo\u003E',
-		},
-	},
-	enums: {
-		'GlobalEnums.BellhomePaintColours': {
-			Blue: 1,
-			Bronze: 2,
-			Chrome: 3,
-			DarkGrey: 4,
-			None: 5,
-			Red: 6,
-			White: 7,
-		},
-		'GlobalEnums.BelltownHouseStates': {
-			Full: 1,
-			Half: 2,
-			None: 3,
-		},
-		'GlobalEnums.CaravanTroupeLocations': {
-			Aqueduct: 1,
-			Bone: 2,
-			CoralJudge: 3,
-			Greymoor: 4,
-		},
-		'GlobalEnums.EnvironmentTypes': {
-			Bell: 1,
-			Bone: 2,
-			Dust: 3,
-			FlowerField: 4,
-			Grass: 5,
-			Metal: 6,
-			Moss: 7,
-			NoEffect: 8,
-			PeakPuff: 9,
-			RunningWater: 10,
-			Sand: 11,
-			ShallowWater: 12,
-			Silk: 13,
-			ThinMetal: 14,
-			WetMetal: 15,
-			WetWood: 16,
-			Wood: 17,
-		},
-		'GlobalEnums.ExtraRestZones': {
-			AboveCradle: 1,
-			Bellhome: 2,
-			BelltownHaunted: 3,
-			Bellvein: 4,
-			Bonegrave: 5,
-			BonetownBroken: 6,
-			CitadelShrine: 7,
-			Citadelstation: 8,
-			CoralBellshrine: 9,
-			CoralTower: 10,
-			Enclave: 11,
-			FleaFestival: 12,
-			Fleatopia: 13,
-			GrandGate: 14,
-			MemoryRed: 15,
-			None: 16,
-			Organ: 17,
-			PinstressHut: 18,
-			SeamstressHut: 19,
-			SlabCell: 20,
-			SprintmasterCave: 21,
-			TubeHub: 22,
-			WhiteLake: 23,
-		},
-		'GlobalEnums.FastTravelLocations': {
-			Aqueduct: 1,
-			Belltown: 2,
-			Bone: 3,
-			BoneforestEast: 4,
-			Bonetown: 5,
-			City: 6,
-			CoralTower: 7,
-			Docks: 8,
-			Greymoor: 9,
-			None: 10,
-			Peak: 11,
-			Shadow: 12,
-			Shellwood: 13,
-		},
-		'GlobalEnums.GreenPrinceLocations': {
-			Clover: 1,
-			CogDancers: 2,
-			DustCage: 3,
-			Song04: 4,
-		},
-		'GlobalEnums.HeroDeathCocoonTypes': {
-			Cursed: 1,
-			Normal: 2,
-			Rosaries: 3,
-		},
-		'GlobalEnums.MapZone': {
-			ABYSS: 1,
-			AQUEDUCT: 2,
-			ARBORIUM: 3,
-			BELLTOWN: 4,
-			BONECHURCH: 5,
-			BONETOWN: 6,
-			CITY_OF_SONG: 7,
-			CLOVER: 8,
-			COG_CORE: 9,
-			CORAL_CAVERNS: 10,
-			CRADLE: 11,
-			CRAWLSPACE: 12,
-			DOCKS: 13,
-			DUSTPENS: 14,
-			DUST_MAZE: 15,
-			FRONT_GATE: 16,
-			GLOOM: 17,
-			GREYMOOR: 18,
-			HALFWAY_HOUSE: 19,
-			HANG: 20,
-			HUNTERS_NEST: 21,
-			JUDGE_STEPS: 22,
-			LIBRARY: 23,
-			MEMORY: 24,
-			MOSSTOWN: 25,
-			MOSS_CAVE: 26,
-			NONE: 27,
-			PATH_OF_BONE: 28,
-			PEAK: 29,
-			PHARLOOM_BAY: 30,
-			PILGRIMS_REST: 31,
-			RED_CORAL_GORGE: 32,
-			SHELLWOOD_THICKET: 33,
-			SURFACE: 34,
-			SWAMP: 35,
-			TEST_AREA: 36,
-			THE_SLAB: 37,
-			UNDERSTORE: 38,
-			WARD: 39,
-			WEAVER_SHRINE: 40,
-			WILDS: 41,
-			WISP: 42,
-		},
-		'GlobalEnums.NPCEncounterState': {
-			AuthorisedToLeave: 1,
-			HasLeft: 2,
-			Met: 3,
-			None: 4,
-			ReadyToLeave: 5,
-		},
-		'GlobalEnums.PermadeathModes': {
-			Dead: 1,
-			Off: 2,
-			On: 3,
-		},
-		'GlobalEnums.SethNpcLocations': {
-			Absent: 1,
-			Citadel: 2,
-			Fleatopia: 3,
-			Greymoor: 4,
-			Shellwood: 5,
-		},
-		'HazardRespawnMarker.FacingDirection': {
-			Left: 1,
-			None: 2,
-			Right: 3,
-		},
-		'SaveSlotCompletionIcons.CompletionState': {
-			Act2Cursed: 1,
-			Act2Regular: 2,
-			Act2SoulSnare: 3,
-			Act3Ending: 4,
-			None: 5,
-		},
-	},
-} as const;
+// This file is generated by scripts/silk-player-data-gen-types.mts. Do not edit manually.
+
+import { Vector3 } from '../shared/vector-3';
+import { Vector2 } from '../shared/vectors';
+import {
+	CollectableItemsDataSilk,
+	CollectableMementosDataSilk,
+	CollectableRelicsDataSilk,
+	EnemyJournalKillDataSilk,
+	MateriumItemsDataSilk,
+	QuestCompletionDataSilk,
+	QuestRumourDataSilk,
+	ToolCrestsDataSilk,
+	ToolItemLiquidsDataSilk,
+	ToolItemsDataSilk,
+} from './types/player-data-custom-types-silk';
+
+export type PlayerDataFieldValueOfTypeBoolSilk = boolean;
+export type PlayerDataFieldNameOfTypeBoolSilk =
+	| 'AbyssBellSeenDocks'
+	| 'AbyssBellSeenDocksRepaired'
+	| 'ArchitectLeft'
+	| 'ArchitectMelodyGainSeen'
+	| 'ArchitectMelodyReturnQueued'
+	| 'ArchitectMelodyReturnSeen'
+	| 'ArchitectMentionedCogHeart'
+	| 'ArchitectMentionedMelody'
+	| 'ArchitectMentionedWebShot'
+	| 'ArchitectTalkedCrest'
+	| 'ArchitectWillLeave'
+	| 'BallowGivenKey'
+	| 'BallowInSauna'
+	| 'BallowLeftSauna'
+	| 'BallowMovedToDivingBell'
+	| 'BallowSeenInSauna'
+	| 'BallowTalkedPostRepair'
+	| 'BallowTalkedPostRepairGramaphone'
+	| 'BelltownBagpipersOfferedQuest'
+	| 'BelltownCouriersBrokenDlg'
+	| 'BelltownCouriersBrokenDlgQueued'
+	| 'BelltownCouriersFirstBeginDlg'
+	| 'BelltownCouriersGourmandHint'
+	| 'BelltownCouriersMet'
+	| 'BelltownCouriersMetAct3'
+	| 'BelltownCouriersNotPurchasedDlg'
+	| 'BelltownCouriersTalkedCursed'
+	| 'BelltownCouriersTalkedGourmand'
+	| 'BelltownDoctorCuredCurse'
+	| 'BelltownDoctorFixOffered'
+	| 'BelltownDoctorLifebloodSpoke'
+	| 'BelltownDoctorMaggotSpoke'
+	| 'BelltownDoctorQuestOffered'
+	| 'BelltownFurnishingDesk'
+	| 'BelltownFurnishingFairyLights'
+	| 'BelltownFurnishingGramaphone'
+	| 'BelltownFurnishingSpa'
+	| 'BelltownFurnishingSpaAvailable'
+	| 'BelltownGreetCursedConvo'
+	| 'BelltownGreeterFurnishingDlg'
+	| 'BelltownGreeterHouseFullDlg'
+	| 'BelltownGreeterHouseHalfDlg'
+	| 'BelltownGreeterMetTimePassed'
+	| 'BelltownGreeterTwistedBudDlg'
+	| 'BelltownHermitConvoCooldown'
+	| 'BelltownHermitCursedConvo'
+	| 'BelltownHermitMet'
+	| 'BelltownHousePaintComplete'
+	| 'BelltownHouseUnlocked'
+	| 'BelltownRelicDealerCylinderConvo'
+	| 'BelltownRelicDealerGaveRelic'
+	| 'BelltownRelicDealerOutroConvo'
+	| 'BelltownRelicDealerOutroConvoAllComplete'
+	| 'BelltownShopkeepAct3Convo'
+	| 'BelltownShopkeepCourierConvo1Accepted'
+	| 'BelltownShopkeepCourierConvo1Completed'
+	| 'BelltownShopkeepCursedConvo'
+	| 'BelltownShopkeepHouseConvo'
+	| 'BlueAssistantCorpseFound'
+	| 'BlueAssistantEnemyEncountered'
+	| 'BlueScientistDead'
+	| 'BlueScientistInfectedMet'
+	| 'BlueScientistInfectedSeen'
+	| 'BlueScientistMet'
+	| 'BlueScientistPreQuest2Convo'
+	| 'BlueScientistQuest2Offered'
+	| 'BlueScientistQuest3Offered'
+	| 'BlueScientistQuestOffered'
+	| 'BlueScientistSceneryPustulesGrown'
+	| 'BlueScientistTalkedCorpse'
+	| 'BoneBottomShellFrag1'
+	| 'BoneBottomShopKeepLeft'
+	| 'BoneBottomShopKeepWillLeave'
+	| 'BonePlazaOpened'
+	| 'Bone_East_04b_ExplodeWall'
+	| 'BonebottomBellwayPilgrimLeft'
+	| 'BonebottomBellwayPilgrimScared'
+	| 'CaravanHauntedBellhartConvo_TroupeLeader'
+	| 'CaravanLechAct3Convo'
+	| 'CaravanLechMet'
+	| 'CaravanLechReturnedToCaravan'
+	| 'CaravanLechSaved'
+	| 'CaravanLechSpaAcceptState'
+	| 'CaravanLechSpaAttacked'
+	| 'CaravanLechWoundedSpoken'
+	| 'CaravanPilgrimAttackComplete'
+	| 'CaravanSpiderPaidExtraBellhart'
+	| 'CaravanTroupeLeaderCanLeaveGreymoor'
+	| 'CaravanTroupeLeaderCanLeaveJudge'
+	| 'CaretakerOfferedSnareQuest'
+	| 'CaretakerSnareProgressConvo'
+	| 'CaretakerSwampSoulConvo'
+	| 'ChurchKeeperLeftBasement'
+	| 'CollectedCommonSpine'
+	| 'CollectedDockDemoKey'
+	| 'CollectedDustCageKey'
+	| 'CollectedHeartClover'
+	| 'CollectedHeartCoral'
+	| 'CollectedHeartFlower'
+	| 'CollectedHeartHunter'
+	| 'CollectedMementoGrey'
+	| 'CollectedMementoSprintmaster'
+	| 'CollectedToolMetal'
+	| 'CompletedRedMemory'
+	| 'CompletedWeaveSprintChallenge'
+	| 'CompletedWeaveSprintChallengeMax'
+	| 'ConductorWeaverDlgHeard'
+	| 'ConductorWeaverDlgQueued'
+	| 'ConstructedFarsight'
+	| 'ConstructedMaterium'
+	| 'CrawbellCrawsInside'
+	| 'CrawbellInstalled'
+	| 'CrestPreUpgradeAdditional'
+	| 'CrestPreUpgradeTalked'
+	| 'CrestPurposeQueued'
+	| 'CrestTalkedPurpose'
+	| 'CrestUpgraderOfferedFinal'
+	| 'CrestUpgraderTalkedSnare'
+	| 'CrowCourtInSession'
+	| 'CurseKilledFlyBoneEast'
+	| 'CurseKilledFlyGreymoor'
+	| 'CurseKilledFlyShellwood'
+	| 'CurseKilledFlySwamp'
+	| 'DeclinedBartenderDrink'
+	| 'DefeatedBonetownBoss'
+	| 'DefeatedSwampShaman'
+	| 'DeskPlacedLibrarianList'
+	| 'DeskPlacedRelicList'
+	| 'DidEnterPreviousMazeDoor'
+	| 'DustTradersOfferedPins'
+	| 'DustTradersOfferedQuest'
+	| 'EncounteredBonetownBoss'
+	| 'EncounteredLostLace'
+	| 'EncounteredSummonedSaviour'
+	| 'EnteredMazeRestScene'
+	| 'FisherWalkerDirection'
+	| 'FixedDustBellBench'
+	| 'FleaGamesCanStart'
+	| 'FleaGamesEnded'
+	| 'FleaGamesEndedContinuedPlaying'
+	| 'FleaGamesMementoGiven'
+	| 'FleaGamesPinataHit'
+	| 'FleaGamesSpiritScoreAdded'
+	| 'FleaGamesStarted'
+	| 'FleaQuestOffered'
+	| 'ForgeDaughterMentionedDivingBell'
+	| 'ForgeDaughterMentionedWebShot'
+	| 'ForgeDaughterPostAbyssDlg'
+	| 'ForgeDaughterPurchaseDlg'
+	| 'ForgeDaughterSpentToolMetal'
+	| 'ForgeDaughterWhiteFlowerDlg'
+	| 'FreedCaravanSpider'
+	| 'GivenLibrarianRelic'
+	| 'GotGourmandReward'
+	| 'GourmandGivenCoral'
+	| 'GourmandGivenEgg'
+	| 'GourmandGivenMeat'
+	| 'GourmandGivenNectar'
+	| 'GourmandGivenStew'
+	| 'GourmandServantOfferedQuest'
+	| 'GreenPrinceSeenSong04'
+	| 'HalfwayBartenderCursedConvo'
+	| 'HalfwayBartenderHauntedBellhartConvo'
+	| 'HalfwayBartenderOfferedQuest'
+	| 'HalfwayNectarOffered'
+	| 'HalfwayNectarPaid'
+	| 'HalfwayPatronLeftGone'
+	| 'HalfwayPatronRightGone'
+	| 'HalfwayPatronsCanVisit'
+	| 'HalfwayScarecrawAppeared'
+	| 'HasAbyssMap'
+	| 'HasAqueductMap'
+	| 'HasArboriumMap'
+	| 'HasBellhartMap'
+	| 'HasBoneforestMap'
+	| 'HasBoundCrestUpgrader'
+	| 'HasCitadelUnderstoreMap'
+	| 'HasCloverMap'
+	| 'HasCogMap'
+	| 'HasCoralMap'
+	| 'HasCradleMap'
+	| 'HasCrawlMap'
+	| 'HasDocksMap'
+	| 'HasDustpensMap'
+	| 'HasGreymoorMap'
+	| 'HasHallsMap'
+	| 'HasHangMap'
+	| 'HasHuntersNestMap'
+	| 'HasJudgeStepsMap'
+	| 'HasLibraryMap'
+	| 'HasMelodyArchitect'
+	| 'HasMelodyConductor'
+	| 'HasMelodyLibrarian'
+	| 'HasMossGrottoMap'
+	| 'HasPeakMap'
+	| 'HasSeenDash'
+	| 'HasSeenEvaHeal'
+	| 'HasSeenGeo'
+	| 'HasSeenGeoBig'
+	| 'HasSeenGeoMid'
+	| 'HasSeenHarpoon'
+	| 'HasSeenMapMarkerUpdated'
+	| 'HasSeenMapUpdated'
+	| 'HasSeenNeedolin'
+	| 'HasSeenNeedolinDown'
+	| 'HasSeenNeedolinUp'
+	| 'HasSeenRation'
+	| 'HasSeenShellShards'
+	| 'HasSeenSilkHearts'
+	| 'HasSeenSuperJump'
+	| 'HasSeenWalljump'
+	| 'HasShellwoodMap'
+	| 'HasSlabKeyA'
+	| 'HasSlabKeyB'
+	| 'HasSlabKeyC'
+	| 'HasSlabMap'
+	| 'HasSongGateMap'
+	| 'HasStoredMemoryState'
+	| 'HasSwampMap'
+	| 'HasWardMap'
+	| 'HasWeavehomeMap'
+	| 'HasWildsMap'
+	| 'HeardBoneBottomShopKeepPostBoss'
+	| 'HeardMelodyConductorNoQuest'
+	| 'HuntressQuestOffered'
+	| 'HuntressRuntAppeared'
+	| 'HuntressRuntQuestOffered'
+	| 'InvNailHasNew'
+	| 'InvPaneHasNew'
+	| 'IsCurrentCrestTemp'
+	| 'IsPinGallerySetup'
+	| 'IsSilkSpoolBroken'
+	| 'IsTeleporting'
+	| 'JournalPaneHasNew'
+	| 'LastDiveCursedConvo'
+	| 'LibrarianAskedForMelody'
+	| 'LibrarianAskedForRelic'
+	| 'LibrarianCollectionComplete'
+	| 'LibrarianMentionedMelody'
+	| 'LibrarianMetAct3'
+	| 'LightningToolToggle'
+	| 'MapperAppearInBellhart'
+	| 'MapperLeftBellhart'
+	| 'MapperLeftBoneForest'
+	| 'MapperLeftBonetown'
+	| 'MapperLeftCoralCaverns'
+	| 'MapperLeftCrawl'
+	| 'MapperLeftDocks'
+	| 'MapperLeftDustpens'
+	| 'MapperLeftGreymoor'
+	| 'MapperLeftHuntersNest'
+	| 'MapperLeftJudgeSteps'
+	| 'MapperLeftPeak'
+	| 'MapperLeftShadow'
+	| 'MapperLeftShellwood'
+	| 'MapperLeftWilds'
+	| 'MaskMakerQueuedUnmasked2'
+	| 'MaskMakerTalkedPeak'
+	| 'MaskMakerTalkedRelationship'
+	| 'MaskMakerTalkedUnmasked'
+	| 'MaskMakerTalkedUnmasked1'
+	| 'MaskMakerTalkedUnmasked2'
+	| 'MaskMakerTalkedUnmaskedAct3'
+	| 'MelodyLiftCanReturn'
+	| 'MerchantEnclaveShellFragment'
+	| 'MerchantEnclaveSimpleKey'
+	| 'MerchantEnclaveSocket'
+	| 'MerchantEnclaveSpoolPiece'
+	| 'MerchantEnclaveToolMetal'
+	| 'MerchantEnclaveWardKey'
+	| 'MetAntMerchant'
+	| 'MetArchitect'
+	| 'MetArchitectAct3'
+	| 'MetBelltownBagpipers'
+	| 'MetBelltownDoctor'
+	| 'MetBelltownDoctorDoor'
+	| 'MetBelltownDoctorDoorAct3'
+	| 'MetBelltownRelicDealer'
+	| 'MetBelltownRelicDealerAct3'
+	| 'MetBelltownShopkeep'
+	| 'MetBoneBottomShopKeep'
+	| 'MetCaravanSpider'
+	| 'MetCaravanSpiderCoral'
+	| 'MetCaravanTroupeLeader'
+	| 'MetCaravanTroupeLeaderGreymoor'
+	| 'MetCaravanTroupeLeaderGreymoorScared'
+	| 'MetCaravanTroupeLeaderJudge'
+	| 'MetCityMerchantEnclave'
+	| 'MetCityMerchantEnclaveAct3'
+	| 'MetCityMerchantScavenge'
+	| 'MetCrestUpgrader'
+	| 'MetCrestUpgraderAct3'
+	| 'MetEnclaveScaredPilgrim'
+	| 'MetFisherHomeBasic'
+	| 'MetFisherHomeFull'
+	| 'MetForgeDaughter'
+	| 'MetForgeDaughterAct3'
+	| 'MetGourmandServant'
+	| 'MetGourmandServantAct3'
+	| 'MetGrubFarmerMimic'
+	| 'MetHalfwayBartender'
+	| 'MetHalfwayBartenderAct3'
+	| 'MetHalfwayHunterFan'
+	| 'MetHunterFanOutside'
+	| 'MetMaskMaker'
+	| 'MetMaskMakerAct3'
+	| 'MetPilgrimsRestShop'
+	| 'MetPinChallengeBug'
+	| 'MetSeamstress'
+	| 'MetSethNPC'
+	| 'MetTroupeHunterWild'
+	| 'MetWoodWitch'
+	| 'MottledChildGivenTool'
+	| 'MottledChildNewTool'
+	| 'MushroomQuestFound1'
+	| 'MushroomQuestFound2'
+	| 'MushroomQuestFound3'
+	| 'MushroomQuestFound4'
+	| 'MushroomQuestFound5'
+	| 'MushroomQuestFound6'
+	| 'MushroomQuestFound7'
+	| 'OpenedCoralCaravanSpider'
+	| 'OpenedCrowSummonsDoor'
+	| 'PickedUpCrowMemento'
+	| 'PilgrimStomperNPCOffered'
+	| 'PilgrimsRestDoorBroken'
+	| 'PinGalleryHasPlayedFinalChallenge'
+	| 'PinGalleryLastChallengeOpen'
+	| 'PinsmithMetBelltown'
+	| 'PinsmithQuestOffered'
+	| 'PinsmithUpg2Offered'
+	| 'PinsmithUpg3Offered'
+	| 'PinsmithUpg4Offered'
+	| 'PinstressPeakBattleAccepted'
+	| 'PinstressPeakBattleOffered'
+	| 'PinstressPeakQuestOffered'
+	| 'PreMemoryState_DoFullHeal'
+	| 'PreMemoryState_IsRecorded'
+	| 'PurchasedArchitectKey'
+	| 'PurchasedArchitectToolKit'
+	| 'PurchasedBelltownMemoryLocket'
+	| 'PurchasedBelltownShellFragment'
+	| 'PurchasedBelltownSpoolSegment'
+	| 'PurchasedBelltownToolPouch'
+	| 'PurchasedBonebottomFaithToken'
+	| 'PurchasedBonebottomHeartPiece'
+	| 'PurchasedBonebottomToolMetal'
+	| 'PurchasedForgeToolKit'
+	| 'PurchasedPilgrimsRestMemoryLocket'
+	| 'PurchasedPilgrimsRestToolPouch'
+	| 'QuestPaneHasNew'
+	| 'SatAtBenchAfterAbyssEscape'
+	| 'SavedFlea_Ant_03'
+	| 'SavedFlea_Belltown_04'
+	| 'SavedFlea_Bone_06'
+	| 'SavedFlea_Bone_East_05'
+	| 'SavedFlea_Bone_East_10_Church'
+	| 'SavedFlea_Bone_East_17b'
+	| 'SavedFlea_Coral_24'
+	| 'SavedFlea_Coral_35'
+	| 'SavedFlea_Crawl_06'
+	| 'SavedFlea_Dock_03d'
+	| 'SavedFlea_Dock_16'
+	| 'SavedFlea_Dust_09'
+	| 'SavedFlea_Dust_12'
+	| 'SavedFlea_Greymoor_06'
+	| 'SavedFlea_Greymoor_15b'
+	| 'SavedFlea_Library_01'
+	| 'SavedFlea_Library_09'
+	| 'SavedFlea_Peak_05c'
+	| 'SavedFlea_Shadow_10'
+	| 'SavedFlea_Shadow_28'
+	| 'SavedFlea_Shellwood_03'
+	| 'SavedFlea_Slab_06'
+	| 'SavedFlea_Slab_Cell'
+	| 'SavedFlea_Song_11'
+	| 'SavedFlea_Song_14'
+	| 'SavedFlea_Under_21'
+	| 'SavedFlea_Under_23'
+	| 'SeamstressAct3Convo'
+	| 'SeamstressBadgeConvo'
+	| 'SeamstressCitadelConvo'
+	| 'SeamstressOfferedQuest'
+	| 'SeamstressPinstressConvo'
+	| 'SeenAntMerchantDead'
+	| 'SeenArchitectLeft'
+	| 'SeenBelltownCutscene'
+	| 'SeenBindPrompt'
+	| 'SeenBoneBottomShopKeep'
+	| 'SeenCaravanSpider'
+	| 'SeenDivingBellGoneAbyss'
+	| 'SeenFleaCaravan'
+	| 'SeenFleatopiaEmpty'
+	| 'SeenGrindleShop'
+	| 'SeenHalfwayPatronLeft'
+	| 'SeenHalfwayPatronRight'
+	| 'SeenLastJudgeGateOpen'
+	| 'SeenMapperBellhart'
+	| 'SeenMapperBoneForest'
+	| 'SeenMapperBonetown'
+	| 'SeenMapperCoralCaverns'
+	| 'SeenMapperCrawl'
+	| 'SeenMapperDocks'
+	| 'SeenMapperDustpens'
+	| 'SeenMapperGreymoor'
+	| 'SeenMapperHuntersNest'
+	| 'SeenMapperJudgeSteps'
+	| 'SeenMapperPeak'
+	| 'SeenMapperShadow'
+	| 'SeenMapperShellwood'
+	| 'SeenMapperWilds'
+	| 'SeenMelodyLibrarianReturn'
+	| 'SeenMortDead'
+	| 'SeenMortLeft'
+	| 'SeenToolEquipPrompt'
+	| 'SeenToolGetPrompt'
+	| 'SeenToolUsePrompt'
+	| 'SeenToolWeaponGetPrompt'
+	| 'SethJoinedFleatopia'
+	| 'ShakraFinalQuestAppear'
+	| 'ShamanRitualCursedConvo'
+	| 'ShopkeeperQuestMentioned'
+	| 'SnailShamansCloverHeartConvo'
+	| 'SnailShamansCrestConvo'
+	| 'SpinnerDefeatedTimePassed'
+	| 'SprintMasterExtraRaceAvailable'
+	| 'SprintMasterExtraRaceDlg'
+	| 'SprintMasterExtraRaceWon'
+	| 'SteelSentinelMet'
+	| 'SteelSentinelOffered'
+	| 'ToolPaneHasNew'
+	| 'TroupeHunterWildAct3Convo'
+	| 'TroupeLeaderSpokenFleatopiaSearch'
+	| 'TroupeLeaderSpokenHunter'
+	| 'TroupeLeaderSpokenLech'
+	| 'UnlockSilkFinalCutscene'
+	| 'UnlockedAqueductStation'
+	| 'UnlockedArboriumTube'
+	| 'UnlockedBelltownStation'
+	| 'UnlockedBoneforestEastStation'
+	| 'UnlockedCityBellwayTube'
+	| 'UnlockedCityStation'
+	| 'UnlockedCoralTowerStation'
+	| 'UnlockedDocksStation'
+	| 'UnlockedDustCage'
+	| 'UnlockedEnclaveTube'
+	| 'UnlockedExtraBlueSlot'
+	| 'UnlockedExtraYellowSlot'
+	| 'UnlockedFastTravel'
+	| 'UnlockedFastTravelTeleport'
+	| 'UnlockedGreymoorStation'
+	| 'UnlockedHangTube'
+	| 'UnlockedMelodyLift'
+	| 'UnlockedPeakStation'
+	| 'UnlockedShadowStation'
+	| 'UnlockedShellwoodStation'
+	| 'UnlockedSongTube'
+	| 'UnlockedUnderTube'
+	| 'VampireGnatCorpseInWater'
+	| 'VampireGnatCorpseOnCaravan'
+	| 'VampireGnatDefeatedBeforeCaravanArrived'
+	| 'WasInPinChallenge'
+	| 'WasInSceneRace'
+	| 'WoodWitchGaveMandrake'
+	| 'WoodWitchOfferedCurse'
+	| 'WoodWitchOfferedFlowerQuest'
+	| 'WoodWitchOfferedItemQuest'
+	| 'WoodWitchTalkedPostQuest'
+	| 'act2Started'
+	| 'act3MapUpdated'
+	| 'act3_enclaveWakeSceneCompleted'
+	| 'act3_wokeUp'
+	| 'activatedStepsUpperBellbench'
+	| 'allowVampireGnatInAltLoc'
+	| 'ant02GuardDefeated'
+	| 'ant04_battleCompleted'
+	| 'ant04_enemiesReturn'
+	| 'ant21_ExtraBattleAdded'
+	| 'ant21_InitBattleCompleted'
+	| 'antBenchTrapDefused'
+	| 'antMerchantKilled'
+	| 'antMerchantShortcut'
+	| 'antQueenNPC_deepMelodyConvo'
+	| 'arborium_08_oneWay'
+	| 'arborium_09_oneWay'
+	| 'aspid06_battleComplete'
+	| 'aspid06_cloverStagsReturned'
+	| 'aspid07_cloverStagsReturned'
+	| 'aspid_04_gate'
+	| 'aspid_04b_battleCompleted'
+	| 'aspid_04b_wildlifeReturned'
+	| 'aspid_16_oneway'
+	| 'aspid_16_relic'
+	| 'atBench'
+	| 'bankOpened'
+	| 'basementAntWall'
+	| 'bellCentipedeAppeared'
+	| 'bellShrineBellhart'
+	| 'bellShrineBoneForest'
+	| 'bellShrineEnclave'
+	| 'bellShrineGreymoor'
+	| 'bellShrineShellwood'
+	| 'bellShrineWilds'
+	| 'belltownBasementBreakWall'
+	| 'belltownCrowdsReady'
+	| 'betaEnd'
+	| 'bindCutscenePlayed'
+	| 'blackThreadWorld'
+	| 'bone01shortcutPlat'
+	| 'bone03_openedTrapdoor'
+	| 'bone03_openedTrapdoorForRockRoller'
+	| 'boneBottomAddition_RagLine'
+	| 'boneBottomFuneral'
+	| 'boneBottomFuneralComplete'
+	| 'boneEast07_openedMidRoof'
+	| 'boneEastJailerClearedOut'
+	| 'boneEastJailerKilled'
+	| 'bonebottomQuestBoardFixed'
+	| 'bonegraveAspidBerryCollected'
+	| 'bonegraveOpen'
+	| 'bonegravePilgrimCrowdsCanReturn'
+	| 'bonegraveRosaryPilgrimDefeated'
+	| 'bonetownAspidBerryCollected'
+	| 'bonetownPilgrimHornedActive'
+	| 'bonetownPilgrimHornedSeen'
+	| 'bonetownPilgrimRoundActive'
+	| 'bonetownPilgrimRoundSeen'
+	| 'bossRushMode'
+	| 'brokeConfessional'
+	| 'brokeUnderstoreFloor'
+	| 'broodMotherEyeCollected'
+	| 'caretakerBeastConvo'
+	| 'caretakerConvoLv1'
+	| 'caretakerConvoLv2'
+	| 'caretakerConvoLv3'
+	| 'caretakerLaceConvo'
+	| 'caretakerMerchantConvo'
+	| 'caretakerSoulSnareConvo'
+	| 'caretakerWardConvo'
+	| 'cauldronShortcutUpdraft'
+	| 'chapelClosed_beast'
+	| 'chapelClosed_reaper'
+	| 'chapelClosed_shaman'
+	| 'chapelClosed_toolmaster'
+	| 'chapelClosed_wanderer'
+	| 'chapelClosed_witch'
+	| 'churchKeeperBonegraveConvo'
+	| 'churchKeeperCursedConvo'
+	| 'churchKeeperIntro'
+	| 'churchRhinoBlackThreadCorpse'
+	| 'churchRhinoKilled'
+	| 'citadelHalfwayComplete'
+	| 'citadelWoken'
+	| 'citadel_encounteredFencers'
+	| 'cityMerchantBridgeSaveRemeet'
+	| 'cityMerchantCanLeaveForBridge'
+	| 'cityMerchantConvo1'
+	| 'cityMerchantEnclaveConvo'
+	| 'cityMerchantInGrandForum'
+	| 'cityMerchantInGrandForumLeft'
+	| 'cityMerchantInGrandForumSeen'
+	| 'cityMerchantInLibrary03'
+	| 'cityMerchantInLibrary03Left'
+	| 'cityMerchantInLibrary03Seen'
+	| 'cityMerchantIntroduced'
+	| 'cityMerchantRecentlySeenInEnclave'
+	| 'cityMerchantSaved'
+	| 'cloverDancerRegrowth'
+	| 'cog7_automatonDestroyed'
+	| 'cog7_automatonRepairing'
+	| 'cog7_automatonRepairingComplete'
+	| 'cog7_automaton_defeated'
+	| 'cog7_gateOpened'
+	| 'collectedWardBossKey'
+	| 'collectedWardKey'
+	| 'collectorEggsHatched'
+	| 'completedAbyssAscent'
+	| 'completedCog10_abyssBattle'
+	| 'completedGrandStageBattle'
+	| 'completedGreymoor17Battle'
+	| 'completedLavaChallenge'
+	| 'completedLibraryAcolyteBattle'
+	| 'completedLibraryEntryBattle'
+	| 'completedMemory_beast'
+	| 'completedMemory_reaper'
+	| 'completedMemory_shaman'
+	| 'completedMemory_toolmaster'
+	| 'completedMemory_wanderer'
+	| 'completedMemory_witch'
+	| 'completedSuperJumpSequence'
+	| 'completedTutorial'
+	| 'coral19_clearedOut'
+	| 'coralBridgeGuard2Stationed'
+	| 'coralDrillerSoloEnemiesReturned'
+	| 'coralDrillerSoloReady'
+	| 'coralKingHeartAppeared'
+	| 'crashedIntoGreymoor'
+	| 'crashingIntoGreymoor'
+	| 'crawl03_oneWayWall'
+	| 'creaturesReturnedToBone10'
+	| 'damagedBlue'
+	| 'damagedPurple'
+	| 'defeatedAntQueen'
+	| 'defeatedAntQueenAfterRedMemory'
+	| 'defeatedAntTrapper'
+	| 'defeatedBellBeast'
+	| 'defeatedBoneFlyerGiant'
+	| 'defeatedBoneFlyerGiantGolemScene'
+	| 'defeatedBroodMother'
+	| 'defeatedCloverDancers'
+	| 'defeatedCogworkDancers'
+	| 'defeatedCoralBridgeGuard1'
+	| 'defeatedCoralBridgeGuard2'
+	| 'defeatedCoralDrillerSolo'
+	| 'defeatedCoralDrillers'
+	| 'defeatedCoralKing'
+	| 'defeatedCrowCourt'
+	| 'defeatedDockForemen'
+	| 'defeatedFirstWeaver'
+	| 'defeatedFlowerQueen'
+	| 'defeatedGreyWarrior'
+	| 'defeatedGuardBoneEast25'
+	| 'defeatedLace1'
+	| 'defeatedLaceTower'
+	| 'defeatedLastJudge'
+	| 'defeatedMossEvolver'
+	| 'defeatedMossMother'
+	| 'defeatedPhantom'
+	| 'defeatedRoachkeeperChef'
+	| 'defeatedSeth'
+	| 'defeatedShellwoodRosaryPilgrim'
+	| 'defeatedSongChevalierBoss'
+	| 'defeatedSongGolem'
+	| 'defeatedSplinterQueen'
+	| 'defeatedTormentedTrobbio'
+	| 'defeatedTrobbio'
+	| 'defeatedVampireGnatBoss'
+	| 'defeatedWhiteCloverstag'
+	| 'defeatedWispPyreEffigy'
+	| 'defeatedZapCoreEnemy'
+	| 'defeatedZapGuard1'
+	| 'destroyedRosaryCannonMachine'
+	| 'destroyedSongGolemRock'
+	| 'dicePilgrimDefeated'
+	| 'dicePilgrimGameExplained'
+	| 'didPilgrimIntroScene'
+	| 'didRhinoRuckus'
+	| 'disableInventory'
+	| 'disablePause'
+	| 'disableSaveQuit'
+	| 'disableSilkAbilities'
+	| 'docksBomberAmbush'
+	| 'docks_02_shortcut_left'
+	| 'docks_02_shortcut_right'
+	| 'droppedFloorBreakerPlat'
+	| 'druidAct3Intro'
+	| 'druidTradeIntro'
+	| 'dust01_battleCompleted'
+	| 'dust01_returnReady'
+	| 'dust03_battleCompleted'
+	| 'dust03_returnReady'
+	| 'dust05EnemyClearedOut'
+	| 'enclaveAddition_CloakLine'
+	| 'enclaveAddition_PinRack'
+	| 'enclaveDonation2_Available'
+	| 'enclaveMerchantSaved'
+	| 'enclaveMerchantSeenInEnclave'
+	| 'enclaveNPC_songKnightFan'
+	| 'encounteredAntTrapper'
+	| 'encounteredBellBeast'
+	| 'encounteredCloverDancers'
+	| 'encounteredCogworkDancers'
+	| 'encounteredCoralDrillerSolo'
+	| 'encounteredCoralDrillers'
+	| 'encounteredCoralKing'
+	| 'encounteredCrowCourt'
+	| 'encounteredDockForemen'
+	| 'encounteredFirstWeaver'
+	| 'encounteredFlowerQueen'
+	| 'encounteredLace1'
+	| 'encounteredLace1Grotto'
+	| 'encounteredLaceBlastedBridge'
+	| 'encounteredLaceTower'
+	| 'encounteredLastJudge'
+	| 'encounteredLibraryEntryBattle'
+	| 'encounteredMossMother'
+	| 'encounteredPhantom'
+	| 'encounteredPharloomEdge'
+	| 'encounteredPharloomEdgeAct3'
+	| 'encounteredSeth'
+	| 'encounteredSilk'
+	| 'encounteredSongChevalierBoss'
+	| 'encounteredSongGolem'
+	| 'encounteredSpinner'
+	| 'encounteredSplinterQueen'
+	| 'encounteredSurfaceEdge'
+	| 'encounteredTormentedTrobbio'
+	| 'encounteredTrobbio'
+	| 'encounteredVampireGnatBoss'
+	| 'encounteredVampireGnat_05'
+	| 'encounteredVampireGnat_07'
+	| 'encounteredWhiteCloverstag'
+	| 'encounteredWhiteCloverstagMid'
+	| 'enteredCoral_10'
+	| 'enteredGreymoor05'
+	| 'enteredHang_08'
+	| 'enteredSong_01'
+	| 'enteredSong_02'
+	| 'enteredSong_13'
+	| 'enteredSong_17'
+	| 'enteredSong_19'
+	| 'enteredTutorialFirstTime'
+	| 'entered_Tut01b'
+	| 'explodeWallBoneEast18c'
+	| 'explodeWallMosstown3'
+	| 'farmer_grewFirstGrub'
+	| 'farmer_grubGrowing_1'
+	| 'farmer_grubGrowing_2'
+	| 'farmer_grubGrowing_3'
+	| 'farmer_grubGrown_1'
+	| 'farmer_grubGrown_2'
+	| 'farmer_grubGrown_3'
+	| 'fixerAcceptedQuestConvo'
+	| 'fixerBridgeBreaking'
+	| 'fixerBridgeBroken'
+	| 'fixerBridgeConstructed'
+	| 'fixerQuestBoardConvo'
+	| 'fixerStatueConstructed'
+	| 'fixerStatueConvo'
+	| 'fleaGames_bouncing_played'
+	| 'fleaGames_dodging_played'
+	| 'fleaGames_juggling_played'
+	| 'flowerQueenHeartAppeared'
+	| 'fullyEnteredVerdania'
+	| 'gainedCurse'
+	| 'garmondAidForumBattle'
+	| 'garmondBlackThreadDefeated'
+	| 'garmondEncounterCooldown'
+	| 'garmondFinalQuestReady'
+	| 'garmondInDust05'
+	| 'garmondInEnclave'
+	| 'garmondInLibrary'
+	| 'garmondInSong01'
+	| 'garmondInSong02'
+	| 'garmondInSong13'
+	| 'garmondInSong17'
+	| 'garmondLibraryDefeatedHornet'
+	| 'garmondLibraryMet'
+	| 'garmondLibraryOffered'
+	| 'garmondLibrarySeen'
+	| 'garmondMetEnclave'
+	| 'garmondMoorwingConvo'
+	| 'garmondMoorwingConvoReady'
+	| 'garmondPurposeConvo'
+	| 'garmondSeenInDust05'
+	| 'garmondSeenInGreymoor10'
+	| 'garmondSeenInSong01'
+	| 'garmondSeenInSong02'
+	| 'garmondSeenInSong13'
+	| 'garmondSeenInSong17'
+	| 'garmondWillAidInForumBattle'
+	| 'gatePilgrimNoNeedolinConvo'
+	| 'gillyAct3Convo'
+	| 'gillyHunterCampConvo'
+	| 'gillyIntroduced'
+	| 'gillyMet'
+	| 'gillyQueueMovingOn'
+	| 'gillyStatueConvo'
+	| 'gillyTrapConvo'
+	| 'gotPastDockSpearThrower'
+	| 'gotPickledRoachEgg'
+	| 'greatBoneGateOpened'
+	| 'greymoor05_clearedOut'
+	| 'greymoor05_farmerPlatBroken'
+	| 'greymoor05_killedJailer'
+	| 'greymoor08_plat_destroyed'
+	| 'greymoor_04_battleCompleted'
+	| 'greymoor_05_centipedeArrives'
+	| 'greymoor_10_entered'
+	| 'grindleChestEncountered'
+	| 'grindleEnclaveConvo'
+	| 'grindleInSong_08'
+	| 'grindleMetGrandForum'
+	| 'grindleReleasedFromBonejail'
+	| 'grindleShopEnemyIntro'
+	| 'grishkinSethConvo'
+	| 'grubFarmerEmerged'
+	| 'grubFarmer_firstGrubConvo'
+	| 'grubFarmer_needolinConvo1'
+	| 'hang04Battle'
+	| 'hang_10_oneWay'
+	| 'hasActivatedBellBench'
+	| 'hasBrolly'
+	| 'hasChargeSlash'
+	| 'hasDash'
+	| 'hasDoubleJump'
+	| 'hasGodfinder'
+	| 'hasHarpoonDash'
+	| 'hasJournal'
+	| 'hasKilled'
+	| 'hasMarker'
+	| 'hasMarker_a'
+	| 'hasMarker_b'
+	| 'hasMarker_c'
+	| 'hasMarker_d'
+	| 'hasMarker_e'
+	| 'hasNeedleThrow'
+	| 'hasNeedolin'
+	| 'hasNeedolinMemoryPowerup'
+	| 'hasParry'
+	| 'hasPinBench'
+	| 'hasPinCocoon'
+	| 'hasPinFleaBlastedlands'
+	| 'hasPinFleaCitadel'
+	| 'hasPinFleaMarrowlands'
+	| 'hasPinFleaMidlands'
+	| 'hasPinFleaMucklands'
+	| 'hasPinFleaPeaklands'
+	| 'hasPinShop'
+	| 'hasPinSpa'
+	| 'hasPinStag'
+	| 'hasPinTube'
+	| 'hasQuill'
+	| 'hasSilkBomb'
+	| 'hasSilkBossNeedle'
+	| 'hasSilkCharge'
+	| 'hasSilkSpecial'
+	| 'hasSuperJump'
+	| 'hasThreadSphere'
+	| 'hasWalljump'
+	| 'heroState_airDashing'
+	| 'heroState_altAttack'
+	| 'heroState_attacking'
+	| 'heroState_backDashCooldown'
+	| 'heroState_backDashing'
+	| 'heroState_bouncing'
+	| 'heroState_castRecoiling'
+	| 'heroState_casting'
+	| 'heroState_dashCooldown'
+	| 'heroState_dashing'
+	| 'heroState_dead'
+	| 'heroState_doubleJumping'
+	| 'heroState_downAttacking'
+	| 'heroState_downSpikeAntic'
+	| 'heroState_downSpikeBouncing'
+	| 'heroState_downSpikeBouncingShort'
+	| 'heroState_downSpikeRecovery'
+	| 'heroState_downSpiking'
+	| 'heroState_downTravelling'
+	| 'heroState_evading'
+	| 'heroState_facingRight'
+	| 'heroState_fakeHurt'
+	| 'heroState_falling'
+	| 'heroState_floating'
+	| 'heroState_focusing'
+	| 'heroState_freezeCharge'
+	| 'heroState_hazardDeath'
+	| 'heroState_hazardRespawning'
+	| 'heroState_inAcid'
+	| 'heroState_inConveyorZone'
+	| 'heroState_inFrostRegion'
+	| 'heroState_inUpdraft'
+	| 'heroState_inWalkZone'
+	| 'heroState_inWindRegion'
+	| 'heroState_invulnerable'
+	| 'heroState_isBackScuttling'
+	| 'heroState_isBackSprinting'
+	| 'heroState_isBinding'
+	| 'heroState_isFrostDeath'
+	| 'heroState_isFrosted'
+	| 'heroState_isInCancelableFSMMove'
+	| 'heroState_isInCutsceneMovement'
+	| 'heroState_isMaggoted'
+	| 'heroState_isPaused'
+	| 'heroState_isScrewDownAttacking'
+	| 'heroState_isSprinting'
+	| 'heroState_isToolThrowing'
+	| 'heroState_isTouchingSlopeLeft'
+	| 'heroState_isTouchingSlopeRight'
+	| 'heroState_isTriggerEventsPaused'
+	| 'heroState_jumping'
+	| 'heroState_lookingDown'
+	| 'heroState_lookingDownAnim'
+	| 'heroState_lookingDownRing'
+	| 'heroState_lookingUp'
+	| 'heroState_lookingUpAnim'
+	| 'heroState_lookingUpRing'
+	| 'heroState_mantleRecovery'
+	| 'heroState_mantling'
+	| 'heroState_nailCharging'
+	| 'heroState_nearBench'
+	| 'heroState_needolinPlayingMemory'
+	| 'heroState_onConveyor'
+	| 'heroState_onConveyorV'
+	| 'heroState_onGround'
+	| 'heroState_parryAttack'
+	| 'heroState_parrying'
+	| 'heroState_preventBackDash'
+	| 'heroState_preventDash'
+	| 'heroState_recoilFrozen'
+	| 'heroState_recoiling'
+	| 'heroState_recoilingDrill'
+	| 'heroState_recoilingLeft'
+	| 'heroState_recoilingRight'
+	| 'heroState_shadowDashing'
+	| 'heroState_shroomBouncing'
+	| 'heroState_shuttleCock'
+	| 'heroState_spellQuake'
+	| 'heroState_superDashOnWall'
+	| 'heroState_superDashing'
+	| 'heroState_swimming'
+	| 'heroState_touchingNonSlider'
+	| 'heroState_touchingWall'
+	| 'heroState_transitioning'
+	| 'heroState_upAttacking'
+	| 'heroState_wallClinging'
+	| 'heroState_wallJumping'
+	| 'heroState_wallScrambling'
+	| 'heroState_wallSliding'
+	| 'heroState_wasOnGround'
+	| 'heroState_whipLashing'
+	| 'heroState_willHardLand'
+	| 'hitCrowCourtSwitch'
+	| 'hunterInfestationBoneForest'
+	| 'infiniteAirJump'
+	| 'isFirstGame'
+	| 'isInventoryOpen'
+	| 'isInvincible'
+	| 'killedRoostingCrowman'
+	| 'laceCorpseAddedEffects'
+	| 'laceLeftDocks'
+	| 'laceMeetCitadel'
+	| 'laceTowerDoorOpened'
+	| 'lavaChallengeEntranceCavedIn'
+	| 'lavaSpittersEmerge'
+	| 'learnedPilbyName'
+	| 'leftTheGrandForum'
+	| 'libraryRoofShortcut'
+	| 'libraryStatueWoken'
+	| 'library_14_ambush'
+	| 'littleCrabsAppeared'
+	| 'mapAllRooms'
+	| 'mapUpdateQueued'
+	| 'mapperAway'
+	| 'mapperBellhartConvo'
+	| 'mapperBellhartConvo2'
+	| 'mapperBellhartConvoTimePassed'
+	| 'mapperBrokenBenchConvo'
+	| 'mapperCalledConvo'
+	| 'mapperConvo_Act3Intro'
+	| 'mapperConvo_Act3IntroTimePassed'
+	| 'mapperConvo_Act3NoStock'
+	| 'mapperConvo_WhiteFlower'
+	| 'mapperCursedConvo'
+	| 'mapperHauntedBellhartConvo'
+	| 'mapperIsFightingAct3'
+	| 'mapperMaggottedConvo'
+	| 'mapperMappingConvo'
+	| 'mapperMasterAfterConvo'
+	| 'mapperMentorConvo'
+	| 'mapperMetInAnt04'
+	| 'mapperQuillConvo'
+	| 'mapperReactedToBrokenBellBench'
+	| 'mapperRosaryConvo'
+	| 'mapperSellingTubePins'
+	| 'mapperSparIntro'
+	| 'mapperTubeConvo'
+	| 'marionettesBurned'
+	| 'marionettesMet'
+	| 'memoryOrbs_Clover_02c_A'
+	| 'memoryOrbs_Clover_03_B'
+	| 'memoryOrbs_Clover_06_A'
+	| 'memoryOrbs_Clover_11'
+	| 'memoryOrbs_Clover_16_B'
+	| 'memoryOrbs_Clover_16_C'
+	| 'memoryOrbs_Clover_21'
+	| 'metAntQueenNPC'
+	| 'metCaretaker'
+	| 'metDicePilgrim'
+	| 'metDruid'
+	| 'metGarmond'
+	| 'metGarmondAct3'
+	| 'metGatePilgrim'
+	| 'metGrindleAct3'
+	| 'metGrubFarmer'
+	| 'metGrubFarmerAct3'
+	| 'metLearnedPilgrim'
+	| 'metLearnedPilgrimAct3'
+	| 'metMapper'
+	| 'metSherma'
+	| 'metShermaEnclave'
+	| 'metShermaPilgrimsRest'
+	| 'metSwampMuckmen'
+	| 'mortKeptWeightedAnklet'
+	| 'mosstown01_shortcut'
+	| 'mosstownAspidBerryCollected'
+	| 'muchTimePassed'
+	| 'newDatTraitorLord'
+	| 'nuuEncountered_coralDrillers'
+	| 'nuuEncountered_skullKing'
+	| 'nuuEncountered_splinterQueen'
+	| 'nuuEncountered_zapNest'
+	| 'nuuIntroAct3'
+	| 'nuuIsHome'
+	| 'nuuMementoAwarded'
+	| 'nuuSlappedOutside'
+	| 'nuuVisiting_coralDrillers'
+	| 'nuuVisiting_skullKing'
+	| 'nuuVisiting_splinterQueen'
+	| 'nuuVisiting_zapNest'
+	| 'openedBeastmasterDen'
+	| 'openedCauldronShortcut'
+	| 'openedCitadelSpaLeft'
+	| 'openedCitadelSpaRight'
+	| 'openedDocksBackEntrance'
+	| 'openedDust05Gate'
+	| 'openedGateCoral_14'
+	| 'openedGeyserShaft'
+	| 'openedShellwoodShortcut'
+	| 'openedSongGateDocks'
+	| 'openedTallGeyser'
+	| 'openedUnder_01b'
+	| 'openedUnder_05'
+	| 'openedUnder_19'
+	| 'opened_cog_06_door'
+	| 'openingCreditsPlayed'
+	| 'peak05b_oneWay'
+	| 'peak05c_oneWay'
+	| 'peak06_oneWay'
+	| 'peak13_oneWay'
+	| 'pilbyAtPilgrimsRest'
+	| 'pilbyBellhartConvo'
+	| 'pilbyCampConvo'
+	| 'pilbyFirstRepeatConvo'
+	| 'pilbyGotSprintConvo'
+	| 'pilbyInsidePilgrimsRest'
+	| 'pilbyKilled'
+	| 'pilbyLeftPilgrimsRest'
+	| 'pilbyMeetConvo'
+	| 'pilbyMosstownConvo'
+	| 'pilbyPilgrimsRestMeetConvo'
+	| 'pilbySeenAtPilgrimsRest'
+	| 'pilgrimFisherPossessed'
+	| 'pilgrimQuestSpoolCollected'
+	| 'pilgrimRestMerchant_RhinoRuckusConvo'
+	| 'pilgrimRestMerchant_SingConvo'
+	| 'pilgrimsRestRosaryThiefCowardLeft'
+	| 'pinstressInsideSitting'
+	| 'pinstressQuestReady'
+	| 'pinstressStoppedResting'
+	| 'previouslyVisitedGreymoor_05'
+	| 'promisedFirstWish'
+	| 'promptFocus'
+	| 'purchasedGrindleMemoryLocket'
+	| 'purchasedGrindleSimpleKey'
+	| 'purchasedGrindleSpoolPiece'
+	| 'purchasedGrindleToolKit'
+	| 'queuedGodfinderIcon'
+	| 'rhinoChurchUnlocked'
+	| 'rhinoRampageCompleted'
+	| 'rhinoRuckus'
+	| 'roachkeeperChefCorpsePrepared'
+	| 'rockRollerDefeated_bone01'
+	| 'rockRollerDefeated_bone06'
+	| 'rockRollerDefeated_bone07'
+	| 'roofCrabDefeated'
+	| 'roofCrabEncountered'
+	| 'rosaryThievesInBank'
+	| 'rosaryThievesInUnder07'
+	| 'rosaryThievesLeftBank'
+	| 'savedGrindleInCitadel'
+	| 'savedPlinney'
+	| 'savedPlinneyConvo'
+	| 'sawPlinneyLeft'
+	| 'scholarAcolytesInLibrary_02'
+	| 'scholarAcolytesReleased'
+	| 'scholarAcolytesReleasedAct3'
+	| 'scholarAmbushReady'
+	| 'seenBellBeast'
+	| 'seenBonetownDestroyed'
+	| 'seenDreamNailPrompt'
+	| 'seenEmptyShellwood16'
+	| 'seenFocusTablet'
+	| 'seenGrindleInSong_08'
+	| 'seenJournalMsg'
+	| 'seenJournalQuestUpdateMsg'
+	| 'seenMapperAct3'
+	| 'seenMateriumMsg'
+	| 'seenPebbLeft'
+	| 'seenPilbyLeft'
+	| 'seenScholarAcolytes'
+	| 'sethLeftShellwood'
+	| 'sethRevived'
+	| 'sethShortcut'
+	| 'shakraAidForumBattle'
+	| 'shellGravePopulated'
+	| 'shellwood13_BellWall'
+	| 'shellwood14_ambushed'
+	| 'shellwoodBellshrineTwigWall'
+	| 'shellwoodSlabflyDefeated'
+	| 'shellwoodTwigShortcut'
+	| 'shermaAtSteps'
+	| 'shermaCaretakerConvo1'
+	| 'shermaCaretakerConvoFinal'
+	| 'shermaCitadelEnclave_Seen'
+	| 'shermaCitadelEntrance_Left'
+	| 'shermaCitadelEntrance_Seen'
+	| 'shermaCitadelEntrance_Visiting'
+	| 'shermaCitadelSpa_ExtraConvo'
+	| 'shermaCitadelSpa_Left'
+	| 'shermaCitadelSpa_Seen'
+	| 'shermaCitadelSpa_Visiting'
+	| 'shermaConvoBellBeast'
+	| 'shermaConvoCoralBench'
+	| 'shermaConvoCoralJudges'
+	| 'shermaEnclaveHealingConvo'
+	| 'shermaHealerActive'
+	| 'shermaInBellhart'
+	| 'shermaInEnclave'
+	| 'shermaQuestActive'
+	| 'shermaSeenInBellhart'
+	| 'shermaSeenInSteps'
+	| 'shermaWokeInSteps'
+	| 'showGeoUI'
+	| 'showHealthUI'
+	| 'silkFarmAbyssCoresCleared'
+	| 'silkFarmBattle1_complete'
+	| 'skullKingAwake'
+	| 'skullKingBenchMended'
+	| 'skullKingDefeated'
+	| 'skullKingDefeatedBlackThreaded'
+	| 'skullKingInvaded'
+	| 'skullKingKilled'
+	| 'skullKingPlatMended'
+	| 'skullKingShortcut'
+	| 'skullKingWillInvade'
+	| 'slabCaptor_heardChallenge'
+	| 'slabCaptor_heardChallengeRings'
+	| 'slabFlyInShellwood16'
+	| 'slabPrisonerFlyConvo'
+	| 'slabPrisonerRemeetConvo'
+	| 'slabPrisonerSingConvo'
+	| 'slab_03_rubbishCleared'
+	| 'slab_05_gateOpen'
+	| 'slab_07_gateOpen'
+	| 'slab_17_openedGateLeft'
+	| 'slab_17_openedGateRight'
+	| 'slab_cell_quiet_oneWayWall'
+	| 'slab_cloak_battle_completed'
+	| 'slab_cloak_battle_encountered'
+	| 'slab_cloak_gate_reopened'
+	| 'song05MarchGroupReady'
+	| 'song18Shortcut'
+	| 'songChevalierActiveInHang_02'
+	| 'songChevalierActiveInSong_02'
+	| 'songChevalierActiveInSong_04'
+	| 'songChevalierActiveInSong_07'
+	| 'songChevalierActiveInSong_24'
+	| 'songChevalierActiveInSong_25'
+	| 'songChevalierActiveInSong_27'
+	| 'songChevalierEncounterCooldown'
+	| 'songChevalierQuestReady'
+	| 'songChevalierRestingMet'
+	| 'songChevalierRestingMetAct3'
+	| 'songChevalierSeenInHang_02'
+	| 'songChevalierSeenInSong_02'
+	| 'songChevalierSeenInSong_04'
+	| 'songChevalierSeenInSong_07'
+	| 'songChevalierSeenInSong_24'
+	| 'songChevalierSeenInSong_25'
+	| 'songChevalierSeenInSong_27'
+	| 'song_04_battleCompleted'
+	| 'song_11_oneway'
+	| 'song_17_clearedOut'
+	| 'song_27_opened'
+	| 'soulSnareReady'
+	| 'spinnerDefeated'
+	| 'splinterQueenSproutCut'
+	| 'splinterQueenSproutGrewLarge'
+	| 'summonedLakeOrbs'
+	| 'swampMuckmanTallInvades'
+	| 'tamedGiantFlea'
+	| 'thievesReturnedToShadow28'
+	| 'tinyBroodMotherAppeared'
+	| 'tookGreymoor17Spool'
+	| 'tookRestroomRosaries'
+	| 'tormentedTrobbioLurking'
+	| 'travelling'
+	| 'trobbioCleanedUp'
+	| 'uncagedGiantFlea'
+	| 'under07_battleCompleted'
+	| 'under07_heavyWorkerReturned'
+	| 'understoreLiftBroke'
+	| 'unlockedNewBossStatue'
+	| 'vampireGnatRequestedAid'
+	| 'visitedAbyss'
+	| 'visitedAqueducts'
+	| 'visitedArborium'
+	| 'visitedBellhart'
+	| 'visitedBellhartHaunted'
+	| 'visitedBellhartSaved'
+	| 'visitedBoneBottom'
+	| 'visitedBoneEast14b'
+	| 'visitedBoneForest'
+	| 'visitedCitadel'
+	| 'visitedCogwork'
+	| 'visitedCoral'
+	| 'visitedCoralBellshrine'
+	| 'visitedCoralRiver'
+	| 'visitedCoralRiverInner'
+	| 'visitedCoralTower'
+	| 'visitedCradle'
+	| 'visitedCrawl'
+	| 'visitedDeepDocks'
+	| 'visitedDustpens'
+	| 'visitedEnclave'
+	| 'visitedFleaFestival'
+	| 'visitedFleatopia'
+	| 'visitedGloom'
+	| 'visitedGrandGate'
+	| 'visitedGreymoor'
+	| 'visitedGrove'
+	| 'visitedHalfway'
+	| 'visitedHalls'
+	| 'visitedHang'
+	| 'visitedHangAtrium'
+	| 'visitedHuntersTrail'
+	| 'visitedIceCore'
+	| 'visitedLibrary'
+	| 'visitedMistmaze'
+	| 'visitedMossCave'
+	| 'visitedMosstown'
+	| 'visitedMountain'
+	| 'visitedRuinedCradle'
+	| 'visitedShadow'
+	| 'visitedShadow03'
+	| 'visitedShellwood'
+	| 'visitedShellwood_16'
+	| 'visitedSlab'
+	| 'visitedStage'
+	| 'visitedUnderstore'
+	| 'visitedUpperSlab'
+	| 'visitedWard'
+	| 'visitedWeave'
+	| 'visitedWilds'
+	| 'visitedWisp'
+	| 'wardBossDefeated'
+	| 'wardBossEncountered'
+	| 'wardBossHatchOpened'
+	| 'wardWoken'
+	| 'weave01_oneWay'
+	| 'weave05_oneWay'
+	| 'wisp02_enemiesReturned'
+	| 'wokeGreyWarrior'
+	| 'wokeLiftWeaver'
+	| 'wokeMossEvolver'
+	| 'wokeSongChevalier';
+export interface PlayerDataFieldOfTypeBoolSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeBoolSilk;
+	type: 'bool';
+}
+
+export type PlayerDataFieldValueOfTypeListOfStringSilk = string[];
+export type PlayerDataFieldNameOfTypeListOfStringSilk = 'BelltownCouriersGenericQuests' | 'unlockedBossScenes';
+export interface PlayerDataFieldOfTypeListOfStringSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeListOfStringSilk;
+	type: 'list<string>';
+}
+
+export type PlayerDataFieldValueOfTypeStringSilk = string;
+export type PlayerDataFieldNameOfTypeStringSilk =
+	| 'BelltownCouriersLastCompletedQuest'
+	| 'BelltownHousePlayingInfo_RelicName'
+	| 'CaravanSpiderTargetScene'
+	| 'CrowSummonsAppearedScene'
+	| 'CurrentCrestID'
+	| 'HeroCorpseScene'
+	| 'LastSetFieldName'
+	| 'LibrarianPlayingInfo_RelicName'
+	| 'MazeEntranceDoor'
+	| 'MazeEntranceInitialDoor'
+	| 'MazeEntranceInitialScene'
+	| 'MazeEntranceScene'
+	| 'PreviousCrestID'
+	| 'PreviousMazeDoor'
+	| 'PreviousMazeScene'
+	| 'PreviousMazeTargetDoor'
+	| 'bossReturnEntryGate'
+	| 'currentArea'
+	| 'currentBossStatueCompletionKey'
+	| 'date'
+	| 'dreamReturnScene'
+	| 'nextScene'
+	| 'nonLethalRespawnMarker'
+	| 'nonLethalRespawnScene'
+	| 'respawnMarkerName'
+	| 'respawnScene'
+	| 'tempRespawnMarker'
+	| 'tempRespawnScene'
+	| 'version';
+export interface PlayerDataFieldOfTypeStringSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeStringSilk;
+	type: 'string';
+}
+
+export type PlayerDataFieldValueOfTypeIntSilk = number;
+export type PlayerDataFieldNameOfTypeIntSilk =
+	| 'BelltownCouriersPurchasedDlgBitmask'
+	| 'BelltownDoctorConvo'
+	| 'BelltownGreeterConvo'
+	| 'BelltownHermitEnslavedConvo'
+	| 'BelltownHermitSavedConvo'
+	| 'BlueAssistantBloodCount'
+	| 'BonebottomBellwayPilgrimState'
+	| 'CorrectMazeDoorsEntered'
+	| 'ForgeDaughterTalkState'
+	| 'GrowstoneState'
+	| 'GrubFarmerSilkGrubsSold'
+	| 'HalfwayDrinksPurchased'
+	| 'HeroCorpseMoneyPool'
+	| 'IncorrectMazeDoorsEntered'
+	| 'MaggotCharmHits'
+	| 'PilgrimsRestShopIdleTalkState'
+	| 'PinGalleryWallet'
+	| 'PreMemoryState_Health'
+	| 'PreMemoryState_Rosaries'
+	| 'PreMemoryState_ShellShards'
+	| 'PreMemoryState_Silk'
+	| 'QuillState'
+	| 'RevisionBreak'
+	| 'SeamstressIdleTalkState'
+	| 'ShellShards'
+	| 'SprintMasterCurrentRace'
+	| 'TempGeoStore'
+	| 'TempShellShardStore'
+	| 'ToolKitUpgrades'
+	| 'ToolPouchUpgrades'
+	| 'attunement'
+	| 'attunementLevel'
+	| 'beamDamage'
+	| 'belltownCrowd'
+	| 'bonetownCrowd'
+	| 'bonetownPilgrimHornedCount'
+	| 'bonetownPilgrimRoundCount'
+	| 'bossStatueTargetLevel'
+	| 'cloakOdour_slabFly'
+	| 'currentInvPane'
+	| 'dicePilgrimBank'
+	| 'dicePilgrimState'
+	| 'druidMossBerriesSold'
+	| 'enclaveLevel'
+	| 'enemyGroupAnt04'
+	| 'fleaGames_bouncing_highscore'
+	| 'fleaGames_dodging_highscore'
+	| 'fleaGames_juggling_highscore'
+	| 'garmondEncounters_act3'
+	| 'geo'
+	| 'gillyLocation'
+	| 'gillyLocationAct3'
+	| 'grindleChestLocation'
+	| 'grindleSlabSequence'
+	| 'grubFarmLevel'
+	| 'halfwayCrowEnemyGroup'
+	| 'halfwayCrowd'
+	| 'health'
+	| 'healthBlue'
+	| 'heartPieces'
+	| 'heroState_attackCount'
+	| 'heroState_downspikeInvulnerabilitySteps'
+	| 'heroState_invulnerableCount'
+	| 'heroState_throwingToolVertical'
+	| 'heroState_toolThrowCount'
+	| 'mapKeyPref'
+	| 'mapperFightGroup'
+	| 'mapperLocationAct3'
+	| 'maxHealth'
+	| 'maxHealthBase'
+	| 'nailRange'
+	| 'nailUpgrades'
+	| 'nonLethalRespawnType'
+	| 'pilbyFriendship'
+	| 'pilgrimGroupBonegrave'
+	| 'pilgrimGroupGreymoorField'
+	| 'pilgrimGroupShellgrave'
+	| 'pilgrimRestCrowd'
+	| 'pinGalleriesCompleted'
+	| 'prevHealth'
+	| 'previousDarkness'
+	| 'profileID'
+	| 'respawnType'
+	| 'sethConvo'
+	| 'shermaPos'
+	| 'shermaWoundedPilgrim'
+	| 'silk'
+	| 'silkMax'
+	| 'silkParts'
+	| 'silkRegenMax'
+	| 'silkSpecialLevel'
+	| 'silkSpoolParts'
+	| 'songChevalierEncounters'
+	| 'spinnerEncounter'
+	| 'splinterQueenSproutTimer'
+	| 'tempRespawnType'
+	| 'vampireGnatDeaths'
+	| 'whiteCloverPos';
+export interface PlayerDataFieldOfTypeIntSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeIntSilk;
+	type: 'int';
+}
+
+export type PlayerDataFieldValueOfTypeEnumSilk = number;
+export type PlayerDataFieldNameOfTypeEnumSilk =
+	| 'BelltownHouseColour'
+	| 'BelltownHouseState'
+	| 'CaravanTroupeLocation'
+	| 'CompletedEndings'
+	| 'EnclaveStateNPCShortHorned'
+	| 'EnclaveStateNPCStandard'
+	| 'EnclaveStateNPCTall'
+	| 'EnclaveStatePilgrimSmall'
+	| 'EnclaveState_songKnightFan'
+	| 'FastTravelNPCLocation'
+	| 'GreenPrinceLocation'
+	| 'HeroCorpseType'
+	| 'LastCompletedEnding'
+	| 'SethNpcLocation'
+	| 'environmentType'
+	| 'extraRestZone'
+	| 'hazardRespawnFacing'
+	| 'mapZone'
+	| 'permadeathMode';
+export interface PlayerDataFieldOfTypeEnumSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeEnumSilk;
+	type: 'enum';
+}
+
+export type PlayerDataFieldValueOfTypeFloatSilk = number;
+export type PlayerDataFieldNameOfTypeFloatSilk =
+	| 'BelltownHousePlayingInfo_StartTime'
+	| 'CaravanSpiderTravelDirection'
+	| 'CrawbellTimer'
+	| 'FisherWalkerIdleTimeLeft'
+	| 'FisherWalkerTimer'
+	| 'GrowstoneTimer'
+	| 'LibrarianPlayingInfo_StartTime'
+	| 'completionPercentage'
+	| 'greyWarriorDeathX'
+	| 'grubFarmerTimer'
+	| 'laceCorpsePosX'
+	| 'laceCorpseScaleX'
+	| 'playTime';
+export interface PlayerDataFieldOfTypeFloatSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeFloatSilk;
+	type: 'float';
+}
+
+export type PlayerDataFieldValueOfTypeArrayOfIntSilk = number[];
+export type PlayerDataFieldNameOfTypeArrayOfIntSilk =
+	| 'CrawbellCurrency'
+	| 'CrawbellCurrencyCaps'
+	| 'GrubFarmerMimicValueList'
+	| 'mossBerryValueList';
+export interface PlayerDataFieldOfTypeArrayOfIntSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeArrayOfIntSilk;
+	type: 'int[]';
+}
+
+export type PlayerDataFieldValueOfTypeListOfIntSilk = number[];
+export type PlayerDataFieldNameOfTypeListOfIntSilk = 'FleasCollectedTargetOrder';
+export interface PlayerDataFieldOfTypeListOfIntSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeListOfIntSilk;
+	type: 'list<int>';
+}
+
+export type PlayerDataFieldValueOfTypeGuidSilk = string;
+export type PlayerDataFieldNameOfTypeGuidSilk = 'HeroCorpseMarkerGuid';
+export interface PlayerDataFieldOfTypeGuidSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeGuidSilk;
+	type: 'guid';
+}
+
+export type PlayerDataFieldValueOfTypeVector2Silk = Vector2;
+export type PlayerDataFieldNameOfTypeVector2Silk = 'HeroDeathScenePos' | 'HeroDeathSceneSize';
+export interface PlayerDataFieldOfTypeVector2Silk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeVector2Silk;
+	type: 'vector2';
+}
+
+export type PlayerDataFieldValueOfTypeDictionaryOfString_boolSilk = Map<string, boolean>;
+export type PlayerDataFieldNameOfTypeDictionaryOfString_boolSilk = 'SteelQuestSpots';
+export interface PlayerDataFieldOfTypeDictionaryOfString_boolSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeDictionaryOfString_boolSilk;
+	type: 'dictionary<string,bool>';
+}
+
+export type PlayerDataFieldValueOfTypeVector3Silk = Vector3;
+export type PlayerDataFieldNameOfTypeVector3Silk = 'hazardRespawnLocation';
+export interface PlayerDataFieldOfTypeVector3Silk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeVector3Silk;
+	type: 'vector3';
+}
+
+export type PlayerDataFieldValueOfTypeUlongSilk = number;
+export type PlayerDataFieldNameOfTypeUlongSilk =
+	| 'memoryOrbs_Clover_18_A'
+	| 'memoryOrbs_Clover_18_B'
+	| 'memoryOrbs_Clover_18_C'
+	| 'memoryOrbs_Clover_18_D'
+	| 'memoryOrbs_Clover_18_E'
+	| 'memoryOrbs_Clover_19';
+export interface PlayerDataFieldOfTypeUlongSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeUlongSilk;
+	type: 'ulong';
+}
+
+export type PlayerDataFieldValueOfTypeArrayOfWrappedvector2listSilk = Vector2[][];
+export type PlayerDataFieldNameOfTypeArrayOfWrappedvector2listSilk = 'placedMarkers';
+export interface PlayerDataFieldOfTypeArrayOfWrappedvector2listSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeArrayOfWrappedvector2listSilk;
+	type: 'wrappedvector2list[]';
+}
+
+export type PlayerDataFieldValueOfTypeHashsetOfStringSilk = Set<string>;
+export type PlayerDataFieldNameOfTypeHashsetOfStringSilk =
+	| 'scenesEncounteredBench'
+	| 'scenesEncounteredCocoon'
+	| 'scenesMapped'
+	| 'scenesVisited';
+export interface PlayerDataFieldOfTypeHashsetOfStringSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeHashsetOfStringSilk;
+	type: 'hashset<string>';
+}
+
+export type PlayerDataFieldValueOfTypeDictionaryOfString_intSilk = Map<string, number>;
+export type PlayerDataFieldNameOfTypeDictionaryOfString_intSilk = 'toolAmountsOverride';
+export interface PlayerDataFieldOfTypeDictionaryOfString_intSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeDictionaryOfString_intSilk;
+	type: 'dictionary<string,int>';
+}
+
+export type PlayerDataFieldValueOfTypeCollectableItemsDataSilk = Map<string, CollectableItemsDataSilk>;
+export type PlayerDataFieldNameOfTypeCollectableItemsDataSilk = 'Collectables';
+export interface PlayerDataFieldOfTypeCollectableItemsDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeCollectableItemsDataSilk;
+	type: 'CollectableItemsData';
+}
+
+export type PlayerDataFieldValueOfTypeEnemyJournalKillDataSilk = Map<string, EnemyJournalKillDataSilk>;
+export type PlayerDataFieldNameOfTypeEnemyJournalKillDataSilk = 'EnemyJournalKillData';
+export interface PlayerDataFieldOfTypeEnemyJournalKillDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeEnemyJournalKillDataSilk;
+	type: 'EnemyJournalKillData';
+}
+
+export type PlayerDataFieldValueOfTypeMateriumItemsDataSilk = Map<string, MateriumItemsDataSilk>;
+export type PlayerDataFieldNameOfTypeMateriumItemsDataSilk = 'MateriumCollected';
+export interface PlayerDataFieldOfTypeMateriumItemsDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeMateriumItemsDataSilk;
+	type: 'MateriumItemsData';
+}
+
+export type PlayerDataFieldValueOfTypeCollectableMementosDataSilk = Map<string, CollectableMementosDataSilk>;
+export type PlayerDataFieldNameOfTypeCollectableMementosDataSilk = 'MementosDeposited';
+export interface PlayerDataFieldOfTypeCollectableMementosDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeCollectableMementosDataSilk;
+	type: 'CollectableMementosData';
+}
+
+export type PlayerDataFieldValueOfTypeQuestCompletionDataSilk = Map<string, QuestCompletionDataSilk>;
+export type PlayerDataFieldNameOfTypeQuestCompletionDataSilk = 'QuestCompletionData';
+export interface PlayerDataFieldOfTypeQuestCompletionDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeQuestCompletionDataSilk;
+	type: 'QuestCompletionData';
+}
+
+export type PlayerDataFieldValueOfTypeQuestRumourDataSilk = Map<string, QuestRumourDataSilk>;
+export type PlayerDataFieldNameOfTypeQuestRumourDataSilk = 'QuestRumourData';
+export interface PlayerDataFieldOfTypeQuestRumourDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeQuestRumourDataSilk;
+	type: 'QuestRumourData';
+}
+
+export type PlayerDataFieldValueOfTypeCollectableRelicsDataSilk = Map<string, CollectableRelicsDataSilk>;
+export type PlayerDataFieldNameOfTypeCollectableRelicsDataSilk = 'Relics';
+export interface PlayerDataFieldOfTypeCollectableRelicsDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeCollectableRelicsDataSilk;
+	type: 'CollectableRelicsData';
+}
+
+export type PlayerDataFieldValueOfTypeToolCrestsDataSilk = Map<string, ToolCrestsDataSilk>;
+export type PlayerDataFieldNameOfTypeToolCrestsDataSilk = 'ToolEquips';
+export interface PlayerDataFieldOfTypeToolCrestsDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeToolCrestsDataSilk;
+	type: 'ToolCrestsData';
+}
+
+export type PlayerDataFieldValueOfTypeToolItemLiquidsDataSilk = Map<string, ToolItemLiquidsDataSilk>;
+export type PlayerDataFieldNameOfTypeToolItemLiquidsDataSilk = 'ToolLiquids';
+export interface PlayerDataFieldOfTypeToolItemLiquidsDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeToolItemLiquidsDataSilk;
+	type: 'ToolItemLiquidsData';
+}
+
+export type PlayerDataFieldValueOfTypeToolItemsDataSilk = Map<string, ToolItemsDataSilk>;
+export type PlayerDataFieldNameOfTypeToolItemsDataSilk = 'Tools';
+export interface PlayerDataFieldOfTypeToolItemsDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeToolItemsDataSilk;
+	type: 'ToolItemsData';
+}
+
+export type PlayerDataFieldValueOfTypeFloatingCrestSlotsDataSilk = unknown;
+export type PlayerDataFieldNameOfTypeFloatingCrestSlotsDataSilk = 'ExtraToolEquips';
+export interface PlayerDataFieldOfTypeFloatingCrestSlotsDataSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeFloatingCrestSlotsDataSilk;
+	type: 'FloatingCrestSlotsData';
+}
+
+export type PlayerDataFieldValueOfTypeListOfPlayerstory_eventinfoSilk = unknown;
+export type PlayerDataFieldNameOfTypeListOfPlayerstory_eventinfoSilk = 'StoryEvents';
+export interface PlayerDataFieldOfTypeListOfPlayerstory_eventinfoSilk {
+	id: number;
+	name: PlayerDataFieldNameOfTypeListOfPlayerstory_eventinfoSilk;
+	type: 'list<playerstory.eventinfo>';
+}
+
+export type PlayerDataFieldNameSilk =
+	| PlayerDataFieldNameOfTypeBoolSilk
+	| PlayerDataFieldNameOfTypeListOfStringSilk
+	| PlayerDataFieldNameOfTypeStringSilk
+	| PlayerDataFieldNameOfTypeIntSilk
+	| PlayerDataFieldNameOfTypeEnumSilk
+	| PlayerDataFieldNameOfTypeFloatSilk
+	| PlayerDataFieldNameOfTypeArrayOfIntSilk
+	| PlayerDataFieldNameOfTypeListOfIntSilk
+	| PlayerDataFieldNameOfTypeGuidSilk
+	| PlayerDataFieldNameOfTypeVector2Silk
+	| PlayerDataFieldNameOfTypeDictionaryOfString_boolSilk
+	| PlayerDataFieldNameOfTypeVector3Silk
+	| PlayerDataFieldNameOfTypeUlongSilk
+	| PlayerDataFieldNameOfTypeArrayOfWrappedvector2listSilk
+	| PlayerDataFieldNameOfTypeHashsetOfStringSilk
+	| PlayerDataFieldNameOfTypeDictionaryOfString_intSilk
+	| PlayerDataFieldNameOfTypeCollectableItemsDataSilk
+	| PlayerDataFieldNameOfTypeEnemyJournalKillDataSilk
+	| PlayerDataFieldNameOfTypeMateriumItemsDataSilk
+	| PlayerDataFieldNameOfTypeCollectableMementosDataSilk
+	| PlayerDataFieldNameOfTypeQuestCompletionDataSilk
+	| PlayerDataFieldNameOfTypeQuestRumourDataSilk
+	| PlayerDataFieldNameOfTypeCollectableRelicsDataSilk
+	| PlayerDataFieldNameOfTypeToolCrestsDataSilk
+	| PlayerDataFieldNameOfTypeToolItemLiquidsDataSilk
+	| PlayerDataFieldNameOfTypeToolItemsDataSilk
+	| PlayerDataFieldNameOfTypeFloatingCrestSlotsDataSilk
+	| PlayerDataFieldNameOfTypeListOfPlayerstory_eventinfoSilk;
+export type PlayerDataFieldTypeSilk =
+	| 'bool'
+	| 'list<string>'
+	| 'string'
+	| 'int'
+	| 'enum'
+	| 'float'
+	| 'int[]'
+	| 'list<int>'
+	| 'guid'
+	| 'vector2'
+	| 'dictionary<string,bool>'
+	| 'vector3'
+	| 'ulong'
+	| 'wrappedvector2list[]'
+	| 'hashset<string>'
+	| 'dictionary<string,int>'
+	| 'CollectableItemsData'
+	| 'EnemyJournalKillData'
+	| 'MateriumItemsData'
+	| 'CollectableMementosData'
+	| 'QuestCompletionData'
+	| 'QuestRumourData'
+	| 'CollectableRelicsData'
+	| 'ToolCrestsData'
+	| 'ToolItemLiquidsData'
+	| 'ToolItemsData'
+	| 'FloatingCrestSlotsData'
+	| 'list<playerstory.eventinfo>';
+export type PlayerDataFieldSilk =
+	| PlayerDataFieldOfTypeBoolSilk
+	| PlayerDataFieldOfTypeListOfStringSilk
+	| PlayerDataFieldOfTypeStringSilk
+	| PlayerDataFieldOfTypeIntSilk
+	| PlayerDataFieldOfTypeEnumSilk
+	| PlayerDataFieldOfTypeFloatSilk
+	| PlayerDataFieldOfTypeArrayOfIntSilk
+	| PlayerDataFieldOfTypeListOfIntSilk
+	| PlayerDataFieldOfTypeGuidSilk
+	| PlayerDataFieldOfTypeVector2Silk
+	| PlayerDataFieldOfTypeDictionaryOfString_boolSilk
+	| PlayerDataFieldOfTypeVector3Silk
+	| PlayerDataFieldOfTypeUlongSilk
+	| PlayerDataFieldOfTypeArrayOfWrappedvector2listSilk
+	| PlayerDataFieldOfTypeHashsetOfStringSilk
+	| PlayerDataFieldOfTypeDictionaryOfString_intSilk
+	| PlayerDataFieldOfTypeCollectableItemsDataSilk
+	| PlayerDataFieldOfTypeEnemyJournalKillDataSilk
+	| PlayerDataFieldOfTypeMateriumItemsDataSilk
+	| PlayerDataFieldOfTypeCollectableMementosDataSilk
+	| PlayerDataFieldOfTypeQuestCompletionDataSilk
+	| PlayerDataFieldOfTypeQuestRumourDataSilk
+	| PlayerDataFieldOfTypeCollectableRelicsDataSilk
+	| PlayerDataFieldOfTypeToolCrestsDataSilk
+	| PlayerDataFieldOfTypeToolItemLiquidsDataSilk
+	| PlayerDataFieldOfTypeToolItemsDataSilk
+	| PlayerDataFieldOfTypeFloatingCrestSlotsDataSilk
+	| PlayerDataFieldOfTypeListOfPlayerstory_eventinfoSilk;
+export type PlayerDataFieldValueSilk<TField extends PlayerDataFieldNameSilk> =
+	TField extends PlayerDataFieldNameOfTypeBoolSilk
+		? PlayerDataFieldValueOfTypeBoolSilk
+		: TField extends PlayerDataFieldNameOfTypeListOfStringSilk
+			? PlayerDataFieldValueOfTypeListOfStringSilk
+			: TField extends PlayerDataFieldNameOfTypeStringSilk
+				? PlayerDataFieldValueOfTypeStringSilk
+				: TField extends PlayerDataFieldNameOfTypeIntSilk
+					? PlayerDataFieldValueOfTypeIntSilk
+					: TField extends PlayerDataFieldNameOfTypeEnumSilk
+						? PlayerDataFieldValueOfTypeEnumSilk
+						: TField extends PlayerDataFieldNameOfTypeFloatSilk
+							? PlayerDataFieldValueOfTypeFloatSilk
+							: TField extends PlayerDataFieldNameOfTypeArrayOfIntSilk
+								? PlayerDataFieldValueOfTypeArrayOfIntSilk
+								: TField extends PlayerDataFieldNameOfTypeListOfIntSilk
+									? PlayerDataFieldValueOfTypeListOfIntSilk
+									: TField extends PlayerDataFieldNameOfTypeGuidSilk
+										? PlayerDataFieldValueOfTypeGuidSilk
+										: TField extends PlayerDataFieldNameOfTypeVector2Silk
+											? PlayerDataFieldValueOfTypeVector2Silk
+											: TField extends PlayerDataFieldNameOfTypeDictionaryOfString_boolSilk
+												? PlayerDataFieldValueOfTypeDictionaryOfString_boolSilk
+												: TField extends PlayerDataFieldNameOfTypeVector3Silk
+													? PlayerDataFieldValueOfTypeVector3Silk
+													: TField extends PlayerDataFieldNameOfTypeUlongSilk
+														? PlayerDataFieldValueOfTypeUlongSilk
+														: TField extends PlayerDataFieldNameOfTypeArrayOfWrappedvector2listSilk
+															? PlayerDataFieldValueOfTypeArrayOfWrappedvector2listSilk
+															: TField extends PlayerDataFieldNameOfTypeHashsetOfStringSilk
+																? PlayerDataFieldValueOfTypeHashsetOfStringSilk
+																: TField extends PlayerDataFieldNameOfTypeDictionaryOfString_intSilk
+																	? PlayerDataFieldValueOfTypeDictionaryOfString_intSilk
+																	: TField extends PlayerDataFieldNameOfTypeCollectableItemsDataSilk
+																		? PlayerDataFieldValueOfTypeCollectableItemsDataSilk
+																		: TField extends PlayerDataFieldNameOfTypeEnemyJournalKillDataSilk
+																			? PlayerDataFieldValueOfTypeEnemyJournalKillDataSilk
+																			: TField extends PlayerDataFieldNameOfTypeMateriumItemsDataSilk
+																				? PlayerDataFieldValueOfTypeMateriumItemsDataSilk
+																				: TField extends PlayerDataFieldNameOfTypeCollectableMementosDataSilk
+																					? PlayerDataFieldValueOfTypeCollectableMementosDataSilk
+																					: TField extends PlayerDataFieldNameOfTypeQuestCompletionDataSilk
+																						? PlayerDataFieldValueOfTypeQuestCompletionDataSilk
+																						: TField extends PlayerDataFieldNameOfTypeQuestRumourDataSilk
+																							? PlayerDataFieldValueOfTypeQuestRumourDataSilk
+																							: TField extends PlayerDataFieldNameOfTypeCollectableRelicsDataSilk
+																								? PlayerDataFieldValueOfTypeCollectableRelicsDataSilk
+																								: TField extends PlayerDataFieldNameOfTypeToolCrestsDataSilk
+																									? PlayerDataFieldValueOfTypeToolCrestsDataSilk
+																									: TField extends PlayerDataFieldNameOfTypeToolItemLiquidsDataSilk
+																										? PlayerDataFieldValueOfTypeToolItemLiquidsDataSilk
+																										: TField extends PlayerDataFieldNameOfTypeToolItemsDataSilk
+																											? PlayerDataFieldValueOfTypeToolItemsDataSilk
+																											: TField extends PlayerDataFieldNameOfTypeFloatingCrestSlotsDataSilk
+																												? PlayerDataFieldValueOfTypeFloatingCrestSlotsDataSilk
+																												: TField extends PlayerDataFieldNameOfTypeListOfPlayerstory_eventinfoSilk
+																													? PlayerDataFieldValueOfTypeListOfPlayerstory_eventinfoSilk
+																													: never;
+export type PlayerDataFieldTypeByNameSilk<TField extends PlayerDataFieldNameSilk> =
+	TField extends PlayerDataFieldNameOfTypeBoolSilk
+		? PlayerDataFieldOfTypeBoolSilk
+		: TField extends PlayerDataFieldNameOfTypeListOfStringSilk
+			? PlayerDataFieldOfTypeListOfStringSilk
+			: TField extends PlayerDataFieldNameOfTypeStringSilk
+				? PlayerDataFieldOfTypeStringSilk
+				: TField extends PlayerDataFieldNameOfTypeIntSilk
+					? PlayerDataFieldOfTypeIntSilk
+					: TField extends PlayerDataFieldNameOfTypeEnumSilk
+						? PlayerDataFieldOfTypeEnumSilk
+						: TField extends PlayerDataFieldNameOfTypeFloatSilk
+							? PlayerDataFieldOfTypeFloatSilk
+							: TField extends PlayerDataFieldNameOfTypeArrayOfIntSilk
+								? PlayerDataFieldOfTypeArrayOfIntSilk
+								: TField extends PlayerDataFieldNameOfTypeListOfIntSilk
+									? PlayerDataFieldOfTypeListOfIntSilk
+									: TField extends PlayerDataFieldNameOfTypeGuidSilk
+										? PlayerDataFieldOfTypeGuidSilk
+										: TField extends PlayerDataFieldNameOfTypeVector2Silk
+											? PlayerDataFieldOfTypeVector2Silk
+											: TField extends PlayerDataFieldNameOfTypeDictionaryOfString_boolSilk
+												? PlayerDataFieldOfTypeDictionaryOfString_boolSilk
+												: TField extends PlayerDataFieldNameOfTypeVector3Silk
+													? PlayerDataFieldOfTypeVector3Silk
+													: TField extends PlayerDataFieldNameOfTypeUlongSilk
+														? PlayerDataFieldOfTypeUlongSilk
+														: TField extends PlayerDataFieldNameOfTypeArrayOfWrappedvector2listSilk
+															? PlayerDataFieldOfTypeArrayOfWrappedvector2listSilk
+															: TField extends PlayerDataFieldNameOfTypeHashsetOfStringSilk
+																? PlayerDataFieldOfTypeHashsetOfStringSilk
+																: TField extends PlayerDataFieldNameOfTypeDictionaryOfString_intSilk
+																	? PlayerDataFieldOfTypeDictionaryOfString_intSilk
+																	: TField extends PlayerDataFieldNameOfTypeCollectableItemsDataSilk
+																		? PlayerDataFieldOfTypeCollectableItemsDataSilk
+																		: TField extends PlayerDataFieldNameOfTypeEnemyJournalKillDataSilk
+																			? PlayerDataFieldOfTypeEnemyJournalKillDataSilk
+																			: TField extends PlayerDataFieldNameOfTypeMateriumItemsDataSilk
+																				? PlayerDataFieldOfTypeMateriumItemsDataSilk
+																				: TField extends PlayerDataFieldNameOfTypeCollectableMementosDataSilk
+																					? PlayerDataFieldOfTypeCollectableMementosDataSilk
+																					: TField extends PlayerDataFieldNameOfTypeQuestCompletionDataSilk
+																						? PlayerDataFieldOfTypeQuestCompletionDataSilk
+																						: TField extends PlayerDataFieldNameOfTypeQuestRumourDataSilk
+																							? PlayerDataFieldOfTypeQuestRumourDataSilk
+																							: TField extends PlayerDataFieldNameOfTypeCollectableRelicsDataSilk
+																								? PlayerDataFieldOfTypeCollectableRelicsDataSilk
+																								: TField extends PlayerDataFieldNameOfTypeToolCrestsDataSilk
+																									? PlayerDataFieldOfTypeToolCrestsDataSilk
+																									: TField extends PlayerDataFieldNameOfTypeToolItemLiquidsDataSilk
+																										? PlayerDataFieldOfTypeToolItemLiquidsDataSilk
+																										: TField extends PlayerDataFieldNameOfTypeToolItemsDataSilk
+																											? PlayerDataFieldOfTypeToolItemsDataSilk
+																											: TField extends PlayerDataFieldNameOfTypeFloatingCrestSlotsDataSilk
+																												? PlayerDataFieldOfTypeFloatingCrestSlotsDataSilk
+																												: TField extends PlayerDataFieldNameOfTypeListOfPlayerstory_eventinfoSilk
+																													? PlayerDataFieldOfTypeListOfPlayerstory_eventinfoSilk
+																													: never;
+
+const fieldsByName = {
+	AbyssBellSeenDocks: {
+		id: 1,
+		name: 'AbyssBellSeenDocks',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	AbyssBellSeenDocksRepaired: {
+		id: 2,
+		name: 'AbyssBellSeenDocksRepaired',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ArchitectLeft: {
+		id: 3,
+		name: 'ArchitectLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ArchitectMelodyGainSeen: {
+		id: 4,
+		name: 'ArchitectMelodyGainSeen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ArchitectMelodyReturnQueued: {
+		id: 5,
+		name: 'ArchitectMelodyReturnQueued',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ArchitectMelodyReturnSeen: {
+		id: 6,
+		name: 'ArchitectMelodyReturnSeen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ArchitectMentionedCogHeart: {
+		id: 7,
+		name: 'ArchitectMentionedCogHeart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ArchitectMentionedMelody: {
+		id: 8,
+		name: 'ArchitectMentionedMelody',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ArchitectMentionedWebShot: {
+		id: 9,
+		name: 'ArchitectMentionedWebShot',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ArchitectTalkedCrest: {
+		id: 10,
+		name: 'ArchitectTalkedCrest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ArchitectWillLeave: {
+		id: 11,
+		name: 'ArchitectWillLeave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BallowGivenKey: {
+		id: 12,
+		name: 'BallowGivenKey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BallowInSauna: {
+		id: 13,
+		name: 'BallowInSauna',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BallowLeftSauna: {
+		id: 14,
+		name: 'BallowLeftSauna',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BallowMovedToDivingBell: {
+		id: 15,
+		name: 'BallowMovedToDivingBell',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BallowSeenInSauna: {
+		id: 16,
+		name: 'BallowSeenInSauna',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BallowTalkedPostRepair: {
+		id: 17,
+		name: 'BallowTalkedPostRepair',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BallowTalkedPostRepairGramaphone: {
+		id: 18,
+		name: 'BallowTalkedPostRepairGramaphone',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownBagpipersOfferedQuest: {
+		id: 19,
+		name: 'BelltownBagpipersOfferedQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownCouriersBrokenDlg: {
+		id: 20,
+		name: 'BelltownCouriersBrokenDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownCouriersBrokenDlgQueued: {
+		id: 21,
+		name: 'BelltownCouriersBrokenDlgQueued',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownCouriersFirstBeginDlg: {
+		id: 22,
+		name: 'BelltownCouriersFirstBeginDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownCouriersGenericQuests: {
+		id: 23,
+		name: 'BelltownCouriersGenericQuests',
+		type: 'list<string>',
+	} satisfies PlayerDataFieldOfTypeListOfStringSilk as PlayerDataFieldOfTypeListOfStringSilk,
+	BelltownCouriersGourmandHint: {
+		id: 24,
+		name: 'BelltownCouriersGourmandHint',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownCouriersLastCompletedQuest: {
+		id: 25,
+		name: 'BelltownCouriersLastCompletedQuest',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	BelltownCouriersMet: {
+		id: 26,
+		name: 'BelltownCouriersMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownCouriersMetAct3: {
+		id: 27,
+		name: 'BelltownCouriersMetAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownCouriersNotPurchasedDlg: {
+		id: 28,
+		name: 'BelltownCouriersNotPurchasedDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownCouriersPurchasedDlgBitmask: {
+		id: 29,
+		name: 'BelltownCouriersPurchasedDlgBitmask',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	BelltownCouriersTalkedCursed: {
+		id: 30,
+		name: 'BelltownCouriersTalkedCursed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownCouriersTalkedGourmand: {
+		id: 31,
+		name: 'BelltownCouriersTalkedGourmand',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownDoctorConvo: {
+		id: 32,
+		name: 'BelltownDoctorConvo',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	BelltownDoctorCuredCurse: {
+		id: 33,
+		name: 'BelltownDoctorCuredCurse',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownDoctorFixOffered: {
+		id: 34,
+		name: 'BelltownDoctorFixOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownDoctorLifebloodSpoke: {
+		id: 35,
+		name: 'BelltownDoctorLifebloodSpoke',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownDoctorMaggotSpoke: {
+		id: 36,
+		name: 'BelltownDoctorMaggotSpoke',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownDoctorQuestOffered: {
+		id: 37,
+		name: 'BelltownDoctorQuestOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownFurnishingDesk: {
+		id: 38,
+		name: 'BelltownFurnishingDesk',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownFurnishingFairyLights: {
+		id: 39,
+		name: 'BelltownFurnishingFairyLights',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownFurnishingGramaphone: {
+		id: 40,
+		name: 'BelltownFurnishingGramaphone',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownFurnishingSpa: {
+		id: 41,
+		name: 'BelltownFurnishingSpa',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownFurnishingSpaAvailable: {
+		id: 42,
+		name: 'BelltownFurnishingSpaAvailable',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownGreetCursedConvo: {
+		id: 43,
+		name: 'BelltownGreetCursedConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownGreeterConvo: {
+		id: 44,
+		name: 'BelltownGreeterConvo',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	BelltownGreeterFurnishingDlg: {
+		id: 45,
+		name: 'BelltownGreeterFurnishingDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownGreeterHouseFullDlg: {
+		id: 46,
+		name: 'BelltownGreeterHouseFullDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownGreeterHouseHalfDlg: {
+		id: 47,
+		name: 'BelltownGreeterHouseHalfDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownGreeterMetTimePassed: {
+		id: 48,
+		name: 'BelltownGreeterMetTimePassed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownGreeterTwistedBudDlg: {
+		id: 49,
+		name: 'BelltownGreeterTwistedBudDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownHermitConvoCooldown: {
+		id: 50,
+		name: 'BelltownHermitConvoCooldown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownHermitCursedConvo: {
+		id: 51,
+		name: 'BelltownHermitCursedConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownHermitEnslavedConvo: {
+		id: 52,
+		name: 'BelltownHermitEnslavedConvo',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	BelltownHermitMet: {
+		id: 53,
+		name: 'BelltownHermitMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownHermitSavedConvo: {
+		id: 54,
+		name: 'BelltownHermitSavedConvo',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	BelltownHouseColour: {
+		id: 55,
+		name: 'BelltownHouseColour',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	BelltownHousePaintComplete: {
+		id: 56,
+		name: 'BelltownHousePaintComplete',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownHousePlayingInfo_RelicName: {
+		id: 57,
+		name: 'BelltownHousePlayingInfo_RelicName',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	BelltownHousePlayingInfo_StartTime: {
+		id: 58,
+		name: 'BelltownHousePlayingInfo_StartTime',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	BelltownHouseState: {
+		id: 59,
+		name: 'BelltownHouseState',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	BelltownHouseUnlocked: {
+		id: 60,
+		name: 'BelltownHouseUnlocked',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownRelicDealerCylinderConvo: {
+		id: 61,
+		name: 'BelltownRelicDealerCylinderConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownRelicDealerGaveRelic: {
+		id: 62,
+		name: 'BelltownRelicDealerGaveRelic',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownRelicDealerOutroConvo: {
+		id: 63,
+		name: 'BelltownRelicDealerOutroConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownRelicDealerOutroConvoAllComplete: {
+		id: 64,
+		name: 'BelltownRelicDealerOutroConvoAllComplete',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownShopkeepAct3Convo: {
+		id: 65,
+		name: 'BelltownShopkeepAct3Convo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownShopkeepCourierConvo1Accepted: {
+		id: 66,
+		name: 'BelltownShopkeepCourierConvo1Accepted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownShopkeepCourierConvo1Completed: {
+		id: 67,
+		name: 'BelltownShopkeepCourierConvo1Completed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownShopkeepCursedConvo: {
+		id: 68,
+		name: 'BelltownShopkeepCursedConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BelltownShopkeepHouseConvo: {
+		id: 69,
+		name: 'BelltownShopkeepHouseConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueAssistantBloodCount: {
+		id: 70,
+		name: 'BlueAssistantBloodCount',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	BlueAssistantCorpseFound: {
+		id: 71,
+		name: 'BlueAssistantCorpseFound',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueAssistantEnemyEncountered: {
+		id: 72,
+		name: 'BlueAssistantEnemyEncountered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistDead: {
+		id: 73,
+		name: 'BlueScientistDead',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistInfectedMet: {
+		id: 74,
+		name: 'BlueScientistInfectedMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistInfectedSeen: {
+		id: 75,
+		name: 'BlueScientistInfectedSeen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistMet: {
+		id: 76,
+		name: 'BlueScientistMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistPreQuest2Convo: {
+		id: 77,
+		name: 'BlueScientistPreQuest2Convo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistQuest2Offered: {
+		id: 78,
+		name: 'BlueScientistQuest2Offered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistQuest3Offered: {
+		id: 79,
+		name: 'BlueScientistQuest3Offered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistQuestOffered: {
+		id: 80,
+		name: 'BlueScientistQuestOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistSceneryPustulesGrown: {
+		id: 81,
+		name: 'BlueScientistSceneryPustulesGrown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BlueScientistTalkedCorpse: {
+		id: 82,
+		name: 'BlueScientistTalkedCorpse',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BoneBottomShellFrag1: {
+		id: 83,
+		name: 'BoneBottomShellFrag1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BoneBottomShopKeepLeft: {
+		id: 84,
+		name: 'BoneBottomShopKeepLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BoneBottomShopKeepWillLeave: {
+		id: 85,
+		name: 'BoneBottomShopKeepWillLeave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BonePlazaOpened: {
+		id: 86,
+		name: 'BonePlazaOpened',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	Bone_East_04b_ExplodeWall: {
+		id: 87,
+		name: 'Bone_East_04b_ExplodeWall',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BonebottomBellwayPilgrimLeft: {
+		id: 88,
+		name: 'BonebottomBellwayPilgrimLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BonebottomBellwayPilgrimScared: {
+		id: 89,
+		name: 'BonebottomBellwayPilgrimScared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	BonebottomBellwayPilgrimState: {
+		id: 90,
+		name: 'BonebottomBellwayPilgrimState',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	CaravanHauntedBellhartConvo_TroupeLeader: {
+		id: 91,
+		name: 'CaravanHauntedBellhartConvo_TroupeLeader',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanLechAct3Convo: {
+		id: 92,
+		name: 'CaravanLechAct3Convo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanLechMet: {
+		id: 93,
+		name: 'CaravanLechMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanLechReturnedToCaravan: {
+		id: 94,
+		name: 'CaravanLechReturnedToCaravan',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanLechSaved: {
+		id: 95,
+		name: 'CaravanLechSaved',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanLechSpaAcceptState: {
+		id: 96,
+		name: 'CaravanLechSpaAcceptState',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanLechSpaAttacked: {
+		id: 97,
+		name: 'CaravanLechSpaAttacked',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanLechWoundedSpoken: {
+		id: 98,
+		name: 'CaravanLechWoundedSpoken',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanPilgrimAttackComplete: {
+		id: 99,
+		name: 'CaravanPilgrimAttackComplete',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanSpiderPaidExtraBellhart: {
+		id: 100,
+		name: 'CaravanSpiderPaidExtraBellhart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanSpiderTargetScene: {
+		id: 101,
+		name: 'CaravanSpiderTargetScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	CaravanSpiderTravelDirection: {
+		id: 102,
+		name: 'CaravanSpiderTravelDirection',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	CaravanTroupeLeaderCanLeaveGreymoor: {
+		id: 103,
+		name: 'CaravanTroupeLeaderCanLeaveGreymoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanTroupeLeaderCanLeaveJudge: {
+		id: 104,
+		name: 'CaravanTroupeLeaderCanLeaveJudge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaravanTroupeLocation: {
+		id: 105,
+		name: 'CaravanTroupeLocation',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	CaretakerOfferedSnareQuest: {
+		id: 106,
+		name: 'CaretakerOfferedSnareQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaretakerSnareProgressConvo: {
+		id: 107,
+		name: 'CaretakerSnareProgressConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CaretakerSwampSoulConvo: {
+		id: 108,
+		name: 'CaretakerSwampSoulConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ChurchKeeperLeftBasement: {
+		id: 109,
+		name: 'ChurchKeeperLeftBasement',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedCommonSpine: {
+		id: 110,
+		name: 'CollectedCommonSpine',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedDockDemoKey: {
+		id: 111,
+		name: 'CollectedDockDemoKey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedDustCageKey: {
+		id: 112,
+		name: 'CollectedDustCageKey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedHeartClover: {
+		id: 113,
+		name: 'CollectedHeartClover',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedHeartCoral: {
+		id: 114,
+		name: 'CollectedHeartCoral',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedHeartFlower: {
+		id: 115,
+		name: 'CollectedHeartFlower',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedHeartHunter: {
+		id: 116,
+		name: 'CollectedHeartHunter',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedMementoGrey: {
+		id: 117,
+		name: 'CollectedMementoGrey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedMementoSprintmaster: {
+		id: 118,
+		name: 'CollectedMementoSprintmaster',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CollectedToolMetal: {
+		id: 119,
+		name: 'CollectedToolMetal',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CompletedEndings: {
+		id: 120,
+		name: 'CompletedEndings',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	CompletedRedMemory: {
+		id: 121,
+		name: 'CompletedRedMemory',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CompletedWeaveSprintChallenge: {
+		id: 122,
+		name: 'CompletedWeaveSprintChallenge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CompletedWeaveSprintChallengeMax: {
+		id: 123,
+		name: 'CompletedWeaveSprintChallengeMax',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ConductorWeaverDlgHeard: {
+		id: 124,
+		name: 'ConductorWeaverDlgHeard',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ConductorWeaverDlgQueued: {
+		id: 125,
+		name: 'ConductorWeaverDlgQueued',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ConstructedFarsight: {
+		id: 126,
+		name: 'ConstructedFarsight',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ConstructedMaterium: {
+		id: 127,
+		name: 'ConstructedMaterium',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CorrectMazeDoorsEntered: {
+		id: 128,
+		name: 'CorrectMazeDoorsEntered',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	CrawbellCrawsInside: {
+		id: 129,
+		name: 'CrawbellCrawsInside',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CrawbellCurrency: {
+		id: 130,
+		name: 'CrawbellCurrency',
+		type: 'int[]',
+	} satisfies PlayerDataFieldOfTypeArrayOfIntSilk as PlayerDataFieldOfTypeArrayOfIntSilk,
+	CrawbellCurrencyCaps: {
+		id: 131,
+		name: 'CrawbellCurrencyCaps',
+		type: 'int[]',
+	} satisfies PlayerDataFieldOfTypeArrayOfIntSilk as PlayerDataFieldOfTypeArrayOfIntSilk,
+	CrawbellInstalled: {
+		id: 132,
+		name: 'CrawbellInstalled',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CrawbellTimer: {
+		id: 133,
+		name: 'CrawbellTimer',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	CrestPreUpgradeAdditional: {
+		id: 134,
+		name: 'CrestPreUpgradeAdditional',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CrestPreUpgradeTalked: {
+		id: 135,
+		name: 'CrestPreUpgradeTalked',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CrestPurposeQueued: {
+		id: 136,
+		name: 'CrestPurposeQueued',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CrestTalkedPurpose: {
+		id: 137,
+		name: 'CrestTalkedPurpose',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CrestUpgraderOfferedFinal: {
+		id: 138,
+		name: 'CrestUpgraderOfferedFinal',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CrestUpgraderTalkedSnare: {
+		id: 139,
+		name: 'CrestUpgraderTalkedSnare',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CrowCourtInSession: {
+		id: 140,
+		name: 'CrowCourtInSession',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CrowSummonsAppearedScene: {
+		id: 141,
+		name: 'CrowSummonsAppearedScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	CurrentCrestID: {
+		id: 142,
+		name: 'CurrentCrestID',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	CurseKilledFlyBoneEast: {
+		id: 143,
+		name: 'CurseKilledFlyBoneEast',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CurseKilledFlyGreymoor: {
+		id: 144,
+		name: 'CurseKilledFlyGreymoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CurseKilledFlyShellwood: {
+		id: 145,
+		name: 'CurseKilledFlyShellwood',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	CurseKilledFlySwamp: {
+		id: 146,
+		name: 'CurseKilledFlySwamp',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	DeclinedBartenderDrink: {
+		id: 147,
+		name: 'DeclinedBartenderDrink',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	DefeatedBonetownBoss: {
+		id: 148,
+		name: 'DefeatedBonetownBoss',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	DefeatedSwampShaman: {
+		id: 149,
+		name: 'DefeatedSwampShaman',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	DeskPlacedLibrarianList: {
+		id: 150,
+		name: 'DeskPlacedLibrarianList',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	DeskPlacedRelicList: {
+		id: 151,
+		name: 'DeskPlacedRelicList',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	DidEnterPreviousMazeDoor: {
+		id: 152,
+		name: 'DidEnterPreviousMazeDoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	DustTradersOfferedPins: {
+		id: 153,
+		name: 'DustTradersOfferedPins',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	DustTradersOfferedQuest: {
+		id: 154,
+		name: 'DustTradersOfferedQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	EnclaveStateNPCShortHorned: {
+		id: 155,
+		name: 'EnclaveStateNPCShortHorned',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	EnclaveStateNPCStandard: {
+		id: 156,
+		name: 'EnclaveStateNPCStandard',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	EnclaveStateNPCTall: {
+		id: 157,
+		name: 'EnclaveStateNPCTall',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	EnclaveStatePilgrimSmall: {
+		id: 158,
+		name: 'EnclaveStatePilgrimSmall',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	EnclaveState_songKnightFan: {
+		id: 159,
+		name: 'EnclaveState_songKnightFan',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	EncounteredBonetownBoss: {
+		id: 160,
+		name: 'EncounteredBonetownBoss',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	EncounteredLostLace: {
+		id: 161,
+		name: 'EncounteredLostLace',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	EncounteredSummonedSaviour: {
+		id: 162,
+		name: 'EncounteredSummonedSaviour',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	EnteredMazeRestScene: {
+		id: 163,
+		name: 'EnteredMazeRestScene',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FastTravelNPCLocation: {
+		id: 164,
+		name: 'FastTravelNPCLocation',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	FisherWalkerDirection: {
+		id: 165,
+		name: 'FisherWalkerDirection',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FisherWalkerIdleTimeLeft: {
+		id: 166,
+		name: 'FisherWalkerIdleTimeLeft',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	FisherWalkerTimer: {
+		id: 167,
+		name: 'FisherWalkerTimer',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	FixedDustBellBench: {
+		id: 168,
+		name: 'FixedDustBellBench',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FleaGamesCanStart: {
+		id: 169,
+		name: 'FleaGamesCanStart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FleaGamesEnded: {
+		id: 170,
+		name: 'FleaGamesEnded',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FleaGamesEndedContinuedPlaying: {
+		id: 171,
+		name: 'FleaGamesEndedContinuedPlaying',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FleaGamesMementoGiven: {
+		id: 172,
+		name: 'FleaGamesMementoGiven',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FleaGamesPinataHit: {
+		id: 173,
+		name: 'FleaGamesPinataHit',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FleaGamesSpiritScoreAdded: {
+		id: 174,
+		name: 'FleaGamesSpiritScoreAdded',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FleaGamesStarted: {
+		id: 175,
+		name: 'FleaGamesStarted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FleaQuestOffered: {
+		id: 176,
+		name: 'FleaQuestOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FleasCollectedTargetOrder: {
+		id: 177,
+		name: 'FleasCollectedTargetOrder',
+		type: 'list<int>',
+	} satisfies PlayerDataFieldOfTypeListOfIntSilk as PlayerDataFieldOfTypeListOfIntSilk,
+	ForgeDaughterMentionedDivingBell: {
+		id: 178,
+		name: 'ForgeDaughterMentionedDivingBell',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ForgeDaughterMentionedWebShot: {
+		id: 179,
+		name: 'ForgeDaughterMentionedWebShot',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ForgeDaughterPostAbyssDlg: {
+		id: 180,
+		name: 'ForgeDaughterPostAbyssDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ForgeDaughterPurchaseDlg: {
+		id: 181,
+		name: 'ForgeDaughterPurchaseDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ForgeDaughterSpentToolMetal: {
+		id: 182,
+		name: 'ForgeDaughterSpentToolMetal',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ForgeDaughterTalkState: {
+		id: 183,
+		name: 'ForgeDaughterTalkState',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	ForgeDaughterWhiteFlowerDlg: {
+		id: 184,
+		name: 'ForgeDaughterWhiteFlowerDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	FreedCaravanSpider: {
+		id: 185,
+		name: 'FreedCaravanSpider',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GivenLibrarianRelic: {
+		id: 186,
+		name: 'GivenLibrarianRelic',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GotGourmandReward: {
+		id: 187,
+		name: 'GotGourmandReward',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GourmandGivenCoral: {
+		id: 188,
+		name: 'GourmandGivenCoral',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GourmandGivenEgg: {
+		id: 189,
+		name: 'GourmandGivenEgg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GourmandGivenMeat: {
+		id: 190,
+		name: 'GourmandGivenMeat',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GourmandGivenNectar: {
+		id: 191,
+		name: 'GourmandGivenNectar',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GourmandGivenStew: {
+		id: 192,
+		name: 'GourmandGivenStew',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GourmandServantOfferedQuest: {
+		id: 193,
+		name: 'GourmandServantOfferedQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GreenPrinceLocation: {
+		id: 194,
+		name: 'GreenPrinceLocation',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	GreenPrinceSeenSong04: {
+		id: 195,
+		name: 'GreenPrinceSeenSong04',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	GrowstoneState: {
+		id: 196,
+		name: 'GrowstoneState',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	GrowstoneTimer: {
+		id: 197,
+		name: 'GrowstoneTimer',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	GrubFarmerMimicValueList: {
+		id: 198,
+		name: 'GrubFarmerMimicValueList',
+		type: 'int[]',
+	} satisfies PlayerDataFieldOfTypeArrayOfIntSilk as PlayerDataFieldOfTypeArrayOfIntSilk,
+	GrubFarmerSilkGrubsSold: {
+		id: 199,
+		name: 'GrubFarmerSilkGrubsSold',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	HalfwayBartenderCursedConvo: {
+		id: 200,
+		name: 'HalfwayBartenderCursedConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HalfwayBartenderHauntedBellhartConvo: {
+		id: 201,
+		name: 'HalfwayBartenderHauntedBellhartConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HalfwayBartenderOfferedQuest: {
+		id: 202,
+		name: 'HalfwayBartenderOfferedQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HalfwayDrinksPurchased: {
+		id: 203,
+		name: 'HalfwayDrinksPurchased',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	HalfwayNectarOffered: {
+		id: 204,
+		name: 'HalfwayNectarOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HalfwayNectarPaid: {
+		id: 205,
+		name: 'HalfwayNectarPaid',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HalfwayPatronLeftGone: {
+		id: 206,
+		name: 'HalfwayPatronLeftGone',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HalfwayPatronRightGone: {
+		id: 207,
+		name: 'HalfwayPatronRightGone',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HalfwayPatronsCanVisit: {
+		id: 208,
+		name: 'HalfwayPatronsCanVisit',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HalfwayScarecrawAppeared: {
+		id: 209,
+		name: 'HalfwayScarecrawAppeared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasAbyssMap: {
+		id: 210,
+		name: 'HasAbyssMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasAqueductMap: {
+		id: 211,
+		name: 'HasAqueductMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasArboriumMap: {
+		id: 212,
+		name: 'HasArboriumMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasBellhartMap: {
+		id: 213,
+		name: 'HasBellhartMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasBoneforestMap: {
+		id: 214,
+		name: 'HasBoneforestMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasBoundCrestUpgrader: {
+		id: 215,
+		name: 'HasBoundCrestUpgrader',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasCitadelUnderstoreMap: {
+		id: 216,
+		name: 'HasCitadelUnderstoreMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasCloverMap: {
+		id: 217,
+		name: 'HasCloverMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasCogMap: {
+		id: 218,
+		name: 'HasCogMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasCoralMap: {
+		id: 219,
+		name: 'HasCoralMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasCradleMap: {
+		id: 220,
+		name: 'HasCradleMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasCrawlMap: {
+		id: 221,
+		name: 'HasCrawlMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasDocksMap: {
+		id: 222,
+		name: 'HasDocksMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasDustpensMap: {
+		id: 223,
+		name: 'HasDustpensMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasGreymoorMap: {
+		id: 224,
+		name: 'HasGreymoorMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasHallsMap: {
+		id: 225,
+		name: 'HasHallsMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasHangMap: {
+		id: 226,
+		name: 'HasHangMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasHuntersNestMap: {
+		id: 227,
+		name: 'HasHuntersNestMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasJudgeStepsMap: {
+		id: 228,
+		name: 'HasJudgeStepsMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasLibraryMap: {
+		id: 229,
+		name: 'HasLibraryMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasMelodyArchitect: {
+		id: 230,
+		name: 'HasMelodyArchitect',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasMelodyConductor: {
+		id: 231,
+		name: 'HasMelodyConductor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasMelodyLibrarian: {
+		id: 232,
+		name: 'HasMelodyLibrarian',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasMossGrottoMap: {
+		id: 233,
+		name: 'HasMossGrottoMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasPeakMap: {
+		id: 234,
+		name: 'HasPeakMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenDash: {
+		id: 235,
+		name: 'HasSeenDash',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenEvaHeal: {
+		id: 236,
+		name: 'HasSeenEvaHeal',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenGeo: {
+		id: 237,
+		name: 'HasSeenGeo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenGeoBig: {
+		id: 238,
+		name: 'HasSeenGeoBig',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenGeoMid: {
+		id: 239,
+		name: 'HasSeenGeoMid',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenHarpoon: {
+		id: 240,
+		name: 'HasSeenHarpoon',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenMapMarkerUpdated: {
+		id: 241,
+		name: 'HasSeenMapMarkerUpdated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenMapUpdated: {
+		id: 242,
+		name: 'HasSeenMapUpdated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenNeedolin: {
+		id: 243,
+		name: 'HasSeenNeedolin',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenNeedolinDown: {
+		id: 244,
+		name: 'HasSeenNeedolinDown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenNeedolinUp: {
+		id: 245,
+		name: 'HasSeenNeedolinUp',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenRation: {
+		id: 246,
+		name: 'HasSeenRation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenShellShards: {
+		id: 247,
+		name: 'HasSeenShellShards',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenSilkHearts: {
+		id: 248,
+		name: 'HasSeenSilkHearts',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenSuperJump: {
+		id: 249,
+		name: 'HasSeenSuperJump',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSeenWalljump: {
+		id: 250,
+		name: 'HasSeenWalljump',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasShellwoodMap: {
+		id: 251,
+		name: 'HasShellwoodMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSlabKeyA: {
+		id: 252,
+		name: 'HasSlabKeyA',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSlabKeyB: {
+		id: 253,
+		name: 'HasSlabKeyB',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSlabKeyC: {
+		id: 254,
+		name: 'HasSlabKeyC',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSlabMap: {
+		id: 255,
+		name: 'HasSlabMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSongGateMap: {
+		id: 256,
+		name: 'HasSongGateMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasStoredMemoryState: {
+		id: 257,
+		name: 'HasStoredMemoryState',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasSwampMap: {
+		id: 258,
+		name: 'HasSwampMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasWardMap: {
+		id: 259,
+		name: 'HasWardMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasWeavehomeMap: {
+		id: 260,
+		name: 'HasWeavehomeMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HasWildsMap: {
+		id: 261,
+		name: 'HasWildsMap',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HeardBoneBottomShopKeepPostBoss: {
+		id: 262,
+		name: 'HeardBoneBottomShopKeepPostBoss',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HeardMelodyConductorNoQuest: {
+		id: 263,
+		name: 'HeardMelodyConductorNoQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HeroCorpseMarkerGuid: {
+		id: 264,
+		name: 'HeroCorpseMarkerGuid',
+		type: 'guid',
+	} satisfies PlayerDataFieldOfTypeGuidSilk as PlayerDataFieldOfTypeGuidSilk,
+	HeroCorpseMoneyPool: {
+		id: 265,
+		name: 'HeroCorpseMoneyPool',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	HeroCorpseScene: {
+		id: 266,
+		name: 'HeroCorpseScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	HeroCorpseType: {
+		id: 267,
+		name: 'HeroCorpseType',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	HeroDeathScenePos: {
+		id: 268,
+		name: 'HeroDeathScenePos',
+		type: 'vector2',
+	} satisfies PlayerDataFieldOfTypeVector2Silk as PlayerDataFieldOfTypeVector2Silk,
+	HeroDeathSceneSize: {
+		id: 269,
+		name: 'HeroDeathSceneSize',
+		type: 'vector2',
+	} satisfies PlayerDataFieldOfTypeVector2Silk as PlayerDataFieldOfTypeVector2Silk,
+	HuntressQuestOffered: {
+		id: 270,
+		name: 'HuntressQuestOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HuntressRuntAppeared: {
+		id: 271,
+		name: 'HuntressRuntAppeared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	HuntressRuntQuestOffered: {
+		id: 272,
+		name: 'HuntressRuntQuestOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	IncorrectMazeDoorsEntered: {
+		id: 273,
+		name: 'IncorrectMazeDoorsEntered',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	InvNailHasNew: {
+		id: 274,
+		name: 'InvNailHasNew',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	InvPaneHasNew: {
+		id: 275,
+		name: 'InvPaneHasNew',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	IsCurrentCrestTemp: {
+		id: 276,
+		name: 'IsCurrentCrestTemp',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	IsPinGallerySetup: {
+		id: 277,
+		name: 'IsPinGallerySetup',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	IsSilkSpoolBroken: {
+		id: 278,
+		name: 'IsSilkSpoolBroken',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	IsTeleporting: {
+		id: 279,
+		name: 'IsTeleporting',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	JournalPaneHasNew: {
+		id: 280,
+		name: 'JournalPaneHasNew',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	LastCompletedEnding: {
+		id: 281,
+		name: 'LastCompletedEnding',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	LastDiveCursedConvo: {
+		id: 282,
+		name: 'LastDiveCursedConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	LastSetFieldName: {
+		id: 283,
+		name: 'LastSetFieldName',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	LibrarianAskedForMelody: {
+		id: 284,
+		name: 'LibrarianAskedForMelody',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	LibrarianAskedForRelic: {
+		id: 285,
+		name: 'LibrarianAskedForRelic',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	LibrarianCollectionComplete: {
+		id: 286,
+		name: 'LibrarianCollectionComplete',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	LibrarianMentionedMelody: {
+		id: 287,
+		name: 'LibrarianMentionedMelody',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	LibrarianMetAct3: {
+		id: 288,
+		name: 'LibrarianMetAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	LibrarianPlayingInfo_RelicName: {
+		id: 289,
+		name: 'LibrarianPlayingInfo_RelicName',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	LibrarianPlayingInfo_StartTime: {
+		id: 290,
+		name: 'LibrarianPlayingInfo_StartTime',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	LightningToolToggle: {
+		id: 291,
+		name: 'LightningToolToggle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MaggotCharmHits: {
+		id: 292,
+		name: 'MaggotCharmHits',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	MapperAppearInBellhart: {
+		id: 293,
+		name: 'MapperAppearInBellhart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftBellhart: {
+		id: 294,
+		name: 'MapperLeftBellhart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftBoneForest: {
+		id: 295,
+		name: 'MapperLeftBoneForest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftBonetown: {
+		id: 296,
+		name: 'MapperLeftBonetown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftCoralCaverns: {
+		id: 297,
+		name: 'MapperLeftCoralCaverns',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftCrawl: {
+		id: 298,
+		name: 'MapperLeftCrawl',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftDocks: {
+		id: 299,
+		name: 'MapperLeftDocks',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftDustpens: {
+		id: 300,
+		name: 'MapperLeftDustpens',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftGreymoor: {
+		id: 301,
+		name: 'MapperLeftGreymoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftHuntersNest: {
+		id: 302,
+		name: 'MapperLeftHuntersNest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftJudgeSteps: {
+		id: 303,
+		name: 'MapperLeftJudgeSteps',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftPeak: {
+		id: 304,
+		name: 'MapperLeftPeak',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftShadow: {
+		id: 305,
+		name: 'MapperLeftShadow',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftShellwood: {
+		id: 306,
+		name: 'MapperLeftShellwood',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MapperLeftWilds: {
+		id: 307,
+		name: 'MapperLeftWilds',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MaskMakerQueuedUnmasked2: {
+		id: 308,
+		name: 'MaskMakerQueuedUnmasked2',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MaskMakerTalkedPeak: {
+		id: 309,
+		name: 'MaskMakerTalkedPeak',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MaskMakerTalkedRelationship: {
+		id: 310,
+		name: 'MaskMakerTalkedRelationship',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MaskMakerTalkedUnmasked: {
+		id: 311,
+		name: 'MaskMakerTalkedUnmasked',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MaskMakerTalkedUnmasked1: {
+		id: 312,
+		name: 'MaskMakerTalkedUnmasked1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MaskMakerTalkedUnmasked2: {
+		id: 313,
+		name: 'MaskMakerTalkedUnmasked2',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MaskMakerTalkedUnmaskedAct3: {
+		id: 314,
+		name: 'MaskMakerTalkedUnmaskedAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MazeEntranceDoor: {
+		id: 315,
+		name: 'MazeEntranceDoor',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	MazeEntranceInitialDoor: {
+		id: 316,
+		name: 'MazeEntranceInitialDoor',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	MazeEntranceInitialScene: {
+		id: 317,
+		name: 'MazeEntranceInitialScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	MazeEntranceScene: {
+		id: 318,
+		name: 'MazeEntranceScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	MelodyLiftCanReturn: {
+		id: 319,
+		name: 'MelodyLiftCanReturn',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MerchantEnclaveShellFragment: {
+		id: 320,
+		name: 'MerchantEnclaveShellFragment',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MerchantEnclaveSimpleKey: {
+		id: 321,
+		name: 'MerchantEnclaveSimpleKey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MerchantEnclaveSocket: {
+		id: 322,
+		name: 'MerchantEnclaveSocket',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MerchantEnclaveSpoolPiece: {
+		id: 323,
+		name: 'MerchantEnclaveSpoolPiece',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MerchantEnclaveToolMetal: {
+		id: 324,
+		name: 'MerchantEnclaveToolMetal',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MerchantEnclaveWardKey: {
+		id: 325,
+		name: 'MerchantEnclaveWardKey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetAntMerchant: {
+		id: 326,
+		name: 'MetAntMerchant',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetArchitect: {
+		id: 327,
+		name: 'MetArchitect',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetArchitectAct3: {
+		id: 328,
+		name: 'MetArchitectAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetBelltownBagpipers: {
+		id: 329,
+		name: 'MetBelltownBagpipers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetBelltownDoctor: {
+		id: 330,
+		name: 'MetBelltownDoctor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetBelltownDoctorDoor: {
+		id: 331,
+		name: 'MetBelltownDoctorDoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetBelltownDoctorDoorAct3: {
+		id: 332,
+		name: 'MetBelltownDoctorDoorAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetBelltownRelicDealer: {
+		id: 333,
+		name: 'MetBelltownRelicDealer',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetBelltownRelicDealerAct3: {
+		id: 334,
+		name: 'MetBelltownRelicDealerAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetBelltownShopkeep: {
+		id: 335,
+		name: 'MetBelltownShopkeep',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetBoneBottomShopKeep: {
+		id: 336,
+		name: 'MetBoneBottomShopKeep',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCaravanSpider: {
+		id: 337,
+		name: 'MetCaravanSpider',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCaravanSpiderCoral: {
+		id: 338,
+		name: 'MetCaravanSpiderCoral',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCaravanTroupeLeader: {
+		id: 339,
+		name: 'MetCaravanTroupeLeader',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCaravanTroupeLeaderGreymoor: {
+		id: 340,
+		name: 'MetCaravanTroupeLeaderGreymoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCaravanTroupeLeaderGreymoorScared: {
+		id: 341,
+		name: 'MetCaravanTroupeLeaderGreymoorScared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCaravanTroupeLeaderJudge: {
+		id: 342,
+		name: 'MetCaravanTroupeLeaderJudge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCityMerchantEnclave: {
+		id: 343,
+		name: 'MetCityMerchantEnclave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCityMerchantEnclaveAct3: {
+		id: 344,
+		name: 'MetCityMerchantEnclaveAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCityMerchantScavenge: {
+		id: 345,
+		name: 'MetCityMerchantScavenge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCrestUpgrader: {
+		id: 346,
+		name: 'MetCrestUpgrader',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetCrestUpgraderAct3: {
+		id: 347,
+		name: 'MetCrestUpgraderAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetEnclaveScaredPilgrim: {
+		id: 348,
+		name: 'MetEnclaveScaredPilgrim',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetFisherHomeBasic: {
+		id: 349,
+		name: 'MetFisherHomeBasic',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetFisherHomeFull: {
+		id: 350,
+		name: 'MetFisherHomeFull',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetForgeDaughter: {
+		id: 351,
+		name: 'MetForgeDaughter',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetForgeDaughterAct3: {
+		id: 352,
+		name: 'MetForgeDaughterAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetGourmandServant: {
+		id: 353,
+		name: 'MetGourmandServant',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetGourmandServantAct3: {
+		id: 354,
+		name: 'MetGourmandServantAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetGrubFarmerMimic: {
+		id: 355,
+		name: 'MetGrubFarmerMimic',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetHalfwayBartender: {
+		id: 356,
+		name: 'MetHalfwayBartender',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetHalfwayBartenderAct3: {
+		id: 357,
+		name: 'MetHalfwayBartenderAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetHalfwayHunterFan: {
+		id: 358,
+		name: 'MetHalfwayHunterFan',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetHunterFanOutside: {
+		id: 359,
+		name: 'MetHunterFanOutside',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetMaskMaker: {
+		id: 360,
+		name: 'MetMaskMaker',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetMaskMakerAct3: {
+		id: 361,
+		name: 'MetMaskMakerAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetPilgrimsRestShop: {
+		id: 362,
+		name: 'MetPilgrimsRestShop',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetPinChallengeBug: {
+		id: 363,
+		name: 'MetPinChallengeBug',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetSeamstress: {
+		id: 364,
+		name: 'MetSeamstress',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetSethNPC: {
+		id: 365,
+		name: 'MetSethNPC',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetTroupeHunterWild: {
+		id: 366,
+		name: 'MetTroupeHunterWild',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MetWoodWitch: {
+		id: 367,
+		name: 'MetWoodWitch',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MottledChildGivenTool: {
+		id: 368,
+		name: 'MottledChildGivenTool',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MottledChildNewTool: {
+		id: 369,
+		name: 'MottledChildNewTool',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MushroomQuestFound1: {
+		id: 370,
+		name: 'MushroomQuestFound1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MushroomQuestFound2: {
+		id: 371,
+		name: 'MushroomQuestFound2',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MushroomQuestFound3: {
+		id: 372,
+		name: 'MushroomQuestFound3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MushroomQuestFound4: {
+		id: 373,
+		name: 'MushroomQuestFound4',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MushroomQuestFound5: {
+		id: 374,
+		name: 'MushroomQuestFound5',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MushroomQuestFound6: {
+		id: 375,
+		name: 'MushroomQuestFound6',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	MushroomQuestFound7: {
+		id: 376,
+		name: 'MushroomQuestFound7',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	OpenedCoralCaravanSpider: {
+		id: 377,
+		name: 'OpenedCoralCaravanSpider',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	OpenedCrowSummonsDoor: {
+		id: 378,
+		name: 'OpenedCrowSummonsDoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PickedUpCrowMemento: {
+		id: 379,
+		name: 'PickedUpCrowMemento',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PilgrimStomperNPCOffered: {
+		id: 380,
+		name: 'PilgrimStomperNPCOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PilgrimsRestDoorBroken: {
+		id: 381,
+		name: 'PilgrimsRestDoorBroken',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PilgrimsRestShopIdleTalkState: {
+		id: 382,
+		name: 'PilgrimsRestShopIdleTalkState',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	PinGalleryHasPlayedFinalChallenge: {
+		id: 383,
+		name: 'PinGalleryHasPlayedFinalChallenge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PinGalleryLastChallengeOpen: {
+		id: 384,
+		name: 'PinGalleryLastChallengeOpen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PinGalleryWallet: {
+		id: 385,
+		name: 'PinGalleryWallet',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	PinsmithMetBelltown: {
+		id: 386,
+		name: 'PinsmithMetBelltown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PinsmithQuestOffered: {
+		id: 387,
+		name: 'PinsmithQuestOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PinsmithUpg2Offered: {
+		id: 388,
+		name: 'PinsmithUpg2Offered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PinsmithUpg3Offered: {
+		id: 389,
+		name: 'PinsmithUpg3Offered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PinsmithUpg4Offered: {
+		id: 390,
+		name: 'PinsmithUpg4Offered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PinstressPeakBattleAccepted: {
+		id: 391,
+		name: 'PinstressPeakBattleAccepted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PinstressPeakBattleOffered: {
+		id: 392,
+		name: 'PinstressPeakBattleOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PinstressPeakQuestOffered: {
+		id: 393,
+		name: 'PinstressPeakQuestOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PreMemoryState_DoFullHeal: {
+		id: 394,
+		name: 'PreMemoryState_DoFullHeal',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PreMemoryState_Health: {
+		id: 395,
+		name: 'PreMemoryState_Health',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	PreMemoryState_IsRecorded: {
+		id: 396,
+		name: 'PreMemoryState_IsRecorded',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PreMemoryState_Rosaries: {
+		id: 397,
+		name: 'PreMemoryState_Rosaries',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	PreMemoryState_ShellShards: {
+		id: 398,
+		name: 'PreMemoryState_ShellShards',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	PreMemoryState_Silk: {
+		id: 399,
+		name: 'PreMemoryState_Silk',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	PreviousCrestID: {
+		id: 400,
+		name: 'PreviousCrestID',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	PreviousMazeDoor: {
+		id: 401,
+		name: 'PreviousMazeDoor',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	PreviousMazeScene: {
+		id: 402,
+		name: 'PreviousMazeScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	PreviousMazeTargetDoor: {
+		id: 403,
+		name: 'PreviousMazeTargetDoor',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	PurchasedArchitectKey: {
+		id: 404,
+		name: 'PurchasedArchitectKey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedArchitectToolKit: {
+		id: 405,
+		name: 'PurchasedArchitectToolKit',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedBelltownMemoryLocket: {
+		id: 406,
+		name: 'PurchasedBelltownMemoryLocket',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedBelltownShellFragment: {
+		id: 407,
+		name: 'PurchasedBelltownShellFragment',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedBelltownSpoolSegment: {
+		id: 408,
+		name: 'PurchasedBelltownSpoolSegment',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedBelltownToolPouch: {
+		id: 409,
+		name: 'PurchasedBelltownToolPouch',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedBonebottomFaithToken: {
+		id: 410,
+		name: 'PurchasedBonebottomFaithToken',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedBonebottomHeartPiece: {
+		id: 411,
+		name: 'PurchasedBonebottomHeartPiece',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedBonebottomToolMetal: {
+		id: 412,
+		name: 'PurchasedBonebottomToolMetal',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedForgeToolKit: {
+		id: 413,
+		name: 'PurchasedForgeToolKit',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedPilgrimsRestMemoryLocket: {
+		id: 414,
+		name: 'PurchasedPilgrimsRestMemoryLocket',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	PurchasedPilgrimsRestToolPouch: {
+		id: 415,
+		name: 'PurchasedPilgrimsRestToolPouch',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	QuestPaneHasNew: {
+		id: 416,
+		name: 'QuestPaneHasNew',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	QuillState: {
+		id: 417,
+		name: 'QuillState',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	RevisionBreak: {
+		id: 418,
+		name: 'RevisionBreak',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	SatAtBenchAfterAbyssEscape: {
+		id: 419,
+		name: 'SatAtBenchAfterAbyssEscape',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Ant_03: {
+		id: 420,
+		name: 'SavedFlea_Ant_03',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Belltown_04: {
+		id: 421,
+		name: 'SavedFlea_Belltown_04',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Bone_06: {
+		id: 422,
+		name: 'SavedFlea_Bone_06',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Bone_East_05: {
+		id: 423,
+		name: 'SavedFlea_Bone_East_05',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Bone_East_10_Church: {
+		id: 424,
+		name: 'SavedFlea_Bone_East_10_Church',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Bone_East_17b: {
+		id: 425,
+		name: 'SavedFlea_Bone_East_17b',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Coral_24: {
+		id: 426,
+		name: 'SavedFlea_Coral_24',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Coral_35: {
+		id: 427,
+		name: 'SavedFlea_Coral_35',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Crawl_06: {
+		id: 428,
+		name: 'SavedFlea_Crawl_06',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Dock_03d: {
+		id: 429,
+		name: 'SavedFlea_Dock_03d',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Dock_16: {
+		id: 430,
+		name: 'SavedFlea_Dock_16',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Dust_09: {
+		id: 431,
+		name: 'SavedFlea_Dust_09',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Dust_12: {
+		id: 432,
+		name: 'SavedFlea_Dust_12',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Greymoor_06: {
+		id: 433,
+		name: 'SavedFlea_Greymoor_06',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Greymoor_15b: {
+		id: 434,
+		name: 'SavedFlea_Greymoor_15b',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Library_01: {
+		id: 435,
+		name: 'SavedFlea_Library_01',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Library_09: {
+		id: 436,
+		name: 'SavedFlea_Library_09',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Peak_05c: {
+		id: 437,
+		name: 'SavedFlea_Peak_05c',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Shadow_10: {
+		id: 438,
+		name: 'SavedFlea_Shadow_10',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Shadow_28: {
+		id: 439,
+		name: 'SavedFlea_Shadow_28',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Shellwood_03: {
+		id: 440,
+		name: 'SavedFlea_Shellwood_03',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Slab_06: {
+		id: 441,
+		name: 'SavedFlea_Slab_06',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Slab_Cell: {
+		id: 442,
+		name: 'SavedFlea_Slab_Cell',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Song_11: {
+		id: 443,
+		name: 'SavedFlea_Song_11',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Song_14: {
+		id: 444,
+		name: 'SavedFlea_Song_14',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Under_21: {
+		id: 445,
+		name: 'SavedFlea_Under_21',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SavedFlea_Under_23: {
+		id: 446,
+		name: 'SavedFlea_Under_23',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeamstressAct3Convo: {
+		id: 447,
+		name: 'SeamstressAct3Convo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeamstressBadgeConvo: {
+		id: 448,
+		name: 'SeamstressBadgeConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeamstressCitadelConvo: {
+		id: 449,
+		name: 'SeamstressCitadelConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeamstressIdleTalkState: {
+		id: 450,
+		name: 'SeamstressIdleTalkState',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	SeamstressOfferedQuest: {
+		id: 451,
+		name: 'SeamstressOfferedQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeamstressPinstressConvo: {
+		id: 452,
+		name: 'SeamstressPinstressConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenAntMerchantDead: {
+		id: 453,
+		name: 'SeenAntMerchantDead',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenArchitectLeft: {
+		id: 454,
+		name: 'SeenArchitectLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenBelltownCutscene: {
+		id: 455,
+		name: 'SeenBelltownCutscene',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenBindPrompt: {
+		id: 456,
+		name: 'SeenBindPrompt',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenBoneBottomShopKeep: {
+		id: 457,
+		name: 'SeenBoneBottomShopKeep',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenCaravanSpider: {
+		id: 458,
+		name: 'SeenCaravanSpider',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenDivingBellGoneAbyss: {
+		id: 459,
+		name: 'SeenDivingBellGoneAbyss',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenFleaCaravan: {
+		id: 460,
+		name: 'SeenFleaCaravan',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenFleatopiaEmpty: {
+		id: 461,
+		name: 'SeenFleatopiaEmpty',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenGrindleShop: {
+		id: 462,
+		name: 'SeenGrindleShop',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenHalfwayPatronLeft: {
+		id: 463,
+		name: 'SeenHalfwayPatronLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenHalfwayPatronRight: {
+		id: 464,
+		name: 'SeenHalfwayPatronRight',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenLastJudgeGateOpen: {
+		id: 465,
+		name: 'SeenLastJudgeGateOpen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperBellhart: {
+		id: 466,
+		name: 'SeenMapperBellhart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperBoneForest: {
+		id: 467,
+		name: 'SeenMapperBoneForest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperBonetown: {
+		id: 468,
+		name: 'SeenMapperBonetown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperCoralCaverns: {
+		id: 469,
+		name: 'SeenMapperCoralCaverns',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperCrawl: {
+		id: 470,
+		name: 'SeenMapperCrawl',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperDocks: {
+		id: 471,
+		name: 'SeenMapperDocks',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperDustpens: {
+		id: 472,
+		name: 'SeenMapperDustpens',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperGreymoor: {
+		id: 473,
+		name: 'SeenMapperGreymoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperHuntersNest: {
+		id: 474,
+		name: 'SeenMapperHuntersNest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperJudgeSteps: {
+		id: 475,
+		name: 'SeenMapperJudgeSteps',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperPeak: {
+		id: 476,
+		name: 'SeenMapperPeak',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperShadow: {
+		id: 477,
+		name: 'SeenMapperShadow',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperShellwood: {
+		id: 478,
+		name: 'SeenMapperShellwood',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMapperWilds: {
+		id: 479,
+		name: 'SeenMapperWilds',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMelodyLibrarianReturn: {
+		id: 480,
+		name: 'SeenMelodyLibrarianReturn',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMortDead: {
+		id: 481,
+		name: 'SeenMortDead',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenMortLeft: {
+		id: 482,
+		name: 'SeenMortLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenToolEquipPrompt: {
+		id: 483,
+		name: 'SeenToolEquipPrompt',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenToolGetPrompt: {
+		id: 484,
+		name: 'SeenToolGetPrompt',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenToolUsePrompt: {
+		id: 485,
+		name: 'SeenToolUsePrompt',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SeenToolWeaponGetPrompt: {
+		id: 486,
+		name: 'SeenToolWeaponGetPrompt',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SethJoinedFleatopia: {
+		id: 487,
+		name: 'SethJoinedFleatopia',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SethNpcLocation: {
+		id: 488,
+		name: 'SethNpcLocation',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	ShakraFinalQuestAppear: {
+		id: 489,
+		name: 'ShakraFinalQuestAppear',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ShamanRitualCursedConvo: {
+		id: 490,
+		name: 'ShamanRitualCursedConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ShellShards: {
+		id: 491,
+		name: 'ShellShards',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	ShopkeeperQuestMentioned: {
+		id: 492,
+		name: 'ShopkeeperQuestMentioned',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SnailShamansCloverHeartConvo: {
+		id: 493,
+		name: 'SnailShamansCloverHeartConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SnailShamansCrestConvo: {
+		id: 494,
+		name: 'SnailShamansCrestConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SpinnerDefeatedTimePassed: {
+		id: 495,
+		name: 'SpinnerDefeatedTimePassed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SprintMasterCurrentRace: {
+		id: 496,
+		name: 'SprintMasterCurrentRace',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	SprintMasterExtraRaceAvailable: {
+		id: 497,
+		name: 'SprintMasterExtraRaceAvailable',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SprintMasterExtraRaceDlg: {
+		id: 498,
+		name: 'SprintMasterExtraRaceDlg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SprintMasterExtraRaceWon: {
+		id: 499,
+		name: 'SprintMasterExtraRaceWon',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SteelQuestSpots: {
+		id: 500,
+		name: 'SteelQuestSpots',
+		type: 'dictionary<string,bool>',
+	} satisfies PlayerDataFieldOfTypeDictionaryOfString_boolSilk as PlayerDataFieldOfTypeDictionaryOfString_boolSilk,
+	SteelSentinelMet: {
+		id: 501,
+		name: 'SteelSentinelMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	SteelSentinelOffered: {
+		id: 502,
+		name: 'SteelSentinelOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	TempGeoStore: {
+		id: 503,
+		name: 'TempGeoStore',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	TempShellShardStore: {
+		id: 504,
+		name: 'TempShellShardStore',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	ToolKitUpgrades: {
+		id: 505,
+		name: 'ToolKitUpgrades',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	ToolPaneHasNew: {
+		id: 506,
+		name: 'ToolPaneHasNew',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ToolPouchUpgrades: {
+		id: 507,
+		name: 'ToolPouchUpgrades',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	TroupeHunterWildAct3Convo: {
+		id: 508,
+		name: 'TroupeHunterWildAct3Convo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	TroupeLeaderSpokenFleatopiaSearch: {
+		id: 509,
+		name: 'TroupeLeaderSpokenFleatopiaSearch',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	TroupeLeaderSpokenHunter: {
+		id: 510,
+		name: 'TroupeLeaderSpokenHunter',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	TroupeLeaderSpokenLech: {
+		id: 511,
+		name: 'TroupeLeaderSpokenLech',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockSilkFinalCutscene: {
+		id: 512,
+		name: 'UnlockSilkFinalCutscene',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedAqueductStation: {
+		id: 513,
+		name: 'UnlockedAqueductStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedArboriumTube: {
+		id: 514,
+		name: 'UnlockedArboriumTube',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedBelltownStation: {
+		id: 515,
+		name: 'UnlockedBelltownStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedBoneforestEastStation: {
+		id: 516,
+		name: 'UnlockedBoneforestEastStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedCityBellwayTube: {
+		id: 517,
+		name: 'UnlockedCityBellwayTube',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedCityStation: {
+		id: 518,
+		name: 'UnlockedCityStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedCoralTowerStation: {
+		id: 519,
+		name: 'UnlockedCoralTowerStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedDocksStation: {
+		id: 520,
+		name: 'UnlockedDocksStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedDustCage: {
+		id: 521,
+		name: 'UnlockedDustCage',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedEnclaveTube: {
+		id: 522,
+		name: 'UnlockedEnclaveTube',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedExtraBlueSlot: {
+		id: 523,
+		name: 'UnlockedExtraBlueSlot',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedExtraYellowSlot: {
+		id: 524,
+		name: 'UnlockedExtraYellowSlot',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedFastTravel: {
+		id: 525,
+		name: 'UnlockedFastTravel',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedFastTravelTeleport: {
+		id: 526,
+		name: 'UnlockedFastTravelTeleport',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedGreymoorStation: {
+		id: 527,
+		name: 'UnlockedGreymoorStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedHangTube: {
+		id: 528,
+		name: 'UnlockedHangTube',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedMelodyLift: {
+		id: 529,
+		name: 'UnlockedMelodyLift',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedPeakStation: {
+		id: 530,
+		name: 'UnlockedPeakStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedShadowStation: {
+		id: 531,
+		name: 'UnlockedShadowStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedShellwoodStation: {
+		id: 532,
+		name: 'UnlockedShellwoodStation',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedSongTube: {
+		id: 533,
+		name: 'UnlockedSongTube',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	UnlockedUnderTube: {
+		id: 534,
+		name: 'UnlockedUnderTube',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	VampireGnatCorpseInWater: {
+		id: 535,
+		name: 'VampireGnatCorpseInWater',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	VampireGnatCorpseOnCaravan: {
+		id: 536,
+		name: 'VampireGnatCorpseOnCaravan',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	VampireGnatDefeatedBeforeCaravanArrived: {
+		id: 537,
+		name: 'VampireGnatDefeatedBeforeCaravanArrived',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	WasInPinChallenge: {
+		id: 538,
+		name: 'WasInPinChallenge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	WasInSceneRace: {
+		id: 539,
+		name: 'WasInSceneRace',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	WoodWitchGaveMandrake: {
+		id: 540,
+		name: 'WoodWitchGaveMandrake',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	WoodWitchOfferedCurse: {
+		id: 541,
+		name: 'WoodWitchOfferedCurse',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	WoodWitchOfferedFlowerQuest: {
+		id: 542,
+		name: 'WoodWitchOfferedFlowerQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	WoodWitchOfferedItemQuest: {
+		id: 543,
+		name: 'WoodWitchOfferedItemQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	WoodWitchTalkedPostQuest: {
+		id: 544,
+		name: 'WoodWitchTalkedPostQuest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	act2Started: {
+		id: 545,
+		name: 'act2Started',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	act3MapUpdated: {
+		id: 546,
+		name: 'act3MapUpdated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	act3_enclaveWakeSceneCompleted: {
+		id: 547,
+		name: 'act3_enclaveWakeSceneCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	act3_wokeUp: {
+		id: 548,
+		name: 'act3_wokeUp',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	activatedStepsUpperBellbench: {
+		id: 549,
+		name: 'activatedStepsUpperBellbench',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	allowVampireGnatInAltLoc: {
+		id: 550,
+		name: 'allowVampireGnatInAltLoc',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ant02GuardDefeated: {
+		id: 551,
+		name: 'ant02GuardDefeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ant04_battleCompleted: {
+		id: 552,
+		name: 'ant04_battleCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ant04_enemiesReturn: {
+		id: 553,
+		name: 'ant04_enemiesReturn',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ant21_ExtraBattleAdded: {
+		id: 554,
+		name: 'ant21_ExtraBattleAdded',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	ant21_InitBattleCompleted: {
+		id: 555,
+		name: 'ant21_InitBattleCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	antBenchTrapDefused: {
+		id: 556,
+		name: 'antBenchTrapDefused',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	antMerchantKilled: {
+		id: 557,
+		name: 'antMerchantKilled',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	antMerchantShortcut: {
+		id: 558,
+		name: 'antMerchantShortcut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	antQueenNPC_deepMelodyConvo: {
+		id: 559,
+		name: 'antQueenNPC_deepMelodyConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	arborium_08_oneWay: {
+		id: 560,
+		name: 'arborium_08_oneWay',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	arborium_09_oneWay: {
+		id: 561,
+		name: 'arborium_09_oneWay',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	aspid06_battleComplete: {
+		id: 562,
+		name: 'aspid06_battleComplete',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	aspid06_cloverStagsReturned: {
+		id: 563,
+		name: 'aspid06_cloverStagsReturned',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	aspid07_cloverStagsReturned: {
+		id: 564,
+		name: 'aspid07_cloverStagsReturned',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	aspid_04_gate: {
+		id: 565,
+		name: 'aspid_04_gate',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	aspid_04b_battleCompleted: {
+		id: 566,
+		name: 'aspid_04b_battleCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	aspid_04b_wildlifeReturned: {
+		id: 567,
+		name: 'aspid_04b_wildlifeReturned',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	aspid_16_oneway: {
+		id: 568,
+		name: 'aspid_16_oneway',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	aspid_16_relic: {
+		id: 569,
+		name: 'aspid_16_relic',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	atBench: {
+		id: 570,
+		name: 'atBench',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	attunement: {
+		id: 571,
+		name: 'attunement',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	attunementLevel: {
+		id: 572,
+		name: 'attunementLevel',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	bankOpened: {
+		id: 573,
+		name: 'bankOpened',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	basementAntWall: {
+		id: 574,
+		name: 'basementAntWall',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	beamDamage: {
+		id: 575,
+		name: 'beamDamage',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	bellCentipedeAppeared: {
+		id: 576,
+		name: 'bellCentipedeAppeared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bellShrineBellhart: {
+		id: 577,
+		name: 'bellShrineBellhart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bellShrineBoneForest: {
+		id: 578,
+		name: 'bellShrineBoneForest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bellShrineEnclave: {
+		id: 579,
+		name: 'bellShrineEnclave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bellShrineGreymoor: {
+		id: 580,
+		name: 'bellShrineGreymoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bellShrineShellwood: {
+		id: 581,
+		name: 'bellShrineShellwood',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bellShrineWilds: {
+		id: 582,
+		name: 'bellShrineWilds',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	belltownBasementBreakWall: {
+		id: 583,
+		name: 'belltownBasementBreakWall',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	belltownCrowd: {
+		id: 584,
+		name: 'belltownCrowd',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	belltownCrowdsReady: {
+		id: 585,
+		name: 'belltownCrowdsReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	betaEnd: {
+		id: 586,
+		name: 'betaEnd',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bindCutscenePlayed: {
+		id: 587,
+		name: 'bindCutscenePlayed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	blackThreadWorld: {
+		id: 588,
+		name: 'blackThreadWorld',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bone01shortcutPlat: {
+		id: 589,
+		name: 'bone01shortcutPlat',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bone03_openedTrapdoor: {
+		id: 590,
+		name: 'bone03_openedTrapdoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bone03_openedTrapdoorForRockRoller: {
+		id: 591,
+		name: 'bone03_openedTrapdoorForRockRoller',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	boneBottomAddition_RagLine: {
+		id: 592,
+		name: 'boneBottomAddition_RagLine',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	boneBottomFuneral: {
+		id: 593,
+		name: 'boneBottomFuneral',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	boneBottomFuneralComplete: {
+		id: 594,
+		name: 'boneBottomFuneralComplete',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	boneEast07_openedMidRoof: {
+		id: 595,
+		name: 'boneEast07_openedMidRoof',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	boneEastJailerClearedOut: {
+		id: 596,
+		name: 'boneEastJailerClearedOut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	boneEastJailerKilled: {
+		id: 597,
+		name: 'boneEastJailerKilled',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonebottomQuestBoardFixed: {
+		id: 598,
+		name: 'bonebottomQuestBoardFixed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonegraveAspidBerryCollected: {
+		id: 599,
+		name: 'bonegraveAspidBerryCollected',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonegraveOpen: {
+		id: 600,
+		name: 'bonegraveOpen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonegravePilgrimCrowdsCanReturn: {
+		id: 601,
+		name: 'bonegravePilgrimCrowdsCanReturn',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonegraveRosaryPilgrimDefeated: {
+		id: 602,
+		name: 'bonegraveRosaryPilgrimDefeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonetownAspidBerryCollected: {
+		id: 603,
+		name: 'bonetownAspidBerryCollected',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonetownCrowd: {
+		id: 604,
+		name: 'bonetownCrowd',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	bonetownPilgrimHornedActive: {
+		id: 605,
+		name: 'bonetownPilgrimHornedActive',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonetownPilgrimHornedCount: {
+		id: 606,
+		name: 'bonetownPilgrimHornedCount',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	bonetownPilgrimHornedSeen: {
+		id: 607,
+		name: 'bonetownPilgrimHornedSeen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonetownPilgrimRoundActive: {
+		id: 608,
+		name: 'bonetownPilgrimRoundActive',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bonetownPilgrimRoundCount: {
+		id: 609,
+		name: 'bonetownPilgrimRoundCount',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	bonetownPilgrimRoundSeen: {
+		id: 610,
+		name: 'bonetownPilgrimRoundSeen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bossReturnEntryGate: {
+		id: 611,
+		name: 'bossReturnEntryGate',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	bossRushMode: {
+		id: 612,
+		name: 'bossRushMode',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	bossStatueTargetLevel: {
+		id: 613,
+		name: 'bossStatueTargetLevel',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	brokeConfessional: {
+		id: 614,
+		name: 'brokeConfessional',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	brokeUnderstoreFloor: {
+		id: 615,
+		name: 'brokeUnderstoreFloor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	broodMotherEyeCollected: {
+		id: 616,
+		name: 'broodMotherEyeCollected',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	caretakerBeastConvo: {
+		id: 617,
+		name: 'caretakerBeastConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	caretakerConvoLv1: {
+		id: 618,
+		name: 'caretakerConvoLv1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	caretakerConvoLv2: {
+		id: 619,
+		name: 'caretakerConvoLv2',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	caretakerConvoLv3: {
+		id: 620,
+		name: 'caretakerConvoLv3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	caretakerLaceConvo: {
+		id: 621,
+		name: 'caretakerLaceConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	caretakerMerchantConvo: {
+		id: 622,
+		name: 'caretakerMerchantConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	caretakerSoulSnareConvo: {
+		id: 623,
+		name: 'caretakerSoulSnareConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	caretakerWardConvo: {
+		id: 624,
+		name: 'caretakerWardConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cauldronShortcutUpdraft: {
+		id: 625,
+		name: 'cauldronShortcutUpdraft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	chapelClosed_beast: {
+		id: 626,
+		name: 'chapelClosed_beast',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	chapelClosed_reaper: {
+		id: 627,
+		name: 'chapelClosed_reaper',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	chapelClosed_shaman: {
+		id: 628,
+		name: 'chapelClosed_shaman',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	chapelClosed_toolmaster: {
+		id: 629,
+		name: 'chapelClosed_toolmaster',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	chapelClosed_wanderer: {
+		id: 630,
+		name: 'chapelClosed_wanderer',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	chapelClosed_witch: {
+		id: 631,
+		name: 'chapelClosed_witch',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	churchKeeperBonegraveConvo: {
+		id: 632,
+		name: 'churchKeeperBonegraveConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	churchKeeperCursedConvo: {
+		id: 633,
+		name: 'churchKeeperCursedConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	churchKeeperIntro: {
+		id: 634,
+		name: 'churchKeeperIntro',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	churchRhinoBlackThreadCorpse: {
+		id: 635,
+		name: 'churchRhinoBlackThreadCorpse',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	churchRhinoKilled: {
+		id: 636,
+		name: 'churchRhinoKilled',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	citadelHalfwayComplete: {
+		id: 637,
+		name: 'citadelHalfwayComplete',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	citadelWoken: {
+		id: 638,
+		name: 'citadelWoken',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	citadel_encounteredFencers: {
+		id: 639,
+		name: 'citadel_encounteredFencers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantBridgeSaveRemeet: {
+		id: 640,
+		name: 'cityMerchantBridgeSaveRemeet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantCanLeaveForBridge: {
+		id: 641,
+		name: 'cityMerchantCanLeaveForBridge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantConvo1: {
+		id: 642,
+		name: 'cityMerchantConvo1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantEnclaveConvo: {
+		id: 643,
+		name: 'cityMerchantEnclaveConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantInGrandForum: {
+		id: 644,
+		name: 'cityMerchantInGrandForum',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantInGrandForumLeft: {
+		id: 645,
+		name: 'cityMerchantInGrandForumLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantInGrandForumSeen: {
+		id: 646,
+		name: 'cityMerchantInGrandForumSeen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantInLibrary03: {
+		id: 647,
+		name: 'cityMerchantInLibrary03',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantInLibrary03Left: {
+		id: 648,
+		name: 'cityMerchantInLibrary03Left',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantInLibrary03Seen: {
+		id: 649,
+		name: 'cityMerchantInLibrary03Seen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantIntroduced: {
+		id: 650,
+		name: 'cityMerchantIntroduced',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantRecentlySeenInEnclave: {
+		id: 651,
+		name: 'cityMerchantRecentlySeenInEnclave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cityMerchantSaved: {
+		id: 652,
+		name: 'cityMerchantSaved',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cloakOdour_slabFly: {
+		id: 653,
+		name: 'cloakOdour_slabFly',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	cloverDancerRegrowth: {
+		id: 654,
+		name: 'cloverDancerRegrowth',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cog7_automatonDestroyed: {
+		id: 655,
+		name: 'cog7_automatonDestroyed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cog7_automatonRepairing: {
+		id: 656,
+		name: 'cog7_automatonRepairing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cog7_automatonRepairingComplete: {
+		id: 657,
+		name: 'cog7_automatonRepairingComplete',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cog7_automaton_defeated: {
+		id: 658,
+		name: 'cog7_automaton_defeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	cog7_gateOpened: {
+		id: 659,
+		name: 'cog7_gateOpened',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	collectedWardBossKey: {
+		id: 660,
+		name: 'collectedWardBossKey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	collectedWardKey: {
+		id: 661,
+		name: 'collectedWardKey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	collectorEggsHatched: {
+		id: 662,
+		name: 'collectorEggsHatched',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedAbyssAscent: {
+		id: 663,
+		name: 'completedAbyssAscent',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedCog10_abyssBattle: {
+		id: 664,
+		name: 'completedCog10_abyssBattle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedGrandStageBattle: {
+		id: 665,
+		name: 'completedGrandStageBattle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedGreymoor17Battle: {
+		id: 666,
+		name: 'completedGreymoor17Battle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedLavaChallenge: {
+		id: 667,
+		name: 'completedLavaChallenge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedLibraryAcolyteBattle: {
+		id: 668,
+		name: 'completedLibraryAcolyteBattle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedLibraryEntryBattle: {
+		id: 669,
+		name: 'completedLibraryEntryBattle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedMemory_beast: {
+		id: 670,
+		name: 'completedMemory_beast',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedMemory_reaper: {
+		id: 671,
+		name: 'completedMemory_reaper',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedMemory_shaman: {
+		id: 672,
+		name: 'completedMemory_shaman',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedMemory_toolmaster: {
+		id: 673,
+		name: 'completedMemory_toolmaster',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedMemory_wanderer: {
+		id: 674,
+		name: 'completedMemory_wanderer',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedMemory_witch: {
+		id: 675,
+		name: 'completedMemory_witch',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedSuperJumpSequence: {
+		id: 676,
+		name: 'completedSuperJumpSequence',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completedTutorial: {
+		id: 677,
+		name: 'completedTutorial',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	completionPercentage: {
+		id: 678,
+		name: 'completionPercentage',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	coral19_clearedOut: {
+		id: 679,
+		name: 'coral19_clearedOut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	coralBridgeGuard2Stationed: {
+		id: 680,
+		name: 'coralBridgeGuard2Stationed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	coralDrillerSoloEnemiesReturned: {
+		id: 681,
+		name: 'coralDrillerSoloEnemiesReturned',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	coralDrillerSoloReady: {
+		id: 682,
+		name: 'coralDrillerSoloReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	coralKingHeartAppeared: {
+		id: 683,
+		name: 'coralKingHeartAppeared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	crashedIntoGreymoor: {
+		id: 684,
+		name: 'crashedIntoGreymoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	crashingIntoGreymoor: {
+		id: 685,
+		name: 'crashingIntoGreymoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	crawl03_oneWayWall: {
+		id: 686,
+		name: 'crawl03_oneWayWall',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	creaturesReturnedToBone10: {
+		id: 687,
+		name: 'creaturesReturnedToBone10',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	currentArea: {
+		id: 688,
+		name: 'currentArea',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	currentBossStatueCompletionKey: {
+		id: 689,
+		name: 'currentBossStatueCompletionKey',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	currentInvPane: {
+		id: 690,
+		name: 'currentInvPane',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	damagedBlue: {
+		id: 691,
+		name: 'damagedBlue',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	damagedPurple: {
+		id: 692,
+		name: 'damagedPurple',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	date: {
+		id: 693,
+		name: 'date',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	defeatedAntQueen: {
+		id: 694,
+		name: 'defeatedAntQueen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedAntQueenAfterRedMemory: {
+		id: 695,
+		name: 'defeatedAntQueenAfterRedMemory',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedAntTrapper: {
+		id: 696,
+		name: 'defeatedAntTrapper',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedBellBeast: {
+		id: 697,
+		name: 'defeatedBellBeast',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedBoneFlyerGiant: {
+		id: 698,
+		name: 'defeatedBoneFlyerGiant',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedBoneFlyerGiantGolemScene: {
+		id: 699,
+		name: 'defeatedBoneFlyerGiantGolemScene',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedBroodMother: {
+		id: 700,
+		name: 'defeatedBroodMother',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedCloverDancers: {
+		id: 701,
+		name: 'defeatedCloverDancers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedCogworkDancers: {
+		id: 702,
+		name: 'defeatedCogworkDancers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedCoralBridgeGuard1: {
+		id: 703,
+		name: 'defeatedCoralBridgeGuard1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedCoralBridgeGuard2: {
+		id: 704,
+		name: 'defeatedCoralBridgeGuard2',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedCoralDrillerSolo: {
+		id: 705,
+		name: 'defeatedCoralDrillerSolo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedCoralDrillers: {
+		id: 706,
+		name: 'defeatedCoralDrillers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedCoralKing: {
+		id: 707,
+		name: 'defeatedCoralKing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedCrowCourt: {
+		id: 708,
+		name: 'defeatedCrowCourt',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedDockForemen: {
+		id: 709,
+		name: 'defeatedDockForemen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedFirstWeaver: {
+		id: 710,
+		name: 'defeatedFirstWeaver',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedFlowerQueen: {
+		id: 711,
+		name: 'defeatedFlowerQueen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedGreyWarrior: {
+		id: 712,
+		name: 'defeatedGreyWarrior',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedGuardBoneEast25: {
+		id: 713,
+		name: 'defeatedGuardBoneEast25',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedLace1: {
+		id: 714,
+		name: 'defeatedLace1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedLaceTower: {
+		id: 715,
+		name: 'defeatedLaceTower',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedLastJudge: {
+		id: 716,
+		name: 'defeatedLastJudge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedMossEvolver: {
+		id: 717,
+		name: 'defeatedMossEvolver',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedMossMother: {
+		id: 718,
+		name: 'defeatedMossMother',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedPhantom: {
+		id: 719,
+		name: 'defeatedPhantom',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedRoachkeeperChef: {
+		id: 720,
+		name: 'defeatedRoachkeeperChef',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedSeth: {
+		id: 721,
+		name: 'defeatedSeth',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedShellwoodRosaryPilgrim: {
+		id: 722,
+		name: 'defeatedShellwoodRosaryPilgrim',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedSongChevalierBoss: {
+		id: 723,
+		name: 'defeatedSongChevalierBoss',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedSongGolem: {
+		id: 724,
+		name: 'defeatedSongGolem',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedSplinterQueen: {
+		id: 725,
+		name: 'defeatedSplinterQueen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedTormentedTrobbio: {
+		id: 726,
+		name: 'defeatedTormentedTrobbio',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedTrobbio: {
+		id: 727,
+		name: 'defeatedTrobbio',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedVampireGnatBoss: {
+		id: 728,
+		name: 'defeatedVampireGnatBoss',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedWhiteCloverstag: {
+		id: 729,
+		name: 'defeatedWhiteCloverstag',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedWispPyreEffigy: {
+		id: 730,
+		name: 'defeatedWispPyreEffigy',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedZapCoreEnemy: {
+		id: 731,
+		name: 'defeatedZapCoreEnemy',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	defeatedZapGuard1: {
+		id: 732,
+		name: 'defeatedZapGuard1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	destroyedRosaryCannonMachine: {
+		id: 733,
+		name: 'destroyedRosaryCannonMachine',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	destroyedSongGolemRock: {
+		id: 734,
+		name: 'destroyedSongGolemRock',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	dicePilgrimBank: {
+		id: 735,
+		name: 'dicePilgrimBank',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	dicePilgrimDefeated: {
+		id: 736,
+		name: 'dicePilgrimDefeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	dicePilgrimGameExplained: {
+		id: 737,
+		name: 'dicePilgrimGameExplained',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	dicePilgrimState: {
+		id: 738,
+		name: 'dicePilgrimState',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	didPilgrimIntroScene: {
+		id: 739,
+		name: 'didPilgrimIntroScene',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	didRhinoRuckus: {
+		id: 740,
+		name: 'didRhinoRuckus',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	disableInventory: {
+		id: 741,
+		name: 'disableInventory',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	disablePause: {
+		id: 742,
+		name: 'disablePause',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	disableSaveQuit: {
+		id: 743,
+		name: 'disableSaveQuit',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	disableSilkAbilities: {
+		id: 744,
+		name: 'disableSilkAbilities',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	docksBomberAmbush: {
+		id: 745,
+		name: 'docksBomberAmbush',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	docks_02_shortcut_left: {
+		id: 746,
+		name: 'docks_02_shortcut_left',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	docks_02_shortcut_right: {
+		id: 747,
+		name: 'docks_02_shortcut_right',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	dreamReturnScene: {
+		id: 748,
+		name: 'dreamReturnScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	droppedFloorBreakerPlat: {
+		id: 749,
+		name: 'droppedFloorBreakerPlat',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	druidAct3Intro: {
+		id: 750,
+		name: 'druidAct3Intro',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	druidMossBerriesSold: {
+		id: 751,
+		name: 'druidMossBerriesSold',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	druidTradeIntro: {
+		id: 752,
+		name: 'druidTradeIntro',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	dust01_battleCompleted: {
+		id: 753,
+		name: 'dust01_battleCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	dust01_returnReady: {
+		id: 754,
+		name: 'dust01_returnReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	dust03_battleCompleted: {
+		id: 755,
+		name: 'dust03_battleCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	dust03_returnReady: {
+		id: 756,
+		name: 'dust03_returnReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	dust05EnemyClearedOut: {
+		id: 757,
+		name: 'dust05EnemyClearedOut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enclaveAddition_CloakLine: {
+		id: 758,
+		name: 'enclaveAddition_CloakLine',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enclaveAddition_PinRack: {
+		id: 759,
+		name: 'enclaveAddition_PinRack',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enclaveDonation2_Available: {
+		id: 760,
+		name: 'enclaveDonation2_Available',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enclaveLevel: {
+		id: 761,
+		name: 'enclaveLevel',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	enclaveMerchantSaved: {
+		id: 762,
+		name: 'enclaveMerchantSaved',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enclaveMerchantSeenInEnclave: {
+		id: 763,
+		name: 'enclaveMerchantSeenInEnclave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enclaveNPC_songKnightFan: {
+		id: 764,
+		name: 'enclaveNPC_songKnightFan',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredAntTrapper: {
+		id: 765,
+		name: 'encounteredAntTrapper',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredBellBeast: {
+		id: 766,
+		name: 'encounteredBellBeast',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredCloverDancers: {
+		id: 767,
+		name: 'encounteredCloverDancers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredCogworkDancers: {
+		id: 768,
+		name: 'encounteredCogworkDancers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredCoralDrillerSolo: {
+		id: 769,
+		name: 'encounteredCoralDrillerSolo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredCoralDrillers: {
+		id: 770,
+		name: 'encounteredCoralDrillers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredCoralKing: {
+		id: 771,
+		name: 'encounteredCoralKing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredCrowCourt: {
+		id: 772,
+		name: 'encounteredCrowCourt',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredDockForemen: {
+		id: 773,
+		name: 'encounteredDockForemen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredFirstWeaver: {
+		id: 774,
+		name: 'encounteredFirstWeaver',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredFlowerQueen: {
+		id: 775,
+		name: 'encounteredFlowerQueen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredLace1: {
+		id: 776,
+		name: 'encounteredLace1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredLace1Grotto: {
+		id: 777,
+		name: 'encounteredLace1Grotto',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredLaceBlastedBridge: {
+		id: 778,
+		name: 'encounteredLaceBlastedBridge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredLaceTower: {
+		id: 779,
+		name: 'encounteredLaceTower',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredLastJudge: {
+		id: 780,
+		name: 'encounteredLastJudge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredLibraryEntryBattle: {
+		id: 781,
+		name: 'encounteredLibraryEntryBattle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredMossMother: {
+		id: 782,
+		name: 'encounteredMossMother',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredPhantom: {
+		id: 783,
+		name: 'encounteredPhantom',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredPharloomEdge: {
+		id: 784,
+		name: 'encounteredPharloomEdge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredPharloomEdgeAct3: {
+		id: 785,
+		name: 'encounteredPharloomEdgeAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredSeth: {
+		id: 786,
+		name: 'encounteredSeth',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredSilk: {
+		id: 787,
+		name: 'encounteredSilk',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredSongChevalierBoss: {
+		id: 788,
+		name: 'encounteredSongChevalierBoss',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredSongGolem: {
+		id: 789,
+		name: 'encounteredSongGolem',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredSpinner: {
+		id: 790,
+		name: 'encounteredSpinner',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredSplinterQueen: {
+		id: 791,
+		name: 'encounteredSplinterQueen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredSurfaceEdge: {
+		id: 792,
+		name: 'encounteredSurfaceEdge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredTormentedTrobbio: {
+		id: 793,
+		name: 'encounteredTormentedTrobbio',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredTrobbio: {
+		id: 794,
+		name: 'encounteredTrobbio',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredVampireGnatBoss: {
+		id: 795,
+		name: 'encounteredVampireGnatBoss',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredVampireGnat_05: {
+		id: 796,
+		name: 'encounteredVampireGnat_05',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredVampireGnat_07: {
+		id: 797,
+		name: 'encounteredVampireGnat_07',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredWhiteCloverstag: {
+		id: 798,
+		name: 'encounteredWhiteCloverstag',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	encounteredWhiteCloverstagMid: {
+		id: 799,
+		name: 'encounteredWhiteCloverstagMid',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enemyGroupAnt04: {
+		id: 800,
+		name: 'enemyGroupAnt04',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	enteredCoral_10: {
+		id: 801,
+		name: 'enteredCoral_10',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enteredGreymoor05: {
+		id: 802,
+		name: 'enteredGreymoor05',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enteredHang_08: {
+		id: 803,
+		name: 'enteredHang_08',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enteredSong_01: {
+		id: 804,
+		name: 'enteredSong_01',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enteredSong_02: {
+		id: 805,
+		name: 'enteredSong_02',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enteredSong_13: {
+		id: 806,
+		name: 'enteredSong_13',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enteredSong_17: {
+		id: 807,
+		name: 'enteredSong_17',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enteredSong_19: {
+		id: 808,
+		name: 'enteredSong_19',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	enteredTutorialFirstTime: {
+		id: 809,
+		name: 'enteredTutorialFirstTime',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	entered_Tut01b: {
+		id: 810,
+		name: 'entered_Tut01b',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	environmentType: {
+		id: 811,
+		name: 'environmentType',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	explodeWallBoneEast18c: {
+		id: 812,
+		name: 'explodeWallBoneEast18c',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	explodeWallMosstown3: {
+		id: 813,
+		name: 'explodeWallMosstown3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	extraRestZone: {
+		id: 814,
+		name: 'extraRestZone',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	farmer_grewFirstGrub: {
+		id: 815,
+		name: 'farmer_grewFirstGrub',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	farmer_grubGrowing_1: {
+		id: 816,
+		name: 'farmer_grubGrowing_1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	farmer_grubGrowing_2: {
+		id: 817,
+		name: 'farmer_grubGrowing_2',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	farmer_grubGrowing_3: {
+		id: 818,
+		name: 'farmer_grubGrowing_3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	farmer_grubGrown_1: {
+		id: 819,
+		name: 'farmer_grubGrown_1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	farmer_grubGrown_2: {
+		id: 820,
+		name: 'farmer_grubGrown_2',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	farmer_grubGrown_3: {
+		id: 821,
+		name: 'farmer_grubGrown_3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fixerAcceptedQuestConvo: {
+		id: 822,
+		name: 'fixerAcceptedQuestConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fixerBridgeBreaking: {
+		id: 823,
+		name: 'fixerBridgeBreaking',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fixerBridgeBroken: {
+		id: 824,
+		name: 'fixerBridgeBroken',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fixerBridgeConstructed: {
+		id: 825,
+		name: 'fixerBridgeConstructed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fixerQuestBoardConvo: {
+		id: 826,
+		name: 'fixerQuestBoardConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fixerStatueConstructed: {
+		id: 827,
+		name: 'fixerStatueConstructed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fixerStatueConvo: {
+		id: 828,
+		name: 'fixerStatueConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fleaGames_bouncing_highscore: {
+		id: 829,
+		name: 'fleaGames_bouncing_highscore',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	fleaGames_bouncing_played: {
+		id: 830,
+		name: 'fleaGames_bouncing_played',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fleaGames_dodging_highscore: {
+		id: 831,
+		name: 'fleaGames_dodging_highscore',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	fleaGames_dodging_played: {
+		id: 832,
+		name: 'fleaGames_dodging_played',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fleaGames_juggling_highscore: {
+		id: 833,
+		name: 'fleaGames_juggling_highscore',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	fleaGames_juggling_played: {
+		id: 834,
+		name: 'fleaGames_juggling_played',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	flowerQueenHeartAppeared: {
+		id: 835,
+		name: 'flowerQueenHeartAppeared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	fullyEnteredVerdania: {
+		id: 836,
+		name: 'fullyEnteredVerdania',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gainedCurse: {
+		id: 837,
+		name: 'gainedCurse',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondAidForumBattle: {
+		id: 838,
+		name: 'garmondAidForumBattle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondBlackThreadDefeated: {
+		id: 839,
+		name: 'garmondBlackThreadDefeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondEncounterCooldown: {
+		id: 840,
+		name: 'garmondEncounterCooldown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondEncounters_act3: {
+		id: 841,
+		name: 'garmondEncounters_act3',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	garmondFinalQuestReady: {
+		id: 842,
+		name: 'garmondFinalQuestReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondInDust05: {
+		id: 843,
+		name: 'garmondInDust05',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondInEnclave: {
+		id: 844,
+		name: 'garmondInEnclave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondInLibrary: {
+		id: 845,
+		name: 'garmondInLibrary',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondInSong01: {
+		id: 846,
+		name: 'garmondInSong01',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondInSong02: {
+		id: 847,
+		name: 'garmondInSong02',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondInSong13: {
+		id: 848,
+		name: 'garmondInSong13',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondInSong17: {
+		id: 849,
+		name: 'garmondInSong17',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondLibraryDefeatedHornet: {
+		id: 850,
+		name: 'garmondLibraryDefeatedHornet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondLibraryMet: {
+		id: 851,
+		name: 'garmondLibraryMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondLibraryOffered: {
+		id: 852,
+		name: 'garmondLibraryOffered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondLibrarySeen: {
+		id: 853,
+		name: 'garmondLibrarySeen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondMetEnclave: {
+		id: 854,
+		name: 'garmondMetEnclave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondMoorwingConvo: {
+		id: 855,
+		name: 'garmondMoorwingConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondMoorwingConvoReady: {
+		id: 856,
+		name: 'garmondMoorwingConvoReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondPurposeConvo: {
+		id: 857,
+		name: 'garmondPurposeConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondSeenInDust05: {
+		id: 858,
+		name: 'garmondSeenInDust05',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondSeenInGreymoor10: {
+		id: 859,
+		name: 'garmondSeenInGreymoor10',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondSeenInSong01: {
+		id: 860,
+		name: 'garmondSeenInSong01',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondSeenInSong02: {
+		id: 861,
+		name: 'garmondSeenInSong02',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondSeenInSong13: {
+		id: 862,
+		name: 'garmondSeenInSong13',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondSeenInSong17: {
+		id: 863,
+		name: 'garmondSeenInSong17',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	garmondWillAidInForumBattle: {
+		id: 864,
+		name: 'garmondWillAidInForumBattle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gatePilgrimNoNeedolinConvo: {
+		id: 865,
+		name: 'gatePilgrimNoNeedolinConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	geo: {
+		id: 866,
+		name: 'geo',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	gillyAct3Convo: {
+		id: 867,
+		name: 'gillyAct3Convo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gillyHunterCampConvo: {
+		id: 868,
+		name: 'gillyHunterCampConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gillyIntroduced: {
+		id: 869,
+		name: 'gillyIntroduced',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gillyLocation: {
+		id: 870,
+		name: 'gillyLocation',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	gillyLocationAct3: {
+		id: 871,
+		name: 'gillyLocationAct3',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	gillyMet: {
+		id: 872,
+		name: 'gillyMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gillyQueueMovingOn: {
+		id: 873,
+		name: 'gillyQueueMovingOn',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gillyStatueConvo: {
+		id: 874,
+		name: 'gillyStatueConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gillyTrapConvo: {
+		id: 875,
+		name: 'gillyTrapConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gotPastDockSpearThrower: {
+		id: 876,
+		name: 'gotPastDockSpearThrower',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	gotPickledRoachEgg: {
+		id: 877,
+		name: 'gotPickledRoachEgg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	greatBoneGateOpened: {
+		id: 878,
+		name: 'greatBoneGateOpened',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	greyWarriorDeathX: {
+		id: 879,
+		name: 'greyWarriorDeathX',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	greymoor05_clearedOut: {
+		id: 880,
+		name: 'greymoor05_clearedOut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	greymoor05_farmerPlatBroken: {
+		id: 881,
+		name: 'greymoor05_farmerPlatBroken',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	greymoor05_killedJailer: {
+		id: 882,
+		name: 'greymoor05_killedJailer',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	greymoor08_plat_destroyed: {
+		id: 883,
+		name: 'greymoor08_plat_destroyed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	greymoor_04_battleCompleted: {
+		id: 884,
+		name: 'greymoor_04_battleCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	greymoor_05_centipedeArrives: {
+		id: 885,
+		name: 'greymoor_05_centipedeArrives',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	greymoor_10_entered: {
+		id: 886,
+		name: 'greymoor_10_entered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grindleChestEncountered: {
+		id: 887,
+		name: 'grindleChestEncountered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grindleChestLocation: {
+		id: 888,
+		name: 'grindleChestLocation',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	grindleEnclaveConvo: {
+		id: 889,
+		name: 'grindleEnclaveConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grindleInSong_08: {
+		id: 890,
+		name: 'grindleInSong_08',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grindleMetGrandForum: {
+		id: 891,
+		name: 'grindleMetGrandForum',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grindleReleasedFromBonejail: {
+		id: 892,
+		name: 'grindleReleasedFromBonejail',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grindleShopEnemyIntro: {
+		id: 893,
+		name: 'grindleShopEnemyIntro',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grindleSlabSequence: {
+		id: 894,
+		name: 'grindleSlabSequence',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	grishkinSethConvo: {
+		id: 895,
+		name: 'grishkinSethConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grubFarmLevel: {
+		id: 896,
+		name: 'grubFarmLevel',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	grubFarmerEmerged: {
+		id: 897,
+		name: 'grubFarmerEmerged',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grubFarmerTimer: {
+		id: 898,
+		name: 'grubFarmerTimer',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	grubFarmer_firstGrubConvo: {
+		id: 899,
+		name: 'grubFarmer_firstGrubConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	grubFarmer_needolinConvo1: {
+		id: 900,
+		name: 'grubFarmer_needolinConvo1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	halfwayCrowEnemyGroup: {
+		id: 901,
+		name: 'halfwayCrowEnemyGroup',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	halfwayCrowd: {
+		id: 902,
+		name: 'halfwayCrowd',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	hang04Battle: {
+		id: 903,
+		name: 'hang04Battle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hang_10_oneWay: {
+		id: 904,
+		name: 'hang_10_oneWay',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasActivatedBellBench: {
+		id: 905,
+		name: 'hasActivatedBellBench',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasBrolly: {
+		id: 906,
+		name: 'hasBrolly',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasChargeSlash: {
+		id: 907,
+		name: 'hasChargeSlash',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasDash: {
+		id: 908,
+		name: 'hasDash',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasDoubleJump: {
+		id: 909,
+		name: 'hasDoubleJump',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasGodfinder: {
+		id: 910,
+		name: 'hasGodfinder',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasHarpoonDash: {
+		id: 911,
+		name: 'hasHarpoonDash',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasJournal: {
+		id: 912,
+		name: 'hasJournal',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasKilled: {
+		id: 913,
+		name: 'hasKilled',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasMarker: {
+		id: 914,
+		name: 'hasMarker',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasMarker_a: {
+		id: 915,
+		name: 'hasMarker_a',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasMarker_b: {
+		id: 916,
+		name: 'hasMarker_b',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasMarker_c: {
+		id: 917,
+		name: 'hasMarker_c',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasMarker_d: {
+		id: 918,
+		name: 'hasMarker_d',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasMarker_e: {
+		id: 919,
+		name: 'hasMarker_e',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasNeedleThrow: {
+		id: 920,
+		name: 'hasNeedleThrow',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasNeedolin: {
+		id: 921,
+		name: 'hasNeedolin',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasNeedolinMemoryPowerup: {
+		id: 922,
+		name: 'hasNeedolinMemoryPowerup',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasParry: {
+		id: 923,
+		name: 'hasParry',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinBench: {
+		id: 924,
+		name: 'hasPinBench',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinCocoon: {
+		id: 925,
+		name: 'hasPinCocoon',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinFleaBlastedlands: {
+		id: 926,
+		name: 'hasPinFleaBlastedlands',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinFleaCitadel: {
+		id: 927,
+		name: 'hasPinFleaCitadel',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinFleaMarrowlands: {
+		id: 928,
+		name: 'hasPinFleaMarrowlands',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinFleaMidlands: {
+		id: 929,
+		name: 'hasPinFleaMidlands',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinFleaMucklands: {
+		id: 930,
+		name: 'hasPinFleaMucklands',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinFleaPeaklands: {
+		id: 931,
+		name: 'hasPinFleaPeaklands',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinShop: {
+		id: 932,
+		name: 'hasPinShop',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinSpa: {
+		id: 933,
+		name: 'hasPinSpa',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinStag: {
+		id: 934,
+		name: 'hasPinStag',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasPinTube: {
+		id: 935,
+		name: 'hasPinTube',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasQuill: {
+		id: 936,
+		name: 'hasQuill',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasSilkBomb: {
+		id: 937,
+		name: 'hasSilkBomb',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasSilkBossNeedle: {
+		id: 938,
+		name: 'hasSilkBossNeedle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasSilkCharge: {
+		id: 939,
+		name: 'hasSilkCharge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasSilkSpecial: {
+		id: 940,
+		name: 'hasSilkSpecial',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasSuperJump: {
+		id: 941,
+		name: 'hasSuperJump',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasThreadSphere: {
+		id: 942,
+		name: 'hasThreadSphere',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hasWalljump: {
+		id: 943,
+		name: 'hasWalljump',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hazardRespawnFacing: {
+		id: 944,
+		name: 'hazardRespawnFacing',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	hazardRespawnLocation: {
+		id: 945,
+		name: 'hazardRespawnLocation',
+		type: 'vector3',
+	} satisfies PlayerDataFieldOfTypeVector3Silk as PlayerDataFieldOfTypeVector3Silk,
+	health: {
+		id: 946,
+		name: 'health',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	healthBlue: {
+		id: 947,
+		name: 'healthBlue',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	heartPieces: {
+		id: 948,
+		name: 'heartPieces',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	heroState_airDashing: {
+		id: 949,
+		name: 'heroState_airDashing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_altAttack: {
+		id: 950,
+		name: 'heroState_altAttack',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_attackCount: {
+		id: 951,
+		name: 'heroState_attackCount',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	heroState_attacking: {
+		id: 952,
+		name: 'heroState_attacking',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_backDashCooldown: {
+		id: 953,
+		name: 'heroState_backDashCooldown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_backDashing: {
+		id: 954,
+		name: 'heroState_backDashing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_bouncing: {
+		id: 955,
+		name: 'heroState_bouncing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_castRecoiling: {
+		id: 956,
+		name: 'heroState_castRecoiling',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_casting: {
+		id: 957,
+		name: 'heroState_casting',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_dashCooldown: {
+		id: 958,
+		name: 'heroState_dashCooldown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_dashing: {
+		id: 959,
+		name: 'heroState_dashing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_dead: {
+		id: 960,
+		name: 'heroState_dead',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_doubleJumping: {
+		id: 961,
+		name: 'heroState_doubleJumping',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_downAttacking: {
+		id: 962,
+		name: 'heroState_downAttacking',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_downSpikeAntic: {
+		id: 963,
+		name: 'heroState_downSpikeAntic',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_downSpikeBouncing: {
+		id: 964,
+		name: 'heroState_downSpikeBouncing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_downSpikeBouncingShort: {
+		id: 965,
+		name: 'heroState_downSpikeBouncingShort',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_downSpikeRecovery: {
+		id: 966,
+		name: 'heroState_downSpikeRecovery',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_downSpiking: {
+		id: 967,
+		name: 'heroState_downSpiking',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_downTravelling: {
+		id: 968,
+		name: 'heroState_downTravelling',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_downspikeInvulnerabilitySteps: {
+		id: 969,
+		name: 'heroState_downspikeInvulnerabilitySteps',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	heroState_evading: {
+		id: 970,
+		name: 'heroState_evading',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_facingRight: {
+		id: 971,
+		name: 'heroState_facingRight',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_fakeHurt: {
+		id: 972,
+		name: 'heroState_fakeHurt',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_falling: {
+		id: 973,
+		name: 'heroState_falling',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_floating: {
+		id: 974,
+		name: 'heroState_floating',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_focusing: {
+		id: 975,
+		name: 'heroState_focusing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_freezeCharge: {
+		id: 976,
+		name: 'heroState_freezeCharge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_hazardDeath: {
+		id: 977,
+		name: 'heroState_hazardDeath',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_hazardRespawning: {
+		id: 978,
+		name: 'heroState_hazardRespawning',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_inAcid: {
+		id: 979,
+		name: 'heroState_inAcid',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_inConveyorZone: {
+		id: 980,
+		name: 'heroState_inConveyorZone',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_inFrostRegion: {
+		id: 981,
+		name: 'heroState_inFrostRegion',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_inUpdraft: {
+		id: 982,
+		name: 'heroState_inUpdraft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_inWalkZone: {
+		id: 983,
+		name: 'heroState_inWalkZone',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_inWindRegion: {
+		id: 984,
+		name: 'heroState_inWindRegion',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_invulnerable: {
+		id: 985,
+		name: 'heroState_invulnerable',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_invulnerableCount: {
+		id: 986,
+		name: 'heroState_invulnerableCount',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	heroState_isBackScuttling: {
+		id: 987,
+		name: 'heroState_isBackScuttling',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isBackSprinting: {
+		id: 988,
+		name: 'heroState_isBackSprinting',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isBinding: {
+		id: 989,
+		name: 'heroState_isBinding',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isFrostDeath: {
+		id: 990,
+		name: 'heroState_isFrostDeath',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isFrosted: {
+		id: 991,
+		name: 'heroState_isFrosted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isInCancelableFSMMove: {
+		id: 992,
+		name: 'heroState_isInCancelableFSMMove',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isInCutsceneMovement: {
+		id: 993,
+		name: 'heroState_isInCutsceneMovement',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isMaggoted: {
+		id: 994,
+		name: 'heroState_isMaggoted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isPaused: {
+		id: 995,
+		name: 'heroState_isPaused',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isScrewDownAttacking: {
+		id: 996,
+		name: 'heroState_isScrewDownAttacking',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isSprinting: {
+		id: 997,
+		name: 'heroState_isSprinting',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isToolThrowing: {
+		id: 998,
+		name: 'heroState_isToolThrowing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isTouchingSlopeLeft: {
+		id: 999,
+		name: 'heroState_isTouchingSlopeLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isTouchingSlopeRight: {
+		id: 1000,
+		name: 'heroState_isTouchingSlopeRight',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_isTriggerEventsPaused: {
+		id: 1001,
+		name: 'heroState_isTriggerEventsPaused',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_jumping: {
+		id: 1002,
+		name: 'heroState_jumping',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_lookingDown: {
+		id: 1003,
+		name: 'heroState_lookingDown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_lookingDownAnim: {
+		id: 1004,
+		name: 'heroState_lookingDownAnim',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_lookingDownRing: {
+		id: 1005,
+		name: 'heroState_lookingDownRing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_lookingUp: {
+		id: 1006,
+		name: 'heroState_lookingUp',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_lookingUpAnim: {
+		id: 1007,
+		name: 'heroState_lookingUpAnim',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_lookingUpRing: {
+		id: 1008,
+		name: 'heroState_lookingUpRing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_mantleRecovery: {
+		id: 1009,
+		name: 'heroState_mantleRecovery',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_mantling: {
+		id: 1010,
+		name: 'heroState_mantling',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_nailCharging: {
+		id: 1011,
+		name: 'heroState_nailCharging',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_nearBench: {
+		id: 1012,
+		name: 'heroState_nearBench',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_needolinPlayingMemory: {
+		id: 1013,
+		name: 'heroState_needolinPlayingMemory',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_onConveyor: {
+		id: 1014,
+		name: 'heroState_onConveyor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_onConveyorV: {
+		id: 1015,
+		name: 'heroState_onConveyorV',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_onGround: {
+		id: 1016,
+		name: 'heroState_onGround',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_parryAttack: {
+		id: 1017,
+		name: 'heroState_parryAttack',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_parrying: {
+		id: 1018,
+		name: 'heroState_parrying',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_preventBackDash: {
+		id: 1019,
+		name: 'heroState_preventBackDash',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_preventDash: {
+		id: 1020,
+		name: 'heroState_preventDash',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_recoilFrozen: {
+		id: 1021,
+		name: 'heroState_recoilFrozen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_recoiling: {
+		id: 1022,
+		name: 'heroState_recoiling',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_recoilingDrill: {
+		id: 1023,
+		name: 'heroState_recoilingDrill',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_recoilingLeft: {
+		id: 1024,
+		name: 'heroState_recoilingLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_recoilingRight: {
+		id: 1025,
+		name: 'heroState_recoilingRight',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_shadowDashing: {
+		id: 1026,
+		name: 'heroState_shadowDashing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_shroomBouncing: {
+		id: 1027,
+		name: 'heroState_shroomBouncing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_shuttleCock: {
+		id: 1028,
+		name: 'heroState_shuttleCock',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_spellQuake: {
+		id: 1029,
+		name: 'heroState_spellQuake',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_superDashOnWall: {
+		id: 1030,
+		name: 'heroState_superDashOnWall',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_superDashing: {
+		id: 1031,
+		name: 'heroState_superDashing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_swimming: {
+		id: 1032,
+		name: 'heroState_swimming',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_throwingToolVertical: {
+		id: 1033,
+		name: 'heroState_throwingToolVertical',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	heroState_toolThrowCount: {
+		id: 1034,
+		name: 'heroState_toolThrowCount',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	heroState_touchingNonSlider: {
+		id: 1035,
+		name: 'heroState_touchingNonSlider',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_touchingWall: {
+		id: 1036,
+		name: 'heroState_touchingWall',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_transitioning: {
+		id: 1037,
+		name: 'heroState_transitioning',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_upAttacking: {
+		id: 1038,
+		name: 'heroState_upAttacking',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_wallClinging: {
+		id: 1039,
+		name: 'heroState_wallClinging',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_wallJumping: {
+		id: 1040,
+		name: 'heroState_wallJumping',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_wallScrambling: {
+		id: 1041,
+		name: 'heroState_wallScrambling',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_wallSliding: {
+		id: 1042,
+		name: 'heroState_wallSliding',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_wasOnGround: {
+		id: 1043,
+		name: 'heroState_wasOnGround',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_whipLashing: {
+		id: 1044,
+		name: 'heroState_whipLashing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	heroState_willHardLand: {
+		id: 1045,
+		name: 'heroState_willHardLand',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hitCrowCourtSwitch: {
+		id: 1046,
+		name: 'hitCrowCourtSwitch',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	hunterInfestationBoneForest: {
+		id: 1047,
+		name: 'hunterInfestationBoneForest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	infiniteAirJump: {
+		id: 1048,
+		name: 'infiniteAirJump',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	isFirstGame: {
+		id: 1049,
+		name: 'isFirstGame',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	isInventoryOpen: {
+		id: 1050,
+		name: 'isInventoryOpen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	isInvincible: {
+		id: 1051,
+		name: 'isInvincible',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	killedRoostingCrowman: {
+		id: 1052,
+		name: 'killedRoostingCrowman',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	laceCorpseAddedEffects: {
+		id: 1053,
+		name: 'laceCorpseAddedEffects',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	laceCorpsePosX: {
+		id: 1054,
+		name: 'laceCorpsePosX',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	laceCorpseScaleX: {
+		id: 1055,
+		name: 'laceCorpseScaleX',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	laceLeftDocks: {
+		id: 1056,
+		name: 'laceLeftDocks',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	laceMeetCitadel: {
+		id: 1057,
+		name: 'laceMeetCitadel',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	laceTowerDoorOpened: {
+		id: 1058,
+		name: 'laceTowerDoorOpened',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	lavaChallengeEntranceCavedIn: {
+		id: 1059,
+		name: 'lavaChallengeEntranceCavedIn',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	lavaSpittersEmerge: {
+		id: 1060,
+		name: 'lavaSpittersEmerge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	learnedPilbyName: {
+		id: 1061,
+		name: 'learnedPilbyName',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	leftTheGrandForum: {
+		id: 1062,
+		name: 'leftTheGrandForum',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	libraryRoofShortcut: {
+		id: 1063,
+		name: 'libraryRoofShortcut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	libraryStatueWoken: {
+		id: 1064,
+		name: 'libraryStatueWoken',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	library_14_ambush: {
+		id: 1065,
+		name: 'library_14_ambush',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	littleCrabsAppeared: {
+		id: 1066,
+		name: 'littleCrabsAppeared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapAllRooms: {
+		id: 1067,
+		name: 'mapAllRooms',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapKeyPref: {
+		id: 1068,
+		name: 'mapKeyPref',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	mapUpdateQueued: {
+		id: 1069,
+		name: 'mapUpdateQueued',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapZone: {
+		id: 1070,
+		name: 'mapZone',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	mapperAway: {
+		id: 1071,
+		name: 'mapperAway',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperBellhartConvo: {
+		id: 1072,
+		name: 'mapperBellhartConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperBellhartConvo2: {
+		id: 1073,
+		name: 'mapperBellhartConvo2',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperBellhartConvoTimePassed: {
+		id: 1074,
+		name: 'mapperBellhartConvoTimePassed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperBrokenBenchConvo: {
+		id: 1075,
+		name: 'mapperBrokenBenchConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperCalledConvo: {
+		id: 1076,
+		name: 'mapperCalledConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperConvo_Act3Intro: {
+		id: 1077,
+		name: 'mapperConvo_Act3Intro',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperConvo_Act3IntroTimePassed: {
+		id: 1078,
+		name: 'mapperConvo_Act3IntroTimePassed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperConvo_Act3NoStock: {
+		id: 1079,
+		name: 'mapperConvo_Act3NoStock',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperConvo_WhiteFlower: {
+		id: 1080,
+		name: 'mapperConvo_WhiteFlower',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperCursedConvo: {
+		id: 1081,
+		name: 'mapperCursedConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperFightGroup: {
+		id: 1082,
+		name: 'mapperFightGroup',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	mapperHauntedBellhartConvo: {
+		id: 1083,
+		name: 'mapperHauntedBellhartConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperIsFightingAct3: {
+		id: 1084,
+		name: 'mapperIsFightingAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperLocationAct3: {
+		id: 1085,
+		name: 'mapperLocationAct3',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	mapperMaggottedConvo: {
+		id: 1086,
+		name: 'mapperMaggottedConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperMappingConvo: {
+		id: 1087,
+		name: 'mapperMappingConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperMasterAfterConvo: {
+		id: 1088,
+		name: 'mapperMasterAfterConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperMentorConvo: {
+		id: 1089,
+		name: 'mapperMentorConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperMetInAnt04: {
+		id: 1090,
+		name: 'mapperMetInAnt04',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperQuillConvo: {
+		id: 1091,
+		name: 'mapperQuillConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperReactedToBrokenBellBench: {
+		id: 1092,
+		name: 'mapperReactedToBrokenBellBench',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperRosaryConvo: {
+		id: 1093,
+		name: 'mapperRosaryConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperSellingTubePins: {
+		id: 1094,
+		name: 'mapperSellingTubePins',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperSparIntro: {
+		id: 1095,
+		name: 'mapperSparIntro',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mapperTubeConvo: {
+		id: 1096,
+		name: 'mapperTubeConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	marionettesBurned: {
+		id: 1097,
+		name: 'marionettesBurned',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	marionettesMet: {
+		id: 1098,
+		name: 'marionettesMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	maxHealth: {
+		id: 1099,
+		name: 'maxHealth',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	maxHealthBase: {
+		id: 1100,
+		name: 'maxHealthBase',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	memoryOrbs_Clover_02c_A: {
+		id: 1101,
+		name: 'memoryOrbs_Clover_02c_A',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	memoryOrbs_Clover_03_B: {
+		id: 1102,
+		name: 'memoryOrbs_Clover_03_B',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	memoryOrbs_Clover_06_A: {
+		id: 1103,
+		name: 'memoryOrbs_Clover_06_A',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	memoryOrbs_Clover_11: {
+		id: 1104,
+		name: 'memoryOrbs_Clover_11',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	memoryOrbs_Clover_16_B: {
+		id: 1105,
+		name: 'memoryOrbs_Clover_16_B',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	memoryOrbs_Clover_16_C: {
+		id: 1106,
+		name: 'memoryOrbs_Clover_16_C',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	memoryOrbs_Clover_18_A: {
+		id: 1107,
+		name: 'memoryOrbs_Clover_18_A',
+		type: 'ulong',
+	} satisfies PlayerDataFieldOfTypeUlongSilk as PlayerDataFieldOfTypeUlongSilk,
+	memoryOrbs_Clover_18_B: {
+		id: 1108,
+		name: 'memoryOrbs_Clover_18_B',
+		type: 'ulong',
+	} satisfies PlayerDataFieldOfTypeUlongSilk as PlayerDataFieldOfTypeUlongSilk,
+	memoryOrbs_Clover_18_C: {
+		id: 1109,
+		name: 'memoryOrbs_Clover_18_C',
+		type: 'ulong',
+	} satisfies PlayerDataFieldOfTypeUlongSilk as PlayerDataFieldOfTypeUlongSilk,
+	memoryOrbs_Clover_18_D: {
+		id: 1110,
+		name: 'memoryOrbs_Clover_18_D',
+		type: 'ulong',
+	} satisfies PlayerDataFieldOfTypeUlongSilk as PlayerDataFieldOfTypeUlongSilk,
+	memoryOrbs_Clover_18_E: {
+		id: 1111,
+		name: 'memoryOrbs_Clover_18_E',
+		type: 'ulong',
+	} satisfies PlayerDataFieldOfTypeUlongSilk as PlayerDataFieldOfTypeUlongSilk,
+	memoryOrbs_Clover_19: {
+		id: 1112,
+		name: 'memoryOrbs_Clover_19',
+		type: 'ulong',
+	} satisfies PlayerDataFieldOfTypeUlongSilk as PlayerDataFieldOfTypeUlongSilk,
+	memoryOrbs_Clover_21: {
+		id: 1113,
+		name: 'memoryOrbs_Clover_21',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metAntQueenNPC: {
+		id: 1114,
+		name: 'metAntQueenNPC',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metCaretaker: {
+		id: 1115,
+		name: 'metCaretaker',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metDicePilgrim: {
+		id: 1116,
+		name: 'metDicePilgrim',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metDruid: {
+		id: 1117,
+		name: 'metDruid',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metGarmond: {
+		id: 1118,
+		name: 'metGarmond',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metGarmondAct3: {
+		id: 1119,
+		name: 'metGarmondAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metGatePilgrim: {
+		id: 1120,
+		name: 'metGatePilgrim',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metGrindleAct3: {
+		id: 1121,
+		name: 'metGrindleAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metGrubFarmer: {
+		id: 1122,
+		name: 'metGrubFarmer',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metGrubFarmerAct3: {
+		id: 1123,
+		name: 'metGrubFarmerAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metLearnedPilgrim: {
+		id: 1124,
+		name: 'metLearnedPilgrim',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metLearnedPilgrimAct3: {
+		id: 1125,
+		name: 'metLearnedPilgrimAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metMapper: {
+		id: 1126,
+		name: 'metMapper',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metSherma: {
+		id: 1127,
+		name: 'metSherma',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metShermaEnclave: {
+		id: 1128,
+		name: 'metShermaEnclave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metShermaPilgrimsRest: {
+		id: 1129,
+		name: 'metShermaPilgrimsRest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	metSwampMuckmen: {
+		id: 1130,
+		name: 'metSwampMuckmen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mortKeptWeightedAnklet: {
+		id: 1131,
+		name: 'mortKeptWeightedAnklet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mossBerryValueList: {
+		id: 1132,
+		name: 'mossBerryValueList',
+		type: 'int[]',
+	} satisfies PlayerDataFieldOfTypeArrayOfIntSilk as PlayerDataFieldOfTypeArrayOfIntSilk,
+	mosstown01_shortcut: {
+		id: 1133,
+		name: 'mosstown01_shortcut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	mosstownAspidBerryCollected: {
+		id: 1134,
+		name: 'mosstownAspidBerryCollected',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	muchTimePassed: {
+		id: 1135,
+		name: 'muchTimePassed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nailRange: {
+		id: 1136,
+		name: 'nailRange',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	nailUpgrades: {
+		id: 1137,
+		name: 'nailUpgrades',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	newDatTraitorLord: {
+		id: 1138,
+		name: 'newDatTraitorLord',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nextScene: {
+		id: 1139,
+		name: 'nextScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	nonLethalRespawnMarker: {
+		id: 1140,
+		name: 'nonLethalRespawnMarker',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	nonLethalRespawnScene: {
+		id: 1141,
+		name: 'nonLethalRespawnScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	nonLethalRespawnType: {
+		id: 1142,
+		name: 'nonLethalRespawnType',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	nuuEncountered_coralDrillers: {
+		id: 1143,
+		name: 'nuuEncountered_coralDrillers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuEncountered_skullKing: {
+		id: 1144,
+		name: 'nuuEncountered_skullKing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuEncountered_splinterQueen: {
+		id: 1145,
+		name: 'nuuEncountered_splinterQueen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuEncountered_zapNest: {
+		id: 1146,
+		name: 'nuuEncountered_zapNest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuIntroAct3: {
+		id: 1147,
+		name: 'nuuIntroAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuIsHome: {
+		id: 1148,
+		name: 'nuuIsHome',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuMementoAwarded: {
+		id: 1149,
+		name: 'nuuMementoAwarded',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuSlappedOutside: {
+		id: 1150,
+		name: 'nuuSlappedOutside',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuVisiting_coralDrillers: {
+		id: 1151,
+		name: 'nuuVisiting_coralDrillers',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuVisiting_skullKing: {
+		id: 1152,
+		name: 'nuuVisiting_skullKing',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuVisiting_splinterQueen: {
+		id: 1153,
+		name: 'nuuVisiting_splinterQueen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	nuuVisiting_zapNest: {
+		id: 1154,
+		name: 'nuuVisiting_zapNest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedBeastmasterDen: {
+		id: 1155,
+		name: 'openedBeastmasterDen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedCauldronShortcut: {
+		id: 1156,
+		name: 'openedCauldronShortcut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedCitadelSpaLeft: {
+		id: 1157,
+		name: 'openedCitadelSpaLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedCitadelSpaRight: {
+		id: 1158,
+		name: 'openedCitadelSpaRight',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedDocksBackEntrance: {
+		id: 1159,
+		name: 'openedDocksBackEntrance',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedDust05Gate: {
+		id: 1160,
+		name: 'openedDust05Gate',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedGateCoral_14: {
+		id: 1161,
+		name: 'openedGateCoral_14',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedGeyserShaft: {
+		id: 1162,
+		name: 'openedGeyserShaft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedShellwoodShortcut: {
+		id: 1163,
+		name: 'openedShellwoodShortcut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedSongGateDocks: {
+		id: 1164,
+		name: 'openedSongGateDocks',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedTallGeyser: {
+		id: 1165,
+		name: 'openedTallGeyser',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedUnder_01b: {
+		id: 1166,
+		name: 'openedUnder_01b',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedUnder_05: {
+		id: 1167,
+		name: 'openedUnder_05',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openedUnder_19: {
+		id: 1168,
+		name: 'openedUnder_19',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	opened_cog_06_door: {
+		id: 1169,
+		name: 'opened_cog_06_door',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	openingCreditsPlayed: {
+		id: 1170,
+		name: 'openingCreditsPlayed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	peak05b_oneWay: {
+		id: 1171,
+		name: 'peak05b_oneWay',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	peak05c_oneWay: {
+		id: 1172,
+		name: 'peak05c_oneWay',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	peak06_oneWay: {
+		id: 1173,
+		name: 'peak06_oneWay',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	peak13_oneWay: {
+		id: 1174,
+		name: 'peak13_oneWay',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	permadeathMode: {
+		id: 1175,
+		name: 'permadeathMode',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
+	pilbyAtPilgrimsRest: {
+		id: 1176,
+		name: 'pilbyAtPilgrimsRest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyBellhartConvo: {
+		id: 1177,
+		name: 'pilbyBellhartConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyCampConvo: {
+		id: 1178,
+		name: 'pilbyCampConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyFirstRepeatConvo: {
+		id: 1179,
+		name: 'pilbyFirstRepeatConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyFriendship: {
+		id: 1180,
+		name: 'pilbyFriendship',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	pilbyGotSprintConvo: {
+		id: 1181,
+		name: 'pilbyGotSprintConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyInsidePilgrimsRest: {
+		id: 1182,
+		name: 'pilbyInsidePilgrimsRest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyKilled: {
+		id: 1183,
+		name: 'pilbyKilled',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyLeftPilgrimsRest: {
+		id: 1184,
+		name: 'pilbyLeftPilgrimsRest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyMeetConvo: {
+		id: 1185,
+		name: 'pilbyMeetConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyMosstownConvo: {
+		id: 1186,
+		name: 'pilbyMosstownConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbyPilgrimsRestMeetConvo: {
+		id: 1187,
+		name: 'pilbyPilgrimsRestMeetConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilbySeenAtPilgrimsRest: {
+		id: 1188,
+		name: 'pilbySeenAtPilgrimsRest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilgrimFisherPossessed: {
+		id: 1189,
+		name: 'pilgrimFisherPossessed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilgrimGroupBonegrave: {
+		id: 1190,
+		name: 'pilgrimGroupBonegrave',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	pilgrimGroupGreymoorField: {
+		id: 1191,
+		name: 'pilgrimGroupGreymoorField',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	pilgrimGroupShellgrave: {
+		id: 1192,
+		name: 'pilgrimGroupShellgrave',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	pilgrimQuestSpoolCollected: {
+		id: 1193,
+		name: 'pilgrimQuestSpoolCollected',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilgrimRestCrowd: {
+		id: 1194,
+		name: 'pilgrimRestCrowd',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	pilgrimRestMerchant_RhinoRuckusConvo: {
+		id: 1195,
+		name: 'pilgrimRestMerchant_RhinoRuckusConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilgrimRestMerchant_SingConvo: {
+		id: 1196,
+		name: 'pilgrimRestMerchant_SingConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pilgrimsRestRosaryThiefCowardLeft: {
+		id: 1197,
+		name: 'pilgrimsRestRosaryThiefCowardLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pinGalleriesCompleted: {
+		id: 1198,
+		name: 'pinGalleriesCompleted',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	pinstressInsideSitting: {
+		id: 1199,
+		name: 'pinstressInsideSitting',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pinstressQuestReady: {
+		id: 1200,
+		name: 'pinstressQuestReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	pinstressStoppedResting: {
+		id: 1201,
+		name: 'pinstressStoppedResting',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	placedMarkers: {
+		id: 1202,
+		name: 'placedMarkers',
+		type: 'wrappedvector2list[]',
+	} satisfies PlayerDataFieldOfTypeArrayOfWrappedvector2listSilk as PlayerDataFieldOfTypeArrayOfWrappedvector2listSilk,
+	playTime: {
+		id: 1203,
+		name: 'playTime',
+		type: 'float',
+	} satisfies PlayerDataFieldOfTypeFloatSilk as PlayerDataFieldOfTypeFloatSilk,
+	prevHealth: {
+		id: 1204,
+		name: 'prevHealth',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	previousDarkness: {
+		id: 1205,
+		name: 'previousDarkness',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	previouslyVisitedGreymoor_05: {
+		id: 1206,
+		name: 'previouslyVisitedGreymoor_05',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	profileID: {
+		id: 1207,
+		name: 'profileID',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	promisedFirstWish: {
+		id: 1208,
+		name: 'promisedFirstWish',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	promptFocus: {
+		id: 1209,
+		name: 'promptFocus',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	purchasedGrindleMemoryLocket: {
+		id: 1210,
+		name: 'purchasedGrindleMemoryLocket',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	purchasedGrindleSimpleKey: {
+		id: 1211,
+		name: 'purchasedGrindleSimpleKey',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	purchasedGrindleSpoolPiece: {
+		id: 1212,
+		name: 'purchasedGrindleSpoolPiece',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	purchasedGrindleToolKit: {
+		id: 1213,
+		name: 'purchasedGrindleToolKit',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	queuedGodfinderIcon: {
+		id: 1214,
+		name: 'queuedGodfinderIcon',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	respawnMarkerName: {
+		id: 1215,
+		name: 'respawnMarkerName',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	respawnScene: {
+		id: 1216,
+		name: 'respawnScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	respawnType: {
+		id: 1217,
+		name: 'respawnType',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	rhinoChurchUnlocked: {
+		id: 1218,
+		name: 'rhinoChurchUnlocked',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	rhinoRampageCompleted: {
+		id: 1219,
+		name: 'rhinoRampageCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	rhinoRuckus: {
+		id: 1220,
+		name: 'rhinoRuckus',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	roachkeeperChefCorpsePrepared: {
+		id: 1221,
+		name: 'roachkeeperChefCorpsePrepared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	rockRollerDefeated_bone01: {
+		id: 1222,
+		name: 'rockRollerDefeated_bone01',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	rockRollerDefeated_bone06: {
+		id: 1223,
+		name: 'rockRollerDefeated_bone06',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	rockRollerDefeated_bone07: {
+		id: 1224,
+		name: 'rockRollerDefeated_bone07',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	roofCrabDefeated: {
+		id: 1225,
+		name: 'roofCrabDefeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	roofCrabEncountered: {
+		id: 1226,
+		name: 'roofCrabEncountered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	rosaryThievesInBank: {
+		id: 1227,
+		name: 'rosaryThievesInBank',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	rosaryThievesInUnder07: {
+		id: 1228,
+		name: 'rosaryThievesInUnder07',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	rosaryThievesLeftBank: {
+		id: 1229,
+		name: 'rosaryThievesLeftBank',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	savedGrindleInCitadel: {
+		id: 1230,
+		name: 'savedGrindleInCitadel',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	savedPlinney: {
+		id: 1231,
+		name: 'savedPlinney',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	savedPlinneyConvo: {
+		id: 1232,
+		name: 'savedPlinneyConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	sawPlinneyLeft: {
+		id: 1233,
+		name: 'sawPlinneyLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	scenesEncounteredBench: {
+		id: 1234,
+		name: 'scenesEncounteredBench',
+		type: 'hashset<string>',
+	} satisfies PlayerDataFieldOfTypeHashsetOfStringSilk as PlayerDataFieldOfTypeHashsetOfStringSilk,
+	scenesEncounteredCocoon: {
+		id: 1235,
+		name: 'scenesEncounteredCocoon',
+		type: 'hashset<string>',
+	} satisfies PlayerDataFieldOfTypeHashsetOfStringSilk as PlayerDataFieldOfTypeHashsetOfStringSilk,
+	scenesMapped: {
+		id: 1236,
+		name: 'scenesMapped',
+		type: 'hashset<string>',
+	} satisfies PlayerDataFieldOfTypeHashsetOfStringSilk as PlayerDataFieldOfTypeHashsetOfStringSilk,
+	scenesVisited: {
+		id: 1237,
+		name: 'scenesVisited',
+		type: 'hashset<string>',
+	} satisfies PlayerDataFieldOfTypeHashsetOfStringSilk as PlayerDataFieldOfTypeHashsetOfStringSilk,
+	scholarAcolytesInLibrary_02: {
+		id: 1238,
+		name: 'scholarAcolytesInLibrary_02',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	scholarAcolytesReleased: {
+		id: 1239,
+		name: 'scholarAcolytesReleased',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	scholarAcolytesReleasedAct3: {
+		id: 1240,
+		name: 'scholarAcolytesReleasedAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	scholarAmbushReady: {
+		id: 1241,
+		name: 'scholarAmbushReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenBellBeast: {
+		id: 1242,
+		name: 'seenBellBeast',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenBonetownDestroyed: {
+		id: 1243,
+		name: 'seenBonetownDestroyed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenDreamNailPrompt: {
+		id: 1244,
+		name: 'seenDreamNailPrompt',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenEmptyShellwood16: {
+		id: 1245,
+		name: 'seenEmptyShellwood16',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenFocusTablet: {
+		id: 1246,
+		name: 'seenFocusTablet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenGrindleInSong_08: {
+		id: 1247,
+		name: 'seenGrindleInSong_08',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenJournalMsg: {
+		id: 1248,
+		name: 'seenJournalMsg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenJournalQuestUpdateMsg: {
+		id: 1249,
+		name: 'seenJournalQuestUpdateMsg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenMapperAct3: {
+		id: 1250,
+		name: 'seenMapperAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenMateriumMsg: {
+		id: 1251,
+		name: 'seenMateriumMsg',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenPebbLeft: {
+		id: 1252,
+		name: 'seenPebbLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenPilbyLeft: {
+		id: 1253,
+		name: 'seenPilbyLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	seenScholarAcolytes: {
+		id: 1254,
+		name: 'seenScholarAcolytes',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	sethConvo: {
+		id: 1255,
+		name: 'sethConvo',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	sethLeftShellwood: {
+		id: 1256,
+		name: 'sethLeftShellwood',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	sethRevived: {
+		id: 1257,
+		name: 'sethRevived',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	sethShortcut: {
+		id: 1258,
+		name: 'sethShortcut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shakraAidForumBattle: {
+		id: 1259,
+		name: 'shakraAidForumBattle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shellGravePopulated: {
+		id: 1260,
+		name: 'shellGravePopulated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shellwood13_BellWall: {
+		id: 1261,
+		name: 'shellwood13_BellWall',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shellwood14_ambushed: {
+		id: 1262,
+		name: 'shellwood14_ambushed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shellwoodBellshrineTwigWall: {
+		id: 1263,
+		name: 'shellwoodBellshrineTwigWall',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shellwoodSlabflyDefeated: {
+		id: 1264,
+		name: 'shellwoodSlabflyDefeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shellwoodTwigShortcut: {
+		id: 1265,
+		name: 'shellwoodTwigShortcut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaAtSteps: {
+		id: 1266,
+		name: 'shermaAtSteps',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCaretakerConvo1: {
+		id: 1267,
+		name: 'shermaCaretakerConvo1',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCaretakerConvoFinal: {
+		id: 1268,
+		name: 'shermaCaretakerConvoFinal',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCitadelEnclave_Seen: {
+		id: 1269,
+		name: 'shermaCitadelEnclave_Seen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCitadelEntrance_Left: {
+		id: 1270,
+		name: 'shermaCitadelEntrance_Left',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCitadelEntrance_Seen: {
+		id: 1271,
+		name: 'shermaCitadelEntrance_Seen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCitadelEntrance_Visiting: {
+		id: 1272,
+		name: 'shermaCitadelEntrance_Visiting',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCitadelSpa_ExtraConvo: {
+		id: 1273,
+		name: 'shermaCitadelSpa_ExtraConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCitadelSpa_Left: {
+		id: 1274,
+		name: 'shermaCitadelSpa_Left',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCitadelSpa_Seen: {
+		id: 1275,
+		name: 'shermaCitadelSpa_Seen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaCitadelSpa_Visiting: {
+		id: 1276,
+		name: 'shermaCitadelSpa_Visiting',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaConvoBellBeast: {
+		id: 1277,
+		name: 'shermaConvoBellBeast',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaConvoCoralBench: {
+		id: 1278,
+		name: 'shermaConvoCoralBench',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaConvoCoralJudges: {
+		id: 1279,
+		name: 'shermaConvoCoralJudges',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaEnclaveHealingConvo: {
+		id: 1280,
+		name: 'shermaEnclaveHealingConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaHealerActive: {
+		id: 1281,
+		name: 'shermaHealerActive',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaInBellhart: {
+		id: 1282,
+		name: 'shermaInBellhart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaInEnclave: {
+		id: 1283,
+		name: 'shermaInEnclave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaPos: {
+		id: 1284,
+		name: 'shermaPos',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	shermaQuestActive: {
+		id: 1285,
+		name: 'shermaQuestActive',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaSeenInBellhart: {
+		id: 1286,
+		name: 'shermaSeenInBellhart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaSeenInSteps: {
+		id: 1287,
+		name: 'shermaSeenInSteps',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaWokeInSteps: {
+		id: 1288,
+		name: 'shermaWokeInSteps',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	shermaWoundedPilgrim: {
+		id: 1289,
+		name: 'shermaWoundedPilgrim',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	showGeoUI: {
+		id: 1290,
+		name: 'showGeoUI',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	showHealthUI: {
+		id: 1291,
+		name: 'showHealthUI',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	silk: {
+		id: 1292,
+		name: 'silk',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	silkFarmAbyssCoresCleared: {
+		id: 1293,
+		name: 'silkFarmAbyssCoresCleared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	silkFarmBattle1_complete: {
+		id: 1294,
+		name: 'silkFarmBattle1_complete',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	silkMax: {
+		id: 1295,
+		name: 'silkMax',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	silkParts: {
+		id: 1296,
+		name: 'silkParts',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	silkRegenMax: {
+		id: 1297,
+		name: 'silkRegenMax',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	silkSpecialLevel: {
+		id: 1298,
+		name: 'silkSpecialLevel',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	silkSpoolParts: {
+		id: 1299,
+		name: 'silkSpoolParts',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	skullKingAwake: {
+		id: 1300,
+		name: 'skullKingAwake',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	skullKingBenchMended: {
+		id: 1301,
+		name: 'skullKingBenchMended',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	skullKingDefeated: {
+		id: 1302,
+		name: 'skullKingDefeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	skullKingDefeatedBlackThreaded: {
+		id: 1303,
+		name: 'skullKingDefeatedBlackThreaded',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	skullKingInvaded: {
+		id: 1304,
+		name: 'skullKingInvaded',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	skullKingKilled: {
+		id: 1305,
+		name: 'skullKingKilled',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	skullKingPlatMended: {
+		id: 1306,
+		name: 'skullKingPlatMended',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	skullKingShortcut: {
+		id: 1307,
+		name: 'skullKingShortcut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	skullKingWillInvade: {
+		id: 1308,
+		name: 'skullKingWillInvade',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slabCaptor_heardChallenge: {
+		id: 1309,
+		name: 'slabCaptor_heardChallenge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slabCaptor_heardChallengeRings: {
+		id: 1310,
+		name: 'slabCaptor_heardChallengeRings',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slabFlyInShellwood16: {
+		id: 1311,
+		name: 'slabFlyInShellwood16',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slabPrisonerFlyConvo: {
+		id: 1312,
+		name: 'slabPrisonerFlyConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slabPrisonerRemeetConvo: {
+		id: 1313,
+		name: 'slabPrisonerRemeetConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slabPrisonerSingConvo: {
+		id: 1314,
+		name: 'slabPrisonerSingConvo',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slab_03_rubbishCleared: {
+		id: 1315,
+		name: 'slab_03_rubbishCleared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slab_05_gateOpen: {
+		id: 1316,
+		name: 'slab_05_gateOpen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slab_07_gateOpen: {
+		id: 1317,
+		name: 'slab_07_gateOpen',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slab_17_openedGateLeft: {
+		id: 1318,
+		name: 'slab_17_openedGateLeft',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slab_17_openedGateRight: {
+		id: 1319,
+		name: 'slab_17_openedGateRight',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slab_cell_quiet_oneWayWall: {
+		id: 1320,
+		name: 'slab_cell_quiet_oneWayWall',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slab_cloak_battle_completed: {
+		id: 1321,
+		name: 'slab_cloak_battle_completed',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slab_cloak_battle_encountered: {
+		id: 1322,
+		name: 'slab_cloak_battle_encountered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	slab_cloak_gate_reopened: {
+		id: 1323,
+		name: 'slab_cloak_gate_reopened',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	song05MarchGroupReady: {
+		id: 1324,
+		name: 'song05MarchGroupReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	song18Shortcut: {
+		id: 1325,
+		name: 'song18Shortcut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierActiveInHang_02: {
+		id: 1326,
+		name: 'songChevalierActiveInHang_02',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierActiveInSong_02: {
+		id: 1327,
+		name: 'songChevalierActiveInSong_02',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierActiveInSong_04: {
+		id: 1328,
+		name: 'songChevalierActiveInSong_04',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierActiveInSong_07: {
+		id: 1329,
+		name: 'songChevalierActiveInSong_07',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierActiveInSong_24: {
+		id: 1330,
+		name: 'songChevalierActiveInSong_24',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierActiveInSong_25: {
+		id: 1331,
+		name: 'songChevalierActiveInSong_25',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierActiveInSong_27: {
+		id: 1332,
+		name: 'songChevalierActiveInSong_27',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierEncounterCooldown: {
+		id: 1333,
+		name: 'songChevalierEncounterCooldown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierEncounters: {
+		id: 1334,
+		name: 'songChevalierEncounters',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	songChevalierQuestReady: {
+		id: 1335,
+		name: 'songChevalierQuestReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierRestingMet: {
+		id: 1336,
+		name: 'songChevalierRestingMet',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierRestingMetAct3: {
+		id: 1337,
+		name: 'songChevalierRestingMetAct3',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierSeenInHang_02: {
+		id: 1338,
+		name: 'songChevalierSeenInHang_02',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierSeenInSong_02: {
+		id: 1339,
+		name: 'songChevalierSeenInSong_02',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierSeenInSong_04: {
+		id: 1340,
+		name: 'songChevalierSeenInSong_04',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierSeenInSong_07: {
+		id: 1341,
+		name: 'songChevalierSeenInSong_07',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierSeenInSong_24: {
+		id: 1342,
+		name: 'songChevalierSeenInSong_24',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierSeenInSong_25: {
+		id: 1343,
+		name: 'songChevalierSeenInSong_25',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	songChevalierSeenInSong_27: {
+		id: 1344,
+		name: 'songChevalierSeenInSong_27',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	song_04_battleCompleted: {
+		id: 1345,
+		name: 'song_04_battleCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	song_11_oneway: {
+		id: 1346,
+		name: 'song_11_oneway',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	song_17_clearedOut: {
+		id: 1347,
+		name: 'song_17_clearedOut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	song_27_opened: {
+		id: 1348,
+		name: 'song_27_opened',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	soulSnareReady: {
+		id: 1349,
+		name: 'soulSnareReady',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	spinnerDefeated: {
+		id: 1350,
+		name: 'spinnerDefeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	spinnerEncounter: {
+		id: 1351,
+		name: 'spinnerEncounter',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	splinterQueenSproutCut: {
+		id: 1352,
+		name: 'splinterQueenSproutCut',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	splinterQueenSproutGrewLarge: {
+		id: 1353,
+		name: 'splinterQueenSproutGrewLarge',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	splinterQueenSproutTimer: {
+		id: 1354,
+		name: 'splinterQueenSproutTimer',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	summonedLakeOrbs: {
+		id: 1355,
+		name: 'summonedLakeOrbs',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	swampMuckmanTallInvades: {
+		id: 1356,
+		name: 'swampMuckmanTallInvades',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	tamedGiantFlea: {
+		id: 1357,
+		name: 'tamedGiantFlea',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	tempRespawnMarker: {
+		id: 1358,
+		name: 'tempRespawnMarker',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	tempRespawnScene: {
+		id: 1359,
+		name: 'tempRespawnScene',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	tempRespawnType: {
+		id: 1360,
+		name: 'tempRespawnType',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	thievesReturnedToShadow28: {
+		id: 1361,
+		name: 'thievesReturnedToShadow28',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	tinyBroodMotherAppeared: {
+		id: 1362,
+		name: 'tinyBroodMotherAppeared',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	tookGreymoor17Spool: {
+		id: 1363,
+		name: 'tookGreymoor17Spool',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	tookRestroomRosaries: {
+		id: 1364,
+		name: 'tookRestroomRosaries',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	toolAmountsOverride: {
+		id: 1365,
+		name: 'toolAmountsOverride',
+		type: 'dictionary<string,int>',
+	} satisfies PlayerDataFieldOfTypeDictionaryOfString_intSilk as PlayerDataFieldOfTypeDictionaryOfString_intSilk,
+	tormentedTrobbioLurking: {
+		id: 1366,
+		name: 'tormentedTrobbioLurking',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	travelling: {
+		id: 1367,
+		name: 'travelling',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	trobbioCleanedUp: {
+		id: 1368,
+		name: 'trobbioCleanedUp',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	uncagedGiantFlea: {
+		id: 1369,
+		name: 'uncagedGiantFlea',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	under07_battleCompleted: {
+		id: 1370,
+		name: 'under07_battleCompleted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	under07_heavyWorkerReturned: {
+		id: 1371,
+		name: 'under07_heavyWorkerReturned',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	understoreLiftBroke: {
+		id: 1372,
+		name: 'understoreLiftBroke',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	unlockedBossScenes: {
+		id: 1373,
+		name: 'unlockedBossScenes',
+		type: 'list<string>',
+	} satisfies PlayerDataFieldOfTypeListOfStringSilk as PlayerDataFieldOfTypeListOfStringSilk,
+	unlockedNewBossStatue: {
+		id: 1374,
+		name: 'unlockedNewBossStatue',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	vampireGnatDeaths: {
+		id: 1375,
+		name: 'vampireGnatDeaths',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	vampireGnatRequestedAid: {
+		id: 1376,
+		name: 'vampireGnatRequestedAid',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	version: {
+		id: 1377,
+		name: 'version',
+		type: 'string',
+	} satisfies PlayerDataFieldOfTypeStringSilk as PlayerDataFieldOfTypeStringSilk,
+	visitedAbyss: {
+		id: 1378,
+		name: 'visitedAbyss',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedAqueducts: {
+		id: 1379,
+		name: 'visitedAqueducts',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedArborium: {
+		id: 1380,
+		name: 'visitedArborium',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedBellhart: {
+		id: 1381,
+		name: 'visitedBellhart',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedBellhartHaunted: {
+		id: 1382,
+		name: 'visitedBellhartHaunted',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedBellhartSaved: {
+		id: 1383,
+		name: 'visitedBellhartSaved',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedBoneBottom: {
+		id: 1384,
+		name: 'visitedBoneBottom',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedBoneEast14b: {
+		id: 1385,
+		name: 'visitedBoneEast14b',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedBoneForest: {
+		id: 1386,
+		name: 'visitedBoneForest',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedCitadel: {
+		id: 1387,
+		name: 'visitedCitadel',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedCogwork: {
+		id: 1388,
+		name: 'visitedCogwork',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedCoral: {
+		id: 1389,
+		name: 'visitedCoral',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedCoralBellshrine: {
+		id: 1390,
+		name: 'visitedCoralBellshrine',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedCoralRiver: {
+		id: 1391,
+		name: 'visitedCoralRiver',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedCoralRiverInner: {
+		id: 1392,
+		name: 'visitedCoralRiverInner',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedCoralTower: {
+		id: 1393,
+		name: 'visitedCoralTower',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedCradle: {
+		id: 1394,
+		name: 'visitedCradle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedCrawl: {
+		id: 1395,
+		name: 'visitedCrawl',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedDeepDocks: {
+		id: 1396,
+		name: 'visitedDeepDocks',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedDustpens: {
+		id: 1397,
+		name: 'visitedDustpens',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedEnclave: {
+		id: 1398,
+		name: 'visitedEnclave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedFleaFestival: {
+		id: 1399,
+		name: 'visitedFleaFestival',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedFleatopia: {
+		id: 1400,
+		name: 'visitedFleatopia',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedGloom: {
+		id: 1401,
+		name: 'visitedGloom',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedGrandGate: {
+		id: 1402,
+		name: 'visitedGrandGate',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedGreymoor: {
+		id: 1403,
+		name: 'visitedGreymoor',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedGrove: {
+		id: 1404,
+		name: 'visitedGrove',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedHalfway: {
+		id: 1405,
+		name: 'visitedHalfway',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedHalls: {
+		id: 1406,
+		name: 'visitedHalls',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedHang: {
+		id: 1407,
+		name: 'visitedHang',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedHangAtrium: {
+		id: 1408,
+		name: 'visitedHangAtrium',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedHuntersTrail: {
+		id: 1409,
+		name: 'visitedHuntersTrail',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedIceCore: {
+		id: 1410,
+		name: 'visitedIceCore',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedLibrary: {
+		id: 1411,
+		name: 'visitedLibrary',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedMistmaze: {
+		id: 1412,
+		name: 'visitedMistmaze',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedMossCave: {
+		id: 1413,
+		name: 'visitedMossCave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedMosstown: {
+		id: 1414,
+		name: 'visitedMosstown',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedMountain: {
+		id: 1415,
+		name: 'visitedMountain',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedRuinedCradle: {
+		id: 1416,
+		name: 'visitedRuinedCradle',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedShadow: {
+		id: 1417,
+		name: 'visitedShadow',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedShadow03: {
+		id: 1418,
+		name: 'visitedShadow03',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedShellwood: {
+		id: 1419,
+		name: 'visitedShellwood',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedShellwood_16: {
+		id: 1420,
+		name: 'visitedShellwood_16',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedSlab: {
+		id: 1421,
+		name: 'visitedSlab',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedStage: {
+		id: 1422,
+		name: 'visitedStage',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedUnderstore: {
+		id: 1423,
+		name: 'visitedUnderstore',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedUpperSlab: {
+		id: 1424,
+		name: 'visitedUpperSlab',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedWard: {
+		id: 1425,
+		name: 'visitedWard',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedWeave: {
+		id: 1426,
+		name: 'visitedWeave',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedWilds: {
+		id: 1427,
+		name: 'visitedWilds',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	visitedWisp: {
+		id: 1428,
+		name: 'visitedWisp',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	wardBossDefeated: {
+		id: 1429,
+		name: 'wardBossDefeated',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	wardBossEncountered: {
+		id: 1430,
+		name: 'wardBossEncountered',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	wardBossHatchOpened: {
+		id: 1431,
+		name: 'wardBossHatchOpened',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	wardWoken: {
+		id: 1432,
+		name: 'wardWoken',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	weave01_oneWay: {
+		id: 1433,
+		name: 'weave01_oneWay',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	weave05_oneWay: {
+		id: 1434,
+		name: 'weave05_oneWay',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	whiteCloverPos: {
+		id: 1435,
+		name: 'whiteCloverPos',
+		type: 'int',
+	} satisfies PlayerDataFieldOfTypeIntSilk as PlayerDataFieldOfTypeIntSilk,
+	wisp02_enemiesReturned: {
+		id: 1436,
+		name: 'wisp02_enemiesReturned',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	wokeGreyWarrior: {
+		id: 1437,
+		name: 'wokeGreyWarrior',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	wokeLiftWeaver: {
+		id: 1438,
+		name: 'wokeLiftWeaver',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	wokeMossEvolver: {
+		id: 1439,
+		name: 'wokeMossEvolver',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	wokeSongChevalier: {
+		id: 1440,
+		name: 'wokeSongChevalier',
+		type: 'bool',
+	} satisfies PlayerDataFieldOfTypeBoolSilk as PlayerDataFieldOfTypeBoolSilk,
+	Collectables: {
+		id: 1441,
+		name: 'Collectables',
+		type: 'CollectableItemsData',
+	} satisfies PlayerDataFieldOfTypeCollectableItemsDataSilk as PlayerDataFieldOfTypeCollectableItemsDataSilk,
+	EnemyJournalKillData: {
+		id: 1442,
+		name: 'EnemyJournalKillData',
+		type: 'EnemyJournalKillData',
+	} satisfies PlayerDataFieldOfTypeEnemyJournalKillDataSilk as PlayerDataFieldOfTypeEnemyJournalKillDataSilk,
+	MateriumCollected: {
+		id: 1443,
+		name: 'MateriumCollected',
+		type: 'MateriumItemsData',
+	} satisfies PlayerDataFieldOfTypeMateriumItemsDataSilk as PlayerDataFieldOfTypeMateriumItemsDataSilk,
+	MementosDeposited: {
+		id: 1444,
+		name: 'MementosDeposited',
+		type: 'CollectableMementosData',
+	} satisfies PlayerDataFieldOfTypeCollectableMementosDataSilk as PlayerDataFieldOfTypeCollectableMementosDataSilk,
+	QuestCompletionData: {
+		id: 1445,
+		name: 'QuestCompletionData',
+		type: 'QuestCompletionData',
+	} satisfies PlayerDataFieldOfTypeQuestCompletionDataSilk as PlayerDataFieldOfTypeQuestCompletionDataSilk,
+	QuestRumourData: {
+		id: 1446,
+		name: 'QuestRumourData',
+		type: 'QuestRumourData',
+	} satisfies PlayerDataFieldOfTypeQuestRumourDataSilk as PlayerDataFieldOfTypeQuestRumourDataSilk,
+	Relics: {
+		id: 1447,
+		name: 'Relics',
+		type: 'CollectableRelicsData',
+	} satisfies PlayerDataFieldOfTypeCollectableRelicsDataSilk as PlayerDataFieldOfTypeCollectableRelicsDataSilk,
+	ToolEquips: {
+		id: 1448,
+		name: 'ToolEquips',
+		type: 'ToolCrestsData',
+	} satisfies PlayerDataFieldOfTypeToolCrestsDataSilk as PlayerDataFieldOfTypeToolCrestsDataSilk,
+	ToolLiquids: {
+		id: 1449,
+		name: 'ToolLiquids',
+		type: 'ToolItemLiquidsData',
+	} satisfies PlayerDataFieldOfTypeToolItemLiquidsDataSilk as PlayerDataFieldOfTypeToolItemLiquidsDataSilk,
+	Tools: {
+		id: 1450,
+		name: 'Tools',
+		type: 'ToolItemsData',
+	} satisfies PlayerDataFieldOfTypeToolItemsDataSilk as PlayerDataFieldOfTypeToolItemsDataSilk,
+	ExtraToolEquips: {
+		id: 1451,
+		name: 'ExtraToolEquips',
+		type: 'FloatingCrestSlotsData',
+	} satisfies PlayerDataFieldOfTypeFloatingCrestSlotsDataSilk as PlayerDataFieldOfTypeFloatingCrestSlotsDataSilk,
+	StoryEvents: {
+		id: 1452,
+		name: 'StoryEvents',
+		type: 'list<playerstory.eventinfo>',
+	} satisfies PlayerDataFieldOfTypeListOfPlayerstory_eventinfoSilk as PlayerDataFieldOfTypeListOfPlayerstory_eventinfoSilk,
+};
+export const playerDataFieldsSilk = {
+	byFieldName: fieldsByName,
+	byId: new Map<number, PlayerDataFieldSilk>(Object.values(fieldsByName).map((f) => [f.id, f] as const)),
+	list: Object.values(fieldsByName) as PlayerDataFieldSilk[],
+};

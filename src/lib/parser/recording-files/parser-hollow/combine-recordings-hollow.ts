@@ -1,7 +1,7 @@
 import {
 	getDefaultValue,
 	playerDataFieldsHollow,
-	type PlayerDataField,
+	type PlayerDataFieldHollow,
 } from '../../../game-data/hollow-data/player-data-hollow';
 import { raise } from '../../../util';
 import { type HeroStateField } from '../../hero-state/hero-states';
@@ -41,8 +41,11 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 	let isPaused = true;
 	let isTransitioning = false;
 
-	const previousPlayerDataEventsByField = new Map<PlayerDataField, PlayerDataEventHollow<PlayerDataField>>();
-	function getPreviousPlayerData<TField extends PlayerDataField>(field: TField) {
+	const previousPlayerDataEventsByField = new Map<
+		PlayerDataFieldHollow,
+		PlayerDataEventHollow<PlayerDataFieldHollow>
+	>();
+	function getPreviousPlayerData<TField extends PlayerDataFieldHollow>(field: TField) {
 		return previousPlayerDataEventsByField.get(field) as PlayerDataEventHollow<TField> | undefined;
 	}
 
@@ -84,7 +87,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 							// so we can add default values for the rest
 							ctx.timestamp = lastTimestamp;
 							ctx.msIntoGame = msIntoGame; // should be zero
-							const event = new PlayerDataEventHollow<PlayerDataField>(
+							const event = new PlayerDataEventHollow<PlayerDataFieldHollow>(
 								null,
 								null,
 								field,

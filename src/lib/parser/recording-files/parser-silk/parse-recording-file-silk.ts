@@ -1,9 +1,11 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk';
 import {
+	PlayerDataFieldNameSilk,
 	PlayerDataFieldSilk,
-	playerDataFieldsSilk,
 	PlayerDataFieldValueSilk,
-} from '~/lib/game-data/silk-data/player-data-silk';
+} from '~/lib/game-data/silk-data/player-data-silk.generated';
+import { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
@@ -22,7 +24,7 @@ import {
 	parseWrappedVector2ListDelta,
 	type NamedMapValueSilk,
 } from './silk-delta-parsing';
-import { SilkRecordingDataView, StoryEventInfoSilk } from './silk-recording-data-view';
+import { SilkRecordingDataView } from './silk-recording-data-view';
 import { isSubSceneName as isSubSceneNameSilk } from './sub-scene-names';
 
 export function parseRecordingFileSilk(
@@ -36,7 +38,10 @@ export function parseRecordingFileSilk(
 	let previousSceneEvent: SceneEvent | null = null;
 	let previousPlayerPositionEvent: PlayerPositionEvent | null = null;
 
-	const previousPlayerDataEventByField = new Map<PlayerDataFieldSilk, PlayerDataEventSilk<PlayerDataFieldSilk>>();
+	const previousPlayerDataEventByField = new Map<
+		PlayerDataFieldNameSilk,
+		PlayerDataEventSilk<PlayerDataFieldNameSilk>
+	>();
 
 	const ctx: EventCreationContext = new EventCreationContext();
 
@@ -103,7 +108,7 @@ export function parseRecordingFileSilk(
 		}
 	};
 
-	const pushPlayerDataEvent = (field: PlayerDataFieldSilk, value: unknown): void => {
+	const pushPlayerDataEvent = (field: PlayerDataFieldNameSilk, value: unknown): void => {
 		const previousPlayerDataEventOfField = previousPlayerDataEventByField.get(field) ?? null;
 		const event = new PlayerDataEventSilk(
 			previousPlayerPositionEvent,
@@ -112,22 +117,18 @@ export function parseRecordingFileSilk(
 			value as PlayerDataFieldValueSilk<any>,
 			ctx,
 		);
-		previousPlayerDataEventByField.set(field, event as PlayerDataEventSilk<PlayerDataFieldSilk>);
+		previousPlayerDataEventByField.set(field, event as PlayerDataEventSilk<PlayerDataFieldNameSilk>);
 		pushEvent(event, {
-			fieldId: field.id,
-			fieldName: field.name,
-			fieldType: field.type,
+			field,
 		});
 		logParserStep('player_data_event', {
-			fieldId: field.id,
-			fieldName: field.name,
-			fieldType: field.type,
+			field,
 			value,
 			previousValueExists: previousPlayerDataEventOfField != null,
 		});
 	};
 
-	const previousPlayerDataValue = <T>(field: PlayerDataFieldSilk): T | null => {
+	const previousPlayerDataValue = <T>(field: PlayerDataFieldNameSilk): T | null => {
 		const previousPlayerDataEvent = previousPlayerDataEventByField.get(field);
 		return (previousPlayerDataEvent?.value as T | undefined) ?? null;
 	};
@@ -243,7 +244,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['bool']);
 					const value = (packed & 1) === 1;
-					pushPlayerDataEvent(field, value);
+					pushPlayerDataEvent(field.name, value);
 					break;
 				}
 
@@ -255,7 +256,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['float']);
 					const value = reader.readFloat32();
-					pushPlayerDataEvent(field, value);
+					pushPlayerDataEvent(field.name, value);
 					break;
 				}
 
@@ -267,7 +268,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['int']);
 					const value = reader.readInt32();
-					pushPlayerDataEvent(field, value);
+					pushPlayerDataEvent(field.name, value);
 					break;
 				}
 
@@ -279,7 +280,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['enum']);
 					const value = reader.readUint16();
-					pushPlayerDataEvent(field, value);
+					pushPlayerDataEvent(field.name, value);
 					break;
 				}
 
@@ -291,7 +292,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['ulong']);
 					const value = reader.readUint64();
-					pushPlayerDataEvent(field, value);
+					pushPlayerDataEvent(field.name, value);
 					break;
 				}
 
@@ -303,7 +304,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['vector3']);
 					const value = reader.readVector3();
-					pushPlayerDataEvent(field, value);
+					pushPlayerDataEvent(field.name, value);
 					break;
 				}
 
@@ -315,7 +316,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['vector2']);
 					const value = reader.readVector2();
-					pushPlayerDataEvent(field, value);
+					pushPlayerDataEvent(field.name, value);
 					break;
 				}
 
@@ -327,7 +328,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['string']);
 					const value = reader.readString();
-					pushPlayerDataEvent(field, value);
+					pushPlayerDataEvent(field.name, value);
 					break;
 				}
 
@@ -339,7 +340,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['guid']);
 					const value = reader.readGuid();
-					pushPlayerDataEvent(field, value);
+					pushPlayerDataEvent(field.name, value);
 					break;
 				}
 
@@ -355,7 +356,7 @@ export function parseRecordingFileSilk(
 					for (let i = 0; i < count; i++) {
 						values.push(reader.readInt32());
 					}
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -370,10 +371,10 @@ export function parseRecordingFileSilk(
 					const values = parseIndexedListDelta(
 						reader,
 						arrayLength,
-						previousPlayerDataValue<number[]>(field),
+						previousPlayerDataValue<number[]>(field.name),
 						() => reader.readInt32(),
 					);
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -385,7 +386,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['list<string>']);
 					const values = reader.readStringArray();
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -400,10 +401,10 @@ export function parseRecordingFileSilk(
 					const values = parseIndexedListDelta(
 						reader,
 						arrayLength,
-						previousPlayerDataValue<string[]>(field),
+						previousPlayerDataValue<string[]>(field.name),
 						() => reader.readString(),
 					);
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -419,7 +420,7 @@ export function parseRecordingFileSilk(
 					for (let i = 0; i < count; i++) {
 						values.add(reader.readString());
 					}
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -430,8 +431,11 @@ export function parseRecordingFileSilk(
 						break;
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['hashset<string>']);
-					const values = parseStringSetDelta(reader, previousPlayerDataValue<ReadonlySet<string>>(field));
-					pushPlayerDataEvent(field, values);
+					const values = parseStringSetDelta(
+						reader,
+						previousPlayerDataValue<ReadonlySet<string>>(field.name),
+					);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -459,7 +463,7 @@ export function parseRecordingFileSilk(
 					]);
 
 					const values = parseNamedMapFull(reader, field.type);
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -489,15 +493,16 @@ export function parseRecordingFileSilk(
 						fieldId,
 						fieldName: field.name,
 						fieldType: field.type,
-						previousSize: previousPlayerDataValue<ReadonlyMap<string, NamedMapValueSilk>>(field)?.size ?? 0,
+						previousSize:
+							previousPlayerDataValue<ReadonlyMap<string, NamedMapValueSilk>>(field.name)?.size ?? 0,
 					});
 
 					const values = parseNamedMapDelta(
 						reader,
 						field.type,
-						previousPlayerDataValue<ReadonlyMap<string, NamedMapValueSilk>>(field),
+						previousPlayerDataValue<ReadonlyMap<string, NamedMapValueSilk>>(field.name),
 					);
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -518,7 +523,7 @@ export function parseRecordingFileSilk(
 						values.push(reader.readStoryEventInfo());
 					}
 
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -533,9 +538,9 @@ export function parseRecordingFileSilk(
 					const values = parseStoryEventListDelta(
 						reader,
 						listLength,
-						previousPlayerDataValue<readonly StoryEventInfoSilk[]>(field),
+						previousPlayerDataValue<readonly StoryEventInfoSilk[]>(field.name),
 					);
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -556,7 +561,7 @@ export function parseRecordingFileSilk(
 						values.push(reader.readWrappedVector2List());
 					}
 
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -571,9 +576,9 @@ export function parseRecordingFileSilk(
 					const values = parseWrappedVector2ListDelta(
 						reader,
 						listLength,
-						previousPlayerDataValue<readonly Vector2[][]>(field),
+						previousPlayerDataValue<readonly Vector2[][]>(field.name),
 					);
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 
@@ -588,11 +593,11 @@ export function parseRecordingFileSilk(
 					const values = parseAppendedList(
 						reader,
 						oldLength,
-						previousPlayerDataValue<readonly Vector2[][]>(field),
+						previousPlayerDataValue<readonly Vector2[][]>(field.name),
 						() => reader.readWrappedVector2List(),
 						(entry) => [...entry],
 					);
-					pushPlayerDataEvent(field, values);
+					pushPlayerDataEvent(field.name, values);
 					break;
 				}
 

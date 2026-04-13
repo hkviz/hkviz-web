@@ -1,4 +1,4 @@
-import { type PlayerDataField } from '../../game-data/hollow-data/player-data-hollow';
+import { type PlayerDataFieldHollow } from '../../game-data/hollow-data/player-data-hollow';
 
 export type AbilityType = 'ability' | 'item';
 export interface AbilityOrItem {
@@ -8,7 +8,7 @@ export interface AbilityOrItem {
 }
 
 export const abilitiesAndItems: Record<
-	PlayerDataField['name'] &
+	PlayerDataFieldHollow['name'] &
 		(
 			| `has${string}`
 			| 'gotLurkerKey'
@@ -96,7 +96,7 @@ export const abilitiesAndItems: Record<
 };
 
 export function isPlayerDataAbilityOrItemField(
-	field: PlayerDataField,
-): field is PlayerDataField & { name: keyof typeof abilitiesAndItems } {
+	field: PlayerDataFieldHollow,
+): field is PlayerDataFieldHollow & { name: keyof typeof abilitiesAndItems } {
 	return field.name in abilitiesAndItems;
 }
