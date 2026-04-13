@@ -1,19 +1,19 @@
-import { type PlayerDataField, type PlayerDataFieldValue } from '../../../game-data/hollow-data/player-data-hollow';
+import { PlayerDataFieldSilk, PlayerDataFieldValueSilk } from '~/lib/game-data/silk-data/player-data-silk';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
 
-export class PlayerDataEventHollow<TField extends PlayerDataField> extends RecordingEventBase {
+export class PlayerDataEventSilk<TField extends PlayerDataFieldSilk> extends RecordingEventBase {
 	public previousPlayerPositionEvent: PlayerPositionEvent | null;
-	public previousPlayerDataEventOfField: PlayerDataEventHollow<TField> | null;
+	public previousPlayerDataEventOfField: PlayerDataEventSilk<TField> | null;
 	public field: TField;
-	public value: PlayerDataFieldValue<TField>;
+	public value: PlayerDataFieldValueSilk<TField>;
 
 	constructor(
 		previousPlayerPositionEvent: PlayerPositionEvent | null,
-		previousPlayerDataEventOfField: PlayerDataEventHollow<TField> | null,
+		previousPlayerDataEventOfField: PlayerDataEventSilk<TField> | null,
 		field: TField,
-		value: PlayerDataFieldValue<TField>,
+		value: PlayerDataFieldValueSilk<TField>,
 		ctx: EventCreationContext,
 	) {
 		super(ctx);

@@ -10,7 +10,7 @@ import { type PlayerPositionEvent } from '../events-shared/player-position-event
 import { RecordingEventBase } from '../events-shared/recording-event-base';
 import { countGameCompletion } from '../parser-hollow/ingame-percentage';
 import { HeroStateEvent } from './hero-state-event';
-import { type PlayerDataEvent } from './player-data-event';
+import { type PlayerDataEventHollow } from './player-data-event';
 
 export const frameEndEventPlayerDataFieldsArray = [
 	// geo
@@ -172,7 +172,7 @@ type FrameEndEventHeroStateField = (typeof frameEndHeroStateFieldsArray)[number]
 type FrameEndBase = {
 	[TField in FrameEndEventHeroStateField as TField['name']]: boolean;
 } & {
-	[TField in FrameEndEventPlayerDataField as TField['name']]: PlayerDataEvent<TField>['value'];
+	[TField in FrameEndEventPlayerDataField as TField['name']]: PlayerDataEventHollow<TField>['value'];
 };
 
 // use this to auto generate the constructor
@@ -352,7 +352,9 @@ export class FrameEndEventHollow extends RecordingEventBase implements FrameEndB
 	constructor(
 		previousFrameEndEvent: FrameEndEventHollow | null,
 		previousPlayerPositionEvent: PlayerPositionEvent | null,
-		getPreviousPlayerData: <TField extends PlayerDataField>(field: TField) => PlayerDataEvent<TField> | undefined,
+		getPreviousPlayerData: <TField extends PlayerDataField>(
+			field: TField,
+		) => PlayerDataEventHollow<TField> | undefined,
 		getPreviousHeroState: (field: HeroStateField) => HeroStateEvent | undefined,
 		ctx: EventCreationContext,
 	) {

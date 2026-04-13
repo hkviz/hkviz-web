@@ -1,7 +1,9 @@
+import { PlayerDataFieldSilk } from '~/lib/game-data/silk-data/player-data-silk';
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
 import { raise } from '../../../util';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
+import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
 import { CombinedRecordingSilk, ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
 
 export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): CombinedRecordingSilk {
@@ -16,6 +18,7 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 	let previousPositionEventWithChangedPosition: PlayerPositionEvent | null = null;
 	let previousPlayerPositionEventWithMapPosition: PlayerPositionEvent | null = null;
 	let previousSceneEvent: SceneEvent | null = null;
+	const lastPlayerDataEventByField = new Map<PlayerDataFieldSilk, PlayerDataEventSilk<PlayerDataFieldSilk>>();
 
 	const allHkVizModVersions = new Set<string>();
 
@@ -47,6 +50,10 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 				previousPlayerPositionEvent = event;
 			} else if (event instanceof SceneEvent) {
 				previousSceneEvent = event;
+			} else if (event instanceof PlayerDataEventSilk) {
+				event.previousPlayerPositionEvent = previousPlayerPositionEvent;
+				event.previousPlayerDataEventOfField = (lastPlayerDataEventByField.get(event.field) as any) ?? null;
+				lastPlayerDataEventByField.set(event.field, event);
 			}
 
 			if (!isPaused) {

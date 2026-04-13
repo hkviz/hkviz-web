@@ -1,6 +1,6 @@
 import { createLazyMemo } from '@solid-primitives/memo';
 import { createContext, useContext, type Accessor } from 'solid-js';
-import { PlayerDataEvent } from '~/lib/parser/recording-files/events-hollow/player-data-event';
+import { PlayerDataEventHollow } from '~/lib/parser/recording-files/events-hollow/player-data-event';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import {
 	binarySearchLastIndexBefore,
@@ -31,7 +31,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 		}),
 	) as any as {
 		[fieldName in keyof typeof playerDataFieldsHollow.byFieldName]: Accessor<
-			PlayerDataEvent<(typeof playerDataFieldsHollow)['byFieldName'][fieldName]>
+			PlayerDataEventHollow<(typeof playerDataFieldsHollow)['byFieldName'][fieldName]>
 		>;
 	};
 
@@ -40,7 +40,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 			return [
 				fieldName,
 				createLazyMemo(() => {
-					const e: PlayerDataEvent<any> = (event as any)();
+					const e: PlayerDataEventHollow<any> = (event as any)();
 
 					if (!e) return getDefaultValue((playerDataFieldsHollow.byFieldName as any)[fieldName as any]);
 					return e.value;

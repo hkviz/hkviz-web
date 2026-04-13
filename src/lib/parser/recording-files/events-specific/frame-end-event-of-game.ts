@@ -1,6 +1,6 @@
 import { GameId } from '~/lib/types/game-ids';
 import { FrameEndEventHollow } from '../events-hollow/frame-end-event-hollow';
-import { FrameEndEventSilk } from '../parser-silk/frame-end-event-silk';
+import { FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
 
 export type FrameEndEventAny = FrameEndEventHollow | FrameEndEventSilk;
 

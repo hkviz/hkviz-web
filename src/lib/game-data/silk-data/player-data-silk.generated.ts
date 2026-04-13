@@ -5779,6 +5779,54 @@ export const playerDataGeneratedSilk = {
 			id: 1440,
 			type: 'bool',
 		},
+		Collectables: {
+			id: 1441,
+			type: 'CollectableItemsData',
+		},
+		EnemyJournalKillData: {
+			id: 1442,
+			type: 'EnemyJournalKillData',
+		},
+		MateriumCollected: {
+			id: 1443,
+			type: 'MateriumItemsData',
+		},
+		MementosDeposited: {
+			id: 1444,
+			type: 'CollectableMementosData',
+		},
+		QuestCompletionData: {
+			id: 1445,
+			type: 'QuestCompletionData',
+		},
+		QuestRumourData: {
+			id: 1446,
+			type: 'QuestRumourData',
+		},
+		Relics: {
+			id: 1447,
+			type: 'CollectableRelicsData',
+		},
+		ToolEquips: {
+			id: 1448,
+			type: 'ToolCrestsData',
+		},
+		ToolLiquids: {
+			id: 1449,
+			type: 'ToolItemLiquidsData',
+		},
+		Tools: {
+			id: 1450,
+			type: 'ToolItemsData',
+		},
+		ExtraToolEquips: {
+			id: 1451,
+			type: 'FloatingCrestSlotsData',
+		},
+		StoryEvents: {
+			id: 1452,
+			type: 'list\u003Cplayerstory.eventinfo\u003E',
+		},
 	},
 	enums: {
 		'GlobalEnums.BellhomePaintColours': {

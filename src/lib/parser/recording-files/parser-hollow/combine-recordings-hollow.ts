@@ -14,7 +14,7 @@ import {
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
 import { ModdingInfoEvent } from '../events-hollow/modding-info-event';
-import { PlayerDataEvent } from '../events-hollow/player-data-event';
+import { PlayerDataEventHollow } from '../events-hollow/player-data-event';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
@@ -41,9 +41,9 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 	let isPaused = true;
 	let isTransitioning = false;
 
-	const previousPlayerDataEventsByField = new Map<PlayerDataField, PlayerDataEvent<PlayerDataField>>();
+	const previousPlayerDataEventsByField = new Map<PlayerDataField, PlayerDataEventHollow<PlayerDataField>>();
 	function getPreviousPlayerData<TField extends PlayerDataField>(field: TField) {
-		return previousPlayerDataEventsByField.get(field) as PlayerDataEvent<TField> | undefined;
+		return previousPlayerDataEventsByField.get(field) as PlayerDataEventHollow<TField> | undefined;
 	}
 
 	const previousHeroStateByField = new Map<HeroStateField, HeroStateEvent>();
@@ -84,7 +84,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 							// so we can add default values for the rest
 							ctx.timestamp = lastTimestamp;
 							ctx.msIntoGame = msIntoGame; // should be zero
-							const event = new PlayerDataEvent<PlayerDataField>(
+							const event = new PlayerDataEventHollow<PlayerDataField>(
 								null,
 								null,
 								field,
@@ -157,7 +157,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 					ctx.timestamp = lastTimestamp;
 					ctx.msIntoGame = msIntoGame;
 
-					const currentBossSequenceEvent = new PlayerDataEvent<
+					const currentBossSequenceEvent = new PlayerDataEventHollow<
 						typeof playerDataFieldsHollow.byFieldName.currentBossSequence
 					>(
 						previousPlayerPositionEvent,
@@ -307,7 +307,7 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 			event.msIntoGame = msIntoGame;
 
 			// previousPlayerDataEventsByField
-			if (event instanceof PlayerDataEvent) {
+			if (event instanceof PlayerDataEventHollow) {
 				event.previousPlayerDataEventOfField = previousPlayerDataEventsByField.get(event.field) ?? null;
 				previousPlayerDataEventsByField.set(event.field, event);
 				if (frameEndEventPlayerDataFields.has(event.field)) {
@@ -374,7 +374,9 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 			if (!previousValue.includes(sceneName)) {
 				ctx.timestamp = lastTimestamp;
 				ctx.msIntoGame = msIntoGame;
-				const visitedScenesEvent = new PlayerDataEvent<typeof playerDataFieldsHollow.byFieldName.scenesVisited>(
+				const visitedScenesEvent = new PlayerDataEventHollow<
+					typeof playerDataFieldsHollow.byFieldName.scenesVisited
+				>(
 					previousPlayerPositionEvent,
 					previousScenesVisitedEvent ?? null,
 					playerDataFieldsHollow.byFieldName.scenesVisited,

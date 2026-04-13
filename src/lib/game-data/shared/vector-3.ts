@@ -2,9 +2,9 @@ import { Vector3Like } from './vector-like';
 
 export class Vector3 {
 	public constructor(
-		public x: number,
-		public y: number,
-		public z: number,
+		public readonly x: number,
+		public readonly y: number,
+		public readonly z: number,
 	) {}
 
 	public static readonly ZERO = new Vector3(0, 0, 0);

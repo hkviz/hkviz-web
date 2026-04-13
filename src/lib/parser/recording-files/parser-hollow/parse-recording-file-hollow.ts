@@ -18,7 +18,7 @@ import {
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
 import { ModdingInfoEvent, ModInfo } from '../events-hollow/modding-info-event';
-import { PlayerDataEvent } from '../events-hollow/player-data-event';
+import { PlayerDataEventHollow } from '../events-hollow/player-data-event';
 import { SpellDownEvent } from '../events-hollow/spell-down-event';
 import { SpellFireballEvent } from '../events-hollow/spell-fireball-event';
 import { SpellUpEvent } from '../events-hollow/spell-up-event';
@@ -110,7 +110,7 @@ export function parseRecordingFileHollow(
 					const value = parsePlayerDataFieldValueHollow(field, args.length === 1 ? args[0]! : args.join(';'));
 					// TODO
 					events.push(
-						new PlayerDataEvent(
+						new PlayerDataEventHollow(
 							previousPlayerPositionEvent,
 							null, // filled in combiner - previousPlayerDataEventOfField
 							field,

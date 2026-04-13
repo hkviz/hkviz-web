@@ -2,8 +2,8 @@ import { Vector2Like } from './vector-like';
 
 export class Vector2 {
 	public constructor(
-		public x: number,
-		public y: number,
+		public readonly x: number,
+		public readonly y: number,
 	) {}
 
 	public static readonly ZERO = new Vector2(0, 0);

@@ -19,7 +19,7 @@ import {
 	FrameEndEventHollow,
 	FrameEndEventNumberKey,
 } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
-import { FrameEndEventSilk } from '~/lib/parser/recording-files/parser-silk/frame-end-event-silk';
+import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { createAutoSizeCanvas } from '../canvas';
 import { ColorClasses } from '../colors';

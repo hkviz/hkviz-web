@@ -1,10 +1,16 @@
+import { PlayerDataFieldSilk } from '~/lib/game-data/silk-data/player-data-silk';
 import { raise } from '../../../util';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
+import { FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
+import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
 import { CombinedRecordingBase } from '../parser-shared/recording-shared';
-import { FrameEndEventSilk } from './frame-end-event-silk';
 
-export type RecordingEventSilk = SceneEvent | PlayerPositionEvent | FrameEndEventSilk;
+export type RecordingEventSilk =
+	| SceneEvent
+	| PlayerPositionEvent
+	| FrameEndEventSilk
+	| PlayerDataEventSilk<PlayerDataFieldSilk>;
 
 export class ParsedRecordingSilk {
 	constructor(
@@ -32,6 +38,8 @@ export class ParsedRecordingSilk {
 export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 	public sceneEvents: SceneEvent[] = [];
 	public frameEndEvents: FrameEndEventSilk[] = [];
+	public playerDataEventsPerField = new Map<PlayerDataFieldSilk, PlayerDataEventSilk<PlayerDataFieldSilk>[]>();
+	public lastPlayerDataEventsByField = new Map<PlayerDataFieldSilk, PlayerDataEventSilk<PlayerDataFieldSilk>>();
 
 	public playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
 
@@ -46,6 +54,11 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 		for (const event of events) {
 			if (event instanceof SceneEvent) {
 				this.sceneEvents.push(event);
+			} else if (event instanceof PlayerDataEventSilk) {
+				const eventsOfField = this.playerDataEventsPerField.get(event.field) ?? [];
+				eventsOfField.push(event);
+				this.playerDataEventsPerField.set(event.field, eventsOfField);
+				this.lastPlayerDataEventsByField.set(event.field, event);
 			} else if (event instanceof PlayerPositionEvent) {
 				if (
 					event.mapPosition != null &&

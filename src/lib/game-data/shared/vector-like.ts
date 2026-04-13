@@ -1,17 +1,17 @@
 export interface Vector2Like {
-	x: number;
-	y: number;
+	readonly x: number;
+	readonly y: number;
 }
 
 export interface Vector3Like {
-	x: number;
-	y: number;
-	z: number;
+	readonly x: number;
+	readonly y: number;
+	readonly z: number;
 }
 
 export interface Vector4Like {
-	x: number;
-	y: number;
-	z: number;
-	w: number;
+	readonly x: number;
+	readonly y: number;
+	readonly z: number;
+	readonly w: number;
 }
