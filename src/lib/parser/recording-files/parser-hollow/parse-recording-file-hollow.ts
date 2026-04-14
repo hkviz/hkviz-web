@@ -70,8 +70,8 @@ export function parseRecordingFileHollow(
 	LINE_LOOP: for (let line of lines) {
 		try {
 			// empty lines are skipped
+			if (line.at(-1) === '\r') line = line.slice(0, -1);
 			if (line == null || line === '' || line === '\r') continue LINE_LOOP;
-			if (line.at(-1) == '\r') line = line.slice(0, -1);
 
 			const [prefix, ...args] = line.replace(/\r/gi, '').split(';');
 			if (prefix == null) throw new Error('No prefix found');
@@ -84,7 +84,7 @@ export function parseRecordingFileHollow(
 
 			let timestamp: number;
 			if (timestampStr == null || timestampStr === '') {
-				if (previousTimestamp === undefined) {
+				if (previousTimestamp == null) {
 					throw new Error('Relative timestamp found, but no previous timestamp found');
 				}
 				timestamp = previousTimestamp!;

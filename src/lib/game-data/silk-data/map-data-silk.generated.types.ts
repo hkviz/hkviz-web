@@ -4,6 +4,7 @@
 
 import { SpriteInfoGenerated } from '../shared/sprite-info-generated';
 import { Vector3Like, Vector4Like } from '../shared/vector-like';
+import { PlayerDataFieldNameSilk } from './player-data-silk.generated';
 
 export const MapZonesGenerated = {
 	Tut: 'Tut',
@@ -48,7 +49,7 @@ export type SilkPlayerDataTestStringTypeGenerated = 'Equal' | 'NotEqual' | 'Cont
 
 export interface SilkPlayerDataTestEntryGenerated {
 	type: SilkPlayerDataTestTypeGenerated;
-	fieldName: string;
+	fieldName: PlayerDataFieldNameSilk;
 	boolValue: boolean | null;
 	numType: SilkPlayerDataTestNumTypeGenerated | null;
 	intValue: number | null;
@@ -75,7 +76,7 @@ export interface SilkSpriteConditionDataGenerated {
 	condition: SilkPlayerDataTestDataGenerated | null;
 }
 
-export interface SilkColorConditionData {
+export interface SilkColorConditionDataGenerated {
 	color: Vector4Like;
 	condition: SilkPlayerDataTestDataGenerated | null;
 }
@@ -117,7 +118,7 @@ export interface SilkMapRoomDataGenerated {
 	fullSprite: SilkSpriteInfoGenerated | null;
 	// rendererSprite: SilkSpriteInfoGenerated | null;
 	altFullSprites: SilkSpriteConditionDataGenerated[] | null;
-	altColors: SilkColorConditionData[] | null;
+	altColors: SilkColorConditionDataGenerated[] | null;
 
 	// State information
 	initialState: 'Hidden' | 'Rough' | 'Full';

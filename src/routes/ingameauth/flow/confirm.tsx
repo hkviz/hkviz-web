@@ -74,8 +74,12 @@ export default function IngameAuthPage() {
 							</CardDescription>
 						</CardHeader>
 						<CardContent>
-							{!!allowSubmission.error && <p class="text-red-600">Could not login</p>}
-							{!!cancelSubmission.error && <p class="text-red-600">Could not cancel login</p>}
+							<Show when={allowSubmission.error != null}>
+								<p class="text-red-600">Could not login</p>
+							</Show>
+							<Show when={cancelSubmission.error != null}>
+								<p class="text-red-600">Could not cancel login</p>
+							</Show>
 						</CardContent>
 						<CardFooter class="flex justify-between gap-2">
 							<Button class="grow" variant="outline" onClick={handleCancel} disabled={isMutating()}>

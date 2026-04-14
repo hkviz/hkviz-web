@@ -13,7 +13,7 @@ export function UserNameSettingsOption(props: { currentName: string }) {
 
 	async function handleUsernameChange(event: FocusEvent) {
 		const eventName = (event.target as HTMLInputElement).value;
-		if (userName() != eventName) {
+		if (userName() !== eventName) {
 			setUsername(eventName);
 			try {
 				await accountSetUsername({ username: eventName });

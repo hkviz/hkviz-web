@@ -16,7 +16,7 @@ import {
 import { SilkRecordingDataView } from './silk-recording-data-view';
 
 const logDeltaStep = (step: string, details?: unknown): void => {
-	if (details === undefined) {
+	if (details == null) {
 		// console.log(`[silk-parser:delta] ${step}`);
 		return;
 	}

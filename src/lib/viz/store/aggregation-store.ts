@@ -59,7 +59,7 @@ export function createAggregationStore(
 
 	function getVirtualSceneNameForHeatMap(sceneName: string): string {
 		const mode = roomDisplayStore.areaSelectionMode();
-		if (mode == 'all') return sceneName;
+		if (mode === 'all') return sceneName;
 		return getVirtualSceneName(sceneName, mode) ?? sceneName;
 	}
 

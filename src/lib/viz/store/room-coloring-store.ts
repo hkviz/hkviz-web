@@ -3,6 +3,7 @@ import { memoize } from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { AggregationVariableAny } from '~/lib/aggregation/aggregation-value-specific';
 import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import { isRoomDataSilk } from '~/lib/game-data/specific/room-data-of-game';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
 import { ColorMapId, getRoomColorMapById } from '../color-map';
 import { AggregationStore } from './aggregation-store';
@@ -69,16 +70,31 @@ export function createRoomColoringStore(
 
 	const singleVarColorMapType = createMemo(() => getRoomColorMapById(singleVarColorMapId()));
 
-	const areaColorByGameObjectName = createMemo(() => {
+	const areaColorByGameObjectName = createMemo<Map<string, () => string>>(() => {
 		const theme = themeStore.currentTheme();
 		const roomData = gameModule()?.mapRooms;
-		if (!roomData) return new Map<string, string>();
+		if (!roomData) return new Map();
 
-		return new Map<string, string>(
+		return new Map<string, () => string>(
 			roomData.map((room) => {
+				const isSilk = isRoomDataSilk(room);
 				return [
 					room.gameObjectName,
-					theme === 'dark' ? room.origColor.formatHex() : changeRoomColorForLightTheme(room.origColor),
+					// oxlint-disable-next-line solid/reactivity
+					createMemo(() => {
+						let baseColor = room.origColor;
+
+						if (isSilk && room.altColors) {
+							for (const altColor of room.altColors) {
+								if (roomDisplayStore.isConditionFulfilledSilkRoomDisplayMode(altColor.condition)) {
+									baseColor = altColor.color;
+									break;
+								}
+							}
+						}
+
+						return theme === 'dark' ? baseColor.formatHex() : changeRoomColorForLightTheme(baseColor);
+					}),
 				];
 			}),
 		);
@@ -90,7 +106,7 @@ export function createRoomColoringStore(
 		const theme = themeStore.currentTheme();
 		const colorMap = singleVarColorMapType();
 		return function (value: number | null) {
-			if (value === null) return theme === 'dark' ? '#303030' : '#bbbbbb';
+			if (value == null) return theme === 'dark' ? '#303030' : '#bbbbbb';
 
 			const ratio = curve.transformTo01(value, max);
 			if (theme === 'light') {
@@ -121,7 +137,7 @@ export function createRoomColoringStore(
 		if (colorMode() !== '1-var') return null;
 		const colorMap = singleVarColorMap();
 
-		return new Map<string, string>(
+		return new Map<string, () => string>(
 			gameplayStore.gameModule()?.mapRooms.map((room) => {
 				const aggregations = aggregationStore.getAggregations(toVirtualSceneName(room.sceneName));
 				const aggregationValue = aggregationStore.getCorrectedAggregationValueNullIfUnvisited(
@@ -130,7 +146,7 @@ export function createRoomColoringStore(
 					animationStore.msIntoGame,
 				);
 				// const aggregationValue = getCorrectedAggregationValue().getAggregations(room.sceneName)?.[var1()] ?? 0;
-				return [room.gameObjectName, colorMap(aggregationValue)];
+				return [room.gameObjectName, () => colorMap(aggregationValue)];
 			}),
 		);
 	});

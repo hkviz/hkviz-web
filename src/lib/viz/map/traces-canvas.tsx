@@ -180,7 +180,7 @@ export const HKMapTraces: Component = () => {
 		let previousEvent: PositionEvent | null = null;
 		if (!event) return;
 		context.strokeStyle = `rgb(225 29 72/1)`; // tailwind rose-600
-		const dashArray = [baseLineWidth * 1, baseLineWidth * 2];
+		const dashArray = [baseLineWidth, baseLineWidth * 2];
 		let previousIsJump: boolean | null = null;
 
 		function drawSegment(from: PositionEvent, to: PositionEvent) {

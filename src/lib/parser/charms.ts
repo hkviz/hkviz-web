@@ -22,7 +22,7 @@ type CharmPlayerDataId = GetCharmId<keyof FrameEndEventHollow>;
 
 function defaultHasCharm(charmId: CharmPlayerDataId): (frameEndEvent: FrameEndEventHollow) => boolean {
 	const key = `gotCharm_${charmId}` as const;
-	return (frameEndEvent) => !!frameEndEvent[key];
+	return (frameEndEvent) => frameEndEvent[key] === true;
 }
 
 function defaultSpriteName(charmId: CharmPlayerDataId): string {

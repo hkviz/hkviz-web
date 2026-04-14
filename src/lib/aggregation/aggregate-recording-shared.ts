@@ -245,11 +245,11 @@ export function aggregateRecording<
 				// only counts visit when not already in virtual scene before
 				addToScenes(virtualSceneAsArr, msIntoGame, 'visits', 1);
 			}
-			if ((countPerScene[virtualScene]?.firstVisitMs ?? null) === null) {
+			if ((countPerScene[virtualScene]?.firstVisitMs ?? null) == null) {
 				// first visit of virtual scene
 				addToScenes(virtualSceneAsArr, msIntoGame, 'firstVisitMs', msIntoGame);
 			}
-			if ((countPerScene[virtualScene]?.visitOrder ?? null) === null) {
+			if ((countPerScene[virtualScene]?.visitOrder ?? null) == null) {
 				// first visit of virtual scene
 				const maximumMode = getMaximumModeOfVirtualScene(virtualScene);
 				if (maximumMode) {

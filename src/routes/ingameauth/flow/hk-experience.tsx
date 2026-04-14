@@ -27,12 +27,12 @@ function toBool(value: string | boolean) {
 }
 
 function toBoolOrNull(value: string | boolean | null | undefined) {
-	if (value === null || value === undefined) return null;
+	if (value == null || value == null) return null;
 	return toBool(value);
 }
 
 function toBoolString(value: string | boolean | null | undefined) {
-	if (value === null || value === undefined) return undefined;
+	if (value == null || value == null) return undefined;
 	return toBool(value) ? 'yes' : 'no';
 }
 
@@ -121,8 +121,8 @@ export default function DataCollectionStudyParticipationPage() {
 		};
 	});
 
-	const showFrequency = createMemo(() => !!values().playingSince && values().playingSince !== 'never');
-	const showDreamnail = createMemo(() => showFrequency() && !!values().playingFrequency);
+	const showFrequency = createMemo(() => values().playingSince != null && values().playingSince !== 'never');
+	const showDreamnail = createMemo(() => showFrequency() && values().playingFrequency != null);
 	const showEndboss = createMemo(() => showDreamnail() && values().gotDreamnail === true);
 	const showWhitePalace = showEndboss; // showed simultaneously with endboss
 	const show112 = createMemo(

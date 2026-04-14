@@ -13,7 +13,7 @@ export async function updateRunMetaByFiles(db: DB, runId: string) {
 		orderBy: (run, { desc }) => desc(run.endedAt),
 	});
 
-	const startTimes = files.map((it) => it.startedAt?.getTime()).filter((it): it is number => !!it);
+	const startTimes = files.map((it) => it.startedAt?.getTime()).filter((it) => it != null);
 	const startedAt = startTimes.length > 0 ? new Date(Math.min(...startTimes)) : undefined;
 
 	const updateSet: SQLiteUpdateSetSource<typeof runs> = {

@@ -54,7 +54,7 @@ export const RunTag: Component<{
 					class={cn('relative -m-2 -mr-3 ml-0 h-8 w-8 rounded-full', props.removeButtonClass)}
 					size="icon"
 					onClick={removeTag}
-					disabled={removeTagSubmission.pending || !!removeTagSubmission.result}
+					disabled={removeTagSubmission.pending || removeTagSubmission.result != null}
 				>
 					<XIcon class="h-3 w-3" />
 				</Button>

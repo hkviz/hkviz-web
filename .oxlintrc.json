@@ -1,5 +1,6 @@
 {
 	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"extends": ["oxlint:recommended"],
 	"options": {
 		"typeAware": true,
 		"typeCheck": true
@@ -16,6 +17,39 @@
 		"postcss.config.cjs",
 		"generate-favicons.mjs"
 	],
+	"jsPlugins": ["oxlint-plugin-eslint"],
+	"rules": {
+		"eslint-js/no-restricted-syntax": [
+			"error",
+			{
+				"selector": "BinaryExpression[operator='==='] > Literal[value=null][raw='null']",
+				"message": "Use != null instead of === null"
+			},
+			{
+				"selector": "BinaryExpression[operator='!=='] > Literal[value=null][raw='null']",
+				"message": "Use != null instead of !== null"
+			},
+			{
+				"selector": "BinaryExpression[operator='==='] > Identifier[name='undefined']",
+				"message": "Use != null instead of === undefined"
+			},
+			{
+				"selector": "BinaryExpression[operator='!=='] > Identifier[name='undefined']",
+				"message": "Use != null instead of !== undefined"
+			}
+		],
+		"no-implicit-coercion": "error",
+		"eqeqeq": ["error", "always", { "null": "ignore" }],
+		// "no-undef": "error",
+		"no-unreachable": "error",
+		"no-fallthrough": "error",
+		//"consistent-return": "warn",
+		"prefer-const": "warn",
+		"no-var": "error",
+		"typescript/no-floating-promises": "error",
+		//"typescript/no-shadow": "warn",
+		"typescript/no-deprecated": "warn"
+	},
 	"overrides": [
 		{
 			"files": ["src/**/*.{ts,tsx}"],
@@ -33,9 +67,7 @@
 				"solid/no-react-specific-props": "warn",
 				"solid/reactivity": "error",
 				"solid/self-closing-comp": "warn",
-				"solid/style-prop": "warn",
-				"typescript/no-floating-promises": "error",
-				"typescript/no-deprecated": "warn"
+				"solid/style-prop": "warn"
 			}
 		}
 	]

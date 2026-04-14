@@ -123,7 +123,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 					return;
 				}
 
-				if (defeatMapping === undefined) {
+				if (defeatMapping == null) {
 					// ignore
 					// splits.push({
 					//     msIntoGame: event.msIntoGame,
@@ -352,7 +352,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 				if (
 					event.value > 0 &&
 					event.previousPlayerDataEventOfField &&
-					event.value != event.previousPlayerDataEventOfField.value
+					event.value !== event.previousPlayerDataEventOfField.value
 				) {
 					// 0 filtered out, since the game sets the masks to 1,2,3 and once getting the 4th mask
 					// the value will quickly change to 4 and then set to 0 (if not the last mask shard).
@@ -394,7 +394,7 @@ export function createRecordingSplits(recording: CombinedRecordingHollow): Recor
 				if (
 					event.value > 0 &&
 					event.previousPlayerDataEventOfField &&
-					event.value != event.previousPlayerDataEventOfField.value
+					event.value !== event.previousPlayerDataEventOfField.value
 				) {
 					// 0 filtered out, since the game sets the masks to 1,2,3 and once getting the 4th mask
 					// the value will quickly change to 4 and then set to 0 (if not the last mask shard).

@@ -16,14 +16,14 @@ export function createHoverMsStore(gameplayStore: GameplayStore) {
 
 	const hoveredFrameEndEventIndex = createMemo(() => {
 		const _hoveredMsIntoGame = hoveredMsIntoGame();
-		if (_hoveredMsIntoGame === null) return null;
+		if (_hoveredMsIntoGame == null) return null;
 		return gameplayStore.recording()?.frameEndEventIndexFromMs(_hoveredMsIntoGame) ?? null;
 	});
 	const hoveredFrameEndEvent = createMemo(() => {
 		const r = gameplayStore.recording();
 		if (!r) return null;
 		const index = hoveredFrameEndEventIndex();
-		if (index === null) return null;
+		if (index == null) return null;
 
 		return r.frameEndEvents[index] ?? null;
 	});

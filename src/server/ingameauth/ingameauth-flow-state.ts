@@ -20,7 +20,7 @@ export type IngameAuthFlowState =
 
 export async function getIngameAuthFlowState(urlIdOrContinue: string = 'continue'): Promise<IngameAuthFlowState> {
 	const cookies = await serverCookiesGet();
-	const isUrlIdFromUrl = urlIdOrContinue != 'continue';
+	const isUrlIdFromUrl = urlIdOrContinue !== 'continue';
 	const urlId = isUrlIdFromUrl
 		? // when a urlId is provided use it
 			urlIdOrContinue

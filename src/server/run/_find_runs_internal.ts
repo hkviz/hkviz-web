@@ -60,7 +60,7 @@ export async function findRunsInternal({
 	skipVisibilityCheck,
 	isAnonymAccess,
 }: FindRunsOptions) {
-	const isOwnProfile = !!filter.userId && currentUser?.id === filter.userId;
+	const isOwnProfile = filter.userId != null && currentUser?.id === filter.userId;
 	const isPublicFilter =
 		filter.visibility != null &&
 		filter.visibility.length === 1 &&

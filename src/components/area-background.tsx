@@ -85,7 +85,7 @@ const areaTramLower = '/ingame-sprites/areas/Area_Tram_Lower.png';
 const areaWaterways = '/ingame-sprites/areas/Area_Waterways.png';
 const areaWhitePalace = '/ingame-sprites/areas/Area_White_Palace.png';
 
-export function getMapZoneHudBackgroundHollow(zone: HollowMapZone | null) {
+export function getMapZoneHudBackgroundHollow(zone: HollowMapZone | null): string {
 	switch (zone) {
 		case 'NONE':
 		case null:
@@ -198,15 +198,17 @@ export function getMapZoneHudBackgroundHollow(zone: HollowMapZone | null) {
 	}
 }
 
-export function getMapZoneHudBackgroundSilk(zone: SilkMapZone | null) {
+export function getMapZoneHudBackgroundSilk(zone: SilkMapZone | null): string {
 	// todo
 	return areaDirtmouth; // not defined in game
 }
 
-export function getMapZoneHudBackground(gameState: RunGameStateMeta) {
+export function getMapZoneHudBackground(gameState: RunGameStateMeta): string {
 	if (gameState.game === 'hollow') {
 		return getMapZoneHudBackgroundHollow(gameState.mapZone);
 	} else if (gameState.game === 'silk') {
 		return getMapZoneHudBackgroundSilk(gameState.mapZone);
+	} else {
+		assertNever(gameState);
 	}
 }

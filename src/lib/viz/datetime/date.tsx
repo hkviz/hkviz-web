@@ -21,7 +21,7 @@ export function RelativeDate(props: RelativeDateProps) {
 		const formatted: string = formatDistance(props.date, new Date(), { addSuffix: true })
 			.replace(/about /, '')
 			.replace('less than ', '');
-		if (formatted == 'less than a minute ago') return 'just now';
+		if (formatted === 'less than a minute ago') return 'just now';
 		return formatted.replace(/ minutes?/, 'm').replace(/ hours?/, 'h');
 	};
 

@@ -67,7 +67,7 @@ export function aggregateRecordingSilk(recording: CombinedRecordingSilk): Aggreg
 					addToScenes(currentVirtualScenes, event.msIntoGame, 'deaths', 1);
 				}
 				// todo handle death changes in currency
-				let geoDiff = event.geo - event.previousFrameEndEvent.geo;
+				const geoDiff = event.geo - event.previousFrameEndEvent.geo;
 
 				if (geoDiff > 0) {
 					if (
@@ -93,7 +93,7 @@ export function aggregateRecordingSilk(recording: CombinedRecordingSilk): Aggreg
 					}
 				} else if (geoDiff < 0) {
 					const pool = event.HeroCorpseMoneyPool;
-					if (pool == -geoDiff) {
+					if (pool === -geoDiff) {
 						// just died and lost geo to pool, don't count as geo spent
 						console.log('Death geo loss matches pool gain, not counting as geo spent', {
 							geoDiff,

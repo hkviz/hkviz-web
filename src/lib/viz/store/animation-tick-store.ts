@@ -20,7 +20,7 @@ export function createAnimationTickStore(animationStore: AnimationStore, extraCh
 		let frameId = 0;
 
 		function tick(now: number) {
-			const deltaMs = previousNow === null ? intervalMs : now - previousNow;
+			const deltaMs = previousNow == null ? intervalMs : now - previousNow;
 			previousNow = now;
 
 			batch(() => {

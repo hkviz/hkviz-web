@@ -49,7 +49,7 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 		const r = gameplayStore.recording();
 		if (!r) return null;
 		const index = currentSceneEventIndex();
-		if (index === null) return null;
+		if (index == null) return null;
 
 		return r.sceneEvents[index] ?? null;
 	});
@@ -107,7 +107,7 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 		const r = gameplayStore.recording();
 		if (!r) return null;
 		const index = currentFrameEndEventIndex();
-		if (index === null) return null;
+		if (index == null) return null;
 
 		return r.frameEndEvents[index] ?? null;
 	});
@@ -115,7 +115,7 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 	function setLimitedAnimationMsIntoGame(newMsIntoGame: number, changeType: MsIntoGameChangeType) {
 		batch(() => {
 			const timeFrame = gameplayStore.timeFrame();
-			if (Number.isNaN(newMsIntoGame) || typeof newMsIntoGame != 'number') return;
+			if (Number.isNaN(newMsIntoGame) || typeof newMsIntoGame !== 'number') return;
 
 			if (newMsIntoGame > timeFrame.max) {
 				newMsIntoGame = timeFrame.max;

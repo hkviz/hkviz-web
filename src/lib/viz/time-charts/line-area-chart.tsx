@@ -195,7 +195,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 					})),
 				};
 			})
-			.filter((it): it is { color: string; points: { ms: number; y0: number; y1: number }[] } => it !== null);
+			.filter((it): it is { color: string; points: { ms: number; y0: number; y1: number }[] } => it != null);
 	});
 
 	function startHold(e: MouseEvent) {
@@ -237,7 +237,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		if (!canvas) return;
 
 		const currentClientX = e.clientX;
-		if (modifierDragLastClientX === null) {
+		if (modifierDragLastClientX == null) {
 			modifierDragLastClientX = currentClientX;
 			return;
 		}
@@ -306,7 +306,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 			roomDisplayStore.setSelectedRoomIfNotPinned(scene);
 		}
 
-		if (brushStart() !== null) {
+		if (brushStart() != null) {
 			const canvas = canvasRef();
 			if (!canvas) return;
 			const rect = canvas.getBoundingClientRect();
@@ -325,7 +325,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		currentMousePosition = { x: e.clientX, y: e.clientY };
 		handleModifierDragMove(e);
 
-		if (brushStart() !== null) {
+		if (brushStart() != null) {
 			const canvas = canvasRef();
 			if (canvas) {
 				const rect = canvas.getBoundingClientRect();
@@ -356,7 +356,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 
 	function handlePointerUp(e: PointerEvent) {
 		const canvas = canvasRef();
-		if (activePointerId !== null && canvas?.hasPointerCapture(activePointerId)) {
+		if (activePointerId != null && canvas?.hasPointerCapture(activePointerId)) {
 			canvas.releasePointerCapture(activePointerId);
 		}
 		activePointerId = null;
@@ -368,7 +368,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		}
 		didModifierDeltaDrag = false;
 
-		if (brushStart() !== null && canvas) {
+		if (brushStart() != null && canvas) {
 			const rect = canvas.getBoundingClientRect();
 			setBrushEnd(clampBrushXToChart(canvas, e.clientX - rect.left));
 		}
@@ -383,7 +383,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		const start = brushStart();
 		const end = brushEnd();
 
-		if (start !== null && end !== null && Math.abs(end - start) > 5) {
+		if (start != null && end != null && Math.abs(end - start) > 5) {
 			// Calculate the selection in data space
 			const canvas = canvasRef();
 			if (!canvas) return;
@@ -412,7 +412,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 
 	function handlePointerCancel() {
 		const canvas = canvasRef();
-		if (activePointerId !== null && canvas?.hasPointerCapture(activePointerId)) {
+		if (activePointerId != null && canvas?.hasPointerCapture(activePointerId)) {
 			canvas.releasePointerCapture(activePointerId);
 		}
 		activePointerId = null;
@@ -503,7 +503,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		const start = brushStart();
 		const end = brushEnd();
 
-		if (start !== null && end !== null) {
+		if (start != null && end != null) {
 			const minX = Math.min(start, end);
 			const maxX = Math.max(start, end);
 			const _marginTop = chartFrame.marginTop;
@@ -706,7 +706,7 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 				</div>
 			</TableCell>
 
-			<Show when={valueHover() !== null}>
+			<Show when={valueHover() != null}>
 				<TableCell class="p-2 py-1 text-right text-nowrap">
 					<span class="mr-2 text-muted-foreground">{valueHover()}</span>
 				</TableCell>

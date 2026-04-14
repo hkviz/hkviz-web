@@ -118,7 +118,7 @@ const isBossOverrides: Partial<Record<EnemyName, boolean>> = {
 
 export function isEnemyBoss(enemy: EnemyInfo): boolean {
 	const override = isBossOverrides[enemy.name];
-	if (override !== undefined) {
+	if (override != null) {
 		return override;
 	}
 

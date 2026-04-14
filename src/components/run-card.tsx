@@ -323,7 +323,7 @@ export const RunCard: Component<{
 						<RunTags
 							codes={props.run.tags}
 							runId={props.run.id}
-							isOwn={!!props.isOwnRun}
+							isOwn={Boolean(props.isOwnRun)}
 							addButtonClass="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
 							removeButtonClass="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
 						/>
@@ -537,10 +537,10 @@ function displayPercentage(
 	if (!gameState) return false;
 
 	return (
-		(!!gameState.killedHollowKnight ||
-			!!gameState.killedVoidIdol ||
-			!!gameState.killedFinalBoss ||
-			!!gameState.unlockedCompletionRate) &&
-		!!gameState.completionPercentage
+		(gameState.killedHollowKnight === true ||
+			gameState.killedVoidIdol === true ||
+			gameState.killedFinalBoss === true ||
+			gameState.unlockedCompletionRate === true) &&
+		gameState.completionPercentage != null
 	);
 }

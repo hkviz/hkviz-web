@@ -20,6 +20,7 @@ function mapGeneratedText(text: SilkTextDataGenerated): TextDataSilk {
 	return {
 		...text,
 		bounds: silkScaleBounds(text.bounds),
+		origColor: d3.hsl(colorFromRgbVector(text.origColor)),
 	};
 }
 
@@ -66,7 +67,7 @@ export const silkMapData: MapDataSilk = {
 			...(altFullSprites ?? []),
 		];
 
-		const allSprites = allSpritesUnfiltered.filter((s) => !!s);
+		const allSprites = allSpritesUnfiltered.filter((s) => s != null);
 
 		const origColor = room.origColor
 			? d3.hsl(colorFromRgbVector(room.origColor))
@@ -78,6 +79,12 @@ export const silkMapData: MapDataSilk = {
 
 		const spriteBounds = allSprites.map((s) => s.sprite.visualBounds);
 		const visualBoundsAllSprites = Bounds.fromContainingBounds(spriteBounds);
+
+		const altColors =
+			room.altColors?.map((c) => ({
+				color: d3.hsl(colorFromRgbVector(c.color)),
+				condition: c.condition,
+			})) ?? null;
 
 		const mappedRoom: RoomDataSilk = {
 			game: 'silk',
@@ -92,6 +99,7 @@ export const silkMapData: MapDataSilk = {
 			sceneName: room.sceneName,
 			gameObjectName: room.gameObjectName,
 
+			altColors,
 			mappedIfAllMapped,
 			visualBounds,
 			playerPositionBounds: room.playerPositionBounds ? silkScaleBounds(room.playerPositionBounds) : null,

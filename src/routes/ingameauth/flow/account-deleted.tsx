@@ -1,6 +1,6 @@
 import { Title } from '@solidjs/meta';
 import { useAction, useSubmission } from '@solidjs/router';
-import { createSignal, Match, Switch } from 'solid-js';
+import { createSignal, Match, Show, Switch } from 'solid-js';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
@@ -40,7 +40,7 @@ export default function IngameAuthCancelAccountDeletionPage() {
 			<Title>Login - HKViz</Title>
 			<Switch>
 				<Match when={keepSuccess()}>
-					<Card class="max-w-[500px]">
+					<Card class="max-w-125">
 						<CardHeader>
 							<CardTitle>Account deletion canceled</CardTitle>
 							<CardDescription>You will be redirected</CardDescription>
@@ -48,7 +48,7 @@ export default function IngameAuthCancelAccountDeletionPage() {
 					</Card>
 				</Match>
 				<Match when={cancelSuccess()}>
-					<Card class="max-w-[500px]">
+					<Card class="max-w-125">
 						<CardHeader>
 							<CardTitle>Login canceled</CardTitle>
 							<CardDescription>You can close this page now</CardDescription>
@@ -56,7 +56,7 @@ export default function IngameAuthCancelAccountDeletionPage() {
 					</Card>
 				</Match>
 				<Match when={true}>
-					<Card class="max-w-[500px] border-red-300 dark:border-red-800">
+					<Card class="max-w-125 border-red-300 dark:border-red-800">
 						<CardHeader>
 							<CardTitle>Your account is marked for deletion?</CardTitle>
 							<CardDescription>
@@ -64,8 +64,12 @@ export default function IngameAuthCancelAccountDeletionPage() {
 							</CardDescription>
 						</CardHeader>
 						<CardContent>
-							{!!keepAccountSubmission.error && <p class="text-red-600">Could not cancel deletion</p>}
-							{!!cancelSubmission.error && <p class="text-red-600">Could not cancel login</p>}
+							<Show when={keepAccountSubmission.error != null}>
+								<p class="text-red-600">Could not cancel account deletion</p>
+							</Show>
+							<Show when={cancelSubmission.error != null}>
+								<p class="text-red-600">Could not cancel login</p>
+							</Show>
 						</CardContent>
 						<CardFooter class="flex justify-between gap-2">
 							<Button class="grow" variant="outline" onClick={handleCancel} disabled={isMutating()}>

@@ -20,7 +20,7 @@ export const accountGetScheduledForDeletion = query(async () => {
 		},
 	});
 
-	return !!request;
+	return request != null;
 }, 'account-get-scheduled-for-deletion');
 
 export type AccountInitiateRemovalResult = { existing: true } | { existing: false; id: string };

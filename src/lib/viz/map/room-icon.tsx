@@ -13,7 +13,9 @@ export interface HKMapRoomProps<Game extends GameId> {
 
 export function HKMapRoom<Game extends GameId>(props: HKMapRoomProps<Game>) {
 	const roomInfosOfRoom = createMemo(() => {
-		const visualBoundsAllSprites = props.roomInfos.map((it) => it.visualBoundsAllSprites).filter((it) => !!it);
+		const visualBoundsAllSprites = props.roomInfos
+			.map((it) => it.visualBoundsAllSprites)
+			.filter((it) => it != null);
 		const containingBounds =
 			visualBoundsAllSprites.length === 0 ? Bounds.ZERO : Bounds.fromContainingBounds(visualBoundsAllSprites);
 		const smallerRoomSizeProportion = containingBounds.size.minElement() / containingBounds.size.maxElement();

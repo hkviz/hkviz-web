@@ -243,6 +243,9 @@ importers:
       oxlint:
         specifier: ^1.59.0
         version: 1.59.0(oxlint-tsgolint@0.20.0)
+      oxlint-plugin-eslint:
+        specifier: ^1.60.0
+        version: 1.60.0
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -7063,6 +7066,10 @@ packages:
     resolution: {integrity: sha512-lnncqvHewyRvaqdrnntVIrZV2tEddz8lbvPsQzG/zlkfvgZkwy0HP1p/2u1aCDToeg1jb9zBpbJdfkV73Itw+w==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
+
+  oxlint-plugin-eslint@1.60.0:
+    resolution: {integrity: sha512-gAqkU8vYI1i8EoS0KSCCtrH/pCwDvDEs4Eu4Z1wnmcVMl9hSk4Dgs1udtrehw2vofW8VhrtJDbJfmkcM56TpMQ==}
+    engines: {node: ^20.19.0 || >=22.12.0}
 
   oxlint-tsgolint@0.20.0:
     resolution: {integrity: sha512-/Uc9TQyN1l8w9QNvXtVHYtz+SzDJHKpb5X0UnHodl0BVzijUPk0LPlDOHAvogd1UI+iy9ZSF6gQxEqfzUxCULQ==}
@@ -16089,6 +16096,8 @@ snapshots:
       '@oxfmt/binding-win32-arm64-msvc': 0.44.0
       '@oxfmt/binding-win32-ia32-msvc': 0.44.0
       '@oxfmt/binding-win32-x64-msvc': 0.44.0
+
+  oxlint-plugin-eslint@1.60.0: {}
 
   oxlint-tsgolint@0.20.0:
     optionalDependencies:

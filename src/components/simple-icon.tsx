@@ -1,5 +1,5 @@
-import { type Component } from 'solid-js';
 import type { SimpleIcon as SimpleIconType } from 'simple-icons';
+import { type Component } from 'solid-js';
 import { cn } from '~/lib/utils';
 
 interface SimpleIconProps {
@@ -16,7 +16,7 @@ export const SimpleIcon: Component<SimpleIconProps> = (props) => {
 			viewBox="0 0 24 24"
 			height={24}
 			width={24}
-			fill={props.color == 'brand' ? `#${props.icon.hex}` : 'currentColor'}
+			fill={props.color === 'brand' ? `#${props.icon.hex}` : 'currentColor'}
 		>
 			<path d={props.icon.path} />
 		</svg>

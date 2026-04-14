@@ -17,13 +17,13 @@ export function createRoomMsButtonProps(props: {
 	function handleMouseEnter() {
 		const room = props.room?.();
 		const time = props.time?.();
-		if (room?.sceneName !== undefined && room.sceneName !== null) {
+		if (room?.sceneName != null && room.sceneName != null) {
 			roomDisplayStore.setHoveredRoom(room.sceneName, room.hoverSource);
 			if (room.selectIfNotPinned) {
 				roomDisplayStore.setSelectedRoomIfNotPinned(room.sceneName);
 			}
 		}
-		if (time?.msIntoGame !== undefined && time.msIntoGame !== null) {
+		if (time?.msIntoGame != null && time.msIntoGame != null) {
 			hoverMsStore.setHoveredMsIntoGame(time.msIntoGame);
 		}
 	}
@@ -31,10 +31,10 @@ export function createRoomMsButtonProps(props: {
 	function handleMouseLeave() {
 		const room = props.room?.();
 		const time = props.time?.();
-		if (room?.sceneName !== undefined && room.sceneName !== null) {
+		if (room?.sceneName != null && room.sceneName != null) {
 			roomDisplayStore.unsetHoveredRoom(room.sceneName);
 		}
-		if (time?.msIntoGame !== undefined && time.msIntoGame !== null) {
+		if (time?.msIntoGame != null && time.msIntoGame != null) {
 			hoverMsStore.unsetHoveredMsIntoGame(time.msIntoGame);
 		}
 	}
@@ -50,10 +50,10 @@ export function createRoomMsButtonProps(props: {
 		attributes.onClick = () => {
 			const room = props.room?.();
 			const time = props.time?.();
-			if (room?.sceneName !== undefined && room.sceneName !== null) {
+			if (room?.sceneName != null && room.sceneName != null) {
 				roomDisplayStore.setSelectedSceneName(room.sceneName);
 			}
-			if (time?.msIntoGame !== undefined && time.msIntoGame !== null) {
+			if (time?.msIntoGame != null && time.msIntoGame != null) {
 				animationStore.setMsIntoGame(time.msIntoGame, 'smooth');
 			}
 			props.onClick?.();

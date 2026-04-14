@@ -154,7 +154,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 						</div>
 					</div>
 					<div>
-						<Expander expanded={!!recording()}>
+						<Expander expanded={recording() != null}>
 							<Table>
 								<TableBody>
 									<TableRow>

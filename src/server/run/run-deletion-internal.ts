@@ -37,7 +37,7 @@ export async function runDeleteInternal({ runId, userId }: { runId: string; user
 		const deletionResults = await Promise.allSettled(files.map((it) => r2DeleteFile(r2RunPartFileKey(it.id))));
 		const successfullyDeleted = deletionResults
 			.map((it, i) => (it.status === 'fulfilled' ? files[i] : null))
-			.filter((it): it is (typeof files)[0] => it !== null);
+			.filter((it): it is (typeof files)[0] => it != null);
 
 		const allFilesDeletedSuccess = successfullyDeleted.length === files.length;
 

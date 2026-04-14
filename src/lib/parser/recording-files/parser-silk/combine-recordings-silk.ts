@@ -42,7 +42,7 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 		for (const event of recording.events) {
 			// first create frame end event if new time + needed
 			// since later last player data is overwritten
-			if (createFrameEndEvent && previousEvent && event.timestamp != previousEvent.timestamp) {
+			if (createFrameEndEvent && previousEvent && event.timestamp !== previousEvent.timestamp) {
 				eventCreationContext.msIntoGame = msIntoGame;
 				eventCreationContext.timestamp = previousEvent.timestamp;
 				const frameEndEvent: FrameEndEventSilk = new FrameEndEventSilk(

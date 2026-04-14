@@ -108,7 +108,7 @@ export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 		conditional: conditionalSpriteInfo ? spriteInfoWithScaledPosition('conditional', conditionalSpriteInfo) : null,
 		rough: room.roughSpriteInfo ? spriteInfoWithScaledPosition('rough', room.roughSpriteInfo) : null,
 	};
-	const allSprites = Object.values(spritesByVariant).filter((it): it is NonNullable<typeof it> => !!it);
+	const allSprites = Object.values(spritesByVariant).filter((it) => it != null);
 	const visualBoundsAllSprites = Bounds.fromContainingBounds(allSprites.map((it) => it.sprite.visualBounds));
 
 	const texts = room.texts.map((text) => prepareTextExportData(text));
@@ -207,7 +207,7 @@ export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 			rough: subSpriteInfoWithScaledPosition('rough'),
 		} as (typeof roomCorrected)['spritesByVariant'];
 
-		const subSprites = Object.values(subSpritesByVariant).filter((it): it is NonNullable<typeof it> => !!it);
+		const subSprites = Object.values(subSpritesByVariant).filter((it) => it != null);
 
 		const escapedSpriteName = childSprite.normal.name.replace(/\//g, '_');
 

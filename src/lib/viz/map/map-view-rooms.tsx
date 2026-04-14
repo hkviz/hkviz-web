@@ -70,8 +70,8 @@ function MapViewRoom<Game extends GameId>(props: {
 				style={{
 					transition: 'fill 0.1s ease 0s',
 					fill: props.alwaysUseAreaAsColor
-						? roomColoringStore.areaColorByGameObjectName().get(props.room.gameObjectName)
-						: roomColoringStore.selectedModeColorByGameObjectName().get(props.room.gameObjectName),
+						? roomColoringStore.areaColorByGameObjectName().get(props.room.gameObjectName)?.()
+						: roomColoringStore.selectedModeColorByGameObjectName().get(props.room.gameObjectName)?.(),
 					['pointer-events']: isInteractable() ? 'all' : 'none',
 				}}
 			/>

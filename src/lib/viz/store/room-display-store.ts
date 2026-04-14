@@ -1,7 +1,7 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import * as d3 from 'd3';
 import { createContext, createMemo, createSignal, useContext, type Accessor } from 'solid-js';
-import { RoomSpriteVariantSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
+import { PlayerDataTestDataSilk, RoomSpriteVariantSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
 import { isRoomDataHollow, isRoomDataSilk } from '~/lib/game-data/specific/room-data-of-game';
 import { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
@@ -91,7 +91,7 @@ export function createRoomDisplayStore(
 				} else if (recording instanceof CombinedRecordingSilk) {
 					return recording.lastPlayerDataEventOfField('scenesVisited')?.value ?? new Set<string>();
 				}
-				assertNever(recording);
+				return assertNever(recording);
 			case 'visited-animated':
 				return new Set(playerDataAnimationStore()?.values?.scenesVisited() ?? []);
 		}
@@ -107,14 +107,29 @@ export function createRoomDisplayStore(
 		}
 		const gameObjectNameNeededInVisited =
 			room && isRoomDataHollow(room) ? (room?.gameObjectNameNeededInVisited ?? gameObjectName) : gameObjectName;
+		const isSilk = room && isRoomDataSilk(room);
 		const signal = createMemo(() => {
 			const visible = roomsVisible();
 			if (visible === 'all') return true;
+			if (isSilk) {
+				const isHidden = room.hideCondition
+					? isConditionFulfilledSilkRoomDisplayMode(room.hideCondition)
+					: false;
+				if (isHidden) return false;
+			}
+
 			return visible.has(gameObjectNameNeededInVisited);
 		});
 		// eslint-disable-next-line solid/reactivity
 		selfRoomVisibilityByGameObjectName.set(gameObjectName, signal);
 		return signal;
+	}
+
+	function isConditionFulfilledSilkRoomDisplayMode(condition: PlayerDataTestDataSilk | null) {
+		const dataStore = playerDataAnimationStore();
+		if (!dataStore || dataStore.game !== 'silk') return false;
+		if (!condition) return true;
+		return dataStore.isConditionFulfilled(condition, 'animated');
 	}
 
 	const statesByGameObjectName = createMemo(() => {
@@ -166,7 +181,11 @@ export function createRoomDisplayStore(
 							if (v.type === 'full') {
 								variant = v.variant;
 							} else if (v.type === 'alt-full-sprite') {
-								// TODO evaluate conditions
+								if (isConditionFulfilledSilkRoomDisplayMode(v.condition)) {
+									variant = v.variant;
+									// game uses first sprite that matches:
+									break;
+								}
 							}
 						}
 
@@ -198,7 +217,7 @@ export function createRoomDisplayStore(
 
 	function setHoveredRoom(name: string | null, source: RoomHoverSource = 'other') {
 		setHoveredSceneName(name);
-		setHoveredSceneNameSource(name !== null ? source : null);
+		setHoveredSceneNameSource(name != null ? source : null);
 	}
 	function unsetHoveredRoom(name: string | null) {
 		if (hoveredSceneName() === name) setHoveredRoom(null);
@@ -265,6 +284,7 @@ export function createRoomDisplayStore(
 		unpinScene,
 		areaSelectionMode,
 		setAreaSelectionMode,
+		isConditionFulfilledSilkRoomDisplayMode,
 	};
 }
 

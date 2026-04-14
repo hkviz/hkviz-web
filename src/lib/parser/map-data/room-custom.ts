@@ -108,7 +108,7 @@ function makeCustomRoom({ nextToRoom, size, scale }: MakeCustomRoomOptions) {
 			playerPositionBounds: options.playerPositionBounds ?? options.visualBounds,
 			sprite: options.sprite ?? options.spriteInfo.name,
 			spriteRough: options.spriteRough ?? options.roughSpriteInfo?.name,
-			hasRoughVersion: options.hasRoughVersion ?? !!options.spriteRough,
+			hasRoughVersion: options.hasRoughVersion ?? options.spriteRough != null,
 			gameObjectName: options.gameObjectName ?? options.sceneName,
 			roughSpriteInfo: options.roughSpriteInfo ?? null,
 

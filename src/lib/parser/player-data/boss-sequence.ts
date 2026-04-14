@@ -14,9 +14,9 @@ export class BossSequenceData {
 		this.name = name;
 
 		this.bindingsNone = this.bindings === 0;
-		this.bindingsNail = !!(this.bindings & 1);
-		this.bindingsShell = !!(this.bindings & 2);
-		this.bindingsCharms = !!(this.bindings & 4);
-		this.bindingsSoul = !!(this.bindings & 8);
+		this.bindingsNail = (this.bindings & 1) !== 0;
+		this.bindingsShell = (this.bindings & 2) !== 0;
+		this.bindingsCharms = (this.bindings & 4) !== 0;
+		this.bindingsSoul = (this.bindings & 8) !== 0;
 	}
 }

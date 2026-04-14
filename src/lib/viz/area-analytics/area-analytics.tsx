@@ -180,7 +180,7 @@ function AggregationVariableRow(props: {
 								class="-m-2 p-2"
 								onClick={() => {
 									const value = aggregatedVariableValue();
-									if (value !== null) {
+									if (value != null) {
 										animationStore.setMsIntoGame(value, 'smooth');
 									}
 								}}

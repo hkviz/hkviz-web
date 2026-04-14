@@ -107,6 +107,7 @@
 		"jsdom": "^26.1.0",
 		"oxfmt": "^0.44.0",
 		"oxlint": "^1.59.0",
+		"oxlint-plugin-eslint": "^1.60.0",
 		"typescript": "^5.9.3",
 		"vite-plugin-solid": "^2.11.10",
 		"vitest": "^3.2.4"

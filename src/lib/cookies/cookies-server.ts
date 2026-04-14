@@ -27,7 +27,7 @@ export class ServerCookies {
 		this.#didParse = true;
 		const cookies = parse(this.#initialHeader);
 		for (const [name, value] of Object.entries(cookies)) {
-			if (value !== undefined && this.#setHeaders.get(name) === undefined) {
+			if (value != null && this.#setHeaders.get(name) == null) {
 				// Only set the cookie if it hasn't been set before
 				this.#cookies.set(name, value);
 			}

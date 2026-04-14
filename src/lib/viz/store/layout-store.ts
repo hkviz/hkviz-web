@@ -78,7 +78,7 @@ export function createLayoutStore(viewportStore: ViewportStore) {
 		const types = lanes[laneId].panelTypes;
 		const laneSize = containerSizesPx[laneId];
 		return types.map((typeId) => {
-			if (laneSize === undefined) {
+			if (laneSize == null) {
 				return 0;
 			}
 			const type = getLayoutPanelTypeById(typeId);

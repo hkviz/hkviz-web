@@ -271,7 +271,7 @@ export const countryCodes = countries.map((c) => c.code) as unknown as CountryCo
 export const countryNames = countries.map((c) => c.name);
 
 export function isCountryShortCode(code: string | undefined): code is CountryCode {
-	return !!code && countryCodes.includes(code as CountryCode);
+	return code != null && countryCodes.includes(code as CountryCode);
 }
 
 export const countrySchema = v.picklist(countryCodes);
