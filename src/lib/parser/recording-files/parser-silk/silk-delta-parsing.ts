@@ -17,10 +17,10 @@ import { SilkRecordingDataView } from './silk-recording-data-view';
 
 const logDeltaStep = (step: string, details?: unknown): void => {
 	if (details === undefined) {
-		console.log(`[silk-parser:delta] ${step}`);
+		// console.log(`[silk-parser:delta] ${step}`);
 		return;
 	}
-	console.log(`[silk-parser:delta] ${step}`, details);
+	// console.log(`[silk-parser:delta] ${step}`, details);
 };
 
 export type NamedMapValueSilk =

@@ -2,7 +2,7 @@ import { mapDataBySceneNameSilk } from '../game-data/silk-data/map-data-silk';
 import { isPlayerDataEventOfFieldSilk } from '../game-data/silk-data/player-data-silk';
 import { FrameEndEventSilk } from '../parser/recording-files/events-silk/frame-end-event-silk';
 import { CombinedRecordingSilk } from '../parser/recording-files/parser-silk/recording-silk';
-import { formatTimeMs } from '../viz';
+import { formatTimeMs } from '../viz/util/time';
 import { aggregateRecording } from './aggregate-recording-shared';
 import {
 	AggregatedRunDataSilk,
@@ -16,6 +16,9 @@ export function getZoneNameFromSceneName(sceneName: string | undefined | null): 
 }
 
 export function aggregateRecordingSilk(recording: CombinedRecordingSilk): AggregatedRunDataSilk {
+	let recentlyRemovedFromPool: number | null = null;
+	let recentlyRemovedFromPoolTime: number = 0;
+
 	return aggregateRecording(
 		recording,
 		createEmptyAggregationSilk,
@@ -39,6 +42,15 @@ export function aggregateRecordingSilk(recording: CombinedRecordingSilk): Aggreg
 				if (diff < 0) {
 					addToScenes(currentVirtualScenes, event.msIntoGame, 'damageTaken', -diff);
 				}
+			} else if (
+				isPlayerDataEventOfFieldSilk(event, 'HeroCorpseMoneyPool') &&
+				event.previousPlayerDataEventOfField
+			) {
+				const diff = event.value - event.previousPlayerDataEventOfField.value;
+				if (diff < 0) {
+					recentlyRemovedFromPool = -diff;
+					recentlyRemovedFromPoolTime = event.msIntoGame;
+				}
 			} else if (event instanceof FrameEndEventSilk && event.previousFrameEndEvent) {
 				if (
 					event.healthTotal === 0 &&
@@ -48,70 +60,44 @@ export function aggregateRecordingSilk(recording: CombinedRecordingSilk): Aggreg
 					addToScenes(currentVirtualScenes, event.msIntoGame, 'deaths', 1);
 				}
 				// todo handle death changes in currency
-				const poolDiff = event.HeroCorpseMoneyPool - event.previousFrameEndEvent.HeroCorpseMoneyPool;
 				let geoDiff = event.geo - event.previousFrameEndEvent.geo;
-				const dead = event.heroState_dead;
 
-				if (poolDiff != 0) {
-					if (dead) {
-						geoDiff += event.HeroCorpseMoneyPool;
-						console.log('Death geo diff', {
-							dead,
-							geo: event.geo,
-							poolDiff,
+				if (geoDiff > 0) {
+					if (
+						recentlyRemovedFromPool &&
+						recentlyRemovedFromPoolTime &&
+						event.msIntoGame - recentlyRemovedFromPoolTime < 100 &&
+						geoDiff === recentlyRemovedFromPool
+					) {
+						// Silksong writes back the removed pool as geo gain in the next frame
+						// so we have to keep track of recently removed pool to not count it as geo gain
+						recentlyRemovedFromPool = null;
+						recentlyRemovedFromPoolTime = 0;
+					} else {
+						if (geoDiff > 1000) {
+							console.warn('Large geo gain diff', {
+								geoDiff,
+								event,
+								time: formatTimeMs(event.msIntoGame),
+								timeMs: event.msIntoGame,
+							});
+						}
+						addToScenes(currentVirtualScenes, event.msIntoGame, 'geoEarned', geoDiff);
+					}
+				} else if (geoDiff < 0) {
+					const pool = event.HeroCorpseMoneyPool;
+					if (pool == -geoDiff) {
+						// just died and lost geo to pool, don't count as geo spent
+						console.log('Death geo loss matches pool gain, not counting as geo spent', {
 							geoDiff,
-							previousGeo: event.previousFrameEndEvent.geo,
-							HeroCorpseMoneyPool: event.HeroCorpseMoneyPool,
-							previousHeroCorpseMoneyPool: event.previousFrameEndEvent.HeroCorpseMoneyPool,
+							pool,
+							event,
 							time: formatTimeMs(event.msIntoGame),
 							timeMs: event.msIntoGame,
 						});
 					} else {
-						geoDiff += poolDiff;
-						console.log('Non death geo diff', {
-							dead,
-							geo: event.geo,
-							poolDiff,
-							geoDiff,
-							previousGeo: event.previousFrameEndEvent.geo,
-							HeroCorpseMoneyPool: event.HeroCorpseMoneyPool,
-							previousHeroCorpseMoneyPool: event.previousFrameEndEvent.HeroCorpseMoneyPool,
-							time: formatTimeMs(event.msIntoGame),
-							timeMs: event.msIntoGame,
-						});
+						addToScenes(currentVirtualScenes, event.msIntoGame, 'geoSpent', -geoDiff);
 					}
-				} else if (geoDiff != 0) {
-					console.log('No pool diff geo diff', {
-						dead,
-						geo: event.geo,
-						poolDiff,
-						geoDiff,
-						previousGeo: event.previousFrameEndEvent.geo,
-						HeroCorpseMoneyPool: event.HeroCorpseMoneyPool,
-						previousHeroCorpseMoneyPool: event.previousFrameEndEvent.HeroCorpseMoneyPool,
-						time: formatTimeMs(event.msIntoGame),
-						timeMs: event.msIntoGame,
-					});
-				}
-
-				if (Math.abs(geoDiff) > 1000) {
-					console.warn('Large geo diff', {
-						dead,
-						geo: event.geo,
-						poolDiff,
-						geoDiff,
-						previousGeo: event.previousFrameEndEvent.geo,
-						HeroCorpseMoneyPool: event.HeroCorpseMoneyPool,
-						previousHeroCorpseMoneyPool: event.previousFrameEndEvent.HeroCorpseMoneyPool,
-						time: formatTimeMs(event.msIntoGame),
-						timeMs: event.msIntoGame,
-					});
-				}
-
-				if (geoDiff < 0) {
-					addToScenes(currentVirtualScenes, event.msIntoGame, 'geoSpent', -geoDiff);
-				} else if (geoDiff > 0) {
-					addToScenes(currentVirtualScenes, event.msIntoGame, 'geoEarned', geoDiff);
 				}
 			}
 		},

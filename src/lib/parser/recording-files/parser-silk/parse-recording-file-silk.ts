@@ -59,10 +59,10 @@ export function parseRecordingFileSilk(
 
 	const logParserStep = (step: string, details?: unknown): void => {
 		if (details === undefined) {
-			console.log(`[silk-parser] ${step}`);
+			// console.log(`[silk-parser] ${step}`);
 			return;
 		}
-		console.log(`[silk-parser] ${step}`, details);
+		// console.log(`[silk-parser] ${step}`, details);
 	};
 
 	const entryTypeName = (entryType: EntryTypeSilk): string =>
