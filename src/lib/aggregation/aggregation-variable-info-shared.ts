@@ -12,78 +12,71 @@ export interface AggregationVariableInfo {
 	showHistoryDelta: boolean;
 }
 
-export const aggregationVariableInfosShared: Record<AggregationVariableShared, AggregationVariableInfo> = {
-	visits: {
+export function aggregationVariableInfo<TVariable extends string>(
+	info: Omit<AggregationVariableInfo, 'key'> & { key: TVariable },
+): { [K in TVariable]: AggregationVariableInfo } {
+	return {
+		[info.key]: info,
+	} as any;
+}
+
+export const aggregationVariableInfosShared: Record<
+	Exclude<AggregationVariableShared, 'geoEarned' | 'geoSpent'>,
+	AggregationVariableInfo
+> = {
+	...aggregationVariableInfo({
 		name: 'Visits',
-		key: 'visits' as AggregationVariable,
+		key: 'visits',
 		format: formatNumberVar,
 		description: 'Number of times this scene/area has been entered.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
-	firstVisitMs: {
+	}),
+	...aggregationVariableInfo({
 		name: 'First visited at',
-		key: 'firstVisitMs' as AggregationVariable,
+		key: 'firstVisitMs',
 		format: formatTimeMsVar,
 		description: 'Time of first visit',
 		isTimestamp: true,
 		showHistory: false,
 		showHistoryDelta: false,
-	},
-	visitOrder: {
+	}),
+	...aggregationVariableInfo({
 		name: 'Visit Order',
-		key: 'visitOrder' as AggregationVariable,
+		key: 'visitOrder',
 		format: formatNumberVar,
 		description:
 			'The order this scene or area was first visited (e.g., 5 means four others were first visited before it).',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
-	timeSpendMs: {
+	}),
+	...aggregationVariableInfo({
 		name: 'Time spent',
-		key: 'timeSpendMs' as AggregationVariable,
+		key: 'timeSpendMs',
 		format: formatTimeMsVar,
 		description: 'Total time spent in a scene/area of all visits combined.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
-	},
-	damageTaken: {
+	}),
+	...aggregationVariableInfo({
 		name: 'Damage taken',
-		key: 'damageTaken' as AggregationVariable,
+		key: 'damageTaken',
 		format: formatNumberVar,
 		description: 'Total damage taken in masks',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
-	},
-	deaths: {
+	}),
+	...aggregationVariableInfo({
 		name: 'Deaths',
-		key: 'deaths' as AggregationVariable,
+		key: 'deaths',
 		format: formatNumberVar,
 		description: 'Number of times the player died in a scene/area.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
-	geoEarned: {
-		name: 'Geo earned',
-		key: 'geoEarned' as AggregationVariable,
-		format: formatNumberVar,
-		description: 'Does not include geo earned by defeating the shade.',
-		isTimestamp: false,
-		showHistory: true,
-		showHistoryDelta: true,
-	},
-	geoSpent: {
-		name: 'Geo spent',
-		key: 'geoSpent' as AggregationVariable,
-		format: formatNumberVar,
-		description: 'Does not include Geo lost by dying and not defeating the shade.',
-		isTimestamp: false,
-		showHistory: true,
-		showHistoryDelta: true,
-	},
+	}),
 };

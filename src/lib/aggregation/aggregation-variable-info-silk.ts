@@ -1,35 +1,56 @@
 import { formatNumberVar } from './aggregation-formatting';
 import { AggregationVariableSilk } from './aggregation-value-silk';
-import { AggregationVariable } from './aggregation-variable';
-import { AggregationVariableInfo, aggregationVariableInfosShared } from './aggregation-variable-info-shared';
+import {
+	aggregationVariableInfo,
+	AggregationVariableInfo,
+	aggregationVariableInfosShared,
+} from './aggregation-variable-info-shared';
 
 export const aggregationVariableInfosSilk: Record<AggregationVariableSilk, AggregationVariableInfo> = {
 	...aggregationVariableInfosShared,
-	focusing: {
+	...aggregationVariableInfo({
 		name: 'Binds',
-		key: 'focusing' as AggregationVariable,
+		key: 'focusing',
 		format: formatNumberVar,
 		description: 'Number of times the player started to heal.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
-	shellShardsEarned: {
+	}),
+	...aggregationVariableInfo({
+		name: 'Rosaries earned',
+		key: 'geoEarned',
+		format: formatNumberVar,
+		description: 'Does not include Rosaries earned by collecting the corpse.',
+		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
+	}),
+	...aggregationVariableInfo({
+		name: 'Rosaries spent',
+		key: 'geoSpent',
+		format: formatNumberVar,
+		description: 'Does not include Rosaries lost by dying and not collecting the corpse.',
+		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
+	}),
+	...aggregationVariableInfo({
 		name: 'Shell Shards Earned',
-		key: 'shellShardsEarned' as AggregationVariable,
+		key: 'shellShardsEarned',
 		format: formatNumberVar,
 		description: 'Number of shell shards earned by the player.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
-	shellShardsSpent: {
+	}),
+	...aggregationVariableInfo({
 		name: 'Shell Shards Spent',
-		key: 'shellShardsSpent' as AggregationVariable,
+		key: 'shellShardsSpent',
 		format: formatNumberVar,
 		description: 'Number of shell shards spent by the player.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
+	}),
 };

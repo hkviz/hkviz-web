@@ -1,64 +1,85 @@
 import { formatNumberVar } from './aggregation-formatting';
 import { AggregationVariableHollow } from './aggregation-value-hollow';
-import { AggregationVariable } from './aggregation-variable';
-import { AggregationVariableInfo, aggregationVariableInfosShared } from './aggregation-variable-info-shared';
+import {
+	aggregationVariableInfo,
+	AggregationVariableInfo,
+	aggregationVariableInfosShared,
+} from './aggregation-variable-info-shared';
 
 export const aggregationVariableInfosHollow: {
 	[key in AggregationVariableHollow]: AggregationVariableInfo;
 } = {
 	...aggregationVariableInfosShared,
-	focusing: {
+	...aggregationVariableInfo({
 		name: 'Focusing',
-		key: 'focusing' as AggregationVariable,
+		key: 'focusing',
 		format: formatNumberVar,
-		description: 'Number of times the player started to focus.',
+		description: 'Number of times the player started to Focus.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
-	spellFireball: {
+	}),
+	...aggregationVariableInfo({
 		name: 'Vengeful Spirit',
-		key: 'spellFireball' as AggregationVariable,
+		key: 'spellFireball',
 		format: formatNumberVar,
-		description: 'Number of times the player used a fireball spell.',
+		description: 'Number of times the player used a fireball Spell.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
-	spellDown: {
+	}),
+	...aggregationVariableInfo({
 		name: 'Desolate Dive',
-		key: 'spellDown' as AggregationVariable,
+		key: 'spellDown',
 		format: formatNumberVar,
-		description: 'Number of times the player used a downwards spell.',
+		description: 'Number of times the player used a downwards Spell.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
-	spellUp: {
+	}),
+	...aggregationVariableInfo({
 		name: 'Howling Wraiths',
-		key: 'spellUp' as AggregationVariable,
+		key: 'spellUp',
 		format: formatNumberVar,
-		description: 'Number of times the player used an upwards spell.',
+		description: 'Number of times the player used an upwards Spell.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
-	},
-	essenceEarned: {
+	}),
+	...aggregationVariableInfo({
+		name: 'Geo earned',
+		key: 'geoEarned',
+		format: formatNumberVar,
+		description: 'Does not include Geo earned by defeating the Shade.',
+		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
+	}),
+	...aggregationVariableInfo({
+		name: 'Geo spent',
+		key: 'geoSpent',
+		format: formatNumberVar,
+		description: 'Does not include Geo lost by dying and not defeating the Shade.',
+		isTimestamp: false,
+		showHistory: true,
+		showHistoryDelta: true,
+	}),
+	...aggregationVariableInfo({
 		name: 'Essence earned',
-		key: 'essenceEarned' as AggregationVariable,
+		key: 'essenceEarned',
 		format: formatNumberVar,
 		description: 'Essence obtained by e.g. defeating dream bosses, or collecting orbs from whispering roots.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
-	},
-	essenceSpent: {
+	}),
+	...aggregationVariableInfo({
 		name: 'Essence spent',
-		key: 'essenceSpent' as AggregationVariable,
+		key: 'essenceSpent',
 		format: formatNumberVar,
 		description: 'Essence spent by using the dream gate.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
-	},
+	}),
 };
