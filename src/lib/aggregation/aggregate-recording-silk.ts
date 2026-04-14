@@ -51,6 +51,13 @@ export function aggregateRecordingSilk(recording: CombinedRecordingSilk): Aggreg
 					recentlyRemovedFromPool = -diff;
 					recentlyRemovedFromPoolTime = event.msIntoGame;
 				}
+			} else if (isPlayerDataEventOfFieldSilk(event, 'ShellShards') && event.previousPlayerDataEventOfField) {
+				const diff = event.value - event.previousPlayerDataEventOfField.value;
+				if (diff > 0) {
+					addToScenes(currentVirtualScenes, event.msIntoGame, 'shellShardsEarned', diff);
+				} else if (diff < 0) {
+					addToScenes(currentVirtualScenes, event.msIntoGame, 'shellShardsSpent', -diff);
+				}
 			} else if (event instanceof FrameEndEventSilk && event.previousFrameEndEvent) {
 				if (
 					event.healthTotal === 0 &&
