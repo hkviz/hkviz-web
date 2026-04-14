@@ -77,7 +77,8 @@ export function createRoomDisplayStore(
 	});
 
 	const roomsVisible: Accessor<ReadonlySet<string> | 'all'> = createMemo(() => {
-		switch (roomVisibility()) {
+		const visibility = roomVisibility();
+		switch (visibility) {
 			case 'all':
 				return 'all' as const;
 			case 'visited':
@@ -94,6 +95,8 @@ export function createRoomDisplayStore(
 				return assertNever(recording);
 			case 'visited-animated':
 				return new Set(playerDataAnimationStore()?.values?.scenesVisited() ?? []);
+			default:
+				return assertNever(visibility);
 		}
 	});
 
@@ -249,7 +252,7 @@ export function createRoomDisplayStore(
 			if (mode === 'all') return 'zone';
 			if (mode === 'zone') return 'room';
 			if (mode === 'room') return 'all';
-			assertNever(mode);
+			return assertNever(mode);
 		});
 	});
 

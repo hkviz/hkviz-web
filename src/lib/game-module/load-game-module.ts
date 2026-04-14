@@ -9,6 +9,6 @@ export async function loadGameModule<Game extends GameId>(game: Game): Promise<G
 		case 'silk':
 			return (await import('./game-module-silk')).gameModuleSilk as GameModuleOfGame<Game>;
 		default:
-			assertNever(game);
+			return assertNever(game);
 	}
 }

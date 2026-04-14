@@ -31,7 +31,7 @@ export function createTraceStore(animationStore: AnimationStore) {
 			case 'fade_out':
 				return animationStore.msIntoGame();
 			default:
-				assertNever(_visibility);
+				return assertNever(_visibility);
 		}
 	});
 

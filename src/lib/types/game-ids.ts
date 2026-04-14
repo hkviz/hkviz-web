@@ -17,6 +17,6 @@ export function getGameName(gameId: GameId) {
 		case GAME_ID_SILKSONG:
 			return 'Silksong';
 		default:
-			assertNever(gameId);
+			return assertNever(gameId);
 	}
 }

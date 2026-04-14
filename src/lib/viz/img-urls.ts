@@ -36,28 +36,29 @@ export const hornetDeathPinImg = '/silk-sprites/Shade_Pin.png';
 export const hornetHealthImg = '/silk-sprites/select_game_HUD_0001_health.png';
 export const hornetHealingImg = '/silk-sprites/Inv_0029_spell_core.png';
 
-export function heroPinSource(game: GameId) {
+export function heroPinSource(game: GameId): string {
 	if (game === 'silk') {
 		return hornetPinSrc;
 	} else if (game === 'hollow') {
 		return knightPinSrc;
 	}
-	assertNever(game);
+	return assertNever(game);
 }
 
-export function heroPinSourceOrUndefined(game: GameId | undefined | null) {
+export function heroPinSourceOrUndefined(game: GameId | undefined | null): string | undefined {
 	if (game) return heroPinSource(game);
 	return undefined;
 }
 
-export function corpsePinSource(game: GameId) {
+export function corpsePinSource(game: GameId): string {
 	if (game === 'silk') {
 		return hornetDeathPinImg;
 	} else if (game === 'hollow') {
 		return shadePinSrc;
 	}
+	return assertNever(game);
 }
-export function corpsePinSourceOrUndefined(game: GameId | undefined | null) {
+export function corpsePinSourceOrUndefined(game: GameId | undefined | null): string | undefined {
 	if (game) return corpsePinSource(game);
 	return undefined;
 }

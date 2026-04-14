@@ -48,7 +48,7 @@ function getComponentForPanelType(type: LayoutPanelType): Component<LayoutPanelT
 				</LayoutPanelWrapper>
 			);
 		default:
-			assertNever(type);
+			return assertNever(type);
 	}
 }
 

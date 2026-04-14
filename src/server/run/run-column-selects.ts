@@ -98,5 +98,5 @@ export function getGameStateMeta(game: GameId, run: RunGameStateUnmapped): RunGa
 	} else if (game === 'silk') {
 		return { ...base, game: 'silk', mapZone: run.mapZone as SilkMapZone | null };
 	}
-	assertNever(game);
+	return assertNever(game);
 }

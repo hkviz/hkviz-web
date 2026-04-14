@@ -178,7 +178,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 							} else if (test.stringType === 'NotContains') {
 								return !value.includes(test.stringValue!);
 							} else {
-								assertNever(test.stringType);
+								return assertNever(test.stringType);
 							}
 						}
 
@@ -217,7 +217,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 						} else if (test.numType === 'MoreThan') {
 							return num1 > num2;
 						} else {
-							assertNever(test.numType);
+							return assertNever(test.numType);
 						}
 					});
 				}

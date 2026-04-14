@@ -23,6 +23,7 @@ import { Label } from '~/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
+import { assertNever } from '../util';
 import { useLayoutPanelContext } from './layout/layout-panel-context';
 import { LayoutPanelHeader } from './layout/layout-panel-header';
 import { LayoutPanelTypeProps } from './layout/layout-panel-props';
@@ -37,6 +38,8 @@ function roomVisibilityName(v: RoomVisibility, short: boolean) {
 			return 'Animated';
 		case 'visited':
 			return 'Visited';
+		default:
+			return assertNever(v);
 	}
 }
 
@@ -48,6 +51,8 @@ function roomVisibilityDescription(v: RoomVisibility) {
 			return 'Only rooms that were visited at any time in the gameplay are visible.';
 		case 'visited':
 			return 'Only rooms that were visited before the selected time in the timeline are visible.';
+		default:
+			return assertNever(v);
 	}
 }
 
@@ -59,6 +64,8 @@ function roomVisibilityIcon(v: RoomVisibility) {
 			return GalleryHorizontalEndIcon;
 		case 'visited':
 			return MapPinCheckInsideIcon;
+		default:
+			return assertNever(v);
 	}
 }
 
@@ -70,6 +77,8 @@ function traceVisibilityName(v: TraceVisibility) {
 			return 'Fade out';
 		case 'hide':
 			return 'Hidden';
+		default:
+			return assertNever(v);
 	}
 }
 
@@ -81,6 +90,8 @@ function traceVisibilityDescription(v: TraceVisibility) {
 			return 'Traces will fade out over a configurable period. Only recent player movement is visible.';
 		case 'hide':
 			return 'No player movement displayed on the map.';
+		default:
+			return assertNever(v);
 	}
 }
 
@@ -92,6 +103,8 @@ function traceVisibilityIcon(v: TraceVisibility) {
 			return ClockIcon;
 		case 'hide':
 			return EyeOffIcon;
+		default:
+			return assertNever(v);
 	}
 }
 

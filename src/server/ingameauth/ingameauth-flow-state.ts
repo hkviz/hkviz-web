@@ -106,6 +106,6 @@ export async function getIngameAuthRedirect(state: IngameAuthFlowState) {
 		case 'final-accept':
 			return redirectWithCookies(`/ingameauth/flow/confirm?game=${state.game}`, cookies);
 		default:
-			assertNever(state);
+			return assertNever(state);
 	}
 }

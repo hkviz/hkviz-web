@@ -194,7 +194,7 @@ export function getMapZoneHudBackgroundHollow(zone: HollowMapZone | null): strin
 		case 'GODSEEKER_WASTE':
 			return areaJunkPit;
 		default:
-			assertNever(zone);
+			return assertNever(zone);
 	}
 }
 
@@ -209,6 +209,6 @@ export function getMapZoneHudBackground(gameState: RunGameStateMeta): string {
 	} else if (gameState.game === 'silk') {
 		return getMapZoneHudBackgroundSilk(gameState.mapZone);
 	} else {
-		assertNever(gameState);
+		return assertNever(gameState);
 	}
 }

@@ -15,12 +15,12 @@ export const aggregationCountModes = ['until-current-time', 'total'] as Aggregat
 export function getAggregationCountModeLabel(mode: AggregationCountMode) {
 	if (mode === 'total') return 'Totals';
 	if (mode === 'until-current-time') return 'Until now';
-	assertNever(mode);
+	return assertNever(mode);
 }
 export function getAggregationCountModeDescription(mode: AggregationCountMode) {
 	if (mode === 'total') return 'Shows the stats for the complete gameplay, ignoring the selected time.';
 	if (mode === 'until-current-time') return 'Shows the stats up to the selected time in the timeline.';
-	assertNever(mode);
+	return assertNever(mode);
 }
 export function getAggregationCountModeIcon(mode: AggregationCountMode) {
 	if (mode === 'total') {
@@ -29,7 +29,7 @@ export function getAggregationCountModeIcon(mode: AggregationCountMode) {
 	if (mode === 'until-current-time') {
 		return PlayIcon;
 	}
-	assertNever(mode);
+	return assertNever(mode);
 }
 
 export function createAggregationStore(
@@ -54,7 +54,7 @@ export function createAggregationStore(
 			return zoneName ? virtualSceneName.zone(zoneName) : null;
 		}
 		if (mode === 'all') return virtualSceneName.all;
-		assertNever(mode);
+		return assertNever(mode);
 	}
 
 	function getVirtualSceneNameForHeatMap(sceneName: string): string {
@@ -82,7 +82,7 @@ export function createAggregationStore(
 			return currentIndex !== -1 ? (timePoints[currentIndex] ?? aggregations_.DEFAULT) : aggregations_.DEFAULT;
 		}
 
-		assertNever(mode);
+		return assertNever(mode);
 	}
 
 	function getAggregationHistory(

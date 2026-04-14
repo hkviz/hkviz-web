@@ -1,4 +1,4 @@
-import { type Accessor, createEffect, createSignal } from 'solid-js';
+import { type Accessor, createEffect, createSignal, onCleanup } from 'solid-js';
 
 const OPTIONS = {
 	root: null,
@@ -16,7 +16,7 @@ export function createIsVisible(elementRef: Accessor<Element | null>) {
 				setIsVisible(entries.some((entry) => entry.isIntersecting));
 			}, OPTIONS);
 			observer.observe(element);
-			return () => observer.unobserve(element);
+			onCleanup(() => observer.unobserve(element));
 		} else {
 			setIsVisible(false);
 		}

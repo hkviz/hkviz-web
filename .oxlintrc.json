@@ -36,6 +36,10 @@
 			{
 				"selector": "BinaryExpression[operator='!=='] > Identifier[name='undefined']",
 				"message": "Use != null instead of !== undefined"
+			},
+			{
+				"selector": "ImportDeclaration[source.value='lucide-solid'] ImportSpecifier:not([imported.name=/Icon$/])",
+				"message": "Only imports ending in 'Icon' are allowed from 'lucide-solid'"
 			}
 		],
 		"no-implicit-coercion": "error",
@@ -43,8 +47,8 @@
 		// "no-undef": "error",
 		"no-unreachable": "error",
 		"no-fallthrough": "error",
-		//"consistent-return": "warn",
-		"prefer-const": "warn",
+		"consistent-return": "error",
+		"prefer-const": "error",
 		"no-var": "error",
 		"typescript/no-floating-promises": "error",
 		//"typescript/no-shadow": "warn",
