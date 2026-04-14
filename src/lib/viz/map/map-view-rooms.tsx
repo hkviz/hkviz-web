@@ -1,4 +1,5 @@
-import { For, createMemo, createUniqueId } from 'solid-js';
+import * as d3 from 'd3';
+import { For, Match, Switch, createMemo, createUniqueId } from 'solid-js';
 import { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import { GameId } from '~/lib/types/game-ids';
 import { useSpriteSheetStore } from '../spritesheets/spritesheet-store';
@@ -10,12 +11,79 @@ import {
 	useThemeStore,
 } from '../store';
 
+type RoomRenderMode = 'overlayAlpha' | 'overlaySolid';
+
+type RoomImagePositionHelper = {
+	getX: <Game extends GameId>(
+		sprite: RoomDataOfGame<Game>['allSprites'][number],
+		room: RoomDataOfGame<Game>,
+	) => number;
+	getY: <Game extends GameId>(
+		sprite: RoomDataOfGame<Game>['allSprites'][number],
+		room: RoomDataOfGame<Game>,
+	) => number;
+};
+
+const patternImagePositionHelper: RoomImagePositionHelper = {
+	getX: (sprite, room) => {
+		const roomVisualBounds = room.visualBoundsAllSprites;
+		if (!roomVisualBounds) return sprite.sprite.visualBounds.min.x;
+		return sprite.sprite.visualBounds.min.x - roomVisualBounds.min.x;
+	},
+	getY: (sprite, room) => {
+		const roomVisualBounds = room.visualBoundsAllSprites;
+		if (!roomVisualBounds) return sprite.sprite.visualBounds.min.y;
+		return sprite.sprite.visualBounds.min.y - roomVisualBounds.min.y;
+	},
+};
+
+const maskImagePositionHelper: RoomImagePositionHelper = {
+	getX: (sprite) => sprite.sprite.visualBounds.min.x,
+	getY: (sprite) => sprite.sprite.visualBounds.min.y,
+};
+
+function RoomSpriteImages<Game extends GameId>(props: {
+	room: RoomDataOfGame<Game>;
+	mapSheetData: () => Record<string, string> | undefined;
+	activeVariant: () => string;
+	positionHelper: RoomImagePositionHelper;
+}) {
+	return (
+		<For each={props.room.allSprites}>
+			{(sprite) => {
+				const imgPath =
+					'nameWithoutSubSprites' in sprite
+						? (sprite.nameWithoutSubSprites ?? sprite.sprite.name)
+						: sprite.sprite.name;
+				const href = () => props.mapSheetData()?.[imgPath];
+
+				return (
+					<image
+						data-variant={sprite.variant}
+						preserveAspectRatio="none"
+						x={props.positionHelper.getX(sprite, props.room)}
+						y={props.positionHelper.getY(sprite, props.room)}
+						width={sprite.sprite.visualBounds.size.x}
+						height={sprite.sprite.visualBounds.size.y}
+						href={href()}
+						style={{
+							transition: 'opacity 0.1s ease 0s',
+							opacity: props.activeVariant() === sprite.variant ? '100%' : '0%',
+						}}
+					/>
+				);
+			}}
+		</For>
+	);
+}
+
 function MapViewRoom<Game extends GameId>(props: {
 	room: RoomDataOfGame<Game>;
 	highlightSelectedRoom: boolean;
 	alwaysShowMainRoom: boolean;
 	alwaysUseAreaAsColor: boolean;
 	maskId: string;
+	mode: RoomRenderMode;
 }) {
 	const roomColoringStore = useRoomColoringStore();
 	const spriteSheetStore = useSpriteSheetStore();
@@ -29,52 +97,94 @@ function MapViewRoom<Game extends GameId>(props: {
 		() => (props.room.isMainGameObject && props.alwaysShowMainRoom) || states().isVisible(),
 	);
 
+	const patternId = () => `pattern-${props.maskId}`.replace(/\s/g, '-');
+	const filterId = () => `filter-${props.maskId}`.replace(/\s/g, '-');
+
+	const color = () => {
+		return props.alwaysUseAreaAsColor
+			? roomColoringStore.areaColorByGameObjectName().get(props.room.gameObjectName)?.()
+			: roomColoringStore.selectedModeColorByGameObjectName().get(props.room.gameObjectName)?.();
+	};
+
+	const colorRgb = createMemo(() => {
+		const c = color();
+		const rgb = c != null ? d3.color(c)?.rgb() : null;
+		return rgb ?? { r: 128, g: 128, b: 128 };
+	});
+
+	const mask = (
+		<mask id={props.maskId}>
+			<rect style={{ fill: 'black' }} />
+			<RoomSpriteImages
+				room={props.room}
+				mapSheetData={mapSheetData}
+				activeVariant={() => states().variant()}
+				positionHelper={maskImagePositionHelper}
+			/>
+		</mask>
+	);
+
 	return (
 		<g data-scene-name={props.room.sceneName} data-game-object-name={props.room.gameObjectName}>
-			<mask id={props.maskId}>
-				<rect style={{ fill: 'black' }} />
-				<For each={props.room.allSprites}>
-					{(sprite) => {
-						const imgPath =
-							'nameWithoutSubSprites' in sprite
-								? (sprite.nameWithoutSubSprites ?? sprite.sprite.name)
-								: sprite.sprite.name;
-						const href = () => mapSheetData()?.[imgPath];
-
-						return (
-							<image
-								data-variant={sprite.variant}
-								preserveAspectRatio="none"
-								x={sprite.sprite.visualBounds.min.x}
-								y={sprite.sprite.visualBounds.min.y}
-								width={sprite.sprite.visualBounds.size.x}
-								height={sprite.sprite.visualBounds.size.y}
-								// href={'/ingame-map/' + (sprite.nameWithoutSubSprites ?? sprite.name) + '.png'}
-								href={href()}
-								style={{
-									transition: 'opacity 0.1s ease 0s',
-									opacity: states().variant() === sprite.variant ? '100%' : '0%',
-								}}
+			<Switch>
+				<Match when={props.mode === 'overlayAlpha'}>
+					{mask}
+					<rect
+						class={hkMapRoomRectClass(props.room)}
+						mask={`url(#${props.maskId})`}
+						x={props.room.visualBoundsAllSprites?.min.x ?? 0}
+						y={props.room.visualBoundsAllSprites?.min.y ?? 0}
+						width={props.room.visualBoundsAllSprites?.size.x ?? 0}
+						height={props.room.visualBoundsAllSprites?.size.y ?? 0}
+						style={{
+							transition: 'fill 0.1s ease 0s',
+							fill: color(),
+							['pointer-events']: isInteractable() ? 'all' : 'none',
+						}}
+					/>
+				</Match>
+				<Match when={props.mode === 'overlaySolid'}>
+					<defs>
+						{mask}
+						<pattern
+							id={patternId()}
+							patternUnits="userSpaceOnUse"
+							x={props.room.visualBoundsAllSprites?.min.x ?? 0}
+							y={props.room.visualBoundsAllSprites?.min.y ?? 0}
+							width={props.room.visualBoundsAllSprites?.size.x ?? 0}
+							height={props.room.visualBoundsAllSprites?.size.y ?? 0}
+						>
+							<RoomSpriteImages
+								room={props.room}
+								mapSheetData={mapSheetData}
+								activeVariant={() => states().variant()}
+								positionHelper={patternImagePositionHelper}
 							/>
-						);
-					}}
-				</For>
-			</mask>
-			<rect
-				class={hkMapRoomRectClass(props.room)}
-				mask={`url(#${props.maskId})`}
-				x={props.room.visualBoundsAllSprites?.min.x ?? 0}
-				y={props.room.visualBoundsAllSprites?.min.y ?? 0}
-				width={props.room.visualBoundsAllSprites?.size.x ?? 0}
-				height={props.room.visualBoundsAllSprites?.size.y ?? 0}
-				style={{
-					transition: 'fill 0.1s ease 0s',
-					fill: props.alwaysUseAreaAsColor
-						? roomColoringStore.areaColorByGameObjectName().get(props.room.gameObjectName)?.()
-						: roomColoringStore.selectedModeColorByGameObjectName().get(props.room.gameObjectName)?.(),
-					['pointer-events']: isInteractable() ? 'all' : 'none',
-				}}
-			/>
+						</pattern>
+						<filter id={filterId()} color-interpolation-filters="sRGB">
+							<feComponentTransfer>
+								<feFuncR type="linear" slope={colorRgb().r / 255} />
+								<feFuncG type="linear" slope={colorRgb().g / 255} />
+								<feFuncB type="linear" slope={colorRgb().b / 255} />
+								<feFuncA type="linear" slope={1} />
+							</feComponentTransfer>
+						</filter>
+					</defs>
+					<rect
+						class={hkMapRoomRectClass(props.room)}
+						x={props.room.visualBoundsAllSprites?.min.x ?? 0}
+						y={props.room.visualBoundsAllSprites?.min.y ?? 0}
+						width={props.room.visualBoundsAllSprites?.size.x ?? 0}
+						height={props.room.visualBoundsAllSprites?.size.y ?? 0}
+						style={{
+							transition: 'fill 0.1s ease 0s',
+							fill: `url(#${patternId()})`,
+							filter: `url(#${filterId()})`,
+							opacity: '100%',
+						}}
+					/>
+				</Match>
+			</Switch>
 		</g>
 	);
 }
@@ -90,9 +200,14 @@ export interface MapViewRoomsProps<Game extends GameId> {
 }
 
 export function MapViewRooms<Game extends GameId>(props: MapViewRoomsProps<Game>) {
+	const gameplayStore = useGameplayStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const themeStore = useThemeStore();
 	const idPrefix = createUniqueId();
+
+	const mode = createMemo<RoomRenderMode>(() => {
+		return gameplayStore.game() === 'silk' ? 'overlaySolid' : 'overlayAlpha';
+	});
 
 	const roomByGameObjectName = createMemo(() => new Map(props.rooms.map((room) => [room.gameObjectName, room])));
 	const maskIdByGameObjectName = createMemo(
@@ -166,6 +281,7 @@ export function MapViewRooms<Game extends GameId>(props: MapViewRoomsProps<Game>
 						alwaysShowMainRoom={props.alwaysShowMainRoom ?? false}
 						alwaysUseAreaAsColor={props.alwaysUseAreaAsColor ?? false}
 						maskId={maskIdByGameObjectName().get(room.gameObjectName)!}
+						mode={mode()}
 					/>
 				)}
 			</For>

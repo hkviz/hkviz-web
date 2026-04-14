@@ -1,5 +1,5 @@
 import { silkMapData } from './map-data-silk';
-import { sceneNameToId } from './scene-ids.generated';
+import { sceneNameToId } from './scene-ids-silk.generated';
 
 function createSceneIdToSceneNameMap(): Map<number, string> {
 	const sceneNameByLower = new Map(silkMapData.rooms.map((it) => [it.sceneName.toLowerCase(), it.sceneName]));

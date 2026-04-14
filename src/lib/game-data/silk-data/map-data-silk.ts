@@ -14,6 +14,7 @@ import {
 	TextDataSilk,
 } from './map-data-silk.types.js';
 import { formatAreaNameSilk } from './room-name-formatting-silk.js';
+import { isActualSceneNameSilk } from './scene-name-check-silk.js';
 import { silkScaleBounds } from './silk-scaling.js';
 
 function mapGeneratedText(text: SilkTextDataGenerated): TextDataSilk {
@@ -46,8 +47,42 @@ silkMapDataGenerated.rooms.forEach((room) => {
 	}
 });
 
+const silkSceneNameToActual: Record<string, string> = {
+	Slab_03b: 'Slab_03',
+};
+
 export const silkMapData: MapDataSilk = {
 	rooms: silkMapDataGenerated.rooms.map((room) => {
+		const sceneNameForVisited = room.sceneName;
+		let sceneName = room.sceneName;
+
+		let isMainGameObject = null;
+
+		if (silkSceneNameToActual[sceneName]) {
+			sceneName = silkSceneNameToActual[sceneName];
+			isMainGameObject = false;
+		} else if (!isActualSceneNameSilk(sceneName)) {
+			let attempts = 0;
+			let current = sceneName;
+
+			while (attempts < 3) {
+				const parts = current.split('_');
+				if (parts.length <= 1) break;
+				const candidate = parts.slice(0, -1).join('_');
+				if (isActualSceneNameSilk(candidate)) {
+					sceneName = candidate;
+					isMainGameObject = false;
+					break;
+				}
+				current = candidate;
+				attempts++;
+			}
+
+			if (sceneName === room.sceneName) {
+				console.warn(`Scene name ${room.sceneName} is not an actual scene name in silk data`);
+			}
+		}
+
 		const visualBounds = room.visualBounds ? silkScaleBounds(room.visualBounds) : null;
 
 		const altFullSprites: SpriteConditionDataSilk[] | null =
@@ -96,8 +131,10 @@ export const silkMapData: MapDataSilk = {
 			unmappedNoBounds: room.unmappedNoBounds,
 			excludeBounds: room.excludeBounds,
 			hideCondition: room.hideCondition,
-			sceneName: room.sceneName,
 			gameObjectName: room.gameObjectName,
+
+			sceneName,
+			sceneNameForVisited,
 
 			altColors,
 			mappedIfAllMapped,
@@ -110,7 +147,7 @@ export const silkMapData: MapDataSilk = {
 			roomNameFormatted: room.sceneName, // TODO
 			roomNameFormattedZoneExclusive: room.sceneName, // TODO
 			zoneNameFormatted: formatAreaNameSilk(room.mapZone) + ': ' + room.mapZone, // TODO
-			isMainGameObject: false, // set below
+			isMainGameObject: isMainGameObject as boolean, // set below to actual boolean
 			visualBoundsAllSprites,
 		};
 		return mappedRoom;
@@ -133,11 +170,34 @@ silkMapData.rooms.sort((a, b) => {
 // Bone_East_07
 // Dock_02b_bot
 
-export const mapDataBySceneNameSilk = new Map(silkMapData.rooms.map((it) => [it.sceneName, it]));
-export const mapDataAllBySceneNameSilk = Map.groupBy(silkMapData.rooms, (it) => it.sceneName);
-export const mapDataByGameObjectNameSilk = new Map(silkMapData.rooms.map((it) => [it.gameObjectName, it]));
+function makeSceneGroups() {
+	const groups = Map.groupBy(silkMapData.rooms, (it) => it.sceneName);
 
-mapDataAllBySceneNameSilk.forEach((rooms) => {
-	// Not ideal. probably has some logic behind it.
-	rooms[0].isMainGameObject = true;
-});
+	groups.forEach((rooms) => {
+		// Not ideal. probably has some logic behind it.
+		let didSetMainGameObject = false;
+		for (const room of rooms) {
+			if (room.isMainGameObject === false) continue;
+			if (didSetMainGameObject) {
+				room.isMainGameObject = false;
+			} else {
+				room.isMainGameObject = true;
+				didSetMainGameObject = true;
+			}
+		}
+		if (!didSetMainGameObject) {
+			console.warn(`No main game object found for scene ${rooms[0].sceneName}, defaulting to first one`);
+			rooms[0].isMainGameObject = true;
+		}
+	});
+
+	return groups;
+}
+
+export const mapDataAllBySceneNameSilk = makeSceneGroups();
+export const mapDataMainBySceneNameSilk = new Map(
+	mapDataAllBySceneNameSilk
+		.entries()
+		.map(([sceneName, rooms]) => [sceneName, rooms.find((r) => r.isMainGameObject) ?? rooms[0]] as const),
+);
+export const mapDataByGameObjectNameSilk = new Map(silkMapData.rooms.map((it) => [it.gameObjectName, it]));

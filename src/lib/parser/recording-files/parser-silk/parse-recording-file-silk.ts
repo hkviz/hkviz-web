@@ -6,7 +6,7 @@ import {
 	PlayerDataFieldValueSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
-import { sceneIdToSceneName } from '../../../game-data/silk-data/scene-ids';
+import { sceneIdToSceneName } from '../../../game-data/silk-data/scene-ids-silk';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';

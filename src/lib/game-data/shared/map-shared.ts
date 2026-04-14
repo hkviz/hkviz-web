@@ -6,6 +6,8 @@ export interface RoomDataBase<Game extends GameId> {
 	game: Game;
 
 	sceneName: string;
+	sceneNameForVisited: string;
+
 	gameObjectName: string;
 
 	roomNameFormatted: string;

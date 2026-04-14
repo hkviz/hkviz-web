@@ -1,4 +1,4 @@
-import { mapDataBySceneNameSilk } from '../game-data/silk-data/map-data-silk';
+import { mapDataMainBySceneNameSilk } from '../game-data/silk-data/map-data-silk';
 import { isPlayerDataEventOfFieldSilk } from '../game-data/silk-data/player-data-silk';
 import { FrameEndEventSilk } from '../parser/recording-files/events-silk/frame-end-event-silk';
 import { CombinedRecordingSilk } from '../parser/recording-files/parser-silk/recording-silk';
@@ -12,7 +12,7 @@ import {
 
 export function getZoneNameFromSceneName(sceneName: string | undefined | null): string | undefined {
 	if (!sceneName) return undefined;
-	return mapDataBySceneNameSilk.get(sceneName)?.zoneNameFormatted;
+	return mapDataMainBySceneNameSilk.get(sceneName)?.zoneNameFormatted;
 }
 
 export function aggregateRecordingSilk(recording: CombinedRecordingSilk): AggregatedRunDataSilk {

@@ -1,7 +1,7 @@
 import {
 	mapDataAllBySceneNameSilk,
 	mapDataByGameObjectNameSilk,
-	mapDataBySceneNameSilk,
+	mapDataMainBySceneNameSilk,
 	silkMapData,
 } from '~/lib/game-data/silk-data/map-data-silk';
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
@@ -21,7 +21,7 @@ export const gameModuleSilk: GameModule<'silk'> = {
 	},
 	combineRecordings: combineRecordingsSilk,
 	positionToMap: playerPositionToMapPositionSilk,
-	getMainRoomDataBySceneName: (sceneName) => mapDataBySceneNameSilk.get(sceneName),
+	getMainRoomDataBySceneName: (sceneName) => mapDataMainBySceneNameSilk.get(sceneName),
 	getAllRoomDataBySceneNameNoSubSprites: (sceneName) => mapDataAllBySceneNameSilk.get(sceneName),
 	getAllRoomDataBySceneNameWithSubSprites: (sceneName) =>
 		// currently subsprites not implemented in silk

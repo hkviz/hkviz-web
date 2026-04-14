@@ -109,7 +109,11 @@ export function createRoomDisplayStore(
 			return existing;
 		}
 		const gameObjectNameNeededInVisited =
-			room && isRoomDataHollow(room) ? (room?.gameObjectNameNeededInVisited ?? gameObjectName) : gameObjectName;
+			room && isRoomDataHollow(room)
+				? (room?.gameObjectNameNeededInVisited ?? gameObjectName)
+				: room && isRoomDataSilk(room)
+					? room.sceneNameForVisited
+					: gameObjectName;
 		const isSilk = room && isRoomDataSilk(room);
 		const signal = createMemo(() => {
 			const visible = roomsVisible();
