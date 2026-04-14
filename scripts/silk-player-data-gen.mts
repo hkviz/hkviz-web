@@ -2,7 +2,9 @@ import { readFile, writeFile } from 'fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import path from 'path';
-import { modsRepo } from './paths.local.mts';
+//import { modsRepo } from './paths.local.mts';
+
+export const modsRepo = '<some-folder>';
 
 const execFileAsync = promisify(execFile);
 
