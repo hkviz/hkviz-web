@@ -154,14 +154,23 @@ export function createRoomDisplayStore(
 				} else if (isSilk) {
 					// oxlint-disable-next-line solid/reactivity
 					variant = createMemo<RoomSpriteVariantSilk | 'hidden'>(() => {
-						const variantFull: RoomSpriteVariantSilk = room.initialState == 'Full' ? 'initial' : 'full';
 						const visible = selfIsVisible();
 
 						if (!visible) {
 							return 'hidden';
 						}
 
-						return variantFull;
+						let variant: RoomSpriteVariantSilk = 'initial';
+
+						for (const v of room.allSprites) {
+							if (v.type === 'full') {
+								variant = v.variant;
+							} else if (v.type === 'alt-full-sprite') {
+								// TODO evaluate conditions
+							}
+						}
+
+						return variant;
 					});
 				} else {
 					// oxlint-disable-next-line solid/reactivity
