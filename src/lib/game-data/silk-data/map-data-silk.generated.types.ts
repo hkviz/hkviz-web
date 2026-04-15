@@ -1,5 +1,7 @@
 /**
- * TypeScript types that mirror the C# MapExportTypes for Silksong map export
+ * TypeScript types that mirror the C# MapExportTypes for Silksong map export.
+ *
+ * Not generated, but types for generated data.
  */
 
 import { SpriteInfoGenerated } from '../shared/sprite-info-generated';

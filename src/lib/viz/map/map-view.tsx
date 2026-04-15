@@ -20,7 +20,7 @@ import { createMapViewZoom } from './hk-map-zoom';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
 import { MapViewRooms } from './map-view-rooms';
-import { OutlineFilter } from './svg-filters';
+import { HoverOutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 
 export interface MapViewProps extends LayoutPanelTypeProps {
@@ -259,7 +259,7 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 			preserveAspectRatio="xMidYMid meet"
 		>
 			<defs>
-				<OutlineFilter />
+				<HoverOutlineFilter />
 			</defs>
 			{rootG}
 		</svg>

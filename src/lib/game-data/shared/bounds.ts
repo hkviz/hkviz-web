@@ -33,6 +33,11 @@ export class Bounds {
 		return Bounds.fromMinMax(min, max);
 	}
 
+	public static fromContainingBoundsOrZero(bounds: Bounds[] | null | undefined): Bounds {
+		if (!bounds || bounds.length === 0) return Bounds.ZERO;
+		return Bounds.fromContainingBounds(bounds);
+	}
+
 	public static fromContainingPoints(points: Vector2[]): Bounds {
 		const min = new Vector2(Math.min(...points.map((p) => p.x)), Math.min(...points.map((p) => p.y)));
 		const max = new Vector2(Math.max(...points.map((p) => p.x)), Math.max(...points.map((p) => p.y)));

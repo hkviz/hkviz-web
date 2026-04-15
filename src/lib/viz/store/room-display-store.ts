@@ -174,20 +174,35 @@ export function createRoomDisplayStore(
 						}
 					});
 				} else if (isSilk) {
+					const fullVariant =
+						room.initialState !== 'Rough' ? 'initial' : room.spritesByVariant.full ? 'full' : 'initial';
+
+					const mappedIfAllMapped =
+						room.mappedIfAllMapped && room.mappedIfAllMapped.length > 0
+							? room.mappedIfAllMapped.map((sceneName) => getSelfVisibilitySignal(sceneName))
+							: null;
+
 					// oxlint-disable-next-line solid/reactivity
 					variant = createMemo<RoomSpriteVariantSilk | 'hidden'>(() => {
-						const visible = selfIsVisible();
+						let visible = selfIsVisible();
+
+						if (mappedIfAllMapped) {
+							const allMappedVisible = mappedIfAllMapped.every((v) => v());
+							if (allMappedVisible) {
+								visible = true;
+							}
+						}
 
 						if (!visible) {
 							return 'hidden';
 						}
 
-						let variant: RoomSpriteVariantSilk = 'initial';
+						// game source GameMapScene.SetMapped inspired
+						// Sprite sprite = ((initialState != States.Rough) ? initialSprite : (fullSprite ? fullSprite : initialSprite));
+						let variant: RoomSpriteVariantSilk = fullVariant;
 
 						for (const v of room.allSprites) {
-							if (v.type === 'full') {
-								variant = v.variant;
-							} else if (v.type === 'alt-full-sprite') {
+							if (v.type === 'alt-full-sprite') {
 								if (isConditionFulfilledSilkRoomDisplayMode(v.condition)) {
 									variant = v.variant;
 									// game uses first sprite that matches:

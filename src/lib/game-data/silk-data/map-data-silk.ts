@@ -85,6 +85,27 @@ export const silkMapData: MapDataSilk = {
 
 		const visualBounds = room.visualBounds ? silkScaleBounds(room.visualBounds) : null;
 
+		// TODO silk: replicate bounds for player position like game does:
+		// public Sprite BoundsSprite
+		// 	{
+		// 		get
+		// 		{
+		// 			if (unmappedNoBounds && !IsMapped)
+		// 			{
+		// 				return null;
+		// 			}
+		// 			if (IsInitialStateRough() && (bool)fullSprite) // initialState == States.Rough;
+		// 			{
+		// 				return fullSprite;
+		// 			}
+		// 			if (!hasSpriteRenderer)
+		// 			{
+		// 				return null;
+		// 			}
+		// 			return initialSprite;
+		// 		}
+		// 	}
+
 		const altFullSprites: SpriteConditionDataSilk[] | null =
 			room.altFullSprites?.map((s, index) => ({
 				type: 'alt-full-sprite',
@@ -94,7 +115,13 @@ export const silkMapData: MapDataSilk = {
 			})) ?? null;
 
 		const initialSprite = room.initialSprite ? mapSpriteInfo(visualBounds, room.initialSprite) : null;
-		const fullSprite = room.fullSprite ? mapSpriteInfo(visualBounds, room.fullSprite) : null;
+		let fullSprite = room.fullSprite ? mapSpriteInfo(visualBounds, room.fullSprite) : null;
+
+		if (room.initialState !== 'Rough' && fullSprite) {
+			// game never uses this sprite. some rooms have set a full sprite (because of copy-pasting in the editor likely).
+			// our variant selector would never select it, but the bounds would still include it.
+			fullSprite = null;
+		}
 
 		const allSpritesUnfiltered: (SomeSpriteTypeSilk | null)[] = [
 			initialSprite ? { type: 'initial', sprite: initialSprite, variant: 'initial' } : null,
