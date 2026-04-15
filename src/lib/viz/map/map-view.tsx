@@ -15,11 +15,11 @@ import { createElementSize } from '../canvas';
 import { useLayoutPanelContextOrNull } from '../layout/layout-panel-context';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { useGameplayStore, useMapZoomStore, useRoomDisplayStore, useUiStore } from '../store';
-import { HkMapTexts } from './hk-map-texts';
 import { createMapViewZoom } from './hk-map-zoom';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
 import { MapViewRooms } from './map-view-rooms';
+import { HkMapTexts } from './map-view-texts';
 import { HoverOutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 

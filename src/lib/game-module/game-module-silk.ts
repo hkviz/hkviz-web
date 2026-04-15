@@ -30,6 +30,7 @@ export const gameModuleSilk: GameModule<'silk'> = {
 		return mapDataByGameObjectNameSilk.get(gameObjectName);
 	},
 	mapRooms: silkMapData.rooms,
+	mapAreaTexts: silkMapData.areaNames,
 	playerDataFields: {
 		byFieldName: playerDataFieldsSilk.byFieldName,
 		list: playerDataFieldsSilk.list,

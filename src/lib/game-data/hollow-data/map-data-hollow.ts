@@ -7,13 +7,13 @@ import { Bounds } from '~/lib/game-data/shared/bounds';
 import { colorFromRgbVector } from '~/lib/game-data/shared/colors';
 import { spriteInfoBounds } from '~/lib/game-data/shared/sprite-info-mapper';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { prepareTextExportData } from '../../parser/map-data/area-names';
 import { customRoomData, type CustomRoomInfo, type UnprocessedRoomInfo } from '../../parser/map-data/room-custom';
 import { roomGroupByName } from '../../parser/map-data/room-groups';
 import { getSubSprites } from '../../parser/map-data/room-sub-sprites';
 import { getZoomZones } from '../../parser/map-data/zoom-zone';
 import { omit } from '../../util';
 import { formatZoneAndRoomNameHollow } from './room-name-formatting-hollow';
+import { prepareTextExportDataHollow } from './text-data-hollow';
 
 const roomDataUnscaledWithCustom: Array<UnprocessedRoomInfo | CustomRoomInfo> = [
 	...roomDataUnscaled.rooms,
@@ -111,7 +111,7 @@ export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 	const allSprites = Object.values(spritesByVariant).filter((it) => it != null);
 	const visualBoundsAllSprites = Bounds.fromContainingBounds(allSprites.map((it) => it.sprite.visualBounds));
 
-	const texts = room.texts.map((text) => prepareTextExportData(text));
+	const texts = room.texts.map((text) => prepareTextExportDataHollow(text));
 
 	const names = formatZoneAndRoomNameHollow(room.mapZone, room.sceneName);
 	const zoomZones = getZoomZones(room.sceneName, names.zoneNameFormatted);

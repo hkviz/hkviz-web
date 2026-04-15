@@ -4,6 +4,7 @@ import { GameId } from '~/lib/types/game-ids';
 import { AggregationValueOfGame } from '../aggregation/aggregation-value-specific';
 import { AggregationVariable } from '../aggregation/aggregation-variable';
 import { AggregationVariableInfo } from '../aggregation/aggregation-variable-info-shared';
+import { MapTextData } from '../game-data/shared/map-text-data';
 import { PlayerDataFieldByNameOfGame, PlayerDataFieldOfGame } from '../game-data/specific/player-data-of-game';
 import { SceneEvent } from '../parser/recording-files/events-shared/scene-event';
 import { CombinedRecordingOfGame } from '../parser/recording-files/parser-specific/combined-recording';
@@ -19,6 +20,7 @@ export interface GameModule<Game extends GameId> {
 	getAllRoomDataBySceneNameWithSubSprites: (sceneName: string) => RoomDataOfGame<Game>[] | undefined;
 	getRoomDataByGameObjectName: (gameObjectName: string) => RoomDataOfGame<Game> | undefined;
 	mapRooms: RoomDataOfGame<Game>[];
+	mapAreaTexts: MapTextData[];
 	playerDataFields: {
 		byFieldName: PlayerDataFieldByNameOfGame<Game>;
 		list: PlayerDataFieldOfGame<Game>[];

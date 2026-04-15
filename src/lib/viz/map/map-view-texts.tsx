@@ -1,13 +1,20 @@
-import { For } from 'solid-js';
-import { areaNames, hkLangString, mapRoomsHollow, type AreaNameTextData } from '../../parser';
-import { changeRoomColorForLightTheme, useRoomColoringStore, useRoomDisplayStore, useThemeStore } from '../store';
+import { createMemo, For } from 'solid-js';
+import { MapTextData } from '~/lib/game-data/shared/map-text-data';
+import { hkLangString } from '../../parser';
+import {
+	changeRoomColorForLightTheme,
+	useGameplayStore,
+	useRoomColoringStore,
+	useRoomDisplayStore,
+	useThemeStore,
+} from '../store';
 
-interface HkMapTextProps {
-	textData: AreaNameTextData;
-	visibleBy: { gameObjectName: string } | { zoneName: string };
+interface MapViewTextProps {
+	textData: MapTextData;
+	visibleBy: { zoneName: string } | boolean;
 }
 
-function HkMapText(props: HkMapTextProps) {
+function MapViewText(props: MapViewTextProps) {
 	const roomDisplayStore = useRoomDisplayStore();
 	const roomColoringStore = useRoomColoringStore();
 	const colorMode = roomColoringStore.colorMode;
@@ -30,8 +37,8 @@ function HkMapText(props: HkMapTextProps) {
 
 		const visible =
 			typeVisible &&
-			('gameObjectName' in props.visibleBy
-				? roomDisplayStore.stateForGameObjectName(props.visibleBy.gameObjectName)?.isVisible()
+			(typeof props.visibleBy === 'boolean'
+				? props.visibleBy
 				: roomDisplayStore.zoneVisible.get(props.visibleBy.zoneName)?.());
 		return visible ? '1' : '0';
 	};
@@ -53,26 +60,31 @@ function HkMapText(props: HkMapTextProps) {
 	);
 }
 
-const roomTexts = mapRoomsHollow.flatMap((room) =>
-	room.texts.filter((text) => !text.objectPath.includes('Next Area')).map((text) => ({ room, text })),
-);
-
 export function HkMapTexts() {
+	const gameplayStore = useGameplayStore();
+	const roomDisplayStore = useRoomDisplayStore();
+	const roomTexts = createMemo(() => {
+		return gameplayStore
+			.gameModule()
+			?.mapRooms?.flatMap(
+				(room) =>
+					room.texts
+						.filter((text) => !text.objectPath.includes('Next Area'))
+						.map((text) => ({ room, text })) ?? [],
+			);
+	});
+
 	return (
 		<g data-group="area-names">
-			<For each={roomTexts}>
-				{(it) => (
-					<HkMapText
-						textData={it.text}
-						visibleBy={{
-							gameObjectName: it.room.gameObjectNameNeededInVisited,
-						}}
-					/>
-				)}
+			<For each={roomTexts()}>
+				{(it) => {
+					const states = roomDisplayStore.stateForGameObjectName(it.room.gameObjectName);
+					return <MapViewText textData={it.text} visibleBy={states?.isVisible() ?? false} />;
+				}}
 			</For>
-			<For each={areaNames}>
+			<For each={gameplayStore.gameModule()?.mapAreaTexts}>
 				{(text) => (
-					<HkMapText
+					<MapViewText
 						textData={text}
 						visibleBy={{
 							zoneName: text.convoName,

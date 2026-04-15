@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 import { Bounds } from '../shared/bounds.js';
 import { colorFromRgbVector } from '../shared/colors.js';
+import { MapTextData } from '../shared/map-text-data.js';
 import { SpriteInfoGenerated } from '../shared/sprite-info-generated.js';
 import { spriteInfoBounds } from '../shared/sprite-info-mapper.js';
 import { silkMapDataGenerated } from './map-data-silk.generated.js';
@@ -11,17 +12,19 @@ import {
 	SilkSpriteInfo,
 	SomeSpriteTypeSilk,
 	SpriteConditionDataSilk,
-	TextDataSilk,
 } from './map-data-silk.types.js';
 import { formatAreaNameSilk } from './room-name-formatting-silk.js';
 import { isActualSceneNameSilk } from './scene-name-check-silk.js';
 import { silkScaleBounds } from './silk-scaling.js';
 
-function mapGeneratedText(text: SilkTextDataGenerated): TextDataSilk {
+function mapGeneratedText(text: SilkTextDataGenerated): MapTextData {
 	return {
 		...text,
+		position: null,
 		bounds: silkScaleBounds(text.bounds),
-		origColor: d3.hsl(colorFromRgbVector(text.origColor)),
+		color: d3.hsl(colorFromRgbVector(text.origColor)),
+		isSubArea: text.objectPath.includes('Sub'),
+		type: text.objectPath.includes('Sub') ? 'sub-area' : 'area',
 	};
 }
 

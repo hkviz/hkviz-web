@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import { Bounds } from '../shared/bounds';
 import { RoomDataBase } from '../shared/map-shared';
-import { Vector3Like } from '../shared/vector-like';
+import { MapTextData } from '../shared/map-text-data';
 import { MapZonesGenerated as MapZonesGeneratedSilk } from './map-data-silk.generated.types';
 import { PlayerDataFieldNameSilk } from './player-data-silk.generated';
 
@@ -65,22 +65,11 @@ export type SomeSpriteTypeSilk =
 
 export type RoomSpriteVariantSilk = SomeSpriteTypeSilk['variant'];
 
-export interface TextDataSilk {
-	objectPath: string;
-	convoName: string;
-	sheetName: string;
-	position: Vector3Like;
-	fontSize: number;
-	fontWeight: number;
-	bounds: Bounds;
-	origColor: d3.HSLColor;
-}
-
 export interface RoomDataSilk extends RoomDataBase<'silk'> {
 	mapZone: MapZoneSilk;
 	// mappedParent: string | null; -> moved to mappedIfAllMapped
 	mappedIfAllMapped: string[] | null;
-	texts: TextDataSilk[];
+	texts: MapTextData[];
 	hasSpriteRenderer: boolean;
 
 	visualBounds: Bounds | null;
@@ -109,5 +98,5 @@ export interface RoomDataSilk extends RoomDataBase<'silk'> {
 
 export interface MapDataSilk {
 	rooms: RoomDataSilk[];
-	areaNames: TextDataSilk[];
+	areaNames: MapTextData[];
 }
