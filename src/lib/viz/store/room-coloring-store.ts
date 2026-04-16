@@ -72,7 +72,7 @@ export function createRoomColoringStore(
 
 	const areaColorByGameObjectName = createMemo<Map<string, () => string>>(() => {
 		const theme = themeStore.currentTheme();
-		const roomData = gameModule()?.mapRooms;
+		const roomData = gameModule()?.map.rooms;
 		if (!roomData) return new Map();
 
 		return new Map<string, () => string>(
@@ -138,7 +138,7 @@ export function createRoomColoringStore(
 		const colorMap = singleVarColorMap();
 
 		return new Map<string, () => string>(
-			gameplayStore.gameModule()?.mapRooms.map((room) => {
+			gameplayStore.gameModule()?.map.rooms.map((room) => {
 				const aggregations = aggregationStore.getAggregations(toVirtualSceneName(room.sceneName));
 				const aggregationValue = aggregationStore.getCorrectedAggregationValueNullIfUnvisited(
 					aggregations,

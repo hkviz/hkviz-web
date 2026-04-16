@@ -76,7 +76,7 @@ export function HkMapTexts() {
 	const roomTexts = createMemo(() => {
 		return gameplayStore
 			.gameModule()
-			?.mapRooms?.flatMap(
+			?.map.rooms?.flatMap(
 				(room) =>
 					room.texts
 						.filter((text) => !text.objectPath.includes('Next Area'))
@@ -92,7 +92,7 @@ export function HkMapTexts() {
 					return <MapViewText textData={it.text} visibleBy={states?.isVisible() ?? false} />;
 				}}
 			</For>
-			<For each={gameplayStore.gameModule()?.mapAreaTexts}>
+			<For each={gameplayStore.gameModule()?.map.areaTexts}>
 				{(text) => (
 					<MapViewText
 						textData={text}

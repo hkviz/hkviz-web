@@ -79,7 +79,7 @@ function AnimationTimeLineColorCodes() {
 		const theme = themeStore.currentTheme();
 		const sceneChanges = sceneEvents.map((it) => {
 			const mainVirtualScene = it.getMainVirtualSceneName();
-			const mainRoomData = gameModule.getMainRoomDataBySceneName(mainVirtualScene);
+			const mainRoomData = gameModule.map.getMainRoomDataBySceneName(mainVirtualScene);
 
 			const roomColor = mainRoomData?.origColor;
 			let color: string;

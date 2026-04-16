@@ -65,14 +65,14 @@ export function createRoomDisplayStore(
 	const selectedRoomZoneFormatted = createMemo(() => {
 		const selected = selectedSceneName();
 		if (selected == null) return null;
-		const room = gameModule()?.getMainRoomDataBySceneName(selected);
+		const room = gameModule()?.map.getMainRoomDataBySceneName(selected);
 		if (!room) return null;
 		return room.zoneNameFormatted;
 	});
 
 	const hoveredMainRoom = createMemo(() => {
 		const hovered = hoveredSceneName();
-		return hovered != null ? (gameModule()?.getMainRoomDataBySceneName(hovered)?.sceneName ?? null) : null;
+		return hovered != null ? (gameModule()?.map.getMainRoomDataBySceneName(hovered)?.sceneName ?? null) : null;
 	});
 
 	const roomsVisible: Accessor<ReadonlySet<string> | 'all'> = createMemo(() => {
@@ -102,7 +102,7 @@ export function createRoomDisplayStore(
 	const selfRoomVisibilityByGameObjectName = new Map<string, Accessor<boolean>>();
 
 	function getSelfVisibilitySignal(gameObjectName: string) {
-		const room = gameModule()?.getRoomDataByGameObjectName(gameObjectName);
+		const room = gameModule()?.map.getRoomDataByGameObjectName(gameObjectName);
 		const existing = selfRoomVisibilityByGameObjectName.get(gameObjectName);
 		if (existing) {
 			return existing;
@@ -139,7 +139,7 @@ export function createRoomDisplayStore(
 	}
 
 	const statesByGameObjectName = createMemo(() => {
-		const rooms = gameModule()?.mapRooms ?? [];
+		const rooms = gameModule()?.map.rooms ?? [];
 		return new Map(
 			rooms.map((room) => {
 				const isHovered = createMemo(
@@ -227,7 +227,7 @@ export function createRoomDisplayStore(
 	});
 
 	const zoneVisible = createMemo(() => {
-		const rooms = gameModule()?.mapRooms ?? ([] as readonly RoomDataAny[]);
+		const rooms = gameModule()?.map.rooms ?? ([] as readonly RoomDataAny[]);
 		return new Map(
 			Map.groupBy(rooms, (d) => d.mapZone)
 				.entries()

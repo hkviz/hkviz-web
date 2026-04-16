@@ -387,9 +387,9 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 	const roomInfos = createMemo(() => {
 		const gm = gameModule();
 		const _selectedRoom = selectedRoom();
-		const mainRoomInfo = _selectedRoom ? (gm?.getMainRoomDataBySceneName(_selectedRoom) ?? null) : null;
+		const mainRoomInfo = _selectedRoom ? (gm?.map.getMainRoomDataBySceneName(_selectedRoom) ?? null) : null;
 		const allRoomInfosIncludingSubsprites = mainRoomInfo
-			? (gm?.getAllRoomDataBySceneNameWithSubSprites(mainRoomInfo.sceneName) ?? null)
+			? (gm?.map.getAllRoomDataBySceneNameWithSubSprites(mainRoomInfo.sceneName) ?? null)
 			: null;
 		return { mainRoomInfo, allRoomInfosIncludingSubsprites };
 	});

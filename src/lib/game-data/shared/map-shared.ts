@@ -15,6 +15,7 @@ export interface RoomDataBase<Game extends GameId> {
 
 	origColor: d3.HSLColor;
 	zoneNameFormatted: string;
+	zoomZones: string[];
 
 	isMainGameObject: boolean;
 

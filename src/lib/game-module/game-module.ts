@@ -4,6 +4,7 @@ import { GameId } from '~/lib/types/game-ids';
 import { AggregationValueOfGame } from '../aggregation/aggregation-value-specific';
 import { AggregationVariable } from '../aggregation/aggregation-variable';
 import { AggregationVariableInfo } from '../aggregation/aggregation-variable-info-shared';
+import { Bounds } from '../game-data/shared/bounds';
 import { MapTextData } from '../game-data/shared/map-text-data';
 import { PlayerDataFieldByNameOfGame, PlayerDataFieldOfGame } from '../game-data/specific/player-data-of-game';
 import { SceneEvent } from '../parser/recording-files/events-shared/scene-event';
@@ -14,13 +15,18 @@ export interface GameModule<Game extends GameId> {
 	game: Game;
 	parseRecordingFile: (response: Response, combinedPartNumber: number) => Promise<ParsedRecordingOfGame<Game>>;
 	combineRecordings: (recordings: ParsedRecordingOfGame<Game>[]) => CombinedRecordingOfGame<Game>;
-	positionToMap: (playerPosition: Vector2, sceneEvent: SceneEvent | undefined) => Vector2 | undefined;
-	getMainRoomDataBySceneName: (sceneName: string) => RoomDataOfGame<Game> | undefined;
-	getAllRoomDataBySceneNameNoSubSprites: (sceneName: string) => RoomDataOfGame<Game>[] | undefined;
-	getAllRoomDataBySceneNameWithSubSprites: (sceneName: string) => RoomDataOfGame<Game>[] | undefined;
-	getRoomDataByGameObjectName: (gameObjectName: string) => RoomDataOfGame<Game> | undefined;
-	mapRooms: RoomDataOfGame<Game>[];
-	mapAreaTexts: MapTextData[];
+	map: {
+		rooms: RoomDataOfGame<Game>[];
+		areaTexts: MapTextData[];
+		extends: Bounds;
+
+		getMainRoomDataBySceneName: (sceneName: string) => RoomDataOfGame<Game> | undefined;
+		getAllRoomDataBySceneNameNoSubSprites: (sceneName: string) => RoomDataOfGame<Game>[] | undefined;
+		getAllRoomDataBySceneNameWithSubSprites: (sceneName: string) => RoomDataOfGame<Game>[] | undefined;
+		getRoomDataByGameObjectName: (gameObjectName: string) => RoomDataOfGame<Game> | undefined;
+
+		positionToMap: (playerPosition: Vector2, sceneEvent: SceneEvent | undefined) => Vector2 | undefined;
+	};
 	playerDataFields: {
 		byFieldName: PlayerDataFieldByNameOfGame<Game>;
 		list: PlayerDataFieldOfGame<Game>[];

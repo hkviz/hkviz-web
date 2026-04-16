@@ -49,7 +49,7 @@ export function createAggregationStore(
 		if (mode === 'room') return sceneName;
 		if (mode === 'zone') {
 			if (!sceneName) return null;
-			const roomData = gameplayStore.gameModule()?.getMainRoomDataBySceneName(sceneName);
+			const roomData = gameplayStore.gameModule()?.map.getMainRoomDataBySceneName(sceneName);
 			const zoneName = roomData?.zoneNameFormatted;
 			return zoneName ? virtualSceneName.zone(zoneName) : null;
 		}

@@ -28,8 +28,36 @@ export class Bounds {
 	}
 
 	public static fromContainingBounds(bounds: Bounds[]): Bounds {
-		const min = new Vector2(Math.min(...bounds.map((b) => b.min.x)), Math.min(...bounds.map((b) => b.min.y)));
-		const max = new Vector2(Math.max(...bounds.map((b) => b.max.x)), Math.max(...bounds.map((b) => b.max.y)));
+		let minX = Infinity;
+		let minY = Infinity;
+		let maxX = -Infinity;
+		let maxY = -Infinity;
+		for (const b of bounds) {
+			minX = Math.min(minX, b.min.x);
+			minY = Math.min(minY, b.min.y);
+			maxX = Math.max(maxX, b.max.x);
+			maxY = Math.max(maxY, b.max.y);
+		}
+		const min = new Vector2(minX, minY);
+		const max = new Vector2(maxX, maxY);
+		return Bounds.fromMinMax(min, max);
+	}
+
+	public static fromContainingBoundsIgnoreNull(bounds: (Bounds | null | undefined)[]): Bounds {
+		let minX = Infinity;
+		let minY = Infinity;
+		let maxX = -Infinity;
+		let maxY = -Infinity;
+		for (const b of bounds) {
+			if (b != null) {
+				minX = Math.min(minX, b.min.x);
+				minY = Math.min(minY, b.min.y);
+				maxX = Math.max(maxX, b.max.x);
+				maxY = Math.max(maxY, b.max.y);
+			}
+		}
+		const min = new Vector2(minX, minY);
+		const max = new Vector2(maxX, maxY);
 		return Bounds.fromMinMax(min, max);
 	}
 
@@ -39,8 +67,18 @@ export class Bounds {
 	}
 
 	public static fromContainingPoints(points: Vector2[]): Bounds {
-		const min = new Vector2(Math.min(...points.map((p) => p.x)), Math.min(...points.map((p) => p.y)));
-		const max = new Vector2(Math.max(...points.map((p) => p.x)), Math.max(...points.map((p) => p.y)));
+		let minX = Infinity;
+		let minY = Infinity;
+		let maxX = -Infinity;
+		let maxY = -Infinity;
+		for (const p of points) {
+			minX = Math.min(minX, p.x);
+			minY = Math.min(minY, p.y);
+			maxX = Math.max(maxX, p.x);
+			maxY = Math.max(maxY, p.y);
+		}
+		const min = new Vector2(minX, minY);
+		const max = new Vector2(maxX, maxY);
 		return Bounds.fromMinMax(min, max);
 	}
 

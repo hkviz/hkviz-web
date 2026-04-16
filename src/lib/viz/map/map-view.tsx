@@ -223,7 +223,7 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 				</Match>
 				<Match when={gameplayStore.game() === 'hollow'}> */}
 			<MapViewRooms
-				rooms={gameplayStore.gameModule()?.mapRooms ?? []}
+				rooms={gameplayStore.gameModule()?.map.rooms ?? []}
 				onMouseOver={(_, r) => {
 					setActiveSceneName(r.sceneName);
 					roomDisplayStore.setSelectedRoomIfNotPinned(r.sceneName);

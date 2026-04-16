@@ -8,6 +8,7 @@ import {
 	areaNamesHollow,
 	mainRoomDataBySceneName,
 	mapRoomsHollow,
+	mapVisualExtends,
 	playerPositionToMapPositionHollow,
 	roomDataByGameObjectName,
 } from '../parser/map-data';
@@ -22,16 +23,22 @@ export const gameModuleHollow: GameModule<'hollow'> = {
 		return parseRecordingFileHollow(recordingFileContent, combinedPartNumber);
 	},
 	combineRecordings: combineRecordingsHollow,
-	positionToMap: playerPositionToMapPositionHollow,
-	getMainRoomDataBySceneName: (sceneName) => mainRoomDataBySceneName.get(sceneName),
-	getAllRoomDataBySceneNameNoSubSprites: (sceneName) => allRoomDataBySceneNameHollow.get(sceneName),
-	getAllRoomDataBySceneNameWithSubSprites: (sceneName) =>
-		allRoomDataIncludingSubspritesBySceneNameHollow.get(sceneName),
-	getRoomDataByGameObjectName: (gameObjectName) => {
-		return roomDataByGameObjectName.get(gameObjectName);
+
+	map: {
+		rooms: mapRoomsHollow,
+		areaTexts: areaNamesHollow,
+		extends: mapVisualExtends,
+
+		getMainRoomDataBySceneName: (sceneName) => mainRoomDataBySceneName.get(sceneName),
+		getAllRoomDataBySceneNameNoSubSprites: (sceneName) => allRoomDataBySceneNameHollow.get(sceneName),
+		getAllRoomDataBySceneNameWithSubSprites: (sceneName) =>
+			allRoomDataIncludingSubspritesBySceneNameHollow.get(sceneName),
+		getRoomDataByGameObjectName: (gameObjectName) => {
+			return roomDataByGameObjectName.get(gameObjectName);
+		},
+
+		positionToMap: playerPositionToMapPositionHollow,
 	},
-	mapRooms: mapRoomsHollow,
-	mapAreaTexts: areaNamesHollow,
 	playerDataFields: {
 		byFieldName: playerDataFieldsHollow.byFieldName,
 		list: playerDataFieldsHollow.list,

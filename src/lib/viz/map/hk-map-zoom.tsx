@@ -3,15 +3,7 @@ import * as d3 from 'd3';
 import { createEffect, createMemo, onCleanup, untrack } from 'solid-js';
 import { Bounds } from '~/lib/game-data/shared/bounds';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import {
-	allRoomDataBySceneName,
-	binarySearchLastIndexBefore,
-	gameObjectNamesIgnoredInZoomZone,
-	mainRoomDataBySceneName,
-	mapRoomsHollow,
-	mapVisualExtends,
-	type ZoomZone,
-} from '../../parser';
+import { binarySearchLastIndexBefore, gameObjectNamesIgnoredInZoomZone, type ZoomZone } from '../../parser';
 import {
 	useAnimationStore,
 	useAnimationTickStore,
@@ -20,61 +12,70 @@ import {
 	useRoomDisplayStore,
 } from '../store';
 
-interface HKMapZoomProps {
+interface MapViewZoomProps {
 	zoom: d3.ZoomBehavior<SVGSVGElement, unknown> | undefined;
 	svg: d3.Selection<SVGSVGElement, unknown, null, undefined> | undefined;
 }
 
-export function createMapViewZoom(props: HKMapZoomProps) {
+export function createMapViewZoom(props: MapViewZoomProps) {
 	const animationStore = useAnimationStore();
 	const animationTickStore = useAnimationTickStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const mapZoomStore = useMapZoomStore();
 	const gameplayStore = useGameplayStore();
+	const gameModule = gameplayStore.gameModule;
 
-	const roomsByZoomZone = new Map<ZoomZone, typeof mapRoomsHollow>();
-	for (const room of mapRoomsHollow) {
-		if (gameObjectNamesIgnoredInZoomZone.has(room.gameObjectName)) continue;
-		for (const zone of room.zoomZones) {
-			const existing = roomsByZoomZone.get(zone);
-			if (existing) {
-				existing.push(room);
-			} else {
-				roomsByZoomZone.set(zone, [room]);
-			}
-		}
+	// const roomsByZoomZone = createMemo(() => {
+	// 	const roomsByZoomZone = new Map<ZoomZone, RoomDataAny[]>();
+	// 	for (const room of gameModule()?.mapRooms ?? []) {
+	// 		if (gameObjectNamesIgnoredInZoomZone.has(room.gameObjectName)) continue;
+	// 		for (const zone of room.zoomZones) {
+	// 			const existing = roomsByZoomZone.get(zone);
+	// 			if (existing) {
+	// 				existing.push(room);
+	// 			} else {
+	// 				roomsByZoomZone.set(zone, [room]);
+	// 			}
+	// 		}
+	// 	}
+	// 	return roomsByZoomZone;
+	// });
+
+	function areaBySceneName(sceneName: string): string | null {
+		return gameModule()?.map.getMainRoomDataBySceneName(sceneName)?.mapZone ?? null;
 	}
-	const mainRoomsByGameObjectName = new Map(
-		[...mainRoomDataBySceneName.values()].map((room) => [room.gameObjectName, room]),
-	);
-	const areaBySceneName = new Map(
-		[...mainRoomDataBySceneName.entries()].map(([sceneName, room]) => [sceneName, room.mapZone]),
-	);
-	const areaCandidatesBySceneName = new Map(
-		[...allRoomDataBySceneName.entries()].map(([sceneName, rooms]) => [
-			sceneName,
-			[...new Set(rooms.map((room) => room.mapZone))],
-		]),
-	);
+	function areaCandidatesBySceneName(sceneName: string): string[] {
+		const mainRoomData = gameModule()?.map.getAllRoomDataBySceneNameWithSubSprites(sceneName);
+		return mainRoomData ? mainRoomData.map((it) => it.mapZone) : [];
+	}
 
 	const mainSceneEventIndexes = createMemo(() => {
 		const sceneEvents = gameplayStore.recording()?.sceneEvents;
 		if (!sceneEvents) return null;
 		const indexes: number[] = [];
 		for (let i = 0; i < sceneEvents.length; i++) {
-			if (mainRoomDataBySceneName.get(sceneEvents[i]!.sceneName)) {
+			if (gameModule()?.map.getMainRoomDataBySceneName(sceneEvents[i]!.sceneName) != null) {
 				indexes.push(i);
 			}
 		}
 		return indexes;
 	});
 
-	const boundsByArea = new Map(
-		[...d3.group([...mainRoomsByGameObjectName.values()], (r) => r.mapZone)].map(([mapZone, rooms]) => [
-			mapZone,
-			Bounds.fromContainingBounds(rooms.map((r) => r.visualBounds)),
-		]),
-	);
+	const boundsByArea = createMemo(() => {
+		const rooms = gameModule()?.map.rooms;
+		if (!rooms) return new Map<string, Bounds>();
+		return new Map(
+			Map.groupBy(
+				rooms.filter((room) => room.isMainGameObject),
+				(room) => room.mapZone,
+			)
+				.entries()
+				.map(([area, rooms]) => {
+					const areaBounds = Bounds.fromContainingBoundsIgnoreNull(rooms.map((r) => r.visualBounds));
+					return [area, areaBounds];
+				}),
+		);
+	});
 	const AREA_CONTEXT_MEMORY_MS = 500;
 	const AREA_CONTEXT_LOOKAHEAD_MS = 500;
 	const AREA_REVISIT_LOOKAHEAD_MS = 5000;
@@ -111,7 +112,7 @@ export function createMapViewZoom(props: HKMapZoomProps) {
 		if (sceneEventIndex === -1) return null;
 
 		const sceneEvent = sceneEvents[sceneEventIndex]!;
-		const mainRoomData = mainRoomDataBySceneName.get(sceneEvent.sceneName);
+		const mainRoomData = gameModule()?.map.getMainRoomDataBySceneName(sceneEvent.sceneName);
 		if (!mainRoomData) return null;
 
 		return { sceneEvents, sceneEventIndex, sceneEvent, mainRoomData };
@@ -141,7 +142,9 @@ export function createMapViewZoom(props: HKMapZoomProps) {
 			let zoomEarly = false;
 			for (let i = sceneEventIndex + 1; i < sceneEvents.length; i++) {
 				const nextSceneEvent = sceneEvents[i]!;
-				const nextPossibleZoomZones = mainRoomDataBySceneName.get(nextSceneEvent.sceneName)?.zoomZones;
+				const nextPossibleZoomZones = gameModule()?.map.getMainRoomDataBySceneName(
+					nextSceneEvent.sceneName,
+				)?.zoomZones;
 				if (!nextPossibleZoomZones) {
 					// scene event will use previous zoom zone, which was checked in a previous loop iteration
 					continue;
@@ -168,40 +171,45 @@ export function createMapViewZoom(props: HKMapZoomProps) {
 		const enabled = mapZoomStore.enabled();
 		if (!enabled) return null;
 		const roomsVisible = roomDisplayStore.roomsVisible();
-		const visibleRooms = mapRoomsHollow.filter((r) => roomsVisible === 'all' || roomsVisible.has(r.gameObjectName));
-		if (visibleRooms.length === 0) return null;
+		const visibleRooms = gameModule()?.map.rooms.filter(
+			(r) => roomsVisible === 'all' || roomsVisible.has(r.gameObjectName),
+		);
+		if (visibleRooms == null || visibleRooms.length === 0) return null;
 
-		return Bounds.fromContainingBounds(visibleRooms.map((r) => r.visualBounds));
+		return Bounds.fromContainingBoundsIgnoreNull(visibleRooms.map((r) => r.visualBounds));
 	});
 
 	const getBoundsTransform = (bounds: Bounds) => {
+		const mapExtends = gameModule()?.map.extends;
+		if (!mapExtends) return d3.zoomIdentity;
 		const scale = Math.min(
 			3.5,
-			Math.min(mapVisualExtends.size.x / bounds.size.x, mapVisualExtends.size.y / bounds.size.y) * 0.97,
+			Math.min(mapExtends.size.x / bounds.size.x, mapExtends.size.y / bounds.size.y) * 0.97,
 		);
 
 		return d3.zoomIdentity
-			.translate(mapVisualExtends.center.x, mapVisualExtends.center.y)
+			.translate(mapExtends.center.x, mapExtends.center.y)
 			.scale(scale)
 			.translate(-bounds.center.x, -bounds.center.y);
 	};
 
 	const getCurrentViewBounds = (svg: d3.Selection<SVGSVGElement, unknown, null, undefined>) => {
+		const mapExtends = gameModule()?.map.extends;
 		const node = svg.node();
-		if (!node) return null;
+		if (!node || !mapExtends) return null;
 		const transform = d3.zoomTransform(node);
 		if (!Number.isFinite(transform.k) || transform.k <= 0) return null;
 
-		const min = new Vector2(transform.invertX(mapVisualExtends.min.x), transform.invertY(mapVisualExtends.min.y));
-		const max = new Vector2(transform.invertX(mapVisualExtends.max.x), transform.invertY(mapVisualExtends.max.y));
+		const min = new Vector2(transform.invertX(mapExtends.min.x), transform.invertY(mapExtends.min.y));
+		const max = new Vector2(transform.invertX(mapExtends.max.x), transform.invertY(mapExtends.max.y));
 		return Bounds.fromMinMax(min, max);
 	};
 
 	const areaCandidatesForSceneName = (sceneName: string | null) => {
 		if (!sceneName) return null;
-		const candidates = areaCandidatesBySceneName.get(sceneName);
+		const candidates = areaCandidatesBySceneName(sceneName);
 		if (candidates && candidates.length > 0) return candidates;
-		const fallback = areaBySceneName.get(sceneName);
+		const fallback = areaBySceneName(sceneName);
 		return fallback ? [fallback] : null;
 	};
 
@@ -268,11 +276,11 @@ export function createMapViewZoom(props: HKMapZoomProps) {
 		const _zoomZone = zoomZone();
 		if (!_zoomZone) return null;
 
-		const rooms = mapRoomsHollow.filter(
+		const rooms = gameModule()?.map.rooms.filter(
 			(r) => r.zoomZones.includes(_zoomZone) && !gameObjectNamesIgnoredInZoomZone.has(r.gameObjectName),
 		);
-		if (rooms.length === 0) return null;
-		return Bounds.fromContainingBounds(rooms.map((r) => r.visualBounds));
+		if (rooms == null || rooms.length === 0) return null;
+		return Bounds.fromContainingBoundsIgnoreNull(rooms.map((r) => r.visualBounds));
 	};
 
 	const getCurrentAreaBounds = () => {
@@ -347,7 +355,7 @@ export function createMapViewZoom(props: HKMapZoomProps) {
 
 		let bounds: Bounds | null = null;
 		for (const area of includedAreas) {
-			const areaBounds = boundsByArea.get(area);
+			const areaBounds = boundsByArea().get(area);
 			if (!areaBounds) continue;
 			bounds = bounds ? Bounds.fromContainingBounds([bounds, areaBounds]) : areaBounds;
 		}
@@ -389,9 +397,10 @@ export function createMapViewZoom(props: HKMapZoomProps) {
 	createEffect(() => {
 		const target = mapZoomStore.target();
 		const enabled = mapZoomStore.enabled();
+		const mapExtends = gameModule()?.map.extends;
 		const usesAutoZoomMomentum =
 			target === 'current-area' || target === 'current-area-smooth' || target === 'visible-rooms';
-		if (!usesAutoZoomMomentum || !enabled) {
+		if (!usesAutoZoomMomentum || !enabled || !mapExtends) {
 			resetBoundsAnimator();
 			return;
 		}
@@ -439,8 +448,8 @@ export function createMapViewZoom(props: HKMapZoomProps) {
 				boundsAnimator.maxX += (targetBounds.max.x - boundsAnimator.maxX) * maxXAlpha;
 				boundsAnimator.maxY += (targetBounds.max.y - boundsAnimator.maxY) * maxYAlpha;
 
-				const minSizeX = Math.max(1, mapVisualExtends.size.x * 0.01);
-				const minSizeY = Math.max(1, mapVisualExtends.size.y * 0.01);
+				const minSizeX = Math.max(1, mapExtends.size.x * 0.01);
+				const minSizeY = Math.max(1, mapExtends.size.y * 0.01);
 				if (boundsAnimator.maxX - boundsAnimator.minX < minSizeX) {
 					const centerX = (boundsAnimator.maxX + boundsAnimator.minX) / 2;
 					boundsAnimator.minX = centerX - minSizeX / 2;

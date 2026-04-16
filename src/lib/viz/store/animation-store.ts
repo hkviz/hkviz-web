@@ -62,7 +62,7 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 
 		const indexes: number[] = [];
 		for (let i = 0; i < sceneEvents.length; i++) {
-			if (gameModule.getMainRoomDataBySceneName(sceneEvents[i]!.sceneName)) {
+			if (gameModule.map.getMainRoomDataBySceneName(sceneEvents[i]!.sceneName)) {
 				indexes.push(i);
 			}
 		}
@@ -98,7 +98,9 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 
 		const sceneEventIndex = indexes[indexInCandidates]!;
 		const sceneEvent = sceneEvents[sceneEventIndex] ?? null;
-		const mainRoomData = sceneEvent ? (gameModule.getMainRoomDataBySceneName(sceneEvent.sceneName) ?? null) : null;
+		const mainRoomData = sceneEvent
+			? (gameModule.map.getMainRoomDataBySceneName(sceneEvent.sceneName) ?? null)
+			: null;
 
 		return { mainRoomData, sceneEvent };
 	});

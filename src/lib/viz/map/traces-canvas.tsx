@@ -277,7 +277,7 @@ export const HKMapTraces: Component = () => {
 
 				if (position && sceneName) {
 					const sceneEvent = recording.sceneEvents.find((it) => it.sceneName === sceneName);
-					const mapPosition = gameModule?.positionToMap(position, sceneEvent);
+					const mapPosition = gameModule?.map.positionToMap(position, sceneEvent);
 					if (mapPosition) {
 						const pinSize = game === 'hollow' ? baseLineWidth * 12 : baseLineWidth * 9;
 						const drawW = pinSize * shadePinWidthMultiplier;

@@ -64,146 +64,151 @@ const silkSceneNameToActual: Record<string, string> = {
 	Shellwood_13b: 'Shellwood_13',
 };
 
-const silkZoneMappings: Record<GlobalEnums_MapZoneSilk, GlobalEnums_MapZoneSilk> = {
+const silkZoneMappings: Partial<Record<GlobalEnums_MapZoneSilk, GlobalEnums_MapZoneSilk>> = {
 	CORAL_CAVERNS: 'RED_CORAL_GORGE',
 };
 
+const silkMapRooms = silkMapDataGenerated.rooms.map((room) => {
+	const sceneNameForVisited = room.sceneName;
+	let sceneName = room.sceneName;
+
+	let isMainGameObject = null;
+
+	if (silkSceneNameToActual[sceneName]) {
+		sceneName = silkSceneNameToActual[sceneName];
+		isMainGameObject = false;
+	} else if (!isActualSceneNameSilk(sceneName)) {
+		let attempts = 0;
+		let current = sceneName;
+
+		while (attempts < 4) {
+			const parts = current.split('_');
+			if (parts.length <= 1) break;
+			const candidate = parts.slice(0, -1).join('_');
+			if (isActualSceneNameSilk(candidate)) {
+				sceneName = candidate;
+				isMainGameObject = false;
+				break;
+			}
+			current = candidate;
+			attempts++;
+		}
+
+		if (sceneName === room.sceneName) {
+			console.warn(`Scene name ${room.sceneName} is not an actual scene name in silk data`);
+		}
+	}
+
+	const visualBounds = room.visualBounds ? silkScaleBounds(room.visualBounds) : null;
+
+	// TODO silk: replicate bounds for player position like game does:
+	// public Sprite BoundsSprite
+	// 	{
+	// 		get
+	// 		{
+	// 			if (unmappedNoBounds && !IsMapped)
+	// 			{
+	// 				return null;
+	// 			}
+	// 			if (IsInitialStateRough() && (bool)fullSprite) // initialState == States.Rough;
+	// 			{
+	// 				return fullSprite;
+	// 			}
+	// 			if (!hasSpriteRenderer)
+	// 			{
+	// 				return null;
+	// 			}
+	// 			return initialSprite;
+	// 		}
+	// 	}
+
+	const altFullSprites: SpriteConditionDataSilk[] | null =
+		room.altFullSprites?.map((s, index) => ({
+			type: 'alt-full-sprite',
+			sprite: mapSpriteInfo(visualBounds, s.sprite),
+			condition: s.condition,
+			variant: `alt-full-sprite-${index}`,
+		})) ?? null;
+
+	const initialSprite = room.initialSprite ? mapSpriteInfo(visualBounds, room.initialSprite) : null;
+	let fullSprite = room.fullSprite ? mapSpriteInfo(visualBounds, room.fullSprite) : null;
+
+	if (room.initialState !== 'Rough' && fullSprite) {
+		// game never uses this sprite. some rooms have set a full sprite (because of copy-pasting in the editor likely).
+		// our variant selector would never select it, but the bounds would still include it.
+		fullSprite = null;
+	}
+
+	const allSpritesUnfiltered: (SomeSpriteTypeSilk | null)[] = [
+		initialSprite ? { type: 'initial', sprite: initialSprite, variant: 'initial' } : null,
+		fullSprite ? { type: 'full', sprite: fullSprite, variant: 'full' } : null,
+		...(altFullSprites ?? []),
+	];
+
+	const allSprites = allSpritesUnfiltered.filter((s) => s != null);
+
+	const origColor = room.origColor
+		? d3.hsl(colorFromRgbVector(room.origColor))
+		: (origColorByZone.get(room.mapZone) ?? d3.hsl(0, 0, 1)); // fallback to white if no color info at all
+
+	const spritesByVariant = Object.fromEntries(allSprites.map((s) => [s.variant, s] as const));
+
+	const mappedIfAllMapped = room.mappedParent ? [room.mappedParent] : room.mappedIfAllMapped;
+
+	const spriteBounds = allSprites.map((s) => s.sprite.visualBounds);
+	const visualBoundsAllSprites = Bounds.fromContainingBounds(spriteBounds);
+
+	const altColors =
+		room.altColors?.map((c) => ({
+			color: d3.hsl(colorFromRgbVector(c.color)),
+			condition: c.condition,
+		})) ?? null;
+
+	let mapZone = sceneNameGetZone(sceneName) ?? 'NONE';
+	const overrideZone = silkZoneMappings[mapZone];
+	if (overrideZone) {
+		mapZone = overrideZone;
+	}
+
+	const mappedRoom: RoomDataSilk = {
+		game: 'silk',
+		hasSpriteRenderer: room.hasSpriteRenderer,
+		sortingOrder: room.sortingOrder,
+		positionZ: room.positionZ,
+		initialState: room.initialState,
+		unmappedNoBounds: room.unmappedNoBounds,
+		excludeBounds: room.excludeBounds,
+		hideCondition: room.hideCondition,
+		gameObjectName: room.gameObjectName,
+
+		mapZone,
+		zoomZones: [mapZone],
+		sceneName,
+		sceneNameForVisited,
+
+		altColors,
+		mappedIfAllMapped,
+		visualBounds,
+		playerPositionBounds: room.playerPositionBounds ? silkScaleBounds(room.playerPositionBounds) : null,
+		texts: room.texts.filter((text) => !text.objectPath.includes('Next Area')).map(mapGeneratedText),
+		allSprites,
+		spritesByVariant,
+		origColor,
+		roomNameFormatted: room.sceneName, // TODO
+		roomNameFormattedZoneExclusive: room.sceneName, // TODO
+		zoneNameFormatted: mapZone,
+		isMainGameObject: isMainGameObject as boolean, // set below to actual boolean
+		visualBoundsAllSprites,
+	};
+	return mappedRoom;
+});
+
 export const silkMapData: MapDataSilk = {
-	rooms: silkMapDataGenerated.rooms.map((room) => {
-		const sceneNameForVisited = room.sceneName;
-		let sceneName = room.sceneName;
-
-		let isMainGameObject = null;
-
-		if (silkSceneNameToActual[sceneName]) {
-			sceneName = silkSceneNameToActual[sceneName];
-			isMainGameObject = false;
-		} else if (!isActualSceneNameSilk(sceneName)) {
-			let attempts = 0;
-			let current = sceneName;
-
-			while (attempts < 4) {
-				const parts = current.split('_');
-				if (parts.length <= 1) break;
-				const candidate = parts.slice(0, -1).join('_');
-				if (isActualSceneNameSilk(candidate)) {
-					sceneName = candidate;
-					isMainGameObject = false;
-					break;
-				}
-				current = candidate;
-				attempts++;
-			}
-
-			if (sceneName === room.sceneName) {
-				console.warn(`Scene name ${room.sceneName} is not an actual scene name in silk data`);
-			}
-		}
-
-		const visualBounds = room.visualBounds ? silkScaleBounds(room.visualBounds) : null;
-
-		// TODO silk: replicate bounds for player position like game does:
-		// public Sprite BoundsSprite
-		// 	{
-		// 		get
-		// 		{
-		// 			if (unmappedNoBounds && !IsMapped)
-		// 			{
-		// 				return null;
-		// 			}
-		// 			if (IsInitialStateRough() && (bool)fullSprite) // initialState == States.Rough;
-		// 			{
-		// 				return fullSprite;
-		// 			}
-		// 			if (!hasSpriteRenderer)
-		// 			{
-		// 				return null;
-		// 			}
-		// 			return initialSprite;
-		// 		}
-		// 	}
-
-		const altFullSprites: SpriteConditionDataSilk[] | null =
-			room.altFullSprites?.map((s, index) => ({
-				type: 'alt-full-sprite',
-				sprite: mapSpriteInfo(visualBounds, s.sprite),
-				condition: s.condition,
-				variant: `alt-full-sprite-${index}`,
-			})) ?? null;
-
-		const initialSprite = room.initialSprite ? mapSpriteInfo(visualBounds, room.initialSprite) : null;
-		let fullSprite = room.fullSprite ? mapSpriteInfo(visualBounds, room.fullSprite) : null;
-
-		if (room.initialState !== 'Rough' && fullSprite) {
-			// game never uses this sprite. some rooms have set a full sprite (because of copy-pasting in the editor likely).
-			// our variant selector would never select it, but the bounds would still include it.
-			fullSprite = null;
-		}
-
-		const allSpritesUnfiltered: (SomeSpriteTypeSilk | null)[] = [
-			initialSprite ? { type: 'initial', sprite: initialSprite, variant: 'initial' } : null,
-			fullSprite ? { type: 'full', sprite: fullSprite, variant: 'full' } : null,
-			...(altFullSprites ?? []),
-		];
-
-		const allSprites = allSpritesUnfiltered.filter((s) => s != null);
-
-		const origColor = room.origColor
-			? d3.hsl(colorFromRgbVector(room.origColor))
-			: (origColorByZone.get(room.mapZone) ?? d3.hsl(0, 0, 1)); // fallback to white if no color info at all
-
-		const spritesByVariant = Object.fromEntries(allSprites.map((s) => [s.variant, s] as const));
-
-		const mappedIfAllMapped = room.mappedParent ? [room.mappedParent] : room.mappedIfAllMapped;
-
-		const spriteBounds = allSprites.map((s) => s.sprite.visualBounds);
-		const visualBoundsAllSprites = Bounds.fromContainingBounds(spriteBounds);
-
-		const altColors =
-			room.altColors?.map((c) => ({
-				color: d3.hsl(colorFromRgbVector(c.color)),
-				condition: c.condition,
-			})) ?? null;
-
-		let mapZone = sceneNameGetZone(sceneName) ?? 'NONE';
-		if (silkZoneMappings[mapZone]) {
-			mapZone = silkZoneMappings[mapZone];
-		}
-
-		const mappedRoom: RoomDataSilk = {
-			game: 'silk',
-			hasSpriteRenderer: room.hasSpriteRenderer,
-			sortingOrder: room.sortingOrder,
-			positionZ: room.positionZ,
-			initialState: room.initialState,
-			unmappedNoBounds: room.unmappedNoBounds,
-			excludeBounds: room.excludeBounds,
-			hideCondition: room.hideCondition,
-			gameObjectName: room.gameObjectName,
-
-			mapZone,
-			sceneName,
-			sceneNameForVisited,
-
-			altColors,
-			mappedIfAllMapped,
-			visualBounds,
-			playerPositionBounds: room.playerPositionBounds ? silkScaleBounds(room.playerPositionBounds) : null,
-			texts: room.texts.filter((text) => !text.objectPath.includes('Next Area')).map(mapGeneratedText),
-			allSprites,
-			spritesByVariant,
-			origColor,
-			roomNameFormatted: room.sceneName, // TODO
-			roomNameFormattedZoneExclusive: room.sceneName, // TODO
-			zoneNameFormatted: mapZone,
-			isMainGameObject: isMainGameObject as boolean, // set below to actual boolean
-			visualBoundsAllSprites,
-		};
-		return mappedRoom;
-	}),
+	rooms: silkMapRooms,
 	areaNames: silkMapDataGenerated.areaNames
 		.filter((text) => !text.objectPath.includes('Next Area'))
 		.map(mapGeneratedText),
+	extends: Bounds.fromContainingBounds(silkMapRooms.map((r) => r.visualBoundsAllSprites).filter((b) => b != null)),
 };
 
 silkMapData.rooms.sort((a, b) => {

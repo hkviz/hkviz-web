@@ -94,4 +94,5 @@ export interface RoomDataSilk extends RoomDataBase<'silk'> {
 export interface MapDataSilk {
 	rooms: RoomDataSilk[];
 	areaNames: MapTextData[];
+	extends: Bounds;
 }
