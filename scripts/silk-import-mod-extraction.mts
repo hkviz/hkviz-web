@@ -6,36 +6,38 @@ import { readFile } from 'fs/promises';
 import path from 'path';
 import { supportedLanguagesSilk } from '../src/lib/game-data/silk-data/localization/supported-languages-silk.ts';
 import { exportFormattedJsFile } from './js-gen-helper.mts';
-import { modExportPath } from './paths.local.mts';
-
-// Map data:
+import { modExportPath } from './paths.mts';
 
 async function readExtraction(fileName: string) {
 	const filePath = path.join(modExportPath, fileName);
 	return await readFile(filePath, 'utf-8');
 }
 
-const mapExportJsonStr = await readExtraction('map-export.json');
-await exportFormattedJsFile(
-	'./src/lib/game-data/silk-data/map-data-silk.generated.ts',
-	`import type { SilkMapDataGenerated } from './map-data-silk.generated.types.ts';
+// Map data:
+async function genMapData() {
+	const mapExportJsonStr = await readExtraction('map-export.json');
+	await exportFormattedJsFile(
+		'./src/lib/game-data/silk-data/map-data-silk.generated.ts',
+		`import type { SilkMapDataGenerated } from './map-data-silk.generated.types.ts';
     
     export const silkMapDataGenerated: SilkMapDataGenerated = ${mapExportJsonStr}`,
-);
-
-let someLangDict: any;
-for (const lang of supportedLanguagesSilk) {
-	const localizationJsonStr = await readExtraction(`localization-${lang}.json`);
-	someLangDict = JSON.parse(localizationJsonStr);
-	await exportFormattedJsFile(
-		`./src/lib/game-data/silk-data/localization/localization-${lang}.generated.ts`,
-		`export default ${localizationJsonStr};`,
 	);
 }
 
-await exportFormattedJsFile(
-	'./src/lib/game-data/silk-data/localization/load-lang-silk.generated.ts',
-	`import type { SupportedLanguageSilk } from './supported-languages-silk.ts';
+async function genLangData() {
+	let someLangDict: any;
+	for (const lang of supportedLanguagesSilk) {
+		const localizationJsonStr = await readExtraction(`localization-${lang}.json`);
+		someLangDict = JSON.parse(localizationJsonStr);
+		await exportFormattedJsFile(
+			`./src/lib/game-data/silk-data/localization/localization-${lang}.generated.ts`,
+			`export default ${localizationJsonStr};`,
+		);
+	}
+
+	await exportFormattedJsFile(
+		'./src/lib/game-data/silk-data/localization/load-lang-silk.generated.ts',
+		`import type { SupportedLanguageSilk } from './supported-languages-silk.ts';
 	import { assertNever } from '~/lib/util/other.ts';
 
 	export interface LocalizationDataSilk {
@@ -56,15 +58,17 @@ await exportFormattedJsFile(
 				return assertNever(lang);
 		}
 	}`,
-);
+	);
+}
 
 // area backgrounds
-const saveSlotBackgroundsJsonStr = await readExtraction('save-slot-backgrounds.json');
-const saveSlotBackgrounds = JSON.parse(saveSlotBackgroundsJsonStr);
+async function genAreaBackgrounds() {
+	const saveSlotBackgroundsJsonStr = await readExtraction('save-slot-backgrounds.json');
+	const saveSlotBackgrounds = JSON.parse(saveSlotBackgroundsJsonStr);
 
-await exportFormattedJsFile(
-	'./src/lib/game-data/silk-data/save-slot-backgrounds-silk.generated.ts',
-	`
+	await exportFormattedJsFile(
+		'./src/lib/game-data/silk-data/save-slot-backgrounds-silk.generated.ts',
+		`
     import type { SilkSpriteInfoGenerated } from "./map-data-silk.generated.types.ts";
 	import type { MapZoneSilk } from './map-zone-silk.ts';
 
@@ -80,4 +84,19 @@ await exportFormattedJsFile(
 		extraAreaBackgrounds: Record<string, AreaBackgroundData>;
 		bellhomeBackgrounds: Record<string, SilkSpriteInfoGenerated>;
 	} = ${JSON.stringify(saveSlotBackgrounds, null, 2)};`,
-);
+	);
+}
+
+// crests
+async function genCrests() {
+	const crestsJsonStr = await readExtraction('tool-crest-export.json');
+	const crests = JSON.parse(crestsJsonStr);
+	await exportFormattedJsFile(
+		'./src/lib/game-data/silk-data/crests-silk.generated.ts',
+		`export const crestsSilk = ${crestsJsonStr};
+	export type CrestNameSilk = ${crests.crests.map((it: any) => `'${it.id}'`).join(' | ')};
+	export const crestNamesSilk: CrestNameSilk[] = [${crests.crests.map((it: any) => `'${it.id}'`).join(', ')}];`,
+	);
+}
+
+await Promise.all([genMapData(), genLangData(), genAreaBackgrounds(), genCrests()]);

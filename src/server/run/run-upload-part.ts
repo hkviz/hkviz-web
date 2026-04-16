@@ -3,6 +3,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
 import { mapZoneSchemaHollow } from '~/lib/game-data/hollow-data/map-zone-hollow';
+import {
+	BellhomePaintColoursNumberSchemaSilk,
+	ExtraRestZonesNumberSchemaSilk,
+} from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { ModVersionHollow, isModVersionBefore1_6_0Hollow, raise } from '~/lib/parser';
 import { r2RunPartFileKey } from '~/lib/r2';
 import { gameIdSchemaHollowDefault } from '~/lib/types/game-ids';
@@ -12,7 +16,7 @@ import { db } from '../db';
 import { getUserIdFromIngameSession } from '../ingameauth/utils';
 import { r2FileHead, r2GetSignedUploadUrl } from '../r2';
 import { getOrCreateRunId } from './get-or-create-run-id';
-import { runGameStateMetaColumnsSelect } from './run-column-selects';
+import { RunFileInsertMustGs, runGameStateMetaColumnsSelect } from './run-column-selects';
 
 const runPartCreateBaseInputSchema = {
 	modVersion: v.nullish(v.string()), // provided starting with mod version 1.6.x.x
@@ -22,36 +26,61 @@ const runPartCreateBaseInputSchema = {
 	localRunId: v.pipe(v.string(), v.uuid()),
 	partNumber: v.pipe(v.number(), v.integer(), v.minValue(0)),
 
-	// TODO rename to gameVersion in new endpoint? or use union type here?
-	hkVersion: v.nullish(v.pipe(v.string(), v.maxLength(64))),
 	playTime: v.nullish(v.number()),
-	maxHealth: v.nullish(v.pipe(v.number(), v.integer())),
-	mpReserveMax: v.nullish(v.pipe(v.number(), v.integer())),
-	geo: v.nullish(v.pipe(v.number(), v.integer())),
-	dreamOrbs: v.nullish(v.pipe(v.number(), v.integer())),
-	permadeathMode: v.nullish(v.pipe(v.number(), v.integer())),
-	killedHollowKnight: v.nullish(v.boolean()),
-	killedFinalBoss: v.nullish(v.boolean()),
-	killedVoidIdol: v.nullish(v.boolean()),
-	completionPercentage: v.nullish(v.pipe(v.number(), v.integer())),
-	unlockedCompletionRate: v.nullish(v.boolean()),
-	dreamNailUpgraded: v.nullish(v.boolean()),
-	lastScene: v.nullish(v.pipe(v.string(), v.maxLength(255))),
-
 	firstUnixSeconds: v.nullish(v.number()),
 	lastUnixSeconds: v.nullish(v.number()),
+
+	// bools
+	unlockedCompletionRate: v.nullish(v.boolean()),
+
+	// ints
+	completionPercentage: v.nullish(v.pipe(v.number(), v.integer())),
+	maxHealth: v.nullish(v.pipe(v.number(), v.integer())),
+	geo: v.nullish(v.pipe(v.number(), v.integer())),
+	permadeathMode: v.nullish(v.pipe(v.number(), v.integer())),
+
+	// strings
+	lastScene: v.nullish(v.pipe(v.string(), v.maxLength(255))),
 };
 
 const runPartCreateInputSchema = v.variant('game', [
 	v.object({
 		...runPartCreateBaseInputSchema,
 		game: v.literal('hollow'),
+		hkVersion: v.nullish(v.pipe(v.string(), v.maxLength(64))),
 		mapZone: v.nullish(mapZoneSchemaHollow),
+
+		// bools
+		killedHollowKnight: v.nullish(v.boolean()), // bool 1
+		killedFinalBoss: v.nullish(v.boolean()), // bool 2
+		killedVoidIdol: v.nullish(v.boolean()), // bool 3
+		dreamNailUpgraded: v.nullish(v.boolean()), // bool 4
+
+		// ints
+		dreamOrbs: v.nullish(v.pipe(v.number(), v.integer())), // int 1
+		mpReserveMax: v.nullish(v.pipe(v.number(), v.integer())), // int 2
 	}),
 	v.object({
 		...runPartCreateBaseInputSchema,
 		game: v.literal('silk'),
+		gameVersion: v.nullish(v.pipe(v.string(), v.maxLength(64))),
 		mapZone: v.nullish(hollowOrSilkMapZoneSchema),
+
+		// bools
+		endingAct2Regular: v.nullish(v.boolean()), // bool 1
+		endingAct2Cursed: v.nullish(v.boolean()), // bool 2
+		endingAct2SoulSnare: v.nullish(v.boolean()), // bool 3
+		endingAct3: v.nullish(v.boolean()), // bool 4
+		isAct3: v.nullish(v.boolean()), // bool 5
+
+		// ints
+		shellShards: v.nullish(v.pipe(v.number(), v.integer())), // int 1
+		silkSpoolParts: v.nullish(v.pipe(v.number(), v.integer())), // int 2
+		extraRestZones: v.nullish(ExtraRestZonesNumberSchemaSilk), // int 3
+		belltownHouseColour: v.nullish(BellhomePaintColoursNumberSchemaSilk), // int 4
+
+		// strings
+		currentCrestId: v.nullish(v.pipe(v.string(), v.maxLength(64))), // string 1
 	}),
 ]);
 
@@ -139,7 +168,11 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 
 	const fileId = uuidv4();
 
+	const isSilk = input.game === 'silk';
+
 	await db.insert(runFiles).values({
+		gameVersion: input.game === 'hollow' ? input.hkVersion : input.gameVersion,
+
 		id: fileId,
 		runId,
 		localId: input.localRunId,
@@ -147,26 +180,43 @@ export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<Ru
 		uploadFinished: false,
 		version: 0,
 
-		gameVersion: input.hkVersion,
+		// -- shared --
+		// time
 		playTime: input.playTime,
-		maxHealth: input.maxHealth,
-		mpReserveMax: input.mpReserveMax,
-		geo: input.geo,
-		dreamOrbs: input.dreamOrbs,
-		permadeathMode: input.permadeathMode,
-		mapZone: input.mapZone,
-
-		killedHollowKnight: input.killedHollowKnight,
-		killedFinalBoss: input.killedFinalBoss,
-		killedVoidIdol: input.killedVoidIdol,
-		completionPercentage: input.completionPercentage,
-		unlockedCompletionRate: input.unlockedCompletionRate,
-		dreamNailUpgraded: input.dreamNailUpgraded,
-		lastScene: input.lastScene,
-
 		startedAt: input.firstUnixSeconds ? new Date(input.firstUnixSeconds * 1000) : null,
 		endedAt: input.lastUnixSeconds ? new Date(input.lastUnixSeconds * 1000) : null,
-	});
+
+		// bools
+		unlockedCompletionRate: input.unlockedCompletionRate,
+
+		// ints
+		completionPercentage: input.completionPercentage,
+		maxHealth: input.maxHealth,
+		geo: input.geo,
+		permadeathMode: input.permadeathMode,
+
+		// strings
+		lastScene: input.lastScene,
+
+		// -- game specific --
+		mapZone: input.mapZone,
+
+		// bools
+		gsBool1: isSilk ? input.endingAct2Regular : input.killedHollowKnight,
+		gsBool2: isSilk ? input.endingAct2Cursed : input.killedFinalBoss,
+		gsBool3: isSilk ? input.endingAct2SoulSnare : input.killedVoidIdol,
+		gsBool4: isSilk ? input.endingAct3 : input.dreamNailUpgraded,
+		gsBool5: isSilk ? input.isAct3 : null,
+
+		// ints
+		gsInt1: isSilk ? input.shellShards : input.dreamOrbs,
+		gsInt2: isSilk ? input.silkSpoolParts : input.mpReserveMax,
+		gsInt3: isSilk ? input.extraRestZones : null,
+		gsInt4: isSilk ? input.belltownHouseColour : null,
+
+		// strings
+		gsString1: isSilk ? input.currentCrestId : null,
+	} satisfies RunFileInsertMustGs);
 	return {
 		fileId,
 		runId,
@@ -238,23 +288,43 @@ export async function runPartMarkFinished(unsafeInput: RunPartMarkFinishedInput)
 				.update(runs)
 				.set({
 					gameVersion: file.gameVersion ?? run.gameVersion,
-					playTime: file.playTime ?? run.playTime,
-					maxHealth: file.maxHealth ?? run.maxHealth,
-					mpReserveMax: file.mpReserveMax ?? run.mpReserveMax,
-					geo: file.geo ?? run.geo,
-					dreamOrbs: file.dreamOrbs ?? run.dreamOrbs,
-					permadeathMode: file.permadeathMode ?? run.permadeathMode,
-					mapZone: file.mapZone ?? run.mapZone,
-					killedHollowKnight: file.killedHollowKnight ?? run.killedHollowKnight,
-					killedFinalBoss: file.killedFinalBoss ?? run.killedFinalBoss,
-					killedVoidIdol: file.killedVoidIdol ?? run.killedVoidIdol,
-					completionPercentage: file.completionPercentage ?? run.completionPercentage,
-					unlockedCompletionRate: file.unlockedCompletionRate ?? run.unlockedCompletionRate,
-					dreamNailUpgraded: file.dreamNailUpgraded ?? run.dreamNailUpgraded,
-					lastScene: file.lastScene ?? run.lastScene,
 
+					// -- shared --
+					// time
+					playTime: file.playTime ?? run.playTime,
 					startedAt: run.startedAt ?? file.startedAt,
 					endedAt: file.endedAt ?? run.endedAt,
+
+					// bools
+					unlockedCompletionRate: file.unlockedCompletionRate ?? run.unlockedCompletionRate,
+
+					// ints
+					completionPercentage: file.completionPercentage ?? run.completionPercentage,
+					maxHealth: file.maxHealth ?? run.maxHealth,
+					geo: file.geo ?? run.geo,
+					permadeathMode: file.permadeathMode ?? run.permadeathMode,
+
+					// strings
+					lastScene: file.lastScene ?? run.lastScene,
+
+					// -- game specific --
+					mapZone: file.mapZone ?? run.mapZone,
+
+					// bools
+					gsBool1: file.gsBool1 ?? run.gsBool1,
+					gsBool2: file.gsBool2 ?? run.gsBool2,
+					gsBool3: file.gsBool3 ?? run.gsBool3,
+					gsBool4: file.gsBool4 ?? run.gsBool4,
+					gsBool5: file.gsBool5 ?? run.gsBool5,
+
+					// ints
+					gsInt1: file.gsInt1 ?? run.gsInt1,
+					gsInt2: file.gsInt2 ?? run.gsInt2,
+					gsInt3: file.gsInt3 ?? run.gsInt3,
+					gsInt4: file.gsInt4 ?? run.gsInt4,
+
+					// strings
+					gsString1: file.gsString1 ?? run.gsString1,
 				} satisfies { [Col in RunGameStateMetaColumnName]: unknown })
 				.where(eq(runs.id, runId));
 		}

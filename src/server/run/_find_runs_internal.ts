@@ -10,12 +10,12 @@ import { r2GetSignedDownloadUrl } from '~/server/r2';
 import { getGameStateMeta, runFilesMetaFieldsSelect, runTagFieldsSelect } from './run-column-selects';
 
 export const runFilterSchema = v.object({
-	userId: v.nullish(v.string()),
+	userId: v.nullish(v.pipe(v.string(), v.uuid())),
 	visibility: v.nullish(v.array(visibilitySchema)),
 	tag: v.nullish(v.array(tagSchema)),
 	term: v.nullish(v.string()),
 	archived: v.nullish(v.array(v.boolean())),
-	id: v.nullish(v.array(v.string())),
+	id: v.nullish(v.array(v.pipe(v.string(), v.uuid()))),
 	games: v.nullish(v.array(gameIdSchema)),
 	anonymAccessKey: v.nullish(v.string()),
 	sort: v.nullish(runSortSchema),

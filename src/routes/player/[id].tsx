@@ -3,7 +3,7 @@ import { createAsync, RouteDefinition, useSearchParams } from '@solidjs/router';
 import { createMemo, Show } from 'solid-js';
 import * as v from 'valibot';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
-import { RunCard } from '~/components/run-card';
+import { RunCard } from '~/components/run-card/run-card';
 import { findPublicPlayer } from '~/server/player/find-player-data';
 import { findPublicRuns, RunFilterParamsSchema } from '~/server/run/find-public-runs';
 import { RunFilters } from '../run/_components';

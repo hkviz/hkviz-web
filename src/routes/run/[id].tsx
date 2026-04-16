@@ -2,7 +2,7 @@ import { Title } from '@solidjs/meta';
 import { RouteSectionProps, createAsync } from '@solidjs/router';
 import { Show, createEffect, createMemo } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
-import { RunCard } from '~/components/run-card';
+import { RunCard } from '~/components/run-card/run-card';
 import { useUser } from '~/lib/auth/client';
 import { assertNever } from '~/lib/parser';
 import { GameplayDashboard, createRunFileLoader } from '~/lib/viz';

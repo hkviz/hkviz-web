@@ -46,4 +46,11 @@ for (const saveSlotBackground of Object.values(saveSlotBackgroundSilk.areaBackgr
 	await copySprite(saveSlotBackground.backgroundImage, destSaveSlotBackgrounds);
 	await copySprite(saveSlotBackground.act3BackgroundImage, destSaveSlotBackgrounds);
 }
+for (const saveSlotBackground of Object.values(saveSlotBackgroundSilk.extraAreaBackgrounds)) {
+	await copySprite(saveSlotBackground.backgroundImage, destSaveSlotBackgrounds);
+	await copySprite(saveSlotBackground.act3BackgroundImage, destSaveSlotBackgrounds);
+}
+for (const saveSlotBackground of Object.values(saveSlotBackgroundSilk.bellhomeBackgrounds)) {
+	await copySprite(saveSlotBackground, destSaveSlotBackgrounds);
+}
 console.log(`Finished copying sprites with ${failed} failures.`);

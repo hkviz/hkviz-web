@@ -23,9 +23,9 @@
 		"db:studio": "drizzle-kit studio",
 		"fmt": "oxfmt",
 		"fmt:check": "oxfmt --check",
-		"gen:silk:copy-sprites": "ts-node ./scripts/silk-copy-sprites.mts",
-		"gen:silk:player-data": "ts-node ./scripts/silk-player-data-gen.mts",
-		"gen:silk:import-mod-extraction": "ts-node ./scripts/silk-import-mod-extraction.mts"
+		"gen:silk:copy-sprites": "node --experimental-strip-types ./scripts/silk-copy-sprites.mts",
+		"gen:silk:player-data": "node --experimental-strip-types ./scripts/silk-player-data-gen.mts",
+		"gen:silk:import-mod-extraction": "node --experimental-strip-types ./scripts/silk-import-mod-extraction.mts"
 	},
 	"dependencies": {
 		"@assetpack/core": "^1.7.0",

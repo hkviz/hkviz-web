@@ -101,3 +101,8 @@ html {
 	-webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 	mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
 }
+
+.area-background-fade-x-large {
+	-webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
+	mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
+}

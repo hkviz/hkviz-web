@@ -2,7 +2,7 @@ import * as d3 from 'd3';
 import { Bounds } from '../shared/bounds';
 import { RoomDataBase } from '../shared/map-shared';
 import { MapTextData } from '../shared/map-text-data';
-import { GlobalEnums_MapZoneSilk, PlayerDataFieldNameSilk } from './player-data-silk.generated';
+import { MapZoneSilk, PlayerDataFieldNameSilk } from './player-data-silk.generated';
 
 export interface SilkSpriteInfo {
 	name: string;
@@ -61,7 +61,7 @@ export type SomeSpriteTypeSilk =
 export type RoomSpriteVariantSilk = SomeSpriteTypeSilk['variant'];
 
 export interface RoomDataSilk extends RoomDataBase<'silk'> {
-	mapZone: GlobalEnums_MapZoneSilk;
+	mapZone: MapZoneSilk;
 	// mappedParent: string | null; -> moved to mappedIfAllMapped
 	mappedIfAllMapped: string[] | null;
 	texts: MapTextData[];

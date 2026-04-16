@@ -4,7 +4,7 @@ import { createAsync, RouteDefinition } from '@solidjs/router';
 import { Show } from 'solid-js';
 import { AuthNeeded } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
-import { RunCard } from '~/components/run-card';
+import { RunCard } from '~/components/run-card/run-card';
 import { useSession } from '~/lib/auth/client';
 import { findOwnRuns } from '~/server/run/find-own-runs';
 

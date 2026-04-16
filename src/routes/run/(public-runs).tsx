@@ -3,7 +3,7 @@ import { Title } from '@solidjs/meta';
 import { type RouteDefinition, createAsync, useSearchParams } from '@solidjs/router';
 import { Show, createMemo } from 'solid-js';
 import * as v from 'valibot';
-import { RunCard } from '~/components/run-card';
+import { RunCard } from '~/components/run-card/run-card';
 import { tagOrGroupFromCode } from '~/lib/types/tags';
 import { RunFilterParamsSchema, findPublicRuns } from '~/server/run/find-public-runs';
 import { ContentWrapper } from '../../components/content-wrapper';

@@ -1,8 +1,12 @@
 import { MapZoneHollow } from '~/lib/game-data/hollow-data/map-zone-hollow';
-import { MapZoneSilk } from '~/lib/game-data/silk-data/map-zone-silk';
-import { saveSlotBackgroundSilk } from '~/lib/game-data/silk-data/save-slot-backgrounds-silk.generated';
+import { BellhomePaintColoursSilk, ExtraRestZonesSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import {
+	AreaBackgroundData,
+	saveSlotBackgroundSilk,
+} from '~/lib/game-data/silk-data/save-slot-backgrounds-silk.generated';
 import { assertNever } from '~/lib/parser';
-import { RunGameStateMeta } from '~/server/run/run-column-selects';
+import { cn } from '~/lib/utils';
+import { RunGameStateMeta, RunGameStateSilk } from '~/server/run/run-column-selects';
 
 /*
 Matches can be extracted using c# repl using Explorer Mod for Hollow Knight. Using the following script:
@@ -199,23 +203,70 @@ export function getMapZoneHudBackgroundHollow(zone: MapZoneHollow | null): strin
 	}
 }
 
-export function getMapZoneHudBackgroundSilk(zone: MapZoneSilk | null): string {
+export function getSaveSlotBgSilk(gameState: RunGameStateSilk): string {
+	function chooseAct(bg: AreaBackgroundData | null | undefined) {
+		if (bg != null && gameState.isAct3 && bg.act3BackgroundImage) {
+			return bg.act3BackgroundImage.name;
+		}
+		return bg?.backgroundImage?.name ?? null;
+	}
+
+	function byBellhome() {
+		const color = gameState.belltownHouseColour;
+		if (
+			gameState.extraRestZones !== ExtraRestZonesSilk.byName.Bellhome ||
+			color == null ||
+			color === BellhomePaintColoursSilk.byName.None
+		) {
+			return null;
+		}
+		const bellhomeColorName = BellhomePaintColoursSilk.byId[color];
+		return saveSlotBackgroundSilk.bellhomeBackgrounds[bellhomeColorName].name;
+	}
+
+	function byExtraZone() {
+		if (gameState.extraRestZones == null && gameState.extraRestZones === ExtraRestZonesSilk.byName.None) {
+			return null;
+		}
+		const extraRestZoneName = ExtraRestZonesSilk.byId[gameState.extraRestZones];
+		return chooseAct(saveSlotBackgroundSilk.extraAreaBackgrounds[extraRestZoneName]);
+	}
+
+	function byZone() {
+		const zone = gameState.mapZone ?? 'NONE';
+		return chooseAct(saveSlotBackgroundSilk.areaBackgrounds[zone]);
+	}
+
 	const spriteName =
-		saveSlotBackgroundSilk.areaBackgrounds[zone ?? 'NONE']?.backgroundImage?.name ??
-		saveSlotBackgroundSilk.areaBackgrounds.MOSSTOWN?.backgroundImage?.name;
+		byBellhome() ??
+		byExtraZone() ??
+		byZone() ??
+		saveSlotBackgroundSilk.areaBackgrounds.MOSSTOWN.backgroundImage?.name;
 	if (spriteName) {
-		return `/silk-sprites/save-slot-backgrounds/${spriteName}.png`;
+		return spriteName;
 	} else {
-		return areaDirtmouth; // fallback to something neutral
+		return areaDirtmouth;
 	}
 }
 
-export function getMapZoneHudBackground(gameState: RunGameStateMeta): string {
+export function getMapZoneHudBackgroundWithStyleOverrides(gameState: RunGameStateMeta): {
+	src: string;
+	imgClasses?: string;
+} {
 	if (gameState.game === 'hollow') {
-		return getMapZoneHudBackgroundHollow(gameState.mapZone);
-	} else if (gameState.game === 'silk') {
-		return getMapZoneHudBackgroundSilk(gameState.mapZone);
-	} else {
-		return assertNever(gameState);
+		return {
+			src: getMapZoneHudBackgroundHollow(gameState.mapZone as MapZoneHollow | null),
+		};
 	}
+
+	const baseSpriteName = getSaveSlotBgSilk(gameState);
+	const src = `/silk-sprites/save-slot-backgrounds/${baseSpriteName}.png`;
+
+	return {
+		src,
+		imgClasses:
+			baseSpriteName === saveSlotBackgroundSilk.areaBackgrounds.BONETOWN.backgroundImage?.name
+				? cn('area-background-fade-x-large object-[50%_75%]')
+				: undefined,
+	};
 }

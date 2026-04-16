@@ -6,7 +6,8 @@ import { Progress } from '~/components/ui/progress';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import { AggregationVariableShared } from '~/lib/aggregation/aggregation-value-base';
 import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
-import { playerDataFieldsHollow } from '~/lib/parser';
+import { assertNever, playerDataFieldsHollow } from '~/lib/parser';
+import { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { getGameName } from '~/lib/types/game-ids';
 import { cn } from '~/lib/utils';
@@ -83,12 +84,16 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 	const gameVersions = createMemo(() => {
 		const rec = recording();
 		// TODO silk
-		if (!rec || rec instanceof CombinedRecordingSilk) return [];
+		if (!rec) return [];
 		return [
 			...new Set(
-				rec
-					?.allPlayerDataEventsOfField(playerDataFieldsHollow.byFieldName.version)
-					?.map((event) => event.value),
+				rec instanceof CombinedRecordingHollow
+					? rec
+							?.allPlayerDataEventsOfField(playerDataFieldsHollow.byFieldName.version)
+							?.map((event) => event.value)
+					: rec instanceof CombinedRecordingSilk
+						? rec.getPlayerDataEventsOfField('version').map((event) => event.value)
+						: assertNever(rec),
 			),
 		];
 	});

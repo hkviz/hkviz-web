@@ -1,35 +1,26 @@
 import { useAction, useSubmission } from '@solidjs/router';
 import { ChevronDownIcon, HeartIcon } from 'lucide-solid';
-import {
-	For,
-	Index,
-	Match,
-	Show,
-	Switch,
-	createEffect,
-	createSignal,
-	onCleanup,
-	type Component,
-	type JSXElement,
-} from 'solid-js';
+import { type Component, createEffect, createSignal, For, Index, type JSXElement, Show } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+import { RunCardFrameHollow } from '~/components/run-card/run-card-frame-hollow.tsx';
+import { RunCardFrameSilk } from '~/components/run-card/run-card-frame-silk.tsx';
+import { RunCardTitle } from '~/components/run-card/run-card-title.tsx';
 import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { errorGetMessage } from '~/lib/error-get-message';
 import { AA } from '~/lib/routing/AA';
 import { UrlPath } from '~/lib/routing/url';
-import { MAX_RUN_TITLE_LENGTH, cleanupRunTitle } from '~/lib/types/run-fields';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
+import { assertNever } from '~/lib/util/other';
 import { cn } from '~/lib/utils';
 import {
-	RelativeDate,
 	coin2 as coin2Img,
 	dreamNailAwokenImg,
 	dreamNailImg,
-	healthFrameImg,
-	healthFrameSteelSoulBrokenImg,
-	healthFrameSteelSoulImg,
-	healthFrameSteelSoulSmallImg,
+	hornetHealthImg,
 	maskImg,
+	RelativeDate,
+	rosaryHudImg,
+	shellShardImg,
 	steelMaskImg,
 	vesselImg,
 	vesselSteelSoul as vesselSteelSoulImg,
@@ -38,18 +29,16 @@ import { type RunMetadata } from '~/server/run/_find_runs_internal';
 import { runArchive, runDelete } from '~/server/run/run-deletion';
 import { type GetRunResult } from '~/server/run/run-get';
 import { runInteractionLike, runInteractionUnlike } from '~/server/run/run-interaction';
-import { runSetTitleAction } from '~/server/run/run-set-title';
 import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
-import { getMapZoneHudBackground } from './area-background';
-import { RunCardDropdownMenu } from './run-card-dropdown';
-import { RunTags } from './run-tags';
-import { Expander } from './ui/additions';
-import { Badge } from './ui/badge';
-import { Button } from './ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from './ui/dropdown-menu';
-import { TextField, TextFieldTextArea } from './ui/text-field';
-import { showToast } from './ui/toast';
-import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
+import { getMapZoneHudBackgroundWithStyleOverrides } from '../area-background';
+import { RunCardDropdownMenu } from '../run-card-dropdown';
+import { Expander } from '../ui/additions';
+import { Badge } from '../ui/badge';
+import { Button } from '../ui/button';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
+import { showToast } from '../ui/toast';
+import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+import { RunCardTags } from './run-card-tags.tsx';
 
 function Duration(props: { seconds: number }) {
 	const duration = () => {
@@ -64,49 +53,6 @@ function Duration(props: { seconds: number }) {
 
 	return <span>{duration()}</span>;
 }
-
-const interactiveBrightnessClasses =
-	'group-focus-within:brightness-110 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90';
-
-const HealthFrame: Component<{ isSteelSoul: boolean; isBrokenSteelSoul: boolean }> = (props) => {
-	return (
-		<Switch
-			fallback={
-				<img
-					src={healthFrameImg}
-					alt="Standard game mode frame"
-					class="absolute top-0 left-1 z-2 h-24 w-auto max-w-none"
-				/>
-			}
-		>
-			<Match when={props.isBrokenSteelSoul}>
-				<img
-					src={healthFrameSteelSoulBrokenImg}
-					alt="Broken Steel Soul game mode frame"
-					class={cn('absolute -top-8 -left-10 z-2 h-40 w-auto max-w-none', interactiveBrightnessClasses)}
-				/>
-			</Match>
-			<Match when={props.isSteelSoul}>
-				<img
-					src={healthFrameSteelSoulImg}
-					alt="Steel Soul game mode frame"
-					class={cn(
-						'roup-focus-visible:brightness-110 absolute -top-8 -left-10 z-2 hidden h-40 w-auto max-w-none sm:block',
-						interactiveBrightnessClasses,
-					)}
-				/>
-				<img
-					src={healthFrameSteelSoulSmallImg}
-					alt="Steel Soul game mode frame"
-					class={cn(
-						'absolute -top-8 -left-10 z-2 h-40 w-auto max-w-none sm:hidden',
-						interactiveBrightnessClasses,
-					)}
-				/>
-			</Match>
-		</Switch>
-	);
-};
 
 const RunCardEpicInfo: Component<{
 	title: JSXElement;
@@ -129,96 +75,6 @@ const RunCardEpicInfo: Component<{
 				</AA>
 			)}
 		</Show>
-	);
-};
-
-const RunTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => {
-	const [title, setTitle] = createMutableMemo(() => props.run.title);
-	createEffect(() => {
-		setTitle(props.run.title);
-	});
-
-	const setTitleAction = useAction(runSetTitleAction);
-	const titleSubmission = useSubmission(runSetTitleAction, ([input]) => input.id === props.run.id);
-
-	// oxlint-disable-next-line no-unassigned-vars
-	let textareaRef!: HTMLTextAreaElement;
-
-	const updateInputSize = () => {
-		if (textareaRef) {
-			textareaRef.style.width = `min(${Math.max(textareaRef.value.length * 1.5 + 5, 10)}ch, 100%)`;
-			textareaRef.style.height = 'auto';
-			textareaRef.style.height = textareaRef.scrollHeight + 'px';
-		}
-	};
-
-	createEffect(() => {
-		if (!textareaRef) return;
-		textareaRef.value = props.run.title ?? '';
-		updateInputSize();
-	});
-
-	const handleTitleChange = (_e: InputEvent) => {
-		textareaRef.value = cleanupRunTitle(textareaRef.value, true);
-		updateInputSize();
-	};
-
-	const handleInputBlur = async () => {
-		if (!textareaRef) return;
-
-		const newTitle = cleanupRunTitle(textareaRef.value);
-		if (title() === newTitle) return;
-		setTitle(newTitle);
-		try {
-			const _result = await setTitleAction({ id: props.run.id, title: newTitle });
-			showToast({
-				title: 'Successfully updated title',
-			});
-		} catch (ex) {
-			showToast({
-				title: 'Failed to update title',
-				description: (ex as Error)?.message,
-			});
-		}
-	};
-
-	createEffect(() => {
-		if (!textareaRef) return;
-		const resizeObserver = new ResizeObserver(updateInputSize);
-
-		resizeObserver.observe(textareaRef);
-
-		onCleanup(() => {
-			resizeObserver.disconnect();
-		});
-	});
-
-	return (
-		<>
-			<Show when={props.isOwnRun}>
-				<TextField>
-					<TextFieldTextArea
-						ref={textareaRef}
-						placeholder="Add title"
-						rows={1}
-						onInput={handleTitleChange}
-						onBlur={handleInputBlur}
-						maxLength={MAX_RUN_TITLE_LENGTH}
-						disabled={titleSubmission.pending}
-						class={
-							'max-w-auto relative z-8 -mx-3 -my-3 inline-block min-h-min w-full max-w-full resize-none overflow-hidden border-none bg-transparent font-serif text-xl font-bold drop-shadow-xs focus:bg-background focus:text-foreground md:text-2xl'
-						}
-					>
-						{title()}
-					</TextFieldTextArea>
-				</TextField>
-			</Show>
-			<Show when={!props.isOwnRun && props.run.title}>
-				<h2 class="color-white relative z-5 font-serif text-xl font-bold drop-shadow-xs md:text-2xl">
-					{props.run.title}
-				</h2>
-			</Show>
-		</>
 	);
 };
 
@@ -288,17 +144,31 @@ export const RunCard: Component<{
 	// const isLoading = deletionMutation.isLoading || archiveMutation.isLoading;
 
 	const gameState = () => props.run.gameState;
-	const bgImage = () => getMapZoneHudBackground(gameState());
+	const gameStateAsSilk = () => (props.run.gameState.game === 'silk' ? props.run.gameState : null);
+	const gameStateAsHollow = () => (props.run.gameState.game === 'hollow' ? props.run.gameState : null);
+
+	const bgImage = () => getMapZoneHudBackgroundWithStyleOverrides(gameState());
 
 	const isSteelSoul = () => props.run.isSteelSoul;
 	const isBrokenSteelSoul = () => props.run.isBrokenSteelSoul;
 
 	const soulOrbImgSrc = () => (isSteelSoul() ? vesselSteelSoulImg : vesselImg);
-	const healthImgSrc = () => (isSteelSoul() ? steelMaskImg : maskImg);
+	const healthImgSrc = () => {
+		const game = gameState()?.game;
+		if (game === 'hollow') {
+			return isSteelSoul() ? steelMaskImg : maskImg;
+		} else if (game === 'silk') {
+			return isSteelSoul() ? hornetHealthImg : hornetHealthImg;
+		} else {
+			return assertNever(game);
+		}
+	};
 
 	const visibilityIcon = () => visibilityByCode(visibility()).Icon;
 
 	const isRemoving = () => false; // deleteSubmission.pending || archiveSubmission.pending;
+
+	//props.run.gameState.game = 'silk';
 
 	return (
 		<Expander expanded={!isRemoved()} class="overflow-visible">
@@ -320,7 +190,7 @@ export const RunCard: Component<{
 				<div class="flex grow flex-col">
 					<div class="-mb-4 flex flex-row items-start justify-end gap-1 sm:-mb-7">
 						{/* TODO add mutations */}
-						<RunTags
+						<RunCardTags
 							codes={props.run.tags}
 							runId={props.run.id}
 							isOwn={Boolean(props.isOwnRun)}
@@ -354,31 +224,56 @@ export const RunCard: Component<{
 					</div>
 					<div class="flex grow flex-row">
 						<div class="relative z-3 -mb-5 h-28 w-16 shrink-0 origin-top-left scale-75 sm:mb-0 sm:w-26 sm:scale-100">
-							<HealthFrame isSteelSoul={isSteelSoul()} isBrokenSteelSoul={isBrokenSteelSoul()} />
-							<Show when={(gameState()?.mpReserveMax ?? 100) >= 99}>
-								<img
-									src={soulOrbImgSrc()}
-									alt="Soul orb"
-									class="absolute bottom-11 left-[-0.85rem] z-3 scale-90"
+							<Show when={gameStateAsSilk()}>
+								{(gs) => (
+									<RunCardFrameSilk
+										isSteelSoul={isSteelSoul()}
+										isBrokenSteelSoul={isBrokenSteelSoul()}
+										crestName={gs().currentCrestId}
+									/>
+								)}
+							</Show>
+							<Show when={props.run.gameState.game === 'hollow'}>
+								<RunCardFrameHollow
+									isSteelSoul={isSteelSoul()}
+									isBrokenSteelSoul={isBrokenSteelSoul()}
 								/>
 							</Show>
-							<Show when={(gameState()?.mpReserveMax ?? 100) >= 66}>
-								<img
-									src={soulOrbImgSrc()}
-									alt="Soul orb"
-									class="absolute bottom-[1.6rem] left-[-0.4rem] z-3 scale-95"
-								/>
-							</Show>
-							<Show when={(gameState()?.mpReserveMax ?? 100) >= 33}>
-								<img
-									src={soulOrbImgSrc()}
-									alt="Soul orb"
-									class="absolute bottom-[0.65rem] left-2 z-3"
-								/>
+							<Show when={gameStateAsHollow()}>
+								{(gameState) => (
+									<>
+										<Show when={(gameState()?.mpReserveMax ?? 100) >= 99}>
+											<img
+												src={soulOrbImgSrc()}
+												alt="Soul orb"
+												class="absolute bottom-11 left-[-0.85rem] z-3 scale-90"
+											/>
+										</Show>
+										<Show when={(gameState()?.mpReserveMax ?? 100) >= 66}>
+											<img
+												src={soulOrbImgSrc()}
+												alt="Soul orb"
+												class="absolute bottom-[1.6rem] left-[-0.4rem] z-3 scale-95"
+											/>
+										</Show>
+										<Show when={(gameState()?.mpReserveMax ?? 100) >= 33}>
+											<img
+												src={soulOrbImgSrc()}
+												alt="Soul orb"
+												class="absolute bottom-[0.65rem] left-2 z-3"
+											/>
+										</Show>
+									</>
+								)}
 							</Show>
 						</div>
 						<div class="flex grow flex-col">
-							<div class="relative z-4 mt-4 flex flex-row flex-wrap gap-1 drop-shadow-xs sm:gap-2">
+							<div
+								class={cn(
+									'relative z-4 mt-4 flex flex-row flex-wrap gap-1 drop-shadow-xs sm:gap-2',
+									gameState().game === 'silk' ? '-translate-x-2 translate-y-1' : '',
+								)}
+							>
 								<Index each={[...Array(gameState()?.maxHealth ?? 5).keys()]}>
 									{() => <img src={healthImgSrc()} alt="Health" class="-mb-1 w-5 sm:w-6" />}
 								</Index>
@@ -386,21 +281,42 @@ export const RunCard: Component<{
 							<div class="relative z-4 mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-xs sm:mt-3">
 								<span>
 									<img
-										src={coin2Img}
-										alt="Geo icon"
-										class="inline-block w-7 p-1 drop-shadow-glow-md"
+										src={props.run.gameState.game === 'silk' ? rosaryHudImg : coin2Img}
+										alt={props.run.gameState.game === 'silk' ? 'Rosary icon' : 'Geo icon'}
+										class={cn(
+											'inline-block p-1 drop-shadow-glow-md',
+											props.run.gameState.game === 'silk' ? 'w-8' : 'w-7',
+										)}
 									/>
 									<span class="text-xl font-semibold sm:text-2xl">{gameState()?.geo ?? '?'}</span>
 								</span>
-								<Show when={gameState()?.dreamOrbs}>
-									<span>
-										<img
-											src={gameState()?.dreamNailUpgraded ? dreamNailAwokenImg : dreamNailImg}
-											alt="Essence icon"
-											class="-mt-4 -mb-3 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
-										/>
-										<span class="text-xl font-semibold sm:text-2xl">{gameState().dreamOrbs}</span>
-									</span>
+								<Show when={gameStateAsHollow() && gameStateAsHollow()?.dreamOrbs}>
+									{(dreamOrbs) => (
+										<span>
+											<img
+												src={
+													gameStateAsHollow()?.dreamNailUpgraded
+														? dreamNailAwokenImg
+														: dreamNailImg
+												}
+												alt={gameState().game === 'silk' ? 'Shell Shards' : '"Essence'}
+												class="-mt-4 -mb-3 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
+											/>
+											<span class="text-xl font-semibold sm:text-2xl">{dreamOrbs()}</span>
+										</span>
+									)}
+								</Show>
+								<Show when={gameStateAsSilk()}>
+									{(gs) => (
+										<span>
+											<img
+												src={shellShardImg}
+												alt={gameState().game === 'silk' ? 'Shell Shards' : '"Essence'}
+												class="-mt-4 -mb-3 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
+											/>
+											<span class="text-xl font-semibold sm:text-2xl">{gs().shellShards}</span>
+										</span>
+									)}
 								</Show>
 								<Show when={displayPercentage(gameState())}>
 									<span class="ml-4">
@@ -414,7 +330,7 @@ export const RunCard: Component<{
 						</div>
 					</div>
 					<div class="-mt-3">
-						<RunTitle run={props.run} isOwnRun={props.isOwnRun ?? false} />
+						<RunCardTitle run={props.run} isOwnRun={props.isOwnRun ?? false} />
 						<div class="flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif">
 							<Show when={props.run.user?.name && props.showUser}>
 								<RunCardEpicInfo title="By:" href={`/player/${props.run.user.id}`}>
@@ -457,8 +373,9 @@ export const RunCard: Component<{
 						<img
 							class={cn(
 								'top-[-10%] left-[-10%] h-[120%] w-[120%] object-cover object-[50%_70%] opacity-50 blur-xl',
+								bgImage().imgClasses,
 							)}
-							src={bgImage()}
+							src={bgImage().src}
 							alt=""
 							aria-hidden="true"
 							loading="lazy"
@@ -474,10 +391,11 @@ export const RunCard: Component<{
 					>
 						<img
 							class={cn(
-								'inset-0 h-full w-full object-cover object-[50%_70%] transition group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90',
-								props.run.gameState.game === 'hollow' ? '' : 'area-background-fade-x',
+								'inset-0 h-full w-full object-cover object-center transition group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90',
+								props.run.gameState.game === 'hollow' ? '' : 'area-background-fade-x object-[50%_70%]',
+								bgImage().imgClasses,
 							)}
-							src={bgImage()}
+							src={bgImage().src}
 							alt=""
 							aria-hidden="true"
 							loading="lazy"
@@ -563,13 +481,26 @@ function RunCardLikeButton(props: { run: RunMetadata }) {
 function displayPercentage(
 	gameState: RunMetadata['gameState'],
 ): gameState is RunMetadata['gameState'] & { completionPercentage: number } {
-	if (!gameState) return false;
-
-	return (
-		(gameState.killedHollowKnight === true ||
+	if (gameState?.completionPercentage == null) {
+		return false;
+	}
+	if (gameState.unlockedCompletionRate === true) {
+		return true;
+	}
+	if (gameState.game === 'hollow') {
+		return (
+			gameState.killedHollowKnight === true ||
 			gameState.killedVoidIdol === true ||
-			gameState.killedFinalBoss === true ||
-			gameState.unlockedCompletionRate === true) &&
-		gameState.completionPercentage != null
-	);
+			gameState.killedFinalBoss === true
+		);
+	} else if (gameState.game === 'silk') {
+		return (
+			gameState.endingAct2Regular === true ||
+			gameState.endingAct2Cursed === true ||
+			gameState.endingAct2SoulSnare === true ||
+			gameState.endingAct3 === true
+		);
+	} else {
+		return assertNever(gameState);
+	}
 }

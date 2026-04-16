@@ -32,8 +32,9 @@ export const knightPinSrc = '/ingame-sprites/Map_Knight_Pin_Compass.png';
 export const hornetPinSrc = '/silk-sprites/Map_Knight_Pin_Compass_idle0000.png';
 export const shellShardImg = '/silk-sprites/shell_shard_icon_gleam.png';
 export const rosaryIconImg = '/silk-sprites/I_rosary_icon_clean.png';
+export const rosaryHudImg = '/silk-sprites/HUD_coin_v020004.png';
 export const hornetDeathPinImg = '/silk-sprites/Shade_Pin.png';
-export const hornetHealthImg = '/silk-sprites/select_game_HUD_0001_health.png';
+export const hornetHealthImg = '/silk-sprites/wiki_health.png';
 export const hornetHealingImg = '/silk-sprites/Inv_0029_spell_core.png';
 
 export function heroPinSource(game: GameId): string {

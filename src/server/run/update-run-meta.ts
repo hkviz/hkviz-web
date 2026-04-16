@@ -22,21 +22,42 @@ export async function updateRunMetaByFiles(db: DB, runId: string) {
 
 	for (const file of files) {
 		updateSet.gameVersion = updateSet.gameVersion ?? file.gameVersion;
+
+		// -- shared --
+		// time
 		updateSet.playTime = updateSet.playTime ?? file.playTime;
-		updateSet.maxHealth = updateSet.maxHealth ?? file.maxHealth;
-		updateSet.mpReserveMax = updateSet.mpReserveMax ?? file.mpReserveMax;
-		updateSet.geo = updateSet.geo ?? file.geo;
-		updateSet.dreamOrbs = updateSet.dreamOrbs ?? file.dreamOrbs;
-		updateSet.permadeathMode = updateSet.permadeathMode ?? file.permadeathMode;
-		updateSet.mapZone = updateSet.mapZone ?? file.mapZone;
-		updateSet.killedHollowKnight = updateSet.killedHollowKnight ?? file.killedHollowKnight;
-		updateSet.killedFinalBoss = updateSet.killedFinalBoss ?? file.killedFinalBoss;
-		updateSet.killedVoidIdol = updateSet.killedVoidIdol ?? file.killedVoidIdol;
-		updateSet.completionPercentage = updateSet.completionPercentage ?? file.completionPercentage;
-		updateSet.unlockedCompletionRate = updateSet.unlockedCompletionRate ?? file.unlockedCompletionRate;
-		updateSet.dreamNailUpgraded = updateSet.dreamNailUpgraded ?? file.dreamNailUpgraded;
-		updateSet.lastScene = updateSet.lastScene ?? file.lastScene;
 		updateSet.endedAt = updateSet.endedAt ?? file.endedAt;
+
+		// bools
+		updateSet.unlockedCompletionRate = updateSet.unlockedCompletionRate ?? file.unlockedCompletionRate;
+
+		// ints
+		updateSet.completionPercentage = updateSet.completionPercentage ?? file.completionPercentage;
+		updateSet.maxHealth = updateSet.maxHealth ?? file.maxHealth;
+		updateSet.geo = updateSet.geo ?? file.geo;
+		updateSet.permadeathMode = updateSet.permadeathMode ?? file.permadeathMode;
+
+		// strings
+		updateSet.lastScene = updateSet.lastScene ?? file.lastScene;
+
+		// -- game specific --
+		updateSet.mapZone = updateSet.mapZone ?? file.mapZone;
+
+		// bools
+		updateSet.gsBool1 = updateSet.gsBool1 ?? file.gsBool1;
+		updateSet.gsBool2 = updateSet.gsBool2 ?? file.gsBool2;
+		updateSet.gsBool3 = updateSet.gsBool3 ?? file.gsBool3;
+		updateSet.gsBool4 = updateSet.gsBool4 ?? file.gsBool4;
+		updateSet.gsBool5 = updateSet.gsBool5 ?? file.gsBool5;
+
+		// ints
+		updateSet.gsInt1 = updateSet.gsInt1 ?? file.gsInt1;
+		updateSet.gsInt2 = updateSet.gsInt2 ?? file.gsInt2;
+		updateSet.gsInt3 = updateSet.gsInt3 ?? file.gsInt3;
+		updateSet.gsInt4 = updateSet.gsInt4 ?? file.gsInt4;
+
+		// strings
+		updateSet.gsString1 = updateSet.gsString1 ?? file.gsString1;
 	}
 
 	await db.update(runs).set(updateSet).where(eq(runs.id, runId));

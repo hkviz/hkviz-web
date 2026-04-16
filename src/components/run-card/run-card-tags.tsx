@@ -1,12 +1,12 @@
 import { useAction, useSubmission } from '@solidjs/router';
 import { PlusIcon, XIcon } from 'lucide-solid';
 import { For, Show, createMemo, type Component, type JSXElement } from 'solid-js';
-import { createMutableMemo } from '~/lib/create-mutable-memo';
-import { tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode, type TagGroup } from '~/lib/types/tags';
-import { cn } from '~/lib/utils';
-import { addTagAction, removeTagAction } from '~/server/run/tags';
-import { Badge } from './ui/badge';
-import { Button } from './ui/button';
+import { createMutableMemo } from '~/lib/create-mutable-memo.ts';
+import { tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode, type TagGroup } from '~/lib/types/tags.ts';
+import { cn } from '~/lib/utils.ts';
+import { addTagAction, removeTagAction } from '~/server/run/tags.ts';
+import { Badge } from '../ui/badge.tsx';
+import { Button } from '../ui/button.tsx';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -16,8 +16,8 @@ import {
 	DropdownMenuSubContent,
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
-} from './ui/dropdown-menu';
-import { Skeleton } from './ui/skeleton';
+} from '../ui/dropdown-menu.tsx';
+import { Skeleton } from '../ui/skeleton.tsx';
 
 // TODO
 export const RunTag: Component<{
@@ -63,7 +63,7 @@ export const RunTag: Component<{
 	);
 };
 
-export const RunTags: Component<{
+export const RunCardTags: Component<{
 	codes: TagCode[];
 	runId: string;
 	isOwn: boolean;

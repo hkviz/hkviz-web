@@ -154,22 +154,35 @@ const runTagColumns = Object.fromEntries(
 const runGameStateMetaColumns = {
 	gameVersion: text('hk_version', { length: 64 }),
 	playTime: real('play_time'),
-	maxHealth: int('max_health'),
-	mpReserveMax: int('mp_reserve_max'),
-	geo: int('geo'),
-	dreamOrbs: int('dream_orbs'),
-	permadeathMode: int('permadeath_mode'),
-	mapZone: textEnum('map_zone', hollowOrSilkMapZoneSchema.options),
-	killedHollowKnight: boolean('killed_hollow_knight'),
-	killedFinalBoss: boolean('killed_final_boss'),
-	killedVoidIdol: boolean('killed_void_idol'),
-	completionPercentage: int('completion_percentage'),
-	unlockedCompletionRate: boolean('unlocked_completion_rate'),
-	dreamNailUpgraded: boolean('dream_nail_upgraded'),
-	lastScene: text('last_scene', { length: 255 }),
-
 	startedAt: timestamp('started_at'),
 	endedAt: timestamp('ended_at'),
+
+	// -- shared --
+	unlockedCompletionRate: boolean('unlocked_completion_rate'),
+	maxHealth: int('max_health'),
+	geo: int('geo'),
+	permadeathMode: int('permadeath_mode'),
+	completionPercentage: int('completion_percentage'),
+	lastScene: text('last_scene', { length: 255 }),
+
+	// -- game specific --
+	mapZone: textEnum('map_zone', hollowOrSilkMapZoneSchema.options),
+
+	// bools
+	gsBool1: boolean('killed_hollow_knight'),
+	gsBool2: boolean('killed_final_boss'),
+	gsBool3: boolean('killed_void_idol'),
+	gsBool4: boolean('dream_nail_upgraded'),
+	gsBool5: boolean('gs_bool_5'),
+
+	// ints
+	gsInt1: int('dream_orbs'),
+	gsInt2: int('mp_reserve_max'),
+	gsInt3: int('gs_int_3'),
+	gsInt4: int('gs_int_4'),
+
+	// strings
+	gsString1: text('gs_string_1', { length: 255 }),
 } as const;
 
 export type RunGameStateMetaColumnName = keyof typeof runGameStateMetaColumns;

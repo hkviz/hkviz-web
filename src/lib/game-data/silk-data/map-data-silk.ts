@@ -13,7 +13,7 @@ import {
 	SomeSpriteTypeSilk,
 	SpriteConditionDataSilk,
 } from './map-data-silk.types.js';
-import { GlobalEnums_MapZoneSilk } from './player-data-silk.generated.js';
+import { MapZoneSilk } from './player-data-silk.generated.js';
 import { sceneNameGetZone } from './scene-ids-get-zone.js';
 import { isActualSceneNameSilk } from './scene-name-check-silk.js';
 import { silkScaleBounds } from './silk-scaling.js';
@@ -64,7 +64,7 @@ const silkSceneNameToActual: Record<string, string> = {
 	Shellwood_13b: 'Shellwood_13',
 };
 
-const silkZoneMappings: Partial<Record<GlobalEnums_MapZoneSilk, GlobalEnums_MapZoneSilk>> = {
+const silkZoneMappings: Partial<Record<MapZoneSilk, MapZoneSilk>> = {
 	CORAL_CAVERNS: 'RED_CORAL_GORGE',
 };
 

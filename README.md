@@ -32,6 +32,7 @@ To set this project up locally:
 - If needed [install pnpm](https://pnpm.io/installation)
 - Install dependencies using `pnpm install`.
 - Start the project locally using `pnpm dev`
+- For Silk data generation scripts, copy `scripts/.env.example` to `scripts/.env` and set your local paths.
 
 ### Project structure
 

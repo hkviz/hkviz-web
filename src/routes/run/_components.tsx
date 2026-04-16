@@ -1,7 +1,7 @@
 import { debounce } from '@solid-primitives/scheduled';
 import { useSearchParams } from '@solidjs/router';
 import { For, Show, createEffect, createMemo, createSignal, onMount, untrack, type Component } from 'solid-js';
-import { TagDropdownMenu } from '~/components/run-tags';
+import { TagDropdownMenu } from '~/components/run-card/run-card-tags.tsx';
 import { Badge } from '~/components/ui/badge';
 import { Button } from '~/components/ui/button';
 import { Card } from '~/components/ui/card';

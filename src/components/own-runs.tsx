@@ -5,7 +5,7 @@ import { errorGetMessage } from '~/lib/error-get-message';
 import { type findRunsInternal } from '~/server/run/_find_runs_internal';
 import { runCombine } from '~/server/run/run-combine';
 import { BottomInteractionRow, BottomInteractionRowText } from './bottom_interaction';
-import { RunCard } from './run-card';
+import { RunCard } from './run-card/run-card';
 import { GradientSeparator } from './ui/additions';
 import { Button } from './ui/button';
 import { Checkbox } from './ui/checkbox';

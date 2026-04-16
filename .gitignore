@@ -32,5 +32,6 @@ Thumbs.db
 # Generated via assetpack build
 public/assets
 
-# gen scripts
-scripts/paths.local.mts
+# script-local env
+scripts/.env
+scripts/.env.local
