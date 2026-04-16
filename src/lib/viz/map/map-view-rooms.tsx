@@ -4,13 +4,11 @@ import { Bounds } from '~/lib/game-data/shared/bounds';
 import { RoomDataAny, RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import { GameId } from '~/lib/types/game-ids';
 import { useSpriteSheetStore } from '../spritesheets/spritesheet-store';
-import {
-	mapViewRoomRectClass,
-	useGameplayStore,
-	useRoomColoringStore,
-	useRoomDisplayStore,
-	useThemeStore,
-} from '../store';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useRoomColoringStore } from '../store/room-coloring-store';
+import { useRoomDisplayStore } from '../store/room-display-store';
+import { useThemeStore } from '../store/theme-store';
+import { mapViewRoomRectClass } from '../store/tour-store';
 import { HoverOutlineFilter } from './svg-filters';
 
 type RoomRenderMode = 'overlayAlpha' | 'overlaySolid';

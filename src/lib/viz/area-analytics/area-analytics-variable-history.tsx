@@ -3,7 +3,9 @@ import { AggregationTimePointBase } from '~/lib/aggregation/aggregation-value-ba
 import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { assertNever } from '~/lib/parser';
 import { Duration } from '../duration';
-import { AreaSelectionMode, useAggregationStore, useGameplayStore, useRoomDisplayStore } from '../store';
+import { useAggregationStore } from '../store/aggregation-store';
+import { useGameplayStore } from '../store/gameplay-store';
+import { AreaSelectionMode, useRoomDisplayStore } from '../store/room-display-store';
 import { TimelineList, TimelineListEntryButton } from '../timeline-list/timeline-list';
 import { useAreaAnalyticsContext } from './area-analytics-context';
 
@@ -54,7 +56,6 @@ export const AreaAnalyticsVariableHistory: Component = () => {
 	const gameplayStore = useGameplayStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const roomInfosContext = useAreaAnalyticsContext();
-	const roomInfosStore = useAggregationStore();
 	const aggregationStore = useAggregationStore();
 
 	const history = createMemo(() => {
@@ -62,7 +63,7 @@ export const AreaAnalyticsVariableHistory: Component = () => {
 		const variable = roomInfosContext.selectedVariable();
 		if (!variable) return [];
 		if (!virtualScene) return [];
-		return roomInfosStore.getAggregationHistory(virtualScene, variable);
+		return aggregationStore.getAggregationHistory(virtualScene, variable);
 	});
 
 	function getSceneName(entry: AggregationTimePointBase) {

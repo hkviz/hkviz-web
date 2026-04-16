@@ -23,16 +23,13 @@ import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/fram
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { createAutoSizeCanvas } from '../canvas';
 import { ColorClasses } from '../colors';
-import {
-	MsIntoGameChangeType,
-	useAnimationStore,
-	useExtraChartStore,
-	useGameplayStore,
-	useHoverMsStore,
-	useRoomDisplayStore,
-	useThemeStore,
-	useViewportStore,
-} from '../store';
+import { MsIntoGameChangeType, useAnimationStore } from '../store/animation-store';
+import { useExtraChartStore } from '../store/extra-chart-store';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useHoverMsStore } from '../store/hover-ms-store';
+import { useRoomDisplayStore } from '../store/room-display-store';
+import { useThemeStore } from '../store/theme-store';
+import { useViewportStore } from '../store/viewport-store';
 import { chartBaseHeight, chartBaseWidth, getChartFrame } from './chart-frame';
 import { downScale } from './down-scale';
 import type { InitMessage, ResizeMessage, SetDataMessage, SetViewMessage } from './line-area-chart-render.worker';

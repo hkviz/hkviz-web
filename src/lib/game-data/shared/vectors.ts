@@ -1,10 +1,12 @@
-import { Vector2Like } from './vector-like';
+import type { Vector2Like } from './vector-like.ts';
 
 export class Vector2 {
-	public constructor(
-		public readonly x: number,
-		public readonly y: number,
-	) {}
+	public readonly x: number;
+	public readonly y: number;
+	public constructor(x: number, y: number) {
+		this.x = x;
+		this.y = y;
+	}
 
 	public static readonly ZERO = new Vector2(0, 0);
 

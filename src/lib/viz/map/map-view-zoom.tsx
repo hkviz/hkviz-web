@@ -4,13 +4,11 @@ import { createEffect, createMemo, onCleanup, untrack } from 'solid-js';
 import { Bounds } from '~/lib/game-data/shared/bounds';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { binarySearchLastIndexBefore, gameObjectNamesIgnoredInZoomZone, type ZoomZone } from '../../parser';
-import {
-	useAnimationStore,
-	useAnimationTickStore,
-	useGameplayStore,
-	useMapZoomStore,
-	useRoomDisplayStore,
-} from '../store';
+import { useAnimationStore } from '../store/animation-store';
+import { useAnimationTickStore } from '../store/animation-tick-store';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useMapZoomStore } from '../store/map-zoom-store';
+import { useRoomDisplayStore } from '../store/room-display-store';
 
 interface MapViewZoomProps {
 	zoom: d3.ZoomBehavior<SVGSVGElement, unknown> | undefined;

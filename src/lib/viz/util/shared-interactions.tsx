@@ -1,5 +1,7 @@
 import { JSX } from 'solid-js';
-import { RoomHoverSource, useAnimationStore, useHoverMsStore, useRoomDisplayStore } from '../store';
+import { useAnimationStore } from '../store/animation-store';
+import { useHoverMsStore } from '../store/hover-ms-store';
+import { RoomHoverSource, useRoomDisplayStore } from '../store/room-display-store';
 
 export function createRoomMsButtonProps(props: {
 	room?: () =>

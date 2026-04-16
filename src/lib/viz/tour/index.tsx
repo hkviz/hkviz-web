@@ -3,7 +3,8 @@ import { For, Show, createEffect, createMemo, onCleanup, untrack, type Component
 import { Dynamic } from 'solid-js/web';
 import { Button } from '~/components/ui/button';
 import { Popover, PopoverContent } from '~/components/ui/popover';
-import { useGameplayStore, useTourStore } from '../store';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useTourStore } from '../store/tour-store';
 import { type Step } from './step';
 
 interface TourStepProps {

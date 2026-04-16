@@ -11,17 +11,15 @@ import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/
 import { getGameName } from '~/lib/types/game-ids';
 import { cn } from '~/lib/utils';
 import { RelativeDate } from '../datetime/date';
-import {
-	useAnimationStore,
-	useExtraChartStore,
-	useGameplayStore,
-	useMapZoomStore,
-	useRoomColoringStore,
-	useRoomDisplayStore,
-	useTourStore,
-	useTraceStore,
-	useUiStore,
-} from '../store';
+import { useAnimationStore } from '../store/animation-store';
+import { useExtraChartStore } from '../store/extra-chart-store';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useMapZoomStore } from '../store/map-zoom-store';
+import { useRoomColoringStore } from '../store/room-coloring-store';
+import { useRoomDisplayStore } from '../store/room-display-store';
+import { useTourStore } from '../store/tour-store';
+import { useTraceStore } from '../store/trace-store';
+import { useUiStore } from '../store/ui-store';
 
 export interface RunOverviewTabProps {
 	class?: string;

@@ -35,8 +35,8 @@ for (const lang of supportedLanguagesSilk) {
 
 await exportFormattedJsFile(
 	'./src/lib/game-data/silk-data/localization/load-lang-silk.generated.ts',
-	`import type { SupportedLanguageSilk } from './supported-languages-silk';
-	import { assertNever } from '~/lib/util/other';
+	`import type { SupportedLanguageSilk } from './supported-languages-silk.ts';
+	import { assertNever } from '~/lib/util/other.ts';
 
 	export interface LocalizationDataSilk {
 		${Object.keys(someLangDict)
@@ -56,4 +56,28 @@ await exportFormattedJsFile(
 				return assertNever(lang);
 		}
 	}`,
+);
+
+// area backgrounds
+const saveSlotBackgroundsJsonStr = await readExtraction('save-slot-backgrounds.json');
+const saveSlotBackgrounds = JSON.parse(saveSlotBackgroundsJsonStr);
+
+await exportFormattedJsFile(
+	'./src/lib/game-data/silk-data/save-slot-backgrounds-silk.generated.ts',
+	`
+    import type { SilkSpriteInfoGenerated } from "./map-data-silk.generated.types.ts";
+	import type { MapZoneSilk } from './map-zone-silk.ts';
+
+	export interface AreaBackgroundData {
+		nameOverride: string | null;
+		act3OverlayOptOut: boolean;
+		backgroundImage: SilkSpriteInfoGenerated | null;
+		act3BackgroundImage: SilkSpriteInfoGenerated | null;
+    }
+	
+	export const saveSlotBackgroundSilk: {
+		areaBackgrounds: Record<MapZoneSilk, AreaBackgroundData>;
+		extraAreaBackgrounds: Record<string, AreaBackgroundData>;
+		bellhomeBackgrounds: Record<string, SilkSpriteInfoGenerated>;
+	} = ${JSON.stringify(saveSlotBackgrounds, null, 2)};`,
 );

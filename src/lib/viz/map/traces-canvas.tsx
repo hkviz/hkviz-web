@@ -11,7 +11,10 @@ import {
 } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
 import { corpsePinSourceOrUndefined, dreamGatePinSrc, heroPinSourceOrUndefined } from '../img-urls';
-import { useAnimationStore, useGameplayStore, useMapZoomStore, useTraceStore } from '../store';
+import { useAnimationStore } from '../store/animation-store';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useMapZoomStore } from '../store/map-zoom-store';
+import { useTraceStore } from '../store/trace-store';
 
 const EMPTY_ARRAY = [] as const;
 

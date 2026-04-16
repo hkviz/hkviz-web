@@ -9,7 +9,7 @@ import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import { LayoutPanelHeader } from '../layout/layout-panel-header';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
-import { useExtraChartStore } from '../store';
+import { useExtraChartStore } from '../store/extra-chart-store';
 import { LineAreaChart, type LineAreaChartProps } from './line-area-chart';
 
 const RunExtraChartsFollowButton: Component = () => {

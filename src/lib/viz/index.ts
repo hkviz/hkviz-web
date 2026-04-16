@@ -10,7 +10,6 @@ export * from './list';
 export * from './loader';
 export * from './map';
 export * from './splits';
-export * from './store';
 export * from './time-charts';
 export * from './timeline';
 export * from './util';

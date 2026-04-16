@@ -1,5 +1,6 @@
 import { MapZoneHollow } from '~/lib/game-data/hollow-data/map-zone-hollow';
 import { MapZoneSilk } from '~/lib/game-data/silk-data/map-zone-silk';
+import { saveSlotBackgroundSilk } from '~/lib/game-data/silk-data/save-slot-backgrounds-silk.generated';
 import { assertNever } from '~/lib/parser';
 import { RunGameStateMeta } from '~/server/run/run-column-selects';
 
@@ -199,8 +200,14 @@ export function getMapZoneHudBackgroundHollow(zone: MapZoneHollow | null): strin
 }
 
 export function getMapZoneHudBackgroundSilk(zone: MapZoneSilk | null): string {
-	// todo
-	return areaDirtmouth; // not defined in game
+	const spriteName =
+		saveSlotBackgroundSilk.areaBackgrounds[zone ?? 'NONE']?.backgroundImage?.name ??
+		saveSlotBackgroundSilk.areaBackgrounds.MOSSTOWN?.backgroundImage?.name;
+	if (spriteName) {
+		return `/silk-sprites/save-slot-backgrounds/${spriteName}.png`;
+	} else {
+		return areaDirtmouth; // fallback to something neutral
+	}
 }
 
 export function getMapZoneHudBackground(gameState: RunGameStateMeta): string {

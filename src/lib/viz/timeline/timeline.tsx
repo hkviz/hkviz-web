@@ -11,17 +11,13 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip
 import { cn } from '~/lib/utils';
 import { createAutoSizeCanvas } from '../canvas';
 import { Duration } from '../duration';
-import {
-	changeRoomColorForDarkTheme,
-	changeRoomColorForLightTheme,
-	PLAYBACK_SPEED_OPTIONS_VISIBLE,
-	useAnimationStore,
-	useGameplayStore,
-	useHoverMsStore,
-	useRoomDisplayStore,
-	useThemeStore,
-	useUiStore,
-} from '../store';
+import { PLAYBACK_SPEED_OPTIONS_VISIBLE, useAnimationStore } from '../store/animation-store';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useHoverMsStore } from '../store/hover-ms-store';
+import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '../store/room-coloring-store';
+import { useRoomDisplayStore } from '../store/room-display-store';
+import { useThemeStore } from '../store/theme-store';
+import { useUiStore } from '../store/ui-store';
 import { formatTimeMs } from '../util';
 
 function Times(props: { class?: string }) {

@@ -1,14 +1,11 @@
 import { createMemo, For } from 'solid-js';
 import { MapTextData } from '~/lib/game-data/shared/map-text-data';
 import { hkLangString } from '../../parser';
-import {
-	changeRoomColorForLightTheme,
-	useGameplayStore,
-	useRoomColoringStore,
-	useRoomDisplayStore,
-	useThemeStore,
-} from '../store';
+import { useGameplayStore } from '../store/gameplay-store';
 import { useLocalizationStore } from '../store/localization-store';
+import { changeRoomColorForLightTheme, useRoomColoringStore } from '../store/room-coloring-store';
+import { useRoomDisplayStore } from '../store/room-display-store';
+import { useThemeStore } from '../store/theme-store';
 
 interface MapViewTextProps {
 	textData: MapTextData;

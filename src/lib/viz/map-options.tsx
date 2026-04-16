@@ -28,7 +28,8 @@ import { useLayoutPanelContext } from './layout/layout-panel-context';
 import { LayoutPanelHeader } from './layout/layout-panel-header';
 import { LayoutPanelTypeProps } from './layout/layout-panel-props';
 import { LayoutPanelWrapper } from './layout/layout-panel-wrapper';
-import { RoomVisibility, TRACE_VISIBILITIES, TraceVisibility, useRoomDisplayStore, useTraceStore } from './store';
+import { RoomVisibility, useRoomDisplayStore } from './store/room-display-store';
+import { TRACE_VISIBILITIES, TraceVisibility, useTraceStore } from './store/trace-store';
 
 function roomVisibilityName(v: RoomVisibility, short: boolean) {
 	switch (v) {

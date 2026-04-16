@@ -8,7 +8,8 @@ import {
 } from '~/components/ui/dropdown-menu';
 import { type RoomColorCurve, roomColorCurveById, roomColorCurves } from '../color-curves';
 import { type RoomColorMap, roomColorMaps } from '../color-map';
-import { useRoomColoringStore, useThemeStore } from '../store';
+import { useRoomColoringStore } from '../store/room-coloring-store';
+import { useThemeStore } from '../store/theme-store';
 
 const PREVIEW_HEIGHT = 14;
 const PREVIEW_WIDTH = PREVIEW_HEIGHT * 2.5;

@@ -5,13 +5,11 @@ import { Expander } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
 import { DropdownMenu, DropdownMenuTrigger } from '~/components/ui/dropdown-menu';
 import { GameId } from '~/lib/types/game-ids';
-import {
-	useAggregationStore,
-	useAnimationStore,
-	useGameplayStore,
-	useRoomColoringStore,
-	useRoomDisplayStore,
-} from '../store';
+import { useAggregationStore } from '../store/aggregation-store';
+import { useAnimationStore } from '../store/animation-store';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useRoomColoringStore } from '../store/room-coloring-store';
+import { useRoomDisplayStore } from '../store/room-display-store';
 import { RoomColorMapDropdown } from './room-color-map-dropdown';
 
 const LEGEND_PADDING = 30;

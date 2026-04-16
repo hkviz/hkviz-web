@@ -3,15 +3,13 @@ import { untrack, type Component, type JSXElement } from 'solid-js';
 import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { HKVizText } from '../hkviz-text';
-import {
-	AnimationStore,
-	mapViewRoomRectClass,
-	MapZoomStore,
-	RoomColoringStore,
-	RoomDisplayStore,
-	UiStore,
-	ViewportStore,
-} from '../store';
+import { AnimationStore } from '../store/animation-store';
+import { MapZoomStore } from '../store/map-zoom-store';
+import { RoomColoringStore } from '../store/room-coloring-store';
+import { RoomDisplayStore } from '../store/room-display-store';
+import { mapViewRoomRectClass } from '../store/tour-store';
+import { UiStore } from '../store/ui-store';
+import { ViewportStore } from '../store/viewport-store';
 import { makeStep, type Step } from './step';
 
 const P: Component<{ children: JSXElement }> = (props) => {

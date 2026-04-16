@@ -1,7 +1,7 @@
 import { createEffect, createMemo, type Component } from 'solid-js';
 import { AA, useLocation } from '~/lib/routing/AA';
 import { isRunUrl } from '~/lib/routing/url';
-import { useUiStore } from '~/lib/viz';
+import { useUiStore } from '~/lib/viz/store/ui-store';
 import { DiscordDialogButton, GithubButton, MailButton } from './socials-links';
 import { Expander } from './ui/additions';
 import { Button } from './ui/button';

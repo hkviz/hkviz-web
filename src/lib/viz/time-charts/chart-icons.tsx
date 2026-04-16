@@ -11,7 +11,7 @@ import {
 	steelMaskImg,
 	vesselImg,
 } from '../img-urls';
-import { useGameplayStoreOptional } from '../store';
+import { useGameplayStoreOptional } from '../store/gameplay-store';
 
 export const CompletionChartUnitIcon: Component<{ class?: string }> = (props) => {
 	return <BadgePercentIcon class={props.class} />;

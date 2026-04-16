@@ -14,12 +14,15 @@ import { mapRoomsHollow, mapVisualExtends, RoomDataHollow } from '../../parser';
 import { createElementSize } from '../canvas';
 import { useLayoutPanelContextOrNull } from '../layout/layout-panel-context';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
-import { useGameplayStore, useMapZoomStore, useRoomDisplayStore, useUiStore } from '../store';
-import { createMapViewZoom } from './hk-map-zoom';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useMapZoomStore } from '../store/map-zoom-store';
+import { useRoomDisplayStore } from '../store/room-display-store';
+import { useUiStore } from '../store/ui-store';
 import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
 import { MapViewRooms } from './map-view-rooms';
 import { HkMapTexts } from './map-view-texts';
+import { createMapViewZoom } from './map-view-zoom';
 import { HoverOutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 

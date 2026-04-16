@@ -1,11 +1,14 @@
-import { Vector3Like } from './vector-like';
+import type { Vector3Like } from './vector-like.ts';
 
 export class Vector3 {
-	public constructor(
-		public readonly x: number,
-		public readonly y: number,
-		public readonly z: number,
-	) {}
+	public readonly x: number;
+	public readonly y: number;
+	public readonly z: number;
+	public constructor(x: number, y: number, z: number) {
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
 
 	public static readonly ZERO = new Vector3(0, 0, 0);
 

@@ -17,7 +17,7 @@ import {
 import { Button } from '~/components/ui/button';
 import { assertNever } from '~/lib/parser';
 import { cn } from '~/lib/utils';
-import { useAnimationStore } from '../store';
+import { useAnimationStore } from '../store/animation-store';
 import { createRoomMsButtonProps } from '../util/shared-interactions';
 
 export type TimelineListEntryState = 'past' | 'next' | 'future';

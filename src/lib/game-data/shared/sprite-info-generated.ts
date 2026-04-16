@@ -1,4 +1,4 @@
-import { Vector2Like, Vector4Like } from './vector-like';
+import type { Vector2Like, Vector4Like } from './vector-like.ts';
 
 export interface SpriteInfoGenerated {
 	name: string;

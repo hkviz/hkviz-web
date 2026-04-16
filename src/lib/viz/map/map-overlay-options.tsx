@@ -5,7 +5,8 @@ import { overlayBlurBackgroundClasses } from '~/components/ui/additions/overlay'
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
-import { useMapZoomStore, useUiStore, ZoomFollowTarget } from '../store';
+import { useMapZoomStore, ZoomFollowTarget } from '../store/map-zoom-store';
+import { useUiStore } from '../store/ui-store';
 
 const MapZoomButton: Component<{
 	state: ZoomFollowTarget;

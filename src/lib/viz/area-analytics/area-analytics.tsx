@@ -31,19 +31,18 @@ import { HKMapRoom } from '../map/room-icon';
 import {
 	AggregationCountMode,
 	aggregationCountModes,
-	AreaSelectionMode,
 	getAggregationCountModeDescription,
 	getAggregationCountModeIcon,
 	getAggregationCountModeLabel,
 	useAggregationStore,
-	useAnimationStore,
-	useGameplayStore,
-	useRoomColoringStore,
-	useRoomDisplayStore,
-	useThemeStore,
-	useUiStore,
-} from '../store';
+} from '../store/aggregation-store';
+import { useAnimationStore } from '../store/animation-store';
+import { useGameplayStore } from '../store/gameplay-store';
 import { useLocalizationStore } from '../store/localization-store';
+import { useRoomColoringStore } from '../store/room-coloring-store';
+import { AreaSelectionMode, useRoomDisplayStore } from '../store/room-display-store';
+import { useThemeStore } from '../store/theme-store';
+import { useUiStore } from '../store/ui-store';
 import { createRoomMsButtonProps } from '../util/shared-interactions';
 import { AggregationVariableIcon } from './aggregation-variable-icon';
 import { AreaAnalyticsContext, createAreaAnalyticsContext, useAreaAnalyticsContext } from './area-analytics-context';

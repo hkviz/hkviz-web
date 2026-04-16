@@ -452,13 +452,42 @@ export const RunCard: Component<{
 					<RunCardLikeButton run={props.run} />
 				</Show>
 				{/* Background */}
-				<img
-					class="absolute top-0 left-0 z-1 h-full w-full bg-black object-cover opacity-70 group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90"
-					src={bgImage()}
-					alt="Area background image"
-					loading="lazy"
-				/>
+				<div class="absolute inset-0 z-1 h-full w-full bg-black opacity-70">
+					<Show when={props.run.gameState.game === 'silk'}>
+						<img
+							class={cn(
+								'top-[-10%] left-[-10%] h-[120%] w-[120%] object-cover object-[50%_70%] opacity-50 blur-xl',
+							)}
+							src={bgImage()}
+							alt=""
+							aria-hidden="true"
+							loading="lazy"
+						/>
+					</Show>
+					<div
+						class={cn(
+							'absolute',
+							props.run.gameState.game === 'hollow'
+								? 'top-0 left-0 h-full w-full'
+								: 'top-0 left-[20%] h-full w-[60%]',
+						)}
+					>
+						<img
+							class={cn(
+								'inset-0 h-full w-full object-cover object-[50%_70%] transition group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90',
+								props.run.gameState.game === 'hollow' ? '' : 'area-background-fade-x',
+							)}
+							src={bgImage()}
+							alt=""
+							aria-hidden="true"
+							loading="lazy"
+						/>
+					</div>
+				</div>
 				<div class="absolute inset-0 z-2 bg-linear-to-r from-black via-transparent to-black" />
+				<Show when={props.run.gameState.game === 'silk'}>
+					<div class="absolute inset-0 z-2 shadow-[inset_0_0_2rem_0.5rem_black]" />
+				</Show>
 			</div>
 		</Expander>
 	);

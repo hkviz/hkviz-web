@@ -4,9 +4,9 @@
  * Not generated, but types for generated data.
  */
 
-import { SpriteInfoGenerated } from '../shared/sprite-info-generated';
-import { Vector3Like, Vector4Like } from '../shared/vector-like';
-import { PlayerDataFieldNameSilk } from './player-data-silk.generated';
+import type { SpriteInfoGenerated } from '../shared/sprite-info-generated.ts';
+import type { Vector3Like, Vector4Like } from '../shared/vector-like.ts';
+import type { PlayerDataFieldNameSilk } from './player-data-silk.generated.ts';
 
 export const MapZonesGenerated = {
 	Tut: 'Tut',

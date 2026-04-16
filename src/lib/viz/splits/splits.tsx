@@ -16,7 +16,7 @@ import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import { LayoutPanelHeader } from '../layout/layout-panel-header';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
-import { useSplitsStore } from '../store';
+import { useSplitsStore } from '../store/splits-store';
 import { TimelineList, TimelineListEntryButton, useTimelineListEntryContext } from '../timeline-list/timeline-list';
 import { splitColors } from './split-colors';
 

@@ -1,6 +1,6 @@
 import { type Accessor, createEffect, createMemo, createSignal, onCleanup } from 'solid-js';
 import { isServer } from 'solid-js/web';
-import { useViewportStore } from './store';
+import { useViewportStore } from './store/viewport-store';
 
 export function createElementSize<T extends HTMLElement>(
 	element: Accessor<T | null>,
