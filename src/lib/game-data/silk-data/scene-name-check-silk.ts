@@ -1,5 +1,5 @@
-import { sceneNameToId } from './scene-ids-silk.generated';
+import { sceneNameToIdGeneratedSilk } from './scene-ids-silk.generated';
 
 export function isActualSceneNameSilk(sceneName: string) {
-	return (sceneNameToId as any)[sceneName.toLocaleLowerCase()] != null;
+	return (sceneNameToIdGeneratedSilk as any)[sceneName.toLocaleLowerCase()] != null;
 }

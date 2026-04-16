@@ -7,6 +7,7 @@ import {
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
 import { sceneIdToSceneName } from '../../../game-data/silk-data/scene-ids-silk';
+import { isSubSceneNameSilk } from '../../../game-data/silk-data/sub-scene-names-silk';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
@@ -25,7 +26,6 @@ import {
 	type NamedMapValueSilk,
 } from './silk-delta-parsing';
 import { SilkRecordingDataView } from './silk-recording-data-view';
-import { isSubSceneName as isSubSceneNameSilk } from './sub-scene-names';
 
 export function parseRecordingFileSilk(
 	recordingFileContent: ArrayBuffer,

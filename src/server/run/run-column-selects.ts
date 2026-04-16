@@ -1,6 +1,6 @@
 import { type InferSelectModel } from 'drizzle-orm';
-import { HollowMapZone } from '~/lib/game-data/hollow-data/hollow-map-zone';
-import { SilkMapZone } from '~/lib/game-data/silk-data/silk-map-zone';
+import { MapZoneHollow } from '~/lib/game-data/hollow-data/map-zone-hollow';
+import { MapZoneSilk } from '~/lib/game-data/silk-data/map-zone-silk';
 import { assertNever } from '~/lib/parser';
 import { GameId } from '~/lib/types/game-ids';
 import { tags, type TagCode } from '~/lib/types/tags';
@@ -62,12 +62,12 @@ type RunGameStateUnmapped = Pick<InferSelectModel<typeof runs>, RunGameStateMeta
 type RunGameStateBase = Omit<RunGameStateUnmapped, 'mapZone'>;
 export interface RunGameStateHollow extends RunGameStateBase {
 	game: 'hollow';
-	mapZone: HollowMapZone | null;
+	mapZone: MapZoneHollow | null;
 }
 
 export interface RunGameStateSilk extends RunGameStateBase {
 	game: 'silk';
-	mapZone: SilkMapZone | null;
+	mapZone: MapZoneSilk | null;
 }
 
 export type RunGameStateMeta = RunGameStateHollow | RunGameStateSilk;
@@ -94,9 +94,9 @@ export function getGameStateMeta(game: GameId, run: RunGameStateUnmapped): RunGa
 	};
 
 	if (game === 'hollow') {
-		return { ...base, game: 'hollow', mapZone: run.mapZone as HollowMapZone | null };
+		return { ...base, game: 'hollow', mapZone: run.mapZone as MapZoneHollow | null };
 	} else if (game === 'silk') {
-		return { ...base, game: 'silk', mapZone: run.mapZone as SilkMapZone | null };
+		return { ...base, game: 'silk', mapZone: run.mapZone as MapZoneSilk | null };
 	}
 	return assertNever(game);
 }

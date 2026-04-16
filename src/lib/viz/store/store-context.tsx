@@ -7,6 +7,7 @@ import { createExtraChartStore, ExtraChartStoreContext } from './extra-chart-sto
 import { createGameplayStore, GameplayStoreContext } from './gameplay-store';
 import { createHoverMsStore, HoverMsStoreContext } from './hover-ms-store';
 import { createLayoutStore, LayoutStoreContext } from './layout-store';
+import { createLocalizationStore, LocalizationStoreContext } from './localization-store';
 import { createMapZoomStore, MapZoomStoreContext } from './map-zoom-store';
 import { createPlayerDataAnimationStore, PlayerDataAnimationStoreContext } from './player-data-animation-store';
 import { createRoomColoringStore, RoomColoringStoreContext } from './room-coloring-store';
@@ -23,15 +24,18 @@ export function GlobalStoresProvider(props: { children: JSXElement }) {
 	const uiStore = createUiStore();
 	const viewportStore = createViewportStore();
 	const spriteSheetStore = createSpriteSheetStore();
+	const localizationStore = createLocalizationStore();
 
 	return (
-		<ViewportStoreContext.Provider value={viewportStore}>
-			<SpriteStoreContext.Provider value={spriteSheetStore}>
-				<UiStoreContext.Provider value={uiStore}>
-					<ThemeStoreContext.Provider value={themeStore}>{props.children}</ThemeStoreContext.Provider>
-				</UiStoreContext.Provider>
-			</SpriteStoreContext.Provider>
-		</ViewportStoreContext.Provider>
+		<LocalizationStoreContext.Provider value={localizationStore}>
+			<ViewportStoreContext.Provider value={viewportStore}>
+				<SpriteStoreContext.Provider value={spriteSheetStore}>
+					<UiStoreContext.Provider value={uiStore}>
+						<ThemeStoreContext.Provider value={themeStore}>{props.children}</ThemeStoreContext.Provider>
+					</UiStoreContext.Provider>
+				</SpriteStoreContext.Provider>
+			</ViewportStoreContext.Provider>
+		</LocalizationStoreContext.Provider>
 	);
 }
 

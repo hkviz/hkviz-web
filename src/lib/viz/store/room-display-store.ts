@@ -1,11 +1,10 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
-import * as d3 from 'd3';
 import { createContext, createMemo, createSignal, useContext, type Accessor } from 'solid-js';
 import { PlayerDataTestDataSilk, RoomSpriteVariantSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
-import { isRoomDataHollow, isRoomDataSilk } from '~/lib/game-data/specific/room-data-of-game';
+import { isRoomDataHollow, isRoomDataSilk, RoomDataAny } from '~/lib/game-data/specific/room-data-of-game';
 import { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
-import { assertNever, mapRoomsHollow, playerDataFieldsHollow, type RoomSpriteVariantHollow } from '../../parser';
+import { assertNever, playerDataFieldsHollow, type RoomSpriteVariantHollow } from '../../parser';
 import { GameplayStore } from './gameplay-store';
 import { PlayerDataAnimationStore } from './player-data-animation-store';
 
@@ -227,15 +226,23 @@ export function createRoomDisplayStore(
 		);
 	});
 
-	const zoneVisible = new Map(
-		[...d3.group(mapRoomsHollow, (d) => d.mapZone)].map(([zone, rooms]) => {
-			return [
-				zone,
-				// eslint-disable-next-line solid/reactivity
-				createMemo(() => rooms.some((r) => statesByGameObjectName().get(r.gameObjectName)?.isVisible())),
-			];
-		}),
-	);
+	const zoneVisible = createMemo(() => {
+		const rooms = gameModule()?.mapRooms ?? ([] as readonly RoomDataAny[]);
+		return new Map(
+			Map.groupBy(rooms, (d) => d.mapZone)
+				.entries()
+				.map(([zone, rooms]) => {
+					const roomStates = createMemo(() =>
+						rooms.map((r) => statesByGameObjectName().get(r.gameObjectName)),
+					);
+					return [
+						zone,
+						// eslint-disable-next-line solid/reactivity
+						createMemo(() => roomStates().some((state) => state?.isVisible())),
+					];
+				}),
+		);
+	});
 
 	function setHoveredRoom(name: string | null, source: RoomHoverSource = 'other') {
 		setHoveredSceneName(name);

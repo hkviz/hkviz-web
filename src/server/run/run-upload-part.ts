@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
-import { hollowMapZoneSchema } from '~/lib/game-data/hollow-data/hollow-map-zone';
+import { mapZoneSchemaHollow } from '~/lib/game-data/hollow-data/map-zone-hollow';
 import { ModVersionHollow, isModVersionBefore1_6_0Hollow, raise } from '~/lib/parser';
 import { r2RunPartFileKey } from '~/lib/r2';
 import { gameIdSchemaHollowDefault } from '~/lib/types/game-ids';
@@ -46,7 +46,7 @@ const runPartCreateInputSchema = v.variant('game', [
 	v.object({
 		...runPartCreateBaseInputSchema,
 		game: v.literal('hollow'),
-		mapZone: v.nullish(hollowMapZoneSchema),
+		mapZone: v.nullish(mapZoneSchemaHollow),
 	}),
 	v.object({
 		...runPartCreateBaseInputSchema,

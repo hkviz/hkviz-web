@@ -1,7 +1,8 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import { batch, createContext, createEffect, createMemo, createSignal, untrack, useContext } from 'solid-js';
+import { RoomDataAny } from '~/lib/game-data/specific/room-data-of-game';
 import { SceneEvent } from '~/lib/parser/recording-files/events-shared/scene-event';
-import { binarySearchLastIndexBefore, mainRoomDataBySceneName, type RoomDataHollow } from '../../parser';
+import { binarySearchLastIndexBefore } from '../../parser';
 import { GameplayStore } from './gameplay-store';
 import { UiStore } from './ui-store';
 
@@ -56,11 +57,12 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 
 	const mainMapSceneEventIndexes = createMemo(() => {
 		const sceneEvents = gameplayStore.recording()?.sceneEvents;
-		if (!sceneEvents) return null;
+		const gameModule = gameplayStore.gameModule();
+		if (!sceneEvents || !gameModule) return null;
 
 		const indexes: number[] = [];
 		for (let i = 0; i < sceneEvents.length; i++) {
-			if (mainRoomDataBySceneName.get(sceneEvents[i]!.sceneName)) {
+			if (gameModule.getMainRoomDataBySceneName(sceneEvents[i]!.sceneName)) {
 				indexes.push(i);
 			}
 		}
@@ -68,11 +70,12 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 	});
 
 	const currentSceneEventWithMainMapRoom = createMemo<{
-		mainRoomData: RoomDataHollow | null;
+		mainRoomData: RoomDataAny | null;
 		sceneEvent: SceneEvent | null;
 	}>(() => {
 		const recording = gameplayStore.recording();
-		if (!recording) {
+		const gameModule = gameplayStore.gameModule();
+		if (!recording || !gameModule) {
 			return { mainRoomData: null, sceneEvent: null };
 		}
 
@@ -95,7 +98,7 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 
 		const sceneEventIndex = indexes[indexInCandidates]!;
 		const sceneEvent = sceneEvents[sceneEventIndex] ?? null;
-		const mainRoomData = sceneEvent ? (mainRoomDataBySceneName.get(sceneEvent.sceneName) ?? null) : null;
+		const mainRoomData = sceneEvent ? (gameModule.getMainRoomDataBySceneName(sceneEvent.sceneName) ?? null) : null;
 
 		return { mainRoomData, sceneEvent };
 	});

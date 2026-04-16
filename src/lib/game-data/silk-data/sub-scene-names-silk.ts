@@ -15,6 +15,15 @@ export const subSceneNameSuffixesSilk = [
 	'_festival',
 ];
 
-export function isSubSceneName(name: string) {
+export function isSubSceneNameSilk(name: string) {
 	return subSceneNameSuffixesSilk.some((it) => name.endsWith(it));
+}
+
+export function splitSuffixSceneNameSilk(name: string) {
+	for (const suffix of subSceneNameSuffixesSilk) {
+		if (name.endsWith(suffix)) {
+			return [name.slice(0, -suffix.length), suffix] as const;
+		}
+	}
+	return [name, undefined] as const;
 }

@@ -1,10 +1,11 @@
-import { readFile, writeFile } from 'fs/promises';
+import { readFile } from 'fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import path from 'path';
-//import { modsRepo } from './paths.local.mts';
+import { exportFormattedJsFile } from './js-gen-helper.mts';
+import { modsRepo } from './paths.local.mts';
 
-export const modsRepo = '<some-folder>';
+// export const modsRepo = '<some-folder>';
 
 const execFileAsync = promisify(execFile);
 
@@ -17,7 +18,13 @@ interface PlayerDataFieldJson {
 
 interface PlayerDataJson {
 	fields: Record<string, PlayerDataFieldJson>;
-	enums: Record<string, Record<string, number>>;
+	enums: Record<
+		string,
+		{
+			isFlags: boolean;
+			members: Record<string, number>;
+		}
+	>;
 }
 
 const json = await readFile(jsonPlayerDataFilePath, 'utf-8');
@@ -185,7 +192,29 @@ tsOutputLines.push(
 	`};`,
 );
 
-await writeFile(outputFilePath, tsOutputLines.join('\n'));
-await execFileAsync('pnpm', ['exec', 'oxfmt', outputFilePath]);
+// enums
+
+for (const [enumName, enumValues] of Object.entries(playerDataFromJson.enums)) {
+	const typeName = sanitizeForTsTypeName(enumName);
+
+	tsOutputLines.push(
+		`export type ${typeName}Silk = ${Object.entries(enumValues.members)
+			.map(([name, id]) => `'${name}' /* ${id} */`)
+			.join(' | ')};`,
+	);
+	tsOutputLines.push(
+		`const ${typeName}ByName: Record<${typeName}Silk, number> = {`,
+		...Object.entries(enumValues.members).map(([name, id]) => `${name}: ${id},`),
+		`};`,
+		`export const ${typeName}Silk = {
+			isFlags: ${enumValues.isFlags},
+		    byName: ${typeName}ByName,
+			byId: Object.fromEntries(Object.entries(${typeName}ByName).map(([name, id]) => [id, name] as const)) as Record<number, ${typeName}Silk>,
+			nameList: Object.keys(${typeName}ByName) as ${typeName}Silk[],
+	} as const;`,
+	);
+}
+
+await exportFormattedJsFile(outputFilePath, tsOutputLines.join('\n'));
 
 console.log('Generated player data types for Silk.');

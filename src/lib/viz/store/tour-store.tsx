@@ -1,14 +1,14 @@
 import { createContext, createMemo, createSignal, untrack, useContext } from 'solid-js';
 import { createTourSteps } from '../tour/steps';
+import { AnimationStore } from './animation-store';
+import { MapZoomStore } from './map-zoom-store';
 import { RoomColoringStore } from './room-coloring-store';
 import { RoomDisplayStore } from './room-display-store';
-import { ViewportStore } from './viewport-store';
-import { AnimationStore } from './animation-store';
 import { UiStore } from './ui-store';
-import { MapZoomStore } from './map-zoom-store';
+import { ViewportStore } from './viewport-store';
 
-export function hkMapRoomRectClass({ gameObjectName }: { gameObjectName: string }) {
-	return 'hk-map-room-react_' + gameObjectName;
+export function mapViewRoomRectClass({ gameObjectName }: { gameObjectName: string }) {
+	return 'map-view-room-rect_' + gameObjectName.replace(' ', '_');
 }
 
 export function createTourStore(

@@ -13,13 +13,17 @@ import {
 	SomeSpriteTypeSilk,
 	SpriteConditionDataSilk,
 } from './map-data-silk.types.js';
-import { formatAreaNameSilk } from './room-name-formatting-silk.js';
+import { GlobalEnums_MapZoneSilk } from './player-data-silk.generated.js';
+import { sceneNameGetZone } from './scene-ids-get-zone.js';
 import { isActualSceneNameSilk } from './scene-name-check-silk.js';
 import { silkScaleBounds } from './silk-scaling.js';
 
 function mapGeneratedText(text: SilkTextDataGenerated): MapTextData {
+	const [sheetName, convoName] = text.textKey.split('.');
 	return {
 		...text,
+		sheetName,
+		convoName,
 		position: null,
 		bounds: silkScaleBounds(text.bounds),
 		color: d3.hsl(colorFromRgbVector(text.origColor)),
@@ -52,6 +56,16 @@ silkMapDataGenerated.rooms.forEach((room) => {
 
 const silkSceneNameToActual: Record<string, string> = {
 	Slab_03b: 'Slab_03',
+	Cog_07b: 'Cog_07',
+	'Library_04 _bot': 'Library_04', // accidental space in game files?
+	Arborium_07b: 'Arborium_07',
+	Dust_10b: 'Dust_10',
+	Enclave_bridge_left: 'Song_Enclave',
+	Shellwood_13b: 'Shellwood_13',
+};
+
+const silkZoneMappings: Record<GlobalEnums_MapZoneSilk, GlobalEnums_MapZoneSilk> = {
+	CORAL_CAVERNS: 'RED_CORAL_GORGE',
 };
 
 export const silkMapData: MapDataSilk = {
@@ -68,7 +82,7 @@ export const silkMapData: MapDataSilk = {
 			let attempts = 0;
 			let current = sceneName;
 
-			while (attempts < 3) {
+			while (attempts < 4) {
 				const parts = current.split('_');
 				if (parts.length <= 1) break;
 				const candidate = parts.slice(0, -1).join('_');
@@ -151,9 +165,13 @@ export const silkMapData: MapDataSilk = {
 				condition: c.condition,
 			})) ?? null;
 
+		let mapZone = sceneNameGetZone(sceneName) ?? 'NONE';
+		if (silkZoneMappings[mapZone]) {
+			mapZone = silkZoneMappings[mapZone];
+		}
+
 		const mappedRoom: RoomDataSilk = {
 			game: 'silk',
-			mapZone: room.mapZone,
 			hasSpriteRenderer: room.hasSpriteRenderer,
 			sortingOrder: room.sortingOrder,
 			positionZ: room.positionZ,
@@ -163,6 +181,7 @@ export const silkMapData: MapDataSilk = {
 			hideCondition: room.hideCondition,
 			gameObjectName: room.gameObjectName,
 
+			mapZone,
 			sceneName,
 			sceneNameForVisited,
 
@@ -170,19 +189,21 @@ export const silkMapData: MapDataSilk = {
 			mappedIfAllMapped,
 			visualBounds,
 			playerPositionBounds: room.playerPositionBounds ? silkScaleBounds(room.playerPositionBounds) : null,
-			texts: room.texts.map(mapGeneratedText),
+			texts: room.texts.filter((text) => !text.objectPath.includes('Next Area')).map(mapGeneratedText),
 			allSprites,
 			spritesByVariant,
 			origColor,
 			roomNameFormatted: room.sceneName, // TODO
 			roomNameFormattedZoneExclusive: room.sceneName, // TODO
-			zoneNameFormatted: formatAreaNameSilk(room.mapZone) + ': ' + room.mapZone, // TODO
+			zoneNameFormatted: mapZone,
 			isMainGameObject: isMainGameObject as boolean, // set below to actual boolean
 			visualBoundsAllSprites,
 		};
 		return mappedRoom;
 	}),
-	areaNames: silkMapDataGenerated.areaNames.map(mapGeneratedText),
+	areaNames: silkMapDataGenerated.areaNames
+		.filter((text) => !text.objectPath.includes('Next Area'))
+		.map(mapGeneratedText),
 };
 
 silkMapData.rooms.sort((a, b) => {

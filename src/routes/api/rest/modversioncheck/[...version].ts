@@ -1,5 +1,6 @@
 import type { APIEvent } from '@solidjs/start/server';
 import { ModVersionHollow, typeCheckNever } from '~/lib/parser';
+import { ModVersionSilk } from '~/lib/parser/recording-files/parser-silk/mod-version-silk';
 import { GameId } from '~/lib/types/game-ids';
 
 interface ModVersionCheckResponse {
@@ -8,10 +9,9 @@ interface ModVersionCheckResponse {
 	show: boolean;
 }
 
+const updateForBetterStats = 'Update for better analytics and bug fixes.';
 function getHollowVersionCheckResult(version: string): ModVersionCheckResponse {
 	const versionTyped = version as ModVersionHollow;
-
-	const updateForBetterStats = 'Update for better analytics and stability improvements.';
 
 	switch (versionTyped) {
 		case '1.6.1.0':
@@ -42,7 +42,7 @@ function getHollowVersionCheckResult(version: string): ModVersionCheckResponse {
 		default: {
 			typeCheckNever(versionTyped);
 			return {
-				message: `You are using a unknown version of the HKViz mod.`,
+				message: `You are using an unknown version of the HKViz mod.`,
 				color: 'cyan',
 				show: true,
 			};
@@ -51,18 +51,28 @@ function getHollowVersionCheckResult(version: string): ModVersionCheckResponse {
 }
 
 function getSilkVersionCheckResult(version: string): ModVersionCheckResponse {
-	// TODO proper checks
-	return {
-		message: 'Silksong mod not supported yet',
-		color: 'cyan',
-		show: true,
-	};
+	const versionTyped = version as ModVersionSilk;
+
+	switch (versionTyped) {
+		case '0.1.0':
+			return {
+				message: 'You are using a pre-release version of the HKViz Silksong mod.',
+				color: 'cyan',
+				show: true,
+			};
+		default:
+			return {
+				message: `You are using an unknown version of the HKViz Silksong mod.`,
+				color: 'cyan',
+				show: true,
+			};
+	}
 }
 
 export function GET({ params }: APIEvent) {
 	const pathSplit = params.version.split('/');
 	if (pathSplit.length === 1) {
-		// old hollow knight mod version. No game id present.
+		// Old Hollow Knight mod version; no game ID present.
 		return Response.json(getHollowVersionCheckResult(params.version));
 	} else if (pathSplit.length === 2) {
 		const gameId = pathSplit[0] as GameId;

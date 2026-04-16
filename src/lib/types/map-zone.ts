@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import { hollowMapZoneSchema } from '../game-data/hollow-data/hollow-map-zone';
-import { silkMapZoneSchema } from '../game-data/silk-data/silk-map-zone';
+import { mapZoneSchemaHollow } from '../game-data/hollow-data/map-zone-hollow';
+import { mapZoneSilkSchema } from '../game-data/silk-data/map-zone-silk';
 
-export const hollowOrSilkMapZoneSchema = v.picklist([...hollowMapZoneSchema.options, ...silkMapZoneSchema.options]);
+export const hollowOrSilkMapZoneSchema = v.picklist([...mapZoneSchemaHollow.options, ...mapZoneSilkSchema.options]);

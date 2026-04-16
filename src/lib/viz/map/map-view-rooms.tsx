@@ -5,7 +5,7 @@ import { RoomDataAny, RoomDataOfGame } from '~/lib/game-data/specific/room-data-
 import { GameId } from '~/lib/types/game-ids';
 import { useSpriteSheetStore } from '../spritesheets/spritesheet-store';
 import {
-	hkMapRoomRectClass,
+	mapViewRoomRectClass,
 	useGameplayStore,
 	useRoomColoringStore,
 	useRoomDisplayStore,
@@ -127,7 +127,7 @@ function MapViewRoom<Game extends GameId>(props: {
 						/>
 					</mask>
 					<rect
-						class={hkMapRoomRectClass(props.room)}
+						class={mapViewRoomRectClass(props.room)}
 						mask={`url(#${maskId})`}
 						x={props.room.visualBoundsAllSprites?.min.x ?? 0}
 						y={props.room.visualBoundsAllSprites?.min.y ?? 0}
@@ -167,7 +167,7 @@ function MapViewRoom<Game extends GameId>(props: {
 						</filter>
 					</defs>
 					<rect
-						class={hkMapRoomRectClass(props.room)}
+						class={mapViewRoomRectClass(props.room)}
 						x={props.room.visualBoundsAllSprites?.min.x ?? 0}
 						y={props.room.visualBoundsAllSprites?.min.y ?? 0}
 						width={props.room.visualBoundsAllSprites?.size.x ?? 0}

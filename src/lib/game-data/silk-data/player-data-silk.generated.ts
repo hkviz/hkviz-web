@@ -9140,3 +9140,421 @@ export const playerDataFieldsSilk = {
 	byId: new Map<number, PlayerDataFieldSilk>(Object.values(fieldsByName).map((f) => [f.id, f] as const)),
 	list: Object.values(fieldsByName) as PlayerDataFieldSilk[],
 };
+export type GlobalEnums_BellhomePaintColoursSilk =
+	| 'None' /* 0 */
+	| 'Red' /* 1 */
+	| 'White' /* 2 */
+	| 'DarkGrey' /* 3 */
+	| 'Bronze' /* 4 */
+	| 'Blue' /* 5 */
+	| 'Chrome' /* 6 */;
+const GlobalEnums_BellhomePaintColoursByName: Record<GlobalEnums_BellhomePaintColoursSilk, number> = {
+	None: 0,
+	Red: 1,
+	White: 2,
+	DarkGrey: 3,
+	Bronze: 4,
+	Blue: 5,
+	Chrome: 6,
+};
+export const GlobalEnums_BellhomePaintColoursSilk = {
+	isFlags: false,
+	byName: GlobalEnums_BellhomePaintColoursByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_BellhomePaintColoursByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_BellhomePaintColoursSilk>,
+	nameList: Object.keys(GlobalEnums_BellhomePaintColoursByName) as GlobalEnums_BellhomePaintColoursSilk[],
+} as const;
+export type GlobalEnums_BelltownHouseStatesSilk = 'None' /* 0 */ | 'Half' /* 1 */ | 'Full' /* 2 */;
+const GlobalEnums_BelltownHouseStatesByName: Record<GlobalEnums_BelltownHouseStatesSilk, number> = {
+	None: 0,
+	Half: 1,
+	Full: 2,
+};
+export const GlobalEnums_BelltownHouseStatesSilk = {
+	isFlags: false,
+	byName: GlobalEnums_BelltownHouseStatesByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_BelltownHouseStatesByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_BelltownHouseStatesSilk>,
+	nameList: Object.keys(GlobalEnums_BelltownHouseStatesByName) as GlobalEnums_BelltownHouseStatesSilk[],
+} as const;
+export type GlobalEnums_CaravanTroupeLocationsSilk =
+	| 'Bone' /* 0 */
+	| 'Greymoor' /* 1 */
+	| 'CoralJudge' /* 2 */
+	| 'Aqueduct' /* 3 */;
+const GlobalEnums_CaravanTroupeLocationsByName: Record<GlobalEnums_CaravanTroupeLocationsSilk, number> = {
+	Bone: 0,
+	Greymoor: 1,
+	CoralJudge: 2,
+	Aqueduct: 3,
+};
+export const GlobalEnums_CaravanTroupeLocationsSilk = {
+	isFlags: false,
+	byName: GlobalEnums_CaravanTroupeLocationsByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_CaravanTroupeLocationsByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_CaravanTroupeLocationsSilk>,
+	nameList: Object.keys(GlobalEnums_CaravanTroupeLocationsByName) as GlobalEnums_CaravanTroupeLocationsSilk[],
+} as const;
+export type GlobalEnums_EnvironmentTypesSilk =
+	| 'Dust' /* 0 */
+	| 'Grass' /* 1 */
+	| 'Bone' /* 2 */
+	| 'ShallowWater' /* 3 */
+	| 'Metal' /* 4 */
+	| 'NoEffect' /* 5 */
+	| 'Moss' /* 6 */
+	| 'Sand' /* 7 */
+	| 'Bell' /* 8 */
+	| 'WetMetal' /* 9 */
+	| 'ThinMetal' /* 10 */
+	| 'Wood' /* 11 */
+	| 'Silk' /* 12 */
+	| 'WetWood' /* 13 */
+	| 'RunningWater' /* 14 */
+	| 'PeakPuff' /* 15 */
+	| 'FlowerField' /* 16 */;
+const GlobalEnums_EnvironmentTypesByName: Record<GlobalEnums_EnvironmentTypesSilk, number> = {
+	Dust: 0,
+	Grass: 1,
+	Bone: 2,
+	ShallowWater: 3,
+	Metal: 4,
+	NoEffect: 5,
+	Moss: 6,
+	Sand: 7,
+	Bell: 8,
+	WetMetal: 9,
+	ThinMetal: 10,
+	Wood: 11,
+	Silk: 12,
+	WetWood: 13,
+	RunningWater: 14,
+	PeakPuff: 15,
+	FlowerField: 16,
+};
+export const GlobalEnums_EnvironmentTypesSilk = {
+	isFlags: false,
+	byName: GlobalEnums_EnvironmentTypesByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_EnvironmentTypesByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_EnvironmentTypesSilk>,
+	nameList: Object.keys(GlobalEnums_EnvironmentTypesByName) as GlobalEnums_EnvironmentTypesSilk[],
+} as const;
+export type GlobalEnums_ExtraRestZonesSilk =
+	| 'None' /* 0 */
+	| 'PinstressHut' /* 1 */
+	| 'SeamstressHut' /* 2 */
+	| 'Bonegrave' /* 3 */
+	| 'GrandGate' /* 4 */
+	| 'TubeHub' /* 5 */
+	| 'Organ' /* 6 */
+	| 'Fleatopia' /* 7 */
+	| 'FleaFestival' /* 8 */
+	| 'Bellvein' /* 9 */
+	| 'SlabCell' /* 10 */
+	| 'Enclave' /* 11 */
+	| 'CitadelShrine' /* 12 */
+	| 'CoralTower' /* 13 */
+	| 'BonetownBroken' /* 14 */
+	| 'CoralBellshrine' /* 15 */
+	| 'Bellhome' /* 16 */
+	| 'Citadelstation' /* 17 */
+	| 'MemoryRed' /* 18 */
+	| 'AboveCradle' /* 19 */
+	| 'SprintmasterCave' /* 20 */
+	| 'BelltownHaunted' /* 21 */
+	| 'WhiteLake' /* 22 */;
+const GlobalEnums_ExtraRestZonesByName: Record<GlobalEnums_ExtraRestZonesSilk, number> = {
+	None: 0,
+	PinstressHut: 1,
+	SeamstressHut: 2,
+	Bonegrave: 3,
+	GrandGate: 4,
+	TubeHub: 5,
+	Organ: 6,
+	Fleatopia: 7,
+	FleaFestival: 8,
+	Bellvein: 9,
+	SlabCell: 10,
+	Enclave: 11,
+	CitadelShrine: 12,
+	CoralTower: 13,
+	BonetownBroken: 14,
+	CoralBellshrine: 15,
+	Bellhome: 16,
+	Citadelstation: 17,
+	MemoryRed: 18,
+	AboveCradle: 19,
+	SprintmasterCave: 20,
+	BelltownHaunted: 21,
+	WhiteLake: 22,
+};
+export const GlobalEnums_ExtraRestZonesSilk = {
+	isFlags: false,
+	byName: GlobalEnums_ExtraRestZonesByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_ExtraRestZonesByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_ExtraRestZonesSilk>,
+	nameList: Object.keys(GlobalEnums_ExtraRestZonesByName) as GlobalEnums_ExtraRestZonesSilk[],
+} as const;
+export type GlobalEnums_FastTravelLocationsSilk =
+	| 'None' /* 0 */
+	| 'Bonetown' /* 1 */
+	| 'Docks' /* 2 */
+	| 'BoneforestEast' /* 3 */
+	| 'Greymoor' /* 4 */
+	| 'Belltown' /* 5 */
+	| 'CoralTower' /* 6 */
+	| 'City' /* 9 */
+	| 'Peak' /* 11 */
+	| 'Shellwood' /* 12 */
+	| 'Bone' /* 13 */
+	| 'Shadow' /* 14 */
+	| 'Aqueduct' /* 15 */;
+const GlobalEnums_FastTravelLocationsByName: Record<GlobalEnums_FastTravelLocationsSilk, number> = {
+	None: 0,
+	Bonetown: 1,
+	Docks: 2,
+	BoneforestEast: 3,
+	Greymoor: 4,
+	Belltown: 5,
+	CoralTower: 6,
+	City: 9,
+	Peak: 11,
+	Shellwood: 12,
+	Bone: 13,
+	Shadow: 14,
+	Aqueduct: 15,
+};
+export const GlobalEnums_FastTravelLocationsSilk = {
+	isFlags: false,
+	byName: GlobalEnums_FastTravelLocationsByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_FastTravelLocationsByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_FastTravelLocationsSilk>,
+	nameList: Object.keys(GlobalEnums_FastTravelLocationsByName) as GlobalEnums_FastTravelLocationsSilk[],
+} as const;
+export type GlobalEnums_GreenPrinceLocationsSilk =
+	| 'DustCage' /* 0 */
+	| 'Song04' /* 1 */
+	| 'CogDancers' /* 2 */
+	| 'Clover' /* 3 */;
+const GlobalEnums_GreenPrinceLocationsByName: Record<GlobalEnums_GreenPrinceLocationsSilk, number> = {
+	DustCage: 0,
+	Song04: 1,
+	CogDancers: 2,
+	Clover: 3,
+};
+export const GlobalEnums_GreenPrinceLocationsSilk = {
+	isFlags: false,
+	byName: GlobalEnums_GreenPrinceLocationsByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_GreenPrinceLocationsByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_GreenPrinceLocationsSilk>,
+	nameList: Object.keys(GlobalEnums_GreenPrinceLocationsByName) as GlobalEnums_GreenPrinceLocationsSilk[],
+} as const;
+export type GlobalEnums_HeroDeathCocoonTypesSilk = 'Normal' /* 0 */ | 'Rosaries' /* 1 */ | 'Cursed' /* 2 */;
+const GlobalEnums_HeroDeathCocoonTypesByName: Record<GlobalEnums_HeroDeathCocoonTypesSilk, number> = {
+	Normal: 0,
+	Rosaries: 1,
+	Cursed: 2,
+};
+export const GlobalEnums_HeroDeathCocoonTypesSilk = {
+	isFlags: true,
+	byName: GlobalEnums_HeroDeathCocoonTypesByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_HeroDeathCocoonTypesByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_HeroDeathCocoonTypesSilk>,
+	nameList: Object.keys(GlobalEnums_HeroDeathCocoonTypesByName) as GlobalEnums_HeroDeathCocoonTypesSilk[],
+} as const;
+export type GlobalEnums_MapZoneSilk =
+	| 'NONE' /* 0 */
+	| 'TEST_AREA' /* 1 */
+	| 'PATH_OF_BONE' /* 2 */
+	| 'GREYMOOR' /* 3 */
+	| 'SHELLWOOD_THICKET' /* 4 */
+	| 'RED_CORAL_GORGE' /* 5 */
+	| 'CITY_OF_SONG' /* 6 */
+	| 'THE_SLAB' /* 7 */
+	| 'GLOOM' /* 8 */
+	| 'DUSTPENS' /* 9 */
+	| 'BELLTOWN' /* 10 */
+	| 'HUNTERS_NEST' /* 11 */
+	| 'BONETOWN' /* 12 */
+	| 'MOSS_CAVE' /* 13 */
+	| 'PHARLOOM_BAY' /* 14 */
+	| 'DOCKS' /* 15 */
+	| 'WILDS' /* 16 */
+	| 'WEAVER_SHRINE' /* 17 */
+	| 'BONECHURCH' /* 18 */
+	| 'MOSSTOWN' /* 19 */
+	| 'LIBRARY' /* 20 */
+	| 'CLOVER' /* 21 */
+	| 'UNDERSTORE' /* 22 */
+	| 'COG_CORE' /* 23 */
+	| 'PEAK' /* 24 */
+	| 'DUST_MAZE' /* 25 */
+	| 'WARD' /* 26 */
+	| 'HANG' /* 27 */
+	| 'ARBORIUM' /* 28 */
+	| 'CRADLE' /* 29 */
+	| 'PILGRIMS_REST' /* 30 */
+	| 'HALFWAY_HOUSE' /* 31 */
+	| 'JUDGE_STEPS' /* 32 */
+	| 'MEMORY' /* 33 */
+	| 'CRAWLSPACE' /* 34 */
+	| 'WISP' /* 35 */
+	| 'SWAMP' /* 36 */
+	| 'ABYSS' /* 37 */
+	| 'AQUEDUCT' /* 38 */
+	| 'SURFACE' /* 39 */
+	| 'FRONT_GATE' /* 40 */
+	| 'CORAL_CAVERNS' /* 41 */;
+const GlobalEnums_MapZoneByName: Record<GlobalEnums_MapZoneSilk, number> = {
+	NONE: 0,
+	TEST_AREA: 1,
+	PATH_OF_BONE: 2,
+	GREYMOOR: 3,
+	SHELLWOOD_THICKET: 4,
+	RED_CORAL_GORGE: 5,
+	CITY_OF_SONG: 6,
+	THE_SLAB: 7,
+	GLOOM: 8,
+	DUSTPENS: 9,
+	BELLTOWN: 10,
+	HUNTERS_NEST: 11,
+	BONETOWN: 12,
+	MOSS_CAVE: 13,
+	PHARLOOM_BAY: 14,
+	DOCKS: 15,
+	WILDS: 16,
+	WEAVER_SHRINE: 17,
+	BONECHURCH: 18,
+	MOSSTOWN: 19,
+	LIBRARY: 20,
+	CLOVER: 21,
+	UNDERSTORE: 22,
+	COG_CORE: 23,
+	PEAK: 24,
+	DUST_MAZE: 25,
+	WARD: 26,
+	HANG: 27,
+	ARBORIUM: 28,
+	CRADLE: 29,
+	PILGRIMS_REST: 30,
+	HALFWAY_HOUSE: 31,
+	JUDGE_STEPS: 32,
+	MEMORY: 33,
+	CRAWLSPACE: 34,
+	WISP: 35,
+	SWAMP: 36,
+	ABYSS: 37,
+	AQUEDUCT: 38,
+	SURFACE: 39,
+	FRONT_GATE: 40,
+	CORAL_CAVERNS: 41,
+};
+export const GlobalEnums_MapZoneSilk = {
+	isFlags: false,
+	byName: GlobalEnums_MapZoneByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_MapZoneByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_MapZoneSilk>,
+	nameList: Object.keys(GlobalEnums_MapZoneByName) as GlobalEnums_MapZoneSilk[],
+} as const;
+export type GlobalEnums_NPCEncounterStateSilk =
+	| 'None' /* 0 */
+	| 'Met' /* 1 */
+	| 'ReadyToLeave' /* 2 */
+	| 'AuthorisedToLeave' /* 3 */
+	| 'HasLeft' /* 4 */;
+const GlobalEnums_NPCEncounterStateByName: Record<GlobalEnums_NPCEncounterStateSilk, number> = {
+	None: 0,
+	Met: 1,
+	ReadyToLeave: 2,
+	AuthorisedToLeave: 3,
+	HasLeft: 4,
+};
+export const GlobalEnums_NPCEncounterStateSilk = {
+	isFlags: false,
+	byName: GlobalEnums_NPCEncounterStateByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_NPCEncounterStateByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_NPCEncounterStateSilk>,
+	nameList: Object.keys(GlobalEnums_NPCEncounterStateByName) as GlobalEnums_NPCEncounterStateSilk[],
+} as const;
+export type GlobalEnums_PermadeathModesSilk = 'Off' /* 0 */ | 'On' /* 1 */ | 'Dead' /* 2 */;
+const GlobalEnums_PermadeathModesByName: Record<GlobalEnums_PermadeathModesSilk, number> = {
+	Off: 0,
+	On: 1,
+	Dead: 2,
+};
+export const GlobalEnums_PermadeathModesSilk = {
+	isFlags: false,
+	byName: GlobalEnums_PermadeathModesByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_PermadeathModesByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_PermadeathModesSilk>,
+	nameList: Object.keys(GlobalEnums_PermadeathModesByName) as GlobalEnums_PermadeathModesSilk[],
+} as const;
+export type GlobalEnums_SethNpcLocationsSilk =
+	| 'Absent' /* 0 */
+	| 'Greymoor' /* 1 */
+	| 'Shellwood' /* 2 */
+	| 'Citadel' /* 3 */
+	| 'Fleatopia' /* 4 */;
+const GlobalEnums_SethNpcLocationsByName: Record<GlobalEnums_SethNpcLocationsSilk, number> = {
+	Absent: 0,
+	Greymoor: 1,
+	Shellwood: 2,
+	Citadel: 3,
+	Fleatopia: 4,
+};
+export const GlobalEnums_SethNpcLocationsSilk = {
+	isFlags: false,
+	byName: GlobalEnums_SethNpcLocationsByName,
+	byId: Object.fromEntries(
+		Object.entries(GlobalEnums_SethNpcLocationsByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, GlobalEnums_SethNpcLocationsSilk>,
+	nameList: Object.keys(GlobalEnums_SethNpcLocationsByName) as GlobalEnums_SethNpcLocationsSilk[],
+} as const;
+export type HazardRespawnMarker_FacingDirectionSilk = 'None' /* 0 */ | 'Left' /* 1 */ | 'Right' /* 2 */;
+const HazardRespawnMarker_FacingDirectionByName: Record<HazardRespawnMarker_FacingDirectionSilk, number> = {
+	None: 0,
+	Left: 1,
+	Right: 2,
+};
+export const HazardRespawnMarker_FacingDirectionSilk = {
+	isFlags: false,
+	byName: HazardRespawnMarker_FacingDirectionByName,
+	byId: Object.fromEntries(
+		Object.entries(HazardRespawnMarker_FacingDirectionByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, HazardRespawnMarker_FacingDirectionSilk>,
+	nameList: Object.keys(HazardRespawnMarker_FacingDirectionByName) as HazardRespawnMarker_FacingDirectionSilk[],
+} as const;
+export type SaveSlotCompletionIcons_CompletionStateSilk =
+	| 'None' /* 0 */
+	| 'Act2Regular' /* 1 */
+	| 'Act2Cursed' /* 2 */
+	| 'Act2SoulSnare' /* 4 */
+	| 'Act3Ending' /* 8 */;
+const SaveSlotCompletionIcons_CompletionStateByName: Record<SaveSlotCompletionIcons_CompletionStateSilk, number> = {
+	None: 0,
+	Act2Regular: 1,
+	Act2Cursed: 2,
+	Act2SoulSnare: 4,
+	Act3Ending: 8,
+};
+export const SaveSlotCompletionIcons_CompletionStateSilk = {
+	isFlags: true,
+	byName: SaveSlotCompletionIcons_CompletionStateByName,
+	byId: Object.fromEntries(
+		Object.entries(SaveSlotCompletionIcons_CompletionStateByName).map(([name, id]) => [id, name] as const),
+	) as Record<number, SaveSlotCompletionIcons_CompletionStateSilk>,
+	nameList: Object.keys(
+		SaveSlotCompletionIcons_CompletionStateByName,
+	) as SaveSlotCompletionIcons_CompletionStateSilk[],
+} as const;

@@ -43,6 +43,7 @@ import {
 	useThemeStore,
 	useUiStore,
 } from '../store';
+import { useLocalizationStore } from '../store/localization-store';
 import { createRoomMsButtonProps } from '../util/shared-interactions';
 import { AggregationVariableIcon } from './aggregation-variable-icon';
 import { AreaAnalyticsContext, createAreaAnalyticsContext, useAreaAnalyticsContext } from './area-analytics-context';
@@ -381,6 +382,7 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 	const selectedRoomPinned = roomDisplayStore.selectedScenePinned;
 	const areaSelectionMode = roomDisplayStore.areaSelectionMode;
 	const gameModule = gameplayStore.gameModule;
+	const localizationStore = useLocalizationStore();
 
 	const roomInfos = createMemo(() => {
 		const gm = gameModule();
@@ -415,6 +417,15 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 
 	const roomInfosContext = createAreaAnalyticsContext();
 
+	const areaName = createMemo(() => {
+		const zone = roomInfos().mainRoomInfo?.zoneNameFormatted;
+		if (gameModule()?.game === 'silk' && zone) {
+			return localizationStore.getStringSilk(('Map Zones.' + zone) as any);
+		} else {
+			return zone;
+		}
+	});
+
 	return (
 		<AreaAnalyticsContext.Provider value={roomInfosContext}>
 			<LayoutPanelWrapper
@@ -440,7 +451,7 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 										<TooltipTrigger class="text-left leading-[1.15]">
 											{areaSelectionMode() === 'all'
 												? 'All Areas'
-												: (roomInfos().mainRoomInfo?.zoneNameFormatted ?? 'Unknown Area')}
+												: (areaName() ?? 'Unknown Area')}
 										</TooltipTrigger>
 										<TooltipContent>Area</TooltipContent>
 									</Tooltip>

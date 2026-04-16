@@ -8,6 +8,7 @@ import {
 	useRoomDisplayStore,
 	useThemeStore,
 } from '../store';
+import { useLocalizationStore } from '../store/localization-store';
 
 interface MapViewTextProps {
 	textData: MapTextData;
@@ -17,6 +18,7 @@ interface MapViewTextProps {
 function MapViewText(props: MapViewTextProps) {
 	const roomDisplayStore = useRoomDisplayStore();
 	const roomColoringStore = useRoomColoringStore();
+	const localizationStore = useLocalizationStore();
 	const colorMode = roomColoringStore.colorMode;
 	const themeStore = useThemeStore();
 	const theme = themeStore.currentTheme;
@@ -39,9 +41,17 @@ function MapViewText(props: MapViewTextProps) {
 			typeVisible &&
 			(typeof props.visibleBy === 'boolean'
 				? props.visibleBy
-				: roomDisplayStore.zoneVisible.get(props.visibleBy.zoneName)?.());
+				: roomDisplayStore.zoneVisible().get(props.visibleBy.zoneName)?.());
 		return visible ? '1' : '0';
 	};
+
+	const text = createMemo(() => {
+		const data = props.textData;
+		if (data.textKey) {
+			return localizationStore.getStringSilk(data.textKey as any);
+		}
+		return hkLangString(data.sheetName as any, data.convoName) ?? data.convoName;
+	});
 
 	return (
 		<text
@@ -55,7 +65,7 @@ function MapViewText(props: MapViewTextProps) {
 			y={props.textData.bounds.center.y}
 			style={{ ['font-size']: '3.25px', transition: 'opacity 0.1s ease 0s', fill: fill(), opacity: opacity() }}
 		>
-			{hkLangString(props.textData.sheetName as any, props.textData.convoName) ?? props.textData.convoName}
+			{text()}
 		</text>
 	);
 }

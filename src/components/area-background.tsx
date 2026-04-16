@@ -1,5 +1,5 @@
-import { HollowMapZone } from '~/lib/game-data/hollow-data/hollow-map-zone';
-import { SilkMapZone } from '~/lib/game-data/silk-data/silk-map-zone';
+import { MapZoneHollow } from '~/lib/game-data/hollow-data/map-zone-hollow';
+import { MapZoneSilk } from '~/lib/game-data/silk-data/map-zone-silk';
 import { assertNever } from '~/lib/parser';
 import { RunGameStateMeta } from '~/server/run/run-column-selects';
 
@@ -85,7 +85,7 @@ const areaTramLower = '/ingame-sprites/areas/Area_Tram_Lower.png';
 const areaWaterways = '/ingame-sprites/areas/Area_Waterways.png';
 const areaWhitePalace = '/ingame-sprites/areas/Area_White_Palace.png';
 
-export function getMapZoneHudBackgroundHollow(zone: HollowMapZone | null): string {
+export function getMapZoneHudBackgroundHollow(zone: MapZoneHollow | null): string {
 	switch (zone) {
 		case 'NONE':
 		case null:
@@ -198,7 +198,7 @@ export function getMapZoneHudBackgroundHollow(zone: HollowMapZone | null): strin
 	}
 }
 
-export function getMapZoneHudBackgroundSilk(zone: SilkMapZone | null): string {
+export function getMapZoneHudBackgroundSilk(zone: MapZoneSilk | null): string {
 	// todo
 	return areaDirtmouth; // not defined in game
 }

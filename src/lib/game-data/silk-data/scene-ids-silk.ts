@@ -1,16 +1,27 @@
 import { silkMapData } from './map-data-silk';
-import { sceneNameToId } from './scene-ids-silk.generated';
+import { sceneNameToIdGeneratedSilk } from './scene-ids-silk.generated';
+import { splitSuffixSceneNameSilk } from './sub-scene-names-silk';
 
 function createSceneIdToSceneNameMap(): Map<number, string> {
 	const sceneNameByLower = new Map(silkMapData.rooms.map((it) => [it.sceneName.toLowerCase(), it.sceneName]));
 
 	return new Map(
-		Object.entries(sceneNameToId).map(([sceneName, sceneId]) => {
-			const name = sceneNameByLower.get(sceneName.toLowerCase());
+		Object.entries(sceneNameToIdGeneratedSilk).map(([sceneName, sceneIdData]) => {
+			// first try - exact match
+			let name = sceneNameByLower.get(sceneName.toLowerCase());
+
+			// second try - suffix
 			if (!name) {
-				console.warn(`Scene name ${sceneName} with id ${sceneId} not found in map data`);
+				const [nameWithoutSuffix, suffix] = splitSuffixSceneNameSilk(sceneName);
+				if (suffix) {
+					name = sceneNameByLower.get(nameWithoutSuffix.toLowerCase()) + suffix;
+				}
 			}
-			return [sceneId, name ?? sceneName] as const;
+			// failed
+			if (!name) {
+				console.warn(`Scene name ${sceneName} with id ${sceneIdData.id} not found in map data`);
+			}
+			return [sceneIdData.id, name ?? sceneName] as const;
 		}),
 	);
 }

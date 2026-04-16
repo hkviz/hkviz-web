@@ -6,6 +6,7 @@ export interface MapTextData {
 	objectPath: string;
 	convoName: string;
 	sheetName: string;
+	textKey?: string; // = sheetName + '.' + convoName, for silk export. maybe hollow sometimes.
 
 	fontSize: number;
 	fontWeight: number;

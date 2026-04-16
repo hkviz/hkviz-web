@@ -5,7 +5,7 @@ import { roomInfoColoringToggleClasses } from '../class-names';
 import { HKVizText } from '../hkviz-text';
 import {
 	AnimationStore,
-	hkMapRoomRectClass,
+	mapViewRoomRectClass,
 	MapZoomStore,
 	RoomColoringStore,
 	RoomDisplayStore,
@@ -79,7 +79,7 @@ export function createTourSteps({
 					return '.hk-main-map-wrapper';
 				}
 
-				return '.hk-main-map-wrapper .' + hkMapRoomRectClass(mainRoomData);
+				return '.hk-main-map-wrapper .' + mapViewRoomRectClass(mainRoomData);
 			},
 			padding: 32,
 			content: () => (

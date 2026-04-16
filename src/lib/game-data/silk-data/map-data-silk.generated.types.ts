@@ -90,8 +90,7 @@ export interface SilkExportBoundsGenerated {
 
 export interface SilkTextDataGenerated {
 	objectPath: string;
-	convoName: string;
-	sheetName: string;
+	textKey: string;
 	position: Vector3Like;
 	fontSize: number;
 	fontWeight: number;

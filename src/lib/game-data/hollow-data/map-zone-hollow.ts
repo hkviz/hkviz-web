@@ -1,6 +1,6 @@
 import * as v from 'valibot';
 
-export const hollowMapZoneSchema = v.picklist([
+export const mapZoneSchemaHollow = v.picklist([
 	'NONE',
 	'TEST_AREA',
 	'KINGS_PASS',
@@ -55,4 +55,4 @@ export const hollowMapZoneSchema = v.picklist([
 	'GODSEEKER_WASTE',
 ]);
 
-export type HollowMapZone = v.InferOutput<typeof hollowMapZoneSchema>;
+export type MapZoneHollow = v.InferOutput<typeof mapZoneSchemaHollow>;
