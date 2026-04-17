@@ -112,11 +112,11 @@ export function parseStringSetDelta(
 	const values = new Set<string>(previousValue ?? []);
 	const addedCount = reader.readInt32();
 	for (let i = 0; i < addedCount; i++) {
-		values.add(reader.readStringFromIdOrString(idToString));
+		values.add(reader.readStringWithId(idToString));
 	}
 	const removedCount = reader.readInt32();
 	for (let i = 0; i < removedCount; i++) {
-		values.delete(reader.readStringFromIdOrString(idToString));
+		values.delete(reader.readStringWithId(idToString));
 	}
 	logDeltaStep('parse_string_set_delta_complete', {
 		addedCount,

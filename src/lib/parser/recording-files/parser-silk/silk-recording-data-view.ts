@@ -104,7 +104,7 @@ export class SilkRecordingDataView {
 		return this.textDecoder.decode(bytes);
 	}
 
-	public readStringFromIdOrString(idToString: Map<number, string>): string {
+	public readStringWithId(idToString: Map<number, string>): string {
 		const id = this.readUint16();
 		console.log('Read string id', id);
 		if (id === 0) {
@@ -137,6 +137,19 @@ export class SilkRecordingDataView {
 		const values: string[] = [];
 		for (let i = 0; i < count; i++) {
 			values.push(this.readString());
+		}
+		return values;
+	}
+
+	public readStringArrayWithIds(idToString: Map<number, string>): string[] {
+		const count = this.readInt32();
+		if (count < 0) {
+			throw new Error(`Invalid string or id array count ${count} at ${this.offset - 4}`);
+		}
+
+		const values: string[] = [];
+		for (let i = 0; i < count; i++) {
+			values.push(this.readStringWithId(idToString));
 		}
 		return values;
 	}

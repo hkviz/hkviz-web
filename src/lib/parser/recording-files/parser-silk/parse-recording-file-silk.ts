@@ -204,7 +204,7 @@ export function parseRecordingFileSilk(
 
 				case entryTypeSilk.SceneChangeSingle:
 				case entryTypeSilk.SceneChangeAdd: {
-					const sceneName = reader.readStringFromIdOrString(sceneIdToSceneNameSilk);
+					const sceneName = reader.readStringWithId(sceneIdToSceneNameSilk);
 
 					if (!isSubSceneNameSilk(sceneName)) {
 						// for now - added scenes are ignored
@@ -395,7 +395,7 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['list<string>']);
 					const idToValue = getStringIdToStringForField(field);
-					const values = reader.readStringFromIdOrString(idToValue);
+					const values = reader.readStringArrayWithIds(idToValue);
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
@@ -413,7 +413,7 @@ export function parseRecordingFileSilk(
 						reader,
 						arrayLength,
 						previousPlayerDataValue<string[]>(field.name),
-						() => reader.readStringFromIdOrString(idToValue),
+						() => reader.readStringWithId(idToValue),
 					);
 					pushPlayerDataEvent(field.name, values);
 					break;
@@ -430,7 +430,7 @@ export function parseRecordingFileSilk(
 					const values = new Set<string>();
 					const idToValue = getStringIdToStringForField(field);
 					for (let i = 0; i < count; i++) {
-						values.add(reader.readStringFromIdOrString(idToValue));
+						values.add(reader.readStringWithId(idToValue));
 					}
 					pushPlayerDataEvent(field.name, values);
 					break;
