@@ -101,6 +101,7 @@ interface RunPartCreateResult {
 
 export async function runPartCreate(unsafeInput: RunPartCreateInput): Promise<RunPartCreateResult> {
 	console.log('Creating run part for runId', unsafeInput);
+	unsafeInput.game ??= 'hollow';
 	const input = v.parse(runPartCreateInputSchema, unsafeInput);
 	const userId = await getUserIdFromIngameSession(db, input.ingameAuthId);
 	const runId = await getOrCreateRunId(db, input.localRunId, userId, input.game);

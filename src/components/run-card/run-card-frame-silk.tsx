@@ -12,7 +12,7 @@ const positionClassesPerCrest: Partial<Record<CrestNameSilk, string>> = {
 export const RunCardFrameSilk: Component<{
 	isSteelSoul: boolean;
 	isBrokenSteelSoul: boolean;
-	crestName: string;
+	crestName: string | null | undefined;
 }> = (props) => {
 	const crestName: () => CrestNameSilk = () =>
 		crestNamesSilk.includes(props.crestName as CrestNameSilk) ? (props.crestName as CrestNameSilk) : 'Hunter';
