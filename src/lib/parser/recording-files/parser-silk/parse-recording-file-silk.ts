@@ -1,12 +1,14 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk';
 import {
+	PlayerDataFieldNameOfTypeHashsetOfStringSilk,
+	PlayerDataFieldNameOfTypeListOfStringSilk,
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldSilk,
 	PlayerDataFieldValueSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
-import { sceneIdToSceneName } from '../../../game-data/silk-data/scene-ids-silk';
+import { sceneIdToSceneNameSilk } from '../../../game-data/silk-data/scene-ids-silk';
 import { isSubSceneNameSilk } from '../../../game-data/silk-data/sub-scene-names-silk';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
@@ -26,6 +28,29 @@ import {
 	type NamedMapValueSilk,
 } from './silk-delta-parsing';
 import { SilkRecordingDataView } from './silk-recording-data-view';
+
+const EMPTY_STRING_ID_LOOKUP = new Map<number, string>();
+
+const stringIdToString: Record<
+	PlayerDataFieldNameOfTypeListOfStringSilk | PlayerDataFieldNameOfTypeHashsetOfStringSilk,
+	Map<number, string>
+> = {
+	BelltownCouriersGenericQuests: EMPTY_STRING_ID_LOOKUP,
+	unlockedBossScenes: EMPTY_STRING_ID_LOOKUP,
+
+	scenesEncounteredBench: sceneIdToSceneNameSilk,
+	scenesEncounteredCocoon: sceneIdToSceneNameSilk,
+	scenesMapped: sceneIdToSceneNameSilk,
+	scenesVisited: sceneIdToSceneNameSilk,
+};
+
+function getStringIdToStringForField(field: PlayerDataFieldSilk): Map<number, string> {
+	return (
+		stringIdToString[
+			field.name as PlayerDataFieldNameOfTypeListOfStringSilk | PlayerDataFieldNameOfTypeHashsetOfStringSilk
+		] ?? EMPTY_STRING_ID_LOOKUP
+	);
+}
 
 export function parseRecordingFileSilk(
 	recordingFileContent: ArrayBuffer,
@@ -59,10 +84,10 @@ export function parseRecordingFileSilk(
 
 	const logParserStep = (step: string, details?: unknown): void => {
 		if (details == null) {
-			// console.log(`[silk-parser] ${step}`);
+			console.log(`[silk-parser] ${step}`);
 			return;
 		}
-		// console.log(`[silk-parser] ${step}`, details);
+		console.log(`[silk-parser] ${step}`, details);
 	};
 
 	const entryTypeName = (entryType: EntryTypeSilk): string =>
@@ -177,26 +202,10 @@ export function parseRecordingFileSilk(
 					break;
 				}
 
-				case entryTypeSilk.SceneChangeSingleShort:
-				case entryTypeSilk.SceneChangeAddShort: {
-					const sceneId = reader.readInt16();
-					const sceneName = sceneIdToSceneName.get(sceneId) ?? `unknown_scene_${sceneId}`;
+				case entryTypeSilk.SceneChangeSingle:
+				case entryTypeSilk.SceneChangeAdd: {
+					const sceneName = reader.readStringFromIdOrString(sceneIdToSceneNameSilk);
 
-					if (!isSubSceneNameSilk(sceneName)) {
-						// for now - added scenes are ignored
-						const sceneEvent = new SceneEvent(sceneName, undefined, undefined, ctx);
-						pushEvent(sceneEvent, { sceneName });
-						previousSceneEvent = sceneEvent;
-						logParserStep('scene_change', { sceneId, sceneName, isSubScene: false });
-					} else {
-						logParserStep('scene_change', { sceneId, sceneName, isSubScene: true });
-					}
-					break;
-				}
-
-				case entryTypeSilk.SceneChangeSingleLong:
-				case entryTypeSilk.SceneChangeAddLong: {
-					const sceneName = reader.readString();
 					if (!isSubSceneNameSilk(sceneName)) {
 						// for now - added scenes are ignored
 						const sceneEvent = new SceneEvent(sceneName, undefined, undefined, ctx);
@@ -385,7 +394,8 @@ export function parseRecordingFileSilk(
 						break;
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['list<string>']);
-					const values = reader.readStringArray();
+					const idToValue = getStringIdToStringForField(field);
+					const values = reader.readStringFromIdOrString(idToValue);
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
@@ -398,11 +408,12 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['list<string>']);
 					const arrayLength = reader.readInt32();
+					const idToValue = getStringIdToStringForField(field);
 					const values = parseIndexedListDelta(
 						reader,
 						arrayLength,
 						previousPlayerDataValue<string[]>(field.name),
-						() => reader.readString(),
+						() => reader.readStringFromIdOrString(idToValue),
 					);
 					pushPlayerDataEvent(field.name, values);
 					break;
@@ -417,8 +428,9 @@ export function parseRecordingFileSilk(
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['hashset<string>']);
 					const count = reader.readInt32();
 					const values = new Set<string>();
+					const idToValue = getStringIdToStringForField(field);
 					for (let i = 0; i < count; i++) {
-						values.add(reader.readString());
+						values.add(reader.readStringFromIdOrString(idToValue));
 					}
 					pushPlayerDataEvent(field.name, values);
 					break;
@@ -431,9 +443,11 @@ export function parseRecordingFileSilk(
 						break;
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['hashset<string>']);
+					const idToValue = getStringIdToStringForField(field);
 					const values = parseStringSetDelta(
 						reader,
 						previousPlayerDataValue<ReadonlySet<string>>(field.name),
+						idToValue,
 					);
 					pushPlayerDataEvent(field.name, values);
 					break;

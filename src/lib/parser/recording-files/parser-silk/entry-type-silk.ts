@@ -2,10 +2,8 @@ export const entryTypeSilk = {
 	HeroLocation: 0x01,
 
 	// Scene
-	SceneChangeSingleShort: 0x02,
-	SceneChangeSingleLong: 0x03,
-	SceneChangeAddShort: 0x04,
-	SceneChangeAddLong: 0x05,
+	SceneChangeSingle: 0x02,
+	SceneChangeAdd: 0x04,
 	SceneBoundary: 0x06,
 
 	// Time

@@ -104,6 +104,17 @@ export class SilkRecordingDataView {
 		return this.textDecoder.decode(bytes);
 	}
 
+	public readStringFromIdOrString(idToString: Map<number, string>): string {
+		const id = this.readUint16();
+		console.log('Read string id', id);
+		if (id === 0) {
+			// unknown id -> read string
+			return this.readString();
+		} else {
+			return idToString.get(id) ?? `unknown_id_${id}`;
+		}
+	}
+
 	public readVector2(): Vector2 {
 		const x = this.readFloat32();
 		const y = this.readFloat32();

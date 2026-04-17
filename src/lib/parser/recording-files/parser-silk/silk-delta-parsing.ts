@@ -17,10 +17,10 @@ import { SilkRecordingDataView } from './silk-recording-data-view';
 
 const logDeltaStep = (step: string, details?: unknown): void => {
 	if (details == null) {
-		// console.log(`[silk-parser:delta] ${step}`);
+		console.log(`[silk-parser:delta] ${step}`);
 		return;
 	}
-	// console.log(`[silk-parser:delta] ${step}`, details);
+	console.log(`[silk-parser:delta] ${step}`, details);
 };
 
 export type NamedMapValueSilk =
@@ -104,6 +104,7 @@ export function parseAppendedList<T>(
 export function parseStringSetDelta(
 	reader: SilkRecordingDataView,
 	previousValue: ReadonlySet<string> | null,
+	idToString: Map<number, string>,
 ): Set<string> {
 	logDeltaStep('parse_string_set_delta_start', {
 		previousSize: previousValue?.size ?? 0,
@@ -111,11 +112,11 @@ export function parseStringSetDelta(
 	const values = new Set<string>(previousValue ?? []);
 	const addedCount = reader.readInt32();
 	for (let i = 0; i < addedCount; i++) {
-		values.add(reader.readString());
+		values.add(reader.readStringFromIdOrString(idToString));
 	}
 	const removedCount = reader.readInt32();
 	for (let i = 0; i < removedCount; i++) {
-		values.delete(reader.readString());
+		values.delete(reader.readStringFromIdOrString(idToString));
 	}
 	logDeltaStep('parse_string_set_delta_complete', {
 		addedCount,
