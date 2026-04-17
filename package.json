@@ -25,7 +25,8 @@
 		"fmt:check": "oxfmt --check",
 		"gen:silk:copy-sprites": "node --experimental-strip-types ./scripts/silk-copy-sprites.mts",
 		"gen:silk:player-data": "node --experimental-strip-types ./scripts/silk-player-data-gen.mts",
-		"gen:silk:import-mod-extraction": "node --experimental-strip-types ./scripts/silk-import-mod-extraction.mts"
+		"gen:silk:import-mod-extraction": "node --experimental-strip-types ./scripts/silk-import-mod-extraction.mts",
+		"gen:silk:scene-ids": "node --experimental-strip-types ./scripts/silk-scene-ids-gen.mts"
 	},
 	"dependencies": {
 		"@assetpack/core": "^1.7.0",

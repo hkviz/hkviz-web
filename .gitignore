@@ -35,3 +35,6 @@ public/assets
 # script-local env
 scripts/.env
 scripts/.env.local
+
+# cs gen
+scripts/cs-export/

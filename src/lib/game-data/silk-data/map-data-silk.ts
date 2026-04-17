@@ -15,7 +15,7 @@ import {
 } from './map-data-silk.types.js';
 import { MapZoneSilk } from './player-data-silk.generated.js';
 import { sceneNameGetZone } from './scene-ids-get-zone.js';
-import { isActualSceneNameSilk } from './scene-name-check-silk.js';
+import { sceneNameToIdMetaSilk } from './scene-ids-silk.js';
 import { silkScaleBounds } from './silk-scaling.js';
 
 function mapGeneratedText(text: SilkTextDataGenerated): MapTextData {
@@ -54,50 +54,16 @@ silkMapDataGenerated.rooms.forEach((room) => {
 	}
 });
 
-const silkSceneNameToActual: Record<string, string> = {
-	Slab_03b: 'Slab_03',
-	Cog_07b: 'Cog_07',
-	'Library_04 _bot': 'Library_04', // accidental space in game files?
-	Arborium_07b: 'Arborium_07',
-	Dust_10b: 'Dust_10',
-	Enclave_bridge_left: 'Song_Enclave',
-	Shellwood_13b: 'Shellwood_13',
-};
-
 const silkZoneMappings: Partial<Record<MapZoneSilk, MapZoneSilk>> = {
 	CORAL_CAVERNS: 'RED_CORAL_GORGE',
 };
 
 const silkMapRooms = silkMapDataGenerated.rooms.map((room) => {
 	const sceneNameForVisited = room.sceneName;
-	let sceneName = room.sceneName;
 
-	let isMainGameObject = null;
-
-	if (silkSceneNameToActual[sceneName]) {
-		sceneName = silkSceneNameToActual[sceneName];
-		isMainGameObject = false;
-	} else if (!isActualSceneNameSilk(sceneName)) {
-		let attempts = 0;
-		let current = sceneName;
-
-		while (attempts < 4) {
-			const parts = current.split('_');
-			if (parts.length <= 1) break;
-			const candidate = parts.slice(0, -1).join('_');
-			if (isActualSceneNameSilk(candidate)) {
-				sceneName = candidate;
-				isMainGameObject = false;
-				break;
-			}
-			current = candidate;
-			attempts++;
-		}
-
-		if (sceneName === room.sceneName) {
-			console.warn(`Scene name ${room.sceneName} is not an actual scene name in silk data`);
-		}
-	}
+	const idMeta = sceneNameToIdMetaSilk[sceneNameForVisited];
+	const sceneName = idMeta?.actualSceneName ?? sceneNameForVisited;
+	const isMainGameObject = sceneName === sceneNameForVisited;
 
 	const visualBounds = room.visualBounds ? silkScaleBounds(room.visualBounds) : null;
 

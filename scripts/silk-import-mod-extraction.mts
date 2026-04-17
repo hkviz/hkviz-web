@@ -2,20 +2,14 @@
  * The Silksong mod is able to extract map data, localizations and more at runtime.
  * This script imports these extractions into the web source code.
  */
-import { readFile } from 'fs/promises';
-import path from 'path';
 import { supportedLanguagesSilk } from '../src/lib/game-data/silk-data/localization/supported-languages-silk.ts';
 import { exportFormattedJsFile } from './js-gen-helper.mts';
-import { modExportPath } from './paths.mts';
-
-async function readExtraction(fileName: string) {
-	const filePath = path.join(modExportPath, fileName);
-	return await readFile(filePath, 'utf-8');
-}
+import { readModExtraction } from './mod-extraction-read.mts';
 
 // Map data:
 async function genMapData() {
-	const mapExportJsonStr = await readExtraction('map-export.json');
+	const mapExportJsonStr = await readModExtraction('map-export.json');
+
 	await exportFormattedJsFile(
 		'./src/lib/game-data/silk-data/map-data-silk.generated.ts',
 		`import type { SilkMapDataGenerated } from './map-data-silk.generated.types.ts';
@@ -27,7 +21,7 @@ async function genMapData() {
 async function genLangData() {
 	let someLangDict: any;
 	for (const lang of supportedLanguagesSilk) {
-		const localizationJsonStr = await readExtraction(`localization-${lang}.json`);
+		const localizationJsonStr = await readModExtraction(`localization-${lang}.json`);
 		someLangDict = JSON.parse(localizationJsonStr);
 		await exportFormattedJsFile(
 			`./src/lib/game-data/silk-data/localization/localization-${lang}.generated.ts`,
@@ -63,7 +57,7 @@ async function genLangData() {
 
 // area backgrounds
 async function genAreaBackgrounds() {
-	const saveSlotBackgroundsJsonStr = await readExtraction('save-slot-backgrounds.json');
+	const saveSlotBackgroundsJsonStr = await readModExtraction('save-slot-backgrounds.json');
 	const saveSlotBackgrounds = JSON.parse(saveSlotBackgroundsJsonStr);
 
 	await exportFormattedJsFile(
@@ -89,7 +83,7 @@ async function genAreaBackgrounds() {
 
 // crests
 async function genCrests() {
-	const crestsJsonStr = await readExtraction('tool-crest-export.json');
+	const crestsJsonStr = await readModExtraction('tool-crest-export.json');
 	const crests = JSON.parse(crestsJsonStr);
 	await exportFormattedJsFile(
 		'./src/lib/game-data/silk-data/crests-silk.generated.ts',

@@ -20,3 +20,4 @@ function requireEnv(name: string): string {
 
 export const modsRepo = requireEnv('HKVIZ_MODS_REPO');
 export const modExportPath = requireEnv('HKVIZ_MOD_EXPORT_PATH');
+export const unityPyExportPath = requireEnv('HKVIZ_UNITYPY_EXPORT_PATH');
