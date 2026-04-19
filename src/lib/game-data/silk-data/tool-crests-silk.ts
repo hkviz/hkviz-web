@@ -1,6 +1,6 @@
-import { CrestNameSilk } from './crests-silk.generated';
+import { ToolCrestNameSilk } from './tool-crest-silk.generated';
 
-export const crestNameToIdSilk: Record<CrestNameSilk, number> = {
+export const crestNameToIdSilk: Record<ToolCrestNameSilk, number> = {
 	Hunter: 1,
 	Hunter_v2: 2,
 	Hunter_v3: 3,
@@ -14,11 +14,11 @@ export const crestNameToIdSilk: Record<CrestNameSilk, number> = {
 	Cloakless: 11,
 };
 
-export const crestIdToNameSilk: Record<number, CrestNameSilk> = Object.fromEntries(
-	Object.entries(crestNameToIdSilk).map(([name, id]) => [id, name as CrestNameSilk]),
+export const crestIdToNameSilk: Record<number, ToolCrestNameSilk> = Object.fromEntries(
+	Object.entries(crestNameToIdSilk).map(([name, id]) => [id, name as ToolCrestNameSilk]),
 );
 
-export const crestNameToHudSpriteSilk: Record<CrestNameSilk, { normalHud: string; seelSoulHud: string }> = {
+export const crestNameToHudSpriteSilk: Record<ToolCrestNameSilk, { normalHud: string; seelSoulHud: string }> = {
 	Hunter: {
 		normalHud: '/silk-sprites/crest/HUD_frame_v020005 1.png',
 		seelSoulHud: '/silk-sprites/crest/HUD_Frame_Standard_SS0005.png',

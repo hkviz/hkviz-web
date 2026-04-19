@@ -3,8 +3,10 @@
  * This script imports these extractions into the web source code.
  */
 import { splitSuffixSceneNameSilk } from '../src/lib/game-data/silk-data/sub-scene-names-silk.ts';
-import { exportCsModFile, exportFormattedJsFile } from './js-gen-helper.mts';
-import { readGenMemory, readModExtraction, readUnityPyExtraction, writeGenMemory } from './mod-extraction-read.mts';
+import { createCsIdDictionaryFile } from './cs-ids-gen.ts';
+import { exportFormattedJsFile } from './js-gen-helper.mts';
+import { readGenMemory, ScriptIdMemory } from './memory/script-memory.mts';
+import { readModExtraction, readUnityPyExtraction } from './mod-extraction-read.mts';
 
 // scene to actual scene
 
@@ -18,11 +20,32 @@ const silkSceneNameToActual: Record<string, string> = {
 	Shellwood_13b: 'Shellwood_13',
 };
 
+// a small list of manually maintained not-actual scene names.
+// part of the visited scenes, but not part of the map nor actual scenes therefore not found otherwise.
+const unfoundSceneNames = [
+	'Ant_02b',
+	'Bone_East_15_right',
+	'Greymoor_02b',
+	'Song_05_right',
+	'Coral_35_break_base',
+	'Coral_35_break_base_bottom',
+	'Dock_02_bot',
+	'Slab_07_top_left',
+	'Slab_07_ascent',
+	'Abyss_12_top',
+	'Coral_29_left',
+	'Coral_29_joiner',
+	'Coral_29_right',
+];
+
 // Map data:
 async function readMapModExtractionSceneNames(): Promise<Set<string>> {
 	const mapExportJsonStr = await readModExtraction('map-export.json');
 	const mapExport = JSON.parse(mapExportJsonStr);
 	const sceneNames = new Set<string>(mapExport.rooms.map((it: any) => it.sceneName));
+	unfoundSceneNames.forEach((name) => {
+		sceneNames.add(name);
+	});
 	return sceneNames;
 }
 
@@ -36,18 +59,17 @@ async function readUnityPyModExtractionSceneNames(): Promise<Map<string, { zone:
 async function readGenMemorySceneIds(): Promise<
 	Map<string, { id: number; zone: number | null; actualSceneName: string }>
 > {
-	const sceneIdsJsonStr = await readGenMemory('scene-ids.json');
-	if (!sceneIdsJsonStr) {
+	const sceneIds = await readGenMemory('scene-ids.json');
+	if (!sceneIds) {
 		return new Map();
 	}
-	const sceneIds = JSON.parse(sceneIdsJsonStr);
 	return new Map(Object.entries(sceneIds));
 }
 
 const [mapSceneNames, unityPySceneNames, memorySceneIds] = await Promise.all([
 	readMapModExtractionSceneNames(),
 	readUnityPyModExtractionSceneNames(),
-	readGenMemorySceneIds(),
+	ScriptIdMemory.createIdMemory('scene-ids-silk'),
 ]);
 
 const sceneNameByLower = new Map(mapSceneNames.values().map((it) => [it.toLowerCase(), it]));
@@ -55,11 +77,8 @@ const sceneNameByLower = new Map(mapSceneNames.values().map((it) => [it.toLowerC
 const allSceneNamesLower = new Set<string>([
 	...mapSceneNames.values().map((it) => it.toLowerCase()),
 	...unityPySceneNames.keys().map((it) => it.toLowerCase()),
-	...memorySceneIds.keys().map((it) => it.toLowerCase()),
+	...memorySceneIds.idsLower(),
 ]);
-
-const existingIds = new Set(memorySceneIds.values().map((it) => it.id));
-let maxUsedSceneId = Math.max(...existingIds, 0);
 
 const sceneNameToMeta: Map<string, { id: number; zone: number | null; actualSceneName: string | null }> = new Map<
 	string,
@@ -116,43 +135,24 @@ for (const sceneNameLower of allSceneNamesLower.values().toArray().sort()) {
 		sceneName = sceneNameLower;
 	}
 	const zone = unityPySceneNames.get(sceneNameLower)?.zone ?? null;
-	const id = memorySceneIds.get(sceneName)?.id ?? ++maxUsedSceneId;
+	const id = memorySceneIds.getOrCreateId(sceneName);
 	const actualSceneName = sceneNameToActualSceneName(sceneName);
 
 	sceneNameToMeta.set(sceneName, { id, zone, actualSceneName });
 }
 
-const sceneIdsJson = JSON.stringify(Object.fromEntries(sceneNameToMeta.entries()), null, 2);
-await writeGenMemory('scene-ids-silk.json', sceneIdsJson);
-
-console.log(`Generated scene IDs for ${sceneNameToMeta.size} scenes, max ID used: ${maxUsedSceneId}`);
+console.log(`Generated scene IDs for ${sceneNameToMeta.size} scenes, max ID used: ${memorySceneIds.maxId}`);
 console.log(`Errors:`);
 console.log(`[not-actual] ${errorCountNotActual} not actual scene names`);
 console.log(`[no-upper] ${errorCountNoUpper} scene names missing upper case version`);
 
-await exportFormattedJsFile(
-	'./src/lib/game-data/silk-data/scene-ids-silk.generated.ts',
-	`import { SceneIdDataSilk } from './scene-ids-silk.generated.types';
+await Promise.all([
+	memorySceneIds.write(),
+	exportFormattedJsFile(
+		'./src/lib/game-data/silk-data/scene-ids-silk.generated.ts',
+		`import { SceneIdDataSilk } from './scene-ids-silk.generated.types';
     
-    export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = ${sceneIdsJson}`,
-);
-
-await exportCsModFile(
-	'SilkSongScenes.cs',
-	`
-using System;
-using System.Collections.Generic;
-
-namespace HKViz.Silk.GameData;
-
-public static class SilkSongScenes {
-    public static readonly Dictionary<string, ushort> SCENES = new(StringComparer.OrdinalIgnoreCase) {
-${sceneNameToMeta
-	.entries()
-	.map(([sceneName, meta]) => `        ["${sceneName}"] = ${meta.id},`)
-	.toArray()
-	.join('\n')}
-    };
-}
-`,
-);
+    export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = ${JSON.stringify(Object.fromEntries(sceneNameToMeta.entries()), null, 2)}`,
+	),
+	createCsIdDictionaryFile('SilkSongScenes', memorySceneIds, 'SCENES'),
+]);

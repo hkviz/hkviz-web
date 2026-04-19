@@ -1,5 +1,6 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { PlayerDataFieldTypeSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import { PlayerDataFieldTypeNamedMapSilk } from '~/lib/game-data/silk-data/player-data-silk';
+import { PlayerDataFieldSilk, PlayerDataFieldTypeSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import {
 	CollectableItemsDataSilk,
 	CollectableMementosDataSilk,
@@ -10,16 +11,19 @@ import {
 	QuestRumourDataSilk,
 	StoryEventInfoSilk,
 	ToolCrestsDataSilk,
+	ToolCrestsSlotDataSilk,
 	ToolItemLiquidsDataSilk,
 	ToolItemsDataSilk,
 } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
+import { typeCheckNever } from '~/lib/util';
 import { SilkRecordingDataView } from './silk-recording-data-view';
+import { getStringIdToStringForField } from './string-id-by-field-silk';
 
 const logDeltaStep = (step: string, details?: unknown): void => {
-	if (details == null) {
-		// console.log(`[silk-parser:delta] ${step}`);
-		return;
-	}
+	// if (details == null) {
+	// 	console.log(`[silk-parser:delta] ${step}`);
+	// 	return;
+	// }
 	// console.log(`[silk-parser:delta] ${step}`, details);
 };
 
@@ -35,7 +39,8 @@ export type NamedMapValueSilk =
 	| ToolItemLiquidsDataSilk
 	| ToolItemsDataSilk
 	| ToolCrestsDataSilk
-	| EnemyJournalKillDataSilk;
+	| EnemyJournalKillDataSilk
+	| ToolCrestsSlotDataSilk;
 
 export function parseIndexedListDelta<T>(
 	reader: SilkRecordingDataView,
@@ -104,6 +109,7 @@ export function parseAppendedList<T>(
 export function parseStringSetDelta(
 	reader: SilkRecordingDataView,
 	previousValue: ReadonlySet<string> | null,
+	idToString: Map<number, string>,
 ): Set<string> {
 	logDeltaStep('parse_string_set_delta_start', {
 		previousSize: previousValue?.size ?? 0,
@@ -111,11 +117,11 @@ export function parseStringSetDelta(
 	const values = new Set<string>(previousValue ?? []);
 	const addedCount = reader.readInt32();
 	for (let i = 0; i < addedCount; i++) {
-		values.add(reader.readString());
+		values.add(reader.readStringWithId(idToString) ?? '');
 	}
 	const removedCount = reader.readInt32();
 	for (let i = 0; i < removedCount; i++) {
-		values.delete(reader.readString());
+		values.delete(reader.readStringWithId(idToString) ?? '');
 	}
 	logDeltaStep('parse_string_set_delta_complete', {
 		addedCount,
@@ -163,7 +169,8 @@ export function readNamedMapValue(
 	reader: SilkRecordingDataView,
 	fieldType: PlayerDataFieldTypeSilk,
 ): NamedMapValueSilk {
-	switch (fieldType) {
+	const fieldTypeAsNamedMap = fieldType as PlayerDataFieldTypeNamedMapSilk;
+	switch (fieldTypeAsNamedMap) {
 		case 'dictionary<string,bool>':
 			return reader.readBool();
 		case 'dictionary<string,int>':
@@ -188,13 +195,17 @@ export function readNamedMapValue(
 			return reader.readToolCrestsData();
 		case 'EnemyJournalKillData':
 			return reader.readEnemyJournalKillData();
+		case 'FloatingCrestSlotsData':
+			return reader.readToolCrestsSlotData();
 		default:
+			typeCheckNever(fieldTypeAsNamedMap);
 			throw new Error(`Unsupported named map field type ${fieldType}`);
 	}
 }
 
 export function parseNamedMapFull(
 	reader: SilkRecordingDataView,
+	field: PlayerDataFieldSilk,
 	fieldType: PlayerDataFieldTypeSilk,
 ): Map<string, NamedMapValueSilk> {
 	logDeltaStep('parse_named_map_full_start', { fieldType });
@@ -202,14 +213,14 @@ export function parseNamedMapFull(
 	if (count < 0) {
 		throw new Error(`Invalid named map count ${count} at ${reader.offset - 4}`);
 	}
-	console.log('Parsing full named map with count', count, 'and field type', fieldType);
+	// console.log('Parsing full named map with count', count, 'and field type', fieldType);
 
 	const values = new Map<string, NamedMapValueSilk>();
 	for (let i = 0; i < count; i++) {
-		const key = reader.readString();
+		const key = reader.readStringWithId(getStringIdToStringForField(field)) ?? '';
 		const value = readNamedMapValue(reader, fieldType);
 		values.set(key, value);
-		console.log(`Parsed named map entry ${i + 1}/${count} with key ${key} and value`, value);
+		// console.log(`Parsed named map entry ${i + 1}/${count} with key ${key} and value`, value);
 	}
 
 	logDeltaStep('parse_named_map_full_complete', {
@@ -223,6 +234,7 @@ export function parseNamedMapFull(
 
 export function parseNamedMapDelta(
 	reader: SilkRecordingDataView,
+	field: PlayerDataFieldSilk,
 	fieldType: PlayerDataFieldTypeSilk,
 	previousValue: ReadonlyMap<string, NamedMapValueSilk> | null,
 ): Map<string, NamedMapValueSilk> {
@@ -236,14 +248,14 @@ export function parseNamedMapDelta(
 
 	const upsertsCount = reader.readInt32();
 	for (let i = 0; i < upsertsCount; i++) {
-		const key = reader.readString();
+		const key = reader.readStringWithId(getStringIdToStringForField(field)) ?? '';
 		const value = readNamedMapValue(reader, fieldType);
 		values.set(key, value);
 	}
 
 	const removedCount = reader.readInt32();
 	for (let i = 0; i < removedCount; i++) {
-		values.delete(reader.readString());
+		values.delete(reader.readStringWithId(getStringIdToStringForField(field)) ?? '');
 	}
 
 	logDeltaStep('parse_named_map_delta_complete', {
