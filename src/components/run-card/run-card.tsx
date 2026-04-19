@@ -372,7 +372,7 @@ export const RunCard: Component<{
 					<Show when={props.run.gameState.game === 'silk'}>
 						<img
 							class={cn(
-								'top-[-10%] left-[-10%] h-[120%] w-[120%] object-cover object-[50%_70%] opacity-50 blur-xl',
+								'top-[-10%] left-[-10%] h-[120%] w-[120%] object-cover object-[50%_70%] opacity-90 blur-lg',
 								bgImage().imgClasses,
 							)}
 							src={bgImage().src}

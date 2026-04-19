@@ -3,7 +3,9 @@
  * This script imports these extractions into the web source code.
  */
 import { supportedLanguagesSilk } from '../src/lib/game-data/silk-data/localization/supported-languages-silk.ts';
+import { createCsIdDictionaryFile } from './cs-ids-gen.ts';
 import { exportFormattedJsFile } from './js-gen-helper.mts';
+import { ScriptIdMemory } from './memory/script-memory.mts';
 import { readModExtraction } from './mod-extraction-read.mts';
 
 // Map data:
@@ -81,16 +83,54 @@ async function genAreaBackgrounds() {
 	);
 }
 
-// crests
-async function genCrests() {
-	const crestsJsonStr = await readModExtraction('tool-crest-export.json');
-	const crests = JSON.parse(crestsJsonStr);
+// generic id item
+async function genGenericIdItem(itemName: string) {
+	const [idMemory, dataJsonStr] = await Promise.all([
+		ScriptIdMemory.createIdMemory(`${itemName}-silk`),
+		readModExtraction(`${itemName}-export.json`),
+	]);
+	const items = JSON.parse(dataJsonStr).all;
+	const pascalCaseItemName = itemName
+		.split('-')
+		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+		.join('');
+
+	const camelCaseItemName = itemName
+		.split('-')
+		.map((part, index) => {
+			if (index === 0) {
+				return part.toLowerCase();
+			} else {
+				return part.charAt(0).toUpperCase() + part.slice(1);
+			}
+		})
+		.join('');
+
 	await exportFormattedJsFile(
-		'./src/lib/game-data/silk-data/crests-silk.generated.ts',
-		`export const crestsSilk = ${crestsJsonStr};
-	export type CrestNameSilk = ${crests.crests.map((it: any) => `'${it.id}'`).join(' | ')};
-	export const crestNamesSilk: CrestNameSilk[] = [${crests.crests.map((it: any) => `'${it.id}'`).join(', ')}];`,
+		`./src/lib/game-data/silk-data/${itemName}-silk.generated.ts`,
+		`export const ${camelCaseItemName}Silk = ${dataJsonStr};
+export type ${pascalCaseItemName}NameSilk = ${items.map((it: any) => `'${it.id}'`).join(' | ')};
+
+export const ${camelCaseItemName}IdToNameSilk: Map<number, ${pascalCaseItemName}NameSilk> = new Map([
+	${items
+		.map((it: any) => {
+			const id = idMemory.getOrCreateId(it.id);
+			return `    [${id}, '${it.id}']`;
+		})
+		.join(',\n')}
+]);
+export const ${camelCaseItemName}NamesSilk: ${pascalCaseItemName}NameSilk[] = ${camelCaseItemName}IdToNameSilk.values().toArray();
+`,
 	);
+	await idMemory.write();
+	await createCsIdDictionaryFile(`SilkSong${pascalCaseItemName}Ids`, idMemory);
 }
 
-await Promise.all([genMapData(), genLangData(), genAreaBackgrounds(), genCrests()]);
+async function genCrests() {
+	await genGenericIdItem('tool-crest');
+}
+async function genTools() {
+	await genGenericIdItem('tool-item');
+}
+
+await Promise.all([genMapData(), genLangData(), genAreaBackgrounds(), genCrests(), genTools()]);

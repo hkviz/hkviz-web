@@ -1,0 +1,48 @@
+:root {
+	--grid-size: 20px; /* base spacing */
+	--line-color: rgba(255, 0, 255, 0.2);
+	--bold-color: rgba(255, 0, 230, 0.2);
+	--bold-every: 2; /* every nth line thicker */
+}
+
+.overlay-grid {
+	content: '';
+	position: absolute;
+	inset: 0;
+	z-index: 9999;
+	pointer-events: none;
+
+	background-image:
+    /* thin horizontal lines */
+		repeating-linear-gradient(
+			to bottom,
+			var(--line-color) 0,
+			var(--line-color) 1px,
+			transparent 1px,
+			transparent var(--grid-size)
+		),
+		/* thin vertical lines */
+		repeating-linear-gradient(
+				to right,
+				var(--line-color) 0,
+				var(--line-color) 1px,
+				transparent 1px,
+				transparent var(--grid-size)
+			),
+		/* bold horizontal lines */
+		repeating-linear-gradient(
+				to bottom,
+				var(--bold-color) 0,
+				var(--bold-color) 2px,
+				transparent 2px,
+				transparent calc(var(--grid-size) * var(--bold-every))
+			),
+		/* bold vertical lines */
+		repeating-linear-gradient(
+				to right,
+				var(--bold-color) 0,
+				var(--bold-color) 2px,
+				transparent 2px,
+				transparent calc(var(--grid-size) * var(--bold-every))
+			);
+}

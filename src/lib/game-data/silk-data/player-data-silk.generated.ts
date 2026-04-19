@@ -1455,7 +1455,8 @@ export type PlayerDataFieldNameOfTypeEnumSilk =
 	| 'extraRestZone'
 	| 'hazardRespawnFacing'
 	| 'mapZone'
-	| 'permadeathMode';
+	| 'permadeathMode'
+	| 'gameManager_GameState';
 export interface PlayerDataFieldOfTypeEnumSilk {
 	id: number;
 	name: PlayerDataFieldNameOfTypeEnumSilk;
@@ -9138,6 +9139,11 @@ const fieldsByName = {
 		name: 'StoryEvents',
 		type: 'list<playerstory.eventinfo>',
 	} satisfies PlayerDataFieldOfTypeListOfPlayerstory_eventinfoSilk as PlayerDataFieldOfTypeListOfPlayerstory_eventinfoSilk,
+	gameManager_GameState: {
+		id: 1453,
+		name: 'gameManager_GameState',
+		type: 'enum',
+	} satisfies PlayerDataFieldOfTypeEnumSilk as PlayerDataFieldOfTypeEnumSilk,
 };
 export const playerDataFieldsSilk = {
 	byFieldName: fieldsByName,
@@ -9354,6 +9360,38 @@ export const FastTravelLocationsSilk = {
 	nameList: Object.keys(FastTravelLocationsByName) as FastTravelLocationsSilk[],
 } as const;
 export const FastTravelLocationsNumberSchemaSilk = v.pipe(v.number(), v.integer(), v.minValue(0), v.maxValue(15));
+
+export type GameStateSilk =
+	| 'INACTIVE' /* 0 */
+	| 'MAIN_MENU' /* 1 */
+	| 'LOADING' /* 2 */
+	| 'ENTERING_LEVEL' /* 3 */
+	| 'PLAYING' /* 4 */
+	| 'PAUSED' /* 5 */
+	| 'EXITING_LEVEL' /* 6 */
+	| 'CUTSCENE' /* 7 */
+	| 'PRIMER' /* 8 */;
+const GameStateByName: Record<GameStateSilk, number> = {
+	INACTIVE: 0,
+	MAIN_MENU: 1,
+	LOADING: 2,
+	ENTERING_LEVEL: 3,
+	PLAYING: 4,
+	PAUSED: 5,
+	EXITING_LEVEL: 6,
+	CUTSCENE: 7,
+	PRIMER: 8,
+};
+export const GameStateSilk = {
+	isFlags: false,
+	byName: GameStateByName,
+	byId: Object.fromEntries(Object.entries(GameStateByName).map(([name, id]) => [id, name] as const)) as Record<
+		number,
+		GameStateSilk
+	>,
+	nameList: Object.keys(GameStateByName) as GameStateSilk[],
+} as const;
+export const GameStateNumberSchemaSilk = v.pipe(v.number(), v.integer(), v.minValue(0), v.maxValue(8));
 
 export type GreenPrinceLocationsSilk = 'DustCage' /* 0 */ | 'Song04' /* 1 */ | 'CogDancers' /* 2 */ | 'Clover' /* 3 */;
 const GreenPrinceLocationsByName: Record<GreenPrinceLocationsSilk, number> = {

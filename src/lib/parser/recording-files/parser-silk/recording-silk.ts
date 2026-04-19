@@ -1,6 +1,6 @@
 import { aggregateRecordingSilk } from '~/lib/aggregation/aggregate-recording-silk';
 import { AggregatedRunDataSilk } from '~/lib/aggregation/aggregation-value-silk';
-import { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import { PlayerDataFieldNameSilk, playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { raise } from '../../../util';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
@@ -88,5 +88,12 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 
 	public lastPlayerDataEventOfField<K extends PlayerDataFieldNameSilk>(field: K): PlayerDataEventSilk<K> | null {
 		return this.lastPlayerDataEventsByField[field] ?? null;
+	}
+
+	public debugPrintNeverOccurredPlayerDataEvents(): void {
+		const inRun = new Set(Object.keys(this.playerDataEventsPerField) as PlayerDataFieldNameSilk[]);
+		const all = Object.keys(playerDataFieldsSilk.byFieldName);
+		const neverOccurredFields = all.filter((field) => !inRun.has(field as PlayerDataFieldNameSilk));
+		console.log('Player data fields that never occurred in this recording:', neverOccurredFields);
 	}
 }

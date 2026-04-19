@@ -1,11 +1,11 @@
 import { Component, Show } from 'solid-js';
 import { runCardInteractiveBrightnessClasses } from '~/components/run-card/run-card-interactive-brightness-classes.tsx';
-import { CrestNameSilk, crestNamesSilk } from '~/lib/game-data/silk-data/crests-silk.generated';
-import { brokenSpriteSilk, crestNameToHudSpriteSilk } from '~/lib/game-data/silk-data/crests-silk.ts';
+import { ToolCrestNameSilk, toolCrestNamesSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
+import { brokenSpriteSilk, crestNameToHudSpriteSilk } from '~/lib/game-data/silk-data/tool-crests-silk';
 import { cn } from '~/lib/utils.ts';
 
 const defaultPositionClasses = 'top-2 left-0 h-15';
-const positionClassesPerCrest: Partial<Record<CrestNameSilk, string>> = {
+const positionClassesPerCrest: Partial<Record<ToolCrestNameSilk, string>> = {
 	Hunter_v2: '-left-4',
 };
 
@@ -14,8 +14,10 @@ export const RunCardFrameSilk: Component<{
 	isBrokenSteelSoul: boolean;
 	crestName: string | null | undefined;
 }> = (props) => {
-	const crestName: () => CrestNameSilk = () =>
-		crestNamesSilk.includes(props.crestName as CrestNameSilk) ? (props.crestName as CrestNameSilk) : 'Hunter';
+	const crestName: () => ToolCrestNameSilk = () =>
+		toolCrestNamesSilk.includes(props.crestName as ToolCrestNameSilk)
+			? (props.crestName as ToolCrestNameSilk)
+			: 'Hunter';
 	const source = () => {
 		const byMode = crestNameToHudSpriteSilk[crestName()];
 		return props.isSteelSoul ? byMode.seelSoulHud : byMode.normalHud;

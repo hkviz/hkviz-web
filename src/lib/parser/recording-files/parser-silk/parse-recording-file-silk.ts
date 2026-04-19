@@ -1,20 +1,18 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk';
 import {
-	PlayerDataFieldNameOfTypeHashsetOfStringSilk,
-	PlayerDataFieldNameOfTypeListOfStringSilk,
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldSilk,
 	PlayerDataFieldValueSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
-import { sceneIdToSceneNameSilk } from '../../../game-data/silk-data/scene-ids-silk';
+import { typeCheckNever } from '~/lib/util';
 import { isSubSceneNameSilk } from '../../../game-data/silk-data/sub-scene-names-silk';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
-import { entryTypeSilk, EntryTypeSilk } from './entry-type-silk';
+import { entryTypeNameSilk, entryTypeSilk, EntryTypeSilk } from './entry-type-silk';
 import { recordingFileVersionToModVersionSilk } from './mod-version-silk';
 import { ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
 import {
@@ -28,29 +26,7 @@ import {
 	type NamedMapValueSilk,
 } from './silk-delta-parsing';
 import { SilkRecordingDataView } from './silk-recording-data-view';
-
-const EMPTY_STRING_ID_LOOKUP = new Map<number, string>();
-
-const stringIdToString: Record<
-	PlayerDataFieldNameOfTypeListOfStringSilk | PlayerDataFieldNameOfTypeHashsetOfStringSilk,
-	Map<number, string>
-> = {
-	BelltownCouriersGenericQuests: EMPTY_STRING_ID_LOOKUP,
-	unlockedBossScenes: EMPTY_STRING_ID_LOOKUP,
-
-	scenesEncounteredBench: sceneIdToSceneNameSilk,
-	scenesEncounteredCocoon: sceneIdToSceneNameSilk,
-	scenesMapped: sceneIdToSceneNameSilk,
-	scenesVisited: sceneIdToSceneNameSilk,
-};
-
-function getStringIdToStringForField(field: PlayerDataFieldSilk): Map<number, string> {
-	return (
-		stringIdToString[
-			field.name as PlayerDataFieldNameOfTypeListOfStringSilk | PlayerDataFieldNameOfTypeHashsetOfStringSilk
-		] ?? EMPTY_STRING_ID_LOOKUP
-	);
-}
+import { getStringIdToStringForField, stringIdMappingSilk } from './string-id-by-field-silk';
 
 export function parseRecordingFileSilk(
 	recordingFileContent: ArrayBuffer,
@@ -78,20 +54,14 @@ export function parseRecordingFileSilk(
 	const _partNumber = reader.readInt64();
 
 	const hkVizModVersion = recordingFileVersionToModVersionSilk[recordingFileVersion] ?? null;
-	const entryTypeNameByValue = new Map<number, string>(
-		Object.entries(entryTypeSilk).map(([name, value]) => [value, name]),
-	);
 
 	const logParserStep = (step: string, details?: unknown): void => {
-		if (details == null) {
-			console.log(`[silk-parser] ${step}`);
-			return;
-		}
-		console.log(`[silk-parser] ${step}`, details);
+		// if (details == null) {
+		// 	console.log(`[silk-parser] ${step}`);
+		// 	return;
+		// }
+		// console.log(`[silk-parser] ${step}`, details);
 	};
-
-	const entryTypeName = (entryType: EntryTypeSilk): string =>
-		entryTypeNameByValue.get(entryType) ?? `unknown_entry_type_${entryType}`;
 
 	const pushEvent = (event: RecordingEventSilk, details?: Record<string, unknown>): void => {
 		events.push(event);
@@ -158,17 +128,34 @@ export function parseRecordingFileSilk(
 		return (previousPlayerDataEvent?.value as T | undefined) ?? null;
 	};
 
+	const sizePerEntryTypeAndField = new Map<
+		string,
+		{
+			count: number;
+			size: number;
+		}
+	>();
+
 	try {
 		while (reader.offset < reader.byteLength) {
 			const entryOffset = reader.offset;
 			const entryType = reader.readUint8() as EntryTypeSilk;
+			const entryTypeName = entryTypeNameSilk(entryType);
 			logParserStep('entry_start', {
 				offset: entryOffset,
 				entryType,
-				entryName: entryTypeName(entryType),
+				entryTypeName,
 			});
+			let trackedField = null;
+			reader.logState = entryTypeName;
 
 			switch (entryType) {
+				case entryTypeSilk.SessionStart: {
+					break;
+				}
+				case entryTypeSilk.SessionEnd: {
+					break;
+				}
 				case entryTypeSilk.TimestampFull: {
 					ctx.timestamp = reader.readInt64();
 					logParserStep('timestamp_full', { timestamp: ctx.timestamp });
@@ -204,7 +191,7 @@ export function parseRecordingFileSilk(
 
 				case entryTypeSilk.SceneChangeSingle:
 				case entryTypeSilk.SceneChangeAdd: {
-					const sceneName = reader.readStringWithId(sceneIdToSceneNameSilk);
+					const sceneName = reader.readStringWithId(stringIdMappingSilk.sceneName) ?? '';
 
 					if (!isSubSceneNameSilk(sceneName)) {
 						// for now - added scenes are ignored
@@ -248,6 +235,8 @@ export function parseRecordingFileSilk(
 					const packed = reader.readUint16();
 					const fieldId = packed >> 1;
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -260,6 +249,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataFloat: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -272,6 +263,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataInt: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -284,6 +277,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataEnum: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -296,6 +291,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataULong: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -308,6 +305,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataVector3: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -320,6 +319,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataVector2: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -332,11 +333,13 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataString: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['string']);
-					const value = reader.readString();
+					const value = reader.readStringWithId(getStringIdToStringForField(field));
 					pushPlayerDataEvent(field.name, value);
 					break;
 				}
@@ -344,6 +347,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataGuid: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -356,6 +361,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataIntListFull: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -372,6 +379,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataIntListDelta: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -390,6 +399,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataStringListFull: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -403,6 +414,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataStringListDelta: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -422,6 +435,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataStringSetFull: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -430,7 +445,7 @@ export function parseRecordingFileSilk(
 					const values = new Set<string>();
 					const idToValue = getStringIdToStringForField(field);
 					for (let i = 0; i < count; i++) {
-						values.add(reader.readStringWithId(idToValue));
+						values.add(reader.readStringWithId(idToValue) ?? '');
 					}
 					pushPlayerDataEvent(field.name, values);
 					break;
@@ -439,6 +454,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataStringSetDelta: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -456,27 +473,24 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataNamedMapFull: {
 					const fieldId = reader.readUint16();
 					const field = playerDataFieldsSilk.byId.get(fieldId);
+					trackedField = field?.name;
+					reader.logState = trackedField;
 					if (!field) {
 						unknownEvents++;
 						console.warn('Unknown player data field id', fieldId, 'at offset', reader.offset);
 						break;
 					}
-					throwIfFieldTypeMismatch(entryType, field, fieldId, [
-						'dictionary<string,bool>',
-						'dictionary<string,int>',
-						'CollectableItemsData',
-						'CollectableRelicsData',
-						'CollectableMementosData',
-						'QuestRumourData',
-						'QuestCompletionData',
-						'MateriumItemsData',
-						'ToolItemLiquidsData',
-						'ToolItemsData',
-						'ToolCrestsData',
-						'EnemyJournalKillData',
-					]);
+					// type already checked in named map delta
+					// console.log(
+					// 	'Parsing named map full for field',
+					// 	field.name,
+					// 	'type',
+					// 	field.type,
+					// 	'at offset',
+					// 	reader.offset,
+					// );
 
-					const values = parseNamedMapFull(reader, field.type);
+					const values = parseNamedMapFull(reader, field, field.type);
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
@@ -484,25 +498,22 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataNamedMapDelta: {
 					const fieldId = reader.readUint16();
 					const field = playerDataFieldsSilk.byId.get(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						unknownEvents++;
 						console.warn('Unknown player data field id', fieldId, 'at offset', reader.offset);
 						break;
 					}
-					throwIfFieldTypeMismatch(entryType, field, fieldId, [
-						'dictionary<string,bool>',
-						'dictionary<string,int>',
-						'CollectableItemsData',
-						'CollectableRelicsData',
-						'CollectableMementosData',
-						'QuestRumourData',
-						'QuestCompletionData',
-						'MateriumItemsData',
-						'ToolItemLiquidsData',
-						'ToolItemsData',
-						'ToolCrestsData',
-						'EnemyJournalKillData',
-					]);
+					// already checked in parseNamedMapDelta
+					// console.log(
+					// 	'Parsing named map delta for field',
+					// 	field.name,
+					// 	'of type',
+					// 	field.type,
+					// 	'at offset',
+					// 	reader.offset,
+					// );
 					logParserStep('named_map_delta_start', {
 						fieldId,
 						fieldName: field.name,
@@ -513,6 +524,7 @@ export function parseRecordingFileSilk(
 
 					const values = parseNamedMapDelta(
 						reader,
+						field,
 						field.type,
 						previousPlayerDataValue<ReadonlyMap<string, NamedMapValueSilk>>(field.name),
 					);
@@ -523,6 +535,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataStoryEventListFull: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -544,6 +558,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataStoryEventListDelta: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -561,6 +577,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataWrappedVector2ListFull: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -582,6 +600,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataWrappedVector2ListDelta: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -599,6 +619,8 @@ export function parseRecordingFileSilk(
 				case entryTypeSilk.PlayerDataWrappedVector2ListAppend: {
 					const fieldId = reader.readUint16();
 					const field = resolvePlayerDataField(fieldId);
+					reader.logState = field?.name;
+					trackedField = field?.name;
 					if (!field) {
 						break;
 					}
@@ -616,6 +638,7 @@ export function parseRecordingFileSilk(
 				}
 
 				default: {
+					typeCheckNever(entryType);
 					unknownEvents++;
 					logParserStep('unknown_entry_type', { entryType, offset: reader.offset });
 					console.warn('Unknown entryType', entryType, 'at offset', reader.offset);
@@ -625,6 +648,13 @@ export function parseRecordingFileSilk(
 					break;
 				}
 			}
+			// track storage
+			const trackStorageKey = trackedField ? `${entryTypeName}_${trackedField}` : entryTypeName;
+			const trackExisting = sizePerEntryTypeAndField.get(trackStorageKey);
+			sizePerEntryTypeAndField.set(trackStorageKey, {
+				count: (trackExisting?.count ?? 0) + 1,
+				size: (trackExisting?.size ?? 0) + reader.offset - entryOffset,
+			});
 		}
 	} catch (e) {
 		logParserStep('parse_error', { offset: reader.offset, error: e });
@@ -640,6 +670,38 @@ export function parseRecordingFileSilk(
 		recordingFileVersion,
 		hkVizModVersion,
 	});
+
+	(window as any).debug ??= {};
+
+	(window as any).debug.printStorageSummary = (): string => {
+		const table = sizePerEntryTypeAndField
+			.entries()
+			.toArray()
+			.sort(([, a], [, b]) => b.size - a.size)
+			.map(([key, { size, count }]) => ({
+				key,
+				size,
+				count,
+				averageSize: size / count,
+				percentage: (size / reader.byteLength) * 100,
+			}));
+
+		console.table(table);
+
+		return (
+			'EntryTypeAndField\tTotalSize\tCount\tAverageSize\tPercentageOfFile\n' +
+			table
+				.slice(0, 100)
+				// return as tab seperated value string
+				.map(
+					({ key, size, count, averageSize, percentage }) =>
+						`${key}\t${size}\t${count}\t${averageSize.toFixed(2)}\t${percentage / 100}`,
+				)
+				.join('\n')
+		);
+	};
+
+	(window as any).debug.printNeverOccurredGameplayData = (): void => {};
 
 	return new ParsedRecordingSilk(
 		events,

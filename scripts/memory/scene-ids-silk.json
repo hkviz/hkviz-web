@@ -1,4487 +1,912 @@
 {
-  "Abandoned_Town": {
-    "id": 1,
-    "zone": 39,
-    "actualSceneName": "Abandoned_Town"
-  },
-  "Abyss_01": {
-    "id": 2,
-    "zone": 37,
-    "actualSceneName": "Abyss_01"
-  },
-  "Abyss_02": {
-    "id": 3,
-    "zone": 37,
-    "actualSceneName": "Abyss_02"
-  },
-  "Abyss_02b": {
-    "id": 4,
-    "zone": 37,
-    "actualSceneName": "Abyss_02b"
-  },
-  "Abyss_02b_top": {
-    "id": 5,
-    "zone": null,
-    "actualSceneName": "Abyss_02b"
-  },
-  "Abyss_03": {
-    "id": 6,
-    "zone": 37,
-    "actualSceneName": "Abyss_03"
-  },
-  "Abyss_03_bell_broken": {
-    "id": 7,
-    "zone": null,
-    "actualSceneName": "Abyss_03"
-  },
-  "Abyss_03_bell_fixed": {
-    "id": 8,
-    "zone": null,
-    "actualSceneName": "Abyss_03"
-  },
-  "Abyss_03_top": {
-    "id": 9,
-    "zone": null,
-    "actualSceneName": "Abyss_03"
-  },
-  "Abyss_04": {
-    "id": 10,
-    "zone": 37,
-    "actualSceneName": "Abyss_04"
-  },
-  "Abyss_04_right": {
-    "id": 11,
-    "zone": null,
-    "actualSceneName": "Abyss_04"
-  },
-  "Abyss_05": {
-    "id": 12,
-    "zone": 37,
-    "actualSceneName": "Abyss_05"
-  },
-  "Abyss_05_top": {
-    "id": 13,
-    "zone": null,
-    "actualSceneName": "Abyss_05"
-  },
-  "Abyss_06": {
-    "id": 14,
-    "zone": 37,
-    "actualSceneName": "Abyss_06"
-  },
-  "Abyss_07": {
-    "id": 15,
-    "zone": 37,
-    "actualSceneName": "Abyss_07"
-  },
-  "Abyss_08": {
-    "id": 16,
-    "zone": 37,
-    "actualSceneName": "Abyss_08"
-  },
-  "Abyss_09": {
-    "id": 17,
-    "zone": 37,
-    "actualSceneName": "Abyss_09"
-  },
-  "Abyss_09_ascent": {
-    "id": 18,
-    "zone": null,
-    "actualSceneName": "Abyss_09"
-  },
-  "Abyss_09_top": {
-    "id": 19,
-    "zone": null,
-    "actualSceneName": "Abyss_09"
-  },
-  "Abyss_09_up_connection": {
-    "id": 20,
-    "zone": null,
-    "actualSceneName": "Abyss_09"
-  },
-  "Abyss_11": {
-    "id": 21,
-    "zone": 37,
-    "actualSceneName": "Abyss_11"
-  },
-  "Abyss_12": {
-    "id": 22,
-    "zone": 37,
-    "actualSceneName": "Abyss_12"
-  },
-  "Abyss_13": {
-    "id": 23,
-    "zone": 37,
-    "actualSceneName": "Abyss_13"
-  },
-  "abyss_cocoon": {
-    "id": 24,
-    "zone": 37,
-    "actualSceneName": "abyss_cocoon"
-  },
-  "Ant_02": {
-    "id": 25,
-    "zone": 11,
-    "actualSceneName": "Ant_02"
-  },
-  "Ant_03": {
-    "id": 26,
-    "zone": 11,
-    "actualSceneName": "Ant_03"
-  },
-  "Ant_04": {
-    "id": 27,
-    "zone": 11,
-    "actualSceneName": "Ant_04"
-  },
-  "Ant_04_left": {
-    "id": 28,
-    "zone": 11,
-    "actualSceneName": "Ant_04_left"
-  },
-  "Ant_04_mid": {
-    "id": 29,
-    "zone": 11,
-    "actualSceneName": "Ant_04_mid"
-  },
-  "Ant_05b": {
-    "id": 30,
-    "zone": 11,
-    "actualSceneName": "Ant_05b"
-  },
-  "Ant_05c": {
-    "id": 31,
-    "zone": 11,
-    "actualSceneName": "Ant_05c"
-  },
-  "Ant_05c_top_right": {
-    "id": 32,
-    "zone": null,
-    "actualSceneName": "Ant_05c"
-  },
-  "Ant_08": {
-    "id": 33,
-    "zone": 11,
-    "actualSceneName": "Ant_08"
-  },
-  "Ant_09": {
-    "id": 34,
-    "zone": 11,
-    "actualSceneName": "Ant_09"
-  },
-  "Ant_14": {
-    "id": 35,
-    "zone": 11,
-    "actualSceneName": "Ant_14"
-  },
-  "Ant_17": {
-    "id": 36,
-    "zone": 11,
-    "actualSceneName": "Ant_17"
-  },
-  "Ant_19": {
-    "id": 37,
-    "zone": 11,
-    "actualSceneName": "Ant_19"
-  },
-  "Ant_20": {
-    "id": 38,
-    "zone": 11,
-    "actualSceneName": "Ant_20"
-  },
-  "Ant_20_top": {
-    "id": 39,
-    "zone": null,
-    "actualSceneName": "Ant_20"
-  },
-  "Ant_21": {
-    "id": 40,
-    "zone": 11,
-    "actualSceneName": "Ant_21"
-  },
-  "Ant_Merchant": {
-    "id": 41,
-    "zone": 11,
-    "actualSceneName": "Ant_Merchant"
-  },
-  "Ant_Merchant_left": {
-    "id": 42,
-    "zone": null,
-    "actualSceneName": "Ant_Merchant"
-  },
-  "Ant_Merchant_mid": {
-    "id": 43,
-    "zone": null,
-    "actualSceneName": "Ant_Merchant"
-  },
-  "Ant_Queen": {
-    "id": 44,
-    "zone": 16,
-    "actualSceneName": "Ant_Queen"
-  },
-  "Aqueduct_01": {
-    "id": 45,
-    "zone": 38,
-    "actualSceneName": "Aqueduct_01"
-  },
-  "Aqueduct_02": {
-    "id": 46,
-    "zone": 38,
-    "actualSceneName": "Aqueduct_02"
-  },
-  "Aqueduct_02_right": {
-    "id": 47,
-    "zone": null,
-    "actualSceneName": "Aqueduct_02"
-  },
-  "Aqueduct_03": {
-    "id": 48,
-    "zone": 38,
-    "actualSceneName": "Aqueduct_03"
-  },
-  "Aqueduct_04": {
-    "id": 49,
-    "zone": 38,
-    "actualSceneName": "Aqueduct_04"
-  },
-  "Aqueduct_04_bottom": {
-    "id": 50,
-    "zone": null,
-    "actualSceneName": "Aqueduct_04"
-  },
-  "Aqueduct_04_right": {
-    "id": 51,
-    "zone": null,
-    "actualSceneName": "Aqueduct_04"
-  },
-  "Aqueduct_05": {
-    "id": 52,
-    "zone": 38,
-    "actualSceneName": "Aqueduct_05"
-  },
-  "Aqueduct_05_caravan": {
-    "id": 53,
-    "zone": null,
-    "actualSceneName": "Aqueduct_05_caravan"
-  },
-  "Aqueduct_05_festival": {
-    "id": 54,
-    "zone": null,
-    "actualSceneName": "Aqueduct_05_festival"
-  },
-  "Aqueduct_05_pre": {
-    "id": 55,
-    "zone": null,
-    "actualSceneName": "Aqueduct_05_pre"
-  },
-  "Aqueduct_05_top": {
-    "id": 56,
-    "zone": null,
-    "actualSceneName": "Aqueduct_05"
-  },
-  "Aqueduct_06": {
-    "id": 57,
-    "zone": 38,
-    "actualSceneName": "Aqueduct_06"
-  },
-  "Aqueduct_06_left": {
-    "id": 58,
-    "zone": null,
-    "actualSceneName": "Aqueduct_06"
-  },
-  "Aqueduct_06_top": {
-    "id": 59,
-    "zone": null,
-    "actualSceneName": "Aqueduct_06"
-  },
-  "Aqueduct_07": {
-    "id": 60,
-    "zone": 38,
-    "actualSceneName": "Aqueduct_07"
-  },
-  "Aqueduct_07_top": {
-    "id": 61,
-    "zone": null,
-    "actualSceneName": "Aqueduct_07"
-  },
-  "Aqueduct_08": {
-    "id": 62,
-    "zone": 38,
-    "actualSceneName": "Aqueduct_08"
-  },
-  "Arborium_01": {
-    "id": 63,
-    "zone": 6,
-    "actualSceneName": "Arborium_01"
-  },
-  "Arborium_01_bot_left": {
-    "id": 64,
-    "zone": null,
-    "actualSceneName": "Arborium_01"
-  },
-  "Arborium_01_top": {
-    "id": 65,
-    "zone": null,
-    "actualSceneName": "Arborium_01"
-  },
-  "Arborium_01_top_2": {
-    "id": 66,
-    "zone": null,
-    "actualSceneName": "Arborium_01"
-  },
-  "Arborium_02": {
-    "id": 67,
-    "zone": 6,
-    "actualSceneName": "Arborium_02"
-  },
-  "Arborium_03": {
-    "id": 68,
-    "zone": 6,
-    "actualSceneName": "Arborium_03"
-  },
-  "Arborium_03_top": {
-    "id": 69,
-    "zone": null,
-    "actualSceneName": "Arborium_03"
-  },
-  "Arborium_04": {
-    "id": 70,
-    "zone": 28,
-    "actualSceneName": "Arborium_04"
-  },
-  "Arborium_05": {
-    "id": 71,
-    "zone": 6,
-    "actualSceneName": "Arborium_05"
-  },
-  "Arborium_06": {
-    "id": 72,
-    "zone": 6,
-    "actualSceneName": "Arborium_06"
-  },
-  "Arborium_07": {
-    "id": 73,
-    "zone": 6,
-    "actualSceneName": "Arborium_07"
-  },
-  "Arborium_07b": {
-    "id": 74,
-    "zone": null,
-    "actualSceneName": "Arborium_07"
-  },
-  "Arborium_08": {
-    "id": 75,
-    "zone": 6,
-    "actualSceneName": "Arborium_08"
-  },
-  "Arborium_09": {
-    "id": 76,
-    "zone": 6,
-    "actualSceneName": "Arborium_09"
-  },
-  "Arborium_10": {
-    "id": 77,
-    "zone": 6,
-    "actualSceneName": "Arborium_10"
-  },
-  "Arborium_11": {
-    "id": 78,
-    "zone": 6,
-    "actualSceneName": "Arborium_11"
-  },
-  "Arborium_11_mid": {
-    "id": 79,
-    "zone": null,
-    "actualSceneName": "Arborium_11"
-  },
-  "Arborium_11_right": {
-    "id": 80,
-    "zone": null,
-    "actualSceneName": "Arborium_11"
-  },
-  "Arborium_Tube": {
-    "id": 81,
-    "zone": 6,
-    "actualSceneName": "Arborium_Tube"
-  },
-  "Aspid_01": {
-    "id": 82,
-    "zone": 13,
-    "actualSceneName": "Aspid_01"
-  },
-  "Aspid_01_bot": {
-    "id": 83,
-    "zone": null,
-    "actualSceneName": "Aspid_01"
-  },
-  "Aspid_01_mid": {
-    "id": 84,
-    "zone": null,
-    "actualSceneName": "Aspid_01"
-  },
-  "Aspid_01_top": {
-    "id": 85,
-    "zone": null,
-    "actualSceneName": "Aspid_01"
-  },
-  "Bellshrine": {
-    "id": 86,
-    "zone": 2,
-    "actualSceneName": "Bellshrine"
-  },
-  "Bellshrine_02": {
-    "id": 87,
-    "zone": 3,
-    "actualSceneName": "Bellshrine_02"
-  },
-  "Bellshrine_03": {
-    "id": 88,
-    "zone": 4,
-    "actualSceneName": "Bellshrine_03"
-  },
-  "Bellshrine_05": {
-    "id": 89,
-    "zone": 15,
-    "actualSceneName": "Bellshrine_05"
-  },
-  "Bellshrine_Coral": {
-    "id": 90,
-    "zone": 32,
-    "actualSceneName": "Bellshrine_Coral"
-  },
-  "Bellshrine_Enclave": {
-    "id": 91,
-    "zone": 6,
-    "actualSceneName": "Bellshrine_Enclave"
-  },
-  "bellshrine_lore_additive": {
-    "id": 92,
-    "zone": null,
-    "actualSceneName": "bellshrine_lore_additive"
-  },
-  "Belltown": {
-    "id": 93,
-    "zone": 10,
-    "actualSceneName": "Belltown"
-  },
-  "Belltown_04": {
-    "id": 94,
-    "zone": 10,
-    "actualSceneName": "Belltown_04"
-  },
-  "Belltown_06": {
-    "id": 95,
-    "zone": 10,
-    "actualSceneName": "Belltown_06"
-  },
-  "Belltown_06_fisher": {
-    "id": 96,
-    "zone": null,
-    "actualSceneName": "Belltown_06"
-  },
-  "Belltown_06_top": {
-    "id": 97,
-    "zone": null,
-    "actualSceneName": "Belltown_06"
-  },
-  "Belltown_07": {
-    "id": 98,
-    "zone": 10,
-    "actualSceneName": "Belltown_07"
-  },
-  "Belltown_08": {
-    "id": 99,
-    "zone": 35,
-    "actualSceneName": "Belltown_08"
-  },
-  "Belltown_basement": {
-    "id": 100,
-    "zone": 10,
-    "actualSceneName": "Belltown_basement"
-  },
-  "Belltown_basement_03": {
-    "id": 101,
-    "zone": 10,
-    "actualSceneName": "Belltown_basement_03"
-  },
-  "Belltown_basement_03_2": {
-    "id": 102,
-    "zone": null,
-    "actualSceneName": "Belltown_basement_03"
-  },
-  "Belltown_basement_03_3": {
-    "id": 103,
-    "zone": null,
-    "actualSceneName": "Belltown_basement_03"
-  },
-  "Belltown_basement_03_4": {
-    "id": 104,
-    "zone": null,
-    "actualSceneName": "Belltown_basement_03"
-  },
-  "belltown_cutscene": {
-    "id": 105,
-    "zone": null,
-    "actualSceneName": "belltown_cutscene"
-  },
-  "belltown_room_doctor": {
-    "id": 106,
-    "zone": 3,
-    "actualSceneName": "belltown_room_doctor"
-  },
-  "Belltown_Room_Fisher": {
-    "id": 107,
-    "zone": null,
-    "actualSceneName": "Belltown"
-  },
-  "Belltown_Room_pinsmith": {
-    "id": 108,
-    "zone": 10,
-    "actualSceneName": "Belltown_Room_pinsmith"
-  },
-  "Belltown_Room_Relic": {
-    "id": 109,
-    "zone": 10,
-    "actualSceneName": "Belltown_Room_Relic"
-  },
-  "Belltown_Room_shellwood": {
-    "id": 110,
-    "zone": 10,
-    "actualSceneName": "Belltown_Room_shellwood"
-  },
-  "Belltown_Room_Spare": {
-    "id": 111,
-    "zone": 10,
-    "actualSceneName": "Belltown_Room_Spare"
-  },
-  "Belltown_Shrine": {
-    "id": 112,
-    "zone": 10,
-    "actualSceneName": "Belltown_Shrine"
-  },
-  "Bellway_01": {
-    "id": 113,
-    "zone": 12,
-    "actualSceneName": "Bellway_01"
-  },
-  "Bellway_01_boss": {
-    "id": 114,
-    "zone": null,
-    "actualSceneName": "Bellway_01_boss"
-  },
-  "Bellway_02": {
-    "id": 115,
-    "zone": 15,
-    "actualSceneName": "Bellway_02"
-  },
-  "Bellway_02_boss": {
-    "id": 116,
-    "zone": null,
-    "actualSceneName": "Bellway_02_boss"
-  },
-  "Bellway_02_left": {
-    "id": 117,
-    "zone": null,
-    "actualSceneName": "Bellway_02"
-  },
-  "Bellway_03": {
-    "id": 118,
-    "zone": 16,
-    "actualSceneName": "Bellway_03"
-  },
-  "Bellway_03_b": {
-    "id": 119,
-    "zone": null,
-    "actualSceneName": "Bellway_03"
-  },
-  "Bellway_03_boss": {
-    "id": 120,
-    "zone": null,
-    "actualSceneName": "Bellway_03_boss"
-  },
-  "Bellway_03_c": {
-    "id": 121,
-    "zone": null,
-    "actualSceneName": "Bellway_03"
-  },
-  "Bellway_04": {
-    "id": 122,
-    "zone": 3,
-    "actualSceneName": "Bellway_04"
-  },
-  "Bellway_04_boss": {
-    "id": 123,
-    "zone": null,
-    "actualSceneName": "Bellway_04_boss"
-  },
-  "Bellway_04_bot_left": {
-    "id": 124,
-    "zone": null,
-    "actualSceneName": "Bellway_04"
-  },
-  "Bellway_08": {
-    "id": 125,
-    "zone": 32,
-    "actualSceneName": "Bellway_08"
-  },
-  "Bellway_Aqueduct": {
-    "id": 126,
-    "zone": 38,
-    "actualSceneName": "Bellway_Aqueduct"
-  },
-  "Bellway_Aqueduct_top": {
-    "id": 127,
-    "zone": null,
-    "actualSceneName": "Bellway_Aqueduct"
-  },
-  "bellway_centipede_additive": {
-    "id": 128,
-    "zone": null,
-    "actualSceneName": "bellway_centipede_additive"
-  },
-  "bellway_centipede_arena": {
-    "id": 129,
-    "zone": 10,
-    "actualSceneName": "bellway_centipede_arena"
-  },
-  "Bellway_City": {
-    "id": 130,
-    "zone": 6,
-    "actualSceneName": "Bellway_City"
-  },
-  "Bellway_City_b": {
-    "id": 131,
-    "zone": null,
-    "actualSceneName": "Bellway_City"
-  },
-  "Bellway_Peak": {
-    "id": 132,
-    "zone": 24,
-    "actualSceneName": "Bellway_Peak"
-  },
-  "Bellway_Peak_02": {
-    "id": 133,
-    "zone": 24,
-    "actualSceneName": "Bellway_Peak_02"
-  },
-  "Bellway_Shadow": {
-    "id": 134,
-    "zone": 36,
-    "actualSceneName": "Bellway_Shadow"
-  },
-  "Bone_01": {
-    "id": 135,
-    "zone": 2,
-    "actualSceneName": "Bone_01"
-  },
-  "Bone_01b": {
-    "id": 136,
-    "zone": 19,
-    "actualSceneName": "Bone_01b"
-  },
-  "Bone_01c": {
-    "id": 137,
-    "zone": 2,
-    "actualSceneName": "Bone_01c"
-  },
-  "Bone_01c_bot": {
-    "id": 138,
-    "zone": null,
-    "actualSceneName": "Bone_01c"
-  },
-  "Bone_01c_top": {
-    "id": 139,
-    "zone": null,
-    "actualSceneName": "Bone_01c"
-  },
-  "Bone_02": {
-    "id": 140,
-    "zone": 2,
-    "actualSceneName": "Bone_02"
-  },
-  "Bone_03": {
-    "id": 141,
-    "zone": 2,
-    "actualSceneName": "Bone_03"
-  },
-  "Bone_03_top": {
-    "id": 142,
-    "zone": null,
-    "actualSceneName": "Bone_03"
-  },
-  "Bone_04": {
-    "id": 143,
-    "zone": 19,
-    "actualSceneName": "Bone_04"
-  },
-  "Bone_05": {
-    "id": 144,
-    "zone": 2,
-    "actualSceneName": "Bone_05"
-  },
-  "Bone_05_bellway": {
-    "id": 145,
-    "zone": null,
-    "actualSceneName": "Bone_05_bellway"
-  },
-  "Bone_05_boss": {
-    "id": 146,
-    "zone": null,
-    "actualSceneName": "Bone_05_boss"
-  },
-  "Bone_05_right": {
-    "id": 147,
-    "zone": null,
-    "actualSceneName": "Bone_05"
-  },
-  "Bone_05b": {
-    "id": 148,
-    "zone": 19,
-    "actualSceneName": "Bone_05b"
-  },
-  "Bone_05b_right": {
-    "id": 149,
-    "zone": null,
-    "actualSceneName": "Bone_05b"
-  },
-  "Bone_06": {
-    "id": 150,
-    "zone": 2,
-    "actualSceneName": "Bone_06"
-  },
-  "Bone_06_join": {
-    "id": 151,
-    "zone": null,
-    "actualSceneName": "Bone_06"
-  },
-  "Bone_07": {
-    "id": 152,
-    "zone": 2,
-    "actualSceneName": "Bone_07"
-  },
-  "Bone_07_bot_left": {
-    "id": 153,
-    "zone": null,
-    "actualSceneName": "Bone_07"
-  },
-  "Bone_08": {
-    "id": 154,
-    "zone": 2,
-    "actualSceneName": "Bone_08"
-  },
-  "Bone_09": {
-    "id": 155,
-    "zone": 2,
-    "actualSceneName": "Bone_09"
-  },
-  "Bone_10": {
-    "id": 156,
-    "zone": 2,
-    "actualSceneName": "Bone_10"
-  },
-  "Bone_10_act3_bench": {
-    "id": 157,
-    "zone": null,
-    "actualSceneName": "Bone_10"
-  },
-  "Bone_10_left": {
-    "id": 158,
-    "zone": null,
-    "actualSceneName": "Bone_10"
-  },
-  "Bone_11": {
-    "id": 159,
-    "zone": 19,
-    "actualSceneName": "Bone_11"
-  },
-  "Bone_11b": {
-    "id": 160,
-    "zone": 19,
-    "actualSceneName": "Bone_11b"
-  },
-  "Bone_12": {
-    "id": 161,
-    "zone": 2,
-    "actualSceneName": "Bone_12"
-  },
-  "Bone_14": {
-    "id": 162,
-    "zone": 2,
-    "actualSceneName": "Bone_14"
-  },
-  "Bone_15": {
-    "id": 163,
-    "zone": 2,
-    "actualSceneName": "Bone_15"
-  },
-  "Bone_16": {
-    "id": 164,
-    "zone": 2,
-    "actualSceneName": "Bone_16"
-  },
-  "Bone_16_right": {
-    "id": 165,
-    "zone": null,
-    "actualSceneName": "Bone_16"
-  },
-  "Bone_16_top": {
-    "id": 166,
-    "zone": null,
-    "actualSceneName": "Bone_16"
-  },
-  "Bone_17": {
-    "id": 167,
-    "zone": 2,
-    "actualSceneName": "Bone_17"
-  },
-  "Bone_18": {
-    "id": 168,
-    "zone": 2,
-    "actualSceneName": "Bone_18"
-  },
-  "Bone_18_top": {
-    "id": 169,
-    "zone": null,
-    "actualSceneName": "Bone_18"
-  },
-  "Bone_19": {
-    "id": 170,
-    "zone": 2,
-    "actualSceneName": "Bone_19"
-  },
-  "Bone_East_01": {
-    "id": 171,
-    "zone": 15,
-    "actualSceneName": "Bone_East_01"
-  },
-  "Bone_East_02": {
-    "id": 172,
-    "zone": 16,
-    "actualSceneName": "Bone_East_02"
-  },
-  "Bone_East_02b": {
-    "id": 173,
-    "zone": 16,
-    "actualSceneName": "Bone_East_02b"
-  },
-  "Bone_East_03": {
-    "id": 174,
-    "zone": 16,
-    "actualSceneName": "Bone_East_03"
-  },
-  "Bone_East_03_right": {
-    "id": 175,
-    "zone": null,
-    "actualSceneName": "Bone_East_03"
-  },
-  "Bone_East_04": {
-    "id": 176,
-    "zone": 16,
-    "actualSceneName": "Bone_East_04"
-  },
-  "Bone_East_04_bot": {
-    "id": 177,
-    "zone": null,
-    "actualSceneName": "Bone_East_04"
-  },
-  "Bone_East_04b": {
-    "id": 178,
-    "zone": 16,
-    "actualSceneName": "Bone_East_04b"
-  },
-  "Bone_East_04c": {
-    "id": 179,
-    "zone": 16,
-    "actualSceneName": "Bone_East_04c"
-  },
-  "Bone_East_05": {
-    "id": 180,
-    "zone": 16,
-    "actualSceneName": "Bone_East_05"
-  },
-  "Bone_East_07": {
-    "id": 181,
-    "zone": 16,
-    "actualSceneName": "Bone_East_07"
-  },
-  "Bone_East_07_bot": {
-    "id": 182,
-    "zone": null,
-    "actualSceneName": "Bone_East_07"
-  },
-  "Bone_East_07_top": {
-    "id": 183,
-    "zone": null,
-    "actualSceneName": "Bone_East_07"
-  },
-  "Bone_East_08": {
-    "id": 184,
-    "zone": 16,
-    "actualSceneName": "Bone_East_08"
-  },
-  "Bone_East_08_boss_beastfly": {
-    "id": 185,
-    "zone": null,
-    "actualSceneName": "Bone_East_08_boss_beastfly"
-  },
-  "Bone_East_08_boss_golem": {
-    "id": 186,
-    "zone": null,
-    "actualSceneName": "Bone_East_08_boss_golem"
-  },
-  "Bone_East_08_boss_golem_rest": {
-    "id": 187,
-    "zone": null,
-    "actualSceneName": "Bone_East_08_boss_golem_rest"
-  },
-  "Bone_East_08_right": {
-    "id": 188,
-    "zone": null,
-    "actualSceneName": "Bone_East_08"
-  },
-  "Bone_East_09": {
-    "id": 189,
-    "zone": 16,
-    "actualSceneName": "Bone_East_09"
-  },
-  "Bone_East_09b": {
-    "id": 190,
-    "zone": 16,
-    "actualSceneName": "Bone_East_09b"
-  },
-  "Bone_East_10": {
-    "id": 191,
-    "zone": 16,
-    "actualSceneName": "Bone_East_10"
-  },
-  "Bone_East_10_Church": {
-    "id": 192,
-    "zone": 16,
-    "actualSceneName": "Bone_East_10_Church"
-  },
-  "Bone_East_10_Gate": {
-    "id": 193,
-    "zone": null,
-    "actualSceneName": "Bone_East_10"
-  },
-  "Bone_East_10_Room": {
-    "id": 194,
-    "zone": 16,
-    "actualSceneName": "Bone_East_10_Room"
-  },
-  "Bone_East_10_top_right": {
-    "id": 195,
-    "zone": null,
-    "actualSceneName": "Bone_East_10"
-  },
-  "Bone_East_11": {
-    "id": 196,
-    "zone": 16,
-    "actualSceneName": "Bone_East_11"
-  },
-  "Bone_East_11_connection": {
-    "id": 197,
-    "zone": null,
-    "actualSceneName": "Bone_East_11"
-  },
-  "Bone_East_11_top": {
-    "id": 198,
-    "zone": null,
-    "actualSceneName": "Bone_East_11"
-  },
-  "Bone_East_12": {
-    "id": 199,
-    "zone": 15,
-    "actualSceneName": "Bone_East_12"
-  },
-  "Bone_East_13": {
-    "id": 200,
-    "zone": 15,
-    "actualSceneName": "Bone_East_13"
-  },
-  "Bone_East_14": {
-    "id": 201,
-    "zone": 16,
-    "actualSceneName": "Bone_East_14"
-  },
-  "Bone_East_14_2": {
-    "id": 202,
-    "zone": null,
-    "actualSceneName": "Bone_East_14"
-  },
-  "Bone_East_14b": {
-    "id": 203,
-    "zone": 16,
-    "actualSceneName": "Bone_East_14b"
-  },
-  "Bone_East_14b_lava_room": {
-    "id": 204,
-    "zone": null,
-    "actualSceneName": "Bone_East_14b"
-  },
-  "Bone_East_15": {
-    "id": 205,
-    "zone": 16,
-    "actualSceneName": "Bone_East_15"
-  },
-  "Bone_East_15_bot": {
-    "id": 206,
-    "zone": null,
-    "actualSceneName": "Bone_East_15"
-  },
-  "Bone_East_15_left": {
-    "id": 207,
-    "zone": null,
-    "actualSceneName": "Bone_East_15"
-  },
-  "Bone_East_15_top_right": {
-    "id": 208,
-    "zone": null,
-    "actualSceneName": "Bone_East_15"
-  },
-  "Bone_East_16": {
-    "id": 209,
-    "zone": 16,
-    "actualSceneName": "Bone_East_16"
-  },
-  "Bone_East_17": {
-    "id": 210,
-    "zone": 16,
-    "actualSceneName": "Bone_East_17"
-  },
-  "Bone_East_17_top": {
-    "id": 211,
-    "zone": null,
-    "actualSceneName": "Bone_East_17"
-  },
-  "Bone_East_17b": {
-    "id": 212,
-    "zone": 16,
-    "actualSceneName": "Bone_East_17b"
-  },
-  "Bone_East_17b_join": {
-    "id": 213,
-    "zone": null,
-    "actualSceneName": "Bone_East_17b"
-  },
-  "Bone_East_18": {
-    "id": 214,
-    "zone": 16,
-    "actualSceneName": "Bone_East_18"
-  },
-  "Bone_East_18b": {
-    "id": 215,
-    "zone": 16,
-    "actualSceneName": "Bone_East_18b"
-  },
-  "Bone_East_18b_bot": {
-    "id": 216,
-    "zone": null,
-    "actualSceneName": "Bone_East_18b"
-  },
-  "Bone_East_18b_bot_left": {
-    "id": 217,
-    "zone": null,
-    "actualSceneName": "Bone_East_18b"
-  },
-  "Bone_East_18b_right": {
-    "id": 218,
-    "zone": null,
-    "actualSceneName": "Bone_East_18b"
-  },
-  "Bone_East_18c": {
-    "id": 219,
-    "zone": 16,
-    "actualSceneName": "Bone_East_18c"
-  },
-  "Bone_East_20": {
-    "id": 220,
-    "zone": 16,
-    "actualSceneName": "Bone_East_20"
-  },
-  "Bone_East_21": {
-    "id": 221,
-    "zone": 16,
-    "actualSceneName": "Bone_East_21"
-  },
-  "Bone_East_22": {
-    "id": 222,
-    "zone": 16,
-    "actualSceneName": "Bone_East_22"
-  },
-  "Bone_East_24": {
-    "id": 223,
-    "zone": 16,
-    "actualSceneName": "Bone_East_24"
-  },
-  "Bone_East_25": {
-    "id": 224,
-    "zone": 16,
-    "actualSceneName": "Bone_East_25"
-  },
-  "Bone_East_25_right": {
-    "id": 225,
-    "zone": null,
-    "actualSceneName": "Bone_East_25"
-  },
-  "Bone_East_26": {
-    "id": 226,
-    "zone": 16,
-    "actualSceneName": "Bone_East_26"
-  },
-  "Bone_East_27": {
-    "id": 227,
-    "zone": 16,
-    "actualSceneName": "Bone_East_27"
-  },
-  "Bone_East_27_top": {
-    "id": 228,
-    "zone": null,
-    "actualSceneName": "Bone_East_27"
-  },
-  "Bone_East_LavaChallenge": {
-    "id": 229,
-    "zone": 16,
-    "actualSceneName": "Bone_East_LavaChallenge"
-  },
-  "Bone_East_Umbrella": {
-    "id": 230,
-    "zone": 16,
-    "actualSceneName": "Bone_East_Umbrella"
-  },
-  "Bone_East_Weavehome": {
-    "id": 231,
-    "zone": 17,
-    "actualSceneName": "Bone_East_Weavehome"
-  },
-  "Bone_East_Weavehome_Basement": {
-    "id": 232,
-    "zone": null,
-    "actualSceneName": "Bone_East_Weavehome"
-  },
-  "Bone_Steel_Servant": {
-    "id": 233,
-    "zone": 2,
-    "actualSceneName": "Bone_Steel_Servant"
-  },
-  "Bonegrave": {
-    "id": 234,
-    "zone": 12,
-    "actualSceneName": "Bonegrave"
-  },
-  "Bonegrave_Gate": {
-    "id": 235,
-    "zone": null,
-    "actualSceneName": "Bonegrave"
-  },
-  "Bonegrave_top": {
-    "id": 236,
-    "zone": null,
-    "actualSceneName": "Bonegrave"
-  },
-  "Bonetown": {
-    "id": 237,
-    "zone": 12,
-    "actualSceneName": "Bonetown"
-  },
-  "Bonetown_boss": {
-    "id": 238,
-    "zone": null,
-    "actualSceneName": "Bonetown_boss"
-  },
-  "Bonetown_top_left": {
-    "id": 239,
-    "zone": null,
-    "actualSceneName": "Bonetown"
-  },
-  "Bonetown_top_right": {
-    "id": 240,
-    "zone": null,
-    "actualSceneName": "Bonetown"
-  },
-  "Chapel_Wanderer": {
-    "id": 241,
-    "zone": 17,
-    "actualSceneName": "Chapel_Wanderer"
-  },
-  "cinematic_ending_a": {
-    "id": 242,
-    "zone": 0,
-    "actualSceneName": "cinematic_ending_a"
-  },
-  "cinematic_ending_b": {
-    "id": 243,
-    "zone": 0,
-    "actualSceneName": "cinematic_ending_b"
-  },
-  "cinematic_ending_c": {
-    "id": 244,
-    "zone": 0,
-    "actualSceneName": "cinematic_ending_c"
-  },
-  "cinematic_ending_d": {
-    "id": 245,
-    "zone": 0,
-    "actualSceneName": "cinematic_ending_d"
-  },
-  "cinematic_ending_e": {
-    "id": 246,
-    "zone": 0,
-    "actualSceneName": "cinematic_ending_e"
-  },
-  "cinematic_mrmushroom": {
-    "id": 247,
-    "zone": 0,
-    "actualSceneName": "cinematic_mrmushroom"
-  },
-  "cinematic_stag_travel": {
-    "id": 248,
-    "zone": 0,
-    "actualSceneName": "cinematic_stag_travel"
-  },
-  "city_lace_cutscene": {
-    "id": 249,
-    "zone": null,
-    "actualSceneName": "city_lace_cutscene"
-  },
-  "Clover_01": {
-    "id": 250,
-    "zone": 21,
-    "actualSceneName": "Clover_01"
-  },
-  "Clover_01b": {
-    "id": 251,
-    "zone": 21,
-    "actualSceneName": "Clover_01b"
-  },
-  "Clover_02c": {
-    "id": 252,
-    "zone": 21,
-    "actualSceneName": "Clover_02c"
-  },
-  "Clover_02c_bot_right": {
-    "id": 253,
-    "zone": null,
-    "actualSceneName": "Clover_02c"
-  },
-  "Clover_02c_top": {
-    "id": 254,
-    "zone": null,
-    "actualSceneName": "Clover_02c"
-  },
-  "Clover_03": {
-    "id": 255,
-    "zone": 21,
-    "actualSceneName": "Clover_03"
-  },
-  "Clover_04b": {
-    "id": 256,
-    "zone": 21,
-    "actualSceneName": "Clover_04b"
-  },
-  "Clover_04b_top": {
-    "id": 257,
-    "zone": null,
-    "actualSceneName": "Clover_04b"
-  },
-  "Clover_05c": {
-    "id": 258,
-    "zone": 21,
-    "actualSceneName": "Clover_05c"
-  },
-  "Clover_06": {
-    "id": 259,
-    "zone": 21,
-    "actualSceneName": "Clover_06"
-  },
-  "Clover_10": {
-    "id": 260,
-    "zone": 21,
-    "actualSceneName": "Clover_10"
-  },
-  "Clover_10_web": {
-    "id": 261,
-    "zone": 21,
-    "actualSceneName": "Clover_10_web"
-  },
-  "Clover_11": {
-    "id": 262,
-    "zone": 21,
-    "actualSceneName": "Clover_11"
-  },
-  "Clover_16": {
-    "id": 263,
-    "zone": 21,
-    "actualSceneName": "Clover_16"
-  },
-  "Clover_16_left": {
-    "id": 264,
-    "zone": null,
-    "actualSceneName": "Clover_16"
-  },
-  "Clover_16_right": {
-    "id": 265,
-    "zone": null,
-    "actualSceneName": "Clover_16"
-  },
-  "Clover_18": {
-    "id": 266,
-    "zone": 21,
-    "actualSceneName": "Clover_18"
-  },
-  "Clover_18_right": {
-    "id": 267,
-    "zone": null,
-    "actualSceneName": "Clover_18"
-  },
-  "Clover_19": {
-    "id": 268,
-    "zone": 21,
-    "actualSceneName": "Clover_19"
-  },
-  "Clover_20": {
-    "id": 269,
-    "zone": 21,
-    "actualSceneName": "Clover_20"
-  },
-  "Clover_21": {
-    "id": 270,
-    "zone": 21,
-    "actualSceneName": "Clover_21"
-  },
-  "Cog_04": {
-    "id": 271,
-    "zone": 23,
-    "actualSceneName": "Cog_04"
-  },
-  "Cog_05": {
-    "id": 272,
-    "zone": 23,
-    "actualSceneName": "Cog_05"
-  },
-  "Cog_05_left": {
-    "id": 273,
-    "zone": null,
-    "actualSceneName": "Cog_05"
-  },
-  "Cog_06": {
-    "id": 274,
-    "zone": 6,
-    "actualSceneName": "Cog_06"
-  },
-  "Cog_07": {
-    "id": 275,
-    "zone": 6,
-    "actualSceneName": "Cog_07"
-  },
-  "Cog_07b": {
-    "id": 276,
-    "zone": null,
-    "actualSceneName": "Cog_07"
-  },
-  "Cog_08": {
-    "id": 277,
-    "zone": 23,
-    "actualSceneName": "Cog_08"
-  },
-  "Cog_08_Destroyed": {
-    "id": 278,
-    "zone": null,
-    "actualSceneName": "Cog_08"
-  },
-  "Cog_08_top": {
-    "id": 279,
-    "zone": null,
-    "actualSceneName": "Cog_08"
-  },
-  "Cog_09": {
-    "id": 280,
-    "zone": 23,
-    "actualSceneName": "Cog_09"
-  },
-  "Cog_09_Destroyed": {
-    "id": 281,
-    "zone": 23,
-    "actualSceneName": "Cog_09_Destroyed"
-  },
-  "Cog_09_Destroyed_bot_right": {
-    "id": 282,
-    "zone": null,
-    "actualSceneName": "Cog_09_Destroyed"
-  },
-  "Cog_10": {
-    "id": 283,
-    "zone": 23,
-    "actualSceneName": "Cog_10"
-  },
-  "Cog_10_Destroyed": {
-    "id": 284,
-    "zone": 23,
-    "actualSceneName": "Cog_10_Destroyed"
-  },
-  "Cog_11_Destroyed": {
-    "id": 285,
-    "zone": null,
-    "actualSceneName": null
-  },
-  "Cog_Bench": {
-    "id": 286,
-    "zone": 23,
-    "actualSceneName": "Cog_Bench"
-  },
-  "Cog_Dancers": {
-    "id": 287,
-    "zone": 23,
-    "actualSceneName": "Cog_Dancers"
-  },
-  "Cog_Dancers_boss": {
-    "id": 288,
-    "zone": null,
-    "actualSceneName": "Cog_Dancers_boss"
-  },
-  "Cog_Dancers_Destroyed": {
-    "id": 289,
-    "zone": null,
-    "actualSceneName": "Cog_Dancers"
-  },
-  "Cog_Dancers_Top": {
-    "id": 290,
-    "zone": null,
-    "actualSceneName": "Cog_Dancers"
-  },
-  "Cog_Pass": {
-    "id": 291,
-    "zone": 23,
-    "actualSceneName": "Cog_Pass"
-  },
-  "Coral_02": {
-    "id": 292,
-    "zone": 32,
-    "actualSceneName": "Coral_02"
-  },
-  "Coral_03": {
-    "id": 293,
-    "zone": 32,
-    "actualSceneName": "Coral_03"
-  },
-  "Coral_10": {
-    "id": 294,
-    "zone": 6,
-    "actualSceneName": "Coral_10"
-  },
-  "Coral_11": {
-    "id": 295,
-    "zone": 32,
-    "actualSceneName": "Coral_11"
-  },
-  "Coral_11b": {
-    "id": 296,
-    "zone": 32,
-    "actualSceneName": "Coral_11b"
-  },
-  "Coral_12": {
-    "id": 297,
-    "zone": 32,
-    "actualSceneName": "Coral_12"
-  },
-  "Coral_19": {
-    "id": 298,
-    "zone": 5,
-    "actualSceneName": "Coral_19"
-  },
-  "Coral_19_base": {
-    "id": 299,
-    "zone": null,
-    "actualSceneName": "Coral_19"
-  },
-  "Coral_19_left": {
-    "id": 300,
-    "zone": null,
-    "actualSceneName": "Coral_19"
-  },
-  "Coral_19b": {
-    "id": 301,
-    "zone": 32,
-    "actualSceneName": "Coral_19b"
-  },
-  "Coral_23": {
-    "id": 302,
-    "zone": 41,
-    "actualSceneName": "Coral_23"
-  },
-  "Coral_23_secret": {
-    "id": 303,
-    "zone": null,
-    "actualSceneName": "Coral_23"
-  },
-  "Coral_24": {
-    "id": 304,
-    "zone": 41,
-    "actualSceneName": "Coral_24"
-  },
-  "Coral_25": {
-    "id": 305,
-    "zone": 32,
-    "actualSceneName": "Coral_25"
-  },
-  "Coral_26": {
-    "id": 306,
-    "zone": 41,
-    "actualSceneName": "Coral_26"
-  },
-  "Coral_27": {
-    "id": 307,
-    "zone": 41,
-    "actualSceneName": "Coral_27"
-  },
-  "Coral_28": {
-    "id": 308,
-    "zone": 41,
-    "actualSceneName": "Coral_28"
-  },
-  "Coral_29": {
-    "id": 309,
-    "zone": 41,
-    "actualSceneName": "Coral_29"
-  },
-  "Coral_32": {
-    "id": 310,
-    "zone": 32,
-    "actualSceneName": "Coral_32"
-  },
-  "Coral_32_arrow": {
-    "id": 311,
-    "zone": null,
-    "actualSceneName": "Coral_32"
-  },
-  "Coral_33": {
-    "id": 312,
-    "zone": 32,
-    "actualSceneName": "Coral_33"
-  },
-  "Coral_34": {
-    "id": 313,
-    "zone": 32,
-    "actualSceneName": "Coral_34"
-  },
-  "Coral_34_mid": {
-    "id": 314,
-    "zone": null,
-    "actualSceneName": "Coral_34"
-  },
-  "Coral_34_top": {
-    "id": 315,
-    "zone": null,
-    "actualSceneName": "Coral_34"
-  },
-  "Coral_35": {
-    "id": 316,
-    "zone": 32,
-    "actualSceneName": "Coral_35"
-  },
-  "Coral_35_secret": {
-    "id": 317,
-    "zone": null,
-    "actualSceneName": "Coral_35"
-  },
-  "Coral_35_top_break_base": {
-    "id": 318,
-    "zone": null,
-    "actualSceneName": "Coral_35"
-  },
-  "Coral_35_top_break_base_bottom": {
-    "id": 319,
-    "zone": null,
-    "actualSceneName": "Coral_35"
-  },
-  "Coral_35b": {
-    "id": 320,
-    "zone": 41,
-    "actualSceneName": "Coral_35b"
-  },
-  "Coral_35b_secret": {
-    "id": 321,
-    "zone": null,
-    "actualSceneName": "Coral_35b"
-  },
-  "Coral_36": {
-    "id": 322,
-    "zone": 32,
-    "actualSceneName": "Coral_36"
-  },
-  "Coral_37": {
-    "id": 323,
-    "zone": 32,
-    "actualSceneName": "Coral_37"
-  },
-  "Coral_37_join": {
-    "id": 324,
-    "zone": null,
-    "actualSceneName": "Coral_37"
-  },
-  "Coral_37_right": {
-    "id": 325,
-    "zone": null,
-    "actualSceneName": "Coral_37"
-  },
-  "Coral_38": {
-    "id": 326,
-    "zone": 41,
-    "actualSceneName": "Coral_38"
-  },
-  "Coral_38_bot": {
-    "id": 327,
-    "zone": null,
-    "actualSceneName": "Coral_38"
-  },
-  "Coral_39": {
-    "id": 328,
-    "zone": 41,
-    "actualSceneName": "Coral_39"
-  },
-  "Coral_40": {
-    "id": 329,
-    "zone": 41,
-    "actualSceneName": "Coral_40"
-  },
-  "Coral_41": {
-    "id": 330,
-    "zone": 41,
-    "actualSceneName": "Coral_41"
-  },
-  "Coral_42": {
-    "id": 331,
-    "zone": 32,
-    "actualSceneName": "Coral_42"
-  },
-  "Coral_42_top": {
-    "id": 332,
-    "zone": null,
-    "actualSceneName": "Coral_42"
-  },
-  "Coral_43": {
-    "id": 333,
-    "zone": 32,
-    "actualSceneName": "Coral_43"
-  },
-  "Coral_44": {
-    "id": 334,
-    "zone": 41,
-    "actualSceneName": "Coral_44"
-  },
-  "Coral_Judge_Arena": {
-    "id": 335,
-    "zone": 32,
-    "actualSceneName": "Coral_Judge_Arena"
-  },
-  "Coral_Tower_01": {
-    "id": 336,
-    "zone": 32,
-    "actualSceneName": "Coral_Tower_01"
-  },
-  "Coral_Tower_01_Bench": {
-    "id": 337,
-    "zone": null,
-    "actualSceneName": "Coral_Tower_01"
-  },
-  "Cradle_01": {
-    "id": 338,
-    "zone": 29,
-    "actualSceneName": "Cradle_01"
-  },
-  "Cradle_01_Destroyed": {
-    "id": 339,
-    "zone": 29,
-    "actualSceneName": "Cradle_01_Destroyed"
-  },
-  "Cradle_02": {
-    "id": 340,
-    "zone": 29,
-    "actualSceneName": "Cradle_02"
-  },
-  "Cradle_02b": {
-    "id": 341,
-    "zone": 29,
-    "actualSceneName": "Cradle_02b"
-  },
-  "Cradle_03": {
-    "id": 342,
-    "zone": 29,
-    "actualSceneName": "Cradle_03"
-  },
-  "Cradle_03_Destroyed": {
-    "id": 343,
-    "zone": 29,
-    "actualSceneName": "Cradle_03_Destroyed"
-  },
-  "Cradle_Destroyed_Challenge_01": {
-    "id": 344,
-    "zone": 39,
-    "actualSceneName": "Cradle_Destroyed_Challenge_01"
-  },
-  "Cradle_Destroyed_Challenge_02": {
-    "id": 345,
-    "zone": 29,
-    "actualSceneName": "Cradle_Destroyed_Challenge_02"
-  },
-  "cradle_destroyed_challenge_bench": {
-    "id": 346,
-    "zone": 29,
-    "actualSceneName": "cradle_destroyed_challenge_bench"
-  },
-  "Crawl_01": {
-    "id": 347,
-    "zone": 34,
-    "actualSceneName": "Crawl_01"
-  },
-  "Crawl_02": {
-    "id": 348,
-    "zone": 34,
-    "actualSceneName": "Crawl_02"
-  },
-  "Crawl_02_top": {
-    "id": 349,
-    "zone": null,
-    "actualSceneName": "Crawl_02"
-  },
-  "Crawl_03": {
-    "id": 350,
-    "zone": 34,
-    "actualSceneName": "Crawl_03"
-  },
-  "Crawl_03b": {
-    "id": 351,
-    "zone": 34,
-    "actualSceneName": "Crawl_03b"
-  },
-  "Crawl_04": {
-    "id": 352,
-    "zone": 2,
-    "actualSceneName": "Crawl_04"
-  },
-  "Crawl_05": {
-    "id": 353,
-    "zone": 34,
-    "actualSceneName": "Crawl_05"
-  },
-  "Crawl_06": {
-    "id": 354,
-    "zone": 34,
-    "actualSceneName": "Crawl_06"
-  },
-  "Crawl_07": {
-    "id": 355,
-    "zone": 34,
-    "actualSceneName": "Crawl_07"
-  },
-  "Crawl_08": {
-    "id": 356,
-    "zone": 34,
-    "actualSceneName": "Crawl_08"
-  },
-  "Crawl_09": {
-    "id": 357,
-    "zone": 34,
-    "actualSceneName": "Crawl_09"
-  },
-  "Crawl_10": {
-    "id": 358,
-    "zone": 34,
-    "actualSceneName": "Crawl_10"
-  },
-  "demoend": {
-    "id": 359,
-    "zone": 0,
-    "actualSceneName": "demoend"
-  },
-  "demostart": {
-    "id": 360,
-    "zone": 0,
-    "actualSceneName": "demostart"
-  },
-  "Dock_01": {
-    "id": 361,
-    "zone": 15,
-    "actualSceneName": "Dock_01"
-  },
-  "Dock_02": {
-    "id": 362,
-    "zone": 15,
-    "actualSceneName": "Dock_02"
-  },
-  "Dock_02_bot_left": {
-    "id": 363,
-    "zone": null,
-    "actualSceneName": "Dock_02"
-  },
-  "Dock_02_shortcut": {
-    "id": 364,
-    "zone": null,
-    "actualSceneName": "Dock_02"
-  },
-  "Dock_02_top": {
-    "id": 365,
-    "zone": null,
-    "actualSceneName": "Dock_02"
-  },
-  "Dock_02b": {
-    "id": 366,
-    "zone": 15,
-    "actualSceneName": "Dock_02b"
-  },
-  "Dock_02b_bot": {
-    "id": 367,
-    "zone": null,
-    "actualSceneName": "Dock_02b"
-  },
-  "Dock_02b_gate": {
-    "id": 368,
-    "zone": null,
-    "actualSceneName": "Dock_02b"
-  },
-  "Dock_02b_top": {
-    "id": 369,
-    "zone": null,
-    "actualSceneName": "Dock_02b"
-  },
-  "Dock_03": {
-    "id": 370,
-    "zone": 15,
-    "actualSceneName": "Dock_03"
-  },
-  "Dock_03_top_right": {
-    "id": 371,
-    "zone": null,
-    "actualSceneName": "Dock_03"
-  },
-  "Dock_03b": {
-    "id": 372,
-    "zone": 16,
-    "actualSceneName": "Dock_03b"
-  },
-  "Dock_03b_2": {
-    "id": 373,
-    "zone": null,
-    "actualSceneName": "Dock_03b"
-  },
-  "Dock_03b_left": {
-    "id": 374,
-    "zone": null,
-    "actualSceneName": "Dock_03b"
-  },
-  "Dock_03c": {
-    "id": 375,
-    "zone": 15,
-    "actualSceneName": "Dock_03c"
-  },
-  "Dock_03c_2": {
-    "id": 376,
-    "zone": null,
-    "actualSceneName": "Dock_03c"
-  },
-  "Dock_03d": {
-    "id": 377,
-    "zone": 15,
-    "actualSceneName": "Dock_03d"
-  },
-  "Dock_04": {
-    "id": 378,
-    "zone": 15,
-    "actualSceneName": "Dock_04"
-  },
-  "Dock_04_sauna_exit": {
-    "id": 379,
-    "zone": null,
-    "actualSceneName": "Dock_04"
-  },
-  "Dock_05": {
-    "id": 380,
-    "zone": 15,
-    "actualSceneName": "Dock_05"
-  },
-  "Dock_06_Church": {
-    "id": 381,
-    "zone": 15,
-    "actualSceneName": "Dock_06_Church"
-  },
-  "Dock_06_Church_Bench": {
-    "id": 382,
-    "zone": null,
-    "actualSceneName": "Dock_06_Church"
-  },
-  "Dock_06_Church_bottom": {
-    "id": 383,
-    "zone": null,
-    "actualSceneName": "Dock_06_Church"
-  },
-  "Dock_08": {
-    "id": 384,
-    "zone": 15,
-    "actualSceneName": "Dock_08"
-  },
-  "Dock_08_2": {
-    "id": 385,
-    "zone": null,
-    "actualSceneName": "Dock_08"
-  },
-  "Dock_09": {
-    "id": 386,
-    "zone": 15,
-    "actualSceneName": "Dock_09"
-  },
-  "Dock_10": {
-    "id": 387,
-    "zone": 15,
-    "actualSceneName": "Dock_10"
-  },
-  "Dock_11": {
-    "id": 388,
-    "zone": 15,
-    "actualSceneName": "Dock_11"
-  },
-  "Dock_12": {
-    "id": 389,
-    "zone": 15,
-    "actualSceneName": "Dock_12"
-  },
-  "Dock_12_top": {
-    "id": 390,
-    "zone": null,
-    "actualSceneName": "Dock_12"
-  },
-  "Dock_13": {
-    "id": 391,
-    "zone": 15,
-    "actualSceneName": "Dock_13"
-  },
-  "Dock_14": {
-    "id": 392,
-    "zone": 15,
-    "actualSceneName": "Dock_14"
-  },
-  "Dock_15": {
-    "id": 393,
-    "zone": 15,
-    "actualSceneName": "Dock_15"
-  },
-  "Dock_15_secret": {
-    "id": 394,
-    "zone": null,
-    "actualSceneName": "Dock_15"
-  },
-  "Dock_16": {
-    "id": 395,
-    "zone": 15,
-    "actualSceneName": "Dock_16"
-  },
-  "Dust_01": {
-    "id": 396,
-    "zone": 9,
-    "actualSceneName": "Dust_01"
-  },
-  "Dust_02": {
-    "id": 397,
-    "zone": 9,
-    "actualSceneName": "Dust_02"
-  },
-  "Dust_03": {
-    "id": 398,
-    "zone": 9,
-    "actualSceneName": "Dust_03"
-  },
-  "Dust_04": {
-    "id": 399,
-    "zone": 9,
-    "actualSceneName": "Dust_04"
-  },
-  "Dust_05": {
-    "id": 400,
-    "zone": 9,
-    "actualSceneName": "Dust_05"
-  },
-  "Dust_05_2": {
-    "id": 401,
-    "zone": null,
-    "actualSceneName": "Dust_05"
-  },
-  "Dust_06": {
-    "id": 402,
-    "zone": 9,
-    "actualSceneName": "Dust_06"
-  },
-  "Dust_06_right": {
-    "id": 403,
-    "zone": null,
-    "actualSceneName": "Dust_06"
-  },
-  "Dust_06_top": {
-    "id": 404,
-    "zone": null,
-    "actualSceneName": "Dust_06"
-  },
-  "Dust_09": {
-    "id": 405,
-    "zone": 9,
-    "actualSceneName": "Dust_09"
-  },
-  "Dust_09_into_citadel": {
-    "id": 406,
-    "zone": null,
-    "actualSceneName": "Dust_09"
-  },
-  "Dust_09_right": {
-    "id": 407,
-    "zone": null,
-    "actualSceneName": "Dust_09"
-  },
-  "Dust_09_top_2": {
-    "id": 408,
-    "zone": null,
-    "actualSceneName": "Dust_09"
-  },
-  "Dust_10": {
-    "id": 409,
-    "zone": 9,
-    "actualSceneName": "Dust_10"
-  },
-  "Dust_10b": {
-    "id": 410,
-    "zone": null,
-    "actualSceneName": "Dust_10"
-  },
-  "Dust_11": {
-    "id": 411,
-    "zone": 9,
-    "actualSceneName": "Dust_11"
-  },
-  "Dust_11_bot": {
-    "id": 412,
-    "zone": null,
-    "actualSceneName": "Dust_11"
-  },
-  "Dust_11_left": {
-    "id": 413,
-    "zone": null,
-    "actualSceneName": "Dust_11"
-  },
-  "Dust_11_right": {
-    "id": 414,
-    "zone": null,
-    "actualSceneName": "Dust_11"
-  },
-  "Dust_12": {
-    "id": 415,
-    "zone": 9,
-    "actualSceneName": "Dust_12"
-  },
-  "Dust_Barb": {
-    "id": 416,
-    "zone": 9,
-    "actualSceneName": "Dust_Barb"
-  },
-  "Dust_Chef": {
-    "id": 417,
-    "zone": 9,
-    "actualSceneName": "Dust_Chef"
-  },
-  "Dust_Chef_b": {
-    "id": 418,
-    "zone": null,
-    "actualSceneName": "Dust_Chef"
-  },
-  "Dust_Maze_01": {
-    "id": 419,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_01"
-  },
-  "Dust_Maze_02": {
-    "id": 420,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_02"
-  },
-  "Dust_Maze_03": {
-    "id": 421,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_03"
-  },
-  "Dust_Maze_04": {
-    "id": 422,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_04"
-  },
-  "Dust_Maze_05": {
-    "id": 423,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_05"
-  },
-  "Dust_Maze_06": {
-    "id": 424,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_06"
-  },
-  "Dust_Maze_07": {
-    "id": 425,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_07"
-  },
-  "Dust_Maze_08": {
-    "id": 426,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_08"
-  },
-  "Dust_Maze_08_completed": {
-    "id": 427,
-    "zone": 9,
-    "actualSceneName": "Dust_Maze_08_completed"
-  },
-  "Dust_Maze_09_entrance": {
-    "id": 428,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_09_entrance"
-  },
-  "Dust_Maze_crossing": {
-    "id": 429,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_crossing"
-  },
-  "Dust_Maze_Last_Hall": {
-    "id": 430,
-    "zone": 25,
-    "actualSceneName": "Dust_Maze_Last_Hall"
-  },
-  "Dust_Shack": {
-    "id": 431,
-    "zone": 9,
-    "actualSceneName": "Dust_Shack"
-  },
-  "DustMazeCompassMarker": {
-    "id": 432,
-    "zone": null,
-    "actualSceneName": null
-  },
-  "Enclave_bridge_left": {
-    "id": 433,
-    "zone": null,
-    "actualSceneName": "Song_Enclave"
-  },
-  "end_credits": {
-    "id": 434,
-    "zone": 29,
-    "actualSceneName": "end_credits"
-  },
-  "end_credits_scroll": {
-    "id": 435,
-    "zone": 29,
-    "actualSceneName": "end_credits_scroll"
-  },
-  "end_game_completion": {
-    "id": 436,
-    "zone": 29,
-    "actualSceneName": "end_game_completion"
-  },
-  "Greymoor_01": {
-    "id": 437,
-    "zone": 3,
-    "actualSceneName": "Greymoor_01"
-  },
-  "Greymoor_01_bot": {
-    "id": 438,
-    "zone": null,
-    "actualSceneName": "Greymoor_01"
-  },
-  "Greymoor_01_top": {
-    "id": 439,
-    "zone": null,
-    "actualSceneName": "Greymoor_01"
-  },
-  "Greymoor_02": {
-    "id": 440,
-    "zone": 3,
-    "actualSceneName": "Greymoor_02"
-  },
-  "Greymoor_02_mid": {
-    "id": 441,
-    "zone": null,
-    "actualSceneName": "Greymoor_02"
-  },
-  "Greymoor_02_top": {
-    "id": 442,
-    "zone": null,
-    "actualSceneName": "Greymoor_02"
-  },
-  "Greymoor_02_top_right": {
-    "id": 443,
-    "zone": null,
-    "actualSceneName": "Greymoor_02"
-  },
-  "Greymoor_03": {
-    "id": 444,
-    "zone": 3,
-    "actualSceneName": "Greymoor_03"
-  },
-  "Greymoor_03_mid_right": {
-    "id": 445,
-    "zone": null,
-    "actualSceneName": "Greymoor_03"
-  },
-  "Greymoor_03_top": {
-    "id": 446,
-    "zone": null,
-    "actualSceneName": "Greymoor_03"
-  },
-  "Greymoor_04": {
-    "id": 447,
-    "zone": 3,
-    "actualSceneName": "Greymoor_04"
-  },
-  "Greymoor_04_mid": {
-    "id": 448,
-    "zone": null,
-    "actualSceneName": "Greymoor_04"
-  },
-  "Greymoor_04_top": {
-    "id": 449,
-    "zone": null,
-    "actualSceneName": "Greymoor_04"
-  },
-  "Greymoor_05": {
-    "id": 450,
-    "zone": 3,
-    "actualSceneName": "Greymoor_05"
-  },
-  "Greymoor_05_boss": {
-    "id": 451,
-    "zone": null,
-    "actualSceneName": "Greymoor_05_boss"
-  },
-  "Greymoor_06": {
-    "id": 452,
-    "zone": 3,
-    "actualSceneName": "Greymoor_06"
-  },
-  "Greymoor_06_mid_top": {
-    "id": 453,
-    "zone": null,
-    "actualSceneName": "Greymoor_06"
-  },
-  "Greymoor_06_top": {
-    "id": 454,
-    "zone": null,
-    "actualSceneName": "Greymoor_06"
-  },
-  "Greymoor_06_top_left": {
-    "id": 455,
-    "zone": null,
-    "actualSceneName": "Greymoor_06"
-  },
-  "Greymoor_07": {
-    "id": 456,
-    "zone": 3,
-    "actualSceneName": "Greymoor_07"
-  },
-  "Greymoor_08": {
-    "id": 457,
-    "zone": 3,
-    "actualSceneName": "Greymoor_08"
-  },
-  "Greymoor_08_boss": {
-    "id": 458,
-    "zone": null,
-    "actualSceneName": "Greymoor_08_boss"
-  },
-  "Greymoor_08_caravan": {
-    "id": 459,
-    "zone": null,
-    "actualSceneName": "Greymoor_08_caravan"
-  },
-  "Greymoor_08_mapper": {
-    "id": 460,
-    "zone": null,
-    "actualSceneName": "Greymoor_08_mapper"
-  },
-  "Greymoor_10": {
-    "id": 461,
-    "zone": 3,
-    "actualSceneName": "Greymoor_10"
-  },
-  "Greymoor_11": {
-    "id": 462,
-    "zone": 3,
-    "actualSceneName": "Greymoor_11"
-  },
-  "Greymoor_11_top": {
-    "id": 463,
-    "zone": null,
-    "actualSceneName": "Greymoor_11"
-  },
-  "Greymoor_12": {
-    "id": 464,
-    "zone": 3,
-    "actualSceneName": "Greymoor_12"
-  },
-  "Greymoor_13": {
-    "id": 465,
-    "zone": 3,
-    "actualSceneName": "Greymoor_13"
-  },
-  "Greymoor_15": {
-    "id": 466,
-    "zone": 3,
-    "actualSceneName": "Greymoor_15"
-  },
-  "Greymoor_15_mid": {
-    "id": 467,
-    "zone": null,
-    "actualSceneName": "Greymoor_15"
-  },
-  "Greymoor_15_top": {
-    "id": 468,
-    "zone": null,
-    "actualSceneName": "Greymoor_15"
-  },
-  "Greymoor_15b": {
-    "id": 469,
-    "zone": 3,
-    "actualSceneName": "Greymoor_15b"
-  },
-  "Greymoor_15b_2": {
-    "id": 470,
-    "zone": null,
-    "actualSceneName": "Greymoor_15b"
-  },
-  "Greymoor_15b_bot_right": {
-    "id": 471,
-    "zone": null,
-    "actualSceneName": "Greymoor_15b"
-  },
-  "Greymoor_16": {
-    "id": 472,
-    "zone": 3,
-    "actualSceneName": "Greymoor_16"
-  },
-  "Greymoor_17": {
-    "id": 473,
-    "zone": 9,
-    "actualSceneName": "Greymoor_17"
-  },
-  "Greymoor_17_bot": {
-    "id": 474,
-    "zone": null,
-    "actualSceneName": "Greymoor_17"
-  },
-  "Greymoor_20b": {
-    "id": 475,
-    "zone": 3,
-    "actualSceneName": "Greymoor_20b"
-  },
-  "Greymoor_20c": {
-    "id": 476,
-    "zone": 3,
-    "actualSceneName": "Greymoor_20c"
-  },
-  "Greymoor_21": {
-    "id": 477,
-    "zone": 3,
-    "actualSceneName": "Greymoor_21"
-  },
-  "Greymoor_22": {
-    "id": 478,
-    "zone": 3,
-    "actualSceneName": "Greymoor_22"
-  },
-  "Greymoor_24": {
-    "id": 479,
-    "zone": 3,
-    "actualSceneName": "Greymoor_24"
-  },
-  "Halfway_01": {
-    "id": 480,
-    "zone": 3,
-    "actualSceneName": "Halfway_01"
-  },
-  "Hang_01": {
-    "id": 481,
-    "zone": 27,
-    "actualSceneName": "Hang_01"
-  },
-  "Hang_01_2": {
-    "id": 482,
-    "zone": null,
-    "actualSceneName": "Hang_01"
-  },
-  "Hang_02": {
-    "id": 483,
-    "zone": 27,
-    "actualSceneName": "Hang_02"
-  },
-  "Hang_03": {
-    "id": 484,
-    "zone": 27,
-    "actualSceneName": "Hang_03"
-  },
-  "Hang_03_top": {
-    "id": 485,
-    "zone": 27,
-    "actualSceneName": "Hang_03_top"
-  },
-  "Hang_04": {
-    "id": 486,
-    "zone": 27,
-    "actualSceneName": "Hang_04"
-  },
-  "Hang_04_boss": {
-    "id": 487,
-    "zone": null,
-    "actualSceneName": "Hang_04_boss"
-  },
-  "Hang_06": {
-    "id": 488,
-    "zone": 27,
-    "actualSceneName": "Hang_06"
-  },
-  "Hang_06_bank": {
-    "id": 489,
-    "zone": 27,
-    "actualSceneName": "Hang_06_bank"
-  },
-  "Hang_06b": {
-    "id": 490,
-    "zone": 27,
-    "actualSceneName": "Hang_06b"
-  },
-  "Hang_07": {
-    "id": 491,
-    "zone": 6,
-    "actualSceneName": "Hang_07"
-  },
-  "Hang_08": {
-    "id": 492,
-    "zone": 27,
-    "actualSceneName": "Hang_08"
-  },
-  "Hang_08_bot_right": {
-    "id": 493,
-    "zone": null,
-    "actualSceneName": "Hang_08"
-  },
-  "Hang_09": {
-    "id": 494,
-    "zone": 27,
-    "actualSceneName": "Hang_09"
-  },
-  "Hang_10": {
-    "id": 495,
-    "zone": 27,
-    "actualSceneName": "Hang_10"
-  },
-  "Hang_12": {
-    "id": 496,
-    "zone": 27,
-    "actualSceneName": "Hang_12"
-  },
-  "Hang_13": {
-    "id": 497,
-    "zone": 27,
-    "actualSceneName": "Hang_13"
-  },
-  "Hang_14": {
-    "id": 498,
-    "zone": 27,
-    "actualSceneName": "Hang_14"
-  },
-  "Hang_15": {
-    "id": 499,
-    "zone": 27,
-    "actualSceneName": "Hang_15"
-  },
-  "Hang_16": {
-    "id": 500,
-    "zone": 27,
-    "actualSceneName": "Hang_16"
-  },
-  "Hang_17b": {
-    "id": 501,
-    "zone": 27,
-    "actualSceneName": "Hang_17b"
-  },
-  "last_dive": {
-    "id": 502,
-    "zone": 37,
-    "actualSceneName": "last_dive"
-  },
-  "last_dive_return": {
-    "id": 503,
-    "zone": 37,
-    "actualSceneName": "last_dive_return"
-  },
-  "Library_01": {
-    "id": 504,
-    "zone": 20,
-    "actualSceneName": "Library_01"
-  },
-  "Library_01_bot": {
-    "id": 505,
-    "zone": null,
-    "actualSceneName": "Library_01"
-  },
-  "Library_02": {
-    "id": 506,
-    "zone": 20,
-    "actualSceneName": "Library_02"
-  },
-  "Library_02_bottom": {
-    "id": 507,
-    "zone": null,
-    "actualSceneName": "Library_02"
-  },
-  "Library_02_top": {
-    "id": 508,
-    "zone": null,
-    "actualSceneName": "Library_02"
-  },
-  "Library_03": {
-    "id": 509,
-    "zone": 20,
-    "actualSceneName": "Library_03"
-  },
-  "Library_03_left": {
-    "id": 510,
-    "zone": null,
-    "actualSceneName": "Library_03"
-  },
-  "Library_03_right": {
-    "id": 511,
-    "zone": null,
-    "actualSceneName": "Library_03"
-  },
-  "Library_03_top": {
-    "id": 512,
-    "zone": null,
-    "actualSceneName": "Library_03"
-  },
-  "Library_03_tunnel": {
-    "id": 513,
-    "zone": null,
-    "actualSceneName": "Library_03"
-  },
-  "Library_04": {
-    "id": 514,
-    "zone": 20,
-    "actualSceneName": "Library_04"
-  },
-  "Library_04 _bot": {
-    "id": 515,
-    "zone": null,
-    "actualSceneName": "Library_04"
-  },
-  "Library_04_center": {
-    "id": 516,
-    "zone": null,
-    "actualSceneName": "Library_04"
-  },
-  "Library_04_top": {
-    "id": 517,
-    "zone": null,
-    "actualSceneName": "Library_04"
-  },
-  "Library_04_top_enclave": {
-    "id": 518,
-    "zone": null,
-    "actualSceneName": "Library_04"
-  },
-  "Library_04_top_right": {
-    "id": 519,
-    "zone": null,
-    "actualSceneName": "Library_04"
-  },
-  "Library_05": {
-    "id": 520,
-    "zone": 20,
-    "actualSceneName": "Library_05"
-  },
-  "Library_05_2": {
-    "id": 521,
-    "zone": null,
-    "actualSceneName": "Library_05"
-  },
-  "Library_05_3": {
-    "id": 522,
-    "zone": null,
-    "actualSceneName": "Library_05"
-  },
-  "Library_06": {
-    "id": 523,
-    "zone": 20,
-    "actualSceneName": "Library_06"
-  },
-  "Library_06_top_right": {
-    "id": 524,
-    "zone": null,
-    "actualSceneName": "Library_06"
-  },
-  "Library_07": {
-    "id": 525,
-    "zone": 20,
-    "actualSceneName": "Library_07"
-  },
-  "Library_08": {
-    "id": 526,
-    "zone": 20,
-    "actualSceneName": "Library_08"
-  },
-  "Library_08_right": {
-    "id": 527,
-    "zone": null,
-    "actualSceneName": "Library_08"
-  },
-  "Library_09": {
-    "id": 528,
-    "zone": 6,
-    "actualSceneName": "Library_09"
-  },
-  "Library_09_mid": {
-    "id": 529,
-    "zone": null,
-    "actualSceneName": "Library_09"
-  },
-  "Library_09_top": {
-    "id": 530,
-    "zone": null,
-    "actualSceneName": "Library_09"
-  },
-  "Library_10": {
-    "id": 531,
-    "zone": 20,
-    "actualSceneName": "Library_10"
-  },
-  "Library_10_top": {
-    "id": 532,
-    "zone": null,
-    "actualSceneName": "Library_10"
-  },
-  "Library_11": {
-    "id": 533,
-    "zone": 20,
-    "actualSceneName": "Library_11"
-  },
-  "Library_11_2": {
-    "id": 534,
-    "zone": null,
-    "actualSceneName": "Library_11"
-  },
-  "Library_11_bot": {
-    "id": 535,
-    "zone": null,
-    "actualSceneName": "Library_11"
-  },
-  "Library_11_shaft": {
-    "id": 536,
-    "zone": null,
-    "actualSceneName": "Library_11"
-  },
-  "Library_11b": {
-    "id": 537,
-    "zone": 9,
-    "actualSceneName": "Library_11b"
-  },
-  "Library_11b_bot": {
-    "id": 538,
-    "zone": null,
-    "actualSceneName": "Library_11b"
-  },
-  "Library_12": {
-    "id": 539,
-    "zone": 20,
-    "actualSceneName": "Library_12"
-  },
-  "Library_12_2": {
-    "id": 540,
-    "zone": null,
-    "actualSceneName": "Library_12"
-  },
-  "Library_12_3": {
-    "id": 541,
-    "zone": null,
-    "actualSceneName": "Library_12"
-  },
-  "Library_12_4": {
-    "id": 542,
-    "zone": null,
-    "actualSceneName": "Library_12"
-  },
-  "Library_12_shortcut": {
-    "id": 543,
-    "zone": null,
-    "actualSceneName": "Library_12"
-  },
-  "Library_12b": {
-    "id": 544,
-    "zone": 20,
-    "actualSceneName": "Library_12b"
-  },
-  "Library_13": {
-    "id": 545,
-    "zone": 6,
-    "actualSceneName": "Library_13"
-  },
-  "Library_13_right": {
-    "id": 546,
-    "zone": null,
-    "actualSceneName": "Library_13"
-  },
-  "Library_13_stage": {
-    "id": 547,
-    "zone": null,
-    "actualSceneName": "Library_13"
-  },
-  "Library_13b": {
-    "id": 548,
-    "zone": 20,
-    "actualSceneName": "Library_13b"
-  },
-  "Library_14": {
-    "id": 549,
-    "zone": 20,
-    "actualSceneName": "Library_14"
-  },
-  "Library_15": {
-    "id": 550,
-    "zone": 20,
-    "actualSceneName": "Library_15"
-  },
-  "Library_16": {
-    "id": 551,
-    "zone": 20,
-    "actualSceneName": "Library_16"
-  },
-  "memory_ant_queen": {
-    "id": 552,
-    "zone": 33,
-    "actualSceneName": "memory_ant_queen"
-  },
-  "memory_coral_tower": {
-    "id": 553,
-    "zone": 33,
-    "actualSceneName": "memory_coral_tower"
-  },
-  "memory_first_sinner": {
-    "id": 554,
-    "zone": 33,
-    "actualSceneName": "memory_first_sinner"
-  },
-  "memory_needolin": {
-    "id": 555,
-    "zone": 33,
-    "actualSceneName": "memory_needolin"
-  },
-  "memory_red": {
-    "id": 556,
-    "zone": 33,
-    "actualSceneName": "memory_red"
-  },
-  "memory_silk_heart_bellbeast": {
-    "id": 557,
-    "zone": 33,
-    "actualSceneName": "memory_silk_heart_bellbeast"
-  },
-  "memory_silk_heart_lacetower": {
-    "id": 558,
-    "zone": 33,
-    "actualSceneName": "memory_silk_heart_lacetower"
-  },
-  "memory_silk_heart_wardboss": {
-    "id": 559,
-    "zone": 33,
-    "actualSceneName": "memory_silk_heart_wardboss"
-  },
-  "menu_credits": {
-    "id": 560,
-    "zone": 0,
-    "actualSceneName": "menu_credits"
-  },
-  "menu_title": {
-    "id": 561,
-    "zone": 0,
-    "actualSceneName": "menu_title"
-  },
-  "Mosstown_01": {
-    "id": 562,
-    "zone": 19,
-    "actualSceneName": "Mosstown_01"
-  },
-  "Mosstown_02": {
-    "id": 563,
-    "zone": 19,
-    "actualSceneName": "Mosstown_02"
-  },
-  "Mosstown_02_left": {
-    "id": 564,
-    "zone": null,
-    "actualSceneName": "Mosstown_02"
-  },
-  "Mosstown_02c": {
-    "id": 565,
-    "zone": 19,
-    "actualSceneName": "Mosstown_02c"
-  },
-  "Mosstown_03": {
-    "id": 566,
-    "zone": 4,
-    "actualSceneName": "Mosstown_03"
-  },
-  "Mosstown_03_bot": {
-    "id": 567,
-    "zone": null,
-    "actualSceneName": "Mosstown_03"
-  },
-  "Mosstown_03_join_left": {
-    "id": 568,
-    "zone": null,
-    "actualSceneName": "Mosstown_03"
-  },
-  "Mosstown_03_top": {
-    "id": 569,
-    "zone": null,
-    "actualSceneName": "Mosstown_03"
-  },
-  "opening_sequence": {
-    "id": 570,
-    "zone": 0,
-    "actualSceneName": "opening_sequence"
-  },
-  "opening_sequence_act3": {
-    "id": 571,
-    "zone": 0,
-    "actualSceneName": "opening_sequence_act3"
-  },
-  "Organ_01": {
-    "id": 572,
-    "zone": 6,
-    "actualSceneName": "Organ_01"
-  },
-  "Peak_01": {
-    "id": 573,
-    "zone": 24,
-    "actualSceneName": "Peak_01"
-  },
-  "Peak_01_right_mid": {
-    "id": 574,
-    "zone": null,
-    "actualSceneName": "Peak_01"
-  },
-  "Peak_01_right_top": {
-    "id": 575,
-    "zone": null,
-    "actualSceneName": "Peak_01"
-  },
-  "Peak_01_top": {
-    "id": 576,
-    "zone": null,
-    "actualSceneName": "Peak_01"
-  },
-  "Peak_02": {
-    "id": 577,
-    "zone": 24,
-    "actualSceneName": "Peak_02"
-  },
-  "Peak_02_mid": {
-    "id": 578,
-    "zone": null,
-    "actualSceneName": "Peak_02"
-  },
-  "Peak_02_top": {
-    "id": 579,
-    "zone": null,
-    "actualSceneName": "Peak_02"
-  },
-  "Peak_04": {
-    "id": 580,
-    "zone": 24,
-    "actualSceneName": "Peak_04"
-  },
-  "Peak_04c": {
-    "id": 581,
-    "zone": 24,
-    "actualSceneName": "Peak_04c"
-  },
-  "Peak_04d": {
-    "id": 582,
-    "zone": 24,
-    "actualSceneName": "Peak_04d"
-  },
-  "Peak_05": {
-    "id": 583,
-    "zone": 24,
-    "actualSceneName": "Peak_05"
-  },
-  "Peak_05_top": {
-    "id": 584,
-    "zone": null,
-    "actualSceneName": "Peak_05"
-  },
-  "Peak_05c": {
-    "id": 585,
-    "zone": 24,
-    "actualSceneName": "Peak_05c"
-  },
-  "Peak_05c_top": {
-    "id": 586,
-    "zone": null,
-    "actualSceneName": "Peak_05c"
-  },
-  "Peak_05d": {
-    "id": 587,
-    "zone": 24,
-    "actualSceneName": "Peak_05d"
-  },
-  "Peak_05e": {
-    "id": 588,
-    "zone": 24,
-    "actualSceneName": "Peak_05e"
-  },
-  "Peak_05e_top": {
-    "id": 589,
-    "zone": null,
-    "actualSceneName": "Peak_05e"
-  },
-  "Peak_06": {
-    "id": 590,
-    "zone": 24,
-    "actualSceneName": "Peak_06"
-  },
-  "Peak_06b": {
-    "id": 591,
-    "zone": 24,
-    "actualSceneName": "Peak_06b"
-  },
-  "Peak_07": {
-    "id": 592,
-    "zone": 24,
-    "actualSceneName": "Peak_07"
-  },
-  "Peak_07_bench": {
-    "id": 593,
-    "zone": null,
-    "actualSceneName": "Peak_07"
-  },
-  "Peak_07_top": {
-    "id": 594,
-    "zone": null,
-    "actualSceneName": "Peak_07"
-  },
-  "Peak_08": {
-    "id": 595,
-    "zone": 24,
-    "actualSceneName": "Peak_08"
-  },
-  "Peak_08b": {
-    "id": 596,
-    "zone": 24,
-    "actualSceneName": "Peak_08b"
-  },
-  "Peak_10": {
-    "id": 597,
-    "zone": 24,
-    "actualSceneName": "Peak_10"
-  },
-  "Peak_12": {
-    "id": 598,
-    "zone": 24,
-    "actualSceneName": "Peak_12"
-  },
-  "Peak_Mask_Maker": {
-    "id": 599,
-    "zone": 24,
-    "actualSceneName": "Peak_Mask_Maker"
-  },
-  "permadeath": {
-    "id": 600,
-    "zone": 0,
-    "actualSceneName": "permadeath"
-  },
-  "pre_menu_intro": {
-    "id": 601,
-    "zone": null,
-    "actualSceneName": "pre_menu_intro"
-  },
-  "quit_to_menu": {
-    "id": 602,
-    "zone": 0,
-    "actualSceneName": "quit_to_menu"
-  },
-  "room_caravan_interior": {
-    "id": 603,
-    "zone": 0,
-    "actualSceneName": "room_caravan_interior"
-  },
-  "room_caravan_interior_travel": {
-    "id": 604,
-    "zone": 0,
-    "actualSceneName": "room_caravan_interior_travel"
-  },
-  "room_caravan_spa": {
-    "id": 605,
-    "zone": 0,
-    "actualSceneName": "room_caravan_spa"
-  },
-  "Room_CrowCourt": {
-    "id": 606,
-    "zone": 3,
-    "actualSceneName": "Room_CrowCourt"
-  },
-  "Room_CrowCourt_02": {
-    "id": 607,
-    "zone": 3,
-    "actualSceneName": "Room_CrowCourt_02"
-  },
-  "Room_Diving_Bell": {
-    "id": 608,
-    "zone": 15,
-    "actualSceneName": "Room_Diving_Bell"
-  },
-  "Room_Diving_Bell_Abyss": {
-    "id": 609,
-    "zone": 37,
-    "actualSceneName": "Room_Diving_Bell_Abyss"
-  },
-  "Room_Diving_Bell_Abyss_Fixed": {
-    "id": 610,
-    "zone": 37,
-    "actualSceneName": "Room_Diving_Bell_Abyss_Fixed"
-  },
-  "Room_Forge": {
-    "id": 611,
-    "zone": 15,
-    "actualSceneName": "Room_Forge"
-  },
-  "Room_Forge_right": {
-    "id": 612,
-    "zone": null,
-    "actualSceneName": "Room_Forge"
-  },
-  "Room_Huntress": {
-    "id": 613,
-    "zone": 38,
-    "actualSceneName": "Room_Huntress"
-  },
-  "Room_Pinstress": {
-    "id": 614,
-    "zone": 32,
-    "actualSceneName": "Room_Pinstress"
-  },
-  "Room_Witch": {
-    "id": 615,
-    "zone": 4,
-    "actualSceneName": "Room_Witch"
-  },
-  "Shadow_01": {
-    "id": 616,
-    "zone": 9,
-    "actualSceneName": "Shadow_01"
-  },
-  "Shadow_01_top": {
-    "id": 617,
-    "zone": null,
-    "actualSceneName": "Shadow_01"
-  },
-  "Shadow_02": {
-    "id": 618,
-    "zone": 36,
-    "actualSceneName": "Shadow_02"
-  },
-  "Shadow_03": {
-    "id": 619,
-    "zone": 9,
-    "actualSceneName": "Shadow_03"
-  },
-  "Shadow_04": {
-    "id": 620,
-    "zone": 36,
-    "actualSceneName": "Shadow_04"
-  },
-  "Shadow_04_left": {
-    "id": 621,
-    "zone": null,
-    "actualSceneName": "Shadow_04"
-  },
-  "Shadow_04b": {
-    "id": 622,
-    "zone": 36,
-    "actualSceneName": "Shadow_04b"
-  },
-  "Shadow_05": {
-    "id": 623,
-    "zone": 9,
-    "actualSceneName": "Shadow_05"
-  },
-  "Shadow_08": {
-    "id": 624,
-    "zone": 36,
-    "actualSceneName": "Shadow_08"
-  },
-  "Shadow_08_left": {
-    "id": 625,
-    "zone": null,
-    "actualSceneName": "Shadow_08"
-  },
-  "Shadow_09": {
-    "id": 626,
-    "zone": 9,
-    "actualSceneName": "Shadow_09"
-  },
-  "Shadow_09_right": {
-    "id": 627,
-    "zone": null,
-    "actualSceneName": "Shadow_09"
-  },
-  "Shadow_10": {
-    "id": 628,
-    "zone": 9,
-    "actualSceneName": "Shadow_10"
-  },
-  "Shadow_10_right": {
-    "id": 629,
-    "zone": null,
-    "actualSceneName": "Shadow_10"
-  },
-  "Shadow_10_top": {
-    "id": 630,
-    "zone": null,
-    "actualSceneName": "Shadow_10"
-  },
-  "Shadow_11": {
-    "id": 631,
-    "zone": 9,
-    "actualSceneName": "Shadow_11"
-  },
-  "Shadow_11_top": {
-    "id": 632,
-    "zone": null,
-    "actualSceneName": "Shadow_11"
-  },
-  "Shadow_12": {
-    "id": 633,
-    "zone": 9,
-    "actualSceneName": "Shadow_12"
-  },
-  "Shadow_13": {
-    "id": 634,
-    "zone": 9,
-    "actualSceneName": "Shadow_13"
-  },
-  "Shadow_14": {
-    "id": 635,
-    "zone": 9,
-    "actualSceneName": "Shadow_14"
-  },
-  "Shadow_15": {
-    "id": 636,
-    "zone": 36,
-    "actualSceneName": "Shadow_15"
-  },
-  "Shadow_15_bot": {
-    "id": 637,
-    "zone": null,
-    "actualSceneName": "Shadow_15"
-  },
-  "Shadow_16": {
-    "id": 638,
-    "zone": 9,
-    "actualSceneName": "Shadow_16"
-  },
-  "Shadow_18": {
-    "id": 639,
-    "zone": 36,
-    "actualSceneName": "Shadow_18"
-  },
-  "Shadow_18_top": {
-    "id": 640,
-    "zone": null,
-    "actualSceneName": "Shadow_18"
-  },
-  "Shadow_19": {
-    "id": 641,
-    "zone": 9,
-    "actualSceneName": "Shadow_19"
-  },
-  "Shadow_20": {
-    "id": 642,
-    "zone": 9,
-    "actualSceneName": "Shadow_20"
-  },
-  "Shadow_20_bot_left": {
-    "id": 643,
-    "zone": null,
-    "actualSceneName": "Shadow_20"
-  },
-  "Shadow_20_right": {
-    "id": 644,
-    "zone": null,
-    "actualSceneName": "Shadow_20"
-  },
-  "Shadow_20_top": {
-    "id": 645,
-    "zone": null,
-    "actualSceneName": "Shadow_20"
-  },
-  "Shadow_21": {
-    "id": 646,
-    "zone": 36,
-    "actualSceneName": "Shadow_21"
-  },
-  "Shadow_22": {
-    "id": 647,
-    "zone": 9,
-    "actualSceneName": "Shadow_22"
-  },
-  "Shadow_23": {
-    "id": 648,
-    "zone": 9,
-    "actualSceneName": "Shadow_23"
-  },
-  "Shadow_24": {
-    "id": 649,
-    "zone": 36,
-    "actualSceneName": "Shadow_24"
-  },
-  "Shadow_25": {
-    "id": 650,
-    "zone": 36,
-    "actualSceneName": "Shadow_25"
-  },
-  "Shadow_26": {
-    "id": 651,
-    "zone": 9,
-    "actualSceneName": "Shadow_26"
-  },
-  "Shadow_27": {
-    "id": 652,
-    "zone": 36,
-    "actualSceneName": "Shadow_27"
-  },
-  "Shadow_27_right": {
-    "id": 653,
-    "zone": null,
-    "actualSceneName": "Shadow_27"
-  },
-  "Shadow_28": {
-    "id": 654,
-    "zone": 9,
-    "actualSceneName": "Shadow_28"
-  },
-  "Shadow_Bilehaven_Room": {
-    "id": 655,
-    "zone": 9,
-    "actualSceneName": "Shadow_Bilehaven_Room"
-  },
-  "Shadow_Weavehome": {
-    "id": 656,
-    "zone": 9,
-    "actualSceneName": "Shadow_Weavehome"
-  },
-  "Shadow_Weavehome_right": {
-    "id": 657,
-    "zone": null,
-    "actualSceneName": "Shadow_Weavehome"
-  },
-  "Shellgrave": {
-    "id": 658,
-    "zone": 4,
-    "actualSceneName": "Shellgrave"
-  },
-  "Shellwood_01": {
-    "id": 659,
-    "zone": 4,
-    "actualSceneName": "Shellwood_01"
-  },
-  "Shellwood_01b": {
-    "id": 660,
-    "zone": 4,
-    "actualSceneName": "Shellwood_01b"
-  },
-  "Shellwood_02": {
-    "id": 661,
-    "zone": 4,
-    "actualSceneName": "Shellwood_02"
-  },
-  "Shellwood_03": {
-    "id": 662,
-    "zone": 4,
-    "actualSceneName": "Shellwood_03"
-  },
-  "Shellwood_04b": {
-    "id": 663,
-    "zone": 4,
-    "actualSceneName": "Shellwood_04b"
-  },
-  "Shellwood_04c": {
-    "id": 664,
-    "zone": 4,
-    "actualSceneName": "Shellwood_04c"
-  },
-  "Shellwood_08": {
-    "id": 665,
-    "zone": 4,
-    "actualSceneName": "Shellwood_08"
-  },
-  "Shellwood_08c": {
-    "id": 666,
-    "zone": 4,
-    "actualSceneName": "Shellwood_08c"
-  },
-  "Shellwood_10": {
-    "id": 667,
-    "zone": 4,
-    "actualSceneName": "Shellwood_10"
-  },
-  "Shellwood_10_top": {
-    "id": 668,
-    "zone": null,
-    "actualSceneName": "Shellwood_10"
-  },
-  "Shellwood_11": {
-    "id": 669,
-    "zone": 4,
-    "actualSceneName": "Shellwood_11"
-  },
-  "Shellwood_11b": {
-    "id": 670,
-    "zone": 4,
-    "actualSceneName": "Shellwood_11b"
-  },
-  "shellwood_11b_memory": {
-    "id": 671,
-    "zone": 33,
-    "actualSceneName": "shellwood_11b_memory"
-  },
-  "Shellwood_13": {
-    "id": 672,
-    "zone": 4,
-    "actualSceneName": "Shellwood_13"
-  },
-  "Shellwood_13b": {
-    "id": 673,
-    "zone": null,
-    "actualSceneName": "Shellwood_13"
-  },
-  "Shellwood_14": {
-    "id": 674,
-    "zone": 4,
-    "actualSceneName": "Shellwood_14"
-  },
-  "Shellwood_15": {
-    "id": 675,
-    "zone": 4,
-    "actualSceneName": "Shellwood_15"
-  },
-  "Shellwood_16": {
-    "id": 676,
-    "zone": 4,
-    "actualSceneName": "Shellwood_16"
-  },
-  "Shellwood_18": {
-    "id": 677,
-    "zone": 4,
-    "actualSceneName": "Shellwood_18"
-  },
-  "Shellwood_19": {
-    "id": 678,
-    "zone": 4,
-    "actualSceneName": "Shellwood_19"
-  },
-  "Shellwood_20": {
-    "id": 679,
-    "zone": 4,
-    "actualSceneName": "Shellwood_20"
-  },
-  "Shellwood_22": {
-    "id": 680,
-    "zone": 4,
-    "actualSceneName": "Shellwood_22"
-  },
-  "Shellwood_22_left": {
-    "id": 681,
-    "zone": null,
-    "actualSceneName": "Shellwood_22"
-  },
-  "Shellwood_25": {
-    "id": 682,
-    "zone": 4,
-    "actualSceneName": "Shellwood_25"
-  },
-  "Shellwood_25_right": {
-    "id": 683,
-    "zone": null,
-    "actualSceneName": "Shellwood_25"
-  },
-  "Shellwood_25b": {
-    "id": 684,
-    "zone": 4,
-    "actualSceneName": "Shellwood_25b"
-  },
-  "Shellwood_26": {
-    "id": 685,
-    "zone": 4,
-    "actualSceneName": "Shellwood_26"
-  },
-  "Shellwood_26_2": {
-    "id": 686,
-    "zone": null,
-    "actualSceneName": "Shellwood_26"
-  },
-  "Shellwood_Witch": {
-    "id": 687,
-    "zone": 4,
-    "actualSceneName": "Shellwood_Witch"
-  },
-  "Slab_01": {
-    "id": 688,
-    "zone": 6,
-    "actualSceneName": "Slab_01"
-  },
-  "Slab_02": {
-    "id": 689,
-    "zone": 7,
-    "actualSceneName": "Slab_02"
-  },
-  "Slab_03": {
-    "id": 690,
-    "zone": 7,
-    "actualSceneName": "Slab_03"
-  },
-  "Slab_03_basement": {
-    "id": 691,
-    "zone": null,
-    "actualSceneName": "Slab_03"
-  },
-  "Slab_03_basement_shortcut": {
-    "id": 692,
-    "zone": null,
-    "actualSceneName": "Slab_03"
-  },
-  "Slab_03_mid": {
-    "id": 693,
-    "zone": null,
-    "actualSceneName": "Slab_03"
-  },
-  "Slab_03b": {
-    "id": 694,
-    "zone": null,
-    "actualSceneName": "Slab_03"
-  },
-  "Slab_04": {
-    "id": 695,
-    "zone": 7,
-    "actualSceneName": "Slab_04"
-  },
-  "Slab_05": {
-    "id": 696,
-    "zone": 7,
-    "actualSceneName": "Slab_05"
-  },
-  "Slab_06": {
-    "id": 697,
-    "zone": 7,
-    "actualSceneName": "Slab_06"
-  },
-  "Slab_07": {
-    "id": 698,
-    "zone": 7,
-    "actualSceneName": "Slab_07"
-  },
-  "Slab_08": {
-    "id": 699,
-    "zone": 7,
-    "actualSceneName": "Slab_08"
-  },
-  "Slab_08_top": {
-    "id": 700,
-    "zone": null,
-    "actualSceneName": "Slab_08"
-  },
-  "Slab_10b": {
-    "id": 701,
-    "zone": 7,
-    "actualSceneName": "Slab_10b"
-  },
-  "Slab_10c": {
-    "id": 702,
-    "zone": 7,
-    "actualSceneName": "Slab_10c"
-  },
-  "Slab_12": {
-    "id": 703,
-    "zone": 7,
-    "actualSceneName": "Slab_12"
-  },
-  "Slab_13": {
-    "id": 704,
-    "zone": 7,
-    "actualSceneName": "Slab_13"
-  },
-  "Slab_13_2": {
-    "id": 705,
-    "zone": null,
-    "actualSceneName": "Slab_13"
-  },
-  "Slab_13_3": {
-    "id": 706,
-    "zone": null,
-    "actualSceneName": "Slab_13"
-  },
-  "Slab_14": {
-    "id": 707,
-    "zone": 7,
-    "actualSceneName": "Slab_14"
-  },
-  "Slab_14_left": {
-    "id": 708,
-    "zone": null,
-    "actualSceneName": "Slab_14"
-  },
-  "Slab_15": {
-    "id": 709,
-    "zone": 7,
-    "actualSceneName": "Slab_15"
-  },
-  "Slab_15_left": {
-    "id": 710,
-    "zone": null,
-    "actualSceneName": "Slab_15"
-  },
-  "Slab_16": {
-    "id": 711,
-    "zone": 7,
-    "actualSceneName": "Slab_16"
-  },
-  "Slab_16_b": {
-    "id": 712,
-    "zone": null,
-    "actualSceneName": "Slab_16"
-  },
-  "Slab_16_bench": {
-    "id": 713,
-    "zone": null,
-    "actualSceneName": "Slab_16"
-  },
-  "Slab_16_d": {
-    "id": 714,
-    "zone": null,
-    "actualSceneName": "Slab_16"
-  },
-  "Slab_16_e": {
-    "id": 715,
-    "zone": null,
-    "actualSceneName": "Slab_16"
-  },
-  "Slab_16_mid": {
-    "id": 716,
-    "zone": null,
-    "actualSceneName": "Slab_16"
-  },
-  "Slab_16b": {
-    "id": 717,
-    "zone": 7,
-    "actualSceneName": "Slab_16b"
-  },
-  "Slab_17": {
-    "id": 718,
-    "zone": 7,
-    "actualSceneName": "Slab_17"
-  },
-  "Slab_18": {
-    "id": 719,
-    "zone": 7,
-    "actualSceneName": "Slab_18"
-  },
-  "Slab_19b": {
-    "id": 720,
-    "zone": 7,
-    "actualSceneName": "Slab_19b"
-  },
-  "Slab_19b_top": {
-    "id": 721,
-    "zone": null,
-    "actualSceneName": "Slab_19b"
-  },
-  "Slab_20": {
-    "id": 722,
-    "zone": 7,
-    "actualSceneName": "Slab_20"
-  },
-  "Slab_20_right": {
-    "id": 723,
-    "zone": null,
-    "actualSceneName": "Slab_20"
-  },
-  "Slab_21": {
-    "id": 724,
-    "zone": 7,
-    "actualSceneName": "Slab_21"
-  },
-  "Slab_21_left": {
-    "id": 725,
-    "zone": null,
-    "actualSceneName": "Slab_21"
-  },
-  "Slab_22": {
-    "id": 726,
-    "zone": 7,
-    "actualSceneName": "Slab_22"
-  },
-  "Slab_23": {
-    "id": 727,
-    "zone": 7,
-    "actualSceneName": "Slab_23"
-  },
-  "Slab_23_bottom": {
-    "id": 728,
-    "zone": null,
-    "actualSceneName": "Slab_23"
-  },
-  "Slab_23_right": {
-    "id": 729,
-    "zone": null,
-    "actualSceneName": "Slab_23"
-  },
-  "Slab_Cell": {
-    "id": 730,
-    "zone": 7,
-    "actualSceneName": "Slab_Cell"
-  },
-  "Slab_Cell_Creature": {
-    "id": 731,
-    "zone": 7,
-    "actualSceneName": "Slab_Cell_Creature"
-  },
-  "Slab_Cell_Quiet": {
-    "id": 732,
-    "zone": 7,
-    "actualSceneName": "Slab_Cell_Quiet"
-  },
-  "Song_01": {
-    "id": 733,
-    "zone": 6,
-    "actualSceneName": "Song_01"
-  },
-  "Song_01_bot": {
-    "id": 734,
-    "zone": null,
-    "actualSceneName": "Song_01"
-  },
-  "Song_01_secret": {
-    "id": 735,
-    "zone": null,
-    "actualSceneName": "Song_01"
-  },
-  "Song_01b": {
-    "id": 736,
-    "zone": 6,
-    "actualSceneName": "Song_01b"
-  },
-  "Song_01b_left": {
-    "id": 737,
-    "zone": null,
-    "actualSceneName": "Song_01b"
-  },
-  "Song_01c": {
-    "id": 738,
-    "zone": 6,
-    "actualSceneName": "Song_01c"
-  },
-  "Song_02": {
-    "id": 739,
-    "zone": 6,
-    "actualSceneName": "Song_02"
-  },
-  "Song_03": {
-    "id": 740,
-    "zone": 6,
-    "actualSceneName": "Song_03"
-  },
-  "Song_03_top": {
-    "id": 741,
-    "zone": null,
-    "actualSceneName": "Song_03"
-  },
-  "Song_04": {
-    "id": 742,
-    "zone": 6,
-    "actualSceneName": "Song_04"
-  },
-  "Song_04_bot": {
-    "id": 743,
-    "zone": null,
-    "actualSceneName": "Song_04"
-  },
-  "Song_04_top": {
-    "id": 744,
-    "zone": null,
-    "actualSceneName": "Song_04"
-  },
-  "Song_05": {
-    "id": 745,
-    "zone": 6,
-    "actualSceneName": "Song_05"
-  },
-  "Song_07": {
-    "id": 746,
-    "zone": 6,
-    "actualSceneName": "Song_07"
-  },
-  "Song_08": {
-    "id": 747,
-    "zone": 6,
-    "actualSceneName": "Song_08"
-  },
-  "Song_09": {
-    "id": 748,
-    "zone": 6,
-    "actualSceneName": "Song_09"
-  },
-  "Song_09_2": {
-    "id": 749,
-    "zone": null,
-    "actualSceneName": "Song_09"
-  },
-  "Song_09b": {
-    "id": 750,
-    "zone": 6,
-    "actualSceneName": "Song_09b"
-  },
-  "Song_09b_top": {
-    "id": 751,
-    "zone": null,
-    "actualSceneName": "Song_09b"
-  },
-  "Song_10": {
-    "id": 752,
-    "zone": 6,
-    "actualSceneName": "Song_10"
-  },
-  "Song_10_bath": {
-    "id": 753,
-    "zone": null,
-    "actualSceneName": "Song_10"
-  },
-  "Song_10_bot": {
-    "id": 754,
-    "zone": null,
-    "actualSceneName": "Song_10"
-  },
-  "Song_10_right": {
-    "id": 755,
-    "zone": null,
-    "actualSceneName": "Song_10"
-  },
-  "Song_10_shortcut": {
-    "id": 756,
-    "zone": null,
-    "actualSceneName": "Song_10"
-  },
-  "Song_11": {
-    "id": 757,
-    "zone": 6,
-    "actualSceneName": "Song_11"
-  },
-  "Song_11_2": {
-    "id": 758,
-    "zone": null,
-    "actualSceneName": "Song_11"
-  },
-  "Song_11_3": {
-    "id": 759,
-    "zone": null,
-    "actualSceneName": "Song_11"
-  },
-  "Song_11_cap": {
-    "id": 760,
-    "zone": null,
-    "actualSceneName": "Song_11"
-  },
-  "Song_11_top": {
-    "id": 761,
-    "zone": null,
-    "actualSceneName": "Song_11"
-  },
-  "Song_12": {
-    "id": 762,
-    "zone": 6,
-    "actualSceneName": "Song_12"
-  },
-  "Song_13": {
-    "id": 763,
-    "zone": 6,
-    "actualSceneName": "Song_13"
-  },
-  "Song_14": {
-    "id": 764,
-    "zone": 6,
-    "actualSceneName": "Song_14"
-  },
-  "Song_15": {
-    "id": 765,
-    "zone": 6,
-    "actualSceneName": "Song_15"
-  },
-  "Song_15_top": {
-    "id": 766,
-    "zone": null,
-    "actualSceneName": "Song_15"
-  },
-  "Song_17": {
-    "id": 767,
-    "zone": 6,
-    "actualSceneName": "Song_17"
-  },
-  "Song_18": {
-    "id": 768,
-    "zone": 6,
-    "actualSceneName": "Song_18"
-  },
-  "Song_18_2": {
-    "id": 769,
-    "zone": null,
-    "actualSceneName": "Song_18"
-  },
-  "Song_18_3": {
-    "id": 770,
-    "zone": null,
-    "actualSceneName": "Song_18"
-  },
-  "Song_19_entrance": {
-    "id": 771,
-    "zone": 6,
-    "actualSceneName": "Song_19_entrance"
-  },
-  "Song_19_entrance_top": {
-    "id": 772,
-    "zone": null,
-    "actualSceneName": "Song_19_entrance"
-  },
-  "Song_19_entrance_top_right": {
-    "id": 773,
-    "zone": null,
-    "actualSceneName": "Song_19_entrance"
-  },
-  "Song_20": {
-    "id": 774,
-    "zone": 6,
-    "actualSceneName": "Song_20"
-  },
-  "Song_20b": {
-    "id": 775,
-    "zone": 6,
-    "actualSceneName": "Song_20b"
-  },
-  "Song_24": {
-    "id": 776,
-    "zone": 6,
-    "actualSceneName": "Song_24"
-  },
-  "Song_25": {
-    "id": 777,
-    "zone": 6,
-    "actualSceneName": "Song_25"
-  },
-  "Song_25_top_left": {
-    "id": 778,
-    "zone": null,
-    "actualSceneName": "Song_25"
-  },
-  "Song_26": {
-    "id": 779,
-    "zone": 6,
-    "actualSceneName": "Song_26"
-  },
-  "Song_27": {
-    "id": 780,
-    "zone": 6,
-    "actualSceneName": "Song_27"
-  },
-  "Song_28": {
-    "id": 781,
-    "zone": 6,
-    "actualSceneName": "Song_28"
-  },
-  "Song_29": {
-    "id": 782,
-    "zone": 6,
-    "actualSceneName": "Song_29"
-  },
-  "Song_Enclave": {
-    "id": 783,
-    "zone": 6,
-    "actualSceneName": "Song_Enclave"
-  },
-  "Song_Enclave_Tube": {
-    "id": 784,
-    "zone": 6,
-    "actualSceneName": "Song_Enclave_Tube"
-  },
-  "Song_Tower_01": {
-    "id": 785,
-    "zone": 29,
-    "actualSceneName": "Song_Tower_01"
-  },
-  "Song_Tower_Destroyed": {
-    "id": 786,
-    "zone": 29,
-    "actualSceneName": "Song_Tower_Destroyed"
-  },
-  "Song_Tower_Destroyed_Bot": {
-    "id": 787,
-    "zone": null,
-    "actualSceneName": "Song_Tower_Destroyed"
-  },
-  "Song_Tower_Destroyed_Top": {
-    "id": 788,
-    "zone": null,
-    "actualSceneName": "Song_Tower_Destroyed"
-  },
-  "Sprintmaster_Cave": {
-    "id": 789,
-    "zone": 16,
-    "actualSceneName": "Sprintmaster_Cave"
-  },
-  "Tube_Hub": {
-    "id": 790,
-    "zone": 6,
-    "actualSceneName": "Tube_Hub"
-  },
-  "Tube_Hub_Destroyed": {
-    "id": 791,
-    "zone": null,
-    "actualSceneName": "Tube_Hub"
-  },
-  "Tube_Hub_right": {
-    "id": 792,
-    "zone": null,
-    "actualSceneName": "Tube_Hub"
-  },
-  "Tube_Hub_Shortcut": {
-    "id": 793,
-    "zone": null,
-    "actualSceneName": "Tube_Hub"
-  },
-  "Tube_Hub_Top": {
-    "id": 794,
-    "zone": null,
-    "actualSceneName": "Tube_Hub"
-  },
-  "Tut_01": {
-    "id": 795,
-    "zone": 13,
-    "actualSceneName": "Tut_01"
-  },
-  "Tut_01_chest": {
-    "id": 796,
-    "zone": null,
-    "actualSceneName": "Tut_01"
-  },
-  "Tut_01_top": {
-    "id": 797,
-    "zone": null,
-    "actualSceneName": "Tut_01"
-  },
-  "Tut_01b": {
-    "id": 798,
-    "zone": 13,
-    "actualSceneName": "Tut_01b"
-  },
-  "Tut_02": {
-    "id": 799,
-    "zone": 13,
-    "actualSceneName": "Tut_02"
-  },
-  "Tut_03": {
-    "id": 800,
-    "zone": 12,
-    "actualSceneName": "Tut_03"
-  },
-  "Tut_04": {
-    "id": 801,
-    "zone": 12,
-    "actualSceneName": "Tut_04"
-  },
-  "tut_05": {
-    "id": 802,
-    "zone": 13,
-    "actualSceneName": "tut_05"
-  },
-  "Under_01": {
-    "id": 803,
-    "zone": 22,
-    "actualSceneName": "Under_01"
-  },
-  "Under_01_bot": {
-    "id": 804,
-    "zone": null,
-    "actualSceneName": "Under_01"
-  },
-  "Under_01_left": {
-    "id": 805,
-    "zone": null,
-    "actualSceneName": "Under_01"
-  },
-  "Under_01_top_right": {
-    "id": 806,
-    "zone": null,
-    "actualSceneName": "Under_01"
-  },
-  "Under_01b": {
-    "id": 807,
-    "zone": 22,
-    "actualSceneName": "Under_01b"
-  },
-  "Under_02": {
-    "id": 808,
-    "zone": 22,
-    "actualSceneName": "Under_02"
-  },
-  "Under_02_bot": {
-    "id": 809,
-    "zone": null,
-    "actualSceneName": "Under_02"
-  },
-  "Under_02_top": {
-    "id": 810,
-    "zone": null,
-    "actualSceneName": "Under_02"
-  },
-  "Under_03": {
-    "id": 811,
-    "zone": 22,
-    "actualSceneName": "Under_03"
-  },
-  "Under_03_2": {
-    "id": 812,
-    "zone": null,
-    "actualSceneName": "Under_03"
-  },
-  "Under_03b": {
-    "id": 813,
-    "zone": 22,
-    "actualSceneName": "Under_03b"
-  },
-  "Under_03c": {
-    "id": 814,
-    "zone": 22,
-    "actualSceneName": "Under_03c"
-  },
-  "Under_03d": {
-    "id": 815,
-    "zone": 22,
-    "actualSceneName": "Under_03d"
-  },
-  "Under_03d_join": {
-    "id": 816,
-    "zone": null,
-    "actualSceneName": "Under_03d"
-  },
-  "Under_04": {
-    "id": 817,
-    "zone": 22,
-    "actualSceneName": "Under_04"
-  },
-  "Under_05": {
-    "id": 818,
-    "zone": 22,
-    "actualSceneName": "Under_05"
-  },
-  "Under_05_2": {
-    "id": 819,
-    "zone": null,
-    "actualSceneName": "Under_05"
-  },
-  "Under_06": {
-    "id": 820,
-    "zone": 22,
-    "actualSceneName": "Under_06"
-  },
-  "Under_07": {
-    "id": 821,
-    "zone": 22,
-    "actualSceneName": "Under_07"
-  },
-  "Under_07b": {
-    "id": 822,
-    "zone": 6,
-    "actualSceneName": "Under_07b"
-  },
-  "Under_07b_bot": {
-    "id": 823,
-    "zone": null,
-    "actualSceneName": "Under_07b"
-  },
-  "Under_07c": {
-    "id": 824,
-    "zone": 22,
-    "actualSceneName": "Under_07c"
-  },
-  "Under_08": {
-    "id": 825,
-    "zone": 22,
-    "actualSceneName": "Under_08"
-  },
-  "Under_08_b": {
-    "id": 826,
-    "zone": null,
-    "actualSceneName": "Under_08"
-  },
-  "Under_10": {
-    "id": 827,
-    "zone": 22,
-    "actualSceneName": "Under_10"
-  },
-  "Under_11": {
-    "id": 828,
-    "zone": 22,
-    "actualSceneName": "Under_11"
-  },
-  "Under_12": {
-    "id": 829,
-    "zone": 22,
-    "actualSceneName": "Under_12"
-  },
-  "Under_13": {
-    "id": 830,
-    "zone": 22,
-    "actualSceneName": "Under_13"
-  },
-  "Under_13_bot": {
-    "id": 831,
-    "zone": null,
-    "actualSceneName": "Under_13"
-  },
-  "Under_13_left": {
-    "id": 832,
-    "zone": null,
-    "actualSceneName": "Under_13"
-  },
-  "Under_13_right": {
-    "id": 833,
-    "zone": null,
-    "actualSceneName": "Under_13"
-  },
-  "Under_13_right_mid": {
-    "id": 834,
-    "zone": null,
-    "actualSceneName": "Under_13"
-  },
-  "Under_14": {
-    "id": 835,
-    "zone": 22,
-    "actualSceneName": "Under_14"
-  },
-  "Under_14_right": {
-    "id": 836,
-    "zone": null,
-    "actualSceneName": "Under_14"
-  },
-  "Under_16": {
-    "id": 837,
-    "zone": 22,
-    "actualSceneName": "Under_16"
-  },
-  "Under_16_b": {
-    "id": 838,
-    "zone": null,
-    "actualSceneName": "Under_16"
-  },
-  "Under_17": {
-    "id": 839,
-    "zone": 22,
-    "actualSceneName": "Under_17"
-  },
-  "Under_17_2": {
-    "id": 840,
-    "zone": null,
-    "actualSceneName": "Under_17"
-  },
-  "Under_17_top": {
-    "id": 841,
-    "zone": null,
-    "actualSceneName": "Under_17"
-  },
-  "Under_18": {
-    "id": 842,
-    "zone": 22,
-    "actualSceneName": "Under_18"
-  },
-  "Under_18_2": {
-    "id": 843,
-    "zone": null,
-    "actualSceneName": "Under_18"
-  },
-  "Under_19": {
-    "id": 844,
-    "zone": 6,
-    "actualSceneName": "Under_19"
-  },
-  "Under_19b": {
-    "id": 845,
-    "zone": 6,
-    "actualSceneName": "Under_19b"
-  },
-  "Under_19c": {
-    "id": 846,
-    "zone": 22,
-    "actualSceneName": "Under_19c"
-  },
-  "Under_20": {
-    "id": 847,
-    "zone": 0,
-    "actualSceneName": "Under_20"
-  },
-  "Under_21": {
-    "id": 848,
-    "zone": 22,
-    "actualSceneName": "Under_21"
-  },
-  "Under_22": {
-    "id": 849,
-    "zone": 22,
-    "actualSceneName": "Under_22"
-  },
-  "Under_23": {
-    "id": 850,
-    "zone": 22,
-    "actualSceneName": "Under_23"
-  },
-  "Under_27": {
-    "id": 851,
-    "zone": 4,
-    "actualSceneName": "Under_27"
-  },
-  "Under_27_bot": {
-    "id": 852,
-    "zone": null,
-    "actualSceneName": "Under_27"
-  },
-  "Ward_01": {
-    "id": 853,
-    "zone": 26,
-    "actualSceneName": "Ward_01"
-  },
-  "Ward_01_2": {
-    "id": 854,
-    "zone": null,
-    "actualSceneName": "Ward_01"
-  },
-  "Ward_01_3": {
-    "id": 855,
-    "zone": null,
-    "actualSceneName": "Ward_01"
-  },
-  "Ward_01_mid_right": {
-    "id": 856,
-    "zone": null,
-    "actualSceneName": "Ward_01"
-  },
-  "Ward_01_top_right": {
-    "id": 857,
-    "zone": null,
-    "actualSceneName": "Ward_01"
-  },
-  "Ward_02": {
-    "id": 858,
-    "zone": 26,
-    "actualSceneName": "Ward_02"
-  },
-  "Ward_02_2": {
-    "id": 859,
-    "zone": null,
-    "actualSceneName": "Ward_02"
-  },
-  "Ward_02_3": {
-    "id": 860,
-    "zone": null,
-    "actualSceneName": "Ward_02"
-  },
-  "Ward_02_boss": {
-    "id": 861,
-    "zone": null,
-    "actualSceneName": "Ward_02_boss"
-  },
-  "Ward_02b": {
-    "id": 862,
-    "zone": 26,
-    "actualSceneName": "Ward_02b"
-  },
-  "Ward_03": {
-    "id": 863,
-    "zone": 26,
-    "actualSceneName": "Ward_03"
-  },
-  "Ward_03_2": {
-    "id": 864,
-    "zone": null,
-    "actualSceneName": "Ward_03"
-  },
-  "Ward_03_top": {
-    "id": 865,
-    "zone": null,
-    "actualSceneName": "Ward_03"
-  },
-  "Ward_04": {
-    "id": 866,
-    "zone": 26,
-    "actualSceneName": "Ward_04"
-  },
-  "Ward_05": {
-    "id": 867,
-    "zone": 26,
-    "actualSceneName": "Ward_05"
-  },
-  "Ward_05_right": {
-    "id": 868,
-    "zone": null,
-    "actualSceneName": "Ward_05"
-  },
-  "Ward_06": {
-    "id": 869,
-    "zone": 26,
-    "actualSceneName": "Ward_06"
-  },
-  "Ward_07": {
-    "id": 870,
-    "zone": 26,
-    "actualSceneName": "Ward_07"
-  },
-  "Ward_09": {
-    "id": 871,
-    "zone": 26,
-    "actualSceneName": "Ward_09"
-  },
-  "Weave_02": {
-    "id": 872,
-    "zone": 17,
-    "actualSceneName": "Weave_02"
-  },
-  "Weave_03": {
-    "id": 873,
-    "zone": 17,
-    "actualSceneName": "Weave_03"
-  },
-  "Weave_03_left": {
-    "id": 874,
-    "zone": null,
-    "actualSceneName": "Weave_03"
-  },
-  "Weave_03_mid": {
-    "id": 875,
-    "zone": null,
-    "actualSceneName": "Weave_03"
-  },
-  "Weave_04": {
-    "id": 876,
-    "zone": 17,
-    "actualSceneName": "Weave_04"
-  },
-  "Weave_05b": {
-    "id": 877,
-    "zone": 17,
-    "actualSceneName": "Weave_05b"
-  },
-  "Weave_07": {
-    "id": 878,
-    "zone": 17,
-    "actualSceneName": "Weave_07"
-  },
-  "Weave_07_left": {
-    "id": 879,
-    "zone": null,
-    "actualSceneName": "Weave_07"
-  },
-  "Weave_08": {
-    "id": 880,
-    "zone": 17,
-    "actualSceneName": "Weave_08"
-  },
-  "Weave_08_bot_right": {
-    "id": 881,
-    "zone": null,
-    "actualSceneName": "Weave_08"
-  },
-  "Weave_10": {
-    "id": 882,
-    "zone": 17,
-    "actualSceneName": "Weave_10"
-  },
-  "Weave_11": {
-    "id": 883,
-    "zone": 17,
-    "actualSceneName": "Weave_11"
-  },
-  "Weave_11_top": {
-    "id": 884,
-    "zone": null,
-    "actualSceneName": "Weave_11"
-  },
-  "Weave_12": {
-    "id": 885,
-    "zone": 17,
-    "actualSceneName": "Weave_12"
-  },
-  "Weave_13": {
-    "id": 886,
-    "zone": 17,
-    "actualSceneName": "Weave_13"
-  },
-  "Weave_14": {
-    "id": 887,
-    "zone": 17,
-    "actualSceneName": "Weave_14"
-  },
-  "Wisp_02": {
-    "id": 888,
-    "zone": 35,
-    "actualSceneName": "Wisp_02"
-  },
-  "Wisp_03": {
-    "id": 889,
-    "zone": 3,
-    "actualSceneName": "Wisp_03"
-  },
-  "Wisp_03_2": {
-    "id": 890,
-    "zone": null,
-    "actualSceneName": "Wisp_03"
-  },
-  "Wisp_04": {
-    "id": 891,
-    "zone": 35,
-    "actualSceneName": "Wisp_04"
-  },
-  "Wisp_05": {
-    "id": 892,
-    "zone": 22,
-    "actualSceneName": "Wisp_05"
-  },
-  "Wisp_06": {
-    "id": 893,
-    "zone": 35,
-    "actualSceneName": "Wisp_06"
-  },
-  "Wisp_06_secret": {
-    "id": 894,
-    "zone": null,
-    "actualSceneName": "Wisp_06"
-  },
-  "Wisp_07": {
-    "id": 895,
-    "zone": 35,
-    "actualSceneName": "Wisp_07"
-  },
-  "Wisp_08": {
-    "id": 896,
-    "zone": 35,
-    "actualSceneName": "Wisp_08"
-  },
-  "Wisp_09": {
-    "id": 897,
-    "zone": 35,
-    "actualSceneName": "Wisp_09"
-  }
+  "Abandoned_Town": 1,
+  "Abyss_01": 2,
+  "Abyss_02": 3,
+  "Abyss_02b": 4,
+  "Abyss_02b_top": 5,
+  "Abyss_03": 6,
+  "Abyss_03_bell_broken": 7,
+  "Abyss_03_bell_fixed": 8,
+  "Abyss_03_top": 9,
+  "Abyss_04": 10,
+  "Abyss_04_right": 11,
+  "Abyss_05": 12,
+  "Abyss_05_top": 13,
+  "Abyss_06": 14,
+  "Abyss_07": 15,
+  "Abyss_08": 16,
+  "Abyss_09": 17,
+  "Abyss_09_ascent": 18,
+  "Abyss_09_top": 19,
+  "Abyss_09_up_connection": 20,
+  "Abyss_11": 21,
+  "Abyss_12": 22,
+  "Abyss_13": 23,
+  "abyss_cocoon": 24,
+  "Ant_02": 25,
+  "Ant_03": 26,
+  "Ant_04": 27,
+  "Ant_04_left": 28,
+  "Ant_04_mid": 29,
+  "Ant_05b": 30,
+  "Ant_05c": 31,
+  "Ant_05c_top_right": 32,
+  "Ant_08": 33,
+  "Ant_09": 34,
+  "Ant_14": 35,
+  "Ant_17": 36,
+  "Ant_19": 37,
+  "Ant_20": 38,
+  "Ant_20_top": 39,
+  "Ant_21": 40,
+  "Ant_Merchant": 41,
+  "Ant_Merchant_left": 42,
+  "Ant_Merchant_mid": 43,
+  "Ant_Queen": 44,
+  "Aqueduct_01": 45,
+  "Aqueduct_02": 46,
+  "Aqueduct_02_right": 47,
+  "Aqueduct_03": 48,
+  "Aqueduct_04": 49,
+  "Aqueduct_04_bottom": 50,
+  "Aqueduct_04_right": 51,
+  "Aqueduct_05": 52,
+  "Aqueduct_05_caravan": 53,
+  "Aqueduct_05_festival": 54,
+  "Aqueduct_05_pre": 55,
+  "Aqueduct_05_top": 56,
+  "Aqueduct_06": 57,
+  "Aqueduct_06_left": 58,
+  "Aqueduct_06_top": 59,
+  "Aqueduct_07": 60,
+  "Aqueduct_07_top": 61,
+  "Aqueduct_08": 62,
+  "Arborium_01": 63,
+  "Arborium_01_bot_left": 64,
+  "Arborium_01_top": 65,
+  "Arborium_01_top_2": 66,
+  "Arborium_02": 67,
+  "Arborium_03": 68,
+  "Arborium_03_top": 69,
+  "Arborium_04": 70,
+  "Arborium_05": 71,
+  "Arborium_06": 72,
+  "Arborium_07": 73,
+  "Arborium_07b": 74,
+  "Arborium_08": 75,
+  "Arborium_09": 76,
+  "Arborium_10": 77,
+  "Arborium_11": 78,
+  "Arborium_11_mid": 79,
+  "Arborium_11_right": 80,
+  "Arborium_Tube": 81,
+  "Aspid_01": 82,
+  "Aspid_01_bot": 83,
+  "Aspid_01_mid": 84,
+  "Aspid_01_top": 85,
+  "Bellshrine": 86,
+  "Bellshrine_02": 87,
+  "Bellshrine_03": 88,
+  "Bellshrine_05": 89,
+  "Bellshrine_Coral": 90,
+  "Bellshrine_Enclave": 91,
+  "bellshrine_lore_additive": 92,
+  "Belltown": 93,
+  "Belltown_04": 94,
+  "Belltown_06": 95,
+  "Belltown_06_fisher": 96,
+  "Belltown_06_top": 97,
+  "Belltown_07": 98,
+  "Belltown_08": 99,
+  "Belltown_basement": 100,
+  "Belltown_basement_03": 101,
+  "Belltown_basement_03_2": 102,
+  "Belltown_basement_03_3": 103,
+  "Belltown_basement_03_4": 104,
+  "belltown_cutscene": 105,
+  "belltown_room_doctor": 106,
+  "Belltown_Room_Fisher": 107,
+  "Belltown_Room_pinsmith": 108,
+  "Belltown_Room_Relic": 109,
+  "Belltown_Room_shellwood": 110,
+  "Belltown_Room_Spare": 111,
+  "Belltown_Shrine": 112,
+  "Bellway_01": 113,
+  "Bellway_01_boss": 114,
+  "Bellway_02": 115,
+  "Bellway_02_boss": 116,
+  "Bellway_02_left": 117,
+  "Bellway_03": 118,
+  "Bellway_03_b": 119,
+  "Bellway_03_boss": 120,
+  "Bellway_03_c": 121,
+  "Bellway_04": 122,
+  "Bellway_04_boss": 123,
+  "Bellway_04_bot_left": 124,
+  "Bellway_08": 125,
+  "Bellway_Aqueduct": 126,
+  "Bellway_Aqueduct_top": 127,
+  "bellway_centipede_additive": 128,
+  "bellway_centipede_arena": 129,
+  "Bellway_City": 130,
+  "Bellway_City_b": 131,
+  "Bellway_Peak": 132,
+  "Bellway_Peak_02": 133,
+  "Bellway_Shadow": 134,
+  "Bone_01": 135,
+  "Bone_01b": 136,
+  "Bone_01c": 137,
+  "Bone_01c_bot": 138,
+  "Bone_01c_top": 139,
+  "Bone_02": 140,
+  "Bone_03": 141,
+  "Bone_03_top": 142,
+  "Bone_04": 143,
+  "Bone_05": 144,
+  "Bone_05_bellway": 145,
+  "Bone_05_boss": 146,
+  "Bone_05_right": 147,
+  "Bone_05b": 148,
+  "Bone_05b_right": 149,
+  "Bone_06": 150,
+  "Bone_06_join": 151,
+  "Bone_07": 152,
+  "Bone_07_bot_left": 153,
+  "Bone_08": 154,
+  "Bone_09": 155,
+  "Bone_10": 156,
+  "Bone_10_act3_bench": 157,
+  "Bone_10_left": 158,
+  "Bone_11": 159,
+  "Bone_11b": 160,
+  "Bone_12": 161,
+  "Bone_14": 162,
+  "Bone_15": 163,
+  "Bone_16": 164,
+  "Bone_16_right": 165,
+  "Bone_16_top": 166,
+  "Bone_17": 167,
+  "Bone_18": 168,
+  "Bone_18_top": 169,
+  "Bone_19": 170,
+  "Bone_East_01": 171,
+  "Bone_East_02": 172,
+  "Bone_East_02b": 173,
+  "Bone_East_03": 174,
+  "Bone_East_03_right": 175,
+  "Bone_East_04": 176,
+  "Bone_East_04_bot": 177,
+  "Bone_East_04b": 178,
+  "Bone_East_04c": 179,
+  "Bone_East_05": 180,
+  "Bone_East_07": 181,
+  "Bone_East_07_bot": 182,
+  "Bone_East_07_top": 183,
+  "Bone_East_08": 184,
+  "Bone_East_08_boss_beastfly": 185,
+  "Bone_East_08_boss_golem": 186,
+  "Bone_East_08_boss_golem_rest": 187,
+  "Bone_East_08_right": 188,
+  "Bone_East_09": 189,
+  "Bone_East_09b": 190,
+  "Bone_East_10": 191,
+  "Bone_East_10_Church": 192,
+  "Bone_East_10_Gate": 193,
+  "Bone_East_10_Room": 194,
+  "Bone_East_10_top_right": 195,
+  "Bone_East_11": 196,
+  "Bone_East_11_connection": 197,
+  "Bone_East_11_top": 198,
+  "Bone_East_12": 199,
+  "Bone_East_13": 200,
+  "Bone_East_14": 201,
+  "Bone_East_14_2": 202,
+  "Bone_East_14b": 203,
+  "Bone_East_14b_lava_room": 204,
+  "Bone_East_15": 205,
+  "Bone_East_15_bot": 206,
+  "Bone_East_15_left": 207,
+  "Bone_East_15_top_right": 208,
+  "Bone_East_16": 209,
+  "Bone_East_17": 210,
+  "Bone_East_17_top": 211,
+  "Bone_East_17b": 212,
+  "Bone_East_17b_join": 213,
+  "Bone_East_18": 214,
+  "Bone_East_18b": 215,
+  "Bone_East_18b_bot": 216,
+  "Bone_East_18b_bot_left": 217,
+  "Bone_East_18b_right": 218,
+  "Bone_East_18c": 219,
+  "Bone_East_20": 220,
+  "Bone_East_21": 221,
+  "Bone_East_22": 222,
+  "Bone_East_24": 223,
+  "Bone_East_25": 224,
+  "Bone_East_25_right": 225,
+  "Bone_East_26": 226,
+  "Bone_East_27": 227,
+  "Bone_East_27_top": 228,
+  "Bone_East_LavaChallenge": 229,
+  "Bone_East_Umbrella": 230,
+  "Bone_East_Weavehome": 231,
+  "Bone_East_Weavehome_Basement": 232,
+  "Bone_Steel_Servant": 233,
+  "Bonegrave": 234,
+  "Bonegrave_Gate": 235,
+  "Bonegrave_top": 236,
+  "Bonetown": 237,
+  "Bonetown_boss": 238,
+  "Bonetown_top_left": 239,
+  "Bonetown_top_right": 240,
+  "Chapel_Wanderer": 241,
+  "cinematic_ending_a": 242,
+  "cinematic_ending_b": 243,
+  "cinematic_ending_c": 244,
+  "cinematic_ending_d": 245,
+  "cinematic_ending_e": 246,
+  "cinematic_mrmushroom": 247,
+  "cinematic_stag_travel": 248,
+  "city_lace_cutscene": 249,
+  "Clover_01": 250,
+  "Clover_01b": 251,
+  "Clover_02c": 252,
+  "Clover_02c_bot_right": 253,
+  "Clover_02c_top": 254,
+  "Clover_03": 255,
+  "Clover_04b": 256,
+  "Clover_04b_top": 257,
+  "Clover_05c": 258,
+  "Clover_06": 259,
+  "Clover_10": 260,
+  "Clover_10_web": 261,
+  "Clover_11": 262,
+  "Clover_16": 263,
+  "Clover_16_left": 264,
+  "Clover_16_right": 265,
+  "Clover_18": 266,
+  "Clover_18_right": 267,
+  "Clover_19": 268,
+  "Clover_20": 269,
+  "Clover_21": 270,
+  "Cog_04": 271,
+  "Cog_05": 272,
+  "Cog_05_left": 273,
+  "Cog_06": 274,
+  "Cog_07": 275,
+  "Cog_07b": 276,
+  "Cog_08": 277,
+  "Cog_08_Destroyed": 278,
+  "Cog_08_top": 279,
+  "Cog_09": 280,
+  "Cog_09_Destroyed": 281,
+  "Cog_09_Destroyed_bot_right": 282,
+  "Cog_10": 283,
+  "Cog_10_Destroyed": 284,
+  "Cog_11_Destroyed": 285,
+  "Cog_Bench": 286,
+  "Cog_Dancers": 287,
+  "Cog_Dancers_boss": 288,
+  "Cog_Dancers_Destroyed": 289,
+  "Cog_Dancers_Top": 290,
+  "Cog_Pass": 291,
+  "Coral_02": 292,
+  "Coral_03": 293,
+  "Coral_10": 294,
+  "Coral_11": 295,
+  "Coral_11b": 296,
+  "Coral_12": 297,
+  "Coral_19": 298,
+  "Coral_19_base": 299,
+  "Coral_19_left": 300,
+  "Coral_19b": 301,
+  "Coral_23": 302,
+  "Coral_23_secret": 303,
+  "Coral_24": 304,
+  "Coral_25": 305,
+  "Coral_26": 306,
+  "Coral_27": 307,
+  "Coral_28": 308,
+  "Coral_29": 309,
+  "Coral_32": 310,
+  "Coral_32_arrow": 311,
+  "Coral_33": 312,
+  "Coral_34": 313,
+  "Coral_34_mid": 314,
+  "Coral_34_top": 315,
+  "Coral_35": 316,
+  "Coral_35_secret": 317,
+  "Coral_35_top_break_base": 318,
+  "Coral_35_top_break_base_bottom": 319,
+  "Coral_35b": 320,
+  "Coral_35b_secret": 321,
+  "Coral_36": 322,
+  "Coral_37": 323,
+  "Coral_37_join": 324,
+  "Coral_37_right": 325,
+  "Coral_38": 326,
+  "Coral_38_bot": 327,
+  "Coral_39": 328,
+  "Coral_40": 329,
+  "Coral_41": 330,
+  "Coral_42": 331,
+  "Coral_42_top": 332,
+  "Coral_43": 333,
+  "Coral_44": 334,
+  "Coral_Judge_Arena": 335,
+  "Coral_Tower_01": 336,
+  "Coral_Tower_01_Bench": 337,
+  "Cradle_01": 338,
+  "Cradle_01_Destroyed": 339,
+  "Cradle_02": 340,
+  "Cradle_02b": 341,
+  "Cradle_03": 342,
+  "Cradle_03_Destroyed": 343,
+  "Cradle_Destroyed_Challenge_01": 344,
+  "Cradle_Destroyed_Challenge_02": 345,
+  "cradle_destroyed_challenge_bench": 346,
+  "Crawl_01": 347,
+  "Crawl_02": 348,
+  "Crawl_02_top": 349,
+  "Crawl_03": 350,
+  "Crawl_03b": 351,
+  "Crawl_04": 352,
+  "Crawl_05": 353,
+  "Crawl_06": 354,
+  "Crawl_07": 355,
+  "Crawl_08": 356,
+  "Crawl_09": 357,
+  "Crawl_10": 358,
+  "demoend": 359,
+  "demostart": 360,
+  "Dock_01": 361,
+  "Dock_02": 362,
+  "Dock_02_bot_left": 363,
+  "Dock_02_shortcut": 364,
+  "Dock_02_top": 365,
+  "Dock_02b": 366,
+  "Dock_02b_bot": 367,
+  "Dock_02b_gate": 368,
+  "Dock_02b_top": 369,
+  "Dock_03": 370,
+  "Dock_03_top_right": 371,
+  "Dock_03b": 372,
+  "Dock_03b_2": 373,
+  "Dock_03b_left": 374,
+  "Dock_03c": 375,
+  "Dock_03c_2": 376,
+  "Dock_03d": 377,
+  "Dock_04": 378,
+  "Dock_04_sauna_exit": 379,
+  "Dock_05": 380,
+  "Dock_06_Church": 381,
+  "Dock_06_Church_Bench": 382,
+  "Dock_06_Church_bottom": 383,
+  "Dock_08": 384,
+  "Dock_08_2": 385,
+  "Dock_09": 386,
+  "Dock_10": 387,
+  "Dock_11": 388,
+  "Dock_12": 389,
+  "Dock_12_top": 390,
+  "Dock_13": 391,
+  "Dock_14": 392,
+  "Dock_15": 393,
+  "Dock_15_secret": 394,
+  "Dock_16": 395,
+  "Dust_01": 396,
+  "Dust_02": 397,
+  "Dust_03": 398,
+  "Dust_04": 399,
+  "Dust_05": 400,
+  "Dust_05_2": 401,
+  "Dust_06": 402,
+  "Dust_06_right": 403,
+  "Dust_06_top": 404,
+  "Dust_09": 405,
+  "Dust_09_into_citadel": 406,
+  "Dust_09_right": 407,
+  "Dust_09_top_2": 408,
+  "Dust_10": 409,
+  "Dust_10b": 410,
+  "Dust_11": 411,
+  "Dust_11_bot": 412,
+  "Dust_11_left": 413,
+  "Dust_11_right": 414,
+  "Dust_12": 415,
+  "Dust_Barb": 416,
+  "Dust_Chef": 417,
+  "Dust_Chef_b": 418,
+  "Dust_Maze_01": 419,
+  "Dust_Maze_02": 420,
+  "Dust_Maze_03": 421,
+  "Dust_Maze_04": 422,
+  "Dust_Maze_05": 423,
+  "Dust_Maze_06": 424,
+  "Dust_Maze_07": 425,
+  "Dust_Maze_08": 426,
+  "Dust_Maze_08_completed": 427,
+  "Dust_Maze_09_entrance": 428,
+  "Dust_Maze_crossing": 429,
+  "Dust_Maze_Last_Hall": 430,
+  "Dust_Shack": 431,
+  "DustMazeCompassMarker": 432,
+  "Enclave_bridge_left": 433,
+  "end_credits": 434,
+  "end_credits_scroll": 435,
+  "end_game_completion": 436,
+  "Greymoor_01": 437,
+  "Greymoor_01_bot": 438,
+  "Greymoor_01_top": 439,
+  "Greymoor_02": 440,
+  "Greymoor_02_mid": 441,
+  "Greymoor_02_top": 442,
+  "Greymoor_02_top_right": 443,
+  "Greymoor_03": 444,
+  "Greymoor_03_mid_right": 445,
+  "Greymoor_03_top": 446,
+  "Greymoor_04": 447,
+  "Greymoor_04_mid": 448,
+  "Greymoor_04_top": 449,
+  "Greymoor_05": 450,
+  "Greymoor_05_boss": 451,
+  "Greymoor_06": 452,
+  "Greymoor_06_mid_top": 453,
+  "Greymoor_06_top": 454,
+  "Greymoor_06_top_left": 455,
+  "Greymoor_07": 456,
+  "Greymoor_08": 457,
+  "Greymoor_08_boss": 458,
+  "Greymoor_08_caravan": 459,
+  "Greymoor_08_mapper": 460,
+  "Greymoor_10": 461,
+  "Greymoor_11": 462,
+  "Greymoor_11_top": 463,
+  "Greymoor_12": 464,
+  "Greymoor_13": 465,
+  "Greymoor_15": 466,
+  "Greymoor_15_mid": 467,
+  "Greymoor_15_top": 468,
+  "Greymoor_15b": 469,
+  "Greymoor_15b_2": 470,
+  "Greymoor_15b_bot_right": 471,
+  "Greymoor_16": 472,
+  "Greymoor_17": 473,
+  "Greymoor_17_bot": 474,
+  "Greymoor_20b": 475,
+  "Greymoor_20c": 476,
+  "Greymoor_21": 477,
+  "Greymoor_22": 478,
+  "Greymoor_24": 479,
+  "Halfway_01": 480,
+  "Hang_01": 481,
+  "Hang_01_2": 482,
+  "Hang_02": 483,
+  "Hang_03": 484,
+  "Hang_03_top": 485,
+  "Hang_04": 486,
+  "Hang_04_boss": 487,
+  "Hang_06": 488,
+  "Hang_06_bank": 489,
+  "Hang_06b": 490,
+  "Hang_07": 491,
+  "Hang_08": 492,
+  "Hang_08_bot_right": 493,
+  "Hang_09": 494,
+  "Hang_10": 495,
+  "Hang_12": 496,
+  "Hang_13": 497,
+  "Hang_14": 498,
+  "Hang_15": 499,
+  "Hang_16": 500,
+  "Hang_17b": 501,
+  "last_dive": 502,
+  "last_dive_return": 503,
+  "Library_01": 504,
+  "Library_01_bot": 505,
+  "Library_02": 506,
+  "Library_02_bottom": 507,
+  "Library_02_top": 508,
+  "Library_03": 509,
+  "Library_03_left": 510,
+  "Library_03_right": 511,
+  "Library_03_top": 512,
+  "Library_03_tunnel": 513,
+  "Library_04": 514,
+  "Library_04 _bot": 515,
+  "Library_04_center": 516,
+  "Library_04_top": 517,
+  "Library_04_top_enclave": 518,
+  "Library_04_top_right": 519,
+  "Library_05": 520,
+  "Library_05_2": 521,
+  "Library_05_3": 522,
+  "Library_06": 523,
+  "Library_06_top_right": 524,
+  "Library_07": 525,
+  "Library_08": 526,
+  "Library_08_right": 527,
+  "Library_09": 528,
+  "Library_09_mid": 529,
+  "Library_09_top": 530,
+  "Library_10": 531,
+  "Library_10_top": 532,
+  "Library_11": 533,
+  "Library_11_2": 534,
+  "Library_11_bot": 535,
+  "Library_11_shaft": 536,
+  "Library_11b": 537,
+  "Library_11b_bot": 538,
+  "Library_12": 539,
+  "Library_12_2": 540,
+  "Library_12_3": 541,
+  "Library_12_4": 542,
+  "Library_12_shortcut": 543,
+  "Library_12b": 544,
+  "Library_13": 545,
+  "Library_13_right": 546,
+  "Library_13_stage": 547,
+  "Library_13b": 548,
+  "Library_14": 549,
+  "Library_15": 550,
+  "Library_16": 551,
+  "memory_ant_queen": 552,
+  "memory_coral_tower": 553,
+  "memory_first_sinner": 554,
+  "memory_needolin": 555,
+  "memory_red": 556,
+  "memory_silk_heart_bellbeast": 557,
+  "memory_silk_heart_lacetower": 558,
+  "memory_silk_heart_wardboss": 559,
+  "menu_credits": 560,
+  "menu_title": 561,
+  "Mosstown_01": 562,
+  "Mosstown_02": 563,
+  "Mosstown_02_left": 564,
+  "Mosstown_02c": 565,
+  "Mosstown_03": 566,
+  "Mosstown_03_bot": 567,
+  "Mosstown_03_join_left": 568,
+  "Mosstown_03_top": 569,
+  "opening_sequence": 570,
+  "opening_sequence_act3": 571,
+  "Organ_01": 572,
+  "Peak_01": 573,
+  "Peak_01_right_mid": 574,
+  "Peak_01_right_top": 575,
+  "Peak_01_top": 576,
+  "Peak_02": 577,
+  "Peak_02_mid": 578,
+  "Peak_02_top": 579,
+  "Peak_04": 580,
+  "Peak_04c": 581,
+  "Peak_04d": 582,
+  "Peak_05": 583,
+  "Peak_05_top": 584,
+  "Peak_05c": 585,
+  "Peak_05c_top": 586,
+  "Peak_05d": 587,
+  "Peak_05e": 588,
+  "Peak_05e_top": 589,
+  "Peak_06": 590,
+  "Peak_06b": 591,
+  "Peak_07": 592,
+  "Peak_07_bench": 593,
+  "Peak_07_top": 594,
+  "Peak_08": 595,
+  "Peak_08b": 596,
+  "Peak_10": 597,
+  "Peak_12": 598,
+  "Peak_Mask_Maker": 599,
+  "permadeath": 600,
+  "pre_menu_intro": 601,
+  "quit_to_menu": 602,
+  "room_caravan_interior": 603,
+  "room_caravan_interior_travel": 604,
+  "room_caravan_spa": 605,
+  "Room_CrowCourt": 606,
+  "Room_CrowCourt_02": 607,
+  "Room_Diving_Bell": 608,
+  "Room_Diving_Bell_Abyss": 609,
+  "Room_Diving_Bell_Abyss_Fixed": 610,
+  "Room_Forge": 611,
+  "Room_Forge_right": 612,
+  "Room_Huntress": 613,
+  "Room_Pinstress": 614,
+  "Room_Witch": 615,
+  "Shadow_01": 616,
+  "Shadow_01_top": 617,
+  "Shadow_02": 618,
+  "Shadow_03": 619,
+  "Shadow_04": 620,
+  "Shadow_04_left": 621,
+  "Shadow_04b": 622,
+  "Shadow_05": 623,
+  "Shadow_08": 624,
+  "Shadow_08_left": 625,
+  "Shadow_09": 626,
+  "Shadow_09_right": 627,
+  "Shadow_10": 628,
+  "Shadow_10_right": 629,
+  "Shadow_10_top": 630,
+  "Shadow_11": 631,
+  "Shadow_11_top": 632,
+  "Shadow_12": 633,
+  "Shadow_13": 634,
+  "Shadow_14": 635,
+  "Shadow_15": 636,
+  "Shadow_15_bot": 637,
+  "Shadow_16": 638,
+  "Shadow_18": 639,
+  "Shadow_18_top": 640,
+  "Shadow_19": 641,
+  "Shadow_20": 642,
+  "Shadow_20_bot_left": 643,
+  "Shadow_20_right": 644,
+  "Shadow_20_top": 645,
+  "Shadow_21": 646,
+  "Shadow_22": 647,
+  "Shadow_23": 648,
+  "Shadow_24": 649,
+  "Shadow_25": 650,
+  "Shadow_26": 651,
+  "Shadow_27": 652,
+  "Shadow_27_right": 653,
+  "Shadow_28": 654,
+  "Shadow_Bilehaven_Room": 655,
+  "Shadow_Weavehome": 656,
+  "Shadow_Weavehome_right": 657,
+  "Shellgrave": 658,
+  "Shellwood_01": 659,
+  "Shellwood_01b": 660,
+  "Shellwood_02": 661,
+  "Shellwood_03": 662,
+  "Shellwood_04b": 663,
+  "Shellwood_04c": 664,
+  "Shellwood_08": 665,
+  "Shellwood_08c": 666,
+  "Shellwood_10": 667,
+  "Shellwood_10_top": 668,
+  "Shellwood_11": 669,
+  "Shellwood_11b": 670,
+  "shellwood_11b_memory": 671,
+  "Shellwood_13": 672,
+  "Shellwood_13b": 673,
+  "Shellwood_14": 674,
+  "Shellwood_15": 675,
+  "Shellwood_16": 676,
+  "Shellwood_18": 677,
+  "Shellwood_19": 678,
+  "Shellwood_20": 679,
+  "Shellwood_22": 680,
+  "Shellwood_22_left": 681,
+  "Shellwood_25": 682,
+  "Shellwood_25_right": 683,
+  "Shellwood_25b": 684,
+  "Shellwood_26": 685,
+  "Shellwood_26_2": 686,
+  "Shellwood_Witch": 687,
+  "Slab_01": 688,
+  "Slab_02": 689,
+  "Slab_03": 690,
+  "Slab_03_basement": 691,
+  "Slab_03_basement_shortcut": 692,
+  "Slab_03_mid": 693,
+  "Slab_03b": 694,
+  "Slab_04": 695,
+  "Slab_05": 696,
+  "Slab_06": 697,
+  "Slab_07": 698,
+  "Slab_08": 699,
+  "Slab_08_top": 700,
+  "Slab_10b": 701,
+  "Slab_10c": 702,
+  "Slab_12": 703,
+  "Slab_13": 704,
+  "Slab_13_2": 705,
+  "Slab_13_3": 706,
+  "Slab_14": 707,
+  "Slab_14_left": 708,
+  "Slab_15": 709,
+  "Slab_15_left": 710,
+  "Slab_16": 711,
+  "Slab_16_b": 712,
+  "Slab_16_bench": 713,
+  "Slab_16_d": 714,
+  "Slab_16_e": 715,
+  "Slab_16_mid": 716,
+  "Slab_16b": 717,
+  "Slab_17": 718,
+  "Slab_18": 719,
+  "Slab_19b": 720,
+  "Slab_19b_top": 721,
+  "Slab_20": 722,
+  "Slab_20_right": 723,
+  "Slab_21": 724,
+  "Slab_21_left": 725,
+  "Slab_22": 726,
+  "Slab_23": 727,
+  "Slab_23_bottom": 728,
+  "Slab_23_right": 729,
+  "Slab_Cell": 730,
+  "Slab_Cell_Creature": 731,
+  "Slab_Cell_Quiet": 732,
+  "Song_01": 733,
+  "Song_01_bot": 734,
+  "Song_01_secret": 735,
+  "Song_01b": 736,
+  "Song_01b_left": 737,
+  "Song_01c": 738,
+  "Song_02": 739,
+  "Song_03": 740,
+  "Song_03_top": 741,
+  "Song_04": 742,
+  "Song_04_bot": 743,
+  "Song_04_top": 744,
+  "Song_05": 745,
+  "Song_07": 746,
+  "Song_08": 747,
+  "Song_09": 748,
+  "Song_09_2": 749,
+  "Song_09b": 750,
+  "Song_09b_top": 751,
+  "Song_10": 752,
+  "Song_10_bath": 753,
+  "Song_10_bot": 754,
+  "Song_10_right": 755,
+  "Song_10_shortcut": 756,
+  "Song_11": 757,
+  "Song_11_2": 758,
+  "Song_11_3": 759,
+  "Song_11_cap": 760,
+  "Song_11_top": 761,
+  "Song_12": 762,
+  "Song_13": 763,
+  "Song_14": 764,
+  "Song_15": 765,
+  "Song_15_top": 766,
+  "Song_17": 767,
+  "Song_18": 768,
+  "Song_18_2": 769,
+  "Song_18_3": 770,
+  "Song_19_entrance": 771,
+  "Song_19_entrance_top": 772,
+  "Song_19_entrance_top_right": 773,
+  "Song_20": 774,
+  "Song_20b": 775,
+  "Song_24": 776,
+  "Song_25": 777,
+  "Song_25_top_left": 778,
+  "Song_26": 779,
+  "Song_27": 780,
+  "Song_28": 781,
+  "Song_29": 782,
+  "Song_Enclave": 783,
+  "Song_Enclave_Tube": 784,
+  "Song_Tower_01": 785,
+  "Song_Tower_Destroyed": 786,
+  "Song_Tower_Destroyed_Bot": 787,
+  "Song_Tower_Destroyed_Top": 788,
+  "Sprintmaster_Cave": 789,
+  "Tube_Hub": 790,
+  "Tube_Hub_Destroyed": 791,
+  "Tube_Hub_right": 792,
+  "Tube_Hub_Shortcut": 793,
+  "Tube_Hub_Top": 794,
+  "Tut_01": 795,
+  "Tut_01_chest": 796,
+  "Tut_01_top": 797,
+  "Tut_01b": 798,
+  "Tut_02": 799,
+  "Tut_03": 800,
+  "Tut_04": 801,
+  "tut_05": 802,
+  "Under_01": 803,
+  "Under_01_bot": 804,
+  "Under_01_left": 805,
+  "Under_01_top_right": 806,
+  "Under_01b": 807,
+  "Under_02": 808,
+  "Under_02_bot": 809,
+  "Under_02_top": 810,
+  "Under_03": 811,
+  "Under_03_2": 812,
+  "Under_03b": 813,
+  "Under_03c": 814,
+  "Under_03d": 815,
+  "Under_03d_join": 816,
+  "Under_04": 817,
+  "Under_05": 818,
+  "Under_05_2": 819,
+  "Under_06": 820,
+  "Under_07": 821,
+  "Under_07b": 822,
+  "Under_07b_bot": 823,
+  "Under_07c": 824,
+  "Under_08": 825,
+  "Under_08_b": 826,
+  "Under_10": 827,
+  "Under_11": 828,
+  "Under_12": 829,
+  "Under_13": 830,
+  "Under_13_bot": 831,
+  "Under_13_left": 832,
+  "Under_13_right": 833,
+  "Under_13_right_mid": 834,
+  "Under_14": 835,
+  "Under_14_right": 836,
+  "Under_16": 837,
+  "Under_16_b": 838,
+  "Under_17": 839,
+  "Under_17_2": 840,
+  "Under_17_top": 841,
+  "Under_18": 842,
+  "Under_18_2": 843,
+  "Under_19": 844,
+  "Under_19b": 845,
+  "Under_19c": 846,
+  "Under_20": 847,
+  "Under_21": 848,
+  "Under_22": 849,
+  "Under_23": 850,
+  "Under_27": 851,
+  "Under_27_bot": 852,
+  "Ward_01": 853,
+  "Ward_01_2": 854,
+  "Ward_01_3": 855,
+  "Ward_01_mid_right": 856,
+  "Ward_01_top_right": 857,
+  "Ward_02": 858,
+  "Ward_02_2": 859,
+  "Ward_02_3": 860,
+  "Ward_02_boss": 861,
+  "Ward_02b": 862,
+  "Ward_03": 863,
+  "Ward_03_2": 864,
+  "Ward_03_top": 865,
+  "Ward_04": 866,
+  "Ward_05": 867,
+  "Ward_05_right": 868,
+  "Ward_06": 869,
+  "Ward_07": 870,
+  "Ward_09": 871,
+  "Weave_02": 872,
+  "Weave_03": 873,
+  "Weave_03_left": 874,
+  "Weave_03_mid": 875,
+  "Weave_04": 876,
+  "Weave_05b": 877,
+  "Weave_07": 878,
+  "Weave_07_left": 879,
+  "Weave_08": 880,
+  "Weave_08_bot_right": 881,
+  "Weave_10": 882,
+  "Weave_11": 883,
+  "Weave_11_top": 884,
+  "Weave_12": 885,
+  "Weave_13": 886,
+  "Weave_14": 887,
+  "Wisp_02": 888,
+  "Wisp_03": 889,
+  "Wisp_03_2": 890,
+  "Wisp_04": 891,
+  "Wisp_05": 892,
+  "Wisp_06": 893,
+  "Wisp_06_secret": 894,
+  "Wisp_07": 895,
+  "Wisp_08": 896,
+  "Wisp_09": 897,
+  "Abyss_12_top": 898,
+  "Ant_02b": 899,
+  "Bone_East_15_right": 900,
+  "Coral_29_joiner": 901,
+  "Coral_29_left": 902,
+  "Coral_29_right": 903,
+  "Coral_35_break_base": 904,
+  "Coral_35_break_base_bottom": 905,
+  "Dock_02_bot": 906,
+  "Greymoor_02b": 907,
+  "Slab_07_ascent": 908,
+  "Slab_07_top_left": 909,
+  "Song_05_right": 910
 }

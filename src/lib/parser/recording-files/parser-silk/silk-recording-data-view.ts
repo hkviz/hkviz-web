@@ -10,15 +10,20 @@ import {
 	QuestRumourDataSilk,
 	StoryEventInfoSilk,
 	ToolCrestsDataSilk,
+	ToolCrestsSlotDataSilk,
 	ToolItemLiquidsDataSilk,
 	ToolItemsDataSilk,
 } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
+import { uint16Max } from './number-types';
+import { getIdLookupDebugName, stringIdMappingSilk } from './string-id-by-field-silk';
 
 export class SilkRecordingDataView {
 	private readonly view: DataView;
 	private readonly textDecoder = new TextDecoder();
 
 	public offset = 0;
+
+	public logState: unknown = null;
 
 	public constructor(private readonly buffer: ArrayBuffer) {
 		this.view = new DataView(buffer);
@@ -104,15 +109,41 @@ export class SilkRecordingDataView {
 		return this.textDecoder.decode(bytes);
 	}
 
-	public readStringWithId(idToString: Map<number, string>): string {
+	public readStringWithId(idToString: Map<number, string>): string | null {
 		const id = this.readUint16();
-		console.log('Read string id', id);
+		if (id === uint16Max) {
+			//console.log('[parser][string-lookup] Read null string id');
+			return null;
+		}
+		if (id === uint16Max - 1) {
+			//console.log('[parser][string-lookup] Read empty string id');
+			return '';
+		}
 		if (id === 0) {
 			// unknown id -> read string
-			return this.readString();
-		} else {
-			return idToString.get(id) ?? `unknown_id_${id}`;
+			const value = this.readString();
+			console.log(
+				'[parser][string-lookup] Using map',
+				getIdLookupDebugName(idToString),
+				this.logState,
+				'Read non-id string: ',
+				value,
+			);
+			// console.trace();
+			return value;
 		}
+		// console.log('Read string id', id, 'which maps to string', idToString.get(id));
+		const mapped = idToString.get(id);
+		if (mapped == null) {
+			console.warn(
+				`[parser][string-lookup] Missing string mapping for id ${id} in map ${getIdLookupDebugName(
+					idToString,
+				)} while parsing field`,
+				this.logState,
+			);
+			return `unknown_id_${id}`;
+		}
+		return mapped;
 	}
 
 	public readVector2(): Vector2 {
@@ -128,26 +159,13 @@ export class SilkRecordingDataView {
 		return new Vector3(x, y, z);
 	}
 
-	public readStringArray(): string[] {
-		const count = this.readInt32();
-		if (count < 0) {
-			throw new Error(`Invalid string array count ${count} at ${this.offset - 4}`);
-		}
-
-		const values: string[] = [];
-		for (let i = 0; i < count; i++) {
-			values.push(this.readString());
-		}
-		return values;
-	}
-
-	public readStringArrayWithIds(idToString: Map<number, string>): string[] {
+	public readStringArrayWithIds(idToString: Map<number, string>): (string | null)[] {
 		const count = this.readInt32();
 		if (count < 0) {
 			throw new Error(`Invalid string or id array count ${count} at ${this.offset - 4}`);
 		}
 
-		const values: string[] = [];
+		const values: (string | null)[] = [];
 		for (let i = 0; i < count; i++) {
 			values.push(this.readStringWithId(idToString));
 		}
@@ -157,7 +175,7 @@ export class SilkRecordingDataView {
 	public readStoryEventInfo(): StoryEventInfoSilk {
 		return {
 			eventType: this.readInt32(),
-			sceneName: this.readString(),
+			sceneName: this.readStringWithId(stringIdMappingSilk.sceneName) ?? '',
 			playTime: this.readFloat32(),
 		};
 	}
@@ -184,78 +202,95 @@ export class SilkRecordingDataView {
 	}
 
 	public readCollectableRelicsData(): CollectableRelicsDataSilk {
+		const packed = this.readUint8();
 		return {
-			IsCollected: this.readBool(),
-			IsDeposited: this.readBool(),
-			HasSeenInRelicBoard: this.readBool(),
+			IsCollected: (packed & (1 << 0)) !== 0,
+			IsDeposited: (packed & (1 << 1)) !== 0,
+			HasSeenInRelicBoard: (packed & (1 << 2)) !== 0,
 		};
 	}
 
 	public readCollectableMementosData(): CollectableMementosDataSilk {
+		const packed = this.readUint8();
 		return {
-			IsDeposited: this.readBool(),
-			HasSeenInRelicBoard: this.readBool(),
+			IsDeposited: (packed & (1 << 0)) !== 0,
+			HasSeenInRelicBoard: (packed & (1 << 1)) !== 0,
 		};
 	}
 
 	public readQuestRumourData(): QuestRumourDataSilk {
+		const packed = this.readUint8();
 		return {
-			HasBeenSeen: this.readBool(),
-			IsAccepted: this.readBool(),
+			HasBeenSeen: (packed & (1 << 0)) !== 0,
+			IsAccepted: (packed & (1 << 1)) !== 0,
 		};
 	}
 
 	public readQuestCompletionData(): QuestCompletionDataSilk {
+		const packed = this.readUint8();
+		const completedCount = this.readInt32();
 		return {
-			HasBeenSeen: this.readBool(),
-			IsAccepted: this.readBool(),
-			CompletedCount: this.readInt32(),
-			IsCompleted: this.readBool(),
-			WasEverCompleted: this.readBool(),
+			HasBeenSeen: (packed & (1 << 0)) !== 0,
+			IsAccepted: (packed & (1 << 1)) !== 0,
+			CompletedCount: completedCount,
+			IsCompleted: (packed & (1 << 2)) !== 0,
+			WasEverCompleted: (packed & (1 << 3)) !== 0,
 		};
 	}
 
 	public readMateriumItemsData(): MateriumItemsDataSilk {
+		const packed = this.readUint8();
 		return {
-			IsCollected: this.readBool(),
-			HasSeenInRelicBoard: this.readBool(),
+			IsCollected: (packed & (1 << 0)) !== 0,
+			HasSeenInRelicBoard: (packed & (1 << 1)) !== 0,
 		};
 	}
 
 	public readToolItemLiquidsData(): ToolItemLiquidsDataSilk {
+		const packed = this.readUint8();
+		const refillsLeft = this.readInt32();
 		return {
-			RefillsLeft: this.readInt32(),
-			SeenEmptyState: this.readBool(),
-			UsedExtra: this.readBool(),
+			RefillsLeft: refillsLeft,
+			SeenEmptyState: (packed & (1 << 0)) !== 0,
+			UsedExtra: (packed & (1 << 1)) !== 0,
 		};
 	}
 
 	public readToolItemsData(): ToolItemsDataSilk {
+		const packed = this.readUint8();
+		const amountLeft = this.readInt32();
 		return {
+			IsUnlocked: (packed & (1 << 0)) !== 0,
+			IsHidden: (packed & (1 << 1)) !== 0,
+			HasBeenSeen: (packed & (1 << 2)) !== 0,
+			HasBeenSelected: (packed & (1 << 3)) !== 0,
+			AmountLeft: amountLeft,
+		};
+	}
+
+	public readToolCrestsSlotData(): ToolCrestsSlotDataSilk {
+		return {
+			EquippedTool: this.readStringWithId(stringIdMappingSilk.tool) ?? '',
 			IsUnlocked: this.readBool(),
-			IsHidden: this.readBool(),
-			HasBeenSeen: this.readBool(),
-			HasBeenSelected: this.readBool(),
-			AmountLeft: this.readInt32(),
 		};
 	}
 
 	public readToolCrestsData(): ToolCrestsDataSilk {
-		const isUnlocked = this.readBool();
+		const packed = this.readUint8();
 		const slotsCount = this.readInt32();
+
+		const isUnlocked = (packed & (1 << 0)) !== 0;
+		const displayNewIndicator = (packed & (1 << 1)) !== 0;
+
 		if (slotsCount < 0) {
 			throw new Error(`Invalid tool crests slot count ${slotsCount} at ${this.offset - 4}`);
 		}
 
-		const slots = [];
+		const slots: ToolCrestsSlotDataSilk[] = [];
 		for (let i = 0; i < slotsCount; i++) {
-			slots.push({
-				EquippedTool: this.readString(),
-				IsUnlocked: this.readBool(),
-			});
+			slots.push(this.readToolCrestsSlotData());
 		}
 
-		const displayNewIndicator = this.readBool();
 		return {
 			IsUnlocked: isUnlocked,
 			Slots: slots,
@@ -264,9 +299,11 @@ export class SilkRecordingDataView {
 	}
 
 	public readEnemyJournalKillData(): EnemyJournalKillDataSilk {
+		const hasBeenSeen = this.readBool();
+		const kills = this.readInt32();
 		return {
-			Kills: this.readInt32(),
-			HasBeenSeen: this.readBool(),
+			Kills: kills,
+			HasBeenSeen: hasBeenSeen,
 		};
 	}
 

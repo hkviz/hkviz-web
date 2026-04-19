@@ -114,6 +114,11 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 		zone: 37,
 		actualSceneName: 'Abyss_12',
 	},
+	Abyss_12_top: {
+		id: 898,
+		zone: null,
+		actualSceneName: 'Abyss_12',
+	},
 	Abyss_13: {
 		id: 23,
 		zone: 37,
@@ -128,6 +133,11 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 		id: 25,
 		zone: 11,
 		actualSceneName: 'Ant_02',
+	},
+	Ant_02b: {
+		id: 899,
+		zone: null,
+		actualSceneName: null,
 	},
 	Ant_03: {
 		id: 26,
@@ -1039,6 +1049,11 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 		zone: null,
 		actualSceneName: 'Bone_East_15',
 	},
+	Bone_East_15_right: {
+		id: 900,
+		zone: null,
+		actualSceneName: 'Bone_East_15',
+	},
 	Bone_East_15_top_right: {
 		id: 208,
 		zone: null,
@@ -1549,6 +1564,21 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 		zone: 41,
 		actualSceneName: 'Coral_29',
 	},
+	Coral_29_joiner: {
+		id: 901,
+		zone: null,
+		actualSceneName: 'Coral_29',
+	},
+	Coral_29_left: {
+		id: 902,
+		zone: null,
+		actualSceneName: 'Coral_29',
+	},
+	Coral_29_right: {
+		id: 903,
+		zone: null,
+		actualSceneName: 'Coral_29',
+	},
 	Coral_32: {
 		id: 310,
 		zone: 32,
@@ -1582,6 +1612,16 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 	Coral_35: {
 		id: 316,
 		zone: 32,
+		actualSceneName: 'Coral_35',
+	},
+	Coral_35_break_base: {
+		id: 904,
+		zone: null,
+		actualSceneName: 'Coral_35',
+	},
+	Coral_35_break_base_bottom: {
+		id: 905,
+		zone: null,
 		actualSceneName: 'Coral_35',
 	},
 	Coral_35_secret: {
@@ -1812,6 +1852,11 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 	Dock_02: {
 		id: 362,
 		zone: 15,
+		actualSceneName: 'Dock_02',
+	},
+	Dock_02_bot: {
+		id: 906,
+		zone: null,
 		actualSceneName: 'Dock_02',
 	},
 	Dock_02_bot_left: {
@@ -2218,6 +2263,11 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 		id: 443,
 		zone: null,
 		actualSceneName: 'Greymoor_02',
+	},
+	Greymoor_02b: {
+		id: 907,
+		zone: null,
+		actualSceneName: null,
 	},
 	Greymoor_03: {
 		id: 444,
@@ -3494,6 +3544,16 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 		zone: 7,
 		actualSceneName: 'Slab_07',
 	},
+	Slab_07_ascent: {
+		id: 908,
+		zone: null,
+		actualSceneName: 'Slab_07',
+	},
+	Slab_07_top_left: {
+		id: 909,
+		zone: null,
+		actualSceneName: 'Slab_07',
+	},
 	Slab_08: {
 		id: 699,
 		zone: 7,
@@ -3727,6 +3787,11 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 	Song_05: {
 		id: 745,
 		zone: 6,
+		actualSceneName: 'Song_05',
+	},
+	Song_05_right: {
+		id: 910,
+		zone: null,
 		actualSceneName: 'Song_05',
 	},
 	Song_07: {

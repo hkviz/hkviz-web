@@ -1,4 +1,8 @@
 export const entryTypeSilk = {
+	// File Meta
+	SessionStart: 0x03,
+	SessionEnd: 0x05,
+
 	HeroLocation: 0x01,
 
 	// Scene
@@ -35,6 +39,13 @@ export const entryTypeSilk = {
 	PlayerDataWrappedVector2ListFull: 0x1e,
 	PlayerDataWrappedVector2ListDelta: 0x1f,
 	PlayerDataWrappedVector2ListAppend: 0x20,
-};
+} as const;
 
 export type EntryTypeSilk = (typeof entryTypeSilk)[keyof typeof entryTypeSilk];
+
+export const entryTypeSilkByValue: Map<number, keyof typeof entryTypeSilk> = new Map(
+	Object.entries(entryTypeSilk).map(([key, value]) => [value, key] as const),
+) as Map<number, keyof typeof entryTypeSilk>;
+
+export const entryTypeNameSilk = (entryType: EntryTypeSilk): string =>
+	entryTypeSilkByValue.get(entryType) ?? `unknown_entry_type_${entryType}`;

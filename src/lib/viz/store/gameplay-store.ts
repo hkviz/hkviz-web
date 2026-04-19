@@ -1,4 +1,4 @@
-import { createContext, createMemo, createSignal, useContext } from 'solid-js';
+import { createContext, createMemo, createSignal, onCleanup, onMount, useContext } from 'solid-js';
 import { playerDataFieldsHollow } from '~/lib/game-data/hollow-data/player-data-hollow';
 import { GameModuleOfGame } from '~/lib/game-module/game-module';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
@@ -13,6 +13,10 @@ export function createGameplayStore<Game extends GameId>() {
 	function reset() {
 		setRecording(null);
 	}
+
+	onMount(() => {
+		onCleanup(() => {});
+	});
 
 	const timeFrame = createMemo(() => {
 		const r = recording();
