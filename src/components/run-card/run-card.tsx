@@ -30,7 +30,6 @@ import { runArchive, runDelete } from '~/server/run/run-deletion';
 import { type GetRunResult } from '~/server/run/run-get';
 import { runInteractionLike, runInteractionUnlike } from '~/server/run/run-interaction';
 import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
-import { getMapZoneHudBackgroundWithStyleOverrides } from '../area-background';
 import { RunCardDropdownMenu } from '../run-card-dropdown';
 import { Expander } from '../ui/additions';
 import { Badge } from '../ui/badge';
@@ -38,6 +37,7 @@ import { Button } from '../ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
 import { showToast } from '../ui/toast';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
+import { RunCardBackground } from './run-card-background.tsx';
 import { RunCardTags } from './run-card-tags.tsx';
 
 function Duration(props: { seconds: number }) {
@@ -147,8 +147,6 @@ export const RunCard: Component<{
 	const gameStateAsSilk = () => (props.run.gameState.game === 'silk' ? props.run.gameState : null);
 	const gameStateAsHollow = () => (props.run.gameState.game === 'hollow' ? props.run.gameState : null);
 
-	const bgImage = () => getMapZoneHudBackgroundWithStyleOverrides(gameState());
-
 	const isSteelSoul = () => props.run.isSteelSoul;
 	const isBrokenSteelSoul = () => props.run.isBrokenSteelSoul;
 
@@ -174,11 +172,12 @@ export const RunCard: Component<{
 		<Expander expanded={!isRemoved()} class="overflow-visible">
 			<div
 				class={cn(
-					'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl bg-black py-2 pr-3 pl-4 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
+					'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl py-2 pr-3 pl-4 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
 					isRemoved() ? 'scale-125 opacity-0' : '',
 					isRemoving() ? 'grayscale' : '',
 				)}
 			>
+				<RunCardBackground run={props.run} />
 				{/* https://css-tricks.com/nested-links/ */}
 				<Show
 					when={props.onClick}
@@ -191,11 +190,12 @@ export const RunCard: Component<{
 					<div class="-mb-4 flex flex-row items-start justify-end gap-1 sm:-mb-7">
 						{/* TODO add mutations */}
 						<RunCardTags
+							runGame={props.run.gameState.game}
 							codes={props.run.tags}
 							runId={props.run.id}
 							isOwn={Boolean(props.isOwnRun)}
-							addButtonClass="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
-							removeButtonClass="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity"
+							addButtonClass="hasHover:opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 hasHover:scale-90 group-hover:scale-100 group-focus-within:scale-100 transition origin-right"
+							removeButtonClass="hasHover:opacity-0 hasHover:w-4 group-hover:w-8 group-focus-within:w-8 -ml-1 transition-all group-hover:opacity-100 group-focus-within:opacity-100"
 						/>
 						<Show when={props.isOwnRun}>
 							<DropdownMenu>
@@ -204,7 +204,7 @@ export const RunCard: Component<{
 									class="z-8 inline-flex h-auto p-0 disabled:z-8"
 									disabled={visibilityActionSubmission.pending}
 								>
-									<Badge class={'relative z-8 overflow-hidden disabled:z-8'} variant="secondary">
+									<Badge class={'relative overflow-hidden disabled:z-8'} variant="secondary">
 										<Dynamic component={visibilityIcon()} class="h-4 w-4" />
 										<ChevronDownIcon class="-mr-1 ml-1 h-3 w-3" />
 									</Badge>
@@ -223,7 +223,7 @@ export const RunCard: Component<{
 						</Show>
 					</div>
 					<div class="flex grow flex-row">
-						<div class="relative z-3 -mb-5 h-28 w-16 shrink-0 origin-top-left scale-75 sm:mb-0 sm:w-26 sm:scale-100">
+						<div class="relative -mb-5 h-28 w-16 shrink-0 origin-top-left scale-75 sm:mb-0 sm:w-26 sm:scale-100">
 							<Show when={gameStateAsSilk()}>
 								{(gs) => (
 									<RunCardFrameSilk
@@ -246,21 +246,21 @@ export const RunCard: Component<{
 											<img
 												src={soulOrbImgSrc()}
 												alt="Soul orb"
-												class="absolute bottom-11 left-[-0.85rem] z-3 scale-90"
+												class="absolute bottom-11 left-[-0.85rem] scale-90"
 											/>
 										</Show>
 										<Show when={(gameState()?.mpReserveMax ?? 100) >= 66}>
 											<img
 												src={soulOrbImgSrc()}
 												alt="Soul orb"
-												class="absolute bottom-[1.6rem] left-[-0.4rem] z-3 scale-95"
+												class="absolute bottom-[1.6rem] left-[-0.4rem] scale-95"
 											/>
 										</Show>
 										<Show when={(gameState()?.mpReserveMax ?? 100) >= 33}>
 											<img
 												src={soulOrbImgSrc()}
 												alt="Soul orb"
-												class="absolute bottom-[0.65rem] left-2 z-3"
+												class="absolute bottom-[0.65rem] left-2"
 											/>
 										</Show>
 									</>
@@ -270,7 +270,7 @@ export const RunCard: Component<{
 						<div class="flex grow flex-col">
 							<div
 								class={cn(
-									'relative z-4 mt-4 flex flex-row flex-wrap gap-1 drop-shadow-xs sm:gap-2',
+									'relative mt-4 flex flex-row flex-wrap gap-1 drop-shadow-xs sm:gap-2',
 									gameState().game === 'silk' ? '-translate-x-2 translate-y-1' : '',
 								)}
 							>
@@ -278,7 +278,7 @@ export const RunCard: Component<{
 									{() => <img src={healthImgSrc()} alt="Health" class="-mb-1 w-5 sm:w-6" />}
 								</Index>
 							</div>
-							<div class="relative z-4 mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-xs sm:mt-3">
+							<div class="relative mt-1 flex w-full flex-row gap-2 font-serif text-2xl drop-shadow-xs sm:mt-3">
 								<span>
 									<img
 										src={props.run.gameState.game === 'silk' ? rosaryHudImg : coin2Img}
@@ -366,45 +366,6 @@ export const RunCard: Component<{
 
 				<Show when={props.run.currentUserState}>
 					<RunCardLikeButton run={props.run} />
-				</Show>
-				{/* Background */}
-				<div class="absolute inset-0 z-1 h-full w-full bg-black opacity-70">
-					<Show when={props.run.gameState.game === 'silk'}>
-						<img
-							class={cn(
-								'top-[-10%] left-[-10%] h-[120%] w-[120%] object-cover object-[50%_70%] opacity-90 blur-lg',
-								bgImage().imgClasses,
-							)}
-							src={bgImage().src}
-							alt=""
-							aria-hidden="true"
-							loading="lazy"
-						/>
-					</Show>
-					<div
-						class={cn(
-							'absolute',
-							props.run.gameState.game === 'hollow'
-								? 'top-0 left-0 h-full w-full'
-								: 'top-0 left-[20%] h-full w-[60%]',
-						)}
-					>
-						<img
-							class={cn(
-								'inset-0 h-full w-full object-cover object-center transition group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90',
-								props.run.gameState.game === 'hollow' ? '' : 'area-background-fade-x object-[50%_70%]',
-								bgImage().imgClasses,
-							)}
-							src={bgImage().src}
-							alt=""
-							aria-hidden="true"
-							loading="lazy"
-						/>
-					</div>
-				</div>
-				<div class="absolute inset-0 z-2 bg-linear-to-r from-black via-transparent to-black" />
-				<Show when={props.run.gameState.game === 'silk'}>
-					<div class="absolute inset-0 z-2 shadow-[inset_0_0_2rem_0.5rem_black]" />
 				</Show>
 			</div>
 		</Expander>

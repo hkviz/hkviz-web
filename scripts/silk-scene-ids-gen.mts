@@ -36,6 +36,9 @@ const unfoundSceneNames = [
 	'Coral_29_left',
 	'Coral_29_joiner',
 	'Coral_29_right',
+
+	// just for casing:
+	'Menu_Title',
 ];
 
 // Map data:

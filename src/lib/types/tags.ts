@@ -1,35 +1,46 @@
 import * as v from 'valibot';
+import { cn } from '../utils';
+import { GameId } from './game-ids';
 
-const lime = {
-	className: 'bg-lime-600 dark:bg-lime-700 hover:bg-lime-900',
+interface TagColor {
+	className: string;
+}
+
+const tagClasses = cn(
+	'relative rounded-full border-0 px-2.75 py-0.75 font-semibold tracking-wide text-white ring-[1.5px] ring-inset',
+	'duration-200 hover:brightness-110',
+);
+
+const lime: TagColor = {
+	className: cn(tagClasses, 'bg-gradient-to-b from-lime-600 via-lime-700 to-lime-800 ring-lime-300/10'),
 };
 
-const green = {
-	className: 'bg-green-600 dark:bg-green-700 hover:bg-green-900',
+const green: TagColor = {
+	className: cn(tagClasses, 'bg-gradient-to-b from-green-600 via-green-700 to-green-800 ring-green-300/10'),
 };
 
-const violet = {
-	className: 'bg-violet-600 dark:bg-violet-700 hover:bg-violet-900',
+const violet: TagColor = {
+	className: cn(tagClasses, 'bg-gradient-to-b from-violet-600 via-violet-700 to-violet-800 ring-violet-300/10'),
 };
 
-const red = {
-	className: 'bg-red-600 dark:bg-red-700 hover:bg-red-900',
+const red: TagColor = {
+	className: cn(tagClasses, 'bg-gradient-to-b from-red-600 via-red-700 to-red-800 ring-red-300/10'),
 };
 
-const orange = {
-	className: 'bg-orange-600 dark:bg-orange-700 hover:bg-orange-900',
+const orange: TagColor = {
+	className: cn(tagClasses, 'bg-gradient-to-b from-orange-600 via-orange-700 to-orange-800 ring-orange-300/10'),
 };
 
-const amber = {
-	className: 'bg-amber-600 dark:bg-amber-700 hover:bg-amber-900',
+const amber: TagColor = {
+	className: cn(tagClasses, 'bg-gradient-to-b from-amber-600 via-amber-700 to-amber-800 ring-amber-300/10'),
 };
 
-const fuchsia = {
-	className: 'bg-fuchsia-600 dark:bg-fuchsia-700 hover:bg-fuchsia-900',
+const fuchsia: TagColor = {
+	className: cn(tagClasses, 'bg-gradient-to-b from-fuchsia-600 via-fuchsia-700 to-fuchsia-800 ring-fuchsia-300/10'),
 };
 
-const indigo = {
-	className: 'bg-indigo-600 dark:bg-indigo-700 hover:bg-indigo-900',
+const indigo: TagColor = {
+	className: cn(tagClasses, 'bg-gradient-to-b from-indigo-600 via-indigo-700 to-indigo-800 ring-indigo-300/10'),
 };
 
 let _currentNextOrder = 1;
@@ -37,130 +48,154 @@ function nextOrder() {
 	return _currentNextOrder++;
 }
 
+export type TagGroupCode = 'speedrun';
+
+function makeTag<TId extends string>(options: {
+	code: TId;
+	name: string;
+	longName?: string;
+	color: { className: string };
+	group?: TagGroupCode;
+	games?: GameId[];
+
+	removed?: true;
+}) {
+	return {
+		...options,
+		order: nextOrder(),
+		games: options.games ?? ['hollow', 'silk'],
+	} as const;
+}
+
 export const tags = [
-	{
+	makeTag({
 		code: 'first_playthrough',
 		name: 'First Playthrough',
-		order: nextOrder(),
 		color: green,
-	},
-	{
+	}),
+	makeTag({
 		code: 'casual',
 		name: 'Casual',
-		order: nextOrder(),
 		color: lime,
-	},
-	{
+	}),
+	makeTag({
 		code: 'randomizer',
 		name: 'Randomizer',
-		order: nextOrder(),
 		color: fuchsia,
-	},
-	{
+	}),
+	makeTag({
 		code: 'item_sync',
 		name: 'ItemSync',
-		order: nextOrder(),
 		color: violet,
-	},
-	{
+	}),
+	makeTag({
 		code: 'tas',
 		name: 'TAS',
-		order: nextOrder(),
 		color: indigo,
-	},
+	}),
 
-	// from https://hollow-knight-speedrunning.fandom.com/wiki/Speedrun_categories
-	{
+	// originally from https://hollow-knight-speedrunning.fandom.com/wiki/Speedrun_categories
+	// now match https://www.speedrun.com/hollowknight categories
+	makeTag({
 		code: 'speedrun_any',
 		name: 'Any%',
 		group: 'speedrun',
-		order: nextOrder(),
 		color: red,
-	},
-	{
-		code: 'speedrun_112',
-		name: '112% All Pantheon Bosses',
-		group: 'speedrun',
-		order: nextOrder(),
-		color: red,
-	},
-	{
-		code: 'speedrun_true',
-		name: 'True Ending',
-		group: 'speedrun',
-		order: 7,
-		color: red,
-	},
-	{
-		code: 'speedrun_106',
-		name: '106% True Ending',
-		group: 'speedrun',
-		order: nextOrder(),
-		color: red,
-	},
-	{
-		code: 'speedrun_godhome',
-		name: 'Godhome Ending',
-		group: 'speedrun',
-		order: nextOrder(),
-		color: red,
-	},
-	{
-		code: 'speedrun_low',
-		name: 'Low%',
-		group: 'speedrun',
-		order: nextOrder(),
-		color: amber,
-	},
-	{
-		code: 'speedrun_low_true',
-		name: 'Low% True Ending',
-		group: 'speedrun',
-		order: nextOrder(),
-		color: amber,
-	},
-	{
-		code: 'speedrun_low_godhome',
-		name: 'Low% Godhome Ending',
-		group: 'speedrun',
-		order: nextOrder(),
-		color: amber,
-	},
-	{
+	}),
+	makeTag({
 		code: 'speedrun_all_skills',
 		name: 'All Skills',
 		group: 'speedrun',
-		order: nextOrder(),
 		color: orange,
-	},
-	{
+		games: ['hollow'],
+	}),
+	makeTag({
+		code: 'speedrun_112',
+		name: '112% APB',
+		longName: '112% All Pantheon Bosses',
+		group: 'speedrun',
+		color: orange,
+		games: ['hollow'],
+	}),
+	makeTag({
+		code: 'speedrun_107',
+		name: '107% AB',
+		longName: '107% All Bosses',
+		group: 'speedrun',
+		color: orange,
+		games: ['hollow'],
+	}),
+	makeTag({
+		code: 'speedrun_106',
+		name: '106% True Ending',
+		group: 'speedrun',
+		color: orange,
+		games: ['hollow'],
+	}),
+	makeTag({
+		code: 'speedrun_true',
+		name: 'True Ending',
+		group: 'speedrun',
+		color: orange,
+	}),
+	makeTag({
+		code: 'speedrun_godhome',
+		name: 'Godhome Ending',
+		group: 'speedrun',
+		color: orange,
+		removed: true,
+		games: ['hollow'],
+	}),
+	makeTag({
+		code: 'speedrun_low',
+		name: 'Low%',
+		group: 'speedrun',
+		color: amber,
+	}),
+	makeTag({
+		code: 'speedrun_low_true',
+		name: 'Low% True Ending',
+		group: 'speedrun',
+		color: amber,
+		games: ['hollow'],
+	}),
+	makeTag({
+		code: 'speedrun_low_godhome',
+		name: 'Low% Godhome Ending',
+		group: 'speedrun',
+		color: amber,
+		games: ['hollow'],
+	}),
+	makeTag({
 		code: 'speedrun_grub',
 		name: 'Grub%',
 		group: 'speedrun',
-		order: nextOrder(),
 		color: orange,
-	},
-	{
+		removed: true,
+		games: ['hollow'],
+	}),
+	makeTag({
 		code: 'speedrun_great_hopper',
 		name: 'Great Hopper%',
 		group: 'speedrun',
-		order: nextOrder(),
 		color: orange,
-	},
-	{
+		removed: true,
+		games: ['hollow'],
+	}),
+	makeTag({
 		code: 'speedrun_eat_me_too',
 		name: 'Eat Me Too%',
 		group: 'speedrun',
-		order: nextOrder(),
 		color: orange,
-	},
-	{
+		removed: true,
+		games: ['hollow'],
+	}),
+	makeTag({
 		code: 'speedrun_other',
-		name: 'Other',
+		name: 'Other Speedrun',
 		group: 'speedrun',
-		order: nextOrder(),
-		color: orange,
-	},
+		color: red,
+	}),
 ] as const;
 
 function tagsOfGroup(group: string | undefined) {
@@ -172,10 +207,11 @@ export const tagGroups = [
 		code: 'speedrun',
 		name: 'Speedrun',
 		tags: tagsOfGroup('speedrun'),
+		tagsNotRemoved: tagsOfGroup('speedrun').filter((tag) => !tag.removed),
 	},
 ] as const;
 
-export const ungroupedTags = tagsOfGroup(undefined);
+export const ungroupedTagsNotRemoved = tagsOfGroup(undefined).filter((tag) => !tag.removed);
 
 type CodesOf<T extends readonly { code: unknown }[]> = {
 	[I in keyof T]: T[I]['code'];
@@ -183,7 +219,6 @@ type CodesOf<T extends readonly { code: unknown }[]> = {
 
 type TagGroupCodes = CodesOf<typeof tagGroups>;
 export type TagGroup = (typeof tagGroups)[number];
-export type TagGroupCode = TagGroupCodes[number];
 export const tagGroupCodes = tagGroups.map((it) => it.code) as unknown as TagGroupCodes;
 export const tagGroupSchema = v.picklist(tagGroupCodes);
 

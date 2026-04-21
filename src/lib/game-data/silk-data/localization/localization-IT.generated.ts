@@ -53,6 +53,271 @@ export default {
 	'Map Zones.CITADEL_FORUM': 'Il Forum',
 	'Map Zones.COG_CORE': 'Nucleo <br>Meccanico',
 	'Map Zones.ABYSS': 'L’Abisso',
+	'UI.INV_NAME_DRESS_REG': 'Mantello del cacciatore',
+	'UI.INV_NAME_DRESS_BROLLY': 'Mantello del nomade',
+	'UI.INV_NAME_DRESS_DJ': 'Mantello fatato',
+	'UI.INV_DESC_DRESS_REG': 'Indumento protettivo semplice, di ottima fattura ma già in parte logoro.',
+	'UI.INV_DESC_DRESS_BROLLY': 'Indumento protettivo semplice sul quale sono stati applicati aculei flessibili.',
+	'UI.INV_DESC_DRESS_DJ':
+		'Indumento produttivo foderato con le morbide piume di un Piumagico e applicazioni di aculei flessibili.',
+	'UI.INV_DESC_DRESS_APP_FLY_FULL': 'Ha un forte odore di mosca.',
+	'UI.INV_DESC_DRESS_APP_FLY_HALF': 'Ha un vago odore di mosca.',
+	'UI.INV_NAME_TOOLPOUCH': 'Sacca per strumenti',
+	'UI.INV_NAME_POUCHANDTOOLKIT': 'Sacca per strumenti<br>e corredo per creazione',
+	'UI.INV_DESC_TOOLPOUCH': 'Sacca semplice adibita a contenere strumenti, trappole e materiali di creazione.',
+	'UI.INV_DESC_POUCHANDTOOLKIT':
+		'Una sacca per trappole e strumenti, oltre a materiali sofisticati per aumentarne la letalità.',
+	'UI.INV_NAME_QUILL': 'Piuma',
+	'UI.INV_NAME_MAP': 'Mappa',
+	'UI.INV_NAME_MAPANDQUILL': 'Mappa e piuma',
+	'UI.INV_DESC_QUILL':
+		'Strumento di scrittura usato per prendere nota dei viaggi intrapresi. Utilizzabile per aggiornare le mappe in proprio possesso.',
+	'UI.INV_DESC_MAP': 'Mappa di Lungitela, in parte compilata da Shakra. Senza piuma non può essere aggiornata.',
+	'UI.INV_DESC_MAPANDQUILL':
+		'Mappa di Lungitela e una piuma per prendere nota dei viaggi intrapresi. Quando riposi a una panchina o in un altro luogo, alla mappa saranno aggiunte le aree scoperte di recente.',
+	'UI.INV_NAME_WHITE_FLOWER': 'Fioreterno',
+	'UI.INV_DESC_WHITE_FLOWER':
+		'Fiore etereo raccolto in un ricordo recondito e distante. Emana una luce chiara e soffusa che protegge dal vuoto.',
+	'UI.INV_NAME_TOOL_METAL': 'Metallo artigiano',
+	'UI.INV_DESC_TOOL_METAL':
+		'Elemento raro che si trova in natura tra le rocce e le ossa di Lungitela.<br><br>Usato da abili insetti artigiani per costruire strumenti e ninnoli vari.',
+	'UI.INV_NAME_CREST_SOCKET': 'Medaglione del ricordo',
+	'UI.INV_DESC_CREST_SOCKET':
+		'Cimelio contenente un ricordo prezioso. Utilizzabile per espandere un Emblema.<br><br>Puoi espandere Emblemi nel pannello Emblema del Menu.',
+	'UI.INV_NAME_PLINNEY_TOOLS': 'Olio pallido',
+	'UI.INV_DESC_PLINNEY_TOOLS':
+		'Ghiandola biliare di una rara Lumaca Silfonica. I Mastri Spillai più talentuosi possono usare il liquido lucente all’interno per affilare lame.',
+	'UI.INV_NAME_HEART_CORAL': 'Cuor di corallo',
+	'UI.INV_DESC_HEART_CORAL': 'Cuore rianimato del Re Corallo Khann. Il suo battito è lento e profondo.',
+	'UI.INV_DESC_MOMENTO_HEART_EXTRA': 'Il cuore può essere esposto in una casa.',
+	'UI.INV_NAME_HEART_BLOOM': 'Cuore di polline',
+	'UI.INV_DESC_HEART_BLOOM': 'Cuore rianimato di Nyleth. Il suo battito è debole e veloce.',
+	'UI.INV_NAME_HEART_HUNTER': 'Cuore della cacciatrice',
+	'UI.INV_DESC_HEART_HUNTER': 'Cuore rianimato della Mirmede Cantante Karmelita. Il suo battito è forte e regolare.',
+	'UI.INV_NAME_HEART_CLOVER': 'Cuore congiunto',
+	'UI.INV_DESC_HEART_CLOVER': 'Cuore rianimato del Principe Verde. Il suo battito è acuto e chiaro.',
+	'UI.INV_NAME_PLASMIUM_GLAND': 'Ghiandola di plasmio',
+	'UI.INV_DESC_PLASMIUM_GLAND':
+		'Organo pulsante cresciuto nel carapace dell’Alchimista Zylotol. La ghiandola si riempie nel tempo e costituisce una fonte pressoché infinita di plasmio.<br><br>La creazione di nuove fiale di plasmio non richiede più una riserva.',
+	'UI.INV_NAME_BROKEN_SILKSHOT': 'Strumento rovinato',
+	'UI.INV_DESC_BROKEN_SILKSHOT':
+		'Resti di un antico strumento delle Tessitrici, rotto e ormai inutilizzabile.<br><br>Un insetto artigiano particolarmente abile potrebbe riuscire a ripararlo.',
+	'UI.INV_NAME_WITCH_ITEM': 'Bocciotorto',
+	'UI.INV_DESC_WITCH_ITEM': 'Una massa contorta di vegetali grigi. Strilla incessantemente.',
+	'UI.INV_NAME_COG_HEART_PIECE': 'Pezzo di cuore meccanico',
+	'UI.INV_NAME_COG_HEART_PIECES': 'Pezzi di cuore meccanico',
+	'UI.INV_NAME_COG_HEART': 'Cuore meccanico',
+	'UI.INV_DESC_COG_HEART_PIECE': 'Una parte di un cuore meccanico contenente un complesso di ruote e regolatori.',
+	'UI.INV_DESC_COG_HEART_PIECES':
+		'Due parti di un cuore meccanico contenenti un insieme complesso di ruote e regolatori.',
+	'UI.INV_DESC_COG_HEART': 'Un cuore meccanico rimontato contenente una serie notevole di ruote e regolatori.',
+	'UI.INV_NAME_CRAW_SUMMONS': 'Appello di Corvide',
+	'UI.INV_DESC_CRAW_SUMMONS':
+		'Missiva scarabocchiata su di uno straccio nero consunto.<br><br>“Profanatrice... Oscuro... Visita... Casa... Ruota...”',
+	'UI.INV_NAME_MOSSBERRY': 'Baccamuschio',
+	'UI.INV_DESC_MOSSBERRY':
+		'Frutto dolciastro che cresce in ambienti umidi. I semi sono tossici per la maggior parte delle creature.',
+	'UI.INV_NAME_PILGRIM_RAGS_ITEM': 'Scialle consunto',
+	'UI.INV_DESC_PILGRIM_RAGS_ITEM':
+		'Indumento semplice indossato da svariati pellegrini in ere diverse. Strappato, lacero e ricucito più e più volte.',
+	'UI.INV_NAME_SPINE': 'Cuor di aculeo',
+	'UI.INV_DESC_SPINE':
+		'Fibra flessibile estratta dall’aculeo di un Rigonfio. Una sarta esperta può cucirla su indumenti e accessori.',
+	'UI.INV_NAME_SHELL_FLOWER': 'Cuor di nettare',
+	'UI.INV_DESC_SHELL_FLOWER':
+		'Centro di un fiore formatosi attorno al corpo di una Caravespa decomposta. Secerne una linfa dolciastra di cui si nutrono le vespe.',
+	'UI.INV_NAME_CROW_FEATHER': 'Pelle straccia',
+	'UI.INV_DESC_CROW_FEATHER':
+		'Pelle lacera prelevata dal corpo di un Corvide. Scialba e fin troppo delicata, ha ben pochi impieghi.',
+	'UI.INV_NAME_ROCK_ROLLER_ITEM': 'Gemmaselce',
+	'UI.INV_DESC_ROCK_ROLLER_ITEM':
+		'Organo di un Coleoselce rassomigliante a una gemma. Produce scintille incendiarie se sottoposto ad abrasione, e può esplodere se cade o si crepa.',
+	'UI.INV_NAME_ROACH_CORPSE_ITEM': 'Viscere di blatta',
+	'UI.INV_DESC_ROACH_CORPSE_ITEM':
+		'Interiora fresche di uno Scarafango. Sode, viscide e fetide. In molti le trovano immangiabili.',
+	'UI.INV_NAME_SK_FRAGMENT': 'Frammento di corona',
+	'UI.INV_DESC_SK_FRAGMENT': 'Grossa scheggia d’osso prelevata da un Teschio Tiranno sconfitto.',
+	'UI.INV_NAME_BEASTFLY_REMAINS': 'Frammento di corno',
+	'UI.INV_DESC_BEASTFLY_REMAINS':
+		'Pezzo indurito di un carapace a forma di corno appartenente a una Moscabestia Brutale sconfitta.',
+	'UI.INV_NAME_CONCHFLY_REMAINS': 'Spira corallina',
+	'UI.INV_DESC_CONCHFLY_REMAINS': 'Pezzo duro di corno, spezzato dalla cima del carapace di una Mosconchiglia.',
+	'UI.INV_NAME_BROODMOTHER_REMAINS': 'Occhio di Madre Nutrice',
+	'UI.INV_DESC_BROODMOTHER_REMAINS': 'Organo gelatinoso prelevato dalla Madre Nutrice sconfitta.',
+	'UI.INV_NAME_BELLCLAPPER_ITEM': 'Campana d’argento',
+	'UI.INV_DESC_BELLCLAPPER_ITEM': 'Campana finemente forgiata da un metallo luccicante.',
+	'UI.INV_NAME_BLUE_GOOP': 'Plasmio',
+	'UI.INV_NAME_BLUE_GOOP_PICKUP': 'Plasmio raccolto',
+	'UI.INV_DESC_BLUE_GOOP': 'Seme vitale liquido estratto da un boccio maturo. Possiede qualità rigenerative.',
+	'UI.INV_DESC_BLUE_GOOP_FULL': 'Seme vitale liquido estratto da un boccio maturo. Possiede qualità rigenerative.',
+	'UI.INV_NAME_CORAL_CHUNK': 'Scheggia di corallo',
+	'UI.INV_DESC_CORAL_CHUNK':
+		'Pezzo consistente di corallo. È inadatto alla creazione di strumenti, ma pare abbia varie proprietà medicinali se preparato correttamente.',
+	'UI.INV_NAME_FINEPIN': 'Spillo di qualità',
+	'UI.INV_DESC_FINEPIN':
+		'Arma comune di Lungitela, ancora in buone condizioni nonostante l’uso prolungato. Una bacchetta in metallo appuntita e di ottima fattura.',
+	'UI.INV_NAME_SHININGCOG': 'Ingranaggio lucente',
+	'UI.INV_DESC_SHININGCOG':
+		'Ingranaggio intatto originariamente all’interno del carapace di un automa. Il metallo è ancora perfetto nonostante l’uso prolungato.',
+	'UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM': 'Mantello corale',
+	'UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM':
+		'Indumento donato ai pellegrini una volta ammessi alla Cittadella. Protegge ulteriormente da vento e freddo grazie al tessuto pesante.',
+	'Quests.COURIER_SUPPLIES_ITEM_NAME': 'Fagotto del corriere',
+	'Quests.COURIER_SUPPLIES_ITEM_DESC': 'Sacca in tessuto pesante per trasportare strumenti, ninnoli e medicinali.',
+	'Quests.COURIER_SUPPLIES_SLAVE_NAME': 'Uovo della regina',
+	'Quests.COURIER_SUPPLIES_SLAVE_DESC':
+		'Uovo fragile contenente una giovane regina Mangiaseta. Nonostante la regina non possa raccogliere Seta, con le dovute cure potrebbe nel tempo riuscire a generare altri Mangiaseta.',
+	'Quests.COURIER_SUPPLIES_MASK_NAME': 'Lacca liquida',
+	'Quests.COURIER_SUPPLIES_MASK_DESC': 'Smalto pallido usato per la preparazione e protezione di maschere d’osso.',
+	'UI.INV_NAME_GOURMAND_MOSSBERRY_STEW': 'Zuppa di baccamuschio',
+	'UI.INV_DESC_GOURMAND_MOSSBERRY_STEW':
+		'Zuppa densa e sciropposa fatta con bacchemuschio ed erbe druidiche. Dolce e aromatica, ma velenosa per la maggior parte delle creature.',
+	'UI.INV_NAME_PLASMIUM_BLOOD': 'Sangue plasmificato',
+	'UI.INV_DESC_PLASMIUM_BLOOD':
+		'Sangue di una creatura unita a del seme vitale liquido. Possiede impressionanti qualità rigenerative.',
+	'UI.INV_NAME_GOURMAND_VINTAGE_NECTAR': 'Nettare d’annata',
+	'UI.INV_DESC_GOURMAND_VINTAGE_NECTAR':
+		'Nettare di qualità estratto da un afide particolarmente longevo. Conservato più vite per una maturazione complessa.',
+	'Quests.COURIER_SUPPLIES_MEAT_NAME': 'Fettina del corriere',
+	'Quests.COURIER_SUPPLIES_MEAT_DESC':
+		'Carne grassa dall’origine indeterminata. Una volta preparata, va a male rapidamente se non è ben conservata.',
+	'UI.INV_NAME_GOURMAND_CORAL_INGREDIENT': 'Noce corallina',
+	'UI.INV_DESC_GOURMAND_CORAL_INGREDIENT':
+		'Seme duro e lanoso estratto dal centro di un agglomerato corallino. Dal sapore anonimo, ma forte se macinato per condire il cibo.',
+	'UI.INV_NAME_PICKLEDEGG': 'Bacofango sottaceto',
+	'UI.INV_DESC_PICKLEDEGG':
+		'Prelibatezza dal gusto deciso conservata in salamoia. La creazione più celebre dell’Esule Chef Lugoli.',
+	'Quests.ITEM_EXTRACTOR_PINS_NAME': 'Spine d’acciaio',
+	'Quests.ITEM_EXTRACTOR_PINS_DESC':
+		'Spine forgiate in materiale duro, pensate per l’impiego in macchinari pesanti, e in grado di perforare i carapaci più coriacei.',
+	'UI.INV_NAME_MORSEL_SEARED': 'Organo scottato',
+	'UI.INV_DESC_MORSEL_SEARED':
+		'Carne prelevata da una creatura sconfitta. La scottatura a cui è stata sottoposta ne modifica il sapore.',
+	'UI.INV_NAME_MORSEL_SHREDDED': 'Organo sminuzzato',
+	'UI.INV_DESC_MORSEL_SHREDDED': 'Carne prelevata da una creatura sconfitta. È stata tagliata a dadini.',
+	'UI.INV_NAME_MORSEL_SPEARED': 'Organo trafitto',
+	'UI.INV_DESC_MORSEL_SPEARED':
+		'Carne prelevata da una creatura sconfitta. È stata infilzata di netto, ma è altrimenti intatta.',
+	'UI.INV_NAME_ANT_TRAPPER_ITEM': 'Bambola d’erba',
+	'UI.INV_DESC_ANT_TRAPPER_ITEM': 'Giocattolo intagliato che raffigura un insetto vestito di foglie.',
+	'UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER': 'Anima della fanciulla',
+	'UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER': 'Fiala donata alla Fanciulla della Cappella, ricolma di anima turbinante.',
+	'UI.INV_NAME_SNARE_SOUL_BELLHERMIT': 'Anima dell’eremita',
+	'UI.INV_DESC_SNARE_SOUL_BELLHERMIT': 'Campana pesante ricolma dell’anima brillante dell’Eremita della Campana.',
+	'UI.INV_NAME_SNARE_SOUL_SWAMP': 'Anima del cercatore',
+	'UI.INV_DESC_SNARE_SOUL_SWAMP': 'Carapace crepato che contiene l’anima estratta da un insetto deceduto da tempo.',
+	'UI.INV_NAME_TOKEN_FAITH': 'Chiave semplice',
+	'UI.INV_DESC_TOKEN_FAITH':
+		'Chiave arrugginita dall’aspetto comune. Utilizzabile per aprire diversi tipi di serrature semplici.<br><br>Ormai usurata, si romperà dopo un solo uso.',
+	'UI.INV_NAME_DOCK_KEY': 'Chiave della campana mobile',
+	'UI.INV_DESC_DOCK_KEY':
+		'Piccola chiave per gli addetti ai lavori. Apre la porta che conduce alla campana mobile delle Piattafonde.',
+	'UI.INV_NAME_DOCK_DEMO_KEY': 'Chiave del cancello',
+	'UI.INV_DESC_DOCK_DEMO_KEY':
+		'Piccola chiave per gli addetti ai lavori. Apre il cancello nel mezzo delle Piattafonde.',
+	'UI.INV_NAME_WARD_KEY': 'Chiave bianca',
+	'UI.INV_DESC_WARD_KEY':
+		'Chiave in metallo di pregevole fattura a cui è stata data la forma di un ferro chirurgico.<br><br>Dà accesso alla Corsia Bianca della Cittadella.',
+	'UI.INV_NAME_WARD_BOSS_KEY': 'Chiave del Chirurgo',
+	'UI.INV_DESC_WARD_BOSS_KEY': 'Chiave abbandonata della Corsia Bianca.<br>Apre la botola sotto la sala operatoria.',
+	'UI.INV_NAME_ARCHITECT_KEY': 'Chiave dell’Artefice',
+	'UI.INV_DESC_ARCHITECT_KEY': 'Chiave rotatoria degli Artefici. Serve per aprire la loro Cappella nelle Fonderie.',
+	'UI.INV_NAME_SLAB_KEY_A': 'Chiave dell’Indolente',
+	'UI.INV_NAME_SLAB_KEY_B': 'Chiave dell’Eretico',
+	'UI.INV_NAME_SLAB_KEY_C': 'Chiave dell’Apostata',
+	'UI.INV_NAME_SLAB_KEYRING': 'Chiavi della Lastra',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE': 'Chiave con il segno dell’Indolente. Apre certe celle e passaggi della Lastra.',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP':
+		'Chiave con il segno dell’Apostata. Apre certe celle e passaggi della Lastra.',
+	'UI.INV_DESC_SLAB_KEYRING': 'Chiavi delle celle e dei passaggi della Lastra.',
+	'UI.INV_NAME_BELL_HOUSE_KEY': 'Chiave della casacampana',
+	'UI.INV_DESC_BELL_HOUSE_KEY': 'Chiave di una campana restaurata sopra Cuorcampana.',
+	'UI.INV_NAME_MATERIUM': 'Materium',
+	'UI.INV_DESC_MATERIUM':
+		'Tubi e ricettacoli fatti per conservare, annotare e studiare svariati materiali.<br><br>Il Materium può essere assemblato in una casa.',
+	'UI.INV_NAME_FARSIGHT': 'Lungovisore',
+	'UI.INV_DESC_FARSIGHT':
+		'Strumento di sorveglianza retrattile delle Tessitrici. Una volta assemblato, consente di osservare luoghi molto distanti. <br><br>Il Lungovisore può essere assemblato in una casa.',
+	'UI.INV_NAME_CRAWBELL': 'Campana per Corvidi',
+	'UI.INV_DESC_CRAWBELL':
+		'Nido ricavato da una vecchia campana. Una volta pronto, è possibile che vi si posino dei giovani Corvidi per depositarvi schegge di carapace e grani.<br><br>La campana per Corvidi può essere installata all’esterno di una casa.',
+	'UI.INV_NAME_SETH_MEMENTO': 'Cimelio del guardiano',
+	'UI.INV_DESC_SETH_MEMENTO':
+		'Antico medaglione di Seth l’errante. Un dono conferito in riconoscimento di abilità eccellenti.',
+	'UI.INV_DESC_MOMENTO_EXTRA': 'Questo cimelio può essere esposto in una casa.',
+	'UI.INV_NAME_SPRINT_MEMENTO': 'Cimelio del Maestro della Corsa',
+	'UI.INV_DESC_SPRINT_MEMENTO':
+		'Trofeo dorato assegnato dal Maestro della Corsa Aspo all’insetto più rapido di Lungitela.',
+	'UI.INV_NAME_MEMENTO_GARMOND': 'Cimelio dell’eroe',
+	'UI.INV_DESC_MEMENTO_GARMOND': 'Cimelio di famiglia da un villaggio caduto in preda all’Infestazione di Lungitela.',
+	'UI.INV_NAME_HUNTER_MEMENTO': 'Cimelio della cacciatrice',
+	'UI.INV_DESC_HUNTER_MEMENTO':
+		'Simbolo per sigilli dato in omaggio a una vera cacciatrice, timbrato su una sostanza appiccicosa.',
+	'UI.INV_NAME_MEMENTO_CROWMAN': 'Cimelio dei Corvidi',
+	'UI.INV_DESC_MEMENTO_CROWMAN':
+		'Stemma in ferro della Corte dei Corvidi che assolve chi lo porta da ogni reato, passato e futuro.',
+	'UI.INV_NAME_MEMENTO_GREY': 'Cimelio plumbeo',
+	'UI.INV_DESC_MEMENTO_GREY':
+		'Pietra corallina incisa, consunta dalla sabbia e sbiancata dal tempo.<br><br> ... Osserva... Ricorda... Finché il tempo... Nuova vita...',
+	'UI.INV_NAME_MEMENTO_SURFACE': 'Cimelio di superficie',
+	'UI.INV_DESC_MEMENTO_SURFACE': 'Ornamento indossabile della Città Senza Nome in alto sopra Lungitela.',
+	'UI.INV_NAME_R_BONE_RECORD': 'Rotolo d’ossa',
+	'UI.INV_DESC_R_BONE_RECORD':
+		'Diario rudimentale realizzato in osso e tessuto lacero. Apparteneva a un insetto caduto.',
+	'UI.INV_DESC_RELIC': 'Un reperto del passato di Lungitela bramato dai collezionisti di oggetti storici.',
+	'UI.INV_NAME_R_WEAVER_TOTEM': 'Effigie di Tessitrice',
+	'UI.INV_DESC_R_WEAVER_TOTEM':
+		'Idolo intagliato nell’osso di un’antica Tessitrice. Sul suo corpo è incisa una preghiera.',
+	'UI.INV_NAME_R_SEAL_CHIT': 'Comandamento corale',
+	'UI.INV_DESC_R_SEAL_CHIT':
+		'Ordine emanato dalla Cittadella. Il sigillo, in passato lucente, si è consunto nel tempo.',
+	'UI.INV_NAME_R_WEAVER_RECORD': 'Arpa runica',
+	'UI.INV_DESC_R_WEAVER_RECORD':
+		'Antico strumento di registrazione delle Tessitrici. Le corde sono in Seta. Le rune sbiadite riportano le parole distanti nel tempo di una Tessitrice.',
+	'UI.INV_NAME_R_ANCIENT_EGG': 'Uovo arcano',
+	'UI.INV_DESC_R_ANCIENT_EGG':
+		'Uovo in pietra nera formatosi prima della genesi di Lungitela.<br><br>Un reperto risalente a un passato remoto. Bramato dai collezionisti di oggetti storici.',
+	'UI.INV_NAME_R_PSALM_CYL': 'Cilindro dei salmi',
+	'UI.INV_DESC_R_PSALM_CYL':
+		'Cilindro metallico fabbricato nella Cittadella su cui sono incise registrazioni di suoni.<br><br>Può essere riprodotto con un grammofono.',
+	'UI.INV_NAME_R_PSALM_CYL_MELODY': 'Cilindro sacro',
+	'UI.INV_DESC_R_PSALM_CYL_MELODY':
+		'Cilindro metallico fabbricato nella Cittadella su cui è incisa la melodia degli Archivisti.<br><br>Può essere riprodotto con un grammofono.',
+	'UI.INV_NAME_COIN_SET_F': 'Filo di grani rovinato',
+	'UI.INV_DESC_COIN_SET_F':
+		'Filo consunto a cui restano ormai pochi grani. È possibile spezzarlo per scambiare i grani rimasti.',
+	'UI.INV_DESC_COIN_SET_USE': 'Contiene {0} grani.',
+	'UI.INV_NAME_COIN_SET_S': 'Filo di grani',
+	'UI.INV_DESC_COIN_SET_S': 'Filo corto con dei grani. È possibile spezzarlo per scambiare i grani.',
+	'UI.INV_NAME_COIN_SET_M': 'Collana di grani',
+	'UI.INV_DESC_COIN_SET_M':
+		'Ornamento con numerosi grani retti da un filo. È possibile spezzarla per scambiare i grani.',
+	'UI.INV_NAME_COIN_SET_M2': 'Collana di grani pesante',
+	'UI.INV_DESC_COIN_SET_M2':
+		'Filo con grani sia comuni che di gran pregio. È possibile spezzarla per scambiare i grani.',
+	'UI.INV_NAME_COIN_SET_L': 'Collana di grani pallida',
+	'UI.INV_DESC_COIN_SET_L': 'Collana pesante con grani di perla. È possibile spezzarla per scambiare i grani.',
+	'UI.INV_NAME_SHARD_POUCH': 'Fascio di schegge',
+	'UI.INV_DESC_SHARD_POUCH':
+		'Piccolo fascio di schegge di carapace legate insieme dal filo. È possibile spezzarlo per usare le schegge per creare.',
+	'UI.INV_DESC_SHARD_POUCH_USE': 'Contiene {0} schegge di carapace.',
+	'UI.INV_NAME_GREAT_SHARD': 'Scheggia di bestia',
+	'UI.INV_DESC_GREAT_SHARD':
+		'Pezzo di materiale indurito trovato nei carapaci delle bestie più grandi. È possibile spezzarlo in più schegge di carapace da usare per creare.',
+	'UI.INV_DESC_GREAT_SHARD_USE': 'Si spezza in {0} schegge di carapace.',
+	'UI.INV_NAME_PRISTINE_CORE': 'Nucleo intatto',
+	'UI.INV_DESC_PRISTINE_CORE':
+		'Complesso meccanismo interno di un insetto meccanico. È possibile spezzarlo in più schegge di carapace da usare per creare.',
+	'UI.INV_NAME_FIXER_IDOL': 'Statuina di Hornet',
+	'UI.INV_DESC_FIXER_IDOL': 'Piccola scultura malriuscita ma accurata. Un simbolo di amicizia duratura.',
+	'UI.INV_NAME_GROWSTONE': 'Pietra della crescita',
+	'UI.INV_DESC_GROWSTONE':
+		'Pietra fredda come l’acciaio dalle notevoli capacità di ricrescita.<br><br>Se si frantuma in schegge di carapace, si riforma poi col tempo.',
+	'UI.INV_NAME_SILK_GRUB': 'Mangiaseta',
+	'UI.INV_DESC_SILK_GRUB':
+		'Larva che vive in Lungitela e si ciba della Seta che vi rimane. Ne avverte la presenza anche a grandi distanze.',
+	'UI.INV_DESC_SILK_GRUB_FUNCTION': 'Assorbi il Mangiaseta per recuperare un bozzolo se cadi in battaglia.',
+	'Prompts.PROMPT_USE_CONSUMABLE_GRUB': 'Assorbi',
 	'Tools.CREST_HUNTER_NAME': 'Cacciatore',
 	'Tools.CREST_REAPER_NAME': 'Agreste',
 	'Tools.CREST_PILGRIM_NAME': 'Errante',
@@ -124,6 +389,1211 @@ export default {
 	'Tools.MUSICIAN_CHARM_NAME': 'Aracnocorde',
 	'Tools.SPRINTMASTER_NAME': 'Cavigliere veloseriche',
 	'Tools.THIEF_CHARM_NAME': 'Segno del ladro',
+	'Journal.NAME_MOSSBONE_CRAWLER': 'Larvamuschio',
+	'Journal.DESC_MOSSBONE_CRAWLER': 'Insetto peloso con una serie di spine acuminate sul lato posteriore.',
+	'Journal.NOTE_MOSSBONE_CRAWLER': 'Se non fosse per le spine, lo troverei un insetto affascinante.',
+	'Journal.NAME_MOSSBONE_CRAWLER_FAT': 'Larvamuschio Gigante',
+	'Journal.DESC_MOSSBONE_CRAWLER_FAT': 'Larvamuschio cresciuto a dismisura e allevato nel Memorium della Cittadella.',
+	'Journal.NOTE_MOSSBONE_CRAWLER_FAT':
+		'Così prossimo alla sua forma pelosa e perfetta... Se solo fosse in grado di eliminare le spine.',
+	'Journal.NAME_MOSSBONE_FLY': 'Moscamuschio',
+	'Journal.DESC_MOSSBONE_FLY': 'Creaturina svolazzante capace di difendersi con il suo piccolo pungiglione.',
+	'Journal.NOTE_MOSSBONE_FLY':
+		'È un insetto molle e impacciato, ma per sua fortuna le caverne in cui vive sembrano essere relativamente prive di predatori. Chissà poi perché.',
+	'Journal.NAME_MOSSBONE_MOTHER': 'Madre Muschio',
+	'Journal.DESC_MOSSBONE_MOTHER':
+		'Moscamuschio adulta dall’involucro indurito e un pungiglione completamente sviluppato.',
+	'Journal.NOTE_MOSSBONE_MOTHER':
+		'L’istinto materno è in grado di spingere creature oltre ciò che sembrano essere i loro limiti naturali. Trasforma persino le bestie più deboli in nemici temibili.',
+	'Journal.NAME_ASPID_COLLECTOR': 'Acnide',
+	'Journal.DESC_ASPID_COLLECTOR': 'Insetto alato che si nutre di muschi e licheni nelle caverne sopra Bossopiano.',
+	'Journal.NOTE_ASPID_COLLECTOR':
+		'Al suo stato naturale tenderebbe a evitare potenziali predatori, ma l’Infestazione di Lungitela lo induce ad aggredire. Fortunatamente, le sue mascelle sono inadatte al combattimento.',
+	'Journal.NAME_BONE_GOOMBA': 'Teschio Brulicante',
+	'Journal.DESC_BONE_GOOMBA': 'Piccolo insetto molle che usa i teschi duri dell’Antro per proteggersi e camuffarsi.',
+	'Journal.NOTE_BONE_GOOMBA':
+		'In ogni regione, le creature trovano nuovi modi sorprendenti per mimetizzarsi. È sempre meglio procedere con cautela.',
+	'Journal.NAME_BONE_GOOMBA_BOUNCE_FLY': 'Teschio Alato',
+	'Journal.DESC_BONE_GOOMBA_BOUNCE_FLY':
+		'Parente volante del terrestre Teschio Brulicante, che abita solo le caverne più torride e profonde dell’Antro.',
+	'Journal.NOTE_BONE_GOOMBA_BOUNCE_FLY':
+		'Una creatura così debole è potuta sopravvivere solo grazie alla scarsità di predatori in queste caverne surriscaldate.',
+	'Journal.NAME_BONE_GOOMBA_LARGE': 'Teschio Bruto',
+	'Journal.DESC_BONE_GOOMBA_LARGE':
+		'Insetto morbido sormontato da un grosso teschio cornuto. Carica gli intrusi per proteggere il suo territorio e i compagni più piccoli.',
+	'Journal.NOTE_BONE_GOOMBA_LARGE':
+		'Le sue dimensioni lo hanno reso temerario, o forse è stata l’Infestazione a privarlo dell’istinto di autoconservazione.',
+	'Journal.NAME_SKULL_KING': 'Teschio Tiranno',
+	'Journal.DESC_SKULL_KING':
+		'Raro esemplare smisurato di Teschio Brulicante. Il predatore più grande dell’Antro e il più temuto, a causa del suo temperamento feroce.',
+	'Journal.NOTE_SKULL_KING':
+		'Già violento di per sé, porta un teschio che pare essere appartenuto a una bestia ancora più grande. Se non ci fossero le ossa a testimoniare, stenterei a credere nell’esistenza di insetti così imponenti.',
+	'Journal.NAME_BONE_CRAWLER': 'Spinolo',
+	'Journal.DESC_BONE_CRAWLER':
+		'Piccolo insetto ossuto che predilige le gallerie buie. È in grado di espandere il suo carapace dotato di spine per proteggersi dai predatori.',
+	'Journal.NOTE_BONE_CRAWLER':
+		'Ammiro le trappole semplici ma efficaci come le spine estendibili di questo insetto. I predatori imprudenti vengono infilzati per benino.',
+	'Journal.NAME_BONE_FLYER': 'Moscabestia',
+	'Journal.DESC_BONE_FLYER':
+		'Mosca aggressiva delle regioni inferiori di Lungitela. Colpisce la preda con forza con la sua maschera in ossoduro.',
+	'Journal.NOTE_BONE_FLYER':
+		'Da piccola adoravo danzare intorno a questa semplice creatura mentre arretrava e avanzava per attaccare. Purtroppo oggigiorno ho faccende più importanti da sbrigare.',
+	'Journal.NAME_BONE_FLYER_GIANT': 'Moscabestia Brutale',
+	'Journal.DESC_BONE_FLYER_GIANT':
+		'Moscabestia adulta particolarmente violenta, dal grosso corpo e una maschera dura e ispessita.',
+	'Journal.NOTE_BONE_FLYER_GIANT':
+		'La corona di questo regno diffonde civiltà, ma le regioni inferiori sono tuttora dominate da grandi bestie. Il suo ruggito mi smuove qualcosa nel profondo, come un istinto primitivo.',
+	'Journal.NAME_BONE_CIRCLER': 'Carranide',
+	'Journal.DESC_BONE_CIRCLER':
+		'Insetto alato comune che popola le regioni inferiori. Solitamente è docile, ma attacca in caso di minacce incombenti.',
+	'Journal.NOTE_BONE_CIRCLER':
+		'La sua forma piena e rotonda lo rende un bersaglio perfetto per fare pratica. La tentazione di usarlo per testare la mia mira è forte...',
+	'Journal.NAME_BONE_CIRCLER_VICIOUS': 'Carranide Feroce',
+	'Journal.DESC_BONE_CIRCLER_VICIOUS':
+		'Aggressivo insetto alato che popola le regioni inferiori. Se provocato, agita rapidamente la coda tagliente come fosse una frusta.',
+	'Journal.NOTE_BONE_CIRCLER_VICIOUS':
+		'Le ali sono piuttosto piccole rispetto al corpo. È possibile che usi l’aria calda di queste terre roventi per restare in aria. Sarebbe una mossa scaltra.',
+	'Journal.NAME_BONE_HOPPER': 'Saltatore Ossoduro',
+	'Journal.DESC_BONE_HOPPER':
+		'Animale da pascolo con sensi affinati che si ritrae prontamente di fronte al pericolo.',
+	'Journal.NOTE_BONE_HOPPER':
+		'Nonostante il suo carapace sia infestato, per ora non dimostra aggressività. Il suo desiderio di fuga continua a prevalere.',
+	'Journal.NAME_BONE_HOPPER_GIANT': 'Ossoduro Anziano',
+	'Journal.DESC_BONE_HOPPER_GIANT':
+		'Slanciata creatura dai sensi affinati. Difende il proprio gregge con gambe potenti e una maschera appuntita e affilata.',
+	'Journal.NOTE_BONE_HOPPER_GIANT':
+		'I suoi fini arti eleganti nascondono una forza sorprendente. Cavalcarlo sarebbe un piacere...',
+	'Journal.NAME_BONE_SPITTER': 'Acaro del Catrame',
+	'Journal.DESC_BONE_SPITTER':
+		'Acaro d’osso volante che vive nei pressi del magma. Arrostisce la preda sputando catrame rovente.',
+	'Journal.NOTE_BONE_SPITTER':
+		'La sua bava appiccicosa, se plasmata appena raccolta, potrebbe sicuramente servire come materiale di fabbricazione. Purtroppo non riesco a smettere di sperimentare.',
+	'Journal.NAME_BONE_ROLLER': 'Pallaosso',
+	'Journal.DESC_BONE_ROLLER': 'Giovane insetto ossuto capace di rannicchiarsi per formare una palla.',
+	'Journal.NOTE_BONE_ROLLER':
+		'Il carapace ruvido e corrugato aderisce bene a qualsiasi superficie. Persino le pareti e i soffitti divengono strade percorribili per questi agili insetti.',
+	'Journal.NAME_BONE_THUMPER': 'Schiacciatore',
+	'Journal.DESC_BONE_THUMPER':
+		'Grosso insetto rotolante delle regioni inferiori. Schiaccia creature più piccole sotto la sua scorza corrugata.',
+	'Journal.NOTE_BONE_THUMPER':
+		'La sua stessa stazza costituisce un’arma efficace. Tuttavia, richiede parecchio nutrimento. Questa creatura deve passare gran parte del tempo mangiando. Per alcuni è una vita accettabile.',
+	'Journal.NAME_SPINE_FLOATER': 'Rigonfio',
+	'Journal.DESC_SPINE_FLOATER': 'Creatura vagante delle regioni inferiori capace di scagliare spine.',
+	'Journal.NOTE_SPINE_FLOATER':
+		'Pur ammirando il suo manto lanoso, non posso che temerne l’aura inquietante... e i suoi temibili aculei.',
+	'Journal.NAME_ROCK_ROLLER': 'Coleoselce',
+	'Journal.DESC_ROCK_ROLLER':
+		'Coleottero raramente avvistato che passa gran parte della sua esistenza annidandosi tra ossa e rocce.',
+	'Journal.NOTE_ROCK_ROLLER':
+		'Il carapace è incrostato di gemmeselci sfavillanti e le sue escrezioni presentano proprietà altrettanto esplosive.',
+	'Journal.NAME_RHINO': 'Rinoterra',
+	'Journal.DESC_RHINO':
+		'Bestia dal lungo corno delle regioni inferiori di Lungitela. Il corno gli serve sia per impalare che per squassare il terreno e mandare in aria nuvole di detriti pericolosi.',
+	'Journal.NOTE_RHINO':
+		'Certi strumenti e abilità possono penetrare le sue difese. Dovrei modificare la mia strategia di conseguenza.',
+	'Journal.NAME_CRYPT_WORM': 'Picoverme',
+	'Journal.DESC_CRYPT_WORM': 'Giovane verme mascherato il cui diletto è tendere agguati nelle sue gallerie.',
+	'Journal.NOTE_CRYPT_WORM':
+		'Un demonietto alquanto frustrante. Si ripara sotto l’osso ogni volta che cerco di colpirlo.',
+	'Journal.NAME_BONE_WORM': 'Gigantoverme',
+	'Journal.DESC_BONE_WORM':
+		'Verme scavatore che usa i suoi numerosi denti spuntati per forare anche l’osso più duro.',
+	'Journal.NOTE_BONE_WORM':
+		'Scava incessantemente nella roccia e nell’osso, apparentemente senza mai riposare. Ha una destinazione? O è l’istinto a spingerlo a scavare sempre più nel profondo?',
+	'Journal.NAME_BONE_BEAST': 'Bestia Campana',
+	'Journal.DESC_BONE_BEAST':
+		'Grosso insetto di ossoduro che abita e percorre le vene di vecchie campane in tutta Lungitela.',
+	'Journal.NOTE_BONE_BEAST':
+		'Questo esemplare è divenuto mio alleato, per ringraziarmi di averlo salvato o in segno di rispetto in quanto suo pari. Qualunque sia il motivo, me ne rallegro.',
+	'Journal.NAME_PILGRIM_03': 'Supplicante Pellegrino',
+	'Journal.DESC_PILGRIM_03': 'Insetto semplice di Lungitela che si tiene basso sul terreno.',
+	'Journal.NOTE_PILGRIM_03':
+		'In preda all’Infestazione di Lungitela, è ormai capace soltanto di pregare e aggredire.',
+	'Journal.NAME_PILGRIM_01': 'Balzatore Pellegrino',
+	'Journal.DESC_PILGRIM_01':
+		'Insetto agile di Lungitela, le cui funzioni più sofisticate sono andate perdute a causa dell’Infestazione.',
+	'Journal.NOTE_PILGRIM_01':
+		'Data la particolare morbidezza del carapace, devono affidarsi al loro atletismo per sopravvivere.',
+	'Journal.NAME_PILGRIM_04': 'Moscaceronte Pellegrino',
+	'Journal.DESC_PILGRIM_04': 'Pellegrino dalle dimensioni ridotte che respinge le minacce con il lungo corno.',
+	'Journal.NOTE_PILGRIM_04': 'Ben equipaggiato fin dalla nascita. Usa il suo stesso corpo come proiettile d’assalto.',
+	'Journal.NAME_PILGRIM_02': 'Gigante Pellegrino',
+	'Journal.DESC_PILGRIM_02':
+		'Insetto robusto caduto in preda all’Infestazione. Se minacciato, attacca rotolando incurante del proprio disagio.',
+	'Journal.NOTE_PILGRIM_02':
+		'Un insetto dalla costituzione rara in queste terre sofferenti. I carapaci della maggior parte dei pellegrini sembrano piccoli in confronto. Quali alimenti avrà scoperto per farsi così grande?',
+	'Journal.NAME_PILGRIM_BELL_THROWER': 'Portacampane Pellegrino',
+	'Journal.DESC_PILGRIM_BELL_THROWER':
+		'Insetto comune che porta con sé una serie di vecchie campane. Le agita di fronte a chiunque ritenga sia ancora libero.',
+	'Journal.NOTE_PILGRIM_BELL_THROWER':
+		'In passato le campane risuonavano allegre e speranzose, e sollevavano il morale di chi risaliva il sentiero. Purtroppo oggigiorno non sono che strumenti di battaglia.',
+	'Journal.NAME_PILGRIM_FLY': 'Pellegrino Alato',
+	'Journal.DESC_PILGRIM_FLY': 'Insetto dalle corna corte e nato con ali sottosviluppate.',
+	'Journal.NOTE_PILGRIM_FLY':
+		'A malapena possiede la facoltà del volo. Può anche prendere il volo dalla roccia, ma con quelle ali malmesse non arriva lontano.',
+	'Journal.NAME_PILGRIM_05': 'Pellegrino Anziano',
+	'Journal.DESC_PILGRIM_05':
+		'Insetto tozzo, consumato dal filo infestato. Usa la sua corporatura robusta per schiacciare gli avversari.',
+	'Journal.NOTE_PILGRIM_05':
+		'Questo insetto ha la fortuna di poter invecchiare. Le strade di Lungitela non sono solitamente così clementi.',
+	'Journal.NAME_PILGRIM_BELLTHROWER_FLY': 'Portacampane Pellegrino Alato',
+	'Journal.DESC_PILGRIM_BELLTHROWER_FLY': 'Pellegrino dotato di grandi ali che ha con sé delle campane di ferro.',
+	'Journal.NOTE_PILGRIM_BELLTHROWER_FLY':
+		'Su terreni accidentati, l’unione di volo e portata d’attacco può rappresentare una sfida persino per me.',
+	'Journal.NAME_PILGRIM_HIKER': 'Escursionista Pellegrino',
+	'Journal.DESC_PILGRIM_HIKER':
+		'Insetto dal carapace robusto con uno spillo da scalatore. Lo spillo serviva da ausilio ma adesso è usato come arma, non sempre con la dovuta abilità.',
+	'Journal.NOTE_PILGRIM_HIKER':
+		'Un insetto inizialmente fragile, spinto dal filo contorto oltre i suoi limiti mortali.',
+	'Journal.NAME_PILGRIM_STAFFWIELDER': 'Guida Pellegrina',
+	'Journal.DESC_PILGRIM_STAFFWIELDER':
+		'Vecchio pellegrino che regge un pesante bastone in ferro con una grossa campana.',
+	'Journal.NOTE_PILGRIM_STAFFWIELDER':
+		'Questa campana deve indicare il suo ruolo passato di capo arrampicata, nonostante l’Infestazione l’abbia nel frattempo privato di tale autorità.',
+	'Journal.NAME_PILGRIM_MOSS_SPITTER': 'Pellegrino Infestato',
+	'Journal.DESC_PILGRIM_MOSS_SPITTER': 'Pellegrino invecchiato e infestato da muschi e licheni.',
+	'Journal.NOTE_PILGRIM_MOSS_SPITTER':
+		'Il muschio gli cresce persino dentro allo stomaco, e provvede poi a sputarlo sui nemici sotto forma di palle compresse. Un attacco decisamente ripugnante.',
+	'Journal.NAME_ROSARY_PILGRIM': 'Pellegrino Bramoso',
+	'Journal.DESC_ROSARY_PILGRIM':
+		'Insetto robusto ben fornito di fili di grani. Se provocato si scatena in un interminabile attacco usandoli come fruste.',
+	'Journal.NOTE_ROSARY_PILGRIM':
+		'La sua ricchezza è segno di purezza o cupidigia? Immagino che i più considerino questa sorta di accumulo un peccato?',
+	'Journal.NAME_ROSARY_THIEF': 'Ladro di Grani',
+	'Journal.DESC_ROSARY_THIEF': 'Pestifero saccheggiatore che si trova per tutta Lungitela.',
+	'Journal.NOTE_ROSARY_THIEF':
+		'Finché questi fastidiosi insetti si aggireranno indisturbati, grani e ninnoli vari non saranno al sicuro.',
+	'Journal.NAME_TAR_SLUG': 'Lumalava',
+	'Journal.DESC_TAR_SLUG':
+		'Mollusco appiccicoso che si difende spruzzando liquido rovente dalle escrescenze sul dorso.',
+	'Journal.NOTE_TAR_SLUG':
+		'Ciò che a primo acchito sembra un meccanismo puramente difensivo può rivelarsi utile anche per dissipare il calore in eccesso.',
+	'Journal.NAME_TAR_SLUG_HUGE': 'Megalava',
+	'Journal.DESC_TAR_SLUG_HUGE':
+		'Mollusco adulto in grado di spruzzare un torrente zampillante di fluido scottante dal dorso.',
+	'Journal.NOTE_TAR_SLUG_HUGE':
+		'Sopravvivere con una tale quantità di liquido escoriante al proprio interno... In passato l’avrei creduto impossibile, ma Lungitela ospita prodigi a non finire.',
+	'Journal.NAME_DOCK_WORKER': 'Spalatore Fuso',
+	'Journal.DESC_DOCK_WORKER':
+		'Lavoratore di basso rango caduto vittima dell’Infestazione di Lungitela. L’istinto lo fa continuare nel suo lavoro, sebbene in modo più semplice rispetto a prima.',
+	'Journal.NOTE_DOCK_WORKER':
+		'Questo regno sembra più avanzato del mio nella lavorazione dei metalli, grazie soprattutto alla fonte naturale di calore alla base. Lavorare in un ambiente simile è un’impresa di tutto rispetto.',
+	'Journal.NAME_DOCK_FLYER': 'Volatore Siliceo',
+	'Journal.DESC_DOCK_FLYER':
+		'Lavoratore aereo, vittima dell’Infestazione di Lungitela. Porta con sé una sacca piena di selce che lancia in direzione degli intrusi.',
+	'Journal.NOTE_DOCK_FLYER':
+		'Queste pietre incendiarie sono una meraviglia della natura dalle applicazioni potenziali numerose. È un tale spreco vederle cadere su di me ogni volta che passo.',
+	'Journal.NAME_DOCK_BOMBER': 'Volatore Siligneo',
+	'Journal.DESC_DOCK_BOMBER':
+		'Coraggioso lavoratore che trasporta l’instabile silignea e indossa una campana pesante per proteggersi da eventuali combustioni.',
+	'Journal.NOTE_DOCK_BOMBER': 'La sua sembra una vita altamente rischiosa suggellata da un breve epilogo ustionante.',
+	'Journal.NAME_SHIELD_DOCK_WORKER': 'Cercatore di Pietrafumea',
+	'Journal.DESC_SHIELD_DOCK_WORKER':
+		'Lavoratore delle Piattafonde armato di piatto. Setaccia mucchi di pietrafumea per trovare tracce dei minerali più preziosi.',
+	'Journal.NOTE_SHIELD_DOCK_WORKER':
+		'L’Infestazione si è portata via una parte importante di questi insetti. Tuttavia non cessano di tentare nel loro intento. O almeno, finché non avvertono la mia presenza...',
+	'Journal.NAME_DOCK_CHARGER': 'Tuffatore Estremo',
+	'Journal.DESC_DOCK_CHARGER':
+		'Insetto rivestito di campane, un tempo responsabile delle attività estrattive nelle insidiose profondità al di sotto delle banchine.',
+	'Journal.NOTE_DOCK_CHARGER':
+		'La sua robusta armatura di campane lo protegge dai miei attacchi, ma riguardo al calore opprimente... cosa può mai fare?',
+	'Journal.NAME_DOCK_GUARD_THROWER': 'Capofratelli Brace e Torbo',
+	'Journal.DESC_DOCK_GUARD_THROWER':
+		'Anziani supervisori delle Piattafonde, responsabili per la vigilanza e la punizione dei lavoratori inferiori.',
+	'Journal.NOTE_DOCK_GUARD_THROWER':
+		'Anche in preda all’Infestazione hanno continuato a comandare gli scavi senza fine nelle loro caverne.',
+	'Journal.NAME_SMALL_CRAB': 'Granchinio',
+	'Journal.DESC_SMALL_CRAB': 'Infante parente del più minaccioso Granchialto.',
+	'Journal.NOTE_SMALL_CRAB':
+		'Se li si lascia crescere indisturbati, questi giovani insetti lotteranno per il potere finché ne rimarrà solo uno.',
+	'Journal.NAME_ROOF_CRAB': 'Granchialto',
+	'Journal.DESC_ROOF_CRAB': 'Insetto brulicante corazzato che predilige i luoghi alti.',
+	'Journal.NOTE_ROOF_CRAB':
+		'Il carapace nasconde una sacca stratificata contenente acido ustionante in grandi quantità. L’acido si riversa dalla bocca su qualsiasi creatura che sia considerata alimento.',
+	'Journal.NAME_FIELDS_FLOCK_FLYERS': 'Guizzoschivo',
+	'Journal.DESC_FIELDS_FLOCK_FLYERS':
+		'Piccola creatura timida che si raggruppa in sciami e fugge al primo accenno di pericolo.',
+	'Journal.NOTE_FIELDS_FLOCK_FLYERS':
+		'Non appena avverte la più flebile minaccia, emette un avviso rivolto ai propri simili. Per cacciarla bisogna restare nascosti in silenzio fino a poter sferrare il colpo decisivo.',
+	'Journal.NAME_FIELDS_GOOMBA': 'Erbide',
+	'Journal.DESC_FIELDS_GOOMBA':
+		'Insetto frenetico dei Campi Ermi. Le sue antenne rassomiglianti a fili d’erba lo aiutano a mimetizzarsi.',
+	'Journal.NOTE_FIELDS_GOOMBA':
+		'Non ha strumenti di difesa. Per sopravvivere può solo sperare che venga scambiato per una pianta.',
+	'Journal.NAME_FIELDS_FLYER': 'Erbide Volante',
+	'Journal.DESC_FIELDS_FLYER':
+		'Docile insetto le cui ali imitano nell’aspetto le distese erbose dei Campi Ermi. Un pasto comune per i predatori più grandi.',
+	'Journal.NOTE_FIELDS_FLYER':
+		'Quando si posa, sembra una pianta in tutto e per tutto. Non appena il suo corpo goffo si alza in volo, l’illusione svanisce.',
+	'Journal.NAME_SONG_GOLEM': 'Quarto Coro',
+	'Journal.DESC_SONG_GOLEM': 'Colossale automa in ferro attivato da rotori e ingranaggi.',
+	'Journal.NOTE_SONG_GOLEM':
+		'Per Lungitela, costruire un congegno così grande e allo stesso tempo così agile è un risultato terrificante.',
+	'Journal.NAME_BONE_HUNTER_TINY': 'Mirmede Minore',
+	'Journal.DESC_BONE_HUNTER_TINY': 'Piccola formica scavatrice, serva dei Mirmedi maggiori.',
+	'Journal.NOTE_BONE_HUNTER_TINY':
+		'Il compito principale di questi insetti è esplorare e procurare il cibo per i guerrieri della tribù. Il combattimento non è nella loro natura.',
+	'Journal.NAME_BONE_HUNTER_BUZZER': 'Mirmede Alato',
+	'Journal.DESC_BONE_HUNTER_BUZZER':
+		'Predatore scattante che si appiglia prontamente a soffitti e sporgenze in soccorso ai compagni più grossi.',
+	'Journal.NOTE_BONE_HUNTER_BUZZER':
+		'Sarebbe un ottimo assistente di caccia, ma temo che rimarrebbe fedele solo al suo clan anche se l’Infestazione non esistesse.',
+	'Journal.NAME_BONE_HUNTER_CHILD': 'Mirmede Ricognitore',
+	'Journal.DESC_BONE_HUNTER_CHILD':
+		'Giovane formica cacciatrice armata di falci ricavate da denti. È sovente chiamare i rinforzi in caso di pericoli incombenti.',
+	'Journal.NOTE_BONE_HUNTER_CHILD':
+		'Nonostante la sua tenera età, è un avversario temibile. È probabile che la sua tribù sia stata addestrata fin dalla nascita.',
+	'Journal.NAME_BONE_HUNTER': 'Mirmede Persecutore',
+	'Journal.DESC_BONE_HUNTER': 'Abile formica cacciatrice dotata di lama e armatura ricavate da ossa.',
+	'Journal.NOTE_BONE_HUNTER':
+		'È forte, aggressiva e disciplinata, eppure queste qualità non l’hanno protetta dall’Infestazione. Che sia un destino inevitabile in queste terre?',
+	'Journal.NAME_BONE_HUNTER_FLY': 'Mirmede Lanciere',
+	'Journal.DESC_BONE_HUNTER_FLY': 'Formica cacciatrice alata che attacca dall’alto con la sua lancia d’osso.',
+	'Journal.NOTE_BONE_HUNTER_FLY':
+		'Da giovane invidiavo tutti gli insetti alati. Immaginavo addirittura di avere anch’io un paio d’ali... Poi ho messo giudizio. Bisogna accettare i limiti del proprio corpo... e aiutarsi con strumenti secondo necessità.',
+	'Journal.NAME_BONE_HUNTER_THROW': 'Mirmede Guardia',
+	'Journal.DESC_BONE_HUNTER_THROW': 'Grossa formica cacciatrice che protegge le scorte e i passaggi della sua tribù.',
+	'Journal.NOTE_BONE_HUNTER_THROW':
+		'Ha un carapace perfetto per il suo ruolo, si difende con autorità e combatte abilmente. Se voglio conquistarne i tesori, dovrò dare del mio meglio.',
+	'Journal.NAME_BONE_HUNTER_TRAPPER': 'Gurr il Reietto',
+	'Journal.DESC_BONE_HUNTER_TRAPPER':
+		'Un Mirmede enorme ma dalle movenze furtive. Sa cacciare con trappole e la vegetazione bassa è il suo ambiente naturale.',
+	'Journal.NOTE_BONE_HUNTER_TRAPPER':
+		'Ah, le sue trappole e i suoi trucchi... Avrei dovuto capirlo fin da subito. Questo vecchio cacciatore ha cercato di irretirmi. Ma cosa lo avrà spinto a mettersi alla prova con tale veemenza? Temo che non avrò mai una risposta.',
+	'Journal.NAME_BONE_HUNTER_CHIEF': 'Ultimo Artiglio',
+	'Journal.DESC_BONE_HUNTER_CHIEF':
+		'Ex membro di alto rango del corpo di caccia e ultima linea di difesa a protezione della madre.',
+	'Journal.NOTE_BONE_HUNTER_CHIEF':
+		'Le sue abilità hanno fatto sì che fosse la prima scelta, ed è chiaro il perché. Ha vissuto e completato vari addestramenti esclusivamente per questo ruolo.',
+	'Journal.NAME_HUNTER_QUEEN': 'Mirmede Cantante Karmelita',
+	'Journal.DESC_HUNTER_QUEEN': 'Regina del canto e guerriera più dotata dei Mirmedi.',
+	'Journal.NOTE_HUNTER_QUEEN':
+		'Questa magnifica sovrana possedeva un tempo abilità al pari delle mie. All’apice della sua giovinezza, la sua voce riuniva tutti i Mirmedi al suo servizio.',
+	'Journal.NAME_MITE': 'Acaro',
+	'Journal.DESC_MITE': 'Parassita comune nei canti più oscuri di Terruggiosa.',
+	'Journal.NOTE_MITE':
+		'Un singolo esemplare non costituisce una sfida, ma ve ne sono a bizzeffe e restano per la maggior parte nascosti.',
+	'Journal.NAME_MITEFLY': 'Acaro Svolazzante',
+	'Journal.DESC_MITEFLY':
+		'Parassita volante, meno comune della sua controparte terrestre. Se minacciato, attacca con le sue zanne affilate.',
+	'Journal.NOTE_MITEFLY':
+		'Nelle mie terre vi erano insetti simili che divoravano scorte di cibo incustodite. Da piccola li cacciavo per rendermi utile e mettermi alla prova.',
+	'Journal.NAME_GNAT_GIANT': 'Acaro Madre',
+	'Journal.DESC_GNAT_GIANT': 'Acaro femmina anziano, più grande e forte della maggior parte dei suoi simili.',
+	'Journal.NOTE_GNAT_GIANT':
+		'Ha la vista debole ma anche un olfatto molto sviluppato, e usa la sua stazza per scagliarsi in direzione degli odori a lei ignoti. Il fatto che sia ancora così energica nonostante l’età è senz’altro ammirevole.',
+	'Journal.NAME_FARMER_CATCHER': 'Cogliresidui',
+	'Journal.DESC_FARMER_CATCHER':
+		'Insetto incaricato di raccogliere i residui di Seta che cadono dalla Cittadella. Attacca col suo bastone se provocato.',
+	'Journal.NOTE_FARMER_CATCHER':
+		'Questi insetti sembrano passare ogni attimo della loro esistenza a lavorare. Una fatica infinita ed estenuante al servizio dell’ignota Cittadella sovrastante.',
+	'Journal.NAME_FARMER_SCISSORS': 'Tagliaseta',
+	'Journal.DESC_FARMER_SCISSORS':
+		'Insetto armato di forbici che taglia e avvolge residui caduti di Seta per poi rispedirli alla Cittadella sovrastante.',
+	'Journal.NOTE_FARMER_SCISSORS':
+		'È stata l’Infestazione a ridurlo a questa pazzia delirante, o la sua fatica estenuante ancor prima?',
+	'Journal.NAME_FARMER_CENTIPEDE': 'Filastrello',
+	'Journal.DESC_FARMER_CENTIPEDE':
+		'Insetto di una certa altezza incaricato di impilare residui di Seta in vista del riutilizzo. Attualmente il rastrello affilato funge altrettanto bene da arma perforante.',
+	'Journal.NOTE_FARMER_CENTIPEDE':
+		'Il suo sembra un compito faticoso e ingrato, al servizio eterno di una Cittadella irraggiungibile.',
+	'Journal.NAME_VAMPIRE_GNAT': 'Voliterrio',
+	'Journal.DESC_VAMPIRE_GNAT':
+		'Bestia alata simile a un acaro, le cui grandi dimensioni servono ad acciuffare lavoratori che hanno tentato di eludere le loro mansioni.',
+	'Journal.NOTE_VAMPIRE_GNAT':
+		'Ormai senza predatori, il Voliterrio infestava le torri di Terruggiosa insidiando badanti e pellegrini di passaggio.',
+	'Journal.NAME_WISP': 'Fuoco Fatuo',
+	'Journal.DESC_WISP': 'Spirito effimero simile a una fiammella tremolante.',
+	'Journal.NOTE_WISP':
+		'Vivere per un unico, luminoso momento... Cosa si proverebbe? Meraviglia, o solo disperazione? O forse entrambi, in egual misura?',
+	'Journal.NAME_FARMER_WISP': 'Insetto Ardente',
+	'Journal.DESC_FARMER_WISP': 'Insetto dai molteplici arti e dall’ossessione fanatica per il fuoco.',
+	'Journal.NOTE_FARMER_WISP':
+		'Ha in qualche modo appreso la sua arte dai roventi Fuochi Fatui che abitano nelle stesse fratte. È in grado di evocarli e comandarli a bacchetta.',
+	'Journal.NAME_WISP_PYRE_EFFIGY': 'Padre della Fiamma',
+	'Journal.DESC_WISP_PYRE_EFFIGY': 'Totem e divinità, costruito e venerato dagli Insetti Ardenti.',
+	'Journal.NOTE_WISP_PYRE_EFFIGY':
+		'I resti di un insetto anziano sono stati posati nel cuore della pira. La struttura suggeriva un desiderio di immolazione. Se così fosse, ho provveduto al suo esaudimento.',
+	'Journal.NAME_CROW': 'Corvide',
+	'Journal.DESC_CROW':
+		'Saprofago gracchiante che si posa sulle sommità di caverne e prende di mira i pellegrini di passaggio.',
+	'Journal.NOTE_CROW':
+		'Un insetto semplice potrebbe facilmente cadere vittima di questa minaccia volante. E, cosa ancor più pericolosa, raramente attacca da solo.',
+	'Journal.NAME_CROWMAN': 'Corvide Alto',
+	'Journal.DESC_CROWMAN': 'Corvide adulto dalle ali di stracci che brandisce uno spillo rubato.',
+	'Journal.NOTE_CROWMAN': 'Molto più ostile dei suoi simili più giovani, ma meno propenso ad allontanarsi dal nido.',
+	'Journal.NAME_CROWMAN_DAGGER': 'Corvide Tozzo',
+	'Journal.DESC_CROWMAN_DAGGER': 'Corvide adulto corpulento, armato di svariati piccoli spilli.',
+	'Journal.NOTE_CROWMAN_DAGGER':
+		'Una specie codarda. Cercano di restare nei paraggi per riuscire a scagliare le loro armi affilate. Meglio stanarli ed eliminarli rapidamente.',
+	'Journal.NAME_CROWMAN_JUROR_TINY': 'Corvide Giurato',
+	'Journal.DESC_CROWMAN_JUROR_TINY':
+		'Saprofago gracchiante dalla livrea nera, in lutto per la devastazione che ha colpito la sua terra.',
+	'Journal.NOTE_CROWMAN_JUROR_TINY':
+		'Debole, intimorito e consapevole della fine imminente. Ne comprendo la disperazione, ma la mia dipartita non servirà di certo a evitare l’imminente caduta.',
+	'Journal.NAME_CROWMAN_JUROR': 'Corvide Alto Giurato',
+	'Journal.DESC_CROWMAN_JUROR': 'Corvide anziano al servizio di una cerimonia sacra.',
+	'Journal.NOTE_CROWMAN_JUROR':
+		'La curiosità mi ha spinto a rispondere al suo appello, ma non permetterò che mi trattenga a lungo. Devo affrettarmi per riparare il mio grande errore.',
+	'Journal.NAME_CROWMAN_DAGGER_JUROR': 'Corvide Tozzo Giurato',
+	'Journal.DESC_CROWMAN_DAGGER_JUROR': 'Basso Corvide anziano e servitore entusiasta della sua corte.',
+	'Journal.NOTE_CROWMAN_DAGGER_JUROR':
+		'Cerca di uccidere l’unica sua possibilità di sopravvivenza. Ahimè, qualsiasi parola spesa risulterebbe inutile. Non posso che rispondere con la mia lama.',
+	'Journal.NAME_CRAWFATHER': 'Padre Corvide',
+	'Journal.DESC_CRAWFATHER':
+		'Signore e giudice dei Corvidi di Lungitela. Provoca la morte degli insetti condannati con il suo becco corazzato.',
+	'Journal.NOTE_CRAWFATHER':
+		'Saprà che, se questa terra è stata colpita dal vuoto, io ne sono in parte responsabile? Se sì, allora forse la sua sentenza non è stata così ingiusta. Per questi insetti, io non porto che distruzione.',
+	'Journal.NAME_MAGGOTS': 'Bacofango',
+	'Journal.DESC_MAGGOTS': 'Infante di larva priva di intelligenza e ricoperta da uno spesso strato di bava.',
+	'Journal.NOTE_MAGGOTS':
+		'Si attacca ai carapaci di altri insetti e distrugge ogni loro speranza di poter concentrarsi o riposare.',
+	'Journal.NAME_DUSTROACH_POLLYWOG': 'Lumalarva',
+	'Journal.DESC_DUSTROACH_POLLYWOG': 'Mordace parente giovane dello Scarafango, più larva che insetto.',
+	'Journal.NOTE_DUSTROACH_POLLYWOG':
+		'Queste creature sembrano essere state allevate deliberatamente in recinti pieni d’acqua. Se dovessero essere ingerite, il loro odore fa presagire un sapore ripugnante.',
+	'Journal.NAME_DUSTROACH': 'Scarafango',
+	'Journal.DESC_DUSTROACH':
+		'Insetto dall’appetito insaziabile che è solito muoversi in sciami. Si riproduce rapidamente ed è talvolta allevato ai fini alimentari, nonostante la scorza dura e il sapore acre della carne.',
+	'Journal.NOTE_DUSTROACH':
+		'Una creatura rivoltante. Mi pizzica il carapace quando la vedo. Nei recinti in cui si moltiplicano resto sempre in allerta massima.',
+	'Journal.NAME_BLOAT_ROACH': 'Scaragonfio',
+	'Journal.DESC_BLOAT_ROACH':
+		'Parente pingue dello Scarafango, nato dai gas di scarico della Cittadella. Lo stomaco afflosciato di questa blatta alata è pieno di bile sfrigolante.',
+	'Journal.NOTE_BLOAT_ROACH':
+		'Ha una forma assurda... Com’è possibile che prenda il volo? Devono essere i gas nocivi nello stomaco a conferirgli la leggerezza necessaria.',
+	'Journal.NAME_ROACHFEEDER_SHORT': 'Domablatte',
+	'Journal.DESC_ROACHFEEDER_SHORT':
+		'Piccolo e agile insetto che usa palle con filo spinato per recintare e imprigionare le bestie.',
+	'Journal.NOTE_ROACHFEEDER_SHORT':
+		'La sua arma da lancio è assai efficace e adatta alle ampie caverne in cui abita. Questi insettini impertinenti devono essere abili artigiani.',
+	'Journal.NAME_ROACHFEEDER_TALL': 'Nutriblatte',
+	'Journal.DESC_ROACHFEEDER_TALL':
+		'Slanciato badante incaricato di alimentare gli Scarafanghi con una dieta magra a base di zuppa di bachi.',
+	'Journal.NOTE_ROACHFEEDER_TALL':
+		'Il suo spillo arricciato sembra fatto apposta per tenere a bada gli insetti affamati ed evitare di divenire il loro pasto.',
+	'Journal.NAME_ROACHKEEPER': 'Guardablatte',
+	'Journal.DESC_ROACHKEEPER': 'Badante già invecchiato che usa un laccio di catena pesante.',
+	'Journal.NOTE_ROACHKEEPER':
+		'Sa usarlo ancora abilmente, nonostante la sua mente non sia più molto funzionante. Che l’Infestazione condanni gli insetti a eseguire in eterno il compito che avevano in vita?',
+	'Journal.NAME_ROACHKEEPER_CHEF_TINY': 'Serviblatte',
+	'Journal.DESC_ROACHKEEPER_CHEF_TINY':
+		'Rozzo cuciniere responsabile per lo sminuzzamento della carne di Scarafango in porzioni edibili.',
+	'Journal.NOTE_ROACHKEEPER_CHEF_TINY':
+		'Le sue azioni possono essere definite abilità? Io non vedo che un rozzo maciullamento di carne. Eppure mi chiedo, prima che l’Infestazione si impossessasse delle loro menti, sarà stato differente?',
+	'Journal.NAME_ROACHKEEPER_CHEF': 'Esule Chef Lugoli',
+	'Journal.DESC_ROACHKEEPER_CHEF':
+		'Chef di grande fama che hanno poi esiliato dalla Cittadella per aver commesso una serie di reati culinari.',
+	'Journal.NOTE_ROACHKEEPER_CHEF':
+		'Una volta di ritorno nelle sue caverne ha ripreso a preparare manicaretti che qualunque insetto ancora assennato troverebbe rivoltanti.',
+	'Journal.NAME_WRAITH': 'Spettro',
+	'Journal.DESC_WRAITH':
+		'Spettro angustiato fatto di effimero filo. Nonostante la sua natura immateriale, dei forti colpi possono scacciarlo per un breve tempo.',
+	'Journal.NOTE_WRAITH':
+		'Non si tratta di un insetto, ma della proiezione della volontà di un’altra entità, sotto forma di fumo e Seta.',
+	'Journal.NAME_SWAMP_DRIFTER': 'Falefoglia Mimia',
+	'Journal.DESC_SWAMP_DRIFTER':
+		'Un insetto raro di Acquafiele, tra i più placidi, che sopravvive ai pericoli circostanti mimetizzandosi da pianta.',
+	'Journal.NOTE_SWAMP_DRIFTER':
+		'È grazioso, ma non è così morbido come sembra. La pianta che imita è ruvida e sfibrata, e il manto dell’insetto presenta una consistenza simile.',
+	'Journal.NAME_SWAMP_GOOMBA': 'Acaro del Pantano',
+	'Journal.DESC_SWAMP_GOOMBA': 'Insetto con una sacca di bile rovente nell’addome.',
+	'Journal.NOTE_SWAMP_GOOMBA':
+		'Spaventa i predatori facendo esplodere la parte posteriore, ma anche il più leggero scossone può causarne la fine prematura.',
+	'Journal.NAME_SWAMP_MOSQUITO': 'Sputafiele Palustre',
+	'Journal.DESC_SWAMP_MOSQUITO': 'Pingue parassita dalla proboscide appuntita e la pancia piena di bile.',
+	'Journal.NOTE_SWAMP_MOSQUITO':
+		'Più pericoloso nel momento della sua morte esplosiva e corrosiva di quanto lo sia mai stato in vita.',
+	'Journal.NAME_SWAMP_MOSQUITO_SKINNY': 'Sputafiele',
+	'Journal.DESC_SWAMP_MOSQUITO_SKINNY':
+		'Parassita fluttuante dalla proboscide cava in grado di sputare ammassi di bile rovente.',
+	'Journal.NOTE_SWAMP_MOSQUITO_SKINNY':
+		'Per sostentarsi con l’acqua putrida di questo ambiente malsano deve sputare gli elementi più tossici. Nel corso delle generazioni, questa vetusta tecnica di sopravvivenza è divenuta una strategia di caccia efficace.',
+	'Journal.NAME_SWAMP_MUCKMAN': 'Picchetto',
+	'Journal.DESC_SWAMP_MUCKMAN': 'Insetto scaltro che caccia con dardi costituiti da pali e bile.',
+	'Journal.NOTE_SWAMP_MUCKMAN':
+		'Conosce bene il suo dominio e si apposta in anfratti e paludi, sempre pronto a balzare allo scoperto.',
+	'Journal.NAME_SWAMP_MUCKMAN_TALL': 'Trapicchetto',
+	'Journal.DESC_SWAMP_MUCKMAN_TALL':
+		'Insetto che caccia con trappole e ha con sé una sacca di pali lunghi e affilati.',
+	'Journal.NOTE_SWAMP_MUCKMAN_TALL':
+		'Più fastidiose dell’insetto stesso sono le innumerevoli trappole già predisposte in giro per le caverne.',
+	'Journal.NAME_SWAMP_SHAMAN': 'Craal il Grande',
+	'Journal.DESC_SWAMP_SHAMAN':
+		'Capo e cappellano dei Picchetti che odia la Cittadella per aver soffocato le loro caverne e averli fatti soffrire.',
+	'Journal.NOTE_SWAMP_SHAMAN':
+		'La sua forza è stata potenziata da anima rubata. Non è il primo a cercare di accumularla o di plasmarla per fini così violenti.',
+	'Journal.NAME_SWAMP_BARNACLE': 'Balano',
+	'Journal.DESC_SWAMP_BARNACLE':
+		'Escrescenza dai denti prominenti che vive sui soffitti delle caverne. Avvolge insetti incauti con la sua lunga lingua e li porta a sé per assorbirli.',
+	'Journal.NOTE_SWAMP_BARNACLE': 'Nasconde la lingua tra fronde a sé simili... Un trucco di tutto riguardo.',
+	'Journal.NAME_SWAMP_DUCTSUCKER': 'Succhiacondotti',
+	'Journal.DESC_SWAMP_DUCTSUCKER':
+		'Creatura addetta alla suzione che si nutre della densa melma di cui sono ricoperte le sue caverne.',
+	'Journal.NOTE_SWAMP_DUCTSUCKER':
+		'Questo insetto poco intelligente non sente che con le sue appendici. Nonostante questa semplicità rappresenta una seria minaccia.',
+	'Journal.NAME_POND_SKATER': 'Flottante Lacustre',
+	'Journal.DESC_POND_SKATER':
+		'Insetto corazzato spesso avvistato sulla superficie dello Stagno di Carapiano. Era il cibo prediletto dei pellegrini di passaggio.',
+	'Journal.NOTE_POND_SKATER':
+		'Il modo in cui pattinano sul pelo dell’acqua è così elegante. Immagino che una simile abilità si possa apprendere? Non appena avrò tempo, dovrò tentare l’impresa.',
+	'Journal.NAME_PILGRIM_FISHER': 'Fiocinante',
+	'Journal.DESC_PILGRIM_FISHER':
+		'Vecchio fiocinante che si aggira sullo Stagno di Carapiano armato di uno spillone e in preda all’Infestazione.',
+	'Journal.NOTE_PILGRIM_FISHER':
+		'Prima cacciava per procurarsi del cibo, mentre adesso non ha un obiettivo preciso e non sembra mai fermarsi.',
+	'Journal.NAME_SHELLWOOD_GNAT': 'Moscerino di Carapiano',
+	'Journal.DESC_SHELLWOOD_GNAT':
+		'Minuscola creatura dal corpo molle che si fa scudo con le escrescenze rigide e cave di Carapiano.',
+	'Journal.NOTE_SHELLWOOD_GNAT':
+		'Quando il nemico distrugge il suo involucro legnoso, l’insetto continua ostinatamente e coraggiosamente ad attaccare.',
+	'Journal.NAME_SHELLWOOD_WASP': 'Caravespa',
+	'Journal.DESC_SHELLWOOD_WASP':
+		'Insetto appuntito e scattante che costruisce alveari robusti utilizzando corteccia essiccata di Carapiano.',
+	'Journal.NOTE_SHELLWOOD_WASP':
+		'Distruggere gli alveari è un modo per limitarne la presenza in quella regione. Utile per me quando passo per i rami. Pericoloso a lungo termine per l’ordine del posto. Anche la minima perturbazione può sconvolgere un ordine fragile.',
+	'Journal.NAME_STICK_INSECT': 'Stecco',
+	'Journal.DESC_STICK_INSECT':
+		'Insetto rassomigliante a un ramo, capace di rimanere immobile a lungo ma anche di reagire immediatamente se provocato.',
+	'Journal.NOTE_STICK_INSECT':
+		'Evitare i suoi agguati mette sicuramente alla prova i miei sensi e la prontezza del mio contrattacco.',
+	'Journal.NAME_STICK_INSECT_CHARGER': 'Cornostecco',
+	'Journal.DESC_STICK_INSECT_CHARGER':
+		'Insetto rassomigliante a un ramo, nato con corna retrattili e affilate sulla testa.',
+	'Journal.NOTE_STICK_INSECT_CHARGER':
+		'Il carapace gli conferisce il vantaggio dell’effetto sorpresa, ma lo costringe anche ad assumere una forma esile e vulnerabile ad attacchi pesanti.',
+	'Journal.NAME_STICK_INSECT_FLYER': 'Scorzastecco',
+	'Journal.DESC_STICK_INSECT_FLYER':
+		'Insetto alato dal carapace friabile che imita alla perfezione l’ambiente circostante.',
+	'Journal.NOTE_STICK_INSECT_FLYER':
+		'Il suo attacco... come un giocattolo usato a guisa di arma micidiale. Sarei mai capace di ideare uno strumento rotante al suo pari?',
+	'Journal.NAME_SPLINTER_QUEEN': 'Sorella Stecco',
+	'Journal.DESC_SPLINTER_QUEEN':
+		'Vecchio insetto imponente che fa il nido nelle zone alte di Carapiano. La sua abilità con rami e fuscelli ha fatto sì che nessun pellegrino riuscisse mai a sopravvivere nel suo territorio.',
+	'Journal.NOTE_SPLINTER_QUEEN':
+		'Questa creatura ha vissuto a lungo e ha assorbito molto cibo. Una volta eliminata, Carapiano sarà un luogo più sicuro.',
+	'Journal.NAME_FLOWER_DRIFTER': 'Floralia',
+	'Journal.DESC_FLOWER_DRIFTER':
+		'Insetto vagante camuffato da fiore. Se minacciato, diffonde nuvole scoppiettanti di polline.',
+	'Journal.NOTE_FLOWER_DRIFTER':
+		'Una creatura veramente magnifica. Alla corte del mio regno sarebbe stata molto apprezzata come animale decorativo.',
+	'Journal.NAME_BLOOM_SHOOTER': 'Pollenica',
+	'Journal.DESC_BLOOM_SHOOTER':
+		'Nemico floreale che reagisce istintivamente ai movimenti vicini. Sputa pallottole di polline scoppiettante che esplodono all’impatto.',
+	'Journal.NOTE_BLOOM_SHOOTER':
+		'È dotato di sensi davvero eccezionali. Avverte la mia presenza anche senza che produca alcun suono.',
+	'Journal.NAME_BLOOM_PUNCHER': 'Galia',
+	'Journal.DESC_BLOOM_PUNCHER':
+		'Nemico floreale con un nucleo a forma di maschera. Questo nucleo può essere scagliato in avanti per colpire insetti imprudenti.',
+	'Journal.NOTE_BLOOM_PUNCHER':
+		'La falsa maschera è già abbastanza spaventosa da allontanare i parassiti più piccoli.',
+	'Journal.NAME_SETH': 'Seth',
+	'Journal.DESC_SETH':
+		'Eterno difensore del Tempio di Carapiano. Il suo spillo e il suo piatto sono ammaccati in vari punti.',
+	'Journal.NOTE_SETH':
+		'Ha avvisato per tempo prima di sfidarmi a duello, un duello inteso nel senso più puro. Ammiro il suo onore e le sue capacità.',
+	'Journal.NAME_FLOWER_QUEEN': 'Nyleth',
+	'Journal.DESC_FLOWER_QUEEN': 'Antico cuore di Carapiano, collegato a tutti i suoi esseri viventi.',
+	'Journal.NOTE_FLOWER_QUEEN':
+		'La sua presenza preservava il fragile ordine del suo dominio, consentendo il passaggio in sicurezza degli insetti sui suoi rami.',
+	'Journal.NAME_BELL_GOOMBA': 'Vellio',
+	'Journal.DESC_BELL_GOOMBA':
+		'Insetto scavatore che si annida nella Venacampana e cerca campane rigide per proteggere il suo corpo molliccio.',
+	'Journal.NOTE_BELL_GOOMBA': 'Mi piacerebbe accarezzare il suo manto, se non fosse per la sua ostilità.',
+	'Journal.NAME_BELL_FLY': 'Vellio Alato',
+	'Journal.DESC_BELL_FLY':
+		'Insetto peloso sotto una campana pesante. È ormai troppo grande per scavare gallerie, ma maturando ha sviluppato piccole ali.',
+	'Journal.NOTE_BELL_FLY': 'Un essere molle e imponente, qualità rovinate dall’aggressività dovuta all’Infestazione.',
+	'Journal.NAME_BLADE_SPIDER': 'Lungiragno',
+	'Journal.DESC_BLADE_SPIDER': 'Piccolo aracnide che si trova in parecchie fessure e caverne di tutta Lungitela.',
+	'Journal.NOTE_BLADE_SPIDER':
+		'C’è qualcosa nel suo attacco che mi ricorda la mia stessa abilità, sebbene i suoi talenti siano puramente istintivi. La mia tecnica è frutto di un intenso allenamento.',
+	'Journal.NAME_BLADE_SPIDER_HANG': 'Lungiragno Tuffatore',
+	'Journal.DESC_BLADE_SPIDER_HANG':
+		'Aracnide che abita nelle fenditure buie sui soffitti delle caverne. Balza sulle prede da grandi altezze.',
+	'Journal.NOTE_BLADE_SPIDER_HANG':
+		'Un cacciatore astuto che sa attendere ed è sempre pronto a sferrare il primo colpo.',
+	'Journal.NAME_SHELL_FOSSIL_MIMIC': 'Fossilare',
+	'Journal.DESC_SHELL_FOSSIL_MIMIC': 'Perverso attentatore che si finge fossile.',
+	'Journal.NOTE_SHELL_FOSSIL_MIMIC':
+		'Non appena provocato, questo insetto sbatte il suo duro carapace sulle pareti, sul suolo e sui nemici.',
+	'Journal.NAME_SAND_CENTIPEDE': 'Squarciasabbia',
+	'Journal.DESC_SAND_CENTIPEDE': 'Verme corazzato che vive al di sotto di masse di sabbie mobili.',
+	'Journal.NOTE_SAND_CENTIPEDE':
+		'Scatta in avanti non appena avverte un movimento e assorbe qualsiasi oggetto o insetto abbastanza ingenuo da cadergli preda.',
+	'Journal.NAME_CORAL_JUDGE_CHILD': 'Divincolo',
+	'Journal.DESC_CORAL_JUDGE_CHILD': 'Giovane larva strisciante che vive nell’oscurità.',
+	'Journal.NOTE_CORAL_JUDGE_CHILD':
+		'Se ne hanno l’opportunità, queste creature assumono una forma più grande e oppressiva.',
+	'Journal.NAME_CORAL_JUDGE': 'Giudice',
+	'Journal.DESC_CORAL_JUDGE': 'Guardia dorata dei Gradini Distrutti recante un piatto e una mazza.',
+	'Journal.NOTE_CORAL_JUDGE':
+		'Elimina con rimorso pellegrini e passanti ai suoi occhi impuri. Gli innumerevoli relitti, disseminati sui cammini attorno, ne testimoniano le decisioni definitive.',
+	'Journal.NAME_LAST_JUDGE': 'Ultima Giudice',
+	'Journal.DESC_LAST_JUDGE':
+		'Arbitra finale dei Gradini Distrutti che ha il dovere di assicurare che solo chi è senza peccato possa varcare il Gran Portale.',
+	'Journal.NOTE_LAST_JUDGE':
+		'L’imponente Giudice dev’essere rimasta inamovibile per innumerevoli generazioni, invitta, risoluta nelle sue decisioni.',
+	'Journal.NAME_CORAL_SPIKE_GOOMBA': 'Vellio Corallino',
+	'Journal.DESC_CORAL_SPIKE_GOOMBA': 'Insetto dal manto fosco che si protegge con una noce corallina corazzata.',
+	'Journal.NOTE_CORAL_SPIKE_GOOMBA':
+		'La sua peluria è folta e setosa. Purtroppo, a causa dell’Infestazione, non potrò più accarezzarlo senza correre pericoli.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER': 'Maschimbalzo',
+	'Journal.DESC_CORAL_CONCH_SHOOTER': 'Creatura nidificatrice che fonde il proprio volto con del corallo affilato.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER':
+		'Capita spesso di essere colti di sorpresa dalla traiettoria rimbalzante della maschera da lei lanciata, soprattutto negli angoli più stretti.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER_HEAVY': 'Maschimbomba',
+	'Journal.DESC_CORAL_CONCH_SHOOTER_HEAVY':
+		'Grosso Maschimbalzo maschio, feroce e territoriale. Spara la sua pesante maschera di corallo sugli intrusi.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER_HEAVY':
+		'Un abile tiratore con la sua maschera affilata. La sua aggressività non ha effetti negativi sulla mira.',
+	'Journal.NAME_CORAL_CONCH_STABBER': 'Punzecchio',
+	'Journal.DESC_CORAL_CONCH_STABBER':
+		'Creatura vagante dalla larga maschera in corallo e una proboscide rigida usata per infilzare la preda.',
+	'Journal.NOTE_CORAL_CONCH_STABBER':
+		'Attende la preda passivamente per poi presentarsi sul suo cammino. Una tecnica non necessariamente risibile. L’importante è che sia efficace.',
+	'Journal.NAME_CORAL_CONCH_DRILLER': 'Mosconchiglia',
+	'Journal.DESC_CORAL_CONCH_DRILLER':
+		'Piccolo insetto che fabbrica un carapace di corallo affilato. Lo fa roteare a gran velocità per perforare l’osso e il corallo.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER':
+		'Il modo in cui schizza dentro e fuori dal terreno rasenta il comico. Un modo buffo ma efficace di tendere agguati alla preda.',
+	'Journal.NAME_CORAL_CONCH_DRILLER_GIANT': 'Gran Mosconchiglia',
+	'Journal.DESC_CORAL_CONCH_DRILLER_GIANT':
+		'Mosconchiglia anziana dotata di un grosso corno di corallo. Una volta accoppiate, è raro avvistarle da sole.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER_GIANT':
+		'Trovare un compagno è un istinto essenziale e per alcuni insetti è una gioia immensa. In passato ho cercato un’unione simile, ma nessuno dei miei compagni avrebbe potuto vivere tanto a lungo quanto me.',
+	'Journal.NAME_CORAL_GOOMBAS': 'Corridore Corallino',
+	'Journal.DESC_CORAL_GOOMBAS': 'Frenetico insetto a guscio morbido racchiuso nel corallo.',
+	'Journal.NOTE_CORAL_GOOMBAS': 'Sembra che sopravvivano e prosperino mimetizzandosi tra i coralli della loro torre.',
+	'Journal.NAME_CORAL_GOOMBA_LARGE': 'Granchio Corallino',
+	'Journal.DESC_CORAL_GOOMBA_LARGE':
+		'Gigante corallino dalla corazza consistente, le cui dimensioni sono state dettate dal Memorium della Cittadella.',
+	'Journal.NOTE_CORAL_GOOMBA_LARGE':
+		'La natura distorta... Questo insetto è nato piccolo e docile. La Cittadella l’ha deformato con la futile speranza che potesse prosperare.',
+	'Journal.NAME_CORAL_SWIMMER_FAT': 'Kai',
+	'Journal.DESC_CORAL_SWIMMER_FAT':
+		'Vagante creatura gregaria dalla corporatura abbondante, originaria di un corallo di altri tempi.',
+	'Journal.NOTE_CORAL_SWIMMER_FAT':
+		'Una volta sciamavano in massa attorno alla loro torre, in gruppi immensi. Assistere a una tale manifestazione di vita non è un evento comune.',
+	'Journal.NAME_POKE_SWIMMER': 'Kai Beccospino',
+	'Journal.DESC_POKE_SWIMMER':
+		'Essere galleggiante dalle corna spiraliformi, capace di difendere sé stesso e i suoi compagni.',
+	'Journal.NOTE_POKE_SWIMMER':
+		'Membro autorevole del gruppo a cui appartiene. Senza di lui i Kai sarebbero destinati all’estinzione, vista la presenza di predatori più grandi.',
+	'Journal.NAME_SPIKE_SWIMMER': 'Kai Spinacciaio',
+	'Journal.DESC_SPIKE_SWIMMER': 'Kai temprato, capace di estrarre spine appuntite dall’interno del suo involucro.',
+	'Journal.NOTE_SPIKE_SWIMMER':
+		'Sembra molle, ma nasconde una sorpresa parecchio affilata. Qualsiasi predatore che si attenti a morderlo imparerebbe una lezione tagliente e dolorosa.',
+	'Journal.NAME_CORAL_SWIMMER_SMALL': 'Yuma',
+	'Journal.DESC_CORAL_SWIMMER_SMALL':
+		'Creatura corallina gelatinosa di carattere nomade, ingenua e dall’indole pacifica.',
+	'Journal.NOTE_CORAL_SWIMMER_SMALL': 'Un insetto semplice. Non rappresenta una minaccia per me, né per altri.',
+	'Journal.NAME_CORAL_BIG_JELLYFISH': 'Yumama',
+	'Journal.DESC_CORAL_BIG_JELLYFISH':
+		'Grossa creatura vagante dalla consistenza gelatinosa. Scaccia le minacce scaraventandosi qua e là con il corpo.',
+	'Journal.NOTE_CORAL_BIG_JELLYFISH':
+		'Quando viene sconfitta si disgrega in tante forme più piccole. Un’ennesima creatura straordinaria di questa terra al cospetto del trono.',
+	'Journal.NAME_CORAL_WARRIOR': 'Karaka',
+	'Journal.DESC_CORAL_WARRIOR':
+		'Energico e abile insetto lama di una terra in passato prospera, ma andata persa nel tempo.',
+	'Journal.NOTE_CORAL_WARRIOR':
+		'Membro principale di un ordine potente, addestrato all’insegna della lealtà e della temerarietà. Il loro era un regno di guerrieri, fondato sulle loro stesse lame.',
+	'Journal.NAME_CORAL_FLYER': 'Kakri',
+	'Journal.DESC_CORAL_FLYER': 'Agili esploratori alati spesso accompagnati dai loro simili più grandi.',
+	'Journal.NOTE_CORAL_FLYER':
+		'Il suo addestramento ricorda il mio, dato che preferisce attacchi veloci e movimenti repentini. Forse in passato cacciava?',
+	'Journal.NAME_CORAL_FLYER_THROW': 'Yago',
+	'Journal.DESC_CORAL_FLYER_THROW':
+		'Aggressore aereo dalla larga maschera, addestrato per assistere i compagni terrestri senza allontanarsi.',
+	'Journal.NOTE_CORAL_FLYER_THROW':
+		'Non è una forza di prima linea, ma quando ho assaltato la sua torre tutti quanti sono accorsi per arrestarmi.',
+	'Journal.NAME_CORAL_BRAWLER': 'Karak Gor',
+	'Journal.DESC_CORAL_BRAWLER': 'Aggressore voluminoso e corazzato che punta sul peso e la potenza.',
+	'Journal.NOTE_CORAL_BRAWLER':
+		'Troppo forte da affrontare nel suo dominio corallino. Deve aver sempre vissuto dentro la sua torre per riuscire a comandarla in quel modo.',
+	'Journal.NAME_CORAL_HUNTER': 'Alita',
+	'Journal.DESC_CORAL_HUNTER':
+		'Creatura balzante dedita alla caccia di un’era ormai passata. La più scattante della sua setta, fa roteare abilmente le sue lame anteriori.',
+	'Journal.NOTE_CORAL_HUNTER':
+		'Nella lotta tra velocità e potenza, ho spesso visto i lesti trionfare sui forti, una lezione che ho deciso di far mia.',
+	'Journal.NAME_CORAL_BUBBLE_BRUTE': 'Karaka Corallino',
+	'Journal.DESC_CORAL_BUBBLE_BRUTE':
+		'Esemplare anziano capace di sparare bolle scottanti dall’interno del suo carapace contenuto nel corallo.',
+	'Journal.NOTE_CORAL_BUBBLE_BRUTE':
+		'La fusione tra l’insetto e questo materiale... Pare premeditata, sebbene immagini che sia tutt’altro che confortevole.',
+	'Journal.NAME_CORAL_KING': 'Re Corallo Khann',
+	'Journal.DESC_CORAL_KING':
+		'Condottiero indurito di un’era ormai passata, capace di piegare il corallo al suo volere.',
+	'Journal.NOTE_CORAL_KING':
+		'Nonostante il suo governo austero, le sue regioni gli sembrano fedeli in tutto e per tutto. Gli insetti meno combattivi non avrebbero tollerato tale rigidità.',
+	'Journal.NAME_CORAL_WARRIOR_GREY': 'Sentinella di Frontiera',
+	'Journal.DESC_CORAL_WARRIOR_GREY':
+		'Vecchio guerriero a guardia dei confini del suo dominio, irrigiditosi nel tempo e risvegliato dal canto.',
+	'Journal.NOTE_CORAL_WARRIOR_GREY':
+		'Ha resistito al suo posto di sorveglianza molto più a lungo dei suoi fratelli, ma una volta ridestatosi ha agitato la lama con impressionante naturalezza.',
+	'Journal.NAME_ZAP_CORE_ENEMY': 'Voltverme',
+	'Journal.DESC_ZAP_CORE_ENEMY':
+		'Nido ravvolto di vermi elettrificati. Assalta gli intrusi con scariche scoppiettanti.',
+	'Journal.NOTE_ZAP_CORE_ENEMY':
+		'Quasi non è un insetto, ed è dotato di una mente primitiva, ma l’istinto è bastato a renderlo letale.',
+	'Journal.NAME_CITADEL_BAT': 'Mosca dei Cenci',
+	'Journal.DESC_CITADEL_BAT': 'Parassita alato dal fare imprevedibile che si annida in tende e stracci.',
+	'Journal.NOTE_CITADEL_BAT':
+		'È come se il tessuto prendesse vita all’improvviso. La sua superficie si mimetizza perfettamente con i tessuti che infesta.',
+	'Journal.NAME_CITADEL_BAT_LARGE': 'Signore dei Cenci',
+	'Journal.DESC_CITADEL_BAT_LARGE':
+		'Mosca dei Cenci anziana, ingranditasi per l’età e il cibo ingerito. Il corpo pesante la fa colpire più forte rispetto agli esemplari più giovani.',
+	'Journal.NOTE_CITADEL_BAT_LARGE': 'La cupidigia spingerà sempre alcuni insetti a imporsi sui loro simili.',
+	'Journal.NAME_MITE_HEAVY': 'Acaro dei Cenci',
+	'Journal.DESC_MITE_HEAVY':
+		'Insetto dal manto di tessuto con arti anteriori taglienti. Vive e si riproduce in luoghi bui.',
+	'Journal.NOTE_MITE_HEAVY':
+		'Le strutture di Lungitela sembrano quasi costruite appositamente per lui. Tutti quegli angoli e anfratti sono nidi e nascondigli perfetti.',
+	'Journal.NAME_UNDERSTORE_MITE_GIANT': 'Acaro dei Cenci Gigante',
+	'Journal.DESC_UNDERSTORE_MITE_GIANT': 'Grosso acaro della Cittadella avvolto in una vecchia tenda.',
+	'Journal.NOTE_UNDERSTORE_MITE_GIANT':
+		'Poche creature di quel posto infestato dalla Seta riuscirebbero a nutrirsi e crescere così tanto.',
+	'Journal.NAME_UNDERSTORE_SMALL': 'Fondoperaio',
+	'Journal.DESC_UNDERSTORE_SMALL':
+		'Fragile lavoratore delle Fonderie dal carapace rigido, armato di una lunga chiave a spillo.',
+	'Journal.NOTE_UNDERSTORE_SMALL':
+		'Vista la quantità di rifiuti che precipita nel suo dominio, un carapace resistente è fondamentale per assicurare la propria sopravvivenza.',
+	'Journal.NAME_PILGRIM_03_UNDERSTORE': 'Fondosfrego',
+	'Journal.DESC_PILGRIM_03_UNDERSTORE': 'Operaio fiacco ma zelante che fa uso di una ruvida spazzola in acciaio.',
+	'Journal.NOTE_PILGRIM_03_UNDERSTORE':
+		'Il fatto che abbia mai sperato di riuscire a tenere pulito il suo dominio... Una tale futilità.',
+	'Journal.NAME_PILGRIM_STAFF_UNDERSTORE': 'Fondospazzo',
+	'Journal.DESC_PILGRIM_STAFF_UNDERSTORE':
+		'Usa il suo spillo con setole d’acciaio per rimuovere fuliggine da condotti e prese d’aria.',
+	'Journal.NOTE_PILGRIM_STAFF_UNDERSTORE':
+		'Questo suo affilato strumento di pulizia è sudicio come il resto dell’ambiente. Non fa che aggiungere sporco allo sporco.',
+	'Journal.NAME_UNDERSTORE_POKER': 'Fondofiacco',
+	'Journal.DESC_UNDERSTORE_POKER':
+		'Lavoratore esaurito, sull’orlo del collasso. È consumato dall’Infestazione, ma continua a lavorare oltre i propri limiti di mortale.',
+	'Journal.NOTE_UNDERSTORE_POKER':
+		'Ha faticato incessantemente per la Cittadella, il carapace ricurvo e ingrigito, e adesso, con la maledizione del regno, nemmeno la morte potrà redimerlo.',
+	'Journal.NAME_UNDERSTORE_THROWER': 'Fondolancio',
+	'Journal.DESC_UNDERSTORE_THROWER':
+		'Insetto esausto e malato a causa della caligine che pervade le Fonderie. Le chiavi a spillo, che una volta usava come attrezzi di riparazione, servono adesso da proiettili rotanti.',
+	'Journal.NOTE_UNDERSTORE_THROWER':
+		'Ah, il costo di cotanta magnificenza... Avrò esaminato abbastanza attentamente le fondamenta del mio regno?',
+	'Journal.NAME_UNDERSTORE_HEAVY': 'Fondaggiusto',
+	'Journal.DESC_UNDERSTORE_HEAVY':
+		'Corpulento lavoratore corazzato, sempre indaffarato a riparare le Fonderie in rovina della Cittadella.',
+	'Journal.NOTE_UNDERSTORE_HEAVY':
+		'Nonostante non sembrino esserci ranghi nel suo dominio, si è certamente distinto dagli altri. Una posizione probabilmente guadagnata a son di soprusi e intimidazioni.',
+	'Journal.NAME_SONG_PILGRIM_01': 'Emissario',
+	'Journal.DESC_SONG_PILGRIM_01': 'Guida e sovente anche capofila del Coro della Cittadella.',
+	'Journal.NOTE_SONG_PILGRIM_01':
+		'Sono stati insetti come questi ad attraversare le caverne per condurmi fino a Lungitela. Ne ho eliminati vari prima della mia cattura. Li pensavo intelligenti e scaltri. Adesso scorgo la singolare volontà che li ha infestati tutti quanti.',
+	'Journal.NAME_PILGRIM_01_SONG': 'Balzatore Corale',
+	'Journal.DESC_PILGRIM_01_SONG':
+		'Insetto agile, e uno dei pochi pellegrini indomiti ad aver raggiunto la Cittadella.',
+	'Journal.NOTE_PILGRIM_01_SONG':
+		'In passato erano tra gli insetti più prominenti di Lungitela, eppure il loro dominio e i loro carapaci sarebbero stati i primi a cadere vittima dell’Infestazione.',
+	'Journal.NAME_PILGRIM_02_SONG': 'Rinoceronte Corale',
+	'Journal.DESC_PILGRIM_02_SONG': 'Questa creatura adulta era in passato un pellegrino al servizio della Cittadella.',
+	'Journal.NOTE_PILGRIM_02_SONG':
+		'Sarà cresciuta grazie agli eccessi di quel luogo, o saranno state le sue dimensioni importanti a far sì che potesse sopravvivere per arrivarci?',
+	'Journal.NAME_PILGRIM_03_SONG': 'Portacampane Corale',
+	'Journal.DESC_PILGRIM_03_SONG': 'Devoto alato della Cittadella che porta con sé delle campane dorate.',
+	'Journal.NOTE_PILGRIM_03_SONG':
+		'A Lungitela le campane risultano spesso essere armi efficaci. Non le avevo mai considerate tali, prima di giungere qui.',
+	'Journal.NAME_PILGRIM_04_SONG': 'Volatore Corale',
+	'Journal.DESC_PILGRIM_04_SONG': 'Insetto alato della Cittadella la cui unica arma è il suo piccolo corno.',
+	'Journal.NOTE_PILGRIM_04_SONG':
+		'Per essere uscito illeso dalla risalita di Lungitela deve essere stato scortato da creature più forti. Dubito che avrebbe potuto riuscirci da solo.',
+	'Journal.NAME_PILGRIM_STOMPER_SONG': 'Anziano Corale',
+	'Journal.DESC_PILGRIM_STOMPER_SONG':
+		'Creatura ormai anziana, in passato un pellegrino. Usa le ali per posizionarsi sopra le minacce e schiacciarle con il suo grosso carapace.',
+	'Journal.NOTE_PILGRIM_STOMPER_SONG':
+		'Con il tempo il carapace si è ispessito, e lo schiacciamento delle vittime si è fatto ancora più efficace.',
+	'Journal.NAME_SONG_PILGRIM_03': 'Corista',
+	'Journal.DESC_SONG_PILGRIM_03':
+		'Seguace del Coro, elevato rispetto agli altri pellegrini, e costretto a incappucciare il proprio volto per l’eternità.',
+	'Journal.NOTE_SONG_PILGRIM_03':
+		'Il suo utilizzo dello spillo denota un rigido addestramento. Il suo uso della Seta, che dipana da una spola vicina, dimostra capacità che superano quelle degli insetti comuni.',
+	'Journal.NAME_SONG_REED': 'Ancia',
+	'Journal.DESC_SONG_REED':
+		'Seguace del Coro incaricato di preservarne l’ordine perfetto, ricorrendo a uno spillo acuminato se necessario.',
+	'Journal.NOTE_SONG_REED':
+		'Una creatura adatta al combattimento, agile e scattante. Non sorprende che occupi una posizione di rilievo nel suo culto.',
+	'Journal.NAME_SONG_REED_GRAND': 'Grand’Ancia',
+	'Journal.DESC_SONG_REED_GRAND':
+		'Imponente insetto del Coro che brandisce un arco. Ancia di alto rango che rispetto ai suoi simili minori ha intrapreso un addestramento e un regime alimentare più intensi.',
+	'Journal.NOTE_SONG_REED_GRAND':
+		'Per attaccare agita la sua spola di Seta. È una tecnica rudimentale che però ricorda quelle delle Tessitrici. Chissà chi gliela avrà insegnata?',
+	'Journal.NAME_SONG_HEAVY_SENTRY': 'Percussore Corale',
+	'Journal.DESC_SONG_HEAVY_SENTRY':
+		'Potente seguace percussivo del Coro che brandisce una mazza e una spola di Seta per avvolgere e potenziare gli attacchi.',
+	'Journal.NOTE_SONG_HEAVY_SENTRY':
+		'Non è affatto delicato nel suo uso della Seta. Assorbe quel poco che ha solo per amplificarne la forza.',
+	'Journal.NAME_SONG_HANDMAIDEN': 'Ancilla',
+	'Journal.DESC_SONG_HANDMAIDEN':
+		'Marionetta al servizio della Cittadella, appesa a fili di Seta. Una forma primordiale di automa che richiedeva molta Seta per garantirne il funzionamento.',
+	'Journal.NOTE_SONG_HANDMAIDEN':
+		'Se si presenta l’opportunità, ruba Seta da qualsiasi fonte, anche dal mio carapace.',
+	'Journal.NAME_ARBORIUM_KEEPER': 'Memoria',
+	'Journal.DESC_ARBORIUM_KEEPER':
+		'Seguace erudito del Coro, responsabile per la manutenzione del Memorium della Cittadella.',
+	'Journal.NOTE_ARBORIUM_KEEPER':
+		'Un compito disperatamente futile, fin dall’inizio. Quelle terre selvagge non avrebbero mai potuto essere replicate in uno spazio così artificiale.',
+	'Journal.NAME_SONG_ADMINISTRATOR': 'Ministro',
+	'Journal.DESC_SONG_ADMINISTRATOR':
+		'Seguace del Coro di rango dorato, alle dirette dipendenze dei Direttori della Cittadella.',
+	'Journal.NOTE_SONG_ADMINISTRATOR':
+		'La letalità di questi insetti è sorprendente. I loro corpi non erano stati concepiti per combattere. L’Infestazione ha drasticamente alterato la loro natura.',
+	'Journal.NAME_SONG_PILGRIM_MAESTRO': 'Maestro',
+	'Journal.DESC_SONG_PILGRIM_MAESTRO':
+		'Dirigente del Coro delle Sale Eccelse, in grado di evocare e comandare Mosche Meccaniche con un colpo di bacchetta.',
+	'Journal.NOTE_SONG_PILGRIM_MAESTRO':
+		'Una volta evocava il canto dei suoi sudditi. Adesso si erge soltanto per decretare la fine di coloro senza corde.',
+	'Journal.NAME_SONG_KNIGHT': 'Seconda Sentinella',
+	'Journal.DESC_SONG_KNIGHT':
+		'Cavaliere meccanico di Lungitela, già paladino dei suoi pellegrini e maestro della lama forbice.',
+	'Journal.NOTE_SONG_KNIGHT':
+		'Il talento e l’intelligenza di questo congegno superano ogni altra qualità da me osservata finora. Più che uno strumento di servizio, pare un tentativo di riprodurre la vita stessa.',
+	'Journal.NAME_SONG_THREADED_HUSK': 'Relitto Residuale',
+	'Journal.DESC_SONG_THREADED_HUSK':
+		'Resti di un insetto della Cittadella posseduto da residui di Seta. Il relitto attacca selvaggiamente con i numerosi spilli appuntiti impigliati nel suo filo.',
+	'Journal.NOTE_SONG_THREADED_HUSK':
+		'Un antico dolore pervade questi fili, opera di innumerevoli, crudeli procedure.',
+	'Journal.NAME_SONG_THREADED_HUSK_SPIN': 'Ruota Residuale',
+	'Journal.DESC_SONG_THREADED_HUSK_SPIN':
+		'Carapace di un piccolo insetto posseduto da residui di Seta. Il relitto allunga la sua Seta per dar forma a una rudimentale ma micidiale ruota.',
+	'Journal.NOTE_SONG_THREADED_HUSK_SPIN':
+		'Seta vivente che controlla un carapace deceduto... Un affronto alla natura stessa, fenomeno purtroppo comune a Lungitela.',
+	'Journal.NAME_SONG_PILGRIM_02': 'Chirurgo',
+	'Journal.DESC_SONG_PILGRIM_02':
+		'Crudele dottore della Corsia Bianca, responsabile per operazioni e modifiche apportate agli insetti della Cittadella.',
+	'Journal.NOTE_SONG_PILGRIM_02':
+		'Le sue procedure con la Seta avranno anche favorito la vita nella Cittadella, ma hanno inconsapevolmente donato ogni mente al trono.',
+	'Journal.NAME_SONG_CREEPER': 'Beccamorti',
+	'Journal.DESC_SONG_CREEPER':
+		'Servitore modificato della Corsia Bianca della Cittadella che si occupa di cremare i relitti e riciclare la Seta dei loro carapaci.',
+	'Journal.NOTE_SONG_CREEPER':
+		'Resta prossimo al terreno, forse in segno di riverenza per le sue mansioni, ma può scattare di colpo verso l’alto per attaccare. La sua cesoia è un’arma letale dalla portata sorprendente.',
+	'Journal.NAME_CONDUCTOR_BOSS': 'I Rimasugli',
+	'Journal.DESC_CONDUCTOR_BOSS':
+		'La volontà tormentata di innumerevoli relitti manifestatasi in una fossa piena di residui di Seta.',
+	'Journal.NOTE_CONDUCTOR_BOSS':
+		'Le anime di un numero imprecisato di insetti ossessionati dalla Seta e da essa consumati. Il loro dolore rimarrà eternamente in quella fossa. Nemmeno io ho la forza necessaria per depurarla.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON': 'Fondomosca Meccanica',
+	'Journal.DESC_UNDERSTORE_AUTOMATON':
+		'Piccolo automa costruito per lavorare senza protestare nel calore insopportabile del Calderone delle Fonderie.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON':
+		'Non sorprende che siano stati progettati congegni simili. Nessun insetto mortale sopravviverebbe in un luogo così torrido. Persino il mio carapace riesce a malapena a sopportarne le temperature.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON_EX': 'Meccanismo Vettore',
+	'Journal.DESC_UNDERSTORE_AUTOMATON_EX':
+		'Piccolo automa corazzato che ha il compito di trasportare carichi di pericolosa silignea.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON_EX':
+		'Progettato per lavorare finché il tempo non irrigidirà i suoi arti. Forse è una fortuna che questo congegno non sappia niente della libertà di cui è privo.',
+	'Journal.NAME_SONG_AUTOMATON_GOOMBA': 'Meccanismo Corridore',
+	'Journal.DESC_SONG_AUTOMATON_GOOMBA':
+		'Automa a cui è stata data la forma di insetto brulicante. Sul dorso ha degli spilli retrattili per liberare i cilindri del canto da possibili ostruzioni.',
+	'Journal.NOTE_SONG_AUTOMATON_GOOMBA':
+		'La sua forma è certamente basata su insetti osservabili al di fuori della Cittadella. Anch’io, nel mio operato, traggo sovente ispirazione dalla natura.',
+	'Journal.NAME_SONG_AUTOMATON_FLY': 'Meccanismo Operaio',
+	'Journal.DESC_SONG_AUTOMATON_FLY': 'Automa volante responsabile per la riparazione e l’espansione del Nucleo.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY':
+		'Avversario più pericoloso di quanto ci si possa aspettare. In un dominio così precario e contorto, anche un suo minimo attacco può risultare insidioso.',
+	'Journal.NAME_SONG_AUTOMATON_FLY_SPIKE': 'Meccanismo Spinoso',
+	'Journal.DESC_SONG_AUTOMATON_FLY_SPIKE': 'Automa alato dalla forma sferica ricoperto di spine affilate.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY_SPIKE':
+		'Non ne comprendo la funzione relativamente al Nucleo in generale. È stato concepito per la difesa? Se così fosse, la sua passività sembra tutt’altro che ottimale.',
+	'Journal.NAME_SONG_AUTOMATON_01': 'Meccanismo Corale',
+	'Journal.DESC_SONG_AUTOMATON_01':
+		'Insetto forgiato a partire da ferro, rotori e ingranaggi. Questo automa lavora instancabilmente alla manutenzione del Nucleo che lo ospita.',
+	'Journal.NOTE_SONG_AUTOMATON_01':
+		'Al suo interno si trovano meccanismi raffinati, i quali tuttavia non sono sufficienti ad imitare la vita in modo convincente. Per animare questo artificio serve anche della Seta, ma come sia possibile mi è ignoto.',
+	'Journal.NAME_SONG_AUTOMATON_02': 'Meccanismo Pulente',
+	'Journal.DESC_SONG_AUTOMATON_02':
+		'Automa che spara vapore sul Nucleo Meccanico per pulirlo e tutelarlo da infestazioni.',
+	'Journal.NOTE_SONG_AUTOMATON_02':
+		'Un uso del vapore decisamente nobile. Devo ricordarmene la struttura quando progetterò strumenti in futuro.',
+	'Journal.NAME_SONG_AUTOMATON_SHIELD': 'Meccanismo Difensore',
+	'Journal.DESC_SONG_AUTOMATON_SHIELD':
+		'Congegno meccanico forgiato principalmente per proteggere il Nucleo. Brandisce uno scudo e uno spillo perforante, di cui fa uso con spaventosa maestria.',
+	'Journal.NOTE_SONG_AUTOMATON_SHIELD':
+		'Non ha una vera e propria mente, eppure combatte efficacemente adattando la sua strategia ai miei movimenti. Dove sono scritti i suoi pensieri, esattamente?',
+	'Journal.NAME_SONG_AUTOMATON_BALL': 'Meccanismo Percussore',
+	'Journal.DESC_SONG_AUTOMATON_BALL':
+		'Raro automa progettato per far risuonare piatti e campane nel profondo del Nucleo.',
+	'Journal.NOTE_SONG_AUTOMATON_BALL':
+		'Non ho ancora visionato la campana che dovrebbe suonare, e non rientra nelle mie ambizioni. Un tale clangore non deve essere un’esperienza piacevole.',
+	'Journal.NAME_CLOCKWORK_DANCER': 'Duo Meccanico',
+	'Journal.DESC_CLOCKWORK_DANCER':
+		'Automi dall’assemblaggio impeccabile che accolgono chi fa ingresso nella loro sala con una danza mortale.',
+	'Journal.NOTE_CLOCKWORK_DANCER':
+		'Due insetti meccanici, ma dall’anima congiunta? Una triste, seppur magistrale, imitazione della vita, infusa in carapaci ferrigni.',
+	'Journal.NAME_SONG_SCHOLAR_ACOLYTE': 'Voltenato',
+	'Journal.DESC_SONG_SCHOLAR_ACOLYTE':
+		'Giovane accolito allevato nelle volte più oscure, destinato ad ascendere al rango di Rotolettore.',
+	'Journal.NOTE_SONG_SCHOLAR_ACOLYTE':
+		'Entrando nel loro dominio, ho liberato questi insetti perché infestassero le volte maggiori. Sono una seccatura, e non posso che incolpare me stessa.',
+	'Journal.NAME_LIGHTBEARER': 'Portalume',
+	'Journal.DESC_LIGHTBEARER':
+		'Seguace delle Volte dei Sussurri che ha l’incarico di percorrerne gli antri più reconditi per recuperare antiche pergamene.',
+	'Journal.NOTE_LIGHTBEARER':
+		'Un insetto essenziale per chi ha necessità di districarsi in quel labirinto oscuro di rotoli e scaffali.',
+	'Journal.NAME_SCROLLKEEPER': 'Rotolettore',
+	'Journal.DESC_SCROLLKEEPER':
+		'Servitore dorato delle Volte dei Sussurri, concepito per leggere e memorizzare i pressoché infiniti rotoli riportanti preghiere.',
+	'Journal.NOTE_SCROLLKEEPER':
+		'Avrà mai compreso realmente quegli imperscrutabili documenti? O non è che pura finzione, un’incessante messinscena atta a preservare la propria posizione nella Cittadella?',
+	'Journal.NAME_SCHOLAR': 'Archivista',
+	'Journal.DESC_SCHOLAR':
+		'Insetto di casta superiore che ha il compito di predicare sermoni e condurre le preghiere di coloro oltre le mura delle Volte dei Sussurri.',
+	'Journal.NOTE_SCHOLAR':
+		'È probabile che il suo vero incarico fosse quello di sgominare e condannare quelli non considerati abbastanza devoti.',
+	'Journal.NAME_TROBBIO': 'Farfleto',
+	'Journal.DESC_TROBBIO':
+		'Borioso attore convinto che solo l’arte drammatica di alto livello possa salvare Lungitela dall’oblio.',
+	'Journal.NOTE_TROBBIO':
+		'Avrà anche a cuore la salvezza di Lungitela, ma a costo di raggiungere il suo obiettivo ha seminato il terrore sul suo stesso palco senza molto remore.',
+	'Journal.NAME_TORMENTED_TROBBIO': 'Farfleto Tormentato',
+	'Journal.DESC_TORMENTED_TROBBIO': 'Attore depresso, afflitto dalla malinconia di un mondo in via di distruzione.',
+	'Journal.NOTE_TORMENTED_TROBBIO':
+		'Questo esemplare ha deciso di accettare il destino tragico a venire. Io non mi arrenderò così facilmente.',
+	'Journal.NAME_SLAB_PRISONER_LEAPER_NEW': 'Penitente',
+	'Journal.DESC_SLAB_PRISONER_LEAPER_NEW':
+		'Prigioniero umiliato che sconta la sua pena per i peccati commessi nella Cittadella.',
+	'Journal.NOTE_SLAB_PRISONER_LEAPER_NEW':
+		'Tutti qui sono infestati, i carcerieri e gli incarcerati. Sanno che non se ne andranno mai di qui? E quanto sono già rimasti?',
+	'Journal.NAME_SLAB_PRISONER_FLY_NEW': 'Penitente Minuto',
+	'Journal.DESC_SLAB_PRISONER_FLY_NEW':
+		'Piccolo insetto incatenato e incappucciato per i suoi peccati commessi nella Cittadella.',
+	'Journal.NOTE_SLAB_PRISONER_FLY_NEW':
+		'Lo spesso velo gli impedisce di vedere, ma non sembra preoccuparsene. Non ha alcun riguardo per la propria sicurezza e desidera solo attaccare chi ritiene peccaminoso.',
+	'Journal.NAME_SLAB_FLY_SMALL_FRESH': 'Mosca Fresca',
+	'Journal.DESC_SLAB_FLY_SMALL_FRESH':
+		'Mosca appena nata. A questa età sono piccole mosche cieche che quasi non danno fastidio.',
+	'Journal.NOTE_SLAB_FLY_SMALL_FRESH': 'Meno questi orrendi insetti procreano, meglio è.',
+	'Journal.NAME_SLAB_FLY_SMALL': 'Mosca Succube',
+	'Journal.DESC_SLAB_FLY_SMALL': 'Giovane mosca appiccicosa che presta servizio presso la Lastra fin dalla nascita.',
+	'Journal.NOTE_SLAB_FLY_SMALL': 'Creature vili nate schiave. La loro condizione non desta in me alcuna simpatia.',
+	'Journal.NAME_SLAB_FLY_MID': 'Mosca Guardiana',
+	'Journal.DESC_SLAB_FLY_MID': 'Affamato insetto servitore della Lastra, dotato di uno spillone uncinato.',
+	'Journal.NOTE_SLAB_FLY_MID':
+		'L’odore di questi carcerieri offusca i miei sensi. Dubito fortemente che abbiano mai considerato la possibilità di lavarsi.',
+	'Journal.NAME_SLAB_FLY_LARGE': 'Mosca Carceriera',
+	'Journal.DESC_SLAB_FLY_LARGE':
+		'Insetto carceriere irsuto e pesante, responsabile per la cattura dei peccatori e per il castigamento dei prigionieri.',
+	'Journal.NOTE_SLAB_FLY_LARGE':
+		'Dall’atteggiamento e dall’odore riprovevole. Quando vengono abbattute non sento alcun rimorso.',
+	'Journal.NAME_SLAB_FLY_BROODMOTHER': 'Madre Nutrice',
+	'Journal.DESC_SLAB_FLY_BROODMOTHER':
+		'Matriarca pazza della Lastra, raramente avvistata al di fuori della sua tana. Da lei sono nati tutti i carcerieri.',
+	'Journal.NOTE_SLAB_FLY_BROODMOTHER':
+		'Avendola sconfitta, spero di aver affrettato la fine di quella prigione e il suo ordine malsano.',
+	'Journal.NAME_PEAKS_DRIFTER': 'Nevolio',
+	'Journal.DESC_PEAKS_DRIFTER':
+		'Soave insetto volante del Monte Fatato. Resiste al freddo più sferzante grazie al morbido manto che ricopre il capo e le ali.',
+	'Journal.NOTE_PEAKS_DRIFTER':
+		'Sarebbe un ottimo animale da compagnia, ma alle temperature gelide di cui ha bisogno per vivere confortevolmente.',
+	'Journal.NAME_CRYSTAL_DRIFTER': 'Mnemoide',
+	'Journal.DESC_CRYSTAL_DRIFTER':
+		'Creatura alata costituita di gelamina. Reagisce alla rottura riformandosi rapidamente.',
+	'Journal.NOTE_CRYSTAL_DRIFTER':
+		'La gelamina ricorda la sua forma originale anche quando viene distrutta. Un materiale impressionante, ancor più se si pensa che può contenere la vita.',
+	'Journal.NAME_CRYSTAL_DRIFTER_GIANT': 'Nordimoria',
+	'Journal.DESC_CRYSTAL_DRIFTER_GIANT': 'Grossa creatura alata costituita di gelamina.',
+	'Journal.NOTE_CRYSTAL_DRIFTER_GIANT': 'In questa forma è talmente più pesante che riesce a malapena a spostarsi.',
+	'Journal.NAME_WEAVER_SERVITOR': 'Servitore Ignim',
+	'Journal.DESC_WEAVER_SERVITOR':
+		'Piccolo congegno costruito da Tessitrici e animato da rune di Seta ricamate all’interno.',
+	'Journal.NOTE_WEAVER_SERVITOR':
+		'Nonostante le Tessitrici non esistano più a Lungitela, questo servitore continua a svolgere la sua funzione.',
+	'Journal.NAME_WEAVER_SERVITOR_LARGE': 'Servitore Foram',
+	'Journal.DESC_WEAVER_SERVITOR_LARGE':
+		'Congegno guasto costruito da Tessitrici, in grado di sparare un raggio concentrato di luceseta per intagliare sale e corridoi fatti di osso o ghiaccio.',
+	'Journal.NOTE_WEAVER_SERVITOR_LARGE':
+		'È stato gravemente danneggiato dal tempo e dall’ambiente. Le sue azioni sono ormai imprevedibili. Non sembra più capace di distinguere gli alleati dai nemici.',
+	'Journal.NAME_LIFEBLOOD_FLY': 'Seme Vitale Alato',
+	'Journal.DESC_LIFEBLOOD_FLY':
+		'Involucro privo di facoltà mentali, riempito di plasmio. Se rotto, il plasmio può essere assorbito per recuperare temporaneamente salute.',
+	'Journal.NOTE_LIFEBLOOD_FLY':
+		'Il mio speciale carapace è in grado di resistere alle deformazioni più turpi di questa sostanza, ma persino io ho dei limiti...',
+	'Journal.NAME_BONE_WORM_BLUEBLOOD': 'Plasmide',
+	'Journal.DESC_BONE_WORM_BLUEBLOOD':
+		'Giovane verme mutato, contaminato dal plasmio. La nuova forma presenta spiccate abilità rigenerative.',
+	'Journal.NOTE_BONE_WORM_BLUEBLOOD':
+		'Lungitela conoscerà presto la maledizione di questa sostanza. I benefici che apporta saranno presto cancellati.',
+	'Journal.NAME_BONE_WORM_BLUETURRET': 'Plasmode',
+	'Journal.DESC_BONE_WORM_BLUETURRET':
+		'Grosso verme che ha subito notevoli mutazioni a causa del plasmio. Adesso è fuso al soffitto della caverna e non può più muoversi liberamente.',
+	'Journal.NOTE_BONE_WORM_BLUETURRET':
+		'Ho visto aberrazioni simili anche nelle caverne del luogo da cui provengo, quando questa sostanza si spandeva incontrollata. Il mio è stupore con forti tratti di ribrezzo.',
+	'Journal.NAME_BLUE_ASSISTANT': 'Zango Plasmificato',
+	'Journal.DESC_BLUE_ASSISTANT':
+		'Relitto di un assistente dell’alchimista a cui è stata conferita falsa vita dal plasmio.',
+	'Journal.NOTE_BLUE_ASSISTANT':
+		'Ha disseminato quella maledetta sostanza per tutte queste caverne, senza farsi alcun scrupolo... Il suo destino finale mi pare un giusto contrappasso per le sue azioni, eppure provo una certa compassione. Deve essere un potere seducente.',
+	'Journal.NAME_LILYPAD_FLY': 'Volafoglia',
+	'Journal.DESC_LILYPAD_FLY': 'Bell’esemplare di creatura volante che si muove in sciami.',
+	'Journal.NOTE_LILYPAD_FLY':
+		'Così leggera che è capace di posarsi sulle superfici di acque stagnanti. Un insetto veramente elegante.',
+	'Journal.NAME_GRASS_GOOMBA': 'Rotolafoglia',
+	'Journal.DESC_GRASS_GOOMBA': 'Frenetico insetto appuntito che si finge vegetale.',
+	'Journal.NOTE_GRASS_GOOMBA': 'Semplice. Aggraziato. Un altro bell’insetto di queste terre, perduto per sempre.',
+	'Journal.NAME_HORNET_DRAGONFLY': 'Pendra',
+	'Journal.DESC_HORNET_DRAGONFLY': 'Volubile insetto che vive nei pressi di acque stagnanti.',
+	'Journal.NOTE_HORNET_DRAGONFLY':
+		'È generalmente passivo, ma può ferire chi si avvicina incautamente con le sue maschere affilate.',
+	'Journal.NAME_DRAGONFLY_LARGE': 'Pendragor',
+	'Journal.DESC_DRAGONFLY_LARGE':
+		'Insetto imponente che vive nei pressi di grandi specchi d’acqua. Meglio tenersi lontani dal suo corpo voluminoso.',
+	'Journal.NOTE_DRAGONFLY_LARGE':
+		'Quando non ostacola il mio cammino, trovo la semplicità del suo moto affascinante.',
+	'Journal.NAME_LILYPAD_TRAP': 'Mandilotus',
+	'Journal.DESC_LILYPAD_TRAP': 'Predatore vegetale dalla mascella potente rassomigliante a una foglia di ninfea.',
+	'Journal.NOTE_LILYPAD_TRAP':
+		'Una sorpresa sferzante al primo incontro, sebbene sia facile da evitare una volta che la si conosce.',
+	'Journal.NAME_CLOVERSTAG': 'Cervide Trifoglio',
+	'Journal.DESC_CLOVERSTAG':
+		'Placida creatura originaria di Verdania. La sua pelle imita la flora del suo territorio.',
+	'Journal.NOTE_CLOVERSTAG':
+		'Un esempio notevole di mimetismo. Per somigliare così tanto alla propria terra, le loro caverne di trifogli devono aver prosperato per generazioni e generazioni.',
+	'Journal.NAME_CLOVERSTAG_WHITE': 'Cervide Pallida',
+	'Journal.DESC_CLOVERSTAG_WHITE':
+		'Leggendaria Cervide Trifoglio primordiale delle terre selvagge di Verdania. Recluta erba e foglie perché contribuiscano al suo attacco.',
+	'Journal.NOTE_CLOVERSTAG_WHITE':
+		'Il mito reso reale nel ricordo. Questa creatura sembrava davvero un tutt’uno con la flora attorno. Sarà davvero esistita così come l’ho vista?',
+	'Journal.NAME_GRASSHOPPER_CHILD': 'Fiorente',
+	'Journal.DESC_GRASSHOPPER_CHILD':
+		'Progenie di Verdania, assolutamente capace di combattere nonostante la tenera età.',
+	'Journal.NOTE_GRASSHOPPER_CHILD':
+		'Feroce e veloce, difende le sue terre fin dalla nascita. Sono questi i giovani di cui andare fieri.',
+	'Journal.NAME_GRASSHOPPER_SLASHER': 'Fiorprode',
+	'Journal.DESC_GRASSHOPPER_SLASHER': 'Combattente scattante con arti superiori affilati e sensi acuiti.',
+	'Journal.NOTE_GRASSHOPPER_SLASHER':
+		'Riposa raramente e resta sempre all’erta, anche nel bel mezzo del proprio territorio. Per avere la meglio dovrò sviluppare una concentrazione simile.',
+	'Journal.NAME_GRASSHOPPER_FLY': 'Scaliere',
+	'Journal.DESC_GRASSHOPPER_FLY':
+		'Combattente volante dalla velocità quasi accecante, in grado di lanciare piume appuntite dagli arti anteriori.',
+	'Journal.NOTE_GRASSHOPPER_FLY':
+		'Fin dalla nascita ha molti strumenti che una volta desideravo io per me stessa. Per mia fortuna sono stata addestrata a convivere con tali limiti.',
+	'Journal.NAME_CLOVER_DANCER': 'Duo del Trifoglio',
+	'Journal.DESC_CLOVER_DANCER':
+		'Duo di principi dell’antica Verdania, amati dai loro sudditi per la loro grazia e il balletto della morte che riservavano ai forestieri.',
+	'Journal.NOTE_CLOVER_DANCER': 'Amare qualcuno di così simile a sé è altruismo o vanità?',
+	'Journal.NAME_ABYSS_CRAWLER': 'Scarafide delle Ombre',
+	'Journal.DESC_ABYSS_CRAWLER':
+		'Verme corazzato che vive solo nelle profondità più recondite. Pare riuscire a sopravvivere anche senza assorbire cibo o liquidi.',
+	'Journal.NOTE_ABYSS_CRAWLER':
+		'Una creatura a me familiare da lungo tempo. Ho il sospetto che, qualunque sia la mia destinazione, mi basti scendere abbastanza in profondità per trovarli al mio cospetto.',
+	'Journal.NAME_ABYSS_CRAWLER_LARGE': 'Megadonte delle Ombre',
+	'Journal.DESC_ABYSS_CRAWLER_LARGE':
+		'Verme voluminoso che risiede nelle profondità più recondite. Abita in fessure anguste e usa il suo stesso corpo per colpire.',
+	'Journal.NOTE_ABYSS_CRAWLER_LARGE':
+		'Queste creature crescono parecchio, eppure non le ho mai viste nutrirsi né dormire. Paiono insetti così semplici... ma sospetto che non siano realmente nostri cugini.',
+	'Journal.NAME_GLOOMFLY': 'Saccomesto',
+	'Journal.DESC_GLOOMFLY':
+		'Piccola creatura vuota, l’ombra di un insetto. Ingoia le prede intere e ne succhia le sostanze nutritive finché non ne resta niente.',
+	'Journal.NOTE_GLOOMFLY': 'La trovo inquietante... C’è qualcosa nella sua semplicità. Che io provi quasi paura?',
+	'Journal.NAME_GLOOM_BEAST': 'Gargantombra',
+	'Journal.DESC_GLOOM_BEAST':
+		'Enorme bestia tubolare adatta specificamente agli ambienti prossimi al vuoto sottostante.',
+	'Journal.NOTE_GLOOM_BEAST':
+		'Incredibilmente, questa creatura contiene nel suo stomaco il liquido nero del vuoto e lo spruzza in avanti se minacciata.',
+	'Journal.NAME_ABYSS_TENDRIL': 'Tentacoli del Vuoto',
+	'Journal.DESC_ABYSS_TENDRIL': 'Frammenti sferzanti di pura oscurità, dall’aspetto di tentacoli affilati.',
+	'Journal.NOTE_ABYSS_TENDRIL':
+		'Il vuoto che ingoia ogni cosa... La sua natura traspare dalle forme taglienti che decide di assumere.',
+	'Journal.NAME_BLACK_THREAD_CORE': 'Massa del Vuoto',
+	'Journal.DESC_BLACK_THREAD_CORE': 'Denso ammasso di relitti legati insieme da Seta intrisa di vuoto.',
+	'Journal.NOTE_BLACK_THREAD_CORE':
+		'Seta e carapaci corrotti. Quel vuoto è ora intenzionato a prendersi tutta questa terra. Questi poveri carapaci non sono che l’inizio.',
+	'Journal.NAME_ABYSS_MASS': 'Salvezza Evocata',
+	'Journal.DESC_ABYSS_MASS': 'Ammasso di vecchie maschere rigonfie e animate dal vuoto tormentato.',
+	'Journal.NOTE_ABYSS_MASS':
+		'Ha origine nella disperata speranza di un insetto desideroso di essere più forte. In pochi possiedono l’abilità di richiamare il vuoto, e coloro che riescono non hanno i mezzi per domarlo.',
+	'Journal.NAME_WHITE_PALACE_FLY': 'Falsala',
+	'Journal.DESC_WHITE_PALACE_FLY':
+		'Mosca fasulla con rune incise sul carapace. All’interno è imprigionato un miscuglio angosciato di anima e vuoto.',
+	'Journal.NOTE_WHITE_PALACE_FLY':
+		'Un abbozzo del dominio caduto di mio padre. Solo uno stolto può credere che il vuoto possa essere comandato.',
+	'Journal.NAME_CENTIPEDE_TRAP': 'Garipide',
+	'Journal.DESC_CENTIPEDE_TRAP': 'Scavatore non vedente che reagisce con violenza al minimo suono.',
+	'Journal.NOTE_CENTIPEDE_TRAP':
+		'Un insetto assai comune che però non può essere sottovalutato. Gli altri sensi, altamente sviluppati, compensano ampiamente la sua cecità.',
+	'Journal.NAME_SPIKE_LAZY_FLYER': 'Flemmar',
+	'Journal.DESC_SPIKE_LAZY_FLYER':
+		'Piccolo insetto vagante dal pesante carapace superiore. Reagisce a malapena alle minacce, anche quelle potenzialmente letali.',
+	'Journal.NOTE_SPIKE_LAZY_FLYER':
+		'La povera creatura ha vissuto una vita troppo posata e agiata. Non se la caverebbe bene nel mondo oltre le sue mura.',
+	'Journal.NAME_SURFACE_SCUTTLER': 'Carapillo',
+	'Journal.DESC_SURFACE_SCUTTLER': 'Insetto comune che vive sotto la sabbia.',
+	'Journal.NOTE_SURFACE_SCUTTLER':
+		'Abita in superficie ed è privo di Seta. La sua natura rimane sua. L’influenza del trono deve essersi estesa solo al di sotto.',
+	'Journal.NAME_GIANT_CENTIPEDE': 'Mangiacampane',
+	'Journal.DESC_GIANT_CENTIPEDE': 'Centopiedi a lungo dormiente, risvegliato e sconvolto dalla rovina di Lungitela.',
+	'Journal.NOTE_GIANT_CENTIPEDE':
+		'Mostro classico delle storie di quando eravamo giovani. È stato ucciso tanto da me quanto dalla mia valente compagna di viaggio.',
+	'Journal.NAME_GIANT_FLEA': 'Pulce Gigante',
+	'Journal.DESC_GIANT_FLEA':
+		'Insetto smisurato brevemente consumato dall’ira dopo aver passato un lungo tempo imprigionato.',
+	'Journal.NOTE_GIANT_FLEA':
+		'Non credevo potesse esistere una pulce così grande e meravigliosa. Sono felice che sia rinsavita prima che dovessi sferrare il colpo esiziale.',
+	'Journal.NAME_SHAKRA': 'Shakra',
+	'Journal.DESC_SHAKRA':
+		'Cartografa guerriera di una tribù ai confini di Lungitela. Le sue abilità in battaglia non hanno nulla da invidiare ai migliori del regno.',
+	'Journal.NOTE_SHAKRA':
+		'Ha vissuto molto meno di me, eppure i suoi anelli sono alquanto temibili. È una delle combattenti più dotate che abbia mai conosciuto, e ho la fortuna di poterla chiamare mia amica.',
+	'Journal.NAME_GARMOND_ZAZA': 'Crimondo e Zinzin',
+	'Journal.DESC_GARMOND_ZAZA':
+		'Un vecchio cavaliere vigoroso e il suo nobile compagno, insieme per estirpare la pazzia dell’Infestazione dalle loro terre.',
+	'Journal.NOTE_GARMOND_ZAZA':
+		'Anch’essi perseguono lo spettro nel cuore dell’Infestazione, ma temo che un nemico simile rappresenti una sfida oltre i loro limiti di insetti mortali.',
+	'Journal.NAME_GARMOND': 'Crimondo Perduto',
+	'Journal.DESC_GARMOND': 'Vecchio cavaliere consumato dal filo oscuro.',
+	'Journal.NOTE_GARMOND':
+		'Un destino tragico per un insetto così rispettato in passato. Quei fili imbevuti di vuoto... La loro forza fisica non è niente al confronto della corruzione che infondono nell’anima.',
+	'Journal.NAME_PINSTRESS_BOSS': 'Puntaspilli',
+	'Journal.DESC_PINSTRESS_BOSS':
+		'Combattente di una setta di guerriere un tempo rinomata, sopravvissuta ben più a lungo delle sue compagne.',
+	'Journal.NOTE_PINSTRESS_BOSS':
+		'Mi piace. Mette a disposizione le sue conoscenze, e il suo spirito è ancora forte nonostante tutto quel tempo trascorso da sola... Ha tutto il mio rispetto.',
+	'Journal.NAME_SPINNER_BOSS': 'Vedova',
+	'Journal.DESC_SPINNER_BOSS':
+		'Instabile fanatica in grado di guidare la Seta infestata di Lungitela facendone corde da suonare.',
+	'Journal.NOTE_SPINNER_BOSS':
+		'Ha il corpo simile a una Tessitrice, ma la maschera è stata rimossa con la forza, e la sua Seta è stata resa inutilizzabile da grossi spilli infilzati nel dorso.',
+	'Journal.NAME_FIRST_WEAVER': 'Prima Peccatrice',
+	'Journal.DESC_FIRST_WEAVER': 'Anziana Tessitrice condannata per via di un’infrazione ormai persa nel tempo.',
+	'Journal.NOTE_FIRST_WEAVER':
+		'Il suo relitto possedeva un talento eccezionale, ovvero quello di fabbricare rune roventi con la Seta. Nel corso della mia esistenza ho visto rune intessute per svariati usi. È stata lei la prima ad affinare simili abilità?',
+	'Journal.NAME_PHANTOM': 'Fantasma',
+	'Journal.DESC_PHANTOM':
+		'Creatura affranta, unica responsabile per l’espulsione dei rifiuti asfissianti dalla Cittadella. Il suo talento nell’uso dello spillone è senza pari.',
+	'Journal.NOTE_PHANTOM':
+		'Nonostante l’ingrigimento per l’età, i contorni sfilacciati sono riconducibili a un essere intessuto dalla Seta, che ha preferito un taglio netto in battaglia a un lento declino.',
+	'Journal.NAME_LACE': 'Merletta',
+	'Journal.DESC_LACE': 'Combattente forsennata che adora le battaglie.',
+	'Journal.NOTE_LACE':
+		'Un insetto fatto esclusivamente di filo. Per nutrirla dev’essere stata necessaria una grande quantità di Seta. Una forma di vita fragile, ma è pur sempre vita.',
+	'Journal.NAME_SILK_BOSS': 'Grande Madre Seta',
+	'Journal.DESC_SILK_BOSS': 'Monarca di Lungitela e fonte originale della Seta.',
+	'Journal.NOTE_SILK_BOSS':
+		'Cuore dell’Infestazione, a lungo tenuta addormentata e desiderosa di risvegliarsi. I fili di questo essere superiore si sono dipanati per tutta Lungitela, intrappolandone gli insetti, inducendoli alla pazzia e seminando discordia.',
+	'Journal.NAME_LOST_LACE': 'Merletta Perduta',
+	'Journal.DESC_LOST_LACE': 'Figlia intessuta con la Seta e posseduta dal vuoto.',
+	'Journal.NOTE_LOST_LACE':
+		'Per placare l’ira della madre, e assistere alla salvezza di questo regno, ho deciso di salvarla. Questa... non sarà inghiottita dall’oscurità.',
+	'Quests.MQ_CITADEL_SEEKER_NAME': 'La grande Cittadella',
+	'Quests.MQ_TYPE_SEEK': 'Cerca',
+	'Quests.MQ_THREADSPUN_TOWN_NAME': 'La città intessuta',
+	'Quests.MQ_TYPE_SAVE': 'Salva',
+	'Quests.MQ_BELLSHRINES_NAME': 'Gran Portale',
+	'Quests.MQ_TYPE_BELLSHRINES': 'Apri',
+	'Quests.MQ_CITADEL_INVESTIGATE_NAME': 'Sale silenti',
+	'Quests.MQ_TYPE_INVESTIGATE': 'Indaga',
+	'Quests.MQ_CITADEL_ASCENT_NAME': 'Corona di Lungitela',
+	'Quests.MQ_TYPE_ASCEND': 'Sali',
+	'Quests.MQ_CITADEL_ASCENT_NAME_SILK': 'Monarca pallida',
+	'Quests.MQ_TYPE_DEFEAT': 'Sconfiggi',
+	'Quests.MQ_SILK_SNARE_NAME': 'Cattura dell’Anima',
+	'Quests.MQ_TYPE_DESTROY': 'Distruggi',
+	'Quests.MQ_BLACKTHREAD_0_NAME': 'Dopo la caduta',
+	'Quests.MQ_BLACKTHREAD_1_NAME': 'In attesa della fine',
+	'Quests.MQ_RESCUE_BELLBEAST_NAME': 'Bestia nelle campane',
+	'Quests.MQ_BLACKTHREAD_2_NAME': 'Il buio sottostante',
+	'Quests.MQ_DIVINGBELL_1_NAME': 'Il buio sottostante',
+	'Quests.MQ_DIVINGBELL_2_NAME': 'Il buio sottostante',
+	'Quests.MQ_DIVINGBELL_3_NAME': 'Il buio sottostante',
+	'Quests.MQ_TYPE_DESCEND': 'Scendi',
+	'Quests.MQ_BLACKTHREAD_3_NAME': 'Ritorno a Lungitela',
+	'Quests.MQ_BLACKTHREAD_4_NAME': 'In cerca di incantesimi',
+	'Quests.MQ_BLACKTHREAD_5_NAME': 'I cuori invecchiati',
+	'Quests.MQ_BLACKTHREAD_6_NAME': 'Ultimo tuffo',
+	'Quests.QUEST_FIXER1_TITLE': 'Riparazioni a Bossopiano',
+	'Quests.TYPE_DONATE_1_TITLE': 'Dona',
+	'Quests.QUEST_FIXER3_TITLE': 'Un ponte salvifico',
+	'Quests.QUEST_FIXER2_TITLE': 'Un’icona di speranza',
+	'Quests.QUEST_PILGRIM_RAGS_TITLE': 'Indumenti dei pellegrini',
+	'Quests.TYPE_HUNT_1_TITLE': 'Caccia',
+	'Quests.QUEST_MOSSBERRY1_TITLE': 'Raccolta di bacche',
+	'Quests.TYPE_GATHER_1_TITLE': 'Raccolta',
+	'Quests.QUEST_FLEAS_TITLE': 'Le pulci perdute',
+	'Quests.TYPE_WAYFARER_1_TITLE': 'Esplorazione',
+	'Quests.QUEST_ROCK_ROLLERS_TITLE': 'Coleoselci volatili',
+	'Quests.QUEST_SKULL_KING_TITLE': 'Il terribile tiranno',
+	'Quests.TYPE_HUNT_2_TITLE': 'Caccia grossa',
+	'Quests.QUEST_BROLLY_GET_TITLE': 'Spine versatili',
+	'Quests.QUEST_JOURNAL_TITLE': 'Insetti di Lungitela',
+	'Quests.TYPE_JOURNAL_TITLE': 'Impara',
+	'Quests.QUEST_BELL_HOUSE_START_TITLE': 'Ricostruzione di Cuorcampana',
+	'Quests.QUEST_BELL_HOUSE_CONT_TITLE': 'Gloria di Cuorcampana',
+	'Quests.QUEST_PINSMITHTOOLS_NAME': 'L’olio del Mastro Spillaio',
+	'Quests.QUEST_SHINY_BELL_GOOMBAS_TITLE': 'Campane d’argento',
+	'Quests.QUEST_SAVE_COURIER_SHORT_NAME': 'Il mio corriere scomparso',
+	'Quests.QUEST_SAVE_COURIER_TALL_NAME': 'Il mio fratello scomparso',
+	'Quests.QUEST_COURIER_BONEBOTTOM_NAME': 'Risorse di Bossopiano',
+	'Quests.TYPE_COURIER_TITLE': 'Consegna',
+	'Quests.QUEST_COURIER_PILGRIMSREST_NAME': 'Risorse della Stazione di Posta',
+	'Quests.QUEST_COURIER_SONGCLAVE_NAME': 'Risorse di Suonclave',
+	'Quests.QUEST_COURIER_FLEATOPIA_NAME': 'Risorse di Salteria',
+	'Quests.QUEST_COURIER_MASKMAKER_NAME': 'Lacca liquida',
+	'Quests.QUEST_COURIER_SLAVE_NAME': 'Uovo della regina',
+	'Quests.QUEST_COURIER_FIXER_NAME': 'Risorse dell’Accampamento dei Superstiti',
+	'Quests.QUEST_CROW_TITLE': 'Sgombero di Corvidi',
+	'Quests.QUEST_BEASTFLY_TITLE': 'Moscabestia Brutale',
+	'Quests.QUEST_SHELL_FLOWER_TITLE': 'Rito del nettare',
+	'Quests.QUEST_WITCH_CURSE_TITLE': 'Rito di rinascita',
+	'Quests.QUEST_DOCTOR_CURSE_CURE_NAME': 'Operazione di rimozione',
+	'Quests.QUEST_EXTRACTOR_B_NAME': 'Assistente dell’Alchimista',
+	'Quests.QUEST_EXTRACTOR_B2_NAME': 'Alchimia avanzata',
+	'Quests.QUEST_ROACH_KILL_TITLE': 'Viscere di blatta',
+	'Quests.QUEST_SONGCLAVE_DONATE_1_TITLE': 'Espansione di Suonclave',
+	'Quests.QUEST_SONGCLAVE_DONATE_2_TITLE': 'Potenziamento di Suonclave',
+	'Quests.QUEST_FINEPINS_TITLE': 'Spilli di qualità',
+	'Quests.QUEST_SAVE_CITYMERCHANT_NAME': 'La mercantessa errante',
+	'Quests.QUEST_SAVE_CITYMERCHANT_BRIDGE_NAME': 'La mercantessa perduta',
+	'Quests.QUEST_SONGPILGRIM_CLOAKS_TITLE': 'Mantelli del coro',
+	'Quests.QUEST_BROODMOTHER_TITLE': 'La madre piangente',
+	'Quests.QUEST_GOURMAND_TITLE': 'Sapori di Lungitela',
+	'Quests.QUEST_SAVE_SHERMA_NAME': 'Balsamo per i feriti',
+	'Quests.QUEST_SONG_KNIGHT_TITLE': 'Incontro finale',
+	'Quests.QUEST_HUNTRESS_NAME': 'Banchetto per i Larvidi',
+	'Quests.QUEST_RUNTRESS_NAME': 'Banchetto per Cucciola',
+	'Quests.QUEST_SHAKRA_FINAL_TITLE': 'Fine del cammino',
+	'Quests.Q_SOUL_SNARE_NAME': 'Seta ed anima',
+	'Quests.QUEST_PINSTRESS_BATTLE_TITLE': 'Determinazione fatale',
+	'Quests.QUEST_SPRINT_KILL_TITLE': 'Primato a Lungitela',
+	'Quests.TYPE_SPRINT_TITLE': 'Scatta',
+	'Quests.GARMOND_BLACK_THREADED_NAME': 'Richiamo dell’eroe',
+	'Quests.QUEST_TROBBIO_2_TITLE': 'Dolore, angoscia e miseria',
+	'Quests.QUEST_ANT_TRAPPER_TITLE': 'Il cacciatore nascosto',
+	'Quests.QUEST_FLEAGAMES_TITLE': 'Estasi finale',
+	'Quests.QUEST_STEELSENTINEL_TITLE': 'Vassallo perduto',
+	'Quests.TYPE_STEELSENTINEL_TITLE': 'Acciaio',
+	'Quests.QUEST_MRMUSHROOM_TITLE': 'Fine di un’era',
+	'Quests.TYPE_HERALD_TITLE': 'Testimone',
+	'Quests.QUEST_THREADCORES_TITLE': 'Cuori oscuri',
+	'UI.MAT_NAME_SILK': 'Seta',
+	'UI.MAT_DESC_SILK':
+		'Filo raffinato prodotto dall’anima della sua creatrice. Molto ambita per via della sua notevole robustezza e proprietà mistiche. Usata per rimarginare ferite, prolungare la vita e tessere rune potenti.',
+	'UI.INV_NAME_SHARD': 'Schegge di carapace',
+	'UI.INV_DESC_SHARD': 'Frammenti induriti di carapaci e ossa usati per fabbricare strumenti e trappole.',
+	'UI.INV_NAME_COIN': 'Grani',
+	'UI.INV_DESC_COIN':
+		'Perline intagliate fatte di vari materiali, usate come misura della fede e come valuta di scambio. Ciascuna riporta un disegno finemente intagliato.',
+	'UI.INV_NAME_COIN_MID': 'Grani di carapace',
+	'UI.INV_DESC_COIN_MID':
+		'Grani ricavati da carapaci rifiniti. Al materiale più nobile corrisponde un valore maggiore.',
+	'UI.INV_NAME_COIN_BIG': 'Grani di perla',
+	'UI.INV_DESC_COIN_BIG':
+		'Perle scintillanti sulle quali sono stati incisi segni complessi. I grani più rari e ambiti di tutta Lungitela.',
+	'UI.MAT_NAME_SMELTSTONE': 'Selce',
+	'UI.MAT_DESC_SMELTSTONE':
+		'Pietra ardente da lungo tempo, proveniente dalle fondamenta di Lungitela. Estratta e utilizzata dalla Cittadella per operazioni di forgiatura.',
+	'UI.MAT_NAME_LIFEBLOOD': 'Plasmio',
+	'UI.MAT_DESC_LIFEBLOOD':
+		'Seme vitale liquido dalle notevoli qualità rigenerative. Una sostanza estranea a Lungitela, introdotta dall’Alchimista Zylotol.',
+	'UI.MAT_NAME_MAGNETITE': 'Magnetite',
+	'UI.MAT_DESC_MAGNETITE': 'Roccia friabile dalle proprietà levitanti, rinvenuta ai margini di Lungitela.',
+	'UI.MAT_NAME_VOLTSTONE': 'Voltridiana',
+	'UI.MAT_DESC_VOLTSTONE': 'Pietra dura in grado di ricevere, immagazzinare e scaricare elettricità.',
 	'Map Zones.ABOVE_CRADLE': 'Caverne di Confine',
 	'Map Zones.BELLHOME': 'Casacampana',
 	'Map Zones.BELLTOWN_HAUNTED': 'Cuorcampana Infestata',

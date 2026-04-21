@@ -67,7 +67,7 @@ export const mapZoneV1Schema = v.picklist([
 	'GODSEEKER_WASTE',
 ]);
 
-const tagCodeV1Schema = v.picklist([
+export const tagCodeV1Schema = v.picklist([
 	'first_playthrough',
 	'casual',
 	'randomizer',

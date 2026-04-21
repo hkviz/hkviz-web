@@ -23,6 +23,7 @@ export class SilkRecordingDataView {
 
 	public offset = 0;
 
+	public nonIdStringCount = 0;
 	public logState: unknown = null;
 
 	public constructor(private readonly buffer: ArrayBuffer) {
@@ -122,11 +123,12 @@ export class SilkRecordingDataView {
 		if (id === 0) {
 			// unknown id -> read string
 			const value = this.readString();
+			this.nonIdStringCount++;
 			console.log(
 				'[parser][string-lookup] Using map',
 				getIdLookupDebugName(idToString),
 				this.logState,
-				'Read non-id string: ',
+				'Read non-id string nr ' + this.nonIdStringCount + ':',
 				value,
 			);
 			// console.trace();

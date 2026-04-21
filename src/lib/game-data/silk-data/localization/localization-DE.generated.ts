@@ -53,6 +53,287 @@ export default {
 	'Map Zones.CITADEL_FORUM': 'Das Forum',
 	'Map Zones.COG_CORE': 'Räderwerk-<br>Kern',
 	'Map Zones.ABYSS': 'Der Abgrund',
+	'UI.INV_NAME_DRESS_REG': 'Jägerumhang',
+	'UI.INV_NAME_DRESS_BROLLY': 'Schwebeumhang',
+	'UI.INV_NAME_DRESS_DJ': 'Feidaunen-Umhang',
+	'UI.INV_DESC_DRESS_REG':
+		'Dieses schlichte Schutzgewand wurde meisterlich gewoben, weist aber Verschleißerscheinungen auf.',
+	'UI.INV_DESC_DRESS_BROLLY': 'In dieses schlichte Schutzgewand wurden biegsame Stacheln eingenäht.',
+	'UI.INV_DESC_DRESS_DJ':
+		'In dieses Schutzgewand wurden die weichen Daunen eines Feiforns und biegsame Stacheln eingenäht.',
+	'UI.INV_DESC_DRESS_APP_FLY_FULL': 'Riecht stark nach Fliege.',
+	'UI.INV_DESC_DRESS_APP_FLY_HALF': 'Riecht leicht nach Fliege.',
+	'UI.INV_NAME_TOOLPOUCH': 'Werkzeugtasche',
+	'UI.INV_NAME_POUCHANDTOOLKIT': 'Werkzeugtasche<br>und Fertigungssatz',
+	'UI.INV_DESC_TOOLPOUCH': 'Einfache Tasche zur Aufbewahrung von Werkzeugen, Fallen und Fertigungsmaterialien.',
+	'UI.INV_DESC_POUCHANDTOOLKIT':
+		'Eine Tasche zur Aufbewahrung von Fallen und Werkzeugen, die dank beiliegenden Hilfsmitteln noch tödlicher werden.',
+	'UI.INV_NAME_QUILL': 'Federkiel',
+	'UI.INV_NAME_MAP': 'Karte',
+	'UI.INV_NAME_MAPANDQUILL': 'Karte und Federkiel',
+	'UI.INV_DESC_QUILL':
+		'Ein Schreibwerkzeug, mit dem man seine Reisen aufzeichnen kann. Damit lassen sich erhaltene Karten überarbeiten.',
+	'UI.INV_DESC_MAP':
+		'Eine Karte von Pharloom, die teilweise von Shakra ausgefüllt wurde. Ein Federkiel ist erforderlich, um sie zu überarbeiten.',
+	'UI.INV_DESC_MAPANDQUILL':
+		'Eine Karte von Pharloom und ein Federkiel, mit denen man seine Reisen aufzeichnen kann. Beim Ausruhen auf einer Bank oder an einem anderen Ort wird die Karte mit neu entdeckten Bereichen überarbeitet.',
+	'UI.INV_NAME_WHITE_FLOWER': 'Immerblüte',
+	'UI.INV_DESC_WHITE_FLOWER':
+		'Diese ätherische Blume wurde aus einer tiefen und fernen Erinnerung gepflückt. Sie glüht in einem sanften, bleichen Licht, das vor der Leere schützt.',
+	'UI.INV_NAME_TOOL_METAL': 'Fertigungsmetall',
+	'UI.INV_DESC_TOOL_METAL':
+		'Dieses seltene Element tritt auf natürliche Weise in den Steinen und Knochen von Pharloom auf.<br><br>Geschickte Handwerkskäfer nutzen es zur Fertigung von Werkzeugen und Schmuckstücken.',
+	'UI.INV_NAME_CREST_SOCKET': 'Erinnerungsmedaillon',
+	'UI.INV_DESC_CREST_SOCKET':
+		'Ein Andenken, das eine kostbare Erinnerung enthält. Damit lässt sich ein Wappen erweitern.<br><br>Erweitere Wappen im Wappen-Abschnitt des Menüs.',
+	'UI.INV_NAME_PLINNEY_TOOLS': 'Bleiches Öl',
+	'UI.INV_DESC_PLINNEY_TOOLS':
+		'Die Gallendrüse einer seltenen Sylphenschnecke. Geschickte Nadelmeister können die schimmernde Flüssigkeit in ihrem Inneren nutzen, um eine Klinge zu schärfen.',
+	'UI.INV_NAME_HEART_CORAL': 'Verkrustetes Herz',
+	'UI.INV_DESC_HEART_CORAL': 'Das belebte Herz des Krustenkönigs Khann. Es schlägt dumpf und langsam.',
+	'UI.INV_DESC_MOMENTO_HEART_EXTRA': 'Das Herz kann in einem Zuhause ausgestellt werden.',
+	'UI.INV_NAME_HEART_BLOOM': 'Pollenherz',
+	'UI.INV_DESC_HEART_BLOOM': 'Das belebte Herz von Nyleth. Es schlägt schwach und schnell.',
+	'UI.INV_NAME_HEART_HUNTER': 'Herz der Jägerin',
+	'UI.INV_DESC_HEART_HUNTER': 'Das belebte Herz von Skarrsängerin Karmelita. Es schlägt gleichmäßig und stark.',
+	'UI.INV_NAME_HEART_CLOVER': 'Verbundenes Herz',
+	'UI.INV_DESC_HEART_CLOVER': 'Das belebte Herz des Grünen Prinzen. Es schlägt laut und deutlich.',
+	'UI.INV_NAME_PLASMIUM_GLAND': 'Plasmiumdrüse',
+	'UI.INV_DESC_PLASMIUM_GLAND':
+		'Ein pulsierendes Organ aus dem Panzer des Alchemisten Zylotol. Die Drüse füllt sich im Laufe der Zeit wieder auf und stellt fast unbegrenzte Mengen an Plasmium bereit.<br><br>Beim Fertigen neuer Plasmium-Ampullen ist keine Reserve mehr erforderlich.',
+	'UI.INV_NAME_BROKEN_SILKSHOT': 'Ramponiertes Werkzeug',
+	'UI.INV_DESC_BROKEN_SILKSHOT':
+		'Die Überreste eines uralten Weberwerkzeugs. In diesem Zustand unbrauchbar.<br><br>Ein Handwerkskäfer von großem Geschick könnte es möglicherweise reparieren.',
+	'UI.INV_NAME_WITCH_ITEM': 'Verdrehte Knospe',
+	'UI.INV_DESC_WITCH_ITEM': 'Ein verdrehter Klumpen aus aschfahlen Ranken. Er jammert unaufhörlich.',
+	'UI.INV_NAME_COG_HEART_PIECE': 'Teil eines Räderherzens',
+	'UI.INV_NAME_COG_HEART_PIECES': 'Teile eines Räderherzens',
+	'UI.INV_NAME_COG_HEART': 'Räderherz',
+	'UI.INV_DESC_COG_HEART_PIECE':
+		'Ein Teil eines Räderwerk-Herzens, das einen komplexen Mechanismus aus Rädern und Reglern enthält.',
+	'UI.INV_DESC_COG_HEART_PIECES':
+		'Zwei Teile eines Räderwerk-Herzens, die einen komplexen Mechanismus aus Rädern und Reglern enthalten.',
+	'UI.INV_DESC_COG_HEART':
+		'Ein wieder zusammengesetztes Räderwerk-Herz, das einen komplexen Mechanismus aus Rädern und Reglern enthält.',
+	'UI.INV_NAME_CRAW_SUMMONS': 'Krähfer-Vorladung',
+	'UI.INV_DESC_CRAW_SUMMONS':
+		'Ein zerfleddertes schwarzes Tuch, das eine gekritzelte Botschaft trägt.<br><br>„Besudler ... Dunkel ... Stell dich ... Zuhause ... Rad ...“',
+	'UI.INV_NAME_MOSSBERRY': 'Moosbeere',
+	'UI.INV_DESC_MOSSBERRY':
+		'Diese süße Frucht wächst in feuchten Umgebungen. Ihre Samen sind für die meisten Lebewesen giftig.',
+	'UI.INV_NAME_PILGRIM_RAGS_ITEM': 'Pilgerschal',
+	'UI.INV_DESC_PILGRIM_RAGS_ITEM':
+		'Dieses schlichte Kleidungsstück wurde im Laufe der Zeit von mehreren Käfern getragen. Es ist ramponiert und zerschlissen, wurde aber oftmals repariert.',
+	'UI.INV_NAME_SPINE': 'Stachelkern',
+	'UI.INV_DESC_SPINE':
+		'Diese biegsame Faser stammt aus dem Stachel eines Hiekers. Eine geschickte Näherin könnte sie zur Herstellung von Kleidung oder Accessoires einsetzen.',
+	'UI.INV_NAME_SHELL_FLOWER': 'Pollip-Herz',
+	'UI.INV_DESC_SHELL_FLOWER':
+		'Der Kern einer Blume, die um den Körper einer vertilgten Holzwespe entstanden ist. Ihr entströmt ein süßer Nektar, von dem die Wespen leben.',
+	'UI.INV_NAME_CROW_FEATHER': 'Lumpenpelz',
+	'UI.INV_DESC_CROW_FEATHER':
+		'Zerfledderter Pelz vom Leib eines Krähfers. Braun und brüchig, von geringfügigem Wert und Nutzen.',
+	'UI.INV_NAME_ROCK_ROLLER_ITEM': 'Feuerjuwel',
+	'UI.INV_DESC_ROCK_ROLLER_ITEM':
+		'Dieses edelsteinartige Organ wurde einem Feuersteinkäfer entnommen. Es produziert beim Reiben entzündliche Funken und kann explodieren, wenn es aufgebrochen oder fallen gelassen wird.',
+	'UI.INV_NAME_ROACH_CORPSE_ITEM': 'Schabenkaldaunen',
+	'UI.INV_DESC_ROACH_CORPSE_ITEM':
+		'Frische Eingeweide einer Mistschabe. Zäh, schleimig und übelriechend. Nur für die wenigsten Käfer genießbar.',
+	'UI.INV_NAME_SK_FRAGMENT': 'Kronenfragment',
+	'UI.INV_DESC_SK_FRAGMENT': 'Ein großer Knochenstachel, der von einem besiegten Schädeltyrannen eingesammelt wurde.',
+	'UI.INV_NAME_BEASTFLY_REMAINS': 'Hornfragment',
+	'UI.INV_DESC_BEASTFLY_REMAINS': 'Ein gehärteter Brocken vom gehörnten Panzer einer Wilden Biestfliege.',
+	'UI.INV_NAME_CONCHFLY_REMAINS': 'Krustenstachel',
+	'UI.INV_DESC_CONCHFLY_REMAINS': 'Ein hartes Bruchstück vom Horn einer Muschelfliege.',
+	'UI.INV_NAME_BROODMOTHER_REMAINS': 'Auge der Brutmutter',
+	'UI.INV_DESC_BROODMOTHER_REMAINS': 'Dieses gallertartige Organ wurde der besiegten Brutmutter entnommen.',
+	'UI.INV_NAME_BELLCLAPPER_ITEM': 'Silberglocke',
+	'UI.INV_DESC_BELLCLAPPER_ITEM': 'Eine Glocke aus schimmerndem Metall, von exquisiter Machart.',
+	'UI.INV_NAME_BLUE_GOOP': 'Plasmium',
+	'UI.INV_NAME_BLUE_GOOP_PICKUP': 'Plasmium gesammelt',
+	'UI.INV_DESC_BLUE_GOOP':
+		'Dieser flüssige Lebenskeim wurde einer reifen Knospe entnommen. Er besitzt regenerative Fertigkeiten.',
+	'UI.INV_DESC_BLUE_GOOP_FULL':
+		'Dieser flüssige Lebenskeim wurde einer reifen Knospe entnommen. Er besitzt regenerative Fertigkeiten.',
+	'UI.INV_NAME_CORAL_CHUNK': 'Korallensplitter',
+	'UI.INV_DESC_CORAL_CHUNK':
+		'Ein Stück eines dicken Korallenpanzers. Eignet sich nicht zum Fertigen von Werkzeugen, kann bei richtiger Verarbeitung aber angeblich als Medizin eingesetzt werden.',
+	'UI.INV_NAME_FINEPIN': 'Edle Nadel',
+	'UI.INV_DESC_FINEPIN':
+		'Eine in Pharloom gebräuchliche Waffe, die trotz langjähriger Nutzung noch in gutem Zustand ist. Eine fachgerecht geschmiedete Metallstange mit geschärfter Spitze.',
+	'UI.INV_NAME_SHININGCOG': 'Glänzendes Zahnrad',
+	'UI.INV_DESC_SHININGCOG':
+		'Ein makelloses Zahnrad aus dem Panzer eines Konstrukts. Das Metall ist trotz seiner langjährigen Nutzung nicht abgestumpft.',
+	'UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM': 'Chorumhang',
+	'UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM':
+		'Dieses Kleidungsstück wurde Pilgern beim Betreten der Zitadelle geschenkt. Sein dicker Stoff bietet zusätzlichen Schutz gegen Wind und Kälte.',
+	'Quests.COURIER_SUPPLIES_ITEM_NAME': 'Kurierbündel',
+	'Quests.COURIER_SUPPLIES_ITEM_DESC': 'Ein schwerer Sack mit Werkzeugen, Medizin und allerlei Kleinod.',
+	'Quests.COURIER_SUPPLIES_SLAVE_NAME': 'Ei der Königin',
+	'Quests.COURIER_SUPPLIES_SLAVE_DESC':
+		'Ein zerbrechliches Ei, das eine junge Seidenfresser-Königin enthält. Obwohl die Königin selbst keine Seide sammeln kann, kann sie mit Zeit und Fürsorge dazu erzogen werden, weitere Seidenfresser auszubrüten.',
+	'Quests.COURIER_SUPPLIES_MASK_NAME': 'Flüssiglack',
+	'Quests.COURIER_SUPPLIES_MASK_DESC':
+		'Ein bleicher Lack, der zur Herstellung und zum Schutz von Knochenmasken verwendet wird.',
+	'UI.INV_NAME_GOURMAND_MOSSBERRY_STEW': 'Moosbeeren-Eintopf',
+	'UI.INV_DESC_GOURMAND_MOSSBERRY_STEW':
+		'Eine dicke sirupartige Suppe aus Moosbeeren und Druidenkräutern. Süß und aromatisch, aber für die meisten Lebewesen giftig.',
+	'UI.INV_NAME_PLASMIUM_BLOOD': 'Plasmifiziertes Blut',
+	'UI.INV_DESC_PLASMIUM_BLOOD':
+		'Das Blut eines Lebewesens, das zur Gänze mit flüssigem Lebenskeim verschmolzen ist. Es besitzt mächtige regenerative Eigenschaften.',
+	'UI.INV_NAME_GOURMAND_VINTAGE_NECTAR': 'Alter Nektar',
+	'UI.INV_DESC_GOURMAND_VINTAGE_NECTAR':
+		'Der erlesene Nektar einer bejahrten Blattlaus. Er wird über viele Lebzeiten hinweg gelagert, um eine komplexe Reifung zu ermöglichen.',
+	'Quests.COURIER_SUPPLIES_MEAT_NAME': 'Kurierspeck',
+	'Quests.COURIER_SUPPLIES_MEAT_DESC':
+		'Fettiges Fleisch unbekannter Herkunft. Es verdirbt nach der Zubereitung rasch, wenn es nicht ordnungsgemäß gelagert wird.',
+	'UI.INV_NAME_GOURMAND_CORAL_INGREDIENT': 'Krustennuss',
+	'UI.INV_DESC_GOURMAND_CORAL_INGREDIENT':
+		'Harter, haariger Samen aus dem Kern eines Korpora-Gebildes. Schmeckt abgestanden, in geriebener Form aber äußerst würzig.',
+	'UI.INV_NAME_PICKLEDEGG': 'Eingelegte Mistmade',
+	'UI.INV_DESC_PICKLEDEGG':
+		'Stinkende, in Schabenlake eingelegte Delikatesse. Die berühmteste Kreation des geächteten Kochs Lugoli.',
+	'Quests.ITEM_EXTRACTOR_PINS_NAME': 'Stahlstacheln',
+	'Quests.ITEM_EXTRACTOR_PINS_DESC':
+		'Harte, geschmiedete Stacheln für den Einsatz in schweren Maschinen. Sie können selbst den härtesten Panzer durchbohren.',
+	'UI.INV_NAME_MORSEL_SEARED': 'Geröstetes Organ',
+	'UI.INV_DESC_MORSEL_SEARED':
+		'Fleisch von einem besiegten Lebewesen. Es wurde auf eine Art und Weise geröstet, die den Geschmack erheblich beeinflusst.',
+	'UI.INV_NAME_MORSEL_SHREDDED': 'Zerhacktes Organ',
+	'UI.INV_DESC_MORSEL_SHREDDED': 'Fleisch von einem besiegten Lebewesen. Es wurde in kleine Häppchen zerhackt.',
+	'UI.INV_NAME_MORSEL_SPEARED': 'Aufgespießtes Organ',
+	'UI.INV_DESC_MORSEL_SPEARED':
+		'Fleisch von einem besiegten Lebewesen. Es wurde sauber durchbohrt, ist aber ansonsten unbeschädigt.',
+	'UI.INV_NAME_ANT_TRAPPER_ITEM': 'Graspuppe',
+	'UI.INV_DESC_ANT_TRAPPER_ITEM':
+		'Ein geschnitztes Kinderspielzeug, das einen mit Blättern bekleideten Käfer darstellt.',
+	'UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER': 'Jungfernseele',
+	'UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER':
+		'Diese mit einer umherwirbelnden Seele gefüllte Flasche wurde von der Kapellenjungfer übergeben.',
+	'UI.INV_NAME_SNARE_SOUL_BELLHERMIT': 'Einsiedlerseele',
+	'UI.INV_DESC_SNARE_SOUL_BELLHERMIT':
+		'Eine schwere Glocke, gefüllt mit der schimmernden Seele des Glockeneinsiedlers.',
+	'UI.INV_NAME_SNARE_SOUL_SWAMP': 'Sucherseele',
+	'UI.INV_DESC_SNARE_SOUL_SWAMP':
+		'Dieser rissige Panzer enthält die Seele eines vor langer Zeit verstorbenen Käfers.',
+	'UI.INV_NAME_TOKEN_FAITH': 'Einfacher Schlüssel',
+	'UI.INV_DESC_TOKEN_FAITH':
+		'Ein rostiger Schlüssel von gewöhnlicher Machart. Damit lassen sich verschiedene einfache Schlösser öffnen.<br><br>Er ist verwittert und wird nach einem einzigen Einsatz zerbrechen.',
+	'UI.INV_NAME_DOCK_KEY': 'Taucherglocken-Schlüssel',
+	'UI.INV_DESC_DOCK_KEY':
+		'Ein kleiner Schlüssel eines Arbeiters. Damit kann die Tür der Taucherglocke im Tiefenkai geöffnet werden.',
+	'UI.INV_NAME_DOCK_DEMO_KEY': 'Torschlüssel',
+	'UI.INV_DESC_DOCK_DEMO_KEY':
+		'Ein kleiner Schlüssel eines Arbeiters. Schließt das Tor in der Mitte des Tiefenkais auf.',
+	'UI.INV_NAME_WARD_KEY': 'Weißer Schlüssel',
+	'UI.INV_DESC_WARD_KEY':
+		'Ein filigraner Metallschlüssel, dessen Form einem chirurgischen Instrument ähnelt.<br><br>Gewährt Zutritt zur Weißstation der Zitadelle.',
+	'UI.INV_NAME_WARD_BOSS_KEY': 'Chirurgenschlüssel',
+	'UI.INV_DESC_WARD_BOSS_KEY':
+		'Weggeworfener Schlüssel der Weißstation.<br>Öffnet die Schleuse unterhalb des Operationssaals.',
+	'UI.INV_NAME_ARCHITECT_KEY': 'Architektenschlüssel',
+	'UI.INV_DESC_ARCHITECT_KEY': 'Drehschlüssel der Architekten. Damit kann ihre Kapelle im Unterwerk geöffnet werden.',
+	'UI.INV_NAME_SLAB_KEY_A': 'Schlüssel des Trägen',
+	'UI.INV_NAME_SLAB_KEY_B': 'Schlüssel des Ketzers',
+	'UI.INV_NAME_SLAB_KEY_C': 'Schlüssel des Abtrünnigen',
+	'UI.INV_NAME_SLAB_KEYRING': 'Brockenschlüssel',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE':
+		'Schlüssel mit dem Mal des Trägen. Öffnet den Weg zu bestimmten Zellen und Gängen des Brockens.',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP':
+		'Schlüssel mit dem Mal des Abtrünnigen. Öffnet den Weg zu bestimmten Zellen und Gängen des Brockens.',
+	'UI.INV_DESC_SLAB_KEYRING': 'Schlüssel für die Zellen und Gänge des Brockens.',
+	'UI.INV_NAME_BELL_HOUSE_KEY': 'Glockenheimschlüssel',
+	'UI.INV_DESC_BELL_HOUSE_KEY': 'Schlüssel zu einer restaurierten Glocke an der Spitze von Glockenherz.',
+	'UI.INV_NAME_MATERIUM': 'Materium',
+	'UI.INV_DESC_MATERIUM':
+		'Röhren und Behälter für die Aufbewahrung, Aufzeichnung und Erforschung verschiedener Materialien.<br><br>Das Materium kann in einem Zuhause zusammengesetzt werden.',
+	'UI.INV_NAME_FARSIGHT': 'Weitblick',
+	'UI.INV_DESC_FARSIGHT':
+		'Ein eingezogenes Überwachungsgerät der Weberinnen. Einmal aufgestellt ermöglicht es die Überwachung weit entfernter Gebiete.<br><br>Der Weitblick kann in einem Zuhause zusammengesetzt werden.',
+	'UI.INV_NAME_CRAWBELL': 'Krähferglocke',
+	'UI.INV_DESC_CRAWBELL':
+		'Eine alte Glocke, die zum Nest umfunktioniert wurde. Nach dem Einrichten lassen sich gelegentlich junge Krähfer darin nieder. Sie füllen die Glocke mit Panzersplittern und Rosenkranzperlen.<br><br>Die Krähferglocke kann am Äußeren eines Zuhauses angebracht werden.',
+	'UI.INV_NAME_SETH_MEMENTO': 'Wächter-Memento',
+	'UI.INV_DESC_SETH_MEMENTO':
+		'Das verwitterte Medaillon des Wanderers Seth und ein Geschenk, das in Anerkennung herausragenden Könnens überreicht wurde.',
+	'UI.INV_DESC_MOMENTO_EXTRA': 'Das Memento kann in einem Zuhause ausgestellt werden.',
+	'UI.INV_NAME_SPRINT_MEMENTO': 'Sprintmeister-Memento',
+	'UI.INV_DESC_SPRINT_MEMENTO':
+		'Diese vergoldete Trophäe wurde von Sprintmeister Flott an den schnellsten Käfer in Pharloom vergeben.',
+	'UI.INV_NAME_MEMENTO_GARMOND': 'Helden-Memento',
+	'UI.INV_DESC_MEMENTO_GARMOND': 'Ein Erbstück aus einem Dorf, das einst der Verwünschung Pharlooms erlag.',
+	'UI.INV_NAME_HUNTER_MEMENTO': 'Jägerinnen-Memento',
+	'UI.INV_DESC_HUNTER_MEMENTO':
+		'Dieses in klebrigen Schleim gestempelte Siegel wurde in Anerkennung einer wahren Jägerin vergeben.',
+	'UI.INV_NAME_MEMENTO_CROWMAN': 'Krähfer-Memento',
+	'UI.INV_DESC_MEMENTO_CROWMAN':
+		'Das eiserne Emblem des Krähfergerichts. Spricht den Träger von jeglichen früheren und künftigen Verbrechen frei.',
+	'UI.INV_NAME_MEMENTO_GREY': 'Graues Memento',
+	'UI.INV_DESC_MEMENTO_GREY':
+		'Ein gravierter Krustenstein, vom Sand verwittert und von der Zeit ausgeblichen.<br><br>... Wache ... Erinnere dich ... Bis einmal ... Neues Leben ...',
+	'UI.INV_NAME_MEMENTO_SURFACE': 'Oberflächen-Memento',
+	'UI.INV_DESC_MEMENTO_SURFACE': 'Ein ausgebleichtes Ornament der namenlosen Stadt hoch über Pharloom.',
+	'UI.INV_NAME_R_BONE_RECORD': 'Knochenschriftrolle',
+	'UI.INV_DESC_R_BONE_RECORD':
+		'Die Aufzeichnungen eines gefallenen Pilgers, auf rauem Stoff niedergeschrieben und um einen Knochengriff gewickelt.',
+	'UI.INV_DESC_RELIC':
+		'Ein Relikt aus Pharlooms Vergangenheit, das für Sammler historischer Gegenstände von Interesse wäre.',
+	'UI.INV_NAME_R_WEAVER_TOTEM': 'Weberabbild',
+	'UI.INV_DESC_R_WEAVER_TOTEM':
+		'Ein aus Knochen geschnitztes Abbild einer uralten Weberin. Auf ihrem Leib wurde ein Gebet eingeritzt.',
+	'UI.INV_NAME_R_SEAL_CHIT': 'Chorgebot',
+	'UI.INV_DESC_R_SEAL_CHIT':
+		'Ein Erlass der Zitadelle. Das einstmals schimmernde Siegel ist mit der Zeit verwittert.',
+	'UI.INV_NAME_R_WEAVER_RECORD': 'Runenharfe',
+	'UI.INV_DESC_R_WEAVER_RECORD':
+		'Ein altes Aufnahmeinstrument der Weberinnen, das mit Seidenrunen besaitet wurde. Die verblichenen Runen geben die Worte einer Weberin aus uralten Zeiten wider.',
+	'UI.INV_NAME_R_ANCIENT_EGG': 'Arkanes Ei',
+	'UI.INV_DESC_R_ANCIENT_EGG':
+		'Dieses steinerne schwarze Ei entstand schon vor der Geburt von Pharloom.<br><br>Ein Relikt aus uralter Vergangenheit. Sammler historischer Gegenstände wissen es sehr zu schätzen.',
+	'UI.INV_NAME_R_PSALM_CYL': 'Psalmenwalze',
+	'UI.INV_DESC_R_PSALM_CYL':
+		'Eine in der Zitadelle hergestellte Metallwalze, die eine Tonaufnahme enthält.<br><br>Die Walze kann mit einem Grammophon abgespielt werden.',
+	'UI.INV_NAME_R_PSALM_CYL_MELODY': 'Heilige Walze',
+	'UI.INV_DESC_R_PSALM_CYL_MELODY':
+		'Eine in der Zitadelle hergestellte Metallwalze, auf der die Melodie der Glaubenshüter enthalten ist.<br><br>Die Walze kann mit einem Grammophon abgespielt werden.',
+	'UI.INV_NAME_COIN_SET_F': 'Ausgefranste Rosenkranzschnur',
+	'UI.INV_DESC_COIN_SET_F':
+		'Ein zerfaserter Faden, an dem ein paar wenige Rosenkranzperlen aufgeschnürt sind. Kann zerrissen werden, um mit den losen Perlen zu handeln.',
+	'UI.INV_DESC_COIN_SET_USE': 'Enthält {0} Rosenkranzperlen.',
+	'UI.INV_NAME_COIN_SET_S': 'Rosenkranzschnur',
+	'UI.INV_DESC_COIN_SET_S':
+		'Eine kurze Schnur aus Rosenkranzperlen. Kann zerrissen werden, um mit den losen Perlen zu handeln.',
+	'UI.INV_NAME_COIN_SET_M': 'Rosenkranz',
+	'UI.INV_DESC_COIN_SET_M':
+		'Dieses Schmuckstück ist mit einer großen Anzahl Rosenkranzperlen bestückt. Kann zerrissen werden, um mit den losen Perlen zu handeln.',
+	'UI.INV_NAME_COIN_SET_M2': 'Schwerer Rosenkranz',
+	'UI.INV_DESC_COIN_SET_M2':
+		'Eine Halskette aus gewöhnlichen und erlesenen Rosenkranzperlen. Kann zerrissen werden, um mit den losen Perlen zu handeln.',
+	'UI.INV_NAME_COIN_SET_L': 'Bleicher Rosenkranz',
+	'UI.INV_DESC_COIN_SET_L':
+		'Eine schwere Halskette, die mit Echtperlen bestückt ist. Kann zerrissen werden, um mit den losen Perlen zu handeln.',
+	'UI.INV_NAME_SHARD_POUCH': 'Splitterbündel',
+	'UI.INV_DESC_SHARD_POUCH':
+		'Ein kleines Bündel aus zusammengepackten Panzersplittern. Es kann zerbrochen werden, um die Splitter zur Fertigung zu nutzen.',
+	'UI.INV_DESC_SHARD_POUCH_USE': 'Enthält {0} Panzersplitter.',
+	'UI.INV_NAME_GREAT_SHARD': 'Biestsplitter',
+	'UI.INV_DESC_GREAT_SHARD':
+		'Ein Klumpen aus gehärtetem Material, das in den Panzern großer Bestien gefunden wird. Kann zerbrochen werden, um die einzelnen Panzersplitter zur Fertigung zu nutzen.',
+	'UI.INV_DESC_GREAT_SHARD_USE': 'Zerbricht in {0} Panzersplitter.',
+	'UI.INV_NAME_PRISTINE_CORE': 'Makelloser Kern',
+	'UI.INV_DESC_PRISTINE_CORE':
+		'Komplexer Mechanismus aus dem Inneren eines Räderwerk-Käfers. Kann zerbrochen werden, um die einzelnen Panzersplitter zur Fertigung zu nutzen.',
+	'UI.INV_NAME_FIXER_IDOL': 'Hornet-Statuette',
+	'UI.INV_DESC_FIXER_IDOL':
+		'Diese kleine Skulptur wurde zwar laienhaft, aber mit großer Sorgfalt gefertigt, als Symbol einer langlebigen Freundschaft.',
+	'UI.INV_NAME_GROWSTONE': 'Wuchsstein',
+	'UI.INV_DESC_GROWSTONE':
+		'Dieser kalte, stahlartige Stein wächst auf erstaunliche Weise immer wieder nach.<br><br>Wenn er in Panzersplitter zerbrochen wird, stellt er sich mit der Zeit wieder her.',
+	'UI.INV_NAME_SILK_GRUB': 'Seidenfresser',
+	'UI.INV_DESC_SILK_GRUB':
+		'Eine Larve, die in Pharlooms Seide lebt und sich von ihr ernährt. Sie wird mit der Fähigkeit geboren, Seide aus großer Entfernung aufzuspüren.',
+	'UI.INV_DESC_SILK_GRUB_FUNCTION': 'Vertilge den Seidenfresser, um nach dem Tod deinen Kokon zurückzuholen.',
+	'Prompts.PROMPT_USE_CONSUMABLE_GRUB': 'Einverleiben',
 	'Tools.CREST_HUNTER_NAME': 'Jäger',
 	'Tools.CREST_REAPER_NAME': 'Schnitter',
 	'Tools.CREST_PILGRIM_NAME': 'Wanderer',
@@ -124,6 +405,1235 @@ export default {
 	'Tools.MUSICIAN_CHARM_NAME': 'Spinnenfäden',
 	'Tools.SPRINTMASTER_NAME': 'Seidentempo-Fußketten',
 	'Tools.THIEF_CHARM_NAME': 'Diebeszeichen',
+	'Journal.NAME_MOSSBONE_CRAWLER': 'Mooslarve',
+	'Journal.DESC_MOSSBONE_CRAWLER': 'Ein pelziger Krabbler mit mehreren scharfen Stacheln auf dem Rücken.',
+	'Journal.NOTE_MOSSBONE_CRAWLER': 'Ein durchaus hübscher Käfer. Zumindest, wenn da nicht diese Stacheln wären ...',
+	'Journal.NAME_MOSSBONE_CRAWLER_FAT': 'Gewaltige Mooslarve',
+	'Journal.DESC_MOSSBONE_CRAWLER_FAT':
+		'Eine unnatürlich große Mooslarve, die im Memorium der Zitadelle gezüchtet wurde.',
+	'Journal.NOTE_MOSSBONE_CRAWLER_FAT':
+		'Einer perfekten, pelzigen Form so nahe ... Hätten sie es doch nur geschafft, ihr den Stachel wegzuzüchten.',
+	'Journal.NAME_MOSSBONE_FLY': 'Moosmir',
+	'Journal.DESC_MOSSBONE_FLY': 'Ein kleines flatterndes Lebewesen, das sich mit seinem winzigen Stachel verteidigt.',
+	'Journal.NOTE_MOSSBONE_FLY':
+		'Dieser Käfer ist weich und unbeholfen, doch zu seinem Glück scheint es in den Höhlen, in denen er beheimatet ist, kaum nennenswerte Raubtiere zu geben. Ich frage mich, warum dem wohl so ist.',
+	'Journal.NAME_MOSSBONE_MOTHER': 'Moosmutter',
+	'Journal.DESC_MOSSBONE_MOTHER': 'Eine erwachsene Moosmir mit voll ausgebildetem Stachel und gehärteter Haut.',
+	'Journal.NOTE_MOSSBONE_MOTHER':
+		'Der Mutterinstinkt kann es Lebewesen ermöglichen, ihre natürlichen Grenzen zu überschreiten. So werden selbst schwächere Wesen wie diese zu formidablen Gegnern.',
+	'Journal.NAME_ASPID_COLLECTOR': 'Aknide',
+	'Journal.DESC_ASPID_COLLECTOR':
+		'Ein geflügeltes Insekt, das sich von Moos und Flechten in den Höhlen oberhalb von Knochengrund ernährt.',
+	'Journal.NOTE_ASPID_COLLECTOR':
+		'Seiner wahren Natur gemäß würde es Raubtieren aus dem Weg gehen, doch Pharlooms Verwünschung treibt es nun zu aggressiverem Verhalten. Zum Glück sind seine Kiefer für den Kampf eher ungeeignet.',
+	'Journal.NAME_BONE_GOOMBA': 'Schädelkrabbler',
+	'Journal.DESC_BONE_GOOMBA':
+		'Ein kleiner weicher Käfer, der die harten Schädel des Tals der Knochen zum Schutz und zur Tarnung nutzt.',
+	'Journal.NOTE_BONE_GOOMBA':
+		'In allen Ländern finden Lebewesen neue und überraschende Wege, um sich zu tarnen. Man muss stets auf der Hut sein.',
+	'Journal.NAME_BONE_GOOMBA_BOUNCE_FLY': 'Schädelflügel',
+	'Journal.DESC_BONE_GOOMBA_BOUNCE_FLY':
+		'Ein fliegender Verwandter des am Boden lebenden Schädelkrabblers, den man nur in den tiefsten und heißesten Höhlen des Tals der Knochen findet.',
+	'Journal.NOTE_BONE_GOOMBA_BOUNCE_FLY':
+		'Solch klägliche Wesen können nur überleben, weil es in diesen überhitzten Höhlen kaum Raubtiere gibt.',
+	'Journal.NAME_BONE_GOOMBA_LARGE': 'Schädelstürmer',
+	'Journal.DESC_BONE_GOOMBA_LARGE':
+		'Ein weicher Käfer unter einem riesigen gehörnten Schädel. Er greift Eindringlinge an, um sein Territorium und seine kleineren Gefährten zu schützen.',
+	'Journal.NOTE_BONE_GOOMBA_LARGE':
+		'Entweder hat seine Größe ihn furchtlos gemacht, oder die Verwünschung hat ihm seinen Selbstschutzinstinkt genommen.',
+	'Journal.NAME_SKULL_KING': 'Schädeltyrann',
+	'Journal.DESC_SKULL_KING':
+		'Ein seltener, riesiger Schädelkrabbler. Er ist das größte Raubtier im Tal der Knochen und wird wegen seines wilden Temperaments auch am meisten gefürchtet.',
+	'Journal.NOTE_SKULL_KING':
+		'Eine beeindruckende Bestie, doch der Schädel scheint von einem noch größeren Wesen zu stammen. Nie hätte ich gedacht, dass Käfer eine solche Größe erreichen könnten, doch die Knochen sprechen für sich.',
+	'Journal.NAME_BONE_CRAWLER': 'Kilik',
+	'Journal.DESC_BONE_CRAWLER':
+		'Ein kleiner knochiger Käfer, der dunkle Tunnel bevorzugt. Er kann seinen stacheligen Panzer ausfahren, um sich gegen Raubtiere zu schützen.',
+	'Journal.NOTE_BONE_CRAWLER':
+		'Die ausfahrbaren Stacheln dieses Käfers stellen eine Falle dar, die schlicht aber effektiv ist – ganz nach meinem Geschmack. Ein ahnungsloses Raubtier kann er damit sauber durchbohren.',
+	'Journal.NAME_BONE_FLYER': 'Biestfliege',
+	'Journal.DESC_BONE_FLYER':
+		'Eine aggressive Fliege aus Pharlooms Tiefland. Sie rammt ihre Beute mit ihrer hartknochigen Maske.',
+	'Journal.NOTE_BONE_FLYER':
+		'In meiner Kindheit war es ein lustiger Zeitvertreib, um Kreaturen dieser schlichten Art herumzutanzen, während sie wild hin- und herstürmen. Heute habe ich leider Wichtigeres zu tun.',
+	'Journal.NAME_BONE_FLYER_GIANT': 'Wilde Biestfliege',
+	'Journal.DESC_BONE_FLYER_GIANT':
+		'Eine zornige, ausgewachsene Biestfliege. Eine harte Panzermaske schützt ihren massigen Leib.',
+	'Journal.NOTE_BONE_FLYER_GIANT':
+		'Die Zivilisation bahnt sich ihren Weg von der Spitze dieses Reiches, doch im Tiefland regieren nach wie vor die Bestien. Sein Brüllen bewegt mich tief im Innern, wie ein Urinstinkt.',
+	'Journal.NAME_BONE_CIRCLER': 'Caranide',
+	'Journal.DESC_BONE_CIRCLER':
+		'Ein gewöhnlicher geflügelter Käfer aus dem Tiefland. Normalerweise ist er friedlich, aber wenn sich eine Gefahr nähert, greift er an.',
+	'Journal.NOTE_BONE_CIRCLER':
+		'Seine mollige, rundliche Form macht ihn zu einem attraktiven Ziel. Mich packt das Verlangen, meine Zielgenauigkeit an ihm zu ertesten ...',
+	'Journal.NAME_BONE_CIRCLER_VICIOUS': 'Wilde Caranide',
+	'Journal.DESC_BONE_CIRCLER_VICIOUS':
+		'Ein aggressiver geflügelter Käfer aus dem Tiefland. Wenn er wütend ist, lässt er seinen Klingenschwanz wild herumpeitschen.',
+	'Journal.NOTE_BONE_CIRCLER_VICIOUS':
+		'Verglichen mit seinem massigen Leib sind seine Flügel relativ klein. Vielleicht nutzt er die warme Luft dieses feurigen Landes, um in der Luft zu bleiben. Eine gewitzte Strategie.',
+	'Journal.NAME_BONE_HOPPER': 'Hartknochenhüpfer',
+	'Journal.DESC_BONE_HOPPER':
+		'Ein weidendes Lebewesen mit ausgeprägter Sinneswahrnehmung, das sich mit flinkem Geschick vor Gefahren zurückzieht.',
+	'Journal.NOTE_BONE_HOPPER':
+		'Obwohl sein Panzer der Verwünschung verfallen ist, ist es noch nicht aggressiv geworden. Sein Fluchtinstinkt ist nach wie vor stärker.',
+	'Journal.NAME_BONE_HOPPER_GIANT': 'Hartknochen-Ältester',
+	'Journal.DESC_BONE_HOPPER_GIANT':
+		'Eine hochgewachsene Kreatur mit scharfen Sinnen. Er verteidigt seine Herde mit kräftigen Beinen und einer Maske mit scharfer Spitze.',
+	'Journal.NOTE_BONE_HOPPER_GIANT':
+		'Seine eleganten, schlanken Beine verbergen eine erstaunliche Kraft. Wie vergnüglich es wäre, auf ihnen zu reiten ...',
+	'Journal.NAME_BONE_SPITTER': 'Teermilbe',
+	'Journal.DESC_BONE_SPITTER':
+		'Eine fliegende Knochenmilbe, die in der Nähe von Magma lebt. Sie bespuckt ihre Beute mit glühend heißem Teer, um diese lebendig zu rösten.',
+	'Journal.NOTE_BONE_SPITTER':
+		'Frisch wäre ihr klebriger Speichel zweifelsohne ein nützliches Fertigungsmaterial. Leider bleibt mir keine Zeit für derlei Experimente.',
+	'Journal.NAME_BONE_ROLLER': 'Schlundling',
+	'Journal.DESC_BONE_ROLLER': 'Ein junger knochiger Käfer, der seinen Körper zu einer Kugel zusammenrollen kann.',
+	'Journal.NOTE_BONE_ROLLER':
+		'Mit seinem harten, gezahnten Panzer kann er sich an jeder Oberfläche festhalten. Sogar Mauern und Dächer werden für diese geschickten Käfer zu Wegen.',
+	'Journal.NAME_BONE_THUMPER': 'Markschlund',
+	'Journal.DESC_BONE_THUMPER':
+		'Ein rollender Riese aus dem Tiefland. Sein gezahnter Panzer kann kleinere Lebewesen darunter zerquetschen.',
+	'Journal.NOTE_BONE_THUMPER':
+		'Sein massiger Leib dient ihm als effektive Waffe, benötigt aber auch entsprechend Futter. Vermutlich verbringt diese Kreatur den Großteil ihres Lebens bei der Nahrungsaufnahme – für manche eine durchaus akzeptable Existenz.',
+	'Journal.NAME_SPINE_FLOATER': 'Hieker',
+	'Journal.DESC_SPINE_FLOATER': 'Ein Schweber aus dem Tiefland, der Stacheln verschießt.',
+	'Journal.NOTE_SPINE_FLOATER':
+		'Jegliche Bewunderung, die ich für seinen weichen Flaum habe, vergeht beim Anblick seiner verstörenden Maske ... und seiner stählernen Stacheln.',
+	'Journal.NAME_ROCK_ROLLER': 'Feuersteinkäfer',
+	'Journal.DESC_ROCK_ROLLER':
+		'Dieser selten gesehene Käfer verbringt die meiste Zeit tief unter Knochen und Steinen. Die Feuerjuwelen auf seinem Panzer sondern ein explosives Pulver ab.',
+	'Journal.NOTE_ROCK_ROLLER':
+		'Aus diesen hellen Juwelen ließe sich bestimmt schöner – wenn auch kurzlebiger – Schmuck fertigen. Eine amüsante Idee für ein Geschenk ... oder gar eine Falle.',
+	'Journal.NAME_RHINO': 'Rhinogrond',
+	'Journal.DESC_RHINO':
+		'Ein langhörniges Lebewesen aus Pharlooms Tiefland. Mit seinem Horn kann es Gegner aufspießen und den Boden unter sich aufwühlen, wobei es gefährlichen Schutt aufwirbelt.',
+	'Journal.NOTE_RHINO':
+		'Gewisse Werkzeuge und Fertigkeiten sind in der Lage, seinen harten Panzer zu durchdringen. Ich sollte bereit sein, meine Strategie falls nötig anzupassen.',
+	'Journal.NAME_CRYPT_WORM': 'Gromling',
+	'Journal.DESC_CRYPT_WORM':
+		'Ein maskierter junger Wurm, der liebend gerne Eindringlinge in den Tunneln in den Hinterhalt lockt.',
+	'Journal.NOTE_CRYPT_WORM':
+		'Ein frustrierender Gegner. Sobald ich versuche, ihn niederzustrecken, flüchtet er sich unter den Knochen.',
+	'Journal.NAME_BONE_WORM': 'Grom',
+	'Journal.DESC_BONE_WORM':
+		'Ein wühlender Wurm, der mit seinen zahlreichen abgestumpften Zähnen selbst den härtesten Knochen durchbohren kann.',
+	'Journal.NOTE_BONE_WORM':
+		'Er frisst sich unaufhörlich durch Steine und Knochen, scheint niemals zu rasten. Hat er ein Ziel? Oder liegt es einfach in seiner Natur, immer tiefer zu graben?',
+	'Journal.NAME_BONE_BEAST': 'Glockenbestie',
+	'Journal.DESC_BONE_BEAST':
+		'Dieser gewaltige, hartknochige Käfer haust in den Adern aus alten Glocken, die sich durch ganz Pharloom ziehen, und durchwandert diese mit Leichtigkeit.',
+	'Journal.NOTE_BONE_BEAST':
+		'Dieses Exemplar hat sich mit mir verbündet, entweder als Dank für seine Rettung, oder aus Respekt für einen ebenbürtigen Gegner. Was auch immer der Grund ist, ich weiß seine Freundschaft zu schätzen.',
+	'Journal.NAME_PILGRIM_03': 'Pilgerkriecher',
+	'Journal.DESC_PILGRIM_03': 'Ein gewöhnlicher Käfer aus Pharloom, der flach auf dem Boden liegt.',
+	'Journal.NOTE_PILGRIM_03':
+		'Seit er Pharlooms Verwünschung verfiel, kann er kaum noch mehr als beten – und andere attackieren.',
+	'Journal.NAME_PILGRIM_01': 'Pilgerstürzer',
+	'Journal.DESC_PILGRIM_01':
+		'Ein gelenkiger Käfer aus Pharloom, von der Verwünschung der meisten seiner Sinne beraubt.',
+	'Journal.NOTE_PILGRIM_01':
+		'Er besitzt einen weicheren Panzer als die meisten anderen. Vermutlich musste er sich eher auf seine athletischen Fähigkeiten verlassen, um zu überleben.',
+	'Journal.NAME_PILGRIM_04': 'Pilger-Hornfliege',
+	'Journal.DESC_PILGRIM_04': 'Ein kleinwüchsiger Pilger, der bei Gefahr mit seinem langen Horn angreift.',
+	'Journal.NOTE_PILGRIM_04': 'Er ist von Natur aus gut gerüstet. Bei Angriffen macht er sich selbst zum Geschoss.',
+	'Journal.NAME_PILGRIM_02': 'Pilgerkoloss',
+	'Journal.DESC_PILGRIM_02':
+		'Robuster Käfer, der Verwünschung verfallen. Rollt auf Gefahren zu, ohne auf sich selbst Rücksicht zu nehmen.',
+	'Journal.NOTE_PILGRIM_02':
+		'In diesem leidenden Land findet man selten Käfer von seiner Gestalt. Die Panzer der meisten Pilger wirken vergleichsweise klein. Welche Nahrung hat er gefunden, um eine derartige Größe zu erreichen?',
+	'Journal.NAME_PILGRIM_BELL_THROWER': 'Pilger-Glockenträger',
+	'Journal.DESC_PILGRIM_BELL_THROWER':
+		'Ein gewöhnlicher Käfer, der alte Glocken trägt. Der Käfer schleudert seine Glocken all jenen entgegen, die er für noch frei erachtet.',
+	'Journal.NOTE_PILGRIM_BELL_THROWER':
+		'Einst erklangen diese Glocken vermutlich voller Hoffnung und Frohsinn und sorgten bei kletternden Gefährten für gute Laune. Doch mittlerweile dienen diese Instrumente leider nur noch dem Kampf.',
+	'Journal.NAME_PILGRIM_FLY': 'Geflügelter Pilger',
+	'Journal.DESC_PILGRIM_FLY': 'Ein kurzhörniger Käfer, der mit unterentwickelten Flügeln geboren wurde.',
+	'Journal.NOTE_PILGRIM_FLY':
+		'Er kann fliegen, aber nur mit Müh und Not. Vom Stein vermag er sich zwar zu erheben, aber große Distanzen legt er mit seinen kümmerlichen Flügeln nicht zurück.',
+	'Journal.NAME_PILGRIM_05': 'Pilgerältester',
+	'Journal.DESC_PILGRIM_05':
+		'Breit gebauter Käfer, der von verwunschenen Fäden ergriffen wurde. Mit seiner robusten Form zerquetscht er andere.',
+	'Journal.NOTE_PILGRIM_05':
+		'Er kann von Glück sagen, ein so hohes Alter erreicht zu haben. Die meisten seiner Art verenden auf Pharlooms Pfaden.',
+	'Journal.NAME_PILGRIM_BELLTHROWER_FLY': 'Geflügelter<br>Pilger-Glockenträger',
+	'Journal.DESC_PILGRIM_BELLTHROWER_FLY': 'Ein Pilger mit breiten Flügeln, der ein Band aus Eisenglocken trägt.',
+	'Journal.NOTE_PILGRIM_BELLTHROWER_FLY':
+		'Seine Kombination aus Flugfähigkeit und Vorsicht macht ihn auf unebenem Gelände selbst für mich zu einer echten Herausforderung.',
+	'Journal.NAME_PILGRIM_HIKER': 'Pilgerwanderer',
+	'Journal.DESC_PILGRIM_HIKER':
+		'Ein hart gepanzerter Käfer mit einer Kletternadel. Einst diente ihm diese als Hilfsmittel, doch nun führt er sie als Waffe. Allzu geschickt ist der Käfer mit ihr aber nicht.',
+	'Journal.NOTE_PILGRIM_HIKER':
+		'Ein Käfer von einst gebrechlicher Gestalt, doch der unheilvolle Faden kümmert sich nicht um die Grenzen des sterblichen Leibes.',
+	'Journal.NAME_PILGRIM_STAFFWIELDER': 'Pilgerführer',
+	'Journal.DESC_PILGRIM_STAFFWIELDER': 'Ein alter Pilger, der einen schweren, eisernen Glockenstab trägt.',
+	'Journal.NOTE_PILGRIM_STAFFWIELDER':
+		'Die große Glocke kennzeichnet ihn wohl als einstigen Führer einer Kletterpartie. Die Verwünschung hat ihn jedoch dieser Rolle beraubt.',
+	'Journal.NAME_PILGRIM_MOSS_SPITTER': 'Überwachsener Pilger',
+	'Journal.DESC_PILGRIM_MOSS_SPITTER': 'Ein alter Pilger, von Flechten und Moos bewachsen.',
+	'Journal.NOTE_PILGRIM_MOSS_SPITTER':
+		'Das Moos scheint sogar in seinem Magen zu wachsen, sodass der Pilger es in dicken Klumpen auf Gegner spucken kann. Eine widerwärtige Art des Angriffs.',
+	'Journal.NAME_ROSARY_PILGRIM': 'Habgierige Pilgerin',
+	'Journal.DESC_ROSARY_PILGRIM':
+		'Ein starker Käfer, der sich in Rosenkränze hüllt. Wenn er wütend ist, schwingt er diese wie Peitschen wild und unermüdlich umher.',
+	'Journal.NOTE_ROSARY_PILGRIM':
+		'Ist dieser Überfluss ein Zeichen der Reinheit oder der Gier? Es verblüfft mich nach wie vor, wie in diesem Land der Glaube gemessen wird.',
+	'Journal.NAME_ROSARY_THIEF': 'Stibitzling',
+	'Journal.DESC_ROSARY_THIEF': 'Ein boshafter Plünderer, der überall in Pharloom zu finden ist.',
+	'Journal.NOTE_ROSARY_THIEF':
+		'Solange dieser lästige Käfer ungehindert plündert, ist keine lose Rosenkranzperle und kein Schmuckstück sicher.',
+	'Journal.NAME_TAR_SLUG': 'Lavaneck',
+	'Journal.DESC_TAR_SLUG':
+		'Ein klebriges Weichtier, das brennendes Sekret aus den Auswüchsen auf seinem Rücken versprüht, um sich zu verteidigen.',
+	'Journal.NOTE_TAR_SLUG':
+		'Was zunächst wie ein reiner Abwehrmechanismus wirkt, verhindert möglicherweise auch, dass dieses Lebewesen überhitzt.',
+	'Journal.NAME_TAR_SLUG_HUGE': 'Lavanorm',
+	'Journal.DESC_TAR_SLUG_HUGE':
+		'Ein vollständig ausgewachsenes Weichtier, das brennendes Sekret aus seinem Rücken verströmt.',
+	'Journal.NOTE_TAR_SLUG_HUGE':
+		'Wie überlebt es mit all der brennenden Flüssigkeit in seinem Leib? Früher hätte ich dies für unmöglich gehalten, doch Pharloom hat mir schon zahlreiche Wunder offenbart.',
+	'Journal.NAME_DOCK_WORKER': 'Schmelzschaufler',
+	'Journal.DESC_DOCK_WORKER':
+		'Ein niederer Arbeiter, der Pharlooms Verwünschung verfallen ist. Sein Instinkt treibt ihn, weiterhin seiner Arbeit nachzugehen, wenn auch nur noch bedingt.',
+	'Journal.NOTE_DOCK_WORKER':
+		'In der Metallverarbeitung scheint dieses Reich weit fortschrittlicher zu sein, als meines es jemals war – in erster Linie dank der natürlichen Hitzequelle, die sein Fundament birgt. Es ist beeindruckend, in einer solchen Umgebung derartige Arbeit zu vollbringen.',
+	'Journal.NAME_DOCK_FLYER': 'Feuersteinflieger',
+	'Journal.DESC_DOCK_FLYER':
+		'Ein Luftarbeiter, der Pharlooms Verwünschung verfallen ist. Er trägt eine Tasche voller Feuersteine, die er auf Eindringlinge wirft.',
+	'Journal.NOTE_DOCK_FLYER':
+		'Der Zunder, den sie mitführen, ist das reinste Naturwunder. Er hat zahlreiche Anwendungsmöglichkeiten. Was für eine Verschwendung es ist, mich einfach damit zu bewerfen.',
+	'Journal.NAME_DOCK_BOMBER': 'Feuerflammen-Flieger',
+	'Journal.DESC_DOCK_BOMBER':
+		'Ein mutiger Arbeiter, der eine volatile Feuerflamme und eine schwere Glocke trägt, um sich gegen ein mögliches Entzünden zu schützen.',
+	'Journal.NOTE_DOCK_BOMBER':
+		'Sie fristen ein Dasein, das von konstantem Risiko geprägt ist und irgendwann abrupt und brennend zu Ende geht.',
+	'Journal.NAME_SHIELD_DOCK_WORKER': 'Rauchstein-Sieber',
+	'Journal.DESC_SHIELD_DOCK_WORKER':
+		'Ein Arbeiter des Tiefenkais, der ein Becken trägt. Er durchsucht den abgebauten Rauchstein auf wertvollere Minerale.',
+	'Journal.NOTE_SHIELD_DOCK_WORKER':
+		'Die Verwünschung hat diese Käfer irgendeines wichtigen Teils ihrer selbst beraubt. Und doch versuchen sie nach wie vor, ihrer früheren Aufgabe nachzugehen. Zumindest so lange, bis sie mich bemerken ...',
+	'Journal.NAME_DOCK_CHARGER': 'Tiefentaucher',
+	'Journal.DESC_DOCK_CHARGER':
+		'Ein in eine Glocke gehüllter Käfer, der früher für den Abbau in den gefährlichen Tiefen unterhalb der Kais zuständig war.',
+	'Journal.NOTE_DOCK_CHARGER':
+		'Ihre schwere Glocke schützt sie gut vor meinen Angriffen. Aber was bringt sie gegen die enorme Hitze?',
+	'Journal.NAME_DOCK_GUARD_THROWER': 'Vorbrüder Signis & Gron',
+	'Journal.DESC_DOCK_GUARD_THROWER':
+		'Die altgedienten Aufseher des Tiefenkais. Sie sind für die Aufsicht und die Bestrafung der niederen Arbeiter zuständig.',
+	'Journal.NOTE_DOCK_GUARD_THROWER':
+		'Obwohl sie sich im Wahn der Verwünschung verloren hatten, beaufsichtigten sie dennoch die endlosen Ausgrabungen in ihren Höhlen.',
+	'Journal.NAME_SMALL_CRAB': 'Winzklüfter',
+	'Journal.DESC_SMALL_CRAB': 'Die jüngere Form des weit beeindruckenderen Klüfters.',
+	'Journal.NOTE_SMALL_CRAB':
+		'Wenn diese Jungkäfer nicht beseitigt werden, kämpfen sie so lange um die Vorherrschaft, bis nur noch einer von ihnen übrig ist.',
+	'Journal.NAME_ROOF_CRAB': 'Klüfter',
+	'Journal.DESC_ROOF_CRAB': 'Ein massiv gepanzerter Krabbler, der sich gerne in großer Höhe aufhält.',
+	'Journal.NOTE_ROOF_CRAB':
+		'Sein Panzer birgt einen prallen Sack voll sengender Säure, die er wie Regen aus seinem Maul versprüht, sobald er Beute gewittert hat.',
+	'Journal.NAME_FIELDS_FLOCK_FLYERS': 'Buschflitzer',
+	'Journal.DESC_FIELDS_FLOCK_FLYERS':
+		'Diese winzigen, furchtsamen Lebewesen versammeln sich in Gruppen und fliehen beim geringsten Anzeichen von Gefahr.',
+	'Journal.NOTE_FIELDS_FLOCK_FLYERS':
+		'Wenn sie auch nur vermuten, dass Gefahr im Anmarsch ist, warnen sie umgehend ihre Gefährten. Wer sie also jagen will, muss leise sein und sich bis zum entscheidenden Angriff verstecken.',
+	'Journal.NAME_FIELDS_GOOMBA': 'Fertide',
+	'Journal.DESC_FIELDS_GOOMBA':
+		'Ein schreckhafter Krabbler aus den Weiten Feldern. Seine Antennen ähneln Grashalmen, sodass er sich gut tarnen kann.',
+	'Journal.NOTE_FIELDS_GOOMBA':
+		'Er hat keinerlei Möglichkeit, sich zu verteidigen. Sein Überleben hängt voll und ganz daran, wie täuschend er den Pflanzen in der Umgebung ähnelt.',
+	'Journal.NAME_FIELDS_FLYER': 'Flatterfertide',
+	'Journal.DESC_FIELDS_FLYER':
+		'Ein fügsamer Käfer, dessen Flügel das Gras der Weiten Felder nachahmen. Ein beliebter Imbiss für größere Raubtiere.',
+	'Journal.NOTE_FIELDS_FLYER':
+		'Wenn er stillsitzt, sieht er den Pflanzen täuschend ähnlich. Im Flug funktioniert diese Tarnung aufgrund seines zwiebelartigen Körpers allerdings nicht mehr.',
+	'Journal.NAME_SONG_GOLEM': 'Vierter Chorus',
+	'Journal.DESC_SONG_GOLEM': 'Ein riesiges, eisernes Konstrukt, angetrieben von Rotoren und Rädern.',
+	'Journal.NOTE_SONG_GOLEM':
+		'Pharloom hat hier etwas Furchterregendes geschaffen – ein Konstrukt von solcher Größe, und doch so behände.',
+	'Journal.NAME_BONE_HUNTER_TINY': 'Skarrlide',
+	'Journal.DESC_BONE_HUNTER_TINY': 'Eine kleine Ameise, die sich durch die Erde wühlt und den größeren Skarr dient.',
+	'Journal.NOTE_BONE_HUNTER_TINY':
+		'Diese Käfer arbeiten hauptsächlich als Späher und Futtersucher für die Krieger des Stammes. Ihre Beschaffenheit ist seit jeher nicht die eines Kämpfers.',
+	'Journal.NAME_BONE_HUNTER_BUZZER': 'Skarrflügler',
+	'Journal.DESC_BONE_HUNTER_BUZZER':
+		'Dieser flitzende Räuber klammert sich an Dächer und Vorsprünge. Oftmals wild er von seinen größeren Gefährten herbeigerufen, um sie im Kampf zu unterstützen.',
+	'Journal.NOTE_BONE_HUNTER_BUZZER':
+		'Bei der Jagd würde er einen hervorragenden Begleiter abgeben, doch selbst ohne die Verwünschung würde seine Loyalität, vermute ich, wohl nur seiner Sippe gelten.',
+	'Journal.NAME_BONE_HUNTER_CHILD': 'Skarrspäher',
+	'Journal.DESC_BONE_HUNTER_CHILD':
+		'Eine junge Jägerameise, die aus Zähnen geschnitzte Sicheln schwingt. Wenn sich Gefahren nähern, ruft sie oft Hilfe herbei.',
+	'Journal.NOTE_BONE_HUNTER_CHILD':
+		'Trotz ihrer Jugend sind sie beeindruckende Gegner. Mitglieder ihres Stammes werden vermutlich von Geburt an zum Kämpfen erzogen.',
+	'Journal.NAME_BONE_HUNTER': 'Skarrpirscher',
+	'Journal.DESC_BONE_HUNTER': 'Eine geschickte Jägerameise, die eine Klinge und eine Rüstung aus Knochen trägt.',
+	'Journal.NOTE_BONE_HUNTER':
+		'Wild, stark und diszipliniert ... doch auch diese Eigenschaften bewahren ihn nicht vor der Verwünschung. Ist ein solches Schicksal in diesen Landen unausweichlich?',
+	'Journal.NAME_BONE_HUNTER_FLY': 'Speerskarr',
+	'Journal.DESC_BONE_HUNTER_FLY': 'Eine geflügelte Jägerameise, die aus der Luft mit ihrer Knochenlanze angreift.',
+	'Journal.NOTE_BONE_HUNTER_FLY':
+		'In meiner Jugend beneidete ich die geflügelten Käfer, wünschte mir selbst ein Paar ... aber seither weiß ich es besser. Man muss die Grenzen seines Körpers akzeptieren – und seine Mängel gegebenenfalls mit Werkzeugen aufwiegen.',
+	'Journal.NAME_BONE_HUNTER_THROW': 'Skarrwache',
+	'Journal.DESC_BONE_HUNTER_THROW':
+		'Eine riesige Jägerameise, deren Aufgabe es ist, die Speicher und Gänge ihres Stammes zu verteidigen.',
+	'Journal.NOTE_BONE_HUNTER_THROW':
+		'Ihre Panzer zeugen von der Pflicht, die ihnen auferlegt wurde – hart wie eine Mauer stehen sie da, als unermüdliche Krieger. Wenn ich ihre Schätze für mich beanspruchen will, wird nur mein Bestes genug sein.',
+	'Journal.NAME_BONE_HUNTER_TRAPPER': 'Gurr der Verstoßene',
+	'Journal.DESC_BONE_HUNTER_TRAPPER':
+		'Ein gewaltiger Skarr, der sich dennoch zu tarnen weiß. Er ist ein erstklassiger Fallenleger und Meister des Unterholzes.',
+	'Journal.NOTE_BONE_HUNTER_TRAPPER':
+		'Seine Spuren und Fallen ... Ich hätte es von Anfang an erkennen müssen – dieser alte Jäger wollte mich anlocken. Aber was hat ihn dazu getrieben, sich selbst so brutal auf die Probe zu stellen? Diese Antwort werde ich vermutlich nie bekommen.',
+	'Journal.NAME_BONE_HUNTER_CHIEF': 'Letzte Kralle',
+	'Journal.DESC_BONE_HUNTER_CHIEF':
+		'Ein ehemaliger Elite-Jäger, der seiner Mutter als letzte Verteidigungslinie dient.',
+	'Journal.NOTE_BONE_HUNTER_CHIEF':
+		'Er wurde einst aufgrund seiner Fähigkeiten auserwählt, und ich kann sehen, warum. Seine ganze Ausbildung und sein ganzes Leben muss er einzig dieser Aufgabe gewidmet haben.',
+	'Journal.NAME_HUNTER_QUEEN': 'Skarrsängerin Karmelita',
+	'Journal.DESC_HUNTER_QUEEN': 'Die Sangeskönigin der Skarr, und auch ihre begabteste Kriegerin.',
+	'Journal.NOTE_HUNTER_QUEEN':
+		'Diese anmutige Herrscherin besaß einst ein Kampfgeschick, das selbst dem meinen ebenbürtig war. In der Blüte ihrer Jugend vereinte ihre Stimme alle Skarr unter sich.',
+	'Journal.NAME_MITE': 'Milbe',
+	'Journal.DESC_MITE': 'Dieses Ungeziefer ist häufig in den dunklen Ecken von Graumoor anzutreffen.',
+	'Journal.NOTE_MITE':
+		'Einzeln stellen sie kaum eine Herausforderung dar, doch meist halten sie sich verborgen, und bestimmt in großer Zahl.',
+	'Journal.NAME_MITEFLY': 'Flattermilbe',
+	'Journal.DESC_MITEFLY':
+		'Ein fliegender Schädling, seltener als seine flügellosen Artgenossen. Wenn er sich bedroht fühlt, greift er mit scharfen Zähnen an.',
+	'Journal.NOTE_MITEFLY':
+		'In meiner Heimat haben ähnliche Käfer manchmal unbewachte Nahrungsvorräte angeknabbert. Als Kind habe ich solche Kreaturen gejagt, um mich und meine Fertigkeiten auf die Probe zu stellen.',
+	'Journal.NAME_GNAT_GIANT': 'Milbenmutter',
+	'Journal.DESC_GNAT_GIANT':
+		'Eine altes Milbenweibchen, das die meisten seiner Artgenossen an Größe und Stärke überragt.',
+	'Journal.NOTE_GNAT_GIANT':
+		'Sie ist fast blind, besitzt aber einen hervorragenden Geruchssinn, und unbekannten Gerüchen schleudert sie ihren massigen Leib entgegen. Es ist bewundernswert, in ihrem hohen Alter ein noch so wildes Gebaren zu besitzen.',
+	'Journal.NAME_FARMER_CATCHER': 'Fetzenfänger',
+	'Journal.DESC_FARMER_CATCHER':
+		'Diesem Käfer wurde auferlegt, die Seidenfetzen zu fangen, die aus der Zitadelle fallen. Wenn er provoziert wird, greift er mit seinem Stab an.',
+	'Journal.NOTE_FARMER_CATCHER':
+		'Jeden Moment, den sie wach sind, bringen diese Käfer offenbar mit Arbeit zu. Eine trostlose, endlose Plackerei im Dienste der unerreichbaren Zitadelle über ihnen.',
+	'Journal.NAME_FARMER_SCISSORS': 'Seidenschneider',
+	'Journal.DESC_FARMER_SCISSORS':
+		'Ein scherenschwingender Käfer, dessen Aufgabe es ist, herabfallende Seidenfetzen zu zerschneiden und aufzuspulen, bevor sie wieder in die Zitadelle verfrachtet werden.',
+	'Journal.NOTE_FARMER_SCISSORS':
+		'War es die Verwünschung, die sie in den kichernden Wahnsinn trieb? Oder waren es die endlosen Mühen, die ihnen auferlegt wurden?',
+	'Journal.NAME_FARMER_CENTIPEDE': 'Fadenharker',
+	'Journal.DESC_FARMER_CENTIPEDE':
+		'Ein großer Käfer, der Seidenfetzen anhäufen muss, damit sie wieder aufgespult werden können. Ihre spitze Harke dient mittlerweile auch als vorzügliche Stichwaffe.',
+	'Journal.NOTE_FARMER_CENTIPEDE':
+		'Eine triste und grausame Aufgabe wurde ihnen auferlegt, bis in alle Ewigkeit einer Zitadelle zu dienen, die sie niemals erblicken werden.',
+	'Journal.NAME_VAMPIRE_GNAT': 'Moorschwinge',
+	'Journal.DESC_VAMPIRE_GNAT':
+		'Ein gewaltiges, geflügeltes Milbenbiest. Es wurde eigens gezüchtet, um Arbeiter einzufangen, die vor ihren Aufgaben fliehen wollten.',
+	'Journal.NOTE_VAMPIRE_GNAT':
+		'Ihre Aufseher waren schon lange tot. So konnte die Moorschwinge zwischen den Türmen von Graumoor ungehindert Jagd auf umherstreifende Pilger und Zitadellendiener machen.',
+	'Journal.NAME_WISP': 'Irrwisch',
+	'Journal.DESC_WISP': 'Ein kurzlebiger Geist aus flackernden Flammen.',
+	'Journal.NOTE_WISP':
+		'Wie ist es wohl, nur für einen flüchtigen, flammenden Moment zu leben? Ein Hochgefühl? Verzweiflung? Oder gar beides zu gleichen Teilen?',
+	'Journal.NAME_FARMER_WISP': 'Brandkäfer',
+	'Journal.DESC_FARMER_WISP': 'Ein vielbeiniges Insekt, das auf fanatische Weise von Flammen besessen ist.',
+	'Journal.NOTE_FARMER_WISP':
+		'Irgendwie haben sie gelernt, die brennenden Irrwische gefügig zu machen, mit denen sie sich das Dickicht teilen. Doch wer hier wessen Diener ist, vermag ich nicht zu sagen.',
+	'Journal.NAME_WISP_PYRE_EFFIGY': 'Vater der Flamme',
+	'Journal.DESC_WISP_PYRE_EFFIGY': 'Totem und Gott zugleich, von den Brandkäfern errichtet und verehrt.',
+	'Journal.NOTE_WISP_PYRE_EFFIGY':
+		'Im Herzen des Scheiterhaufens befanden sich die Überreste eines alten Käfers. Das Gebilde deutete darauf hin, dass er sich nach einem brennenden Ende sehnte. Falls dem so war, habe ich ihm diesen Wunsch erfüllt.',
+	'Journal.NAME_CROW': 'Krähfer',
+	'Journal.DESC_CROW': 'Ein krächzender Räuber, der in hohen Höhlen haust und Beute auf vorbeiziehende Pilger macht.',
+	'Journal.NOTE_CROW':
+		'Diese flinken Halunken können einen einfachen Käfer mühelos überwältigen. Was sie noch gefährlicher macht, ist die Tatsache, dass sie nur selten alleine angreifen.',
+	'Journal.NAME_CROWMAN': 'Schlakskrähfer',
+	'Journal.DESC_CROWMAN': 'Ein erwachsener Krähfer mit zerlumpten Flügeln, der eine erbeutete Nadel führt.',
+	'Journal.NOTE_CROWMAN':
+		'Er zeigt sich deutlich feindseliger als seine jüngeren Gefährten, neigt aber offenbar weniger dazu, sich weit vom Nest zu entfernen.',
+	'Journal.NAME_CROWMAN_DAGGER': 'Feistkrähfer',
+	'Journal.DESC_CROWMAN_DAGGER': 'Ein kräftiger, ausgewachsener Krähfer, der mehrere kurze Nadeln trägt.',
+	'Journal.NOTE_CROWMAN_DAGGER':
+		'Feige versucht er, seine Beute auf Distanz zu halten und seine scharfen Waffen nach ihr zu werfen. Am besten läuft man geschwind auf sie zu und streckt sie ebenso schnell nieder.',
+	'Journal.NAME_CROWMAN_JUROR_TINY': 'Krähferschöffe',
+	'Journal.DESC_CROWMAN_JUROR_TINY':
+		'Ein kreischender Jäger, der aus Trauer um den Zerfall des Landes ganz in Schwarz auftritt.',
+	'Journal.NOTE_CROWMAN_JUROR_TINY':
+		'Er ist schwach und ängstlich und weiß, dass das Ende unmittelbar bevorsteht. Ich verstehe ihre Verzweiflung, doch mein Tod wird den Untergang nicht abwenden.',
+	'Journal.NAME_CROWMAN_JUROR': 'Schlakskrähfer-Schöffe',
+	'Journal.DESC_CROWMAN_JUROR': 'Ein älterer Krähfer in Diensten einer heiligen Zeremonie.',
+	'Journal.NOTE_CROWMAN_JUROR':
+		'Meine Neugier trieb mich dazu, ihrer Vorladung Folge zu leisten, doch allzu lange darf ich mich von ihnen nicht aufhalten lassen. Ich muss schnell sein, wenn ich meinen großen Fehler korrigieren will.',
+	'Journal.NAME_CROWMAN_DAGGER_JUROR': 'Feistkrähfer-Schöffe',
+	'Journal.DESC_CROWMAN_DAGGER_JUROR': 'Ein kurz geratener Altkrähfer, der fleißig am Gerichtshof dient.',
+	'Journal.NOTE_CROWMAN_DAGGER_JUROR':
+		'Sie wollen ihre einzige Chance auf das Überleben hinrichten, doch mit Worten ließen sie sich nicht bewegen. Hier dient nur meine Klinge als Antwort.',
+	'Journal.NAME_CRAWFATHER': 'Krähvater',
+	'Journal.DESC_CRAWFATHER':
+		'Der Fürst und Richter der Krähfer von Pharloom. Er verurteilt schuldige Käfer mit seinem stählernen Schnabel zum Tode.',
+	'Journal.NOTE_CRAWFATHER':
+		'Hat er erkannt, welche Rolle ich dabei gespielt habe, dass dieses Land der Leere verfallen ist? Sollte dem so sein, dann ist sein Urteil durchaus gerecht. Diesen Käfern habe ich nichts als Zerstörung gebracht.',
+	'Journal.NAME_MAGGOTS': 'Mistmade',
+	'Journal.DESC_MAGGOTS': 'Eine junge Larve ohne Verstand, die mit dickem Schleim bedeckt ist.',
+	'Journal.NOTE_MAGGOTS':
+		'Sie klammern sich an die Panzer anderer Käfer und machen jegliche Hoffnung auf Konzentration oder Behagen zunichte.',
+	'Journal.NAME_DUSTROACH_POLLYWOG': 'Schlabberneck',
+	'Journal.DESC_DUSTROACH_POLLYWOG':
+		'Die jüngere Form der Mistschabe. Sie greift an, indem sie aus dem Wasser springt und mit ihrem biegsamen Kiefer zuschnappt.',
+	'Journal.NOTE_DUSTROACH_POLLYWOG':
+		'Diese Kreaturen wurden – offenbar mit voller Absicht – in Wasserkäfigen herangezüchtet. Wenn sie als Nahrung vorgesehen sind, lässt ihr Geruch aber vermuten, dass sie einen ebenso widerwärtigen Geschmack haben.',
+	'Journal.NAME_DUSTROACH': 'Mistschabe',
+	'Journal.DESC_DUSTROACH':
+		'Ein ausgehungerter, unersättlicher Schwarmkäfer. Ihre Haut ist dick und ihr Fleisch riecht übel, doch sie vermehren sich schnell genug, um manchmal trotzdem als Schlachtvieh Verwendung zu finden.',
+	'Journal.NOTE_DUSTROACH':
+		'Eine abstoßende Kreatur. Bei ihrem Anblick juckt mein Panzer. In den Gehegen, wo sie sich scharen, fühle ich mich unwohl wie sonst nirgends.',
+	'Journal.NAME_BLOAT_ROACH': 'Schwellschabe',
+	'Journal.DESC_BLOAT_ROACH':
+		'Diese übergewichtigen Ableger der Mistschaben entstanden aus den Abgasen der Zitadelle. Der herabhängende Magen dieser geflügelten Schabe ist voll kochender Galle.',
+	'Journal.NOTE_BLOAT_ROACH':
+		'Ein absurdes Wesen. Sie kann doch unmöglich von selbst in der Lage sein, in der Luft zu bleiben? Bestimmt verleihen ihr die giftigen Gase in ihrem Magen Auftrieb.',
+	'Journal.NAME_ROACHFEEDER_SHORT': 'Schabenfänger',
+	'Journal.DESC_ROACHFEEDER_SHORT':
+		'Ein kleiner geschickter Käfer, der Bestien mit stacheligen Bolas einfängt und einsperrt.',
+	'Journal.NOTE_ROACHFEEDER_SHORT':
+		'In den ausladenden Höhlen, die er behaust, erweist sich seine Wurfwaffe als durchaus effektiv. Diese raffinierten kleinen Käfer verstehen etwas von der Fertigung.',
+	'Journal.NAME_ROACHFEEDER_TALL': 'Schabenfütterer',
+	'Journal.DESC_ROACHFEEDER_TALL':
+		'Ein großer Schabenfänger, dessen Aufgabe ist es, die Schaben mit Madenbrei zu füttern.',
+	'Journal.NOTE_ROACHFEEDER_TALL':
+		'Die gebogene Nadel des Fütterers scheint dazu zu dienen, sich hungrige Schaben vom Leib zu halten – und zu verhindern, dass er selbst zu ihrem Mahl wird.',
+	'Journal.NAME_ROACHKEEPER': 'Schabenhüter',
+	'Journal.DESC_ROACHKEEPER': 'Ein ergrauter alter Schabenfänger mit einem schweren Kettenlasso.',
+	'Journal.NOTE_ROACHKEEPER':
+		'Obwohl sein Verstand ihn größtenteils verlassen hat, weiß er immer noch gut mit seiner Kette umzugehen. Bindet die Verwünschung einen Käfer bis in alle Ewigkeit an die Aufgabe, die er zu Lebzeiten hatte?',
+	'Journal.NAME_ROACHKEEPER_CHEF_TINY': 'Schabenmetzger',
+	'Journal.DESC_ROACHKEEPER_CHEF_TINY':
+		'Ein ungehobelter Koch, der dafür zuständig ist, Mistschabenfleisch in genießbare Häppchen zu schneiden.',
+	'Journal.NOTE_ROACHKEEPER_CHEF_TINY':
+		'Verlangt das, was er macht, irgendein Können? Ich sehe nur einen Grobian, der Fleisch in die Mangel nimmt. Und doch frage ich mich, ob es vor der Verwünschung vielleicht anders war.',
+	'Journal.NAME_ROACHKEEPER_CHEF': 'Geächteter Koch Lugoli',
+	'Journal.DESC_ROACHKEEPER_CHEF':
+		'Der einst umjubelte Koch wurde wegen wiederholter kulinarischer Verbrechen aus der Zitadelle verbannt.',
+	'Journal.NOTE_ROACHKEEPER_CHEF':
+		'Auch nach der Rückkehr in seine heimatlichen Höhlen schuf dieser Koch allerlei „Delikatessen“, die kein Käfer, der noch bei Verstand war, herunterwürgen könnte.',
+	'Journal.NAME_WRAITH': 'Gespinst',
+	'Journal.DESC_WRAITH':
+		'Ein gepeinigter Geist im Fadenschein. Trotz seiner vergänglichen Natur können starke Angriffe das Gespinst vorübergehend vertreiben.',
+	'Journal.NOTE_WRAITH': 'Kein Käfer, sondern ein fremder Wille, der sich in Rauch und Seide manifestiert.',
+	'Journal.NAME_SWAMP_DRIFTER': 'Mottenblatt-Lagnia',
+	'Journal.DESC_SWAMP_DRIFTER':
+		'Ein für Gallwasser selten ruhiger Käfer. Er überlebt in seiner gefährlichen Umgebung, indem er sich als Pflanze tarnt.',
+	'Journal.NOTE_SWAMP_DRIFTER':
+		'Ein hübsches Wesen, aber nicht so weich, wie es zunächst den Anschein hat. Die nachgeahmte Pflanze ist schuppig und grob, und das Fell dieses Käfers weist eine ähnliche Textur auf.',
+	'Journal.NAME_SWAMP_GOOMBA': 'Sumpfmilbe',
+	'Journal.DESC_SWAMP_GOOMBA': 'Ein krabbelndes Insekt, das kochende Galle in seinem Magen trägt.',
+	'Journal.NOTE_SWAMP_GOOMBA':
+		'Sein explosiver Hinterleib hält zwar Raubtiere fern, doch ein einziger Stoß oder Sturz kann ihm ein vorzeitiges Ende bereiten.',
+	'Journal.NAME_SWAMP_MOSQUITO': 'Sumpfskit',
+	'Journal.DESC_SWAMP_MOSQUITO': 'Ein häufiger Schädling mit scharfem Rüssel und einem Magen voller Galle.',
+	'Journal.NOTE_SWAMP_MOSQUITO':
+		'Explosiv und ätzend. Im Augenblick seines Todes ist er gefährlicher, als er es zu Lebzeiten jemals war.',
+	'Journal.NAME_SWAMP_MOSQUITO_SKINNY': 'Spuckskit',
+	'Journal.DESC_SWAMP_MOSQUITO_SKINNY':
+		'Ein schwebender Schädling mit einem hohlen Rüssel, der kochende Galle spuckt.',
+	'Journal.NOTE_SWAMP_MOSQUITO_SKINNY':
+		'Um im giftigen Wasser dieser stinkenden Umgebung zu überleben, spuckt er die toxischsten Elemente aus. Was einst nur dem Überleben diente, hat sich über Generationen hinweg zu einer effektiven Jagdmethode gewandelt.',
+	'Journal.NAME_SWAMP_MUCKMAN': 'Abgestandener',
+	'Journal.DESC_SWAMP_MUCKMAN':
+		'Ein gewiefter Käfer, der mit Wurfpfeilen angreift, die aus Pflöcken und Galle bestehen.',
+	'Journal.NOTE_SWAMP_MUCKMAN':
+		'Er ist bestens mit seinem Reich vertraut, lauert auf Seitenwegen und in Sümpfen, um wie aus dem Nichts zuzuschlagen.',
+	'Journal.NAME_SWAMP_MUCKMAN_TALL': 'Abgestandener Fallenleger',
+	'Journal.DESC_SWAMP_MUCKMAN_TALL': 'Ein fallenlegender Käfer, der eine Tasche mit geschärften Langpflöcken trägt.',
+	'Journal.NOTE_SWAMP_MUCKMAN_TALL':
+		'Lästiger als der Käfer selbst sind die unzähligen Fallen, die er bereits im Vorfeld in seinen Höhlen gelegt hat.',
+	'Journal.NAME_SWAMP_SHAMAN': 'Groal der Große',
+	'Journal.DESC_SWAMP_SHAMAN':
+		'Der Häuptling und Kaplan der Abgestandenen. Er wütet unablässig gegen die Zitadelle, die seine Höhlen erstickt und seine Sippe leiden lässt.',
+	'Journal.NOTE_SWAMP_SHAMAN':
+		'Gestohlene Seele hat diesem hier große Macht verliehen. Er war nicht der erste, der versucht hat, Seelen zu horten und sie solch gewaltsamen Zwecken zuzuführen.',
+	'Journal.NAME_SWAMP_BARNACLE': 'Rankepock',
+	'Journal.DESC_SWAMP_BARNACLE':
+		'Ein bezahnter Wuchs, der an der Decke von Höhlen lebt. Er fängt verirrte Käfer mit seiner langen Zunge ein und zieht sie zum Verzehr heran.',
+	'Journal.NOTE_SWAMP_BARNACLE':
+		'Er versteckt seine Zunge unter vertrauten Halmen ... Eine List, die in ihrer Eleganz besticht.',
+	'Journal.NAME_SWAMP_DUCTSUCKER': 'Aquäduktsauger',
+	'Journal.DESC_SWAMP_DUCTSUCKER':
+		'Eine saugende Kreatur, die sich von dem dicken Schleim ernährt, der seine Höhlen bedeckt.',
+	'Journal.NOTE_SWAMP_DUCTSUCKER':
+		'Ein Käfer ohne Verstand. Er nimmt die Welt offenbar nur durch seine Ranken wahr, doch auch so schlicht gestrickt stellt er eine ernstzunehmende Bedrohung dar.',
+	'Journal.NAME_POND_SKATER': 'Teichhüpfer',
+	'Journal.DESC_POND_SKATER':
+		'Ein hart gepanzertes Insekt, das man oft auf der Oberfläche des Schalenwald-Teichs antrifft. Vorbeiziehende Pilger nutzten es früher oft als Nahrung.',
+	'Journal.NOTE_POND_SKATER':
+		'Wie elegant sie über die Oberfläche des Wasser gleiten ... Bestimmt ließe sich diese Fähigkeit erlernen? Wenn ich die Zeit finde, will ich mich dieser Aufgabe stellen.',
+	'Journal.NAME_PILGRIM_FISHER': 'Teichfänger',
+	'Journal.DESC_PILGRIM_FISHER':
+		'Ein alter Fänger, der am Teich des Schalenwalds mit seiner Langnadel jagt. Die Verwünschung hat ihn längst gepackt.',
+	'Journal.NOTE_PILGRIM_FISHER': 'Einst jagte er nur nach Nahrung, doch heute jagt er ebenso kopflos wie endlos.',
+	'Journal.NAME_SHELLWOOD_GNAT': 'Schalenwald-Schnake',
+	'Journal.DESC_SHELLWOOD_GNAT':
+		'Ein winziges weiches Lebewesen, das sich mit den harten, hohlen Auswüchsen des Schalenwalds panzert.',
+	'Journal.NOTE_SHELLWOOD_GNAT':
+		'Auch wenn seine hölzerne Schale birst, setzt dieser Käfer seinen Angriff – tapfer und töricht – fort.',
+	'Journal.NAME_SHELLWOOD_WASP': 'Holzwespe',
+	'Journal.DESC_SHELLWOOD_WASP':
+		'Ein spitzes, heranschießendes Insekt, das sich im Schalenwald ein robustes Nest aus getrockneter Rinde baut.',
+	'Journal.NOTE_SHELLWOOD_WASP':
+		'Die Zerstörung ihrer Nester kommt mir gelegen, während ich mir den Weg durch das Geäst schlage. Aber langfristig bedroht dies die Ordnung im Wald. Selbst die kleinste Störung kann ein Gleichgewicht kippen.',
+	'Journal.NAME_STICK_INSECT': 'Splitter',
+	'Journal.DESC_STICK_INSECT':
+		'Ein Insekt, das sich als Zweig ausgibt. Es kann für lange Zeit absolut stillstehen, sich aber bei Gefahr blitzschnell bewegen.',
+	'Journal.NOTE_STICK_INSECT':
+		'Es verlangt meinen Sinnen einiges ab, seinen Hinterhalt zu durchschauen und den Angriff zu erwidern.',
+	'Journal.NAME_STICK_INSECT_CHARGER': 'Splitterhorn',
+	'Journal.DESC_STICK_INSECT_CHARGER':
+		'Ein Insekt, das sich als Zweig ausgibt. Es wird mit spitzen einziehbaren Hörnern auf dem Kopf geboren.',
+	'Journal.NOTE_STICK_INSECT_CHARGER':
+		'Sein Panzer dient der Überraschung, zwingt es aber auch in eine schlanke, brüchige Form, die keinem schweren Angriff standhalten kann.',
+	'Journal.NAME_STICK_INSECT_FLYER': 'Splitterrinde',
+	'Journal.DESC_STICK_INSECT_FLYER':
+		'Ein geflügeltes Insekt mit einem schuppigen Panzer, das perfekt seine Umgebung nachahmt.',
+	'Journal.NOTE_STICK_INSECT_FLYER':
+		'Diese Art des Angriffs ... Wie die tödliche Variante eines Käferspielzeugs. Wäre es mir mit genügend Zeit möglich, ein entsprechendes Spinnwerkzeug zu erfinden?',
+	'Journal.NAME_SPLINTER_QUEEN': 'Schwester Splitter',
+	'Journal.DESC_SPLINTER_QUEEN':
+		'Ein imposantes altes Insekt, das in den Höhen des Schalenwalds nistet. Zweige und Äste gehorchen ihr, um jedem Pilger, der sich in ihr Revier wagt, den Tod zu bringen.',
+	'Journal.NOTE_SPLINTER_QUEEN':
+		'Sie hatte lang überlebt war gut genährt. Nun, da sie erschlagen ist, wird der Wald deutlich sicherer sein als zuvor.',
+	'Journal.NAME_FLOWER_DRIFTER': 'Phacia',
+	'Journal.DESC_FLOWER_DRIFTER':
+		'Ein schwebender Käfer, der sich als Blume tarnt. Wenn er in Gefahr ist, verströmt er knisternde Pollenwolken.',
+	'Journal.NOTE_FLOWER_DRIFTER':
+		'Ein durchaus schönes Lebewesen. Am Hof meines eigenen Reiches hätte man ihn als Ziertier sehr geschätzt.',
+	'Journal.NAME_BLOOM_SHOOTER': 'Pollenica',
+	'Journal.DESC_BLOOM_SHOOTER':
+		'Dieser blumige Widersacher reagiert instinktiv auf Bewegungen in seiner Nähe. Er spuckt Kugeln aus knisternden Pollen, die beim Aufprall explodieren.',
+	'Journal.NOTE_BLOOM_SHOOTER':
+		'Und welch außergewöhnliche Sinne er besitzt. Er erkennt mich mühelos, auch wenn ich kein einziges Geräusch von mir gebe.',
+	'Journal.NAME_BLOOM_PUNCHER': 'Gahlia',
+	'Journal.DESC_BLOOM_PUNCHER':
+		'Der Kern dieses blumigen Widersachers ahmt eine Maske nach und kann blitzartig ausgestreckt werden, um ahnungslose Käfer zu erschlagen.',
+	'Journal.NOTE_BLOOM_PUNCHER':
+		'Die falsche Maske ist schon furchterregend genug, um kleinere Schädlinge zu vertreiben.',
+	'Journal.NAME_SETH': 'Seth',
+	'Journal.DESC_SETH':
+		'Der ewige Verteidiger des Schalenwald-Schreins. Seine Nadel und sein Becken sind von ihren vielen Einsätzen gezeichnet.',
+	'Journal.NOTE_SETH':
+		'Er hat mich gewarnt und herausgefordert, ein Duell im wahrsten Sinne des Wortes. Ich bewundere sein Ehrgefühl, sowie auch seine Fertigkeiten.',
+	'Journal.NAME_FLOWER_QUEEN': 'Nyleth',
+	'Journal.DESC_FLOWER_QUEEN': 'Das uralte Herz des Schalenwaldes, mit all seinem Leben verbunden.',
+	'Journal.NOTE_FLOWER_QUEEN':
+		'Ihre Anwesenheit hielt einst die brüchige Ordnung ihres Reiches aufrecht und ermöglichte den Käfern sicheres Geleit über seine Zweige.',
+	'Journal.NAME_BELL_GOOMBA': 'Furm',
+	'Journal.DESC_BELL_GOOMBA':
+		'Ein kleiner Käfer, der sich durch die Glockenader wühlt und seinen weichen Körper mit harten Glocken zu schützen versucht.',
+	'Journal.NOTE_BELL_GOOMBA':
+		'Nur zu gerne würde ich seinen weichen Pelz streicheln, doch dafür ist er zu feindselig.',
+	'Journal.NAME_BELL_FLY': 'Flügelfurm',
+	'Journal.DESC_BELL_FLY':
+		'Ein pelziger Käfer unter einer schweren Glocke. In diesem Stadium ist er zu groß, um sich einzugraben, hat aber kleine Flügel entwickelt.',
+	'Journal.NOTE_BELL_FLY':
+		'Gewaltig groß und doch flauschig weich, aber im verwünschten Zustand wird diese grandiose Kombination durch sein aggressives Gebaren zunichtegemacht.',
+	'Journal.NAME_BLADE_SPIDER': 'Pharlide',
+	'Journal.DESC_BLADE_SPIDER':
+		'Ein kleines Spinnentier, das man in Pharloom in zahlreichen Felsspalten und Höhlen finden kann.',
+	'Journal.NOTE_BLADE_SPIDER':
+		'Ihre Form der Beutejagd erinnert mich an meine eigene Kampfkunst, auch wenn die Talente dieses Wesens auf reinem Instinkt beruhen. Meine Technik entstand durch unnachgiebige Übung.',
+	'Journal.NAME_BLADE_SPIDER_HANG': 'Sturzpharlide',
+	'Journal.DESC_BLADE_SPIDER_HANG':
+		'Ein Spinnentier, das in dunklen Löchern an Höhlendecken nistet. Es geht aus großer Höhe auf Beutejagd.',
+	'Journal.NOTE_BLADE_SPIDER_HANG':
+		'Ein schlauer Jäger hat gelernt, lange auf der Lauer zu liegen, und ist immer bereit, als Erster zuzuschlagen.',
+	'Journal.NAME_SHELL_FOSSIL_MIMIC': 'Splittarde',
+	'Journal.DESC_SHELL_FOSSIL_MIMIC': 'Ein tückischer Hinterhältler, der sich als Fossil tarnt.',
+	'Journal.NOTE_SHELL_FOSSIL_MIMIC':
+		'Sobald seine Aufmerksamkeit erregt ist, schmettert dieser Käfer seinen stählernen Panzer gegen Mauern, Böden und Feinde im gleichen Maße.',
+	'Journal.NAME_SAND_CENTIPEDE': 'Sandwühler',
+	'Journal.DESC_SAND_CENTIPEDE': 'Ein gepanzerter Wurm, der im Treibsand lebt.',
+	'Journal.NOTE_SAND_CENTIPEDE':
+		'Sobald er Bewegungen in der Nähe wahrnimmt, schießt er aus dem Sand und vertilgt, was ihm in den Schlund fällt – ob lebloses Objekt oder unvorsichtiger Käfer.',
+	'Journal.NAME_CORAL_JUDGE_CHILD': 'Krümmwurm',
+	'Journal.DESC_CORAL_JUDGE_CHILD': 'Ein Jungkäfer, der sich im Dunkeln windet.',
+	'Journal.NOTE_CORAL_JUDGE_CHILD':
+		'Wird ihnen die Gelegenheit gewährt, wachsen diese Kreaturen zu einer größeren und gewalttätigeren Form heran.',
+	'Journal.NAME_CORAL_JUDGE': 'Richter',
+	'Journal.DESC_CORAL_JUDGE': 'Vergoldeter Wächter der Windgepeitschten Stufen. Er trägt ein Becken samt Schlägel.',
+	'Journal.NOTE_CORAL_JUDGE':
+		'Erbarmungslos eliminieren sie all jene Pilger und Passanten, die sie als unwürdig erachten. Die zahllosen Hüllen, die auf den Stufen verstreut sind, künden von der Endgültigkeit ihrer Entscheidungen.',
+	'Journal.NAME_LAST_JUDGE': 'Letzter Richter',
+	'Journal.DESC_LAST_JUDGE':
+		'Die letzte Instanz der Windgepeitschten Stufen. Seine Aufgabe ist es, dafür zu sorgen, dass nur die Sündenfreien das Große Tor durchschreiten.',
+	'Journal.NOTE_LAST_JUDGE':
+		'Der gewaltige Richter hat vermutlich unzählige Generationen überdauert, unbesiegt und unbeirrt.',
+	'Journal.NAME_CORAL_SPIKE_GOOMBA': 'Korallenfurm',
+	'Journal.DESC_CORAL_SPIKE_GOOMBA':
+		'Ein Käfer mit dunklem Pelz, der sich mit einer stacheligen Korallennuss schützt.',
+	'Journal.NOTE_CORAL_SPIKE_GOOMBA':
+		'Sein Pelz ist dick und seidig. Da er aber der Verwünschung verfallen ist, werde ich ihn nie ungestraft streicheln können.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER': 'Driznit',
+	'Journal.DESC_CORAL_CONCH_SHOOTER': 'Eine nistende Kreatur, die ihr Gesicht mit geschärften Korallen verschmilzt.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER':
+		'Die Flugbahn seiner Maske, wenn sie von Wand zu Wand prallt, ist nur schwer zu bestimmen. Besonders in beengten Passagen macht sie das zu einer großen Gefahr.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER_HEAVY': 'Driznarga',
+	'Journal.DESC_CORAL_CONCH_SHOOTER_HEAVY':
+		'Ein großer männlicher Driznit, wild und auf die Verteidigung seines Reviers bedacht. Er schleudert Eindringlingen seine schwere Korallenmaske entgegen.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER_HEAVY':
+		'Mit seiner spitzen Maske ist er sehr treffsicher. Auch seine Aggressivität beeinträchtigt sein Zielvermögen nicht.',
+	'Journal.NAME_CORAL_CONCH_STABBER': 'Schnappschubser',
+	'Journal.DESC_CORAL_CONCH_STABBER':
+		'Ein umherstreifendes Lebewesen mit einer breiten Korallenmaske, das seine Beute mit seinem harten Rüssel ersticht.',
+	'Journal.NOTE_CORAL_CONCH_STABBER':
+		'Es wartet passiv darauf, dass ihm sein Ziel ahnungslos über den Weg läuft. Diese Technik ist nicht zwingend zu belächeln – erweist sie sich doch häufig als effektiv.',
+	'Journal.NAME_CORAL_CONCH_DRILLER': 'Muschelfliege',
+	'Journal.DESC_CORAL_CONCH_DRILLER':
+		'Ein kleiner Käfer, der sich einen Panzer aus geschärften Korallen fertigt. Diesen schleudert er mit solcher Wucht, dass er Kruste und Knochen durchbohren kann.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER':
+		'Es wirkt fast schon verspielt, wie er sich in den Boden bohrt und wieder herausschießt. Eine ebenso amüsante wie effektive Art der Beutejagd.',
+	'Journal.NAME_CORAL_CONCH_DRILLER_GIANT': 'Große Muschelfliege',
+	'Journal.DESC_CORAL_CONCH_DRILLER_GIANT':
+		'Eine ältere Muschelfliege mit einem riesigen Korallenhorn. Sobald sie einen Partner gefunden haben, sieht man sie nur noch selten alleine.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER_GIANT':
+		'Die Paarung ist ein Grundinstinkt und bringt manchen Käfern große Freude. Auch ich strebte einst nach einer solchen Vereinigung, doch all meine Partner erwiesen sich als zu kurzlebig für ein Wesen meines Schlages.',
+	'Journal.NAME_CORAL_GOOMBAS': 'Krustenkrabbler',
+	'Journal.DESC_CORAL_GOOMBAS': 'Ein krabbelndes Etwas mit weichem Panzer, das sich in Korallen hüllt.',
+	'Journal.NOTE_CORAL_GOOMBAS':
+		'Versteckt unter der Kruste des Turms, der sie gleichen, hätten diese kleineren Käfer überlebt und floriert.',
+	'Journal.NAME_CORAL_GOOMBA_LARGE': 'Krustenfels',
+	'Journal.DESC_CORAL_GOOMBA_LARGE':
+		'Ein Korallengigant mit dickem Panzer, der vom Memorium der Zitadelle zu enormer Größe gezüchtet wurde.',
+	'Journal.NOTE_CORAL_GOOMBA_LARGE':
+		'Eine Verirrung der Natur ... Dieser Käfer wurde klein und sanftmütig geboren. Doch dann verformte ihn die Zitadelle in der vergeblichen Hoffnung, dass er so überdauern würde.',
+	'Journal.NAME_CORAL_SWIMMER_FAT': 'Kai',
+	'Journal.DESC_CORAL_SWIMMER_FAT': 'Ein molliger Schweber aus einer korallenen Vergangenheit.',
+	'Journal.NOTE_CORAL_SWIMMER_FAT':
+		'In Hülle und Fülle schwebten sie einst durch ihren Turm. Nur selten bekommt man die Gelegenheit, die Freigebigkeit der Natur in einem solchen Ausmaß bestaunen zu dürfen.',
+	'Journal.NAME_POKE_SWIMMER': 'Stachelschnabel-Kai',
+	'Journal.DESC_POKE_SWIMMER': 'Ein Schweber mit spiralförmigem Horn, der sich und seine Gefährten verteidigt.',
+	'Journal.NOTE_POKE_SWIMMER':
+		'Ein wichtiges Mitglied eines größeren Schwarms. Ohne sie wären die Kai gefundenes Fressen für größere Raubtiere.',
+	'Journal.NAME_SPIKE_SWIMMER': 'Stahlstachel-Kai',
+	'Journal.DESC_SPIKE_SWIMMER': 'Ein gehärteter Kai, der spitze Stacheln aus seinem Panzersack ausfahren kann.',
+	'Journal.NOTE_SPIKE_SWIMMER':
+		'Er wirkt weich, verbirgt aber eine spitze und schmerzhafte Überraschung. Seine Fressfeinde werden eine einschneidende Lektion erlernen.',
+	'Journal.NAME_CORAL_SWIMMER_SMALL': 'Yuma',
+	'Journal.DESC_CORAL_SWIMMER_SMALL':
+		'Ein gallertartiger Korallenschweber von schlichtem Gemüt und friedlichem Wesen.',
+	'Journal.NOTE_CORAL_SWIMMER_SMALL':
+		'Ein Lebewesen, wie es gewöhnlicher nicht sein könnte. Es stellt weder für mich noch für andere eine Gefahr dar.',
+	'Journal.NAME_CORAL_BIG_JELLYFISH': 'Yumama',
+	'Journal.DESC_CORAL_BIG_JELLYFISH':
+		'Ein großer, gallertartiger Schweber. Er vertreibt Gefahren, indem er seinen massigen Körper herumwirft.',
+	'Journal.NOTE_CORAL_BIG_JELLYFISH':
+		'Wenn man ihn tötet, teilt er sich in mehrere kleinere Formen. Ein weiterer Vertreter der erstaunlichen Artenvielfalt, die dieses Land vor der Monarchin kannte.',
+	'Journal.NAME_CORAL_WARRIOR': 'Karaka',
+	'Journal.DESC_CORAL_WARRIOR':
+		'Ein standhafter und geschickter Klingenkäfer aus einem einst blühenden Land, das die Zeit vergessen hat.',
+	'Journal.NOTE_CORAL_WARRIOR':
+		'Eingeweihter eines mächtigen Ordens, der zur Furchtlosigkeit und Treue erzogen wurde. Ihr Reich war eines der Krieger und Klingen.',
+	'Journal.NAME_CORAL_FLYER': 'Kakri',
+	'Journal.DESC_CORAL_FLYER':
+		'Ein schlanker geflügelter Späher, der häufig gemeinsam mit seinen schwereren Artgenossen auftritt.',
+	'Journal.NOTE_CORAL_FLYER':
+		'Sein Kampfstil ähnelt dem meinen – schnelle Angriffe und flinke Bewegungen. Ob er einst ein Jäger war?',
+	'Journal.NAME_CORAL_FLYER_THROW': 'Yago',
+	'Journal.DESC_CORAL_FLYER_THROW':
+		'Ein fliegender Angreifer mit breiter Maske, der dazu ausgebildet wurde, seine Artgenossen am Boden aus der Distanz zu unterstützen.',
+	'Journal.NOTE_CORAL_FLYER_THROW':
+		'Er kämpft nicht an vorderster Front, doch als ich ihren Turm angriff, versammelten sich alle, um mich scheitern zu sehen.',
+	'Journal.NAME_CORAL_BRAWLER': 'Karak Gor',
+	'Journal.DESC_CORAL_BRAWLER':
+		'Ein schwerer, hart gepanzerter Angreifer, der sich auf sein Gewicht und seine Stärke verlässt.',
+	'Journal.NOTE_CORAL_BRAWLER':
+		'Die Anpassung an seine verkrustete Umgebung macht ihn noch einmal deutlich zäher. Und wie beeindruckend diese Käfer ihren Turm beherrschen ... Sie müssen ihr ganzes Leben darin zugebracht haben.',
+	'Journal.NAME_CORAL_HUNTER': 'Alita',
+	'Journal.DESC_CORAL_HUNTER':
+		'Ein springender Jäger aus vergangenen Zeiten. Der schnellste seiner Sekte, begabt im Umgang mit wirbelnden Vorderklingen.',
+	'Journal.NOTE_CORAL_HUNTER':
+		'Im Kampf zwischen schnell und stark sah ich öfter den Flinkeren als Sieger hervorgehen, und diese Lektion habe ich mir zu Herzen genommen.',
+	'Journal.NAME_CORAL_BUBBLE_BRUTE': 'Korkrusten-Karaka',
+	'Journal.DESC_CORAL_BUBBLE_BRUTE':
+		'Ein überwucherter Ältester, der brennende Blasen aus seinem Korallenpanzer aufsteigen lassen kann.',
+	'Journal.NOTE_CORAL_BUBBLE_BRUTE':
+		'Die Verschmelzung dieses Käfers mit dem Krustenwuchs ... Sie scheint mit Absicht geschehen zu sein, aber ich bezweifle, dass sie für ihn angenehm ist.',
+	'Journal.NAME_CORAL_KING': 'Krustenkönig Khann',
+	'Journal.DESC_CORAL_KING':
+		'Ein hartgesottener Kriegerfürst aus einer vergangenen Zeit, der die Korallenkruste befehligen kann.',
+	'Journal.NOTE_CORAL_KING':
+		'Ein strenger Anführer, und seine Legionen folgten ihm treu. Weniger kampfeslustige Käfer hätten unter seiner harten Herrschaft ein schweres Los gezogen.',
+	'Journal.NAME_CORAL_WARRIOR_GREY': 'Wächter am Rande',
+	'Journal.DESC_CORAL_WARRIOR_GREY':
+		'Ein alter Krieger, der die Grenze seines Reiches bewacht. Die Zeit hat ihn ersteifen lassen, doch ein Lied hat ihn erweckt.',
+	'Journal.NOTE_CORAL_WARRIOR_GREY':
+		'Lange war er auf der Wacht, selbst über die Ära seiner Brüder hinaus, doch als ich seine Ruhe störte, schwang er seine Klinge dennoch mit erstaunlicher Leichtigkeit.',
+	'Journal.NAME_ZAP_CORE_ENEMY': 'Voltvyrm',
+	'Journal.DESC_ZAP_CORE_ENEMY':
+		'Aufgeladenes Gewürm in einem gewundenen Nest. Es greift Eindringlinge mit Blitzen aus knisternder Elektrizität an.',
+	'Journal.NOTE_ZAP_CORE_ENEMY':
+		'Es war eigentlich kaum ein Käfer und besaß lediglich rudimentäre Intelligenz. Doch sein Instinkt alleine war genug, um es zu einem tödlichen Gegner zu machen.',
+	'Journal.NAME_CITADEL_BAT': 'Gardinenfliege',
+	'Journal.DESC_CITADEL_BAT': 'Ein wirr umherfliegender Schädling, der in Fetzen und Vorhängen nistet.',
+	'Journal.NOTE_CITADEL_BAT':
+		'Er ähnelt zum Leben erwecktem Stoff. Sein Pelz schmiegt sich ganz den Lumpen an, die er befällt.',
+	'Journal.NAME_CITADEL_BAT_LARGE': 'Gardinenfürst',
+	'Journal.DESC_CITADEL_BAT_LARGE':
+		'Eine deutlich größere Gardinenfliege, alt und fett gefressen. Mit ihrem Gewicht schlägt sie weit härter zu als ihre jüngeren Artgenossen.',
+	'Journal.NOTE_CITADEL_BAT_LARGE':
+		'Die Gier sorgt immer wieder dafür, dass manche Käfer sich über ihre Artgenossen erheben.',
+	'Journal.NAME_MITE_HEAVY': 'Gardinenmilbe',
+	'Journal.DESC_MITE_HEAVY':
+		'Ein stoffumhüllter Krabbler mit geschärften Vorderbeinen. Er lebt und vermehrt sich an dunklen Orten.',
+	'Journal.NOTE_MITE_HEAVY':
+		'Pharloom scheint mit seinen endlosen Winkeln und Mulden, in denen Milben perfekt nisten und sich eingraben können, wie für ihn gemacht.',
+	'Journal.NAME_UNDERSTORE_MITE_GIANT': 'Riesen-Gardinenmilbe',
+	'Journal.DESC_UNDERSTORE_MITE_GIANT':
+		'Diese voll ausgewachsene Zitadellenmilbe ist in einen alten Vorhang gehüllt.',
+	'Journal.NOTE_UNDERSTORE_MITE_GIANT':
+		'Hier, wo die Seide ihr Unwesen treibt, würden nur wenige Kreaturen ausreichend Nahrung finden, um eine solche Größe zu erreichen.',
+	'Journal.NAME_UNDERSTORE_SMALL': 'Unterwerker',
+	'Journal.DESC_UNDERSTORE_SMALL':
+		'Ein kläglicher Arbeiter des Unterwerks mit einer langen Drehnadel und einem harten Panzer.',
+	'Journal.NOTE_UNDERSTORE_SMALL':
+		'Bei den Trümmern, die ständig um ihn herum von der Decke regnen, würde er ohne seinen dicken Panzer niemals überleben.',
+	'Journal.NAME_PILGRIM_03_UNDERSTORE': 'Unterschrubber',
+	'Journal.DESC_PILGRIM_03_UNDERSTORE':
+		'Ein erschöpfter, aber fanatischer Arbeiter, der eine grobe Stahlbürste trägt.',
+	'Journal.NOTE_PILGRIM_03_UNDERSTORE':
+		'Erstaunlich, dass er tatsächlich einmal glaubte, er könnte sein Reich sauber halten ... Welch Fehlannahme.',
+	'Journal.NAME_PILGRIM_STAFF_UNDERSTORE': 'Unterfeger',
+	'Journal.DESC_PILGRIM_STAFF_UNDERSTORE': 'Mit seiner Stahlborstennadel säubert er Schlote und Rohre vom Ruß.',
+	'Journal.NOTE_PILGRIM_STAFF_UNDERSTORE':
+		'Sein spitzes Reinigungsinstrument ist ebenso verdreckt wie dieser ganze Ort. Er schichtet lediglich Schmutz auf Schmutz.',
+	'Journal.NAME_UNDERSTORE_POKER': 'Unterstecher',
+	'Journal.DESC_UNDERSTORE_POKER':
+		'Ein erschöpfter Arbeiter kurz vor dem Zusammenbruch. Seine Grenzen hat er längst erreicht, doch die Verwünschung drängt ihn dennoch zur Arbeit.',
+	'Journal.NOTE_UNDERSTORE_POKER':
+		'Unermüdlich hat er für die Zitadelle geschuftet, sein Panzer gekrümmt und ergraut, und durch den Fluch auf diesem Reich kann ihn nun nicht einmal der Tod mehr erlösen.',
+	'Journal.NAME_UNDERSTORE_THROWER': 'Unterschmeißer',
+	'Journal.DESC_UNDERSTORE_THROWER':
+		'Ein erschöpfter Käfer, durch den Rauch des Unterwerks erkrankt. Die Drehnadeln des Arbeiters dienten einst für Reparaturen, doch nun sind sie Wurfgeschosse.',
+	'Journal.NOTE_UNDERSTORE_THROWER':
+		'Pracht hat ihren Preis ... Hätte ich das Fundament meines eigenen Reiches genauer inspizieren sollen?',
+	'Journal.NAME_UNDERSTORE_HEAVY': 'Unterkurbler',
+	'Journal.DESC_UNDERSTORE_HEAVY':
+		'Ein schwerer, hart gepanzerter Arbeiter, der das zerfallende Unterwerk der Zitadelle bis in alle Ewigkeit repariert.',
+	'Journal.NOTE_UNDERSTORE_HEAVY':
+		'Bei ihnen gibt es offenbar keine Ränge, doch dieser hier hat sich über seine Leidensgenossen erhoben. Vermutlich beruht seine Position auf Einschüchterung und Brutalität.',
+	'Journal.NAME_SONG_PILGRIM_01': 'Gesandter',
+	'Journal.DESC_SONG_PILGRIM_01': 'Ein Prozessionsführer aus den Reihen des Zitadellen-Chors.',
+	'Journal.NOTE_SONG_PILGRIM_01':
+		'Käfer wie diese durchquerten die Höhlen, um mich nach Pharloom zu bringen. Viele streckte ich nieder, ehe sie mich fingen. Damals hielt ich sie für schlau und gerissen, doch nun erkenne ich den Willen, in deren Bann sie sich befinden.',
+	'Journal.NAME_PILGRIM_01_SONG': 'Chorstürzer',
+	'Journal.DESC_PILGRIM_01_SONG':
+		'Dieser gelenkige Käfer gehört zu den wenigen hartnäckigen Pilgern, die die Zitadelle erreicht haben.',
+	'Journal.NOTE_PILGRIM_01_SONG':
+		'Einer der auserkorenen Käfer Pharlooms, doch sowohl sein Heim als auch sein Panzer zählten vermutlich zu den ersten Opfern der Verwünschung.',
+	'Journal.NAME_PILGRIM_02_SONG': 'Chor-Hornkopf',
+	'Journal.DESC_PILGRIM_02_SONG': 'Ein voll ausgewachsener ehemaliger Pilger, im Dienst der Zitadelle.',
+	'Journal.NOTE_PILGRIM_02_SONG':
+		'Ist er wegen der Exzesse der Zitadelle so groß geworden? Oder war seine enorme Größe der Grund, warum er sie überhaupt erst lebend erreicht hat?',
+	'Journal.NAME_PILGRIM_03_SONG': 'Chor-Glockenträger',
+	'Journal.DESC_PILGRIM_03_SONG': 'Ein geflügelter Gläubiger der Zitadelle, der vergoldete Glocken mit sich führt.',
+	'Journal.NOTE_PILGRIM_03_SONG':
+		'Die Effizienz von Glocken als Waffen wird in Pharloom oft unter Beweis gestellt. Zuvor hatte ich sie nie als solche gesehen.',
+	'Journal.NAME_PILGRIM_04_SONG': 'Chorflieger',
+	'Journal.DESC_PILGRIM_04_SONG': 'Ein Luftkäfer der Zitadelle. Abgesehen von seinem kurzen Horn ist er unbewaffnet.',
+	'Journal.NOTE_PILGRIM_04_SONG':
+		'Dieses Exemplar hat sich vermutlich mit robusteren Gefährten verbündet, um den Aufstieg durch Pharloom zu überleben. Alleine kann ich mir nicht vorstellen, dass er es geschafft hätte.',
+	'Journal.NAME_PILGRIM_STOMPER_SONG': 'Chorältester',
+	'Journal.DESC_PILGRIM_STOMPER_SONG':
+		'Ein gealterter ehemaliger Pilger. Er benutzt seine Flügel, um sich über Gefahren zu erheben und dann unter seinem gewaltigen Panzer zu zerquetschen.',
+	'Journal.NOTE_PILGRIM_STOMPER_SONG':
+		'Die Zeit hat ihm einen dicken, harten Panzer geschenkt, den er nun effektiv im Kampf einsetzen kann.',
+	'Journal.NAME_SONG_PILGRIM_03': 'Chorist',
+	'Journal.DESC_SONG_PILGRIM_03':
+		'Ein Jünger des Chors, der über anderen Pilgern steht. Gezwungen, sein Gesicht bis in alle Ewigkeit zu verhüllen.',
+	'Journal.NOTE_SONG_PILGRIM_03':
+		'Hart muss er trainiert haben, um seine Nadel mit solchem Geschick zu führen. Auch seine Beherrschung von Seide, an einer Spule getragen, geht weit über die Fähigkeiten gewöhnlicher Käfer hinaus.',
+	'Journal.NAME_SONG_REED': 'Blatt',
+	'Journal.DESC_SONG_REED':
+		'Ein Jünger des Chors und Verfechter seiner vollendeter Ordnung, für dessen Aufrechterhaltung oftmals eine spitze Nadel zum Einsatz kommt.',
+	'Journal.NOTE_SONG_REED':
+		'Er hat die Form eines Kämpfers, wendig und schnell. Es überrascht mich nicht, dass er innerhalb seiner Sekte eine hohe Stellung bezieht.',
+	'Journal.NAME_SONG_REED_GRAND': 'Erzblatt',
+	'Journal.DESC_SONG_REED_GRAND':
+		'Ein angesehenes Insekt des Chors, das einen Bogen trägt. Diese Elite unter den Blättern wurde besser ausgebildet und ernährt als ihre kleineren Artgenossen.',
+	'Journal.NOTE_SONG_REED_GRAND':
+		'Dieser Käfer trägt eine Seidenspule, die er bei seinen Angriffen um sich schleudert. Seine Technik erinnert stark an die der Weberinnen, wenn auch vergleichsweise grobschlächtig. Wer sie ihm wohl beigebracht hat?',
+	'Journal.NAME_SONG_HEAVY_SENTRY': 'Chorklopfer',
+	'Journal.DESC_SONG_HEAVY_SENTRY':
+		'Ein mächtiger Schlagzeugjünger des Chors. Er trägt einen Trommelschlägel und eine Seidenspule, mit der er seine Angriffe einwickeln und verstärken kann.',
+	'Journal.NOTE_SONG_HEAVY_SENTRY':
+		'Sein Einsatz von Seide zeugt von keinerlei Eleganz. Er verbraucht seinen geringen Vorrat lediglich, um die Wucht seiner Schläge zu verstärken.',
+	'Journal.NAME_SONG_HANDMAIDEN': 'Krallenjungfer',
+	'Journal.DESC_SONG_HANDMAIDEN':
+		'Eine Puppendienerin der Zitadelle, die an Seidenfäden hängt. Sie ist eine frühe Form der Konstrukte und benötigt für ihre Dienste eine große Menge Seide.',
+	'Journal.NOTE_SONG_HANDMAIDEN':
+		'Wenn man ihr die Gelegenheit gibt, stiehlt sie Seide, wo sie diese nur findet – selbst aus meinem eigenen Panzer.',
+	'Journal.NAME_ARBORIUM_KEEPER': 'Memoria',
+	'Journal.DESC_ARBORIUM_KEEPER':
+		'Ein gelehrter Jünger des Chors, der das Memorium der Zitadelle betreut und erhält.',
+	'Journal.NOTE_ARBORIUM_KEEPER':
+		'Seine Aufgabe war von Anfang an aussichtslos. Diese wilden Lande werden sich niemals in einem derart künstlichen Raum nachbilden lassen.',
+	'Journal.NAME_SONG_ADMINISTRATOR': 'Ministrant',
+	'Journal.DESC_SONG_ADMINISTRATOR':
+		'Ein Jünger des Chors mit Goldrang. Er untersteht direkt den Dirigenten der Zitadelle.',
+	'Journal.NOTE_SONG_ADMINISTRATOR':
+		'Diese Käfer sind erstaunlich tödlich. Ihre Körper waren nie für den Kampf gedacht, doch die Verwünschung hat ihr Wesen dramatisch verändert.',
+	'Journal.NAME_SONG_PILGRIM_MAESTRO': 'Maestro',
+	'Journal.DESC_SONG_PILGRIM_MAESTRO':
+		'Ein Chorkommandant der Hohen Hallen, der Räderfliegen mit einer Bewegung seines Taktstocks herbeirufen und befehligen kann.',
+	'Journal.NOTE_SONG_PILGRIM_MAESTRO':
+		'Früher forderten sie ihre Untergebenen zum Gesang auf, doch nun befehlen sie bloß noch das Ende aller Ungebundenen.',
+	'Journal.NAME_SONG_KNIGHT': 'Zweiter Wächter',
+	'Journal.DESC_SONG_KNIGHT':
+		'Ein Räderwerk-Ritter Pharlooms, zum Schutz der Pilger geschaffen. Er kann meisterlich mit der Scherenklinge umgehen.',
+	'Journal.NOTE_SONG_KNIGHT':
+		'Sein Talent und seine Intelligenz übersteigen bei Weitem die der anderen Konstrukte, denen ich begegnet bin. Er wirkt weniger als Werkzeug konzipiert, sondern mehr als Versuch, wahres Leben zu erschaffen.',
+	'Journal.NAME_SONG_THREADED_HUSK': 'Fetzenhülle',
+	'Journal.DESC_SONG_THREADED_HUSK':
+		'Die Überreste eines Zitadellenkäfers, von Seidenfetzen ergriffen. In den Fäden haben sich zahlreiche spitze Nadeln verfangen, mit denen die Hülle wild angreift.',
+	'Journal.NOTE_SONG_THREADED_HUSK':
+		'Dieser Faden birgt einen alten, tiefsitzenden Schmerz – das Ergebnis zahlreicher grausamer Operationen.',
+	'Journal.NAME_SONG_THREADED_HUSK_SPIN': 'Fetzenrad',
+	'Journal.DESC_SONG_THREADED_HUSK_SPIN':
+		'Seidenfetzen, die vom Panzer eines kleinen Käfers Besitz ergriffen haben. Aus der Hülle dringt Seide, um eine Art Rad zu formen, das Eindringlinge zermalmt.',
+	'Journal.NOTE_SONG_THREADED_HUSK_SPIN':
+		'Lebendige Seide, die einen toten Panzer lenkt ... Eine Perversion der Natur, wie sie in Pharloom zu häufig anzutreffen ist.',
+	'Journal.NAME_SONG_PILGRIM_02': 'Chirurg',
+	'Journal.DESC_SONG_PILGRIM_02':
+		'Ein grausamer Arzt aus der Weißstation, der an Käfern der Zitadelle operiert und diese modifiziert.',
+	'Journal.NOTE_SONG_PILGRIM_02':
+		'Der Einsatz von Seide konnte zwar das Leben der Zitadelle verlängern, doch wie viele Käfer ihren Geist dadurch an die Monarchin verloren haben ...',
+	'Journal.NAME_SONG_CREEPER': 'Bestatter',
+	'Journal.DESC_SONG_CREEPER':
+		'Ein modifizierter Diener der Weißstation. Er ist dafür verantwortlich, leere Hüllen einzuäschern und die darin enthaltene Seide wieder aufzubereiten.',
+	'Journal.NOTE_SONG_CREEPER':
+		'Er liegt flach auf dem Boden, vielleicht aus Ehrfurcht vor seiner Aufgabe, kann aber blitzartig aufspringen und angreifen. Mit ihrer überraschenden Reichweite gibt seine Schere eine tödliche Waffe ab.',
+	'Journal.NAME_CONDUCTOR_BOSS': 'Der Aufgelöste',
+	'Journal.DESC_CONDUCTOR_BOSS':
+		'Der gepeinigte Wille zahlloser Hüllen hat in einer Grube aus Seidenfetzen Form angenommen.',
+	'Journal.NOTE_CONDUCTOR_BOSS':
+		'Die Seelen so vieler Käfer, von Seide besessen, von Seide verschlungen. Ihre Pein wird bis in alle Ewigkeit in dieser Grube bleiben. Selbst ich bin nicht stark genug, um sie zu läutern.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON': 'Räderwerk-Unterfliege',
+	'Journal.DESC_UNDERSTORE_AUTOMATON':
+		'Ein kleines Konstrukt, das gebaut wurde, um ohne Widerworte in der glühenden Hitze des Unterwerk-Kessels zu arbeiten.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON':
+		'Es überrascht mich nicht, dass diese Gebilde geschaffen wurden. Kein sterblicher Käfer könnte lange an diesem sengend heißen Ort verweilen. Selbst mein Panzer kann der Hitze kaum standhalten.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON_EX': 'Räderwerk-Schlepper',
+	'Journal.DESC_UNDERSTORE_AUTOMATON_EX':
+		'Ein kleines Konstrukt mit einem plattierten Panzer, der große Mengen gefährlicher Feuerflammen befördern kann.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON_EX':
+		'Er wurde geboren und gebaut, um zu arbeiten, bis die Zeit kommt, da seine Glieder versagen. Vielleicht ist es eine Gnade, dass dieses Konstrukt nichts von der Freiheit weiß, die ihm vorenthalten wurde.',
+	'Journal.NAME_SONG_AUTOMATON_GOOMBA': 'Räderwerk-Krabbler',
+	'Journal.DESC_SONG_AUTOMATON_GOOMBA':
+		'Ein Konstrukt in der Form eines krabbelnden Käfers. Sein Rücken ist mit einziehbaren Nadeln gespickt, um Sangwalzen freizuschneiden.',
+	'Journal.NOTE_SONG_AUTOMATON_GOOMBA':
+		'Seine Form basiert definitiv auf Käfern, die man außerhalb der Zitadelle findet. Auch bei meinen Schöpfungen lasse ich mich häufig von der Natur inspirieren.',
+	'Journal.NAME_SONG_AUTOMATON_FLY': 'Räderwerker',
+	'Journal.DESC_SONG_AUTOMATON_FLY':
+		'Ein fliegendes Konstrukt, das für das Reparieren und Ausbauen des Kerns verantwortlich ist.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY':
+		'Ein gefährlicherer Gegner, als es zunächst den Anschein hat. Der beachtliche Einflussbereich seiner tödlichen Klingen macht einen direkten Angriff schwer.',
+	'Journal.NAME_SONG_AUTOMATON_FLY_SPIKE': 'Räderwerk-Dorn',
+	'Journal.DESC_SONG_AUTOMATON_FLY_SPIKE':
+		'Ein geflügeltes Konstrukt, das in seinem runden Leib zahlreiche scharfe Stacheln birgt.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY_SPIKE':
+		'Welche Funktion er im Kern erfüllt, kann ich nicht erkennen. Dient er zur Verteidigung? In dem Fall wäre sein passives Verhalten eher hinderlich.',
+	'Journal.NAME_SONG_AUTOMATON_01': 'Räderwerk-Chorkäfer',
+	'Journal.DESC_SONG_AUTOMATON_01':
+		'Ein aus Eisen, Rotoren und Zahnrädern gefertigter Käfer. Dieses Konstrukt arbeitet unermüdlich daran, den Kern aufrechtzuerhalten, in dem es haust.',
+	'Journal.NOTE_SONG_AUTOMATON_01':
+		'Sein Kern steckt voller filigraner Mechanismen, doch allein damit ließe sich das Leben nicht so täuschend echt nachahmen. Auch Seide muss im Spiel sein, um ihn zu animieren, doch ihre genaue Rolle ist mir unklar.',
+	'Journal.NAME_SONG_AUTOMATON_02': 'Räderwerk-Reiniger',
+	'Journal.DESC_SONG_AUTOMATON_02':
+		'Ein Konstrukt, das heißen Dampf versprüht. Gefertigt, um den Räderwerk-Kern rein und frei von Schädlingen zu halten.',
+	'Journal.NOTE_SONG_AUTOMATON_02':
+		'Ein geschickter Einsatz vom Dampf. Ich sollte dieses Bauprinzip beim Entwerfen künftiger Werkzeuge im Hinterkopf behalten.',
+	'Journal.NAME_SONG_AUTOMATON_SHIELD': 'Räderwerk-Verteidiger',
+	'Journal.DESC_SONG_AUTOMATON_SHIELD':
+		'Dieses Räderwerk-Konstrukt wurde in erster Linie zum Schutz des Kerns gebaut. Es trägt einen Schild und eine Spießnadel und versteht es, diese todbringend einzusetzen.',
+	'Journal.NOTE_SONG_AUTOMATON_SHIELD':
+		'Einen echten Verstand hat es nicht, kämpft aber trotzdem effektiv, wobei es seine Strategie an meine Bewegungen anpasst. Wo sind seine Gedanken aufgeschrieben?',
+	'Journal.NAME_SONG_AUTOMATON_BALL': 'Räderwerk-Glöckner',
+	'Journal.DESC_SONG_AUTOMATON_BALL':
+		'Ein seltenes Konstrukt, das geschaffen wurde, um in den Tiefen des Kerns als Glöckner zu dienen.',
+	'Journal.NOTE_SONG_AUTOMATON_BALL':
+		'Die Glocke, für die dieses Wesen zuständig ist, habe ich noch nicht gesehen – und will es auch vermeiden, jemals ihr Getöse über mich ergehen lassen zu müssen.',
+	'Journal.NAME_CLOCKWORK_DANCER': 'Räderwerk-Tänzer',
+	'Journal.DESC_CLOCKWORK_DANCER':
+		'Diese Konstrukte von makelloser Machart begrüßen Besucher ihrer Kammer mit einem tödlichen Tanz.',
+	'Journal.NOTE_CLOCKWORK_DANCER':
+		'Zwei Räderwerk-Käfer, und doch wirkt es, als teilten sie sich eine Seele. Eine traurige und doch meisterliche Nachahmung des Lebens, in Panzern aus Eisen verewigt.',
+	'Journal.NAME_SONG_SCHOLAR_ACOLYTE': 'Archivbrut',
+	'Journal.DESC_SONG_SCHOLAR_ACOLYTE':
+		'Ein junger Akolyth, der in den finstersten Gewölben des Archivs aufwächst. Sein Schicksal ist es, einmal in den Rang eines Schriftenlesers aufzusteigen.',
+	'Journal.NOTE_SONG_SCHOLAR_ACOLYTE':
+		'Durch mein Eindringen in ihr Revier habe ich es diesen Käfern ermöglicht, sich im Rest des Archivs auszubreiten. Sie sind eine Plage, für die ich allein die Schuld trage.',
+	'Journal.NAME_LIGHTBEARER': 'Lampenträger',
+	'Journal.DESC_LIGHTBEARER':
+		'Ein Jünger des Raunenden Archivs. Seine Aufgabe ist es, die düstersten Mulden zu durchqueren, um alte Schriftrollen aufzuspüren.',
+	'Journal.NOTE_LIGHTBEARER':
+		'Dieser Käfer erfüllt eine wichtige Rolle, wenn man jemals vorhat, dieses finstere Labyrinth aus Stapeln und Schriften zu durchsuchen.',
+	'Journal.NAME_SCROLLKEEPER': 'Schriftenleser',
+	'Journal.DESC_SCROLLKEEPER':
+		'Ein vergoldeter Diener des Raunenden Archivs. Er wurde geboren, um die schier endlosen Schriftrollen zu lesen und sich die darauf geschrieben Gebete einzuprägen.',
+	'Journal.NOTE_SCROLLKEEPER':
+		'Hat er diese rätselhaften Schriftrollen wirklich jemals verstanden? Oder hat er nur so getan, eine endlose Scharade, um die Position seines Ordens innerhalb der Zitadelle nicht zu gefährden?',
+	'Journal.NAME_SCHOLAR': 'Glaubenshüter',
+	'Journal.DESC_SCHOLAR':
+		'Ein Käfer einer hohen Kaste, der dafür zuständig ist, jenseits der Mauern des Raunenden Archivs Predigten zu halten und Gebete zu sprechen.',
+	'Journal.NOTE_SCHOLAR':
+		'Seine wahre Aufgabe war es vermutlich, alle jene auszumerzen, die in seinen Augen ein unzureichendes Maß an Hingabe bewiesen.',
+	'Journal.NAME_TROBBIO': 'Trobbio',
+	'Journal.DESC_TROBBIO':
+		'Ein hochnäsiger Mime, der davon überzeugt ist, dass nur eine imposante Darbietung Pharloom vor dem Untergang bewahren kann.',
+	'Journal.NOTE_TROBBIO':
+		'Mit der Rettung Pharlooms mag er gute Absichten verfolgen, doch es schien ihm durchaus recht zu sein, für dieses Ziel andere auf seiner Bühne sterben zu sehen.',
+	'Journal.NAME_TORMENTED_TROBBIO': 'Gequälter Trobbio',
+	'Journal.DESC_TORMENTED_TROBBIO':
+		'Ein deprimierter Mime, der von der Melancholie einer zusammenbrechenden Welt besessen ist.',
+	'Journal.NOTE_TORMENTED_TROBBIO':
+		'Er hatte beschlossen, den bevorstehenden Untergang willkommen zu heißen. Ich hingegen gebe nicht so leicht auf.',
+	'Journal.NAME_SLAB_PRISONER_LEAPER_NEW': 'Büßer',
+	'Journal.DESC_SLAB_PRISONER_LEAPER_NEW':
+		'Ein demütiger Gefangener, der die Strafe für eine in der Zitadelle begangene Sünde absitzt.',
+	'Journal.NOTE_SLAB_PRISONER_LEAPER_NEW':
+		'Hier sind alle verwunschen, die Wärter ebenso wie die Gefangenen. Begreifen sie überhaupt, dass sie diesen Ort niemals verlassen werden? Oder wie lange sie hier schon schmachten?',
+	'Journal.NAME_SLAB_PRISONER_FLY_NEW': 'Schmächtiger Büßer',
+	'Journal.DESC_SLAB_PRISONER_FLY_NEW':
+		'Dieser kleine Käfer wurde für eine in der Zitadelle begangene Sünde in Ketten und Kutte gelegt.',
+	'Journal.NOTE_SLAB_PRISONER_FLY_NEW':
+		'Seine dicke Kutte macht ihn blind, doch er scheint sich nichts daraus zu machen. An das eigene Wohlbefinden verschwendet er keinen Gedanken – er will bloß jene strafen, die er als Sünder ansieht.',
+	'Journal.NAME_SLAB_FLY_SMALL_FRESH': 'Frischfliege',
+	'Journal.DESC_SLAB_FLY_SMALL_FRESH':
+		'Eine junge, frisch geschlüpfte Fliege. In diesem Alter ist diese weiche, blinde Fliege noch kein allzu großer Störenfried.',
+	'Journal.NOTE_SLAB_FLY_SMALL_FRESH': 'Je weniger sich diese grausigen Käfer vermehren, desto besser.',
+	'Journal.NAME_SLAB_FLY_SMALL': 'Schorffliege',
+	'Journal.DESC_SLAB_FLY_SMALL': 'Eine klebrige Jungfliege, die im Dienst des Brockens geboren wird und aufwächst.',
+	'Journal.NOTE_SLAB_FLY_SMALL':
+		'Abstoßende Kreaturen. Sie werden schon in die Unterwürfigkeit hineingeboren, doch Mitleid habe ich mit ihnen nicht.',
+	'Journal.NAME_SLAB_FLY_MID': 'Wachfliege',
+	'Journal.DESC_SLAB_FLY_MID': 'Ein ausgehungerter Diener des Brockens, der eine lange Hakennadel trägt.',
+	'Journal.NOTE_SLAB_FLY_MID':
+		'Der Gestank dieser Wärter überwältigt meine Sinne. Ich bezweifle, dass sie jemals ein Bad genommen haben.',
+	'Journal.NAME_SLAB_FLY_LARGE': 'Wärterfliege',
+	'Journal.DESC_SLAB_FLY_LARGE':
+		'Ein korpulenter, behaarter Gefängniswärter, der Sünder einfängt und Häftlinge bestraft.',
+	'Journal.NOTE_SLAB_FLY_LARGE':
+		'Ihr Gebaren ist ebenso abstoßend wie ihr Gestank. Ihr Tod nagt nicht an meinem Gewissen.',
+	'Journal.NAME_SLAB_FLY_BROODMOTHER': 'Brutmutter',
+	'Journal.DESC_SLAB_FLY_BROODMOTHER':
+		'Die irre Matriarchin des Brockens wird nur selten außerhalb ihres Baus gesehen. Sämtliche Wärter werden aus ihr geboren und gezüchtet.',
+	'Journal.NOTE_SLAB_FLY_BROODMOTHER':
+		'Nun, da sie ausgeschaltet wurde, finden dieser Kerker und sein widerlicher Orden hoffentlich bald ein Ende.',
+	'Journal.NAME_PEAKS_DRIFTER': 'Schweblin',
+	'Journal.DESC_PEAKS_DRIFTER':
+		'Ein sanfter Gleiter vom Feiberg. Seine Daunenflügel und seine Kutte ermöglichen es ihm, selbst der bittersten Kälte standzuhalten.',
+	'Journal.NOTE_PEAKS_DRIFTER':
+		'Er würde sich hervorragend als Haustier eignen, doch leider fühlt er sich nur bei frostigen Temperaturen wirklich wohl.',
+	'Journal.NAME_CRYSTAL_DRIFTER': 'Mnemonide',
+	'Journal.DESC_CRYSTAL_DRIFTER':
+		'Ein fliegendes Lebewesen aus Kaltsplittern. Wenn es zerschmettert wird, bildet es sich alsbald wieder neu.',
+	'Journal.NOTE_CRYSTAL_DRIFTER':
+		'Selbst wenn Kaltsplitter zerstört werden, erinnern sie sich an ihre frühere Gestalt. Es ist ein erstaunliches Material. Und noch erstaunlicher die Tatsache, dass es offenbar Leben birgt.',
+	'Journal.NAME_CRYSTAL_DRIFTER_GIANT': 'Mnemonorde',
+	'Journal.DESC_CRYSTAL_DRIFTER_GIANT': 'Ein riesiges fliegendes Lebewesen aus Kaltsplittern.',
+	'Journal.NOTE_CRYSTAL_DRIFTER_GIANT':
+		'In dieser größeren Form ist das Wesen derart schwer, dass es sich kaum von der Stelle bewegen kann.',
+	'Journal.NAME_WEAVER_SERVITOR': 'Servitor Ignim',
+	'Journal.DESC_WEAVER_SERVITOR':
+		'Ein kleines Konstrukt, in alten Zeiten von den Weberinnen geschaffen. Die Seidenrunen in seinem Inneren erwecken es zum Leben.',
+	'Journal.NOTE_WEAVER_SERVITOR':
+		'Obwohl es in Pharloom schon lange keine Weberinnen mehr gibt, führt dieser Diener immer noch seine altbekannte Aufgabe aus.',
+	'Journal.NAME_WEAVER_SERVITOR_LARGE': 'Servitor Boran',
+	'Journal.DESC_WEAVER_SERVITOR_LARGE':
+		'Ein kaputtes Konstrukt, in alten Zeiten von den Weberinnen geschaffen. Es kann einen gebündelten Seidenlichtstrahl verströmen, der sich durch Eis und Knochen schmilzt, um darin Wege und Kammern anzulegen.',
+	'Journal.NOTE_WEAVER_SERVITOR_LARGE':
+		'Der Servitor wurde von Zeit und Wetter erheblich beschädigt. Er handelt erratisch, kann offenbar nicht mehr zwischen Freund und Feind unterscheiden.',
+	'Journal.NAME_LIFEBLOOD_FLY': 'Geflügelter Lebenskeim',
+	'Journal.DESC_LIFEBLOOD_FLY':
+		'Ein Sack voller Plasmium, ohne Verstand. Einmal aufgebrochen, kann das Plasmium verzehrt werden, um die eigene Gesundheit vorübergehend zu stärken.',
+	'Journal.NOTE_LIFEBLOOD_FLY':
+		'Mein einzigartiger Panzer vermag den dunkleren Entstellungen dieser Substanz zu widerstehen, doch auch ich habe meine Grenzen ...',
+	'Journal.NAME_BONE_WORM_BLUEBLOOD': 'Plasmide',
+	'Journal.DESC_BONE_WORM_BLUEBLOOD':
+		'Ein mutierter Jungwurm, der mit Plasmium infiziert wurde. Die neue Form weist starke Regenerationsfähigkeiten auf.',
+	'Journal.NOTE_BONE_WORM_BLUEBLOOD':
+		'Pharloom wird schon bald erfahren, was für ein Fluch diese Substanz ist. Jeglichen Vorteilen, die sie bietet, stehen schwere Nachteile gegenüber.',
+	'Journal.NAME_BONE_WORM_BLUETURRET': 'Plasmidas',
+	'Journal.DESC_BONE_WORM_BLUETURRET':
+		'Ein großer Wurm, der vom Plasmium erheblich mutiert wurde. Diese Kreatur ist mit der Decke seiner Höhle verschmolzen und kann sich nicht mehr frei bewegen.',
+	'Journal.NOTE_BONE_WORM_BLUETURRET':
+		'In den Höhlen meiner Heimat, wo diese Substanz einst keimte, sah ich ähnliche Verirrungen. Hier vereinen sich Wunder und Abscheu.',
+	'Journal.NAME_BLUE_ASSISTANT': 'Plasmifizierter Zango',
+	'Journal.DESC_BLUE_ASSISTANT':
+		'Die Hülle eines Alchemieassistenten, der durch Plasmium falsches Leben verliehen wurde.',
+	'Journal.NOTE_BLUE_ASSISTANT':
+		'Fahrlässig hat er diese verfluchte Substanz über die Höhlen verteilt ... Sein Schicksal scheint mir dafür eine gerechte Strafe, doch ein wenig Mitleid will ich ihm gönnen. Die Verlockung dieser Macht ist groß.',
+	'Journal.NAME_LILYPAD_FLY': 'Blättergleiter',
+	'Journal.DESC_LILYPAD_FLY': 'Ein graziles geflügeltes Wesen, das nur im Schwarm überlebt.',
+	'Journal.NOTE_LILYPAD_FLY':
+		'Er ist so leicht, dass er selbst auf der Wasseroberfläche ruhen kann. Ein wahrlich eleganter Käfer.',
+	'Journal.NAME_GRASS_GOOMBA': 'Blattroller',
+	'Journal.DESC_GRASS_GOOMBA': 'Ein spitzer Krabbler, der sich als Pflanze tarnt.',
+	'Journal.NOTE_GRASS_GOOMBA':
+		'Einfach. Elegant. Auch dieser ist ein schöner Käfer, der für immer aus diesen Landen verschwunden ist.',
+	'Journal.NAME_HORNET_DRAGONFLY': 'Pendra',
+	'Journal.DESC_HORNET_DRAGONFLY': 'Ein Fluginsekt, das in der Nähe ruhender Gewässer lebt.',
+	'Journal.NOTE_HORNET_DRAGONFLY':
+		'Es ist normalerweise passiv, aber wenn man unbedacht in sein Gebiet eindringt, kann seine scharfe Maske zu Verletzungen führen.',
+	'Journal.NAME_DRAGONFLY_LARGE': 'Pendragor',
+	'Journal.DESC_DRAGONFLY_LARGE':
+		'Ein schweres Insekt, das in der Nähe großer Gewässer lebt. Seinem heftigen Körper sollte man am besten aus dem Weg gehen.',
+	'Journal.NOTE_DRAGONFLY_LARGE':
+		'Wenn er sich mir nicht gerade in den Weg stellt, finde ich seine schlichten Bewegungen eigentlich recht angenehm zu beobachten.',
+	'Journal.NAME_LILYPAD_TRAP': 'Nuphar',
+	'Journal.DESC_LILYPAD_TRAP': 'Eine Raubpflanze mit einem mächtigen Kiefer, die einem Seerosenblatt ähnelt.',
+	'Journal.NOTE_LILYPAD_TRAP':
+		'Beim ersten Treffen bietet sie eine schnappende Überraschung, aber sobald man Bescheid weiß, lässt sie sich mühelos umgehen.',
+	'Journal.NAME_CLOVERSTAG': 'Kleehirsch',
+	'Journal.DESC_CLOVERSTAG':
+		'Ein friedliches Lebewesen, beheimatet in Verdania. Dank seines Panzers ist es inmitten der umliegenden Flora kaum zu erkennen.',
+	'Journal.NOTE_CLOVERSTAG':
+		'Eine imposante Imitation. Die kleebewachsenen Höhlen dieser Wesen müssen unzählige Generationen überdauert haben, um ihm eine so vollendete Tarnung zu ermöglichen.',
+	'Journal.NAME_CLOVERSTAG_WHITE': 'Bleichhirsch',
+	'Journal.DESC_CLOVERSTAG_WHITE':
+		'Der sagenumwobene erste Kleehirsch aus der Wildnis von Verdania. Gras und Blätter fügen sich ihm und dienen ihm als Waffe.',
+	'Journal.NOTE_CLOVERSTAG_WHITE':
+		'Ein Mythos ist in der Erinnerung zur Realität geworden. Dieses Lebewesen schien vollends vereint mit der Pflanzenwelt, die es umgab. Ob es wirklich jemals in der Form existiert hat?',
+	'Journal.NAME_GRASSHOPPER_CHILD': 'Kindanir',
+	'Journal.DESC_GRASSHOPPER_CHILD':
+		'Ein Kind Verdanias, das trotz seines jungen Alters mit großem Kampfgeschick besticht.',
+	'Journal.NOTE_GRASSHOPPER_CHILD':
+		'Er ist schnell und wild und verteidigt sein Land schon seit seiner Geburt. Auf solche Kinder kann man stolz sein.',
+	'Journal.NAME_GRASSHOPPER_SLASHER': 'Verdanir',
+	'Journal.DESC_GRASSHOPPER_SLASHER':
+		'Ein pfeilschnell angreifender Krieger mit geschärften Vorderbeinen und ausgeprägten Sinnen.',
+	'Journal.NOTE_GRASSHOPPER_SLASHER':
+		'Er entspannt sich nur selten, ist stets auf der Hut vor möglichen Gefahren, selbst tief im eigenen Revier. Wenn ich ihn besiegen will, muss meine Konzentration der seinen gleichen.',
+	'Journal.NAME_GRASSHOPPER_FLY': 'Escalion',
+	'Journal.DESC_GRASSHOPPER_FLY':
+		'Ein blitzschneller geflügelter Krieger, der scharfe Spitzen aus seinen Vorderbeinen verschießen kann.',
+	'Journal.NOTE_GRASSHOPPER_FLY':
+		'Er wurde mit vielen Fertigkeiten geboren, die ich mir früher auch gewünscht hätte. Zum Glück habe ich hart an mir gearbeitet, um diese Mängel auszugleichen.',
+	'Journal.NAME_CLOVER_DANCER': 'Kleeblatt-Tänzer',
+	'Journal.DESC_CLOVER_DANCER':
+		'Die Doppelprinzen des alten Verdania. Ihre Untertanen liebten sie für ihre Anmut und ihren atemberaubenden Tanz, mit dem sie Fremden den Tod brachten.',
+	'Journal.NOTE_CLOVER_DANCER': 'Jemanden zu lieben, der einem selbst so ähnelt ... Ist das selbstlos oder eitel?',
+	'Journal.NAME_ABYSS_CRAWLER': 'Schattenkriecher',
+	'Journal.DESC_ABYSS_CRAWLER':
+		'Ein gepanzerter Wurm, den man nur in den tiefsten Tiefen findet. Er scheint dort überleben zu können, obwohl er keinerlei Nahrung oder Flüssigkeit zu sich nimmt.',
+	'Journal.NOTE_ABYSS_CRAWLER':
+		'Dieses Lebewesen ist mir seit langem vertraut. Auch in weitester Ferne werde ich sie wohl finden, wenn ich mich tief genug wage.',
+	'Journal.NAME_ABYSS_CRAWLER_LARGE': 'Schattenstürmer',
+	'Journal.DESC_ABYSS_CRAWLER_LARGE':
+		'Ein massiger Wurm aus den tiefsten Tiefen. Er lebt in engen Spalten und greift mit seinem gewichtigen Körper an.',
+	'Journal.NOTE_ABYSS_CRAWLER_LARGE':
+		'Diese Exemplare werden groß, obwohl ich sie noch nie beim Essen oder Schlafen beobachtet habe. Sie wirken wie einfache Käfer ... doch ich vermute, dass wir nicht wirklich mit ihnen verwandt sind.',
+	'Journal.NAME_GLOOMFLY': 'Düstersack',
+	'Journal.DESC_GLOOMFLY':
+		'Ein winziges leeres Lebewesen, kaum noch ein Käfer. Es verschlingt seine Beute vollständig und saugt ihr seine Nährstoffe aus, bis nichts mehr übrig ist.',
+	'Journal.NOTE_GLOOMFLY':
+		'Dieses Wesen verstört mich. So schlicht beschaffen, und doch ... Spüre ich etwa fast Furcht?',
+	'Journal.NAME_GLOOM_BEAST': 'Düstergigant',
+	'Journal.DESC_GLOOM_BEAST':
+		'Eine riesige, schlauchartige Bestie, mit einer einzigartigen Eignung, direkt über der Leere zu leben.',
+	'Journal.NOTE_GLOOM_BEAST':
+		'Es ist erstaunlich, aber diese Kreatur trägt tatsächlich die schwarze Flüssigkeit der Leere in seinem Magen. Bei Gefahr versprüht es sie gnadenlos.',
+	'Journal.NAME_ABYSS_TENDRIL': 'Ranken der Leere',
+	'Journal.DESC_ABYSS_TENDRIL': 'Um sich schlagende Fragmente reiner Dunkelheit, zu geschärften Tentakeln geformt.',
+	'Journal.NOTE_ABYSS_TENDRIL':
+		'Die Leere, die sich dereinst alles einverleiben wird ... In den stacheligen Formen, die sie hier erwählt hat, lässt sich ihr Wesen deutlich erkennen.',
+	'Journal.NAME_BLACK_THREAD_CORE': 'Leerenmasse',
+	'Journal.DESC_BLACK_THREAD_CORE': 'Ein wulstiger Knoten aus Hüllen und in Leere getränkter Seide.',
+	'Journal.NOTE_BLACK_THREAD_CORE':
+		'Verdorbene Seide und verdorbene Panzer. Die Leere will sich das gesamte Land einverleiben. Diese armen Panzer sind bloß der Anfang.',
+	'Journal.NAME_ABYSS_MASS': 'Beschworener Erlöser',
+	'Journal.DESC_ABYSS_MASS': 'Ein triefender Haufen alter Masken, von der flirrenden Leere zum Leben erweckt.',
+	'Journal.NOTE_ABYSS_MASS':
+		'Diese Kreatur wurde aus der verzweifelten Hoffnung eines Käfers auf Stärke geboren. Nur wenigen gelingt es, die Leere heraufzubeschwören, und niemandem gelingt es, sie zu zähmen.',
+	'Journal.NAME_WHITE_PALACE_FLY': 'Gussfliege',
+	'Journal.DESC_WHITE_PALACE_FLY':
+		'Eine falsche Fliege, deren Panzer mit Runen versehen wurde. Eine gepeinigte Mischung aus Seele und Leere ist darin gefangen.',
+	'Journal.NOTE_WHITE_PALACE_FLY':
+		'Ein primitives Konstrukt aus dem gefallenen Reich meines Vaters. Nur ein Narr würde sich anmaßen, die Leere unterwerfen zu wollen.',
+	'Journal.NAME_CENTIPEDE_TRAP': 'Garpide',
+	'Journal.DESC_CENTIPEDE_TRAP':
+		'Ein blinder Käfer, der sich in der Erde vergräbt und auf das nur kleinste Geräusch mit brutaler Gewalt reagiert.',
+	'Journal.NOTE_CENTIPEDE_TRAP':
+		'Recht gewöhnlich, dieser Käfer, aber dennoch nicht zu unterschätzen. Seine anderen Sinne sind so scharf, dass sie seine Blindheit mehr als aufwiegen.',
+	'Journal.NAME_SPIKE_LAZY_FLYER': 'Imoba',
+	'Journal.DESC_SPIKE_LAZY_FLYER':
+		'Ein langsam umherschwebender Käfer mit hartem Oberpanzer. Er reagiert kaum auf Gefahren, selbst wenn ihn diese das Leben kosten könnten.',
+	'Journal.NOTE_SPIKE_LAZY_FLYER':
+		'Der Ärmste hat ein Leben gelebt, das viel zu ruhig und behütet war. In der Welt außerhalb dieser Mauern würde er nicht lange durchhalten.',
+	'Journal.NAME_SURFACE_SCUTTLER': 'Skrill',
+	'Journal.DESC_SURFACE_SCUTTLER': 'Ein gewöhnlicher Krabbler, der unter dem Sand lebt.',
+	'Journal.NOTE_SURFACE_SCUTTLER':
+		'Dieser Oberflächenbewohner ist frei von Seide. Sein Wesen bleibt sein eigenes. Der Einfluss der Monarchin hat sich offenbar nur unter ihr ausgedehnt.',
+	'Journal.NAME_GIANT_CENTIPEDE': 'Glockenfresser',
+	'Journal.DESC_GIANT_CENTIPEDE':
+		'Ein lang schlummernder Tausendfüßler, durch Pharlooms Zusammenbruch erweckt und erzürnt.',
+	'Journal.NOTE_GIANT_CENTIPEDE':
+		'Ein Monster in der klassischen Gestalt kindlicher Märchen. Meine tapfere Reisegefährtin war ebenso an seinem Tod beteiligt wie ich selbst.',
+	'Journal.NAME_GIANT_FLEA': 'Riesenfloh',
+	'Journal.DESC_GIANT_FLEA':
+		'Ein übergroßer Käfer, von seiner langen Gefangenschaft vorübergehend in Rage getrieben.',
+	'Journal.NOTE_GIANT_FLEA':
+		'Ich hätte nicht gedacht, dass es unter den Flöhen auch so große, bemerkenswerte Exemplare gibt. Es freut mich, dass er zur Vernunft kam, bevor ich ihn töten musste.',
+	'Journal.NAME_SHAKRA': 'Shakra',
+	'Journal.DESC_SHAKRA':
+		'Eine Kriegerin und Kartographin eines Stamms aus dem Grenzland Pharlooms. Im Kampf kann sie es selbst mit den größten Kämpfern des Reiches aufnehmen.',
+	'Journal.NOTE_SHAKRA':
+		'Sie hat erst einen Bruchteil meines eigenen Lebens gelebt, und doch sind ihre Ringe meiner Klinge gewachsen. Sie ist eines der größten Kriegertalente, denen ich je begegnet bin – und ich bin froh, sie als Freundin zu zählen.',
+	'Journal.NAME_GARMOND_ZAZA': 'Garmond & Zaza',
+	'Journal.DESC_GARMOND_ZAZA':
+		'Dieser lebhafte alte Ritter kämpft gemeinsam mit seinem noblen Gefährten, um ihr Land von seinem verwunschenen Wahn zu befreien.',
+	'Journal.NOTE_GARMOND_ZAZA':
+		'Auch sie suchen den Geist im Herzen der Verwünschung, doch ich fürchte, dass dieser Feind über ihre sterblichen Grenzen hinausginge.',
+	'Journal.NAME_GARMOND': 'Verlorener Garmond',
+	'Journal.DESC_GARMOND': 'Ein alter Ritter, den der schwarze Faden verschlungen hat.',
+	'Journal.NOTE_GARMOND':
+		'Ein tragisches Schicksal für einen einst so ehrwürdigen Käfer. Diese Fäden, mit Leere durchtränkt ... Ihre äußerliche Stärke ist noch gar nichts im Vergleich zum Verderben, das sie einer Seele bereiten.',
+	'Journal.NAME_PINSTRESS_BOSS': 'Nadlerin',
+	'Journal.DESC_PINSTRESS_BOSS':
+		'Eine Klingenjungfer einer einst berühmten Kriegersekte. Der Rest ihres Ordens ist schon vor langer Zeit verblichen.',
+	'Journal.NOTE_PINSTRESS_BOSS':
+		'Ich mag sie. So lange ist sie schon allein, doch ihr Unterrichtseifer wie auch ihr Geist sind ungebrochen. Sie hat meinen Respekt.',
+	'Journal.NAME_SPINNER_BOSS': 'Witwe',
+	'Journal.DESC_SPINNER_BOSS':
+		'Eine verrückte Fanatikerin, die Pharlooms verwunschene Seide lenken kann, indem sie darauf Musik spielt.',
+	'Journal.NOTE_SPINNER_BOSS':
+		'Ihr Leib glich dem einer Weberin, doch ihre Maske wurde gewaltsam entfernt. Und ihre eigene Seide wurde entkräftet von den schweren Nadeln, die in ihr Rückgrat gestoßen waren.',
+	'Journal.NAME_FIRST_WEAVER': 'Ursünderin',
+	'Journal.DESC_FIRST_WEAVER': 'Eine uralte Weberin, die wegen einer längst vergessenen Untat verurteilt wurde.',
+	'Journal.NOTE_FIRST_WEAVER':
+		'Ihre Hülle besaß das meisterliche Talent, Seide zu flammenden Runen zu weben. Mein ganzes Leben lang habe ich gesehen, wie Runen zu verschiedensten Zwecken gewoben wurden. War sie die Erste, die solche Fähigkeiten besaß?',
+	'Journal.NAME_PHANTOM': 'Phantom',
+	'Journal.DESC_PHANTOM':
+		'Ein trauriges Wesen, dessen Pflicht es ist, sich einsam um den erstickenden Unrat der Zitadelle zu kümmern. Es besitzt einzigartige Fertigkeiten an der Langnadel.',
+	'Journal.NOTE_PHANTOM':
+		'Zwar war es schon alt und ergraut, doch seine fransige Gestalt verriet es als ein Wesen, das einst aus Seide gesponnen wurde. Ein schnelles Ende im Kampf war ihm lieber als ein schleichender Niedergang.',
+	'Journal.NAME_LACE': 'Lace',
+	'Journal.DESC_LACE': 'Eine manische Fechterin, die sich am Kampf ergötzt.',
+	'Journal.NOTE_LACE':
+		'Ein Käfer, aus reinem Faden geboren ... Es wird ein Unmaß an Seide gebraucht haben, um sie zu erhalten. Eine fragile Form des Lebens, aber Leben ist es nichtsdestotrotz.',
+	'Journal.NAME_SILK_BOSS': 'Große Mutter Seide',
+	'Journal.DESC_SILK_BOSS': 'Monarchin von Pharloom und Urquell der Seide.',
+	'Journal.NOTE_SILK_BOSS':
+		'Das Herz der Verwünschung, vor langer Zeit in Schlaf versetzt, ihr sehnlichster Wunsch das Erwachen. Die Fäden dieses höheren Wesens erstreckten sich durch ganz Pharloom, banden seine Käfer und trieben sie zu Wahnsinn und Zwietracht.',
+	'Journal.NAME_LOST_LACE': 'Verlorene Lace',
+	'Journal.DESC_LOST_LACE': 'Ein aus Seide gesponnenes Kind, von der Leere besessen.',
+	'Journal.NOTE_LOST_LACE':
+		'Um den Zorn der Mutter zu besänftigen und dieses Reich zu retten, werde ich sie zurückerobern. Diese eine ... wird sich die Dunkelheit nicht holen.',
+	'Quests.MQ_CITADEL_SEEKER_NAME': 'Die Große Zitadelle',
+	'Quests.MQ_TYPE_SEEK': 'Suche',
+	'Quests.MQ_THREADSPUN_TOWN_NAME': 'Die umgarnte Stadt',
+	'Quests.MQ_TYPE_SAVE': 'Rette',
+	'Quests.MQ_BELLSHRINES_NAME': 'Großes Tor',
+	'Quests.MQ_TYPE_BELLSHRINES': 'Öffne',
+	'Quests.MQ_CITADEL_INVESTIGATE_NAME': 'Stille Hallen',
+	'Quests.MQ_TYPE_INVESTIGATE': 'Suche',
+	'Quests.MQ_CITADEL_ASCENT_NAME': 'Pharlooms Krone',
+	'Quests.MQ_TYPE_ASCEND': 'In die Höhe',
+	'Quests.MQ_CITADEL_ASCENT_NAME_SILK': 'Bleiche Monarchin',
+	'Quests.MQ_TYPE_DEFEAT': 'Besiege',
+	'Quests.MQ_SILK_SNARE_NAME': 'Seelenschlinge',
+	'Quests.MQ_TYPE_DESTROY': 'Zerstöre',
+	'Quests.MQ_BLACKTHREAD_0_NAME': 'Nach dem Fall',
+	'Quests.MQ_BLACKTHREAD_1_NAME': 'Warten auf das Ende',
+	'Quests.MQ_RESCUE_BELLBEAST_NAME': 'Bestie in den Glocken',
+	'Quests.MQ_BLACKTHREAD_2_NAME': 'Das Dunkel in der Tiefe',
+	'Quests.MQ_DIVINGBELL_1_NAME': 'Das Dunkel in der Tiefe',
+	'Quests.MQ_DIVINGBELL_2_NAME': 'Das Dunkel in der Tiefe',
+	'Quests.MQ_DIVINGBELL_3_NAME': 'Das Dunkel in der Tiefe',
+	'Quests.MQ_TYPE_DESCEND': 'In die Tiefe',
+	'Quests.MQ_BLACKTHREAD_3_NAME': 'Rückkehr nach Pharloom',
+	'Quests.MQ_BLACKTHREAD_4_NAME': 'Zaubersuche',
+	'Quests.MQ_BLACKTHREAD_5_NAME': 'Die alten Herzen',
+	'Quests.MQ_BLACKTHREAD_6_NAME': 'Letzter Tauchgang',
+	'Quests.QUEST_FIXER1_TITLE': 'Knochengrund-Reparaturen',
+	'Quests.TYPE_DONATE_1_TITLE': 'Spende',
+	'Quests.QUEST_FIXER3_TITLE': 'Eine lebensrettende Brücke',
+	'Quests.QUEST_FIXER2_TITLE': 'Ein Symbol der Hoffnung',
+	'Quests.QUEST_PILGRIM_RAGS_TITLE': 'Gewand der Pilger',
+	'Quests.TYPE_HUNT_1_TITLE': 'Jagd',
+	'Quests.QUEST_MOSSBERRY1_TITLE': 'Beerenernte',
+	'Quests.TYPE_GATHER_1_TITLE': 'Sammle',
+	'Quests.QUEST_FLEAS_TITLE': 'Die verirrten Flöhe',
+	'Quests.TYPE_WAYFARER_1_TITLE': 'Wanderer',
+	'Quests.QUEST_ROCK_ROLLERS_TITLE': 'Volatile Feuersteinkäfer',
+	'Quests.QUEST_SKULL_KING_TITLE': 'Der furchtbare Tyrann',
+	'Quests.TYPE_HUNT_2_TITLE': 'Große Jagd',
+	'Quests.QUEST_BROLLY_GET_TITLE': 'Biegsame Stacheln',
+	'Quests.QUEST_JOURNAL_TITLE': 'Käfer von Pharloom',
+	'Quests.TYPE_JOURNAL_TITLE': 'Lerne',
+	'Quests.QUEST_BELL_HOUSE_START_TITLE': 'Wiederherstellung von Glockenherz',
+	'Quests.QUEST_BELL_HOUSE_CONT_TITLE': 'Glänzendes Glockenherz',
+	'Quests.QUEST_PINSMITHTOOLS_NAME': 'Öl des Nadelmeisters',
+	'Quests.QUEST_SHINY_BELL_GOOMBAS_TITLE': 'Silberglocken',
+	'Quests.QUEST_SAVE_COURIER_SHORT_NAME': 'Mein vermisster Kurier',
+	'Quests.QUEST_SAVE_COURIER_TALL_NAME': 'Mein vermisster Bruder',
+	'Quests.QUEST_COURIER_BONEBOTTOM_NAME': 'Knochengrund-Vorräte',
+	'Quests.TYPE_COURIER_TITLE': 'Lieferung',
+	'Quests.QUEST_COURIER_PILGRIMSREST_NAME': 'Pilgerruh-Vorräte',
+	'Quests.QUEST_COURIER_SONGCLAVE_NAME': 'Sangesloge-Vorräte',
+	'Quests.QUEST_COURIER_FLEATOPIA_NAME': 'Flohtopia-Vorräte',
+	'Quests.QUEST_COURIER_MASKMAKER_NAME': 'Flüssiglack',
+	'Quests.QUEST_COURIER_SLAVE_NAME': 'Ei der Königin',
+	'Quests.QUEST_COURIER_FIXER_NAME': 'Überlebendenlager-Vorräte',
+	'Quests.QUEST_CROW_TITLE': 'Krähfer-Keulung',
+	'Quests.QUEST_BEASTFLY_TITLE': 'Wilde Biestfliege',
+	'Quests.QUEST_SHELL_FLOWER_TITLE': 'Ritual der Pollipen',
+	'Quests.QUEST_WITCH_CURSE_TITLE': 'Ritual der Wiedergeburt',
+	'Quests.QUEST_DOCTOR_CURSE_CURE_NAME': 'Odiöse Operation',
+	'Quests.QUEST_EXTRACTOR_B_NAME': 'Assistent des Alchemisten',
+	'Quests.QUEST_EXTRACTOR_B2_NAME': 'Fortgeschrittene Alchemie',
+	'Quests.QUEST_ROACH_KILL_TITLE': 'Schabenkaldaunen',
+	'Quests.QUEST_SONGCLAVE_DONATE_1_TITLE': 'Aufbau der Sangesloge',
+	'Quests.QUEST_SONGCLAVE_DONATE_2_TITLE': 'Stärkung der Sangesloge',
+	'Quests.QUEST_FINEPINS_TITLE': 'Edle Nadeln',
+	'Quests.QUEST_SAVE_CITYMERCHANT_NAME': 'Die umherziehende Händlerin',
+	'Quests.QUEST_SAVE_CITYMERCHANT_BRIDGE_NAME': 'Die verlorene Händlerin',
+	'Quests.QUEST_SONGPILGRIM_CLOAKS_TITLE': 'Chorgewänder',
+	'Quests.QUEST_BROODMOTHER_TITLE': 'Die klagende Mutter',
+	'Quests.QUEST_GOURMAND_TITLE': 'Pharlooms feinster Geschmack',
+	'Quests.QUEST_SAVE_SHERMA_NAME': 'Balsam für die Verwundeten',
+	'Quests.QUEST_SONG_KNIGHT_TITLE': 'Letzte Audienz',
+	'Quests.QUEST_HUNTRESS_NAME': 'Brutmahl',
+	'Quests.QUEST_RUNTRESS_NAME': 'Winzlingsmahl',
+	'Quests.QUEST_SHAKRA_FINAL_TITLE': 'Ende des Weges',
+	'Quests.Q_SOUL_SNARE_NAME': 'Seide und Seele',
+	'Quests.QUEST_PINSTRESS_BATTLE_TITLE': 'Tödliche Entschlossenheit',
+	'Quests.QUEST_SPRINT_KILL_TITLE': 'Schnellster in Pharloom',
+	'Quests.TYPE_SPRINT_TITLE': 'Sprinte',
+	'Quests.GARMOND_BLACK_THREADED_NAME': 'Heldenruf',
+	'Quests.QUEST_TROBBIO_2_TITLE': 'Schmerz, Pein und Elend',
+	'Quests.QUEST_ANT_TRAPPER_TITLE': 'Der verborgene Jäger',
+	'Quests.QUEST_FLEAGAMES_TITLE': 'Verzückung des Endes',
+	'Quests.QUEST_STEELSENTINEL_TITLE': 'Ein verlorener Vasall',
+	'Quests.TYPE_STEELSENTINEL_TITLE': 'Stahl',
+	'Quests.QUEST_MRMUSHROOM_TITLE': 'Das Ende einer Ära',
+	'Quests.TYPE_HERALD_TITLE': 'Werde Zeuge',
+	'Quests.QUEST_THREADCORES_TITLE': 'Dunkle Herzen',
+	'UI.MAT_NAME_SILK': 'Seide',
+	'UI.MAT_DESC_SILK':
+		'Feiner Faden, aus der Seele seines Schöpfers gesponnen. Heiß begehrt für seine bemerkenswerte Stärke und seine mystischen Eigenschaften. Seide kann Wunden heilen, das Leben verlängern und mächtige Runen weben.',
+	'UI.INV_NAME_SHARD': 'Panzersplitter',
+	'UI.INV_DESC_SHARD':
+		'Diese gehärteten Panzer- und Knochenfragmente werden zum Fertigen von Werkzeugen und Fallen genutzt.',
+	'UI.INV_NAME_COIN': 'Rosenkranzperlen',
+	'UI.INV_DESC_COIN':
+		'Diese aus verschiedenen Materialien gefertigten Perlen werden für die Glaubensbekundung und als Währung für den Handel eingesetzt. In jede Perle ist ein filigranes Muster eingeritzt.',
+	'UI.INV_NAME_COIN_MID': 'Panzerperlen',
+	'UI.INV_DESC_COIN_MID':
+		'Diese Perlen wurden aus poliertem Panzer gefertigt. Die Kostbarkeit des Materials spiegelt sich auch in ihrem erhöhten Wert wider.',
+	'UI.INV_NAME_COIN_BIG': 'Echtperlen',
+	'UI.INV_DESC_COIN_BIG':
+		'Diese schimmernden Perlen wurden mit komplexen Verzierungen versehen. Die seltensten und wertvollsten Rosenkranzperlen in Pharloom.',
+	'UI.MAT_NAME_SMELTSTONE': 'Feuerstein',
+	'UI.MAT_DESC_SMELTSTONE':
+		'Ein Stein, der am Fuße Pharlooms zu finden ist und über lange Zeit brennt. Die Zitadelle baut ihn ab und nutzt ihn für die Schmiedearbeit.',
+	'UI.MAT_NAME_LIFEBLOOD': 'Plasmium',
+	'UI.MAT_DESC_LIFEBLOOD':
+		'Flüssiger Lebenskeim mit erstaunlichen regenerativen Eigenschaften. Diese Substanz ist in Pharloom nicht heimisch, sondern wurde vom Alchemisten Zylotol eingeführt.',
+	'UI.MAT_NAME_MAGNETITE': 'Magnetit',
+	'UI.MAT_DESC_MAGNETITE': 'Ein brüchiger Schwebestein, den man in den Randgebieten von Pharloom findet.',
+	'UI.MAT_NAME_VOLTSTONE': 'Voltridian',
+	'UI.MAT_DESC_VOLTSTONE': 'Ein harter aufgeladener Stein, der Elektrizität auffangen, speichern und abgeben kann.',
 	'Map Zones.ABOVE_CRADLE': 'Grenzhöhlen',
 	'Map Zones.BELLHOME': 'Glockenheim',
 	'Map Zones.BELLTOWN_HAUNTED': 'Verwunschenes Glockenherz',

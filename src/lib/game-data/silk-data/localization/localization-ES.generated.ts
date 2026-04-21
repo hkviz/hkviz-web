@@ -53,6 +53,273 @@ export default {
 	'Map Zones.CITADEL_FORUM': 'El Foro',
 	'Map Zones.COG_CORE': 'Núcleo <br>Mecánico',
 	'Map Zones.ABYSS': 'El Abismo',
+	'UI.INV_NAME_DRESS_REG': 'Capa de cazador',
+	'UI.INV_NAME_DRESS_BROLLY': 'Capa de flotador',
+	'UI.INV_NAME_DRESS_DJ': 'Capa de fayforno',
+	'UI.INV_DESC_DRESS_REG': 'Sencilla prenda protectora, tejida con pericia, pero que ya está un poco avejentada.',
+	'UI.INV_DESC_DRESS_BROLLY': 'Simple atuendo protector, cosido con púas flexibles.',
+	'UI.INV_DESC_DRESS_DJ': 'Atuendo protector forrado con el suave plumón de un fayforno y cosido con púas flexibles.',
+	'UI.INV_DESC_DRESS_APP_FLY_FULL': 'Tiene un fuerte olor a mosca.',
+	'UI.INV_DESC_DRESS_APP_FLY_HALF': 'Tiene un tenue olor a mosca.',
+	'UI.INV_NAME_TOOLPOUCH': 'Bolsa de herramientas',
+	'UI.INV_NAME_POUCHANDTOOLKIT': 'Bolsa de herramientas<br>y kit de fabricación',
+	'UI.INV_DESC_TOOLPOUCH': 'Bolsa básica diseñada para guardar herramientas, trampas y materiales de fabricación.',
+	'UI.INV_DESC_POUCHANDTOOLKIT':
+		'Bolsa para guardar trampas y herramientas, así como utensilios de fabricación para aumentar su letalidad.',
+	'UI.INV_NAME_QUILL': 'Pluma',
+	'UI.INV_NAME_MAP': 'Mapa',
+	'UI.INV_NAME_MAPANDQUILL': 'Mapa y pluma',
+	'UI.INV_DESC_QUILL': 'Utensilio de escritura para registrar los viajes. Se puede utilizar para actualizar un mapa.',
+	'UI.INV_DESC_MAP': 'Mapa de Telalejana, parcialmente rellenado por Shakra. No se puede actualizar sin una pluma.',
+	'UI.INV_DESC_MAPANDQUILL':
+		'Mapa de Telalejana y pluma para registrar los viajes. Al descansar en un banco o en otro lugar, el mapa se actualizará con las zonas recién descubiertas.',
+	'UI.INV_NAME_WHITE_FLOWER': 'Siempreviva',
+	'UI.INV_DESC_WHITE_FLOWER':
+		'Flor etérea arrancada de una memoria profunda y lejana. Brilla con una luz suave y pálida que protege del vacío.',
+	'UI.INV_NAME_TOOL_METAL': 'Metal artesano',
+	'UI.INV_DESC_TOOL_METAL':
+		'Elemento poco común que se encuentra de forma natural en la roca y el hueso de Telalejana.<br><br>Los artesanos expertos lo usan para fabricar herramientas y baratijas.',
+	'UI.INV_NAME_CREST_SOCKET': 'Relicario de memorias',
+	'UI.INV_DESC_CREST_SOCKET':
+		'Contiene una querida memoria. Se puede utilizar para ampliar un blasón.<br><br>Amplía los blasones en el panel Blasón del menú.',
+	'UI.INV_NAME_PLINNEY_TOOLS': 'Aceite pálido',
+	'UI.INV_DESC_PLINNEY_TOOLS':
+		'Glándula biliar de una extraña babosílfide. Los maestros alfileros con talento pueden utilizar el líquido brillante que contiene para mejorar el filo de una hoja.',
+	'UI.INV_NAME_HEART_CORAL': 'Corazón de corteza',
+	'UI.INV_DESC_HEART_CORAL': 'Corazón animado de Khan, Rey de la Corteza. Su latido es profundo y lento.',
+	'UI.INV_DESC_MOMENTO_HEART_EXTRA': 'El corazón puede exhibirse en un hogar.',
+	'UI.INV_NAME_HEART_BLOOM': 'Corazón de polen',
+	'UI.INV_DESC_HEART_BLOOM': 'Corazón animado de Nyleth. Su latido es tenue y rápido.',
+	'UI.INV_NAME_HEART_HUNTER': 'Corazón de cazadora',
+	'UI.INV_DESC_HEART_HUNTER': 'Corazón animado de Karmelita, la Cantante Skarr. Su latido es firme y fuerte.',
+	'UI.INV_NAME_HEART_CLOVER': 'Corazón siamés',
+	'UI.INV_DESC_HEART_CLOVER': 'Corazón animado del Príncipe Verde. Su latido es nítido y claro.',
+	'UI.INV_NAME_PLASMIUM_GLAND': 'Glándula de plasmio',
+	'UI.INV_DESC_PLASMIUM_GLAND':
+		'Órgano pulsante del interior de la coraza del alquimista Zylotol. La glándula se repone con el tiempo, proporcionando una fuente casi ilimitada de plasmio.<br><br>La fabricación de nuevas ampollas de plasmio ya no requiere una reserva.',
+	'UI.INV_NAME_BROKEN_SILKSHOT': 'Herramienta estropeada',
+	'UI.INV_DESC_BROKEN_SILKSHOT':
+		'Restos de un antiguo implemento de Tejedora, roto e inoperativo.<br><br>Un artesano muy hábil podría repararlo.',
+	'UI.INV_NAME_WITCH_ITEM': 'Cogollo retorcido',
+	'UI.INV_DESC_WITCH_ITEM': 'Masa retorcida de parra cenicienta. Grita sin cesar.',
+	'UI.INV_NAME_COG_HEART_PIECE': 'Pieza de corazón de engranajes',
+	'UI.INV_NAME_COG_HEART_PIECES': 'Piezas de corazón de engranajes',
+	'UI.INV_NAME_COG_HEART': 'Corazón de engranajes',
+	'UI.INV_DESC_COG_HEART_PIECE':
+		'Parte de un corazón mecánico que contiene un intrincado mecanismo de ruedas y reguladores.',
+	'UI.INV_DESC_COG_HEART_PIECES':
+		'Dos partes de un corazón mecánico que contienen un intrincado mecanismo de ruedas y reguladores.',
+	'UI.INV_DESC_COG_HEART':
+		'Corazón mecánico reensamblado que contiene un intrincado mecanismo de ruedas y reguladores.',
+	'UI.INV_NAME_CRAW_SUMMONS': 'Citación cuervona',
+	'UI.INV_DESC_CRAW_SUMMONS':
+		'Carta garabateada en un trapo negro hecho jirones.<br><br>“Profanadora... Oscuridad... Acude... Hogar... Rueda...”.',
+	'UI.INV_NAME_MOSSBERRY': 'Baya musgosa',
+	'UI.INV_DESC_MOSSBERRY':
+		'Fruta dulce que crece en ambientes húmedos. Sus semillas son tóxicas para la mayoría de las criaturas.',
+	'UI.INV_NAME_PILGRIM_RAGS_ITEM': 'Mantón de peregrino',
+	'UI.INV_DESC_PILGRIM_RAGS_ITEM':
+		'Prenda sencilla que han llevado varios peregrinos a lo largo de los tiempos. Rasgado, hecho jirones y reparado muchas veces.',
+	'UI.INV_NAME_SPINE': 'Núcleo de púa',
+	'UI.INV_DESC_SPINE':
+		'Fibra flexible del interior de la púa de un pinchoso. Una costurera experta puede tejerla en prendas y accesorios.',
+	'UI.INV_NAME_SHELL_FLOWER': 'Corazón de pólipo',
+	'UI.INV_DESC_SHELL_FLOWER':
+		'Núcleo de una flor formado alrededor del cuerpo de una avispa del bosque consumida. Secreta una savia dulce de la que se alimentan las avispas.',
+	'UI.INV_NAME_CROW_FEATHER': 'Piel zaparrastrosa',
+	'UI.INV_DESC_CROW_FEATHER':
+		'Piel hecha jirones extraída del cuerpo de un cuervón. Es frágil y fea, y se considera que tiene pocos usos prácticos.',
+	'UI.INV_NAME_ROCK_ROLLER_ITEM': 'Pedergema',
+	'UI.INV_DESC_ROCK_ROLLER_ITEM':
+		'Órgano en forma de gema extraído de un pedernajo. Produce chispas incendiarias cuando se raspa, y puede explotar si se agrieta o se deja caer.',
+	'UI.INV_NAME_ROACH_CORPSE_ITEM': 'Vísceras de cucaracha',
+	'UI.INV_DESC_ROACH_CORPSE_ITEM':
+		'Tripas frescas de una suciaracha, duras y viscosas, con un olor desagradable. Poco apetecibles para la mayoría.',
+	'UI.INV_NAME_SK_FRAGMENT': 'Fragmento de corona',
+	'UI.INV_DESC_SK_FRAGMENT': 'Gran espiga de hueso recogida de un cráneo tirano abatido.',
+	'UI.INV_NAME_BEASTFLY_REMAINS': 'Fragmento de cuerno',
+	'UI.INV_DESC_BEASTFLY_REMAINS': 'Trozo endurecido de coraza cornuda recogido de una moscabestia salvaje abatida.',
+	'UI.INV_NAME_CONCHFLY_REMAINS': 'Punta de corteza',
+	'UI.INV_DESC_CONCHFLY_REMAINS': 'Trozo de cuerno duro partido de la punta de la coraza de una moscarola.',
+	'UI.INV_NAME_BROODMOTHER_REMAINS': 'Ojo de la Madre Ponedora',
+	'UI.INV_DESC_BROODMOTHER_REMAINS': 'Órgano gelatinoso recogido de la Madre Ponedora abatida.',
+	'UI.INV_NAME_BELLCLAPPER_ITEM': 'Campana de plata',
+	'UI.INV_DESC_BELLCLAPPER_ITEM': 'Campana finamente forjada con un metal reluciente.',
+	'UI.INV_NAME_BLUE_GOOP': 'Plasmio',
+	'UI.INV_NAME_BLUE_GOOP_PICKUP': 'Plasmio recogido',
+	'UI.INV_DESC_BLUE_GOOP': 'Germen de vida líquido extraído de un cogollo maduro. Posee cualidades regenerativas.',
+	'UI.INV_DESC_BLUE_GOOP_FULL':
+		'Germen de vida líquido extraído de un cogollo maduro. Posee cualidades regenerativas.',
+	'UI.INV_NAME_CORAL_CHUNK': 'Fragmento de coral',
+	'UI.INV_DESC_CORAL_CHUNK':
+		'Trozo de densa coraza de coral. No sirve para fabricar herramientas, pero se le atribuyen propiedades medicinales si se prepara correctamente.',
+	'UI.INV_NAME_FINEPIN': 'Alfiler fino',
+	'UI.INV_DESC_FINEPIN':
+		'Arma común de Telalejana, aún en buen estado a pesar de su largo uso. Es una varilla de metal de experta elaboración, con una punta afilada.',
+	'UI.INV_NAME_SHININGCOG': 'Engranaje resplandeciente',
+	'UI.INV_DESC_SHININGCOG':
+		'Un engranaje prístino del interior de la coraza de un autómata. A pesar del largo uso, su metal no se ha embotado.',
+	'UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM': 'Capa del Coro',
+	'UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM':
+		'Prenda otorgada a los peregrinos al entrar en la Ciudadela. Su tejido grueso ofrece mayor protección contra el viento y el frío.',
+	'Quests.COURIER_SUPPLIES_ITEM_NAME': 'Petate de mensajero',
+	'Quests.COURIER_SUPPLIES_ITEM_DESC': 'Pesado saco de tela que contiene herramientas, baratijas y material médico.',
+	'Quests.COURIER_SUPPLIES_SLAVE_NAME': 'Huevo de la reina',
+	'Quests.COURIER_SUPPLIES_SLAVE_DESC':
+		'Huevo frágil que contiene una joven reina devoraseda. Aunque la reina no puede recolectar seda por sí misma, con tiempo y cuidados podría criar más devorasedas.',
+	'Quests.COURIER_SUPPLIES_MASK_NAME': 'Laca líquida',
+	'Quests.COURIER_SUPPLIES_MASK_DESC':
+		'Esmalte pálido utilizado en la preparación y protección de máscaras de hueso.',
+	'UI.INV_NAME_GOURMAND_MOSSBERRY_STEW': 'Guiso de bayas musgosas',
+	'UI.INV_DESC_GOURMAND_MOSSBERRY_STEW':
+		'Sopa espesa y almibarada de bayas musgosas y hierbas druídicas. Dulce y aromática, pero venenosa para la mayoría de las criaturas.',
+	'UI.INV_NAME_PLASMIUM_BLOOD': 'Sangre plasmificada',
+	'UI.INV_DESC_PLASMIUM_BLOOD':
+		'Sangre de una criatura fusionada con germen de vida líquido. Posee potentes cualidades regenerativas.',
+	'UI.INV_NAME_GOURMAND_VINTAGE_NECTAR': 'Néctar añejo',
+	'UI.INV_DESC_GOURMAND_VINTAGE_NECTAR':
+		'Néctar de alta calidad de un pulgón longevo, almacenado durante muchas vidas para permitir una maduración compleja.',
+	'Quests.COURIER_SUPPLIES_MEAT_NAME': 'Loncha de mensajero',
+	'Quests.COURIER_SUPPLIES_MEAT_DESC':
+		'Carne grasa de origen indeterminado. Una vez preparada, se estropea con rapidez si no se conserva adecuadamente.',
+	'UI.INV_NAME_GOURMAND_CORAL_INGREDIENT': 'Nuez de corteza',
+	'UI.INV_DESC_GOURMAND_CORAL_INGREDIENT':
+		'Semilla dura y peluda del centro de un afloramiento coralífero. De sabor rancio, pero fuerte una vez molida como condimento.',
+	'UI.INV_NAME_PICKLEDEGG': 'Gusasucio en escabeche',
+	'UI.INV_DESC_PICKLEDEGG':
+		'Delicia de sabor intenso conservada en salmuera de cucaracha. La creación más famosa de Lugoli, la chef caída en desgracia.',
+	'Quests.ITEM_EXTRACTOR_PINS_NAME': 'Púas de acero',
+	'Quests.ITEM_EXTRACTOR_PINS_DESC':
+		'Duras púas forjadas, diseñadas para su uso en maquinaria pesada y capaces de atravesar incluso la coraza más dura.',
+	'UI.INV_NAME_MORSEL_SEARED': 'Órgano chamuscado',
+	'UI.INV_DESC_MORSEL_SEARED':
+		'Carne cosechada de una criatura derrotada. Se ha chamuscado de tal forma que afecta notablemente al sabor.',
+	'UI.INV_NAME_MORSEL_SHREDDED': 'Órgano triturado',
+	'UI.INV_DESC_MORSEL_SHREDDED': 'Carne cosechada de una criatura derrotada. Se ha cortado a trocitos.',
+	'UI.INV_NAME_MORSEL_SPEARED': 'Órgano en brocheta',
+	'UI.INV_DESC_MORSEL_SPEARED':
+		'Carne cosechada de una criatura derrotada. Ha sido limpiamente atravesado con una lanza, pero por lo demás está intacto.',
+	'UI.INV_NAME_ANT_TRAPPER_ITEM': 'Muñeca de hierba',
+	'UI.INV_DESC_ANT_TRAPPER_ITEM': 'Talla de juguete infantil de un bicho vestido con hojas.',
+	'UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER': 'Alma de la Doncella',
+	'UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER': 'Frasco regalado por la Doncella de la Capilla, lleno de alma turbulenta.',
+	'UI.INV_NAME_SNARE_SOUL_BELLHERMIT': 'Alma del Ermitaño',
+	'UI.INV_DESC_SNARE_SOUL_BELLHERMIT': 'Campana pesada llena de la brillante alma del Ermitaño Campana.',
+	'UI.INV_NAME_SNARE_SOUL_SWAMP': 'Alma del buscador',
+	'UI.INV_DESC_SNARE_SOUL_SWAMP': 'Coraza agrietada que contiene el alma de un bicho fallecido hace mucho tiempo.',
+	'UI.INV_NAME_TOKEN_FAITH': 'Llave sencilla',
+	'UI.INV_DESC_TOKEN_FAITH':
+		'Llave oxidada de diseño común. Puede utilizarse para abrir diversas cerraduras sencillas.<br><br>El tiempo la ha deteriorado; se romperá tras un solo uso.',
+	'UI.INV_NAME_DOCK_KEY': 'Llave de campana de buceo',
+	'UI.INV_DESC_DOCK_KEY':
+		'Pequeña llave de un obrero. Abre la puerta que conduce a la campana de buceo en Muelles Profundos.',
+	'UI.INV_NAME_DOCK_DEMO_KEY': 'Llave de puerta',
+	'UI.INV_DESC_DOCK_DEMO_KEY': 'Pequeña llave de un obrero. Abre la puerta ubicada en Muelles Profundos.',
+	'UI.INV_NAME_WARD_KEY': 'Llave blanca',
+	'UI.INV_DESC_WARD_KEY':
+		'Llave de metal finamente elaborada, con forma de instrumento quirúrgico.<br><br>Otorga acceso al Ala Blanca de la Ciudadela.',
+	'UI.INV_NAME_WARD_BOSS_KEY': 'Llave del cirujano',
+	'UI.INV_DESC_WARD_BOSS_KEY': 'Llave descartada del Ala Blanca.<br>Abre la compuerta bajo el quirófano.',
+	'UI.INV_NAME_ARCHITECT_KEY': 'Llave de los Arquitectos',
+	'UI.INV_DESC_ARCHITECT_KEY': 'Llave rotatoria de los Arquitectos. Abre su capilla en los Talleres Inferiores.',
+	'UI.INV_NAME_SLAB_KEY_A': 'Llave del Indolente',
+	'UI.INV_NAME_SLAB_KEY_B': 'Llave del Hereje',
+	'UI.INV_NAME_SLAB_KEY_C': 'Llave del Apóstata',
+	'UI.INV_NAME_SLAB_KEYRING': 'Llaves de la Losa',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE':
+		'Llave con la marca “Indolente”. Otorga acceso a ciertas celdas y pasadizos de la Losa.',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP':
+		'Llave con la marca “Apóstata”. Otorga acceso a ciertas celdas y pasadizos de la Losa.',
+	'UI.INV_DESC_SLAB_KEYRING': 'Llaves de las celdas y pasadizos de la Losa.',
+	'UI.INV_NAME_BELL_HOUSE_KEY': 'Llave de hogar campana',
+	'UI.INV_DESC_BELL_HOUSE_KEY': 'Llave para acceder a una campana restaurada sobre Campanilla.',
+	'UI.INV_NAME_MATERIUM': 'Materium',
+	'UI.INV_DESC_MATERIUM':
+		'Tubos y receptáculos construidos para el almacenamiento, registro e investigación de diversos materiales.<br><br>El Materium puede montarse en un hogar.',
+	'UI.INV_NAME_FARSIGHT': 'Vistalejana',
+	'UI.INV_DESC_FARSIGHT':
+		'Instrumento de vigilancia retráctil de las Tejedoras. Una vez montado, el dispositivo permite la observación a grandes distancias.<br><br>El Vistalejana puede montarse en un hogar.',
+	'UI.INV_NAME_CRAWBELL': 'Nido campana',
+	'UI.INV_DESC_CRAWBELL':
+		'Nido hecho con una vieja campana. Una vez colocado, los jóvenes cuervones se posarán ocasionalmente en su interior, llenando la campana de fragmentos de coraza y rosarios.<br><br>El nido campana puede instalarse en el exterior de un hogar.',
+	'UI.INV_NAME_SETH_MEMENTO': 'Recuerdo del guardián',
+	'UI.INV_DESC_SETH_MEMENTO':
+		'Medallón antiguo del errante Seth. Un regalo entregado en reconocimiento de una gran habilidad.',
+	'UI.INV_DESC_MOMENTO_EXTRA': 'El recuerdo puede exhibirse en un hogar.',
+	'UI.INV_NAME_SPRINT_MEMENTO': 'Recuerdo del Maestro de Sprints',
+	'UI.INV_DESC_SPRINT_MEMENTO':
+		'Trofeo dorado concedido por el Maestro de Sprints Veloz al bicho más rápido de Telalejana.',
+	'UI.INV_NAME_MEMENTO_GARMOND': 'Recuerdo de héroe',
+	'UI.INV_DESC_MEMENTO_GARMOND': 'Herencia de un pueblo que sucumbió al Embrujo de Telalejana.',
+	'UI.INV_NAME_HUNTER_MEMENTO': 'Recuerdo de cazadora',
+	'UI.INV_DESC_HUNTER_MEMENTO':
+		'Símbolo de sello otorgado en reconocimiento a una verdadera cazadora, estampado con una masa pegajosa.',
+	'UI.INV_NAME_MEMENTO_CROWMAN': 'Recuerdo cuervón',
+	'UI.INV_DESC_MEMENTO_CROWMAN':
+		'Emblema de hierro de la Corte de Cuervones que absuelve al portador de todos los crímenes pasados y futuros.',
+	'UI.INV_NAME_MEMENTO_GREY': 'Recuerdo gris',
+	'UI.INV_DESC_MEMENTO_GREY':
+		'Piedra de corteza grabada, desgastada por la arena y blanqueada por el tiempo.<br><br> ... Contempla... Recuerda... Hasta que el tiempo... La vida de nuevo...',
+	'UI.INV_NAME_MEMENTO_SURFACE': 'Recuerdo de la superficie',
+	'UI.INV_DESC_MEMENTO_SURFACE': 'Ornamento desgastado de la Aldea sin Nombre en lo alto de Telalejana.',
+	'UI.INV_NAME_R_BONE_RECORD': 'Pergamino óseo',
+	'UI.INV_DESC_R_BONE_RECORD': 'Tosco diario hecho de jirones de tela y hueso, dejado por un peregrino caído.',
+	'UI.INV_DESC_RELIC':
+		'Se trata de una reliquia del pasado de Telalejana, interesante para los coleccionistas de objetos históricos.',
+	'UI.INV_NAME_R_WEAVER_TOTEM': 'Efigie de Tejedora',
+	'UI.INV_DESC_R_WEAVER_TOTEM': 'Ídolo óseo tallado a imagen de una antigua Tejedora. Tiene grabada una oración.',
+	'UI.INV_NAME_R_SEAL_CHIT': 'Mandamiento coral',
+	'UI.INV_DESC_R_SEAL_CHIT':
+		'Orden emitida por la Ciudadela. El sello, antaño reluciente, se ha desgastado con el tiempo.',
+	'UI.INV_NAME_R_WEAVER_RECORD': 'Arpa rúnica',
+	'UI.INV_DESC_R_WEAVER_RECORD':
+		'Antiguo instrumento de grabación de las Tejedoras, encordado con runas de seda. Las runas descoloridas contienen las palabras de una Tejedora de tiempos pasados.',
+	'UI.INV_NAME_R_ANCIENT_EGG': 'Huevo arcano',
+	'UI.INV_DESC_R_ANCIENT_EGG':
+		'Huevo de piedra negro formado antes del nacimiento de Telalejana.<br><br>Se trata de una reliquia del pasado muy valorada por los coleccionistas de objetos históricos.',
+	'UI.INV_NAME_R_PSALM_CYL': 'Cilindro de salmo',
+	'UI.INV_DESC_R_PSALM_CYL':
+		'Cilindro metálico fabricado en la Ciudadela con una grabación de sonido.<br><br>El cilindro puede reproducirse en un gramófono.',
+	'UI.INV_NAME_R_PSALM_CYL_MELODY': 'Cilindro sagrado',
+	'UI.INV_DESC_R_PSALM_CYL_MELODY':
+		'Cilindro metálico fabricado en la Ciudadela con la melodía de los Guardianes de las Bóvedas.<br><br>El cilindro puede reproducirse en un gramófono.',
+	'UI.INV_NAME_COIN_SET_F': 'Ristra de rosarios desgastada',
+	'UI.INV_DESC_COIN_SET_F':
+		'Ristra desgastada que sujeta unos pocos rosarios. Se puede romper y utilizar los rosarios para comerciar.',
+	'UI.INV_DESC_COIN_SET_USE': 'Contiene {0} rosarios.',
+	'UI.INV_NAME_COIN_SET_S': 'Ristra de rosarios',
+	'UI.INV_DESC_COIN_SET_S': 'Ristra de rosarios corta. Se puede romper y utilizar los rosarios para comerciar.',
+	'UI.INV_NAME_COIN_SET_M': 'Collar de rosarios',
+	'UI.INV_DESC_COIN_SET_M':
+		'Adorno con una gran cantidad de rosarios. Se puede romper y utilizar los rosarios para comerciar.',
+	'UI.INV_NAME_COIN_SET_M2': 'Collar de rosarios pesado',
+	'UI.INV_DESC_COIN_SET_M2':
+		'Encordado con una mezcla de rosarios comunes y de calidad. Se puede romper y utilizar los rosarios para comerciar.',
+	'UI.INV_NAME_COIN_SET_L': 'Collar de rosarios pálido',
+	'UI.INV_DESC_COIN_SET_L':
+		'Collar pesado con una gran cantidad de rosarios de perlas. Se puede romper y utilizar los rosarios para comerciar.',
+	'UI.INV_NAME_SHARD_POUCH': 'Manojo de fragmentos',
+	'UI.INV_DESC_SHARD_POUCH':
+		'Pequeño manojo de fragmentos de coraza encordados. Se puede romper y utilizar los fragmentos para fabricar.',
+	'UI.INV_DESC_SHARD_POUCH_USE': 'Contiene {0} fragmentos de coraza.',
+	'UI.INV_NAME_GREAT_SHARD': 'Fragmento de bestia',
+	'UI.INV_DESC_GREAT_SHARD':
+		'Trozo de material endurecido que se encuentra en las corazas de las grandes bestias. Puede romperse en fragmentos individuales y usarse para fabricar.',
+	'UI.INV_DESC_GREAT_SHARD_USE': 'Se rompe en {0} fragmentos de coraza.',
+	'UI.INV_NAME_PRISTINE_CORE': 'Núcleo prístino',
+	'UI.INV_DESC_PRISTINE_CORE':
+		'Intrincado mecanismo interno de un bicho mecánico. Puede romperse en fragmentos individuales y usarse para fabricar.',
+	'UI.INV_NAME_FIXER_IDOL': 'Estatuilla de Hornet',
+	'UI.INV_DESC_FIXER_IDOL':
+		'Pequeña escultura, de factura inexperta, pero minuciosamente elaborada como símbolo de amistad duradera.',
+	'UI.INV_NAME_GROWSTONE': 'Piedra de brote',
+	'UI.INV_DESC_GROWSTONE':
+		'Piedra fría y acerada con una notable capacidad de rebrote.<br><br>Si se rompe en fragmentos, se reformará con el tiempo.',
+	'UI.INV_NAME_SILK_GRUB': 'Devoraseda',
+	'UI.INV_DESC_SILK_GRUB':
+		'Larva que vive y se alimenta de la seda de Telalejana, nacida con la capacidad de sentir la seda a grandes distancias.',
+	'UI.INV_DESC_SILK_GRUB_FUNCTION': 'Tras abatirla en combate, consúmela para recuperar un capullo.',
+	'Prompts.PROMPT_USE_CONSUMABLE_GRUB': 'Consumir',
 	'Tools.CREST_HUNTER_NAME': 'Cazadora',
 	'Tools.CREST_REAPER_NAME': 'Parca',
 	'Tools.CREST_PILGRIM_NAME': 'Errante',
@@ -124,6 +391,1195 @@ export default {
 	'Tools.MUSICIAN_CHARM_NAME': 'Cuerdas arácnidas',
 	'Tools.SPRINTMASTER_NAME': 'Tobilleras rapisedeñas',
 	'Tools.THIEF_CHARM_NAME': 'Marca de ladrón',
+	'Journal.NAME_MOSSBONE_CRAWLER': 'Reptamusgo',
+	'Journal.DESC_MOSSBONE_CRAWLER': 'Reptante peludo con una serie de púas afiladas a lo largo del lomo.',
+	'Journal.NOTE_MOSSBONE_CRAWLER': 'Si no fuera por las púas, me parecería un bicho atractivo.',
+	'Journal.NAME_MOSSBONE_CRAWLER_FAT': 'Reptamusgo enorme',
+	'Journal.DESC_MOSSBONE_CRAWLER_FAT':
+		'Reptamusgo de hiperdesarrollo anormal, criado dentro del Memorium de la Ciudadela.',
+	'Journal.NOTE_MOSSBONE_CRAWLER_FAT':
+		'Tan cerca de una forma perfecta y peluda... Si tan solo hubieran logrado criarlos sin púas.',
+	'Journal.NAME_MOSSBONE_FLY': 'Musgomir',
+	'Journal.DESC_MOSSBONE_FLY': 'Pequeña criatura voladora capaz de defenderse con su pequeño aguijón.',
+	'Journal.NOTE_MOSSBONE_FLY':
+		'Este bicho es blando y torpe, pero para su fortuna sus cuevas natales parecen relativamente libres de depredadores eficaces. Me pregunto por qué será.',
+	'Journal.NAME_MOSSBONE_MOTHER': 'Madremusgo',
+	'Journal.DESC_MOSSBONE_MOTHER': 'Musgomir adulto con un aguijón completamente desarrollado y pellejo endurecido.',
+	'Journal.NOTE_MOSSBONE_MOTHER':
+		'La maternidad es un instinto que puede llevar a las criaturas más allá de lo que parecen sus límites naturales. Convierte incluso a las bestias más débiles en enemigos formidables.',
+	'Journal.NAME_ASPID_COLLECTOR': 'Aknid',
+	'Journal.DESC_ASPID_COLLECTOR': 'Insecto alado que se alimenta de musgo y líquenes en las cuevas del Valle Óseo.',
+	'Journal.NOTE_ASPID_COLLECTOR':
+		'En su estado natural evitaría a los posibles depredadores, pero el Embrujo de Telalejana ahora lo ha vuelto agresivo. Por suerte, sus mandíbulas no son adecuadas para el combate.',
+	'Journal.NAME_BONE_GOOMBA': 'Cráneo escurridizo',
+	'Journal.DESC_BONE_GOOMBA':
+		'Bicho pequeño y suave que utiliza los duros cráneos de la Médula para protegerse y disfrazarse.',
+	'Journal.NOTE_BONE_GOOMBA':
+		'En todas partes, las criaturas encuentran formas nuevas y sorprendentes de disfrazarse. Siempre hay que tener cuidado.',
+	'Journal.NAME_BONE_GOOMBA_BOUNCE_FLY': 'Cráneo alado',
+	'Journal.DESC_BONE_GOOMBA_BOUNCE_FLY':
+		'Pariente aéreo del cráneo escurridizo que solo se encuentra en las cuevas más profundas y calientes de la Médula.',
+	'Journal.NOTE_BONE_GOOMBA_BOUNCE_FLY':
+		'Criaturas tan débiles solo pueden sobrevivir gracias a la escasez de depredadores en estas cavernas sobrecalentadas.',
+	'Journal.NAME_BONE_GOOMBA_LARGE': 'Cráneo salvaje',
+	'Journal.DESC_BONE_GOOMBA_LARGE':
+		'Suave bicho oculto bajo un enorme cráneo astado. Ataca a los intrusos para proteger su territorio y a sus compañeros más pequeños.',
+	'Journal.NOTE_BONE_GOOMBA_LARGE':
+		'O bien su tamaño lo ha vuelto audaz o el Embrujo lo ha privado su sentido de autoconservación.',
+	'Journal.NAME_SKULL_KING': 'Cráneo tirano',
+	'Journal.DESC_SKULL_KING':
+		'Un raro y enorme cráneo escurridizo. Es el depredador más grande de la Médula, y el más temido por su feroz temperamento.',
+	'Journal.NOTE_SKULL_KING':
+		'Aunque sin duda feroz, el cráneo que lleva parece sacado de una bestia aún mayor. Si no fuera por los huesos que lo demuestran, me costaría creer que los bichos pudiesen hacerse tan grandes.',
+	'Journal.NAME_BONE_CRAWLER': 'Kilik',
+	'Journal.DESC_BONE_CRAWLER':
+		'Pequeño y huesudo bicho que prefiere los túneles oscuros. Puede extender su caparazón puntiagudo para protegerse de los depredadores.',
+	'Journal.NOTE_BONE_CRAWLER':
+		'Me gustan las trampas sencillas y efectivas como las púas extensibles de este bicho. Un depredador incauto sería atravesado por completo.',
+	'Journal.NAME_BONE_FLYER': 'Moscabestia',
+	'Journal.DESC_BONE_FLYER':
+		'Mosca agresiva de las tierras bajas de Telalejana. Embiste a las presas con su máscara de huesoduro.',
+	'Journal.NOTE_BONE_FLYER':
+		'Bailar alrededor de esta simple criatura, que carga de un lado a otro, es el tipo de juego que disfrutaba cuando era niña. Pero me temo que ahora tengo asuntos más urgentes que atender.',
+	'Journal.NAME_BONE_FLYER_GIANT': 'Moscabestia salvaje',
+	'Journal.DESC_BONE_FLYER_GIANT':
+		'Moscabestia adulta y enfurecida, con un cuerpo pesado y una máscara dura y gruesa.',
+	'Journal.NOTE_BONE_FLYER_GIANT':
+		'La civilización se extiende desde la corona de este reino, pero las tierras bajas siguen gobernadas por grandes bestias. Su rugido despierta algo profundo en mí, un instinto primario.',
+	'Journal.NAME_BONE_CIRCLER': 'Caránido',
+	'Journal.DESC_BONE_CIRCLER':
+		'Bicho alado común de las tierras bajas. Generalmente dócil, pero atacará si se siente amenazado.',
+	'Journal.NOTE_BONE_CIRCLER':
+		'Su forma redondeada y regordeta es ideal para la práctica de tiro. Me cuesta resistirme a probar mi puntería con ellos...',
+	'Journal.NAME_BONE_CIRCLER_VICIOUS': 'Caránido feroz',
+	'Journal.DESC_BONE_CIRCLER_VICIOUS':
+		'Bicho alado y agresivo de las tierras bajas. Cuando se enoja, golpea rápidamente con su afilada cola.',
+	'Journal.NOTE_BONE_CIRCLER_VICIOUS':
+		'Sus alas son bastante pequeñas en comparación con su tamaño. Quizás utiliza el aire cálido de estas tierras ardientes para mantenerse en el aire. Ingenioso, de ser así.',
+	'Journal.NAME_BONE_HOPPER': 'Saltahuesos',
+	'Journal.DESC_BONE_HOPPER': 'Criatura herbívora con sentidos agudos que huye ágilmente del peligro.',
+	'Journal.NOTE_BONE_HOPPER':
+		'A pesar del Embrujo de su coraza, no se ha dejado dominar por la agresividad. Su deseo de huir prevalece.',
+	'Journal.NAME_BONE_HOPPER_GIANT': 'Anciano saltahuesos',
+	'Journal.DESC_BONE_HOPPER_GIANT':
+		'Alta criatura de sentidos agudos. Defiende a la manada con sus poderosas patas y su máscara de punta afilada.',
+	'Journal.NOTE_BONE_HOPPER_GIANT':
+		'Hay una sorprendente fuerza oculta en sus delgados y elegantes miembros. Sería un placer cabalgar sobre él...',
+	'Journal.NAME_BONE_SPITTER': 'Lavácaro',
+	'Journal.DESC_BONE_SPITTER':
+		'Ácaro óseo volador que vive cerca de la lava. Escupe brea abrasadora contra su presa.',
+	'Journal.NOTE_BONE_SPITTER':
+		'Su pegajosa saliva sería, sin duda, un útil material de fabricación si se moldeara cuando está fresca. Por desgracia, no puedo pararme a experimentar.',
+	'Journal.NAME_BONE_ROLLER': 'Pelotero',
+	'Journal.DESC_BONE_ROLLER': 'Bicho joven y huesudo que puede enroscar su cuerpo para formar una bola.',
+	'Journal.NOTE_BONE_ROLLER':
+		'Su coraza rugosa y estriada se agarra firmemente a cualquier superficie. Incluso las paredes y los tejados se convierten en vías de paso para estos ágiles bichos.',
+	'Journal.NAME_BONE_THUMPER': 'Apisonador',
+	'Journal.DESC_BONE_THUMPER':
+		'Rodillo gigante de las tierras bajas. Aplasta con su corpachón a las criaturas más pequeñas.',
+	'Journal.NOTE_BONE_THUMPER':
+		'Su gran tamaño es un arma eficaz. Lo malo es que necesita mucho sustento. Esta criatura se pasa casi todo el tiempo comiendo. Una vida aceptable para algunos.',
+	'Journal.NAME_SPINE_FLOATER': 'Pinchoso',
+	'Journal.DESC_SPINE_FLOATER': 'Flotador lanzapúas de las tierras bajas.',
+	'Journal.NOTE_SPINE_FLOATER':
+		'Su aura espeluznante... y sus púas aceradas estropean la admiración que sentía por su suave plumón.',
+	'Journal.NAME_ROCK_ROLLER': 'Pedernajo',
+	'Journal.DESC_ROCK_ROLLER':
+		'Escarabajo raramente visto que pasa la mayor parte de su vida anidado en medio de huesos y rocas.',
+	'Journal.NOTE_ROCK_ROLLER':
+		'Su coraza está cubierta de chispeantes pedergemas y sus excreciones tienen propiedades explosivas similares.',
+	'Journal.NAME_RHINO': 'Rinoterrestre',
+	'Journal.DESC_RHINO':
+		'Bestia de cuerno largo de las tierras bajas de Telalejana. Se sirve de su cuerno tanto para empalar como para desgarrar el suelo, arrojando nubes de peligrosos escombros.',
+	'Journal.NOTE_RHINO':
+		'Ciertas herramientas y habilidades pueden perforar sus defensas. Debería ajustar mi estrategia según sea necesario.',
+	'Journal.NAME_CRYPT_WORM': 'Gromlín',
+	'Journal.DESC_CRYPT_WORM': 'Joven gusano enmascarado que se deleita emboscando a los intrusos en sus túneles.',
+	'Journal.NOTE_CRYPT_WORM': 'Un demonio frustrante. Huyen bajo los huesos cada vez que intento abatirlos.',
+	'Journal.NAME_BONE_WORM': 'Grom',
+	'Journal.DESC_BONE_WORM':
+		'Gusano excavador que utiliza sus numerosos dientes romos para perforar incluso el hueso más duro.',
+	'Journal.NOTE_BONE_WORM':
+		'Atraviesa la roca y los huesos sin descanso aparente. ¿Tiene algún destino? ¿O solo cava cada vez más hondo por instinto?',
+	'Journal.NAME_BONE_BEAST': 'Bestia Campana',
+	'Journal.DESC_BONE_BEAST':
+		'Bicho enorme y duro que vive y viaja a través de las venas de viejas campanas de Telalejana.',
+	'Journal.NOTE_BONE_BEAST':
+		'Esta se ha aliado conmigo, ya sea como agradecimiento por haberla salvado o por respeto a alguien a quien juzga como igual. Sea cual sea el motivo, su compañía es bienvenida.',
+	'Journal.NAME_PILGRIM_03': 'Peregrino arrastrado',
+	'Journal.DESC_PILGRIM_03': 'Bicho básico de Telalejana que se arrastra por el suelo.',
+	'Journal.NOTE_PILGRIM_03': 'Tras sucumbir al Embrujo de Telalejana, ahora hace poco más que rezar y agredir.',
+	'Journal.NAME_PILGRIM_01': 'Peregrino saltarín',
+	'Journal.DESC_PILGRIM_01': 'Bicho ágil de Telalejana que ha perdido sus funciones superiores por el Embrujo.',
+	'Journal.NOTE_PILGRIM_01': 'Con una coraza más blanda que la mayoría, cuenta con su atletismo para sobrevivir.',
+	'Journal.NAME_PILGRIM_04': 'Peregrino alado cornudo',
+	'Journal.DESC_PILGRIM_04': 'Peregrino bajo que embiste contra las amenazas con su largo cuerno.',
+	'Journal.NOTE_PILGRIM_04': 'Bien equipado de nacimiento. En su asalto, se convierte en su propio proyectil.',
+	'Journal.NAME_PILGRIM_02': 'Peregrino mazacote',
+	'Journal.DESC_PILGRIM_02': 'Robusto bicho que ha sucumbido al Embrujo. Rueda contra las amenazas con abandono.',
+	'Journal.NOTE_PILGRIM_02':
+		'Un raro bicho de estas tierras enfermas. Las corazas de la mayoría de los peregrinos parecen pequeñas en comparación. ¿Qué alimento descubrirían para crecer tanto?',
+	'Journal.NAME_PILGRIM_BELL_THROWER': 'Peregrino portacampanas',
+	'Journal.DESC_PILGRIM_BELL_THROWER':
+		'Bicho común que empuña viejas campanas. Lanza las campanas a quien considere aún libre.',
+	'Journal.NOTE_PILGRIM_BELL_THROWER':
+		'En otro tiempo, sus campanas habrían sonado con esperanza y alegría, animando a sus compañeros de escalada. Por desgracia, las campanas se han convertido en meros instrumentos de combate.',
+	'Journal.NAME_PILGRIM_FLY': 'Peregrino alado',
+	'Journal.DESC_PILGRIM_FLY': 'Bicho de cuerno corto que nace con alas poco desarrolladas.',
+	'Journal.NOTE_PILGRIM_FLY':
+		'Puede volar, pero por poco. Quizá pueda despegar, pero esas tristes alas nunca lo llevarán muy lejos.',
+	'Journal.NAME_PILGRIM_05': 'Peregrino anciano',
+	'Journal.DESC_PILGRIM_05':
+		'Bicho macizo consumido por hilo embrujado. Utiliza su corpachón para aplastar a los otros.',
+	'Journal.NOTE_PILGRIM_05':
+		'Un bicho que tuvo la suerte de haber podido envejecer. Los caminos de Telalejana acaban con la mayoría mucho antes.',
+	'Journal.NAME_PILGRIM_BELLTHROWER_FLY': 'Peregrino portacampanas alado',
+	'Journal.DESC_PILGRIM_BELLTHROWER_FLY': 'Peregrino dotado de grandes alas que porta campanas de hierro.',
+	'Journal.NOTE_PILGRIM_BELLTHROWER_FLY':
+		'En terrenos irregulares, su combinación de vuelo y alcance puede ser un reto, incluso para mí.',
+	'Journal.NAME_PILGRIM_HIKER': 'Peregrino senderista',
+	'Journal.DESC_PILGRIM_HIKER':
+		'Bicho de dura coraza con alfiler de escalada. Su alfiler, que antes era una ayuda, se ha convertido en su arma, aunque el bicho es poco refinado en su uso.',
+	'Journal.NOTE_PILGRIM_HIKER':
+		'Un bicho antaño frágil, empujado por el retorcido hilo más allá de sus límites mortales.',
+	'Journal.NAME_PILGRIM_STAFFWIELDER': 'Peregrino guía',
+	'Journal.DESC_PILGRIM_STAFFWIELDER': 'Viejo peregrino que lleva un pesado bastón con una campana de hierro.',
+	'Journal.NOTE_PILGRIM_STAFFWIELDER':
+		'La gran campana parece significar que otrora fue líder de una compañía de escalada, aunque el Embrujo ha borrado esa antigua autoridad.',
+	'Journal.NAME_PILGRIM_MOSS_SPITTER': 'Peregrino hipertrofiado',
+	'Journal.DESC_PILGRIM_MOSS_SPITTER': 'Peregrino envejecido, cubierto de líquenes y musgo.',
+	'Journal.NOTE_PILGRIM_MOSS_SPITTER':
+		'El musgo parece crecer incluso dentro de su estómago, que el peregrino escupe a los enemigos en pegotes comprimidos. Una forma de ataque asquerosa.',
+	'Journal.NAME_ROSARY_PILGRIM': 'Peregrino codicioso',
+	'Journal.DESC_ROSARY_PILGRIM':
+		'Fuerte bicho repleto de rosarios. Si se enfada, usa los cordeles como látigos en un ataque incesante.',
+	'Journal.NOTE_ROSARY_PILGRIM':
+		'¿Es su riqueza un símbolo de pureza, o de codicia? Seguramente la mayoría vería como pecado acaparar tanto.',
+	'Journal.NAME_ROSARY_THIEF': 'Ladrón de rosarios',
+	'Journal.DESC_ROSARY_THIEF': 'Pernicioso saqueador que abunda por toda Telalejana.',
+	'Journal.NOTE_ROSARY_THIEF':
+		'Mientras estos molestos bichos campen a sus anchas, ni rosarios ni baratijas están a salvo.',
+	'Journal.NAME_TAR_SLUG': 'Lavabosa',
+	'Journal.DESC_TAR_SLUG':
+		'Molusco pegajoso que se defiende rociando líquido ardiente desde unos crecimientos que tiene en el lomo.',
+	'Journal.NOTE_TAR_SLUG':
+		'Lo que en principio parece un mecanismo puramente defensivo, también puede ser necesario para deshacerse del exceso de calor.',
+	'Journal.NAME_TAR_SLUG_HUGE': 'Lavalarga',
+	'Journal.DESC_TAR_SLUG_HUGE': 'Molusco adulto capaz de liberar un torrente de líquido ardiente por el lomo.',
+	'Journal.NOTE_TAR_SLUG_HUGE':
+		'Que sea capaz de sobrevivir almacenando tanto líquido ardiente en su interior... Antes lo habría creído imposible, pero Telalejana alberga muchas maravillas.',
+	'Journal.NAME_DOCK_WORKER': 'Paleador de roca ígnea',
+	'Journal.DESC_DOCK_WORKER':
+		'Obrero de bajo nivel que ha sucumbido al Embrujo de Telalejana. Continúa su tarea por instinto, aunque de forma mucho más sencilla que antes.',
+	'Journal.NOTE_DOCK_WORKER':
+		'Este reino parece más avanzado en metalistería de lo que lo estuvo nunca el mío, en gran parte debido a la fuente de calor natural de su base. Trabajar en un entorno así es una proeza impresionante.',
+	'Journal.NAME_DOCK_FLYER': 'Portapedernales',
+	'Journal.DESC_DOCK_FLYER':
+		'Obrero aéreo que ha sucumbido al Embrujo de Telalejana. Lleva una bolsa con pedernales que arroja a los intrusos.',
+	'Journal.NOTE_DOCK_FLYER':
+		'Ese material incendiario que transportan es una maravilla natural, con muchas aplicaciones potenciales. Es un desperdicio tirármelo así como así cada vez que paso.',
+	'Journal.NAME_DOCK_BOMBER': 'Portallamas',
+	'Journal.DESC_DOCK_BOMBER':
+		'Valiente obrero que transporta un pedernal de llama inestable y lleva una pesada campana para protegerse de una posible ignición.',
+	'Journal.NOTE_DOCK_BOMBER': 'La suya ha de ser una vida de alto riesgo, seguida de un final corto y abrasador.',
+	'Journal.NAME_SHIELD_DOCK_WORKER': 'Tamizador de rocahumada',
+	'Journal.DESC_SHIELD_DOCK_WORKER':
+		'Estibador de los Muelles Profundos que porta un címbalo. Tamiza los restos de rocahumada para buscar rastros de minerales más valiosos.',
+	'Journal.NOTE_SHIELD_DOCK_WORKER':
+		'El Embrujo les ha robado una parte importante a estos bichos. Sin embargo, siguen empeñados en su antigua tarea. Hasta que sienten mi presencia, claro...',
+	'Journal.NAME_DOCK_CHARGER': 'Buzo de las profundidades',
+	'Journal.DESC_DOCK_CHARGER':
+		'Bicho equipado con una campana que antaño se encargaba de explotar las profundidades más hondas y traicioneras bajo los muelles.',
+	'Journal.NOTE_DOCK_CHARGER':
+		'Sus pesadas campanas los blindan bien contra mis golpes, pero contra el calor agobiante... ¿Ayudan en algo?',
+	'Journal.NAME_DOCK_GUARD_THROWER': 'Hermanos mayores<br>Signis y Gron',
+	'Journal.DESC_DOCK_GUARD_THROWER':
+		'Supervisores mayores de Muelles Profundos, responsables de la supervisión y el castigo de los obreros menores.',
+	'Journal.NOTE_DOCK_GUARD_THROWER':
+		'Aunque han sucumbido a la locura del Embrujo, siguen comandando la interminable excavación de sus cuevas.',
+	'Journal.NAME_SMALL_CRAB': 'Cragglerín',
+	'Journal.DESC_SMALL_CRAB': 'Forma inmadura del más formidable Craggler.',
+	'Journal.NOTE_SMALL_CRAB':
+		'Si se les deja crecer, estos jóvenes bichos lucharán entre sí hasta que solo quede uno.',
+	'Journal.NAME_ROOF_CRAB': 'Craggler',
+	'Journal.DESC_ROOF_CRAB': 'Insecto escurridizo de grueso blindaje que prefiere los lugares altos.',
+	'Journal.NOTE_ROOF_CRAB':
+		'Lleva una gran cantidad de ácido abrasador en un saco estratificado dentro de su coraza. Riega con ácido, que escupe por la boca, a cualquier criatura que vea como alimento.',
+	'Journal.NAME_FIELDS_FLOCK_FLYERS': 'Cepiflito',
+	'Journal.DESC_FIELDS_FLOCK_FLYERS':
+		'Pequeñas y temerosas criaturas que se apiñan en bandadas y huyen al primer indicio de peligro.',
+	'Journal.NOTE_FIELDS_FLOCK_FLYERS':
+		'Avisan a sus congéneres en cuanto perciben una amenaza. Una cacería con éxito aquí supone permanecer en silencio e indetectable hasta el golpe decisivo.',
+	'Journal.NAME_FIELDS_GOOMBA': 'Fértido',
+	'Journal.DESC_FIELDS_GOOMBA':
+		'Insecto asustadizo de los Campos Lejanos. Sus antenas se asemejan a tallos de hierba y le ayudan a camuflarse.',
+	'Journal.NOTE_FIELDS_GOOMBA':
+		'No tiene medios de defensa. Su única esperanza de supervivencia es que lo confundan con una planta.',
+	'Journal.NAME_FIELDS_FLYER': 'Fértido alado',
+	'Journal.DESC_FIELDS_FLYER':
+		'Insecto dócil cuyas alas imitan las hierbas de los Campos Lejanos. Un bocado común para los depredadores más grandes.',
+	'Journal.NOTE_FIELDS_FLYER':
+		'Cuando se posa, pasa convincentemente por planta. En vuelo, su cuerpo bulboso arruina rápidamente el engaño.',
+	'Journal.NAME_SONG_GOLEM': 'Cuarto Coro',
+	'Journal.DESC_SONG_GOLEM': 'Imponente autómata de hierro, impulsado por un rotor y un engranaje.',
+	'Journal.NOTE_SONG_GOLEM':
+		'Construir un artefacto tan grande y a la vez tan ágil es un logro aterrador de Telalejana.',
+	'Journal.NAME_BONE_HUNTER_TINY': 'Skarr recolector',
+	'Journal.DESC_BONE_HUNTER_TINY': 'Pequeña hormiga excavadora, sirviente de los Skarr más grandes.',
+	'Journal.NOTE_BONE_HUNTER_TINY':
+		'Estos bichos trabajan principalmente como buscadores y forrajeadores para los guerreros de su tribu. Antes evitaban el combate por naturaleza.',
+	'Journal.NAME_BONE_HUNTER_BUZZER': 'Skarr alado',
+	'Journal.DESC_BONE_HUNTER_BUZZER':
+		'Veloz depredador que acecha en tejados y salientes, a menudo invocado para ayudar a sus compañeros más grandes.',
+	'Journal.NOTE_BONE_HUNTER_BUZZER':
+		'Serían eficaces compañeros de caza, aunque sospecho que incluso sin el Embrujo su lealtad seguiría siendo siempre hacia su clan.',
+	'Journal.NAME_BONE_HUNTER_CHILD': 'Skarr batidor',
+	'Journal.DESC_BONE_HUNTER_CHILD':
+		'Joven cazador hormiga que blande hoces talladas a partir de dientes. Suele pedir auxilio si se acerca el peligro.',
+	'Journal.NOTE_BONE_HUNTER_CHILD':
+		'A pesar de su juventud, es un rival impresionante. Probablemente su tribu lo haya entrenado desde su nacimiento.',
+	'Journal.NAME_BONE_HUNTER': 'Skarr acechador',
+	'Journal.DESC_BONE_HUNTER': 'Hábil cazador hormiga que porta una hoja y armadura de hueso.',
+	'Journal.NOTE_BONE_HUNTER':
+		'Fieros, fuertes y disciplinados... pero estas cualidades no les protegen del Embrujo. ¿Es tal destino inevitable en estas tierras?',
+	'Journal.NAME_BONE_HUNTER_FLY': 'Skarr con lanza',
+	'Journal.DESC_BONE_HUNTER_FLY': 'Cazador hormiga alado que ataca desde el aire con su lanza de hueso.',
+	'Journal.NOTE_BONE_HUNTER_FLY':
+		'En mi juventud, envidiaba a todos los bichos con alas. Incluso creía que igual me saldría un par... Pero ya sé que eso no va a suceder. Hay que aceptar las limitaciones del propio cuerpo... Y mejorarlas con herramientas según sea necesario.',
+	'Journal.NAME_BONE_HUNTER_THROW': 'Skarr guardián',
+	'Journal.DESC_BONE_HUNTER_THROW':
+		'Enorme cazador hormiga encargado de proteger los almacenes y pasadizos de su tribu.',
+	'Journal.NOTE_BONE_HUNTER_THROW':
+		'Su coraza es perfecta para su cometido; es un guerrero grande como una muralla y un luchador experto. Si espero conseguir sus tesoros, debo dar lo mejor de mí.',
+	'Journal.NAME_BONE_HUNTER_TRAPPER': 'Gurr el Proscrito',
+	'Journal.DESC_BONE_HUNTER_TRAPPER': 'Skarr enorme, aunque sigiloso. Es un experto trampero y maestro de la maleza.',
+	'Journal.NOTE_BONE_HUNTER_TRAPPER':
+		'Sus huellas y trampas... Debería haber sido obvio desde el principio que este viejo cazador iba a por mí. Pero, ¿qué razón lo llevó a ponerse a prueba tan brutalmente? Sospecho que nunca sabré la respuesta.',
+	'Journal.NAME_BONE_HUNTER_CHIEF': 'Última garra',
+	'Journal.DESC_BONE_HUNTER_CHIEF':
+		'Antiguo cazador de élite que actuaba como última línea de defensa ante su madre.',
+	'Journal.NOTE_BONE_HUNTER_CHIEF':
+		'Su habilidad lo hizo ser elegido en su día, y puedo ver claramente por qué. Habría vivido y entrenado solo para este deber.',
+	'Journal.NAME_HUNTER_QUEEN': 'Karmelita, la Cantante Skarr',
+	'Journal.DESC_HUNTER_QUEEN': 'Reina de la canción de los Skarr y su guerrera de más talento.',
+	'Journal.NOTE_HUNTER_QUEEN':
+		'Esta elegante regente antaño poseía una habilidad que rivalizaba con la mía. En el apogeo de su juventud, su voz unía a todos los Skarr a su servicio.',
+	'Journal.NAME_MITE': 'Ácaro',
+	'Journal.DESC_MITE': 'Sabandija de rápida propagación, común en los rincones oscuros de Páramo Gris.',
+	'Journal.NOTE_MITE':
+		'Individualmente no son gran cosa, pero su número es sin duda enorme y la mayoría permanecen ocultos.',
+	'Journal.NAME_MITEFLY': 'Ácaro volador',
+	'Journal.DESC_MITEFLY':
+		'Alimaña aérea, menos común que sus equivalentes terrestres. Si se le molesta, ataca con sus afilados colmillos.',
+	'Journal.NOTE_MITEFLY':
+		'En mi tierra natal había bichos similares que roían los suministros de alimentos no vigilados. En mi infancia los cazaba, para entrenarme y poner a prueba mis habilidades.',
+	'Journal.NAME_GNAT_GIANT': 'Ácaro madre',
+	'Journal.DESC_GNAT_GIANT': 'Ácaro hembra envejecido, más grande y fuerte que la mayoría de sus congéneres.',
+	'Journal.NOTE_GNAT_GIANT':
+		'Es corta de vista, pero tiene un agudo olfato. Carga con su gran corpachón contra los olores extraños. Mantener la fiereza hasta una edad tan avanzada es un rasgo admirable.',
+	'Journal.NAME_FARMER_CATCHER': 'Captador de restos',
+	'Journal.DESC_FARMER_CATCHER':
+		'Bicho encargado de atrapar los restos de seda que caen de la Ciudadela. Atacará con su bastón si se le provoca.',
+	'Journal.NOTE_FARMER_CATCHER':
+		'Estos bichos parecen haber estado trabajando en todo momento. Es un lúgubre e interminable trabajo al servicio de la invisible Ciudadela superior.',
+	'Journal.NAME_FARMER_SCISSORS': 'Cortador de seda',
+	'Journal.DESC_FARMER_SCISSORS':
+		'Bicho con tijeras encargado de cortar y enrollar en carretes los restos de seda caídos para devolverlos arriba, a la Ciudadela.',
+	'Journal.NOTE_FARMER_SCISSORS':
+		'¿La razón de su cacareante locura ha sido el Embrujo, o se debe a su interminable labor?',
+	'Journal.NAME_FARMER_CENTIPEDE': 'Hilador',
+	'Journal.DESC_FARMER_CENTIPEDE':
+		'Bicho alto encargado de amontonar los restos de seda en preparación para volver a liarlos en carrete. Su afilado rastrillo ahora funciona igual de bien como arma blanca.',
+	'Journal.NOTE_FARMER_CENTIPEDE':
+		'La suya parece una tarea triste y agotadora, una servidumbre eterna para una Ciudadela invisible.',
+	'Journal.NAME_VAMPIRE_GNAT': 'Bestia alada del Páramo',
+	'Journal.DESC_VAMPIRE_GNAT':
+		'Bestia-ácaro alada, criada en abundancia para dar caza a los obreros que antaño intentaban huir de sus tareas.',
+	'Journal.NOTE_VAMPIRE_GNAT':
+		'Con sus cuidadores muertos desde hace mucho tiempo, este ser merodeaba por las torres del Páramo Gris, dándose un festín tanto con los peregrinos como con los sirvientes.',
+	'Journal.NAME_WISP': 'Fatuo',
+	'Journal.DESC_WISP': 'Hada de corta vida nacida de una llama parpadeante.',
+	'Journal.NOTE_WISP':
+		'Vive solo un luminoso instante... ¿Qué se sentirá? ¿Gloria, o solo desesperación? ¿O podría ser ambas cosas, mezcladas a partes iguales?',
+	'Journal.NAME_FARMER_WISP': 'Bicho ardiente',
+	'Journal.DESC_FARMER_WISP': 'Insecto de muchas patas con una obsesión fanática por las llamas.',
+	'Journal.NOTE_FARMER_WISP':
+		'De algún modo, aprendieron a dominar a los abrasadores fatuos que comparten su espesura. Pueden invocarlos y darles órdenes a voluntad.',
+	'Journal.NAME_WISP_PYRE_EFFIGY': 'Padre de la Llama',
+	'Journal.DESC_WISP_PYRE_EFFIGY': 'Tótem y dios, construido y venerado por los bichos ardientes.',
+	'Journal.NOTE_WISP_PYRE_EFFIGY':
+		'En el corazón de la pira se alojaban los restos de un bicho avejentado. La estructura sugería que deseaba inmolarse. De ser así, lo ha conseguido.',
+	'Journal.NAME_CROW': 'Cuervón',
+	'Journal.DESC_CROW':
+		'Carroñero chillón que anida en lo alto de las cavernas y se alimenta de los peregrinos que pasan.',
+	'Journal.NOTE_CROW':
+		'Un bicho cualquiera podría sucumbir fácilmente ante esta amenaza que ataca desde arriba. Lo más peligroso es que rara vez atacan solos.',
+	'Journal.NAME_CROWMAN': 'Cuervón alto',
+	'Journal.DESC_CROWMAN': 'Cuervón adulto con alas harapientas y armado con un alfiler reutilizado.',
+	'Journal.NOTE_CROWMAN':
+		'Mucho más hostil que sus compañeros más jóvenes, pero aparentemente menos propenso a alejarse de su nido.',
+	'Journal.NAME_CROWMAN_DAGGER': 'Cuervón recio',
+	'Journal.DESC_CROWMAN_DAGGER': 'Cuervón adulto que lleva varios alfileres cortos.',
+	'Journal.NOTE_CROWMAN_DAGGER':
+		'Un tanto cobarde. Intenta mantenerse a distancia para arrojar sus afiladas armas. Lo mejor es lanzarse hacia él y golpear rápido.',
+	'Journal.NAME_CROWMAN_JUROR_TINY': 'Jurado cuervón',
+	'Journal.DESC_CROWMAN_JUROR_TINY': 'Carroñero chillón teñido de negro de luto por el colapso de su tierra.',
+	'Journal.NOTE_CROWMAN_JUROR_TINY':
+		'Débil, temeroso y consciente del inminente final. Comprendo su desesperación, pero mi muerte no evitará la caída que se avecina.',
+	'Journal.NAME_CROWMAN_JUROR': 'Jurado cuervón alto',
+	'Journal.DESC_CROWMAN_JUROR': 'Cuervón anciano que sirve en una ceremonia sagrada.',
+	'Journal.NOTE_CROWMAN_JUROR':
+		'Respondí por curiosidad a su llamada, pero no permitiré que me entretenga mucho tiempo. Debo trabajar rápido para arreglar mi gran error.',
+	'Journal.NAME_CROWMAN_DAGGER_JUROR': 'Jurado cuervón recio',
+	'Journal.DESC_CROWMAN_DAGGER_JUROR': 'Cuervón anciano de baja estatura que sirve en su corte.',
+	'Journal.NOTE_CROWMAN_DAGGER_JUROR':
+		'Pretenden acabar con su única posibilidad de supervivencia. Por desgracia, las palabras serían inútiles. Solo tengo mi hoja para ofrecer respuesta.',
+	'Journal.NAME_CRAWFATHER': 'Padre Cuervón',
+	'Journal.DESC_CRAWFATHER':
+		'Señor y juez de los cuervones de Telalejana. Da muerte con su pico de acero a bichos sentenciados.',
+	'Journal.NOTE_CRAWFATHER':
+		'¿Reconoció mi papel en el vacío de esta tierra? De ser así, quizá su juicio no fue injusto. No traigo más que destrucción a estos bichos.',
+	'Journal.NAME_MAGGOTS': 'Gusasucio',
+	'Journal.DESC_MAGGOTS': 'Larva infantil sin mente, recubierta de espesa baba.',
+	'Journal.NOTE_MAGGOTS':
+		'Se aferran con fuerza a las corazas de otros insectos, destruyendo cualquier esperanza de concentración o comodidad.',
+	'Journal.NAME_DUSTROACH_POLLYWOG': 'Suciacuajo',
+	'Journal.DESC_DUSTROACH_POLLYWOG': 'Pariente más joven de la suciaracha, más gusano que bicho.',
+	'Journal.NOTE_DUSTROACH_POLLYWOG':
+		'Estas criaturas parecen haber sido criadas deliberadamente en corrales acuáticos. Si son alimento, su olor sugiere que deben de tener un sabor vil.',
+	'Journal.NAME_DUSTROACH': 'Suciaracha',
+	'Journal.DESC_DUSTROACH':
+		'Bicho de carga hambriento con un apetito insaciable. A pesar de su dura piel y su carne de sabor intenso, a veces se las cría como alimento porque se reproducen con rapidez.',
+	'Journal.NOTE_DUSTROACH':
+		'Es una criatura asquerosa. Me pica la coraza con su sola presencia. En los corrales, donde son tan abundantes, estoy siempre en vilo.',
+	'Journal.NAME_BLOAT_ROACH': 'Suciarachota',
+	'Journal.DESC_BLOAT_ROACH':
+		'Vástago obeso de las suciarachas, nacido del humo de los tubos de escape de la Ciudadela. El estómago flácido de esta cucaracha alada está lleno de bilis chisporroteante.',
+	'Journal.NOTE_BLOAT_ROACH':
+		'Su forma es absurda... No debería poder sostenerse en el aire. Quizá los gases nocivos de su estómago la hagan más ligera.',
+	'Journal.NAME_ROACHFEEDER_SHORT': 'Atrapacucarachas',
+	'Journal.DESC_ROACHFEEDER_SHORT':
+		'Bicho bajito y ágil que utiliza bolas de púas para mantener a las bestias en sus rediles.',
+	'Journal.NOTE_ROACHFEEDER_SHORT':
+		'Su arma arrojadiza es muy eficaz y adecuada para las anchas cavernas en las que habitan. Estos astutos bichitos deben de tener buena garra para la artesanía.',
+	'Journal.NAME_ROACHFEEDER_TALL': 'Alimentador de cucarachas',
+	'Journal.DESC_ROACHFEEDER_TALL':
+		'Alto cucarachero que alimenta a las suciarachas con una dieta de gachas de gusano.',
+	'Journal.NOTE_ROACHFEEDER_TALL':
+		'Su alfiler parece diseñado para mantener a raya a las voraces cucarachas y evitar que el cuidador acabe convertido en comida.',
+	'Journal.NAME_ROACHKEEPER': 'Pastor de cucarachas',
+	'Journal.DESC_ROACHKEEPER': 'Cucarachero viejo y canoso, lastrado con una lazada de cadena pesada.',
+	'Journal.NOTE_ROACHKEEPER':
+		'Aunque su mente se ha perdido en gran parte, no ha olvidado su habilidad con la cadena. ¿Acaso el Embrujo ata eternamente a un bicho a la tarea que desempeñaba antes?',
+	'Journal.NAME_ROACHKEEPER_CHEF_TINY': 'Servidor de cucarachas',
+	'Journal.DESC_ROACHKEEPER_CHEF_TINY':
+		'Brutal cocinero responsable de cortar la carne de suciaracha en porciones comestibles.',
+	'Journal.NOTE_ROACHKEEPER_CHEF_TINY':
+		'¿Podría llamarse habilidad a lo que hace? No veo más que una cruda manipulación de la carne. Me pregunto si era diferente antes de que el Embrujo se apoderara de su mente.',
+	'Journal.NAME_ROACHKEEPER_CHEF': 'Lugoli, chef caída en desgracia',
+	'Journal.DESC_ROACHKEEPER_CHEF':
+		'Una antaño celebrada chef, exiliada de la Ciudadela por reiterados delitos culinarios.',
+	'Journal.NOTE_ROACHKEEPER_CHEF':
+		'De vuelta a sus cuevas natales, esta chef siguió ideando manjares demasiado repulsivos para cualquier bicho aún cuerdo.',
+	'Journal.NAME_WRAITH': 'Aparición',
+	'Journal.DESC_WRAITH':
+		'Espectro angustiado de hilo persistente. Pese a su naturaleza vaporosa, los golpes fuertes pueden se disipe durante un tiempo.',
+	'Journal.NOTE_WRAITH': 'No es un bicho, sino una proyección de la voluntad de otro creada con humo y seda.',
+	'Journal.NAME_SWAMP_DRIFTER': 'Polilla briznosa Lagnia',
+	'Journal.DESC_SWAMP_DRIFTER':
+		'Bicho raro y más tranquilo de las Aguas Biliares que sobrevive a su peligroso entorno haciéndose pasar por planta.',
+	'Journal.NOTE_SWAMP_DRIFTER':
+		'Es bonita, pero no tan suave como parece en un principio. La planta a la que imita es escamosa y áspera, y el pelaje del insecto comparte una textura similar.',
+	'Journal.NAME_SWAMP_GOOMBA': 'Ácaro explosivo',
+	'Journal.DESC_SWAMP_GOOMBA': 'Insecto reptante con un saco de bilis chisporroteante en el abdomen.',
+	'Journal.NOTE_SWAMP_GOOMBA':
+		'La amenaza de su trasero explosivo es un eficaz elemento disuasorio para los depredadores, pero la menor sacudida o caída puede provocar su final prematuro.',
+	'Journal.NAME_SWAMP_MOSQUITO': 'Escupebilis pantanoso',
+	'Journal.DESC_SWAMP_MOSQUITO': 'Alimaña muy común con una probóscide afilada y un vientre lleno de bilis.',
+	'Journal.NOTE_SWAMP_MOSQUITO':
+		'Más peligroso en el momento de su muerte explosiva y corrosiva de lo que nunca fue en vida.',
+	'Journal.NAME_SWAMP_MOSQUITO_SKINNY': 'Escupebilis',
+	'Journal.DESC_SWAMP_MOSQUITO_SKINNY':
+		'Alimaña flotante con una probóscide hueca capaz de escupir montones de bilis chisporroteante.',
+	'Journal.NOTE_SWAMP_MOSQUITO_SKINNY':
+		'Para subsistir en el agua enfermiza de este fétido entorno, escupe los elementos más tóxicos. Con el paso de las generaciones, esta antigua técnica de supervivencia se ha convertido en una eficaz herramienta de caza.',
+	'Journal.NAME_SWAMP_MUCKMAN': 'Estacafín',
+	'Journal.DESC_SWAMP_MUCKMAN': 'Bicho astuto que caza con dardos hechos de estaca y bilis.',
+	'Journal.NOTE_SWAMP_MUCKMAN':
+		'Conocen bien sus dominios y acechan en sus caminos y ciénagas, siempre listos para atacar.',
+	'Journal.NAME_SWAMP_MUCKMAN_TALL': 'Estacafín trampero',
+	'Journal.DESC_SWAMP_MUCKMAN_TALL': 'Bicho trampero que lleva una bolsa de largas y afiladas estacas.',
+	'Journal.NOTE_SWAMP_MUCKMAN_TALL':
+		'Las innumerables trampas que ya ha tendido por todas sus cuevas son más molestas que el propio bicho.',
+	'Journal.NAME_SWAMP_SHAMAN': 'Groal el Grande',
+	'Journal.DESC_SWAMP_SHAMAN':
+		'Jefe y capellán de los estacafines, siempre furiosos contra la Ciudadela que asfixia sus cuevas y los hace sufrir.',
+	'Journal.NOTE_SWAMP_SHAMAN':
+		'Su fuerza estaba muy aumentada por almas robadas. No es el primero que las intenta acaparar o moldear con fines tan violentos.',
+	'Journal.NAME_SWAMP_BARNACLE': 'Balanok',
+	'Journal.DESC_SWAMP_BARNACLE':
+		'Crecimiento dientudo que vive en los techos de las cuevas. Envuelve a los bichos con su larga lengua y los arrastra hacia arriba para consumirlos.',
+	'Journal.NOTE_SWAMP_BARNACLE':
+		'Esconde su lengua entre frondas muy parecidas... Sus artimañas tienen un estilo impresionante.',
+	'Journal.NAME_SWAMP_DUCTSUCKER': 'Chupaconductos',
+	'Journal.DESC_SWAMP_DUCTSUCKER':
+		'Criatura succionadora que sobrevive gracias al espeso limo que recubre sus cuevas.',
+	'Journal.NOTE_SWAMP_DUCTSUCKER':
+		'Este bicho sin mente parece sentir solo a través de sus zarcillos, pero a pesar de esa simplicidad, sigue representando una seria amenaza.',
+	'Journal.NAME_POND_SKATER': 'Patinador de estanque',
+	'Journal.DESC_POND_SKATER':
+		'Insecto de dura coraza, común en la superficie del estanque de Bosque Coraza. Antaño era un alimento básico para los peregrinos de paso.',
+	'Journal.NOTE_POND_SKATER':
+		'Su forma de patinar por la superficie del agua es muy elegante. ¿Quizá sea una habilidad que se pueda aprender? Cuando el tiempo me lo permita, debería intentarlo.',
+	'Journal.NAME_PILGRIM_FISHER': 'Cazadora de los estanques',
+	'Journal.DESC_PILGRIM_FISHER':
+		'Vieja cazadora del estanque de Bosque Coraza. Lleva un largo alfiler y ha sucumbido al Embrujo.',
+	'Journal.NOTE_PILGRIM_FISHER': 'Antes cazaba solo por comida, ahora lo hace sin pensar y sin parar.',
+	'Journal.NAME_SHELLWOOD_GNAT': 'Jején de Bosque Coraza',
+	'Journal.DESC_SHELLWOOD_GNAT':
+		'Criatura diminuta y blanda que se protege con los duros y huecos tallos de Bosque Coraza.',
+	'Journal.NOTE_SHELLWOOD_GNAT': 'Aunque le rompan la piel leñosa, este insensato bicho seguirá intentando atacar.',
+	'Journal.NAME_SHELLWOOD_WASP': 'Avispa forestal',
+	'Journal.DESC_SHELLWOOD_WASP':
+		'Insecto puntiagudo y escurridizo que construye una resistente colmena con la corteza seca de Bosque Coraza.',
+	'Journal.NOTE_SHELLWOOD_WASP':
+		'Destruir las colmenas limitará su presencia en el bosque. Útil para mí ahora, mientras lo recorro. Peligroso a largo plazo para el orden del bosque. Incluso una pequeña perturbación puede afectar a su frágil equilibrio.',
+	'Journal.NAME_STICK_INSECT': 'Vastiguero',
+	'Journal.DESC_STICK_INSECT':
+		'Insecto que imita a una rama capaz de permanecer inmóvil durante largos periodos de tiempo, pero inesperadamente rápido cuando se le molesta.',
+	'Journal.NOTE_STICK_INSECT':
+		'Evitar su emboscada es una buena prueba para mis sentidos y mi capacidad de contraataque rápido.',
+	'Journal.NAME_STICK_INSECT_CHARGER': 'Vastiguero cornudo',
+	'Journal.DESC_STICK_INSECT_CHARGER':
+		'Insecto formado a imitación de una rama que nace con afilados cuernos retráctiles en la parte superior de la cabeza.',
+	'Journal.NOTE_STICK_INSECT_CHARGER':
+		'Su coraza le da la ventaja de la sorpresa, pero también le obliga a adoptar una forma esbelta y quebradiza que no aguanta un ataque fuerte.',
+	'Journal.NAME_STICK_INSECT_FLYER': 'Vastiguero cortezoso',
+	'Journal.DESC_STICK_INSECT_FLYER':
+		'Insecto alado con una coraza escamosa que se mimetiza perfectamente con su entorno.',
+	'Journal.NOTE_STICK_INSECT_FLYER':
+		'Su asalto... es como el juguete de un joven bicho que se ha vuelto mortífero. ¿Podría yo, con el tiempo, crear una herramienta de hilado similar?',
+	'Journal.NAME_SPLINTER_QUEEN': 'Hermana Vastiguera',
+	'Journal.DESC_SPLINTER_QUEEN':
+		'Imponente y vieja insecto que anida en las alturas de Bosque Coraza. Su dominio de las ramas garantizó que ningún peregrino sobreviviera al cruzar su territorio.',
+	'Journal.NOTE_SPLINTER_QUEEN':
+		'Vivió mucho y se alimentó mucho. El bosque será mucho más seguro tras su eliminación.',
+	'Journal.NAME_FLOWER_DRIFTER': 'Facia',
+	'Journal.DESC_FLOWER_DRIFTER':
+		'Bicho errante disfrazado de flor. Esparce nubes crepitantes de polen ante las amenazas.',
+	'Journal.NOTE_FLOWER_DRIFTER':
+		'Es una criatura muy hermosa. En la corte de mi propio reino habría gustado mucho como mascota ornamental.',
+	'Journal.NAME_BLOOM_SHOOTER': 'Pollenica',
+	'Journal.DESC_BLOOM_SHOOTER':
+		'Enemigo floral que reacciona instintivamente al movimiento cercano. Escupe bolitas de polen crepitantes que estallan al impactar.',
+	'Journal.NOTE_BLOOM_SHOOTER':
+		'¡Qué sentidos tan excepcionales tiene! Me detecta con facilidad, incluso sin emitir ningún sonido.',
+	'Journal.NAME_BLOOM_PUNCHER': 'Gahlia',
+	'Journal.DESC_BLOOM_PUNCHER':
+		'Enemigo floral con un núcleo en forma de máscara. Puede lanzar el núcleo hacia delante para golpear a los bichos incautos.',
+	'Journal.NOTE_BLOOM_PUNCHER':
+		'La máscara falsa por sí sola es lo bastante aterradora como para ahuyentar a las alimañas más pequeñas.',
+	'Journal.NAME_SETH': 'Seth',
+	'Journal.DESC_SETH':
+		'Eterno defensor del santuario de Bosque Coraza. Su alfiler y su címbalo muestran muchas señales de uso.',
+	'Journal.NOTE_SETH':
+		'Ofreció una advertencia justa y un desafío, un duelo en el sentido más estricto. Admiro su honor y su habilidad.',
+	'Journal.NAME_FLOWER_QUEEN': 'Nyleth',
+	'Journal.DESC_FLOWER_QUEEN': 'Antiguo corazón de Bosque Coraza, conectado a todos sus seres vivos.',
+	'Journal.NOTE_FLOWER_QUEEN':
+		'Antaño su presencia habría mantenido el frágil orden de su dominio, permitiendo el paso seguro de los bichos por sus ramas.',
+	'Journal.NAME_BELL_GOOMBA': 'Furmo',
+	'Journal.DESC_BELL_GOOMBA':
+		'Excavador que anida en las venas campana y busca campanas duras para proteger su blando cuerpo.',
+	'Journal.NOTE_BELL_GOOMBA': 'Me encantaría acariciar su suave pelaje, pero son demasiado agresivos.',
+	'Journal.NAME_BELL_FLY': 'Furmo alado',
+	'Journal.DESC_BELL_FLY':
+		'Bicho peludo bajo una pesada campana. Ha crecido demasiado para excavar, pero al madurar ha desarrollado pequeñas alas.',
+	'Journal.NOTE_BELL_FLY': 'Enorme y suave, una combinación fantástica arruinada por su agresividad embrujada.',
+	'Journal.NAME_BLADE_SPIDER': 'Telácnida',
+	'Journal.DESC_BLADE_SPIDER':
+		'Pequeño insecto arácnido que se encuentra en muchas grietas y cuevas por toda Telalejana.',
+	'Journal.NOTE_BLADE_SPIDER':
+		'Algo en su asalto me recuerda mi propia habilidad, aunque su talento proviene del puro instinto. Mi técnica se ha formado con un duro entrenamiento.',
+	'Journal.NAME_BLADE_SPIDER_HANG': 'Telácnida saltadora',
+	'Journal.DESC_BLADE_SPIDER_HANG':
+		'Insecto arácnido que anida dentro de agujeros oscuros en los techos de las cavernas. Se abalanza sobre su presa desde lo alto.',
+	'Journal.NOTE_BLADE_SPIDER_HANG':
+		'Un cazador astuto aprende a esperar mucho tiempo en emboscada, siempre listo para dar el primer golpe.',
+	'Journal.NAME_SHELL_FOSSIL_MIMIC': 'Fragmentardo',
+	'Journal.DESC_SHELL_FOSSIL_MIMIC': 'Astuto emboscador que se hace pasar por un fósil.',
+	'Journal.NOTE_SHELL_FOSSIL_MIMIC':
+		'Cuando se estimula, el bicho estampa su coraza de acero contra paredes, suelos y enemigos.',
+	'Journal.NAME_SAND_CENTIPEDE': 'Tallador de arena',
+	'Journal.DESC_SAND_CENTIPEDE': 'Gusano recubierto de coraza que vive bajo charcos de arenas movedizas.',
+	'Journal.NOTE_SAND_CENTIPEDE':
+		'Surge de la arena cuando detecta movimiento y consume cualquier ser o bicho lo bastante descuidado como para caer en sus fauces.',
+	'Journal.NAME_CORAL_JUDGE_CHILD': 'Retorzuelo',
+	'Journal.DESC_CORAL_JUDGE_CHILD': 'Joven larva que se retuerce y vive en la oscuridad.',
+	'Journal.NOTE_CORAL_JUDGE_CHILD':
+		'Si se les da la oportunidad, estas criaturas crecerán hasta adoptar una forma más grande y opresiva.',
+	'Journal.NAME_CORAL_JUDGE': 'Juez',
+	'Journal.DESC_CORAL_JUDGE': 'Guardián dorado de los Escalones Ajados que lleva un címbalo y un mazo.',
+	'Journal.NOTE_CORAL_JUDGE':
+		'Eliminan a cualquier peregrino o transeúnte que consideren impuro a su vista. Las innumerables cáscaras esparcidas por los caminos son prueba de sus contundentes decisiones.',
+	'Journal.NAME_LAST_JUDGE': 'Última Jueza',
+	'Journal.DESC_LAST_JUDGE':
+		'Árbitra final de los Escalones Ajados, encargada de garantizar que solo los impecables crucen la Gran Puerta.',
+	'Journal.NOTE_LAST_JUDGE':
+		'La enorme Jueza probablemente se mantuvo en pie a través de incontables generaciones, nunca derrotada, nunca vacilando en su cargo.',
+	'Journal.NAME_CORAL_SPIKE_GOOMBA': 'Furmo coralífero',
+	'Journal.DESC_CORAL_SPIKE_GOOMBA': 'Bicho de pelaje oscuro que se protege con una nuez de coral con púas.',
+	'Journal.NOTE_CORAL_SPIKE_GOOMBA':
+		'Su pelaje es espeso y sedoso. Por desgracia, como ha sucumbido al Embrujo, nunca podré acariciarlo con seguridad.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER': 'Driznito',
+	'Journal.DESC_CORAL_CONCH_SHOOTER': 'Criatura anidada que fusiona su cara con coral afilado.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER':
+		'Cuando la lanza, es fácil que la trayectoria de rebote de su máscara te pille por sorpresa, especialmente en espacios cerrados.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER_HEAVY': 'Driznarga',
+	'Journal.DESC_CORAL_CONCH_SHOOTER_HEAVY':
+		'Driznito macho, grande, feroz y territorial. Arroja su pesada máscara de coral contra los intrusos.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER_HEAVY':
+		'Tiene mucha precisión con su máscara. Su agresividad no perjudica a su puntería.',
+	'Journal.NAME_CORAL_CONCH_STABBER': 'Aguijonino',
+	'Journal.DESC_CORAL_CONCH_STABBER':
+		'Criatura de vuelo perezoso con una gran máscara de coral y una dura probóscide con la que apuñala a su presa.',
+	'Journal.NOTE_CORAL_CONCH_STABBER':
+		'Espera pasivamente a que la presa se cruce en su camino. Una técnica de la que no hay por qué mofarse. Lo que sea eficaz, es lo mejor.',
+	'Journal.NAME_CORAL_CONCH_DRILLER': 'Moscarola',
+	'Journal.DESC_CORAL_CONCH_DRILLER':
+		'Pequeño bicho que fabrica una coraza de coral afilado. Hace girar su coraza a gran velocidad para cortar la corteza y el hueso.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER':
+		'La forma en la que entra y sale rápidamente del suelo tiene un carácter casi juguetón. Una forma divertida y eficaz de emboscar a una presa.',
+	'Journal.NAME_CORAL_CONCH_DRILLER_GIANT': 'Gran moscarola',
+	'Journal.DESC_CORAL_CONCH_DRILLER_GIANT':
+		'Moscarola mayor, coronada con un enorme cuerno de coral. Tras encontrar pareja, rara vez se separan.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER_GIANT':
+		'Aparearse es un instinto básico, al que algunos bichos se entregan con entusiasmo. Una vez también quise gozar de una unión similar, pero mi esperanza de vida supera en mucho a la de mis parejas.',
+	'Journal.NAME_CORAL_GOOMBAS': 'Reptador encostrado',
+	'Journal.DESC_CORAL_GOOMBAS': 'Insecto escurridizo de coraza blanda encerrado en coral.',
+	'Journal.NOTE_CORAL_GOOMBAS':
+		'Escondidos en la corteza de su torre, estos bichos más pequeños habrían sobrevivido y prosperado.',
+	'Journal.NAME_CORAL_GOOMBA_LARGE': 'Mazacote encostrado',
+	'Journal.DESC_CORAL_GOOMBA_LARGE':
+		'Mazacote de coral con una densa coraza, criado hasta un tamaño inmenso por el Memorium de la Ciudadela.',
+	'Journal.NOTE_CORAL_GOOMBA_LARGE':
+		'La naturaleza distorsionada... Este bicho nació pequeño y suave. La Ciudadela lo deformó con la vana esperanza de que fuese sostenible.',
+	'Journal.NAME_CORAL_SWIMMER_FAT': 'Kai',
+	'Journal.DESC_CORAL_SWIMMER_FAT': 'Flotador rechoncho abundante en un pasado coralino.',
+	'Journal.NOTE_CORAL_SWIMMER_FAT':
+		'Antes pululaban alrededor de su torre, en número inmenso. Presenciar un despliegue de vida tan abundante es una oportunidad singular.',
+	'Journal.NAME_POKE_SWIMMER': 'Kai picagudo',
+	'Journal.DESC_POKE_SWIMMER':
+		'Insecto flotante con cuerno en espiral, capaz de defenderse a sí mismo y a sus compañeros.',
+	'Journal.NOTE_POKE_SWIMMER':
+		'Un miembro importante de un gran rebaño. Sin su presencia, los depredadores más grandes abocarían con rapidez a la extinción a los Kai.',
+	'Journal.NAME_SPIKE_SWIMMER': 'Kai de púas de acero',
+	'Journal.DESC_SPIKE_SWIMMER': 'Kai endurecido capaz de extender púas desde el interior de su cuerpo gelatinoso.',
+	'Journal.NOTE_SPIKE_SWIMMER':
+		'En apariencia suave, pero esconde una afilada sorpresa. Cualquier depredador más grande que intentara morderlo aprendería una lección punzante y dolorosa.',
+	'Journal.NAME_CORAL_SWIMMER_SMALL': 'Yuma',
+	'Journal.DESC_CORAL_SWIMMER_SMALL': 'Flotador gelatinoso del coral, de mente sencilla y plácido comportamiento.',
+	'Journal.NOTE_CORAL_SWIMMER_SMALL': 'Un bicho muy básico. No es una amenaza para mí, ni para nadie.',
+	'Journal.NAME_CORAL_BIG_JELLYFISH': 'Yumama',
+	'Journal.DESC_CORAL_BIG_JELLYFISH': 'Flotadora grande y gelatinosa. Ahuyenta las amenazas con su corpachón.',
+	'Journal.NOTE_CORAL_BIG_JELLYFISH':
+		'Cuando sucumbe, se divide en muchas formas más pequeñas. Otra criatura notable de esta tierra anterior a la monarca.',
+	'Journal.NAME_CORAL_WARRIOR': 'Karaka',
+	'Journal.DESC_CORAL_WARRIOR': 'Firme y hábil bicho de hoja de una tierra antaño floreciente perdida en el tiempo.',
+	'Journal.NOTE_CORAL_WARRIOR':
+		'Es el miembro principal de una poderosa orden, entrenada sin miedo y leal. El suyo era un reino de guerreros, uno construido sobre sus hojas.',
+	'Journal.NAME_CORAL_FLYER': 'Kakri',
+	'Journal.DESC_CORAL_FLYER': 'Exploradores ágiles y alados, a menudo emparejados con sus hermanos más pesados.',
+	'Journal.NOTE_CORAL_FLYER':
+		'Su técnica se parece a la mía, lo que favorece los golpes súbitos y los movimientos rápidos. ¿Quizá antaño fue un cazador?',
+	'Journal.NAME_CORAL_FLYER_THROW': 'Yago',
+	'Journal.DESC_CORAL_FLYER_THROW':
+		'Atacante aéreo de máscara ancha, entrenado para actuar como apoyo de sus hermanos terrestres mientras permanece a distancia.',
+	'Journal.NOTE_CORAL_FLYER_THROW':
+		'No es una fuerza de primera línea, pero en mi asalto a su torre, todos emergen contra mí.',
+	'Journal.NAME_CORAL_BRAWLER': 'Karak Gor',
+	'Journal.DESC_CORAL_BRAWLER': 'Cargador pesado y de coraza dura que apuesta por el peso y la fuerza.',
+	'Journal.NOTE_CORAL_BRAWLER':
+		'Mucho más duros por estar emparejados dentro de su incrustado dominio. Para comandarlo así, deben de haber vivido toda su vida dentro de su torre.',
+	'Journal.NAME_CORAL_HUNTER': 'Alita',
+	'Journal.DESC_CORAL_HUNTER':
+		'Cazador saltarín de una época pasada. Es el más rápido de su tribu, muy hábil con las hojas delanteras giratorias.',
+	'Journal.NOTE_CORAL_HUNTER':
+		'En las competiciones de velocidad contra fuerza, he visto triunfar más a menudo a los veloces, una lección que he aprendido muy bien.',
+	'Journal.NAME_CORAL_BUBBLE_BRUTE': 'Karaka cortezudo',
+	'Journal.DESC_CORAL_BUBBLE_BRUTE':
+		'Anciano hipertrofiado capaz de engendrar burbujas ardientes desde el interior de su coraza recubierta de coral.',
+	'Journal.NOTE_CORAL_BUBBLE_BRUTE':
+		'La fusión de este bicho con la corteza... Parece intencionada, aunque imagino que no es nada cómoda.',
+	'Journal.NAME_CORAL_KING': 'Rey de la Corteza Khann',
+	'Journal.DESC_CORAL_KING':
+		'Curtido señor guerrero de una época pasada, capaz de comandar la corteza de coral a su antojo.',
+	'Journal.NOTE_CORAL_KING':
+		'Pese a su severa administración, sus legiones parecían totalmente leales. Para los bichos menos combativos, el suyo habría sido un duro mandato.',
+	'Journal.NAME_CORAL_WARRIOR_GREY': 'Vigilante de la frontera',
+	'Journal.DESC_CORAL_WARRIOR_GREY':
+		'Viejo guerrero que vigila la frontera de sus dominios, endurecido por el tiempo y despertado por la canción.',
+	'Journal.NOTE_CORAL_WARRIOR_GREY':
+		'Permanecieron en vigilia durante mucho tiempo, mucho más allá de la edad de sus hermanos, pero aún así, cuando se les molestaba, blandían su hoja con gran facilidad.',
+	'Journal.NAME_ZAP_CORE_ENEMY': 'Voltvyrm',
+	'Journal.DESC_ZAP_CORE_ENEMY':
+		'Nido enrollado de gusanos cargados. Ataca a los intrusos con rayos de electricidad crepitante.',
+	'Journal.NOTE_ZAP_CORE_ENEMY':
+		'Apenas un bicho que solo tiene pensamiento básico. Sin embargo, el instinto por sí solo demostró bastar para hacerlo mortífero.',
+	'Journal.NAME_CITADEL_BAT': 'Moscatina',
+	'Journal.DESC_CITADEL_BAT': 'Alimaña errática y voladora que anida en trapos y cortinas.',
+	'Journal.NOTE_CITADEL_BAT':
+		'Es como si la tela hubiera cobrado vida. Su piel combina perfectamente con las telas que infesta.',
+	'Journal.NAME_CITADEL_BAT_LARGE': 'Moscardo',
+	'Journal.DESC_CITADEL_BAT_LARGE':
+		'Moscatina adulta que ha crecido por la edad y el consumo. Su cuerpo pesado le permite golpear mucho más fuerte que sus compañeras más jóvenes.',
+	'Journal.NOTE_CITADEL_BAT_LARGE': 'La codicia siempre hará que algunos bichos se destaquen de sus congéneres.',
+	'Journal.NAME_MITE_HEAVY': 'Acarotina',
+	'Journal.DESC_MITE_HEAVY':
+		'Reptador cubierto de tela con extremidades anteriores afiladas. Vive y se cría en lugares oscuros.',
+	'Journal.NOTE_MITE_HEAVY':
+		'Las estructuras de Telalejana parecen casi construidas para ellos; las interminables esquinas y grietas son perfectas para que los ácaros escarben y aniden.',
+	'Journal.NAME_UNDERSTORE_MITE_GIANT': 'Acarotina gigante',
+	'Journal.DESC_UNDERSTORE_MITE_GIANT': 'Ácaro de gran tamaño de la Ciudadela, envuelto en una vieja cortina.',
+	'Journal.NOTE_UNDERSTORE_MITE_GIANT':
+		'Pocas criaturas de aquel lugar azotado por la seda encontrarían alimento suficiente para crecer tanto.',
+	'Journal.NAME_UNDERSTORE_SMALL': 'Obrero subterráneo',
+	'Journal.DESC_UNDERSTORE_SMALL':
+		'Débil obrero de los Talleres Inferiores con un largo llalfiler y una dura coraza.',
+	'Journal.NOTE_UNDERSTORE_SMALL':
+		'Con todos los desechos que caen en sus dominios, la rígida coraza de los obreros debe de ser esencial para que tengan alguna esperanza de sobrevivir.',
+	'Journal.NAME_PILGRIM_03_UNDERSTORE': 'Subfrotador',
+	'Journal.DESC_PILGRIM_03_UNDERSTORE': 'Obrero agotado pero dedicado que empuña un tosco cepillo de acero.',
+	'Journal.NOTE_PILGRIM_03_UNDERSTORE': 'Que alguna vez esperara mantener su dominio limpio... Qué empeño más fútil.',
+	'Journal.NAME_PILGRIM_STAFF_UNDERSTORE': 'Subarredor',
+	'Journal.DESC_PILGRIM_STAFF_UNDERSTORE':
+		'Utiliza su alfiler de cerdas de acero para quitar el hollín de conductos y tuberías.',
+	'Journal.NOTE_PILGRIM_STAFF_UNDERSTORE':
+		'Su afilado utensilio de limpieza está tan sucio como el resto del lugar. Solo pone capas de mugre sobre mugre.',
+	'Journal.NAME_UNDERSTORE_POKER': 'Pinchón subterráneo',
+	'Journal.DESC_UNDERSTORE_POKER':
+		'Obrero agotado al borde del colapso. Consumido por el Embrujo, sigue trabajando mucho más allá de sus límites mortales.',
+	'Journal.NOTE_UNDERSTORE_POKER':
+		'Trabajó sin cesar para la Ciudadela, su coraza se curvó y se volvió gris, y ahora la maldición del reino significa que ni siquiera la muerte puede aliviarlo.',
+	'Journal.NAME_UNDERSTORE_THROWER': 'Lanzador subterráneo',
+	'Journal.DESC_UNDERSTORE_THROWER':
+		'Bicho agotado, enfermo por la polución de los Talleres Inferiores. Los llalfileres de este obrero, antaño herramientas de reparación, sirven ahora como proyectiles giratorios.',
+	'Journal.NOTE_UNDERSTORE_THROWER':
+		'El coste de tanta grandeza... ¿He escudriñado lo bastante los cimientos de mi propio reino?',
+	'Journal.NAME_UNDERSTORE_HEAVY': 'Bruto subterráneo',
+	'Journal.DESC_UNDERSTORE_HEAVY':
+		'Pesado obrero de dura coraza, siempre reparando los ruinosos Talleres Inferiores de la Ciudadela.',
+	'Journal.NOTE_UNDERSTORE_HEAVY':
+		'Aunque no parece haber rangos en su dominio, este se ha elevado por encima del resto. Un puesto ganado probablemente mediante la intimidación y el matonismo.',
+	'Journal.NAME_SONG_PILGRIM_01': 'Enviado',
+	'Journal.DESC_SONG_PILGRIM_01': 'Guía y a menudo líder del Coro de la Ciudadela.',
+	'Journal.NOTE_SONG_PILGRIM_01':
+		'Bichos así cruzaron las cuevas para traerme a Telalejana. Abatí a muchos antes de mi captura. Por aquel entonces los había creído avispados y astutos. Ahora puedo ver la singular voluntad que los embruja a todos.',
+	'Journal.NAME_PILGRIM_01_SONG': 'Saltador del Coro',
+	'Journal.DESC_PILGRIM_01_SONG':
+		'Bicho ágil, y uno de los pocos y fuertes peregrinos que han llegado a la Ciudadela.',
+	'Journal.NOTE_PILGRIM_01_SONG':
+		'Llegaron a ser uno de los bichos favoritos de Telalejana, y sin embargo sus corazas habrían sido las primeras en caer ante el Embrujo.',
+	'Journal.NAME_PILGRIM_02_SONG': 'Cabezacuerno del Coro',
+	'Journal.DESC_PILGRIM_02_SONG': 'Antiguo peregrino adulto al servicio de la Ciudadela.',
+	'Journal.NOTE_PILGRIM_02_SONG':
+		'¿Creció gracias a los excesos de la Ciudadela, o fue su formidable tamaño la razón por la que sobrevivió hasta llegar a este lugar?',
+	'Journal.NAME_PILGRIM_03_SONG': 'Portacampanas del Coro',
+	'Journal.DESC_PILGRIM_03_SONG': 'Devoto alado de la Ciudadela, portador de campanas doradas.',
+	'Journal.NOTE_PILGRIM_03_SONG':
+		'Telalejana demuestra a menudo la eficacia de las campanas como armas. Antes nunca las había considerado como tales.',
+	'Journal.NAME_PILGRIM_04_SONG': 'Volador del Coro',
+	'Journal.DESC_PILGRIM_04_SONG': 'Bicho aéreo de la Ciudadela, desarmado salvo por su corto cuerno.',
+	'Journal.NOTE_PILGRIM_04_SONG':
+		'Para haber sobrevivido a la escalada de Telalejana, tuvo que haberse aliado con compañeros más fuertes. No puedo imaginar que consiguiera subir solo.',
+	'Journal.NAME_PILGRIM_STOMPER_SONG': 'Anciano del Coro',
+	'Journal.DESC_PILGRIM_STOMPER_SONG':
+		'Antiguo peregrino anciano. Utiliza sus alas para posicionarse sobre las amenazas y aplastarlas.',
+	'Journal.NOTE_PILGRIM_STOMPER_SONG':
+		'El tiempo ha hecho más gruesa su coraza, que le sirve bien para aplastar a sus objetivos.',
+	'Journal.NAME_SONG_PILGRIM_03': 'Corista',
+	'Journal.DESC_SONG_PILGRIM_03':
+		'Discípulo del Coro, elevado por encima de los demás peregrinos y obligado a taparse la cara para siempre.',
+	'Journal.NOTE_SONG_PILGRIM_03':
+		'Su uso del alfiler demuestra un duro entrenamiento. Su uso de la seda, desplegada desde un carrete, demuestra una habilidad muy superior a la de los bichos corrientes.',
+	'Journal.NAME_SONG_REED': 'Lengüete',
+	'Journal.DESC_SONG_REED':
+		'Discípulo del Coro, encargado de mantener su perfecto orden, a punta de alfiler si es necesario.',
+	'Journal.NOTE_SONG_REED':
+		'Tiene una forma muy adecuada para el combate; es ágil y rápido. No es de extrañar que goce de una posición tan elevada entre su culto.',
+	'Journal.NAME_SONG_REED_GRAND': 'Gran Lengüete',
+	'Journal.DESC_SONG_REED_GRAND':
+		'Insecto de alto rango del Coro que porta un arco. Este Lengüete de élite ha sido entrenado y alimentado más que sus congéneres más pequeños.',
+	'Journal.NOTE_SONG_REED_GRAND':
+		'Lleva un carrete de seda, que usa para atacar. Aunque algo tosca, la suya es una técnica que recuerda mucho a las Tejedoras. Me pregunto quién se la habrá enseñado.',
+	'Journal.NAME_SONG_HEAVY_SENTRY': 'Repicador del Coro',
+	'Journal.DESC_SONG_HEAVY_SENTRY':
+		'Poderoso discípulo de percusión del Coro que empuña un mazo y un carrete de seda para envolver y potenciar sus ataques.',
+	'Journal.NOTE_SONG_HEAVY_SENTRY':
+		'Usa la seda de forma tosca. Consume su escaso suministro solo para aumentar su fuerza.',
+	'Journal.NAME_SONG_HANDMAIDEN': 'Doncella de garras',
+	'Journal.DESC_SONG_HANDMAIDEN':
+		'Marioneta sirvienta de la Ciudadela, suspendida de hilos de seda. Es una forma primitiva de autómata, que requería una gran cantidad de seda para mantener su servicio.',
+	'Journal.NOTE_SONG_HANDMAIDEN':
+		'Si se le da la oportunidad, robará seda de cualquier fuente importante, incluso de mi propia coraza.',
+	'Journal.NAME_ARBORIUM_KEEPER': 'Memorio',
+	'Journal.DESC_ARBORIUM_KEEPER': 'Discípulo erudito del Coro encargado de mantener el Memorium de la Ciudadela.',
+	'Journal.NOTE_ARBORIUM_KEEPER':
+		'Desde el principio, era una tarea imposible. Aquellas tierras salvajes nunca se podrían replicar en un espacio tan artificial.',
+	'Journal.NAME_SONG_ADMINISTRATOR': 'Ministro',
+	'Journal.DESC_SONG_ADMINISTRATOR':
+		'Discípulo dorado del Coro y sirviente directo de los Directores de la Ciudadela.',
+	'Journal.NOTE_SONG_ADMINISTRATOR':
+		'Estos bichos son de una letalidad inesperada. Sus cuerpos no se diseñaron para el combate. El Embrujo ha alterado su naturaleza drásticamente.',
+	'Journal.NAME_SONG_PILGRIM_MAESTRO': 'Maestro',
+	'Journal.DESC_SONG_PILGRIM_MAESTRO':
+		'Comandante del Coro de los Altos Salones, capaz de convocar y comandar moscas mecánicas con un movimiento de su batuta.',
+	'Journal.NOTE_SONG_PILGRIM_MAESTRO':
+		'Antaño convocaron canciones de sus súbditos. Ahora solo se levantan para ordenar el exterminio de los que no han sido encordados.',
+	'Journal.NAME_SONG_KNIGHT': 'Segundo Centinela',
+	'Journal.DESC_SONG_KNIGHT':
+		'Caballero mecánico de Telalejana, antaño protector de sus peregrinos y maestro de la hoja de tijera.',
+	'Journal.NOTE_SONG_KNIGHT':
+		'El talento y la inteligencia de este constructo es superior a los de otros que he visto. Parece menos una herramienta para servir que un intento de imitar a la vida misma.',
+	'Journal.NAME_SONG_THREADED_HUSK': 'Cáscara de restos',
+	'Journal.DESC_SONG_THREADED_HUSK':
+		'Restos de un bicho de la Ciudadela poseído por restos de seda. La cáscara azota salvajemente con los múltiples alfileres atrapados dentro de su hilo.',
+	'Journal.NOTE_SONG_THREADED_HUSK':
+		'Hay una vieja angustia vinculada a estos hilos, resultado de innumerables procedimientos crueles.',
+	'Journal.NAME_SONG_THREADED_HUSK_SPIN': 'Rueda de restos',
+	'Journal.DESC_SONG_THREADED_HUSK_SPIN':
+		'Coraza de un pequeño bicho poseído por restos de seda. La cáscara estira su seda para formar una tosca rueda trituradora.',
+	'Journal.NOTE_SONG_THREADED_HUSK_SPIN':
+		'Seda viva al mando de una coraza muerta... Es una afrenta a la naturaleza, algo demasiado común en Telalejana.',
+	'Journal.NAME_SONG_PILGRIM_02': 'Cirujano',
+	'Journal.DESC_SONG_PILGRIM_02':
+		'Cruel doctor del Ala Blanca, responsable de las operaciones y modificaciones de los bichos de la Ciudadela.',
+	'Journal.NOTE_SONG_PILGRIM_02':
+		'Sus operaciones con la seda pueden haber sostenido la vida dentro de la Ciudadela, pero sin saberlo regaló todas las mentes a la monarca.',
+	'Journal.NAME_SONG_CREEPER': 'Funerario',
+	'Journal.DESC_SONG_CREEPER':
+		'Sirviente alterado del Ala Blanca de la Ciudadela, responsable de la cremación de las cáscaras y del reciclaje de la seda de sus corazas.',
+	'Journal.NOTE_SONG_CREEPER':
+		'Va a ras de suelo, quizá por reverencia a su tarea, pero puede levantarse de repente para atacar. Sus cizallas son un arma mortal con un alcance sorprendente.',
+	'Journal.NAME_CONDUCTOR_BOSS': 'Los Desentrañados',
+	'Journal.DESC_CONDUCTOR_BOSS':
+		'Voluntad atormentada de innumerables cáscaras manifestada en un pozo de restos de seda.',
+	'Journal.NOTE_CONDUCTOR_BOSS':
+		'Las almas de tantos bichos, obsesionadas con la seda, consumidas por ella. Su dolor permanecerá para siempre en ese pozo. Ni siquiera yo poseo la fuerza suficiente para purgarlo.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON': 'Submosca mecánica',
+	'Journal.DESC_UNDERSTORE_AUTOMATON':
+		'Pequeño autómata construido para trabajar, sin quejarse, en el calor abrasador del Caldero de los Talleres Inferiores.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON':
+		'No es de extrañar que hicieran estos constructos. Ningún bicho mortal duraría mucho dentro de ese lugar abrasador. Incluso a mi coraza le cuesta aguanta este calor.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON_EX': 'Transportista mecánico',
+	'Journal.DESC_UNDERSTORE_AUTOMATON_EX':
+		'Pequeño autómata con coraza blindada, destinado a transportar cargas de peligroso pedernal de llama.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON_EX':
+		'Nacido y construido solo para trabajar hasta que el tiempo endurezca sus miembros. Tal vez sea misericordia que este constructo no sepa nada de la libertad de la que carece.',
+	'Journal.NAME_SONG_AUTOMATON_GOOMBA': 'Reptador mecánico',
+	'Journal.DESC_SONG_AUTOMATON_GOOMBA':
+		'Autómata construido en forma de bicho reptador. Tiene alfileres retráctiles en la espalda, destinados a cortar cualquier obstrucción de los cilindros de canto.',
+	'Journal.NOTE_SONG_AUTOMATON_GOOMBA':
+		'Su forma se basa sin duda en los bichos que hay fuera de la Ciudadela. En mis obras de artesanía, yo también a menudo me inspiro en la naturaleza.',
+	'Journal.NAME_SONG_AUTOMATON_FLY': 'Obrero mecánico',
+	'Journal.DESC_SONG_AUTOMATON_FLY': 'Autómata volador encargado de reparar y ampliar el Núcleo.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY':
+		'Un adversario más eficaz de lo que cabría suponer. La precariedad de su sinuoso dominio puede convertir en un reto incluso su simple asalto.',
+	'Journal.NAME_SONG_AUTOMATON_FLY_SPIKE': 'Espinoso mecánico',
+	'Journal.DESC_SONG_AUTOMATON_FLY_SPIKE': 'Autómata esférico y alado que alberga numerosas y afiladas púas.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY_SPIKE':
+		'No consigo descifrar su función para el Núcleo mayor. ¿Lo construyeron para defenderlo? Si es así, su pasividad parece lejos de ser óptima.',
+	'Journal.NAME_SONG_AUTOMATON_01': 'Bicho mecánico del Coro',
+	'Journal.DESC_SONG_AUTOMATON_01':
+		'Bicho forjado de hierro, rotor y engranaje. Este autómata trabaja sin descanso para mantener el Núcleo que lo alberga.',
+	'Journal.NOTE_SONG_AUTOMATON_01':
+		'Su núcleo está lleno de finos mecanismos, pero eso por sí solo no debería bastar para producir una imitación tan convincente de la vida. La seda también debe de servir para animarlo, aunque no sé exactamente cómo.',
+	'Journal.NAME_SONG_AUTOMATON_02': 'Limpiador mecánico',
+	'Journal.DESC_SONG_AUTOMATON_02':
+		'Autómata que dispara vapor, forjado para limpiar el Núcleo Mecánico y mantenerlo libre de infestación.',
+	'Journal.NOTE_SONG_AUTOMATON_02':
+		'Un uso inspirado del vapor. Debo recordar su construcción cuando diseñe futuras herramientas.',
+	'Journal.NAME_SONG_AUTOMATON_SHIELD': 'Defensor mecánico',
+	'Journal.DESC_SONG_AUTOMATON_SHIELD':
+		'Constructo mecánico diseñado para la protección del Núcleo. Lleva un escudo y un punzón, y posee un conocimiento letal de su uso.',
+	'Journal.NOTE_SONG_AUTOMATON_SHIELD':
+		'Pese a carecer de una verdadera mente, lucha con eficacia, ajustando su estrategia a mis movimientos. ¿Dónde están escritos exactamente sus pensamientos?',
+	'Journal.NAME_SONG_AUTOMATON_BALL': 'Repicador mecánico',
+	'Journal.DESC_SONG_AUTOMATON_BALL':
+		'Raro autómata destinado a tañer campanas y címbalos en las profundidades del Núcleo.',
+	'Journal.NOTE_SONG_AUTOMATON_BALL':
+		'Aún no he visto la campana para la que está diseñado este autómata, ni deseo oírla nunca. Un clamor así sería sin duda desagradable de experimentar.',
+	'Journal.NAME_CLOCKWORK_DANCER': 'Bailarines Mecánicos',
+	'Journal.DESC_CLOCKWORK_DANCER':
+		'Autómatas de construcción impecable que dan la bienvenida a los visitantes a su cámara con una danza mortal.',
+	'Journal.NOTE_CLOCKWORK_DANCER':
+		'¿Dos bichos mecánicos y, sin embargo, una sola alma? Una triste, si bien magistral imitación de la vida, imbuida dentro de corazas de hierro.',
+	'Journal.NAME_SONG_SCHOLAR_ACOLYTE': 'Engendro de las Bóvedas',
+	'Journal.DESC_SONG_SCHOLAR_ACOLYTE':
+		'Joven acólito criado en las bóvedas más oscuras, destinado a ascender al rango de lector de pergaminos.',
+	'Journal.NOTE_SONG_SCHOLAR_ACOLYTE':
+		'Al entrar en sus dominios, he liberado a estos bichos, que ahora infestan bóvedas mayores. Son una molestia, y es culpa mía.',
+	'Journal.NAME_LIGHTBEARER': 'Portalámparas',
+	'Journal.DESC_LIGHTBEARER':
+		'Discípulo de las Bóvedas Susurrantes, encargado de navegar por sus oscuros recovecos para recuperar viejos pergaminos.',
+	'Journal.NOTE_LIGHTBEARER':
+		'Un bicho esencial si alguna vez se espera navegar por ese oscuro laberinto de pilas y pergaminos.',
+	'Journal.NAME_SCROLLKEEPER': 'Lector de pergaminos',
+	'Journal.DESC_SCROLLKEEPER':
+		'Siervo dorado de las Bóvedas Susurrantes, nacido para leer y recordar los casi interminables pergaminos de oración.',
+	'Journal.NOTE_SCROLLKEEPER':
+		'¿Comprendieron alguna vez de verdad esos pergaminos inescrutables? ¿O no es más que una farsa, un acto interminable para mantener la posición de su orden en la Ciudadela?',
+	'Journal.NAME_SCHOLAR': 'Guardián de las Bóvedas',
+	'Journal.DESC_SCHOLAR':
+		'Bicho de casta superior, responsable de dar sermones y dirigir la oración para los que están más allá de los muros de las Bóvedas Susurrantes.',
+	'Journal.NOTE_SCHOLAR':
+		'Lo más probable es que su verdadero cometido fuese erradicar y condenar a quienes no fueran considerados lo bastante fervorosos.',
+	'Journal.NAME_TROBBIO': 'Trobbio',
+	'Journal.DESC_TROBBIO':
+		'Altanero actor convencido de que solo una actuación deslumbrante puede sacar a Telalejana de la agonía.',
+	'Journal.NOTE_TROBBIO':
+		'Puede que su deseo de salvar a Telalejana fuese genuino, pero parecía bastante satisfecho con que otros murieran en el escenario en pos de su objetivo.',
+	'Journal.NAME_TORMENTED_TROBBIO': 'Trobbio atormentado',
+	'Journal.DESC_TORMENTED_TROBBIO': 'Actor deprimido, consumido por la melancolía de un mundo que se derrumba.',
+	'Journal.NOTE_TORMENTED_TROBBIO': 'Eligió abrazar la inminente perdición. Yo no me rendiré con tanta facilidad.',
+	'Journal.NAME_SLAB_PRISONER_LEAPER_NEW': 'Penitente',
+	'Journal.DESC_SLAB_PRISONER_LEAPER_NEW':
+		'Prisionero humillado que cumple su condena por un pecado cometido en la Ciudadela.',
+	'Journal.NOTE_SLAB_PRISONER_LEAPER_NEW':
+		'Aquí todos padecen el Embrujo, los carceleros y los encarcelados. ¿Son conscientes de que nunca saldrán de aquí? ¿O de cuánto tiempo llevan ya?',
+	'Journal.NAME_SLAB_PRISONER_FLY_NEW': 'Penitente enclenque',
+	'Journal.DESC_SLAB_PRISONER_FLY_NEW':
+		'Pequeño bicho encadenado y encapuchado por algún pecado cometido en la Ciudadela.',
+	'Journal.NOTE_SLAB_PRISONER_FLY_NEW':
+		'Su gruesa mortaja les priva de la visión, pero no parece importarles. No se preocupan por su propia seguridad, solo desean cargar contra los que consideran pecadores.',
+	'Journal.NAME_SLAB_FLY_SMALL_FRESH': 'Mosquilla',
+	'Journal.DESC_SLAB_FLY_SMALL_FRESH':
+		'Mosca recién eclosionada. Tan joven, esta mosca blanda y ciega es poco más que una molestia.',
+	'Journal.NOTE_SLAB_FLY_SMALL_FRESH': 'Cuanto menos se reproduzcan estos grotescos bichos, mejor.',
+	'Journal.NAME_SLAB_FLY_SMALL': 'Moscasarna',
+	'Journal.DESC_SLAB_FLY_SMALL': 'Joven mosca pegajosa, criada al servicio de la Losa.',
+	'Journal.NOTE_SLAB_FLY_SMALL':
+		'Criaturas repugnantes nacidas para la servidumbre. Su difícil situación no me inspira ninguna simpatía.',
+	'Journal.NAME_SLAB_FLY_MID': 'Moscaguardia',
+	'Journal.DESC_SLAB_FLY_MID': 'Siervo hambriento de la Losa que porta un alfiler de gancho.',
+	'Journal.NOTE_SLAB_FLY_MID':
+		'El hedor de estos carceleros abruma mis sentidos. Dudo mucho que alguna vez hayan pensado en bañarse.',
+	'Journal.NAME_SLAB_FLY_LARGE': 'Moscalcaide',
+	'Journal.DESC_SLAB_FLY_LARGE':
+		'Carcelero pesado y peludo encargado de capturar a los pecadores y castigar a los prisioneros.',
+	'Journal.NOTE_SLAB_FLY_LARGE':
+		'Repugnante tanto en la forma como en el hedor. No siento ningún remordimiento por abatirlas.',
+	'Journal.NAME_SLAB_FLY_BROODMOTHER': 'Madre Ponedora',
+	'Journal.DESC_SLAB_FLY_BROODMOTHER':
+		'Matriarca desequilibrada de la Losa a la que rara vez se ve fuera de su madriguera. Todos los carceleros nacen y se crían de ella.',
+	'Journal.NOTE_SLAB_FLY_BROODMOTHER':
+		'Tras eliminarla, espero haber acelerado el fin de esa cárcel y su desagradable orden.',
+	'Journal.NAME_PEAKS_DRIFTER': 'Nievelín',
+	'Journal.DESC_PEAKS_DRIFTER':
+		'Suave planeador del Monte Fay. Sus mullidas alas y su capucha le permiten resistir incluso el frío más cortante.',
+	'Journal.NOTE_PEAKS_DRIFTER': 'Sería una mascota perfecta, de no ser por las temperaturas bajo cero que requiere.',
+	'Journal.NAME_CRYSTAL_DRIFTER': 'Mnemonido',
+	'Journal.DESC_CRYSTAL_DRIFTER':
+		'Criatura voladora formada a partir de fragmentos de hielo. Si se quiebra, se reforma con rapidez.',
+	'Journal.NOTE_CRYSTAL_DRIFTER':
+		'Los fragmentos de hielo, incluso cuando se destruyen, recuerdan su forma anterior. Es un material extraordinario, y quizás aún más sorprendente porque parece contener vida.',
+	'Journal.NAME_CRYSTAL_DRIFTER_GIANT': 'Mnemonidón',
+	'Journal.DESC_CRYSTAL_DRIFTER_GIANT': 'Enorme criatura voladora formada a partir de fragmentos de hielo.',
+	'Journal.NOTE_CRYSTAL_DRIFTER_GIANT':
+		'Esta forma más grande soporta tanto peso que apenas puede moverse de su sitio.',
+	'Journal.NAME_WEAVER_SERVITOR': 'Servidor Ignim',
+	'Journal.DESC_WEAVER_SERVITOR':
+		'Pequeño constructo obra de Tejedoras del pasado que cobra vida gracias a las runas de seda enhebradas en su interior.',
+	'Journal.NOTE_WEAVER_SERVITOR':
+		'Aunque las Tejedoras hace tiempo que dejaron Telalejana, este sirviente sigue cumpliendo su función.',
+	'Journal.NAME_WEAVER_SERVITOR_LARGE': 'Servidor Boran',
+	'Journal.DESC_WEAVER_SERVITOR_LARGE':
+		'Constructo averiado, obra de Tejedoras del pasado, capaz de disparar un haz concentrado de luz de seda para tallar salas y cámaras a través del hielo y el hueso.',
+	'Journal.NOTE_WEAVER_SERVITOR_LARGE':
+		'El tiempo y la intemperie han deteriorado mucho a este servidor. Sus acciones se han vuelto erráticas. Parece que ya no es capaz de distinguir a amigos de enemigos.',
+	'Journal.NAME_LIFEBLOOD_FLY': 'Germen de vida alado',
+	'Journal.DESC_LIFEBLOOD_FLY':
+		'Saco sin mente lleno de plasmio. Cuando se rompe, el plasmio puede consumirse por sus beneficios temporales para la salud.',
+	'Journal.NOTE_LIFEBLOOD_FLY':
+		'Mi coraza única puede resistir las deformaciones más oscuras de esta sustancia, pero incluso yo tengo límites...',
+	'Journal.NAME_BONE_WORM_BLUEBLOOD': 'Plásmido',
+	'Journal.DESC_BONE_WORM_BLUEBLOOD':
+		'Gusano joven mutado e infectado por el plasmio. Su nueva forma muestra una potente habilidad regenerativa.',
+	'Journal.NOTE_BONE_WORM_BLUEBLOOD':
+		'Telalejana pronto conocerá la maldición que supone esta sustancia. Los beneficios que aporta pueden verse superados con rapidez.',
+	'Journal.NAME_BONE_WORM_BLUETURRET': 'Plásmidas',
+	'Journal.DESC_BONE_WORM_BLUETURRET':
+		'Gran gusano muy mutado por el plasmio. La criatura se ha fusionado al techo de su cueva y ya no puede moverse libremente.',
+	'Journal.NOTE_BONE_WORM_BLUETURRET':
+		'En mis cuevas natales, cuando una vez se permitió que floreciera esta sustancia, vi aberraciones similares. Es un portento teñido de intensa repulsión.',
+	'Journal.NAME_BLUE_ASSISTANT': 'Zango plasmificado',
+	'Journal.DESC_BLUE_ASSISTANT':
+		'Cáscara del ayudante de un alquimista al que el plasmio ha otorgado una vida falsa.',
+	'Journal.NOTE_BLUE_ASSISTANT':
+		'Sembró cruelmente estas cuevas con esa sustancia maldita... Su destino final parece una justa recompensa por esos esfuerzos, aunque siento cierta simpatía. Es un poder tentador.',
+	'Journal.NAME_LILYPAD_FLY': 'Planeabriznas',
+	'Journal.DESC_LILYPAD_FLY': 'Volador de alas finas que sobrevive en bandadas.',
+	'Journal.NOTE_LILYPAD_FLY':
+		'Tan ligero que puede posarse sobre la superficie del agua en calma. Un bicho muy elegante.',
+	'Journal.NAME_GRASS_GOOMBA': 'Volteabriznas',
+	'Journal.DESC_GRASS_GOOMBA': 'Insecto puntiagudo que se hace pasar por vegetal.',
+	'Journal.NOTE_GRASS_GOOMBA': 'Sencillo. Grácil. Otro buen bicho de estas tierras echado a perder para siempre.',
+	'Journal.NAME_HORNET_DRAGONFLY': 'Pendra',
+	'Journal.DESC_HORNET_DRAGONFLY': 'Insecto volador que vive junto a aguas estancadas.',
+	'Journal.NOTE_HORNET_DRAGONFLY':
+		'Aunque suelen ser pasivos, sus máscaras afiladas pueden causar heridas si se tropieza con ellos por descuido.',
+	'Journal.NAME_DRAGONFLY_LARGE': 'Pendragor',
+	'Journal.DESC_DRAGONFLY_LARGE':
+		'Insecto pesado que vive cerca de grandes masas de agua. Es mejor evitar su corpachón.',
+	'Journal.NOTE_DRAGONFLY_LARGE':
+		'Cuando no entorpecen mi camino, su simple movimiento me resulta bastante agradable.',
+	'Journal.NAME_LILYPAD_TRAP': 'Núfar',
+	'Journal.DESC_LILYPAD_TRAP': 'Planta carnívora con una poderosa mandíbula en forma de nenúfar.',
+	'Journal.NOTE_LILYPAD_TRAP':
+		'Una sorpresa mordiente en el primer encuentro, aunque fácil de evitar una vez que se la conoce.',
+	'Journal.NAME_CLOVERSTAG': 'Trebicierva',
+	'Journal.DESC_CLOVERSTAG':
+		'Plácida criatura oriunda de Verdania. Su piel imita la flora de su territorio con exactitud.',
+	'Journal.NOTE_CLOVERSTAG':
+		'Un impresionante acto de mimetismo. Para imitar tan bien la tierra de tréboles que la rodea, debe de haberse alimentado durante incontables generaciones.',
+	'Journal.NAME_CLOVERSTAG_WHITE': 'Palicierva',
+	'Journal.DESC_CLOVERSTAG_WHITE':
+		'Primera trebicierva legendaria de Verdania. Ordena a la hierba y a las hojas que la asistan en su ataque.',
+	'Journal.NOTE_CLOVERSTAG_WHITE':
+		'Es un mito hecho realidad en la memoria. La criatura parecía completamente integrada con la flora que la rodeaba. ¿Existió alguna vez realmente, tal y como yo la he visto?',
+	'Journal.NAME_GRASSHOPPER_CHILD': 'Kindanir',
+	'Journal.DESC_GRASSHOPPER_CHILD': 'Vástago de Verdania, capaz de luchar a pesar de su corta edad.',
+	'Journal.NOTE_GRASSHOPPER_CHILD':
+		'Fieros y veloces, defienden sus tierras desde el momento en que nacen. Son criaturas que inspiran orgullo.',
+	'Journal.NAME_GRASSHOPPER_SLASHER': 'Verdanir',
+	'Journal.DESC_GRASSHOPPER_SLASHER': 'Guerrero veloz con extremidades delanteras afiladas y sentidos agudizados.',
+	'Journal.NOTE_GRASSHOPPER_SLASHER':
+		'Rara vez se relajan, siempre alerta ante posibles peligros, incluso en lo más profundo de su propio territorio. Para derrotarlos, debo concentrarme tanto como ellos.',
+	'Journal.NAME_GRASSHOPPER_FLY': 'Escalionte',
+	'Journal.DESC_GRASSHOPPER_FLY':
+		'Guerrero alado muy veloz, capaz de lanzar piñones puntiagudos desde sus extremidades delanteras.',
+	'Journal.NOTE_GRASSHOPPER_FLY':
+		'Nació con muchas herramientas que antaño hubiera deseado para mí. Por suerte, he entrenado duro para sobrepasar esos límites.',
+	'Journal.NAME_CLOVER_DANCER': 'Bailarines Trifolios',
+	'Journal.DESC_CLOVER_DANCER':
+		'Príncipes duales de la antigua Verdania, amados por sus súbditos por su gracia y por el ballet de la muerte que infligían a los forasteros.',
+	'Journal.NOTE_CLOVER_DANCER': 'Amar a otro tan parecido a uno mismo, ¿es abnegación o vanidad?',
+	'Journal.NAME_ABYSS_CRAWLER': 'Reptador sombrío',
+	'Journal.DESC_ABYSS_CRAWLER':
+		'Gusano con coraza que solo se encuentra en las profundidades más hondas. Parece sobrevivir a pesar de no consumir alimentos ni líquidos.',
+	'Journal.NOTE_ABYSS_CRAWLER':
+		'Una criatura que me es familiar. Sospecho que, por muy lejos que vaya, si desciendo lo suficiente, siempre encontraré de estas.',
+	'Journal.NAME_ABYSS_CRAWLER_LARGE': 'Embestidor sombrío',
+	'Journal.DESC_ABYSS_CRAWLER_LARGE':
+		'Gusano voluminoso de las profundidades más hondas. Vive en grietas estrechas y utiliza su pesado cuerpo para golpear.',
+	'Journal.NOTE_ABYSS_CRAWLER_LARGE':
+		'Estos crecen mucho, pero nunca los he visto comiendo ni durmiendo. Parecen bichos muy simples... pero sospecho que no son realmente nuestros primos.',
+	'Journal.NAME_GLOOMFLY': 'Saco lúgubre',
+	'Journal.DESC_GLOOMFLY':
+		'Una pequeña criatura vacía, apenas un bicho. Se traga a su presa entera y le sorbe nutrientes hasta que no queda nada.',
+	'Journal.NOTE_GLOOMFLY': 'Es inquietante... Hay algo en su simplicidad. ¿Casi siento miedo?',
+	'Journal.NAME_GLOOM_BEAST': 'Glum gargante',
+	'Journal.DESC_GLOOM_BEAST': 'Enorme bestia tubular especialmente adaptada para vivir cerca del vacío.',
+	'Journal.NOTE_GLOOM_BEAST':
+		'Sorprendentemente, la criatura lleva el líquido negro del vacío en su estómago, rociándolo violentamente si se ve amenazada.',
+	'Journal.NAME_ABYSS_TENDRIL': 'Tentáculos del vacío',
+	'Journal.DESC_ABYSS_TENDRIL': 'Fragmentos azotadores de pura oscuridad, con forma de tentáculos afilados.',
+	'Journal.NOTE_ABYSS_TENDRIL':
+		'El vacío que lo reclama todo... Su naturaleza se ve claramente en las formas espinosas que elige.',
+	'Journal.NAME_BLACK_THREAD_CORE': 'Masa de vacío',
+	'Journal.DESC_BLACK_THREAD_CORE': 'Denso nudo de cáscaras atadas con fuerza por seda empapada de vacío.',
+	'Journal.NOTE_BLACK_THREAD_CORE':
+		'Seda y corazas corruptas. El vacío busca ahora hacerse con la tierra entera. Estas pobres corazas son solo el principio.',
+	'Journal.NAME_ABYSS_MASS': 'Salvador invocado',
+	'Journal.DESC_ABYSS_MASS': 'Masa de máscaras antiguas hinchadas y animadas por un vacío que se retuerce.',
+	'Journal.NOTE_ABYSS_MASS':
+		'Una criatura nacida de la desesperada esperanza de fuerza de un bicho. Pocos poseen la habilidad para invocar al vacío, mas ninguno los medios para domarlo.',
+	'Journal.NAME_WHITE_PALACE_FLY': 'Carcasa alada',
+	'Journal.DESC_WHITE_PALACE_FLY':
+		'Falsa mosca con una coraza grabada con runas. En su interior hay una torturada mezcla de alma y vacío.',
+	'Journal.NOTE_WHITE_PALACE_FLY':
+		'Un burdo constructo del dominio caído de mi padre. Solo un necio cree que el vacío puede ser moldeado para hacer su voluntad.',
+	'Journal.NAME_CENTIPEDE_TRAP': 'Garpiecito',
+	'Journal.DESC_CENTIPEDE_TRAP': 'Excavador ciego que reacciona violentamente al menor sonido.',
+	'Journal.NOTE_CENTIPEDE_TRAP':
+		'Un bicho bastante común, aunque no hay que subestimarlo. La agudeza de sus otros sentidos compensa con creces su falta de visión.',
+	'Journal.NAME_SPIKE_LAZY_FLYER': 'Imoba',
+	'Journal.DESC_SPIKE_LAZY_FLYER':
+		'Lento bicho errante con una coraza superior pesada. Reacciona poco a las amenazas, incluso a las que podrían costarle la vida.',
+	'Journal.NOTE_SPIKE_LAZY_FLYER':
+		'La pobre criatura ha vivido una vida demasiado tranquila y protegida. No le iría bien en el mundo más allá de sus muros.',
+	'Journal.NAME_SURFACE_SCUTTLER': 'Skrill',
+	'Journal.DESC_SURFACE_SCUTTLER': 'Reptador común que vive bajo la arena.',
+	'Journal.NOTE_SURFACE_SCUTTLER':
+		'Está libre de seda. Conserva su naturaleza. La influencia de la monarca solo ha debido de extenderse por debajo de él.',
+	'Journal.NAME_GIANT_CENTIPEDE': 'Tragacampanas',
+	'Journal.DESC_GIANT_CENTIPEDE':
+		'Ciempiés dormido durante mucho tiempo, despertado y enfurecido por el desmoronamiento de Telalejana.',
+	'Journal.NOTE_GIANT_CENTIPEDE':
+		'Un monstruo en la forma clásica de los cuentos infantiles. Mi fiera compañera de viaje se encargó de darle muerte tanto como yo.',
+	'Journal.NAME_GIANT_FLEA': 'Pulga enorme',
+	'Journal.DESC_GIANT_FLEA': 'Bicho de gran tamaño, brevemente consumido por la ira tras su largo tiempo enjaulado.',
+	'Journal.NOTE_GIANT_FLEA':
+		'No habría imaginado que existiera una pulga tan grande y maravillosa. Me complace que entrara en razón antes de que tuviera que asestarle el golpe mortal.',
+	'Journal.NAME_SHAKRA': 'Shakra',
+	'Journal.DESC_SHAKRA':
+		'Cartógrafa guerrera de una tribu de la frontera de Telalejana. Sus habilidades de combate se cuentan entre las mejores del reino.',
+	'Journal.NOTE_SHAKRA':
+		'Ha vivido apenas una fracción de mi vida y, sin embargo, sus anillos son temibles. Una de las guerreras de más talento que he conocido y a la que tengo la suerte de llamar amiga.',
+	'Journal.NAME_GARMOND_ZAZA': 'Garmond y Zaza',
+	'Journal.DESC_GARMOND_ZAZA':
+		'Un viejo y vigoroso caballero y su noble compañero, que trabajan en equipo para ver sus tierras libres de la locura del Embrujo.',
+	'Journal.NOTE_GARMOND_ZAZA':
+		'También buscan al espectro en el corazón del Embrujo, aunque me temo que ese enemigo supondría un desafío más allá de sus posibilidades.',
+	'Journal.NAME_GARMOND': 'Garmond perdido',
+	'Journal.DESC_GARMOND': 'Viejo caballero consumido por el hilo negro.',
+	'Journal.NOTE_GARMOND':
+		'Un destino trágico para un bicho antaño honorable. Esos hilos impregnados de vacío... Su fuerza física no es nada en comparación con la corrupción que causan en el alma.',
+	'Journal.NAME_PINSTRESS_BOSS': 'Alfilera',
+	'Journal.DESC_PINSTRESS_BOSS':
+		'Doncella del alfiler de una secta guerrera antaño renombrada. Sobrevivió mucho más que el resto de su orden.',
+	'Journal.NOTE_PINSTRESS_BOSS':
+		'Me gusta. Su voluntad de enseñar y su espíritu aún fuerte a pesar de una larga edad, pasada en soledad... Tiene todo mi respeto.',
+	'Journal.NAME_SPINNER_BOSS': 'Viuda',
+	'Journal.DESC_SPINNER_BOSS':
+		'Fanática enloquecida capaz de guiar la seda embrujada de Telalejana mediante la música que toca con ella.',
+	'Journal.NOTE_SPINNER_BOSS':
+		'Su cuerpo parecía el de una Tejedora, pero le habían quitado la máscara a la fuerza, y su propia seda estaba inutilizada por pesados alfileres clavados en su espalda.',
+	'Journal.NAME_FIRST_WEAVER': 'Pecadora Original',
+	'Journal.DESC_FIRST_WEAVER': 'Antigua Tejedora condenada por una transgresión perdida en el tiempo.',
+	'Journal.NOTE_FIRST_WEAVER':
+		'Su cáscara albergaba un talento magistral: tejer seda en runas ardientes. A lo largo de mi vida, he visto runas tejidas para muchas tareas. ¿Fue ella la primera en perfeccionar tales habilidades?',
+	'Journal.NAME_PHANTOM': 'Fantasma',
+	'Journal.DESC_PHANTOM':
+		'Criatura lúgubre encargada en solitario de expulsar los desechos asfixiantes de la Ciudadela. Su talento con el alfiler es incomparable.',
+	'Journal.NOTE_PHANTOM':
+		'Aunque la edad la ha vuelto gris, su forma deshilachada sugería un ser creado con seda, uno que preferiría un final decisivo en combate antes que un lento declive.',
+	'Journal.NAME_LACE': 'Lace',
+	'Journal.DESC_LACE': 'Esgrimista maníaca que se deleita en el combate.',
+	'Journal.NOTE_LACE':
+		'Ha nacido enteramente del hilo. Se habrá necesitado mucha seda para mantenerla. Una forma de vida frágil, pero vida al fin y al cabo.',
+	'Journal.NAME_SILK_BOSS': 'Gran Madre Seda',
+	'Journal.DESC_SILK_BOSS': 'Monarca de Telalejana, y fuente primaria de seda.',
+	'Journal.NOTE_SILK_BOSS':
+		'Corazón del Embrujo, adormecida durante mucho tiempo y desesperada por despertar. Los hilos de este ser superior se han extendido por toda Telalejana, atrapando a sus bichos y llevándolos a la locura y la discordia.',
+	'Journal.NAME_LOST_LACE': 'Lace perdida',
+	'Journal.DESC_LOST_LACE': 'Niña hilada de seda, poseída por el vacío.',
+	'Journal.NOTE_LOST_LACE':
+		'La recuperaré para aplacar la ira de la madre y salvar este reino. A esta... la oscuridad no la tomará.',
+	'Quests.MQ_CITADEL_SEEKER_NAME': 'La gran Ciudadela',
+	'Quests.MQ_TYPE_SEEK': 'Busca',
+	'Quests.MQ_THREADSPUN_TOWN_NAME': 'La aldea hilada',
+	'Quests.MQ_TYPE_SAVE': 'Salva',
+	'Quests.MQ_BELLSHRINES_NAME': 'Gran Puerta',
+	'Quests.MQ_TYPE_BELLSHRINES': 'Abre',
+	'Quests.MQ_CITADEL_INVESTIGATE_NAME': 'Salones silenciosos',
+	'Quests.MQ_TYPE_INVESTIGATE': 'Investiga',
+	'Quests.MQ_CITADEL_ASCENT_NAME': 'Corona de Telalejana',
+	'Quests.MQ_TYPE_ASCEND': 'Asciende',
+	'Quests.MQ_CITADEL_ASCENT_NAME_SILK': 'Pálida monarca',
+	'Quests.MQ_TYPE_DEFEAT': 'Derrota',
+	'Quests.MQ_SILK_SNARE_NAME': 'Trampa anímica',
+	'Quests.MQ_TYPE_DESTROY': 'Destruye',
+	'Quests.MQ_BLACKTHREAD_0_NAME': 'Tras la caída',
+	'Quests.MQ_BLACKTHREAD_1_NAME': 'A la espera del fin',
+	'Quests.MQ_RESCUE_BELLBEAST_NAME': 'Bestia en las campanas',
+	'Quests.MQ_BLACKTHREAD_2_NAME': 'La oscuridad inferior',
+	'Quests.MQ_DIVINGBELL_1_NAME': 'La oscuridad inferior',
+	'Quests.MQ_DIVINGBELL_2_NAME': 'La oscuridad inferior',
+	'Quests.MQ_DIVINGBELL_3_NAME': 'La oscuridad inferior',
+	'Quests.MQ_TYPE_DESCEND': 'Desciende',
+	'Quests.MQ_BLACKTHREAD_3_NAME': 'Regreso a Telalejana',
+	'Quests.MQ_BLACKTHREAD_4_NAME': 'Buscadora de hechizos',
+	'Quests.MQ_BLACKTHREAD_5_NAME': 'Los viejos corazones',
+	'Quests.MQ_BLACKTHREAD_6_NAME': 'Última zambullida',
+	'Quests.QUEST_FIXER1_TITLE': 'Reparaciones del Valle Óseo',
+	'Quests.TYPE_DONATE_1_TITLE': 'Donar',
+	'Quests.QUEST_FIXER3_TITLE': 'Un puente para salvar vidas',
+	'Quests.QUEST_FIXER2_TITLE': 'Un icono de esperanza',
+	'Quests.QUEST_PILGRIM_RAGS_TITLE': 'Prendas peregrinas',
+	'Quests.TYPE_HUNT_1_TITLE': 'Caza',
+	'Quests.QUEST_MOSSBERRY1_TITLE': 'Recolección de bayas',
+	'Quests.TYPE_GATHER_1_TITLE': 'Reunir',
+	'Quests.QUEST_FLEAS_TITLE': 'Las pulgas perdidas',
+	'Quests.TYPE_WAYFARER_1_TITLE': 'Caminante',
+	'Quests.QUEST_ROCK_ROLLERS_TITLE': 'Pedernajos volátiles',
+	'Quests.QUEST_SKULL_KING_TITLE': 'El terrible tirano',
+	'Quests.TYPE_HUNT_2_TITLE': 'Gran caza',
+	'Quests.QUEST_BROLLY_GET_TITLE': 'Púas maleables',
+	'Quests.QUEST_JOURNAL_TITLE': 'Bichos de Telalejana',
+	'Quests.TYPE_JOURNAL_TITLE': 'Aprender',
+	'Quests.QUEST_BELL_HOUSE_START_TITLE': 'Restauración de Campanilla',
+	'Quests.QUEST_BELL_HOUSE_CONT_TITLE': 'La gloria de Campanilla',
+	'Quests.QUEST_PINSMITHTOOLS_NAME': 'Aceite de maestro alfilero',
+	'Quests.QUEST_SHINY_BELL_GOOMBAS_TITLE': 'Campanas de plata',
+	'Quests.QUEST_SAVE_COURIER_SHORT_NAME': 'Mi mensajero desaparecido',
+	'Quests.QUEST_SAVE_COURIER_TALL_NAME': 'Mi hermano desparecido',
+	'Quests.QUEST_COURIER_BONEBOTTOM_NAME': 'Suministros del Valle Óseo',
+	'Quests.TYPE_COURIER_TITLE': 'Entrega',
+	'Quests.QUEST_COURIER_PILGRIMSREST_NAME': 'Suministros de Descanso del Peregrino',
+	'Quests.QUEST_COURIER_SONGCLAVE_NAME': 'Suministros de Enclave Cancioneril',
+	'Quests.QUEST_COURIER_FLEATOPIA_NAME': 'Suministros de Pulgatopía',
+	'Quests.QUEST_COURIER_MASKMAKER_NAME': 'Laca líquida',
+	'Quests.QUEST_COURIER_SLAVE_NAME': 'Huevo de la reina',
+	'Quests.QUEST_COURIER_FIXER_NAME': 'Suministros del Campamento de Supervivientes',
+	'Quests.QUEST_CROW_TITLE': 'Limpieza de cuervones',
+	'Quests.QUEST_BEASTFLY_TITLE': 'Moscabestia salvaje',
+	'Quests.QUEST_SHELL_FLOWER_TITLE': 'Rito del pólipo',
+	'Quests.QUEST_WITCH_CURSE_TITLE': 'Rito de renacimiento',
+	'Quests.QUEST_DOCTOR_CURSE_CURE_NAME': 'Extirpación de infestación',
+	'Quests.QUEST_EXTRACTOR_B_NAME': 'Asistente de alquimista',
+	'Quests.QUEST_EXTRACTOR_B2_NAME': 'Alquimia avanzada',
+	'Quests.QUEST_ROACH_KILL_TITLE': 'Vísceras de cucaracha',
+	'Quests.QUEST_SONGCLAVE_DONATE_1_TITLE': 'Construcción de Enclave Cancioneril',
+	'Quests.QUEST_SONGCLAVE_DONATE_2_TITLE': 'Fortalecimiento de Enclave Cancioneril',
+	'Quests.QUEST_FINEPINS_TITLE': 'Alfileres finos',
+	'Quests.QUEST_SAVE_CITYMERCHANT_NAME': 'La comerciante ambulante',
+	'Quests.QUEST_SAVE_CITYMERCHANT_BRIDGE_NAME': 'La comerciante perdida',
+	'Quests.QUEST_SONGPILGRIM_CLOAKS_TITLE': 'Capas del Coro',
+	'Quests.QUEST_BROODMOTHER_TITLE': 'La madre que se lamenta',
+	'Quests.QUEST_GOURMAND_TITLE': 'Gran sabor de Telalejana',
+	'Quests.QUEST_SAVE_SHERMA_NAME': 'Bálsamo para los heridos',
+	'Quests.QUEST_SONG_KNIGHT_TITLE': 'Audiencia final',
+	'Quests.QUEST_HUNTRESS_NAME': 'Festín para la prole',
+	'Quests.QUEST_RUNTRESS_NAME': 'Festín para Pequeñuela',
+	'Quests.QUEST_SHAKRA_FINAL_TITLE': 'Final del camino',
+	'Quests.Q_SOUL_SNARE_NAME': 'Seda y alma',
+	'Quests.QUEST_PINSTRESS_BATTLE_TITLE': 'Determinación fatal',
+	'Quests.QUEST_SPRINT_KILL_TITLE': 'La más veloz de Telalejana',
+	'Quests.TYPE_SPRINT_TITLE': 'Sprint',
+	'Quests.GARMOND_BLACK_THREADED_NAME': 'Se buscan héroes',
+	'Quests.QUEST_TROBBIO_2_TITLE': 'Dolor, angustia y miseria',
+	'Quests.QUEST_ANT_TRAPPER_TITLE': 'El cazador oculto',
+	'Quests.QUEST_FLEAGAMES_TITLE': 'Éxtasis del fin',
+	'Quests.QUEST_STEELSENTINEL_TITLE': 'Vasallo perdido',
+	'Quests.TYPE_STEELSENTINEL_TITLE': 'Acero',
+	'Quests.QUEST_MRMUSHROOM_TITLE': 'Cambio de era',
+	'Quests.TYPE_HERALD_TITLE': 'Testigo',
+	'Quests.QUEST_THREADCORES_TITLE': 'Corazones oscuros',
+	'UI.MAT_NAME_SILK': 'Seda',
+	'UI.MAT_DESC_SILK':
+		'Hilo fino hilado del alma de su creadora. Muy codiciado por su notable fuerza y sus propiedades místicas. Se utiliza para curar heridas, prolongar la vida y tejer poderosas runas.',
+	'UI.INV_NAME_SHARD': 'Fragmentos de coraza',
+	'UI.INV_DESC_SHARD':
+		'Fragmentos endurecidos de coraza y hueso que se utilizan para fabricar herramientas y trampas.',
+	'UI.INV_NAME_COIN': 'Rosarios',
+	'UI.INV_DESC_COIN':
+		'Cuentas talladas en diversos materiales que se utilizan como medida de fe y como moneda de cambio. Cada una está grabada con un fino diseño.',
+	'UI.INV_NAME_COIN_MID': 'Rosarios de coraza',
+	'UI.INV_DESC_COIN_MID': 'Cuentas talladas a partir de una coraza pulida. Valen más debido a su material.',
+	'UI.INV_NAME_COIN_BIG': 'Rosarios de perla',
+	'UI.INV_DESC_COIN_BIG':
+		'Reluciente perla tallada con intrincadas marcas. Los rosarios más raros y valiosos de toda Telalejana.',
+	'UI.MAT_NAME_SMELTSTONE': 'Pedernal',
+	'UI.MAT_DESC_SMELTSTONE':
+		'Roca para prender de la base de Telalejana. Extraída y utilizada por la Ciudadela en sus forjas.',
+	'UI.MAT_NAME_LIFEBLOOD': 'Plasmio',
+	'UI.MAT_DESC_LIFEBLOOD':
+		'Germen de vida líquido, dotado de potentes propiedades regenerativas. Se trata de una sustancia ajena a Telalejana, introducida por el alquimista Zylotol.',
+	'UI.MAT_NAME_MAGNETITE': 'Magnetita',
+	'UI.MAT_DESC_MAGNETITE': 'Roca levitante quebradiza que se encuentra en toda la periferia de Telalejana.',
+	'UI.MAT_NAME_VOLTSTONE': 'Voltridiana',
+	'UI.MAT_DESC_VOLTSTONE': 'Piedra dura y cargada que puede captar, almacenar y descargar electricidad.',
 	'Map Zones.ABOVE_CRADLE': 'Cuevas Fronterizas',
 	'Map Zones.BELLHOME': 'Hogar campana',
 	'Map Zones.BELLTOWN_HAUNTED': 'Campanilla Embrujada',

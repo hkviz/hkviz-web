@@ -84,10 +84,12 @@ async function genAreaBackgrounds() {
 }
 
 // generic id item
-async function genGenericIdItem(itemName: string) {
+async function genGenericIdItem({ itemName, sourceData }: { itemName: string; sourceData?: any }) {
 	const [idMemory, dataJsonStr] = await Promise.all([
 		ScriptIdMemory.createIdMemory(`${itemName}-silk`),
-		readModExtraction(`${itemName}-export.json`),
+		sourceData != null
+			? Promise.resolve(JSON.stringify({ all: sourceData }))
+			: readModExtraction(`${itemName}-export.json`),
 	]);
 	const items = JSON.parse(dataJsonStr).all;
 	const pascalCaseItemName = itemName
@@ -127,10 +129,60 @@ export const ${camelCaseItemName}NamesSilk: ${pascalCaseItemName}NameSilk[] = ${
 }
 
 async function genCrests() {
-	await genGenericIdItem('tool-crest');
+	await genGenericIdItem({ itemName: 'tool-crest' });
 }
 async function genTools() {
-	await genGenericIdItem('tool-item');
+	await genGenericIdItem({ itemName: 'tool-item' });
+}
+async function genCollectables() {
+	await genGenericIdItem({ itemName: 'collectable' });
+}
+async function genRelics() {
+	await genGenericIdItem({ itemName: 'collectable-relic' });
+}
+async function genEnemyJournals() {
+	await genGenericIdItem({ itemName: 'enemy-journal' });
 }
 
-await Promise.all([genMapData(), genLangData(), genAreaBackgrounds(), genCrests(), genTools()]);
+async function genQuests() {
+	await genGenericIdItem({ itemName: 'quest' });
+}
+
+async function genMaterium() {
+	await genGenericIdItem({ itemName: 'materium' });
+}
+async function genTransitionGates() {
+	await genGenericIdItem({ itemName: 'transition-gate' });
+}
+async function genRespawnPoints() {
+	await genGenericIdItem({ itemName: 'respawn-point' });
+}
+
+async function genToolLiquids() {
+	await genGenericIdItem({ itemName: 'tool-liquid', sourceData: [{ id: 'Flea Brew' }, { id: 'Lifeblood Syringe' }] });
+}
+
+async function genExtraToolSlot() {
+	await genGenericIdItem({ itemName: 'extra-tool-slot', sourceData: [{ id: 'Defend1' }, { id: 'Explore1' }] });
+}
+async function genSilksongVersion() {
+	await genGenericIdItem({ itemName: 'silksong-version', sourceData: [{ id: '1.0.30000' }] });
+}
+
+await Promise.all([
+	genMapData(),
+	genLangData(),
+	genAreaBackgrounds(),
+	genCrests(),
+	genTools(),
+	genCollectables(),
+	genRelics(),
+	genEnemyJournals(),
+	genQuests(),
+	genMaterium(),
+	genTransitionGates(),
+	genRespawnPoints(),
+	genToolLiquids(),
+	genExtraToolSlot(),
+	genSilksongVersion(),
+]);

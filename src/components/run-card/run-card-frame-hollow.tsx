@@ -15,7 +15,7 @@ export const RunCardFrameHollow: Component<{ isSteelSoul: boolean; isBrokenSteel
 				<img
 					src={healthFrameImg}
 					alt="Standard game mode frame"
-					class="absolute top-0 left-1 z-2 h-24 w-auto max-w-none"
+					class="absolute top-0 left-1 h-24 w-auto max-w-none"
 				/>
 			}
 		>
@@ -23,10 +23,7 @@ export const RunCardFrameHollow: Component<{ isSteelSoul: boolean; isBrokenSteel
 				<img
 					src={healthFrameSteelSoulBrokenImg}
 					alt="Broken Steel Soul game mode frame"
-					class={cn(
-						'absolute -top-8 -left-10 z-2 h-40 w-auto max-w-none',
-						runCardInteractiveBrightnessClasses,
-					)}
+					class={cn('absolute -top-8 -left-10 h-40 w-auto max-w-none', runCardInteractiveBrightnessClasses)}
 				/>
 			</Match>
 			<Match when={props.isSteelSoul}>
@@ -34,7 +31,7 @@ export const RunCardFrameHollow: Component<{ isSteelSoul: boolean; isBrokenSteel
 					src={healthFrameSteelSoulImg}
 					alt="Steel Soul game mode frame"
 					class={cn(
-						'roup-focus-visible:brightness-110 absolute -top-8 -left-10 z-2 hidden h-40 w-auto max-w-none sm:block',
+						'roup-focus-visible:brightness-110 absolute -top-8 -left-10 hidden h-40 w-auto max-w-none sm:block',
 						runCardInteractiveBrightnessClasses,
 					)}
 				/>
@@ -42,7 +39,7 @@ export const RunCardFrameHollow: Component<{ isSteelSoul: boolean; isBrokenSteel
 					src={healthFrameSteelSoulSmallImg}
 					alt="Steel Soul game mode frame"
 					class={cn(
-						'absolute -top-8 -left-10 z-2 h-40 w-auto max-w-none sm:hidden',
+						'absolute -top-8 -left-10 h-40 w-auto max-w-none sm:hidden',
 						runCardInteractiveBrightnessClasses,
 					)}
 				/>
