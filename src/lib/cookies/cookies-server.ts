@@ -1,6 +1,6 @@
 import { query } from '@solidjs/router';
-import { CookieSerializeOptions, getWebRequest } from '@solidjs/start/http';
-import { parse, serialize } from 'cookie';
+import { getWebRequest } from '@solidjs/start/http';
+import { parse, serialize, SerializeOptions } from 'cookie';
 import * as v from 'valibot';
 import { CookieDefinition, CookieNameLike, getCookieName } from './cookie-names';
 
@@ -34,7 +34,7 @@ export class ServerCookies {
 		}
 	}
 
-	set<T>(definition: CookieDefinition<T>, value: string, options: CookieSerializeOptions = {}) {
+	set<T>(definition: CookieDefinition<T>, value: string, options: SerializeOptions = {}) {
 		const optionsWithDefaults = options ?? {};
 		optionsWithDefaults.path ??= '/';
 		optionsWithDefaults.httpOnly ??= definition.httpOnly;
