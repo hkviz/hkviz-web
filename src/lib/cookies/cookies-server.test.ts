@@ -5,9 +5,9 @@ import { CookieDefinition } from './cookie-names';
 import { serverCookiesGet } from './cookies-server';
 
 let currentCookieHeader = '';
-vi.mock('vinxi/http', async (importOriginal) => {
+vi.mock('@solidjs/start/http', async (importOriginal) => {
 	return {
-		...(await importOriginal<typeof import('vinxi/http')>()),
+		...(await importOriginal<typeof import('@solidjs/start/http')>()),
 		getWebRequest: () => ({
 			headers: new Map([['cookie', currentCookieHeader]]),
 		}),
