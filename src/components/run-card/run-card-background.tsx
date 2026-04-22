@@ -12,7 +12,14 @@ export const RunCardBackground: Component<{
 
 	return (
 		<div class="absolute inset-0 h-full w-full bg-black">
-			<div class="relative h-full w-full opacity-70 group-hover:opacity-80 group-focus:opacity-80 group-active:opacity-60">
+			<div
+				class={cn(
+					'relative h-full w-full',
+					props.run.gameState.game === 'hollow'
+						? 'opacity-70 group-focus-within:opacity-80 group-hover:opacity-80 group-active:opacity-80 group-data-focus-context:opacity-80'
+						: 'opacity-80 group-focus-within:opacity-100 group-hover:opacity-100 group-active:opacity-100 group-data-focus-context:opacity-100',
+				)}
+			>
 				<Show when={props.run.gameState.game === 'silk'}>
 					<img
 						class={cn(
@@ -35,7 +42,7 @@ export const RunCardBackground: Component<{
 				>
 					<img
 						class={cn(
-							'inset-0 h-full w-full object-cover object-center transition group-hover:brightness-110 group-focus:brightness-110 group-active:brightness-90',
+							'inset-0 h-full w-full object-cover object-center transition group-focus-within:brightness-110 group-hover:brightness-110 group-active:brightness-90 group-data-focus-context:brightness-110',
 							props.run.gameState.game === 'hollow' ? '' : 'area-background-fade-x object-[50%_70%]',
 							bgImage().imgClasses,
 						)}

@@ -1,4 +1,4 @@
-import { tagFromCode, tagGroupFromCode } from '~/lib/types/tags';
+import { tagFromCode, tagGroupFromCode } from '~/lib/types/tags/tags';
 import { type RunMetadata } from '~/server/run/_find_runs_internal';
 
 export function getRunPageTitle(data: RunMetadata): string {
@@ -7,7 +7,7 @@ export function getRunPageTitle(data: RunMetadata): string {
 	const tags = tagCodes.map((code) => tagFromCode(code));
 	const tagNames = tags.map((tag) => tag.name);
 
-	const speedRunTags = tagGroupFromCode('speedrun').tags;
+	const speedRunTags = [...tagGroupFromCode('hollow_speedrun').tags, ...tagGroupFromCode('silk_speedrun').tags];
 	const isSpeedrun = tags.some((tag) => speedRunTags.includes(tag));
 
 	const titleTitle = data?.title ? data.title + ' - ' : '';

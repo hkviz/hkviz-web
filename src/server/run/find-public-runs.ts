@@ -3,7 +3,7 @@ import * as v from 'valibot';
 import { getUserOrNull } from '~/lib/auth/shared';
 import { gameIdSchema } from '~/lib/types/game-ids';
 import { RUN_SORT_DEFAULT, runSortSchema } from '~/lib/types/run-sort';
-import { isTagCode, tagGroupFromCode, tagGroupSchema, tagSchema } from '~/lib/types/tags';
+import { isTagCode, tagGroupFromCode, tagGroupSchema, tagSchema } from '~/lib/types/tags/tags';
 import { db } from '../db';
 import { findRunsInternal } from './_find_runs_internal';
 

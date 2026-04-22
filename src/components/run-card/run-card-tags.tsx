@@ -9,7 +9,7 @@ import {
 	type Tag,
 	type TagCode,
 	type TagGroup,
-} from '~/lib/types/tags.ts';
+} from '~/lib/types/tags/tags.ts';
 import { cn } from '~/lib/utils.ts';
 import { addTagAction, removeTagAction } from '~/server/run/tags.ts';
 import { Badge } from '../ui/badge.tsx';
@@ -28,6 +28,7 @@ import { Skeleton } from '../ui/skeleton.tsx';
 
 // TODO
 export const RunTag: Component<{
+	runGame: GameId;
 	tag: Tag;
 	runId: string;
 	isOwn: boolean;
@@ -45,7 +46,7 @@ export const RunTag: Component<{
 
 	async function removeTag() {
 		console.log('removeTag', props.tag.code);
-		await _removeTag(props.runId, props.tag.code);
+		await _removeTag(props.runId, props.tag.code, props.runGame);
 	}
 
 	return (
@@ -99,7 +100,7 @@ export const RunCardTags: Component<{
 	);
 
 	async function addTag(tag: Tag) {
-		await _addTag(props.runId, tag.code);
+		await _addTag(props.runId, tag.code, props.runGame);
 	}
 
 	return (
@@ -129,6 +130,7 @@ export const RunCardTags: Component<{
 							<RunTag
 								tag={tag}
 								runId={props.runId}
+								runGame={props.runGame}
 								isOwn={props.isOwn}
 								removeButtonClass={props.removeButtonClass}
 							/>

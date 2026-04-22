@@ -1,13 +1,13 @@
 import * as v from 'valibot';
-import { cn } from '../utils';
-import { GameId } from './game-ids';
+import { cn } from '../../utils';
+import { GameId } from '../game-ids';
 
 interface TagColor {
 	className: string;
 }
 
 const tagClasses = cn(
-	'relative rounded-full border-0 px-2.75 py-0.75 font-semibold tracking-wide text-white ring-[1.5px] ring-inset',
+	'relative rounded-full border-0 px-2.5 py-0.75 font-semibold tracking-wide text-white ring-[1.5px] ring-inset',
 	'duration-200 hover:brightness-110',
 );
 
@@ -48,7 +48,7 @@ function nextOrder() {
 	return _currentNextOrder++;
 }
 
-export type TagGroupCode = 'speedrun';
+export type TagGroupCode = 'hollow_speedrun' | 'silk_speedrun';
 
 function makeTag<TId extends string>(options: {
 	code: TId;
@@ -94,18 +94,20 @@ export const tags = [
 		color: indigo,
 	}),
 
+	// Hollow Knight
 	// originally from https://hollow-knight-speedrunning.fandom.com/wiki/Speedrun_categories
 	// now match https://www.speedrun.com/hollowknight categories
 	makeTag({
 		code: 'speedrun_any',
 		name: 'Any%',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: red,
+		games: ['hollow'],
 	}),
 	makeTag({
 		code: 'speedrun_all_skills',
 		name: 'All Skills',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: orange,
 		games: ['hollow'],
 	}),
@@ -113,7 +115,7 @@ export const tags = [
 		code: 'speedrun_112',
 		name: '112% APB',
 		longName: '112% All Pantheon Bosses',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: orange,
 		games: ['hollow'],
 	}),
@@ -121,27 +123,28 @@ export const tags = [
 		code: 'speedrun_107',
 		name: '107% AB',
 		longName: '107% All Bosses',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: orange,
 		games: ['hollow'],
 	}),
 	makeTag({
 		code: 'speedrun_106',
 		name: '106% True Ending',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: orange,
 		games: ['hollow'],
 	}),
 	makeTag({
 		code: 'speedrun_true',
 		name: 'True Ending',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: orange,
+		games: ['hollow'],
 	}),
 	makeTag({
 		code: 'speedrun_godhome',
 		name: 'Godhome Ending',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: orange,
 		removed: true,
 		games: ['hollow'],
@@ -149,43 +152,45 @@ export const tags = [
 	makeTag({
 		code: 'speedrun_low',
 		name: 'Low%',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: amber,
+		games: ['hollow'],
 	}),
 	makeTag({
 		code: 'speedrun_low_true',
 		name: 'Low% True Ending',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: amber,
 		games: ['hollow'],
 	}),
 	makeTag({
 		code: 'speedrun_low_godhome',
 		name: 'Low% Godhome Ending',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: amber,
 		games: ['hollow'],
 	}),
 	makeTag({
 		code: 'speedrun_grub',
 		name: 'Grub%',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: orange,
 		removed: true,
 		games: ['hollow'],
 	}),
-	makeTag({
-		code: 'speedrun_great_hopper',
-		name: 'Great Hopper%',
-		group: 'speedrun',
-		color: orange,
-		removed: true,
-		games: ['hollow'],
-	}),
+	// actually removed - tag column reused for speedrun 107 all bosses
+	// makeTag({
+	// 	code: 'speedrun_great_hopper',
+	// 	name: 'Great Hopper%',
+	// 	group: 'speedrun',
+	// 	color: orange,
+	// 	removed: true,
+	// 	games: ['hollow'],
+	// }),
 	makeTag({
 		code: 'speedrun_eat_me_too',
 		name: 'Eat Me Too%',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: orange,
 		removed: true,
 		games: ['hollow'],
@@ -193,21 +198,80 @@ export const tags = [
 	makeTag({
 		code: 'speedrun_other',
 		name: 'Other Speedrun',
-		group: 'speedrun',
+		group: 'hollow_speedrun',
 		color: red,
+		games: ['hollow'],
+	}),
+
+	// Silksong
+	makeTag({
+		code: 'silk_speedrun_any',
+		name: 'Any%',
+		group: 'silk_speedrun',
+		color: red,
+		games: ['silk'],
+	}),
+	makeTag({
+		code: 'silk_speedrun_true',
+		name: 'True Ending',
+		group: 'silk_speedrun',
+		color: orange,
+		games: ['silk'],
+	}),
+	makeTag({
+		code: 'silk_speedrun_100',
+		name: '100%',
+		group: 'silk_speedrun',
+		color: orange,
+		games: ['silk'],
+	}),
+	makeTag({
+		code: 'silk_speedrun_act1',
+		name: 'Act 1',
+		group: 'silk_speedrun',
+		color: orange,
+		games: ['silk'],
+	}),
+	makeTag({
+		code: 'silk_speedrun_ab',
+		name: '107% AB',
+		longName: 'All Bosses',
+		group: 'silk_speedrun',
+		color: orange,
+		games: ['silk'],
+	}),
+	makeTag({
+		code: 'silk_speedrun_low',
+		name: 'Low%',
+		group: 'silk_speedrun',
+		color: amber,
+		games: ['silk'],
+	}),
+	makeTag({
+		code: 'silk_speedrun_other',
+		name: 'Other Speedrun',
+		group: 'silk_speedrun',
+		color: red,
+		games: ['silk'],
 	}),
 ] as const;
 
-function tagsOfGroup(group: string | undefined) {
+function tagsOfGroup(group: TagGroupCode | undefined) {
 	return tags.filter((it) => ('group' in it ? it.group : undefined) === group);
 }
 
 export const tagGroups = [
 	{
-		code: 'speedrun',
-		name: 'Speedrun',
-		tags: tagsOfGroup('speedrun'),
-		tagsNotRemoved: tagsOfGroup('speedrun').filter((tag) => !tag.removed),
+		code: 'hollow_speedrun',
+		name: 'Hollow Knight Speedrun',
+		tags: tagsOfGroup('hollow_speedrun'),
+		tagsNotRemoved: tagsOfGroup('hollow_speedrun').filter((tag) => !tag.removed),
+	},
+	{
+		code: 'silk_speedrun',
+		name: 'Silksong Speedrun',
+		tags: tagsOfGroup('silk_speedrun'),
+		tagsNotRemoved: tagsOfGroup('silk_speedrun').filter((tag) => !tag.removed),
 	},
 ] as const;
 
@@ -227,6 +291,27 @@ export type Tag = (typeof tags)[number];
 export type TagCode = TagCodes[number];
 export const tagCodes = tags.map((it) => it.code) as unknown as TagCodes;
 export const tagSchema = v.picklist(tagCodes);
+
+export const tagCodesByGame: Record<GameId, TagCode[]> = {
+	hollow: tags.filter((tag) => tag.games.includes('hollow')).map((tag) => tag.code),
+	silk: tags.filter((tag) => tag.games.includes('silk')).map((tag) => tag.code),
+};
+
+export const tagCodeSchemaByGame = {
+	hollow: v.picklist(tagCodesByGame.hollow),
+	silk: v.picklist(tagCodesByGame.silk),
+};
+
+export const tagCodeWithGameSchema = v.variant('game', [
+	v.object({
+		game: v.literal('hollow'),
+		code: tagCodeSchemaByGame.hollow,
+	}),
+	v.object({
+		game: v.literal('silk'),
+		code: tagCodeSchemaByGame.silk,
+	}),
+]);
 
 export function tagFromCode(code: TagCode): Tag {
 	return tags.find((it) => it.code === code)!;

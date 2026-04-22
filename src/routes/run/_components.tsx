@@ -13,7 +13,7 @@ import {
 } from '~/components/ui/dropdown-menu';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { RUN_SORT_DEFAULT, runSortFromCode, runSorts, type RunSortCode } from '~/lib/types/run-sort';
-import { isTag, tagOrGroupFromCode, type Tag, type TagGroup } from '~/lib/types/tags';
+import { isTag, tagOrGroupFromCode, type Tag, type TagGroup } from '~/lib/types/tags/tags';
 import { cn } from '~/lib/utils';
 import { type RunFilterParams } from '~/server/run/find-public-runs';
 
@@ -95,7 +95,7 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 					<span class="mr-2 opacity-60">Tag:</span>{' '}
 					<Show when={tagOrGroup()} fallback="All">
 						{(tagOrGroup) => (
-							<Show when={isTag(tagOrGroup())} fallback={`All ${tagOrGroup().name}`}>
+							<Show when={isTag(tagOrGroup())} fallback={`${tagOrGroup().name}`}>
 								<Badge class={getColorClass(tagOrGroup())}>{tagOrGroup().name}</Badge>
 							</Show>
 						)}

@@ -18,7 +18,7 @@ import { playingFrequencyCodes } from '~/lib/types/playing-frequency';
 import { playingSinceCodes } from '~/lib/types/playing-since';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { runInteractionTypes } from '~/lib/types/run-interaction';
-import { tags, type TagCode } from '~/lib/types/tags';
+import { TagDBColumn, tagDBNames } from '~/lib/types/tags/tag_db_column';
 
 // ---- CUSTOM TYPES ----
 // uuid
@@ -145,9 +145,9 @@ export const verificationTokens = table(
 );
 
 const runTagColumns = Object.fromEntries(
-	tags.map((tag) => [`tag_${tag.code}`, boolean(`tag_${tag.code}`).notNull().default(false)]),
+	tagDBNames.map((tagColumn) => [tagColumn, boolean(tagColumn).notNull().default(false)]),
 ) as {
-	[Code in TagCode as `tag_${Code}`]: HasDefault<NotNull<SQLiteBooleanBuilderInitial<`tag_${Code}`>>>;
+	[DBColumn in TagDBColumn]: HasDefault<NotNull<SQLiteBooleanBuilderInitial<DBColumn>>>;
 };
 
 // meta data, so it can easily be displayed in the UI without parsing recording files

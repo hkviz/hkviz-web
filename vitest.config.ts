@@ -4,6 +4,9 @@ import { defineConfig } from 'vitest/config';
 export default defineConfig({
 	plugins: [solid()],
 	resolve: {
+		alias: {
+			'~': '/src',
+		},
 		conditions: ['development', 'browser'],
 	},
 });
