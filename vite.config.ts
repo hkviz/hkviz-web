@@ -1,5 +1,5 @@
 import { solidStart } from '@solidjs/start/config';
-import { defineConfig, Plugin } from 'vite';
+import { defineConfig, loadEnv, Plugin } from 'vite';
 // import { imagetoolsWithAverageColor } from './image-processing';
 import mdx from '@mdx-js/rollup';
 import { nitro } from 'nitro/vite';
@@ -72,49 +72,54 @@ const mdxOptions: MdxOptions = {
 	rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, rehypeAutolinkOptions]],
 };
 
-export default defineConfig(() => ({
-	envDir: './',
-	plugins: [
-		{
-			...mdx(mdxOptions),
-			enforce: 'pre',
-		} as Plugin,
-		solidStart({
-			middleware: './src/middleware.ts',
-			extensions: ['mdx', 'md'],
-		}),
-		nitro(),
-		/*devtools({
-			// features options - all disabled by default
-			autoname: true, // e.g. enable autoname
-		}),*/
-		lqip({
-			sharp: {
-				resize: {
-					width: 16,
-					height: 16,
-					fit: 'inside',
-					kernel: 'cubic',
+export default defineConfig(({ mode }) => {
+	const _env = loadEnv(mode, process.cwd(), '');
+	return {
+		envDir: './',
+		plugins: [
+			{
+				...mdx(mdxOptions),
+				enforce: 'pre',
+			} as Plugin,
+			solidStart({
+				middleware: './src/middleware.ts',
+				extensions: ['mdx', 'md'],
+			}),
+			nitro(),
+			/*devtools({
+				// features options - all disabled by default
+				autoname: true, // e.g. enable autoname
+			}),*/
+			lqip({
+				sharp: {
+					resize: {
+						width: 16,
+						height: 16,
+						fit: 'inside',
+						kernel: 'cubic',
+					},
 				},
+			}),
+			imagetools({
+				defaultDirectives: (id) => {
+					if (id.searchParams.has('hero')) {
+						// the `hero` directive was set on the image
+						return new URLSearchParams(
+							'w=1200;800;600;400;300&format=webp;jpg&as=picture&withoutEnlargement',
+						);
+					}
+					return new URLSearchParams();
+				},
+			}),
+			assetpackPlugin(),
+		],
+		nitro: {
+			preset: 'vercel',
+		},
+		build: {
+			rollupOptions: {
+				external: ['fs', 'fs/promises', 'fsevents', 'nodemailer'],
 			},
-		}),
-		imagetools({
-			defaultDirectives: (id) => {
-				if (id.searchParams.has('hero')) {
-					// the `hero` directive was set on the image
-					return new URLSearchParams('w=1200;800;600;400;300&format=webp;jpg&as=picture&withoutEnlargement');
-				}
-				return new URLSearchParams();
-			},
-		}),
-		assetpackPlugin(),
-	],
-	nitro: {
-		preset: 'vercel',
-	},
-	// build: {
-	// 	rollupOptions: {
-	// 		external: ['fs', 'fs/promises', 'fsevents', 'nodemailer'],
-	// 	},
-	// },
-}));
+		},
+	};
+});
