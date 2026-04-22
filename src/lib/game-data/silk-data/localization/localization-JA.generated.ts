@@ -53,6 +53,270 @@ export default {
 	'Map Zones.CITADEL_FORUM': '発令の間',
 	'Map Zones.COG_CORE': 'カラクリの中枢',
 	'Map Zones.ABYSS': 'アビス',
+	'UI.INV_NAME_DRESS_REG': '狩猟者のクローク',
+	'UI.INV_NAME_DRESS_BROLLY': '漂流者のクローク',
+	'UI.INV_NAME_DRESS_DJ': 'フェイのクローク',
+	'UI.INV_DESC_DRESS_REG': '身を守る質素な外套。<br><br>作りは精巧だが、歳月に<br>よる傷みも見受けられる。',
+	'UI.INV_DESC_DRESS_BROLLY': '身を守る質素な外套。<br><br>柔軟性の高いトゲが<br>縫い込まれている。',
+	'UI.INV_DESC_DRESS_DJ':
+		'フェイフォルンの柔らかい<br>毛で中がおおわれた、<br>身を守る外套。<br><br>柔軟性の高いトゲが<br>縫い込まれている。',
+	'UI.INV_DESC_DRESS_APP_FLY_FULL': 'ハエのにおいが充満している。',
+	'UI.INV_DESC_DRESS_APP_FLY_HALF': 'かすかにハエのにおいがする。',
+	'UI.INV_NAME_TOOLPOUCH': 'ポーチ',
+	'UI.INV_NAME_POUCHANDTOOLKIT': 'ポーチ&<br>作成キット',
+	'UI.INV_DESC_TOOLPOUCH': '道具や罠、素材などを<br>収納するためのポーチ。',
+	'UI.INV_DESC_POUCHANDTOOLKIT':
+		'道具や罠、それに<br>それらの殺傷性を高める<br>ための道具を収納する<br>ためのポーチ。',
+	'UI.INV_NAME_QUILL': '羽ペン',
+	'UI.INV_NAME_MAP': '地図',
+	'UI.INV_NAME_MAPANDQUILL': '地図と羽ペン',
+	'UI.INV_DESC_QUILL': '歩いた場所を記録する<br>ための道具。<br><br>地図があればそれに<br>記入することができる。',
+	'UI.INV_DESC_MAP':
+		'ファールームの地図。<br><br>シャクラによって部分的に<br>埋められている。<br><br>書き足すには羽ペンが<br>必要になる。',
+	'UI.INV_DESC_MAPANDQUILL':
+		'ファールームの地図と<br>それを記入するための<br>羽ペン。<br><br>ベンチ等で休んだ際に<br>新しく発見した場所が<br>記入される。',
+	'UI.INV_NAME_WHITE_FLOWER': '永年花',
+	'UI.INV_DESC_WHITE_FLOWER':
+		'深く遠い記憶の中で<br>採集された神秘の花。<br><br>虚無を退ける柔らかな<br>蒼白の光を放っている。',
+	'UI.INV_NAME_TOOL_METAL': '素材金属',
+	'UI.INV_DESC_TOOL_METAL':
+		'ファールームの岩や<br>骨の中に生成される<br>稀少な金属。<br><br>職工の腕を持つムシが、<br>道具や装飾品を作るのに<br>使う。',
+	'UI.INV_NAME_CREST_SOCKET': '記憶のロケット',
+	'UI.INV_DESC_CREST_SOCKET':
+		'大切な記憶が<br>封じ込まれたもの。<br>クレストを拡張するのに<br>使用できる。<br><br>クレストの拡張は、<br>メニューの「クレスト」<br>画面で実行できる。',
+	'UI.INV_NAME_PLINNEY_TOOLS': '蒼白の油',
+	'UI.INV_DESC_PLINNEY_TOOLS':
+		'稀少なシルフナメクジから<br>取得された胆液の分泌腺。<br><br>優れたピン鍛冶はこれに<br>含まれる輝く液体を使い、<br>刃を研ぐことができる。',
+	'UI.INV_NAME_HEART_CORAL': '珊瑚殻の心臓',
+	'UI.INV_DESC_HEART_CORAL': '珊瑚殻の王カーンの<br>活性化した心臓。<br><br>その鼓動は深く、遅い。',
+	'UI.INV_DESC_MOMENTO_HEART_EXTRA': '心臓は自分の家に<br>飾ることができる。',
+	'UI.INV_NAME_HEART_BLOOM': '花の心臓',
+	'UI.INV_DESC_HEART_BLOOM': 'ニュレスの<br>活性化した心臓。<br><br>その鼓動は儚く、速い。',
+	'UI.INV_NAME_HEART_HUNTER': '狩猟者の心臓',
+	'UI.INV_DESC_HEART_HUNTER':
+		'スカールの歌い手<br>カーメリタの<br>活性化した心臓。<br><br>その鼓動は<br>確かで、力強い。',
+	'UI.INV_NAME_HEART_CLOVER': '結合した心臓',
+	'UI.INV_DESC_HEART_CLOVER': '緑の王子の<br>活性化した心臓。<br><br>その鼓動は鋭く、明確。',
+	'UI.INV_NAME_PLASMIUM_GLAND': 'プラスミウムの<br>分泌腺',
+	'UI.INV_DESC_PLASMIUM_GLAND':
+		'錬金術師ジロトルの<br>内部に生成された、<br>脈動する臓器。<br><br>中は時間と共に満たされる<br>ため、無限に近い量の<br>プラスミウムを供給する<br>ことができる。<br><br>プラスミフラスコの補充に<br>備蓄が必要なくなる。',
+	'UI.INV_NAME_BROKEN_SILKSHOT': '壊れた道具',
+	'UI.INV_DESC_BROKEN_SILKSHOT':
+		'いにしえの紡ぐ者の<br>道具の残骸。<br>壊れていて使えない。<br><br>修理の腕に長けたムシなら<br>直せるかもしれない。',
+	'UI.INV_NAME_WITCH_ITEM': 'ねじれた芽',
+	'UI.INV_DESC_WITCH_ITEM': '灰色のつるが<br>ねじれたもの。<br><br>絶え間なく鳴き声を<br>あげている。',
+	'UI.INV_NAME_COG_HEART_PIECE': 'カラクリの心臓のかけら',
+	'UI.INV_NAME_COG_HEART_PIECES': 'カラクリの心臓の部位',
+	'UI.INV_NAME_COG_HEART': 'カラクリの心臓',
+	'UI.INV_DESC_COG_HEART_PIECE':
+		'カラクリで動く心臓の<br>一部分。<br><br>歯車と調整弁を用いた<br>複雑な構造をしている。',
+	'UI.INV_DESC_COG_HEART_PIECES':
+		'カラクリで動く心臓の<br>二つのかけらが合体し<br>ひとつになったもの。<br><br>歯車と調整弁を用いた<br>複雑な構造をしている。',
+	'UI.INV_DESC_COG_HEART':
+		'組み立てられたカラクリで<br>動く心臓。<br><br>歯車と調整弁を用いた<br>精巧な構造になっている。',
+	'UI.INV_NAME_CRAW_SUMMONS': 'ボロガワの文書',
+	'UI.INV_DESC_CRAW_SUMMONS':
+		'すり切れた黒い布に<br>伝達文がなぐり書き<br>されている。<br><br>"闇…冒涜者…水車…<br>家に…参上せよ…"',
+	'UI.INV_NAME_MOSSBERRY': '苔の実',
+	'UI.INV_DESC_MOSSBERRY':
+		'湿気の多い環境で育つ<br>甘い果実。<br><br>ただしその種子は多くの<br>生物にとって毒となる。',
+	'UI.INV_NAME_PILGRIM_RAGS_ITEM': '巡礼者のショール',
+	'UI.INV_DESC_PILGRIM_RAGS_ITEM':
+		'複数の巡礼者によって<br>長年にわたり着用された<br>簡素な衣。<br><br>破れ、ほつれながらも、<br>何度も修繕されている。',
+	'UI.INV_NAME_SPINE': 'トゲの繊維',
+	'UI.INV_DESC_SPINE':
+		'ホーカーが生成するトゲに<br>含まれる、柔らかい繊維。<br><br>技術を持つ裁縫師なら、<br>これを衣服や装飾品に<br>縫い込むことができる。',
+	'UI.INV_NAME_SHELL_FLOWER': 'ポリップの心',
+	'UI.INV_DESC_SHELL_FLOWER':
+		'取り込まれた森のワスプの<br>身体のまわりに生成された<br>花の核。<br><br>中にはワスプの栄養となる<br>ネバネバした蜜が含まれている。',
+	'UI.INV_NAME_CROW_FEATHER': 'ボロ皮',
+	'UI.INV_DESC_CROW_FEATHER':
+		'ボロガワムシの身体から<br>取得した、すりきれた布の<br>ようなもの。<br><br>くすんだ色をしている上に<br>破れやすく、大した使い道<br>はないと考えられている。',
+	'UI.INV_NAME_ROCK_ROLLER_ITEM': '発火宝石',
+	'UI.INV_DESC_ROCK_ROLLER_ITEM':
+		'ヒウチムシから収集した、<br>宝石のような見た目を<br>した臓器。<br><br>こすると火花が生じ、<br>割ったり落としたりした際<br>には爆発することもある。',
+	'UI.INV_NAME_ROACH_CORPSE_ITEM': 'ツチゴキブリの<br>はらわた',
+	'UI.INV_DESC_ROACH_CORPSE_ITEM':
+		'ツチゴキブリの新鮮な<br>はらわた。<br><br>硬くてヌルっとしていて、<br>臭いもひどい。<br>多くの者にとっては味も<br>受け入れ難い。',
+	'UI.INV_NAME_SK_FRAGMENT': '頭部の破片',
+	'UI.INV_DESC_SK_FRAGMENT': 'オオズガイから収集した<br>大きなトゲのような骨。',
+	'UI.INV_NAME_BEASTFLY_REMAINS': '角の破片',
+	'UI.INV_DESC_BEASTFLY_REMAINS': '角のついた硬い殻の塊。<br><br>倒したオオケモノバエから<br>収集したもの。',
+	'UI.INV_NAME_CONCHFLY_REMAINS': '珊瑚殻のトゲ',
+	'UI.INV_DESC_CONCHFLY_REMAINS': 'ホラガイバエの殻の<br>先端が折れたもの。<br><br>硬質で鋭く尖っている。',
+	'UI.INV_NAME_BROODMOTHER_REMAINS': '排卵の母の眼',
+	'UI.INV_DESC_BROODMOTHER_REMAINS': '排卵の母から取得した、<br>ゼラチン質の臓器。',
+	'UI.INV_NAME_BELLCLAPPER_ITEM': '銀の鐘',
+	'UI.INV_DESC_BELLCLAPPER_ITEM': '光沢を放つ金属で精巧に<br>鋳造された鐘。',
+	'UI.INV_NAME_BLUE_GOOP': 'プラスミウム',
+	'UI.INV_NAME_BLUE_GOOP_PICKUP': 'プラスミウムを採集した',
+	'UI.INV_DESC_BLUE_GOOP': '熟れたつぼみから<br>抽出した液状の命の種。<br><br>強い再生力を秘めている。',
+	'UI.INV_DESC_BLUE_GOOP_FULL': '熟れたつぼみから<br>抽出した液状の命の種。<br><br>強い再生力を秘めている。',
+	'UI.INV_NAME_CORAL_CHUNK': '珊瑚殻の破片',
+	'UI.INV_DESC_CORAL_CHUNK':
+		'高密度の珊瑚殻の塊。<br><br>道具の素材としては<br>適さないが、<br>正しく用いることで<br>様々な治療効果を生み<br>出すと言われている。',
+	'UI.INV_NAME_FINEPIN': '上質なピン',
+	'UI.INV_DESC_FINEPIN':
+		'ファールームにおける<br>一般的な武器。<br>長く使われているわりには<br>状態はよい。<br><br>金属を用いて精巧に<br>作られており、<br>先端は鋭く尖っている。',
+	'UI.INV_NAME_SHININGCOG': '輝く歯車',
+	'UI.INV_DESC_SHININGCOG':
+		'カラクリ機械の中から<br>取得した無傷の歯車。<br><br>長く使われたものだが、<br>光沢は失われていない。',
+	'UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM': '合唱者のクローク',
+	'UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM':
+		'シタデルに受け入れられた<br>巡礼者に贈られた衣。<br><br>その厚手の素材は、<br>着用者を風や寒さから<br>守ってくれる。',
+	'Quests.COURIER_SUPPLIES_ITEM_NAME': '運び屋の袋',
+	'Quests.COURIER_SUPPLIES_ITEM_DESC': '丈夫な布で作られた袋。<br>道具や装飾品や医療品<br>などが入っている。',
+	'Quests.COURIER_SUPPLIES_SLAVE_NAME': '女王の卵',
+	'Quests.COURIER_SUPPLIES_SLAVE_DESC':
+		'シルクグライの若き女王を<br>内包した、脆い卵。<br><br>女王自身にシルクを集める<br>力はないが、時間と世話を<br>費やすことで、より多くの<br>シルクグライを生み出す<br>ようになる。',
+	'Quests.COURIER_SUPPLIES_MASK_NAME': '液状塗料',
+	'Quests.COURIER_SUPPLIES_MASK_DESC': '蒼白の液体。<br><br>骨の仮面の作成と<br>硬質化に使われる。',
+	'UI.INV_NAME_GOURMAND_MOSSBERRY_STEW': '苔の実のシチュー',
+	'UI.INV_DESC_GOURMAND_MOSSBERRY_STEW':
+		'苔の実とドルイドの<br>ハーブを用いて作られる、<br>濃厚でシロップのような<br>スープ。<br><br>甘くて香りもよいが、<br>多くの生物にとっては<br>毒となる。',
+	'UI.INV_NAME_PLASMIUM_BLOOD': 'プラスミウム化<br>した血液',
+	'UI.INV_DESC_PLASMIUM_BLOOD': '液状の命の種と完全に<br>同化した生物の血液。<br><br>強い再生力を秘めている。',
+	'UI.INV_NAME_GOURMAND_VINTAGE_NECTAR': '熟成された乳蜜',
+	'UI.INV_DESC_GOURMAND_VINTAGE_NECTAR':
+		'非常に長く生きた、<br>アブラムシのような生物<br>から取得した上質な蜜。<br><br>倉庫に何世代にもわたって<br>寝かせられたことで、<br>複雑に熟成している。',
+	'Quests.COURIER_SUPPLIES_MEAT_NAME': '運び屋の薄切り肉',
+	'Quests.COURIER_SUPPLIES_MEAT_DESC':
+		'脂身豊富な肉。<br>なんの肉かは不明。<br><br>適切に保存しないと、<br>すぐに悪くなる。',
+	'UI.INV_NAME_GOURMAND_CORAL_INGREDIENT': '珊瑚殻の実',
+	'UI.INV_DESC_GOURMAND_CORAL_INGREDIENT':
+		'突き出した珊瑚殻の<br>中心から取得した、<br>硬くて毛の生えた種。<br><br>そのままだと味は薄いが、<br>挽いて粉にすると<br>刺激の強い調味料となる。',
+	'UI.INV_NAME_PICKLEDEGG': 'ドロウジの漬け物',
+	'UI.INV_DESC_PICKLEDEGG':
+		'ツチゴキブリの体液に<br>漬けて作られた、<br>刺激の強い珍味。<br><br>穢れた調理師ルゴリの<br>レパートリーの中でも<br>最も有名なもの。',
+	'Quests.ITEM_EXTRACTOR_PINS_NAME': '鋼鉄のトゲ',
+	'Quests.ITEM_EXTRACTOR_PINS_DESC': '重機械に用いるために<br>鋳造された硬質なトゲ。<br><br>硬い殻も貫ける。',
+	'UI.INV_NAME_MORSEL_SEARED': '焼かれた肉',
+	'UI.INV_DESC_MORSEL_SEARED': '倒した敵から得た肉。<br><br>味が引き立つように<br>焼かれている。',
+	'UI.INV_NAME_MORSEL_SHREDDED': '細切れの肉',
+	'UI.INV_DESC_MORSEL_SHREDDED': '倒した敵から得た肉。<br><br>小さな塊に切り分け<br>られている。',
+	'UI.INV_NAME_MORSEL_SPEARED': '串刺しの肉',
+	'UI.INV_DESC_MORSEL_SPEARED': '倒した敵から得た肉。<br><br>形を崩さぬまま、<br>きれいに串刺しに<br>されている。',
+	'UI.INV_NAME_ANT_TRAPPER_ITEM': 'ムシ形',
+	'UI.INV_DESC_ANT_TRAPPER_ITEM': '子供用の玩具。<br><br>葉をまとったムシの形を<br>している。',
+	'UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER': '乙女の魂',
+	'UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER':
+		'チャペルの従者から<br>もらった容器。<br><br>渦巻くような魂で<br>満たされている。',
+	'UI.INV_NAME_SNARE_SOUL_BELLHERMIT': '隠者の魂',
+	'UI.INV_DESC_SNARE_SOUL_BELLHERMIT': '鐘の隠者の輝く魂で<br>満たされた重い鐘。',
+	'UI.INV_NAME_SNARE_SOUL_SWAMP': '求者の魂',
+	'UI.INV_DESC_SNARE_SOUL_SWAMP':
+		'ひび割れた殻の中に、<br>大昔に死んだムシから<br>引き出された魂が<br>含まれている。',
+	'UI.INV_NAME_TOKEN_FAITH': '単純な鍵',
+	'UI.INV_DESC_TOKEN_FAITH':
+		'とりたてて特徴のない<br>錆びた鍵。<br>単純な鍵穴のついた扉を<br>開けることができる。<br><br>歳月によって<br>脆くなっているため、<br>１度使うと壊れてしまう。',
+	'UI.INV_NAME_DOCK_KEY': '潜水鐘の鍵',
+	'UI.INV_DESC_DOCK_KEY':
+		'労働者が持っていた<br>小さな鍵。<br><br>深層の港にある潜水鐘の<br>扉を開けることができる。',
+	'UI.INV_NAME_DOCK_DEMO_KEY': '門の鍵',
+	'UI.INV_DESC_DOCK_DEMO_KEY': '労働者が用いる小さな鍵。<br><br>深層の港の中枢にある<br>門を開けることができる。',
+	'UI.INV_NAME_WARD_KEY': '白い鍵',
+	'UI.INV_DESC_WARD_KEY':
+		'精巧に作られた金属の鍵。<br>手術用器具に似た形を<br>している。<br><br>シタデル内にある白色の棟<br>に入れるようになる。',
+	'UI.INV_NAME_WARD_BOSS_KEY': '外科医の鍵',
+	'UI.INV_DESC_WARD_BOSS_KEY': '捨てられていた<br>白色の棟の鍵。<br><br>手術室の下にある扉を<br>開けることができる。',
+	'UI.INV_NAME_ARCHITECT_KEY': '設計者の鍵',
+	'UI.INV_DESC_ARCHITECT_KEY':
+		'回転する設計者の鍵。<br><br>聖域の礎にある、<br>設計者のチャペルの扉を<br>開けることができる。',
+	'UI.INV_NAME_SLAB_KEY_A': '怠惰者の鍵',
+	'UI.INV_NAME_SLAB_KEY_B': '異端者の鍵',
+	'UI.INV_NAME_SLAB_KEY_C': '背教者の鍵',
+	'UI.INV_NAME_SLAB_KEYRING': '巨石の牢の鍵',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE':
+		'"怠惰者"の印のついた鍵。<br><br>巨石の牢の特定の部屋や<br>通路に入れるようになる。',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP':
+		'"背教者"の印のついた鍵。<br><br>巨石の牢の特定の部屋や<br>通路に入れるようになる。',
+	'UI.INV_DESC_SLAB_KEYRING': '巨石の牢の独房や<br>通路の鍵。',
+	'UI.INV_NAME_BELL_HOUSE_KEY': '鐘の家の鍵',
+	'UI.INV_DESC_BELL_HOUSE_KEY': 'ベルハートの上部にある、修繕された鐘の家の鍵。',
+	'UI.INV_NAME_MATERIUM': 'マテリウム',
+	'UI.INV_DESC_MATERIUM':
+		'チューブと容器が<br>合わさったもの。<br>様々な素材を保管し、<br>研究するために使われる。<br><br>自分の家があれば<br>使用することができる。',
+	'UI.INV_NAME_FARSIGHT': '遠視眼',
+	'UI.INV_DESC_FARSIGHT':
+		'紡ぐ者の監視道具。<br>組み立てると、遠く離れた<br>場所を観察できる。<br><br>自分の家があれば<br>組み立てることができる。',
+	'UI.INV_NAME_CRAWBELL': 'ボロガワの鐘',
+	'UI.INV_DESC_CRAWBELL':
+		'古い鐘の形をした巣。<br><br>取りつけるとボロガワの<br>子が中に住みつき、<br>殻の破片やロザリーで<br>鐘を満たすようになる。<br><br>家の外に取りつけられる。',
+	'UI.INV_NAME_SETH_MEMENTO': '守護者のメメント',
+	'UI.INV_DESC_SETH_MEMENTO':
+		'放浪者セスが持っていた、<br>年季の入ったメダル。<br><br>卓越した技量を持つ者に<br>敬意を称して与えられた<br>もの。',
+	'UI.INV_DESC_MOMENTO_EXTRA': 'メメントは自分の家に<br>飾ることができる。',
+	'UI.INV_NAME_SPRINT_MEMENTO': '健脚の師の<br>メメント',
+	'UI.INV_DESC_SPRINT_MEMENTO': 'ファールーム最速のムシに<br>対して健脚の師より<br>贈られたトロフィー。',
+	'UI.INV_NAME_MEMENTO_GARMOND': '英雄のメメント',
+	'UI.INV_DESC_MEMENTO_GARMOND': 'ファールームの呪気に<br>よって滅びた村の遺物。',
+	'UI.INV_NAME_HUNTER_MEMENTO': '狩猟者のメメント',
+	'UI.INV_DESC_HUNTER_MEMENTO':
+		'真の狩猟者と認められた<br>者に与えられる証。<br><br>ネバネバしたもので<br>印が押されている。',
+	'UI.INV_NAME_MEMENTO_CROWMAN': 'ボロガワの<br>メメント',
+	'UI.INV_DESC_MEMENTO_CROWMAN':
+		'ボロガワの審議会を<br>象徴する鉄の紋章。<br><br>持つ者は過去と未来に<br>おけるあらゆる罪から<br>解放される。',
+	'UI.INV_NAME_MEMENTO_GREY': '灰色のメメント',
+	'UI.INV_DESC_MEMENTO_GREY':
+		'彫刻のほどこされた殻石。<br>砂と年月によって傷み、<br>色褪せている。<br><br>…見ろ…記憶しろ…<br>命が再生する…<br>その時まで…',
+	'UI.INV_NAME_MEMENTO_SURFACE': '地表のメメント',
+	'UI.INV_DESC_MEMENTO_SURFACE': '年季の入った装飾品。<br><br>ファールームの上にある<br>名もなき町を模している。',
+	'UI.INV_NAME_R_BONE_RECORD': '骨の巻物',
+	'UI.INV_DESC_R_BONE_RECORD': 'すり切れた布と骨で<br>作られた原始的な巻物。<br>力尽きた巡礼者によって<br>残された。',
+	'UI.INV_DESC_RELIC': 'ファールームの過去を<br>伝える遺物であり、<br>歴史的な品の収集家に<br>とっては興味深い代物。',
+	'UI.INV_NAME_R_WEAVER_TOTEM': '紡ぐ者の像',
+	'UI.INV_DESC_R_WEAVER_TOTEM':
+		'骨を削って作られた、<br>いにしえの紡ぐ者の像。<br>その身体には祈りの言葉が<br>刻まれている。',
+	'UI.INV_NAME_R_SEAL_CHIT': '合唱者への指令',
+	'UI.INV_DESC_R_SEAL_CHIT':
+		'シタデルが発行した指令。<br>かつては輝いていた印も、<br>歳月によって色褪せて<br>しまっている。',
+	'UI.INV_NAME_R_WEAVER_RECORD': 'ルーンのハープ',
+	'UI.INV_DESC_R_WEAVER_RECORD':
+		'シルクのルーンが<br>組み込まれた、<br>古い紡ぐ者の録音装置。<br><br>色褪せたルーンには<br>遠い昔の紡ぐ者の言葉が<br>書かれている。',
+	'UI.INV_NAME_R_ANCIENT_EGG': '神秘の卵',
+	'UI.INV_DESC_R_ANCIENT_EGG':
+		'ファールームが誕生する<br>前から存在する、<br>黒い石の卵。<br><br>古代の遺物であり、<br>歴史的な品の収集者に<br>とっては非常に貴重な<br>ものとなる。',
+	'UI.INV_NAME_R_PSALM_CYL': '聖歌のシリンダー',
+	'UI.INV_DESC_R_PSALM_CYL':
+		'シタデルで作られた<br>金属製のシリンダー。<br>突起を利用して音を<br>記録している。<br><br>蓄音機があれば再生して<br>聴くことができる。',
+	'UI.INV_NAME_R_PSALM_CYL_MELODY': '聖なるシリンダー',
+	'UI.INV_DESC_R_PSALM_CYL_MELODY':
+		'シタデルで作られた<br>金属製のシリンダー。<br>貯蔵庫の管理者たちの<br>メロディが記録されて<br>いる。<br><br>蓄音機があれば再生して<br>聴くことができる。',
+	'UI.INV_NAME_COIN_SET_F': '傷んだ<br>ロザリーの紐',
+	'UI.INV_DESC_COIN_SET_F': '傷んだ紐で小量の<br>ロザリーをつないだもの。<br><br>解体すればロザリーが<br>手に入る。',
+	'UI.INV_DESC_COIN_SET_USE': '{0}個のロザリーが<br>含まれている。',
+	'UI.INV_NAME_COIN_SET_S': 'ロザリーの紐',
+	'UI.INV_DESC_COIN_SET_S': '短い紐でロザリーを<br>つないだもの。<br><br>解体すればロザリーが<br>手に入る。',
+	'UI.INV_NAME_COIN_SET_M': 'ロザリーの首飾り',
+	'UI.INV_DESC_COIN_SET_M':
+		'たくさんのロザリーを<br>つなげて作られた装飾品。<br><br>解体すればロザリーが<br>手に入る。',
+	'UI.INV_NAME_COIN_SET_M2': '重いロザリーの<br>首飾り',
+	'UI.INV_DESC_COIN_SET_M2':
+		'一般的なロザリーと<br>上質なロザリーを合わせて<br>作られた装飾品。<br><br>解体すればロザリーが<br>手に入る。',
+	'UI.INV_NAME_COIN_SET_L': '蒼白のロザリーの首飾り',
+	'UI.INV_DESC_COIN_SET_L': '真珠のロザリーで<br>作られた重い首飾り。<br><br>解体すればロザリーが<br>手に入る。',
+	'UI.INV_NAME_SHARD_POUCH': '破片の束',
+	'UI.INV_DESC_SHARD_POUCH':
+		'殻の破片を束ねたもの。<br><br>個別に分けることで<br>道具作成の素材として<br>使用できる。',
+	'UI.INV_DESC_SHARD_POUCH_USE': '破片が{0}個含まれている。',
+	'UI.INV_NAME_GREAT_SHARD': '野獣の破片',
+	'UI.INV_DESC_GREAT_SHARD':
+		'大きな獣の殻からは、<br>ときに硬質な素材が<br>見つかることがある。<br>砕いてバラバラにすれば、<br>道具作成の素材として<br>使用できる。',
+	'UI.INV_DESC_GREAT_SHARD_USE': '砕くと{0}個の<br>殻の破片になる。',
+	'UI.INV_NAME_PRISTINE_CORE': '無傷の核',
+	'UI.INV_DESC_PRISTINE_CORE':
+		'カラクリのムシの内部を<br>構成するメカニズム。<br><br>解体して殻の破片にすれば<br>道具作成の素材として使用<br>できる。',
+	'UI.INV_NAME_FIXER_IDOL': 'ホーネットの像',
+	'UI.INV_DESC_FIXER_IDOL':
+		'小さな像。<br><br>出来はそこそこだが、<br>強い友情の象徴として<br>時間をかけて作られた<br>ことがうかがえる。',
+	'UI.INV_NAME_GROWSTONE': '成長する石',
+	'UI.INV_DESC_GROWSTONE':
+		'驚異的な再生能力を持つ、<br>冷たい鋼のような石。<br><br>砕くと殻の破片となるが、<br>時間が経つと再生する。',
+	'UI.INV_NAME_SILK_GRUB': 'シルクグライ',
+	'UI.INV_DESC_SILK_GRUB':
+		'ファールームに点在する<br>シルクの中に生き、<br>それを食べる幼虫。<br><br>遠く離れた場所にある<br>シルクを見つけ出す能力が<br>生まれつき備わっている。',
+	'UI.INV_DESC_SILK_GRUB_FUNCTION': '戦いに敗れた後に消費<br>すると、繭を回収できる。',
+	'Prompts.PROMPT_USE_CONSUMABLE_GRUB': '消費',
 	'Tools.CREST_HUNTER_NAME': '狩猟者',
 	'Tools.CREST_REAPER_NAME': '収奪者',
 	'Tools.CREST_PILGRIM_NAME': '放浪者',
@@ -124,6 +388,1122 @@ export default {
 	'Tools.MUSICIAN_CHARM_NAME': 'クモの弦',
 	'Tools.SPRINTMASTER_NAME': 'シルクアンクレット',
 	'Tools.THIEF_CHARM_NAME': '盗賊の証',
+	'Journal.NAME_MOSSBONE_CRAWLER': 'コケフサ',
+	'Journal.DESC_MOSSBONE_CRAWLER':
+		'毛皮のようなものにおおわれた、地面をはいずるムシ。背中には鋭いトゲが並ぶようについている。',
+	'Journal.NOTE_MOSSBONE_CRAWLER': 'トゲさえなければ可愛らしいムシなのだけれど。',
+	'Journal.NAME_MOSSBONE_CRAWLER_FAT': 'オオコケフサ',
+	'Journal.DESC_MOSSBONE_CRAWLER_FAT': 'シタデルの記憶庫で繁殖し、不自然なほどに肥大化したコケフサ。',
+	'Journal.NOTE_MOSSBONE_CRAWLER_FAT': 'トゲなしに生まれてきてくれれば本当に見事な毛皮のかたまりなんだけど。',
+	'Journal.NAME_MOSSBONE_FLY': 'コケミル',
+	'Journal.DESC_MOSSBONE_FLY': '空中をブンブンと飛翔するムシ。小さな針で外敵から身を守る。',
+	'Journal.NOTE_MOSSBONE_FLY':
+		'脆弱で動きもぎこちないムシだけど、かれらにとって幸運なことにその生息地には捕食者に相当する存在がほとんど見当たらない。なにか理由があるのかしら？',
+	'Journal.NAME_MOSSBONE_MOTHER': 'コケママ',
+	'Journal.DESC_MOSSBONE_MOTHER': '成長したコケミル。針は成長して大きくなり、皮も硬化している。',
+	'Journal.NOTE_MOSSBONE_MOTHER':
+		'母としての本能というのは、ときにその生き物の限界を超えた力を引き出すことがある。そして本来なら弱者に位置するムシを、恐ろしい敵へと変えてしまうのよ。',
+	'Journal.NAME_ASPID_COLLECTOR': 'アクニド',
+	'Journal.DESC_ASPID_COLLECTOR':
+		'羽根の生えたムシ。骨溜まりの麓の上にある洞穴で、そこにある苔や地衣類を食べて生息している。',
+	'Journal.NOTE_ASPID_COLLECTOR':
+		'本来なら捕食者になり得る存在を避けて行動するのだろうけれど、ファールームの呪気によって好戦的になっている。この者たちの顎が戦いには向いていないのが幸いね。',
+	'Journal.NAME_BONE_GOOMBA': 'ズガイバシリ',
+	'Journal.DESC_BONE_GOOMBA':
+		'小さくて柔らかいムシ。脊髄の道に散在する硬質な頭蓋骨を用いることでその身を守り、姿を偽っている。',
+	'Journal.NOTE_BONE_GOOMBA': 'どこの土地でも、驚くような方法でその身を偽る者たちがいる。どんなときも油断は禁物ね。',
+	'Journal.NAME_BONE_GOOMBA_BOUNCE_FLY': 'ズガイバネ',
+	'Journal.DESC_BONE_GOOMBA_BOUNCE_FLY':
+		'空中を舞うズガイバシリの親類。脊髄の道の最も深いところにある、高温の洞穴のみに生息する。',
+	'Journal.NOTE_BONE_GOOMBA_BOUNCE_FLY':
+		'あの高熱に包まれた洞穴には捕食者がほとんどいない。だからこそ、このように脆弱な生き物が生きられるのでしょうね。',
+	'Journal.NAME_BONE_GOOMBA_LARGE': 'ズガイリキ',
+	'Journal.DESC_BONE_GOOMBA_LARGE':
+		'巨大な尖った頭蓋骨をかぶった、柔らかいムシ。自分の縄張りと、同種の小さなムシたちを守るために、侵入者に向けて突進する。',
+	'Journal.NOTE_BONE_GOOMBA_LARGE':
+		'身体の大きさゆえに気が大きくなっているのか、呪気によって命知らずになっているのか、どちらかしらね？',
+	'Journal.NAME_SKULL_KING': 'オオズガイ',
+	'Journal.DESC_SKULL_KING':
+		'ズガイバシリの希少種で、非常に巨大な身体を持つ。脊髄の道に生息する捕食者の中でも最大級の大きさを誇り、その荒い気性によって大いに恐れられている。',
+	'Journal.NOTE_SKULL_KING':
+		'恐ろしい存在なのは間違いないけど、この者の頭蓋骨はより大きな獣から取られたもののように見える。証拠としての骨が存在しなければ、これほど大きく成長するムシがいるなんて、信じ難かったでしょうね。',
+	'Journal.NAME_BONE_CRAWLER': 'キリク',
+	'Journal.DESC_BONE_CRAWLER':
+		'暗い横穴を好む、骨ばった小さなムシ。トゲのついた甲皮を広げることで、攻撃者から身を守る。',
+	'Journal.NOTE_BONE_CRAWLER':
+		'このムシの伸縮可能なトゲのような攻撃方法は、単純だけど効果的で悪くないと思う。油断している捕食者はあっさりと串刺しにされてしまうでしょうね。',
+	'Journal.NAME_BONE_FLYER': 'ケモノバエ',
+	'Journal.DESC_BONE_FLYER':
+		'ファールームの低地に生息する、気性の荒いハエ。硬い骨でできた仮面を獲物にぶつけて攻撃する。',
+	'Journal.NOTE_BONE_FLYER':
+		'子供の頃は、この単純な生き物の突進を避けて遊んで楽しんだものよ。残念ながら、今はそんな風に戯れている時間はないのだけど。',
+	'Journal.NAME_BONE_FLYER_GIANT': 'オオケモノバエ',
+	'Journal.DESC_BONE_FLYER_GIANT': '成長し、怒りを抱えたケモノバエ。身体は重くなり、仮面の厚みも増している。',
+	'Journal.NOTE_BONE_FLYER_GIANT':
+		'王国の頂より教化の波は広がったようだけれど、低地を支配しているのはいまだこういった強力な獣たちのようね。この生き物の咆哮はわたしの中の深いところにある、原始的な本能のようなものを刺激する。',
+	'Journal.NAME_BONE_CIRCLER': 'カラニド',
+	'Journal.DESC_BONE_CIRCLER':
+		'低地でよく見られる羽根の生えたムシ。普段はおとなしいが、脅威を近くに感じると攻撃してくる。',
+	'Journal.NOTE_BONE_CIRCLER': '丸く太った形状は射撃練習の的としてピッタリね。つい標的にしたくなってしまうわ…',
+	'Journal.NAME_BONE_CIRCLER_VICIOUS': 'レイケツカラニド',
+	'Journal.DESC_BONE_CIRCLER_VICIOUS':
+		'低地に生息する羽根の生えたムシ。気性が荒く、怒りを覚えると刃のような尻尾を素早く振って攻撃してくる。',
+	'Journal.NOTE_BONE_CIRCLER_VICIOUS':
+		'身体の大きさに比べるとずいぶん羽根が小さいわね。灼熱の土地にただよう温かい空気を利用して身体を浮かしているのかしら？　だとしたら賢いわね。',
+	'Journal.NAME_BONE_HOPPER': 'ホネハネムシ',
+	'Journal.DESC_BONE_HOPPER': '感覚の鋭い草食のムシ。危険を察知するとすぐに逃げ出す。',
+	'Journal.NOTE_BONE_HOPPER':
+		'呪気に殻を侵されているにもかかわらず、完全に狂暴化はしていないようね。逃走本能をいまだに強く維持しているようだから。',
+	'Journal.NAME_BONE_HOPPER_GIANT': 'ロウホネハネムシ',
+	'Journal.DESC_BONE_HOPPER_GIANT': '感覚の鋭い背の高い生物。強力な脚と鋭く尖った仮面で群れを守る。',
+	'Journal.NOTE_BONE_HOPPER_GIANT': 'この細くて美しい脚には驚くほどの力が秘められている。背に乗れたら楽しそうだけど…',
+	'Journal.NAME_BONE_SPITTER': 'ハネダニ',
+	'Journal.DESC_BONE_SPITTER':
+		'マグマの近くに生息する、羽根の生えたホネダニ。焼けつくようなタールを吐き出して、獲物を黒焦げにする。',
+	'Journal.NOTE_BONE_SPITTER':
+		'あの粘着質のタールをそのまま型に流し込めれば、きっと有用な素材となるでしょうね。残念ながらそれを実験する時間はないのだけれど。',
+	'Journal.NAME_BONE_ROLLER': 'マウリン',
+	'Journal.DESC_BONE_ROLLER': 'ホネでできた若いムシ。身体を丸めて球になることができる。',
+	'Journal.NOTE_BONE_ROLLER':
+		'そのざらざらした吸着部分を使って、どんな表面にもくっつくことができるみたい。この素早いムシにとっては、壁や天井すらも道になる。',
+	'Journal.NAME_BONE_THUMPER': 'マロマウ',
+	'Journal.DESC_BONE_THUMPER': '低地に生息する巨大なムシ。下敷きになった生物はその波打つ外皮によって粉砕される。',
+	'Journal.NOTE_BONE_THUMPER':
+		'巨大な体躯はそれだけで効果的な武器となる。その分栄養もたくさん必要になるから、この生き物はほとんどの時間を食べて過ごしているわ。悪くない生き方だと思う者もいるでしょうね。',
+	'Journal.NAME_SPINE_FLOATER': 'ホーカー',
+	'Journal.DESC_SPINE_FLOATER': '低地に生息するムシ。空中をただよいながら、トゲを放つ。',
+	'Journal.NOTE_SPINE_FLOATER': '暖かそうな毛皮は素敵だけれど、この者の不気味な仮面と硬いトゲは…好きになれないわね。',
+	'Journal.NAME_ROCK_ROLLER': 'ハッカムシ',
+	'Journal.DESC_ROCK_ROLLER':
+		'滅多に見ることのない甲虫。その生のほとんどの時間を骨や岩に深く埋もれた状態で過ごし、その殻についた発火宝石が爆発性の粉末を排出する。',
+	'Journal.NOTE_ROCK_ROLLER':
+		'この者たちに付着する明るい宝石からは、美しくも短命な装飾品が作り出せる。贈り物あるいは…罠として使うのも面白いかも。',
+	'Journal.NAME_RHINO': 'オオサイムシ',
+	'Journal.DESC_RHINO':
+		'ファールームの低地に生息する、長い角を持つ生物。その角を使って敵を串刺しにしたり、地面を掘ってがれきを周囲に飛ばしたりする。',
+	'Journal.NOTE_RHINO':
+		'適切な道具と技を用いれば、その防御を突破することもできるはず。臨機応変に戦略を変える必要がありそうね。',
+	'Journal.NAME_CRYPT_WORM': 'コグロム',
+	'Journal.DESC_CRYPT_WORM': '仮面をつけた地虫の幼虫。洞穴に入ってきた侵入者を襲うことを好む。',
+	'Journal.NOTE_CRYPT_WORM': '苛立ちがつのりやすい敵ね。攻撃しようとするとすぐ骨の下に逃げてしまう。',
+	'Journal.NAME_BONE_WORM': 'グロム',
+	'Journal.DESC_BONE_WORM':
+		'穴掘りに長けた地虫。身体にたくさん生えた豪快な歯を使って、硬い骨の中をも掘り進むことができる。',
+	'Journal.NOTE_BONE_WORM':
+		'この者たちはひたすら岩や骨を掘って進み、まったく休んでいないように見える。どこかたどり着きたい場所があるのかしら？　それとも永遠に静まらぬ衝動にかられて掘り続けているとか？',
+	'Journal.NAME_BONE_BEAST': '鐘脈の獣',
+	'Journal.DESC_BONE_BEAST':
+		'ファールームの各地に張り巡らされた鐘脈（しょうみゃく）に暮らす、巨大なムシ。その身体は硬い骨でできている。',
+	'Journal.NOTE_BONE_BEAST':
+		'この者はわたしの味方となった。救出された恩からかもしれないし、わたしを同等の者として認めたからなのかもしれない。いずれにせよ、嬉しい味方であることは確かね。',
+	'Journal.NAME_PILGRIM_03': '卑屈な巡礼者',
+	'Journal.DESC_PILGRIM_03': 'ファールームの一般的なムシ。普段は身を潜めている。',
+	'Journal.NOTE_PILGRIM_03': 'ファールームの呪気に侵され、祈る以外の能力も多少なり身につけたようね。',
+	'Journal.NAME_PILGRIM_01': '俊敏な巡礼者',
+	'Journal.DESC_PILGRIM_01': 'ファールームに生息する、素早いムシ。呪気によって思考は失われている。',
+	'Journal.NOTE_PILGRIM_01': '多くの者より殻は脆弱だけど、その運動能力を駆使することで生き延びているようね。',
+	'Journal.NAME_PILGRIM_04': 'ツノバエの巡礼者',
+	'Journal.DESC_PILGRIM_04': '背の低い巡礼者。その長い角を使って敵に向かって突進する。',
+	'Journal.NOTE_PILGRIM_04': '効果的な形状に生まれついたものね。急襲するその様はまるで砲弾のよう。',
+	'Journal.NAME_PILGRIM_02': '大柄な巡礼者',
+	'Journal.DESC_PILGRIM_02': '呪気に侵された大きなムシ。自分の身はかえりみずに、脅威に向かって丸まって突進する。',
+	'Journal.NOTE_PILGRIM_02':
+		'この病んだ土地には珍しい、体格のよいムシね。巡礼者の中でもひときわ大きな殻を持っている。どんなものを食べてここまで大きくなったのかしら？',
+	'Journal.NAME_PILGRIM_BELL_THROWER': '鈴持ちの巡礼者',
+	'Journal.DESC_PILGRIM_BELL_THROWER':
+		'古い鈴を持った、一般的な巡礼者。いまだ自由意志を維持していると見止めた者に対して、見境なしに鈴を投げつけてくる。',
+	'Journal.NOTE_PILGRIM_BELL_THROWER':
+		'かれらの鈴はかつて希望や喜びと共に鳴らされ、登攀に挑む者たちの気持ちを高めていた。それが今では戦いの道具になってしまったのは残念なことね。',
+	'Journal.NAME_PILGRIM_FLY': '羽根の生えた巡礼者',
+	'Journal.DESC_PILGRIM_FLY': '短い角が生えたムシ。未発達の羽根を持って生まれた。',
+	'Journal.NOTE_PILGRIM_FLY':
+		'かろうじて飛翔能力を所持しているといったところね。多少は身体を浮かせられるようだけど、遠くまで飛ぶことはできないみたい。',
+	'Journal.NAME_PILGRIM_05': '老いた巡礼者',
+	'Journal.DESC_PILGRIM_05': '呪いの糸にからめ取られた、ずんぐりしたムシ。硬質な外殻を駆使して獲物を粉砕する。',
+	'Journal.NOTE_PILGRIM_05':
+		'これだけ長生きできたなら幸運な部類でしょうね。ファールームでは、多くの者が若くして命を落とすから。',
+	'Journal.NAME_PILGRIM_BELLTHROWER_FLY': '羽根の生えた<br>鈴持ちの巡礼者',
+	'Journal.DESC_PILGRIM_BELLTHROWER_FLY': '大きな羽根の生えた巡礼者。鉄でできた鈴を身体に留めている。',
+	'Journal.NOTE_PILGRIM_BELLTHROWER_FLY':
+		'平坦ではない地形においては、この者の飛翔能力と攻撃範囲はわたしにとっても脅威となるわ。',
+	'Journal.NAME_PILGRIM_HIKER': '登攀の巡礼者',
+	'Journal.DESC_PILGRIM_HIKER':
+		'硬質な殻の巡礼者で、登攀用のピンを持っている。かつてその旅を助けたピンを武器として使っているが、その扱いには慣れていない。',
+	'Journal.NOTE_PILGRIM_HIKER': '本来は脆弱なムシだけど、呪いの糸によって限界を超えた力が引き出されているようね。',
+	'Journal.NAME_PILGRIM_STAFFWIELDER': '先導の巡礼者',
+	'Journal.DESC_PILGRIM_STAFFWIELDER': '老齢の巡礼者。重い鉄の鈴がついた杖を持っている。',
+	'Journal.NOTE_PILGRIM_STAFFWIELDER':
+		'大きな鈴はかつてこの者が登攀隊の長だったことを示している。呪気によってその影響力は失ってしまったようだけど。',
+	'Journal.NAME_PILGRIM_MOSS_SPITTER': '苔むした巡礼者',
+	'Journal.DESC_PILGRIM_MOSS_SPITTER': '老齢の巡礼者。地衣類と苔によっておおわれている。',
+	'Journal.NOTE_PILGRIM_MOSS_SPITTER':
+		'苔はかれらのお腹の中でも成長しているようで、それを敵に向けて痰のように吐き出すことがある。まったく気分の良いものではないわね。',
+	'Journal.NAME_ROSARY_PILGRIM': '強欲な巡礼者',
+	'Journal.DESC_ROSARY_PILGRIM':
+		'ロザリーを大量に抱えた強力なムシ。怒らせると紐を使って絶え間ない攻撃をしかけてくる。',
+	'Journal.NOTE_ROSARY_PILGRIM':
+		'あのたくさんのロザリーは信心深さの表れ？　それとも強欲の証？　この土地ではとても興味深いやり方で、信仰の度合いが測られるようね。',
+	'Journal.NAME_ROSARY_THIEF': 'コソドロバエ',
+	'Journal.DESC_ROSARY_THIEF': 'ファールームの各地に出没する、悪質な窃盗者。',
+	'Journal.NOTE_ROSARY_THIEF': 'こうしたムシたちが跳梁しているかぎり、いかなるロザリーも装飾品も安全ではないわね。',
+	'Journal.NAME_TAR_SLUG': 'ヨウガンハイズリ',
+	'Journal.DESC_TAR_SLUG': 'ネバネバした軟体生物。背中にできたイボのようなものから、灼熱の液体を噴出する。',
+	'Journal.NOTE_TAR_SLUG':
+		'純粋に身を守るためにおこなっているのかと思ったけど、体内の熱を放出するために必要な行為なのかもしれないわね。',
+	'Journal.NAME_TAR_SLUG_HUGE': 'ヨウガンオオズリ',
+	'Journal.DESC_TAR_SLUG_HUGE': '完全に成長した軟体生物。背中から灼熱の液体を大量に放出することができる。',
+	'Journal.NOTE_TAR_SLUG_HUGE':
+		'内部に高熱の液体をあれほどため込んで生きていられるなんて…本当に驚きというほかない。これもまた、ファールームの驚異のひとつね。',
+	'Journal.NAME_DOCK_WORKER': '溶鉱炉の労働者',
+	'Journal.DESC_DOCK_WORKER':
+		'ファールームの呪気に捕らわれた、下層の労働者。本能によって仕事を継続しているが、こなす内容は以前よりもかなり単純なものとなっている。',
+	'Journal.NOTE_DOCK_WORKER':
+		'金属加工の技術に関していえば、この王国はわたしがいた場所よりも進んでいるように思える。低層で生み出される地熱がその大きな要因でしょうね。こんな環境に耐えて働くなんて大したものだわ。',
+	'Journal.NAME_DOCK_FLYER': 'ハッカバエ',
+	'Journal.DESC_DOCK_FLYER':
+		'ファールームの呪気に侵された、空飛ぶ労働者。携帯するポーチには発火石がたくさん入っており、それを侵入者に対して投げつけてくる。',
+	'Journal.NOTE_DOCK_FLYER':
+		'かれらが携帯するあの発火性の物質は、自然の驚異ともいうべきもので、いろんな用途に活用できるでしょうね。むやみやたらとわたしに投げつけるなんて、資源の無駄遣いというほかないわ。',
+	'Journal.NAME_DOCK_BOMBER': 'エンセキバエ',
+	'Journal.DESC_DOCK_BOMBER': '危険な炎石を運ぶ、勇敢な労働者。爆発した際に備えて、厚い鐘で身を守っている。',
+	'Journal.NOTE_DOCK_BOMBER':
+		'本当に危険と隣り合わせで生きているのでしょうね。爆発によって一瞬で命を落とす可能性もあるわけだから。',
+	'Journal.NAME_SHIELD_DOCK_WORKER': 'エンガンサライ',
+	'Journal.DESC_SHIELD_DOCK_WORKER':
+		'シンバルを持った、深層の港の労働者。採掘した煙岩を選別し、より貴重な鉱石が含まれていないかを確認する役目を担っている。',
+	'Journal.NOTE_SHIELD_DOCK_WORKER':
+		'呪気によって、なにか大事な部分を失ってしまったようだけれど、それでもかれらは仕事に従事し続けている。わたしの姿を発見するまでは…',
+	'Journal.NAME_DOCK_CHARGER': '深みの採掘者',
+	'Journal.DESC_DOCK_CHARGER': '鐘を身にまとったムシ。港よりもさらに深い、危険な場所の採掘を担っている。',
+	'Journal.NOTE_DOCK_CHARGER':
+		'あの分厚い鐘はわたしの攻撃に対して高い防御力を発揮するけれど、燃え盛る熱に対しては…はたしてどれほど効果があるのかしら？',
+	'Journal.NAME_DOCK_GUARD_THROWER': '港の兄弟<br>シグニス&グロン',
+	'Journal.DESC_DOCK_GUARD_THROWER': '深層の港の年長者。下等の労働者たちの監督と懲罰を担当している。',
+	'Journal.NOTE_DOCK_GUARD_THROWER':
+		'呪気によって狂気に侵されつつも、かれらはいまだに終わりなき採掘の監督業務を続けている。',
+	'Journal.NAME_SMALL_CRAB': 'コクラッグラ',
+	'Journal.DESC_SMALL_CRAB': 'クラッグラの子供。',
+	'Journal.NOTE_SMALL_CRAB': 'この者たちは成長すると覇権の座をかけて戦う。最後の一匹になるまで。',
+	'Journal.NAME_ROOF_CRAB': 'クラッグラ',
+	'Journal.DESC_ROOF_CRAB': '厚い甲皮を持ち、素早く動き回るムシ。高い場所を好む。',
+	'Journal.NOTE_ROOF_CRAB':
+		'殻の中の袋に、焼けつくような酸をたくさん溜めこんでいるようね。獲物と見なした者に対しては見境なく、酸の雨を吐き出してくる。',
+	'Journal.NAME_FIELDS_FLOCK_FLYERS': 'バタバタ',
+	'Journal.DESC_FIELDS_FLOCK_FLYERS': '小さく臆病な生物。群れをなし、危険を察知するとすぐに逃げ出す。',
+	'Journal.NOTE_FIELDS_FLOCK_FLYERS':
+		'少しでも脅威を覚えると、仲間にもそれを伝えている。気づかれないように物音を立てず、最初の一撃で仕留めないと、狩るのは難しいでしょうね。',
+	'Journal.NAME_FIELDS_GOOMBA': 'クサガクレ',
+	'Journal.DESC_FIELDS_GOOMBA':
+		'遠景の地に生息する、落ち着きのないムシ。触覚は草のような見た目をしており、その姿を環境に溶け込ますのに役立っている。',
+	'Journal.NOTE_FIELDS_GOOMBA': '戦うすべを持たず、草と間違われることが生存のための唯一の方法のようね。',
+	'Journal.NAME_FIELDS_FLYER': 'トビクサガクレ',
+	'Journal.DESC_FIELDS_FLYER':
+		'遠景の地の草に模した羽根を持つ、おとなしいムシ。より大きな身体を持つ捕食者に、軽食としてよく食されれている。',
+	'Journal.NOTE_FIELDS_FLYER':
+		'止まっていると植物と見まがうほどだけど、飛ぶと球根のような身体があらわになって、すぐに正体がばれてしまうわね。',
+	'Journal.NAME_SONG_GOLEM': '第四の合唱者',
+	'Journal.DESC_SONG_GOLEM': '巨大な鉄のカラクリ機械。ローターと歯車で動いている。',
+	'Journal.NOTE_SONG_GOLEM':
+		'ファールームの恐るべき偉業というやつね。このように巨大で、かつ素早いものを造り上げるなんて。',
+	'Journal.NAME_BONE_HUNTER_TINY': 'コスカール',
+	'Journal.DESC_BONE_HUNTER_TINY': '大型のスカーに従事する、小さな穴掘りアリ。',
+	'Journal.NOTE_BONE_HUNTER_TINY':
+		'部族の戦士たちのためになにかを探したり漁ったりするのが、この者たちの主な仕事みたいね。戦うことは得意としていないみたい。',
+	'Journal.NAME_BONE_HUNTER_BUZZER': 'スカールバエ',
+	'Journal.DESC_BONE_HUNTER_BUZZER':
+		'天井や突出部にくっつきつつ、素早く飛び回るムシ。しばしば自分より大きな仲間に呼ばれ、その援護をおこなう。',
+	'Journal.NOTE_BONE_HUNTER_BUZZER':
+		'狩猟の供として役立ちそうなムシだけど、かれらが忠誠を誓うのは部族の者だけでしょうね。呪気がなかったとしても、それは変わらないと思う。',
+	'Journal.NAME_BONE_HUNTER_CHILD': 'スカールの斥候',
+	'Journal.DESC_BONE_HUNTER_CHILD': '歯を削って作った鎌を振るう、若いアリ。危険を察知するとしばしば仲間を呼ぶ。',
+	'Journal.NOTE_BONE_HUNTER_CHILD':
+		'若いとはいえ、あなどれない相手よ。この部族の者たちは生まれたときから戦うための訓練を受けているのでしょうね。',
+	'Journal.NAME_BONE_HUNTER': 'スカールの追跡者',
+	'Journal.DESC_BONE_HUNTER': '技量に優れたアリの狩猟者。骨で作った刃と装甲をまとっている。',
+	'Journal.NOTE_BONE_HUNTER':
+		'血の気が多く、強く、よく訓練されている…それでもかれらは、呪気から身を守ることはできなかった。この土地であれから逃れるすべはないというの？',
+	'Journal.NAME_BONE_HUNTER_FLY': 'スカールの槍手',
+	'Journal.DESC_BONE_HUNTER_FLY': '羽根の生えたアリの狩猟者。骨の槍を使って空中から攻撃する。',
+	'Journal.NOTE_BONE_HUNTER_FLY':
+		'若い頃は羽根を持つムシたちがうらやましかった。自分にもいつか生えることを期待していたけど…今はちがう。自分の身体の限界を受け入れ…足りないものは道具で補えばいいと思っているから。',
+	'Journal.NAME_BONE_HUNTER_THROW': 'スカールの守り手',
+	'Journal.DESC_BONE_HUNTER_THROW': '部族の蓄えと道の守護を担う、巨大なアリの狩猟者。',
+	'Journal.NOTE_BONE_HUNTER_THROW':
+		'大きくて有能な戦士であり、その役目にピッタリの殻を持っている。かれらが守っている宝を狙うのであれば、わたしも全力を出す必要があるでしょうね。',
+	'Journal.NAME_BONE_HUNTER_TRAPPER': '追放されしグルル',
+	'Journal.DESC_BONE_HUNTER_TRAPPER': '巨大かつ隠密に長けたスカール。罠に習熟し、下生えを巧みに利用する。',
+	'Journal.NOTE_BONE_HUNTER_TRAPPER':
+		'彼の足跡と罠…最初の時点で気づくべきだった…この老いた狩猟者はわたしを誘い込もうとしていたことに。でも彼はなぜあのように強引なやり方でわたしを試そうとしたのかしら？　今となっては知るすべもないけど。',
+	'Journal.NAME_BONE_HUNTER_CHIEF': '最後の爪',
+	'Journal.DESC_BONE_HUNTER_CHIEF': '母を守る最後の砦として戦う、優秀なかつての狩猟者。',
+	'Journal.NOTE_BONE_HUNTER_CHIEF':
+		'かれらはかつて、その技量によって選ばれし者となった。そしてその理由がよくわかる。かれらは任務のためだけに生き、その身を鍛えていたのでしょうね。',
+	'Journal.NAME_HUNTER_QUEEN': 'スカールの歌い手<br>カーメリタ',
+	'Journal.DESC_HUNTER_QUEEN': 'スカールの歌姫にして、最も才能豊かな戦士。',
+	'Journal.NOTE_HUNTER_QUEEN':
+		'この美しき統治者はわたしに匹敵する力の持ち主だったわ。彼女が若さの絶頂にあったとき、その声はすべてのスカールをひとつにまとめ、彼女に仕えさせるほどの力があった。',
+	'Journal.NAME_MITE': 'ダニ',
+	'Journal.DESC_MITE': '不潔な害虫。灰色の丘陵の暗闇によく出没する。',
+	'Journal.NOTE_MITE': '単体では大した相手ではないけど、とにかく数が多くて姿を隠している者も多いわ。',
+	'Journal.NAME_MITEFLY': 'パタダニ',
+	'Journal.DESC_MITEFLY': '空飛ぶ害虫。地表の同類に比べると数は多くない。刺激されると鋭い牙で攻撃してくる。',
+	'Journal.NOTE_MITEFLY':
+		'わたしの故郷にも似たようなムシがいて、守られていない食物をくわえて逃げたりしていた。子供の頃は自分の価値と技量を証明しようとして、そういったムシたちを積極的に狩っていたものよ。',
+	'Journal.NAME_GNAT_GIANT': 'ハハダニ',
+	'Journal.DESC_GNAT_GIANT': '歳を取った雌のダニ。身体が大きく、同族のほとんどを上回る力を持つ。',
+	'Journal.NOTE_GNAT_GIANT':
+		'眼は悪いけど、嗅覚は非常に優れていて、嗅ぎなれないにおいを察知すると、それに向かって体当たりをしてくる。この年齢になってもこれだけ血の気が多いというのは、ある意味大したものだと思う。',
+	'Journal.NAME_FARMER_CATCHER': 'イトクズヒロイ',
+	'Journal.DESC_FARMER_CATCHER':
+		'シタデルから落ちるシルクの残糸を捕まえようとする者。刺激されると、その杖で攻撃してくる。',
+	'Journal.NOTE_FARMER_CATCHER':
+		'このムシたちは目覚めている時間のすべてを仕事に捧げている。頭上に隠れるシタデルのための、残酷で終わりなき労働というやつね。',
+	'Journal.NAME_FARMER_SCISSORS': 'シルクチョッキン',
+	'Journal.DESC_FARMER_SCISSORS': 'ハサミを持ったムシ。落下するシルクの残糸を切断し、巻き上げる役目を担っている。',
+	'Journal.NOTE_FARMER_SCISSORS':
+		'呪気によって狂気に走ってしまったのか、その終わりなき労働によって元々おかしくなっていたのか、どちらかしら？',
+	'Journal.NAME_FARMER_CENTIPEDE': 'イトアツメ',
+	'Journal.DESC_FARMER_CENTIPEDE':
+		'背の高いムシ。再び巻き上げるために、シルクの残糸を積み上げる役を担っている。その鋭い熊手は、今では刺殺の武器としても使われるようになった。',
+	'Journal.NOTE_FARMER_CENTIPEDE': '哀しくて過酷な仕事ね。姿の見えぬシタデルに死ぬまで仕えるなんて。',
+	'Journal.NAME_VAMPIRE_GNAT': 'ヌレガラス',
+	'Journal.DESC_VAMPIRE_GNAT':
+		'羽根の生えたダニ。仕事から逃げようとする労働者を捕まえるために、大きな身体に作り替えられた。',
+	'Journal.NOTE_VAMPIRE_GNAT':
+		'その世話をする者が死んで久しい今、この者たちは灰色の丘陵の塔に巣食って、通り過ぎる巡礼者や弱き者たちを捕食しているようね。',
+	'Journal.NAME_WISP': 'ウィスプ',
+	'Journal.DESC_WISP': '揺らめく炎から生まれた、短命の精霊。',
+	'Journal.NOTE_WISP':
+		'瞬きほどの時間しか生きられないなんて…どんな気分なのかしら？　恍惚？　それとも絶望？　あるいはその両方が等しく混ざった感情？',
+	'Journal.NAME_FARMER_WISP': 'エンジョウムシ',
+	'Journal.DESC_FARMER_WISP': '複数の脚を持つムシ。炎に尋常ならざる執着を持つ。',
+	'Journal.NOTE_FARMER_WISP':
+		'なんらかの方法で、同じ低木を生息地とするウィスプを呼びよせて操るすべを学んだようね。その支配が恐怖によるものなのか、崇拝によるものなのかはさだかでないけれど。',
+	'Journal.NAME_WISP_PYRE_EFFIGY': '業炎の父',
+	'Journal.DESC_WISP_PYRE_EFFIGY': '象徴にして神。エンジョウムシによって作られ、崇拝されている。',
+	'Journal.NOTE_WISP_PYRE_EFFIGY':
+		'炎の核の中には、老いたムシの亡殻が入っている。その者の願いが焼身によって身を捧げることだったのなら、それは達成されたといえるでしょう。',
+	'Journal.NAME_CROW': 'ボロガワ',
+	'Journal.DESC_CROW': '甲高い声で鳴き、捕食するムシ。洞穴の高い場所に留まり、通り過ぎる巡礼者を獲物として襲う。',
+	'Journal.NOTE_CROW':
+		'その急降下攻撃は、普通のムシにとって大きな脅威となるでしょうね。さらに危険なことに、この者たちは集団で攻撃することを常としている。',
+	'Journal.NAME_CROWMAN': 'セイタカボロガワ',
+	'Journal.DESC_CROWMAN': 'ボロ布のような羽根を持つ、ボロガワの成虫。攻撃のためのピンを手にしている。',
+	'Journal.NOTE_CROWMAN':
+		'同類の年若き者たちよりはるかに敵対心が強いけれど、自分の巣からあまり離れようとはしないみたい。',
+	'Journal.NAME_CROWMAN_DAGGER': 'ズングリボロガワ',
+	'Journal.DESC_CROWMAN_DAGGER': '体格のいい、ボロガワの成虫。複数の短いピンを所持している。',
+	'Journal.NOTE_CROWMAN_DAGGER':
+		'臆病な性質で、離れたところから鋭い武器を投げつけてくる。一気に距離を詰めて、斬り捨てるのが得策でしょうね。',
+	'Journal.NAME_CROWMAN_JUROR_TINY': 'ボロガワの審議者',
+	'Journal.DESC_CROWMAN_JUROR_TINY':
+		'死骸を漁り、甲高い声で鳴くムシ。自分たちの土地の崩壊を嘆き、その身を黒く染めている。',
+	'Journal.NOTE_CROWMAN_JUROR_TINY':
+		'弱く、怯え、近づく終わりを感じている存在。必死なのはわかるけど、わたしを殺したところで迫りくる崩壊は止められないわ。',
+	'Journal.NAME_CROWMAN_JUROR': 'セイタカボロガワの<br>審議者',
+	'Journal.DESC_CROWMAN_JUROR': '神聖な儀式に従事する、年長のボロガワ。',
+	'Journal.NOTE_CROWMAN_JUROR':
+		'興味があってかれらの召喚に応じたけど、長く足止めされるつもりはない。自らの大きなあやまちを、一刻も早く修正しなくてはならないから。',
+	'Journal.NAME_CROWMAN_DAGGER_JUROR': 'ズングリボロガワの<br>審議者',
+	'Journal.DESC_CROWMAN_DAGGER_JUROR': '身体の小さい、年長のボロガワ。ボロガワの審議会に熱心に仕えている。',
+	'Journal.NOTE_CROWMAN_DAGGER_JUROR':
+		'かれらは生き延びるための機会を自ら消し去ろうとしている。残念だけど、なにを言っても無駄のようだから、わたしは武器を持って対抗するしかない。',
+	'Journal.NAME_CRAWFATHER': 'ボロガワの父',
+	'Journal.DESC_CRAWFATHER':
+		'ファールームのボロガワの王にして裁定者。その鋼鉄のくちばしで、有罪となったムシたちの死をもたらす。',
+	'Journal.NOTE_CRAWFATHER':
+		'この土地が虚無に侵された要因を作ったのがわたしであることを、この者は理解しているのかしら？　だとすれば彼の裁きは正当であるともいえる。わたしがこうしたムシたちに大きな崩壊をもたらしたのは事実なのだから。',
+	'Journal.NAME_MAGGOTS': 'ドロウジ',
+	'Journal.DESC_MAGGOTS': '思考を持たない幼虫。厚いスライムのようなものでおおわれている。',
+	'Journal.NOTE_MAGGOTS': 'ほかのムシの殻に素早くくっつこうとするから、集中したり落ち着くこともできやしない。',
+	'Journal.NAME_DUSTROACH_POLLYWOG': 'スラバラグ',
+	'Journal.DESC_DUSTROACH_POLLYWOG': '若いツチゴキブリ。水の中から飛び出て獲物を攻撃し、そのよく動く顎で食いちぎる。',
+	'Journal.NOTE_DUSTROACH_POLLYWOG':
+		'この生き物は意図的に湿った檻の中で繁殖させられたように見える。その臭いから判断するに、食用だとしたらきっとひどい味だと思う。',
+	'Journal.NAME_DUSTROACH': 'ツチゴキブリ',
+	'Journal.DESC_DUSTROACH':
+		'底知れぬ食欲を抱え、常に腹をすかせているムシ。皮は固く、肉は強烈な臭いを放つが、繁殖力に優れるため食用の家畜として飼われることもある。',
+	'Journal.NOTE_DUSTROACH':
+		'見てるだけで殻がかゆくなるような、おぞましい生き物だわ。大量繁殖している柵の中にいるときは、まったく心が休まらない。',
+	'Journal.NAME_BLOAT_ROACH': 'フクレゴキブリ',
+	'Journal.DESC_BLOAT_ROACH':
+		'シタデルのスモッグによって身体が肥大化した、ツチゴキブリの変異体。羽根が生えており、垂れ下がった腹は高温の胆液で満たされている。',
+	'Journal.NOTE_BLOAT_ROACH':
+		'なんともおぞましい体形ね…こんな身体でどうして空を飛べるのかしら。お腹に溜まった毒性のガスが浮力を生み出しているのかも。',
+	'Journal.NAME_ROACHFEEDER_SHORT': 'ツチゴキブリの捕獲者',
+	'Journal.DESC_ROACHFEEDER_SHORT': '小さくて素早いムシ。トゲのついた投げ縄を使ってツチゴキブリを追い、檻に入れる。',
+	'Journal.NOTE_ROACHFEEDER_SHORT':
+		'あの投てき武器は、この者たちが生息する広い洞穴にも適している。きっと道具の作成に長けた、器用な爪を持っているんでしょうね。',
+	'Journal.NAME_ROACHFEEDER_TALL': 'ツチゴキブリの飼育者',
+	'Journal.DESC_ROACHFEEDER_TALL': 'ツチゴキブリにウジ粥という質素なエサを与える役を担う、背の高いムシ。',
+	'Journal.NOTE_ROACHFEEDER_TALL':
+		'あの湾曲したピンで餓えたツチゴキブリたちをけん制し、自らが食料となることを防いでいるようね。',
+	'Journal.NAME_ROACHKEEPER': 'ツチゴキブリの管理者',
+	'Journal.DESC_ROACHKEEPER': '比較的年齢を重ねたムシで、重い鎖でできた拘束具を背負っている。',
+	'Journal.NOTE_ROACHKEEPER':
+		'思考のほとんどは失われてしまったけれど、その鎖の技量はいまだ健在ね。呪気にはその者を生前従事していた仕事に、永遠に拘束させる力があるのかしら？',
+	'Journal.NAME_ROACHKEEPER_CHEF_TINY': 'ツチゴキブリの提供者',
+	'Journal.DESC_ROACHKEEPER_CHEF_TINY': 'ツチゴキブリの肉を食べられる大きさに切る役を担う、野蛮な調理師。',
+	'Journal.NOTE_ROACHKEEPER_CHEF_TINY':
+		'この者のしていることは技術といえるのかしら？　ただ肉をめちゃめちゃに切り裂いているだけのように見えるけど。あるいは呪気に精神を侵される前は、こんな風じゃなかったとか？',
+	'Journal.NAME_ROACHKEEPER_CHEF': '穢れた調理師ルゴリ',
+	'Journal.DESC_ROACHKEEPER_CHEF': 'かつては栄光に浸っていたが、度重なる料理犯罪によってシタデルを追放された調理師。',
+	'Journal.NOTE_ROACHKEEPER_CHEF':
+		'この調理師は故郷の洞穴に戻り、まともなムシなら到底食せないようなおぞましい料理を作り続けていた。',
+	'Journal.NAME_WRAITH': 'ボウレイ',
+	'Journal.DESC_WRAITH':
+		'さまよう糸で形作られた、苦しみに満ちた亡霊。実体は持たぬものの、強い攻撃を与えることによって一時的に退散させられる。',
+	'Journal.NOTE_WRAITH': 'ムシではなく、何者かの意思がスモッグとシルクによって具現化したもののようね。',
+	'Journal.NAME_SWAMP_DRIFTER': 'ラグニア',
+	'Journal.DESC_SWAMP_DRIFTER':
+		'胆液の沼に生息する、稀少でおとなしいムシ。植物に模して身を隠すことで、危険な環境を生き延びている。',
+	'Journal.NOTE_SWAMP_DRIFTER':
+		'可愛らしい見た目だけど、それほど柔らかくはない。粗い薄皮におおわれた植物に擬態していて、その特性がこのムシの外皮にも反映されている。',
+	'Journal.NAME_SWAMP_GOOMBA': 'ヌマダニ',
+	'Journal.DESC_SWAMP_GOOMBA': '地面を這うムシ。その腹部の袋に煮えたぎる胆液を含む。',
+	'Journal.NOTE_SWAMP_GOOMBA':
+		'その爆発性の腹部は捕食者に対する抑止力として機能しているけれど、少しの衝撃を受けたり、どこかから落下することで死んでしまうこともある。',
+	'Journal.NAME_SWAMP_MOSQUITO': 'ヌマスクイット',
+	'Journal.DESC_SWAMP_MOSQUITO': '大量発生した害虫。鋭く尖った鼻を持ち、その腹は胆液で満たされている。',
+	'Journal.NOTE_SWAMP_MOSQUITO':
+		'生きているときは大した脅威ではないけれど、死ぬ際には爆発して腐食性の液体をまき散らすので注意が必要ね。',
+	'Journal.NAME_SWAMP_MOSQUITO_SKINNY': 'ハキダシスクイット',
+	'Journal.DESC_SWAMP_MOSQUITO_SKINNY': '空中を浮遊する害虫。空洞になっている鼻から煮えたぎる胆液の塊を吐き出す。',
+	'Journal.NOTE_SWAMP_MOSQUITO_SKINNY':
+		'悪臭を放ち、不快な水辺で生き延びるために、この生き物は毒性の高い塊を吐き出す。元々は生存のための手段だったようだけれど、世代を経るうちに有効な攻撃手段にもなった。',
+	'Journal.NAME_SWAMP_MUCKMAN': 'スティルキン',
+	'Journal.DESC_SWAMP_MUCKMAN': '杭と胆液でできた矢を使って狩りをする、狡猾なムシ。',
+	'Journal.NOTE_SWAMP_MUCKMAN':
+		'自分の土地を熟知するこの者たちは、横道や沼地に潜んで、常に攻撃の機会をうかがっている。',
+	'Journal.NAME_SWAMP_MUCKMAN_TALL': 'スティルキンの罠師',
+	'Journal.DESC_SWAMP_MUCKMAN_TALL': '罠の設置に長けたムシ。尖った長い杭の入った袋を持っている。',
+	'Journal.NOTE_SWAMP_MUCKMAN_TALL':
+		'自分たちの洞穴のあちこちに数え切れないほどの罠を設置している。この者たち自身より、そっちのほうが厄介だわ。',
+	'Journal.NAME_SWAMP_SHAMAN': '偉大なるグロウル',
+	'Journal.DESC_SWAMP_SHAMAN':
+		'スティルキンの長であり聖職者。自分たちの洞穴を侵して苦しめたシタデルに対し、終わりなき怒りを抱えている。',
+	'Journal.NOTE_SWAMP_SHAMAN':
+		'この者の力は盗んだ魂によって大きく強化されている。魂を抱え込んだり、暴力的な手段へと転化させたのは、かれらが初めてではないけれど。',
+	'Journal.NAME_SWAMP_BARNACLE': 'バルナク',
+	'Journal.DESC_SWAMP_BARNACLE':
+		'洞穴の天井に生息する、歯のたくさん生えた生物。うろついているムシを長い舌でからめ取り、引き寄せて摂取する。',
+	'Journal.NOTE_SWAMP_BARNACLE':
+		'その舌を周囲の植物に同化させるようにして隠している…その欺きの手法はある意味で見事なものだわ。',
+	'Journal.NAME_SWAMP_DUCTSUCKER': 'オオグライ',
+	'Journal.DESC_SWAMP_DUCTSUCKER': '吸い込む力に長けたムシ。洞穴をおおう厚いスライムを食べて生きている。',
+	'Journal.NOTE_SWAMP_DUCTSUCKER':
+		'知性は感じられず、触手だけを頼りに物事を知覚しているように見える。単純な生物だけど、脅威であることに変わりはないわね。',
+	'Journal.NAME_POND_SKATER': 'イケトビムシ',
+	'Journal.DESC_POND_SKATER':
+		'殻木の森の池の水面でよく見られる、硬い殻のムシ。かつては通り過ぎる巡礼者の貴重な食料だった。',
+	'Journal.NOTE_POND_SKATER':
+		'水の上を滑るように移動する様はとても優雅ね。あの技術は習得できそうな気がする。時間があるときに試してみるべきね。',
+	'Journal.NAME_PILGRIM_FISHER': 'イケツリムシ',
+	'Journal.DESC_PILGRIM_FISHER': '殻木の森の池にいる年老いた釣り師。長いピンを持ち、その精神は呪気に侵されている。',
+	'Journal.NOTE_PILGRIM_FISHER':
+		'かつては純粋に食糧のために狩りをしていたけれど、今ではなにも考えずに攻撃し続けている…決して止まることなく。',
+	'Journal.NAME_SHELLWOOD_GNAT': 'カラキブヨ',
+	'Journal.DESC_SHELLWOOD_GNAT':
+		'小さくて柔らかい身体を持つムシ。殻木の森が作り出した硬くて空洞の素材を鎧のようにまとっている。',
+	'Journal.NOTE_SHELLWOOD_GNAT': '木製の殻が砕けても、このムシはひるまず、愚直に攻撃を繰り出してくるわ。',
+	'Journal.NAME_SHELLWOOD_WASP': '森のワスプ',
+	'Journal.DESC_SHELLWOOD_WASP':
+		'尖った身体を持ち、動きの素早いムシ。殻木の森の乾燥した木の皮を使って丈夫な巣を作る。',
+	'Journal.NOTE_SHELLWOOD_WASP':
+		'巣を破壊すれば、森におけるこの者たちの数は減少する。枝葉の間を移動するわたしにとっては、ありがたいことだけれど、森にとっては危険な行為でしょうね。自然の均衡は、ほんの些細な変化によって崩れることもあるから。',
+	'Journal.NAME_STICK_INSECT': 'エダモドキ',
+	'Journal.DESC_STICK_INSECT':
+		'木の枝に擬態したムシ。長時間完全に静止することもできるが、一旦目覚めると驚くような速さで動く。',
+	'Journal.NOTE_STICK_INSECT': 'かれらの待ち伏せに対処することで、自分の察知する力や迅速な反撃能力を試せるわね。',
+	'Journal.NAME_STICK_INSECT_CHARGER': 'ツノエダモドキ',
+	'Journal.DESC_STICK_INSECT_CHARGER': '木の枝に擬態したムシ。頭頂部には体内に格納可能な鋭い角がついている。',
+	'Journal.NOTE_STICK_INSECT_CHARGER':
+		'相手の不意を突くには適した殻を持っているけれど、枝に擬態するゆえにその線は細くて折れやすく、強い攻撃には耐えられないわ。',
+	'Journal.NAME_STICK_INSECT_FLYER': 'エダガワモドキ',
+	'Journal.DESC_STICK_INSECT_FLYER': '羽根の生えたムシ。その薄い形状の殻は周囲の環境に完全に同化することができる。',
+	'Journal.NOTE_STICK_INSECT_FLYER':
+		'この者は…子供がオモチャを投げるように攻撃してくるけれど、その威力は決してあなどれない。わたしもいずれは、あのような道具を作れるかしら？',
+	'Journal.NAME_SPLINTER_QUEEN': 'アマエダモドキ',
+	'Journal.DESC_SPLINTER_QUEEN':
+		'殻木の森の高地に巣食い、巨大な体躯を誇る年老いたムシ。縄張りに足を踏み入れた巡礼者はみな、彼女の木の枝のような腕の餌食となる。',
+	'Journal.NOTE_SPLINTER_QUEEN':
+		'この者は長く生き、多くを食してきた。倒されたことで森はずっと安全な場所となるでしょう。',
+	'Journal.NAME_FLOWER_DRIFTER': 'ファシア',
+	'Journal.DESC_FLOWER_DRIFTER': '花に擬態した、浮遊するムシ。脅威を感じると花粉を煙のように噴出する。',
+	'Journal.NOTE_FLOWER_DRIFTER':
+		'とても美しい生き物ね。故郷の王宮なら、装飾的なペットとして大いに好まれそうな気がする。',
+	'Journal.NAME_BLOOM_SHOOTER': 'カフントバシ',
+	'Journal.DESC_BLOOM_SHOOTER':
+		'花のような存在で、近くで動くものに本能的に反応する性質を持つ。パチパチと音を立て、着弾時に破裂する、花粉の塊を噴出する。',
+	'Journal.NOTE_BLOOM_SHOOTER':
+		'この者の鋭敏な感覚は驚異的ね。物音を立てないようにしていても、いとも簡単にわたしの存在を検知する。',
+	'Journal.NAME_BLOOM_PUNCHER': 'ガハリア',
+	'Journal.DESC_BLOOM_PUNCHER': '花のような生物。仮面を模した核を前方に突き出し、油断しているムシを殴打する。',
+	'Journal.NOTE_BLOOM_PUNCHER': 'この偽りの仮面を見ただけでも、小さなムシたちは恐れて逃げ出すでしょうね。',
+	'Journal.NAME_SETH': '聖堂の守護者セス',
+	'Journal.DESC_SETH': '殻木の森の聖堂の永遠なる守護者。そのピンとシンバルには、幾度も用いられた形跡がある。',
+	'Journal.NOTE_SETH':
+		'彼はわたしにしっかりと警告した上で、純粋なる決闘を示唆してきた。その誇り高き心と技量は、称賛に値するものだと思う。',
+	'Journal.NAME_FLOWER_QUEEN': 'ニュレス',
+	'Journal.DESC_FLOWER_QUEEN': '殻木の森のいにしえの心。森に生きるあらゆる生命とつながっている。',
+	'Journal.NOTE_FLOWER_QUEEN':
+		'かつては彼女の存在によって殻木の森の繊細な秩序が保たれ、移動するムシたちに安全をもたらしていた。',
+	'Journal.NAME_BELL_GOOMBA': 'ファルム',
+	'Journal.DESC_BELL_GOOMBA':
+		'鐘脈に穴を掘るようにして生息するムシ。自分の柔らかい身体を守るために、硬質な鐘を探す習性がある。',
+	'Journal.NOTE_BELL_GOOMBA': '敵対的でなければ、かれらの柔らかい毛皮をなでてみたいものだけど。',
+	'Journal.NAME_BELL_FLY': 'ハネツキファルム',
+	'Journal.DESC_BELL_FLY':
+		'毛皮におおわれ、重い鐘をかぶったムシ。身体が大きくなりすぎて穴は掘れないが、その成長過程で小さな羽根を得ている。',
+	'Journal.NOTE_BELL_FLY': '大きくて柔らかい…呪気によって狂暴化していなければ、最高の組み合わせなのにね。',
+	'Journal.NAME_BLADE_SPIDER': 'ファグモ',
+	'Journal.DESC_BLADE_SPIDER': 'ファールーム各地に数多く存在する裂け目や洞穴に生息する、小さなクモ。',
+	'Journal.NOTE_BLADE_SPIDER':
+		'この者たちの攻撃には、どこかわたし自身の技を彷彿とさせるところがある。本能から生まれたであろうかれらのそれとちがい、わたしの技は厳しい鍛錬によって修得したものだけれど。',
+	'Journal.NAME_BLADE_SPIDER_HANG': 'トビツキファグモ',
+	'Journal.DESC_BLADE_SPIDER_HANG':
+		'洞穴の天井にあいた暗い穴の中に生息するクモ。眼下を移動する獲物に向けて飛びかかる性質を持つ。',
+	'Journal.NOTE_BLADE_SPIDER_HANG':
+		'辛抱強く待ち伏せすることを学んだ、頭のよいムシね。最初の一撃を虎視眈々と狙っている。',
+	'Journal.NAME_SHELL_FOSSIL_MIMIC': 'カライシモドキ',
+	'Journal.DESC_SHELL_FOSSIL_MIMIC': '化石の振りをして不意打ちをおこなう、厄介なムシ。',
+	'Journal.NOTE_SHELL_FOSSIL_MIMIC': '目覚めると、その鋼のような殻を壁や床や敵にぶつけてくるわ。',
+	'Journal.NAME_SAND_CENTIPEDE': 'スナモグリ',
+	'Journal.DESC_SAND_CENTIPEDE': '殻におおわれた地虫。流砂の中に生息している。',
+	'Journal.NOTE_SAND_CENTIPEDE':
+		'近くで動きを検知すると勢いよく飛び出してくる。そしてその口に捕らえたものは、どんなものでも呑み込んでしまう。',
+	'Journal.NAME_CORAL_JUDGE_CHILD': 'モジモジ',
+	'Journal.DESC_CORAL_JUDGE_CHILD': '暗闇に生息し、身体をくねらせて動く幼虫。',
+	'Journal.NOTE_CORAL_JUDGE_CHILD': '身体を肥大化させ、さらに狂暴化することもあるわ。',
+	'Journal.NAME_CORAL_JUDGE': '審判者',
+	'Journal.DESC_CORAL_JUDGE': '暴風の石段を守護する、黄金色のムシ。シンバルと木槌を手にしている。',
+	'Journal.NOTE_CORAL_JUDGE':
+		'不純だと判断した巡礼者や通りすがりの者を、容赦なく排除している。かれらのかたわらに散らばる数え切れないほどの亡殻が、その揺らぐことのない審判を物語っているわ。',
+	'Journal.NAME_LAST_JUDGE': '最後の審判者',
+	'Journal.DESC_LAST_JUDGE':
+		'暴風の石段に残る最後の裁定者。一切の罪を犯していない者だけが偉大なる門を通過できるよう、見張りの役を担っている。',
+	'Journal.NOTE_LAST_JUDGE':
+		'この巨大な審判者はきっと何世代にもわたって立ち続けていたのでしょうね。決して倒されることなく、決してぶれることなく。',
+	'Journal.NAME_CORAL_SPIKE_GOOMBA': 'サンゴファルム',
+	'Journal.DESC_CORAL_SPIKE_GOOMBA': '黒い毛皮をまとったムシ。とげとげした珊瑚殻の実をかぶって身を守っている。',
+	'Journal.NOTE_CORAL_SPIKE_GOOMBA':
+		'毛皮は厚くて滑らかだけど、呪気に侵されてしまっている。残念だけど、安全に触れることはできないでしょうね。',
+	'Journal.NAME_CORAL_CONCH_SHOOTER': 'ドリズニット',
+	'Journal.DESC_CORAL_CONCH_SHOOTER': '営巣本能を持つ生物で、尖った珊瑚殻と自らの顔を一体化させている。',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER': 'あの跳弾のような軌道を見切ってかわすのは簡単ではないわ。狭い場所では特にね。',
+	'Journal.NAME_CORAL_CONCH_SHOOTER_HEAVY': 'ドリズナルガ',
+	'Journal.DESC_CORAL_CONCH_SHOOTER_HEAVY':
+		'身体の大きな雄のドリズニット。気性が荒く、縄張り意識も強い。その重い珊瑚殻の仮面を使って侵入者を攻撃する。',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER_HEAVY':
+		'尖った仮面を使った攻撃はなかなか強力ね。頭に血が昇ってそうなわりには狙いも正確だし。',
+	'Journal.NAME_CORAL_CONCH_STABBER': 'ポケナッビン',
+	'Journal.DESC_CORAL_CONCH_STABBER':
+		'幅の広い珊瑚殻の仮面をつけ、空中を浮遊する生物。その硬い鼻を獲物に突き刺してくる。',
+	'Journal.NOTE_CORAL_CONCH_STABBER':
+		'獲物が自分の軌道に迷い込むのをじっと待っている。効果的で、決してあなどれない戦術ね。',
+	'Journal.NAME_CORAL_CONCH_DRILLER': 'ホラガイバエ',
+	'Journal.DESC_CORAL_CONCH_DRILLER':
+		'鋭利に仕上げた珊瑚殻をかぶった小さなムシ。殻を高速で回転させることで、表皮や骨を切り裂く。',
+	'Journal.NOTE_CORAL_CONCH_DRILLER':
+		'地中から出たり入ったりする様は、どこか楽し気でもある。獲物を急襲するには効果的なやり方ね。',
+	'Journal.NAME_CORAL_CONCH_DRILLER_GIANT': 'オオホラガイバエ',
+	'Journal.DESC_CORAL_CONCH_DRILLER_GIANT':
+		'老いたホラガイバエで、巨大な珊瑚殻の角をかぶっている。ホラガイバエは一旦つがいとなると、単独で行動することはほとんどなくなる。',
+	'Journal.NOTE_CORAL_CONCH_DRILLER_GIANT':
+		'誰かとつがいになることは生き物の基本的な本能であり、そのことに大きな喜びを見出すムシもいる。わたしもかつてはそのような関係性を求めたことがあったけど、相手となった者は皆、わたしの寿命に及ばず死んでしまった。',
+	'Journal.NAME_CORAL_GOOMBAS': 'サンゴハイズリ',
+	'Journal.DESC_CORAL_GOOMBAS': '素早く動きまわる、珊瑚殻に身を包んだ軟体生物。',
+	'Journal.NOTE_CORAL_GOOMBAS': '塔の珊瑚殻に隠れることで、こうした小さなムシも生き延びることができたんでしょうね。',
+	'Journal.NAME_CORAL_GOOMBA_LARGE': 'オオサンゴムシ',
+	'Journal.DESC_CORAL_GOOMBA_LARGE':
+		'分厚い珊瑚殻でできた身体を持つムシ。シタデルの記憶庫で、巨大な体躯の持ち主となるべく培養された。',
+	'Journal.NOTE_CORAL_GOOMBA_LARGE':
+		'歪められた自然を体現する存在ね。元々は小さくて穏やかなムシとして生まれついたのに、無益な希望にしがみつくシタデルによって変形させられてしまった。',
+	'Journal.NAME_CORAL_SWIMMER_FAT': 'カイ',
+	'Journal.DESC_CORAL_SWIMMER_FAT': '過去の珊瑚地帯に生きた生物。数が多く、ぷっくりと膨らんだ身体を持つ。',
+	'Journal.NOTE_CORAL_SWIMMER_FAT':
+		'かつては塔の周辺に大量に存在していたみたい。このように豊かな生命の表れは、なかなかお目にかかれるものではないわ。',
+	'Journal.NAME_POKE_SWIMMER': 'トゲクチノカイ',
+	'Journal.DESC_POKE_SWIMMER': '鋼鉄の角を持ち、空中を浮遊する生物。自分とその仲間を守る力を持つ。',
+	'Journal.NOTE_POKE_SWIMMER':
+		'群れにおける不可欠な存在になっているようね。この者たちがいなければ、カイは大型の捕食者たちに食べられて早々に絶滅していたでしょう。',
+	'Journal.NAME_SPIKE_SWIMMER': 'トゲカイ',
+	'Journal.DESC_SPIKE_SWIMMER': 'カイが強化されたもの。膨れた身体の中から鋭いトゲを生やすことができる。',
+	'Journal.NOTE_SPIKE_SWIMMER':
+		'柔らかそうだと油断していると、その鋭いトゲに驚かされることになる。この者を呑み込もうとする大型の捕食者たちは、手痛い教訓を得ることになるでしょうね。',
+	'Journal.NAME_CORAL_SWIMMER_SMALL': 'ユマ',
+	'Journal.DESC_CORAL_SWIMMER_SMALL': '珊瑚地帯をさまようゼラチン質の生物。思考は単純で、穏やかな性格をしている。',
+	'Journal.NOTE_CORAL_SWIMMER_SMALL': 'かぎりなく単純なムシで、わたしだけでなく誰の脅威にもならない存在だわ。',
+	'Journal.NAME_CORAL_BIG_JELLYFISH': 'ユママ',
+	'Journal.DESC_CORAL_BIG_JELLYFISH':
+		'ゼラチン質の大型の浮遊生物。その巨体を投げつけるようにして脅威に対抗しようとする。',
+	'Journal.NOTE_CORAL_BIG_JELLYFISH':
+		'倒すと小さくこまかく分裂する。これもまたシタデルの統治者が君臨する前に存在した、驚異的な生き物のひとつね。',
+	'Journal.NAME_CORAL_WARRIOR': 'カラカ',
+	'Journal.DESC_CORAL_WARRIOR': '強い意志と刃の技量を兼ね備えたムシ。かつて繁栄し、今は失われた土地の生物。',
+	'Journal.NOTE_CORAL_WARRIOR':
+		'強力な集団の核を担う者で、訓練によって恐れを知らぬ心と忠誠心を植えつけられている。かれらはその刃を用いて、戦士たちによる王国を築いていた。',
+	'Journal.NAME_CORAL_FLYER': 'カクリ',
+	'Journal.DESC_CORAL_FLYER': '羽根を持つ、動きの軽やかな斥候。身体の大きな仲間と一緒に行動することが多い。',
+	'Journal.NOTE_CORAL_FLYER':
+		'迅速な動きと攻撃を好むところは、わたしと共通する部分がある。かつては狩猟者だったのかも？',
+	'Journal.NAME_CORAL_FLYER_THROW': 'ヤゴ',
+	'Journal.DESC_CORAL_FLYER_THROW':
+		'幅の広い仮面をかぶり、空を舞う襲撃者。距離を取りながら地上の仲間を支援するべく訓練されている。',
+	'Journal.NOTE_CORAL_FLYER_THROW':
+		'前面に出て戦う類ではないようだけど、塔を襲撃したわたしを総出で鎮圧しようとしている。',
+	'Journal.NAME_CORAL_BRAWLER': 'カラクゴール',
+	'Journal.DESC_CORAL_BRAWLER': '大きな身体と硬い殻を持つムシ。その重量と力にまかせて突撃してくる。',
+	'Journal.NOTE_CORAL_BRAWLER':
+		'珊瑚殻におおわれたかれらの領域においては屈指の強者と言えるでしょうね。きっとその一生をあの塔の中で過ごしてきたんだわ。',
+	'Journal.NAME_CORAL_HUNTER': 'アリタ',
+	'Journal.DESC_CORAL_HUNTER':
+		'跳躍力に優れた、過去の時代の狩猟者。一党における最速の存在であり、前腕についた回転刃を巧みに操る。',
+	'Journal.NOTE_CORAL_HUNTER':
+		'速さと力の勝負となった場合は、速さに勝る者が勝利することが多い。これはわたし自身が経験を通じて学んだことよ。',
+	'Journal.NAME_CORAL_BUBBLE_BRUTE': '浸食のカラカ',
+	'Journal.DESC_CORAL_BUBBLE_BRUTE':
+		'肥大化した年長のムシ。珊瑚殻におおわれた体内から、焼けつくような泡を放出することができる。',
+	'Journal.NOTE_CORAL_BUBBLE_BRUTE':
+		'このムシは珊瑚殻と同化している…意図的にそうしたようだけど、快適とは到底思えないわね。',
+	'Journal.NAME_CORAL_KING': '珊瑚殻の王カーン',
+	'Journal.DESC_CORAL_KING': '過去の時代に生きた、強力な戦士の王。珊瑚殻を自分の意のままに操ることができる。',
+	'Journal.NOTE_CORAL_KING':
+		'その厳格な統率によって、配下の絶大な忠誠心を獲得している。戦闘を好まないムシたちにとっては、彼の統治は厳しいものだったかもしれないけど。',
+	'Journal.NAME_CORAL_WARRIOR_GREY': '境界の監視者',
+	'Journal.DESC_CORAL_WARRIOR_GREY': '領域の境界を守護する長命の戦士。年月が彼らを強くし、歌が彼らを目覚めさせた。',
+	'Journal.NOTE_CORAL_WARRIOR_GREY':
+		'彼らは同胞の寿命をはるかに超えて生き、監視を続けてきた。今でも目覚めれば、驚くほど見事にその刃を振るうことができる。',
+	'Journal.NAME_ZAP_CORE_ENEMY': 'パチパチニア',
+	'Journal.DESC_ZAP_CORE_ENEMY': '電気を帯びた地虫たちの巣。弾ける電撃で侵入者を攻撃する。',
+	'Journal.NOTE_ZAP_CORE_ENEMY':
+		'ムシとは呼び難いほど単純な思考しか持たない生物だけど、その本能だけでも十分に危険な存在だわ。',
+	'Journal.NAME_CITADEL_BAT': 'ヌノバエ',
+	'Journal.DESC_CITADEL_BAT': 'ボロ布やカーテンの中に巣食う、奇妙な空飛ぶ害虫。',
+	'Journal.NOTE_CITADEL_BAT': 'まるで生地が命を持ったかのよう。その皮は棲み処としているボロ布と完全に同化している。',
+	'Journal.NAME_CITADEL_BAT_LARGE': 'ヌノバエの長',
+	'Journal.DESC_CITADEL_BAT_LARGE':
+		'歳月とその食物摂取によって大きく成長した年長のヌノバエ。重い身体を駆使し、若い同種よりもずっと強力な攻撃を繰り出してくる。',
+	'Journal.NOTE_CITADEL_BAT_LARGE': '暴食によって肥大化する者が生み出されるのは、ムシの典型でもあるわね。',
+	'Journal.NAME_MITE_HEAVY': 'ヌノダニ',
+	'Journal.DESC_MITE_HEAVY': '鋭い前肢を持ち、布で全身をおおったムシ。暗い場所に繁殖する。',
+	'Journal.NOTE_MITE_HEAVY':
+		'ファールームはまるで、かれらのために作られたかのような構造をしている。曲がり角や割れ目が無数にあるこの土地は、ダニが潜んで巣作りをするのに最適でしょうから。',
+	'Journal.NAME_UNDERSTORE_MITE_GIANT': 'オオヌノダニ',
+	'Journal.DESC_UNDERSTORE_MITE_GIANT':
+		'シタデルに出没する、完全に成長したヌノダニ。古びたカーテンに身を包んでいる。',
+	'Journal.NOTE_UNDERSTORE_MITE_GIANT':
+		'シルクの呪いに侵されたシタデルには栄養素となるものも少なく、これほどの大きさにまで成長するムシはまれでしょうね。',
+	'Journal.NAME_UNDERSTORE_SMALL': '礎の労働者',
+	'Journal.DESC_UNDERSTORE_SMALL': '聖域の礎の脆弱な労働者。長い湾曲ピンと硬い殻が特徴。',
+	'Journal.NOTE_UNDERSTORE_SMALL':
+		'廃棄物が次々と落ちてくる領域なだけに、労働者たちの硬い殻は生き延びるために不可欠のものでしょうね。',
+	'Journal.NAME_PILGRIM_03_UNDERSTORE': '礎の洗浄者',
+	'Journal.DESC_PILGRIM_03_UNDERSTORE': '衰弱しつつもいまだ任務に忠実な労働者。粗い鋼のブラシを持っている。',
+	'Journal.NOTE_PILGRIM_03_UNDERSTORE': 'この者たちが生息する領域は、きれいにしたところでまったく無意味なのにね。',
+	'Journal.NAME_PILGRIM_STAFF_UNDERSTORE': '礎の清掃者',
+	'Journal.DESC_PILGRIM_STAFF_UNDERSTORE': '鋼の毛がついたピンを使って、空気孔やパイプのすすをこすり落とすムシ。',
+	'Journal.NOTE_PILGRIM_STAFF_UNDERSTORE':
+		'この者が持つ鋭利な掃除道具は、それが使われる領域と同様にひどく汚れて、すすが何層にも重なり合っている。',
+	'Journal.NAME_UNDERSTORE_POKER': '礎の突刺者',
+	'Journal.DESC_UNDERSTORE_POKER':
+		'衰弱し、今にも力尽きそうな労働者。呪気に侵され、身体の限界を超えて働き続けている。',
+	'Journal.NOTE_UNDERSTORE_POKER':
+		'かれらは休むことなくシタデルのために働き続けている。その殻は曲がり、くすんでもなお。たとえ死んでも、この王国の呪いからは解放されないでしょうね。',
+	'Journal.NAME_UNDERSTORE_THROWER': '礎の修繕者',
+	'Journal.DESC_UNDERSTORE_THROWER':
+		'聖域の礎のスモッグで体調を害し、すっかり疲労したムシ。その湾曲したピンはかつて修繕の道具として使われていたが、今では投てき武器と化している。',
+	'Journal.NOTE_UNDERSTORE_THROWER':
+		'偉大な建造物の代償ははかり知れないわね…わたしは、わたし自身の王国の礎にしっかりと眼を向けたことがあったかしら？',
+	'Journal.NAME_UNDERSTORE_HEAVY': '礎の修理者',
+	'Journal.DESC_UNDERSTORE_HEAVY': '重くて硬い殻を持った労働者。崩壊しつつある聖域の礎を永遠に修理し続けている。',
+	'Journal.NOTE_UNDERSTORE_HEAVY':
+		'かれらの中に階級というものは存在しないようだけど、この者はほかの者より上に立っている。きっと脅しと暴力で勝ち取った地位なのでしょうね。',
+	'Journal.NAME_SONG_PILGRIM_01': '使者',
+	'Journal.DESC_SONG_PILGRIM_01': 'シタデルの合唱者を導き、しばしばその指導者も務めるムシ。',
+	'Journal.NOTE_SONG_PILGRIM_01':
+		'洞穴を抜けてわたしをファールームに連れてきたのも、このようなムシたちだった。拘束されるまでに何匹も斬り捨てたわ。あのときは狡猾に立ち回る相手だと思ったけれど、実際はひとつの意思によって操られていたようね。',
+	'Journal.NAME_PILGRIM_01_SONG': '俊敏な合唱者',
+	'Journal.DESC_PILGRIM_01_SONG':
+		'動きの素早いムシ。シタデルにたどり着くだけの強さを備えていた、数少ない巡礼者の一匹でもある。',
+	'Journal.NOTE_PILGRIM_01_SONG':
+		'かつてはここファールームで尊敬を獲得していたムシたちだったけれど、その領域と殻は真っ先に呪気の犠牲となってしまった。',
+	'Journal.NAME_PILGRIM_02_SONG': '角頭の合唱者',
+	'Journal.DESC_PILGRIM_02_SONG': 'シタデルに仕える巡礼者。身体が大きく成長している。',
+	'Journal.NOTE_PILGRIM_02_SONG':
+		'この者がここまで大きくなったのは、シタデルで過剰な栄養を摂取したから？　それともこれだけの体躯を持っていたからこそ、シタデルにたどり着けたということなのかしら？',
+	'Journal.NAME_PILGRIM_03_SONG': '鈴持ちの合唱者',
+	'Journal.DESC_PILGRIM_03_SONG': '羽根の生えたシタデルの信奉者。黄金色の鈴を身につけている。',
+	'Journal.NOTE_PILGRIM_03_SONG':
+		'ファールームではしばしば鈴が有効な武器として使われる。ここに来るまでそんな発想はまったく思いつかなかったわ。',
+	'Journal.NAME_PILGRIM_04_SONG': '中空の合唱者',
+	'Journal.DESC_PILGRIM_04_SONG': '空中を浮遊するシタデルのムシ。その短い角が唯一の攻撃手段となる。',
+	'Journal.NOTE_PILGRIM_04_SONG':
+		'この者がファールームの登攀を生き延びられたのは、きっと強い同伴者がいたからでしょうね。単独でそれが可能だとは思えない。',
+	'Journal.NAME_PILGRIM_STOMPER_SONG': '老いた合唱者',
+	'Journal.DESC_PILGRIM_STOMPER_SONG':
+		'年齢を経たかつての巡礼者。羽根を使って敵対者の上にまわり、その大きな殻で押しつぶそうとする。',
+	'Journal.NOTE_PILGRIM_STOMPER_SONG': '長く生きるうちに厚くなった殻が、標的にぶつかる際に効果を発揮しているわ。',
+	'Journal.NAME_SONG_PILGRIM_03': '聖歌の歌い手',
+	'Journal.DESC_SONG_PILGRIM_03': '合唱の徒。巡礼者の中から選び出され、永遠にその顔を隠すことを強いられた。',
+	'Journal.NOTE_SONG_PILGRIM_03':
+		'そのピンの使い方から、厳しい訓練を積んできたことがうかがえる。かたわらの糸巻からシルクを放出するなど、普通のムシには到底持ちえない技も繰り出してくるわ。',
+	'Journal.NAME_SONG_REED': 'リード',
+	'Journal.DESC_SONG_REED': '合唱の徒。その秩序を完璧に維持する役を担い、必要ならば鋭いピンを使うことも辞さない。',
+	'Journal.NOTE_SONG_REED':
+		'しなやかで素早く、戦いに適した体形をしている。狂信者たちの中でも高い位置にいるようだけど、それも驚きではないわね。',
+	'Journal.NAME_SONG_REED_GRAND': '高貴なるリード',
+	'Journal.DESC_SONG_REED_GRAND':
+		'合唱者の中で高い位置にいるムシで、楽器を奏でるための弓を持っている。同志の小さなムシたちと比べてよく訓練され、豊富に食物を与えられている。',
+	'Journal.NOTE_SONG_REED_GRAND':
+		'このムシはシルクの糸巻を持ち、それを使って攻撃してくる。その手法はつたないけれど、紡ぐ者の技を強く彷彿させるものでもある。いったい誰がかれらにこんな戦い方を教えたのかしら？',
+	'Journal.NAME_SONG_HEAVY_SENTRY': '殴撃の合唱者',
+	'Journal.DESC_SONG_HEAVY_SENTRY':
+		'強力な殴打を繰り出す合唱の徒。大槌を振るい、シルクの糸巻を使ってその攻撃を強化してくる。',
+	'Journal.NOTE_SONG_HEAVY_SENTRY':
+		'シルクの使い方はまったく洗練されていないわね。所持するわずかなシルクを、力を増幅するためだけに消費している。',
+	'Journal.NAME_SONG_HANDMAIDEN': 'ツメオトメ',
+	'Journal.DESC_SONG_HANDMAIDEN':
+		'シタデルに従事するカラクリ機械。シルクの糸によって吊られている。自動機械の初期の型で、稼働させるには豊富な量のシルクが必要となる。',
+	'Journal.NOTE_SONG_HANDMAIDEN':
+		'この者はシルクを内包した存在を感知すると、隙をみてそれを奪い取ろうとする。わたしの殻からも。',
+	'Journal.NAME_ARBORIUM_KEEPER': 'キオクリア',
+	'Journal.DESC_ARBORIUM_KEEPER': 'シタデルの記憶庫の管理を任された合唱の徒。',
+	'Journal.NOTE_ARBORIUM_KEEPER':
+		'傍から見れば、彼らは無謀なことをやろうとしたように思う。作られた空間の中に野生を再現するなんて、不可能なことだもの。',
+	'Journal.NAME_SONG_ADMINISTRATOR': 'セイショクシャ',
+	'Journal.DESC_SONG_ADMINISTRATOR': '黄金の位を与えられた合唱の徒。シタデルの指揮者たちに直属する形で従事している。',
+	'Journal.NOTE_SONG_ADMINISTRATOR':
+		'予想外に危険なムシでもある。その身体は決して戦いのために作られたものではないけれど、呪気はかれらの性質を劇的に変化させてしまった。',
+	'Journal.NAME_SONG_PILGRIM_MAESTRO': 'マエストロ',
+	'Journal.DESC_SONG_PILGRIM_MAESTRO':
+		'高貴の広間で合唱者を統率する者。バトンを振ってハグルマバエを召喚し、操ることができる。',
+	'Journal.NOTE_SONG_PILGRIM_MAESTRO':
+		'かつては合唱者たちの歌を導く存在だったけれど、今ではシルクに侵されぬ者たちの命を終わらせるためだけに、その指揮を振るっている。',
+	'Journal.NAME_SONG_KNIGHT': '第二の歩哨',
+	'Journal.DESC_SONG_KNIGHT':
+		'ファールームのカラクリ騎士。ハサミのような刃を使いこなし、かつては巡礼者たちの守護を担っていた。',
+	'Journal.NOTE_SONG_KNIGHT':
+		'この者の能力と知能は、これまでに見た同種の者たちをはるかに凌駕している。隷属させる道具というより、生命そのものを再現しようとして作られたかのよう。',
+	'Journal.NAME_SONG_THREADED_HUSK': 'クズイトノカラ',
+	'Journal.DESC_SONG_THREADED_HUSK':
+		'シルクの残糸に憑りつかれたムシの成れの果て。糸の中には多くの鋭い針が含まれており、それを使って激しく攻撃をしてくる。',
+	'Journal.NOTE_SONG_THREADED_HUSK':
+		'こうした糸には歳月を経た苦しみが内包されている。数え切れないほど繰り返された、残酷な処置の結果として。',
+	'Journal.NAME_SONG_THREADED_HUSK_SPIN': 'クズイトマキ',
+	'Journal.DESC_SONG_THREADED_HUSK_SPIN':
+		'シルクの残糸に憑依された小さなムシ。シルクを伸ばして破壊的な力を持つ輪を作り出す。',
+	'Journal.NOTE_SONG_THREADED_HUSK_SPIN':
+		'生きたシルクが死んだムシを操る…ファールームではこういう自然の法則と逆行した現象が、当たり前のように展開している。',
+	'Journal.NAME_SONG_PILGRIM_02': '外科医',
+	'Journal.DESC_SONG_PILGRIM_02':
+		'白色の棟に出没する、冷酷な医師。シタデルのムシたちに対しておこなわれた手術と改良を担当した。',
+	'Journal.NOTE_SONG_PILGRIM_02':
+		'シルクを用いたかれらの施術は、シタデルに生きる者たちの寿命を延ばしたかもしれない。でもその結果かれらは、自分でも気づかぬうちに多くのムシの精神を頂に立つ者に捧げることとなったのよ。',
+	'Journal.NAME_SONG_CREEPER': 'ソウギヤ',
+	'Journal.DESC_SONG_CREEPER': '白色の棟に出没する、変異した隷属者。殻の火葬と、残ったシルクの回収を担当している。',
+	'Journal.NOTE_SONG_CREEPER':
+		'仕事に専念しているのか普段は身を低くしているけど、突然攻撃してくることもある。あのハサミは驚くほど届く距離も長くて、危険な武器よ。',
+	'Journal.NAME_CONDUCTOR_BOSS': '糸解かれし者',
+	'Journal.DESC_CONDUCTOR_BOSS': '苦しみ苛まれる無数のムシの意思が、シルクの残糸の穴で具現化したもの。',
+	'Journal.NOTE_CONDUCTOR_BOSS':
+		'本当に多くのムシの魂がシルクの魅力に憑りつかれ。結果的に消費された。かれらの苦しみは、あの穴の中に永遠に残り続けることでしょう。わたしの力をもってしても、あそこを浄化することは不可能だわ。',
+	'Journal.NAME_UNDERSTORE_AUTOMATON': 'カラクリテントウ',
+	'Journal.DESC_UNDERSTORE_AUTOMATON':
+		'小さなカラクリ機械。聖域の礎の大釜の、焼けつくような熱さの中でも文句を言わず働く存在たるべく作られた。',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON':
+		'この小さな者が鋳造されたものであると知って納得したわ。命あるムシが、あのような灼熱の場所で生き続けることは不可能でしょうから。わたしの殻ですら、あの熱には苦しめられているしね。',
+	'Journal.NAME_UNDERSTORE_AUTOMATON_EX': 'カラクリウンパンムシ',
+	'Journal.DESC_UNDERSTORE_AUTOMATON_EX':
+		'装甲のような殻をまとった小さなカラクリ機械。危険な炎石を大量に運ぶために作られた。',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON_EX':
+		'時がその身体を硬直させるまで、ひたすら働き続けることを求められ、作成された存在。そもそも自由という概念を知らぬだけ、まだ幸せなのかもしれないわね。',
+	'Journal.NAME_SONG_AUTOMATON_GOOMBA': 'カラクリハイズリ',
+	'Journal.DESC_SONG_AUTOMATON_GOOMBA':
+		'床を這いずるムシを模して作られたカラクリ機械。背中には収納可能なピンがついており、歌のシリンダーの動きを阻害するものを切り裂くために使われる。',
+	'Journal.NOTE_SONG_AUTOMATON_GOOMBA':
+		'この者は間違いなく、シタデルの外に生息するムシを模して作られている。わたしもなにかを作るときは、自然の中によくヒントを求めるわ。',
+	'Journal.NAME_SONG_AUTOMATON_FLY': 'カラクリロウドウシャ',
+	'Journal.DESC_SONG_AUTOMATON_FLY': '羽根のついたカラクリ機械。歯車の中枢の修理と拡張を担っている。',
+	'Journal.NOTE_SONG_AUTOMATON_FLY':
+		'思いのほか手強い相手ね。入り組んだ場所では、単純な襲撃もあなどれないものとなる。',
+	'Journal.NAME_SONG_AUTOMATON_FLY_SPIKE': 'カラクリトゲトゲ',
+	'Journal.DESC_SONG_AUTOMATON_FLY_SPIKE':
+		'羽根のついた、球体型のカラクリ機械。鋭いトゲをたくさん内部に収納している。',
+	'Journal.NOTE_SONG_AUTOMATON_FLY_SPIKE':
+		'カラクリの中枢におけるこの者の役割がなんなのか、わたしにはわからない。守護のために作られたのかしら？　そのわりには行動に積極性を欠く気がするけれど。',
+	'Journal.NAME_SONG_AUTOMATON_01': 'カラクリウタイ',
+	'Journal.DESC_SONG_AUTOMATON_01':
+		'鉄とローターと歯車で作られたムシ。カラクリの中枢を維持するため、疲れを知ることなく働き続けている。',
+	'Journal.NOTE_SONG_AUTOMATON_01':
+		'この者の核はとても精巧な構造になっているけれど、それだけでこれほど見事に生命を模すことができるとは思えない。この機械を動かすには、シルクもまた使われているはずよ。どのような形でかはさだかでないけど。',
+	'Journal.NAME_SONG_AUTOMATON_02': 'カラクリセイソウシャ',
+	'Journal.DESC_SONG_AUTOMATON_02':
+		'蒸気を噴出するカラクリ機械。カラクリの中枢を清掃し、汚染から守るために作られた。',
+	'Journal.NOTE_SONG_AUTOMATON_02':
+		'面白い蒸気の使い方をするわ。将来道具を作るときのために、この者の構造をよく覚えておくべきね。',
+	'Journal.NAME_SONG_AUTOMATON_SHIELD': 'カラクリバンペイ',
+	'Journal.DESC_SONG_AUTOMATON_SHIELD':
+		'中枢の護衛を主な役割として作成されたカラクリ機械。盾と突き刺し型のピンを持ち、それを恐ろしいほどの腕前で使いこなす。',
+	'Journal.NOTE_SONG_AUTOMATON_SHIELD':
+		'精神を持たないにもかかわらず、わたしの動きに適応し、効果的に戦ってくる。その思考はいったいどこに書かれているの？',
+	'Journal.NAME_SONG_AUTOMATON_BALL': 'カラクリシャンシャン',
+	'Journal.DESC_SONG_AUTOMATON_BALL':
+		'カラクリの中枢深くで、鐘とシンバルを鳴らすために作られた、珍しいカラクリ機械。',
+	'Journal.NOTE_SONG_AUTOMATON_BALL':
+		'この機械が鳴らす役を担っているという鐘を、わたしはいまだ見たことがない。そもそもその音が聴きたいとも思わないけど。きっと耳障りな音でしょうからね。',
+	'Journal.NAME_CLOCKWORK_DANCER': 'カラクリの舞踏者',
+	'Journal.DESC_CLOCKWORK_DANCER':
+		'極めて精巧に作られたカラクリ機械。自分たちの部屋に入ってくる者を、死の舞踏で出迎える。',
+	'Journal.NOTE_CLOCKWORK_DANCER':
+		'この歯車のカラクリで動くムシは、身体は２つありながらその思考は１つしかないように見える。鉄の殻の中に吹き込まれた、哀しくも見事な生命の模倣というやつね。',
+	'Journal.NAME_SONG_SCHOLAR_ACOLYTE': '貯蔵庫の子',
+	'Journal.DESC_SONG_SCHOLAR_ACOLYTE':
+		'暗い貯蔵庫で育てられた若き侍者。いずれはマキモノヨミへと昇格することを定められている。',
+	'Journal.NOTE_SONG_SCHOLAR_ACOLYTE':
+		'領域に入ったわたしに追い払われたことで、このムシたちはより大きな貯蔵庫に蔓延るようになった。厄介なことになったけど、責めるべきはわたし自身だわ。',
+	'Journal.NAME_LIGHTBEARER': 'アカリモチ',
+	'Journal.DESC_LIGHTBEARER':
+		'囁きの貯蔵庫に出没するシタデルの徒。古い巻物を回収するために、薄暗い空間を照らし出す役を担っている。',
+	'Journal.NOTE_LIGHTBEARER': '巻物が積まれた、あの暗い迷路を進むことを望む者にとっては、不可欠な存在ね。',
+	'Journal.NAME_SCROLLKEEPER': 'マキモノヨミ',
+	'Journal.DESC_SCROLLKEEPER':
+		'囁きの貯蔵庫に従事する、光沢を放つムシ。祈りの言葉を記録した膨大な量の巻物を読み、記憶するために生まれた。',
+	'Journal.NOTE_SCROLLKEEPER':
+		'かれらはあの謎めいた巻物の内容を、本当に理解しているのかしら？　あるいはシタデルの威厳を保つために、わかっているふりをし続けているとか？',
+	'Journal.NAME_SCHOLAR': '貯蔵庫の管理者',
+	'Journal.DESC_SCHOLAR':
+		'高い地位にいるムシ。信者への説法をおこない、囁きの貯蔵庫の壁の向こうまで祈りの声を届けさせる役を担う。',
+	'Journal.NOTE_SCHOLAR': 'この者の真の役割は、信仰が不足している者を咎め、排除することでしょうね。',
+	'Journal.NAME_TROBBIO': 'トロッビオ',
+	'Journal.DESC_TROBBIO':
+		'高飛車な役者。眩いパフォーマンスのみが、ファールームを死の苦しみより救済できると信じている。',
+	'Journal.NOTE_TROBBIO':
+		'ファールームを救いたいというこの者の願いは善意に基づくものかもしれないけれど、それを追及する過程で舞台に上がった者が死亡することに関しては、まったく意に介さないようね。',
+	'Journal.NAME_TORMENTED_TROBBIO': '苦痛にさいなまれし<br>トロッビオ',
+	'Journal.DESC_TORMENTED_TROBBIO': '絶望した役者。崩壊する世界への感傷に身を捉われている。',
+	'Journal.NOTE_TORMENTED_TROBBIO':
+		'この者は来る崩壊を受け入れる道を選んだ。でもわたしはそう簡単に屈服したりはしない。',
+	'Journal.NAME_SLAB_PRISONER_LEAPER_NEW': '悔悟者',
+	'Journal.DESC_SLAB_PRISONER_LEAPER_NEW': 'シタデル内で犯した罪により牢に入れられ、刑期に服す者。',
+	'Journal.NOTE_SLAB_PRISONER_LEAPER_NEW':
+		'看守も、牢に入っている者も、ここではすべてが呪われている。この場所からは決して離れられないことや、自分たちが牢に入ってどれだけ経つのかを、かれらは理解しているのかしら？',
+	'Journal.NAME_SLAB_PRISONER_FLY_NEW': '小さな悔悟者',
+	'Journal.DESC_SLAB_PRISONER_FLY_NEW': 'シタデル内で犯した罪により拘束された、小さなムシ。',
+	'Journal.NOTE_SLAB_PRISONER_FLY_NEW':
+		'分厚い布におおわれてなにも見えないはずだけど、ほとんど意に介していないように思える。自らの身の安全をかえりみることなく、罪を犯したとみなす者に対してただ突撃しようとする。',
+	'Journal.NAME_SLAB_FLY_SMALL_FRESH': 'アカゴバエ',
+	'Journal.DESC_SLAB_FLY_SMALL_FRESH':
+		'孵化したばかりのハエ。まだ身体は柔らかく、眼も見えていないため、さしたる脅威にはならない。',
+	'Journal.NOTE_SLAB_FLY_SMALL_FRESH': 'このようにおぞましいムシの繁殖は、おこなわれないに越したことはないわね。',
+	'Journal.NAME_SLAB_FLY_SMALL': 'カサブタバエ',
+	'Journal.DESC_SLAB_FLY_SMALL': 'まとわりつくようなハエ。巨石の牢で働くために生まれ、育てられた。',
+	'Journal.NOTE_SLAB_FLY_SMALL': '労働を宿命づけられた不快な生き物ね。かれらの苦しみに同情する気にはなれないわ。',
+	'Journal.NAME_SLAB_FLY_MID': 'バンペイバエ',
+	'Journal.DESC_SLAB_FLY_MID': '腹を空かせた巨石の牢の隷属者。フックのついた長いピンを持っている。',
+	'Journal.NOTE_SLAB_FLY_MID':
+		'こうした看守たちの悪臭は、わたしの感覚をおかしくさせるほどよ。お風呂に入ろうなどとは、考えたこともないのでしょうね。',
+	'Journal.NAME_SLAB_FLY_LARGE': 'ショチョウバエ',
+	'Journal.DESC_SLAB_FLY_LARGE':
+		'どっしりとした身体が毛におおわれたハエ。罪を犯した者を捕らえ、収容者の罪を罰する役を担っている。',
+	'Journal.NOTE_SLAB_FLY_LARGE': 'ふるまいも臭いも不快この上ない存在ね。倒すことになんのためらいも覚えないわ。',
+	'Journal.NAME_SLAB_FLY_BROODMOTHER': '排卵の母',
+	'Journal.DESC_SLAB_FLY_BROODMOTHER':
+		'巨石の牢を支配する狂気の長であり、その生息地の外では滅多に見ることはない。牢の看守たちはみな彼女から生まれ、育てられた。',
+	'Journal.NOTE_SLAB_FLY_BROODMOTHER': 'この者なき今、牢とその混沌の終焉が迅速に訪れることを期待したいものね。',
+	'Journal.NAME_PEAKS_DRIFTER': 'フワリン',
+	'Journal.DESC_PEAKS_DRIFTER':
+		'フェイの山をゆったりと浮遊する存在。綿毛でおおわれた羽根と頭巾によって、厳しい寒さから身を守っている。',
+	'Journal.NOTE_PEAKS_DRIFTER': 'ペットとしてよさそうだけど、凍えるような環境ではそれも望めないかも。',
+	'Journal.NAME_CRYSTAL_DRIFTER': 'ニモニド',
+	'Journal.DESC_CRYSTAL_DRIFTER': '冷気の破片から作られた、空飛ぶ生物。砕けてもすぐに再生する。',
+	'Journal.NOTE_CRYSTAL_DRIFTER':
+		'たとえ破壊されても、以前の形を記憶し続けている。素材として素晴らしいし、そもそもこのようなものに命が宿っていることが驚きだわ。',
+	'Journal.NAME_CRYSTAL_DRIFTER_GIANT': 'ニモノルド',
+	'Journal.DESC_CRYSTAL_DRIFTER_GIANT': '冷気の破片から作られた、巨大な空飛ぶ生物。',
+	'Journal.NOTE_CRYSTAL_DRIFTER_GIANT': '身体が重すぎて、浮かび上がるので精一杯って感じね。',
+	'Journal.NAME_WEAVER_SERVITOR': '従事者イグニム',
+	'Journal.DESC_WEAVER_SERVITOR':
+		'かつて紡ぐ者たちによって作られた、小さきもの。内部に編み込まれたシルクのルーンによって命を吹き込まれている。',
+	'Journal.NOTE_WEAVER_SERVITOR':
+		'紡ぐ者がファールームから消えて久しいけれど、その従事者たちはいまだ活動を止めてはいない。',
+	'Journal.NAME_WEAVER_SERVITOR_LARGE': '従事者ボラン',
+	'Journal.DESC_WEAVER_SERVITOR_LARGE':
+		'かつて紡ぐ者たちによって作られ、破損したもの。力が濃縮されたシルクの光線を放ち、氷や骨を削って通路や部屋を作り出す力を持つ。',
+	'Journal.NOTE_WEAVER_SERVITOR_LARGE':
+		'時間の経過と環境的要素によってひどく損傷し、動作が不安定になっている。もはや敵と味方の区別もつかないみたい。',
+	'Journal.NAME_LIFEBLOOD_FLY': '羽根を持つ命の種',
+	'Journal.DESC_LIFEBLOOD_FLY':
+		'プラスミウムに満たされた、思考なき存在。破壊することで中のプラスミウムを取得でき、一時的に体力を強化することができる。',
+	'Journal.NOTE_LIFEBLOOD_FLY':
+		'わたしの特異な殻は、この物質のように怪しげな変異種をも許容するけれど、それでも限界というものは存在するわ…',
+	'Journal.NAME_BONE_WORM_BLUEBLOOD': 'プラスミド',
+	'Journal.DESC_BONE_WORM_BLUEBLOOD': 'プラスミウムに感染して変異した地虫の子。驚異的な再生能力を持つ。',
+	'Journal.NOTE_BONE_WORM_BLUEBLOOD':
+		'この物質がもたらす弊害は、それがもたらす恩恵を簡単に凌駕してしまう。ファールームは一刻も早くその事実に気づくべきだわ。',
+	'Journal.NAME_BONE_WORM_BLUETURRET': 'プラスミダス',
+	'Journal.DESC_BONE_WORM_BLUETURRET':
+		'プラスミウムによって大きく変異した、巨大な地虫。洞穴の根と一体化しており、もはや自由に動くこともできない。',
+	'Journal.NOTE_BONE_WORM_BLUETURRET':
+		'故郷の洞穴でこの物質が繁殖したときに、同じような現象を目撃したことがある。自然の驚異なのかもしれないけれど、強い嫌悪感を覚えずにはいられない。',
+	'Journal.NAME_BLUE_ASSISTANT': 'プラスミザンゴ',
+	'Journal.DESC_BLUE_ASSISTANT': 'プラスミウムによって偽りの命を与えられた錬金術師の助手の成れの果て。',
+	'Journal.NOTE_BLUE_ASSISTANT':
+		'彼は深く考えることもなく、あの呪われた物質を洞穴に植えつけていった…あのような最期を迎えたのは当然の報いともいえるけど、少し可哀そうに思うところもある。あの物質の誘惑はとても強いものだと思うから。',
+	'Journal.NAME_LILYPAD_FLY': 'ハワタリ',
+	'Journal.DESC_LILYPAD_FLY': '群れをなして生存する、羽根の生えたムシ。',
+	'Journal.NOTE_LILYPAD_FLY': 'その身体はものすごく軽くて、水面に止まることすらできる。とても美しいムシね。',
+	'Journal.NAME_GRASS_GOOMBA': 'ハコロガシ',
+	'Journal.DESC_GRASS_GOOMBA': '尖った身体で素早く動き回るムシ。植物に擬態している。',
+	'Journal.NOTE_GRASS_GOOMBA': '単純かつ優雅。この土地からは永遠に失われてしまった類のムシね。',
+	'Journal.NAME_HORNET_DRAGONFLY': 'ペンドラ',
+	'Journal.DESC_HORNET_DRAGONFLY': '動きのない水辺に生息する、空飛ぶムシ。',
+	'Journal.NOTE_HORNET_DRAGONFLY':
+		'基本的におとなしいけれど、不用意に近づくとその尖った仮面で深刻な傷を負うこともある。',
+	'Journal.NAME_DRAGONFLY_LARGE': 'ペンドラゴル',
+	'Journal.DESC_DRAGONFLY_LARGE': '大きな水辺に生息する、大柄なムシ。重量のある身体には注意が必要。',
+	'Journal.NOTE_DRAGONFLY_LARGE': 'わたしの行く手を阻まなければ、その単純な動きは見ていて心地よいものなのだけど。',
+	'Journal.NAME_LILYPAD_TRAP': 'ヌプハル',
+	'Journal.DESC_LILYPAD_TRAP': 'ユリの葉に似た、強力な顎を持つ捕食植物。',
+	'Journal.NOTE_LILYPAD_TRAP': '最初はその口に驚くけれど、わかってしまえば避けるのは簡単ね。',
+	'Journal.NAME_CLOVERSTAG': 'クローバースタグ',
+	'Journal.DESC_CLOVERSTAG': 'ヴェルダニアに生息するおとなしい生物。その外皮は自らの領域の植物を模している。',
+	'Journal.NOTE_CLOVERSTAG':
+		'まったく見事な擬態だわ。数え切れないほどの世代を経て洞穴で暮らし続けたことで、ここまで環境に同化できたのでしょうね。',
+	'Journal.NAME_CLOVERSTAG_WHITE': '蒼白のスタグ',
+	'Journal.DESC_CLOVERSTAG_WHITE':
+		'ヴェルダニアに初めて出現したクローバースタグであり、伝説に語られる存在。草や葉を操って戦いの助力とする。',
+	'Journal.NOTE_CLOVERSTAG_WHITE':
+		'記憶の中に現れた神話の化身とでもいうべき存在。この生き物は周囲の植物と完全に一体化しているように見える。本当にこのような形で実在していたのかしら？',
+	'Journal.NAME_GRASSHOPPER_CHILD': 'キンダニル',
+	'Journal.DESC_GRASSHOPPER_CHILD': 'ヴェルダニアの子。まだ幼いが十分な戦闘能力を持っている。',
+	'Journal.NOTE_GRASSHOPPER_CHILD':
+		'獰猛で素早く、生まれたときから自分たちの土地を守っている。まったく大した子供たちだわ。',
+	'Journal.NAME_GRASSHOPPER_SLASHER': 'ヴェルダニール',
+	'Journal.DESC_GRASSHOPPER_SLASHER': '鋭い前肢と知覚を兼ね備えた戦士。',
+	'Journal.NOTE_GRASSHOPPER_SLASHER':
+		'かれらは常に危険に対して警戒し、自分の領域の深くにいるときでさえ、滅多に気を緩めることはない。倒すにはこちらも同等の集中が必要とされるわ。',
+	'Journal.NAME_GRASSHOPPER_FLY': 'エスカリオン',
+	'Journal.DESC_GRASSHOPPER_FLY':
+		'眼にも止まらぬ速さで動く、羽根の生えた戦士。その前肢からトゲのようなものを出すことができる。',
+	'Journal.NOTE_GRASSHOPPER_FLY':
+		'多くの機能を持つ身体に生まれたかったと願ったこともあるけれど、幸いわたしは厳しい訓練によって自分の限界を超えることができた。',
+	'Journal.NAME_CLOVER_DANCER': 'クローバーの舞踏者',
+	'Journal.DESC_CLOVER_DANCER': 'ヴェルダニアの王子たち。その美しさと、外部者に対する死の舞踏によって民に愛された。',
+	'Journal.NOTE_CLOVER_DANCER': '自分に酷似した者を愛するのは、無欲の証？　それとも虚栄心の表れ？',
+	'Journal.NAME_ABYSS_CRAWLER': 'カゲハイズリ',
+	'Journal.DESC_ABYSS_CRAWLER':
+		'殻で身体をおおったムシで、深淵のみに生息する。食物や液体を摂取せずに生きているように見える。',
+	'Journal.NOTE_ABYSS_CRAWLER':
+		'わたしにとってはなじみ深い生き物。どんな遠い土地に行っても、深みに下りるとこの者たちに遭遇する。',
+	'Journal.NAME_ABYSS_CRAWLER_LARGE': 'カゲバシリ',
+	'Journal.DESC_ABYSS_CRAWLER_LARGE':
+		'深淵の狭いクレバスに生息する大きなムシ。重い身体を利用して体当たりをしてくる。',
+	'Journal.NOTE_ABYSS_CRAWLER_LARGE':
+		'これだけ大きな身体をしているのに、食べたり寝たりしているのを見たことがない。よくあるムシの外見をしているけれど…わたしたちとは根本的ななにかが異なっているように感じる。',
+	'Journal.NAME_GLOOMFLY': 'ヤミブクロ',
+	'Journal.DESC_GLOOMFLY':
+		'かろうじてムシの体を成している、小さな空洞の生物。獲物を呑み込み、なにも残らなくなるまでその栄養分を吸収し続ける。',
+	'Journal.NOTE_GLOOMFLY':
+		'落ち着かない気持ちにさせる生き物ね…その単純さが不気味でもある。この感情は…恐怖に近いかもしれない。',
+	'Journal.NAME_GLOOM_BEAST': 'オオヤミ',
+	'Journal.DESC_GLOOM_BEAST': '虚無の近くで生息することに適応した、巨大な生物。',
+	'Journal.NOTE_GLOOM_BEAST':
+		'驚くべきことに、この生き物はそのお腹に虚無の黒い液体を含んでいて、脅威を感じるとそれを勢いよく放出する。',
+	'Journal.NAME_ABYSS_TENDRIL': '虚無の触手',
+	'Journal.DESC_ABYSS_TENDRIL': '完全な暗闇より生み出されたもの。鋭い触手をムチのように動かして攻撃する。',
+	'Journal.NOTE_ABYSS_TENDRIL': '虚無はあらゆるものを呑み込む…このトゲを持つ存在にその本質が明確に現れているわ。',
+	'Journal.NAME_BLACK_THREAD_CORE': '虚無の塊',
+	'Journal.DESC_BLACK_THREAD_CORE': '複数の死殻が虚無に染まったシルクによってきつく縛られたもの。',
+	'Journal.NOTE_BLACK_THREAD_CORE':
+		'虚無はシルクと殻を腐敗させ、今度は土地全体を取り込もうとしている。この哀れなムシたちはただの始まりにすぎない。',
+	'Journal.NAME_ABYSS_MASS': '召喚されし救世主',
+	'Journal.DESC_ABYSS_MASS': '古い仮面の塊がもだえる虚無によって肥大化し、動くようになったもの。',
+	'Journal.NOTE_ABYSS_MASS':
+		'この存在は、悲壮な思いで力を求めた一匹のムシから生まれた。シルクで虚無を呼び出せる者はわずかにいても、それを掌握するすべを持つ者は存在しない。',
+	'Journal.NAME_WHITE_PALACE_FLY': 'ハネカネムシ',
+	'Journal.DESC_WHITE_PALACE_FLY':
+		'殻にルーンが刻まれた、偽りのハエ。内部では魂と虚無が苦しみと共に混ざり合っている。',
+	'Journal.NOTE_WHITE_PALACE_FLY':
+		'崩壊したわたしの父の地で生まれた、粗野な創造物。虚無を意のままに操れると信じるなんて、愚かというしかない。',
+	'Journal.NAME_CENTIPEDE_TRAP': 'ガーピッド',
+	'Journal.DESC_CENTIPEDE_TRAP': '地中を掘り進むムシ。眼を持たず、わずかな物音に対しても狂暴に反応する。',
+	'Journal.NOTE_CENTIPEDE_TRAP':
+		'ありふれたムシだけど、決して油断はできないわ。その鋭敏な感覚は、視界のなさを十分に補っている。',
+	'Journal.NAME_SPIKE_LAZY_FLYER': 'イモバ',
+	'Journal.DESC_SPIKE_LAZY_FLYER':
+		'ゆっくりと浮遊するムシ。上部が重い殻でおおわれている。脅威に対して無頓着で、自分の命を狙う者に対してすら大した反応を見せない。',
+	'Journal.NOTE_SPIKE_LAZY_FLYER':
+		'この哀れな生き物は極めて穏やかで甘い環境で生きてきた。その領域の外では長生きできないでしょうね。',
+	'Journal.NAME_SURFACE_SCUTTLER': 'スクリル',
+	'Journal.DESC_SURFACE_SCUTTLER': '砂の下に生息するありふれたムシ。',
+	'Journal.NOTE_SURFACE_SCUTTLER':
+		'この地表に生きるムシは、シルクの影響を受けておらず、本来の性質を保っている。ファールームの統治者の影響は地表にまでは及ばなかったようね。',
+	'Journal.NAME_GIANT_CENTIPEDE': '鐘を喰らう者',
+	'Journal.DESC_GIANT_CENTIPEDE':
+		'長い眠りについていたムカデ。ファールームの崩壊によって目覚め、怒りで満たされている。',
+	'Journal.NOTE_GIANT_CENTIPEDE':
+		'小さい頃に聞いた物語の怪物を体現するような存在ね。勇猛な旅の仲間の助力もあって、討伐することはできたけど。',
+	'Journal.NAME_GIANT_FLEA': '巨大なノミ',
+	'Journal.DESC_GIANT_FLEA': '肥大化したムシ。長期間檻に入れられていたことで、一時的に怒りに捉われていた。',
+	'Journal.NOTE_GIANT_FLEA':
+		'こんなに大きくて見事なノミが存在するなんて思いもしなかった。とどめを刺す前に正気に戻ってくれてよかったわ。',
+	'Journal.NAME_SHAKRA': 'シャクラ',
+	'Journal.DESC_SHAKRA':
+		'ファールームのはずれの部族の戦士で、地図製作者としての技能も持つ。その戦闘技術はファールームでも屈指の領域にある。',
+	'Journal.NOTE_SHAKRA':
+		'彼女はわたしよりもはるかに短い時しか生きていないけれど、その輪を使った攻撃はすさまじいものがある。これまで会った中でも特に才能に溢れた戦士であり、彼女を友と呼べることを幸運に思う。',
+	'Journal.NAME_GARMOND_ZAZA': 'ガーモンド&ザザ',
+	'Journal.DESC_GARMOND_ZAZA':
+		'活力溢れる老騎士と、その高貴なお供。自分たちの土地を呪いの狂気から解放するべく戦っている。',
+	'Journal.NOTE_GARMOND_ZAZA':
+		'かれらもまた呪気の中枢にいる存在を探している。けれどその戦いは、かれらの限界を超えたものとなるかもしれないわ。',
+	'Journal.NAME_GARMOND': '漆黒のガーモンド',
+	'Journal.DESC_GARMOND': '黒い糸に取り込まれた老騎士。',
+	'Journal.NOTE_GARMOND':
+		'誇り高きムシに訪れたこの運命は、悲劇というほかない。あの虚無に染まった糸が魂にもたらす腐敗は…物理的な破壊よりもはるかに恐ろしいものだわ。',
+	'Journal.NAME_PINSTRESS_BOSS': 'ピンの女傑',
+	'Journal.DESC_PINSTRESS_BOSS': 'かつては高名な戦士の派閥の一員だった者。仲間が死に絶えたあとも長く生き続けていた。',
+	'Journal.NOTE_PINSTRESS_BOSS':
+		'とても好感が持てる女性ね。教えようという意欲や、長い孤独の時を経てもなお強さを失わないその魂…尊敬に値すると思う。',
+	'Journal.NAME_SPINNER_BOSS': 'ウィドウ',
+	'Journal.DESC_SPINNER_BOSS': '狂信者。ファールームの呪われしシルクを、奏でられる音楽に合わせて導く力を持つ。',
+	'Journal.NOTE_SPINNER_BOSS':
+		'紡ぐ者のような身体を持っているけれど、その仮面ははぎ取られ、その背中に刺さったピンによって、彼女自身のシルクは力を失っている。',
+	'Journal.NAME_FIRST_WEAVER': '最初の罪に問われし者',
+	'Journal.DESC_FIRST_WEAVER': 'はるか昔に破戒の罪に問われた、いにしえの紡ぐ者。',
+	'Journal.NOTE_FIRST_WEAVER':
+		'この者の亡殻には、シルクを編んで燃え盛るルーンを生み出すという、見事な力がある。これまで生きてきて、多くの目的のためにルーンが編まれるのを見てきたけど、それを初めておこなったのが彼女ということ？',
+	'Journal.NAME_PHANTOM': 'ファントム',
+	'Journal.DESC_PHANTOM':
+		'シタデルの廃棄物を単独で除去することを課せられた、哀しき存在。長ピンを扱う才能は唯一無二。',
+	'Journal.NOTE_PHANTOM':
+		'歳月によって灰色に染まっているけれど、そのすり切れた身体はシルクから作られたことを示唆している。ゆっくりと凋落していくよりも、戦いで決着をつけることを望んだようね。',
+	'Journal.NAME_LACE': 'レース',
+	'Journal.DESC_LACE': '常に気持ちを高ぶらせ、戦いに喜びを見出す剣士。',
+	'Journal.NOTE_LACE':
+		'そのすべてが糸で作られたムシ。この身体を維持するには多くのシルクが必要だったでしょうね。脆い命ではあるけれど、命であることに変わりはない。',
+	'Journal.NAME_SILK_BOSS': '大いなる母シルク',
+	'Journal.DESC_SILK_BOSS': 'ファールームを統べ、シルクの源となった者。',
+	'Journal.NOTE_SILK_BOSS':
+		'覚醒を願いつつ長いまどろみの中にあった、呪気の源。この高位の存在が放つ糸はファールーム全土に広がってムシたちを拘束し、狂気と不和へと導いていた。',
+	'Journal.NAME_LOST_LACE': '漆黒のレース',
+	'Journal.DESC_LOST_LACE': '虚無に憑りつかれたシルクの子。',
+	'Journal.NOTE_LOST_LACE':
+		'その母の怒りを鎮め、王国を救うため、わたしは彼女を取り戻す。この子を…闇に奪わせはしない。',
+	'Quests.MQ_CITADEL_SEEKER_NAME': '偉大なるシタデル',
+	'Quests.MQ_TYPE_SEEK': '探求',
+	'Quests.MQ_THREADSPUN_TOWN_NAME': '糸に囚われた町',
+	'Quests.MQ_TYPE_SAVE': '救出',
+	'Quests.MQ_BELLSHRINES_NAME': '偉大なる門',
+	'Quests.MQ_TYPE_BELLSHRINES': '開放',
+	'Quests.MQ_CITADEL_INVESTIGATE_NAME': '静寂の広間',
+	'Quests.MQ_TYPE_INVESTIGATE': '探索',
+	'Quests.MQ_CITADEL_ASCENT_NAME': 'ファールームの王',
+	'Quests.MQ_TYPE_ASCEND': '上昇',
+	'Quests.MQ_CITADEL_ASCENT_NAME_SILK': '蒼白の統治者',
+	'Quests.MQ_TYPE_DEFEAT': '打倒',
+	'Quests.MQ_SILK_SNARE_NAME': 'ソウルの罠',
+	'Quests.MQ_TYPE_DESTROY': '破壊',
+	'Quests.MQ_BLACKTHREAD_0_NAME': '崩壊のあとに',
+	'Quests.MQ_BLACKTHREAD_1_NAME': '終焉を待ちながら',
+	'Quests.MQ_RESCUE_BELLBEAST_NAME': '鐘の中の獣',
+	'Quests.MQ_BLACKTHREAD_2_NAME': '地の底の闇',
+	'Quests.MQ_DIVINGBELL_1_NAME': '地の底の闇',
+	'Quests.MQ_DIVINGBELL_2_NAME': '地の底の闇',
+	'Quests.MQ_DIVINGBELL_3_NAME': '地の底の闇',
+	'Quests.MQ_TYPE_DESCEND': '下降',
+	'Quests.MQ_BLACKTHREAD_3_NAME': 'ファールームへの帰還',
+	'Quests.MQ_BLACKTHREAD_4_NAME': '呪術を求めて',
+	'Quests.MQ_BLACKTHREAD_5_NAME': '古い心臓',
+	'Quests.MQ_BLACKTHREAD_6_NAME': '最後の降下',
+	'Quests.QUEST_FIXER1_TITLE': '野営地の修繕',
+	'Quests.TYPE_DONATE_1_TITLE': '寄付',
+	'Quests.QUEST_FIXER3_TITLE': '命を救う橋',
+	'Quests.QUEST_FIXER2_TITLE': '希望の象徴',
+	'Quests.QUEST_PILGRIM_RAGS_TITLE': '巡礼者の衣',
+	'Quests.TYPE_HUNT_1_TITLE': '討伐',
+	'Quests.QUEST_MOSSBERRY1_TITLE': '果実の採集',
+	'Quests.TYPE_GATHER_1_TITLE': '収集',
+	'Quests.QUEST_FLEAS_TITLE': '迷子のノミたち',
+	'Quests.TYPE_WAYFARER_1_TITLE': '支援',
+	'Quests.QUEST_ROCK_ROLLERS_TITLE': 'ヒウチムシ',
+	'Quests.QUEST_SKULL_KING_TITLE': '恐ろしき猛獣',
+	'Quests.TYPE_HUNT_2_TITLE': '大討伐',
+	'Quests.QUEST_BROLLY_GET_TITLE': '柔軟なトゲ',
+	'Quests.QUEST_JOURNAL_TITLE': '生態調査',
+	'Quests.TYPE_JOURNAL_TITLE': '情報',
+	'Quests.QUEST_BELL_HOUSE_START_TITLE': '町の復興',
+	'Quests.QUEST_BELL_HOUSE_CONT_TITLE': '町の栄光',
+	'Quests.QUEST_PINSMITHTOOLS_NAME': 'ピン鍛冶の油',
+	'Quests.QUEST_SHINY_BELL_GOOMBAS_TITLE': '銀の鐘',
+	'Quests.QUEST_SAVE_COURIER_SHORT_NAME': '運び屋の捜索',
+	'Quests.QUEST_SAVE_COURIER_TALL_NAME': '行方不明の兄',
+	'Quests.QUEST_COURIER_BONEBOTTOM_NAME': '骨溜まりの物資',
+	'Quests.TYPE_COURIER_TITLE': '運搬',
+	'Quests.QUEST_COURIER_PILGRIMSREST_NAME': '休息地の物資',
+	'Quests.QUEST_COURIER_SONGCLAVE_NAME': '歌の集落の物資',
+	'Quests.QUEST_COURIER_FLEATOPIA_NAME': 'ノミの楽園の物資',
+	'Quests.QUEST_COURIER_MASKMAKER_NAME': '液状塗料',
+	'Quests.QUEST_COURIER_SLAVE_NAME': '女王の卵',
+	'Quests.QUEST_COURIER_FIXER_NAME': '生存者の物資',
+	'Quests.QUEST_CROW_TITLE': 'ボロガワの一掃',
+	'Quests.QUEST_BEASTFLY_TITLE': 'オオケモノバエ',
+	'Quests.QUEST_SHELL_FLOWER_TITLE': 'ポリップの儀式',
+	'Quests.QUEST_WITCH_CURSE_TITLE': '再誕の儀式',
+	'Quests.QUEST_DOCTOR_CURSE_CURE_NAME': '手術の準備',
+	'Quests.QUEST_EXTRACTOR_B_NAME': '錬金術師の助手',
+	'Quests.QUEST_EXTRACTOR_B2_NAME': '上級錬金術',
+	'Quests.QUEST_ROACH_KILL_TITLE': 'はらわた収集',
+	'Quests.QUEST_SONGCLAVE_DONATE_1_TITLE': '歌の集落の改善',
+	'Quests.QUEST_SONGCLAVE_DONATE_2_TITLE': 'さらなる改善',
+	'Quests.QUEST_FINEPINS_TITLE': '上質なピン',
+	'Quests.QUEST_SAVE_CITYMERCHANT_NAME': '放浪のよろず屋',
+	'Quests.QUEST_SAVE_CITYMERCHANT_BRIDGE_NAME': 'よろず屋捜索',
+	'Quests.QUEST_SONGPILGRIM_CLOAKS_TITLE': '合唱者の衣',
+	'Quests.QUEST_BROODMOTHER_TITLE': '哀しみの母',
+	'Quests.QUEST_GOURMAND_TITLE': '至高の味',
+	'Quests.QUEST_SAVE_SHERMA_NAME': '負傷者の治療',
+	'Quests.QUEST_SONG_KNIGHT_TITLE': '最後の対面',
+	'Quests.QUEST_HUNTRESS_NAME': 'おぞましきエサ',
+	'Quests.QUEST_RUNTRESS_NAME': 'ラントのごちそう',
+	'Quests.QUEST_SHAKRA_FINAL_TITLE': '足跡の果て',
+	'Quests.Q_SOUL_SNARE_NAME': 'シルクとソウル',
+	'Quests.QUEST_PINSTRESS_BATTLE_TITLE': '命を賭した決着',
+	'Quests.QUEST_SPRINT_KILL_TITLE': '最速のムシ',
+	'Quests.TYPE_SPRINT_TITLE': '競争',
+	'Quests.GARMOND_BLACK_THREADED_NAME': '英雄の呼び声',
+	'Quests.QUEST_TROBBIO_2_TITLE': '苦痛と悲嘆',
+	'Quests.QUEST_ANT_TRAPPER_TITLE': '隠れた狩猟者',
+	'Quests.QUEST_FLEAGAMES_TITLE': '終末の恍惚',
+	'Quests.QUEST_STEELSENTINEL_TITLE': '行方不明の配下',
+	'Quests.TYPE_STEELSENTINEL_TITLE': '鋼鉄',
+	'Quests.QUEST_MRMUSHROOM_TITLE': '時代の流れ',
+	'Quests.TYPE_HERALD_TITLE': '目撃者',
+	'Quests.QUEST_THREADCORES_TITLE': '黒塊',
+	'UI.MAT_NAME_SILK': 'シルク',
+	'UI.MAT_DESC_SILK':
+		'作成者の魂から<br>生まれる上質な糸。<br>その強度と不可思議な<br>性質ゆえに、多くの者が<br>これを求める。<br><br>傷を癒やしたり、<br>寿命を延ばしたり、<br>強力なルーンを編む<br>ために使われる。',
+	'UI.INV_NAME_SHARD': '殻の破片',
+	'UI.INV_DESC_SHARD': '硬化した殻や骨の破片。<br><br>道具や罠を作成する際に<br>使われる。',
+	'UI.INV_NAME_COIN': 'ロザリー',
+	'UI.INV_DESC_COIN':
+		'様々な素材から<br>削り出されて作られる珠。<br>信仰の深さの指標となり、<br>取引にも使われる。<br><br>ひとつひとつに精巧な<br>装飾がほどこされている。',
+	'UI.INV_NAME_COIN_MID': '殻のロザリー',
+	'UI.INV_DESC_COIN_MID': '磨かれた殻から削り<br>出されて作られた珠。<br><br>素材の質が良いとその<br>価値も上がる。',
+	'UI.INV_NAME_COIN_BIG': '真珠のロザリー',
+	'UI.INV_DESC_COIN_BIG':
+		'精巧な模様が<br>ほどこされた輝く真珠。<br><br>ファールームのロザリー<br>で最も稀少で価値が<br>高いもの。',
+	'UI.MAT_NAME_SMELTSTONE': '発火石',
+	'UI.MAT_DESC_SMELTSTONE':
+		'ファールームの低地で<br>採掘可能な、<br>長くて炎を帯びた岩。<br><br>シタデルでの鋳造に<br>使用される。',
+	'UI.MAT_NAME_LIFEBLOOD': 'プラスミウム',
+	'UI.MAT_DESC_LIFEBLOOD':
+		'驚異的な再生力を持つ、<br>液状の命の種。<br><br>ファールームでは知られて<br>いなかった物質だが、<br>錬金術師ジロトルによって<br>見出された。',
+	'UI.MAT_NAME_MAGNETITE': 'マグネタイト',
+	'UI.MAT_DESC_MAGNETITE': 'ファールームの岩壁から<br>取得可能な、脆くて<br>浮遊性質を持った岩。',
+	'UI.MAT_NAME_VOLTSTONE': '電塊石',
+	'UI.MAT_DESC_VOLTSTONE': '電気を捕捉し、蓄積し、<br>放出することが可能な<br>硬い石。',
 	'Map Zones.ABOVE_CRADLE': '境界の洞穴',
 	'Map Zones.BELLHOME': '鐘の家',
 	'Map Zones.BELLTOWN_HAUNTED': 'ベルハート',

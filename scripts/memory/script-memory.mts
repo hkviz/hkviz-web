@@ -17,7 +17,7 @@ export async function readGenMemory<T>(fileName: string): Promise<T | null> {
 
 export async function writeGenMemory<T>(fileName: string, content: T) {
 	const filePath = path.join('./scripts/memory', fileName);
-	await writeFile(filePath, JSON.stringify(content, null, 2), 'utf-8');
+	await writeFile(filePath, JSON.stringify(content, null, '\t'), 'utf-8');
 }
 
 export class ScriptMemory<T> {

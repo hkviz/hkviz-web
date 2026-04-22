@@ -53,6 +53,246 @@ export default {
 	'Map Zones.CITADEL_FORUM': '회의장',
 	'Map Zones.COG_CORE': '톱니바퀴 핵',
 	'Map Zones.ABYSS': '심연',
+	'UI.INV_NAME_DRESS_REG': '사냥꾼의 망토',
+	'UI.INV_NAME_DRESS_BROLLY': '방랑자의 망토',
+	'UI.INV_NAME_DRESS_DJ': '페이 털 망토',
+	'UI.INV_DESC_DRESS_REG': '단순한 보호 의복으로, 전문가의 손길로 짜였지만 세월의 흔적이 보입니다.',
+	'UI.INV_DESC_DRESS_BROLLY': '단순한 보호 의복으로, 신축성이 좋은 가시로 짜였습니다.',
+	'UI.INV_DESC_DRESS_DJ': '페이폰의 부드러운 털로 안을 댄 보호 의복으로, 신축성이 좋은 가시로 짜였습니다.',
+	'UI.INV_DESC_DRESS_APP_FLY_FULL': '파리 냄새가 진하게 납니다.',
+	'UI.INV_DESC_DRESS_APP_FLY_HALF': '파리 냄새가 약하게 납니다.',
+	'UI.INV_NAME_TOOLPOUCH': '도구 주머니',
+	'UI.INV_NAME_POUCHANDTOOLKIT': '도구 주머니<br>및 제작 키트',
+	'UI.INV_DESC_TOOLPOUCH': '도구, 함정, 제작 재료를 담을 수 있게 만들어진 기본적인 주머니.',
+	'UI.INV_DESC_POUCHANDTOOLKIT': '함정과 도구를 담는 주머니와 그 치명성을 향상시키는 세밀한 제작 기구.',
+	'UI.INV_NAME_QUILL': '깃펜',
+	'UI.INV_NAME_MAP': '지도',
+	'UI.INV_NAME_MAPANDQUILL': '지도와 깃펜',
+	'UI.INV_DESC_QUILL': '여정을 기록하는 데 사용하는 도구. 획득한 지도를 갱신하는 데 사용할 수 있습니다.',
+	'UI.INV_DESC_MAP': '팔룸의 지도로, 샤크라가 일부를 채웠습니다. 깃펜 없이는 갱신할 수 없습니다.',
+	'UI.INV_DESC_MAPANDQUILL':
+		'여정을 기록하는 데 사용하는 팔룸의 지도와 깃펜. 의자나 다른 곳에서 휴식할 때, 지도에서 새로 발견한 지역이 갱신됩니다.',
+	'UI.INV_NAME_WHITE_FLOWER': '영원의 꽃',
+	'UI.INV_DESC_WHITE_FLOWER': '깊고 먼 기억에서 꺾은 영원한 꽃. 공허에 맞서 부드럽고 흐린 빛으로 반짝입니다.',
+	'UI.INV_NAME_TOOL_METAL': '제작금속',
+	'UI.INV_DESC_TOOL_METAL':
+		'팔룸의 바위와 뼈에서 자연적으로 찾을 수 있는 희귀 물질.<br><br>도구와 장신구를 만드는 노련한 제작 벌레가 사용합니다.',
+	'UI.INV_NAME_CREST_SOCKET': '기억 로켓',
+	'UI.INV_DESC_CREST_SOCKET':
+		'소중한 기억을 담은 기념품. 문장을 확장하는 데 사용할 수 있습니다.<br><br>메뉴의 문장 창에서 문장을 확장합니다.',
+	'UI.INV_NAME_PLINNEY_TOOLS': '창백 기름',
+	'UI.INV_DESC_PLINNEY_TOOLS':
+		'희귀한 실프 달팽이의 담즙샘. 능력 있는 핀 장인들은 이 빛나는 액체를 사용해서 검의 칼날을 날카롭게 만듭니다.',
+	'UI.INV_NAME_HEART_CORAL': '산호가 덮인 심장',
+	'UI.INV_DESC_HEART_CORAL': '산호의 왕 칸의 활기찬 심장. 깊고 느리게 뜁니다.',
+	'UI.INV_DESC_MOMENTO_HEART_EXTRA': '심장은 집에 장식할 수 있습니다.',
+	'UI.INV_NAME_HEART_BLOOM': '꽃의 심장',
+	'UI.INV_DESC_HEART_BLOOM': '나이레스의 활기찬 심장. 약하고 빠르게 뜁니다.',
+	'UI.INV_NAME_HEART_HUNTER': '사냥꾼의 심장',
+	'UI.INV_DESC_HEART_HUNTER': '스카르싱어 카르멜리타의 활기찬 심장. 꾸준하고 강하게 뜁니다.',
+	'UI.INV_NAME_HEART_CLOVER': '결합된 심장',
+	'UI.INV_DESC_HEART_CLOVER': '녹의 왕자의 활기찬 심장. 선명하고 분명하게 뜁니다.',
+	'UI.INV_NAME_PLASMIUM_GLAND': '플라스미움 샘',
+	'UI.INV_DESC_PLASMIUM_GLAND':
+		'연금술사 지로톨의 껍질 안에서 자란, 맥동하는 장기. 샘은 시간이 지나면 다시 채워지며, 거의 끝없이 플라스미움을 제공합니다.<br><br>새 플라스미움 유리병을 제작하는 데 더 이상 비축량이 필요하지 않습니다.',
+	'UI.INV_NAME_BROKEN_SILKSHOT': '망가진 도구',
+	'UI.INV_DESC_BROKEN_SILKSHOT':
+		'망가져서 쓸 수 없는 고대 방직자 도구의 잔해.<br><br>뛰어난 실력의 제작벌레가 수리할 수 있을지도 모릅니다.',
+	'UI.INV_NAME_WITCH_ITEM': '뒤틀린 싹',
+	'UI.INV_DESC_WITCH_ITEM': '일그러진 잿빛 덩굴의 덩어리. 끊임없이 비명을 지릅니다.',
+	'UI.INV_NAME_COG_HEART_PIECE': '톱니심장 조각',
+	'UI.INV_NAME_COG_HEART_PIECES': '톱니심장 조각들',
+	'UI.INV_NAME_COG_HEART': '톱니심장',
+	'UI.INV_DESC_COG_HEART_PIECE': '톱니바퀴 심장의 조각 하나로, 복잡한 구조의 바퀴와 조절장치가 포함되어 있습니다.',
+	'UI.INV_DESC_COG_HEART_PIECES': '톱니바퀴 심장의 조각 두 개로, 복잡한 구조의 바퀴와 조절장치가 포함되어 있습니다.',
+	'UI.INV_DESC_COG_HEART': '다시 조립된 톱니바퀴 심장으로, 잘 배열된 바퀴와 조절장치가 포함되어 있습니다.',
+	'UI.INV_NAME_CRAW_SUMMONS': '까마귀의 소환장',
+	'UI.INV_DESC_CRAW_SUMMONS': '낡고 검은 천에 휘갈겨 쓴 편지.<br><br>"더럽히는 자... 어둠... 참석... 집... 바퀴..."',
+	'UI.INV_NAME_MOSSBERRY': '이끼베리',
+	'UI.INV_DESC_MOSSBERRY': '달콤한 과일로, 축축한 환경에서 자랍니다. 씨는 대부분의 생명체에 독이 됩니다.',
+	'UI.INV_NAME_PILGRIM_RAGS_ITEM': '순례자 숄',
+	'UI.INV_DESC_PILGRIM_RAGS_ITEM':
+		'세월이 지나며 수많은 순례자가 입은 간단한 의복. 찢어지고 해지고 여러 번 수선했습니다.',
+	'UI.INV_NAME_SPINE': '가시 심',
+	'UI.INV_DESC_SPINE': '호커의 가시 안에 있는 유연한 섬유질. 솜씨 좋은 재봉사가 옷과 장신구로 짤 수 있습니다.',
+	'UI.INV_NAME_SHELL_FLOWER': '폴립 심장',
+	'UI.INV_DESC_SHELL_FLOWER':
+		'꽃의 심으로, 그것이 흡수한 송곳벌의 몸에서 만들어집니다. 벌이 살아갈 수 있는 달콤한 수액을 분비합니다.',
+	'UI.INV_NAME_CROW_FEATHER': '누더기 생가죽',
+	'UI.INV_DESC_CROW_FEATHER':
+		'까마귀벌레의 시체에서 얻은 누더기 생가죽. 약하고 칙칙하지만, 그래도 쓸모가 있을 것 같습니다.',
+	'UI.INV_NAME_ROCK_ROLLER_ITEM': '부싯보석',
+	'UI.INV_DESC_ROCK_ROLLER_ITEM':
+		'부싯딱정벌레에게서 얻은 보석 같은 모양의 내장. 마찰시키면 불꽃을 일으키며, 깨지거나 떨어지면 폭발할 수도 있습니다.',
+	'UI.INV_NAME_ROACH_CORPSE_ITEM': '바퀴 내장',
+	'UI.INV_DESC_ROACH_CORPSE_ITEM':
+		'악취가 나면서 질기고 끈적거리는 진흙바퀴의 신선한 내장. 대부분의 입맛에 맞지 않습니다.',
+	'UI.INV_NAME_SK_FRAGMENT': '왕관 파편',
+	'UI.INV_DESC_SK_FRAGMENT': '쓰러뜨린 해골 폭군에게서 얻은 거대하고 뾰족한 뼈.',
+	'UI.INV_NAME_BEASTFLY_REMAINS': '뿔 파편',
+	'UI.INV_DESC_BEASTFLY_REMAINS': '쓰러뜨린 흉포한 야수파리로부터 얻은 굳어진 뿔 껍질 덩어리.',
+	'UI.INV_NAME_CONCHFLY_REMAINS': '나선 산호',
+	'UI.INV_DESC_CONCHFLY_REMAINS': '단단한 뿔 조각으로, 고둥파리의 껍질 끝에서 부러져 나온 것.',
+	'UI.INV_NAME_BROODMOTHER_REMAINS': '무리어미의 눈',
+	'UI.INV_DESC_BROODMOTHER_REMAINS': '쓰러뜨린 무리어미에게서 얻은 젤리 형태의 장기.',
+	'UI.INV_NAME_BELLCLAPPER_ITEM': '은색 종',
+	'UI.INV_DESC_BELLCLAPPER_ITEM': '빛나는 금속으로 정교하게 제련된 종.',
+	'UI.INV_NAME_BLUE_GOOP': '플라스미움',
+	'UI.INV_NAME_BLUE_GOOP_PICKUP': '플라스미움 수집함',
+	'UI.INV_DESC_BLUE_GOOP': '숙성된 싹에서 추출한 액체 생명 씨앗. 재생하는 특성을 가지고 있습니다.',
+	'UI.INV_DESC_BLUE_GOOP_FULL': '숙성된 싹에서 추출한 액체 생명 씨앗. 재생하는 특성을 가지고 있습니다.',
+	'UI.INV_NAME_CORAL_CHUNK': '산호 조각',
+	'UI.INV_DESC_CORAL_CHUNK':
+		'빽빽한 산호 껍질 무더기. 제작 도구로는 적합하지 않지만, 적절하게 준비하면 여러 치료 효과가 있다고 알려져 있습니다.',
+	'UI.INV_NAME_FINEPIN': '가는 핀',
+	'UI.INV_DESC_FINEPIN':
+		'팔룸의 흔한 무기. 오랜 사용에도 상태가 좋습니다. 끝이 날카로운, 전문적으로 제작된 금속 막대입니다.',
+	'UI.INV_NAME_SHININGCOG': '빛나는 톱니',
+	'UI.INV_DESC_SHININGCOG':
+		'기계 장치의 껍질 안에 있는 깨끗한 톱니. 오랜 사용에도 불구하고, 금속은 무뎌지지 않았습니다.',
+	'UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM': '성가대 망토',
+	'UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM':
+		'성채에 입장한 순례자에게 주어진 의복. 두꺼운 천이 바람과 추위로부터 더욱 보호해 줍니다.',
+	'Quests.COURIER_SUPPLIES_ITEM_NAME': '배달부의 짐 보따리',
+	'Quests.COURIER_SUPPLIES_ITEM_DESC': '도구, 장신구, 의약품이 담긴 무거운 천 자루.',
+	'Quests.COURIER_SUPPLIES_SLAVE_NAME': '여왕의 알',
+	'Quests.COURIER_SUPPLIES_SLAVE_DESC':
+		'어린 실크벌레 여왕을 품은, 연약한 알. 여왕은 스스로 실크를 모을 순 없지만, 시간을 들여 돌보면 수많은 실크벌레를 키워냅니다.',
+	'Quests.COURIER_SUPPLIES_MASK_NAME': '칠용 액체',
+	'Quests.COURIER_SUPPLIES_MASK_DESC': '뼈 가면을 가공하고 보호하는 데 사용되는 옅은 유약.',
+	'UI.INV_NAME_GOURMAND_MOSSBERRY_STEW': '이끼베리 스튜',
+	'UI.INV_DESC_GOURMAND_MOSSBERRY_STEW':
+		'이끼베리와 드루이드 약초로 만든 걸쭉하고 끈적한 수프. 달콤하고 향이 좋지만, 대부분의 생명체에 독이 됩니다.',
+	'UI.INV_NAME_PLASMIUM_BLOOD': '플라스미움 피',
+	'UI.INV_DESC_PLASMIUM_BLOOD': '액체 생명 씨앗과 완전히 통합된 생명체의 피. 강력한 재생 특성을 가지고 있습니다.',
+	'UI.INV_NAME_GOURMAND_VINTAGE_NECTAR': '오래된 꿀',
+	'UI.INV_DESC_GOURMAND_VINTAGE_NECTAR':
+		'오래 산 진딧물의 품질 좋은 꿀로, 여러 평생 동안 보관하여 복합적으로 숙성됐습니다.',
+	'Quests.COURIER_SUPPLIES_MEAT_NAME': '배달부의 베이컨',
+	'Quests.COURIER_SUPPLIES_MEAT_DESC':
+		'출처 불명의 지방이 많은 고기. 만들어 졌을 때 제대로 보관되지 않으면 빠르게 부패합니다.',
+	'UI.INV_NAME_GOURMAND_CORAL_INGREDIENT': '단단열매',
+	'UI.INV_DESC_GOURMAND_CORAL_INGREDIENT':
+		'산호 군집 중앙에 있는 털이 덮인 단단한 씨앗. 그냥 먹기엔 신선도가 떨어지지만, 갈아서 조미료로 사용하면 맛있어집니다.',
+	'UI.INV_NAME_PICKLEDEGG': '절인 진흙구더기',
+	'UI.INV_DESC_PICKLEDEGG': '바퀴 소금물에 절인 톡 쏘는 별미. 불명예 요리사 루고리의 가장 유명한 요리입니다.',
+	'Quests.ITEM_EXTRACTOR_PINS_NAME': '강철 가시',
+	'Quests.ITEM_EXTRACTOR_PINS_DESC':
+		'무거운 장치에 사용하기 위해 단단하게 단조된 가시로, 가장 단단한 껍질도 뚫을 수 있습니다.',
+	'UI.INV_NAME_MORSEL_SEARED': '그슬린 장기',
+	'UI.INV_DESC_MORSEL_SEARED': '쓰러뜨린 생명체로부터 거둔 고기. 풍미에 큰 영향을 주는 방식으로 그슬렸습니다.',
+	'UI.INV_NAME_MORSEL_SHREDDED': '조각 난 장기',
+	'UI.INV_DESC_MORSEL_SHREDDED': '쓰러뜨린 생명체로부터 거둔 고기. 좋은 크기로 잘렸습니다.',
+	'UI.INV_NAME_MORSEL_SPEARED': '꿰어진 장기',
+	'UI.INV_DESC_MORSEL_SPEARED': '쓰러뜨린 생명체로부터 거둔 고기. 깔끔하게 관통됐지만, 온전합니다.',
+	'UI.INV_NAME_ANT_TRAPPER_ITEM': '잔디 인형',
+	'UI.INV_DESC_ANT_TRAPPER_ITEM': '잎이 뒤덮인 어린 벌레의 조각 장난감.',
+	'UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER': '여인의 영혼',
+	'UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER':
+		'예배당 하녀가 선물한 유리병으로, 소용돌이치는 영혼으로 가득 채워져 있습니다.',
+	'UI.INV_NAME_SNARE_SOUL_BELLHERMIT': '은둔자의 영혼',
+	'UI.INV_DESC_SNARE_SOUL_BELLHERMIT': '종 은둔자의 희미하게 빛나는 영혼으로 채워진 무거운 종.',
+	'UI.INV_NAME_SNARE_SOUL_SWAMP': '추적자의 영혼',
+	'UI.INV_DESC_SNARE_SOUL_SWAMP': '오래전 사망한 벌레의 영혼이 담긴, 금이 간 껍질.',
+	'UI.INV_NAME_TOKEN_FAITH': '단순한 열쇠',
+	'UI.INV_DESC_TOKEN_FAITH':
+		'흔한 외관의 녹슨 열쇠. 여러 단순한 자물쇠를 열 수 있습니다.<br><br>시간이 흐르며 녹슬어, 한 번 사용하면 망가집니다.',
+	'UI.INV_NAME_DOCK_KEY': '잠수종 열쇠',
+	'UI.INV_DESC_DOCK_KEY': '작은 일꾼의 열쇠. 깊은 부두의 잠수종으로 가는 문을 엽니다.',
+	'UI.INV_NAME_DOCK_DEMO_KEY': '문 열쇠',
+	'UI.INV_DESC_DOCK_DEMO_KEY': '작은 일꾼의 열쇠. 깊은 부두 중간에 있는 문을 엽니다.',
+	'UI.INV_NAME_WARD_KEY': '흰색 열쇠',
+	'UI.INV_DESC_WARD_KEY':
+		'섬세하게 제작한 금속 열쇠로, 외과수술 도구와 비슷한 모양입니다.<br><br>성채의 백색 병동으로 접근할 수 있습니다.',
+	'UI.INV_NAME_WARD_BOSS_KEY': '외과의사의 열쇠',
+	'UI.INV_DESC_WARD_BOSS_KEY': '버려진 백색 병동의 열쇠.<br>수술실 아래의 수문을 엽니다.',
+	'UI.INV_NAME_ARCHITECT_KEY': '설계자의 열쇠',
+	'UI.INV_DESC_ARCHITECT_KEY': '설계자의 회전식 열쇠. 지하 작업장에 있는 그들의 예배당을 엽니다.',
+	'UI.INV_NAME_SLAB_KEY_A': '나태의 열쇠',
+	'UI.INV_NAME_SLAB_KEY_B': '이단의 열쇠',
+	'UI.INV_NAME_SLAB_KEY_C': '변절의 열쇠',
+	'UI.INV_NAME_SLAB_KEYRING': '석판 열쇠',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE': "'나태'의 표식이 있는 열쇠. 석판의 특정 감옥과 통로로 가는 길을 엽니다.",
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP': "'변절'의 표식이 있는 열쇠. 석판의 특정 감옥과 통로로 가는 길을 엽니다.",
+	'UI.INV_DESC_SLAB_KEYRING': '석판의 감옥과 통로 열쇠.',
+	'UI.INV_NAME_BELL_HOUSE_KEY': '종의 집 열쇠',
+	'UI.INV_DESC_BELL_HOUSE_KEY': '종의 심장부 위의 복원된 종을 여는 열쇠.',
+	'UI.INV_NAME_MATERIUM': '마테리움',
+	'UI.INV_DESC_MATERIUM':
+		'다양한 재료의 보관, 기록 및 연구를 위해 제작된 관과 용기.<br><br>마테리움은 집에 장식할 수 있습니다.',
+	'UI.INV_NAME_FARSIGHT': '천리의 눈',
+	'UI.INV_DESC_FARSIGHT':
+		'방직자의 접이식 감시 기구. 조립하면, 장치로 광활한 거리를 관찰할 수 있습니다. <br><br>천리의 눈은 집에 장식할 수 있습니다.',
+	'UI.INV_NAME_CRAWBELL': '까마귀종',
+	'UI.INV_DESC_CRAWBELL':
+		'오래된 종으로 만든 둥지. 설치하면 때때로 어린 까마귀가 앉아서 껍질 조각과 묵주로 종을 채웁니다.<br><br>까마귀종은 집 외부에 설치할 수 있습니다.',
+	'UI.INV_NAME_SETH_MEMENTO': '수호자의 증표',
+	'UI.INV_DESC_SETH_MEMENTO': '방랑자 세스의 오래된 메달. 훌륭한 기술에 대한 존경으로 받은 선물.',
+	'UI.INV_DESC_MOMENTO_EXTRA': '증표는 집에 장식할 수 있습니다.',
+	'UI.INV_NAME_SPRINT_MEMENTO': '질주마스터 증표',
+	'UI.INV_DESC_SPRINT_MEMENTO': '질주마스터 스위프트가 팔룸에서 가장 빠른 벌레에게 수여하는 도금 트로피.',
+	'UI.INV_NAME_MEMENTO_GARMOND': '영웅의 증표',
+	'UI.INV_DESC_MEMENTO_GARMOND': '저주로 사라진 마을의 가보.',
+	'UI.INV_NAME_HUNTER_MEMENTO': '사냥꾼의 증표',
+	'UI.INV_DESC_HUNTER_MEMENTO': '진정한 사냥꾼으로 인정하는 인장 상징으로, 끈적한 것으로 찍혀 있습니다.',
+	'UI.INV_NAME_MEMENTO_CROWMAN': '까마귀 증표',
+	'UI.INV_DESC_MEMENTO_CROWMAN': '까마귀 법정의 철 문장으로, 소지자의 과거와 미래의 모든 죄를 용서합니다.',
+	'UI.INV_NAME_MEMENTO_GREY': '회색 증표',
+	'UI.INV_DESC_MEMENTO_GREY':
+		'조각된 산호돌로, 모래에 닳고 시간에 바래졌습니다.<br><br>...보고...기억하라...생명이 새로 탄생할...그때까지...',
+	'UI.INV_NAME_MEMENTO_SURFACE': '표면 증표',
+	'UI.INV_DESC_MEMENTO_SURFACE': '팔룸 위에 있는 이름 없는 마을의 낡은 장신구.',
+	'UI.INV_NAME_R_BONE_RECORD': '뼈 두루마리',
+	'UI.INV_DESC_R_BONE_RECORD': '죽은 순례자가 남긴 천과 뼈로 만든 낡은 일지.',
+	'UI.INV_DESC_RELIC': '팔룸의 과거 유물로, 역사 물건 수집가가 관심을 갖습니다.',
+	'UI.INV_NAME_R_WEAVER_TOTEM': '방직자 모형',
+	'UI.INV_DESC_R_WEAVER_TOTEM': '고대 방직자의 뼈 조각 우상. 몸에 기도문이 새겨져 있습니다.',
+	'UI.INV_NAME_R_SEAL_CHIT': '합창 계명',
+	'UI.INV_DESC_R_SEAL_CHIT': '성채가 공표한 규율. 한때 반짝이던 봉인이 세월의 흐름으로 바랬습니다.',
+	'UI.INV_NAME_R_WEAVER_RECORD': '룬 하프',
+	'UI.INV_DESC_R_WEAVER_RECORD':
+		'옛 방직자의 악기로, 실크 룬이 달려 있습니다. 희미해진 룬에는 오래전에 사라진 옛 방직자의 말이 담겨 있습니다.',
+	'UI.INV_NAME_R_ANCIENT_EGG': '신비의 알',
+	'UI.INV_DESC_R_ANCIENT_EGG':
+		'팔룸의 탄생 전에 형성된 검은 돌의 알.<br><br>고대 과거의 유물. 역사품 수집가에게 높은 가치를 지닙니다.',
+	'UI.INV_NAME_R_PSALM_CYL': '찬송가 실린더',
+	'UI.INV_DESC_R_PSALM_CYL':
+		'성채에서 만든 금속 실린더로, 소리가 녹음되어 새겨져 있습니다.<br><br>실린더를 축음기에서 재생할 수 있습니다.',
+	'UI.INV_NAME_R_PSALM_CYL_MELODY': '신성한 실린더',
+	'UI.INV_DESC_R_PSALM_CYL_MELODY':
+		'성채에서 만든 금속 실린더로, 금고지기의 선율이 새겨져 있습니다.<br><br>실린더를 축음기에서 재생할 수 있습니다.',
+	'UI.INV_NAME_COIN_SET_F': '닳은 묵주 줄',
+	'UI.INV_DESC_COIN_SET_F':
+		'몇 개 되지 않는 묵주를 달고 있는 낡은 줄. 끊을 수 있으며, 풀린 묵주들은 거래에 사용할 수 있습니다.',
+	'UI.INV_DESC_COIN_SET_USE': '묵주 {0}개가 담겨 있습니다.',
+	'UI.INV_NAME_COIN_SET_S': '묵주 줄',
+	'UI.INV_DESC_COIN_SET_S': '짧은 묵주 줄. 끊을 수 있으며, 묵주는 거래에 사용할 수 있습니다.',
+	'UI.INV_NAME_COIN_SET_M': '묵주 목걸이',
+	'UI.INV_DESC_COIN_SET_M': '많은 수의 묵주가 달려 있는 장신구. 끊을 수 있으며, 묵주는 거래에 사용할 수 있습니다.',
+	'UI.INV_NAME_COIN_SET_M2': '무거운 묵주 목걸이',
+	'UI.INV_DESC_COIN_SET_M2': '평범한 묵주와 좋은 묵주가 섞인 줄. 끊을 수 있으며, 묵주는 거래에 사용할 수 있습니다.',
+	'UI.INV_NAME_COIN_SET_L': '창백한 묵주 목걸이',
+	'UI.INV_DESC_COIN_SET_L': '진주 묵주가 가득한 무거운 목걸이. 끊을 수 있으며, 묵주는 거래에 사용할 수 있습니다.',
+	'UI.INV_NAME_SHARD_POUCH': '조각 꾸러미',
+	'UI.INV_DESC_SHARD_POUCH': '줄로 묶인 껍질 조각이 든 작은 꾸러미. 개방하여 조각을 제작에 사용할 수 있습니다.',
+	'UI.INV_DESC_SHARD_POUCH_USE': '껍질 조각 {0}개가 담겨 있습니다.',
+	'UI.INV_NAME_GREAT_SHARD': '야수 조각',
+	'UI.INV_DESC_GREAT_SHARD':
+		'거대한 야수의 껍질에서 찾을 수 있는 단단한 재료 덩어리. 부숴 껍질 조각을 개별적으로 제작에 사용할 수 있습니다.',
+	'UI.INV_DESC_GREAT_SHARD_USE': '껍질 조각 {0}개로 부서집니다.',
+	'UI.INV_NAME_PRISTINE_CORE': '온전한 핵',
+	'UI.INV_DESC_PRISTINE_CORE':
+		'톱니바퀴 벌레의 복잡한 내부 구조. 부숴 껍질 조각을 개별적으로 제작에 사용할 수 있습니다.',
+	'UI.INV_NAME_FIXER_IDOL': '호넷 조각상',
+	'UI.INV_DESC_FIXER_IDOL': '작은 조각품. 영원한 우정의 상징으로, 서투르지만 공들여 제작되었습니다.',
+	'UI.INV_NAME_GROWSTONE': '성장의 돌',
+	'UI.INV_DESC_GROWSTONE':
+		'놀라운 재생 능력을 가진 차가운 강철 같은 돌.<br><br>껍질 조각으로 깨어져도, 시간이 지나면 다시 합쳐집니다.',
+	'UI.INV_NAME_SILK_GRUB': '실크벌레',
+	'UI.INV_DESC_SILK_GRUB':
+		'팔룸의 내부에 사는 유충으로, 팔룸에 남아 있는 실크를 먹으며 먼 거리에서도 실크를 감지하는 능력을 갖고 태어납니다.',
+	'UI.INV_DESC_SILK_GRUB_FUNCTION': '실크벌레를 흡수하면 전투에서 쓰러진 후 고치를 되찾습니다.',
+	'Prompts.PROMPT_USE_CONSUMABLE_GRUB': '흡수',
 	'Tools.CREST_HUNTER_NAME': '사냥꾼',
 	'Tools.CREST_REAPER_NAME': '사신',
 	'Tools.CREST_PILGRIM_NAME': '방랑자',
@@ -124,6 +364,1061 @@ export default {
 	'Tools.MUSICIAN_CHARM_NAME': '거미의 현',
 	'Tools.SPRINTMASTER_NAME': '재빠른 실크의 발찌',
 	'Tools.THIEF_CHARM_NAME': '도둑의 표식',
+	'Journal.NAME_MOSSBONE_CRAWLER': '이끼유충',
+	'Journal.DESC_MOSSBONE_CRAWLER': '등을 따라 날카로운 가시가 있는, 털로 뒤덮인 굼벵이.',
+	'Journal.NOTE_MOSSBONE_CRAWLER': '가시만 아니었다면 사랑스러운 벌레였을 텐데.',
+	'Journal.NAME_MOSSBONE_CRAWLER_FAT': '거대 이끼유충',
+	'Journal.DESC_MOSSBONE_CRAWLER_FAT': '비정상적으로 큰 이끼 유충으로, 성채의 보존실 내부에서 사육됐다.',
+	'Journal.NOTE_MOSSBONE_CRAWLER_FAT': '정말 완벽에 가까운 털벌레야... 가시만 제거할 수 있으면 좋았을 텐데.',
+	'Journal.NAME_MOSSBONE_FLY': '모스미르',
+	'Journal.DESC_MOSSBONE_FLY': '작은 침으로 자신을 지키는, 날갯짓하는 작은 생명체.',
+	'Journal.NOTE_MOSSBONE_FLY':
+		'이 벌레는 유순하고 어설프지만, 운 좋게도 서식하는 동굴은 실질적인 포식자로부터 비교적 자유로운 것 같다. 왜 그런지 궁금하군.',
+	'Journal.NAME_MOSSBONE_MOTHER': '이끼 어미',
+	'Journal.DESC_MOSSBONE_MOTHER': '완전히 발달한 침과 단단한 외피를 가진 성체 모스미르.',
+	'Journal.NOTE_MOSSBONE_MOTHER':
+		'모성은 생명체가 타고난 한계를 뛰어넘을 수 있게 해주는 본능이다. 이렇게 약한 짐승도 가공할 적으로 탈바꿈하지.',
+	'Journal.NAME_ASPID_COLLECTOR': '진물벌레',
+	'Journal.DESC_ASPID_COLLECTOR': '뼈의 바닥 위에 있는 동굴의 이끼를 먹는 날개 달린 벌레.',
+	'Journal.NOTE_ASPID_COLLECTOR':
+		'본래 상태에서는 잠재적 포식자를 피하지만, 팔룸에 퍼진 저주가 공격성을 일으키고 있다. 다행히도 입은 전투에 적합하지 않다.',
+	'Journal.NAME_BONE_GOOMBA': '해골 종종벌레',
+	'Journal.DESC_BONE_GOOMBA': '보호와 위장을 위해 골수에 있는 단단한 해골을 사용하는 작고 부드러운 벌레.',
+	'Journal.NOTE_BONE_GOOMBA':
+		'땅마다 새롭고 놀라운 위장 방식을 찾는 생명체가 존재한다. 이 녀석은 항상 조심해야 한다.',
+	'Journal.NAME_BONE_GOOMBA_BOUNCE_FLY': '해골날개',
+	'Journal.DESC_BONE_GOOMBA_BOUNCE_FLY':
+		'지상에 있는 해골 종종벌레의 하늘을 나는 동족으로, 골수의 가장 깊고 뜨거운 동굴에서 찾을 수 있다.',
+	'Journal.NOTE_BONE_GOOMBA_BOUNCE_FLY':
+		'이렇게 엄청나게 뜨거운 동굴에는 포식자가 드물기 때문에 이 약한 생명체도 살아남을 수 있었다.',
+	'Journal.NAME_BONE_GOOMBA_LARGE': '해골 야수벌레',
+	'Journal.DESC_BONE_GOOMBA_LARGE':
+		'거대한 뿔이 달린 해골을 쓴 부드러운 벌레. 영역과 작은 동지들을 보호하기 위해 침입자에게 돌진한다.',
+	'Journal.NOTE_BONE_GOOMBA_LARGE':
+		'그 크기 때문에 두려운 것이 없거나, 저주로 자기 보호 감각을 상실했거나. 둘 중 하나다.',
+	'Journal.NAME_SKULL_KING': '해골 폭군',
+	'Journal.DESC_SKULL_KING':
+		'희귀하고 거대한 해골 종종벌레. 골수에서 가장 큰 포식자로, 그 사나운 기질이 가장 두려운 존재로 만든다.',
+	'Journal.NOTE_SKULL_KING':
+		'실로 사납지만, 갖고 있는 해골은 더 큰 야수의 것처럼 보인다. 증거가 되는 뼈만 아니었다면, 벌레가 그 정도 크기까지 자랄 거라고 믿기는 어려웠을 것이다.',
+	'Journal.NAME_BONE_CRAWLER': '킬릭',
+	'Journal.DESC_BONE_CRAWLER':
+		'어두운 굴을 좋아하는 작은 뼈 벌레. 뾰족한 갑각을 확장하여 공격하는 포식자를 막을 수 있다.',
+	'Journal.NOTE_BONE_CRAWLER':
+		'난 이 벌레가 가진 튀어나오는 가시처럼, 단순하면서도 효과적인 덫을 선호한다. 방심한 포식자를 깔끔하게 찌를 수 있지.',
+	'Journal.NAME_BONE_FLYER': '야수파리',
+	'Journal.DESC_BONE_FLYER': '팔룸 낮은 대지에 서식하는 공격적인 파리. 단단한 뼈 가면으로 먹이를 들이받는다.',
+	'Journal.NOTE_BONE_FLYER':
+		'이 단순한 생명체가 돌진하는 걸 피하며 춤을 추다 보면, 내가 어릴 때 좋아하던 놀이가 떠오른다. 이런, 지금은 처리해야 할 더 시급한 문제가 있지.',
+	'Journal.NAME_BONE_FLYER_GIANT': '흉포한 야수파리',
+	'Journal.DESC_BONE_FLYER_GIANT': '육중한 몸과 두껍고 단단한 껍질 가면을 쓴, 분노한 성체 야수파리.',
+	'Journal.NOTE_BONE_FLYER_GIANT':
+		'이 왕국의 꼭대기엔 문명이 닿았지만, 낮은 대지는 여전히 거대한 야수의 통치를 받는다. 포효가 내 안 깊은 곳의 어떤, 원초적 본능을 휘젓는다.',
+	'Journal.NAME_BONE_CIRCLER': '카라니드',
+	'Journal.DESC_BONE_CIRCLER': '낮은 대지에 서식하는 흔한 날개 벌레. 보통은 순하지만, 위협이 가까워지면 공격한다.',
+	'Journal.NOTE_BONE_CIRCLER':
+		'불룩하고 둥근 모양으로, 표적 연습에 적합하다. 조준 실력을 시험해보고 싶은 마음을 참을 수 없군...',
+	'Journal.NAME_BONE_CIRCLER_VICIOUS': '포악한 카라니드',
+	'Journal.DESC_BONE_CIRCLER_VICIOUS':
+		'낮은 대지에 서식하는 공격적인 날개 곤충. 분노하면 날이 있는 꼬리를 무기로 빠르게 휘두른다.',
+	'Journal.NOTE_BONE_CIRCLER_VICIOUS':
+		'몸통에 비해 날개는 상당히 작은 편이다. 어쩌면 이 불타는 땅의 따뜻한 공기를 이용해 하늘에 뜨는 것일지도 모른다. 그렇다면 꽤 영리한걸.',
+	'Journal.NAME_BONE_HOPPER': '단단뼈 뜀벌레',
+	'Journal.DESC_BONE_HOPPER': '위험에 민첩하게 피하는 예리한 감각을 가진, 풀을 섭취하는 벌레.',
+	'Journal.NOTE_BONE_HOPPER':
+		'껍질에 서린 저주에도, 공격성에 압도당하지 않았다. 도망치려는 욕구가 아직 굉장히 강하게 남아 있다.',
+	'Journal.NAME_BONE_HOPPER_GIANT': '단단뼈 장로',
+	'Journal.DESC_BONE_HOPPER_GIANT':
+		'예리한 감각의 키가 큰 생명체. 강력한 다리와 끝이 날카로운 가면으로 무리를 방어한다.',
+	'Journal.NOTE_BONE_HOPPER_GIANT': '얇고 우아한 팔다리에 놀라운 힘을 숨기고 있다. 탈 수만 있다면 좋을 텐데...',
+	'Journal.NAME_BONE_SPITTER': '타르진드기',
+	'Journal.DESC_BONE_SPITTER': '마그마 근처에 사는, 날아다니는 뼈 진드기. 불타는 타르를 뱉어 먹이를 구워버린다.',
+	'Journal.NOTE_BONE_SPITTER':
+		'이 끈적이는 타액을 재빨리 틀에 넣으면, 분명히 유용한 제작 재료가 될 것이다. 아쉽지만 실험 같은 걸 할 시간이 없군.',
+	'Journal.NAME_BONE_ROLLER': '뼈굴림 벌레',
+	'Journal.DESC_BONE_ROLLER': '몸을 웅크려 공을 만들 수 있는 어린 뼈 벌레.',
+	'Journal.NOTE_BONE_ROLLER':
+		'거칠고 울퉁불퉁한 껍질은 어떤 표면에서도 접지력이 뛰어나다. 벽과 천장도 이 민첩한 벌레의 이동 경로가 된다.',
+	'Journal.NAME_BONE_THUMPER': '골수 분쇄자',
+	'Journal.DESC_BONE_THUMPER':
+		'낮은 대지에 서식하는 거대한 압착 생명체. 울퉁불퉁한 가죽이 아래 있는 작은 생명체를 으스러뜨린다.',
+	'Journal.NOTE_BONE_THUMPER':
+		'그 엄청난 크기가 효과적인 무기가 되어 준다. 하지만 유지에 많은 자양물이 필요하다. 이 생명체는 먹는 데 대부분의 시간을 보낼 것이다. 어떤 이들에겐 꽤나 괜찮은 삶이겠군.',
+	'Journal.NAME_SPINE_FLOATER': '호커',
+	'Journal.DESC_SPINE_FLOATER': '낮은 대지에 있는, 가시를 쏘는 방랑자.',
+	'Journal.NOTE_SPINE_FLOATER': '푹신한 털에 대한 내 감탄은 그 섬뜩한 분위기와 강철빛 가시에... 사그라들어 버렸다.',
+	'Journal.NAME_ROCK_ROLLER': '부싯딱정벌레',
+	'Journal.DESC_ROCK_ROLLER': '생의 대부분을 뼈와 바위 깊은 곳에 자리 잡은 둥지에서 지내는, 보기 힘든 딱정벌레.',
+	'Journal.NOTE_ROCK_ROLLER':
+		'껍질은 빛나는 부싯보석으로 뒤덮여 있으며, 분비물은 그것과 비슷한 폭발 속성을 갖고 있다.',
+	'Journal.NAME_RHINO': '코뿔야수',
+	'Journal.DESC_RHINO':
+		'팔룸 낮은 대지에 서식하는 뿔이 긴 야수. 뿔을 사용해 아래의 지면을 찌르고 비틀어서, 위험한 잔해의 구름을 내던진다.',
+	'Journal.NOTE_RHINO': '특정한 도구와 기술로 갑각을 뚫을 수 있다. 전략은 상황에 따라 조정해야 하는 법이다.',
+	'Journal.NAME_CRYPT_WORM': '그롬링',
+	'Journal.DESC_CRYPT_WORM': '땅굴의 불청객을 급습하는 걸 즐기는, 가면을 쓴 어린 벌레.',
+	'Journal.NOTE_CRYPT_WORM': '성가신 악마 같은 녀석이다. 공격하려 할 때마다 뼈 아래로 달아나 버린다.',
+	'Journal.NAME_BONE_WORM': '그롬',
+	'Journal.DESC_BONE_WORM': '수많은 뭉툭한 이빨을 사용해 가장 단단한 뼈도 파버리는 땅굴 벌레.',
+	'Journal.NOTE_BONE_WORM':
+		'쉬지도 않는 것처럼 끊임없이 바위와 뼈를 휘젓는다. 목적지가 있는 걸까? 아니면 어쩔 수 없이 평생 더 깊은 땅굴만 파는 걸까?',
+	'Journal.NAME_BONE_BEAST': '종 야수',
+	'Journal.DESC_BONE_BEAST': '팔롬 전역에 있는 오래된 종의 길 안에 서식하고 이동하는 거대하고 단단한 뼈 벌레.',
+	'Journal.NOTE_BONE_BEAST':
+		'구해준 것에 대한 감사의 뜻인지, 동등한 대우에 대한 존경의 의미인지, 스스로 나와 동맹을 맺었다. 이유가 무엇이든 협력은 환영이다.',
+	'Journal.NAME_PILGRIM_03': '순례자 아첨꾼',
+	'Journal.DESC_PILGRIM_03': '팔룸의 흔한 벌레로, 바닥에 낮게 엎드려 있다.',
+	'Journal.NOTE_PILGRIM_03': '팔룸에 퍼진 저주에 사로잡힌 이 벌레는 지금 기도와 공격 외에는 할 수 있는 게 없다.',
+	'Journal.NAME_PILGRIM_01': '순례자 도약꾼',
+	'Journal.DESC_PILGRIM_01': '팔룸의 재빠른 벌레로, 그 뛰어난 능력이 저주에 굴복했다.',
+	'Journal.NOTE_PILGRIM_01': '대부분의 벌레보다 껍질이 부드러워, 생존을 위하여 운동 신경에 의존했다.',
+	'Journal.NAME_PILGRIM_04': '순례자 뿔파리',
+	'Journal.DESC_PILGRIM_04': '적을 향해 긴 뿔을 발사하는, 작은 순례자.',
+	'Journal.NOTE_PILGRIM_04': '태어날 때부터 받은 무기군. 돌격하면 자기 자신이 투사체가 된다.',
+	'Journal.NAME_PILGRIM_02': '순례자 덩치',
+	'Journal.DESC_PILGRIM_02': '저주에 굴복한 튼튼한 벌레. 자신의 아픔은 아랑곳 않고 위협을 향해 굴러간다.',
+	'Journal.NOTE_PILGRIM_02':
+		'이 병든 땅에서 드물게 튼튼한 벌레. 순례자들 대부분의 껍질을 작아 보이게 만든다. 어떤 영양분을 찾았기에 이렇게 크게 자란 걸까?',
+	'Journal.NAME_PILGRIM_BELL_THROWER': '순례자 종 소유자',
+	'Journal.DESC_PILGRIM_BELL_THROWER':
+		'오래된 종들을 다루는 평범한 벌레. 이 벌레는 아직 자유롭다 여겨지는 자에게 종을 던진다.',
+	'Journal.NOTE_PILGRIM_BELL_THROWER':
+		'한때 희망과 웃음으로 종을 울리며, 올라오는 동지들의 기운을 북돋웠다. 슬프게도 이 도구는 순수한 전투용으로 변모되었다.',
+	'Journal.NAME_PILGRIM_FLY': '날개 달린 순례자',
+	'Journal.DESC_PILGRIM_FLY': '발달하지 않은 날개를 갖고 태어난 짧은 뿔 벌레.',
+	'Journal.NOTE_PILGRIM_FLY':
+		'비행 능력을 가졌지만, 그것뿐이다. 돌 정돈 들 수 있겠지만, 안타깝게도 이런 날개로는 멀리 옮기지 못하리라.',
+	'Journal.NAME_PILGRIM_05': '장로 순례자',
+	'Journal.DESC_PILGRIM_05': '저주받은 실에 잡아 먹힌 큰 풍채의 벌레. 단단한 몸을 사용해 다른 이들을 박살 낸다.',
+	'Journal.NOTE_PILGRIM_05': '운 좋게도 나이를 많이 먹을 수 있던 벌레다. 팔룸에 깔린 길거리들보다도 오래 살았다.',
+	'Journal.NAME_PILGRIM_BELLTHROWER_FLY': '날개 달린 순례 종 소유자',
+	'Journal.DESC_PILGRIM_BELLTHROWER_FLY': '큰 날개를 타고 난 순례자로, 쇠 종 한 쌍을 지니고 있다.',
+	'Journal.NOTE_PILGRIM_BELLTHROWER_FLY': '고르지 않은 지형에서는 그 비행 능력과 사정 거리로 나조차도 버겁게 만든다.',
+	'Journal.NAME_PILGRIM_HIKER': '순례자 등반가',
+	'Journal.DESC_PILGRIM_HIKER':
+		'등반가 핀을 가진 단단한 껍질의 벌레. 다른 이를 돕기 위해 쓰던 핀이 이제는 무기가 되었다. 아직 잘 다루지 못하는 것 같지만.',
+	'Journal.NOTE_PILGRIM_HIKER': '본래 약한 벌레였지만, 뒤틀린 실로 태생의 한계를 뛰어넘었다.',
+	'Journal.NAME_PILGRIM_STAFFWIELDER': '순례 인도자',
+	'Journal.DESC_PILGRIM_STAFFWIELDER': '무거운 쇠 종 지팡이를 들고 다니는 늙은 순례자.',
+	'Journal.NOTE_PILGRIM_STAFFWIELDER':
+		'저주가 옛 권위를 지워버렸지만, 이 큰 종은 한때 등반대의 지도자였음을 보여주는 듯하다.',
+	'Journal.NAME_PILGRIM_MOSS_SPITTER': '이끼 낀 순례자',
+	'Journal.DESC_PILGRIM_MOSS_SPITTER': '이끼가 무성한, 나이 든 순례자.',
+	'Journal.NOTE_PILGRIM_MOSS_SPITTER':
+		'압축된 침을 적에게 내뱉는 것이, 이끼가 뱃속에서도 자라는 것처럼 보인다. 더러운 방식의 공격이군.',
+	'Journal.NAME_ROSARY_PILGRIM': '욕심 많은 순례자',
+	'Journal.DESC_ROSARY_PILGRIM': '묵주를 먹는 강한 벌레. 화가 나면 줄을 휘둘러 끊임없는 맹공격을 펼친다.',
+	'Journal.NOTE_ROSARY_PILGRIM':
+		'이 녀석의 부는 순수의 상징일까, 탐욕의 상징일까? 대부분이 이렇게 수많은 묵주를 비축하고 있는 걸 죄악으로 보진 않을까?',
+	'Journal.NAME_ROSARY_THIEF': '묵주 도둑',
+	'Journal.DESC_ROSARY_THIEF': '팔룸 곳곳에서 찾을 수 있는 유해한 약탈자.',
+	'Journal.NOTE_ROSARY_THIEF':
+		'이 성가신 벌레가 자유롭게 먹이를 찾아다니면, 풀려 있는 묵주나 장신구 모두 안전하지 않다.',
+	'Journal.NAME_TAR_SLUG': '용암달팽이',
+	'Journal.DESC_TAR_SLUG': '등의 돌출부에서 불타는 액체를 분사하며 스스로를 지키는 끈적이는 연체동물.',
+	'Journal.NOTE_TAR_SLUG':
+		'처음에는 순수한 방어 기제처럼 보였지만, 이 생명체의 과도한 열기를 제거하는 데 필요한 행동일 수도.',
+	'Journal.NAME_TAR_SLUG_HUGE': '거대 용암달팽이',
+	'Journal.DESC_TAR_SLUG_HUGE': '완전히 성장한 연체동물로, 등에서 불타는 액체를 마구 분출한다.',
+	'Journal.NOTE_TAR_SLUG_HUGE':
+		'몸 안에 타오르는 액체를 저장한 채 생존하다니... 이전에는 불가능하다고 생각했지만, 팔룸은 수많은 경이로움이 일어나는 곳이니까.',
+	'Journal.NAME_DOCK_WORKER': '제련 삽질꾼',
+	'Journal.DESC_DOCK_WORKER':
+		'팔룸에 퍼진 저주에 걸린 저급 일꾼. 이전보다 훨씬 단순한 방식이지만, 본능에 따라 계속 맡은 임무를 한다.',
+	'Journal.NOTE_DOCK_WORKER':
+		'이 왕국은 내가 있던 곳보다 금속 제련 수준이 더 뛰어나 보이는데, 지하에 있는 천연 열원의 영향이 크다. 이런 환경에서 일하는 건 정말 대단한 업적이다.',
+	'Journal.NAME_DOCK_FLYER': '부싯돌 비행자',
+	'Journal.DESC_DOCK_FLYER':
+		'팔룸에 퍼진 저주에 걸린, 하늘을 나는 일꾼. 침입자에게 던질 부싯돌이 가득한 주머니를 갖고 있다.',
+	'Journal.NOTE_DOCK_FLYER':
+		'이들이 갖고 다니는 인화성 물질은 자연의 경이로, 그 활용도가 다양하다. 내가 지나갈 때마다 마구잡이로 던지는 게 얼마나 큰 낭비인지.',
+	'Journal.NAME_DOCK_BOMBER': '부싯불 비행자',
+	'Journal.DESC_DOCK_BOMBER': '불안정한 부싯불을 나르며, 혹시 모를 발화로부터 지켜줄 무거운 종을 장착한 용감한 일꾼.',
+	'Journal.NOTE_DOCK_BOMBER': '정말 위험한 삶이야. 짧고 뜨거운 죽음이 뒤따르겠군.',
+	'Journal.NAME_SHIELD_DOCK_WORKER': '연기바위 일꾼',
+	'Journal.DESC_SHIELD_DOCK_WORKER':
+		'깊은 부두에 있는, 심벌을 가지고 있는 일꾼. 연기바위를 체로 쳐서 귀중한 광물의 흔적을 찾아낸다.',
+	'Journal.NOTE_SHIELD_DOCK_WORKER':
+		'저주가 이 벌레에게 중요한 무언가를 뺏어 갔다. 그럼에도 여전히 예전의 일을 하려고 한다. 내 존재를 알아차릴 때까지 말이다...',
+	'Journal.NAME_DOCK_CHARGER': '깊은 곳 잠수부',
+	'Journal.DESC_DOCK_CHARGER': '종으로 덮인 벌레로, 한때 부두 아래의 깊고 위험한 곳에서 채굴하는 일을 했다.',
+	'Journal.NOTE_DOCK_CHARGER':
+		'무거운 종은 내 공격을 훌륭하게 막아 주지만, 숨 막힐 듯한 열기에는... 도움이 되긴 할까?',
+	'Journal.NAME_DOCK_GUARD_THROWER': '감독관 형제들 시그니스 & 그론',
+	'Journal.DESC_DOCK_GUARD_THROWER': '깊은 부두의 원로 감독관으로, 하급 일꾼들을 감시하고 처벌하는 일을 맡았다.',
+	'Journal.NOTE_DOCK_GUARD_THROWER': '저주의 광기에 사로잡혔음에도, 여전히 끝없는 동굴 채굴을 명령한다.',
+	'Journal.NAME_SMALL_CRAB': '바위벌레 유충',
+	'Journal.DESC_SMALL_CRAB': '강력한 바위벌레의 유충 형태.',
+	'Journal.NOTE_SMALL_CRAB': '다 크게 두면, 이 어린 벌레들은 단 하나가 남을 때까지 최고의 자리를 두고 싸울 것이다.',
+	'Journal.NAME_ROOF_CRAB': '바위벌레',
+	'Journal.DESC_ROOF_CRAB': '높은 곳을 선호하는 두꺼운 장갑의 종종벌레.',
+	'Journal.NOTE_ROOF_CRAB':
+		'껍질 내부에 층층이 쌓인 주머니 안에 상당한 양의 뜨거운 염산을 갖고 있다. 음식으로 삼을 생명체에게 입으로 산성비를 내린다.',
+	'Journal.NAME_FIELDS_FLOCK_FLYERS': '무리도주자',
+	'Journal.DESC_FIELDS_FLOCK_FLYERS': '무리를 지어 모이는, 위험의 전조가 보이면 바로 도망치는 작고 겁 많은 생명체.',
+	'Journal.NOTE_FIELDS_FLOCK_FLYERS':
+		'작은 위협감에도 동료들에게 경고를 보낸다. 여기서 성공적인 사냥이란, 결정적인 공격의 순간까지 바로 앞에서 조용히 숨어 있는 것이다.',
+	'Journal.NAME_FIELDS_GOOMBA': '번식충',
+	'Journal.DESC_FIELDS_GOOMBA': '머나먼 들판의 겁이 많은, 기어다니는 벌레. 풀 줄기를 닮은 더듬이가 위장을 돕는다.',
+	'Journal.NOTE_FIELDS_GOOMBA': '자기 방어 수단은 없다. 생존할 수 있는 유일한 희망은 식물로 오해받는 것뿐이다.',
+	'Journal.NAME_FIELDS_FLYER': '펄럭이는 번식충',
+	'Journal.DESC_FIELDS_FLYER': '날개가 머나먼 들판의 풀을 닮은 유순한 벌레. 거대한 포식자들의 흔한 간식거리.',
+	'Journal.NOTE_FIELDS_FLYER':
+		'쉬고 있을 때면 확실히 식물처럼 보인다. 비행할 때는 그 동그란 몸으로 재빠르게 적의 계획을 망친다.',
+	'Journal.NAME_SONG_GOLEM': '네 번째 합창단',
+	'Journal.DESC_SONG_GOLEM': '거대한 쇠 기계 장치로, 회전자와 톱니로 움직인다.',
+	'Journal.NOTE_SONG_GOLEM': '팔룸의 가공할 만한 성취로, 정말 크면서도 민첩한 구조물을 만들어 냈다.',
+	'Journal.NAME_BONE_HUNTER_TINY': '스카르 일꾼',
+	'Journal.DESC_BONE_HUNTER_TINY': '작은 굴 개미로, 몸집이 큰 스카르의 종이다.',
+	'Journal.NOTE_BONE_HUNTER_TINY':
+		'이 벌레는 주로 부족 전사를 위한 채집자로 일한다. 전투는 더 이상 이들의 본성이 아니다.',
+	'Journal.NAME_BONE_HUNTER_BUZZER': '날개 스카르',
+	'Journal.DESC_BONE_HUNTER_BUZZER':
+		'빠르게 천장과 노두에 매달리는 기민한 포식자로, 종종 더 큰 동지를 돕기 위해 부름에 응한다.',
+	'Journal.NOTE_BONE_HUNTER_BUZZER':
+		'유능한 사냥 동료가 되어 줬을 것이다. 저주가 없어도 자기 부족에 대한 충성심이 항상 남아있는 것 같지만.',
+	'Journal.NAME_BONE_HUNTER_CHILD': '스카르 정찰대',
+	'Journal.DESC_BONE_HUNTER_CHILD':
+		'이빨로 갈은 낫을 휘두르는 어린 개미 사냥꾼. 위험이 가까워지면 종종 지원을 청한다.',
+	'Journal.NOTE_BONE_HUNTER_CHILD': '어리지만, 인상적인 상대이다. 이 부족은 태어날 때부터 훈련받는 것 같다.',
+	'Journal.NAME_BONE_HUNTER': '스카르 추적자',
+	'Journal.DESC_BONE_HUNTER': '뼈로 만든 검과 보호구를 가진, 노련한 개미 사냥꾼.',
+	'Journal.NOTE_BONE_HUNTER':
+		'사납고, 강하며, 단련되어 있지만... 그렇다고 저주를 피하는 데에는 도움이 되지 않았다. 이 땅에서 이런 운명은 피할 수 없는 걸까?',
+	'Journal.NAME_BONE_HUNTER_FLY': '스카르 창병',
+	'Journal.DESC_BONE_HUNTER_FLY': '공중에서 뼈 장창으로 공격하는 날개 개미 사냥꾼.',
+	'Journal.NOTE_BONE_HUNTER_FLY':
+		'어렸을 때, 난 날개가 달린 벌레라면 모두 부러워했다. 심지어 날개가 자라는 꿈을 꾸기도 했지... 난 그때보다 더 성장했다. 내 신체의 한계를 받아들이고... 도구로 그 단점을 보완했지.',
+	'Journal.NAME_BONE_HUNTER_THROW': '스카르 경비병',
+	'Journal.DESC_BONE_HUNTER_THROW': '부족의 저장고와 통로를 지키는 거대한 개미 사냥꾼.',
+	'Journal.NOTE_BONE_HUNTER_THROW':
+		'전사와 숙련된 전투가의 벽으로서, 그 임무에 완벽한 껍질을 가졌다. 이들의 보물을 손에 넣으려면, 온 힘을 다해야 한다.',
+	'Journal.NAME_BONE_HUNTER_TRAPPER': '추방자 구르',
+	'Journal.DESC_BONE_HUNTER_TRAPPER': '커다랗지만, 은밀한 스카르. 전문 덫 사냥꾼이자 덤불 활용의 달인.',
+	'Journal.NOTE_BONE_HUNTER_TRAPPER':
+		'녀석의 추적 능력과 덫은 정말... 처음부터 명확했다. 이 늙은 사냥꾼은 날 싸움에 끌어들이려고 했다. 하지만 어떤 이유에서 이렇게 과격한 방식으로 자신을 시험한 걸까? 그 답은 영원히 알 수 없겠지.',
+	'Journal.NAME_BONE_HUNTER_CHIEF': '마지막 발톱',
+	'Journal.DESC_BONE_HUNTER_CHIEF': '그들의 어머니 앞에서 마지막 방어선으로 행동하는, 이전 정예 사냥꾼.',
+	'Journal.NOTE_BONE_HUNTER_CHIEF':
+		'녀석들의 실력을 보니, 왜 선택받았는지 확실히 알 수 있었다. 이 의무만을 위해 살고 또 훈련받았을 것이다.',
+	'Journal.NAME_HUNTER_QUEEN': '스카르싱어 카르멜리타',
+	'Journal.DESC_HUNTER_QUEEN': '스카르의 노래 여왕이자 가장 뛰어난 전사.',
+	'Journal.NOTE_HUNTER_QUEEN':
+		'이 우아한 통치자는 한때 나와 필적하는 기술을 갖고 있었다. 젊었던 절정기에, 그녀는 자신의 목소리로 모든 스카르를 결속시켰다.',
+	'Journal.NAME_MITE': '진드기',
+	'Journal.DESC_MITE': '불쾌한 해충으로, 회색 황야의 어두운 구석 곳곳에서 흔히 볼 수 있다.',
+	'Journal.NOTE_MITE': '개별적으로는 강한 상대가 아니지만, 그 수가 굉장히 많으며 대부분 숨어 있다.',
+	'Journal.NAME_MITEFLY': '파닥진드기',
+	'Journal.DESC_MITEFLY':
+		'하늘을 나는 해충으로, 지상의 동족들보다는 그 수가 적다. 동요하면 날카로운 송곳니로 공격한다.',
+	'Journal.NOTE_MITEFLY':
+		'이것과 비슷한 벌레가 내 고향에서 몰래 식량 비축물들을 갉아먹었다. 어릴 때 그 벌레들을 사냥하면서 내 쓸모를 확인하고 기술을 시험하고 싶었지.',
+	'Journal.NAME_GNAT_GIANT': '진드기어미',
+	'Journal.DESC_GNAT_GIANT': '나이 든 암진드기로, 대부분의 동족보다 더 크고 강하게 자란다.',
+	'Journal.NOTE_GNAT_GIANT':
+		'시력이 나쁘지만 후각이 예민해서, 그 덩치로 이질적인 냄새를 향해 돌진한다. 나이가 들어도 남은 맹렬함은 존경할 만한 특성이다.',
+	'Journal.NAME_FARMER_CATCHER': '찌꺼기 포획자',
+	'Journal.DESC_FARMER_CATCHER': '성채에서 떨어지는 실크 찌꺼기를 줍는 일을 맡은 벌레. 도발하면 막대기로 공격한다.',
+	'Journal.NOTE_FARMER_CATCHER':
+		'이 벌레들은 깨어 있는 모든 순간을 일로 보내는 것 같다. 보이지 않는 저 위의 성채를 위해 음울하고 끝없이 노동한다.',
+	'Journal.NAME_FARMER_SCISSORS': '실크 자름이',
+	'Journal.DESC_FARMER_SCISSORS': '떨어진 실크 찌꺼기를 베고 감아서 위의 성채에 반납하는 일을 맡은 가위를 쓰는 벌레.',
+	'Journal.NOTE_FARMER_SCISSORS': '이들을 불쾌한 광기로 이끈 건 저주일까, 아니면 그 전부터 이어지던 영원한 노역일까?',
+	'Journal.NAME_FARMER_CENTIPEDE': '실 갈퀴꾼',
+	'Journal.DESC_FARMER_CENTIPEDE':
+		'실크 찌꺼기를 다시 감을 수 있게 모으는 키가 큰 벌레. 이들의 날카로운 갈퀴는 찌르는 무기로도 사용하기 좋다.',
+	'Journal.NOTE_FARMER_CENTIPEDE': '슬프고 고된 일로써, 보이지 않는 성채를 위해 영원히 일해야 한다.',
+	'Journal.NAME_VAMPIRE_GNAT': '황야날개',
+	'Journal.DESC_VAMPIRE_GNAT': '날개가 달린 진드기 야수로, 덩치가 커져 일에서 도망치려고 했던 일꾼들을 붙잡았다.',
+	'Journal.NOTE_VAMPIRE_GNAT':
+		'조련사는 오래 전에 죽어, 황야날개는 회색 황야의 탑을 돌아다니며 지나가는 순례자와 사육자들을 먹어 치웠다.',
+	'Journal.NAME_WISP': '정령',
+	'Journal.DESC_WISP': '명멸하는 불꽃으로 태어난 짧은 수명의 요정.',
+	'Journal.NOTE_WISP':
+		'단 한 번의 밝게 빛나는 순간을 위해 산다라... 어떤 느낌일까? 영광스러울까, 아니면 절망뿐일까? 그것도 아니면, 둘 다 섞인 감정일까?',
+	'Journal.NAME_FARMER_WISP': '불타는 벌레',
+	'Journal.DESC_FARMER_WISP': '불길에 광적으로 집착하는 다리가 많은 벌레.',
+	'Journal.NOTE_FARMER_WISP':
+		'이들은 덤불 속에서 같이 서식하는 불타는 정령을 완전히 조종하는 법을 익혔다. 이들은 정령을 마음대로 소환하고 명령할 수 있다.',
+	'Journal.NAME_WISP_PYRE_EFFIGY': '불꽃의 아버지',
+	'Journal.DESC_WISP_PYRE_EFFIGY': '불타는 벌레들이 만들어 숭배하는 토템이자 신.',
+	'Journal.NOTE_WISP_PYRE_EFFIGY':
+		'나이 든 벌레의 잔해가 장작더미의 중앙에 놓여 있다. 이 구조물을 통해 이들이 제물을 바랐다는 걸 알 수 있다. 그렇다면, 난 그 소원이 이뤄진 모습을 본 거군.',
+	'Journal.NAME_CROW': '까마귀',
+	'Journal.DESC_CROW': '동굴 높은 곳에 자리를 잡고 지나가는 순례자를 먹이로 삼는, 날카로운 소리를 내는 청소부.',
+	'Journal.NOTE_CROW':
+		'급습하는 이 위험한 벌레에 단순한 벌레는 상대가 되지 않는다. 더욱 위험한 것은, 혼자 공격하지 않는다는 것이다.',
+	'Journal.NAME_CROWMAN': '큰까마귀',
+	'Journal.DESC_CROWMAN': '쓰레기 더미에서 주운 핀을 가지고 있는, 누더기 날개의 성체 까마귀벌레.',
+	'Journal.NOTE_CROWMAN': '어린 동지들보다 훨씬 더 적대적이지만, 둥지에서 멀리 떨어진 곳으로 가지는 않는다.',
+	'Journal.NAME_CROWMAN_DAGGER': '땅딸막까마귀',
+	'Journal.DESC_CROWMAN_DAGGER': '짧은 핀을 여러 개 가진, 뚱뚱한 성체 까마귀벌레.',
+	'Journal.NOTE_CROWMAN_DAGGER':
+		'겁이 많은 부류다. 거리를 두고 날카로운 무기를 투척하려 한다. 돌격해서 빠르게 처단하는 것이 최선이다.',
+	'Journal.NAME_CROWMAN_JUROR_TINY': '까마귀 배심원',
+	'Journal.DESC_CROWMAN_JUROR_TINY': '그들의 땅이 무너짐에 애도하며 검게 염색된, 날카로운 소리를 내는 청소부.',
+	'Journal.NOTE_CROWMAN_JUROR_TINY':
+		'약하고, 두려워하며, 종말이 임박함을 알고 있다. 이들의 발악은 이해하지만, 내 죽음으로도 다가오는 몰락을 막을 수는 없을 것이다.',
+	'Journal.NAME_CROWMAN_JUROR': '큰까마귀 배심원',
+	'Journal.DESC_CROWMAN_JUROR': '신성한 의식을 맡은 연로한 까마귀 벌레.',
+	'Journal.NOTE_CROWMAN_JUROR':
+		'호기심에 이들의 소환에 응했지만, 너무 오래 잡혀 있어선 안 된다. 크나큰 실수를 만회하려면 빨리 처리해야 한다.',
+	'Journal.NAME_CROWMAN_DAGGER_JUROR': '땅딸막까마귀 배심원',
+	'Journal.DESC_CROWMAN_DAGGER_JUROR': '법정에서 열렬히 일하는, 작은 원로 까마귀벌레.',
+	'Journal.NOTE_CROWMAN_DAGGER_JUROR':
+		'살아남을 수 있는 유일한 기회를 없애려고 한다. 아, 어떤 말도 소용없겠지. 내가 답으로 줄 수 있는 건 내 검 한 자루뿐.',
+	'Journal.NAME_CRAWFATHER': '까마귀의 아버지',
+	'Journal.DESC_CRAWFATHER': '팔룸에 있는 까마귀들의 제왕이자 정의. 판금 부리로 선고받은 벌레에게 죽음을 선사한다.',
+	'Journal.NOTE_CRAWFATHER':
+		'내가 이 땅에 공허가 퍼지도록 기여했단 걸 알아차린 걸까? 그렇다면, 그의 판결이 부당하진 않았을지도. 이런 벌레들에게 난 죽음만을 줄 뿐이다.',
+	'Journal.NAME_MAGGOTS': '진흙구더기',
+	'Journal.DESC_MAGGOTS': '지능이 없는 유충으로, 두꺼운 점액에 싸여 있다.',
+	'Journal.NOTE_MAGGOTS': '다른 벌레의 껍질에 빠르게 달라붙어, 집중이나 편안함을 무참히 깨뜨린다.',
+	'Journal.NAME_DUSTROACH_POLLYWOG': '진흙바퀴 새끼',
+	'Journal.DESC_DUSTROACH_POLLYWOG': '달려들어 무는 진흙바퀴의 더 어린 동족으로, 벌레보다는 구더기에 가깝다.',
+	'Journal.NOTE_DUSTROACH_POLLYWOG':
+		'이 생명체는 웅덩이에서 의도적으로 사육된 것으로 보인다. 식량이 될 운명이라면, 그 냄새로 끔찍한 맛이 날 걸 미리 알 수 있다.',
+	'Journal.NAME_DUSTROACH': '진흙바퀴',
+	'Journal.DESC_DUSTROACH':
+		'채워지지 않는 식욕을 가진, 굶주린 무리 벌레. 강한 외피와 톡 쏘는 속살을 가졌음에도, 바퀴는 빠르게 번식하기에 때때로 식량으로 사육된다.',
+	'Journal.NOTE_DUSTROACH':
+		'혐오스러운 생명체군. 존재 자체가 내 껍질을 가렵게 한다. 개체가 많이 자라고 있는 울타리에 있으면 늘 신경이 곤두선다.',
+	'Journal.NAME_BLOAT_ROACH': '부푼바퀴',
+	'Journal.DESC_BLOAT_ROACH':
+		'성채의 배기 매연에서 태어난 진흙바퀴의 부푼 종. 날개 바퀴의 늘어진 배에는 지글거리는 담즙이 가득하다.',
+	'Journal.NOTE_BLOAT_ROACH':
+		'정말 당치도 않는 생김새야... 어떻게 공중을 날아다니는 거지? 배에 찬 유독 가스가 떠다니게 도와주는 것이리라.',
+	'Journal.NAME_ROACHFEEDER_SHORT': '바퀴포획자',
+	'Journal.DESC_ROACHFEEDER_SHORT': '작고 민첩한 벌레로, 가시 올가미를 사용해 야수들을 모아 가둔다.',
+	'Journal.NOTE_ROACHFEEDER_SHORT':
+		'이들이 투척하는 무기는 꽤 효과적이며, 거주하고 있는 넓은 동굴에 적합하다. 이 음흉하고 작은 벌레들은 분명 공예에 용이한 날카로운 발톱을 갖고 있을 것이다.',
+	'Journal.NAME_ROACHFEEDER_TALL': '바퀴먹이꾼',
+	'Journal.DESC_ROACHFEEDER_TALL': '키가 큰 바퀴 사육자로, 진흙바퀴에게 구더기 죽만을 먹인다.',
+	'Journal.NOTE_ROACHFEEDER_TALL':
+		'바퀴사육자의 구부러진 핀이 굶주린 바퀴를 저지해 사육자가 먹이가 되지 않도록 해주는 것 같다.',
+	'Journal.NAME_ROACHKEEPER': '바퀴관리자',
+	'Journal.DESC_ROACHKEEPER': '무거운 사슬 올가미를 가진, 희끗희끗하게 나이 든 바퀴 사육자.',
+	'Journal.NOTE_ROACHKEEPER':
+		'이성은 많이 사라졌지만, 사슬을 다루는 기술만은 잊지 않았다. 저주가 벌레를 평생 동안 몰두한 이 작업에 영원히 묶어 둔 걸까?',
+	'Journal.NAME_ROACHKEEPER_CHEF_TINY': '바퀴요리사',
+	'Journal.DESC_ROACHKEEPER_CHEF_TINY': '진흙바퀴 고기를 먹을 수 있는 양으로 나누는 일을 하는 야만적인 요리사.',
+	'Journal.NOTE_ROACHKEEPER_CHEF_TINY':
+		'이들의 행동을 기술이라고 할 수 있을까? 잔혹하게 훼손된 살점만 보일 뿐이다. 궁금하군, 저주가 이들의 마음을 사로잡기 전에는 뭔가 달랐을까?',
+	'Journal.NAME_ROACHKEEPER_CHEF': '불명예 요리사 루고리',
+	'Journal.DESC_ROACHKEEPER_CHEF': '한때 잘나갔던 요리사로, 반복되는 요리 관련 범죄로 성채에서 추방되었다.',
+	'Journal.NOTE_ROACHKEEPER_CHEF':
+		'고향 동굴로 돌아온 이 요리사는 제정신을 가진 벌레들에겐 너무나 역겨운 별미들을 계속 개발했다.',
+	'Journal.NAME_WRAITH': '망령',
+	'Journal.DESC_WRAITH': '영원한 실의 비통한 망령. 잠깐 동안이지만, 강한 타격으로 잠시 망령을 쫓아낼 수 있다.',
+	'Journal.NOTE_WRAITH': '벌레는 아니며, 매연과 실크 속에서 누군가 의지로써 탄생시킨 투영체다.',
+	'Journal.NAME_SWAMP_DRIFTER': '나방잎 라그니아',
+	'Journal.DESC_SWAMP_DRIFTER':
+		'보기 힘들고 차분한 담즙의 늪 벌레로, 위험에 둘러 싸이면 식물처럼 몸을 숨겨 생존한다.',
+	'Journal.NOTE_SWAMP_DRIFTER':
+		'귀여운 벌레지만, 처음 본 것만큼 부드럽지는 않다. 이 벌레가 흉내내는 식물엔 얇고 거친 조각이 있는데, 벌레의 외피가 그 질감과 비슷하다.',
+	'Journal.NAME_SWAMP_GOOMBA': '수렁진드기',
+	'Journal.DESC_SWAMP_GOOMBA': '복부에 지글거리는 담즙 주머니를 갖고 기어다니는 벌레.',
+	'Journal.NOTE_SWAMP_GOOMBA':
+		'뒤에 달린 폭발 무기는 포식자를 효과적으로 저지하지만, 작은 충격이나 추락에도 너무 이른 죽음에 이를 수 있다.',
+	'Journal.NAME_SWAMP_MOSQUITO': '늪지 모기',
+	'Journal.DESC_SWAMP_MOSQUITO': '날카로운 주둥이와 담즙으로 가득한 배를 가진, 많은 개체수의 해충.',
+	'Journal.NOTE_SWAMP_MOSQUITO': '살아있을 때보다 폭발하여 부식을 일으키는 죽음의 순간에 더 위험하다.',
+	'Journal.NAME_SWAMP_MOSQUITO_SKINNY': '타액 모기',
+	'Journal.DESC_SWAMP_MOSQUITO_SKINNY': '속이 빈 주둥이를 가진 해충으로, 공중을 맴돌면서 지글거리는 담즙을 뱉는다.',
+	'Journal.NOTE_SWAMP_MOSQUITO_SKINNY':
+		'악취가 진동하는 환경 속의 느글거리는 물에서 생존하기 위해 가장 독성이 강한 물질을 내뱉는다. 세대를 거치며 이전의 생존 기술이 효과적인 사냥 도구로 변모했다.',
+	'Journal.NAME_SWAMP_MUCKMAN': '스틸킨',
+	'Journal.DESC_SWAMP_MUCKMAN': '말뚝과 담즙으로 만든 다트로 사냥하는 교활한 벌레.',
+	'Journal.NOTE_SWAMP_MUCKMAN': '자신의 영역을 아주 잘 알고 있어 경로와 습지에 숨어 기다리며 항상 덮칠 준비를 한다.',
+	'Journal.NAME_SWAMP_MUCKMAN_TALL': '스틸킨 덫 사냥꾼',
+	'Journal.DESC_SWAMP_MUCKMAN_TALL': '덫을 설치하는 벌레로, 날카롭고 긴 말뚝 주머니를 갖고 다닌다.',
+	'Journal.NOTE_SWAMP_MUCKMAN_TALL': '동굴 곳곳에 설치한 셀 수 없이 많은 덫이 벌레 그 자체보다 더 성가시다.',
+	'Journal.NAME_SWAMP_SHAMAN': '위대한 그롤',
+	'Journal.DESC_SWAMP_SHAMAN':
+		'스틸킨의 족장이자 사제로서, 자신들의 동굴에 매연을 뿜고 고통받는 모습을 지켜보는 성채에 끝없이 분노한다.',
+	'Journal.NOTE_SWAMP_SHAMAN':
+		'이 자의 힘은 훔친 영혼으로 훨씬 더 강해졌다. 영혼을 비축하거나, 그것을 사용해 지독한 결말을 이끌어내려 했던 건 녀석이 처음이 아니다.',
+	'Journal.NAME_SWAMP_BARNACLE': '바르나크',
+	'Journal.DESC_SWAMP_BARNACLE': '동굴 천장에 사는, 이빨이 달린 식물. 날뛰는 벌레를 긴 혀로 감싸 끌어당겨 삼킨다.',
+	'Journal.NOTE_SWAMP_BARNACLE': '잎 사이에 숨은 혀가 정말 알아보기 어렵다... 속임수가 인상적인 녀석이군.',
+	'Journal.NAME_SWAMP_DUCTSUCKER': '관빨이',
+	'Journal.DESC_SWAMP_DUCTSUCKER': '동굴을 뒤덮은 두꺼운 점액에서 살아가는 흡입 생명체.',
+	'Journal.NOTE_SWAMP_DUCTSUCKER':
+		'이 지능이 없는 벌레는 덩굴손로만 감각하지만, 그 단순함에도 불구하고 상당한 위협이 된다.',
+	'Journal.NAME_POND_SKATER': '연못 소금쟁이',
+	'Journal.DESC_POND_SKATER':
+		'갑목의 숲 연못 수면에 있는, 흔하고 단단한 껍질의 벌레. 한때 지나가는 순례자들을 위한 주식량이었다.',
+	'Journal.NOTE_POND_SKATER':
+		'이들이 수면 위를 미끄러지는 모습은 정말 우아하다. 실로 배워 볼 만한 기술이 아닌가? 시간이 되면 한번 시도해 봐야겠군.',
+	'Journal.NAME_PILGRIM_FISHER': '연못의 낚시꾼',
+	'Journal.DESC_PILGRIM_FISHER': '갑목의 숲 연못의 늙은 낚시꾼으로, 긴 핀으로 무장하고 있으며 저주에 시달린다.',
+	'Journal.NOTE_PILGRIM_FISHER':
+		'한때는 순수하게 식량만을 구하는 낚시꾼이었지만, 지금은 아무 생각 없이 영원히 먹잇감을 찾는다.',
+	'Journal.NAME_SHELLWOOD_GNAT': '갑목 각다귀',
+	'Journal.DESC_SHELLWOOD_GNAT': '단단하고 속이 빈 갑목 식물을 사용해 자신을 지키는 작고 부드러운 생명체.',
+	'Journal.NOTE_SHELLWOOD_GNAT': '나무 은신처가 산산조각 나면, 용감하지만 어리석게도 공격을 시도한다.',
+	'Journal.NAME_SHELLWOOD_WASP': '송곳벌',
+	'Journal.DESC_SHELLWOOD_WASP': '갑목의 마른 나무껍질에 튼튼한 벌집을 짓는, 사납고 기민한 벌레.',
+	'Journal.NOTE_SHELLWOOD_WASP':
+		'벌집을 파괴하면 숲속의 개체수가 줄어들 것이다. 나뭇가지 사이를 지나가야 하는 지금 내게는 도움이 되는 행위겠지만. 후에 나무들의 질서엔 위험이 될 것이다. 작은 혼란에도 균형이 깨질 수 있으니까.',
+	'Journal.NAME_STICK_INSECT': '가지충',
+	'Journal.DESC_STICK_INSECT':
+		'나뭇가지처럼 생긴 벌레로, 긴 시간 동안 가만히 있을 수 있지만 자극하면 의외로 재빠르게 움직인다.',
+	'Journal.NOTE_STICK_INSECT': '이들의 매복을 피하면서 내 감각과 빠른 대응 능력을 시험할 수 있다.',
+	'Journal.NAME_STICK_INSECT_CHARGER': '뿔가지충',
+	'Journal.DESC_STICK_INSECT_CHARGER': '나뭇가지처럼 생긴, 머리에 수납 가능한 날카로운 뿔이 달린 채로 태어난 벌레.',
+	'Journal.NOTE_STICK_INSECT_CHARGER':
+		'기습에 유리한 껍질을 가졌지만, 가늘고 잘 부러지는 형태 때문에 강한 공격을 버티지 못한다.',
+	'Journal.NAME_STICK_INSECT_FLYER': '나무껍질가지충',
+	'Journal.DESC_STICK_INSECT_FLYER': '주위 환경을 완벽하게 모방하는, 얇은 껍질을 가진 날개 벌레.',
+	'Journal.NOTE_STICK_INSECT_FLYER':
+		'공격이 마치... 위험하게 변모한 어린 벌레의 장난감 같다. 언젠가 내가 대적할 만한 회전 도구를 만들 수 있을까?',
+	'Journal.NAME_SPLINTER_QUEEN': '자매 가지충',
+	'Journal.DESC_SPLINTER_QUEEN':
+		'갑목의 숲 높은 곳에 둥지를 짓는, 인상적인 늙은 벌레. 나뭇가지와 가지를 조종하여 자신의 영역에서 그 어떤 순례자도 살아남지 못하게 했다.',
+	'Journal.NOTE_SPLINTER_QUEEN':
+		'이 벌레는 오래 살고 많은 섭식을 취했다. 숲이 살육의 손아귀에서 더 안전해졌을 것이다.',
+	'Journal.NAME_FLOWER_DRIFTER': '파시아',
+	'Journal.DESC_FLOWER_DRIFTER': '꽃으로 변장하는 표류 벌레. 위협을 받으면 타닥거리는 꽃가루 구름을 퍼뜨린다.',
+	'Journal.NOTE_FLOWER_DRIFTER': '꽤 아름다운 생명체다. 내 왕국 궁정에서 장식용 반려동물로 인기가 많았겠는데.',
+	'Journal.NAME_BLOOM_SHOOTER': '꽃가루초',
+	'Journal.DESC_BLOOM_SHOOTER':
+		'근처의 움직임에 즉시 반응하는 꽃 형태의 적. 충격에 폭발하는 꽃가루 알갱이를 내뱉는다.',
+	'Journal.NOTE_BLOOM_SHOOTER': '대단한 감각을 가졌군. 소리 하나 내지 않는데도, 날 아주 쉽게 감지한다.',
+	'Journal.NAME_BLOOM_PUNCHER': '가면초',
+	'Journal.DESC_BLOOM_PUNCHER': '가면 같은 중심부를 가진 꽃 형태의 적. 심을 앞으로 찌르며 방심한 적을 타격한다.',
+	'Journal.NOTE_BLOOM_PUNCHER': '가짜 가면 하나만으로도 더 작은 해충을 겁주어 쫓아내기 충분하다.',
+	'Journal.NAME_SETH': '세스',
+	'Journal.DESC_SETH': '갑목의 숲 성소의 영원한 방어자. 핀과 심벌에 수많은 세월이 묻어 있다.',
+	'Journal.NOTE_SETH': '가장 순수한 의미의 대결로 나에게 경고하고 도전했다. 그의 명예와 기술에 찬사를 표하지.',
+	'Journal.NAME_FLOWER_QUEEN': '나이레스',
+	'Journal.DESC_FLOWER_QUEEN': '갑목의 숲의 고대 심장으로, 살아있는 모든 것과 이어져 있다.',
+	'Journal.NOTE_FLOWER_QUEEN':
+		'그녀의 존재가 한때 영역의 불안정한 질서를 유지했을 것이다. 자신의 뿌리로 벌레들에게 안전한 길을 제공하면서.',
+	'Journal.NAME_BELL_GOOMBA': '털벌레',
+	'Journal.DESC_BELL_GOOMBA': '종의 광맥에 둥지를 트고 연약한 몸을 보호할 단단한 종을 찾는 굴 벌레.',
+	'Journal.NOTE_BELL_GOOMBA': '공격적이지만 않다면, 이 벌레들의 부드러운 털을 느껴보고 싶다.',
+	'Journal.NAME_BELL_FLY': '날개 달린 털벌레',
+	'Journal.DESC_BELL_FLY':
+		'무거운 종 밑에 있는 털이 난 벌레. 굴을 파기에는 너무 크게 자라지만, 성체가 되면 작은 날개가 생긴다.',
+	'Journal.NOTE_BELL_FLY': '거대함과 부드러움. 이 환상적인 결합이 저주받아 생긴 공격성으로 망가졌다.',
+	'Journal.NAME_BLADE_SPIDER': '팔리드',
+	'Journal.DESC_BLADE_SPIDER': '팔룸 곳곳의 여러 틈과 동굴에서 찾을 수 있는 작은 거미.',
+	'Journal.NOTE_BLADE_SPIDER':
+		'비록 그 능력은 본능에서 나오지만, 이들 공격의 어떤 부분은 내 기술이 떠오르기도 한다. 물론 내 기술은 힘든 훈련 끝에 얻은 것이지만.',
+	'Journal.NAME_BLADE_SPIDER_HANG': '팔리드 기습자',
+	'Journal.DESC_BLADE_SPIDER_HANG': '동굴 천장의 어두운 구멍 안에 자리를 잡은 거미. 아주 먼 위에서 먹이를 덮친다.',
+	'Journal.NOTE_BLADE_SPIDER_HANG': '긴 시간 잠복하여 항상 선수를 칠 준비가 되어 있는 똑똑한 사냥꾼이다.',
+	'Journal.NAME_SHELL_FOSSIL_MIMIC': '조각화석',
+	'Journal.DESC_SHELL_FOSSIL_MIMIC': '기만적인 매복꾼으로, 화석으로 위장한다.',
+	'Journal.NOTE_SHELL_FOSSIL_MIMIC': '자극받으면 강철 같은 껍질로 벽과 바닥, 적에게 들이받는다.',
+	'Journal.NAME_SAND_CENTIPEDE': '모래저밈벌레',
+	'Journal.DESC_SAND_CENTIPEDE': '변화하는 모래 사장 아래에 사는 껍질 장갑 벌레.',
+	'Journal.NOTE_SAND_CENTIPEDE':
+		'가까이서 감지되는 움직임을 향해 돌진하며, 입으로 떨어지는 모든 물체와 방심한 벌레를 먹어 치운다.',
+	'Journal.NAME_CORAL_JUDGE_CHILD': '꿈틀벌레',
+	'Journal.DESC_CORAL_JUDGE_CHILD': '어둠 속에 서식하는, 꿈틀거리는 어린 유충.',
+	'Journal.NOTE_CORAL_JUDGE_CHILD': '운만 좋다면 이 생명체는 더 크고 압도적인 모습으로 성장한다.',
+	'Journal.NAME_CORAL_JUDGE': '심판',
+	'Journal.DESC_CORAL_JUDGE': '심벌과 채를 든, 풍화된 계단의 금빛 수호자.',
+	'Journal.NOTE_CORAL_JUDGE':
+		'자신의 눈에 불순하게 보이는 순례자나 통행자를 무자비하게 제거한다. 그들 옆의 길에 널려 있는 수많은 껍데기들이 그들의 단호한 결의를 보여준다.',
+	'Journal.NAME_LAST_JUDGE': '마지막 심판',
+	'Journal.DESC_LAST_JUDGE':
+		'풍화된 계단의 최후의 심판자로, 죄 없는 자만이 장엄한 문 너머로 나아갈 수 있게 하는 임무를 맡았다.',
+	'Journal.NOTE_LAST_JUDGE':
+		'수 없이 많은 세대를 견뎌온 듯한 거대한 심판자로, 패배한 적이 없고 임무를 수행하며 흔들린 적 또한 없다.',
+	'Journal.NAME_CORAL_SPIKE_GOOMBA': '산호 털벌레',
+	'Journal.DESC_CORAL_SPIKE_GOOMBA': '어두운 털을 가진 벌레로, 가시 산호 머리로 자신을 지킨다.',
+	'Journal.NOTE_CORAL_SPIKE_GOOMBA': '촘촘하고 매끄러운 털이군. 안타깝게도 저주에 잡아먹혀 키우면 위험할 것 같다.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER': '드리즈니트',
+	'Journal.DESC_CORAL_CONCH_SHOOTER': '둥지를 트는 생명체로, 얼굴과 날카로운 산호가 하나로 되어 있다.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER':
+		'가면을 던져 튕기기 때문에 허를 찔리기 십상이다. 특히나 좁은 모서리에선 더욱 그렇다.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER_HEAVY': '드리즈나르가',
+	'Journal.DESC_CORAL_CONCH_SHOOTER_HEAVY':
+		'큰 수컷 드리즈니트로, 흉포하고 영역 의식이 강하다. 침입자에게 무거운 산호 가면을 발사한다.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER_HEAVY':
+		'예리한 가면을 정밀하게 던진다. 그 호전성이 조준에 악영향을 주진 않는 모양이다.',
+	'Journal.NAME_CORAL_CONCH_STABBER': '찌르가면',
+	'Journal.DESC_CORAL_CONCH_STABBER': '넓은 산호 가면과 먹이를 찌르는 단단한 주둥이를 가진 표류 생명체.',
+	'Journal.NOTE_CORAL_CONCH_STABBER':
+		'먹이가 실수로 길을 잃기를 차분하게 기다린다. 꼭 조롱할 수만은 없는 기술이다. 뭐든지 그 효과가 가장 중요한 법이니까.',
+	'Journal.NAME_CORAL_CONCH_DRILLER': '고둥파리',
+	'Journal.DESC_CORAL_CONCH_DRILLER':
+		'뾰족하게 깎은 산호로 껍질을 만드는 작은 벌레. 빠른 속도로 껍질을 회전하며 딱딱한 껍질과 뼈를 자른다.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER':
+		'땅에서 이리저리 튀어나오는 모습이 재미난 놀이 같은 느낌을 준다. 먹이를 급습하는 즐겁고 효과적인 방식이군.',
+	'Journal.NAME_CORAL_CONCH_DRILLER_GIANT': '거대 고둥파리',
+	'Journal.DESC_CORAL_CONCH_DRILLER_GIANT':
+		'거대한 산호 뿔을 쓴, 장로 고둥파리. 다른 벌레와 짝을 이루고 나면, 거의 혼자 있지 않는다.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER_GIANT':
+		'다른 벌레와 짝을 짓는 것은 기본 본능이며, 어떤 벌레는 큰 즐거움을 얻는다. 나도 한때 비슷한 관계를 찾았던 적이 있지만, 내 짝들은 내 수명과 맞지 않았다.',
+	'Journal.NAME_CORAL_GOOMBAS': '산호굼벵이',
+	'Journal.DESC_CORAL_GOOMBAS': '산호 안에 들어가 있는, 부드러운 껍질의 기는 벌레.',
+	'Journal.NOTE_CORAL_GOOMBAS': '이 작은 벌레들은 탑의 산호 속에 숨어 살아남아 번성한 것 같다.',
+	'Journal.NAME_CORAL_GOOMBA_LARGE': '산호바위',
+	'Journal.DESC_CORAL_GOOMBA_LARGE': '단단한 산호 껍질로, 성채 보존실에 의해 엄청난 크기로 자라났다.',
+	'Journal.NOTE_CORAL_GOOMBA_LARGE':
+		'자연성이 왜곡됐군... 이 벌레는 작고 순하게 태어났다. 계속 살 수 있을지도 모른다는 헛된 희망으로 성채가 변형시킨 것이다.',
+	'Journal.NAME_CORAL_SWIMMER_FAT': '카이',
+	'Journal.DESC_CORAL_SWIMMER_FAT': '산호의 과거 속 뚱뚱하고 푸짐한 방랑자.',
+	'Journal.NOTE_CORAL_SWIMMER_FAT':
+		'어마어마한 이들이 그들의 탑 주위에 몰려들어 살고 있었다. 이렇게 많은 생명들이 있는 모습을 보는 건 흔치 않지.',
+	'Journal.NAME_POKE_SWIMMER': '가시부리 카이',
+	'Journal.DESC_POKE_SWIMMER': '나선형 뿔이 달린 부유 벌레로, 자신과 동지들을 지킨다.',
+	'Journal.NOTE_POKE_SWIMMER':
+		'무리 전체에서 가장 중요한 구성원이다. 이들이 없었으면 카이는 더 큰 포식자에 의해 빠르게 멸종에 이르렀을 것이다.',
+	'Journal.NAME_SPIKE_SWIMMER': '강철가시 카이',
+	'Journal.DESC_SPIKE_SWIMMER': '껍질 주머니 내부에 예리하고 확장된 가시를 가져 더 강해진 카이.',
+	'Journal.NOTE_SPIKE_SWIMMER':
+		'물러 보이지만, 날카로운 무기가 숨겨져 있다. 이빨로 물어 뜯으려는 포식자는 날카롭고도 고통스러운 교훈을 얻게 될 것이다.',
+	'Journal.NAME_CORAL_SWIMMER_SMALL': '유마',
+	'Journal.DESC_CORAL_SWIMMER_SMALL': '단순한 생각과 차분한 행동거지를 가진, 젤리 형태의 산호 방랑자.',
+	'Journal.NOTE_CORAL_SWIMMER_SMALL': '특별할 것 없는 벌레다. 나나 누구에게도 전혀 위협이 되지 않는다.',
+	'Journal.NAME_CORAL_BIG_JELLYFISH': '유마마',
+	'Journal.DESC_CORAL_BIG_JELLYFISH': '크고 젤리 같은 방랑자. 젤리를 내던지며 위협을 몰아낸다.',
+	'Journal.NOTE_CORAL_BIG_JELLYFISH':
+		'쓰러뜨리면 여러 개의 더 작은 형태로 갈라진다. 제왕이 있기 이전에 살던 이 땅의 또 다른 놀라운 생명체군.',
+	'Journal.NAME_CORAL_WARRIOR': '카라카',
+	'Journal.DESC_CORAL_WARRIOR': '세월이 흐르며 사라졌지만 한때 번성했던 땅의 충직하고 노련한 검 벌레.',
+	'Journal.NOTE_CORAL_WARRIOR':
+		'강력한 기사단의 핵심 구성원으로서, 두려움 없고 충직하도록 훈련받았다. 검 위에 세워진 전사들의 왕국이로군.',
+	'Journal.NAME_CORAL_FLYER': '카크리',
+	'Journal.DESC_CORAL_FLYER': '날개가 달린 유연한 정찰병으로, 더 육중한 무리와 짝을 이루곤 한다.',
+	'Journal.NOTE_CORAL_FLYER':
+		'빠른 타격과 신속한 이동을 강조하는 것이 내 훈련 방식과 비슷한 것 같다. 과거 사냥꾼이었을 수도?',
+	'Journal.NAME_CORAL_FLYER_THROW': '야고',
+	'Journal.DESC_CORAL_FLYER_THROW':
+		'넓은 가면을 쓴 공중 공격수로, 원거리에서 지상의 동지들을 지원하는 역할을 하도록 훈련받았다.',
+	'Journal.NOTE_CORAL_FLYER_THROW': '최전선에 서진 않지만, 내가 이들의 탑을 공격할 때 모두 모여 날 지켜봤다.',
+	'Journal.NAME_CORAL_BRAWLER': '카라크 고르',
+	'Journal.DESC_CORAL_BRAWLER': '무게와 힘에 의존하는, 무겁고 단단한 껍질을 가진 돌진 생명체.',
+	'Journal.NOTE_CORAL_BRAWLER':
+		'녀석들의 단단한 영역 내부와 어울리게 굉장히 강인하다. 탑 내부에서 평생을 살도록 명령받았을 것이다.',
+	'Journal.NAME_CORAL_HUNTER': '알리타',
+	'Journal.DESC_CORAL_HUNTER':
+		'도약하는 옛 시대의 사냥꾼. 회전하는 앞발의 검을 빠르고 능숙하게 다루는, 그 종족 중 가장 날쌘 벌레.',
+	'Journal.NOTE_CORAL_HUNTER':
+		'난 힘과 속도의 대결에서 민첩함이 우위를 차지하는 모습을 더 자주 보았다. 거기서 큰 교훈을 얻었지.',
+	'Journal.NAME_CORAL_BUBBLE_BRUTE': '산호 카라카',
+	'Journal.DESC_CORAL_BUBBLE_BRUTE': '산호로 뒤덮인 장로로, 산호가 둘러싸인 껍질 내부에서 불타는 거품을 만들어 낸다.',
+	'Journal.NOTE_CORAL_BUBBLE_BRUTE':
+		'이 벌레는 산호와 하나가 됐다... 본인의 의지인 것 같지만, 이런 융합은 편안함과는 거리가 먼 것 같군.',
+	'Journal.NAME_CORAL_KING': '산호의 왕 칸',
+	'Journal.DESC_CORAL_KING': '옛 시대의 강인한 전사 군주로, 산호 껍질을 마음대로 조종할 수 있다.',
+	'Journal.NOTE_CORAL_KING':
+		'이 자의 엄격한 관리 때문인지 군단은 높은 충성도를 보였다. 전투성이 낮은 벌레는 엄하게 다스린다.',
+	'Journal.NAME_CORAL_WARRIOR_GREY': '가장자리의 감시자',
+	'Journal.DESC_CORAL_WARRIOR_GREY': '시간이 흐르며 굳었다가 노래에 깨어난, 영토의 국경을 지키는 오래된 전사.',
+	'Journal.NOTE_CORAL_WARRIOR_GREY':
+		'다른 동지들의 수명보다 훨씬 더 오래 자리를 지켰음에도, 깨어나 놀랍도록 쉽게 검을 휘둘렀다.',
+	'Journal.NAME_ZAP_CORE_ENEMY': '벼락벌레',
+	'Journal.DESC_ZAP_CORE_ENEMY': '전기 벌레들의 군집체. 치직거리는 전기로 침입자를 공격한다.',
+	'Journal.NOTE_ZAP_CORE_ENEMY':
+		'겨우 벌레라고 부를 수 있는 존재로, 사고는 아주 기본적이지만 그 본성은 위험한 적으로 변모하기에 충분했다.',
+	'Journal.NAME_CITADEL_BAT': '장막파리',
+	'Journal.DESC_CITADEL_BAT': '해진 천과 커튼에 둥지를 만드는, 변덕스러운 비행 해충.',
+	'Journal.NOTE_CITADEL_BAT': '살아 움직이는 천 같다. 가죽이 녀석들이 들끓는 누더기 천과 완벽하게 어울린다.',
+	'Journal.NAME_CITADEL_BAT_LARGE': '장막군주',
+	'Journal.DESC_CITADEL_BAT_LARGE':
+		'기나긴 세월과 섭식으로 크게 자란 장로 장막파리. 무거운 몸으로 어린 동지들보다 훨씬 더 강하게 타격한다.',
+	'Journal.NOTE_CITADEL_BAT_LARGE': '탐욕은 항상 벌레를 동족보다 더 비대하게 만들지.',
+	'Journal.NAME_MITE_HEAVY': '장막진드기',
+	'Journal.DESC_MITE_HEAVY': '천을 덮어쓴, 예리한 앞다리를 가진 굼벵이. 어두운 곳에서 살고 번식한다.',
+	'Journal.NOTE_MITE_HEAVY':
+		'팔룸의 구조물들은 이들을 위한 것이라고 해도 과언이 아니다. 끝없는 구석과 틈은 진드기가 굴을 파서 둥지를 만들기에 완벽하다.',
+	'Journal.NAME_UNDERSTORE_MITE_GIANT': '거대 장막진드기',
+	'Journal.DESC_UNDERSTORE_MITE_GIANT': '엄청난 크기의 성채 진드기로, 낡은 커튼을 두르고 있다.',
+	'Journal.NOTE_UNDERSTORE_MITE_GIANT':
+		'이 실크에 고통받는 장소의 생명체들은 크게 자랄 영양분을 찾기 쉽지 않을 텐데.',
+	'Journal.NAME_UNDERSTORE_SMALL': '지하일꾼',
+	'Journal.DESC_UNDERSTORE_SMALL': '길고 구부러진 핀과 단단한 껍질을 가진, 지하 작업장의 허약한 일꾼.',
+	'Journal.NOTE_UNDERSTORE_SMALL':
+		'이들의 영역엔 쓰레기가 계속해서 허물어져, 생존의 희망을 가지려면 일꾼에게 단단한 껍질은 필수다.',
+	'Journal.NAME_PILGRIM_03_UNDERSTORE': '지하솔질쟁이',
+	'Journal.DESC_PILGRIM_03_UNDERSTORE': '쇠진했지만 헌신적인 일꾼으로, 조잡한 철제 솔을 쓴다.',
+	'Journal.NOTE_PILGRIM_03_UNDERSTORE': '자신의 영역이 깨끗해지길 줄곧 바라고 있다... 참으로 허무하군.',
+	'Journal.NAME_PILGRIM_STAFF_UNDERSTORE': '지하빗질쟁이',
+	'Journal.DESC_PILGRIM_STAFF_UNDERSTORE': '철제 핀을 사용해 통풍구와 배관의 검댕을 문지른다.',
+	'Journal.NOTE_PILGRIM_STAFF_UNDERSTORE':
+		'날카로운 청소 도구는 이곳의 나머지 장소들처럼 더럽다. 때 위에 때를 쌓을 뿐이군.',
+	'Journal.NAME_UNDERSTORE_POKER': '지하부지깽이',
+	'Journal.DESC_UNDERSTORE_POKER':
+		'쓰러지기 직전의 지친 일꾼. 저주에 잡아먹힌 이들은 태생의 한계를 뛰어넘어 계속 일한다.',
+	'Journal.NOTE_UNDERSTORE_POKER':
+		'성채를 위해 끊임없이 노역해 껍질은 구부러지고 빛바랬다. 지금 왕국의 저주는 죽음마저도 해방시켜줄 수 없음을 뜻한다.',
+	'Journal.NAME_UNDERSTORE_THROWER': '지하투척꾼',
+	'Journal.DESC_UNDERSTORE_THROWER':
+		'지하 작업장의 매연 때문에 병들어 자란, 지친 벌레. 한때 수리용 도구였던 일꾼의 구부러진 핀은 이제 회전식 발사체로 사용된다.',
+	'Journal.NOTE_UNDERSTORE_THROWER':
+		'정말 너무나 많은 희생이야... 내가 우리 왕국의 지하를 자세히 살펴본 적이 있었나?',
+	'Journal.NAME_UNDERSTORE_HEAVY': '지하수리공',
+	'Journal.DESC_UNDERSTORE_HEAVY': '무겁고 단단한 껍질의 일꾼으로, 성채의 허물어지는 지하 작업장을 끝없이 수리한다.',
+	'Journal.NOTE_UNDERSTORE_HEAVY':
+		'이 영역엔 계급이 없는 것 같지만, 이 벌레는 다른 벌레들보다 높은 위치에 있다. 협박과 폭력으로 얻은 것이겠지.',
+	'Journal.NAME_SONG_PILGRIM_01': '사절',
+	'Journal.DESC_SONG_PILGRIM_01': '안내자이자 때때로 성채 성가대의 지도자를 맡는다.',
+	'Journal.NOTE_SONG_PILGRIM_01':
+		'이렇게 생긴 벌레들이 동굴을 가로지르며 날 팔룸으로 데려왔다. 난 생포되기 전에 많은 수를 쓰러뜨렸다. 그때까지만 해도 이 녀석들을 모두 간사하고 교활한 족속들이라 여겼다. 지금은 이들 모두에 저주를 내린 하나의 의지를 볼 수 있다.',
+	'Journal.NAME_PILGRIM_01_SONG': '성가대 도약자',
+	'Journal.DESC_PILGRIM_01_SONG': '성채에 도달한 몇 안 되는 강인한 순례자로, 재빠른 벌레다.',
+	'Journal.NOTE_PILGRIM_01_SONG':
+		'한때 팔룸에서 특혜를 받던 벌레 중 하나였으나, 이들의 영역과 껍질은 저주에 가장 먼저 무너졌다.',
+	'Journal.NAME_PILGRIM_02_SONG': '성가대 뿔머리',
+	'Journal.DESC_PILGRIM_02_SONG': '성채를 섬기는, 완전히 자란 전직 순례자.',
+	'Journal.NOTE_PILGRIM_02_SONG':
+		'성채의 과욕 때문에 엄청나게 크게 자란 걸까, 아니면 엄청난 크기 덕분에 생존해서 이곳까지 올 수 있던 걸까?',
+	'Journal.NAME_PILGRIM_03_SONG': '성가대 종 소유자',
+	'Journal.DESC_PILGRIM_03_SONG': '날개 달린 성채의 추종자로, 금빛 종 한 쌍을 갖고 있다.',
+	'Journal.NOTE_PILGRIM_03_SONG':
+		'팔룸은 간혹 종이 무기로서 효율적이라는 걸 입증한다. 종을 무기로 쓸 생각을 못 해 봤군.',
+	'Journal.NAME_PILGRIM_04_SONG': '성가대 비행자',
+	'Journal.DESC_PILGRIM_04_SONG': '성채의 비행 벌레로, 무장하지 않았지만 짧은 뿔이 있다.',
+	'Journal.NOTE_PILGRIM_04_SONG':
+		'팔룸까지 오르며 생존해야 했기에 분명히 더 튼튼한 동지들과 무리를 이루었을 것이다. 혼자서 성공하는 모습은 머릿속에서 그려지지 않는군.',
+	'Journal.NAME_PILGRIM_STOMPER_SONG': '성가대 장로',
+	'Journal.DESC_PILGRIM_STOMPER_SONG': '나이 든 전직 순례자. 날개를 사용해 적 위로 올라가 큰 껍질로 깔아 뭉갠다.',
+	'Journal.NOTE_PILGRIM_STOMPER_SONG': '오랜 세월이 지나 껍질이 두꺼워져, 목표를 가격할 때 더욱 효과적이게 되었다.',
+	'Journal.NAME_SONG_PILGRIM_03': '성가대원',
+	'Journal.DESC_SONG_PILGRIM_03': '성가대의 신도로, 다른 순례자들보다 높은 지위에 올라 영원히 얼굴을 가려야 한다.',
+	'Journal.NOTE_SONG_PILGRIM_03':
+		'핀을 사용하는 걸 보니 얼마나 힘든 훈련을 받았는지 알 수 있다. 닫힌 실타래에서 실크를 풀어 사용하는 모습은 평범한 벌레들과는 비교할 수 없는 뛰어난 기술을 보여준다.',
+	'Journal.NAME_SONG_REED': '리드',
+	'Journal.DESC_SONG_REED':
+		'성가대의 신도로, 완벽한 질서를 유지하는 책임을 맡았으며 필요할 경우 날카로운 핀을 사용한다.',
+	'Journal.NOTE_SONG_REED':
+		'전투에 아주 적합한 몸으로, 유연하면서도 빠르다. 이 광신도 집단에서 지위가 꽤 높은 게 그다지 놀랍지는 않군.',
+	'Journal.NAME_SONG_REED_GRAND': '위대한 리드',
+	'Journal.DESC_SONG_REED_GRAND':
+		'활을 지닌 성가대의 고위 벌레. 이 정예 리드는 작은 동지들보다 더 많이 훈련하고 더 많이 먹었다.',
+	'Journal.NOTE_SONG_REED_GRAND':
+		'휘둘러 공격하는 실크 한 타래를 갖고 있다. 다소 잔인하지만, 방직자를 연상시키는 기술이다. 누가 이런 방식을 가르쳐준 걸까?',
+	'Journal.NAME_SONG_HEAVY_SENTRY': '성가대 추',
+	'Journal.DESC_SONG_HEAVY_SENTRY':
+		'타악기를 다루는 성가대의 막강한 신도로, 채와 실크 타래를 휘둘러 공격을 감싸고 강화한다.',
+	'Journal.NOTE_SONG_HEAVY_SENTRY': '실크는 잘 다루지 못한다. 빈약한 물자를 소모해 힘을 강화할 뿐이다.',
+	'Journal.NAME_SONG_HANDMAIDEN': '발톱하녀',
+	'Journal.DESC_SONG_HANDMAIDEN':
+		'성채의 꼭두각시 하인으로, 실크의 줄에 매달려 있다. 기계 장치의 초기 형태로, 계속 움직이려면 더 많은 실크가 필요하다.',
+	'Journal.NOTE_SONG_HANDMAIDEN': '이 녀석은 기회만 되면 내 껍질은 물론, 모든 풍부한 원천에서 실크를 훔쳐갈 것이다.',
+	'Journal.NAME_ARBORIUM_KEEPER': '보존 관리자',
+	'Journal.DESC_ARBORIUM_KEEPER': '성가대의 박식한 신도로, 성채 보존실을 관리하는 임무를 맡았다.',
+	'Journal.NOTE_ARBORIUM_KEEPER':
+		'처음부터 이들의 임무엔 희망이 없었다. 저 야생의 땅이 인공적인 공간에서 재현될 리 없으니까.',
+	'Journal.NAME_SONG_ADMINISTRATOR': '성직자',
+	'Journal.DESC_SONG_ADMINISTRATOR': '성가대의 지위가 높은 신도로, 성채 지휘자의 직속 하인이다.',
+	'Journal.NOTE_SONG_ADMINISTRATOR':
+		'이 벌레의 위험성은 예상을 뛰어넘는다. 전투에 적합한 몸이 아니다. 저주가 특성을 극적으로 변화시켰다.',
+	'Journal.NAME_SONG_PILGRIM_MAESTRO': '지휘자',
+	'Journal.DESC_SONG_PILGRIM_MAESTRO':
+		'왕의 궁정 성가대의 지휘자로, 지휘봉을 한 번 흔드는 것만으로 톱니파리 무리를 소환하고 조종할 수 있다.',
+	'Journal.NOTE_SONG_PILGRIM_MAESTRO':
+		'한때는 백성들을 위해 노래를 연주했다. 지금은 오로지 저 이성을 잃은 이들에게 종말을 내릴 때에만 깨어난다.',
+	'Journal.NAME_SONG_KNIGHT': '두 번째 파수병',
+	'Journal.DESC_SONG_KNIGHT': '팔룸의 톱니바퀴 기사로, 순례자들의 보호자이자 가위 검의 달인이다.',
+	'Journal.NOTE_SONG_KNIGHT':
+		'이 기계의 능력과 지능은 내가 보아온 다른 것들에 비해 훨씬 뛰어나다. 사용할 도구로 만들어졌기보다는 생명체 그 자체로 만들어진 것 같다.',
+	'Journal.NAME_SONG_THREADED_HUSK': '찌꺼기 껍데기',
+	'Journal.DESC_SONG_THREADED_HUSK':
+		'실크 찌꺼기에 사로잡힌 성채 벌레의 잔해. 껍데기가 실 안에 있는 수많은 날카로운 핀을 거칠게 휘두른다.',
+	'Journal.NOTE_SONG_THREADED_HUSK': '수없이 많은 잔혹한 수술의 결과로, 이 실에는 오래된 비통함이 엮여 있다.',
+	'Journal.NAME_SONG_THREADED_HUSK_SPIN': '찌꺼기바퀴',
+	'Journal.DESC_SONG_THREADED_HUSK_SPIN':
+		'실크 찌꺼기에 사로잡힌 작은 벌레의 껍질. 껍데기가 실크를 펴 조악하게 바퀴를 하나 만든다.',
+	'Journal.NOTE_SONG_THREADED_HUSK_SPIN':
+		'죽은 껍질을 조종하는 살아있는 실크라... 자연 그리고 팔룸 전역의 모든 존재에 대한 모욕이다.',
+	'Journal.NAME_SONG_PILGRIM_02': '외과의',
+	'Journal.DESC_SONG_PILGRIM_02': '백색 병동의 잔혹한 의사로, 성채에 거주하는 벌레의 수술과 개조를 책임진다.',
+	'Journal.NOTE_SONG_PILGRIM_02':
+		'실크를 통한 수술로 성채 내의 생명을 유지했지만, 이것이 모든 의식을 제왕에게 선물하는 꼴이 되었다.',
+	'Journal.NAME_SONG_CREEPER': '장의사',
+	'Journal.DESC_SONG_CREEPER':
+		'성채 백색 병동의 대체된 하인으로, 껍데기를 화장하고 껍질에서 실크를 재활용하는 일을 맡는다.',
+	'Journal.NOTE_SONG_CREEPER':
+		'일에 대한 경외 때문인지 바닥에 낮게 엎드려 있지만, 갑자기 일어나 공격할 수도 있다. 가위는 놀라운 사정거리를 가진, 치명적인 무기가 되어 준다.',
+	'Journal.NAME_CONDUCTOR_BOSS': '풀려난 자',
+	'Journal.DESC_CONDUCTOR_BOSS': '실크 찌꺼기 구덩이에 나타나는, 셀 수 없는 껍데기의 고통받는 의지.',
+	'Journal.NOTE_CONDUCTOR_BOSS':
+		'많은 벌레들의 영혼이 실크에 사로잡혀 먹혔다. 저 구덩이에 그 고통이 영원히 남을 것이다. 나조차도 그걸 정화할 힘을 가지고 있지 않다.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON': '톱니바퀴 지하파리',
+	'Journal.DESC_UNDERSTORE_AUTOMATON':
+		'지하 작업장의 태울 듯한 가마솥 열기에도 불평 없이 일하도록 제작된 작은 기계 장치.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON':
+		'이 구조물이 버려진 이유를 알 것 같다. 이렇게 뜨거운 곳 안에서 오래 버틸 수 있는 벌레는 존재하지 않겠지. 내 껍질 마저도 이 열기를 버티는 게 힘들 정도니까.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON_EX': '톱니바퀴 운반자',
+	'Journal.DESC_UNDERSTORE_AUTOMATON_EX': '위험한 부싯불 더미를 나르도록 설계된, 보호막 껍질을 갖춘 작은 기계 장치.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON_EX':
+		'사지가 굳을 때까지 일만 하도록 태어나고 제작되었다. 이 창조물이 자신이 소유하지 못한 자유를 알지 못하는 게 축복일지도 모르겠다.',
+	'Journal.NAME_SONG_AUTOMATON_GOOMBA': '톱니바퀴 굼벵이',
+	'Journal.DESC_SONG_AUTOMATON_GOOMBA':
+		'종종걸음치는 벌레의 모양으로 제작된 기계 장치. 등에는 수납식 핀이 있으며, 방해 없이 노래 실린더를 베는 용도이다.',
+	'Journal.NOTE_SONG_AUTOMATON_GOOMBA':
+		'성채 밖에서 볼 수 있는 벌레를 기반으로 한 형태가 분명하다. 나 역시도 도구를 만들 때 자연에서 영감을 얻는 경우가 많다.',
+	'Journal.NAME_SONG_AUTOMATON_FLY': '톱니바퀴 일꾼',
+	'Journal.DESC_SONG_AUTOMATON_FLY': '중심부를 수리 및 확장하는 임무를 맡은 비행 로봇.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY':
+		'내 예상보다 더 강력한 상대다. 복잡한 영역 안의 불안정함이 단순한 공격도 더 어렵게 만든다.',
+	'Journal.NAME_SONG_AUTOMATON_FLY_SPIKE': '톱니바퀴 가시 기계',
+	'Journal.DESC_SONG_AUTOMATON_FLY_SPIKE': '날카로운 가시들이 달려 있는, 구 형태의 날개 달린 기계 장치.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY_SPIKE':
+		'거대 중심부에서 어떤 기능을 하는지는 파악하지 못했다. 방어를 위해 제작된 걸까? 그렇다면 이 녀석이 가진 수동성은 이상적이지 않다.',
+	'Journal.NAME_SONG_AUTOMATON_01': '톱니바퀴 성가대벌레',
+	'Journal.DESC_SONG_AUTOMATON_01':
+		'쇠, 회전자, 톱니로 만들어진 벌레. 이 기계 장치는 쉼 없이 일하며 안에 위치한 핵을 관리한다.',
+	'Journal.NOTE_SONG_AUTOMATON_01':
+		'중심에 정밀한 장치들이 채워져 있지만, 그것만으로는 이런 그럴싸한 가짜 생명체를 만들 수 없다. 정확한 방법은 모르겠지만, 실크 역시도 이 기계의 작동에 사용되는 게 분명하다.',
+	'Journal.NAME_SONG_AUTOMATON_02': '톱니바퀴 청소부',
+	'Journal.DESC_SONG_AUTOMATON_02':
+		'증기를 배출하는 기계로, 톱니바퀴 핵을 청소하고 벌레들의 증식을 막기 위해 제작되었다.',
+	'Journal.NOTE_SONG_AUTOMATON_02': '인상적인 증기 사용법인데. 나중에 도구를 만들 때 이 구조를 기억해야겠다.',
+	'Journal.NAME_SONG_AUTOMATON_SHIELD': '톱니바퀴 방어자',
+	'Journal.DESC_SONG_AUTOMATON_SHIELD':
+		'핵의 보호를 주요 목적으로 제작된 톱니바퀴 기계. 방패와 포크 형태의 핀이 있으며, 살상력 있게 사용하는 법을 잘 알고 있다.',
+	'Journal.NOTE_SONG_AUTOMATON_SHIELD':
+		'지능은 없지만, 효과적으로 싸우면서 내 움직임에 따라 전략을 조정한다. 어디서 사고를 하는 걸까?',
+	'Journal.NAME_SONG_AUTOMATON_BALL': '톱니바퀴 추',
+	'Journal.DESC_SONG_AUTOMATON_BALL': '핵 깊은 곳에서 종과 심벌을 울리도록 설계된 희귀한 기계 장치.',
+	'Journal.NOTE_SONG_AUTOMATON_BALL':
+		'이 기계 장치가 울리도록 설계된 종은 본 적도 없고, 듣고 싶지도 않다. 그런 소음은 분명 즐겁지 않은 경험일 것이다.',
+	'Journal.NAME_CLOCKWORK_DANCER': '톱니바퀴 춤꾼들',
+	'Journal.DESC_CLOCKWORK_DANCER':
+		'흠잡을 데 없는 구조의 기계 장치로, 죽음의 춤을 선보이며 방에 들어오는 이를 반긴다.',
+	'Journal.NOTE_CLOCKWORK_DANCER':
+		'톱니바퀴 벌레는 둘이지만, 영혼은 하나일지도? 쇠의 껍질 안에 채워진, 애처롭고도 완벽한 모방의 삶이로군.',
+	'Journal.NAME_SONG_SCHOLAR_ACOLYTE': '금고에서 태어난 자',
+	'Journal.DESC_SONG_SCHOLAR_ACOLYTE':
+		'가장 어두운 금고에서 자란 어린 복사로, 두루마리를 읽는 자의 지위에 오를 운명을 가졌다.',
+	'Journal.NOTE_SONG_SCHOLAR_ACOLYTE':
+		'이 벌레들의 영역에 들어가 이 벌레들을 풀어주고 더 큰 금고로 보냈다. 정말 성가시지만, 어디 탓할 데가 없군.',
+	'Journal.NAME_LIGHTBEARER': '등불을 가진 자',
+	'Journal.DESC_LIGHTBEARER': '속삭이는 금고의 신도로, 어두운 구석에서 오래된 두루마리를 찾는 임무를 맡았다.',
+	'Journal.NOTE_LIGHTBEARER': '두루마리가 쌓인 어두운 서고의 미로에서 길을 찾길 바라는 자에게 꼭 필요한 벌레다.',
+	'Journal.NAME_SCROLLKEEPER': '두루마리를 읽는 자',
+	'Journal.DESC_SCROLLKEEPER':
+		'속삭이는 금고의 금칠된 하인으로, 거의 끝이 없는 기도문 두루마리를 읽고 기억하기 위해 태어났다.',
+	'Journal.NOTE_SCROLLKEEPER':
+		'정말 이 난해한 두루마리를 이해한 적이 있었을까? 아니면 그냥 이해한 척한 걸까? 성채 안의 질서를 유지하기 위해 끝없이 말이다.',
+	'Journal.NAME_SCHOLAR': '금고지기',
+	'Journal.DESC_SCHOLAR': '높은 계층의 벌레로, 속삭이는 금고 벽 너머로 설교를 전하고 기도를 이끄는 임무를 맡았다.',
+	'Journal.NOTE_SCHOLAR': '아마 진짜 임무는 열의가 부족해 보이는 이들을 근절하고 규탄하는 일이었을 것이다.',
+	'Journal.NAME_TROBBIO': '트로비오',
+	'Journal.DESC_TROBBIO': '눈부신 연기만이 죽음의 극심한 고통에서 팔룸을 일으킬 수 있다고 확신하는 오만한 배우.',
+	'Journal.NOTE_TROBBIO':
+		'팔룸을 구하겠다는 바람은 좋은 의도였을 수 있지만, 녀석은 목표를 이루기 위해 무대 위에서 다른 이들이 쓰러지는 걸 즐기는 것 같았다.',
+	'Journal.NAME_TORMENTED_TROBBIO': '고통받는 트로비오',
+	'Journal.DESC_TORMENTED_TROBBIO': '붕괴된 세계의 우울에 사로잡힌 음울한 배우.',
+	'Journal.NOTE_TORMENTED_TROBBIO': '이 녀석은 다가올 종말을 맞이하기로 했다. 난 이렇게 쉽게 항복하진 않겠다.',
+	'Journal.NAME_SLAB_PRISONER_LEAPER_NEW': '회개자',
+	'Journal.DESC_SLAB_PRISONER_LEAPER_NEW': '성채 내에서 저지른 죄에 대한 형을 치르는 초라한 죄수.',
+	'Journal.NOTE_SLAB_PRISONER_LEAPER_NEW':
+		'여기에 드나드는 이들은 간수와 죄수뿐이다. 이들은 이곳을 떠나지 못할 걸 알고 있을까? 대체 얼마나 오래 있었던 걸까?',
+	'Journal.NAME_SLAB_PRISONER_FLY_NEW': '빈약한 회개자',
+	'Journal.DESC_SLAB_PRISONER_FLY_NEW': '성채 내에서 저지른 죄로 족쇄를 차고 두건을 쓴 작은 벌레.',
+	'Journal.NOTE_SLAB_PRISONER_FLY_NEW':
+		'두꺼운 장막 때문에 앞을 못 보지만, 별 문제가 되진 않는 것 같다. 자신의 안전은 신경 쓰지 않으며, 죄의 냄새가 나는 이들을 추적할 뿐이다.',
+	'Journal.NAME_SLAB_FLY_SMALL_FRESH': '파리유충',
+	'Journal.DESC_SLAB_FLY_SMALL_FRESH':
+		'갓 부화한 파리 유충. 이 나이대의 약하고 앞을 보지 못하는 파리는 그저 귀찮은 존재에 불과하다.',
+	'Journal.NOTE_SLAB_FLY_SMALL_FRESH': '이 소름 끼치는 벌레는 적게 태어날수록 좋지.',
+	'Journal.NAME_SLAB_FLY_SMALL': '딱지파리',
+	'Journal.DESC_SLAB_FLY_SMALL': '끈적거리는 어린 파리로, 석판을 섬기기 위해 태어나고 성장한다.',
+	'Journal.NOTE_SLAB_FLY_SMALL':
+		'노예로 태어난 더러운 생명체다. 이들의 곤경은 내게 그 어떤 동정심도 일으키지 않는다.',
+	'Journal.NAME_SLAB_FLY_MID': '경비파리',
+	'Journal.DESC_SLAB_FLY_MID': '석판의 굶주린 하인으로, 갈고리 모양의 긴 핀을 갖고 있다.',
+	'Journal.NOTE_SLAB_FLY_MID': '이 간수의 냄새는 내 감각을 압도한다. 씻을 생각을 한 적이나 있었는지 정말 의심스럽다.',
+	'Journal.NAME_SLAB_FLY_LARGE': '간수파리',
+	'Journal.DESC_SLAB_FLY_LARGE': '몸집이 크고 털이 많은 간수로, 죄인을 사로 잡고 죄수를 처벌하는 일을 한다.',
+	'Journal.NOTE_SLAB_FLY_LARGE': '방식과 악취, 모두 역겹다. 이들이 쓰러진 모습을 보는 것에 한 줌의 후회도 없다.',
+	'Journal.NAME_SLAB_FLY_BROODMOTHER': '무리어미',
+	'Journal.DESC_SLAB_FLY_BROODMOTHER':
+		'자신의 영역 밖으로는 잘 나가지 않는, 석판의 광기어린 대모. 그녀에게서 모든 간수가 태어나고 사육된다.',
+	'Journal.NOTE_SLAB_FLY_BROODMOTHER': '그녀의 패배로 그 감옥과 불쾌한 질서의 끝이 앞당겨지길 바란다.',
+	'Journal.NAME_PEAKS_DRIFTER': '눈나방',
+	'Journal.DESC_PEAKS_DRIFTER':
+		'페이 산지의 부드러운 활공 벌레. 솜털이 덮인 날개와 목털로 가장 매서운 추위도 견딜 수 있다.',
+	'Journal.NOTE_PEAKS_DRIFTER': '반려동물로 완벽하지만, 편안하게 지내려면 굉장히 낮은 온도가 필요할 것이다.',
+	'Journal.NAME_CRYSTAL_DRIFTER': '결정충',
+	'Journal.DESC_CRYSTAL_DRIFTER': '얼음 조각으로 이루어진 비행 생명체. 깨지면 다시 빠르게 합쳐진다.',
+	'Journal.NOTE_CRYSTAL_DRIFTER':
+		'얼음 조각이 파괴되더라도 이전 형태를 기억한다. 놀라운 물질이다. 더 놀랍게도 그 안에 생명이 담겨 있는 것 같다.',
+	'Journal.NAME_CRYSTAL_DRIFTER_GIANT': '대형 결정충',
+	'Journal.DESC_CRYSTAL_DRIFTER_GIANT': '얼음 조각으로 이루어진 대형 비행 생명체.',
+	'Journal.NOTE_CRYSTAL_DRIFTER_GIANT': '이 더 큰 종은 굉장히 무거워 그 자리에서 겨우 움직인다.',
+	'Journal.NAME_WEAVER_SERVITOR': '시종 이그님',
+	'Journal.DESC_WEAVER_SERVITOR': '과거의 방직자가 만든 작은 창조물로, 안에 감긴 실크 룬을 통해 생명을 얻었다.',
+	'Journal.NOTE_WEAVER_SERVITOR': '방직자는 팔룸에서 오래전에 사라졌지만, 이 시종은 아직도 제 기능을 한다.',
+	'Journal.NAME_WEAVER_SERVITOR_LARGE': '시종 보란',
+	'Journal.DESC_WEAVER_SERVITOR_LARGE':
+		'과거의 방직자가 만든 망가진 창조물로, 실크빛의 광선을 쏘아 얼음과 뼈로 회당과 방을 조각한다.',
+	'Journal.NOTE_WEAVER_SERVITOR_LARGE':
+		'이 시종은 시간과 환경으로 크게 손상되었다. 행동이 불규칙해졌다. 더 이상 적과 친구를 구별할 수 없는 모양이다.',
+	'Journal.NAME_LIFEBLOOD_FLY': '날개 달린 생명씨앗',
+	'Journal.DESC_LIFEBLOOD_FLY':
+		'플라스미움으로 가득 찬 지능이 없는 자루. 터뜨리면 플라스미움을 흡수해 잠깐 동안 체력을 회복시켜 준다.',
+	'Journal.NOTE_LIFEBLOOD_FLY': '내 특별한 껍질은 이 물질의 어두운 변형에 저항할 수 있지만, 나라도 한계는 있다...',
+	'Journal.NAME_BONE_WORM_BLUEBLOOD': '플라스미드',
+	'Journal.DESC_BONE_WORM_BLUEBLOOD': '플라스미움에 감염된 변이 유충. 강한 재생 기술을 보여주는 새로운 형태.',
+	'Journal.NOTE_BONE_WORM_BLUEBLOOD':
+		'팔룸은 이 물질의 저주를 빠르게 학습하고 있다. 이것이 주는 이점은 금세 늘어날 것이다.',
+	'Journal.NAME_BONE_WORM_BLUETURRET': '플라스미다스',
+	'Journal.DESC_BONE_WORM_BLUETURRET':
+		'플라스미움으로 크게 변이된 거대한 벌레. 동굴의 천장과 결합된 생명체로, 더 이상 자유롭게 움직일 수 없다.',
+	'Journal.NOTE_BONE_WORM_BLUETURRET':
+		'내 고향 동굴에서 이런 물질이 넘쳐 흘렀을 때, 비슷한 변이 현상을 보았다. 역겨움에 오염된 경이로군.',
+	'Journal.NAME_BLUE_ASSISTANT': '플라스미움화된 장고',
+	'Journal.DESC_BLUE_ASSISTANT': '연금술사 조수의 껍데기로, 플라스미움으로 거짓 생명을 부여받았다.',
+	'Journal.NOTE_BLUE_ASSISTANT':
+		'이 동굴에 태연하게 저주받은 물질을 뿌렸다... 녀석이 최후에 맞은 운명은 정당한 결과였겠지만, 조금의 연민이 느껴진다. 매혹적인 힘이군.',
+	'Journal.NAME_LILYPAD_FLY': '잎 활공벌레',
+	'Journal.DESC_LILYPAD_FLY': '무리를 지어 생존하는 아름다운 날개 비행 벌레.',
+	'Journal.NOTE_LILYPAD_FLY': '아주 가벼워서 고요한 수면에서 쉴 수 있다. 정말 우아한 벌레야.',
+	'Journal.NAME_GRASS_GOOMBA': '잎 압축충',
+	'Journal.DESC_GRASS_GOOMBA': '식물로 위장한, 뾰족한 형태의 종종거리는 벌레.',
+	'Journal.NOTE_GRASS_GOOMBA': '단순하다. 그리고 우아하다. 이 땅에서 영원히 잊힌 또 하나의 멋진 벌레군.',
+	'Journal.NAME_HORNET_DRAGONFLY': '펜드라',
+	'Journal.DESC_HORNET_DRAGONFLY': '고인 물 옆에 사는, 변덕이 심한 벌레.',
+	'Journal.NOTE_HORNET_DRAGONFLY': '보통은 조용하지만, 부주의하게 부딪치면 날카로운 가면에 부상을 당할 수 있다.',
+	'Journal.NAME_DRAGONFLY_LARGE': '펜드라고르',
+	'Journal.DESC_DRAGONFLY_LARGE': '큰 물가에 사는, 무거운 벌레. 육중한 몸을 가져 피하기에 제격이다.',
+	'Journal.NOTE_DRAGONFLY_LARGE': '내 길을 막지만 않는다면, 녀석들의 단순한 움직임에 즐거워진다.',
+	'Journal.NAME_LILYPAD_TRAP': '수련잎',
+	'Journal.DESC_LILYPAD_TRAP': '수련의 잎을 닮은 모양의, 강한 턱을 가진 포식성의 식물.',
+	'Journal.NOTE_LILYPAD_TRAP': '처음 마주치면 당할 수 있지만, 한 번 알아차리면 쉽게 피할 수 있다.',
+	'Journal.NAME_CLOVERSTAG': '클로버 수사슴',
+	'Journal.DESC_CLOVERSTAG': '차분한, 베르다니아의 토종 생명체. 영역 내의 식물들과 매우 흡사한 외피를 가졌다.',
+	'Journal.NOTE_CLOVERSTAG':
+		'꽤 재미있는 흉내법인데. 땅과 잘 조화되기 위해 클로버 동굴은 기나긴 세대 동안 유지되어 왔겠지.',
+	'Journal.NAME_CLOVERSTAG_WHITE': '창백한 수사슴',
+	'Journal.DESC_CLOVERSTAG_WHITE':
+		'베르다니아 야생의 전설적인 첫 번째 클로버 수사슴. 풀과 잎을 조종하여 공격을 지원한다.',
+	'Journal.NOTE_CLOVERSTAG_WHITE':
+		'기억 속에서 신화가 현실이 됐군. 이 생명체는 주변 식물과 완전히 하나가 된 것 같다. 내가 본 게 현실로 존재하긴 했었을까?',
+	'Journal.NAME_GRASSHOPPER_CHILD': '킨다니르',
+	'Journal.DESC_GRASSHOPPER_CHILD': '베르다니아의 아이로, 나이는 어리지만 충분히 싸울 수 있다.',
+	'Journal.NOTE_GRASSHOPPER_CHILD': '격렬하고 재빠르며, 태어나자마자 자신의 땅을 지킨다. 자랑스러울 아이들이군.',
+	'Journal.NAME_GRASSHOPPER_SLASHER': '베르다니르',
+	'Journal.DESC_GRASSHOPPER_SLASHER': '날카로운 앞다리와 강화된 감각의 기민한 전사.',
+	'Journal.NOTE_GRASSHOPPER_SLASHER':
+		'쉬는 법이 거의 없고, 심지어 영토 깊숙한 곳에서도 항상 잠재적 위험에 경계한다. 쓰러뜨리려면 필적할 집중력을 가져야 한다.',
+	'Journal.NAME_GRASSHOPPER_FLY': '에스칼리온',
+	'Journal.DESC_GRASSHOPPER_FLY': '엄청나게 빠른 날개의 전사로, 앞다리에서 뾰족하고 작은 톱니를 발사한다.',
+	'Journal.NOTE_GRASSHOPPER_FLY':
+		'나도 한때 태생적으로 많은 도구를 갖고 태어나는 걸 동경한 적이 있었지. 운 좋게도 난 내 한계를 혹독한 훈련으로 극복할 수 있었다.',
+	'Journal.NAME_CLOVER_DANCER': '클로버 춤꾼들',
+	'Journal.DESC_CLOVER_DANCER':
+		'베르다니아의 쌍둥이 왕자로, 그 품위와 외부자들에게 선사하는 죽음의 발레로 백성들의 사랑을 받았다.',
+	'Journal.NOTE_CLOVER_DANCER': '자신과 정말 닮은 누군가를 사랑한다는 건, 타인을 사랑하는 걸까 날 사랑하는 걸까?',
+	'Journal.NAME_ABYSS_CRAWLER': '그림자 포복충',
+	'Journal.DESC_ABYSS_CRAWLER':
+		'가장 깊은 곳에서만 찾을 수 있는 장갑 껍질 벌레. 음식이나 액체를 소모하지 않고도 생존하는 것 같다.',
+	'Journal.NOTE_ABYSS_CRAWLER':
+		'내겐 오랫동안 익숙한 생명체다. 내가 아무리 멀리 떠나도 특정 깊이 아래로 내려가기만 하면 항상 이 녀석들이 있을 것이다.',
+	'Journal.NAME_ABYSS_CRAWLER_LARGE': '그림자 돌진충',
+	'Journal.DESC_ABYSS_CRAWLER_LARGE':
+		'가장 깊은 곳에 있는 덩치가 큰 벌레. 비좁은 틈새에 서식하며 무거운 몸을 이용해 때려 부순다.',
+	'Journal.NOTE_ABYSS_CRAWLER_LARGE':
+		'엄청난 크기로 자라지만, 먹거나 자는 모습을 목격한 적은 없다. 벌레 그 자체인 녀석 같지만... 나랑 같은 피를 가지진 않았을 것 같군.',
+	'Journal.NAME_GLOOMFLY': '어둠주머니',
+	'Journal.DESC_GLOOMFLY':
+		'작고 빈 생명체로, 벌레라고 부르기도 어려울 정도다. 먹이를 통째로 삼키고 아무것도 남지 않을 때까지 영양분을 빨아들인다.',
+	'Journal.NOTE_GLOOMFLY': '날 뒤흔들어 놓는다... 저 단순함엔 뭔가가 있다. 내가 두려움을 느끼는 걸까?',
+	'Journal.NAME_GLOOM_BEAST': '거대한 어둠',
+	'Journal.DESC_GLOOM_BEAST': '독특하게도 땅 아래의 공허 가까운 곳에 살기 적합하게 진화한, 거대한 관 모양의 야수.',
+	'Journal.NOTE_GLOOM_BEAST': '놀랍게도 이 생명체는 위장에 공허의 검은 액체를 담아, 위협을 받을 때 거세게 내뿜는다.',
+	'Journal.NAME_ABYSS_TENDRIL': '공허의 덩굴손',
+	'Journal.DESC_ABYSS_TENDRIL': '예리한 촉수 모양의, 수많은 순수한 어둠의 파편.',
+	'Journal.NOTE_ABYSS_TENDRIL':
+		'공허가 모든 것을 앗아갈 것이다... 가시가 돋친 형태로, 이 녀석은 그 본성이 더 선명히 보이는 걸 택했다.',
+	'Journal.NAME_BLACK_THREAD_CORE': '공허의 덩어리',
+	'Journal.DESC_BLACK_THREAD_CORE': '공허가 스며든 실크로 단단히 엮인 매듭 껍데기 밀집.',
+	'Journal.NOTE_BLACK_THREAD_CORE':
+		'실크와 껍질이 부패했다. 이 공허는 지금 이 땅 전체를 탐낸다. 저 불행한 껍질들은 시작에 불과하다.',
+	'Journal.NAME_ABYSS_MASS': '소환된 구원자',
+	'Journal.DESC_ABYSS_MASS': '몸부림치는 공허에 의해 움직이는, 오래된 가면의 군집체.',
+	'Journal.NOTE_ABYSS_MASS':
+		'힘을 향한 벌레의 절박한 희망에서 태어난 생명체다. 공허를 부를 수 있는 자가 몇 있다. 하지만 그중 그것을 길들일 수 있는 자는 존재하지 않는다.',
+	'Journal.NAME_WHITE_PALACE_FLY': '날개 달린 형상',
+	'Journal.DESC_WHITE_PALACE_FLY':
+		'룬이 새겨진 껍질을 가진 가짜 파리. 안에 영혼과 공허가 고통스럽게 결합되어 갇혀 있다.',
+	'Journal.NOTE_WHITE_PALACE_FLY':
+		'내 아버지의 몰락한 영토에서 만들어진 조잡한 창조물. 공허를 뜻대로 만들거나 다룰 수 있다는 건 바보나 믿겠지.',
+	'Journal.NAME_CENTIPEDE_TRAP': '대형 지네',
+	'Journal.DESC_CENTIPEDE_TRAP': '아주 작은 소리에도 격렬하게 반응하는, 시력이 없는 땅굴 벌레.',
+	'Journal.NOTE_CENTIPEDE_TRAP':
+		'흔한 벌레지만, 과소평가할 수는 없다. 시야의 부재를 다른 감각들의 예리함이 채워준다.',
+	'Journal.NAME_SPIKE_LAZY_FLYER': '이모바',
+	'Journal.DESC_SPIKE_LAZY_FLYER':
+		'무거운 상체 껍질을 가진, 표류하는 느린 벌레. 이 벌레는 위협에는 거의 반응하지 않는데, 생명을 앗아갈 수 있는 위협에도 마찬가지다.',
+	'Journal.NOTE_SPIKE_LAZY_FLYER':
+		'너무나 조용하고 나약하게 살아가는 불쌍한 생명체다. 이 벽 너머의 세계에서는 잘 살아가지 못할 것이다.',
+	'Journal.NAME_SURFACE_SCUTTLER': '스크릴',
+	'Journal.DESC_SURFACE_SCUTTLER': '모래 밑에 사는 평범한 굼벵이.',
+	'Journal.NOTE_SURFACE_SCUTTLER':
+		'이 지면의 거주자는 실크로부터 자유롭다. 본성이 그대로 남아 있다. 제왕의 영향력이 그 밑에만 미치는 게 분명하다.',
+	'Journal.NAME_GIANT_CENTIPEDE': '종 포식자',
+	'Journal.DESC_GIANT_CENTIPEDE': '팔룸의 붕괴 때문에 깨어나 격노한, 오랫동안 동면했던 지네.',
+	'Journal.NOTE_GIANT_CENTIPEDE':
+		'어릴 때 듣던 이야기 속에 나오는 괴물의 전형적인 모습이군. 나 못지않게 맹렬한 내 여행 동료에게 처단되었다.',
+	'Journal.NAME_GIANT_FLEA': '거대 벼룩',
+	'Journal.DESC_GIANT_FLEA': '오랫동안 갇힌 후 잠깐 동안 분노에 사로잡혔던 거대한 벌레.',
+	'Journal.NOTE_GIANT_FLEA':
+		'이렇게 크고 놀라운 벼룩이 존재하리라고는 짐작도 못 했군. 마지막 일격을 가하기 전에 정신을 차려서 다행이다.',
+	'Journal.NAME_SHAKRA': '샤크라',
+	'Journal.DESC_SHAKRA': '팔룸 먼 곳 부족의 전사 지도 제작자. 전투에서 그녀의 기술은 왕국 최고에 필적한다.',
+	'Journal.NOTE_SHAKRA':
+		'내 수명에 비해 훨씬 짧은 삶을 살았지만, 그녀의 고리는 나 못지않은 맹렬함을 잘 보여준다. 내가 만난 재능 있는 전사로서, 그녀를 친구라 부를 수 있어 다행이다.',
+	'Journal.NAME_GARMOND_ZAZA': '가몬드 & 자자',
+	'Journal.DESC_GARMOND_ZAZA':
+		'활기찬 늙은 기사와 그의 고귀한 동료로, 이들은 저주받은 광기로부터 함께 영토를 지킨다.',
+	'Journal.NOTE_GARMOND_ZAZA':
+		'둘 모두 저주의 중심에서 그 원인을 찾지만, 적이 이들의 한계 그 이상의 힘을 가졌을까 두렵다.',
+	'Journal.NAME_GARMOND': '광기에 빠진 가몬드',
+	'Journal.DESC_GARMOND': '검은 실에 사로잡힌 나이 든 기사.',
+	'Journal.NOTE_GARMOND':
+		'한때 고귀했던 벌레의 비극적인 운명이다. 공허가 실을 빨아들였군... 그 육체적 힘은 영혼에 가하는 부패에 비하면 아무것도 아니다.',
+	'Journal.NAME_PINSTRESS_BOSS': '핀의 여인',
+	'Journal.DESC_PINSTRESS_BOSS':
+		'한때 이름을 날린 전사 종파의 검을 다루는 여인. 나머지 단원들보다 더 오래 살아남았다.',
+	'Journal.NOTE_PINSTRESS_BOSS':
+		'마음에 든다. 가르침의 의지, 긴 고립의 세월에도 여전히 강한 정신력... 존경할 만하군.',
+	'Journal.NAME_SPINNER_BOSS': '과부',
+	'Journal.DESC_SPINNER_BOSS': '미쳐버린 광신자로, 음악을 연주하여 팔룸의 저주받은 실크를 인도한다.',
+	'Journal.NOTE_SPINNER_BOSS':
+		'몸은 방직자와 비슷하지만, 가면이 강제로 벗겨졌다. 척추를 관통한 무거운 핀 때문에 그녀의 실크는 무용지물이다.',
+	'Journal.NAME_FIRST_WEAVER': '첫 번째 죄인',
+	'Journal.DESC_FIRST_WEAVER': '세월이 흐르며 잊힌 유죄 판결을 받은 고대 방직자.',
+	'Journal.NOTE_FIRST_WEAVER':
+		'이 자의 껍데기에는 실크를 짜서 불타는 룬으로 만드는 대단한 능력이 있다. 난 살면서 여러 목적을 위해 짜인 룬들을 보았다. 그녀가 이런 기술을 최초로 연마한 걸까?',
+	'Journal.NAME_PHANTOM': '팬텀',
+	'Journal.DESC_PHANTOM':
+		'질식할 것 같은 성채 쓰레기를 혼자서 처리하는 임무를 맡은, 슬픔에 잠긴 생명체. 긴 핀을 다루는 능력이 타의 추종을 불허한다.',
+	'Journal.NOTE_PHANTOM':
+		'세월이 흘러 희끗희끗해지고 닳은 모습이다. 실크에 묶여 서서히 쇠퇴하다 전투에서 결정적인 최후를 맞은 한 존재를 떠오르게 한다.',
+	'Journal.NAME_LACE': '레이스',
+	'Journal.DESC_LACE': '전투에서 기쁨을 느끼는 광란의 검사.',
+	'Journal.NOTE_LACE':
+		'오로지 실에서만 태어난 벌레. 생명을 지속하려면 많은 실크가 필요하다. 연약한 생명이지만, 그래도 생명이다.',
+	'Journal.NAME_SILK_BOSS': '위대한 어머니 실크',
+	'Journal.DESC_SILK_BOSS': '팔룸의 제왕이자 실크의 원천.',
+	'Journal.NOTE_SILK_BOSS':
+		'저주의 원인으로, 오랫동안 잠들어 간절히 깨어나고 싶어 한다. 이 높은 존재의 실은 팔룸에 펼쳐나가, 벌레를 사로잡고 광기와 무질서로 이끈다.',
+	'Journal.NAME_LOST_LACE': '광기에 빠진 레이스',
+	'Journal.DESC_LOST_LACE': '공허에 사로잡힌, 실크에서 뽑아낸 아이.',
+	'Journal.NOTE_LOST_LACE':
+		'그 어머니의 진노를 가라앉히고 왕국을 지키기 위해서 반드시 그녀를 되찾아야 한다. 이 존재는... 어둠이 가져서는 안 된다.',
+	'Quests.MQ_CITADEL_SEEKER_NAME': '위대한 성채',
+	'Quests.MQ_TYPE_SEEK': '추적',
+	'Quests.MQ_THREADSPUN_TOWN_NAME': '실에 휘감긴 마을',
+	'Quests.MQ_TYPE_SAVE': '구원',
+	'Quests.MQ_BELLSHRINES_NAME': '장엄한 문',
+	'Quests.MQ_TYPE_BELLSHRINES': '열기',
+	'Quests.MQ_CITADEL_INVESTIGATE_NAME': '침묵의 방',
+	'Quests.MQ_TYPE_INVESTIGATE': '수색',
+	'Quests.MQ_CITADEL_ASCENT_NAME': '팔룸의 꼭대기',
+	'Quests.MQ_TYPE_ASCEND': '오르기',
+	'Quests.MQ_CITADEL_ASCENT_NAME_SILK': '창백한 군주',
+	'Quests.MQ_TYPE_DEFEAT': '쓰러뜨리기',
+	'Quests.MQ_SILK_SNARE_NAME': '영혼의 덫',
+	'Quests.MQ_TYPE_DESTROY': '파괴',
+	'Quests.MQ_BLACKTHREAD_0_NAME': '몰락, 그 이후',
+	'Quests.MQ_BLACKTHREAD_1_NAME': '끝을 기다리며',
+	'Quests.MQ_RESCUE_BELLBEAST_NAME': '종의 야수',
+	'Quests.MQ_BLACKTHREAD_2_NAME': '어두운 심연',
+	'Quests.MQ_DIVINGBELL_1_NAME': '어두운 심연',
+	'Quests.MQ_DIVINGBELL_2_NAME': '어두운 심연',
+	'Quests.MQ_DIVINGBELL_3_NAME': '어두운 심연',
+	'Quests.MQ_TYPE_DESCEND': '내려가기',
+	'Quests.MQ_BLACKTHREAD_3_NAME': '다시 팔룸으로',
+	'Quests.MQ_BLACKTHREAD_4_NAME': '주문 추적자',
+	'Quests.MQ_BLACKTHREAD_5_NAME': '오래된 심장',
+	'Quests.MQ_BLACKTHREAD_6_NAME': '마지막 강하',
+	'Quests.QUEST_FIXER1_TITLE': '뼈의 바닥 보수 작업',
+	'Quests.TYPE_DONATE_1_TITLE': '기부',
+	'Quests.QUEST_FIXER3_TITLE': '목숨을 구하는 다리',
+	'Quests.QUEST_FIXER2_TITLE': '희망의 상징',
+	'Quests.QUEST_PILGRIM_RAGS_TITLE': '순례자의 의복',
+	'Quests.TYPE_HUNT_1_TITLE': '사냥',
+	'Quests.QUEST_MOSSBERRY1_TITLE': '베리 따기',
+	'Quests.TYPE_GATHER_1_TITLE': '수집',
+	'Quests.QUEST_FLEAS_TITLE': '길 잃은 벼룩들',
+	'Quests.TYPE_WAYFARER_1_TITLE': '여행자',
+	'Quests.QUEST_ROCK_ROLLERS_TITLE': '폭발하는 부싯딱정벌레',
+	'Quests.QUEST_SKULL_KING_TITLE': '끔찍한 폭군',
+	'Quests.TYPE_HUNT_2_TITLE': '위대한 사냥',
+	'Quests.QUEST_BROLLY_GET_TITLE': '유연한 가시',
+	'Quests.QUEST_JOURNAL_TITLE': '팔룸의 벌레들',
+	'Quests.TYPE_JOURNAL_TITLE': '배우기',
+	'Quests.QUEST_BELL_HOUSE_START_TITLE': '종의 심장부 복원',
+	'Quests.QUEST_BELL_HOUSE_CONT_TITLE': '종의 심장부의 명예',
+	'Quests.QUEST_PINSMITHTOOLS_NAME': '핀 장인의 기름',
+	'Quests.QUEST_SHINY_BELL_GOOMBAS_TITLE': '은색 종',
+	'Quests.QUEST_SAVE_COURIER_SHORT_NAME': '나의 실종된 배달부',
+	'Quests.QUEST_SAVE_COURIER_TALL_NAME': '나의 실종된 형제',
+	'Quests.QUEST_COURIER_BONEBOTTOM_NAME': '뼈의 바닥 보급품',
+	'Quests.TYPE_COURIER_TITLE': '전달',
+	'Quests.QUEST_COURIER_PILGRIMSREST_NAME': '순례자의 휴식처 보급품',
+	'Quests.QUEST_COURIER_SONGCLAVE_NAME': '노래 부르는 자들 보급품',
+	'Quests.QUEST_COURIER_FLEATOPIA_NAME': '벼룩의 낙원 보급품',
+	'Quests.QUEST_COURIER_MASKMAKER_NAME': '칠용 액체',
+	'Quests.QUEST_COURIER_SLAVE_NAME': '여왕의 알',
+	'Quests.QUEST_COURIER_FIXER_NAME': '생존자의 야영지 보급품',
+	'Quests.QUEST_CROW_TITLE': '까마귀벌레 청소',
+	'Quests.QUEST_BEASTFLY_TITLE': '흉포한 야수파리',
+	'Quests.QUEST_SHELL_FLOWER_TITLE': '폴립의 의식',
+	'Quests.QUEST_WITCH_CURSE_TITLE': '부활의 의식',
+	'Quests.QUEST_DOCTOR_CURSE_CURE_NAME': '기생충 제거 수술',
+	'Quests.QUEST_EXTRACTOR_B_NAME': '연금술사의 조수',
+	'Quests.QUEST_EXTRACTOR_B2_NAME': '고급 연금술',
+	'Quests.QUEST_ROACH_KILL_TITLE': '바퀴 내장',
+	'Quests.QUEST_SONGCLAVE_DONATE_1_TITLE': '노래 부르는 자들 구축하기',
+	'Quests.QUEST_SONGCLAVE_DONATE_2_TITLE': '노래 부르는 자들 보강하기',
+	'Quests.QUEST_FINEPINS_TITLE': '가는 핀',
+	'Quests.QUEST_SAVE_CITYMERCHANT_NAME': '방랑하는 장사꾼',
+	'Quests.QUEST_SAVE_CITYMERCHANT_BRIDGE_NAME': '길 잃은 장사꾼',
+	'Quests.QUEST_SONGPILGRIM_CLOAKS_TITLE': '성가대의 망토',
+	'Quests.QUEST_BROODMOTHER_TITLE': '울부짖는 어미',
+	'Quests.QUEST_GOURMAND_TITLE': '팔룸의 일미',
+	'Quests.QUEST_SAVE_SHERMA_NAME': '부상자들을 위한 연고',
+	'Quests.QUEST_SONG_KNIGHT_TITLE': '최후의 관객',
+	'Quests.QUEST_HUNTRESS_NAME': '무리의 잔치',
+	'Quests.QUEST_RUNTRESS_NAME': '런트의 잔치',
+	'Quests.QUEST_SHAKRA_FINAL_TITLE': '흔적의 끝',
+	'Quests.Q_SOUL_SNARE_NAME': '실크와 영혼',
+	'Quests.QUEST_PINSTRESS_BATTLE_TITLE': '마지막 결의',
+	'Quests.QUEST_SPRINT_KILL_TITLE': '팔룸에서 제일 빠른 자',
+	'Quests.TYPE_SPRINT_TITLE': '질주',
+	'Quests.GARMOND_BLACK_THREADED_NAME': '영웅의 부름',
+	'Quests.QUEST_TROBBIO_2_TITLE': '고통, 비통 그리고 애통',
+	'Quests.QUEST_ANT_TRAPPER_TITLE': '비밀의 사냥꾼',
+	'Quests.QUEST_FLEAGAMES_TITLE': '종말의 황홀경',
+	'Quests.QUEST_STEELSENTINEL_TITLE': '사라진 신하',
+	'Quests.TYPE_STEELSENTINEL_TITLE': '강철',
+	'Quests.QUEST_MRMUSHROOM_TITLE': '시대의 소멸',
+	'Quests.TYPE_HERALD_TITLE': '목격자',
+	'Quests.QUEST_THREADCORES_TITLE': '어둠의 심장',
+	'UI.MAT_NAME_SILK': '실크',
+	'UI.MAT_DESC_SILK':
+		'그 창조자의 영혼에서 나온 가는 실. 놀라운 힘과 그 신비로운 속성으로 많은 이들이 탐냅니다. 상처 치유와 생명력 확장 및 강력한 룬 엮기에 사용됩니다.',
+	'UI.INV_NAME_SHARD': '껍질 조각',
+	'UI.INV_DESC_SHARD': '단단한 껍질과 뼈의 조각으로, 도구와 함정을 제작하는 데 사용합니다.',
+	'UI.INV_NAME_COIN': '묵주',
+	'UI.INV_DESC_COIN':
+		'다양한 재료로 조각된 염주. 믿음의 척도로 사용되며 통화로 거래됩니다. 각각에 정밀한 무늬가 새겨져 있습니다.',
+	'UI.INV_NAME_COIN_MID': '껍질 묵주',
+	'UI.INV_DESC_COIN_MID': '연마한 껍질로 조각한 염주. 재료가 좋을수록 가치가 높아집니다.',
+	'UI.INV_NAME_COIN_BIG': '진주 묵주',
+	'UI.INV_DESC_COIN_BIG':
+		'반짝이는 진주로, 섬세한 표식이 조각되어 있습니다. 팔룸에서 가장 희귀하고 가치가 높은 묵주입니다.',
+	'UI.MAT_NAME_SMELTSTONE': '부싯돌',
+	'UI.MAT_DESC_SMELTSTONE': '팔룸 지하에서 나는 오래도록 불타는 돌. 채굴하여 성채에서 주조하는 데 사용합니다.',
+	'UI.MAT_NAME_LIFEBLOOD': '플라스미움',
+	'UI.MAT_DESC_LIFEBLOOD': '놀라운 재생 특성을 가진 액체 생명 씨앗. 연금술사 지로톨이 들여온 팔룸의 외래 물질.',
+	'UI.MAT_NAME_MAGNETITE': '자철석',
+	'UI.MAT_DESC_MAGNETITE': '팔룸 주변부에서 발견되는 깨지기 쉬운 부양 암석.',
+	'UI.MAT_NAME_VOLTSTONE': '벼락의 돌',
+	'UI.MAT_DESC_VOLTSTONE': '단단하고 충전된 돌. 전기를 포착하고, 저장하고, 방출할 수 있습니다.',
 	'Map Zones.ABOVE_CRADLE': '경계의 동굴',
 	'Map Zones.BELLHOME': '종의 집',
 	'Map Zones.BELLTOWN_HAUNTED': '저주받은 종의 심장부',

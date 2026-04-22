@@ -2854,10 +2854,10 @@ export const sceneNameToIdGeneratedSilk: Record<string, SceneIdDataSilk> = {
 		zone: 0,
 		actualSceneName: 'menu_credits',
 	},
-	menu_title: {
+	Menu_Title: {
 		id: 561,
 		zone: 0,
-		actualSceneName: 'menu_title',
+		actualSceneName: 'Menu_Title',
 	},
 	Mosstown_01: {
 		id: 562,

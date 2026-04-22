@@ -5,7 +5,7 @@ import { MapZoneSilk } from '~/lib/game-data/silk-data/map-zone-silk';
 import { BellhomePaintColoursSilk, ExtraRestZonesSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { assertNever } from '~/lib/parser';
 import { GameId } from '~/lib/types/game-ids';
-import { tags, type TagCode } from '~/lib/types/tags';
+import { TagDBColumn, tagDBNames } from '~/lib/types/tags/tag_db_column';
 import { type RunGameStateMetaColumnName, type runFiles, type runs } from '~/server/db/schema';
 
 type RunFileColumnSelect = Partial<{ [Col in keyof typeof runFiles]: true }>;
@@ -57,8 +57,8 @@ export const runFilesMetaFieldsSelect = {
 	gsString1: true,
 } as const satisfies RunFileColumnSelect satisfies RunColumnSelect satisfies RunColumnSelectAllGs;
 
-export const runTagFieldsSelect = Object.fromEntries(tags.map((tag) => [`tag_${tag.code}`, true])) as {
-	[Code in TagCode as `tag_${Code}`]: true;
+export const runTagFieldsSelect = Object.fromEntries(tagDBNames.map((tag) => [tag, true])) as {
+	[DBColumn in TagDBColumn]: true;
 } satisfies RunColumnSelect;
 
 export const runGameStateMetaColumnsSelect = {

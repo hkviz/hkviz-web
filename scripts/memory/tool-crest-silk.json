@@ -1,13 +1,13 @@
 {
-  "Hunter": 1,
-  "Hunter_v2": 2,
-  "Hunter_v3": 3,
-  "Reaper": 4,
-  "Wanderer": 5,
-  "Warrior": 6,
-  "Witch": 7,
-  "Toolmaster": 8,
-  "Spell": 9,
-  "Cursed": 10,
-  "Cloakless": 11
+	"Hunter": 1,
+	"Hunter_v2": 2,
+	"Hunter_v3": 3,
+	"Reaper": 4,
+	"Wanderer": 5,
+	"Warrior": 6,
+	"Witch": 7,
+	"Toolmaster": 8,
+	"Spell": 9,
+	"Cursed": 10,
+	"Cloakless": 11
 }

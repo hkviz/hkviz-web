@@ -91,7 +91,7 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 				createFrameEndEvent = createFrameEndEvent || frameEndEventPlayerDataFieldsSetSilk.has(event.fieldName);
 			}
 
-			if (!isPaused) {
+			if (!isPaused && previousSceneEvent?.sceneName !== 'Menu_Title') {
 				const diff = event.timestamp - lastTimestamp;
 				const msSinceLastPositionChange =
 					event.timestamp - (previousPositionEventWithChangedPosition?.timestamp ?? 0);

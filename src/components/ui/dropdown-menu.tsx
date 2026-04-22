@@ -6,6 +6,8 @@ import type { PolymorphicProps } from '@kobalte/core/polymorphic';
 
 import { cn } from '~/lib/utils';
 
+import { useFocusContextOrNull } from './additions/focus-context.tsx';
+
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 const DropdownMenuSub = DropdownMenuPrimitive.Sub;
@@ -13,7 +15,17 @@ const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
 const DropdownMenu: Component<DropdownMenuPrimitive.DropdownMenuRootProps> = (props) => {
-	return <DropdownMenuPrimitive.Root gutter={4} {...props} />;
+	const [_, rest] = splitProps(props, ['onOpenChange']);
+
+	const focusContext = useFocusContextOrNull();
+	const focusSource = focusContext?.createFocusSource();
+
+	function handleOpenChange(open: boolean) {
+		focusSource?.setIsFocused(open, { delayUnfocus: 250 });
+		props.onOpenChange?.(open);
+	}
+
+	return <DropdownMenuPrimitive.Root gutter={4} onOpenChange={handleOpenChange} {...rest} />;
 };
 
 type DropdownMenuContentProps<T extends ValidComponent = 'div'> = DropdownMenuPrimitive.DropdownMenuContentProps<T> & {
@@ -223,19 +235,19 @@ const DropdownMenuRadioItem = <T extends ValidComponent = 'div'>(
 
 export {
 	DropdownMenu,
-	DropdownMenuTrigger,
-	DropdownMenuPortal,
-	DropdownMenuContent,
-	DropdownMenuItem,
-	DropdownMenuShortcut,
-	DropdownMenuLabel,
-	DropdownMenuSeparator,
-	DropdownMenuSub,
-	DropdownMenuSubTrigger,
-	DropdownMenuSubContent,
 	DropdownMenuCheckboxItem,
+	DropdownMenuContent,
 	DropdownMenuGroup,
 	DropdownMenuGroupLabel,
+	DropdownMenuItem,
+	DropdownMenuLabel,
+	DropdownMenuPortal,
 	DropdownMenuRadioGroup,
 	DropdownMenuRadioItem,
+	DropdownMenuSeparator,
+	DropdownMenuShortcut,
+	DropdownMenuSub,
+	DropdownMenuSubContent,
+	DropdownMenuSubTrigger,
+	DropdownMenuTrigger,
 };

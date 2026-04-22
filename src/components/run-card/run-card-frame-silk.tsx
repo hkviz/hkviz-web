@@ -31,17 +31,14 @@ export const RunCardFrameSilk: Component<{
 				<img
 					src={brokenSpriteSilk}
 					alt="Broken Steel Soul game mode frame"
-					class={cn(
-						'absolute -top-2 -left-5 z-2 h-24 w-auto max-w-none',
-						runCardInteractiveBrightnessClasses,
-					)}
+					class={cn('absolute -top-2 -left-5 h-24 w-auto max-w-none', runCardInteractiveBrightnessClasses)}
 				/>
 			}
 		>
 			<img
 				src={source()}
 				alt={crestName() + ' crest in ' + (props.isSteelSoul ? 'Steel Soul' : 'standard') + ' mode'}
-				class={cn('absolute z-2 w-auto max-w-none', positionClasses(), runCardInteractiveBrightnessClasses)}
+				class={cn('absolute w-auto max-w-none', positionClasses(), runCardInteractiveBrightnessClasses)}
 			/>
 		</Show>
 	);

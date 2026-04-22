@@ -53,6 +53,263 @@ export default {
 	'Map Zones.CITADEL_FORUM': 'The Forum',
 	'Map Zones.COG_CORE': 'Cogwork <br>Core',
 	'Map Zones.ABYSS': 'The Abyss',
+	'UI.INV_NAME_DRESS_REG': 'Hunter’s Cloak',
+	'UI.INV_NAME_DRESS_BROLLY': 'Drifter’s Cloak',
+	'UI.INV_NAME_DRESS_DJ': 'Faydown Cloak',
+	'UI.INV_DESC_DRESS_REG': 'Simple protective garb, expertly woven but showing signs of age.',
+	'UI.INV_DESC_DRESS_BROLLY': 'Simple protective garb, sewn through with flexible spines.',
+	'UI.INV_DESC_DRESS_DJ':
+		'Protective garb lined with the soft down of a Fayforn and sewn through with flexible spines.',
+	'UI.INV_DESC_DRESS_APP_FLY_FULL': 'Smells strongly of fly.',
+	'UI.INV_DESC_DRESS_APP_FLY_HALF': 'Smells faintly of fly.',
+	'UI.INV_NAME_TOOLPOUCH': 'Tool Pouch',
+	'UI.INV_NAME_POUCHANDTOOLKIT': 'Tool Pouch<br>& Crafting Kit',
+	'UI.INV_DESC_TOOLPOUCH': 'Basic pouch designed for holding tools, traps and crafting materials.',
+	'UI.INV_DESC_POUCHANDTOOLKIT':
+		'A pouch for holding traps and tools, and fine crafting implements to increase their lethality.',
+	'UI.INV_NAME_QUILL': 'Quill',
+	'UI.INV_NAME_MAP': 'Map',
+	'UI.INV_NAME_MAPANDQUILL': 'Map & Quill',
+	'UI.INV_DESC_QUILL': 'Writing implement for recording one’s travels. Can be used to update any acquired maps.',
+	'UI.INV_DESC_MAP': 'Map of Pharloom, partially filled out. Without a quill it cannot be updated.',
+	'UI.INV_DESC_MAPANDQUILL':
+		'Map of Pharloom and a quill for recording one’s travels. When resting at a bench or elsewhere, the map will be updated with newly discovered areas.',
+	'UI.INV_NAME_WHITE_FLOWER': 'Everbloom',
+	'UI.INV_DESC_WHITE_FLOWER':
+		'Ethereal flower plucked from a deep and distant memory. Glows with soft, pale light that wards against the void.',
+	'UI.INV_NAME_TOOL_METAL': 'Craftmetal',
+	'UI.INV_DESC_TOOL_METAL':
+		'Rare element found naturally within the rock and bone of Pharloom.<br><br>Used by skilled craftsbugs in the construction of tools and trinkets.',
+	'UI.INV_NAME_CREST_SOCKET': 'Memory Locket',
+	'UI.INV_DESC_CREST_SOCKET':
+		'Keepsake containing a precious memory. Can be used to expand a Crest.<br><br>Expand Crests in the Crest pane of the Menu.',
+	'UI.INV_NAME_PLINNEY_TOOLS': 'Pale Oil',
+	'UI.INV_DESC_PLINNEY_TOOLS':
+		'Bile gland of a rare sylphean slug. Talented pinmasters can use the glistening liquid within to improve a blade’s sharpness.',
+	'UI.INV_NAME_HEART_CORAL': 'Encrusted Heart',
+	'UI.INV_DESC_HEART_CORAL': 'Enlivened heart of Crust King Khann. It beats deep and slow.',
+	'UI.INV_DESC_MOMENTO_HEART_EXTRA': 'The heart can be displayed in a home.',
+	'UI.INV_NAME_HEART_BLOOM': 'Pollen Heart',
+	'UI.INV_DESC_HEART_BLOOM': 'Enlivened heart of Nyleth. It beats faint and fast.',
+	'UI.INV_NAME_HEART_HUNTER': 'Hunter’s Heart',
+	'UI.INV_DESC_HEART_HUNTER': 'Enlivened heart of Skarrsinger Karmelita. Its beat is steady and strong.',
+	'UI.INV_NAME_HEART_CLOVER': 'Conjoined Heart',
+	'UI.INV_DESC_HEART_CLOVER': 'Enlivened heart of the Green Prince. Its beat is sharp and clear.',
+	'UI.INV_NAME_PLASMIUM_GLAND': 'Plasmium Gland',
+	'UI.INV_DESC_PLASMIUM_GLAND':
+		'Pulsating organ grown within the shell of Alchemist Zylotol. The gland replenishes over time, providing a near limitless source of Plasmium.<br><br>Crafting new Plasmium Phials no longer requires a reserve.',
+	'UI.INV_NAME_BROKEN_SILKSHOT': 'Ruined Tool',
+	'UI.INV_DESC_BROKEN_SILKSHOT':
+		'Remains of an ancient Weaver implement, broken and inoperable.<br><br>A craftsbug of high skill may be able to repair it.',
+	'UI.INV_NAME_WITCH_ITEM': 'Twisted Bud',
+	'UI.INV_DESC_WITCH_ITEM': 'Contorted mass of ashen vine. Cries out incessantly.',
+	'UI.INV_NAME_COG_HEART_PIECE': 'Cogheart Piece',
+	'UI.INV_NAME_COG_HEART_PIECES': 'Cogheart Pieces',
+	'UI.INV_NAME_COG_HEART': 'Cogheart',
+	'UI.INV_DESC_COG_HEART_PIECE':
+		'One part of a cogwork heart, containing an intricate mechanism of wheels and regulators.',
+	'UI.INV_DESC_COG_HEART_PIECES':
+		'Two parts of a cogwork heart, containing an intricate array of wheels and regulators.',
+	'UI.INV_DESC_COG_HEART': 'Reassembled cogwork heart, containing a fine array of wheels and regulators.',
+	'UI.INV_NAME_CRAW_SUMMONS': 'Craw Summons',
+	'UI.INV_DESC_CRAW_SUMMONS':
+		'Scrawled missive on tattered black rag.<br><br>“Defiler... Dark... Attend... Home... Wheel...”',
+	'UI.INV_NAME_MOSSBERRY': 'Mossberry',
+	'UI.INV_DESC_MOSSBERRY': 'Sweet fruit that grows in moist environments. Its seeds are toxic to most creatures.',
+	'UI.INV_NAME_PILGRIM_RAGS_ITEM': 'Pilgrim Shawl',
+	'UI.INV_DESC_PILGRIM_RAGS_ITEM':
+		'Simple garment worn by several pilgrims over the ages. Torn, tattered and repaired many times over.',
+	'UI.INV_NAME_SPINE': 'Spine Core',
+	'UI.INV_DESC_SPINE':
+		'Flexible fibre from within a Hoker’s spine. Can be woven into garments and accessories by a skilled seamstress.',
+	'UI.INV_NAME_SHELL_FLOWER': 'Pollip Heart',
+	'UI.INV_DESC_SHELL_FLOWER':
+		'Core of a flower formed around the body of a consumed Wood Wasp. Secretes a sticky sap that the wasps subsist on.',
+	'UI.INV_NAME_CROW_FEATHER': 'Ragpelt',
+	'UI.INV_DESC_CROW_FEATHER':
+		'Tattered pelt taken from the body of a Crawbug. Fragile and drab, it is considered to have few practical uses.',
+	'UI.INV_NAME_ROCK_ROLLER_ITEM': 'Flintgem',
+	'UI.INV_DESC_ROCK_ROLLER_ITEM':
+		'Gem-like organ taken from a Flintbeetle. Produces incendiary sparks when abraded, and may explode if cracked or dropped.',
+	'UI.INV_NAME_ROACH_CORPSE_ITEM': 'Roach Guts',
+	'UI.INV_DESC_ROACH_CORPSE_ITEM':
+		'Fresh innards of a Muckroach, tough and slimy with a rank odour. Unpalatable to most.',
+	'UI.INV_NAME_SK_FRAGMENT': 'Crown Fragment',
+	'UI.INV_DESC_SK_FRAGMENT': 'Large spike of bone collected from a defeated Skull Tyrant.',
+	'UI.INV_NAME_BEASTFLY_REMAINS': 'Horn Fragment',
+	'UI.INV_DESC_BEASTFLY_REMAINS': 'Hardened chunk of horned shell collected from a defeated Savage Beastfly.',
+	'UI.INV_NAME_CONCHFLY_REMAINS': 'Crust Spire',
+	'UI.INV_DESC_CONCHFLY_REMAINS': 'Hard horn piece, broken from the tip of a Conchfly’s shell.',
+	'UI.INV_NAME_BROODMOTHER_REMAINS': 'Broodmother’s Eye',
+	'UI.INV_DESC_BROODMOTHER_REMAINS': 'Gelatinous organ collected from the defeated Broodmother.',
+	'UI.INV_NAME_BELLCLAPPER_ITEM': 'Silver Bell',
+	'UI.INV_DESC_BELLCLAPPER_ITEM': 'Finely forged bell made from a gleaming metal.',
+	'UI.INV_NAME_BLUE_GOOP': 'Plasmium',
+	'UI.INV_NAME_BLUE_GOOP_PICKUP': 'Plasmium Collected',
+	'UI.INV_DESC_BLUE_GOOP': 'Liquid lifeseed extracted from a ripe bud. Possesses regenerative qualities.',
+	'UI.INV_DESC_BLUE_GOOP_FULL': 'Liquid lifeseed extracted from a ripe bud. Possesses regenerative qualities.',
+	'UI.INV_NAME_CORAL_CHUNK': 'Coral Shard',
+	'UI.INV_DESC_CORAL_CHUNK':
+		'Chunk of dense coral-shell. Not fit for crafting tools, but claimed to have various medicinal properties if correctly prepared.',
+	'UI.INV_NAME_FINEPIN': 'Fine Pin',
+	'UI.INV_DESC_FINEPIN':
+		'Common weapon of Pharloom, still in good condition despite long use. An expertly crafted metal rod with a sharpened tip.',
+	'UI.INV_NAME_SHININGCOG': 'Shining Cog',
+	'UI.INV_DESC_SHININGCOG':
+		'Pristine cog from within the shell of an automaton. Despite long use, its metal has not dulled.',
+	'UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM': 'Choir Cloak',
+	'UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM':
+		'Garment gifted to pilgrims on admittance to the Citadel. Its thick weave offers additional protection against wind and cold.',
+	'Quests.COURIER_SUPPLIES_ITEM_NAME': 'Courier’s Swag',
+	'Quests.COURIER_SUPPLIES_ITEM_DESC': 'Heavy cloth sack containing tools, trinkets and medical aids.',
+	'Quests.COURIER_SUPPLIES_SLAVE_NAME': 'Queen’s Egg',
+	'Quests.COURIER_SUPPLIES_SLAVE_DESC':
+		'Fragile egg containing a young Silkeater Queen. Though the Queen cannot gather Silk itself, with time and care it could be raised to breed more Silkeaters.',
+	'Quests.COURIER_SUPPLIES_MASK_NAME': 'Liquid Lacquer',
+	'Quests.COURIER_SUPPLIES_MASK_DESC': 'Pale glaze used in the preparation and protection of bone masks.',
+	'UI.INV_NAME_GOURMAND_MOSSBERRY_STEW': 'Mossberry Stew',
+	'UI.INV_DESC_GOURMAND_MOSSBERRY_STEW':
+		'Thick, syrupy soup of Mossberries and druidic herbs. Sweet and aromatic, but poisonous to most creatures.',
+	'UI.INV_NAME_PLASMIUM_BLOOD': 'Plasmified Blood',
+	'UI.INV_DESC_PLASMIUM_BLOOD':
+		'Blood of a creature merged full with liquid lifeseed. Possesses powerful regenerative qualities.',
+	'UI.INV_NAME_GOURMAND_VINTAGE_NECTAR': 'Vintage Nectar',
+	'UI.INV_DESC_GOURMAND_VINTAGE_NECTAR':
+		'High quality nectar of a long-lived aphid, kept in storage over many lifetimes to allow a complex maturation.',
+	'Quests.COURIER_SUPPLIES_MEAT_NAME': 'Courier’s Rasher',
+	'Quests.COURIER_SUPPLIES_MEAT_DESC':
+		'Fatty meat of indeterminate origin. Once prepared it will quickly spoil if not stored properly.',
+	'UI.INV_NAME_GOURMAND_CORAL_INGREDIENT': 'Crustnut',
+	'UI.INV_DESC_GOURMAND_CORAL_INGREDIENT':
+		'Tough, furred seed from the centre of a corpora cluster. Stale to taste, but strong once ground as seasoning.',
+	'UI.INV_NAME_PICKLEDEGG': 'Pickled Muckmaggot',
+	'UI.INV_DESC_PICKLEDEGG':
+		'Pungent delicacy preserved in roach brine. The most famous creation of the disgraced chef Lugoli.',
+	'Quests.ITEM_EXTRACTOR_PINS_NAME': 'Steel Spines',
+	'Quests.ITEM_EXTRACTOR_PINS_DESC':
+		'Hard forged spines, intended for use in heavy machinery and able to pierce through even the toughest shell.',
+	'UI.INV_NAME_MORSEL_SEARED': 'Seared Organ',
+	'UI.INV_DESC_MORSEL_SEARED':
+		'Meat harvested from a defeated creature. It has been seared in a way that noticeably affects the flavour.',
+	'UI.INV_NAME_MORSEL_SHREDDED': 'Shredded Organ',
+	'UI.INV_DESC_MORSEL_SHREDDED': 'Meat harvested from a defeated creature. It has been diced into fine chunks.',
+	'UI.INV_NAME_MORSEL_SPEARED': 'Skewered Organ',
+	'UI.INV_DESC_MORSEL_SPEARED':
+		'Meat harvested from a defeated creature. It has been cleanly speared through, but is otherwise intact.',
+	'UI.INV_NAME_ANT_TRAPPER_ITEM': 'Grass Doll',
+	'UI.INV_DESC_ANT_TRAPPER_ITEM': 'Carved child’s toy of a bug clad in leaves.',
+	'UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER': 'Maiden’s Soul',
+	'UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER': 'Vial gifted by the Chapel Maid, filled full with swirling soul.',
+	'UI.INV_NAME_SNARE_SOUL_BELLHERMIT': 'Hermit’s Soul',
+	'UI.INV_DESC_SNARE_SOUL_BELLHERMIT': 'Heavy bell filled with the shimmering soul of the Bell Hermit.',
+	'UI.INV_NAME_SNARE_SOUL_SWAMP': 'Seeker’s Soul',
+	'UI.INV_DESC_SNARE_SOUL_SWAMP': 'Cracked shell containing soul drawn from a long deceased bug.',
+	'UI.INV_NAME_TOKEN_FAITH': 'Simple Key',
+	'UI.INV_DESC_TOKEN_FAITH':
+		'Rusted key of common design. Can be used to open a range of simple locks.<br><br>Degraded by time, it will break after a single use.',
+	'UI.INV_NAME_DOCK_KEY': 'Diving Bell Key',
+	'UI.INV_DESC_DOCK_KEY': 'Small worker’s key. Unlocks the door to the diving bell in Deep Docks.',
+	'UI.INV_NAME_DOCK_DEMO_KEY': 'Gate Key',
+	'UI.INV_DESC_DOCK_DEMO_KEY': 'Small worker’s key. Unlocks the gate in the middle of Deep Docks.',
+	'UI.INV_NAME_WARD_KEY': 'White Key',
+	'UI.INV_DESC_WARD_KEY':
+		'Finely crafted metal key, shaped to resemble a surgical implement.<br><br>Grants access to the Citadel’s Whiteward.',
+	'UI.INV_NAME_WARD_BOSS_KEY': 'Surgeon’s Key',
+	'UI.INV_DESC_WARD_BOSS_KEY': 'Discarded key of the Whiteward.<br>Opens the sluice beneath the operating theatre.',
+	'UI.INV_NAME_ARCHITECT_KEY': 'Architect’s Key',
+	'UI.INV_DESC_ARCHITECT_KEY': 'Rotary key of the Architects. Opens their Chapel in the Underworks.',
+	'UI.INV_NAME_SLAB_KEY_A': 'Key of Indolent',
+	'UI.INV_NAME_SLAB_KEY_B': 'Key of Heretic',
+	'UI.INV_NAME_SLAB_KEY_C': 'Key of Apostate',
+	'UI.INV_NAME_SLAB_KEYRING': 'Slab Keys',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE':
+		'Key with the mark of ‘Indolent’. Opens the way to certain cells and passages of the Slab.',
+	'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP':
+		'Key with the mark of ‘Apostate’. Opens the way to certain cells and passages of the Slab.',
+	'UI.INV_DESC_SLAB_KEYRING': 'Keys to the cells and passages of the Slab.',
+	'UI.INV_NAME_BELL_HOUSE_KEY': 'Bellhome Key',
+	'UI.INV_DESC_BELL_HOUSE_KEY': 'Key to a restored bell above Bellhart.',
+	'UI.INV_NAME_MATERIUM': 'Materium',
+	'UI.INV_DESC_MATERIUM':
+		'Tubes and receptacles built for the storing, recording and research of various materials.<br><br>The Materium can be assembled in a home.',
+	'UI.INV_NAME_FARSIGHT': 'Farsight',
+	'UI.INV_DESC_FARSIGHT':
+		'Retracted Weaver surveillance instrument. Once assembled, the device will allow observation over vast distances.  <br><br>The Farsight can be assembled in a home.',
+	'UI.INV_NAME_CRAWBELL': 'Crawbell',
+	'UI.INV_DESC_CRAWBELL':
+		'Nest fashioned from an old bell. Once set up, young Craws will occasionally roost within, filling the bell with shell shards and rosaries.<br><br>The Crawbell can be installed on the exterior of a home.',
+	'UI.INV_NAME_SETH_MEMENTO': 'Guardian’s Memento',
+	'UI.INV_DESC_SETH_MEMENTO': 'Aged medallion of the wanderer Seth. A gift given in respect of great skill.',
+	'UI.INV_DESC_MOMENTO_EXTRA': 'The memento can be displayed in a home.',
+	'UI.INV_NAME_SPRINT_MEMENTO': 'Sprintmaster Memento',
+	'UI.INV_DESC_SPRINT_MEMENTO': 'Gilded trophy awarded by Sprintmaster Swift to the fastest bug in Pharloom.',
+	'UI.INV_NAME_MEMENTO_GARMOND': 'Hero’s Memento',
+	'UI.INV_DESC_MEMENTO_GARMOND': 'Heirloom of a village lost to Pharloom’s Haunting.',
+	'UI.INV_NAME_HUNTER_MEMENTO': 'Hunter’s Memento',
+	'UI.INV_DESC_HUNTER_MEMENTO': 'Seal symbol given in recognition of a true Hunter, stamped in sticky goo.',
+	'UI.INV_NAME_MEMENTO_CROWMAN': 'Craw Memento',
+	'UI.INV_DESC_MEMENTO_CROWMAN':
+		'Iron emblem of the Court of Craws, absolving the bearer of all crimes past and future.',
+	'UI.INV_NAME_MEMENTO_GREY': 'Grey Memento',
+	'UI.INV_DESC_MEMENTO_GREY':
+		'Engraved cruststone, worn by sand and blanched by time.<br><br>...Watch...Remember...Till time... Life anew...',
+	'UI.INV_NAME_MEMENTO_SURFACE': 'Surface Memento',
+	'UI.INV_DESC_MEMENTO_SURFACE': 'Worn ornament of the Nameless Town high above Pharloom.',
+	'UI.INV_NAME_R_BONE_RECORD': 'Bone Scroll',
+	'UI.INV_DESC_R_BONE_RECORD': 'Crude journal made of coarse fabric and bone, left by a fallen pilgrim.',
+	'UI.INV_DESC_RELIC': 'A relic of Pharloom’s past, interesting to collectors of historical items.',
+	'UI.INV_NAME_R_WEAVER_TOTEM': 'Weaver Effigy',
+	'UI.INV_DESC_R_WEAVER_TOTEM': 'Carved bone idol of an ancient Weaver. A prayer is etched upon its body.',
+	'UI.INV_NAME_R_SEAL_CHIT': 'Choral Commandment',
+	'UI.INV_DESC_R_SEAL_CHIT': 'Order issued by the Citadel. The once gleaming seal has worn with time.',
+	'UI.INV_NAME_R_WEAVER_RECORD': 'Rune Harp',
+	'UI.INV_DESC_R_WEAVER_RECORD':
+		'Old Weaver recording instrument, strung with Silk runes. The faded runes hold a Weaver’s words from ages gone.',
+	'UI.INV_NAME_R_ANCIENT_EGG': 'Arcane Egg',
+	'UI.INV_DESC_R_ANCIENT_EGG':
+		'Black stone egg formed before the birth of Pharloom.<br><br>A relic from the ancient past. Highly prized by collectors of historical items.',
+	'UI.INV_NAME_R_PSALM_CYL': 'Psalm Cylinder',
+	'UI.INV_DESC_R_PSALM_CYL':
+		'Metallic cylinder of Citadel make, etched with a recording of sound.<br><br>The cylinder can be played in a gramophone.',
+	'UI.INV_NAME_R_PSALM_CYL_MELODY': 'Sacred Cylinder',
+	'UI.INV_DESC_R_PSALM_CYL_MELODY':
+		'Metallic cylinder of Citadel make, etched with the melody of the Vaultkeepers.<br><br>The cylinder can be played in a gramophone.',
+	'UI.INV_NAME_COIN_SET_F': 'Frayed Rosary String',
+	'UI.INV_DESC_COIN_SET_F':
+		'Worn string holding a meagre amount of rosaries. Can be broken and the loose rosaries used to trade.',
+	'UI.INV_DESC_COIN_SET_USE': 'Contains {0} rosaries.',
+	'UI.INV_NAME_COIN_SET_S': 'Rosary String',
+	'UI.INV_DESC_COIN_SET_S': 'Short string of rosaries. Can be broken and the rosaries used to trade.',
+	'UI.INV_NAME_COIN_SET_M': 'Rosary Necklace',
+	'UI.INV_DESC_COIN_SET_M':
+		'Adornment strung with a large quantity of rosaries. Can be broken and the rosaries used to trade.',
+	'UI.INV_NAME_COIN_SET_M2': 'Heavy Rosary Necklace',
+	'UI.INV_DESC_COIN_SET_M2':
+		'String threaded with a mix of common and fine rosaries. Can be broken and the rosaries used to trade.',
+	'UI.INV_NAME_COIN_SET_L': 'Pale Rosary Necklace',
+	'UI.INV_DESC_COIN_SET_L': 'Heavy necklace laden with pearl rosaries. Can be broken and the rosaries used to trade.',
+	'UI.INV_NAME_SHARD_POUCH': 'Shard Bundle',
+	'UI.INV_DESC_SHARD_POUCH':
+		'Small bundle of shell shards tied together with string. Can be broken to use the shards for crafting.',
+	'UI.INV_DESC_SHARD_POUCH_USE': 'Contains {0} shell shards.',
+	'UI.INV_NAME_GREAT_SHARD': 'Beast Shard',
+	'UI.INV_DESC_GREAT_SHARD':
+		'Chunk of hardened material found in the shells of great beasts. Can be broken into individual shell shards for use in crafting.',
+	'UI.INV_DESC_GREAT_SHARD_USE': 'Breaks into {0} shell shards.',
+	'UI.INV_NAME_PRISTINE_CORE': 'Pristine Core',
+	'UI.INV_DESC_PRISTINE_CORE':
+		'Intricate internal mechanism of a cogwork bug. Can be broken into individual shell shards for use in crafting.',
+	'UI.INV_NAME_FIXER_IDOL': 'Hornet Statuette',
+	'UI.INV_DESC_FIXER_IDOL':
+		'Small sculpture, inexpertly but painstakingly crafted as a symbol of enduring friendship.',
+	'UI.INV_NAME_GROWSTONE': 'Growstone',
+	'UI.INV_DESC_GROWSTONE':
+		'Cold, steely stone with remarkable regrowth capacity.<br><br>If shattered into shell shards, it will reform over time.',
+	'UI.INV_NAME_SILK_GRUB': 'Silkeater',
+	'UI.INV_DESC_SILK_GRUB':
+		'Grub that lives within and feeds upon Pharloom’s lingering Silk, born with the ability to sense Silk over great distances.',
+	'UI.INV_DESC_SILK_GRUB_FUNCTION': 'Consume the Silkeater to retrieve a cocoon after falling in battle.',
+	'Prompts.PROMPT_USE_CONSUMABLE_GRUB': 'Consume',
 	'Tools.CREST_HUNTER_NAME': 'Hunter',
 	'Tools.CREST_REAPER_NAME': 'Reaper',
 	'Tools.CREST_PILGRIM_NAME': 'Wanderer',
@@ -124,6 +381,1145 @@ export default {
 	'Tools.MUSICIAN_CHARM_NAME': 'Spider Strings',
 	'Tools.SPRINTMASTER_NAME': 'Silkspeed Anklets',
 	'Tools.THIEF_CHARM_NAME': 'Thief’s Mark',
+	'Journal.NAME_MOSSBONE_CRAWLER': 'Mossgrub',
+	'Journal.DESC_MOSSBONE_CRAWLER': 'Fur covered crawler with a series of sharp spikes along its back.',
+	'Journal.NOTE_MOSSBONE_CRAWLER': 'If not for the spikes, I would think it an appealing bug.',
+	'Journal.NAME_MOSSBONE_CRAWLER_FAT': 'Massive Mossgrub',
+	'Journal.DESC_MOSSBONE_CRAWLER_FAT': 'Unnaturally overgrown Mossgrub, bred within the Citadel’s Memorium.',
+	'Journal.NOTE_MOSSBONE_CRAWLER_FAT':
+		'So close to a perfect furred form... If only they’d been able to breed out the spines.',
+	'Journal.NAME_MOSSBONE_FLY': 'Mossmir',
+	'Journal.DESC_MOSSBONE_FLY': 'Small fluttering creature capable of defending itself with its small stinger.',
+	'Journal.NOTE_MOSSBONE_FLY':
+		'This bug is soft and clumsy, but to its fortune its home caves seem relatively free of effective predators. I wonder why that is.',
+	'Journal.NAME_MOSSBONE_MOTHER': 'Moss Mother',
+	'Journal.DESC_MOSSBONE_MOTHER': 'Adult Mossmir with a fully developed stinger and hardened hide.',
+	'Journal.NOTE_MOSSBONE_MOTHER':
+		'Motherhood is an instinct that can push creatures beyond what seems their natural limits. It turns even weaker beasts like these into formidable foes.',
+	'Journal.NAME_ASPID_COLLECTOR': 'Aknid',
+	'Journal.DESC_ASPID_COLLECTOR': 'Winged insect that feeds upon moss and lichen in the caves above Bone Bottom.',
+	'Journal.NOTE_ASPID_COLLECTOR':
+		'In its natural state it would avoid potential predators, but Pharloom’s Haunting now compels it to aggression. Fortunately, its jaws are ill-suited for combat.',
+	'Journal.NAME_BONE_GOOMBA': 'Skull Scuttler',
+	'Journal.DESC_BONE_GOOMBA': 'Small, soft bug that uses the hard skulls of the Marrow for protection and disguise.',
+	'Journal.NOTE_BONE_GOOMBA':
+		'In every land, creatures find new and surprising ways to disguise themselves. One must be wary always.',
+	'Journal.NAME_BONE_GOOMBA_BOUNCE_FLY': 'Skullwing',
+	'Journal.DESC_BONE_GOOMBA_BOUNCE_FLY':
+		'Airborne relative of the grounded Skull Scuttler, found only in the Marrow’s deepest, hottest caves.',
+	'Journal.NOTE_BONE_GOOMBA_BOUNCE_FLY':
+		'Such feeble creatures could only survive thanks to the rarity of predators in these super-heated caverns.',
+	'Journal.NAME_BONE_GOOMBA_LARGE': 'Skull Brute',
+	'Journal.DESC_BONE_GOOMBA_LARGE':
+		'Soft bug beneath a huge, horned skull. Charges at intruders to protect its territory and its smaller companions.',
+	'Journal.NOTE_BONE_GOOMBA_LARGE':
+		'Either its size has made it fearless or the Haunting has removed its sense of self-preservation.',
+	'Journal.NAME_SKULL_KING': 'Skull Tyrant',
+	'Journal.DESC_SKULL_KING':
+		'Rare, enormous Skull Scuttler. The Marrow’s largest predator, and the most feared for its ferocious temperament.',
+	'Journal.NOTE_SKULL_KING':
+		'Though surely fierce, the skull it bears looks taken from an even larger beast. If not for the bones as proof, I would scarcely believe bugs could grow to such scale.',
+	'Journal.NAME_BONE_CRAWLER': 'Kilik',
+	'Journal.DESC_BONE_CRAWLER':
+		'Small bony bug that favours dark tunnels. Can expand its spiked carapace to ward against attacking predators.',
+	'Journal.NOTE_BONE_CRAWLER':
+		'I am fond of simple, effective traps such as this bug’s extendable spikes. An unwary predator would be skewered clean through.',
+	'Journal.NAME_BONE_FLYER': 'Beastfly',
+	'Journal.DESC_BONE_FLYER': 'Aggressive fly of Pharloom’s lowlands. Rams prey with its hardbone mask.',
+	'Journal.NOTE_BONE_FLYER':
+		'Dancing around this simple creature as it charges back and forth is the sort of game I delighted in as a child. Alas, I now have more pressing matters to attend to.',
+	'Journal.NAME_BONE_FLYER_GIANT': 'Savage Beastfly',
+	'Journal.DESC_BONE_FLYER_GIANT': 'Angered, adult Beastfly with a weighty body and a thickened hardshell mask.',
+	'Journal.NOTE_BONE_FLYER_GIANT':
+		'Civilisation encroaches from this kingdom’s crown, but the lowlands are still ruled by great beasts. Its roar stirs something deep within me, some primal instinct.',
+	'Journal.NAME_BONE_CIRCLER': 'Caranid',
+	'Journal.DESC_BONE_CIRCLER':
+		'Common winged bug of the lowlands. Generally docile, but will attack if threats come close.',
+	'Journal.NOTE_BONE_CIRCLER':
+		'Their plump, round shape makes them well-suited for target practice. Difficult to resist testing my aim on them...',
+	'Journal.NAME_BONE_CIRCLER_VICIOUS': 'Vicious Caranid',
+	'Journal.DESC_BONE_CIRCLER_VICIOUS':
+		'Aggressive winged bug of the lowlands. When angered, it rapidly whips its bladed tail as a weapon.',
+	'Journal.NOTE_BONE_CIRCLER_VICIOUS':
+		'Its wings are quite small compared to its bulk. Perhaps it uses the warm air of these fiery lands to help stay airborne. Clever, if so.',
+	'Journal.NAME_BONE_HOPPER': 'Hardbone Hopper',
+	'Journal.DESC_BONE_HOPPER': 'Grazing creature with sharp senses that nimbly retreats from danger.',
+	'Journal.NOTE_BONE_HOPPER':
+		'Despite the Haunting of its shell, it has not been overcome with aggression. Its desire to flee remains too strong.',
+	'Journal.NAME_BONE_HOPPER_GIANT': 'Hardbone Elder',
+	'Journal.DESC_BONE_HOPPER_GIANT':
+		'Tall creature with sharp senses. Defends its herd with powerful legs and a sharp-tipped mask.',
+	'Journal.NOTE_BONE_HOPPER_GIANT':
+		'There is surprising strength hidden in their thin, elegant limbs. It would be a pleasure to ride upon it...',
+	'Journal.NAME_BONE_SPITTER': 'Tarmite',
+	'Journal.DESC_BONE_SPITTER': 'Flying bone mite that lives near magma. Roasts its prey by spitting scorching tar.',
+	'Journal.NOTE_BONE_SPITTER':
+		'Its sticky spit would no doubt make a useful crafting material if moulded fresh. Unfortunately, I cannot stop to experiment.',
+	'Journal.NAME_BONE_ROLLER': 'Mawling',
+	'Journal.DESC_BONE_ROLLER': 'Young, bony bug that can curl its body to form a ball.',
+	'Journal.NOTE_BONE_ROLLER':
+		'Their rough, ridged shell grips tight to any surface. Even walls and roofs become pathways for these nimble bugs.',
+	'Journal.NAME_BONE_THUMPER': 'Marrowmaw',
+	'Journal.DESC_BONE_THUMPER':
+		'Giant roller of the lowlands. Its ridged hide will crush smaller creatures beneath it.',
+	'Journal.NOTE_BONE_THUMPER':
+		'Sheer bulk makes for an effective weapon, but requires much sustenance. This creature would have spent most of its time eating. An acceptable life for some.',
+	'Journal.NAME_SPINE_FLOATER': 'Hoker',
+	'Journal.DESC_SPINE_FLOATER': 'Spine-shooting drifter of the lowlands.',
+	'Journal.NOTE_SPINE_FLOATER':
+		'Whatever admiration I had for its fleecy down is spoilt by its disturbing mask... and its steely spines.',
+	'Journal.NAME_ROCK_ROLLER': 'Flintbeetle',
+	'Journal.DESC_ROCK_ROLLER':
+		'Rarely seen beetle that spends most of its life nestled deep in bone and rock. The Flintgems on its shell excrete an explosive powder.',
+	'Journal.NOTE_ROCK_ROLLER':
+		'Its bright gems could be used to make beautiful, but short-lived jewellery. An amusing idea for a gift... or a trap.',
+	'Journal.NAME_RHINO': 'Rhinogrund',
+	'Journal.DESC_RHINO':
+		'Long-horned beast of Pharloom’s lowlands. Relies on its horn both to impale and to wrench the ground beneath it, flinging dangerous debris.',
+	'Journal.NOTE_RHINO': 'Certain tools and skills can pierce its defences. I should adjust my strategy as needed.',
+	'Journal.NAME_CRYPT_WORM': 'Gromling',
+	'Journal.DESC_CRYPT_WORM': 'Young masked worm that delights in ambushing intruders within its tunnels.',
+	'Journal.NOTE_CRYPT_WORM': 'A frustrating fiend. They flee beneath the bone whenever I try to strike them down.',
+	'Journal.NAME_BONE_WORM': 'Grom',
+	'Journal.DESC_BONE_WORM': 'Burrowing worm that uses its many blunted teeth to dig through even the hardest bone.',
+	'Journal.NOTE_BONE_WORM':
+		'They ceaselessly churn through rock and bone without ever seeming to rest. Do they have a destination? Or are they compelled to dig forever deeper?',
+	'Journal.NAME_BONE_BEAST': 'Bell Beast',
+	'Journal.DESC_BONE_BEAST':
+		'Huge, hardbone bug that lives within and travels through the veins of old bells across Pharloom.',
+	'Journal.NOTE_BONE_BEAST':
+		'This one has allied themself with me, either as thanks for their saving or respect for one judged as equal. Whichever the reason, their fellowship is welcome.',
+	'Journal.NAME_PILGRIM_03': 'Pilgrim Groveller',
+	'Journal.DESC_PILGRIM_03': 'Basic bug of Pharloom, laid low upon the ground.',
+	'Journal.NOTE_PILGRIM_03':
+		'Taken by Pharloom’s Haunting, the bug is now capable of little more than prayer and aggression.',
+	'Journal.NAME_PILGRIM_01': 'Pilgrim Pouncer',
+	'Journal.DESC_PILGRIM_01': 'Agile bug of Pharloom, its higher functions have been lost to the Haunting.',
+	'Journal.NOTE_PILGRIM_01': 'With a softer shell than most, they would have relied on their athleticism to survive.',
+	'Journal.NAME_PILGRIM_04': 'Pilgrim Hornfly',
+	'Journal.DESC_PILGRIM_04': 'Short pilgrim that uses their long horn to launch upon threats.',
+	'Journal.NOTE_PILGRIM_04': 'Birth equipped this one well. In its assault it becomes its own projectile.',
+	'Journal.NAME_PILGRIM_02': 'Pilgrim Hulk',
+	'Journal.DESC_PILGRIM_02': 'Sturdy bug lost to the Haunting. Rolls at threats with no care for its own discomfort.',
+	'Journal.NOTE_PILGRIM_02':
+		'A rare built bug within these ailing lands. Most pilgrims’ shells seem small by comparison. What nourishment did they discover to grow so large?',
+	'Journal.NAME_PILGRIM_BELL_THROWER': 'Pilgrim Bellbearer',
+	'Journal.DESC_PILGRIM_BELL_THROWER':
+		'Common bug wielding a set of old bells. The bug will fling the bells at anyone it deems still free.',
+	'Journal.NOTE_PILGRIM_BELL_THROWER':
+		'Their bells would once have rung with hope and mirth, lifting the spirits of any climbing companions. Sadly, those instruments have turned purely to combative use.',
+	'Journal.NAME_PILGRIM_FLY': 'Winged Pilgrim',
+	'Journal.DESC_PILGRIM_FLY': 'Short-horned bug born with underdeveloped wings.',
+	'Journal.NOTE_PILGRIM_FLY':
+		'Flight it possesses, but only just. It may lift from the stone, but those sad wings would never carry it far.',
+	'Journal.NAME_PILGRIM_05': 'Elder Pilgrim',
+	'Journal.DESC_PILGRIM_05': 'Thick-set bug consumed by haunted thread. Uses their solid frame to crush others.',
+	'Journal.NOTE_PILGRIM_05': 'A lucky bug to be able to grow old. Pharloom’s roads take most much earlier.',
+	'Journal.NAME_PILGRIM_BELLTHROWER_FLY': 'Winged Pilgrim Bellbearer',
+	'Journal.DESC_PILGRIM_BELLTHROWER_FLY': 'Pilgrim endowed with large wings, carrying a brace of iron bells.',
+	'Journal.NOTE_PILGRIM_BELLTHROWER_FLY':
+		'On uneven terrain their union of flight and range can prove a challenge even for me.',
+	'Journal.NAME_PILGRIM_HIKER': 'Pilgrim Hiker',
+	'Journal.DESC_PILGRIM_HIKER':
+		'Hard-shelled bug with a climber’s pin. Their pin, once aid, has become a weapon, though the bug is unrefined in its use.',
+	'Journal.NOTE_PILGRIM_HIKER': 'A bug once frail, pushed by twisted thread beyond its mortal limits.',
+	'Journal.NAME_PILGRIM_STAFFWIELDER': 'Pilgrim Guide',
+	'Journal.DESC_PILGRIM_STAFFWIELDER': 'Old pilgrim carrying a heavy iron bell staff.',
+	'Journal.NOTE_PILGRIM_STAFFWIELDER':
+		'The large bell seems to signify them as once leader of a climbing troupe, though the Haunting has erased that former authority.',
+	'Journal.NAME_PILGRIM_MOSS_SPITTER': 'Overgrown Pilgrim',
+	'Journal.DESC_PILGRIM_MOSS_SPITTER': 'Aged pilgrim, overgrown with lichen and moss.',
+	'Journal.NOTE_PILGRIM_MOSS_SPITTER':
+		'The moss looks to grow even inside their stomach, which the pilgrim spits at foes in compressed gobs. A foul form of offence.',
+	'Journal.NAME_ROSARY_PILGRIM': 'Covetous Pilgrim',
+	'Journal.DESC_ROSARY_PILGRIM':
+		'Strong bug replete with rosaries. If angered they will whip their strings in a ceaseless onslaught.',
+	'Journal.NOTE_ROSARY_PILGRIM':
+		'Is this abundance a sign of purity or greed? The way faith is measured in this land is curious indeed.',
+	'Journal.NAME_ROSARY_THIEF': 'Snitchfly',
+	'Journal.DESC_ROSARY_THIEF': 'Pernicious looter found all over Pharloom.',
+	'Journal.NOTE_ROSARY_THIEF':
+		'While these bothersome bugs are left free to forage, no loose rosary or trinket is safe.',
+	'Journal.NAME_TAR_SLUG': 'Lavalug',
+	'Journal.DESC_TAR_SLUG': 'Sticky mollusc that defends itself by spraying burning fluid from growths on its back.',
+	'Journal.NOTE_TAR_SLUG':
+		'What seems at first a purely defensive mechanism may also be necessary to rid this creature of excess heat.',
+	'Journal.NAME_TAR_SLUG_HUGE': 'Lavalarga',
+	'Journal.DESC_TAR_SLUG_HUGE':
+		'Fully grown mollusc able to unleash a gushing torrent of burning fluid from its back.',
+	'Journal.NOTE_TAR_SLUG_HUGE':
+		'To survive while storing so much searing fluid within... Before I would have believed it impossible, but Pharloom is home to many marvels.',
+	'Journal.NAME_DOCK_WORKER': 'Smelt Shoveller',
+	'Journal.DESC_DOCK_WORKER':
+		'Low level worker lost to Pharloom’s Haunting. Instinct keeps them at their task, though in much simpler fashion than before.',
+	'Journal.NOTE_DOCK_WORKER':
+		'This kingdom appears more advanced in metalwork than my own ever was, in great part due to the natural heat source at its base. Working in such an environment is an impressive feat.',
+	'Journal.NAME_DOCK_FLYER': 'Flintstone Flyer',
+	'Journal.DESC_DOCK_FLYER':
+		'Aerial worker lost to Pharloom’s Haunting. Bears a pouch full with flintstone which they will fling at intruders.',
+	'Journal.NOTE_DOCK_FLYER':
+		'That incendiary material they carry is a natural wonder, with many potential applications. What a waste to carelessly throw it at me whenever I pass by.',
+	'Journal.NAME_DOCK_BOMBER': 'Flintflame Flyer',
+	'Journal.DESC_DOCK_BOMBER':
+		'Brave worker carrying unstable flintflame and wearing a heavy bell to protect against potential ignition.',
+	'Journal.NOTE_DOCK_BOMBER': 'Theirs would be a high risk life, followed by a short, searing end.',
+	'Journal.NAME_SHIELD_DOCK_WORKER': 'Smokerock Sifter',
+	'Journal.DESC_SHIELD_DOCK_WORKER':
+		'Cymbal bearing worker of the Deep Docks. Pans the hauls of smokerock to find traces of more precious minerals.',
+	'Journal.NOTE_SHIELD_DOCK_WORKER':
+		'The Haunting has stolen some important part of these bugs, yet still they attempt their former task. Until, that is, they sense my presence...',
+	'Journal.NAME_DOCK_CHARGER': 'Deep Diver',
+	'Journal.DESC_DOCK_CHARGER':
+		'Bell-clad bug responsible for mining the deeper, treacherous depths below their docks.',
+	'Journal.NOTE_DOCK_CHARGER':
+		'Their heavier bells armour them well against my strikes, but against that oppressive heat... can they help at all?',
+	'Journal.NAME_DOCK_GUARD_THROWER': 'Forebrothers Signis & Gron',
+	'Journal.DESC_DOCK_GUARD_THROWER':
+		'Elder overseers of the Deep Docks, responsible for the oversight and punishment of lesser workers.',
+	'Journal.NOTE_DOCK_GUARD_THROWER':
+		'Lost in the madness of the Haunting, they still commanded the endless excavation of their caves.',
+	'Journal.NAME_SMALL_CRAB': 'Cragglite',
+	'Journal.DESC_SMALL_CRAB': 'Infant form of the more formidable Craggler.',
+	'Journal.NOTE_SMALL_CRAB': 'If left to grow, these young bugs will fight for dominance until only one remains.',
+	'Journal.NAME_ROOF_CRAB': 'Craggler',
+	'Journal.DESC_ROOF_CRAB': 'Thick-plated scuttler that prefers high places.',
+	'Journal.NOTE_ROOF_CRAB':
+		'Holds an extensive supply of searing acid in a layered sack within its shell. The acid rains from its mouth upon any creature it sees as food.',
+	'Journal.NAME_FIELDS_FLOCK_FLYERS': 'Brushflit',
+	'Journal.DESC_FIELDS_FLOCK_FLYERS':
+		'Tiny, timid creatures that huddle in flocks and flee at the first hint of danger.',
+	'Journal.NOTE_FIELDS_FLOCK_FLYERS':
+		'They call out to warn their fellows at the smallest sense of threat. A successful hunt here means staying silent and hidden right up until the decisive strike.',
+	'Journal.NAME_FIELDS_GOOMBA': 'Fertid',
+	'Journal.DESC_FIELDS_GOOMBA':
+		'Skittish scrambler of the Far Fields. Its antennae resemble stalks of grass to aid in camouflage.',
+	'Journal.NOTE_FIELDS_GOOMBA':
+		'It has no means to defend itself. Its only hope for survival is to be mistaken for a plant.',
+	'Journal.NAME_FIELDS_FLYER': 'Flapping Fertid',
+	'Journal.DESC_FIELDS_FLYER':
+		'Docile bug whose wings mimic the grasses of the Far Fields. A common snack for larger predators.',
+	'Journal.NOTE_FIELDS_FLYER':
+		'When roosting, it would look convincingly plant-like. In flight, its bulbous body quickly ruins the ruse.',
+	'Journal.NAME_SONG_GOLEM': 'Fourth Chorus',
+	'Journal.DESC_SONG_GOLEM': 'Towering iron automaton, driven by rotor and cog.',
+	'Journal.NOTE_SONG_GOLEM': 'A terrifying achievement of Pharloom, to build a construct so large and yet so nimble.',
+	'Journal.NAME_BONE_HUNTER_TINY': 'Skarrlid',
+	'Journal.DESC_BONE_HUNTER_TINY': 'Small burrowing ant, servant to the larger Skarr.',
+	'Journal.NOTE_BONE_HUNTER_TINY':
+		'These bugs work mainly as finders and foragers for the warriors of their tribe. Combat has not long been their nature.',
+	'Journal.NAME_BONE_HUNTER_BUZZER': 'Skarrwing',
+	'Journal.DESC_BONE_HUNTER_BUZZER':
+		'Darting predator that clings fast to roofs and outcrops, often summoned to aid its larger companions.',
+	'Journal.NOTE_BONE_HUNTER_BUZZER':
+		'They would make effective hunting companions, though even without the Haunting I suspect their loyalty would always remain to their clan.',
+	'Journal.NAME_BONE_HUNTER_CHILD': 'Skarr Scout',
+	'Journal.DESC_BONE_HUNTER_CHILD':
+		'Young ant hunter wielding sickles carved from teeth. Will often call for aid if danger comes close.',
+	'Journal.NOTE_BONE_HUNTER_CHILD':
+		'Despite their youth, they are impressive opponents. It seems likely their tribe were trained for combat from birth.',
+	'Journal.NAME_BONE_HUNTER': 'Skarr Stalker',
+	'Journal.DESC_BONE_HUNTER': 'Skilled ant hunter bearing blade and armour fashioned from bone.',
+	'Journal.NOTE_BONE_HUNTER':
+		'Fierce, strong and disciplined... yet these qualities do not protect them from the Haunting. Is such a fate inevitable in these lands?',
+	'Journal.NAME_BONE_HUNTER_FLY': 'Spear Skarr',
+	'Journal.DESC_BONE_HUNTER_FLY': 'Winged ant hunter that strikes from the air with its bone lance.',
+	'Journal.NOTE_BONE_HUNTER_FLY':
+		'In my youth, I envied all bugs with wings. I even fancied I might grow a pair... I have since learned better. Accept the limitations of one’s body... and augment with tools as needed.',
+	'Journal.NAME_BONE_HUNTER_THROW': 'Skarrgard',
+	'Journal.DESC_BONE_HUNTER_THROW': 'Huge ant hunter tasked to protect the stores and passages of its tribe.',
+	'Journal.NOTE_BONE_HUNTER_THROW':
+		'Theirs is the perfect shell for their duty, a wall of a warrior and an adept fighter. If I hope to claim their treasures, I must bring my best.',
+	'Journal.NAME_BONE_HUNTER_TRAPPER': 'Gurr the Outcast',
+	'Journal.DESC_BONE_HUNTER_TRAPPER': 'Huge, yet stealthy Skarr. An expert trapper and master of the undergrowth.',
+	'Journal.NOTE_BONE_HUNTER_TRAPPER':
+		'His tracks and traps... It should have been obvious from the start, this old hunter sought to draw me in. But what reason drove him to test himself so brutally? That answer I suspect I shall never know.',
+	'Journal.NAME_BONE_HUNTER_CHIEF': 'Last Claw',
+	'Journal.DESC_BONE_HUNTER_CHIEF': 'Elite former hunter acting as the final line of defence before their mother.',
+	'Journal.NOTE_BONE_HUNTER_CHIEF':
+		'Their skill once saw them chosen, and I can plainly see why. They would have lived and trained only for this duty.',
+	'Journal.NAME_HUNTER_QUEEN': 'Skarrsinger Karmelita',
+	'Journal.DESC_HUNTER_QUEEN': 'Song queen of the Skarr and their most talented warrior.',
+	'Journal.NOTE_HUNTER_QUEEN':
+		'This graceful ruler once possessed skill to rival my own. At her youthful peak, her voice united all Skarr in her service.',
+	'Journal.NAME_MITE': 'Mite',
+	'Journal.DESC_MITE': 'Verminous pest, common throughout the dark corners of Greymoor.',
+	'Journal.NOTE_MITE':
+		'Individually they offer little challenge, but their numbers are surely vast, and most remain hidden.',
+	'Journal.NAME_MITEFLY': 'Fluttermite',
+	'Journal.DESC_MITEFLY':
+		'Airborne pest, less common than its grounded siblings. Attacks with sharp fangs if agitated.',
+	'Journal.NOTE_MITEFLY':
+		'Similar bugs would gnaw away at unguarded food supplies in my homeland. As a child, I would hunt them, eager to make use of myself and test my skills.',
+	'Journal.NAME_GNAT_GIANT': 'Mitemother',
+	'Journal.DESC_GNAT_GIANT': 'Aged female mite, grown larger and stronger than most of its kin.',
+	'Journal.NOTE_GNAT_GIANT':
+		'Poor of sight but possessing a keen sense of smell, it uses its bulk to charge at foreign scents. Remaining fierce so far into old age is an admirable trait.',
+	'Journal.NAME_FARMER_CATCHER': 'Dreg Catcher',
+	'Journal.DESC_FARMER_CATCHER':
+		'Bug charged to catch dregs of Silk that fall from the Citadel. Will attack with its staff if provoked.',
+	'Journal.NOTE_FARMER_CATCHER':
+		'These bugs look to have spent every waking moment at their work. Grim, endless labour in service of the unseen Citadel above.',
+	'Journal.NAME_FARMER_SCISSORS': 'Silk Snipper',
+	'Journal.DESC_FARMER_SCISSORS':
+		'Scissor-wielding bug charged to cut and spool fallen dregs of Silk for return to the Citadel above.',
+	'Journal.NOTE_FARMER_SCISSORS':
+		'Is it the Haunting that drove them to cackling madness, or was their unending toil the cause even before that?',
+	'Journal.NAME_FARMER_CENTIPEDE': 'Thread Raker',
+	'Journal.DESC_FARMER_CENTIPEDE':
+		'Tall bug charged to pile Silk dregs in preparation for respooling. Their sharp rake now doubles equally well as a stabbing weapon.',
+	'Journal.NOTE_FARMER_CENTIPEDE': 'Theirs seems a sad, grueling task, serving their lifetime for a Citadel unseen.',
+	'Journal.NAME_VAMPIRE_GNAT': 'Moorwing',
+	'Journal.DESC_VAMPIRE_GNAT': 'Winged mite-beast, bred large to catch workers who once tried to flee their tasks.',
+	'Journal.NOTE_VAMPIRE_GNAT':
+		'With its wranglers long dead, the Moorwing stalked the towers of Greymoor, feasting on passing pilgrims and tenders alike.',
+	'Journal.NAME_WISP': 'Wisp',
+	'Journal.DESC_WISP': 'Short-lived sprite born of flickering flame.',
+	'Journal.NOTE_WISP':
+		'To live only a single, bright moment... What would one feel? Is it glorious, or only despair? Or could it be both, mixed equal?',
+	'Journal.NAME_FARMER_WISP': 'Burning Bug',
+	'Journal.DESC_FARMER_WISP': 'Many-legged insect fanatically obsessed with flame.',
+	'Journal.NOTE_FARMER_WISP':
+		'These ones somehow learnt to call and guide the scorching Wisps that share their thicket. Whether through dominance or reverence is unclear.',
+	'Journal.NAME_WISP_PYRE_EFFIGY': 'Father of the Flame',
+	'Journal.DESC_WISP_PYRE_EFFIGY': 'Totem and god, built and worshipped by the Burning Bugs.',
+	'Journal.NOTE_WISP_PYRE_EFFIGY':
+		'The remains of an aged bug were housed at the pyre’s heart. The structure suggested they wished for immolation. If so, I have seen their wish granted.',
+	'Journal.NAME_CROW': 'Craw',
+	'Journal.DESC_CROW': 'Screeching scavenger that roosts high in caverns and preys on passing pilgrims.',
+	'Journal.NOTE_CROW':
+		'By this swooping menace, a simple bug could be easily overcome. More dangerous still, they rarely attack alone.',
+	'Journal.NAME_CROWMAN': 'Tallcraw',
+	'Journal.DESC_CROWMAN': 'Rag-winged adult crawbug bearing a scavenged pin.',
+	'Journal.NOTE_CROWMAN':
+		'Far more hostile than their younger companions but seemingly less likely to roam far from their nest.',
+	'Journal.NAME_CROWMAN_DAGGER': 'Squatcraw',
+	'Journal.DESC_CROWMAN_DAGGER': 'Stout adult crawbug bearing several short pins.',
+	'Journal.NOTE_CROWMAN_DAGGER':
+		'A cowardly sort. They will try to remain at range to throw their sharp weapons. Best to rush them down and cut quick.',
+	'Journal.NAME_CROWMAN_JUROR_TINY': 'Craw Juror',
+	'Journal.DESC_CROWMAN_JUROR_TINY': 'Screeching scavenger dyed black in mourning at their land’s collapse.',
+	'Journal.NOTE_CROWMAN_JUROR_TINY':
+		'Weak, afraid, and aware of the imminent end. I understand their desperation, but my death will not prevent the coming fall.',
+	'Journal.NAME_CROWMAN_JUROR': 'Tallcraw Juror',
+	'Journal.DESC_CROWMAN_JUROR': 'Elder crawbug serving in a sacred ceremony.',
+	'Journal.NOTE_CROWMAN_JUROR':
+		'Curiosity saw me answer their summons, but I shall not allow them to stall me long. I must work fast to fix my grand mistake.',
+	'Journal.NAME_CROWMAN_DAGGER_JUROR': 'Squatcraw Juror',
+	'Journal.DESC_CROWMAN_DAGGER_JUROR': 'Short elder crawbug eagerly serving in their court.',
+	'Journal.NOTE_CROWMAN_DAGGER_JUROR':
+		'They seek to slay their only chance at survival. Alas, any words would fall useless. I have only my blade to offer response.',
+	'Journal.NAME_CRAWFATHER': 'Crawfather',
+	'Journal.DESC_CRAWFATHER':
+		'Lord and justice of Pharloom’s craws. Delivers death to condemned bugs with his steel-plated beak.',
+	'Journal.NOTE_CRAWFATHER':
+		'Did he recognise my part played in this land’s void-strung state? If so, perhaps his judgment was not unfair. To these bugs I have brought much destruction.',
+	'Journal.NAME_MAGGOTS': 'Muckmaggot',
+	'Journal.DESC_MAGGOTS': 'Mindless infant larva, coated in thick slime.',
+	'Journal.NOTE_MAGGOTS':
+		'They cling fast to the shells of other bugs, destroying any hope for concentration or comfort.',
+	'Journal.NAME_DUSTROACH_POLLYWOG': 'Slubberlug',
+	'Journal.DESC_DUSTROACH_POLLYWOG':
+		'Younger form of a Muckroach. Attacks prey by leaping from the water and snapping with its flexible jaws.',
+	'Journal.NOTE_DUSTROACH_POLLYWOG':
+		'These creatures look to have been bred deliberately in watery pens. If they are food to be, their scent suggests they must taste vile.',
+	'Journal.NAME_DUSTROACH': 'Muckroach',
+	'Journal.DESC_DUSTROACH':
+		'Starved pack bug with an insatiable appetite. Despite their tough hide and pungent meat, roaches breed rapidly so are sometimes farmed for food.',
+	'Journal.NOTE_DUSTROACH':
+		'A revolting creature. My shell itches at their presence. In the pens where their numbers grow vast, I am forever on edge.',
+	'Journal.NAME_BLOAT_ROACH': 'Bloatroach',
+	'Journal.DESC_BLOAT_ROACH':
+		'Obese offshoot of Muckroaches, born of the Citadel’s exhaust smog. The winged roach’s sagging stomach is filled with sizzling bile.',
+	'Journal.NOTE_BLOAT_ROACH':
+		'Its form is absurd... Surely it should not be able to hold itself in the air? The noxious gases in its stomach must provide its levity.',
+	'Journal.NAME_ROACHFEEDER_SHORT': 'Roachcatcher',
+	'Journal.DESC_ROACHFEEDER_SHORT': 'Short, nimble bug who uses barbed bolas to keep beasts corralled and caged.',
+	'Journal.NOTE_ROACHFEEDER_SHORT':
+		'Their throwing weapon is well-suited to the wide caverns they inhabit. These sly little bugs must have a keen claw for crafting.',
+	'Journal.NAME_ROACHFEEDER_TALL': 'Roachfeeder',
+	'Journal.DESC_ROACHFEEDER_TALL': 'Tall roach tender charged to feed Muckroaches on a lean diet of maggot gruel.',
+	'Journal.NOTE_ROACHFEEDER_TALL':
+		'The feeder’s curled pin looks designed to keep ravenous roaches at bay, and the tender from turning into the meal.',
+	'Journal.NAME_ROACHKEEPER': 'Roachkeeper',
+	'Journal.DESC_ROACHKEEPER': 'Grizzled older roach tender weighted with a lasso of heavy chain.',
+	'Journal.NOTE_ROACHKEEPER':
+		'Though their mind is largely lost their skill with a chain has not been forgotten. Does the Haunting eternally bind a bug to the task it had in life?',
+	'Journal.NAME_ROACHKEEPER_CHEF_TINY': 'Roachserver',
+	'Journal.DESC_ROACHKEEPER_CHEF_TINY': 'Brutish cook responsible for dicing Muckroach meat into edible portions.',
+	'Journal.NOTE_ROACHKEEPER_CHEF_TINY':
+		'Could their actions be called skill? I see only a crude mangling of meat. Yet I wonder, before the Haunting snared their minds was it any different?',
+	'Journal.NAME_ROACHKEEPER_CHEF': 'Disgraced Chef Lugoli',
+	'Journal.DESC_ROACHKEEPER_CHEF': 'Once exalted chef, exiled from the Citadel for repeated culinary crimes.',
+	'Journal.NOTE_ROACHKEEPER_CHEF':
+		'Returned to their home caves, this chef continued to devise delicacies too repulsive for any bug still sane.',
+	'Journal.NAME_WRAITH': 'Wraith',
+	'Journal.DESC_WRAITH':
+		'Anguished spectre of lingering thread. Despite its ephemeral nature, strong strikes can dispel the Wraith for a time.',
+	'Journal.NOTE_WRAITH': 'Not a bug but a projection of another’s will cast in smog and Silk.',
+	'Journal.NAME_SWAMP_DRIFTER': 'Mothleaf Lagnia',
+	'Journal.DESC_SWAMP_DRIFTER':
+		'A rare, calmer bug of Bilewater, survives its hazardous surroundings by hiding as a plant.',
+	'Journal.NOTE_SWAMP_DRIFTER':
+		'This one is pretty, but not as soft as first it seems. The plant it mimics is flaked and coarse, and the bug’s coat shares similar texture.',
+	'Journal.NAME_SWAMP_GOOMBA': 'Miremite',
+	'Journal.DESC_SWAMP_GOOMBA': 'Crawling insect with a sizzling bile sack in its abdomen.',
+	'Journal.NOTE_SWAMP_GOOMBA':
+		'The threat of its exploding rear is an effective deterrent to predators, but the slightest jolt or fall can cause its premature end.',
+	'Journal.NAME_SWAMP_MOSQUITO': 'Swamp Squit',
+	'Journal.DESC_SWAMP_MOSQUITO': 'Plentiful pest with a sharp proboscis and a belly full of bile.',
+	'Journal.NOTE_SWAMP_MOSQUITO':
+		'More dangerous in the moment of its explosive and corrosive death than it ever was in life.',
+	'Journal.NAME_SWAMP_MOSQUITO_SKINNY': 'Spit Squit',
+	'Journal.DESC_SWAMP_MOSQUITO_SKINNY': 'Hovering pest with a hollowed proboscis able to spit gobs of sizzling bile.',
+	'Journal.NOTE_SWAMP_MOSQUITO_SKINNY':
+		'To subsist on the sickly water in this fetid environment it spits out the most toxic elements. Over generations, this former survival technique has turned into an effective hunting tool.',
+	'Journal.NAME_SWAMP_MUCKMAN': 'Stilkin',
+	'Journal.DESC_SWAMP_MUCKMAN': 'Cunning bug that hunts with darts fashioned from stake and bile.',
+	'Journal.NOTE_SWAMP_MUCKMAN':
+		'They know well their domain, lurking in wait in its byways and bogs, always ready to pounce.',
+	'Journal.NAME_SWAMP_MUCKMAN_TALL': 'Stilkin Trapper',
+	'Journal.DESC_SWAMP_MUCKMAN_TALL': 'Trap setting bug carrying a pouch of sharpened long-stakes.',
+	'Journal.NOTE_SWAMP_MUCKMAN_TALL':
+		'More bother than the bug themself are the countless traps they have already laid throughout their caves.',
+	'Journal.NAME_SWAMP_SHAMAN': 'Groal the Great',
+	'Journal.DESC_SWAMP_SHAMAN':
+		'Chief and chaplain of the Stilkin, forever raging against the Citadel that chokes their caves and sees them suffer.',
+	'Journal.NOTE_SWAMP_SHAMAN':
+		'This one’s strength was much enhanced by stolen soul. They are not the first who tried to hoard it, or to mould it towards such violent ends.',
+	'Journal.NAME_SWAMP_BARNACLE': 'Barnak',
+	'Journal.DESC_SWAMP_BARNACLE':
+		'Toothy growth that lives on cave roofs. Wraps wayward bugs with its long tongue and drags them up to be consumed.',
+	'Journal.NOTE_SWAMP_BARNACLE':
+		'Hiding its tongue amongst fronds so similar... There is impressive style to this one’s trickery.',
+	'Journal.NAME_SWAMP_DUCTSUCKER': 'Ductsucker',
+	'Journal.DESC_SWAMP_DUCTSUCKER': 'Suction creature surviving on the thick slime that coats its caves.',
+	'Journal.NOTE_SWAMP_DUCTSUCKER':
+		'This mindless bug seems to sense only through its tendrils, yet despite that simplicity it still poses a serious threat.',
+	'Journal.NAME_POND_SKATER': 'Pond Skipper',
+	'Journal.DESC_POND_SKATER':
+		'Hard-shelled insect common upon the surface of Shellwood Pond. Once a staple food for passing pilgrims.',
+	'Journal.NOTE_POND_SKATER':
+		'The way they skate along the water’s surface is so elegant. Surely it is a skill that can be learned? When time permits, I should attempt the task.',
+	'Journal.NAME_PILGRIM_FISHER': 'Pondcatcher',
+	'Journal.DESC_PILGRIM_FISHER': 'Old catcher over Shellwood Pond, bearing a longpin and stricken by the Haunting.',
+	'Journal.NOTE_PILGRIM_FISHER': 'Once a hunter purely for food, now they hunt unthinking and unending.',
+	'Journal.NAME_SHELLWOOD_GNAT': 'Shellwood Gnat',
+	'Journal.DESC_SHELLWOOD_GNAT':
+		'Tiny, soft creature that armours itself using the hard, hollow growths of Shellwood.',
+	'Journal.NOTE_SHELLWOOD_GNAT':
+		'If the woody hide is shattered, the bug will still bravely, foolishly try to attack.',
+	'Journal.NAME_SHELLWOOD_WASP': 'Wood Wasp',
+	'Journal.DESC_SHELLWOOD_WASP': 'Pointed, darting insect that builds a hardy hive from Shellwood’s dried bark.',
+	'Journal.NOTE_SHELLWOOD_WASP':
+		'Destroying the hives will limit their presence in the wood. Useful to me now, as I pass along the branches. Dangerous in time for the wood’s order. Even a small disruption can tip a fragile balance.',
+	'Journal.NAME_STICK_INSECT': 'Splinter',
+	'Journal.DESC_STICK_INSECT':
+		'Insect formed to imitate a branch, capable of remaining perfectly still for long periods, but unexpectedly swift when roused.',
+	'Journal.NOTE_STICK_INSECT':
+		'Avoiding their ambush is a good test of my senses, and my ability to rapidly retaliate.',
+	'Journal.NAME_STICK_INSECT_CHARGER': 'Splinterhorn',
+	'Journal.DESC_STICK_INSECT_CHARGER':
+		'Insect formed to imitate a branch, born with sharp, retractable horns atop its head.',
+	'Journal.NOTE_STICK_INSECT_CHARGER':
+		'Its shell gives it the advantage of surprise, but also forces it into a slender, brittle shape that cannot withstand a heavy attack.',
+	'Journal.NAME_STICK_INSECT_FLYER': 'Splinterbark',
+	'Journal.DESC_STICK_INSECT_FLYER': 'Winged insect with a flaky shell that perfectly mimics its environment.',
+	'Journal.NOTE_STICK_INSECT_FLYER':
+		'Its assault... like a young bug’s toy turned deadly. Could I, in time, fashion a spinning tool to match?',
+	'Journal.NAME_SPLINTER_QUEEN': 'Sister Splinter',
+	'Journal.DESC_SPLINTER_QUEEN':
+		'Imposing old insect nesting in the heights of Shellwood. Her command of twig and branch ensured no pilgrim ever survived within her territory.',
+	'Journal.NOTE_SPLINTER_QUEEN': 'This one lived long and fed much. The wood will be much safer for their slaying.',
+	'Journal.NAME_FLOWER_DRIFTER': 'Phacia',
+	'Journal.DESC_FLOWER_DRIFTER':
+		'Drifting bug disguised as a flower. Disperses crackling clouds of pollen if threatened.',
+	'Journal.NOTE_FLOWER_DRIFTER':
+		'Quite a beautiful creature. In my own kingdom’s court, it would have been highly favoured as an ornamental pet.',
+	'Journal.NAME_BLOOM_SHOOTER': 'Pollenica',
+	'Journal.DESC_BLOOM_SHOOTER':
+		'Floral foe that reacts instinctively to movement nearby. Spits pellets of crackling pollen that burst on impact.',
+	'Journal.NOTE_BLOOM_SHOOTER':
+		'What exceptional senses it possesses. It detects me with ease, even when not a single sound is made.',
+	'Journal.NAME_BLOOM_PUNCHER': 'Gahlia',
+	'Journal.DESC_BLOOM_PUNCHER':
+		'Floral foe with a core shaped to mimic a mask. The core can be thrust forth to bludgeon unwary bugs.',
+	'Journal.NOTE_BLOOM_PUNCHER': 'The false mask alone is frightening enough to scare away smaller pests.',
+	'Journal.NAME_SETH': 'Shrine Guardian Seth',
+	'Journal.DESC_SETH': 'Eternal defender of Shellwood Shrine. His pin and cymbal show many marks of their use.',
+	'Journal.NOTE_SETH':
+		'He offered fair warning and challenge, a duel in the purest sense. I admire his honour, and his skill.',
+	'Journal.NAME_FLOWER_QUEEN': 'Nyleth',
+	'Journal.DESC_FLOWER_QUEEN': 'Ancient heart of Shellwood, connected to all its living things.',
+	'Journal.NOTE_FLOWER_QUEEN':
+		'Her presence would once have maintained the wood’s fragile order, allowing the safe passage of bugs across its branches.',
+	'Journal.NAME_BELL_GOOMBA': 'Furm',
+	'Journal.DESC_BELL_GOOMBA':
+		'Burrower that nests in the Bellvein and seeks out hard bells to protect its soft body.',
+	'Journal.NOTE_BELL_GOOMBA': 'I would very much like to feel their soft fur, if only they weren’t so hostile.',
+	'Journal.NAME_BELL_FLY': 'Winged Furm',
+	'Journal.DESC_BELL_FLY':
+		'Furred bug beneath a heavy bell. It has grown too large to burrow, but in maturing has developed small wings.',
+	'Journal.NOTE_BELL_FLY': 'Huge and soft, a fantastic combination ruined by their haunted aggression.',
+	'Journal.NAME_BLADE_SPIDER': 'Pharlid',
+	'Journal.DESC_BLADE_SPIDER': 'Small arachnid found in many crevices and caves throughout Pharloom.',
+	'Journal.NOTE_BLADE_SPIDER':
+		'Something in their assault reminds me of my own skill, though their talents are born purely of instinct. My technique is formed from hard training.',
+	'Journal.NAME_BLADE_SPIDER_HANG': 'Pharlid Diver',
+	'Journal.DESC_BLADE_SPIDER_HANG':
+		'Arachnid that nestles within dark holes in cavern roofs. Pounces on prey from far above.',
+	'Journal.NOTE_BLADE_SPIDER_HANG':
+		'A smart hunter learns to wait long in ambush, always ready to strike the first blow.',
+	'Journal.NAME_SHELL_FOSSIL_MIMIC': 'Shardillard',
+	'Journal.DESC_SHELL_FOSSIL_MIMIC': 'Devious ambusher that poses as a fossil.',
+	'Journal.NOTE_SHELL_FOSSIL_MIMIC': 'Once roused, the bug will crash its steely shell into walls, floors and foes.',
+	'Journal.NAME_SAND_CENTIPEDE': 'Sandcarver',
+	'Journal.DESC_SAND_CENTIPEDE': 'Shell plated worm that lives beneath pools of shifting sand.',
+	'Journal.NOTE_SAND_CENTIPEDE':
+		'Bursts forth at movement sensed close, and will consume any object or bug careless enough to fall into its maw.',
+	'Journal.NAME_CORAL_JUDGE_CHILD': 'Squirrm',
+	'Journal.DESC_CORAL_JUDGE_CHILD': 'Wriggling young grub that lives in darkness.',
+	'Journal.NOTE_CORAL_JUDGE_CHILD':
+		'If allowed the opportunity, these creatures will grow into a form larger and more oppressive.',
+	'Journal.NAME_CORAL_JUDGE': 'Judge',
+	'Journal.DESC_CORAL_JUDGE': 'Gilded guardian of the Blasted Steps, bearing a cymbal and mallet.',
+	'Journal.NOTE_CORAL_JUDGE':
+		'They remorselessly eliminate any pilgrim or passerby deemed impure to their sight. The countless husks, strewn on paths beside them, tell of their conclusive decisions.',
+	'Journal.NAME_LAST_JUDGE': 'Last Judge',
+	'Journal.DESC_LAST_JUDGE':
+		'Final arbiter of the Blasted Steps, tasked to ensure only the sinless ever step beyond the Grand Gate.',
+	'Journal.NOTE_LAST_JUDGE':
+		'The huge Judge likely stood through countless generations, never defeated, never wavering in their charge.',
+	'Journal.NAME_CORAL_SPIKE_GOOMBA': 'Coral Furm',
+	'Journal.DESC_CORAL_SPIKE_GOOMBA': 'Dark-furred bug protecting itself with a spiked coral nut.',
+	'Journal.NOTE_CORAL_SPIKE_GOOMBA':
+		'Its fur is thick and silky. Sadly, lost to its Haunting, I shall never safely be able to touch it.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER': 'Driznit',
+	'Journal.DESC_CORAL_CONCH_SHOOTER': 'Nesting creature that fuses its face with sharpened coral.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER':
+		'It is easy to be caught off-guard by the ricocheting trajectory of its flung mask, especially in tight corners.',
+	'Journal.NAME_CORAL_CONCH_SHOOTER_HEAVY': 'Driznarga',
+	'Journal.DESC_CORAL_CONCH_SHOOTER_HEAVY':
+		'Large male Driznit, ferocious and territorial. Fires its heavy coral mask at intruders.',
+	'Journal.NOTE_CORAL_CONCH_SHOOTER_HEAVY':
+		'A fine shot with its sharp mask. Its aggression has no ill effect on its aim.',
+	'Journal.NAME_CORAL_CONCH_STABBER': 'Pokenabbin',
+	'Journal.DESC_CORAL_CONCH_STABBER': 'Drifting creature with a wide coral mask and hard proboscis to stab its prey.',
+	'Journal.NOTE_CORAL_CONCH_STABBER':
+		'Passively waits for prey to blunder into its path. A technique that should not necessarily be derided. Whatever is effective is best.',
+	'Journal.NAME_CORAL_CONCH_DRILLER': 'Conchfly',
+	'Journal.DESC_CORAL_CONCH_DRILLER':
+		'Small bug that crafts a shell of sharpened coral. Spins its shell at rapid speed to cut through crust and bone.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER':
+		'The way it darts in and out of the ground has an almost playful quality to it. An amusing and effective way to ambush prey.',
+	'Journal.NAME_CORAL_CONCH_DRILLER_GIANT': 'Great Conchfly',
+	'Journal.DESC_CORAL_CONCH_DRILLER_GIANT':
+		'Elder Conchfly crowned with a huge coral horn. Once partnered with a mate, they will rarely be seen alone.',
+	'Journal.NOTE_CORAL_CONCH_DRILLER_GIANT':
+		'To pair with another is a base instinct, and one that brings some bugs great joy. I once sought similar union, but of my own mates none could match my lifespan.',
+	'Journal.NAME_CORAL_GOOMBAS': 'Crustcrawler',
+	'Journal.DESC_CORAL_GOOMBAS': 'Soft-shelled scrambler encased in coral.',
+	'Journal.NOTE_CORAL_GOOMBAS':
+		'Hidden amongst their tower’s matching crust, these smaller bugs would have survived and thrived.',
+	'Journal.NAME_CORAL_GOOMBA_LARGE': 'Crustcrag',
+	'Journal.DESC_CORAL_GOOMBA_LARGE': 'Coral hulk with a dense shell, bred to immense size by the Citadel’s Memorium.',
+	'Journal.NOTE_CORAL_GOOMBA_LARGE':
+		'Nature distorted... This bug was born tiny and mild. The Citadel deformed it in futile hope it may sustain.',
+	'Journal.NAME_CORAL_SWIMMER_FAT': 'Kai',
+	'Journal.DESC_CORAL_SWIMMER_FAT': 'Plump, plentiful drifter of a coral past.',
+	'Journal.NOTE_CORAL_SWIMMER_FAT':
+		'They once teemed around their tower, in numbers immense. It is a rare chance to witness such a bountiful display of life.',
+	'Journal.NAME_POKE_SWIMMER': 'Spinebeak Kai',
+	'Journal.DESC_POKE_SWIMMER': 'Steel horned floater, able to defend itself and its companions.',
+	'Journal.NOTE_POKE_SWIMMER':
+		'A critical member of the larger flock. Without them present the Kai would be fast driven to extinction by larger predators.',
+	'Journal.NAME_SPIKE_SWIMMER': 'Steelspine Kai',
+	'Journal.DESC_SPIKE_SWIMMER': 'Toughened Kai capable of extending sharp spikes from within its shellsack.',
+	'Journal.NOTE_SPIKE_SWIMMER':
+		'Seeming soft, but hiding a sharp surprise. Any larger predator attempting a bite would learn a pointed and painful lesson.',
+	'Journal.NAME_CORAL_SWIMMER_SMALL': 'Yuma',
+	'Journal.DESC_CORAL_SWIMMER_SMALL': 'Gelatinous coral drifter of simple mind and placid demeanour.',
+	'Journal.NOTE_CORAL_SWIMMER_SMALL': 'A creature at its most basic. This one is no threat to me, or any other.',
+	'Journal.NAME_CORAL_BIG_JELLYFISH': 'Yumama',
+	'Journal.DESC_CORAL_BIG_JELLYFISH': 'Large, gelatinous drifter. Chases away threats by hurling its bulk around.',
+	'Journal.NOTE_CORAL_BIG_JELLYFISH':
+		'When defeated, it splits into many smaller forms. Yet another remarkable creature of this land before the monarch.',
+	'Journal.NAME_CORAL_WARRIOR': 'Karaka',
+	'Journal.DESC_CORAL_WARRIOR': 'Staunch and skilled bladebug of a once flourishing land lost to time.',
+	'Journal.NOTE_CORAL_WARRIOR':
+		'The core member of a powerful order, trained fearless and faithful. Theirs was a kingdom of warriors, one built upon their blades.',
+	'Journal.NAME_CORAL_FLYER': 'Kakri',
+	'Journal.DESC_CORAL_FLYER': 'Lithe, winged scouts frequently paired with their heavier brethren.',
+	'Journal.NOTE_CORAL_FLYER':
+		'Its training resembles my own, favouring fast strikes and rapid movement. Once a hunter, perhaps?',
+	'Journal.NAME_CORAL_FLYER_THROW': 'Yago',
+	'Journal.DESC_CORAL_FLYER_THROW':
+		'Wide-masked aerial attacker trained to act as support for its grounded companions while remaining at range.',
+	'Journal.NOTE_CORAL_FLYER_THROW':
+		'Not a frontline force, but in my assault upon their tower all emerge to see me stilled.',
+	'Journal.NAME_CORAL_BRAWLER': 'Karak Gor',
+	'Journal.DESC_CORAL_BRAWLER': 'Heavy, hard-shelled charger relying on weight and strength.',
+	'Journal.NOTE_CORAL_BRAWLER':
+		'Far tougher for being matched inside their encrusted domain. They must have lived their whole lives within their tower, to command it so.',
+	'Journal.NAME_CORAL_HUNTER': 'Alita',
+	'Journal.DESC_CORAL_HUNTER':
+		'Leaping hunter of a bygone age. The swiftest of their sect, deftly skilled with spinning foreblades.',
+	'Journal.NOTE_CORAL_HUNTER':
+		'In contests of speed against strength, I have seen the swift more often triumphant, a lesson I have taken to my own heart.',
+	'Journal.NAME_CORAL_BUBBLE_BRUTE': 'Corrcrust Karaka',
+	'Journal.DESC_CORAL_BUBBLE_BRUTE':
+		'Overgrown elder, able to spawn burning bubbles from within its coral-cased shell.',
+	'Journal.NOTE_CORAL_BUBBLE_BRUTE':
+		'This bug’s fusion with the crust-growth... It seems intentional, though I imagine the union is far from comfortable.',
+	'Journal.NAME_CORAL_KING': 'Crust King Khann',
+	'Journal.DESC_CORAL_KING': 'Hardened warrior lord of a bygone age, able to command the coral crust to his bidding.',
+	'Journal.NOTE_CORAL_KING':
+		'For his stern stewardship his legions seemed utterly loyal. For less combative bugs his would have been a hard rule.',
+	'Journal.NAME_CORAL_WARRIOR_GREY': 'Watcher at the Edge',
+	'Journal.DESC_CORAL_WARRIOR_GREY':
+		'Old warrior guarding the border of their domain, stiffened by time and awoken by song.',
+	'Journal.NOTE_CORAL_WARRIOR_GREY':
+		'They held long at their vigil, far beyond the age of their brethren, yet still when roused they swung their blade with remarkable ease.',
+	'Journal.NAME_ZAP_CORE_ENEMY': 'Voltvyrm',
+	'Journal.DESC_ZAP_CORE_ENEMY':
+		'Coiled nest of charged worms. Assaults intruders with bolts of crackling electricity.',
+	'Journal.NOTE_ZAP_CORE_ENEMY':
+		'Barely a bug, and possessing only basic thought, yet instinct alone proved enough to turn it deadly.',
+	'Journal.NAME_CITADEL_BAT': 'Drapefly',
+	'Journal.DESC_CITADEL_BAT': 'Erratic, flying pest that nests in rags and curtains.',
+	'Journal.NOTE_CITADEL_BAT':
+		'Like fabric somehow sprung to life. Its pelt is perfectly matched to the rags it infests.',
+	'Journal.NAME_CITADEL_BAT_LARGE': 'Drapelord',
+	'Journal.DESC_CITADEL_BAT_LARGE':
+		'Elder Drapefly grown big from age and consumption. Its heavy body allows it to hit much harder than its younger companions.',
+	'Journal.NOTE_CITADEL_BAT_LARGE': 'Greed will always see some bugs swell above their kin.',
+	'Journal.NAME_MITE_HEAVY': 'Drapemite',
+	'Journal.DESC_MITE_HEAVY': 'Cloth-covered crawler with sharpened forelimbs. Lives and breeds in dark places.',
+	'Journal.NOTE_MITE_HEAVY':
+		'Pharloom’s structures seem almost built for them. The endless corners and cracks, so perfect for mites to burrow and nest.',
+	'Journal.NAME_UNDERSTORE_MITE_GIANT': 'Giant Drapemite',
+	'Journal.DESC_UNDERSTORE_MITE_GIANT': 'Full-sized mite of the Citadel cloaked in an old curtain.',
+	'Journal.NOTE_UNDERSTORE_MITE_GIANT':
+		'Few creatures of that Silk stricken place would find nourishment enough to grow so large.',
+	'Journal.NAME_UNDERSTORE_SMALL': 'Underworker',
+	'Journal.DESC_UNDERSTORE_SMALL': 'Feeble servant of the Underworks with a long twistpin and hard shell.',
+	'Journal.NOTE_UNDERSTORE_SMALL':
+		'With all the refuse collapsing throughout their domain, the worker’s stiff shell would be essential if they held any hope to survive.',
+	'Journal.NAME_PILGRIM_03_UNDERSTORE': 'Underscrub',
+	'Journal.DESC_PILGRIM_03_UNDERSTORE': 'Drained yet dedicated labourer, wielding a coarse steel brush.',
+	'Journal.NOTE_PILGRIM_03_UNDERSTORE': 'That they ever hoped to keep their domain clean... What futility.',
+	'Journal.NAME_PILGRIM_STAFF_UNDERSTORE': 'Undersweep',
+	'Journal.DESC_PILGRIM_STAFF_UNDERSTORE': 'Uses their steel-bristled pin to scrub the soot from vents and pipes.',
+	'Journal.NOTE_PILGRIM_STAFF_UNDERSTORE':
+		'Their sharp cleaning implement is as filthy as the rest of the place. They only layer grime on grime.',
+	'Journal.NAME_UNDERSTORE_POKER': 'Underpoke',
+	'Journal.DESC_UNDERSTORE_POKER':
+		'Drained worker on the verge of collapse. Consumed by the Haunting, they continue to work far beyond their mortal limits.',
+	'Journal.NOTE_UNDERSTORE_POKER':
+		'They toiled incessantly for the Citadel, their shells bent and greyed, and now the kingdom’s curse means not even death can relieve them.',
+	'Journal.NAME_UNDERSTORE_THROWER': 'Underloft',
+	'Journal.DESC_UNDERSTORE_THROWER':
+		'Exhausted bug, grown sickly from the smog of the Underworks. The worker’s twistpins, once tools of repair, now serve as spun projectiles.',
+	'Journal.NOTE_UNDERSTORE_THROWER':
+		'The cost of so much grandeur... Did I peer closely enough into the foundations of my own kingdom?',
+	'Journal.NAME_UNDERSTORE_HEAVY': 'Undercrank',
+	'Journal.DESC_UNDERSTORE_HEAVY':
+		'Heavy, hard-shelled worker, forever repairing the Citadel’s crumbling Underworks.',
+	'Journal.NOTE_UNDERSTORE_HEAVY':
+		'There seem no ranks in their domain, yet this one has risen above the rest. A station likely gained through intimidation and thuggery.',
+	'Journal.NAME_SONG_PILGRIM_01': 'Envoy',
+	'Journal.DESC_SONG_PILGRIM_01': 'Guide and ofttimes leader within the Citadel’s Choir.',
+	'Journal.NOTE_SONG_PILGRIM_01':
+		'Bugs like these crossed the caves to bring me to Pharloom. I cut down many before my capture. Then I had thought them minded and cunning. Now I can see the singular will that haunts them all.',
+	'Journal.NAME_PILGRIM_01_SONG': 'Choir Pouncer',
+	'Journal.DESC_PILGRIM_01_SONG': 'Agile bug, and one of few hardy pilgrims to have reached the Citadel.',
+	'Journal.NOTE_PILGRIM_01_SONG':
+		'Once one of Pharloom’s favoured bugs, and yet their domain and their shells would have been the first to fall to the Haunting.',
+	'Journal.NAME_PILGRIM_02_SONG': 'Choir Hornhead',
+	'Journal.DESC_PILGRIM_02_SONG': 'Full-grown former pilgrim serving the Citadel.',
+	'Journal.NOTE_PILGRIM_02_SONG':
+		'Did this one grow large thanks to the Citadel’s excess, or was its formidable size the reason it ever survived to reach this place?',
+	'Journal.NAME_PILGRIM_03_SONG': 'Choir Bellbearer',
+	'Journal.DESC_PILGRIM_03_SONG': 'Winged devout of the Citadel, carrying a brace of gilded bells.',
+	'Journal.NOTE_PILGRIM_03_SONG':
+		'Pharloom proves often the effectiveness of bells as weapons. Never before had I considered them as such.',
+	'Journal.NAME_PILGRIM_04_SONG': 'Choir Flyer',
+	'Journal.DESC_PILGRIM_04_SONG': 'Aerial bug of the Citadel, unarmed but for its short horn.',
+	'Journal.NOTE_PILGRIM_04_SONG':
+		'For this bug to have survived Pharloom’s climb it must have teamed with stouter companions. I cannot imagine it succeeding alone.',
+	'Journal.NAME_PILGRIM_STOMPER_SONG': 'Choir Elder',
+	'Journal.DESC_PILGRIM_STOMPER_SONG':
+		'Aged former pilgrim. Uses their wings to position above threats and crush them under their large shell.',
+	'Journal.NOTE_PILGRIM_STOMPER_SONG':
+		'Time allowed their shell to grow thick, all the better for battering their targets.',
+	'Journal.NAME_SONG_PILGRIM_03': 'Choristor',
+	'Journal.DESC_SONG_PILGRIM_03':
+		'Disciple of the Choir, elevated above other pilgrims, and forced to cowl their face forever more.',
+	'Journal.NOTE_SONG_PILGRIM_03':
+		'Their use of a pin shows hard training. Their use of Silk, unfurled from a spool held close, shows skill far beyond standard bugs.',
+	'Journal.NAME_SONG_REED': 'Reed',
+	'Journal.DESC_SONG_REED':
+		'Disciple of the Choir, charged to maintain its perfect order, by sharp pin if necessary.',
+	'Journal.NOTE_SONG_REED':
+		'A form well suited for combat, lithe and fast. No surprise it seems to rank so high amongst its cult.',
+	'Journal.NAME_SONG_REED_GRAND': 'Grand Reed',
+	'Journal.DESC_SONG_REED_GRAND':
+		'High standing insect of the Choir, bearing a bow. This elite Reed has been trained and fed beyond its smaller fellows.',
+	'Journal.NOTE_SONG_REED_GRAND':
+		'This bug bears a spool of Silk, which they flail to attack. Though somewhat crude, theirs is a technique much reminiscent of Weavers. I wonder who taught them such a use?',
+	'Journal.NAME_SONG_HEAVY_SENTRY': 'Choir Clapper',
+	'Journal.DESC_SONG_HEAVY_SENTRY':
+		'Mighty percussive disciple of the Choir, wielding a mallet and a Silk spool to wrap and enhance their attacks.',
+	'Journal.NOTE_SONG_HEAVY_SENTRY':
+		'There is no finesse in its use of Silk. It consumes its slim supply only to amplify its force.',
+	'Journal.NAME_SONG_HANDMAIDEN': 'Clawmaiden',
+	'Journal.DESC_SONG_HANDMAIDEN':
+		'Puppet servant of the Citadel, suspended on strings of Silk. An early form of automaton, requiring extensive Silk to maintain its service.',
+	'Journal.NOTE_SONG_HANDMAIDEN':
+		'If given a chance, this one will steal Silk from any significant source, including my own shell.',
+	'Journal.NAME_ARBORIUM_KEEPER': 'Memoria',
+	'Journal.DESC_ARBORIUM_KEEPER': 'Learned disciple of the Choir charged to maintain the Citadel’s Memorium.',
+	'Journal.NOTE_ARBORIUM_KEEPER':
+		'From the outset, theirs was a hopeless task. Those wild lands could never be replicated within a space so artificial.',
+	'Journal.NAME_SONG_ADMINISTRATOR': 'Minister',
+	'Journal.DESC_SONG_ADMINISTRATOR':
+		'Gold ranked disciple of the Choir and direct servant to the Citadel’s Conductors.',
+	'Journal.NOTE_SONG_ADMINISTRATOR':
+		'The lethality of these bugs is unexpected. Their bodies were never built for combat. The Haunting has altered their nature dramatically.',
+	'Journal.NAME_SONG_PILGRIM_MAESTRO': 'Maestro',
+	'Journal.DESC_SONG_PILGRIM_MAESTRO':
+		'Choir commander of the High Halls, able to summon and command cogflies at a flick of their baton.',
+	'Journal.NOTE_SONG_PILGRIM_MAESTRO':
+		'Once they summoned song from their subjects. Now they rise only to command an end to those unstrung.',
+	'Journal.NAME_SONG_KNIGHT': 'Second Sentinel',
+	'Journal.DESC_SONG_KNIGHT':
+		'Cogwork knight of Pharloom, once protector of its pilgrims, and master of the scissor blade.',
+	'Journal.NOTE_SONG_KNIGHT':
+		'The talent and intelligence of this construct goes far beyond others I have witnessed. They seem less built as a tool to serve than an attempt at life itself.',
+	'Journal.NAME_SONG_THREADED_HUSK': 'Dreg Husk',
+	'Journal.DESC_SONG_THREADED_HUSK':
+		'Remains of a Citadel bug possessed by Silk dregs. The husk will lash out wildly with the many sharp pins caught inside its thread.',
+	'Journal.NOTE_SONG_THREADED_HUSK':
+		'There is old anguish bound upon these threads, the result of countless cruel procedures.',
+	'Journal.NAME_SONG_THREADED_HUSK_SPIN': 'Dregwheel',
+	'Journal.DESC_SONG_THREADED_HUSK_SPIN':
+		'Shell of a small bug possessed by Silk dregs. The husk will stretch its Silk to form a crude, crushing wheel.',
+	'Journal.NOTE_SONG_THREADED_HUSK_SPIN':
+		'Living Silk commanding a dead shell... An affront to nature, and one all too common across Pharloom.',
+	'Journal.NAME_SONG_PILGRIM_02': 'Surgeon',
+	'Journal.DESC_SONG_PILGRIM_02':
+		'Cruel physician of Whiteward, responsible for operations and modifications on the Citadel’s bugs.',
+	'Journal.NOTE_SONG_PILGRIM_02':
+		'Their procedures with Silk may have prolonged life within the Citadel, but they unknowingly gifted many minds to the monarch.',
+	'Journal.NAME_SONG_CREEPER': 'Mortician',
+	'Journal.DESC_SONG_CREEPER':
+		'Altered servant of the Citadel’s Whiteward, responsible for the cremation of husks and the recycling of Silk from their shells.',
+	'Journal.NOTE_SONG_CREEPER':
+		'It lies low to the ground, perhaps out of reverence for its task, but can spring up suddenly to attack. Its shear makes for a deadly weapon with surprising reach.',
+	'Journal.NAME_CONDUCTOR_BOSS': 'The Unravelled',
+	'Journal.DESC_CONDUCTOR_BOSS': 'Tormented will of countless husks made manifest in a pit of Silk dregs.',
+	'Journal.NOTE_CONDUCTOR_BOSS':
+		'The souls of so many bugs, obsessed with Silk, consumed by it. Their pain shall forever remain in that pit. Even I do not possess strength enough to cleanse it.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON': 'Cogwork Underfly',
+	'Journal.DESC_UNDERSTORE_AUTOMATON':
+		'Small automaton built to work, without complaint, in the scorching heat of the Underworks’ Cauldron.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON':
+		'It is no wonder these constructs were cast. No mortal bug would last long inside that scorching place. Even my shell struggles to withstand its heat.',
+	'Journal.NAME_UNDERSTORE_AUTOMATON_EX': 'Cogwork Hauler',
+	'Journal.DESC_UNDERSTORE_AUTOMATON_EX':
+		'Small automaton with a shielded shell, intended to carry loads of dangerous flintflame.',
+	'Journal.NOTE_UNDERSTORE_AUTOMATON_EX':
+		'Born and built only to work until time stiffens its limbs. Perhaps it is mercy this construct knows nothing of the freedom it lacks.',
+	'Journal.NAME_SONG_AUTOMATON_GOOMBA': 'Cogwork Crawler',
+	'Journal.DESC_SONG_AUTOMATON_GOOMBA':
+		'Automaton built in the shape of a scuttling bug. Its back contains retractable pins, intended to cut song cylinders free of any obstruction.',
+	'Journal.NOTE_SONG_AUTOMATON_GOOMBA':
+		'Its form is certainly based on bugs found outside the Citadel. In my own craftwork, I too often look to nature for inspiration.',
+	'Journal.NAME_SONG_AUTOMATON_FLY': 'Cogworker',
+	'Journal.DESC_SONG_AUTOMATON_FLY': 'Flighted automaton, responsible for repairing and extending the Core.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY':
+		'More effective an opponent than would be guessed. The precarity of its winding domain can make even its simple assault a challenge.',
+	'Journal.NAME_SONG_AUTOMATON_FLY_SPIKE': 'Cogwork Spine',
+	'Journal.DESC_SONG_AUTOMATON_FLY_SPIKE': 'Spherical, winged automaton housing many sharp spikes.',
+	'Journal.NOTE_SONG_AUTOMATON_FLY_SPIKE':
+		'I cannot decipher its function to the greater Core. Is it built for defence? If so, its passivity seems far from optimal.',
+	'Journal.NAME_SONG_AUTOMATON_01': 'Cogwork Choirbug',
+	'Journal.DESC_SONG_AUTOMATON_01':
+		'Bug forged of iron, rotor and cog. The automaton works tirelessly to maintain the Core that houses it.',
+	'Journal.NOTE_SONG_AUTOMATON_01':
+		'Its core is filled with fine mechanisms, but that alone should not produce such a convincing mimic of life. Silk must also be used to animate this artifice, though exactly how I am not sure.',
+	'Journal.NAME_SONG_AUTOMATON_02': 'Cogwork Cleanser',
+	'Journal.DESC_SONG_AUTOMATON_02':
+		'Steam shooting automaton, forged to clean the Cogwork Core and keep it free of infestation.',
+	'Journal.NOTE_SONG_AUTOMATON_02':
+		'An inspired use of steam. I must remember its construction when designing future tools.',
+	'Journal.NAME_SONG_AUTOMATON_SHIELD': 'Cogwork Defender',
+	'Journal.DESC_SONG_AUTOMATON_SHIELD':
+		'Cogwork construct forged primarily for the Core’s protection. Bears a shield and poke-pin, and possesses a lethal understanding of their use.',
+	'Journal.NOTE_SONG_AUTOMATON_SHIELD':
+		'It has no true mind, and yet fights effectively, adjusting its strategy to my movements. Where exactly are its thoughts written?',
+	'Journal.NAME_SONG_AUTOMATON_BALL': 'Cogwork Clapper',
+	'Journal.DESC_SONG_AUTOMATON_BALL':
+		'Rare automaton intended to perform the ringing of bells and cymbals in the depths of the Core.',
+	'Journal.NOTE_SONG_AUTOMATON_BALL':
+		'I have not yet seen the bell this automaton is designed to ring, nor do I ever wish to hear it. Such a clamour would no doubt be unpleasant to experience.',
+	'Journal.NAME_CLOCKWORK_DANCER': 'Cogwork Dancers',
+	'Journal.DESC_CLOCKWORK_DANCER':
+		'Automatons of impeccable construction, welcoming entrants to their chamber with a display of deadly dance.',
+	'Journal.NOTE_CLOCKWORK_DANCER':
+		'Two cogwork bugs, and yet the soul seemed singular? A sad, yet masterful imitation of life, imbued inside shells of iron.',
+	'Journal.NAME_SONG_SCHOLAR_ACOLYTE': 'Vaultborn',
+	'Journal.DESC_SONG_SCHOLAR_ACOLYTE':
+		'Young acolyte raised in the darkest vaults, destined to ascend to the rank of Scrollreader.',
+	'Journal.NOTE_SONG_SCHOLAR_ACOLYTE':
+		'In entering their domain, I freed these bugs to infest the greater vaults. They are a nuisance, and I have only myself to blame.',
+	'Journal.NAME_LIGHTBEARER': 'Lampbearer',
+	'Journal.DESC_LIGHTBEARER':
+		'Disciple of the Whispering Vaults, tasked to navigate its dim recesses to retrieve old scrolls.',
+	'Journal.NOTE_LIGHTBEARER': 'An essential bug if one ever hoped to navigate that dark maze of stacks and scrolls.',
+	'Journal.NAME_SCROLLKEEPER': 'Scrollreader',
+	'Journal.DESC_SCROLLKEEPER':
+		'Gilded servant of the Whispering Vaults, born to read and recall the near endless scrolls of prayer.',
+	'Journal.NOTE_SCROLLKEEPER':
+		'Did they ever truly understand those inscrutable scrolls? Or is it all merely pretence, an endless act to maintain their order’s station within the Citadel?',
+	'Journal.NAME_SCHOLAR': 'Vaultkeeper',
+	'Journal.DESC_SCHOLAR':
+		'High caste bug, responsible for delivering sermons and leading prayer for those beyond the walls of the Whispering Vaults.',
+	'Journal.NOTE_SCHOLAR':
+		'Most likely this one’s true charge was to root out and condemn those not seen as sufficiently fervent.',
+	'Journal.NAME_TROBBIO': 'Trobbio',
+	'Journal.DESC_TROBBIO':
+		'Haughty thespian convinced that only dazzling performance can raise Pharloom from the throes of death.',
+	'Journal.NOTE_TROBBIO':
+		'His desire to see Pharloom saved may have been well intentioned, but he seemed quite happy for others to die upon the stage in pursuit of his goal.',
+	'Journal.NAME_TORMENTED_TROBBIO': 'Tormented Trobbio',
+	'Journal.DESC_TORMENTED_TROBBIO': 'Depressed thespian, consumed by the melancholy of a collapsing world.',
+	'Journal.NOTE_TORMENTED_TROBBIO':
+		'This one chose to embrace the doom to come. I shall not share such easy surrender.',
+	'Journal.NAME_SLAB_PRISONER_LEAPER_NEW': 'Penitent',
+	'Journal.DESC_SLAB_PRISONER_LEAPER_NEW':
+		'Humbled prisoner serving their sentence for sin committed within the Citadel.',
+	'Journal.NOTE_SLAB_PRISONER_LEAPER_NEW':
+		'All are haunted here, the jailers and the jailed. Do they realise they will never leave this place? Or how long they have stayed already?',
+	'Journal.NAME_SLAB_PRISONER_FLY_NEW': 'Puny Penitent',
+	'Journal.DESC_SLAB_PRISONER_FLY_NEW': 'Small bug, shackled and cowled for sin committed within the Citadel.',
+	'Journal.NOTE_SLAB_PRISONER_FLY_NEW':
+		'Their thick shroud leaves them sightless, yet it seems to matter little. They have no care for their own safety, wishing only to charge at those they sense as sinful.',
+	'Journal.NAME_SLAB_FLY_SMALL_FRESH': 'Freshfly',
+	'Journal.DESC_SLAB_FLY_SMALL_FRESH':
+		'Infant fly, freshly hatched. At this age the soft, blind fly is little more than a bother.',
+	'Journal.NOTE_SLAB_FLY_SMALL_FRESH': 'The less these gruesome bugs breed, the better.',
+	'Journal.NAME_SLAB_FLY_SMALL': 'Scabfly',
+	'Journal.DESC_SLAB_FLY_SMALL': 'Sticky young fly, born and grown in service to the Slab.',
+	'Journal.NOTE_SLAB_FLY_SMALL': 'Foul creatures birthed into servitude. Their plight elicits no sympathy from me.',
+	'Journal.NAME_SLAB_FLY_MID': 'Guardfly',
+	'Journal.DESC_SLAB_FLY_MID': 'Starved servant of the Slab, bearing a hooked longpin.',
+	'Journal.NOTE_SLAB_FLY_MID':
+		'The smell from these jailers overwhelms my senses. I strongly doubt they have ever thought to bathe.',
+	'Journal.NAME_SLAB_FLY_LARGE': 'Wardenfly',
+	'Journal.DESC_SLAB_FLY_LARGE': 'Heavy, hairy jailer responsible for capturing sinners and punishing prisoners.',
+	'Journal.NOTE_SLAB_FLY_LARGE': 'Disgusting both in manner and stench. I feel no remorse to see them felled.',
+	'Journal.NAME_SLAB_FLY_BROODMOTHER': 'Broodmother',
+	'Journal.DESC_SLAB_FLY_BROODMOTHER':
+		'Mad matriarch of the Slab rarely seen outside her warren. From her all jailers are born and bred.',
+	'Journal.NOTE_SLAB_FLY_BROODMOTHER':
+		'With this one vanquished, I hope to have sped the end for that jail and its distasteful order.',
+	'Journal.NAME_PEAKS_DRIFTER': 'Driftlin',
+	'Journal.DESC_PEAKS_DRIFTER':
+		'Gentle glider of Mount Fay. Its downy wings and cowl allow it to resist even the most cutting cold.',
+	'Journal.NOTE_PEAKS_DRIFTER':
+		'This one would make a perfect pet, but for the freezing temperatures it requires for comfort.',
+	'Journal.NAME_CRYSTAL_DRIFTER': 'Mnemonid',
+	'Journal.DESC_CRYSTAL_DRIFTER': 'Flighted creature formed from coldshard. If shattered it will quickly reform.',
+	'Journal.NOTE_CRYSTAL_DRIFTER':
+		'The coldshard, even when destroyed it remembers its former shape. A remarkable material, and perhaps even more astonishing there seems life contained within it.',
+	'Journal.NAME_CRYSTAL_DRIFTER_GIANT': 'Mnemonord',
+	'Journal.DESC_CRYSTAL_DRIFTER_GIANT': 'Huge flighted creature formed from coldshard.',
+	'Journal.NOTE_CRYSTAL_DRIFTER_GIANT': 'This larger form carries so much weight it can barely move from its place.',
+	'Journal.NAME_WEAVER_SERVITOR': 'Servitor Ignim',
+	'Journal.DESC_WEAVER_SERVITOR':
+		'Small construct built by Weavers past, brought to life through Silk runes threaded within.',
+	'Journal.NOTE_WEAVER_SERVITOR':
+		'Though the Weavers have long passed from Pharloom, this servant still performs its function.',
+	'Journal.NAME_WEAVER_SERVITOR_LARGE': 'Servitor Boran',
+	'Journal.DESC_WEAVER_SERVITOR_LARGE':
+		'Broken construct built by Weavers past, able to fire a focused beam of silklight to carve halls and chambers through ice and bone.',
+	'Journal.NOTE_WEAVER_SERVITOR_LARGE':
+		'The servitor has been heavily damaged by time and the elements. Its actions have grown erratic. It seems no longer able to discern friend from foe.',
+	'Journal.NAME_LIFEBLOOD_FLY': 'Winged Lifeseed',
+	'Journal.DESC_LIFEBLOOD_FLY':
+		'Mindless sack filled with Plasmium. When broken the Plasmium can be consumed for its temporary benefits to health.',
+	'Journal.NOTE_LIFEBLOOD_FLY':
+		'My unique shell can resist the darker deformations of this substance, but even I have limits...',
+	'Journal.NAME_BONE_WORM_BLUEBLOOD': 'Plasmid',
+	'Journal.DESC_BONE_WORM_BLUEBLOOD':
+		'Mutated young worm infected with Plasmium. The new form displays potent regenerative skill.',
+	'Journal.NOTE_BONE_WORM_BLUEBLOOD':
+		'Pharloom shall quickly learn the curse of this substance. What benefits it provides can be swiftly outweighed.',
+	'Journal.NAME_BONE_WORM_BLUETURRET': 'Plasmidas',
+	'Journal.DESC_BONE_WORM_BLUETURRET':
+		'Large worm mutated heavily by Plasmium. The creature has become fused to the roof of its cave, no longer able to move freely.',
+	'Journal.NOTE_BONE_WORM_BLUETURRET':
+		'In my home caves, when once this substance was allowed to flourish, I saw similar aberrations. This is wonder tainted strong with revulsion.',
+	'Journal.NAME_BLUE_ASSISTANT': 'Plasmified Zango',
+	'Journal.DESC_BLUE_ASSISTANT': 'Husk of an alchemist’s assistant granted false life by Plasmium.',
+	'Journal.NOTE_BLUE_ASSISTANT':
+		'He carelessly seeded these caves with that cursed substance... His final fate seems fair reward for those efforts, yet I feel some sympathy. It is an alluring power.',
+	'Journal.NAME_LILYPAD_FLY': 'Leaf Glider',
+	'Journal.DESC_LILYPAD_FLY': 'Fine winged flyer that survives in flocks.',
+	'Journal.NOTE_LILYPAD_FLY': 'So light they can rest atop still water’s surface. An elegant bug indeed.',
+	'Journal.NAME_GRASS_GOOMBA': 'Leaf Roller',
+	'Journal.DESC_GRASS_GOOMBA': 'Pointed scurrier posing as plant life.',
+	'Journal.NOTE_GRASS_GOOMBA': 'Simple. Graceful. Another fine bug lost forever from these lands.',
+	'Journal.NAME_HORNET_DRAGONFLY': 'Pendra',
+	'Journal.DESC_HORNET_DRAGONFLY': 'Flighty insect that lives beside still waters.',
+	'Journal.NOTE_HORNET_DRAGONFLY':
+		'Though generally passive, their sharp masks can cause injury if carelessly blundered into.',
+	'Journal.NAME_DRAGONFLY_LARGE': 'Pendragor',
+	'Journal.DESC_DRAGONFLY_LARGE':
+		'Heavy insect that lives near large bodies of water. Its weighty body is best avoided.',
+	'Journal.NOTE_DRAGONFLY_LARGE': 'When they do not hinder my path, I find their simple motion rather pleasant.',
+	'Journal.NAME_LILYPAD_TRAP': 'Nuphar',
+	'Journal.DESC_LILYPAD_TRAP': 'Predatory plant with a powerful jaw shaped to resemble a lily pad.',
+	'Journal.NOTE_LILYPAD_TRAP': 'A snapping surprise on first encounter, though one easily avoided once aware.',
+	'Journal.NAME_CLOVERSTAG': 'Cloverstag',
+	'Journal.DESC_CLOVERSTAG': 'Placid native of Verdania. Its hide closely mimics the flora of its territory.',
+	'Journal.NOTE_CLOVERSTAG':
+		'An impressive act of mimicry. To match so closely with its land, their clover caves must have sustained through generations uncounted.',
+	'Journal.NAME_CLOVERSTAG_WHITE': 'Palestag',
+	'Journal.DESC_CLOVERSTAG_WHITE':
+		'Fabled first Cloverstag of Verdania’s wilds. Commands the grass and leaves to aid its attack.',
+	'Journal.NOTE_CLOVERSTAG_WHITE':
+		'Myth made real in memory. The creature seemed completely at one with the flora around it. Did it ever truly exist as I have seen it?',
+	'Journal.NAME_GRASSHOPPER_CHILD': 'Kindanir',
+	'Journal.DESC_GRASSHOPPER_CHILD': 'Child of Verdania, fully capable to fight despite its young age.',
+	'Journal.NOTE_GRASSHOPPER_CHILD':
+		'Fierce and fast, and defending their lands even from birth. These are children to be proud of.',
+	'Journal.NAME_GRASSHOPPER_SLASHER': 'Verdanir',
+	'Journal.DESC_GRASSHOPPER_SLASHER': 'Darting warrior with sharpened forelimbs and heightened senses.',
+	'Journal.NOTE_GRASSHOPPER_SLASHER':
+		'They rarely relax, always alert for potential danger, even deep in their own territory. To defeat them my focus must match their own.',
+	'Journal.NAME_GRASSHOPPER_FLY': 'Escalion',
+	'Journal.DESC_GRASSHOPPER_FLY':
+		'Blindingly fast, winged warrior able to launch pointed pinions from its forelimbs.',
+	'Journal.NOTE_GRASSHOPPER_FLY':
+		'Born with many tools I would once have desired for myself. Fortunately, I have trained hard around those limits.',
+	'Journal.NAME_CLOVER_DANCER': 'Clover Dancers',
+	'Journal.DESC_CLOVER_DANCER':
+		'Dual princes of old Verdania, beloved by their subjects for their grace and for the ballet of death they delivered upon outsiders.',
+	'Journal.NOTE_CLOVER_DANCER': 'For one to love another so similar to themselves, is that selfless or vain?',
+	'Journal.NAME_ABYSS_CRAWLER': 'Shadow Creeper',
+	'Journal.DESC_ABYSS_CRAWLER':
+		'Shell-plated worm found only in the deepest depths. Seems to survive despite consuming no food or liquid.',
+	'Journal.NOTE_ABYSS_CRAWLER':
+		'A creature long familiar to me. I suspect that no matter how far I travel, if I descend deep enough they will always be there.',
+	'Journal.NAME_ABYSS_CRAWLER_LARGE': 'Shadow Charger',
+	'Journal.DESC_ABYSS_CRAWLER_LARGE':
+		'Bulky worm of the deepest depths. Lives in tight crevices and uses its weighty body to batter.',
+	'Journal.NOTE_ABYSS_CRAWLER_LARGE':
+		'These ones grow large, yet I have never observed them eating, or sleeping. They seem such simple bugs... but I suspect they are not truly our cousins.',
+	'Journal.NAME_GLOOMFLY': 'Gloomsac',
+	'Journal.DESC_GLOOMFLY':
+		'Tiny empty creature, barely a bug. Swallows its prey whole and sucks their nutrients until nothing remains.',
+	'Journal.NOTE_GLOOMFLY': 'This one disturbs me... There is something in its simplicity. Do I almost feel fear?',
+	'Journal.NAME_GLOOM_BEAST': 'Gargant Gloom',
+	'Journal.DESC_GLOOM_BEAST': 'Enormous tubular beast uniquely suited to living close to the void below.',
+	'Journal.NOTE_GLOOM_BEAST':
+		'Amazingly, the creature carries the void’s black liquid in its stomach, violently spraying it forth if threatened.',
+	'Journal.NAME_ABYSS_TENDRIL': 'Void Tendrils',
+	'Journal.DESC_ABYSS_TENDRIL': 'Lashing fragments of pure darkness, shaped into sharpened tentacles.',
+	'Journal.NOTE_ABYSS_TENDRIL':
+		'The void that will claim all things... In the barbed forms it chooses its nature can be seen clear.',
+	'Journal.NAME_BLACK_THREAD_CORE': 'Void Mass',
+	'Journal.DESC_BLACK_THREAD_CORE': 'Dense knot of husks bound tight by void soaked Silk.',
+	'Journal.NOTE_BLACK_THREAD_CORE':
+		'Silk and shells corrupted. That void seeks now to claim this land whole. These poor shells are only the beginning.',
+	'Journal.NAME_ABYSS_MASS': 'Summoned Saviour',
+	'Journal.DESC_ABYSS_MASS': 'Mass of old masks swollen and animated by writhing void.',
+	'Journal.NOTE_ABYSS_MASS':
+		'A creature born of a bug’s desperate hope for strength. Few possess the skill to call the void, and of those that can, none possess the means to tame it.',
+	'Journal.NAME_WHITE_PALACE_FLY': 'Wingmould',
+	'Journal.DESC_WHITE_PALACE_FLY':
+		'False fly with a rune etched shell. A tortured mix of soul and void is caged within.',
+	'Journal.NOTE_WHITE_PALACE_FLY':
+		'A crude construct of my father’s fallen domain. Only a fool believes that void can be fashioned to do their bidding.',
+	'Journal.NAME_CENTIPEDE_TRAP': 'Garpid',
+	'Journal.DESC_CENTIPEDE_TRAP': 'Sightless burrower that reacts violently to the slightest sound.',
+	'Journal.NOTE_CENTIPEDE_TRAP':
+		'A common enough bug, though not to be underestimated. The acuteness of their other senses more than makes up for their lack of vision.',
+	'Journal.NAME_SPIKE_LAZY_FLYER': 'Imoba',
+	'Journal.DESC_SPIKE_LAZY_FLYER':
+		'Slow drifting bug with a heavy top shell. The bug reacts little to threats, even those that could claim its life.',
+	'Journal.NOTE_SPIKE_LAZY_FLYER':
+		'The poor creature has lived a life too calm and coddled. It would not fare well in the world beyond its walls.',
+	'Journal.NAME_SURFACE_SCUTTLER': 'Skrill',
+	'Journal.DESC_SURFACE_SCUTTLER': 'Common crawler that lives beneath sand.',
+	'Journal.NOTE_SURFACE_SCUTTLER':
+		'This surface dweller is free of Silk. Its nature remains its own. The monarch’s influence must only have stretched below it.',
+	'Journal.NAME_GIANT_CENTIPEDE': 'Bell Eater',
+	'Journal.DESC_GIANT_CENTIPEDE': 'Long dormant centipede, awoken and enraged by Pharloom’s crumbling collapse.',
+	'Journal.NOTE_GIANT_CENTIPEDE':
+		'A monster in the classic form of tales from youth. Its slaying was done as much by my fierce travelling companion as by myself.',
+	'Journal.NAME_GIANT_FLEA': 'Huge Flea',
+	'Journal.DESC_GIANT_FLEA': 'Oversized bug, briefly consumed by anger after its long time caged.',
+	'Journal.NOTE_GIANT_FLEA':
+		'I would not have guessed so large and marvellous a flea existed. I am pleased it saw sense before I had to strike a killing blow.',
+	'Journal.NAME_SHAKRA': 'Shakra',
+	'Journal.DESC_SHAKRA':
+		'Warrior cartographer of a tribe from Pharloom’s edge. Her skills in battle could challenge the kingdom’s best.',
+	'Journal.NOTE_SHAKRA':
+		'She has lived a mere fraction of my lifetime and yet her rings prove a ferocious match. As gifted a warrior as I have ever encountered, and one I am fortunate to call a friend.',
+	'Journal.NAME_GARMOND_ZAZA': 'Garmond & Zaza',
+	'Journal.DESC_GARMOND_ZAZA':
+		'Vigorous old knight and their noble companion, working together to see their lands cut free from haunted madness.',
+	'Journal.NOTE_GARMOND_ZAZA':
+		'They too seek the spectre at the Haunting’s heart, though I fear that foe would pose a challenge beyond their mortal limits.',
+	'Journal.NAME_GARMOND': 'Lost Garmond',
+	'Journal.DESC_GARMOND': 'Old knight consumed by black thread.',
+	'Journal.NOTE_GARMOND':
+		'A tragic fate for a once honourable bug. Those void soaked threads... Their physical might is nothing compared to the corruption they wreak upon a soul.',
+	'Journal.NAME_PINSTRESS_BOSS': 'Pinstress',
+	'Journal.DESC_PINSTRESS_BOSS':
+		'Blade maiden of a once renowned warrior sect, survived long beyond the rest of her order.',
+	'Journal.NOTE_PINSTRESS_BOSS':
+		'I like her. For her willingness to teach and her spirit still strong, despite a long age spent solitary... she has my respect.',
+	'Journal.NAME_SPINNER_BOSS': 'Widow',
+	'Journal.DESC_SPINNER_BOSS': 'Crazed fanatic able to guide Pharloom’s haunted Silk by music played upon it.',
+	'Journal.NOTE_SPINNER_BOSS':
+		'Her body seemed a Weaver’s, but her mask had been forcibly removed, and her own Silk was bound useless by heavy pins lodged through her spine.',
+	'Journal.NAME_FIRST_WEAVER': 'First Sinner',
+	'Journal.DESC_FIRST_WEAVER': 'Ancient Weaver condemned for a transgression lost to time.',
+	'Journal.NOTE_FIRST_WEAVER':
+		'This one’s husk held a masterful talent, to weave Silk into blazing runes. Throughout my life, I have seen runes woven for many tasks. Was she the first to hone such skills?',
+	'Journal.NAME_PHANTOM': 'Phantom',
+	'Journal.DESC_PHANTOM':
+		'Mournful creature tasked alone to expel the Citadel’s choking refuse. Their talent with a longpin is unmatched.',
+	'Journal.NOTE_PHANTOM':
+		'Though grey with age, their frayed form suggested a being strung from Silk, one who welcomed a decisive end in combat over a slow decline.',
+	'Journal.NAME_LACE': 'Lace',
+	'Journal.DESC_LACE': 'Manic fencer who delights in battle.',
+	'Journal.NOTE_LACE':
+		'A bug born entirely of thread. Much Silk would have been needed to see her sustained. A fragile form of life, but life nonetheless.',
+	'Journal.NAME_SILK_BOSS': 'Grand Mother Silk',
+	'Journal.DESC_SILK_BOSS': 'Monarch of Pharloom, and the primal source of Silk.',
+	'Journal.NOTE_SILK_BOSS':
+		'Heart of the Haunting, long lulled to slumber and desperate to wake. The higher being’s threads stretched throughout Pharloom, snaring its bugs and driving them to madness and discord.',
+	'Journal.NAME_LOST_LACE': 'Lost Lace',
+	'Journal.DESC_LOST_LACE': 'Silk-spun child possessed by the void.',
+	'Journal.NOTE_LOST_LACE':
+		'To quell the mother’s rage, and see this kingdom saved, I will claim her back. This one... the dark shall not take.',
+	'Quests.MQ_CITADEL_SEEKER_NAME': 'The Great Citadel',
+	'Quests.MQ_TYPE_SEEK': 'Seek',
+	'Quests.MQ_THREADSPUN_TOWN_NAME': 'The Threadspun Town',
+	'Quests.MQ_TYPE_SAVE': 'Save',
+	'Quests.MQ_BELLSHRINES_NAME': 'Grand Gate',
+	'Quests.MQ_TYPE_BELLSHRINES': 'Open',
+	'Quests.MQ_CITADEL_INVESTIGATE_NAME': 'Silent Halls',
+	'Quests.MQ_TYPE_INVESTIGATE': 'Search',
+	'Quests.MQ_CITADEL_ASCENT_NAME': 'Pharloom’s Crown',
+	'Quests.MQ_TYPE_ASCEND': 'Ascend',
+	'Quests.MQ_CITADEL_ASCENT_NAME_SILK': 'Pale Monarch',
+	'Quests.MQ_TYPE_DEFEAT': 'Defeat',
+	'Quests.MQ_SILK_SNARE_NAME': 'Soul Snare',
+	'Quests.MQ_TYPE_DESTROY': 'Destroy',
+	'Quests.MQ_BLACKTHREAD_0_NAME': 'After the Fall',
+	'Quests.MQ_BLACKTHREAD_1_NAME': 'Awaiting the End',
+	'Quests.MQ_RESCUE_BELLBEAST_NAME': 'Beast in the Bells',
+	'Quests.MQ_BLACKTHREAD_2_NAME': 'The Dark Below',
+	'Quests.MQ_DIVINGBELL_1_NAME': 'The Dark Below',
+	'Quests.MQ_DIVINGBELL_2_NAME': 'The Dark Below',
+	'Quests.MQ_DIVINGBELL_3_NAME': 'The Dark Below',
+	'Quests.MQ_TYPE_DESCEND': 'Descend',
+	'Quests.MQ_BLACKTHREAD_3_NAME': 'Return to Pharloom',
+	'Quests.MQ_BLACKTHREAD_4_NAME': 'Spell Seeker',
+	'Quests.MQ_BLACKTHREAD_5_NAME': 'The Old Hearts',
+	'Quests.MQ_BLACKTHREAD_6_NAME': 'Last Dive',
+	'Quests.QUEST_FIXER1_TITLE': 'Bone Bottom Repairs',
+	'Quests.TYPE_DONATE_1_TITLE': 'Donate',
+	'Quests.QUEST_FIXER3_TITLE': 'A Lifesaving Bridge',
+	'Quests.QUEST_FIXER2_TITLE': 'An Icon of Hope',
+	'Quests.QUEST_PILGRIM_RAGS_TITLE': 'Garb of the Pilgrims',
+	'Quests.TYPE_HUNT_1_TITLE': 'Hunt',
+	'Quests.QUEST_MOSSBERRY1_TITLE': 'Berry Picking',
+	'Quests.TYPE_GATHER_1_TITLE': 'Gather',
+	'Quests.QUEST_FLEAS_TITLE': 'The Lost Fleas',
+	'Quests.TYPE_WAYFARER_1_TITLE': 'Wayfarer',
+	'Quests.QUEST_ROCK_ROLLERS_TITLE': 'Volatile Flintbeetles',
+	'Quests.QUEST_SKULL_KING_TITLE': 'The Terrible Tyrant',
+	'Quests.TYPE_HUNT_2_TITLE': 'Grand Hunt',
+	'Quests.QUEST_BROLLY_GET_TITLE': 'Flexile Spines',
+	'Quests.QUEST_JOURNAL_TITLE': 'Bugs of Pharloom',
+	'Quests.TYPE_JOURNAL_TITLE': 'Learn',
+	'Quests.QUEST_BELL_HOUSE_START_TITLE': 'Restoration of Bellhart',
+	'Quests.QUEST_BELL_HOUSE_CONT_TITLE': 'Bellhart’s Glory',
+	'Quests.QUEST_PINSMITHTOOLS_NAME': 'Pinmaster’s Oil',
+	'Quests.QUEST_SHINY_BELL_GOOMBAS_TITLE': 'Silver Bells',
+	'Quests.QUEST_SAVE_COURIER_SHORT_NAME': 'My Missing Courier',
+	'Quests.QUEST_SAVE_COURIER_TALL_NAME': 'My Missing Brother',
+	'Quests.QUEST_COURIER_BONEBOTTOM_NAME': 'Bone Bottom Supplies',
+	'Quests.TYPE_COURIER_TITLE': 'Delivery',
+	'Quests.QUEST_COURIER_PILGRIMSREST_NAME': 'Pilgrim’s Rest Supplies',
+	'Quests.QUEST_COURIER_SONGCLAVE_NAME': 'Songclave Supplies',
+	'Quests.QUEST_COURIER_FLEATOPIA_NAME': 'Fleatopia Supplies',
+	'Quests.QUEST_COURIER_MASKMAKER_NAME': 'Liquid Lacquer',
+	'Quests.QUEST_COURIER_SLAVE_NAME': 'Queen’s Egg',
+	'Quests.QUEST_COURIER_FIXER_NAME': 'Survivor’s Camp Supplies',
+	'Quests.QUEST_CROW_TITLE': 'Crawbug Clearing',
+	'Quests.QUEST_BEASTFLY_TITLE': 'Savage Beastfly',
+	'Quests.QUEST_SHELL_FLOWER_TITLE': 'Rite of the Pollip',
+	'Quests.QUEST_WITCH_CURSE_TITLE': 'Rite of Rebirth',
+	'Quests.QUEST_DOCTOR_CURSE_CURE_NAME': 'Infestation Operation',
+	'Quests.QUEST_EXTRACTOR_B_NAME': 'Alchemist’s Assistant',
+	'Quests.QUEST_EXTRACTOR_B2_NAME': 'Advanced Alchemy',
+	'Quests.QUEST_ROACH_KILL_TITLE': 'Roach Guts',
+	'Quests.QUEST_SONGCLAVE_DONATE_1_TITLE': 'Building Up Songclave',
+	'Quests.QUEST_SONGCLAVE_DONATE_2_TITLE': 'Strengthening Songclave',
+	'Quests.QUEST_FINEPINS_TITLE': 'Fine Pins',
+	'Quests.QUEST_SAVE_CITYMERCHANT_NAME': 'The Wandering Merchant',
+	'Quests.QUEST_SAVE_CITYMERCHANT_BRIDGE_NAME': 'The Lost Merchant',
+	'Quests.QUEST_SONGPILGRIM_CLOAKS_TITLE': 'Cloaks of the Choir',
+	'Quests.QUEST_BROODMOTHER_TITLE': 'The Wailing Mother',
+	'Quests.QUEST_GOURMAND_TITLE': 'Great Taste of Pharloom',
+	'Quests.QUEST_SAVE_SHERMA_NAME': 'Balm for the Wounded',
+	'Quests.QUEST_SONG_KNIGHT_TITLE': 'Final Audience',
+	'Quests.QUEST_HUNTRESS_NAME': 'Broodfeast',
+	'Quests.QUEST_RUNTRESS_NAME': 'Runtfeast',
+	'Quests.QUEST_SHAKRA_FINAL_TITLE': 'Trail’s End',
+	'Quests.Q_SOUL_SNARE_NAME': 'Silk and Soul',
+	'Quests.QUEST_PINSTRESS_BATTLE_TITLE': 'Fatal Resolve',
+	'Quests.QUEST_SPRINT_KILL_TITLE': 'Fastest in Pharloom',
+	'Quests.TYPE_SPRINT_TITLE': 'Sprint',
+	'Quests.GARMOND_BLACK_THREADED_NAME': 'Hero’s Call',
+	'Quests.QUEST_TROBBIO_2_TITLE': 'Pain, Anguish and Misery',
+	'Quests.QUEST_ANT_TRAPPER_TITLE': 'The Hidden Hunter',
+	'Quests.QUEST_FLEAGAMES_TITLE': 'Ecstasy of the End',
+	'Quests.QUEST_STEELSENTINEL_TITLE': 'A Vassal Lost',
+	'Quests.TYPE_STEELSENTINEL_TITLE': 'Steel',
+	'Quests.QUEST_MRMUSHROOM_TITLE': 'Passing of the Age',
+	'Quests.TYPE_HERALD_TITLE': 'Witness',
+	'Quests.QUEST_THREADCORES_TITLE': 'Dark Hearts',
+	'UI.MAT_NAME_SILK': 'Silk',
+	'UI.MAT_DESC_SILK':
+		'Fine thread spun from the soul of its creator. Highly coveted for its remarkable strength and mystical properties. Used to heal wounds, extend life and weave powerful runes.',
+	'UI.INV_NAME_SHARD': 'Shell Shards',
+	'UI.INV_DESC_SHARD': 'Hardened fragments of shell and bone, used in the crafting of tools and traps.',
+	'UI.INV_NAME_COIN': 'Rosaries',
+	'UI.INV_DESC_COIN':
+		'Beads carved from various materials, used as a measure of faith and traded as currency. Each is etched with a fine patterned design.',
+	'UI.INV_NAME_COIN_MID': 'Shell Rosaries',
+	'UI.INV_DESC_COIN_MID': 'Beads carved from polished shell. The finer material reflects their increased value.',
+	'UI.INV_NAME_COIN_BIG': 'Pearl Rosaries',
+	'UI.INV_DESC_COIN_BIG':
+		'Gleaming pearl carved over with intricate markings. The rarest and most highly valued rosaries in all of Pharloom.',
+	'UI.MAT_NAME_SMELTSTONE': 'Flintstone',
+	'UI.MAT_DESC_SMELTSTONE':
+		'Long burning rock from the base of Pharloom. Mined and used by the Citadel in its forgings.',
+	'UI.MAT_NAME_LIFEBLOOD': 'Plasmium',
+	'UI.MAT_DESC_LIFEBLOOD':
+		'Liquid lifeseed, possessed of remarkable regenerative qualities. A substance foreign to Pharloom, introduced by the Alchemist Zylotol.',
+	'UI.MAT_NAME_MAGNETITE': 'Magnetite',
+	'UI.MAT_DESC_MAGNETITE': 'Brittle levitating rock, found throughout the fringes of Pharloom.',
+	'UI.MAT_NAME_VOLTSTONE': 'Voltridian',
+	'UI.MAT_DESC_VOLTSTONE': 'Hard, charged stone that can catch, store and discharge electricity.',
 	'Map Zones.ABOVE_CRADLE': 'Border Caves',
 	'Map Zones.BELLHOME': 'Bellhome',
 	'Map Zones.BELLTOWN_HAUNTED': 'Haunted Bellhart',

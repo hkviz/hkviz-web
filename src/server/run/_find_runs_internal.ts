@@ -3,7 +3,8 @@ import * as v from 'valibot';
 import { r2RunPartFileKey } from '~/lib/r2';
 import { gameIdSchema } from '~/lib/types/game-ids';
 import { runSortSchema } from '~/lib/types/run-sort';
-import { tagSchema, type TagCode } from '~/lib/types/tags';
+import { getTagCodeFromDBColumn, getTagDBColumn } from '~/lib/types/tags/tag_db_column';
+import { tagFromCode, tagSchema, type TagCode } from '~/lib/types/tags/tags';
 import { visibilitySchema } from '~/lib/types/visibility';
 import { type DB } from '~/server/db';
 import { r2GetSignedDownloadUrl } from '~/server/r2';
@@ -77,8 +78,15 @@ export async function findRunsInternal({
 
 	const runs = await db.query.runs.findMany({
 		where: (run, { eq, and, inArray, or }) => {
-			const tagFilter = filter.tag ? or(...filter.tag.map((tag) => eq(run[`tag_${tag}`], true))) : undefined;
 			const termFilter = filter.term ? or(like(run.title, `%${filter.term}%`)) : undefined;
+
+			const tagFilter = filter.tag
+				? or(
+						...filter.tag.map((tag) => {
+							return and(eq(run[getTagDBColumn(tag)], true), inArray(run.game, tagFromCode(tag).games));
+						}),
+					)
+				: undefined;
 
 			const conditions = [
 				filter.userId ? eq(run.userId, filter.userId) : undefined,
@@ -216,7 +224,7 @@ export async function findRunsInternal({
 						? []
 						: (Object.entries(run)
 								.filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
-								.map((kv) => kv[0].slice(4)) as TagCode[]),
+								.map((kv) => getTagCodeFromDBColumn(run.game, kv[0] as any)) as TagCode[]),
 					user: getOrMakeUser(
 						isResearchView || isAnonymAccess ? '' : run.user.id,
 						isResearchView || isAnonymAccess ? 'Anonym' : (run.user.name ?? 'Unnamed player'),

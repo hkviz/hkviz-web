@@ -1,8 +1,15 @@
-import { useAction, useSubmission } from '@solidjs/router';
+import { useAction, useSubmission, useSubmissions } from '@solidjs/router';
 import { PlusIcon, XIcon } from 'lucide-solid';
 import { For, Show, createMemo, type Component, type JSXElement } from 'solid-js';
-import { createMutableMemo } from '~/lib/create-mutable-memo.ts';
-import { tagFromCode, tagGroups, ungroupedTags, type Tag, type TagCode, type TagGroup } from '~/lib/types/tags.ts';
+import { GameId } from '~/lib/types/game-ids.ts';
+import {
+	tagFromCode,
+	tagGroups,
+	ungroupedTagsNotRemoved,
+	type Tag,
+	type TagCode,
+	type TagGroup,
+} from '~/lib/types/tags/tags.ts';
 import { cn } from '~/lib/utils.ts';
 import { addTagAction, removeTagAction } from '~/server/run/tags.ts';
 import { Badge } from '../ui/badge.tsx';
@@ -21,10 +28,10 @@ import { Skeleton } from '../ui/skeleton.tsx';
 
 // TODO
 export const RunTag: Component<{
+	runGame: GameId;
 	tag: Tag;
 	runId: string;
 	isOwn: boolean;
-	onRemovedTag?: (tag: Tag) => void;
 	removeButtonClass?: string;
 }> = (props) => {
 	const _removeTag = useAction(removeTagAction);
@@ -32,11 +39,14 @@ export const RunTag: Component<{
 		removeTagAction,
 		([runId, code]) => runId === props.runId && code === props.tag.code,
 	);
+	const addTagSubmission = useSubmissions(
+		addTagAction,
+		([runId, code]) => runId === props.runId && code === props.tag.code,
+	);
 
 	async function removeTag() {
 		console.log('removeTag', props.tag.code);
-		await _removeTag(props.runId, props.tag.code);
-		props.onRemovedTag?.(props.tag);
+		await _removeTag(props.runId, props.tag.code, props.runGame);
 	}
 
 	return (
@@ -44,17 +54,22 @@ export const RunTag: Component<{
 			class={cn(
 				'relative z-8 overflow-hidden',
 				props.tag.color.className,
-				removeTagSubmission.pending ? 'bg-zinc-700 hover:bg-zinc-700' : '',
+				removeTagSubmission.pending || addTagSubmission.pending ? 'opacity-50' : '',
 			)}
 		>
-			<span class="font-bold">{props.tag.name}</span>
+			<span>{props.tag.name}</span>
 			<Show when={props.isOwn}>
 				<Button
 					variant="ghost"
-					class={cn('relative -m-2 -mr-3 ml-0 h-8 w-8 rounded-full', props.removeButtonClass)}
+					class={cn(
+						'relative -m-2 -mr-3 ml-0 h-8 w-8 rounded-full hover:bg-white/10',
+						props.removeButtonClass,
+					)}
 					size="icon"
 					onClick={removeTag}
-					disabled={removeTagSubmission.pending || removeTagSubmission.result != null}
+					disabled={
+						removeTagSubmission.pending || addTagSubmission.pending || removeTagSubmission.result != null
+					}
 				>
 					<XIcon class="h-3 w-3" />
 				</Button>
@@ -64,6 +79,7 @@ export const RunTag: Component<{
 };
 
 export const RunCardTags: Component<{
+	runGame: GameId;
 	codes: TagCode[];
 	runId: string;
 	isOwn: boolean;
@@ -71,24 +87,20 @@ export const RunCardTags: Component<{
 	addButtonClass?: string;
 	removeButtonClass?: string;
 }> = (props) => {
-	const [codes, setCodes] = createMutableMemo<TagCode[]>(() => props.codes);
+	const _addTag = useAction(addTagAction);
+	const addTagSubmission = useSubmissions(addTagAction, ([runId]) => runId === props.runId);
+	const tagAdding = createMemo(() => addTagSubmission.map((it) => it.input[1]));
+
 	const runTags = createMemo(() =>
-		codes()
+		new Set([...props.codes, ...tagAdding()])
+			.values()
+			.toArray()
 			.map(tagFromCode)
 			.sort((a, b) => a.order - b.order),
 	);
 
-	const _addTag = useAction(addTagAction);
-	const addTagSubmission = useSubmission(addTagAction, ([runId]) => runId === props.runId);
-
 	async function addTag(tag: Tag) {
-		if (codes().includes(tag.code)) return;
-		await _addTag(props.runId, tag.code);
-		setCodes([...codes(), tag.code]);
-	}
-
-	function onRemovedTag(tag: Tag) {
-		setCodes(codes().filter((code) => code !== tag.code));
+		await _addTag(props.runId, tag.code, props.runGame);
 	}
 
 	return (
@@ -96,7 +108,7 @@ export const RunCardTags: Component<{
 			<ul class="flex flex-row flex-wrap-reverse items-end justify-end gap-1">
 				<Show when={props.isOwn}>
 					<li>
-						<TagDropdownMenu onClick={addTag}>
+						<TagDropdownMenu onClick={addTag} games={[props.runGame]}>
 							<DropdownMenuTrigger
 								as={Button<'button'>}
 								variant="outline"
@@ -114,12 +126,12 @@ export const RunCardTags: Component<{
 				</Show>
 				<For each={runTags()}>
 					{(tag) => (
-						<li class="flex w-fit flex-row">
+						<li class="z-8 flex w-fit flex-row">
 							<RunTag
 								tag={tag}
 								runId={props.runId}
+								runGame={props.runGame}
 								isOwn={props.isOwn}
-								onRemovedTag={onRemovedTag}
 								removeButtonClass={props.removeButtonClass}
 							/>
 						</li>
@@ -138,6 +150,7 @@ export const RunCardTags: Component<{
 export type TagDropdownMenuProps = {
 	children: JSXElement;
 	isTagDisabled?: (tag: Tag) => boolean;
+	games?: GameId[];
 } & (
 	| {
 			onClick: (tag: TagGroup | Tag | undefined) => void;
@@ -150,6 +163,15 @@ export type TagDropdownMenuProps = {
 );
 
 export const TagDropdownMenu: Component<TagDropdownMenuProps> = (props) => {
+	function filterTags(tags: Tag[]) {
+		if (!props.games) return tags;
+		const filtered = tags.filter((tag) => tag.games.some((game) => props.games?.includes(game)));
+		if (filtered.length === 0) {
+			return null;
+		}
+		return filtered;
+	}
+
 	return (
 		<DropdownMenu>
 			{props.children}
@@ -161,33 +183,37 @@ export const TagDropdownMenu: Component<TagDropdownMenuProps> = (props) => {
 				</Show>
 				<For each={tagGroups}>
 					{(group) => (
-						<DropdownMenuSub>
-							<DropdownMenuSubTrigger>
-								<span>{group.name}</span>
-							</DropdownMenuSubTrigger>
-							<DropdownMenuPortal>
-								<DropdownMenuSubContent>
-									<Show when={props.showAllOptions}>
-										<DropdownMenuItem onClick={() => props.onClick(group as never)}>
-											All {group.name}s
-										</DropdownMenuItem>
-									</Show>
-									<For each={group.tags}>
-										{(tag) => (
-											<DropdownMenuItem
-												onClick={() => props.onClick(tag)}
-												disabled={props.isTagDisabled?.(tag) ?? false}
-											>
-												<Badge class={tag.color.className}>{tag.name}</Badge>
-											</DropdownMenuItem>
-										)}
-									</For>
-								</DropdownMenuSubContent>
-							</DropdownMenuPortal>
-						</DropdownMenuSub>
+						<Show when={filterTags(group.tagsNotRemoved)}>
+							{(groupTags) => (
+								<DropdownMenuSub>
+									<DropdownMenuSubTrigger>
+										<span>{group.name}</span>
+									</DropdownMenuSubTrigger>
+									<DropdownMenuPortal>
+										<DropdownMenuSubContent>
+											<Show when={props.showAllOptions}>
+												<DropdownMenuItem onClick={() => props.onClick(group as never)}>
+													All {group.name}s
+												</DropdownMenuItem>
+											</Show>
+											<For each={groupTags()}>
+												{(tag) => (
+													<DropdownMenuItem
+														onClick={() => props.onClick(tag)}
+														disabled={props.isTagDisabled?.(tag) ?? false}
+													>
+														<Badge class={tag.color.className}>{tag.name}</Badge>
+													</DropdownMenuItem>
+												)}
+											</For>
+										</DropdownMenuSubContent>
+									</DropdownMenuPortal>
+								</DropdownMenuSub>
+							)}
+						</Show>
 					)}
 				</For>
-				<For each={ungroupedTags}>
+				<For each={filterTags(ungroupedTagsNotRemoved)}>
 					{(tag) => (
 						<DropdownMenuItem
 							onClick={() => props.onClick(tag)}

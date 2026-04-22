@@ -4,6 +4,8 @@
 
 @theme {
 	--breakpoint-lg2: 72rem;
+
+	--inset-shadow-glow-sm: inset 0 0 8px 2px var(--tw-shadow-color);
 }
 
 /*
