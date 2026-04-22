@@ -1,21 +1,24 @@
-import { defineConfig } from '@solidjs/start/config';
-import type { MdxOptions } from '@vinxi/plugin-mdx';
-import pkg from '@vinxi/plugin-mdx';
+import { solidStart } from '@solidjs/start/config';
+import { defineConfig, Plugin } from 'vite';
+// import { imagetoolsWithAverageColor } from './image-processing';
+import mdx from '@mdx-js/rollup';
+import { nitro } from 'nitro/vite';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkToc from 'remark-toc';
-import lqip from 'vite-plugin-lqip';
-// import { imagetoolsWithAverageColor } from './image-processing';
-import devtools from 'solid-devtools/vite';
 import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 import { imagetools } from 'vite-imagetools';
+import lqip from 'vite-plugin-lqip';
 import { assetpackPlugin } from './assetpack-plugin';
+// import assetpackPlugin from 'vite-plugin-asset-pack';
+// import devtools from 'solid-devtools/vite';
+// import { imagetoolsWithAverageColor } from './image-processing';
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-const { default: mdx } = pkg;
+//const { default: mdx } = pkg;
 
 /** @type {import("rehype-autolink-headings").Options} */
 const rehypeAutolinkOptions = {
@@ -59,6 +62,8 @@ const addTargetToHashLinks = () => (tree: any) => {
 	});
 };
 
+type MdxOptions = Parameters<typeof mdx>[0];
+
 const mdxOptions: MdxOptions = {
 	jsx: true,
 	jsxImportSource: 'solid-js',
@@ -67,38 +72,64 @@ const mdxOptions: MdxOptions = {
 	rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, rehypeAutolinkOptions]],
 };
 
-export default defineConfig({
-	extensions: ['tsx', 'mdx'],
-	vite: {
-		plugins: [
-			devtools({
-				/* features options - all disabled by default */
-				autoname: true, // e.g. enable autoname
-			}),
-			mdx.withImports({})(mdxOptions),
-			lqip({
-				sharp: {
-					resize: {
-						width: 16,
-						height: 16,
-						fit: 'inside',
-						kernel: 'cubic',
+export default defineConfig(() => ({
+	envDir: './',
+	plugins: [
+		{
+			...mdx(mdxOptions),
+			enforce: 'pre',
+		} as Plugin,
+		solidStart({
+			middleware: './src/middleware.ts',
+			extensions: ['mdx', 'md'],
+		}),
+		nitro(),
+		/*devtools({
+			// features options - all disabled by default
+			autoname: true, // e.g. enable autoname
+		}),*/
+		lqip({
+			sharp: {
+				resize: {
+					width: 16,
+					height: 16,
+					fit: 'inside',
+					kernel: 'cubic',
+				},
+			},
+		}),
+		imagetools({
+			defaultDirectives: (id) => {
+				if (id.searchParams.has('hero')) {
+					// the `hero` directive was set on the image
+					return new URLSearchParams('w=1200;800;600;400;300&format=webp;jpg&as=picture&withoutEnlargement');
+				}
+				return new URLSearchParams();
+			},
+		}),
+		assetpackPlugin(),
+	],
+	nitro: {
+		compatibilityDate: '2026-04-01' as any,
+		preset: 'cloudflare_module',
+		exportConditions: ['worker'],
+		cloudflare: {
+			wrangler: {
+				observability: {
+					logs: {
+						enabled: true,
+						invocation_logs: true,
+					},
+					traces: {
+						enabled: true,
 					},
 				},
-			}),
-			imagetools({
-				defaultDirectives: (id) => {
-					if (id.searchParams.has('hero')) {
-						// the `hero` directive was set on the image
-						return new URLSearchParams(
-							'w=1200;800;600;400;300&format=webp;jpg&as=picture&withoutEnlargement',
-						);
-					}
-					return new URLSearchParams();
-				},
-			}),
-			assetpackPlugin(),
-		],
+			},
+		},
 	},
-	middleware: './src/middleware.ts',
-});
+	build: {
+		rollupOptions: {
+			external: ['fs', 'fs/promises', 'fsevents', 'nodemailer'],
+		},
+	},
+}));

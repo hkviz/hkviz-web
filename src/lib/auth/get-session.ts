@@ -1,5 +1,5 @@
 import { getSession } from '@auth/solid-start';
-import { getWebRequest } from 'vinxi/http';
+import { getWebRequest } from '@solidjs/start/http';
 import { authOptions } from './auth-options';
 
 export const getSessionOrNullInternal = async () => {

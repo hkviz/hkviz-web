@@ -1,7 +1,7 @@
 import { query } from '@solidjs/router';
+import { CookieSerializeOptions, getWebRequest } from '@solidjs/start/http';
 import { parse, serialize } from 'cookie';
 import * as v from 'valibot';
-import { CookieSerializeOptions, getWebRequest } from 'vinxi/http';
 import { CookieDefinition, CookieNameLike, getCookieName } from './cookie-names';
 
 export class ServerCookies {
