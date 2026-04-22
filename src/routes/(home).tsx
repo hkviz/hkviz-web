@@ -1,21 +1,26 @@
 import { Title } from '@solidjs/meta';
 import { createAsync, RouteDefinition } from '@solidjs/router';
+import { Show } from 'solid-js';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { FancyButton } from '~/components/fancy-button';
 import { HKVizText } from '~/components/HKVizText';
 import { OwnRuns } from '~/components/own-runs';
 import { GradientSeparator } from '~/components/ui/additions';
+import { useUser } from '~/lib/auth/client';
 import { AA } from '~/lib/routing/AA';
 import { findOwnRuns } from '~/server/run/find-own-runs';
 
 export const route = {
-	load: () => {
-		void findOwnRuns();
+	load({ location: _location }) {
+		void findOwnRuns({});
+		// void findOwnRuns(location.query);
 	},
 } satisfies RouteDefinition;
 
 export default function HomePage() {
-	const runs = createAsync(() => findOwnRuns());
+	const runs = createAsync(() => findOwnRuns({}));
+	const user = useUser();
+
 	return (
 		<ContentCenterWrapper>
 			<Title>HKViz for Hollow Knight</Title>
@@ -66,7 +71,9 @@ export default function HomePage() {
 					)}
 				</div>
 
-				<OwnRuns runs={runs()!} />
+				<Show when={user()}>
+					<OwnRuns />
+				</Show>
 
 				<GradientSeparator />
 				<div class={`max-w-[70ch] text-center`}>
