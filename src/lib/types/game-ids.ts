@@ -20,3 +20,10 @@ export function getGameName(gameId: GameId) {
 			return assertNever(gameId);
 	}
 }
+
+export function gameIdFromCode(code: string | undefined | null): GameId | undefined {
+	if (gameIds.includes(code as GameId)) {
+		return code as GameId;
+	}
+	return undefined;
+}

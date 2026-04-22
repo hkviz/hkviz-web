@@ -7,7 +7,7 @@ import { RunCard } from '~/components/run-card/run-card';
 import { tagOrGroupFromCode } from '~/lib/types/tags/tags';
 import { RunFilterParamsSchema, findPublicRuns } from '~/server/run/find-public-runs';
 import { ContentWrapper } from '../../components/content-wrapper';
-import { RunFilters } from './_components';
+import { RunFilters } from '../../components/run-filters';
 
 // TODO
 // export function generateMetadata({ searchParams }: { searchParams: RunFilter }) {

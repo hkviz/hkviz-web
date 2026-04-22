@@ -24,7 +24,7 @@ export async function POST({ request }: APIEvent): Promise<RunDataV1[]> {
 		userId: filter.userId,
 		tag: tag,
 		sort: filter.sort === 'favorites' ? 'likes' : 'newest',
-		games: ['hollow'],
+		game: 'hollow',
 		limit: 10,
 	});
 	return runs.map(mapRunToV1);

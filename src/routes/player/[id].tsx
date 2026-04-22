@@ -6,7 +6,7 @@ import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card/run-card';
 import { findPublicPlayer } from '~/server/player/find-player-data';
 import { findPublicRuns, RunFilterParamsSchema } from '~/server/run/find-public-runs';
-import { RunFilters } from '../run/_components';
+import { RunFilters } from '../../components/run-filters';
 
 interface Params {
 	id: string;

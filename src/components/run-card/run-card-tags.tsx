@@ -24,7 +24,6 @@ import {
 	DropdownMenuSubTrigger,
 	DropdownMenuTrigger,
 } from '../ui/dropdown-menu.tsx';
-import { Skeleton } from '../ui/skeleton.tsx';
 
 // TODO
 export const RunTag: Component<{
@@ -137,11 +136,6 @@ export const RunCardTags: Component<{
 						</li>
 					)}
 				</For>
-				<Show when={addTagSubmission.pending}>
-					<li>
-						<Skeleton class="relative z-8 h-6 w-16 brightness-125" />
-					</li>
-				</Show>
 			</ul>
 		</div>
 	);

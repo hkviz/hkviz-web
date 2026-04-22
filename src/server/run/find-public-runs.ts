@@ -12,7 +12,7 @@ export const RunFilterParamsSchema = v.object({
 	sort: v.nullish(runSortSchema),
 	userId: v.nullish(v.pipe(v.string(), v.uuid())),
 	term: v.nullish(v.string()),
-	games: v.nullish(v.array(gameIdSchema)),
+	game: v.nullish(gameIdSchema),
 	limit: v.nullish(v.number()),
 });
 export type RunFilterParams = v.InferOutput<typeof RunFilterParamsSchema>;
@@ -35,7 +35,7 @@ export const findPublicRuns = query(async (unsaveFilter: RunFilterParams) => {
 			term: filter.term,
 			sort: filter.sort ?? RUN_SORT_DEFAULT,
 			userId: filter.userId,
-			games: filter.games,
+			games: filter.game ? [filter.game] : undefined,
 			archived: [false],
 			limit: filter.limit,
 		},
