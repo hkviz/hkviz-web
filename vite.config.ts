@@ -116,10 +116,10 @@ export default defineConfig(({ mode }) => {
 		nitro: {
 			preset: 'vercel',
 		},
-		build: {
-			rollupOptions: {
-				external: ['fs', 'fs/promises', 'fsevents', 'nodemailer'],
-			},
-		},
+		// build: {
+		// 	rollupOptions: {
+		// 		external: ['fs', 'fs/promises', 'fsevents', 'nodemailer'],
+		// 	},
+		// },
 	};
 });

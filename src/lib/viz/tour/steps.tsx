@@ -10,6 +10,7 @@ import { RoomDisplayStore } from '../store/room-display-store';
 import { mapViewRoomRectClass } from '../store/tour-store';
 import { UiStore } from '../store/ui-store';
 import { ViewportStore } from '../store/viewport-store';
+import { GeoChartUnitIcon, HealthChartMaskUnitIcon } from '../time-charts/chart-icons';
 import { makeStep, type Step } from './step';
 
 const P: Component<{ children: JSXElement }> = (props) => {
@@ -46,7 +47,6 @@ export function createTourSteps({
 					<P>
 						Welcome to the <HKVizText /> quick start tour!
 					</P>
-					<P>You can always reopen it later using this button.</P>
 				</>
 			),
 			onActivate: () => {
@@ -82,11 +82,8 @@ export function createTourSteps({
 			padding: 32,
 			content: () => (
 				<>
-					<P>Hovering over rooms allows you to select them.</P>
-					<P>
-						Clicking on a room pins it. Once a room is pinned, other rooms can only be selected through
-						clicking.
-					</P>
+					<P>Hover over rooms to select them. Click a room to pin it. </P>
+					<P>When pinned, other rooms can only be selected by clicking.</P>
 				</>
 			),
 			activeEffect: () => {
@@ -111,7 +108,7 @@ export function createTourSteps({
 			return {
 				target: () => '.room-info-pin-button',
 				padding: 8,
-				content: () => <P>Here, you can also pin and unpin the selected room.</P>,
+				content: () => <P>You can also pin or unpin the selected room here.</P>,
 				activeEffect: () => {
 					roomDisplayStore.selectedScenePinned();
 					if (roomDisplayStore.selectedScenePinSource() === 'pin-button-click') {
@@ -140,11 +137,10 @@ export function createTourSteps({
 			popoverSide: () => (viewportStore.isMobileLayout() ? 'bottom' : 'right'),
 			content: () => (
 				<>
-					<P>This table shows some statistics about the selected room.</P>
+					<P>This table shows statistics for the selected room.</P>
 					<P>
-						By clicking on one of the coloring-buttons (
-						<PaletteIcon class="inline-block h-3 w-3" />
-						), you can recolor the map based on the selected statistic.
+						Click a coloring button (
+						<PaletteIcon class="inline-block h-3 w-3" />) to recolor the map based on the chosen statistic.
 					</P>
 				</>
 			),
@@ -198,16 +194,15 @@ export function createTourSteps({
 				content: () => (
 					<>
 						<P>
-							This is the animation timeline with color codes below showing the visited areas. Like on the
-							map, you can hover over color codes to select a room, and click for pinning the room.
+							Below the timeline, the visited scenes are shown as colored segments. The segments of the
+							selected scene, and its area are enlarged.
 						</P>
 						<P>
 							Hold shift while scrubbing on the timeline, to slowly move the animation forward or
 							backward.
 						</P>
 						<P>
-							Press play (<PlayIcon class="inline-block h-3 w-3" />) to look at the player movement and
-							the map expanding as it is explored.
+							Press play (<PlayIcon class="inline-block h-3 w-3" />) to look at the player movement.
 						</P>
 					</>
 				),
@@ -233,10 +228,9 @@ export function createTourSteps({
 				content: () => (
 					<>
 						<P>
-							While animating, the map can automatically follow the player, with one of 3 closeness
-							options.
+							During animation, the map can automatically follow the player with one of three zoom levels.
 						</P>
-						<P>Manually zooming or moving the map automatically disables this feature.</P>
+						<P>Manually zooming or moving the map disables this feature.</P>
 					</>
 				),
 				onActivate: () => {
@@ -258,10 +252,8 @@ export function createTourSteps({
 			padding: 2,
 			content: () => (
 				<>
-					<P>
-						In the splits panel, you can see timestamps of certain events in the gameplay. Click on a split
-						to jump directly to it in the timeline.
-					</P>
+					<P>In the splits panel, you can see timestamps for gameplay events.</P>
+					<P>Click a split to jump to it in the timeline.</P>
 				</>
 			),
 			onActivate: () => {
@@ -281,11 +273,12 @@ export function createTourSteps({
 			content: () => (
 				<>
 					<P>
-						Lastly, here are some charts showing stats over time. For {"'"}Geo{"'"}, {"'"}Essence{"'"} and
-						more. Scroll down to see more charts. The values below the charts and the dotted line on the
-						charts are always showing the selected point in the timeline.
+						Lastly, these charts show stats over time, such as{' '}
+						<GeoChartUnitIcon class="inline max-h-[1em] max-w-[1em]" /> Geo and{' '}
+						<HealthChartMaskUnitIcon class="inline max-h-[1em] max-w-[1em]" /> Health.
 					</P>
-					<P>That{"'"}s it! Happy exploring!</P>
+					<P>The values below the charts and the dotted line show the selected point in the timeline.</P>
+					<P>You{"'"}re all set. Happy exploring!</P>
 				</>
 			),
 			onActivate: () => {

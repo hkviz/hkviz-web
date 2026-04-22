@@ -37,7 +37,8 @@
 }
 
 @variant lg {
-	.dashboard-grid {
+	.dashboard-grid,
+	.dashboard-grid.dashboard-mobile-tab-right {
 		grid-template-columns: 18.75rem 1fr 21.875rem;
 		grid-template-rows: 1fr auto;
 		grid-template-areas:

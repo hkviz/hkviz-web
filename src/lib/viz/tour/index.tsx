@@ -1,3 +1,4 @@
+import { createHotkey } from '@tanstack/solid-hotkeys';
 import { XIcon } from 'lucide-solid';
 import { For, Show, createEffect, createMemo, onCleanup, untrack, type Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
@@ -94,7 +95,6 @@ const TourShadow: Component = () => {
 	createEffect(() => {
 		const _currentStep = currentStep();
 		const padding = _currentStep?.padding ?? 8;
-		console.log('padding', padding);
 		const targetQuery = _currentStep?.target();
 		const target = targetQuery != null ? document.querySelector<HTMLElement>(targetQuery) : null;
 
@@ -156,6 +156,54 @@ export const SingleRunPageTour: Component = () => {
 	const isOpen = tourStore.isOpen;
 
 	const currentStep = createMemo(() => tourStore.steps[tourStore.currentStepIndex()]);
+
+	createHotkey(
+		'Escape',
+		() => {
+			if (isOpen()) {
+				tourStore.close();
+			}
+		},
+		() => ({
+			enabled: isOpen(),
+		}),
+	);
+
+	createHotkey(
+		'Enter',
+		() => {
+			if (isOpen()) {
+				tourStore.next();
+			}
+		},
+		() => ({
+			enabled: isOpen(),
+		}),
+	);
+
+	createHotkey(
+		'ArrowRight',
+		() => {
+			if (isOpen()) {
+				tourStore.next();
+			}
+		},
+		() => ({
+			enabled: isOpen(),
+		}),
+	);
+
+	createHotkey(
+		'ArrowLeft',
+		() => {
+			if (isOpen()) {
+				tourStore.back();
+			}
+		},
+		() => ({
+			enabled: isOpen(),
+		}),
+	);
 
 	createEffect(() => {
 		const step = currentStep();
