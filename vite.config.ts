@@ -110,22 +110,7 @@ export default defineConfig(() => ({
 		assetpackPlugin(),
 	],
 	nitro: {
-		compatibilityDate: '2026-04-01' as any,
-		preset: 'cloudflare_module',
-		exportConditions: ['worker'],
-		cloudflare: {
-			wrangler: {
-				observability: {
-					logs: {
-						enabled: true,
-						invocation_logs: true,
-					},
-					traces: {
-						enabled: true,
-					},
-				},
-			},
-		},
+		preset: 'vercel',
 	},
 	build: {
 		rollupOptions: {
