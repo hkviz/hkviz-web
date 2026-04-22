@@ -35,7 +35,7 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 
 	const alwaysOneLineFilters = () => {
 		const tag = tagOrGroup();
-		return tag == null || tag.name.length <= 6;
+		return (tag == null || tag.name.length <= 4) && game() == null;
 	};
 
 	onMount(() => {
