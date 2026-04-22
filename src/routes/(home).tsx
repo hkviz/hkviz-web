@@ -24,8 +24,8 @@ export default function HomePage() {
 	return (
 		<ContentCenterWrapper>
 			<Title>HKViz for Hollow Knight</Title>
-			<div class="container mx-auto flex w-full flex-col items-center justify-center gap-12 px-4 py-16 text-foreground">
-				<div class={`max-w-[70ch] text-center`}>
+			<div class="mx-auto w-full py-16">
+				<div class={`mx-auto max-w-[70ch] pb-8 text-center`}>
 					<div class="start-page-header">
 						<h1
 							class={`title-text-glow -mb-6 font-serif text-[5rem] font-bold tracking-tight sm:text-[6rem]`}
@@ -70,13 +70,14 @@ export default function HomePage() {
 						</div>
 					)}
 				</div>
+				<GradientSeparator class="container mx-auto" />
 
 				<Show when={user()}>
 					<OwnRuns />
+					<GradientSeparator class="container mx-auto mt-12" />
 				</Show>
 
-				<GradientSeparator />
-				<div class={`max-w-[70ch] text-center`}>
+				<div class={`mx-auto max-w-[70ch] pt-10 text-center`}>
 					<p class="text-pretty">
 						<HKVizText /> is developed to allow research on visual analytics and data visualization in
 						Metroidvania games and is not affiliated with{' '}

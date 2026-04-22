@@ -33,6 +33,11 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 	const sort = createMemo(() => runSortFromCode(props.searchParams.sort ?? RUN_SORT_DEFAULT));
 	const game = createMemo(() => gameIdFromCode(props.searchParams.game) ?? undefined);
 
+	const alwaysOneLineFilters = () => {
+		const tag = tagOrGroup();
+		return tag == null || tag.name.length <= 6;
+	};
+
 	onMount(() => {
 		setSearchParams(withoutDefaultParams(props.searchParams));
 	});
@@ -122,12 +127,12 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 						/>
 					</TextField>
 				</div>
-				<div class="grid grid-cols-1 gap-2 sm:grid-cols-3 md:flex md:flex-row">
+				<div class={cn('flex gap-2', alwaysOneLineFilters() ? 'flex-row' : 'flex-col sm:flex-row')}>
 					<DropdownMenu>
 						<DropdownMenuTrigger
 							as={Button<'button'>}
 							variant="outline"
-							class="justify-start border-transparent bg-background/50 ring-1 ring-white/10"
+							class="grow justify-start border-transparent bg-background/50 ring-1 ring-white/10 md:grow-0"
 						>
 							<span class="mr-2 text-foreground/60">Game:</span>
 							{game() ? getGameName(game()!) : 'All'}
@@ -151,7 +156,7 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 						<DropdownMenuTrigger
 							as={Button<'button'>}
 							variant="outline"
-							class="justify-start border-transparent bg-background/50 ring-1 ring-white/10"
+							class="grow justify-start border-transparent bg-background/50 ring-1 ring-white/10 md:grow-0"
 						>
 							<span class="mr-2 text-foreground/60">Tag:</span>{' '}
 							<Show when={tagOrGroup()} fallback="All">
@@ -167,7 +172,7 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 						<DropdownMenuTrigger
 							as={Button<'button'>}
 							variant="outline"
-							class="justify-start border-transparent bg-background/50 ring-1 ring-white/10"
+							class="grow justify-start border-transparent bg-background/50 ring-1 ring-white/10 md:grow-0"
 						>
 							<span class="mr-2 text-foreground/60">Sort:</span>
 							{sort().name}
