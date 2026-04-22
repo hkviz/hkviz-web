@@ -185,10 +185,6 @@
 		animation: content-show 0.2s ease-out;
 	}
 
-	.animate-content-hide {
-		animation: content-hide 0.2s ease-out;
-	}
-
 	.animate-caret-blink {
 		animation: caret-blink 1.25s ease-out infinite;
 	}

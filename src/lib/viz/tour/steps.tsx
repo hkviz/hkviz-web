@@ -1,4 +1,4 @@
-import { PaletteIcon, PlayIcon } from 'lucide-solid';
+import { MapIcon, PaletteIcon, PinIcon, PlayIcon } from 'lucide-solid';
 import { untrack, type Component, type JSXElement } from 'solid-js';
 import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { roomInfoColoringToggleClasses } from '../class-names';
@@ -60,7 +60,11 @@ export function createTourSteps({
 		},
 		{
 			target: () => (viewportStore.isMobileLayout() ? '.map-tab-mobile-layout' : '.map-tab-large-layout'),
-			content: () => <>Let{"'"}s start by switching to the Map.</>,
+			content: () => (
+				<>
+					Switch to the Map tab <MapIcon class="mb-0.5 inline-block h-3.5 w-3.5" /> to continue.
+				</>
+			),
 			onActivate: () => {
 				uiStore.activateTab('overview');
 			},
@@ -82,7 +86,10 @@ export function createTourSteps({
 			padding: 32,
 			content: () => (
 				<>
-					<P>Hover over rooms to select them. Click a room to pin it. </P>
+					<P>
+						Hover over rooms to select them. Click a room to pin it{' '}
+						<PinIcon class="mb-0.5 inline-block h-3.5 w-3.5" />.
+					</P>
 					<P>When pinned, other rooms can only be selected by clicking.</P>
 				</>
 			),
@@ -139,8 +146,8 @@ export function createTourSteps({
 				<>
 					<P>This table shows statistics for the selected room.</P>
 					<P>
-						Click a coloring button (
-						<PaletteIcon class="inline-block h-3 w-3" />) to recolor the map based on the chosen statistic.
+						Click a coloring button <PaletteIcon class="inline-block h-3 w-3" /> to recolor the map based on
+						the chosen statistic.
 					</P>
 				</>
 			),
@@ -170,8 +177,11 @@ export function createTourSteps({
 			popoverSide: () => (viewportStore.isMobileLayout() ? 'bottom' : 'right'),
 			content: () => (
 				<>
-					<P>A second click exaggerates small values, for better visibility in some cases.</P>
-					<P>A third click resets the map to its original colors.</P>
+					<P>
+						Click again <PaletteIcon class="mb-0.5 inline-block h-3.5 w-3.5" /> to increase contrast for
+						small values.
+					</P>
+					<P>Click a third time to reset the map colors.</P>
 				</>
 			),
 			onActivate: () => {
@@ -202,7 +212,7 @@ export function createTourSteps({
 							backward.
 						</P>
 						<P>
-							Press play (<PlayIcon class="inline-block h-3 w-3" />) to look at the player movement.
+							Press play <PlayIcon class="inline-block h-3 w-3" /> to look at the player movement.
 						</P>
 					</>
 				),
