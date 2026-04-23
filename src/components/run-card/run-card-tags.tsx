@@ -171,7 +171,7 @@ export const TagDropdownMenu: Component<TagDropdownMenuProps> = (props) => {
 			{props.children}
 			<DropdownMenuContent class="w-56">
 				<Show when={props.showAllOptions}>
-					<DropdownMenuItem onClick={() => props.onClick(undefined as never)}>
+					<DropdownMenuItem onSelect={() => props.onClick(undefined as never)}>
 						<span>All</span>
 					</DropdownMenuItem>
 				</Show>
@@ -179,21 +179,21 @@ export const TagDropdownMenu: Component<TagDropdownMenuProps> = (props) => {
 					{(group) => (
 						<Show when={filterTags(group.tagsNotRemoved)}>
 							{(groupTags) => (
-								<DropdownMenuSub>
+								<DropdownMenuSub slide={true} overlap={true}>
 									<DropdownMenuSubTrigger>
 										<span>{group.name}</span>
 									</DropdownMenuSubTrigger>
 									<DropdownMenuPortal>
 										<DropdownMenuSubContent>
 											<Show when={props.showAllOptions}>
-												<DropdownMenuItem onClick={() => props.onClick(group as never)}>
+												<DropdownMenuItem onSelect={() => props.onClick(group as never)}>
 													All {group.name}s
 												</DropdownMenuItem>
 											</Show>
 											<For each={groupTags()}>
 												{(tag) => (
 													<DropdownMenuItem
-														onClick={() => props.onClick(tag)}
+														onSelect={() => props.onClick(tag)}
 														disabled={props.isTagDisabled?.(tag) ?? false}
 													>
 														<Badge class={tag.color.className}>{tag.name}</Badge>
@@ -210,7 +210,7 @@ export const TagDropdownMenu: Component<TagDropdownMenuProps> = (props) => {
 				<For each={filterTags(ungroupedTagsNotRemoved)}>
 					{(tag) => (
 						<DropdownMenuItem
-							onClick={() => props.onClick(tag)}
+							onSelect={() => props.onClick(tag)}
 							disabled={props.isTagDisabled?.(tag) ?? false}
 						>
 							<Badge class={tag.color.className}>{tag.name}</Badge>

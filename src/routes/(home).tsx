@@ -12,7 +12,7 @@ import { findOwnRuns } from '~/server/run/find-own-runs';
 import { filterParamsAtPage } from '~/server/run/find_runs_base';
 
 export const route = {
-	load({ location }) {
+	preload: ({ location }) => {
 		void findOwnRuns(filterParamsAtPage(location.query, 0));
 	},
 } satisfies RouteDefinition;

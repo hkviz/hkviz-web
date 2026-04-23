@@ -24,7 +24,7 @@ export function MainNavAccountDeletionWarning() {
 		<ErrorBoundary fallback={<></>}>
 			<Suspense fallback={<></>}>
 				<Show when={accountWillBeDeleted()}>
-					<Card class="bg-red-100 p-2 text-red-800 dark:bg-red-900 dark:text-red-100">
+					<Card class="rounded-lg border-none bg-red-100 p-2 text-red-800 dark:bg-red-900 dark:text-red-100">
 						<span class="px-2">Your account will be deleted</span>
 						<Button
 							variant="destructive"
@@ -36,7 +36,7 @@ export function MainNavAccountDeletionWarning() {
 					</Card>
 				</Show>
 				<Show when={!accountWillBeDeleted() && showCanceled()}>
-					<Card class="bg-green-100 p-2 text-green-800 fade-out-100 dark:bg-green-900 dark:text-green-100">
+					<Card class="rounded-lg border-none bg-green-100 p-2 text-green-800 fade-out-100 dark:bg-green-900 dark:text-green-100">
 						Deletion canceled successfully
 					</Card>
 				</Show>

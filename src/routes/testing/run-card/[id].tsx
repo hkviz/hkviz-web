@@ -33,7 +33,7 @@ import '../_testing_styles.css';
 // }
 
 export const route = {
-	load({ location }) {
+	preload: ({ location }) => {
 		void findPublicRuns(location.query as any);
 	},
 } satisfies RouteDefinition;

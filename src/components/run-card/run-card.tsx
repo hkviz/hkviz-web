@@ -174,7 +174,7 @@ export const RunCard: Component<{
 
 	return (
 		<FocusContext.Provider value={focusContext}>
-			<Expander expanded={!isRemoved()} class="overflow-visible">
+			<Expander expanded={!isRemoved()} class="isolate overflow-visible">
 				<div
 					class={cn(
 						'group focus-within:drop-shadow-glow-md hover:drop-shadow-glow-sm relative mb-2 flex h-[unset] min-h-30 w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl py-2 pr-3 pl-4 text-white transition hover:bg-black hover:text-white active:drop-shadow-none md:flex-row',
@@ -221,7 +221,7 @@ export const RunCard: Component<{
 										<For each={visibilities}>
 											{(visibility) => (
 												<DropdownMenuItem
-													onClick={() => handleVisibilityChange(visibility.code)}
+													onSelect={() => handleVisibilityChange(visibility.code)}
 												>
 													<Dynamic component={visibility.Icon} class="mr-2 h-4 w-4" />
 													<span>{visibility.name}</span>

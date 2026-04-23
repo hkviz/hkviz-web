@@ -11,7 +11,7 @@ import { findOwnRuns, RunOwnInput } from '~/server/run/find-own-runs';
 import { filterParamsAtPage, runFilterBaseNoPageSchema } from '~/server/run/find_runs_base';
 
 export const route = {
-	load({ location }) {
+	preload: ({ location }) => {
 		void findOwnRuns(filterParamsAtPage<RunOwnInput>({ ...location.query, archived: true }, 0));
 	},
 } satisfies RouteDefinition;

@@ -1,5 +1,6 @@
 import { debounce } from '@solid-primitives/scheduled';
 import { useSearchParams } from '@solidjs/router';
+import { SearchIcon, XIcon } from 'lucide-solid';
 import { For, Show, createEffect, createMemo, createSignal, onMount, untrack, type Component } from 'solid-js';
 import { TagDropdownMenu } from '~/components/run-card/run-card-tags.tsx';
 import { Badge } from '~/components/ui/badge';
@@ -33,6 +34,8 @@ export const RunFilters: Component<{ filter: RunFilterBaseNoPage; class?: string
 	const tagOrGroup = createMemo(() => (props.filter.tag ? tagOrGroupFromCode(props.filter.tag) : undefined));
 	const sort = createMemo(() => runSortFromCode(props.filter.sort ?? RUN_SORT_DEFAULT));
 	const game = createMemo(() => gameIdFromCode(props.filter.game) ?? undefined);
+
+	const [searchInputRef, setSearchInputRef] = createSignal<HTMLInputElement>();
 
 	const alwaysOneLineFilters = () => {
 		const tag = tagOrGroup();
@@ -108,12 +111,24 @@ export const RunFilters: Component<{ filter: RunFilterBaseNoPage; class?: string
 		<div class={cn('relative isolate px-2 py-3', props.class)}>
 			<div class="relative z-1 flex flex-col gap-2 md:flex-row md:items-center md:justify-between">
 				<div class="flex grow flex-row gap-2">
-					<TextField class="grow">
+					<TextField class="group relative grow md:max-w-85">
+						<SearchIcon
+							class={cn(
+								'absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-foreground/60 transition',
+								searchTerm()
+									? 'translate-x-4 opacity-0'
+									: 'group-focus-within:translate-x-4 group-focus-within:opacity-0',
+							)}
+						/>
 						<TextFieldInput
 							type="text"
+							ref={setSearchInputRef}
 							placeholder="Search..."
 							value={searchTerm()}
-							class="border-transparent bg-background/55 shadow-sm ring-1 ring-white/10 outline-hidden md:max-w-85"
+							class={cn(
+								'border-transparent bg-background/55 shadow-sm ring-1 ring-white/10 outline-hidden transition-all',
+								searchTerm() ? 'pl-4' : 'pl-8 group-focus-within:pl-4',
+							)}
 							onChange={(v: any) => {
 								setSearchTerm(v.target.value);
 								termHasChangedSinceRequest = true;
@@ -122,10 +137,24 @@ export const RunFilters: Component<{ filter: RunFilterBaseNoPage; class?: string
 							onInput={(v: any) => {
 								setSearchTerm(v.target.value);
 								termHasChangedSinceRequest = true;
-								termHasChangedSinceRequest = true;
 								updateSearchTermQuery();
 							}}
 						/>
+						<Show when={searchTerm().length > 0}>
+							<Button
+								variant="ghost"
+								size="icon"
+								onClick={() => {
+									setSearchTerm('');
+									termHasChangedSinceRequest = true;
+									updateSearchTermQuery();
+									searchInputRef()?.focus();
+								}}
+								class="absolute top-0 right-0"
+							>
+								<XIcon class="h-4 w-4" />
+							</Button>
+						</Show>
 					</TextField>
 				</div>
 				<div class={cn('flex gap-2', alwaysOneLineFilters() ? 'flex-row' : 'flex-col sm:flex-row')}>

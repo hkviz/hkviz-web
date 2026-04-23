@@ -25,7 +25,7 @@ import { RunFilters } from '../../components/run-filters';
 // }
 
 export const route = {
-	load({ location }) {
+	preload: ({ location }) => {
 		void findPublicRuns(filterParamsAtPage(location.query as any, 0));
 	},
 } satisfies RouteDefinition;

@@ -13,7 +13,7 @@ interface Params {
 }
 
 export const route = {
-	load({ location, params }) {
+	preload: ({ location, params }) => {
 		void findPublicRuns(filterParamsAtPage({ ...(location.query as any), userId: params.id }, 0));
 		void findPublicPlayer({ playerId: params.id! });
 	},

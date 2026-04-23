@@ -16,7 +16,7 @@ import {
 } from '~/server/account/deletion';
 
 export const route = {
-	load() {
+	preload: () => {
 		void accountInitiateRemovalRequest();
 	},
 } satisfies RouteDefinition;

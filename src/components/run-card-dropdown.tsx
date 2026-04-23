@@ -96,19 +96,19 @@ export function RunCardDropdownMenu(props: {
 						<DropdownMenuSeparator />
 					</Show>
 					<Show when={props.run.archived}>
-						<DropdownMenuItem onClick={props.handleArchiveToggle}>
+						<DropdownMenuItem onSelect={props.handleArchiveToggle}>
 							<ArchiveRestoreIcon class="mr-2 h-4 w-4" />
 							<span>Unarchive</span>
 						</DropdownMenuItem>
 					</Show>
 					<Show when={!props.run.archived}>
-						<DropdownMenuItem onClick={props.handleArchiveToggle}>
+						<DropdownMenuItem onSelect={props.handleArchiveToggle}>
 							<ArchiveIcon class="mr-2 h-4 w-4" />
 							<span>Archive</span>
 						</DropdownMenuItem>
 					</Show>
 					<DropdownMenuGroup>
-						<DropdownMenuItem onClick={() => setIsDeleteDialogOpen(true)}>
+						<DropdownMenuItem onSelect={() => setIsDeleteDialogOpen(true)}>
 							<TrashIcon class="mr-2 h-4 w-4" />
 							<span>Delete</span>
 						</DropdownMenuItem>
