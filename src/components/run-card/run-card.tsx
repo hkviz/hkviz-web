@@ -85,6 +85,7 @@ export const RunCard: Component<{
 	isOwnRun?: boolean;
 	onClick?: (run: RunMetadata) => void;
 	onCombineClicked?: (run: RunMetadata) => void;
+	isSelected?: boolean;
 	gray?: boolean;
 }> = (props) => {
 	const deleteAction = useAction(runDelete);
@@ -180,6 +181,7 @@ export const RunCard: Component<{
 						'group focus-within:drop-shadow-glow-md hover:drop-shadow-glow-sm relative mb-2 flex h-[unset] min-h-30 w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl py-2 pr-3 pl-4 text-white transition hover:bg-black hover:text-white active:drop-shadow-none md:flex-row',
 						isRemoved() ? 'scale-125 opacity-0' : '',
 						isRemoving() || props.gray ? 'opacity-80 brightness-75 contrast-90 grayscale' : '',
+						props.isSelected ? 'ring-2 ring-primary' : '',
 					)}
 					{...focusContext.focusedAttributes()}
 				>

@@ -175,6 +175,7 @@ function MapViewRoom<Game extends GameId>(props: {
 							fill: `url(#${patternId})`,
 							filter: `url(#${filterId})`,
 							opacity: '100%',
+							['pointer-events']: isInteractable() ? 'all' : 'none',
 						}}
 					/>
 				</Match>

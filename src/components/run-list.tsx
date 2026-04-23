@@ -38,13 +38,19 @@ function RunListChunk(props: RunListChunkProps<RunFilterBaseNoPage>) {
 		<Suspense
 			fallback={
 				<>
-					<li>
-						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
-						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
-						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
-						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
-						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
-					</li>
+					<For each={[1, 2, 3, 4, 5]}>
+						{(index) => {
+							const checkboxId = `run-checkbox-skeleton-${id}-${index}`;
+							return (
+								<li class="flex flex-row items-center gap-3">
+									<Show when={props.selectionMode}>
+										<Checkbox id={checkboxId} checked={false} disabled={true} />
+									</Show>
+									<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
+								</li>
+							);
+						}}
+					</For>
 				</>
 			}
 		>
@@ -69,6 +75,7 @@ function RunListChunk(props: RunListChunkProps<RunFilterBaseNoPage>) {
 									isOwnRun={props.isOwnRun?.(run()) ?? false}
 									onCombineClicked={props.onCombineClicked}
 									gray={props.selectionMode && props.disableSelection?.(run())}
+									isSelected={props.selectionMode && props.isSelected?.(run().id)}
 								/>
 							</div>
 						</li>
