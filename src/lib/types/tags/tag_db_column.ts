@@ -10,7 +10,6 @@ export const tagDBNames = [
 	'tag_speedrun_any',
 	'tag_speedrun_all_skills',
 	'tag_speedrun_112',
-	'tag_speedrun_ab',
 	'tag_speedrun_106',
 	'tag_speedrun_true',
 	'tag_speedrun_godhome',
