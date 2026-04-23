@@ -34,7 +34,7 @@ import '../_testing_styles.css';
 
 export const route = {
 	load({ location }) {
-		void findPublicRuns(location.query);
+		void findPublicRuns(location.query as any);
 	},
 } satisfies RouteDefinition;
 

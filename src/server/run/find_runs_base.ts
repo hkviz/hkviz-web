@@ -4,16 +4,21 @@ import { RUN_SORT_DEFAULT, runSortSchema } from '~/lib/types/run-sort';
 import { isTagCode, tagGroupFromCode, tagGroupSchema, tagSchema } from '~/lib/types/tags/tags';
 import { RunFilter } from './_find_runs_internal';
 
+export const DEFAULT_PAGE_SIZE = 20;
+
 export const runFilterBaseSchema = v.object({
 	tag: v.nullish(v.union([tagSchema, tagGroupSchema])),
 	sort: v.nullish(runSortSchema),
 	term: v.nullish(v.string()),
 	game: v.nullish(gameIdSchema),
-	limit: v.nullish(v.number()),
-	offset: v.nullish(v.number()),
+	limit: v.pipe(v.number(), v.minValue(1), v.maxValue(DEFAULT_PAGE_SIZE)),
+	offset: v.nullish(v.pipe(v.number(), v.minValue(0))),
 });
 
 export type RunFilterBase = v.InferOutput<typeof runFilterBaseSchema>;
+
+export const runFilterBaseNoPageSchema = v.omit(runFilterBaseSchema, ['limit', 'offset']);
+export type RunFilterBaseNoPage = v.InferOutput<typeof runFilterBaseNoPageSchema>;
 
 export function filterParamsBaseToInternalFilter(filter: RunFilterBase): RunFilter {
 	return {
@@ -31,8 +36,11 @@ export function filterParamsBaseToInternalFilter(filter: RunFilterBase): RunFilt
 	};
 }
 
-export const DEFAULT_PAGE_SIZE = 20;
-export function filterParamsAtPage(filter: RunFilterBase, page: number, pageSize: number = DEFAULT_PAGE_SIZE) {
+export function filterParamsAtPage<TFilter extends RunFilterBase>(
+	filter: Omit<TFilter, 'offset' | 'limit'>,
+	page: number,
+	pageSize: number = DEFAULT_PAGE_SIZE,
+) {
 	return {
 		...filter,
 		offset: page * pageSize,

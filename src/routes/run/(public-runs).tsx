@@ -4,8 +4,8 @@ import { createMemo } from 'solid-js';
 import * as v from 'valibot';
 import { RunList } from '~/components/run-list';
 import { tagOrGroupFromCode } from '~/lib/types/tags/tags';
-import { RunFilterParamsSchema, findPublicRuns } from '~/server/run/find-public-runs';
-import { filterParamsAtPage } from '~/server/run/find_runs_base';
+import { findPublicRuns } from '~/server/run/find-public-runs';
+import { filterParamsAtPage, runFilterBaseNoPageSchema } from '~/server/run/find_runs_base';
 import { ContentWrapper } from '../../components/content-wrapper';
 import { RunFilters } from '../../components/run-filters';
 
@@ -26,13 +26,13 @@ import { RunFilters } from '../../components/run-filters';
 
 export const route = {
 	load({ location }) {
-		void findPublicRuns(filterParamsAtPage(location.query, 0));
+		void findPublicRuns(filterParamsAtPage(location.query as any, 0));
 	},
 } satisfies RouteDefinition;
 
 export default function PublicRuns() {
 	const [searchParams, _setSearchParams] = useSearchParams();
-	const filter = createMemo(() => v.parse(RunFilterParamsSchema, searchParams));
+	const filter = createMemo(() => v.parse(runFilterBaseNoPageSchema, searchParams));
 
 	const title = () => {
 		const filterTag = filter().tag;
@@ -51,7 +51,7 @@ export default function PublicRuns() {
 				<div class="w-full max-w-200">
 					<h1 class="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Public Gameplays</h1>
 
-					<RunFilters searchParams={filter()} class="mb-4" />
+					<RunFilters filter={filter()} class="mb-4" />
 
 					<RunList filter={filter()} loadPage={findPublicRuns} showUser={true} />
 				</div>

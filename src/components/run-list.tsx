@@ -3,15 +3,14 @@ import { createAsync } from '@solidjs/router';
 import { createEffect, createMemo, createSignal, createUniqueId, For, onCleanup, Show, Suspense } from 'solid-js';
 import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { RunMetadata } from '~/server/run/_find_runs_internal';
-import { RunFilterParams } from '~/server/run/find-public-runs';
-import { DEFAULT_PAGE_SIZE, filterParamsAtPage } from '~/server/run/find_runs_base';
+import { DEFAULT_PAGE_SIZE, filterParamsAtPage, RunFilterBaseNoPage } from '~/server/run/find_runs_base';
 import { RunCard } from './run-card/run-card';
 import { Checkbox } from './ui/checkbox';
 import { Skeleton } from './ui/skeleton';
 
-interface RunListChunkProps {
-	filter: RunFilterParams;
-	loadPage(filter: RunFilterParams): Promise<RunMetadata[]>;
+interface RunListChunkProps<TFilter extends RunFilterBaseNoPage> {
+	filter: TFilter;
+	loadPage(filter: TFilter): Promise<RunMetadata[]>;
 	isOwnRun?: (run: RunMetadata) => boolean;
 	onCombineClicked?: (run: RunMetadata) => void;
 
@@ -21,7 +20,7 @@ interface RunListChunkProps {
 	setSelected?(runId: string, selected: boolean): void;
 	disableSelection?: (run: RunMetadata) => boolean;
 }
-function RunListChunk(props: RunListChunkProps) {
+function RunListChunk(props: RunListChunkProps<RunFilterBaseNoPage>) {
 	const id = createUniqueId();
 	const runs = createAsync(() => props.loadPage(props.filter));
 
@@ -73,9 +72,9 @@ function RunListChunk(props: RunListChunkProps) {
 	);
 }
 
-export interface RunListProps {
-	filter: RunFilterParams;
-	loadPage(filter: RunFilterParams): Promise<RunMetadata[]>;
+export interface RunListProps<TFilter extends RunFilterBaseNoPage> {
+	filter: TFilter;
+	loadPage(filter: TFilter): Promise<RunMetadata[]>;
 	showUser?: boolean;
 	isOwnRun?: (run: RunMetadata) => boolean;
 	onCombineClicked?: (run: RunMetadata) => void;
@@ -86,8 +85,7 @@ export interface RunListProps {
 	disableSelection?: (run: RunMetadata) => boolean;
 }
 
-export function RunList(props: RunListProps) {
-	const [loadMoreVisible, setLoadMoreVisible] = createSignal(false);
+export function RunList(props: RunListProps<RunFilterBaseNoPage>) {
 	const [loadMoreRef, setLoadMoreRef] = createSignal<HTMLDivElement | undefined>(undefined);
 	const [pages, setPages] = createMutableMemo(() => {
 		const _filter = props.filter;
@@ -127,14 +125,13 @@ export function RunList(props: RunListProps) {
 		}
 		function handleIntersect(entries: IntersectionObserverEntry[]) {
 			const visible = entries.some((entry) => entry.isIntersecting);
-			setLoadMoreVisible(visible);
 			if (visible) {
 				loadNextPage();
 			}
 		}
 
 		const observer = new IntersectionObserver(handleIntersect, {
-			rootMargin: '500px',
+			rootMargin: '1px',
 		});
 		observer.observe(loadMoreEl);
 		queueMicrotask(() => {

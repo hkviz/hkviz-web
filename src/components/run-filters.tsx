@@ -16,22 +16,23 @@ import { RUN_SORT_DEFAULT, runSortFromCode, runSorts, type RunSortCode } from '~
 import { isTag, tagOrGroupFromCode, type Tag, type TagGroup } from '~/lib/types/tags/tags';
 import { cn } from '~/lib/utils';
 import { type RunFilterParams } from '~/server/run/find-public-runs';
+import { RunFilterBaseNoPage } from '~/server/run/find_runs_base';
 
-function withoutDefaultParams(params: RunFilterParams) {
+function withoutDefaultParams(params: Partial<RunFilterParams>) {
 	return {
 		...params,
+		userId: undefined,
+		archived: undefined,
 		sort: params.sort === RUN_SORT_DEFAULT ? undefined : params.sort,
 	};
 }
 
-export const RunFilters: Component<{ searchParams: RunFilterParams; class?: string }> = (props) => {
+export const RunFilters: Component<{ filter: RunFilterBaseNoPage; class?: string }> = (props) => {
 	const [searchParams, setSearchParams] = useSearchParams();
 
-	const tagOrGroup = createMemo(() =>
-		props.searchParams.tag ? tagOrGroupFromCode(props.searchParams.tag) : undefined,
-	);
-	const sort = createMemo(() => runSortFromCode(props.searchParams.sort ?? RUN_SORT_DEFAULT));
-	const game = createMemo(() => gameIdFromCode(props.searchParams.game) ?? undefined);
+	const tagOrGroup = createMemo(() => (props.filter.tag ? tagOrGroupFromCode(props.filter.tag) : undefined));
+	const sort = createMemo(() => runSortFromCode(props.filter.sort ?? RUN_SORT_DEFAULT));
+	const game = createMemo(() => gameIdFromCode(props.filter.game) ?? undefined);
 
 	const alwaysOneLineFilters = () => {
 		const tag = tagOrGroup();
@@ -39,15 +40,15 @@ export const RunFilters: Component<{ searchParams: RunFilterParams; class?: stri
 	};
 
 	onMount(() => {
-		setSearchParams(withoutDefaultParams(props.searchParams));
+		setSearchParams(withoutDefaultParams(props.filter));
 	});
 
 	let termHasChangedSinceRequest = false;
 	// eslint-disable-next-line solid/reactivity
-	const [searchTerm, setSearchTerm] = createSignal(props.searchParams.term ?? '');
+	const [searchTerm, setSearchTerm] = createSignal(props.filter.term ?? '');
 
 	createEffect(() => {
-		const newPropTerm = props.searchParams.term ?? '';
+		const newPropTerm = props.filter.term ?? '';
 		if (!termHasChangedSinceRequest) {
 			setSearchTerm(newPropTerm);
 		}

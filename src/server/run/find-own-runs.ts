@@ -10,6 +10,7 @@ const runFindOwnInputScheme = v.object({
 	archived: v.optional(v.boolean()),
 });
 export type RunOwnInput = v.InferOutput<typeof runFindOwnInputScheme>;
+export const runFindOwnInputNoPageScheme = v.omit(runFindOwnInputScheme, ['limit', 'offset']);
 
 export const findOwnRuns = query(async (inputUnsafe: RunOwnInput) => {
 	'use server';

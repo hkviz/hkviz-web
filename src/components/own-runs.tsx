@@ -1,11 +1,11 @@
-import { createAsync, useAction, useSearchParams, useSubmission } from '@solidjs/router';
+import { useAction, useSearchParams, useSubmission } from '@solidjs/router';
 import { type Component, Show, createMemo, createSignal } from 'solid-js';
 import * as v from 'valibot';
 import { errorGetMessage } from '~/lib/error-get-message';
 import { GameId } from '~/lib/types/game-ids';
 import { RunMetadata } from '~/server/run/_find_runs_internal';
 import { findOwnRuns } from '~/server/run/find-own-runs';
-import { RunFilterParamsSchema } from '~/server/run/find-public-runs';
+import { runFilterBaseNoPageSchema } from '~/server/run/find_runs_base';
 import { runCombine } from '~/server/run/run-combine';
 import { BottomInteractionRow, BottomInteractionRowText } from './bottom_interaction';
 import { RunFilters } from './run-filters';
@@ -17,10 +17,8 @@ interface OwnRunsPageProps {}
 
 export const OwnRuns: Component<OwnRunsPageProps> = () => {
 	const [searchParams, _] = useSearchParams();
-	const filter = createMemo(() => v.parse(RunFilterParamsSchema, searchParams));
+	const filter = createMemo(() => v.parse(runFilterBaseNoPageSchema, searchParams));
 	const [selectedRunIds, setSelectedRunIds] = createSignal<string[]>([]);
-
-	const runs = createAsync(() => findOwnRuns(filter()));
 
 	function cancelCombine() {
 		setSelectedRunIds([]);
@@ -68,7 +66,7 @@ export const OwnRuns: Component<OwnRunsPageProps> = () => {
 		<>
 			<div class="mx-auto w-full max-w-200 pt-8">
 				<h1 class="mb-4 pl-2 text-center font-serif text-3xl font-semibold">Your gameplays</h1>
-				<RunFilters searchParams={searchParams} class="mb-4" />
+				<RunFilters filter={filter()} class="mb-4" />
 				<RunList
 					filter={filter()}
 					loadPage={findOwnRuns}

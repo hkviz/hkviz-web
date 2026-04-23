@@ -5,15 +5,16 @@ import { db } from '../db';
 import { findRunsInternal } from './_find_runs_internal';
 import { filterParamsBaseToInternalFilter, runFilterBaseSchema } from './find_runs_base';
 
-export const RunFilterParamsSchema = v.object({
+export const runFilterParamsSchema = v.object({
 	...runFilterBaseSchema.entries,
 	userId: v.nullish(v.pipe(v.string(), v.uuid())),
 });
-export type RunFilterParams = v.InferOutput<typeof RunFilterParamsSchema>;
+export type RunFilterParams = v.InferOutput<typeof runFilterParamsSchema>;
+export const runFilterParamsNoPageSchema = v.omit(runFilterParamsSchema, ['limit', 'offset']);
 
 export const findPublicRuns = query(async (unsaveFilter: RunFilterParams) => {
 	'use server';
-	const input = v.parse(RunFilterParamsSchema, unsaveFilter);
+	const input = v.parse(runFilterParamsSchema, unsaveFilter);
 
 	const user = await getUserOrNull();
 
