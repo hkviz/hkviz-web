@@ -21,6 +21,7 @@ export const runFilterSchema = v.object({
 	anonymAccessKey: v.nullish(v.string()),
 	sort: v.nullish(runSortSchema),
 	limit: v.nullish(v.number()),
+	offset: v.nullish(v.number()),
 });
 
 export type RunFilter = v.InferOutput<typeof runFilterSchema>;
@@ -113,6 +114,7 @@ export async function findRunsInternal({
 			}
 		},
 		limit: filter.limit ?? undefined,
+		offset: filter.offset ?? undefined,
 		columns: {
 			id: true,
 			title: true,

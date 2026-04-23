@@ -9,7 +9,7 @@ const runFindOwnInputScheme = v.object({
 	...runFilterBaseSchema.entries,
 	archived: v.optional(v.boolean()),
 });
-type RunOwnInput = v.InferOutput<typeof runFindOwnInputScheme>;
+export type RunOwnInput = v.InferOutput<typeof runFindOwnInputScheme>;
 
 export const findOwnRuns = query(async (inputUnsafe: RunOwnInput) => {
 	'use server';

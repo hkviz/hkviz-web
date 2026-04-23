@@ -10,6 +10,7 @@ export const runFilterBaseSchema = v.object({
 	term: v.nullish(v.string()),
 	game: v.nullish(gameIdSchema),
 	limit: v.nullish(v.number()),
+	offset: v.nullish(v.number()),
 });
 
 export type RunFilterBase = v.InferOutput<typeof runFilterBaseSchema>;
@@ -26,5 +27,15 @@ export function filterParamsBaseToInternalFilter(filter: RunFilterBase): RunFilt
 		games: filter.game ? [filter.game] : undefined,
 		archived: [false],
 		limit: filter.limit,
+		offset: filter.offset,
+	};
+}
+
+export const DEFAULT_PAGE_SIZE = 20;
+export function filterParamsAtPage(filter: RunFilterBase, page: number, pageSize: number = DEFAULT_PAGE_SIZE) {
+	return {
+		...filter,
+		offset: page * pageSize,
+		limit: pageSize,
 	};
 }

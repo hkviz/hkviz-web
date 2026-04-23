@@ -6,8 +6,6 @@ import type { PolymorphicProps } from '@kobalte/core/polymorphic';
 
 import { cn } from '~/lib/utils';
 
-import { useFocusContextOrNull } from './additions/focus-context.tsx';
-
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 const DropdownMenuSub = DropdownMenuPrimitive.Sub;
@@ -15,17 +13,7 @@ const DropdownMenuGroup = DropdownMenuPrimitive.Group;
 const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
 const DropdownMenu: Component<DropdownMenuPrimitive.DropdownMenuRootProps> = (props) => {
-	const [_, rest] = splitProps(props, ['onOpenChange']);
-
-	const focusContext = useFocusContextOrNull();
-	const focusSource = focusContext?.createFocusSource();
-
-	function handleOpenChange(open: boolean) {
-		focusSource?.setIsFocused(open, { delayUnfocus: 250 });
-		props.onOpenChange?.(open);
-	}
-
-	return <DropdownMenuPrimitive.Root gutter={4} onOpenChange={handleOpenChange} {...rest} />;
+	return <DropdownMenuPrimitive.Root gutter={4} {...props} />;
 };
 
 type DropdownMenuContentProps<T extends ValidComponent = 'div'> = DropdownMenuPrimitive.DropdownMenuContentProps<T> & {
@@ -40,7 +28,7 @@ const DropdownMenuContent = <T extends ValidComponent = 'div'>(
 		<DropdownMenuPrimitive.Portal>
 			<DropdownMenuPrimitive.Content
 				class={cn(
-					'data-expanded:animate-content-show z-50 min-w-32 origin-(--kb-menu-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md',
+					'animate-content-hide data-[expanded]:animate-content-show z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md',
 					props.class,
 				)}
 				{...rest}
@@ -58,7 +46,7 @@ const DropdownMenuItem = <T extends ValidComponent = 'div'>(props: PolymorphicPr
 	return (
 		<DropdownMenuPrimitive.Item
 			class={cn(
-				'relative flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden transition-colors select-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50',
+				'relative flex cursor-default items-center gap-2 rounded-sm px-2 py-1.5 text-sm transition-colors outline-none select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 				props.class,
 			)}
 			{...rest}
@@ -101,7 +89,7 @@ const DropdownMenuSubTrigger = <T extends ValidComponent = 'div'>(
 	return (
 		<DropdownMenuPrimitive.SubTrigger
 			class={cn(
-				'flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-hidden select-none focus:bg-accent data-[state=open]:bg-accent',
+				'flex cursor-default items-center rounded-sm px-2 py-1.5 text-sm outline-none select-none focus:bg-accent data-[state=open]:bg-accent',
 				props.class,
 			)}
 			{...rest}
@@ -135,7 +123,7 @@ const DropdownMenuSubContent = <T extends ValidComponent = 'div'>(
 	return (
 		<DropdownMenuPrimitive.SubContent
 			class={cn(
-				'z-50 min-w-32 origin-(--kb-menu-content-transform-origin) overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in',
+				'z-50 min-w-32 origin-[var(--kb-menu-content-transform-origin)] overflow-hidden rounded-md border bg-popover p-1 text-popover-foreground shadow-md animate-in',
 				props.class,
 			)}
 			{...rest}
@@ -156,7 +144,7 @@ const DropdownMenuCheckboxItem = <T extends ValidComponent = 'div'>(
 	return (
 		<DropdownMenuPrimitive.CheckboxItem
 			class={cn(
-				'relative flex cursor-default items-center rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden transition-colors select-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50',
+				'relative flex cursor-default items-center rounded-sm py-1.5 pr-2 pl-8 text-sm transition-colors outline-none select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 				props.class,
 			)}
 			{...rest}
@@ -207,7 +195,7 @@ const DropdownMenuRadioItem = <T extends ValidComponent = 'div'>(
 	return (
 		<DropdownMenuPrimitive.RadioItem
 			class={cn(
-				'relative flex cursor-default items-center rounded-sm py-1.5 pr-2 pl-8 text-sm outline-hidden transition-colors select-none focus:bg-accent focus:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50',
+				'relative flex cursor-default items-center rounded-sm py-1.5 pr-2 pl-8 text-sm transition-colors outline-none select-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 				props.class,
 			)}
 			{...rest}

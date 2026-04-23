@@ -1,21 +1,31 @@
-import { Key } from '@solid-primitives/keyed';
 import { Title } from '@solidjs/meta';
-import { createAsync, RouteDefinition } from '@solidjs/router';
-import { Show } from 'solid-js';
+import { RouteDefinition, useSearchParams } from '@solidjs/router';
+import { createMemo, Show } from 'solid-js';
+import * as v from 'valibot';
 import { AuthNeeded } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
-import { RunCard } from '~/components/run-card/run-card';
+import { RunFilters } from '~/components/run-filters';
+import { RunList } from '~/components/run-list';
 import { useSession } from '~/lib/auth/client';
-import { findOwnRuns } from '~/server/run/find-own-runs';
+import { findOwnRuns, RunOwnInput } from '~/server/run/find-own-runs';
+import { RunFilterParamsSchema } from '~/server/run/find-public-runs';
+import { filterParamsAtPage } from '~/server/run/find_runs_base';
+
+function loadPage(params: RunOwnInput) {
+	params.archived = true;
+	return findOwnRuns(params);
+}
 
 export const route = {
-	load: () => {
-		void findOwnRuns({ archived: true });
+	load({ location }) {
+		const filter: RunOwnInput = { ...location.query, archived: true };
+		void loadPage(filterParamsAtPage(filter, 0));
 	},
 } satisfies RouteDefinition;
 
 export default function ArchivePage() {
-	const runs = createAsync(() => findOwnRuns({ archived: true }));
+	const [searchParams, _setSearchParams] = useSearchParams();
+	const filter = createMemo(() => v.parse(RunFilterParamsSchema, searchParams));
 
 	const session = useSession();
 	const userId = () => session()?.user?.id;
@@ -29,19 +39,8 @@ export default function ArchivePage() {
 						<h1 class="mt-4 mb-4 pl-2 text-center font-serif text-3xl font-semibold">
 							Your archived gameplays
 						</h1>
-						<ul class="flex flex-col">
-							<Key
-								each={runs()}
-								by={(it) => it.id}
-								fallback={<span>You do not have any archived gameplays</span>}
-							>
-								{(run) => (
-									<li>
-										<RunCard run={run()} showUser={false} isOwnRun={true} />
-									</li>
-								)}
-							</Key>
-						</ul>
+						<RunFilters class="mb-4" searchParams={searchParams} />
+						<RunList filter={filter()} loadPage={loadPage} showUser={false} isOwnRun={() => true} />
 					</div>
 				</ContentCenterWrapper>
 			</Show>

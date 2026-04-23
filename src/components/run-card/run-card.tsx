@@ -32,12 +32,12 @@ import { runInteractionLike, runInteractionUnlike } from '~/server/run/run-inter
 import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
 import { RunCardDropdownMenu } from '../run-card-dropdown';
 import { Expander } from '../ui/additions';
+import { createFocusContext, FocusContext } from '../ui/additions/focus-context.tsx';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
 import { showToast } from '../ui/toast';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
-import { createFocusContext, FocusContext } from '../ui/additions/focus-context.tsx';
 import { RunCardBackground } from './run-card-background.tsx';
 import { RunCardTags } from './run-card-tags.tsx';
 
@@ -71,7 +71,7 @@ const RunCardEpicInfo: Component<{
 	return (
 		<Show when={props.href} fallback={spans}>
 			{(href) => (
-				<AA href={href()} class="z-7 hover:underline hover:drop-shadow-glow-md">
+				<AA href={href()} class="hover:drop-shadow-glow-md z-7 hover:underline">
 					{spans}
 				</AA>
 			)}
@@ -83,8 +83,9 @@ export const RunCard: Component<{
 	run: RunMetadata | GetRunResult;
 	showUser?: boolean;
 	isOwnRun?: boolean;
-	onClick?: (runId: string) => void;
-	onCombineClicked?: (runId: string) => void;
+	onClick?: (run: RunMetadata) => void;
+	onCombineClicked?: (run: RunMetadata) => void;
+	gray?: boolean;
 }> = (props) => {
 	const deleteAction = useAction(runDelete);
 	const _deleteSubmission = useSubmission(runDelete, ([input]) => input.runId === props.run.id);
@@ -176,9 +177,9 @@ export const RunCard: Component<{
 			<Expander expanded={!isRemoved()} class="overflow-visible">
 				<div
 					class={cn(
-						'group relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl py-2 pr-3 pl-4 text-white transition focus-within:drop-shadow-glow-md hover:bg-black hover:text-white hover:drop-shadow-glow-sm active:drop-shadow-none md:flex-row',
+						'group focus-within:drop-shadow-glow-md hover:drop-shadow-glow-sm relative mb-2 flex h-[unset] w-full flex-col items-stretch justify-between overflow-hidden rounded-3xl py-2 pr-3 pl-4 text-white transition hover:bg-black hover:text-white active:drop-shadow-none md:flex-row',
 						isRemoved() ? 'scale-125 opacity-0' : '',
-						isRemoving() ? 'grayscale' : '',
+						isRemoving() || props.gray ? 'opacity-80 brightness-75 contrast-90 grayscale' : '',
 					)}
 					{...focusContext.focusedAttributes()}
 				>
@@ -189,7 +190,7 @@ export const RunCard: Component<{
 						fallback={<AA href={`/run/${props.run.id}`} class="absolute inset-0 z-6 block" />}
 					>
 						{(onClick) => (
-							<button onClick={() => onClick()(props.run.id)} class="absolute inset-0 z-6 block" />
+							<button onClick={() => onClick()(props.run)} class="absolute inset-0 z-6 block" />
 						)}
 					</Show>
 
@@ -293,7 +294,7 @@ export const RunCard: Component<{
 											src={props.run.gameState.game === 'silk' ? rosaryHudImg : coin2Img}
 											alt={props.run.gameState.game === 'silk' ? 'Rosary icon' : 'Geo icon'}
 											class={cn(
-												'inline-block p-1 drop-shadow-glow-md',
+												'drop-shadow-glow-md inline-block p-1',
 												props.run.gameState.game === 'silk' ? 'w-8' : 'w-7',
 											)}
 										/>
@@ -309,7 +310,7 @@ export const RunCard: Component<{
 															: dreamNailImg
 													}
 													alt={gameState().game === 'silk' ? 'Shell Shards' : '"Essence'}
-													class="-mt-4 -mb-3 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
+													class="drop-shadow-glow-md -mt-4 -mb-3 inline-block w-7 p-1 brightness-110 sm:w-9"
 												/>
 												<span class="text-xl font-semibold sm:text-2xl">{dreamOrbs()}</span>
 											</span>
@@ -321,7 +322,7 @@ export const RunCard: Component<{
 												<img
 													src={shellShardImg}
 													alt={gameState().game === 'silk' ? 'Shell Shards' : '"Essence'}
-													class="-mt-4 -mb-3 inline-block w-7 p-1 brightness-110 drop-shadow-glow-md sm:w-9"
+													class="drop-shadow-glow-md -mt-4 -mb-3 inline-block w-7 p-1 brightness-110 sm:w-9"
 												/>
 												<span class="text-xl font-semibold sm:text-2xl">
 													{gs().shellShards}
@@ -441,7 +442,7 @@ function RunCardLikeButton(props: { run: RunMetadata }) {
 			>
 				<HeartIcon
 					class={
-						'h-4 w-4 transition-[fill] duration-300 group-hover:drop-shadow-glow-md ' +
+						'group-hover:drop-shadow-glow-md h-4 w-4 transition-[fill] duration-300 ' +
 						(hasLiked() ? 'fill-current' : 'fill-[rgba(255,255,255,0.001)]')
 					}
 				/>

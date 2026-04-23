@@ -1,16 +1,16 @@
+import { action } from '@solidjs/router';
 import { eq, inArray, or, sql } from 'drizzle-orm';
 import { type SQLiteUpdateSetSource } from 'drizzle-orm/sqlite-core';
 import * as v from 'valibot';
-import { type VisibilityCode } from '~/lib/types/visibility';
-import { raise } from '~/lib/parser';
-import { runFiles, runLocalIds, runs } from '~/server/db/schema';
-import { runInteractionCombine, runInteractionUncombine } from './run-interaction-combine';
-import { runTagFieldsSelect } from './run-column-selects';
-import { updateRunMetaByFiles } from './update-run-meta';
-import { action } from '@solidjs/router';
 import { getUserOrThrow } from '~/lib/auth/shared';
+import { raise } from '~/lib/parser';
+import { type VisibilityCode } from '~/lib/types/visibility';
+import { runFiles, runLocalIds, runs } from '~/server/db/schema';
 import { db } from '../db';
 import { sendMailToSupport } from '../mails';
+import { runTagFieldsSelect } from './run-column-selects';
+import { runInteractionCombine, runInteractionUncombine } from './run-interaction-combine';
+import { updateRunMetaByFiles } from './update-run-meta';
 
 const runCombineInputSchema = v.object({ runIds: v.array(v.pipe(v.string(), v.uuid())) });
 type RunCombineInput = v.InferOutput<typeof runCombineInputSchema>;
@@ -31,6 +31,7 @@ export const runCombine = action(async (unsafeInput: RunCombineInput) => {
 			id: true,
 			visibility: true,
 			title: true,
+			game: true,
 			...runTagFieldsSelect,
 		},
 		orderBy: (run, { asc }) => asc(run.startedAt),
@@ -39,6 +40,11 @@ export const runCombine = action(async (unsafeInput: RunCombineInput) => {
 	if (foundRuns.length !== input.runIds.length) {
 		throw new Error("Not all runs found or don't belong to user");
 	}
+	const games = new Set(foundRuns.map((run) => run.game));
+	if (games.size !== 1) {
+		throw new Error('All runs must be of the same game to combine');
+	}
+
 	try {
 		const firstRun = foundRuns[0] ?? raise(new Error('Unexpected state')); // earliest created run
 		const chosenId = firstRun.id;

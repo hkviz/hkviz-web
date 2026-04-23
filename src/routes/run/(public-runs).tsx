@@ -1,11 +1,11 @@
-import { Key } from '@solid-primitives/keyed';
 import { Title } from '@solidjs/meta';
-import { type RouteDefinition, createAsync, useSearchParams } from '@solidjs/router';
-import { Show, createMemo } from 'solid-js';
+import { type RouteDefinition, useSearchParams } from '@solidjs/router';
+import { createMemo } from 'solid-js';
 import * as v from 'valibot';
-import { RunCard } from '~/components/run-card/run-card';
+import { RunList } from '~/components/run-list';
 import { tagOrGroupFromCode } from '~/lib/types/tags/tags';
 import { RunFilterParamsSchema, findPublicRuns } from '~/server/run/find-public-runs';
+import { filterParamsAtPage } from '~/server/run/find_runs_base';
 import { ContentWrapper } from '../../components/content-wrapper';
 import { RunFilters } from '../../components/run-filters';
 
@@ -26,14 +26,13 @@ import { RunFilters } from '../../components/run-filters';
 
 export const route = {
 	load({ location }) {
-		void findPublicRuns(location.query);
+		void findPublicRuns(filterParamsAtPage(location.query, 0));
 	},
 } satisfies RouteDefinition;
 
-export default function Runs() {
+export default function PublicRuns() {
 	const [searchParams, _setSearchParams] = useSearchParams();
 	const filter = createMemo(() => v.parse(RunFilterParamsSchema, searchParams));
-	const runs = createAsync(() => findPublicRuns(filter()));
 
 	const title = () => {
 		const filterTag = filter().tag;
@@ -54,21 +53,7 @@ export default function Runs() {
 
 					<RunFilters searchParams={filter()} class="mb-4" />
 
-					<Show when={runs()}>
-						{(runs) => (
-							<Show when={runs().length > 0} fallback={<p class="text-center">No gameplays found</p>}>
-								<ul class="flex flex-col">
-									<Key each={runs()} by={(it) => it.id}>
-										{(run) => (
-											<li>
-												<RunCard run={run()} showUser={true} />
-											</li>
-										)}
-									</Key>
-								</ul>
-							</Show>
-						)}
-					</Show>
+					<RunList filter={filter()} loadPage={findPublicRuns} showUser={true} />
 				</div>
 			</div>
 		</ContentWrapper>

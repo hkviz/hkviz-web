@@ -1,5 +1,5 @@
 import { Title } from '@solidjs/meta';
-import { createAsync, RouteDefinition } from '@solidjs/router';
+import { RouteDefinition } from '@solidjs/router';
 import { Show } from 'solid-js';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { FancyButton } from '~/components/fancy-button';
@@ -9,16 +9,15 @@ import { GradientSeparator } from '~/components/ui/additions';
 import { useUser } from '~/lib/auth/client';
 import { AA } from '~/lib/routing/AA';
 import { findOwnRuns } from '~/server/run/find-own-runs';
+import { filterParamsAtPage } from '~/server/run/find_runs_base';
 
 export const route = {
-	load({ location: _location }) {
-		void findOwnRuns({});
-		// void findOwnRuns(location.query);
+	load({ location }) {
+		void findOwnRuns(filterParamsAtPage(location.query, 0));
 	},
 } satisfies RouteDefinition;
 
 export default function HomePage() {
-	const runs = createAsync(() => findOwnRuns({}));
 	const user = useUser();
 
 	return (
@@ -40,7 +39,6 @@ export default function HomePage() {
 						With <HKVizText /> you can record gameplay analytics of your Hollow Knight gameplays, and share
 						them with others.
 					</p>
-
 					{/* <div class="start-page-header text-center">
 						<h1
 							class={`title-text-glow -mb-2 font-serif text-[6rem] font-bold tracking-tight sm:text-[6rem]`}
@@ -61,14 +59,13 @@ export default function HomePage() {
 					<p class="mx-auto max-w-xl pt-6 text-center text-pretty">
 						With <HKVizText /> you can record and share gameplay analytics of your playthroughs.
 					</p> */}
-
-					{runs() && runs()!.length === 0 && (
+					<Show when={!user()}>
 						<div class="flex flex-row items-center justify-center py-8 transition sm:gap-12">
 							<FancyButton as={AA} href="/guide/install">
 								Record Gameplay Analytics
 							</FancyButton>
 						</div>
-					)}
+					</Show>
 				</div>
 				<GradientSeparator class="container mx-auto" />
 

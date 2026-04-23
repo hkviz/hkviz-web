@@ -23,7 +23,7 @@ export function RunCardDropdownMenu(props: {
 	run: RunMetadata;
 	handleArchiveToggle: () => void;
 	handleDelete: () => void;
-	onCombineClicked: undefined | null | ((runId: string) => void);
+	onCombineClicked: undefined | null | ((run: RunMetadata) => void);
 }) {
 	const [isDeleteDialogOpen, setIsDeleteDialogOpen] = createSignal(false);
 	const [isSplitDialogOpen, setIsSplitDialogOpen] = createSignal(false);
@@ -82,10 +82,7 @@ export function RunCardDropdownMenu(props: {
 						<Show when={props.onCombineClicked}>
 							{(onCombineClicked) => (
 								<Tooltip>
-									<TooltipTrigger
-										as={DropdownMenuItem}
-										onClick={() => onCombineClicked()(props.run.id)}
-									>
+									<TooltipTrigger as={DropdownMenuItem} onClick={() => onCombineClicked()(props.run)}>
 										<MergeIcon class="mr-2 h-4 w-4" />
 										<span>Combine</span>
 									</TooltipTrigger>
