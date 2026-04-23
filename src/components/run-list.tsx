@@ -36,9 +36,15 @@ function RunListChunk(props: RunListChunkProps<RunFilterBaseNoPage>) {
 	return (
 		<Suspense
 			fallback={
-				<li>
-					<Skeleton class="h-34! w-full! rounded-3xl bg-card" />
-				</li>
+				<>
+					<li>
+						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
+						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
+						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
+						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
+						<Skeleton class="mb-2 h-34! w-full! rounded-3xl bg-card" />
+					</li>
+				</>
 			}
 		>
 			<Key each={runs()} by={(it) => it.id}>
