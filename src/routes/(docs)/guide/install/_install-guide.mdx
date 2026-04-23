@@ -1,79 +1,81 @@
 import { AA } from '~/lib/routing/AA';
-import { urlPath } from '~/lib/routing/url';
 import { ExternalLinkMdx } from '../../../../components/external-link';
 import { HKVizText } from '../../../../components/HKVizText';
 import { MailLinkUnstyled } from '../../../../components/mail-link';
-import { MdxInnerWrapper } from '../../../../components/mdx-layout';
 import { HOLLOW_KNIGHT_MODDING_DISCORD_URL } from '../../../../components/socials-links';
 import { HollowKnightStores } from './_hollow-knight-stores';
 
 # Gameplay Recording Guide
 
-Here you learn how to install the <HKVizText />-mod, to record analytics of you playing {<ExternalLinkMdx href="https://www.hollowknight.com">Hollow Knight</ExternalLinkMdx>}.
-Once recorded, you can checkout the <AA href="/guide/analytics">Analytics Guide</AA> to learn how to use them.
+This guide shows you how to install the <HKVizText /> mod so it can record analytics while you play {<ExternalLinkMdx href="https://www.hollowknight.com">Hollow Knight</ExternalLinkMdx>}.
+Once your data is recorded, you can check out the <AA href="/guide/analytics">Analytics Guide</AA> to learn how to use it.
 
 ## Contents
 
 ## 0. Need help?
 
-If you need help installing the mod, feel free to ask in the {<ExternalLinkMdx href={HOLLOW_KNIGHT_MODDING_DISCORD_URL}>Hollow Knight Modding Discord Server</ExternalLinkMdx>} inside the #hkviz channel or via email <MailLinkUnstyled />.
+If you need help installing the mod, ask in the {<ExternalLinkMdx href={HOLLOW_KNIGHT_MODDING_DISCORD_URL}>Hollow Knight Modding Discord Server</ExternalLinkMdx>} in the #hkviz channel or send an email at <MailLinkUnstyled />.
 
 ## 1. Install Hollow Knight
 
-First, you need to have Hollow Knight installed on your Windows, Linux or Mac computer, laptop or handheld. Mods can not be used on the Nintendo Switch, PS4, or Xbox One versions of Hollow Knight.
-You can buy Hollow Knight at one of the following stores:
+First, install Hollow Knight on your Windows, Linux, or Mac computer, laptop, or handheld.
+Mods cannot be used on the Nintendo Switch, PS4, or Xbox One versions of Hollow Knight.
+
+You can buy Hollow Knight from one of the stores below:
 
 <HollowKnightStores />
 
 ## 2. Install a Mod Manager
 
-The easiest way to install mods is using a mod installer.
-There are a few available.
+The easiest way to install mods is to use a mod manager.
+Two popular options are:
 
-- I recommend using {<ExternalLinkMdx href="https://themulhima.github.io/Lumafly/" target="_blank">the Lumafly Mod Manager</ExternalLinkMdx>} available for Windows, Mac, and Linux.
-  You can click the download button on the website, it should give you the correct installer.
-- If this mod manager doesn't work for you, you can try {<ExternalLinkMdx href="https://github.com/fifty-six/Scarab/releases/latest" target="_blank">Scarab Mod Manager</ExternalLinkMdx>}
-  select one of the zip files depending on your operating system.
+- {<ExternalLinkMdx href="https://themulhima.github.io/Lumafly/" target="_blank">Lumafly Mod Manager</ExternalLinkMdx>} for Windows, Mac, and Linux.
+  The download button on the website should give you the correct installer for your system.
+- If Lumafly does not work for you, try {<ExternalLinkMdx href="https://github.com/fifty-six/Scarab/releases/latest" target="_blank">Scarab Mod Manager</ExternalLinkMdx>}.
+  Download the zip file that matches your operating system.
 
 ## 3. Install the <HKVizText /> mod
 
-If you have chosen the Lumafly mod manager, you can install the <HKVizText /> mod
-by {<ExternalLinkMdx href="https://themulhima.github.io/Lumafly/commands/download/?mods=HKViz">clicking here</ExternalLinkMdx>}
+If you use Lumafly, you can install the <HKVizText /> mod by {<ExternalLinkMdx href="https://themulhima.github.io/Lumafly/commands/download/?mods=HKViz">clicking here</ExternalLinkMdx>}.
 
-Alternatively, if you are using another mod manager, or the link did not work, search for 'HKViz' in your mod manager and click install.
-While installing the mod, Hollow Knight must be closed, otherwise the mod manager will not be able to install the mod.
+If you use a different mod manager, or the link does not work, search for "HKViz" in your mod manager and click install.
 
-## 4. Login to <HKVizText /> from the Hollow Knight main menu
+Make sure Hollow Knight is closed while the mod is being installed, otherwise the mod manager cannot finish the setup.
 
-Once you have the mod installed, a Login button is displayed on the main menu of Hollow Knight.
-Click on it and follow the steps to create an account.
-The button will disappear once you are logged in, and can be accessed from the mod settings afterwards.
+## 4. Log in to <HKVizText /> from the Hollow Knight main menu
+
+After the mod is installed, a Login button appears on the Hollow Knight main menu.
+Click it and follow the steps to create an account or log into an existing account.
+
+After you are logged in, the button disappears from the main menu. To switch accounts later use the mod settings.
 
 ## 5. Start playing Hollow Knight
 
-Once logged in you can start playing Hollow Knight. The mod will automatically record your gameplay, and upload it to <HKVizText />.
+Once you are logged in, start playing Hollow Knight.
+The mod automatically records analytics and uploads them to <HKVizText />.
+
 You can view your gameplay on <AA href="/">the start page</AA>.
 
-The mod uploads analytics roughly every 5 minutes, so your gameplay might not be visible immediately.
-When you go back to the main menu of Hollow Knight, the mod will upload the last bit of gameplay,
-and while display a small message in the bottom while it is uploading data.
+The mod uploads analytics roughly every 5 minutes, so your gameplay may not appear immediately.
+When you return to the Hollow Knight main menu, the mod uploads the last part of your gameplay and shows a small message at the bottom while it is sending data.
 
 ## Optional: 6. Share your analytics with others
 
-By default all your gameplays are set to private, so only you can see it.
-You can change this for each gameplay individually by clicking on the lock icon on the left of a gameplay on the start page.
+By default, all of your gameplay recordings are private, so only you can see them.
+You can change the visibility of each recording individually by clicking the lock icon on the left side of a gameplay on the <AA href="/">start page</AA>.
 
 ## Usage on Steam Deck
 
-Currently installing mods on the Steam Deck may break all controller inputs.
-You can fix this by disabling the 'native controller' option in the Hollow Knight Options > Controller.
+Installing mods on Steam Deck can currently break controller input.
+You can usually fix this by disabling the "native controller" option in Hollow Knight > Options > Controller.
 {/* (https://www.reddit.com/r/HollowKnight/comments/v9ibgz/can_you_mod_hollow_knight_on_steam_deck/) */}
 
-Additionally, the login button does not currently work, while in game mode.
+The login button also does not currently work in Game Mode.
 
-- Use the desktop mode by pressing the Steam button > Power > Switch to Desktop.
-- Open Hollow Knight (A icon should be visible on your desktop, alternatively you can search for)
-- Set the fullscreen mode to 'Windowed' in the Hollow Knight Options > Video
-- Then you can login to <HKVizText /> from the main menu of Hollow Knight.
-- After the login, close Hollow Knight and switch back to game mode.
-- Playing Hollow Knight and using the mod now should work as expected.
+- Switch to Desktop Mode by pressing Steam > Power > Switch to Desktop.
+- Open Hollow Knight. You should see an icon on your desktop, or you can search for "Hollow Knight" in the start menu.
+- Set fullscreen mode to "Windowed" in Hollow Knight > Options > Video.
+- Log in to <HKVizText /> from the Hollow Knight main menu.
+- Close Hollow Knight and switch back to Game Mode.
+- After logging in, the mod should work normally on Steam Deck.

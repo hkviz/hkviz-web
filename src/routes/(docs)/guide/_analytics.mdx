@@ -61,11 +61,11 @@ import { RoomVisibilityAllVideo, RoomVisibilityAnimatedVideo, RoomVisibilityVisi
 
 <SpoilerWarningEarlyGame />
 
-Here you learn how to use the different parts of the <HKVizText /> gameplay analytics page.
-It is accessible by clicking on one of your gameplays on the <AA href="/">start page</AA> or by viewing a gameplay from the <AA href="/run">public gameplays page</AA>.
+This guide covers the different parts of the <HKVizText /> gameplay analytics page.
+Open it from one of your gameplays on the <AA href="/">start page</AA> or from the <AA href="/run">public gameplays page</AA>.
 
-If you want to learn how to record the analytics while playing {<ExternalLinkMdx href="https://hollowknight.com">Hollow Knight</ExternalLinkMdx>}
-checkout the <AA href="/guide/install">Gameplay Recording Guide</AA>
+If you want to learn how to record analytics while playing {<ExternalLinkMdx href="https://hollowknight.com">Hollow Knight</ExternalLinkMdx>},
+check out the <AA href="/guide/install">Gameplay Recording Guide</AA>.
 
 ## Overview
 
@@ -77,9 +77,9 @@ checkout the <AA href="/guide/install">Gameplay Recording Guide</AA>
 
 ## Map
 
-The map forms the center of the analytics page. It is very similar to the in-game map, but with some modifications.
+The map is the main part of the analytics page. It is similar to the in-game map, but includes a few helpful modifications.
 
-The map is able to display player movement as traces, show which rooms are visited and allows displaying other information by recoloring the map itself.
+It can show player movement as traces, visited rooms, and other stats by recoloring the map.
 
 ### <Spline class="w-4 h-4 mr-2 inline-block"/>Player movement and traces
 
@@ -87,7 +87,7 @@ The map is able to display player movement as traces, show which rooms are visit
     <ReflowCell>
         <ReflowCellHeader>Animated</ReflowCellHeader>
         <TracesAnimatedScreenshot />
-        Shows the last 4 minutes of player's movement as a trace. Positions further in the past are faded out.
+        Shows the last 5 minutes of player's movement as a trace. Positions further in the past are faded out.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>All</ReflowCellHeader>
@@ -104,30 +104,30 @@ The map is able to display player movement as traces, show which rooms are visit
 
 ### <LayoutDashboard class="w-4 h-4 mr-2 inline-block"/>Room visibility
 
-The room visibility option within the map options controls which rooms are shown on the map.
-You can choose between three options:
+Room visibility controls which rooms are shown.
+Choose between three options:
 
 <ReflowRow>
     <ReflowCell>
         <ReflowCellHeader>Animated</ReflowCellHeader>
         <RoomVisibilityAnimatedVideo />
-        Rooms appear once they are visited in the gameplay, based on the time selected in the <a href="#timeline" target="_self">timeline</a>. 
-        
-        Great to see the progression of the gameplay.
+		Rooms appear once they are visited in the gameplay, based on the time selected in the <a href="#timeline" target="_self">timeline</a>.
+
+    	Useful for following the progression of a gameplay.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>Visited</ReflowCellHeader>
         <RoomVisibilityVisitedVideo />
-        All rooms visited at any time in the gameplay are shown. Not impacted by the <a href="#timeline" target="_self">timeline</a>. 
-        
-        Useful to <a href="#map-coloring-by-variables" target="_self">analyze variables by recoloring the map</a>.
+    	All rooms visited at any point in the gameplay are shown. Not affected by the <a href="#timeline" target="_self">timeline</a>.
+
+    	Useful when you want to <a href="#map-coloring-by-variables" target="_self">analyze variables by recoloring the map</a>.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>All</ReflowCellHeader>
         <RoomVisibilityAllVideo />
-        Even rooms not visitied in the gameplay at all are shown. 
-        
-        This can allow to find unvisited rooms, which have been missed in a gameplay.
+    	Even rooms that were never visited in the gameplay are shown.
+
+    	Helpful for spotting rooms that were missed.
     </ReflowCell>
 
 </ReflowRow>
@@ -136,28 +136,28 @@ You can choose between three options:
 
 <RoomAnalyticsScreenshot />
 
-Ever wondered how to easily spot the most interesting or challenging parts of your game? Coloring the map based on different game stats can help!
+Coloring the map based on different game stats can help you spot interesting or difficult parts of a gameplay.
 
 **How it works:**
 
-1.  **Select a room** by hovering over it on the map. The hovered room will be displayed in the room analytics. Showing stats for the selected routeModule.
+1.  **Select a room** by hovering over it on the map. Its stats appear in the room analytics.
 
-    Hint: your selected room is not only shown in the area analytics panel, but also highlighted in the <a href="#timeline" target="_self">timeline</a>.
+    Hint: the selected room is also highlighted in the <a href="#timeline" target="_self">timeline</a>.
 
 2.  {<LinkableSpan id="room-pin" initialScrollMargin={360}>
 
-    <b>Pin a room:</b> To stop the shown room from changing by hovering over them, you can pin it with the
+    <b>Pin a room:</b> To keep the selected room from changing while you hover over other rooms, pin it with the
 
     {' '}
 
     <Pin class="inline-block h-4 w-4" aria-label="Pin" />
-    -button in the area analytics panel or by clicking a room on the map. Rooms can also be pinned by clicking on the
-    color code at the bottom of the
+    button in the area analytics panel or by clicking a room on the map. You can also pin rooms by clicking the color
+    code at the bottom of the
     <span> </span>
     <a href="#timeline" target="_self">
     	timeline
     </a>
-    <span> or by double clicking on a </span>
+    <span> or by double-clicking a </span>
     <a href="#splits" target="_self">
     	split
     </a>
@@ -167,11 +167,11 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
 
 3.  **Select a variable for coloring**:
     Click the <Palette class="inline-block h-4 w-4" aria-label="Color" />
-    -button in the room's info panel. This lets you pick which stat to use for coloring.
+    button in the room's info panel to pick the stat used for coloring.
 
 4.  **Color scales**:
-    By clicking the <Palette class="inline-block h-4 w-4" aria-label="Color" />
-    -button a few times you can select a color scale.
+    Clicking the <Palette class="inline-block h-4 w-4" aria-label="Color" />
+    button cycles through the available color scales.
 
 #### Color scales:
 
@@ -180,60 +180,60 @@ Ever wondered how to easily spot the most interesting or challenging parts of yo
         <ReflowCellHeader>Linear color scale</ReflowCellHeader>
         <ColorModeLinearTableScreenshot />
         <ColorModeLinearScreenshot />
-        The first click on the <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button will color the map by the selected variable using a linear color scale.
-        This works best for variables like the first visiting time since the values are likely distributed relatively evenly.
+		The first click on the <Palette class="w-4 h-4 inline-block" aria-label="Color" /> button colors the map by the selected variable using a linear scale.
+		This works best for variables like first visiting time, where values are usually spread fairly evenly.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>Exponential color scale</ReflowCellHeader>
         <ColorModeExpTableScreenshot />
         <ColorModeExpScreenshot />
-        A second click on the <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button will switch to an exponential color scale.
+		A second click on the <Palette class="w-4 h-4 inline-block" aria-label="Color" /> button switches to an exponential scale.
 
-        For many variables, there will be a small number of rooms with a high value and a large number of rooms with a low values.
-        Using an exponential color scale will make the differences in the low values more visible.
-        Especially useful for geo spent, since there are a small number of shops where a lot of geo can be spent.
+        For many variables, only a few rooms have high values while many rooms have low values.
+        An exponential scale makes the low values easier to compare.
+        This is especially useful for geo spent, since most geo is spent in only a small number of shops.
     </ReflowCell>
     <ReflowCell>
         <ReflowCellHeader>Area color</ReflowCellHeader>
         <ColorModeAreaTableScreenshot />
         <ColorModeAreaScreenshot />
-        Clicking the <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button a third time will switch back to color the map by the area the room is in, i.e. how the map is colored in the game.
+    	Clicking the <Palette class="w-4 h-4 inline-block" aria-label="Color" /> button a third time switches back to coloring the map by area, matching the in-game map.
     </ReflowCell>
 
 </ReflowRow>
 
-Additional color scales are available from the dropdown menu displayed at the top right of the map, after selecting a variable by clicking its <Palette class="w-4 h-4 inline-block" aria-label="Color" />-button.
+Additional color scales are available from the dropdown menu in the top right of the map after selecting a variable with the <Palette class="w-4 h-4 inline-block" aria-label="Color" /> button.
 
-#### Availible stats:
+#### Available stats:
 
 <AggregationVariableDoc />
 
 ### <Tent class="w-5 h-5 mr-2 inline-block" />Special rooms
 
-The map in <HKVizText /> has a few modifications compared to the in-game map, to allow to analyze the gameplay in more areas.
-Like added maps for Godhome, White Palace and Birthplace. Additionally a few other modifications have been made:
+The map in <HKVizText /> includes a few changes so more areas can be analyzed.
+These include added maps for Godhome, White Palace, and Birthplace, plus a few other adjustments:
 
 #### Buildings
 
 <BuildingsColormapScreenshot />
 
-Some parts of the Hollow Knight world are not represented on the Map directly, but are just hinted at by a building or door.
-For <HKVizText /> these have been cut out from the game sprites, to allow seeing analytics for these buildings inidividually.
+Some parts of the Hollow Knight world are not shown directly on the map, but are hinted at by a building or door.
+For <HKVizText /> these have been cut out from the game sprites so analytics for them can be shown individually.
 
-In the game, the player location is not displayed when inside on of these buildings.
-In <HKVizText /> the player movement is displayed ontop of the buildings.
+In the game, the player location is hidden inside these buildings.
+In <HKVizText /> the player movement is shown on top of them.
 
 #### Multi-room buildings
 
 <SubroomsScreenshot />
 
-Some buildings contain multiple rooms, on the map the analytics are displayed for all rooms inside the building together.
-(e.g. the number of deaths in the building is the sum over all rooms and the 'first visited at' is the earliest time any room of the building has been visited).
+Some buildings contain multiple rooms. On the map, analytics are shown for all rooms inside the building together.
+(For example, deaths are summed across all rooms, and "first visited at" uses the earliest room visit.)
 
-By clicking on the building on the map, the analytics for each room inside can be displayed individually by using the buttons displayed for each room inside the building.
+Click the building on the map to view analytics for each room individually.
 
 <SpoilerWrapper title="Spoilers: show list of all multi-room buildings">
-	Other examples for multi-room buildings on the map are:
+	Other examples of multi-room buildings on the map are:
 	<li>
 		{
 			<ExternalLinkMdx
@@ -267,7 +267,7 @@ By clicking on the building on the map, the analytics for each room inside can b
 	</li>
 	{
 		<li>
-			The pantehons described in the{' '}
+			The pantheons described in the{' '}
 			<a href="#godhome" target="_self">
 				Godhome section
 			</a>
@@ -279,7 +279,7 @@ By clicking on the building on the map, the analytics for each room inside can b
 #### Colosseum
 
 <SpoilerWrapper title="Show colosseum spoilers">
-Unlike on the ingame map, each trial of the colosseum has its own sign on the map. Allowing to see room analytics, such as how often one has died in each of them.
+Unlike on the in-game map, each trial of the Colosseum has its own sign on the map, which makes it easier to see room analytics such as how often you died in each one.
 
 <ColosseumScreenshot />
 
@@ -289,10 +289,10 @@ Unlike on the ingame map, each trial of the colosseum has its own sign on the ma
 #### Godhome
 
 <SpoilerWrapper title="Show spoilers for Godhome">
-On the map information for each pantheon / boss rush is displayed at its entrance.
+On the map, information for each pantheon or boss rush is displayed at its entrance.
 
-By clicking on one of the doors, one sees the overal analytics of the selected pantehon.
-Analytics can also be displayed for each boss individually, by clicking on one of the bosses above the analytics, similar to other <a href="#multi-room-buildings" target="_self">multi-room buildings</a>.
+By clicking one of the doors, you can see the overall analytics of the selected pantheon.
+Analytics can also be displayed for each boss individually by clicking one of the bosses above the analytics, similar to other <a href="#multi-room-buildings" target="_self">multi-room buildings</a>.
 
 <GodhomeScreenshot />
 
@@ -303,7 +303,7 @@ Analytics can also be displayed for each boss individually, by clicking on one o
 
 <SplitsScreenshot />
 
-The splits view provides a quick overview of what happened in a gameplay.
+The splits view gives a quick overview of what happened during a gameplay.
 It shows the times of events of the following types:
 
 <SplitsListCard />
@@ -316,10 +316,10 @@ By toggling the checkboxes corresponding to the event types, the splits can be f
 
 ## Time-based charts
 
-The time-based charts show some variables over time, such as the completion percentage, geo, number of collected grubs.
+The time-based charts show variables over time, such as completion percentage, geo, and grubs collected.
 
-Hovering over a chart will show a marker on the <a href="#timeline" target="_self">timeline</a> to highlight the hovered timepoint,
-additionally the room the player is in is highlighted on the map while hovering <a href="#map" target="_self">map</a>.
+Hovering over a chart shows a marker on the <a href="#timeline" target="_self">timeline</a>.
+The player position is also highlighted on the <a href="#map" target="_self">map</a>.
 
 **Time-based chart actions**
 
@@ -331,17 +331,17 @@ additionally the room the player is in is highlighted on the map while hovering 
 
 <GeoChartScreenshot />
 
-The <ExternalLinkMdx href="https://hollowknight.wiki/w/Geo">Geo</ExternalLinkMdx> chart shows Geo over time. By default it shows the geo that the player has at the moment, and the potential geo the player can gain by defeating the shade and by selling relicts.
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Geo">Geo</ExternalLinkMdx> chart shows Geo over time. By default it shows the geo the Knight carries, plus the geo they could still gain from the shade or relics.
 
 <GeoChartDocVars />
 
-Hint: You can find out when money has been lost by failing to defeat the shade, by finding the spots where the 'Shade Geo' decreases without the 'Inventory Geo' increasing.
+Hint: you can find out when Geo was lost by failing to defeat the shade by looking for spots where "Shade Geo" decreases without "Inventory Geo" increasing.
 
 <FloatClear />
 
 ### <EssenceChartDocIcon />Essence chart
 
-The <ExternalLinkMdx href="https://hollowknight.wiki/w/Essence">Essence</ExternalLinkMdx> charts shows the Essence collected over time.
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Essence">Essence</ExternalLinkMdx> chart shows Essence collected over time.
 
 <EssenceChartDocVars />
 
@@ -351,7 +351,7 @@ The <ExternalLinkMdx href="https://hollowknight.wiki/w/Essence">Essence</Externa
 
 <GrubsChartScreenshot />
 
-The <ExternalLinkMdx href="https://hollowknight.wiki/w/Grub">Grub</ExternalLinkMdx> chart shows the number of grubs collected over time, and for how many grubs the reward has been collected.
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Grub">Grub</ExternalLinkMdx> chart shows the number of grubs collected over time and how many rewards have been claimed.
 
 <GrubsChartDocVars />
 
@@ -361,7 +361,7 @@ The <ExternalLinkMdx href="https://hollowknight.wiki/w/Grub">Grub</ExternalLinkM
 
 <CompletionChartScreenshot />
 
-The <ExternalLinkMdx href="https://hollowknight.wiki/w/Completion_(Hollow_Knight)">completion</ExternalLinkMdx> chart shows the completion percentage over time.
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Completion_(Hollow_Knight)">completion</ExternalLinkMdx> chart shows completion percentage over time.
 
 <CompletionChartDocVars />
 
@@ -371,8 +371,8 @@ The <ExternalLinkMdx href="https://hollowknight.wiki/w/Completion_(Hollow_Knight
 
 <HealthChartScreenshot />
 
-The <ExternalLinkMdx href="https://hollowknight.wiki/w/Knight#Health">health</ExternalLinkMdx> chart shows the masks over time.
-Since health does change very frequently, this chart is most useful when zooming in closely.
+The <ExternalLinkMdx href="https://hollowknight.wiki/w/Knight#Health">health</ExternalLinkMdx> chart shows masks over time.
+Since health changes very frequently, this chart is most useful when zoomed in closely.
 
 <HealthChartDocVars />
 
@@ -386,23 +386,23 @@ The <ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">soul</ExternalLinkM
 Soul is used for spells and healing, and is gained by:
 
 - hitting enemies with the nail
-- dreamnailing enemies or npcs
+- dreamnailing enemies or NPCs
 - {<ExternalLinkMdx href="https://hollowknight.wiki/w/Soul">and some other sources</ExternalLinkMdx>}
 
-Since soul does change very frequently, this chart is most useful when zooming in closely.
+Since soul changes very frequently, this chart is most useful when zoomed in closely.
 
 <SoulChartDocVars />
 
 <FloatClear />
 ## Timeline
 
-The timeline allows scrolling through a gameplay, to see the player location and room visibility at different points in time.
-On the right of the timeline the speed of the animation can be adjusted.
+The timeline lets you scroll through a gameplay and inspect player location and room visibility at different points in time.
+On the right side, you can adjust the animation speed.
 
 <TimelineScreenshot />
 
-At the bottom of the timeline, the color of visitied rooms is displayed. By <a href="#map-coloring-by-variables" target="_self">selecting a room on the map</a>, the color codes of the selected room and area are enlarged.
-This can make it easier to find the time a specific area was visited.
+At the bottom of the timeline, the colors of visited scenes are shown. By <a href="#map-coloring-by-variables" target="_self">selecting a room on the map</a>, the color codes for the selected room and area are enlarged.
+This makes it easier to see when a specific area was visited.
 
 **Timeline slider shortcuts**
 
