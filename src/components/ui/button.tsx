@@ -50,5 +50,5 @@ const Button = <T extends ValidComponent = 'button'>(props: PolymorphicProps<T, 
 	);
 };
 
-export type { ButtonProps };
 export { Button, buttonVariants };
+export type { ButtonProps };

@@ -1,11 +1,11 @@
-import { Component, createEffect, onCleanup, Show } from 'solid-js';
-import type { RunMetadata } from '~/server/run/_find_runs_internal.ts';
-import { createMutableMemo } from '~/lib/create-mutable-memo.ts';
 import { useAction, useSubmission } from '@solidjs/router';
-import { runSetTitleAction } from '~/server/run/run-set-title.ts';
-import { cleanupRunTitle, MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields.ts';
-import { showToast } from '~/components/ui/toast.tsx';
+import { Component, createEffect, onCleanup, Show } from 'solid-js';
 import { TextField, TextFieldTextArea } from '~/components/ui/text-field.tsx';
+import { showToast } from '~/components/ui/toast.tsx';
+import { createMutableMemo } from '~/lib/create-mutable-memo.ts';
+import { cleanupRunTitle, MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields.ts';
+import type { RunMetadata } from '~/server/run/_find_runs_internal.ts';
+import { runSetTitleAction } from '~/server/run/run-set-title.ts';
 
 export const RunCardTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = (props) => {
 	const [title, setTitle] = createMutableMemo(() => props.run.title);
@@ -42,7 +42,7 @@ export const RunCardTitle: Component<{ run: RunMetadata; isOwnRun: boolean }> = 
 		if (!textareaRef) return;
 
 		const newTitle = cleanupRunTitle(textareaRef.value);
-		if (title() === newTitle) return;
+		if ((title() ?? '') === (newTitle ?? '')) return;
 		setTitle(newTitle);
 		try {
 			const _result = await setTitleAction({ id: props.run.id, title: newTitle });
