@@ -5,12 +5,13 @@ import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { RunMetadata } from '~/server/run/_find_runs_internal';
 import { DEFAULT_PAGE_SIZE, filterParamsAtPage, RunFilterBaseNoPage } from '~/server/run/find_runs_base';
 import { RunCard } from './run-card/run-card';
+import { Button } from './ui/button';
 import { Checkbox } from './ui/checkbox';
 import { Skeleton } from './ui/skeleton';
 
 interface RunListChunkProps<TFilter extends RunFilterBaseNoPage> {
 	filter: TFilter;
-	loadPage(filter: TFilter): Promise<RunMetadata[]>;
+	loadPage(): Promise<RunMetadata[]>;
 	isOwnRun?: (run: RunMetadata) => boolean;
 	onCombineClicked?: (run: RunMetadata) => void;
 
@@ -22,7 +23,7 @@ interface RunListChunkProps<TFilter extends RunFilterBaseNoPage> {
 }
 function RunListChunk(props: RunListChunkProps<RunFilterBaseNoPage>) {
 	const id = createUniqueId();
-	const runs = createAsync(() => props.loadPage(props.filter));
+	const runs = createAsync(() => props.loadPage());
 
 	const onRunClick = (run: RunMetadata) => {
 		if (props.disableSelection?.(run)) {
@@ -115,9 +116,13 @@ export function RunList(props: RunListProps<RunFilterBaseNoPage>) {
 		};
 	});
 
-	function loadNextPage() {
+	const canLoadMore = () => {
 		const last = lastPage();
-		if (last == null || last.content.length !== DEFAULT_PAGE_SIZE || last.index !== pages() - 1) {
+		return last != null && last.content.length === DEFAULT_PAGE_SIZE && last.index === pages() - 1;
+	};
+
+	function loadNextPage() {
+		if (!canLoadMore()) {
 			return;
 		}
 		setPages(pages() + 1);
@@ -194,6 +199,13 @@ export function RunList(props: RunListProps<RunFilterBaseNoPage>) {
 					)}
 				</For>
 				<div ref={setLoadMoreRef} />
+				<Suspense>
+					<Show when={canLoadMore()}>
+						<Button variant="outline" onClick={loadNextPage} class="mx-auto mt-4 border-white/5 bg-card/30">
+							Load more
+						</Button>
+					</Show>
+				</Suspense>
 			</ul>
 		</Show>
 	);

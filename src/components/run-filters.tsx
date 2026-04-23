@@ -114,7 +114,7 @@ export const RunFilters: Component<{ filter: RunFilterBaseNoPage; class?: string
 					<TextField class="group relative grow md:max-w-85">
 						<SearchIcon
 							class={cn(
-								'absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-foreground/60 transition',
+								'pointer-events-none absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-foreground/60 transition',
 								searchTerm()
 									? 'translate-x-4 opacity-0'
 									: 'group-focus-within:translate-x-4 group-focus-within:opacity-0',
