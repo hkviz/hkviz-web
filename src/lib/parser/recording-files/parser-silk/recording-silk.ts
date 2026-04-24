@@ -1,6 +1,8 @@
 import { aggregateRecordingSilk } from '~/lib/aggregation/aggregate-recording-silk';
 import { AggregatedRunDataSilk } from '~/lib/aggregation/aggregation-value-silk';
 import { PlayerDataFieldNameSilk, playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import { Split } from '~/lib/splits/splits-shared/split';
+import { createRecordingSplitsSilk } from '~/lib/splits/splits-silk/generate-splits-silk';
 import { raise } from '../../../util';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
@@ -50,6 +52,7 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 	public readonly playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
 
 	public readonly aggregations: AggregatedRunDataSilk;
+	public readonly splits: Split[];
 
 	constructor(
 		events: RecordingEventSilk[],
@@ -80,6 +83,7 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 			}
 		}
 		this.aggregations = aggregateRecordingSilk(this);
+		this.splits = createRecordingSplitsSilk(this);
 	}
 
 	public getPlayerDataEventsOfField<K extends PlayerDataFieldNameSilk>(field: K): PlayerDataEventSilk<K>[] {

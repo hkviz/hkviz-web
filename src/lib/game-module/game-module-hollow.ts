@@ -14,6 +14,7 @@ import {
 } from '../parser/map-data';
 import { combineRecordingsHollow } from '../parser/recording-files';
 import { parseRecordingFileHollow } from '../parser/recording-files/parser-hollow/parse-recording-file-hollow';
+import { splitGroupsArrayHollow } from '../splits/splits-hollow/split-group-hollow';
 import { GameModule } from './game-module';
 
 export const gameModuleHollow: GameModule<'hollow'> = {
@@ -49,4 +50,6 @@ export const gameModuleHollow: GameModule<'hollow'> = {
 		variables: Object.keys(aggregationVariableInfosHollow) as AggregationVariable[],
 		DEFAULT_VALUES: EMPTY_AGGREGATION_HOLLOW,
 	},
+
+	splitGroups: splitGroupsArrayHollow,
 };

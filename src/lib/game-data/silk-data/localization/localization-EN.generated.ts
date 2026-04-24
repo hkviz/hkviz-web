@@ -1538,4 +1538,6 @@ export default {
 	'Map Zones.SPRINTMASTER_CAVE': 'Frontier',
 	'Map Zones.SURFACE': '#!#SURFACE#!#',
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
+	'Quests.UI_PROMPT_ACCEPTED': 'Wish Promised',
+	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Completed',
 };

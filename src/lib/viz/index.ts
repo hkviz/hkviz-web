@@ -9,7 +9,6 @@ export * from './img-urls';
 export * from './list';
 export * from './loader';
 export * from './map';
-export * from './splits';
 export * from './time-charts';
 export * from './timeline';
 export * from './util';

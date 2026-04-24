@@ -10,6 +10,7 @@ import { PlayerDataFieldByNameOfGame, PlayerDataFieldOfGame } from '../game-data
 import { SceneEvent } from '../parser/recording-files/events-shared/scene-event';
 import { CombinedRecordingOfGame } from '../parser/recording-files/parser-specific/combined-recording';
 import { ParsedRecordingOfGame } from '../parser/recording-files/parser-specific/parsed-recording-of-game';
+import { SplitGroup } from '../splits/splits-shared/split-group';
 
 export interface GameModule<Game extends GameId> {
 	game: Game;
@@ -36,6 +37,7 @@ export interface GameModule<Game extends GameId> {
 		variables: AggregationVariable[];
 		DEFAULT_VALUES: AggregationValueOfGame<Game>;
 	};
+	splitGroups: SplitGroup[];
 }
 
 export type GameModuleAny = GameModule<'hollow'> | GameModule<'silk'>;

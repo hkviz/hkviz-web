@@ -1595,4 +1595,6 @@ export default {
 	'Map Zones.SPRINTMASTER_CAVE': 'Окраина Полей',
 	'Map Zones.SURFACE': '#!#SURFACE#!#',
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
+	'Quests.UI_PROMPT_ACCEPTED': 'Желание обещано',
+	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Выполнено',
 };

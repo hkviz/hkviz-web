@@ -22,7 +22,25 @@ export type LocalizedString =
 	  }
 	| {
 			raw: string;
+	  }
+	| {
+			concat: LocalizedString[];
 	  };
+
+export const localized = {
+	raw(str: string): LocalizedString {
+		return { raw: str };
+	},
+	silk(key: keyof LocalizationDataSilk): LocalizedString {
+		return { source: 'silk', key };
+	},
+	silkAny(key: string): LocalizedString {
+		return { source: 'silk', key: key as keyof LocalizationDataSilk };
+	},
+	concat(...parts: LocalizedString[]): LocalizedString {
+		return { concat: parts };
+	},
+};
 
 // TODO would make sense to use Suspense here.
 export function createLocalizationStore() {
@@ -85,9 +103,11 @@ export function createLocalizationStore() {
 		);
 	}
 
-	function getString(localizedString: LocalizedString) {
+	function getString(localizedString: LocalizedString): string {
 		if ('raw' in localizedString) {
 			return localizedString.raw;
+		} else if ('concat' in localizedString) {
+			return localizedString.concat.map(getString).join('');
 		} else {
 			switch (localizedString.source) {
 				case 'silk':

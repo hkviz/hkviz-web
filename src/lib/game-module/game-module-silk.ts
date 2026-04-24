@@ -11,6 +11,7 @@ import { playerDataFieldsSilk } from '../game-data/silk-data/player-data-silk';
 import { playerPositionToMapPositionSilk } from '../game-data/silk-data/player-position-silk';
 import { combineRecordingsSilk } from '../parser/recording-files/parser-silk/combine-recordings-silk';
 import { parseRecordingFileSilk } from '../parser/recording-files/parser-silk/parse-recording-file-silk';
+import { splitGroupsArraySilk } from '../splits/splits-silk/split-group-silk';
 import { GameModule } from './game-module';
 
 export const gameModuleSilk: GameModule<'silk'> = {
@@ -47,4 +48,6 @@ export const gameModuleSilk: GameModule<'silk'> = {
 		variables: Object.keys(aggregationVariableInfosSilk) as AggregationVariable[],
 		DEFAULT_VALUES: EMPTY_AGGREGATION_SILK,
 	},
+
+	splitGroups: splitGroupsArraySilk,
 };

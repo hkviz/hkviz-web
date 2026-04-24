@@ -7,7 +7,7 @@ import { createExtraChartStore, ExtraChartStoreContext } from './extra-chart-sto
 import { createGameplayStore, GameplayStoreContext } from './gameplay-store';
 import { createHoverMsStore, HoverMsStoreContext } from './hover-ms-store';
 import { createLayoutStore, LayoutStoreContext } from './layout-store';
-import { createLocalizationStore, LocalizationStoreContext } from './localization-store';
+import { createLocalizationStore, LocalizationStoreContext, useLocalizationStore } from './localization-store';
 import { createMapZoomStore, MapZoomStoreContext } from './map-zoom-store';
 import { createPlayerDataAnimationStore, PlayerDataAnimationStoreContext } from './player-data-animation-store';
 import { createRoomColoringStore, RoomColoringStoreContext } from './room-coloring-store';
@@ -43,6 +43,7 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 	const themeStore = useThemeStore();
 	const uiStore = useUiStore();
 	const viewportStore = useViewportStore();
+	const localizationStore = useLocalizationStore();
 
 	const layoutStore = createLayoutStore(viewportStore);
 	const gameplayStore = createGameplayStore();
@@ -61,7 +62,7 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 		animationStore,
 		gameplayStore,
 	);
-	const splitsStore = createSplitsStore(gameplayStore, animationStore);
+	const splitsStore = createSplitsStore(gameplayStore, animationStore, localizationStore);
 	const tourStore = createTourStore(
 		roomColoringStore,
 		roomDisplayStore,

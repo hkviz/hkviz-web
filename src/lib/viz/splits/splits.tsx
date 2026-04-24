@@ -1,14 +1,11 @@
 import { CircleQuestionMarkIcon, SearchIcon, XIcon } from 'lucide-solid';
 import { For, Show, createUniqueId, type Component } from 'solid-js';
 import { Button } from '~/components/ui/button';
-import { Checkbox } from '~/components/ui/checkbox';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
-import {
-	RecordingSplit,
-	RecordingSplitGroup,
-	recordingSplitGroups,
-} from '~/lib/parser/recording-files/parser-hollow/recording-splits';
+import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
+import { Split } from '~/lib/splits/splits-shared/split';
+import { SplitGroup } from '~/lib/splits/splits-shared/split-group';
 import { cn } from '~/lib/utils';
 import { SplitsList } from '~/routes/(docs)/guide/_analytics/_splits-list';
 import { Duration } from '../duration';
@@ -16,17 +13,18 @@ import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import { LayoutPanelHeader } from '../layout/layout-panel-header';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
+import { useGameplayStore } from '../store/gameplay-store';
+import { useLocalizationStore } from '../store/localization-store';
 import { useSplitsStore } from '../store/splits-store';
 import { TimelineList, TimelineListEntryButton, useTimelineListEntryContext } from '../timeline-list/timeline-list';
-import { splitColors } from './split-colors';
-
 interface RowProps {
-	split: RecordingSplit;
+	split: Split;
 }
 
 const RunSplitRow: Component<RowProps> = (props) => {
+	const localizationStore = useLocalizationStore();
 	const timelineListContext = useTimelineListEntryContext();
-	const splitGroupColor = () => splitColors[props.split.group.name];
+	const splitGroupColor = () => props.split.group.color;
 
 	return (
 		<TimelineListEntryButton
@@ -37,19 +35,29 @@ const RunSplitRow: Component<RowProps> = (props) => {
 			<Show when={props.split.imageUrl}>
 				{(imageUrl) => (
 					<div
-						class="mr-2 h-7 w-7 shrink-0 bg-contain bg-center bg-no-repeat"
+						class={cn(
+							'mr-2 h-7 w-7 shrink-0 bg-contain bg-center bg-no-repeat',
+							props.split.imageStyle === 'rounded-border' ? 'rounded-full ring-1 ring-foreground/30' : '',
+						)}
 						style={{
-							['background-image']: `url(${imageUrl()})`,
+							['background-image']: `url("${imageUrl()}")`,
 						}}
 					/>
 				)}
 			</Show>
-			<p class="flex grow flex-col items-start justify-center text-left">
+			<div class="flex grow flex-col items-start justify-center text-left">
 				<span class="relative">
 					<Show when={timelineListContext.state() === 'next'}>
 						<span class="absolute bottom-full left-0 w-max text-[.5rem] font-bold opacity-75">Up Next</span>
 					</Show>
-					{props.split.title}
+					<div class="leading-tight">{localizationStore.getString(props.split.title)}</div>
+					<Show when={props.split.subtitle}>
+						{(subtitle) => (
+							<div class="top-full left-0 w-max text-[.5rem] font-bold opacity-75">
+								{localizationStore.getString(subtitle())}
+							</div>
+						)}
+					</Show>
 				</span>
 				{/* <span
                             class="-mb-1 mt-1 rounded-lg bg-slate-400 px-1 py-0.5 text-[.5rem] font-bold leading-none text-black"
@@ -60,7 +68,7 @@ const RunSplitRow: Component<RowProps> = (props) => {
 				{/* <span class="-mb-1 rounded-lg py-0.5 text-[.6rem] font-bold leading-none" style={{ color }}>
                             {displaySceneName}
                         </span> */}
-			</p>
+			</div>
 			<Duration ms={props.split.msIntoGame} class="pr-3" withTooltip={false} />
 		</TimelineListEntryButton>
 	);
@@ -70,7 +78,7 @@ const RunSplitsRows: Component = () => {
 	const splitsStore = useSplitsStore();
 	const filteredSplits = splitsStore.filteredSplits;
 
-	function getSceneName(entry: RecordingSplit) {
+	function getSceneName(entry: Split) {
 		const newScene = entry.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
 		return newScene;
 	}
@@ -127,8 +135,17 @@ export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
 	const splitsStore = useSplitsStore();
 	const visibleSplitGroups = splitsStore.visibleSplitGroups;
 	const panelContext = useLayoutPanelContext();
+	const gameplayStore = useGameplayStore();
 
-	const setVisibleSplitGroupChecked = (group: RecordingSplitGroup, checked: boolean) => {
+	const splitGroups = () => gameplayStore.gameModule()?.splitGroups ?? [];
+
+	const visibleGroupIds = () => visibleSplitGroups().map((group) => group.id);
+	function setVisibleSplitGroupsByIds(groupIds: string[]) {
+		const groups = splitGroups().filter((group) => groupIds.includes(group.id));
+		splitsStore.setVisibleSplitGroups(groups);
+	}
+
+	const setVisibleSplitGroupChecked = (group: SplitGroup, checked: boolean) => {
 		const currentGroup = splitsStore.visibleSplitGroups();
 		splitsStore.setVisibleSplitGroups(checked ? [...currentGroup, group] : currentGroup.filter((g) => g !== group));
 	};
@@ -159,32 +176,25 @@ export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
 					</Popover>
 				</LayoutPanelHeader>
 				<Show when={!panelContext.isCollapsed()}>
-					<div class="flex flex-wrap gap-1 p-3 pt-0">
-						<For each={recordingSplitGroups}>
+					<ToggleGroup
+						class="flex flex-wrap gap-1 p-1.5 pt-0"
+						multiple
+						value={visibleGroupIds()}
+						onChange={setVisibleSplitGroupsByIds}
+					>
+						<For each={splitGroups()}>
 							{(group) => {
-								const checked = () => visibleSplitGroups().includes(group);
-								const color = splitColors[group.name];
 								return (
-									<div class="flex flex-row">
-										<Checkbox
-											id={id + '_run_split_option_' + group.name}
-											checked={checked()}
-											onChange={(checked) =>
-												setVisibleSplitGroupChecked(group, checked as boolean)
-											}
-											controlClass={color.checkboxSolid}
-										/>
-										<label
-											for={id + '_run_split_option_' + group.name + '-input'}
-											class="grow pl-1 text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-										>
-											{group.displayName}
-										</label>
-									</div>
+									<ToggleGroupItem
+										value={group.id}
+										class={cn(group.color.toggleGroupItem, 'h-5 px-1.5 py-1 text-xs')}
+									>
+										{group.displayName}
+									</ToggleGroupItem>
 								);
 							}}
 						</For>
-					</div>
+					</ToggleGroup>
 
 					<hr />
 					<RunSplitsRows />

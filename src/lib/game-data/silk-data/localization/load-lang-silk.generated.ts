@@ -1167,6 +1167,8 @@ export interface LocalizationDataSilk {
 	['Map Zones.SPRINTMASTER_CAVE']: string;
 	['Map Zones.SURFACE']: string;
 	['Map Zones.TEST_AREA']: string;
+	['Quests.UI_PROMPT_ACCEPTED']: string;
+	['Quests.UI_TITLE_QUESTS_COMPLETE']: string;
 }
 
 export async function loadLangSilk(lang: SupportedLanguageSilk): Promise<LocalizationDataSilk> {

@@ -1,33 +1,54 @@
 import Fuse from 'fuse.js';
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
-import { RecordingSplit, recordingSplitGroups } from '~/lib/parser/recording-files/parser-hollow/recording-splits';
-import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import { createMutableMemo } from '~/lib/create-mutable-memo';
+import { Split } from '~/lib/splits/splits-shared/split';
 import { AnimationStore } from './animation-store';
 import { GameplayStore } from './gameplay-store';
+import { LocalizationStore } from './localization-store';
 
-export function createSplitsStore(gameplayStore: GameplayStore, animationStore: AnimationStore) {
-	const [visibleSplitGroups, setVisibleSplitGroups] = createSignal(
-		recordingSplitGroups.filter((it) => it.defaultShown),
-	);
+export type LocalizedSplit = Split & { localizedTitle: string };
+
+export function createSplitsStore(
+	gameplayStore: GameplayStore,
+	animationStore: AnimationStore,
+	localizationStore: LocalizationStore,
+) {
+	const defaultSplitGroups = () => {
+		const gameModule = gameplayStore.gameModule();
+		return gameModule?.splitGroups.filter((it) => it.defaultShown) ?? [];
+	};
+
+	const [visibleSplitGroups, setVisibleSplitGroups] = createMutableMemo(defaultSplitGroups);
 	const [filterTerm, setFilterTerm] = createSignal('');
 
 	function reset() {
-		setVisibleSplitGroups(recordingSplitGroups.filter((it) => it.defaultShown));
+		setVisibleSplitGroups(defaultSplitGroups());
 		setFilterTerm('');
 	}
 
-	const filteredByGroupSplits = createMemo<readonly RecordingSplit[]>(() => {
+	const splitsLocalized = createMemo<readonly LocalizedSplit[]>(() => {
 		const recording = gameplayStore.recording();
-		if (!recording || recording instanceof CombinedRecordingSilk) return [];
+		if (!recording) return [];
+		return (
+			recording.splits?.map((split) => ({
+				...split,
+				localizedTitle: localizationStore.getString(split.title),
+			})) ?? []
+		);
+	});
+
+	const filteredByGroupSplits = createMemo<readonly LocalizedSplit[]>(() => {
+		const recording = gameplayStore.recording();
+		if (!recording) return [];
 		const visibleGroups = visibleSplitGroups();
-		return recording.splits?.filter((it) => visibleGroups.includes(it.group)) ?? [];
+		return splitsLocalized()?.filter((it) => visibleGroups.includes(it.group)) ?? [];
 	});
 
 	const splitsFuse = createMemo(
 		() =>
 			new Fuse(filteredByGroupSplits(), {
 				keys: [
-					{ name: 'title', weight: 2 },
+					{ name: 'localizedTitle', weight: 2 },
 					// { name: 'description', weight: 2 },
 				],
 				shouldSort: false,
@@ -35,7 +56,7 @@ export function createSplitsStore(gameplayStore: GameplayStore, animationStore: 
 				ignoreLocation: true,
 			}),
 	);
-	const filteredSplits = createMemo<readonly RecordingSplit[]>(() => {
+	const filteredSplits = createMemo<readonly LocalizedSplit[]>(() => {
 		const term = filterTerm().toLowerCase();
 		const splits = filteredByGroupSplits();
 		if (!term) return splits;

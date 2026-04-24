@@ -32,6 +32,7 @@ function defaultSpriteName(charmId: CharmPlayerDataId): string {
 export interface VirtualCharm {
 	id: string;
 	name: string;
+	subtitle?: string;
 	spriteName: string;
 	hasCharm: (frameEndEvent: FrameEndEventHollow) => boolean;
 }
@@ -39,12 +40,14 @@ export interface VirtualCharm {
 function makeVirtualCharm({
 	id,
 	name,
+	subtitle,
 	playerDataId,
 	spriteName = defaultSpriteName(playerDataId!),
 	hasCharm = defaultHasCharm(playerDataId!),
 }: {
 	id: string;
 	name: string;
+	subtitle?: string;
 	playerDataId?: CharmPlayerDataId;
 	spriteName?: string;
 	hasCharm?: (frameEndEvent: FrameEndEventHollow) => boolean;
@@ -52,6 +55,7 @@ function makeVirtualCharm({
 	return {
 		id,
 		name,
+		subtitle,
 		hasCharm,
 		spriteName,
 	};
@@ -311,28 +315,32 @@ export const virtualCharms: VirtualCharm[] = [
 	}),
 	makeVirtualCharm({
 		id: 'charm_vanilla_grimmchild_level_1',
-		name: 'Grimmchild (Phase 1)',
+		name: 'Grimmchild',
+		subtitle: 'Phase 1',
 		playerDataId: '40',
 		spriteName: 'charm_grimmkin_01',
 		hasCharm: (frameEndEvent) => frameEndEvent.grimmChildLevel === 1 && frameEndEvent.gotCharm_40,
 	}),
 	makeVirtualCharm({
 		id: 'charm_vanilla_grimmchild_level_2',
-		name: 'Grimmchild (Phase 2)',
+		name: 'Grimmchild',
+		subtitle: 'Phase 2',
 		playerDataId: '40',
 		spriteName: 'charm_grimmkin_02',
 		hasCharm: (frameEndEvent) => frameEndEvent.grimmChildLevel === 2 && frameEndEvent.gotCharm_40,
 	}),
 	makeVirtualCharm({
 		id: 'charm_vanilla_grimmchild_level_3',
-		name: 'Grimmchild (Phase 3)',
+		name: 'Grimmchild',
+		subtitle: 'Phase 3',
 		playerDataId: '40',
 		spriteName: 'charm_grimmkin_03',
 		hasCharm: (frameEndEvent) => frameEndEvent.grimmChildLevel === 3 && frameEndEvent.gotCharm_40,
 	}),
 	makeVirtualCharm({
 		id: 'charm_vanilla_grimmchild_level_4',
-		name: 'Grimmchild (Phase 4)',
+		name: 'Grimmchild',
+		subtitle: 'Phase 4',
 		playerDataId: '40',
 		spriteName: 'charm_grimmkin_04',
 		hasCharm: (frameEndEvent) => frameEndEvent.grimmChildLevel === 4 && frameEndEvent.gotCharm_40,

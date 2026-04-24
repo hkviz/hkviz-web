@@ -1258,4 +1258,6 @@ export default {
 	'Map Zones.SPRINTMASTER_CAVE': '远野边际',
 	'Map Zones.SURFACE': '#!#SURFACE#!#',
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
+	'Quests.UI_PROMPT_ACCEPTED': '祈愿已承接',
+	'Quests.UI_TITLE_QUESTS_COMPLETE': '已完成',
 };

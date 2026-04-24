@@ -83,7 +83,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Tut/Tut_01/Next Area Up (2)/Area Name',
 					textKey: 'Map Zones.BONETOWN',
 					position: {
-						x: -12.1110229,
+						x: -12.1109619,
 						y: -12.788167,
 						z: -2.52199936,
 					},
@@ -273,24 +273,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -18.81665,
+					x: -18.81659,
 					y: -15.4918213,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -16.1486816,
+					x: -16.14862,
 					y: -14.4223213,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -18.81665,
+					x: -18.81659,
 					y: -15.4918213,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -16.1486816,
+					x: -16.14862,
 					y: -14.4223213,
 					z: 0.0999999046,
 				},
@@ -413,7 +413,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Tut/Tut_01b/Next Area Right (1)/Area Name',
 					textKey: 'Map Zones.WEAVER_SHRINE',
 					position: {
-						x: -9.875427,
+						x: -9.875366,
 						y: -14.3303213,
 						z: -2.52000046,
 					},
@@ -421,12 +421,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -9.875427,
+							x: -9.875366,
 							y: -14.3303213,
 							z: -2.52000046,
 						},
 						max: {
-							x: -9.875427,
+							x: -9.875366,
 							y: -14.3303213,
 							z: -2.52000046,
 						},
@@ -821,24 +821,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -19.0679932,
+					x: -19.0679321,
 					y: -13.1813259,
 					z: -0.100999355,
 				},
 				max: {
-					x: -12.5820313,
+					x: -12.58197,
 					y: -11.3873253,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -19.0679932,
+					x: -19.0679321,
 					y: -13.1813259,
 					z: -0.100999355,
 				},
 				max: {
-					x: -12.5820313,
+					x: -12.58197,
 					y: -11.3873253,
 					z: 0.0990004539,
 				},
@@ -883,24 +883,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -19.0679932,
+					x: -19.0679321,
 					y: -13.1813259,
 					z: -0.101998806,
 				},
 				max: {
-					x: -12.5820313,
+					x: -12.58197,
 					y: -11.3873253,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -19.0679932,
+					x: -19.0679321,
 					y: -13.1813259,
 					z: -0.101998806,
 				},
 				max: {
-					x: -12.5820313,
+					x: -12.58197,
 					y: -11.3873253,
 					z: 0.098001,
 				},
@@ -1010,7 +1010,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Bonetown/Bonegrave/Area Name Sub',
 					textKey: 'Map Zones.BONETOWN_GRAVEYARD',
 					position: {
-						x: -20.3237915,
+						x: -20.32373,
 						y: -13.6459208,
 						z: -2.52000046,
 					},
@@ -1018,7 +1018,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -22.390564,
+							x: -22.3904419,
 							y: -13.8725328,
 							z: -2.52000046,
 						},
@@ -2053,24 +2053,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -14.9176636,
+					x: -14.9176025,
 					y: -10.7594213,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -11.571106,
+					x: -11.5710449,
 					y: -9.356421,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -14.9176636,
+					x: -14.9176025,
 					y: -10.7594213,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -11.571106,
+					x: -11.5710449,
 					y: -9.356421,
 					z: 0.0999999046,
 				},
@@ -2312,24 +2312,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -14.8624268,
+					x: -14.8623657,
 					y: -10.00502,
 					z: -0.002998352,
 				},
 				max: {
-					x: -14.8624268,
+					x: -14.8623657,
 					y: -10.00502,
 					z: -0.002998352,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -14.8624268,
+					x: -14.8623657,
 					y: -10.00502,
 					z: -0.002998352,
 				},
 				max: {
-					x: -14.8624268,
+					x: -14.8623657,
 					y: -10.00502,
 					z: -0.002998352,
 				},
@@ -2436,24 +2436,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -12.5820313,
+					x: -12.58197,
 					y: -13.1594791,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -9.72998,
+					x: -9.729919,
 					y: -11.3309793,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -12.5820313,
+					x: -12.58197,
 					y: -13.1594791,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -9.72998,
+					x: -9.729919,
 					y: -11.3309793,
 					z: 0.0999999046,
 				},
@@ -2501,7 +2501,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Bone/Bone_01/Next Area Left (4)/Area Name',
 					textKey: 'Map Zones.BONETOWN',
 					position: {
-						x: -16.2528076,
+						x: -16.2527466,
 						y: -13.01343,
 						z: -2.52000046,
 					},
@@ -2509,12 +2509,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -16.2528076,
+							x: -16.2527466,
 							y: -13.01343,
 							z: -2.52000046,
 						},
 						max: {
-							x: -16.2528076,
+							x: -16.2527466,
 							y: -13.01343,
 							z: -2.52000046,
 						},
@@ -2541,24 +2541,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -9.100952,
+					x: -9.100891,
 					y: -11.9910793,
 					z: -0.0009994507,
 				},
 				max: {
-					x: -9.100952,
+					x: -9.100891,
 					y: -11.9910793,
 					z: -0.0009994507,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -9.100952,
+					x: -9.100891,
 					y: -11.9910793,
 					z: -0.0009994507,
 				},
 				max: {
-					x: -9.100952,
+					x: -9.100891,
 					y: -11.9910793,
 					z: -0.0009994507,
 				},
@@ -3462,24 +3462,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -2.61187744,
+					x: -2.61181641,
 					y: -12.322279,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.89813232,
+					x: -1.89807129,
 					y: -10.4707794,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -2.61187744,
+					x: -2.61181641,
 					y: -12.322279,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.89813232,
+					x: -1.89807129,
 					y: -10.4707794,
 					z: 0.0999999046,
 				},
@@ -3596,24 +3596,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -2.62237549,
+					x: -2.62231445,
 					y: -13.24113,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.6814575,
+					x: 0.681518555,
 					y: -12.32113,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -2.62237549,
+					x: -2.62231445,
 					y: -13.24113,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.6814575,
+					x: 0.681518555,
 					y: -12.32113,
 					z: 0.0999999046,
 				},
@@ -3874,24 +3874,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -2.01464844,
+					x: -2.0145874,
 					y: -11.7898293,
 					z: 0.0,
 				},
 				max: {
-					x: -2.01464844,
+					x: -2.0145874,
 					y: -11.7898293,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -2.01464844,
+					x: -2.0145874,
 					y: -11.7898293,
 					z: 0.0,
 				},
 				max: {
-					x: -2.01464844,
+					x: -2.0145874,
 					y: -11.7898293,
 					z: 0.0,
 				},
@@ -3923,24 +3923,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -6.948181,
+					x: -6.94812,
 					y: -10.9997787,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -4.257141,
+					x: -4.25708,
 					y: -10.3672791,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -6.948181,
+					x: -6.94812,
 					y: -10.9997787,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -4.257141,
+					x: -4.25708,
 					y: -10.3672791,
 					z: 0.0999999046,
 				},
@@ -3998,24 +3998,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -5.154175,
+					x: -5.154114,
 					y: -11.98648,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.07263184,
+					x: -3.0725708,
 					y: -11.39998,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -5.154175,
+					x: -5.154114,
 					y: -11.98648,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.07263184,
+					x: -3.0725708,
 					y: -11.39998,
 					z: 0.0999999046,
 				},
@@ -4135,24 +4135,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -4.982788,
+					x: -4.982727,
 					y: -12.6118069,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.67822266,
+					x: -2.67816162,
 					y: -11.9770927,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -4.982788,
+					x: -4.982727,
 					y: -12.6118069,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.67822266,
+					x: -2.67816162,
 					y: -11.9770927,
 					z: 0.0999999046,
 				},
@@ -4657,24 +4657,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -18.96344,
+					x: -18.9633789,
 					y: -10.2154818,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -16.2149048,
+					x: -16.2148438,
 					y: -7.742982,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -18.96344,
+					x: -18.9633789,
 					y: -10.2154818,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -16.2149048,
+					x: -16.2148438,
 					y: -7.742982,
 					z: 0.0999999046,
 				},
@@ -4762,24 +4762,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -19.562561,
+					x: -19.5625,
 					y: -11.2389812,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -18.9645386,
+					x: -18.9644775,
 					y: -8.340981,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -19.562561,
+					x: -19.5625,
 					y: -11.2389812,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -18.9645386,
+					x: -18.9644775,
 					y: -8.340981,
 					z: 0.0999999046,
 				},
@@ -4912,24 +4912,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -23.184021,
+					x: -23.18396,
 					y: -10.4236307,
 					z: -0.101998806,
 				},
 				max: {
-					x: -19.4810181,
+					x: -19.480957,
 					y: -8.940131,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -23.184021,
+					x: -23.18396,
 					y: -10.4236307,
 					z: -0.101998806,
 				},
 				max: {
-					x: -19.4810181,
+					x: -19.480957,
 					y: -8.940131,
 					z: 0.098001,
 				},
@@ -5101,7 +5101,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Crawl/Crawl_04/Next Area Right (2)/Area Name',
 					textKey: 'Map Zones.BONETOWN',
 					position: {
-						x: -12.6499023,
+						x: -12.6498413,
 						y: -10.7593155,
 						z: -2.52000046,
 					},
@@ -5141,24 +5141,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -27.2525635,
+					x: -27.2525024,
 					y: -10.3099251,
 					z: -0.0990004539,
 				},
 				max: {
-					x: -22.85962,
+					x: -22.8595581,
 					y: -9.782938,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -27.2525635,
+					x: -27.2525024,
 					y: -10.3099251,
 					z: -0.0990004539,
 				},
 				max: {
-					x: -22.85962,
+					x: -22.8595581,
 					y: -9.782938,
 					z: 0.100999355,
 				},
@@ -5357,24 +5357,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -22.0339355,
+					x: -22.0338745,
 					y: -8.941282,
 					z: -0.100999355,
 				},
 				max: {
-					x: -19.848877,
+					x: -19.8488159,
 					y: -8.481281,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -22.0339355,
+					x: -22.0338745,
 					y: -8.941282,
 					z: -0.100999355,
 				},
 				max: {
-					x: -19.848877,
+					x: -19.8488159,
 					y: -8.481281,
 					z: 0.0990004539,
 				},
@@ -5543,24 +5543,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.62438965,
+					x: 2.62445068,
 					y: -13.1474829,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.38342285,
+					x: 3.383484,
 					y: -11.5489836,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.62438965,
+					x: 2.62445068,
 					y: -13.1474829,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.38342285,
+					x: 3.383484,
 					y: -11.5489836,
 					z: 0.0999999046,
 				},
@@ -5618,24 +5618,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 6.737915,
+					x: 6.737976,
 					y: -15.9654608,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.095459,
+					x: 9.09552,
 					y: -14.08619,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 6.737915,
+					x: 6.737976,
 					y: -15.9654608,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.095459,
+					x: 9.09552,
 					y: -14.08619,
 					z: 0.0999999046,
 				},
@@ -5680,24 +5680,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 6.737915,
+					x: 6.737976,
 					y: -16.01724,
 					z: -0.100999355,
 				},
 				max: {
-					x: 9.095459,
+					x: 9.09552,
 					y: -13.7977409,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 6.737915,
+					x: 6.737976,
 					y: -16.01724,
 					z: -0.100999355,
 				},
 				max: {
-					x: 9.095459,
+					x: 9.09552,
 					y: -13.7977409,
 					z: 0.0990004539,
 				},
@@ -5866,24 +5866,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.083984,
+					x: 9.084045,
 					y: -15.971241,
 					z: -0.101998806,
 				},
 				max: {
-					x: 10.8204346,
+					x: 10.8204956,
 					y: -13.7632408,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.083984,
+					x: 9.084045,
 					y: -15.971241,
 					z: -0.101998806,
 				},
 				max: {
-					x: 10.8204346,
+					x: 10.8204956,
 					y: -13.7632408,
 					z: 0.098001,
 				},
@@ -5928,24 +5928,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.094299,
+					x: 9.09436,
 					y: -14.7575,
 					z: -0.101998806,
 				},
 				max: {
-					x: 10.8192749,
+					x: 10.8193359,
 					y: -13.797081,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.094299,
+					x: 9.09436,
 					y: -14.7575,
 					z: -0.101998806,
 				},
 				max: {
-					x: 10.8192749,
+					x: 10.8193359,
 					y: -13.797081,
 					z: 0.098001,
 				},
@@ -6114,24 +6114,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 6.737915,
+					x: 6.737976,
 					y: -16.0195389,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.095459,
+					x: 9.09552,
 					y: -13.8000393,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 6.737915,
+					x: 6.737976,
 					y: -16.0195389,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.095459,
+					x: 9.09552,
 					y: -13.8000393,
 					z: 0.0999999046,
 				},
@@ -6300,24 +6300,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 13.15033,
+					x: 13.1503906,
 					y: -16.1230412,
 					z: -0.101998806,
 				},
 				max: {
-					x: 14.0703735,
+					x: 14.0704346,
 					y: -14.66254,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 13.15033,
+					x: 13.1503906,
 					y: -16.1230412,
 					z: -0.101998806,
 				},
 				max: {
-					x: 14.0703735,
+					x: 14.0704346,
 					y: -14.66254,
 					z: 0.098001,
 				},
@@ -6666,24 +6666,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 4.17645264,
+					x: 4.17651367,
 					y: -13.07669,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 4.739929,
+					x: 4.73999,
 					y: -12.73169,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 4.17645264,
+					x: 4.17651367,
 					y: -13.07669,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 4.739929,
+					x: 4.73999,
 					y: -12.73169,
 					z: 0.0999999046,
 				},
@@ -6940,24 +6940,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 0.6702881,
+					x: 0.6703491,
 					y: -13.1474838,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.62524414,
+					x: 2.62530518,
 					y: -12.5379848,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 0.6702881,
+					x: 0.6703491,
 					y: -13.1474838,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.62524414,
+					x: 2.62530518,
 					y: -12.5379848,
 					z: 0.0999999046,
 				},
@@ -7005,7 +7005,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Dock/Dock_08/Next Area Left (2)/Area Name',
 					textKey: 'Map Zones.PATH_OF_BONE',
 					position: {
-						x: -3.01434326,
+						x: -3.01428223,
 						y: -13.0600843,
 						z: -2.52000046,
 					},
@@ -7013,12 +7013,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -3.01434326,
+							x: -3.01428223,
 							y: -13.0600843,
 							z: -2.52000046,
 						},
 						max: {
-							x: -3.01434326,
+							x: -3.01428223,
 							y: -13.0600843,
 							z: -2.52000046,
 						},
@@ -7045,24 +7045,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 0.6702881,
+					x: 0.6703491,
 					y: -13.1474934,
 					z: -0.100999355,
 				},
 				max: {
-					x: 2.62524414,
+					x: 2.62530518,
 					y: -12.5379925,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 0.6702881,
+					x: 0.6703491,
 					y: -13.1474934,
 					z: -0.100999355,
 				},
 				max: {
-					x: 2.62524414,
+					x: 2.62530518,
 					y: -12.5379925,
 					z: 0.0990004539,
 				},
@@ -7293,24 +7293,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.006287,
+					x: 8.006348,
 					y: -17.61574,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.903259,
+					x: 8.90332,
 					y: -16.37374,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.006287,
+					x: 8.006348,
 					y: -17.61574,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.903259,
+					x: 8.90332,
 					y: -16.37374,
 					z: 0.0999999046,
 				},
@@ -7727,24 +7727,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 1.3145752,
+					x: 1.31463623,
 					y: -14.1841412,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.38452148,
+					x: 3.38458252,
 					y: -13.1146412,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 1.3145752,
+					x: 1.31463623,
 					y: -14.1841412,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.38452148,
+					x: 3.38458252,
 					y: -13.1146412,
 					z: 0.0999999046,
 				},
@@ -7802,24 +7802,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 1.3145752,
+					x: 1.31463623,
 					y: -14.1841412,
 					z: -0.101998806,
 				},
 				max: {
-					x: 3.38452148,
+					x: 3.38458252,
 					y: -13.1146412,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 1.3145752,
+					x: 1.31463623,
 					y: -14.1841412,
 					z: -0.101998806,
 				},
 				max: {
-					x: 3.38452148,
+					x: 3.38458252,
 					y: -13.1146412,
 					z: 0.098001,
 				},
@@ -7877,24 +7877,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.38342285,
+					x: 3.383484,
 					y: -13.6091394,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 4.17688,
+					x: 4.176941,
 					y: -12.09114,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.38342285,
+					x: 3.383484,
 					y: -13.6091394,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 4.17688,
+					x: 4.176941,
 					y: -12.09114,
 					z: 0.0999999046,
 				},
@@ -7952,24 +7952,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 4.081421,
+					x: 4.081482,
 					y: -15.46179,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.438965,
+					x: 6.439026,
 					y: -14.8982906,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 4.081421,
+					x: 4.081482,
 					y: -15.46179,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.438965,
+					x: 6.439026,
 					y: -14.8982906,
 					z: 0.0999999046,
 				},
@@ -8102,24 +8102,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 7.19329834,
+					x: 7.19335938,
 					y: -13.4768782,
 					z: -0.100999355,
 				},
 				max: {
-					x: 7.970886,
+					x: 7.97094727,
 					y: -13.0283785,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 7.19329834,
+					x: 7.19335938,
 					y: -13.4768782,
 					z: -0.100999355,
 				},
 				max: {
-					x: 7.970886,
+					x: 7.97094727,
 					y: -13.0283785,
 					z: 0.0990004539,
 				},
@@ -8725,7 +8725,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Dock/Bone_East_04/Next Area Right (2)/Area Name',
 					textKey: 'Map Zones.WILDS',
 					position: {
-						x: 12.2225342,
+						x: 12.2225952,
 						y: -11.8323774,
 						z: -2.52000046,
 					},
@@ -8733,12 +8733,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 12.2225342,
+							x: 12.2225952,
 							y: -11.8323774,
 							z: -2.52000046,
 						},
 						max: {
-							x: 12.2225342,
+							x: 12.2225952,
 							y: -11.8323774,
 							z: -2.52000046,
 						},
@@ -8827,24 +8827,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 7.085327,
+					x: 7.085388,
 					y: -12.8374777,
 					z: -0.100999355,
 				},
 				max: {
-					x: 7.86730957,
+					x: 7.86737061,
 					y: -10.8939772,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 7.085327,
+					x: 7.085388,
 					y: -12.8374777,
 					z: -0.100999355,
 				},
 				max: {
-					x: 7.86730957,
+					x: 7.86737061,
 					y: -10.8939772,
 					z: 0.0990004539,
 				},
@@ -8919,24 +8919,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.626343,
+					x: 8.626404,
 					y: -11.3528271,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.810791,
+					x: 9.810852,
 					y: -11.0538273,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.626343,
+					x: 8.626404,
 					y: -11.3528271,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.810791,
+					x: 9.810852,
 					y: -11.0538273,
 					z: 0.0999999046,
 				},
@@ -9030,24 +9030,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -11.5314331,
+					x: -11.5313721,
 					y: -17.71822,
 					z: -0.101998806,
 				},
 				max: {
-					x: -10.7724,
+					x: -10.7723389,
 					y: -13.6242208,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -11.5314331,
+					x: -11.5313721,
 					y: -17.71822,
 					z: -0.101998806,
 				},
 				max: {
-					x: -10.7724,
+					x: -10.7723389,
 					y: -13.6242208,
 					z: 0.098001,
 				},
@@ -9458,24 +9458,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -12.8067627,
+					x: -12.8067017,
 					y: -18.02872,
 					z: -0.101998806,
 				},
 				max: {
-					x: -11.5302734,
+					x: -11.5302124,
 					y: -15.4527206,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -12.8067627,
+					x: -12.8067017,
 					y: -18.02872,
 					z: -0.101998806,
 				},
 				max: {
-					x: -11.5302734,
+					x: -11.5302124,
 					y: -15.4527206,
 					z: 0.098001,
 				},
@@ -9794,24 +9794,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -13.854187,
+					x: -13.854126,
 					y: -15.4644508,
 					z: -0.101998806,
 				},
 				max: {
-					x: -11.531189,
+					x: -11.5311279,
 					y: -14.9354515,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -13.854187,
+					x: -13.854126,
 					y: -15.4644508,
 					z: -0.101998806,
 				},
 				max: {
-					x: -11.531189,
+					x: -11.5311279,
 					y: -14.9354515,
 					z: 0.098001,
 				},
@@ -10195,7 +10195,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Ant/Ant_02/Next Area Left (2)/Area Name',
 					textKey: 'Map Zones.PATH_OF_BONE',
 					position: {
-						x: -2.25610352,
+						x: -2.25604248,
 						y: -10.8134718,
 						z: -2.52000046,
 					},
@@ -10203,12 +10203,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -2.25610352,
+							x: -2.25604248,
 							y: -10.8134718,
 							z: -2.52000046,
 						},
 						max: {
-							x: -2.25610352,
+							x: -2.25604248,
 							y: -10.8134718,
 							z: -2.52000046,
 						},
@@ -10587,7 +10587,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Ant/Ant_05b/Next Area Down (5)/Area Name',
 					textKey: 'Map Zones.DOCKS',
 					position: {
-						x: 11.3782959,
+						x: 11.3783569,
 						y: -11.2274723,
 						z: -2.52000046,
 					},
@@ -10595,12 +10595,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 11.3782959,
+							x: 11.3783569,
 							y: -11.2274723,
 							z: -2.52000046,
 						},
 						max: {
-							x: 11.3782959,
+							x: 11.3783569,
 							y: -11.2274723,
 							z: -2.52000046,
 						},
@@ -10616,7 +10616,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Ant/Ant_05b/Next Area Down (5)/Area Name (1)',
 					textKey: 'Map Zones.DOCKS',
 					position: {
-						x: 4.1171875,
+						x: 4.11724854,
 						y: -11.2274723,
 						z: -2.52000046,
 					},
@@ -10624,12 +10624,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 4.1171875,
+							x: 4.11724854,
 							y: -11.2274723,
 							z: -2.52000046,
 						},
 						max: {
-							x: 4.1171875,
+							x: 4.11724854,
 							y: -11.2274723,
 							z: -2.52000046,
 						},
@@ -10656,24 +10656,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.25531,
+					x: 9.255371,
 					y: -9.802506,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 10.7732544,
+					x: 10.7733154,
 					y: -9.066506,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.25531,
+					x: 9.255371,
 					y: -9.802506,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 10.7732544,
+					x: 10.7733154,
 					y: -9.066506,
 					z: 0.0999999046,
 				},
@@ -11613,24 +11613,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 7.878845,
+					x: 7.87890625,
 					y: -13.549262,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 14.0427856,
+					x: 14.0428467,
 					y: -12.8477621,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 7.878845,
+					x: 7.87890625,
 					y: -13.549262,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 14.0427856,
+					x: 14.0428467,
 					y: -12.8477621,
 					z: 0.0999999046,
 				},
@@ -11887,24 +11887,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.8075562,
+					x: 14.8076172,
 					y: -14.6533279,
 					z: -0.100999355,
 				},
 				max: {
-					x: 17.6710815,
+					x: 17.6711426,
 					y: -13.6413288,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.8075562,
+					x: 14.8076172,
 					y: -14.6533279,
 					z: -0.100999355,
 				},
 				max: {
-					x: 17.6710815,
+					x: 17.6711426,
 					y: -13.6413288,
 					z: 0.0990004539,
 				},
@@ -11962,24 +11962,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.8075562,
+					x: 14.8076172,
 					y: -14.6533279,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 17.6710815,
+					x: 17.6711426,
 					y: -13.6413288,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.8075562,
+					x: 14.8076172,
 					y: -14.6533279,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 17.6710815,
+					x: 17.6711426,
 					y: -13.6413288,
 					z: 0.0999999046,
 				},
@@ -12099,24 +12099,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 17.6526489,
+					x: 17.65271,
 					y: -14.6303291,
 					z: -0.100999355,
 				},
 				max: {
-					x: 19.41217,
+					x: 19.4122314,
 					y: -11.1228294,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 17.6526489,
+					x: 17.65271,
 					y: -14.6303291,
 					z: -0.100999355,
 				},
 				max: {
-					x: 19.41217,
+					x: 19.4122314,
 					y: -11.1228294,
 					z: 0.0990004539,
 				},
@@ -12234,12 +12234,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 15.18811,
+							x: 15.1881714,
 							y: -11.7136927,
 							z: -2.52000046,
 						},
 						max: {
-							x: 17.4411621,
+							x: 17.4412231,
 							y: -11.2127638,
 							z: -2.52000046,
 						},
@@ -12390,24 +12390,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.835144,
+					x: 14.8352051,
 					y: -11.2044783,
 					z: -0.102998257,
 				},
 				max: {
-					x: 18.4691772,
+					x: 18.4692383,
 					y: -10.7559786,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.835144,
+					x: 14.8352051,
 					y: -11.2044783,
 					z: -0.102998257,
 				},
 				max: {
-					x: 18.4691772,
+					x: 18.4692383,
 					y: -10.7559786,
 					z: 0.09700155,
 				},
@@ -12514,24 +12514,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.045105,
+					x: 14.045166,
 					y: -10.9618292,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 14.8156128,
+					x: 14.8156738,
 					y: -5.476329,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.045105,
+					x: 14.045166,
 					y: -10.9618292,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 14.8156128,
+					x: 14.8156738,
 					y: -5.476329,
 					z: 0.0999999046,
 				},
@@ -12589,24 +12589,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.045105,
+					x: 14.045166,
 					y: -11.0572786,
 					z: -0.100999355,
 				},
 				max: {
-					x: 14.8156128,
+					x: 14.8156738,
 					y: -5.5717783,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.045105,
+					x: 14.045166,
 					y: -11.0572786,
 					z: -0.100999355,
 				},
 				max: {
-					x: 14.8156128,
+					x: 14.8156738,
 					y: -5.5717783,
 					z: 0.0990004539,
 				},
@@ -12681,24 +12681,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.045105,
+					x: 14.045166,
 					y: -11.0572786,
 					z: -0.101998806,
 				},
 				max: {
-					x: 14.8156128,
+					x: 14.8156738,
 					y: -5.5717783,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.045105,
+					x: 14.045166,
 					y: -11.0572786,
 					z: -0.101998806,
 				},
 				max: {
-					x: 14.8156128,
+					x: 14.8156738,
 					y: -5.5717783,
 					z: 0.098001,
 				},
@@ -12926,24 +12926,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 19.5552368,
+					x: 19.5552979,
 					y: -14.8956671,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 25.4317017,
+					x: 25.4317627,
 					y: -13.4926672,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 19.5552368,
+					x: 19.5552979,
 					y: -14.8956671,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 25.4317017,
+					x: 25.4317627,
 					y: -13.4926672,
 					z: 0.0999999046,
 				},
@@ -14071,24 +14071,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.8340454,
+					x: 14.8341064,
 					y: -13.6781273,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 17.6745,
+					x: 17.67456,
 					y: -13.0686283,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.8340454,
+					x: 14.8341064,
 					y: -13.6781273,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 17.6745,
+					x: 17.67456,
 					y: -13.0686283,
 					z: 0.0999999046,
 				},
@@ -14208,24 +14208,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.8063965,
+					x: 14.8064575,
 					y: -12.1233282,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 15.9564209,
+					x: 15.9564819,
 					y: -11.8358278,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.8063965,
+					x: 14.8064575,
 					y: -12.1233282,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 15.9564209,
+					x: 15.9564819,
 					y: -11.8358278,
 					z: 0.0999999046,
 				},
@@ -14407,24 +14407,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 20.7518921,
+					x: 20.7519531,
 					y: -9.041325,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 23.7418823,
+					x: 23.7419434,
 					y: -8.592825,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 20.7518921,
+					x: 20.7519531,
 					y: -9.041325,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 23.7418823,
+					x: 23.7419434,
 					y: -8.592825,
 					z: 0.100999355,
 				},
@@ -14518,24 +14518,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 19.8717041,
+					x: 19.8717651,
 					y: -9.972829,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 23.9082031,
+					x: 23.9082642,
 					y: -9.064328,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 19.8717041,
+					x: 19.8717651,
 					y: -9.972829,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 23.9082031,
+					x: 23.9082642,
 					y: -9.064328,
 					z: 0.0999999046,
 				},
@@ -14642,24 +14642,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 19.7905273,
+					x: 19.7905884,
 					y: -9.120679,
 					z: -0.100999355,
 				},
 				max: {
-					x: 20.75647,
+					x: 20.75653,
 					y: -7.936179,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 19.7905273,
+					x: 19.7905884,
 					y: -9.120679,
 					z: -0.100999355,
 				},
 				max: {
-					x: 20.75647,
+					x: 20.75653,
 					y: -7.936179,
 					z: 0.0990004539,
 				},
@@ -14779,24 +14779,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 18.57727,
+					x: 18.5773315,
 					y: -14.1059284,
 					z: 0.0,
 				},
 				max: {
-					x: 18.57727,
+					x: 18.5773315,
 					y: -14.1059284,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 18.57727,
+					x: 18.5773315,
 					y: -14.1059284,
 					z: 0.0,
 				},
 				max: {
-					x: 18.57727,
+					x: 18.5773315,
 					y: -14.1059284,
 					z: 0.0,
 				},
@@ -15229,7 +15229,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Wilds/Dock_03b_left/Next Area Left (5)/Area Name',
 					textKey: 'Map Zones.DOCKS',
 					position: {
-						x: 9.784363,
+						x: 9.784424,
 						y: -14.0668268,
 						z: -2.52000046,
 					},
@@ -15237,12 +15237,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 9.784363,
+							x: 9.784424,
 							y: -14.0668268,
 							z: -2.52000046,
 						},
 						max: {
-							x: 9.784363,
+							x: 9.784424,
 							y: -14.0668268,
 							z: -2.52000046,
 						},
@@ -15269,24 +15269,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 25.13385,
+					x: 25.1339111,
 					y: -16.5033684,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 29.1474,
+					x: 29.14746,
 					y: -14.1803675,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 25.13385,
+					x: 25.1339111,
 					y: -16.5033684,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 29.1474,
+					x: 29.14746,
 					y: -14.1803675,
 					z: 0.100999355,
 				},
@@ -15517,24 +15517,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.045105,
+					x: 14.045166,
 					y: -11.16883,
 					z: -0.101998806,
 				},
 				max: {
-					x: 14.8156128,
+					x: 14.8156738,
 					y: -5.68332958,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.045105,
+					x: 14.045166,
 					y: -11.16883,
 					z: -0.101998806,
 				},
 				max: {
-					x: 14.8156128,
+					x: 14.8156738,
 					y: -5.68332958,
 					z: 0.098001,
 				},
@@ -15896,24 +15896,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 17.0511475,
+					x: 17.0512085,
 					y: -3.58872414,
 					z: -0.00199890137,
 				},
 				max: {
-					x: 17.0511475,
+					x: 17.0512085,
 					y: -3.58872414,
 					z: -0.00199890137,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 17.0511475,
+					x: 17.0512085,
 					y: -3.58872414,
 					z: -0.00199890137,
 				},
 				max: {
-					x: 17.0511475,
+					x: 17.0512085,
 					y: -3.58872414,
 					z: -0.00199890137,
 				},
@@ -16020,24 +16020,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 7.37567139,
+					x: 7.37573242,
 					y: -6.0169487,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.583679,
+					x: 9.58374,
 					y: -3.45244884,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 7.37567139,
+					x: 7.37573242,
 					y: -6.0169487,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.583679,
+					x: 9.58374,
 					y: -3.45244884,
 					z: 0.0999999046,
 				},
@@ -16095,24 +16095,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 7.37567139,
+					x: 7.37573242,
 					y: -5.969888,
 					z: -0.100999355,
 				},
 				max: {
-					x: 9.583679,
+					x: 9.58374,
 					y: -2.84188843,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 7.37567139,
+					x: 7.37573242,
 					y: -5.969888,
 					z: -0.100999355,
 				},
 				max: {
-					x: 9.583679,
+					x: 9.58374,
 					y: -2.84188843,
 					z: 0.0990004539,
 				},
@@ -16147,7 +16147,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Greymoor/Greymoor_03_top/Next Area Right/Area Name',
 					textKey: 'Map Zones.DUSTPENS',
 					position: {
-						x: 12.75769,
+						x: 12.7577515,
 						y: -3.83433819,
 						z: -2.52000046,
 					},
@@ -16155,12 +16155,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 12.75769,
+							x: 12.7577515,
 							y: -3.83433819,
 							z: -2.52000046,
 						},
 						max: {
-							x: 12.75769,
+							x: 12.7577515,
 							y: -3.83433819,
 							z: -2.52000046,
 						},
@@ -16187,24 +16187,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 7.37567139,
+					x: 7.37573242,
 					y: -5.969888,
 					z: -0.101998806,
 				},
 				max: {
-					x: 9.583679,
+					x: 9.58374,
 					y: -2.84188843,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 7.37567139,
+					x: 7.37573242,
 					y: -5.969888,
 					z: -0.101998806,
 				},
 				max: {
-					x: 9.583679,
+					x: 9.58374,
 					y: -2.84188843,
 					z: 0.098001,
 				},
@@ -16523,24 +16523,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.692688,
+					x: 3.692749,
 					y: -7.290574,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 4.465515,
+					x: 4.465576,
 					y: -3.15057373,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.692688,
+					x: 3.692749,
 					y: -7.290574,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 4.465515,
+					x: 4.465576,
 					y: -3.15057373,
 					z: 0.0999999046,
 				},
@@ -16598,24 +16598,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.69384766,
+					x: 3.69390869,
 					y: -6.866229,
 					z: -0.101998806,
 				},
 				max: {
-					x: 4.46435547,
+					x: 4.4644165,
 					y: -2.71472931,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.69384766,
+					x: 3.69390869,
 					y: -6.866229,
 					z: -0.101998806,
 				},
 				max: {
-					x: 4.46435547,
+					x: 4.4644165,
 					y: -2.71472931,
 					z: 0.098001,
 				},
@@ -16660,24 +16660,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.69384766,
+					x: 3.69390869,
 					y: -6.866229,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 4.46435547,
+					x: 4.4644165,
 					y: -2.71472931,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.69384766,
+					x: 3.69390869,
 					y: -6.866229,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 4.46435547,
+					x: 4.4644165,
 					y: -2.71472931,
 					z: 0.100999355,
 				},
@@ -16722,24 +16722,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.75140381,
-					y: -3.35182428,
+					x: 3.75146484,
+					y: -3.35182476,
 					z: -0.104001522,
 				},
 				max: {
-					x: 4.4644165,
+					x: 4.46447754,
 					y: -2.69632435,
 					z: 0.09599829,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.75140381,
-					y: -3.35182428,
+					x: 3.75146484,
+					y: -3.35182476,
 					z: -0.104001522,
 				},
 				max: {
-					x: 4.4644165,
+					x: 4.46447754,
 					y: -2.69632435,
 					z: 0.09599829,
 				},
@@ -16774,7 +16774,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Greymoor/Greymoor_06_top_left/Next Area Up Wisp/Area Name',
 					textKey: 'Map Zones.WISP',
 					position: {
-						x: 3.791626,
+						x: 3.791687,
 						y: -1.12772846,
 						z: -2.52000046,
 					},
@@ -16782,12 +16782,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 3.791626,
+							x: 3.791687,
 							y: -1.12772846,
 							z: -2.52000046,
 						},
 						max: {
-							x: 3.791626,
+							x: 3.791687,
 							y: -1.12772846,
 							z: -2.52000046,
 						},
@@ -16814,24 +16814,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.25262451,
+					x: 2.25268555,
 					y: -6.9340744,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.6930542,
+					x: 3.69311523,
 					y: -5.025074,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.25262451,
+					x: 2.25268555,
 					y: -6.9340744,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.6930542,
+					x: 3.69311523,
 					y: -5.025074,
 					z: 0.0999999046,
 				},
@@ -16994,24 +16994,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 4.46344,
+					x: 4.463501,
 					y: -5.083724,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.595154,
+					x: 6.595215,
 					y: -4.658224,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 4.46344,
+					x: 4.463501,
 					y: -5.083724,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.595154,
+					x: 6.595215,
 					y: -4.658224,
 					z: 0.0999999046,
 				},
@@ -17317,24 +17317,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 17.1972046,
+					x: 17.1972656,
 					y: -6.362524,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.80719,
+					x: 18.807251,
 					y: -4.741024,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 17.1972046,
+					x: 17.1972656,
 					y: -6.362524,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.80719,
+					x: 18.807251,
 					y: -4.741024,
 					z: 0.0999999046,
 				},
@@ -17392,24 +17392,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 17.1972046,
+					x: 17.1972656,
 					y: -6.36022425,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.80719,
+					x: 18.807251,
 					y: -4.738724,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 17.1972046,
+					x: 17.1972656,
 					y: -6.36022425,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.80719,
+					x: 18.807251,
 					y: -4.738724,
 					z: 0.0999999046,
 				},
@@ -17529,24 +17529,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 17.32251,
+					x: 17.32257,
 					y: -6.314224,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 21.45105,
+					x: 21.45111,
 					y: -3.657724,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 17.32251,
+					x: 17.32257,
 					y: -6.314224,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 21.45105,
+					x: 21.45111,
 					y: -3.657724,
 					z: 0.0999999046,
 				},
@@ -17634,24 +17634,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 17.32251,
+					x: 17.32257,
 					y: -6.314224,
 					z: -0.102998257,
 				},
 				max: {
-					x: 21.45105,
+					x: 21.45111,
 					y: -3.657724,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 17.32251,
+					x: 17.32257,
 					y: -6.314224,
 					z: -0.102998257,
 				},
 				max: {
-					x: 21.45105,
+					x: 21.45111,
 					y: -3.657724,
 					z: 0.09700155,
 				},
@@ -17728,7 +17728,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Greymoor/Greymoor_15b_bot_right/Next Area Right/Next Area Right Clover JP/Area Name',
 					textKey: 'Map Zones.CLOVER',
 					position: {
-						x: 21.8408813,
+						x: 21.8409424,
 						y: -6.41887569,
 						z: -2.52299881,
 					},
@@ -17797,24 +17797,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 18.80719,
+					x: 18.807251,
 					y: -6.28317833,
 					z: -0.100999355,
 				},
 				max: {
-					x: 21.3026733,
+					x: 21.3027344,
 					y: -3.68417835,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 18.80719,
+					x: 18.807251,
 					y: -6.28317833,
 					z: -0.100999355,
 				},
 				max: {
-					x: 21.3026733,
+					x: 21.3027344,
 					y: -3.68417835,
 					z: 0.0990004539,
 				},
@@ -17973,7 +17973,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Greymoor/Greymoor_17/Next Area Up (3)/Area Name',
 					textKey: 'Map Zones.DUSTPENS',
 					position: {
-						x: 17.8630371,
+						x: 17.8630981,
 						y: -1.25307369,
 						z: -2.52000046,
 					},
@@ -17981,12 +17981,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 17.8630371,
+							x: 17.8630981,
 							y: -1.25307369,
 							z: -2.52000046,
 						},
 						max: {
-							x: 17.8630371,
+							x: 17.8630981,
 							y: -1.25307369,
 							z: -2.52000046,
 						},
@@ -18849,24 +18849,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.431885,
+					x: 8.431946,
 					y: -6.215324,
 					z: 0.0,
 				},
 				max: {
-					x: 8.431885,
+					x: 8.431946,
 					y: -6.215324,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.431885,
+					x: 8.431946,
 					y: -6.215324,
 					z: 0.0,
 				},
 				max: {
-					x: 8.431885,
+					x: 8.431946,
 					y: -6.215324,
 					z: 0.0,
 				},
@@ -18942,24 +18942,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.17865,
+					x: 9.178711,
 					y: -4.062068,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 12.12262,
+					x: 12.1226807,
 					y: -3.56756783,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.17865,
+					x: 9.178711,
 					y: -4.062068,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 12.12262,
+					x: 12.1226807,
 					y: -3.56756783,
 					z: 0.0999999046,
 				},
@@ -19048,24 +19048,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 12.1213379,
-					y: -4.12023449,
+					y: -4.12023544,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 12.9188232,
-					y: -1.61323452,
+					y: -1.61323547,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 12.1213379,
-					y: -4.12023449,
+					y: -4.12023544,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 12.9188232,
-					y: -1.61323452,
+					y: -1.61323547,
 					z: 0.0999999046,
 				},
 			},
@@ -19197,24 +19197,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.69635,
+					x: 14.6964111,
 					y: -4.64741755,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 15.5933228,
+					x: 15.5933838,
 					y: -4.014918,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.69635,
+					x: 14.6964111,
 					y: -4.64741755,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 15.5933228,
+					x: 15.5933838,
 					y: -4.014918,
 					z: 0.0999999046,
 				},
@@ -19265,7 +19265,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: 14.8718872,
-					y: -1.68271732,
+					y: -1.68271828,
 					z: 0.0999999046,
 				},
 			},
@@ -19277,7 +19277,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: 14.8718872,
-					y: -1.68271732,
+					y: -1.68271828,
 					z: 0.0999999046,
 				},
 			},
@@ -19334,24 +19334,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.501038,
+					x: 9.501099,
 					y: -1.628931,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 16.1365356,
+					x: 16.1365967,
 					y: -1.09993172,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.501038,
+					x: 9.501099,
 					y: -1.628931,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 16.1365356,
+					x: 16.1365967,
 					y: -1.09993172,
 					z: 0.0999999046,
 				},
@@ -19501,25 +19501,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 16.1270752,
-					y: -3.10064459,
+					x: 16.1271362,
+					y: -3.100645,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 16.8515625,
-					y: 0.349354744,
+					x: 16.8516235,
+					y: 0.3493557,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 16.1270752,
-					y: -3.10064459,
+					x: 16.1271362,
+					y: -3.100645,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 16.8515625,
-					y: 0.349354744,
+					x: 16.8516235,
+					y: 0.3493557,
 					z: 0.0999999046,
 				},
 			},
@@ -19576,25 +19576,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 16.1270752,
-					y: -3.10064459,
+					x: 16.1271362,
+					y: -3.100645,
 					z: -0.100999355,
 				},
 				max: {
-					x: 16.8515625,
-					y: 0.349354744,
+					x: 16.8516235,
+					y: 0.3493557,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 16.1270752,
-					y: -3.10064459,
+					x: 16.1271362,
+					y: -3.100645,
 					z: -0.100999355,
 				},
 				max: {
-					x: 16.8515625,
-					y: 0.349354744,
+					x: 16.8516235,
+					y: 0.3493557,
 					z: 0.0990004539,
 				},
 			},
@@ -19638,24 +19638,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.17749,
+					x: 9.177551,
 					y: -3.4077177,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 12.12146,
+					x: 12.121521,
 					y: -1.92421818,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.17749,
+					x: 9.177551,
 					y: -3.4077177,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 12.12146,
+					x: 12.121521,
 					y: -1.92421818,
 					z: 0.0999999046,
 				},
@@ -19775,24 +19775,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 16.85138,
+					x: 16.85144,
 					y: -3.246718,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 19.4083862,
+					x: 19.4084473,
 					y: -2.48771763,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 16.85138,
+					x: 16.85144,
 					y: -3.246718,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 19.4083862,
+					x: 19.4084473,
 					y: -2.48771763,
 					z: 0.0999999046,
 				},
@@ -19974,24 +19974,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 18.0267334,
+					x: 18.0267944,
 					y: -3.108718,
 					z: -0.00199890137,
 				},
 				max: {
-					x: 18.0267334,
+					x: 18.0267944,
 					y: -3.108718,
 					z: -0.00199890137,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 18.0267334,
+					x: 18.0267944,
 					y: -3.108718,
 					z: -0.00199890137,
 				},
 				max: {
-					x: 18.0267334,
+					x: 18.0267944,
 					y: -3.108718,
 					z: -0.00199890137,
 				},
@@ -20066,24 +20066,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 16.85144,
+					x: 16.8515015,
 					y: -2.215168,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 17.5644531,
+					x: 17.5645142,
 					y: -1.847168,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 16.85144,
+					x: 16.8515015,
 					y: -2.215168,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 17.5644531,
+					x: 17.5645142,
 					y: -1.847168,
 					z: 0.0999999046,
 				},
@@ -20141,24 +20141,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.7455444,
+					x: 14.7456055,
 					y: -3.30536747,
 					z: -0.102300167,
 				},
 				max: {
-					x: 16.1398315,
+					x: 16.1398926,
 					y: -1.78736782,
 					z: 0.09769964,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.7455444,
+					x: 14.7456055,
 					y: -3.30536747,
 					z: -0.102300167,
 				},
 				max: {
-					x: 16.1398315,
+					x: 16.1398926,
 					y: -1.78736782,
 					z: 0.09769964,
 				},
@@ -20265,24 +20265,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.514099,
+					x: 9.51416,
 					y: -1.3885479,
 					z: -0.100999355,
 				},
 				max: {
-					x: 10.1925659,
+					x: 10.192627,
 					y: -1.07804871,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.514099,
+					x: 9.51416,
 					y: -1.3885479,
 					z: -0.100999355,
 				},
 				max: {
-					x: 10.1925659,
+					x: 10.192627,
 					y: -1.07804871,
 					z: 0.0990004539,
 				},
@@ -20327,25 +20327,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 16.1270752,
-					y: -3.10064459,
+					x: 16.1271362,
+					y: -3.100645,
 					z: -0.100999355,
 				},
 				max: {
-					x: 16.8515625,
-					y: 0.349354744,
+					x: 16.8516235,
+					y: 0.3493557,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 16.1270752,
-					y: -3.10064459,
+					x: 16.1271362,
+					y: -3.100645,
 					z: -0.100999355,
 				},
 				max: {
-					x: 16.8515625,
-					y: 0.349354744,
+					x: 16.8516235,
+					y: 0.3493557,
 					z: 0.0990004539,
 				},
 			},
@@ -20379,7 +20379,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Dust/Dust_06_right/Next Area Right (8)/Area Name',
 					textKey: 'Map Zones.SWAMP',
 					position: {
-						x: 20.3911133,
+						x: 20.3911743,
 						y: -1.3595686,
 						z: -2.52000046,
 					},
@@ -20387,12 +20387,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 20.3911133,
+							x: 20.3911743,
 							y: -1.3595686,
 							z: -2.52000046,
 						},
 						max: {
-							x: 20.3911133,
+							x: 20.3911743,
 							y: -1.3595686,
 							z: -2.52000046,
 						},
@@ -20419,25 +20419,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 14.4628906,
-					y: -2.02541828,
+					x: 14.4629517,
+					y: -2.02541733,
 					z: 0.0,
 				},
 				max: {
-					x: 14.4628906,
-					y: -2.02541828,
+					x: 14.4629517,
+					y: -2.02541733,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 14.4628906,
-					y: -2.02541828,
+					x: 14.4629517,
+					y: -2.02541733,
 					z: 0.0,
 				},
 				max: {
-					x: 14.4628906,
-					y: -2.02541828,
+					x: 14.4629517,
+					y: -2.02541733,
 					z: 0.0,
 				},
 			},
@@ -20566,24 +20566,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.1615,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.1615,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.1615,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.1615,
 					z: 0.0,
 				},
@@ -20615,24 +20615,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
@@ -20664,24 +20664,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
@@ -20713,24 +20713,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
@@ -20762,24 +20762,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
@@ -20811,24 +20811,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
@@ -20860,24 +20860,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
@@ -20909,24 +20909,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
@@ -20958,24 +20958,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
@@ -21007,24 +21007,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
 				max: {
-					x: 8.245483,
+					x: 8.245544,
 					y: -1.16150475,
 					z: 0.0,
 				},
@@ -21208,12 +21208,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 2.68096924,
-							y: -2.426385,
+							y: -2.426384,
 							z: -2.52000046,
 						},
 						max: {
 							x: 5.00787354,
-							y: -2.05932713,
+							y: -2.05932617,
 							z: -2.52000046,
 						},
 					},
@@ -21239,24 +21239,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 1.29498291,
+					x: 1.295044,
 					y: -2.39688778,
 					z: -0.100999355,
 				},
 				max: {
-					x: 2.29547119,
+					x: 2.29553223,
 					y: -1.11291218,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 1.29498291,
+					x: 1.295044,
 					y: -2.39688778,
 					z: -0.100999355,
 				},
 				max: {
-					x: 2.29547119,
+					x: 2.29553223,
 					y: -1.11291218,
 					z: 0.0990004539,
 				},
@@ -21579,24 +21579,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.512146,
+					x: 9.512207,
 					y: -0.2682209,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 12.7896118,
+					x: 12.7896729,
 					y: 0.766778946,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.512146,
+					x: 9.512207,
 					y: -0.2682209,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 12.7896118,
+					x: 12.7896729,
 					y: 0.766778946,
 					z: 0.0999999046,
 				},
@@ -21671,24 +21671,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.368408,
+					x: 9.368469,
 					y: -0.2682209,
 					z: -0.100999355,
 				},
 				max: {
-					x: 12.93335,
+					x: 12.9334106,
 					y: 0.766778946,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.368408,
+					x: 9.368469,
 					y: -0.2682209,
 					z: -0.100999355,
 				},
 				max: {
-					x: 12.93335,
+					x: 12.9334106,
 					y: 0.766778946,
 					z: 0.0990004539,
 				},
@@ -21825,24 +21825,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.512146,
+					x: 9.512207,
 					y: -0.268219,
 					z: -0.101998806,
 				},
 				max: {
-					x: 12.7896118,
+					x: 12.7896729,
 					y: 0.766780853,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.512146,
+					x: 9.512207,
 					y: -0.268219,
 					z: -0.101998806,
 				},
 				max: {
-					x: 12.7896118,
+					x: 12.7896729,
 					y: 0.766780853,
 					z: 0.098001,
 				},
@@ -21888,24 +21888,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 16.7377319,
-					y: 4.55602932,
+					y: 4.55602837,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 18.0602417,
-					y: 7.994529,
+					y: 7.994528,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 16.7377319,
-					y: 4.55602932,
+					y: 4.55602837,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 18.0602417,
-					y: 7.994529,
+					y: 7.994528,
 					z: 0.0999999046,
 				},
 			},
@@ -21953,7 +21953,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.AQUEDUCT',
 					position: {
 						x: 14.1350708,
-						y: 8.349877,
+						y: 8.349878,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -21961,12 +21961,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 14.1350708,
-							y: 8.349877,
+							y: 8.349878,
 							z: -2.52000046,
 						},
 						max: {
 							x: 14.1350708,
-							y: 8.349877,
+							y: 8.349878,
 							z: -2.52000046,
 						},
 					},
@@ -21993,24 +21993,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 16.7377319,
-					y: 4.55832767,
+					y: 4.55832863,
 					z: -0.100999355,
 				},
 				max: {
 					x: 18.0602417,
-					y: 7.996827,
+					y: 7.996828,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 16.7377319,
-					y: 4.55832767,
+					y: 4.55832863,
 					z: -0.100999355,
 				},
 				max: {
 					x: 18.0602417,
-					y: 7.996827,
+					y: 7.996828,
 					z: 0.0990004539,
 				},
 			},
@@ -22054,24 +22054,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 16.7374878,
+					x: 16.7375488,
 					y: 0.314828873,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.0485229,
+					x: 18.048584,
 					y: 4.27082825,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 16.7374878,
+					x: 16.7375488,
 					y: 0.314828873,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.0485229,
+					x: 18.048584,
 					y: 4.27082825,
 					z: 0.0999999046,
 				},
@@ -22482,7 +22482,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.DUSTPENS',
 					position: {
 						x: 13.2266846,
-						y: -1.365325,
+						y: -1.365324,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -22490,12 +22490,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 13.2266846,
-							y: -1.365325,
+							y: -1.365324,
 							z: -2.52000046,
 						},
 						max: {
 							x: 13.2266846,
-							y: -1.365325,
+							y: -1.365324,
 							z: -2.52000046,
 						},
 					},
@@ -22521,25 +22521,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 22.6853027,
-					y: 4.68482876,
+					x: 22.6853638,
+					y: 4.684828,
 					z: -0.100999355,
 				},
 				max: {
-					x: 24.2952881,
-					y: 5.75432873,
+					x: 24.29535,
+					y: 5.754328,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 22.6853027,
-					y: 4.68482876,
+					x: 22.6853638,
+					y: 4.684828,
 					z: -0.100999355,
 				},
 				max: {
-					x: 24.2952881,
-					y: 5.75432873,
+					x: 24.29535,
+					y: 5.754328,
 					z: 0.0990004539,
 				},
 			},
@@ -22583,25 +22583,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 22.6853027,
-					y: 4.68482876,
+					x: 22.6853638,
+					y: 4.684828,
 					z: -0.101998806,
 				},
 				max: {
-					x: 24.2952881,
-					y: 5.75432873,
+					x: 24.29535,
+					y: 5.754328,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 22.6853027,
-					y: 4.68482876,
+					x: 22.6853638,
+					y: 4.684828,
 					z: -0.101998806,
 				},
 				max: {
-					x: 24.2952881,
-					y: 5.75432873,
+					x: 24.29535,
+					y: 5.754328,
 					z: 0.098001,
 				},
 			},
@@ -22721,24 +22721,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 21.1420288,
-					y: -0.996171,
+					y: -0.996170044,
 					z: -0.100099087,
 				},
 				max: {
 					x: 23.8445435,
-					y: 0.71733,
+					y: 0.717329,
 					z: 0.09990072,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 21.1420288,
-					y: -0.996171,
+					y: -0.996170044,
 					z: -0.100099087,
 				},
 				max: {
 					x: 23.8445435,
-					y: 0.71733,
+					y: 0.717329,
 					z: 0.09990072,
 				},
 			},
@@ -22783,24 +22783,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 20.37384,
-					y: 5.754327,
+					y: 5.754328,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 24.34137,
-					y: 6.93882847,
+					y: 6.93882942,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 20.37384,
-					y: 5.754327,
+					y: 5.754328,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 24.34137,
-					y: 6.93882847,
+					y: 6.93882942,
 					z: 0.0999999046,
 				},
 			},
@@ -22845,24 +22845,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 20.37384,
-					y: 5.754327,
+					y: 5.754328,
 					z: -0.100999355,
 				},
 				max: {
 					x: 24.34137,
-					y: 6.93882847,
+					y: 6.93882942,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 20.37384,
-					y: 5.754327,
+					y: 5.754328,
 					z: -0.100999355,
 				},
 				max: {
 					x: 24.34137,
-					y: 6.93882847,
+					y: 6.93882942,
 					z: 0.0990004539,
 				},
 			},
@@ -22907,24 +22907,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 21.7400513,
-					y: 6.159127,
+					y: 6.159128,
 					z: -0.100999355,
 				},
 				max: {
 					x: 22.8440552,
-					y: 6.65362644,
+					y: 6.6536274,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 21.7400513,
-					y: 6.159127,
+					y: 6.159128,
 					z: -0.100999355,
 				},
 				max: {
 					x: 22.8440552,
-					y: 6.65362644,
+					y: 6.6536274,
 					z: 0.0990004539,
 				},
 			},
@@ -22969,24 +22969,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 18.5948486,
-					y: 2.599763,
+					y: 2.59976387,
 					z: -0.100999355,
 				},
 				max: {
 					x: 19.3330078,
-					y: 4.830764,
+					y: 4.830763,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 18.5948486,
-					y: 2.599763,
+					y: 2.59976387,
 					z: -0.100999355,
 				},
 				max: {
 					x: 19.3330078,
-					y: 4.830764,
+					y: 4.830763,
 					z: 0.0990004539,
 				},
 			},
@@ -23093,24 +23093,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 20.25653,
-					y: 6.96297932,
+					y: 6.96297836,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 24.33905,
-					y: 7.80247974,
+					y: 7.802479,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 20.25653,
-					y: 6.96297932,
+					y: 6.96297836,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 24.33905,
-					y: 7.80247974,
+					y: 7.802479,
 					z: 0.0999999046,
 				},
 			},
@@ -23155,24 +23155,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 19.3265381,
-					y: 3.24261475,
+					y: 3.24261379,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 24.69629,
-					y: 4.36961555,
+					y: 4.3696146,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 19.3265381,
-					y: 3.24261475,
+					y: 3.24261379,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 24.69629,
-					y: 4.36961555,
+					y: 4.3696146,
 					z: 0.0999999046,
 				},
 			},
@@ -23217,24 +23217,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 16.1188354,
-					y: 3.926979,
+					y: 3.926978,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 16.7398071,
-					y: 5.44497967,
+					y: 5.44497871,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 16.1188354,
-					y: 3.926979,
+					y: 3.926978,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 16.7398071,
-					y: 5.44497967,
+					y: 5.44497871,
 					z: 0.0999999046,
 				},
 			},
@@ -23291,25 +23291,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 18.0531,
-					y: 5.43118,
+					x: 18.0531616,
+					y: 5.431179,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 20.3760986,
-					y: 6.38567829,
+					x: 20.37616,
+					y: 6.38567734,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 18.0531,
-					y: 5.43118,
+					x: 18.0531616,
+					y: 5.431179,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 20.3760986,
-					y: 6.38567829,
+					x: 20.37616,
+					y: 6.38567734,
 					z: 0.0999999046,
 				},
 			},
@@ -23354,24 +23354,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 16.1395264,
-					y: 5.53352833,
+					y: 5.53352928,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 16.7375488,
-					y: 6.833028,
+					y: 6.833029,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 16.1395264,
-					y: 5.53352833,
+					y: 5.53352928,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 16.7375488,
-					y: 6.833028,
+					y: 6.833029,
 					z: 0.0999999046,
 				},
 			},
@@ -23429,24 +23429,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 16.03601,
-					y: 5.556529,
+					y: 5.55653,
 					z: -0.100999355,
 				},
 				max: {
 					x: 17.12854,
-					y: 6.52252865,
+					y: 6.5225296,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 16.03601,
-					y: 5.556529,
+					y: 5.55653,
 					z: -0.100999355,
 				},
 				max: {
 					x: 17.12854,
-					y: 6.52252865,
+					y: 6.5225296,
 					z: 0.0990004539,
 				},
 			},
@@ -23490,25 +23490,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 18.05896,
-					y: 6.95101833,
+					x: 18.059021,
+					y: 6.95101738,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 20.2598877,
-					y: 7.80202,
+					x: 20.2599487,
+					y: 7.802019,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 18.05896,
-					y: 6.95101833,
+					x: 18.059021,
+					y: 6.95101738,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 20.2598877,
-					y: 7.80202,
+					x: 20.2599487,
+					y: 7.802019,
 					z: 0.0999999046,
 				},
 			},
@@ -23543,7 +23543,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.MUCKVILLAGE',
 					position: {
 						x: 19.2020874,
-						y: 10.5298185,
+						y: 10.5298176,
 						z: -2.52000046,
 					},
 					fontSize: 4,
@@ -23551,12 +23551,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 18.4181519,
-							y: 6.526082,
+							y: 6.526083,
 							z: -2.52000046,
 						},
 						max: {
 							x: 19.9816284,
-							y: 7.04019642,
+							y: 7.04019356,
 							z: -2.52000046,
 						},
 					},
@@ -23582,25 +23582,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 19.1594238,
-					y: 7.37686443,
+					x: 19.1594849,
+					y: 7.37686348,
 					z: -0.0009994507,
 				},
 				max: {
-					x: 19.1594238,
-					y: 7.37686443,
+					x: 19.1594849,
+					y: 7.37686348,
 					z: -0.0009994507,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 19.1594238,
-					y: 7.37686443,
+					x: 19.1594849,
+					y: 7.37686348,
 					z: -0.0009994507,
 				},
 				max: {
-					x: 19.1594238,
-					y: 7.37686443,
+					x: 19.1594849,
+					y: 7.37686348,
 					z: -0.0009994507,
 				},
 			},
@@ -23645,24 +23645,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 18.82019,
-					y: 7.261979,
+					y: 7.261978,
 					z: -0.0009994507,
 				},
 				max: {
 					x: 18.82019,
-					y: 7.261979,
+					y: 7.261978,
 					z: -0.0009994507,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 18.82019,
-					y: 7.261979,
+					y: 7.261978,
 					z: -0.0009994507,
 				},
 				max: {
 					x: 18.82019,
-					y: 7.261979,
+					y: 7.261978,
 					z: -0.0009994507,
 				},
 			},
@@ -23693,25 +23693,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 24.33783,
-					y: 5.85897732,
+					x: 24.33789,
+					y: 5.85897827,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 25.98236,
-					y: 7.744979,
+					x: 25.9824219,
+					y: 7.74498,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 24.33783,
-					y: 5.85897732,
+					x: 24.33789,
+					y: 5.85897827,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 25.98236,
-					y: 7.744979,
+					x: 25.9824219,
+					y: 7.74498,
 					z: 0.0999999046,
 				},
 			},
@@ -23755,24 +23755,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 11.9074707,
+					x: 11.9075317,
 					y: 1.51197815,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 16.1970215,
+					x: 16.1970825,
 					y: 2.71947861,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 11.9074707,
+					x: 11.9075317,
 					y: 1.51197815,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 16.1970215,
+					x: 16.1970825,
 					y: 2.71947861,
 					z: 0.0999999046,
 				},
@@ -23880,24 +23880,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 13.4508057,
-					y: 1.52577877,
+					y: 1.52577782,
 					z: -0.101499081,
 				},
 				max: {
 					x: 16.3718262,
-					y: 2.73327923,
+					y: 2.73327827,
 					z: 0.09850073,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 13.4508057,
-					y: 1.52577877,
+					y: 1.52577782,
 					z: -0.101499081,
 				},
 				max: {
 					x: 16.3718262,
-					y: 2.73327923,
+					y: 2.73327827,
 					z: 0.09850073,
 				},
 			},
@@ -24141,24 +24141,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 14.2213135,
-					y: 2.730979,
+					y: 2.730978,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 15.4173584,
-					y: 4.593978,
+					y: 4.593979,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 14.2213135,
-					y: 2.730979,
+					y: 2.730978,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 15.4173584,
-					y: 4.593978,
+					y: 4.593979,
 					z: 0.0999999046,
 				},
 			},
@@ -24193,7 +24193,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.LIBRARY',
 					position: {
 						x: 13.088562,
-						y: 6.75367832,
+						y: 6.75367928,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -24201,12 +24201,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 13.088562,
-							y: 6.75367832,
+							y: 6.75367928,
 							z: -2.52000046,
 						},
 						max: {
 							x: 13.088562,
-							y: 6.75367832,
+							y: 6.75367928,
 							z: -2.52000046,
 						},
 					},
@@ -24308,24 +24308,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 23.3983154,
-					y: 7.203328,
+					y: 7.203329,
 					z: -0.101998806,
 				},
 				max: {
 					x: 28.97583,
-					y: 7.80132771,
+					y: 7.80132866,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 23.3983154,
-					y: 7.203328,
+					y: 7.203329,
 					z: -0.101998806,
 				},
 				max: {
 					x: 28.97583,
-					y: 7.80132771,
+					y: 7.80132866,
 					z: 0.098001,
 				},
 			},
@@ -24370,24 +24370,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 25.9800415,
-					y: 5.858979,
+					y: 5.85897827,
 					z: -0.100999355,
 				},
 				max: {
 					x: 26.56659,
-					y: 6.583478,
+					y: 6.583477,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 25.9800415,
-					y: 5.858979,
+					y: 5.85897827,
 					z: -0.100999355,
 				},
 				max: {
 					x: 26.56659,
-					y: 6.583478,
+					y: 6.583477,
 					z: 0.0990004539,
 				},
 			},
@@ -24431,25 +24431,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 18.0485229,
+					x: 18.048584,
 					y: 2.84482861,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.68097,
-					y: 5.16782856,
+					x: 18.68103,
+					y: 5.16782951,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 18.0485229,
+					x: 18.048584,
 					y: 2.84482861,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.68097,
-					y: 5.16782856,
+					x: 18.68103,
+					y: 5.16782951,
 					z: 0.0999999046,
 				},
 			},
@@ -24506,25 +24506,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 18.67987,
-					y: 4.696328,
+					x: 18.6799316,
+					y: 4.696327,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 22.6243286,
-					y: 5.20232868,
+					x: 22.62439,
+					y: 5.20232773,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 18.67987,
-					y: 4.696328,
+					x: 18.6799316,
+					y: 4.696327,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 22.6243286,
-					y: 5.20232868,
+					x: 22.62439,
+					y: 5.20232773,
 					z: 0.0999999046,
 				},
 			},
@@ -24581,25 +24581,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 18.61084,
-					y: 4.696328,
+					x: 18.6109,
+					y: 4.696327,
 					z: -0.100999355,
 				},
 				max: {
-					x: 22.69336,
-					y: 5.20232868,
+					x: 22.69342,
+					y: 5.20232773,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 18.61084,
-					y: 4.696328,
+					x: 18.6109,
+					y: 4.696327,
 					z: -0.100999355,
 				},
 				max: {
-					x: 22.69336,
-					y: 5.20232868,
+					x: 22.69342,
+					y: 5.20232773,
 					z: 0.0990004539,
 				},
 			},
@@ -24718,24 +24718,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 11.5843506,
+					x: 11.5844116,
 					y: 0.181428909,
 					z: -0.0009994507,
 				},
 				max: {
-					x: 11.5843506,
+					x: 11.5844116,
 					y: 0.181428909,
 					z: -0.0009994507,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 11.5843506,
+					x: 11.5844116,
 					y: 0.181428909,
 					z: -0.0009994507,
 				},
 				max: {
-					x: 11.5843506,
+					x: 11.5844116,
 					y: 0.181428909,
 					z: -0.0009994507,
 				},
@@ -24765,13 +24765,13 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 10.3320923,
-							y: -0.798434258,
+							x: 10.3321533,
+							y: -0.7984352,
 							z: -2.52000046,
 						},
 						max: {
-							x: 12.7581177,
-							y: -0.2843237,
+							x: 12.7581787,
+							y: -0.284324646,
 							z: -2.52000046,
 						},
 					},
@@ -24922,24 +24922,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 13.0410156,
-					y: 9.844001,
+					y: 9.844002,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 17.9515381,
-					y: 10.603,
+					y: 10.6030006,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 13.0410156,
-					y: 9.844001,
+					y: 9.844002,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 17.9515381,
-					y: 10.603,
+					y: 10.6030006,
 					z: 0.0999999046,
 				},
 			},
@@ -24986,8 +24986,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Aqueduct/Aqueduct_01/Next Area Left (2)/Area Name',
 					textKey: 'Map Zones.ARBORIUM',
 					position: {
-						x: 12.7017212,
-						y: 8.671004,
+						x: 12.7017822,
+						y: 8.671003,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -25026,25 +25026,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 17.9503174,
-					y: 8.360499,
+					x: 17.9503784,
+					y: 8.3605,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.5598145,
-					y: 10.614501,
+					x: 18.5598755,
+					y: 10.614502,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 17.9503174,
-					y: 8.360499,
+					x: 17.9503784,
+					y: 8.3605,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 18.5598145,
-					y: 10.614501,
+					x: 18.5598755,
+					y: 10.614502,
 					z: 0.0999999046,
 				},
 			},
@@ -25101,25 +25101,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 17.9503174,
-					y: 8.353599,
+					x: 17.9503784,
+					y: 8.3536,
 					z: -0.100999355,
 				},
 				max: {
-					x: 18.5598145,
-					y: 10.6076,
+					x: 18.5598755,
+					y: 10.6076012,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 17.9503174,
-					y: 8.353599,
+					x: 17.9503784,
+					y: 8.3536,
 					z: -0.100999355,
 				},
 				max: {
-					x: 18.5598145,
-					y: 10.6076,
+					x: 18.5598755,
+					y: 10.6076012,
 					z: 0.0990004539,
 				},
 			},
@@ -25177,24 +25177,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 18.5598145,
-					y: 8.280002,
+					y: 8.280001,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 23.619873,
-					y: 9.03900051,
+					y: 9.039,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 18.5598145,
-					y: 8.280002,
+					y: 8.280001,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 23.619873,
-					y: 9.03900051,
+					y: 9.039,
 					z: 0.0999999046,
 				},
 			},
@@ -25252,24 +25252,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 14.7131348,
-					y: 8.0799,
+					y: 8.079901,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 17.9331055,
-					y: 9.057401,
+					y: 9.057402,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 14.7131348,
-					y: 8.0799,
+					y: 8.079901,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 17.9331055,
-					y: 9.057401,
+					y: 9.057402,
 					z: 0.0999999046,
 				},
 			},
@@ -25314,24 +25314,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 17.1048584,
-					y: 7.991349,
+					y: 7.99135,
 					z: -0.101998806,
 				},
 				max: {
 					x: 17.5303955,
-					y: 8.33635,
+					y: 8.336351,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 17.1048584,
-					y: 7.991349,
+					y: 7.99135,
 					z: -0.101998806,
 				},
 				max: {
 					x: 17.5303955,
-					y: 8.33635,
+					y: 8.336351,
 					z: 0.098001,
 				},
 			},
@@ -25366,7 +25366,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.SWAMP',
 					position: {
 						x: 20.47461,
-						y: 7.63485432,
+						y: 7.63485336,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -25374,12 +25374,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 20.47461,
-							y: 7.63485432,
+							y: 7.63485336,
 							z: -2.52000046,
 						},
 						max: {
 							x: 20.47461,
-							y: 7.63485432,
+							y: 7.63485336,
 							z: -2.52000046,
 						},
 					},
@@ -25406,24 +25406,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 17.4579468,
-					y: 8.337504,
+					y: 8.337505,
 					z: -0.100999355,
 				},
 				max: {
 					x: 17.9524536,
-					y: 8.602004,
+					y: 8.602005,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 17.4579468,
-					y: 8.337504,
+					y: 8.337505,
 					z: -0.100999355,
 				},
 				max: {
 					x: 17.9524536,
-					y: 8.602004,
+					y: 8.602005,
 					z: 0.0990004539,
 				},
 			},
@@ -25467,25 +25467,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 23.4047852,
-					y: 8.208699,
+					x: 23.4048462,
+					y: 8.2087,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 29.7182617,
-					y: 10.1061983,
+					x: 29.7183228,
+					y: 10.1061993,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 23.4047852,
-					y: 8.208699,
+					x: 23.4048462,
+					y: 8.2087,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 29.7182617,
-					y: 10.1061983,
+					x: 29.7183228,
+					y: 10.1061993,
 					z: 0.0999999046,
 				},
 			},
@@ -25520,7 +25520,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.WHITELAKE',
 					position: {
 						x: 27.1825562,
-						y: 12.14745,
+						y: 12.1474495,
 						z: -2.52000046,
 					},
 					fontSize: 4,
@@ -25528,12 +25528,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 27.1825562,
-							y: 12.14745,
+							y: 12.1474495,
 							z: -2.52000046,
 						},
 						max: {
 							x: 27.1825562,
-							y: 12.14745,
+							y: 12.1474495,
 							z: -2.52000046,
 						},
 					},
@@ -25548,8 +25548,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Aqueduct/Aqueduct_05/Area Name Sub Fleatopia',
 					textKey: 'Map Zones.FLEATOPIA',
 					position: {
-						x: 25.684082,
-						y: 10.3603449,
+						x: 25.6841431,
+						y: 10.3603458,
 						z: -2.521,
 					},
 					fontSize: 4,
@@ -25557,12 +25557,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 24.9458618,
-							y: 7.739541,
+							y: 7.739542,
 							z: -2.521,
 						},
 						max: {
 							x: 26.4179077,
-							y: 8.253652,
+							y: 8.253653,
 							z: -2.521,
 						},
 					},
@@ -25588,25 +25588,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 23.4047852,
-					y: 8.208699,
+					x: 23.4048462,
+					y: 8.2087,
 					z: -0.100999355,
 				},
 				max: {
-					x: 29.7182617,
-					y: 10.1061983,
+					x: 29.7183228,
+					y: 10.1061993,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 23.4047852,
-					y: 8.208699,
+					x: 23.4048462,
+					y: 8.2087,
 					z: -0.100999355,
 				},
 				max: {
-					x: 29.7182617,
-					y: 10.1061983,
+					x: 29.7183228,
+					y: 10.1061993,
 					z: 0.0990004539,
 				},
 			},
@@ -25650,25 +25650,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 19.6868286,
-					y: 9.033252,
+					x: 19.68689,
+					y: 9.033251,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 22.5043335,
-					y: 11.333251,
+					x: 22.5043945,
+					y: 11.33325,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 19.6868286,
-					y: 9.033252,
+					x: 19.68689,
+					y: 9.033251,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 22.5043335,
-					y: 11.333251,
+					x: 22.5043945,
+					y: 11.33325,
 					z: 0.0999999046,
 				},
 			},
@@ -25712,25 +25712,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 19.6868286,
-					y: 8.98725,
+					x: 19.68689,
+					y: 8.987251,
 					z: -0.100999355,
 				},
 				max: {
-					x: 22.5043335,
-					y: 11.28725,
+					x: 22.5043945,
+					y: 11.2872505,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 19.6868286,
-					y: 8.98725,
+					x: 19.68689,
+					y: 8.987251,
 					z: -0.100999355,
 				},
 				max: {
-					x: 22.5043335,
-					y: 11.28725,
+					x: 22.5043945,
+					y: 11.2872505,
 					z: 0.0990004539,
 				},
 			},
@@ -25775,24 +25775,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 19.7271118,
-					y: 9.275895,
+					y: 9.275896,
 					z: -0.101998806,
 				},
 				max: {
 					x: 20.6011353,
-					y: 11.2308969,
+					y: 11.2308979,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 19.7271118,
-					y: 9.275895,
+					y: 9.275896,
 					z: -0.101998806,
 				},
 				max: {
 					x: 20.6011353,
-					y: 11.2308969,
+					y: 11.2308979,
 					z: 0.098001,
 				},
 			},
@@ -25837,24 +25837,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 17.3365479,
-					y: 9.016002,
+					y: 9.016001,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 17.9523926,
-					y: 9.775001,
+					y: 9.775,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 17.3365479,
-					y: 9.016002,
+					y: 9.016001,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 17.9523926,
-					y: 9.775001,
+					y: 9.775,
 					z: 0.0999999046,
 				},
 			},
@@ -25911,25 +25911,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 17.3727417,
-					y: 9.18735,
+					x: 17.3728027,
+					y: 9.187349,
 					z: -0.101998806,
 				},
 				max: {
-					x: 17.9644165,
-					y: 9.762351,
+					x: 17.9644775,
+					y: 9.76235,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 17.3727417,
-					y: 9.18735,
+					x: 17.3728027,
+					y: 9.187349,
 					z: -0.101998806,
 				},
 				max: {
-					x: 17.9644165,
-					y: 9.762351,
+					x: 17.9644775,
+					y: 9.76235,
 					z: 0.098001,
 				},
 			},
@@ -25974,24 +25974,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 18.5558472,
-					y: 9.03325,
+					y: 9.033251,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 19.6908569,
-					y: 9.458749,
+					y: 9.45875,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 18.5558472,
-					y: 9.03325,
+					y: 9.033251,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 19.6908569,
-					y: 9.458749,
+					y: 9.45875,
 					z: 0.0999999046,
 				},
 			},
@@ -26049,24 +26049,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 17.8422852,
-					y: 9.7865,
+					y: 9.786501,
 					z: -0.100999355,
 				},
 				max: {
 					x: 19.7397461,
-					y: 11.3275,
+					y: 11.3275013,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 17.8422852,
-					y: 9.7865,
+					y: 9.786501,
 					z: -0.100999355,
 				},
 				max: {
 					x: 19.7397461,
-					y: 11.3275,
+					y: 11.3275013,
 					z: 0.0990004539,
 				},
 			},
@@ -26124,24 +26124,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 18.7955933,
-					y: 10.3799009,
+					y: 10.3799019,
 					z: -0.101998806,
 				},
 				max: {
 					x: 19.7271118,
-					y: 11.2769,
+					y: 11.2769012,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 18.7955933,
-					y: 10.3799009,
+					y: 10.3799019,
 					z: -0.101998806,
 				},
 				max: {
 					x: 19.7271118,
-					y: 11.2769,
+					y: 11.2769012,
 					z: 0.098001,
 				},
 			},
@@ -26185,25 +26185,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 16.1793213,
-					y: 8.26735,
+					x: 16.1793823,
+					y: 8.267351,
 					z: 0.0,
 				},
 				max: {
-					x: 16.1793213,
-					y: 8.26735,
+					x: 16.1793823,
+					y: 8.267351,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 16.1793213,
-					y: 8.26735,
+					x: 16.1793823,
+					y: 8.267351,
 					z: 0.0,
 				},
 				max: {
-					x: 16.1793213,
-					y: 8.26735,
+					x: 16.1793823,
+					y: 8.267351,
 					z: 0.0,
 				},
 			},
@@ -26234,24 +26234,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -2.76757813,
+					x: -2.767517,
 					y: -7.64754,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -0.606323242,
+					x: -0.6062622,
 					y: -6.19853973,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -2.76757813,
+					x: -2.767517,
 					y: -7.64754,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -0.606323242,
+					x: -0.6062622,
 					y: -6.19853973,
 					z: 0.0999999046,
 				},
@@ -26312,7 +26312,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 							z: -2.52000046,
 						},
 						max: {
-							x: -0.787780762,
+							x: -0.7876587,
 							y: -7.59808969,
 							z: -2.52000046,
 						},
@@ -26460,24 +26460,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -0.612243652,
+					x: -0.6121826,
 					y: -7.57969,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 1.1161499,
+					x: 1.11621094,
 					y: -6.00419044,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -0.612243652,
+					x: -0.6121826,
 					y: -7.57969,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 1.1161499,
+					x: 1.11621094,
 					y: -6.00419044,
 					z: 0.0999999046,
 				},
@@ -26565,24 +26565,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 0.251953125,
+					x: 0.25201416,
 					y: -6.79194164,
 					z: -0.0009994507,
 				},
 				max: {
-					x: 0.251953125,
+					x: 0.25201416,
 					y: -6.79194164,
 					z: -0.0009994507,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 0.251953125,
+					x: 0.25201416,
 					y: -6.79194164,
 					z: -0.0009994507,
 				},
 				max: {
-					x: 0.251953125,
+					x: 0.25201416,
 					y: -6.79194164,
 					z: -0.0009994507,
 				},
@@ -26627,24 +26627,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -0.610534668,
+					x: -0.610473633,
 					y: -7.579692,
 					z: -0.101998806,
 				},
 				max: {
-					x: 1.11444092,
+					x: 1.114502,
 					y: -6.0041914,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -0.610534668,
+					x: -0.610473633,
 					y: -7.579692,
 					z: -0.101998806,
 				},
 				max: {
-					x: 1.11444092,
+					x: 1.114502,
 					y: -6.0041914,
 					z: 0.098001,
 				},
@@ -26689,24 +26689,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -3.64373779,
+					x: -3.64367676,
 					y: -7.5796895,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.35443115,
+					x: -2.35437,
 					y: -7.28068972,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -3.64373779,
+					x: -3.64367676,
 					y: -7.5796895,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.35443115,
+					x: -2.35437,
 					y: -7.28068972,
 					z: 0.0999999046,
 				},
@@ -26905,24 +26905,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -3.201477,
+					x: -3.201416,
 					y: -10.8031406,
 					z: -0.100999355,
 				},
 				max: {
-					x: -0.429992676,
+					x: -0.429931641,
 					y: -8.00864,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -3.201477,
+					x: -3.201416,
 					y: -10.8031406,
 					z: -0.100999355,
 				},
 				max: {
-					x: -0.429992676,
+					x: -0.429931641,
 					y: -8.00864,
 					z: 0.0990004539,
 				},
@@ -27360,24 +27360,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -6.18115234,
+					x: -6.18109131,
 					y: -6.46418476,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -5.249634,
+					x: -5.24957275,
 					y: -4.46318531,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -6.18115234,
+					x: -6.18109131,
 					y: -6.46418476,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -5.249634,
+					x: -5.24957275,
 					y: -4.46318531,
 					z: 0.0999999046,
 				},
@@ -27435,24 +27435,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -6.18115234,
+					x: -6.18109131,
 					y: -7.68203545,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.63964844,
+					x: -3.6395874,
 					y: -5.830535,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -6.18115234,
+					x: -6.18109131,
 					y: -7.68203545,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.63964844,
+					x: -3.6395874,
 					y: -5.830535,
 					z: 0.0999999046,
 				},
@@ -27540,24 +27540,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -7.63085938,
+					x: -7.63079834,
 					y: -7.59118557,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -6.18042,
+					x: -6.180359,
 					y: -5.72818565,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -7.63085938,
+					x: -7.63079834,
 					y: -7.59118557,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -6.18042,
+					x: -6.180359,
 					y: -5.72818565,
 					z: 0.0999999046,
 				},
@@ -27919,24 +27919,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -14.7911987,
+					x: -14.7911377,
 					y: -7.34048462,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -14.1356812,
+					x: -14.13562,
 					y: -6.9149847,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -14.7911987,
+					x: -14.7911377,
 					y: -7.34048462,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -14.1356812,
+					x: -14.13562,
 					y: -6.9149847,
 					z: 0.0999999046,
 				},
@@ -28011,24 +28011,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -12.9960327,
+					x: -12.9959717,
 					y: -6.9034853,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -10.2705688,
+					x: -10.2705078,
 					y: -6.08698559,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -12.9960327,
+					x: -12.9959717,
 					y: -6.9034853,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -10.2705688,
+					x: -10.2705078,
 					y: -6.08698559,
 					z: 0.0999999046,
 				},
@@ -28223,24 +28223,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -11.2043457,
+					x: -11.2042847,
 					y: -4.59083462,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -9.272339,
+					x: -9.272278,
 					y: -3.107335,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -11.2043457,
+					x: -11.2042847,
 					y: -4.59083462,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -9.272339,
+					x: -9.272278,
 					y: -3.107335,
 					z: 0.0999999046,
 				},
@@ -28285,24 +28285,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -5.255615,
+					x: -5.255554,
 					y: -4.902485,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.67834473,
+					x: -2.67828369,
 					y: -3.372985,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -5.255615,
+					x: -5.255554,
 					y: -4.902485,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.67834473,
+					x: -2.67828369,
 					y: -3.372985,
 					z: 0.0999999046,
 				},
@@ -28566,7 +28566,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Shellwood/Shellwood_15/Next Area Right (8)/Area Name',
 					textKey: 'Map Zones.BELLTOWN',
 					position: {
-						x: 0.869506836,
+						x: 0.8695679,
 						y: -5.53383732,
 						z: -2.52000046,
 					},
@@ -28606,24 +28606,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -9.28729248,
+					x: -9.287231,
 					y: -7.43018532,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -7.63128662,
+					x: -7.63122559,
 					y: -7.06218529,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -9.28729248,
+					x: -9.287231,
 					y: -7.43018532,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -7.63128662,
+					x: -7.63122559,
 					y: -7.06218529,
 					z: 0.0999999046,
 				},
@@ -28681,24 +28681,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -12.2155762,
+					x: -12.2155151,
 					y: -5.45448542,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -10.0535889,
+					x: -10.0535278,
 					y: -4.95998526,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -12.2155762,
+					x: -12.2155151,
 					y: -5.45448542,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -10.0535889,
+					x: -10.0535278,
 					y: -4.95998526,
 					z: 0.0999999046,
 				},
@@ -28880,24 +28880,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -9.404602,
+					x: -9.404541,
 					y: -8.346735,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.94207764,
+					x: -3.9420166,
 					y: -7.70273542,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -9.404602,
+					x: -9.404541,
 					y: -8.346735,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.94207764,
+					x: -3.9420166,
 					y: -7.70273542,
 					z: 0.0999999046,
 				},
@@ -28942,24 +28942,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -9.404602,
+					x: -9.404541,
 					y: -8.346735,
 					z: -0.100999355,
 				},
 				max: {
-					x: -3.94207764,
+					x: -3.9420166,
 					y: -7.70273542,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -9.404602,
+					x: -9.404541,
 					y: -8.346735,
 					z: -0.100999355,
 				},
 				max: {
-					x: -3.94207764,
+					x: -3.9420166,
 					y: -7.70273542,
 					z: 0.0990004539,
 				},
@@ -29473,24 +29473,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -5.37384033,
+					x: -5.3737793,
 					y: -8.143186,
 					z: 0.0,
 				},
 				max: {
-					x: -5.37384033,
+					x: -5.3737793,
 					y: -8.143186,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -5.37384033,
+					x: -5.3737793,
 					y: -8.143186,
 					z: 0.0,
 				},
 				max: {
-					x: -5.37384033,
+					x: -5.3737793,
 					y: -8.143186,
 					z: 0.0,
 				},
@@ -29689,24 +29689,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -20.649292,
+					x: -20.649231,
 					y: -4.57255363,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -16.0493164,
+					x: -16.0492554,
 					y: -2.95105362,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -20.649292,
+					x: -20.649231,
 					y: -4.57255363,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -16.0493164,
+					x: -16.0492554,
 					y: -2.95105362,
 					z: 0.0999999046,
 				},
@@ -29770,7 +29770,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: -14.9084473,
-					y: -0.442788124,
+					y: -0.44278717,
 					z: 0.0999999046,
 				},
 			},
@@ -29782,7 +29782,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: -14.9084473,
-					y: -0.442788124,
+					y: -0.44278717,
 					z: 0.0999999046,
 				},
 			},
@@ -29902,24 +29902,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -14.9084473,
-					y: -3.49028778,
+					y: -3.49028683,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -13.2409668,
-					y: -2.13328743,
+					y: -2.13328648,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -14.9084473,
-					y: -3.49028778,
+					y: -3.49028683,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -13.2409668,
-					y: -2.13328743,
+					y: -2.13328648,
 					z: 0.0999999046,
 				},
 			},
@@ -30070,7 +30070,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Blasted_Steps/Coral_19/Next Area Down BoneBottom/Area Name',
 					textKey: 'Map Zones.BONETOWN',
 					position: {
-						x: -15.3845825,
+						x: -15.3845215,
 						y: -7.535984,
 						z: -2.52000046,
 					},
@@ -30078,12 +30078,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -15.3845825,
+							x: -15.3845215,
 							y: -7.535984,
 							z: -2.52000046,
 						},
 						max: {
-							x: -15.3845825,
+							x: -15.3845215,
 							y: -7.535984,
 							z: -2.52000046,
 						},
@@ -30374,7 +30374,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Blasted_Steps/Coral_32_arrow/Next Area Up (4)/Area Name',
 					textKey: 'Map Zones.RED_CORAL_GORGE',
 					position: {
-						x: -15.3294067,
+						x: -15.3293457,
 						y: 1.5961628,
 						z: -2.52000046,
 					},
@@ -30382,12 +30382,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -15.3294067,
+							x: -15.3293457,
 							y: 1.5961628,
 							z: -2.52000046,
 						},
 						max: {
-							x: -15.3294067,
+							x: -15.3293457,
 							y: 1.5961628,
 							z: -2.52000046,
 						},
@@ -30414,24 +30414,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -21.4002686,
+					x: -21.4002075,
 					y: -2.28163719,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -20.192749,
+					x: -20.192688,
 					y: -0.7061367,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -21.4002686,
+					x: -21.4002075,
 					y: -2.28163719,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -20.192749,
+					x: -20.192688,
 					y: -0.7061367,
 					z: 0.0999999046,
 				},
@@ -30601,24 +30601,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -24.0256348,
-					y: -2.512784,
+					y: -2.512785,
 					z: -0.101998806,
 				},
 				max: {
 					x: -20.6446533,
-					y: -0.971783638,
+					y: -0.9717846,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -24.0256348,
-					y: -2.512784,
+					y: -2.512785,
 					z: -0.101998806,
 				},
 				max: {
 					x: -20.6446533,
-					y: -0.971783638,
+					y: -0.9717846,
 					z: 0.098001,
 				},
 			},
@@ -30652,7 +30652,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Blasted_Steps/Coral_34_top/Next Area Up (2)/Area Name',
 					textKey: 'Map Zones.RED_CORAL_GORGE',
 					position: {
-						x: -20.380188,
+						x: -20.380127,
 						y: -0.5853901,
 						z: -2.521,
 					},
@@ -30660,12 +30660,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -20.380188,
+							x: -20.380127,
 							y: -0.5853901,
 							z: -2.521,
 						},
 						max: {
-							x: -20.380188,
+							x: -20.380127,
 							y: -0.5853901,
 							z: -2.521,
 						},
@@ -30754,24 +30754,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -17.9985352,
+					x: -17.9984741,
 					y: -1.14428711,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -17.43335,
+					x: -17.4332886,
 					y: 1.70771217,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -17.9985352,
+					x: -17.9984741,
 					y: -1.14428711,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -17.43335,
+					x: -17.4332886,
 					y: 1.70771217,
 					z: 0.0999999046,
 				},
@@ -30816,24 +30816,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -17.9985352,
+					x: -17.9984741,
 					y: -1.14428711,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.43335,
+					x: -17.4332886,
 					y: 1.70771217,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -17.9985352,
+					x: -17.9984741,
 					y: -1.14428711,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.43335,
+					x: -17.4332886,
 					y: 1.70771217,
 					z: 0.0990004539,
 				},
@@ -30879,24 +30879,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -17.4349976,
-					y: -0.27028656,
+					y: -0.2702875,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -16.0895386,
-					y: 0.8107128,
+					y: 0.810711861,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -17.4349976,
-					y: -0.27028656,
+					y: -0.2702875,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -16.0895386,
-					y: 0.8107128,
+					y: 0.810711861,
 					z: 0.0999999046,
 				},
 			},
@@ -30940,24 +30940,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -17.99768,
+					x: -17.99762,
 					y: -1.13324738,
 					z: -0.101998806,
 				},
 				max: {
-					x: -17.4342041,
+					x: -17.4341431,
 					y: 2.96075249,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -17.99768,
+					x: -17.99762,
 					y: -1.13324738,
 					z: -0.101998806,
 				},
 				max: {
-					x: -17.4342041,
+					x: -17.4341431,
 					y: 2.96075249,
 					z: 0.098001,
 				},
@@ -31033,24 +31033,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.3076782,
-					y: -3.03718758,
+					y: -3.03718662,
 					z: -0.101998806,
 				},
 				max: {
 					x: -11.479187,
-					y: -2.55418777,
+					y: -2.55418682,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.3076782,
-					y: -3.03718758,
+					y: -3.03718662,
 					z: -0.101998806,
 				},
 				max: {
 					x: -11.479187,
-					y: -2.55418777,
+					y: -2.55418682,
 					z: 0.098001,
 				},
 			},
@@ -31095,24 +31095,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -12.3934326,
-					y: -2.79568768,
+					y: -2.79568672,
 					z: -0.00199890137,
 				},
 				max: {
 					x: -12.3934326,
-					y: -2.79568768,
+					y: -2.79568672,
 					z: -0.00199890137,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -12.3934326,
-					y: -2.79568768,
+					y: -2.79568672,
 					z: -0.00199890137,
 				},
 				max: {
 					x: -12.3934326,
-					y: -2.79568768,
+					y: -2.79568672,
 					z: -0.00199890137,
 				},
 			},
@@ -31157,24 +31157,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -12.3934326,
-					y: -2.79568768,
+					y: -2.79568672,
 					z: -0.002998352,
 				},
 				max: {
 					x: -12.3934326,
-					y: -2.79568768,
+					y: -2.79568672,
 					z: -0.002998352,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -12.3934326,
-					y: -2.79568768,
+					y: -2.79568672,
 					z: -0.002998352,
 				},
 				max: {
 					x: -12.3934326,
-					y: -2.79568768,
+					y: -2.79568672,
 					z: -0.002998352,
 				},
 			},
@@ -31218,24 +31218,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -19.2285767,
+					x: -19.2285156,
 					y: -0.120786667,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -17.9981079,
+					x: -17.9980469,
 					y: 0.6267128,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -19.2285767,
+					x: -19.2285156,
 					y: -0.120786667,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -17.9981079,
+					x: -17.9980469,
 					y: 0.6267128,
 					z: 0.0999999046,
 				},
@@ -31280,24 +31280,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -19.2267456,
+					x: -19.2266846,
 					y: -0.16908741,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.9962769,
+					x: -17.9962158,
 					y: 0.578412056,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -19.2267456,
+					x: -19.2266846,
 					y: -0.16908741,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.9962769,
+					x: -17.9962158,
 					y: 0.578412056,
 					z: 0.0990004539,
 				},
@@ -31470,7 +31470,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.FRONT_GATE',
 					position: {
 						x: -7.081604,
-						y: 0.8441801,
+						y: 0.844181061,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -31478,12 +31478,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: -7.081604,
-							y: 0.8441801,
+							y: 0.844181061,
 							z: -2.52000046,
 						},
 						max: {
 							x: -7.081604,
-							y: 0.8441801,
+							y: 0.844181061,
 							z: -2.52000046,
 						},
 					},
@@ -31708,24 +31708,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -17.4373779,
+					x: -17.4373169,
 					y: 1.76057625,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -13.9459229,
+					x: -13.9458618,
 					y: 2.81857681,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -17.4373779,
+					x: -17.4373169,
 					y: 1.76057625,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -13.9459229,
+					x: -13.9458618,
 					y: 2.81857681,
 					z: 0.0999999046,
 				},
@@ -31889,24 +31889,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.9547119,
-					y: 0.955462456,
+					y: 0.9554615,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -13.3878174,
-					y: 3.73846149,
+					y: 3.73846245,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.9547119,
-					y: 0.955462456,
+					y: 0.9554615,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -13.3878174,
-					y: 3.73846149,
+					y: 3.73846245,
 					z: 0.0999999046,
 				},
 			},
@@ -31963,24 +31963,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -21.8226929,
+					x: -21.8226318,
 					y: 3.70407677,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.9932251,
+					x: -17.9931641,
 					y: 4.5550766,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -21.8226929,
+					x: -21.8226318,
 					y: 3.70407677,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.9932251,
+					x: -17.9931641,
 					y: 4.5550766,
 					z: 0.0990004539,
 				},
@@ -32039,24 +32039,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -23.91681,
-					y: 4.18707275,
+					y: 4.187072,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -21.8123169,
-					y: 5.544072,
+					y: 5.544071,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -23.91681,
-					y: 4.18707275,
+					y: 4.187072,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -21.8123169,
-					y: 5.544072,
+					y: 5.544071,
 					z: 0.0999999046,
 				},
 			},
@@ -32103,8 +32103,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Coral_Caves/Coral_28/Area Name Sub',
 					textKey: 'Map Zones.RED_CORAL_TOWER',
 					position: {
-						x: -23.0888672,
-						y: 4.21007252,
+						x: -23.0888062,
+						y: 4.21007347,
 						z: -2.52000046,
 					},
 					fontSize: 4,
@@ -32112,12 +32112,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: -24.1381836,
-							y: 3.695962,
+							y: 3.695961,
 							z: -2.52000046,
 						},
 						max: {
 							x: -22.0322266,
-							y: 4.21007252,
+							y: 4.21007347,
 							z: -2.52000046,
 						},
 					},
@@ -32144,24 +32144,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -23.0072021,
-					y: 4.391776,
+					y: 4.391777,
 					z: 0.0,
 				},
 				max: {
 					x: -23.0072021,
-					y: 4.391776,
+					y: 4.391777,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -23.0072021,
-					y: 4.391776,
+					y: 4.391777,
 					z: 0.0,
 				},
 				max: {
 					x: -23.0072021,
-					y: 4.391776,
+					y: 4.391777,
 					z: 0.0,
 				},
 			},
@@ -32193,24 +32193,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -23.0509033,
-					y: 4.440076,
+					y: 4.440077,
 					z: 0.0,
 				},
 				max: {
 					x: -23.0509033,
-					y: 4.440076,
+					y: 4.440077,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -23.0509033,
-					y: 4.440076,
+					y: 4.440077,
 					z: 0.0,
 				},
 				max: {
 					x: -23.0509033,
-					y: 4.440076,
+					y: 4.440077,
 					z: 0.0,
 				},
 			},
@@ -32242,24 +32242,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -17.7194824,
-					y: 4.900077,
+					y: 4.900076,
 					z: -0.001499176,
 				},
 				max: {
 					x: -17.7194824,
-					y: 4.900077,
+					y: 4.900076,
 					z: -0.001499176,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -17.7194824,
-					y: 4.900077,
+					y: 4.900076,
 					z: -0.001499176,
 				},
 				max: {
 					x: -17.7194824,
-					y: 4.900077,
+					y: 4.900076,
 					z: -0.001499176,
 				},
 			},
@@ -32289,12 +32289,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: -17.4481812,
-							y: 4.46645641,
+							y: 4.46645737,
 							z: -2.52000046,
 						},
 						max: {
 							x: -16.0670776,
-							y: 4.980567,
+							y: 4.980568,
 							z: -2.52000046,
 						},
 					},
@@ -32320,25 +32320,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -17.99768,
+					x: -17.99762,
 					y: 1.71457672,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.4342041,
-					y: 5.118577,
+					x: -17.4341431,
+					y: 5.118576,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -17.99768,
+					x: -17.99762,
 					y: 1.71457672,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.4342041,
-					y: 5.118577,
+					x: -17.4341431,
+					y: 5.118576,
 					z: 0.0990004539,
 				},
 			},
@@ -32395,24 +32395,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -17.99768,
+					x: -17.99762,
 					y: -1.13742352,
 					z: -0.101998806,
 				},
 				max: {
-					x: -17.4342041,
+					x: -17.4341431,
 					y: 2.95657635,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -17.99768,
+					x: -17.99762,
 					y: -1.13742352,
 					z: -0.101998806,
 				},
 				max: {
-					x: -17.4342041,
+					x: -17.4341431,
 					y: 2.95657635,
 					z: 0.098001,
 				},
@@ -32487,25 +32487,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -17.99768,
+					x: -17.99762,
 					y: 1.73412609,
 					z: -0.101998806,
 				},
 				max: {
-					x: -17.4342041,
-					y: 5.11512661,
+					x: -17.4341431,
+					y: 5.11512566,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -17.99768,
+					x: -17.99762,
 					y: 1.73412609,
 					z: -0.101998806,
 				},
 				max: {
-					x: -17.4342041,
-					y: 5.11512661,
+					x: -17.4341431,
+					y: 5.11512566,
 					z: 0.098001,
 				},
 			},
@@ -32779,24 +32779,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -24.98175,
-					y: 1.399476,
+					y: 1.399477,
 					z: -0.104001522,
 				},
 				max: {
 					x: -22.3942261,
-					y: 2.64147663,
+					y: 2.64147758,
 					z: 0.09599829,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -24.98175,
-					y: 1.399476,
+					y: 1.399477,
 					z: -0.104001522,
 				},
 				max: {
 					x: -22.3942261,
-					y: 2.64147663,
+					y: 2.64147758,
 					z: 0.09599829,
 				},
 			},
@@ -32840,24 +32840,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -19.0316772,
+					x: -19.0316162,
 					y: 2.025651,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.9966431,
+					x: -17.996582,
 					y: 2.41665173,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -19.0316772,
+					x: -19.0316162,
 					y: 2.025651,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.9966431,
+					x: -17.996582,
 					y: 2.41665173,
 					z: 0.0990004539,
 				},
@@ -32915,25 +32915,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -20.8659058,
-					y: 2.41607761,
+					x: -20.8658447,
+					y: 2.41607666,
 					z: -0.101499081,
 				},
 				max: {
-					x: -17.9909058,
-					y: 3.71557713,
+					x: -17.9908447,
+					y: 3.71557617,
 					z: 0.09850073,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -20.8659058,
-					y: 2.41607761,
+					x: -20.8658447,
+					y: 2.41607666,
 					z: -0.101499081,
 				},
 				max: {
-					x: -17.9909058,
-					y: 3.71557713,
+					x: -17.9908447,
+					y: 3.71557617,
 					z: 0.09850073,
 				},
 			},
@@ -33053,24 +33053,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -8.99041748,
-					y: 6.51128674,
+					y: 6.51128769,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -4.94989,
-					y: 7.36228848,
+					y: 7.36228943,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -8.99041748,
-					y: 6.51128674,
+					y: 6.51128769,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -4.94989,
-					y: 7.36228848,
+					y: 7.36228943,
 					z: 0.0999999046,
 				},
 			},
@@ -33104,21 +33104,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Slab/Slab_01/Next Area Right (7)/Area Name',
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
-						x: -1.380188,
-						y: 6.92183971,
+						x: -1.380127,
+						y: 6.92184067,
 						z: -2.52000046,
 					},
 					fontSize: 6,
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -1.380188,
-							y: 6.92183971,
+							x: -1.380127,
+							y: 6.92184067,
 							z: -2.52000046,
 						},
 						max: {
-							x: -1.380188,
-							y: 6.92183971,
+							x: -1.380127,
+							y: 6.92184067,
 							z: -2.52000046,
 						},
 					},
@@ -33145,24 +33145,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.8226318,
-					y: 6.69528675,
+					y: 6.695286,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -8.442139,
-					y: 7.316285,
+					y: 7.316284,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.8226318,
-					y: 6.69528675,
+					y: 6.695286,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -8.442139,
-					y: 7.316285,
+					y: 7.316284,
 					z: 0.0999999046,
 				},
 			},
@@ -33207,24 +33207,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -11.4176025,
-					y: 4.73109055,
+					y: 4.7310915,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -10.81665,
-					y: 10.1245909,
+					y: 10.1245918,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -11.4176025,
-					y: 4.73109055,
+					y: 4.7310915,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -10.81665,
-					y: 10.1245909,
+					y: 10.1245918,
 					z: 0.0999999046,
 				},
 			},
@@ -33282,24 +33282,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -11.4176025,
-					y: 4.7299366,
+					y: 4.72993565,
 					z: -0.100999355,
 				},
 				max: {
 					x: -10.81665,
-					y: 10.3649378,
+					y: 10.3649349,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -11.4176025,
-					y: 4.7299366,
+					y: 4.72993565,
 					z: -0.100999355,
 				},
 				max: {
 					x: -10.81665,
-					y: 10.3649378,
+					y: 10.3649349,
 					z: 0.0990004539,
 				},
 			},
@@ -33343,25 +33343,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -11.4155273,
-					y: 4.47578526,
+					x: -11.4154663,
+					y: 4.475786,
 					z: -0.101998806,
 				},
 				max: {
-					x: -10.8026123,
-					y: 7.1092844,
+					x: -10.8025513,
+					y: 7.10928535,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -11.4155273,
-					y: 4.47578526,
+					x: -11.4154663,
+					y: 4.475786,
 					z: -0.101998806,
 				},
 				max: {
-					x: -10.8026123,
-					y: 7.1092844,
+					x: -10.8025513,
+					y: 7.10928535,
 					z: 0.098001,
 				},
 			},
@@ -33405,25 +33405,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -11.4155273,
-					y: 4.44819164,
+					x: -11.4154663,
+					y: 4.4481926,
 					z: -0.102998257,
 				},
 				max: {
-					x: -10.8026123,
-					y: 7.081691,
+					x: -10.8025513,
+					y: 7.08169174,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -11.4155273,
-					y: 4.44819164,
+					x: -11.4154663,
+					y: 4.4481926,
 					z: -0.102998257,
 				},
 				max: {
-					x: -10.8026123,
-					y: 7.081691,
+					x: -10.8025513,
+					y: 7.08169174,
 					z: 0.09700155,
 				},
 			},
@@ -33468,24 +33468,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.2797241,
-					y: 6.006055,
+					y: 6.006056,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4052124,
-					y: 6.765813,
+					y: 6.765814,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.2797241,
-					y: 6.006055,
+					y: 6.006056,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4052124,
-					y: 6.765813,
+					y: 6.765814,
 					z: 0.0999999046,
 				},
 			},
@@ -33530,24 +33530,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.2802734,
-					y: 6.763137,
+					y: 6.763136,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4172363,
-					y: 7.37263775,
+					y: 7.372637,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.2802734,
-					y: 6.763137,
+					y: 6.763136,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4172363,
-					y: 7.37263775,
+					y: 7.372637,
 					z: 0.0999999046,
 				},
 			},
@@ -33591,25 +33591,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -13.3134155,
-					y: 5.3736124,
+					x: -13.3133545,
+					y: 5.37361336,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -11.4485474,
-					y: 6.018258,
+					x: -11.4484863,
+					y: 6.018259,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -13.3134155,
-					y: 5.3736124,
+					x: -13.3133545,
+					y: 5.37361336,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -11.4485474,
-					y: 6.018258,
+					x: -11.4484863,
+					y: 6.018259,
 					z: 0.0999999046,
 				},
 			},
@@ -33643,21 +33643,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Slab/Slab_06/Next Area Left (2)/Area Name',
 					textKey: 'Map Zones.PEAK',
 					position: {
-						x: -16.9429932,
-						y: 5.57162,
+						x: -16.9429321,
+						y: 5.571619,
 						z: -2.52000046,
 					},
 					fontSize: 6,
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -16.9429932,
-							y: 5.57162,
+							x: -16.9429321,
+							y: 5.571619,
 							z: -2.52000046,
 						},
 						max: {
-							x: -16.9429932,
-							y: 5.57162,
+							x: -16.9429321,
+							y: 5.571619,
 							z: -2.52000046,
 						},
 					},
@@ -33684,24 +33684,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -12.9318848,
-					y: 4.60919476,
+					y: 4.609194,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.3631592,
-					y: 5.345195,
+					y: 5.345194,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -12.9318848,
-					y: 4.60919476,
+					y: 4.609194,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.3631592,
-					y: 5.345195,
+					y: 5.345194,
 					z: 0.0999999046,
 				},
 			},
@@ -33746,24 +33746,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.8192139,
-					y: 6.050946,
+					y: 6.050947,
 					z: -0.100999355,
 				},
 				max: {
 					x: -10.0257568,
-					y: 6.76394749,
+					y: 6.76394844,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.8192139,
-					y: 6.050946,
+					y: 6.050947,
 					z: -0.100999355,
 				},
 				max: {
 					x: -10.0257568,
-					y: 6.76394749,
+					y: 6.76394844,
 					z: 0.0990004539,
 				},
 			},
@@ -33807,25 +33807,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -10.7169189,
-					y: 5.965041,
+					x: -10.7168579,
+					y: 5.96504,
 					z: -0.101998806,
 				},
 				max: {
-					x: -10.0384521,
-					y: 6.74704266,
+					x: -10.0383911,
+					y: 6.7470417,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -10.7169189,
-					y: 5.965041,
+					x: -10.7168579,
+					y: 5.96504,
 					z: -0.101998806,
 				},
 				max: {
-					x: -10.0384521,
-					y: 6.74704266,
+					x: -10.0383911,
+					y: 6.7470417,
 					z: 0.098001,
 				},
 			},
@@ -33870,24 +33870,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.5215454,
-					y: 6.474498,
+					y: 6.474497,
 					z: -0.09850073,
 				},
 				max: {
 					x: -10.5045776,
-					y: 7.546073,
+					y: 7.546072,
 					z: 0.101499081,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.5215454,
-					y: 6.474498,
+					y: 6.474497,
 					z: -0.09850073,
 				},
 				max: {
 					x: -10.5045776,
-					y: 7.546073,
+					y: 7.546072,
 					z: 0.101499081,
 				},
 			},
@@ -33932,24 +33932,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -9.617493,
-					y: 5.08989429,
+					y: 5.08989334,
 					z: -0.00199890137,
 				},
 				max: {
 					x: -9.617493,
-					y: 5.08989429,
+					y: 5.08989334,
 					z: -0.00199890137,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -9.617493,
-					y: 5.08989429,
+					y: 5.08989334,
 					z: -0.00199890137,
 				},
 				max: {
 					x: -9.617493,
-					y: 5.08989429,
+					y: 5.08989334,
 					z: -0.00199890137,
 				},
 			},
@@ -33980,25 +33980,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -10.0119629,
-					y: 4.935788,
+					x: -10.0119019,
+					y: 4.935787,
 					z: -0.0990004539,
 				},
 				max: {
-					x: -9.276001,
-					y: 6.1317873,
+					x: -9.27594,
+					y: 6.13178635,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -10.0119629,
-					y: 4.935788,
+					x: -10.0119019,
+					y: 4.935787,
 					z: -0.0990004539,
 				},
 				max: {
-					x: -9.276001,
-					y: 6.1317873,
+					x: -9.27594,
+					y: 6.13178635,
 					z: 0.100999355,
 				},
 			},
@@ -34042,25 +34042,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -10.8031616,
-					y: 4.194043,
+					x: -10.8031006,
+					y: 4.194044,
 					z: -0.0990004539,
 				},
 				max: {
-					x: -8.698669,
-					y: 4.96454334,
+					x: -8.698608,
+					y: 4.9645443,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -10.8031616,
-					y: 4.194043,
+					x: -10.8031006,
+					y: 4.194044,
 					z: -0.0990004539,
 				},
 				max: {
-					x: -8.698669,
-					y: 4.96454334,
+					x: -8.698608,
+					y: 4.9645443,
 					z: 0.100999355,
 				},
 			},
@@ -34105,24 +34105,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.305542,
-					y: 7.37723827,
+					y: 7.37723732,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4195557,
-					y: 7.87173748,
+					y: 7.87173653,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.305542,
-					y: 7.37723827,
+					y: 7.37723732,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4195557,
-					y: 7.87173748,
+					y: 7.87173653,
 					z: 0.0999999046,
 				},
 			},
@@ -34167,24 +34167,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.3265381,
-					y: 7.37723827,
+					y: 7.37723732,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4169922,
-					y: 7.87173748,
+					y: 7.87173653,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.3265381,
-					y: 7.37723827,
+					y: 7.37723732,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4169922,
-					y: 7.87173748,
+					y: 7.87173653,
 					z: 0.0999999046,
 				},
 			},
@@ -34242,24 +34242,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.3032227,
-					y: 7.372754,
+					y: 7.372753,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4172363,
-					y: 7.93625355,
+					y: 7.93625259,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.3032227,
-					y: 7.372754,
+					y: 7.372753,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4172363,
-					y: 7.93625355,
+					y: 7.93625259,
 					z: 0.0999999046,
 				},
 			},
@@ -34303,25 +34303,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -13.3009644,
-					y: 7.94878674,
+					x: -13.3009033,
+					y: 7.948786,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -11.414978,
-					y: 8.489287,
+					x: -11.414917,
+					y: 8.489286,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -13.3009644,
-					y: 7.94878674,
+					x: -13.3009033,
+					y: 7.948786,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -11.414978,
-					y: 8.489287,
+					x: -11.414917,
+					y: 8.489286,
 					z: 0.0999999046,
 				},
 			},
@@ -34378,25 +34378,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -13.3009644,
-					y: 7.94878674,
+					x: -13.3009033,
+					y: 7.948786,
 					z: -0.098001,
 				},
 				max: {
-					x: -11.414978,
-					y: 8.489287,
+					x: -11.414917,
+					y: 8.489286,
 					z: 0.101998806,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -13.3009644,
-					y: 7.94878674,
+					x: -13.3009033,
+					y: 7.948786,
 					z: -0.098001,
 				},
 				max: {
-					x: -11.414978,
-					y: 8.489287,
+					x: -11.414917,
+					y: 8.489286,
 					z: 0.101998806,
 				},
 			},
@@ -34454,24 +34454,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.302063,
-					y: 8.478936,
+					y: 8.478937,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4160767,
-					y: 9.042436,
+					y: 9.042437,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.302063,
-					y: 8.478936,
+					y: 8.478937,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4160767,
-					y: 9.042436,
+					y: 9.042437,
 					z: 0.0999999046,
 				},
 			},
@@ -34529,24 +34529,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.302063,
-					y: 8.478936,
+					y: 8.478937,
 					z: -0.0990004539,
 				},
 				max: {
 					x: -11.4160767,
-					y: 9.042436,
+					y: 9.042437,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.302063,
-					y: 8.478936,
+					y: 8.478937,
 					z: -0.0990004539,
 				},
 				max: {
 					x: -11.4160767,
-					y: 9.042436,
+					y: 9.042437,
 					z: 0.100999355,
 				},
 			},
@@ -34603,25 +34603,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -13.3078613,
-					y: 9.043588,
+					x: -13.3078,
+					y: 9.043589,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -11.421875,
-					y: 10.5500879,
+					x: -11.421814,
+					y: 10.5500889,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -13.3078613,
-					y: 9.043588,
+					x: -13.3078,
+					y: 9.043589,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -11.421875,
-					y: 10.5500879,
+					x: -11.421814,
+					y: 10.5500889,
 					z: 0.0999999046,
 				},
 			},
@@ -34679,24 +34679,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.043588,
+					y: 9.043589,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5500879,
+					y: 10.5500889,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.043588,
+					y: 9.043589,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5500879,
+					y: 10.5500889,
 					z: 0.0999999046,
 				},
 			},
@@ -34754,24 +34754,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -12.6327515,
-					y: 9.547299,
+					y: 9.5473,
 					z: 0.0,
 				},
 				max: {
 					x: -12.6327515,
-					y: 9.547299,
+					y: 9.5473,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -12.6327515,
-					y: 9.547299,
+					y: 9.5473,
 					z: 0.0,
 				},
 				max: {
 					x: -12.6327515,
-					y: 9.547299,
+					y: 9.5473,
 					z: 0.0,
 				},
 			},
@@ -34816,24 +34816,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.043588,
+					y: 9.043589,
 					z: -0.100999355,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5500879,
+					y: 10.5500889,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.043588,
+					y: 9.043589,
 					z: -0.100999355,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5500879,
+					y: 10.5500889,
 					z: 0.0990004539,
 				},
 			},
@@ -34891,24 +34891,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.040025,
+					y: 9.040026,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5766535,
+					y: 10.5766544,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.040025,
+					y: 9.040026,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5766535,
+					y: 10.5766544,
 					z: 0.0999999046,
 				},
 			},
@@ -34966,24 +34966,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.043588,
+					y: 9.043589,
 					z: -0.100999355,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5500879,
+					y: 10.5500889,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.043588,
+					y: 9.043589,
 					z: -0.100999355,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5500879,
+					y: 10.5500889,
 					z: 0.0990004539,
 				},
 			},
@@ -35041,24 +35041,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.043588,
+					y: 9.043589,
 					z: -0.100999355,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5500879,
+					y: 10.5500889,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -13.3032227,
-					y: 9.043588,
+					y: 9.043589,
 					z: -0.100999355,
 				},
 				max: {
 					x: -11.4172363,
-					y: 10.5500879,
+					y: 10.5500889,
 					z: 0.0990004539,
 				},
 			},
@@ -35103,24 +35103,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.8237915,
-					y: 9.124085,
+					y: 9.124084,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -9.3862915,
-					y: 10.5385866,
+					y: 10.5385857,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.8237915,
-					y: 9.124085,
+					y: 9.124084,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -9.3862915,
-					y: 10.5385866,
+					y: 10.5385857,
 					z: 0.0999999046,
 				},
 			},
@@ -35165,24 +35165,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.8203735,
-					y: 8.389241,
+					y: 8.38924,
 					z: -0.100999355,
 				},
 				max: {
 					x: -8.968933,
-					y: 9.941743,
+					y: 9.941742,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.8203735,
-					y: 8.389241,
+					y: 8.38924,
 					z: -0.100999355,
 				},
 				max: {
 					x: -8.968933,
-					y: 9.941743,
+					y: 9.941742,
 					z: 0.0990004539,
 				},
 			},
@@ -35227,24 +35227,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.8043213,
-					y: 5.40728855,
+					y: 5.4072876,
 					z: -0.101998806,
 				},
 				max: {
 					x: -9.955566,
-					y: 6.07428837,
+					y: 6.07428741,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.8043213,
-					y: 5.40728855,
+					y: 5.4072876,
 					z: -0.101998806,
 				},
 				max: {
 					x: -9.955566,
-					y: 6.07428837,
+					y: 6.07428741,
 					z: 0.098001,
 				},
 			},
@@ -35289,24 +35289,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.75354,
-					y: 5.730443,
+					y: 5.730444,
 					z: -0.102998257,
 				},
 				max: {
 					x: -10.0109863,
-					y: 6.10994434,
+					y: 6.1099453,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.75354,
-					y: 5.730443,
+					y: 5.730444,
 					z: -0.102998257,
 				},
 				max: {
 					x: -10.0109863,
-					y: 6.10994434,
+					y: 6.1099453,
 					z: 0.09700155,
 				},
 			},
@@ -35351,24 +35351,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.8168945,
-					y: 7.90393925,
+					y: 7.90394,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -9.022949,
-					y: 8.363938,
+					y: 8.363939,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.8168945,
-					y: 7.90393925,
+					y: 7.90394,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -9.022949,
-					y: 8.363938,
+					y: 8.363939,
 					z: 0.0999999046,
 				},
 			},
@@ -35426,24 +35426,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.9123535,
-					y: 7.954541,
+					y: 7.954542,
 					z: -0.100999355,
 				},
 				max: {
 					x: -9.060913,
-					y: 8.299542,
+					y: 8.299543,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.9123535,
-					y: 7.954541,
+					y: 7.954542,
 					z: -0.100999355,
 				},
 				max: {
 					x: -9.060913,
-					y: 8.299542,
+					y: 8.299543,
 					z: 0.0990004539,
 				},
 			},
@@ -35487,25 +35487,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -8.972351,
-					y: 7.35308743,
+					x: -8.97229,
+					y: 7.35308647,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -8.46637,
-					y: 10.550086,
+					x: -8.466309,
+					y: 10.5500851,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -8.972351,
-					y: 7.35308743,
+					x: -8.97229,
+					y: 7.35308647,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -8.46637,
-					y: 10.550086,
+					x: -8.466309,
+					y: 10.5500851,
 					z: 0.0999999046,
 				},
 			},
@@ -35562,25 +35562,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -8.972351,
-					y: 7.35308743,
+					x: -8.97229,
+					y: 7.35308647,
 					z: -0.101998806,
 				},
 				max: {
-					x: -8.46637,
-					y: 10.550086,
+					x: -8.466309,
+					y: 10.5500851,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -8.972351,
-					y: 7.35308743,
+					x: -8.97229,
+					y: 7.35308647,
 					z: -0.101998806,
 				},
 				max: {
-					x: -8.46637,
-					y: 10.550086,
+					x: -8.466309,
+					y: 10.5500851,
 					z: 0.098001,
 				},
 			},
@@ -35637,25 +35637,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -13.3515625,
-					y: 10.5489435,
+					x: -13.3515015,
+					y: 10.5489426,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -8.37207,
-					y: 11.5149431,
+					x: -8.372009,
+					y: 11.5149422,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -13.3515625,
-					y: 10.5489435,
+					x: -13.3515015,
+					y: 10.5489426,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -8.37207,
-					y: 11.5149431,
+					x: -8.372009,
+					y: 11.5149422,
 					z: 0.0999999046,
 				},
 			},
@@ -35713,24 +35713,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.8168945,
-					y: 7.34274,
+					y: 7.342741,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -8.965454,
-					y: 7.860242,
+					y: 7.860243,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.8168945,
-					y: 7.34274,
+					y: 7.342741,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -8.965454,
-					y: 7.860242,
+					y: 7.860243,
 					z: 0.0999999046,
 				},
 			},
@@ -35788,24 +35788,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.8168945,
-					y: 7.34274,
+					y: 7.342741,
 					z: -0.0990004539,
 				},
 				max: {
 					x: -8.965454,
-					y: 7.860242,
+					y: 7.860243,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.8168945,
-					y: 7.34274,
+					y: 7.342741,
 					z: -0.0990004539,
 				},
 				max: {
 					x: -8.965454,
-					y: 7.860242,
+					y: 7.860243,
 					z: 0.100999355,
 				},
 			},
@@ -35863,24 +35863,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -10.8099976,
-					y: 7.300191,
+					y: 7.30019,
 					z: -0.101998806,
 				},
 				max: {
 					x: -8.958557,
-					y: 7.84069157,
+					y: 7.84069061,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -10.8099976,
-					y: 7.300191,
+					y: 7.30019,
 					z: -0.101998806,
 				},
 				max: {
 					x: -8.958557,
-					y: 7.84069157,
+					y: 7.84069061,
 					z: 0.098001,
 				},
 			},
@@ -35937,25 +35937,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -15.2237549,
-					y: 4.41829967,
+					x: -15.2236938,
+					y: 4.41829872,
 					z: -0.101998806,
 				},
 				max: {
-					x: -13.3032227,
-					y: 9.926799,
+					x: -13.3031616,
+					y: 9.926798,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -15.2237549,
-					y: 4.41829967,
+					x: -15.2236938,
+					y: 4.41829872,
 					z: -0.101998806,
 				},
 				max: {
-					x: -13.3032227,
-					y: 9.926799,
+					x: -13.3031616,
+					y: 9.926798,
 					z: 0.098001,
 				},
 			},
@@ -35999,25 +35999,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -15.2285156,
-					y: 4.41829967,
+					x: -15.2284546,
+					y: 4.41829872,
 					z: -0.101998806,
 				},
 				max: {
-					x: -13.2984619,
-					y: 9.926799,
+					x: -13.2984009,
+					y: 9.926798,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -15.2285156,
-					y: 4.41829967,
+					x: -15.2284546,
+					y: 4.41829872,
 					z: -0.101998806,
 				},
 				max: {
-					x: -13.2984619,
-					y: 9.926799,
+					x: -13.2984009,
+					y: 9.926798,
 					z: 0.098001,
 				},
 			},
@@ -36075,24 +36075,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -12.5523071,
-					y: 7.66014576,
+					y: 7.660145,
 					z: 0.0,
 				},
 				max: {
 					x: -12.5523071,
-					y: 7.66014576,
+					y: 7.660145,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -12.5523071,
-					y: 7.66014576,
+					y: 7.660145,
 					z: 0.0,
 				},
 				max: {
 					x: -12.5523071,
-					y: 7.66014576,
+					y: 7.660145,
 					z: 0.0,
 				},
 			},
@@ -36123,25 +36123,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -10.2362061,
-					y: 7.650941,
+					x: -10.236145,
+					y: 7.650942,
 					z: 0.0,
 				},
 				max: {
-					x: -10.2362061,
-					y: 7.650941,
+					x: -10.236145,
+					y: 7.650942,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -10.2362061,
-					y: 7.650941,
+					x: -10.236145,
+					y: 7.650942,
 					z: 0.0,
 				},
 				max: {
-					x: -10.2362061,
-					y: 7.650941,
+					x: -10.236145,
+					y: 7.650942,
 					z: 0.0,
 				},
 			},
@@ -36172,25 +36172,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -11.9813232,
-					y: 4.149191,
+					x: -11.9812622,
+					y: 4.149192,
 					z: -0.104001522,
 				},
 				max: {
-					x: -10.2368164,
-					y: 7.38069057,
+					x: -10.2367554,
+					y: 7.38069153,
 					z: 0.09599829,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -11.9813232,
-					y: 4.149191,
+					x: -11.9812622,
+					y: 4.149192,
 					z: -0.104001522,
 				},
 				max: {
-					x: -10.2368164,
-					y: 7.38069057,
+					x: -10.2367554,
+					y: 7.38069153,
 					z: 0.09599829,
 				},
 			},
@@ -36235,24 +36235,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -15.2236938,
-					y: 4.210149,
+					y: 4.21015,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -13.3031616,
-					y: 9.925649,
+					y: 9.92565,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -15.2236938,
-					y: 4.210149,
+					y: 4.21015,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -13.3031616,
-					y: 9.925649,
+					y: 9.92565,
 					z: 0.0999999046,
 				},
 			},
@@ -36300,7 +36300,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.THE_SLAB',
 					position: {
 						x: -9.761169,
-						y: 5.493552,
+						y: 5.49355125,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -36339,25 +36339,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -15.2237549,
-					y: 4.37115,
+					x: -15.2236938,
+					y: 4.371149,
 					z: -0.100999355,
 				},
 				max: {
-					x: -13.3032227,
-					y: 9.925651,
+					x: -13.3031616,
+					y: 9.92565,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -15.2237549,
-					y: 4.37115,
+					x: -15.2236938,
+					y: 4.371149,
 					z: -0.100999355,
 				},
 				max: {
-					x: -13.3032227,
-					y: 9.925651,
+					x: -13.3031616,
+					y: 9.92565,
 					z: 0.0990004539,
 				},
 			},
@@ -36415,24 +36415,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -17.27185,
-					y: 5.37164974,
+					y: 5.371649,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -15.2133789,
-					y: 9.45415,
+					y: 9.454149,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -17.27185,
-					y: 5.37164974,
+					y: 5.371649,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -15.2133789,
-					y: 9.45415,
+					y: 9.454149,
 					z: 0.0999999046,
 				},
 			},
@@ -36495,7 +36495,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: -15.2133789,
-					y: 9.50015,
+					y: 9.500149,
 					z: 0.0999999046,
 				},
 			},
@@ -36507,7 +36507,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: -15.2133789,
-					y: 9.50015,
+					y: 9.500149,
 					z: 0.0999999046,
 				},
 			},
@@ -36564,25 +36564,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -17.2155151,
-					y: 5.18764973,
+					x: -17.2154541,
+					y: 5.18765068,
 					z: -0.101998806,
 				},
 				max: {
-					x: -15.1570435,
-					y: 9.615148,
+					x: -15.1569824,
+					y: 9.615149,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -17.2155151,
-					y: 5.18764973,
+					x: -17.2154541,
+					y: 5.18765068,
 					z: -0.101998806,
 				},
 				max: {
-					x: -15.1570435,
-					y: 9.615148,
+					x: -15.1569824,
+					y: 9.615149,
 					z: 0.098001,
 				},
 			},
@@ -36640,24 +36640,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -26.0187378,
-					y: 7.072154,
+					y: 7.072153,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -19.33722,
-					y: 7.85415554,
+					y: 7.85415459,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -26.0187378,
-					y: 7.072154,
+					y: 7.072153,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -19.33722,
-					y: 7.85415554,
+					y: 7.85415459,
 					z: 0.0999999046,
 				},
 			},
@@ -36701,25 +36701,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -19.3453369,
-					y: 7.338149,
+					x: -19.3452759,
+					y: 7.33815,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -17.1948242,
-					y: 7.671649,
+					x: -17.1947632,
+					y: 7.67165,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -19.3453369,
-					y: 7.338149,
+					x: -19.3452759,
+					y: 7.33815,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -17.1948242,
-					y: 7.671649,
+					x: -17.1947632,
+					y: 7.67165,
 					z: 0.0999999046,
 				},
 			},
@@ -36764,24 +36764,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -26.2153931,
-					y: 6.968999,
+					y: 6.969,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -24.17987,
-					y: 7.87749958,
+					y: 7.87750053,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -26.2153931,
-					y: 6.968999,
+					y: 6.969,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -24.17987,
-					y: 7.87749958,
+					y: 7.87750053,
 					z: 0.0999999046,
 				},
 			},
@@ -36826,24 +36826,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -24.961853,
-					y: 7.875203,
+					y: 7.87520027,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -20.6264038,
-					y: 11.2677011,
+					y: 11.2677021,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -24.961853,
-					y: 7.875203,
+					y: 7.87520027,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -20.6264038,
-					y: 11.2677011,
+					y: 11.2677021,
 					z: 0.0999999046,
 				},
 			},
@@ -36888,24 +36888,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -24.20288,
-					y: 7.87519932,
+					y: 7.87520027,
 					z: -0.100999355,
 				},
 				max: {
 					x: -20.7644043,
-					y: 11.2677011,
+					y: 11.2676983,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -24.20288,
-					y: 7.87519932,
+					y: 7.87520027,
 					z: -0.100999355,
 				},
 				max: {
 					x: -20.7644043,
-					y: 11.2677011,
+					y: 11.2676983,
 					z: 0.0990004539,
 				},
 			},
@@ -36950,24 +36950,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -24.4995728,
-					y: 7.77744961,
+					y: 7.77744865,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -19.40509,
-					y: 10.15795,
+					y: 10.1579494,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -24.4995728,
-					y: 7.77744961,
+					y: 7.77744865,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -19.40509,
-					y: 10.15795,
+					y: 10.1579494,
 					z: 0.0999999046,
 				},
 			},
@@ -37012,24 +37012,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -24.4995728,
-					y: 7.77744961,
+					y: 7.77744865,
 					z: -0.101998806,
 				},
 				max: {
 					x: -19.40509,
-					y: 10.15795,
+					y: 10.1579494,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -24.4995728,
-					y: 7.77744961,
+					y: 7.77744865,
 					z: -0.101998806,
 				},
 				max: {
 					x: -19.40509,
-					y: 10.15795,
+					y: 10.1579494,
 					z: 0.098001,
 				},
 			},
@@ -37074,24 +37074,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -26.1141968,
-					y: 8.4525,
+					y: 8.452501,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -18.50116,
-					y: 13.9955,
+					y: 13.9955006,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -26.1141968,
-					y: 8.4525,
+					y: 8.452501,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -18.50116,
-					y: 13.9955,
+					y: 13.9955006,
 					z: 0.0999999046,
 				},
 			},
@@ -37135,25 +37135,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -19.4154663,
-					y: 8.961949,
+					x: -19.4154053,
+					y: 8.96195,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -17.253479,
-					y: 10.1579485,
+					x: -17.253418,
+					y: 10.1579494,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -19.4154663,
-					y: 8.961949,
+					x: -19.4154053,
+					y: 8.96195,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -17.253479,
-					y: 10.1579485,
+					x: -17.253418,
+					y: 10.1579494,
 					z: 0.0999999046,
 				},
 			},
@@ -37197,25 +37197,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -19.2401733,
-					y: 9.346049,
+					x: -19.2401123,
+					y: 9.346048,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.2539673,
-					y: 10.18555,
+					x: -17.2539063,
+					y: 10.1855488,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -19.2401733,
-					y: 9.346049,
+					x: -19.2401123,
+					y: 9.346048,
 					z: -0.100999355,
 				},
 				max: {
-					x: -17.2539673,
-					y: 10.18555,
+					x: -17.2539063,
+					y: 10.1855488,
 					z: 0.0990004539,
 				},
 			},
@@ -37260,24 +37260,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -16.7980347,
-					y: 10.1648493,
+					y: 10.16485,
 					z: 0.0,
 				},
 				max: {
 					x: -16.7980347,
-					y: 10.1648493,
+					y: 10.16485,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -16.7980347,
-					y: 10.1648493,
+					y: 10.16485,
 					z: 0.0,
 				},
 				max: {
 					x: -16.7980347,
-					y: 10.1648493,
+					y: 10.16485,
 					z: 0.0,
 				},
 			},
@@ -37309,24 +37309,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -17.2545776,
-					y: 9.346395,
+					y: 9.34639549,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -16.34613,
-					y: 10.4388933,
+					y: 10.4388943,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -17.2545776,
-					y: 9.346395,
+					y: 9.34639549,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -16.34613,
-					y: 10.4388933,
+					y: 10.4388943,
 					z: 0.0999999046,
 				},
 			},
@@ -37361,7 +37361,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.ICECORE',
 					position: {
 						x: -16.6853638,
-						y: 15.1653948,
+						y: 15.1653957,
 						z: -2.52000046,
 					},
 					fontSize: 4,
@@ -37369,12 +37369,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: -17.5299683,
-							y: 10.4254313,
+							y: 10.42543,
 							z: -2.52000046,
 						},
 						max: {
 							x: -15.8451538,
-							y: 10.9395418,
+							y: 10.9395409,
 							z: -2.52000046,
 						},
 					},
@@ -37400,25 +37400,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -15.1685181,
-					y: 9.925254,
+					x: -15.168457,
+					y: 9.925253,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -12.84552,
-					y: 13.0103369,
+					x: -12.845459,
+					y: 13.0103359,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -15.1685181,
-					y: 9.925254,
+					x: -15.168457,
+					y: 9.925253,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -12.84552,
-					y: 13.0103369,
+					x: -12.845459,
+					y: 13.0103359,
 					z: 0.0999999046,
 				},
 			},
@@ -37462,25 +37462,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -15.1685181,
-					y: 9.92526,
+					x: -15.168457,
+					y: 9.925259,
 					z: -0.100999355,
 				},
 				max: {
-					x: -12.84552,
-					y: 13.0103426,
+					x: -12.845459,
+					y: 13.0103416,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -15.1685181,
-					y: 9.92526,
+					x: -15.168457,
+					y: 9.925259,
 					z: -0.100999355,
 				},
 				max: {
-					x: -12.84552,
-					y: 13.0103426,
+					x: -12.845459,
+					y: 13.0103416,
 					z: 0.0990004539,
 				},
 			},
@@ -37525,24 +37525,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -15.267395,
-					y: 9.9682,
+					y: 9.968201,
 					z: -0.100999355,
 				},
 				max: {
 					x: -14.6004028,
-					y: 10.3017,
+					y: 10.3017006,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -15.267395,
-					y: 9.9682,
+					y: 9.968201,
 					z: -0.100999355,
 				},
 				max: {
 					x: -14.6004028,
-					y: 10.3017,
+					y: 10.3017006,
 					z: 0.0990004539,
 				},
 			},
@@ -37587,24 +37587,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -22.42157,
-					y: 11.2573481,
+					y: 11.257349,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -15.625061,
-					y: 14.9028482,
+					y: 14.9028492,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -22.42157,
-					y: 11.2573481,
+					y: 11.257349,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -15.625061,
-					y: 14.9028482,
+					y: 14.9028492,
 					z: 0.0999999046,
 				},
 			},
@@ -37649,24 +37649,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -19.6879883,
-					y: 13.004199,
+					y: 13.0042,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -13.213501,
-					y: 15.6491995,
+					y: 15.6492,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -19.6879883,
-					y: 13.004199,
+					y: 13.0042,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -13.213501,
-					y: 15.6491995,
+					y: 15.6492,
 					z: 0.0999999046,
 				},
 			},
@@ -37710,25 +37710,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -18.89685,
+					x: -18.89679,
 					y: 4.9128,
 					z: -0.0990004539,
 				},
 				max: {
-					x: -17.2637939,
-					y: 5.93629932,
+					x: -17.2637329,
+					y: 5.93629837,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -18.89685,
+					x: -18.89679,
 					y: 4.9128,
 					z: -0.0990004539,
 				},
 				max: {
-					x: -17.2637939,
-					y: 5.93629932,
+					x: -17.2637329,
+					y: 5.93629837,
 					z: 0.100999355,
 				},
 			},
@@ -37786,24 +37786,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -14.7425537,
-					y: 14.0725489,
+					y: 14.07255,
 					z: -0.100999355,
 				},
 				max: {
 					x: -14.1445313,
-					y: 14.6015482,
+					y: 14.6015491,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -14.7425537,
-					y: 14.0725489,
+					y: 14.07255,
 					z: -0.100999355,
 				},
 				max: {
 					x: -14.1445313,
-					y: 14.6015482,
+					y: 14.6015491,
 					z: 0.0990004539,
 				},
 			},
@@ -37848,24 +37848,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -24.18103,
-					y: 6.887355,
+					y: 6.887354,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -23.5600586,
-					y: 7.87635326,
+					y: 7.87635231,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -24.18103,
-					y: 6.887355,
+					y: 6.887354,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -23.5600586,
-					y: 7.87635326,
+					y: 7.87635231,
 					z: 0.0999999046,
 				},
 			},
@@ -37909,25 +37909,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -23.6693115,
-					y: 6.403201,
+					x: -23.66925,
+					y: 6.4032,
 					z: -0.101998806,
 				},
 				max: {
-					x: -21.61084,
-					y: 7.1622,
+					x: -21.6107788,
+					y: 7.162199,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -23.6693115,
-					y: 6.403201,
+					x: -23.66925,
+					y: 6.4032,
 					z: -0.101998806,
 				},
 				max: {
-					x: -21.61084,
-					y: 7.1622,
+					x: -21.6107788,
+					y: 7.162199,
 					z: 0.098001,
 				},
 			},
@@ -37972,24 +37972,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -22.7182617,
-					y: 13.731,
+					y: 13.730999,
 					z: -0.0009994507,
 				},
 				max: {
 					x: -22.7182617,
-					y: 13.731,
+					y: 13.730999,
 					z: -0.0009994507,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -22.7182617,
-					y: 13.731,
+					y: 13.730999,
 					z: -0.0009994507,
 				},
 				max: {
 					x: -22.7182617,
-					y: 13.731,
+					y: 13.730999,
 					z: -0.0009994507,
 				},
 			},
@@ -38021,24 +38021,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -7.14117432,
-					y: 1.84586239,
+					y: 1.84586334,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.97869873,
-					y: 4.651862,
+					y: 4.651863,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -7.14117432,
-					y: 1.84586239,
+					y: 1.84586334,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.97869873,
-					y: 4.651862,
+					y: 4.651863,
 					z: 0.0999999046,
 				},
 			},
@@ -38096,24 +38096,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -7.14117432,
-					y: 1.84586239,
+					y: 1.84586334,
 					z: -0.101998806,
 				},
 				max: {
 					x: -3.97869873,
-					y: 4.651862,
+					y: 4.651863,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -7.14117432,
-					y: 1.84586239,
+					y: 1.84586334,
 					z: -0.101998806,
 				},
 				max: {
 					x: -3.97869873,
-					y: 4.651862,
+					y: 4.651863,
 					z: 0.098001,
 				},
 			},
@@ -38171,24 +38171,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -6.70025635,
-					y: 2.51631165,
+					y: 2.5163126,
 					z: -0.100999355,
 				},
 				max: {
 					x: -6.677307,
-					y: 2.53931236,
+					y: 2.53931332,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -6.70025635,
-					y: 2.51631165,
+					y: 2.5163126,
 					z: -0.100999355,
 				},
 				max: {
 					x: -6.677307,
-					y: 2.53931236,
+					y: 2.53931332,
 					z: 0.0990004539,
 				},
 			},
@@ -38235,7 +38235,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Song/Song_01_bot/Next Area Down (4)/Area Name',
 					textKey: 'Map Zones.FRONT_GATE',
 					position: {
-						x: -3.51251221,
+						x: -3.51245117,
 						y: 0.969562531,
 						z: -2.521,
 					},
@@ -38243,12 +38243,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -3.51251221,
+							x: -3.51245117,
 							y: 0.969562531,
 							z: -2.521,
 						},
 						max: {
-							x: -3.51251221,
+							x: -3.51245117,
 							y: 0.969562531,
 							z: -2.521,
 						},
@@ -38276,24 +38276,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -6.555359,
-					y: 4.650713,
+					y: 4.650714,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88739014,
-					y: 5.06471348,
+					y: 5.06471443,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -6.555359,
-					y: 4.650713,
+					y: 4.650714,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88739014,
-					y: 5.06471348,
+					y: 5.06471443,
 					z: 0.0999999046,
 				},
 			},
@@ -38351,24 +38351,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -6.557678,
-					y: 4.6484127,
+					y: 4.64841366,
 					z: -0.100999355,
 				},
 				max: {
 					x: -3.88970947,
-					y: 5.062413,
+					y: 5.062414,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -6.557678,
-					y: 4.6484127,
+					y: 4.64841366,
 					z: -0.100999355,
 				},
 				max: {
 					x: -3.88970947,
-					y: 5.062413,
+					y: 5.062414,
 					z: 0.0990004539,
 				},
 			},
@@ -38412,25 +38412,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -6.803833,
-					y: 5.06356335,
+					x: -6.803772,
+					y: 5.0635643,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.894287,
-					y: 5.822562,
+					x: -3.894226,
+					y: 5.822563,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -6.803833,
-					y: 5.06356335,
+					x: -6.803772,
+					y: 5.0635643,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.894287,
-					y: 5.822562,
+					x: -3.894226,
+					y: 5.822563,
 					z: 0.0999999046,
 				},
 			},
@@ -38475,24 +38475,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -6.69226074,
-					y: 5.06356335,
+					y: 5.0635643,
 					z: -0.100999355,
 				},
 				max: {
 					x: -3.88623047,
-					y: 5.822562,
+					y: 5.822563,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -6.69226074,
-					y: 5.06356335,
+					y: 5.0635643,
 					z: -0.100999355,
 				},
 				max: {
 					x: -3.88623047,
-					y: 5.822562,
+					y: 5.822563,
 					z: 0.0990004539,
 				},
 			},
@@ -38537,24 +38537,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -3.89196777,
-					y: 4.374712,
+					y: 4.374713,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -0.4350586,
-					y: 5.260213,
+					y: 5.260214,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -3.89196777,
-					y: 4.374712,
+					y: 4.374713,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -0.4350586,
-					y: 5.260213,
+					y: 5.260214,
 					z: 0.0999999046,
 				},
 			},
@@ -38612,24 +38612,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -6.727844,
-					y: 5.821412,
+					y: 5.821413,
 					z: -0.100999355,
 				},
 				max: {
 					x: -3.88739014,
-					y: 7.132413,
+					y: 7.132414,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -6.727844,
-					y: 5.821412,
+					y: 5.821413,
 					z: -0.100999355,
 				},
 				max: {
 					x: -3.88739014,
-					y: 7.132413,
+					y: 7.132414,
 					z: 0.0990004539,
 				},
 			},
@@ -38674,24 +38674,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -6.727844,
-					y: 5.821412,
+					y: 5.821413,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88739014,
-					y: 7.132413,
+					y: 7.132414,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -6.727844,
-					y: 5.821412,
+					y: 5.821413,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88739014,
-					y: 7.132413,
+					y: 7.132414,
 					z: 0.0999999046,
 				},
 			},
@@ -38725,8 +38725,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Song/Song_04_top/Next Area Left (2)/Area Name',
 					textKey: 'Map Zones.THE_SLAB',
 					position: {
-						x: -8.55987549,
-						y: 6.92530537,
+						x: -8.559814,
+						y: 6.92530441,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -38766,24 +38766,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -6.727844,
-					y: 5.869687,
+					y: 5.869686,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88739014,
-					y: 7.13243961,
+					y: 7.13243866,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -6.727844,
-					y: 5.869687,
+					y: 5.869686,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88739014,
-					y: 7.13243961,
+					y: 7.13243866,
 					z: 0.0999999046,
 				},
 			},
@@ -38828,24 +38828,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -0.4376831,
-					y: 4.78871346,
+					y: 4.7887125,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 0.501281738,
-					y: 6.973714,
+					y: 6.973713,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -0.4376831,
-					y: 4.78871346,
+					y: 4.7887125,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 0.501281738,
-					y: 6.973714,
+					y: 6.973713,
 					z: 0.0999999046,
 				},
 			},
@@ -38893,7 +38893,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.WARD',
 					position: {
 						x: 4.135376,
-						y: 4.92901134,
+						y: 4.92901039,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -38901,12 +38901,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 4.135376,
-							y: 4.92901134,
+							y: 4.92901039,
 							z: -2.52000046,
 						},
 						max: {
 							x: 4.135376,
-							y: 4.92901134,
+							y: 4.92901039,
 							z: -2.52000046,
 						},
 					},
@@ -38932,25 +38932,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -1.76977539,
-					y: 5.57416248,
+					x: -1.76971436,
+					y: 5.57416344,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -0.434448242,
-					y: 5.896161,
+					x: -0.4343872,
+					y: 5.896162,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -1.76977539,
-					y: 5.57416248,
+					x: -1.76971436,
+					y: 5.57416344,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -0.434448242,
-					y: 5.896161,
+					x: -0.4343872,
+					y: 5.896162,
 					z: 0.0999999046,
 				},
 			},
@@ -39007,25 +39007,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -4.66595459,
-					y: 8.469632,
+					x: -4.66589355,
+					y: 8.469633,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.88397217,
-					y: 8.780133,
+					x: -3.88391113,
+					y: 8.780134,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -4.66595459,
-					y: 8.469632,
+					x: -4.66589355,
+					y: 8.469633,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.88397217,
-					y: 8.780133,
+					x: -3.88391113,
+					y: 8.780134,
 					z: 0.0999999046,
 				},
 			},
@@ -39070,24 +39070,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -0.470703125,
-					y: 7.574012,
+					y: 7.57401276,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 0.437744141,
-					y: 9.161014,
+					y: 9.161015,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -0.470703125,
-					y: 7.574012,
+					y: 7.57401276,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 0.437744141,
-					y: 9.161014,
+					y: 9.161015,
 					z: 0.0999999046,
 				},
 			},
@@ -39145,24 +39145,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -0.516723633,
-					y: 7.574012,
+					y: 7.57401276,
 					z: -0.100999355,
 				},
 				max: {
 					x: 0.483764648,
-					y: 9.161014,
+					y: 9.161015,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -0.516723633,
-					y: 7.574012,
+					y: 7.57401276,
 					z: -0.100999355,
 				},
 				max: {
 					x: 0.483764648,
-					y: 9.161014,
+					y: 9.161015,
 					z: 0.0990004539,
 				},
 			},
@@ -39197,7 +39197,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.COG_CORE_SHORT',
 					position: {
 						x: 3.40667725,
-						y: 7.96271038,
+						y: 7.96270943,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -39236,25 +39236,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -0.4362793,
-					y: 5.72366047,
+					x: -0.436218262,
+					y: 5.72366142,
 					z: -0.101998806,
 				},
 				max: {
-					x: 2.427246,
-					y: 7.575162,
+					x: 2.42730713,
+					y: 7.575163,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -0.4362793,
-					y: 5.72366047,
+					x: -0.436218262,
+					y: 5.72366142,
 					z: -0.101998806,
 				},
 				max: {
-					x: 2.427246,
-					y: 7.575162,
+					x: 2.42730713,
+					y: 7.575163,
 					z: 0.098001,
 				},
 			},
@@ -39311,25 +39311,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -0.4362793,
-					y: 5.72366047,
+					x: -0.436218262,
+					y: 5.72366142,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 2.427246,
-					y: 7.575162,
+					x: 2.42730713,
+					y: 7.575163,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -0.4362793,
-					y: 5.72366047,
+					x: -0.436218262,
+					y: 5.72366142,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 2.427246,
-					y: 7.575162,
+					x: 2.42730713,
+					y: 7.575163,
 					z: 0.100999355,
 				},
 			},
@@ -39387,24 +39387,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -3.88964844,
-					y: 5.454562,
+					y: 5.454563,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.60119629,
-					y: 6.71956158,
+					y: 6.71956253,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -3.88964844,
-					y: 5.454562,
+					y: 5.454563,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.60119629,
-					y: 6.71956158,
+					y: 6.71956253,
 					z: 0.0999999046,
 				},
 			},
@@ -39449,24 +39449,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -3.00531,
-					y: 6.29981136,
+					y: 6.29981232,
 					z: -0.101998806,
 				},
 				max: {
 					x: -1.26885986,
-					y: 6.805812,
+					y: 6.805813,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -3.00531,
-					y: 6.29981136,
+					y: 6.29981232,
 					z: -0.101998806,
 				},
 				max: {
 					x: -1.26885986,
-					y: 6.805812,
+					y: 6.805813,
 					z: 0.098001,
 				},
 			},
@@ -39511,24 +39511,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -3.00531,
-					y: 6.29981136,
+					y: 6.29981232,
 					z: -0.101998806,
 				},
 				max: {
 					x: -1.26885986,
-					y: 6.805812,
+					y: 6.805813,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -3.00531,
-					y: 6.29981136,
+					y: 6.29981232,
 					z: -0.101998806,
 				},
 				max: {
 					x: -1.26885986,
-					y: 6.805812,
+					y: 6.805813,
 					z: 0.098001,
 				},
 			},
@@ -39573,24 +39573,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -3.00531,
-					y: 6.07441235,
+					y: 6.0744133,
 					z: -0.100999355,
 				},
 				max: {
 					x: -1.26885986,
-					y: 7.040412,
+					y: 7.040413,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -3.00531,
-					y: 6.07441235,
+					y: 6.0744133,
 					z: -0.100999355,
 				},
 				max: {
 					x: -1.26885986,
-					y: 7.040412,
+					y: 7.040413,
 					z: 0.0990004539,
 				},
 			},
@@ -39625,7 +39625,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.BATHHOUSE',
 					position: {
 						x: -2.00415039,
-						y: 6.1652,
+						y: 6.16519928,
 						z: -2.52000046,
 					},
 					fontSize: 4,
@@ -39633,12 +39633,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: -3.18170166,
-							y: 5.243039,
+							y: 5.24304,
 							z: -2.52000046,
 						},
 						max: {
 							x: -2.02008057,
-							y: 6.1652,
+							y: 6.16519737,
 							z: -2.52000046,
 						},
 					},
@@ -39664,25 +39664,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -3.88970947,
-					y: 5.463763,
+					x: -3.88964844,
+					y: 5.46376228,
 					z: -0.101998806,
 				},
 				max: {
-					x: -1.61273193,
-					y: 6.72876263,
+					x: -1.6126709,
+					y: 6.72876167,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -3.88970947,
-					y: 5.463763,
+					x: -3.88964844,
+					y: 5.46376228,
 					z: -0.101998806,
 				},
 				max: {
-					x: -1.61273193,
-					y: 6.72876263,
+					x: -1.6126709,
+					y: 6.72876167,
 					z: 0.098001,
 				},
 			},
@@ -39727,24 +39727,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -1.586792,
-					y: 5.928134,
+					y: 5.928133,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -0.435668945,
-					y: 9.458632,
+					y: 9.45863152,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -1.586792,
-					y: 5.928134,
+					y: 5.928133,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -0.435668945,
-					y: 9.458632,
+					y: 9.45863152,
 					z: 0.0999999046,
 				},
 			},
@@ -39801,25 +39801,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -1.08947754,
-					y: 7.3716135,
+					x: -1.0894165,
+					y: 7.37161255,
 					z: -0.101998806,
 				},
 				max: {
-					x: -0.6064453,
-					y: 9.119615,
+					x: -0.6063843,
+					y: 9.119614,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -1.08947754,
-					y: 7.3716135,
+					x: -1.0894165,
+					y: 7.37161255,
 					z: -0.101998806,
 				},
 				max: {
-					x: -0.6064453,
-					y: 9.119615,
+					x: -0.6063843,
+					y: 9.119614,
 					z: 0.098001,
 				},
 			},
@@ -39864,24 +39864,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -1.22973633,
-					y: 9.017264,
+					y: 9.017263,
 					z: -0.104001522,
 				},
 				max: {
 					x: -0.459228516,
-					y: 9.707263,
+					y: 9.707262,
 					z: 0.09599829,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -1.22973633,
-					y: 9.017264,
+					y: 9.017263,
 					z: -0.104001522,
 				},
 				max: {
 					x: -0.459228516,
-					y: 9.707263,
+					y: 9.707262,
 					z: 0.09599829,
 				},
 			},
@@ -39926,24 +39926,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -1.586792,
-					y: 6.045661,
+					y: 6.045662,
 					z: -0.100999355,
 				},
 				max: {
 					x: -0.435668945,
-					y: 9.357661,
+					y: 9.357662,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -1.586792,
-					y: 6.045661,
+					y: 6.045662,
 					z: -0.100999355,
 				},
 				max: {
 					x: -0.435668945,
-					y: 9.357661,
+					y: 9.357662,
 					z: 0.0990004539,
 				},
 			},
@@ -40001,24 +40001,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -1.28723145,
-					y: 9.017264,
+					y: 9.017263,
 					z: -0.105000973,
 				},
 				max: {
 					x: -0.4017334,
-					y: 9.707263,
+					y: 9.707262,
 					z: 0.09499884,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -1.28723145,
-					y: 9.017264,
+					y: 9.017263,
 					z: -0.105000973,
 				},
 				max: {
 					x: -0.4017334,
-					y: 9.707263,
+					y: 9.707262,
 					z: 0.09499884,
 				},
 			},
@@ -40063,24 +40063,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -3.88928223,
-					y: 6.572364,
+					y: 6.572363,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.27368164,
-					y: 8.768863,
+					y: 8.768862,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -3.88928223,
-					y: 6.572364,
+					y: 6.572363,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.27368164,
-					y: 8.768863,
+					y: 8.768862,
 					z: 0.0999999046,
 				},
 			},
@@ -40137,25 +40137,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -3.27679443,
-					y: 6.813863,
+					x: -3.2767334,
+					y: 6.81386375,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.58624268,
-					y: 7.17036152,
+					x: -1.58618164,
+					y: 7.17036247,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -3.27679443,
-					y: 6.813863,
+					x: -3.2767334,
+					y: 6.81386375,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.58624268,
-					y: 7.17036152,
+					x: -1.58618164,
+					y: 7.17036247,
 					z: 0.0999999046,
 				},
 			},
@@ -40212,25 +40212,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -3.27679443,
-					y: 7.47051334,
+					x: -3.2767334,
+					y: 7.4705143,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.86224365,
-					y: 7.827012,
+					x: -1.86218262,
+					y: 7.827013,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -3.27679443,
-					y: 7.47051334,
+					x: -3.2767334,
+					y: 7.4705143,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.86224365,
-					y: 7.827012,
+					x: -1.86218262,
+					y: 7.827013,
 					z: 0.0999999046,
 				},
 			},
@@ -40288,24 +40288,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -3.27215576,
-					y: 8.147862,
+					y: 8.147863,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.581604,
-					y: 8.952863,
+					y: 8.952864,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -3.27215576,
-					y: 8.147862,
+					y: 8.147863,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.581604,
-					y: 8.952863,
+					y: 8.952864,
 					z: 0.0999999046,
 				},
 			},
@@ -40349,25 +40349,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -3.27679443,
-					y: 8.147862,
+					x: -3.2767334,
+					y: 8.147863,
 					z: -0.100999355,
 				},
 				max: {
-					x: -1.58624268,
-					y: 8.952863,
+					x: -1.58618164,
+					y: 8.952864,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -3.27679443,
-					y: 8.147862,
+					x: -3.2767334,
+					y: 8.147863,
 					z: -0.100999355,
 				},
 				max: {
-					x: -1.58624268,
-					y: 8.952863,
+					x: -1.58618164,
+					y: 8.952864,
 					z: 0.0990004539,
 				},
 			},
@@ -40411,25 +40411,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -3.8862915,
-					y: 8.169713,
+					x: -3.88623047,
+					y: 8.169714,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.58624268,
-					y: 10.1362123,
+					x: -1.58618164,
+					y: 10.1362133,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -3.8862915,
-					y: 8.169713,
+					x: -3.88623047,
+					y: 8.169714,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.58624268,
-					y: 10.1362123,
+					x: -1.58618164,
+					y: 10.1362133,
 					z: 0.0999999046,
 				},
 			},
@@ -40487,24 +40487,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 0.495239258,
-					y: 5.68456364,
+					y: 5.68456268,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 2.461792,
-					y: 6.972562,
+					y: 6.972561,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 0.495239258,
-					y: 5.68456364,
+					y: 5.68456268,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 2.461792,
-					y: 6.972562,
+					y: 6.972561,
 					z: 0.0999999046,
 				},
 			},
@@ -40549,24 +40549,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 0.964477539,
-					y: 5.936414,
+					y: 5.936413,
 					z: -0.102998257,
 				},
 				max: {
 					x: 2.22949219,
-					y: 6.6379137,
+					y: 6.63791275,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 0.964477539,
-					y: 5.936414,
+					y: 5.936413,
 					z: -0.102998257,
 				},
 				max: {
 					x: 2.22949219,
-					y: 6.6379137,
+					y: 6.63791275,
 					z: 0.09700155,
 				},
 			},
@@ -40611,24 +40611,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 0.964477539,
-					y: 5.936414,
+					y: 5.936413,
 					z: -0.104001522,
 				},
 				max: {
 					x: 2.22949219,
-					y: 6.6379137,
+					y: 6.63791275,
 					z: 0.09599829,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 0.964477539,
-					y: 5.936414,
+					y: 5.936413,
 					z: -0.104001522,
 				},
 				max: {
 					x: 2.22949219,
-					y: 6.6379137,
+					y: 6.63791275,
 					z: 0.09599829,
 				},
 			},
@@ -40673,24 +40673,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -4.596924,
-					y: 7.84886265,
+					y: 7.84886169,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88391113,
-					y: 8.251363,
+					y: 8.251362,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -4.596924,
-					y: 7.84886265,
+					y: 7.84886169,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88391113,
-					y: 8.251363,
+					y: 8.251362,
 					z: 0.0999999046,
 				},
 			},
@@ -40734,25 +40734,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -4.83844,
-					y: 7.215211,
+					x: -4.838379,
+					y: 7.215212,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.88397217,
-					y: 7.59471226,
+					x: -3.88391113,
+					y: 7.594713,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -4.83844,
-					y: 7.215211,
+					x: -4.838379,
+					y: 7.215212,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -3.88397217,
-					y: 7.59471226,
+					x: -3.88391113,
+					y: 7.594713,
 					z: 0.0999999046,
 				},
 			},
@@ -40810,24 +40810,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 0.489501953,
-					y: 5.676284,
+					y: 5.676283,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.51501465,
-					y: 6.21678448,
+					y: 6.21678352,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 0.489501953,
-					y: 5.676284,
+					y: 5.676283,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.51501465,
-					y: 6.21678448,
+					y: 6.21678352,
 					z: 0.0999999046,
 				},
 			},
@@ -40885,24 +40885,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -4.83612061,
-					y: 8.871219,
+					y: 8.871218,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88165283,
-					y: 11.1022177,
+					y: 11.1022167,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -4.83612061,
-					y: 8.871219,
+					y: 8.871218,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -3.88165283,
-					y: 11.1022177,
+					y: 11.1022167,
 					z: 0.0999999046,
 				},
 			},
@@ -40947,24 +40947,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -4.83618164,
-					y: 8.921926,
+					y: 8.921925,
 					z: -0.100999355,
 				},
 				max: {
 					x: -3.88171387,
-					y: 11.1529245,
+					y: 11.1529236,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -4.83618164,
-					y: 8.921926,
+					y: 8.921925,
 					z: -0.100999355,
 				},
 				max: {
 					x: -3.88171387,
-					y: 11.1529245,
+					y: 11.1529236,
 					z: 0.0990004539,
 				},
 			},
@@ -40999,7 +40999,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.HANG',
 					position: {
 						x: -3.58728027,
-						y: 12.3891764,
+						y: 12.3891754,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -41007,12 +41007,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: -3.58728027,
-							y: 12.3891764,
+							y: 12.3891754,
 							z: -2.52000046,
 						},
 						max: {
 							x: -3.58728027,
-							y: 12.3891764,
+							y: 12.3891754,
 							z: -2.52000046,
 						},
 					},
@@ -41090,7 +41090,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Song/Under_07b_bot/Next Area Down (3)/Area Name',
 					textKey: 'Map Zones.UNDERSTORE',
 					position: {
-						x: -0.1361084,
+						x: -0.136047363,
 						y: 1.45236206,
 						z: -2.52000046,
 					},
@@ -41098,12 +41098,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -0.1361084,
+							x: -0.136047363,
 							y: 1.45236206,
 							z: -2.52000046,
 						},
 						max: {
-							x: -0.1361084,
+							x: -0.136047363,
 							y: 1.45236206,
 							z: -2.52000046,
 						},
@@ -41206,24 +41206,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -0.47076416,
-					y: 9.13226,
+					y: 9.132261,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 2.3237915,
-					y: 9.649762,
+					y: 9.649763,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -0.47076416,
-					y: 9.13226,
+					y: 9.132261,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 2.3237915,
-					y: 9.649762,
+					y: 9.649763,
 					z: 0.0999999046,
 				},
 			},
@@ -41271,7 +41271,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.HANG',
 					position: {
 						x: 3.16210938,
-						y: 8.839017,
+						y: 8.839018,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -41279,12 +41279,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 3.16210938,
-							y: 8.839017,
+							y: 8.839018,
 							z: -2.52000046,
 						},
 						max: {
 							x: 3.16210938,
-							y: 8.839017,
+							y: 8.839018,
 							z: -2.52000046,
 						},
 					},
@@ -41311,24 +41311,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 6.465149,
-					y: 7.08468533,
+					y: 7.08468437,
 					z: -0.100999355,
 				},
 				max: {
 					x: 7.07769775,
-					y: 7.740184,
+					y: 7.740183,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 6.465149,
-					y: 7.08468533,
+					y: 7.08468437,
 					z: -0.100999355,
 				},
 				max: {
 					x: 7.07769775,
-					y: 7.740184,
+					y: 7.740183,
 					z: 0.0990004539,
 				},
 			},
@@ -41386,24 +41386,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 6.421875,
-					y: 6.59937954,
+					y: 6.59937859,
 					z: -0.105000973,
 				},
 				max: {
 					x: 8.767822,
-					y: 7.79537868,
+					y: 7.79537773,
 					z: 0.09499884,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 6.421875,
-					y: 6.59937954,
+					y: 6.59937859,
 					z: -0.105000973,
 				},
 				max: {
 					x: 8.767822,
-					y: 7.79537868,
+					y: 7.79537773,
 					z: 0.09499884,
 				},
 			},
@@ -41438,7 +41438,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.LIBRARY_SHORT',
 					position: {
 						x: 10.6151733,
-						y: 7.46762943,
+						y: 7.46763039,
 						z: -2.524002,
 					},
 					fontSize: 6,
@@ -41478,24 +41478,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 6.46264648,
-					y: 4.4276123,
+					y: 4.42761326,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.521118,
-					y: 5.07161236,
+					y: 5.07161331,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 6.46264648,
-					y: 4.4276123,
+					y: 4.42761326,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.521118,
-					y: 5.07161236,
+					y: 5.07161331,
 					z: 0.0999999046,
 				},
 			},
@@ -41543,7 +41543,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.CITADEL_STATION',
 					position: {
 						x: 7.58984375,
-						y: 4.467862,
+						y: 4.467863,
 						z: -2.52000046,
 					},
 					fontSize: 4,
@@ -41551,12 +41551,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 6.95282,
-							y: 3.55565739,
+							y: 3.55565834,
 							z: -2.52000046,
 						},
 						max: {
 							x: 8.233582,
-							y: 4.467862,
+							y: 4.467863,
 							z: -2.52000046,
 						},
 					},
@@ -41582,25 +41582,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 7.437256,
+					x: 7.437317,
 					y: 4.75478363,
 					z: -0.100999355,
 				},
 				max: {
-					x: 8.598755,
-					y: 5.08828449,
+					x: 8.598816,
+					y: 5.08828354,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 7.437256,
+					x: 7.437317,
 					y: 4.75478363,
 					z: -0.100999355,
 				},
 				max: {
-					x: 8.598755,
-					y: 5.08828449,
+					x: 8.598816,
+					y: 5.08828354,
 					z: 0.0990004539,
 				},
 			},
@@ -41648,7 +41648,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.UNDERSTORE',
 					position: {
 						x: 12.1887817,
-						y: 4.983634,
+						y: 4.983633,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -41656,12 +41656,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 12.1887817,
-							y: 4.983634,
+							y: 4.983633,
 							z: -2.52000046,
 						},
 						max: {
 							x: 12.1887817,
-							y: 4.983634,
+							y: 4.983633,
 							z: -2.52000046,
 						},
 					},
@@ -41687,25 +41687,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 5.51104736,
-					y: 4.49546242,
+					x: 5.5111084,
+					y: 4.49546146,
 					z: -0.100999355,
 				},
 				max: {
-					x: 6.465515,
-					y: 7.692462,
+					x: 6.465576,
+					y: 7.692461,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 5.51104736,
-					y: 4.49546242,
+					x: 5.5111084,
+					y: 4.49546146,
 					z: -0.100999355,
 				},
 				max: {
-					x: 6.465515,
-					y: 7.692462,
+					x: 6.465576,
+					y: 7.692461,
 					z: 0.0990004539,
 				},
 			},
@@ -41753,7 +41753,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.CITADEL_STAGE',
 					position: {
 						x: 10.008606,
-						y: 5.43846226,
+						y: 5.438463,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -41761,12 +41761,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 10.008606,
-							y: 5.43846226,
+							y: 5.438463,
 							z: -2.52000046,
 						},
 						max: {
 							x: 10.008606,
-							y: 5.43846226,
+							y: 5.438463,
 							z: -2.52000046,
 						},
 					},
@@ -41793,24 +41793,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 5.51116943,
-					y: 4.451762,
+					y: 4.451763,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 6.465637,
-					y: 9.201262,
+					y: 9.201263,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 5.51116943,
-					y: 4.451762,
+					y: 4.451763,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 6.465637,
-					y: 9.201262,
+					y: 9.201263,
 					z: 0.0999999046,
 				},
 			},
@@ -41858,7 +41858,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.LIBRARY_SHORT',
 					position: {
 						x: 10.0535278,
-						y: 8.152463,
+						y: 8.152464,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -41887,7 +41887,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.COG_CORE_SHORT',
 					position: {
 						x: 2.58197021,
-						y: 7.720063,
+						y: 7.72006226,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -41932,7 +41932,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: 5.513855,
-					y: 5.28321171,
+					y: 5.28321266,
 					z: 0.0999999046,
 				},
 			},
@@ -41944,7 +41944,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: 5.513855,
-					y: 5.28321171,
+					y: 5.28321266,
 					z: 0.0999999046,
 				},
 			},
@@ -42001,25 +42001,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.862854,
-					y: 9.156981,
+					x: 3.862915,
+					y: 9.156982,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.835876,
-					y: 9.697482,
+					x: 8.8359375,
+					y: 9.697483,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.862854,
-					y: 9.156981,
+					x: 3.862915,
+					y: 9.156982,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.835876,
-					y: 9.697482,
+					x: 8.8359375,
+					y: 9.697483,
 					z: 0.0999999046,
 				},
 			},
@@ -42067,7 +42067,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.COG_CORE_SHORT',
 					position: {
 						x: 3.16644287,
-						y: 7.67830753,
+						y: 7.67830849,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -42096,7 +42096,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.COG_CORE_SHORT',
 					position: {
 						x: 3.16644287,
-						y: 7.50350666,
+						y: 7.50350761,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -42125,7 +42125,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.ARBORIUM',
 					position: {
 						x: 7.74920654,
-						y: 11.7421846,
+						y: 11.7421856,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -42165,24 +42165,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 4.560547,
-					y: 8.659612,
+					y: 8.659613,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.51501465,
-					y: 9.039113,
+					y: 9.039114,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 4.560547,
-					y: 8.659612,
+					y: 8.659613,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.51501465,
-					y: 9.039113,
+					y: 9.039114,
 					z: 0.0999999046,
 				},
 			},
@@ -42240,24 +42240,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 8.706238,
-					y: 8.774611,
+					y: 8.774612,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 10.9602661,
-					y: 9.453113,
+					y: 9.453114,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 8.706238,
-					y: 8.774611,
+					y: 8.774612,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 10.9602661,
-					y: 9.453113,
+					y: 9.453114,
 					z: 0.0999999046,
 				},
 			},
@@ -42305,7 +42305,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.ENCLAVE',
 					position: {
 						x: 10.8648071,
-						y: 9.649762,
+						y: 9.649763,
 						z: -2.52000046,
 					},
 					fontSize: 4,
@@ -42313,12 +42313,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 10.8688965,
-							y: 9.135652,
+							y: 9.135649,
 							z: -2.52000046,
 						},
 						max: {
 							x: 12.4628906,
-							y: 9.649762,
+							y: 9.649763,
 							z: -2.52000046,
 						},
 					},
@@ -42345,24 +42345,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 9.255432,
-					y: 7.61138058,
+					y: 7.61138153,
 					z: -0.101998806,
 				},
 				max: {
 					x: 11.16449,
-					y: 9.84238,
+					y: 9.842381,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 9.255432,
-					y: 7.61138058,
+					y: 7.61138153,
 					z: -0.101998806,
 				},
 				max: {
 					x: 11.16449,
-					y: 9.84238,
+					y: 9.842381,
 					z: 0.098001,
 				},
 			},
@@ -42420,24 +42420,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 10.1035156,
-					y: 8.174674,
+					y: 8.174673,
 					z: -0.101998806,
 				},
 				max: {
 					x: 10.9890137,
-					y: 8.945174,
+					y: 8.945173,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 10.1035156,
-					y: 8.174674,
+					y: 8.174673,
 					z: -0.101998806,
 				},
 				max: {
 					x: 10.9890137,
-					y: 8.945174,
+					y: 8.945173,
 					z: 0.098001,
 				},
 			},
@@ -42472,7 +42472,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.LIBRARY_SHORT',
 					position: {
 						x: 10.4176636,
-						y: 6.69117451,
+						y: 6.69117546,
 						z: -2.52199936,
 					},
 					fontSize: 6,
@@ -42512,24 +42512,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 8.797119,
-					y: 9.452535,
+					y: 9.452536,
 					z: -0.104001522,
 				},
 				max: {
 					x: 9.590576,
-					y: 9.809033,
+					y: 9.809034,
 					z: 0.09599829,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 8.797119,
-					y: 9.452535,
+					y: 9.452536,
 					z: -0.104001522,
 				},
 				max: {
 					x: 9.590576,
-					y: 9.809033,
+					y: 9.809034,
 					z: 0.09599829,
 				},
 			},
@@ -42587,24 +42587,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 3.914856,
-					y: 9.281177,
+					y: 9.28117752,
 					z: -0.102998257,
 				},
 				max: {
 					x: 4.4208374,
-					y: 9.718177,
+					y: 9.718178,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 3.914856,
-					y: 9.281177,
+					y: 9.28117752,
 					z: -0.102998257,
 				},
 				max: {
 					x: 4.4208374,
-					y: 9.718177,
+					y: 9.718178,
 					z: 0.09700155,
 				},
 			},
@@ -42652,7 +42652,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.COG_CORE_SHORT',
 					position: {
 						x: 1.44006348,
-						y: 11.7571306,
+						y: 11.7571316,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -42692,24 +42692,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 6.46258545,
-					y: 8.84418,
+					y: 8.844179,
 					z: -0.101998806,
 				},
 				max: {
 					x: 8.831604,
-					y: 9.154681,
+					y: 9.15468,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 6.46258545,
-					y: 8.84418,
+					y: 8.844179,
 					z: -0.101998806,
 				},
 				max: {
 					x: 8.831604,
-					y: 9.154681,
+					y: 9.15468,
 					z: 0.098001,
 				},
 			},
@@ -42766,25 +42766,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.95397949,
-					y: 8.964932,
+					x: 9.954041,
+					y: 8.964933,
 					z: 0.0,
 				},
 				max: {
-					x: 9.95397949,
-					y: 8.964932,
+					x: 9.954041,
+					y: 8.964933,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.95397949,
-					y: 8.964932,
+					x: 9.954041,
+					y: 8.964933,
 					z: 0.0,
 				},
 				max: {
-					x: 9.95397949,
-					y: 8.964932,
+					x: 9.954041,
+					y: 8.964933,
 					z: 0.0,
 				},
 			},
@@ -43225,24 +43225,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -7.156616,
-					y: -1.54606247,
+					y: -1.54606152,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -6.098633,
-					y: 1.47843742,
+					y: 1.47843838,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -7.156616,
-					y: -1.54606247,
+					y: -1.54606152,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -6.098633,
-					y: 1.47843742,
+					y: 1.47843838,
 					z: 0.0999999046,
 				},
 			},
@@ -43362,24 +43362,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -7.156616,
-					y: -1.54606247,
+					y: -1.54606152,
 					z: -0.101998806,
 				},
 				max: {
 					x: -6.098633,
-					y: 1.47843742,
+					y: 1.47843838,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -7.156616,
-					y: -1.54606247,
+					y: -1.54606152,
 					z: -0.101998806,
 				},
 				max: {
 					x: -6.098633,
-					y: 1.47843742,
+					y: 1.47843838,
 					z: 0.098001,
 				},
 			},
@@ -43437,24 +43437,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -7.156616,
-					y: -1.54606247,
+					y: -1.54606152,
 					z: -0.100999355,
 				},
 				max: {
 					x: -6.098633,
-					y: 1.47843742,
+					y: 1.47843838,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -7.156616,
-					y: -1.54606247,
+					y: -1.54606152,
 					z: -0.100999355,
 				},
 				max: {
 					x: -6.098633,
-					y: 1.47843742,
+					y: 1.47843838,
 					z: 0.0990004539,
 				},
 			},
@@ -43501,7 +43501,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Song_Gate/Under_01_bot/Next Area Down (4)/Area Name',
 					textKey: 'Map Zones.UNDERSTORE',
 					position: {
-						x: -2.58770752,
+						x: -2.58764648,
 						y: -2.50056171,
 						z: -2.52000046,
 					},
@@ -43509,12 +43509,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -2.58770752,
+							x: -2.58764648,
 							y: -2.50056171,
 							z: -2.52000046,
 						},
 						max: {
-							x: -2.58770752,
+							x: -2.58764648,
 							y: -2.50056171,
 							z: -2.52000046,
 						},
@@ -43603,24 +43603,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -9.677673,
+					x: -9.677612,
 					y: -2.5597868,
 					z: -0.100999355,
 				},
 				max: {
-					x: -7.19366455,
+					x: -7.19360352,
 					y: -0.754286766,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -9.677673,
+					x: -9.677612,
 					y: -2.5597868,
 					z: -0.100999355,
 				},
 				max: {
-					x: -7.19366455,
+					x: -7.19360352,
 					y: -0.754286766,
 					z: 0.0990004539,
 				},
@@ -43665,24 +43665,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -9.677673,
+					x: -9.677612,
 					y: -2.5597868,
 					z: -0.101998806,
 				},
 				max: {
-					x: -7.19366455,
+					x: -7.19360352,
 					y: -0.754286766,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -9.677673,
+					x: -9.677612,
 					y: -2.5597868,
 					z: -0.101998806,
 				},
 				max: {
-					x: -7.19366455,
+					x: -7.19360352,
 					y: -0.754286766,
 					z: 0.098001,
 				},
@@ -44305,24 +44305,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -4.399231,
+					x: -4.39917,
 					y: 0.2345171,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.63616943,
+					x: -2.6361084,
 					y: 0.6025171,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -4.399231,
+					x: -4.39917,
 					y: 0.2345171,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.63616943,
+					x: -2.6361084,
 					y: 0.6025171,
 					z: 0.0999999046,
 				},
@@ -44380,24 +44380,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -2.63909912,
+					x: -2.639038,
 					y: -0.363482475,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.07562256,
+					x: -2.07556152,
 					y: 0.821017265,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -2.63909912,
+					x: -2.639038,
 					y: -0.363482475,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.07562256,
+					x: -2.07556152,
 					y: 0.821017265,
 					z: 0.0999999046,
 				},
@@ -44941,24 +44941,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -4.39862061,
+					x: -4.39855957,
 					y: 1.03836727,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.81158447,
+					x: -2.81152344,
 					y: 2.97036648,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -4.39862061,
+					x: -4.39855957,
 					y: 1.03836727,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -2.81158447,
+					x: -2.81152344,
 					y: 2.97036648,
 					z: 0.0999999046,
 				},
@@ -44993,7 +44993,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Under/Under_07c/Next Area Up (2)/Area Name',
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
-						x: -6.4697876,
+						x: -6.46972656,
 						y: 3.31997013,
 						z: -2.52000046,
 					},
@@ -45001,12 +45001,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -6.4697876,
+							x: -6.46972656,
 							y: 3.31997013,
 							z: -2.52000046,
 						},
 						max: {
-							x: -6.4697876,
+							x: -6.46972656,
 							y: 3.31997013,
 							z: -2.52000046,
 						},
@@ -45033,24 +45033,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -2.843811,
+					x: -2.84375,
 					y: 1.16268158,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -0.164367676,
+					x: -0.164306641,
 					y: 2.335682,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -2.843811,
+					x: -2.84375,
 					y: 1.16268158,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -0.164367676,
+					x: -0.164306641,
 					y: 2.335682,
 					z: 0.0999999046,
 				},
@@ -45350,24 +45350,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 0.777526855,
+					x: 0.7775879,
 					y: 0.4311676,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 1.53656,
+					x: 1.53662109,
 					y: 0.8796673,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 0.777526855,
+					x: 0.7775879,
 					y: 0.4311676,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 1.53656,
+					x: 1.53662109,
 					y: 0.8796673,
 					z: 0.0999999046,
 				},
@@ -45425,24 +45425,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.28521729,
+					x: 2.28527832,
 					y: -0.741832733,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.239685,
+					x: 3.239746,
 					y: 1.68466759,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.28521729,
+					x: 2.28527832,
 					y: -0.741832733,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.239685,
+					x: 3.239746,
 					y: 1.68466759,
 					z: 0.0999999046,
 				},
@@ -45624,24 +45624,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.28521729,
+					x: 2.28527832,
 					y: -0.741832733,
 					z: -0.100999355,
 				},
 				max: {
-					x: 3.239685,
+					x: 3.239746,
 					y: 1.68466759,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.28521729,
+					x: 2.28527832,
 					y: -0.741832733,
 					z: -0.100999355,
 				},
 				max: {
-					x: 3.239685,
+					x: 3.239746,
 					y: 1.68466759,
 					z: 0.0990004539,
 				},
@@ -46022,24 +46022,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.24084473,
+					x: 3.24090576,
 					y: 1.10851765,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.449341,
+					x: 6.449402,
 					y: 2.07451725,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.24084473,
+					x: 3.24090576,
 					y: 1.10851765,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.449341,
+					x: 6.449402,
 					y: 2.07451725,
 					z: 0.0999999046,
 				},
@@ -46074,7 +46074,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Under/Under_17/Next Area Up (4)/Area Name',
 					textKey: 'Map Zones.WARD',
 					position: {
-						x: 6.029602,
+						x: 6.029663,
 						y: 4.09851742,
 						z: -2.52000046,
 					},
@@ -46082,12 +46082,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 6.029602,
+							x: 6.029663,
 							y: 4.09851742,
 							z: -2.52000046,
 						},
 						max: {
-							x: 6.029602,
+							x: 6.029663,
 							y: 4.09851742,
 							z: -2.52000046,
 						},
@@ -46114,24 +46114,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 5.140625,
+					x: 5.140686,
 					y: 1.10794163,
 					z: -0.100999355,
 				},
 				max: {
-					x: 5.899658,
+					x: 5.899719,
 					y: 1.38739109,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 5.140625,
+					x: 5.140686,
 					y: 1.10794163,
 					z: -0.100999355,
 				},
 				max: {
-					x: 5.899658,
+					x: 5.899719,
 					y: 1.38739109,
 					z: 0.0990004539,
 				},
@@ -46176,24 +46176,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.24084473,
+					x: 3.24090576,
 					y: 1.10851765,
 					z: -0.101998806,
 				},
 				max: {
-					x: 6.449341,
+					x: 6.449402,
 					y: 2.07451725,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.24084473,
+					x: 3.24090576,
 					y: 1.10851765,
 					z: -0.101998806,
 				},
 				max: {
-					x: 6.449341,
+					x: 6.449402,
 					y: 2.07451725,
 					z: 0.098001,
 				},
@@ -46238,24 +46238,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.23852539,
+					x: 3.23858643,
 					y: 0.1540165,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.29748535,
+					x: 6.29754639,
 					y: 1.10851669,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.23852539,
+					x: 3.23858643,
 					y: 0.1540165,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.29748535,
+					x: 6.29754639,
 					y: 1.10851669,
 					z: 0.0999999046,
 				},
@@ -46361,12 +46361,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 3.44854736,
-							y: 0.449614525,
+							y: 0.449613571,
 							z: -2.52000046,
 						},
 						max: {
 							x: 5.72454834,
-							y: 0.9637251,
+							y: 0.963724136,
 							z: -2.52000046,
 						},
 					},
@@ -46392,24 +46392,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.239685,
+					x: 3.239746,
 					y: -0.753334045,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.52862549,
+					x: 6.52868652,
 					y: -0.327833176,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.239685,
+					x: 3.239746,
 					y: -0.753334045,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.52862549,
+					x: 6.52868652,
 					y: -0.327833176,
 					z: 0.0999999046,
 				},
@@ -46516,24 +46516,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 5.7454834,
+					x: 5.74554443,
 					y: -0.3289833,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.44702148,
+					x: 6.44708252,
 					y: 0.9475174,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 5.7454834,
+					x: 5.74554443,
 					y: -0.3289833,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 6.44702148,
+					x: 6.44708252,
 					y: 0.9475174,
 					z: 0.0999999046,
 				},
@@ -46627,24 +46627,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 0.8027954,
+					x: 0.802856445,
 					y: -0.7406826,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.286316,
+					x: 2.286377,
 					y: -0.280683517,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 0.8027954,
+					x: 0.802856445,
 					y: -0.7406826,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.286316,
+					x: 2.286377,
 					y: -0.280683517,
 					z: 0.0999999046,
 				},
@@ -46856,25 +46856,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.517029,
+					x: 8.51709,
 					y: 0.195416451,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.414001,
-					y: 5.64641666,
+					x: 9.4140625,
+					y: 5.64641571,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.517029,
+					x: 8.51709,
 					y: 0.195416451,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.414001,
-					y: 5.64641666,
+					x: 9.4140625,
+					y: 5.64641571,
 					z: 0.0999999046,
 				},
 			},
@@ -46908,21 +46908,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Under/Library_11_shaft/Next Area Left (4)/Area Name',
 					textKey: 'Map Zones.CITADEL_STAGE',
 					position: {
-						x: 5.05896,
-						y: 5.431367,
+						x: 5.059021,
+						y: 5.431366,
 						z: -2.52000046,
 					},
 					fontSize: 6,
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 5.05896,
-							y: 5.431367,
+							x: 5.059021,
+							y: 5.431366,
 							z: -2.52000046,
 						},
 						max: {
-							x: 5.05896,
-							y: 5.431367,
+							x: 5.059021,
+							y: 5.431366,
 							z: -2.52000046,
 						},
 					},
@@ -46948,25 +46948,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.575684,
+					x: 8.575745,
 					y: 0.4010496,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.369141,
-					y: 5.669404,
+					x: 9.369202,
+					y: 5.669405,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.575684,
+					x: 8.575745,
 					y: 0.4010496,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.369141,
-					y: 5.669404,
+					x: 9.369202,
+					y: 5.669405,
 					z: 0.0999999046,
 				},
 			},
@@ -47016,7 +47016,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: 9.423218,
-					y: 5.600417,
+					y: 5.600416,
 					z: 0.0990004539,
 				},
 			},
@@ -47028,7 +47028,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: 9.423218,
-					y: 5.600417,
+					y: 5.600416,
 					z: 0.0990004539,
 				},
 			},
@@ -47072,25 +47072,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.59637451,
+					x: 8.596436,
 					y: 1.486867,
 					z: -0.100999355,
 				},
 				max: {
-					x: 9.389832,
-					y: 5.592366,
+					x: 9.389893,
+					y: 5.592367,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.59637451,
+					x: 8.596436,
 					y: 1.486867,
 					z: -0.100999355,
 				},
 				max: {
-					x: 9.389832,
-					y: 5.592366,
+					x: 9.389893,
+					y: 5.592367,
 					z: 0.0990004539,
 				},
 			},
@@ -47125,7 +47125,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.CITADEL_STATION',
 					position: {
 						x: 5.02679443,
-						y: 4.95871639,
+						y: 4.95871735,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -47133,12 +47133,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 5.02679443,
-							y: 4.95871639,
+							y: 4.95871735,
 							z: -2.52000046,
 						},
 						max: {
 							x: 5.02679443,
-							y: 4.95871639,
+							y: 4.95871735,
 							z: -2.52000046,
 						},
 					},
@@ -47475,24 +47475,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 9.411743,
-					y: 1.58806133,
+					y: 1.58806038,
 					z: -0.100999355,
 				},
 				max: {
 					x: 11.9072266,
-					y: 3.7845602,
+					y: 3.78456116,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 9.411743,
-					y: 1.58806133,
+					y: 1.58806038,
 					z: -0.100999355,
 				},
 				max: {
 					x: 11.9072266,
-					y: 3.7845602,
+					y: 3.78456116,
 					z: 0.0990004539,
 				},
 			},
@@ -47651,7 +47651,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.LIBRARY',
 					position: {
 						x: 10.0568848,
-						y: 5.50381565,
+						y: 5.5038166,
 						z: -2.519001,
 					},
 					fontSize: 6,
@@ -47659,12 +47659,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 10.0568848,
-							y: 5.50381565,
+							y: 5.5038166,
 							z: -2.519001,
 						},
 						max: {
 							x: 10.0568848,
-							y: 5.50381565,
+							y: 5.5038166,
 							z: -2.519001,
 						},
 					},
@@ -47742,7 +47742,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Under/Dust_09_into_citadel/Next Area Down (4)/Area Name',
 					textKey: 'Map Zones.ORGAN',
 					position: {
-						x: 11.5522461,
+						x: 11.5523071,
 						y: 0.1365757,
 						z: -2.52000046,
 					},
@@ -47750,12 +47750,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 11.5522461,
+							x: 11.5523071,
 							y: 0.1365757,
 							z: -2.52000046,
 						},
 						max: {
-							x: 11.5522461,
+							x: 11.5523071,
 							y: 0.1365757,
 							z: -2.52000046,
 						},
@@ -47782,25 +47782,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.764282,
-					y: 6.23233128,
+					x: 8.764343,
+					y: 6.232332,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.942017,
-					y: 8.371331,
+					x: 9.942078,
+					y: 8.371332,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.764282,
-					y: 6.23233128,
+					x: 8.764343,
+					y: 6.232332,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.942017,
-					y: 8.371331,
+					x: 9.942078,
+					y: 8.371332,
 					z: 0.0999999046,
 				},
 			},
@@ -47857,25 +47857,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.764282,
-					y: 6.220832,
+					x: 8.764343,
+					y: 6.220833,
 					z: -0.100999355,
 				},
 				max: {
-					x: 9.942017,
-					y: 8.382831,
+					x: 9.942078,
+					y: 8.382832,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.764282,
-					y: 6.220832,
+					x: 8.764343,
+					y: 6.220833,
 					z: -0.100999355,
 				},
 				max: {
-					x: 9.942017,
-					y: 8.382831,
+					x: 9.942078,
+					y: 8.382832,
 					z: 0.0990004539,
 				},
 			},
@@ -47932,25 +47932,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 6.46582031,
-					y: 8.051833,
+					x: 6.46588135,
+					y: 8.051832,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.765869,
-					y: 9.155833,
+					x: 8.76593,
+					y: 9.155832,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 6.46582031,
-					y: 8.051833,
+					x: 6.46588135,
+					y: 8.051832,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.765869,
-					y: 9.155833,
+					x: 8.76593,
+					y: 9.155832,
 					z: 0.0999999046,
 				},
 			},
@@ -47994,25 +47994,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 6.46582031,
-					y: 8.051829,
+					x: 6.46588135,
+					y: 8.051828,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.765869,
-					y: 9.155829,
+					x: 8.76593,
+					y: 9.155828,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 6.46582031,
-					y: 8.051829,
+					x: 6.46588135,
+					y: 8.051828,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.765869,
-					y: 9.155829,
+					x: 8.76593,
+					y: 9.155828,
 					z: 0.0999999046,
 				},
 			},
@@ -48060,7 +48060,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
 						x: 2.87097168,
-						y: 8.131188,
+						y: 8.131189,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -48068,12 +48068,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 2.87097168,
-							y: 8.131188,
+							y: 8.131189,
 							z: -2.52000046,
 						},
 						max: {
 							x: 2.87097168,
-							y: 8.131188,
+							y: 8.131189,
 							z: -2.52000046,
 						},
 					},
@@ -48100,24 +48100,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 6.421875,
-					y: 6.59938145,
+					y: 6.5993824,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.767822,
-					y: 7.79538059,
+					y: 7.79538155,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 6.421875,
-					y: 6.59938145,
+					y: 6.5993824,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.767822,
-					y: 7.79538059,
+					y: 7.79538155,
 					z: 0.0999999046,
 				},
 			},
@@ -48162,24 +48162,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 6.421875,
-					y: 6.59938145,
+					y: 6.5993824,
 					z: -0.102998257,
 				},
 				max: {
 					x: 8.767822,
-					y: 7.79538059,
+					y: 7.79538155,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 6.421875,
-					y: 6.59938145,
+					y: 6.5993824,
 					z: -0.102998257,
 				},
 				max: {
 					x: 8.767822,
-					y: 7.79538059,
+					y: 7.79538155,
 					z: 0.09700155,
 				},
 			},
@@ -48214,7 +48214,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
 						x: 3.486206,
-						y: 7.48372746,
+						y: 7.48372841,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -48222,12 +48222,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 3.486206,
-							y: 7.48372746,
+							y: 7.48372841,
 							z: -2.52000046,
 						},
 						max: {
 							x: 3.486206,
-							y: 7.48372746,
+							y: 7.48372841,
 							z: -2.52000046,
 						},
 					},
@@ -48254,24 +48254,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 6.421875,
-					y: 6.59938145,
+					y: 6.5993824,
 					z: -0.104001522,
 				},
 				max: {
 					x: 8.767822,
-					y: 7.79538059,
+					y: 7.79538155,
 					z: 0.09599829,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 6.421875,
-					y: 6.59938145,
+					y: 6.5993824,
 					z: -0.104001522,
 				},
 				max: {
 					x: 8.767822,
-					y: 7.79538059,
+					y: 7.79538155,
 					z: 0.09599829,
 				},
 			},
@@ -48316,24 +48316,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 9.941956,
-					y: 4.415531,
+					y: 4.415532,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 11.2529907,
-					y: 8.73953152,
+					y: 8.739532,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 9.941956,
-					y: 4.415531,
+					y: 4.415532,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 11.2529907,
-					y: 8.73953152,
+					y: 8.739532,
 					z: 0.0999999046,
 				},
 			},
@@ -48391,24 +48391,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 9.941956,
-					y: 4.424732,
+					y: 4.424733,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 11.2529907,
-					y: 8.748733,
+					y: 8.74873352,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 9.941956,
-					y: 4.424732,
+					y: 4.424733,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 11.2529907,
-					y: 8.748733,
+					y: 8.74873352,
 					z: 0.0999999046,
 				},
 			},
@@ -48453,24 +48453,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 9.941956,
-					y: 4.415531,
+					y: 4.415532,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 11.2529907,
-					y: 8.73953152,
+					y: 8.739532,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 9.941956,
-					y: 4.415531,
+					y: 4.415532,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 11.2529907,
-					y: 8.73953152,
+					y: 8.739532,
 					z: 0.0999999046,
 				},
 			},
@@ -48527,25 +48527,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.9776,
-					y: 8.082675,
+					x: 9.977661,
+					y: 8.082674,
 					z: -0.102998257,
 				},
 				max: {
-					x: 11.2426147,
-					y: 9.037173,
+					x: 11.2426758,
+					y: 9.037172,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.9776,
-					y: 8.082675,
+					x: 9.977661,
+					y: 8.082674,
 					z: -0.102998257,
 				},
 				max: {
-					x: 11.2426147,
-					y: 9.037173,
+					x: 11.2426758,
+					y: 9.037172,
 					z: 0.09700155,
 				},
 			},
@@ -48580,7 +48580,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.ENCLAVE',
 					position: {
 						x: 13.4525757,
-						y: 9.095824,
+						y: 9.095823,
 						z: -2.52199936,
 					},
 					fontSize: 6,
@@ -48588,12 +48588,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 13.4525757,
-							y: 9.095824,
+							y: 9.095823,
 							z: -2.52199936,
 						},
 						max: {
 							x: 13.4525757,
-							y: 9.095824,
+							y: 9.095823,
 							z: -2.52199936,
 						},
 					},
@@ -48620,24 +48620,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 11.2518311,
-					y: 5.334382,
+					y: 5.334383,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 12.1258545,
-					y: 5.633382,
+					y: 5.633383,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 11.2518311,
-					y: 5.334382,
+					y: 5.334383,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 12.1258545,
-					y: 5.633382,
+					y: 5.633383,
 					z: 0.0999999046,
 				},
 			},
@@ -48695,24 +48695,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 11.2529907,
-					y: 5.335532,
+					y: 5.335531,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 12.1270142,
-					y: 6.85353374,
+					y: 6.853533,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 11.2529907,
-					y: 5.335532,
+					y: 5.335531,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 12.1270142,
-					y: 6.85353374,
+					y: 6.853533,
 					z: 0.0999999046,
 				},
 			},
@@ -48770,24 +48770,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 11.2990112,
-					y: 5.478492,
+					y: 5.47849274,
 					z: -0.100999355,
 				},
 				max: {
 					x: 12.0349731,
-					y: 6.35177135,
+					y: 6.35177231,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 11.2990112,
-					y: 5.478492,
+					y: 5.47849274,
 					z: -0.100999355,
 				},
 				max: {
 					x: 12.0349731,
-					y: 6.35177135,
+					y: 6.35177231,
 					z: 0.0990004539,
 				},
 			},
@@ -48832,24 +48832,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 12.1258545,
-					y: 5.345954,
+					y: 5.345953,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 13.3677979,
-					y: 6.73745251,
+					y: 6.73745155,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 12.1258545,
-					y: 5.345954,
+					y: 5.345953,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 13.3677979,
-					y: 6.73745251,
+					y: 6.73745155,
 					z: 0.0999999046,
 				},
 			},
@@ -48906,25 +48906,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 13.0338745,
-					y: 6.401582,
+					x: 13.0339355,
+					y: 6.401581,
 					z: -0.101998806,
 				},
 				max: {
-					x: 13.4519653,
-					y: 6.746583,
+					x: 13.4520264,
+					y: 6.746582,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 13.0338745,
-					y: 6.401582,
+					x: 13.0339355,
+					y: 6.401581,
 					z: -0.101998806,
 				},
 				max: {
-					x: 13.4519653,
-					y: 6.746583,
+					x: 13.4520264,
+					y: 6.746582,
 					z: 0.098001,
 				},
 			},
@@ -48969,24 +48969,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 13.44989,
-					y: 4.58458138,
+					y: 4.58458233,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 14.9348755,
-					y: 7.839082,
+					y: 7.83908272,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 13.44989,
-					y: 4.58458138,
+					y: 4.58458233,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 14.9348755,
-					y: 7.839082,
+					y: 7.83908272,
 					z: 0.0999999046,
 				},
 			},
@@ -49021,7 +49021,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.SWAMP',
 					position: {
 						x: 17.8070068,
-						y: 4.20968151,
+						y: 4.20968246,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -49029,12 +49029,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 17.8070068,
-							y: 4.20968151,
+							y: 4.20968246,
 							z: -2.52000046,
 						},
 						max: {
 							x: 17.8070068,
-							y: 4.20968151,
+							y: 4.20968246,
 							z: -2.52000046,
 						},
 					},
@@ -49061,24 +49061,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 11.2495117,
-					y: 6.921382,
+					y: 6.921383,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 13.4460449,
-					y: 7.61138058,
+					y: 7.61138153,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 11.2495117,
-					y: 6.921382,
+					y: 6.921383,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 13.4460449,
-					y: 7.61138058,
+					y: 7.61138153,
 					z: 0.0999999046,
 				},
 			},
@@ -49123,24 +49123,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 12.9326782,
-					y: 7.149083,
+					y: 7.149082,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 13.4501343,
-					y: 7.609082,
+					y: 7.60908127,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 12.9326782,
-					y: 7.149083,
+					y: 7.149082,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 13.4501343,
-					y: 7.609082,
+					y: 7.60908127,
 					z: 0.0999999046,
 				},
 			},
@@ -49185,24 +49185,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 11.163269,
-					y: 7.83332729,
+					y: 7.83332825,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 14.2567749,
-					y: 9.857326,
+					y: 9.85732651,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 11.163269,
-					y: 7.83332729,
+					y: 7.83332825,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 14.2567749,
-					y: 9.857326,
+					y: 9.85732651,
 					z: 0.0999999046,
 				},
 			},
@@ -49260,24 +49260,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 11.163269,
-					y: 7.83332729,
+					y: 7.83332825,
 					z: -0.102998257,
 				},
 				max: {
 					x: 14.2567749,
-					y: 9.857326,
+					y: 9.85732651,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 11.163269,
-					y: 7.83332729,
+					y: 7.83332825,
 					z: -0.102998257,
 				},
 				max: {
 					x: 14.2567749,
-					y: 9.857326,
+					y: 9.85732651,
 					z: 0.09700155,
 				},
 			},
@@ -49335,24 +49335,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 11.1621094,
-					y: 7.910384,
+					y: 7.910383,
 					z: -0.101998806,
 				},
 				max: {
 					x: 14.2095947,
-					y: 9.853885,
+					y: 9.853884,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 11.1621094,
-					y: 7.910384,
+					y: 7.910383,
 					z: -0.101998806,
 				},
 				max: {
 					x: 14.2095947,
-					y: 9.853885,
+					y: 9.853884,
 					z: 0.098001,
 				},
 			},
@@ -49409,25 +49409,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 11.25177,
-					y: 4.55008125,
+					x: 11.2518311,
+					y: 4.550082,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 14.0463257,
-					y: 5.13658047,
+					x: 14.0463867,
+					y: 5.13658142,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 11.25177,
-					y: 4.55008125,
+					x: 11.2518311,
+					y: 4.550082,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 14.0463257,
-					y: 5.13658047,
+					x: 14.0463867,
+					y: 5.13658142,
 					z: 0.0999999046,
 				},
 			},
@@ -49501,25 +49501,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 6.468994,
-					y: 5.30447674,
+					x: 6.469055,
+					y: 5.30447769,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.596436,
-					y: 6.15547848,
+					x: 8.596497,
+					y: 6.15547943,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 6.468994,
-					y: 5.30447674,
+					x: 6.469055,
+					y: 5.30447769,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.596436,
-					y: 6.15547848,
+					x: 8.596497,
+					y: 6.15547943,
 					z: 0.0999999046,
 				},
 			},
@@ -49577,24 +49577,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 6.465576,
-					y: 5.30447674,
+					y: 5.30447769,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.593018,
-					y: 6.15547848,
+					y: 6.15547943,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 6.465576,
-					y: 5.30447674,
+					y: 5.30447769,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.593018,
-					y: 6.15547848,
+					y: 6.15547943,
 					z: 0.0999999046,
 				},
 			},
@@ -49642,7 +49642,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.CITADEL_STAGE',
 					position: {
 						x: 7.30963135,
-						y: 8.351977,
+						y: 8.351976,
 						z: -2.52000046,
 					},
 					fontSize: 4,
@@ -49650,12 +49650,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 6.536072,
-							y: 5.73117161,
+							y: 5.73117256,
 							z: -2.52000046,
 						},
 						max: {
 							x: 8.139099,
-							y: 6.245286,
+							y: 6.245287,
 							z: -2.52000046,
 						},
 					},
@@ -49671,7 +49671,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
 						x: 2.9039917,
-						y: 5.448228,
+						y: 5.448229,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -49679,12 +49679,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 2.9039917,
-							y: 5.448228,
+							y: 5.448229,
 							z: -2.52000046,
 						},
 						max: {
 							x: 2.9039917,
-							y: 5.448228,
+							y: 5.448229,
 							z: -2.52000046,
 						},
 					},
@@ -49716,7 +49716,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: 13.9221191,
-					y: 5.184882,
+					y: 5.184883,
 					z: 0.09700155,
 				},
 			},
@@ -49728,7 +49728,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 				},
 				max: {
 					x: 13.9221191,
-					y: 5.184882,
+					y: 5.184883,
 					z: 0.09700155,
 				},
 			},
@@ -49773,24 +49773,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 6.472473,
-					y: 5.26653957,
+					y: 5.26653862,
 					z: -0.100999355,
 				},
 				max: {
 					x: 8.599915,
-					y: 6.18653774,
+					y: 6.186537,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 6.472473,
-					y: 5.26653957,
+					y: 5.26653862,
 					z: -0.100999355,
 				},
 				max: {
 					x: 8.599915,
-					y: 6.18653774,
+					y: 6.186537,
 					z: 0.0990004539,
 				},
 			},
@@ -49877,25 +49877,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 11.2471924,
-					y: 7.601493,
+					x: 11.2472534,
+					y: 7.601492,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 12.2937012,
-					y: 8.199492,
+					x: 12.2937622,
+					y: 8.1994915,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 11.2471924,
-					y: 7.601493,
+					x: 11.2472534,
+					y: 7.601492,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 12.2937012,
-					y: 8.199492,
+					x: 12.2937622,
+					y: 8.1994915,
 					z: 0.0999999046,
 				},
 			},
@@ -49940,24 +49940,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 8.58728,
-					y: 5.876033,
+					y: 5.876032,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 9.96264648,
-					y: 6.19803143,
+					y: 6.19803047,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 8.58728,
-					y: 5.876033,
+					y: 5.876032,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 9.96264648,
-					y: 6.19803143,
+					y: 6.19803047,
 					z: 0.0999999046,
 				},
 			},
@@ -50015,24 +50015,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 8.014587,
-					y: 6.34178257,
+					y: 6.34178162,
 					z: -0.00199890137,
 				},
 				max: {
 					x: 8.014587,
-					y: 6.34178257,
+					y: 6.34178162,
 					z: -0.00199890137,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 8.014587,
-					y: 6.34178257,
+					y: 6.34178162,
 					z: -0.00199890137,
 				},
 				max: {
 					x: 8.014587,
-					y: 6.34178257,
+					y: 6.34178162,
 					z: -0.00199890137,
 				},
 			},
@@ -50076,25 +50076,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.620605,
-					y: 5.173381,
+					x: 8.6206665,
+					y: 5.173382,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.943115,
-					y: 5.58738232,
+					x: 9.943176,
+					y: 5.58738327,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.620605,
-					y: 5.173381,
+					x: 8.6206665,
+					y: 5.173382,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.943115,
-					y: 5.58738232,
+					x: 9.943176,
+					y: 5.58738327,
 					z: 0.0999999046,
 				},
 			},
@@ -50138,25 +50138,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.941956,
-					y: 4.591482,
+					x: 9.942017,
+					y: 4.591481,
 					z: -0.102998257,
 				},
 				max: {
-					x: 11.2529907,
-					y: 8.351983,
+					x: 11.2530518,
+					y: 8.35198,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.941956,
-					y: 4.591482,
+					x: 9.942017,
+					y: 4.591481,
 					z: -0.102998257,
 				},
 				max: {
-					x: 11.2529907,
-					y: 8.351983,
+					x: 11.2530518,
+					y: 8.35198,
 					z: 0.09700155,
 				},
 			},
@@ -50200,25 +50200,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.32208252,
-					y: 9.097516,
+					x: 2.32214355,
+					y: 9.097517,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.87457275,
-					y: 9.983014,
+					x: 3.87463379,
+					y: 9.983015,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.32208252,
-					y: 9.097516,
+					x: 2.32214355,
+					y: 9.097517,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.87457275,
-					y: 9.983014,
+					x: 3.87463379,
+					y: 9.983015,
 					z: 0.0999999046,
 				},
 			},
@@ -50283,21 +50283,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Cog/Cog_Dancers/Next Area Right (4)/Area Name',
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
-						x: 7.43841553,
-						y: 9.306815,
+						x: 7.43847656,
+						y: 9.306814,
 						z: -2.52000046,
 					},
 					fontSize: 6,
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 7.43841553,
-							y: 9.306815,
+							x: 7.43847656,
+							y: 9.306814,
 							z: -2.52000046,
 						},
 						max: {
-							x: 7.43841553,
-							y: 9.306815,
+							x: 7.43847656,
+							y: 9.306814,
 							z: -2.52000046,
 						},
 					},
@@ -50312,21 +50312,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Cog/Cog_Dancers/Next Area Left (4)/Area Name',
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
-						x: -1.314209,
-						y: 9.299935,
+						x: -1.314148,
+						y: 9.299936,
 						z: -2.52000046,
 					},
 					fontSize: 6,
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -1.314209,
-							y: 9.299935,
+							x: -1.314148,
+							y: 9.299936,
 							z: -2.52000046,
 						},
 						max: {
-							x: -1.314209,
-							y: 9.299935,
+							x: -1.314148,
+							y: 9.299936,
 							z: -2.52000046,
 						},
 					},
@@ -50352,25 +50352,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.32208252,
-					y: 9.097516,
+					x: 2.32214355,
+					y: 9.097517,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.87457275,
-					y: 9.983014,
+					x: 3.87463379,
+					y: 9.983015,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.32208252,
-					y: 9.097516,
+					x: 2.32214355,
+					y: 9.097517,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.87457275,
-					y: 9.983014,
+					x: 3.87463379,
+					y: 9.983015,
 					z: 0.0999999046,
 				},
 			},
@@ -50446,24 +50446,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 2.59924316,
-					y: 8.847981,
+					y: 8.847982,
 					z: -0.0009994507,
 				},
 				max: {
 					x: 2.59924316,
-					y: 8.847981,
+					y: 8.847982,
 					z: -0.0009994507,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 2.59924316,
-					y: 8.847981,
+					y: 8.847982,
 					z: -0.0009994507,
 				},
 				max: {
 					x: 2.59924316,
-					y: 8.847981,
+					y: 8.847982,
 					z: -0.0009994507,
 				},
 			},
@@ -50495,24 +50495,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 3.56848145,
-					y: 8.78688,
+					y: 8.78688049,
 					z: -0.100999355,
 				},
 				max: {
 					x: 3.59399414,
-					y: 9.912112,
+					y: 9.912113,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 3.56848145,
-					y: 8.78688,
+					y: 8.78688049,
 					z: -0.100999355,
 				},
 				max: {
 					x: 3.59399414,
-					y: 9.912112,
+					y: 9.912113,
 					z: 0.0990004539,
 				},
 			},
@@ -50557,24 +50557,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 2.47271729,
-					y: 6.104081,
+					y: 6.104082,
 					z: -0.100999355,
 				},
 				max: {
 					x: 3.77227783,
-					y: 9.163083,
+					y: 9.16308,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 2.47271729,
-					y: 6.104081,
+					y: 6.104082,
 					z: -0.100999355,
 				},
 				max: {
 					x: 3.77227783,
-					y: 9.163083,
+					y: 9.16308,
 					z: 0.0990004539,
 				},
 			},
@@ -50631,25 +50631,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -0.00439453125,
-					y: 7.623479,
+					x: -0.004333496,
+					y: 7.623478,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.51416016,
-					y: 8.485978,
+					x: 2.51422119,
+					y: 8.485977,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -0.00439453125,
-					y: 7.623479,
+					x: -0.004333496,
+					y: 7.623478,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.51416016,
-					y: 8.485978,
+					x: 2.51422119,
+					y: 8.485977,
 					z: 0.0999999046,
 				},
 			},
@@ -50707,24 +50707,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 0.4755249,
-					y: 7.588979,
+					y: 7.588978,
 					z: -0.100999355,
 				},
 				max: {
 					x: 2.56329346,
-					y: 8.520478,
+					y: 8.520477,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 0.4755249,
-					y: 7.588979,
+					y: 7.588978,
 					z: -0.100999355,
 				},
 				max: {
 					x: 2.56329346,
-					y: 8.520478,
+					y: 8.520477,
 					z: 0.0990004539,
 				},
 			},
@@ -50758,21 +50758,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Cog/Cog_05_left/Next Area Left (2)/Area Name',
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
-						x: -3.10479736,
-						y: 8.40063,
+						x: -3.10473633,
+						y: 8.400629,
 						z: -2.521,
 					},
 					fontSize: 6,
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -3.10479736,
-							y: 8.40063,
+							x: -3.10473633,
+							y: 8.400629,
 							z: -2.521,
 						},
 						max: {
-							x: -3.10479736,
-							y: 8.40063,
+							x: -3.10473633,
+							y: 8.400629,
 							z: -2.521,
 						},
 					},
@@ -50799,24 +50799,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 3.77001953,
-					y: 7.564582,
+					y: 7.564583,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.51330566,
-					y: 8.392581,
+					y: 8.392582,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 3.77001953,
-					y: 7.564582,
+					y: 7.564583,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.51330566,
-					y: 8.392581,
+					y: 8.392582,
 					z: 0.0999999046,
 				},
 			},
@@ -50864,7 +50864,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
 						x: 8.977356,
-						y: 8.155683,
+						y: 8.155682,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -50872,12 +50872,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 8.977356,
-							y: 8.155683,
+							y: 8.155682,
 							z: -2.52000046,
 						},
 						max: {
 							x: 8.977356,
-							y: 8.155683,
+							y: 8.155682,
 							z: -2.52000046,
 						},
 					},
@@ -50904,24 +50904,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 3.77227783,
-					y: 5.873851,
+					y: 5.873852,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.508728,
-					y: 7.253852,
+					y: 7.253853,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 3.77227783,
-					y: 5.873851,
+					y: 5.873852,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.508728,
-					y: 7.253852,
+					y: 7.253853,
 					z: 0.0999999046,
 				},
 			},
@@ -50979,24 +50979,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 3.76647949,
-					y: 5.85660076,
+					y: 5.85660172,
 					z: -0.101998806,
 				},
 				max: {
 					x: 5.51452637,
-					y: 7.271102,
+					y: 7.271103,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 3.76647949,
-					y: 5.85660076,
+					y: 5.85660172,
 					z: -0.101998806,
 				},
 				max: {
 					x: 5.51452637,
-					y: 7.271102,
+					y: 7.271103,
 					z: 0.098001,
 				},
 			},
@@ -51040,25 +51040,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.460083,
-					y: 9.980386,
+					x: 2.460144,
+					y: 9.980387,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.79406738,
-					y: 12.9933863,
+					x: 3.79412842,
+					y: 12.9933872,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.460083,
-					y: 9.980386,
+					x: 2.460144,
+					y: 9.980387,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.79406738,
-					y: 12.9933863,
+					x: 3.79412842,
+					y: 12.9933872,
 					z: 0.0999999046,
 				},
 			},
@@ -51133,25 +51133,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.460083,
-					y: 9.971692,
+					x: 2.460144,
+					y: 9.971691,
 					z: -0.100999355,
 				},
 				max: {
-					x: 3.79406738,
-					y: 13.00277,
+					x: 3.79412842,
+					y: 13.0027695,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.460083,
-					y: 9.971692,
+					x: 2.460144,
+					y: 9.971691,
 					z: -0.100999355,
 				},
 				max: {
-					x: 3.79406738,
-					y: 13.00277,
+					x: 3.79412842,
+					y: 13.0027695,
 					z: 0.0990004539,
 				},
 			},
@@ -51226,25 +51226,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.47271729,
-					y: 12.51933,
+					x: 2.47277832,
+					y: 12.519331,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.72625732,
-					y: 14.55483,
+					x: 3.72631836,
+					y: 14.5548306,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.47271729,
-					y: 12.51933,
+					x: 2.47277832,
+					y: 12.519331,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.72625732,
-					y: 14.55483,
+					x: 3.72631836,
+					y: 14.5548306,
 					z: 0.0999999046,
 				},
 			},
@@ -51320,24 +51320,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 1.37567139,
-					y: 7.86933041,
+					y: 7.86933136,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 2.43365479,
-					y: 8.86983,
+					y: 8.869831,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 1.37567139,
-					y: 7.86933041,
+					y: 7.86933136,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 2.43365479,
-					y: 8.86983,
+					y: 8.869831,
 					z: 0.0999999046,
 				},
 			},
@@ -51381,25 +51381,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.47271729,
-					y: 12.5153322,
+					x: 2.47277832,
+					y: 12.5153313,
 					z: -0.101998806,
 				},
 				max: {
-					x: 3.72625732,
-					y: 14.5508318,
+					x: 3.72631836,
+					y: 14.5508308,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.47271729,
-					y: 12.5153322,
+					x: 2.47277832,
+					y: 12.5153313,
 					z: -0.101998806,
 				},
 				max: {
-					x: 3.72625732,
-					y: 14.5508318,
+					x: 3.72631836,
+					y: 14.5508308,
 					z: 0.098001,
 				},
 			},
@@ -51473,25 +51473,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.267395,
-					y: 12.9189825,
+					x: 3.267456,
+					y: 12.9189816,
 					z: -0.102998257,
 				},
 				max: {
-					x: 3.8883667,
-					y: 13.3904829,
+					x: 3.88842773,
+					y: 13.3904819,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.267395,
-					y: 12.9189825,
+					x: 3.267456,
+					y: 12.9189816,
 					z: -0.102998257,
 				},
 				max: {
-					x: 3.8883667,
-					y: 13.3904829,
+					x: 3.88842773,
+					y: 13.3904819,
 					z: 0.09700155,
 				},
 			},
@@ -51535,25 +51535,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.8883667,
-					y: 9.710483,
+					x: 3.88842773,
+					y: 9.710484,
 					z: -0.102998257,
 				},
 				max: {
-					x: 4.428894,
-					y: 13.2409811,
+					x: 4.428955,
+					y: 13.2409821,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.8883667,
-					y: 9.710483,
+					x: 3.88842773,
+					y: 9.710484,
 					z: -0.102998257,
 				},
 				max: {
-					x: 4.428894,
-					y: 13.2409811,
+					x: 4.428955,
+					y: 13.2409821,
 					z: 0.09700155,
 				},
 			},
@@ -51597,25 +51597,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.32208252,
-					y: 9.097516,
+					x: 2.32214355,
+					y: 9.097517,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.87457275,
-					y: 9.983014,
+					x: 3.87463379,
+					y: 9.983015,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.32208252,
-					y: 9.097516,
+					x: 2.32214355,
+					y: 9.097517,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.87457275,
-					y: 9.983014,
+					x: 3.87463379,
+					y: 9.983015,
 					z: 0.0999999046,
 				},
 			},
@@ -51673,24 +51673,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 2.46124268,
-					y: 9.82203,
+					y: 9.822031,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 3.795227,
-					y: 13.1110315,
+					y: 13.1110325,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 2.46124268,
-					y: 9.82203,
+					y: 9.822031,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 3.795227,
-					y: 13.1110315,
+					y: 13.1110325,
 					z: 0.0999999046,
 				},
 			},
@@ -51748,24 +51748,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 0.496521,
-					y: 2.98418331,
+					y: 2.98418427,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 1.88800049,
-					y: 5.12318325,
+					y: 5.123184,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 0.496521,
-					y: 2.98418331,
+					y: 2.98418427,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 1.88800049,
-					y: 5.12318325,
+					y: 5.123184,
 					z: 0.0999999046,
 				},
 			},
@@ -51812,7 +51812,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Ward/Ward_01/Next Area Left (2)/Area Name',
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
-						x: -3.16815186,
+						x: -3.16809082,
 						y: 4.921913,
 						z: -2.52000046,
 					},
@@ -51820,12 +51820,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -3.16815186,
+							x: -3.16809082,
 							y: 4.921913,
 							z: -2.52000046,
 						},
 						max: {
-							x: -3.16815186,
+							x: -3.16809082,
 							y: 4.921913,
 							z: -2.52000046,
 						},
@@ -51928,24 +51928,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 1.14666748,
-					y: 3.28891754,
+					y: 3.28891659,
 					z: -0.101998806,
 				},
 				max: {
 					x: 1.9631958,
-					y: 4.5079174,
+					y: 4.50791645,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 1.14666748,
-					y: 3.28891754,
+					y: 3.28891659,
 					z: -0.101998806,
 				},
 				max: {
 					x: 1.9631958,
-					y: 4.5079174,
+					y: 4.50791645,
 					z: 0.098001,
 				},
 			},
@@ -52003,24 +52003,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 1.60900879,
-					y: 4.03181648,
+					y: 4.03181744,
 					z: -0.102998257,
 				},
 				max: {
 					x: 1.95397949,
-					y: 4.687317,
+					y: 4.687318,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 1.60900879,
-					y: 4.03181648,
+					y: 4.03181744,
 					z: -0.102998257,
 				},
 				max: {
 					x: 1.95397949,
-					y: 4.687317,
+					y: 4.687318,
 					z: 0.09700155,
 				},
 			},
@@ -52126,24 +52126,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -2.38842773,
+					x: -2.3883667,
 					y: 2.305667,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.498046875,
+					x: 0.4981079,
 					y: 3.88116741,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -2.38842773,
+					x: -2.3883667,
 					y: 2.305667,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.498046875,
+					x: 0.4981079,
 					y: 3.88116741,
 					z: 0.0999999046,
 				},
@@ -52201,24 +52201,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -1.69842529,
+					x: -1.69836426,
 					y: 2.317397,
 					z: -0.101998806,
 				},
 				max: {
-					x: -0.237976074,
+					x: -0.237915039,
 					y: 3.432437,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -1.69842529,
+					x: -1.69836426,
 					y: 2.317397,
 					z: -0.101998806,
 				},
 				max: {
-					x: -0.237976074,
+					x: -0.237915039,
 					y: 3.432437,
 					z: 0.098001,
 				},
@@ -52391,24 +52391,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -2.3885498,
+					x: -2.38848877,
 					y: 3.88001728,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.4979248,
+					x: 0.49798584,
 					y: 4.5585165,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -2.3885498,
+					x: -2.38848877,
 					y: 3.88001728,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.4979248,
+					x: 0.49798584,
 					y: 4.5585165,
 					z: 0.0999999046,
 				},
@@ -52466,25 +52466,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 1.96087646,
-					y: 3.1060667,
+					x: 1.9609375,
+					y: 3.10606575,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 6.51483154,
-					y: 4.08356762,
+					x: 6.51489258,
+					y: 4.08356667,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 1.96087646,
-					y: 3.1060667,
+					x: 1.9609375,
+					y: 3.10606575,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 6.51483154,
-					y: 4.08356762,
+					x: 6.51489258,
+					y: 4.08356667,
 					z: 0.100999355,
 				},
 			},
@@ -52541,25 +52541,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 5.548767,
-					y: 3.10491753,
+					x: 5.548828,
+					y: 3.10491657,
 					z: -0.101998806,
 				},
 				max: {
-					x: 6.503235,
-					y: 3.92141724,
+					x: 6.503296,
+					y: 3.92141628,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 5.548767,
-					y: 3.10491753,
+					x: 5.548828,
+					y: 3.10491657,
 					z: -0.101998806,
 				},
 				max: {
-					x: 6.503235,
-					y: 3.92141724,
+					x: 6.503296,
+					y: 3.92141628,
 					z: 0.098001,
 				},
 			},
@@ -52790,24 +52790,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 1.96166992,
-					y: 3.88829613,
+					y: 3.888297,
 					z: -0.1035018,
 				},
 				max: {
 					x: 2.76672363,
-					y: 4.4747963,
+					y: 4.47479725,
 					z: 0.09649801,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 1.96166992,
-					y: 3.88829613,
+					y: 3.888297,
 					z: -0.1035018,
 				},
 				max: {
 					x: 2.76672363,
-					y: 4.4747963,
+					y: 4.47479725,
 					z: 0.09649801,
 				},
 			},
@@ -52943,25 +52943,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 4.022827,
-					y: 4.01686668,
+					x: 4.022888,
+					y: 4.01686573,
 					z: -0.102998257,
 				},
 				max: {
-					x: 6.57580566,
-					y: 4.40786743,
+					x: 6.5758667,
+					y: 4.40786648,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 4.022827,
-					y: 4.01686668,
+					x: 4.022888,
+					y: 4.01686573,
 					z: -0.102998257,
 				},
 				max: {
-					x: 6.57580566,
-					y: 4.40786743,
+					x: 6.5758667,
+					y: 4.40786648,
 					z: 0.09700155,
 				},
 			},
@@ -53055,24 +53055,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -3.88482666,
-					y: 10.5417356,
+					y: 10.5417347,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.86077881,
-					y: 11.5422354,
+					y: 11.5422344,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -3.88482666,
-					y: 10.5417356,
+					y: 10.5417347,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.86077881,
-					y: 11.5422354,
+					y: 11.5422344,
 					z: 0.0999999046,
 				},
 			},
@@ -53120,7 +53120,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
 						x: -7.521118,
-						y: 10.7421331,
+						y: 10.7421322,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -53128,12 +53128,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: -7.521118,
-							y: 10.7421331,
+							y: 10.7421322,
 							z: -2.52000046,
 						},
 						max: {
 							x: -7.521118,
-							y: 10.7421331,
+							y: 10.7421322,
 							z: -2.52000046,
 						},
 					},
@@ -53160,24 +53160,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -1.8616333,
-					y: 10.6455507,
+					y: 10.64555,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.19195557,
-					y: 12.6350489,
+					y: 12.6350479,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -1.8616333,
-					y: 10.6455507,
+					y: 10.64555,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.19195557,
-					y: 12.6350489,
+					y: 12.6350479,
 					z: 0.0999999046,
 				},
 			},
@@ -53235,24 +53235,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -1.8616333,
-					y: 11.40685,
+					y: 11.4068508,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.19195557,
-					y: 14.5003481,
+					y: 14.500349,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -1.8616333,
-					y: 11.40685,
+					y: 11.4068508,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.19195557,
-					y: 14.5003481,
+					y: 14.500349,
 					z: 0.0999999046,
 				},
 			},
@@ -53310,24 +53310,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -1.77416992,
-					y: 9.701407,
+					y: 9.701408,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -0.5437012,
-					y: 10.1555128,
+					y: 10.1555138,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -1.77416992,
-					y: 9.701407,
+					y: 9.701408,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -0.5437012,
-					y: 10.1555128,
+					y: 10.1555138,
 					z: 0.0999999046,
 				},
 			},
@@ -53374,21 +53374,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Hang/Hang_04/Area Name Sub',
 					textKey: 'Map Zones.CITADEL_FORUM',
 					position: {
-						x: -1.682251,
-						y: 12.7219782,
+						x: -1.68219,
+						y: 12.7219791,
 						z: -2.52000046,
 					},
 					fontSize: 4,
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: -2.255249,
-							y: 10.1011744,
+							x: -2.25531,
+							y: 10.1011715,
 							z: -2.52000046,
 						},
 						max: {
-							x: -0.4099121,
-							y: 10.6152849,
+							x: -0.409851074,
+							y: 10.6152859,
 							z: -2.52000046,
 						},
 					},
@@ -53415,24 +53415,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -0.5447998,
-					y: 9.64193249,
+					y: 9.641933,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 1.19165039,
-					y: 10.25225,
+					y: 10.2522507,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -0.5447998,
-					y: 9.64193249,
+					y: 9.641933,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 1.19165039,
-					y: 10.25225,
+					y: 10.2522507,
 					z: 0.0999999046,
 				},
 			},
@@ -53480,7 +53480,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
 						x: 0.0186767578,
-						y: 7.63697529,
+						y: 7.63697624,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -53488,12 +53488,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					bounds: {
 						min: {
 							x: 0.0186767578,
-							y: 7.63697529,
+							y: 7.63697624,
 							z: -2.52000046,
 						},
 						max: {
 							x: 0.0186767578,
-							y: 7.63697529,
+							y: 7.63697624,
 							z: -2.52000046,
 						},
 					},
@@ -53519,25 +53519,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 1.18817139,
-					y: 9.676436,
+					x: 1.18823242,
+					y: 9.676435,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.211731,
-					y: 10.0989637,
+					x: 2.211792,
+					y: 10.0989628,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 1.18817139,
-					y: 9.676436,
+					x: 1.18823242,
+					y: 9.676435,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.211731,
-					y: 10.0989637,
+					x: 2.211792,
+					y: 10.0989628,
 					z: 0.0999999046,
 				},
 			},
@@ -53595,24 +53595,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -0.219360352,
-					y: 9.995799,
+					y: 9.995798,
 					z: 0.0,
 				},
 				max: {
 					x: -0.219360352,
-					y: 9.995799,
+					y: 9.995798,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -0.219360352,
-					y: 9.995799,
+					y: 9.995798,
 					z: 0.0,
 				},
 				max: {
 					x: -0.219360352,
-					y: 9.995799,
+					y: 9.995798,
 					z: 0.0,
 				},
 			},
@@ -53644,24 +53644,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 0.5350342,
-					y: 10.2119989,
+					y: 10.212,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 1.10998535,
-					y: 14.5934992,
+					y: 14.5935,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 0.5350342,
-					y: 10.2119989,
+					y: 10.212,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 1.10998535,
-					y: 14.5934992,
+					y: 14.5935,
 					z: 0.0999999046,
 				},
 			},
@@ -53719,24 +53719,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 0.5350342,
-					y: 10.2097006,
+					y: 10.2097,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 1.10998535,
-					y: 14.2116995,
+					y: 14.2116985,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 0.5350342,
-					y: 10.2097006,
+					y: 10.2097,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 1.10998535,
-					y: 14.2116995,
+					y: 14.2116985,
 					z: 0.0999999046,
 				},
 			},
@@ -53793,25 +53793,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -1.75140381,
-					y: 11.2585,
+					x: -1.75134277,
+					y: 11.2584991,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.53704834,
-					y: 12.1670008,
+					x: 0.5371094,
+					y: 12.167,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -1.75140381,
-					y: 11.2585,
+					x: -1.75134277,
+					y: 11.2584991,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.53704834,
-					y: 12.1670008,
+					x: 0.5371094,
+					y: 12.167,
 					z: 0.0999999046,
 				},
 			},
@@ -53869,24 +53869,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -1.28082275,
-					y: 10.672,
+					y: 10.671999,
 					z: -0.101998806,
 				},
 				max: {
 					x: 0.536193848,
-					y: 11.4195013,
+					y: 11.4195,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -1.28082275,
-					y: 10.672,
+					y: 10.671999,
 					z: -0.101998806,
 				},
 				max: {
 					x: 0.536193848,
-					y: 11.4195013,
+					y: 11.4195,
 					z: 0.098001,
 				},
 			},
@@ -53931,24 +53931,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -3.18865967,
-					y: 9.78291,
+					y: 9.782911,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.77410889,
-					y: 10.1788,
+					y: 10.1788006,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -3.18865967,
-					y: 9.78291,
+					y: 9.782911,
 					z: -0.0999999046,
 				},
 				max: {
 					x: -1.77410889,
-					y: 10.1788,
+					y: 10.1788006,
 					z: 0.0999999046,
 				},
 			},
@@ -53992,25 +53992,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -1.19342041,
-					y: 12.0485487,
+					x: -1.19335938,
+					y: 12.04855,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.5430298,
-					y: 13.3595495,
+					x: 0.5430908,
+					y: 13.35955,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -1.19342041,
-					y: 12.0485487,
+					x: -1.19335938,
+					y: 12.04855,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 0.5430298,
-					y: 13.3595495,
+					x: 0.5430908,
+					y: 13.35955,
 					z: 0.0999999046,
 				},
 			},
@@ -54067,25 +54067,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -3.48193359,
-					y: 10.5082407,
+					x: -3.48187256,
+					y: 10.5082417,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.86047363,
-					y: 11.462739,
+					x: -1.8604126,
+					y: 11.46274,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -3.48193359,
-					y: 10.5082407,
+					x: -3.48187256,
+					y: 10.5082417,
 					z: -0.0999999046,
 				},
 				max: {
-					x: -1.86047363,
-					y: 11.462739,
+					x: -1.8604126,
+					y: 11.46274,
 					z: 0.0999999046,
 				},
 			},
@@ -54130,24 +54130,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: -1.42803955,
-					y: 10.2212,
+					y: 10.221199,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 0.5385132,
-					y: 10.7846994,
+					y: 10.7846985,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: -1.42803955,
-					y: 10.2212,
+					y: 10.221199,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 0.5385132,
-					y: 10.7846994,
+					y: 10.7846985,
 					z: 0.0999999046,
 				},
 			},
@@ -54192,24 +54192,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 0.2923584,
-					y: 10.5524,
+					y: 10.5524006,
 					z: 0.0,
 				},
 				max: {
 					x: 0.2923584,
-					y: 10.5524,
+					y: 10.5524006,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 0.2923584,
-					y: 10.5524,
+					y: 10.5524006,
 					z: 0.0,
 				},
 				max: {
 					x: 0.2923584,
-					y: 10.5524,
+					y: 10.5524006,
 					z: 0.0,
 				},
 			},
@@ -54241,24 +54241,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 1.10900879,
-					y: 10.2213144,
+					y: 10.2213154,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 2.017456,
-					y: 10.5778131,
+					y: 10.5778141,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 1.10900879,
-					y: 10.2213144,
+					y: 10.2213154,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 2.017456,
-					y: 10.5778131,
+					y: 10.5778141,
 					z: 0.0999999046,
 				},
 			},
@@ -54315,25 +54315,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 1.44464111,
-					y: 11.4654989,
+					x: 1.44470215,
+					y: 11.465498,
 					z: -0.0009994507,
 				},
 				max: {
-					x: 1.44464111,
-					y: 11.4654989,
+					x: 1.44470215,
+					y: 11.465498,
 					z: -0.0009994507,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 1.44464111,
-					y: 11.4654989,
+					x: 1.44470215,
+					y: 11.465498,
 					z: -0.0009994507,
 				},
 				max: {
-					x: 1.44464111,
-					y: 11.4654989,
+					x: 1.44470215,
+					y: 11.465498,
 					z: -0.0009994507,
 				},
 			},
@@ -54378,24 +54378,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 5.369873,
-					y: 9.696351,
+					y: 9.69635,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.944824,
-					y: 12.6663179,
+					y: 12.666317,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 5.369873,
-					y: 9.696351,
+					y: 9.69635,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.944824,
-					y: 12.6663179,
+					y: 12.666317,
 					z: 0.0999999046,
 				},
 			},
@@ -54442,21 +54442,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					objectPath: 'Arborium/Arborium_01/Next Area Down (3)/Area Name',
 					textKey: 'Map Zones.HIGH_HALLS',
 					position: {
-						x: 5.67572,
-						y: 7.681838,
+						x: 5.67578125,
+						y: 7.681837,
 						z: -2.52000046,
 					},
 					fontSize: 6,
 					fontWeight: 400,
 					bounds: {
 						min: {
-							x: 5.67572,
-							y: 7.681838,
+							x: 5.67578125,
+							y: 7.681837,
 							z: -2.52000046,
 						},
 						max: {
-							x: 5.67572,
-							y: 7.681838,
+							x: 5.67578125,
+							y: 7.681837,
 							z: -2.52000046,
 						},
 					},
@@ -54483,24 +54483,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 5.369873,
-					y: 9.697944,
+					y: 9.697945,
 					z: -0.100999355,
 				},
 				max: {
 					x: 5.944824,
-					y: 12.3110533,
+					y: 12.3110542,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 5.369873,
-					y: 9.697944,
+					y: 9.697945,
 					z: -0.100999355,
 				},
 				max: {
 					x: 5.944824,
-					y: 12.3110533,
+					y: 12.3110542,
 					z: 0.0990004539,
 				},
 			},
@@ -54545,24 +54545,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 5.369873,
-					y: 9.687484,
+					y: 9.687485,
 					z: -0.100999355,
 				},
 				max: {
 					x: 5.944824,
-					y: 12.6544828,
+					y: 12.6544838,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 5.369873,
-					y: 9.687484,
+					y: 9.687485,
 					z: -0.100999355,
 				},
 				max: {
 					x: 5.944824,
-					y: 12.6544828,
+					y: 12.6544838,
 					z: 0.0990004539,
 				},
 			},
@@ -54606,25 +54606,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 5.37072754,
-					y: 9.674834,
+					x: 5.37078857,
+					y: 9.674835,
 					z: -0.101998806,
 				},
 				max: {
-					x: 5.94567871,
-					y: 12.6418333,
+					x: 5.94573975,
+					y: 12.6418343,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 5.37072754,
-					y: 9.674834,
+					x: 5.37078857,
+					y: 9.674835,
 					z: -0.101998806,
 				},
 				max: {
-					x: 5.94567871,
-					y: 12.6418333,
+					x: 5.94573975,
+					y: 12.6418343,
 					z: 0.098001,
 				},
 			},
@@ -54669,24 +54669,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 5.94458,
-					y: 10.3199835,
+					y: 10.3199825,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.440063,
-					y: 10.8029852,
+					y: 10.8029842,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 5.94458,
-					y: 10.3199835,
+					y: 10.3199825,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.440063,
-					y: 10.8029852,
+					y: 10.8029842,
 					z: 0.0999999046,
 				},
 			},
@@ -54744,24 +54744,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 8.439331,
-					y: 9.664599,
+					y: 9.6646,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 9.016113,
-					y: 11.8265982,
+					y: 11.8265991,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 8.439331,
-					y: 9.664599,
+					y: 9.6646,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 9.016113,
-					y: 11.8265982,
+					y: 11.8265991,
 					z: 0.0999999046,
 				},
 			},
@@ -54818,25 +54818,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.440308,
-					y: 9.848485,
+					x: 8.440369,
+					y: 9.848484,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.01709,
-					y: 11.7804842,
+					x: 9.017151,
+					y: 11.7804832,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.440308,
-					y: 9.848485,
+					x: 8.440369,
+					y: 9.848484,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.01709,
-					y: 11.7804842,
+					x: 9.017151,
+					y: 11.7804832,
 					z: 0.0999999046,
 				},
 			},
@@ -54894,24 +54894,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 5.9432373,
-					y: 9.778335,
+					y: 9.778334,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.443726,
-					y: 10.4223356,
+					y: 10.4223347,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 5.9432373,
-					y: 9.778335,
+					y: 9.778334,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.443726,
-					y: 10.4223356,
+					y: 10.4223347,
 					z: 0.0999999046,
 				},
 			},
@@ -54968,25 +54968,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 5.98584,
-					y: 10.8478327,
+					x: 5.985901,
+					y: 10.8478336,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.440186,
-					y: 11.3653345,
+					x: 8.440247,
+					y: 11.3653355,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 5.98584,
-					y: 10.8478327,
+					x: 5.985901,
+					y: 10.8478336,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.440186,
-					y: 11.3653345,
+					x: 8.440247,
+					y: 11.3653355,
 					z: 0.0999999046,
 				},
 			},
@@ -55043,25 +55043,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 5.93981934,
-					y: 11.3563414,
+					x: 5.93988037,
+					y: 11.35634,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.440308,
-					y: 11.8853407,
+					x: 8.440369,
+					y: 11.88534,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 5.93981934,
-					y: 11.3563414,
+					x: 5.93988037,
+					y: 11.35634,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 8.440308,
-					y: 11.8853407,
+					x: 8.440369,
+					y: 11.88534,
 					z: 0.0999999046,
 				},
 			},
@@ -55119,24 +55119,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 5.942932,
-					y: 11.9173346,
+					y: 11.9173355,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 9.212219,
-					y: 12.3198347,
+					y: 12.3198357,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 5.942932,
-					y: 11.9173346,
+					y: 11.9173355,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 9.212219,
-					y: 12.3198347,
+					y: 12.3198357,
 					z: 0.0999999046,
 				},
 			},
@@ -55181,24 +55181,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 7.94903564,
-					y: 12.0070353,
+					y: 12.0070343,
 					z: -0.101998806,
 				},
 				max: {
 					x: 8.960999,
-					y: 12.306035,
+					y: 12.3060341,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 7.94903564,
-					y: 12.0070353,
+					y: 12.0070343,
 					z: -0.101998806,
 				},
 				max: {
 					x: 8.960999,
-					y: 12.306035,
+					y: 12.3060341,
 					z: 0.098001,
 				},
 			},
@@ -55243,24 +55243,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 5.94458,
-					y: 12.3198347,
+					y: 12.3198338,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.279053,
-					y: 13.3778334,
+					y: 13.3778324,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 5.94458,
-					y: 12.3198347,
+					y: 12.3198338,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 8.279053,
-					y: 13.3778334,
+					y: 13.3778324,
 					z: 0.0999999046,
 				},
 			},
@@ -55305,24 +55305,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 4.105713,
-					y: 9.652984,
+					y: 9.652985,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.37072754,
-					y: 11.8034849,
+					y: 11.8034859,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 4.105713,
-					y: 9.652984,
+					y: 9.652985,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 5.37072754,
-					y: 11.8034849,
+					y: 11.8034859,
 					z: 0.0999999046,
 				},
 			},
@@ -55366,25 +55366,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 9.007019,
-					y: 10.3855333,
+					x: 9.00708,
+					y: 10.3855343,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.627991,
-					y: 10.7765322,
+					x: 9.628052,
+					y: 10.7765331,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 9.007019,
-					y: 10.3855333,
+					x: 9.00708,
+					y: 10.3855343,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 9.627991,
-					y: 10.7765322,
+					x: 9.628052,
+					y: 10.7765331,
 					z: 0.0999999046,
 				},
 			},
@@ -55442,24 +55442,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 9.015076,
-					y: 9.847333,
+					y: 9.847334,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 13.0515747,
-					y: 10.7213335,
+					y: 10.7213345,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 9.015076,
-					y: 9.847333,
+					y: 9.847334,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 13.0515747,
-					y: 10.7213335,
+					y: 10.7213345,
 					z: 0.0999999046,
 				},
 			},
@@ -55517,24 +55517,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 9.015076,
-					y: 9.847333,
+					y: 9.847334,
 					z: -0.100999355,
 				},
 				max: {
 					x: 13.0515747,
-					y: 10.7213335,
+					y: 10.7213345,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 9.015076,
-					y: 9.847333,
+					y: 9.847334,
 					z: -0.100999355,
 				},
 				max: {
 					x: 13.0515747,
-					y: 10.7213335,
+					y: 10.7213345,
 					z: 0.0990004539,
 				},
 			},
@@ -55579,24 +55579,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 9.015076,
-					y: 9.847333,
+					y: 9.847334,
 					z: -0.101998806,
 				},
 				max: {
 					x: 13.0515747,
-					y: 10.7213335,
+					y: 10.7213345,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 9.015076,
-					y: 9.847333,
+					y: 9.847334,
 					z: -0.101998806,
 				},
 				max: {
 					x: 13.0515747,
-					y: 10.7213335,
+					y: 10.7213345,
 					z: 0.098001,
 				},
 			},
@@ -55640,25 +55640,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 4.84283447,
-					y: 11.7908335,
+					x: 4.84289551,
+					y: 11.7908344,
 					z: -0.100999355,
 				},
 				max: {
-					x: 5.371887,
-					y: 12.3198328,
+					x: 5.37194824,
+					y: 12.3198338,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 4.84283447,
-					y: 11.7908335,
+					x: 4.84289551,
+					y: 11.7908344,
 					z: -0.100999355,
 				},
 				max: {
-					x: 5.371887,
-					y: 12.3198328,
+					x: 5.37194824,
+					y: 12.3198338,
 					z: 0.0990004539,
 				},
 			},
@@ -55702,25 +55702,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.24401855,
-					y: 14.86835,
+					x: 2.24407959,
+					y: 14.8683491,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.821045,
-					y: 16.23685,
+					x: 3.821106,
+					y: 16.2368488,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.24401855,
-					y: 14.86835,
+					x: 2.24407959,
+					y: 14.8683491,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.821045,
-					y: 16.23685,
+					x: 3.821106,
+					y: 16.2368488,
 					z: 0.0999999046,
 				},
 			},
@@ -55795,25 +55795,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 0.73828125,
-					y: 15.1558523,
+					x: 0.7383423,
+					y: 15.1558514,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.244751,
-					y: 17.2143517,
+					x: 2.244812,
+					y: 17.21435,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 0.73828125,
-					y: 15.1558523,
+					x: 0.7383423,
+					y: 15.1558514,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 2.244751,
-					y: 17.2143517,
+					x: 2.244812,
+					y: 17.21435,
 					z: 0.0999999046,
 				},
 			},
@@ -55888,24 +55888,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 0.517456055,
-					y: 14.9039984,
+					x: 0.5175171,
+					y: 14.9039993,
 					z: -0.101998806,
 				},
 				max: {
-					x: 1.713501,
+					x: 1.713562,
 					y: 16.1115,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 0.517456055,
-					y: 14.9039984,
+					x: 0.5175171,
+					y: 14.9039993,
 					z: -0.101998806,
 				},
 				max: {
-					x: 1.713501,
+					x: 1.713562,
 					y: 16.1115,
 					z: 0.098001,
 				},
@@ -55968,25 +55968,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.24365234,
-					y: 15.6733484,
+					x: 2.24371338,
+					y: 15.6733494,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.8190918,
-					y: 18.8358459,
+					x: 3.81915283,
+					y: 18.8358479,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.24365234,
-					y: 15.6733484,
+					x: 2.24371338,
+					y: 15.6733494,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.8190918,
-					y: 18.8358459,
+					x: 3.81915283,
+					y: 18.8358479,
 					z: 0.0999999046,
 				},
 			},
@@ -56061,25 +56061,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 1.798584,
-					y: 12.59135,
+					x: 1.798645,
+					y: 12.5913506,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 4.74255371,
-					y: 15.7653494,
+					x: 4.74261475,
+					y: 15.76535,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 1.798584,
-					y: 12.59135,
+					x: 1.798645,
+					y: 12.5913506,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 4.74255371,
-					y: 15.7653494,
+					x: 4.74261475,
+					y: 15.76535,
 					z: 0.0999999046,
 				},
 			},
@@ -56155,24 +56155,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 3.5604248,
-					y: 14.3611994,
+					y: 14.3612,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 6.11340332,
-					y: 17.0981979,
+					y: 17.0982,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 3.5604248,
-					y: 14.3611994,
+					y: 14.3612,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 6.11340332,
-					y: 17.0981979,
+					y: 17.0982,
 					z: 0.0999999046,
 				},
 			},
@@ -56235,7 +56235,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 3.505188,
-					y: 14.35085,
+					y: 14.3508492,
 					z: -0.100999355,
 				},
 				max: {
@@ -56247,7 +56247,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			playerPositionBounds: {
 				min: {
 					x: 3.505188,
-					y: 14.35085,
+					y: 14.3508492,
 					z: -0.100999355,
 				},
 				max: {
@@ -56328,7 +56328,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 3.81799316,
-					y: 14.66365,
+					y: 14.6636505,
 					z: -0.101998806,
 				},
 				max: {
@@ -56340,7 +56340,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			playerPositionBounds: {
 				min: {
 					x: 3.81799316,
-					y: 14.66365,
+					y: 14.6636505,
 					z: -0.101998806,
 				},
 				max: {
@@ -56407,25 +56407,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 4.19891357,
-					y: 14.9936991,
+					x: 4.19897461,
+					y: 14.9937,
 					z: -0.102998257,
 				},
 				max: {
-					x: 4.522644,
-					y: 15.3156977,
+					x: 4.522705,
+					y: 15.3156986,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 4.19891357,
-					y: 14.9936991,
+					x: 4.19897461,
+					y: 14.9937,
 					z: -0.102998257,
 				},
 				max: {
-					x: 4.522644,
-					y: 15.3156977,
+					x: 4.522705,
+					y: 15.3156986,
 					z: 0.09700155,
 				},
 			},
@@ -56488,7 +56488,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 1.99066162,
-					y: 14.8396006,
+					y: 14.8396,
 					z: -0.102998257,
 				},
 				max: {
@@ -56500,7 +56500,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			playerPositionBounds: {
 				min: {
 					x: 1.99066162,
-					y: 14.8396006,
+					y: 14.8396,
 					z: -0.102998257,
 				},
 				max: {
@@ -56549,24 +56549,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.24157715,
-					y: 15.6836977,
+					x: 2.24163818,
+					y: 15.6836967,
 					z: -0.102998257,
 				},
 				max: {
-					x: 3.8170166,
+					x: 3.81707764,
 					y: 19.4326973,
 					z: 0.09700155,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.24157715,
-					y: 15.6836977,
+					x: 2.24163818,
+					y: 15.6836967,
 					z: -0.102998257,
 				},
 				max: {
-					x: 3.8170166,
+					x: 3.81707764,
 					y: 19.4326973,
 					z: 0.09700155,
 				},
@@ -56612,7 +56612,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 2.47363281,
-					y: 12.3452444,
+					y: 12.3452454,
 					z: -0.102998257,
 				},
 				max: {
@@ -56624,7 +56624,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			playerPositionBounds: {
 				min: {
 					x: 2.47363281,
-					y: 12.3452444,
+					y: 12.3452454,
 					z: -0.102998257,
 				},
 				max: {
@@ -56674,24 +56674,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 3.505188,
-					y: 14.3508482,
+					y: 14.3508472,
 					z: -0.100999355,
 				},
 				max: {
 					x: 6.138733,
-					y: 17.0878487,
+					y: 17.0878468,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 3.505188,
-					y: 14.3508482,
+					y: 14.3508472,
 					z: -0.100999355,
 				},
 				max: {
 					x: 6.138733,
-					y: 17.0878487,
+					y: 17.0878468,
 					z: 0.0990004539,
 				},
 			},
@@ -56749,7 +56749,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 2.47363281,
-					y: 12.3452444,
+					y: 12.3452454,
 					z: -0.104001522,
 				},
 				max: {
@@ -56761,7 +56761,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			playerPositionBounds: {
 				min: {
 					x: 2.47363281,
-					y: 12.3452444,
+					y: 12.3452454,
 					z: -0.104001522,
 				},
 				max: {
@@ -56811,7 +56811,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 2.47363281,
-					y: 12.3452444,
+					y: 12.3452454,
 					z: -0.105000973,
 				},
 				max: {
@@ -56823,7 +56823,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			playerPositionBounds: {
 				min: {
 					x: 2.47363281,
-					y: 12.3452444,
+					y: 12.3452454,
 					z: -0.105000973,
 				},
 				max: {
@@ -56863,7 +56863,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					textKey: 'Map Zones.COG_CORE_SHORT',
 					position: {
 						x: 2.772644,
-						y: 12.5108461,
+						y: 12.5108471,
 						z: -2.52000046,
 					},
 					fontSize: 6,
@@ -56902,24 +56902,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 21.3497314,
+					x: 21.3497925,
 					y: -5.97079945,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 25.11023,
+					x: 25.11029,
 					y: -5.48779964,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 21.3497314,
+					x: 21.3497925,
 					y: -5.97079945,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 25.11023,
+					x: 25.11029,
 					y: -5.48779964,
 					z: 0.100999355,
 				},
@@ -57007,24 +57007,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 21.3497314,
+					x: 21.3497925,
 					y: -5.95929956,
 					z: -0.101998806,
 				},
 				max: {
-					x: 25.11023,
+					x: 25.11029,
 					y: -5.49929953,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 21.3497314,
+					x: 21.3497925,
 					y: -5.95929956,
 					z: -0.101998806,
 				},
 				max: {
-					x: 25.11023,
+					x: 25.11029,
 					y: -5.49929953,
 					z: 0.098001,
 				},
@@ -57542,24 +57542,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 24.512207,
+					x: 24.5122681,
 					y: -5.50079155,
 					z: -0.100999355,
 				},
 				max: {
-					x: 25.11023,
+					x: 25.11029,
 					y: -2.89029217,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 24.512207,
+					x: 24.5122681,
 					y: -5.50079155,
 					z: -0.100999355,
 				},
 				max: {
-					x: 25.11023,
+					x: 25.11029,
 					y: -2.89029217,
 					z: 0.0990004539,
 				},
@@ -57633,24 +57633,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			visualBounds: {
 				min: {
 					x: 21.88794,
-					y: -2.80369949,
+					y: -2.80370045,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 26.9019775,
-					y: -2.25169945,
+					y: -2.2517004,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
 					x: 21.88794,
-					y: -2.80369949,
+					y: -2.80370045,
 					z: -0.0999999046,
 				},
 				max: {
 					x: 26.9019775,
-					y: -2.25169945,
+					y: -2.2517004,
 					z: 0.0999999046,
 				},
 			},
@@ -58056,24 +58056,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 25.7174072,
+					x: 25.7174683,
 					y: -3.98934937,
 					z: -0.101998806,
 				},
 				max: {
-					x: 27.2009277,
+					x: 27.2009888,
 					y: -3.39134979,
 					z: 0.098001,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 25.7174072,
+					x: 25.7174683,
 					y: -3.98934937,
 					z: -0.101998806,
 				},
 				max: {
-					x: 27.2009277,
+					x: 27.2009888,
 					y: -3.39134979,
 					z: 0.098001,
 				},
@@ -59001,24 +59001,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: -0.7095337,
+					x: -0.709472656,
 					y: -21.49005,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.68341064,
+					x: 3.68347168,
 					y: -20.59305,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: -0.7095337,
+					x: -0.709472656,
 					y: -21.49005,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 3.68341064,
+					x: 3.68347168,
 					y: -20.59305,
 					z: 0.0999999046,
 				},
@@ -59076,24 +59076,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 1.77789307,
+					x: 1.7779541,
 					y: -20.9047012,
 					z: -0.100999355,
 				},
 				max: {
-					x: 2.73236084,
+					x: 2.73242188,
 					y: -20.5137024,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 1.77789307,
+					x: 1.7779541,
 					y: -20.9047012,
 					z: -0.100999355,
 				},
 				max: {
-					x: 2.73236084,
+					x: 2.73242188,
 					y: -20.5137024,
 					z: 0.0990004539,
 				},
@@ -59301,24 +59301,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 8.340942,
+					x: 8.341003,
 					y: -20.6057,
 					z: -0.100999355,
 				},
 				max: {
-					x: 8.743408,
+					x: 8.743469,
 					y: -20.0767,
 					z: 0.0990004539,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 8.340942,
+					x: 8.341003,
 					y: -20.6057,
 					z: -0.100999355,
 				},
 				max: {
-					x: 8.743408,
+					x: 8.743469,
 					y: -20.0767,
 					z: 0.0990004539,
 				},
@@ -59673,24 +59673,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.30987549,
+					x: 2.30993652,
 					y: -23.7555771,
 					z: -0.101098537,
 				},
 				max: {
-					x: 5.66790771,
+					x: 5.66796875,
 					y: -21.7200775,
 					z: 0.09890127,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.30987549,
+					x: 2.30993652,
 					y: -23.7555771,
 					z: -0.101098537,
 				},
 				max: {
-					x: 5.66790771,
+					x: 5.66796875,
 					y: -21.7200775,
 					z: 0.09890127,
 				},
@@ -59748,24 +59748,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.30987549,
+					x: 2.30993652,
 					y: -23.7555771,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 5.66790771,
+					x: 5.66796875,
 					y: -21.7200775,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.30987549,
+					x: 2.30993652,
 					y: -23.7555771,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 5.66790771,
+					x: 5.66796875,
 					y: -21.7200775,
 					z: 0.0999999046,
 				},
@@ -59973,24 +59973,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 5.50616455,
+					x: 5.50622559,
 					y: -23.6842766,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 8.542175,
+					x: 8.542236,
 					y: -21.7062759,
 					z: 0.100999355,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 5.50616455,
+					x: 5.50622559,
 					y: -23.6842766,
 					z: -0.0990004539,
 				},
 				max: {
-					x: 8.542175,
+					x: 8.542236,
 					y: -21.7062759,
 					z: 0.100999355,
 				},
@@ -60384,24 +60384,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 2.680603,
+					x: 2.680664,
 					y: -19.915699,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 7.53363037,
+					x: 7.53369141,
 					y: -19.2371979,
 					z: 0.0999999046,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 2.680603,
+					x: 2.680664,
 					y: -19.915699,
 					z: -0.0999999046,
 				},
 				max: {
-					x: 7.53363037,
+					x: 7.53369141,
 					y: -19.2371979,
 					z: 0.0999999046,
 				},
@@ -60459,24 +60459,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.08428955,
+					x: 3.08435059,
 					y: 18.9772987,
 					z: 0.0,
 				},
 				max: {
-					x: 3.08428955,
+					x: 3.08435059,
 					y: 18.9772987,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.08428955,
+					x: 3.08435059,
 					y: 18.9772987,
 					z: 0.0,
 				},
 				max: {
-					x: 3.08428955,
+					x: 3.08435059,
 					y: 18.9772987,
 					z: 0.0,
 				},
@@ -60508,24 +60508,24 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.08428955,
+					x: 3.08435059,
 					y: 19.1405983,
 					z: 0.0,
 				},
 				max: {
-					x: 3.08428955,
+					x: 3.08435059,
 					y: 19.1405983,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.08428955,
+					x: 3.08435059,
 					y: 19.1405983,
 					z: 0.0,
 				},
 				max: {
-					x: 3.08428955,
+					x: 3.08435059,
 					y: 19.1405983,
 					z: 0.0,
 				},
@@ -60557,25 +60557,25 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			},
 			visualBounds: {
 				min: {
-					x: 3.08428955,
-					y: 19.4740982,
+					x: 3.08435059,
+					y: 19.4741,
 					z: 0.0,
 				},
 				max: {
-					x: 3.08428955,
-					y: 19.4740982,
+					x: 3.08435059,
+					y: 19.4741,
 					z: 0.0,
 				},
 			},
 			playerPositionBounds: {
 				min: {
-					x: 3.08428955,
-					y: 19.4740982,
+					x: 3.08435059,
+					y: 19.4741,
 					z: 0.0,
 				},
 				max: {
-					x: 3.08428955,
-					y: 19.4740982,
+					x: 3.08435059,
+					y: 19.4741,
 					z: 0.0,
 				},
 			},
@@ -60628,7 +60628,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Tut/Tut_01/Next Area Up (2)/Area Name',
 			textKey: 'Map Zones.BONETOWN',
 			position: {
-				x: -12.1110229,
+				x: -12.1109619,
 				y: -12.788167,
 				z: -2.52199936,
 			},
@@ -60657,7 +60657,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Tut/Tut_01b/Next Area Right (1)/Area Name',
 			textKey: 'Map Zones.WEAVER_SHRINE',
 			position: {
-				x: -9.875427,
+				x: -9.875366,
 				y: -14.3303213,
 				z: -2.52000046,
 			},
@@ -60665,12 +60665,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -9.875427,
+					x: -9.875366,
 					y: -14.3303213,
 					z: -2.52000046,
 				},
 				max: {
-					x: -9.875427,
+					x: -9.875366,
 					y: -14.3303213,
 					z: -2.52000046,
 				},
@@ -60831,7 +60831,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Bonetown/Bonegrave/Area Name Sub',
 			textKey: 'Map Zones.BONETOWN_GRAVEYARD',
 			position: {
-				x: -20.3237915,
+				x: -20.32373,
 				y: -13.6459208,
 				z: -2.52000046,
 			},
@@ -60839,7 +60839,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -22.390564,
+					x: -22.3904419,
 					y: -13.8725328,
 					z: -2.52000046,
 				},
@@ -61047,7 +61047,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -2.52000046,
 				},
 				max: {
-					x: -4.06854248,
+					x: -4.06842041,
 					y: -13.3351288,
 					z: -2.52000046,
 				},
@@ -61063,7 +61063,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Bone/Bone_01/Next Area Left (4)/Area Name',
 			textKey: 'Map Zones.BONETOWN',
 			position: {
-				x: -16.2528076,
+				x: -16.2527466,
 				y: -13.01343,
 				z: -2.52000046,
 			},
@@ -61071,12 +61071,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -16.2528076,
+					x: -16.2527466,
 					y: -13.01343,
 					z: -2.52000046,
 				},
 				max: {
-					x: -16.2528076,
+					x: -16.2527466,
 					y: -13.01343,
 					z: -2.52000046,
 				},
@@ -61237,7 +61237,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Crawl/Area Name',
 			textKey: 'Map Zones.CRAWLSPACE',
 			position: {
-				x: -8.068298,
+				x: -8.068237,
 				y: -14.1024809,
 				z: -2.52000046,
 			},
@@ -61250,7 +61250,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -2.52000046,
 				},
 				max: {
-					x: -17.10382,
+					x: -17.1036987,
 					y: -10.9672766,
 					z: -2.52000046,
 				},
@@ -61295,7 +61295,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Crawl/Crawl_04/Next Area Right (2)/Area Name',
 			textKey: 'Map Zones.BONETOWN',
 			position: {
-				x: -12.6499023,
+				x: -12.6498413,
 				y: -10.7593155,
 				z: -2.52000046,
 			},
@@ -61411,7 +61411,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Dock/Dock_08/Next Area Left (2)/Area Name',
 			textKey: 'Map Zones.PATH_OF_BONE',
 			position: {
-				x: -3.01434326,
+				x: -3.01428223,
 				y: -13.0600843,
 				z: -2.52000046,
 			},
@@ -61419,12 +61419,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -3.01434326,
+					x: -3.01428223,
 					y: -13.0600843,
 					z: -2.52000046,
 				},
 				max: {
-					x: -3.01434326,
+					x: -3.01428223,
 					y: -13.0600843,
 					z: -2.52000046,
 				},
@@ -61498,7 +61498,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Dock/Bone_East_04/Next Area Right (2)/Area Name',
 			textKey: 'Map Zones.WILDS',
 			position: {
-				x: 12.2225342,
+				x: 12.2225952,
 				y: -11.8323774,
 				z: -2.52000046,
 			},
@@ -61506,12 +61506,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 12.2225342,
+					x: 12.2225952,
 					y: -11.8323774,
 					z: -2.52000046,
 				},
 				max: {
-					x: 12.2225342,
+					x: 12.2225952,
 					y: -11.8323774,
 					z: -2.52000046,
 				},
@@ -61564,7 +61564,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -12.6766968,
+					x: -12.6765747,
 					y: -16.5830479,
 					z: -2.52000046,
 				},
@@ -61643,7 +61643,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Ant/Ant_02/Next Area Left (2)/Area Name',
 			textKey: 'Map Zones.PATH_OF_BONE',
 			position: {
-				x: -2.25610352,
+				x: -2.25604248,
 				y: -10.8134718,
 				z: -2.52000046,
 			},
@@ -61651,12 +61651,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -2.25610352,
+					x: -2.25604248,
 					y: -10.8134718,
 					z: -2.52000046,
 				},
 				max: {
-					x: -2.25610352,
+					x: -2.25604248,
 					y: -10.8134718,
 					z: -2.52000046,
 				},
@@ -61672,7 +61672,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Ant/Ant_05b/Next Area Down (5)/Area Name',
 			textKey: 'Map Zones.DOCKS',
 			position: {
-				x: 11.3782959,
+				x: 11.3783569,
 				y: -11.2274723,
 				z: -2.52000046,
 			},
@@ -61680,12 +61680,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 11.3782959,
+					x: 11.3783569,
 					y: -11.2274723,
 					z: -2.52000046,
 				},
 				max: {
-					x: 11.3782959,
+					x: 11.3783569,
 					y: -11.2274723,
 					z: -2.52000046,
 				},
@@ -61701,7 +61701,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Ant/Ant_05b/Next Area Down (5)/Area Name (1)',
 			textKey: 'Map Zones.DOCKS',
 			position: {
-				x: 4.1171875,
+				x: 4.11724854,
 				y: -11.2274723,
 				z: -2.52000046,
 			},
@@ -61709,12 +61709,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 4.1171875,
+					x: 4.11724854,
 					y: -11.2274723,
 					z: -2.52000046,
 				},
 				max: {
-					x: 4.1171875,
+					x: 4.11724854,
 					y: -11.2274723,
 					z: -2.52000046,
 				},
@@ -61772,7 +61772,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -2.52000046,
 				},
 				max: {
-					x: 16.694519,
+					x: 16.6946411,
 					y: -9.517923,
 					z: -2.52000046,
 				},
@@ -61825,12 +61825,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 15.18811,
+					x: 15.1881714,
 					y: -11.7136927,
 					z: -2.52000046,
 				},
 				max: {
-					x: 17.4411621,
+					x: 17.4412231,
 					y: -11.2127638,
 					z: -2.52000046,
 				},
@@ -61962,7 +61962,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Wilds/Dock_03b_left/Next Area Left (5)/Area Name',
 			textKey: 'Map Zones.DOCKS',
 			position: {
-				x: 9.784363,
+				x: 9.784424,
 				y: -14.0668268,
 				z: -2.52000046,
 			},
@@ -61970,12 +61970,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 9.784363,
+					x: 9.784424,
 					y: -14.0668268,
 					z: -2.52000046,
 				},
 				max: {
-					x: 9.784363,
+					x: 9.784424,
 					y: -14.0668268,
 					z: -2.52000046,
 				},
@@ -61991,7 +61991,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Greymoor/Area Name',
 			textKey: 'Map Zones.GREYMOOR',
 			position: {
-				x: 18.0297852,
+				x: 18.0298462,
 				y: -10.2058239,
 				z: -2.52000046,
 			},
@@ -62049,7 +62049,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Greymoor/Greymoor_03_top/Next Area Right/Area Name',
 			textKey: 'Map Zones.DUSTPENS',
 			position: {
-				x: 12.75769,
+				x: 12.7577515,
 				y: -3.83433819,
 				z: -2.52000046,
 			},
@@ -62057,12 +62057,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 12.75769,
+					x: 12.7577515,
 					y: -3.83433819,
 					z: -2.52000046,
 				},
 				max: {
-					x: 12.75769,
+					x: 12.7577515,
 					y: -3.83433819,
 					z: -2.52000046,
 				},
@@ -62078,7 +62078,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Greymoor/Greymoor_06_top_left/Next Area Up Wisp/Area Name',
 			textKey: 'Map Zones.WISP',
 			position: {
-				x: 3.791626,
+				x: 3.791687,
 				y: -1.12772846,
 				z: -2.52000046,
 			},
@@ -62086,12 +62086,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 3.791626,
+					x: 3.791687,
 					y: -1.12772846,
 					z: -2.52000046,
 				},
 				max: {
-					x: 3.791626,
+					x: 3.791687,
 					y: -1.12772846,
 					z: -2.52000046,
 				},
@@ -62194,7 +62194,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Greymoor/Greymoor_15b_bot_right/Next Area Right/Next Area Right Clover JP/Area Name',
 			textKey: 'Map Zones.CLOVER',
 			position: {
-				x: 21.8408813,
+				x: 21.8409424,
 				y: -6.41887569,
 				z: -2.52299881,
 			},
@@ -62252,7 +62252,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Greymoor/Greymoor_17/Next Area Up (3)/Area Name',
 			textKey: 'Map Zones.DUSTPENS',
 			position: {
-				x: 17.8630371,
+				x: 17.8630981,
 				y: -1.25307369,
 				z: -2.52000046,
 			},
@@ -62260,12 +62260,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 17.8630371,
+					x: 17.8630981,
 					y: -1.25307369,
 					z: -2.52000046,
 				},
 				max: {
-					x: 17.8630371,
+					x: 17.8630981,
 					y: -1.25307369,
 					z: -2.52000046,
 				},
@@ -62310,7 +62310,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Dust/Area Name (1)',
 			textKey: 'Map Zones.DUSTPENS',
 			position: {
-				x: 21.8964844,
+				x: 21.8965454,
 				y: -7.29931736,
 				z: -2.52000046,
 			},
@@ -62426,7 +62426,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Dust/Dust_06_right/Next Area Right (8)/Area Name',
 			textKey: 'Map Zones.SWAMP',
 			position: {
-				x: 20.3911133,
+				x: 20.3911743,
 				y: -1.3595686,
 				z: -2.52000046,
 			},
@@ -62434,12 +62434,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 20.3911133,
+					x: 20.3911743,
 					y: -1.3595686,
 					z: -2.52000046,
 				},
 				max: {
-					x: 20.3911133,
+					x: 20.3911743,
 					y: -1.3595686,
 					z: -2.52000046,
 				},
@@ -62493,12 +62493,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 2.68096924,
-					y: -2.426385,
+					y: -2.426384,
 					z: -2.52000046,
 				},
 				max: {
 					x: 5.00787354,
-					y: -2.05932713,
+					y: -2.05932617,
 					z: -2.52000046,
 				},
 			},
@@ -62551,12 +62551,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 17.9624634,
-					y: 2.09104824,
+					y: 2.09104729,
 					z: -2.52000046,
 				},
 				max: {
 					x: 19.8161011,
-					y: 2.458106,
+					y: 2.458105,
 					z: -2.52000046,
 				},
 			},
@@ -62630,7 +62630,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.AQUEDUCT',
 			position: {
 				x: 14.1350708,
-				y: 8.349877,
+				y: 8.349878,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -62638,12 +62638,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 14.1350708,
-					y: 8.349877,
+					y: 8.349878,
 					z: -2.52000046,
 				},
 				max: {
 					x: 14.1350708,
-					y: 8.349877,
+					y: 8.349878,
 					z: -2.52000046,
 				},
 			},
@@ -62659,7 +62659,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.DUSTPENS',
 			position: {
 				x: 13.2266846,
-				y: -1.365325,
+				y: -1.365324,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -62667,12 +62667,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 13.2266846,
-					y: -1.365325,
+					y: -1.365324,
 					z: -2.52000046,
 				},
 				max: {
 					x: 13.2266846,
-					y: -1.365325,
+					y: -1.365324,
 					z: -2.52000046,
 				},
 			},
@@ -62688,7 +62688,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.MUCKVILLAGE',
 			position: {
 				x: 19.2020874,
-				y: 10.5298185,
+				y: 10.5298176,
 				z: -2.52000046,
 			},
 			fontSize: 4,
@@ -62696,12 +62696,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 18.4181519,
-					y: 6.526082,
+					y: 6.526083,
 					z: -2.52000046,
 				},
 				max: {
 					x: 19.9816284,
-					y: 7.04019642,
+					y: 7.04019356,
 					z: -2.52000046,
 				},
 			},
@@ -62717,7 +62717,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.LIBRARY',
 			position: {
 				x: 13.088562,
-				y: 6.75367832,
+				y: 6.75367928,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -62725,12 +62725,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 13.088562,
-					y: 6.75367832,
+					y: 6.75367928,
 					z: -2.52000046,
 				},
 				max: {
 					x: 13.088562,
-					y: 6.75367832,
+					y: 6.75367928,
 					z: -2.52000046,
 				},
 			},
@@ -62753,13 +62753,13 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 10.3320923,
-					y: -0.798434258,
+					x: 10.3321533,
+					y: -0.7984352,
 					z: -2.52000046,
 				},
 				max: {
-					x: 12.7581177,
-					y: -0.2843237,
+					x: 12.7581787,
+					y: -0.284324646,
 					z: -2.52000046,
 				},
 			},
@@ -62775,7 +62775,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.AQUEDUCT',
 			position: {
 				x: 24.4294434,
-				y: 8.644551,
+				y: 8.64455,
 				z: -2.52000046,
 			},
 			fontSize: 2,
@@ -62783,12 +62783,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 15.5753784,
-					y: 10.6523066,
+					y: 10.6523075,
 					z: -2.52000046,
 				},
 				max: {
 					x: 18.48285,
-					y: 11.0193682,
+					y: 11.0193653,
 					z: -2.52000046,
 				},
 			},
@@ -62803,8 +62803,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Aqueduct/Aqueduct_01/Next Area Left (2)/Area Name',
 			textKey: 'Map Zones.ARBORIUM',
 			position: {
-				x: 12.7017212,
-				y: 8.671004,
+				x: 12.7017822,
+				y: 8.671003,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -62833,7 +62833,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.SWAMP',
 			position: {
 				x: 20.47461,
-				y: 7.63485432,
+				y: 7.63485336,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -62841,12 +62841,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 20.47461,
-					y: 7.63485432,
+					y: 7.63485336,
 					z: -2.52000046,
 				},
 				max: {
 					x: 20.47461,
-					y: 7.63485432,
+					y: 7.63485336,
 					z: -2.52000046,
 				},
 			},
@@ -62862,7 +62862,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.WHITELAKE',
 			position: {
 				x: 27.1825562,
-				y: 12.14745,
+				y: 12.1474495,
 				z: -2.52000046,
 			},
 			fontSize: 4,
@@ -62870,12 +62870,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 27.1825562,
-					y: 12.14745,
+					y: 12.1474495,
 					z: -2.52000046,
 				},
 				max: {
 					x: 27.1825562,
-					y: 12.14745,
+					y: 12.1474495,
 					z: -2.52000046,
 				},
 			},
@@ -62890,8 +62890,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Aqueduct/Aqueduct_05/Area Name Sub Fleatopia',
 			textKey: 'Map Zones.FLEATOPIA',
 			position: {
-				x: 25.684082,
-				y: 10.3603449,
+				x: 25.6841431,
+				y: 10.3603458,
 				z: -2.521,
 			},
 			fontSize: 4,
@@ -62899,12 +62899,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 24.9458618,
-					y: 7.739541,
+					y: 7.739542,
 					z: -2.521,
 				},
 				max: {
 					x: 26.4179077,
-					y: 8.253652,
+					y: 8.253653,
 					z: -2.521,
 				},
 			},
@@ -62932,7 +62932,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -2.52000046,
 				},
 				max: {
-					x: -0.787780762,
+					x: -0.7876587,
 					y: -7.59808969,
 					z: -2.52000046,
 				},
@@ -63106,7 +63106,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 					z: -2.52000046,
 				},
 				max: {
-					x: -10.1404419,
+					x: -10.14032,
 					y: -5.592529,
 					z: -2.52000046,
 				},
@@ -63238,7 +63238,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Shellwood/Shellwood_15/Next Area Right (8)/Area Name',
 			textKey: 'Map Zones.BELLTOWN',
 			position: {
-				x: 0.869506836,
+				x: 0.8695679,
 				y: -5.53383732,
 				z: -2.52000046,
 			},
@@ -63304,13 +63304,13 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -18.6537476,
-					y: -1.790328,
+					x: -18.6536255,
+					y: -1.79032707,
 					z: -2.52000046,
 				},
 				max: {
 					x: -16.0858765,
-					y: -1.42327023,
+					y: -1.42326927,
 					z: -2.52000046,
 				},
 			},
@@ -63354,7 +63354,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Blasted_Steps/Coral_19/Next Area Down BoneBottom/Area Name',
 			textKey: 'Map Zones.BONETOWN',
 			position: {
-				x: -15.3845825,
+				x: -15.3845215,
 				y: -7.535984,
 				z: -2.52000046,
 			},
@@ -63362,12 +63362,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -15.3845825,
+					x: -15.3845215,
 					y: -7.535984,
 					z: -2.52000046,
 				},
 				max: {
-					x: -15.3845825,
+					x: -15.3845215,
 					y: -7.535984,
 					z: -2.52000046,
 				},
@@ -63383,7 +63383,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Blasted_Steps/Coral_32_arrow/Next Area Up (4)/Area Name',
 			textKey: 'Map Zones.RED_CORAL_GORGE',
 			position: {
-				x: -15.3294067,
+				x: -15.3293457,
 				y: 1.5961628,
 				z: -2.52000046,
 			},
@@ -63391,12 +63391,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -15.3294067,
+					x: -15.3293457,
 					y: 1.5961628,
 					z: -2.52000046,
 				},
 				max: {
-					x: -15.3294067,
+					x: -15.3293457,
 					y: 1.5961628,
 					z: -2.52000046,
 				},
@@ -63412,7 +63412,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Blasted_Steps/Coral_34_top/Next Area Up (2)/Area Name',
 			textKey: 'Map Zones.RED_CORAL_GORGE',
 			position: {
-				x: -20.380188,
+				x: -20.380127,
 				y: -0.5853901,
 				z: -2.521,
 			},
@@ -63420,12 +63420,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -20.380188,
+					x: -20.380127,
 					y: -0.5853901,
 					z: -2.521,
 				},
 				max: {
-					x: -20.380188,
+					x: -20.380127,
 					y: -0.5853901,
 					z: -2.521,
 				},
@@ -63471,7 +63471,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.FRONT_GATE',
 			position: {
 				x: -7.081604,
-				y: 0.8441801,
+				y: 0.844181061,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -63479,12 +63479,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -7.081604,
-					y: 0.8441801,
+					y: 0.844181061,
 					z: -2.52000046,
 				},
 				max: {
 					x: -7.081604,
-					y: 0.8441801,
+					y: 0.844181061,
 					z: -2.52000046,
 				},
 			},
@@ -63508,12 +63508,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -21.9768677,
-					y: 1.60609722,
+					y: 1.60609818,
 					z: -2.52000046,
 				},
 				max: {
 					x: -19.0787964,
-					y: 1.973155,
+					y: 1.973156,
 					z: -2.52000046,
 				},
 			},
@@ -63557,8 +63557,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Coral_Caves/Coral_28/Area Name Sub',
 			textKey: 'Map Zones.RED_CORAL_TOWER',
 			position: {
-				x: -23.0888672,
-				y: 4.21007252,
+				x: -23.0888062,
+				y: 4.21007347,
 				z: -2.52000046,
 			},
 			fontSize: 4,
@@ -63566,12 +63566,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -24.1381836,
-					y: 3.695962,
+					y: 3.695961,
 					z: -2.52000046,
 				},
 				max: {
 					x: -22.0322266,
-					y: 4.21007252,
+					y: 4.21007347,
 					z: -2.52000046,
 				},
 			},
@@ -63595,12 +63595,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -17.4481812,
-					y: 4.46645641,
+					y: 4.46645737,
 					z: -2.52000046,
 				},
 				max: {
 					x: -16.0670776,
-					y: 4.980567,
+					y: 4.980568,
 					z: -2.52000046,
 				},
 			},
@@ -63674,7 +63674,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.THE_SLAB',
 			position: {
 				x: -2.4196167,
-				y: 8.349,
+				y: 8.349001,
 				z: -2.52000046,
 			},
 			fontSize: 2,
@@ -63682,12 +63682,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -11.8518677,
-					y: 11.0694208,
+					y: 11.0694218,
 					z: -2.52000046,
 				},
 				max: {
 					x: -10.2318726,
-					y: 11.4364786,
+					y: 11.43648,
 					z: -2.52000046,
 				},
 			},
@@ -63702,21 +63702,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Slab/Slab_01/Next Area Right (7)/Area Name',
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
-				x: -1.380188,
-				y: 6.92183971,
+				x: -1.380127,
+				y: 6.92184067,
 				z: -2.52000046,
 			},
 			fontSize: 6,
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -1.380188,
-					y: 6.92183971,
+					x: -1.380127,
+					y: 6.92184067,
 					z: -2.52000046,
 				},
 				max: {
-					x: -1.380188,
-					y: 6.92183971,
+					x: -1.380127,
+					y: 6.92184067,
 					z: -2.52000046,
 				},
 			},
@@ -63731,21 +63731,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Slab/Slab_06/Next Area Left (2)/Area Name',
 			textKey: 'Map Zones.PEAK',
 			position: {
-				x: -16.9429932,
-				y: 5.57162,
+				x: -16.9429321,
+				y: 5.571619,
 				z: -2.52000046,
 			},
 			fontSize: 6,
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -16.9429932,
-					y: 5.57162,
+					x: -16.9429321,
+					y: 5.571619,
 					z: -2.52000046,
 				},
 				max: {
-					x: -16.9429932,
-					y: 5.57162,
+					x: -16.9429321,
+					y: 5.571619,
 					z: -2.52000046,
 				},
 			},
@@ -63761,7 +63761,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.PEAK',
 			position: {
 				x: -10.692688,
-				y: 4.26764965,
+				y: 4.2676487,
 				z: -2.52000046,
 			},
 			fontSize: 2,
@@ -63769,12 +63769,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -19.1563721,
-					y: 6.275407,
+					y: 6.275408,
 					z: -2.52000046,
 				},
 				max: {
 					x: -17.1969,
-					y: 6.64246464,
+					y: 6.64246559,
 					z: -2.52000046,
 				},
 			},
@@ -63790,7 +63790,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.THE_SLAB',
 			position: {
 				x: -9.761169,
-				y: 5.493552,
+				y: 5.49355125,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -63819,7 +63819,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.ICECORE',
 			position: {
 				x: -16.6853638,
-				y: 15.1653948,
+				y: 15.1653957,
 				z: -2.52000046,
 			},
 			fontSize: 4,
@@ -63827,12 +63827,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -17.5299683,
-					y: 10.4254313,
+					y: 10.42543,
 					z: -2.52000046,
 				},
 				max: {
 					x: -15.8451538,
-					y: 10.9395418,
+					y: 10.9395409,
 					z: -2.52000046,
 				},
 			},
@@ -63855,13 +63855,13 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 1.44000244,
-					y: 5.243058,
+					x: 1.43994141,
+					y: 5.243059,
 					z: -2.52000046,
 				},
 				max: {
-					x: 4.668518,
-					y: 5.610116,
+					x: 4.668579,
+					y: 5.610117,
 					z: -2.52000046,
 				},
 			},
@@ -63876,7 +63876,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Song/Song_01_bot/Next Area Down (4)/Area Name',
 			textKey: 'Map Zones.FRONT_GATE',
 			position: {
-				x: -3.51251221,
+				x: -3.51245117,
 				y: 0.969562531,
 				z: -2.521,
 			},
@@ -63884,12 +63884,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -3.51251221,
+					x: -3.51245117,
 					y: 0.969562531,
 					z: -2.521,
 				},
 				max: {
-					x: -3.51251221,
+					x: -3.51245117,
 					y: 0.969562531,
 					z: -2.521,
 				},
@@ -63905,8 +63905,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Song/Song_04_top/Next Area Left (2)/Area Name',
 			textKey: 'Map Zones.THE_SLAB',
 			position: {
-				x: -8.55987549,
-				y: 6.92530537,
+				x: -8.559814,
+				y: 6.92530441,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -63935,7 +63935,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.WARD',
 			position: {
 				x: 4.135376,
-				y: 4.92901134,
+				y: 4.92901039,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -63943,12 +63943,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 4.135376,
-					y: 4.92901134,
+					y: 4.92901039,
 					z: -2.52000046,
 				},
 				max: {
 					x: 4.135376,
-					y: 4.92901134,
+					y: 4.92901039,
 					z: -2.52000046,
 				},
 			},
@@ -63964,7 +63964,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.COG_CORE_SHORT',
 			position: {
 				x: 3.40667725,
-				y: 7.96271038,
+				y: 7.96270943,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -63993,7 +63993,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.BATHHOUSE',
 			position: {
 				x: -2.00415039,
-				y: 6.1652,
+				y: 6.16519928,
 				z: -2.52000046,
 			},
 			fontSize: 4,
@@ -64001,12 +64001,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -3.18170166,
-					y: 5.243039,
+					y: 5.24304,
 					z: -2.52000046,
 				},
 				max: {
 					x: -2.02008057,
-					y: 6.1652,
+					y: 6.16519737,
 					z: -2.52000046,
 				},
 			},
@@ -64022,7 +64022,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.HANG',
 			position: {
 				x: -3.58728027,
-				y: 12.3891764,
+				y: 12.3891754,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64030,12 +64030,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -3.58728027,
-					y: 12.3891764,
+					y: 12.3891754,
 					z: -2.52000046,
 				},
 				max: {
 					x: -3.58728027,
-					y: 12.3891764,
+					y: 12.3891754,
 					z: -2.52000046,
 				},
 			},
@@ -64050,7 +64050,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Song/Under_07b_bot/Next Area Down (3)/Area Name',
 			textKey: 'Map Zones.UNDERSTORE',
 			position: {
-				x: -0.1361084,
+				x: -0.136047363,
 				y: 1.45236206,
 				z: -2.52000046,
 			},
@@ -64058,12 +64058,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -0.1361084,
+					x: -0.136047363,
 					y: 1.45236206,
 					z: -2.52000046,
 				},
 				max: {
-					x: -0.1361084,
+					x: -0.136047363,
 					y: 1.45236206,
 					z: -2.52000046,
 				},
@@ -64080,7 +64080,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.HANG',
 			position: {
 				x: 3.16210938,
-				y: 8.839017,
+				y: 8.839018,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64088,12 +64088,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 3.16210938,
-					y: 8.839017,
+					y: 8.839018,
 					z: -2.52000046,
 				},
 				max: {
 					x: 3.16210938,
-					y: 8.839017,
+					y: 8.839018,
 					z: -2.52000046,
 				},
 			},
@@ -64109,7 +64109,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.LIBRARY_SHORT',
 			position: {
 				x: 10.6151733,
-				y: 7.46762943,
+				y: 7.46763039,
 				z: -2.524002,
 			},
 			fontSize: 6,
@@ -64138,7 +64138,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.CITADEL_STATION',
 			position: {
 				x: 7.58984375,
-				y: 4.467862,
+				y: 4.467863,
 				z: -2.52000046,
 			},
 			fontSize: 4,
@@ -64146,12 +64146,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 6.95282,
-					y: 3.55565739,
+					y: 3.55565834,
 					z: -2.52000046,
 				},
 				max: {
 					x: 8.233582,
-					y: 4.467862,
+					y: 4.467863,
 					z: -2.52000046,
 				},
 			},
@@ -64167,7 +64167,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.UNDERSTORE',
 			position: {
 				x: 12.1887817,
-				y: 4.983634,
+				y: 4.983633,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64175,12 +64175,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 12.1887817,
-					y: 4.983634,
+					y: 4.983633,
 					z: -2.52000046,
 				},
 				max: {
 					x: 12.1887817,
-					y: 4.983634,
+					y: 4.983633,
 					z: -2.52000046,
 				},
 			},
@@ -64196,7 +64196,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.CITADEL_STAGE',
 			position: {
 				x: 10.008606,
-				y: 5.43846226,
+				y: 5.438463,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64204,12 +64204,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 10.008606,
-					y: 5.43846226,
+					y: 5.438463,
 					z: -2.52000046,
 				},
 				max: {
 					x: 10.008606,
-					y: 5.43846226,
+					y: 5.438463,
 					z: -2.52000046,
 				},
 			},
@@ -64225,7 +64225,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.LIBRARY_SHORT',
 			position: {
 				x: 10.0535278,
-				y: 8.152463,
+				y: 8.152464,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64254,7 +64254,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.COG_CORE_SHORT',
 			position: {
 				x: 2.58197021,
-				y: 7.720063,
+				y: 7.72006226,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64283,7 +64283,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.COG_CORE_SHORT',
 			position: {
 				x: 3.16644287,
-				y: 7.67830753,
+				y: 7.67830849,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64312,7 +64312,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.COG_CORE_SHORT',
 			position: {
 				x: 3.16644287,
-				y: 7.50350666,
+				y: 7.50350761,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64341,7 +64341,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.ARBORIUM',
 			position: {
 				x: 7.74920654,
-				y: 11.7421846,
+				y: 11.7421856,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64370,7 +64370,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.ENCLAVE',
 			position: {
 				x: 10.8648071,
-				y: 9.649762,
+				y: 9.649763,
 				z: -2.52000046,
 			},
 			fontSize: 4,
@@ -64378,12 +64378,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 10.8688965,
-					y: 9.135652,
+					y: 9.135649,
 					z: -2.52000046,
 				},
 				max: {
 					x: 12.4628906,
-					y: 9.649762,
+					y: 9.649763,
 					z: -2.52000046,
 				},
 			},
@@ -64399,7 +64399,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.LIBRARY_SHORT',
 			position: {
 				x: 10.4176636,
-				y: 6.69117451,
+				y: 6.69117546,
 				z: -2.52199936,
 			},
 			fontSize: 6,
@@ -64428,7 +64428,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.COG_CORE_SHORT',
 			position: {
 				x: 1.44006348,
-				y: 11.7571306,
+				y: 11.7571316,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64456,7 +64456,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Song_Gate/Area Name (5)',
 			textKey: 'Map Zones.FRONT_GATE',
 			position: {
-				x: -2.76501465,
+				x: -2.76495361,
 				y: -1.0624876,
 				z: -2.52000046,
 			},
@@ -64464,13 +64464,13 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -10.7268677,
-					y: 1.27672291,
+					x: -10.7268066,
+					y: 1.276722,
 					z: -2.52000046,
 				},
 				max: {
-					x: -8.594177,
-					y: 1.64378071,
+					x: -8.594116,
+					y: 1.64377975,
 					z: -2.52000046,
 				},
 			},
@@ -64543,7 +64543,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Song_Gate/Under_01_bot/Next Area Down (4)/Area Name',
 			textKey: 'Map Zones.UNDERSTORE',
 			position: {
-				x: -2.58770752,
+				x: -2.58764648,
 				y: -2.50056171,
 				z: -2.52000046,
 			},
@@ -64551,12 +64551,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -2.58770752,
+					x: -2.58764648,
 					y: -2.50056171,
 					z: -2.52000046,
 				},
 				max: {
-					x: -2.58770752,
+					x: -2.58764648,
 					y: -2.50056171,
 					z: -2.52000046,
 				},
@@ -64572,7 +64572,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Under/Area Name (3)',
 			textKey: 'Map Zones.UNDERSTORE',
 			position: {
-				x: 9.755554,
+				x: 9.755615,
 				y: -0.340483665,
 				z: -2.52000046,
 			},
@@ -64581,12 +64581,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -0.2644043,
-					y: 1.66727543,
+					y: 1.66727448,
 					z: -2.52000046,
 				},
 				max: {
 					x: 2.06896973,
-					y: 2.03433323,
+					y: 2.03433418,
 					z: -2.52000046,
 				},
 			},
@@ -64630,7 +64630,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Under/Under_07c/Next Area Up (2)/Area Name',
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
-				x: -6.4697876,
+				x: -6.46972656,
 				y: 3.31997013,
 				z: -2.52000046,
 			},
@@ -64638,12 +64638,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -6.4697876,
+					x: -6.46972656,
 					y: 3.31997013,
 					z: -2.52000046,
 				},
 				max: {
-					x: -6.4697876,
+					x: -6.46972656,
 					y: 3.31997013,
 					z: -2.52000046,
 				},
@@ -64688,7 +64688,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Under/Under_17/Next Area Up (4)/Area Name',
 			textKey: 'Map Zones.WARD',
 			position: {
-				x: 6.029602,
+				x: 6.029663,
 				y: 4.09851742,
 				z: -2.52000046,
 			},
@@ -64696,12 +64696,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 6.029602,
+					x: 6.029663,
 					y: 4.09851742,
 					z: -2.52000046,
 				},
 				max: {
-					x: 6.029602,
+					x: 6.029663,
 					y: 4.09851742,
 					z: -2.52000046,
 				},
@@ -64726,12 +64726,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 3.44854736,
-					y: 0.449614525,
+					y: 0.449613571,
 					z: -2.52000046,
 				},
 				max: {
 					x: 5.72454834,
-					y: 0.9637251,
+					y: 0.963724136,
 					z: -2.52000046,
 				},
 			},
@@ -64775,21 +64775,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Under/Library_11_shaft/Next Area Left (4)/Area Name',
 			textKey: 'Map Zones.CITADEL_STAGE',
 			position: {
-				x: 5.05896,
-				y: 5.431367,
+				x: 5.059021,
+				y: 5.431366,
 				z: -2.52000046,
 			},
 			fontSize: 6,
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 5.05896,
-					y: 5.431367,
+					x: 5.059021,
+					y: 5.431366,
 					z: -2.52000046,
 				},
 				max: {
-					x: 5.05896,
-					y: 5.431367,
+					x: 5.059021,
+					y: 5.431366,
 					z: -2.52000046,
 				},
 			},
@@ -64805,7 +64805,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.CITADEL_STATION',
 			position: {
 				x: 5.02679443,
-				y: 4.95871639,
+				y: 4.95871735,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64813,12 +64813,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 5.02679443,
-					y: 4.95871639,
+					y: 4.95871735,
 					z: -2.52000046,
 				},
 				max: {
 					x: 5.02679443,
-					y: 4.95871639,
+					y: 4.95871735,
 					z: -2.52000046,
 				},
 			},
@@ -64834,7 +64834,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.LIBRARY',
 			position: {
 				x: 10.0568848,
-				y: 5.50381565,
+				y: 5.5038166,
 				z: -2.519001,
 			},
 			fontSize: 6,
@@ -64842,12 +64842,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 10.0568848,
-					y: 5.50381565,
+					y: 5.5038166,
 					z: -2.519001,
 				},
 				max: {
 					x: 10.0568848,
-					y: 5.50381565,
+					y: 5.5038166,
 					z: -2.519001,
 				},
 			},
@@ -64862,7 +64862,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Under/Dust_09_into_citadel/Next Area Down (4)/Area Name',
 			textKey: 'Map Zones.ORGAN',
 			position: {
-				x: 11.5522461,
+				x: 11.5523071,
 				y: 0.1365757,
 				z: -2.52000046,
 			},
@@ -64870,12 +64870,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 11.5522461,
+					x: 11.5523071,
 					y: 0.1365757,
 					z: -2.52000046,
 				},
 				max: {
-					x: 11.5522461,
+					x: 11.5523071,
 					y: 0.1365757,
 					z: -2.52000046,
 				},
@@ -64900,12 +64900,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 9.68835449,
-					y: 3.644351,
+					y: 3.64435,
 					z: -2.52000046,
 				},
 				max: {
 					x: 11.8300781,
-					y: 4.395137,
+					y: 4.395138,
 					z: -2.52000046,
 				},
 			},
@@ -64921,7 +64921,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
 				x: 2.87097168,
-				y: 8.131188,
+				y: 8.131189,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64929,12 +64929,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 2.87097168,
-					y: 8.131188,
+					y: 8.131189,
 					z: -2.52000046,
 				},
 				max: {
 					x: 2.87097168,
-					y: 8.131188,
+					y: 8.131189,
 					z: -2.52000046,
 				},
 			},
@@ -64950,7 +64950,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
 				x: 3.486206,
-				y: 7.48372746,
+				y: 7.48372841,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -64958,12 +64958,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 3.486206,
-					y: 7.48372746,
+					y: 7.48372841,
 					z: -2.52000046,
 				},
 				max: {
 					x: 3.486206,
-					y: 7.48372746,
+					y: 7.48372841,
 					z: -2.52000046,
 				},
 			},
@@ -64979,7 +64979,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.ENCLAVE',
 			position: {
 				x: 13.4525757,
-				y: 9.095824,
+				y: 9.095823,
 				z: -2.52199936,
 			},
 			fontSize: 6,
@@ -64987,12 +64987,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 13.4525757,
-					y: 9.095824,
+					y: 9.095823,
 					z: -2.52199936,
 				},
 				max: {
 					x: 13.4525757,
-					y: 9.095824,
+					y: 9.095823,
 					z: -2.52199936,
 				},
 			},
@@ -65008,7 +65008,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.SWAMP',
 			position: {
 				x: 17.8070068,
-				y: 4.20968151,
+				y: 4.20968246,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -65016,12 +65016,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 17.8070068,
-					y: 4.20968151,
+					y: 4.20968246,
 					z: -2.52000046,
 				},
 				max: {
 					x: 17.8070068,
-					y: 4.20968151,
+					y: 4.20968246,
 					z: -2.52000046,
 				},
 			},
@@ -65066,7 +65066,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.CITADEL_STAGE',
 			position: {
 				x: 7.30963135,
-				y: 8.351977,
+				y: 8.351976,
 				z: -2.52000046,
 			},
 			fontSize: 4,
@@ -65074,12 +65074,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 6.536072,
-					y: 5.73117161,
+					y: 5.73117256,
 					z: -2.52000046,
 				},
 				max: {
 					x: 8.139099,
-					y: 6.245286,
+					y: 6.245287,
 					z: -2.52000046,
 				},
 			},
@@ -65095,7 +65095,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
 				x: 2.9039917,
-				y: 5.448228,
+				y: 5.448229,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -65103,12 +65103,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 2.9039917,
-					y: 5.448228,
+					y: 5.448229,
 					z: -2.52000046,
 				},
 				max: {
 					x: 2.9039917,
-					y: 5.448228,
+					y: 5.448229,
 					z: -2.52000046,
 				},
 			},
@@ -65153,7 +65153,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.COG_CORE',
 			position: {
 				x: 14.8122559,
-				y: 10.9858294,
+				y: 10.98583,
 				z: -2.52000046,
 			},
 			fontSize: 2,
@@ -65161,12 +65161,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 3.797058,
-					y: 13.2301416,
+					y: 13.2301426,
 					z: -2.52000046,
 				},
 				max: {
 					x: 5.435486,
-					y: 13.9809275,
+					y: 13.9809284,
 					z: -2.52000046,
 				},
 			},
@@ -65181,21 +65181,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Cog/Cog_Dancers/Next Area Right (4)/Area Name',
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
-				x: 7.43841553,
-				y: 9.306815,
+				x: 7.43847656,
+				y: 9.306814,
 				z: -2.52000046,
 			},
 			fontSize: 6,
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 7.43841553,
-					y: 9.306815,
+					x: 7.43847656,
+					y: 9.306814,
 					z: -2.52000046,
 				},
 				max: {
-					x: 7.43841553,
-					y: 9.306815,
+					x: 7.43847656,
+					y: 9.306814,
 					z: -2.52000046,
 				},
 			},
@@ -65210,21 +65210,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Cog/Cog_Dancers/Next Area Left (4)/Area Name',
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
-				x: -1.314209,
-				y: 9.299935,
+				x: -1.314148,
+				y: 9.299936,
 				z: -2.52000046,
 			},
 			fontSize: 6,
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -1.314209,
-					y: 9.299935,
+					x: -1.314148,
+					y: 9.299936,
 					z: -2.52000046,
 				},
 				max: {
-					x: -1.314209,
-					y: 9.299935,
+					x: -1.314148,
+					y: 9.299936,
 					z: -2.52000046,
 				},
 			},
@@ -65239,21 +65239,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Cog/Cog_05_left/Next Area Left (2)/Area Name',
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
-				x: -3.10479736,
-				y: 8.40063,
+				x: -3.10473633,
+				y: 8.400629,
 				z: -2.521,
 			},
 			fontSize: 6,
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -3.10479736,
-					y: 8.40063,
+					x: -3.10473633,
+					y: 8.400629,
 					z: -2.521,
 				},
 				max: {
-					x: -3.10479736,
-					y: 8.40063,
+					x: -3.10473633,
+					y: 8.400629,
 					z: -2.521,
 				},
 			},
@@ -65269,7 +65269,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
 				x: 8.977356,
-				y: 8.155683,
+				y: 8.155682,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -65277,12 +65277,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 8.977356,
-					y: 8.155683,
+					y: 8.155682,
 					z: -2.52000046,
 				},
 				max: {
 					x: 8.977356,
-					y: 8.155683,
+					y: 8.155682,
 					z: -2.52000046,
 				},
 			},
@@ -65335,12 +65335,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 1.4239502,
-					y: 2.757022,
+					y: 2.75702286,
 					z: -2.52000046,
 				},
 				max: {
 					x: 3.57788086,
-					y: 3.12408161,
+					y: 3.12408066,
 					z: -2.52000046,
 				},
 			},
@@ -65355,7 +65355,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Ward/Ward_01/Next Area Left (2)/Area Name',
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
-				x: -3.16815186,
+				x: -3.16809082,
 				y: 4.921913,
 				z: -2.52000046,
 			},
@@ -65363,12 +65363,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -3.16815186,
+					x: -3.16809082,
 					y: 4.921913,
 					z: -2.52000046,
 				},
 				max: {
-					x: -3.16815186,
+					x: -3.16809082,
 					y: 4.921913,
 					z: -2.52000046,
 				},
@@ -65442,8 +65442,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Hang/Area Name (4)',
 			textKey: 'Map Zones.HANG',
 			position: {
-				x: 4.501343,
-				y: 10.0992994,
+				x: 4.501404,
+				y: 10.0992985,
 				z: -2.52000046,
 			},
 			fontSize: 2,
@@ -65451,12 +65451,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -3.98309326,
-					y: 11.6585417,
+					y: 11.6585407,
 					z: -2.52000046,
 				},
 				max: {
 					x: -2.00286865,
-					y: 12.0255995,
+					y: 12.0255985,
 					z: -2.52000046,
 				},
 			},
@@ -65472,7 +65472,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
 				x: -7.521118,
-				y: 10.7421331,
+				y: 10.7421322,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -65480,12 +65480,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: -7.521118,
-					y: 10.7421331,
+					y: 10.7421322,
 					z: -2.52000046,
 				},
 				max: {
 					x: -7.521118,
-					y: 10.7421331,
+					y: 10.7421322,
 					z: -2.52000046,
 				},
 			},
@@ -65500,21 +65500,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Hang/Hang_04/Area Name Sub',
 			textKey: 'Map Zones.CITADEL_FORUM',
 			position: {
-				x: -1.682251,
-				y: 12.7219782,
+				x: -1.68219,
+				y: 12.7219791,
 				z: -2.52000046,
 			},
 			fontSize: 4,
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: -2.255249,
-					y: 10.1011744,
+					x: -2.25531,
+					y: 10.1011715,
 					z: -2.52000046,
 				},
 				max: {
-					x: -0.4099121,
-					y: 10.6152849,
+					x: -0.409851074,
+					y: 10.6152859,
 					z: -2.52000046,
 				},
 			},
@@ -65530,7 +65530,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
 				x: 0.0186767578,
-				y: 7.63697529,
+				y: 7.63697624,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -65538,12 +65538,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 0.0186767578,
-					y: 7.63697529,
+					y: 7.63697624,
 					z: -2.52000046,
 				},
 				max: {
 					x: 0.0186767578,
-					y: 7.63697529,
+					y: 7.63697624,
 					z: -2.52000046,
 				},
 			},
@@ -65559,7 +65559,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.ARBORIUM',
 			position: {
 				x: 20.0067749,
-				y: 8.951484,
+				y: 8.951483,
 				z: -2.52000046,
 			},
 			fontSize: 2,
@@ -65567,12 +65567,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 8.982422,
-					y: 10.9592447,
+					y: 10.9592419,
 					z: -2.52000046,
 				},
 				max: {
 					x: 10.9642334,
-					y: 11.3263025,
+					y: 11.3263,
 					z: -2.52000046,
 				},
 			},
@@ -65587,21 +65587,21 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Arborium/Arborium_01/Next Area Down (3)/Area Name',
 			textKey: 'Map Zones.HIGH_HALLS',
 			position: {
-				x: 5.67572,
-				y: 7.681838,
+				x: 5.67578125,
+				y: 7.681837,
 				z: -2.52000046,
 			},
 			fontSize: 6,
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 5.67572,
-					y: 7.681838,
+					x: 5.67578125,
+					y: 7.681837,
 					z: -2.52000046,
 				},
 				max: {
-					x: 5.67572,
-					y: 7.681838,
+					x: 5.67578125,
+					y: 7.681837,
 					z: -2.52000046,
 				},
 			},
@@ -65617,7 +65617,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.AQUEDUCT',
 			position: {
 				x: 16.6027832,
-				y: 10.2854834,
+				y: 10.2854824,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -65625,12 +65625,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 16.6027832,
-					y: 10.2854834,
+					y: 10.2854824,
 					z: -2.52000046,
 				},
 				max: {
 					x: 16.6027832,
-					y: 10.2854834,
+					y: 10.2854824,
 					z: -2.52000046,
 				},
 			},
@@ -65645,8 +65645,8 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Cradle/Area Name (5)',
 			textKey: 'Map Zones.CRADLE',
 			position: {
-				x: 8.919373,
-				y: 13.3940477,
+				x: 8.919434,
+				y: 13.3940487,
 				z: -2.52000046,
 			},
 			fontSize: 2,
@@ -65654,12 +65654,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			bounds: {
 				min: {
 					x: 0.336730957,
-					y: 14.6414194,
+					y: 14.64142,
 					z: -2.52000046,
 				},
 				max: {
 					x: 2.41522217,
-					y: 15.0084772,
+					y: 15.0084782,
 					z: -2.52000046,
 				},
 			},
@@ -65675,7 +65675,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			textKey: 'Map Zones.COG_CORE_SHORT',
 			position: {
 				x: 2.772644,
-				y: 12.5108461,
+				y: 12.5108471,
 				z: -2.52000046,
 			},
 			fontSize: 6,
@@ -65703,7 +65703,7 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			objectPath: 'Clover/Area Name',
 			textKey: 'Map Zones.CLOVER',
 			position: {
-				x: 35.5349731,
+				x: 35.5350342,
 				y: -7.71994972,
 				z: -2.52000046,
 			},
@@ -65769,12 +65769,12 @@ export const silkMapDataGenerated: SilkMapDataGenerated = {
 			fontWeight: 400,
 			bounds: {
 				min: {
-					x: 3.33721924,
+					x: 3.33728027,
 					y: -20.7888737,
 					z: -2.52000046,
 				},
 				max: {
-					x: 5.135315,
+					x: 5.135376,
 					y: -20.4218159,
 					z: -2.52000046,
 				},

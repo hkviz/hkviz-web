@@ -4,7 +4,7 @@ import { assertNever } from '~/lib/parser';
 import { AreaAnalyticsPanel } from '../area-analytics';
 import { MapView } from '../map';
 import { MapOptions } from '../map-options';
-import { RunSplits } from '../splits';
+import { RunSplits } from '../splits/splits';
 import { useLayoutStore } from '../store/layout-store';
 import { CompletionChart, EssenceChart, GeoChart, GrubChart, HealthChart, SoulChart } from '../time-charts';
 import { LaneId } from './layout-location';

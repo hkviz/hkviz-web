@@ -1,6 +1,8 @@
 import { aggregateRecordingHollow } from '~/lib/aggregation/aggregate-recording-hollow';
 import { AggregatedRunDataHollow } from '~/lib/aggregation/aggregation-value-hollow';
+import { Split } from '~/lib/splits/splits-shared/split';
 import { type PlayerDataFieldHollow } from '../../../game-data/hollow-data/player-data-hollow';
+import { createRecordingSplitsHollow } from '../../../splits/splits-hollow/generate-splits-hollow';
 import { raise } from '../../../util';
 import { FrameEndEventHollow } from '../events-hollow/frame-end-event-hollow';
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
@@ -16,7 +18,6 @@ import { RecordingEventBase } from '../events-shared/recording-event-base';
 import { SceneEvent } from '../events-shared/scene-event';
 import { CombinedRecordingBase } from '../parser-shared/recording-shared';
 import { type RecordingFileVersionHollow } from './mod-version-hollow';
-import { createRecordingSplits, type RecordingSplit } from './recording-splits';
 
 export class RecordingFileVersionEvent extends RecordingEventBase {
 	public version: RecordingFileVersionHollow;
@@ -80,7 +81,7 @@ export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
 		PlayerDataFieldHollow,
 		PlayerDataEventHollow<PlayerDataFieldHollow>[]
 	>();
-	public readonly splits: RecordingSplit[];
+	public readonly splits: Split[];
 	public readonly playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
 	public readonly aggregations: AggregatedRunDataHollow;
 
@@ -116,7 +117,7 @@ export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
 				}
 			}
 		}
-		this.splits = createRecordingSplits(this);
+		this.splits = createRecordingSplitsHollow(this);
 		this.aggregations = aggregateRecordingHollow(this);
 	}
 

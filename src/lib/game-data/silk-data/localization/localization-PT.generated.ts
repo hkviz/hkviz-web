@@ -1604,4 +1604,6 @@ export default {
 	'Map Zones.SPRINTMASTER_CAVE': 'Borda dos Campos',
 	'Map Zones.SURFACE': '#!#SURFACE#!#',
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
+	'Quests.UI_PROMPT_ACCEPTED': 'Desejo Prometido',
+	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Concluído',
 };

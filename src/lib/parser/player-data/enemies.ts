@@ -17,10 +17,6 @@ for (let i = 1; i < greyPrinceNames.length; i++) {
 	greyPrinceNames[i] = greyPrinceNames[i] + ' ' + greyPrinceNames[i - 1];
 }
 
-for (let i = 0; i < greyPrinceNames.length; i++) {
-	greyPrinceNames[i] = greyPrinceNames[i] + ` (Level ${i + 1})`;
-}
-
 // fields in playerData {name}Defeated: boolean
 // Some of the defeated fields need to be used to detect boss kills instead
 // like for bosses without journal entries (dream bosses) and for enemies which together

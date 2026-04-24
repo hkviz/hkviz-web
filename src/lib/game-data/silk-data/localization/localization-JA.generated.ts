@@ -1522,4 +1522,6 @@ export default {
 	'Map Zones.SPRINTMASTER_CAVE': '遠望の淵',
 	'Map Zones.SURFACE': '#!#SURFACE#!#',
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
+	'Quests.UI_PROMPT_ACCEPTED': '願いを引き受けた',
+	'Quests.UI_TITLE_QUESTS_COMPLETE': '完了済み',
 };

@@ -9423,6 +9423,10 @@ export const HeroDeathCocoonTypesSilk = {
 		Object.entries(HeroDeathCocoonTypesByName).map(([name, id]) => [id, name] as const),
 	) as Record<number, HeroDeathCocoonTypesSilk>,
 	nameList: Object.keys(HeroDeathCocoonTypesByName) as HeroDeathCocoonTypesSilk[],
+
+	hasFlag(value: number, flag: HeroDeathCocoonTypesSilk) {
+		return (value & HeroDeathCocoonTypesSilk.byName[flag]) !== 0;
+	},
 } as const;
 export const HeroDeathCocoonTypesNumberSchemaSilk = v.pipe(v.number(), v.integer(), v.minValue(0), v.maxValue(3));
 
@@ -9631,6 +9635,10 @@ export const SaveSlotCompletionIcons_CompletionStateSilk = {
 	nameList: Object.keys(
 		SaveSlotCompletionIcons_CompletionStateByName,
 	) as SaveSlotCompletionIcons_CompletionStateSilk[],
+
+	hasFlag(value: number, flag: SaveSlotCompletionIcons_CompletionStateSilk) {
+		return (value & SaveSlotCompletionIcons_CompletionStateSilk.byName[flag]) !== 0;
+	},
 } as const;
 export const SaveSlotCompletionIcons_CompletionStateNumberSchemaSilk = v.pipe(
 	v.number(),

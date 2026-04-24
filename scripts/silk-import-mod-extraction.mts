@@ -2,11 +2,14 @@
  * The Silksong mod is able to extract map data, localizations and more at runtime.
  * This script imports these extractions into the web source code.
  */
+import { copyFile, mkdir } from 'fs/promises';
+import path from 'path';
 import { supportedLanguagesSilk } from '../src/lib/game-data/silk-data/localization/supported-languages-silk.ts';
 import { createCsIdDictionaryFile } from './cs-ids-gen.ts';
 import { exportFormattedJsFile } from './js-gen-helper.mts';
 import { ScriptIdMemory } from './memory/script-memory.mts';
 import { readModExtraction } from './mod-extraction-read.mts';
+import { unityPySpritePath } from './paths.mts';
 
 // Map data:
 async function genMapData() {
@@ -84,7 +87,15 @@ async function genAreaBackgrounds() {
 }
 
 // generic id item
-async function genGenericIdItem({ itemName, sourceData }: { itemName: string; sourceData?: any }) {
+async function genGenericIdItem({
+	itemName,
+	sourceData,
+	copySprites,
+}: {
+	itemName: string;
+	sourceData?: any;
+	copySprites?: (it: any) => [{ name: string }];
+}) {
 	const [idMemory, dataJsonStr] = await Promise.all([
 		ScriptIdMemory.createIdMemory(`${itemName}-silk`),
 		sourceData != null
@@ -97,23 +108,31 @@ async function genGenericIdItem({ itemName, sourceData }: { itemName: string; so
 		.map((part) => part.charAt(0).toUpperCase() + part.slice(1))
 		.join('');
 
-	const camelCaseItemName = itemName
-		.split('-')
-		.map((part, index) => {
-			if (index === 0) {
-				return part.toLowerCase();
-			} else {
-				return part.charAt(0).toUpperCase() + part.slice(1);
-			}
-		})
-		.join('');
+	async function makeIdFiles() {
+		const camelCaseItemName = itemName
+			.split('-')
+			.map((part, index) => {
+				if (index === 0) {
+					return part.toLowerCase();
+				} else {
+					return part.charAt(0).toUpperCase() + part.slice(1);
+				}
+			})
+			.join('');
 
-	await exportFormattedJsFile(
-		`./src/lib/game-data/silk-data/${itemName}-silk.generated.ts`,
-		`export const ${camelCaseItemName}Silk = ${dataJsonStr};
-export type ${pascalCaseItemName}NameSilk = ${items.map((it: any) => `'${it.id}'`).join(' | ')};
+		await exportFormattedJsFile(
+			`./src/lib/game-data/silk-data/${itemName}-silk.generated.ts`,
+			`
+		export type ${pascalCaseItemName}NameSilk = ${items.map((it: any) => `'${it.id}'`).join(' | ')};
 
-export const ${camelCaseItemName}IdToNameSilk: Map<number, ${pascalCaseItemName}NameSilk> = new Map([
+		const list = ${JSON.stringify(items, null, 2)};
+		export type ${pascalCaseItemName}Silk = typeof list[number];
+		export const ${camelCaseItemName}Silk = {
+			list,
+			byName: Object.fromEntries(list.map((it: any) => [it.id, it])) as Record<${pascalCaseItemName}NameSilk, ${pascalCaseItemName}Silk>,
+		};
+
+	export const ${camelCaseItemName}IdToNameSilk: Map<number, ${pascalCaseItemName}NameSilk> = new Map([
 	${items
 		.map((it: any) => {
 			const id = idMemory.getOrCreateId(it.id);
@@ -123,29 +142,74 @@ export const ${camelCaseItemName}IdToNameSilk: Map<number, ${pascalCaseItemName}
 ]);
 export const ${camelCaseItemName}NamesSilk: ${pascalCaseItemName}NameSilk[] = ${camelCaseItemName}IdToNameSilk.values().toArray();
 `,
-	);
-	await idMemory.write();
-	await createCsIdDictionaryFile(`SilkSong${pascalCaseItemName}Ids`, idMemory);
+		);
+		await idMemory.write();
+		await createCsIdDictionaryFile(`SilkSong${pascalCaseItemName}Ids`, idMemory);
+	}
+
+	async function copySpriteFiles() {
+		if (!copySprites) return;
+		const sprites = items.flatMap(copySprites);
+
+		// ensure folder exists
+		const destFolder = path.join('./public/silk-sprites', itemName);
+		await mkdir(destFolder, { recursive: true });
+
+		await Promise.all(
+			sprites.map(async (sprite: any) => {
+				try {
+					if (sprite?.name == null) {
+						return;
+					}
+					const sourcePath = path.join(unityPySpritePath, `${sprite.name}.png`);
+					const destPath = path.join(destFolder, `${sprite.name}.png`);
+					await copyFile(sourcePath, destPath);
+				} catch (error) {
+					console.error(`Error copying sprite file for ${sprite.name}:`, (error as any)?.message);
+				}
+			}),
+		);
+	}
+
+	await Promise.all([makeIdFiles(), copySpriteFiles()]);
 }
 
 async function genCrests() {
-	await genGenericIdItem({ itemName: 'tool-crest' });
+	await genGenericIdItem({
+		itemName: 'tool-crest',
+		copySprites: (it: any) => [it.crestSprite],
+	});
 }
 async function genTools() {
-	await genGenericIdItem({ itemName: 'tool-item' });
+	await genGenericIdItem({
+		itemName: 'tool-item',
+		copySprites: (it: any) => [it.toolSprite],
+	});
 }
 async function genCollectables() {
-	await genGenericIdItem({ itemName: 'collectable' });
+	await genGenericIdItem({
+		itemName: 'collectable',
+		copySprites: (it: any) => [it.iconInventory],
+	});
 }
 async function genRelics() {
-	await genGenericIdItem({ itemName: 'collectable-relic' });
+	await genGenericIdItem({
+		itemName: 'collectable-relic',
+		copySprites: (it: any) => [it.relicTypeInventoryIcon],
+	});
 }
 async function genEnemyJournals() {
-	await genGenericIdItem({ itemName: 'enemy-journal' });
+	await genGenericIdItem({
+		itemName: 'enemy-journal',
+		copySprites: (it: any) => [it.iconSprite],
+	});
 }
 
 async function genQuests() {
-	await genGenericIdItem({ itemName: 'quest' });
+	await genGenericIdItem({
+		itemName: 'quest',
+		copySprites: (it: any) => [it.typeIcons.icon],
+	});
 }
 
 async function genMaterium() {

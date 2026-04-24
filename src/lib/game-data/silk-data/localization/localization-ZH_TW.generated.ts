@@ -1280,4 +1280,6 @@ export default {
 	'Map Zones.SPRINTMASTER_CAVE': '遠野邊際',
 	'Map Zones.SURFACE': '#!#SURFACE#!#',
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
+	'Quests.UI_PROMPT_ACCEPTED': '已承接願望',
+	'Quests.UI_TITLE_QUESTS_COMPLETE': '已完成',
 };

@@ -1437,4 +1437,6 @@ export default {
 	'Map Zones.SPRINTMASTER_CAVE': '들판의 끝자락',
 	'Map Zones.SURFACE': '#!#SURFACE#!#',
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
+	'Quests.UI_PROMPT_ACCEPTED': '소원 약속함',
+	'Quests.UI_TITLE_QUESTS_COMPLETE': '완료됨',
 };

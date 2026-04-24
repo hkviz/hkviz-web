@@ -218,6 +218,15 @@ for (const [enumName, enumValues] of Object.entries(playerDataFromJson.enums)) {
 		    byName: ${typeName}ByName,
 			byId: Object.fromEntries(Object.entries(${typeName}ByName).map(([name, id]) => [id, name] as const)) as Record<number, ${typeName}Silk>,
 			nameList: Object.keys(${typeName}ByName) as ${typeName}Silk[],
+			${
+				enumValues.isFlags
+					? `
+				hasFlag(value: number, flag: ${typeName}Silk) {
+					return (value & ${typeName}Silk.byName[flag]) !== 0;
+				},
+			`
+					: ''
+			}
 	    } as const;
 	    export const ${typeName}NumberSchemaSilk = v.pipe(v.number(), v.integer(), v.minValue(${min}), v.maxValue(${max}));
 	`,

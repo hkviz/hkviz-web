@@ -1598,4 +1598,6 @@ export default {
 	'Map Zones.SPRINTMASTER_CAVE': 'Extremo Campestre',
 	'Map Zones.SURFACE': '#!#SURFACE#!#',
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
+	'Quests.UI_PROMPT_ACCEPTED': 'Deseo prometido',
+	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Completados',
 };

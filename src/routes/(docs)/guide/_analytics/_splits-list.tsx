@@ -1,7 +1,7 @@
 import { For } from 'solid-js';
 import { Card, CardContent, CardHeader } from '~/components/ui/card';
-import { recordingSplitGroups } from '~/lib/parser/recording-files/parser-hollow/recording-splits';
-import { Li, splitColors, Ul } from '~/lib/viz';
+import { splitGroupsArrayHollow } from '~/lib/splits/splits-hollow/split-group-hollow';
+import { Li, Ul } from '~/lib/viz';
 
 export function SplitsListCard() {
 	return (
@@ -21,9 +21,9 @@ export function SplitsList() {
 			</CardHeader>
 			<CardContent>
 				<Ul>
-					<For each={recordingSplitGroups}>
+					<For each={splitGroupsArrayHollow}>
 						{(group) => (
-							<Li color={splitColors[group.name]}>
+							<Li color={group.color}>
 								<b>{group.displayName}</b>
 								<br />
 								<span>{group.description}</span>

@@ -685,7 +685,7 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 								id={id + props.variable.key + '_checkbox'}
 								checked={checked()}
 								onChange={props.onCheckedChange}
-								controlClass={props.variable.color.checkboxSolid}
+								controlClass={props.variable.color.checkbox}
 							/>
 							<TooltipContent class="max-w-96">{props.variable.description}</TooltipContent>
 						</Tooltip>
