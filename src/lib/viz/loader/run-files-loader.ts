@@ -76,13 +76,17 @@ export function createRunFileLoader<Game extends GameId>(game: Game, files: RunF
 	const storeInitializer = createStoreInitializer();
 	storeInitializer.reset();
 
-	void Promise.all(fileLoaders.map((it) => it.promise)).then(async (recordings) => {
-		if (abortController.signal.aborted) return;
+	void (async () => {
 		const parserModule = await parserModulePromise;
-		const combinedRecording = parserModule.combineRecordings(recordings as any);
-		storeInitializer.initializeFromRecording(parserModule, combinedRecording);
-		setDone(true);
-	});
+		storeInitializer.initializeGameModule(parserModule);
+		await Promise.all(fileLoaders.map((it) => it.promise)).then(async (recordings) => {
+			if (abortController.signal.aborted) return;
+
+			const combinedRecording = parserModule.combineRecordings(recordings as any);
+			storeInitializer.initializeFromRecording(parserModule, combinedRecording);
+			setDone(true);
+		});
+	})();
 
 	return {
 		progress: deferredProgress,

@@ -17,6 +17,9 @@ export function createStoreInitializer<Game extends GameId>() {
 		reset() {
 			uiStore.reset();
 		},
+		initializeGameModule(module: GameModuleOfGame<Game>) {
+			gameplayStore.setGameModule(module);
+		},
 		initializeFromRecording(module: GameModuleOfGame<Game>, recording: CombinedRecordingOfGame<Game> | null) {
 			batch(() => {
 				gameplayStore.setGameModule(module);

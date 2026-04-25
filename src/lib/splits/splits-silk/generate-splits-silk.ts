@@ -15,6 +15,7 @@ import { SaveSlotCompletionIcons_CompletionStateSilk } from '~/lib/game-data/sil
 import { QuestNameSilk, questSilk } from '~/lib/game-data/silk-data/quest-silk.generated';
 import { getToolCrestSubtitle } from '~/lib/game-data/silk-data/tool-crest-silk';
 import { ToolCrestNameSilk, toolCrestSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
+import { toolItemSubtitle } from '~/lib/game-data/silk-data/tool-item-silk';
 import { ToolItemNameSilk, toolItemSilk } from '~/lib/game-data/silk-data/tool-item-silk.generated';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { localized } from '~/lib/viz/store/localization-store';
@@ -96,7 +97,7 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 						msIntoGame: event.msIntoGame,
 						title: localized.silkAny(collectableInfo.displayNameKey),
 						subtitle: localized.raw(
-							(diff > 0 ? ` +${diff}` : ` ${diff}`) + ' → new amount = ' + collectableData.Amount,
+							(diff > 0 ? ` +${diff}` : ` ${diff}`) + '  |  total = ' + collectableData.Amount,
 						),
 						tooltip: '',
 						imageUrl: icon ? `/silk-sprites/collectable/${icon}.png` : '',
@@ -115,9 +116,11 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 
 				if (toolData.IsUnlocked && !(previousToolData?.IsUnlocked ?? false)) {
 					const toolInfo = toolItemSilk.byName[tool as ToolItemNameSilk];
+					const subtitle = toolItemSubtitle(tool as ToolItemNameSilk);
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.silkAny(toolInfo.displayName),
+						subtitle: subtitle,
 						tooltip: '',
 						imageUrl: `/silk-sprites/tool-item/${toolInfo.toolSprite.name}.png`,
 						group: splitGroupsSilk.toolCollection,

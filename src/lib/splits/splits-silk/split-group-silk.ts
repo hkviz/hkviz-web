@@ -3,7 +3,7 @@ import { createSplitGroup } from '../splits-shared/split-group';
 
 export const splitGroupsSilk = {
 	...createSplitGroup('ending', {
-		displayName: 'Endings',
+		displayName: 'Ending',
 		description: 'Endings.',
 		defaultShown: true,
 		color: tailwindChartColors.sky,
@@ -25,12 +25,6 @@ export const splitGroupsSilk = {
 		description: 'Collected tools and tool upgrades',
 		defaultShown: true,
 		color: tailwindChartColors.red,
-	}),
-	...createSplitGroup('abilities', {
-		displayName: 'Ability',
-		description: 'Obtained ability.',
-		defaultShown: true,
-		color: tailwindChartColors.green,
 	}),
 	...createSplitGroup('questStarts', {
 		displayName: 'Quest start',
