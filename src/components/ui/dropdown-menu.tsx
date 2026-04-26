@@ -1,12 +1,12 @@
 import type { Component, ComponentProps, JSX, ValidComponent } from 'solid-js';
-import { splitProps } from 'solid-js';
+import { batch, splitProps } from 'solid-js';
 
 import * as DropdownMenuPrimitive from '@kobalte/core/dropdown-menu';
 import type { PolymorphicProps } from '@kobalte/core/polymorphic';
 
 import { cn } from '~/lib/utils';
 
-import { useFocusContextOrNull } from './additions/focus-context.tsx';
+import { useFocusContextOrNull, useGlobalMenuContext } from './additions/focus-context.tsx';
 
 const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
@@ -20,9 +20,15 @@ const DropdownMenu: Component<DropdownMenuPrimitive.DropdownMenuRootProps> = (pr
 	const focusContext = useFocusContextOrNull();
 	const focusSource = focusContext?.createFocusSource();
 
+	const globalFocusContext = useGlobalMenuContext();
+	const globalFocusSource = globalFocusContext.createFocusSource();
+
 	function handleOpenChange(open: boolean) {
-		focusSource?.setIsFocused(open, { delayUnfocus: 250 });
-		props.onOpenChange?.(open);
+		batch(() => {
+			globalFocusSource.setIsFocused(open, { delayUnfocus: 250 });
+			focusSource?.setIsFocused(open, { delayUnfocus: 250 });
+			props.onOpenChange?.(open);
+		});
 	}
 
 	return <DropdownMenuPrimitive.Root gutter={4} onOpenChange={handleOpenChange} {...rest} />;

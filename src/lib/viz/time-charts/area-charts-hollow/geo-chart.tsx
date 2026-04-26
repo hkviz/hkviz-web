@@ -1,9 +1,9 @@
-import { tailwindChartColors } from '../colors';
-import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
-import { ChartDocTitleIcon, ChartDocVars } from './chart-doc';
-import { GeoChartUnitIcon } from './chart-icons';
-import { type LineChartVariableDescription } from './line-area-chart';
-import { LineAreaChartPanel } from './line-area-chart-panel';
+import { tailwindChartColors } from '../../colors';
+import { LayoutPanelTypeProps } from '../../layout/layout-panel-props';
+import { ChartDocTitleIcon, ChartDocVars } from '../area-charts-shared/chart-doc';
+import { type LineChartVariableDescription } from '../area-charts-shared/line-area-chart';
+import { LineAreaChartPanel } from '../area-charts-shared/line-area-chart-panel';
+import { GeoChartUnitIcon } from '../chart-icons';
 
 const variables: LineChartVariableDescription[] = [
 	{

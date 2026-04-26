@@ -1,4 +1,5 @@
 import { createEffect, JSXElement, onCleanup } from 'solid-js';
+import { createFocusContext, GlobalMenuContext } from '~/components/ui/additions/focus-context';
 import { createSpriteSheetStore, SpriteStoreContext } from '../spritesheets/spritesheet-store';
 import { AggregationStoreContext, createAggregationStore } from './aggregation-store';
 import { AnimationStoreContext, createAnimationStore } from './animation-store';
@@ -25,17 +26,20 @@ export function GlobalStoresProvider(props: { children: JSXElement }) {
 	const viewportStore = createViewportStore();
 	const spriteSheetStore = createSpriteSheetStore();
 	const localizationStore = createLocalizationStore();
+	const globalFocusContext = createFocusContext();
 
 	return (
-		<LocalizationStoreContext.Provider value={localizationStore}>
-			<ViewportStoreContext.Provider value={viewportStore}>
-				<SpriteStoreContext.Provider value={spriteSheetStore}>
-					<UiStoreContext.Provider value={uiStore}>
-						<ThemeStoreContext.Provider value={themeStore}>{props.children}</ThemeStoreContext.Provider>
-					</UiStoreContext.Provider>
-				</SpriteStoreContext.Provider>
-			</ViewportStoreContext.Provider>
-		</LocalizationStoreContext.Provider>
+		<GlobalMenuContext.Provider value={globalFocusContext}>
+			<LocalizationStoreContext.Provider value={localizationStore}>
+				<ViewportStoreContext.Provider value={viewportStore}>
+					<SpriteStoreContext.Provider value={spriteSheetStore}>
+						<UiStoreContext.Provider value={uiStore}>
+							<ThemeStoreContext.Provider value={themeStore}>{props.children}</ThemeStoreContext.Provider>
+						</UiStoreContext.Provider>
+					</SpriteStoreContext.Provider>
+				</ViewportStoreContext.Provider>
+			</LocalizationStoreContext.Provider>
+		</GlobalMenuContext.Provider>
 	);
 }
 

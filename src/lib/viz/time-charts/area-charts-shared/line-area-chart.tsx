@@ -21,19 +21,19 @@ import {
 } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
 import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
-import { createAutoSizeCanvas } from '../canvas';
-import { ColorClasses } from '../colors';
-import { MsIntoGameChangeType, useAnimationStore } from '../store/animation-store';
-import { useExtraChartStore } from '../store/extra-chart-store';
-import { useGameplayStore } from '../store/gameplay-store';
-import { useHoverMsStore } from '../store/hover-ms-store';
-import { useRoomDisplayStore } from '../store/room-display-store';
-import { useThemeStore } from '../store/theme-store';
-import { useViewportStore } from '../store/viewport-store';
-import { chartBaseHeight, chartBaseWidth, getChartFrame } from './chart-frame';
+import { createAutoSizeCanvas } from '../../canvas';
+import { ColorClasses } from '../../colors';
+import { MsIntoGameChangeType, useAnimationStore } from '../../store/animation-store';
+import { useExtraChartStore } from '../../store/extra-chart-store';
+import { useGameplayStore } from '../../store/gameplay-store';
+import { useHoverMsStore } from '../../store/hover-ms-store';
+import { useRoomDisplayStore } from '../../store/room-display-store';
+import { useThemeStore } from '../../store/theme-store';
+import { useViewportStore } from '../../store/viewport-store';
+import { chartBaseHeight, chartBaseWidth, getChartFrame } from '../area-charts-shared/chart-frame';
+import { createIsVisible } from './create-is-visible';
 import { downScale } from './down-scale';
 import type { InitMessage, ResizeMessage, SetDataMessage, SetViewMessage } from './line-area-chart-render.worker';
-import { createIsVisible } from './use-is-visible';
 
 export type LineChartVariableDescription = {
 	key: FrameEndEventNumberKey;

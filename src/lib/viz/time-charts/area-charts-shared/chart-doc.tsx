@@ -1,7 +1,7 @@
 import { For, type Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Card, CardContent, CardHeader } from '~/components/ui/card';
-import { Li, Ul } from '../list';
+import { Li, Ul } from '../../list';
 import { type LineChartVariableDescription } from './line-area-chart';
 
 export const ChartDocVars: Component<{ variables: LineChartVariableDescription[] }> = (props) => {

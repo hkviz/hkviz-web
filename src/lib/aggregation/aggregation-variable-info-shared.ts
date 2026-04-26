@@ -74,7 +74,7 @@ export const aggregationVariableInfosShared: Record<
 		name: 'Deaths',
 		key: 'deaths',
 		format: formatNumberVar,
-		description: 'Number of times the player died in a scene/area.',
+		description: 'Number of times the hero died in a scene/area.',
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,

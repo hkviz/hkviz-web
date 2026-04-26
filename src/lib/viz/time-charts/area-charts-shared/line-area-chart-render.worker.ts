@@ -1,6 +1,6 @@
 import * as d3 from 'd3';
-import { binarySearchLastIndexBefore } from '../../util/binary-search';
-import { formatTimeMs } from '../util';
+import { binarySearchLastIndexBefore } from '../../../util/binary-search';
+import { formatTimeMs } from '../../util';
 import { chartBaseHeight, chartBaseWidth, getChartFrame, type ChartFrame } from './chart-frame';
 
 type WorkerPoint = { ms: number; y0: number; y1: number };

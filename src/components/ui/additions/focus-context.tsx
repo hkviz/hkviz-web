@@ -61,3 +61,13 @@ export function useFocusContext() {
 	}
 	return context;
 }
+
+export const GlobalMenuContext = createContext<FocusContextType>();
+
+export function useGlobalMenuContext() {
+	const context = useContext(GlobalMenuContext);
+	if (!context) {
+		throw new Error('useGlobalMenuContext must be used within a GlobalMenuContext.Provider');
+	}
+	return context;
+}

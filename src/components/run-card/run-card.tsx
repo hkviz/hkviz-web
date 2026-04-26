@@ -32,7 +32,7 @@ import { runInteractionLike, runInteractionUnlike } from '~/server/run/run-inter
 import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
 import { RunCardDropdownMenu } from '../run-card-dropdown';
 import { Expander } from '../ui/additions';
-import { createFocusContext, FocusContext } from '../ui/additions/focus-context.tsx';
+import { createFocusContext, FocusContext, useGlobalMenuContext } from '../ui/additions/focus-context.tsx';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
@@ -172,6 +172,7 @@ export const RunCard: Component<{
 	//props.run.gameState.game = 'silk';
 
 	const focusContext = createFocusContext();
+	const globalMenuContext = useGlobalMenuContext();
 
 	return (
 		<FocusContext.Provider value={focusContext}>
@@ -187,13 +188,18 @@ export const RunCard: Component<{
 				>
 					<RunCardBackground run={props.run} />
 					{/* https://css-tricks.com/nested-links/ */}
-					<Show
-						when={props.onClick}
-						fallback={<AA href={`/run/${props.run.id}`} class="absolute inset-0 z-6 block" />}
-					>
-						{(onClick) => (
-							<button onClick={() => onClick()(props.run)} class="absolute inset-0 z-6 block" />
-						)}
+					<Show when={!globalMenuContext.hasFocus()}>
+						{/* Because of a safari bug (i think), the link sometimes is the click target on ios
+						when a context menu item in front of the link is clicked. Thats why the link is removed
+						a context menu is open */}
+						<Show
+							when={props.onClick}
+							fallback={<AA href={`/run/${props.run.id}`} class="absolute inset-0 z-6 block" />}
+						>
+							{(onClick) => (
+								<button onClick={() => onClick()(props.run)} class="absolute inset-0 z-6 block" />
+							)}
+						</Show>
 					</Show>
 
 					<div class="flex grow flex-col">
