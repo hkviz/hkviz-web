@@ -29,6 +29,7 @@ const list = [
 	{
 		id: 'Bone Record Greymoor_flooded_corridor',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 90,
 		typeNameKey: 'UI.INV_NAME_R_BONE_RECORD',
 		typeDescriptionKey: 'UI.INV_DESC_R_BONE_RECORD',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -83,6 +84,7 @@ const list = [
 	{
 		id: 'Bone Record Bone_East_14',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 90,
 		typeNameKey: 'UI.INV_NAME_R_BONE_RECORD',
 		typeDescriptionKey: 'UI.INV_DESC_R_BONE_RECORD',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -137,6 +139,7 @@ const list = [
 	{
 		id: 'Bone Record Understore_Map_Room',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 90,
 		typeNameKey: 'UI.INV_NAME_R_BONE_RECORD',
 		typeDescriptionKey: 'UI.INV_DESC_R_BONE_RECORD',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -191,6 +194,7 @@ const list = [
 	{
 		id: 'Bone Record Wisp Top',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 90,
 		typeNameKey: 'UI.INV_NAME_R_BONE_RECORD',
 		typeDescriptionKey: 'UI.INV_DESC_R_BONE_RECORD',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -245,6 +249,7 @@ const list = [
 	{
 		id: 'Seal Chit Aspid_01',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 180,
 		typeNameKey: 'UI.INV_NAME_R_SEAL_CHIT',
 		typeDescriptionKey: 'UI.INV_DESC_R_SEAL_CHIT',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -299,6 +304,7 @@ const list = [
 	{
 		id: 'Seal Chit Ward Corpse',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 180,
 		typeNameKey: 'UI.INV_NAME_R_SEAL_CHIT',
 		typeDescriptionKey: 'UI.INV_DESC_R_SEAL_CHIT',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -353,6 +359,7 @@ const list = [
 	{
 		id: 'Seal Chit City Merchant',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 180,
 		typeNameKey: 'UI.INV_NAME_R_SEAL_CHIT',
 		typeDescriptionKey: 'UI.INV_DESC_R_SEAL_CHIT',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -407,6 +414,7 @@ const list = [
 	{
 		id: 'Seal Chit Silk Siphon',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 180,
 		typeNameKey: 'UI.INV_NAME_R_SEAL_CHIT',
 		typeDescriptionKey: 'UI.INV_DESC_R_SEAL_CHIT',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -461,6 +469,7 @@ const list = [
 	{
 		id: 'Weaver Totem Bonetown_upper_room',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 150,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_TOTEM',
 		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_TOTEM',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -515,6 +524,7 @@ const list = [
 	{
 		id: 'Weaver Totem Witch',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 150,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_TOTEM',
 		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_TOTEM',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -569,6 +579,7 @@ const list = [
 	{
 		id: 'Weaver Totem Slab_Bottom',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 150,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_TOTEM',
 		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_TOTEM',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -623,6 +634,7 @@ const list = [
 	{
 		id: 'Weaver Record Weave_08',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 210,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_RECORD',
 		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_RECORD',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -677,6 +689,7 @@ const list = [
 	{
 		id: 'Weaver Record Sprint_Challenge',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 210,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_RECORD',
 		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_RECORD',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -731,6 +744,7 @@ const list = [
 	{
 		id: 'Weaver Record Conductor',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 210,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_RECORD',
 		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_RECORD',
 		appendDescriptionKey: 'UI.INV_DESC_RELIC',
@@ -785,6 +799,7 @@ const list = [
 	{
 		id: 'Ancient Egg Abyss Middle',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 600,
 		typeNameKey: 'UI.INV_NAME_R_ANCIENT_EGG',
 		typeDescriptionKey: 'UI.INV_DESC_R_ANCIENT_EGG',
 		appendDescriptionKey: null,
@@ -839,6 +854,7 @@ const list = [
 	{
 		id: 'Psalm Cylinder Librarian',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
 		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
 		appendDescriptionKey: null,
@@ -893,6 +909,7 @@ const list = [
 	{
 		id: 'Psalm Cylinder Library Roof',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
 		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
 		appendDescriptionKey: null,
@@ -947,6 +964,7 @@ const list = [
 	{
 		id: 'Psalm Cylinder Ward',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
 		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
 		appendDescriptionKey: null,
@@ -1001,6 +1019,7 @@ const list = [
 	{
 		id: 'Psalm Cylinder Grindle',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
 		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
 		appendDescriptionKey: null,
@@ -1055,6 +1074,7 @@ const list = [
 	{
 		id: 'Psalm Cylinder Hang',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
 		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
 		appendDescriptionKey: null,
@@ -1109,6 +1129,7 @@ const list = [
 	{
 		id: 'Librarian Melody Cylinder',
 		runtimeType: 'CollectableRelic',
+		rewardAmount: 320,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL_MELODY',
 		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL_MELODY',
 		appendDescriptionKey: null,

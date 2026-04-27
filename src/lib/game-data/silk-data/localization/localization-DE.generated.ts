@@ -1654,4 +1654,5 @@ export default {
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
 	'Quests.UI_PROMPT_ACCEPTED': 'Wunsch versprochen',
 	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Abgeschlossen',
+	'UI.COLLECTION_HEADING_RELICDEALER': 'Relikte',
 };

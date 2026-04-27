@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { For, Match, Switch, createMemo, createUniqueId } from 'solid-js';
+import { For, Match, Show, Switch, createMemo, createUniqueId } from 'solid-js';
 import { Bounds } from '~/lib/game-data/shared/bounds';
 import { RoomDataAny, RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import { GameId } from '~/lib/types/game-ids';
@@ -88,6 +88,7 @@ function MapViewRoom<Game extends GameId>(props: {
 }) {
 	const id = createUniqueId();
 	const roomColoringStore = useRoomColoringStore();
+	const themeStore = useThemeStore();
 
 	const roomDisplayStore = useRoomDisplayStore();
 	const states = createMemo(() => roomDisplayStore.stateForGameObjectName(props.room.gameObjectName)!);
@@ -162,6 +163,15 @@ function MapViewRoom<Game extends GameId>(props: {
 								<feFuncB type="linear" slope={colorRgb().b / 255} />
 								<feFuncA type="linear" slope={1} />
 							</feComponentTransfer>
+							<Show when={themeStore.currentTheme() === 'light'}>
+								<feComponentTransfer>
+									<feFuncR type="table" tableValues="1 0" />
+									<feFuncG type="table" tableValues="1 0" />
+									<feFuncB type="table" tableValues="1 0" />
+									<feFuncA type="identity" />
+								</feComponentTransfer>
+								<feColorMatrix type="hueRotate" values="180" />
+							</Show>
 						</filter>
 					</defs>
 					<rect
@@ -228,7 +238,6 @@ export function MapViewRoomsHoverIndicator(props: MapViewRoomsHoverIndicatorProp
 				id={'hover-indicator-' + id}
 				filter={HoverOutlineFilter.url}
 				style={{
-					fill: theme() === 'dark' ? 'white' : 'black',
 					visibility: (props.rooms?.length ?? 0) > 0 ? 'visible' : 'hidden',
 				}}
 			>

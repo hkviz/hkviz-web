@@ -1,7 +1,9 @@
 import { createContext, createEffect, createMemo, untrack, useContext } from 'solid-js';
 import { createStore } from 'solid-js/store';
+import { GameId } from '~/lib/types/game-ids';
 import { LaneId, laneIds } from '../layout/layout-location';
 import { getLayoutPanelTypeById, LayoutPanelTypeId } from '../layout/layout-panel-type';
+import { GameplayStore } from './gameplay-store';
 import { ViewportStore } from './viewport-store';
 
 interface Lane {
@@ -19,8 +21,13 @@ function perLaneMemo<T>(fn: (laneId: LaneId) => T): Record<LaneId, () => T> {
 	) as Record<LaneId, () => T>;
 }
 
-export function createLayoutStore(viewportStore: ViewportStore) {
-	const [lanes, setLanes] = createStore<Record<LaneId, Lane>>({
+function defaultLayoutOfGame(game: GameId | null): Record<LaneId, Lane> {
+	const chartOne: LayoutPanelTypeId =
+		game === 'hollow' ? 'area-chart-geo-hollow' : game === 'silk' ? 'area-chart-geo-silk' : 'empty';
+	const chartTwo: LayoutPanelTypeId =
+		game === 'hollow' ? 'area-chart-health-hollow' : game === 'silk' ? 'area-chart-health-silk' : 'empty';
+
+	return {
 		left: {
 			locationIds: ['l1', 'l2'],
 			sizes: [0.3, 0.7],
@@ -29,13 +36,22 @@ export function createLayoutStore(viewportStore: ViewportStore) {
 		right: {
 			locationIds: ['r1', 'r2', 'r3'],
 			sizes: [0.4, 0.4, 0.18],
-			panelTypes: ['splits', 'area-chart-geo', 'area-chart-health'],
+			panelTypes: ['splits', chartOne, chartTwo],
 		},
 		mobileMap: {
 			locationIds: ['mm1', 'mm2'],
 			sizes: [0.3, 0.7],
 			panelTypes: ['area-analytics', 'map'],
 		},
+	};
+}
+
+export function createLayoutStore(viewportStore: ViewportStore, gameplayStore: GameplayStore) {
+	const [lanes, setLanes] = createStore<Record<LaneId, Lane>>(defaultLayoutOfGame(gameplayStore.game()));
+
+	createEffect(() => {
+		const game = gameplayStore.game();
+		setLanes(defaultLayoutOfGame(game));
 	});
 
 	const [containerSizesPx, setContainerSizesPx] = createStore<Record<LaneId, number | undefined>>({

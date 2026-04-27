@@ -1,45 +1,49 @@
 import { tailwindChartColors } from '../../colors';
 import { LayoutPanelTypeProps } from '../../layout/layout-panel-props';
+import { localized } from '../../store/localization-store';
+import { LineChartVariableDescription } from '../area-charts-shared/area-chart-variable';
 import { ChartDocTitleIcon, ChartDocVars } from '../area-charts-shared/chart-doc';
-import { type LineChartVariableDescription } from '../area-charts-shared/line-area-chart';
 import { LineAreaChartPanel } from '../area-charts-shared/line-area-chart-panel';
-import { SoulChartUnitIcon } from '../chart-icons';
+import { SoulChartUnitIconHollow } from '../chart-icons';
 
 const variables: LineChartVariableDescription[] = [
 	{
+		game: 'hollow',
 		key: 'MPCharge',
-		name: 'Soul',
+		name: localized.raw('Soul'),
 		description: 'How much soul is in the soul meter (from 0 to 99). Healing and spells use 33 soul per use.',
 		color: tailwindChartColors.slate,
-		UnitIcon: SoulChartUnitIcon,
+		UnitIcon: SoulChartUnitIconHollow,
 		order: 1,
+		display: 'default-shown',
 	},
 	{
+		game: 'hollow',
 		key: 'MPReserve',
-		name: 'Soul reserve',
+		name: localized.raw('Soul reserve'),
 		description: 'Soul inside the soul vessels (up to 33 per vessel).',
 		color: tailwindChartColors.indigo,
-		UnitIcon: SoulChartUnitIcon,
+		UnitIcon: SoulChartUnitIconHollow,
 		order: 2,
+		display: 'default-shown',
 	},
 	{
+		game: 'hollow',
 		key: 'MPTotal',
-		name: 'Total',
+		name: localized.raw('Total'),
 		description: 'Total soul in soul meter and reserve.',
 		color: tailwindChartColors.slate,
-		UnitIcon: SoulChartUnitIcon,
+		UnitIcon: SoulChartUnitIconHollow,
 		order: 3,
-		notShownInGraph: true,
+		display: 'never',
 	},
 ];
 
-export function SoulChart(props: LayoutPanelTypeProps) {
+export function SoulChartHollow(props: LayoutPanelTypeProps) {
 	return (
 		<LineAreaChartPanel
 			variables={variables}
-			icon={<SoulChartUnitIcon class="mr-1 inline-block w-6" />}
-			header="Soul"
-			yAxisLabel="Soul"
+			yAxisLabel={localized.raw('Soul')}
 			minimalMaximumY={99}
 			downScaleMaxTimeDelta={100}
 			{...props}
@@ -47,10 +51,10 @@ export function SoulChart(props: LayoutPanelTypeProps) {
 	);
 }
 
-export function SoulChartDocVars() {
+export function SoulChartDocVarsHollow() {
 	return <ChartDocVars variables={variables} />;
 }
 
-export function SoulChartDocIcon() {
-	return <ChartDocTitleIcon unit={SoulChartUnitIcon} />;
+export function SoulChartDocIconHollow() {
+	return <ChartDocTitleIcon unit={SoulChartUnitIconHollow} />;
 }

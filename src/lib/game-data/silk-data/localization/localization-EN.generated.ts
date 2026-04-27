@@ -1540,4 +1540,5 @@ export default {
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
 	'Quests.UI_PROMPT_ACCEPTED': 'Wish Promised',
 	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Completed',
+	'UI.COLLECTION_HEADING_RELICDEALER': 'Relics',
 };

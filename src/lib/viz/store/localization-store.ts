@@ -123,7 +123,9 @@ export function createLocalizationStore() {
 			return;
 		}
 		if (!supportedLanguages.includes(newLang)) {
-			console.warn(`Attempted to change to unsupported language: ${newLang}`);
+			console.warn(
+				`Attempted to change to unsupported language: ${newLang}. Supported languages are: ${supportedLanguages.join(', ')}.`,
+			);
 			return;
 		}
 		setUsedLanguagesHistory((prev) => [newLang, ...prev.filter((lang) => lang !== newLang)]);

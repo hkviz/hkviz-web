@@ -42,7 +42,7 @@ const RunExtraChartsFollowButton: Component = () => {
 
 export interface LineAreaChartPanelProps extends LineAreaChartProps, LayoutPanelTypeProps {}
 
-export const LineAreaChartPanel = (props: LineAreaChartPanelProps) => {
+export function LineAreaChartPanel(props: LineAreaChartPanelProps) {
 	const panelContext = useLayoutPanelContext();
 	return (
 		<LayoutPanelWrapper>
@@ -77,4 +77,4 @@ export const LineAreaChartPanel = (props: LineAreaChartPanelProps) => {
 			</div>
 		</LayoutPanelWrapper>
 	);
-};
+}

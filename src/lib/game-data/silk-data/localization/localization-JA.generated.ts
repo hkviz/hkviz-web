@@ -1524,4 +1524,5 @@ export default {
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
 	'Quests.UI_PROMPT_ACCEPTED': '願いを引き受けた',
 	'Quests.UI_TITLE_QUESTS_COMPLETE': '完了済み',
+	'UI.COLLECTION_HEADING_RELICDEALER': '遺物',
 };

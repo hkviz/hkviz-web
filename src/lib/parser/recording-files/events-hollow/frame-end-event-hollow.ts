@@ -6,8 +6,8 @@ import {
 import { heroStateFields, type HeroStateField } from '../../hero-state/hero-states';
 import { type BossSequenceDoorCompletion } from '../../player-data/boss-completion';
 import { EventCreationContext } from '../events-shared/event-creation-context';
+import { FrameEndEventBase } from '../events-shared/frame-end-event-base';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
-import { RecordingEventBase } from '../events-shared/recording-event-base';
 import { countGameCompletion } from '../parser-hollow/ingame-percentage';
 import { HeroStateEvent } from './hero-state-event';
 import { type PlayerDataEventHollow } from './player-data-event';
@@ -200,7 +200,7 @@ type FrameEndBase = {
  * created by recording combiner whenever the timestamp changes if any of the values in it changed
  */
 
-export class FrameEndEventHollow extends RecordingEventBase implements FrameEndBase {
+export class FrameEndEventHollow extends FrameEndEventBase implements FrameEndBase {
 	// directly from player data and hero states
 
 	dead: boolean;

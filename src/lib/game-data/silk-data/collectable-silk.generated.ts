@@ -219,6 +219,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Tool Pouch&Kit Inv',
@@ -317,6 +318,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Quill',
@@ -415,6 +417,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'White Flower',
@@ -513,6 +516,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Tool Metal',
@@ -611,6 +615,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Crest Socket Unlocker',
@@ -709,6 +714,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Pale_Oil',
@@ -807,6 +813,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Coral Heart',
@@ -905,6 +912,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Flower Heart',
@@ -1003,6 +1011,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Hunter Heart',
@@ -1101,6 +1110,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Clover Heart',
@@ -1199,6 +1209,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Plasmium Gland',
@@ -1297,6 +1308,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Broken SilkShot',
@@ -1395,6 +1407,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: true,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Wood Witch Item',
@@ -1493,6 +1506,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Cog Heart Pieces',
@@ -1591,6 +1605,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Craw Summons',
@@ -1689,6 +1704,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Mossberry',
@@ -1787,6 +1803,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Pilgrim Rag',
@@ -1885,6 +1902,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Common Spine',
@@ -1983,6 +2001,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Shell Flower',
@@ -2081,6 +2100,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Crow Feather',
@@ -2179,6 +2199,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Rock Roller Item',
@@ -2277,6 +2298,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Roach Corpse Item',
@@ -2375,6 +2397,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Skull King Fragment',
@@ -2473,6 +2496,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Beastfly Remains',
@@ -2571,6 +2595,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Conchfly Remains',
@@ -2669,6 +2694,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Broodmother Remains',
@@ -2767,6 +2793,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Silver Bellclapper',
@@ -2865,6 +2892,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Blue Goop Jar',
@@ -2898,6 +2926,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Coral Chunk',
@@ -2996,6 +3025,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Fine Pin',
@@ -3094,6 +3124,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Shining Cog',
@@ -3192,6 +3223,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Song Pilgrim Cloak',
@@ -3290,6 +3322,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Courier Supplies',
@@ -3362,6 +3395,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Courier Supplies Slave',
@@ -3434,6 +3468,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Courier Supplies Mask Maker',
@@ -3506,6 +3541,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Mossberry Stew',
@@ -3604,6 +3640,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Plasmium',
@@ -3702,6 +3739,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Plasmium Blood',
@@ -3800,6 +3838,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Vintage Nectar',
@@ -3898,6 +3937,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Courier Supplies Gourmand',
@@ -3970,6 +4010,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Coral Ingredient',
@@ -4068,6 +4109,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Pickled Roach Egg',
@@ -4166,6 +4208,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Extractor Machine Pins',
@@ -4264,6 +4307,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Enemy Morsel Seared',
@@ -4362,6 +4406,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Enemy Morsel Shredded',
@@ -4460,6 +4505,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Enemy Morsel Speared',
@@ -4558,6 +4604,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Ant Trapper Item',
@@ -4656,6 +4703,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Snare Soul Churchkeeper',
@@ -4754,6 +4802,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Snare Soul Bell Hermit',
@@ -4852,6 +4901,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Snare Soul Swamp Bug',
@@ -4950,6 +5000,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Simple Key',
@@ -5048,6 +5099,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Dock Key',
@@ -5146,6 +5198,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Dock Demo Key',
@@ -5244,6 +5297,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Ward Key',
@@ -5342,6 +5396,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Ward Boss Key',
@@ -5440,6 +5495,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Architect Key',
@@ -5538,6 +5594,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Slab Key',
@@ -5696,6 +5753,7 @@ const list = [
 		isVisibleWithBareInventory: true,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Belltown House Key',
@@ -5794,6 +5852,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Materium',
@@ -5892,6 +5951,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Farsight',
@@ -5990,6 +6050,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Crawbell',
@@ -6088,6 +6149,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Memento Seth',
@@ -6186,6 +6248,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Sprintmaster Memento',
@@ -6284,6 +6347,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Memento Garmond',
@@ -6382,6 +6446,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Hunter Memento',
@@ -6480,6 +6545,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Crowman Memento',
@@ -6578,6 +6644,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Grey Memento',
@@ -6676,6 +6743,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Memento Surface',
@@ -6774,6 +6842,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'R Bone Record',
@@ -6872,6 +6941,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'R Weaver Totem',
@@ -6970,6 +7040,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'R Seal Chit',
@@ -7068,6 +7139,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'R Weaver Record',
@@ -7166,6 +7238,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'R Ancient Egg',
@@ -7264,6 +7337,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'R Psalm Cylinder',
@@ -7362,6 +7436,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'R Librarian Melody Cylinder',
@@ -7460,6 +7535,7 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: null,
 	},
 	{
 		id: 'Rosary_Set_Frayed',
@@ -7558,6 +7634,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'Rosaries',
+				amount: 30,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: 'UI.INV_DESC_COIN_SET_USE',
+			},
+		],
 	},
 	{
 		id: 'Rosary_Set_Small',
@@ -7656,6 +7743,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'Rosaries',
+				amount: 60,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: 'UI.INV_DESC_COIN_SET_USE',
+			},
+		],
 	},
 	{
 		id: 'Rosary_Set_Medium',
@@ -7754,6 +7852,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'Rosaries',
+				amount: 120,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: 'UI.INV_DESC_COIN_SET_USE',
+			},
+		],
 	},
 	{
 		id: 'Rosary_Set_Large',
@@ -7852,6 +7961,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'Rosaries',
+				amount: 220,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: 'UI.INV_DESC_COIN_SET_USE',
+			},
+		],
 	},
 	{
 		id: 'Rosary_Set_Huge_White',
@@ -7950,6 +8070,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'Rosaries',
+				amount: 340,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: 'UI.INV_DESC_COIN_SET_USE',
+			},
+		],
 	},
 	{
 		id: 'Shard Pouch',
@@ -8048,6 +8179,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'Shards',
+				amount: 80,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: 'UI.INV_DESC_SHARD_POUCH_USE',
+			},
+		],
 	},
 	{
 		id: 'Great Shard',
@@ -8146,6 +8288,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'Shards',
+				amount: 140,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: 'UI.INV_DESC_GREAT_SHARD_USE',
+			},
+		],
 	},
 	{
 		id: 'Pristine Core',
@@ -8244,6 +8397,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'Shards',
+				amount: 220,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: 'UI.INV_DESC_GREAT_SHARD_USE',
+			},
+		],
 	},
 	{
 		id: 'Fixer Idol',
@@ -8342,6 +8506,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'Shards',
+				amount: 60,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: 'UI.INV_DESC_GREAT_SHARD_USE',
+			},
+		],
 	},
 	{
 		id: 'Growstone',
@@ -8440,6 +8615,35 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: false,
+		useResponses: [
+			{
+				sourceKind: 'GrowerState',
+				stateIndex: 1,
+				useType: 'Shards',
+				amount: 0,
+				amountRangeStart: 30,
+				amountRangeEnd: 45,
+				descriptionKey: null,
+			},
+			{
+				sourceKind: 'GrowerState',
+				stateIndex: 2,
+				useType: 'Shards',
+				amount: 0,
+				amountRangeStart: 75,
+				amountRangeEnd: 95,
+				descriptionKey: null,
+			},
+			{
+				sourceKind: 'GrowerState',
+				stateIndex: 3,
+				useType: 'Shards',
+				amount: 0,
+				amountRangeStart: 120,
+				amountRangeEnd: 140,
+				descriptionKey: null,
+			},
+		],
 	},
 	{
 		id: 'Silk Grub',
@@ -8538,6 +8742,17 @@ const list = [
 		isVisibleWithBareInventory: false,
 		hideInShopCounters: false,
 		takeItemOnConsume: true,
+		useResponses: [
+			{
+				sourceKind: 'Item',
+				stateIndex: null,
+				useType: 'ReturnCocoon',
+				amount: 10,
+				amountRangeStart: 0,
+				amountRangeEnd: 0,
+				descriptionKey: null,
+			},
+		],
 	},
 ];
 export type CollectableSilk = (typeof list)[number];

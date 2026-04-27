@@ -35,7 +35,14 @@ export const rosaryIconImg = '/silk-sprites/I_rosary_icon_clean.png';
 export const rosaryHudImg = '/silk-sprites/HUD_coin_v020004.png';
 export const hornetDeathPinImg = '/silk-sprites/Shade_Pin.png';
 export const hornetHealthImg = '/silk-sprites/wiki_health.png';
+export const hornetHealthLifebloodImg = '/silk-sprites/blue_hive_health0003.png';
+export const hornetHealthEmptyImg = '/silk-sprites/health_backboard.png';
+export const hornetHealthEmptySteelImg = '/silk-sprites/health_backboard_ss.png';
 export const hornetHealingImg = '/silk-sprites/Inv_0029_spell_core.png';
+export const crawbellImg = '/silk-sprites/collectable/crawbell_8_134x136_1.png';
+export const rosaryStringImg = '/silk-sprites/collectable/I_rosary_necklace_0002_1_19_120x119_0.png';
+export const boneScrollImg = '/silk-sprites/collectable-relic/Hornet_icon_0002_R_bone_record_11_123x142_1.png';
+export const shellBundleImg = '/silk-sprites/collectable/Hornet_Tool_Metal_Pouch_9_108x120_0.png';
 
 export function heroPinSource(game: GameId): string {
 	if (game === 'silk') {

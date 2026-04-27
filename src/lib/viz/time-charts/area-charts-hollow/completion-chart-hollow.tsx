@@ -1,22 +1,25 @@
 import { tailwindChartColors } from '../../colors';
 import { LayoutPanelTypeProps } from '../../layout/layout-panel-props';
+import { localized } from '../../store/localization-store';
+import { LineChartVariableDescription } from '../area-charts-shared/area-chart-variable';
 import { ChartDocTitleIcon, ChartDocVars } from '../area-charts-shared/chart-doc';
-import { type LineChartVariableDescription } from '../area-charts-shared/line-area-chart';
 import { LineAreaChartPanel } from '../area-charts-shared/line-area-chart-panel';
 import { CompletionChartUnitIcon } from '../chart-icons';
 
 const variables: LineChartVariableDescription[] = [
 	{
+		game: 'hollow',
 		key: 'completionPercentageEarlyCalc',
-		name: 'Game completion',
+		name: localized.raw('Game completion'),
 		description: 'Percentage of the game completed.',
 		color: tailwindChartColors.rose,
 		UnitIcon: CompletionChartUnitIcon,
 		order: 1,
+		display: 'default-shown',
 	},
 	// {
 	//     key: 'completionPercentage',
-	//     name: 'Game completion x',
+	//     name: localized.raw('Game completion x'),
 	//     description: 'Percentage of the game completed',
 	//     classNames: lineAreaColors.slate,
 	//     UnitIcon: Unit,
@@ -24,13 +27,11 @@ const variables: LineChartVariableDescription[] = [
 	// },
 ];
 
-export function CompletionChart(props: LayoutPanelTypeProps) {
+export function CompletionChartHollow(props: LayoutPanelTypeProps) {
 	return (
 		<LineAreaChartPanel
 			variables={variables}
-			icon={<CompletionChartUnitIcon class="mr-1 inline-block w-6" />}
-			header="Game completion"
-			yAxisLabel="%"
+			yAxisLabel={localized.raw('%')}
 			minimalMaximumY={10}
 			downScaleMaxTimeDelta={100}
 			{...props}
@@ -38,10 +39,10 @@ export function CompletionChart(props: LayoutPanelTypeProps) {
 	);
 }
 
-export function CompletionChartDocVars() {
+export function CompletionChartDocVarsHollow() {
 	return <ChartDocVars variables={variables} />;
 }
 
-export function CompletionChartDocIcon() {
+export function CompletionChartDocIconHollow() {
 	return <ChartDocTitleIcon unit={CompletionChartUnitIcon} />;
 }

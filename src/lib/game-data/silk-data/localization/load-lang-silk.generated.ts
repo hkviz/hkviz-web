@@ -1169,6 +1169,7 @@ export interface LocalizationDataSilk {
 	['Map Zones.TEST_AREA']: string;
 	['Quests.UI_PROMPT_ACCEPTED']: string;
 	['Quests.UI_TITLE_QUESTS_COMPLETE']: string;
+	['UI.COLLECTION_HEADING_RELICDEALER']: string;
 }
 
 export async function loadLangSilk(lang: SupportedLanguageSilk): Promise<LocalizationDataSilk> {

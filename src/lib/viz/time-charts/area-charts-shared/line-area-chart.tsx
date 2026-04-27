@@ -1,82 +1,49 @@
 import * as d3 from 'd3';
-import {
-	type Component,
-	For,
-	type JSXElement,
-	Show,
-	createEffect,
-	createMemo,
-	createSignal,
-	createUniqueId,
-	onCleanup,
-	untrack,
-} from 'solid-js';
+import { createEffect, createMemo, createSignal, createUniqueId, For, onCleanup, Show, untrack } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
-import {
-	FrameEndEventHollow,
-	FrameEndEventNumberKey,
-} from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
-import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
-import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
 import { createAutoSizeCanvas } from '../../canvas';
-import { ColorClasses } from '../../colors';
 import { MsIntoGameChangeType, useAnimationStore } from '../../store/animation-store';
 import { useExtraChartStore } from '../../store/extra-chart-store';
 import { useGameplayStore } from '../../store/gameplay-store';
 import { useHoverMsStore } from '../../store/hover-ms-store';
+import { LocalizedString, useLocalizationStore } from '../../store/localization-store';
 import { useRoomDisplayStore } from '../../store/room-display-store';
 import { useThemeStore } from '../../store/theme-store';
 import { useViewportStore } from '../../store/viewport-store';
 import { chartBaseHeight, chartBaseWidth, getChartFrame } from '../area-charts-shared/chart-frame';
+import {
+	getChartVarValue,
+	isShownInGraph,
+	LineChartVariableDescription,
+	LineChartVariableKey,
+} from './area-chart-variable';
 import { createIsVisible } from './create-is-visible';
 import { downScale } from './down-scale';
 import type { InitMessage, ResizeMessage, SetDataMessage, SetViewMessage } from './line-area-chart-render.worker';
 
-export type LineChartVariableDescription = {
-	key: FrameEndEventNumberKey;
-	name: string;
-	description: string;
-	UnitIcon: Component<{ class?: string }>;
-	order: number;
-	color: ColorClasses;
-} & (
-	| {
-			notShownInGraph: true;
-	  }
-	| {
-			defaultHidden?: true;
-	  }
-);
-
-export type LineChartShownVariableDescription = Exclude<LineChartVariableDescription, { notShownInGraph: true }>;
-
-function isShownInGraph(it: LineChartVariableDescription): it is LineChartShownVariableDescription {
-	return !('notShownInGraph' in it && it.notShownInGraph === true);
-}
-
 export interface LineAreaChartProps {
 	variables: LineChartVariableDescription[];
-	yAxisLabel: string;
-	icon: JSXElement;
-	header: JSXElement;
+	yAxisLabel: LocalizedString;
 	minimalMaximumY: number;
 	downScaleMaxTimeDelta: number;
 	renderScale?: number;
 }
 
-export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
+export function LineAreaChart(props: LineAreaChartProps) {
 	const roomDisplayStore = useRoomDisplayStore();
 	const extraChartStore = useExtraChartStore();
 	const animationStore = useAnimationStore();
 	const gameplayStore = useGameplayStore();
 	const hoverMsStore = useHoverMsStore();
 	const viewportStore = useViewportStore();
+	const localizationStore = useLocalizationStore();
 
 	const variablesPerKey = createMemo(() => {
-		return Object.fromEntries(props.variables.map((it) => [it.key, it] as const));
+		return new Map(props.variables.map((it) => [it.key, it] as const));
 	});
 
 	const [canvasRef, setCanvasRef] = createSignal<HTMLCanvasElement | null>(null);
@@ -86,20 +53,22 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 
 	const isVisible = createIsVisible(canvasRef);
 
-	const [selectedVars, setSelectedVars] = createSignal<FrameEndEventNumberKey[]>(
+	const [selectedVars, setSelectedVars] = createSignal<LineChartVariableKey[]>(
 		// eslint-disable-next-line solid/reactivity
 		props.variables
 			.filter(isShownInGraph)
-			.filter((it) => !it.defaultHidden)
+			.filter((it) => it.display === 'default-shown')
 			.sort((a, b) => a.order - b.order)
 			.map((it) => it.key),
 	);
 
-	function onVariableCheckedChange(key: FrameEndEventNumberKey, checked: boolean) {
+	function onVariableCheckedChange(key: LineChartVariableKey, checked: boolean) {
 		const prev = selectedVars();
 		const _variablesPerKey = variablesPerKey();
 		if (checked) {
-			setSelectedVars([...prev, key].sort((a, b) => _variablesPerKey[a]!.order - _variablesPerKey[b]!.order));
+			setSelectedVars(
+				[...prev, key].sort((a, b) => _variablesPerKey.get(a)!.order - _variablesPerKey.get(b)!.order),
+			);
 		} else {
 			setSelectedVars(prev.filter((it) => it !== key));
 		}
@@ -107,27 +76,21 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 
 	const data = createMemo(() => {
 		const recording = gameplayStore.recording();
-		if (!recording || recording instanceof CombinedRecordingSilk) return [];
-		const togetherEvents = downScale(
-			recording.frameEndEvents,
-			props.variables.map((it) => it.key),
-			props.downScaleMaxTimeDelta,
-		);
-		return togetherEvents;
+		if (!recording) return [];
+		return downScale(recording.frameEndEvents, props.variables, props.downScaleMaxTimeDelta);
 	});
 
-	type Datum = FrameEndEventHollow;
 	type Series = {
-		data: Datum;
+		data: FrameEndEventBase;
 		0: number;
 		1: number;
-	}[] & { key: string; index: number };
+	}[] & { key: LineChartVariableKey; index: number };
 
 	// Determine the series that need to be stacked.
 	const series = createMemo(() => {
 		const _data = data();
 		const _selectedVars = selectedVars();
-		return d3.stack<Datum>().keys(
+		return d3.stack<FrameEndEventBase>().keys(
 			_selectedVars.length === 0
 				? props.variables
 						.filter(isShownInGraph)
@@ -181,7 +144,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		const _isDarkTheme = isDarkTheme();
 		return _series
 			.map((s) => {
-				const colorClass = _variablesPerKey[s.key]?.color;
+				const colorClass = _variablesPerKey.get(s.key)?.color;
 				if (!colorClass) return null;
 				return {
 					color: _isDarkTheme ? colorClass.hexDark : colorClass.hexLight,
@@ -570,7 +533,7 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 		const message: SetDataMessage = {
 			type: 'setData',
 			series: dataForWorker,
-			yAxisLabel: props.yAxisLabel,
+			yAxisLabel: localizationStore.getString(props.yAxisLabel),
 			minimalMaximumY: props.minimalMaximumY,
 		};
 		renderWorker.postMessage(message);
@@ -645,31 +608,31 @@ export const LineAreaChart: Component<LineAreaChartProps> = (props) => {
 			</Table>
 		</div>
 	);
-};
+}
 
 interface LineAreaChartVarRowProps {
 	variable: LineChartVariableDescription;
-	selectedVars: FrameEndEventNumberKey[];
+	selectedVars: LineChartVariableKey[];
 	onCheckedChange: (checked: boolean) => void;
 }
 
-const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
+function LineAreaChartVarRow(props: LineAreaChartVarRowProps) {
 	const id = createUniqueId();
 	const animationStore = useAnimationStore();
 	const hoverMsStore = useHoverMsStore();
+	const localizationStore = useLocalizationStore();
 
 	const isShowable = () => isShownInGraph(props.variable);
 
 	const value = () => {
 		const frame = animationStore.currentFrameEndEvent();
-		if (frame instanceof FrameEndEventSilk) return 0;
-		return frame?.[props.variable.key] ?? 0;
+		return getChartVarValue(frame, props.variable) ?? 0;
 	};
 
-	const valueHover = () => {
+	const valueHover = (): number | null => {
 		const hoveredFrameEndEvent = hoverMsStore.hoveredFrameEndEvent();
-		if (!hoveredFrameEndEvent || hoveredFrameEndEvent instanceof FrameEndEventSilk) return null;
-		return hoveredFrameEndEvent[props.variable.key] ?? null;
+		if (!hoveredFrameEndEvent) return null;
+		return getChartVarValue(hoveredFrameEndEvent, props.variable);
 	};
 
 	const checked = () => props.selectedVars.includes(props.variable.key);
@@ -696,7 +659,7 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 							for={id + props.variable.key + '_checkbox-input'}
 							class="grow text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
 						>
-							{props.variable.name}
+							{localizationStore.getString(props.variable.name)}
 						</TooltipTrigger>
 						<TooltipContent class="max-w-96">{props.variable.description}</TooltipContent>
 					</Tooltip>
@@ -708,12 +671,12 @@ const LineAreaChartVarRow: Component<LineAreaChartVarRowProps> = (props) => {
 					<span class="mr-2 text-muted-foreground">{valueHover()}</span>
 				</TableCell>
 			</Show>
-			<TableCell class="p-2 py-1 text-right text-nowrap">
+			<TableCell class="flex flex-row items-center justify-end gap-1 p-2 py-1 text-right text-nowrap">
 				<>{value()}</>
-				<span class="ml-2">
-					<Dynamic component={props.variable.UnitIcon} class="inline-block h-auto w-5" />
-				</span>
+				<div class="ml-2 flex h-5 w-5 items-center justify-center">
+					<Dynamic component={props.variable.UnitIcon} class="inline-block max-h-5 max-w-5 object-cover" />
+				</div>
 			</TableCell>
 		</TableRow>
 	);
-};
+}

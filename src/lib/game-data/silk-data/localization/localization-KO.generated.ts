@@ -1439,4 +1439,5 @@ export default {
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
 	'Quests.UI_PROMPT_ACCEPTED': '소원 약속함',
 	'Quests.UI_TITLE_QUESTS_COMPLETE': '완료됨',
+	'UI.COLLECTION_HEADING_RELICDEALER': '유물',
 };

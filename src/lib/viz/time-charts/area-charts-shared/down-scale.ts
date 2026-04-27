@@ -1,40 +1,33 @@
-import {
-	FrameEndEventHollow,
-	FrameEndEventNumberKey,
-} from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
+import { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
+import { getChartVarValue, LineChartVariableDescription } from './area-chart-variable';
 
-export function downScale(data: FrameEndEventHollow[], fields: FrameEndEventNumberKey[], maxTimeDelta = 10000) {
-	console.log('Original length', data.length, fields);
+export function downScale(
+	data: FrameEndEventBase[],
+	fields: LineChartVariableDescription[],
+	maxTimeDelta = 10000,
+): FrameEndEventBase[] {
+	if (data.length <= 2) {
+		return [...data];
+	}
 
-	let previous: FrameEndEventHollow | undefined = undefined;
-	let current: FrameEndEventHollow | undefined = undefined;
-	let next: FrameEndEventHollow | undefined = data[0];
+	// Keep first/last points so chart boundaries remain stable.
+	const filtered: FrameEndEventBase[] = [data[0]];
+	let lastIncluded = data[0];
 
-	const filtered = [];
-	let lastIncluded: FrameEndEventHollow | undefined = undefined;
-
-	for (let i = 0; i < data.length; i++) {
-		previous = current;
-		current = next!;
-		next = i + 1 < data.length ? data[i + 1] : undefined;
-
-		if (!previous || !next) {
-			filtered.push(current);
-			lastIncluded = current;
-			continue;
-		}
+	for (let i = 1; i < data.length - 1; i++) {
+		const previous = data[i - 1];
+		const current = data[i];
+		const next = data[i + 1];
 
 		let didAnyChange = false;
 		let isAnyExtrema = false;
 
 		for (const field of fields) {
-			if (current[field] !== previous[field]) {
-				didAnyChange = true;
-			}
+			const previousValue = getChartVarValue(previous, field);
+			const currentValue = getChartVarValue(current, field);
+			const nextValue = getChartVarValue(next, field);
 
-			const previousValue = previous[field];
-			const currentValue = current[field];
-			const nextValue = next[field];
+			didAnyChange ||= currentValue !== previousValue;
 
 			isAnyExtrema ||=
 				(currentValue < previousValue && currentValue <= nextValue) ||
@@ -42,16 +35,18 @@ export function downScale(data: FrameEndEventHollow[], fields: FrameEndEventNumb
 				(currentValue > previousValue && currentValue >= nextValue) ||
 				(currentValue >= previousValue && currentValue > nextValue);
 
-			if (isAnyExtrema && didAnyChange) {
+			if (didAnyChange && isAnyExtrema) {
 				break;
 			}
 		}
 
-		if ((current.msIntoGame - lastIncluded!.msIntoGame > maxTimeDelta || isAnyExtrema) && didAnyChange) {
+		const exceededMaxTimeDelta = current.msIntoGame - lastIncluded.msIntoGame > maxTimeDelta;
+		if ((exceededMaxTimeDelta || isAnyExtrema) && didAnyChange) {
 			filtered.push(current);
 			lastIncluded = current;
 		}
 	}
-	console.log('filtered length', filtered.length);
+
+	filtered.push(data[data.length - 1]);
 	return filtered;
 }

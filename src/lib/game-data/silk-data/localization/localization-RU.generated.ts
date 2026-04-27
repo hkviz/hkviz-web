@@ -1597,4 +1597,5 @@ export default {
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
 	'Quests.UI_PROMPT_ACCEPTED': 'Желание обещано',
 	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Выполнено',
+	'UI.COLLECTION_HEADING_RELICDEALER': 'Реликвии',
 };

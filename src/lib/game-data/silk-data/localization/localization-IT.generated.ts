@@ -1614,4 +1614,5 @@ export default {
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
 	'Quests.UI_PROMPT_ACCEPTED': 'Desiderio promesso',
 	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Completato',
+	'UI.COLLECTION_HEADING_RELICDEALER': 'Reperti',
 };

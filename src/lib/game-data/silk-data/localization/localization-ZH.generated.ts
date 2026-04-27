@@ -1260,4 +1260,5 @@ export default {
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
 	'Quests.UI_PROMPT_ACCEPTED': '祈愿已承接',
 	'Quests.UI_TITLE_QUESTS_COMPLETE': '已完成',
+	'UI.COLLECTION_HEADING_RELICDEALER': '古董',
 };

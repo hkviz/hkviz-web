@@ -22,6 +22,6 @@
 	"oxc.enable.oxlint": true,
 	"oxc.fmt.configPath": ".oxfmtrc.json",
 	"editor.defaultFormatter": "oxc.oxc-vscode",
-	"editor.formatOnSave": true,
-	"js/ts.experimental.useTsgo": true
+	"editor.formatOnSave": true
+	//"js/ts.experimental.useTsgo": true
 }

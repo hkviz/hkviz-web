@@ -1644,4 +1644,5 @@ export default {
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
 	'Quests.UI_PROMPT_ACCEPTED': 'Souhait promis',
 	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Exaucé',
+	'UI.COLLECTION_HEADING_RELICDEALER': 'Reliques',
 };

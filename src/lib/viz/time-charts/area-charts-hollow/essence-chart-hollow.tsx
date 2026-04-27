@@ -1,28 +1,29 @@
 import { tailwindChartColors } from '../../colors';
 import { LayoutPanelTypeProps } from '../../layout/layout-panel-props';
+import { localized } from '../../store/localization-store';
+import { LineChartVariableDescription } from '../area-charts-shared/area-chart-variable';
 import { ChartDocTitleIcon, ChartDocVars } from '../area-charts-shared/chart-doc';
-import { type LineChartVariableDescription } from '../area-charts-shared/line-area-chart';
 import { LineAreaChartPanel } from '../area-charts-shared/line-area-chart-panel';
-import { EssenceChartUnitIcon } from '../chart-icons';
+import { EssenceChartUnitIconHollow } from '../chart-icons';
 
 const variables: LineChartVariableDescription[] = [
 	{
+		game: 'hollow',
 		key: 'dreamOrbs',
-		name: 'Essence',
+		name: localized.raw('Essence'),
 		description: 'Essence collected',
 		color: tailwindChartColors.orange,
-		UnitIcon: EssenceChartUnitIcon,
+		UnitIcon: EssenceChartUnitIconHollow,
 		order: 1,
+		display: 'default-shown',
 	},
 ];
 
-export function EssenceChart(props: LayoutPanelTypeProps) {
+export function EssenceChartHollow(props: LayoutPanelTypeProps) {
 	return (
 		<LineAreaChartPanel
 			variables={variables}
-			icon={<EssenceChartUnitIcon class="mr-1 inline-block w-6" />}
-			header="Essence"
-			yAxisLabel="Essence"
+			yAxisLabel={localized.raw('Essence')}
 			minimalMaximumY={10}
 			downScaleMaxTimeDelta={100}
 			{...props}
@@ -30,10 +31,10 @@ export function EssenceChart(props: LayoutPanelTypeProps) {
 	);
 }
 
-export function EssenceChartDocVars() {
+export function EssenceChartDocVarsHollow() {
 	return <ChartDocVars variables={variables} />;
 }
 
-export function EssenceChartDocIcon() {
-	return <ChartDocTitleIcon unit={EssenceChartUnitIcon} />;
+export function EssenceChartDocIconHollow() {
+	return <ChartDocTitleIcon unit={EssenceChartUnitIconHollow} />;
 }

@@ -117,6 +117,18 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 			previousEvent = event;
 		}
 	}
+	// add one last frame end event at the end
+	if (previousEvent) {
+		eventCreationContext.msIntoGame = msIntoGame;
+		eventCreationContext.timestamp = previousEvent.timestamp;
+		const frameEndEvent: FrameEndEventSilk = new FrameEndEventSilk(
+			getLastPlayerDataEventOfField,
+			previousFrameEndEvent,
+			eventCreationContext,
+		);
+		events.push(frameEndEvent);
+	}
+
 	(window as any).hkvizEvents = () => events;
 
 	return new CombinedRecordingSilk(

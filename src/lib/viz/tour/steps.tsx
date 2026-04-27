@@ -10,7 +10,7 @@ import { RoomDisplayStore } from '../store/room-display-store';
 import { mapViewRoomRectClass } from '../store/tour-store';
 import { UiStore } from '../store/ui-store';
 import { ViewportStore } from '../store/viewport-store';
-import { GeoChartUnitIcon, HealthChartMaskUnitIcon } from '../time-charts/chart-icons';
+import { GeoChartUnitIconHollow, HealthChartMaskUnitIconHollow } from '../time-charts/chart-icons';
 import { makeStep, type Step } from './step';
 
 const P: Component<{ children: JSXElement }> = (props) => {
@@ -284,8 +284,8 @@ export function createTourSteps({
 				<>
 					<P>
 						Lastly, these charts show stats over time, such as{' '}
-						<GeoChartUnitIcon class="inline max-h-[1em] max-w-[1em]" /> Geo and{' '}
-						<HealthChartMaskUnitIcon class="inline max-h-[1em] max-w-[1em]" /> Health.
+						<GeoChartUnitIconHollow class="inline max-h-[1em] max-w-[1em]" /> Geo and{' '}
+						<HealthChartMaskUnitIconHollow class="inline max-h-[1em] max-w-[1em]" /> Health.
 					</P>
 					<P>The values below the charts and the dotted line show the selected point in the timeline.</P>
 					<P>You{"'"}re all set. Happy exploring!</P>

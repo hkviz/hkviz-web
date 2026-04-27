@@ -1600,4 +1600,5 @@ export default {
 	'Map Zones.TEST_AREA': '#!#TEST_AREA#!#',
 	'Quests.UI_PROMPT_ACCEPTED': 'Deseo prometido',
 	'Quests.UI_TITLE_QUESTS_COMPLETE': 'Completados',
+	'UI.COLLECTION_HEADING_RELICDEALER': 'Reliquias',
 };

@@ -49,8 +49,8 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 	const viewportStore = useViewportStore();
 	const localizationStore = useLocalizationStore();
 
-	const layoutStore = createLayoutStore(viewportStore);
 	const gameplayStore = createGameplayStore();
+	const layoutStore = createLayoutStore(viewportStore, gameplayStore);
 	const hoverMsStore = createHoverMsStore(gameplayStore);
 	const animationStore = createAnimationStore(gameplayStore, uiStore);
 	const mapZoomStore = createMapZoomStore();
