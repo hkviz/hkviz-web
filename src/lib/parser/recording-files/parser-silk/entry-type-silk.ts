@@ -38,7 +38,6 @@ export const entryTypeSilk = {
 	PlayerDataStoryEventListDelta: 0x1d,
 	PlayerDataWrappedVector2ListFull: 0x1e,
 	PlayerDataWrappedVector2ListDelta: 0x1f,
-	PlayerDataWrappedVector2ListAppend: 0x20,
 
 	// SceneData
 	SceneDataBool: 0x21,

@@ -7,6 +7,7 @@ import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { frameEndEventPlayerDataFieldsSetSilk, FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
+import { collectionDiffApply } from './collection-parsing/diff-types-shared';
 import { CombinedRecordingSilk, ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
 import { combineStorageStats } from './storage-stats';
 
@@ -81,8 +82,11 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 			} else if (event instanceof SceneEvent) {
 				previousSceneEvent = event;
 			} else if (event instanceof PlayerDataEventSilk) {
+				const previousPlayerDataEventOfField = getLastPlayerDataEventOfField(event.fieldName);
+
 				event.previousPlayerPositionEvent = previousPlayerPositionEvent;
-				event.previousPlayerDataEventOfField = getLastPlayerDataEventOfField(event.fieldName);
+				event.previousPlayerDataEventOfField = previousPlayerDataEventOfField;
+				event.value = collectionDiffApply(previousPlayerDataEventOfField?.value, event.value);
 				lastPlayerDataEventByField.set(event.fieldName, event);
 				if (isPlayerDataEventOfFieldSilk(event, 'heroState_isPaused')) {
 					isPaused = event.value;

@@ -13,19 +13,16 @@ import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
 import { SceneDataEventSilk } from '../events-silk/scene-data-event-silk';
+import {
+	parseIndexedListDelta,
+	parseStoryEventListDelta,
+	parseWrappedVector2ListDelta,
+} from './collection-parsing/list-delta-parsing-silk';
+import { parseNamedMapDelta, parseNamedMapFull } from './collection-parsing/named-map-parsing-silk';
+import { parseStringSetDelta } from './collection-parsing/set-delta-parsing-silk';
 import { entryTypeNameSilk, entryTypeSilk, EntryTypeSilk } from './entry-type-silk';
 import { recordingFileVersionToModVersionSilk } from './mod-version-silk';
 import { ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
-import {
-	parseAppendedList,
-	parseIndexedListDelta,
-	parseNamedMapDelta,
-	parseNamedMapFull,
-	parseStoryEventListDelta,
-	parseStringSetDelta,
-	parseWrappedVector2ListDelta,
-	type NamedMapValueSilk,
-} from './silk-delta-parsing';
 import { SilkRecordingDataView } from './silk-recording-data-view';
 import { StorageStats } from './storage-stats';
 import { getStringIdToStringForField, stringIdMappingSilk } from './string-id-by-field-silk';
@@ -58,7 +55,7 @@ export function parseRecordingFileSilk(
 	const hkVizModVersion = recordingFileVersionToModVersionSilk[recordingFileVersion] ?? null;
 
 	const logParserStep = (step: string, details?: unknown): void => {
-		console.log(`[silk-parser] ${step}`, details);
+		// console.log(`[silk-parser] ${step}`, details);
 	};
 
 	const pushEvent = (event: RecordingEventSilk, details?: Record<string, unknown>): void => {
@@ -119,11 +116,6 @@ export function parseRecordingFileSilk(
 			value,
 			previousValueExists: previousPlayerDataEventOfField != null,
 		});
-	};
-
-	const previousPlayerDataValue = <T>(field: PlayerDataFieldNameSilk): T | null => {
-		const previousPlayerDataEvent = previousPlayerDataEventByField.get(field);
-		return (previousPlayerDataEvent?.value as T | undefined) ?? null;
 	};
 
 	const storageStats = new StorageStats();
@@ -379,19 +371,11 @@ export function parseRecordingFileSilk(
 						break;
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['int[]', 'list<int>']);
-					const arrayLength = reader.readInt32();
 					logParserStep('int_list_delta_start', {
 						fieldId,
 						field: field.name,
-						arrayLength,
-						previousSize: previousPlayerDataValue<number[]>(field.name)?.length ?? 0,
 					});
-					const values = parseIndexedListDelta(
-						reader,
-						arrayLength,
-						previousPlayerDataValue<number[]>(field.name),
-						() => reader.readInt32(),
-					);
+					const values = parseIndexedListDelta(reader, () => reader.readInt32(), logParserStep);
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
@@ -420,19 +404,15 @@ export function parseRecordingFileSilk(
 						break;
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['list<string>']);
-					const arrayLength = reader.readInt32();
 					const idToValue = getStringIdToStringForField(field);
 					logParserStep('string_list_delta_start', {
 						fieldId,
 						field: field.name,
-						arrayLength,
-						previousSize: previousPlayerDataValue<string[]>(field.name)?.length ?? 0,
 					});
 					const values = parseIndexedListDelta(
 						reader,
-						arrayLength,
-						previousPlayerDataValue<string[]>(field.name),
 						() => reader.readStringWithId(idToValue),
+						logParserStep,
 					);
 					pushPlayerDataEvent(field.name, values);
 					break;
@@ -470,13 +450,9 @@ export function parseRecordingFileSilk(
 					logParserStep('string_set_delta_start', {
 						fieldId,
 						field: field.name,
-						previousSize: previousPlayerDataValue<ReadonlySet<string>>(field.name)?.size ?? 0,
 					});
-					const values = parseStringSetDelta(
-						reader,
-						previousPlayerDataValue<ReadonlySet<string>>(field.name),
-						idToValue,
-					);
+					const values = parseStringSetDelta(reader, idToValue, logParserStep);
+					console.log('Parsed string set delta for field', field.name, 'with values', values);
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
@@ -501,7 +477,7 @@ export function parseRecordingFileSilk(
 					// 	reader.offset,
 					// );
 
-					const values = parseNamedMapFull(reader, field, field.type);
+					const values = parseNamedMapFull(reader, field, field.type, logParserStep);
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
@@ -530,16 +506,9 @@ export function parseRecordingFileSilk(
 						field: field.name,
 						fieldName: field.name,
 						fieldType: field.type,
-						previousSize:
-							previousPlayerDataValue<ReadonlyMap<string, NamedMapValueSilk>>(field.name)?.size ?? 0,
 					});
 
-					const values = parseNamedMapDelta(
-						reader,
-						field,
-						field.type,
-						previousPlayerDataValue<ReadonlyMap<string, NamedMapValueSilk>>(field.name),
-					);
+					const values = parseNamedMapDelta(reader, field, field.type, logParserStep);
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
@@ -576,18 +545,11 @@ export function parseRecordingFileSilk(
 						break;
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['list<playerstory.eventinfo>']);
-					const listLength = reader.readInt32();
 					logParserStep('story_event_list_delta_start', {
 						fieldId,
 						field: field.name,
-						listLength,
-						previousSize: previousPlayerDataValue<readonly StoryEventInfoSilk[]>(field.name)?.length ?? 0,
 					});
-					const values = parseStoryEventListDelta(
-						reader,
-						listLength,
-						previousPlayerDataValue<readonly StoryEventInfoSilk[]>(field.name),
-					);
+					const values = parseStoryEventListDelta(reader, logParserStep);
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
@@ -624,45 +586,11 @@ export function parseRecordingFileSilk(
 						break;
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['wrappedvector2list[]']);
-					const listLength = reader.readInt32();
 					logParserStep('wrapped_vector2_list_delta_start', {
 						fieldId,
 						field: field.name,
-						listLength,
-						previousSize: previousPlayerDataValue<readonly Vector2[][]>(field.name)?.length ?? 0,
 					});
-					const values = parseWrappedVector2ListDelta(
-						reader,
-						listLength,
-						previousPlayerDataValue<readonly Vector2[][]>(field.name),
-					);
-					pushPlayerDataEvent(field.name, values);
-					break;
-				}
-
-				case entryTypeSilk.PlayerDataWrappedVector2ListAppend: {
-					const fieldId = reader.readUint16();
-					const field = resolvePlayerDataField(fieldId);
-					reader.logState = field?.name;
-					trackedField = field?.name;
-					if (!field) {
-						break;
-					}
-					throwIfFieldTypeMismatch(entryType, field, fieldId, ['wrappedvector2list[]']);
-					const oldLength = reader.readInt32();
-					logParserStep('wrapped_vector2_list_append_start', {
-						fieldId,
-						field: field.name,
-						oldLength,
-						previousSize: previousPlayerDataValue<readonly Vector2[][]>(field.name)?.length ?? 0,
-					});
-					const values = parseAppendedList(
-						reader,
-						oldLength,
-						previousPlayerDataValue<readonly Vector2[][]>(field.name),
-						() => reader.readWrappedVector2List(),
-						(entry) => [...entry],
-					);
+					const values = parseWrappedVector2ListDelta(reader, logParserStep);
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
