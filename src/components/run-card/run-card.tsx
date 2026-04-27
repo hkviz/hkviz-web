@@ -39,6 +39,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 import { showToast } from '../ui/toast';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import { RunCardBackground } from './run-card-background.tsx';
+import { RunCardEndings } from './run-card-endings.tsx';
 import { RunCardTags } from './run-card-tags.tsx';
 
 function Duration(props: { seconds: number }) {
@@ -371,6 +372,7 @@ export const RunCard: Component<{
 										</RunCardEpicInfo>
 									)}
 								</Show>
+								<RunCardEndings run={props.run} />
 							</div>
 						</div>
 					</div>
