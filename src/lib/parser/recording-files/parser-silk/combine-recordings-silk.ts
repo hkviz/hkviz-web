@@ -8,6 +8,7 @@ import { SceneEvent } from '../events-shared/scene-event';
 import { frameEndEventPlayerDataFieldsSetSilk, FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
 import { CombinedRecordingSilk, ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
+import { combineStorageStats } from './storage-stats';
 
 export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): CombinedRecordingSilk {
 	const events: RecordingEventSilk[] = [];
@@ -136,5 +137,6 @@ export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): Combin
 		recordings.reduce((sum, recording) => sum + recording.unknownEvents, 0),
 		recordings.reduce((sum, recording) => sum + recording.parsingErrors, 0),
 		[...allHkVizModVersions].sort(),
+		combineStorageStats(recordings.map((recording) => recording.storageStats)),
 	);
 }

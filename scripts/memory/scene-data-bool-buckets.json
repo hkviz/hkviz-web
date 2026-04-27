@@ -1,0 +1,3875 @@
+{
+	"perScene": {
+		"Tut_01": [
+			[
+				"Interact Reminder (1)",
+				"Reminder Look Down",
+				"Remasker",
+				"Collectable Item Pickup",
+				"Bone Chest",
+				"Moss Vine Cluster (1)",
+				"Moss Vine Cluster",
+				"Moss Vine Cluster (3)"
+			],
+			[
+				"Remasker New",
+				"Sound Control",
+				"Remasker New (1)",
+				"Remasker New (3)",
+				"Remasker New (2)",
+				"Remasker New thumper",
+				"Weakness Scene",
+				"Silkfly Ambient (1)"
+			],
+			[
+				"Silkfly Ambient",
+				"Silkfly Ambient (2)",
+				"Silkfly Ambient (3)",
+				"Bone Thumper"
+			]
+		],
+		"Tut_02": [
+			[
+				"Remasker",
+				"Remasker (1)",
+				"One Way VineWall",
+				"Remasker New",
+				"moss_berry_fruit"
+			]
+		],
+		"Tut_01b": [
+			[
+				"remask right",
+				"moss_berry_fruit"
+			]
+		],
+		"Tut_03": [
+			[
+				"Interact Reminder",
+				"Weakness Scene",
+				"Silkfly Ambient",
+				"Battle Scene",
+				"Moss Vine Cluster",
+				"Moss Vine Cluster (1)"
+			]
+		],
+		"Bonetown": [
+			[
+				"Collectable Item Pickup",
+				"Geo Med Persistent",
+				"Geo Small Persistent (3)",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent (2)",
+				"Remasker New (1)",
+				"Remasker New",
+				"Weakness Scene"
+			],
+			[
+				"Bone Lever",
+				"Mapper Sit NPC"
+			]
+		],
+		"Bone_01": [
+			[
+				"Inverse Remasker",
+				"Inverse Remasker (1)",
+				"Breakable Wall",
+				"Secret Mask",
+				"Collapser Small (1)",
+				"Battle Scene",
+				"Geo Small Persistent (3)",
+				"Geo Small Persistent (4)"
+			],
+			[
+				"Remasker New",
+				"Rock Roller",
+				"Bone Lever",
+				"Rock Roller_item_Rock Rollers"
+			]
+		],
+		"Bone_01c": [
+			[
+				"Inverse Remasker",
+				"Inverse Remasker (1)",
+				"bell_toll_machine",
+				"Geo Med Persistent",
+				"Geo Small Persistent (2)",
+				"Geo Small Persistent (1)"
+			]
+		],
+		"Bone_02": [
+			[
+				"Geo Small Persistent",
+				"Geo Small Persistent (1)",
+				"Chain Drop Platform",
+				"Black_Thread_Core"
+			]
+		],
+		"Bone_03": [
+			[
+				"Song_lever_side"
+			]
+		],
+		"Bone_04": [
+			[
+				"Inverse Remasker",
+				"Bone Gate",
+				"Song_lever_side right",
+				"Song_lever_side",
+				"Geo Small Persistent (6)",
+				"Geo Small Persistent (5)",
+				"Geo Small Persistent (4)",
+				"Geo Small Persistent (1)"
+			],
+			[
+				"Geo Small Persistent (3)",
+				"Geo Small Persistent (2)",
+				"Geo Small Persistent",
+				"Rock Roller",
+				"Bone Lever",
+				"Generic Pickup(Clone)",
+				"Black_Thread_Core"
+			]
+		],
+		"Mosstown_01": [
+			[
+				"Trapdoor Lever",
+				"Geo Small Persistent (3)",
+				"Geo Small Persistent (2)",
+				"Geo Small Persistent",
+				"Geo Small Persistent (1)",
+				"Remasker New (1)"
+			]
+		],
+		"Bone_10": [
+			[
+				"Geo Small Persistent",
+				"Geo Small Persistent (1)",
+				"Breakable Wall",
+				"Song_Gate_small",
+				"Song_lever_side",
+				"Collectable Item Pickup",
+				"Collectable Item Pickup Locket"
+			]
+		],
+		"GLOBAL_SHARED": [
+			[
+				"Caravan Troupe Hunter",
+				"Caravan Lech"
+			]
+		],
+		"Mosstown_02": [
+			[
+				"Breakable Wall",
+				"Vine Platform",
+				"moss_bone_plaque",
+				"Collectable Item Pickup",
+				"Remasker New Sharp",
+				"Silkfly Ambient (2)",
+				"Silkfly Ambient (1)",
+				"Silkfly Ambient"
+			],
+			[
+				"Thick Silk Vines",
+				"Thick Silk Vines (1)",
+				"Reminder Silk Skill (1)",
+				"Reminder Silk Skill",
+				"Black_Thread_Core"
+			]
+		],
+		"Aspid_01": [
+			[
+				"Collectable Item Pickup (2)",
+				"Geo Small Persistent (2)",
+				"Geo Small Persistent",
+				"Geo Small Persistent (1)"
+			]
+		],
+		"Bone_01b": [
+			[
+				"Breakable Wall"
+			]
+		],
+		"Crawl_02": [
+			[
+				"Breakable Wall (1)",
+				"Heart Piece",
+				"Breakable Wall",
+				"Song_lever_side",
+				"Collectable Item Pickup",
+				"aspid_sealed_gate_stone",
+				"pustule_set_large_single_black_thread"
+			]
+		],
+		"Bone_16": [
+			[
+				"Breakable Wall (1)",
+				"Breakable Wall",
+				"Breakable Wall (2)",
+				"Bone Carriage",
+				"Remasker New"
+			]
+		],
+		"Bone_05b": [
+			[
+				"Secret Sound Region",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Mosstown_02c": [
+			[
+				"Moss Creep NPC"
+			]
+		],
+		"Memory_Silk_Heart_BellBeast": [
+			[
+				"glow_rim_Remasker"
+			]
+		],
+		"Bone_06": [
+			[
+				"Rock Roller",
+				"Rock Roller_item_Rock Rollers"
+			]
+		],
+		"Bone_18": [
+			[
+				"Collectable Item Pickup",
+				"Battle Scene"
+			]
+		],
+		"Bone_14": [
+			[
+				"Geo Small Persistent (2)",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent"
+			]
+		],
+		"Bone_07": [
+			[
+				"Remasker New",
+				"Remasker New (3)",
+				"Remasker New (2)",
+				"Remasker New (1)",
+				"Rock Roller",
+				"explode_wall",
+				"explode_wall (3)",
+				"explode_wall fake (2)"
+			],
+			[
+				"explode_wall fake",
+				"explode_wall fake (3)",
+				"explode_wall fake (1)",
+				"explode_wall (2)",
+				"tool_metal_deposit",
+				"Collectable Item Pickup - Tool Metal",
+				"Rock Roller_item_Rock Rollers",
+				"Black_Thread_Core"
+			]
+		],
+		"Bone_19": [
+			[
+				"Breakable Wall",
+				"Bone Chest",
+				"Geo Small Persistent",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent (2)"
+			]
+		],
+		"Bone_08": [
+			[
+				"lever",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Belltown_basement_03": [
+			[
+				"One Way Wall (3)",
+				"One Way Wall (1)",
+				"One Way Wall (4)",
+				"One Way Wall (5)",
+				"Collapser Small_Bell_Type",
+				"Collapser Small_Bell_Type (1)",
+				"Collapser Small_Bell_Type (2)"
+			]
+		],
+		"Ant_02": [
+			[
+				"Bone Hunter Throw",
+				"Battle Scene"
+			]
+		],
+		"Bone_12": [
+			[
+				"Thief Dummy",
+				"jail_door (1)",
+				"jail_door (2)",
+				"Pilgrim StaffWielder",
+				"Thief NPC Save",
+				"Ladybug Craft Pickup"
+			]
+		],
+		"Bone_09": [
+			[
+				"grave_marker_break_grey",
+				"sack_breakable_single",
+				"Pilgrim 01",
+				"Remasker New",
+				"Garmond Fighter",
+				"Black_Thread_Core"
+			]
+		],
+		"Dock_08": [
+			[
+				"Heart Piece",
+				"Battle Scene",
+				"Song_Gate_small",
+				"Song_lever_side",
+				"Remasker New"
+			]
+		],
+		"Dock_01": [
+			[
+				"bell_toll_machine"
+			]
+		],
+		"Bone_East_05": [
+			[
+				"Song_lever_side",
+				"Song_Gate_small",
+				"Song_lever_side (1)",
+				"Barrel Plat Lift (1)",
+				"Black_Thread_Core",
+				"Garmond Fighter"
+			]
+		],
+		"Bone_East_01": [
+			[
+				"Song_lever_side (1)",
+				"Song_lever_side",
+				"Collectable Item Pickup",
+				"Barrel Plat Lift",
+				"Barrel Plat Lift (2)"
+			]
+		],
+		"Bellway_02": [
+			[
+				"Breakable Wall",
+				"Remasker New"
+			]
+		],
+		"Bone_East_12": [
+			[
+				"Song_Gate_small",
+				"Song_Gate_small_demo",
+				"Song_lever_side",
+				"Dock Key Receptacle"
+			]
+		],
+		"Room_Forge": [
+			[
+				"Inverse Remasker",
+				"Song_Gate_small",
+				"Song_lever_side",
+				"Collectable Item Pickup (1)",
+				"Collectable Item Pickup",
+				"Shell Shard 02 Persistent",
+				"dock_sealed_gate",
+				"Battle Scene"
+			],
+			[
+				"Remasker New",
+				"Remasker New (1)",
+				"Shell Shard 01 Persistent"
+			]
+		],
+		"Dock_10": [
+			[
+				"dock_pressure_plate_lock"
+			]
+		],
+		"Dock_06_Church": [
+			[
+				"Song_lever_side",
+				"Remasker New Sharp Ultra",
+				"City Shard Chest"
+			]
+		],
+		"Bone_East_13": [
+			[
+				"Song_lever_side",
+				"Coal Bucket Plat",
+				"Coal Bucket Plat (1)",
+				"Coal Bucket Plat (2)",
+				"Coal Bucket Plat (6)",
+				"Coal Bucket Plat (3)",
+				"Coal Bucket Plat (4)",
+				"Silk Spool"
+			]
+		],
+		"Bone_East_03": [
+			[
+				"Bone Hunter Child Alerter",
+				"grave_marker_break_grey",
+				"DockDashExplodeRock"
+			]
+		],
+		"Bone_East_04": [
+			[
+				"Inverse Remasker",
+				"explode_wall"
+			]
+		],
+		"Bone_East_15": [
+			[
+				"bell_toll_machine",
+				"Song_Gate_small (3)",
+				"Song_lever_side",
+				"Remasker New",
+				"Remasker New (1)"
+			]
+		],
+		"Ant_05b": [
+			[
+				"ant_lever_persistent",
+				"Battle Scene",
+				"Black_Thread_Core",
+				"Remasker New",
+				"Remasker New (1)",
+				"One Way Wall"
+			]
+		],
+		"Bone_East_04b": [
+			[
+				"Reminder Look Down",
+				"Collectable Item Pickup",
+				"Remasker New",
+				"Breakable Wall (1)"
+			]
+		],
+		"Bellshrine_05": [
+			[
+				"Song_lever_side old"
+			]
+		],
+		"Bone_East_07": [
+			[
+				"Secret Mask New (2)",
+				"Remasker_Left",
+				"Secret Mask New (1)",
+				"explode_wall (1)",
+				"explode_wall",
+				"explode_wall (5)",
+				"explode_wall (3)",
+				"explode_wall (2)"
+			]
+		],
+		"Bone_East_16": [
+			[
+				"Breakable Wall"
+			]
+		],
+		"Bone_East_17b": [
+			[
+				"Breakable Wall"
+			]
+		],
+		"Bone_East_17": [
+			[
+				"Secret Mask New",
+				"Ant Chest",
+				"ant_lever_persistent",
+				"Black_Thread_Core"
+			]
+		],
+		"Bone_East_10": [
+			[
+				"Remasker New (1)",
+				"Chain Drop Platform (1)",
+				"Pilgrim 02",
+				"Pilgrim 02 (Unique female)"
+			]
+		],
+		"Song_lever_side": [
+			[
+				"Bone_East_10_Church"
+			]
+		],
+		"Pilgrims Rest": [
+			[
+				"Toll Door"
+			]
+		],
+		"Bellway_03": [
+			[
+				"bell_toll_machine",
+				"Secret Mask New",
+				"Secret Mask New (1)",
+				"Wind Rock (1)",
+				"Wind Rock",
+				"craw_court_summons_pin"
+			]
+		],
+		"Dock_03b": [
+			[
+				"Breakable Wall",
+				"Remasker New (2)",
+				"Remasker New",
+				"Remasker New (1)"
+			]
+		],
+		"Bone_East_08": [
+			[
+				"Remasker New",
+				"Collectable Item Pickup"
+			]
+		],
+		"Bone_East_09": [
+			[
+				"Secret Mask New",
+				"Wind Rock (3)",
+				"Wind Rock (2)",
+				"Wind Rock (1)"
+			]
+		],
+		"Bone_East_21": [
+			[
+				"Mapper Sit NPC"
+			]
+		],
+		"Bone_East_14": [
+			[
+				"Inverse Remasker",
+				"Collectable Item Pickup (1)",
+				"Collectable Item Pickup",
+				"DropBomb Rock (2)",
+				"Secret Mask New",
+				"explode_wall (4)",
+				"explode_wall",
+				"explode_wall (1)"
+			],
+			[
+				"explode_wall (3)",
+				"Garmond Fighter"
+			]
+		],
+		"DontDestroyOnLoad": [
+			[
+				"Collectable Item Pickup Instant(Clone)"
+			]
+		],
+		"Bone_East_14b": [
+			[
+				"DropBomb Rock",
+				"DropBomb Rock (1)",
+				"Spine Floater Spine P (2)",
+				"Spine Floater Spine P (4)"
+			]
+		],
+		"Bone_East_10_Room": [
+			[
+				"Toll Door Breakable Cog",
+				"Geo Small Persistent (3)",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent",
+				"Rosary Thief"
+			]
+		],
+		"Bone_East_11": [
+			[
+				"Song_lever_side (1)",
+				"Song_lever_side",
+				"DropBomb Rock",
+				"Wind Rock",
+				"explode_wall",
+				"Bone East 11 Cross Over Group",
+				"Remasker New Sharp"
+			]
+		],
+		"Greymoor_01": [
+			[
+				"Song_lever_side",
+				"Bell Chain Plat"
+			]
+		],
+		"Greymoor_13": [
+			[
+				"Remasker New (1)"
+			]
+		],
+		"Greymoor_02": [
+			[
+				"Breakable Wall",
+				"Mapper Sit NPC",
+				"Silk Spool",
+				"Greymoor Stand Lever - Bridge",
+				"Greymoor Stand Lever - Crane",
+				"Craw_home_front",
+				"Craw_home_front (1)",
+				"Craw_home_right"
+			],
+			[
+				"Flyaway Scene",
+				"Black_Thread_Core"
+			]
+		],
+		"Greymoor_15": [
+			[
+				"Collectable Item Pickup",
+				"greymoor_lever_simple",
+				"Geo Small Persistent",
+				"Geo Small Persistent (1)",
+				"Craw_home_right"
+			]
+		],
+		"Halfway_01": [
+			[
+				"Hornet_pressure_plate_small_persistent",
+				"Collectable Item Pickup",
+				"Secret Mask New"
+			]
+		],
+		"Greymoor_03": [
+			[
+				"Breakable Wall",
+				"Hornet_cage_rect_lift_greymoor"
+			]
+		],
+		"Greymoor_15b": [
+			[
+				"Collectable Item Pickup",
+				"Greymoor Stand Lever",
+				"Greymoor Stand Lever (1)",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent (3)",
+				"Geo Small Persistent",
+				"Geo Small Persistent (2)",
+				"Craw_home_right"
+			],
+			[
+				"Craw_home_right (1)",
+				"Remasker New Sharp Ultra",
+				"Remasker New Sharp Ultra (1)"
+			]
+		],
+		"Room_CrowCourt": [
+			[
+				"Battle Scene",
+				"Craw_home_front (2)",
+				"Craw_home_front (1)",
+				"Craw_home_front",
+				"Craw_home_hang",
+				"Craw_home_hang (1)",
+				"Craw_home_right",
+				"Craw_home_right (1)"
+			]
+		],
+		"Greymoor_21": [
+			[
+				"Collectable Item Pickup",
+				"thread_memory"
+			]
+		],
+		"Greymoor_04": [
+			[
+				"Remasker New",
+				"Silk Grub Small Cocoon 1 (1)",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent (4)",
+				"Geo Small Persistent (5)",
+				"Geo Small Persistent",
+				"Geo Small Persistent (3)",
+				"Geo Small Persistent (2)"
+			],
+			[
+				"Silk Grub Large Cocoon",
+				"Silk Grub Small Cocoon 2",
+				"propeller (1)",
+				"propeller (4)",
+				"propeller (3)",
+				"propeller (2)",
+				"Black Thread Battle Scene"
+			]
+		],
+		"Greymoor_05": [
+			[
+				"Garmond Fighter",
+				"Collectable Item Pickup",
+				"greymoor_breakable_plat (4)",
+				"greymoor_breakable_plat (1)",
+				"greymoor_breakable_plat (5)",
+				"greymoor_breakable_plat (2)",
+				"greymoor_breakable_plat (3)",
+				"greymoor_breakable_plat"
+			],
+			[
+				"tentacle_straight",
+				"fly corpse",
+				"Slab Fly Large Cage",
+				"tentacle_round",
+				"cage_tentacle_top",
+				"cage_main"
+			]
+		],
+		"Bellway_04": [
+			[
+				"Remasker New Sharp",
+				"plank_wall_cluster"
+			]
+		],
+		"Greymoor_06": [
+			[
+				"belltown_lever_drop_plat",
+				"Remasker New"
+			]
+		],
+		"Greymoor_07": [
+			[
+				"One Way Wall",
+				"greymoor_lever_simple",
+				"Garmond Aid NPC",
+				"Black_Thread_Core"
+			]
+		],
+		"Greymoor_20c": [
+			[
+				"Inverse Remasker",
+				"Inverse Remasker (5)",
+				"Inverse Remasker (6)",
+				"greystore_floor_shortcut",
+				"Battle Scene"
+			]
+		],
+		"Greymoor_08": [
+			[
+				"grey_wood_chain_plat_mid_breakable",
+				"greymoor_drop_propeller",
+				"Caravan Troup Member Short Greymoor"
+			]
+		],
+		"Greymoor_16": [
+			[
+				"Breakable Wall",
+				"Inverse Remasker (1)",
+				"Inverse Remasker",
+				"Collectable Item Pickup",
+				"Remasker New Sharp (1)",
+				"Remasker New Sharp",
+				"greystore_floor_shortcut (1)",
+				"Geo Med Persistent"
+			],
+			[
+				"Geo Med Persistent (1)",
+				"plank_wall_cluster",
+				"Geo Small Persistent (5)",
+				"Geo Small Persistent (3)",
+				"Geo Small Persistent (2)",
+				"Geo Small Persistent (6)",
+				"Geo Small Persistent (4)",
+				"Remasker New (1)"
+			],
+			[
+				"Remasker New",
+				"Black_Thread_Core"
+			]
+		],
+		"Bone_11": [
+			[
+				"Generic Pickup(Clone)",
+				"Garmond Fighter"
+			]
+		],
+		"Bone_East_20": [
+			[
+				"Heart Piece",
+				"DropBomb Rock",
+				"Remasker New Sharp",
+				"explode_wall_norck",
+				"Wind Rock (9)",
+				"Wind Rock (10)",
+				"Wind Rock (8)"
+			]
+		],
+		"Ant_04_left": [
+			[
+				"Collectable Item Pickup",
+				"Black_Thread_Core"
+			]
+		],
+		"Ant_17": [
+			[
+				"Remasker New Sharp Ultra",
+				"Gilly"
+			]
+		],
+		"Ant_Merchant": [
+			[
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Ant_05c": [
+			[
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Gilly"
+			]
+		],
+		"Ant_20": [
+			[
+				"Collectable Item Pickup",
+				"Mapper Sit NPC"
+			]
+		],
+		"Ant_19": [
+			[
+				"Collapser Small (7)",
+				"Remasker New",
+				"Remasker New (1)",
+				"ant_lever_persistent"
+			]
+		],
+		"Bone_11b": [
+			[
+				"Plate",
+				"Silk Spool"
+			]
+		],
+		"Greymoor_22": [
+			[
+				"One Way Wall (2)",
+				"Remasker New Sharp",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Belltown_06": [
+			[
+				"Mines Lift",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Belltown": [
+			[
+				"Collectable Item Pickup",
+				"Remasker New Sharp Ultra",
+				"craw_court_summons_pin",
+				"Courier Short Bellhart",
+				"Mapper Sit NPC"
+			]
+		],
+		"Belltown_basement": [
+			[
+				"Remasker New"
+			]
+		],
+		"Belltown_07": [
+			[
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Shellwood_02": [
+			[
+				"Hornet_pressure_plate",
+				"Plank Solid 2",
+				"Nectar Pickup",
+				"Hornet_cage_rect_lift",
+				"Shellwood Hive (1)",
+				"Black_Thread_Core"
+			]
+		],
+		"Shellwood_01": [
+			[
+				"Collectable Item Pickup",
+				"Nectar Pickup",
+				"Shell Shard Fossil Shellwood (1)",
+				"Shell Shard Fossil Shellwood",
+				"Shellwood Hive"
+			]
+		],
+		"Shellwood_01b": [
+			[
+				"bell_toll_machine",
+				"Collectable Item Pickup",
+				"Battle Scene",
+				"Remasker New (1)",
+				"Remasker New",
+				"craw_court_summons_pin",
+				"Hornet_cage_rect_lift",
+				"Black_Thread_Core"
+			]
+		],
+		"Mosstown_03": [
+			[
+				"Shellwood Twig Wall",
+				"craw_court_summons_pin"
+			]
+		],
+		"Shellwood_04b": [
+			[
+				"Shellwood Twig Wall (1)",
+				"Garmond Fighter",
+				"Black_Thread_Core"
+			]
+		],
+		"Shellgrave": [
+			[
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent",
+				"grave_marker_break_grey (2)",
+				"Rosary Pilgrim"
+			]
+		],
+		"Shellwood_08c": [
+			[
+				"bell_toll_machine",
+				"Shellwood Twig Wall",
+				"craw_court_summons_pin"
+			]
+		],
+		"Shellwood_14": [
+			[
+				"Heart Piece",
+				"Shellwood Twig Wall",
+				"Shellwood Twig Wall (1)"
+			]
+		],
+		"Shellwood_10": [
+			[
+				"Nectar Pickup",
+				"Silkfly Ambient Perched",
+				"Silkfly Ambient (1)",
+				"Silkfly Ambient"
+			]
+		],
+		"Shellwood_20": [
+			[
+				"Nectar Pickup",
+				"Seth Stand NPC"
+			]
+		],
+		"Shellwood_13": [
+			[
+				"Collectable Item Pickup",
+				"Secret Mask New",
+				"Bell Wall Tall",
+				"Bell Wall Tall (2)",
+				"Bell Wall Tall (1)",
+				"Remasker New",
+				"Remasker New (1)"
+			]
+		],
+		"Crawl_01": [
+			[
+				"thread_memory"
+			]
+		],
+		"Shellwood_11": [
+			[
+				"Geo Small Persistent",
+				"Geo Small Persistent (1)",
+				"grave_marker_break_grey",
+				"Shellwood Twig Wall (3)",
+				"Shellwood Twig Wall top",
+				"Shellwood Twig Wall start",
+				"Remasker New (1)",
+				"Remasker New Twig Wall"
+			]
+		],
+		"Shellwood_26": [
+			[
+				"Shellwood Twig Wall (2)",
+				"Nectar Pickup",
+				"Shellwood Hive (1)",
+				"Shell Shard Fossil Shellwood (2)",
+				"Black_Thread_Core"
+			]
+		],
+		"Belltown_04": [
+			[
+				"Bell Wall Tall",
+				"Bell Wall Tall (1)",
+				"Bell Wall Tall (4)",
+				"Bell Wall Tall (2)",
+				"Bell Wall Tall (3)",
+				"Remasker New (1)",
+				"Remasker New"
+			]
+		],
+		"Shellwood_15": [
+			[
+				"Shellwood Twig Wall (1)",
+				"Shellwood Twig Wall",
+				"Nectar Pickup",
+				"Black_Thread_Core"
+			]
+		],
+		"Belltown_Shrine": [
+			[
+				"Song_lever_side"
+			]
+		],
+		"Bone_15": [
+			[
+				"Collectable Item Pickup",
+				"Secret Mask New",
+				"Remasker New",
+				"Remasker New (1)",
+				"Collectable Item Pickup Instant"
+			]
+		],
+		"Bone_East_04c": [
+			[
+				"cage_main",
+				"cage_tentacle_top",
+				"tentacle_round",
+				"fly corpse",
+				"tentacle_straight",
+				"Slab Fly Large Cage"
+			]
+		],
+		"Ant_21": [
+			[
+				"ant_item_string",
+				"Battle Scene Extra"
+			]
+		],
+		"Crawl_07": [
+			[
+				"pustule_set_small (1)",
+				"pustule_set_small 3"
+			]
+		],
+		"Crawl_03": [
+			[
+				"Breakable Wall (1)",
+				"pustule_set_small (1)",
+				"pustule_set_large_single_black_thread",
+				"pustule_set_large_single_black_thread (2)"
+			]
+		],
+		"Bonegrave": [
+			[
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent",
+				"grave_marker_break_grey (2)",
+				"One Way Wall",
+				"Col_Glow_Remasker",
+				"Moss Vine Cluster",
+				"Geo Small Persistent (5)",
+				"Geo Small Persistent (2)"
+			],
+			[
+				"Geo Small Persistent (4)",
+				"Geo Small Persistent (3)",
+				"Rosary Pilgrim",
+				"Battle Scene"
+			]
+		],
+		"Chapel_Wanderer": [
+			[
+				"Geo Small Persistent",
+				"Geo Small Persistent (2)",
+				"One Way Wall",
+				"Collapser Small",
+				"Remasker New Sharp (1)",
+				"Remasker New Sharp",
+				"Battle Scene",
+				"Geo Small Persistent (3)"
+			],
+			[
+				"Remasker New"
+			]
+		],
+		"Crawl_09": [
+			[
+				"Breakable Wall",
+				"Breakable Wall (1)",
+				"Collectable Item Pickup",
+				"pustule_set_small (1)",
+				"pustule_set_large_single_black_thread (1)",
+				"pustule_set_large_single_black_thread (2)"
+			]
+		],
+		"Crawl_10": [
+			[
+				"thread_memory",
+				"Blue Assistant"
+			]
+		],
+		"Memory_Needolin": [
+			[
+				"Reminder Needolin - Memory"
+			]
+		],
+		"Greymoor_12": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Dust_01": [
+			[
+				"Breakable Wall",
+				"Collectable Item Pickup",
+				"Secret Mask New",
+				"Silkfly Ambient Perched (2)",
+				"Silkfly Ambient Perched (1)",
+				"Silkfly Ambient Perched",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Wisp_03": [
+			[
+				"Collectable Item Pickup",
+				"Remasker New Sharp",
+				"plank_wall_cluster"
+			]
+		],
+		"Weave_04": [
+			[
+				"Remasker New Sharp"
+			]
+		],
+		"Weave_02": [
+			[
+				"Inverse Remasker",
+				"Remasker New",
+				"crest_shrine_break_tube"
+			]
+		],
+		"Weave_12": [
+			[
+				"weaver_lift_power_chamber"
+			]
+		],
+		"Weave_10": [
+			[
+				"crest_shrine_break_tube (2)",
+				"crest_shrine_break_tube (1)",
+				"crest_shrine_break_tube"
+			]
+		],
+		"Weave_07": [
+			[
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Weave_03": [
+			[
+				"Boss Scene",
+				"Moss Vine Cluster (1)",
+				"Moss Vine Cluster (2)",
+				"moss_berry_fruit",
+				"Black_Thread_Core"
+			]
+		],
+		"Weave_11": [
+			[
+				"Silk Spool",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Weave_08": [
+			[
+				"Breakable Wall",
+				"Memory Orb Challenge (1)",
+				"Collectable Item Pickup",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Weave_05b": [
+			[
+				"Heart Piece"
+			]
+		],
+		"Bone_East_Weavehome": [
+			[
+				"Collectable Item Pickup",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Dust_02": [
+			[
+				"Prince Cell Door",
+				"Dust_02Gate",
+				"greymoor_lever_simple_EDITED",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Dust_Chef": [
+			[
+				"greymoor_lever_simple",
+				"Remasker New (1)",
+				"Remasker New",
+				"thread_memory",
+				"Chef_Meat_React (2)",
+				"Chef_Meat_React (6)",
+				"Chef_Meat_React (5)",
+				"Chef_Meat_React (3)"
+			],
+			[
+				"Chef_Meat_React (1)",
+				"Chef_Meat_React (4)",
+				"Chef_Meat_React",
+				"Pickup"
+			]
+		],
+		"Dust_03": [
+			[
+				"Remasker New",
+				"Remasker New (1)",
+				"Black_Thread_Core"
+			]
+		],
+		"Dust_10": [
+			[
+				"bell_toll_machine",
+				"Breakable Wall",
+				"One Way Wall",
+				"Mapper Sit NPC",
+				"Secret Mask New",
+				"craw_court_summons_pin"
+			]
+		],
+		"Dust_05": [
+			[
+				"Breakable Wall",
+				"Pilgrim Chest",
+				"Remasker New (2)",
+				"Remasker New",
+				"Garmond Aid NPC",
+				"Garmond Fighter"
+			]
+		],
+		"Dust_06": [
+			[
+				"One Way Wall",
+				"Collectable Item Pickup",
+				"Secret Mask New",
+				"Remasker New",
+				"Collectable Item SimpleKey"
+			]
+		],
+		"Shadow_05": [
+			[
+				"Breakable Wall",
+				"cage_mid_small_long_sway drop (2)",
+				"cage_mid_small_long_sway drop (3)",
+				"Black_Thread_Core"
+			]
+		],
+		"Dust_12": [
+			[
+				"Break Wall Dustpen Cage"
+			]
+		],
+		"Dust_11": [
+			[
+				"One Way Wall (1)",
+				"One Way Wall (2)",
+				"thread_memory",
+				"Remasker New",
+				"Remasker New (2)",
+				"Remasker New (1)",
+				"Remasker New Sharp Ultra",
+				"Black_Thread_Core"
+			],
+			[
+				"Black_Thread_Core (1)",
+				"craw_court_summons_pin"
+			]
+		],
+		"Shadow_04": [
+			[
+				"Breakable Wall"
+			]
+		],
+		"Dust_09": [
+			[
+				"Silkfly Ambient",
+				"Silkfly Ambient Perched (1)",
+				"Silkfly Ambient (1)",
+				"Silkfly Ambient Perched"
+			]
+		],
+		"Organ_01": [
+			[
+				"thread_memory_tank",
+				"organ_lift_broken_drop",
+				"Hornet_cage_rect_lift_organ (1)",
+				"Silk Grub Small Cocoon 1",
+				"Remasker New (1)",
+				"Remasker New",
+				"Remasker New (3)",
+				"Remasker New (2)"
+			],
+			[
+				"Silk Grub Large Cocoon",
+				"Organ Webbed Bench",
+				"Silk Grub Small Cocoon 2",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Library_12": [
+			[
+				"Remasker",
+				"One Way Wall",
+				"Remasker (1)",
+				"Collectable Item Pickup",
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Plug_Gate",
+				"Remasker New (1)"
+			],
+			[
+				"Remasker New",
+				"breakable blocker struts"
+			]
+		],
+		"Library_11": [
+			[
+				"Remasker New",
+				"Remasker New - Right",
+				"Remasker New - Centre",
+				"Remasker New - Left",
+				"Understore Big Plate Gate"
+			]
+		],
+		"Bellway_City": [
+			[
+				"GG_Breakable_Junk_Pile_red",
+				"GG_Breakable_Junk_Pile_red (1)",
+				"Collectable Item Pickup",
+				"Understore Lever",
+				"Remasker New (1)",
+				"Remasker New"
+			]
+		],
+		"Song_20": [
+			[
+				"Breakable Window"
+			]
+		],
+		"Tube_Hub": [
+			[
+				"Remasker New Sharp (1)",
+				"Remasker (1)",
+				"Breakable Wall",
+				"Breakable Wall_Silhouette",
+				"cradle_pipe_trapdoor",
+				"thread_memory",
+				"Remasker New Sharp (2)",
+				"Remasker New"
+			],
+			[
+				"Silk Grub Large Cocoon",
+				"Silk Grub Small Cocoon 2",
+				"Remasker New Sharp Ultra (1)",
+				"Remasker New Sharp Ultra",
+				"Remasker Pre Hub Left",
+				"Remasker Pre Hub Right",
+				"Understore Lever"
+			]
+		],
+		"Song_24": [
+			[
+				"Silk Grub Large Cocoon",
+				"Silk Grub Small Cocoon 1"
+			]
+		],
+		"Library_13": [
+			[
+				"Inverse Remasker",
+				"Song_Gate_small",
+				"Song_lever_side",
+				"Song_lever_side (1)",
+				"Shell Shard 02 Persistent",
+				"Shell Shard 03 Persistent",
+				"Grouped Remasker"
+			]
+		],
+		"Library_03": [
+			[
+				"CameraLockArea",
+				"Song_lever_side",
+				"Collectable Item Pickup",
+				"Secret Mask New",
+				"Grouped Remasker_Large",
+				"innerworks_lever",
+				"City Merchant Scavenge Generic"
+			]
+		],
+		"Song_20b": [
+			[
+				"Song_lever_side",
+				"Dial Door Bridge",
+				"Remasker New",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Library_02": [
+			[
+				"Remasker New (1)",
+				"Remasker New",
+				"Grouped Remasker"
+			]
+		],
+		"Library_04": [
+			[
+				"Top Shortcut",
+				"Song_lever_side (1)",
+				"Song_lever_side",
+				"Remasker New Sharp",
+				"attic_ladder",
+				"Remasker New",
+				"Black_Thread_Core_Citadel",
+				"Black_Thread_Core_Citadel (1)"
+			]
+		],
+		"Song_Enclave": [
+			[
+				"Enclave Caretaker FirstMeet",
+				"Collectable Item Pickup",
+				"Sherma Enclave NPC",
+				"Sherma Caretaker"
+			]
+		],
+		"Song_25": [
+			[
+				"Remasker New Sharp Drapes",
+				"Remasker New Sharp",
+				"Moss Vine Cluster",
+				"Remasker New",
+				"Hatch",
+				"Weakness Scene Act3 Final",
+				"Song Reed Grand"
+			]
+		],
+		"Song_27": [
+			[
+				"Song_lever_side - merchant quest accepted",
+				"Song_lever_side",
+				"Generic Pickup(Clone)"
+			]
+		],
+		"Song_05": [
+			[
+				"Remasker New",
+				"Remasker New (1)",
+				"Breakable Window (1)",
+				"Breakable Window",
+				"Generic Pickup(Clone)",
+				"Black_Thread_Core_Citadel"
+			]
+		],
+		"Song_11": [
+			[
+				"Breakable Wall",
+				"Inverse Remasker",
+				"Breakable Wall (1)",
+				"Song_lever_side",
+				"Plug_Gate",
+				"propeller understore propeller",
+				"Remasker New Inverse",
+				"Remasker New (1)"
+			],
+			[
+				"Remasker New",
+				"Generic Pickup(Clone)"
+			]
+		],
+		"Song_18": [
+			[
+				"Remasker New Sharp (2)",
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Remasker New Sharp (3)"
+			]
+		],
+		"Song_07": [
+			[
+				"Geo Med Persistent",
+				"Geo Small Persistent",
+				"Collectable Item Pickup",
+				"Remasker New (1)",
+				"Remasker New",
+				"thread_memory"
+			]
+		],
+		"Song_02": [
+			[
+				"Remasker New Sharp (1)",
+				"Remasker New Sharp",
+				"Remasker New Sharp (2)",
+				"Remasker New",
+				"Generic Pickup(Clone)",
+				"Song Pilgrim 01 SK"
+			]
+		],
+		"Song_01b": [
+			[
+				"Song_lever_side (1)",
+				"Geo Med Persistent",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent",
+				"Remasker New (1)"
+			]
+		],
+		"Song_01": [
+			[
+				"Song_lever_side",
+				"Remasker New",
+				"Breakable Floor_basic Song_01",
+				"Remasker New Sharp Ultra",
+				"Black_Thread_Core_Citadel"
+			]
+		],
+		"Under_07c": [
+			[
+				"Bot Blocker",
+				"Inverse Remasker (1)",
+				"Breakable Wall",
+				"Inverse Remasker",
+				"Collectable Item Pickup",
+				"Remasker New Sharp",
+				"Battle Scene",
+				"Remasker New"
+			],
+			[
+				"Remasker New (1)",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Under_07b": [
+			[
+				"Remasker New"
+			]
+		],
+		"Song_19_entrance": [
+			[
+				"Breakable Wall Entrance Secret",
+				"Song_lever_side",
+				"Silk Spool"
+			]
+		],
+		"Under_01": [
+			[
+				"Remasker",
+				"Breakable Wall (1)",
+				"Secret Mask New",
+				"Remasker New Sharp",
+				"Shellwood Twig Wall",
+				"Remasker New Top_glower",
+				"Remasker New",
+				"Remasker New Right Blackout"
+			],
+			[
+				"Remasker New (1)",
+				"Pipe_Cog_Lever"
+			]
+		],
+		"Under_01b": [
+			[
+				"Understore Big Plate Gate"
+			]
+		],
+		"Under_02": [
+			[
+				"Song_lever_side (1)",
+				"Song_lever_side (3)",
+				"Song_lever_side",
+				"Collapser Small Understore Grate (1)",
+				"Barrel Plat Lift",
+				"Barrel Plat Lift (4)",
+				"Barrel Plat Lift (6)",
+				"Barrel Plat Lift (5)"
+			],
+			[
+				"Barrel Plat Lift (2)",
+				"Barrel Plat Lift (7)",
+				"Barrel Plat Lift (3)",
+				"Barrel Plat Lift (1)",
+				"Barrel Plat Lift DROPPER Bottom",
+				"Grouped Remasker_Large",
+				"Barrel Plat Lift DROPPER",
+				"Barrel Plat Lift Thin (5)"
+			],
+			[
+				"Barrel Plat Lift Thin (4)",
+				"Barrel Plat Lift Thin (7)",
+				"Barrel Plat Lift Thin (3)",
+				"Barrel Plat Lift Thin (8)",
+				"Barrel Plat Lift Thin",
+				"Black_Thread_Core"
+			]
+		],
+		"Under_16": [
+			[
+				"Geo Small Persistent",
+				"Geo Small Persistent (2)",
+				"Breakable Wall",
+				"Collectable Item Pickup",
+				"Remasker New (1)"
+			]
+		],
+		"Under_03c": [
+			[
+				"Collapser Small Understore Grate"
+			]
+		],
+		"Under_03": [
+			[
+				"Breakable Wall",
+				"Collectable Item Pickup",
+				"Remasker New (1)"
+			]
+		],
+		"Under_04": [
+			[
+				"Breakable Wall",
+				"Collapser Small Understore Grate",
+				"Remasker New",
+				"Understore Big Plate Gate"
+			]
+		],
+		"Under_03d": [
+			[
+				"Remasker New (1)"
+			]
+		],
+		"Under_05": [
+			[
+				"Fall_platform_barrel wide",
+				"Song_lever_side",
+				"Collapser Small Understore Grate",
+				"cog_05_shortcut",
+				"Barrel Plat Lift (1)",
+				"Barrel Plat Lift",
+				"Barrel Plat Lift (2)",
+				"Barrel Plat Lift Thin"
+			],
+			[
+				"Barrel Plat Lift Thin (5)",
+				"Barrel Plat Lift Thin (2)",
+				"Barrel Plat Lift Thin (4)",
+				"Barrel Plat Lift Thin (1)",
+				"Barrel Plat Lift Thin (3)",
+				"Black_Thread_Core"
+			]
+		],
+		"Under_10": [
+			[
+				"Song_Gate_small",
+				"Song_lever_side",
+				"Battle Scene",
+				"Silk Spool",
+				"Remasker New"
+			]
+		],
+		"Under_08": [
+			[
+				"Secret Sound Region",
+				"Remasker New (3)",
+				"Disable Sound Trigger",
+				"Breakable Wall",
+				"One Way Wall",
+				"Collectable Item Pickup",
+				"Collectable Item Pickup (1)",
+				"Confessional NPC"
+			],
+			[
+				"lamp_pivot",
+				"Remasker New Sharp",
+				"Remasker New",
+				"Remasker New (1)",
+				"Remasker New Sharp Ultra",
+				"Remasker New Sharp Ultra (2)",
+				"Remasker New Sharp Ultra (1)"
+			]
+		],
+		"Under_07": [
+			[
+				"Remasker New Sharp"
+			]
+		],
+		"Under_11": [
+			[
+				"Pipe_Cog_Lever"
+			]
+		],
+		"Under_13": [
+			[
+				"Coal Bucket Plat (2)",
+				"Coal Bucket Plat (10)",
+				"Coal Bucket Plat (1)",
+				"Coal Bucket Plat (9)",
+				"Coal Bucket Plat (6)",
+				"Coal Bucket Plat (7)",
+				"Coal Bucket Plat (5)",
+				"Innerworks Trap Bridge Large"
+			],
+			[
+				"Remasker New (2)",
+				"Remasker New",
+				"Remasker New (1)",
+				"Remasker New (3)"
+			]
+		],
+		"Under_12": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Ward_01": [
+			[
+				"Breakable Wall",
+				"Understore Lever L Main",
+				"Remasker New Sharp (1)",
+				"Remasker New Sharp",
+				"Silk Spool",
+				"under_lift_large",
+				"Remasker New - Left",
+				"Remasker New - Right"
+			],
+			[
+				"Remasker New - bot",
+				"Remasker New - Centre",
+				"Remasker New Sharp Ultra",
+				"Remasker New Sharp Ultra (1)",
+				"Remasker New Sharp Ultra (2)"
+			]
+		],
+		"Ward_02": [
+			[
+				"Pipe_Vent_Hatch",
+				"Remasker New Sharp",
+				"lock_machine",
+				"Remasker New"
+			]
+		],
+		"Ward_02b": [
+			[
+				"Collectable Item Pickup",
+				"Remasker New Sharp",
+				"Remasker New",
+				"Remasker New (2)",
+				"Remasker New (1)",
+				"ward_junk_pile_break 4",
+				"ward_junk_pile_break 3",
+				"ward_junk_pile_break 2"
+			],
+			[
+				"ward_junk_pile_break 1"
+			]
+		],
+		"Ward_04": [
+			[
+				"Silk Grub Large Cocoon",
+				"Silk Grub Small Cocoon 1",
+				"Silk Grub Small Cocoon 2",
+				"Silk Grub Small Cocoon 1 (1)"
+			]
+		],
+		"Ward_03": [
+			[
+				"Remasker New Sharp",
+				"Remasker New",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Ward_06": [
+			[
+				"Breakable Wall",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Under_17": [
+			[
+				"Collectable Item Pickup",
+				"Shell Shard 03 Persistent",
+				"understore propeller",
+				"Remasker New (10)",
+				"Remasker New (6)",
+				"Remasker New (9)",
+				"Remasker New (2)",
+				"Remasker New (8)"
+			],
+			[
+				"Remasker New (3)",
+				"Remasker New (4)",
+				"Remasker New (7)",
+				"Silkfly Ambient Perched",
+				"Shell Shard 01 Persistent (1)",
+				"Shell Shard 01 Persistent",
+				"Architect Shrine Door",
+				"Tension Tone Single"
+			]
+		],
+		"Library_11b": [
+			[
+				"Memory Orb Challenge (1)",
+				"Barrel Plat Lift Thin (1)",
+				"Secret Mask New",
+				"Remasker New Sharp",
+				"Barrel Plat Lift (3)",
+				"Barrel Plat Lift (1)",
+				"Barrel Plat Lift (2)",
+				"Barrel Plat Lift (4)"
+			],
+			[
+				"Plug_Gate",
+				"Silk Spool",
+				"Barrel Plat Lift Thin",
+				"Barrel Plat Lift Thin (5)",
+				"Barrel Plat Lift Thin (4)",
+				"Barrel Plat Lift Thin (3)",
+				"plank_wall_cluster_metal (1)"
+			]
+		],
+		"Under_18": [
+			[
+				"Inverse Remasker",
+				"Collectable Item Pickup (1)",
+				"Battle Scene",
+				"Remasker New (1)",
+				"Barrel Plat Lift Thin",
+				"Black_Thread_Core"
+			]
+		],
+		"Under_19b": [
+			[
+				"tool_metal_deposit",
+				"Collectable Item Pickup - Tool Metal"
+			]
+		],
+		"Bone_East_LavaChallenge": [
+			[
+				"Heart Piece (1)",
+				"Inverse Remasker",
+				"Remasker New Sharp",
+				"explode_wall (2)",
+				"explode_wall (3)",
+				"explode_wall (1)"
+			]
+		],
+		"Song_04": [
+			[
+				"Breakable Wall",
+				"Collectable Item Pickup",
+				"Bot Blocker",
+				"Remasker New",
+				"Remasker New (1)",
+				"Wake Scene",
+				"Black_Thread_Core"
+			]
+		],
+		"Slab_02": [
+			[
+				"Collectable Item Pickup",
+				"slab_jail_lever"
+			]
+		],
+		"Slab_03": [
+			[
+				"One Way Wall",
+				"slab_jail_lever",
+				"slab_jail_lever (1)",
+				"door_slabCaged",
+				"Coral Crust Wall Tall (2)",
+				"Remasker New",
+				"Slab Lock (1)",
+				"Slab Lock (4)"
+			],
+			[
+				"Slab Lock (2)",
+				"Slab Lock",
+				"Slab Lock (3)",
+				"Remasker New Sharp Ultra",
+				"Secret Mask New",
+				"One Way Wall (1)"
+			]
+		],
+		"Slab_04": [
+			[
+				"Collectable Item Pickup",
+				"slab_cage_plat_thin_fall (2)"
+			]
+		],
+		"Slab_05": [
+			[
+				"Remasker New Sharp",
+				"Remasker New",
+				"Slab Lock (2)"
+			]
+		],
+		"Slab_06": [
+			[
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Geo Small Persistent"
+			]
+		],
+		"Peak_01": [
+			[
+				"One Way Wall Crystal",
+				"Silk Spool",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent (2)",
+				"Geo Small Persistent",
+				"Geo Small Persistent (3)",
+				"Remasker New",
+				"Remasker New (1)"
+			]
+		],
+		"Peak_02": [
+			[
+				"Crystal Break Chunk (12)",
+				"Crystal Break Chunk (11)"
+			]
+		],
+		"Peak_04d": [
+			[
+				"Remasker New Sharp Ultra",
+				"junk_pile_break_peak"
+			]
+		],
+		"Peak_04": [
+			[
+				"drop pillar_chunk (2)",
+				"drop pillar_chunk (1)"
+			]
+		],
+		"Bellway_Peak": [
+			[
+				"Breakable Wall",
+				"Song_lever_side",
+				"bell_toll_machine"
+			]
+		],
+		"Peak_05": [
+			[
+				"Song_lever_side"
+			]
+		],
+		"Slab_22": [
+			[
+				"Remasker New(Clone)",
+				"Collapser Small (1)",
+				"Collapser Small (2)",
+				"slab_jail_lever",
+				"Collectable Item Pickup",
+				"Remasker New"
+			]
+		],
+		"Peak_04c": [
+			[
+				"Heart Piece",
+				"One Way Wall Crystal"
+			]
+		],
+		"Peak_05c": [
+			[
+				"Crystal Break Chunk (10)",
+				"Crystal Break Chunk (8)",
+				"Crystal Break Chunk (12)",
+				"Crystal Break Chunk (9)",
+				"Crystal Break Chunk (7)",
+				"Crystal Break Chunk (11)",
+				"Crystal Break Chunk (6)",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Peak_05e": [
+			[
+				"Remasker New Sharp",
+				"drop pillar_chunk"
+			]
+		],
+		"Peak_07": [
+			[
+				"sack_multi_breakable (2)",
+				"Secret Mask New",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Peak_08b": [
+			[
+				"Remasker New"
+			]
+		],
+		"Peak_Mask_Maker": [
+			[
+				"Peak Mask Maker"
+			]
+		],
+		"Slab_13": [
+			[
+				"Remasker New Sharp",
+				"Slab_vent_mask"
+			]
+		],
+		"Song_26": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Song_15": [
+			[
+				"Remasker New Sharp",
+				"Remasker New"
+			]
+		],
+		"Hang_06": [
+			[
+				"Bot Blocker",
+				"bank_door"
+			]
+		],
+		"Song_17": [
+			[
+				"Chest",
+				"Generic Pickup(Clone)"
+			]
+		],
+		"Hang_02": [
+			[
+				"Breakable Window (1)"
+			]
+		],
+		"Hang_03": [
+			[
+				"Breakable Window (1)"
+			]
+		],
+		"Hang_03_top": [
+			[
+				"Breakable Window (1)",
+				"Silk Spool",
+				"lamp_hang_top"
+			]
+		],
+		"Song_09": [
+			[
+				"Heart Piece",
+				"Breakable Wall Ruin Lift",
+				"Collectable Item Pickup",
+				"Secret Mask New",
+				"Remasker New (1)",
+				"Remasker New (2)",
+				"Remasker New (4)",
+				"Remasker New"
+			],
+			[
+				"Remasker New (3)",
+				"Hornet_pressure_plate_small_persistent",
+				"Remasker New Sharp Ultra (3)",
+				"Remasker New Sharp Ultra (1)",
+				"Remasker New Sharp Ultra",
+				"Remasker New Sharp Ultra (2)"
+			]
+		],
+		"Song_09b": [
+			[
+				"Inverse Remasker (1)",
+				"Inverse Remasker",
+				"Song_lever_side (1)",
+				"Song_lever_side",
+				"thread_memory",
+				"Grouped Remasker_Large",
+				"Remasker New (2)",
+				"Remasker New (1)"
+			],
+			[
+				"Remasker New",
+				"Silk Grub Large Cocoon",
+				"Silk Grub Small Cocoon 2",
+				"Breakable Restaurant Sack Tall Variant",
+				"Breakable Restaurant Sack Small (3)",
+				"Breakable Restaurant Sack Small",
+				"Breakable Restaurant Sack Small (1)"
+			]
+		],
+		"Cog_Dancers": [
+			[
+				"cog_lever",
+				"Green Prince Kneel",
+				"slide_gate_ring"
+			]
+		],
+		"Ant_08": [
+			[
+				"Bone Hunter Throw",
+				"Collectable Item Pickup"
+			]
+		],
+		"Under_14": [
+			[
+				"Breakable Wall (1)",
+				"Remasker New Sharp"
+			]
+		],
+		"Song_10": [
+			[
+				"Inverse Remasker",
+				"Breakable Wall",
+				"Collapser Small",
+				"Breakable Wall  second",
+				"Song_Gate_small (1)",
+				"Song_Gate_small",
+				"Song_lever_side",
+				"Chain Platform Breaker"
+			],
+			[
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Remasker New (1)",
+				"Remasker New",
+				"Remasker New (2)",
+				"Remasker New (4)",
+				"Remasker New (3)",
+				"Remasker New (5)"
+			],
+			[
+				"Sherma Citadel Spa NPC"
+			]
+		],
+		"Song_03": [
+			[
+				"Chest",
+				"Remasker New (1)",
+				"Generic Pickup(Clone)"
+			]
+		],
+		"Greymoor_11": [
+			[
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent",
+				"propeller (1)",
+				"propeller"
+			]
+		],
+		"Wisp_04": [
+			[
+				"Breakable Hang Sack 3",
+				"craw_court_summons_pin"
+			]
+		],
+		"Wisp_08": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Wisp_02": [
+			[
+				"Breakable Hang Sack 3 (1)",
+				"plank_wall_cluster_swamp",
+				"Farmer Wisp Immolater Variant",
+				"Farmer Wisp Immolater Variant (3)",
+				"Farmer Wisp Immolater Variant (2)",
+				"Collectable Item Pickup"
+			]
+		],
+		"Wisp_07": [
+			[
+				"Heart Piece",
+				"Breakable Wall",
+				"Remasker New",
+				"Remasker New (1)",
+				"Farmer Wisp Immolater Variant (1)",
+				"Farmer Wisp Immolater Variant"
+			]
+		],
+		"Coral_19": [
+			[
+				"thread_memory",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent (2)",
+				"Geo Small Persistent",
+				"Silkfly Ambient Perched (1)",
+				"Silkfly Ambient Perched",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Coral_02": [
+			[
+				"bell_toll_machine",
+				"Song_lever_side",
+				"Collectable Item Pickup (1)",
+				"Remasker New (1)",
+				"Remasker New",
+				"Garmond Fighter"
+			]
+		],
+		"Coral_03": [
+			[
+				"Song_lever_side",
+				"Collectable Item Pickup",
+				"song_bridge_pole_large (2)",
+				"song_bridge_pole_large (1)"
+			]
+		],
+		"Coral_12": [
+			[
+				"Breakable Wall",
+				"Black_Thread_Core"
+			]
+		],
+		"Bellway_08": [
+			[
+				"bell_toll_machine",
+				"song_bridge_pole_large (2)"
+			]
+		],
+		"Coral_35": [
+			[
+				"Breakable Wall"
+			]
+		],
+		"Coral_35b": [
+			[
+				"Stalactite Group Bottom",
+				"Stalactite Group Top",
+				"Coral Crust Wall Tall (1)",
+				"Coral Crust Wall Tall (2)",
+				"Remasker New Sharp Ultra 2",
+				"Remasker New Sharp Ultra 1",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Coral_42": [
+			[
+				"Thief NPC Shop"
+			]
+		],
+		"Coral_32": [
+			[
+				"Coral Crust Wall Tall",
+				"Remasker New",
+				"Remasker New Sharp Ultra",
+				"Remasker New Sharp Ultra (1)",
+				"Remasker New Sharp Ultra (2)",
+				"tool_metal_deposit",
+				"Black_Thread_Core",
+				"Collectable Item Pickup - Tool Metal"
+			]
+		],
+		"Arborium_01": [
+			[
+				"Moss Vine Cluster",
+				"Breakable Window Arborium",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Arborium_04": [
+			[
+				"Moss Vine Cluster (2)",
+				"Moss Vine Cluster (1)",
+				"Moss Vine Cluster",
+				"Remasker New (3)",
+				"Remasker New (1)",
+				"moss_berry_fruit"
+			]
+		],
+		"Arborium_02": [
+			[
+				"Rhino"
+			]
+		],
+		"Cog_04": [
+			[
+				"cog_lever",
+				"cog_lever (1)",
+				"Black_Thread_Core"
+			]
+		],
+		"Cog_Bench": [
+			[
+				"cog_lever",
+				"Hornet_pressure_plate_small_persistent"
+			]
+		],
+		"Cog_05": [
+			[
+				"Remasker New Sharp",
+				"Battle Scene"
+			]
+		],
+		"Cog_10": [
+			[
+				"Song Knight Tube",
+				"Collectable Item Pickup",
+				"Silkfly Ambient (2)",
+				"Silkfly Ambient",
+				"Silkfly Ambient (1)",
+				"cog_junk_pile_break",
+				"cog_junk_pile_break (1)"
+			]
+		],
+		"Cog_07": [
+			[
+				"cog_lever",
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Silk Spool",
+				"Battle Scene",
+				"Collectable Item Pickup"
+			]
+		],
+		"Cog_06": [
+			[
+				"cog_lever"
+			]
+		],
+		"Cog_08": [
+			[
+				"cog_lever"
+			]
+		],
+		"Library_01": [
+			[
+				"Breakable Wall"
+			]
+		],
+		"Library_08": [
+			[
+				"Collapser Small",
+				"Collectable Item Pickup Librarian",
+				"Collectable Item Pickup",
+				"Remasker New",
+				"Remasker New Inverted",
+				"Remasker New (2)"
+			]
+		],
+		"Coral_Judge_Arena": [
+			[
+				"song_bridge_pole_large (2)",
+				"song_bridge_pole_large",
+				"song_bridge_pole_large (1)",
+				"SC_0058_sc_floor_03 (8)",
+				"SC_0058_sc_floor_03 (5)",
+				"SC_0058_sc_floor_03 (3)",
+				"SC_0058_sc_floor_03 (1)",
+				"SC_0058_sc_floor_03 (2)"
+			],
+			[
+				"SC_0058_sc_floor_03 (6)",
+				"SC_0058_sc_floor_03 (7)",
+				"SC_0058_sc_floor_03 (4)",
+				"SC_0059_sc_floor_02 (3)",
+				"SC_0059_sc_floor_02 (2)",
+				"SC_0059_sc_floor_02",
+				"SC_0059_sc_floor_02 (4)",
+				"SC_0059_sc_floor_02 (1)"
+			],
+			[
+				"SC_0060_sc_post_01 (35)",
+				"SC_0060_sc_post_01 (36)",
+				"SC_0060_sc_floor_01 (15)",
+				"SC_0060_sc_post_01 (12)",
+				"SC_0060_sc_floor_01 (39)",
+				"SC_0060_sc_floor_01 (40)",
+				"SC_0060_sc_floor_01 (26)",
+				"SC_0060_sc_floor_01 (21)"
+			],
+			[
+				"SC_0060_sc_floor_01 (42)",
+				"SC_0060_sc_post_01 (38)",
+				"SC_0060_sc_floor_01 (4)",
+				"SC_0060_sc_floor_01",
+				"SC_0060_sc_floor_01 (14)",
+				"SC_0060_sc_post_01 (37)",
+				"SC_0060_sc_floor_01 (6)",
+				"SC_0060_sc_post_01 (31)"
+			],
+			[
+				"SC_0060_sc_floor_01 (1)",
+				"SC_0060_sc_floor_01 (2)",
+				"SC_0060_sc_floor_01 (18)",
+				"SC_0060_sc_floor_01 (41)",
+				"SC_0060_sc_post_01 (43)",
+				"SC_0060_sc_floor_01 (5)",
+				"SC_0060_sc_floor_01 (3)",
+				"SC_0060_sc_floor_01 (23)"
+			],
+			[
+				"SC_0060_sc_floor_01 (11)",
+				"Caravan Troup Member Short Pot"
+			]
+		],
+		"Coral_10": [
+			[
+				"Coral10rightsidegate",
+				"Seth Stand NPC",
+				"Silkfly Ambient Perched (2)",
+				"Silkfly Ambient Perched",
+				"Silkfly Ambient (1)",
+				"Silkfly Ambient Perched (3)",
+				"Silkfly Ambient (3)",
+				"Silkfly Ambient (4)"
+			],
+			[
+				"Silkfly Ambient (6)",
+				"Silkfly Ambient Perched (1)"
+			]
+		],
+		"Arborium_05": [
+			[
+				"Collectable Item Pickup",
+				"Coral Crust Wall Sphere"
+			]
+		],
+		"Aqueduct_01": [
+			[
+				"Breakable Wall Aqueduct Start",
+				"Collectable Item Pickup",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Arborium_11": [
+			[
+				"Collectable Item Pickup",
+				"Grouped Remasker_Large"
+			]
+		],
+		"Arborium_06": [
+			[
+				"Coral Crust Wall Tall",
+				"Crust Wall",
+				"Coral Crust Wall Tall (1)",
+				"Coral Crust Wall Tall (3)",
+				"Coral Crust Wall Mid (1)",
+				"Coral Crust Wall Small (1)",
+				"Coral Crust Wall Small"
+			]
+		],
+		"Arborium_10": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Arborium_09": [
+			[
+				"Moss Vine Cluster",
+				"Moss Vine Cluster (1)",
+				"Grouped Remasker_Large (1)",
+				"Grouped Remasker_Large (2)",
+				"Silk Spool",
+				"Remasker New (3)",
+				"Breakable Window"
+			]
+		],
+		"Arborium_07": [
+			[
+				"Breakable Wall",
+				"Collectable Item Pickup Materium",
+				"Remasker New Sharp",
+				"Grouped Remasker_Large",
+				"Battle Scene",
+				"Remasker New (1)"
+			]
+		],
+		"Arborium_08": [
+			[
+				"One Way Wall",
+				"Remasker New (1)",
+				"Remasker New Inverse"
+			]
+		],
+		"Room_Pinstress": [
+			[
+				"Pinstress Interior Ground Sit",
+				"Pinstress Interior NPC"
+			]
+		],
+		"Coral_23": [
+			[
+				"Breakable Wall",
+				"Collectable Item Pickup",
+				"Remasker New",
+				"Remasker New (1)"
+			]
+		],
+		"Coral_24": [
+			[
+				"Coral Crust Mask",
+				"Coral Crust Wall Tall (3)",
+				"Coral Crust Wall Tall",
+				"Coral Crust Wall Tall (5)",
+				"Coral Crust Wall Tall (1)",
+				"Coral Crust Wall Tall (4)"
+			]
+		],
+		"Coral_40": [
+			[
+				"Mapper Sit NPC"
+			]
+		],
+		"Coral_26": [
+			[
+				"Coral Crust Wall Tall"
+			]
+		],
+		"Coral_38": [
+			[
+				"song_bridge_pole_large (1)",
+				"song_bridge_pole_large (4)",
+				"song_bridge_pole_large (5)",
+				"song_bridge_pole_large (2)",
+				"song_bridge_pole_large (8)",
+				"song_bridge_pole_large (7)",
+				"song_bridge_pole_large (9)",
+				"Coral Crust Wall Tall"
+			],
+			[
+				"Coral Crust Wall Mid",
+				"Coral Crust Wall Tall (1)",
+				"Coral Crust Wall Tall (2)",
+				"Hornet_cage_rect_lift",
+				"Coral Crust Wall Sphere",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Bellshrine_Coral": [
+			[
+				"Collectable Item Pickup",
+				"Coral Crust Wall Sphere (4)",
+				"Coral Crust Wall Sphere (2)",
+				"Coral Crust Wall Sphere (3)"
+			]
+		],
+		"Coral_44": [
+			[
+				"Coral Crust Wall Mid (1)",
+				"Coral Crust Wall Mid",
+				"Secret Mask New Sharp Ultra",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Coral_41": [
+			[
+				"Collectable Item Pickup",
+				"Coral Crust Wall Mid (39)",
+				"Coral Crust Wall Mid (31)",
+				"Coral Crust Wall Mid (15)",
+				"Coral Crust Wall Tall (1)",
+				"Coral Crust Wall Mid (37)",
+				"Coral Crust Wall Mid (28)",
+				"Coral Crust Wall Mid (13)"
+			],
+			[
+				"Coral Crust Wall Tall (3)",
+				"Coral Crust Wall Mid (27)",
+				"Coral Crust Wall Tall (7)",
+				"Coral Crust Wall Mid (38)",
+				"Coral Crust Wall Mid (20)",
+				"Coral Crust Wall Mid (40)",
+				"Coral Crust Wall Mid (26)",
+				"Coral Crust Wall Mid (21)"
+			],
+			[
+				"Coral Crust Wall Mid (11)",
+				"Coral Crust Wall Mid (46)",
+				"Coral Crust Wall Tall (6)",
+				"Coral Crust Wall Mid (3)",
+				"Coral Crust Wall Mid (4)",
+				"Coral Crust Wall Tall",
+				"Coral Crust Wall Mid (16)",
+				"Coral Crust Wall Mid (36)"
+			],
+			[
+				"Coral Crust Wall Mid (10)",
+				"Coral Crust Wall Mid (8)",
+				"Coral Crust Wall Mid (2)",
+				"Coral Crust Wall Mid (9)",
+				"Coral Crust Wall Mid (45)",
+				"Coral Crust Wall Mid (23)",
+				"Coral Crust Wall Mid (1)",
+				"Coral Crust Wall Mid"
+			],
+			[
+				"Coral Crust Wall Mid (33)",
+				"Coral Crust Wall Mid (44)",
+				"Coral Crust Wall Mid (12)",
+				"Coral Crust Wall Mid (7)",
+				"Coral Crust Wall Mid (35)",
+				"Coral Crust Wall Mid (41)",
+				"Coral Crust Wall Mid (24)",
+				"Remasker New"
+			],
+			[
+				"Coral Crust Wall Small",
+				"Coral Crust Wall Sphere (5)",
+				"Coral Crust Wall Sphere (6)",
+				"Coral Crust Wall Sphere (9)",
+				"Coral Crust Wall Sphere (4)",
+				"Coral Crust Wall Sphere",
+				"Coral Crust Wall Sphere (3)",
+				"Coral Crust Wall Sphere (1)"
+			],
+			[
+				"Coral Crust Wall Sphere (7)"
+			]
+		],
+		"Dock_02": [
+			[
+				"One Way Wall",
+				"Collectable Item Pickup",
+				"Coal Bucket Plat (7)",
+				"Remasker New (1)",
+				"Remasker New"
+			]
+		],
+		"Dock_02b": [
+			[
+				"Song_lever_side",
+				"thread_memory",
+				"Shell Shard 02 Persistent",
+				"Shell Shard 03 Persistent",
+				"Remasker New",
+				"Remasker New (2)",
+				"Remasker New (1)",
+				"Remasker New Sharp Ultra"
+			],
+			[
+				"Remasker New Sharp Ultra (1)"
+			]
+		],
+		"Dock_03": [
+			[
+				"One Way Wall",
+				"Breakable Wall_Silhouette",
+				"Song_Gate_small",
+				"Song_lever_side",
+				"Secret Mask New Gate",
+				"Harpoon Ring Pull Switch",
+				"City Shard Chest",
+				"Remasker New Sharp"
+			],
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Dock_03c": [
+			[
+				"Breakable Wall_Silhouette",
+				"explode_wall (5)",
+				"Remasker New Sharp (3)",
+				"Remasker New Sharp (1)",
+				"Remasker New Sharp (2)",
+				"Remasker New Sharp",
+				"Battle Scene",
+				"Silk Spool"
+			],
+			[
+				"Remasker New",
+				"explode_wall",
+				"explode_wall (3)",
+				"explode_wall (2)",
+				"explode_wall (4)",
+				"Breakable Window",
+				"Black_Thread_Core"
+			]
+		],
+		"Dock_03d": [
+			[
+				"Breakable Wall_Silhouette",
+				"Breakable Window"
+			]
+		],
+		"Dock_15": [
+			[
+				"Breakable Wall"
+			]
+		],
+		"Dock_14": [
+			[
+				"Silk Grub Small Cocoon 2",
+				"Silk Grub Large Cocoon",
+				"Remasker New"
+			]
+		],
+		"Dock_11": [
+			[
+				"Memory Orb Challenge",
+				"Song_lever_side (1)",
+				"Song_lever_side",
+				"Song_lever_side (2)",
+				"Collectable Item Pickup",
+				"Remasker New Sharp",
+				"Remasker New (2)",
+				"Remasker New"
+			],
+			[
+				"Remasker New (1)",
+				"explode_wall",
+				"explode_wall (2)",
+				"explode_wall (4)",
+				"explode_wall (5)"
+			]
+		],
+		"Dock_13": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Dock_12": [
+			[
+				"Remasker New Sharp Ultra",
+				"Diving Bell Door"
+			]
+		],
+		"Coral_28": [
+			[
+				"Coral_gate_large (1)",
+				"Coral_gate_large",
+				"Remasker New Sharp Ultra (1)",
+				"Remasker New Sharp Ultra",
+				"Tension Tone Single"
+			]
+		],
+		"Coral_Tower_01": [
+			[
+				"Remasker New Sharp Ultra",
+				"Tension Tone Single",
+				"thread_memory",
+				"Collectable Item Pickup Heart"
+			]
+		],
+		"Cog_09": [
+			[
+				"Cog_Choir_Cylinder",
+				"Cog_Choir_Cylinder (1)",
+				"Cog_Choir_Cylinder (2)",
+				"Cog_Choir_Cylinder (3)"
+			]
+		],
+		"Hang_15": [
+			[
+				"Breakable Window (1)"
+			]
+		],
+		"Hang_13": [
+			[
+				"Breakable Window (1)"
+			]
+		],
+		"Hang_08": [
+			[
+				"Chest",
+				"Breakable Wall",
+				"Breakable Window (1)",
+				"slide_gate_ring (3)",
+				"slide_gate_ring",
+				"slide_gate_ring (2)",
+				"Remasker New"
+			]
+		],
+		"Hang_09": [
+			[
+				"Breakable Window (1)",
+				"Remasker New (2)"
+			]
+		],
+		"Hang_10": [
+			[
+				"Breakable Window (1)",
+				"Breakable Wall (1)",
+				"Collectable Item Pickup"
+			]
+		],
+		"Hang_16": [
+			[
+				"Collectable Item Pickup",
+				"Remasker New Sharp"
+			]
+		],
+		"Hang_04": [
+			[
+				"Breakable Window (1)",
+				"Start Range",
+				"smash_floor (10)",
+				"smash_floor (7)",
+				"smash_floor (6)",
+				"smash_floor",
+				"smash_floor (5)",
+				"smash_floor (3)"
+			],
+			[
+				"smash_floor (4)",
+				"smash_floor (14)",
+				"smash_floor (8)",
+				"smash_floor (9)",
+				"smash_floor (12)",
+				"smash_floor (2)",
+				"smash_floor (11)",
+				"smash_floor (1)"
+			],
+			[
+				"smash_floor (13)",
+				"City Merchant Scavenge Generic"
+			]
+		],
+		"Library_14": [
+			[
+				"Silk Grub Small Cocoon 2",
+				"Silk Grub Small Cocoon 1",
+				"Silk Grub Large Cocoon",
+				"Breakable Wall",
+				"Remasker New"
+			]
+		],
+		"Library_05": [
+			[
+				"library_glass_heart_piece",
+				"attic_ladder",
+				"Remasker New",
+				"Remasker New Sharp Ultra",
+				"Heart Piece"
+			]
+		],
+		"Library_06": [
+			[
+				"Remasker New",
+				"Black_Thread_Core_Citadel"
+			]
+		],
+		"Library_13b": [
+			[
+				"Remasker New Sharp Ultra (1)",
+				"Collectable Item Pickup - Quill Red"
+			]
+		],
+		"Library_16": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Library_12b": [
+			[
+				"Shell Shard 02 Persistent",
+				"Shell Shard 03 Persistent",
+				"thread_memory"
+			]
+		],
+		"Library_10": [
+			[
+				"Hornet_pressure_plate_small_persistent",
+				"Breakable Wall",
+				"Collectable Item Pickup - Melody",
+				"thread_memory",
+				"Remasker New",
+				"Remasker New (1)",
+				"Silkfly Ambient Perched (1)",
+				"Silkfly Ambient Perched"
+			],
+			[
+				"Tension Tone Single"
+			]
+		],
+		"Ward_09": [
+			[
+				"ward_junk_pile_break"
+			]
+		],
+		"Under_20": [
+			[
+				"Breakable Wall",
+				"thread_memory",
+				"Silk Grub Small Cocoon 1",
+				"Silk Grub Small Cocoon 1 (1)",
+				"Silk Grub Large Cocoon",
+				"Silk Grub Small Cocoon 2",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Hang_06_bank": [
+			[
+				"Breakable Wall",
+				"Inverse Remasker",
+				"Breakable Wall (1)",
+				"Song_lever_side",
+				"Secret Mask New",
+				"Remasker New Sharp (2)",
+				"Remasker New Sharp",
+				"Geo Small Persistent (11)"
+			],
+			[
+				"Geo Small Persistent (3)",
+				"Geo Small Persistent (4)",
+				"Geo Small Persistent (1)",
+				"Geo Small Persistent (5)",
+				"Geo Small Persistent (10)",
+				"Remasker New Sharp Ultra",
+				"Remasker New Sharp Ultra (1)",
+				"Geo Small Persistent (7)"
+			],
+			[
+				"Geo Small Persistent",
+				"Geo Small Persistent (6)",
+				"Chest (2)",
+				"Chest",
+				"Chest (1)",
+				"Collectable Item Pickup"
+			]
+		],
+		"Aqueduct_08": [
+			[
+				"Breakable Wall_Silhouette",
+				"Remasker New",
+				"Remasker New (1)"
+			]
+		],
+		"Aqueduct_02": [
+			[
+				"Breakable Wall",
+				"Remasker New"
+			]
+		],
+		"Bellway_Aqueduct": [
+			[
+				"Collapser Small",
+				"bell_toll_machine",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Aqueduct_07": [
+			[
+				"thread_memory",
+				"Remasker New",
+				"Remasker New (1)"
+			]
+		],
+		"Aqueduct_03": [
+			[
+				"Breakable Wall",
+				"Remasker New Sharp"
+			]
+		],
+		"Aqueduct_04": [
+			[
+				"drop_planks",
+				"One Way Wall",
+				"Breakable Wall bot mid",
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Aueduct_04": [
+			[
+				"Collectable Item Pickup Slab Key"
+			]
+		],
+		"Room_Huntress": [
+			[
+				"Huntress",
+				"Huntress Runt"
+			]
+		],
+		"Aqueduct_05": [
+			[
+				"Remasker New Sharp Ultra",
+				"tool_metal_deposit",
+				"Hornet Hint Dlg",
+				"Collectable Item Pickup - Tool Metal",
+				"Caravan Troup Member Short Pot",
+				"Caravan Troupe Leader Fleatopia NPC",
+				"Caravan Troupe Leader Festival Intro",
+				"Collectable Item Pickup Reward 3"
+			]
+		],
+		"Slab_07": [
+			[
+				"Collapser Small",
+				"Remasker New Sharp Ultra",
+				"Remasker New Sharp Ultra(Clone)",
+				"Coral Crust Wall Mid (9)",
+				"Coral Crust Wall Tall (2)",
+				"Coral Crust Wall Tall",
+				"Coral Crust Wall Mid (6)",
+				"Coral Crust Wall Mid (5)"
+			],
+			[
+				"Coral Crust Wall Mid (3)",
+				"Coral Crust Wall Tall (1)",
+				"Coral Crust Wall Mid (7)"
+			]
+		],
+		"Slab_12": [
+			[
+				"Collapser Small (1)",
+				"Collapser Small",
+				"Collectable Item Pickup",
+				"thread_memory",
+				"Coral Crust Wall Mid",
+				"Coral Crust Wall Mid (1)",
+				"Coral Crust Wall Tall (1)",
+				"Coral Crust Wall Tall"
+			],
+			[
+				"Coral Crust Wall Tall (2)",
+				"Coral Crust Wall Sphere"
+			]
+		],
+		"Slab_08": [
+			[
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Slab_Cell_Quiet": [
+			[
+				"Breakable Wall",
+				"Collectable Item Pickup"
+			]
+		],
+		"Slab_23": [
+			[
+				"One Way Wall",
+				"Battle Scene",
+				"Slab Lock L"
+			]
+		],
+		"Slab_20": [
+			[
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Slab_14": [
+			[
+				"Thief NPC Slab Hopaway",
+				"slab_item_chain",
+				"Grouped Remasker_Large",
+				"Slab Lock R",
+				"Slab Lock L",
+				"Collectable Item Pickup (1)"
+			]
+		],
+		"Slab_15": [
+			[
+				"Breakable Wall Waterways",
+				"Secret Mask New",
+				"Remasker New Sharp",
+				"Slab_vent_mask",
+				"Slab Lock (2)",
+				"Slab Lock (1)"
+			]
+		],
+		"Slab_16": [
+			[
+				"Slab_vent_mask",
+				"Start Inspect",
+				"Remasker New Sharp",
+				"Remasker New",
+				"Remasker New (1)",
+				"Slab Lock (2)",
+				"Slab Lock (1)",
+				"Collectable Item Pickup"
+			],
+			[
+				"Collectable Item Pickup Return",
+				"Jail Gate Door - Persistent"
+			]
+		],
+		"Slab_21": [
+			[
+				"Breakable Wall",
+				"Slab Lock"
+			]
+		],
+		"Slab_18": [
+			[
+				"One Way Wall",
+				"Collectable Item Pickup"
+			]
+		],
+		"Slab_17": [
+			[
+				"Heart Piece",
+				"slab_cage_plat_thin_fall (1)"
+			]
+		],
+		"Slab_19b": [
+			[
+				"City Shard Chest",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Slab_10c": [
+			[
+				"slab_break_weaver_gate_ring",
+				"slab_break_weaver_gate_ring (2)",
+				"slab_break_weaver_gate_ring (3)",
+				"slab_break_weaver_gate_ring (1)"
+			]
+		],
+		"Memory_Silk_Heart_LaceTower": [
+			[
+				"glow_rim_Remasker"
+			]
+		],
+		"Cradle_01": [
+			[
+				"Inverse Remasker",
+				"Silkfly Ambient",
+				"Silkfly Ambient (6)",
+				"Silkfly Ambient (1)",
+				"Silkfly Ambient Perched (1)",
+				"Silkfly Ambient Perched",
+				"Silkfly Ambient Perched (2)",
+				"Silkfly Ambient (5)"
+			],
+			[
+				"Silkfly Ambient Perched (3)"
+			]
+		],
+		"Cradle_02": [
+			[
+				"breakable blocker struts"
+			]
+		],
+		"Cradle_02b": [
+			[
+				"thread_memory"
+			]
+		],
+		"Cradle_03": [
+			[
+				"cradle_spike_plat (9)",
+				"cradle_spike_plat (8)",
+				"cradle_spike_plat (10)",
+				"cradle_plat (1)",
+				"cradle_plat (7)",
+				"cradle_plat (8)",
+				"cradle_plat (6)",
+				"cradle_plat"
+			],
+			[
+				"glow_rim_Remasker",
+				"Silkfly Ambient Perched (2)",
+				"Silkfly Ambient (4)",
+				"Silkfly Ambient Perched (4)",
+				"Silkfly Ambient Perched",
+				"Silkfly Ambient Perched (3)",
+				"Silkfly Ambient",
+				"Silkfly Ambient Perched (1)"
+			],
+			[
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Aqueduct_06": [
+			[
+				"Secret Sound Region (1)",
+				"Secret Sound Region",
+				"thread_memory",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Hang_17b": [
+			[
+				"Silkfly Ambient (1)",
+				"Silkfly Ambient (2)",
+				"Silkfly Ambient",
+				"Silkfly Ambient Perched"
+			]
+		],
+		"Wisp_05": [
+			[
+				"Breakable Wall",
+				"thread_memory",
+				"tool_metal_deposit",
+				"Collectable Item Pickup - Tool Metal"
+			]
+		],
+		"Wisp_09": [
+			[
+				"Breakable Wall (1)",
+				"Breakable Wall"
+			]
+		],
+		"Under_23": [
+			[
+				"Song_lever_side",
+				"Remasker New Sharp",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Dust_Maze_08_completed": [
+			[
+				"Plat Collider"
+			]
+		],
+		"Library_07": [
+			[
+				"GG_Breakable_Junk_Pile_gold (1)",
+				"GG_Breakable_Junk_Pile_gold",
+				"Plate",
+				"slide_gate_ring",
+				"understore propeller",
+				"Remasker New",
+				"Remasker New (1)"
+			]
+		],
+		"Shadow_22": [
+			[
+				"Remasker New",
+				"Remasker New (3)",
+				"Remasker New (1)",
+				"Remasker New (2)"
+			]
+		],
+		"Shadow_20": [
+			[
+				"Breakable Wall",
+				"Secret Sound Region_right_Bot",
+				"Collectable Item Pickup (1)",
+				"Collectable Item Pickup",
+				"Swamp Muckman FG",
+				"Remasker New Sharp",
+				"Remasker New Sharp (2)",
+				"Remasker New Sharp (1)"
+			],
+			[
+				"Witch_Cluster_Vine (1)",
+				"Witch_Cluster_Vine (2)",
+				"Witch_Cluster_Vine",
+				"plank_wall_cluster",
+				"drop_planks_horizontal",
+				"Remasker New",
+				"Remasker New (2)",
+				"Remasker New (3)"
+			],
+			[
+				"Remasker New (1)",
+				"Remasker New Sharp Ultra (1)"
+			]
+		],
+		"Shadow_04b": [
+			[
+				"Swamp Muckman FG"
+			]
+		],
+		"Bellway_Shadow": [
+			[
+				"bell_toll_machine",
+				"craw_court_summons_pin"
+			]
+		],
+		"Shadow_02": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Shadow_23": [
+			[
+				"Mapper Sit NPC",
+				"Rosary Pilgrim"
+			]
+		],
+		"Shadow_21": [
+			[
+				"cage_main",
+				"cage_tentacle_top",
+				"tentacle_round",
+				"fly corpse",
+				"tentacle_straight"
+			]
+		],
+		"Shadow_09": [
+			[
+				"Breakable Wall",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Shadow_26": [
+			[
+				"gloom_lift_destroy"
+			]
+		],
+		"Shadow_11": [
+			[
+				"plank_wall_cluster_swamp (1)",
+				"plank_wall_cluster_swamp",
+				"plank_wall_cluster_swamp (2)",
+				"stake_trap_spikeball_loose (1)",
+				"stake_trap_spikeball_loose (2)",
+				"stake_trap_spikeball_loose (3)",
+				"stake_trap_spikeball_loose",
+				"stake_trap_spikeball_loose (4)"
+			]
+		],
+		"Shadow_13": [
+			[
+				"Heart Piece",
+				"Collapser Small"
+			]
+		],
+		"Shadow_01": [
+			[
+				"Inverse Remasker",
+				"Breakable Wall",
+				"drop_planks",
+				"Remasker New"
+			]
+		],
+		"Shadow_16": [
+			[
+				"thread_memory",
+				"Tension Tone Single"
+			]
+		],
+		"Shadow_15": [
+			[
+				"Fake Bench Collapser",
+				"Remasker New"
+			]
+		],
+		"Shadow_10": [
+			[
+				"Breakable Wall",
+				"Swamp Muckman FG",
+				"Remasker New",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Shadow_19": [
+			[
+				"Remasker New Sharp",
+				"Remasker New"
+			]
+		],
+		"Shadow_18": [
+			[
+				"Remasker",
+				"Grouped Remasker_Large"
+			]
+		],
+		"Shadow_08": [
+			[
+				"BreakableWallSwampBenchShortcut",
+				"Breakable Hang Sack 2 (1)",
+				"Breakable Hang Sack 2 (3)",
+				"Breakable Hang Sack 2 (4)",
+				"Breakable Hang Sack 2 (2)",
+				"Breakable Hang Sack 2",
+				"Breakable Wall",
+				"Remasker New Sharp Ultra"
+			],
+			[
+				"Remasker New Sharp Ultra (1)",
+				"Tension Tone Single"
+			]
+		],
+		"Shadow_27": [
+			[
+				"Breakable Hang Sack 2",
+				"Breakable Hang Sack Memory Locket",
+				"Sack Corpse Pickup"
+			]
+		],
+		"Shadow_Bilehaven_Room": [
+			[
+				"Collectable Item Pickup (1)"
+			]
+		],
+		"Library_09": [
+			[
+				"Song_lever_side",
+				"Collectable Item Pickup (1)",
+				"Remasker New Sharp (1)",
+				"Remasker New Sharp (3)",
+				"Remasker New Sharp"
+			]
+		],
+		"Shellwood_25": [
+			[
+				"Collectable Item Pickup (1)",
+				"Shellwood Twig Wall (1)",
+				"Shellwood Twig Wall (2)",
+				"Shellwood Twig Wall (4)",
+				"Shellwood Twig Wall (3)",
+				"Shellwood Twig Wall",
+				"Witch_Cluster_Vine",
+				"Witch_Cluster_Vine (2)"
+			],
+			[
+				"Witch_Cluster_Vine (1)"
+			]
+		],
+		"Room_Witch": [
+			[
+				"vine_3",
+				"head",
+				"body lower",
+				"vine_2",
+				"vine_1",
+				"vine_4",
+				"body top"
+			]
+		],
+		"Weave_14": [
+			[
+				"thread_memory"
+			]
+		],
+		"Song_Tower_Destroyed": [
+			[
+				"Collapser Small"
+			]
+		],
+		"Cog_09_Destroyed": [
+			[
+				"Weakness Cog Drop Scene"
+			]
+		],
+		"Cog_10_Destroyed": [
+			[
+				"Wake Scene",
+				"Secret Mask New",
+				"plank_wall_cluster_metal",
+				"Pipe_Vent_Hatch Broken",
+				"plank_wall_cluster_metal (2)",
+				"plank_wall_cluster_metal (1)"
+			]
+		],
+		"Song_Enclave_Tube": [
+			[
+				"Remasker New",
+				"Remasker New (1)",
+				"One Way Wall"
+			]
+		],
+		"Bellway_01": [
+			[
+				"Act3_Bellway_01_Breakable_wall"
+			]
+		],
+		"Tut_04": [
+			[
+				"bell_necklace",
+				"churchkeeper_rosary",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Crawl_03b": [
+			[
+				"pustule_set_large_single_black_thread",
+				"pustule_set_large_single_black_thread (2)",
+				"pustule_set_large_single_black_thread (1)"
+			]
+		],
+		"Crawl_08": [
+			[
+				"pustule_set_large_single_black_thread (1)",
+				"pustule_set_large_single_black_thread",
+				"pustule_set_large_single_black_thread (2)"
+			]
+		],
+		"Crawl_05": [
+			[
+				"pustule_set_large_single_black_thread (1)"
+			]
+		],
+		"Dock_04": [
+			[
+				"Black_Thread_Core"
+			]
+		],
+		"Room_Diving_Bell_Abyss": [
+			[
+				"Wake Up Scene",
+				"diving_bell_door_breakable"
+			]
+		],
+		"Abyss_03": [
+			[
+				"Shaman_Collapse_Wall"
+			]
+		],
+		"Abyss_11": [
+			[
+				"Abyss_Collapse_Wall_bot"
+			]
+		],
+		"Abyss_07": [
+			[
+				"Abyss_Weaver_Hanging_Plat (6)",
+				"Abyss_Weaver_Hanging_Plat (3)",
+				"Abyss_Weaver_Hanging_Plat (2)",
+				"Abyss_Weaver_Hanging_Plat (4)",
+				"Abyss_Weaver_Hanging_Plat (7)",
+				"Abyss_Weaver_Hanging_Plat (5)",
+				"Abyss_Weaver_Hanging_Plat"
+			]
+		],
+		"Abyss_05": [
+			[
+				"Remasker New Sharp Ultra",
+				"Abyss Dive Cutscene"
+			]
+		],
+		"Abyss_08": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Abyss_13": [
+			[
+				"Abyss_Collapse_Wall"
+			]
+		],
+		"Abyss_09": [
+			[
+				"explode_wall (4)",
+				"explode_wall (3)",
+				"explode_wall 4",
+				"Abyss_Collapse_Wall"
+			]
+		],
+		"Tut_05": [
+			[
+				"Snail_Collapse_wall (2)",
+				"Snail_Collapse_wall (1)",
+				"Snail_Collapse_wall"
+			]
+		],
+		"Dock_16": [
+			[
+				"Collapser Small"
+			]
+		],
+		"Ant_04_mid": [
+			[
+				"Battle Scene Black Thread"
+			]
+		],
+		"Bone_East_24": [
+			[
+				"explode_wall_norck",
+				"ant_lever_persistent (1)",
+				"Gilly",
+				"Collectable Item Pickup"
+			]
+		],
+		"Bone_East_18": [
+			[
+				"Remasker New Sharp",
+				"ant_lever_persistent (1)",
+				"Gilly"
+			]
+		],
+		"Bone_East_18c": [
+			[
+				"Remasker New Sharp"
+			]
+		],
+		"Bone_East_18b": [
+			[
+				"thread_memory",
+				"Remasker New Sharp Ultra",
+				"Collectable Item Pickup"
+			]
+		],
+		"Bone_East_26": [
+			[
+				"Black_Thread_Core_Citadel"
+			]
+		],
+		"Bone_East_27": [
+			[
+				"craw_court_summons_pin"
+			]
+		],
+		"Bone_East_25": [
+			[
+				"Collectable Item Pickup",
+				"Battle Scene",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Ant_Queen": [
+			[
+				"Gilly",
+				"thread_memory",
+				"Collectable Item Pickup"
+			]
+		],
+		"Memory_Ant_Queen": [
+			[
+				"door_wakeInMemory",
+				"Col_Glow_Remasker"
+			]
+		],
+		"Bone_East_09b": [
+			[
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Wind Rock (6)",
+				"Wind Rock (4)"
+			]
+		],
+		"Bone_East_10_Church": [
+			[
+				"Inverse Remasker",
+				"Song_Gate_small (1)"
+			]
+		],
+		"Coral_37": [
+			[
+				"Silk Grub Small Cocoon 2 (1)",
+				"Silk Grub Large Cocoon",
+				"Remasker New Sharp Ultra",
+				"Silk Grub Small Cocoon 2"
+			]
+		],
+		"Coral_11": [
+			[
+				"Black_Thread_Core"
+			]
+		],
+		"Peak_06": [
+			[
+				"Heart Piece",
+				"charm_break_wall",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Bone_East_02b": [
+			[
+				"Black_Thread_Core",
+				"Rhino"
+			]
+		],
+		"Bone_East_02": [
+			[
+				"Garmond Fighter"
+			]
+		],
+		"Coral_29": [
+			[
+				"Collapser Small",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Under_27": [
+			[
+				"Remasker",
+				"Fall platform support pole",
+				"Remasker (1)",
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Shellwood Twig Wall (1)",
+				"Shellwood Twig Wall (2)",
+				"Shellwood Twig Wall"
+			],
+			[
+				"Barrel Plat Lift Thin",
+				"Remasker New Sharp Ultra",
+				"Fall_platform_barrel",
+				"Black_Thread_Core"
+			]
+		],
+		"Dust_Shack": [
+			[
+				"Collectable Item Extractor Pins"
+			]
+		],
+		"Clover_01": [
+			[
+				"Breakable Wall_Silhouette",
+				"Remasker New Sharp Ultra",
+				"Green Prince Stand",
+				"thread_memory",
+				"Collectable Item Pickup"
+			]
+		],
+		"Clover_01b": [
+			[
+				"Green Prince Stand"
+			]
+		],
+		"Clover_20": [
+			[
+				"Collectable Item Pickup"
+			]
+		],
+		"Clover_02c": [
+			[
+				"Moss Vine Cluster",
+				"Grouped Remasker_Large"
+			]
+		],
+		"Clover_18": [
+			[
+				"Green Prince Sit",
+				"Remasker New (1)",
+				"Remasker New",
+				"Shrine Pressure Plate L",
+				"Shrine Pressure Plate TR",
+				"Remasker New Sharp Ultra",
+				"Shrine Pressure Plate BR"
+			]
+		],
+		"Clover_05c": [
+			[
+				"Clover Gate (1)",
+				"Hornet_pressure_plate_small_persistent"
+			]
+		],
+		"Clover_16": [
+			[
+				"Breakable Wall",
+				"Remasker New Sharp Ultra"
+			]
+		],
+		"Clover_06": [
+			[
+				"Green Prince Kneel"
+			]
+		],
+		"Clover_19": [
+			[
+				"Memory Orb Group (1)"
+			]
+		],
+		"Clover_04b": [
+			[
+				"Grasshopper Child (1)",
+				"Grasshopper Child",
+				"Green Prince Sit"
+			]
+		],
+		"Clover_10": [
+			[
+				"Remasker New Sharp",
+				"Remasker New Sharp (1)",
+				"Green Prince Boss NPC",
+				"Remasker New (1)",
+				"Remasker New"
+			]
+		],
+		"Shellwood_11b": [
+			[
+				"thread_memory",
+				"Collectable Item Pickup"
+			]
+		],
+		"Shellwood_11b_Memory": [
+			[
+				"door_wakeInMemory",
+				"Remasker New"
+			]
+		],
+		"Cradle_03_Destroyed": [
+			[
+				"Remasker New Sharp",
+				"cradle_spike_plat (2)"
+			]
+		],
+		"Cradle_Destroyed_Challenge_Bench": [
+			[
+				"plank_wall_cluster"
+			]
+		],
+		"Cradle_Destroyed_Challenge_01": [
+			[
+				"Inverse Remasker",
+				"Remasker New",
+				"Remasker New (1)"
+			]
+		],
+		"Abandoned_town": [
+			[
+				"Memory Group",
+				"Collectable Item Pickup",
+				"thread_memory",
+				"Remasker New"
+			]
+		],
+		"Shadow_Weavehome": [
+			[
+				"weaver_lift_power_chamber",
+				"loom_room_jar2 (2)",
+				"Collectable Item Pickup",
+				"thread_memory",
+				"Remasker New",
+				"Remasker New Inverted"
+			]
+		],
+		"Bellway_Peak_02": [
+			[
+				"Geo Small Persistent (1)",
+				"One Way Wall Crystal (2)",
+				"charm_break_wall",
+				"Geo Small Persistent (2)",
+				"Geo Small Persistent (3)",
+				"Remasker New"
+			]
+		],
+		"Ward_05": [
+			[
+				"Breakable Wall",
+				"thread_memory",
+				"Silkfly Ambient Perched",
+				"Silkfly Ambient Perched (1)",
+				"Remasker New Sharp Ultra",
+				"Remasker New Sharp Ultra (1)",
+				"Tension Tone Single (1)",
+				"Tension Tone Single"
+			]
+		],
+		"Ward_07": [
+			[
+				"Junk Hatch",
+				"ward_junk_pile_break 1",
+				"Remasker New Sharp Ultra",
+				"Collectable Item Pickup"
+			]
+		],
+		"Memory_Silk_Heart_WardBoss": [
+			[
+				"glow_rim_Remasker"
+			]
+		],
+		"Memory_Coral_Tower": [
+			[
+				"Coral Warrior (1)",
+				"Coral Warrior",
+				"Stalactite Group",
+				"door_wakeInMemory",
+				"Remasker New (1)",
+				"Remasker New Top"
+			]
+		],
+		"Coral_19b": [
+			[
+				"Heart Piece",
+				"Collapser Small"
+			]
+		],
+		"Crawl_04": [
+			[
+				"Collectable Item Pickup Instant"
+			]
+		],
+		"Room_CrowCourt_02": [
+			[
+				"One Way Wall",
+				"Collectable Item Pickup Crawbell",
+				"Remasker New Sharp (1)",
+				"Remasker New Sharp",
+				"Remasker New Sharp Ultra",
+				"Pickup"
+			]
+		],
+		"Coral_36": [
+			[
+				"Remasker New Sharp Ultra",
+				"Shell Shard Collectable Item Pickup Instant"
+			]
+		],
+		"Coral_39": [
+			[
+				"Collectable Item Pickup"
+			]
+		]
+	}
+}

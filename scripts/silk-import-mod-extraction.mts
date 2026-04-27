@@ -7,7 +7,7 @@ import path from 'path';
 import { supportedLanguagesSilk } from '../src/lib/game-data/silk-data/localization/supported-languages-silk.ts';
 import { createCsIdDictionaryFile } from './cs-ids-gen.ts';
 import { exportFormattedJsFile } from './js-gen-helper.mts';
-import { ScriptIdMemory } from './memory/script-memory.mts';
+import { ScriptIdMemory, ScriptMemory } from './memory/script-memory.mts';
 import { readModExtraction } from './mod-extraction-read.mts';
 import { unityPySpritePath } from './paths.mts';
 
@@ -233,6 +233,63 @@ async function genSilksongVersion() {
 	await genGenericIdItem({ itemName: 'silksong-version', sourceData: [{ id: '1.0.30000' }] });
 }
 
+async function genSceneData() {
+	interface SceneDataFieldExtraction {
+		sceneName: string;
+		id: string;
+	}
+	interface SceneDataExtraction {
+		bool: SceneDataFieldExtraction[];
+		int: SceneDataFieldExtraction[];
+		geoRock: SceneDataFieldExtraction[];
+	}
+
+	const sceneDataJsonStr = await readModExtraction('scene-data-export.json');
+	const sceneData = JSON.parse(sceneDataJsonStr) as SceneDataExtraction;
+
+	await genGenericIdItem({ itemName: 'scene-data-bool', sourceData: sceneData.bool });
+	await genGenericIdItem({ itemName: 'scene-data-int', sourceData: sceneData.int });
+	await genGenericIdItem({ itemName: 'scene-data-geoRock', sourceData: sceneData.geoRock });
+
+	// bool buckets
+	interface BoolBucket {
+		id: number;
+	}
+	interface BoolBucketMemory {
+		perScene: Record<string, string[][]>;
+	}
+
+	const boolBucketMemory = await ScriptMemory.createMemory<BoolBucketMemory>('scene-data-bool-buckets', () => ({
+		perScene: {},
+	}));
+
+	for (const boolField of sceneData.bool) {
+		if (!boolBucketMemory.data.perScene[boolField.sceneName]) {
+			boolBucketMemory.data.perScene[boolField.sceneName] = [];
+		}
+		const buckets = boolBucketMemory.data.perScene[boolField.sceneName];
+		const lastExistingBucket = buckets.length > 0 ? buckets[buckets.length - 1] : null;
+		let bucketToUse: string[] | null = null;
+		if (lastExistingBucket == null || lastExistingBucket.length === 8) {
+			if (buckets.length < 255) {
+				bucketToUse = [];
+				buckets.push(bucketToUse);
+			} else {
+				console.warn(
+					`Scene ${boolField.sceneName} bool bucket limit of  255 reached. Cannot fit all bool fields into buckets.`,
+				);
+			}
+		} else {
+			bucketToUse = lastExistingBucket;
+		}
+		if (bucketToUse != null) {
+			bucketToUse.push(boolField.id);
+		}
+	}
+
+	await boolBucketMemory.write();
+}
+
 await Promise.all([
 	genMapData(),
 	genLangData(),
@@ -249,4 +306,5 @@ await Promise.all([
 	genToolLiquids(),
 	genExtraToolSlot(),
 	genSilksongVersion(),
+	genSceneData(),
 ]);

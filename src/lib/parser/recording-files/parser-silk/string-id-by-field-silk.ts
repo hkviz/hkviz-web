@@ -13,6 +13,9 @@ import {
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { questIdToNameSilk } from '~/lib/game-data/silk-data/quest-silk.generated';
 import { respawnPointIdToNameSilk } from '~/lib/game-data/silk-data/respawn-point-silk.generated';
+import { sceneDataBoolIdToNameSilk } from '~/lib/game-data/silk-data/scene-data-bool-silk.generated';
+import { sceneDataGeoRockIdToNameSilk } from '~/lib/game-data/silk-data/scene-data-geoRock-silk.generated';
+import { sceneDataIntIdToNameSilk } from '~/lib/game-data/silk-data/scene-data-int-silk.generated';
 import { sceneIdToSceneNameSilk } from '~/lib/game-data/silk-data/scene-ids-silk';
 import { silksongVersionIdToNameSilk } from '~/lib/game-data/silk-data/silksong-version-silk.generated';
 import { toolCrestIdToNameSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
@@ -50,6 +53,10 @@ export const stringIdMappingSilk = {
 	extraToolSlot: setIdLookupDebugName(extraToolSlotIdToNameSilk, 'extraToolSlotIdToNameSilk'),
 	liquid: setIdLookupDebugName(toolLiquidIdToNameSilk, 'toolLiquidIdToNameSilk'),
 	version: setIdLookupDebugName(silksongVersionIdToNameSilk, 'silksongVersionIdToNameSilk'),
+
+	sceneDataBool: setIdLookupDebugName(sceneDataBoolIdToNameSilk, 'sceneDataBoolIdToNameSilk'),
+	sceneDataInt: setIdLookupDebugName(sceneDataIntIdToNameSilk, 'sceneDataIntIdToNameSilk'),
+	sceneDataGeoRock: setIdLookupDebugName(sceneDataGeoRockIdToNameSilk, 'sceneDataGeoRockIdToNameSilk'),
 };
 
 const stringIdToString: Record<

@@ -39,6 +39,11 @@ export const entryTypeSilk = {
 	PlayerDataWrappedVector2ListFull: 0x1e,
 	PlayerDataWrappedVector2ListDelta: 0x1f,
 	PlayerDataWrappedVector2ListAppend: 0x20,
+
+	// SceneData
+	SceneDataBool: 0x21,
+	SceneDataInt: 0x22,
+	SceneDataGeoRock: 0x23,
 } as const;
 
 export type EntryTypeSilk = (typeof entryTypeSilk)[keyof typeof entryTypeSilk];

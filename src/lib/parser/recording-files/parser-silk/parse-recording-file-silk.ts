@@ -12,6 +12,7 @@ import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
+import { SceneDataEventSilk } from '../events-silk/scene-data-event-silk';
 import { entryTypeNameSilk, entryTypeSilk, EntryTypeSilk } from './entry-type-silk';
 import { recordingFileVersionToModVersionSilk } from './mod-version-silk';
 import { ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
@@ -26,6 +27,7 @@ import {
 	type NamedMapValueSilk,
 } from './silk-delta-parsing';
 import { SilkRecordingDataView } from './silk-recording-data-view';
+import { StorageStats } from './storage-stats';
 import { getStringIdToStringForField, stringIdMappingSilk } from './string-id-by-field-silk';
 
 export function parseRecordingFileSilk(
@@ -56,11 +58,7 @@ export function parseRecordingFileSilk(
 	const hkVizModVersion = recordingFileVersionToModVersionSilk[recordingFileVersion] ?? null;
 
 	const logParserStep = (step: string, details?: unknown): void => {
-		// if (details == null) {
-		// 	console.log(`[silk-parser] ${step}`);
-		// 	return;
-		// }
-		// console.log(`[silk-parser] ${step}`, details);
+		console.log(`[silk-parser] ${step}`, details);
 	};
 
 	const pushEvent = (event: RecordingEventSilk, details?: Record<string, unknown>): void => {
@@ -128,13 +126,7 @@ export function parseRecordingFileSilk(
 		return (previousPlayerDataEvent?.value as T | undefined) ?? null;
 	};
 
-	const sizePerEntryTypeAndField = new Map<
-		string,
-		{
-			count: number;
-			size: number;
-		}
-	>();
+	const storageStats = new StorageStats();
 
 	try {
 		while (reader.offset < reader.byteLength) {
@@ -151,9 +143,11 @@ export function parseRecordingFileSilk(
 
 			switch (entryType) {
 				case entryTypeSilk.SessionStart: {
+					logParserStep('session_start');
 					break;
 				}
 				case entryTypeSilk.SessionEnd: {
+					logParserStep('session_end');
 					break;
 				}
 				case entryTypeSilk.TimestampFull: {
@@ -386,6 +380,12 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['int[]', 'list<int>']);
 					const arrayLength = reader.readInt32();
+					logParserStep('int_list_delta_start', {
+						fieldId,
+						field: field.name,
+						arrayLength,
+						previousSize: previousPlayerDataValue<number[]>(field.name)?.length ?? 0,
+					});
 					const values = parseIndexedListDelta(
 						reader,
 						arrayLength,
@@ -422,6 +422,12 @@ export function parseRecordingFileSilk(
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['list<string>']);
 					const arrayLength = reader.readInt32();
 					const idToValue = getStringIdToStringForField(field);
+					logParserStep('string_list_delta_start', {
+						fieldId,
+						field: field.name,
+						arrayLength,
+						previousSize: previousPlayerDataValue<string[]>(field.name)?.length ?? 0,
+					});
 					const values = parseIndexedListDelta(
 						reader,
 						arrayLength,
@@ -461,6 +467,11 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['hashset<string>']);
 					const idToValue = getStringIdToStringForField(field);
+					logParserStep('string_set_delta_start', {
+						fieldId,
+						field: field.name,
+						previousSize: previousPlayerDataValue<ReadonlySet<string>>(field.name)?.size ?? 0,
+					});
 					const values = parseStringSetDelta(
 						reader,
 						previousPlayerDataValue<ReadonlySet<string>>(field.name),
@@ -516,6 +527,7 @@ export function parseRecordingFileSilk(
 					// );
 					logParserStep('named_map_delta_start', {
 						fieldId,
+						field: field.name,
 						fieldName: field.name,
 						fieldType: field.type,
 						previousSize:
@@ -565,6 +577,12 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['list<playerstory.eventinfo>']);
 					const listLength = reader.readInt32();
+					logParserStep('story_event_list_delta_start', {
+						fieldId,
+						field: field.name,
+						listLength,
+						previousSize: previousPlayerDataValue<readonly StoryEventInfoSilk[]>(field.name)?.length ?? 0,
+					});
 					const values = parseStoryEventListDelta(
 						reader,
 						listLength,
@@ -607,6 +625,12 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['wrappedvector2list[]']);
 					const listLength = reader.readInt32();
+					logParserStep('wrapped_vector2_list_delta_start', {
+						fieldId,
+						field: field.name,
+						listLength,
+						previousSize: previousPlayerDataValue<readonly Vector2[][]>(field.name)?.length ?? 0,
+					});
 					const values = parseWrappedVector2ListDelta(
 						reader,
 						listLength,
@@ -626,6 +650,12 @@ export function parseRecordingFileSilk(
 					}
 					throwIfFieldTypeMismatch(entryType, field, fieldId, ['wrappedvector2list[]']);
 					const oldLength = reader.readInt32();
+					logParserStep('wrapped_vector2_list_append_start', {
+						fieldId,
+						field: field.name,
+						oldLength,
+						previousSize: previousPlayerDataValue<readonly Vector2[][]>(field.name)?.length ?? 0,
+					});
 					const values = parseAppendedList(
 						reader,
 						oldLength,
@@ -636,12 +666,65 @@ export function parseRecordingFileSilk(
 					pushPlayerDataEvent(field.name, values);
 					break;
 				}
+				case entryTypeSilk.SceneDataBool: {
+					const sceneName = reader.readStringWithId(stringIdMappingSilk.sceneName) ?? '';
+					const key = reader.readStringWithId(stringIdMappingSilk.sceneDataBool) ?? '';
+					const value = reader.readUint8() === 1;
 
+					const event = new SceneDataEventSilk(null, 'bool', sceneName, key, value, ctx);
+					pushEvent(event, {
+						sceneName,
+						key,
+						value,
+					});
+					logParserStep('scene_data_bool', {
+						sceneName,
+						key,
+						value,
+					});
+					break;
+				}
+				case entryTypeSilk.SceneDataInt: {
+					const sceneName = reader.readStringWithId(stringIdMappingSilk.sceneName) ?? '';
+					const key = reader.readStringWithId(stringIdMappingSilk.sceneDataInt) ?? '';
+					const value = reader.readInt32();
+
+					const event = new SceneDataEventSilk(null, 'int', sceneName, key, value, ctx);
+					pushEvent(event, {
+						sceneName,
+						key,
+						value,
+					});
+					logParserStep('scene_data_int', {
+						sceneName,
+						key,
+						value,
+					});
+					break;
+				}
+				case entryTypeSilk.SceneDataGeoRock: {
+					const sceneName = reader.readStringWithId(stringIdMappingSilk.sceneName) ?? '';
+					const key = reader.readStringWithId(stringIdMappingSilk.sceneDataGeoRock) ?? '';
+					const value = reader.readInt32();
+
+					const event = new SceneDataEventSilk(null, 'geoRock', sceneName, key, value, ctx);
+					pushEvent(event, {
+						sceneName,
+						key,
+						value,
+					});
+					logParserStep('scene_data_georock', {
+						sceneName,
+						key,
+						value,
+					});
+					break;
+				}
 				default: {
 					typeCheckNever(entryType);
 					unknownEvents++;
 					logParserStep('unknown_entry_type', { entryType, offset: reader.offset });
-					console.warn('Unknown entryType', entryType, 'at offset', reader.offset);
+					console.error('Unknown entryType', entryType, 'at offset', reader.offset);
 
 					// stop parsing to avoid desync
 					reader.offset = reader.byteLength;
@@ -650,10 +733,11 @@ export function parseRecordingFileSilk(
 			}
 			// track storage
 			const trackStorageKey = trackedField ? `${entryTypeName}_${trackedField}` : entryTypeName;
-			const trackExisting = sizePerEntryTypeAndField.get(trackStorageKey);
-			sizePerEntryTypeAndField.set(trackStorageKey, {
-				count: (trackExisting?.count ?? 0) + 1,
-				size: (trackExisting?.size ?? 0) + reader.offset - entryOffset,
+			storageStats.addStat(trackStorageKey, 1, reader.offset - entryOffset);
+			logParserStep('entry_tracked', {
+				entryType: entryTypeName,
+				field: trackedField,
+				size: reader.offset - entryOffset,
 			});
 		}
 	} catch (e) {
@@ -671,38 +755,6 @@ export function parseRecordingFileSilk(
 		hkVizModVersion,
 	});
 
-	(window as any).debug ??= {};
-
-	(window as any).debug.printStorageSummary = (): string => {
-		const table = sizePerEntryTypeAndField
-			.entries()
-			.toArray()
-			.sort(([, a], [, b]) => b.size - a.size)
-			.map(([key, { size, count }]) => ({
-				key,
-				size,
-				count,
-				averageSize: size / count,
-				percentage: (size / reader.byteLength) * 100,
-			}));
-
-		console.table(table);
-
-		return (
-			'EntryTypeAndField\tTotalSize\tCount\tAverageSize\tPercentageOfFile\n' +
-			table
-				.slice(0, 100)
-				// return as tab seperated value string
-				.map(
-					({ key, size, count, averageSize, percentage }) =>
-						`${key}\t${size}\t${count}\t${averageSize.toFixed(2)}\t${percentage / 100}`,
-				)
-				.join('\n')
-		);
-	};
-
-	(window as any).debug.printNeverOccurredGameplayData = (): void => {};
-
 	return new ParsedRecordingSilk(
 		events,
 		unknownEvents,
@@ -710,5 +762,6 @@ export function parseRecordingFileSilk(
 		combinedPartNumber,
 		recordingFileVersion,
 		hkVizModVersion,
+		storageStats,
 	);
 }

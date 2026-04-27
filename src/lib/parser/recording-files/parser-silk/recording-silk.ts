@@ -8,13 +8,16 @@ import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
+import { SceneDataEventSilk, SceneDataEventType } from '../events-silk/scene-data-event-silk';
 import { CombinedRecordingBase } from '../parser-shared/recording-shared';
+import { StorageStats } from './storage-stats';
 
 export type RecordingEventSilk =
 	| SceneEvent
 	| PlayerPositionEvent
 	| FrameEndEventSilk
-	| PlayerDataEventSilk<PlayerDataFieldNameSilk>;
+	| PlayerDataEventSilk<PlayerDataFieldNameSilk>
+	| SceneDataEventSilk<SceneDataEventType>;
 
 export class ParsedRecordingSilk {
 	constructor(
@@ -24,6 +27,7 @@ export class ParsedRecordingSilk {
 		public readonly combinedPartNumber: number | null,
 		public readonly recordingFileVersion: number,
 		public readonly hkVizModVersion: string | null,
+		public readonly storageStats: StorageStats,
 	) {}
 
 	lastEvent() {
@@ -59,6 +63,7 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 		unknownEvents: number,
 		parsingErrors: number,
 		public readonly allHkVizModVersions: string[],
+		public readonly storageStats: StorageStats,
 	) {
 		super(events, unknownEvents, parsingErrors);
 
