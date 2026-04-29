@@ -39,7 +39,7 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 						splits.push({
 							msIntoGame: event.msIntoGame,
 							title: localized.silkAny(enemyInfo.displayName),
-							tooltip: '',
+							tooltip: localized.raw(''),
 							imageUrl: `/silk-sprites/enemy-journal/${enemyInfo.iconSprite.name}.png`,
 							group: splitGroupsSilk.boss,
 							debugInfo: event,
@@ -62,7 +62,7 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 						msIntoGame: event.msIntoGame,
 						title: localized.silkAny(questInfo.displayNameKey),
 						subtitle: localized.silk('Quests.UI_TITLE_QUESTS_COMPLETE'),
-						tooltip: '',
+						tooltip: localized.raw(''),
 						imageUrl: `/silk-sprites/quest/${questInfo.typeIcons.icon.name}.png`,
 						group: splitGroupsSilk.questCompletion,
 						debugInfo: event,
@@ -74,7 +74,7 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 						msIntoGame: event.msIntoGame,
 						title: localized.silkAny(questInfo.displayNameKey),
 						subtitle: localized.silk('Quests.UI_PROMPT_ACCEPTED'),
-						tooltip: '',
+						tooltip: localized.raw(''),
 						imageUrl: `/silk-sprites/quest/${questInfo.typeIcons.icon.name}.png`,
 						group: splitGroupsSilk.questStarts,
 						debugInfo: event,
@@ -99,7 +99,7 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 						subtitle: localized.raw(
 							(diff > 0 ? ` +${diff}` : ` ${diff}`) + '  |  total = ' + collectableData.Amount,
 						),
-						tooltip: '',
+						tooltip: localized.raw(''),
 						imageUrl: icon ? `/silk-sprites/collectable/${icon}.png` : '',
 						group: splitGroupsSilk.collectables,
 						debugInfo: event,
@@ -121,7 +121,7 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 						msIntoGame: event.msIntoGame,
 						title: localized.silkAny(toolInfo.displayName),
 						subtitle: subtitle,
-						tooltip: '',
+						tooltip: localized.raw(''),
 						imageUrl: `/silk-sprites/tool-item/${toolInfo.toolSprite.name}.png`,
 						group: splitGroupsSilk.toolCollection,
 						debugInfo: event,
@@ -148,7 +148,7 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 								? localized.silkAny(crestInfo.displayName)
 								: localized.raw(crest),
 							subtitle: subtitle ? localized.raw(subtitle) : undefined,
-							tooltip: '',
+							tooltip: localized.raw(''),
 							imageUrl: crestInfo.crestSprite
 								? `/silk-sprites/tool-crest/${crestInfo.crestSprite.name}.png`
 								: '',
@@ -173,7 +173,7 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.silkAny(relicInfo.typeNameKey),
-						tooltip: '', // add additional text to tooltip?
+						tooltip: localized.raw(''), // add additional text to tooltip?
 						imageUrl: icon ? `/silk-sprites/collectable-relic/${icon}.png` : '',
 						group: splitGroupsSilk.relicCollection,
 						debugInfo: event,
@@ -200,7 +200,7 @@ export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Spl
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(completionNameSilk(ending)), // todo define name somewhere
 						subtitle: localized.raw(completionSubtitleSilk(ending)),
-						tooltip: '',
+						tooltip: localized.raw(''),
 						imageUrl: completionSpriteSilk(ending),
 						group: splitGroupsSilk.ending,
 						debugInfo: event,

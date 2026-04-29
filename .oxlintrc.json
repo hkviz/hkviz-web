@@ -52,7 +52,8 @@
 		"no-var": "error",
 		"typescript/no-floating-promises": "error",
 		//"typescript/no-shadow": "warn",
-		"typescript/no-deprecated": "warn"
+		"typescript/no-deprecated": "warn",
+		"typescript/no-base-to-string": "error"
 	},
 	"overrides": [
 		{

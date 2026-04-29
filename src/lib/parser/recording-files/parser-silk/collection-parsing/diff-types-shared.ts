@@ -7,11 +7,11 @@ export abstract class CollectionDiff<T> {
 }
 
 export function isCollectionDiff(value: unknown): value is CollectionDiff<unknown> {
-	return typeof value === 'object' && value !== null && (value as CollectionDiff<unknown>)[COLLECTION_DIFF] === true;
+	return typeof value === 'object' && value != null && (value as CollectionDiff<unknown>)[COLLECTION_DIFF] === true;
 }
 
 export function collectionDiffApply<T>(previous: T, diff: T | CollectionDiff<T>): T {
-	if (diff === null || diff === undefined) {
+	if (diff == null) {
 		return diff;
 	}
 

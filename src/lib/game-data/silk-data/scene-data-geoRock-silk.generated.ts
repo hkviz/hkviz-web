@@ -5,37 +5,11 @@
 export type SceneDataGeoRockNameSilk =
 	| 'Geo Rock 3'
 	| 'Geo Rock 1 (1)'
-	| 'Geo Rock 3'
 	| 'Geo Rock 2'
 	| 'Geo Rock 1'
 	| 'Geo Rock 2 (1)'
-	| 'Geo Rock 2'
-	| 'Geo Rock 1'
-	| 'Geo Rock 1'
-	| 'Geo Rock 2'
-	| 'Geo Rock 2'
-	| 'Geo Rock 1'
-	| 'Geo Rock 2'
 	| 'Geo Rock Deepnest'
-	| 'Geo Rock 1'
-	| 'Geo Rock Deepnest'
-	| 'Geo Rock Deepnest'
-	| 'Geo Rock Deepnest'
-	| 'Geo Rock Deepnest'
-	| 'Geo Rock 3'
-	| 'Geo Rock Deepnest'
-	| 'Geo Rock Deepnest'
-	| 'Geo Rock Deepnest (1)'
-	| 'Geo Rock Deepnest'
-	| 'Geo Rock 1 (1)'
-	| 'Geo Rock 1'
-	| 'Geo Rock 3'
-	| 'Geo Rock 1'
-	| 'Geo Rock 3'
-	| 'Geo Rock Deepnest'
-	| 'Geo Rock 1'
-	| 'Geo Rock 1'
-	| 'Geo Rock 3';
+	| 'Geo Rock Deepnest (1)';
 
 const list = [
 	{

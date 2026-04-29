@@ -203,8 +203,6 @@ export function MapViewRoomsHoverIndicator(props: MapViewRoomsHoverIndicatorProp
 	const roomDisplayStore = useRoomDisplayStore();
 	const id = createUniqueId();
 
-	const theme = useThemeStore().currentTheme;
-
 	const hoverBounds = () => {
 		return Bounds.fromContainingBoundsOrZero(
 			props.rooms?.map((it) => it.visualBoundsAllSprites).filter((it) => it != null),

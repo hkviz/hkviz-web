@@ -37,7 +37,7 @@ function createRecordingSplitFromEnemy(
 	return {
 		msIntoGame,
 		title: localized.raw(enemyNameDisplay), // + '(' + enemyInfo?.neededForJournal + ')',
-		tooltip: `Defeated ${enemyNameDisplay}`,
+		tooltip: localized.raw(`Defeated ${enemyNameDisplay}`),
 		imageUrl: enemyInfo?.portraitName ? `/ingame-sprites/bestiary/${enemyInfo.portraitName}.png` : undefined,
 		group: splitGroupsHollow.boss,
 		debugInfo: enemyInfo,
@@ -101,7 +101,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(defeatMapping.dreamer),
-						tooltip: defeatMapping.dreamer + "'s Seal broken",
+						tooltip: localized.raw(defeatMapping.dreamer + "'s Seal broken"),
 						imageUrl: `/ingame-sprites/achievement/${defeatMapping.achievementSprite}.png`,
 						group: splitGroupsHollow.dreamer,
 						debugInfo: defeatMapping,
@@ -185,7 +185,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(abilityOrItem.name),
-						tooltip: `Got ${abilityOrItem.name}`,
+						tooltip: localized.raw(`Got ${abilityOrItem.name}`),
 						imageUrl: `/ingame-sprites/inventory/${abilityOrItem.spriteName}.png`,
 						group:
 							abilityOrItem.type === 'item'
@@ -207,7 +207,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(`Charm Notch (nr ${event.value})`),
-						tooltip: `Got ${event.value} Charm Notches`,
+						tooltip: localized.raw(`Got ${event.value} Charm Notches`),
 						imageUrl: '/ingame-sprites/inventory/Inv_0027_spell_slot.png',
 						group: splitGroupsHollow.charmCollection,
 						debugInfo: event,
@@ -221,7 +221,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw('Dream Nail'),
-						tooltip: 'Got the Dream Nail',
+						tooltip: localized.raw('Got the Dream Nail'),
 						imageUrl: '/ingame-sprites/inventory/dream_nail_0003_1.png',
 						group: splitGroupsHollow.abilities,
 						debugInfo: event,
@@ -235,7 +235,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw('Dream Gate'),
-						tooltip: 'Got the Dream Gate',
+						tooltip: localized.raw('Got the Dream Gate'),
 						imageUrl: '/ingame-sprites/inventory/dream_gate_inv_icon.png',
 						group: splitGroupsHollow.abilities,
 						debugInfo: event,
@@ -249,7 +249,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw('Awoken Dream Nail'),
-						tooltip: 'Awoke the the Dream Nail',
+						tooltip: localized.raw('Awoke the the Dream Nail'),
 						imageUrl: '/ingame-sprites/inventory/dream_nail_0000_4.png',
 						group: splitGroupsHollow.abilities,
 						debugInfo: event,
@@ -263,7 +263,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(`Sharpened Nail`),
-						tooltip: `Upgraded Nail first time`,
+						tooltip: localized.raw(`Upgraded Nail first time`),
 						imageUrl: '/ingame-sprites/inventory/nail_upgrade_0002_sharpened_nail.png',
 						group: splitGroupsHollow.items,
 						debugInfo: event,
@@ -273,7 +273,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(`Channelled Nail`),
-						tooltip: `Upgraded Nail second time`,
+						tooltip: localized.raw(`Upgraded Nail second time`),
 						imageUrl: '/ingame-sprites/inventory/nail_upgrade_0002_channel-nail.png',
 						group: splitGroupsHollow.items,
 						debugInfo: event,
@@ -283,7 +283,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(`Coiled Nail`),
-						tooltip: `Upgraded Nail third time`,
+						tooltip: localized.raw(`Upgraded Nail third time`),
 						imageUrl: '/ingame-sprites/inventory/nail_upgrade_03_coil_nail.png',
 						group: splitGroupsHollow.items,
 						debugInfo: event,
@@ -293,7 +293,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(`Pure Nail`),
-						tooltip: `Upgraded Nail forth time`,
+						tooltip: localized.raw(`Upgraded Nail forth time`),
 						imageUrl: '/ingame-sprites/inventory/nail_upgrade_0000_pure-nail.png',
 						group: splitGroupsHollow.items,
 						debugInfo: event,
@@ -335,7 +335,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(`Mask Shard (${event.value}/4)`),
-						tooltip: `Got a Mask Shard (${event.value}/4)`,
+						tooltip: localized.raw(`Got a Mask Shard (${event.value}/4)`),
 						imageUrl: `/ingame-sprites/inventory/${image}.png`,
 						group: splitGroupsHollow.items,
 						debugInfo: event,
@@ -374,7 +374,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					splits.push({
 						msIntoGame: event.msIntoGame,
 						title: localized.raw(`Vessel Fragment (${event.value}/3)`),
-						tooltip: `Got a Vessel Fragment (${event.value}/3)`,
+						tooltip: localized.raw(`Got a Vessel Fragment (${event.value}/3)`),
 						imageUrl: `/ingame-sprites/inventory/${image}.png`,
 						group: splitGroupsHollow.items,
 						debugInfo: event,
@@ -426,7 +426,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 							splits.push({
 								msIntoGame: event.msIntoGame,
 								title: map.title,
-								tooltip: 'Got ' + map.title,
+								tooltip: localized.concat(localized.raw('Got '), map.title),
 								imageUrl: '/ingame-sprites/inventory/inv_item__0008_jar_col_map.png',
 								group: splitGroupsHollow.items,
 								debugInfo: event,
@@ -450,7 +450,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 					msIntoGame: frameEndEvent.msIntoGame,
 					title: localized.raw(`${virtualCharm.name}`),
 					subtitle: virtualCharm.subtitle ? localized.raw(virtualCharm.subtitle) : undefined,
-					tooltip: `Got ${virtualCharm.name}`,
+					tooltip: localized.raw(`Got ${virtualCharm.name}`),
 					imageUrl: `/ingame-sprites/charms/${virtualCharm.spriteName}.png`,
 					group: splitGroupsHollow.charmCollection,
 					debugInfo: undefined,
@@ -471,7 +471,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			splits.push({
 				msIntoGame: frameEndEvent.msIntoGame,
 				title: localized.raw('Delicate Flower'),
-				tooltip: 'Got Delicate Flower',
+				tooltip: localized.raw('Got Delicate Flower'),
 				imageUrl: '/ingame-sprites/inventory/White_Flower_Full.png',
 				group: splitGroupsHollow.items,
 				debugInfo: undefined,
@@ -482,7 +482,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			splits.push({
 				msIntoGame: frameEndEvent.msIntoGame,
 				title: localized.raw('Ruined Flower'),
-				tooltip: 'Broke Delicate Flower',
+				tooltip: localized.raw('Broke Delicate Flower'),
 				imageUrl: '/ingame-sprites/inventory/White_Flower_Half.png',
 				group: splitGroupsHollow.items,
 				debugInfo: undefined,
@@ -500,7 +500,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			splits.push({
 				msIntoGame: frameEndEvent.msIntoGame,
 				title: localized.raw('Vengeful Spirit'),
-				tooltip: 'Got Vengeful Spirit',
+				tooltip: localized.raw('Got Vengeful Spirit'),
 				imageUrl: '/ingame-sprites/inventory/Inv_0025_spell_fireball_01.png',
 				group: splitGroupsHollow.abilities,
 				debugInfo: undefined,
@@ -511,7 +511,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			splits.push({
 				msIntoGame: frameEndEvent.msIntoGame,
 				title: localized.raw('Shade Soul'),
-				tooltip: 'Got Shade Soul (upgrade for Vengeful Spirit)',
+				tooltip: localized.raw('Got Shade Soul (upgrade for Vengeful Spirit)'),
 				imageUrl: '/ingame-sprites/inventory/Inv_0025_spell_fireball_01_level2.png',
 				group: splitGroupsHollow.abilities,
 				debugInfo: undefined,
@@ -523,7 +523,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			splits.push({
 				msIntoGame: frameEndEvent.msIntoGame,
 				title: localized.raw('Howling Wraiths'),
-				tooltip: 'Got Howling Wraiths',
+				tooltip: localized.raw('Got Howling Wraiths'),
 				imageUrl: '/ingame-sprites/inventory/Inv_0024_spell_scream_01.png',
 				group: splitGroupsHollow.abilities,
 				debugInfo: undefined,
@@ -534,7 +534,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			splits.push({
 				msIntoGame: frameEndEvent.msIntoGame,
 				title: localized.raw('Abyss Shriek'),
-				tooltip: 'Got Abyss Shriek (upgrade for Howling Wraiths)',
+				tooltip: localized.raw('Got Abyss Shriek (upgrade for Howling Wraiths)'),
 				imageUrl: '/ingame-sprites/inventory/Inv_0024_spell_scream_01_level2.png',
 				group: splitGroupsHollow.abilities,
 				debugInfo: undefined,
@@ -546,7 +546,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			splits.push({
 				msIntoGame: frameEndEvent.msIntoGame,
 				title: localized.raw('Desolate Dive'),
-				tooltip: 'Got Howling Wraiths',
+				tooltip: localized.raw('Got Desolate Dive'),
 				imageUrl: '/ingame-sprites/inventory/Inv_0026_spell_quake_01.png',
 				group: splitGroupsHollow.abilities,
 				debugInfo: undefined,
@@ -557,7 +557,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			splits.push({
 				msIntoGame: frameEndEvent.msIntoGame,
 				title: localized.raw('Descending Dark'),
-				tooltip: 'Got Descending Dark (upgrade for Desolate Dive)',
+				tooltip: localized.raw('Got Descending Dark (upgrade for Desolate Dive)'),
 				imageUrl: '/ingame-sprites/inventory/Inv_0026_spell_quake_01_level2.png',
 				group: splitGroupsHollow.abilities,
 				debugInfo: undefined,

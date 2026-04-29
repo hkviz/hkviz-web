@@ -5,7 +5,7 @@
 import { splitSuffixSceneNameSilk } from '../src/lib/game-data/silk-data/sub-scene-names-silk.ts';
 import { createCsIdDictionaryFile } from './cs-ids-gen.ts';
 import { exportFormattedJsFile } from './js-gen-helper.mts';
-import { readGenMemory, ScriptIdMemory } from './memory/script-memory.mts';
+import { ScriptIdMemory } from './memory/script-memory.mts';
 import { readModExtraction, readUnityPyExtraction } from './mod-extraction-read.mts';
 
 // scene to actual scene
@@ -57,16 +57,6 @@ async function readUnityPyModExtractionSceneNames(): Promise<Map<string, { zone:
 	const unityPyExportJsonStr = await readUnityPyExtraction('scenes.json');
 	const unityPyExport = JSON.parse(unityPyExportJsonStr);
 	return new Map(Object.entries(unityPyExport));
-}
-
-async function readGenMemorySceneIds(): Promise<
-	Map<string, { id: number; zone: number | null; actualSceneName: string }>
-> {
-	const sceneIds = await readGenMemory('scene-ids.json');
-	if (!sceneIds) {
-		return new Map();
-	}
-	return new Map(Object.entries(sceneIds));
 }
 
 const [mapSceneNames, unityPySceneNames, memorySceneIds] = await Promise.all([

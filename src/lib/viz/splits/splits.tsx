@@ -1,11 +1,10 @@
 import { CircleQuestionMarkIcon, SearchIcon, XIcon } from 'lucide-solid';
-import { For, Show, createUniqueId, type Component } from 'solid-js';
+import { For, Show, type Component } from 'solid-js';
 import { Button } from '~/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { Split } from '~/lib/splits/splits-shared/split';
-import { SplitGroup } from '~/lib/splits/splits-shared/split-group';
 import { cn } from '~/lib/utils';
 import { SplitsList } from '~/routes/(docs)/guide/_analytics/_splits-list';
 import { Duration } from '../duration';
@@ -132,7 +131,6 @@ const RunSplitsSearch: Component = () => {
 };
 
 export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
-	const id = createUniqueId();
 	const splitsStore = useSplitsStore();
 	const visibleSplitGroups = splitsStore.visibleSplitGroups;
 	const panelContext = useLayoutPanelContext();
@@ -145,11 +143,6 @@ export const RunSplits: Component<LayoutPanelTypeProps> = (props) => {
 		const groups = splitGroups().filter((group) => groupIds.includes(group.id));
 		splitsStore.setVisibleSplitGroups(groups);
 	}
-
-	const setVisibleSplitGroupChecked = (group: SplitGroup, checked: boolean) => {
-		const currentGroup = splitsStore.visibleSplitGroups();
-		splitsStore.setVisibleSplitGroups(checked ? [...currentGroup, group] : currentGroup.filter((g) => g !== group));
-	};
 
 	return (
 		<LayoutPanelWrapper>

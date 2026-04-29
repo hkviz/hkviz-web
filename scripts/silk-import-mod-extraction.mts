@@ -123,7 +123,7 @@ async function genGenericIdItem({
 		await exportFormattedJsFile(
 			`./src/lib/game-data/silk-data/${itemName}-silk.generated.ts`,
 			`
-		export type ${pascalCaseItemName}NameSilk = ${items.map((it: any) => `'${it.id}'`).join(' | ')};
+		export type ${pascalCaseItemName}NameSilk = ${new Set(items.map((it: any) => `'${it.id}'`)).values().toArray().join(' | ')};
 
 		const list = ${JSON.stringify(items, null, 2)};
 		export type ${pascalCaseItemName}Silk = typeof list[number];
@@ -270,6 +270,10 @@ async function genSceneData() {
 		const buckets = boolBucketMemory.data.perScene[boolField.sceneName];
 		const lastExistingBucket = buckets.length > 0 ? buckets[buckets.length - 1] : null;
 		let bucketToUse: string[] | null = null;
+		if (buckets.some((bucket) => bucket.includes(boolField.id))) {
+			continue; // already in bucket
+		}
+
 		if (lastExistingBucket == null || lastExistingBucket.length === 8) {
 			if (buckets.length < 255) {
 				bucketToUse = [];

@@ -11,8 +11,8 @@ import { useAreaAnalyticsContext } from './area-analytics-context';
 
 function noHistoryMessage(mode: AreaSelectionMode): string {
 	if (mode === 'room') return 'No changes to this variable in the selected room.';
-	if (mode === 'zone') return 'No changes to this variable in the selected zone.';
-	if (mode === 'all') return 'No changes to this variable in the entire run.';
+	if (mode === 'zone') return 'No changes to this variable in the selected area.';
+	if (mode === 'all') return 'No changes to this variable in the entire gameplay.';
 	return assertNever(mode);
 }
 

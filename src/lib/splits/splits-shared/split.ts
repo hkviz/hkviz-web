@@ -6,7 +6,7 @@ export interface Split {
 	msIntoGame: number;
 	title: LocalizedString;
 	subtitle?: LocalizedString;
-	tooltip: string;
+	tooltip: LocalizedString;
 	imageUrl: string | undefined;
 	group: SplitGroup;
 	debugInfo: unknown;
