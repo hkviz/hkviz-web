@@ -33,7 +33,11 @@ const AreaAnalyticsVariableHistoryRow: Component<{
 	});
 
 	return (
-		<TimelineListEntryButton class="flex items-center justify-between p-2 pr-4 text-sm" heightMode="from-estimate">
+		<TimelineListEntryButton
+			class="flex items-center justify-between p-2 pr-4 pl-3 text-sm"
+			heightMode="from-estimate"
+			areaColor="left"
+		>
 			<Duration ms={props.entry.msIntoGame} class="pr-3" withTooltip={false} />
 			<span>
 				<Show when={varInfo().showHistoryDelta && delta()}>

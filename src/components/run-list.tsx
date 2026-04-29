@@ -3,7 +3,8 @@ import { createAsync } from '@solidjs/router';
 import { createEffect, createMemo, createSignal, createUniqueId, For, onCleanup, Show, Suspense } from 'solid-js';
 import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { RunMetadata } from '~/server/run/_find_runs_internal';
-import { DEFAULT_PAGE_SIZE, filterParamsAtPage, RunFilterBaseNoPage } from '~/server/run/find_runs_base';
+import { FIND_RUN_DEFAULT_PAGE_SIZE } from '~/server/run/find-run-constants';
+import { filterParamsAtPage, RunFilterBaseNoPage } from '~/server/run/find_runs_base';
 import { RunCard } from './run-card/run-card';
 import { Button } from './ui/button';
 import { Checkbox } from './ui/checkbox';
@@ -125,7 +126,7 @@ export function RunList(props: RunListProps<RunFilterBaseNoPage>) {
 
 	const canLoadMore = () => {
 		const last = lastPage();
-		return last != null && last.content.length === DEFAULT_PAGE_SIZE && last.index === pages() - 1;
+		return last != null && last.content.length === FIND_RUN_DEFAULT_PAGE_SIZE && last.index === pages() - 1;
 	};
 
 	function loadNextPage() {

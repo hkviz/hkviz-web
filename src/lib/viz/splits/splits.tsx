@@ -29,6 +29,7 @@ const RunSplitRow: Component<RowProps> = (props) => {
 	return (
 		<TimelineListEntryButton
 			class="flex w-full flex-row items-center justify-between gap-2 py-2.5 pr-3 pl-4 text-sm"
+			areaColor="right"
 			heightMode="auto"
 		>
 			<div class={cn('absolute top-0 bottom-0 left-0 w-1', splitGroupColor().background)} />

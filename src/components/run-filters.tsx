@@ -17,6 +17,7 @@ import { RUN_SORT_DEFAULT, runSortFromCode, runSorts, type RunSortCode } from '~
 import { isTag, tagOrGroupFromCode, type Tag, type TagGroup } from '~/lib/types/tags/tags';
 import { cn } from '~/lib/utils';
 import { type RunFilterParams } from '~/server/run/find-public-runs';
+import { FIND_RUN_TERM_MAX_LENGTH } from '~/server/run/find-run-constants';
 import { RunFilterBaseNoPage } from '~/server/run/find_runs_base';
 
 function withoutDefaultParams(params: Partial<RunFilterParams>) {
@@ -125,6 +126,7 @@ export const RunFilters: Component<{ filter: RunFilterBaseNoPage; class?: string
 							ref={setSearchInputRef}
 							placeholder="Search..."
 							value={searchTerm()}
+							maxLength={FIND_RUN_TERM_MAX_LENGTH}
 							class={cn(
 								'border-transparent bg-background/55 shadow-sm ring-1 ring-white/10 outline-hidden transition-all',
 								searchTerm() ? 'pl-4' : 'pl-8 group-focus-within:pl-4',

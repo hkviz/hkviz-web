@@ -18,6 +18,7 @@ import { Button } from '~/components/ui/button';
 import { assertNever } from '~/lib/parser';
 import { cn } from '~/lib/utils';
 import { useAnimationStore } from '../store/animation-store';
+import { useGameplayStore } from '../store/gameplay-store';
 import { createRoomMsButtonProps } from '../util/shared-interactions';
 
 export type TimelineListEntryState = 'past' | 'next' | 'future';
@@ -369,10 +370,18 @@ export interface TimelineListEntryButtonProps {
 	children: JSXElement;
 	class?: string;
 	heightMode: 'from-estimate' | 'auto';
+	areaColor: 'left' | 'right' | 'none';
 }
 
 export function TimelineListEntryButton(props: TimelineListEntryButtonProps) {
 	const context = useTimelineListEntryContext();
+	const gameplayStore = useGameplayStore();
+
+	const roomData = createMemo(() => {
+		const scene = context.sceneName?.();
+		if (!scene) return null;
+		return gameplayStore.gameModule()?.map.getMainRoomDataBySceneName(scene) ?? null;
+	});
 
 	const hover = createRoomMsButtonProps({
 		time: () => ({ msIntoGame: context.entryTime() }),
@@ -403,12 +412,19 @@ export function TimelineListEntryButton(props: TimelineListEntryButtonProps) {
 
 	function getStyle(): JSX.CSSProperties | undefined {
 		const virtualItem = context.virtualItem();
-		if (!virtualItem) return undefined;
+		const color = roomData()?.origColor.darker(0.5).formatHex() ?? 'white';
+		if (!virtualItem)
+			return {
+				'--area-split-color': color,
+			};
 		return {
 			height: props.heightMode === 'from-estimate' ? `${virtualItem.size}px` : undefined,
 			transform: `translateY(${virtualItem.start}px)`,
+			'--area-split-color': color,
 		};
 	}
+
+	const hasAreaColor = () => props.areaColor === 'left' || props.areaColor === 'right';
 
 	return (
 		<button
@@ -422,6 +438,12 @@ export function TimelineListEntryButton(props: TimelineListEntryButtonProps) {
 			class={cn(
 				activeStateClasses(),
 				'w-full border-b hover:bg-gray-200 dark:hover:bg-gray-700/50',
+				hasAreaColor()
+					? 'after:absolute after:top-0 after:h-full after:w-1 after:bg-(--area-split-color)'
+					: undefined,
+				props.areaColor === 'left' ? 'after:left-0' : undefined,
+				props.areaColor === 'right' ? 'after:right-0' : undefined,
+
 				context.virtualItem() ? 'absolute top-0 left-0' : 'relative',
 				props.class,
 			)}

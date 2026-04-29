@@ -1,0 +1,2 @@
+export const FIND_RUN_DEFAULT_PAGE_SIZE = 20;
+export const FIND_RUN_TERM_MAX_LENGTH = 50;

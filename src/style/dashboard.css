@@ -32,7 +32,11 @@
 		margin-top: -0.05rem;
 	}
 	.dashboard-grid.dashboard-mobile-tab-right {
-		grid-template-columns: 21rem 1fr;
+		grid-template-areas:
+			'map map-options'
+			'timeline timeline'
+			'tabs tabs';
+		grid-template-columns: 1fr 21rem;
 	}
 }
 
