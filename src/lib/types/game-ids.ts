@@ -1,5 +1,5 @@
 import * as v from 'valibot';
-import { assertNever } from '../parser';
+import { assertNever } from '../util/other';
 
 export const GAME_ID_HOLLOWKNIGHT = 'hollow';
 export const GAME_ID_SILKSONG = 'silk';

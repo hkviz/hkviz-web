@@ -1,6 +1,6 @@
 import { Title } from '@solidjs/meta';
 import { createAsync, useAction, useSubmission } from '@solidjs/router';
-import type { JSXElement} from 'solid-js';
+import type { JSXElement } from 'solid-js';
 import { createMemo, createSignal, createUniqueId, Match, Show, Switch } from 'solid-js';
 import { AuthNeededWrapper } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
@@ -20,7 +20,7 @@ import {
 import { playingFrequencyCodes, playingFrequencyName, type PlayingFrequencyCode } from '~/lib/types/playing-frequency';
 import { playingSinceCodes, playingSinceName, type PlayingSinceCode } from '~/lib/types/playing-since';
 import { cn } from '~/lib/utils';
-import { HKVizText } from '~/lib/viz';
+import { HKVizText } from '~/lib/viz/hkviz-text';
 import { hkExperienceGet, hkExperienceSave } from '~/server/ingameauth/hk-experience';
 
 function toBool(value: string | boolean) {

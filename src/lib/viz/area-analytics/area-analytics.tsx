@@ -19,9 +19,8 @@ import { Toggle } from '~/components/ui/toggle';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import { getRelatedVirtualRoomNames, type RelatedVirtualRoom } from '~/lib/game-data/hollow-data/room-groups-hollow';
 import { cn } from '~/lib/utils';
-import type { RelatedVirtualRoom } from '../../parser';
-import { getRelatedVirtualRoomNames } from '../../parser';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import type { LayoutPanelTypeProps } from '../layout/layout-panel-props';
@@ -29,8 +28,7 @@ import { LayoutPanelSelect } from '../layout/layout-panel-select';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
 import { RoomColorCurveContextMenuItems } from '../map/room-color-curve-menu';
 import { HKMapRoom } from '../map/room-icon';
-import type {
-	AggregationCountMode} from '../store/aggregation-store';
+import type { AggregationCountMode } from '../store/aggregation-store';
 import {
 	aggregationCountModes,
 	getAggregationCountModeDescription,
@@ -42,7 +40,7 @@ import { useAnimationStore } from '../store/animation-store';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useLocalizationStore } from '../store/localization-store';
 import { useRoomColoringStore } from '../store/room-coloring-store';
-import type { AreaSelectionMode} from '../store/room-display-store';
+import type { AreaSelectionMode } from '../store/room-display-store';
 import { useRoomDisplayStore } from '../store/room-display-store';
 import { useThemeStore } from '../store/theme-store';
 import { useUiStore } from '../store/ui-store';
@@ -414,6 +412,7 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 		const mapZone = roomInfos().mainRoomInfo?.mapZone;
 		const _selectedRoom = selectedRoom();
 		if (!_selectedRoom || !mapZone) return [];
+		// TODO use game module
 		return getRelatedVirtualRoomNames(mapZone, _selectedRoom);
 	});
 

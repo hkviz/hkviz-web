@@ -7,17 +7,18 @@ import {
 	BellhomePaintColoursNumberSchemaSilk,
 	ExtraRestZonesNumberSchemaSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import type { ModVersionHollow} from '~/lib/parser';
-import { isModVersionBefore1_6_0Hollow, raise } from '~/lib/parser';
+import type { ModVersionHollow } from '~/lib/parser/recording-files/parser-hollow/mod-version-hollow';
+import { isModVersionBefore1_6_0Hollow } from '~/lib/parser/recording-files/parser-hollow/mod-version-hollow';
 import { r2RunPartFileKey } from '~/lib/r2';
 import { gameIdSchemaHollowDefault } from '~/lib/types/game-ids';
 import { hollowOrSilkMapZoneSchema } from '~/lib/types/map-zone';
+import { raise } from '~/lib/util/other';
 import { runFiles, runs, type RunGameStateMetaColumnName } from '~/server/db/schema';
 import { db } from '../db';
 import { getUserIdFromIngameSession } from '../ingameauth/utils';
 import { r2FileHead, r2GetSignedUploadUrl } from '../r2';
 import { getOrCreateRunId } from './get-or-create-run-id';
-import type { RunFileInsertMustGs} from './run-column-selects';
+import type { RunFileInsertMustGs } from './run-column-selects';
 import { runGameStateMetaColumnsSelect } from './run-column-selects';
 
 const runPartCreateBaseInputSchema = {

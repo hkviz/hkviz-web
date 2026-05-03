@@ -7,9 +7,9 @@ import { Bounds } from '~/lib/game-data/shared/bounds';
 import { colorFromRgbVector } from '~/lib/game-data/shared/colors';
 import { spriteInfoBounds } from '~/lib/game-data/shared/sprite-info-mapper';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { roomGroupByName } from '../../parser/map-data/room-groups';
-import { omit } from '../../util';
+import { omit } from '~/lib/util/omit';
 import { customRoomDataHollow, type CustomRoomInfoHollow, type UnprocessedRoomInfoHollow } from './room-custom-hollow';
+import { roomGroupByName } from './room-groups-hollow';
 import { formatZoneAndRoomNameHollow } from './room-name-formatting-hollow';
 import { getSubSpritesHollow } from './room-sub-sprites-hollow';
 import { prepareTextExportDataHollow } from './text-data-hollow';
@@ -51,7 +51,7 @@ resortings.forEach((resort) => {
 
 export type RoomDataHollow = (typeof mapRoomsHollow)[number];
 export type SpriteVariants = RoomDataHollow['spritesByVariant'];
-export type SpriteInfo = SpriteVariants['normal'] | SpriteVariants['rough'];
+export type SpriteInfo = SpriteVariants['normal'];
 
 // some rooms have multiple game objects, we need the 'main' one, which is used to determine how to map onto the map.
 // In the game this will always be the one with the shortest name, since additional sprites for a room

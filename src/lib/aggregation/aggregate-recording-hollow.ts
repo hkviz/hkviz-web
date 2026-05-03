@@ -1,5 +1,6 @@
 import { mainRoomDataBySceneNameHollow } from '../game-data/hollow-data/map-data-hollow';
 import { playerDataFieldsHollow } from '../game-data/hollow-data/player-data-hollow';
+import { roomGroupNamesBySceneNameHollow } from '../game-data/hollow-data/room-groups-hollow';
 import { FrameEndEventHollow } from '../parser/recording-files/events-hollow/frame-end-event-hollow';
 import { HeroStateEvent } from '../parser/recording-files/events-hollow/hero-state-event';
 import { SpellDownEvent } from '../parser/recording-files/events-hollow/spell-down-event';
@@ -23,6 +24,7 @@ export function aggregateRecordingHollow(recording: CombinedRecordingHollow): Ag
 		createEmptyAggregationHollow,
 		createAggregationTimePointCloneHollow,
 		getZoneNameFromSceneName,
+		roomGroupNamesBySceneNameHollow,
 		(event, currentVirtualScenes, addToScenes) => {
 			if (event instanceof HeroStateEvent && event.field.name === 'dead' && event.value) {
 				// counted in frame end event, since deaths in pantheons (and probably dreams) don't trigger heroState dead

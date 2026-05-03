@@ -10,7 +10,7 @@ import { FrameEndEventBase } from '../events-shared/frame-end-event-base';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { countGameCompletion } from '../parser-hollow/ingame-percentage';
 import type { HeroStateEvent } from './hero-state-event';
-import { type PlayerDataEventHollow } from './player-data-event';
+import { type PlayerDataEventHollow } from './player-data-event-hollow';
 
 export const frameEndEventPlayerDataFieldsHollow = [
 	// geo

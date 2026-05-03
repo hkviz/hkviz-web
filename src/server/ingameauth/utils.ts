@@ -1,7 +1,7 @@
 import { ingameAuth } from '~/server/db/schema';
 
 import { gte } from 'drizzle-orm';
-import { raise } from '~/lib/parser';
+import { raise } from '~/lib/util/other';
 import type { db } from '~/server/db';
 
 export function isMax10MinutesOld() {

@@ -1,12 +1,12 @@
-import type { Component} from 'solid-js';
+import type { Component } from 'solid-js';
 import { createMemo, Show } from 'solid-js';
 import type { AggregationTimePointBase } from '~/lib/aggregation/aggregation-value-base';
 import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
-import { assertNever } from '~/lib/parser';
+import { assertNever } from '~/lib/util/other';
 import { Duration } from '../duration';
 import { useAggregationStore } from '../store/aggregation-store';
 import { useGameplayStore } from '../store/gameplay-store';
-import type { AreaSelectionMode} from '../store/room-display-store';
+import type { AreaSelectionMode } from '../store/room-display-store';
 import { useRoomDisplayStore } from '../store/room-display-store';
 import { TimelineList, TimelineListEntryButton } from '../timeline-list/timeline-list';
 import { useAreaAnalyticsContext } from './area-analytics-context';

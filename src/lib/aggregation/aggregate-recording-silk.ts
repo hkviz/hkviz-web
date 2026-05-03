@@ -4,12 +4,8 @@ import { FrameEndEventSilk } from '../parser/recording-files/events-silk/frame-e
 import type { CombinedRecordingSilk } from '../parser/recording-files/parser-silk/recording-silk';
 import { formatTimeMs } from '../viz/util/time';
 import { aggregateRecording } from './aggregate-recording-shared';
-import type {
-	AggregatedRunDataSilk} from './aggregation-value-silk';
-import {
-	createAggregationTimePointCloneSilk,
-	createEmptyAggregationSilk,
-} from './aggregation-value-silk';
+import type { AggregatedRunDataSilk } from './aggregation-value-silk';
+import { createAggregationTimePointCloneSilk, createEmptyAggregationSilk } from './aggregation-value-silk';
 
 export function getZoneNameFromSceneName(sceneName: string | undefined | null): string | undefined {
 	if (!sceneName) return undefined;
@@ -25,6 +21,7 @@ export function aggregateRecordingSilk(recording: CombinedRecordingSilk): Aggreg
 		createEmptyAggregationSilk,
 		createAggregationTimePointCloneSilk,
 		getZoneNameFromSceneName,
+		new Map(),
 		(event, currentVirtualScenes, addToScenes) => {
 			if (isPlayerDataEventOfFieldSilk(event, 'heroState_dead') && event.value) {
 				// counted in frame end event, since deaths in pantheons (and probably dreams) don't trigger heroState dead

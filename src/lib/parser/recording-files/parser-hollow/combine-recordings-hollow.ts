@@ -1,11 +1,11 @@
 import { playerPositionToMapPositionHollow } from '~/lib/game-data/hollow-data/player-position-hollow';
+import { raise } from '~/lib/util/other';
 import { type HeroStateFieldHollow } from '../../../game-data/hollow-data/hero-states';
 import {
 	getDefaultValue,
 	playerDataFieldsHollow,
 	type PlayerDataFieldHollow,
 } from '../../../game-data/hollow-data/player-data-hollow';
-import { raise } from '../../../util';
 import {
 	FrameEndEventHollow,
 	frameEndEventHeroStateFields,
@@ -14,7 +14,7 @@ import {
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
 import { ModdingInfoEvent } from '../events-hollow/modding-info-event';
-import { PlayerDataEventHollow } from '../events-hollow/player-data-event';
+import { PlayerDataEventHollow } from '../events-hollow/player-data-event-hollow';
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';

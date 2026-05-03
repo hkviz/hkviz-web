@@ -1,3 +1,5 @@
+import { parseHtmlEntities } from '~/lib/util/html';
+import { assertNever } from '~/lib/util/other';
 import { localized } from '~/lib/viz/store/localization-store';
 import { enemiesJournalLang } from '../../game-data/hollow-data';
 import {
@@ -20,7 +22,6 @@ import {
 } from '../../parser/player-data/enemies';
 import { type PlayerPositionEvent } from '../../parser/recording-files/events-shared/player-position-event';
 import type { CombinedRecordingHollow } from '../../parser/recording-files/parser-hollow/recording-hollow';
-import { assertNever, parseHtmlEntities } from '../../util';
 import type { Split } from '../splits-shared/split';
 import { splitGroupsHollow } from './split-group-hollow';
 

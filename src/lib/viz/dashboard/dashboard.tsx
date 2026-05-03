@@ -1,4 +1,4 @@
-import type { JSXElement} from 'solid-js';
+import type { JSXElement } from 'solid-js';
 import { Show, createEffect, createSignal, type Component } from 'solid-js';
 import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
@@ -6,7 +6,7 @@ import { cn } from '~/lib/utils';
 import type { RunMetadata } from '~/server/run/_find_runs_internal';
 import { LayoutLane } from '../layout/layout-lane';
 import type { RunFileInfo, RunFileLoader } from '../loader';
-import { MapView } from '../map';
+import { MapView } from '../map/map-view';
 import { useUiStore } from '../store/ui-store';
 import { useViewportStore } from '../store/viewport-store';
 import { AnimationOptions } from '../timeline';

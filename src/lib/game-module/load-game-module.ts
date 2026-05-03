@@ -1,5 +1,5 @@
 import type { GameId } from '~/lib/types/game-ids';
-import { assertNever } from '../util';
+import { assertNever } from '../util/other';
 import type { GameModuleOfGame } from './game-module';
 
 export async function loadGameModule<Game extends GameId>(game: Game): Promise<GameModuleOfGame<Game>> {

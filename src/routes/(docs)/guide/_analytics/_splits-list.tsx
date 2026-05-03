@@ -1,7 +1,7 @@
 import { For } from 'solid-js';
 import { Card, CardContent, CardHeader } from '~/components/ui/card';
 import { splitGroupsArrayHollow } from '~/lib/splits/splits-hollow/split-group-hollow';
-import { Li, Ul } from '~/lib/viz';
+import { Li, Ul } from '~/lib/viz/list';
 
 export function SplitsListCard() {
 	return (

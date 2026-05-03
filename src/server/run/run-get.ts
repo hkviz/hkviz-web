@@ -1,6 +1,6 @@
 import { query } from '@solidjs/router';
 import { getUserOrNull } from '~/lib/auth/shared';
-import { raise } from '~/lib/parser';
+import { raise } from '~/lib/util/other';
 import { db } from '~/server/db';
 import { assertIsResearcher } from '../researcher';
 import { findRunsInternal, type RunFilter } from './_find_runs_internal';

@@ -1,6 +1,6 @@
 import { createMemo, For } from 'solid-js';
 import type { MapTextData } from '~/lib/game-data/shared/map-text-data';
-import { hkLangString } from '../../parser';
+import { hkLangString } from '~/lib/parser/lang';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useLocalizationStore } from '../store/localization-store';
 import { changeRoomColorForLightTheme, useRoomColoringStore } from '../store/room-coloring-store';

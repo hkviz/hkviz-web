@@ -1,4 +1,4 @@
-import { zeroPad } from '../../parser';
+import { zeroPad } from '~/lib/util/zero-pad';
 
 export function formatTimeMs(ms: number): string {
 	const isNegative = ms < 0;

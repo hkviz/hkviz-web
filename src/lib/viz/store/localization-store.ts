@@ -1,13 +1,10 @@
-import type { Signal} from 'solid-js';
+import type { Signal } from 'solid-js';
 import { createContext, createMemo, createSignal, onMount, useContext } from 'solid-js';
 import type { LocalizationDataSilk } from '~/lib/game-data/silk-data/localization/load-lang-silk.generated';
 import { loadLangSilk } from '~/lib/game-data/silk-data/localization/load-lang-silk.generated';
-import type {
-	SupportedLanguageSilk} from '~/lib/game-data/silk-data/localization/supported-languages-silk';
-import {
-	supportedLanguagesSilk,
-} from '~/lib/game-data/silk-data/localization/supported-languages-silk';
-import { assertNever } from '~/lib/util';
+import type { SupportedLanguageSilk } from '~/lib/game-data/silk-data/localization/supported-languages-silk';
+import { supportedLanguagesSilk } from '~/lib/game-data/silk-data/localization/supported-languages-silk';
+import { assertNever } from '~/lib/util/other';
 
 export const supportedLanguages = supportedLanguagesSilk;
 export type Language = SupportedLanguageSilk;

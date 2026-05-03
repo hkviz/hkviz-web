@@ -1,11 +1,11 @@
-import type { Component, JSXElement} from 'solid-js';
+import type { Component, JSXElement } from 'solid-js';
 import { Show } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import { assertNever } from '~/lib/parser';
 import type { GameId } from '~/lib/types/game-ids';
-import { AreaAnalyticsPanel } from '../area-analytics';
-import { MapView } from '../map';
+import { assertNever } from '~/lib/util/other';
+import { AreaAnalyticsPanel } from '../area-analytics/area-analytics';
 import { MapOptions } from '../map-options';
+import { MapView } from '../map/map-view';
 import { RunSplits } from '../splits/splits';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useLayoutStore } from '../store/layout-store';

@@ -1,8 +1,9 @@
 import { createEffect, createSignal, type Component } from 'solid-js';
+import { playerDataFieldsHollow } from '~/lib/game-data/hollow-data/player-data-hollow';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
 import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
-import { binarySearchLastIndexBefore, playerDataFieldsHollow } from '../../parser';
+import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';
 import { createAutoSizeCanvas } from '../canvas';
 import { corpsePinSourceOrUndefined, dreamGatePinSrc, heroPinSourceOrUndefined } from '../img-urls';
 import { useAnimationStore } from '../store/animation-store';

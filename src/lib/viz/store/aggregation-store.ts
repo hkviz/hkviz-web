@@ -5,7 +5,8 @@ import type { AggregationTimePointBase, AggregationValueBase } from '~/lib/aggre
 import { isAggregationTimepoint } from '~/lib/aggregation/aggregation-value-specific';
 import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import type { AggregationVariableInfo } from '~/lib/aggregation/aggregation-variable-info-shared';
-import { assertNever, binarySearchLastIndexBefore } from '../../parser';
+import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';
+import { assertNever } from '~/lib/util/other';
 import type { AnimationStore } from './animation-store';
 import type { GameplayStore } from './gameplay-store';
 import type { AreaSelectionMode, RoomDisplayStore } from './room-display-store';

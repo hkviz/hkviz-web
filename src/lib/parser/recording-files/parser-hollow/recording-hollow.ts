@@ -1,14 +1,14 @@
 import { aggregateRecordingHollow } from '~/lib/aggregation/aggregate-recording-hollow';
 import type { AggregatedRunDataHollow } from '~/lib/aggregation/aggregation-value-hollow';
 import type { Split } from '~/lib/splits/splits-shared/split';
+import { raise } from '~/lib/util/other';
 import { type PlayerDataFieldHollow } from '../../../game-data/hollow-data/player-data-hollow';
 import { createRecordingSplitsHollow } from '../../../splits/splits-hollow/generate-splits-hollow';
-import { raise } from '../../../util';
 import { FrameEndEventHollow } from '../events-hollow/frame-end-event-hollow';
 import type { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { type HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
 import { type ModInfo, type ModdingInfoEvent } from '../events-hollow/modding-info-event';
-import { PlayerDataEventHollow } from '../events-hollow/player-data-event';
+import { PlayerDataEventHollow } from '../events-hollow/player-data-event-hollow';
 import type { SpellDownEvent } from '../events-hollow/spell-down-event';
 import type { SpellFireballEvent } from '../events-hollow/spell-fireball-event';
 import type { SpellUpEvent } from '../events-hollow/spell-up-event';

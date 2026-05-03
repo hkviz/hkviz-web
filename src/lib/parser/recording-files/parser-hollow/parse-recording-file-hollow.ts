@@ -1,5 +1,4 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { raise, typeCheckNever } from '../../../util';
 import { parsePlayerDataFieldValueHollow, playerDataFieldsHollow } from '../../player-data';
 import {
 	EVENT_PREFIXES,
@@ -15,11 +14,12 @@ import {
 } from './mod-version-hollow';
 
 import { heroStateFieldsHollow, heroStatesSkipParsingHollow } from '~/lib/game-data/hollow-data/hero-states';
+import { raise, typeCheckNever } from '~/lib/util/other';
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
 import type { ModInfo } from '../events-hollow/modding-info-event';
 import { ModdingInfoEvent } from '../events-hollow/modding-info-event';
-import { PlayerDataEventHollow } from '../events-hollow/player-data-event';
+import { PlayerDataEventHollow } from '../events-hollow/player-data-event-hollow';
 import { SpellDownEvent } from '../events-hollow/spell-down-event';
 import { SpellFireballEvent } from '../events-hollow/spell-fireball-event';
 import { SpellUpEvent } from '../events-hollow/spell-up-event';

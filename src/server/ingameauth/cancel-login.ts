@@ -5,7 +5,7 @@ import { and, eq, isNull } from 'drizzle-orm';
 import { COOKIE_INGAME_AUTH_URL_ID } from '~/lib/cookies/cookie-names';
 import { jsonWithCookies } from '~/lib/cookies/cookies-response-helpers';
 import { serverCookiesGet } from '~/lib/cookies/cookies-server';
-import { raise } from '~/lib/parser';
+import { raise } from '~/lib/util/other';
 import { db } from '~/server/db';
 import { isMax10MinutesOld } from './utils';
 

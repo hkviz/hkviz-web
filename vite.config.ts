@@ -8,6 +8,7 @@ import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkToc from 'remark-toc';
+import { visualizer } from 'rollup-plugin-visualizer';
 import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 import { imagetools } from 'vite-imagetools';
@@ -74,6 +75,7 @@ const mdxOptions: MdxOptions = {
 };
 
 export default defineConfig(({ mode }) => {
+	const isAnalyze = mode === 'analyze';
 	const _env = loadEnv(mode, process.cwd(), '');
 	return {
 		envDir: './',
@@ -113,6 +115,14 @@ export default defineConfig(({ mode }) => {
 				},
 			}),
 			assetpackPlugin(),
+
+			isAnalyze &&
+				visualizer({
+					filename: `dist/stats-${mode}.html`,
+					gzipSize: true,
+					brotliSize: true,
+					open: true,
+				}),
 		],
 		nitro: {
 			preset: 'vercel',

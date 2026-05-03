@@ -1,4 +1,4 @@
-import { assertNever } from '../../util';
+import { assertNever } from '~/lib/util/other';
 import { roomDataUnscaled } from './map-rooms.generated';
 
 export type UnprocessedRoomInfoHollow = (typeof roomDataUnscaled)['rooms'][number];

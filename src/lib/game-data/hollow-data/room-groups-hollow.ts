@@ -1,9 +1,5 @@
-import { formatZoneAndRoomNameHollow } from '../../game-data/hollow-data/room-name-formatting-hollow';
-
-type RoomGroup = {
-	readonly name: `group_${string}`;
-	readonly sceneNames: readonly string[];
-};
+import type { RoomGroup } from '../shared/room-groups-shared';
+import { formatZoneAndRoomNameHollow } from './room-name-formatting-hollow';
 
 export const roomGroups = [
 	{
@@ -190,7 +186,7 @@ export const roomGroups = [
 	},
 ] as const satisfies readonly RoomGroup[];
 
-export const roomGroupNamesBySceneName = roomGroups
+export const roomGroupNamesBySceneNameHollow = roomGroups
 	.flatMap((group) =>
 		group.sceneNames.map((sceneName) => ({
 			sceneName,

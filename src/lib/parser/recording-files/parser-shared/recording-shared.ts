@@ -1,5 +1,5 @@
 import type { GameId } from '~/lib/types/game-ids';
-import { raise } from '../../../util';
+import { raise } from '~/lib/util/other';
 import { binarySearchLastIndexBefore } from '../../../util/binary-search';
 import type { SceneEvent } from '../events-shared/scene-event';
 import type { RecordingEventOfGame } from '../events-specific/event-of-game';

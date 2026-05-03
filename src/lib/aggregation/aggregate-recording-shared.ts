@@ -1,5 +1,4 @@
 import { SceneEvent } from '~/lib/parser/recording-files/events-shared/scene-event';
-import { roomGroupNamesBySceneName } from '../parser';
 import type { CombinedRecordingAny } from '../parser/recording-files/parser-specific/combined-recording';
 import type { AggregationMaximumMode } from './aggregation-max-mode';
 import type {
@@ -48,6 +47,7 @@ export function aggregateRecording<
 		isActiveScene: boolean,
 	) => TValueAggregationTimePoint,
 	getZoneNameFromSceneName: (sceneName: string | undefined | null) => string | undefined,
+	roomGroupNamesBySceneName: Map<string, string[]>,
 	aggregator: (
 		event: TRecording['events'][number],
 		currentVirtualScenes: string[],

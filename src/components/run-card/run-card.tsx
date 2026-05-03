@@ -2,6 +2,7 @@ import { useAction, useSubmission } from '@solidjs/router';
 import { ChevronDownIcon, HeartIcon } from 'lucide-solid';
 import { type Component, createEffect, createSignal, For, Index, type JSXElement, Show } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
+import { RelativeDate } from '~/components/date.tsx';
 import { RunCardFrameHollow } from '~/components/run-card/run-card-frame-hollow.tsx';
 import { RunCardFrameSilk } from '~/components/run-card/run-card-frame-silk.tsx';
 import { RunCardTitle } from '~/components/run-card/run-card-title.tsx';
@@ -13,18 +14,17 @@ import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types
 import { assertNever } from '~/lib/util/other';
 import { cn } from '~/lib/utils';
 import {
-	coin2 as coin2Img,
+	coin2Img,
 	dreamNailAwokenImg,
 	dreamNailImg,
 	hornetHealthImg,
 	maskImg,
-	RelativeDate,
 	rosaryHudImg,
 	shellShardImg,
 	steelMaskImg,
 	vesselImg,
-	vesselSteelSoul as vesselSteelSoulImg,
-} from '~/lib/viz';
+	vesselSteelSoulImg,
+} from '~/lib/viz/img-urls.ts';
 import { type RunMetadata } from '~/server/run/_find_runs_internal';
 import { runArchive, runDelete } from '~/server/run/run-deletion';
 import { type GetRunResult } from '~/server/run/run-get';

@@ -3,10 +3,10 @@ import type { SQLiteInsertValue } from 'drizzle-orm/sqlite-core';
 import type { MapZoneHollow } from '~/lib/game-data/hollow-data/map-zone-hollow';
 import type { MapZoneSilk } from '~/lib/game-data/silk-data/map-zone-silk';
 import { BellhomePaintColoursSilk, ExtraRestZonesSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import { assertNever } from '~/lib/parser';
 import type { GameId } from '~/lib/types/game-ids';
-import type { TagDBColumn} from '~/lib/types/tags/tag_db_column';
+import type { TagDBColumn } from '~/lib/types/tags/tag_db_column';
 import { tagDBNames } from '~/lib/types/tags/tag_db_column';
+import { assertNever } from '~/lib/util/other';
 import { type RunGameStateMetaColumnName, type runFiles, type runs } from '~/server/db/schema';
 
 type RunFileColumnSelect = Partial<{ [Col in keyof typeof runFiles]: true }>;

@@ -1,7 +1,7 @@
 import { createAsync } from '@solidjs/router';
-import type { Accessor, Component, JSXElement} from 'solid-js';
+import type { Accessor, Component, JSXElement } from 'solid-js';
 import { createContext, useContext } from 'solid-js';
-import { raise } from '~/lib/parser';
+import { raise } from '../util/other';
 import { getSessionOrNull } from './shared';
 import type { AuthSession } from './types';
 

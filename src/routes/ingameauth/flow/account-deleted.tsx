@@ -2,9 +2,9 @@ import { Title } from '@solidjs/meta';
 import { useAction, useSubmission } from '@solidjs/router';
 import { createSignal, Match, Show, Switch } from 'solid-js';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
+import { HKVizText } from '~/components/HKVizText';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
-import { HKVizText } from '~/lib/viz';
 import { ingameAuthCancelAccountDeletion } from '~/server/ingameauth/cancel-account-deletion';
 import { ingameAuthCancelLogin } from '~/server/ingameauth/cancel-login';
 

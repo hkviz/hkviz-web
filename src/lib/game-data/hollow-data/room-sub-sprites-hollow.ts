@@ -1,4 +1,4 @@
-import { roomGroupName } from '../../parser/map-data/room-groups';
+import { roomGroupName } from './room-groups-hollow';
 
 export const subSpritesHollow = {
 	Town: {

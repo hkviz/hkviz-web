@@ -1,12 +1,13 @@
 import { Title } from '@solidjs/meta';
-import type { RouteSectionProps} from '@solidjs/router';
+import type { RouteSectionProps } from '@solidjs/router';
 import { createAsync } from '@solidjs/router';
 import { Show, createEffect, createMemo } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card/run-card';
 import { useUser } from '~/lib/auth/client';
-import { assertNever } from '~/lib/parser';
-import { GameplayDashboard, createRunFileLoader } from '~/lib/viz';
+import { assertNever } from '~/lib/util/other';
+import { GameplayDashboard } from '~/lib/viz/dashboard/dashboard';
+import { createRunFileLoader } from '~/lib/viz/loader/run-files-loader';
 import { useSpriteSheetStore } from '~/lib/viz/spritesheets/spritesheet-store';
 import { useGameplayStore } from '~/lib/viz/store/gameplay-store';
 import { RunStoresProvider } from '~/lib/viz/store/store-context';

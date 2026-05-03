@@ -2,7 +2,7 @@ import { For } from 'solid-js';
 import { Card } from '~/components/ui/card';
 import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { aggregationVariableInfosHollow } from '~/lib/aggregation/aggregation-variable-info-hollow';
-import { AggregationVariableIcon } from '~/lib/viz';
+import { AggregationVariableIcon } from '~/lib/viz/area-analytics/aggregation-variable-icon';
 
 export function AggregationVariableDoc() {
 	// TODO add Silk doc

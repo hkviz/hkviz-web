@@ -10,10 +10,10 @@ import {
 	roomDataByGameObjectNameHollow,
 } from '../game-data/hollow-data/map-data-hollow';
 import { mapVisualExtendsHollow } from '../game-data/hollow-data/map-extends-hollow';
+import { playerDataFieldsHollow } from '../game-data/hollow-data/player-data-hollow';
 import { playerPositionToMapPositionHollow } from '../game-data/hollow-data/player-position-hollow';
 import { areaNamesHollow } from '../game-data/hollow-data/text-data-hollow';
-import { playerDataFieldsHollow } from '../parser';
-import { combineRecordingsHollow } from '../parser/recording-files';
+import { combineRecordingsHollow } from '../parser/recording-files/parser-hollow/combine-recordings-hollow';
 import { parseRecordingFileHollow } from '../parser/recording-files/parser-hollow/parse-recording-file-hollow';
 import { splitGroupsArrayHollow } from '../splits/splits-hollow/split-group-hollow';
 import type { GameModule } from './game-module';

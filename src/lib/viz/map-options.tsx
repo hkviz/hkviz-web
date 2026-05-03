@@ -23,14 +23,14 @@ import { Label } from '~/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
-import { assertNever } from '../util';
+import { assertNever } from '../util/other';
 import { useLayoutPanelContext } from './layout/layout-panel-context';
 import { LayoutPanelHeader } from './layout/layout-panel-header';
 import type { LayoutPanelTypeProps } from './layout/layout-panel-props';
 import { LayoutPanelWrapper } from './layout/layout-panel-wrapper';
-import type { RoomVisibility} from './store/room-display-store';
+import type { RoomVisibility } from './store/room-display-store';
 import { useRoomDisplayStore } from './store/room-display-store';
-import type { TraceVisibility} from './store/trace-store';
+import type { TraceVisibility } from './store/trace-store';
 import { TRACE_VISIBILITIES, useTraceStore } from './store/trace-store';
 
 function roomVisibilityName(v: RoomVisibility, short: boolean) {

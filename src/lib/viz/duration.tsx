@@ -1,6 +1,6 @@
 import { Show } from 'solid-js';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
-import { zeroPad } from '../parser';
+import { zeroPad } from '../util/zero-pad';
 import { cn } from '../utils';
 
 export function Duration(props: { ms: number; class?: string; withTooltip?: boolean }) {

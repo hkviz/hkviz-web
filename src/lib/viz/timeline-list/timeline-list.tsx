@@ -1,8 +1,6 @@
 import type { VirtualItem, Virtualizer } from '@tanstack/solid-virtual';
 import { createVirtualizer } from '@tanstack/solid-virtual';
-import type {
-	JSX,
-	JSXElement} from 'solid-js';
+import type { JSX, JSXElement } from 'solid-js';
 import {
 	createContext,
 	createEffect,
@@ -17,7 +15,7 @@ import {
 	useContext,
 } from 'solid-js';
 import { Button } from '~/components/ui/button';
-import { assertNever } from '~/lib/parser';
+import { assertNever } from '~/lib/util/other';
 import { cn } from '~/lib/utils';
 import { useAnimationStore } from '../store/animation-store';
 import { useGameplayStore } from '../store/gameplay-store';
