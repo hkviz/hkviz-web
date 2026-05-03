@@ -50,7 +50,7 @@ export const crestNameToHudSpriteSilk: Record<ToolCrestNameSilk, CrestHudSprite>
 		normalHud: '/silk-sprites/crest/HUD_Frames_Reaper0008.png',
 		seelSoulHud: '/silk-sprites/crest/HUD_Frame_Reaper_SS0008.png',
 		size: new Vector2(449, 173),
-		circleCenter: new Vector2(96, 90),
+		circleCenter: new Vector2(96, 83),
 	},
 	Wanderer: {
 		normalHud: '/silk-sprites/crest/HUD_frame_Wanderer0005.png',
@@ -62,7 +62,7 @@ export const crestNameToHudSpriteSilk: Record<ToolCrestNameSilk, CrestHudSprite>
 		normalHud: '/silk-sprites/crest/HUD_frame_Warrior0013.png',
 		seelSoulHud: '/silk-sprites/crest/HUD_Frame_Warrior_SS0013.png',
 		size: new Vector2(451, 144),
-		circleCenter: new Vector2(110, 50),
+		circleCenter: new Vector2(110, 94),
 	},
 	Witch: {
 		normalHud: '/silk-sprites/crest/HUD_Frame_Witch0007.png',
@@ -80,7 +80,7 @@ export const crestNameToHudSpriteSilk: Record<ToolCrestNameSilk, CrestHudSprite>
 		normalHud: '/silk-sprites/crest/HUD_frame_Shaman0008.png',
 		seelSoulHud: '/silk-sprites/crest/HUD_Frames_Shaman_SS0008.png',
 		size: new Vector2(238, 148),
-		circleCenter: new Vector2(85, 69),
+		circleCenter: new Vector2(85, 79),
 	},
 	Cursed: {
 		normalHud: '/silk-sprites/crest/HUD_Frame_Cursed0008.png',
