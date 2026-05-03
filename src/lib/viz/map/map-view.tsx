@@ -9,8 +9,11 @@ import {
 	untrack,
 	type Component,
 } from 'solid-js';
+import { Bounds } from '~/lib/game-data/shared/bounds';
+import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
+import { GameId, getGameName } from '~/lib/types/game-ids';
 import { cn } from '~/lib/utils';
-import { mapRoomsHollow, mapVisualExtends, RoomDataHollow } from '../../parser';
 import { createElementSize } from '../canvas';
 import { useLayoutPanelContextOrNull } from '../layout/layout-panel-context';
 import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
@@ -45,36 +48,38 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 	const [previousActiveSceneName, setPreviousActiveSceneName] = createSignal<string | null>(null);
 
 	const visibleRooms = createMemo(() => {
-		return mapRoomsHollow.filter((room) => {
-			const state = roomDisplayStore.stateForGameObjectName(room.gameObjectName);
-			return state?.isVisible() ?? false;
-		});
+		return (
+			gameplayStore.gameModule()?.map.rooms.filter((room) => {
+				const state = roomDisplayStore.stateForGameObjectName(room.gameObjectName);
+				return state?.isVisible() ?? false;
+			}) ?? []
+		);
 	});
 
-	const roomBySceneName = createMemo(() => new Map(mapRoomsHollow.map((room) => [room.sceneName, room])));
-
 	function roomSemanticName(sceneName: string) {
-		const room = roomBySceneName().get(sceneName);
+		const room = gameplayStore.gameModule()?.map.getMainRoomDataBySceneName(sceneName);
+		// TODO localize
 		return room?.roomNameFormatted ?? sceneName;
 	}
 
-	function centerOfRoom(room: RoomDataHollow) {
-		return {
-			x: room.visualBoundsAllSprites.min.x + room.visualBoundsAllSprites.size.x / 2,
-			y: room.visualBoundsAllSprites.min.y + room.visualBoundsAllSprites.size.y / 2,
-		};
+	function centerOfRoom(room: RoomDataOfGame<GameId>): Vector2 {
+		const bounds = room.visualBoundsAllSprites;
+		if (bounds == null) {
+			return Vector2.ZERO;
+		}
+		return new Vector2(bounds.min.x + bounds.size.x / 2, bounds.min.y + bounds.size.y / 2);
 	}
 
 	function chooseInitialActiveRoom() {
 		const selectedScene = roomDisplayStore.selectedSceneName();
-		if (selectedScene && roomBySceneName().has(selectedScene)) {
+		if (selectedScene && gameplayStore?.gameModule()?.map.getMainRoomDataBySceneName(selectedScene)) {
 			return selectedScene;
 		}
 		const hoveredScene = roomDisplayStore.hoveredSceneName();
-		if (hoveredScene && roomBySceneName().has(hoveredScene)) {
+		if (hoveredScene && gameplayStore?.gameModule()?.map.getMainRoomDataBySceneName(hoveredScene)) {
 			return hoveredScene;
 		}
-		return visibleRooms()[0]?.sceneName ?? mapRoomsHollow[0]?.sceneName ?? null;
+		return visibleRooms()[0]?.sceneName ?? gameplayStore?.gameModule()?.map.rooms[0]?.sceneName ?? null;
 	}
 
 	createEffect(() => {
@@ -111,10 +116,10 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 	}
 
 	type Direction = 'up' | 'down' | 'left' | 'right';
-	type ScoredCandidate = { room: RoomDataHollow; score: number };
+	type ScoredCandidate = { room: RoomDataOfGame<GameId>; score: number };
 
 	function findNextRoomInDirection(currentSceneName: string, direction: Direction) {
-		const currentRoom = roomBySceneName().get(currentSceneName);
+		const currentRoom = gameplayStore.gameModule()?.map.getMainRoomDataBySceneName(currentSceneName);
 		if (!currentRoom) return null;
 
 		const from = centerOfRoom(currentRoom);
@@ -195,16 +200,6 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 	const zoom = d3
 		.zoom<SVGSVGElement, unknown>()
 		.scaleExtent([0.25, 10])
-		.translateExtent([
-			[
-				mapVisualExtends.min.x - mapVisualExtends.size.x * 0.5,
-				mapVisualExtends.min.y - mapVisualExtends.size.y * 0.5,
-			],
-			[
-				mapVisualExtends.max.x + mapVisualExtends.size.x * 0.5,
-				mapVisualExtends.max.y + mapVisualExtends.size.y * 0.5,
-			],
-		])
 		.on('zoom', (event) => {
 			if (event.sourceEvent) {
 				mapZoomStore.setEnabled(false);
@@ -218,13 +213,17 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 			});
 		});
 
+	createEffect(() => {
+		const visualExtends = gameplayStore.gameModule()?.map.extends;
+		if (visualExtends == null) return;
+		zoom.translateExtent([
+			[visualExtends.min.x - visualExtends.size.x * 0.5, visualExtends.min.y - visualExtends.size.y * 0.5],
+			[visualExtends.max.x + visualExtends.size.x * 0.5, visualExtends.max.y + visualExtends.size.y * 0.5],
+		]);
+	});
+
 	const rootG = (
 		<g data-group="root">
-			{/* <Switch>
-				<Match when={gameplayStore.game() === 'silk'}>
-					<SilkMapRooms />
-				</Match>
-				<Match when={gameplayStore.game() === 'hollow'}> */}
 			<MapViewRooms
 				rooms={gameplayStore.gameModule()?.map.rooms ?? []}
 				onMouseOver={(_, r) => {
@@ -253,12 +252,14 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 	) as SVGGElement;
 	const rootGD3 = d3.select(rootG);
 
+	const visualExtends = () => gameplayStore.gameModule()?.map.extends ?? Bounds.ZERO;
+
 	const svg = (
 		<svg
 			class="absolute inset-0"
 			width={1000}
 			height={1000}
-			viewBox={mapVisualExtends.toD3ViewBox().toString()}
+			viewBox={visualExtends().toD3ViewBox().toString()}
 			preserveAspectRatio="xMidYMid meet"
 		>
 			<defs>
@@ -273,12 +274,20 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 		svgD3.call(zoom);
 	});
 
+	const ariaLabel = createMemo(() => {
+		const game = gameplayStore.game();
+		if (game == null) {
+			return 'Interactive map';
+		}
+		return 'Map of ' + getGameName(game);
+	});
+
 	const container = (
 		<div
 			class={cn('hk-main-map-wrapper relative', props.class)}
 			role="region"
 			tabIndex={0}
-			aria-label="Hollow Knight map"
+			aria-label={ariaLabel()}
 			aria-describedby={mapInstructionsId}
 			onKeyDown={handleMapKeyDown}
 			onFocus={() => {

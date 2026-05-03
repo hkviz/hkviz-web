@@ -17,6 +17,8 @@ export interface GameModule<Game extends GameId> {
 	parseRecordingFile: (response: Response, combinedPartNumber: number) => Promise<ParsedRecordingOfGame<Game>>;
 	combineRecordings: (recordings: ParsedRecordingOfGame<Game>[]) => CombinedRecordingOfGame<Game>;
 	map: {
+		scale: (gameUnits: number) => number;
+
 		rooms: RoomDataOfGame<Game>[];
 		areaTexts: MapTextData[];
 		extends: Bounds;

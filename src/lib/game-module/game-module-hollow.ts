@@ -1,6 +1,7 @@
 import { EMPTY_AGGREGATION_HOLLOW } from '../aggregation/aggregation-value-hollow';
 import { AggregationVariable } from '../aggregation/aggregation-variable';
 import { aggregationVariableInfosHollow } from '../aggregation/aggregation-variable-info-hollow';
+import { hollowScale } from '../game-data/hollow-data/hollow-scaling';
 import { playerDataFieldsHollow } from '../parser';
 import {
 	allRoomDataBySceneName as allRoomDataBySceneNameHollow,
@@ -26,6 +27,7 @@ export const gameModuleHollow: GameModule<'hollow'> = {
 	combineRecordings: combineRecordingsHollow,
 
 	map: {
+		scale: hollowScale,
 		rooms: mapRoomsHollow,
 		areaTexts: areaNamesHollow,
 		extends: mapVisualExtends,

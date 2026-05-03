@@ -1,14 +1,8 @@
 import { createEffect, createSignal, type Component } from 'solid-js';
-import { hollowScale } from '~/lib/game-data/hollow-data/hollow-scaling';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
 import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
-import {
-	binarySearchLastIndexBefore,
-	mapVisualExtends,
-	playerDataFieldsHollow,
-	playerPositionToMapPositionHollow,
-} from '../../parser';
+import { binarySearchLastIndexBefore, playerDataFieldsHollow } from '../../parser';
 import { createAutoSizeCanvas } from '../canvas';
 import { corpsePinSourceOrUndefined, dreamGatePinSrc, heroPinSourceOrUndefined } from '../img-urls';
 import { useAnimationStore } from '../store/animation-store';
@@ -117,16 +111,17 @@ export const HKMapTraces: Component = () => {
 		pinSizeTick();
 		const _canvas = autoSizeCanvas();
 		const gameModule = gameplayStore.gameModule();
-		if (!_canvas.canvas) return;
+		const visualExtends = gameModule?.map.extends;
+		if (!_canvas.canvas || !visualExtends) return;
 
 		// scaling
-		const boundsAspectRatio = mapVisualExtends.size.x / mapVisualExtends.size.y;
+		const boundsAspectRatio = visualExtends.size.x / visualExtends.size.y;
 		const canvasAspectRatio = _canvas.widthInUnits / _canvas.heightInUnits;
 
 		const mapDistanceToCanvasUnits =
 			boundsAspectRatio > canvasAspectRatio
-				? _canvas.widthInUnits / mapVisualExtends.size.x
-				: _canvas.heightInUnits / mapVisualExtends.size.y;
+				? _canvas.widthInUnits / visualExtends.size.x
+				: _canvas.heightInUnits / visualExtends.size.y;
 
 		const transform = mapZoomStore.transform();
 
@@ -134,11 +129,11 @@ export const HKMapTraces: Component = () => {
 
 		const xOffset =
 			_canvas.widthInUnits / 2 -
-			mapVisualExtends.center.x * mapDistanceToCanvasUnits +
+			visualExtends.center.x * mapDistanceToCanvasUnits +
 			transform.offsetX * mapDistanceToCanvasUnits;
 		const yOffset =
 			_canvas.heightInUnits / 2 -
-			mapVisualExtends.center.y * mapDistanceToCanvasUnits +
+			visualExtends.center.y * mapDistanceToCanvasUnits +
 			transform.offsetY * mapDistanceToCanvasUnits;
 		function x(v: number) {
 			return v * scaler + xOffset;
@@ -175,7 +170,7 @@ export const HKMapTraces: Component = () => {
 		// as everything else grows.
 		const baseLineWidth = mapDistanceToCanvasUnits * transform.scale ** 0.5;
 		const halfBaseLineWidth = baseLineWidth / 2;
-		const jumpThreshold = hollowScale(1.5);
+		const jumpThreshold = gameModule.map.scale(1.5);
 
 		let i = firstIndex;
 		type PositionEvent = (typeof positionEvents)[number];
@@ -236,7 +231,7 @@ export const HKMapTraces: Component = () => {
 				frameEvent instanceof FrameEndEventHollow &&
 				frameEvent.dreamGateScene !== playerDataFieldsHollow.byFieldName.dreamGateScene.defaultValue
 			) {
-				const mapPosition = playerPositionToMapPositionHollow(
+				const mapPosition = gameModule.map.positionToMap(
 					new Vector2(frameEvent.dreamGateX, frameEvent.dreamGateY),
 					recording.sceneEvents.find((it) => it.sceneName === frameEvent.dreamGateScene),
 				);

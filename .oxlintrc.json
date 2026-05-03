@@ -53,7 +53,8 @@
 		"typescript/no-floating-promises": "error",
 		//"typescript/no-shadow": "warn",
 		"typescript/no-deprecated": "warn",
-		"typescript/no-base-to-string": "error"
+		"typescript/no-base-to-string": "error",
+		"typescript/consistent-type-imports": "warn"
 	},
 	"overrides": [
 		{
