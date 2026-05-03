@@ -1,8 +1,8 @@
-import type { PlayerDataFieldTypeNamedMapSilk } from '~/lib/game-data/silk-data/player-data-silk';
+import type { PlayerDataFieldTypeNamedMapSilk } from '~/lib/game-data/silk-data/player-data/player-data-silk';
 import type {
 	PlayerDataFieldSilk,
 	PlayerDataFieldTypeSilk,
-} from '~/lib/game-data/silk-data/player-data-silk.generated';
+} from '~/lib/game-data/silk-data/player-data/player-data-silk.generated';
 import type {
 	CollectableItemsDataSilk,
 	CollectableMementosDataSilk,

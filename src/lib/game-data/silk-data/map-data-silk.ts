@@ -13,7 +13,7 @@ import type {
 	SomeSpriteTypeSilk,
 	SpriteConditionDataSilk,
 } from './map-data-silk.types.js';
-import type { MapZoneSilk } from './player-data-silk.generated.js';
+import type { MapZoneSilk } from './player-data/enum/mapzone-enum-silk.generated.js';
 import { sceneNameGetZone } from './scene-ids-get-zone.js';
 import { sceneNameToIdMetaSilk } from './scene-ids-silk.js';
 import { silkScaleBounds } from './silk-scaling.js';

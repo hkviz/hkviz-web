@@ -1,5 +1,5 @@
-import { isPlayerDataEventOfFieldSilk } from '~/lib/game-data/silk-data/player-data-silk';
-import type { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import { isPlayerDataEventOfFieldSilk } from '~/lib/game-data/silk-data/player-data/player-data-silk';
+import type { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data/player-data-silk.generated';
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
 import { raise } from '~/lib/util/other';
 import { EventCreationContext } from '../events-shared/event-creation-context';

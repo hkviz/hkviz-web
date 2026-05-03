@@ -1,15 +1,12 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import type {
-	CollectableRelicNameSilk} from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
-import {
-	collectableRelicSilk,
-} from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
-import type { CollectableNameSilk} from '~/lib/game-data/silk-data/collectable-silk.generated';
+import type { CollectableRelicNameSilk } from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
+import { collectableRelicSilk } from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
+import type { CollectableNameSilk } from '~/lib/game-data/silk-data/collectable-silk.generated';
 import { collectableSilk } from '~/lib/game-data/silk-data/collectable-silk.generated';
 import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldValueSilk,
-} from '~/lib/game-data/silk-data/player-data-silk.generated';
+} from '~/lib/game-data/silk-data/player-data/player-data-silk.generated';
 import type {
 	CollectableItemsDataSilk,
 	CollectableRelicsDataSilk,

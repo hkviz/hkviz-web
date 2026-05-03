@@ -1,27 +1,24 @@
-import type {
-	CollectableRelicNameSilk} from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
-import {
-	collectableRelicSilk,
-} from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
-import type { CollectableNameSilk} from '~/lib/game-data/silk-data/collectable-silk.generated';
+import type { CollectableRelicNameSilk } from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
+import { collectableRelicSilk } from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
+import type { CollectableNameSilk } from '~/lib/game-data/silk-data/collectable-silk.generated';
 import { collectableSilk } from '~/lib/game-data/silk-data/collectable-silk.generated';
 import { isBossEnemySilk } from '~/lib/game-data/silk-data/enemy-journal-silk';
-import type { EnemyJournalNameSilk} from '~/lib/game-data/silk-data/enemy-journal-silk.generated';
+import type { EnemyJournalNameSilk } from '~/lib/game-data/silk-data/enemy-journal-silk.generated';
 import { enemyJournalSilk } from '~/lib/game-data/silk-data/enemy-journal-silk.generated';
+import { SaveSlotCompletionIcons_CompletionStateSilk } from '~/lib/game-data/silk-data/player-data/enum/saveslotcompletionicons_completionstate-enum-silk.generated';
 import {
 	completionNameSilk,
 	completionSpriteSilk,
 	completionSubtitleSilk,
-	isPlayerDataEventOfFieldSilk,
-} from '~/lib/game-data/silk-data/player-data-silk';
-import { SaveSlotCompletionIcons_CompletionStateSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import type { QuestNameSilk} from '~/lib/game-data/silk-data/quest-silk.generated';
+} from '~/lib/game-data/silk-data/player-data/player-data-endings-silk';
+import { isPlayerDataEventOfFieldSilk } from '~/lib/game-data/silk-data/player-data/player-data-silk';
+import type { QuestNameSilk } from '~/lib/game-data/silk-data/quest-silk.generated';
 import { questSilk } from '~/lib/game-data/silk-data/quest-silk.generated';
 import { getToolCrestSubtitle } from '~/lib/game-data/silk-data/tool-crest-silk';
-import type { ToolCrestNameSilk} from '~/lib/game-data/silk-data/tool-crest-silk.generated';
+import type { ToolCrestNameSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
 import { toolCrestSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
 import { toolItemSubtitle } from '~/lib/game-data/silk-data/tool-item-silk';
-import type { ToolItemNameSilk} from '~/lib/game-data/silk-data/tool-item-silk.generated';
+import type { ToolItemNameSilk } from '~/lib/game-data/silk-data/tool-item-silk.generated';
 import { toolItemSilk } from '~/lib/game-data/silk-data/tool-item-silk.generated';
 import type { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { localized } from '~/lib/viz/store/localization-store';

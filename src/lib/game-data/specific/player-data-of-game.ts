@@ -5,12 +5,12 @@ import type {
 	playerDataFieldsHollow,
 	PlayerDataFieldValueHollow,
 } from '../hollow-data/player-data-hollow';
-import type { playerDataFieldsSilk } from '../silk-data/player-data-silk';
+import type { playerDataFieldsSilk } from '../silk-data/player-data/player-data-silk';
 import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldSilk,
 	PlayerDataFieldValueSilk,
-} from '../silk-data/player-data-silk.generated';
+} from '../silk-data/player-data/player-data-silk.generated';
 
 export type PlayerDataFieldAny = PlayerDataFieldHollow | PlayerDataFieldSilk;
 

@@ -3,10 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
 import { mapZoneSchemaHollow } from '~/lib/game-data/hollow-data/map-zone-hollow';
-import {
-	BellhomePaintColoursNumberSchemaSilk,
-	ExtraRestZonesNumberSchemaSilk,
-} from '~/lib/game-data/silk-data/player-data-silk.generated';
+import { BellhomePaintColoursNumberSchemaSilk } from '~/lib/game-data/silk-data/player-data/enum/bellhomepaintcolours-enum-silk.generated';
+import { ExtraRestZonesNumberSchemaSilk } from '~/lib/game-data/silk-data/player-data/enum/extrarestzones-enum-silk.generated';
 import type { ModVersionHollow } from '~/lib/parser/recording-files/parser-hollow/mod-version-hollow';
 import { isModVersionBefore1_6_0Hollow } from '~/lib/parser/recording-files/parser-hollow/mod-version-hollow';
 import { r2RunPartFileKey } from '~/lib/r2';

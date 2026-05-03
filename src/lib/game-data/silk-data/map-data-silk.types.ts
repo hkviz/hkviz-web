@@ -2,7 +2,8 @@ import type * as d3 from 'd3';
 import type { Bounds } from '../shared/bounds';
 import type { RoomDataBase } from '../shared/map-shared';
 import type { MapTextData } from '../shared/map-text-data';
-import type { MapZoneSilk, PlayerDataFieldNameSilk } from './player-data-silk.generated';
+import type { MapZoneSilk } from './player-data/enum/mapzone-enum-silk.generated';
+import type { PlayerDataFieldNameSilk } from './player-data/player-data-silk.generated';
 
 export interface SilkSpriteInfo {
 	name: string;

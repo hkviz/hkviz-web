@@ -7,6 +7,7 @@ import { serverCookiesGet } from './cookies-server';
 let currentCookieHeader = '';
 vi.mock('@solidjs/start/http', async (importOriginal) => {
 	return {
+		// oxlint-disable-next-line typescript/consistent-type-imports
 		...(await importOriginal<typeof import('@solidjs/start/http')>()),
 		getWebRequest: () => ({
 			headers: new Map([['cookie', currentCookieHeader]]),

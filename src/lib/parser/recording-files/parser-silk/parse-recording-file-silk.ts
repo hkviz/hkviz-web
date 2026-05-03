@@ -1,10 +1,10 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk';
+import { playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data/player-data-silk';
 import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldSilk,
 	PlayerDataFieldValueSilk,
-} from '~/lib/game-data/silk-data/player-data-silk.generated';
+} from '~/lib/game-data/silk-data/player-data/player-data-silk.generated';
 import type { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
 import { typeCheckNever } from '~/lib/util/other';
 import { isSubSceneNameSilk } from '../../../game-data/silk-data/sub-scene-names-silk';

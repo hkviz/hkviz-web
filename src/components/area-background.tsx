@@ -1,5 +1,6 @@
 import type { MapZoneHollow } from '~/lib/game-data/hollow-data/map-zone-hollow';
-import { BellhomePaintColoursSilk, ExtraRestZonesSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import { BellhomePaintColoursSilk } from '~/lib/game-data/silk-data/player-data/enum/bellhomepaintcolours-enum-silk.generated';
+import { ExtraRestZonesSilk } from '~/lib/game-data/silk-data/player-data/enum/extrarestzones-enum-silk.generated';
 import type { AreaBackgroundData } from '~/lib/game-data/silk-data/save-slot-backgrounds-silk.generated';
 import { saveSlotBackgroundSilk } from '~/lib/game-data/silk-data/save-slot-backgrounds-silk.generated';
 import { assertNever } from '~/lib/util/other';

@@ -6,16 +6,13 @@ import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card/run-card';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Label } from '~/components/ui/label';
+import { BellhomePaintColoursSilk } from '~/lib/game-data/silk-data/player-data/enum/bellhomepaintcolours-enum-silk.generated';
+import { ExtraRestZonesSilk } from '~/lib/game-data/silk-data/player-data/enum/extrarestzones-enum-silk.generated';
+import { MapZoneSilk } from '~/lib/game-data/silk-data/player-data/enum/mapzone-enum-silk.generated';
 import { toolCrestIdToNameSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
 import { findPublicRuns } from '~/server/run/find-public-runs';
-import { getRun } from '~/server/run/run-get';
-
-import {
-	BellhomePaintColoursSilk,
-	ExtraRestZonesSilk,
-	MapZoneSilk,
-} from '~/lib/game-data/silk-data/player-data-silk.generated';
 import type { RunGameStateSilk } from '~/server/run/run-column-selects';
+import { getRun } from '~/server/run/run-get';
 import '../_testing_styles.css';
 
 // TODO

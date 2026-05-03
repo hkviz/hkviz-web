@@ -8,7 +8,7 @@ import type { PlayerDataTestDataSilk, PlayerDataTestGroupSilk } from '~/lib/game
 import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldValueSilk,
-} from '~/lib/game-data/silk-data/player-data-silk.generated';
+} from '~/lib/game-data/silk-data/player-data/player-data-silk.generated';
 import type { PlayerDataEventHollow } from '~/lib/parser/recording-files/events-hollow/player-data-event-hollow';
 import type { PlayerDataEventSilk } from '~/lib/parser/recording-files/events-silk/player-data-event-silk';
 import type { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';

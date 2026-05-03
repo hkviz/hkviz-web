@@ -1,10 +1,10 @@
 import { Show } from 'solid-js';
+import type { SaveSlotCompletionIcons_CompletionStateSilk } from '~/lib/game-data/silk-data/player-data/enum/saveslotcompletionicons_completionstate-enum-silk.generated';
 import {
 	completionNameSilk,
 	completionSpriteSilk,
 	completionSubtitleSilk,
-} from '~/lib/game-data/silk-data/player-data-silk';
-import type { SaveSlotCompletionIcons_CompletionStateSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+} from '~/lib/game-data/silk-data/player-data/player-data-endings-silk';
 import type { RunMetadata } from '~/server/run/_find_runs_internal';
 import { Button } from '../ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';

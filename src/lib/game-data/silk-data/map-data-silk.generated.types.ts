@@ -6,7 +6,7 @@
 
 import type { SpriteInfoGenerated } from '../shared/sprite-info-generated.ts';
 import type { Vector3Like, Vector4Like } from '../shared/vector-like.ts';
-import type { PlayerDataFieldNameSilk } from './player-data-silk.generated.ts';
+import type { PlayerDataFieldNameSilk } from './player-data/player-data-silk.generated.ts';
 
 export const MapZonesGenerated = {
 	Tut: 'Tut',

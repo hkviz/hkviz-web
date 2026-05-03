@@ -7,7 +7,7 @@ import {
 import { EMPTY_AGGREGATION_SILK } from '../aggregation/aggregation-value-silk';
 import type { AggregationVariable } from '../aggregation/aggregation-variable';
 import { aggregationVariableInfosSilk } from '../aggregation/aggregation-variable-info-silk';
-import { playerDataFieldsSilk } from '../game-data/silk-data/player-data-silk';
+import { playerDataFieldsSilk } from '../game-data/silk-data/player-data/player-data-silk';
 import { playerPositionToMapPositionSilk } from '../game-data/silk-data/player-position-silk';
 import { silkScale } from '../game-data/silk-data/silk-scaling';
 import { combineRecordingsSilk } from '../parser/recording-files/parser-silk/combine-recordings-silk';

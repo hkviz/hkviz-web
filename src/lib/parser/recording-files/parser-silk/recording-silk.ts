@@ -1,7 +1,9 @@
 import { aggregateRecordingSilk } from '~/lib/aggregation/aggregate-recording-silk';
 import type { AggregatedRunDataSilk } from '~/lib/aggregation/aggregation-value-silk';
-import type { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import { playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import {
+	playerDataFieldsSilk,
+	type PlayerDataFieldNameSilk,
+} from '~/lib/game-data/silk-data/player-data/player-data-silk.generated';
 import type { Split } from '~/lib/splits/splits-shared/split';
 import { createRecordingSplitsSilk } from '~/lib/splits/splits-silk/generate-splits-silk';
 import { raise } from '~/lib/util/other';
