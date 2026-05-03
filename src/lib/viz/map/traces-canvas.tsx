@@ -1,5 +1,4 @@
 import { createEffect, createSignal, type Component } from 'solid-js';
-import { playerDataFieldsHollow } from '~/lib/game-data/hollow-data/player-data-hollow';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { isFrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-check-hollow';
 import { isFrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-check-silk';
@@ -230,7 +229,10 @@ export const HKMapTraces: Component = () => {
 			// dream gate
 			if (
 				isFrameEndEventHollow(frameEvent) &&
-				frameEvent.dreamGateScene !== playerDataFieldsHollow.byFieldName.dreamGateScene.defaultValue
+				frameEvent.dreamGateScene != null &&
+				frameEvent.dreamGateScene !== '' &&
+				gameModule.game === 'hollow' &&
+				frameEvent.dreamGateScene !== gameModule.playerDataFields.getDefaultValue('dreamGateScene')
 			) {
 				const mapPosition = gameModule.map.positionToMap(
 					new Vector2(frameEvent.dreamGateX, frameEvent.dreamGateY),
@@ -257,7 +259,10 @@ export const HKMapTraces: Component = () => {
 			// shade
 			const hasShade =
 				(isFrameEndEventHollow(frameEvent) &&
-					frameEvent.shadeScene !== playerDataFieldsHollow.byFieldName.shadeScene.defaultValue) ||
+					frameEvent.shadeScene != null &&
+					frameEvent.shadeScene !== '' &&
+					gameModule.game === 'hollow' &&
+					frameEvent.shadeScene !== gameModule.playerDataFields.getDefaultValue('shadeScene')) ||
 				(isFrameEndEventSilk(frameEvent) && frameEvent.HeroCorpseScene);
 
 			if (hasShade) {
