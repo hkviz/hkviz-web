@@ -1,9 +1,9 @@
+import { heroStateFieldsHollow, type HeroStateFieldHollow } from '../../../game-data/hollow-data/hero-states';
 import {
 	getDefaultValue as getDefaultPlayerDataValue,
 	playerDataFieldsHollow,
 	type PlayerDataFieldHollow,
 } from '../../../game-data/hollow-data/player-data-hollow';
-import { heroStateFields, type HeroStateField } from '../../hero-state/hero-states';
 import { type BossSequenceDoorCompletion } from '../../player-data/boss-completion';
 import type { EventCreationContext } from '../events-shared/event-creation-context';
 import { FrameEndEventBase } from '../events-shared/frame-end-event-base';
@@ -163,9 +163,9 @@ export const frameEndEventPlayerDataFields = new Set<PlayerDataFieldHollow>(fram
 
 type FrameEndEventPlayerDataFieldHollow = (typeof frameEndEventPlayerDataFieldsHollow)[number];
 
-export const frameEndHeroStateFieldsArray = [heroStateFields.byFieldName.dead] as const;
+export const frameEndHeroStateFieldsArray = [heroStateFieldsHollow.byFieldName.dead] as const;
 
-export const frameEndEventHeroStateFields = new Set<HeroStateField>(frameEndHeroStateFieldsArray);
+export const frameEndEventHeroStateFields = new Set<HeroStateFieldHollow>(frameEndHeroStateFieldsArray);
 
 type FrameEndEventHeroStateField = (typeof frameEndHeroStateFieldsArray)[number];
 
@@ -355,7 +355,7 @@ export class FrameEndEventHollow extends FrameEndEventBase implements FrameEndBa
 		getPreviousPlayerData: <TField extends PlayerDataFieldHollow>(
 			field: TField,
 		) => PlayerDataEventHollow<TField> | undefined,
-		getPreviousHeroState: (field: HeroStateField) => HeroStateEvent | undefined,
+		getPreviousHeroState: (field: HeroStateFieldHollow) => HeroStateEvent | undefined,
 		ctx: EventCreationContext,
 	) {
 		super(ctx);
@@ -988,7 +988,7 @@ export class FrameEndEventHollow extends FrameEndEventBase implements FrameEndBa
 			? previousXunFlowerBroken.value
 			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.xunFlowerBroken);
 
-		this.dead = getPreviousHeroState(heroStateFields.byFieldName.dead)?.value ?? false;
+		this.dead = getPreviousHeroState(heroStateFieldsHollow.byFieldName.dead)?.value ?? false;
 
 		const previousShadeScene = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.shadeScene);
 		this.shadeScene = previousShadeScene

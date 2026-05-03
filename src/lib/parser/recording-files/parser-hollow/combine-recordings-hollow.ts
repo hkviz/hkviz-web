@@ -1,11 +1,11 @@
+import { playerPositionToMapPositionHollow } from '~/lib/game-data/hollow-data/player-position-hollow';
+import { type HeroStateFieldHollow } from '../../../game-data/hollow-data/hero-states';
 import {
 	getDefaultValue,
 	playerDataFieldsHollow,
 	type PlayerDataFieldHollow,
 } from '../../../game-data/hollow-data/player-data-hollow';
 import { raise } from '../../../util';
-import { type HeroStateField } from '../../hero-state/hero-states';
-import { playerPositionToMapPositionHollow } from '../../map-data';
 import {
 	FrameEndEventHollow,
 	frameEndEventHeroStateFields,
@@ -49,8 +49,8 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 		return previousPlayerDataEventsByField.get(field) as PlayerDataEventHollow<TField> | undefined;
 	}
 
-	const previousHeroStateByField = new Map<HeroStateField, HeroStateEvent>();
-	function getPreviousHeroState(field: HeroStateField) {
+	const previousHeroStateByField = new Map<HeroStateFieldHollow, HeroStateEvent>();
+	function getPreviousHeroState(field: HeroStateFieldHollow) {
 		return previousHeroStateByField.get(field);
 	}
 

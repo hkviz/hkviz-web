@@ -7,17 +7,17 @@ import { Bounds } from '~/lib/game-data/shared/bounds';
 import { colorFromRgbVector } from '~/lib/game-data/shared/colors';
 import { spriteInfoBounds } from '~/lib/game-data/shared/sprite-info-mapper';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { customRoomData, type CustomRoomInfo, type UnprocessedRoomInfo } from '../../parser/map-data/room-custom';
 import { roomGroupByName } from '../../parser/map-data/room-groups';
-import { getSubSprites } from '../../parser/map-data/room-sub-sprites';
-import { getZoomZones } from '../../parser/map-data/zoom-zone';
 import { omit } from '../../util';
+import { customRoomDataHollow, type CustomRoomInfoHollow, type UnprocessedRoomInfoHollow } from './room-custom-hollow';
 import { formatZoneAndRoomNameHollow } from './room-name-formatting-hollow';
+import { getSubSpritesHollow } from './room-sub-sprites-hollow';
 import { prepareTextExportDataHollow } from './text-data-hollow';
+import { getZoomZonesHollow } from './zoom-zone-hollow';
 
-const roomDataUnscaledWithCustom: Array<UnprocessedRoomInfo | CustomRoomInfo> = [
+const roomDataUnscaledWithCustom: Array<UnprocessedRoomInfoHollow | CustomRoomInfoHollow> = [
 	...roomDataUnscaled.rooms,
-	...customRoomData,
+	...customRoomDataHollow,
 ];
 
 // some order changes, so hover works better:
@@ -114,7 +114,7 @@ export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 	const texts = room.texts.map((text) => prepareTextExportDataHollow(text));
 
 	const names = formatZoneAndRoomNameHollow(room.mapZone, room.sceneName);
-	const zoomZones = getZoomZones(room.sceneName, names.zoneNameFormatted);
+	const zoomZones = getZoomZonesHollow(room.sceneName, names.zoneNameFormatted);
 
 	const roomCorrected = {
 		game: 'hollow' as const,
@@ -136,7 +136,7 @@ export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 		subSpriteOfGameObjectName: null as null | string,
 	};
 
-	const subSprites = getSubSprites(room.spriteInfo.name);
+	const subSprites = getSubSpritesHollow(room.spriteInfo.name);
 	if (subSprites) {
 		const { normal, conditional, rough } = subSprites.parentSpriteWithoutSubSprites;
 		if (normal) {
@@ -237,11 +237,11 @@ export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 	return [roomCorrected, ...subSpritesCorrected];
 });
 
-export const roomDataByGameObjectName = new Map<string, RoomDataHollow>(
+export const roomDataByGameObjectNameHollow = new Map<string, RoomDataHollow>(
 	mapRoomsHollow.map((room) => [room.gameObjectName, room] as const),
 );
 
-export const mainRoomDataBySceneName = new Map<string, RoomDataHollow>(
+export const mainRoomDataBySceneNameHollow = new Map<string, RoomDataHollow>(
 	mapRoomsHollow
 		.filter((it) => it.isMainGameObject)
 		.flatMap((room) => {
@@ -251,7 +251,7 @@ export const mainRoomDataBySceneName = new Map<string, RoomDataHollow>(
 		}),
 );
 
-export const allRoomDataBySceneName = new Map<string, RoomDataHollow[]>(
+export const allRoomDataBySceneNameHollow = new Map<string, RoomDataHollow[]>(
 	[...d3.group(mapRoomsHollow, (d) => d.sceneName).entries()].flatMap(([sceneName, rooms]) => {
 		const self = [sceneName, rooms] as const;
 		const groupChildren = roomGroupByName.get(sceneName as never)?.sceneNames ?? [];
@@ -259,7 +259,7 @@ export const allRoomDataBySceneName = new Map<string, RoomDataHollow[]>(
 	}),
 );
 
-export const allRoomDataIncludingSubspritesBySceneName = (() => {
+export const allRoomDataIncludingSubspritesBySceneNameHollow = (() => {
 	const map = new Map<string, RoomDataHollow[]>();
 	function add(room: RoomDataHollow, sceneName: string) {
 		let arr = map.get(sceneName);
@@ -273,7 +273,7 @@ export const allRoomDataIncludingSubspritesBySceneName = (() => {
 	mapRoomsHollow.forEach((room) => {
 		add(room, room.sceneName);
 		if (room.subSpriteOfGameObjectName) {
-			const other = roomDataByGameObjectName.get(room.subSpriteOfGameObjectName)!;
+			const other = roomDataByGameObjectNameHollow.get(room.subSpriteOfGameObjectName)!;
 			add(room, other.sceneName);
 		}
 	});

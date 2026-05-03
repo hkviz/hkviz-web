@@ -1,6 +1,5 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { raise, typeCheckNever } from '../../../util';
-import { heroStateFields, heroStatesSkipParsing } from '../../hero-state';
 import { parsePlayerDataFieldValueHollow, playerDataFieldsHollow } from '../../player-data';
 import {
 	EVENT_PREFIXES,
@@ -15,6 +14,7 @@ import {
 	recordingFileVersionNewestHollow,
 } from './mod-version-hollow';
 
+import { heroStateFieldsHollow, heroStatesSkipParsingHollow } from '~/lib/game-data/hollow-data/hero-states';
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
 import type { ModInfo } from '../events-hollow/modding-info-event';
@@ -126,9 +126,9 @@ export function parseRecordingFileHollow(
 					continue LINE_LOOP;
 				}
 				case PARTIAL_EVENT_PREFIXES.HERO_CONTROLLER_STATE_SHORTNAME: {
-					const field = heroStateFields.byShortCode[eventTypeSuffix()];
+					const field = heroStateFieldsHollow.byShortCode[eventTypeSuffix()];
 					if (!field) throw new Error('Unknown hero controller field short code' + eventTypeSuffix());
-					if (heroStatesSkipParsing.has(field)) continue LINE_LOOP;
+					if (heroStatesSkipParsingHollow.has(field)) continue LINE_LOOP;
 					events.push(new HeroStateEvent(previousPlayerPositionEvent, field, args[0] === '1', ctx));
 					continue LINE_LOOP;
 				}

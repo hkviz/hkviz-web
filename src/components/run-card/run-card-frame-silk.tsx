@@ -1,7 +1,7 @@
-import type { Component} from 'solid-js';
+import type { Component } from 'solid-js';
 import { Show } from 'solid-js';
 import { runCardInteractiveBrightnessClasses } from '~/components/run-card/run-card-interactive-brightness-classes.tsx';
-import type { ToolCrestNameSilk} from '~/lib/game-data/silk-data/tool-crest-silk.generated';
+import type { ToolCrestNameSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
 import { toolCrestNamesSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
 import { brokenSpriteSilk, crestNameToHudSpriteSilk } from '~/lib/game-data/silk-data/tool-crests-silk';
 import { cn } from '~/lib/utils.ts';
@@ -34,7 +34,7 @@ export const RunCardFrameSilk: Component<{
 				<img
 					src={brokenSpriteSilk}
 					alt="Broken Steel Soul game mode frame"
-					class={cn('absolute -top-2 -left-5 h-24 w-auto max-w-none', runCardInteractiveBrightnessClasses)}
+					class={cn('absolute top-1 left-0 h-18 w-auto max-w-none', runCardInteractiveBrightnessClasses)}
 				/>
 			}
 		>

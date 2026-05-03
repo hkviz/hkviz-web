@@ -1,20 +1,20 @@
-import { roomDataUnscaled } from '../../game-data/hollow-data';
 import { assertNever } from '../../util';
+import { roomDataUnscaled } from './map-rooms.generated';
 
-export type UnprocessedRoomInfo = (typeof roomDataUnscaled)['rooms'][number];
+export type UnprocessedRoomInfoHollow = (typeof roomDataUnscaled)['rooms'][number];
 
-export type CustomRoomInfo = UnprocessedRoomInfo & {
+export type CustomRoomInfoHollow = UnprocessedRoomInfoHollow & {
 	gameObjectNameNeededInVisited?: string;
 };
 
 interface MakeCustomRoomOptions {
-	nextToRoom: UnprocessedRoomInfo;
+	nextToRoom: UnprocessedRoomInfoHollow;
 	size: { x: number; y: number };
 	scale: number;
 }
 interface MakeCustomRoomGetterOptions extends MakeCustomRoomOptions {
-	makeSpriteInfo: (options: MakeSpriteInfoOptions) => UnprocessedRoomInfo['spriteInfo'];
-	makeBounds: (options: MakeBoundsOptions) => UnprocessedRoomInfo['visualBounds'];
+	makeSpriteInfo: (options: MakeSpriteInfoOptions) => UnprocessedRoomInfoHollow['spriteInfo'];
+	makeBounds: (options: MakeBoundsOptions) => UnprocessedRoomInfoHollow['visualBounds'];
 }
 
 interface MakeSpriteInfoOptions {
@@ -29,7 +29,7 @@ function makeCustomRoom({ nextToRoom, size, scale }: MakeCustomRoomOptions) {
 		optionsGetter: (
 			options: MakeCustomRoomGetterOptions,
 		) => Omit<
-			CustomRoomInfo,
+			CustomRoomInfoHollow,
 			| 'playerPositionBounds'
 			| 'sprite'
 			| 'spriteRough'
@@ -40,9 +40,9 @@ function makeCustomRoom({ nextToRoom, size, scale }: MakeCustomRoomOptions) {
 			| 'roughSpriteInfo'
 			| 'texts'
 		> &
-			Partial<CustomRoomInfo>,
-	): CustomRoomInfo {
-		function makeSpriteInfo({ name }: MakeSpriteInfoOptions): UnprocessedRoomInfo['spriteInfo'] {
+			Partial<CustomRoomInfoHollow>,
+	): CustomRoomInfoHollow {
+		function makeSpriteInfo({ name }: MakeSpriteInfoOptions): UnprocessedRoomInfoHollow['spriteInfo'] {
 			return {
 				name,
 				size,
@@ -115,7 +115,7 @@ function makeCustomRoom({ nextToRoom, size, scale }: MakeCustomRoomOptions) {
 			origColor: options.origColor ?? nextToRoom.origColor,
 			mapZone: options.mapZone ?? nextToRoom.mapZone,
 			texts: options.texts ?? [],
-		} as CustomRoomInfo;
+		} as CustomRoomInfoHollow;
 	};
 }
 
@@ -236,4 +236,10 @@ const grimmTent = makeCustomRoom({ nextToRoom: dirtmouth, size: { x: 102.0, y: 8
 	};
 });
 
-export const customRoomData: CustomRoomInfo[] = [abysee15, colosseumBronze, colosseumSilver, colosseumGold, grimmTent];
+export const customRoomDataHollow: CustomRoomInfoHollow[] = [
+	abysee15,
+	colosseumBronze,
+	colosseumSilver,
+	colosseumGold,
+	grimmTent,
+];

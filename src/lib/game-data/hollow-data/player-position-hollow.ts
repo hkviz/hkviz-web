@@ -1,6 +1,6 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { type SceneEvent } from '../../parser/recording-files/events-shared/scene-event';
-import { mainRoomDataBySceneName } from './map-data-hollow';
+import { mainRoomDataBySceneNameHollow } from './map-data-hollow';
 
 export function playerPositionToMapPositionHollow(
 	playerPosition: Vector2,
@@ -8,7 +8,7 @@ export function playerPositionToMapPositionHollow(
 ): Vector2 | undefined {
 	if (!sceneEvent) return undefined;
 
-	const mapRoom = mainRoomDataBySceneName.get(sceneEvent.getMainVirtualSceneName());
+	const mapRoom = mainRoomDataBySceneNameHollow.get(sceneEvent.getMainVirtualSceneName());
 	if (!mapRoom || !sceneEvent.originOffset || !sceneEvent.sceneSize) return undefined;
 
 	const { playerPositionBounds } = mapRoom;

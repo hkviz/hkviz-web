@@ -1,6 +1,6 @@
-import { roomGroupName } from './room-groups';
+import { roomGroupName } from '../../parser/map-data/room-groups';
 
-export const subSprites = {
+export const subSpritesHollow = {
 	Town: {
 		parentSpriteWithoutSubSprites: {
 			normal: 'edited/Town',
@@ -621,9 +621,9 @@ export const subSprites = {
 	},
 };
 
-type SubSprites = typeof subSprites;
-type SubSprite = SubSprites[keyof SubSprites];
+type SubSpritesHollow = typeof subSpritesHollow;
+type SubSpriteHollow = SubSpritesHollow[keyof SubSpritesHollow];
 
-export function getSubSprites(roomName: string) {
-	return (subSprites as Record<string, SubSprite>)[roomName];
+export function getSubSpritesHollow(roomName: string) {
+	return (subSpritesHollow as Record<string, SubSpriteHollow>)[roomName];
 }

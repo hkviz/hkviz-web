@@ -1,9 +1,13 @@
 import { createLazyMemo } from '@solid-primitives/memo';
 import * as d3 from 'd3';
 import { createEffect, createMemo, onCleanup, untrack } from 'solid-js';
+import {
+	gameObjectNamesIgnoredInZoomZoneHollow,
+	type ZoomZoneHollow,
+} from '~/lib/game-data/hollow-data/zoom-zone-hollow';
 import { Bounds } from '~/lib/game-data/shared/bounds';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { binarySearchLastIndexBefore, gameObjectNamesIgnoredInZoomZone, type ZoomZone } from '../../parser';
+import { binarySearchLastIndexBefore } from '../../parser';
 import { useAnimationStore } from '../store/animation-store';
 import { useAnimationTickStore } from '../store/animation-tick-store';
 import { useGameplayStore } from '../store/gameplay-store';
@@ -116,7 +120,7 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 		return { sceneEvents, sceneEventIndex, sceneEvent, mainRoomData };
 	});
 
-	let previousZoomZone: ZoomZone | null = null;
+	let previousZoomZone: ZoomZoneHollow | null = null;
 	const zoomZone = createLazyMemo(() => {
 		const target = mapZoomStore.target();
 		if (target !== 'current-area') return null;
@@ -127,7 +131,7 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 		const currentPossibleZoomZones = mainRoomData.zoomZones;
 		const currentPossiblePrimaryZoomZone = currentPossibleZoomZones[0]!;
 
-		let zoomZone: ZoomZone | null = null;
+		let zoomZone: ZoomZoneHollow | null = null;
 
 		if (currentPossiblePrimaryZoomZone === previousZoomZone) {
 			// primary zoom zone is previous, therefore keep primary.
@@ -275,7 +279,7 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 		if (!_zoomZone) return null;
 
 		const rooms = gameModule()?.map.rooms.filter(
-			(r) => r.zoomZones.includes(_zoomZone) && !gameObjectNamesIgnoredInZoomZone.has(r.gameObjectName),
+			(r) => r.zoomZones.includes(_zoomZone) && !gameObjectNamesIgnoredInZoomZoneHollow.has(r.gameObjectName),
 		);
 		if (rooms == null || rooms.length === 0) return null;
 		return Bounds.fromContainingBoundsIgnoreNull(rooms.map((r) => r.visualBounds));

@@ -2,17 +2,17 @@ import { EMPTY_AGGREGATION_HOLLOW } from '../aggregation/aggregation-value-hollo
 import type { AggregationVariable } from '../aggregation/aggregation-variable';
 import { aggregationVariableInfosHollow } from '../aggregation/aggregation-variable-info-hollow';
 import { hollowScale } from '../game-data/hollow-data/hollow-scaling';
-import { playerDataFieldsHollow } from '../parser';
 import {
-	allRoomDataBySceneName as allRoomDataBySceneNameHollow,
-	allRoomDataIncludingSubspritesBySceneName as allRoomDataIncludingSubspritesBySceneNameHollow,
-	areaNamesHollow,
-	mainRoomDataBySceneName,
+	allRoomDataBySceneNameHollow,
+	allRoomDataIncludingSubspritesBySceneNameHollow,
+	mainRoomDataBySceneNameHollow,
 	mapRoomsHollow,
-	mapVisualExtends,
-	playerPositionToMapPositionHollow,
-	roomDataByGameObjectName,
-} from '../parser/map-data';
+	roomDataByGameObjectNameHollow,
+} from '../game-data/hollow-data/map-data-hollow';
+import { mapVisualExtendsHollow } from '../game-data/hollow-data/map-extends-hollow';
+import { playerPositionToMapPositionHollow } from '../game-data/hollow-data/player-position-hollow';
+import { areaNamesHollow } from '../game-data/hollow-data/text-data-hollow';
+import { playerDataFieldsHollow } from '../parser';
 import { combineRecordingsHollow } from '../parser/recording-files';
 import { parseRecordingFileHollow } from '../parser/recording-files/parser-hollow/parse-recording-file-hollow';
 import { splitGroupsArrayHollow } from '../splits/splits-hollow/split-group-hollow';
@@ -30,14 +30,14 @@ export const gameModuleHollow: GameModule<'hollow'> = {
 		scale: hollowScale,
 		rooms: mapRoomsHollow,
 		areaTexts: areaNamesHollow,
-		extends: mapVisualExtends,
+		extends: mapVisualExtendsHollow,
 
-		getMainRoomDataBySceneName: (sceneName) => mainRoomDataBySceneName.get(sceneName),
+		getMainRoomDataBySceneName: (sceneName) => mainRoomDataBySceneNameHollow.get(sceneName),
 		getAllRoomDataBySceneNameNoSubSprites: (sceneName) => allRoomDataBySceneNameHollow.get(sceneName),
 		getAllRoomDataBySceneNameWithSubSprites: (sceneName) =>
 			allRoomDataIncludingSubspritesBySceneNameHollow.get(sceneName),
 		getRoomDataByGameObjectName: (gameObjectName) => {
-			return roomDataByGameObjectName.get(gameObjectName);
+			return roomDataByGameObjectNameHollow.get(gameObjectName);
 		},
 
 		positionToMap: playerPositionToMapPositionHollow,

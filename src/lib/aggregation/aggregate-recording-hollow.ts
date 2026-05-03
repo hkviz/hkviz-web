@@ -1,26 +1,19 @@
-import { mainRoomDataBySceneName } from '../game-data/hollow-data/map-data-hollow';
+import { mainRoomDataBySceneNameHollow } from '../game-data/hollow-data/map-data-hollow';
 import { playerDataFieldsHollow } from '../game-data/hollow-data/player-data-hollow';
 import { FrameEndEventHollow } from '../parser/recording-files/events-hollow/frame-end-event-hollow';
 import { HeroStateEvent } from '../parser/recording-files/events-hollow/hero-state-event';
 import { SpellDownEvent } from '../parser/recording-files/events-hollow/spell-down-event';
 import { SpellFireballEvent } from '../parser/recording-files/events-hollow/spell-fireball-event';
 import { SpellUpEvent } from '../parser/recording-files/events-hollow/spell-up-event';
-import type {
-	CombinedRecordingHollow} from '../parser/recording-files/parser-hollow/recording-hollow';
-import {
-	isPlayerDataEventOfFieldHollow,
-} from '../parser/recording-files/parser-hollow/recording-hollow';
+import type { CombinedRecordingHollow } from '../parser/recording-files/parser-hollow/recording-hollow';
+import { isPlayerDataEventOfFieldHollow } from '../parser/recording-files/parser-hollow/recording-hollow';
 import { aggregateRecording } from './aggregate-recording-shared';
-import type {
-	AggregatedRunDataHollow} from './aggregation-value-hollow';
-import {
-	createAggregationTimePointCloneHollow,
-	createEmptyAggregationHollow,
-} from './aggregation-value-hollow';
+import type { AggregatedRunDataHollow } from './aggregation-value-hollow';
+import { createAggregationTimePointCloneHollow, createEmptyAggregationHollow } from './aggregation-value-hollow';
 
 export function getZoneNameFromSceneName(sceneName: string | undefined | null): string | undefined {
 	if (!sceneName) return undefined;
-	const roomData = mainRoomDataBySceneName.get(sceneName);
+	const roomData = mainRoomDataBySceneNameHollow.get(sceneName);
 	return roomData?.zoneNameFormatted;
 }
 

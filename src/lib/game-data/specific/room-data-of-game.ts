@@ -1,5 +1,5 @@
-import type { RoomDataHollow } from '~/lib/parser';
 import type { GameId } from '~/lib/types/game-ids';
+import type { RoomDataHollow } from '../hollow-data/map-data-hollow';
 import type { RoomDataSilk } from '../silk-data/map-data-silk.types';
 
 export type RoomDataAny = RoomDataHollow | RoomDataSilk;

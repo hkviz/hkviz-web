@@ -1,6 +1,5 @@
 export * from '../util';
 export * from './charms';
-export * from './hero-state';
 export * from './hk-types';
 export * from './lang';
 export * from './map-data';
