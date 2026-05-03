@@ -1,12 +1,11 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import { createContext, createMemo, createSignal, useContext, type Accessor } from 'solid-js';
 import type { RoomSpriteVariantHollow } from '~/lib/game-data/hollow-data/map-data-hollow';
-import { playerDataFieldsHollow } from '~/lib/game-data/hollow-data/player-data-hollow';
 import type { PlayerDataTestDataSilk, RoomSpriteVariantSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
 import type { RoomDataAny } from '~/lib/game-data/specific/room-data-of-game';
 import { isRoomDataHollow, isRoomDataSilk } from '~/lib/game-data/specific/room-data-of-game';
-import { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
-import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import { isCombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-check-hollow';
+import { isCombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-check-silk';
 import { assertNever } from '~/lib/util/other';
 import type { GameplayStore } from './gameplay-store';
 import type { PlayerDataAnimationStore } from './player-data-animation-store';
@@ -86,18 +85,17 @@ export function createRoomDisplayStore(
 			case 'visited':
 				const recording = gameplayStore.recording();
 				if (!recording) return new Set<string>();
-				if (recording instanceof CombinedRecordingHollow) {
-					return new Set(
+				if (isCombinedRecordingHollow(recording)) {
+					return new Set<string>(
 						// TODO change player data lookup to string
-						recording.lastPlayerDataEventOfField(playerDataFieldsHollow.byFieldName.scenesVisited)?.value ??
-							[],
+						recording.lastPlayerDataEventOfField('scenesVisited')?.value ?? [],
 					);
-				} else if (recording instanceof CombinedRecordingSilk) {
+				} else if (isCombinedRecordingSilk(recording)) {
 					return recording.lastPlayerDataEventOfField('scenesVisited')?.value ?? new Set<string>();
 				}
 				return assertNever(recording);
 			case 'visited-animated':
-				return new Set(playerDataAnimationStore()?.values?.scenesVisited() ?? []);
+				return new Set<string>(playerDataAnimationStore()?.values?.scenesVisited() ?? []);
 			default:
 				return assertNever(visibility);
 		}

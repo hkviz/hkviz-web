@@ -1,8 +1,8 @@
 import { createEffect, createSignal, type Component } from 'solid-js';
 import { playerDataFieldsHollow } from '~/lib/game-data/hollow-data/player-data-hollow';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
-import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
+import { isFrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-check-hollow';
+import { isFrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-check-silk';
 import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';
 import { createAutoSizeCanvas } from '../canvas';
 import { corpsePinSourceOrUndefined, dreamGatePinSrc, heroPinSourceOrUndefined } from '../img-urls';
@@ -229,7 +229,7 @@ export const HKMapTraces: Component = () => {
 		if (frameEvent && traceStore.visibility() === 'fade_out' && recording && frameEvent) {
 			// dream gate
 			if (
-				frameEvent instanceof FrameEndEventHollow &&
+				isFrameEndEventHollow(frameEvent) &&
 				frameEvent.dreamGateScene !== playerDataFieldsHollow.byFieldName.dreamGateScene.defaultValue
 			) {
 				const mapPosition = gameModule.map.positionToMap(
@@ -256,23 +256,21 @@ export const HKMapTraces: Component = () => {
 			}
 			// shade
 			const hasShade =
-				(frameEvent instanceof FrameEndEventHollow &&
+				(isFrameEndEventHollow(frameEvent) &&
 					frameEvent.shadeScene !== playerDataFieldsHollow.byFieldName.shadeScene.defaultValue) ||
-				(frameEvent instanceof FrameEndEventSilk && frameEvent.HeroCorpseScene);
+				(isFrameEndEventSilk(frameEvent) && frameEvent.HeroCorpseScene);
 
 			if (hasShade) {
-				const position =
-					frameEvent instanceof FrameEndEventHollow
-						? new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY)
-						: frameEvent instanceof FrameEndEventSilk
-							? frameEvent.HeroDeathScenePos
-							: null;
-				const sceneName =
-					frameEvent instanceof FrameEndEventHollow
-						? frameEvent.shadeScene
-						: frameEvent instanceof FrameEndEventSilk
-							? frameEvent.HeroCorpseScene
-							: null;
+				const position = isFrameEndEventHollow(frameEvent)
+					? new Vector2(frameEvent.shadePositionX, frameEvent.shadePositionY)
+					: isFrameEndEventSilk(frameEvent)
+						? frameEvent.HeroDeathScenePos
+						: null;
+				const sceneName = isFrameEndEventHollow(frameEvent)
+					? frameEvent.shadeScene
+					: isFrameEndEventSilk(frameEvent)
+						? frameEvent.HeroCorpseScene
+						: null;
 
 				if (position && sceneName) {
 					const sceneEvent = recording.sceneEvents.find((it) => it.sceneName === sceneName);

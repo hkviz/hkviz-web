@@ -1,16 +1,19 @@
 import { createLazyMemo } from '@solid-primitives/memo';
 import { createContext, createMemo, useContext, type Accessor } from 'solid-js';
+import type {
+	PlayerDataFieldNameHollow,
+	PlayerDataFieldValueHollow,
+} from '~/lib/game-data/hollow-data/player-data-hollow';
 import type { PlayerDataTestDataSilk, PlayerDataTestGroupSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
 import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldValueSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import type { PlayerDataFieldValueHollow } from '~/lib/parser/player-data';
-import { getDefaultValue, playerDataFieldsHollow } from '~/lib/parser/player-data';
 import type { PlayerDataEventHollow } from '~/lib/parser/recording-files/events-hollow/player-data-event-hollow';
 import type { PlayerDataEventSilk } from '~/lib/parser/recording-files/events-silk/player-data-event-silk';
 import type { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
-import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import { isCombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-check-silk';
+import type { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';
 import { assertNever } from '~/lib/util/other';
 import type { AnimationStore } from './animation-store';
@@ -30,7 +33,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 							const r = gameplayStore.recording() as CombinedRecordingHollow | null;
 							if (!r) return null;
 
-							const events = r.playerDataEventsPerField.get(field);
+							const events = r.playerDataEventsPerField.get(field.name);
 							if (!events || events.length === 0) return null;
 
 							const index = binarySearchLastIndexBefore(
@@ -44,9 +47,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 					];
 				}),
 			) as any as {
-				[fieldName in keyof typeof playerDataFieldsHollow.byFieldName]: Accessor<
-					PlayerDataEventHollow<(typeof playerDataFieldsHollow)['byFieldName'][fieldName]>
-				>;
+				[fieldName in PlayerDataFieldNameHollow]: Accessor<PlayerDataEventHollow<PlayerDataFieldNameHollow>>;
 			};
 
 			const values = Object.fromEntries(
@@ -57,15 +58,15 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 							const e: PlayerDataEventHollow<any> = (event as any)();
 
 							if (!e)
-								return getDefaultValue((playerDataFieldsHollow.byFieldName as any)[fieldName as any]);
+								return gameModule.playerDataFields.getDefaultValue(
+									fieldName as PlayerDataFieldNameHollow,
+								);
 							return e.value;
 						}),
 					];
 				}),
 			) as any as {
-				[fieldName in keyof typeof playerDataFieldsHollow.byFieldName]: Accessor<
-					PlayerDataFieldValueHollow<(typeof playerDataFieldsHollow)['byFieldName'][fieldName]>
-				>;
+				[fieldName in PlayerDataFieldNameHollow]: Accessor<PlayerDataFieldValueHollow<fieldName>>;
 			};
 
 			return {
@@ -96,9 +97,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 					];
 				}),
 			) as any as {
-				[fieldName in keyof typeof playerDataFieldsHollow.byFieldName]: Accessor<
-					PlayerDataEventHollow<(typeof playerDataFieldsHollow)['byFieldName'][fieldName]>
-				>;
+				[fieldName in PlayerDataFieldNameHollow]: Accessor<PlayerDataEventHollow<PlayerDataFieldNameHollow>>;
 			};
 
 			const values = Object.fromEntries(
@@ -121,7 +120,7 @@ export function createPlayerDataAnimationStore(animationStore: AnimationStore, g
 				if (!gameplayUnchecked) {
 					return false;
 				}
-				if (!(gameplayUnchecked instanceof CombinedRecordingSilk)) {
+				if (!isCombinedRecordingSilk(gameplayUnchecked)) {
 					console.warn(
 						'Trying to check player data condition while not having a silk recording',
 						condition,

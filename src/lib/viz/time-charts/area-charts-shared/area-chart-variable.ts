@@ -1,7 +1,9 @@
 import type { Component } from 'solid-js';
-import { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
+import { isFrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-check-hollow';
+import type { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
 import type { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
-import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
+import { isFrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-check-silk';
+import type { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
 import type { ColorClasses } from '../../colors';
 import type { LocalizedString } from '../../store/localization-store';
 
@@ -39,9 +41,9 @@ export function getChartVarValue(
 	variable: LineChartVariableDescription,
 ): number {
 	if (event == null) return 0;
-	if (variable.game === 'hollow' && event instanceof FrameEndEventHollow) {
+	if (variable.game === 'hollow' && isFrameEndEventHollow(event)) {
 		return event[variable.key];
-	} else if (variable.game === 'silk' && event instanceof FrameEndEventSilk) {
+	} else if (variable.game === 'silk' && isFrameEndEventSilk(event)) {
 		return event[variable.key];
 	}
 	console.warn(`Event type does not match variable game type, event:`, event, `variable:`, variable);

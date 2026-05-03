@@ -10,7 +10,7 @@ import {
 	roomDataByGameObjectNameHollow,
 } from '../game-data/hollow-data/map-data-hollow';
 import { mapVisualExtendsHollow } from '../game-data/hollow-data/map-extends-hollow';
-import { playerDataFieldsHollow } from '../game-data/hollow-data/player-data-hollow';
+import { getDefaultPlayerDataValueHollow, playerDataFieldsHollow } from '../game-data/hollow-data/player-data-hollow';
 import { playerPositionToMapPositionHollow } from '../game-data/hollow-data/player-position-hollow';
 import { areaNamesHollow } from '../game-data/hollow-data/text-data-hollow';
 import { combineRecordingsHollow } from '../parser/recording-files/parser-hollow/combine-recordings-hollow';
@@ -43,6 +43,7 @@ export const gameModuleHollow: GameModule<'hollow'> = {
 		positionToMap: playerPositionToMapPositionHollow,
 	},
 	playerDataFields: {
+		getDefaultValue: getDefaultPlayerDataValueHollow,
 		byFieldName: playerDataFieldsHollow.byFieldName,
 		list: playerDataFieldsHollow.list,
 	},

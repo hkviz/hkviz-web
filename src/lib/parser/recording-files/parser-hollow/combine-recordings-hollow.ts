@@ -1,15 +1,15 @@
 import { playerPositionToMapPositionHollow } from '~/lib/game-data/hollow-data/player-position-hollow';
 import { raise } from '~/lib/util/other';
 import { type HeroStateFieldHollow } from '../../../game-data/hollow-data/hero-states';
+import type { PlayerDataFieldNameHollow } from '../../../game-data/hollow-data/player-data-hollow';
 import {
-	getDefaultValue,
+	getDefaultPlayerDataValueHollow,
 	playerDataFieldsHollow,
-	type PlayerDataFieldHollow,
 } from '../../../game-data/hollow-data/player-data-hollow';
 import {
 	FrameEndEventHollow,
 	frameEndEventHeroStateFields,
-	frameEndEventPlayerDataFields,
+	frameEndEventPlayerDataFieldsSetHollow,
 } from '../events-hollow/frame-end-event-hollow';
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
@@ -42,11 +42,11 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 	let isTransitioning = false;
 
 	const previousPlayerDataEventsByField = new Map<
-		PlayerDataFieldHollow,
-		PlayerDataEventHollow<PlayerDataFieldHollow>
+		PlayerDataFieldNameHollow,
+		PlayerDataEventHollow<PlayerDataFieldNameHollow>
 	>();
-	function getPreviousPlayerData<TField extends PlayerDataFieldHollow>(field: TField) {
-		return previousPlayerDataEventsByField.get(field) as PlayerDataEventHollow<TField> | undefined;
+	function getPreviousPlayerData<TFieldName extends PlayerDataFieldNameHollow>(field: TFieldName) {
+		return previousPlayerDataEventsByField.get(field) as PlayerDataEventHollow<TFieldName> | undefined;
 	}
 
 	const previousHeroStateByField = new Map<HeroStateFieldHollow, HeroStateEvent>();
@@ -82,21 +82,21 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 			if (event.timestamp > lastTimestamp) {
 				if (!hasCreatedFirstEndFrameEvent && recording.combinedPartNumber === 1) {
 					Object.values(playerDataFieldsHollow.byFieldName).forEach((field) => {
-						if (!previousPlayerDataEventsByField.has(field)) {
+						if (!previousPlayerDataEventsByField.has(field.name)) {
 							// if part number = 1 all non default player data fields should have been added
 							// so we can add default values for the rest
 							ctx.timestamp = lastTimestamp;
 							ctx.msIntoGame = msIntoGame; // should be zero
-							const event = new PlayerDataEventHollow<PlayerDataFieldHollow>(
+							const event = new PlayerDataEventHollow<PlayerDataFieldNameHollow>(
 								null,
 								null,
-								field,
-								getDefaultValue(field),
+								field.name,
+								getDefaultPlayerDataValueHollow(field.name),
 								ctx,
 							);
 							events.push(event);
-							previousPlayerDataEventsByField.set(field, event);
-							if (frameEndEventPlayerDataFields.has(field)) {
+							previousPlayerDataEventsByField.set(field.name, event);
+							if (frameEndEventPlayerDataFieldsSetHollow.has(field.name)) {
 								createEndFrameEvent = true;
 							}
 						}
@@ -151,37 +151,31 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 
 				event.previousSceneEvent = previousSceneEvent;
 				diedInThisSceneVisit = false;
-				const previousCurrentBossSequenceEvent = getPreviousPlayerData(
-					playerDataFieldsHollow.byFieldName.currentBossSequence,
-				);
+				const previousCurrentBossSequenceEvent = getPreviousPlayerData('currentBossSequence');
 				if (previousCurrentBossSequenceEvent?.value && !isPantheonRoom(event.sceneName)) {
 					// pantheon stopped, but game does not change player data to reflect that
 					// so a event is faked here
 					ctx.timestamp = lastTimestamp;
 					ctx.msIntoGame = msIntoGame;
 
-					const currentBossSequenceEvent = new PlayerDataEventHollow<
-						typeof playerDataFieldsHollow.byFieldName.currentBossSequence
-					>(
+					const currentBossSequenceEvent = new PlayerDataEventHollow<'currentBossSequence'>(
 						previousPlayerPositionEvent,
 						previousCurrentBossSequenceEvent ?? null,
-						playerDataFieldsHollow.byFieldName.currentBossSequence,
+						'currentBossSequence',
 						null,
 						ctx,
 					);
 					previousPlayerDataEventsByField.set(
-						playerDataFieldsHollow.byFieldName.currentBossSequence,
-						currentBossSequenceEvent,
+						'currentBossSequence',
+						currentBossSequenceEvent as PlayerDataEventHollow<PlayerDataFieldNameHollow>,
 					);
 					events.push(currentBossSequenceEvent);
 				}
 
-				const currentBossSequence =
-					getPreviousPlayerData(playerDataFieldsHollow.byFieldName.currentBossSequence)?.value ?? null;
+				const currentBossSequence = getPreviousPlayerData('currentBossSequence')?.value ?? null;
 				event.currentBossSequence = currentBossSequence;
 
-				const visitedScenes =
-					getPreviousPlayerData(playerDataFieldsHollow.byFieldName.scenesVisited)?.value ?? [];
+				const visitedScenes = getPreviousPlayerData('scenesVisited')?.value ?? [];
 
 				// if scene is not in player data, it might still be added in a few seconds or so, but if its not
 				// its added to the scenes below.
@@ -311,13 +305,13 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 
 			// previousPlayerDataEventsByField
 			if (event instanceof PlayerDataEventHollow) {
-				event.previousPlayerDataEventOfField = previousPlayerDataEventsByField.get(event.field) ?? null;
-				previousPlayerDataEventsByField.set(event.field, event);
-				if (frameEndEventPlayerDataFields.has(event.field)) {
+				event.previousPlayerDataEventOfField = previousPlayerDataEventsByField.get(event.fieldName) ?? null;
+				previousPlayerDataEventsByField.set(event.fieldName, event);
+				if (frameEndEventPlayerDataFieldsSetHollow.has(event.fieldName)) {
 					createEndFrameEvent = true;
 				}
 
-				if (isPlayerDataEventOfFieldHollow(event, playerDataFieldsHollow.byFieldName.currentBossSequence)) {
+				if (isPlayerDataEventOfFieldHollow(event, 'currentBossSequence')) {
 					const sceneEvent = previousPlayerPositionEvent?.sceneEvent;
 					if (sceneEvent && isPantheonRoom(sceneEvent.sceneName)) {
 						sceneEvent.currentBossSequence = event.value;
@@ -327,8 +321,8 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 				if (isPlayerDataEventWithFieldTypeHollow(event, 'List`1')) {
 					event.value = event.value.flatMap((it) =>
 						it === '::' ? (event.previousPlayerDataEventOfField?.value ?? []) : [it],
-					);
-					if (isPlayerDataEventOfFieldHollow(event, playerDataFieldsHollow.byFieldName.scenesVisited)) {
+					) as string[] & string;
+					if (isPlayerDataEventOfFieldHollow(event, 'scenesVisited')) {
 						for (const it of event.previousPlayerDataEventOfField?.value ?? []) {
 							// even if scenes are removed again from the player data (e.g. by loading an old save or modding),
 							// we don't want to loose the scenes visited in the recording.
@@ -371,27 +365,25 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 			(all || visitedScenesToCheckIfInPlayerData[0]!.msIntoGame + 0 < msIntoGame)
 		) {
 			const { sceneName, msIntoGame } = visitedScenesToCheckIfInPlayerData.shift()!;
-			const previousScenesVisitedEvent = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.scenesVisited);
+			const previousScenesVisitedEvent = getPreviousPlayerData('scenesVisited');
 			const previousValue = previousScenesVisitedEvent?.value ?? [];
 
 			if (!previousValue.includes(sceneName)) {
 				ctx.timestamp = lastTimestamp;
 				ctx.msIntoGame = msIntoGame;
-				const visitedScenesEvent = new PlayerDataEventHollow<
-					typeof playerDataFieldsHollow.byFieldName.scenesVisited
-				>(
+				const visitedScenesEvent = new PlayerDataEventHollow<'scenesVisited'>(
 					previousPlayerPositionEvent,
 					previousScenesVisitedEvent ?? null,
-					playerDataFieldsHollow.byFieldName.scenesVisited,
+					'scenesVisited',
 					[...previousValue, sceneName],
 					ctx,
 				);
 				visitedScenesEvent.msIntoGame = msIntoGame;
 				previousPlayerDataEventsByField.set(
-					playerDataFieldsHollow.byFieldName.scenesVisited,
-					visitedScenesEvent,
+					'scenesVisited',
+					visitedScenesEvent as PlayerDataEventHollow<PlayerDataFieldNameHollow>,
 				);
-				if (frameEndEventPlayerDataFields.has(playerDataFieldsHollow.byFieldName.scenesVisited)) {
+				if (frameEndEventPlayerDataFieldsSetHollow.has('scenesVisited')) {
 					createEndFrameEvent = true;
 				}
 				events.push(visitedScenesEvent);

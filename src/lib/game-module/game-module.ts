@@ -6,7 +6,12 @@ import type { AggregationVariable } from '../aggregation/aggregation-variable';
 import type { AggregationVariableInfo } from '../aggregation/aggregation-variable-info-shared';
 import type { Bounds } from '../game-data/shared/bounds';
 import type { MapTextData } from '../game-data/shared/map-text-data';
-import type { PlayerDataFieldByNameOfGame, PlayerDataFieldOfGame } from '../game-data/specific/player-data-of-game';
+import type {
+	PlayerDataFieldByNameOfGame,
+	PlayerDataFieldNameOfGame,
+	PlayerDataFieldOfGame,
+	PlayerDataFieldValueOfGame,
+} from '../game-data/specific/player-data-of-game';
 import type { SceneEvent } from '../parser/recording-files/events-shared/scene-event';
 import type { CombinedRecordingOfGame } from '../parser/recording-files/parser-specific/combined-recording';
 import type { ParsedRecordingOfGame } from '../parser/recording-files/parser-specific/parsed-recording-of-game';
@@ -33,6 +38,9 @@ export interface GameModule<Game extends GameId> {
 	playerDataFields: {
 		byFieldName: PlayerDataFieldByNameOfGame<Game>;
 		list: PlayerDataFieldOfGame<Game>[];
+		getDefaultValue<TField extends PlayerDataFieldNameOfGame<Game>>(
+			fieldName: TField,
+		): PlayerDataFieldValueOfGame<Game, TField> | null;
 	};
 	aggregation: {
 		variableInfos: Record<AggregationVariable, AggregationVariableInfo>;

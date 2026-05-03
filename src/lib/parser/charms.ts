@@ -1,4 +1,5 @@
-import { charmsGenerated, uiLangGenerated } from '../game-data/hollow-data';
+import { charmsGenerated } from '../game-data/hollow-data/charms.generated';
+import { uiLangGenerated } from '../game-data/hollow-data/lang/ui.generated';
 import { parseHtmlEntities } from '../util/html';
 import { raise } from '../util/other';
 import { type FrameEndEventHollow } from './recording-files/events-hollow/frame-end-event-hollow';

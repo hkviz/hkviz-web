@@ -1,7 +1,7 @@
 import { PauseIcon, PlayIcon } from 'lucide-solid';
 import { createEffect, createMemo, createSignal, Index, onCleanup, Show } from 'solid-js';
 import { ShortcutHint } from '~/components/shortcut-hint';
-import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
+import { cardRoundedMdOnlyClasses } from '~/components/ui/additions/card';
 import { Button } from '~/components/ui/button';
 import { Card } from '~/components/ui/card';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
@@ -18,7 +18,7 @@ import { changeRoomColorForDarkTheme, changeRoomColorForLightTheme } from '../st
 import { useRoomDisplayStore } from '../store/room-display-store';
 import { useThemeStore } from '../store/theme-store';
 import { useUiStore } from '../store/ui-store';
-import { formatTimeMs } from '../util';
+import { formatTimeMs } from '../util/time';
 
 function Times(props: { class?: string }) {
 	return (

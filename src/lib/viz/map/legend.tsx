@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import { ChevronsUpDownIcon } from 'lucide-solid';
 import { createMemo, For, Show } from 'solid-js';
-import { Expander } from '~/components/ui/additions';
+import { Expander } from '~/components/ui/additions/expander';
 import { Card } from '~/components/ui/card';
 import { DropdownMenu, DropdownMenuTrigger } from '~/components/ui/dropdown-menu';
 import type { GameId } from '~/lib/types/game-ids';

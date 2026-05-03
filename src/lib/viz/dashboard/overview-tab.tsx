@@ -1,14 +1,13 @@
 import { ChartAreaIcon, PlayIcon, RocketIcon } from 'lucide-solid';
 import { For, Show, createMemo, type Component, type JSXElement } from 'solid-js';
-import { Expander } from '~/components/ui/additions';
+import { Expander } from '~/components/ui/additions/expander';
 import { Button } from '~/components/ui/button';
 import { Progress } from '~/components/ui/progress';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import type { AggregationVariableShared } from '~/lib/aggregation/aggregation-value-base';
 import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
-import { playerDataFieldsHollow } from '~/lib/game-data/hollow-data/player-data-hollow';
-import { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
-import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import { isCombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-check-hollow';
+import { isCombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-check-silk';
 import { getGameName } from '~/lib/types/game-ids';
 import { assertNever } from '~/lib/util/other';
 import { cn } from '~/lib/utils';
@@ -76,7 +75,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 
 	const fiteredModVersions = createMemo(() => {
 		const rec = recording();
-		if (!rec || rec instanceof CombinedRecordingSilk) {
+		if (rec == null || isCombinedRecordingSilk(rec)) {
 			return [];
 		}
 		return rec.allModVersions?.filter(() => false); // (mod) => mod.name === 'HKViz');
@@ -88,11 +87,9 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 		if (!rec) return [];
 		return [
 			...new Set(
-				rec instanceof CombinedRecordingHollow
-					? rec
-							?.allPlayerDataEventsOfField(playerDataFieldsHollow.byFieldName.version)
-							?.map((event) => event.value)
-					: rec instanceof CombinedRecordingSilk
+				isCombinedRecordingHollow(rec)
+					? rec?.getPlayerDataEventsOfField('version')?.map((event) => event.value)
+					: isCombinedRecordingSilk(rec)
 						? rec.getPlayerDataEventsOfField('version').map((event) => event.value)
 						: assertNever(rec),
 			),

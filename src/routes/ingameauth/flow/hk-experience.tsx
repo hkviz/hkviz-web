@@ -4,7 +4,7 @@ import type { JSXElement } from 'solid-js';
 import { createMemo, createSignal, createUniqueId, Match, Show, Switch } from 'solid-js';
 import { AuthNeededWrapper } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
-import { Expander } from '~/components/ui/additions';
+import { Expander } from '~/components/ui/additions/expander';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';
 import { Label } from '~/components/ui/label';

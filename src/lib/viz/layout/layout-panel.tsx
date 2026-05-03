@@ -9,14 +9,12 @@ import { MapView } from '../map/map-view';
 import { RunSplits } from '../splits/splits';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useLayoutStore } from '../store/layout-store';
-import {
-	CompletionChartHollow,
-	EssenceChartHollow,
-	GeoChartHollow,
-	GrubChartHollow,
-	HealthChartHollow,
-	SoulChartHollow,
-} from '../time-charts';
+import { CompletionChartHollow } from '../time-charts/area-charts-hollow/completion-chart-hollow';
+import { EssenceChartHollow } from '../time-charts/area-charts-hollow/essence-chart-hollow';
+import { GeoChartHollow } from '../time-charts/area-charts-hollow/geo-chart-hollow';
+import { GrubChartHollow } from '../time-charts/area-charts-hollow/grub-chart-hollow';
+import { HealthChartHollow } from '../time-charts/area-charts-hollow/health-chart-hollow';
+import { SoulChartHollow } from '../time-charts/area-charts-hollow/soul-chart-hollow';
 import { GeoChartSilk } from '../time-charts/area-charts-silk/geo-chart-silk';
 import { HealthChartSilk } from '../time-charts/area-charts-silk/health-chart-silk';
 import { ShellShardChartSilk } from '../time-charts/area-charts-silk/shell-shard-chart-silk';

@@ -1,9 +1,9 @@
 import { heroStateFieldsHollow, type HeroStateFieldHollow } from '../../../game-data/hollow-data/hero-states';
-import {
-	getDefaultValue as getDefaultPlayerDataValue,
-	playerDataFieldsHollow,
-	type PlayerDataFieldHollow,
+import type {
+	PlayerDataFieldNameHollow,
+	PlayerDataFieldValueHollow,
 } from '../../../game-data/hollow-data/player-data-hollow';
+import { getDefaultPlayerDataValueHollow as getDefaultPlayerDataValue } from '../../../game-data/hollow-data/player-data-hollow';
 import { type BossSequenceDoorCompletion } from '../../player-data/boss-completion';
 import type { EventCreationContext } from '../events-shared/event-creation-context';
 import { FrameEndEventBase } from '../events-shared/frame-end-event-base';
@@ -14,154 +14,156 @@ import { type PlayerDataEventHollow } from './player-data-event-hollow';
 
 export const frameEndEventPlayerDataFieldsHollow = [
 	// geo
-	playerDataFieldsHollow.byFieldName.geo,
-	playerDataFieldsHollow.byFieldName.geoPool,
-	playerDataFieldsHollow.byFieldName.trinket1,
-	playerDataFieldsHollow.byFieldName.trinket2,
-	playerDataFieldsHollow.byFieldName.trinket3,
-	playerDataFieldsHollow.byFieldName.trinket4,
+	'geo',
+	'geoPool',
+	'trinket1',
+	'trinket2',
+	'trinket3',
+	'trinket4',
 
 	// health
-	playerDataFieldsHollow.byFieldName.health,
-	playerDataFieldsHollow.byFieldName.maxHealth,
-	playerDataFieldsHollow.byFieldName.healthBlue,
+	'health',
+	'maxHealth',
+	'healthBlue',
 
 	// soul
-	playerDataFieldsHollow.byFieldName.MPCharge,
-	playerDataFieldsHollow.byFieldName.MPReserve,
+	'MPCharge',
+	'MPReserve',
 
 	// percentage
-	playerDataFieldsHollow.byFieldName.killedFalseKnight,
-	playerDataFieldsHollow.byFieldName.hornet1Defeated,
-	playerDataFieldsHollow.byFieldName.hornetOutskirtsDefeated,
-	playerDataFieldsHollow.byFieldName.killedMantisLord,
-	playerDataFieldsHollow.byFieldName.killedMageLord,
-	playerDataFieldsHollow.byFieldName.killedDungDefender,
-	playerDataFieldsHollow.byFieldName.killedBlackKnight,
-	playerDataFieldsHollow.byFieldName.killedInfectedKnight,
-	playerDataFieldsHollow.byFieldName.killedMimicSpider,
-	playerDataFieldsHollow.byFieldName.killedMegaJellyfish,
-	playerDataFieldsHollow.byFieldName.killedTraitorLord,
-	playerDataFieldsHollow.byFieldName.killedJarCollector,
-	playerDataFieldsHollow.byFieldName.killedBigFly,
-	playerDataFieldsHollow.byFieldName.killedMawlek,
-	playerDataFieldsHollow.byFieldName.killedHiveKnight,
-	playerDataFieldsHollow.byFieldName.colosseumBronzeCompleted,
-	playerDataFieldsHollow.byFieldName.colosseumSilverCompleted,
-	playerDataFieldsHollow.byFieldName.colosseumGoldCompleted,
-	playerDataFieldsHollow.byFieldName.killedGhostAladar,
-	playerDataFieldsHollow.byFieldName.killedGhostHu,
-	playerDataFieldsHollow.byFieldName.killedGhostXero,
-	playerDataFieldsHollow.byFieldName.killedGhostMarkoth,
-	playerDataFieldsHollow.byFieldName.killedGhostNoEyes,
-	playerDataFieldsHollow.byFieldName.killedGhostMarmu,
-	playerDataFieldsHollow.byFieldName.killedGhostGalien,
-	playerDataFieldsHollow.byFieldName.fireballLevel,
-	playerDataFieldsHollow.byFieldName.quakeLevel,
-	playerDataFieldsHollow.byFieldName.screamLevel,
-	playerDataFieldsHollow.byFieldName.hasCyclone,
-	playerDataFieldsHollow.byFieldName.hasDashSlash,
-	playerDataFieldsHollow.byFieldName.hasUpwardSlash,
-	playerDataFieldsHollow.byFieldName.hasDash,
-	playerDataFieldsHollow.byFieldName.hasWalljump,
-	playerDataFieldsHollow.byFieldName.hasDoubleJump,
-	playerDataFieldsHollow.byFieldName.hasAcidArmour,
-	playerDataFieldsHollow.byFieldName.hasSuperDash,
-	playerDataFieldsHollow.byFieldName.hasShadowDash,
-	playerDataFieldsHollow.byFieldName.hasKingsBrand,
-	playerDataFieldsHollow.byFieldName.lurienDefeated,
-	playerDataFieldsHollow.byFieldName.hegemolDefeated,
-	playerDataFieldsHollow.byFieldName.monomonDefeated,
-	playerDataFieldsHollow.byFieldName.hasDreamNail,
-	playerDataFieldsHollow.byFieldName.dreamOrbs,
-	playerDataFieldsHollow.byFieldName.dreamNailUpgraded,
-	playerDataFieldsHollow.byFieldName.mothDeparted,
-	playerDataFieldsHollow.byFieldName.nailSmithUpgrades,
-	playerDataFieldsHollow.byFieldName.maxHealthBase,
-	playerDataFieldsHollow.byFieldName.MPReserveMax,
-	playerDataFieldsHollow.byFieldName.killedGrimm,
-	playerDataFieldsHollow.byFieldName.killedNightmareGrimm,
-	playerDataFieldsHollow.byFieldName.destroyedNightmareLantern,
-	playerDataFieldsHollow.byFieldName.hasGodfinder,
-	playerDataFieldsHollow.byFieldName.bossDoorStateTier1,
-	playerDataFieldsHollow.byFieldName.bossDoorStateTier2,
-	playerDataFieldsHollow.byFieldName.bossDoorStateTier3,
-	playerDataFieldsHollow.byFieldName.bossDoorStateTier4,
+	'killedFalseKnight',
+	'hornet1Defeated',
+	'hornetOutskirtsDefeated',
+	'killedMantisLord',
+	'killedMageLord',
+	'killedDungDefender',
+	'killedBlackKnight',
+	'killedInfectedKnight',
+	'killedMimicSpider',
+	'killedMegaJellyfish',
+	'killedTraitorLord',
+	'killedJarCollector',
+	'killedBigFly',
+	'killedMawlek',
+	'killedHiveKnight',
+	'colosseumBronzeCompleted',
+	'colosseumSilverCompleted',
+	'colosseumGoldCompleted',
+	'killedGhostAladar',
+	'killedGhostHu',
+	'killedGhostXero',
+	'killedGhostMarkoth',
+	'killedGhostNoEyes',
+	'killedGhostMarmu',
+	'killedGhostGalien',
+	'fireballLevel',
+	'quakeLevel',
+	'screamLevel',
+	'hasCyclone',
+	'hasDashSlash',
+	'hasUpwardSlash',
+	'hasDash',
+	'hasWalljump',
+	'hasDoubleJump',
+	'hasAcidArmour',
+	'hasSuperDash',
+	'hasShadowDash',
+	'hasKingsBrand',
+	'lurienDefeated',
+	'hegemolDefeated',
+	'monomonDefeated',
+	'hasDreamNail',
+	'dreamOrbs',
+	'dreamNailUpgraded',
+	'mothDeparted',
+	'nailSmithUpgrades',
+	'maxHealthBase',
+	'MPReserveMax',
+	'killedGrimm',
+	'killedNightmareGrimm',
+	'destroyedNightmareLantern',
+	'hasGodfinder',
+	'bossDoorStateTier1',
+	'bossDoorStateTier2',
+	'bossDoorStateTier3',
+	'bossDoorStateTier4',
 
 	// charms
-	playerDataFieldsHollow.byFieldName.gotCharm_1,
-	playerDataFieldsHollow.byFieldName.gotCharm_2,
-	playerDataFieldsHollow.byFieldName.gotCharm_3,
-	playerDataFieldsHollow.byFieldName.gotCharm_4,
-	playerDataFieldsHollow.byFieldName.gotCharm_5,
-	playerDataFieldsHollow.byFieldName.gotCharm_6,
-	playerDataFieldsHollow.byFieldName.gotCharm_7,
-	playerDataFieldsHollow.byFieldName.gotCharm_8,
-	playerDataFieldsHollow.byFieldName.gotCharm_9,
-	playerDataFieldsHollow.byFieldName.gotCharm_10,
-	playerDataFieldsHollow.byFieldName.gotCharm_11,
-	playerDataFieldsHollow.byFieldName.gotCharm_12,
-	playerDataFieldsHollow.byFieldName.gotCharm_13,
-	playerDataFieldsHollow.byFieldName.gotCharm_14,
-	playerDataFieldsHollow.byFieldName.gotCharm_15,
-	playerDataFieldsHollow.byFieldName.gotCharm_16,
-	playerDataFieldsHollow.byFieldName.gotCharm_17,
-	playerDataFieldsHollow.byFieldName.gotCharm_18,
-	playerDataFieldsHollow.byFieldName.gotCharm_19,
-	playerDataFieldsHollow.byFieldName.gotCharm_20,
-	playerDataFieldsHollow.byFieldName.gotCharm_21,
-	playerDataFieldsHollow.byFieldName.gotCharm_22,
-	playerDataFieldsHollow.byFieldName.gotCharm_23,
-	playerDataFieldsHollow.byFieldName.gotCharm_24,
-	playerDataFieldsHollow.byFieldName.gotCharm_25,
-	playerDataFieldsHollow.byFieldName.gotCharm_26,
-	playerDataFieldsHollow.byFieldName.gotCharm_27,
-	playerDataFieldsHollow.byFieldName.gotCharm_28,
-	playerDataFieldsHollow.byFieldName.gotCharm_29,
-	playerDataFieldsHollow.byFieldName.gotCharm_30,
-	playerDataFieldsHollow.byFieldName.gotCharm_31,
-	playerDataFieldsHollow.byFieldName.gotCharm_32,
-	playerDataFieldsHollow.byFieldName.gotCharm_33,
-	playerDataFieldsHollow.byFieldName.gotCharm_34,
-	playerDataFieldsHollow.byFieldName.gotCharm_35,
-	playerDataFieldsHollow.byFieldName.gotCharm_36,
-	playerDataFieldsHollow.byFieldName.gotCharm_37,
-	playerDataFieldsHollow.byFieldName.gotCharm_38,
-	playerDataFieldsHollow.byFieldName.gotCharm_39,
-	playerDataFieldsHollow.byFieldName.gotCharm_40,
-	playerDataFieldsHollow.byFieldName.royalCharmState,
+	'gotCharm_1',
+	'gotCharm_2',
+	'gotCharm_3',
+	'gotCharm_4',
+	'gotCharm_5',
+	'gotCharm_6',
+	'gotCharm_7',
+	'gotCharm_8',
+	'gotCharm_9',
+	'gotCharm_10',
+	'gotCharm_11',
+	'gotCharm_12',
+	'gotCharm_13',
+	'gotCharm_14',
+	'gotCharm_15',
+	'gotCharm_16',
+	'gotCharm_17',
+	'gotCharm_18',
+	'gotCharm_19',
+	'gotCharm_20',
+	'gotCharm_21',
+	'gotCharm_22',
+	'gotCharm_23',
+	'gotCharm_24',
+	'gotCharm_25',
+	'gotCharm_26',
+	'gotCharm_27',
+	'gotCharm_28',
+	'gotCharm_29',
+	'gotCharm_30',
+	'gotCharm_31',
+	'gotCharm_32',
+	'gotCharm_33',
+	'gotCharm_34',
+	'gotCharm_35',
+	'gotCharm_36',
+	'gotCharm_37',
+	'gotCharm_38',
+	'gotCharm_39',
+	'gotCharm_40',
+	'royalCharmState',
 
-	playerDataFieldsHollow.byFieldName.fragileHealth_unbreakable,
-	playerDataFieldsHollow.byFieldName.fragileStrength_unbreakable,
-	playerDataFieldsHollow.byFieldName.fragileGreed_unbreakable,
-	playerDataFieldsHollow.byFieldName.brokenCharm_23,
-	playerDataFieldsHollow.byFieldName.brokenCharm_24,
-	playerDataFieldsHollow.byFieldName.brokenCharm_25,
-	playerDataFieldsHollow.byFieldName.grimmChildLevel,
+	'fragileHealth_unbreakable',
+	'fragileStrength_unbreakable',
+	'fragileGreed_unbreakable',
+	'brokenCharm_23',
+	'brokenCharm_24',
+	'brokenCharm_25',
+	'grimmChildLevel',
 
-	playerDataFieldsHollow.byFieldName.completionPercentage,
+	'completionPercentage',
 
 	// grubs
-	playerDataFieldsHollow.byFieldName.grubsCollected,
-	playerDataFieldsHollow.byFieldName.grubRewards,
+	'grubsCollected',
+	'grubRewards',
 
 	// flower
-	playerDataFieldsHollow.byFieldName.hasXunFlower,
-	playerDataFieldsHollow.byFieldName.xunFlowerBroken,
+	'hasXunFlower',
+	'xunFlowerBroken',
 
 	// shade
-	playerDataFieldsHollow.byFieldName.shadeScene,
-	playerDataFieldsHollow.byFieldName.shadePositionX,
-	playerDataFieldsHollow.byFieldName.shadePositionY,
+	'shadeScene',
+	'shadePositionX',
+	'shadePositionY',
 
 	// dreamgate
-	playerDataFieldsHollow.byFieldName.dreamGateScene,
-	playerDataFieldsHollow.byFieldName.dreamGateX,
-	playerDataFieldsHollow.byFieldName.dreamGateY,
-] as const;
-export const frameEndEventPlayerDataFields = new Set<PlayerDataFieldHollow>(frameEndEventPlayerDataFieldsHollow);
+	'dreamGateScene',
+	'dreamGateX',
+	'dreamGateY',
+] satisfies PlayerDataFieldNameHollow[];
+export const frameEndEventPlayerDataFieldsSetHollow = new Set<PlayerDataFieldNameHollow>(
+	frameEndEventPlayerDataFieldsHollow,
+);
 
-type FrameEndEventPlayerDataFieldHollow = (typeof frameEndEventPlayerDataFieldsHollow)[number];
+type FrameEndEventPlayerDataFieldNameHollow = (typeof frameEndEventPlayerDataFieldsHollow)[number];
 
 export const frameEndHeroStateFieldsArray = [heroStateFieldsHollow.byFieldName.dead] as const;
 
@@ -172,7 +174,7 @@ type FrameEndEventHeroStateField = (typeof frameEndHeroStateFieldsArray)[number]
 type FrameEndBase = {
 	[TField in FrameEndEventHeroStateField as TField['name']]: boolean;
 } & {
-	[TField in FrameEndEventPlayerDataFieldHollow as TField['name']]: PlayerDataEventHollow<TField>['value'];
+	[TField in FrameEndEventPlayerDataFieldNameHollow]: PlayerDataFieldValueHollow<TField>;
 };
 
 // use this to auto generate the constructor
@@ -352,9 +354,9 @@ export class FrameEndEventHollow extends FrameEndEventBase implements FrameEndBa
 	constructor(
 		previousFrameEndEvent: FrameEndEventHollow | null,
 		previousPlayerPositionEvent: PlayerPositionEvent | null,
-		getPreviousPlayerData: <TField extends PlayerDataFieldHollow>(
-			field: TField,
-		) => PlayerDataEventHollow<TField> | undefined,
+		getPreviousPlayerData: <TFieldName extends PlayerDataFieldNameHollow>(
+			field: TFieldName,
+		) => PlayerDataEventHollow<TFieldName> | undefined,
 		getPreviousHeroState: (field: HeroStateFieldHollow) => HeroStateEvent | undefined,
 		ctx: EventCreationContext,
 	) {
@@ -367,655 +369,509 @@ export class FrameEndEventHollow extends FrameEndEventBase implements FrameEndBa
 		// meta programming sadly produced a properties array for each instance, which is not acceptable
 		// for this object as it is instantiated very often
 
-		const previousgeo = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.geo);
-		this.geo = previousgeo ? previousgeo.value : getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.geo);
+		const previousgeo = getPreviousPlayerData('geo');
+		this.geo = previousgeo ? previousgeo.value : getDefaultPlayerDataValue('geo');
 
-		const previousgeoPool = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.geoPool);
-		this.geoPool = previousgeoPool
-			? previousgeoPool.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.geoPool);
+		const previousgeoPool = getPreviousPlayerData('geoPool');
+		this.geoPool = previousgeoPool ? previousgeoPool.value : getDefaultPlayerDataValue('geoPool');
 
-		const previoustrinket1 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.trinket1);
-		this.trinket1 = previoustrinket1
-			? previoustrinket1.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.trinket1);
+		const previoustrinket1 = getPreviousPlayerData('trinket1');
+		this.trinket1 = previoustrinket1 ? previoustrinket1.value : getDefaultPlayerDataValue('trinket1');
 
-		const previoustrinket2 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.trinket2);
-		this.trinket2 = previoustrinket2
-			? previoustrinket2.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.trinket2);
+		const previoustrinket2 = getPreviousPlayerData('trinket2');
+		this.trinket2 = previoustrinket2 ? previoustrinket2.value : getDefaultPlayerDataValue('trinket2');
 
-		const previoustrinket3 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.trinket3);
-		this.trinket3 = previoustrinket3
-			? previoustrinket3.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.trinket3);
+		const previoustrinket3 = getPreviousPlayerData('trinket3');
+		this.trinket3 = previoustrinket3 ? previoustrinket3.value : getDefaultPlayerDataValue('trinket3');
 
-		const previoustrinket4 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.trinket4);
-		this.trinket4 = previoustrinket4
-			? previoustrinket4.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.trinket4);
+		const previoustrinket4 = getPreviousPlayerData('trinket4');
+		this.trinket4 = previoustrinket4 ? previoustrinket4.value : getDefaultPlayerDataValue('trinket4');
 
-		const previoushealth = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.health);
-		this.health = previoushealth
-			? previoushealth.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.health);
+		const previoushealth = getPreviousPlayerData('health');
+		this.health = previoushealth ? previoushealth.value : getDefaultPlayerDataValue('health');
 
-		const previousmaxHealth = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.maxHealth);
-		this.maxHealth = previousmaxHealth
-			? previousmaxHealth.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.maxHealth);
+		const previousmaxHealth = getPreviousPlayerData('maxHealth');
+		this.maxHealth = previousmaxHealth ? previousmaxHealth.value : getDefaultPlayerDataValue('maxHealth');
 
-		const previoushealthBlue = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.healthBlue);
-		this.healthBlue = previoushealthBlue
-			? previoushealthBlue.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.healthBlue);
+		const previoushealthBlue = getPreviousPlayerData('healthBlue');
+		this.healthBlue = previoushealthBlue ? previoushealthBlue.value : getDefaultPlayerDataValue('healthBlue');
 
-		const previousMPCharge = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.MPCharge);
-		this.MPCharge = previousMPCharge
-			? previousMPCharge.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.MPCharge);
+		const previousMPCharge = getPreviousPlayerData('MPCharge');
+		this.MPCharge = previousMPCharge ? previousMPCharge.value : getDefaultPlayerDataValue('MPCharge');
 
-		const previousMPReserve = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.MPReserve);
-		this.MPReserve = previousMPReserve
-			? previousMPReserve.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.MPReserve);
+		const previousMPReserve = getPreviousPlayerData('MPReserve');
+		this.MPReserve = previousMPReserve ? previousMPReserve.value : getDefaultPlayerDataValue('MPReserve');
 
-		const previouskilledFalseKnight = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedFalseKnight);
+		const previouskilledFalseKnight = getPreviousPlayerData('killedFalseKnight');
 		this.killedFalseKnight = previouskilledFalseKnight
 			? previouskilledFalseKnight.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedFalseKnight);
+			: getDefaultPlayerDataValue('killedFalseKnight');
 
-		const previoushornet1Defeated = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hornet1Defeated);
+		const previoushornet1Defeated = getPreviousPlayerData('hornet1Defeated');
 		this.hornet1Defeated = previoushornet1Defeated
 			? previoushornet1Defeated.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hornet1Defeated);
+			: getDefaultPlayerDataValue('hornet1Defeated');
 
-		const previoushornetOutskirtsDefeated = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.hornetOutskirtsDefeated,
-		);
+		const previoushornetOutskirtsDefeated = getPreviousPlayerData('hornetOutskirtsDefeated');
 		this.hornetOutskirtsDefeated = previoushornetOutskirtsDefeated
 			? previoushornetOutskirtsDefeated.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hornetOutskirtsDefeated);
+			: getDefaultPlayerDataValue('hornetOutskirtsDefeated');
 
-		const previouskilledMantisLord = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedMantisLord);
+		const previouskilledMantisLord = getPreviousPlayerData('killedMantisLord');
 		this.killedMantisLord = previouskilledMantisLord
 			? previouskilledMantisLord.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedMantisLord);
+			: getDefaultPlayerDataValue('killedMantisLord');
 
-		const previouskilledMageLord = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedMageLord);
+		const previouskilledMageLord = getPreviousPlayerData('killedMageLord');
 		this.killedMageLord = previouskilledMageLord
 			? previouskilledMageLord.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedMageLord);
+			: getDefaultPlayerDataValue('killedMageLord');
 
-		const previouskilledDungDefender = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedDungDefender);
+		const previouskilledDungDefender = getPreviousPlayerData('killedDungDefender');
 		this.killedDungDefender = previouskilledDungDefender
 			? previouskilledDungDefender.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedDungDefender);
+			: getDefaultPlayerDataValue('killedDungDefender');
 
-		const previouskilledBlackKnight = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedBlackKnight);
+		const previouskilledBlackKnight = getPreviousPlayerData('killedBlackKnight');
 		this.killedBlackKnight = previouskilledBlackKnight
 			? previouskilledBlackKnight.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedBlackKnight);
+			: getDefaultPlayerDataValue('killedBlackKnight');
 
-		const previouskilledInfectedKnight = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.killedInfectedKnight,
-		);
+		const previouskilledInfectedKnight = getPreviousPlayerData('killedInfectedKnight');
 		this.killedInfectedKnight = previouskilledInfectedKnight
 			? previouskilledInfectedKnight.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedInfectedKnight);
+			: getDefaultPlayerDataValue('killedInfectedKnight');
 
-		const previouskilledMimicSpider = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedMimicSpider);
+		const previouskilledMimicSpider = getPreviousPlayerData('killedMimicSpider');
 		this.killedMimicSpider = previouskilledMimicSpider
 			? previouskilledMimicSpider.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedMimicSpider);
+			: getDefaultPlayerDataValue('killedMimicSpider');
 
-		const previouskilledMegaJellyfish = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.killedMegaJellyfish,
-		);
+		const previouskilledMegaJellyfish = getPreviousPlayerData('killedMegaJellyfish');
 		this.killedMegaJellyfish = previouskilledMegaJellyfish
 			? previouskilledMegaJellyfish.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedMegaJellyfish);
+			: getDefaultPlayerDataValue('killedMegaJellyfish');
 
-		const previouskilledTraitorLord = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedTraitorLord);
+		const previouskilledTraitorLord = getPreviousPlayerData('killedTraitorLord');
 		this.killedTraitorLord = previouskilledTraitorLord
 			? previouskilledTraitorLord.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedTraitorLord);
+			: getDefaultPlayerDataValue('killedTraitorLord');
 
-		const previouskilledJarCollector = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedJarCollector);
+		const previouskilledJarCollector = getPreviousPlayerData('killedJarCollector');
 		this.killedJarCollector = previouskilledJarCollector
 			? previouskilledJarCollector.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedJarCollector);
+			: getDefaultPlayerDataValue('killedJarCollector');
 
-		const previouskilledBigFly = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedBigFly);
+		const previouskilledBigFly = getPreviousPlayerData('killedBigFly');
 		this.killedBigFly = previouskilledBigFly
 			? previouskilledBigFly.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedBigFly);
+			: getDefaultPlayerDataValue('killedBigFly');
 
-		const previouskilledMawlek = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedMawlek);
+		const previouskilledMawlek = getPreviousPlayerData('killedMawlek');
 		this.killedMawlek = previouskilledMawlek
 			? previouskilledMawlek.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedMawlek);
+			: getDefaultPlayerDataValue('killedMawlek');
 
-		const previouskilledHiveKnight = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedHiveKnight);
+		const previouskilledHiveKnight = getPreviousPlayerData('killedHiveKnight');
 		this.killedHiveKnight = previouskilledHiveKnight
 			? previouskilledHiveKnight.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedHiveKnight);
+			: getDefaultPlayerDataValue('killedHiveKnight');
 
-		const previouscolosseumBronzeCompleted = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.colosseumBronzeCompleted,
-		);
+		const previouscolosseumBronzeCompleted = getPreviousPlayerData('colosseumBronzeCompleted');
 		this.colosseumBronzeCompleted = previouscolosseumBronzeCompleted
 			? previouscolosseumBronzeCompleted.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.colosseumBronzeCompleted);
+			: getDefaultPlayerDataValue('colosseumBronzeCompleted');
 
-		const previouscolosseumSilverCompleted = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.colosseumSilverCompleted,
-		);
+		const previouscolosseumSilverCompleted = getPreviousPlayerData('colosseumSilverCompleted');
 		this.colosseumSilverCompleted = previouscolosseumSilverCompleted
 			? previouscolosseumSilverCompleted.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.colosseumSilverCompleted);
+			: getDefaultPlayerDataValue('colosseumSilverCompleted');
 
-		const previouscolosseumGoldCompleted = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.colosseumGoldCompleted,
-		);
+		const previouscolosseumGoldCompleted = getPreviousPlayerData('colosseumGoldCompleted');
 		this.colosseumGoldCompleted = previouscolosseumGoldCompleted
 			? previouscolosseumGoldCompleted.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.colosseumGoldCompleted);
+			: getDefaultPlayerDataValue('colosseumGoldCompleted');
 
-		const previouskilledGhostAladar = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedGhostAladar);
+		const previouskilledGhostAladar = getPreviousPlayerData('killedGhostAladar');
 		this.killedGhostAladar = previouskilledGhostAladar
 			? previouskilledGhostAladar.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedGhostAladar);
+			: getDefaultPlayerDataValue('killedGhostAladar');
 
-		const previouskilledGhostHu = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedGhostHu);
+		const previouskilledGhostHu = getPreviousPlayerData('killedGhostHu');
 		this.killedGhostHu = previouskilledGhostHu
 			? previouskilledGhostHu.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedGhostHu);
+			: getDefaultPlayerDataValue('killedGhostHu');
 
-		const previouskilledGhostXero = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedGhostXero);
+		const previouskilledGhostXero = getPreviousPlayerData('killedGhostXero');
 		this.killedGhostXero = previouskilledGhostXero
 			? previouskilledGhostXero.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedGhostXero);
+			: getDefaultPlayerDataValue('killedGhostXero');
 
-		const previouskilledGhostMarkoth = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedGhostMarkoth);
+		const previouskilledGhostMarkoth = getPreviousPlayerData('killedGhostMarkoth');
 		this.killedGhostMarkoth = previouskilledGhostMarkoth
 			? previouskilledGhostMarkoth.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedGhostMarkoth);
+			: getDefaultPlayerDataValue('killedGhostMarkoth');
 
-		const previouskilledGhostNoEyes = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedGhostNoEyes);
+		const previouskilledGhostNoEyes = getPreviousPlayerData('killedGhostNoEyes');
 		this.killedGhostNoEyes = previouskilledGhostNoEyes
 			? previouskilledGhostNoEyes.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedGhostNoEyes);
+			: getDefaultPlayerDataValue('killedGhostNoEyes');
 
-		const previouskilledGhostMarmu = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedGhostMarmu);
+		const previouskilledGhostMarmu = getPreviousPlayerData('killedGhostMarmu');
 		this.killedGhostMarmu = previouskilledGhostMarmu
 			? previouskilledGhostMarmu.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedGhostMarmu);
+			: getDefaultPlayerDataValue('killedGhostMarmu');
 
-		const previouskilledGhostGalien = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedGhostGalien);
+		const previouskilledGhostGalien = getPreviousPlayerData('killedGhostGalien');
 		this.killedGhostGalien = previouskilledGhostGalien
 			? previouskilledGhostGalien.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedGhostGalien);
+			: getDefaultPlayerDataValue('killedGhostGalien');
 
-		const previousfireballLevel = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.fireballLevel);
+		const previousfireballLevel = getPreviousPlayerData('fireballLevel');
 		this.fireballLevel = previousfireballLevel
 			? previousfireballLevel.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.fireballLevel);
+			: getDefaultPlayerDataValue('fireballLevel');
 
-		const previousquakeLevel = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.quakeLevel);
-		this.quakeLevel = previousquakeLevel
-			? previousquakeLevel.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.quakeLevel);
+		const previousquakeLevel = getPreviousPlayerData('quakeLevel');
+		this.quakeLevel = previousquakeLevel ? previousquakeLevel.value : getDefaultPlayerDataValue('quakeLevel');
 
-		const previousscreamLevel = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.screamLevel);
-		this.screamLevel = previousscreamLevel
-			? previousscreamLevel.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.screamLevel);
+		const previousscreamLevel = getPreviousPlayerData('screamLevel');
+		this.screamLevel = previousscreamLevel ? previousscreamLevel.value : getDefaultPlayerDataValue('screamLevel');
 
-		const previoushasCyclone = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasCyclone);
-		this.hasCyclone = previoushasCyclone
-			? previoushasCyclone.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasCyclone);
+		const previoushasCyclone = getPreviousPlayerData('hasCyclone');
+		this.hasCyclone = previoushasCyclone ? previoushasCyclone.value : getDefaultPlayerDataValue('hasCyclone');
 
-		const previoushasDashSlash = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasDashSlash);
+		const previoushasDashSlash = getPreviousPlayerData('hasDashSlash');
 		this.hasDashSlash = previoushasDashSlash
 			? previoushasDashSlash.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasDashSlash);
+			: getDefaultPlayerDataValue('hasDashSlash');
 
-		const previoushasUpwardSlash = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasUpwardSlash);
+		const previoushasUpwardSlash = getPreviousPlayerData('hasUpwardSlash');
 		this.hasUpwardSlash = previoushasUpwardSlash
 			? previoushasUpwardSlash.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasUpwardSlash);
+			: getDefaultPlayerDataValue('hasUpwardSlash');
 
-		const previoushasDash = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasDash);
-		this.hasDash = previoushasDash
-			? previoushasDash.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasDash);
+		const previoushasDash = getPreviousPlayerData('hasDash');
+		this.hasDash = previoushasDash ? previoushasDash.value : getDefaultPlayerDataValue('hasDash');
 
-		const previoushasWalljump = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasWalljump);
-		this.hasWalljump = previoushasWalljump
-			? previoushasWalljump.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasWalljump);
+		const previoushasWalljump = getPreviousPlayerData('hasWalljump');
+		this.hasWalljump = previoushasWalljump ? previoushasWalljump.value : getDefaultPlayerDataValue('hasWalljump');
 
-		const previoushasDoubleJump = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasDoubleJump);
+		const previoushasDoubleJump = getPreviousPlayerData('hasDoubleJump');
 		this.hasDoubleJump = previoushasDoubleJump
 			? previoushasDoubleJump.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasDoubleJump);
+			: getDefaultPlayerDataValue('hasDoubleJump');
 
-		const previoushasAcidArmour = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasAcidArmour);
+		const previoushasAcidArmour = getPreviousPlayerData('hasAcidArmour');
 		this.hasAcidArmour = previoushasAcidArmour
 			? previoushasAcidArmour.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasAcidArmour);
+			: getDefaultPlayerDataValue('hasAcidArmour');
 
-		const previoushasSuperDash = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasSuperDash);
+		const previoushasSuperDash = getPreviousPlayerData('hasSuperDash');
 		this.hasSuperDash = previoushasSuperDash
 			? previoushasSuperDash.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasSuperDash);
+			: getDefaultPlayerDataValue('hasSuperDash');
 
-		const previoushasShadowDash = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasShadowDash);
+		const previoushasShadowDash = getPreviousPlayerData('hasShadowDash');
 		this.hasShadowDash = previoushasShadowDash
 			? previoushasShadowDash.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasShadowDash);
+			: getDefaultPlayerDataValue('hasShadowDash');
 
-		const previoushasKingsBrand = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasKingsBrand);
+		const previoushasKingsBrand = getPreviousPlayerData('hasKingsBrand');
 		this.hasKingsBrand = previoushasKingsBrand
 			? previoushasKingsBrand.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasKingsBrand);
+			: getDefaultPlayerDataValue('hasKingsBrand');
 
-		const previouslurienDefeated = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.lurienDefeated);
+		const previouslurienDefeated = getPreviousPlayerData('lurienDefeated');
 		this.lurienDefeated = previouslurienDefeated
 			? previouslurienDefeated.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.lurienDefeated);
+			: getDefaultPlayerDataValue('lurienDefeated');
 
-		const previoushegemolDefeated = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hegemolDefeated);
+		const previoushegemolDefeated = getPreviousPlayerData('hegemolDefeated');
 		this.hegemolDefeated = previoushegemolDefeated
 			? previoushegemolDefeated.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hegemolDefeated);
+			: getDefaultPlayerDataValue('hegemolDefeated');
 
-		const previousmonomonDefeated = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.monomonDefeated);
+		const previousmonomonDefeated = getPreviousPlayerData('monomonDefeated');
 		this.monomonDefeated = previousmonomonDefeated
 			? previousmonomonDefeated.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.monomonDefeated);
+			: getDefaultPlayerDataValue('monomonDefeated');
 
-		const previoushasDreamNail = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasDreamNail);
+		const previoushasDreamNail = getPreviousPlayerData('hasDreamNail');
 		this.hasDreamNail = previoushasDreamNail
 			? previoushasDreamNail.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasDreamNail);
+			: getDefaultPlayerDataValue('hasDreamNail');
 
-		const previousdreamNailUpgraded = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.dreamNailUpgraded);
+		const previousdreamNailUpgraded = getPreviousPlayerData('dreamNailUpgraded');
 		this.dreamNailUpgraded = previousdreamNailUpgraded
 			? previousdreamNailUpgraded.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.dreamNailUpgraded);
+			: getDefaultPlayerDataValue('dreamNailUpgraded');
 
-		const previousdreamOrbs = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.dreamOrbs);
-		this.dreamOrbs = previousdreamOrbs
-			? previousdreamOrbs.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.dreamOrbs);
+		const previousdreamOrbs = getPreviousPlayerData('dreamOrbs');
+		this.dreamOrbs = previousdreamOrbs ? previousdreamOrbs.value : getDefaultPlayerDataValue('dreamOrbs');
 
-		const previousmothDeparted = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.mothDeparted);
+		const previousmothDeparted = getPreviousPlayerData('mothDeparted');
 		this.mothDeparted = previousmothDeparted
 			? previousmothDeparted.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.mothDeparted);
+			: getDefaultPlayerDataValue('mothDeparted');
 
-		const previousnailSmithUpgrades = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.nailSmithUpgrades);
+		const previousnailSmithUpgrades = getPreviousPlayerData('nailSmithUpgrades');
 		this.nailSmithUpgrades = previousnailSmithUpgrades
 			? previousnailSmithUpgrades.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.nailSmithUpgrades);
+			: getDefaultPlayerDataValue('nailSmithUpgrades');
 
-		const previousmaxHealthBase = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.maxHealthBase);
+		const previousmaxHealthBase = getPreviousPlayerData('maxHealthBase');
 		this.maxHealthBase = previousmaxHealthBase
 			? previousmaxHealthBase.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.maxHealthBase);
+			: getDefaultPlayerDataValue('maxHealthBase');
 
-		const previousMPReserveMax = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.MPReserveMax);
+		const previousMPReserveMax = getPreviousPlayerData('MPReserveMax');
 		this.MPReserveMax = previousMPReserveMax
 			? previousMPReserveMax.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.MPReserveMax);
+			: getDefaultPlayerDataValue('MPReserveMax');
 
-		const previouskilledGrimm = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.killedGrimm);
-		this.killedGrimm = previouskilledGrimm
-			? previouskilledGrimm.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedGrimm);
+		const previouskilledGrimm = getPreviousPlayerData('killedGrimm');
+		this.killedGrimm = previouskilledGrimm ? previouskilledGrimm.value : getDefaultPlayerDataValue('killedGrimm');
 
-		const previouskilledNightmareGrimm = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.killedNightmareGrimm,
-		);
+		const previouskilledNightmareGrimm = getPreviousPlayerData('killedNightmareGrimm');
 		this.killedNightmareGrimm = previouskilledNightmareGrimm
 			? previouskilledNightmareGrimm.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.killedNightmareGrimm);
+			: getDefaultPlayerDataValue('killedNightmareGrimm');
 
-		const previousdestroyedNightmareLantern = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.destroyedNightmareLantern,
-		);
+		const previousdestroyedNightmareLantern = getPreviousPlayerData('destroyedNightmareLantern');
 		this.destroyedNightmareLantern = previousdestroyedNightmareLantern
 			? previousdestroyedNightmareLantern.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.destroyedNightmareLantern);
+			: getDefaultPlayerDataValue('destroyedNightmareLantern');
 
-		const previoushasGodfinder = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasGodfinder);
+		const previoushasGodfinder = getPreviousPlayerData('hasGodfinder');
 		this.hasGodfinder = previoushasGodfinder
 			? previoushasGodfinder.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasGodfinder);
+			: getDefaultPlayerDataValue('hasGodfinder');
 
-		const previousbossDoorStateTier1 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.bossDoorStateTier1);
+		const previousbossDoorStateTier1 = getPreviousPlayerData('bossDoorStateTier1');
 		this.bossDoorStateTier1 = previousbossDoorStateTier1
 			? previousbossDoorStateTier1.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.bossDoorStateTier1);
+			: getDefaultPlayerDataValue('bossDoorStateTier1');
 
-		const previousbossDoorStateTier2 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.bossDoorStateTier2);
+		const previousbossDoorStateTier2 = getPreviousPlayerData('bossDoorStateTier2');
 		this.bossDoorStateTier2 = previousbossDoorStateTier2
 			? previousbossDoorStateTier2.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.bossDoorStateTier2);
+			: getDefaultPlayerDataValue('bossDoorStateTier2');
 
-		const previousbossDoorStateTier3 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.bossDoorStateTier3);
+		const previousbossDoorStateTier3 = getPreviousPlayerData('bossDoorStateTier3');
 		this.bossDoorStateTier3 = previousbossDoorStateTier3
 			? previousbossDoorStateTier3.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.bossDoorStateTier3);
+			: getDefaultPlayerDataValue('bossDoorStateTier3');
 
-		const previousbossDoorStateTier4 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.bossDoorStateTier4);
+		const previousbossDoorStateTier4 = getPreviousPlayerData('bossDoorStateTier4');
 		this.bossDoorStateTier4 = previousbossDoorStateTier4
 			? previousbossDoorStateTier4.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.bossDoorStateTier4);
+			: getDefaultPlayerDataValue('bossDoorStateTier4');
 
-		const previousgotCharm_1 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_1);
-		this.gotCharm_1 = previousgotCharm_1
-			? previousgotCharm_1.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_1);
+		const previousgotCharm_1 = getPreviousPlayerData('gotCharm_1');
+		this.gotCharm_1 = previousgotCharm_1 ? previousgotCharm_1.value : getDefaultPlayerDataValue('gotCharm_1');
 
-		const previousgotCharm_2 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_2);
-		this.gotCharm_2 = previousgotCharm_2
-			? previousgotCharm_2.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_2);
+		const previousgotCharm_2 = getPreviousPlayerData('gotCharm_2');
+		this.gotCharm_2 = previousgotCharm_2 ? previousgotCharm_2.value : getDefaultPlayerDataValue('gotCharm_2');
 
-		const previousgotCharm_3 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_3);
-		this.gotCharm_3 = previousgotCharm_3
-			? previousgotCharm_3.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_3);
+		const previousgotCharm_3 = getPreviousPlayerData('gotCharm_3');
+		this.gotCharm_3 = previousgotCharm_3 ? previousgotCharm_3.value : getDefaultPlayerDataValue('gotCharm_3');
 
-		const previousgotCharm_4 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_4);
-		this.gotCharm_4 = previousgotCharm_4
-			? previousgotCharm_4.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_4);
+		const previousgotCharm_4 = getPreviousPlayerData('gotCharm_4');
+		this.gotCharm_4 = previousgotCharm_4 ? previousgotCharm_4.value : getDefaultPlayerDataValue('gotCharm_4');
 
-		const previousgotCharm_5 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_5);
-		this.gotCharm_5 = previousgotCharm_5
-			? previousgotCharm_5.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_5);
+		const previousgotCharm_5 = getPreviousPlayerData('gotCharm_5');
+		this.gotCharm_5 = previousgotCharm_5 ? previousgotCharm_5.value : getDefaultPlayerDataValue('gotCharm_5');
 
-		const previousgotCharm_6 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_6);
-		this.gotCharm_6 = previousgotCharm_6
-			? previousgotCharm_6.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_6);
+		const previousgotCharm_6 = getPreviousPlayerData('gotCharm_6');
+		this.gotCharm_6 = previousgotCharm_6 ? previousgotCharm_6.value : getDefaultPlayerDataValue('gotCharm_6');
 
-		const previousgotCharm_7 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_7);
-		this.gotCharm_7 = previousgotCharm_7
-			? previousgotCharm_7.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_7);
+		const previousgotCharm_7 = getPreviousPlayerData('gotCharm_7');
+		this.gotCharm_7 = previousgotCharm_7 ? previousgotCharm_7.value : getDefaultPlayerDataValue('gotCharm_7');
 
-		const previousgotCharm_8 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_8);
-		this.gotCharm_8 = previousgotCharm_8
-			? previousgotCharm_8.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_8);
+		const previousgotCharm_8 = getPreviousPlayerData('gotCharm_8');
+		this.gotCharm_8 = previousgotCharm_8 ? previousgotCharm_8.value : getDefaultPlayerDataValue('gotCharm_8');
 
-		const previousgotCharm_9 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_9);
-		this.gotCharm_9 = previousgotCharm_9
-			? previousgotCharm_9.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_9);
+		const previousgotCharm_9 = getPreviousPlayerData('gotCharm_9');
+		this.gotCharm_9 = previousgotCharm_9 ? previousgotCharm_9.value : getDefaultPlayerDataValue('gotCharm_9');
 
-		const previousgotCharm_10 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_10);
-		this.gotCharm_10 = previousgotCharm_10
-			? previousgotCharm_10.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_10);
+		const previousgotCharm_10 = getPreviousPlayerData('gotCharm_10');
+		this.gotCharm_10 = previousgotCharm_10 ? previousgotCharm_10.value : getDefaultPlayerDataValue('gotCharm_10');
 
-		const previousgotCharm_11 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_11);
-		this.gotCharm_11 = previousgotCharm_11
-			? previousgotCharm_11.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_11);
+		const previousgotCharm_11 = getPreviousPlayerData('gotCharm_11');
+		this.gotCharm_11 = previousgotCharm_11 ? previousgotCharm_11.value : getDefaultPlayerDataValue('gotCharm_11');
 
-		const previousgotCharm_12 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_12);
-		this.gotCharm_12 = previousgotCharm_12
-			? previousgotCharm_12.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_12);
+		const previousgotCharm_12 = getPreviousPlayerData('gotCharm_12');
+		this.gotCharm_12 = previousgotCharm_12 ? previousgotCharm_12.value : getDefaultPlayerDataValue('gotCharm_12');
 
-		const previousgotCharm_13 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_13);
-		this.gotCharm_13 = previousgotCharm_13
-			? previousgotCharm_13.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_13);
+		const previousgotCharm_13 = getPreviousPlayerData('gotCharm_13');
+		this.gotCharm_13 = previousgotCharm_13 ? previousgotCharm_13.value : getDefaultPlayerDataValue('gotCharm_13');
 
-		const previousgotCharm_14 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_14);
-		this.gotCharm_14 = previousgotCharm_14
-			? previousgotCharm_14.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_14);
+		const previousgotCharm_14 = getPreviousPlayerData('gotCharm_14');
+		this.gotCharm_14 = previousgotCharm_14 ? previousgotCharm_14.value : getDefaultPlayerDataValue('gotCharm_14');
 
-		const previousgotCharm_15 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_15);
-		this.gotCharm_15 = previousgotCharm_15
-			? previousgotCharm_15.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_15);
+		const previousgotCharm_15 = getPreviousPlayerData('gotCharm_15');
+		this.gotCharm_15 = previousgotCharm_15 ? previousgotCharm_15.value : getDefaultPlayerDataValue('gotCharm_15');
 
-		const previousgotCharm_16 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_16);
-		this.gotCharm_16 = previousgotCharm_16
-			? previousgotCharm_16.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_16);
+		const previousgotCharm_16 = getPreviousPlayerData('gotCharm_16');
+		this.gotCharm_16 = previousgotCharm_16 ? previousgotCharm_16.value : getDefaultPlayerDataValue('gotCharm_16');
 
-		const previousgotCharm_17 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_17);
-		this.gotCharm_17 = previousgotCharm_17
-			? previousgotCharm_17.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_17);
+		const previousgotCharm_17 = getPreviousPlayerData('gotCharm_17');
+		this.gotCharm_17 = previousgotCharm_17 ? previousgotCharm_17.value : getDefaultPlayerDataValue('gotCharm_17');
 
-		const previousgotCharm_18 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_18);
-		this.gotCharm_18 = previousgotCharm_18
-			? previousgotCharm_18.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_18);
+		const previousgotCharm_18 = getPreviousPlayerData('gotCharm_18');
+		this.gotCharm_18 = previousgotCharm_18 ? previousgotCharm_18.value : getDefaultPlayerDataValue('gotCharm_18');
 
-		const previousgotCharm_19 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_19);
-		this.gotCharm_19 = previousgotCharm_19
-			? previousgotCharm_19.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_19);
+		const previousgotCharm_19 = getPreviousPlayerData('gotCharm_19');
+		this.gotCharm_19 = previousgotCharm_19 ? previousgotCharm_19.value : getDefaultPlayerDataValue('gotCharm_19');
 
-		const previousgotCharm_20 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_20);
-		this.gotCharm_20 = previousgotCharm_20
-			? previousgotCharm_20.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_20);
+		const previousgotCharm_20 = getPreviousPlayerData('gotCharm_20');
+		this.gotCharm_20 = previousgotCharm_20 ? previousgotCharm_20.value : getDefaultPlayerDataValue('gotCharm_20');
 
-		const previousgotCharm_21 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_21);
-		this.gotCharm_21 = previousgotCharm_21
-			? previousgotCharm_21.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_21);
+		const previousgotCharm_21 = getPreviousPlayerData('gotCharm_21');
+		this.gotCharm_21 = previousgotCharm_21 ? previousgotCharm_21.value : getDefaultPlayerDataValue('gotCharm_21');
 
-		const previousgotCharm_22 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_22);
-		this.gotCharm_22 = previousgotCharm_22
-			? previousgotCharm_22.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_22);
+		const previousgotCharm_22 = getPreviousPlayerData('gotCharm_22');
+		this.gotCharm_22 = previousgotCharm_22 ? previousgotCharm_22.value : getDefaultPlayerDataValue('gotCharm_22');
 
-		const previousgotCharm_23 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_23);
-		this.gotCharm_23 = previousgotCharm_23
-			? previousgotCharm_23.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_23);
+		const previousgotCharm_23 = getPreviousPlayerData('gotCharm_23');
+		this.gotCharm_23 = previousgotCharm_23 ? previousgotCharm_23.value : getDefaultPlayerDataValue('gotCharm_23');
 
-		const previousgotCharm_24 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_24);
-		this.gotCharm_24 = previousgotCharm_24
-			? previousgotCharm_24.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_24);
+		const previousgotCharm_24 = getPreviousPlayerData('gotCharm_24');
+		this.gotCharm_24 = previousgotCharm_24 ? previousgotCharm_24.value : getDefaultPlayerDataValue('gotCharm_24');
 
-		const previousgotCharm_25 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_25);
-		this.gotCharm_25 = previousgotCharm_25
-			? previousgotCharm_25.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_25);
+		const previousgotCharm_25 = getPreviousPlayerData('gotCharm_25');
+		this.gotCharm_25 = previousgotCharm_25 ? previousgotCharm_25.value : getDefaultPlayerDataValue('gotCharm_25');
 
-		const previousgotCharm_26 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_26);
-		this.gotCharm_26 = previousgotCharm_26
-			? previousgotCharm_26.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_26);
+		const previousgotCharm_26 = getPreviousPlayerData('gotCharm_26');
+		this.gotCharm_26 = previousgotCharm_26 ? previousgotCharm_26.value : getDefaultPlayerDataValue('gotCharm_26');
 
-		const previousgotCharm_27 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_27);
-		this.gotCharm_27 = previousgotCharm_27
-			? previousgotCharm_27.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_27);
+		const previousgotCharm_27 = getPreviousPlayerData('gotCharm_27');
+		this.gotCharm_27 = previousgotCharm_27 ? previousgotCharm_27.value : getDefaultPlayerDataValue('gotCharm_27');
 
-		const previousgotCharm_28 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_28);
-		this.gotCharm_28 = previousgotCharm_28
-			? previousgotCharm_28.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_28);
+		const previousgotCharm_28 = getPreviousPlayerData('gotCharm_28');
+		this.gotCharm_28 = previousgotCharm_28 ? previousgotCharm_28.value : getDefaultPlayerDataValue('gotCharm_28');
 
-		const previousgotCharm_29 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_29);
-		this.gotCharm_29 = previousgotCharm_29
-			? previousgotCharm_29.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_29);
+		const previousgotCharm_29 = getPreviousPlayerData('gotCharm_29');
+		this.gotCharm_29 = previousgotCharm_29 ? previousgotCharm_29.value : getDefaultPlayerDataValue('gotCharm_29');
 
-		const previousgotCharm_30 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_30);
-		this.gotCharm_30 = previousgotCharm_30
-			? previousgotCharm_30.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_30);
+		const previousgotCharm_30 = getPreviousPlayerData('gotCharm_30');
+		this.gotCharm_30 = previousgotCharm_30 ? previousgotCharm_30.value : getDefaultPlayerDataValue('gotCharm_30');
 
-		const previousgotCharm_31 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_31);
-		this.gotCharm_31 = previousgotCharm_31
-			? previousgotCharm_31.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_31);
+		const previousgotCharm_31 = getPreviousPlayerData('gotCharm_31');
+		this.gotCharm_31 = previousgotCharm_31 ? previousgotCharm_31.value : getDefaultPlayerDataValue('gotCharm_31');
 
-		const previousgotCharm_32 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_32);
-		this.gotCharm_32 = previousgotCharm_32
-			? previousgotCharm_32.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_32);
+		const previousgotCharm_32 = getPreviousPlayerData('gotCharm_32');
+		this.gotCharm_32 = previousgotCharm_32 ? previousgotCharm_32.value : getDefaultPlayerDataValue('gotCharm_32');
 
-		const previousgotCharm_33 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_33);
-		this.gotCharm_33 = previousgotCharm_33
-			? previousgotCharm_33.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_33);
+		const previousgotCharm_33 = getPreviousPlayerData('gotCharm_33');
+		this.gotCharm_33 = previousgotCharm_33 ? previousgotCharm_33.value : getDefaultPlayerDataValue('gotCharm_33');
 
-		const previousgotCharm_34 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_34);
-		this.gotCharm_34 = previousgotCharm_34
-			? previousgotCharm_34.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_34);
+		const previousgotCharm_34 = getPreviousPlayerData('gotCharm_34');
+		this.gotCharm_34 = previousgotCharm_34 ? previousgotCharm_34.value : getDefaultPlayerDataValue('gotCharm_34');
 
-		const previousgotCharm_35 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_35);
-		this.gotCharm_35 = previousgotCharm_35
-			? previousgotCharm_35.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_35);
+		const previousgotCharm_35 = getPreviousPlayerData('gotCharm_35');
+		this.gotCharm_35 = previousgotCharm_35 ? previousgotCharm_35.value : getDefaultPlayerDataValue('gotCharm_35');
 
-		const previousgotCharm_36 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_36);
-		this.gotCharm_36 = previousgotCharm_36
-			? previousgotCharm_36.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_36);
+		const previousgotCharm_36 = getPreviousPlayerData('gotCharm_36');
+		this.gotCharm_36 = previousgotCharm_36 ? previousgotCharm_36.value : getDefaultPlayerDataValue('gotCharm_36');
 
-		const previousgotCharm_37 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_37);
-		this.gotCharm_37 = previousgotCharm_37
-			? previousgotCharm_37.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_37);
+		const previousgotCharm_37 = getPreviousPlayerData('gotCharm_37');
+		this.gotCharm_37 = previousgotCharm_37 ? previousgotCharm_37.value : getDefaultPlayerDataValue('gotCharm_37');
 
-		const previousgotCharm_38 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_38);
-		this.gotCharm_38 = previousgotCharm_38
-			? previousgotCharm_38.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_38);
+		const previousgotCharm_38 = getPreviousPlayerData('gotCharm_38');
+		this.gotCharm_38 = previousgotCharm_38 ? previousgotCharm_38.value : getDefaultPlayerDataValue('gotCharm_38');
 
-		const previousgotCharm_39 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_39);
-		this.gotCharm_39 = previousgotCharm_39
-			? previousgotCharm_39.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_39);
+		const previousgotCharm_39 = getPreviousPlayerData('gotCharm_39');
+		this.gotCharm_39 = previousgotCharm_39 ? previousgotCharm_39.value : getDefaultPlayerDataValue('gotCharm_39');
 
-		const previousgotCharm_40 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.gotCharm_40);
-		this.gotCharm_40 = previousgotCharm_40
-			? previousgotCharm_40.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.gotCharm_40);
+		const previousgotCharm_40 = getPreviousPlayerData('gotCharm_40');
+		this.gotCharm_40 = previousgotCharm_40 ? previousgotCharm_40.value : getDefaultPlayerDataValue('gotCharm_40');
 
-		const previousroyalCharmState = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.royalCharmState);
+		const previousroyalCharmState = getPreviousPlayerData('royalCharmState');
 		this.royalCharmState = previousroyalCharmState
 			? previousroyalCharmState.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.royalCharmState);
+			: getDefaultPlayerDataValue('royalCharmState');
 
-		const previousfragileHealth_unbreakable = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.fragileHealth_unbreakable,
-		);
+		const previousfragileHealth_unbreakable = getPreviousPlayerData('fragileHealth_unbreakable');
 		this.fragileHealth_unbreakable = previousfragileHealth_unbreakable
 			? previousfragileHealth_unbreakable.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.fragileHealth_unbreakable);
+			: getDefaultPlayerDataValue('fragileHealth_unbreakable');
 
-		const previousfragileStrength_unbreakable = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.fragileStrength_unbreakable,
-		);
+		const previousfragileStrength_unbreakable = getPreviousPlayerData('fragileStrength_unbreakable');
 		this.fragileStrength_unbreakable = previousfragileStrength_unbreakable
 			? previousfragileStrength_unbreakable.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.fragileStrength_unbreakable);
+			: getDefaultPlayerDataValue('fragileStrength_unbreakable');
 
-		const previousfragileGreed_unbreakable = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.fragileGreed_unbreakable,
-		);
+		const previousfragileGreed_unbreakable = getPreviousPlayerData('fragileGreed_unbreakable');
 		this.fragileGreed_unbreakable = previousfragileGreed_unbreakable
 			? previousfragileGreed_unbreakable.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.fragileGreed_unbreakable);
+			: getDefaultPlayerDataValue('fragileGreed_unbreakable');
 
-		const previousbrokenCharm_23 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.brokenCharm_23);
+		const previousbrokenCharm_23 = getPreviousPlayerData('brokenCharm_23');
 		this.brokenCharm_23 = previousbrokenCharm_23
 			? previousbrokenCharm_23.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.brokenCharm_23);
+			: getDefaultPlayerDataValue('brokenCharm_23');
 
-		const previousbrokenCharm_24 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.brokenCharm_24);
+		const previousbrokenCharm_24 = getPreviousPlayerData('brokenCharm_24');
 		this.brokenCharm_24 = previousbrokenCharm_24
 			? previousbrokenCharm_24.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.brokenCharm_24);
+			: getDefaultPlayerDataValue('brokenCharm_24');
 
-		const previousbrokenCharm_25 = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.brokenCharm_25);
+		const previousbrokenCharm_25 = getPreviousPlayerData('brokenCharm_25');
 		this.brokenCharm_25 = previousbrokenCharm_25
 			? previousbrokenCharm_25.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.brokenCharm_25);
+			: getDefaultPlayerDataValue('brokenCharm_25');
 
-		const previousgrimmChildLevel = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.grimmChildLevel);
+		const previousgrimmChildLevel = getPreviousPlayerData('grimmChildLevel');
 		this.grimmChildLevel = previousgrimmChildLevel
 			? previousgrimmChildLevel.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.grimmChildLevel);
+			: getDefaultPlayerDataValue('grimmChildLevel');
 
-		const previouscompletionPercentage = getPreviousPlayerData(
-			playerDataFieldsHollow.byFieldName.completionPercentage,
-		);
+		const previouscompletionPercentage = getPreviousPlayerData('completionPercentage');
 		this.completionPercentage = previouscompletionPercentage
 			? previouscompletionPercentage.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.completionPercentage);
+			: getDefaultPlayerDataValue('completionPercentage');
 
-		const previousgrubsCollected = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.grubsCollected);
+		const previousgrubsCollected = getPreviousPlayerData('grubsCollected');
 		this.grubsCollected = previousgrubsCollected
 			? previousgrubsCollected.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.grubsCollected);
+			: getDefaultPlayerDataValue('grubsCollected');
 
-		const previousgrubRewards = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.grubRewards);
-		this.grubRewards = previousgrubRewards
-			? previousgrubRewards.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.grubRewards);
+		const previousgrubRewards = getPreviousPlayerData('grubRewards');
+		this.grubRewards = previousgrubRewards ? previousgrubRewards.value : getDefaultPlayerDataValue('grubRewards');
 
-		const previousHasXunFlower = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.hasXunFlower);
+		const previousHasXunFlower = getPreviousPlayerData('hasXunFlower');
 		this.hasXunFlower = previousHasXunFlower
 			? previousHasXunFlower.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.hasXunFlower);
-		const previousXunFlowerBroken = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.xunFlowerBroken);
+			: getDefaultPlayerDataValue('hasXunFlower');
+		const previousXunFlowerBroken = getPreviousPlayerData('xunFlowerBroken');
 		this.xunFlowerBroken = previousXunFlowerBroken
 			? previousXunFlowerBroken.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.xunFlowerBroken);
+			: getDefaultPlayerDataValue('xunFlowerBroken');
 
 		this.dead = getPreviousHeroState(heroStateFieldsHollow.byFieldName.dead)?.value ?? false;
 
-		const previousShadeScene = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.shadeScene);
-		this.shadeScene = previousShadeScene
-			? previousShadeScene.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.shadeScene);
+		const previousShadeScene = getPreviousPlayerData('shadeScene');
+		this.shadeScene = previousShadeScene ? previousShadeScene.value : getDefaultPlayerDataValue('shadeScene');
 
-		const previousShadePositionX = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.shadePositionX);
+		const previousShadePositionX = getPreviousPlayerData('shadePositionX');
 		this.shadePositionX = previousShadePositionX
 			? previousShadePositionX.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.shadePositionX);
-		const previousShadePositionY = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.shadePositionY);
+			: getDefaultPlayerDataValue('shadePositionX');
+		const previousShadePositionY = getPreviousPlayerData('shadePositionY');
 		this.shadePositionY = previousShadePositionY
 			? previousShadePositionY.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.shadePositionY);
+			: getDefaultPlayerDataValue('shadePositionY');
 
-		const previousDreamGateScene = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.dreamGateScene);
+		const previousDreamGateScene = getPreviousPlayerData('dreamGateScene');
 		this.dreamGateScene = previousDreamGateScene
 			? previousDreamGateScene.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.dreamGateScene);
-		const previousDreamGateX = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.dreamGateX);
-		this.dreamGateX = previousDreamGateX
-			? previousDreamGateX.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.dreamGateX);
-		const previousDreamGateY = getPreviousPlayerData(playerDataFieldsHollow.byFieldName.dreamGateY);
-		this.dreamGateY = previousDreamGateY
-			? previousDreamGateY.value
-			: getDefaultPlayerDataValue(playerDataFieldsHollow.byFieldName.dreamGateY);
+			: getDefaultPlayerDataValue('dreamGateScene');
+		const previousDreamGateX = getPreviousPlayerData('dreamGateX');
+		this.dreamGateX = previousDreamGateX ? previousDreamGateX.value : getDefaultPlayerDataValue('dreamGateX');
+		const previousDreamGateY = getPreviousPlayerData('dreamGateY');
+		this.dreamGateY = previousDreamGateY ? previousDreamGateY.value : getDefaultPlayerDataValue('dreamGateY');
 
 		// end auto generated from code above
 

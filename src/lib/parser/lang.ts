@@ -1,4 +1,5 @@
-import { langMapZones, langTitles } from '../game-data/hollow-data';
+import { langMapZones } from '../game-data/hollow-data/lang/map-zones.generated';
+import { langTitles } from '../game-data/hollow-data/lang/titles.generated';
 
 export type LanguageSheetHK = 'Titles' | 'Map Zones';
 export type LanguageKeyOfSheet<T extends string> = T extends 'Titles'

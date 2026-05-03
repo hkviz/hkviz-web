@@ -1,5 +1,4 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { parsePlayerDataFieldValueHollow, playerDataFieldsHollow } from '../../player-data';
 import {
 	EVENT_PREFIXES,
 	type EventPrefix,
@@ -14,6 +13,10 @@ import {
 } from './mod-version-hollow';
 
 import { heroStateFieldsHollow, heroStatesSkipParsingHollow } from '~/lib/game-data/hollow-data/hero-states';
+import {
+	parsePlayerDataFieldValueHollow,
+	playerDataFieldsHollow,
+} from '~/lib/game-data/hollow-data/player-data-hollow';
 import { raise, typeCheckNever } from '~/lib/util/other';
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
@@ -114,7 +117,7 @@ export function parseRecordingFileHollow(
 						new PlayerDataEventHollow(
 							previousPlayerPositionEvent,
 							null, // filled in combiner - previousPlayerDataEventOfField
-							field,
+							field.name,
 							value,
 							ctx,
 						),

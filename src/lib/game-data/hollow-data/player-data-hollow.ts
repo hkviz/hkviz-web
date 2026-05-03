@@ -1,13 +1,13 @@
-import { playerDataFieldsGenerated } from '.';
-import { type BossSequenceDoorCompletion, type BossStatueCompletion } from '../../parser/player-data/boss-completion';
+import type { BossSequenceDoorCompletion, BossStatueCompletion } from '../../parser/player-data/boss-completion';
 import { BossSequenceData } from '../../parser/player-data/boss-sequence';
+import { playerDataFieldsGenerated } from './player-data-fields.generated';
 
 const playerDataFieldsArray = Object.values(playerDataFieldsGenerated);
 
 export type PlayerDataFieldHollow = (typeof playerDataFieldsArray)[number];
 
 // prettier-ignore
-export type PlayerDataFieldValueHollow<TField extends PlayerDataFieldHollow> =
+export type PlayerDataFieldValueHollow__OLD<TField extends PlayerDataFieldHollow> =
     TField['type'] extends 'Boolean' ? boolean :
     TField['type'] extends 'Int32' ? number :
     TField['type'] extends 'Single' ? number :
@@ -39,7 +39,7 @@ export const playerDataFieldsHollow = {
 export function parsePlayerDataFieldValueHollow<TField extends PlayerDataFieldHollow>(
 	field: TField,
 	value: string,
-): PlayerDataFieldValueHollow<TField> {
+): PlayerDataFieldValueHollow__OLD<TField> {
 	if (field.type === 'Int32') {
 		return parseInt(value) as any;
 	} else if (field.type === 'Single') {
@@ -60,10 +60,11 @@ export function parsePlayerDataFieldValueHollow<TField extends PlayerDataFieldHo
 	}
 }
 
-export function getDefaultValue<TField extends PlayerDataFieldHollow>(
-	field: TField,
-): PlayerDataFieldValueHollow<TField> {
-	return parsePlayerDataFieldValueHollow(field, field.defaultValue);
+export function getDefaultPlayerDataValueHollow<TFieldName extends PlayerDataFieldNameHollow>(
+	fieldName: TFieldName,
+): PlayerDataFieldValueHollow<TFieldName> {
+	const field = playerDataFieldsHollow.byFieldName[fieldName];
+	return parsePlayerDataFieldValueHollow(field, field.defaultValue) as any;
 }
 
 // SUBSETS OF PLAYER DATA FIELDS
@@ -102,3 +103,9 @@ export function isPlayerDataGotCharmField(field: PlayerDataFieldHollow): field i
 export function getCharmIdFromGotCharmField(field: PlayerDataGotCharmField) {
 	return field.name.slice('gotCharm_'.length);
 }
+
+export type PlayerDataFieldNameHollow = PlayerDataFieldHollow['name'];
+
+export type PlayerDataFieldValueHollow<TFieldName extends PlayerDataFieldNameHollow> = PlayerDataFieldValueHollow__OLD<
+	Extract<PlayerDataFieldHollow, { name: TFieldName }>
+>;

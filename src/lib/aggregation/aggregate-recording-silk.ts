@@ -1,6 +1,6 @@
 import { mapDataMainBySceneNameSilk } from '../game-data/silk-data/map-data-silk';
 import { isPlayerDataEventOfFieldSilk } from '../game-data/silk-data/player-data-silk';
-import { FrameEndEventSilk } from '../parser/recording-files/events-silk/frame-end-event-silk';
+import { isFrameEndEventSilk } from '../parser/recording-files/events-silk/frame-end-event-check-silk';
 import type { CombinedRecordingSilk } from '../parser/recording-files/parser-silk/recording-silk';
 import { formatTimeMs } from '../viz/util/time';
 import { aggregateRecording } from './aggregate-recording-shared';
@@ -56,7 +56,7 @@ export function aggregateRecordingSilk(recording: CombinedRecordingSilk): Aggreg
 				} else if (diff < 0) {
 					addToScenes(currentVirtualScenes, event.msIntoGame, 'shellShardsSpent', -diff);
 				}
-			} else if (event instanceof FrameEndEventSilk && event.previousFrameEndEvent) {
+			} else if (isFrameEndEventSilk(event) && event.previousFrameEndEvent) {
 				if (
 					event.healthTotal === 0 &&
 					event.previousFrameEndEvent &&

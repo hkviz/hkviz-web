@@ -41,6 +41,7 @@ export const gameModuleSilk: GameModule<'silk'> = {
 		positionToMap: playerPositionToMapPositionSilk,
 	},
 	playerDataFields: {
+		getDefaultValue: () => null,
 		byFieldName: playerDataFieldsSilk.byFieldName,
 		list: playerDataFieldsSilk.list,
 	},

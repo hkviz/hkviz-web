@@ -5,7 +5,7 @@ import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { FancyButton } from '~/components/fancy-button';
 import { HKVizText } from '~/components/HKVizText';
 import { OwnRuns } from '~/components/own-runs';
-import { GradientSeparator } from '~/components/ui/additions';
+import { GradientSeparator } from '~/components/ui/additions/gradient-separator';
 import { useUser } from '~/lib/auth/client';
 import { AA } from '~/lib/routing/AA';
 import { findOwnRuns } from '~/server/run/find-own-runs';

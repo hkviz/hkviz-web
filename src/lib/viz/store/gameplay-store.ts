@@ -1,7 +1,6 @@
 import { createContext, createEffect, createMemo, createSignal, onCleanup, onMount, useContext } from 'solid-js';
-import { playerDataFieldsHollow } from '~/lib/game-data/hollow-data/player-data-hollow';
 import type { GameModuleOfGame } from '~/lib/game-module/game-module';
-import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import { isCombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-check-silk';
 import type { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
 import type { GameId } from '~/lib/types/game-ids';
 
@@ -38,10 +37,8 @@ export function createGameplayStore<Game extends GameId>() {
 	const isSteelSoul = createMemo(() => {
 		const rec = recording();
 		// TODO
-		if (!rec || rec instanceof CombinedRecordingSilk) return false;
-		const permaDeathValue = rec?.lastPlayerDataEventOfField(
-			playerDataFieldsHollow.byFieldName.permadeathMode,
-		)?.value;
+		if (!rec || isCombinedRecordingSilk(rec)) return false;
+		const permaDeathValue = rec?.lastPlayerDataEventOfField('permadeathMode')?.value;
 		return permaDeathValue === 1 || permaDeathValue === 2;
 	});
 

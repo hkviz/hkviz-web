@@ -5,7 +5,7 @@ import { createEffect, createMemo, createSignal, For, Show } from 'solid-js';
 import { AuthNeededWrapper } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { HKVizText } from '~/components/HKVizText';
-import { Expander } from '~/components/ui/additions';
+import { Expander } from '~/components/ui/additions/expander';
 import { SelectIcon } from '~/components/ui/additions/select';
 import { Button } from '~/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '~/components/ui/card';

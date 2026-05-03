@@ -1,9 +1,11 @@
+import { enemiesJournalLang } from '~/lib/game-data/hollow-data/lang/enemies-journal.generated';
 import { parseHtmlEntities } from '~/lib/util/html';
 import { assertNever } from '~/lib/util/other';
+import type { LocalizedString } from '~/lib/viz/store/localization-store';
 import { localized } from '~/lib/viz/store/localization-store';
-import { enemiesJournalLang } from '../../game-data/hollow-data';
+import type { PlayerDataFieldNameHollow } from '../../game-data/hollow-data/player-data-hollow';
 import {
-	getDefaultValue,
+	getDefaultPlayerDataValueHollow,
 	getEnemyNameFromDefeatedField,
 	getEnemyNameFromKilledField,
 	isPlayerDataBoolField,
@@ -72,7 +74,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 		if (isPlayerDataDefeatedField(field)) {
 			const enemyDefeatName = getEnemyNameFromDefeatedField(field);
 			const defeatMapping = playerDataNameToDefeatedName[enemyDefeatName];
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				if (!(event.value && !event.previousPlayerDataEventOfField?.value)) {
 					return;
 				}
@@ -116,7 +118,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			const enemyName = getEnemyNameFromKilledField(field);
 			const enemyInfo = enemies.byPlayerDataName[enemyName];
 			if (enemyInfo && isEnemyBoss(enemyInfo)) {
-				recording.allPlayerDataEventsOfField(field).forEach((event) => {
+				recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 					if (event.value && !event.previousPlayerDataEventOfField?.value) {
 						const split = createRecordingSplitFromEnemy(
 							event.msIntoGame,
@@ -135,7 +137,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			// so we need to check the kills field, which at first is 2 an is decreased with each kill
 			// since the killed field handles the first version, only the second version is interesting
 
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				const previous = event.previousPlayerDataEventOfField;
 				if (event.value === 0 && (!previous || previous.value > 0)) {
 					// the value is 0, so the second form is defeated
@@ -153,7 +155,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 			});
 		} else if (field === playerDataFieldsHollow.byFieldName.greyPrinceDefeats) {
 			const enemyInfo = enemies.byPlayerDataName.GreyPrince;
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				if (event.value >= 1 && event.previousPlayerDataEventOfField?.value !== event.value) {
 					const enemyName =
 						greyPrinceNames.at(event.value >= greyPrinceNames.length ? -1 : event.value - 1) ??
@@ -173,11 +175,11 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 		} else if (isPlayerDataAbilityOrItemField(field)) {
 			const abilityOrItem = abilitiesAndItems[field.name];
 			if (!abilityOrItem) continue;
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				const boolCondition =
-					isPlayerDataBoolField(event.field) && event.value && !event.previousPlayerDataEventOfField?.value;
+					isPlayerDataBoolField(field) && event.value && !event.previousPlayerDataEventOfField?.value;
 				const intCondition: boolean =
-					event.field.type === 'Int32' &&
+					field.type === 'Int32' &&
 					(event.value as any as number) > 0 &&
 					event.previousPlayerDataEventOfField != null &&
 					event.previousPlayerDataEventOfField.value < event.value;
@@ -200,9 +202,9 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 				}
 			});
 		} else if (field === playerDataFieldsHollow.byFieldName.charmSlots) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				if (
-					event.value > getDefaultValue(playerDataFieldsHollow.byFieldName.charmSlots) &&
+					event.value > getDefaultPlayerDataValueHollow('charmSlots') &&
 					event.previousPlayerDataEventOfField?.value !== event.value
 				) {
 					splits.push({
@@ -217,7 +219,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 				}
 			});
 		} else if (field === playerDataFieldsHollow.byFieldName.hasDreamNail) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				if (event.value && !event.previousPlayerDataEventOfField?.value) {
 					splits.push({
 						msIntoGame: event.msIntoGame,
@@ -231,7 +233,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 				}
 			});
 		} else if (field === playerDataFieldsHollow.byFieldName.hasDreamGate) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				if (event.value && !event.previousPlayerDataEventOfField?.value) {
 					splits.push({
 						msIntoGame: event.msIntoGame,
@@ -245,7 +247,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 				}
 			});
 		} else if (field === playerDataFieldsHollow.byFieldName.dreamNailUpgraded) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				if (event.value && !event.previousPlayerDataEventOfField?.value) {
 					splits.push({
 						msIntoGame: event.msIntoGame,
@@ -259,7 +261,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 				}
 			});
 		} else if (field === playerDataFieldsHollow.byFieldName.nailSmithUpgrades) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				if (event.value === 1 && event.previousPlayerDataEventOfField?.value !== 1) {
 					splits.push({
 						msIntoGame: event.msIntoGame,
@@ -303,7 +305,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 				}
 			});
 		} else if (field === playerDataFieldsHollow.byFieldName.heartPieces) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				if (
 					event.value > 0 &&
 					event.previousPlayerDataEventOfField &&
@@ -345,7 +347,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 				}
 			});
 		} else if (field === playerDataFieldsHollow.byFieldName.vesselFragments) {
-			recording.allPlayerDataEventsOfField(field).forEach((event) => {
+			recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 				if (
 					event.value > 0 &&
 					event.previousPlayerDataEventOfField &&
@@ -384,45 +386,46 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 				}
 			});
 		} else {
-			[
-				{ field: playerDataFieldsHollow.byFieldName.mapAbyss, title: localized.raw('Abyss Map') },
+			const mapFields: { field: PlayerDataFieldNameHollow; title: LocalizedString }[] = [
+				{ field: 'mapAbyss', title: localized.raw('Abyss Map') },
 				{
-					field: playerDataFieldsHollow.byFieldName.mapCity,
+					field: 'mapCity',
 					title: localized.raw('City of Tears Map'),
 				},
-				{ field: playerDataFieldsHollow.byFieldName.mapCliffs, title: localized.raw('Howling Cliffs Map') },
+				{ field: 'mapCliffs', title: localized.raw('Howling Cliffs Map') },
 				{
-					field: playerDataFieldsHollow.byFieldName.mapCrossroads,
+					field: 'mapCrossroads',
 					title: localized.raw('Forgotten Crossroads Map'),
 				},
-				{ field: playerDataFieldsHollow.byFieldName.mapDeepnest, title: localized.raw('Deepnest Map') },
+				{ field: 'mapDeepnest', title: localized.raw('Deepnest Map') },
 				{
-					field: playerDataFieldsHollow.byFieldName.mapFogCanyon,
+					field: 'mapFogCanyon',
 					title: localized.raw('Fog Canyon Map'),
 				},
-				{ field: playerDataFieldsHollow.byFieldName.mapGreenpath, title: localized.raw('Greenpath Map') },
+				{ field: 'mapGreenpath', title: localized.raw('Greenpath Map') },
 				{
-					field: playerDataFieldsHollow.byFieldName.mapMines,
+					field: 'mapMines',
 					title: localized.raw('Crystal Peak Map'),
 				},
-				{ field: playerDataFieldsHollow.byFieldName.mapOutskirts, title: localized.raw("Kingdom's Edge Map") },
+				{ field: 'mapOutskirts', title: localized.raw("Kingdom's Edge Map") },
 				{
-					field: playerDataFieldsHollow.byFieldName.mapRestingGrounds,
+					field: 'mapRestingGrounds',
 					title: localized.raw('Resting Grounds Map'),
 				},
 				{
-					field: playerDataFieldsHollow.byFieldName.mapRoyalGardens,
+					field: 'mapRoyalGardens',
 					title: localized.raw("Queen's Gardens Map"),
 				},
-
 				{
-					field: playerDataFieldsHollow.byFieldName.mapFungalWastes,
+					field: 'mapFungalWastes',
 					title: localized.raw('Fungal Wastes Map'),
 				},
-				{ field: playerDataFieldsHollow.byFieldName.mapWaterways, title: localized.raw('Royal Waterways Map') },
-			].map((map) => {
-				if (field === map.field) {
-					recording.allPlayerDataEventsOfField(field).forEach((event) => {
+				{ field: 'mapWaterways', title: localized.raw('Royal Waterways Map') },
+			];
+
+			mapFields.forEach((map) => {
+				if (field.name === map.field) {
+					recording.getPlayerDataEventsOfField(field.name).forEach((event) => {
 						if (event.value && !event.previousPlayerDataEventOfField?.value) {
 							splits.push({
 								msIntoGame: event.msIntoGame,

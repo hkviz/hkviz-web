@@ -31,7 +31,7 @@ import { type GetRunResult } from '~/server/run/run-get';
 import { runInteractionLike, runInteractionUnlike } from '~/server/run/run-interaction';
 import { runSetVisibilityAction } from '~/server/run/run-set-visibility';
 import { RunCardDropdownMenu } from '../run-card-dropdown';
-import { Expander } from '../ui/additions';
+import { Expander } from '../ui/additions/expander';
 import { createFocusContext, FocusContext, useGlobalMenuContext } from '../ui/additions/focus-context.tsx';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';

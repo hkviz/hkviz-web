@@ -1,4 +1,5 @@
-import { roomDataUnscaled, roomDataUnscaledFinishedGame } from '../../game-data/hollow-data';
+import { roomDataUnscaledFinishedGame } from '~/lib/game-data/hollow-data/map-rooms-finished.generated';
+import { roomDataUnscaled } from '~/lib/game-data/hollow-data/map-rooms.generated';
 
 export function logPossibleConditionals() {
 	const conditionalOn: Record<string, string> = {

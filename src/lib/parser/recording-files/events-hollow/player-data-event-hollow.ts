@@ -1,27 +1,27 @@
-import {
-	type PlayerDataFieldHollow,
-	type PlayerDataFieldValueHollow,
+import type {
+	PlayerDataFieldNameHollow,
+	PlayerDataFieldValueHollow,
 } from '../../../game-data/hollow-data/player-data-hollow';
 import type { EventCreationContext } from '../events-shared/event-creation-context';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
 
-export class PlayerDataEventHollow<TField extends PlayerDataFieldHollow> extends RecordingEventBase {
+export class PlayerDataEventHollow<TFieldName extends PlayerDataFieldNameHollow> extends RecordingEventBase {
 	public previousPlayerPositionEvent: PlayerPositionEvent | null;
-	public previousPlayerDataEventOfField: PlayerDataEventHollow<TField> | null;
-	public field: TField;
-	public value: PlayerDataFieldValueHollow<TField>;
+	public previousPlayerDataEventOfField: PlayerDataEventHollow<TFieldName> | null;
+	public fieldName: TFieldName;
+	public value: PlayerDataFieldValueHollow<TFieldName>;
 
 	constructor(
 		previousPlayerPositionEvent: PlayerPositionEvent | null,
-		previousPlayerDataEventOfField: PlayerDataEventHollow<TField> | null,
-		field: TField,
-		value: PlayerDataFieldValueHollow<TField>,
+		previousPlayerDataEventOfField: PlayerDataEventHollow<TFieldName> | null,
+		field: TFieldName,
+		value: PlayerDataFieldValueHollow<TFieldName>,
 		ctx: EventCreationContext,
 	) {
 		super(ctx);
 		this.previousPlayerPositionEvent = previousPlayerPositionEvent;
-		this.field = field;
+		this.fieldName = field;
 		this.value = value;
 		this.previousPlayerDataEventOfField = previousPlayerDataEventOfField;
 	}

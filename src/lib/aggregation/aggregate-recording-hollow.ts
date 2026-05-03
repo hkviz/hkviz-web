@@ -1,7 +1,6 @@
 import { mainRoomDataBySceneNameHollow } from '../game-data/hollow-data/map-data-hollow';
-import { playerDataFieldsHollow } from '../game-data/hollow-data/player-data-hollow';
 import { roomGroupNamesBySceneNameHollow } from '../game-data/hollow-data/room-groups-hollow';
-import { FrameEndEventHollow } from '../parser/recording-files/events-hollow/frame-end-event-hollow';
+import { isFrameEndEventHollow } from '../parser/recording-files/events-hollow/frame-end-event-check-hollow';
 import { HeroStateEvent } from '../parser/recording-files/events-hollow/hero-state-event';
 import { SpellDownEvent } from '../parser/recording-files/events-hollow/spell-down-event';
 import { SpellFireballEvent } from '../parser/recording-files/events-hollow/spell-fireball-event';
@@ -39,23 +38,17 @@ export function aggregateRecordingHollow(recording: CombinedRecordingHollow): Ag
 				addToScenes(currentVirtualScenes, event.msIntoGame, 'spellUp', 1);
 			} else if (event instanceof SpellDownEvent) {
 				addToScenes(currentVirtualScenes, event.msIntoGame, 'spellDown', 1);
-			} else if (
-				isPlayerDataEventOfFieldHollow(event, playerDataFieldsHollow.byFieldName.health) &&
-				event.previousPlayerDataEventOfField
-			) {
+			} else if (isPlayerDataEventOfFieldHollow(event, 'health') && event.previousPlayerDataEventOfField) {
 				const diff = event.value - event.previousPlayerDataEventOfField.value;
 				if (diff < 0) {
 					addToScenes(currentVirtualScenes, event.msIntoGame, 'damageTaken', -diff);
 				}
-			} else if (
-				isPlayerDataEventOfFieldHollow(event, playerDataFieldsHollow.byFieldName.healthBlue) &&
-				event.previousPlayerDataEventOfField
-			) {
+			} else if (isPlayerDataEventOfFieldHollow(event, 'healthBlue') && event.previousPlayerDataEventOfField) {
 				const diff = event.value - event.previousPlayerDataEventOfField.value;
 				if (diff < 0) {
 					addToScenes(currentVirtualScenes, event.msIntoGame, 'damageTaken', -diff);
 				}
-			} else if (event instanceof FrameEndEventHollow && event.previousFrameEndEvent) {
+			} else if (isFrameEndEventHollow(event) && event.previousFrameEndEvent) {
 				if (
 					event.healthTotal === 0 &&
 					event.previousFrameEndEvent &&

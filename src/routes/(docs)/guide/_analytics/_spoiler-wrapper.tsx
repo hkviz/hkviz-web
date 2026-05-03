@@ -1,5 +1,5 @@
 import { type JSXElement, createSignal } from 'solid-js';
-import { Expander } from '~/components/ui/additions';
+import { Expander } from '~/components/ui/additions/expander';
 import { Button } from '~/components/ui/button';
 
 export function SpoilerWrapper(props: { children: JSXElement; title: string }) {

@@ -7,7 +7,8 @@ import { createRecordingSplitsSilk } from '~/lib/splits/splits-silk/generate-spl
 import { raise } from '~/lib/util/other';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
-import { FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
+import { isFrameEndEventSilk } from '../events-silk/frame-end-event-check-silk';
+import type { FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
 import type { SceneDataEventSilk, SceneDataEventType } from '../events-silk/scene-data-event-silk';
 import { CombinedRecordingBase } from '../parser-shared/recording-shared';
@@ -66,7 +67,7 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 		public readonly allHkVizModVersions: string[],
 		public readonly storageStats: StorageStats,
 	) {
-		super(events, unknownEvents, parsingErrors);
+		super('silk', events, unknownEvents, parsingErrors);
 
 		for (const event of events) {
 			if (event instanceof SceneEvent) {
@@ -84,7 +85,7 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 				) {
 					this.playerPositionEventsWithTracePosition.push(event);
 				}
-			} else if (event instanceof FrameEndEventSilk) {
+			} else if (isFrameEndEventSilk(event)) {
 				this.frameEndEvents.push(event);
 			}
 		}

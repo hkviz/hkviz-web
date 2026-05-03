@@ -6,6 +6,8 @@ import type { RecordingEventOfGame } from '../events-specific/event-of-game';
 import type { FrameEndEventOfGame } from '../events-specific/frame-end-event-of-game';
 
 export class CombinedRecordingBase<Game extends GameId> {
+	public readonly gameId: Game;
+
 	public events: RecordingEventOfGame<Game>[];
 	public sceneEvents: SceneEvent[] = [];
 	public frameEndEvents: FrameEndEventOfGame<Game>[] = [];
@@ -13,7 +15,8 @@ export class CombinedRecordingBase<Game extends GameId> {
 	public readonly unknownEvents: number;
 	public readonly parsingErrors: number;
 
-	constructor(events: RecordingEventOfGame<Game>[], unknownEvents: number, parsingErrors: number) {
+	constructor(gameId: Game, events: RecordingEventOfGame<Game>[], unknownEvents: number, parsingErrors: number) {
+		this.gameId = gameId;
 		this.events = events;
 		this.unknownEvents = unknownEvents;
 		this.parsingErrors = parsingErrors;

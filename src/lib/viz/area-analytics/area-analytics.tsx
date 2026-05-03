@@ -2,13 +2,13 @@ import { ArrowLeftIcon, ArrowRightIcon, PaletteIcon, PinIcon, PinOffIcon } from 
 import { createEffect, createMemo, For, Index, Match, onCleanup, Show, Switch } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { ShortcutHint } from '~/components/shortcut-hint';
-import { tabsListTransparentClasses } from '~/components/ui/additions';
 import {
 	SelectItemBody,
 	SelectItemDescription,
 	SelectItemHeader,
 	selectItemIconClasses,
 } from '~/components/ui/additions/select';
+import { tabsListTransparentClasses } from '~/components/ui/additions/tabs';
 import { Button } from '~/components/ui/button';
 import { CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
 import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '~/components/ui/context-menu';
