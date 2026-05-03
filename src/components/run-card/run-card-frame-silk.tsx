@@ -4,10 +4,8 @@ import { ToolCrestNameSilk, toolCrestNamesSilk } from '~/lib/game-data/silk-data
 import { brokenSpriteSilk, crestNameToHudSpriteSilk } from '~/lib/game-data/silk-data/tool-crests-silk';
 import { cn } from '~/lib/utils.ts';
 
-const defaultPositionClasses = 'top-2 left-0 h-15';
-const positionClassesPerCrest: Partial<Record<ToolCrestNameSilk, string>> = {
-	Hunter_v2: '-left-4',
-};
+const targetCenterAtX = 9.5;
+const targetCenterAtY = 9.5;
 
 export const RunCardFrameSilk: Component<{
 	isSteelSoul: boolean;
@@ -18,11 +16,14 @@ export const RunCardFrameSilk: Component<{
 		toolCrestNamesSilk.includes(props.crestName as ToolCrestNameSilk)
 			? (props.crestName as ToolCrestNameSilk)
 			: 'Hunter';
+	const crestData = () => crestNameToHudSpriteSilk[crestName()];
 	const source = () => {
-		const byMode = crestNameToHudSpriteSilk[crestName()];
-		return props.isSteelSoul ? byMode.seelSoulHud : byMode.normalHud;
+		const data = crestData();
+		return props.isSteelSoul ? data.seelSoulHud : data.normalHud;
 	};
-	const positionClasses = () => cn(defaultPositionClasses, positionClassesPerCrest[crestName()]);
+
+	const twSpacing = (nr: number) => `calc(var(--spacing) * ${Math.round(nr * 100) / 100})`;
+	const pxToTw = (px: number) => `${twSpacing(px / 8)}`;
 
 	return (
 		<Show
@@ -38,7 +39,13 @@ export const RunCardFrameSilk: Component<{
 			<img
 				src={source()}
 				alt={crestName() + ' crest in ' + (props.isSteelSoul ? 'Steel Soul' : 'standard') + ' mode'}
-				class={cn('absolute w-auto max-w-none', positionClasses(), runCardInteractiveBrightnessClasses)}
+				class={cn('absolute w-auto max-w-none', runCardInteractiveBrightnessClasses)}
+				style={{
+					width: `${pxToTw(crestData().size.x)}`,
+					height: `${pxToTw(crestData().size.y)}`,
+					top: `calc(${twSpacing(targetCenterAtY)} - ${pxToTw(crestData().circleCenter.y)})`,
+					left: `calc(${twSpacing(targetCenterAtX)} - ${pxToTw(crestData().circleCenter.x)})`,
+				}}
 			/>
 		</Show>
 	);
