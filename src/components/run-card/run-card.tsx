@@ -290,7 +290,9 @@ export const RunCard: Component<{
 								<div
 									class={cn(
 										'relative mt-4 flex flex-row flex-wrap gap-1 drop-shadow-xs sm:gap-2',
-										gameState().game === 'silk' ? '-translate-x-2 translate-y-1' : '',
+										gameState().game === 'silk'
+											? 'translate-x-1 -translate-y-0.5 sm:-translate-x-4.5 sm:translate-y-1'
+											: '',
 									)}
 								>
 									<Index each={[...Array(gameState()?.maxHealth ?? 5).keys()]}>
@@ -350,7 +352,7 @@ export const RunCard: Component<{
 								</div>
 							</div>
 						</div>
-						<div class="-mt-3">
+						<div class="-mt-3 pr-4">
 							<RunCardTitle run={props.run} isOwnRun={props.isOwnRun ?? false} />
 							<div class="flex flex-row flex-wrap justify-start gap-4 gap-y-0 font-serif">
 								<Show when={props.run.user?.name && props.showUser}>

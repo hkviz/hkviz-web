@@ -37,7 +37,7 @@ export const RunCardBackground: Component<{
 						'absolute',
 						props.run.gameState.game === 'hollow'
 							? 'top-0 left-0 h-full w-full'
-							: 'top-0 left-[20%] h-full w-[60%]',
+							: 'top-0 left-[50%] h-full w-[max(60%,min(100%,400px))] translate-x-[-50%]',
 					)}
 				>
 					<img

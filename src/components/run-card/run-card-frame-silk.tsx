@@ -4,7 +4,7 @@ import { ToolCrestNameSilk, toolCrestNamesSilk } from '~/lib/game-data/silk-data
 import { brokenSpriteSilk, crestNameToHudSpriteSilk } from '~/lib/game-data/silk-data/tool-crests-silk';
 import { cn } from '~/lib/utils.ts';
 
-const targetCenterAtX = 9.5;
+const targetCenterAtX = 11.5;
 const targetCenterAtY = 9.5;
 
 export const RunCardFrameSilk: Component<{
@@ -23,7 +23,7 @@ export const RunCardFrameSilk: Component<{
 	};
 
 	const twSpacing = (nr: number) => `calc(var(--spacing) * ${Math.round(nr * 100) / 100})`;
-	const pxToTw = (px: number) => `${twSpacing(px / 8)}`;
+	const pxToTw = (px: number) => `${twSpacing(px / 7)}`;
 
 	return (
 		<Show
