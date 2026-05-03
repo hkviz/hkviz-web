@@ -1,6 +1,6 @@
 import * as v from 'valibot';
 import { cn } from '../../utils';
-import { GameId } from '../game-ids';
+import type { GameId } from '../game-ids';
 
 interface TagColor {
 	className: string;

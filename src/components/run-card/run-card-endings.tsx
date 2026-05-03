@@ -4,8 +4,8 @@ import {
 	completionSpriteSilk,
 	completionSubtitleSilk,
 } from '~/lib/game-data/silk-data/player-data-silk';
-import { SaveSlotCompletionIcons_CompletionStateSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import { RunMetadata } from '~/server/run/_find_runs_internal';
+import type { SaveSlotCompletionIcons_CompletionStateSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import type { RunMetadata } from '~/server/run/_find_runs_internal';
 import { Button } from '../ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 

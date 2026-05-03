@@ -1,6 +1,6 @@
-import { PlayerDataFieldTypeNamedMapSilk } from '~/lib/game-data/silk-data/player-data-silk';
-import { PlayerDataFieldSilk, PlayerDataFieldTypeSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import {
+import type { PlayerDataFieldTypeNamedMapSilk } from '~/lib/game-data/silk-data/player-data-silk';
+import type { PlayerDataFieldSilk, PlayerDataFieldTypeSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import type {
 	CollectableItemsDataSilk,
 	CollectableMementosDataSilk,
 	CollectableRelicsDataSilk,
@@ -14,8 +14,8 @@ import {
 	ToolItemsDataSilk,
 } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
 import { typeCheckNever } from '~/lib/util';
-import { ParsingLoggerSilk } from '../parsing-log-silk';
-import { SilkRecordingDataView } from '../silk-recording-data-view';
+import type { ParsingLoggerSilk } from '../parsing-log-silk';
+import type { SilkRecordingDataView } from '../silk-recording-data-view';
 import { getStringIdToStringForField } from '../string-id-by-field-silk';
 import { CollectionDiff } from './diff-types-shared';
 

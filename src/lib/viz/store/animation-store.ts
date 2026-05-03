@@ -1,10 +1,10 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import { batch, createContext, createEffect, createMemo, createSignal, untrack, useContext } from 'solid-js';
-import { RoomDataAny } from '~/lib/game-data/specific/room-data-of-game';
-import { SceneEvent } from '~/lib/parser/recording-files/events-shared/scene-event';
+import type { RoomDataAny } from '~/lib/game-data/specific/room-data-of-game';
+import type { SceneEvent } from '~/lib/parser/recording-files/events-shared/scene-event';
 import { binarySearchLastIndexBefore } from '../../parser';
-import { GameplayStore } from './gameplay-store';
-import { UiStore } from './ui-store';
+import type { GameplayStore } from './gameplay-store';
+import type { UiStore } from './ui-store';
 
 export type MsIntoGameChangeType = 'smooth' | 'instant';
 export type OnMsIntoGameChangeListener = (

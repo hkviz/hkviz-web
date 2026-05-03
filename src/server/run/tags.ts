@@ -2,7 +2,7 @@ import { action } from '@solidjs/router';
 import { and, eq } from 'drizzle-orm';
 import * as v from 'valibot';
 import { getUserOrThrow } from '~/lib/auth/shared';
-import { GameId } from '~/lib/types/game-ids';
+import type { GameId } from '~/lib/types/game-ids';
 import { getTagDBColumn } from '~/lib/types/tags/tag_db_column';
 import { type Tag, tagCodeWithGameSchema } from '~/lib/types/tags/tags';
 import { db } from '../db';

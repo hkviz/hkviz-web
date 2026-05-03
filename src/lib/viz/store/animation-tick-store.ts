@@ -1,6 +1,6 @@
 import { batch, createContext, createEffect, onCleanup, useContext } from 'solid-js';
-import { AnimationStore } from './animation-store';
-import { ExtraChartStore } from './extra-chart-store';
+import type { AnimationStore } from './animation-store';
+import type { ExtraChartStore } from './extra-chart-store';
 
 const intervalMs = 1000 / 30;
 // const intervalMs = 1000 / 60;

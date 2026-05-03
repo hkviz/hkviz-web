@@ -1,5 +1,6 @@
 import { solidStart } from '@solidjs/start/config';
-import { defineConfig, loadEnv, Plugin } from 'vite';
+import type { Plugin } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 // import { imagetoolsWithAverageColor } from './image-processing';
 import mdx from '@mdx-js/rollup';
 import { nitro } from 'nitro/vite';

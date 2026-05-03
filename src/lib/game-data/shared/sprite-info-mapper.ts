@@ -1,5 +1,5 @@
 import { Bounds } from './bounds';
-import { SpriteInfoGenerated } from './sprite-info-generated';
+import type { SpriteInfoGenerated } from './sprite-info-generated';
 import { Vector2 } from './vectors';
 
 export function spriteInfoBounds(visualBounds: Bounds, spriteInfo: SpriteInfoGenerated): Bounds {

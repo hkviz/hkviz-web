@@ -1,4 +1,4 @@
-import { Component, JSXElement } from 'solid-js';
+import type { Component, JSXElement } from 'solid-js';
 import { cardTitleSmallClasses } from '~/components/ui/additions/card';
 import { CardHeader, CardTitle } from '~/components/ui/card';
 import { cn } from '~/lib/utils';

@@ -1,5 +1,5 @@
 import { PlayerDataEventSilk } from '~/lib/parser/recording-files/events-silk/player-data-event-silk';
-import {
+import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldSilk,
 	PlayerDataFieldTypeSilk,

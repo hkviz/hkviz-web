@@ -4,7 +4,7 @@ import { Button } from '~/components/ui/button';
 import { Resizable, ResizableHandle } from '~/components/ui/resizable';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
-import { LaneId } from '../layout/layout-location';
+import type { LaneId } from '../layout/layout-location';
 import { LayoutPanel } from '../layout/layout-panel';
 import { useLayoutStore } from '../store/layout-store';
 

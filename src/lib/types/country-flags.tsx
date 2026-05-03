@@ -250,7 +250,7 @@ import {
 	ZM,
 	ZW,
 } from 'country-flag-icons/string/3x2';
-import { CountryCode } from './country';
+import type { CountryCode } from './country';
 
 const flagByCode: Record<CountryCode, string | null> = {
 	'prefer-no': null,

@@ -1,5 +1,6 @@
-import { localized, LocalizedString } from '~/lib/viz/store/localization-store';
-import { ToolItemNameSilk } from './tool-item-silk.generated';
+import type { LocalizedString } from '~/lib/viz/store/localization-store';
+import { localized } from '~/lib/viz/store/localization-store';
+import type { ToolItemNameSilk } from './tool-item-silk.generated';
 
 export function toolItemSubtitle(item: ToolItemNameSilk): LocalizedString | undefined {
 	switch (item) {

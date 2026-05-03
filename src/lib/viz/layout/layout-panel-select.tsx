@@ -1,11 +1,13 @@
-import { Component, createMemo, Show } from 'solid-js';
+import type { Component} from 'solid-js';
+import { createMemo, Show } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useLayoutStore } from '../store/layout-store';
 import { useLocalizationStore } from '../store/localization-store';
 import { useLayoutPanelContext } from './layout-panel-context';
-import { getLayoutPanelTypeById, LayoutPanelTypeId, layoutPanelTypesByGame } from './layout-panel-type';
+import type { LayoutPanelTypeId} from './layout-panel-type';
+import { getLayoutPanelTypeById, layoutPanelTypesByGame } from './layout-panel-type';
 
 export interface LayoutPanelSelectProps {
 	iconOnly?: boolean;

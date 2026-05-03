@@ -1,23 +1,24 @@
 import { createLazyMemo } from '@solid-primitives/memo';
 import { createContext, createMemo, useContext, type Accessor } from 'solid-js';
-import { PlayerDataTestDataSilk, PlayerDataTestGroupSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
-import {
+import type { PlayerDataTestDataSilk, PlayerDataTestGroupSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
+import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldValueSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import { PlayerDataEventHollow } from '~/lib/parser/recording-files/events-hollow/player-data-event';
-import { PlayerDataEventSilk } from '~/lib/parser/recording-files/events-silk/player-data-event-silk';
-import { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
+import type { PlayerDataEventHollow } from '~/lib/parser/recording-files/events-hollow/player-data-event';
+import type { PlayerDataEventSilk } from '~/lib/parser/recording-files/events-silk/player-data-event-silk';
+import type { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import type {
+	PlayerDataFieldValueHollow} from '../../parser';
 import {
 	assertNever,
 	binarySearchLastIndexBefore,
 	getDefaultValue,
-	playerDataFieldsHollow,
-	PlayerDataFieldValueHollow,
+	playerDataFieldsHollow
 } from '../../parser';
-import { AnimationStore } from './animation-store';
-import { GameplayStore } from './gameplay-store';
+import type { AnimationStore } from './animation-store';
+import type { GameplayStore } from './gameplay-store';
 
 export function createPlayerDataAnimationStore(animationStore: AnimationStore, gameplayStore: GameplayStore) {
 	const currentPlayerData = createMemo(() => {

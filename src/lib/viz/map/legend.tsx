@@ -4,7 +4,7 @@ import { createMemo, For, Show } from 'solid-js';
 import { Expander } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
 import { DropdownMenu, DropdownMenuTrigger } from '~/components/ui/dropdown-menu';
-import { GameId } from '~/lib/types/game-ids';
+import type { GameId } from '~/lib/types/game-ids';
 import { useAggregationStore } from '../store/aggregation-store';
 import { useAnimationStore } from '../store/animation-store';
 import { useGameplayStore } from '../store/gameplay-store';

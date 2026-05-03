@@ -1,6 +1,6 @@
 {
 	"editor.codeActionsOnSave": {
-		"source.fixAll.oxc": "never"
+		"source.fixAll.oxc": "always"
 	},
 	"tailwindCSS.experimental.classRegex": [
 		["Classes \\=([^;]*);", "'([^']*)'"],

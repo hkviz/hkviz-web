@@ -1,5 +1,5 @@
-import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { EventCreationContext } from './event-creation-context';
+import type { Vector2 } from '~/lib/game-data/shared/vectors';
+import type { EventCreationContext } from './event-creation-context';
 import { RecordingEventBase } from './recording-event-base';
 import { type SceneEvent } from './scene-event';
 

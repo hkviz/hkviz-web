@@ -1,7 +1,7 @@
 import { createContext, createSignal, useContext } from 'solid-js';
 import { isServer } from 'solid-js/web';
 import { assertNever } from '~/lib/parser';
-import {
+import type {
 	SpriteSheetExtracted,
 	SpriteSheetExtractWorkerMessage,
 	SpriteSheetExtractWorkerResponse,

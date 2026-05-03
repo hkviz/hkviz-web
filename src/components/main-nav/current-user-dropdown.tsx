@@ -7,7 +7,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
-import { AuthSession } from '~/lib/auth/types';
+import type { AuthSession } from '~/lib/auth/types';
 import { createLogoutUrl } from '~/lib/auth/urls';
 import { cn } from '~/lib/utils';
 import { MenuItem, MenuItemContextProvider } from './main-nav-item';

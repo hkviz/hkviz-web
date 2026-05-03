@@ -1,6 +1,6 @@
 import { createMemo } from 'solid-js';
-import { LayoutStore } from '../store/layout-store';
-import { LaneId } from './layout-location';
+import type { LayoutStore } from '../store/layout-store';
+import type { LaneId } from './layout-location';
 import { getLayoutPanelTypeById } from './layout-panel-type';
 
 export function createLayoutPanelContext(props: {

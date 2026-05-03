@@ -1,5 +1,6 @@
 import { Title } from '@solidjs/meta';
-import { createAsync, type RouteDefinition, RouteSectionProps } from '@solidjs/router';
+import type { RouteSectionProps } from '@solidjs/router';
+import { createAsync, type RouteDefinition } from '@solidjs/router';
 import { createSignal, For, Show } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card/run-card';
@@ -14,7 +15,7 @@ import {
 	ExtraRestZonesSilk,
 	MapZoneSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import { RunGameStateSilk } from '~/server/run/run-column-selects';
+import type { RunGameStateSilk } from '~/server/run/run-column-selects';
 import '../_testing_styles.css';
 
 // TODO

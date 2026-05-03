@@ -1,6 +1,6 @@
 import { formatNumberVar, formatTimeMsVar } from './aggregation-formatting';
-import { AggregationVariableShared } from './aggregation-value-base';
-import { AggregationVariable } from './aggregation-variable';
+import type { AggregationVariableShared } from './aggregation-value-base';
+import type { AggregationVariable } from './aggregation-variable';
 
 export interface AggregationVariableInfo {
 	name: string;

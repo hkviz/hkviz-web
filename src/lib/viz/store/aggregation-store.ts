@@ -1,14 +1,14 @@
 import { PlayIcon, SigmaIcon } from 'lucide-solid';
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { virtualSceneName } from '~/lib/aggregation/aggregate-recording-shared';
-import { AggregationTimePointBase, AggregationValueBase } from '~/lib/aggregation/aggregation-value-base';
+import type { AggregationTimePointBase, AggregationValueBase } from '~/lib/aggregation/aggregation-value-base';
 import { isAggregationTimepoint } from '~/lib/aggregation/aggregation-value-specific';
-import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
-import { AggregationVariableInfo } from '~/lib/aggregation/aggregation-variable-info-shared';
+import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import type { AggregationVariableInfo } from '~/lib/aggregation/aggregation-variable-info-shared';
 import { assertNever, binarySearchLastIndexBefore } from '../../parser';
-import { AnimationStore } from './animation-store';
-import { GameplayStore } from './gameplay-store';
-import { AreaSelectionMode, RoomDisplayStore } from './room-display-store';
+import type { AnimationStore } from './animation-store';
+import type { GameplayStore } from './gameplay-store';
+import type { AreaSelectionMode, RoomDisplayStore } from './room-display-store';
 
 export type AggregationCountMode = 'total' | 'until-current-time';
 export const aggregationCountModes = ['until-current-time', 'total'] as AggregationCountMode[];

@@ -1,15 +1,15 @@
 import { MapIcon, PaletteIcon, PinIcon, PlayIcon } from 'lucide-solid';
 import { untrack, type Component, type JSXElement } from 'solid-js';
-import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { HKVizText } from '../hkviz-text';
-import { AnimationStore } from '../store/animation-store';
-import { MapZoomStore } from '../store/map-zoom-store';
-import { RoomColoringStore } from '../store/room-coloring-store';
-import { RoomDisplayStore } from '../store/room-display-store';
+import type { AnimationStore } from '../store/animation-store';
+import type { MapZoomStore } from '../store/map-zoom-store';
+import type { RoomColoringStore } from '../store/room-coloring-store';
+import type { RoomDisplayStore } from '../store/room-display-store';
 import { mapViewRoomRectClass } from '../store/tour-store';
-import { UiStore } from '../store/ui-store';
-import { ViewportStore } from '../store/viewport-store';
+import type { UiStore } from '../store/ui-store';
+import type { ViewportStore } from '../store/viewport-store';
 import { GeoChartUnitIconHollow, HealthChartMaskUnitIconHollow } from '../time-charts/chart-icons';
 import { makeStep, type Step } from './step';
 

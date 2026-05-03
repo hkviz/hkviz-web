@@ -1,11 +1,12 @@
 import { mapDataMainBySceneNameSilk } from '../game-data/silk-data/map-data-silk';
 import { isPlayerDataEventOfFieldSilk } from '../game-data/silk-data/player-data-silk';
 import { FrameEndEventSilk } from '../parser/recording-files/events-silk/frame-end-event-silk';
-import { CombinedRecordingSilk } from '../parser/recording-files/parser-silk/recording-silk';
+import type { CombinedRecordingSilk } from '../parser/recording-files/parser-silk/recording-silk';
 import { formatTimeMs } from '../viz/util/time';
 import { aggregateRecording } from './aggregate-recording-shared';
+import type {
+	AggregatedRunDataSilk} from './aggregation-value-silk';
 import {
-	AggregatedRunDataSilk,
 	createAggregationTimePointCloneSilk,
 	createEmptyAggregationSilk,
 } from './aggregation-value-silk';

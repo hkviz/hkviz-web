@@ -1,11 +1,11 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
 import { playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk';
-import {
+import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldSilk,
 	PlayerDataFieldValueSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
+import type { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
 import { typeCheckNever } from '~/lib/util';
 import { isSubSceneNameSilk } from '../../../game-data/silk-data/sub-scene-names-silk';
 import { EventCreationContext } from '../events-shared/event-creation-context';
@@ -20,9 +20,11 @@ import {
 } from './collection-parsing/list-delta-parsing-silk';
 import { parseNamedMapDelta, parseNamedMapFull } from './collection-parsing/named-map-parsing-silk';
 import { parseStringSetDelta } from './collection-parsing/set-delta-parsing-silk';
-import { entryTypeNameSilk, entryTypeSilk, EntryTypeSilk } from './entry-type-silk';
+import type { EntryTypeSilk } from './entry-type-silk';
+import { entryTypeNameSilk, entryTypeSilk } from './entry-type-silk';
 import { recordingFileVersionToModVersionSilk } from './mod-version-silk';
-import { ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
+import type { RecordingEventSilk } from './recording-silk';
+import { ParsedRecordingSilk } from './recording-silk';
 import { SilkRecordingDataView } from './silk-recording-data-view';
 import { StorageStats } from './storage-stats';
 import { getStringIdToStringForField, stringIdMappingSilk } from './string-id-by-field-silk';

@@ -1,10 +1,12 @@
 import { createContext, createEffect, createMemo, untrack, useContext } from 'solid-js';
 import { createStore } from 'solid-js/store';
-import { GameId } from '~/lib/types/game-ids';
-import { LaneId, laneIds } from '../layout/layout-location';
-import { getLayoutPanelTypeById, LayoutPanelTypeId } from '../layout/layout-panel-type';
-import { GameplayStore } from './gameplay-store';
-import { ViewportStore } from './viewport-store';
+import type { GameId } from '~/lib/types/game-ids';
+import type { LaneId} from '../layout/layout-location';
+import { laneIds } from '../layout/layout-location';
+import type { LayoutPanelTypeId } from '../layout/layout-panel-type';
+import { getLayoutPanelTypeById } from '../layout/layout-panel-type';
+import type { GameplayStore } from './gameplay-store';
+import type { ViewportStore } from './viewport-store';
 
 interface Lane {
 	locationIds: string[];

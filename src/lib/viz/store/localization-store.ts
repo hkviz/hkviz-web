@@ -1,7 +1,10 @@
-import { createContext, createMemo, createSignal, onMount, Signal, useContext } from 'solid-js';
-import { loadLangSilk, LocalizationDataSilk } from '~/lib/game-data/silk-data/localization/load-lang-silk.generated';
+import type { Signal} from 'solid-js';
+import { createContext, createMemo, createSignal, onMount, useContext } from 'solid-js';
+import type { LocalizationDataSilk } from '~/lib/game-data/silk-data/localization/load-lang-silk.generated';
+import { loadLangSilk } from '~/lib/game-data/silk-data/localization/load-lang-silk.generated';
+import type {
+	SupportedLanguageSilk} from '~/lib/game-data/silk-data/localization/supported-languages-silk';
 import {
-	SupportedLanguageSilk,
 	supportedLanguagesSilk,
 } from '~/lib/game-data/silk-data/localization/supported-languages-silk';
 import { assertNever } from '~/lib/util';

@@ -1,8 +1,8 @@
 import { createDeferred, createMemo, createSignal } from 'solid-js';
 import { isServer } from 'solid-js/web';
-import { GameModuleOfGame } from '~/lib/game-module/game-module';
+import type { GameModuleOfGame } from '~/lib/game-module/game-module';
 import { loadGameModule } from '~/lib/game-module/load-game-module';
-import { GameId } from '~/lib/types/game-ids';
+import type { GameId } from '~/lib/types/game-ids';
 import { createStoreInitializer } from '../store/store-initializer';
 import { fetchWithRunfileCache, openRunfileCache } from './recording-file-browser-cache';
 import { type RunFileInfo } from './run-files-info';

@@ -1,6 +1,8 @@
-import { Component, Show } from 'solid-js';
+import type { Component} from 'solid-js';
+import { Show } from 'solid-js';
 import { runCardInteractiveBrightnessClasses } from '~/components/run-card/run-card-interactive-brightness-classes.tsx';
-import { ToolCrestNameSilk, toolCrestNamesSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
+import type { ToolCrestNameSilk} from '~/lib/game-data/silk-data/tool-crest-silk.generated';
+import { toolCrestNamesSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
 import { brokenSpriteSilk, crestNameToHudSpriteSilk } from '~/lib/game-data/silk-data/tool-crests-silk';
 import { cn } from '~/lib/utils.ts';
 

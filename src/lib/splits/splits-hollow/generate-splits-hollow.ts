@@ -19,9 +19,9 @@ import {
 	type EnemyInfo,
 } from '../../parser/player-data/enemies';
 import { type PlayerPositionEvent } from '../../parser/recording-files/events-shared/player-position-event';
-import { CombinedRecordingHollow } from '../../parser/recording-files/parser-hollow/recording-hollow';
+import type { CombinedRecordingHollow } from '../../parser/recording-files/parser-hollow/recording-hollow';
 import { assertNever, parseHtmlEntities } from '../../util';
-import { Split } from '../splits-shared/split';
+import type { Split } from '../splits-shared/split';
 import { splitGroupsHollow } from './split-group-hollow';
 
 function createRecordingSplitFromEnemy(

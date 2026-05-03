@@ -1,5 +1,5 @@
 import { TimerIcon } from 'lucide-solid';
-import { Component } from 'solid-js';
+import type { Component } from 'solid-js';
 
 export const SplitIcon: Component<{ class?: string }> = (props) => {
 	return <TimerIcon class={props.class} />;

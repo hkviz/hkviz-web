@@ -2,9 +2,9 @@ import { type LucideIcon } from 'lucide-solid';
 import { Show, createContext, useContext, type Component, type JSXElement } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Button } from '~/components/ui/button';
-import { DropdownMenuItem } from '~/components/ui/dropdown-menu';
+import type { DropdownMenuItem } from '~/components/ui/dropdown-menu';
 import { AA, useLocation } from '~/lib/routing/AA';
-import { UrlPath } from '~/lib/routing/url';
+import type { UrlPath } from '~/lib/routing/url';
 import { cn } from '~/lib/utils';
 
 export type MenuItemAs = typeof Button | typeof DropdownMenuItem;

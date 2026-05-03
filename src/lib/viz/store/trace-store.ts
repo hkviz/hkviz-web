@@ -1,6 +1,6 @@
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { assertNever } from '../../parser';
-import { AnimationStore } from './animation-store';
+import type { AnimationStore } from './animation-store';
 
 export type TraceVisibility = 'stay' | 'fade_out' | 'hide';
 

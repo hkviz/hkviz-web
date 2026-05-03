@@ -1,8 +1,8 @@
-import {
+import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldValueSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import { EventCreationContext } from '../events-shared/event-creation-context';
+import type { EventCreationContext } from '../events-shared/event-creation-context';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
 

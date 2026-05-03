@@ -1,6 +1,8 @@
-import { createSignal, onMount, splitProps, ValidComponent } from 'solid-js';
-import { Button, ButtonProps } from './ui/button';
-import { PolymorphicProps } from '@kobalte/core';
+import type { ValidComponent } from 'solid-js';
+import { createSignal, onMount, splitProps } from 'solid-js';
+import type { ButtonProps } from './ui/button';
+import { Button } from './ui/button';
+import type { PolymorphicProps } from '@kobalte/core';
 import { cn } from '~/lib/utils';
 
 export interface FancyButtonProps<T extends ValidComponent = 'button'> extends ButtonProps<T> {

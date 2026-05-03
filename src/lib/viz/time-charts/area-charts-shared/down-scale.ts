@@ -1,5 +1,6 @@
-import { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
-import { getChartVarValue, LineChartVariableDescription } from './area-chart-variable';
+import type { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
+import type { LineChartVariableDescription } from './area-chart-variable';
+import { getChartVarValue } from './area-chart-variable';
 
 export function downScale(
 	data: FrameEndEventBase[],

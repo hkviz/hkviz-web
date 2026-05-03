@@ -1,14 +1,15 @@
 import { relations, sql, type HasDefault, type NotNull } from 'drizzle-orm';
+import type {
+	SQLiteBooleanBuilderInitial} from 'drizzle-orm/sqlite-core';
 import {
 	index,
 	int,
 	primaryKey,
 	real,
-	SQLiteBooleanBuilderInitial,
 	sqliteTableCreator,
 	text,
 } from 'drizzle-orm/sqlite-core';
-import { AccountType } from '~/lib/auth/auth-options';
+import type { AccountType } from '~/lib/auth/auth-options';
 import { ageRangeCodes } from '~/lib/types/age-range';
 import { callOptionCodes } from '~/lib/types/call-option';
 import { countryCodes } from '~/lib/types/country';
@@ -18,7 +19,8 @@ import { playingFrequencyCodes } from '~/lib/types/playing-frequency';
 import { playingSinceCodes } from '~/lib/types/playing-since';
 import { MAX_RUN_TITLE_LENGTH } from '~/lib/types/run-fields';
 import { runInteractionTypes } from '~/lib/types/run-interaction';
-import { TagDBColumn, tagDBNames } from '~/lib/types/tags/tag_db_column';
+import type { TagDBColumn} from '~/lib/types/tags/tag_db_column';
+import { tagDBNames } from '~/lib/types/tags/tag_db_column';
 
 // ---- CUSTOM TYPES ----
 // uuid

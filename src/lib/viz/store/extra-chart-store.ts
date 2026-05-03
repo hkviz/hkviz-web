@@ -1,6 +1,6 @@
 import { batch, createContext, createSignal, onCleanup, untrack, useContext } from 'solid-js';
-import { AnimationStore } from './animation-store';
-import { GameplayStore } from './gameplay-store';
+import type { AnimationStore } from './animation-store';
+import type { GameplayStore } from './gameplay-store';
 
 const transitionDuration = 50;
 

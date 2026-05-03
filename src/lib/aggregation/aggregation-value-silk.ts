@@ -1,5 +1,6 @@
-import { AggregationMaximumMode } from './aggregation-max-mode';
-import { AggregationTimePointBase, AggregationValueBase, ExtractAggregationVariable } from './aggregation-value-base';
+import type { AggregationMaximumMode } from './aggregation-max-mode';
+import type { AggregationTimePointBase, ExtractAggregationVariable } from './aggregation-value-base';
+import { AggregationValueBase } from './aggregation-value-base';
 
 export class AggregationValueSilk extends AggregationValueBase {
 	focusing: number = 0;

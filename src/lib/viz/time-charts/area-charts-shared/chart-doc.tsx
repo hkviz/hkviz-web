@@ -3,7 +3,7 @@ import { Dynamic } from 'solid-js/web';
 import { Card, CardContent, CardHeader } from '~/components/ui/card';
 import { Li, Ul } from '../../list';
 import { useLocalizationStore } from '../../store/localization-store';
-import { LineChartVariableDescription } from './area-chart-variable';
+import type { LineChartVariableDescription } from './area-chart-variable';
 
 export function ChartDocVars(props: { variables: LineChartVariableDescription[] }) {
 	const localizationStore = useLocalizationStore();

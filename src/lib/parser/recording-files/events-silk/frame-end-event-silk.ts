@@ -1,20 +1,22 @@
 import { Vector2 } from '~/lib/game-data/shared/vectors';
+import type {
+	CollectableRelicNameSilk} from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
 import {
-	CollectableRelicNameSilk,
 	collectableRelicSilk,
 } from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
-import { CollectableNameSilk, collectableSilk } from '~/lib/game-data/silk-data/collectable-silk.generated';
-import {
+import type { CollectableNameSilk} from '~/lib/game-data/silk-data/collectable-silk.generated';
+import { collectableSilk } from '~/lib/game-data/silk-data/collectable-silk.generated';
+import type {
 	PlayerDataFieldNameSilk,
 	PlayerDataFieldValueSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import {
+import type {
 	CollectableItemsDataSilk,
 	CollectableRelicsDataSilk,
 } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
-import { EventCreationContext } from '../events-shared/event-creation-context';
+import type { EventCreationContext } from '../events-shared/event-creation-context';
 import { FrameEndEventBase } from '../events-shared/frame-end-event-base';
-import { PlayerDataEventSilk } from './player-data-event-silk';
+import type { PlayerDataEventSilk } from './player-data-event-silk';
 
 export const frameEndEventPlayerDataFieldsSilk = [
 	'geo',

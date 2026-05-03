@@ -1,8 +1,9 @@
 import type { APIEvent } from '@solidjs/start/server';
 import * as v from 'valibot';
-import { TagCode, TagGroupCode } from '~/lib/types/tags/tags';
+import type { TagCode, TagGroupCode } from '~/lib/types/tags/tags';
 import { findPublicRuns } from '~/server/run/find-public-runs';
-import { RunDataV1, runFilterV1Schema } from '../v1-api-models';
+import type { RunDataV1} from '../v1-api-models';
+import { runFilterV1Schema } from '../v1-api-models';
 import { checkCompatApiKey } from './_check_key';
 import { mapRunToV1 } from './_map_run';
 

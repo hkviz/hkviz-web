@@ -3,7 +3,8 @@ import { type Component } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { cn } from '~/lib/utils';
-import { MobileTab, useUiStore } from '../store/ui-store';
+import type { MobileTab} from '../store/ui-store';
+import { useUiStore } from '../store/ui-store';
 
 interface MobileTabTriggerProps {
 	value: MobileTab;

@@ -1,4 +1,4 @@
-import { LayoutPanelTypeId } from './layout-panel-type';
+import type { LayoutPanelTypeId } from './layout-panel-type';
 
 export interface LayoutLaneEntryWithoutLocation {
 	panelTypeId: LayoutPanelTypeId;

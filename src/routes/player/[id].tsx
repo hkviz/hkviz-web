@@ -1,4 +1,5 @@
-import { createAsync, RouteDefinition, useSearchParams } from '@solidjs/router';
+import type { RouteDefinition} from '@solidjs/router';
+import { createAsync, useSearchParams } from '@solidjs/router';
 import { createMemo, Show } from 'solid-js';
 import * as v from 'valibot';
 import { ContentCenterWrapper } from '~/components/content-wrapper';

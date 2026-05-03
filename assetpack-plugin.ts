@@ -1,6 +1,8 @@
 // vite.config.mts
-import { AssetPack, AssetPackConfig } from '@assetpack/core';
-import { compress, CompressOptions } from '@assetpack/core/image';
+import type { AssetPackConfig } from '@assetpack/core';
+import { AssetPack } from '@assetpack/core';
+import type { CompressOptions } from '@assetpack/core/image';
+import { compress } from '@assetpack/core/image';
 import { json } from '@assetpack/core/json';
 import { texturePacker, texturePackerCompress } from '@assetpack/core/texture-packer';
 import { type Plugin, type ResolvedConfig } from 'vite';

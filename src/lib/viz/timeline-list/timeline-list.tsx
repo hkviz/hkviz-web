@@ -1,4 +1,8 @@
-import { createVirtualizer, VirtualItem, Virtualizer } from '@tanstack/solid-virtual';
+import type { VirtualItem, Virtualizer } from '@tanstack/solid-virtual';
+import { createVirtualizer } from '@tanstack/solid-virtual';
+import type {
+	JSX,
+	JSXElement} from 'solid-js';
 import {
 	createContext,
 	createEffect,
@@ -6,8 +10,6 @@ import {
 	createSignal,
 	createUniqueId,
 	For,
-	JSX,
-	JSXElement,
 	onCleanup,
 	onMount,
 	Show,

@@ -1,9 +1,9 @@
 import { createContext, createEffect, createMemo, createSignal, onCleanup, onMount, useContext } from 'solid-js';
 import { playerDataFieldsHollow } from '~/lib/game-data/hollow-data/player-data-hollow';
-import { GameModuleOfGame } from '~/lib/game-module/game-module';
+import type { GameModuleOfGame } from '~/lib/game-module/game-module';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
-import { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
-import { GameId } from '~/lib/types/game-ids';
+import type { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
+import type { GameId } from '~/lib/types/game-ids';
 
 export function createGameplayStore<Game extends GameId>() {
 	const [game, setGame] = createSignal<GameId | null>(null);

@@ -1,8 +1,8 @@
 import { SceneEvent } from '~/lib/parser/recording-files/events-shared/scene-event';
 import { roomGroupNamesBySceneName } from '../parser';
-import { CombinedRecordingAny } from '../parser/recording-files/parser-specific/combined-recording';
-import { AggregationMaximumMode } from './aggregation-max-mode';
-import {
+import type { CombinedRecordingAny } from '../parser/recording-files/parser-specific/combined-recording';
+import type { AggregationMaximumMode } from './aggregation-max-mode';
+import type {
 	AggregationTimePointBase,
 	AggregationValueBase,
 	AggregationVariableShared,

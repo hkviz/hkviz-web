@@ -1,6 +1,6 @@
-import { EventCreationContext } from './event-creation-context';
+import type { EventCreationContext } from './event-creation-context';
 import { RecordingEventBase } from './recording-event-base';
-import { SceneEvent } from './scene-event';
+import type { SceneEvent } from './scene-event';
 
 export class SceneEventAdditive extends RecordingEventBase {
 	public sceneName: string;

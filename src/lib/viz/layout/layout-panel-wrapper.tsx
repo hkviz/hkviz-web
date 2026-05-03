@@ -1,4 +1,4 @@
-import { Component, JSX, JSXElement } from 'solid-js';
+import type { Component, JSX, JSXElement } from 'solid-js';
 import { cardClasses, cardRoundedMdOnlyClasses } from '~/components/ui/additions/card';
 import { ResizablePanel } from '~/components/ui/resizable';
 import { cn } from '~/lib/utils';

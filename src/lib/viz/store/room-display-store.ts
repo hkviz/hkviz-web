@@ -1,12 +1,13 @@
 import { createHotkey } from '@tanstack/solid-hotkeys';
 import { createContext, createMemo, createSignal, useContext, type Accessor } from 'solid-js';
-import { PlayerDataTestDataSilk, RoomSpriteVariantSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
-import { isRoomDataHollow, isRoomDataSilk, RoomDataAny } from '~/lib/game-data/specific/room-data-of-game';
+import type { PlayerDataTestDataSilk, RoomSpriteVariantSilk } from '~/lib/game-data/silk-data/map-data-silk.types';
+import type { RoomDataAny } from '~/lib/game-data/specific/room-data-of-game';
+import { isRoomDataHollow, isRoomDataSilk } from '~/lib/game-data/specific/room-data-of-game';
 import { CombinedRecordingHollow } from '~/lib/parser/recording-files/parser-hollow/recording-hollow';
 import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { assertNever, playerDataFieldsHollow, type RoomSpriteVariantHollow } from '../../parser';
-import { GameplayStore } from './gameplay-store';
-import { PlayerDataAnimationStore } from './player-data-animation-store';
+import type { GameplayStore } from './gameplay-store';
+import type { PlayerDataAnimationStore } from './player-data-animation-store';
 
 export type RoomVisibility = 'all' | 'visited' | 'visited-animated';
 export type RoomPinChangeSource =

@@ -1,5 +1,5 @@
 import { Title } from '@solidjs/meta';
-import { RouteDefinition } from '@solidjs/router';
+import type { RouteDefinition } from '@solidjs/router';
 import { Show } from 'solid-js';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { FancyButton } from '~/components/fancy-button';

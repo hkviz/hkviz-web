@@ -1,19 +1,19 @@
 import * as d3 from 'd3';
 import { Bounds } from '../shared/bounds.js';
 import { colorFromRgbVector } from '../shared/colors.js';
-import { MapTextData } from '../shared/map-text-data.js';
-import { SpriteInfoGenerated } from '../shared/sprite-info-generated.js';
+import type { MapTextData } from '../shared/map-text-data.js';
+import type { SpriteInfoGenerated } from '../shared/sprite-info-generated.js';
 import { spriteInfoBounds } from '../shared/sprite-info-mapper.js';
 import { silkMapDataGenerated } from './map-data-silk.generated.js';
-import { SilkTextDataGenerated } from './map-data-silk.generated.types.js';
-import {
+import type { SilkTextDataGenerated } from './map-data-silk.generated.types.js';
+import type {
 	MapDataSilk,
 	RoomDataSilk,
 	SilkSpriteInfo,
 	SomeSpriteTypeSilk,
 	SpriteConditionDataSilk,
 } from './map-data-silk.types.js';
-import { MapZoneSilk } from './player-data-silk.generated.js';
+import type { MapZoneSilk } from './player-data-silk.generated.js';
 import { sceneNameGetZone } from './scene-ids-get-zone.js';
 import { sceneNameToIdMetaSilk } from './scene-ids-silk.js';
 import { silkScaleBounds } from './silk-scaling.js';

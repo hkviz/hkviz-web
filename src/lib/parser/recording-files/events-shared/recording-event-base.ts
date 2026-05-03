@@ -1,4 +1,4 @@
-import { EventCreationContext } from './event-creation-context';
+import type { EventCreationContext } from './event-creation-context';
 
 export abstract class RecordingEventBase {
 	timestamp: number;

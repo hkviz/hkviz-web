@@ -1,4 +1,5 @@
-import { Component, Match, Switch } from 'solid-js';
+import type { Component} from 'solid-js';
+import { Match, Switch } from 'solid-js';
 import { runCardInteractiveBrightnessClasses } from '~/components/run-card/run-card-interactive-brightness-classes.tsx';
 import { cn } from '~/lib/utils.ts';
 import {

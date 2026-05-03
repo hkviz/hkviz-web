@@ -1,8 +1,9 @@
 import { formatNumberVar } from './aggregation-formatting';
-import { AggregationVariableSilk } from './aggregation-value-silk';
+import type { AggregationVariableSilk } from './aggregation-value-silk';
+import type {
+	AggregationVariableInfo} from './aggregation-variable-info-shared';
 import {
 	aggregationVariableInfo,
-	AggregationVariableInfo,
 	aggregationVariableInfosShared,
 } from './aggregation-variable-info-shared';
 

@@ -1,10 +1,11 @@
-import { JSXElement, Show, createEffect, createSignal, type Component } from 'solid-js';
+import type { JSXElement} from 'solid-js';
+import { Show, createEffect, createSignal, type Component } from 'solid-js';
 import { cardRoundedMdOnlyClasses } from '~/components/ui/additions';
 import { Card } from '~/components/ui/card';
 import { cn } from '~/lib/utils';
-import { RunMetadata } from '~/server/run/_find_runs_internal';
+import type { RunMetadata } from '~/server/run/_find_runs_internal';
 import { LayoutLane } from '../layout/layout-lane';
-import { RunFileInfo, RunFileLoader } from '../loader';
+import type { RunFileInfo, RunFileLoader } from '../loader';
 import { MapView } from '../map';
 import { useUiStore } from '../store/ui-store';
 import { useViewportStore } from '../store/viewport-store';

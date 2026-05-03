@@ -1,4 +1,4 @@
-import { AggregationVariable } from './aggregation-variable';
+import type { AggregationVariable } from './aggregation-variable';
 
 export class AggregationValueBase {
 	damageTaken: number = 0;

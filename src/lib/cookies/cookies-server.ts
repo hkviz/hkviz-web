@@ -1,8 +1,10 @@
 import { query } from '@solidjs/router';
 import { getWebRequest } from '@solidjs/start/http';
-import { parse, serialize, SerializeOptions } from 'cookie';
+import type { SerializeOptions } from 'cookie';
+import { parse, serialize } from 'cookie';
 import * as v from 'valibot';
-import { CookieDefinition, CookieNameLike, getCookieName } from './cookie-names';
+import type { CookieDefinition, CookieNameLike} from './cookie-names';
+import { getCookieName } from './cookie-names';
 
 export class ServerCookies {
 	#cookies = new Map<string, string>();

@@ -1,7 +1,7 @@
 import { useAction, useSubmission, useSubmissions } from '@solidjs/router';
 import { PlusIcon, XIcon } from 'lucide-solid';
 import { For, Show, createMemo, type Component, type JSXElement } from 'solid-js';
-import { GameId } from '~/lib/types/game-ids.ts';
+import type { GameId } from '~/lib/types/game-ids.ts';
 import {
 	tagFromCode,
 	tagGroups,

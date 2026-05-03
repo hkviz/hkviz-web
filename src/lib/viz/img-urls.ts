@@ -1,5 +1,5 @@
 import { assertNever } from '../parser';
-import { GameId } from '../types/game-ids';
+import type { GameId } from '../types/game-ids';
 
 export const coinImg = '/ingame-sprites/HUD_coin_shop.png';
 export const shadeImg = '/ingame-sprites/bestiary/bestiary_hollow-shade_s.png';

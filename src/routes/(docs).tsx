@@ -5,7 +5,7 @@ import { Button } from '~/components/ui/button';
 import { Card } from '~/components/ui/card';
 import { Separator } from '~/components/ui/separator';
 import { AA, useLocation } from '~/lib/routing/AA';
-import { UrlPath } from '~/lib/routing/url';
+import type { UrlPath } from '~/lib/routing/url';
 
 function SubMenuSectionTitle(props: { children: JSXElement }) {
 	return <h3 class="font-serif text-xl font-bold">{props.children}</h3>;

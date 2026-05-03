@@ -1,5 +1,6 @@
 import { Title } from '@solidjs/meta';
-import { RouteDefinition, useSearchParams } from '@solidjs/router';
+import type { RouteDefinition} from '@solidjs/router';
+import { useSearchParams } from '@solidjs/router';
 import { createMemo, Show } from 'solid-js';
 import * as v from 'valibot';
 import { AuthNeeded } from '~/components/auth-needed';
@@ -7,7 +8,8 @@ import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { RunFilters } from '~/components/run-filters';
 import { RunList } from '~/components/run-list';
 import { useSession } from '~/lib/auth/client';
-import { findOwnRuns, RunOwnInput } from '~/server/run/find-own-runs';
+import type { RunOwnInput } from '~/server/run/find-own-runs';
+import { findOwnRuns } from '~/server/run/find-own-runs';
 import { filterParamsAtPage, runFilterBaseNoPageSchema } from '~/server/run/find_runs_base';
 
 export const route = {

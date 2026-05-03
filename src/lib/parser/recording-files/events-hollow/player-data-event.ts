@@ -2,7 +2,7 @@ import {
 	type PlayerDataFieldHollow,
 	type PlayerDataFieldValueHollow,
 } from '../../../game-data/hollow-data/player-data-hollow';
-import { EventCreationContext } from '../events-shared/event-creation-context';
+import type { EventCreationContext } from '../events-shared/event-creation-context';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
 

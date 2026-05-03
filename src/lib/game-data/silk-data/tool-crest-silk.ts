@@ -1,4 +1,4 @@
-import { ToolCrestNameSilk } from './tool-crest-silk.generated';
+import type { ToolCrestNameSilk } from './tool-crest-silk.generated';
 
 const toSubtitle: Record<ToolCrestNameSilk, string | null> = {
 	Hunter: null,

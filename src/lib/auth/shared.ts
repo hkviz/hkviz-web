@@ -1,4 +1,4 @@
-import { User as AuthUser } from '@auth/solid-start';
+import type { User as AuthUser } from '@auth/solid-start';
 import { query } from '@solidjs/router';
 import { getSessionOrNullInternal } from './get-session';
 

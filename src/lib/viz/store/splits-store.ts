@@ -1,10 +1,10 @@
 import Fuse from 'fuse.js';
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
 import { createMutableMemo } from '~/lib/create-mutable-memo';
-import { Split } from '~/lib/splits/splits-shared/split';
-import { AnimationStore } from './animation-store';
-import { GameplayStore } from './gameplay-store';
-import { LocalizationStore } from './localization-store';
+import type { Split } from '~/lib/splits/splits-shared/split';
+import type { AnimationStore } from './animation-store';
+import type { GameplayStore } from './gameplay-store';
+import type { LocalizationStore } from './localization-store';
 
 export type LocalizedSplit = Split & { localizedTitle: string };
 

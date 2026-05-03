@@ -1,9 +1,9 @@
-import { Component } from 'solid-js';
+import type { Component } from 'solid-js';
 import { FrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-hollow';
-import { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
+import type { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
 import { FrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-silk';
-import { ColorClasses } from '../../colors';
-import { LocalizedString } from '../../store/localization-store';
+import type { ColorClasses } from '../../colors';
+import type { LocalizedString } from '../../store/localization-store';
 
 export type NumberKeyOf<T> = keyof {
 	[TField in keyof T as T[TField] extends number ? (TField extends string ? TField : never) : never]: number;

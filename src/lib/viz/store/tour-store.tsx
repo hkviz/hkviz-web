@@ -1,11 +1,11 @@
 import { createContext, createMemo, createSignal, untrack, useContext } from 'solid-js';
 import { createTourSteps } from '../tour/steps';
-import { AnimationStore } from './animation-store';
-import { MapZoomStore } from './map-zoom-store';
-import { RoomColoringStore } from './room-coloring-store';
-import { RoomDisplayStore } from './room-display-store';
-import { UiStore } from './ui-store';
-import { ViewportStore } from './viewport-store';
+import type { AnimationStore } from './animation-store';
+import type { MapZoomStore } from './map-zoom-store';
+import type { RoomColoringStore } from './room-coloring-store';
+import type { RoomDisplayStore } from './room-display-store';
+import type { UiStore } from './ui-store';
+import type { ViewportStore } from './viewport-store';
 
 export function mapViewRoomRectClass({ gameObjectName }: { gameObjectName: string }) {
 	return 'map-view-room-rect_' + gameObjectName.replace(' ', '_');

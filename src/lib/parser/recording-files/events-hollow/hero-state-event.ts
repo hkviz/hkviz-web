@@ -1,6 +1,6 @@
-import { HeroStateField } from '../../hero-state';
-import { EventCreationContext } from '../events-shared/event-creation-context';
-import { PlayerPositionEvent } from '../events-shared/player-position-event';
+import type { HeroStateField } from '../../hero-state';
+import type { EventCreationContext } from '../events-shared/event-creation-context';
+import type { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
 
 export class HeroStateEvent extends RecordingEventBase {

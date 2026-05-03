@@ -1,6 +1,6 @@
 import { For } from 'solid-js';
 import { ContextMenuItem } from '~/components/ui/context-menu';
-import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { roomColorCurves } from '../color-curves';
 import { useRoomColoringStore } from '../store/room-coloring-store';
 

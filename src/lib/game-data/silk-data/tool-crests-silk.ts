@@ -1,5 +1,5 @@
 import { Vector2 } from '../shared/vectors';
-import { ToolCrestNameSilk } from './tool-crest-silk.generated';
+import type { ToolCrestNameSilk } from './tool-crest-silk.generated';
 
 export const crestNameToIdSilk: Record<ToolCrestNameSilk, number> = {
 	Hunter: 1,

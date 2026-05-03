@@ -3,12 +3,13 @@ import { collectableIdToNameSilk } from '~/lib/game-data/silk-data/collectable-s
 import { enemyJournalIdToNameSilk } from '~/lib/game-data/silk-data/enemy-journal-silk.generated';
 import { extraToolSlotIdToNameSilk } from '~/lib/game-data/silk-data/extra-tool-slot-silk.generated';
 import { materiumIdToNameSilk } from '~/lib/game-data/silk-data/materium-silk.generated';
-import { PlayerDataFieldNameNamedMapSilk } from '~/lib/game-data/silk-data/player-data-silk';
-import {
+import type { PlayerDataFieldNameNamedMapSilk } from '~/lib/game-data/silk-data/player-data-silk';
+import type {
 	PlayerDataFieldNameOfTypeHashsetOfStringSilk,
 	PlayerDataFieldNameOfTypeListOfStringSilk,
 	PlayerDataFieldNameOfTypeStringSilk,
-	PlayerDataFieldSilk,
+	PlayerDataFieldSilk} from '~/lib/game-data/silk-data/player-data-silk.generated';
+import {
 	playerDataFieldsSilk,
 } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { questIdToNameSilk } from '~/lib/game-data/silk-data/quest-silk.generated';

@@ -23,10 +23,13 @@ import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { TextField, TextFieldInput, TextFieldLabel } from '~/components/ui/text-field';
 import { AA } from '~/lib/routing/AA';
-import { AgeRange, ageRangeCodes, ageRangeName } from '~/lib/types/age-range';
-import { countries, CountryCode, countryName } from '~/lib/types/country';
+import type { AgeRange} from '~/lib/types/age-range';
+import { ageRangeCodes, ageRangeName } from '~/lib/types/age-range';
+import type { CountryCode} from '~/lib/types/country';
+import { countries, countryName } from '~/lib/types/country';
 import { CountryFlag } from '~/lib/types/country-flags';
-import { StudyDemographicData, studyDemographicDefaultData } from '~/lib/types/study-demographic-data';
+import type { StudyDemographicData} from '~/lib/types/study-demographic-data';
+import { studyDemographicDefaultData } from '~/lib/types/study-demographic-data';
 import { HKVizText } from '~/lib/viz';
 import { demographicsGetUserState, demographicsSave } from '~/server/ingameauth/demographics';
 

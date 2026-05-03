@@ -1,4 +1,5 @@
-import { CookieDefinition, CookieNameLike, getCookieName } from './cookie-names';
+import type { CookieDefinition, CookieNameLike} from './cookie-names';
+import { getCookieName } from './cookie-names';
 import * as v from 'valibot';
 
 export function cookiesClientSet(name: CookieNameLike, value: string, days: number) {

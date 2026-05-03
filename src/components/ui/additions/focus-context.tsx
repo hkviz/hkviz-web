@@ -1,4 +1,5 @@
-import { Accessor, createContext, createSignal, onCleanup, useContext } from 'solid-js';
+import type { Accessor} from 'solid-js';
+import { createContext, createSignal, onCleanup, useContext } from 'solid-js';
 
 export function createFocusContext() {
 	const [focusBools, setFocusBools] = createSignal<Accessor<boolean>[]>([]);

@@ -18,18 +18,20 @@ import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
 import { Toggle } from '~/components/ui/toggle';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
-import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { cn } from '~/lib/utils';
-import { getRelatedVirtualRoomNames, RelatedVirtualRoom } from '../../parser';
+import type { RelatedVirtualRoom } from '../../parser';
+import { getRelatedVirtualRoomNames } from '../../parser';
 import { roomInfoColoringToggleClasses } from '../class-names';
 import { useLayoutPanelContext } from '../layout/layout-panel-context';
-import { LayoutPanelTypeProps } from '../layout/layout-panel-props';
+import type { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { LayoutPanelSelect } from '../layout/layout-panel-select';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
 import { RoomColorCurveContextMenuItems } from '../map/room-color-curve-menu';
 import { HKMapRoom } from '../map/room-icon';
+import type {
+	AggregationCountMode} from '../store/aggregation-store';
 import {
-	AggregationCountMode,
 	aggregationCountModes,
 	getAggregationCountModeDescription,
 	getAggregationCountModeIcon,
@@ -40,7 +42,8 @@ import { useAnimationStore } from '../store/animation-store';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useLocalizationStore } from '../store/localization-store';
 import { useRoomColoringStore } from '../store/room-coloring-store';
-import { AreaSelectionMode, useRoomDisplayStore } from '../store/room-display-store';
+import type { AreaSelectionMode} from '../store/room-display-store';
+import { useRoomDisplayStore } from '../store/room-display-store';
 import { useThemeStore } from '../store/theme-store';
 import { useUiStore } from '../store/ui-store';
 import { createRoomMsButtonProps } from '../util/shared-interactions';

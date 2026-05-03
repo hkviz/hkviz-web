@@ -5,11 +5,11 @@ import {
 } from '../../../game-data/hollow-data/player-data-hollow';
 import { heroStateFields, type HeroStateField } from '../../hero-state/hero-states';
 import { type BossSequenceDoorCompletion } from '../../player-data/boss-completion';
-import { EventCreationContext } from '../events-shared/event-creation-context';
+import type { EventCreationContext } from '../events-shared/event-creation-context';
 import { FrameEndEventBase } from '../events-shared/frame-end-event-base';
 import { type PlayerPositionEvent } from '../events-shared/player-position-event';
 import { countGameCompletion } from '../parser-hollow/ingame-percentage';
-import { HeroStateEvent } from './hero-state-event';
+import type { HeroStateEvent } from './hero-state-event';
 import { type PlayerDataEventHollow } from './player-data-event';
 
 export const frameEndEventPlayerDataFieldsHollow = [

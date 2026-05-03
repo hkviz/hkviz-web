@@ -1,6 +1,9 @@
-import { A, AnchorProps, Location, useLocation as useLocationNative } from '@solidjs/router';
-import { createEffect, JSXElement } from 'solid-js';
-import { urlPath, UrlPath } from './url';
+import type { AnchorProps, Location} from '@solidjs/router';
+import { A, useLocation as useLocationNative } from '@solidjs/router';
+import type { JSXElement } from 'solid-js';
+import { createEffect } from 'solid-js';
+import type { UrlPath } from './url';
+import { urlPath } from './url';
 
 export type InternalAnchorProps = Omit<AnchorProps, 'href'> & {
 	href: UrlPath;

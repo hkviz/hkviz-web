@@ -1,10 +1,13 @@
+import type {
+	CollectableRelicNameSilk} from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
 import {
-	CollectableRelicNameSilk,
 	collectableRelicSilk,
 } from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
-import { CollectableNameSilk, collectableSilk } from '~/lib/game-data/silk-data/collectable-silk.generated';
+import type { CollectableNameSilk} from '~/lib/game-data/silk-data/collectable-silk.generated';
+import { collectableSilk } from '~/lib/game-data/silk-data/collectable-silk.generated';
 import { isBossEnemySilk } from '~/lib/game-data/silk-data/enemy-journal-silk';
-import { EnemyJournalNameSilk, enemyJournalSilk } from '~/lib/game-data/silk-data/enemy-journal-silk.generated';
+import type { EnemyJournalNameSilk} from '~/lib/game-data/silk-data/enemy-journal-silk.generated';
+import { enemyJournalSilk } from '~/lib/game-data/silk-data/enemy-journal-silk.generated';
 import {
 	completionNameSilk,
 	completionSpriteSilk,
@@ -12,14 +15,17 @@ import {
 	isPlayerDataEventOfFieldSilk,
 } from '~/lib/game-data/silk-data/player-data-silk';
 import { SaveSlotCompletionIcons_CompletionStateSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import { QuestNameSilk, questSilk } from '~/lib/game-data/silk-data/quest-silk.generated';
+import type { QuestNameSilk} from '~/lib/game-data/silk-data/quest-silk.generated';
+import { questSilk } from '~/lib/game-data/silk-data/quest-silk.generated';
 import { getToolCrestSubtitle } from '~/lib/game-data/silk-data/tool-crest-silk';
-import { ToolCrestNameSilk, toolCrestSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
+import type { ToolCrestNameSilk} from '~/lib/game-data/silk-data/tool-crest-silk.generated';
+import { toolCrestSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
 import { toolItemSubtitle } from '~/lib/game-data/silk-data/tool-item-silk';
-import { ToolItemNameSilk, toolItemSilk } from '~/lib/game-data/silk-data/tool-item-silk.generated';
-import { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
+import type { ToolItemNameSilk} from '~/lib/game-data/silk-data/tool-item-silk.generated';
+import { toolItemSilk } from '~/lib/game-data/silk-data/tool-item-silk.generated';
+import type { CombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-silk';
 import { localized } from '~/lib/viz/store/localization-store';
-import { Split } from '../splits-shared/split';
+import type { Split } from '../splits-shared/split';
 import { splitGroupsSilk } from './split-group-silk';
 
 export function createRecordingSplitsSilk(recording: CombinedRecordingSilk): Split[] {

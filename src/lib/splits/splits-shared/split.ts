@@ -1,6 +1,6 @@
-import { PlayerPositionEvent } from '~/lib/parser/recording-files/events-shared/player-position-event';
-import { LocalizedString } from '~/lib/viz/store/localization-store';
-import { SplitGroup } from './split-group';
+import type { PlayerPositionEvent } from '~/lib/parser/recording-files/events-shared/player-position-event';
+import type { LocalizedString } from '~/lib/viz/store/localization-store';
+import type { SplitGroup } from './split-group';
 
 export interface Split {
 	msIntoGame: number;

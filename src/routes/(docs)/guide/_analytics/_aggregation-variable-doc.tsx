@@ -1,6 +1,6 @@
 import { For } from 'solid-js';
 import { Card } from '~/components/ui/card';
-import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { aggregationVariableInfosHollow } from '~/lib/aggregation/aggregation-variable-info-hollow';
 import { AggregationVariableIcon } from '~/lib/viz';
 

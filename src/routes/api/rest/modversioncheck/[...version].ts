@@ -1,7 +1,8 @@
 import type { APIEvent } from '@solidjs/start/server';
-import { ModVersionHollow, typeCheckNever } from '~/lib/parser';
-import { ModVersionSilk } from '~/lib/parser/recording-files/parser-silk/mod-version-silk';
-import { GameId } from '~/lib/types/game-ids';
+import type { ModVersionHollow} from '~/lib/parser';
+import { typeCheckNever } from '~/lib/parser';
+import type { ModVersionSilk } from '~/lib/parser/recording-files/parser-silk/mod-version-silk';
+import type { GameId } from '~/lib/types/game-ids';
 
 interface ModVersionCheckResponse {
 	message: string;

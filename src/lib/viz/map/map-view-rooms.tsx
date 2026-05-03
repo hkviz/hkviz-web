@@ -1,8 +1,8 @@
 import * as d3 from 'd3';
 import { For, Match, Show, Switch, createMemo, createUniqueId } from 'solid-js';
 import { Bounds } from '~/lib/game-data/shared/bounds';
-import { RoomDataAny, RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
-import { GameId } from '~/lib/types/game-ids';
+import type { RoomDataAny, RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
+import type { GameId } from '~/lib/types/game-ids';
 import { useSpriteSheetStore } from '../spritesheets/spritesheet-store';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useRoomColoringStore } from '../store/room-coloring-store';

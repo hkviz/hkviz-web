@@ -1,4 +1,4 @@
-import { RoomDataAny } from './room-data-of-game';
+import type { RoomDataAny } from './room-data-of-game';
 
 export function hasConditional(room: RoomDataAny): boolean {
 	const spritesByVariant = room.spritesByVariant;

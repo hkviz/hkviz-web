@@ -1,12 +1,12 @@
-import { GameId } from '../types/game-ids';
-import { AggregationTimePointBase, AggregationValueBase } from './aggregation-value-base';
-import {
+import type { GameId } from '../types/game-ids';
+import type { AggregationTimePointBase, AggregationValueBase } from './aggregation-value-base';
+import type {
 	AggregatedRunDataHollow,
 	AggregationValueHollow,
 	AggregationValueTimePointHollow,
 	AggregationVariableHollow,
 } from './aggregation-value-hollow';
-import {
+import type {
 	AggregatedRunDataSilk,
 	AggregationValueSilk,
 	AggregationValueTimePointSilk,

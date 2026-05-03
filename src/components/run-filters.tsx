@@ -12,13 +12,14 @@ import {
 	DropdownMenuTrigger,
 } from '~/components/ui/dropdown-menu';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
-import { GameId, gameIdFromCode, gameIds, getGameName } from '~/lib/types/game-ids';
+import type { GameId} from '~/lib/types/game-ids';
+import { gameIdFromCode, gameIds, getGameName } from '~/lib/types/game-ids';
 import { RUN_SORT_DEFAULT, runSortFromCode, runSorts, type RunSortCode } from '~/lib/types/run-sort';
 import { isTag, tagOrGroupFromCode, type Tag, type TagGroup } from '~/lib/types/tags/tags';
 import { cn } from '~/lib/utils';
 import { type RunFilterParams } from '~/server/run/find-public-runs';
 import { FIND_RUN_TERM_MAX_LENGTH } from '~/server/run/find-run-constants';
-import { RunFilterBaseNoPage } from '~/server/run/find_runs_base';
+import type { RunFilterBaseNoPage } from '~/server/run/find_runs_base';
 
 function withoutDefaultParams(params: Partial<RunFilterParams>) {
 	return {

@@ -1,4 +1,5 @@
-import { Accessor, createMemo, createSignal, Setter, Signal, untrack } from 'solid-js';
+import type { Accessor, Setter, Signal} from 'solid-js';
+import { createMemo, createSignal, untrack } from 'solid-js';
 
 // probably can be removed in solid v2
 // as createSignal might be able to handle this

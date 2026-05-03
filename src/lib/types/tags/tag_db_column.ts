@@ -1,5 +1,6 @@
-import { GameId } from '../game-ids';
-import { TagCode, tags } from './tags';
+import type { GameId } from '../game-ids';
+import type { TagCode} from './tags';
+import { tags } from './tags';
 
 export const tagDBNames = [
 	'tag_first_playthrough',

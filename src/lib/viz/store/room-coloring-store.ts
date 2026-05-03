@@ -1,16 +1,17 @@
-import * as d3 from 'd3';
+import type * as d3 from 'd3';
 import { memoize } from 'micro-memoize';
 import { batch, createContext, createMemo, createSignal, useContext } from 'solid-js';
-import { AggregationVariableAny } from '~/lib/aggregation/aggregation-value-specific';
-import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import type { AggregationVariableAny } from '~/lib/aggregation/aggregation-value-specific';
+import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { isRoomDataSilk } from '~/lib/game-data/specific/room-data-of-game';
 import { RoomColorCurveExponential, RoomColorCurveLinear, type RoomColorCurve } from '../color-curves';
-import { ColorMapId, getRoomColorMapById } from '../color-map';
-import { AggregationStore } from './aggregation-store';
-import { AnimationStore } from './animation-store';
-import { GameplayStore } from './gameplay-store';
-import { RoomDisplayStore } from './room-display-store';
-import { ThemeStore } from './theme-store';
+import type { ColorMapId} from '../color-map';
+import { getRoomColorMapById } from '../color-map';
+import type { AggregationStore } from './aggregation-store';
+import type { AnimationStore } from './animation-store';
+import type { GameplayStore } from './gameplay-store';
+import type { RoomDisplayStore } from './room-display-store';
+import type { ThemeStore } from './theme-store';
 
 function hslEquals(a: d3.HSLColor, b: d3.HSLColor) {
 	return a.h === b.h && a.s === b.s && a.l === b.l;

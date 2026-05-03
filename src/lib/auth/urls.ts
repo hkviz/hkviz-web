@@ -1,5 +1,5 @@
 import { useLocation } from '../routing/AA';
-import { UrlPath } from '../routing/url';
+import type { UrlPath } from '../routing/url';
 
 export function getLoginUrl(callbackUrl: UrlPath): UrlPath {
 	return `/api/auth/signin?callbackUrl=${callbackUrl}`;

@@ -5,7 +5,7 @@ import { COOKIE_INGAME_AUTH_URL_ID } from '~/lib/cookies/cookie-names';
 import { redirectWithCookies } from '~/lib/cookies/cookies-response-helpers';
 import { serverCookiesGet } from '~/lib/cookies/cookies-server';
 import { assertNever } from '~/lib/parser';
-import { GameId } from '~/lib/types/game-ids';
+import type { GameId } from '~/lib/types/game-ids';
 import { accountGetScheduledForDeletion } from '../account/deletion';
 import { db } from '../db';
 import { ingameAuth } from '../db/schema';

@@ -1,6 +1,7 @@
 import { Title } from '@solidjs/meta';
 import { createAsync, useAction, useSubmission } from '@solidjs/router';
-import { createMemo, createSignal, createUniqueId, JSXElement, Match, Show, Switch } from 'solid-js';
+import type { JSXElement} from 'solid-js';
+import { createMemo, createSignal, createUniqueId, Match, Show, Switch } from 'solid-js';
 import { AuthNeededWrapper } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';
 import { Expander } from '~/components/ui/additions';

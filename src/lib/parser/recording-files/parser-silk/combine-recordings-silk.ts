@@ -1,5 +1,5 @@
 import { isPlayerDataEventOfFieldSilk } from '~/lib/game-data/silk-data/player-data-silk';
-import { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import type { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
 import { raise } from '../../../util';
 import { EventCreationContext } from '../events-shared/event-creation-context';
@@ -8,7 +8,8 @@ import { SceneEvent } from '../events-shared/scene-event';
 import { frameEndEventPlayerDataFieldsSetSilk, FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
 import { collectionDiffApply } from './collection-parsing/diff-types-shared';
-import { CombinedRecordingSilk, ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
+import type { ParsedRecordingSilk, RecordingEventSilk } from './recording-silk';
+import { CombinedRecordingSilk } from './recording-silk';
 import { combineStorageStats } from './storage-stats';
 
 export function combineRecordingsSilk(recordings: ParsedRecordingSilk[]): CombinedRecordingSilk {

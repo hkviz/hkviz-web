@@ -1,6 +1,6 @@
 import type { PlayerDataFieldHollow, playerDataFieldsHollow } from '../hollow-data/player-data-hollow';
 import type { playerDataFieldsSilk } from '../silk-data/player-data-silk';
-import { PlayerDataFieldSilk } from '../silk-data/player-data-silk.generated';
+import type { PlayerDataFieldSilk } from '../silk-data/player-data-silk.generated';
 
 export type PlayerDataFieldAny = PlayerDataFieldHollow | PlayerDataFieldSilk;
 

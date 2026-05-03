@@ -1,8 +1,9 @@
 import { formatNumberVar } from './aggregation-formatting';
-import { AggregationVariableHollow } from './aggregation-value-hollow';
+import type { AggregationVariableHollow } from './aggregation-value-hollow';
+import type {
+	AggregationVariableInfo} from './aggregation-variable-info-shared';
 import {
 	aggregationVariableInfo,
-	AggregationVariableInfo,
 	aggregationVariableInfosShared,
 } from './aggregation-variable-info-shared';
 

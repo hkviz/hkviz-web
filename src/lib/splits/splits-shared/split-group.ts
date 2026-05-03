@@ -1,4 +1,4 @@
-import { ColorClasses } from '~/lib/viz/colors';
+import type { ColorClasses } from '~/lib/viz/colors';
 
 export type SplitGroupId = string & { __brand: 'SplitGroupId' };
 

@@ -1,7 +1,8 @@
 import { action, json, query } from '@solidjs/router';
 import * as v from 'valibot';
 import { getUserOrThrow } from '~/lib/auth/shared';
-import { HkExperience, hkExperienceFinished, hkExperienceSchema } from '~/lib/types/hk-experience';
+import type { HkExperience} from '~/lib/types/hk-experience';
+import { hkExperienceFinished, hkExperienceSchema } from '~/lib/types/hk-experience';
 import { db } from '../db';
 import { hkExperience } from '../db/schema';
 import { getIngameAuthFlowState, getIngameAuthRedirect } from './ingameauth-flow-state';

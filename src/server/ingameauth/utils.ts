@@ -2,7 +2,7 @@ import { ingameAuth } from '~/server/db/schema';
 
 import { gte } from 'drizzle-orm';
 import { raise } from '~/lib/parser';
-import { db } from '~/server/db';
+import type { db } from '~/server/db';
 
 export function isMax10MinutesOld() {
 	const someMinutesAgo = new Date(Date.now() - 1000 * 60 * 10);

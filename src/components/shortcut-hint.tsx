@@ -1,4 +1,5 @@
-import { For, JSXElement, type Component } from 'solid-js';
+import type { JSXElement} from 'solid-js';
+import { For, type Component } from 'solid-js';
 import { cn } from '~/lib/utils';
 
 interface ShortcutHintProps {

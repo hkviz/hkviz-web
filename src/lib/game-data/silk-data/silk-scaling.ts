@@ -1,4 +1,4 @@
-import { Bounds } from '../shared/bounds';
+import type { Bounds } from '../shared/bounds';
 import { scaleBounds } from '../shared/scaling';
 
 export const SILK_SCALE_FACTOR = 10;

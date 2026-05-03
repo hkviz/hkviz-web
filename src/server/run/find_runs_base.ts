@@ -2,7 +2,7 @@ import * as v from 'valibot';
 import { gameIdSchema } from '~/lib/types/game-ids';
 import { RUN_SORT_DEFAULT, runSortSchema } from '~/lib/types/run-sort';
 import { isTagCode, tagGroupFromCode, tagGroupSchema, tagSchema } from '~/lib/types/tags/tags';
-import { RunFilter } from './_find_runs_internal';
+import type { RunFilter } from './_find_runs_internal';
 import { FIND_RUN_DEFAULT_PAGE_SIZE, FIND_RUN_TERM_MAX_LENGTH } from './find-run-constants';
 
 export const runFilterBaseSchema = v.object({

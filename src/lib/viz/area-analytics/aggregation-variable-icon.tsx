@@ -1,9 +1,9 @@
 import { Clock12Icon, Clock2Icon, ClockArrowUpIcon, HashIcon, type LucideIcon } from 'lucide-solid';
 import { Match, Switch } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
-import { AggregationVariableAny } from '~/lib/aggregation/aggregation-value-specific';
-import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
-import { GameId } from '~/lib/types/game-ids';
+import type { AggregationVariableAny } from '~/lib/aggregation/aggregation-value-specific';
+import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import type { GameId } from '~/lib/types/game-ids';
 import {
 	coinImg,
 	dreamNailImg,

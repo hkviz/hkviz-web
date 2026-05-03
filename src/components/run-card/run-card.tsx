@@ -8,7 +8,7 @@ import { RunCardTitle } from '~/components/run-card/run-card-title.tsx';
 import { createMutableMemo } from '~/lib/create-mutable-memo';
 import { errorGetMessage } from '~/lib/error-get-message';
 import { AA } from '~/lib/routing/AA';
-import { UrlPath } from '~/lib/routing/url';
+import type { UrlPath } from '~/lib/routing/url';
 import { visibilities, visibilityByCode, type VisibilityCode } from '~/lib/types/visibility';
 import { assertNever } from '~/lib/util/other';
 import { cn } from '~/lib/utils';

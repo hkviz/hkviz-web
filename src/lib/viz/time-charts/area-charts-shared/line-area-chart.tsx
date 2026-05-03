@@ -4,22 +4,25 @@ import { Dynamic } from 'solid-js/web';
 import { Checkbox } from '~/components/ui/checkbox';
 import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
-import { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
+import type { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
 import { createAutoSizeCanvas } from '../../canvas';
-import { MsIntoGameChangeType, useAnimationStore } from '../../store/animation-store';
+import type { MsIntoGameChangeType} from '../../store/animation-store';
+import { useAnimationStore } from '../../store/animation-store';
 import { useExtraChartStore } from '../../store/extra-chart-store';
 import { useGameplayStore } from '../../store/gameplay-store';
 import { useHoverMsStore } from '../../store/hover-ms-store';
-import { LocalizedString, useLocalizationStore } from '../../store/localization-store';
+import type { LocalizedString} from '../../store/localization-store';
+import { useLocalizationStore } from '../../store/localization-store';
 import { useRoomDisplayStore } from '../../store/room-display-store';
 import { useThemeStore } from '../../store/theme-store';
 import { useViewportStore } from '../../store/viewport-store';
 import { chartBaseHeight, chartBaseWidth, getChartFrame } from '../area-charts-shared/chart-frame';
+import type {
+	LineChartVariableDescription,
+	LineChartVariableKey} from './area-chart-variable';
 import {
 	getChartVarValue,
-	isShownInGraph,
-	LineChartVariableDescription,
-	LineChartVariableKey,
+	isShownInGraph
 } from './area-chart-variable';
 import { createIsVisible } from './create-is-visible';
 import { downScale } from './down-scale';

@@ -1,7 +1,8 @@
 import type { APIEvent } from '@solidjs/start/server';
 import { db } from '~/server/db';
-import { findRunsInternal, RunFilter } from '~/server/run/_find_runs_internal';
-import { RunDataV1 } from '../v1-api-models';
+import type { RunFilter } from '~/server/run/_find_runs_internal';
+import { findRunsInternal } from '~/server/run/_find_runs_internal';
+import type { RunDataV1 } from '../v1-api-models';
 import { checkCompatApiKey } from './_check_key';
 import { mapRunToV1 } from './_map_run';
 

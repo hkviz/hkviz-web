@@ -1,5 +1,5 @@
 import { createMemo, For } from 'solid-js';
-import { MapTextData } from '~/lib/game-data/shared/map-text-data';
+import type { MapTextData } from '~/lib/game-data/shared/map-text-data';
 import { hkLangString } from '../../parser';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useLocalizationStore } from '../store/localization-store';

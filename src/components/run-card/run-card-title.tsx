@@ -1,5 +1,6 @@
 import { useAction, useSubmission } from '@solidjs/router';
-import { Component, createEffect, onCleanup, Show } from 'solid-js';
+import type { Component} from 'solid-js';
+import { createEffect, onCleanup, Show } from 'solid-js';
 import { TextField, TextFieldTextArea } from '~/components/ui/text-field.tsx';
 import { showToast } from '~/components/ui/toast.tsx';
 import { createMutableMemo } from '~/lib/create-mutable-memo.ts';

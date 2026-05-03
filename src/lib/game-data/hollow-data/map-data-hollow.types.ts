@@ -1,4 +1,4 @@
-import { RoomDataBase } from '../shared/map-shared';
+import type { RoomDataBase } from '../shared/map-shared';
 
 // TODO
 export interface RoomDataHollowNew extends RoomDataBase<'hollow'> {}

@@ -1,5 +1,5 @@
-import { SpriteInfoGenerated } from '../shared/sprite-info-generated';
-import { Vector3Like, Vector4Like } from '../shared/vector-like';
+import type { SpriteInfoGenerated } from '../shared/sprite-info-generated';
+import type { Vector3Like, Vector4Like } from '../shared/vector-like';
 
 export interface HollowMapRoomGenerated {
 	sceneName: string;

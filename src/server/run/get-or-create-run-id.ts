@@ -1,5 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
-import { GameId } from '~/lib/types/game-ids';
+import type { GameId } from '~/lib/types/game-ids';
 
 import { type DB } from '~/server/db';
 import { runLocalIds, runs } from '~/server/db/schema';

@@ -5,13 +5,15 @@ import { HeroStateEvent } from '../parser/recording-files/events-hollow/hero-sta
 import { SpellDownEvent } from '../parser/recording-files/events-hollow/spell-down-event';
 import { SpellFireballEvent } from '../parser/recording-files/events-hollow/spell-fireball-event';
 import { SpellUpEvent } from '../parser/recording-files/events-hollow/spell-up-event';
+import type {
+	CombinedRecordingHollow} from '../parser/recording-files/parser-hollow/recording-hollow';
 import {
-	CombinedRecordingHollow,
 	isPlayerDataEventOfFieldHollow,
 } from '../parser/recording-files/parser-hollow/recording-hollow';
 import { aggregateRecording } from './aggregate-recording-shared';
+import type {
+	AggregatedRunDataHollow} from './aggregation-value-hollow';
 import {
-	AggregatedRunDataHollow,
 	createAggregationTimePointCloneHollow,
 	createEmptyAggregationHollow,
 } from './aggregation-value-hollow';

@@ -1,11 +1,13 @@
 import { FocusIcon, FullscreenIcon, GroupIcon } from 'lucide-solid';
-import { JSXElement, type Component } from 'solid-js';
+import type { JSXElement} from 'solid-js';
+import { type Component } from 'solid-js';
 import { ShortcutHint } from '~/components/shortcut-hint';
 import { overlayBlurBackgroundClasses } from '~/components/ui/additions/overlay';
 import { ToggleGroup, ToggleGroupItem } from '~/components/ui/toggle-group';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
-import { useMapZoomStore, ZoomFollowTarget } from '../store/map-zoom-store';
+import type { ZoomFollowTarget } from '../store/map-zoom-store';
+import { useMapZoomStore } from '../store/map-zoom-store';
 import { useUiStore } from '../store/ui-store';
 
 const MapZoomButton: Component<{

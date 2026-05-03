@@ -1,7 +1,7 @@
 import { tailwindChartColors } from '../../colors';
-import { LayoutPanelTypeProps } from '../../layout/layout-panel-props';
+import type { LayoutPanelTypeProps } from '../../layout/layout-panel-props';
 import { localized } from '../../store/localization-store';
-import { LineChartVariableDescription } from '../area-charts-shared/area-chart-variable';
+import type { LineChartVariableDescription } from '../area-charts-shared/area-chart-variable';
 import { ChartDocTitleIcon, ChartDocVars } from '../area-charts-shared/chart-doc';
 import { LineAreaChartPanel } from '../area-charts-shared/line-area-chart-panel';
 import { SoulChartUnitIconHollow } from '../chart-icons';

@@ -1,7 +1,7 @@
-import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
-import { ParsingLoggerSilk } from '../parsing-log-silk';
-import { SilkRecordingDataView } from '../silk-recording-data-view';
+import type { Vector2 } from '~/lib/game-data/shared/vectors';
+import type { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
+import type { ParsingLoggerSilk } from '../parsing-log-silk';
+import type { SilkRecordingDataView } from '../silk-recording-data-view';
 import { CollectionDiff } from './diff-types-shared';
 
 export class ArrayAppendDelta<T> extends CollectionDiff<T[]> {

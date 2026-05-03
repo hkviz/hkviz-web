@@ -1,5 +1,5 @@
 import { createContext, createMemo, createSignal, useContext } from 'solid-js';
-import { GameplayStore } from './gameplay-store';
+import type { GameplayStore } from './gameplay-store';
 
 export function createHoverMsStore(gameplayStore: GameplayStore) {
 	const [hoveredMsIntoGame, setHoveredMsIntoGame] = createSignal<number | null>(null);

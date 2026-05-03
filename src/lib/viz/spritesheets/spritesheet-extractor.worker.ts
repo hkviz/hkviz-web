@@ -1,6 +1,6 @@
 // this is a worker script
 
-import {
+import type {
 	SpriteSheetExtractWorkerMessage,
 	SpriteSheetExtractWorkerResponse,
 	SpriteSheetExtractWorkerResponseFrames,

@@ -1,8 +1,8 @@
 import { createMemo } from 'solid-js';
 import { Bounds } from '~/lib/game-data/shared/bounds';
 import { Vector2 } from '~/lib/game-data/shared/vectors';
-import { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
-import { GameId } from '~/lib/types/game-ids';
+import type { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
+import type { GameId } from '~/lib/types/game-ids';
 import { cn } from '~/lib/utils';
 import { MapViewRooms } from './map-view-rooms';
 

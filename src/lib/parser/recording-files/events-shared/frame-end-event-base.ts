@@ -1,4 +1,4 @@
-import { EventCreationContext } from './event-creation-context';
+import type { EventCreationContext } from './event-creation-context';
 import { RecordingEventBase } from './recording-event-base';
 
 export abstract class FrameEndEventBase extends RecordingEventBase {

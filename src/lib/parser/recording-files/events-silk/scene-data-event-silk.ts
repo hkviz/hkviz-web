@@ -1,4 +1,4 @@
-import { EventCreationContext } from '../events-shared/event-creation-context';
+import type { EventCreationContext } from '../events-shared/event-creation-context';
 import { RecordingEventBase } from '../events-shared/recording-event-base';
 
 export type SceneDataEventType = 'bool' | 'int' | 'geoRock';

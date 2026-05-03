@@ -13,7 +13,7 @@ declare module '*?hero' {
 }
 
 declare module '*.mdx' {
-	import { Component } from 'solid-js';
+	import type { Component } from 'solid-js';
 	let MDXComponent: Component;
 	export default MDXComponent;
 }

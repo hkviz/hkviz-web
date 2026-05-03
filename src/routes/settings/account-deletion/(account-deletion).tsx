@@ -1,5 +1,6 @@
 import { Title } from '@solidjs/meta';
-import { createAsync, RouteDefinition, useAction, useSubmission } from '@solidjs/router';
+import type { RouteDefinition} from '@solidjs/router';
+import { createAsync, useAction, useSubmission } from '@solidjs/router';
 import { Match, Show, Switch } from 'solid-js';
 import { AuthNeeded } from '~/components/auth-needed';
 import { ContentCenterWrapper } from '~/components/content-wrapper';

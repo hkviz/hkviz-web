@@ -2,7 +2,8 @@ import { useUser } from '~/lib/auth/client';
 import { ContentCenterWrapper } from './content-wrapper';
 import { LoginButton } from './login-link';
 import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
-import { JSXElement, Show } from 'solid-js';
+import type { JSXElement} from 'solid-js';
+import { Show } from 'solid-js';
 
 export function AuthNeeded() {
 	return (

@@ -1,7 +1,8 @@
-import { Component, JSXElement, Show } from 'solid-js';
+import type { Component, JSXElement} from 'solid-js';
+import { Show } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 import { assertNever } from '~/lib/parser';
-import { GameId } from '~/lib/types/game-ids';
+import type { GameId } from '~/lib/types/game-ids';
 import { AreaAnalyticsPanel } from '../area-analytics';
 import { MapView } from '../map';
 import { MapOptions } from '../map-options';
@@ -19,11 +20,11 @@ import {
 import { GeoChartSilk } from '../time-charts/area-charts-silk/geo-chart-silk';
 import { HealthChartSilk } from '../time-charts/area-charts-silk/health-chart-silk';
 import { ShellShardChartSilk } from '../time-charts/area-charts-silk/shell-shard-chart-silk';
-import { LaneId } from './layout-location';
+import type { LaneId } from './layout-location';
 import { LayoutPanelContext } from './layout-panel-context';
 import { createLayoutPanelContext } from './layout-panel-context-create';
-import { LayoutPanelTypeProps } from './layout-panel-props';
-import { LayoutPanelType } from './layout-panel-type';
+import type { LayoutPanelTypeProps } from './layout-panel-props';
+import type { LayoutPanelType } from './layout-panel-type';
 import { LayoutPanelWrapper } from './layout-panel-wrapper';
 
 export interface LayoutPanelProps {

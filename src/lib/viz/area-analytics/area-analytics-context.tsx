@@ -1,5 +1,5 @@
 import { createContext, createSignal, useContext } from 'solid-js';
-import { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
+import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 
 export function createAreaAnalyticsContext() {
 	const [selectedVariable, setSelectedVariable] = createSignal<AggregationVariable | null>(null);

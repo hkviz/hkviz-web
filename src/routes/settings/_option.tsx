@@ -1,4 +1,4 @@
-import { JSXElement } from 'solid-js';
+import type { JSXElement } from 'solid-js';
 import { cn } from '~/lib/utils';
 
 export const Setting = (props: { children: JSXElement; class?: string }) => {

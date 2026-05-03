@@ -1,5 +1,7 @@
-import { redirect as redirectNative, RouterResponseInit } from '@solidjs/router';
-import { UrlPath, urlPath } from './url';
+import type { RouterResponseInit } from '@solidjs/router';
+import { redirect as redirectNative } from '@solidjs/router';
+import type { UrlPath} from './url';
+import { urlPath } from './url';
 
 export const redirect = import.meta.env.DEV
 	? (to: UrlPath, init?: number | RouterResponseInit) => {

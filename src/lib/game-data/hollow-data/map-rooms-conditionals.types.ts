@@ -1,4 +1,4 @@
-import { Vector2Like, Vector4Like } from '../shared/vector-like';
+import type { Vector2Like, Vector4Like } from '../shared/vector-like';
 
 export interface RoomDataConditional {
 	conditionalOn: string[];

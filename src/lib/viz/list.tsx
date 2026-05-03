@@ -1,6 +1,6 @@
 import { type Component, type JSXElement } from 'solid-js';
 import { cn } from '../utils';
-import { ColorClasses } from './colors';
+import type { ColorClasses } from './colors';
 
 export const Ul: Component<{ children: JSXElement; class?: string }> = (props) => {
 	return <ul class={cn('pl-0', props.class)}>{props.children}</ul>;

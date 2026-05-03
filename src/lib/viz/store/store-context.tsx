@@ -1,4 +1,5 @@
-import { createEffect, JSXElement, onCleanup } from 'solid-js';
+import type { JSXElement} from 'solid-js';
+import { createEffect, onCleanup } from 'solid-js';
 import { createFocusContext, GlobalMenuContext } from '~/components/ui/additions/focus-context';
 import { createSpriteSheetStore, SpriteStoreContext } from '../spritesheets/spritesheet-store';
 import { AggregationStoreContext, createAggregationStore } from './aggregation-store';

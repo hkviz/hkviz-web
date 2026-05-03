@@ -17,7 +17,8 @@ import {
 
 import { HeroStateEvent } from '../events-hollow/hero-state-event';
 import { HKVizModVersionEvent } from '../events-hollow/hkviz-mod-version-event';
-import { ModdingInfoEvent, ModInfo } from '../events-hollow/modding-info-event';
+import type { ModInfo } from '../events-hollow/modding-info-event';
+import { ModdingInfoEvent } from '../events-hollow/modding-info-event';
 import { PlayerDataEventHollow } from '../events-hollow/player-data-event';
 import { SpellDownEvent } from '../events-hollow/spell-down-event';
 import { SpellFireballEvent } from '../events-hollow/spell-fireball-event';

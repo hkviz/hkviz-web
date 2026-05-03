@@ -1,5 +1,5 @@
-import { ParsingLoggerSilk } from '../parsing-log-silk';
-import { SilkRecordingDataView } from '../silk-recording-data-view';
+import type { ParsingLoggerSilk } from '../parsing-log-silk';
+import type { SilkRecordingDataView } from '../silk-recording-data-view';
 import { CollectionDiff } from './diff-types-shared';
 
 export class ArrayAppendDelta<T> extends CollectionDiff<T[]> {

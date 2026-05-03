@@ -26,10 +26,12 @@ import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { assertNever } from '../util';
 import { useLayoutPanelContext } from './layout/layout-panel-context';
 import { LayoutPanelHeader } from './layout/layout-panel-header';
-import { LayoutPanelTypeProps } from './layout/layout-panel-props';
+import type { LayoutPanelTypeProps } from './layout/layout-panel-props';
 import { LayoutPanelWrapper } from './layout/layout-panel-wrapper';
-import { RoomVisibility, useRoomDisplayStore } from './store/room-display-store';
-import { TRACE_VISIBILITIES, TraceVisibility, useTraceStore } from './store/trace-store';
+import type { RoomVisibility} from './store/room-display-store';
+import { useRoomDisplayStore } from './store/room-display-store';
+import type { TraceVisibility} from './store/trace-store';
+import { TRACE_VISIBILITIES, useTraceStore } from './store/trace-store';
 
 function roomVisibilityName(v: RoomVisibility, short: boolean) {
 	switch (v) {

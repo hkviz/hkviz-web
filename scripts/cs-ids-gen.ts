@@ -1,5 +1,5 @@
 import { exportCsModFile } from './js-gen-helper.mts';
-import { ScriptIdMemory } from './memory/script-memory.mts';
+import type { ScriptIdMemory } from './memory/script-memory.mts';
 
 export async function createCsIdDictionaryFile(
 	className: string,

@@ -1,5 +1,6 @@
 import { Title } from '@solidjs/meta';
-import { RouteSectionProps, createAsync } from '@solidjs/router';
+import type { RouteSectionProps} from '@solidjs/router';
+import { createAsync } from '@solidjs/router';
 import { Show, createEffect, createMemo } from 'solid-js';
 import { ContentWrapper } from '~/components/content-wrapper';
 import { RunCard } from '~/components/run-card/run-card';

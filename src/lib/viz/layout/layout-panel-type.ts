@@ -1,8 +1,10 @@
 import { ChartBarBigIcon, MapIcon } from 'lucide-solid';
-import { Component } from 'solid-js';
-import { GameId, gameIds } from '~/lib/types/game-ids';
+import type { Component } from 'solid-js';
+import type { GameId} from '~/lib/types/game-ids';
+import { gameIds } from '~/lib/types/game-ids';
 import { SplitIcon as SplitPanelIcon } from '../splits/split-icon';
-import { localized, LocalizedString } from '../store/localization-store';
+import type { LocalizedString } from '../store/localization-store';
+import { localized } from '../store/localization-store';
 import {
 	CompletionChartUnitIcon,
 	EssenceChartUnitIconHollow,

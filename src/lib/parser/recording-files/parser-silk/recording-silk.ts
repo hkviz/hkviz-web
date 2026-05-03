@@ -1,16 +1,17 @@
 import { aggregateRecordingSilk } from '~/lib/aggregation/aggregate-recording-silk';
-import { AggregatedRunDataSilk } from '~/lib/aggregation/aggregation-value-silk';
-import { PlayerDataFieldNameSilk, playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
-import { Split } from '~/lib/splits/splits-shared/split';
+import type { AggregatedRunDataSilk } from '~/lib/aggregation/aggregation-value-silk';
+import type { PlayerDataFieldNameSilk} from '~/lib/game-data/silk-data/player-data-silk.generated';
+import { playerDataFieldsSilk } from '~/lib/game-data/silk-data/player-data-silk.generated';
+import type { Split } from '~/lib/splits/splits-shared/split';
 import { createRecordingSplitsSilk } from '~/lib/splits/splits-silk/generate-splits-silk';
 import { raise } from '../../../util';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
-import { SceneDataEventSilk, SceneDataEventType } from '../events-silk/scene-data-event-silk';
+import type { SceneDataEventSilk, SceneDataEventType } from '../events-silk/scene-data-event-silk';
 import { CombinedRecordingBase } from '../parser-shared/recording-shared';
-import { StorageStats } from './storage-stats';
+import type { StorageStats } from './storage-stats';
 
 export type RecordingEventSilk =
 	| SceneEvent

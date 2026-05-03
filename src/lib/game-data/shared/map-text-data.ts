@@ -1,4 +1,4 @@
-import { Bounds } from './bounds';
+import type { Bounds } from './bounds';
 
 export type MapTextType = 'area' | 'sub-area';
 
