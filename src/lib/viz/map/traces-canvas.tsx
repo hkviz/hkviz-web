@@ -180,27 +180,102 @@ export const HKMapTraces: Component = () => {
 		context.strokeStyle = `rgb(225 29 72/1)`; // tailwind rose-600
 		const dashArray = [baseLineWidth, baseLineWidth * 2];
 		let previousIsJump: boolean | null = null;
+		let previousAlpha: number | null = null;
+		let hasOpenPath = false;
 
-		function drawSegment(from: PositionEvent, to: PositionEvent) {
+		function flushPath(targetAlpha: number) {
+			// if alpha stacking is not wanted, one can clear the area below the new path
+			// beforehand --> could allow for more skipping overlapped paths (--> no angle check below)
+			// but alpha stacking is useful. bc one sees quickly where one spent a lot of time
+
+			/*if (hasDrawnPath && targetAlpha < 1) {
+				// only need to clear pixels behind new path if a path is already drawn
+				context.globalCompositeOperation = 'destination-out';
+				context.globalAlpha = 1.0; // Full strength eraser
+				context.stroke();
+			} else {
+				hasDrawnPath = true;
+			}*/
+
+			context.globalCompositeOperation = 'source-over';
+			context.globalAlpha = targetAlpha;
+			context.stroke();
+		}
+
+		let segmentStartX: number = 0;
+		let segmentStartY: number = 0;
+
+		// let drawnPaths = 0;
+		// let skippedPaths = 0;
+
+		function drawSegment(from: PositionEvent, to: PositionEvent, targetAlpha: number) {
+			const fromPos = from.mapPosition!;
+			const toPos = to.mapPosition!;
+
+			const fromX = x(fromPos.x);
+			const fromY = y(fromPos.y);
+			const toX = x(toPos.x);
+			const toY = y(toPos.y);
+
 			const isJump = (to.mapDistanceToPrevious ?? 0) > jumpThreshold;
-			if (isJump !== previousIsJump) {
+			const jumpChanged = isJump !== previousIsJump;
+			const alphaChanged = targetAlpha !== previousAlpha;
+
+			const moveX = toX - fromX;
+			const moveY = toY - fromY;
+
+			let isReversing = false;
+			if (
+				!jumpChanged && // skip if already new path
+				!alphaChanged && // skip if already new path
+				targetAlpha < 1 && // overlaps don't matter when alpha = 1
+				(moveX !== 0 || moveY !== 0) &&
+				(segmentStartX !== 0 || segmentStartY !== 0)
+			) {
+				const dot = (segmentStartX - toX) * moveX + (segmentStartY - toY) * moveY;
+				// cosTheta < 0    => > 90deg
+				// cosTheta < -0.5 => > 120deg
+				// cosTheta < -0.7 => > 135deg
+
+				if (dot <= -0.5) {
+					// when angle changes a lot a new path is started
+					// bc otherwise the alpha does not stack in overlaps.
+					// we assume path does not overlap (mostly) when the direction doesn't change too much.
+					isReversing = true;
+				}
+			}
+
+			const requireNewPath = jumpChanged || alphaChanged || isReversing;
+
+			if (requireNewPath) {
+				// reducing number of paths drawn (especially stroke() calls) improves performance
+				// greatly.
+				if (hasOpenPath) {
+					flushPath(previousAlpha ?? 1);
+				}
+				context.beginPath();
+				previousAlpha = targetAlpha;
 				context.setLineDash(isJump ? dashArray : EMPTY_ARRAY);
 				context.lineWidth = isJump ? halfBaseLineWidth : baseLineWidth;
 				previousIsJump = isJump;
-			}
+				hasOpenPath = true;
 
-			context.beginPath();
-			context.moveTo(x(from.mapPosition!.x), y(from.mapPosition!.y));
-			context.lineTo(x(to.mapPosition!.x), y(to.mapPosition!.y));
-			context.stroke();
-			context.closePath();
+				segmentStartX = moveX;
+				segmentStartY = moveY;
+				// drawnPaths++;
+			}
+			// else {
+			// skippedPaths++;
+			// }
+
+			context.moveTo(fromX, fromY);
+			context.lineTo(toX, toY);
 		}
 
 		if (visibility === 'stay') {
-			context.globalAlpha = 1;
 			while (event && event.msIntoGame <= maxMsIntoGame) {
 				if (previousEvent) {
-					drawSegment(previousEvent, event);
+					drawSegment(previousEvent, event, 1);
 				}
 
 				i++;
@@ -210,9 +285,9 @@ export const HKMapTraces: Component = () => {
 		} else {
 			while (event && event.msIntoGame <= maxMsIntoGame) {
 				if (previousEvent) {
-					const opacity = 1 - (maxMsIntoGame - event.msIntoGame) / traceLengthMs;
-					context.globalAlpha = opacity ** 0.5; // fade out slower
-					drawSegment(previousEvent, event);
+					const opacity = (1 - (maxMsIntoGame - event.msIntoGame) / traceLengthMs) ** 0.5; // fade out slower
+					const opacityRounded = Math.round(opacity * 20) / 20; // round for fewer new paths
+					drawSegment(previousEvent, event, opacityRounded);
 				}
 
 				i++;
@@ -220,7 +295,13 @@ export const HKMapTraces: Component = () => {
 				event = positionEvents[i];
 			}
 		}
+		if (hasOpenPath) {
+			flushPath(previousAlpha ?? 1);
+		}
 		context.globalAlpha = 1;
+		// console.log(
+		// 	`drawn paths: ${drawnPaths}, skipped new paths: ${skippedPaths}. Percentage of new paths: ${Math.round((drawnPaths / (drawnPaths + skippedPaths)) * 100)}%`,
+		// );
 
 		// frame end pins
 		const frameEvent = animationStore.currentFrameEndEvent();
@@ -242,10 +323,6 @@ export const HKMapTraces: Component = () => {
 					const pinSize = baseLineWidth * 8;
 					const drawW = pinSize * dreamGatePinWidthMultiplier;
 					const drawH = pinSize * dreamGatePinHeightMultiplier;
-					ctx.shadowColor = 'rgba(255,255,255,0.6)';
-					ctx.shadowOffsetX = 0;
-					ctx.shadowOffsetY = 0;
-					ctx.shadowBlur = baseLineWidth * 4;
 					ctx.drawImage(
 						dreamGateImage,
 						x(mapPosition.x) - 0.5 * drawW,
@@ -253,7 +330,6 @@ export const HKMapTraces: Component = () => {
 						drawW,
 						drawH,
 					);
-					ctx.shadowBlur = 0;
 				}
 			}
 			// shade
@@ -284,10 +360,6 @@ export const HKMapTraces: Component = () => {
 						const pinSize = game === 'hollow' ? baseLineWidth * 12 : baseLineWidth * 9;
 						const drawW = pinSize * shadePinWidthMultiplier;
 						const drawH = pinSize * shadePinHeightMultiplier;
-						ctx.shadowColor = 'rgba(255,255,255,0.6)';
-						ctx.shadowOffsetX = 0;
-						ctx.shadowOffsetY = 0;
-						ctx.shadowBlur = baseLineWidth * 4;
 						ctx.drawImage(
 							shadePinImage,
 							x(mapPosition.x) - 0.5 * drawW,
@@ -295,7 +367,6 @@ export const HKMapTraces: Component = () => {
 							drawW,
 							drawH,
 						);
-						ctx.shadowBlur = 0;
 					}
 				}
 			}
