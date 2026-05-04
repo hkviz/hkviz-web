@@ -40,7 +40,9 @@ type FrameEndBase = {
 	[TField in FrameEndEventPlayerDataFieldSilk]: PlayerDataFieldValueSilk<TField>;
 };
 
-export class FrameEndEventSilk extends FrameEndEventBase implements FrameEndBase {
+export class FrameEndEventSilk extends FrameEndEventBase<'silk'> implements FrameEndBase {
+	readonly game = 'silk';
+
 	HeroCorpseMoneyPool: number;
 	geo: number;
 	ShellShards: number;

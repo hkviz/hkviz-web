@@ -202,7 +202,9 @@ type FrameEndBase = {
  * created by recording combiner whenever the timestamp changes if any of the values in it changed
  */
 
-export class FrameEndEventHollow extends FrameEndEventBase implements FrameEndBase {
+export class FrameEndEventHollow extends FrameEndEventBase<'hollow'> implements FrameEndBase {
+	readonly game = 'hollow';
+
 	// directly from player data and hero states
 
 	dead: boolean;

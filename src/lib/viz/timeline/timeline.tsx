@@ -9,7 +9,7 @@ import { Slider, SliderFill, SliderThumb, SliderTrack } from '~/components/ui/sl
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
-import { createAutoSizeCanvas } from '../canvas';
+import { createAutoSizeCanvas, createElementSize } from '../canvas';
 import { Duration } from '../duration';
 import { PLAYBACK_SPEED_OPTIONS_VISIBLE, useAnimationStore } from '../store/animation-store';
 import { useGameplayStore } from '../store/gameplay-store';
@@ -287,29 +287,58 @@ function AnimationTimeLineSlider() {
 	);
 }
 
-// this is in an extra components, so the parent does not need to depend on animationMsIntoGame.
-// Which changes very often when animating, rendering is therefore skipped for the siblings and the parent.
 export function AnimationTimeLine(props: { class?: string }) {
-	const hoverMsStore = useHoverMsStore();
-	const gameplayStore = useGameplayStore();
-
-	const hoveredMsIntoGame = hoverMsStore.hoveredMsIntoGame;
-	const timeFrame = gameplayStore.timeFrame;
-
 	return (
 		<div class={cn('relative flex h-5 shrink grow flex-col gap-2 @3xl:h-10 @3xl:justify-center', props.class)}>
 			<div>
 				<AnimationTimeLineSlider />
 			</div>
-			<div class="pointer-events-none absolute top-0 right-0 bottom-0 left-0">
-				<Show when={hoveredMsIntoGame() != null}>
-					<div
-						class="absolute top-0 bottom-0 w-px bg-foreground"
-						style={{ left: (100 * hoveredMsIntoGame()!) / timeFrame().max + '%' }}
-					/>
-				</Show>
-			</div>
+			<HoverTimelineMarker />
 			<AnimationTimeLineColorCodes />
+		</div>
+	);
+}
+
+function HoverTimelineMarker() {
+	const hoverMsStore = useHoverMsStore();
+	const gameplayStore = useGameplayStore();
+
+	const hoveredMsIntoGame = hoverMsStore.hoveredMsIntoGame;
+	const timeFrame = gameplayStore.timeFrame;
+	let containerRef: HTMLDivElement | undefined;
+	let markerRef: HTMLDivElement | undefined;
+	const containerSize = createElementSize(() => containerRef ?? null);
+
+	createEffect(() => {
+		const marker = markerRef;
+		if (!marker) return;
+
+		const hoveredMs = hoveredMsIntoGame();
+		if (hoveredMs == null) {
+			marker.style.opacity = '0';
+			return;
+		}
+
+		const width = containerSize().width;
+		const maxMs = timeFrame().max;
+		if (width <= 0 || maxMs <= 0) {
+			marker.style.opacity = '0';
+			return;
+		}
+
+		const clampedMs = Math.max(0, Math.min(maxMs, hoveredMs));
+		const xPx = (clampedMs / maxMs) * width;
+		marker.style.opacity = '1';
+		marker.style.transform = `translate3d(${xPx}px, 0, 0)`;
+	});
+
+	return (
+		<div ref={containerRef} class="pointer-events-none absolute top-0 right-0 bottom-0 left-0">
+			<div
+				ref={markerRef}
+				class="absolute top-0 bottom-0 left-0 w-px bg-foreground will-change-transform"
+				style={{ opacity: 0, transform: 'translate3d(0, 0, 0)' }}
+			/>
 		</div>
 	);
 }
