@@ -31,8 +31,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 90,
 		typeNameKey: 'UI.INV_NAME_R_BONE_RECORD',
-		typeDescriptionKey: 'UI.INV_DESC_R_BONE_RECORD',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0002_R_bone_record_11_123x142_1',
 			nameShort: 'Hornet_icon_0002_R_bone_record',
@@ -86,8 +84,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 90,
 		typeNameKey: 'UI.INV_NAME_R_BONE_RECORD',
-		typeDescriptionKey: 'UI.INV_DESC_R_BONE_RECORD',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0002_R_bone_record_11_123x142_1',
 			nameShort: 'Hornet_icon_0002_R_bone_record',
@@ -141,8 +137,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 90,
 		typeNameKey: 'UI.INV_NAME_R_BONE_RECORD',
-		typeDescriptionKey: 'UI.INV_DESC_R_BONE_RECORD',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0002_R_bone_record_11_123x142_1',
 			nameShort: 'Hornet_icon_0002_R_bone_record',
@@ -196,8 +190,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 90,
 		typeNameKey: 'UI.INV_NAME_R_BONE_RECORD',
-		typeDescriptionKey: 'UI.INV_DESC_R_BONE_RECORD',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0002_R_bone_record_11_123x142_1',
 			nameShort: 'Hornet_icon_0002_R_bone_record',
@@ -251,8 +243,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 180,
 		typeNameKey: 'UI.INV_NAME_R_SEAL_CHIT',
-		typeDescriptionKey: 'UI.INV_DESC_R_SEAL_CHIT',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_seal_chit_7_119x158_1',
 			nameShort: 'Hornet_icon_0000_R_seal_chit',
@@ -306,8 +296,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 180,
 		typeNameKey: 'UI.INV_NAME_R_SEAL_CHIT',
-		typeDescriptionKey: 'UI.INV_DESC_R_SEAL_CHIT',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_seal_chit_7_119x158_1',
 			nameShort: 'Hornet_icon_0000_R_seal_chit',
@@ -361,8 +349,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 180,
 		typeNameKey: 'UI.INV_NAME_R_SEAL_CHIT',
-		typeDescriptionKey: 'UI.INV_DESC_R_SEAL_CHIT',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_seal_chit_7_119x158_1',
 			nameShort: 'Hornet_icon_0000_R_seal_chit',
@@ -416,8 +402,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 180,
 		typeNameKey: 'UI.INV_NAME_R_SEAL_CHIT',
-		typeDescriptionKey: 'UI.INV_DESC_R_SEAL_CHIT',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_seal_chit_7_119x158_1',
 			nameShort: 'Hornet_icon_0000_R_seal_chit',
@@ -471,8 +455,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 150,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_TOTEM',
-		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_TOTEM',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0005_R_saint_locket_9_114x157_1',
 			nameShort: 'Hornet_icon_0005_R_saint_locket',
@@ -526,8 +508,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 150,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_TOTEM',
-		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_TOTEM',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0005_R_saint_locket_9_114x157_1',
 			nameShort: 'Hornet_icon_0005_R_saint_locket',
@@ -581,8 +561,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 150,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_TOTEM',
-		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_TOTEM',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0005_R_saint_locket_9_114x157_1',
 			nameShort: 'Hornet_icon_0005_R_saint_locket',
@@ -636,8 +614,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 210,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_RECORD',
-		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_RECORD',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0002_R_weaver_record_9_109x164_4',
 			nameShort: 'Hornet_icon_0002_R_weaver_record',
@@ -691,8 +667,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 210,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_RECORD',
-		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_RECORD',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0002_R_weaver_record_9_109x164_4',
 			nameShort: 'Hornet_icon_0002_R_weaver_record',
@@ -746,8 +720,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 210,
 		typeNameKey: 'UI.INV_NAME_R_WEAVER_RECORD',
-		typeDescriptionKey: 'UI.INV_DESC_R_WEAVER_RECORD',
-		appendDescriptionKey: 'UI.INV_DESC_RELIC',
 		collectionIcon: {
 			name: 'Hornet_icon_0002_R_weaver_record_9_109x164_4',
 			nameShort: 'Hornet_icon_0002_R_weaver_record',
@@ -801,8 +773,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 600,
 		typeNameKey: 'UI.INV_NAME_R_ANCIENT_EGG',
-		typeDescriptionKey: 'UI.INV_DESC_R_ANCIENT_EGG',
-		appendDescriptionKey: null,
 		collectionIcon: {
 			name: 'Hornet_icon_0004_R_ancient_egg_9_104x103_1',
 			nameShort: 'Hornet_icon_0004_R_ancient_egg',
@@ -856,8 +826,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
-		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
-		appendDescriptionKey: null,
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_psalm_cylinder_10_135x135_1',
 			nameShort: 'Hornet_icon_0000_R_psalm_cylinder',
@@ -911,8 +879,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
-		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
-		appendDescriptionKey: null,
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_psalm_cylinder_10_135x135_1',
 			nameShort: 'Hornet_icon_0000_R_psalm_cylinder',
@@ -966,8 +932,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
-		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
-		appendDescriptionKey: null,
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_psalm_cylinder_10_135x135_1',
 			nameShort: 'Hornet_icon_0000_R_psalm_cylinder',
@@ -1021,8 +985,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
-		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
-		appendDescriptionKey: null,
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_psalm_cylinder_10_135x135_1',
 			nameShort: 'Hornet_icon_0000_R_psalm_cylinder',
@@ -1076,8 +1038,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 200,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL',
-		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
-		appendDescriptionKey: null,
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_psalm_cylinder_10_135x135_1',
 			nameShort: 'Hornet_icon_0000_R_psalm_cylinder',
@@ -1131,8 +1091,6 @@ const list = [
 		runtimeType: 'CollectableRelic',
 		rewardAmount: 320,
 		typeNameKey: 'UI.INV_NAME_R_PSALM_CYL_MELODY',
-		typeDescriptionKey: 'UI.INV_DESC_R_PSALM_CYL_MELODY',
-		appendDescriptionKey: null,
 		collectionIcon: {
 			name: 'Hornet_icon_0000_R_psalm_cylinder_white_9_135x135_1',
 			nameShort: 'Hornet_icon_0000_R_psalm_cylinder_white',

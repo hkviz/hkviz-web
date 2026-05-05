@@ -245,8 +245,6 @@ const list = [
 	{
 		id: 'MossBone Crawler',
 		displayName: 'Journal.NAME_MOSSBONE_CRAWLER',
-		description: 'Journal.DESC_MOSSBONE_CRAWLER',
-		notes: 'Journal.NOTE_MOSSBONE_CRAWLER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'MossBone Crawler_6_86x86_0',
@@ -284,8 +282,6 @@ const list = [
 	{
 		id: 'MossBone Crawler Fat',
 		displayName: 'Journal.NAME_MOSSBONE_CRAWLER_FAT',
-		description: 'Journal.DESC_MOSSBONE_CRAWLER_FAT',
-		notes: 'Journal.NOTE_MOSSBONE_CRAWLER_FAT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'MossBone Crawler Fat_6_86x86_0',
@@ -323,8 +319,6 @@ const list = [
 	{
 		id: 'MossBone Fly',
 		displayName: 'Journal.NAME_MOSSBONE_FLY',
-		description: 'Journal.DESC_MOSSBONE_FLY',
-		notes: 'Journal.NOTE_MOSSBONE_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'MossBone Fly_6_86x86_0',
@@ -362,8 +356,6 @@ const list = [
 	{
 		id: 'Mossbone Mother',
 		displayName: 'Journal.NAME_MOSSBONE_MOTHER',
-		description: 'Journal.DESC_MOSSBONE_MOTHER',
-		notes: 'Journal.NOTE_MOSSBONE_MOTHER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Mossbone Mother_6_86x86_0',
@@ -401,8 +393,6 @@ const list = [
 	{
 		id: 'Aspid Collector',
 		displayName: 'Journal.NAME_ASPID_COLLECTOR',
-		description: 'Journal.DESC_ASPID_COLLECTOR',
-		notes: 'Journal.NOTE_ASPID_COLLECTOR',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Aspid Collector_9_86x86_0',
@@ -440,8 +430,6 @@ const list = [
 	{
 		id: 'Bone Goomba',
 		displayName: 'Journal.NAME_BONE_GOOMBA',
-		description: 'Journal.DESC_BONE_GOOMBA',
-		notes: 'Journal.NOTE_BONE_GOOMBA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Goomba_5_86x86_0',
@@ -479,8 +467,6 @@ const list = [
 	{
 		id: 'Bone Goomba Bounce Fly',
 		displayName: 'Journal.NAME_BONE_GOOMBA_BOUNCE_FLY',
-		description: 'Journal.DESC_BONE_GOOMBA_BOUNCE_FLY',
-		notes: 'Journal.NOTE_BONE_GOOMBA_BOUNCE_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Goomba Bounce Fly_7_86x86_0',
@@ -518,8 +504,6 @@ const list = [
 	{
 		id: 'Bone Goomba Large',
 		displayName: 'Journal.NAME_BONE_GOOMBA_LARGE',
-		description: 'Journal.DESC_BONE_GOOMBA_LARGE',
-		notes: 'Journal.NOTE_BONE_GOOMBA_LARGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Goomba Large_16_86x86_0',
@@ -557,8 +541,6 @@ const list = [
 	{
 		id: 'Skull King',
 		displayName: 'Journal.NAME_SKULL_KING',
-		description: 'Journal.DESC_SKULL_KING',
-		notes: 'Journal.NOTE_SKULL_KING',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Skull King_5_86x86_0',
@@ -596,8 +578,6 @@ const list = [
 	{
 		id: 'Bone Crawler',
 		displayName: 'Journal.NAME_BONE_CRAWLER',
-		description: 'Journal.DESC_BONE_CRAWLER',
-		notes: 'Journal.NOTE_BONE_CRAWLER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Crawler_6_86x86_0',
@@ -635,8 +615,6 @@ const list = [
 	{
 		id: 'Bone Flyer',
 		displayName: 'Journal.NAME_BONE_FLYER',
-		description: 'Journal.DESC_BONE_FLYER',
-		notes: 'Journal.NOTE_BONE_FLYER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Flyer_7_86x86_0',
@@ -674,8 +652,6 @@ const list = [
 	{
 		id: 'Bone Flyer Giant',
 		displayName: 'Journal.NAME_BONE_FLYER_GIANT',
-		description: 'Journal.DESC_BONE_FLYER_GIANT',
-		notes: 'Journal.NOTE_BONE_FLYER_GIANT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Flyer Giant_6_86x86_0',
@@ -713,8 +689,6 @@ const list = [
 	{
 		id: 'Bone Circler',
 		displayName: 'Journal.NAME_BONE_CIRCLER',
-		description: 'Journal.DESC_BONE_CIRCLER',
-		notes: 'Journal.NOTE_BONE_CIRCLER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Circler_6_86x86_0',
@@ -752,8 +726,6 @@ const list = [
 	{
 		id: 'Bone Circler Vicious',
 		displayName: 'Journal.NAME_BONE_CIRCLER_VICIOUS',
-		description: 'Journal.DESC_BONE_CIRCLER_VICIOUS',
-		notes: 'Journal.NOTE_BONE_CIRCLER_VICIOUS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Circler Vicious_6_86x86_0',
@@ -791,8 +763,6 @@ const list = [
 	{
 		id: 'Bone Hopper',
 		displayName: 'Journal.NAME_BONE_HOPPER',
-		description: 'Journal.DESC_BONE_HOPPER',
-		notes: 'Journal.NOTE_BONE_HOPPER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hopper_11_86x86_0',
@@ -830,8 +800,6 @@ const list = [
 	{
 		id: 'Bone Hopper Giant',
 		displayName: 'Journal.NAME_BONE_HOPPER_GIANT',
-		description: 'Journal.DESC_BONE_HOPPER_GIANT',
-		notes: 'Journal.NOTE_BONE_HOPPER_GIANT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hopper Giant_12_86x86_0',
@@ -869,8 +837,6 @@ const list = [
 	{
 		id: 'Bone Spitter',
 		displayName: 'Journal.NAME_BONE_SPITTER',
-		description: 'Journal.DESC_BONE_SPITTER',
-		notes: 'Journal.NOTE_BONE_SPITTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Spitter_10_86x86_0',
@@ -908,8 +874,6 @@ const list = [
 	{
 		id: 'Bone Roller',
 		displayName: 'Journal.NAME_BONE_ROLLER',
-		description: 'Journal.DESC_BONE_ROLLER',
-		notes: 'Journal.NOTE_BONE_ROLLER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Roller_6_86x86_0',
@@ -947,8 +911,6 @@ const list = [
 	{
 		id: 'Bone Thumper',
 		displayName: 'Journal.NAME_BONE_THUMPER',
-		description: 'Journal.DESC_BONE_THUMPER',
-		notes: 'Journal.NOTE_BONE_THUMPER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Thumper_6_86x86_0',
@@ -986,8 +948,6 @@ const list = [
 	{
 		id: 'Spine Floater',
 		displayName: 'Journal.NAME_SPINE_FLOATER',
-		description: 'Journal.DESC_SPINE_FLOATER',
-		notes: 'Journal.NOTE_SPINE_FLOATER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Spine Floater_6_86x86_0',
@@ -1025,8 +985,6 @@ const list = [
 	{
 		id: 'Rock Roller',
 		displayName: 'Journal.NAME_ROCK_ROLLER',
-		description: 'Journal.DESC_ROCK_ROLLER',
-		notes: 'Journal.NOTE_ROCK_ROLLER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Rock Roller_5_86x86_0',
@@ -1064,8 +1022,6 @@ const list = [
 	{
 		id: 'Rhino',
 		displayName: 'Journal.NAME_RHINO',
-		description: 'Journal.DESC_RHINO',
-		notes: 'Journal.NOTE_RHINO',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Rhino_5_86x86_0',
@@ -1103,8 +1059,6 @@ const list = [
 	{
 		id: 'Crypt Worm',
 		displayName: 'Journal.NAME_CRYPT_WORM',
-		description: 'Journal.DESC_CRYPT_WORM',
-		notes: 'Journal.NOTE_CRYPT_WORM',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crypt Worm_6_86x86_0',
@@ -1142,8 +1096,6 @@ const list = [
 	{
 		id: 'Bone Worm',
 		displayName: 'Journal.NAME_BONE_WORM',
-		description: 'Journal.DESC_BONE_WORM',
-		notes: 'Journal.NOTE_BONE_WORM',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Worm_7_86x86_0',
@@ -1181,8 +1133,6 @@ const list = [
 	{
 		id: 'Bone Beast',
 		displayName: 'Journal.NAME_BONE_BEAST',
-		description: 'Journal.DESC_BONE_BEAST',
-		notes: 'Journal.NOTE_BONE_BEAST',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Beast_6_86x86_0',
@@ -1220,8 +1170,6 @@ const list = [
 	{
 		id: 'Pilgrim 03',
 		displayName: 'Journal.NAME_PILGRIM_03',
-		description: 'Journal.DESC_PILGRIM_03',
-		notes: 'Journal.NOTE_PILGRIM_03',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 03_8_86x86_0',
@@ -1259,8 +1207,6 @@ const list = [
 	{
 		id: 'Pilgrim 01',
 		displayName: 'Journal.NAME_PILGRIM_01',
-		description: 'Journal.DESC_PILGRIM_01',
-		notes: 'Journal.NOTE_PILGRIM_01',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 01_19_86x86_0',
@@ -1298,8 +1244,6 @@ const list = [
 	{
 		id: 'Pilgrim 04',
 		displayName: 'Journal.NAME_PILGRIM_04',
-		description: 'Journal.DESC_PILGRIM_04',
-		notes: 'Journal.NOTE_PILGRIM_04',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 04_14_86x86_0',
@@ -1337,8 +1281,6 @@ const list = [
 	{
 		id: 'Pilgrim 02',
 		displayName: 'Journal.NAME_PILGRIM_02',
-		description: 'Journal.DESC_PILGRIM_02',
-		notes: 'Journal.NOTE_PILGRIM_02',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 02_5_86x86_0',
@@ -1376,8 +1318,6 @@ const list = [
 	{
 		id: 'Pilgrim Bell Thrower',
 		displayName: 'Journal.NAME_PILGRIM_BELL_THROWER',
-		description: 'Journal.DESC_PILGRIM_BELL_THROWER',
-		notes: 'Journal.NOTE_PILGRIM_BELL_THROWER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim Bell Thrower_8_86x86_0',
@@ -1415,8 +1355,6 @@ const list = [
 	{
 		id: 'Pilgrim Fly',
 		displayName: 'Journal.NAME_PILGRIM_FLY',
-		description: 'Journal.DESC_PILGRIM_FLY',
-		notes: 'Journal.NOTE_PILGRIM_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim Fly_8_86x86_0',
@@ -1454,8 +1392,6 @@ const list = [
 	{
 		id: 'Pilgrim 05',
 		displayName: 'Journal.NAME_PILGRIM_05',
-		description: 'Journal.DESC_PILGRIM_05',
-		notes: 'Journal.NOTE_PILGRIM_05',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 05_6_86x86_0',
@@ -1493,8 +1429,6 @@ const list = [
 	{
 		id: 'Pilgrim Bellthrower Fly',
 		displayName: 'Journal.NAME_PILGRIM_BELLTHROWER_FLY',
-		description: 'Journal.DESC_PILGRIM_BELLTHROWER_FLY',
-		notes: 'Journal.NOTE_PILGRIM_BELLTHROWER_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim Bellthrower Fly_6_86x86_0',
@@ -1532,8 +1466,6 @@ const list = [
 	{
 		id: 'Pilgrim Hiker',
 		displayName: 'Journal.NAME_PILGRIM_HIKER',
-		description: 'Journal.DESC_PILGRIM_HIKER',
-		notes: 'Journal.NOTE_PILGRIM_HIKER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim Hiker_5_86x86_0',
@@ -1571,8 +1503,6 @@ const list = [
 	{
 		id: 'Pilgrim StaffWielder',
 		displayName: 'Journal.NAME_PILGRIM_STAFFWIELDER',
-		description: 'Journal.DESC_PILGRIM_STAFFWIELDER',
-		notes: 'Journal.NOTE_PILGRIM_STAFFWIELDER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim StaffWeilder_8_86x86_0',
@@ -1610,8 +1540,6 @@ const list = [
 	{
 		id: 'Pilgrim Moss Spitter',
 		displayName: 'Journal.NAME_PILGRIM_MOSS_SPITTER',
-		description: 'Journal.DESC_PILGRIM_MOSS_SPITTER',
-		notes: 'Journal.NOTE_PILGRIM_MOSS_SPITTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim Moss Spitter_6_86x86_0',
@@ -1649,8 +1577,6 @@ const list = [
 	{
 		id: 'Rosary Pilgrim',
 		displayName: 'Journal.NAME_ROSARY_PILGRIM',
-		description: 'Journal.DESC_ROSARY_PILGRIM',
-		notes: 'Journal.NOTE_ROSARY_PILGRIM',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Rosary Pilgrim_5_86x86_0',
@@ -1688,8 +1614,6 @@ const list = [
 	{
 		id: 'Rosary Thief',
 		displayName: 'Journal.NAME_ROSARY_THIEF',
-		description: 'Journal.DESC_ROSARY_THIEF',
-		notes: 'Journal.NOTE_ROSARY_THIEF',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Rosary Thief_7_86x86_0',
@@ -1727,8 +1651,6 @@ const list = [
 	{
 		id: 'Tar Slug',
 		displayName: 'Journal.NAME_TAR_SLUG',
-		description: 'Journal.DESC_TAR_SLUG',
-		notes: 'Journal.NOTE_TAR_SLUG',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Tar Slug_7_86x86_0',
@@ -1766,8 +1688,6 @@ const list = [
 	{
 		id: 'Tar Slug Huge',
 		displayName: 'Journal.NAME_TAR_SLUG_HUGE',
-		description: 'Journal.DESC_TAR_SLUG_HUGE',
-		notes: 'Journal.NOTE_TAR_SLUG_HUGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Tar Slug Huge_6_86x86_0',
@@ -1805,8 +1725,6 @@ const list = [
 	{
 		id: 'Dock Worker',
 		displayName: 'Journal.NAME_DOCK_WORKER',
-		description: 'Journal.DESC_DOCK_WORKER',
-		notes: 'Journal.NOTE_DOCK_WORKER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Dock Worker_5_86x86_0',
@@ -1844,8 +1762,6 @@ const list = [
 	{
 		id: 'Dock Flyer',
 		displayName: 'Journal.NAME_DOCK_FLYER',
-		description: 'Journal.DESC_DOCK_FLYER',
-		notes: 'Journal.NOTE_DOCK_FLYER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Dock Flyer_6_86x86_0',
@@ -1883,8 +1799,6 @@ const list = [
 	{
 		id: 'Dock Bomber',
 		displayName: 'Journal.NAME_DOCK_BOMBER',
-		description: 'Journal.DESC_DOCK_BOMBER',
-		notes: 'Journal.NOTE_DOCK_BOMBER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Dock Bomber_4_86x86_0',
@@ -1922,8 +1836,6 @@ const list = [
 	{
 		id: 'Shield Dock Worker',
 		displayName: 'Journal.NAME_SHIELD_DOCK_WORKER',
-		description: 'Journal.DESC_SHIELD_DOCK_WORKER',
-		notes: 'Journal.NOTE_SHIELD_DOCK_WORKER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Shield Dock Worker_5_86x86_0',
@@ -1961,8 +1873,6 @@ const list = [
 	{
 		id: 'Dock Charger',
 		displayName: 'Journal.NAME_DOCK_CHARGER',
-		description: 'Journal.DESC_DOCK_CHARGER',
-		notes: 'Journal.NOTE_DOCK_CHARGER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Dock Charger_5_86x86_0',
@@ -2000,8 +1910,6 @@ const list = [
 	{
 		id: 'Dock Guard Thrower',
 		displayName: 'Journal.NAME_DOCK_GUARD_THROWER',
-		description: 'Journal.DESC_DOCK_GUARD_THROWER',
-		notes: 'Journal.NOTE_DOCK_GUARD_THROWER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Dock Guard Thrower_4_86x86_0',
@@ -2039,8 +1947,6 @@ const list = [
 	{
 		id: 'Small Crab',
 		displayName: 'Journal.NAME_SMALL_CRAB',
-		description: 'Journal.DESC_SMALL_CRAB',
-		notes: 'Journal.NOTE_SMALL_CRAB',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Small Crab_5_86x86_0',
@@ -2078,8 +1984,6 @@ const list = [
 	{
 		id: 'Roof Crab',
 		displayName: 'Journal.NAME_ROOF_CRAB',
-		description: 'Journal.DESC_ROOF_CRAB',
-		notes: 'Journal.NOTE_ROOF_CRAB',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Roof Crab_13_86x86_0',
@@ -2117,8 +2021,6 @@ const list = [
 	{
 		id: 'Fields Flock Flyers',
 		displayName: 'Journal.NAME_FIELDS_FLOCK_FLYERS',
-		description: 'Journal.DESC_FIELDS_FLOCK_FLYERS',
-		notes: 'Journal.NOTE_FIELDS_FLOCK_FLYERS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Fields Flock Flyers_6_86x86_0',
@@ -2156,8 +2058,6 @@ const list = [
 	{
 		id: 'Fields Goomba',
 		displayName: 'Journal.NAME_FIELDS_GOOMBA',
-		description: 'Journal.DESC_FIELDS_GOOMBA',
-		notes: 'Journal.NOTE_FIELDS_GOOMBA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Fields Goomba_5_86x86_0',
@@ -2195,8 +2095,6 @@ const list = [
 	{
 		id: 'Fields Flyer',
 		displayName: 'Journal.NAME_FIELDS_FLYER',
-		description: 'Journal.DESC_FIELDS_FLYER',
-		notes: 'Journal.NOTE_FIELDS_FLYER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Fields Flyer_5_86x86_0',
@@ -2234,8 +2132,6 @@ const list = [
 	{
 		id: 'Song Golem',
 		displayName: 'Journal.NAME_SONG_GOLEM',
-		description: 'Journal.DESC_SONG_GOLEM',
-		notes: 'Journal.NOTE_SONG_GOLEM',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Golem_5_86x86_0',
@@ -2273,8 +2169,6 @@ const list = [
 	{
 		id: 'Bone Hunter Tiny',
 		displayName: 'Journal.NAME_BONE_HUNTER_TINY',
-		description: 'Journal.DESC_BONE_HUNTER_TINY',
-		notes: 'Journal.NOTE_BONE_HUNTER_TINY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hunter Tiny_7_86x86_0',
@@ -2312,8 +2206,6 @@ const list = [
 	{
 		id: 'Bone Hunter Buzzer',
 		displayName: 'Journal.NAME_BONE_HUNTER_BUZZER',
-		description: 'Journal.DESC_BONE_HUNTER_BUZZER',
-		notes: 'Journal.NOTE_BONE_HUNTER_BUZZER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hunter Buzzer_7_86x86_0',
@@ -2351,8 +2243,6 @@ const list = [
 	{
 		id: 'Bone Hunter Child',
 		displayName: 'Journal.NAME_BONE_HUNTER_CHILD',
-		description: 'Journal.DESC_BONE_HUNTER_CHILD',
-		notes: 'Journal.NOTE_BONE_HUNTER_CHILD',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hunter Child_28_86x86_0',
@@ -2390,8 +2280,6 @@ const list = [
 	{
 		id: 'Bone Hunter',
 		displayName: 'Journal.NAME_BONE_HUNTER',
-		description: 'Journal.DESC_BONE_HUNTER',
-		notes: 'Journal.NOTE_BONE_HUNTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hunter_5_86x86_0',
@@ -2429,8 +2317,6 @@ const list = [
 	{
 		id: 'Bone Hunter Fly',
 		displayName: 'Journal.NAME_BONE_HUNTER_FLY',
-		description: 'Journal.DESC_BONE_HUNTER_FLY',
-		notes: 'Journal.NOTE_BONE_HUNTER_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hunter Fly_4_86x86_0',
@@ -2468,8 +2354,6 @@ const list = [
 	{
 		id: 'Bone Hunter Throw',
 		displayName: 'Journal.NAME_BONE_HUNTER_THROW',
-		description: 'Journal.DESC_BONE_HUNTER_THROW',
-		notes: 'Journal.NOTE_BONE_HUNTER_THROW',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hunter Throw_5_86x86_0',
@@ -2507,8 +2391,6 @@ const list = [
 	{
 		id: 'Bone Hunter Trapper',
 		displayName: 'Journal.NAME_BONE_HUNTER_TRAPPER',
-		description: 'Journal.DESC_BONE_HUNTER_TRAPPER',
-		notes: 'Journal.NOTE_BONE_HUNTER_TRAPPER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hunter Trapper_4_86x86_0',
@@ -2546,8 +2428,6 @@ const list = [
 	{
 		id: 'Bone Hunter Chief',
 		displayName: 'Journal.NAME_BONE_HUNTER_CHIEF',
-		description: 'Journal.DESC_BONE_HUNTER_CHIEF',
-		notes: 'Journal.NOTE_BONE_HUNTER_CHIEF',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Hunter Chief_11_86x86_0',
@@ -2585,8 +2465,6 @@ const list = [
 	{
 		id: 'Hunter Queen',
 		displayName: 'Journal.NAME_HUNTER_QUEEN',
-		description: 'Journal.DESC_HUNTER_QUEEN',
-		notes: 'Journal.NOTE_HUNTER_QUEEN',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Hunter Queen_21_86x86_0',
@@ -2624,8 +2502,6 @@ const list = [
 	{
 		id: 'Mite',
 		displayName: 'Journal.NAME_MITE',
-		description: 'Journal.DESC_MITE',
-		notes: 'Journal.NOTE_MITE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Mite_7_86x86_0',
@@ -2663,8 +2539,6 @@ const list = [
 	{
 		id: 'Mitefly',
 		displayName: 'Journal.NAME_MITEFLY',
-		description: 'Journal.DESC_MITEFLY',
-		notes: 'Journal.NOTE_MITEFLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Mitefly_7_86x86_0',
@@ -2702,8 +2576,6 @@ const list = [
 	{
 		id: 'Gnat Giant',
 		displayName: 'Journal.NAME_GNAT_GIANT',
-		description: 'Journal.DESC_GNAT_GIANT',
-		notes: 'Journal.NOTE_GNAT_GIANT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Gnat Giant_5_86x86_0',
@@ -2741,8 +2613,6 @@ const list = [
 	{
 		id: 'Farmer Catcher',
 		displayName: 'Journal.NAME_FARMER_CATCHER',
-		description: 'Journal.DESC_FARMER_CATCHER',
-		notes: 'Journal.NOTE_FARMER_CATCHER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Farmer Catcher_4_86x86_0',
@@ -2780,8 +2650,6 @@ const list = [
 	{
 		id: 'Farmer Scissors',
 		displayName: 'Journal.NAME_FARMER_SCISSORS',
-		description: 'Journal.DESC_FARMER_SCISSORS',
-		notes: 'Journal.NOTE_FARMER_SCISSORS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Farmer Scissors_6_86x86_0',
@@ -2819,8 +2687,6 @@ const list = [
 	{
 		id: 'Farmer Centipede',
 		displayName: 'Journal.NAME_FARMER_CENTIPEDE',
-		description: 'Journal.DESC_FARMER_CENTIPEDE',
-		notes: 'Journal.NOTE_FARMER_CENTIPEDE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Farmer Centipede_5_86x86_0',
@@ -2858,8 +2724,6 @@ const list = [
 	{
 		id: 'Vampire Gnat',
 		displayName: 'Journal.NAME_VAMPIRE_GNAT',
-		description: 'Journal.DESC_VAMPIRE_GNAT',
-		notes: 'Journal.NOTE_VAMPIRE_GNAT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Vampire Gnat_6_86x86_0',
@@ -2897,8 +2761,6 @@ const list = [
 	{
 		id: 'Wisp',
 		displayName: 'Journal.NAME_WISP',
-		description: 'Journal.DESC_WISP',
-		notes: 'Journal.NOTE_WISP',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Wisp_5_86x86_1',
@@ -2936,8 +2798,6 @@ const list = [
 	{
 		id: 'Farmer Wisp',
 		displayName: 'Journal.NAME_FARMER_WISP',
-		description: 'Journal.DESC_FARMER_WISP',
-		notes: 'Journal.NOTE_FARMER_WISP',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Farmer Wisp_7_86x86_0',
@@ -2975,8 +2835,6 @@ const list = [
 	{
 		id: 'Wisp Pyre Effigy',
 		displayName: 'Journal.NAME_WISP_PYRE_EFFIGY',
-		description: 'Journal.DESC_WISP_PYRE_EFFIGY',
-		notes: 'Journal.NOTE_WISP_PYRE_EFFIGY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Wisp Pyre Effigy_6_86x86_0',
@@ -3014,8 +2872,6 @@ const list = [
 	{
 		id: 'Crow',
 		displayName: 'Journal.NAME_CROW',
-		description: 'Journal.DESC_CROW',
-		notes: 'Journal.NOTE_CROW',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crow_8_86x86_0',
@@ -3053,8 +2909,6 @@ const list = [
 	{
 		id: 'Crowman',
 		displayName: 'Journal.NAME_CROWMAN',
-		description: 'Journal.DESC_CROWMAN',
-		notes: 'Journal.NOTE_CROWMAN',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crowman_15_86x86_0',
@@ -3092,8 +2946,6 @@ const list = [
 	{
 		id: 'Crowman Dagger',
 		displayName: 'Journal.NAME_CROWMAN_DAGGER',
-		description: 'Journal.DESC_CROWMAN_DAGGER',
-		notes: 'Journal.NOTE_CROWMAN_DAGGER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crowman Dagger_4_86x86_0',
@@ -3131,8 +2983,6 @@ const list = [
 	{
 		id: 'Crowman Juror Tiny',
 		displayName: 'Journal.NAME_CROWMAN_JUROR_TINY',
-		description: 'Journal.DESC_CROWMAN_JUROR_TINY',
-		notes: 'Journal.NOTE_CROWMAN_JUROR_TINY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crowman Juror Tiny_7_86x86_0',
@@ -3170,8 +3020,6 @@ const list = [
 	{
 		id: 'Crowman Juror',
 		displayName: 'Journal.NAME_CROWMAN_JUROR',
-		description: 'Journal.DESC_CROWMAN_JUROR',
-		notes: 'Journal.NOTE_CROWMAN_JUROR',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crowman Juror_7_86x86_0',
@@ -3209,8 +3057,6 @@ const list = [
 	{
 		id: 'Crowman Dagger Juror',
 		displayName: 'Journal.NAME_CROWMAN_DAGGER_JUROR',
-		description: 'Journal.DESC_CROWMAN_DAGGER_JUROR',
-		notes: 'Journal.NOTE_CROWMAN_DAGGER_JUROR',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crowman Dagger Juror_8_86x86_0',
@@ -3248,8 +3094,6 @@ const list = [
 	{
 		id: 'Crawfather',
 		displayName: 'Journal.NAME_CRAWFATHER',
-		description: 'Journal.DESC_CRAWFATHER',
-		notes: 'Journal.NOTE_CRAWFATHER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crawfather_6_86x86_0',
@@ -3287,8 +3131,6 @@ const list = [
 	{
 		id: 'Maggots',
 		displayName: 'Journal.NAME_MAGGOTS',
-		description: 'Journal.DESC_MAGGOTS',
-		notes: 'Journal.NOTE_MAGGOTS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Maggots_11_86x86_0',
@@ -3326,8 +3168,6 @@ const list = [
 	{
 		id: 'Dustroach Pollywog',
 		displayName: 'Journal.NAME_DUSTROACH_POLLYWOG',
-		description: 'Journal.DESC_DUSTROACH_POLLYWOG',
-		notes: 'Journal.NOTE_DUSTROACH_POLLYWOG',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Dustroach Pollywog_9_86x86_0',
@@ -3365,8 +3205,6 @@ const list = [
 	{
 		id: 'Dustroach',
 		displayName: 'Journal.NAME_DUSTROACH',
-		description: 'Journal.DESC_DUSTROACH',
-		notes: 'Journal.NOTE_DUSTROACH',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Dustroach_7_86x86_0',
@@ -3404,8 +3242,6 @@ const list = [
 	{
 		id: 'Bloat Roach',
 		displayName: 'Journal.NAME_BLOAT_ROACH',
-		description: 'Journal.DESC_BLOAT_ROACH',
-		notes: 'Journal.NOTE_BLOAT_ROACH',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bloat Roach_25_86x86_0',
@@ -3443,8 +3279,6 @@ const list = [
 	{
 		id: 'Roachfeeder Short',
 		displayName: 'Journal.NAME_ROACHFEEDER_SHORT',
-		description: 'Journal.DESC_ROACHFEEDER_SHORT',
-		notes: 'Journal.NOTE_ROACHFEEDER_SHORT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Roachfeeder Short_6_86x86_0',
@@ -3482,8 +3316,6 @@ const list = [
 	{
 		id: 'Roachfeeder Tall',
 		displayName: 'Journal.NAME_ROACHFEEDER_TALL',
-		description: 'Journal.DESC_ROACHFEEDER_TALL',
-		notes: 'Journal.NOTE_ROACHFEEDER_TALL',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Roachfeeder Tall_6_86x86_0',
@@ -3521,8 +3353,6 @@ const list = [
 	{
 		id: 'Roachkeeper',
 		displayName: 'Journal.NAME_ROACHKEEPER',
-		description: 'Journal.DESC_ROACHKEEPER',
-		notes: 'Journal.NOTE_ROACHKEEPER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Roachkeeper_5_86x86_0',
@@ -3560,8 +3390,6 @@ const list = [
 	{
 		id: 'Roachkeeper Chef Tiny',
 		displayName: 'Journal.NAME_ROACHKEEPER_CHEF_TINY',
-		description: 'Journal.DESC_ROACHKEEPER_CHEF_TINY',
-		notes: 'Journal.NOTE_ROACHKEEPER_CHEF_TINY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Roachkeeper Chef Tiny_6_86x86_0',
@@ -3599,8 +3427,6 @@ const list = [
 	{
 		id: 'Roachkeeper Chef',
 		displayName: 'Journal.NAME_ROACHKEEPER_CHEF',
-		description: 'Journal.DESC_ROACHKEEPER_CHEF',
-		notes: 'Journal.NOTE_ROACHKEEPER_CHEF',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Roachkeeper Chef_5_86x86_0',
@@ -3638,8 +3464,6 @@ const list = [
 	{
 		id: 'Wraith',
 		displayName: 'Journal.NAME_WRAITH',
-		description: 'Journal.DESC_WRAITH',
-		notes: 'Journal.NOTE_WRAITH',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Wraith_6_86x86_0',
@@ -3677,8 +3501,6 @@ const list = [
 	{
 		id: 'Swamp Drifter',
 		displayName: 'Journal.NAME_SWAMP_DRIFTER',
-		description: 'Journal.DESC_SWAMP_DRIFTER',
-		notes: 'Journal.NOTE_SWAMP_DRIFTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Swamp Drifter_9_86x86_0',
@@ -3716,8 +3538,6 @@ const list = [
 	{
 		id: 'Swamp Goomba',
 		displayName: 'Journal.NAME_SWAMP_GOOMBA',
-		description: 'Journal.DESC_SWAMP_GOOMBA',
-		notes: 'Journal.NOTE_SWAMP_GOOMBA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Swamp Goomba_5_86x86_0',
@@ -3755,8 +3575,6 @@ const list = [
 	{
 		id: 'Swamp Mosquito',
 		displayName: 'Journal.NAME_SWAMP_MOSQUITO',
-		description: 'Journal.DESC_SWAMP_MOSQUITO',
-		notes: 'Journal.NOTE_SWAMP_MOSQUITO',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Swamp Mosquito_7_86x86_0',
@@ -3794,8 +3612,6 @@ const list = [
 	{
 		id: 'Swamp Mosquito Skinny',
 		displayName: 'Journal.NAME_SWAMP_MOSQUITO_SKINNY',
-		description: 'Journal.DESC_SWAMP_MOSQUITO_SKINNY',
-		notes: 'Journal.NOTE_SWAMP_MOSQUITO_SKINNY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Swamp Mosquito Skinny_11_86x86_0',
@@ -3833,8 +3649,6 @@ const list = [
 	{
 		id: 'Swamp Muckman',
 		displayName: 'Journal.NAME_SWAMP_MUCKMAN',
-		description: 'Journal.DESC_SWAMP_MUCKMAN',
-		notes: 'Journal.NOTE_SWAMP_MUCKMAN',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Swamp Muckman_4_86x86_0',
@@ -3872,8 +3686,6 @@ const list = [
 	{
 		id: 'Swamp Muckman Tall',
 		displayName: 'Journal.NAME_SWAMP_MUCKMAN_TALL',
-		description: 'Journal.DESC_SWAMP_MUCKMAN_TALL',
-		notes: 'Journal.NOTE_SWAMP_MUCKMAN_TALL',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Swamp Muckman Tall_4_86x86_0',
@@ -3911,8 +3723,6 @@ const list = [
 	{
 		id: 'Swamp Shaman',
 		displayName: 'Journal.NAME_SWAMP_SHAMAN',
-		description: 'Journal.DESC_SWAMP_SHAMAN',
-		notes: 'Journal.NOTE_SWAMP_SHAMAN',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Swamp Shaman_6_86x86_0',
@@ -3950,8 +3760,6 @@ const list = [
 	{
 		id: 'Swamp Barnacle',
 		displayName: 'Journal.NAME_SWAMP_BARNACLE',
-		description: 'Journal.DESC_SWAMP_BARNACLE',
-		notes: 'Journal.NOTE_SWAMP_BARNACLE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Swamp Barnacle_6_86x86_0',
@@ -3989,8 +3797,6 @@ const list = [
 	{
 		id: 'Swamp Ductsucker',
 		displayName: 'Journal.NAME_SWAMP_DUCTSUCKER',
-		description: 'Journal.DESC_SWAMP_DUCTSUCKER',
-		notes: 'Journal.NOTE_SWAMP_DUCTSUCKER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Swamp Ductsucker_6_86x86_0',
@@ -4028,8 +3834,6 @@ const list = [
 	{
 		id: 'Pond Skater',
 		displayName: 'Journal.NAME_POND_SKATER',
-		description: 'Journal.DESC_POND_SKATER',
-		notes: 'Journal.NOTE_POND_SKATER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pond Skater_7_86x86_1',
@@ -4067,8 +3871,6 @@ const list = [
 	{
 		id: 'Pilgrim Fisher',
 		displayName: 'Journal.NAME_PILGRIM_FISHER',
-		description: 'Journal.DESC_PILGRIM_FISHER',
-		notes: 'Journal.NOTE_PILGRIM_FISHER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim Fisher_5_86x86_0',
@@ -4106,8 +3908,6 @@ const list = [
 	{
 		id: 'Shellwood Gnat',
 		displayName: 'Journal.NAME_SHELLWOOD_GNAT',
-		description: 'Journal.DESC_SHELLWOOD_GNAT',
-		notes: 'Journal.NOTE_SHELLWOOD_GNAT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Shellwood Gnat_6_86x86_0',
@@ -4145,8 +3945,6 @@ const list = [
 	{
 		id: 'Shellwood Wasp',
 		displayName: 'Journal.NAME_SHELLWOOD_WASP',
-		description: 'Journal.DESC_SHELLWOOD_WASP',
-		notes: 'Journal.NOTE_SHELLWOOD_WASP',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Shellwood Wasp_15_86x86_0',
@@ -4184,8 +3982,6 @@ const list = [
 	{
 		id: 'Stick Insect',
 		displayName: 'Journal.NAME_STICK_INSECT',
-		description: 'Journal.DESC_STICK_INSECT',
-		notes: 'Journal.NOTE_STICK_INSECT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Stick Insect_20_86x86_0',
@@ -4223,8 +4019,6 @@ const list = [
 	{
 		id: 'Stick Insect Charger',
 		displayName: 'Journal.NAME_STICK_INSECT_CHARGER',
-		description: 'Journal.DESC_STICK_INSECT_CHARGER',
-		notes: 'Journal.NOTE_STICK_INSECT_CHARGER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Stick Insect Charger_15_86x86_0',
@@ -4262,8 +4056,6 @@ const list = [
 	{
 		id: 'Stick Insect Flyer',
 		displayName: 'Journal.NAME_STICK_INSECT_FLYER',
-		description: 'Journal.DESC_STICK_INSECT_FLYER',
-		notes: 'Journal.NOTE_STICK_INSECT_FLYER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Stick Insect Flyer_4_86x86_0',
@@ -4301,8 +4093,6 @@ const list = [
 	{
 		id: 'Splinter Queen',
 		displayName: 'Journal.NAME_SPLINTER_QUEEN',
-		description: 'Journal.DESC_SPLINTER_QUEEN',
-		notes: 'Journal.NOTE_SPLINTER_QUEEN',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Splinter Queen_4_86x86_0',
@@ -4340,8 +4130,6 @@ const list = [
 	{
 		id: 'Flower Drifter',
 		displayName: 'Journal.NAME_FLOWER_DRIFTER',
-		description: 'Journal.DESC_FLOWER_DRIFTER',
-		notes: 'Journal.NOTE_FLOWER_DRIFTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Flower Drifter_4_86x86_0',
@@ -4379,8 +4167,6 @@ const list = [
 	{
 		id: 'Bloom Shooter',
 		displayName: 'Journal.NAME_BLOOM_SHOOTER',
-		description: 'Journal.DESC_BLOOM_SHOOTER',
-		notes: 'Journal.NOTE_BLOOM_SHOOTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bloom Shooter_8_86x86_0',
@@ -4418,8 +4204,6 @@ const list = [
 	{
 		id: 'Bloom Puncher',
 		displayName: 'Journal.NAME_BLOOM_PUNCHER',
-		description: 'Journal.DESC_BLOOM_PUNCHER',
-		notes: 'Journal.NOTE_BLOOM_PUNCHER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bloom Puncher_9_86x86_0',
@@ -4457,8 +4241,6 @@ const list = [
 	{
 		id: 'Seth',
 		displayName: 'Journal.NAME_SETH',
-		description: 'Journal.DESC_SETH',
-		notes: 'Journal.NOTE_SETH',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Seth_4_86x86_0',
@@ -4496,8 +4278,6 @@ const list = [
 	{
 		id: 'Flower Queen',
 		displayName: 'Journal.NAME_FLOWER_QUEEN',
-		description: 'Journal.DESC_FLOWER_QUEEN',
-		notes: 'Journal.NOTE_FLOWER_QUEEN',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Flower Queen_7_86x86_0',
@@ -4535,8 +4315,6 @@ const list = [
 	{
 		id: 'Bell Goomba',
 		displayName: 'Journal.NAME_BELL_GOOMBA',
-		description: 'Journal.DESC_BELL_GOOMBA',
-		notes: 'Journal.NOTE_BELL_GOOMBA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bell Goomba_6_86x86_0',
@@ -4574,8 +4352,6 @@ const list = [
 	{
 		id: 'Bell Fly',
 		displayName: 'Journal.NAME_BELL_FLY',
-		description: 'Journal.DESC_BELL_FLY',
-		notes: 'Journal.NOTE_BELL_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bell Fly_4_86x86_0',
@@ -4613,8 +4389,6 @@ const list = [
 	{
 		id: 'Blade Spider',
 		displayName: 'Journal.NAME_BLADE_SPIDER',
-		description: 'Journal.DESC_BLADE_SPIDER',
-		notes: 'Journal.NOTE_BLADE_SPIDER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Blade Spider_14_86x86_0',
@@ -4652,8 +4426,6 @@ const list = [
 	{
 		id: 'Blade Spider Hang',
 		displayName: 'Journal.NAME_BLADE_SPIDER_HANG',
-		description: 'Journal.DESC_BLADE_SPIDER_HANG',
-		notes: 'Journal.NOTE_BLADE_SPIDER_HANG',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Blade Spider Hang_7_86x86_0',
@@ -4691,8 +4463,6 @@ const list = [
 	{
 		id: 'Shell Fossil Mimic',
 		displayName: 'Journal.NAME_SHELL_FOSSIL_MIMIC',
-		description: 'Journal.DESC_SHELL_FOSSIL_MIMIC',
-		notes: 'Journal.NOTE_SHELL_FOSSIL_MIMIC',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Shell Fossil Mimic_6_86x86_0',
@@ -4730,8 +4500,6 @@ const list = [
 	{
 		id: 'Sand Centipede',
 		displayName: 'Journal.NAME_SAND_CENTIPEDE',
-		description: 'Journal.DESC_SAND_CENTIPEDE',
-		notes: 'Journal.NOTE_SAND_CENTIPEDE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Sand Centipede_23_86x86_0',
@@ -4769,8 +4537,6 @@ const list = [
 	{
 		id: 'Coral Judge Child',
 		displayName: 'Journal.NAME_CORAL_JUDGE_CHILD',
-		description: 'Journal.DESC_CORAL_JUDGE_CHILD',
-		notes: 'Journal.NOTE_CORAL_JUDGE_CHILD',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Judge Child_9_86x86_1',
@@ -4808,8 +4574,6 @@ const list = [
 	{
 		id: 'Coral Judge',
 		displayName: 'Journal.NAME_CORAL_JUDGE',
-		description: 'Journal.DESC_CORAL_JUDGE',
-		notes: 'Journal.NOTE_CORAL_JUDGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Judge_7_86x86_0',
@@ -4847,8 +4611,6 @@ const list = [
 	{
 		id: 'Last Judge',
 		displayName: 'Journal.NAME_LAST_JUDGE',
-		description: 'Journal.DESC_LAST_JUDGE',
-		notes: 'Journal.NOTE_LAST_JUDGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Last Judge_4_86x86_0',
@@ -4886,8 +4648,6 @@ const list = [
 	{
 		id: 'Coral Spike Goomba',
 		displayName: 'Journal.NAME_CORAL_SPIKE_GOOMBA',
-		description: 'Journal.DESC_CORAL_SPIKE_GOOMBA',
-		notes: 'Journal.NOTE_CORAL_SPIKE_GOOMBA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Spike Goomba_4_86x86_0',
@@ -4925,8 +4685,6 @@ const list = [
 	{
 		id: 'Coral Conch Shooter',
 		displayName: 'Journal.NAME_CORAL_CONCH_SHOOTER',
-		description: 'Journal.DESC_CORAL_CONCH_SHOOTER',
-		notes: 'Journal.NOTE_CORAL_CONCH_SHOOTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Conch Shooter_6_86x86_0',
@@ -4964,8 +4722,6 @@ const list = [
 	{
 		id: 'Coral Conch Shooter Heavy',
 		displayName: 'Journal.NAME_CORAL_CONCH_SHOOTER_HEAVY',
-		description: 'Journal.DESC_CORAL_CONCH_SHOOTER_HEAVY',
-		notes: 'Journal.NOTE_CORAL_CONCH_SHOOTER_HEAVY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Conch Shooter Heavy_15_86x86_0',
@@ -5003,8 +4759,6 @@ const list = [
 	{
 		id: 'Coral Conch Stabber',
 		displayName: 'Journal.NAME_CORAL_CONCH_STABBER',
-		description: 'Journal.DESC_CORAL_CONCH_STABBER',
-		notes: 'Journal.NOTE_CORAL_CONCH_STABBER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Conch Stabber_6_86x86_0',
@@ -5042,8 +4796,6 @@ const list = [
 	{
 		id: 'Coral Conch Driller',
 		displayName: 'Journal.NAME_CORAL_CONCH_DRILLER',
-		description: 'Journal.DESC_CORAL_CONCH_DRILLER',
-		notes: 'Journal.NOTE_CORAL_CONCH_DRILLER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Conch Driller_7_86x86_0',
@@ -5081,8 +4833,6 @@ const list = [
 	{
 		id: 'Coral Conch Driller Giant',
 		displayName: 'Journal.NAME_CORAL_CONCH_DRILLER_GIANT',
-		description: 'Journal.DESC_CORAL_CONCH_DRILLER_GIANT',
-		notes: 'Journal.NOTE_CORAL_CONCH_DRILLER_GIANT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Conch Driller Giant_5_86x86_0',
@@ -5120,8 +4870,6 @@ const list = [
 	{
 		id: 'Coral Goombas',
 		displayName: 'Journal.NAME_CORAL_GOOMBAS',
-		description: 'Journal.DESC_CORAL_GOOMBAS',
-		notes: 'Journal.NOTE_CORAL_GOOMBAS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Goombas_4_86x86_0',
@@ -5159,8 +4907,6 @@ const list = [
 	{
 		id: 'Coral Goomba Large',
 		displayName: 'Journal.NAME_CORAL_GOOMBA_LARGE',
-		description: 'Journal.DESC_CORAL_GOOMBA_LARGE',
-		notes: 'Journal.NOTE_CORAL_GOOMBA_LARGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Goomba Large_4_86x86_0',
@@ -5198,8 +4944,6 @@ const list = [
 	{
 		id: 'Coral Swimmer Fat',
 		displayName: 'Journal.NAME_CORAL_SWIMMER_FAT',
-		description: 'Journal.DESC_CORAL_SWIMMER_FAT',
-		notes: 'Journal.NOTE_CORAL_SWIMMER_FAT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Swimmer Fat_6_86x86_0',
@@ -5237,8 +4981,6 @@ const list = [
 	{
 		id: 'Poke Swimmer',
 		displayName: 'Journal.NAME_POKE_SWIMMER',
-		description: 'Journal.DESC_POKE_SWIMMER',
-		notes: 'Journal.NOTE_POKE_SWIMMER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Poke Swimmer_5_86x86_0',
@@ -5276,8 +5018,6 @@ const list = [
 	{
 		id: 'Spike Swimmer',
 		displayName: 'Journal.NAME_SPIKE_SWIMMER',
-		description: 'Journal.DESC_SPIKE_SWIMMER',
-		notes: 'Journal.NOTE_SPIKE_SWIMMER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Spike Swimmer_7_86x86_0',
@@ -5315,8 +5055,6 @@ const list = [
 	{
 		id: 'Coral Swimmer Small',
 		displayName: 'Journal.NAME_CORAL_SWIMMER_SMALL',
-		description: 'Journal.DESC_CORAL_SWIMMER_SMALL',
-		notes: 'Journal.NOTE_CORAL_SWIMMER_SMALL',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Swimmer Small_9_86x86_0',
@@ -5354,8 +5092,6 @@ const list = [
 	{
 		id: 'Coral Big Jellyfish',
 		displayName: 'Journal.NAME_CORAL_BIG_JELLYFISH',
-		description: 'Journal.DESC_CORAL_BIG_JELLYFISH',
-		notes: 'Journal.NOTE_CORAL_BIG_JELLYFISH',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Big Jellyfish_4_86x86_1',
@@ -5393,8 +5129,6 @@ const list = [
 	{
 		id: 'Coral Warrior',
 		displayName: 'Journal.NAME_CORAL_WARRIOR',
-		description: 'Journal.DESC_CORAL_WARRIOR',
-		notes: 'Journal.NOTE_CORAL_WARRIOR',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Warrior_5_86x86_0',
@@ -5432,8 +5166,6 @@ const list = [
 	{
 		id: 'Coral Flyer',
 		displayName: 'Journal.NAME_CORAL_FLYER',
-		description: 'Journal.DESC_CORAL_FLYER',
-		notes: 'Journal.NOTE_CORAL_FLYER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Flyer_20_86x86_0',
@@ -5471,8 +5203,6 @@ const list = [
 	{
 		id: 'Coral Flyer Throw',
 		displayName: 'Journal.NAME_CORAL_FLYER_THROW',
-		description: 'Journal.DESC_CORAL_FLYER_THROW',
-		notes: 'Journal.NOTE_CORAL_FLYER_THROW',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Flyer Throw_5_86x86_0',
@@ -5510,8 +5240,6 @@ const list = [
 	{
 		id: 'Coral Brawler',
 		displayName: 'Journal.NAME_CORAL_BRAWLER',
-		description: 'Journal.DESC_CORAL_BRAWLER',
-		notes: 'Journal.NOTE_CORAL_BRAWLER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Brawler_4_86x86_0',
@@ -5549,8 +5277,6 @@ const list = [
 	{
 		id: 'Coral Hunter',
 		displayName: 'Journal.NAME_CORAL_HUNTER',
-		description: 'Journal.DESC_CORAL_HUNTER',
-		notes: 'Journal.NOTE_CORAL_HUNTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Hunter_6_86x86_0',
@@ -5588,8 +5314,6 @@ const list = [
 	{
 		id: 'Coral Bubble Brute',
 		displayName: 'Journal.NAME_CORAL_BUBBLE_BRUTE',
-		description: 'Journal.DESC_CORAL_BUBBLE_BRUTE',
-		notes: 'Journal.NOTE_CORAL_BUBBLE_BRUTE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Bubble Brute_4_86x86_0',
@@ -5627,8 +5351,6 @@ const list = [
 	{
 		id: 'Coral King',
 		displayName: 'Journal.NAME_CORAL_KING',
-		description: 'Journal.DESC_CORAL_KING',
-		notes: 'Journal.NOTE_CORAL_KING',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral King_4_86x86_0',
@@ -5679,8 +5401,6 @@ const list = [
 	{
 		id: 'Coral Warrior Grey',
 		displayName: 'Journal.NAME_CORAL_WARRIOR_GREY',
-		description: 'Journal.DESC_CORAL_WARRIOR_GREY',
-		notes: 'Journal.NOTE_CORAL_WARRIOR_GREY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Coral Warrior Grey_7_86x86_0',
@@ -5718,8 +5438,6 @@ const list = [
 	{
 		id: 'Zap Core Enemy',
 		displayName: 'Journal.NAME_ZAP_CORE_ENEMY',
-		description: 'Journal.DESC_ZAP_CORE_ENEMY',
-		notes: 'Journal.NOTE_ZAP_CORE_ENEMY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Zap Core Enemy_4_86x86_0',
@@ -5757,8 +5475,6 @@ const list = [
 	{
 		id: 'Citadel Bat',
 		displayName: 'Journal.NAME_CITADEL_BAT',
-		description: 'Journal.DESC_CITADEL_BAT',
-		notes: 'Journal.NOTE_CITADEL_BAT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Citadel Bat_8_86x86_0',
@@ -5796,8 +5512,6 @@ const list = [
 	{
 		id: 'Citadel Bat Large',
 		displayName: 'Journal.NAME_CITADEL_BAT_LARGE',
-		description: 'Journal.DESC_CITADEL_BAT_LARGE',
-		notes: 'Journal.NOTE_CITADEL_BAT_LARGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Citadel Bat Large_7_86x86_0',
@@ -5835,8 +5549,6 @@ const list = [
 	{
 		id: 'Mite Heavy',
 		displayName: 'Journal.NAME_MITE_HEAVY',
-		description: 'Journal.DESC_MITE_HEAVY',
-		notes: 'Journal.NOTE_MITE_HEAVY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Mite Heavy_8_86x86_0',
@@ -5874,8 +5586,6 @@ const list = [
 	{
 		id: 'Understore Mite Giant',
 		displayName: 'Journal.NAME_UNDERSTORE_MITE_GIANT',
-		description: 'Journal.DESC_UNDERSTORE_MITE_GIANT',
-		notes: 'Journal.NOTE_UNDERSTORE_MITE_GIANT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Understore Mite Giant_5_86x86_0',
@@ -5913,8 +5623,6 @@ const list = [
 	{
 		id: 'Understore Small',
 		displayName: 'Journal.NAME_UNDERSTORE_SMALL',
-		description: 'Journal.DESC_UNDERSTORE_SMALL',
-		notes: 'Journal.NOTE_UNDERSTORE_SMALL',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Understore Small_8_86x86_0',
@@ -5952,8 +5660,6 @@ const list = [
 	{
 		id: 'Pilgrim 03 Understore',
 		displayName: 'Journal.NAME_PILGRIM_03_UNDERSTORE',
-		description: 'Journal.DESC_PILGRIM_03_UNDERSTORE',
-		notes: 'Journal.NOTE_PILGRIM_03_UNDERSTORE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 03 Understore_7_86x86_0',
@@ -5991,8 +5697,6 @@ const list = [
 	{
 		id: 'Pilgrim Staff Understore',
 		displayName: 'Journal.NAME_PILGRIM_STAFF_UNDERSTORE',
-		description: 'Journal.DESC_PILGRIM_STAFF_UNDERSTORE',
-		notes: 'Journal.NOTE_PILGRIM_STAFF_UNDERSTORE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim Staff Understore_6_86x86_0',
@@ -6030,8 +5734,6 @@ const list = [
 	{
 		id: 'Understore Poker',
 		displayName: 'Journal.NAME_UNDERSTORE_POKER',
-		description: 'Journal.DESC_UNDERSTORE_POKER',
-		notes: 'Journal.NOTE_UNDERSTORE_POKER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Understore Poker_5_86x86_0',
@@ -6069,8 +5771,6 @@ const list = [
 	{
 		id: 'Understore Thrower',
 		displayName: 'Journal.NAME_UNDERSTORE_THROWER',
-		description: 'Journal.DESC_UNDERSTORE_THROWER',
-		notes: 'Journal.NOTE_UNDERSTORE_THROWER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Understore Thrower_7_86x86_0',
@@ -6108,8 +5808,6 @@ const list = [
 	{
 		id: 'Understore Heavy',
 		displayName: 'Journal.NAME_UNDERSTORE_HEAVY',
-		description: 'Journal.DESC_UNDERSTORE_HEAVY',
-		notes: 'Journal.NOTE_UNDERSTORE_HEAVY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Understore Heavy_5_86x86_0',
@@ -6147,8 +5845,6 @@ const list = [
 	{
 		id: 'Song Pilgrim 01',
 		displayName: 'Journal.NAME_SONG_PILGRIM_01',
-		description: 'Journal.DESC_SONG_PILGRIM_01',
-		notes: 'Journal.NOTE_SONG_PILGRIM_01',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Pilgrim 01_6_86x86_0',
@@ -6186,8 +5882,6 @@ const list = [
 	{
 		id: 'Pilgrim 01 Song',
 		displayName: 'Journal.NAME_PILGRIM_01_SONG',
-		description: 'Journal.DESC_PILGRIM_01_SONG',
-		notes: 'Journal.NOTE_PILGRIM_01_SONG',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 01 Song_6_86x86_0',
@@ -6225,8 +5919,6 @@ const list = [
 	{
 		id: 'Pilgrim 02 Song',
 		displayName: 'Journal.NAME_PILGRIM_02_SONG',
-		description: 'Journal.DESC_PILGRIM_02_SONG',
-		notes: 'Journal.NOTE_PILGRIM_02_SONG',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 02 Song_5_86x86_0',
@@ -6264,8 +5956,6 @@ const list = [
 	{
 		id: 'Pilgrim 03 Song',
 		displayName: 'Journal.NAME_PILGRIM_03_SONG',
-		description: 'Journal.DESC_PILGRIM_03_SONG',
-		notes: 'Journal.NOTE_PILGRIM_03_SONG',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 03 Song_5_86x86_0',
@@ -6303,8 +5993,6 @@ const list = [
 	{
 		id: 'Pilgrim 04 Song',
 		displayName: 'Journal.NAME_PILGRIM_04_SONG',
-		description: 'Journal.DESC_PILGRIM_04_SONG',
-		notes: 'Journal.NOTE_PILGRIM_04_SONG',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim 04 Song_6_86x86_0',
@@ -6342,8 +6030,6 @@ const list = [
 	{
 		id: 'Pilgrim Stomper Song',
 		displayName: 'Journal.NAME_PILGRIM_STOMPER_SONG',
-		description: 'Journal.DESC_PILGRIM_STOMPER_SONG',
-		notes: 'Journal.NOTE_PILGRIM_STOMPER_SONG',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pilgrim Stomper Song_4_86x86_1',
@@ -6381,8 +6067,6 @@ const list = [
 	{
 		id: 'Song Pilgrim 03',
 		displayName: 'Journal.NAME_SONG_PILGRIM_03',
-		description: 'Journal.DESC_SONG_PILGRIM_03',
-		notes: 'Journal.NOTE_SONG_PILGRIM_03',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Pilgrim 03_7_86x86_0',
@@ -6420,8 +6104,6 @@ const list = [
 	{
 		id: 'Song Reed',
 		displayName: 'Journal.NAME_SONG_REED',
-		description: 'Journal.DESC_SONG_REED',
-		notes: 'Journal.NOTE_SONG_REED',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Reed_8_86x86_0',
@@ -6459,8 +6141,6 @@ const list = [
 	{
 		id: 'Song Reed Grand',
 		displayName: 'Journal.NAME_SONG_REED_GRAND',
-		description: 'Journal.DESC_SONG_REED_GRAND',
-		notes: 'Journal.NOTE_SONG_REED_GRAND',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Reed Grand_6_86x86_0',
@@ -6498,8 +6178,6 @@ const list = [
 	{
 		id: 'Song Heavy Sentry',
 		displayName: 'Journal.NAME_SONG_HEAVY_SENTRY',
-		description: 'Journal.DESC_SONG_HEAVY_SENTRY',
-		notes: 'Journal.NOTE_SONG_HEAVY_SENTRY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Heavy Sentry_5_86x86_0',
@@ -6537,8 +6215,6 @@ const list = [
 	{
 		id: 'Song Handmaiden',
 		displayName: 'Journal.NAME_SONG_HANDMAIDEN',
-		description: 'Journal.DESC_SONG_HANDMAIDEN',
-		notes: 'Journal.NOTE_SONG_HANDMAIDEN',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Handmaiden_7_86x86_0',
@@ -6576,8 +6252,6 @@ const list = [
 	{
 		id: 'Arborium Keeper',
 		displayName: 'Journal.NAME_ARBORIUM_KEEPER',
-		description: 'Journal.DESC_ARBORIUM_KEEPER',
-		notes: 'Journal.NOTE_ARBORIUM_KEEPER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Arborium Keeper_6_86x86_0',
@@ -6615,8 +6289,6 @@ const list = [
 	{
 		id: 'Song Administrator',
 		displayName: 'Journal.NAME_SONG_ADMINISTRATOR',
-		description: 'Journal.DESC_SONG_ADMINISTRATOR',
-		notes: 'Journal.NOTE_SONG_ADMINISTRATOR',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Administrator_5_86x86_0',
@@ -6654,8 +6326,6 @@ const list = [
 	{
 		id: 'Song Pilgrim Maestro',
 		displayName: 'Journal.NAME_SONG_PILGRIM_MAESTRO',
-		description: 'Journal.DESC_SONG_PILGRIM_MAESTRO',
-		notes: 'Journal.NOTE_SONG_PILGRIM_MAESTRO',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Pilgrim Maestro_10_86x86_0',
@@ -6693,8 +6363,6 @@ const list = [
 	{
 		id: 'Song Knight',
 		displayName: 'Journal.NAME_SONG_KNIGHT',
-		description: 'Journal.DESC_SONG_KNIGHT',
-		notes: 'Journal.NOTE_SONG_KNIGHT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Knight_8_86x86_0',
@@ -6732,8 +6400,6 @@ const list = [
 	{
 		id: 'Song Threaded Husk',
 		displayName: 'Journal.NAME_SONG_THREADED_HUSK',
-		description: 'Journal.DESC_SONG_THREADED_HUSK',
-		notes: 'Journal.NOTE_SONG_THREADED_HUSK',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Threaded Husk_4_86x86_0',
@@ -6771,8 +6437,6 @@ const list = [
 	{
 		id: 'Song Threaded Husk Spin',
 		displayName: 'Journal.NAME_SONG_THREADED_HUSK_SPIN',
-		description: 'Journal.DESC_SONG_THREADED_HUSK_SPIN',
-		notes: 'Journal.NOTE_SONG_THREADED_HUSK_SPIN',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Threaded Husk Spin_5_86x86_0',
@@ -6810,8 +6474,6 @@ const list = [
 	{
 		id: 'Song Pilgrim 02',
 		displayName: 'Journal.NAME_SONG_PILGRIM_02',
-		description: 'Journal.DESC_SONG_PILGRIM_02',
-		notes: 'Journal.NOTE_SONG_PILGRIM_02',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Pilgrim 02_5_86x86_0',
@@ -6849,8 +6511,6 @@ const list = [
 	{
 		id: 'Song Creeper',
 		displayName: 'Journal.NAME_SONG_CREEPER',
-		description: 'Journal.DESC_SONG_CREEPER',
-		notes: 'Journal.NOTE_SONG_CREEPER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Creeper_12_86x86_0',
@@ -6888,8 +6548,6 @@ const list = [
 	{
 		id: 'Conductor Boss',
 		displayName: 'Journal.NAME_CONDUCTOR_BOSS',
-		description: 'Journal.DESC_CONDUCTOR_BOSS',
-		notes: 'Journal.NOTE_CONDUCTOR_BOSS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Conductor Boss_6_86x86_0',
@@ -6927,8 +6585,6 @@ const list = [
 	{
 		id: 'Understore Automaton',
 		displayName: 'Journal.NAME_UNDERSTORE_AUTOMATON',
-		description: 'Journal.DESC_UNDERSTORE_AUTOMATON',
-		notes: 'Journal.NOTE_UNDERSTORE_AUTOMATON',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Understore Automaton_6_86x86_0',
@@ -6966,8 +6622,6 @@ const list = [
 	{
 		id: 'Understore Automaton EX',
 		displayName: 'Journal.NAME_UNDERSTORE_AUTOMATON_EX',
-		description: 'Journal.DESC_UNDERSTORE_AUTOMATON_EX',
-		notes: 'Journal.NOTE_UNDERSTORE_AUTOMATON_EX',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Understore Automaton EX.png_6_86x86_0',
@@ -7005,8 +6659,6 @@ const list = [
 	{
 		id: 'Song Automaton Goomba',
 		displayName: 'Journal.NAME_SONG_AUTOMATON_GOOMBA',
-		description: 'Journal.DESC_SONG_AUTOMATON_GOOMBA',
-		notes: 'Journal.NOTE_SONG_AUTOMATON_GOOMBA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Automaton Goomba_6_86x86_0',
@@ -7044,8 +6696,6 @@ const list = [
 	{
 		id: 'Song Automaton Fly',
 		displayName: 'Journal.NAME_SONG_AUTOMATON_FLY',
-		description: 'Journal.DESC_SONG_AUTOMATON_FLY',
-		notes: 'Journal.NOTE_SONG_AUTOMATON_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Automaton Fly_7_86x86_0',
@@ -7083,8 +6733,6 @@ const list = [
 	{
 		id: 'Song Automaton Fly Spike',
 		displayName: 'Journal.NAME_SONG_AUTOMATON_FLY_SPIKE',
-		description: 'Journal.DESC_SONG_AUTOMATON_FLY_SPIKE',
-		notes: 'Journal.NOTE_SONG_AUTOMATON_FLY_SPIKE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Automaton Fly Spike_5_86x86_0',
@@ -7122,8 +6770,6 @@ const list = [
 	{
 		id: 'Song Automaton 01',
 		displayName: 'Journal.NAME_SONG_AUTOMATON_01',
-		description: 'Journal.DESC_SONG_AUTOMATON_01',
-		notes: 'Journal.NOTE_SONG_AUTOMATON_01',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Automaton 01_5_86x86_0',
@@ -7161,8 +6807,6 @@ const list = [
 	{
 		id: 'Song Automaton 02',
 		displayName: 'Journal.NAME_SONG_AUTOMATON_02',
-		description: 'Journal.DESC_SONG_AUTOMATON_02',
-		notes: 'Journal.NOTE_SONG_AUTOMATON_02',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Automaton 02_8_86x86_0',
@@ -7200,8 +6844,6 @@ const list = [
 	{
 		id: 'Song Automaton Shield',
 		displayName: 'Journal.NAME_SONG_AUTOMATON_SHIELD',
-		description: 'Journal.DESC_SONG_AUTOMATON_SHIELD',
-		notes: 'Journal.NOTE_SONG_AUTOMATON_SHIELD',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Automaton Shield_18_86x86_0',
@@ -7239,8 +6881,6 @@ const list = [
 	{
 		id: 'Song Automaton Ball',
 		displayName: 'Journal.NAME_SONG_AUTOMATON_BALL',
-		description: 'Journal.DESC_SONG_AUTOMATON_BALL',
-		notes: 'Journal.NOTE_SONG_AUTOMATON_BALL',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Automaton Ball_5_86x86_0',
@@ -7278,8 +6918,6 @@ const list = [
 	{
 		id: 'Clockwork Dancer',
 		displayName: 'Journal.NAME_CLOCKWORK_DANCER',
-		description: 'Journal.DESC_CLOCKWORK_DANCER',
-		notes: 'Journal.NOTE_CLOCKWORK_DANCER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Clockwork Dancer_6_86x86_0',
@@ -7317,8 +6955,6 @@ const list = [
 	{
 		id: 'Song Scholar Acolyte',
 		displayName: 'Journal.NAME_SONG_SCHOLAR_ACOLYTE',
-		description: 'Journal.DESC_SONG_SCHOLAR_ACOLYTE',
-		notes: 'Journal.NOTE_SONG_SCHOLAR_ACOLYTE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Song Scholar Acolyte_7_86x86_0',
@@ -7356,8 +6992,6 @@ const list = [
 	{
 		id: 'Lightbearer',
 		displayName: 'Journal.NAME_LIGHTBEARER',
-		description: 'Journal.DESC_LIGHTBEARER',
-		notes: 'Journal.NOTE_LIGHTBEARER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Lightbearer_13_86x86_0',
@@ -7395,8 +7029,6 @@ const list = [
 	{
 		id: 'Scrollkeeper',
 		displayName: 'Journal.NAME_SCROLLKEEPER',
-		description: 'Journal.DESC_SCROLLKEEPER',
-		notes: 'Journal.NOTE_SCROLLKEEPER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Scrollkeeper_4_86x86_0',
@@ -7434,8 +7066,6 @@ const list = [
 	{
 		id: 'Scholar',
 		displayName: 'Journal.NAME_SCHOLAR',
-		description: 'Journal.DESC_SCHOLAR',
-		notes: 'Journal.NOTE_SCHOLAR',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Scholar_5_86x86_0',
@@ -7473,8 +7103,6 @@ const list = [
 	{
 		id: 'Trobbio',
 		displayName: 'Journal.NAME_TROBBIO',
-		description: 'Journal.DESC_TROBBIO',
-		notes: 'Journal.NOTE_TROBBIO',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Trobbio_5_86x86_0',
@@ -7512,8 +7140,6 @@ const list = [
 	{
 		id: 'Tormented Trobbio',
 		displayName: 'Journal.NAME_TORMENTED_TROBBIO',
-		description: 'Journal.DESC_TORMENTED_TROBBIO',
-		notes: 'Journal.NOTE_TORMENTED_TROBBIO',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Tormented Trobbio_8_86x86_0',
@@ -7551,8 +7177,6 @@ const list = [
 	{
 		id: 'Slab Prisoner Leaper New',
 		displayName: 'Journal.NAME_SLAB_PRISONER_LEAPER_NEW',
-		description: 'Journal.DESC_SLAB_PRISONER_LEAPER_NEW',
-		notes: 'Journal.NOTE_SLAB_PRISONER_LEAPER_NEW',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Slab Prisoner Leaper New_6_86x86_0',
@@ -7590,8 +7214,6 @@ const list = [
 	{
 		id: 'Slab Prisoner Fly New',
 		displayName: 'Journal.NAME_SLAB_PRISONER_FLY_NEW',
-		description: 'Journal.DESC_SLAB_PRISONER_FLY_NEW',
-		notes: 'Journal.NOTE_SLAB_PRISONER_FLY_NEW',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Slab Prisoner Fly New_7_86x86_0',
@@ -7629,8 +7251,6 @@ const list = [
 	{
 		id: 'Slab Fly Small Fresh',
 		displayName: 'Journal.NAME_SLAB_FLY_SMALL_FRESH',
-		description: 'Journal.DESC_SLAB_FLY_SMALL_FRESH',
-		notes: 'Journal.NOTE_SLAB_FLY_SMALL_FRESH',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Slab Fly Small Fresh_13_86x86_0',
@@ -7668,8 +7288,6 @@ const list = [
 	{
 		id: 'Slab Fly Small',
 		displayName: 'Journal.NAME_SLAB_FLY_SMALL',
-		description: 'Journal.DESC_SLAB_FLY_SMALL',
-		notes: 'Journal.NOTE_SLAB_FLY_SMALL',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Slab Fly Small_14_86x86_0',
@@ -7707,8 +7325,6 @@ const list = [
 	{
 		id: 'Slab Fly Mid',
 		displayName: 'Journal.NAME_SLAB_FLY_MID',
-		description: 'Journal.DESC_SLAB_FLY_MID',
-		notes: 'Journal.NOTE_SLAB_FLY_MID',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Slab Fly Mid_15_86x86_0',
@@ -7746,8 +7362,6 @@ const list = [
 	{
 		id: 'Slab Fly Large',
 		displayName: 'Journal.NAME_SLAB_FLY_LARGE',
-		description: 'Journal.DESC_SLAB_FLY_LARGE',
-		notes: 'Journal.NOTE_SLAB_FLY_LARGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Slab Fly Large_5_86x86_0',
@@ -7785,8 +7399,6 @@ const list = [
 	{
 		id: 'Slab Fly Broodmother',
 		displayName: 'Journal.NAME_SLAB_FLY_BROODMOTHER',
-		description: 'Journal.DESC_SLAB_FLY_BROODMOTHER',
-		notes: 'Journal.NOTE_SLAB_FLY_BROODMOTHER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Slab Fly Broodmother_8_86x86_0',
@@ -7824,8 +7436,6 @@ const list = [
 	{
 		id: 'Peaks Drifter',
 		displayName: 'Journal.NAME_PEAKS_DRIFTER',
-		description: 'Journal.DESC_PEAKS_DRIFTER',
-		notes: 'Journal.NOTE_PEAKS_DRIFTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Peaks Drifter_8_86x86_0',
@@ -7863,8 +7473,6 @@ const list = [
 	{
 		id: 'Crystal Drifter',
 		displayName: 'Journal.NAME_CRYSTAL_DRIFTER',
-		description: 'Journal.DESC_CRYSTAL_DRIFTER',
-		notes: 'Journal.NOTE_CRYSTAL_DRIFTER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crystal Drifter_10_86x86_0',
@@ -7902,8 +7510,6 @@ const list = [
 	{
 		id: 'Crystal Drifter Giant',
 		displayName: 'Journal.NAME_CRYSTAL_DRIFTER_GIANT',
-		description: 'Journal.DESC_CRYSTAL_DRIFTER_GIANT',
-		notes: 'Journal.NOTE_CRYSTAL_DRIFTER_GIANT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Crystal Drifter Giant_6_86x86_0',
@@ -7941,8 +7547,6 @@ const list = [
 	{
 		id: 'Weaver Servitor',
 		displayName: 'Journal.NAME_WEAVER_SERVITOR',
-		description: 'Journal.DESC_WEAVER_SERVITOR',
-		notes: 'Journal.NOTE_WEAVER_SERVITOR',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Weaver Servitor_7_86x86_0',
@@ -7980,8 +7584,6 @@ const list = [
 	{
 		id: 'Weaver Servitor Large',
 		displayName: 'Journal.NAME_WEAVER_SERVITOR_LARGE',
-		description: 'Journal.DESC_WEAVER_SERVITOR_LARGE',
-		notes: 'Journal.NOTE_WEAVER_SERVITOR_LARGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Weaver Servitor Large_7_86x86_0',
@@ -8019,8 +7621,6 @@ const list = [
 	{
 		id: 'Lifeblood Fly',
 		displayName: 'Journal.NAME_LIFEBLOOD_FLY',
-		description: 'Journal.DESC_LIFEBLOOD_FLY',
-		notes: 'Journal.NOTE_LIFEBLOOD_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Lifeblood_Fly_7_86x86_1',
@@ -8058,8 +7658,6 @@ const list = [
 	{
 		id: 'Bone Worm BlueBlood',
 		displayName: 'Journal.NAME_BONE_WORM_BLUEBLOOD',
-		description: 'Journal.DESC_BONE_WORM_BLUEBLOOD',
-		notes: 'Journal.NOTE_BONE_WORM_BLUEBLOOD',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Worm BlueBlood_6_86x86_0',
@@ -8097,8 +7695,6 @@ const list = [
 	{
 		id: 'Bone Worm BlueTurret',
 		displayName: 'Journal.NAME_BONE_WORM_BLUETURRET',
-		description: 'Journal.DESC_BONE_WORM_BLUETURRET',
-		notes: 'Journal.NOTE_BONE_WORM_BLUETURRET',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Bone Worm BlueTurret_6_86x86_0',
@@ -8136,8 +7732,6 @@ const list = [
 	{
 		id: 'Blue Assistant',
 		displayName: 'Journal.NAME_BLUE_ASSISTANT',
-		description: 'Journal.DESC_BLUE_ASSISTANT',
-		notes: 'Journal.NOTE_BLUE_ASSISTANT',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Blue Assistant_4_86x86_0',
@@ -8175,8 +7769,6 @@ const list = [
 	{
 		id: 'Lilypad Fly',
 		displayName: 'Journal.NAME_LILYPAD_FLY',
-		description: 'Journal.DESC_LILYPAD_FLY',
-		notes: 'Journal.NOTE_LILYPAD_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Lilypad Fly_7_86x86_0',
@@ -8214,8 +7806,6 @@ const list = [
 	{
 		id: 'Grass Goomba',
 		displayName: 'Journal.NAME_GRASS_GOOMBA',
-		description: 'Journal.DESC_GRASS_GOOMBA',
-		notes: 'Journal.NOTE_GRASS_GOOMBA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Grass Goomba_6_86x86_0',
@@ -8253,8 +7843,6 @@ const list = [
 	{
 		id: 'Hornet Dragonfly',
 		displayName: 'Journal.NAME_HORNET_DRAGONFLY',
-		description: 'Journal.DESC_HORNET_DRAGONFLY',
-		notes: 'Journal.NOTE_HORNET_DRAGONFLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Hornet Dragonfly_7_86x86_0',
@@ -8292,8 +7880,6 @@ const list = [
 	{
 		id: 'Dragonfly Large',
 		displayName: 'Journal.NAME_DRAGONFLY_LARGE',
-		description: 'Journal.DESC_DRAGONFLY_LARGE',
-		notes: 'Journal.NOTE_DRAGONFLY_LARGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Dragonfly Large_13_86x86_0',
@@ -8331,8 +7917,6 @@ const list = [
 	{
 		id: 'Lilypad Trap',
 		displayName: 'Journal.NAME_LILYPAD_TRAP',
-		description: 'Journal.DESC_LILYPAD_TRAP',
-		notes: 'Journal.NOTE_LILYPAD_TRAP',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Lilypad Trap_6_86x86_0',
@@ -8370,8 +7954,6 @@ const list = [
 	{
 		id: 'Cloverstag',
 		displayName: 'Journal.NAME_CLOVERSTAG',
-		description: 'Journal.DESC_CLOVERSTAG',
-		notes: 'Journal.NOTE_CLOVERSTAG',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Cloverstag_7_86x86_0',
@@ -8409,8 +7991,6 @@ const list = [
 	{
 		id: 'Cloverstag White',
 		displayName: 'Journal.NAME_CLOVERSTAG_WHITE',
-		description: 'Journal.DESC_CLOVERSTAG_WHITE',
-		notes: 'Journal.NOTE_CLOVERSTAG_WHITE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Cloverstag White_7_86x86_0',
@@ -8448,8 +8028,6 @@ const list = [
 	{
 		id: 'Grasshopper Child',
 		displayName: 'Journal.NAME_GRASSHOPPER_CHILD',
-		description: 'Journal.DESC_GRASSHOPPER_CHILD',
-		notes: 'Journal.NOTE_GRASSHOPPER_CHILD',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Grasshopper Child_10_86x86_0',
@@ -8487,8 +8065,6 @@ const list = [
 	{
 		id: 'Grasshopper Slasher',
 		displayName: 'Journal.NAME_GRASSHOPPER_SLASHER',
-		description: 'Journal.DESC_GRASSHOPPER_SLASHER',
-		notes: 'Journal.NOTE_GRASSHOPPER_SLASHER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Grasshopper Slasher_7_86x86_0',
@@ -8526,8 +8102,6 @@ const list = [
 	{
 		id: 'Grasshopper Fly',
 		displayName: 'Journal.NAME_GRASSHOPPER_FLY',
-		description: 'Journal.DESC_GRASSHOPPER_FLY',
-		notes: 'Journal.NOTE_GRASSHOPPER_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Grasshopper Fly_6_86x86_0',
@@ -8565,8 +8139,6 @@ const list = [
 	{
 		id: 'Clover Dancer',
 		displayName: 'Journal.NAME_CLOVER_DANCER',
-		description: 'Journal.DESC_CLOVER_DANCER',
-		notes: 'Journal.NOTE_CLOVER_DANCER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Clover Dancer_14_86x86_0',
@@ -8614,8 +8186,6 @@ const list = [
 	{
 		id: 'Abyss Crawler',
 		displayName: 'Journal.NAME_ABYSS_CRAWLER',
-		description: 'Journal.DESC_ABYSS_CRAWLER',
-		notes: 'Journal.NOTE_ABYSS_CRAWLER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Abyss Crawler_6_86x86_0',
@@ -8653,8 +8223,6 @@ const list = [
 	{
 		id: 'Abyss Crawler Large',
 		displayName: 'Journal.NAME_ABYSS_CRAWLER_LARGE',
-		description: 'Journal.DESC_ABYSS_CRAWLER_LARGE',
-		notes: 'Journal.NOTE_ABYSS_CRAWLER_LARGE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Abyss Crawler Large_4_86x86_0',
@@ -8692,8 +8260,6 @@ const list = [
 	{
 		id: 'Gloomfly',
 		displayName: 'Journal.NAME_GLOOMFLY',
-		description: 'Journal.DESC_GLOOMFLY',
-		notes: 'Journal.NOTE_GLOOMFLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Gloomfly_8_86x86_0',
@@ -8731,8 +8297,6 @@ const list = [
 	{
 		id: 'Gloom Beast',
 		displayName: 'Journal.NAME_GLOOM_BEAST',
-		description: 'Journal.DESC_GLOOM_BEAST',
-		notes: 'Journal.NOTE_GLOOM_BEAST',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Gloom Beast_7_86x86_0',
@@ -8770,8 +8334,6 @@ const list = [
 	{
 		id: 'Void Tendrils',
 		displayName: 'Journal.NAME_ABYSS_TENDRIL',
-		description: 'Journal.DESC_ABYSS_TENDRIL',
-		notes: 'Journal.NOTE_ABYSS_TENDRIL',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Abyss_Tendrils_4_86x86_1',
@@ -8809,8 +8371,6 @@ const list = [
 	{
 		id: 'Black Thread Core',
 		displayName: 'Journal.NAME_BLACK_THREAD_CORE',
-		description: 'Journal.DESC_BLACK_THREAD_CORE',
-		notes: 'Journal.NOTE_BLACK_THREAD_CORE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Black Thread Core_5_86x86_1',
@@ -8848,8 +8408,6 @@ const list = [
 	{
 		id: 'Abyss Mass',
 		displayName: 'Journal.NAME_ABYSS_MASS',
-		description: 'Journal.DESC_ABYSS_MASS',
-		notes: 'Journal.NOTE_ABYSS_MASS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Abyss_Mass_4_86x86_1',
@@ -8887,8 +8445,6 @@ const list = [
 	{
 		id: 'White Palace Fly',
 		displayName: 'Journal.NAME_WHITE_PALACE_FLY',
-		description: 'Journal.DESC_WHITE_PALACE_FLY',
-		notes: 'Journal.NOTE_WHITE_PALACE_FLY',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'White Palace Fly_7_86x86_1',
@@ -8926,8 +8482,6 @@ const list = [
 	{
 		id: 'Centipede Trap',
 		displayName: 'Journal.NAME_CENTIPEDE_TRAP',
-		description: 'Journal.DESC_CENTIPEDE_TRAP',
-		notes: 'Journal.NOTE_CENTIPEDE_TRAP',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Centipede_Trap_8_86x86_1',
@@ -8965,8 +8519,6 @@ const list = [
 	{
 		id: 'Spike Lazy Flyer',
 		displayName: 'Journal.NAME_SPIKE_LAZY_FLYER',
-		description: 'Journal.DESC_SPIKE_LAZY_FLYER',
-		notes: 'Journal.NOTE_SPIKE_LAZY_FLYER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Spike Lazy Flyer_5_86x86_0',
@@ -9004,8 +8556,6 @@ const list = [
 	{
 		id: 'Surface Scuttler',
 		displayName: 'Journal.NAME_SURFACE_SCUTTLER',
-		description: 'Journal.DESC_SURFACE_SCUTTLER',
-		notes: 'Journal.NOTE_SURFACE_SCUTTLER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Surface Scuttler_7_86x86_0',
@@ -9043,8 +8593,6 @@ const list = [
 	{
 		id: 'Giant Centipede',
 		displayName: 'Journal.NAME_GIANT_CENTIPEDE',
-		description: 'Journal.DESC_GIANT_CENTIPEDE',
-		notes: 'Journal.NOTE_GIANT_CENTIPEDE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Giant Centipede_4_86x86_0',
@@ -9082,8 +8630,6 @@ const list = [
 	{
 		id: 'Giant Flea',
 		displayName: 'Journal.NAME_GIANT_FLEA',
-		description: 'Journal.DESC_GIANT_FLEA',
-		notes: 'Journal.NOTE_GIANT_FLEA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Giant Flea_4_86x86_0',
@@ -9121,8 +8667,6 @@ const list = [
 	{
 		id: 'Shakra',
 		displayName: 'Journal.NAME_SHAKRA',
-		description: 'Journal.DESC_SHAKRA',
-		notes: 'Journal.NOTE_SHAKRA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Shakra_4_86x86_3',
@@ -9160,8 +8704,6 @@ const list = [
 	{
 		id: 'Garmond_Zaza',
 		displayName: 'Journal.NAME_GARMOND_ZAZA',
-		description: 'Journal.DESC_GARMOND_ZAZA',
-		notes: 'Journal.NOTE_GARMOND_ZAZA',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Garmond_Zaza_7_86x86_1',
@@ -9199,8 +8741,6 @@ const list = [
 	{
 		id: 'Garmond',
 		displayName: 'Journal.NAME_GARMOND',
-		description: 'Journal.DESC_GARMOND',
-		notes: 'Journal.NOTE_GARMOND',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Garmond_4_86x86_1',
@@ -9238,8 +8778,6 @@ const list = [
 	{
 		id: 'Pinstress Boss',
 		displayName: 'Journal.NAME_PINSTRESS_BOSS',
-		description: 'Journal.DESC_PINSTRESS_BOSS',
-		notes: 'Journal.NOTE_PINSTRESS_BOSS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Pinstress Boss_6_86x86_0',
@@ -9277,8 +8815,6 @@ const list = [
 	{
 		id: 'Spinner Boss',
 		displayName: 'Journal.NAME_SPINNER_BOSS',
-		description: 'Journal.DESC_SPINNER_BOSS',
-		notes: 'Journal.NOTE_SPINNER_BOSS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Spinner Boss_6_86x86_0',
@@ -9316,8 +8852,6 @@ const list = [
 	{
 		id: 'First Weaver',
 		displayName: 'Journal.NAME_FIRST_WEAVER',
-		description: 'Journal.DESC_FIRST_WEAVER',
-		notes: 'Journal.NOTE_FIRST_WEAVER',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'First Weaver_16_86x86_0',
@@ -9355,8 +8889,6 @@ const list = [
 	{
 		id: 'Phantom',
 		displayName: 'Journal.NAME_PHANTOM',
-		description: 'Journal.DESC_PHANTOM',
-		notes: 'Journal.NOTE_PHANTOM',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Phantom_4_86x86_0',
@@ -9394,8 +8926,6 @@ const list = [
 	{
 		id: 'Lace',
 		displayName: 'Journal.NAME_LACE',
-		description: 'Journal.DESC_LACE',
-		notes: 'Journal.NOTE_LACE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Lace_7_86x86_0',
@@ -9433,8 +8963,6 @@ const list = [
 	{
 		id: 'Silk Boss',
 		displayName: 'Journal.NAME_SILK_BOSS',
-		description: 'Journal.DESC_SILK_BOSS',
-		notes: 'Journal.NOTE_SILK_BOSS',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Silk Boss_4_86x86_0',
@@ -9472,8 +9000,6 @@ const list = [
 	{
 		id: 'Lost Lace',
 		displayName: 'Journal.NAME_LOST_LACE',
-		description: 'Journal.DESC_LOST_LACE',
-		notes: 'Journal.NOTE_LOST_LACE',
 		recordType: 'Enemy',
 		iconSprite: {
 			name: 'Lost Lace_4_86x86_0',

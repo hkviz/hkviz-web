@@ -96,7 +96,6 @@ const list = [
 		id: 'Dresses',
 		runtimeType: 'CollectableItemStates',
 		displayNameKey: 'UI.INV_NAME_DRESS_REG',
-		descriptionKey: 'UI.INV_DESC_DRESS_REG',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -106,44 +105,8 @@ const list = [
 			Shop: ['UI.INV_NAME_DRESS_REG', 'UI.INV_NAME_DRESS_BROLLY', 'UI.INV_NAME_DRESS_DJ'],
 			TakePopup: ['UI.INV_NAME_DRESS_REG', 'UI.INV_NAME_DRESS_BROLLY', 'UI.INV_NAME_DRESS_DJ'],
 		},
-		descriptionKeysBySource: {
-			Inventory: [
-				'UI.INV_DESC_DRESS_REG',
-				'UI.INV_DESC_DRESS_BROLLY',
-				'UI.INV_DESC_DRESS_DJ',
-				'UI.INV_DESC_DRESS_APP_FLY_FULL',
-				'UI.INV_DESC_DRESS_APP_FLY_HALF',
-			],
-			GetPopup: [
-				'UI.INV_DESC_DRESS_REG',
-				'UI.INV_DESC_DRESS_BROLLY',
-				'UI.INV_DESC_DRESS_DJ',
-				'UI.INV_DESC_DRESS_APP_FLY_FULL',
-				'UI.INV_DESC_DRESS_APP_FLY_HALF',
-			],
-			Tiny: [
-				'UI.INV_DESC_DRESS_REG',
-				'UI.INV_DESC_DRESS_BROLLY',
-				'UI.INV_DESC_DRESS_DJ',
-				'UI.INV_DESC_DRESS_APP_FLY_FULL',
-				'UI.INV_DESC_DRESS_APP_FLY_HALF',
-			],
-			Shop: [
-				'UI.INV_DESC_DRESS_REG',
-				'UI.INV_DESC_DRESS_BROLLY',
-				'UI.INV_DESC_DRESS_DJ',
-				'UI.INV_DESC_DRESS_APP_FLY_FULL',
-				'UI.INV_DESC_DRESS_APP_FLY_HALF',
-			],
-			TakePopup: [
-				'UI.INV_DESC_DRESS_REG',
-				'UI.INV_DESC_DRESS_BROLLY',
-				'UI.INV_DESC_DRESS_DJ',
-				'UI.INV_DESC_DRESS_APP_FLY_FULL',
-				'UI.INV_DESC_DRESS_APP_FLY_HALF',
-			],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_DRESS_APP_FLY_FULL', 'UI.INV_DESC_DRESS_APP_FLY_HALF'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_spine_cloak_down_17_120x120_0',
 			nameShort: 'I_spine_cloak_down',
@@ -225,7 +188,6 @@ const list = [
 		id: 'Tool Pouch&Kit Inv',
 		runtimeType: 'CollectableItemStates',
 		displayNameKey: 'UI.INV_NAME_TOOLPOUCH',
-		descriptionKey: 'UI.INV_DESC_TOOLPOUCH',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -235,13 +197,7 @@ const list = [
 			Shop: ['UI.INV_NAME_TOOLPOUCH', 'UI.INV_NAME_POUCHANDTOOLKIT'],
 			TakePopup: ['UI.INV_NAME_TOOLPOUCH', 'UI.INV_NAME_POUCHANDTOOLKIT'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_TOOLPOUCH', 'UI.INV_DESC_POUCHANDTOOLKIT'],
-			GetPopup: ['UI.INV_DESC_TOOLPOUCH', 'UI.INV_DESC_POUCHANDTOOLKIT'],
-			Tiny: ['UI.INV_DESC_TOOLPOUCH', 'UI.INV_DESC_POUCHANDTOOLKIT'],
-			Shop: ['UI.INV_DESC_TOOLPOUCH', 'UI.INV_DESC_POUCHANDTOOLKIT'],
-			TakePopup: ['UI.INV_DESC_TOOLPOUCH', 'UI.INV_DESC_POUCHANDTOOLKIT'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Inv_0015_tool_pouch_original_with_kit_8_125x143_1',
@@ -324,7 +280,6 @@ const list = [
 		id: 'Quill',
 		runtimeType: 'CollectableItemStates',
 		displayNameKey: 'UI.INV_NAME_QUILL',
-		descriptionKey: 'UI.INV_DESC_QUILL',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -334,13 +289,7 @@ const list = [
 			Shop: ['UI.INV_NAME_QUILL', 'UI.INV_NAME_MAP', 'UI.INV_NAME_MAPANDQUILL'],
 			TakePopup: ['UI.INV_NAME_QUILL', 'UI.INV_NAME_MAP', 'UI.INV_NAME_MAPANDQUILL'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_QUILL', 'UI.INV_DESC_MAP', 'UI.INV_DESC_MAPANDQUILL'],
-			GetPopup: ['UI.INV_DESC_QUILL', 'UI.INV_DESC_MAP', 'UI.INV_DESC_MAPANDQUILL'],
-			Tiny: ['UI.INV_DESC_QUILL', 'UI.INV_DESC_MAP', 'UI.INV_DESC_MAPANDQUILL'],
-			Shop: ['UI.INV_DESC_QUILL', 'UI.INV_DESC_MAP', 'UI.INV_DESC_MAPANDQUILL'],
-			TakePopup: ['UI.INV_DESC_QUILL', 'UI.INV_DESC_MAP', 'UI.INV_DESC_MAPANDQUILL'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_quill_and_map_10_127x130_0',
@@ -423,7 +372,6 @@ const list = [
 		id: 'White Flower',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_WHITE_FLOWER',
-		descriptionKey: 'UI.INV_DESC_WHITE_FLOWER',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -433,13 +381,7 @@ const list = [
 			Shop: ['UI.INV_NAME_WHITE_FLOWER'],
 			TakePopup: ['UI.INV_NAME_WHITE_FLOWER'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_WHITE_FLOWER'],
-			GetPopup: ['UI.INV_DESC_WHITE_FLOWER'],
-			Tiny: ['UI.INV_DESC_WHITE_FLOWER'],
-			Shop: ['UI.INV_DESC_WHITE_FLOWER'],
-			TakePopup: ['UI.INV_DESC_WHITE_FLOWER'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_white_flower_9_120x132_0',
@@ -522,7 +464,6 @@ const list = [
 		id: 'Tool Metal',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_TOOL_METAL',
-		descriptionKey: 'UI.INV_DESC_TOOL_METAL',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -532,13 +473,7 @@ const list = [
 			Shop: ['UI.INV_NAME_TOOL_METAL'],
 			TakePopup: ['UI.INV_NAME_TOOL_METAL'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_TOOL_METAL'],
-			GetPopup: ['UI.INV_DESC_TOOL_METAL'],
-			Tiny: ['UI.INV_DESC_TOOL_METAL'],
-			Shop: ['UI.INV_DESC_TOOL_METAL'],
-			TakePopup: ['UI.INV_DESC_TOOL_METAL'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_Tool_Metal_10_110x117_0',
@@ -621,7 +556,6 @@ const list = [
 		id: 'Crest Socket Unlocker',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_CREST_SOCKET',
-		descriptionKey: 'UI.INV_DESC_CREST_SOCKET',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -631,13 +565,7 @@ const list = [
 			Shop: ['UI.INV_NAME_CREST_SOCKET'],
 			TakePopup: ['UI.INV_NAME_CREST_SOCKET'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_CREST_SOCKET'],
-			GetPopup: ['UI.INV_DESC_CREST_SOCKET'],
-			Tiny: ['UI.INV_DESC_CREST_SOCKET'],
-			Shop: ['UI.INV_DESC_CREST_SOCKET'],
-			TakePopup: ['UI.INV_DESC_CREST_SOCKET'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Charm_Notch_10_116x111_1',
@@ -720,7 +648,6 @@ const list = [
 		id: 'Pale_Oil',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_PLINNEY_TOOLS',
-		descriptionKey: 'UI.INV_DESC_PLINNEY_TOOLS',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -730,13 +657,7 @@ const list = [
 			Shop: ['UI.INV_NAME_PLINNEY_TOOLS'],
 			TakePopup: ['UI.INV_NAME_PLINNEY_TOOLS'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_PLINNEY_TOOLS'],
-			GetPopup: ['UI.INV_DESC_PLINNEY_TOOLS'],
-			Tiny: ['UI.INV_DESC_PLINNEY_TOOLS'],
-			Shop: ['UI.INV_DESC_PLINNEY_TOOLS'],
-			TakePopup: ['UI.INV_DESC_PLINNEY_TOOLS'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'oil_phial_8_111x125_1',
@@ -819,7 +740,6 @@ const list = [
 		id: 'Coral Heart',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_HEART_CORAL',
-		descriptionKey: 'UI.INV_DESC_HEART_CORAL',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -829,14 +749,8 @@ const list = [
 			Shop: ['UI.INV_NAME_HEART_CORAL'],
 			TakePopup: ['UI.INV_NAME_HEART_CORAL'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_HEART_CORAL', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			GetPopup: ['UI.INV_DESC_HEART_CORAL', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			Tiny: ['UI.INV_DESC_HEART_CORAL', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			Shop: ['UI.INV_DESC_HEART_CORAL'],
-			TakePopup: ['UI.INV_DESC_HEART_CORAL', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_HEART_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'coral_king_heart_icon0000_16_136x153_1',
 			nameShort: 'coral_king_heart_icon0000',
@@ -918,7 +832,6 @@ const list = [
 		id: 'Flower Heart',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_HEART_BLOOM',
-		descriptionKey: 'UI.INV_DESC_HEART_BLOOM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -928,14 +841,8 @@ const list = [
 			Shop: ['UI.INV_NAME_HEART_BLOOM'],
 			TakePopup: ['UI.INV_NAME_HEART_BLOOM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_HEART_BLOOM', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			GetPopup: ['UI.INV_DESC_HEART_BLOOM', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			Tiny: ['UI.INV_DESC_HEART_BLOOM', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			Shop: ['UI.INV_DESC_HEART_BLOOM'],
-			TakePopup: ['UI.INV_DESC_HEART_BLOOM', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_HEART_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'flower_queen_heart_icon0000_9_175x163_1',
 			nameShort: 'flower_queen_heart_icon0000',
@@ -1017,7 +924,6 @@ const list = [
 		id: 'Hunter Heart',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_HEART_HUNTER',
-		descriptionKey: 'UI.INV_DESC_HEART_HUNTER',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1027,14 +933,8 @@ const list = [
 			Shop: ['UI.INV_NAME_HEART_HUNTER'],
 			TakePopup: ['UI.INV_NAME_HEART_HUNTER'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_HEART_HUNTER', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			GetPopup: ['UI.INV_DESC_HEART_HUNTER', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			Tiny: ['UI.INV_DESC_HEART_HUNTER', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			Shop: ['UI.INV_DESC_HEART_HUNTER'],
-			TakePopup: ['UI.INV_DESC_HEART_HUNTER', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_HEART_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'ant_queen_heart_icon0002_8_125x139_1',
 			nameShort: 'ant_queen_heart_icon0002',
@@ -1116,7 +1016,6 @@ const list = [
 		id: 'Clover Heart',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_HEART_CLOVER',
-		descriptionKey: 'UI.INV_DESC_HEART_CLOVER',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1126,14 +1025,8 @@ const list = [
 			Shop: ['UI.INV_NAME_HEART_CLOVER'],
 			TakePopup: ['UI.INV_NAME_HEART_CLOVER'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_HEART_CLOVER', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			GetPopup: ['UI.INV_DESC_HEART_CLOVER', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			Tiny: ['UI.INV_DESC_HEART_CLOVER', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-			Shop: ['UI.INV_DESC_HEART_CLOVER'],
-			TakePopup: ['UI.INV_DESC_HEART_CLOVER', 'UI.INV_DESC_MOMENTO_HEART_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_HEART_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'clover_prince_heart0000_8_142x159_1',
 			nameShort: 'clover_prince_heart0000',
@@ -1215,7 +1108,6 @@ const list = [
 		id: 'Plasmium Gland',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_PLASMIUM_GLAND',
-		descriptionKey: 'UI.INV_DESC_PLASMIUM_GLAND',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1225,13 +1117,7 @@ const list = [
 			Shop: ['UI.INV_NAME_PLASMIUM_GLAND'],
 			TakePopup: ['UI.INV_NAME_PLASMIUM_GLAND'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_PLASMIUM_GLAND'],
-			GetPopup: ['UI.INV_DESC_PLASMIUM_GLAND'],
-			Tiny: ['UI.INV_DESC_PLASMIUM_GLAND'],
-			Shop: ['UI.INV_DESC_PLASMIUM_GLAND'],
-			TakePopup: ['UI.INV_DESC_PLASMIUM_GLAND'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Plasmium_Gland0000_8_107x124_0',
@@ -1314,7 +1200,6 @@ const list = [
 		id: 'Broken SilkShot',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_BROKEN_SILKSHOT',
-		descriptionKey: 'UI.INV_DESC_BROKEN_SILKSHOT',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1324,13 +1209,7 @@ const list = [
 			Shop: ['UI.INV_NAME_BROKEN_SILKSHOT'],
 			TakePopup: ['UI.INV_NAME_BROKEN_SILKSHOT'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_BROKEN_SILKSHOT'],
-			GetPopup: ['UI.INV_DESC_BROKEN_SILKSHOT'],
-			Tiny: ['UI.INV_DESC_BROKEN_SILKSHOT'],
-			Shop: ['UI.INV_DESC_BROKEN_SILKSHOT'],
-			TakePopup: ['UI.INV_DESC_BROKEN_SILKSHOT'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: '_0000_T_web_shot_broken_15_141x140_1',
@@ -1413,7 +1292,6 @@ const list = [
 		id: 'Wood Witch Item',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_WITCH_ITEM',
-		descriptionKey: 'UI.INV_DESC_WITCH_ITEM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1423,13 +1301,7 @@ const list = [
 			Shop: ['UI.INV_NAME_WITCH_ITEM'],
 			TakePopup: ['UI.INV_NAME_WITCH_ITEM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_WITCH_ITEM'],
-			GetPopup: ['UI.INV_DESC_WITCH_ITEM'],
-			Tiny: ['UI.INV_DESC_WITCH_ITEM'],
-			Shop: ['UI.INV_DESC_WITCH_ITEM'],
-			TakePopup: ['UI.INV_DESC_WITCH_ITEM'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'mandrake_icon0000_9_144x145_1',
@@ -1512,7 +1384,6 @@ const list = [
 		id: 'Cog Heart Pieces',
 		runtimeType: 'CollectableItemStack',
 		displayNameKey: 'UI.INV_NAME_COG_HEART_PIECE',
-		descriptionKey: 'UI.INV_DESC_COG_HEART_PIECE',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1522,13 +1393,7 @@ const list = [
 			Shop: ['UI.INV_NAME_COG_HEART_PIECE'],
 			TakePopup: ['UI.INV_NAME_COG_HEART_PIECE', 'UI.INV_NAME_COG_HEART_PIECES', 'UI.INV_NAME_COG_HEART'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_COG_HEART_PIECE', 'UI.INV_DESC_COG_HEART_PIECES', 'UI.INV_DESC_COG_HEART'],
-			GetPopup: ['UI.INV_DESC_COG_HEART_PIECE'],
-			Tiny: ['UI.INV_DESC_COG_HEART_PIECE'],
-			Shop: ['UI.INV_DESC_COG_HEART_PIECE'],
-			TakePopup: ['UI.INV_DESC_COG_HEART_PIECE', 'UI.INV_DESC_COG_HEART_PIECES', 'UI.INV_DESC_COG_HEART'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'cog_heart__0001_left_21_103x110_1',
@@ -1611,7 +1476,6 @@ const list = [
 		id: 'Craw Summons',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_CRAW_SUMMONS',
-		descriptionKey: 'UI.INV_DESC_CRAW_SUMMONS',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1621,13 +1485,7 @@ const list = [
 			Shop: ['UI.INV_NAME_CRAW_SUMMONS'],
 			TakePopup: ['UI.INV_NAME_CRAW_SUMMONS'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_CRAW_SUMMONS'],
-			GetPopup: ['UI.INV_DESC_CRAW_SUMMONS'],
-			Tiny: ['UI.INV_DESC_CRAW_SUMMONS'],
-			Shop: ['UI.INV_DESC_CRAW_SUMMONS'],
-			TakePopup: ['UI.INV_DESC_CRAW_SUMMONS'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Inv_craw_summons_7_120x137_1',
@@ -1710,7 +1568,6 @@ const list = [
 		id: 'Mossberry',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_MOSSBERRY',
-		descriptionKey: 'UI.INV_DESC_MOSSBERRY',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1720,13 +1577,7 @@ const list = [
 			Shop: ['UI.INV_NAME_MOSSBERRY'],
 			TakePopup: ['UI.INV_NAME_MOSSBERRY'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_MOSSBERRY'],
-			GetPopup: ['UI.INV_DESC_MOSSBERRY'],
-			Tiny: ['UI.INV_DESC_MOSSBERRY'],
-			Shop: ['UI.INV_DESC_MOSSBERRY'],
-			TakePopup: ['UI.INV_DESC_MOSSBERRY'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_moss_berry_12_120x120_0',
@@ -1809,7 +1660,6 @@ const list = [
 		id: 'Pilgrim Rag',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_PILGRIM_RAGS_ITEM',
-		descriptionKey: 'UI.INV_DESC_PILGRIM_RAGS_ITEM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1819,13 +1669,7 @@ const list = [
 			Shop: ['UI.INV_NAME_PILGRIM_RAGS_ITEM'],
 			TakePopup: ['UI.INV_NAME_PILGRIM_RAGS_ITEM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_PILGRIM_RAGS_ITEM'],
-			GetPopup: ['UI.INV_DESC_PILGRIM_RAGS_ITEM'],
-			Tiny: ['UI.INV_DESC_PILGRIM_RAGS_ITEM'],
-			Shop: ['UI.INV_DESC_PILGRIM_RAGS_ITEM'],
-			TakePopup: ['UI.INV_DESC_PILGRIM_RAGS_ITEM'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_icon_pilgrim_shawl_10_130x112_1',
@@ -1908,7 +1752,6 @@ const list = [
 		id: 'Common Spine',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_SPINE',
-		descriptionKey: 'UI.INV_DESC_SPINE',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -1918,13 +1761,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SPINE'],
 			TakePopup: ['UI.INV_NAME_SPINE'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SPINE'],
-			GetPopup: ['UI.INV_DESC_SPINE'],
-			Tiny: ['UI.INV_DESC_SPINE'],
-			Shop: ['UI.INV_DESC_SPINE'],
-			TakePopup: ['UI.INV_DESC_SPINE'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_spine_cores_13_142x145_0',
@@ -2007,7 +1844,6 @@ const list = [
 		id: 'Shell Flower',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_SHELL_FLOWER',
-		descriptionKey: 'UI.INV_DESC_SHELL_FLOWER',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2017,13 +1853,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SHELL_FLOWER'],
 			TakePopup: ['UI.INV_NAME_SHELL_FLOWER'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SHELL_FLOWER'],
-			GetPopup: ['UI.INV_DESC_SHELL_FLOWER'],
-			Tiny: ['UI.INV_DESC_SHELL_FLOWER'],
-			Shop: ['UI.INV_DESC_SHELL_FLOWER'],
-			TakePopup: ['UI.INV_DESC_SHELL_FLOWER'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: '_0007_shell_flower_purple_icon_9_76x115_0',
@@ -2106,7 +1936,6 @@ const list = [
 		id: 'Crow Feather',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_CROW_FEATHER',
-		descriptionKey: 'UI.INV_DESC_CROW_FEATHER',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2116,13 +1945,7 @@ const list = [
 			Shop: ['UI.INV_NAME_CROW_FEATHER'],
 			TakePopup: ['UI.INV_NAME_CROW_FEATHER'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_CROW_FEATHER'],
-			GetPopup: ['UI.INV_DESC_CROW_FEATHER'],
-			Tiny: ['UI.INV_DESC_CROW_FEATHER'],
-			Shop: ['UI.INV_DESC_CROW_FEATHER'],
-			TakePopup: ['UI.INV_DESC_CROW_FEATHER'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_craw_scrap_11_142x145_0',
@@ -2205,7 +2028,6 @@ const list = [
 		id: 'Rock Roller Item',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_ROCK_ROLLER_ITEM',
-		descriptionKey: 'UI.INV_DESC_ROCK_ROLLER_ITEM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2215,13 +2037,7 @@ const list = [
 			Shop: ['UI.INV_NAME_ROCK_ROLLER_ITEM'],
 			TakePopup: ['UI.INV_NAME_ROCK_ROLLER_ITEM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_ROCK_ROLLER_ITEM'],
-			GetPopup: ['UI.INV_DESC_ROCK_ROLLER_ITEM'],
-			Tiny: ['UI.INV_DESC_ROCK_ROLLER_ITEM'],
-			Shop: ['UI.INV_DESC_ROCK_ROLLER_ITEM'],
-			TakePopup: ['UI.INV_DESC_ROCK_ROLLER_ITEM'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'bone_roller_rock_icon_9_132x117_0',
@@ -2304,7 +2120,6 @@ const list = [
 		id: 'Roach Corpse Item',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_ROACH_CORPSE_ITEM',
-		descriptionKey: 'UI.INV_DESC_ROACH_CORPSE_ITEM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2314,13 +2129,7 @@ const list = [
 			Shop: ['UI.INV_NAME_ROACH_CORPSE_ITEM'],
 			TakePopup: ['UI.INV_NAME_ROACH_CORPSE_ITEM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_ROACH_CORPSE_ITEM'],
-			GetPopup: ['UI.INV_DESC_ROACH_CORPSE_ITEM'],
-			Tiny: ['UI.INV_DESC_ROACH_CORPSE_ITEM'],
-			Shop: ['UI.INV_DESC_ROACH_CORPSE_ITEM'],
-			TakePopup: ['UI.INV_DESC_ROACH_CORPSE_ITEM'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'icon_roach_organ_11_119x128_2',
@@ -2403,7 +2212,6 @@ const list = [
 		id: 'Skull King Fragment',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_SK_FRAGMENT',
-		descriptionKey: 'UI.INV_DESC_SK_FRAGMENT',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2413,13 +2221,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SK_FRAGMENT'],
 			TakePopup: ['UI.INV_NAME_SK_FRAGMENT'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SK_FRAGMENT'],
-			GetPopup: ['UI.INV_DESC_SK_FRAGMENT'],
-			Tiny: ['UI.INV_DESC_SK_FRAGMENT'],
-			Shop: ['UI.INV_DESC_SK_FRAGMENT'],
-			TakePopup: ['UI.INV_DESC_SK_FRAGMENT'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'M_tusk_9_120x120_1',
@@ -2502,7 +2304,6 @@ const list = [
 		id: 'Beastfly Remains',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_BEASTFLY_REMAINS',
-		descriptionKey: 'UI.INV_DESC_BEASTFLY_REMAINS',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2512,13 +2313,7 @@ const list = [
 			Shop: ['UI.INV_NAME_BEASTFLY_REMAINS'],
 			TakePopup: ['UI.INV_NAME_BEASTFLY_REMAINS'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_BEASTFLY_REMAINS'],
-			GetPopup: ['UI.INV_DESC_BEASTFLY_REMAINS'],
-			Tiny: ['UI.INV_DESC_BEASTFLY_REMAINS'],
-			Shop: ['UI.INV_DESC_BEASTFLY_REMAINS'],
-			TakePopup: ['UI.INV_DESC_BEASTFLY_REMAINS'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'M_crest_8_120x120_1',
@@ -2601,7 +2396,6 @@ const list = [
 		id: 'Conchfly Remains',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_CONCHFLY_REMAINS',
-		descriptionKey: 'UI.INV_DESC_CONCHFLY_REMAINS',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2611,13 +2405,7 @@ const list = [
 			Shop: ['UI.INV_NAME_CONCHFLY_REMAINS'],
 			TakePopup: ['UI.INV_NAME_CONCHFLY_REMAINS'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_CONCHFLY_REMAINS'],
-			GetPopup: ['UI.INV_DESC_CONCHFLY_REMAINS'],
-			Tiny: ['UI.INV_DESC_CONCHFLY_REMAINS'],
-			Shop: ['UI.INV_DESC_CONCHFLY_REMAINS'],
-			TakePopup: ['UI.INV_DESC_CONCHFLY_REMAINS'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'C_crest_6_111x135_1',
@@ -2700,7 +2488,6 @@ const list = [
 		id: 'Broodmother Remains',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_BROODMOTHER_REMAINS',
-		descriptionKey: 'UI.INV_DESC_BROODMOTHER_REMAINS',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2710,13 +2497,7 @@ const list = [
 			Shop: ['UI.INV_NAME_BROODMOTHER_REMAINS'],
 			TakePopup: ['UI.INV_NAME_BROODMOTHER_REMAINS'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_BROODMOTHER_REMAINS'],
-			GetPopup: ['UI.INV_DESC_BROODMOTHER_REMAINS'],
-			Tiny: ['UI.INV_DESC_BROODMOTHER_REMAINS'],
-			Shop: ['UI.INV_DESC_BROODMOTHER_REMAINS'],
-			TakePopup: ['UI.INV_DESC_BROODMOTHER_REMAINS'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Brood_Mother_Eye_Icon_9_125x146_2',
@@ -2799,7 +2580,6 @@ const list = [
 		id: 'Silver Bellclapper',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_BELLCLAPPER_ITEM',
-		descriptionKey: 'UI.INV_DESC_BELLCLAPPER_ITEM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2809,13 +2589,7 @@ const list = [
 			Shop: ['UI.INV_NAME_BELLCLAPPER_ITEM'],
 			TakePopup: ['UI.INV_NAME_BELLCLAPPER_ITEM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_BELLCLAPPER_ITEM'],
-			GetPopup: ['UI.INV_DESC_BELLCLAPPER_ITEM'],
-			Tiny: ['UI.INV_DESC_BELLCLAPPER_ITEM'],
-			Shop: ['UI.INV_DESC_BELLCLAPPER_ITEM'],
-			TakePopup: ['UI.INV_DESC_BELLCLAPPER_ITEM'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_icon_bell_clapper_8_144x157_2',
@@ -2898,7 +2672,6 @@ const list = [
 		id: 'Blue Goop Jar',
 		runtimeType: 'CollectableItemQuestDisplay',
 		displayNameKey: 'UI.INV_NAME_BLUE_GOOP',
-		descriptionKey: 'UI.INV_DESC_BLUE_GOOP',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2908,13 +2681,7 @@ const list = [
 			Shop: ['UI.INV_NAME_BLUE_GOOP'],
 			TakePopup: ['UI.INV_NAME_BLUE_GOOP', 'UI.INV_NAME_BLUE_GOOP_PICKUP'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_BLUE_GOOP', 'UI.INV_DESC_BLUE_GOOP_FULL'],
-			GetPopup: ['UI.INV_DESC_BLUE_GOOP', 'UI.INV_DESC_BLUE_GOOP_FULL'],
-			Tiny: ['UI.INV_DESC_BLUE_GOOP', 'UI.INV_DESC_BLUE_GOOP_FULL'],
-			Shop: ['UI.INV_DESC_BLUE_GOOP', 'UI.INV_DESC_BLUE_GOOP_FULL'],
-			TakePopup: ['UI.INV_DESC_BLUE_GOOP', 'UI.INV_DESC_BLUE_GOOP_FULL'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: null,
 		iconPopup: null,
@@ -2932,7 +2699,6 @@ const list = [
 		id: 'Coral Chunk',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_CORAL_CHUNK',
-		descriptionKey: 'UI.INV_DESC_CORAL_CHUNK',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -2942,13 +2708,7 @@ const list = [
 			Shop: ['UI.INV_NAME_CORAL_CHUNK'],
 			TakePopup: ['UI.INV_NAME_CORAL_CHUNK'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_CORAL_CHUNK'],
-			GetPopup: ['UI.INV_DESC_CORAL_CHUNK'],
-			Tiny: ['UI.INV_DESC_CORAL_CHUNK'],
-			Shop: ['UI.INV_DESC_CORAL_CHUNK'],
-			TakePopup: ['UI.INV_DESC_CORAL_CHUNK'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_coral_chunk_18_126x119_0',
@@ -3031,7 +2791,6 @@ const list = [
 		id: 'Fine Pin',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_FINEPIN',
-		descriptionKey: 'UI.INV_DESC_FINEPIN',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3041,13 +2800,7 @@ const list = [
 			Shop: ['UI.INV_NAME_FINEPIN'],
 			TakePopup: ['UI.INV_NAME_FINEPIN'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_FINEPIN'],
-			GetPopup: ['UI.INV_DESC_FINEPIN'],
-			Tiny: ['UI.INV_DESC_FINEPIN'],
-			Shop: ['UI.INV_DESC_FINEPIN'],
-			TakePopup: ['UI.INV_DESC_FINEPIN'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'M_pyns_37_157x156_1',
@@ -3130,7 +2883,6 @@ const list = [
 		id: 'Shining Cog',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_SHININGCOG',
-		descriptionKey: 'UI.INV_DESC_SHININGCOG',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3140,13 +2892,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SHININGCOG'],
 			TakePopup: ['UI.INV_NAME_SHININGCOG'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SHININGCOG'],
-			GetPopup: ['UI.INV_DESC_SHININGCOG'],
-			Tiny: ['UI.INV_DESC_SHININGCOG'],
-			Shop: ['UI.INV_DESC_SHININGCOG'],
-			TakePopup: ['UI.INV_DESC_SHININGCOG'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'M_songsteel_cogs_8_132x128_10',
@@ -3229,7 +2975,6 @@ const list = [
 		id: 'Song Pilgrim Cloak',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM',
-		descriptionKey: 'UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3239,13 +2984,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM'],
 			TakePopup: ['UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM'],
-			GetPopup: ['UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM'],
-			Tiny: ['UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM'],
-			Shop: ['UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM'],
-			TakePopup: ['UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'icon_song_shawl_10_120x117_1',
@@ -3328,7 +3067,6 @@ const list = [
 		id: 'Courier Supplies',
 		runtimeType: 'DeliveryQuestItem',
 		displayNameKey: 'Quests.COURIER_SUPPLIES_ITEM_NAME',
-		descriptionKey: 'Quests.COURIER_SUPPLIES_ITEM_DESC',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3338,13 +3076,7 @@ const list = [
 			Shop: ['Quests.COURIER_SUPPLIES_ITEM_NAME'],
 			TakePopup: ['Quests.COURIER_SUPPLIES_ITEM_NAME'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['Quests.COURIER_SUPPLIES_ITEM_DESC'],
-			GetPopup: ['Quests.COURIER_SUPPLIES_ITEM_DESC'],
-			Tiny: ['Quests.COURIER_SUPPLIES_ITEM_DESC'],
-			Shop: ['Quests.COURIER_SUPPLIES_ITEM_DESC'],
-			TakePopup: ['Quests.COURIER_SUPPLIES_ITEM_DESC'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Icon_Courier_Supplies_9_133x130_1',
@@ -3401,7 +3133,6 @@ const list = [
 		id: 'Courier Supplies Slave',
 		runtimeType: 'DeliveryQuestItem',
 		displayNameKey: 'Quests.COURIER_SUPPLIES_SLAVE_NAME',
-		descriptionKey: 'Quests.COURIER_SUPPLIES_SLAVE_DESC',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3411,13 +3142,7 @@ const list = [
 			Shop: ['Quests.COURIER_SUPPLIES_SLAVE_NAME'],
 			TakePopup: ['Quests.COURIER_SUPPLIES_SLAVE_NAME'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['Quests.COURIER_SUPPLIES_SLAVE_DESC'],
-			GetPopup: ['Quests.COURIER_SUPPLIES_SLAVE_DESC'],
-			Tiny: ['Quests.COURIER_SUPPLIES_SLAVE_DESC'],
-			Shop: ['Quests.COURIER_SUPPLIES_SLAVE_DESC'],
-			TakePopup: ['Quests.COURIER_SUPPLIES_SLAVE_DESC'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_Item_Egg_13_112x107_1',
@@ -3474,7 +3199,6 @@ const list = [
 		id: 'Courier Supplies Mask Maker',
 		runtimeType: 'DeliveryQuestItem',
 		displayNameKey: 'Quests.COURIER_SUPPLIES_MASK_NAME',
-		descriptionKey: 'Quests.COURIER_SUPPLIES_MASK_DESC',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3484,13 +3208,7 @@ const list = [
 			Shop: ['Quests.COURIER_SUPPLIES_MASK_NAME'],
 			TakePopup: ['Quests.COURIER_SUPPLIES_MASK_NAME'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['Quests.COURIER_SUPPLIES_MASK_DESC'],
-			GetPopup: ['Quests.COURIER_SUPPLIES_MASK_DESC'],
-			Tiny: ['Quests.COURIER_SUPPLIES_MASK_DESC'],
-			Shop: ['Quests.COURIER_SUPPLIES_MASK_DESC'],
-			TakePopup: ['Quests.COURIER_SUPPLIES_MASK_DESC'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Icon_Courier_Supplies_Lacquer_8_134x130_1',
@@ -3547,7 +3265,6 @@ const list = [
 		id: 'Mossberry Stew',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_GOURMAND_MOSSBERRY_STEW',
-		descriptionKey: 'UI.INV_DESC_GOURMAND_MOSSBERRY_STEW',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3557,13 +3274,7 @@ const list = [
 			Shop: ['UI.INV_NAME_GOURMAND_MOSSBERRY_STEW'],
 			TakePopup: ['UI.INV_NAME_GOURMAND_MOSSBERRY_STEW'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_GOURMAND_MOSSBERRY_STEW'],
-			GetPopup: ['UI.INV_DESC_GOURMAND_MOSSBERRY_STEW'],
-			Tiny: ['UI.INV_DESC_GOURMAND_MOSSBERRY_STEW'],
-			Shop: ['UI.INV_DESC_GOURMAND_MOSSBERRY_STEW'],
-			TakePopup: ['UI.INV_DESC_GOURMAND_MOSSBERRY_STEW'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Mossberry_Stew_9_125x128_1',
@@ -3646,7 +3357,6 @@ const list = [
 		id: 'Plasmium',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_BLUE_GOOP',
-		descriptionKey: 'UI.INV_DESC_BLUE_GOOP',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3656,13 +3366,7 @@ const list = [
 			Shop: ['UI.INV_NAME_BLUE_GOOP'],
 			TakePopup: ['UI.INV_NAME_BLUE_GOOP'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_BLUE_GOOP'],
-			GetPopup: ['UI.INV_DESC_BLUE_GOOP'],
-			Tiny: ['UI.INV_DESC_BLUE_GOOP'],
-			Shop: ['UI.INV_DESC_BLUE_GOOP'],
-			TakePopup: ['UI.INV_DESC_BLUE_GOOP'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Icon_Inv_Blue_Health_Jar_0001_3_7_116x120_1',
@@ -3745,7 +3449,6 @@ const list = [
 		id: 'Plasmium Blood',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_PLASMIUM_BLOOD',
-		descriptionKey: 'UI.INV_DESC_PLASMIUM_BLOOD',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3755,13 +3458,7 @@ const list = [
 			Shop: ['UI.INV_NAME_PLASMIUM_BLOOD'],
 			TakePopup: ['UI.INV_NAME_PLASMIUM_BLOOD'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_PLASMIUM_BLOOD'],
-			GetPopup: ['UI.INV_DESC_PLASMIUM_BLOOD'],
-			Tiny: ['UI.INV_DESC_PLASMIUM_BLOOD'],
-			Shop: ['UI.INV_DESC_PLASMIUM_BLOOD'],
-			TakePopup: ['UI.INV_DESC_PLASMIUM_BLOOD'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Icon_Inv_Blue_Health_Blood_7_138x164_1',
@@ -3844,7 +3541,6 @@ const list = [
 		id: 'Vintage Nectar',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_GOURMAND_VINTAGE_NECTAR',
-		descriptionKey: 'UI.INV_DESC_GOURMAND_VINTAGE_NECTAR',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3854,13 +3550,7 @@ const list = [
 			Shop: ['UI.INV_NAME_GOURMAND_VINTAGE_NECTAR'],
 			TakePopup: ['UI.INV_NAME_GOURMAND_VINTAGE_NECTAR'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_GOURMAND_VINTAGE_NECTAR'],
-			GetPopup: ['UI.INV_DESC_GOURMAND_VINTAGE_NECTAR'],
-			Tiny: ['UI.INV_DESC_GOURMAND_VINTAGE_NECTAR'],
-			Shop: ['UI.INV_DESC_GOURMAND_VINTAGE_NECTAR'],
-			TakePopup: ['UI.INV_DESC_GOURMAND_VINTAGE_NECTAR'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'vintage_nectar_item_9_137x140_1',
@@ -3943,7 +3633,6 @@ const list = [
 		id: 'Courier Supplies Gourmand',
 		runtimeType: 'DeliveryQuestItemStandalone',
 		displayNameKey: 'Quests.COURIER_SUPPLIES_MEAT_NAME',
-		descriptionKey: 'Quests.COURIER_SUPPLIES_MEAT_DESC',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -3953,13 +3642,7 @@ const list = [
 			Shop: ['Quests.COURIER_SUPPLIES_MEAT_NAME'],
 			TakePopup: ['Quests.COURIER_SUPPLIES_MEAT_NAME'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['Quests.COURIER_SUPPLIES_MEAT_DESC'],
-			GetPopup: ['Quests.COURIER_SUPPLIES_MEAT_DESC'],
-			Tiny: ['Quests.COURIER_SUPPLIES_MEAT_DESC'],
-			Shop: ['Quests.COURIER_SUPPLIES_MEAT_DESC'],
-			TakePopup: ['Quests.COURIER_SUPPLIES_MEAT_DESC'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Icon_Courier_Supplies_Meat_Sack_7_116x123_1',
@@ -4016,7 +3699,6 @@ const list = [
 		id: 'Coral Ingredient',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_GOURMAND_CORAL_INGREDIENT',
-		descriptionKey: 'UI.INV_DESC_GOURMAND_CORAL_INGREDIENT',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4026,13 +3708,7 @@ const list = [
 			Shop: ['UI.INV_NAME_GOURMAND_CORAL_INGREDIENT'],
 			TakePopup: ['UI.INV_NAME_GOURMAND_CORAL_INGREDIENT'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_GOURMAND_CORAL_INGREDIENT'],
-			GetPopup: ['UI.INV_DESC_GOURMAND_CORAL_INGREDIENT'],
-			Tiny: ['UI.INV_DESC_GOURMAND_CORAL_INGREDIENT'],
-			Shop: ['UI.INV_DESC_GOURMAND_CORAL_INGREDIENT'],
-			TakePopup: ['UI.INV_DESC_GOURMAND_CORAL_INGREDIENT'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: '_0007_quest_coral_nut_15_115x129_1',
@@ -4115,7 +3791,6 @@ const list = [
 		id: 'Pickled Roach Egg',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_PICKLEDEGG',
-		descriptionKey: 'UI.INV_DESC_PICKLEDEGG',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4125,13 +3800,7 @@ const list = [
 			Shop: ['UI.INV_NAME_PICKLEDEGG'],
 			TakePopup: ['UI.INV_NAME_PICKLEDEGG'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_PICKLEDEGG'],
-			GetPopup: ['UI.INV_DESC_PICKLEDEGG'],
-			Tiny: ['UI.INV_DESC_PICKLEDEGG'],
-			Shop: ['UI.INV_DESC_PICKLEDEGG'],
-			TakePopup: ['UI.INV_DESC_PICKLEDEGG'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'century_maggot_icon_10_130x129_1',
@@ -4214,7 +3883,6 @@ const list = [
 		id: 'Extractor Machine Pins',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'Quests.ITEM_EXTRACTOR_PINS_NAME',
-		descriptionKey: 'Quests.ITEM_EXTRACTOR_PINS_DESC',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4224,13 +3892,7 @@ const list = [
 			Shop: ['Quests.ITEM_EXTRACTOR_PINS_NAME'],
 			TakePopup: ['Quests.ITEM_EXTRACTOR_PINS_NAME'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['Quests.ITEM_EXTRACTOR_PINS_DESC'],
-			GetPopup: ['Quests.ITEM_EXTRACTOR_PINS_DESC'],
-			Tiny: ['Quests.ITEM_EXTRACTOR_PINS_DESC'],
-			Shop: ['Quests.ITEM_EXTRACTOR_PINS_DESC'],
-			TakePopup: ['Quests.ITEM_EXTRACTOR_PINS_DESC'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_Extractor_Pins_9_125x154_1',
@@ -4313,7 +3975,6 @@ const list = [
 		id: 'Enemy Morsel Seared',
 		runtimeType: 'CollectableItemToolDamage',
 		displayNameKey: 'UI.INV_NAME_MORSEL_SEARED',
-		descriptionKey: 'UI.INV_DESC_MORSEL_SEARED',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4323,13 +3984,7 @@ const list = [
 			Shop: ['UI.INV_NAME_MORSEL_SEARED'],
 			TakePopup: ['UI.INV_NAME_MORSEL_SEARED'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_MORSEL_SEARED'],
-			GetPopup: ['UI.INV_DESC_MORSEL_SEARED'],
-			Tiny: ['UI.INV_DESC_MORSEL_SEARED'],
-			Shop: ['UI.INV_DESC_MORSEL_SEARED'],
-			TakePopup: ['UI.INV_DESC_MORSEL_SEARED'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'icon_meat_seared_9_132x126_1',
@@ -4412,7 +4067,6 @@ const list = [
 		id: 'Enemy Morsel Shredded',
 		runtimeType: 'CollectableItemToolDamage',
 		displayNameKey: 'UI.INV_NAME_MORSEL_SHREDDED',
-		descriptionKey: 'UI.INV_DESC_MORSEL_SHREDDED',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4422,13 +4076,7 @@ const list = [
 			Shop: ['UI.INV_NAME_MORSEL_SHREDDED'],
 			TakePopup: ['UI.INV_NAME_MORSEL_SHREDDED'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_MORSEL_SHREDDED'],
-			GetPopup: ['UI.INV_DESC_MORSEL_SHREDDED'],
-			Tiny: ['UI.INV_DESC_MORSEL_SHREDDED'],
-			Shop: ['UI.INV_DESC_MORSEL_SHREDDED'],
-			TakePopup: ['UI.INV_DESC_MORSEL_SHREDDED'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'icon_meat_sliced_14_122x126_2',
@@ -4511,7 +4159,6 @@ const list = [
 		id: 'Enemy Morsel Speared',
 		runtimeType: 'CollectableItemToolDamage',
 		displayNameKey: 'UI.INV_NAME_MORSEL_SPEARED',
-		descriptionKey: 'UI.INV_DESC_MORSEL_SPEARED',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4521,13 +4168,7 @@ const list = [
 			Shop: ['UI.INV_NAME_MORSEL_SPEARED'],
 			TakePopup: ['UI.INV_NAME_MORSEL_SPEARED'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_MORSEL_SPEARED'],
-			GetPopup: ['UI.INV_DESC_MORSEL_SPEARED'],
-			Tiny: ['UI.INV_DESC_MORSEL_SPEARED'],
-			Shop: ['UI.INV_DESC_MORSEL_SPEARED'],
-			TakePopup: ['UI.INV_DESC_MORSEL_SPEARED'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'icon_meat_skewered_8_172x157_2',
@@ -4610,7 +4251,6 @@ const list = [
 		id: 'Ant Trapper Item',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_ANT_TRAPPER_ITEM',
-		descriptionKey: 'UI.INV_DESC_ANT_TRAPPER_ITEM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4620,13 +4260,7 @@ const list = [
 			Shop: ['UI.INV_NAME_ANT_TRAPPER_ITEM'],
 			TakePopup: ['UI.INV_NAME_ANT_TRAPPER_ITEM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_ANT_TRAPPER_ITEM'],
-			GetPopup: ['UI.INV_DESC_ANT_TRAPPER_ITEM'],
-			Tiny: ['UI.INV_DESC_ANT_TRAPPER_ITEM'],
-			Shop: ['UI.INV_DESC_ANT_TRAPPER_ITEM'],
-			TakePopup: ['UI.INV_DESC_ANT_TRAPPER_ITEM'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Gilly_Doll_7_139x126_1',
@@ -4709,7 +4343,6 @@ const list = [
 		id: 'Snare Soul Churchkeeper',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER',
-		descriptionKey: 'UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4719,13 +4352,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER'],
 			TakePopup: ['UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER'],
-			GetPopup: ['UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER'],
-			Tiny: ['UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER'],
-			Shop: ['UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER'],
-			TakePopup: ['UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'snail_icon__0000_churchkeeper_soul_8_125x150_1',
@@ -4808,7 +4435,6 @@ const list = [
 		id: 'Snare Soul Bell Hermit',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_SNARE_SOUL_BELLHERMIT',
-		descriptionKey: 'UI.INV_DESC_SNARE_SOUL_BELLHERMIT',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4818,13 +4444,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SNARE_SOUL_BELLHERMIT'],
 			TakePopup: ['UI.INV_NAME_SNARE_SOUL_BELLHERMIT'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SNARE_SOUL_BELLHERMIT'],
-			GetPopup: ['UI.INV_DESC_SNARE_SOUL_BELLHERMIT'],
-			Tiny: ['UI.INV_DESC_SNARE_SOUL_BELLHERMIT'],
-			Shop: ['UI.INV_DESC_SNARE_SOUL_BELLHERMIT'],
-			TakePopup: ['UI.INV_DESC_SNARE_SOUL_BELLHERMIT'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'snail_icon__0001_bell_hermit_soul_6_122x150_1',
@@ -4907,7 +4527,6 @@ const list = [
 		id: 'Snare Soul Swamp Bug',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_SNARE_SOUL_SWAMP',
-		descriptionKey: 'UI.INV_DESC_SNARE_SOUL_SWAMP',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -4917,13 +4536,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SNARE_SOUL_SWAMP'],
 			TakePopup: ['UI.INV_NAME_SNARE_SOUL_SWAMP'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SNARE_SOUL_SWAMP'],
-			GetPopup: ['UI.INV_DESC_SNARE_SOUL_SWAMP'],
-			Tiny: ['UI.INV_DESC_SNARE_SOUL_SWAMP'],
-			Shop: ['UI.INV_DESC_SNARE_SOUL_SWAMP'],
-			TakePopup: ['UI.INV_DESC_SNARE_SOUL_SWAMP'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'snail_icon__0001_bell_swamp_soul_8_131x142_2',
@@ -5006,7 +4619,6 @@ const list = [
 		id: 'Simple Key',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_TOKEN_FAITH',
-		descriptionKey: 'UI.INV_DESC_TOKEN_FAITH',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5016,13 +4628,7 @@ const list = [
 			Shop: ['UI.INV_NAME_TOKEN_FAITH'],
 			TakePopup: ['UI.INV_NAME_TOKEN_FAITH'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_TOKEN_FAITH'],
-			GetPopup: ['UI.INV_DESC_TOKEN_FAITH'],
-			Tiny: ['UI.INV_DESC_TOKEN_FAITH'],
-			Shop: ['UI.INV_DESC_TOKEN_FAITH'],
-			TakePopup: ['UI.INV_DESC_TOKEN_FAITH'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_token_of_faith_9_131x141_0',
@@ -5105,7 +4711,6 @@ const list = [
 		id: 'Dock Key',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_DOCK_KEY',
-		descriptionKey: 'UI.INV_DESC_DOCK_KEY',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5115,13 +4720,7 @@ const list = [
 			Shop: ['UI.INV_NAME_DOCK_KEY'],
 			TakePopup: ['UI.INV_NAME_DOCK_KEY'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_DOCK_KEY'],
-			GetPopup: ['UI.INV_DESC_DOCK_KEY'],
-			Tiny: ['UI.INV_DESC_DOCK_KEY'],
-			Shop: ['UI.INV_DESC_DOCK_KEY'],
-			TakePopup: ['UI.INV_DESC_DOCK_KEY'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'dock_key_8_132x132_2',
@@ -5204,7 +4803,6 @@ const list = [
 		id: 'Dock Demo Key',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_DOCK_DEMO_KEY',
-		descriptionKey: 'UI.INV_DESC_DOCK_DEMO_KEY',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5214,13 +4812,7 @@ const list = [
 			Shop: ['UI.INV_NAME_DOCK_DEMO_KEY'],
 			TakePopup: ['UI.INV_NAME_DOCK_DEMO_KEY'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_DOCK_DEMO_KEY'],
-			GetPopup: ['UI.INV_DESC_DOCK_DEMO_KEY'],
-			Tiny: ['UI.INV_DESC_DOCK_DEMO_KEY'],
-			Shop: ['UI.INV_DESC_DOCK_DEMO_KEY'],
-			TakePopup: ['UI.INV_DESC_DOCK_DEMO_KEY'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'dock_key_8_132x132_2',
@@ -5303,7 +4895,6 @@ const list = [
 		id: 'Ward Key',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_WARD_KEY',
-		descriptionKey: 'UI.INV_DESC_WARD_KEY',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5313,13 +4904,7 @@ const list = [
 			Shop: ['UI.INV_NAME_WARD_KEY'],
 			TakePopup: ['UI.INV_NAME_WARD_KEY'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_WARD_KEY'],
-			GetPopup: ['UI.INV_DESC_WARD_KEY'],
-			Tiny: ['UI.INV_DESC_WARD_KEY'],
-			Shop: ['UI.INV_DESC_WARD_KEY'],
-			TakePopup: ['UI.INV_DESC_WARD_KEY'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_key_whiteward_8_131x134_2',
@@ -5402,7 +4987,6 @@ const list = [
 		id: 'Ward Boss Key',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_WARD_BOSS_KEY',
-		descriptionKey: 'UI.INV_DESC_WARD_BOSS_KEY',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5412,13 +4996,7 @@ const list = [
 			Shop: ['UI.INV_NAME_WARD_BOSS_KEY'],
 			TakePopup: ['UI.INV_NAME_WARD_BOSS_KEY'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_WARD_BOSS_KEY'],
-			GetPopup: ['UI.INV_DESC_WARD_BOSS_KEY'],
-			Tiny: ['UI.INV_DESC_WARD_BOSS_KEY'],
-			Shop: ['UI.INV_DESC_WARD_BOSS_KEY'],
-			TakePopup: ['UI.INV_DESC_WARD_BOSS_KEY'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_chute_key_whiteward_28_135x141_3',
@@ -5501,7 +5079,6 @@ const list = [
 		id: 'Architect Key',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_ARCHITECT_KEY',
-		descriptionKey: 'UI.INV_DESC_ARCHITECT_KEY',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5511,13 +5088,7 @@ const list = [
 			Shop: ['UI.INV_NAME_ARCHITECT_KEY'],
 			TakePopup: ['UI.INV_NAME_ARCHITECT_KEY'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_ARCHITECT_KEY'],
-			GetPopup: ['UI.INV_DESC_ARCHITECT_KEY'],
-			Tiny: ['UI.INV_DESC_ARCHITECT_KEY'],
-			Shop: ['UI.INV_DESC_ARCHITECT_KEY'],
-			TakePopup: ['UI.INV_DESC_ARCHITECT_KEY'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_key_architect_9_133x130_3',
@@ -5600,7 +5171,6 @@ const list = [
 		id: 'Slab Key',
 		runtimeType: 'CollectableItemStates',
 		displayNameKey: 'UI.INV_NAME_SLAB_KEY_A',
-		descriptionKey: 'UI.INV_DESC_SLAB_KEYRING_SINGLE',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5635,49 +5205,8 @@ const list = [
 				'UI.INV_NAME_SLAB_KEYRING',
 			],
 		},
-		descriptionKeysBySource: {
-			Inventory: [
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE',
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP',
-				'UI.INV_DESC_SLAB_KEYRING',
-				'UI.INV_NAME_SLAB_KEY_A',
-				'UI.INV_NAME_SLAB_KEY_B',
-				'UI.INV_NAME_SLAB_KEY_C',
-			],
-			GetPopup: [
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE',
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP',
-				'UI.INV_DESC_SLAB_KEYRING',
-				'UI.INV_NAME_SLAB_KEY_A',
-				'UI.INV_NAME_SLAB_KEY_B',
-				'UI.INV_NAME_SLAB_KEY_C',
-			],
-			Tiny: [
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE',
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP',
-				'UI.INV_DESC_SLAB_KEYRING',
-				'UI.INV_NAME_SLAB_KEY_A',
-				'UI.INV_NAME_SLAB_KEY_B',
-				'UI.INV_NAME_SLAB_KEY_C',
-			],
-			Shop: [
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE',
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP',
-				'UI.INV_DESC_SLAB_KEYRING',
-				'UI.INV_NAME_SLAB_KEY_A',
-				'UI.INV_NAME_SLAB_KEY_B',
-				'UI.INV_NAME_SLAB_KEY_C',
-			],
-			TakePopup: [
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE',
-				'UI.INV_DESC_SLAB_KEYRING_SINGLE_SWAMP',
-				'UI.INV_DESC_SLAB_KEYRING',
-				'UI.INV_NAME_SLAB_KEY_A',
-				'UI.INV_NAME_SLAB_KEY_B',
-				'UI.INV_NAME_SLAB_KEY_C',
-			],
-		},
-		extraDescriptionKeys: ['UI.INV_NAME_SLAB_KEY_A', 'UI.INV_NAME_SLAB_KEY_B', 'UI.INV_NAME_SLAB_KEY_C'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'icon_slab_key_ring_0001_3_24_136x149_3',
 			nameShort: 'icon_slab_key_ring_0001_3',
@@ -5759,7 +5288,6 @@ const list = [
 		id: 'Belltown House Key',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_BELL_HOUSE_KEY',
-		descriptionKey: 'UI.INV_DESC_BELL_HOUSE_KEY',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5769,13 +5297,7 @@ const list = [
 			Shop: ['UI.INV_NAME_BELL_HOUSE_KEY'],
 			TakePopup: ['UI.INV_NAME_BELL_HOUSE_KEY'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_BELL_HOUSE_KEY'],
-			GetPopup: ['UI.INV_DESC_BELL_HOUSE_KEY'],
-			Tiny: ['UI.INV_DESC_BELL_HOUSE_KEY'],
-			Shop: ['UI.INV_DESC_BELL_HOUSE_KEY'],
-			TakePopup: ['UI.INV_DESC_BELL_HOUSE_KEY'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'belltown_house_key_9_132x132_2',
@@ -5858,7 +5380,6 @@ const list = [
 		id: 'Materium',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_MATERIUM',
-		descriptionKey: 'UI.INV_DESC_MATERIUM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5868,13 +5389,7 @@ const list = [
 			Shop: ['UI.INV_NAME_MATERIUM'],
 			TakePopup: ['UI.INV_NAME_MATERIUM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_MATERIUM'],
-			GetPopup: ['UI.INV_DESC_MATERIUM'],
-			Tiny: ['UI.INV_DESC_MATERIUM'],
-			Shop: ['UI.INV_DESC_MATERIUM'],
-			TakePopup: ['UI.INV_DESC_MATERIUM'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'materium_8_134x136_1',
@@ -5957,7 +5472,6 @@ const list = [
 		id: 'Farsight',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_FARSIGHT',
-		descriptionKey: 'UI.INV_DESC_FARSIGHT',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -5967,13 +5481,7 @@ const list = [
 			Shop: ['UI.INV_NAME_FARSIGHT'],
 			TakePopup: ['UI.INV_NAME_FARSIGHT'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_FARSIGHT'],
-			GetPopup: ['UI.INV_DESC_FARSIGHT'],
-			Tiny: ['UI.INV_DESC_FARSIGHT'],
-			Shop: ['UI.INV_DESC_FARSIGHT'],
-			TakePopup: ['UI.INV_DESC_FARSIGHT'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'farsight_11_134x136_1',
@@ -6056,7 +5564,6 @@ const list = [
 		id: 'Crawbell',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_CRAWBELL',
-		descriptionKey: 'UI.INV_DESC_CRAWBELL',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6066,13 +5573,7 @@ const list = [
 			Shop: ['UI.INV_NAME_CRAWBELL'],
 			TakePopup: ['UI.INV_NAME_CRAWBELL'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_CRAWBELL'],
-			GetPopup: ['UI.INV_DESC_CRAWBELL'],
-			Tiny: ['UI.INV_DESC_CRAWBELL'],
-			Shop: ['UI.INV_DESC_CRAWBELL'],
-			TakePopup: ['UI.INV_DESC_CRAWBELL'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'crawbell_8_134x136_1',
@@ -6155,7 +5656,6 @@ const list = [
 		id: 'Memento Seth',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_SETH_MEMENTO',
-		descriptionKey: 'UI.INV_DESC_SETH_MEMENTO',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6165,14 +5665,8 @@ const list = [
 			Shop: ['UI.INV_NAME_SETH_MEMENTO'],
 			TakePopup: ['UI.INV_NAME_SETH_MEMENTO'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SETH_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			GetPopup: ['UI.INV_DESC_SETH_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Tiny: ['UI.INV_DESC_SETH_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Shop: ['UI.INV_DESC_SETH_MEMENTO'],
-			TakePopup: ['UI.INV_DESC_SETH_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'seth_memento_9_145x140_1',
 			nameShort: 'seth_memento',
@@ -6254,7 +5748,6 @@ const list = [
 		id: 'Sprintmaster Memento',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_SPRINT_MEMENTO',
-		descriptionKey: 'UI.INV_DESC_SPRINT_MEMENTO',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6264,14 +5757,8 @@ const list = [
 			Shop: ['UI.INV_NAME_SPRINT_MEMENTO'],
 			TakePopup: ['UI.INV_NAME_SPRINT_MEMENTO'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SPRINT_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			GetPopup: ['UI.INV_DESC_SPRINT_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Tiny: ['UI.INV_DESC_SPRINT_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Shop: ['UI.INV_DESC_SPRINT_MEMENTO'],
-			TakePopup: ['UI.INV_DESC_SPRINT_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'sprintmaster_memento_20_159x183_1',
 			nameShort: 'sprintmaster_memento',
@@ -6353,7 +5840,6 @@ const list = [
 		id: 'Memento Garmond',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_MEMENTO_GARMOND',
-		descriptionKey: 'UI.INV_DESC_MEMENTO_GARMOND',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6363,14 +5849,8 @@ const list = [
 			Shop: ['UI.INV_NAME_MEMENTO_GARMOND'],
 			TakePopup: ['UI.INV_NAME_MEMENTO_GARMOND'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_MEMENTO_GARMOND', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			GetPopup: ['UI.INV_DESC_MEMENTO_GARMOND', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Tiny: ['UI.INV_DESC_MEMENTO_GARMOND', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Shop: ['UI.INV_DESC_MEMENTO_GARMOND'],
-			TakePopup: ['UI.INV_DESC_MEMENTO_GARMOND', 'UI.INV_DESC_MOMENTO_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'garmond_memento_8_129x151_1',
 			nameShort: 'garmond_memento',
@@ -6452,7 +5932,6 @@ const list = [
 		id: 'Hunter Memento',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_HUNTER_MEMENTO',
-		descriptionKey: 'UI.INV_DESC_HUNTER_MEMENTO',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6462,14 +5941,8 @@ const list = [
 			Shop: ['UI.INV_NAME_HUNTER_MEMENTO'],
 			TakePopup: ['UI.INV_NAME_HUNTER_MEMENTO'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_HUNTER_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			GetPopup: ['UI.INV_DESC_HUNTER_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Tiny: ['UI.INV_DESC_HUNTER_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Shop: ['UI.INV_DESC_HUNTER_MEMENTO'],
-			TakePopup: ['UI.INV_DESC_HUNTER_MEMENTO', 'UI.INV_DESC_MOMENTO_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'hunter_nuu_memento_seal_10_135x149_1',
 			nameShort: 'hunter_nuu_memento_seal',
@@ -6551,7 +6024,6 @@ const list = [
 		id: 'Crowman Memento',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_MEMENTO_CROWMAN',
-		descriptionKey: 'UI.INV_DESC_MEMENTO_CROWMAN',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6561,14 +6033,8 @@ const list = [
 			Shop: ['UI.INV_NAME_MEMENTO_CROWMAN'],
 			TakePopup: ['UI.INV_NAME_MEMENTO_CROWMAN'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_MEMENTO_CROWMAN', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			GetPopup: ['UI.INV_DESC_MEMENTO_CROWMAN', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Tiny: ['UI.INV_DESC_MEMENTO_CROWMAN', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Shop: ['UI.INV_DESC_MEMENTO_CROWMAN'],
-			TakePopup: ['UI.INV_DESC_MEMENTO_CROWMAN', 'UI.INV_DESC_MOMENTO_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'craw_court_memento_9_161x165_1',
 			nameShort: 'craw_court_memento',
@@ -6650,7 +6116,6 @@ const list = [
 		id: 'Grey Memento',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_MEMENTO_GREY',
-		descriptionKey: 'UI.INV_DESC_MEMENTO_GREY',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6660,14 +6125,8 @@ const list = [
 			Shop: ['UI.INV_NAME_MEMENTO_GREY'],
 			TakePopup: ['UI.INV_NAME_MEMENTO_GREY'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_MEMENTO_GREY', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			GetPopup: ['UI.INV_DESC_MEMENTO_GREY', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Tiny: ['UI.INV_DESC_MEMENTO_GREY', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Shop: ['UI.INV_DESC_MEMENTO_GREY'],
-			TakePopup: ['UI.INV_DESC_MEMENTO_GREY', 'UI.INV_DESC_MOMENTO_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'grey_warrior_memento_10_153x151_1',
 			nameShort: 'grey_warrior_memento',
@@ -6749,7 +6208,6 @@ const list = [
 		id: 'Memento Surface',
 		runtimeType: 'CollectableItemMemento',
 		displayNameKey: 'UI.INV_NAME_MEMENTO_SURFACE',
-		descriptionKey: 'UI.INV_DESC_MEMENTO_SURFACE',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6759,14 +6217,8 @@ const list = [
 			Shop: ['UI.INV_NAME_MEMENTO_SURFACE'],
 			TakePopup: ['UI.INV_NAME_MEMENTO_SURFACE'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_MEMENTO_SURFACE', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			GetPopup: ['UI.INV_DESC_MEMENTO_SURFACE', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Tiny: ['UI.INV_DESC_MEMENTO_SURFACE', 'UI.INV_DESC_MOMENTO_EXTRA'],
-			Shop: ['UI.INV_DESC_MEMENTO_SURFACE'],
-			TakePopup: ['UI.INV_DESC_MEMENTO_SURFACE', 'UI.INV_DESC_MOMENTO_EXTRA'],
-		},
-		extraDescriptionKeys: ['UI.INV_DESC_MOMENTO_EXTRA'],
+		descriptionKeysBySource: null,
+		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'surface_memento_21_160x165_1',
 			nameShort: 'surface_memento',
@@ -6848,7 +6300,6 @@ const list = [
 		id: 'R Bone Record',
 		runtimeType: 'CollectableItemRelicType',
 		displayNameKey: 'UI.INV_NAME_R_BONE_RECORD',
-		descriptionKey: 'UI.INV_DESC_R_BONE_RECORD',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6858,13 +6309,7 @@ const list = [
 			Shop: ['UI.INV_NAME_R_BONE_RECORD'],
 			TakePopup: ['UI.INV_NAME_R_BONE_RECORD'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_R_BONE_RECORD', 'UI.INV_DESC_RELIC'],
-			GetPopup: ['UI.INV_DESC_R_BONE_RECORD', 'UI.INV_DESC_RELIC'],
-			Tiny: ['UI.INV_DESC_R_BONE_RECORD', 'UI.INV_DESC_RELIC'],
-			Shop: ['UI.INV_DESC_R_BONE_RECORD', 'UI.INV_DESC_RELIC'],
-			TakePopup: ['UI.INV_DESC_R_BONE_RECORD', 'UI.INV_DESC_RELIC'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_icon_0002_R_bone_record_11_123x142_1',
@@ -6947,7 +6392,6 @@ const list = [
 		id: 'R Weaver Totem',
 		runtimeType: 'CollectableItemRelicType',
 		displayNameKey: 'UI.INV_NAME_R_WEAVER_TOTEM',
-		descriptionKey: 'UI.INV_DESC_R_WEAVER_TOTEM',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -6957,13 +6401,7 @@ const list = [
 			Shop: ['UI.INV_NAME_R_WEAVER_TOTEM'],
 			TakePopup: ['UI.INV_NAME_R_WEAVER_TOTEM'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_R_WEAVER_TOTEM', 'UI.INV_DESC_RELIC'],
-			GetPopup: ['UI.INV_DESC_R_WEAVER_TOTEM', 'UI.INV_DESC_RELIC'],
-			Tiny: ['UI.INV_DESC_R_WEAVER_TOTEM', 'UI.INV_DESC_RELIC'],
-			Shop: ['UI.INV_DESC_R_WEAVER_TOTEM', 'UI.INV_DESC_RELIC'],
-			TakePopup: ['UI.INV_DESC_R_WEAVER_TOTEM', 'UI.INV_DESC_RELIC'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_icon_0005_R_saint_locket_9_114x157_1',
@@ -7046,7 +6484,6 @@ const list = [
 		id: 'R Seal Chit',
 		runtimeType: 'CollectableItemRelicType',
 		displayNameKey: 'UI.INV_NAME_R_SEAL_CHIT',
-		descriptionKey: 'UI.INV_DESC_R_SEAL_CHIT',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -7056,13 +6493,7 @@ const list = [
 			Shop: ['UI.INV_NAME_R_SEAL_CHIT'],
 			TakePopup: ['UI.INV_NAME_R_SEAL_CHIT'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_R_SEAL_CHIT', 'UI.INV_DESC_RELIC'],
-			GetPopup: ['UI.INV_DESC_R_SEAL_CHIT', 'UI.INV_DESC_RELIC'],
-			Tiny: ['UI.INV_DESC_R_SEAL_CHIT', 'UI.INV_DESC_RELIC'],
-			Shop: ['UI.INV_DESC_R_SEAL_CHIT', 'UI.INV_DESC_RELIC'],
-			TakePopup: ['UI.INV_DESC_R_SEAL_CHIT', 'UI.INV_DESC_RELIC'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_icon_0000_R_seal_chit_7_119x158_1',
@@ -7145,7 +6576,6 @@ const list = [
 		id: 'R Weaver Record',
 		runtimeType: 'CollectableItemRelicType',
 		displayNameKey: 'UI.INV_NAME_R_WEAVER_RECORD',
-		descriptionKey: 'UI.INV_DESC_R_WEAVER_RECORD',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -7155,13 +6585,7 @@ const list = [
 			Shop: ['UI.INV_NAME_R_WEAVER_RECORD'],
 			TakePopup: ['UI.INV_NAME_R_WEAVER_RECORD'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_R_WEAVER_RECORD', 'UI.INV_DESC_RELIC'],
-			GetPopup: ['UI.INV_DESC_R_WEAVER_RECORD', 'UI.INV_DESC_RELIC'],
-			Tiny: ['UI.INV_DESC_R_WEAVER_RECORD', 'UI.INV_DESC_RELIC'],
-			Shop: ['UI.INV_DESC_R_WEAVER_RECORD', 'UI.INV_DESC_RELIC'],
-			TakePopup: ['UI.INV_DESC_R_WEAVER_RECORD', 'UI.INV_DESC_RELIC'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_icon_0002_R_weaver_record_9_109x164_4',
@@ -7244,7 +6668,6 @@ const list = [
 		id: 'R Ancient Egg',
 		runtimeType: 'CollectableItemRelicType',
 		displayNameKey: 'UI.INV_NAME_R_ANCIENT_EGG',
-		descriptionKey: 'UI.INV_DESC_R_ANCIENT_EGG',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -7254,13 +6677,7 @@ const list = [
 			Shop: ['UI.INV_NAME_R_ANCIENT_EGG'],
 			TakePopup: ['UI.INV_NAME_R_ANCIENT_EGG'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_R_ANCIENT_EGG'],
-			GetPopup: ['UI.INV_DESC_R_ANCIENT_EGG'],
-			Tiny: ['UI.INV_DESC_R_ANCIENT_EGG'],
-			Shop: ['UI.INV_DESC_R_ANCIENT_EGG'],
-			TakePopup: ['UI.INV_DESC_R_ANCIENT_EGG'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_icon_0004_R_ancient_egg_9_104x103_1',
@@ -7343,7 +6760,6 @@ const list = [
 		id: 'R Psalm Cylinder',
 		runtimeType: 'CollectableItemRelicType',
 		displayNameKey: 'UI.INV_NAME_R_PSALM_CYL',
-		descriptionKey: 'UI.INV_DESC_R_PSALM_CYL',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -7353,13 +6769,7 @@ const list = [
 			Shop: ['UI.INV_NAME_R_PSALM_CYL'],
 			TakePopup: ['UI.INV_NAME_R_PSALM_CYL'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_R_PSALM_CYL'],
-			GetPopup: ['UI.INV_DESC_R_PSALM_CYL'],
-			Tiny: ['UI.INV_DESC_R_PSALM_CYL'],
-			Shop: ['UI.INV_DESC_R_PSALM_CYL'],
-			TakePopup: ['UI.INV_DESC_R_PSALM_CYL'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_icon_0000_R_psalm_cylinder_10_135x135_1',
@@ -7442,7 +6852,6 @@ const list = [
 		id: 'R Librarian Melody Cylinder',
 		runtimeType: 'CollectableItemRelicType',
 		displayNameKey: 'UI.INV_NAME_R_PSALM_CYL_MELODY',
-		descriptionKey: 'UI.INV_DESC_R_PSALM_CYL_MELODY',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -7452,13 +6861,7 @@ const list = [
 			Shop: ['UI.INV_NAME_R_PSALM_CYL_MELODY'],
 			TakePopup: ['UI.INV_NAME_R_PSALM_CYL_MELODY'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_R_PSALM_CYL_MELODY'],
-			GetPopup: ['UI.INV_DESC_R_PSALM_CYL_MELODY'],
-			Tiny: ['UI.INV_DESC_R_PSALM_CYL_MELODY'],
-			Shop: ['UI.INV_DESC_R_PSALM_CYL_MELODY'],
-			TakePopup: ['UI.INV_DESC_R_PSALM_CYL_MELODY'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_icon_0000_R_psalm_cylinder_white_9_135x135_1',
@@ -7541,9 +6944,8 @@ const list = [
 		id: 'Rosary_Set_Frayed',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_COIN_SET_F',
-		descriptionKey: 'UI.INV_DESC_COIN_SET_F',
 		useResponseTextOverrideKey: null,
-		useResponseDescriptionKeys: ['UI.INV_DESC_COIN_SET_USE'],
+		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
 			Inventory: ['UI.INV_NAME_COIN_SET_F'],
 			GetPopup: ['UI.INV_NAME_COIN_SET_F'],
@@ -7551,13 +6953,7 @@ const list = [
 			Shop: ['UI.INV_NAME_COIN_SET_F'],
 			TakePopup: ['UI.INV_NAME_COIN_SET_F'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_COIN_SET_F'],
-			GetPopup: ['UI.INV_DESC_COIN_SET_F'],
-			Tiny: ['UI.INV_DESC_COIN_SET_F'],
-			Shop: ['UI.INV_DESC_COIN_SET_F'],
-			TakePopup: ['UI.INV_DESC_COIN_SET_F'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_rosary_necklace_0002_1_frayed_40_120x119_2',
@@ -7650,9 +7046,8 @@ const list = [
 		id: 'Rosary_Set_Small',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_COIN_SET_S',
-		descriptionKey: 'UI.INV_DESC_COIN_SET_S',
 		useResponseTextOverrideKey: null,
-		useResponseDescriptionKeys: ['UI.INV_DESC_COIN_SET_USE'],
+		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
 			Inventory: ['UI.INV_NAME_COIN_SET_S'],
 			GetPopup: ['UI.INV_NAME_COIN_SET_S'],
@@ -7660,13 +7055,7 @@ const list = [
 			Shop: ['UI.INV_NAME_COIN_SET_S'],
 			TakePopup: ['UI.INV_NAME_COIN_SET_S'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_COIN_SET_S'],
-			GetPopup: ['UI.INV_DESC_COIN_SET_S'],
-			Tiny: ['UI.INV_DESC_COIN_SET_S'],
-			Shop: ['UI.INV_DESC_COIN_SET_S'],
-			TakePopup: ['UI.INV_DESC_COIN_SET_S'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_rosary_necklace_0002_1_19_120x119_0',
@@ -7759,9 +7148,8 @@ const list = [
 		id: 'Rosary_Set_Medium',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_COIN_SET_M',
-		descriptionKey: 'UI.INV_DESC_COIN_SET_M',
 		useResponseTextOverrideKey: null,
-		useResponseDescriptionKeys: ['UI.INV_DESC_COIN_SET_USE'],
+		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
 			Inventory: ['UI.INV_NAME_COIN_SET_M'],
 			GetPopup: ['UI.INV_NAME_COIN_SET_M'],
@@ -7769,13 +7157,7 @@ const list = [
 			Shop: ['UI.INV_NAME_COIN_SET_M'],
 			TakePopup: ['UI.INV_NAME_COIN_SET_M'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_COIN_SET_M'],
-			GetPopup: ['UI.INV_DESC_COIN_SET_M'],
-			Tiny: ['UI.INV_DESC_COIN_SET_M'],
-			Shop: ['UI.INV_DESC_COIN_SET_M'],
-			TakePopup: ['UI.INV_DESC_COIN_SET_M'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_rosary_necklace_0000_3_9_134x120_0',
@@ -7868,9 +7250,8 @@ const list = [
 		id: 'Rosary_Set_Large',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_COIN_SET_M2',
-		descriptionKey: 'UI.INV_DESC_COIN_SET_M2',
 		useResponseTextOverrideKey: null,
-		useResponseDescriptionKeys: ['UI.INV_DESC_COIN_SET_USE'],
+		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
 			Inventory: ['UI.INV_NAME_COIN_SET_M2'],
 			GetPopup: ['UI.INV_NAME_COIN_SET_M2'],
@@ -7878,13 +7259,7 @@ const list = [
 			Shop: ['UI.INV_NAME_COIN_SET_M2'],
 			TakePopup: ['UI.INV_NAME_COIN_SET_M2'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_COIN_SET_M2'],
-			GetPopup: ['UI.INV_DESC_COIN_SET_M2'],
-			Tiny: ['UI.INV_DESC_COIN_SET_M2'],
-			Shop: ['UI.INV_DESC_COIN_SET_M2'],
-			TakePopup: ['UI.INV_DESC_COIN_SET_M2'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_rosary_necklace_0000_3_old_15_140x132_2',
@@ -7977,9 +7352,8 @@ const list = [
 		id: 'Rosary_Set_Huge_White',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_COIN_SET_L',
-		descriptionKey: 'UI.INV_DESC_COIN_SET_L',
 		useResponseTextOverrideKey: null,
-		useResponseDescriptionKeys: ['UI.INV_DESC_COIN_SET_USE'],
+		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
 			Inventory: ['UI.INV_NAME_COIN_SET_L'],
 			GetPopup: ['UI.INV_NAME_COIN_SET_L'],
@@ -7987,13 +7361,7 @@ const list = [
 			Shop: ['UI.INV_NAME_COIN_SET_L'],
 			TakePopup: ['UI.INV_NAME_COIN_SET_L'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_COIN_SET_L'],
-			GetPopup: ['UI.INV_DESC_COIN_SET_L'],
-			Tiny: ['UI.INV_DESC_COIN_SET_L'],
-			Shop: ['UI.INV_DESC_COIN_SET_L'],
-			TakePopup: ['UI.INV_DESC_COIN_SET_L'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'I_rosary_necklace_0001_2_10_120x119_0',
@@ -8086,9 +7454,8 @@ const list = [
 		id: 'Shard Pouch',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_SHARD_POUCH',
-		descriptionKey: 'UI.INV_DESC_SHARD_POUCH',
 		useResponseTextOverrideKey: null,
-		useResponseDescriptionKeys: ['UI.INV_DESC_SHARD_POUCH_USE'],
+		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
 			Inventory: ['UI.INV_NAME_SHARD_POUCH'],
 			GetPopup: ['UI.INV_NAME_SHARD_POUCH'],
@@ -8096,13 +7463,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SHARD_POUCH'],
 			TakePopup: ['UI.INV_NAME_SHARD_POUCH'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SHARD_POUCH'],
-			GetPopup: ['UI.INV_DESC_SHARD_POUCH'],
-			Tiny: ['UI.INV_DESC_SHARD_POUCH'],
-			Shop: ['UI.INV_DESC_SHARD_POUCH'],
-			TakePopup: ['UI.INV_DESC_SHARD_POUCH'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Hornet_Tool_Metal_Pouch_9_108x120_0',
@@ -8195,9 +7556,8 @@ const list = [
 		id: 'Great Shard',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_GREAT_SHARD',
-		descriptionKey: 'UI.INV_DESC_GREAT_SHARD',
 		useResponseTextOverrideKey: null,
-		useResponseDescriptionKeys: ['UI.INV_DESC_GREAT_SHARD_USE'],
+		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
 			Inventory: ['UI.INV_NAME_GREAT_SHARD'],
 			GetPopup: ['UI.INV_NAME_GREAT_SHARD'],
@@ -8205,13 +7565,7 @@ const list = [
 			Shop: ['UI.INV_NAME_GREAT_SHARD'],
 			TakePopup: ['UI.INV_NAME_GREAT_SHARD'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_GREAT_SHARD'],
-			GetPopup: ['UI.INV_DESC_GREAT_SHARD'],
-			Tiny: ['UI.INV_DESC_GREAT_SHARD'],
-			Shop: ['UI.INV_DESC_GREAT_SHARD'],
-			TakePopup: ['UI.INV_DESC_GREAT_SHARD'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Icon_Beast_Shard_11_120x132_1',
@@ -8304,9 +7658,8 @@ const list = [
 		id: 'Pristine Core',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_PRISTINE_CORE',
-		descriptionKey: 'UI.INV_DESC_PRISTINE_CORE',
 		useResponseTextOverrideKey: null,
-		useResponseDescriptionKeys: ['UI.INV_DESC_GREAT_SHARD_USE'],
+		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
 			Inventory: ['UI.INV_NAME_PRISTINE_CORE'],
 			GetPopup: ['UI.INV_NAME_PRISTINE_CORE'],
@@ -8314,13 +7667,7 @@ const list = [
 			Shop: ['UI.INV_NAME_PRISTINE_CORE'],
 			TakePopup: ['UI.INV_NAME_PRISTINE_CORE'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_PRISTINE_CORE'],
-			GetPopup: ['UI.INV_DESC_PRISTINE_CORE'],
-			Tiny: ['UI.INV_DESC_PRISTINE_CORE'],
-			Shop: ['UI.INV_DESC_PRISTINE_CORE'],
-			TakePopup: ['UI.INV_DESC_PRISTINE_CORE'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Icon_Pristine_Core_7_125x124_2',
@@ -8413,9 +7760,8 @@ const list = [
 		id: 'Fixer Idol',
 		runtimeType: 'CollectableItemBasic',
 		displayNameKey: 'UI.INV_NAME_FIXER_IDOL',
-		descriptionKey: 'UI.INV_DESC_FIXER_IDOL',
 		useResponseTextOverrideKey: null,
-		useResponseDescriptionKeys: ['UI.INV_DESC_GREAT_SHARD_USE'],
+		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
 			Inventory: ['UI.INV_NAME_FIXER_IDOL'],
 			GetPopup: ['UI.INV_NAME_FIXER_IDOL'],
@@ -8423,13 +7769,7 @@ const list = [
 			Shop: ['UI.INV_NAME_FIXER_IDOL'],
 			TakePopup: ['UI.INV_NAME_FIXER_IDOL'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_FIXER_IDOL'],
-			GetPopup: ['UI.INV_DESC_FIXER_IDOL'],
-			Tiny: ['UI.INV_DESC_FIXER_IDOL'],
-			Shop: ['UI.INV_DESC_FIXER_IDOL'],
-			TakePopup: ['UI.INV_DESC_FIXER_IDOL'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Fixer_Hornet_Statue_7_123x150_1',
@@ -8522,7 +7862,6 @@ const list = [
 		id: 'Growstone',
 		runtimeType: 'CollectableItemGrower',
 		displayNameKey: 'UI.INV_NAME_GROWSTONE',
-		descriptionKey: 'UI.INV_DESC_GROWSTONE',
 		useResponseTextOverrideKey: null,
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -8532,13 +7871,7 @@ const list = [
 			Shop: ['UI.INV_NAME_GROWSTONE'],
 			TakePopup: ['UI.INV_NAME_GROWSTONE'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_GROWSTONE'],
-			GetPopup: ['UI.INV_DESC_GROWSTONE'],
-			Tiny: ['UI.INV_DESC_GROWSTONE'],
-			Shop: ['UI.INV_DESC_GROWSTONE'],
-			TakePopup: ['UI.INV_DESC_GROWSTONE'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Growstone_0001_7_135x131_1',
@@ -8649,7 +7982,6 @@ const list = [
 		id: 'Silk Grub',
 		runtimeType: 'CollectableItemStates',
 		displayNameKey: 'UI.INV_NAME_SILK_GRUB',
-		descriptionKey: 'UI.INV_DESC_SILK_GRUB',
 		useResponseTextOverrideKey: 'Prompts.PROMPT_USE_CONSUMABLE_GRUB',
 		useResponseDescriptionKeys: null,
 		displayNameKeysBySource: {
@@ -8659,13 +7991,7 @@ const list = [
 			Shop: ['UI.INV_NAME_SILK_GRUB'],
 			TakePopup: ['UI.INV_NAME_SILK_GRUB'],
 		},
-		descriptionKeysBySource: {
-			Inventory: ['UI.INV_DESC_SILK_GRUB', 'UI.INV_DESC_SILK_GRUB_FUNCTION'],
-			GetPopup: ['UI.INV_DESC_SILK_GRUB', 'UI.INV_DESC_SILK_GRUB_FUNCTION'],
-			Tiny: ['UI.INV_DESC_SILK_GRUB', 'UI.INV_DESC_SILK_GRUB_FUNCTION'],
-			Shop: ['UI.INV_DESC_SILK_GRUB', 'UI.INV_DESC_SILK_GRUB_FUNCTION'],
-			TakePopup: ['UI.INV_DESC_SILK_GRUB', 'UI.INV_DESC_SILK_GRUB_FUNCTION'],
-		},
+		descriptionKeysBySource: null,
 		extraDescriptionKeys: null,
 		iconInventory: {
 			name: 'Silk_Grub_idle0000_10_216x177_1',

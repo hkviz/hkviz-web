@@ -52,7 +52,6 @@ const list = [
 		id: 'Silk',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.MAT_NAME_SILK',
-		descriptionKey: 'UI.MAT_DESC_SILK',
 		icon: {
 			name: 'icon_silk_materium_13_134x151_4',
 			nameShort: 'icon_silk_materium',
@@ -76,7 +75,6 @@ const list = [
 		id: 'Shell Shard',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_SHARD',
-		descriptionKey: 'UI.INV_DESC_SHARD',
 		icon: {
 			name: 'I_shell_shard_icon_large_9_120x119_1',
 			nameShort: 'I_shell_shard_icon_large',
@@ -100,7 +98,6 @@ const list = [
 		id: 'Rosary Small',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_COIN',
-		descriptionKey: 'UI.INV_DESC_COIN',
 		icon: {
 			name: 'I_rosary_icon_clean_9_119x119_1',
 			nameShort: 'I_rosary_icon_clean',
@@ -124,7 +121,6 @@ const list = [
 		id: 'Rosary Mid',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_COIN_MID',
-		descriptionKey: 'UI.INV_DESC_COIN_MID',
 		icon: {
 			name: 'I_rosary_icon_mid_clean_9_120x119_1',
 			nameShort: 'I_rosary_icon_mid_clean',
@@ -148,7 +144,6 @@ const list = [
 		id: 'Rosary Big',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_COIN_BIG',
-		descriptionKey: 'UI.INV_DESC_COIN_BIG',
 		icon: {
 			name: 'I_rosary_icon_big_clean_9_120x119_1',
 			nameShort: 'I_rosary_icon_big_clean',
@@ -172,7 +167,6 @@ const list = [
 		id: 'Mossberry',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_MOSSBERRY',
-		descriptionKey: 'UI.INV_DESC_MOSSBERRY',
 		icon: {
 			name: 'I_moss_berry_12_120x120_0',
 			nameShort: 'I_moss_berry',
@@ -196,7 +190,6 @@ const list = [
 		id: 'Mossberry Stew',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_GOURMAND_MOSSBERRY_STEW',
-		descriptionKey: 'UI.INV_DESC_GOURMAND_MOSSBERRY_STEW',
 		icon: {
 			name: 'Mossberry_Stew_9_125x128_1',
 			nameShort: 'Mossberry_Stew',
@@ -220,7 +213,6 @@ const list = [
 		id: 'Pilgrim Rag',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_PILGRIM_RAGS_ITEM',
-		descriptionKey: 'UI.INV_DESC_PILGRIM_RAGS_ITEM',
 		icon: {
 			name: 'Hornet_icon_pilgrim_shawl_10_130x112_1',
 			nameShort: 'Hornet_icon_pilgrim_shawl',
@@ -244,7 +236,6 @@ const list = [
 		id: 'Smeltstone',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.MAT_NAME_SMELTSTONE',
-		descriptionKey: 'UI.MAT_DESC_SMELTSTONE',
 		icon: {
 			name: 'Smeltstone_icon_9_128x143_1',
 			nameShort: 'Smeltstone_icon',
@@ -268,7 +259,6 @@ const list = [
 		id: 'Rock Roller Item',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_ROCK_ROLLER_ITEM',
-		descriptionKey: 'UI.INV_DESC_ROCK_ROLLER_ITEM',
 		icon: {
 			name: 'bone_roller_rock_icon_9_132x117_0',
 			nameShort: 'bone_roller_rock_icon',
@@ -292,7 +282,6 @@ const list = [
 		id: 'Tool Metal',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_TOOL_METAL',
-		descriptionKey: 'UI.INV_DESC_TOOL_METAL',
 		icon: {
 			name: 'Hornet_Tool_Metal_10_110x117_0',
 			nameShort: 'Hornet_Tool_Metal',
@@ -316,7 +305,6 @@ const list = [
 		id: 'Common Spine',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_SPINE',
-		descriptionKey: 'UI.INV_DESC_SPINE',
 		icon: {
 			name: 'Hornet_spine_cores_13_142x145_0',
 			nameShort: 'Hornet_spine_cores',
@@ -340,7 +328,6 @@ const list = [
 		id: 'Skull King Fragment',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_SK_FRAGMENT',
-		descriptionKey: 'UI.INV_DESC_SK_FRAGMENT',
 		icon: {
 			name: 'M_tusk_9_120x120_1',
 			nameShort: 'M_tusk',
@@ -364,7 +351,6 @@ const list = [
 		id: 'Beastfly Remains',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_BEASTFLY_REMAINS',
-		descriptionKey: 'UI.INV_DESC_BEASTFLY_REMAINS',
 		icon: {
 			name: 'M_crest_8_120x120_1',
 			nameShort: 'M_crest',
@@ -388,7 +374,6 @@ const list = [
 		id: 'Silver Bellclapper',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_BELLCLAPPER_ITEM',
-		descriptionKey: 'UI.INV_DESC_BELLCLAPPER_ITEM',
 		icon: {
 			name: 'Hornet_icon_bell_clapper_8_144x157_2',
 			nameShort: 'Hornet_icon_bell_clapper',
@@ -412,7 +397,6 @@ const list = [
 		id: 'Pale Oil',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_PLINNEY_TOOLS',
-		descriptionKey: 'UI.INV_DESC_PLINNEY_TOOLS',
 		icon: {
 			name: 'oil_phial_8_111x125_1',
 			nameShort: 'oil_phial',
@@ -436,7 +420,6 @@ const list = [
 		id: 'Lifeblood',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.MAT_NAME_LIFEBLOOD',
-		descriptionKey: 'UI.MAT_DESC_LIFEBLOOD',
 		icon: {
 			name: 'Icon_Inv_Blue_Health_Jar_0001_3_7_116x120_1',
 			nameShort: 'Icon_Inv_Blue_Health_Jar_0001_3',
@@ -460,7 +443,6 @@ const list = [
 		id: 'Plasmium Blood',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_PLASMIUM_BLOOD',
-		descriptionKey: 'UI.INV_DESC_PLASMIUM_BLOOD',
 		icon: {
 			name: 'Icon_Inv_Blue_Health_Blood_7_138x164_1',
 			nameShort: 'Icon_Inv_Blue_Health_Blood',
@@ -484,7 +466,6 @@ const list = [
 		id: 'Crow Feathers',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_CROW_FEATHER',
-		descriptionKey: 'UI.INV_DESC_CROW_FEATHER',
 		icon: {
 			name: 'Hornet_craw_scrap_11_142x145_0',
 			nameShort: 'Hornet_craw_scrap',
@@ -508,7 +489,6 @@ const list = [
 		id: 'Shell Flower',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_SHELL_FLOWER',
-		descriptionKey: 'UI.INV_DESC_SHELL_FLOWER',
 		icon: {
 			name: '_0007_shell_flower_purple_icon_9_76x115_0',
 			nameShort: '_0007_shell_flower_purple_icon',
@@ -532,7 +512,6 @@ const list = [
 		id: 'Roach Corpse Item',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_ROACH_CORPSE_ITEM',
-		descriptionKey: 'UI.INV_DESC_ROACH_CORPSE_ITEM',
 		icon: {
 			name: 'icon_roach_organ_11_119x128_2',
 			nameShort: 'icon_roach_organ',
@@ -556,7 +535,6 @@ const list = [
 		id: 'Courier Supplies Generic',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'Quests.COURIER_SUPPLIES_ITEM_NAME',
-		descriptionKey: 'Quests.COURIER_SUPPLIES_ITEM_DESC',
 		icon: {
 			name: 'Icon_Courier_Supplies_9_133x130_1',
 			nameShort: 'Icon_Courier_Supplies',
@@ -580,7 +558,6 @@ const list = [
 		id: 'Courier Supplies Slave',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'Quests.COURIER_SUPPLIES_SLAVE_NAME',
-		descriptionKey: 'Quests.COURIER_SUPPLIES_SLAVE_DESC',
 		icon: {
 			name: 'Hornet_Item_Egg_13_112x107_1',
 			nameShort: 'Hornet_Item_Egg',
@@ -604,7 +581,6 @@ const list = [
 		id: 'Courier Supplies Mask Maker',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'Quests.COURIER_SUPPLIES_MASK_NAME',
-		descriptionKey: 'Quests.COURIER_SUPPLIES_MASK_DESC',
 		icon: {
 			name: 'Icon_Courier_Supplies_Lacquer_8_134x130_1',
 			nameShort: 'Icon_Courier_Supplies_Lacquer',
@@ -628,7 +604,6 @@ const list = [
 		id: 'Courier Supplies Gourmand',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'Quests.COURIER_SUPPLIES_MEAT_NAME',
-		descriptionKey: 'Quests.COURIER_SUPPLIES_MEAT_DESC',
 		icon: {
 			name: 'Icon_Courier_Supplies_Meat_Sack_7_116x123_1',
 			nameShort: 'Icon_Courier_Supplies_Meat_Sack',
@@ -652,7 +627,6 @@ const list = [
 		id: 'Vintage Nectar',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_GOURMAND_VINTAGE_NECTAR',
-		descriptionKey: 'UI.INV_DESC_GOURMAND_VINTAGE_NECTAR',
 		icon: {
 			name: 'vintage_nectar_item_9_137x140_1',
 			nameShort: 'vintage_nectar_item',
@@ -676,7 +650,6 @@ const list = [
 		id: 'Pickled Roach Egg',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_PICKLEDEGG',
-		descriptionKey: 'UI.INV_DESC_PICKLEDEGG',
 		icon: {
 			name: 'century_maggot_icon_10_130x129_1',
 			nameShort: 'century_maggot_icon',
@@ -700,7 +673,6 @@ const list = [
 		id: 'Crustnut',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_GOURMAND_CORAL_INGREDIENT',
-		descriptionKey: 'UI.INV_DESC_GOURMAND_CORAL_INGREDIENT',
 		icon: {
 			name: '_0007_quest_coral_nut_15_115x129_1',
 			nameShort: '_0007_quest_coral_nut',
@@ -724,7 +696,6 @@ const list = [
 		id: 'Extractor Machine Pins',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'Quests.ITEM_EXTRACTOR_PINS_NAME',
-		descriptionKey: 'Quests.ITEM_EXTRACTOR_PINS_DESC',
 		icon: {
 			name: 'Hornet_Extractor_Pins_9_125x154_1',
 			nameShort: 'Hornet_Extractor_Pins',
@@ -748,7 +719,6 @@ const list = [
 		id: 'Song Pilgrim Cloak',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_SONGPILGRIM_CLOAK_ITEM',
-		descriptionKey: 'UI.INV_DESC_SONGPILGRIM_CLOAK_ITEM',
 		icon: {
 			name: 'icon_song_shawl_10_120x117_1',
 			nameShort: 'icon_song_shawl',
@@ -772,7 +742,6 @@ const list = [
 		id: 'Magnetite',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.MAT_NAME_MAGNETITE',
-		descriptionKey: 'UI.MAT_DESC_MAGNETITE',
 		icon: {
 			name: 'icon_magnetite_8_131x142_2',
 			nameShort: 'icon_magnetite',
@@ -796,7 +765,6 @@ const list = [
 		id: 'Broodmother Remains',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_BROODMOTHER_REMAINS',
-		descriptionKey: 'UI.INV_DESC_BROODMOTHER_REMAINS',
 		icon: {
 			name: 'Brood_Mother_Eye_Icon_9_125x146_2',
 			nameShort: 'Brood_Mother_Eye_Icon',
@@ -820,7 +788,6 @@ const list = [
 		id: 'Enemy Morsel Seared',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_MORSEL_SEARED',
-		descriptionKey: 'UI.INV_DESC_MORSEL_SEARED',
 		icon: {
 			name: 'icon_meat_seared_9_132x126_1',
 			nameShort: 'icon_meat_seared',
@@ -844,7 +811,6 @@ const list = [
 		id: 'Enemy Morsel Shredded',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_MORSEL_SHREDDED',
-		descriptionKey: 'UI.INV_DESC_MORSEL_SHREDDED',
 		icon: {
 			name: 'icon_meat_sliced_14_122x126_2',
 			nameShort: 'icon_meat_sliced',
@@ -868,7 +834,6 @@ const list = [
 		id: 'Enemy Morsel Speared',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_MORSEL_SPEARED',
-		descriptionKey: 'UI.INV_DESC_MORSEL_SPEARED',
 		icon: {
 			name: 'icon_meat_skewered_8_172x157_2',
 			nameShort: 'icon_meat_skewered',
@@ -892,7 +857,6 @@ const list = [
 		id: 'Voltstone',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.MAT_NAME_VOLTSTONE',
-		descriptionKey: 'UI.MAT_DESC_VOLTSTONE',
 		icon: {
 			name: 'icon_lightning_rock_8_132x143_1',
 			nameShort: 'icon_lightning_rock',
@@ -916,7 +880,6 @@ const list = [
 		id: 'Snare Soul Bell Hermit',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_SNARE_SOUL_BELLHERMIT',
-		descriptionKey: 'UI.INV_DESC_SNARE_SOUL_BELLHERMIT',
 		icon: {
 			name: 'snail_icon__0001_bell_hermit_soul_6_122x150_1',
 			nameShort: 'snail_icon__0001_bell_hermit_soul',
@@ -940,7 +903,6 @@ const list = [
 		id: 'Snare Soul Churchkeeper',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_SNARE_SOUL_CHURCHKEEPER',
-		descriptionKey: 'UI.INV_DESC_SNARE_SOUL_CHURCHKEEPER',
 		icon: {
 			name: 'snail_icon__0000_churchkeeper_soul_8_125x150_1',
 			nameShort: 'snail_icon__0000_churchkeeper_soul',
@@ -964,7 +926,6 @@ const list = [
 		id: 'Snare Soul Swamp Bug',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_SNARE_SOUL_SWAMP',
-		descriptionKey: 'UI.INV_DESC_SNARE_SOUL_SWAMP',
 		icon: {
 			name: 'snail_icon__0001_bell_swamp_soul_8_131x142_2',
 			nameShort: 'snail_icon__0001_bell_swamp_soul',
@@ -988,7 +949,6 @@ const list = [
 		id: 'Flower Heart',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_HEART_BLOOM',
-		descriptionKey: 'UI.INV_DESC_HEART_BLOOM',
 		icon: {
 			name: 'flower_queen_heart_icon0000_9_175x163_1',
 			nameShort: 'flower_queen_heart_icon0000',
@@ -1012,7 +972,6 @@ const list = [
 		id: 'Hunter Heart',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_HEART_HUNTER',
-		descriptionKey: 'UI.INV_DESC_HEART_HUNTER',
 		icon: {
 			name: 'ant_queen_heart_icon0002_8_125x139_1',
 			nameShort: 'ant_queen_heart_icon0002',
@@ -1036,7 +995,6 @@ const list = [
 		id: 'Coral Heart',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_HEART_CORAL',
-		descriptionKey: 'UI.INV_DESC_HEART_CORAL',
 		icon: {
 			name: 'coral_king_heart_icon0000_16_136x153_1',
 			nameShort: 'coral_king_heart_icon0000',
@@ -1060,7 +1018,6 @@ const list = [
 		id: 'Clover Heart',
 		runtimeType: 'MateriumItem',
 		displayNameKey: 'UI.INV_NAME_HEART_CLOVER',
-		descriptionKey: 'UI.INV_DESC_HEART_CLOVER',
 		icon: {
 			name: 'clover_prince_heart0000_8_142x159_1',
 			nameShort: 'clover_prince_heart0000',
