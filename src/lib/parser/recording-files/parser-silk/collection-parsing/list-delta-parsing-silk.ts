@@ -1,4 +1,4 @@
-import type { Vector2 } from '~/lib/game-data/shared/vectors';
+import type { Vector2 } from '~/lib/game-data/shared/vector2';
 import type { StoryEventInfoSilk } from '~/lib/game-data/silk-data/types/player-data-custom-types-silk';
 import type { ParsingLoggerSilk } from '../parsing-log-silk';
 import type { SilkRecordingDataView } from '../silk-recording-data-view';

@@ -11,7 +11,6 @@ export interface MapTextData {
 	fontSize: number;
 	fontWeight: number;
 
-	position: null;
 	bounds: Bounds;
 	color: d3.HSLColor;
 

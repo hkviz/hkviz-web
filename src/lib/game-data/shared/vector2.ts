@@ -41,3 +41,16 @@ export class Vector2 {
 		return new Vector2(this.x + (other.x ?? 0), this.y + (other.y ?? 0));
 	}
 }
+
+export function vec2(x: number, y: number): Vector2 {
+	return new Vector2(x, y);
+}
+
+export function vec2Quantize(vector: Vector2, decimals: number): Vector2 {
+	const factor = 10 ** decimals;
+	return new Vector2(Math.round(vector.x * factor) / factor, Math.round(vector.y * factor) / factor);
+}
+
+export function vec2Like(source: Vector2Like): Vector2 {
+	return new Vector2(source.x, source.y);
+}

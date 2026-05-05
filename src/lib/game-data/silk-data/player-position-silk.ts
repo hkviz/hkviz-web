@@ -1,4 +1,4 @@
-import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { Vector2 } from '~/lib/game-data/shared/vector2';
 import { type SceneEvent } from '../../parser/recording-files/events-shared/scene-event';
 import { mapDataMainBySceneNameSilk } from './map-data-silk';
 

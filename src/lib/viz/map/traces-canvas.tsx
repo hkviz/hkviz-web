@@ -1,5 +1,5 @@
 import { createEffect, createSignal, type Component } from 'solid-js';
-import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { Vector2 } from '~/lib/game-data/shared/vector2';
 import { isFrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-check-hollow';
 import { isFrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-check-silk';
 import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';

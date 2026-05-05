@@ -1,4 +1,4 @@
-import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { Vector2 } from '~/lib/game-data/shared/vector2';
 import type { CollectableRelicNameSilk } from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
 import { collectableRelicSilk } from '~/lib/game-data/silk-data/collectable-relic-silk.generated';
 import type { CollectableNameSilk } from '~/lib/game-data/silk-data/collectable-silk.generated';

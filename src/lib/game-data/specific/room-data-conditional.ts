@@ -1,6 +1,6 @@
 import type { RoomDataAny } from './room-data-of-game';
 
 export function hasConditional(room: RoomDataAny): boolean {
-	const spritesByVariant = room.spritesByVariant;
-	return 'conditional' in spritesByVariant && spritesByVariant.conditional != null;
+	const spritesByVariant = room.game === 'hollow' ? room.spritesByVariant : null;
+	return spritesByVariant != null && 'conditional' in spritesByVariant && spritesByVariant.conditional != null;
 }

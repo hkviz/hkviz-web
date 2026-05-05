@@ -1,12 +1,17 @@
-import { Vector2 } from './vectors';
+import { vec2Quantize, Vector2 } from './vector2.ts';
 
 export class Bounds {
-	private constructor(
-		public min: Vector2,
-		public max: Vector2,
-		public size: Vector2,
-		public center: Vector2,
-	) {}
+	public readonly min: Vector2;
+	public readonly max: Vector2;
+	public readonly size: Vector2;
+	public readonly center: Vector2;
+
+	private constructor(min: Vector2, max: Vector2, size: Vector2, center: Vector2) {
+		this.min = min;
+		this.max = max;
+		this.size = size;
+		this.center = center;
+	}
 
 	// --- Factories ---
 
@@ -89,4 +94,12 @@ export class Bounds {
 	static get ZERO() {
 		return new Bounds(new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0));
 	}
+}
+
+export function boundsMinXYMaxXY(minX: number, minY: number, maxX: number, maxY: number): Bounds {
+	return Bounds.fromMinMax(new Vector2(minX, minY), new Vector2(maxX, maxY));
+}
+
+export function boundsQuantize(bounds: Bounds, decimals: number): Bounds {
+	return Bounds.fromMinMax(vec2Quantize(bounds.min, decimals), vec2Quantize(bounds.max, decimals));
 }

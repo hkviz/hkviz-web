@@ -10,16 +10,25 @@ import { exportFormattedJsFile } from './js-gen-helper.mts';
 import { ScriptIdMemory, ScriptMemory } from './memory/script-memory.mts';
 import { readModExtraction } from './mod-extraction-read.mts';
 import { unityPySpritePath } from './paths.mts';
+import { serializeToTsWithImports } from './serialize-to-ts.ts';
+import { mapDataConversionForGen } from './types/map-data-conversion.ts';
+import type { SilkMapDataGenerated } from './types/map-data-mod-output-types.ts';
 
 // Map data:
 async function genMapData() {
 	const mapExportJsonStr = await readModExtraction('map-export.json');
 
+	const data = JSON.parse(mapExportJsonStr) as SilkMapDataGenerated;
+	const converted = mapDataConversionForGen(data);
+	const serialized = serializeToTsWithImports(converted);
+
 	await exportFormattedJsFile(
 		'./src/lib/game-data/silk-data/map-data-silk.generated.ts',
-		`import type { SilkMapDataGenerated } from './map-data-silk.generated.types.ts';
+		`import type { MapDataSilk } from './map-data-silk.types.ts';
+		${serialized.imports}
+		
     
-    export const silkMapDataGenerated: SilkMapDataGenerated = ${mapExportJsonStr}`,
+    export const silkMapDataGenerated: MapDataSilk = ${serialized.data}`,
 	);
 }
 

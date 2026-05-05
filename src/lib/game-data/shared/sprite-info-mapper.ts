@@ -1,6 +1,6 @@
-import { Bounds } from './bounds';
-import type { SpriteInfoGenerated } from './sprite-info-generated';
-import { Vector2 } from './vectors';
+import { Bounds } from './bounds.ts';
+import type { SpriteInfoGenerated } from './sprite-info-generated.ts';
+import { Vector2 } from './vector2.ts';
 
 export function spriteInfoBounds(visualBounds: Bounds, spriteInfo: SpriteInfoGenerated): Bounds {
 	const widthScaler = visualBounds.size.x / spriteInfo.size.x;

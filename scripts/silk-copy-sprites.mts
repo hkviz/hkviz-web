@@ -5,9 +5,10 @@
 
 import { copyFile } from 'fs/promises';
 import path from 'path';
-import type { SpriteInfoGenerated } from '~/lib/game-data/shared/sprite-info-generated.ts';
 import { silkMapDataGenerated } from '../src/lib/game-data/silk-data/map-data-silk.generated.ts';
 import { saveSlotBackgroundSilk } from '../src/lib/game-data/silk-data/save-slot-backgrounds-silk.generated.ts';
+import type { SilkSpriteInfo } from '../src/lib/game-data/silk-data/map-data-silk.types.ts';
+import type { SilkSpriteInfoGenerated } from './types/map-data-mod-output-types.ts';
 
 const silksongAssetsPath = '../silk-export/hkviz-silk-extract-export-2';
 const destMap = './assets-build/silk-map{tps}';
@@ -15,7 +16,7 @@ const destSaveSlotBackgrounds = './public/silk-sprites/save-slot-backgrounds';
 
 let failed = 0;
 
-async function copySprite(sprite: SpriteInfoGenerated | undefined | null, destBase: string) {
+async function copySprite(sprite: SilkSpriteInfo | SilkSpriteInfoGenerated | undefined | null, destBase: string) {
 	try {
 		const name = sprite?.name;
 		if (!name) {
@@ -34,12 +35,8 @@ async function copySprite(sprite: SpriteInfoGenerated | undefined | null, destBa
 }
 
 for (const room of silkMapDataGenerated.rooms) {
-	await copySprite(room.initialSprite, destMap);
-	await copySprite(room.fullSprite, destMap);
-	if (room.altFullSprites) {
-		for (const alt of room.altFullSprites) {
-			await copySprite(alt.sprite, destMap);
-		}
+	for (const sprite of room.allSprites) {
+		await copySprite(sprite.sprite, destMap);
 	}
 }
 for (const saveSlotBackground of Object.values(saveSlotBackgroundSilk.areaBackgrounds)) {

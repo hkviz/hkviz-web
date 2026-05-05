@@ -1,4 +1,4 @@
-import { sceneNameToIdGeneratedSilk } from './scene-ids-silk.generated';
+import { sceneNameToIdGeneratedSilk } from './scene-ids-silk.generated.ts';
 
 export const sceneNameToIdMetaSilk = sceneNameToIdGeneratedSilk;
 

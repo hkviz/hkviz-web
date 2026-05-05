@@ -6,7 +6,7 @@ import {
 	type ZoomZoneHollow,
 } from '~/lib/game-data/hollow-data/zoom-zone-hollow';
 import { Bounds } from '~/lib/game-data/shared/bounds';
-import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { Vector2 } from '~/lib/game-data/shared/vector2';
 import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';
 import { useAnimationStore } from '../store/animation-store';
 import { useAnimationTickStore } from '../store/animation-tick-store';

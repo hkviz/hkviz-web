@@ -175,9 +175,6 @@ export function createRoomDisplayStore(
 						}
 					});
 				} else if (isSilk) {
-					const fullVariant =
-						room.initialState !== 'Rough' ? 'initial' : room.spritesByVariant.full ? 'full' : 'initial';
-
 					const mappedIfAllMapped =
 						room.mappedIfAllMapped && room.mappedIfAllMapped.length > 0
 							? room.mappedIfAllMapped.map((sceneName) => getSelfVisibilitySignal(sceneName))
@@ -200,7 +197,7 @@ export function createRoomDisplayStore(
 
 						// game source GameMapScene.SetMapped inspired
 						// Sprite sprite = ((initialState != States.Rough) ? initialSprite : (fullSprite ? fullSprite : initialSprite));
-						let variant: RoomSpriteVariantSilk = fullVariant;
+						let variant: RoomSpriteVariantSilk | 'hidden' = 'hidden';
 
 						for (const v of room.allSprites) {
 							if (v.type === 'alt-full-sprite') {
@@ -209,6 +206,9 @@ export function createRoomDisplayStore(
 									// game uses first sprite that matches:
 									break;
 								}
+							} else {
+								variant = v.variant;
+								break;
 							}
 						}
 

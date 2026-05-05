@@ -1,5 +1,5 @@
-import { Vector3 } from '~/lib/game-data/shared/vector-3';
-import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { Vector3 } from '~/lib/game-data/shared/vector3';
+import { Vector2 } from '~/lib/game-data/shared/vector2';
 import type {
 	CollectableItemsDataSilk,
 	CollectableMementosDataSilk,

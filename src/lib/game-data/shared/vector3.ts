@@ -39,3 +39,20 @@ export class Vector3 {
 		return new Vector3(this.x + (other.x ?? 0), this.y + (other.y ?? 0), this.z + (other.z ?? 0));
 	}
 }
+
+export function vec3(x: number, y: number, z: number): Vector3 {
+	return new Vector3(x, y, z);
+}
+
+export function vec3Quantize(vector: Vector3, decimals: number): Vector3 {
+	const factor = 10 ** decimals;
+	return new Vector3(
+		Math.round(vector.x * factor) / factor,
+		Math.round(vector.y * factor) / factor,
+		Math.round(vector.z * factor) / factor,
+	);
+}
+
+export function vec3Like(source: Vector3Like): Vector3 {
+	return new Vector3(source.x, source.y, source.z);
+}

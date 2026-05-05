@@ -12,7 +12,6 @@ function areaTypeFromObjectPath(path: string): MapTextType {
 export function prepareTextExportDataHollow(text: HollowTextInfoGenerated): MapTextData {
 	return {
 		...text,
-		position: null, //scaleVector2(text.position),
 		bounds: hollowScaleBounds(text.bounds),
 		color: d3.hsl(colorFromRgbVector(text.origColor)),
 		isSubArea: text.objectPath.includes('Sub') || text.convoName === 'HIVE',

@@ -1,7 +1,10 @@
 {
 	"editor.codeActionsOnSave": {
+		"source.sortImports": "never",
+		"source.organizeImports": "never",
 		"source.fixAll": "never",
-		"source.fixAll.oxc": "always"
+		"source.fixAll.oxc": "always",
+		"source.fixAll.tailwindcss": "never"
 	},
 	"tailwindCSS.experimental.classRegex": [
 		["Classes \\=([^;]*);", "'([^']*)'"],
@@ -9,6 +12,7 @@
 		["Classes \\=([^;]*);", "\\`([^\\`]*)\\`"],
 		["cn\\(([^)]*)\\)", "\"([^\"]*)\""]
 	],
+	"tailwindCSS.codeActions": false,
 	"tailwindCSS.classAttributes": [
 		"class",
 		"className",
@@ -25,5 +29,5 @@
 	"editor.defaultFormatter": "oxc.oxc-vscode",
 	"editor.formatOnSave": true,
 	"eslint.enable": false,
-	"js/ts.experimental.useTsgo": true
+	"js/ts.experimental.useTsgo": false
 }

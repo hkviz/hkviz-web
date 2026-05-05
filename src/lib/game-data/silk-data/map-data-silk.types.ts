@@ -71,8 +71,9 @@ export interface RoomDataSilk extends RoomDataBase<'silk'> {
 	visualBounds: Bounds | null;
 	playerPositionBounds: Bounds | null;
 
-	sortingOrder: number;
-	positionZ: number;
+	// ordering -> removed as ordering happens in generation
+	// sortingOrder: number;
+	// positionZ: number;
 
 	// Sprite data
 	/*initialSprite: SilkSpriteInfo | null;
@@ -83,7 +84,6 @@ export interface RoomDataSilk extends RoomDataBase<'silk'> {
 	altColors: ColorConditionDataSilk[] | null;
 
 	allSprites: SomeSpriteTypeSilk[];
-	spritesByVariant: Record<string, SomeSpriteTypeSilk>;
 
 	// State information
 	initialState: 'Hidden' | 'Rough' | 'Full';

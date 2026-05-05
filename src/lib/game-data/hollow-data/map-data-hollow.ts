@@ -6,7 +6,7 @@ import { roomDataUnscaled } from '~/lib/game-data/hollow-data/map-rooms.generate
 import { Bounds } from '~/lib/game-data/shared/bounds';
 import { colorFromRgbVector } from '~/lib/game-data/shared/colors';
 import { spriteInfoBounds } from '~/lib/game-data/shared/sprite-info-mapper';
-import { Vector2 } from '~/lib/game-data/shared/vectors';
+import { Vector2 } from '~/lib/game-data/shared/vector2';
 import { omit } from '~/lib/util/omit';
 import { customRoomDataHollow, type CustomRoomInfoHollow, type UnprocessedRoomInfoHollow } from './room-custom-hollow';
 import { roomGroupByName } from './room-groups-hollow';

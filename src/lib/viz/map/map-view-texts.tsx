@@ -94,7 +94,7 @@ export function HkMapTexts() {
 					<MapViewText
 						textData={text}
 						visibleBy={{
-							zoneName: text.convoName,
+							zoneName:  text.convoName,
 						}}
 					/>
 				)}

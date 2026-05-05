@@ -1,5 +1,5 @@
-import { Bounds } from './bounds';
-import { Vector2 } from './vectors';
+import { Bounds } from './bounds.ts';
+import { Vector2 } from './vector2.ts';
 
 export function scaleBounds(
 	bounds: { min: { x: number; y: number }; max: { x: number; y: number } },

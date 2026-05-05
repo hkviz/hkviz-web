@@ -1,4 +1,4 @@
-import type { Vector2 } from '~/lib/game-data/shared/vectors';
+import type { Vector2 } from '~/lib/game-data/shared/vector2';
 import type { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import type { GameId } from '~/lib/types/game-ids';
 import type { AggregationValueOfGame } from '../aggregation/aggregation-value-specific';

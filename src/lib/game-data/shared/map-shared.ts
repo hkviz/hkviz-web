@@ -19,5 +19,5 @@ export interface RoomDataBase<Game extends GameId = GameId> {
 
 	isMainGameObject: boolean;
 
-	visualBoundsAllSprites: Bounds | null; // probably shouldn't be null
+	visualBoundsAllSprites: Bounds | null;
 }

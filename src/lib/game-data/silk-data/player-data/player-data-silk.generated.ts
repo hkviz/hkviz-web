@@ -3,8 +3,8 @@
  */
 
 import * as v from 'valibot';
-import type { Vector3 } from '../../shared/vector-3';
-import type { Vector2 } from '../../shared/vectors';
+import type { Vector3 } from '../../shared/vector3';
+import type { Vector2 } from '../../shared/vector2';
 import type {
 	CollectableItemsDataSilk,
 	CollectableMementosDataSilk,
