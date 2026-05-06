@@ -16,6 +16,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: CompletionChartUnitIcon,
 		order: 1,
 		display: 'default-shown',
+		italic: false,
 	},
 	// {
 	//     key: 'completionPercentage',

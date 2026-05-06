@@ -21,6 +21,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: ShellShardUnitIconSilk,
 		order: 4,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'silk',
@@ -31,6 +32,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: ShellShardBundleUnitIconSilk,
 		order: 3,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'silk',
@@ -41,6 +43,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: CrawbellChartUnitIconSilk,
 		order: 2,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'silk',
@@ -52,6 +55,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: ShellShardUnitIconSilk,
 		order: 1,
 		display: 'never',
+		italic: true,
 	},
 ];
 

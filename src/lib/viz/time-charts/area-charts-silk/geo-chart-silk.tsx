@@ -23,6 +23,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: RosaryChartUnitIconSilk,
 		order: 6,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'silk',
@@ -33,6 +34,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: CocoonUnitIconSilk,
 		order: 5,
 		display: 'default-shown',
+		italic: false,
 	},
 	/*{
 		game: 'silk',
@@ -53,6 +55,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: RosaryStringUnitIconSilk,
 		order: 4,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'silk',
@@ -63,6 +66,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: CrawbellChartUnitIconSilk,
 		order: 3,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'silk',
@@ -74,6 +78,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: RelicUnitIconSilk,
 		order: 2,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'silk',
@@ -84,6 +89,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: RosariesChartUnitIconSilk,
 		order: 1,
 		display: 'never',
+		italic: true,
 	},
 ];
 

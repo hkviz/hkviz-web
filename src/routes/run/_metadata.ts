@@ -1,3 +1,4 @@
+import { getGameName } from '~/lib/types/game-ids';
 import { tagFromCode, tagGroupFromCode } from '~/lib/types/tags/tags';
 import { type RunMetadata } from '~/server/run/_find_runs_internal';
 
@@ -6,6 +7,7 @@ export function getRunPageTitle(data: RunMetadata): string {
 
 	const tags = tagCodes.map((code) => tagFromCode(code));
 	const tagNames = tags.map((tag) => tag.name);
+	const gameName = getGameName(data.gameState.game);
 
 	const speedRunTags = [...tagGroupFromCode('hollow_speedrun').tags, ...tagGroupFromCode('silk_speedrun').tags];
 	const isSpeedrun = tags.some((tag) => speedRunTags.includes(tag));
@@ -14,5 +16,5 @@ export function getRunPageTitle(data: RunMetadata): string {
 	const tagTitle = tagNames.length === 0 ? '' : tagNames.join(', ') + ' ';
 	const typeTitle = isSpeedrun ? 'Speedrun' : 'Gameplay';
 	const userTitle = data?.user?.name ? ` by ${data.user.name}` : '';
-	return `${titleTitle}${tagTitle}${typeTitle}${userTitle} - HKViz`;
+	return `${titleTitle}${tagTitle}${gameName} ${typeTitle}${userTitle} - HKViz`;
 }

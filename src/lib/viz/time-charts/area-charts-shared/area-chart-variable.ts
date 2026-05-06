@@ -19,6 +19,7 @@ export type LineChartVariableDescription = {
 	order: number;
 	color: ColorClasses;
 	display: 'default-shown' | 'default-hidden' | 'never';
+	italic: boolean;
 } & (
 	| {
 			game: 'hollow';

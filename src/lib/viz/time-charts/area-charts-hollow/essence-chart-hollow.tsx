@@ -16,6 +16,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: EssenceChartUnitIconHollow,
 		order: 1,
 		display: 'default-shown',
+		italic: false,
 	},
 ];
 

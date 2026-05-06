@@ -3,7 +3,6 @@ import GoogleProvider from '@auth/core/providers/google';
 import EmailProvider from '@auth/core/providers/nodemailer';
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import { type SolidAuthConfig } from '@auth/solid-start';
-import { isValid as isValidNonBlacklistedEmail } from 'mailchecker';
 import { env } from '~/env';
 import { db } from '~/server/db';
 import { accounts, sessions, users, verificationTokens } from '~/server/db/schema';
@@ -20,6 +19,7 @@ export const authOptions: SolidAuthConfig = {
 		}),
 
 		signIn: async ({ user }) => {
+			const isValidNonBlacklistedEmail = (await import('mailchecker')).isValid;
 			if (user.email && !isValidNonBlacklistedEmail(user.email)) {
 				return false;
 			}

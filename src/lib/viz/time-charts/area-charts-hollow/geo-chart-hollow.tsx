@@ -16,6 +16,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: GeoChartUnitIconHollow,
 		order: 3,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'hollow',
@@ -26,6 +27,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: GeoChartUnitIconHollow,
 		order: 2,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'hollow',
@@ -36,6 +38,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: GeoChartUnitIconHollow,
 		order: 1,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'hollow',
@@ -47,6 +50,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: GeoChartUnitIconHollow,
 		order: 1,
 		display: 'never',
+		italic: true,
 	},
 ];
 

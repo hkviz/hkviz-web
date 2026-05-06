@@ -20,6 +20,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: HealthChartMaskUnitIconHollow,
 		order: 1,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'hollow',
@@ -30,6 +31,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: LifebloodUnitIcon,
 		order: 2,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'hollow',
@@ -40,6 +42,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: EmptyMaskUnitIcon,
 		order: 3,
 		display: 'default-hidden',
+		italic: false,
 	},
 ];
 

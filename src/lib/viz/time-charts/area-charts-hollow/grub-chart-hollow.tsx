@@ -17,6 +17,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: GrubChartUnitIconHollow,
 		order: 2,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'hollow',
@@ -28,6 +29,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: GrubChartUnitIconHollow,
 		order: 1,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'hollow',
@@ -38,6 +40,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: GrubChartUnitIconHollow,
 		order: 1,
 		display: 'never',
+		italic: true,
 	},
 ];
 

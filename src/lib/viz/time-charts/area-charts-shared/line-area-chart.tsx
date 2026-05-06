@@ -6,27 +6,23 @@ import { Table, TableBody, TableCell, TableRow } from '~/components/ui/table';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import type { FrameEndEventBase } from '~/lib/parser/recording-files/events-shared/frame-end-event-base';
 import { createAutoSizeCanvas } from '../../canvas';
-import type { MsIntoGameChangeType} from '../../store/animation-store';
+import type { MsIntoGameChangeType } from '../../store/animation-store';
 import { useAnimationStore } from '../../store/animation-store';
 import { useExtraChartStore } from '../../store/extra-chart-store';
 import { useGameplayStore } from '../../store/gameplay-store';
 import { useHoverMsStore } from '../../store/hover-ms-store';
-import type { LocalizedString} from '../../store/localization-store';
+import type { LocalizedString } from '../../store/localization-store';
 import { useLocalizationStore } from '../../store/localization-store';
 import { useRoomDisplayStore } from '../../store/room-display-store';
 import { useThemeStore } from '../../store/theme-store';
 import { useViewportStore } from '../../store/viewport-store';
 import { chartBaseHeight, chartBaseWidth, getChartFrame } from '../area-charts-shared/chart-frame';
-import type {
-	LineChartVariableDescription,
-	LineChartVariableKey} from './area-chart-variable';
-import {
-	getChartVarValue,
-	isShownInGraph
-} from './area-chart-variable';
+import type { LineChartVariableDescription, LineChartVariableKey } from './area-chart-variable';
+import { getChartVarValue, isShownInGraph } from './area-chart-variable';
 import { createIsVisible } from './create-is-visible';
 import { downScale } from './down-scale';
 import type { InitMessage, ResizeMessage, SetDataMessage, SetViewMessage } from './line-area-chart-render.worker';
+import { cn } from '~/lib/utils';
 
 export interface LineAreaChartProps {
 	variables: LineChartVariableDescription[];
@@ -660,7 +656,10 @@ function LineAreaChartVarRow(props: LineAreaChartVarRowProps) {
 						<TooltipTrigger
 							as={'label'}
 							for={id + props.variable.key + '_checkbox-input'}
-							class="grow text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+							class={cn(
+								'grow text-sm leading-none font-medium peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
+								props.variable.italic ? 'text-muted-foreground italic' : '',
+							)}
 						>
 							{localizationStore.getString(props.variable.name)}
 						</TooltipTrigger>

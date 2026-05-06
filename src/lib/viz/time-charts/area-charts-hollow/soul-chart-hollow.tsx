@@ -16,6 +16,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: SoulChartUnitIconHollow,
 		order: 1,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'hollow',
@@ -26,6 +27,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: SoulChartUnitIconHollow,
 		order: 2,
 		display: 'default-shown',
+		italic: false,
 	},
 	{
 		game: 'hollow',
@@ -36,6 +38,7 @@ const variables: LineChartVariableDescription[] = [
 		UnitIcon: SoulChartUnitIconHollow,
 		order: 3,
 		display: 'never',
+		italic: true,
 	},
 ];
 
