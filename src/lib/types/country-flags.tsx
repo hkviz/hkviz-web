@@ -1,4 +1,4 @@
-import { Show } from 'solid-js';
+import { createEffect, createSignal, Show } from 'solid-js';
 import {
 	AD,
 	AE,
@@ -251,6 +251,7 @@ import {
 	ZW,
 } from 'country-flag-icons/string/3x2';
 import type { CountryCode } from './country';
+import { isServer } from 'solid-js/web';
 
 const flagByCode: Record<CountryCode, string | null> = {
 	'prefer-no': null,
@@ -510,7 +511,12 @@ export function countryFlag(country: CountryCode): string | null {
 }
 
 export function CountryFlag(props: { code: CountryCode }) {
-	const flag = () => countryFlag(props.code)?.replace('<svg', '<svg class="w-4 h-[0.666rem]"');
+	const [flag, setFlag] = createSignal<string | null>(null);
+	if (!isServer) {
+		createEffect(() => {
+			setFlag(countryFlag(props.code)?.replace('<svg', '<svg class="w-4 h-[0.666rem]"') ?? null);
+		});
+	}
 	return (
 		<Show when={flag()}>
 			{(flag) => (

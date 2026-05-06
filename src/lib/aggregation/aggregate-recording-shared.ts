@@ -7,25 +7,7 @@ import type {
 	AggregationVariableShared,
 	ExtractAggregationVariable,
 } from './aggregation-value-base';
-
-export const virtualSceneName = {
-	all: ':all:',
-	zone(zoneName: string) {
-		return `:zone:${zoneName}`;
-	},
-	groupBossSequence(bossSequenceName: string) {
-		return `group_boss_seq:${bossSequenceName}`;
-	},
-	bossSequence(bossSequenceName: string, sceneName: string) {
-		return `boss_seq:${bossSequenceName}:${sceneName}`;
-	},
-};
-
-function getMaximumModeOfVirtualScene(sceneName: string): AggregationMaximumMode | null {
-	if (sceneName === virtualSceneName.all) return null;
-	if (sceneName.startsWith(':zone:')) return 'overZones';
-	return 'overScenes';
-}
+import { getMaximumModeOfVirtualScene, virtualSceneName } from './virtual-scene-name';
 
 export type AddToScenesFunction<AggregationVariable> = (
 	virtualScenes: readonly string[],

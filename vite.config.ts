@@ -118,7 +118,7 @@ export default defineConfig(({ mode }) => {
 
 			isAnalyze &&
 				visualizer({
-					filename: `dist/stats-${mode}.html`,
+					filename: `dist/stats-${mode}-${new Date().toISOString().replace(/[:.]/g, '-')}.html`,
 					gzipSize: true,
 					brotliSize: true,
 					open: true,
