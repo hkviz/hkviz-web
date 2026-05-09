@@ -1,4 +1,4 @@
-import { createEffect, createSignal, type Component } from 'solid-js';
+import { createEffect, createSignal, onCleanup, type Component, untrack } from 'solid-js';
 import { Vector2 } from '~/lib/game-data/shared/vector2';
 import { isFrameEndEventHollow } from '~/lib/parser/recording-files/events-hollow/frame-end-event-check-hollow';
 import { isFrameEndEventSilk } from '~/lib/parser/recording-files/events-silk/frame-end-event-check-silk';
@@ -6,14 +6,23 @@ import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';
 import { createAutoSizeCanvas } from '../canvas';
 import { corpsePinSourceOrUndefined, dreamGatePinSrc, heroPinSourceOrUndefined } from '../img-urls';
 import { useAnimationStore } from '../store/animation-store';
+import { useAnimationTickStore } from '../store/animation-tick-store';
+import { TickListenerOrder } from '../store/animation-tick-store';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useMapZoomStore } from '../store/map-zoom-store';
+import type { TraceVisibility } from '../store/trace-store';
 import { useTraceStore } from '../store/trace-store';
+import type { GameModuleAny } from '~/lib/game-module/game-module';
+import type { PlayerPositionEvent } from '~/lib/parser/recording-files/events-shared/player-position-event';
+import type { CombinedRecordingAny } from '~/lib/parser/recording-files/parser-specific/combined-recording';
+import type { FrameEndEventAny } from '~/lib/parser/recording-files/events-specific/frame-end-event-of-game';
+import type { GameId } from '~/lib/types/game-ids';
 
 const EMPTY_ARRAY = [] as const;
 
 export const HKMapTraces: Component = () => {
 	const animationStore = useAnimationStore();
+	const animationTickStore = useAnimationTickStore();
 	const traceStore = useTraceStore();
 	const mapZoomStore = useMapZoomStore();
 	const gameplayStore = useGameplayStore();
@@ -107,10 +116,141 @@ export const HKMapTraces: Component = () => {
 		() => canvas,
 	);
 
-	createEffect(function tracesCanvasEffect() {
-		pinSizeTick();
-		const _canvas = autoSizeCanvas();
-		const gameModule = gameplayStore.gameModule();
+	type DrawState = {
+		initialized: boolean;
+		didChange: boolean;
+		pinSizeTick: number;
+		canvasEl: HTMLCanvasElement | null;
+		canvasWidth: number;
+		canvasHeight: number;
+		gameModule: GameModuleAny | null;
+		transformScale: number;
+		transformOffsetX: number;
+		transformOffsetY: number;
+		msIntoGame: number;
+		traceLengthMs: number;
+		visibility: TraceVisibility;
+		positionEvents: readonly PlayerPositionEvent[];
+		recording: CombinedRecordingAny | null;
+		frameEvent: FrameEndEventAny | null;
+		game: GameId | null;
+	};
+
+	const drawState: DrawState = {
+		initialized: false,
+		didChange: true,
+		pinSizeTick: 0,
+		canvasEl: null,
+		canvasWidth: 0,
+		canvasHeight: 0,
+		gameModule: null,
+		transformScale: 1,
+		transformOffsetX: 0,
+		transformOffsetY: 0,
+		msIntoGame: 0,
+		traceLengthMs: 0,
+		visibility: 'fade_out',
+		positionEvents: EMPTY_ARRAY,
+		recording: null,
+		frameEvent: null,
+		game: gameplayStore.game() ?? null,
+	};
+
+	function readDrawState(state: DrawState) {
+		state.didChange = !state.initialized;
+		const canvasState = autoSizeCanvas();
+		const transform = mapZoomStore.transform();
+		const recording = gameplayStore.recording();
+
+		const nextPinSizeTick = pinSizeTick();
+		if (state.pinSizeTick !== nextPinSizeTick) {
+			state.pinSizeTick = nextPinSizeTick;
+			state.didChange = true;
+		}
+
+		if (state.canvasEl !== canvasState.canvas) {
+			state.canvasEl = canvasState.canvas;
+			state.didChange = true;
+		}
+		if (state.canvasWidth !== canvasState.widthInUnits) {
+			state.canvasWidth = canvasState.widthInUnits;
+			state.didChange = true;
+		}
+		if (state.canvasHeight !== canvasState.heightInUnits) {
+			state.canvasHeight = canvasState.heightInUnits;
+			state.didChange = true;
+		}
+
+		const nextGameModule = gameplayStore.gameModule();
+		if (state.gameModule !== nextGameModule) {
+			state.gameModule = nextGameModule;
+			state.didChange = true;
+		}
+
+		if (state.transformScale !== transform.scale) {
+			state.transformScale = transform.scale;
+			state.didChange = true;
+		}
+		if (state.transformOffsetX !== transform.offsetX) {
+			state.transformOffsetX = transform.offsetX;
+			state.didChange = true;
+		}
+		if (state.transformOffsetY !== transform.offsetY) {
+			state.transformOffsetY = transform.offsetY;
+			state.didChange = true;
+		}
+
+		const nextMsIntoGame = animationStore.msIntoGame();
+		if (state.msIntoGame !== nextMsIntoGame) {
+			state.msIntoGame = nextMsIntoGame;
+			state.didChange = true;
+		}
+
+		const nextTraceLengthMs = traceStore.lengthMs();
+		if (state.traceLengthMs !== nextTraceLengthMs) {
+			state.traceLengthMs = nextTraceLengthMs;
+			state.didChange = true;
+		}
+
+		const nextVisibility = traceStore.visibility();
+		if (state.visibility !== nextVisibility) {
+			state.visibility = nextVisibility;
+			state.didChange = true;
+		}
+
+		const nextPositionEvents = recording?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
+		if (state.positionEvents !== nextPositionEvents) {
+			state.positionEvents = nextPositionEvents;
+			state.didChange = true;
+		}
+
+		if (state.recording !== recording) {
+			state.recording = recording;
+			state.didChange = true;
+		}
+
+		const nextFrameEvent = animationStore.currentFrameEndEvent();
+		if (state.frameEvent !== nextFrameEvent) {
+			state.frameEvent = nextFrameEvent;
+			state.didChange = true;
+		}
+
+		const nextGame = gameplayStore.game();
+		if (state.game !== nextGame) {
+			state.game = nextGame;
+			state.didChange = true;
+		}
+
+		state.initialized = true;
+	}
+
+	function drawTraces(state: DrawState) {
+		const _canvas = {
+			canvas: state.canvasEl,
+			widthInUnits: state.canvasWidth,
+			heightInUnits: state.canvasHeight,
+		};
+		const gameModule = state.gameModule;
 		const visualExtends = gameModule?.map.extends;
 		if (!_canvas.canvas || !visualExtends) return;
 
@@ -123,18 +263,16 @@ export const HKMapTraces: Component = () => {
 				? _canvas.widthInUnits / visualExtends.size.x
 				: _canvas.heightInUnits / visualExtends.size.y;
 
-		const transform = mapZoomStore.transform();
-
-		const scaler = transform.scale * mapDistanceToCanvasUnits;
+		const scaler = state.transformScale * mapDistanceToCanvasUnits;
 
 		const xOffset =
 			_canvas.widthInUnits / 2 -
 			visualExtends.center.x * mapDistanceToCanvasUnits +
-			transform.offsetX * mapDistanceToCanvasUnits;
+			state.transformOffsetX * mapDistanceToCanvasUnits;
 		const yOffset =
 			_canvas.heightInUnits / 2 -
 			visualExtends.center.y * mapDistanceToCanvasUnits +
-			transform.offsetY * mapDistanceToCanvasUnits;
+			state.transformOffsetY * mapDistanceToCanvasUnits;
 		function x(v: number) {
 			return v * scaler + xOffset;
 		}
@@ -143,14 +281,14 @@ export const HKMapTraces: Component = () => {
 		}
 
 		// animation
-		const traceLengthMs = traceStore.lengthMs();
-		const minMsIntoGame = animationStore.msIntoGame() - traceLengthMs;
-		const maxMsIntoGame = animationStore.msIntoGame();
-		const game = gameplayStore.game();
+		const traceLengthMs = state.traceLengthMs;
+		const minMsIntoGame = state.msIntoGame - traceLengthMs;
+		const maxMsIntoGame = state.msIntoGame;
+		const game = state.game;
 
-		const positionEvents = gameplayStore.recording()?.playerPositionEventsWithTracePosition ?? EMPTY_ARRAY;
+		const positionEvents = state.positionEvents;
 
-		const visibility = traceStore.visibility();
+		const visibility = state.visibility;
 
 		const firstIndex =
 			visibility === 'fade_out' && positionEvents.length > 0 && minMsIntoGame > positionEvents[0]!.msIntoGame
@@ -168,7 +306,7 @@ export const HKMapTraces: Component = () => {
 		ctx.fillStyle = 'transparent';
 		// using sqrt so the line becomes thicker when zooming in, but not at the same speed
 		// as everything else grows.
-		const baseLineWidth = mapDistanceToCanvasUnits * transform.scale ** 0.5;
+		const baseLineWidth = mapDistanceToCanvasUnits * state.transformScale ** 0.5;
 		const halfBaseLineWidth = baseLineWidth / 2;
 		const jumpThreshold = gameModule.map.scale(1.5);
 
@@ -304,9 +442,9 @@ export const HKMapTraces: Component = () => {
 		// );
 
 		// frame end pins
-		const frameEvent = animationStore.currentFrameEndEvent();
-		const recording = gameplayStore.recording();
-		if (frameEvent && traceStore.visibility() === 'fade_out' && recording && frameEvent) {
+		const frameEvent = state.frameEvent;
+		const recording = state.recording;
+		if (frameEvent && visibility === 'fade_out' && recording && frameEvent) {
 			// dream gate
 			if (
 				isFrameEndEventHollow(frameEvent) &&
@@ -392,6 +530,20 @@ export const HKMapTraces: Component = () => {
 				drawH,
 			);
 		}
+	}
+
+	createEffect(function tracesCanvasEffect() {
+		const removeTickListener = animationTickStore.addTickListener(() => {
+			untrack(() => {
+				readDrawState(drawState);
+				if (!drawState.didChange) {
+					return;
+				}
+				drawTraces(drawState);
+			});
+		}, TickListenerOrder.TRACES_CANVAS);
+
+		onCleanup(removeTickListener);
 	});
 
 	return container;

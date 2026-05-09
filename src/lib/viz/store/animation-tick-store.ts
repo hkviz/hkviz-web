@@ -5,8 +5,20 @@ import type { ExtraChartStore } from './extra-chart-store';
 const intervalMs = 1000 / 30;
 // const intervalMs = 1000 / 60;
 
+export const TickListenerOrder = {
+	AUTO_ZOOM: 1,
+	TRACES_CANVAS: 2,
+} as const;
+
+type TickListenerEntry = {
+	id: number;
+	order: number;
+	cb: (deltaMs: number) => void;
+};
+
 export function createAnimationTickStore(animationStore: AnimationStore, extraChartStore: ExtraChartStore) {
-	const tickListeners = new Set<(deltaMs: number) => void>();
+	const tickListeners: TickListenerEntry[] = [];
+	let nextTickListenerId = 0;
 
 	createEffect(() => {
 		// const interval = setInterval(() => {
@@ -28,7 +40,7 @@ export function createAnimationTickStore(animationStore: AnimationStore, extraCh
 				extraChartStore.tick(deltaMs);
 
 				for (const listener of tickListeners) {
-					listener(deltaMs);
+					listener.cb(deltaMs);
 				}
 			});
 
@@ -42,9 +54,17 @@ export function createAnimationTickStore(animationStore: AnimationStore, extraCh
 		// onCleanup(() => clearInterval(interval));
 	});
 
-	function addTickListener(cb: (deltaMs: number) => void): () => void {
-		tickListeners.add(cb);
-		return () => tickListeners.delete(cb);
+	function addTickListener(cb: (deltaMs: number) => void, order: number = 0): () => void {
+		const entry: TickListenerEntry = { id: nextTickListenerId++, order, cb };
+		tickListeners.push(entry);
+		tickListeners.sort((a, b) => (a.order === b.order ? a.id - b.id : a.order - b.order));
+
+		return () => {
+			const index = tickListeners.findIndex((it) => it.id === entry.id);
+			if (index !== -1) {
+				tickListeners.splice(index, 1);
+			}
+		};
 	}
 
 	return { addTickListener };

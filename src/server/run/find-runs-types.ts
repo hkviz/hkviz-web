@@ -1,4 +1,4 @@
-export interface RunFileInfo {
+export interface RunFileMetadata {
 	id: string;
 	version: number;
 	signedUrl: string;

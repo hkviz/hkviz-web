@@ -1,14 +1,15 @@
 import { isNull, like } from 'drizzle-orm';
 import * as v from 'valibot';
-import { r2RunPartFileKey } from '~/lib/r2';
 import { gameIdSchema } from '~/lib/types/game-ids';
 import { runSortSchema } from '~/lib/types/run-sort';
-import { getTagCodeFromDBColumn, getTagDBColumn } from '~/lib/types/tags/tag_db_column';
+import { getTagCodeFromDBColumn, getTagDBColumn, tagDBNames } from '~/lib/types/tags/tag_db_column';
 import { tagFromCode, tagSchema, type TagCode } from '~/lib/types/tags/tags';
 import { visibilitySchema } from '~/lib/types/visibility';
 import { type DB } from '~/server/db';
-import { r2GetSignedDownloadUrl } from '~/server/r2';
 import { getGameStateMeta, runFilesMetaFieldsSelect, runTagFieldsSelect } from './run-column-selects';
+import { r2RunPartFileKey } from '~/lib/r2';
+import { r2GetSignedDownloadUrl } from '../r2';
+import type { RunFileMetadata } from './find-runs-types';
 
 export const runFilterSchema = v.object({
 	userId: v.nullish(v.pipe(v.string(), v.uuid())),
@@ -178,87 +179,73 @@ export async function findRunsInternal({
 		return user;
 	}
 
+	function mapRun(run: (typeof runs)[number], files: RunFileMetadata[] | undefined) {
+		const gameState = getGameStateMeta(run.game, run);
+		const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
+		const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
+		const isResearchView = run.user.id !== currentUser?.id && run.visibility === 'private';
+
+		const tags: TagCode[] = isAnonymAccess
+			? []
+			: tagDBNames
+					.map((tagDBName) =>
+						run[tagDBName] === true ? getTagCodeFromDBColumn(run.game, tagDBName) : undefined,
+					)
+					.filter((tagCode): tagCode is TagCode => tagCode != null);
+
+		return {
+			id: isAnonymAccess ? filter.anonymAccessKey! : run.id,
+			title: isAnonymAccess ? (run.anonymAccessTitle ?? run.title) : run.title,
+			description: run.description,
+			createdAt: run.createdAt,
+			visibility: run.visibility,
+			tags,
+			user: getOrMakeUser(
+				isResearchView || isAnonymAccess ? '' : run.user.id,
+				isResearchView || isAnonymAccess ? 'Anonym' : (run.user.name ?? 'Unnamed player'),
+			),
+			startedAt: gameState?.startedAt ?? run.createdAt,
+			lastPlayedAt: gameState?.endedAt ?? run.updatedAt,
+			isSteelSoul,
+			isBrokenSteelSoul,
+			archived: run.archived,
+			isCombinedRun: run.isCombinedRun,
+			gameState,
+			files,
+			currentUserState: currentUser
+				? {
+						hasLiked: run.interactions ? run.interactions.length > 0 : false,
+					}
+				: undefined,
+		};
+	}
+
+	if (!includeFiles) {
+		return runs.map((run) => mapRun(run, undefined));
+	}
+
 	return await Promise.all(
-		runs.map(
-			async ({
-				files,
-				id,
-				title,
-				anonymAccessTitle,
-				description,
-				createdAt,
-				updatedAt,
-				visibility,
-				archived,
-				isCombinedRun,
-				...run
-			}) => {
-				const gameState = getGameStateMeta(run.game, run);
-				const isBrokenSteelSoul = gameState?.permadeathMode === 2 || gameState?.lastScene === 'PermaDeath';
-				const isSteelSoul = (gameState?.permadeathMode ?? 0) !== 0 || isBrokenSteelSoul;
-				const isResearchView = run.user.id !== currentUser?.id && visibility === 'private';
+		runs.map(async (run) => {
+			const filteredFiles = !isAnonymAccess
+				? run.files
+				: run.files?.filter(
+						(it) =>
+							run.anonymAccessGameplayCutOffAt == null ||
+							it.createdAt <= run.anonymAccessGameplayCutOffAt,
+					);
 
-				const mappedFiles = !includeFiles
-					? undefined
-					: await Promise.all(
-							files.map(async (file, index) => ({
-								...file,
-								signedUrl: await r2GetSignedDownloadUrl(r2RunPartFileKey(file.id)),
-								combinedPartNumber: index + 1,
-							})),
-						);
+			const mappedFiles: RunFileMetadata[] = await Promise.all(
+				filteredFiles?.map(async (file, index) => ({
+					id: file.id,
+					version: file.version,
+					signedUrl: await r2GetSignedDownloadUrl(r2RunPartFileKey(file.id)),
+					combinedPartNumber: index + 1,
+				})) ?? [],
+			);
 
-				const filteredFiles = !isAnonymAccess
-					? mappedFiles
-					: mappedFiles?.filter(
-							(it) =>
-								run.anonymAccessGameplayCutOffAt == null ||
-								it.createdAt <= run.anonymAccessGameplayCutOffAt,
-						);
-
-				return {
-					id: isAnonymAccess ? filter.anonymAccessKey! : id,
-					title: isAnonymAccess ? (anonymAccessTitle ?? title) : title,
-					description,
-					createdAt,
-					visibility,
-					tags: isAnonymAccess
-						? []
-						: (Object.entries(run)
-								.filter((kv) => kv[0].startsWith('tag_') && kv[1] === true)
-								.map((kv) => getTagCodeFromDBColumn(run.game, kv[0] as any)) as TagCode[]),
-					user: getOrMakeUser(
-						isResearchView || isAnonymAccess ? '' : run.user.id,
-						isResearchView || isAnonymAccess ? 'Anonym' : (run.user.name ?? 'Unnamed player'),
-					),
-					startedAt: gameState?.startedAt ?? createdAt,
-					lastPlayedAt: gameState?.endedAt ?? updatedAt,
-					isSteelSoul,
-					isBrokenSteelSoul,
-					archived,
-					isCombinedRun,
-					gameState,
-					files: filteredFiles,
-					currentUserState: currentUser
-						? {
-								hasLiked: run.interactions ? run.interactions.length > 0 : false,
-							}
-						: undefined,
-				};
-			},
-		),
+			return mapRun(run, mappedFiles);
+		}),
 	);
-	//     .sort((a, b) => {
-	//     if (a.lastPlayedAt && b.lastPlayedAt) {
-	//         return b.lastPlayedAt.getTime() - a.lastPlayedAt.getTime();
-	//     } else if (a.lastPlayedAt) {
-	//         return -1;
-	//     } else if (b.lastPlayedAt) {
-	//         return 1;
-	//     } else {
-	//         return b.createdAt.getTime() - a.createdAt.getTime();
-	//     }
-	// });
 }
 
 export type RunMetadata = Awaited<ReturnType<typeof findRunsInternal>>[number];

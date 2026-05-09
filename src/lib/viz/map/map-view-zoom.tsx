@@ -10,6 +10,7 @@ import { Vector2 } from '~/lib/game-data/shared/vector2';
 import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';
 import { useAnimationStore } from '../store/animation-store';
 import { useAnimationTickStore } from '../store/animation-tick-store';
+import { TickListenerOrder } from '../store/animation-tick-store';
 import { useGameplayStore } from '../store/gameplay-store';
 import { useMapZoomStore } from '../store/map-zoom-store';
 import { useRoomDisplayStore } from '../store/room-display-store';
@@ -84,8 +85,17 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 	const BOUNDS_EXTEND_TIME_SECONDS = 0.1;
 	const BOUNDS_REDUCE_TIME_SECONDS = 0.1;
 	const BOUNDS_REDUCE_TIME_SECONDS_AREA = 0.5;
+	const AUTO_ZOOM_APPLY_EPSILON_RATIO = 0.00005;
+	const AUTO_ZOOM_SNAP_TO_TARGET_EPSILON_RATIO = 0.00001;
 
 	const boundsAnimator = {
+		minX: 0,
+		minY: 0,
+		maxX: 0,
+		maxY: 0,
+		initialized: false,
+	};
+	const lastAppliedBounds = {
 		minX: 0,
 		minY: 0,
 		maxX: 0,
@@ -373,8 +383,44 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 		return null;
 	};
 
+	const maxBoundsDelta = (
+		a: { minX: number; minY: number; maxX: number; maxY: number },
+		b: { minX: number; minY: number; maxX: number; maxY: number },
+	) =>
+		Math.max(
+			Math.abs(a.minX - b.minX),
+			Math.abs(a.minY - b.minY),
+			Math.abs(a.maxX - b.maxX),
+			Math.abs(a.maxY - b.maxY),
+		);
+
+	const markLastAppliedBounds = (bounds: Bounds) => {
+		lastAppliedBounds.minX = bounds.min.x;
+		lastAppliedBounds.minY = bounds.min.y;
+		lastAppliedBounds.maxX = bounds.max.x;
+		lastAppliedBounds.maxY = bounds.max.y;
+		lastAppliedBounds.initialized = true;
+	};
+
+	const shouldApplyBounds = (
+		bounds: Bounds,
+		mapExtends: NonNullable<ReturnType<typeof gameModule>>['map']['extends'],
+	) => {
+		if (!lastAppliedBounds.initialized) return true;
+		const epsilon = Math.max(mapExtends.size.x, mapExtends.size.y) * AUTO_ZOOM_APPLY_EPSILON_RATIO;
+		return (
+			maxBoundsDelta(lastAppliedBounds, {
+				minX: bounds.min.x,
+				minY: bounds.min.y,
+				maxX: bounds.max.x,
+				maxY: bounds.max.y,
+			}) > epsilon
+		);
+	};
+
 	const resetBoundsAnimator = () => {
 		boundsAnimator.initialized = false;
+		lastAppliedBounds.initialized = false;
 		recentIncludedAreaAtMs.clear();
 	};
 
@@ -418,7 +464,11 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 
 				if (!mapZoomStore.transition()) {
 					resetBoundsAnimator();
+					if (!shouldApplyBounds(targetBounds, mapExtends)) {
+						return;
+					}
 					svg.call(zoom.transform.bind(zoom), getBoundsTransform(targetBounds));
+					markLastAppliedBounds(targetBounds);
 					return;
 				}
 
@@ -467,9 +517,42 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 					new Vector2(boundsAnimator.minX, boundsAnimator.minY),
 					new Vector2(boundsAnimator.maxX, boundsAnimator.maxY),
 				);
-				svg.call(zoom.transform.bind(zoom), getBoundsTransform(animatedBounds));
+
+				const snapEpsilon =
+					Math.max(mapExtends.size.x, mapExtends.size.y) * AUTO_ZOOM_SNAP_TO_TARGET_EPSILON_RATIO;
+				if (
+					maxBoundsDelta(
+						{
+							minX: animatedBounds.min.x,
+							minY: animatedBounds.min.y,
+							maxX: animatedBounds.max.x,
+							maxY: animatedBounds.max.y,
+						},
+						{
+							minX: targetBounds.min.x,
+							minY: targetBounds.min.y,
+							maxX: targetBounds.max.x,
+							maxY: targetBounds.max.y,
+						},
+					) <= snapEpsilon
+				) {
+					boundsAnimator.minX = targetBounds.min.x;
+					boundsAnimator.minY = targetBounds.min.y;
+					boundsAnimator.maxX = targetBounds.max.x;
+					boundsAnimator.maxY = targetBounds.max.y;
+				}
+
+				const finalBounds = Bounds.fromMinMax(
+					new Vector2(boundsAnimator.minX, boundsAnimator.minY),
+					new Vector2(boundsAnimator.maxX, boundsAnimator.maxY),
+				);
+				if (!shouldApplyBounds(finalBounds, mapExtends)) {
+					return;
+				}
+				svg.call(zoom.transform.bind(zoom), getBoundsTransform(finalBounds));
+				markLastAppliedBounds(finalBounds);
 			});
-		});
+		}, TickListenerOrder.AUTO_ZOOM);
 
 		onCleanup(() => {
 			removeTickListener();

@@ -5,13 +5,13 @@ import { loadGameModule } from '~/lib/game-module/load-game-module';
 import type { GameId } from '~/lib/types/game-ids';
 import { createStoreInitializer } from '../store/store-initializer';
 import { fetchWithRunfileCache, openRunfileCache } from './recording-file-browser-cache';
-import { type RunFileInfo } from './run-files-info';
 import { wrapResultWithProgress } from './wrap-result-with-progress';
+import type { RunFileMetadata } from '~/server/run/find-runs-types';
 
 async function loadFile<Game extends GameId>(
 	parserModulePromise: Promise<GameModuleOfGame<Game>>,
 	cache: Promise<Cache | null>,
-	file: RunFileInfo,
+	file: RunFileMetadata,
 	onProgress: (progress: number) => void,
 ) {
 	const loader = () => fetchWithRunfileCache(cache, file.id, file.version, file.signedUrl);
@@ -37,7 +37,7 @@ export interface RunFileLoader {
 	abort: () => void;
 }
 
-export function createRunFileLoader<Game extends GameId>(game: Game, files: RunFileInfo[]): RunFileLoader {
+export function createRunFileLoader<Game extends GameId>(game: Game, files: RunFileMetadata[]): RunFileLoader {
 	if (isServer) {
 		return {
 			progress: () => 0,

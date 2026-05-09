@@ -5,7 +5,6 @@ import { Card } from '~/components/ui/card';
 import { cn } from '~/lib/utils';
 import type { RunMetadata } from '~/server/run/_find_runs_internal';
 import { LayoutLane } from '../layout/layout-lane';
-import type { RunFileInfo } from '../loader/run-files-info';
 import type { RunFileLoader } from '../loader/run-files-loader';
 import { MapView } from '../map/map-view';
 import { useUiStore } from '../store/ui-store';
@@ -15,6 +14,7 @@ import { SingleRunPageTour } from '../tour/tour';
 import { MobileTabBar } from './mobile-tabs';
 import { RunOverviewTab } from './overview-tab';
 import { LargeScreenTabs } from './tabs-large-screen';
+import type { RunFileMetadata } from '~/server/run/find-runs-types';
 
 export const DashboardMapOptions: Component = () => {
 	const uiStore = useUiStore();
@@ -34,7 +34,7 @@ export const RightCard: Component<{ class?: string }> = (props) => {
 };
 
 export interface GameplayDashboardProps {
-	fileInfos: RunFileInfo[];
+	fileInfos: RunFileMetadata[];
 	runData: RunMetadata;
 	gameplayCard: JSXElement;
 	runFileLoader: RunFileLoader;

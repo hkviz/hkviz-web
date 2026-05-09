@@ -1,5 +1,6 @@
 import {
 	DeleteObjectCommand,
+	DeleteObjectCommandOutput,
 	GetObjectCommand,
 	HeadObjectCommand,
 	PutObjectCommand,
@@ -20,7 +21,7 @@ export const r2 = new S3Client({
 	},
 });
 
-export async function r2FileHead(key: R2Key): Promise<HeadObjectCommandOutput | null> {
+export function r2FileHead(key: R2Key): Promise<HeadObjectCommandOutput | null> {
 	return r2
 		.send(
 			new HeadObjectCommand({
@@ -41,8 +42,8 @@ export async function r2FileHead(key: R2Key): Promise<HeadObjectCommandOutput | 
 		);
 }
 
-export async function r2DeleteFile(key: R2Key): Promise<void> {
-	await r2.send(
+export function r2DeleteFile(key: R2Key): Promise<DeleteObjectCommandOutput> {
+	return r2.send(
 		new DeleteObjectCommand({
 			Bucket: env.R2_BUCKET_NAME,
 			Key: key,
@@ -50,8 +51,8 @@ export async function r2DeleteFile(key: R2Key): Promise<void> {
 	);
 }
 
-export async function r2GetSignedUploadUrl(key: R2Key) {
-	return await getSignedUrl(
+export function r2GetSignedUploadUrl(key: R2Key) {
+	return getSignedUrl(
 		r2,
 		new PutObjectCommand({
 			Bucket: env.R2_BUCKET_NAME,
@@ -62,8 +63,8 @@ export async function r2GetSignedUploadUrl(key: R2Key) {
 	);
 }
 
-export async function r2GetSignedDownloadUrl(key: R2Key) {
-	return await getSignedUrl(
+export function r2GetSignedDownloadUrl(key: R2Key) {
+	return getSignedUrl(
 		r2,
 		new GetObjectCommand({
 			Bucket: env.R2_BUCKET_NAME,
