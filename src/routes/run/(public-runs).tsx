@@ -8,6 +8,7 @@ import { findPublicRuns } from '~/server/run/find-public-runs';
 import { filterParamsAtPage, runFilterBaseNoPageSchema } from '~/server/run/find_runs_base';
 import { ContentWrapper } from '../../components/content-wrapper';
 import { RunFilters } from '../../components/run-filters';
+import { getGameName } from '~/lib/types/game-ids';
 
 // TODO
 // export function generateMetadata({ searchParams }: { searchParams: RunFilter }) {
@@ -36,12 +37,24 @@ export default function PublicRuns() {
 
 	const title = () => {
 		const filterTag = filter().tag;
+		const term = filter().term;
 		const tagOrGroup = filterTag ? tagOrGroupFromCode(filterTag) : undefined;
-		if (tagOrGroup) {
-			return `${tagOrGroup.name} Gameplays - HKViz`;
-		} else {
-			return 'Public gameplays - HKViz';
+		const game = filter().game;
+		let title: string = '';
+		if (term) {
+			title = `${term} - `;
 		}
+		if (tagOrGroup) {
+			title += `${tagOrGroup.name}`;
+		} else {
+			title += 'Public';
+		}
+		if (game) {
+			const gameName = getGameName(game);
+			title += ` ${gameName}`;
+		}
+		title += ' Gameplays - HKViz';
+		return title;
 	};
 
 	return (

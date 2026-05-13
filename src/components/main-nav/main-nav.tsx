@@ -20,7 +20,7 @@ import { ThemeSwitcher } from './theme-switcher';
 export const MainNavLeftSide: Component = () => {
 	return (
 		<>
-			<MenuItem href="/run" title="Public gameplays" icon={GlobeIcon} />
+			<MenuItem href="/run" title="Public Gameplays" icon={GlobeIcon} />
 			<MenuItem
 				href={({ pathname }) => {
 					if (pathname.startsWith('/guide')) {

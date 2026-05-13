@@ -10,29 +10,14 @@ import { BellhomePaintColoursSilk } from '~/lib/game-data/silk-data/player-data/
 import { ExtraRestZonesSilk } from '~/lib/game-data/silk-data/player-data/enum/extrarestzones-enum-silk.generated';
 import { MapZoneSilk } from '~/lib/game-data/silk-data/player-data/enum/mapzone-enum-silk.generated';
 import { toolCrestIdToNameSilk } from '~/lib/game-data/silk-data/tool-crest-silk.generated';
-import { findPublicRuns } from '~/server/run/find-public-runs';
 import type { RunGameStateSilk } from '~/server/run/run-column-selects';
 import { getRun } from '~/server/run/run-get';
 import '../_testing_styles.css';
 
-// TODO
-// export function generateMetadata({ searchParams }: { searchParams: RunFilter }) {
-//     const filter = runFilterParamsSchema.parse(searchParams);
-//     const tagOrGroup = filter.tag ? tagOrGroupFromCode(filter.tag) : undefined;
-
-//     const title = tagOrGroup ? `${tagOrGroup.name} - Public gameplays - HKViz` : 'Public gameplays - HKViz';
-
-//     return {
-//         title,
-//         alternates: {
-//             canonical: '/run',
-//         },
-//     };
-// }
-
 export const route = {
-	preload: ({ location }) => {
-		void findPublicRuns(location.query as any);
+	preload: ({ params }) => {
+		const id = params.id;
+		void getRun(id!);
 	},
 } satisfies RouteDefinition;
 

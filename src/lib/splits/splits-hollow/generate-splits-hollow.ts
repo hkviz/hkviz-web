@@ -209,7 +209,8 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 				) {
 					splits.push({
 						msIntoGame: event.msIntoGame,
-						title: localized.raw(`Charm Notch (nr ${event.value})`),
+						title: localized.raw(`Charm Notch`),
+						subtitle: localized.raw(`Number ${event.value}`),
 						tooltip: localized.raw(`Got ${event.value} Charm Notches`),
 						imageUrl: '/ingame-sprites/inventory/Inv_0027_spell_slot.png',
 						group: splitGroupsHollow.charmCollection,
