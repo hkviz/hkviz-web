@@ -26,7 +26,7 @@ import { MapLegend } from './legend';
 import { MapOverlayOptions } from './map-overlay-options';
 import { MapViewRooms } from './map-view-rooms';
 import { HkMapTexts } from './map-view-texts';
-import { createMapViewZoom } from './map-view-zoom';
+import { createMapViewZoom } from './map-zoom/map-view-zoom';
 import { HoverOutlineFilter } from './svg-filters';
 import { HKMapTraces } from './traces-canvas';
 

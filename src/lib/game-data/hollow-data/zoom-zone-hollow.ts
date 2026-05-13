@@ -8,8 +8,8 @@ export function zoomZoneHollow(zoneNameFormatted: ZoneNameFormattedHollow) {
 			return 'Forgotten Crossroads' satisfies ZoneNameFormattedHollow;
 		case 'Hive':
 			return "Kingdom's Edge" satisfies ZoneNameFormattedHollow;
-		case 'Royal Waterways':
-			return 'City of Tears' satisfies ZoneNameFormattedHollow;
+		//case 'Royal Waterways':
+		//	return 'City of Tears' satisfies ZoneNameFormattedHollow;
 		default:
 			return zoneNameFormatted;
 	}
@@ -22,7 +22,7 @@ const extraZoomZonesHollow: Record<string, ZoomZoneHollow[]> = {
 	Fungus2_01: ['Fog Canyon'], // Queens Station
 	Fungus2_02: ['Fog Canyon'], // Queens Station
 	Fungus2_34: ['Fog Canyon'], // Queens Station
-	Abyss_01: ['City of Tears'], // Long room between city and abyss located in royal waterways
+	// Abyss_01: ['City of Tears'], // Long room between city and abyss located in royal waterways
 	Fungus2_25: ['Fungal Wastes'], // Mantis Village entrance to deep nest
 	Mines_01: ['Forgotten Crossroads'], // Crystal Peak entrance from dirtmouth
 	Mines_10: ['Forgotten Crossroads'], // Crystal Peak entrance from dirtmouth
@@ -60,6 +60,10 @@ export function getZoomZonesHollow(
 	sceneName: string,
 	zoneNameFormatted: ZoneNameFormattedHollow,
 ): readonly ZoomZoneHollow[] {
+	if (sceneName === 'Abyss_01') {
+		return ['Royal Waterways' satisfies ZoneNameFormattedHollow];
+	}
+
 	const mainZoomZone = zoomZoneHollow(zoneNameFormatted);
 	const extraZoomZonesForScene = extraZoomZonesHollow[sceneName] ?? [];
 	return [mainZoomZone, ...extraZoomZonesForScene];

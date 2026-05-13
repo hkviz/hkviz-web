@@ -11,7 +11,7 @@ import {
 import { tabsListTransparentClasses } from '~/components/ui/additions/tabs';
 import { Button } from '~/components/ui/button';
 import { CardContent, CardDescription, CardHeader, CardTitle } from '~/components/ui/card';
-import { ContextMenu, ContextMenuContent, ContextMenuTrigger } from '~/components/ui/context-menu';
+import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from '~/components/ui/context-menu';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '~/components/ui/select';
 import { Table, TableBody, TableCell, TableHead, TableRow } from '~/components/ui/table';
 import { Tabs, TabsList, TabsTrigger } from '~/components/ui/tabs';
@@ -427,6 +427,12 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 		}
 	});
 
+	async function copyRoomDevName() {
+		const mainRoomInfo = roomInfos().mainRoomInfo;
+		if (!mainRoomInfo) return;
+		await navigator.clipboard.writeText(mainRoomInfo.sceneName);
+	}
+
 	return (
 		<AreaAnalyticsContext.Provider value={roomInfosContext}>
 			<LayoutPanelWrapper
@@ -469,14 +475,24 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 							</Show>
 							<Show when={selectedRoom() != null}>
 								<Tooltip>
-									<TooltipTrigger class="text-left">
-										{areaSelectionMode() === 'room'
-											? (roomInfos().mainRoomInfo?.roomNameFormattedZoneExclusive ??
-												selectedRoom())
-											: 'All Rooms'}
-										{/* <br />
+									<ContextMenu>
+										<ContextMenuTrigger as={TooltipTrigger}>
+											{areaSelectionMode() === 'room'
+												? (roomInfos().mainRoomInfo?.roomNameFormattedZoneExclusive ??
+													selectedRoom())
+												: 'All Rooms'}
+											{/* <br />
                                     {selectedRoom} */}
-									</TooltipTrigger>
+										</ContextMenuTrigger>
+										<ContextMenuContent>
+											<ContextMenuItem onSelect={copyRoomDevName}>
+												<span>Copy development scene name:</span>
+												<span class="ml-2 text-muted-foreground">
+													{roomInfos().mainRoomInfo?.sceneName}
+												</span>
+											</ContextMenuItem>
+										</ContextMenuContent>
+									</ContextMenu>
 									<TooltipContent>Room</TooltipContent>
 								</Tooltip>
 							</Show>
