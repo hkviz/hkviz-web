@@ -360,21 +360,77 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 	// Scratch sets reused across getCurrentAreaBounds calls to avoid allocating fresh Sets
 	// every frame. They are cleared at the start of each computation.
 	const includedAreasScratch = new Set<string>();
-	const revisitSoonAreasScratch = new Set<string>();
 	const expiredAreasScratch: string[] = [];
 
-	// Result cache. The computation depends on currentSceneContext (which has stable equality
-	// when the scene event index doesn't change), the play/speed/direction state, and gameNow.
-	// Within a short TTL window the result is essentially identical, so we skip the work and
-	// reuse the previous Bounds. Recent-area timestamps are NOT refreshed on cache hits — that
-	// extends the hysteresis by up to CURRENT_AREA_BOUNDS_CACHE_MS, which is imperceptible.
-	const CURRENT_AREA_BOUNDS_CACHE_MS = 150;
+	// Empty set used as the revisit-soon set when paused (no future/revisit window).
+	const EMPTY_AREA_SET: ReadonlySet<string> = new Set<string>();
+
+	type EventAreaSets = {
+		// Areas in the past window + the event's own area. Used when paused.
+		pastIncluded: ReadonlySet<string>;
+		// pastIncluded ∪ areas in the future window. Used when playing.
+		playingIncluded: ReadonlySet<string>;
+		// Areas in the revisit window (= future-only events plus the future window). Used to
+		// keep recent areas from expiring while a revisit is upcoming.
+		revisitSoon: ReadonlySet<string>;
+	};
+
+	// Precomputed area sets for every main scene event index. Only depends on the recording, the
+	// playback direction (sign of speed) and |speed| — all of which change rarely. The expensive
+	// per-event scan that getCurrentAreaBounds used to do on every cache-miss frame is hoisted
+	// here so it runs once per speed/direction change instead of every tick.
+	//
+	// Note: the precomputation centers each window at the event's own msIntoGame, so as gameNow
+	// drifts within an event the windows are slightly off. The smooth bounds animator handles
+	// that gracefully — area-set changes are stepped at event boundaries instead of sliding
+	// continuously, and the difference is not visible.
+	const eventAreaSets = createMemo(function computeEventAreaSets() {
+		const sceneEvents = gameplayStore.recording()?.sceneEvents;
+		if (!sceneEvents) return null;
+		const mainIndexes = mainSceneEventIndexes();
+		if (!mainIndexes || mainIndexes.length === 0) return null;
+		const gm = gameModule();
+		if (!gm) return null;
+
+		const speed = animationStore.speedMultiplier();
+		const direction: 1 | -1 = speed < 0 ? -1 : 1;
+		const absSpeed = Math.abs(speed) || 1;
+		const pastMs = AREA_CONTEXT_MEMORY_MS * absSpeed;
+		const futureMs = AREA_CONTEXT_LOOKAHEAD_MS * absSpeed;
+		const revisitMs = AREA_REVISIT_LOOKAHEAD_MS * absSpeed;
+
+		const result = new Map<number, EventAreaSets>();
+		for (const idx of mainIndexes) {
+			const event = sceneEvents[idx]!;
+			const mainRoomData = gm.map.getMainRoomDataBySceneName(event.sceneName);
+			if (!mainRoomData) continue;
+
+			const pastIncluded = new Set<string>();
+			const currentArea = areaForSceneName(event.sceneName) ?? mainRoomData.mapZone;
+			if (currentArea) pastIncluded.add(currentArea);
+			collectPastAreasInto(pastIncluded, sceneEvents, idx, event.msIntoGame, direction, pastMs);
+
+			const playingIncluded = new Set(pastIncluded);
+			const revisitSoon = new Set<string>();
+			collectFutureAndRevisitInto(
+				playingIncluded, revisitSoon, sceneEvents, idx, event.msIntoGame, direction, futureMs, revisitMs,
+			);
+
+			result.set(idx, { pastIncluded, playingIncluded, revisitSoon });
+		}
+		return result;
+	});
+
+	// Result cache. With the precomputed event area sets, the only remaining per-frame work is
+	// the hysteresis merge + bounds combination. We still cache the resulting Bounds so it has
+	// a stable reference frame-to-frame — this lets the fast-path early-return in
+	// autoZoomUntracked fire (it compares targetBounds by reference).
 	let cachedAreaBoundsResult: Bounds | null = null;
-	let cachedAreaBoundsValidUntilRealMs = -Infinity;
-	let cachedAreaBoundsContext: ReturnType<typeof currentSceneContext> = null;
+	let cachedAreaBoundsForEventSets: EventAreaSets | undefined = undefined;
 	let cachedAreaBoundsIsPlaying = false;
-	let cachedAreaBoundsDirection: 1 | -1 = 1;
-	let cachedAreaBoundsSpeed = 0;
+	let cachedAreaBoundsRecentMapVersion = -1;
+	// Bumped whenever recentIncludedAreaAtMs is mutated in a way that could change the output.
+	let recentMapVersion = 0;
 
 	function getCurrentAreaBounds() {
 		const context = currentSceneContext();
@@ -383,68 +439,58 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 			return null;
 		}
 
+		const sets = eventAreaSets();
+		const eventSets = sets?.get(context.sceneEventIndex);
+		if (!eventSets) {
+			cachedAreaBoundsResult = null;
+			return null;
+		}
+
 		const speedMultiplier = animationStore.speedMultiplier();
 		const isPlaying = animationStore.isPlaying() && speedMultiplier !== 0;
-		const direction: 1 | -1 = isPlaying && speedMultiplier < 0 ? -1 : 1;
 		const realNow = performance.now();
 
-		// Fast path: nothing about the inputs that affects the result has changed since the last
-		// compute, and we're within the cache TTL. Return the cached Bounds without iterating
-		// any scene events or touching recentIncludedAreaAtMs.
+		// Refresh timestamps for the event's "currently included" areas. This is cheap (a few
+		// Map.set calls) and keeps the hysteresis behavior correct without needing to recompute.
+		const baseIncluded = isPlaying ? eventSets.playingIncluded : eventSets.pastIncluded;
+		for (const area of baseIncluded) {
+			recentIncludedAreaAtMs.set(area, realNow);
+		}
+
+		// Expire stale entries from recentIncludedAreaAtMs that aren't being kept alive by the
+		// upcoming-revisit lookahead. Bump recentMapVersion only if anything actually changes,
+		// so the cache below can stay valid.
+		const revisitSoon = isPlaying ? eventSets.revisitSoon : EMPTY_AREA_SET;
+		const expired = expiredAreasScratch;
+		expired.length = 0;
+		for (const [area, includedAtMs] of recentIncludedAreaAtMs) {
+			if (realNow - includedAtMs > AREA_CONTEXT_MEMORY_MS && !revisitSoon.has(area)) {
+				expired.push(area);
+			}
+		}
+		if (expired.length > 0) {
+			for (const area of expired) recentIncludedAreaAtMs.delete(area);
+			recentMapVersion++;
+		}
+
+		// Fast path: same event-set, same play state, and the recent-area map content hasn't
+		// changed since the last compute. Reuse the cached Bounds reference.
 		if (
 			cachedAreaBoundsResult !== null &&
-			context === cachedAreaBoundsContext &&
+			eventSets === cachedAreaBoundsForEventSets &&
 			isPlaying === cachedAreaBoundsIsPlaying &&
-			direction === cachedAreaBoundsDirection &&
-			speedMultiplier === cachedAreaBoundsSpeed &&
-			realNow < cachedAreaBoundsValidUntilRealMs
+			recentMapVersion === cachedAreaBoundsRecentMapVersion
 		) {
 			return cachedAreaBoundsResult;
 		}
 
-		const { sceneEvents, sceneEventIndex, sceneEvent, mainRoomData } = context;
-		const gameNow = animationStore.msIntoGame();
-		// Convert real-time windows to game-time windows. Fall back to 1x when paused.
-		const absSpeed = Math.abs(speedMultiplier) || 1;
-
+		// Build the full included-areas set: precomputed base + any hysteresis-surviving entries.
+		// recentIncludedAreaAtMs at this point only contains entries that haven't expired, so we
+		// can include them all.
 		const includedAreas = includedAreasScratch;
 		includedAreas.clear();
-		const currentArea = areaForSceneName(sceneEvent.sceneName, recentIncludedAreaAtMs) ?? mainRoomData.mapZone;
-		if (currentArea) includedAreas.add(currentArea);
-
-		collectPastAreasInto(
-			includedAreas, sceneEvents, sceneEventIndex, gameNow, direction,
-			AREA_CONTEXT_MEMORY_MS * absSpeed,
-		);
-
-		const revisitSoonAreas = revisitSoonAreasScratch;
-		revisitSoonAreas.clear();
-		if (isPlaying) {
-			collectFutureAndRevisitInto(
-				includedAreas, revisitSoonAreas,
-				sceneEvents, sceneEventIndex, gameNow, direction,
-				AREA_CONTEXT_LOOKAHEAD_MS * absSpeed,
-				AREA_REVISIT_LOOKAHEAD_MS * absSpeed,
-			);
-		}
-
-		for (const area of includedAreas) {
-			recentIncludedAreaAtMs.set(area, realNow);
-		}
-
-		const expired = expiredAreasScratch;
-		expired.length = 0;
-		for (const [area, includedAtMs] of recentIncludedAreaAtMs) {
-			const ageMs = realNow - includedAtMs;
-			if (ageMs > AREA_CONTEXT_MEMORY_MS && !revisitSoonAreas.has(area)) {
-				expired.push(area);
-				continue;
-			}
-			includedAreas.add(area);
-		}
-		for (const area of expired) {
-			recentIncludedAreaAtMs.delete(area);
-		}
+		for (const area of baseIncluded) includedAreas.add(area);
+		for (const area of recentIncludedAreaAtMs.keys()) includedAreas.add(area);
 
 		// Combine included area bounds in a single pass — one Bounds allocation at most.
 		const areaBoundsMap = boundsByArea();
@@ -475,11 +521,9 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 		else result = Bounds.fromMinMax(new Vector2(minX, minY), new Vector2(maxX, maxY));
 
 		cachedAreaBoundsResult = result;
-		cachedAreaBoundsContext = context;
+		cachedAreaBoundsForEventSets = eventSets;
 		cachedAreaBoundsIsPlaying = isPlaying;
-		cachedAreaBoundsDirection = direction;
-		cachedAreaBoundsSpeed = speedMultiplier;
-		cachedAreaBoundsValidUntilRealMs = realNow + CURRENT_AREA_BOUNDS_CACHE_MS;
+		cachedAreaBoundsRecentMapVersion = recentMapVersion;
 		return result;
 	}
 
