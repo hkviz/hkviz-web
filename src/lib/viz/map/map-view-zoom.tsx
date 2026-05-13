@@ -44,12 +44,9 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 	// 	return roomsByZoomZone;
 	// });
 
-	function areaBySceneName(sceneName: string): string | null {
-		return gameModule()?.map.getMainRoomDataBySceneName(sceneName)?.mapZone ?? null;
-	}
 	// Per-game-module cache for the mapZone[] arrays returned by areaCandidatesBySceneName.
-	// Without this, every scene event scanned by collectDirectionalAreas allocates a fresh array
-	// each frame.
+	// Without this, every scene event scanned each frame allocates a fresh array. The cache
+	// also folds in the [fallback] array path so we never allocate per call.
 	let areaCandidatesCacheKey: ReturnType<typeof gameModule> | undefined;
 	const areaCandidatesCache = new Map<string, string[]>();
 	const EMPTY_AREA_CANDIDATES: string[] = [];
@@ -61,10 +58,14 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 		}
 		const cached = areaCandidatesCache.get(sceneName);
 		if (cached) return cached;
-		const mainRoomData = gm?.map.getAllRoomDataBySceneNameWithSubSprites(sceneName);
-		const result = mainRoomData
-			? mainRoomData.map(function getMapZone(it) { return it.mapZone; })
-			: EMPTY_AREA_CANDIDATES;
+		let result: string[];
+		const subSpriteRooms = gm?.map.getAllRoomDataBySceneNameWithSubSprites(sceneName);
+		if (subSpriteRooms && subSpriteRooms.length > 0) {
+			result = subSpriteRooms.map(function getMapZone(it) { return it.mapZone; });
+		} else {
+			const fallback = gm?.map.getMainRoomDataBySceneName(sceneName)?.mapZone;
+			result = fallback ? [fallback] : EMPTY_AREA_CANDIDATES;
+		}
 		areaCandidatesCache.set(sceneName, result);
 		return result;
 	}
@@ -269,70 +270,80 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 		return Bounds.fromMinMax(min, max);
 	}
 
-	function areaCandidatesForSceneName(sceneName: string | null) {
-		if (!sceneName) return null;
-		const candidates = areaCandidatesBySceneName(sceneName);
-		if (candidates && candidates.length > 0) return candidates;
-		const fallback = areaBySceneName(sceneName);
-		return fallback ? [fallback] : null;
-	}
-
 	function areaForSceneName(
 		sceneName: string | null,
 		preferredAreas?: { has(v: string): boolean },
 		alsoPreferred?: { has(v: string): boolean },
 	) {
-		const candidates = areaCandidatesForSceneName(sceneName);
-		if (!candidates || candidates.length === 0) return null;
+		if (!sceneName) return null;
+		const candidates = areaCandidatesBySceneName(sceneName);
+		const count = candidates.length;
+		if (count === 0) return null;
+		// Hot path: the vast majority of scenes map to exactly one area, so skip the preference
+		// scan entirely. preferredAreas/alsoPreferred only matter for multi-candidate scenes.
+		if (count === 1) return candidates[0]!;
 		if (preferredAreas || alsoPreferred) {
-			for (const candidate of candidates) {
-				if (preferredAreas?.has(candidate) || alsoPreferred?.has(candidate)) return candidate;
+			// Skip the second .has() when both args reference the same Set (common: past/future
+			// pass includedAreas as both preferredAreas and dest).
+			const sameSet = preferredAreas === alsoPreferred;
+			for (let i = 0; i < count; i++) {
+				const candidate = candidates[i]!;
+				if (preferredAreas?.has(candidate)) return candidate;
+				if (!sameSet && alsoPreferred?.has(candidate)) return candidate;
 			}
 		}
-		return candidates[0] ?? null;
+		return candidates[0]!;
 	}
 
-	function collectDirectionalAreas({
-		sceneEvents,
-		currentSceneEventIndex,
-		gameNow,
-		direction,
-		windowMs,
-		kind,
-		preferredAreas,
-	}: {
-		sceneEvents: NonNullable<ReturnType<typeof gameplayStore.recording>>['sceneEvents'];
-		currentSceneEventIndex: number;
-		gameNow: number;
-		direction: 1 | -1;
-		windowMs: number;
-		kind: 'past' | 'future';
-		preferredAreas?: Set<string>;
-	}) {
-		const areas = new Set<string>();
-		if (windowMs <= 0) return areas;
+	type SceneEvents = NonNullable<ReturnType<typeof gameplayStore.recording>>['sceneEvents'];
 
-		const step = kind === 'past' ? (direction > 0 ? -1 : 1) : direction > 0 ? 1 : -1;
-		const startIndex = kind === 'past' ? currentSceneEventIndex : currentSceneEventIndex + step;
-
-		for (let i = startIndex; i >= 0 && i < sceneEvents.length; i += step) {
+	// Walks past scene events (newest → oldest in playback order) and adds their areas to `dest`.
+	function collectPastAreasInto(
+		dest: Set<string>,
+		sceneEvents: SceneEvents,
+		currentSceneEventIndex: number,
+		gameNow: number,
+		direction: 1 | -1,
+		windowMs: number,
+	) {
+		if (windowMs <= 0) return;
+		const step = direction > 0 ? -1 : 1;
+		for (let i = currentSceneEventIndex; i >= 0 && i < sceneEvents.length; i += step) {
 			const event = sceneEvents[i]!;
-			const distance =
-				direction > 0
-					? kind === 'past'
-						? gameNow - event.msIntoGame
-						: event.msIntoGame - gameNow
-					: kind === 'past'
-						? event.msIntoGame - gameNow
-						: gameNow - event.msIntoGame;
+			const distance = direction > 0 ? gameNow - event.msIntoGame : event.msIntoGame - gameNow;
 			if (distance < 0) continue;
 			if (distance > windowMs) break;
-			// avoid allocating a merged Set — check membership in both sets inline
-			const area = areaForSceneName(event.sceneName, preferredAreas, areas);
-			if (area) areas.add(area);
+			const area = areaForSceneName(event.sceneName, dest);
+			if (area) dest.add(area);
 		}
+	}
 
-		return areas;
+	// Walks future scene events (closest → farthest in playback order) and populates BOTH
+	// `includedDest` (events within the smaller futureWindowMs) and `revisitDest` (events within
+	// the larger revisitWindowMs). Since revisit is always a superset of future, one walk
+	// covers both — eliminates one pass through 5000ms × speed worth of events per frame.
+	function collectFutureAndRevisitInto(
+		includedDest: Set<string>,
+		revisitDest: Set<string>,
+		sceneEvents: SceneEvents,
+		currentSceneEventIndex: number,
+		gameNow: number,
+		direction: 1 | -1,
+		futureWindowMs: number,
+		revisitWindowMs: number,
+	) {
+		if (revisitWindowMs <= 0) return;
+		const step = direction > 0 ? 1 : -1;
+		for (let i = currentSceneEventIndex + step; i >= 0 && i < sceneEvents.length; i += step) {
+			const event = sceneEvents[i]!;
+			const distance = direction > 0 ? event.msIntoGame - gameNow : gameNow - event.msIntoGame;
+			if (distance < 0) continue;
+			if (distance > revisitWindowMs) break;
+			const area = areaForSceneName(event.sceneName, includedDest, revisitDest);
+			if (!area) continue;
+			if (distance <= futureWindowMs) includedDest.add(area);
+			revisitDest.add(area);
+		}
 	}
 
 	const currentZoneBounds = createLazyMemo(function computeCurrentZoneBounds() {
@@ -346,83 +357,96 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 		return Bounds.fromContainingBoundsIgnoreNull(rooms.map(function getRoomVisualBounds(r) { return r.visualBounds; }));
 	});
 
+	// Scratch sets reused across getCurrentAreaBounds calls to avoid allocating fresh Sets
+	// every frame. They are cleared at the start of each computation.
+	const includedAreasScratch = new Set<string>();
+	const revisitSoonAreasScratch = new Set<string>();
+	const expiredAreasScratch: string[] = [];
+
+	// Result cache. The computation depends on currentSceneContext (which has stable equality
+	// when the scene event index doesn't change), the play/speed/direction state, and gameNow.
+	// Within a short TTL window the result is essentially identical, so we skip the work and
+	// reuse the previous Bounds. Recent-area timestamps are NOT refreshed on cache hits — that
+	// extends the hysteresis by up to CURRENT_AREA_BOUNDS_CACHE_MS, which is imperceptible.
+	const CURRENT_AREA_BOUNDS_CACHE_MS = 150;
+	let cachedAreaBoundsResult: Bounds | null = null;
+	let cachedAreaBoundsValidUntilRealMs = -Infinity;
+	let cachedAreaBoundsContext: ReturnType<typeof currentSceneContext> = null;
+	let cachedAreaBoundsIsPlaying = false;
+	let cachedAreaBoundsDirection: 1 | -1 = 1;
+	let cachedAreaBoundsSpeed = 0;
+
 	function getCurrentAreaBounds() {
 		const context = currentSceneContext();
-		if (!context) return null;
+		if (!context) {
+			cachedAreaBoundsResult = null;
+			return null;
+		}
 
-		const { sceneEvents, sceneEventIndex, sceneEvent, mainRoomData } = context;
-		const gameNow = animationStore.msIntoGame();
 		const speedMultiplier = animationStore.speedMultiplier();
 		const isPlaying = animationStore.isPlaying() && speedMultiplier !== 0;
 		const direction: 1 | -1 = isPlaying && speedMultiplier < 0 ? -1 : 1;
+		const realNow = performance.now();
+
+		// Fast path: nothing about the inputs that affects the result has changed since the last
+		// compute, and we're within the cache TTL. Return the cached Bounds without iterating
+		// any scene events or touching recentIncludedAreaAtMs.
+		if (
+			cachedAreaBoundsResult !== null &&
+			context === cachedAreaBoundsContext &&
+			isPlaying === cachedAreaBoundsIsPlaying &&
+			direction === cachedAreaBoundsDirection &&
+			speedMultiplier === cachedAreaBoundsSpeed &&
+			realNow < cachedAreaBoundsValidUntilRealMs
+		) {
+			return cachedAreaBoundsResult;
+		}
+
+		const { sceneEvents, sceneEventIndex, sceneEvent, mainRoomData } = context;
+		const gameNow = animationStore.msIntoGame();
 		// Convert real-time windows to game-time windows. Fall back to 1x when paused.
 		const absSpeed = Math.abs(speedMultiplier) || 1;
 
-		const includedAreas = new Set<string>();
+		const includedAreas = includedAreasScratch;
+		includedAreas.clear();
 		const currentArea = areaForSceneName(sceneEvent.sceneName, recentIncludedAreaAtMs) ?? mainRoomData.mapZone;
 		if (currentArea) includedAreas.add(currentArea);
 
-		for (const area of collectDirectionalAreas({
-			sceneEvents,
-			currentSceneEventIndex: sceneEventIndex,
-			gameNow,
-			direction,
-			windowMs: AREA_CONTEXT_MEMORY_MS * absSpeed,
-			kind: 'past',
-			preferredAreas: includedAreas,
-		})) {
-			includedAreas.add(area);
+		collectPastAreasInto(
+			includedAreas, sceneEvents, sceneEventIndex, gameNow, direction,
+			AREA_CONTEXT_MEMORY_MS * absSpeed,
+		);
+
+		const revisitSoonAreas = revisitSoonAreasScratch;
+		revisitSoonAreas.clear();
+		if (isPlaying) {
+			collectFutureAndRevisitInto(
+				includedAreas, revisitSoonAreas,
+				sceneEvents, sceneEventIndex, gameNow, direction,
+				AREA_CONTEXT_LOOKAHEAD_MS * absSpeed,
+				AREA_REVISIT_LOOKAHEAD_MS * absSpeed,
+			);
 		}
 
-		const futureAreas = isPlaying
-			? collectDirectionalAreas({
-					sceneEvents,
-					currentSceneEventIndex: sceneEventIndex,
-					gameNow,
-					direction,
-					windowMs: AREA_CONTEXT_LOOKAHEAD_MS * absSpeed,
-					kind: 'future',
-					preferredAreas: includedAreas,
-				})
-			: null;
-		if (futureAreas) {
-			for (const area of futureAreas) {
-				includedAreas.add(area);
-			}
-		}
-
-		const revisitSoonAreas = isPlaying
-			? collectDirectionalAreas({
-					sceneEvents,
-					currentSceneEventIndex: sceneEventIndex,
-					gameNow,
-					direction,
-					windowMs: AREA_REVISIT_LOOKAHEAD_MS * absSpeed,
-					kind: 'future',
-					preferredAreas: includedAreas,
-				})
-			: null;
-
-		const nowMs = performance.now();
 		for (const area of includedAreas) {
-			recentIncludedAreaAtMs.set(area, nowMs);
+			recentIncludedAreaAtMs.set(area, realNow);
 		}
 
-		const toDelete: string[] = [];
+		const expired = expiredAreasScratch;
+		expired.length = 0;
 		for (const [area, includedAtMs] of recentIncludedAreaAtMs) {
-			const ageMs = nowMs - includedAtMs;
-			if (ageMs > AREA_CONTEXT_MEMORY_MS && !revisitSoonAreas?.has(area)) {
-				toDelete.push(area);
+			const ageMs = realNow - includedAtMs;
+			if (ageMs > AREA_CONTEXT_MEMORY_MS && !revisitSoonAreas.has(area)) {
+				expired.push(area);
 				continue;
 			}
 			includedAreas.add(area);
 		}
-		for (const area of toDelete) {
+		for (const area of expired) {
 			recentIncludedAreaAtMs.delete(area);
 		}
 
-		// Combine included area bounds in a single pass instead of allocating an intermediate
-		// Bounds (and its [prev, next] array) on each iteration.
+		// Combine included area bounds in a single pass — one Bounds allocation at most.
 		const areaBoundsMap = boundsByArea();
 		let firstBounds: Bounds | null = null;
 		let minX = 0, minY = 0, maxX = 0, maxY = 0;
@@ -444,9 +468,19 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 			}
 			count++;
 		}
-		if (count === 0) return visibleRoomsExtends();
-		if (count === 1) return firstBounds;
-		return Bounds.fromMinMax(new Vector2(minX, minY), new Vector2(maxX, maxY));
+
+		let result: Bounds | null;
+		if (count === 0) result = visibleRoomsExtends();
+		else if (count === 1) result = firstBounds;
+		else result = Bounds.fromMinMax(new Vector2(minX, minY), new Vector2(maxX, maxY));
+
+		cachedAreaBoundsResult = result;
+		cachedAreaBoundsContext = context;
+		cachedAreaBoundsIsPlaying = isPlaying;
+		cachedAreaBoundsDirection = direction;
+		cachedAreaBoundsSpeed = speedMultiplier;
+		cachedAreaBoundsValidUntilRealMs = realNow + CURRENT_AREA_BOUNDS_CACHE_MS;
+		return result;
 	}
 
 	function getAutoTargetBounds() {
