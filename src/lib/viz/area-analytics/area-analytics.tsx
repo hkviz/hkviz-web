@@ -125,6 +125,7 @@ function AggregationVariableRow(props: {
 	const animationStore = useAnimationStore();
 	const roomDisplayStore = useRoomDisplayStore();
 	const aggregationStore = useAggregationStore();
+	const localizationStore = useLocalizationStore();
 	const selectedRoom = roomDisplayStore.selectedSceneName;
 	const aggregatedVariableValue = createMemo(() => {
 		return aggregationStore.getCorrectedAggregationValue(
@@ -162,15 +163,17 @@ function AggregationVariableRow(props: {
 						</Tooltip>
 					</TableCell>
 				</Show>
-				<TableHead class="flex h-11.5 items-center p-1 pl-3">
+				<TableHead class="flex h-11.5 items-center p-1 pr-0 pl-3">
 					<Tooltip>
 						<TooltipTrigger>
 							<div class="flex flex-row items-center justify-center gap-2">
 								<AggregationVariableIcon variable={props.variable} game={gameplayStore.game()!} />
-								<span>{variableInfo().name}</span>
+								<span class="text-left">{localizationStore.getString(variableInfo().name)}</span>
 							</div>
 						</TooltipTrigger>
-						<TooltipContent class="max-w-120">{variableInfo().description}</TooltipContent>
+						<TooltipContent class="max-w-120">
+							{localizationStore.getString(variableInfo().description)}
+						</TooltipContent>
 					</Tooltip>
 				</TableHead>
 				<TableCell class="w-1 p-1 pr-3 text-right">
@@ -419,12 +422,9 @@ export function AreaAnalyticsPanel(_props: LayoutPanelTypeProps) {
 	const roomInfosContext = createAreaAnalyticsContext();
 
 	const areaName = createMemo(() => {
-		const zone = roomInfos().mainRoomInfo?.zoneNameFormatted;
-		if (gameModule()?.game === 'silk' && zone) {
-			return localizationStore.getStringSilk(('Map Zones.' + zone) as any);
-		} else {
-			return zone;
-		}
+		const room = roomInfos().mainRoomInfo;
+		if (!room) return null;
+		return localizationStore.getString(room.zoneName);
 	});
 
 	async function copyRoomDevName() {

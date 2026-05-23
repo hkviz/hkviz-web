@@ -1,12 +1,13 @@
+import { localized, type LocalizedString } from '../viz/store/localization-store';
 import { formatNumberVar, formatTimeMsVar } from './aggregation-formatting';
 import type { AggregationVariableShared } from './aggregation-value-base';
 import type { AggregationVariable } from './aggregation-variable';
 
 export interface AggregationVariableInfo {
-	name: string;
+	name: LocalizedString;
 	key: AggregationVariable;
 	format: (value: number | null) => number | string;
-	description: string;
+	description: LocalizedString;
 	isTimestamp: boolean;
 	showHistory: boolean;
 	showHistoryDelta: boolean;
@@ -25,56 +26,57 @@ export const aggregationVariableInfosShared: Record<
 	AggregationVariableInfo
 > = {
 	...aggregationVariableInfo({
-		name: 'Visits',
+		name: localized.raw('Visits'),
 		key: 'visits',
 		format: formatNumberVar,
-		description: 'Number of times this scene/area has been entered.',
+		description: localized.raw('Number of times this scene/area has been entered.'),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
 	}),
 	...aggregationVariableInfo({
-		name: 'First visited at',
+		name: localized.raw('First visited at'),
 		key: 'firstVisitMs',
 		format: formatTimeMsVar,
-		description: 'Time of first visit',
+		description: localized.raw('Time of first visit'),
 		isTimestamp: true,
 		showHistory: false,
 		showHistoryDelta: false,
 	}),
 	...aggregationVariableInfo({
-		name: 'Visit Order',
+		name: localized.raw('Visit Order'),
 		key: 'visitOrder',
 		format: formatNumberVar,
-		description:
+		description: localized.raw(
 			'The order this scene or area was first visited (e.g., 5 means four others were first visited before it).',
+		),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
 	}),
 	...aggregationVariableInfo({
-		name: 'Time spent',
+		name: localized.raw('Time spent'),
 		key: 'timeSpendMs',
 		format: formatTimeMsVar,
-		description: 'Total time spent in a scene/area of all visits combined.',
+		description: localized.raw('Total time spent in a scene/area of all visits combined.'),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
 	}),
 	...aggregationVariableInfo({
-		name: 'Damage taken',
+		name: localized.raw('Damage taken'),
 		key: 'damageTaken',
 		format: formatNumberVar,
-		description: 'Total damage taken in masks',
+		description: localized.raw('Total damage taken in masks'),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
 	}),
 	...aggregationVariableInfo({
-		name: 'Deaths',
+		name: localized.raw('Deaths'),
 		key: 'deaths',
 		format: formatNumberVar,
-		description: 'Number of times the hero died in a scene/area.',
+		description: localized.raw('Number of times the hero died in a scene/area.'),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,

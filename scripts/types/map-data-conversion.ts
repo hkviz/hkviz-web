@@ -16,6 +16,7 @@ import { sceneNameGetZone } from '../../src/lib/game-data/silk-data/scene-ids-ge
 import { sceneNameToIdMetaSilk } from '../../src/lib/game-data/silk-data/scene-ids-silk.ts';
 import { silkScaleBounds } from '../../src/lib/game-data/silk-data/silk-scaling.ts';
 import type { SilkMapDataGenerated, SilkTextDataGenerated } from './map-data-mod-output-types.ts';
+import type { LocalizedString } from '../../src/lib/viz/store/localization-store.ts';
 
 function mapGeneratedText(text: SilkTextDataGenerated): MapTextData {
 	const [sheetName, convoName] = text.textKey.split('.');
@@ -60,6 +61,10 @@ export function mapDataConversionForGen(silkMapDataGenerated: SilkMapDataGenerat
 
 	const silkZoneMappings: Partial<Record<MapZoneSilk, MapZoneSilk>> = {
 		CORAL_CAVERNS: 'RED_CORAL_GORGE',
+	};
+
+	const silkZoneNameOverrides: Partial<Record<MapZoneSilk, LocalizedString>> = {
+		CITY_OF_SONG: { source: 'silk', key: 'Map Zones.HIGH_HALLS' },
 	};
 
 	const roomsSorted = silkMapDataGenerated.rooms.sort((a, b) => {
@@ -151,6 +156,11 @@ export function mapDataConversionForGen(silkMapDataGenerated: SilkMapDataGenerat
 			mapZone = overrideZone;
 		}
 
+		const zoneName: LocalizedString = silkZoneNameOverrides[mapZone] ?? {
+			source: 'silk',
+			key: ('Map Zones.' + mapZone) as any,
+		};
+
 		const mappedRoom: RoomDataSilk = {
 			game: 'silk',
 			hasSpriteRenderer: room.hasSpriteRenderer,
@@ -178,7 +188,8 @@ export function mapDataConversionForGen(silkMapDataGenerated: SilkMapDataGenerat
 			origColor,
 			roomNameFormatted: room.sceneName, // TODO
 			roomNameFormattedZoneExclusive: room.sceneName, // TODO
-			zoneNameFormatted: mapZone,
+			zoneNameFormatted: mapZone, // TODO remove? - depends on hollow changes
+			zoneName,
 			isMainGameObject: isMainGameObject as boolean, // set below to actual boolean
 			visualBoundsAllSprites,
 		};

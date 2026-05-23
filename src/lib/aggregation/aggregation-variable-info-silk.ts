@@ -1,55 +1,52 @@
+import { localized } from '../viz/store/localization-store';
 import { formatNumberVar } from './aggregation-formatting';
 import type { AggregationVariableSilk } from './aggregation-value-silk';
-import type {
-	AggregationVariableInfo} from './aggregation-variable-info-shared';
-import {
-	aggregationVariableInfo,
-	aggregationVariableInfosShared,
-} from './aggregation-variable-info-shared';
+import type { AggregationVariableInfo } from './aggregation-variable-info-shared';
+import { aggregationVariableInfo, aggregationVariableInfosShared } from './aggregation-variable-info-shared';
 
 export const aggregationVariableInfosSilk: Record<AggregationVariableSilk, AggregationVariableInfo> = {
 	...aggregationVariableInfosShared,
 	...aggregationVariableInfo({
-		name: 'Binds',
+		name: localized.raw('Binds'),
 		key: 'focusing',
 		format: formatNumberVar,
-		description: 'Number of times healing was started.',
+		description: localized.raw('Number of times healing was started.'),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
 	}),
 	...aggregationVariableInfo({
-		name: 'Rosaries earned',
+		name: localized.concat(localized.silk('UI.INV_NAME_COIN'), localized.raw(' | earned')),
 		key: 'geoEarned',
 		format: formatNumberVar,
-		description: 'Does not include Rosaries earned by collecting the corpse.',
+		description: localized.raw('Does not include Rosaries earned by collecting the corpse.'),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
 	}),
 	...aggregationVariableInfo({
-		name: 'Rosaries spent',
+		name: localized.concat(localized.silk('UI.INV_NAME_COIN'), localized.raw(' | spent')),
 		key: 'geoSpent',
 		format: formatNumberVar,
-		description: 'Does not include Rosaries lost by dying and not collecting the corpse.',
+		description: localized.raw('Does not include Rosaries lost by dying and not collecting the corpse.'),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: true,
 	}),
 	...aggregationVariableInfo({
-		name: 'Shell Shards earned',
+		name: localized.concat(localized.silk('UI.INV_NAME_SHARD'), localized.raw(' | earned')),
 		key: 'shellShardsEarned',
 		format: formatNumberVar,
-		description: 'Number of shell shards earned.',
+		description: localized.raw('Number of shell shards earned.'),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,
 	}),
 	...aggregationVariableInfo({
-		name: 'Shell Shards used',
+		name: localized.concat(localized.silk('UI.INV_NAME_SHARD'), localized.raw(' | spent')),
 		key: 'shellShardsSpent',
 		format: formatNumberVar,
-		description: 'Number of shell shards spent.',
+		description: localized.raw('Number of shell shards spent.'),
 		isTimestamp: false,
 		showHistory: true,
 		showHistoryDelta: false,

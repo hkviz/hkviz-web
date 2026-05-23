@@ -3,8 +3,10 @@ import { Card } from '~/components/ui/card';
 import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 import { aggregationVariableInfosHollow } from '~/lib/aggregation/aggregation-variable-info-hollow';
 import { AggregationVariableIcon } from '~/lib/viz/area-analytics/aggregation-variable-icon';
+import { useLocalizationStore } from '~/lib/viz/store/localization-store';
 
 export function AggregationVariableDoc() {
+	const localizationStore = useLocalizationStore();
 	// TODO add Silk doc
 	return (
 		<div class="not-prose">
@@ -17,9 +19,9 @@ export function AggregationVariableDoc() {
 									<AggregationVariableIcon variable={key as AggregationVariable} game="hollow" />
 								</span>
 								<span>
-									<b>{it.name}:</b>
+									<b>{localizationStore.getString(it.name)}:</b>
 									<br />
-									{it.description}
+									{localizationStore.getString(it.description)}
 								</span>
 							</li>
 						)}

@@ -1,3 +1,6 @@
+import type { LocalizedString } from '~/lib/viz/store/localization-store';
+import { localized } from '~/lib/viz/store/localization-store';
+
 const ancientBasinRooms = [
 	'Abyss_02',
 	'Abyss_03',
@@ -325,6 +328,7 @@ export function formatZoneAndRoomNameHollow(
 	zoneNameFormatted: ZoneNameFormattedHollow;
 	roomNameFormatted: string;
 	roomNameFormattedZoneExclusive: string;
+	zoneName: LocalizedString;
 } {
 	const zoneNameFormatted = formatZoneNameHollow(zoneName, roomName);
 	const roomNameFormatted = formatRoomName(zoneName, roomName);
@@ -335,5 +339,6 @@ export function formatZoneAndRoomNameHollow(
 		roomNameFormattedZoneExclusive: roomNameFormatted.startsWith(zoneNameFormatted)
 			? roomNameFormatted.slice(zoneNameFormatted.length).trim()
 			: roomNameFormatted,
+		zoneName: localized.raw(zoneNameFormatted),
 	};
 }

@@ -11,6 +11,7 @@ import { useGameplayStore } from '../store/gameplay-store';
 import { useRoomColoringStore } from '../store/room-coloring-store';
 import { useRoomDisplayStore } from '../store/room-display-store';
 import { RoomColorMapDropdown } from './room-color-map-dropdown';
+import { useLocalizationStore } from '../store/localization-store';
 
 const LEGEND_PADDING = 30;
 const LEGEND_RAMP_WIDTH = 200;
@@ -39,6 +40,7 @@ export function MapLegend<Game extends GameId>() {
 	const roomColoringStore = useRoomColoringStore();
 	const aggregationStore = useAggregationStore();
 	const gameplayStore = useGameplayStore<Game>();
+	const localizationStore = useLocalizationStore();
 
 	const var1 = roomColoringStore.var1;
 	const mode = roomColoringStore.colorMode;
@@ -98,7 +100,11 @@ export function MapLegend<Game extends GameId>() {
 				<DropdownMenuTrigger>
 					<div class="flex flex-col items-center justify-center">
 						<div class="flex flex-row items-center justify-center px-0.5">
-							<span class="pr-2 pl-1 text-sm">{var1Info()?.name ?? ''} </span>
+							<span class="pr-2 pl-1 text-sm">
+								<Show when={var1Info()}>
+									{(var1Info) => localizationStore.getString(var1Info().name)}
+								</Show>
+							</span>
 							<span class="text-[0.65rem] text-muted-foreground">
 								{roomColoringStore.var1Curve().shortName}
 							</span>
