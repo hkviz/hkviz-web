@@ -2,12 +2,11 @@ import type { Signal } from 'solid-js';
 import { createContext, createMemo, createSignal, onMount, useContext } from 'solid-js';
 import type { LocalizationDataSilk } from '~/lib/game-data/silk-data/localization/load-lang-silk.generated';
 import { loadLangSilk } from '~/lib/game-data/silk-data/localization/load-lang-silk.generated';
-import type { SupportedLanguageSilk } from '~/lib/game-data/silk-data/localization/supported-languages-silk';
 import { supportedLanguagesSilk } from '~/lib/game-data/silk-data/localization/supported-languages-silk';
 import { assertNever } from '~/lib/util/other';
 
-export const supportedLanguages = supportedLanguagesSilk;
-export type Language = SupportedLanguageSilk;
+export const supportedLanguages = [...supportedLanguagesSilk, 'DEBUG'] as const;
+export type Language = (typeof supportedLanguages)[number];
 
 export type LocalizationSource = 'silk';
 export const localizationSources: LocalizationSource[] = ['silk'];
@@ -59,7 +58,7 @@ export function createLocalizationStore() {
 		const currentLang = currentLanguage();
 		if (source === 'silk') {
 			const [loadedSheet, setLoadedSheet] = loadedSheets.silk[currentLang];
-			if (loadedSheet() == null) {
+			if (loadedSheet() == null && currentLang !== 'DEBUG') {
 				setLoadedSheet(await loadLangSilk(currentLang));
 			}
 		}
@@ -104,6 +103,16 @@ export function createLocalizationStore() {
 	}
 
 	function getString(localizedString: LocalizedString): string {
+		if (currentLanguage() === 'DEBUG') {
+			if ('raw' in localizedString) {
+				return localizedString.raw;
+			} else if ('concat' in localizedString) {
+				return 'concat(' + localizedString.concat.map(getString).join(', ') + ')';
+			} else {
+				return `${localizedString.source}:${localizedString.key}`;
+			}
+		}
+
 		if ('raw' in localizedString) {
 			return localizedString.raw;
 		} else if ('concat' in localizedString) {
