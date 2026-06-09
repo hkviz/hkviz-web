@@ -3,7 +3,7 @@ import { ChevronsUpDownIcon } from 'lucide-solid';
 import { createMemo, For, Show } from 'solid-js';
 import { Expander } from '~/components/ui/additions/expander';
 import { Card } from '~/components/ui/card';
-import { DropdownMenu, DropdownMenuTrigger } from '~/components/ui/dropdown-menu';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '~/components/ui/dropdown-menu';
 import type { GameId } from '~/lib/types/game-ids';
 import { useAggregationStore } from '../store/aggregation-store';
 import { useAnimationStore } from '../store/animation-store';
@@ -12,6 +12,7 @@ import { useRoomColoringStore } from '../store/room-coloring-store';
 import { useRoomDisplayStore } from '../store/room-display-store';
 import { RoomColorMapDropdown } from './room-color-map-dropdown';
 import { useLocalizationStore } from '../store/localization-store';
+import { InteropMenu } from '~/components/ui/interop-menu';
 
 const LEGEND_PADDING = 30;
 const LEGEND_RAMP_WIDTH = 200;
@@ -184,7 +185,11 @@ export function MapLegend<Game extends GameId>() {
 						</svg>
 					</div>
 				</DropdownMenuTrigger>
-				<RoomColorMapDropdown />
+				<DropdownMenuContent>
+					<InteropMenu mode="dropdown">
+						<RoomColorMapDropdown variable={roomColoringStore.var1()} />
+					</InteropMenu>
+				</DropdownMenuContent>
 			</DropdownMenu>
 		</Card>
 	);

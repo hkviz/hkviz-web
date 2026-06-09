@@ -26,7 +26,6 @@ import { useLayoutPanelContext } from '../layout/layout-panel-context';
 import type { LayoutPanelTypeProps } from '../layout/layout-panel-props';
 import { LayoutPanelSelect } from '../layout/layout-panel-select';
 import { LayoutPanelWrapper } from '../layout/layout-panel-wrapper';
-import { RoomColorCurveContextMenuItems } from '../map/room-color-curve-menu';
 import { HKMapRoom } from '../map/room-icon';
 import type { AggregationCountMode } from '../store/aggregation-store';
 import {
@@ -48,6 +47,8 @@ import { createRoomMsButtonProps } from '../util/shared-interactions';
 import { AggregationVariableIcon } from './aggregation-variable-icon';
 import { AreaAnalyticsContext, createAreaAnalyticsContext, useAreaAnalyticsContext } from './area-analytics-context';
 import { AreaAnalyticsVariableHistory } from './area-analytics-variable-history';
+import { InteropMenu } from '~/components/ui/interop-menu';
+import { RoomColorMapDropdown } from '../map/room-color-map-dropdown';
 
 function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 	const roomColoringStore = useRoomColoringStore();
@@ -109,7 +110,9 @@ function AggregationVariableToggles(props: { variable: AggregationVariable }) {
 					</span>
 				</ContextMenuTrigger>
 				<ContextMenuContent>
-					<RoomColorCurveContextMenuItems variable={props.variable} />
+					<InteropMenu mode="context">
+						<RoomColorMapDropdown variable={props.variable} />
+					</InteropMenu>
 				</ContextMenuContent>
 			</ContextMenu>
 		</TableCell>

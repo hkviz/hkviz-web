@@ -1,15 +1,15 @@
 import { type Component, For, createMemo } from 'solid-js';
-import {
-	DropdownMenuContent,
-	DropdownMenuGroup,
-	DropdownMenuGroupLabel,
-	DropdownMenuRadioGroup,
-	DropdownMenuRadioItem,
-} from '~/components/ui/dropdown-menu';
 import { type RoomColorCurve, roomColorCurveById, roomColorCurves } from '../color-curves';
 import { type RoomColorMap, roomColorMaps } from '../color-map';
 import { useRoomColoringStore } from '../store/room-coloring-store';
 import { useThemeStore } from '../store/theme-store';
+import {
+	InteropMenuGroup,
+	InteropMenuGroupLabel,
+	InteropMenuRadioGroup,
+	InteropMenuRadioItem,
+} from '~/components/ui/interop-menu';
+import type { AggregationVariable } from '~/lib/aggregation/aggregation-variable';
 
 const PREVIEW_HEIGHT = 14;
 const PREVIEW_WIDTH = PREVIEW_HEIGHT * 2.5;
@@ -66,55 +66,62 @@ const ColorMapPreview: Component<{
 	);
 };
 
-export const RoomColorMapDropdown: Component = () => {
+export function RoomColorMapDropdown(props: { variable: AggregationVariable }) {
 	const roomColoringStore = useRoomColoringStore();
 	const themeStore = useThemeStore();
 	const var1Max = roomColoringStore.var1Max;
 
+	const curveNullIfVarNotSelected = createMemo(() => {
+		const curve = roomColoringStore.var1Curve();
+		return roomColoringStore.colorMode() !== 'area' && roomColoringStore.var1() === props.variable ? curve : null;
+	});
+
 	return (
-		<DropdownMenuContent>
-			<DropdownMenuGroup>
-				<DropdownMenuGroupLabel>Scale Curve</DropdownMenuGroupLabel>
-				<DropdownMenuRadioGroup
-					value={roomColoringStore.var1Curve().id}
+		<>
+			<InteropMenuGroup>
+				<InteropMenuGroupLabel>Scale Curve</InteropMenuGroupLabel>
+				<InteropMenuRadioGroup
+					value={curveNullIfVarNotSelected()?.id ?? 'none'}
 					onChange={(id) => {
 						roomColoringStore.setRoomColorVar1Curve(roomColorCurveById.get(id)!);
+						roomColoringStore.setRoomColorVar1(props.variable);
 					}}
 				>
 					<For each={roomColorCurves}>
 						{(curve) => (
-							<DropdownMenuRadioItem value={curve.id}>
+							<InteropMenuRadioItem value={curve.id}>
 								<div class="flex grow items-center justify-between gap-2">
 									<span>{curve.name}</span>
 									<CurvePreview curve={curve} max={var1Max()} />
 								</div>
-							</DropdownMenuRadioItem>
+							</InteropMenuRadioItem>
 						)}
 					</For>
-				</DropdownMenuRadioGroup>
-			</DropdownMenuGroup>
-			<DropdownMenuGroup>
-				<DropdownMenuGroupLabel>Color Map</DropdownMenuGroupLabel>
-				<DropdownMenuRadioGroup
+				</InteropMenuRadioGroup>
+			</InteropMenuGroup>
+			<InteropMenuGroup>
+				<InteropMenuGroupLabel>Color Map</InteropMenuGroupLabel>
+				<InteropMenuRadioGroup
 					value={roomColoringStore.singleVarColorMapId()}
 					onChange={(id) => {
 						roomColoringStore.setSingleVarColorMapId(id);
+						roomColoringStore.setRoomColorVar1(props.variable);
 					}}
 				>
 					<For each={roomColorMaps}>
 						{(colorMap) => (
-							<DropdownMenuRadioItem value={colorMap.id}>
+							<InteropMenuRadioItem value={colorMap.id}>
 								<div class="flex grow items-center justify-between gap-2">
 									<span>
 										{themeStore.currentTheme() === 'light' ? colorMap.nameLight : colorMap.nameDark}
 									</span>
 									<ColorMapPreview colorMap={colorMap} mode={themeStore.currentTheme()} />
 								</div>
-							</DropdownMenuRadioItem>
+							</InteropMenuRadioItem>
 						)}
 					</For>
-				</DropdownMenuRadioGroup>
-			</DropdownMenuGroup>
-		</DropdownMenuContent>
+				</InteropMenuRadioGroup>
+			</InteropMenuGroup>
+		</>
 	);
-};
+}
