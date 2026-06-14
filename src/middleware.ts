@@ -28,7 +28,7 @@ export default createMiddleware({
 					!url.includes('o=o')
 				) {
 					// don't redirect api calls, since these are used by old mod versions.
-					const newUrl = url.replace(oldUrl, 'https://hkviz.com');
+					const newUrl = url.replace(oldUrl, 'https://hkviz.org');
 					return redirect(newUrl, {
 						status: 301,
 					});
