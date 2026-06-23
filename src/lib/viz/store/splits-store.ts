@@ -5,6 +5,7 @@ import type { Split } from '~/lib/splits/splits-shared/split';
 import type { AnimationStore } from './animation-store';
 import type { GameplayStore } from './gameplay-store';
 import type { LocalizationStore } from './localization-store';
+import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';
 
 export type LocalizedSplit = Split & { localizedTitle: string };
 
@@ -19,11 +20,13 @@ export function createSplitsStore(
 	};
 
 	const [visibleSplitGroups, setVisibleSplitGroups] = createMutableMemo(defaultSplitGroups);
+	const [displayBeforeRunStart, setDisplayBeforeRunStart] = createSignal(false);
 	const [filterTerm, setFilterTerm] = createSignal('');
 
 	function reset() {
 		setVisibleSplitGroups(defaultSplitGroups());
 		setFilterTerm('');
+		setDisplayBeforeRunStart(false);
 	}
 
 	const splitsLocalized = createMemo<readonly LocalizedSplit[]>(() => {
@@ -41,7 +44,11 @@ export function createSplitsStore(
 		const recording = gameplayStore.recording();
 		if (!recording) return [];
 		const visibleGroups = visibleSplitGroups();
-		return splitsLocalized()?.filter((it) => visibleGroups.includes(it.group)) ?? [];
+		return (
+			splitsLocalized()?.filter((it) => {
+				return visibleGroups.includes(it.group);
+			}) ?? []
+		);
 	});
 
 	const splitsFuse = createMemo(
@@ -56,13 +63,30 @@ export function createSplitsStore(
 				ignoreLocation: true,
 			}),
 	);
-	const filteredSplits = createMemo<readonly LocalizedSplit[]>(() => {
+
+	const filteredSplitsAll = createMemo<readonly LocalizedSplit[]>(() => {
 		const term = filterTerm().toLowerCase();
 		const splits = filteredByGroupSplits();
 		if (!term) return splits;
 		return splitsFuse()
 			.search(term)
 			.map((it) => it.item);
+	});
+
+	const hasSplitsBeforeRunStart = createMemo(() => {
+		const splits = filteredSplitsAll();
+		return splits.length > 0 && splits[0].msIntoGame < 1;
+	});
+
+	const toggleDisplayBeforeRunStart = () => {
+		setDisplayBeforeRunStart((prev) => !prev);
+	};
+
+	const filteredSplits = createMemo<readonly LocalizedSplit[]>(() => {
+		const splits = filteredSplitsAll();
+		if (displayBeforeRunStart()) return splits;
+		const index = binarySearchLastIndexBefore(splits, 1, (split) => split.msIntoGame);
+		return splits.slice(index + 1);
 	});
 
 	const nextSplitIndex = createMemo(() => {
@@ -86,6 +110,10 @@ export function createSplitsStore(
 		nextSplitIndex,
 		isSplitsPanelOpen,
 		setIsSplitsPanelOpen,
+		displayBeforeRunStart,
+		setDisplayBeforeRunStart,
+		toggleDisplayBeforeRunStart,
+		hasSplitsBeforeRunStart,
 		reset,
 	};
 }

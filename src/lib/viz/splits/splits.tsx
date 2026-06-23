@@ -1,5 +1,5 @@
 import { CircleQuestionMarkIcon, SearchIcon, XIcon } from 'lucide-solid';
-import { For, Show, type Component } from 'solid-js';
+import { createMemo, For, Show, type Component } from 'solid-js';
 import { Button } from '~/components/ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover';
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
@@ -74,9 +74,21 @@ const RunSplitRow: Component<RowProps> = (props) => {
 	);
 };
 
+const SHOW_ALL_ROW = Symbol('show-all-row');
+
 const RunSplitsRows: Component = () => {
 	const splitsStore = useSplitsStore();
 	const filteredSplits = splitsStore.filteredSplits;
+
+	const displaySplits = createMemo<readonly (Split | typeof SHOW_ALL_ROW)[]>(() => {
+		const splits = filteredSplits();
+		const hasSplitsBeforeRunStart = splitsStore.hasSplitsBeforeRunStart();
+		if (hasSplitsBeforeRunStart) {
+			return [SHOW_ALL_ROW, ...splits];
+		} else {
+			return splits;
+		}
+	});
 
 	function getSceneName(entry: Split) {
 		const newScene = entry.previousPlayerPositionEvent?.sceneEvent?.getMainVirtualSceneName?.();
@@ -85,13 +97,26 @@ const RunSplitsRows: Component = () => {
 
 	return (
 		<div class="relative flex shrink grow basis-0 flex-col">
-			<TimelineList
-				entries={filteredSplits()}
-				getEntryTime={(entry) => entry.msIntoGame}
-				getSceneName={getSceneName}
+			<TimelineList<Split | typeof SHOW_ALL_ROW>
+				entries={displaySplits()}
+				getEntryTime={(split) => (split === SHOW_ALL_ROW ? -1 : split.msIntoGame)}
+				getSceneName={(split) => (split === SHOW_ALL_ROW ? undefined : getSceneName(split))}
 				virtualize={false}
 			>
-				{(split, _state, _previousEntry) => <RunSplitRow split={split()} />}
+				{(split, _state, _previousEntry) => (
+					<Show when={split() === SHOW_ALL_ROW} fallback={<RunSplitRow split={split() as Split} />}>
+						<TimelineListEntryButton
+							class="flex w-full flex-row items-center justify-center gap-2 py-2.5 pr-3 pl-4 text-sm"
+							areaColor="none"
+							heightMode="auto"
+							onClick={() => splitsStore.toggleDisplayBeforeRunStart()}
+						>
+							{splitsStore.displayBeforeRunStart()
+								? 'Hide splits before recording started'
+								: 'Show splits before recording started'}
+						</TimelineListEntryButton>
+					</Show>
+				)}
 			</TimelineList>
 		</div>
 	);

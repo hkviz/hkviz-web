@@ -369,6 +369,7 @@ export function useTimelineListEntryContext() {
 export interface TimelineListEntryButtonProps {
 	children: JSXElement;
 	class?: string;
+	onClick?: () => void;
 	heightMode: 'from-estimate' | 'auto';
 	areaColor: 'left' | 'right' | 'none';
 }
@@ -393,6 +394,7 @@ export function TimelineListEntryButton(props: TimelineListEntryButtonProps) {
 		onClick: () => {
 			context.setIsAutoScrollEnabled(true);
 			context.setSelectedIndex(context.index());
+			props.onClick?.();
 		},
 		withClick: true,
 	});
