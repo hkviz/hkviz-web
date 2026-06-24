@@ -24,7 +24,7 @@ export function createStoreInitializer<Game extends GameId>() {
 			batch(() => {
 				gameplayStore.setGameModule(module);
 				gameplayStore.setRecording(recording);
-				animationStore.setMsIntoGame(gameplayStore.timeFrame().max, 'instant');
+				animationStore.setMsIntoGame(gameplayStore.timeFrameDisplay().max, 'instant');
 				extraChartStore.setTimeboundsForFollow();
 			});
 		},

@@ -3,8 +3,8 @@ export const RoomColorCurveLinear = {
 	type: 'linear' as const,
 	name: 'Linear',
 	shortName: 'Linear',
-	transformTo01(value: number, max: number) {
-		return max ? value / max : 0;
+	transformTo01(value: number, min: number, max: number) {
+		return max ? (value - min) / (max - min) : 0;
 	},
 };
 export const RoomColorCurveLog = {
@@ -12,8 +12,8 @@ export const RoomColorCurveLog = {
 	type: 'log' as const,
 	name: 'Logarithmic',
 	shortName: 'Log',
-	transformTo01(value: number, max: number) {
-		return max && value ? Math.log(value + 1) / Math.log(max + 1) : 0;
+	transformTo01(value: number, min: number, max: number) {
+		return max && value ? Math.log(value - min + 1) / Math.log(max - min + 1) : 0;
 	},
 };
 
@@ -33,8 +33,8 @@ export class RoomColorCurveExponential {
 		this.name = this.isRoot ? `Root ${this.exponentInverse}` : `Exponential ${exponent}`;
 		this.shortName = this.isRoot ? `Root ${this.exponentInverse}` : `Exp ${exponent}`;
 	}
-	transformTo01(value: number, max: number) {
-		return max ? Math.pow(value / max, this.exponent) : 0;
+	transformTo01(value: number, min: number, max: number) {
+		return max ? Math.pow((value - min) / (max - min), this.exponent) : 0;
 	}
 
 	static EXPONENT_0_5 = new RoomColorCurveExponential(2);

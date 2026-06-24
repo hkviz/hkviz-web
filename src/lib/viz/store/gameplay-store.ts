@@ -3,11 +3,14 @@ import type { GameModuleOfGame } from '~/lib/game-module/game-module';
 import { isCombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-check-silk';
 import type { CombinedRecordingOfGame } from '~/lib/parser/recording-files/parser-specific/combined-recording';
 import type { GameId } from '~/lib/types/game-ids';
+import { Timeframe } from './timeframe';
 
 export function createGameplayStore<Game extends GameId>() {
 	const [game, setGame] = createSignal<GameId | null>(null);
 	const [gameModule, setGameModule] = createSignal<GameModuleOfGame<Game> | null>(null);
 	const [recording, setRecording] = createSignal<CombinedRecordingOfGame<Game> | null>(null);
+
+	const [includePreRecordingEvents, setIncludePreRecordingEvents] = createSignal(true);
 
 	function reset() {
 		setRecording(null);
@@ -27,11 +30,42 @@ export function createGameplayStore<Game extends GameId>() {
 		});
 	});
 
-	const timeFrame = createMemo(() => {
+	const hasPreRecordingEvents = createMemo(() => {
 		const r = recording();
-		if (!r || r.events.length === 0) return { min: 0, max: 0 } as const;
+		if (!r || r.events.length === 0) return false;
+		return r.events[0]!.msIntoGame < 0;
+	});
 
-		return { min: r.events[0]!.msIntoGame, max: r.lastEvent().msIntoGame };
+	const timeFrameAll = createMemo(() => {
+		const r = recording();
+		if (!r || r.events.length === 0) {
+			return new Timeframe(0, 0);
+		}
+
+		const min = r.events[0]!.msIntoGame;
+		const max = r.lastEvent().msIntoGame;
+
+		return new Timeframe(min, max);
+	});
+
+	const timeFrameRecorded = createMemo(() => {
+		const max = timeFrameAll().max;
+		return new Timeframe(0, max);
+	});
+
+	const timeFrameDisplay = createMemo(() => {
+		if (includePreRecordingEvents()) {
+			return timeFrameAll();
+		} else {
+			return timeFrameRecorded();
+		}
+	});
+
+	const eventsDisplay = createMemo(() => {
+		const r = recording();
+		if (!r) return [];
+		if (includePreRecordingEvents()) return r.events;
+		return r.events.filter((e) => e.msIntoGame >= 0);
 	});
 
 	const isSteelSoul = createMemo(() => {
@@ -45,13 +79,17 @@ export function createGameplayStore<Game extends GameId>() {
 	return {
 		recording,
 		setRecording,
-		timeFrame,
+		timeFrameDisplay,
+		includePreRecordingEvents,
+		setIncludePreRecordingEvents,
 		isSteelSoul,
 		reset,
 		game,
 		setGame,
 		gameModule,
 		setGameModule,
+		eventsDisplay,
+		hasPreRecordingEvents,
 	};
 }
 export type GameplayStore<Game extends GameId = GameId> = ReturnType<typeof createGameplayStore<Game>>;

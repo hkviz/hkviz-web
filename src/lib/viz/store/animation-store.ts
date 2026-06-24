@@ -119,7 +119,7 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 
 	function setLimitedAnimationMsIntoGame(newMsIntoGame: number, changeType: MsIntoGameChangeType) {
 		batch(() => {
-			const timeFrame = gameplayStore.timeFrame();
+			const timeFrame = gameplayStore.timeFrameDisplay();
 			if (Number.isNaN(newMsIntoGame) || typeof newMsIntoGame !== 'number') return;
 
 			if (newMsIntoGame > timeFrame.max) {
@@ -154,11 +154,11 @@ export function createAnimationStore(gameplayStore: GameplayStore, uiStore: UiSt
 	}
 
 	function setIsPlaying(playing: boolean) {
-		if (playing && speedMultiplier() > 0 && msIntoGame() >= gameplayStore.timeFrame().max) {
-			setMsIntoGame(gameplayStore.timeFrame().min, 'instant');
+		if (playing && speedMultiplier() > 0 && msIntoGame() >= gameplayStore.timeFrameDisplay().max) {
+			setMsIntoGame(gameplayStore.timeFrameDisplay().min, 'instant');
 		}
-		if (playing && speedMultiplier() < 0 && msIntoGame() <= gameplayStore.timeFrame().min) {
-			setMsIntoGame(gameplayStore.timeFrame().max, 'instant');
+		if (playing && speedMultiplier() < 0 && msIntoGame() <= gameplayStore.timeFrameDisplay().min) {
+			setMsIntoGame(gameplayStore.timeFrameDisplay().max, 'instant');
 		}
 
 		_setIsPlaying(playing);

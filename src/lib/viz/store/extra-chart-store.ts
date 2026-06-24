@@ -47,7 +47,7 @@ export function createExtraChartStore(animationStore: AnimationStore, gameplaySt
 	}
 
 	function resetTimeBounds() {
-		setTimeBounds([gameplayStore.timeFrame().min, gameplayStore.timeFrame().max]);
+		setTimeBounds([gameplayStore.timeFrameDisplay().min, gameplayStore.timeFrameDisplay().max]);
 	}
 
 	function setTimeBoundsStopFollowIfOutside(extraChartsTimeBounds: readonly [number, number]) {
@@ -78,7 +78,7 @@ export function createExtraChartStore(animationStore: AnimationStore, gameplaySt
 		previousTimeBounds: readonly [number, number],
 		deltaMs: number,
 	): readonly [number, number] {
-		const timeFrame = gameplayStore.timeFrame();
+		const timeFrame = gameplayStore.timeFrameDisplay();
 		const newBounds = [previousTimeBounds[0] + deltaMs, previousTimeBounds[1] + deltaMs] as [number, number];
 		if (previousTimeBounds[1] - previousTimeBounds[0] >= timeFrame.max * 0.8) {
 			// bounds are limited if the bounds make up a large part of the original chart.

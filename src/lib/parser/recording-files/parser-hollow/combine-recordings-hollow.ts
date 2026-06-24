@@ -27,6 +27,7 @@ import {
 	type ParsedRecordingHollow,
 	type RecordingEventHollow,
 } from './recording-hollow';
+import { BEFORE_RECORDING_STEP_MS } from '../parser-shared/before-recording';
 
 function isPantheonRoom(sceneName: string) {
 	return sceneName.startsWith('GG_') && !sceneName.startsWith('GG_Atrium');
@@ -73,6 +74,10 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 	const hasCreatedFirstEndFrameEvent = false;
 
 	const ctx = new EventCreationContext();
+
+	let firstPlayTimePlayerDataValue: number | null = null;
+	let firstScenesVisitedEvent: PlayerDataEventHollow<'scenesVisited'> | null = null;
+	let firstSceneEvent: SceneEvent | null = null;
 
 	for (const recording of recordings.sort((a, b) => a.combinedPartNumber! - b.combinedPartNumber!)) {
 		for (const event of recording.events) {
@@ -147,6 +152,9 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 						'detected radiance to roof top scene transition. Died in previous scene: ',
 						diedInThisSceneVisit,
 					);
+				}
+				if (firstSceneEvent == null) {
+					firstSceneEvent = event;
 				}
 
 				event.previousSceneEvent = previousSceneEvent;
@@ -334,6 +342,15 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 								// });
 							}
 						}
+						if (firstScenesVisitedEvent == null) {
+							firstScenesVisitedEvent = event;
+						}
+					}
+				}
+
+				if (isPlayerDataEventOfFieldHollow(event, 'playTime')) {
+					if (firstPlayTimePlayerDataValue == null) {
+						firstPlayTimePlayerDataValue = event.value;
 					}
 				}
 			}
@@ -389,6 +406,41 @@ export function combineRecordingsHollow(recordings: ParsedRecordingHollow[]): Co
 				events.push(visitedScenesEvent);
 			}
 		}
+	}
+
+	// before recording adaptions
+	console.log('firstPlayTimePlayerDataValue', firstPlayTimePlayerDataValue);
+	console.log('firstScenesVisitedEvent', firstScenesVisitedEvent);
+	if (firstPlayTimePlayerDataValue != null && firstPlayTimePlayerDataValue > 30) {
+		const firstScenes = firstScenesVisitedEvent?.value ?? [];
+		let msIntoGame = -firstScenes.length * BEFORE_RECORDING_STEP_MS;
+		let timestamp = events[0]?.timestamp ?? 0 + msIntoGame;
+		const scenesVisitedCurrent: string[] = [];
+		const ctx = new EventCreationContext();
+
+		const beforeEvents = [];
+
+		let previousSceneEvent: SceneEvent | null = null;
+
+		for (const scene of firstScenes) {
+			scenesVisitedCurrent.push(scene);
+			msIntoGame += BEFORE_RECORDING_STEP_MS;
+			timestamp += BEFORE_RECORDING_STEP_MS;
+			ctx.msIntoGame = msIntoGame;
+			ctx.timestamp = timestamp;
+			const sceneEvent = new SceneEvent(scene, undefined, undefined, ctx);
+			sceneEvent.previousSceneEvent = previousSceneEvent;
+			previousSceneEvent = sceneEvent;
+			beforeEvents.push(sceneEvent);
+			beforeEvents.push(
+				new PlayerDataEventHollow<'scenesVisited'>(null, null, 'scenesVisited', [...scenesVisitedCurrent], ctx),
+			);
+		}
+		if (firstSceneEvent) {
+			firstSceneEvent.previousSceneEvent = previousSceneEvent;
+		}
+
+		events.unshift(...beforeEvents);
 	}
 
 	(window as any).hkvizEvents = () => events;

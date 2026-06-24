@@ -2,6 +2,22 @@ import { ShortcutKey } from '~/components/shortcut-hint';
 import { ChangelogEntry } from './_changelog-entry';
 import { PaletteIcon } from 'lucide-solid';
 
+<ChangelogEntry title="Pre-recording scenes visit order metrics" type="web" version="3.16.0" date="2026-06-24">
+
+You can now see the order in which scenes were visited, even if they were visited before recording started.
+This makes it possible to inspect how an existing gameplay was traversed before HKViz began recording it.
+
+- Timeline now displays pre-recording times with a diagonal striped background.
+- Pre-recording timestamps are shown as T-1, T-2, ... to indicate how much before the recording a timestamp happened. Exact times cannot be inferred.
+- You can disable pre-recording display in the timeline from the playback speed control.
+
+**How this works?**
+
+The save file of Hollow Knight stores the visited rooms inside a list. Since it always just appends to the end of the list,
+we can know how rooms were discovered, even for an existing save file.
+
+</ChangelogEntry>
+
 <ChangelogEntry title="Splits before recording start hidden by default" type="web" version="3.15.0" date="2026-06-23">
 
 - By default splits that are recognized from the save file, but have occurred before recording stats with HKViz are hidden

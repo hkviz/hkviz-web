@@ -131,11 +131,9 @@ function AggregationVariableRow(props: {
 	const localizationStore = useLocalizationStore();
 	const selectedRoom = roomDisplayStore.selectedSceneName;
 	const aggregatedVariableValue = createMemo(() => {
-		return aggregationStore.getCorrectedAggregationValue(
-			aggregationStore.visibleRoomAggregations(),
-			props.variable,
-			animationStore.msIntoGame,
-		);
+		const virtualSceneName = aggregationStore.selectedVirtualScene();
+		if (!virtualSceneName) return null;
+		return aggregationStore.getCurrentCorrectedAggregationValue(virtualSceneName, props.variable);
 	});
 	const variableInfo = createMemo(() => gameplayStore.gameModule()!.aggregation.variableInfos[props.variable]);
 
@@ -184,7 +182,7 @@ function AggregationVariableRow(props: {
 						<Show when={variableInfo().isTimestamp} fallback={formatted()}>
 							<Button
 								variant="ghost"
-								class="-m-2 p-2"
+								class="-m-2 p-2 whitespace-nowrap"
 								onClick={() => {
 									const value = aggregatedVariableValue();
 									if (value != null) {
@@ -224,7 +222,7 @@ function AggregationVariables() {
 	const gameplayStore = useGameplayStore();
 	const aggregationStore = useAggregationStore();
 	const roomInfosContext = useAreaAnalyticsContext();
-	const aggregatedMaxOverScenes = () => gameplayStore.recording()?.aggregations?.maxPerMode?.overScenes;
+	const aggregatedMaxOverScenes = () => aggregationStore.aggregations()?.maxPerMode?.overScenes;
 	const viewNeverHappenedAggregations = aggregationStore.viewNeverHappenedAggregations;
 	const aggregationVariables = () => gameplayStore.gameModule()?.aggregation?.variables;
 

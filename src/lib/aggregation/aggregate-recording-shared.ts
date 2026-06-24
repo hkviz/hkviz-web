@@ -22,6 +22,8 @@ export function aggregateRecording<
 	TValueAggregationTimePoint extends TValueAggregation & AggregationTimePointBase,
 >(
 	recording: TRecording,
+	minMsIntoGame: number | null,
+	maxMsIntoGame: number | null,
 	createEmptyAggregation: () => TValueAggregation,
 	createAggregationTimePointClone: (
 		aggregation: TValueAggregationTimePoint | undefined,
@@ -40,6 +42,11 @@ export function aggregateRecording<
 
 	const countPerScene: Record<string, TValueAggregation> = {};
 	const countPerSceneOverTime: Record<string, TValueAggregationTimePoint[]> = {};
+
+	const minPerMode: Record<AggregationMaximumMode, TValueAggregation> = {
+		overScenes: createEmptyAggregation(),
+		overZones: createEmptyAggregation(),
+	};
 
 	const maxPerMode: Record<AggregationMaximumMode, TValueAggregation> = {
 		overScenes: createEmptyAggregation(),
@@ -97,7 +104,7 @@ export function aggregateRecording<
 				current = createAggregationTimePointClone(last, msIntoGame, true);
 				countOfTimePoints++;
 				allOverTime.push(current);
-				if (last && last.isActiveScene) {
+				if (last && last.isActiveScene && msIntoGame >= 0) {
 					// here we could also add msIntoGame - last.msIntoGame to timeSpendMs
 					// however, we could have more rounding issues, so we always go from the start of the visit to current time.
 					const msSpent =
@@ -119,6 +126,14 @@ export function aggregateRecording<
 			const maximumMode = getMaximumModeOfVirtualScene(sceneOrGroupName);
 			if (maximumMode) {
 				set(
+					minPerMode[maximumMode],
+					variable,
+					Math.min(
+						(minPerMode as any)[maximumMode][variable] ?? Infinity,
+						(totalsOfScene as any)[variable] ?? Infinity,
+					),
+				);
+				set(
 					maxPerMode[maximumMode],
 					variable,
 					Math.max(
@@ -130,6 +145,11 @@ export function aggregateRecording<
 					maxPerMode[maximumMode],
 					'timeSpendMs',
 					Math.max(maxPerMode[maximumMode].timeSpendMs, totalsOfScene.timeSpendMs),
+				);
+				set(
+					minPerMode[maximumMode],
+					'timeSpendMs',
+					Math.min(minPerMode[maximumMode].timeSpendMs, totalsOfScene.timeSpendMs),
 				);
 			}
 		});
@@ -246,6 +266,9 @@ export function aggregateRecording<
 	}
 
 	for (const event of recording.events) {
+		if (minMsIntoGame != null && event.msIntoGame < minMsIntoGame) continue;
+		if (maxMsIntoGame != null && event.msIntoGame > maxMsIntoGame) continue;
+
 		if (event instanceof SceneEvent) {
 			currentSceneEvent = event;
 			const previousVirtualScenes = currentVirtualScenes;
@@ -275,5 +298,5 @@ export function aggregateRecording<
 	// console.log({ countPerScene, maxPerMode });
 	// console.log(x);
 
-	return { countPerScene, maxPerMode, countPerSceneOverTime, DEFAULT: createEmptyAggregation() };
+	return { countPerScene, maxPerMode, minPerMode, countPerSceneOverTime, DEFAULT: createEmptyAggregation() };
 }

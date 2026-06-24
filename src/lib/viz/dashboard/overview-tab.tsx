@@ -67,7 +67,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 				'firstVisitMs' satisfies AggregationVariableShared as AggregationVariable,
 			);
 		}
-		animationStore.setMsIntoGame(gameplayStore.timeFrame().max, 'instant');
+		animationStore.setMsIntoGame(gameplayStore.timeFrameDisplay().max, 'instant');
 		extraChartStore.setFollowsAnimationAutoBounds(false);
 		mapZoomStore.setEnabled(true);
 		mapZoomStore.setTarget('visible-rooms');

@@ -206,7 +206,11 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 											</SelectItem>
 										)}
 									>
-										<SelectTrigger aria-label="Room visibility" class="border-0">
+										<SelectTrigger
+											aria-label="Room visibility"
+											class="border-0"
+											id="visibleRoomSelectTrigger"
+										>
 											<SelectValue<RoomVisibility>>
 												{(state) => roomVisibilityName(state.selectedOption(), true)}
 											</SelectValue>
@@ -258,7 +262,11 @@ export function MapOptions(props: LayoutPanelTypeProps) {
 												</SelectItem>
 											)}
 										>
-											<SelectTrigger aria-label="Trace visibility" class="border-0">
+											<SelectTrigger
+												aria-label="Trace visibility"
+												class="border-0"
+												id="traceVisibilitySelectTrigger"
+											>
 												<SelectValue<TraceVisibility>>
 													{(state) => traceVisibilityName(state.selectedOption())}
 												</SelectValue>

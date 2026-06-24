@@ -1,4 +1,4 @@
-import type { JSXElement} from 'solid-js';
+import type { JSXElement } from 'solid-js';
 import { createEffect, onCleanup } from 'solid-js';
 import { createFocusContext, GlobalMenuContext } from '~/components/ui/additions/focus-context';
 import { createSpriteSheetStore, SpriteStoreContext } from '../spritesheets/spritesheet-store';
@@ -20,6 +20,7 @@ import { createTourStore, TourStoreContext } from './tour-store';
 import { createTraceStore, TraceStoreContext } from './trace-store';
 import { createUiStore, UiStoreContext, useUiStore } from './ui-store';
 import { createViewportStore, useViewportStore, ViewportStoreContext } from './viewport-store';
+import { AggregationDisplayStoreContext, createAggregationDisplayStore } from './aggregation-display-store';
 
 export function GlobalStoresProvider(props: { children: JSXElement }) {
 	const themeStore = createThemeStore();
@@ -60,10 +61,12 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 	const playerDataAnimationStore = createPlayerDataAnimationStore(animationStore, gameplayStore);
 	const roomDisplayStore = createRoomDisplayStore(playerDataAnimationStore, gameplayStore);
 	const aggregationStore = createAggregationStore(roomDisplayStore, animationStore, gameplayStore);
+	const aggregationDisplayStore = createAggregationDisplayStore();
 	const roomColoringStore = createRoomColoringStore(
 		themeStore,
 		roomDisplayStore,
 		aggregationStore,
+		aggregationDisplayStore,
 		animationStore,
 		gameplayStore,
 	);
@@ -94,6 +97,7 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 			tourStore,
 			viewportStore,
 			animationTickStore,
+			aggregationDisplayStore,
 		};
 
 		(window as any).stores = allStores;
@@ -104,6 +108,22 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 			}
 		});
 	});
+
+	const Inner = () => (
+		<RoomDisplayStoreContext.Provider value={roomDisplayStore}>
+			<RoomColoringStoreContext.Provider value={roomColoringStore}>
+				<AggregationStoreContext.Provider value={aggregationStore}>
+					<AggregationDisplayStoreContext.Provider value={aggregationDisplayStore}>
+						<TourStoreContext.Provider value={tourStore}>
+							<AnimationTickStoreContext.Provider value={animationTickStore}>
+								{props.children}
+							</AnimationTickStoreContext.Provider>
+						</TourStoreContext.Provider>
+					</AggregationDisplayStoreContext.Provider>
+				</AggregationStoreContext.Provider>
+			</RoomColoringStoreContext.Provider>
+		</RoomDisplayStoreContext.Provider>
+	);
 
 	return (
 		<LayoutStoreContext.Provider value={layoutStore}>
@@ -116,19 +136,7 @@ export function RunStoresProvider(props: { children: JSXElement }) {
 									<AnimationStoreContext.Provider value={animationStore}>
 										<ViewportStoreContext.Provider value={viewportStore}>
 											<PlayerDataAnimationStoreContext.Provider value={playerDataAnimationStore}>
-												<RoomDisplayStoreContext.Provider value={roomDisplayStore}>
-													<RoomColoringStoreContext.Provider value={roomColoringStore}>
-														<AggregationStoreContext.Provider value={aggregationStore}>
-															<TourStoreContext.Provider value={tourStore}>
-																<AnimationTickStoreContext.Provider
-																	value={animationTickStore}
-																>
-																	{props.children}
-																</AnimationTickStoreContext.Provider>
-															</TourStoreContext.Provider>
-														</AggregationStoreContext.Provider>
-													</RoomColoringStoreContext.Provider>
-												</RoomDisplayStoreContext.Provider>
+												<Inner />
 											</PlayerDataAnimationStoreContext.Provider>
 										</ViewportStoreContext.Provider>
 									</AnimationStoreContext.Provider>

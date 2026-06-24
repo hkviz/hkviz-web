@@ -12,12 +12,18 @@ export function getZoneNameFromSceneName(sceneName: string | undefined | null): 
 	return mapDataMainBySceneNameSilk.get(sceneName)?.zoneNameFormatted;
 }
 
-export function aggregateRecordingSilk(recording: CombinedRecordingSilk): AggregatedRunDataSilk {
+export function aggregateRecordingSilk(
+	recording: CombinedRecordingSilk,
+	minMsIntoGame: number | null,
+	maxMsIntoGame: number | null,
+): AggregatedRunDataSilk {
 	let recentlyRemovedFromPool: number | null = null;
 	let recentlyRemovedFromPoolTime: number = 0;
 
 	return aggregateRecording(
 		recording,
+		minMsIntoGame,
+		maxMsIntoGame,
 		createEmptyAggregationSilk,
 		createAggregationTimePointCloneSilk,
 		getZoneNameFromSceneName,

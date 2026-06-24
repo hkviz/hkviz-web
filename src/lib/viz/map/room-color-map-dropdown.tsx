@@ -15,16 +15,17 @@ const PREVIEW_HEIGHT = 14;
 const PREVIEW_WIDTH = PREVIEW_HEIGHT * 2.5;
 const PREVIEW_POINT_COUNT = 24;
 
-const CurvePreview: Component<{ curve: RoomColorCurve; max: number }> = (props) => {
+const CurvePreview: Component<{ curve: RoomColorCurve; max: number; min: number }> = (props) => {
 	const points = createMemo(() => {
 		const curve = props.curve;
+		const min = props.min;
 		const max = props.max;
 		const linePoints: string[] = [];
 		for (let index = 0; index <= PREVIEW_POINT_COUNT; index += 1) {
 			const ratio = index / PREVIEW_POINT_COUNT;
-			const value = ratio * max;
+			const value = min + ratio * (max - min);
 			const x = ratio * PREVIEW_WIDTH;
-			const y = (1 - curve.transformTo01(value, max)) * PREVIEW_HEIGHT;
+			const y = (1 - curve.transformTo01(value, min, max)) * PREVIEW_HEIGHT;
 			linePoints.push(`${x},${y}`);
 		}
 		return linePoints.join(' ');
@@ -92,7 +93,7 @@ export function RoomColorMapDropdown(props: { variable: AggregationVariable }) {
 							<InteropMenuRadioItem value={curve.id}>
 								<div class="flex grow items-center justify-between gap-2">
 									<span>{curve.name}</span>
-									<CurvePreview curve={curve} max={var1Max()} />
+									<CurvePreview curve={curve} max={var1Max()} min={roomColoringStore.var1Min()} />
 								</div>
 							</InteropMenuRadioItem>
 						)}
@@ -120,6 +121,28 @@ export function RoomColorMapDropdown(props: { variable: AggregationVariable }) {
 							</InteropMenuRadioItem>
 						)}
 					</For>
+				</InteropMenuRadioGroup>
+			</InteropMenuGroup>
+			<InteropMenuGroup>
+				<InteropMenuGroupLabel>Scale Range</InteropMenuGroupLabel>
+				<InteropMenuRadioGroup
+					value={roomColoringStore.rangeMode()}
+					onChange={(id) => {
+						roomColoringStore.setRangeMode(id);
+					}}
+				>
+					<InteropMenuRadioItem value="gameplay">
+						<div class="flex grow flex-col">
+							<span>Gameplay</span>
+							<span class="-mt-1 text-sm text-muted-foreground">Constant</span>
+						</div>
+					</InteropMenuRadioItem>
+					<InteropMenuRadioItem value="visible">
+						<div class="flex grow flex-col">
+							<span>Visible</span>
+							<span class="-mt-1 text-sm text-muted-foreground">Depends on timeframe</span>
+						</div>
+					</InteropMenuRadioItem>
 				</InteropMenuRadioGroup>
 			</InteropMenuGroup>
 		</>

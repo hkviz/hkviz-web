@@ -238,7 +238,7 @@ export function LineAreaChart(props: LineAreaChartProps) {
 			return;
 		}
 
-		const timeFrame = gameplayStore.timeFrame();
+		const timeFrame = gameplayStore.timeFrameDisplay();
 		const currentBounds = extraChartStore.timeBoundsTransition();
 		const epsilonMs = 1;
 		const isFullRangeVisible =
@@ -416,7 +416,7 @@ export function LineAreaChart(props: LineAreaChartProps) {
 		ctx.clearRect(0, 0, displayWidth, displayHeight);
 
 		const bounds = extraChartStore.timeBoundsTransition();
-		const currentMs = animationStore.msIntoGame() ?? gameplayStore.timeFrame().min;
+		const currentMs = animationStore.msIntoGame() ?? gameplayStore.timeFrameDisplay().min;
 		const hoverMs = hoverMsStore.hoveredMsIntoGame();
 		const domainSpan = bounds[1] - bounds[0];
 		if (domainSpan > 0) {
@@ -558,7 +558,7 @@ export function LineAreaChart(props: LineAreaChartProps) {
 		animationStore.msIntoGame();
 		hoverMsStore.hoveredMsIntoGame();
 		extraChartStore.timeBoundsTransition();
-		gameplayStore.timeFrame();
+		gameplayStore.timeFrameDisplay();
 		isDarkTheme();
 		untrack(() => {
 			renderOverlay();

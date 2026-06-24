@@ -14,6 +14,7 @@ import { combineRecordingsSilk } from '../parser/recording-files/parser-silk/com
 import { parseRecordingFileSilk } from '../parser/recording-files/parser-silk/parse-recording-file-silk';
 import { splitGroupsArraySilk } from '../splits/splits-silk/split-group-silk';
 import type { GameModule } from './game-module';
+import { aggregateRecordingSilk } from '../aggregation/aggregate-recording-silk';
 
 export const gameModuleSilk: GameModule<'silk'> = {
 	game: 'silk',
@@ -47,6 +48,7 @@ export const gameModuleSilk: GameModule<'silk'> = {
 	},
 
 	aggregation: {
+		fromRecording: aggregateRecordingSilk,
 		variableInfos: aggregationVariableInfosSilk,
 		variables: Object.keys(aggregationVariableInfosSilk) as AggregationVariable[],
 		DEFAULT_VALUES: EMPTY_AGGREGATION_SILK,
