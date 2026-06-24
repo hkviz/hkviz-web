@@ -17,9 +17,15 @@ export function getZoneNameFromSceneName(sceneName: string | undefined | null): 
 	return roomData?.zoneNameFormatted;
 }
 
-export function aggregateRecordingHollow(recording: CombinedRecordingHollow): AggregatedRunDataHollow {
+export function aggregateRecordingHollow(
+	recording: CombinedRecordingHollow,
+	minMsIntoGame: number | null,
+	maxMsIntoGame: number | null,
+): AggregatedRunDataHollow {
 	return aggregateRecording(
 		recording,
+		minMsIntoGame,
+		maxMsIntoGame,
 		createEmptyAggregationHollow,
 		createAggregationTimePointCloneHollow,
 		getZoneNameFromSceneName,

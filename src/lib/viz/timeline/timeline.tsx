@@ -19,6 +19,9 @@ import { useRoomDisplayStore } from '../store/room-display-store';
 import { useThemeStore } from '../store/theme-store';
 import { useUiStore } from '../store/ui-store';
 import { formatTimeMs } from '../util/time';
+import { Checkbox } from '~/components/ui/checkbox';
+import { Label } from '~/components/ui/label';
+import { useAggregationStore } from '../store/aggregation-store';
 
 function Times(props: { class?: string }) {
 	return (
@@ -64,14 +67,13 @@ function AnimationTimeLineColorCodes() {
 	const roomDisplayStore = useRoomDisplayStore();
 	const gameplayStore = useGameplayStore();
 	const hoverMsStore = useHoverMsStore();
-	const timeFrameMs = gameplayStore.timeFrame;
 	const themeStore = useThemeStore();
 
 	const sceneChanges = createMemo(function timelineColorCodesSceneChangesComputed() {
 		const gameModule = gameplayStore.gameModule();
 		if (!gameModule) return EMPTY_ARRAY;
 		const sceneEvents = gameplayStore.recording()?.sceneEvents ?? EMPTY_ARRAY;
-		const timeframe = gameplayStore.timeFrame();
+		const timeframe = gameplayStore.timeFrameDisplay();
 		const theme = themeStore.currentTheme();
 		const sceneChanges = sceneEvents.map((it) => {
 			const mainVirtualScene = it.getMainVirtualSceneName();
@@ -108,7 +110,7 @@ function AnimationTimeLineColorCodes() {
 	createEffect(function drawTimelineColorCodesEffect() {
 		const _sceneChanges = sceneChanges();
 		const _c = autoSizeCanvas();
-		const timeframe = gameplayStore.timeFrame();
+		const timeframe = gameplayStore.timeFrameDisplay();
 		const selectedScene = roomDisplayStore.selectedSceneName();
 		const selectedZone = roomDisplayStore.selectedRoomZoneFormatted();
 
@@ -128,9 +130,9 @@ function AnimationTimeLineColorCodes() {
 
 			ctx.fillStyle = sceneChange.color;
 			ctx.fillRect(
-				(_c.widthInUnits * sceneChange.startMs) / timeframe.max,
+				_c.widthInUnits * timeframe.msIntoGameToPercentage(sceneChange.startMs),
 				_c.heightInUnits * position,
-				(_c.widthInUnits * sceneChange.durationMs) / timeframe.max,
+				(_c.widthInUnits * sceneChange.durationMs) / timeframe.delta,
 				_c.heightInUnits * height,
 			);
 		}
@@ -142,7 +144,7 @@ function AnimationTimeLineColorCodes() {
 		if (!_container) return undefined;
 		const rect = _container.getBoundingClientRect();
 		const x = e.clientX - rect.left;
-		const ms = timeFrameMs().max * (x / rect.width);
+		const ms = gameplayStore.timeFrameDisplay().percentageToMsIntoGame(x / rect.width);
 		return _sceneChanges.findLast((it) => it.startMs <= ms);
 	}
 
@@ -189,7 +191,7 @@ function AnimationTimeLineSlider() {
 	const gameplayStore = useGameplayStore();
 
 	const animationMsIntoGame = animationStore.msIntoGame;
-	const timeFrame = gameplayStore.timeFrame;
+	const timeFrame = gameplayStore.timeFrameDisplay;
 	const isDisabled = !gameplayStore.recording;
 
 	let isShiftPressed = false;
@@ -277,6 +279,14 @@ function AnimationTimeLineSlider() {
 		>
 			<SliderTrack onPointerDown={onPointerDown} onPointerMove={onPointerMove}>
 				<SliderFill class="rounded-full" />
+				<Show when={timeFrame().min < 0}>
+					<div
+						class="pointer-events-none absolute top-0 bottom-0 left-0 rounded-l border-r border-card bg-[repeating-linear-gradient(-45deg,#ffffff20_0_5px,transparent_5px_10px)]"
+						style={{
+							width: `${timeFrame().msIntoGameToPercentage(0) * 100}%`,
+						}}
+					/>
+				</Show>
 				<SliderThumb
 					onPointerDown={onPointerDown}
 					onPointerMove={onPointerMove}
@@ -287,14 +297,59 @@ function AnimationTimeLineSlider() {
 	);
 }
 
-export function AnimationTimeLine(props: { class?: string }) {
+export function AnimationTimeFrameCustomRangeSelector() {
+	const gameplayStore = useGameplayStore();
+	const aggregationStore = useAggregationStore();
+	const min = aggregationStore.aggregationTimeFrameCustomMin;
+	const max = aggregationStore.aggregationTimeFrameCustomMax;
+
 	return (
-		<div class={cn('relative flex h-5 shrink grow flex-col gap-2 @3xl:h-10 @3xl:justify-center', props.class)}>
-			<div>
-				<AnimationTimeLineSlider />
+		<Show when={aggregationStore.aggregationCountMode() === 'custom'}>
+			<div class="relative -mt-4 -mb-2 py-4">
+				<span class="absolute top-[50%] -left-3 hidden -translate-x-full translate-y-[-35%] text-[0.6rem] @3xl:block">
+					Metrics
+				</span>
+				<Slider
+					minValue={gameplayStore.timeFrameDisplay().min}
+					maxValue={gameplayStore.timeFrameDisplay().max}
+					defaultValue={[min(), max()]}
+					getValueLabel={(params) => `$${params.values[0]} - $${params.values[1]}`}
+					onChange={(values) => {
+						const newMin = values[0] ?? gameplayStore.timeFrameDisplay().min;
+						const newMax = values[1] ?? gameplayStore.timeFrameDisplay().max;
+						aggregationStore.setAggregationTimeFrameCustomMin(newMin);
+						aggregationStore.setAggregationTimeFrameCustomMax(newMax);
+					}}
+					class="w-full space-y-3"
+				>
+					<SliderTrack>
+						<SliderFill />
+						<SliderThumb class="-top-0.5 size-3" />
+						<SliderThumb class="-top-0.5 size-3" />
+					</SliderTrack>
+				</Slider>
 			</div>
-			<HoverTimelineMarker />
-			<AnimationTimeLineColorCodes />
+		</Show>
+	);
+}
+
+export function AnimationTimeLine() {
+	// using keyed show here, since the sliders have trouble updating their min/max values while also updating
+	// the slider value.
+	return (
+		<div class="col-span-3 row-start-2 mx-2 flex shrink grow flex-col gap-2 @3xl:col-span-1 @3xl:row-auto @3xl:justify-center @3xl:px-0">
+			<div
+				class={
+					'relative col-span-3 row-start-2 flex h-5 shrink grow flex-col gap-2 @3xl:col-span-1 @3xl:row-auto @3xl:h-10 @3xl:justify-center @3xl:px-0'
+				}
+			>
+				<div>
+					<AnimationTimeLineSlider />
+				</div>
+				<HoverTimelineMarker />
+				<AnimationTimeLineColorCodes />
+			</div>
+			<AnimationTimeFrameCustomRangeSelector />
 		</div>
 	);
 }
@@ -304,7 +359,7 @@ function HoverTimelineMarker() {
 	const gameplayStore = useGameplayStore();
 
 	const hoveredMsIntoGame = hoverMsStore.hoveredMsIntoGame;
-	const timeFrame = gameplayStore.timeFrame;
+	const timeFrame = gameplayStore.timeFrameDisplay;
 	let containerRef: HTMLDivElement | undefined;
 	let markerRef: HTMLDivElement | undefined;
 	const containerSize = createElementSize(() => containerRef ?? null);
@@ -326,8 +381,7 @@ function HoverTimelineMarker() {
 			return;
 		}
 
-		const clampedMs = Math.max(0, Math.min(maxMs, hoveredMs));
-		const xPx = (clampedMs / maxMs) * width;
+		const xPx = timeFrame().msIntoGameToPercentage(hoveredMs) * width;
 		marker.style.opacity = '1';
 		marker.style.transform = `translate3d(${xPx}px, 0, 0)`;
 	});
@@ -344,6 +398,7 @@ function HoverTimelineMarker() {
 }
 
 export function AnimationOptions(props: { class?: string }) {
+	const gameplayStore = useGameplayStore();
 	const animationStore = useAnimationStore();
 	const animationSpeedMultiplier = animationStore.speedMultiplier;
 
@@ -357,7 +412,7 @@ export function AnimationOptions(props: { class?: string }) {
 			>
 				<PlayButton />
 				<Duration ms={animationStore.msIntoGame()} class="pr-0" withTooltip={true} />
-				<AnimationTimeLine class="col-span-3 row-start-2 mx-2 @3xl:col-span-1 @3xl:row-auto @3xl:px-0" />
+				<AnimationTimeLine />
 				<div class="relative">
 					<Popover>
 						<PopoverTrigger as={Button} variant="ghost" class="pl-2">
@@ -401,6 +456,18 @@ export function AnimationOptions(props: { class?: string }) {
 									/>
 								</TextField>
 							</div>
+							<Show when={gameplayStore.hasPreRecordingEvents()}>
+								<div class="flex w-full gap-2 p-2">
+									<Checkbox
+										id="animation-option-display-pre-recording-events"
+										checked={gameplayStore.includePreRecordingEvents()}
+										onChange={(checked) => gameplayStore.setIncludePreRecordingEvents(checked)}
+									/>
+									<Label for="animation-option-display-pre-recording-events-input">
+										Display pre-recording events
+									</Label>
+								</div>
+							</Show>
 						</PopoverContent>
 					</Popover>
 				</div>

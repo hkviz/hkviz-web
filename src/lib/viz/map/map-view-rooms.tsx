@@ -10,6 +10,7 @@ import { useRoomDisplayStore } from '../store/room-display-store';
 import { useThemeStore } from '../store/theme-store';
 import { mapViewRoomRectClass } from '../store/tour-store';
 import { HoverOutlineFilter } from './svg-filters';
+import { useAggregationDisplayStore } from '../store/aggregation-display-store';
 
 type RoomRenderMode = 'overlayAlpha' | 'overlaySolid';
 
@@ -88,6 +89,7 @@ function MapViewRoom<Game extends GameId>(props: {
 }) {
 	const id = createUniqueId();
 	const roomColoringStore = useRoomColoringStore();
+	const aggregationDisplayStore = useAggregationDisplayStore();
 	const themeStore = useThemeStore();
 
 	const roomDisplayStore = useRoomDisplayStore();
@@ -106,9 +108,11 @@ function MapViewRoom<Game extends GameId>(props: {
 			: roomColoringStore.selectedModeColorByGameObjectName().get(props.room.gameObjectName)?.();
 	};
 
+	aggregationDisplayStore.createRegistration(() => (states().isVisible() ? (color()?.value ?? null) : null));
+
 	const colorRgb = createMemo(() => {
 		const c = color();
-		const rgb = c != null ? d3.color(c)?.rgb() : null;
+		const rgb = c != null ? d3.color(c.color)?.rgb() : null;
 		return rgb ?? { r: 128, g: 128, b: 128 };
 	});
 
@@ -134,7 +138,7 @@ function MapViewRoom<Game extends GameId>(props: {
 						height={props.room.visualBoundsAllSprites?.size.y ?? 0}
 						style={{
 							transition: 'fill 0.1s ease 0s',
-							fill: color(),
+							fill: color()?.color,
 							['pointer-events']: isInteractable() ? 'all' : 'none',
 						}}
 					/>

@@ -61,6 +61,7 @@ export const createAggregationTimePointCloneHollow = (
 
 export interface AggregatedRunDataHollow {
 	countPerScene: Record<string, AggregationValueHollow>;
+	minPerMode: Record<AggregationMaximumMode, AggregationValueHollow>;
 	maxPerMode: Record<AggregationMaximumMode, AggregationValueHollow>;
 	countPerSceneOverTime: Record<string, AggregationValueTimePointHollow[]>;
 

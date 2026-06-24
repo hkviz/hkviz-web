@@ -1,5 +1,5 @@
 import { localized, type LocalizedString } from '../viz/store/localization-store';
-import { formatNumberVar, formatTimeMsVar } from './aggregation-formatting';
+import { formatMsIntoGameVar, formatNumberVar, formatTimeMsVar } from './aggregation-formatting';
 import type { AggregationVariableShared } from './aggregation-value-base';
 import type { AggregationVariable } from './aggregation-variable';
 
@@ -37,7 +37,7 @@ export const aggregationVariableInfosShared: Record<
 	...aggregationVariableInfo({
 		name: localized.raw('First visited at'),
 		key: 'firstVisitMs',
-		format: formatTimeMsVar,
+		format: formatMsIntoGameVar,
 		description: localized.raw('Time of first visit'),
 		isTimestamp: true,
 		showHistory: false,

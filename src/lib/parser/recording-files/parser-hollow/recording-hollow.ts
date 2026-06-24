@@ -1,5 +1,3 @@
-import { aggregateRecordingHollow } from '~/lib/aggregation/aggregate-recording-hollow';
-import type { AggregatedRunDataHollow } from '~/lib/aggregation/aggregation-value-hollow';
 import type { Split } from '~/lib/splits/splits-shared/split';
 import { raise } from '~/lib/util/other';
 import type { PlayerDataFieldNameHollow } from '../../../game-data/hollow-data/player-data-hollow';
@@ -89,7 +87,6 @@ export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
 	>();
 	public readonly splits: Split[];
 	public readonly playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
-	public readonly aggregations: AggregatedRunDataHollow;
 
 	constructor(
 		events: RecordingEventHollow[],
@@ -124,7 +121,6 @@ export class CombinedRecordingHollow extends CombinedRecordingBase<'hollow'> {
 			}
 		}
 		this.splits = createRecordingSplitsHollow(this);
-		this.aggregations = aggregateRecordingHollow(this);
 	}
 
 	lastPlayerDataEventOfField<TFieldName extends PlayerDataFieldNameHollow>(

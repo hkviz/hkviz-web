@@ -1,7 +1,7 @@
 import type { Vector2 } from '~/lib/game-data/shared/vector2';
 import type { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import type { GameId } from '~/lib/types/game-ids';
-import type { AggregationValueOfGame } from '../aggregation/aggregation-value-specific';
+import type { AggregatedRunDataOfGame, AggregationValueOfGame } from '../aggregation/aggregation-value-specific';
 import type { AggregationVariable } from '../aggregation/aggregation-variable';
 import type { AggregationVariableInfo } from '../aggregation/aggregation-variable-info-shared';
 import type { Bounds } from '../game-data/shared/bounds';
@@ -43,6 +43,11 @@ export interface GameModule<Game extends GameId> {
 		): PlayerDataFieldValueOfGame<Game, TField> | null;
 	};
 	aggregation: {
+		fromRecording: (
+			recording: CombinedRecordingOfGame<Game>,
+			minMsIntoGame: number | null,
+			maxMsIntoGame: number | null,
+		) => AggregatedRunDataOfGame<Game>;
 		variableInfos: Record<AggregationVariable, AggregationVariableInfo>;
 		variables: AggregationVariable[];
 		DEFAULT_VALUES: AggregationValueOfGame<Game>;

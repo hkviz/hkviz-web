@@ -127,7 +127,7 @@ export function createRecordingSplitsHollow(recording: CombinedRecordingHollow):
 							event.previousPlayerPositionEvent,
 						);
 						splits.push(split);
-						console.log('kill split', split);
+						// console.log('kill split', split);
 					}
 				});
 			}

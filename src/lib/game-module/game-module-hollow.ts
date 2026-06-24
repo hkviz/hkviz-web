@@ -1,3 +1,4 @@
+import { aggregateRecordingHollow } from '../aggregation/aggregate-recording-hollow';
 import { EMPTY_AGGREGATION_HOLLOW } from '../aggregation/aggregation-value-hollow';
 import type { AggregationVariable } from '../aggregation/aggregation-variable';
 import { aggregationVariableInfosHollow } from '../aggregation/aggregation-variable-info-hollow';
@@ -49,6 +50,7 @@ export const gameModuleHollow: GameModule<'hollow'> = {
 	},
 
 	aggregation: {
+		fromRecording: aggregateRecordingHollow,
 		variableInfos: aggregationVariableInfosHollow,
 		variables: Object.keys(aggregationVariableInfosHollow) as AggregationVariable[],
 		DEFAULT_VALUES: EMPTY_AGGREGATION_HOLLOW,

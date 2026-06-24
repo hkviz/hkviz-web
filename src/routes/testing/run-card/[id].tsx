@@ -125,20 +125,20 @@ export default function Runs(props: RouteSectionProps) {
 
 					<div class="mb-4 flex items-center gap-4">
 						<div class="flex gap-2">
-							<Checkbox id="varyCrest" checked={varyBackground()} onChange={setVaryBackground} />
-							<Label for="varyCrest">Vary Background</Label>
+							<Checkbox id="varyBackground" checked={varyBackground()} onChange={setVaryBackground} />
+							<Label for="varyBackground-input">Vary Background</Label>
 						</div>
 					</div>
 					<div class="mb-4 flex items-center gap-4">
 						<div class="flex gap-2">
-							<Checkbox id="varyCrest" checked={varySteelsoul()} onChange={setVarySteelsoul} />
-							<Label for="varyCrest">Vary Steelsoul</Label>
+							<Checkbox id="varySteelsoul" checked={varySteelsoul()} onChange={setVarySteelsoul} />
+							<Label for="varySteelsoul-input">Vary Steelsoul</Label>
 						</div>
 					</div>
 					<div class="mb-4 flex items-center gap-4">
 						<div class="flex gap-2">
 							<Checkbox id="varyCrest" checked={varyCrest()} onChange={setVaryCrest} />
-							<Label for="varyCrest">Vary Crest</Label>
+							<Label for="varyCrest-input">Vary Crest</Label>
 						</div>
 					</div>
 

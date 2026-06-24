@@ -1,0 +1,1 @@
+export const BEFORE_RECORDING_STEP_MS = 1000 * 15;

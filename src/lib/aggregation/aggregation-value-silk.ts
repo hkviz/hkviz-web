@@ -55,6 +55,7 @@ export const createAggregationTimePointCloneSilk = (
 export interface AggregatedRunDataSilk {
 	countPerScene: Record<string, AggregationValueSilk>;
 	maxPerMode: Record<AggregationMaximumMode, AggregationValueSilk>;
+	minPerMode: Record<AggregationMaximumMode, AggregationValueSilk>;
 	countPerSceneOverTime: Record<string, AggregationValueTimePointSilk[]>;
 
 	DEFAULT: AggregationValueSilk;

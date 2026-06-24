@@ -1,5 +1,3 @@
-import { aggregateRecordingSilk } from '~/lib/aggregation/aggregate-recording-silk';
-import type { AggregatedRunDataSilk } from '~/lib/aggregation/aggregation-value-silk';
 import {
 	playerDataFieldsSilk,
 	type PlayerDataFieldNameSilk,
@@ -59,7 +57,6 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 
 	public readonly playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
 
-	public readonly aggregations: AggregatedRunDataSilk;
 	public readonly splits: Split[];
 
 	constructor(
@@ -91,7 +88,6 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 				this.frameEndEvents.push(event);
 			}
 		}
-		this.aggregations = aggregateRecordingSilk(this);
 		this.splits = createRecordingSplitsSilk(this);
 	}
 
