@@ -1,6 +1,7 @@
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { hkVizUrl } from '~/lib/routing/url';
-import { findPublicRuns } from '~/server/run/find-public-runs';
+import { db } from '~/server/db';
+import { findRunsInternal } from '~/server/run/_find_runs_internal';
 
 async function writeSitemap(sitemapStream: SitemapStream) {
 	sitemapStream.write({ url: hkVizUrl(), changefreq: 'weekly', priority: 1 });
@@ -12,9 +13,15 @@ async function writeSitemap(sitemapStream: SitemapStream) {
 	sitemapStream.write({ url: hkVizUrl('/publications'), changefreq: 'monthly', priority: 0.1 });
 	sitemapStream.write({ url: hkVizUrl('/changelog'), changefreq: 'monthly', priority: 0.1 });
 
-	const publicRuns = await findPublicRuns({
-		sort: 'likes',
-		limit: 250,
+	const publicRuns = await findRunsInternal({
+		db,
+		filter: {
+			sort: 'likes',
+			limit: 100,
+			visibility: ['public'],
+			archived: [false],
+		},
+		currentUser: undefined,
 	});
 
 	publicRuns.forEach((run) => {
