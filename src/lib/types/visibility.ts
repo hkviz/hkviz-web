@@ -5,16 +5,19 @@ export const visibilities = [
 	{
 		code: 'public',
 		name: 'Public',
+		description: 'Anyone can find this run on the "Public Gameplays" page.',
 		Icon: GlobeIcon,
 	},
 	{
 		code: 'unlisted',
 		name: 'Unlisted',
+		description: 'Only people you sent the link to can view this run.',
 		Icon: LockOpenIcon,
 	},
 	{
 		code: 'private',
 		name: 'Private',
+		description: 'Only you can view this run.',
 		Icon: LockIcon,
 	},
 ] as const;

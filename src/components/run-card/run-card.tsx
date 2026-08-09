@@ -41,6 +41,12 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '../ui/tooltip';
 import { RunCardBackground } from './run-card-background.tsx';
 import { RunCardEndings } from './run-card-endings.tsx';
 import { RunCardTags } from './run-card-tags.tsx';
+import {
+	SelectItemBody,
+	SelectItemDescription,
+	SelectItemHeader,
+	selectItemIconClasses,
+} from '../ui/additions/select.tsx';
 
 function Duration(props: { seconds: number }) {
 	const duration = () => {
@@ -226,14 +232,24 @@ export const RunCard: Component<{
 											<ChevronDownIcon class="-mr-1 ml-1 h-3 w-3" />
 										</Badge>
 									</DropdownMenuTrigger>
-									<DropdownMenuContent class="w-32">
+									<DropdownMenuContent class="w-64">
 										<For each={visibilities}>
 											{(visibility) => (
 												<DropdownMenuItem
 													onSelect={() => handleVisibilityChange(visibility.code)}
 												>
-													<Dynamic component={visibility.Icon} class="mr-2 h-4 w-4" />
-													<span>{visibility.name}</span>
+													<SelectItemBody>
+														<SelectItemHeader>
+															<Dynamic
+																component={visibility.Icon}
+																class={selectItemIconClasses}
+															/>
+															{visibility.name}
+														</SelectItemHeader>
+														<SelectItemDescription>
+															{visibility.description}
+														</SelectItemDescription>
+													</SelectItemBody>
 												</DropdownMenuItem>
 											)}
 										</For>
