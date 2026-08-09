@@ -9,6 +9,7 @@ import { Slider, SliderFill, SliderThumb, SliderTrack } from '~/components/ui/sl
 import { TextField, TextFieldInput } from '~/components/ui/text-field';
 import { Tooltip, TooltipContent, TooltipTrigger } from '~/components/ui/tooltip';
 import { cn } from '~/lib/utils';
+import { isCombinedRecordingSilk } from '~/lib/parser/recording-files/parser-silk/recording-check-silk';
 import { createAutoSizeCanvas, createElementSize } from '../canvas';
 import { Duration } from '../duration';
 import { PLAYBACK_SPEED_OPTIONS_VISIBLE, useAnimationStore } from '../store/animation-store';
@@ -402,6 +403,12 @@ export function AnimationOptions(props: { class?: string }) {
 	const animationStore = useAnimationStore();
 	const animationSpeedMultiplier = animationStore.speedMultiplier;
 
+	const restorePoint = createMemo(() => {
+		const recording = gameplayStore.recording();
+		if (!recording || !isCombinedRecordingSilk(recording)) return null;
+		return recording.restorePointAt(animationStore.msIntoGame());
+	});
+
 	return (
 		<div class={cn('@container', props.class)}>
 			<Card
@@ -411,7 +418,12 @@ export function AnimationOptions(props: { class?: string }) {
 				)}
 			>
 				<PlayButton />
-				<Duration ms={animationStore.msIntoGame()} class="pr-0" withTooltip={true} />
+				<Duration
+					ms={animationStore.msIntoGame()}
+					class="pr-0"
+					withTooltip={true}
+					restorePoint={restorePoint()}
+				/>
 				<AnimationTimeLine />
 				<div class="relative">
 					<Popover>

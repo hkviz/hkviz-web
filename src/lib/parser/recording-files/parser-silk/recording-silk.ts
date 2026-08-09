@@ -4,7 +4,9 @@ import {
 } from '~/lib/game-data/silk-data/player-data/player-data-silk.generated';
 import type { Split } from '~/lib/splits/splits-shared/split';
 import { createRecordingSplitsSilk } from '~/lib/splits/splits-silk/generate-splits-silk';
+import { binarySearchLastIndexBefore } from '~/lib/util/binary-search';
 import { raise } from '~/lib/util/other';
+import type { RestorePointInfo } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { EnemyDamageEventSilk, EnemyStateEventSilk } from '../events-silk/enemy-event-silk';
@@ -69,6 +71,13 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 	// getEnemiesAt() replay only the current scene visit instead of the whole recording
 	private readonly enemySceneCheckpoints: { msIntoGame: number; eventIndex: number }[] = [];
 
+	// one entry per msIntoGame range that shares the same event.restorePoint (by number - a block's
+	// own snapshot and its trailing bridge scenes share a number, so they collapse into one segment).
+	// Small and bounded (a handful of entries per restore point), unlike events itself - lets
+	// restorePointAt() answer "what restore point, if any, is this position from" with a single
+	// bounded binary search instead of scanning any event list.
+	private readonly restorePointSegments: { msIntoGame: number; restorePoint: RestorePointInfo | null }[] = [];
+
 	public readonly splits: Split[];
 
 	constructor(
@@ -80,7 +89,14 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 	) {
 		super('silk', events, unknownEvents, parsingErrors);
 
+		let lastRestorePointNumber: number | null | undefined = undefined; // undefined = no segment yet
 		for (const event of events) {
+			const restorePointNumber = event.restorePoint?.number ?? null;
+			if (restorePointNumber !== lastRestorePointNumber) {
+				this.restorePointSegments.push({ msIntoGame: event.msIntoGame, restorePoint: event.restorePoint });
+				lastRestorePointNumber = restorePointNumber;
+			}
+
 			if (event instanceof SceneEvent) {
 				this.sceneEvents.push(event);
 				this.enemySceneCheckpoints.push({
@@ -117,6 +133,13 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 
 	public lastPlayerDataEventOfField<K extends PlayerDataFieldNameSilk>(field: K): PlayerDataEventSilk<K> | null {
 		return this.lastPlayerDataEventsByField[field] ?? null;
+	}
+
+	// The restore point (if any) that msIntoGame is reconstructed from - null once live recording
+	// starts. Single bounded binary search over restorePointSegments, not a scan over events.
+	public restorePointAt(msIntoGame: number): RestorePointInfo | null {
+		const index = binarySearchLastIndexBefore(this.restorePointSegments, msIntoGame, (it) => it.msIntoGame);
+		return this.restorePointSegments[index]?.restorePoint ?? null;
 	}
 
 	// All enemies alive at msIntoGame, keyed by id. Binary-searches for the scene visit containing

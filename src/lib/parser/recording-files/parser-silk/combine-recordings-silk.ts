@@ -2,7 +2,7 @@ import { isPlayerDataEventOfFieldSilk } from '~/lib/game-data/silk-data/player-d
 import type { PlayerDataFieldNameSilk } from '~/lib/game-data/silk-data/player-data/player-data-silk.generated';
 import { playerPositionToMapPositionSilk } from '~/lib/game-data/silk-data/player-position-silk';
 import { raise } from '~/lib/util/other';
-import { EventCreationContext } from '../events-shared/event-creation-context';
+import { EventCreationContext, type RestorePointInfo } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
 import { frameEndEventPlayerDataFieldsSetSilk, FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
@@ -126,12 +126,13 @@ function buildRestorePointTimeline(
 	let previousSceneEvent: SceneEvent | null = null;
 	const scenesVisitedSoFar: string[] = [];
 
-	const pushVirtualSceneVisit = (scene: string) => {
+	const pushVirtualSceneVisit = (scene: string, restorePoint: RestorePointInfo) => {
 		scenesVisitedSoFar.push(scene);
 		msIntoGame += BEFORE_RECORDING_STEP_MS;
 		timestamp += BEFORE_RECORDING_STEP_MS;
 		ctx.msIntoGame = msIntoGame;
 		ctx.timestamp = timestamp;
+		ctx.restorePoint = restorePoint;
 		const sceneEvent = new SceneEvent(scene, undefined, undefined, ctx);
 		sceneEvent.previousSceneEvent = previousSceneEvent;
 		previousSceneEvent = sceneEvent;
@@ -141,7 +142,7 @@ function buildRestorePointTimeline(
 
 	blocks.forEach((block, i) => {
 		for (const scene of blockNewScenes[i]!) {
-			pushVirtualSceneVisit(scene);
+			pushVirtualSceneVisit(scene, { number: block.number, date: block.date });
 		}
 
 		if (block.events.length > 0) {
@@ -153,8 +154,11 @@ function buildRestorePointTimeline(
 		}
 	});
 
+	// the bridge diff conceptually still belongs to the last restore point - it's the same
+	// reconstructed-from-that-snapshot knowledge, just extended forward to live recording's start
+	const lastBlock = blocks[blocks.length - 1]!;
 	for (const scene of bridgeNewScenes) {
-		pushVirtualSceneVisit(scene);
+		pushVirtualSceneVisit(scene, { number: lastBlock.number, date: lastBlock.date });
 	}
 
 	return result;

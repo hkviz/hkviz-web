@@ -824,6 +824,7 @@ export function parseRecordingFileSilk(
 					const date = reader.readString();
 					inRestorePoint = true;
 					restorePointEventBuffer = [];
+					ctx.restorePoint = { number, date };
 					pushEvent(new RestorePointStartEventSilk(number, date, ctx), { number, date });
 					logParserStep('restore_point_start', { number, date });
 					break;
@@ -836,6 +837,7 @@ export function parseRecordingFileSilk(
 					firstNonRestorePointEventIndex += restorePointEventBuffer.length;
 					inRestorePoint = false;
 					restorePointEventBuffer = [];
+					ctx.restorePoint = null;
 					logParserStep('restore_point_finish');
 					break;
 				}
