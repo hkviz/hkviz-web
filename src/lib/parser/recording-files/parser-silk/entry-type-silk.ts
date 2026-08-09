@@ -43,6 +43,17 @@ export const entryTypeSilk = {
 	SceneDataBool: 0x21,
 	SceneDataInt: 0x22,
 	SceneDataGeoRock: 0x23,
+
+	// Enemy
+	EnemyStart: 0x20,
+	EnemyTakeDamage: 0x24,
+	EnemyDestroy: 0x25,
+	EnemyLocations: 0x26,
+	EnemyHps: 0x27,
+
+	// RestorePoints (backfill on first-ever recording of a profile)
+	RestorePointStart: 0x28,
+	RestorePointFinish: 0x29,
 } as const;
 
 export type EntryTypeSilk = (typeof entryTypeSilk)[keyof typeof entryTypeSilk];

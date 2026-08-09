@@ -11,7 +11,9 @@ import { isSubSceneNameSilk } from '../../../game-data/silk-data/sub-scene-names
 import { EventCreationContext } from '../events-shared/event-creation-context';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
+import { EnemyDamageEventSilk, EnemyStateEventSilk, type EnemyHitInstanceSilk } from '../events-silk/enemy-event-silk';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
+import { RestorePointFinishEventSilk, RestorePointStartEventSilk } from '../events-silk/restore-point-event-silk';
 import { SceneDataEventSilk } from '../events-silk/scene-data-event-silk';
 import {
 	parseIndexedListDelta,
@@ -45,6 +47,22 @@ export function parseRecordingFileSilk(
 		PlayerDataEventSilk<PlayerDataFieldNameSilk>
 	>();
 
+	// restore points are diffed against each other on the wire (mod-side), never against the live
+	// data above - keep their chain fully separate so collectionDiffApply resolves deltas correctly
+	let inRestorePoint = false;
+	let restorePointEventBuffer: RecordingEventSilk[] = [];
+	let firstNonRestorePointEventIndex = 0;
+	const previousRestorePointPlayerDataEventByField = new Map<
+		PlayerDataFieldNameSilk,
+		PlayerDataEventSilk<PlayerDataFieldNameSilk>
+	>();
+
+	// Current per-enemy state, id -> latest EnemyStateEventSilk. Safe to scope to this one file: an
+	// enemy's id never survives a scene change (cleared below on every real SceneChangeSingle/Add),
+	// and a scene visit never spans two files (file rotation only ever happens right after a scene
+	// change, see RunFiles.NextFileIfNeeded/RunWriter.HandleSceneChange in the mod).
+	const enemyStateById = new Map<number, EnemyStateEventSilk>();
+
 	const ctx: EventCreationContext = new EventCreationContext();
 
 	const reader = new SilkRecordingDataView(recordingFileContent);
@@ -61,7 +79,11 @@ export function parseRecordingFileSilk(
 	};
 
 	const pushEvent = (event: RecordingEventSilk, details?: Record<string, unknown>): void => {
-		events.push(event);
+		if (inRestorePoint) {
+			restorePointEventBuffer.push(event);
+		} else {
+			events.push(event);
+		}
 		logParserStep('event_parsed', {
 			eventType: event.constructor.name,
 			timestamp: event.timestamp,
@@ -101,15 +123,20 @@ export function parseRecordingFileSilk(
 	};
 
 	const pushPlayerDataEvent = (field: PlayerDataFieldNameSilk, value: unknown): void => {
-		const previousPlayerDataEventOfField = previousPlayerDataEventByField.get(field) ?? null;
+		const previousMap = inRestorePoint
+			? previousRestorePointPlayerDataEventByField
+			: previousPlayerDataEventByField;
+		const previousPlayerDataEventOfField = previousMap.get(field) ?? null;
 		const event = new PlayerDataEventSilk(
-			previousPlayerPositionEvent,
+			// restore points have no position of their own - don't borrow whatever live position
+			// happens to precede them in the wire stream
+			inRestorePoint ? null : previousPlayerPositionEvent,
 			previousPlayerDataEventOfField as any,
 			field as any,
 			value as PlayerDataFieldValueSilk<any>,
 			ctx,
 		);
-		previousPlayerDataEventByField.set(field, event as PlayerDataEventSilk<PlayerDataFieldNameSilk>);
+		previousMap.set(field, event as PlayerDataEventSilk<PlayerDataFieldNameSilk>);
 		pushEvent(event, {
 			field,
 		});
@@ -118,6 +145,26 @@ export function parseRecordingFileSilk(
 			value,
 			previousValueExists: previousPlayerDataEventOfField != null,
 		});
+	};
+
+	// Safety net: forces every still-tracked enemy "dead" on a real scene change, regardless of
+	// whether a matching EnemyDestroy was seen for each - guarantees "current enemies" is never stale
+	// across a scene boundary.
+	const clearEnemies = (): void => {
+		for (const previous of enemyStateById.values()) {
+			const event = new EnemyStateEventSilk(
+				previous.id,
+				previous.journalName,
+				previous.scene,
+				previous.hp,
+				previous.position,
+				false,
+				previous,
+				ctx,
+			);
+			pushEvent(event, { id: previous.id, clearedByScene: true });
+		}
+		enemyStateById.clear();
 	};
 
 	const storageStats = new StorageStats();
@@ -186,6 +233,7 @@ export function parseRecordingFileSilk(
 						const sceneEvent = new SceneEvent(sceneName, undefined, undefined, ctx);
 						pushEvent(sceneEvent, { sceneName });
 						previousSceneEvent = sceneEvent;
+						clearEnemies();
 						logParserStep('scene_change', { sceneName, isSubScene: false });
 					} else {
 						logParserStep('scene_change', { sceneName, isSubScene: true });
@@ -648,6 +696,147 @@ export function parseRecordingFileSilk(
 						key,
 						value,
 					});
+					break;
+				}
+				case entryTypeSilk.EnemyStart: {
+					const id = reader.readUint16();
+					const journalName = reader.readStringWithId(stringIdMappingSilk.enemy) ?? '';
+					const hp = reader.readInt32();
+					const position = reader.readVector2();
+					const scene = previousSceneEvent?.sceneName ?? '';
+					const event = new EnemyStateEventSilk(id, journalName, scene, hp, position, true, null, ctx);
+					enemyStateById.set(id, event);
+					pushEvent(event, { id, journalName, hp, position });
+					logParserStep('enemy_start', { id, journalName, hp, position });
+					break;
+				}
+				case entryTypeSilk.EnemyDestroy: {
+					const id = reader.readUint16();
+					const previous = enemyStateById.get(id);
+					if (previous) {
+						enemyStateById.delete(id);
+						const event = new EnemyStateEventSilk(
+							id,
+							previous.journalName,
+							previous.scene,
+							previous.hp,
+							previous.position,
+							false,
+							previous,
+							ctx,
+						);
+						pushEvent(event, { id });
+					}
+					logParserStep('enemy_destroy', { id });
+					break;
+				}
+				case entryTypeSilk.EnemyLocations: {
+					const count = reader.readUint16();
+					for (let i = 0; i < count; i++) {
+						const id = reader.readUint16();
+						const position = reader.readVector2();
+						const previous = enemyStateById.get(id);
+						if (previous) {
+							const event = new EnemyStateEventSilk(
+								id,
+								previous.journalName,
+								previous.scene,
+								previous.hp,
+								position,
+								true,
+								previous,
+								ctx,
+							);
+							enemyStateById.set(id, event);
+							pushEvent(event, { id, position });
+						}
+					}
+					logParserStep('enemy_locations', { count });
+					break;
+				}
+				case entryTypeSilk.EnemyHps: {
+					const count = reader.readUint16();
+					for (let i = 0; i < count; i++) {
+						const id = reader.readUint16();
+						const hp = reader.readInt32();
+						const previous = enemyStateById.get(id);
+						if (previous) {
+							const event = new EnemyStateEventSilk(
+								id,
+								previous.journalName,
+								previous.scene,
+								hp,
+								previous.position,
+								true,
+								previous,
+								ctx,
+							);
+							enemyStateById.set(id, event);
+							pushEvent(event, { id, hp });
+						}
+					}
+					logParserStep('enemy_hps', { count });
+					break;
+				}
+				case entryTypeSilk.EnemyTakeDamage: {
+					const enemyId = reader.readUint16();
+					const attackType = reader.readUint8();
+					const representingTool = reader.readStringWithId(stringIdMappingSilk.tool);
+					const specialType = reader.readUint8();
+					const silkGeneration = reader.readUint8();
+					const damageDealt = reader.readUint16();
+					const damageScalingLevel = reader.readUint8();
+					const stunDamage = reader.readFloat32();
+					const magnitudeMultiplier = reader.readFloat32();
+					const multiplier = reader.readFloat32();
+					const direction = reader.readFloat32();
+					const boolPack = reader.readUint16();
+
+					const hit: EnemyHitInstanceSilk = {
+						attackType,
+						representingTool,
+						specialType,
+						silkGeneration,
+						damageDealt,
+						damageScalingLevel,
+						stunDamage,
+						magnitudeMultiplier,
+						multiplier,
+						direction,
+						isFirstHit: (boolPack & (1 << 0)) !== 0,
+						isHeroDamage: (boolPack & (1 << 1)) !== 0,
+						ignoreInvulnerable: (boolPack & (1 << 2)) !== 0,
+						ignoreNailPosition: (boolPack & (1 << 3)) !== 0,
+						isManualTrigger: (boolPack & (1 << 4)) !== 0,
+						canWeakHit: (boolPack & (1 << 5)) !== 0,
+						forceNotWeakHit: (boolPack & (1 << 6)) !== 0,
+						nonLethal: (boolPack & (1 << 7)) !== 0,
+						rageHit: (boolPack & (1 << 8)) !== 0,
+						criticalHit: (boolPack & (1 << 9)) !== 0,
+						hunterCombo: (boolPack & (1 << 10)) !== 0,
+					};
+					pushEvent(new EnemyDamageEventSilk(enemyId, hit, ctx), { enemyId, hit });
+					logParserStep('enemy_take_damage', { enemyId, hit });
+					break;
+				}
+				case entryTypeSilk.RestorePointStart: {
+					const number = reader.readUint16();
+					const date = reader.readString();
+					inRestorePoint = true;
+					restorePointEventBuffer = [];
+					pushEvent(new RestorePointStartEventSilk(number, date, ctx), { number, date });
+					logParserStep('restore_point_start', { number, date });
+					break;
+				}
+				case entryTypeSilk.RestorePointFinish: {
+					pushEvent(new RestorePointFinishEventSilk(ctx));
+					// insert after the previously inserted block (if any), so multiple restore points
+					// stay in their original relative order, all ahead of the "live" events
+					events.splice(firstNonRestorePointEventIndex, 0, ...restorePointEventBuffer);
+					firstNonRestorePointEventIndex += restorePointEventBuffer.length;
+					inRestorePoint = false;
+					restorePointEventBuffer = [];
+					logParserStep('restore_point_finish');
 					break;
 				}
 				default: {

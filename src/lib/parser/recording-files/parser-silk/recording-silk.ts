@@ -7,9 +7,11 @@ import { createRecordingSplitsSilk } from '~/lib/splits/splits-silk/generate-spl
 import { raise } from '~/lib/util/other';
 import { PlayerPositionEvent } from '../events-shared/player-position-event';
 import { SceneEvent } from '../events-shared/scene-event';
+import { EnemyDamageEventSilk, EnemyStateEventSilk } from '../events-silk/enemy-event-silk';
 import { isFrameEndEventSilk } from '../events-silk/frame-end-event-check-silk';
 import type { FrameEndEventSilk } from '../events-silk/frame-end-event-silk';
 import { PlayerDataEventSilk } from '../events-silk/player-data-event-silk';
+import type { RestorePointFinishEventSilk, RestorePointStartEventSilk } from '../events-silk/restore-point-event-silk';
 import type { SceneDataEventSilk, SceneDataEventType } from '../events-silk/scene-data-event-silk';
 import { CombinedRecordingBase } from '../parser-shared/recording-shared';
 import type { StorageStats } from './storage-stats';
@@ -19,7 +21,11 @@ export type RecordingEventSilk =
 	| PlayerPositionEvent
 	| FrameEndEventSilk
 	| PlayerDataEventSilk<PlayerDataFieldNameSilk>
-	| SceneDataEventSilk<SceneDataEventType>;
+	| SceneDataEventSilk<SceneDataEventType>
+	| RestorePointStartEventSilk
+	| RestorePointFinishEventSilk
+	| EnemyStateEventSilk
+	| EnemyDamageEventSilk;
 
 export class ParsedRecordingSilk {
 	constructor(
@@ -57,6 +63,12 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 
 	public readonly playerPositionEventsWithTracePosition: PlayerPositionEvent[] = [];
 
+	public readonly enemyStateEvents: EnemyStateEventSilk[] = [];
+	public readonly enemyDamageEvents: EnemyDamageEventSilk[] = [];
+	// index into enemyStateEvents where each scene's segment begins, in scene order - lets
+	// getEnemiesAt() replay only the current scene visit instead of the whole recording
+	private readonly enemySceneCheckpoints: { msIntoGame: number; eventIndex: number }[] = [];
+
 	public readonly splits: Split[];
 
 	constructor(
@@ -71,6 +83,14 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 		for (const event of events) {
 			if (event instanceof SceneEvent) {
 				this.sceneEvents.push(event);
+				this.enemySceneCheckpoints.push({
+					msIntoGame: event.msIntoGame,
+					eventIndex: this.enemyStateEvents.length,
+				});
+			} else if (event instanceof EnemyStateEventSilk) {
+				this.enemyStateEvents.push(event);
+			} else if (event instanceof EnemyDamageEventSilk) {
+				this.enemyDamageEvents.push(event);
 			} else if (event instanceof PlayerDataEventSilk) {
 				const eventsOfField = (this.playerDataEventsPerField as any)[event.fieldName] ?? [];
 				eventsOfField.push(event);
@@ -97,6 +117,37 @@ export class CombinedRecordingSilk extends CombinedRecordingBase<'silk'> {
 
 	public lastPlayerDataEventOfField<K extends PlayerDataFieldNameSilk>(field: K): PlayerDataEventSilk<K> | null {
 		return this.lastPlayerDataEventsByField[field] ?? null;
+	}
+
+	// All enemies alive at msIntoGame, keyed by id. Binary-searches for the scene visit containing
+	// msIntoGame, then replays forward only within that segment - bounded by "enemy events since the
+	// current scene started", not the whole recording, since a scene change always clears the board.
+	public getEnemiesAt(msIntoGame: number): Map<number, EnemyStateEventSilk> {
+		let low = 0;
+		let high = this.enemySceneCheckpoints.length - 1;
+		let startIndex = 0;
+		while (low <= high) {
+			const mid = (low + high) >> 1;
+			const checkpoint = this.enemySceneCheckpoints[mid]!;
+			if (checkpoint.msIntoGame <= msIntoGame) {
+				startIndex = checkpoint.eventIndex;
+				low = mid + 1;
+			} else {
+				high = mid - 1;
+			}
+		}
+
+		const result = new Map<number, EnemyStateEventSilk>();
+		for (let i = startIndex; i < this.enemyStateEvents.length; i++) {
+			const event = this.enemyStateEvents[i]!;
+			if (event.msIntoGame > msIntoGame) break;
+			if (event.alive) {
+				result.set(event.id, event);
+			} else {
+				result.delete(event.id);
+			}
+		}
+		return result;
 	}
 
 	public debugPrintNeverOccurredPlayerDataEvents(): void {

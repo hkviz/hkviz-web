@@ -159,7 +159,7 @@ export const RunOverviewTab: Component<RunOverviewTabProps> = (props) => {
 							<Table>
 								<TableBody>
 									<TableRow>
-										<TableHead>Gameplay started</TableHead>
+										<TableHead>Recording started</TableHead>
 										<TableCell>
 											<Show when={props.startDate} fallback={'Unknown'}>
 												{(startedAt) => <RelativeDate date={startedAt()} />}

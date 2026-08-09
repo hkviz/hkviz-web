@@ -223,11 +223,18 @@ function AggregationVariables() {
 	const aggregationStore = useAggregationStore();
 	const roomInfosContext = useAreaAnalyticsContext();
 	const aggregatedMaxOverScenes = () => aggregationStore.aggregations()?.maxPerMode?.overScenes;
+	const aggregatedMinOverScenes = () => aggregationStore.aggregations()?.minPerMode?.overScenes;
 	const viewNeverHappenedAggregations = aggregationStore.viewNeverHappenedAggregations;
 	const aggregationVariables = () => gameplayStore.gameModule()?.aggregation?.variables;
 
 	const neverHappenedEvents = createMemo(
-		() => aggregationVariables()?.filter((variable) => !aggregatedMaxOverScenes()?.getValue(variable)) ?? [],
+		() =>
+			aggregationVariables()?.filter(
+				(variable) =>
+					// checks min and max, since first visited at might just have pre 0 visits
+					// (reconstructed from restore points / first save write).
+					!aggregatedMaxOverScenes()?.getValue(variable) && !aggregatedMinOverScenes()?.getValue(variable),
+			) ?? [],
 	);
 
 	const displayedVariables = createMemo(
