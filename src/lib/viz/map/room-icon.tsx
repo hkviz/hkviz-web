@@ -1,6 +1,5 @@
 import { createMemo } from 'solid-js';
 import { Bounds } from '~/lib/game-data/shared/bounds';
-import { Vector2 } from '~/lib/game-data/shared/vector2';
 import type { RoomDataOfGame } from '~/lib/game-data/specific/room-data-of-game';
 import type { GameId } from '~/lib/types/game-ids';
 import { cn } from '~/lib/utils';
@@ -13,37 +12,28 @@ export interface HKMapRoomProps<Game extends GameId> {
 
 export function HKMapRoom<Game extends GameId>(props: HKMapRoomProps<Game>) {
 	const roomInfosOfRoom = createMemo(() => {
-		const visualBoundsAllSprites = props.roomInfos
-			.map((it) => it.visualBoundsAllSprites)
-			.filter((it) => it != null);
 		const containingBounds =
-			visualBoundsAllSprites.length === 0 ? Bounds.ZERO : Bounds.fromContainingBounds(visualBoundsAllSprites);
-		const smallerRoomSizeProportion = containingBounds.size.minElement() / containingBounds.size.maxElement();
+			Bounds.fromContainingBoundsIgnoreNullOf(props.roomInfos, (r) => r.visualBoundsAllSprites) ?? Bounds.ZERO;
+		const smallerRoomSizeProportion =
+			Math.min(containingBounds.sizeX, containingBounds.sizeY) /
+			Math.max(containingBounds.sizeX, containingBounds.sizeY);
 		const roomPositionWithin0To1 =
-			containingBounds.size.x > containingBounds.size.y
-				? Bounds.fromMinSize(
-						new Vector2(0, (1 - smallerRoomSizeProportion) / 2),
-						new Vector2(1, smallerRoomSizeProportion),
-					)
-				: Bounds.fromMinSize(
-						new Vector2((1 - smallerRoomSizeProportion) / 2, 0),
-						new Vector2(smallerRoomSizeProportion, 1),
-					);
+			containingBounds.sizeX > containingBounds.sizeY
+				? Bounds.fromMinXYSizeXY(0, (1 - smallerRoomSizeProportion) / 2, 1, smallerRoomSizeProportion)
+				: Bounds.fromMinXYSizeXY((1 - smallerRoomSizeProportion) / 2, 0, smallerRoomSizeProportion, 1);
 
 		function relativeToRoomBounds(spritePosition: Bounds) {
-			const x = Bounds.fromMinSize(
-				new Vector2(
-					((spritePosition.min.x - containingBounds.min.x) / containingBounds.size.x) *
-						roomPositionWithin0To1.size.x +
-						roomPositionWithin0To1.min.x,
-					((spritePosition.min.y - containingBounds.min.y) / containingBounds.size.y) *
-						roomPositionWithin0To1.size.y +
-						roomPositionWithin0To1.min.y,
-				),
-				new Vector2(
-					(spritePosition.size.x / containingBounds.size.x) * roomPositionWithin0To1.size.x,
-					(spritePosition.size.y / containingBounds.size.y) * roomPositionWithin0To1.size.y,
-				),
+			const x = Bounds.fromMinXYSizeXY(
+				/*min*/
+				((spritePosition.minX - containingBounds.minX) / containingBounds.sizeX) *
+					roomPositionWithin0To1.sizeX +
+					roomPositionWithin0To1.minX,
+				((spritePosition.minY - containingBounds.minY) / containingBounds.sizeY) *
+					roomPositionWithin0To1.sizeY +
+					roomPositionWithin0To1.minY,
+				/*size*/
+				(spritePosition.sizeX / containingBounds.sizeX) * roomPositionWithin0To1.sizeX,
+				(spritePosition.sizeY / containingBounds.sizeY) * roomPositionWithin0To1.sizeY,
 			);
 			return x;
 		}

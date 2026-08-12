@@ -1,7 +1,6 @@
 import * as d3 from 'd3';
 import { createEffect, onCleanup, untrack } from 'solid-js';
 import { Bounds } from '~/lib/game-data/shared/bounds';
-import { Vector2 } from '~/lib/game-data/shared/vector2';
 import { useAnimationTickStore } from '../../store/animation-tick-store';
 import { TickListenerOrder } from '../../store/animation-tick-store';
 import { useGameplayStore } from '../../store/gameplay-store';
@@ -48,16 +47,16 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 	function getTransformFor(minX: number, minY: number, maxX: number, maxY: number, mapExtends: Bounds) {
 		const sizeX = maxX - minX;
 		const sizeY = maxY - minY;
-		const scale = Math.min(3.5, Math.min(mapExtends.size.x / sizeX, mapExtends.size.y / sizeY) * 0.97);
+		const scale = Math.min(3.5, Math.min(mapExtends.sizeX / sizeX, mapExtends.sizeY / sizeY) * 0.97);
 		return d3.zoomIdentity
-			.translate(mapExtends.center.x, mapExtends.center.y)
+			.translate(mapExtends.centerX, mapExtends.centerY)
 			.scale(scale)
 			.translate(-(minX + sizeX / 2), -(minY + sizeY / 2));
 	}
 
 	function shouldApplyAt(minX: number, minY: number, maxX: number, maxY: number, mapExtends: Bounds) {
 		if (!lastAppliedBounds.initialized) return true;
-		const epsilon = Math.max(mapExtends.size.x, mapExtends.size.y) * AUTO_ZOOM_APPLY_EPSILON_RATIO;
+		const epsilon = Math.max(mapExtends.sizeX, mapExtends.sizeY) * AUTO_ZOOM_APPLY_EPSILON_RATIO;
 		return (
 			Math.max(
 				Math.abs(minX - lastAppliedBounds.minX),
@@ -83,9 +82,12 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 		const transform = d3.zoomTransform(node);
 		if (!Number.isFinite(transform.k) || transform.k <= 0) return null;
 
-		const min = new Vector2(transform.invertX(mapExtends.min.x), transform.invertY(mapExtends.min.y));
-		const max = new Vector2(transform.invertX(mapExtends.max.x), transform.invertY(mapExtends.max.y));
-		return Bounds.fromMinMax(min, max);
+		return new Bounds(
+			transform.invertX(mapExtends.minX),
+			transform.invertY(mapExtends.minY),
+			transform.invertX(mapExtends.maxX),
+			transform.invertY(mapExtends.maxY),
+		);
 	}
 
 	function resetBoundsAnimator() {
@@ -126,10 +128,10 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 				if (
 					targetBounds === lastTickTargetBounds &&
 					lastAppliedBounds.initialized &&
-					lastAppliedBounds.minX === targetBounds.min.x &&
-					lastAppliedBounds.minY === targetBounds.min.y &&
-					lastAppliedBounds.maxX === targetBounds.max.x &&
-					lastAppliedBounds.maxY === targetBounds.max.y
+					lastAppliedBounds.minX === targetBounds.minX &&
+					lastAppliedBounds.minY === targetBounds.minY &&
+					lastAppliedBounds.maxX === targetBounds.maxX &&
+					lastAppliedBounds.maxY === targetBounds.maxY
 				) {
 					return;
 				}
@@ -139,10 +141,10 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 
 				if (!mapZoomStore.transition()) {
 					resetBoundsAnimator();
-					const tMinX = targetBounds.min.x;
-					const tMinY = targetBounds.min.y;
-					const tMaxX = targetBounds.max.x;
-					const tMaxY = targetBounds.max.y;
+					const tMinX = targetBounds.minX;
+					const tMinY = targetBounds.minY;
+					const tMaxX = targetBounds.maxX;
+					const tMaxY = targetBounds.maxY;
 					if (!shouldApplyAt(tMinX, tMinY, tMaxX, tMaxY, mapExtends)) return;
 					svg.call(zoomTransform, getTransformFor(tMinX, tMinY, tMaxX, tMaxY, mapExtends));
 					markAppliedAt(tMinX, tMinY, tMaxX, tMaxY);
@@ -151,10 +153,10 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 
 				if (!boundsAnimator.initialized) {
 					const currentBounds = getCurrentViewBounds(svg) ?? targetBounds;
-					boundsAnimator.minX = currentBounds.min.x;
-					boundsAnimator.minY = currentBounds.min.y;
-					boundsAnimator.maxX = currentBounds.max.x;
-					boundsAnimator.maxY = currentBounds.max.y;
+					boundsAnimator.minX = currentBounds.minX;
+					boundsAnimator.minY = currentBounds.minY;
+					boundsAnimator.maxX = currentBounds.maxX;
+					boundsAnimator.maxY = currentBounds.maxY;
 					boundsAnimator.initialized = true;
 				}
 
@@ -162,10 +164,10 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 				const alphaExtend = 1 - Math.exp(-dtSeconds / BOUNDS_EXTEND_TIME_SECONDS);
 				const alphaReduce = 1 - Math.exp(-dtSeconds / reduceTime);
 
-				const tMinX = targetBounds.min.x;
-				const tMinY = targetBounds.min.y;
-				const tMaxX = targetBounds.max.x;
-				const tMaxY = targetBounds.max.y;
+				const tMinX = targetBounds.minX;
+				const tMinY = targetBounds.minY;
+				const tMaxX = targetBounds.maxX;
+				const tMaxY = targetBounds.maxY;
 
 				const minXAlpha = tMinX < boundsAnimator.minX ? alphaExtend : alphaReduce;
 				const minYAlpha = tMinY < boundsAnimator.minY ? alphaExtend : alphaReduce;
@@ -177,8 +179,8 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 				boundsAnimator.maxX += (tMaxX - boundsAnimator.maxX) * maxXAlpha;
 				boundsAnimator.maxY += (tMaxY - boundsAnimator.maxY) * maxYAlpha;
 
-				const minSizeX = Math.max(1, mapExtends.size.x * 0.01);
-				const minSizeY = Math.max(1, mapExtends.size.y * 0.01);
+				const minSizeX = Math.max(1, mapExtends.sizeX * 0.01);
+				const minSizeY = Math.max(1, mapExtends.sizeY * 0.01);
 				if (boundsAnimator.maxX - boundsAnimator.minX < minSizeX) {
 					const centerX = (boundsAnimator.maxX + boundsAnimator.minX) / 2;
 					boundsAnimator.minX = centerX - minSizeX / 2;
@@ -192,7 +194,7 @@ export function createMapViewZoom(props: MapViewZoomProps) {
 
 				// Snap to target when within epsilon — avoids endless tiny applies near convergence.
 				const snapEpsilon =
-					Math.max(mapExtends.size.x, mapExtends.size.y) * AUTO_ZOOM_SNAP_TO_TARGET_EPSILON_RATIO;
+					Math.max(mapExtends.sizeX, mapExtends.sizeY) * AUTO_ZOOM_SNAP_TO_TARGET_EPSILON_RATIO;
 				const snapDelta = Math.max(
 					Math.abs(boundsAnimator.minX - tMinX),
 					Math.abs(boundsAnimator.minY - tMinY),

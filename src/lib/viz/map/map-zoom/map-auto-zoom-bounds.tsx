@@ -136,11 +136,9 @@ export function createMapViewAutoZoomBounds() {
 				cache.set(zoomZone, null);
 				return null;
 			}
-			const bounds = Bounds.fromContainingBoundsIgnoreNull(
-				rooms.map(function getRoomVisualBounds(r) {
-					return r.visualBounds;
-				}),
-			);
+			const bounds = Bounds.fromContainingBoundsIgnoreNullOf(rooms, function getRoomVisualBounds(r) {
+				return r.visualBounds;
+			});
 			cache.set(zoomZone, bounds);
 			return bounds;
 		}
@@ -245,8 +243,9 @@ export function createMapViewAutoZoomBounds() {
 		// (3) convert to bounds
 		const boundsByZone = boundsByZoomZone();
 		const areaSmoothBoundsWithTimes = zoomZonesWithTimes.map((it) => {
-			const boundsForZoomZones = it.zoomZones.map((it) => boundsByZone.get(it));
-			const bounds = Bounds.fromContainingBoundsIgnoreNull(boundsForZoomZones);
+			const bounds = Bounds.fromContainingBoundsIgnoreNullOf(it.zoomZones, function getZoomZoneBounds(z) {
+				return boundsByZone.get(z);
+			});
 			return { msIntoGame: it.msIntoGame, bounds };
 		});
 
@@ -255,19 +254,14 @@ export function createMapViewAutoZoomBounds() {
 
 	const visibleRoomsExtends = createLazyMemo(function computeVisibleRoomsExtends() {
 		const roomsVisible = roomDisplayStore.roomsVisible();
-		const visibleRooms =
-			roomsVisible === 'all'
-				? gameModule()?.map.rooms
-				: gameModule()?.map.rooms.filter(function isRoomVisible(r) {
-						return roomsVisible.has(r.gameObjectName);
-					});
-		if (visibleRooms == null || visibleRooms.length === 0) return null;
+		const rooms = gameModule()?.map.rooms;
+		const isAll = roomsVisible === 'all';
+		if (rooms == null || rooms.length === 0) return null;
 
-		return Bounds.fromContainingBoundsIgnoreNull(
-			visibleRooms.map(function getRoomVisualBounds(r) {
-				return r.visualBounds;
-			}),
-		);
+		return Bounds.fromContainingBoundsIgnoreNullOf(rooms, function getRoomVisualBounds(r) {
+			if (!isAll && !roomsVisible.has(r.gameObjectName)) return null;
+			return r.visualBounds;
+		});
 	});
 
 	const currentZoneBounds = createLazyMemo(function computeCurrentZoneBounds() {

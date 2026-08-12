@@ -58,8 +58,8 @@ function MapViewText(props: MapViewTextProps) {
 			}
 			text-anchor="middle"
 			dominant-baseline="central"
-			x={props.textData.bounds.center.x}
-			y={props.textData.bounds.center.y}
+			x={props.textData.bounds.centerX}
+			y={props.textData.bounds.centerY}
 			style={{ ['font-size']: '3.25px', transition: 'opacity 0.1s ease 0s', fill: fill(), opacity: opacity() }}
 		>
 			{text()}
@@ -94,7 +94,7 @@ export function HkMapTexts() {
 					<MapViewText
 						textData={text}
 						visibleBy={{
-							zoneName:  text.convoName,
+							zoneName: text.convoName,
 						}}
 					/>
 				)}

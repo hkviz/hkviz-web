@@ -68,7 +68,7 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 		if (bounds == null) {
 			return Vector2.ZERO;
 		}
-		return new Vector2(bounds.min.x + bounds.size.x / 2, bounds.min.y + bounds.size.y / 2);
+		return new Vector2(bounds.minX + bounds.sizeX / 2, bounds.minY + bounds.sizeY / 2);
 	}
 
 	function chooseInitialActiveRoom() {
@@ -218,8 +218,8 @@ export const MapView: Component<MapViewProps> = (props: MapViewProps) => {
 		const visualExtends = gameplayStore.gameModule()?.map.extends;
 		if (visualExtends == null) return;
 		zoom.translateExtent([
-			[visualExtends.min.x - visualExtends.size.x * 0.5, visualExtends.min.y - visualExtends.size.y * 0.5],
-			[visualExtends.max.x + visualExtends.size.x * 0.5, visualExtends.max.y + visualExtends.size.y * 0.5],
+			[visualExtends.minX - visualExtends.sizeX * 0.5, visualExtends.minY - visualExtends.sizeY * 0.5],
+			[visualExtends.maxX + visualExtends.sizeX * 0.5, visualExtends.maxY + visualExtends.sizeY * 0.5],
 		]);
 	});
 

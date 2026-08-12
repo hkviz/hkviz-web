@@ -28,19 +28,19 @@ type RoomImagePositionHelper = {
 const patternImagePositionHelper: RoomImagePositionHelper = {
 	getX: (sprite, room) => {
 		const roomVisualBounds = room.visualBoundsAllSprites;
-		if (!roomVisualBounds) return sprite.sprite.visualBounds.min.x;
-		return sprite.sprite.visualBounds.min.x - roomVisualBounds.min.x;
+		if (!roomVisualBounds) return sprite.sprite.visualBounds.minX;
+		return sprite.sprite.visualBounds.minX - roomVisualBounds.minX;
 	},
 	getY: (sprite, room) => {
 		const roomVisualBounds = room.visualBoundsAllSprites;
-		if (!roomVisualBounds) return sprite.sprite.visualBounds.min.y;
-		return sprite.sprite.visualBounds.min.y - roomVisualBounds.min.y;
+		if (!roomVisualBounds) return sprite.sprite.visualBounds.minY;
+		return sprite.sprite.visualBounds.minY - roomVisualBounds.minY;
 	},
 };
 
 const maskImagePositionHelper: RoomImagePositionHelper = {
-	getX: (sprite) => sprite.sprite.visualBounds.min.x,
-	getY: (sprite) => sprite.sprite.visualBounds.min.y,
+	getX: (sprite) => sprite.sprite.visualBounds.minX,
+	getY: (sprite) => sprite.sprite.visualBounds.minY,
 };
 
 function RoomSpriteImages<Game extends GameId>(props: {
@@ -65,8 +65,8 @@ function RoomSpriteImages<Game extends GameId>(props: {
 						preserveAspectRatio="none"
 						x={props.positionHelper.getX(sprite, props.room)}
 						y={props.positionHelper.getY(sprite, props.room)}
-						width={sprite.sprite.visualBounds.size.x}
-						height={sprite.sprite.visualBounds.size.y}
+						width={sprite.sprite.visualBounds.sizeX}
+						height={sprite.sprite.visualBounds.sizeY}
 						href={href()}
 						style={{
 							transition: 'opacity 0.1s ease 0s',
@@ -132,10 +132,10 @@ function MapViewRoom<Game extends GameId>(props: {
 					<rect
 						class={mapViewRoomRectClass(props.room)}
 						mask={`url(#${maskId})`}
-						x={props.room.visualBoundsAllSprites?.min.x ?? 0}
-						y={props.room.visualBoundsAllSprites?.min.y ?? 0}
-						width={props.room.visualBoundsAllSprites?.size.x ?? 0}
-						height={props.room.visualBoundsAllSprites?.size.y ?? 0}
+						x={props.room.visualBoundsAllSprites?.minX ?? 0}
+						y={props.room.visualBoundsAllSprites?.minY ?? 0}
+						width={props.room.visualBoundsAllSprites?.sizeX ?? 0}
+						height={props.room.visualBoundsAllSprites?.sizeY ?? 0}
 						style={{
 							transition: 'fill 0.1s ease 0s',
 							fill: color()?.color,
@@ -148,10 +148,10 @@ function MapViewRoom<Game extends GameId>(props: {
 						<pattern
 							id={patternId}
 							patternUnits="userSpaceOnUse"
-							x={props.room.visualBoundsAllSprites?.min.x ?? 0}
-							y={props.room.visualBoundsAllSprites?.min.y ?? 0}
-							width={props.room.visualBoundsAllSprites?.size.x ?? 0}
-							height={props.room.visualBoundsAllSprites?.size.y ?? 0}
+							x={props.room.visualBoundsAllSprites?.minX ?? 0}
+							y={props.room.visualBoundsAllSprites?.minY ?? 0}
+							width={props.room.visualBoundsAllSprites?.sizeX ?? 0}
+							height={props.room.visualBoundsAllSprites?.sizeY ?? 0}
 						>
 							<RoomSpriteImages
 								room={props.room}
@@ -180,10 +180,10 @@ function MapViewRoom<Game extends GameId>(props: {
 					</defs>
 					<rect
 						class={mapViewRoomRectClass(props.room)}
-						x={props.room.visualBoundsAllSprites?.min.x ?? 0}
-						y={props.room.visualBoundsAllSprites?.min.y ?? 0}
-						width={props.room.visualBoundsAllSprites?.size.x ?? 0}
-						height={props.room.visualBoundsAllSprites?.size.y ?? 0}
+						x={props.room.visualBoundsAllSprites?.minX ?? 0}
+						y={props.room.visualBoundsAllSprites?.minY ?? 0}
+						width={props.room.visualBoundsAllSprites?.sizeX ?? 0}
+						height={props.room.visualBoundsAllSprites?.sizeY ?? 0}
 						style={{
 							transition: 'fill 0.1s ease 0s',
 							fill: `url(#${patternId})`,
@@ -207,11 +207,11 @@ export function MapViewRoomsHoverIndicator(props: MapViewRoomsHoverIndicatorProp
 	const roomDisplayStore = useRoomDisplayStore();
 	const id = createUniqueId();
 
-	const hoverBounds = () => {
-		return Bounds.fromContainingBoundsOrZero(
-			props.rooms?.map((it) => it.visualBoundsAllSprites).filter((it) => it != null),
-		);
-	};
+	const hoverBounds = createMemo(() => {
+		const rooms = props.rooms;
+		if (rooms == null || rooms.length === 0) return Bounds.ZERO;
+		return Bounds.fromContainingBoundsIgnoreNullOf(rooms, (it) => it.visualBoundsAllSprites) ?? Bounds.ZERO;
+	});
 
 	const maskId = `hover-indicator-mask-${id}`;
 
@@ -246,10 +246,10 @@ export function MapViewRoomsHoverIndicator(props: MapViewRoomsHoverIndicatorProp
 				<rect
 					class="pointer-events-none"
 					mask={`url(#${maskId})`}
-					x={hoverBounds().min.x}
-					y={hoverBounds().min.y}
-					width={hoverBounds().size.x}
-					height={hoverBounds().size.y}
+					x={hoverBounds().minX}
+					y={hoverBounds().minY}
+					width={hoverBounds().sizeX}
+					height={hoverBounds().sizeY}
 					style={{ fill: 'rgba(255, 255, 255, 0.5)' }}
 				/>
 			</g>

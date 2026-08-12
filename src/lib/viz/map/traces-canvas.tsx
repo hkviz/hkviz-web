@@ -255,23 +255,23 @@ export const HKMapTraces: Component = () => {
 		if (!_canvas.canvas || !visualExtends) return;
 
 		// scaling
-		const boundsAspectRatio = visualExtends.size.x / visualExtends.size.y;
+		const boundsAspectRatio = visualExtends.sizeX / visualExtends.sizeY;
 		const canvasAspectRatio = _canvas.widthInUnits / _canvas.heightInUnits;
 
 		const mapDistanceToCanvasUnits =
 			boundsAspectRatio > canvasAspectRatio
-				? _canvas.widthInUnits / visualExtends.size.x
-				: _canvas.heightInUnits / visualExtends.size.y;
+				? _canvas.widthInUnits / visualExtends.sizeX
+				: _canvas.heightInUnits / visualExtends.sizeY;
 
 		const scaler = state.transformScale * mapDistanceToCanvasUnits;
 
 		const xOffset =
 			_canvas.widthInUnits / 2 -
-			visualExtends.center.x * mapDistanceToCanvasUnits +
+			visualExtends.centerX * mapDistanceToCanvasUnits +
 			state.transformOffsetX * mapDistanceToCanvasUnits;
 		const yOffset =
 			_canvas.heightInUnits / 2 -
-			visualExtends.center.y * mapDistanceToCanvasUnits +
+			visualExtends.centerY * mapDistanceToCanvasUnits +
 			state.transformOffsetY * mapDistanceToCanvasUnits;
 		function x(v: number) {
 			return v * scaler + xOffset;

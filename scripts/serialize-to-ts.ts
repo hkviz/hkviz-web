@@ -29,7 +29,7 @@ export function serializeToTs(value: any, imports: Set<string>, gameDataRoot = '
 	}
 	if (value instanceof Bounds) {
 		imports.add(`import { boundsMinXYMaxXY } from '${gameDataRoot}shared/bounds.ts';`);
-		return `boundsMinXYMaxXY(${value.min.x}, ${value.min.y}, ${value.max.x}, ${value.max.y})`;
+		return `boundsMinXYMaxXY(${value.minX}, ${value.minY}, ${value.maxX}, ${value.maxY})`;
 	}
 	if (value instanceof d3.hsl) {
 		imports.add('import * as d3 from "d3";');

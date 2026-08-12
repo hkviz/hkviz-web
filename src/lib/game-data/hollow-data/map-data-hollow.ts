@@ -109,7 +109,7 @@ export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 		rough: room.roughSpriteInfo ? spriteInfoWithScaledPosition('rough', room.roughSpriteInfo) : null,
 	};
 	const allSprites = Object.values(spritesByVariant).filter((it) => it != null);
-	const visualBoundsAllSprites = Bounds.fromContainingBounds(allSprites.map((it) => it.sprite.visualBounds));
+	const visualBoundsAllSprites = Bounds.fromContainingBoundsOf(allSprites, (it) => it.sprite.visualBounds);
 
 	const texts = room.texts.map((text) => prepareTextExportDataHollow(text));
 
@@ -173,22 +173,20 @@ export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 				padding: parentSpriteInfo.padding,
 				sprite: {
 					name: childVariant.name,
-					visualBounds: Bounds.fromMinSize(
-						new Vector2(
-							parentSpriteInfo.sprite.visualBounds.min.x +
-								childVariant.offsetTop.x *
-									(parentSpriteInfo.sprite.visualBounds.size.x / parentSpriteSizeWithoutPadding.x),
+					visualBounds: Bounds.fromMinXYSizeXY(
+						/* min */
+						parentSpriteInfo.sprite.visualBounds.minX +
+							childVariant.offsetTop.x *
+								(parentSpriteInfo.sprite.visualBounds.sizeX / parentSpriteSizeWithoutPadding.x),
 
-							parentSpriteInfo.sprite.visualBounds.min.y +
-								childVariant.offsetTop.y *
-									(parentSpriteInfo.sprite.visualBounds.size.y / parentSpriteSizeWithoutPadding.y),
-						),
-						new Vector2(
-							childVariant.size.x *
-								(parentSpriteInfo.sprite.visualBounds.size.x / parentSpriteSizeWithoutPadding.x),
-							childVariant.size.y *
-								(parentSpriteInfo.sprite.visualBounds.size.y / parentSpriteSizeWithoutPadding.y),
-						),
+						parentSpriteInfo.sprite.visualBounds.minY +
+							childVariant.offsetTop.y *
+								(parentSpriteInfo.sprite.visualBounds.sizeY / parentSpriteSizeWithoutPadding.y),
+						/* size */
+						childVariant.size.x *
+							(parentSpriteInfo.sprite.visualBounds.sizeX / parentSpriteSizeWithoutPadding.x),
+						childVariant.size.y *
+							(parentSpriteInfo.sprite.visualBounds.sizeY / parentSpriteSizeWithoutPadding.y),
 					),
 				},
 				alwaysHidden: 'alwaysHidden' in childVariant ? (childVariant.alwaysHidden as boolean) : false,
@@ -211,7 +209,7 @@ export const mapRoomsHollow = roomDataUnscaledWithCustom.flatMap((room) => {
 
 		const escapedSpriteName = childSprite.normal.name.replace(/\//g, '_');
 
-		const visualBounds = Bounds.fromContainingBounds(subSprites.map((it) => it.sprite.visualBounds));
+		const visualBounds = Bounds.fromContainingBoundsOf(subSprites, (it) => it.sprite.visualBounds) ?? Bounds.ZERO;
 		const playerPositionBounds = visualBounds;
 		const visualBoundsAllSprites = visualBounds;
 

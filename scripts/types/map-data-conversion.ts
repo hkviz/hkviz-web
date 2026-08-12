@@ -17,6 +17,7 @@ import { sceneNameToIdMetaSilk } from '../../src/lib/game-data/silk-data/scene-i
 import { silkScaleBounds } from '../../src/lib/game-data/silk-data/silk-scaling.ts';
 import type { SilkMapDataGenerated, SilkTextDataGenerated } from './map-data-mod-output-types.ts';
 import type { LocalizedString } from '../../src/lib/viz/store/localization-store.ts';
+import { raise } from '~/lib/util/other.ts';
 
 function mapGeneratedText(text: SilkTextDataGenerated): MapTextData {
 	const [sheetName, convoName] = text.textKey.split('.');
@@ -141,8 +142,8 @@ export function mapDataConversionForGen(silkMapDataGenerated: SilkMapDataGenerat
 
 		const mappedIfAllMapped = room.mappedParent ? [room.mappedParent] : room.mappedIfAllMapped;
 
-		const spriteBounds = allSprites.map((s) => s.sprite.visualBounds);
-		const visualBoundsAllSprites = spriteBounds.length > 0 ? Bounds.fromContainingBounds(spriteBounds) : null;
+		const visualBoundsAllSprites =
+			allSprites.length > 0 ? Bounds.fromContainingBoundsOf(allSprites, (s) => s.sprite.visualBounds) : null;
 
 		const altColors =
 			room.altColors?.map((c) => ({
@@ -201,9 +202,9 @@ export function mapDataConversionForGen(silkMapDataGenerated: SilkMapDataGenerat
 		areaNames: silkMapDataGenerated.areaNames
 			.filter((text) => !text.objectPath.includes('Next Area'))
 			.map(mapGeneratedText),
-		extends: Bounds.fromContainingBounds(
-			silkMapRooms.map((r) => r.visualBoundsAllSprites).filter((b) => b != null),
-		),
+		extends:
+			Bounds.fromContainingBoundsIgnoreNullOf(silkMapRooms, (r) => r.visualBoundsAllSprites) ??
+			raise(new Error('Map data must have at least one room with visual bounds')),
 	};
 
 	return silkMapData;
