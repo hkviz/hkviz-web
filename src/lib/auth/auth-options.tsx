@@ -36,6 +36,7 @@ export const authOptions: SolidAuthConfig = {
 		DiscordProvider({
 			clientId: env.DISCORD_CLIENT_ID,
 			clientSecret: env.DISCORD_CLIENT_SECRET,
+			issuer: 'https://discord.com',
 		}),
 		GoogleProvider({
 			clientId: env.GOOGLE_CLIENT_ID,
